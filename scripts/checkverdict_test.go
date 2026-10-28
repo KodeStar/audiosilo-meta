@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"testing"
 )
@@ -91,23 +92,27 @@ func TestCheckVerdictFails(t *testing.T) {
 	}
 }
 
+// writeLogs writes the logs the verdict's merged download holds: one flat
+// directory, a file per job (check.yml's download-artifact merge-multiple).
+func writeLogs(t *testing.T, logs map[string]string) string {
+	t.Helper()
+	dir := t.TempDir()
+	for name, body := range logs {
+		if err := os.WriteFile(filepath.Join(dir, name), []byte(body), 0o644); err != nil {
+			t.Fatal(err)
+		}
+	}
+	return dir
+}
+
 // A failing verdict ends with the failing jobs' own output, the part of the
 // log the sync bot reads as its evidence; a passing one prints none of it.
 func TestCheckVerdictEndsWithTheFailedLogs(t *testing.T) {
 	t.Parallel()
-	logs := t.TempDir()
-	for rel, body := range map[string]string{
-		"check-log-metacheck/metacheck.log": "loading\nerror: works/0/a.json: entry a: the problem\n",
-		"check-log-test-2/test.log":         "--- FAIL: TestX\nFAIL\tgithub.com/kodestar/audiosilo-meta/pkg/x\n",
-	} {
-		path := filepath.Join(logs, filepath.FromSlash(rel))
-		if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
-			t.Fatal(err)
-		}
-		if err := os.WriteFile(path, []byte(body), 0o644); err != nil {
-			t.Fatal(err)
-		}
-	}
+	logs := writeLogs(t, map[string]string{
+		"metacheck.log": "loading\nerror: works/0/a.json: entry a: the problem\n",
+		"test-2.log":    "--- FAIL: TestX\nFAIL\tgithub.com/kodestar/audiosilo-meta/pkg/x\n",
+	})
 	out, code := verdict(t, needsOf(gate(map[string]string{"metacheck": "failure", "test": "failure"})), logs, "advisories")
 	if code != 1 {
 		t.Fatalf("exit %d, want 1:\n%s", code, out)
@@ -120,13 +125,103 @@ func TestCheckVerdictEndsWithTheFailedLogs(t *testing.T) {
 	if res := strings.Index(out, "metacheck: failure"); res < 0 || res > mc {
 		t.Errorf("the results should come first and the logs last:\n%s", out)
 	}
-	if !strings.Contains(out, "check-log-metacheck/metacheck.log") {
+	if !strings.Contains(out, "===== metacheck.log,") || !strings.Contains(out, "===== test-2.log,") {
 		t.Errorf("a log is printed without naming it:\n%s", out)
 	}
 
 	out, code = verdict(t, needsOf(gate(nil)), logs, "advisories")
 	if code != 0 || strings.Contains(out, "the problem") {
 		t.Errorf("a passing verdict printed logs (exit %d):\n%s", code, out)
+	}
+}
+
+// Artifacts outlive the attempt that uploaded them, so after a re-run of the
+// failed jobs the download still holds the log of a job that has passed since.
+// Only the jobs failing NOW are evidence: a stale log printed last would be the
+// tail the sync bot hands its resolver.
+func TestCheckVerdictSkipsThePassedJobsLogs(t *testing.T) {
+	t.Parallel()
+	logs := writeLogs(t, map[string]string{
+		"metacheck.log": "error: works/0/a.json: entry a: the real problem\n",
+		"metafmt.log":   "works/0/b.json is not canonical (attempt 1, since fixed)\n",
+		"test-3.log":    "--- FAIL: TestFlaky (attempt 1)\n",
+		"build.log":     "",
+	})
+	out, code := verdict(t, needsOf(gate(map[string]string{"metacheck": "failure", "build": "failure"})), logs, "advisories")
+	if code != 1 {
+		t.Fatalf("exit %d, want 1:\n%s", code, out)
+	}
+	if !strings.Contains(out, "the real problem") {
+		t.Errorf("the failing job's log is missing:\n%s", out)
+	}
+	for _, stale := range []string{"since fixed", "TestFlaky", "===== build.log"} {
+		if strings.Contains(out, stale) {
+			t.Errorf("printed %q, from a job that passed or a log that is empty:\n%s", stale, out)
+		}
+	}
+}
+
+// TAIL_LINES is shared between the logs, so two failing jobs both land in the
+// sync bot's 200-line window, each cut to its share with a floor of 40.
+func TestCheckVerdictSharesTheTailBudget(t *testing.T) {
+	t.Parallel()
+	var long strings.Builder
+	for i := range 300 {
+		fmt.Fprintf(&long, "line %03d\n", i)
+	}
+	logs := writeLogs(t, map[string]string{"metacheck.log": long.String(), "metafmt.log": long.String()})
+	out, code := verdict(t, needsOf(gate(map[string]string{"metacheck": "failure", "metafmt": "failure"})), logs, "advisories")
+	if code != 1 {
+		t.Fatalf("exit %d, want 1:\n%s", code, out)
+	}
+	if got := strings.Count(out, "line 299"); got != 2 {
+		t.Errorf("each log's last line should appear once per log, got %d", got)
+	}
+	if strings.Contains(out, "line 224") || !strings.Contains(out, "line 225") {
+		t.Errorf("each of two logs should get 75 of the default 150 lines:\n%s", out)
+	}
+	if !strings.Contains(out, "last 75 lines") {
+		t.Errorf("the header does not state the share:\n%s", out)
+	}
+}
+
+// check.yml's verdict job: it waits for every job that uploads a log for it,
+// names only `advisories` as advisory, and runs under always() - a cancelled
+// run under !cancelled() would SKIP it, and a skipped required check reads as
+// a pass to branch protection and to audiosilo-meta-sync.
+func TestCheckWorkflowVerdictWiring(t *testing.T) {
+	t.Parallel()
+	raw, err := os.ReadFile(filepath.Join("..", ".github", "workflows", "check.yml"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	job := regexp.MustCompile(`(?ms)^  check:\n(.*?)\n\n  [a-z#]`).FindSubmatch(raw)
+	if job == nil {
+		t.Fatal("found no `check:` job in check.yml")
+	}
+	body := string(job[1]) + "\n"
+	m := regexp.MustCompile(`(?m)^    needs: \[([^\]]*)\]$`).FindStringSubmatch(body)
+	if m == nil {
+		t.Fatal("the check job has no one-line `needs: [...]`")
+	}
+	needs := map[string]bool{}
+	for _, n := range strings.Split(m[1], ",") {
+		needs[strings.TrimSpace(n)] = true
+	}
+	uploaders := regexp.MustCompile(`(?m)^          name: check-log-([a-z]+)`).FindAllStringSubmatch(string(raw), -1)
+	if len(uploaders) == 0 {
+		t.Fatal("found no `check-log-*` artifact in check.yml")
+	}
+	for _, u := range append(uploaders, []string{"", "changes"}, []string{"", "advisories"}) {
+		if !needs[u[1]] {
+			t.Errorf("the check job does not need %q, so the verdict cannot see it fail", u[1])
+		}
+	}
+	if !strings.Contains(body, "    if: ${{ always() }}\n") {
+		t.Error("the check job must run under `if: ${{ always() }}`")
+	}
+	if !strings.Contains(body, `check-verdict.sh "$RUNNER_TEMP/logs" advisories`+"\n") {
+		t.Error("the verdict must name `advisories`, and only it, as advisory")
 	}
 }
 

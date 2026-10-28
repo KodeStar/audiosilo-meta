@@ -6,10 +6,16 @@
 #       Read the `needs` context of the aggregate job (every job it waits on,
 #       each with its `result`) from $NEEDS. Exit 0 when every job not named as
 #       an advisory one concluded `success`; otherwise name each one that did
-#       not, print the tail of every log found under <log-dir> (the failing
-#       jobs' captured output, downloaded as artifacts), and exit 1. An absent,
+#       not, print the tail of each FAILING job's log found under <log-dir> (the
+#       captured output, downloaded as artifacts, one file per job named
+#       <job>.log or, for a matrix job, <job>-<n>.log), and exit 1. An absent,
 #       empty or unreadable $NEEDS is a failure: a verdict nobody could read is
 #       never a pass.
+#
+#       TAIL_LINES (default 150) is the budget for ALL the logs together, split
+#       evenly between them with a floor of 40 each, so two failing jobs both
+#       fit the sync bot's 200-line window (evidence.CheckLogLines) instead of
+#       the last one pushing the first out of it.
 #
 # WHY A VERDICT JOB. `check` used to be one job running the Go gate, metacheck
 # and metafmt in sequence, and its check-run NAME is load-bearing: branch
@@ -25,6 +31,13 @@
 # fix, so each gated job tees its output to a file, uploads it when it fails, and
 # this script prints those files last - where the bot's tail reads them - just
 # as the single job's own log used to end with the failing step's output.
+#
+# ONLY THE FAILING JOBS' LOGS. Artifacts belong to the workflow RUN, not to an
+# attempt: after a "re-run failed jobs" (which the sync bot always asks for once
+# before believing a failure) the download still holds the log every job
+# uploaded in an EARLIER attempt, including one that has passed since. Printed,
+# a stale log could be the last thing in this one and become the bot's evidence
+# for a failure it is not, so a log whose job concluded `success` is skipped.
 #
 # RESULTS. `success` is the only pass. `failure`, `cancelled` and `skipped` are
 # not: the gated jobs never skip at the job level (their STEPS are gated, so a
@@ -52,6 +65,7 @@ if ! rows="$(jq -r 'to_entries[] | "\(.key)\t\(.value.result)"' <<<"$NEEDS" 2>/d
 fi
 
 bad=0
+failing=" "
 while IFS=$'\t' read -r job result; do
   if [[ "$advisory" == *" $job "* ]]; then
     echo "$job: $result (advisory, never the verdict)"
@@ -60,6 +74,7 @@ while IFS=$'\t' read -r job result; do
   echo "$job: $result"
   if [ "$result" != "success" ]; then
     bad=1
+    failing+="$job "
   fi
 done <<<"$rows"
 
@@ -69,12 +84,32 @@ if [ "$bad" -eq 0 ]; then
 fi
 
 # The failing jobs' own output, last, so a reader of this log's tail sees it.
+# A log names its job by its file name (<job>.log, <job>-<n>.log for a matrix
+# job); one whose job passed is an earlier attempt's, and an empty one says
+# nothing.
+logs=()
 if [ -d "$logdir" ]; then
   while IFS= read -r log; do
-    echo
-    echo "===== $(basename "$(dirname "$log")")/$(basename "$log"), last ${TAIL_LINES} lines ====="
-    tail -n "$TAIL_LINES" "$log"
+    stem="$(basename "$log" .log)"
+    job="$stem"
+    if [[ "$stem" =~ ^(.+)-[0-9]+$ ]]; then
+      job="${BASH_REMATCH[1]}"
+    fi
+    if [[ "$failing" == *" $job "* || "$failing" == *" $stem "* ]] && [ -s "$log" ]; then
+      logs+=("$log")
+    fi
   done < <(find "$logdir" -type f -name '*.log' | LC_ALL=C sort)
+fi
+if [ "${#logs[@]}" -gt 0 ]; then
+  per=$((TAIL_LINES / ${#logs[@]}))
+  if [ "$per" -lt 40 ]; then
+    per=40
+  fi
+  for log in "${logs[@]}"; do
+    echo
+    echo "===== $(basename "$log"), last ${per} lines ====="
+    tail -n "$per" "$log"
+  done
 fi
 echo
 echo "check-verdict: a required job did not pass (see above)" >&2

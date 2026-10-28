@@ -122,8 +122,10 @@ jobs:
           set -o pipefail
           { go build ./... && go vet ./...; } 2>&1 | tee "$RUNNER_TEMP/build.log"
 
+      # failure() || cancelled(): a job that hit its timeout is cancelled, and its
+      # log is the only evidence of where it hung.
       - name: Keep the log for the verdict
-        if: failure()
+        if: failure() || cancelled()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: check-log-build
@@ -178,18 +180,23 @@ jobs:
         env:
           SHARD: ${{ matrix.shard }}
           SHARDS: ${{ strategy.job-total }}
+        # The shard's selection is in the log too: a `go list` or partition
+        # failure is as much this shard's evidence as a failing test. The file is
+        # named per shard because `check` merges every log into one directory.
         run: |
           set -o pipefail
-          go list ./... | bash .github/scripts/go-test-shard.sh "$SHARD" "$SHARDS" > "$RUNNER_TEMP/packages.txt"
-          echo "shard $SHARD of $SHARDS: $(wc -l < "$RUNNER_TEMP/packages.txt") packages"
-          xargs go test -race < "$RUNNER_TEMP/packages.txt" 2>&1 | tee "$RUNNER_TEMP/test.log"
+          {
+            go list ./... | bash .github/scripts/go-test-shard.sh "$SHARD" "$SHARDS" > "$RUNNER_TEMP/packages.txt" &&
+              echo "shard $SHARD of $SHARDS: $(wc -l < "$RUNNER_TEMP/packages.txt") packages" &&
+              xargs go test -race < "$RUNNER_TEMP/packages.txt"
+          } 2>&1 | tee "$RUNNER_TEMP/test-$SHARD.log"
 
       - name: Keep the log for the verdict
-        if: failure()
+        if: failure() || cancelled()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: check-log-test-${{ matrix.shard }}
-          path: ${{ runner.temp }}/test.log
+          path: ${{ runner.temp }}/test-${{ matrix.shard }}.log
           retention-days: 3
           if-no-files-found: ignore
 
@@ -244,7 +251,7 @@ jobs:
           if-no-files-found: ignore
 
       - name: Keep the log for the verdict
-        if: failure()
+        if: failure() || cancelled()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: check-log-metacheck
@@ -280,7 +287,7 @@ jobs:
           go run ./cmd/metafmt --check --profile core 2>&1 | tee "$RUNNER_TEMP/metafmt.log"
 
       - name: Keep the log for the verdict
-        if: failure()
+        if: failure() || cancelled()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: check-log-metafmt
@@ -295,21 +302,34 @@ jobs:
   # list to the model). Its own runner so the second whole-tree metacheck runs
   # beside the first instead of after it.
   # NEVER A FAILURE, twice over: the advisories are not a gate (the sync bot
-  # auto-merges on green CI), so every step continues on error and `check` never
-  # counts this job. Pull requests only - a push to main has no "introduced by" -
-  # and a pull request touching no data/ says so instead, since the same binary
-  # over the same data names the same advisories.
+  # auto-merges on green CI), so EVERY step continues on error, each with its own
+  # timeout inside the job's, and `check` never counts this job. The job's own
+  # conclusion must stay green too, not only the verdict: audiosilo-meta-sync's
+  # failedCheck reads every check run on a head, required or not, so a red
+  # `advisories` run would be re-run and then handed to its resolver as
+  # evidence against the data. Pull requests only - a push to main has no
+  # "introduced by" - and a pull request touching no data/ says so instead,
+  # since the same binary over the same data names the same advisories.
   advisories:
     runs-on: ubuntu-latest
     needs: changes
     if: github.event_name == 'pull_request'
-    # Observed ~2 minutes of checkout plus ~1.5-2.5 minutes of metacheck.
-    timeout-minutes: 20
+    # Observed ~2 minutes of fetching plus ~1.5-2.5 minutes of metacheck. The
+    # step timeouts below (25 minutes in all) leave this room for the job's
+    # setup and post steps, so the job-level one, which would end the job red,
+    # never fires.
+    timeout-minutes: 30
     steps:
       # No data/ in the working tree: the base's data/ is read from git
       # (advisory-delta.sh's `git archive`, the `git diff` below), never from
-      # disk. No blob filter either, so both find every object locally.
+      # disk. A sparse checkout is always BLOBLESS (actions/checkout adds
+      # `filter: blob:none` to any sparse-checkout given no filter), so `git
+      # archive` fetches the base's data/ blobs on demand - one batched,
+      # anonymous fetch from origin, which works because this repository is
+      # public and is about the size of the full checkout's data/ download.
       - name: Checkout (no data/ on disk)
+        continue-on-error: true
+        timeout-minutes: 5
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           sparse-checkout: |
@@ -322,6 +342,8 @@ jobs:
           fetch-depth: 2
 
       - name: Set up Go
+        continue-on-error: true
+        timeout-minutes: 5
         uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
           # .go-version holds the bare MINOR and check-latest resolves it to the
@@ -332,6 +354,7 @@ jobs:
 
       - name: Advisory keys of the base
         continue-on-error: true
+        timeout-minutes: 12
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/advisories"
@@ -346,6 +369,7 @@ jobs:
       - name: Hand on the advisory keys
         if: always()
         continue-on-error: true
+        timeout-minutes: 3
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: advisories-base
@@ -358,16 +382,23 @@ jobs:
   # `check`, `compose`, `site` and `verify` are green. It needs every job of the
   # gate above and passes only when each concluded `success`
   # (.github/scripts/check-verdict.sh); `advisories` is waited for, for the
-  # summary, and never counted. `!cancelled()` rather than `always()`: a run
-  # superseded by a newer push is cancelled, and its verdict with it.
+  # summary, and never counted. `always()`, NOT `!cancelled()`: in a cancelled
+  # run `!cancelled()` SKIPS this job, and a skipped job reports as passing - to
+  # branch protection (a skipped required check does not block a merge) and to
+  # audiosilo-meta-sync (its OKConclusion accepts `skipped`). Under `always()` a
+  # cancelled run's verdict runs, reads its needs as `cancelled`, and fails.
   check:
     runs-on: ubuntu-latest
     needs: [changes, build, test, metacheck, metafmt, advisories]
-    if: ${{ !cancelled() }}
+    if: ${{ always() }}
     # Two downloads and a comparison; observed well under a minute.
     timeout-minutes: 10
     steps:
+      # The checkout and the verdict carry `always()` as well, so no reading of
+      # a cancelled run can skip them and leave a job that concluded green
+      # having run nothing; a verdict that cannot find its script still fails.
       - name: Checkout the scripts
+        if: always()
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           sparse-checkout: .github/scripts
@@ -375,12 +406,20 @@ jobs:
           filter: blob:none
           persist-credentials: false
 
+      # merge-multiple, so every file lands directly under `path` whatever the
+      # pattern matched: without it download-artifact gives each artifact its
+      # own <name>/ directory ONLY when more than one matches, and a lone match
+      # is extracted flat - so the layout would depend on how many jobs had
+      # uploaded. The file names are unique across the artifacts (head.txt,
+      # base.txt, no-data-change; <job>.log, test-<shard>.log), so none
+      # overwrites another.
       - name: Fetch the advisory keys
         if: github.event_name == 'pull_request'
         continue-on-error: true
         uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           pattern: advisories-*
+          merge-multiple: true
           path: ${{ runner.temp }}/advisories
 
       # The advisories this pull request introduces, in this job's summary: what
@@ -392,11 +431,11 @@ jobs:
         run: |
           set -euo pipefail
           dir="$RUNNER_TEMP/advisories"
-          if [ -f "$dir/advisories-base/no-data-change" ]; then
+          if [ -f "$dir/no-data-change" ]; then
             echo "No data change, so no advisory can be new."
             exit 0
           fi
-          bash .github/scripts/advisory-delta.sh diff "$dir/advisories-base/base.txt" "$dir/advisories-head/head.txt" > "$RUNNER_TEMP/advisories-new.txt"
+          bash .github/scripts/advisory-delta.sh diff "$dir/base.txt" "$dir/head.txt" > "$RUNNER_TEMP/advisories-new.txt"
           bash .github/scripts/advisory-delta.sh summary "$RUNNER_TEMP/advisories-new.txt" >> "$GITHUB_STEP_SUMMARY"
           cat "$RUNNER_TEMP/advisories-new.txt"
 
@@ -405,9 +444,11 @@ jobs:
         uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           pattern: check-log-*
+          merge-multiple: true
           path: ${{ runner.temp }}/logs
 
       - name: Verdict
+        if: always()
         env:
           NEEDS: ${{ toJSON(needs) }}
         run: bash .github/scripts/check-verdict.sh "$RUNNER_TEMP/logs" advisories
