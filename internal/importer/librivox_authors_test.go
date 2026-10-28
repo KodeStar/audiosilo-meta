@@ -328,18 +328,23 @@ func TestLibrivoxAuthorVariantWithinOneRun(t *testing.T) {
 
 func TestLibrivoxAuthorVariantOneRunIsTwoRuns(t *testing.T) {
 	// The same two projects imported together and one import at a time leave
-	// the same tree and the same worklist row.
-	first, second := rowlandsons(t)
-	together := t.TempDir()
-	one := runLibrivox(t, writeSnapshot(t, first, second), together, allLibrivox)
-	apart := t.TempDir()
-	runLibrivox(t, writeSnapshot(t, first), apart, allLibrivox)
-	two := runLibrivox(t, writeSnapshot(t, second), apart, allLibrivox)
-	if !reflect.DeepEqual(one.LibrivoxWorklist, two.LibrivoxWorklist) || len(one.LibrivoxWorklist) != 1 {
-		t.Errorf("worklist in one run = %+v, in two = %+v", one.LibrivoxWorklist, two.LibrivoxWorklist)
-	}
-	if a, b := testpack.Snapshot(t, together), testpack.Snapshot(t, apart); !reflect.DeepEqual(a, b) {
-		t.Error("one run and two runs left different trees")
+	// the same tree and the same worklist row, whichever spelling comes first
+	// (a snapshot is read in project-id order).
+	long, short := rowlandsons(t)
+	shortFirst := byAuthor(t, 99819, short.Title, short.Language, short.Authors[0])
+	for _, pair := range [][2]LibrivoxProject{{long, short}, {shortFirst, long}} {
+		first, second := pair[0], pair[1]
+		together := t.TempDir()
+		one := runLibrivox(t, writeSnapshot(t, first, second), together, allLibrivox)
+		apart := t.TempDir()
+		runLibrivox(t, writeSnapshot(t, first), apart, allLibrivox)
+		two := runLibrivox(t, writeSnapshot(t, second), apart, allLibrivox)
+		if !reflect.DeepEqual(one.LibrivoxWorklist, two.LibrivoxWorklist) || len(one.LibrivoxWorklist) != 1 || one.LibrivoxWorklist[0].Project != int(second.ID) {
+			t.Errorf("%d first: worklist in one run = %+v, in two = %+v", first.ID, one.LibrivoxWorklist, two.LibrivoxWorklist)
+		}
+		if a, b := testpack.Snapshot(t, together), testpack.Snapshot(t, apart); !reflect.DeepEqual(a, b) {
+			t.Errorf("%d first: one run and two runs left different trees", first.ID)
+		}
 	}
 }
 

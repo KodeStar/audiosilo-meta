@@ -210,13 +210,13 @@ func (p *planner) respellingResolves(pairs map[string]string) bool {
 // pairsCarryOtherIDs reports whether a work author a pairing names already
 // carries a LibriVox author id other than the one row b states for the paired
 // credit (librivoxAuthorIDOf): catalogued, or claimed by a row already planned
-// in this run (librivoxAuthorIDOn), so two spellings with two ids are refused
-// alike whether they arrive in one run or two.
+// in this run (authorOf, claimLibrivoxAuthors), so two spellings with two ids
+// are refused alike whether they arrive in one run or two.
 func (p *planner) pairsCarryOtherIDs(b sourceBook, pairs, names map[string]string) bool {
 	for r, w := range pairs {
 		name := names[r]
 		if id := p.librivoxAuthorIDOf(b, name, p.resolvePerson(name)); id > 0 {
-			if have := p.librivoxAuthorIDOn(w); have != 0 && have != id {
+			if have := p.lv.authorOf[w]; have != 0 && have != id {
 				return true
 			}
 		}
