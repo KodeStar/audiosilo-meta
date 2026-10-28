@@ -499,3 +499,39 @@ func TestLibrivoxNonLatinTitle(t *testing.T) {
 		}
 	}
 }
+
+func TestLibrivoxRepeatMarkerAttachesToThePlainWork(t *testing.T) {
+	// A dramatic reading or a numbered version of a catalogued text is another
+	// recording of that work: the marker is stripped before the walk, so the
+	// row neither creates a work nor waits on the worklist as a qualified twin.
+	for name, title := range map[string]string{
+		"dramatic reading": "Metamorphosis (Dramatic Reading)",
+		"short version":    "Metamorphosis (ver. 2)",
+		"stacked":          "Metamorphosis (version 3) (Dramatic Reading)",
+		"combined":         "Metamorphosis (Version 3, Dramatic Reading)",
+	} {
+		t.Run(name, func(t *testing.T) {
+			dataDir := t.TempDir()
+			seedWorks(t, dataDir, map[string][]string{"metamorphosis": {"Metamorphosis", "franz-kafka"}})
+			sum := runLibrivox(t, writeSnapshot(t, retitled(t, 99604, title)), dataDir, allLibrivox)
+			if sum.NewWorks != 0 || sum.NewRecordings != 1 || len(sum.LibrivoxWorklist) != 0 {
+				t.Fatalf("works/recordings = %d/%d, worklist = %+v\nwarnings: %v",
+					sum.NewWorks, sum.NewRecordings, sum.LibrivoxWorklist, sum.Warnings)
+			}
+			if got := recSlugsOf(t, dataDir, "metamorphosis"); !reflect.DeepEqual(got, []string{"david-barnes", "se"}) {
+				t.Fatalf("recordings of metamorphosis = %v", got)
+			}
+			var r lvRecording
+			readEntity(t, dataDir, recAddr("metamorphosis", "david-barnes"), &r)
+			if r.LibrivoxID != 99604 {
+				t.Errorf("attached recording librivox_id = %d", r.LibrivoxID)
+			}
+			var w lvWork
+			readEntity(t, dataDir, workAddr("metamorphosis"), &w)
+			if w.Title != "Metamorphosis" {
+				t.Errorf("work title = %q", w.Title)
+			}
+			mustValidate(t, dataDir)
+		})
+	}
+}

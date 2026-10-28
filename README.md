@@ -374,8 +374,10 @@ reads every `pages/*.json` and needs nothing else, so a hand-assembled snapshot
 What an import does: a project whose `librivox_id` is already catalogued is
 skipped (identity is the project id, never the title), so a rerun changes
 nothing. Otherwise it becomes a new recording - never merged into another
-recording - under the work these rules find, in order (LibriVox's "(version 2)"
-title marker is stripped first):
+recording - under the work these rules find, in order (LibriVox's repeat markers are
+stripped from the title first: a trailing "(version 2)", "(ver 2)", "(ver. 2)"
+or "(Dramatic Reading)", stacked or combined in one parenthetical, so a dramatic
+reading or a numbered version is another recording of the plain-titled work):
 
 1. the importer's ordinary identity walk: same title, same identity authors,
    same language. An author or translator whose name slugs to nothing (a

@@ -470,6 +470,27 @@ func TestLibrivoxTitleStripsTheVersionMarker(t *testing.T) {
 		"Candide":                      "Candide",
 		"Version 2":                    "Version 2",
 		"Poems (version 2) of Despair": "Poems (version 2) of Despair",
+		// The short spellings and the cast production.
+		"Fables de La Fontaine, livre 04 (ver 2)": "Fables de La Fontaine, livre 04",
+		"Fables (Ver. 3)":                         "Fables",
+		"Eclogae (dramatic reading)":              "Eclogae",
+		"2 B R 0 2 B (Dramatic Reading)":          "2 B R 0 2 B",
+		// Stacked, in either order, and combined in one parenthetical.
+		"Wonderful Wizard of Oz (version 3) (Dramatic Reading)": "Wonderful Wizard of Oz",
+		"Ozma of Oz (Dramatic Reading) (Version 2)":             "Ozma of Oz",
+		"Scarlet Pimpernel (Version 3, Dramatic Reading)":       "Scarlet Pimpernel",
+		"Dracula (version 2 dramatic reading)":                  "Dracula",
+		// End-anchored: a marker followed by anything else stays, and so does
+		// a title that is nothing but markers.
+		"Metamorphosis (Dramatic Reading) (1915)":   "Metamorphosis (Dramatic Reading) (1915)",
+		"Ulysses (version 2): Circe":                "Ulysses (version 2): Circe",
+		"Song (Donne version)":                      "Song (Donne version)",
+		"Theatre (Dramatic Readings)":               "Theatre (Dramatic Readings)",
+		"Riverside (vertaling 2)":                   "Riverside (vertaling 2)",
+		"(Dramatic Reading)":                        "(Dramatic Reading)",
+		"(Dramatic Reading) (version 2)":            "(Dramatic Reading)",
+		"Thief in the Night - Version 2":            "Thief in the Night - Version 2",
+		"Persuasion (version 2) (dramatic reading)": "Persuasion",
 	} {
 		if got := librivoxTitle(in); got != want {
 			t.Errorf("librivoxTitle(%q) = %q, want %q", in, got, want)
