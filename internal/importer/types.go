@@ -515,10 +515,9 @@ type Summary struct {
 	// recorded on people (librivox.go). Both 0 for every other source.
 	LibrivoxProjects   int
 	LibrivoxIDsStamped int
-	// LibrivoxInProgress is the ids, ascending, of the selected projects the
-	// run set aside as still in progress (librivoxInProgress: no runtime and no
-	// archive.org item). It wrote nothing for them; re-importing an id once
-	// LibriVox completes the project lands it. Empty for every other source.
+	// LibrivoxInProgress is the ids, ascending, of the selected projects
+	// librivoxInProgress set aside; nothing was written for them. Empty for
+	// every other source.
 	LibrivoxInProgress []int
 	// LibrivoxReadersSplit counts the readers minted at model.LibrivoxReaderSlug
 	// because another reader id already held their name, and

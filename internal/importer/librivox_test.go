@@ -268,13 +268,14 @@ func TestLibrivoxInProgressIsTheFeedsUnfinishedRow(t *testing.T) {
 		{"id":"1","totaltimesecs":0,"url_iarchive":""},
 		{"id":"2","totaltimesecs":"","url_iarchive":" "},
 		{"id":"3"},
+		{"id":"4","totaltimesecs":0,"url_iarchive":"https://librivox.org/not-an-item/"},
 		{"id":"66","totaltimesecs":0,"url_iarchive":"https://www.archive.org/details/grimm_maerchen_1_librivox"},
 		{"id":"5","totaltimesecs":9265,"url_iarchive":""},
 		{"id":"6","totaltimesecs":"9265","url_iarchive":"https://www.archive.org/details/x_librivox"}]}`))
 	if err != nil {
 		t.Fatal(err)
 	}
-	want := map[int]bool{1: true, 2: true, 3: true, 66: false, 5: false, 6: false}
+	want := map[int]bool{1: true, 2: true, 3: true, 4: true, 66: false, 5: false, 6: false}
 	for _, b := range books {
 		if got := librivoxInProgress(b); got != want[int(b.ID)] {
 			t.Errorf("project %d in progress = %v, want %v", b.ID, got, want[int(b.ID)])
@@ -302,8 +303,8 @@ func TestLibrivoxSkipsAnInProgressProject(t *testing.T) {
 	// Alone, it writes nothing at all.
 	empty := t.TempDir()
 	sum = runLibrivox(t, writeSnapshot(t, inProgress(t)), empty, allLibrivox)
-	if sum.NewWorks+sum.NewRecordings+sum.NewPeople+sum.LibrivoxIDsStamped != 0 || len(sum.Files) != 0 {
-		t.Errorf("summary = %+v; want nothing written", sum)
+	if files := treeFiles(t, empty); len(files) != 0 || len(sum.Files) != 0 {
+		t.Errorf("wrote %d files (summary %+v); want nothing written", len(files), sum)
 	}
 }
 

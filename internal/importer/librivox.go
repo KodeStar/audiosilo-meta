@@ -307,7 +307,8 @@ func RunLibrivox(snapshotDir string, ids LibrivoxIDs, opts Options) (Summary, er
 
 // librivoxInProgress reports whether pr is a project LibriVox has not finished
 // recording: it states no total runtime (0, missing or unreadable, lvInt) AND
-// no archive.org item. The feed has no status field, and a project still being
+// no archive.org item (archiveIDOf, the rule the recording's archive_id is
+// read by). The feed has no status field, and a project still being
 // read is listed with its sections so far, so landing one would publish a
 // recording without most of its audio (LIBRIVOX-PLAN.md keeps in-progress
 // projects a non-goal). Such a row is set aside before planning and writes
@@ -316,7 +317,7 @@ func RunLibrivox(snapshotDir string, ids LibrivoxIDs, opts Options) (Summary, er
 // A zero runtime alone is not enough: a finished project can state none while
 // naming its archive.org item (id 66, Grimm's Märchen index).
 func librivoxInProgress(pr LibrivoxProject) bool {
-	return pr.TotalTimeSecs <= 0 && strings.TrimSpace(pr.URLIArchive) == ""
+	return pr.TotalTimeSecs <= 0 && archiveIDOf(pr.URLIArchive) == ""
 }
 
 // librivoxVersionRE is one trailing parenthetical of LibriVox's
