@@ -2658,6 +2658,7 @@
     },
     "eliza": {
       "id": "eliza",
+      "librivox_reader_id": 5708,
       "license": "CC0-1.0",
       "name": "Eliza",
       "sources": [
@@ -2665,6 +2666,11 @@
           "imported_at": "2026-07-29",
           "ref": "B002V8MESK",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-28",
+          "ref": "1180",
+          "type": "librivox"
         }
       ]
     },
