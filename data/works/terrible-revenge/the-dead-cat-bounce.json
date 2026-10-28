@@ -9174,6 +9174,110 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "elizabeth-klett": {
+          "added_at": "2026-10-27",
+          "archive_id": "the_dead_ek_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/the_dead_ek_librivox/thedead_1_joyce_64kb.mp3",
+              "length_ms": 1420000,
+              "start_ms": 0,
+              "title": "Part 1"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/the_dead_ek_librivox/thedead_2_joyce_64kb.mp3",
+              "length_ms": 1066000,
+              "start_ms": 1420000,
+              "title": "Part 2"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/the_dead_ek_librivox/thedead_3_joyce_64kb.mp3",
+              "length_ms": 1183000,
+              "start_ms": 2486000,
+              "title": "Part 3"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/the_dead_ek_librivox/thedead_4_joyce_64kb.mp3",
+              "length_ms": 2107000,
+              "start_ms": 3669000,
+              "title": "Part 4"
+            }
+          ],
+          "copyright_year": 1914,
+          "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt12/Dead_1110.jpg",
+          "id": "elizabeth-klett",
+          "language": "en",
+          "librivox_id": 1686,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/the-dead-by-james-joyce-version-2/",
+            "rss": "https://librivox.org/rss/1686",
+            "text": "https://www.gutenberg.org/ebooks/2814",
+            "zip": "https://archive.org/compress/the_dead_ek_librivox/formats=64KBPS MP3&file=/the_dead_ek_librivox.zip"
+          },
+          "narrators": [
+            "elizabeth-klett"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 96,
+          "sources": [
+            {
+              "imported_at": "2026-10-27",
+              "ref": "1686",
+              "type": "librivox"
+            }
+          ],
+          "work": "the-dead-james-joyce"
+        },
+        "iremonger": {
+          "added_at": "2026-10-27",
+          "archive_id": "the_dead_i_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/the_dead_i_librivox/thedead_01_joyce_64kb.mp3",
+              "length_ms": 1078000,
+              "start_ms": 0,
+              "title": "Part 1"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/the_dead_i_librivox/thedead_02_joyce_64kb.mp3",
+              "length_ms": 2208000,
+              "start_ms": 1078000,
+              "title": "Part 2"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/the_dead_i_librivox/thedead_03_joyce_64kb.mp3",
+              "length_ms": 2132000,
+              "start_ms": 3286000,
+              "title": "Part 3"
+            }
+          ],
+          "copyright_year": 1914,
+          "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt4/Dead_the_1004.jpg",
+          "id": "iremonger",
+          "language": "en",
+          "librivox_id": 1515,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/the-dead-by-james-joyce/",
+            "rss": "https://librivox.org/rss/1515",
+            "text": "https://www.gutenberg.org/etext/2814",
+            "zip": "https://archive.org/compress/the_dead_i_librivox/formats=64KBPS MP3&file=/the_dead_i_librivox.zip"
+          },
+          "narrators": [
+            "iremonger"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 90,
+          "sources": [
+            {
+              "imported_at": "2026-10-27",
+              "ref": "1515",
+              "type": "librivox"
+            }
+          ],
+          "work": "the-dead-james-joyce"
+        },
         "jim-norton-2012": {
           "abridged": false,
           "added_at": "2026-08-07",

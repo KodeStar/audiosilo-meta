@@ -3161,6 +3161,79 @@
         "goodreads": "15723467"
       }
     },
+    "eves-diary-mark-twain": {
+      "added_at": "2026-10-27",
+      "authors": [
+        "mark-twain"
+      ],
+      "genres": [
+        "comedy-humor",
+        "short-stories"
+      ],
+      "id": "eves-diary-mark-twain",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "esther": {
+          "added_at": "2026-10-27",
+          "archive_id": "eves_diary_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/eves_diary_librivox/eves_diary_1_twain_64kb.mp3",
+              "length_ms": 731000,
+              "start_ms": 0,
+              "title": "Part 1"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/eves_diary_librivox/eves_diary_2_twain_64kb.mp3",
+              "length_ms": 637000,
+              "start_ms": 731000,
+              "title": "Part 2"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/eves_diary_librivox/eves_diary_3_twain_64kb.mp3",
+              "length_ms": 915000,
+              "start_ms": 1368000,
+              "title": "Part 3"
+            }
+          ],
+          "copyright_year": 1906,
+          "cover_url": "https://archive.org/download/eves_diary_librivox/Eves_Diary_1105.jpg",
+          "id": "esther",
+          "language": "en",
+          "librivox_id": 276,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/eves-diary-by-mark-twain/",
+            "rss": "https://librivox.org/rss/276",
+            "text": "https://www.gutenberg.org/etext/8525",
+            "zip": "https://archive.org/compress/eves_diary_librivox/formats=64KBPS MP3&file=/eves_diary_librivox.zip"
+          },
+          "narrators": [
+            "esther",
+            "mike-lockwood"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 38,
+          "sources": [
+            {
+              "imported_at": "2026-10-27",
+              "ref": "276",
+              "type": "librivox"
+            }
+          ],
+          "work": "eves-diary-mark-twain"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-27",
+          "ref": "276",
+          "type": "librivox"
+        }
+      ],
+      "title": "Eve’s Diary"
+    },
     "eves-hollywood": {
       "added_at": "2026-07-29",
       "authors": [

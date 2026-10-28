@@ -9867,6 +9867,49 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "chris-masterson": {
+          "added_at": "2026-10-27",
+          "archive_id": "walking_cm_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/walking_cm_librivox/walking_01_thoreau_64kb.mp3",
+              "length_ms": 2691000,
+              "start_ms": 0,
+              "title": "Part 1"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/walking_cm_librivox/walking_02_thoreau_64kb.mp3",
+              "length_ms": 2674000,
+              "start_ms": 2691000,
+              "title": "Part 2"
+            }
+          ],
+          "copyright_year": 1862,
+          "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt12/Walking_1110.jpg",
+          "id": "chris-masterson",
+          "language": "en",
+          "librivox_id": 1275,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/walking-by-henry-david-thoreau/",
+            "rss": "https://librivox.org/rss/1275",
+            "text": "https://www.gutenberg.org/etext/1022",
+            "zip": "https://archive.org/compress/walking_cm_librivox/formats=64KBPS MP3&file=/walking_cm_librivox.zip"
+          },
+          "narrators": [
+            "chris-masterson"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 89,
+          "sources": [
+            {
+              "imported_at": "2026-10-27",
+              "ref": "1275",
+              "type": "librivox"
+            }
+          ],
+          "work": "walking"
+        },
         "deaver-brown-2012": {
           "abridged": false,
           "added_at": "2026-07-29",
