@@ -5358,26 +5358,7 @@
             }
           ],
           "work": "mary-barton"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B003XKPZN6",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Mary Barton"
-    },
-    "mary-barton-elizabeth-cleghorn-gaskell": {
-      "added_at": "2026-10-27",
-      "authors": [
-        "elizabeth-cleghorn-gaskell"
-      ],
-      "id": "mary-barton-elizabeth-cleghorn-gaskell",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "lucy-burgoyne-1950-2014": {
           "added_at": "2026-10-27",
           "archive_id": "mary_barton_0810_librivox",
@@ -5648,10 +5629,15 @@
               "type": "librivox"
             }
           ],
-          "work": "mary-barton-elizabeth-cleghorn-gaskell"
+          "work": "mary-barton"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B003XKPZN6",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-10-27",
           "ref": "1553",

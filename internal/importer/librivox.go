@@ -16,10 +16,14 @@ package importer
 //     language) first, then the one work by the same authors whose title differs
 //     only by a leading article or punctuation; an ambiguous match is a skip on
 //     the run's worklist, and otherwise the row creates a work. LibriVox's own
-//     repeat marker, a trailing "(version 2)", is stripped first: it numbers
-//     LibriVox projects of one text, not works. A non-Latin title (it slugs to
-//     nothing, or most of its letters are not Latin script) never walks a slug
-//     chain: its new work is created at `librivox-<project id>`.
+//     repeat markers, a trailing "(version 2)", "(ver 2)", "(ver. 2)",
+//     "(Dramatic Reading)" or a bare ", Version 2" (stacked or combined, and
+//     "version" in its Italian, Spanish and Portuguese spellings too,
+//     librivoxTitle), are stripped first: they name LibriVox projects of one
+//     text, not works, so such a row is another recording of the plain-titled
+//     work. A non-Latin title (it slugs to nothing, or most of its letters are
+//     not Latin script) never walks a slug chain: its new work is created at
+//     `librivox-<project id>`.
 //   - Its PEOPLE are keyed by LibriVox id. Before any census reads a name, a
 //     reader or author id the catalogue already holds is spelled the way that
 //     person is catalogued (keyLibrivoxCredits), so a reader renamed on
@@ -292,15 +296,60 @@ func RunLibrivox(snapshotDir string, ids LibrivoxIDs, opts Options) (Summary, er
 	return sum, err
 }
 
-// librivoxVersionRE is LibriVox's repeat-recording marker: a trailing
-// "(version 2)" numbering the second project of one text. It names a project,
-// not a work, so it never reaches the work identity.
-var librivoxVersionRE = regexp.MustCompile(`(?i)\s*\(\s*version\s+\d+\s*\)\s*$`)
+// librivoxVersionRE is one trailing parenthetical of LibriVox's
+// repeat-recording markers: "(version 2)", "(ver 2)" or "(ver. 2)" numbering
+// another project of one text, and "(Dramatic Reading)" naming a cast
+// production of it. One parenthetical may hold several, bare or separated by
+// librivoxSep ("(version 3, Dramatic Reading)", "(version 2 dramatic
+// reading)", "(Version 4 - Dramatic Reading)"), and a separator standing just
+// before it goes with it ("Time Traders, (Version 2)" is "Time Traders"). Each
+// names a project, not a work: a dramatic reading or a numbered version is
+// another recording of the same text, so the marker never reaches the work
+// identity.
+var librivoxVersionRE = regexp.MustCompile(`(?i)(?:\s*` + librivoxSep + `)?\s*\(\s*` + librivoxMarker +
+	`(?:\s*` + librivoxSep + `?\s*` + librivoxMarker + `)*\s*\)\s*$`)
 
-// librivoxTitle is a project's work title: LibriVox's own, its version marker
-// stripped.
+// librivoxMarker is one of librivoxVersionRE's markers.
+const librivoxMarker = `(?:(?:` + librivoxVersionWord + `|ver\.?)\s*\d+|dramatic\s+reading)`
+
+// librivoxVersionWord is the word "version" as LibriVox's projects spell it:
+// English and French "version", Italian "versione", Spanish "versión",
+// Portuguese "versão" ("Canti (Versione 2)", "Rimas Versión 2", "Relíquia
+// (Versão 2)").
+const librivoxVersionWord = `(?:versione?|versión|versão)`
+
+// librivoxSep is a separator between a title and its marker, or between two
+// markers: a comma, semicolon, colon, hyphen, en dash or em dash.
+const librivoxSep = `[,;:\x{2013}\x{2014}-]`
+
+// librivoxBareVersionRE is the same version marker written without
+// parentheses: "Walden, Version 2", "Sea Wolf - Version 2", "Daddy-Long-Legs
+// Version 2". Only the full word (librivoxVersionWord) with a number of one or
+// two digits counts here, after whitespace or librivoxSep, so a title that
+// merely ends in a number, or in a year ("... Version 1611"), is never read as
+// a marker. Measured over the whole 2026-10-27 snapshot (22,449 projects, no
+// version above 14) it changes 58 titles, every one a repeat project.
+var librivoxBareVersionRE = regexp.MustCompile(`(?i)(?:\s*` + librivoxSep + `\s*|\s+)` + librivoxVersionWord + `\s*\d{1,2}\s*$`)
+
+// librivoxTitle is a project's work title: LibriVox's own, its trailing
+// markers stripped. The strip is end-anchored and repeated, so stacked markers
+// go in any order ("(version 3) (Dramatic Reading)", "Emma (Dramatic Reading),
+// Version 2"), while a marker followed by anything else stays ("Metamorphosis
+// (Dramatic Reading) (1915)" keeps its title and meets the qualified-twin rule).
+// A title is never emptied: one that is nothing but markers keeps its first
+// ("(Dramatic Reading) (version 2)" is "(Dramatic Reading)").
 func librivoxTitle(t string) string {
-	return strings.TrimSpace(librivoxVersionRE.ReplaceAllString(strings.TrimSpace(t), ""))
+	t = strings.TrimSpace(t)
+	for {
+		loc := librivoxVersionRE.FindStringIndex(t)
+		if loc == nil {
+			loc = librivoxBareVersionRE.FindStringIndex(t)
+		}
+		if loc == nil || loc[0] == 0 {
+			return t
+		}
+		t = strings.TrimSpace(t[:loc[0]])
+	}
 }
 
 // librivoxBook converts one selected project (its id is at least 1) into the

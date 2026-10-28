@@ -3781,7 +3781,8 @@
         "rabindranath-tagore"
       ],
       "genres": [
-        "philosophy"
+        "philosophy",
+        "religion-spirituality"
       ],
       "id": "sadhana-the-realisation-of-life",
       "language": "en",
@@ -3868,31 +3869,8 @@
             }
           ],
           "work": "sadhana-the-realisation-of-life"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-10-27",
-          "ref": "244",
-          "type": "librivox"
-        }
-      ],
-      "title": "Sadhana, the Realisation of Life"
-    },
-    "sadhana-the-realisation-of-life-version-2": {
-      "added_at": "2026-10-28",
-      "authors": [
-        "rabindranath-tagore"
-      ],
-      "genres": [
-        "philosophy",
-        "religion-spirituality"
-      ],
-      "id": "sadhana-the-realisation-of-life-version-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "peter-yearsley": {
+        },
+        "peter-yearsley-2": {
           "added_at": "2026-10-28",
           "archive_id": "sadhana_0907_librivox",
           "chapters": [
@@ -3947,7 +3925,7 @@
           ],
           "copyright_year": 1916,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt18/Sadhana_V2_1205.jpg",
-          "id": "peter-yearsley",
+          "id": "peter-yearsley-2",
           "language": "en",
           "librivox_id": 3006,
           "license": "CC0-1.0",
@@ -3969,17 +3947,22 @@
               "type": "librivox"
             }
           ],
-          "work": "sadhana-the-realisation-of-life-version-2"
+          "work": "sadhana-the-realisation-of-life"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-10-27",
+          "ref": "244",
+          "type": "librivox"
+        },
         {
           "imported_at": "2026-10-28",
           "ref": "3006",
           "type": "librivox"
         }
       ],
-      "title": "Sadhana, The Realisation of Life, version 2"
+      "title": "Sadhana, the Realisation of Life"
     },
     "sadie": {
       "added_at": "2026-07-29",

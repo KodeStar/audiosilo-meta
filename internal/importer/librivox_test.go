@@ -470,6 +470,59 @@ func TestLibrivoxTitleStripsTheVersionMarker(t *testing.T) {
 		"Candide":                      "Candide",
 		"Version 2":                    "Version 2",
 		"Poems (version 2) of Despair": "Poems (version 2) of Despair",
+		// The short spellings and the cast production.
+		"Fables de La Fontaine, livre 04 (ver 2)": "Fables de La Fontaine, livre 04",
+		"Fables (Ver. 3)":                         "Fables",
+		"Eclogae (dramatic reading)":              "Eclogae",
+		"2 B R 0 2 B (Dramatic Reading)":          "2 B R 0 2 B",
+		// Stacked, in either order, and combined in one parenthetical.
+		"Wonderful Wizard of Oz (version 3) (Dramatic Reading)": "Wonderful Wizard of Oz",
+		"Ozma of Oz (Dramatic Reading) (Version 2)":             "Ozma of Oz",
+		"Scarlet Pimpernel (Version 3, Dramatic Reading)":       "Scarlet Pimpernel",
+		"Dracula (version 2 dramatic reading)":                  "Dracula",
+		// End-anchored: a marker followed by anything else stays, and so does
+		// a title that is nothing but markers.
+		"Metamorphosis (Dramatic Reading) (1915)": "Metamorphosis (Dramatic Reading) (1915)",
+		"Ulysses (version 2): Circe":              "Ulysses (version 2): Circe",
+		"Song (Donne version)":                    "Song (Donne version)",
+		"Theatre (Dramatic Readings)":             "Theatre (Dramatic Readings)",
+		"Riverside (vertaling 2)":                 "Riverside (vertaling 2)",
+		"(Dramatic Reading)":                      "(Dramatic Reading)",
+		"(Dramatic Reading) (version 2)":          "(Dramatic Reading)",
+		// The bare version marker: whitespace, optionally behind a comma, dash
+		// or colon, then the full word "version" and a number.
+		"Thief in the Night - Version 2":                            "Thief in the Night",
+		"Walden, Version 2":                                         "Walden",
+		"Daddy-Long-Legs Version 2":                                 "Daddy-Long-Legs",
+		"Study in Scarlet, version 9":                               "Study in Scarlet",
+		"Story of Geographical Discovery: How the World, Version 2": "Story of Geographical Discovery: How the World",
+		"Rubáiyát (Le Gallienne) \u2013 Version 2":                  "Rubáiyát (Le Gallienne)",
+		"Magnificent Ambersons (Growth Trilogy Vol 2) Version 2":    "Magnificent Ambersons (Growth Trilogy Vol 2)",
+		"Emma (Dramatic Reading), Version 2":                        "Emma",
+		"Emma, Version 2 (Dramatic Reading)":                        "Emma",
+		// Separators inside one parenthetical.
+		"Whose Body? (Version 3 - dramatic reading)":      "Whose Body?",
+		"Box-Car Children (Version 3: Dramatic Reading)":  "Box-Car Children",
+		"Story of a Needle (Version 2; Dramatic Reading)": "Story of a Needle",
+		"Kim (Version 4 \u2013 Dramatic Reading)":         "Kim",
+		// A separator before the parenthetical goes with it.
+		"Ballad of Reading Gaol, (version 2)": "Ballad of Reading Gaol",
+		"Gods of Mars - (version 3)":          "Gods of Mars",
+		"- (version 2)":                       "- (version 2)",
+		// "version" in the other languages LibriVox's projects spell it in.
+		"Canti (Versione 2)":            "Canti",
+		"Novelas y Cuentos (Versión 3)": "Novelas y Cuentos",
+		"Relíquia (Versão 2)":           "Relíquia",
+		"Rimas Versión 2":               "Rimas",
+		// Not a bare marker: "ver" alone, a glued word, a lone "Version 2",
+		// a version that is not last.
+		"Walden, Ver 2":                     "Walden, Ver 2",
+		"Conversion 2":                      "Conversion 2",
+		"Subversion 2":                      "Subversion 2",
+		"Version 2 of Book 1":               "Version 2 of Book 1",
+		"Nana (Version 2), Book Nine":       "Nana (Version 2), Book Nine",
+		"Phantom of the Opera (version 4?)": "Phantom of the Opera (version 4?)",
+		"Bible, King James Version 1611":    "Bible, King James Version 1611",
 	} {
 		if got := librivoxTitle(in); got != want {
 			t.Errorf("librivoxTitle(%q) = %q, want %q", in, got, want)

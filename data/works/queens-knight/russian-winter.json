@@ -8473,12 +8473,16 @@
       ],
       "title": "Ruth"
     },
-    "ruth-elizabeth-cleghorn-gaskell": {
-      "added_at": "2026-10-27",
+    "ruth-elizabeth-gaskell": {
+      "added_at": "2026-08-08",
       "authors": [
-        "elizabeth-cleghorn-gaskell"
+        "elizabeth-gaskell"
       ],
-      "id": "ruth-elizabeth-cleghorn-gaskell",
+      "genres": [
+        "classics",
+        "literary-fiction"
+      ],
+      "id": "ruth-elizabeth-gaskell",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -8727,31 +8731,8 @@
               "type": "librivox"
             }
           ],
-          "work": "ruth-elizabeth-cleghorn-gaskell"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-10-27",
-          "ref": "1809",
-          "type": "librivox"
-        }
-      ],
-      "title": "Ruth"
-    },
-    "ruth-elizabeth-gaskell": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "elizabeth-gaskell"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction"
-      ],
-      "id": "ruth-elizabeth-gaskell",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "ruth-elizabeth-gaskell"
+        },
         "eve-matheson-2008": {
           "abridged": false,
           "added_at": "2026-08-08",
@@ -8992,6 +8973,11 @@
           "imported_at": "2026-08-08",
           "ref": "B002VACJM4",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-27",
+          "ref": "1809",
+          "type": "librivox"
         }
       ],
       "title": "Ruth"
