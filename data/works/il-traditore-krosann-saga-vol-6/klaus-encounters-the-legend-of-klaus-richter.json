@@ -3091,6 +3091,55 @@
             }
           ],
           "work": "kleider-machen-leute"
+        },
+        "stefan-schmelz": {
+          "added_at": "2026-10-27",
+          "archive_id": "kleider_machen_leute_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/kleider_machen_leute_librivox/kleider_machen_leute_1_keller_64kb.mp3",
+              "length_ms": 2087000,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/kleider_machen_leute_librivox/kleider_machen_leute_2_keller_64kb.mp3",
+              "length_ms": 1584000,
+              "start_ms": 2087000,
+              "title": "Chapter 2"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/kleider_machen_leute_librivox/kleider_machen_leute_3_keller_64kb.mp3",
+              "length_ms": 2041000,
+              "start_ms": 3671000,
+              "title": "Chapter 3"
+            }
+          ],
+          "copyright_year": 1874,
+          "cover_url": "https://archive.org/download/kleider_machen_leute_librivox/kleidermachenleute_1003.jpg",
+          "id": "stefan-schmelz",
+          "language": "de",
+          "librivox_id": 545,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/kleider-machen-leute-by-gottfried-keller/",
+            "rss": "https://librivox.org/rss/545",
+            "text": "https://gutenberg.spiegel.de/keller/seldwyla/kleider/kleider.htm",
+            "zip": "https://archive.org/compress/kleider_machen_leute_librivox/formats=64KBPS MP3&file=/kleider_machen_leute_librivox.zip"
+          },
+          "narrators": [
+            "stefan-schmelz"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 96,
+          "sources": [
+            {
+              "imported_at": "2026-10-27",
+              "ref": "545",
+              "type": "librivox"
+            }
+          ],
+          "work": "kleider-machen-leute"
         }
       },
       "sources": [
@@ -5949,6 +5998,65 @@
         }
       ],
       "title": "Kleine Gefallen"
+    },
+    "kleine-hawelmann": {
+      "added_at": "2026-10-27",
+      "authors": [
+        "theodor-storm"
+      ],
+      "genres": [
+        "childrens",
+        "fairy-tales-folklore"
+      ],
+      "id": "kleine-hawelmann",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "franziska-nelson": {
+          "added_at": "2026-10-27",
+          "archive_id": "haewelmann_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/haewelmann_librivox/der_kleine_haewelmann_storm_64kb.mp3",
+              "length_ms": 498000,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://archive.org/download/haewelmann_librivox/Kleine_Hwelmann_1105.jpg",
+          "id": "franziska-nelson",
+          "language": "de",
+          "librivox_id": 172,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/der-kleine-haewelmann-by-theodor-storm/",
+            "rss": "https://librivox.org/rss/172",
+            "text": "https://www.projekt-gutenberg.org/storm/haewelma/haewelma.html",
+            "zip": "https://archive.org/compress/haewelmann_librivox/formats=64KBPS MP3&file=/haewelmann_librivox.zip"
+          },
+          "narrators": [
+            "franziska-nelson"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 8,
+          "sources": [
+            {
+              "imported_at": "2026-10-27",
+              "ref": "172",
+              "type": "librivox"
+            }
+          ],
+          "work": "kleine-hawelmann"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-27",
+          "ref": "172",
+          "type": "librivox"
+        }
+      ],
+      "title": "Kleine Häwelmann"
     },
     "kleine-helden": {
       "added_at": "2026-08-02",

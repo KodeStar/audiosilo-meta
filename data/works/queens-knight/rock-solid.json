@@ -6298,6 +6298,65 @@
       ],
       "title": "Rocket Billionaires"
     },
+    "rocket-book": {
+      "added_at": "2026-10-27",
+      "authors": [
+        "peter-newell"
+      ],
+      "genres": [
+        "poetry"
+      ],
+      "id": "rocket-book",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "denny-sayers-d-2015": {
+          "added_at": "2026-10-27",
+          "archive_id": "rocket_book_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/rocket_book_librivox/rocket_book_newell_64kb.mp3",
+              "length_ms": 718000,
+              "start_ms": 0,
+              "title": "The Rocket Book"
+            }
+          ],
+          "copyright_year": 1912,
+          "cover_url": "https://archive.org/download/rocket_book_librivox/Rocket_Book_1104.jpg",
+          "id": "denny-sayers-d-2015",
+          "language": "en",
+          "librivox_id": 404,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/the-rocket-book-by-peter-newell/",
+            "rss": "https://librivox.org/rss/404",
+            "text": "https://www.gutenberg.org/etext/17104",
+            "zip": "https://archive.org/compress/rocket_book_librivox/formats=64KBPS MP3&file=/rocket_book_librivox.zip"
+          },
+          "narrators": [
+            "denny-sayers-d-2015"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 12,
+          "sources": [
+            {
+              "imported_at": "2026-10-27",
+              "ref": "404",
+              "type": "librivox"
+            }
+          ],
+          "work": "rocket-book"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-27",
+          "ref": "404",
+          "type": "librivox"
+        }
+      ],
+      "title": "Rocket Book"
+    },
     "rocket-boys": {
       "added_at": "2026-07-29",
       "authors": [

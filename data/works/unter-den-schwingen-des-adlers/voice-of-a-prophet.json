@@ -2123,6 +2123,100 @@
       ],
       "title": "Voice of Reason"
     },
+    "voice-of-the-ancient-bard": {
+      "added_at": "2026-10-27",
+      "authors": [
+        "william-blake"
+      ],
+      "genres": [
+        "poetry"
+      ],
+      "id": "voice-of-the-ancient-bard",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "hugh-mcguire": {
+          "added_at": "2026-10-27",
+          "archive_id": "bard_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/bard_librivox/ancient_bard_blake_hm_64kb.mp3",
+              "length_ms": 70000,
+              "start_ms": 0,
+              "title": "Version 1"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/bard_librivox/ancient_bard_blake_jbb_64kb.mp3",
+              "length_ms": 53000,
+              "start_ms": 70000,
+              "title": "Version 2"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/bard_librivox/ancient_bard_blake_jos_64kb.mp3",
+              "length_ms": 61000,
+              "start_ms": 123000,
+              "title": "Version 3"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/bard_librivox/ancient_bard_blake_ks_64kb.mp3",
+              "length_ms": 66000,
+              "start_ms": 184000,
+              "title": "Version 4"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/bard_librivox/ancient_bard_blake_mtl3p_64kb.mp3",
+              "length_ms": 68000,
+              "start_ms": 250000,
+              "title": "Version 5"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/bard_librivox/ancient_bard_blake_s_64kb.mp3",
+              "length_ms": 57000,
+              "start_ms": 318000,
+              "title": "Version 6"
+            }
+          ],
+          "copyright_year": 1794,
+          "cover_url": "https://archive.org/download/bard_librivox/Voice_Ancient_Bard_1108.jpg",
+          "id": "hugh-mcguire",
+          "language": "en",
+          "librivox_id": 455,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/voice-of-the-ancient-bard-by-william-blake/",
+            "rss": "https://librivox.org/rss/455",
+            "text": "https://www.gutenberg.org/etext/1934",
+            "zip": "https://archive.org/compress/bard_librivox/formats=64KBPS MP3&file=/bard_librivox.zip"
+          },
+          "narrators": [
+            "hugh-mcguire",
+            "brad-bush",
+            "jean-osullivan",
+            "kara-shallenberg-1969-2023",
+            "mtl3p",
+            "mark-bradford"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 6,
+          "sources": [
+            {
+              "imported_at": "2026-10-27",
+              "ref": "455",
+              "type": "librivox"
+            }
+          ],
+          "work": "voice-of-the-ancient-bard"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-27",
+          "ref": "455",
+          "type": "librivox"
+        }
+      ],
+      "title": "Voice of the Ancient Bard"
+    },
     "voice-of-the-banished": {
       "added_at": "2026-08-01",
       "authors": [

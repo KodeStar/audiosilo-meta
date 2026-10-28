@@ -2652,6 +2652,90 @@
       ],
       "title": "Monstyr"
     },
+    "mont-blanc-besteigung": {
+      "added_at": "2026-10-27",
+      "authors": [
+        "paul-verne",
+        "martha-lion"
+      ],
+      "credits": [
+        {
+          "person": "martha-lion",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "travel"
+      ],
+      "id": "mont-blanc-besteigung",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "dirk-weber": {
+          "added_at": "2026-10-27",
+          "archive_id": "mont_blanc_dw_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/mont_blanc_dw_librivox/mont-blanc_01_verne_64kb.mp3",
+              "length_ms": 608000,
+              "start_ms": 0,
+              "title": "Kapitel 01"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/mont_blanc_dw_librivox/mont-blanc_02_verne_64kb.mp3",
+              "length_ms": 977000,
+              "start_ms": 608000,
+              "title": "Kapitel 02"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/mont_blanc_dw_librivox/mont-blanc_03_verne_64kb.mp3",
+              "length_ms": 910000,
+              "start_ms": 1585000,
+              "title": "Kapitel 03"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/mont_blanc_dw_librivox/mont-blanc_04_verne_64kb.mp3",
+              "length_ms": 1268000,
+              "start_ms": 2495000,
+              "title": "Kapitel 04"
+            }
+          ],
+          "copyright_year": 1877,
+          "cover_url": "https://www.archive.org/download/librivox_cd_covers/mont_blanc_besteigung.jpg",
+          "id": "dirk-weber",
+          "language": "de",
+          "librivox_id": 2103,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/eine-mont-blanc-besteigung-by-paul-verne/",
+            "rss": "https://librivox.org/rss/2103",
+            "text": "https://www.projekt-gutenberg.org/vernep/montblan/chap001.html",
+            "zip": "https://archive.org/compress/mont_blanc_dw_librivox/formats=64KBPS MP3&file=/mont_blanc_dw_librivox.zip"
+          },
+          "narrators": [
+            "dirk-weber"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 63,
+          "sources": [
+            {
+              "imported_at": "2026-10-27",
+              "ref": "2103",
+              "type": "librivox"
+            }
+          ],
+          "work": "mont-blanc-besteigung"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-27",
+          "ref": "2103",
+          "type": "librivox"
+        }
+      ],
+      "title": "Mont-Blanc-Besteigung"
+    },
     "mont-saint-michel": {
       "added_at": "2026-08-02",
       "authors": [

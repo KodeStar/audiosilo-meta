@@ -12,6 +12,49 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "gord-mackenzie": {
+          "added_at": "2026-10-27",
+          "archive_id": "civil_disobedience_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/civil_disobedience_librivox/civil_disobedience_01_thoreau_64kb.mp3",
+              "length_ms": 2560000,
+              "start_ms": 0,
+              "title": "Part 1"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/civil_disobedience_librivox/civil_disobedience_02_thoreau_64kb.mp3",
+              "length_ms": 2319000,
+              "start_ms": 2560000,
+              "title": "Part 2"
+            }
+          ],
+          "copyright_year": 1849,
+          "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt9/Duty_Civil_Disobedience_1107.jpg",
+          "id": "gord-mackenzie",
+          "language": "en",
+          "librivox_id": 861,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/on-the-duty-of-civil-disobedience-by-henry-david-thoreau/",
+            "rss": "https://librivox.org/rss/861",
+            "text": "https://www.gutenberg.org/ebooks/71",
+            "zip": "https://archive.org/compress/civil_disobedience_librivox/formats=64KBPS MP3&file=/civil_disobedience_librivox.zip"
+          },
+          "narrators": [
+            "gord-mackenzie"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 81,
+          "sources": [
+            {
+              "imported_at": "2026-10-27",
+              "ref": "861",
+              "type": "librivox"
+            }
+          ],
+          "work": "on-the-duty-of-civil-disobedience"
+        },
         "jim-killavey-2012": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -3626,6 +3669,77 @@
         }
       ],
       "title": "On the Edge: The Edge, Book 2"
+    },
+    "on-the-elementary-electrical-charge": {
+      "added_at": "2026-10-27",
+      "authors": [
+        "robert-andrews-millikan"
+      ],
+      "genres": [
+        "science"
+      ],
+      "id": "on-the-elementary-electrical-charge",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "eric-ray": {
+          "added_at": "2026-10-27",
+          "archive_id": "elementary_electrical_charge_0710_librivox_",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/elementary_electrical_charge_0710_librivox_/elementaryelectricalcharge_01_millikan_64kb.mp3",
+              "length_ms": 1779000,
+              "start_ms": 0,
+              "title": "Sections 1-4"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/elementary_electrical_charge_0710_librivox_/elementaryelectricalcharge_02_millikan_64kb.mp3",
+              "length_ms": 1067000,
+              "start_ms": 1779000,
+              "title": "Sections 5-8"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/elementary_electrical_charge_0710_librivox_/elementaryelectricalcharge_03_millikan_64kb.mp3",
+              "length_ms": 2559000,
+              "start_ms": 2846000,
+              "title": "Sections 9-13"
+            }
+          ],
+          "copyright_year": 1913,
+          "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt12/electricalcharge1109.jpg",
+          "id": "eric-ray",
+          "language": "en",
+          "librivox_id": 1574,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/on-the-elementary-electrical-charge-by-robert-millikan/",
+            "rss": "https://librivox.org/rss/1574",
+            "text": "https://resolver.caltech.edu/CaltechAUTHORS:MILpr13b",
+            "zip": "https://archive.org/compress/elementary_electrical_charge_0710_librivox_/formats=64KBPS MP3&file=/elementary_electrical_charge_0710_librivox_.zip"
+          },
+          "narrators": [
+            "eric-ray"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 90,
+          "sources": [
+            {
+              "imported_at": "2026-10-27",
+              "ref": "1574",
+              "type": "librivox"
+            }
+          ],
+          "work": "on-the-elementary-electrical-charge"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-27",
+          "ref": "1574",
+          "type": "librivox"
+        }
+      ],
+      "title": "On the Elementary Electrical Charge"
     },
     "on-the-embankment": {
       "added_at": "2026-08-02",
