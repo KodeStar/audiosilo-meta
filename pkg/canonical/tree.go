@@ -6,6 +6,8 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
+
+	"github.com/kodestar/audiosilo-meta/internal/parallel"
 )
 
 // jsonFiles returns every *.json file under dir, sorted, minus anything under
@@ -67,22 +69,42 @@ func CheckTreeExcept(dir string, skip []string) (nonCanonical, invalid []string,
 	if err != nil {
 		return nil, nil, err
 	}
-	for _, f := range files {
-		raw, err := os.ReadFile(f)
+	// Every file is judged on its own, so the judging runs on the shared pool:
+	// a worker writes only its own slot, and the lists are assembled in walk
+	// order afterwards, so the result does not depend on the scheduler.
+	results := make([]fileResult, len(files))
+	parallel.Do(len(files), func(i int) {
+		raw, err := os.ReadFile(files[i])
 		if err != nil {
-			return nil, nil, err
+			results[i].err = err
+			return
 		}
 		ok, ferr := IsCanonical(raw)
-		if ferr != nil {
-			nonCanonical = append(nonCanonical, f)
-			invalid = append(invalid, f)
-			continue
+		results[i].invalid = ferr != nil
+		results[i].changed = ferr != nil || !ok
+	})
+	for i, r := range results {
+		if r.err != nil {
+			return nil, nil, r.err
 		}
-		if !ok {
-			nonCanonical = append(nonCanonical, f)
+		if r.changed {
+			nonCanonical = append(nonCanonical, files[i])
+		}
+		if r.invalid {
+			invalid = append(invalid, files[i])
 		}
 	}
 	return nonCanonical, invalid, nil
+}
+
+// fileResult is what one worker of a tree walk found about one file: whether it
+// is (or, for a write, was) out of canonical form, whether it parsed at all, and
+// the I/O error that stopped it. The walk reports the FIRST error in walk order,
+// as the sequential loop it replaced did; on a write the files other workers
+// had already rewritten stay rewritten, which is only ever canonical form.
+type fileResult struct {
+	changed, invalid bool
+	err              error
 }
 
 // WriteTree rewrites every non-canonical JSON file under dir in place and
@@ -101,28 +123,48 @@ func WriteTreeExcept(dir string, skip []string) (changed, failed []string, err e
 	if err != nil {
 		return nil, nil, err
 	}
-	for _, f := range files {
-		raw, err := os.ReadFile(f)
-		if err != nil {
-			return nil, nil, err
+	// One file per worker, as in CheckTreeExcept: each rewrite touches only its
+	// own file, and the lists are assembled in walk order.
+	results := make([]fileResult, len(files))
+	parallel.Do(len(files), func(i int) {
+		results[i] = writeFile(files[i])
+	})
+	for i, r := range results {
+		if r.err != nil {
+			return nil, nil, r.err
 		}
-		formatted, ferr := Format(raw)
-		if ferr != nil {
-			failed = append(failed, f)
-			continue
+		if r.invalid {
+			failed = append(failed, files[i])
 		}
-		if !equal(raw, formatted) {
-			info, err := os.Stat(f)
-			if err != nil {
-				return nil, nil, err
-			}
-			if err := os.WriteFile(f, formatted, info.Mode().Perm()); err != nil {
-				return nil, nil, err
-			}
-			changed = append(changed, f)
+		if r.changed {
+			changed = append(changed, files[i])
 		}
 	}
 	return changed, failed, nil
+}
+
+// writeFile rewrites one file in canonical form if it is not already, leaving
+// a file that does not parse untouched.
+func writeFile(f string) fileResult {
+	raw, err := os.ReadFile(f)
+	if err != nil {
+		return fileResult{err: err}
+	}
+	formatted, ferr := Format(raw)
+	if ferr != nil {
+		return fileResult{invalid: true}
+	}
+	if equal(raw, formatted) {
+		return fileResult{}
+	}
+	info, err := os.Stat(f)
+	if err != nil {
+		return fileResult{err: err}
+	}
+	if err := os.WriteFile(f, formatted, info.Mode().Perm()); err != nil {
+		return fileResult{err: err}
+	}
+	return fileResult{changed: true}
 }
 
 func equal(a, b []byte) bool {

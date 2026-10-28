@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+
+	"github.com/kodestar/audiosilo-meta/internal/parallel"
 )
 
 // Reader is a read-through cache of parsed pack files under one data root: a
@@ -73,6 +75,41 @@ func (r *Reader) Read(rel string) (*File, error) {
 	}
 	r.cache[rel] = f
 	return f, nil
+}
+
+// prefetch reads and parses, on the shared worker pool, every one of rels the
+// reader does not hold yet, and caches each one that parsed. It is a FILL, so
+// the concurrency rule above applies to the call as a whole; inside it the
+// workers only read files and write their own slot, and the cache is filled on
+// the calling goroutine once they have all stopped.
+//
+// It changes no answer, only how soon one is ready: a file that could not be
+// read or parsed is left out, so the Read that follows does exactly what it
+// would have done without the prefetch - the same error, the same stand-in for
+// a file that has gone - and the cost of that second attempt falls only on the
+// broken files.
+func (r *Reader) prefetch(rels []string) {
+	var todo []string
+	for _, rel := range rels {
+		if _, ok := r.cache[rel]; !ok {
+			todo = append(todo, rel)
+		}
+	}
+	parsed := make([]*File, len(todo))
+	parallel.Do(len(todo), func(i int) {
+		raw, err := os.ReadFile(filepath.Join(r.dir, filepath.FromSlash(todo[i])))
+		if err != nil {
+			return
+		}
+		if f, err := Parse(raw); err == nil {
+			parsed[i] = f
+		}
+	})
+	for i, f := range parsed {
+		if f != nil {
+			r.cache[todo[i]] = f
+		}
+	}
 }
 
 // Cached returns the pack the reader parsed for rel. ok is false for a path
