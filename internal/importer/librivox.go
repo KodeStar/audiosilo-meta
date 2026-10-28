@@ -1045,11 +1045,11 @@ func (p *planner) librivoxAuthorIDOf(b sourceBook, name string, r personResoluti
 		if c.kind != librivoxAuthor {
 			continue
 		}
-		names := p.librivoxCreditNames(c)
-		if len(names) != 1 {
+		got := p.soleCreditName(c)
+		if got == "" {
 			continue
 		}
-		if names[0] == name || (!r.fellBack && p.resolvePerson(names[0]).slug == r.slug) {
+		if got == name || (!r.fellBack && p.resolvePerson(got).slug == r.slug) {
 			return c.id
 		}
 	}

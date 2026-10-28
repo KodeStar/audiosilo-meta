@@ -32,15 +32,12 @@ package importer
 
 import (
 	"fmt"
+	"maps"
 	"slices"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
-
-// librivoxNameSuffixes are the generational suffixes set aside before a name's
-// surname is read: "Francis Parkman Jr." has the surname Parkman.
-var librivoxNameSuffixes = map[string]bool{"jr": true, "sr": true, "ii": true, "iii": true, "iv": true}
 
 // authorSpelling grades two spellings of an author's name.
 type authorSpelling int
@@ -57,14 +54,16 @@ const (
 )
 
 // librivoxNameWords is a name's words as the slug rule folds them (case,
-// diacritics, punctuation), its trailing generational suffix split off.
+// diacritics, punctuation), its trailing generational suffix
+// (generationalSuffixes) split off: "Francis Parkman Jr." has the surname
+// Parkman.
 func librivoxNameWords(name string) (words []string, suffix string) {
 	for w := range strings.SplitSeq(model.SlugifyWhole(name), "-") {
 		if w != "" {
 			words = append(words, w)
 		}
 	}
-	if n := len(words); n > 1 && librivoxNameSuffixes[words[n-1]] {
+	if n := len(words); n > 1 && generationalSuffixes[words[n-1]] {
 		return words[:n-1], words[n-1]
 	}
 	return words, ""
@@ -164,7 +163,7 @@ func (p *planner) librivoxAuthorVariants(slugs []string, lang string, authors wo
 			for r, w := range pairs {
 				rename[names[r]] = p.people[w]
 			}
-			if !p.respellingResolves(rename, pairs, names) {
+			if !p.respellingResolves(pairs) {
 				loose = append(loose, ws)
 				continue
 			}
@@ -178,12 +177,13 @@ func (p *planner) librivoxAuthorVariants(slugs []string, lang string, authors wo
 }
 
 // respellingResolves reports whether every catalogued name a variant respells a
-// credit with resolves back to the person it was read from: a person whose id
-// is not its name's slug (a LibriVox reader's `-librivox-<id>` record) cannot be
-// credited by name, so such a pairing is never attached.
-func (p *planner) respellingResolves(rename, pairs, names map[string]string) bool {
-	for r, w := range pairs {
-		if got := p.resolvePerson(rename[names[r]]); got.create || got.fellBack || got.slug != w {
+// credit with (pairs: row slug -> work person) resolves back to the person it
+// was read from: a person whose id is not its name's slug (a LibriVox reader's
+// `-librivox-<id>` record) cannot be credited by name, so such a pairing is
+// never attached.
+func (p *planner) respellingResolves(pairs map[string]string) bool {
+	for _, w := range pairs {
+		if got := p.resolvePerson(p.people[w]); got.create || got.fellBack || got.slug != w {
 			return false
 		}
 	}
@@ -194,19 +194,20 @@ func (p *planner) respellingResolves(rename, pairs, names map[string]string) boo
 // key that no agreeing work was found among (partial: those sharing a person
 // with the row): the one work the row's authors are spellings of, when
 // nothing else under the key resembles them, and the respelling attaching to
-// it takes. related lists every work rule 1 found, for a worklist row.
-func (p *planner) soleAuthorVariant(slugs []string, lang string, authors workAuthors, credits []credit, partial []*workState) (ws *workState, rename map[string]string, related []*workState) {
+// it takes. Otherwise related lists every work rule 1 found, for a worklist
+// row, and several says two or more of them are variants.
+func (p *planner) soleAuthorVariant(slugs []string, lang string, authors workAuthors, credits []credit, partial []*workState) (ws *workState, rename map[string]string, related []*workState, several bool) {
 	variants, renames, loose := p.librivoxAuthorVariants(slugs, lang, authors, credits)
 	if len(variants)+len(loose) == 0 {
-		return nil, nil, nil
+		return nil, nil, nil, false
 	}
 	others := slices.DeleteFunc(slices.Clone(partial), func(ws *workState) bool { return slices.Contains(variants, ws) })
 	if len(variants) == 1 && len(loose) == 0 && len(others) == 0 {
-		return variants[0], renames[0], variants
+		return variants[0], renames[0], nil, false
 	}
 	related = slices.Concat(variants, loose, others)
 	slices.SortFunc(related, func(a, b *workState) int { return strings.Compare(a.slug, b.slug) })
-	return nil, nil, slices.Compact(related)
+	return nil, nil, slices.Compact(related), len(variants) > 1
 }
 
 // routeLibrivoxAuthorVariant decides a row librivoxCandidates found no agreeing
@@ -215,7 +216,7 @@ func (p *planner) soleAuthorVariant(slugs []string, lang string, authors workAut
 // (several-works for two variants, else author-spelling). ok=false leaves the
 // row to the rules after it.
 func (p *planner) routeLibrivoxAuthorVariant(b sourceBook, workTitle string, slugs []string, lang string, authors workAuthors, credits []credit, partial []*workState) (librivoxRoute, bool) {
-	ws, rename, related := p.soleAuthorVariant(slugs, lang, authors, credits, partial)
+	ws, rename, related, several := p.soleAuthorVariant(slugs, lang, authors, credits, partial)
 	switch {
 	case ws != nil:
 		p.noteLibrivoxAuthorVariant(fmt.Sprintf("%d %q: %s -> %q", b.lv.id, workTitle, renameText(rename), ws.slug))
@@ -224,7 +225,7 @@ func (p *planner) routeLibrivoxAuthorVariant(b sourceBook, workTitle string, slu
 		return librivoxRoute{}, false
 	}
 	reason := LibrivoxAuthorSpelling
-	if n, _, _ := p.librivoxAuthorVariants(slugs, lang, authors, credits); len(n) > 1 {
+	if several {
 		reason = LibrivoxSeveralWorks
 	}
 	p.noteLibrivoxWorklist(b, workTitle, reason, candidatesOf(related))
@@ -277,7 +278,7 @@ func (p *planner) keyLibrivoxAuthorVariants(books []sourceBook, titles []string)
 		if len(matched) > 0 {
 			continue
 		}
-		if ws, rename, _ := p.soleAuthorVariant(slugs, lang, authors, credits, partial); ws != nil {
+		if ws, rename, _, _ := p.soleAuthorVariant(slugs, lang, authors, credits, partial); ws != nil {
 			for _, c := range b.lv.credits {
 				to, ok := rename[p.soleCreditName(c)]
 				if !ok || c.id <= 0 || c.kind != librivoxAuthor {
@@ -289,6 +290,9 @@ func (p *planner) keyLibrivoxAuthorVariants(books []sourceBook, titles []string)
 				proposed[c.id] = to
 			}
 		}
+	}
+	if len(proposed) == 0 {
+		return
 	}
 	keyed := p.librivoxAuthorIDHolders()
 	for id, to := range proposed {
@@ -353,13 +357,8 @@ func (p *planner) librivoxAuthorIDHolders() map[string]bool {
 // renameText is a respelling as the run's note prints it, sorted:
 // "Henrietta Elizabeth Marshall" credited as "Henrietta Marshall".
 func renameText(rename map[string]string) string {
-	from := make([]string, 0, len(rename))
-	for k := range rename {
-		from = append(from, k)
-	}
-	slices.Sort(from)
-	parts := make([]string, 0, len(from))
-	for _, k := range from {
+	parts := make([]string, 0, len(rename))
+	for _, k := range slices.Sorted(maps.Keys(rename)) {
 		parts = append(parts, fmt.Sprintf("%q credited as %q", k, rename[k]))
 	}
 	return strings.Join(parts, ", ")
