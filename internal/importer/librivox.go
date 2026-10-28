@@ -537,11 +537,11 @@ type librivoxState struct {
 	authorOf map[string]int
 	// authorClaim is the author id a row already planned in this run will
 	// stamp onto each person slug (claimLibrivoxAuthors), and claimedAuthor
-	// the slug each such id goes to: the stamp runs after planning, so these
+	// the ids so claimed: the stamp runs after planning, so these
 	// are what lets a later row of the run see an id an earlier one claimed,
 	// as readerOf does for readers.
 	authorClaim   map[string]int
-	claimedAuthor map[int]string
+	claimedAuthor map[int]bool
 	// landed is the rows whose recording this run created, in row order, with
 	// what the stamp checks a resolved person against.
 	landed []librivoxLanding
@@ -578,7 +578,7 @@ func newLibrivoxState() librivoxState {
 		readerOf:      map[string]int{},
 		authorOf:      map[string]int{},
 		authorClaim:   map[string]int{},
-		claimedAuthor: map[int]string{},
+		claimedAuthor: map[int]bool{},
 	}
 }
 
@@ -1160,18 +1160,15 @@ func (p *planner) claimLibrivoxAuthors(b sourceBook, work string) {
 		if c.kind != librivoxAuthor || c.id <= 0 {
 			continue
 		}
+		if _, held := p.lv.people[librivoxKey{librivoxAuthor, c.id}]; held || p.lv.claimedAuthor[c.id] {
+			continue
+		}
 		slug, ok := p.librivoxCreditSlug(c)
-		if !ok || !p.workCreditsPerson(work, slug) {
-			continue
-		}
-		if _, held := p.lv.people[librivoxKey{librivoxAuthor, c.id}]; held || p.lv.claimedAuthor[c.id] != "" {
-			continue
-		}
-		if p.librivoxAuthorIDOn(slug) != 0 {
+		if !ok || !p.workCreditsPerson(work, slug) || p.librivoxAuthorIDOn(slug) != 0 {
 			continue
 		}
 		p.lv.authorClaim[slug] = c.id
-		p.lv.claimedAuthor[c.id] = slug
+		p.lv.claimedAuthor[c.id] = true
 	}
 }
 
