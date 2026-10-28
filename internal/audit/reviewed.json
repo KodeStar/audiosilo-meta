@@ -5112,6 +5112,15 @@
     "target": "a-thiefs-gift"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "thousand-miles-up-the-nile"
+    ],
+    "reason": "one book: LibriVox project 1153 (Thousand Miles up the Nile) created this work before the LibriVox author-spelling rule (meta#2777) because it spells the author Amelia Ann Blanford Edwards, the catalogue Amelia Blanford Edwards; the same travel book by the same writer",
+    "target": "a-thousand-miles-up-the-nile"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -6796,6 +6805,15 @@
     "decision": "reject",
     "op": "merge-works",
     "others": [
+      "the-book-of-the-damned"
+    ],
+    "reason": "the same book, merged the other way: the-book-of-the-damned keeps its full title and three recordings (asserted)",
+    "target": "book-of-the-damned"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
       "boot-bots-amazing-animal-quiz-boot-bots-amazing-animal-quiz-more-book-2"
     ],
     "reason": "different volumes: positions 1 and 2 of boot-bots-amazing-animal-quiz-more, 18 vs 13 min, and one title states Book 2",
@@ -7576,6 +7594,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "cranford-elizabeth-cleghorn-gaskell"
+    ],
+    "reason": "one book: LibriVox project 1937 (Cranford) created this work before the LibriVox author-spelling rule (meta#2777) because it spells the author Elizabeth Cleghorn Gaskell, the catalogue Elizabeth Gaskell; the same novel by the same writer",
+    "target": "cranford"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "crime-and-punishment-audio-connoisseur-edition",
       "crime-and-punishment-fyodor-dostoyevsky"
     ],
@@ -7809,6 +7836,15 @@
     ],
     "reason": "the same book: the identical title, narrator and 586-minute runtime, a 2023 Storybox reissue of the 2015 release",
     "target": "czas-silnych-istot-1-gamedec-4-1"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "daddy-long-legs-version-2"
+    ],
+    "reason": "one book: LibriVox project 4305 is the second LibriVox recording of Jean Webster's novel (project 215 is on daddy-long-legs); \"Version 2\" names the project, not the work (meta#2778)",
+    "target": "daddy-long-legs"
   },
   {
     "decision": "assert",
@@ -9559,6 +9595,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "dorado-baroness-emma-orczy"
+    ],
+    "reason": "one book: Orczy's El Dorado (1913); LibriVox drops a leading article, El included, so LibriVox project 1194 titled it Dorado and created this work under Baroness Emma Orczy before the author-spelling rule (meta#2777)",
+    "target": "el-dorado"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "el-fantasma-de-la-opera-phantom-of-the-opera",
       "el-fantasma-de-la-opera-the-phantom-of-the-opera"
     ],
@@ -10191,6 +10236,15 @@
       "far-from-the-madding-crowd-adaptation"
     ],
     "reason": "Far from the Madding Crowd (Adaptation) is Clare West's 188-minute Oxford Bookworms graded-reader retelling, a different text by a different writer",
+    "target": "far-from-the-madding-crowd"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "far-from-the-madding-crowd-version-2"
+    ],
+    "reason": "one book: LibriVox project 3862 is the second LibriVox recording of Hardy's novel (project 1079 is on far-from-the-madding-crowd); \"version 2\" names the project, not the work (meta#2778)",
     "target": "far-from-the-madding-crowd"
   },
   {
@@ -11969,6 +12023,15 @@
     "target": "in-the-shadow-of-the-fall"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "incidents-in-the-life-of-a-slave-girl-written-by-herself-harriet-jacobs"
+    ],
+    "reason": "one book: LibriVox project 1706 (Incidents in the Life of a Slave Girl) created this work before the LibriVox author-spelling rule (meta#2777) because it spells the author Harriet Jacobs, the catalogue Harriet Ann Jacobs; the same memoir by the same writer",
+    "target": "incidents-in-the-life-of-a-slave-girl-written-by-herself"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -13535,6 +13598,15 @@
     "target": "martin-fierro"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "mary-barton-elizabeth-cleghorn-gaskell"
+    ],
+    "reason": "one book: LibriVox project 1553 (Mary Barton) created this work before the LibriVox author-spelling rule (meta#2777) because it spells the author Elizabeth Cleghorn Gaskell, the catalogue Elizabeth Gaskell; the same novel by the same writer",
+    "target": "mary-barton"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -14282,6 +14354,15 @@
       "north-and-south-amazonclassics-edition"
     ],
     "reason": "the same novel by Elizabeth Gaskell; AmazonClassics Edition names the imprint of the recording, not a different work",
+    "target": "north-and-south"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "north-and-south-elizabeth-cleghorn-gaskell"
+    ],
+    "reason": "one book: LibriVox projects 1092 and 1284 (North and South) created this work before the LibriVox author-spelling rule (meta#2777) because it spells the author Elizabeth Cleghorn Gaskell, the catalogue Elizabeth Gaskell; the same novel by the same writer",
     "target": "north-and-south"
   },
   {
@@ -16163,6 +16244,24 @@
     ],
     "reason": "different volumes: positions 1 to 4 of run-from-the-dead, numbered in the titles",
     "target": "run-from-the-dead"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "ruth-elizabeth-cleghorn-gaskell"
+    ],
+    "reason": "one book: LibriVox project 1809 (Ruth) created this work before the LibriVox author-spelling rule (meta#2777) because it spells the author Elizabeth Cleghorn Gaskell, the catalogue Elizabeth Gaskell; the same novel by the same writer",
+    "target": "ruth-elizabeth-gaskell"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "sadhana-the-realisation-of-life-version-2"
+    ],
+    "reason": "one book: LibriVox project 3006 is the second LibriVox recording of Tagore's lectures (project 244 is on sadhana-the-realisation-of-life); \"version 2\" names the project, not the work (meta#2778)",
+    "target": "sadhana-the-realisation-of-life"
   },
   {
     "decision": "reject",
@@ -18437,6 +18536,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "book-of-the-damned"
+    ],
+    "reason": "one book: LibriVox project 677 created the article-less Book of the Damned under Charles Hoy Fort before the author-spelling rule (meta#2777); the catalogue's The Book of the Damned (3 recordings) keeps its title",
+    "target": "the-book-of-the-damned"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-bounty-janet-evanovich"
     ],
     "reason": "the same Fox and O'Hare novel and the same 474-minute Scott Brick reading; one record merely omits co-author Steve Hamilton",
@@ -20223,6 +20331,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "little-duke"
+    ],
+    "reason": "one book: LibriVox project 1551 (Little Duke) created this work before the LibriVox author-spelling rule (meta#2777) because it spells the author Charlotte Mary Yonge, the catalogue Charlotte Yonge; the same novel by the same writer",
+    "target": "the-little-duke"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-little-match-girl-from-the-naxos-audiobook-a-family-christmas"
     ],
     "reason": "the same short story: the title only names the Naxos anthology the 6-minute reading was taken from, and it matches the 8-minute Tamsin Greig reading",
@@ -20365,6 +20482,15 @@
     ],
     "reason": "the same book by the same author: the second edition is a revised and updated version of it with no new co-author, so the edition is a property of the recording",
     "target": "the-magnesium-miracle"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "magnificent-ambersons-growth-trilogy-vol-2-version-2"
+    ],
+    "reason": "one book: LibriVox project 3087 is a LibriVox recording of Tarkington's novel; \"(Growth Trilogy Vol 2) Version 2\" names the series slot and the project, not the work (meta#2778)",
+    "target": "the-magnificent-ambersons"
   },
   {
     "decision": "assert",
@@ -22114,6 +22240,15 @@
     "target": "the-wonderful-wizard-of-oz"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "wonderful-wizard-of-oz-version-3-dramatic-reading"
+    ],
+    "reason": "one book: LibriVox project 2440 is the third LibriVox recording of Baum's novel, as a dramatic reading; \"(version 3) (Dramatic Reading)\" names the project, not the work (meta#2778)",
+    "target": "the-wonderful-wizard-of-oz"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -22252,6 +22387,15 @@
     ],
     "reason": "the same book: \"This Charming Man (German Edition)\" and \"This Charming Man - Sie sind hier. Sie haben Hunger. The Stranger Times fühlt ihnen auf den Zahn\" differ only by retailer decoration; both sit at 2 of the-stranger-times-gekurzt and its canonical series, by the same author",
     "target": "this-charming-man-sie-sind-hier-sie-haben-hunger-the-stranger-times-fuhlt-ihnen-auf-den-zahn"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "this-country-of-ours-part-1-henrietta-elizabeth-marshall"
+    ],
+    "reason": "one book: LibriVox project 1491 created a second This Country of Ours, Part 1 because the catalogue's credited the misspelt Henrietta Marhall (folded into Henrietta Elizabeth Marshall); both are Part 1, so the volume-number veto does not apply (meta#2778)",
+    "target": "this-country-of-ours-part-1"
   },
   {
     "decision": "assert",
@@ -23641,6 +23785,15 @@
     "target": "without-law"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "wives-and-daughters-elizabeth-cleghorn-gaskell"
+    ],
+    "reason": "one book: LibriVox project 105 (Wives and Daughters) created this work before the LibriVox author-spelling rule (meta#2777) because it spells the author Elizabeth Cleghorn Gaskell, the catalogue Elizabeth Gaskell; the same novel by the same writer",
+    "target": "wives-and-daughters"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -23853,6 +24006,14 @@
     "reason": "the Audible listing (B093Y2TF6T) subtitles it Vol 2 and the series holds it at 2; volume 1 is titled 10 Cuentos, Vol 1 [10 Stories, Vol 1]",
     "target": "10-cuentos-10-stories",
     "to": "10 Cuentos, Vol 2 [10 Stories, Vol 2]"
+  },
+  {
+    "decision": "assert",
+    "from": "2 B R 0 2 B (Dramatic Reading)",
+    "op": "retitle-work",
+    "reason": "LibriVox project 1775's \"(Dramatic Reading)\" names the production, not the story (meta#2778)",
+    "target": "2-b-r-0-2-b-dramatic-reading",
+    "to": "2 B R 0 2 B"
   },
   {
     "decision": "assert",
@@ -24139,6 +24300,14 @@
   },
   {
     "decision": "assert",
+    "from": "Coming of Bill (or: Their Mutual Child; or: The White Hope, Version 2)",
+    "op": "retitle-work",
+    "reason": "LibriVox project 4233's \"Version 2\" numbers the LibriVox project, not Wodehouse's novel (version 1 is project 4740) (meta#2778)",
+    "target": "coming-of-bill-or-their-mutual-child-or-the-white-hope-version-2",
+    "to": "Coming of Bill (or: Their Mutual Child; or: The White Hope)"
+  },
+  {
+    "decision": "assert",
     "from": "Complicated Hearts",
     "op": "retitle-work",
     "reason": "the Audible listing (B07C2CB6CG) subtitles it Complicated Hearts, Book 2; the duet's volumes carry no own titles",
@@ -24152,6 +24321,14 @@
     "reason": "Tantor's listing (B0DKG3WT5S) numbers it Lord Valevsky: Last of the Line, Book 7; the other volumes are titled Condemned: Book N",
     "target": "condemned-vasily-mahanenko",
     "to": "Condemned: Book 7"
+  },
+  {
+    "decision": "assert",
+    "from": "Confidences d'un joueur de clarinette (dramatic reading)",
+    "op": "retitle-work",
+    "reason": "LibriVox project 2945's \"(dramatic reading)\" names the production, not the work (meta#2778)",
+    "target": "confidences-dun-joueur-de-clarinette-dramatic-reading",
+    "to": "Confidences d'un joueur de clarinette"
   },
   {
     "decision": "assert",
@@ -24380,6 +24557,14 @@
   },
   {
     "decision": "assert",
+    "from": "Eclogae (dramatic reading)",
+    "op": "retitle-work",
+    "reason": "LibriVox project 135's \"(dramatic reading)\" names the production, not the work; the Latin Eclogae stays apart from the English Eclogues (project 134) (meta#2778)",
+    "target": "eclogae-dramatic-reading",
+    "to": "Eclogae"
+  },
+  {
+    "decision": "assert",
     "from": "Ecos del pasado [An Echo in the Bone]",
     "op": "retitle-work",
     "reason": "the bracketed [An Echo in the Bone] is Audible's English gloss; the Castellano listing (B0B7X7NPWW) titles it Ecos del pasado",
@@ -24426,6 +24611,14 @@
     "reason": "the work is the trilogy compilation holding both the anniversary and the 2024 Audible Studios readings, so the edition note goes too, as asserted",
     "target": "enigmas-de-los-dioses-del-mexico-antiguo-edicion-decimo-aniversario-enigmas-of-the-gods-of-ancient-m",
     "to": "Enigmas de los dioses del México antiguo (Edición décimo aniversario)"
+  },
+  {
+    "decision": "assert",
+    "from": "Fables de La Fontaine, livre 04 (ver 2)",
+    "op": "retitle-work",
+    "reason": "LibriVox project 1167's \"(ver 2)\" numbers the LibriVox project, not the work; livre 04 has no other work, so the record takes the plain title (project 1232, version 1, then attaches to it) (meta#2778)",
+    "target": "fables-de-la-fontaine-livre-04-ver-2",
+    "to": "Fables de La Fontaine, livre 04"
   },
   {
     "decision": "assert",
@@ -24764,6 +24957,14 @@
     "reason": "the 2018 listing (B07HRZQXY8) titles it Out of the Shadows with Shadowlands, Book 1 as the series, which the membership holds",
     "target": "out-of-the-shadows-shadowlands-book-1",
     "to": "Out of the Shadows"
+  },
+  {
+    "decision": "assert",
+    "from": "Perils of Pauline (dramatic reading)",
+    "op": "retitle-work",
+    "reason": "LibriVox project 2627's \"(dramatic reading)\" names the production, not the work (meta#2778)",
+    "target": "perils-of-pauline-dramatic-reading",
+    "to": "Perils of Pauline"
   },
   {
     "decision": "assert",
@@ -25370,6 +25571,14 @@
   },
   {
     "decision": "assert",
+    "from": "Thief in the Night - Version 2",
+    "op": "retitle-work",
+    "reason": "LibriVox project 3136's \"Version 2\" numbers the LibriVox project, not Hornung's book (version 1 is project 6555) (meta#2778)",
+    "target": "thief-in-the-night-version-2",
+    "to": "Thief in the Night"
+  },
+  {
+    "decision": "assert",
     "from": "Tied in Knots: Get Knotted!",
     "op": "retitle-work",
     "reason": "the 2nd edition listing (B0C1HRHVGQ) titles it Tied in Knots with Get Knotted! as the series, which the membership holds",
@@ -25391,6 +25600,14 @@
     "reason": "LAK's listing (B0758832PL) subtitles the books 1-3 collection 3 True Crime Books Collection",
     "target": "true-crime-stories",
     "to": "True Crime Stories: 3 True Crime Books Collection"
+  },
+  {
+    "decision": "assert",
+    "from": "Ulysses (version 2): Circe reader assignments",
+    "op": "retitle-work",
+    "reason": "LibriVox project 4383's \"(version 2)\" numbers the LibriVox project it belongs to (its page records the Circe reader assignments of Ulysses version 2, project 4344), not the work (meta#2778)",
+    "target": "ulysses-version-2-circe-reader-assignments",
+    "to": "Ulysses: Circe reader assignments"
   },
   {
     "decision": "assert",
