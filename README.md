@@ -371,10 +371,14 @@ query, limit, next offset, page and project counts, complete or not) and
 reads every `pages/*.json` and needs nothing else, so a hand-assembled snapshot
 (the test fixtures are one) works too.
 
-What an import does: a project whose `librivox_id` is already catalogued is
-skipped (identity is the project id, never the title), so a rerun changes
-nothing. Otherwise it becomes a new recording - never merged into another
-recording - under the work these rules find, in order (LibriVox's repeat markers are
+What an import does: a project LibriVox is still recording (no `totaltimesecs`
+and no archive.org item in `url_iarchive`; the feed has no status field) is set
+aside before anything else and writes nothing, listed on one line of the report
+(`librivox: skipped N in-progress projects ...: <ids>`), so re-importing its id
+once LibriVox completes it lands it like any other. A project whose
+`librivox_id` is already catalogued is skipped (identity is the project id,
+never the title), so a rerun changes nothing. Otherwise it becomes a new
+recording - never merged into another recording - under the work these rules find, in order (LibriVox's repeat markers are
 stripped from the title first: a trailing "(version 2)", "(ver 2)", "(ver. 2)"
 or "(Dramatic Reading)", stacked or combined in one parenthetical, or a bare
 "Version 2" ("Walden, Version 2", "Sea Wolf - Version 2"), "version" also as

@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"os/signal"
+	"strconv"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/importer"
@@ -121,6 +122,7 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 			sum.LibrivoxReadersSplit, plural(sum.LibrivoxReadersSplit, "reader", "readers"),
 			sum.LibrivoxReadersMoved, plural(sum.LibrivoxReadersMoved, "credit", "credits"))
 	}
+	printLibrivoxInProgress(sum.LibrivoxInProgress)
 	// The spelling-variant attachments are a run note (printSummary prints it).
 	if n := sum.LibrivoxFallbackSlugs; n > 0 {
 		fmt.Printf("librivox: %d new %s at librivox-<id> (non-Latin or unsluggable title)\n", n, plural(n, "work", "works"))
@@ -132,6 +134,21 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 	printLibrivoxWorklist(sum.LibrivoxWorklist)
 	printLibrivoxUnrecorded(sum.LibrivoxUnrecordedCredits)
 	return 0
+}
+
+// printLibrivoxInProgress prints the projects the run set aside as still in
+// progress (importer.Summary.LibrivoxInProgress), their ids on one line.
+// Nothing when there are none.
+func printLibrivoxInProgress(ids []int) {
+	if len(ids) == 0 {
+		return
+	}
+	s := make([]string, len(ids))
+	for i, id := range ids {
+		s[i] = strconv.Itoa(id)
+	}
+	fmt.Printf("librivox: skipped %d in-progress %s (no runtime and no archive.org item; nothing written, re-import once complete): %s\n",
+		len(ids), plural(len(ids), "project", "projects"), strings.Join(s, ", "))
 }
 
 // printLibrivoxUnrecorded prints the author and translator credits of landed

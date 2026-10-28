@@ -254,6 +254,96 @@ func TestLibrivoxSelectsIDs(t *testing.T) {
 	}
 }
 
+// inProgressProject is fixture project 527 as LibriVox lists a project still
+// being read: no total runtime and no archive.org item.
+func inProgressProject(t *testing.T) LibrivoxProject {
+	t.Helper()
+	p := fixtureProject(t, 527)
+	p.TotalTimeSecs, p.URLIArchive = 0, ""
+	return p
+}
+
+func TestLibrivoxInProgressIsTheFeedsUnfinishedRow(t *testing.T) {
+	books, err := parseLibrivoxPage([]byte(`{"books":[
+		{"id":"1","totaltimesecs":0,"url_iarchive":""},
+		{"id":"2","totaltimesecs":"","url_iarchive":" "},
+		{"id":"3"},
+		{"id":"4","totaltimesecs":0,"url_iarchive":"https://librivox.org/not-an-item/"},
+		{"id":"66","totaltimesecs":0,"url_iarchive":"https://www.archive.org/details/grimm_maerchen_1_librivox"},
+		{"id":"5","totaltimesecs":9265,"url_iarchive":""},
+		{"id":"6","totaltimesecs":"9265","url_iarchive":"https://www.archive.org/details/x_librivox"}]}`))
+	if err != nil {
+		t.Fatal(err)
+	}
+	want := map[int]bool{1: true, 2: true, 3: true, 4: true, 66: false, 5: false, 6: false}
+	if len(books) != len(want) {
+		t.Fatalf("decoded %d projects, want %d", len(books), len(want))
+	}
+	for _, b := range books {
+		if got := librivoxInProgress(b); got != want[int(b.ID)] {
+			t.Errorf("project %d in progress = %v, want %v", b.ID, got, want[int(b.ID)])
+		}
+	}
+}
+
+func TestLibrivoxSkipsAnInProgressProject(t *testing.T) {
+	dataDir := t.TempDir()
+	sum := runLibrivox(t, writeSnapshot(t, inProgressProject(t), fixtureProject(t, 1870)), dataDir, allLibrivox)
+	if !reflect.DeepEqual(sum.LibrivoxInProgress, []int{527}) || sum.LibrivoxProjects != 2 {
+		t.Errorf("in progress = %v of %d selected; want [527] of 2", sum.LibrivoxInProgress, sum.LibrivoxProjects)
+	}
+	if sum.NewWorks != 1 || sum.NewRecordings != 1 {
+		t.Errorf("summary = %+v; want only 1870 landed", sum)
+	}
+	if entryExists(t, dataDir, workAddr("metamorphosis")) || entryExists(t, dataDir, personAddr("david-barnes")) ||
+		entryExists(t, dataDir, personAddr("franz-kafka")) || entryExists(t, dataDir, personAddr("ian-johnston")) {
+		t.Error("the in-progress project wrote a record")
+	}
+	if !entryExists(t, dataDir, workAddr("candide-ou-loptimisme")) {
+		t.Error("the finished project beside it did not land")
+	}
+
+	// Alone, it writes nothing at all.
+	empty := t.TempDir()
+	sum = runLibrivox(t, writeSnapshot(t, inProgressProject(t)), empty, allLibrivox)
+	if files := treeFiles(t, empty); len(files) != 0 || len(sum.Files) != 0 {
+		t.Errorf("wrote %d files (summary %+v); want nothing written", len(files), sum)
+	}
+}
+
+func TestLibrivoxImportsAZeroRuntimeProjectWithAnArchiveItem(t *testing.T) {
+	p := fixtureProject(t, 527)
+	p.TotalTimeSecs = 0 // as id 66 (Grimm) states it: finished, on archive.org, no total
+	dataDir := t.TempDir()
+	sum := runLibrivox(t, writeSnapshot(t, p), dataDir, allLibrivox)
+	if len(sum.LibrivoxInProgress) != 0 || sum.NewRecordings != 1 {
+		t.Fatalf("in progress = %v, %d recordings; want the project imported", sum.LibrivoxInProgress, sum.NewRecordings)
+	}
+	var r lvRecording
+	readEntity(t, dataDir, recAddr("metamorphosis", "david-barnes"), &r)
+	if r.LibrivoxID != 527 || r.ArchiveID != "metamorphosis_librivox" || r.RuntimeMin != 0 {
+		t.Errorf("recording = %d %q runtime %d; want 527 on metamorphosis_librivox with no runtime", r.LibrivoxID, r.ArchiveID, r.RuntimeMin)
+	}
+}
+
+func TestLibrivoxImportsAnInProgressProjectOnceComplete(t *testing.T) {
+	dataDir := t.TempDir()
+	runLibrivox(t, writeSnapshot(t, inProgressProject(t)), dataDir, allLibrivox)
+	sum := runLibrivox(t, writeSnapshot(t, fixtureProject(t, 527)), dataDir, allLibrivox)
+	if len(sum.LibrivoxInProgress) != 0 || sum.NewWorks != 1 || sum.NewRecordings != 1 {
+		t.Fatalf("summary = %+v; want the completed project imported", sum)
+	}
+	var r lvRecording
+	readEntity(t, dataDir, recAddr("metamorphosis", "david-barnes"), &r)
+	if r.LibrivoxID != 527 || r.RuntimeMin == 0 {
+		t.Errorf("recording = %d runtime %d; want 527 with its runtime", r.LibrivoxID, r.RuntimeMin)
+	}
+	if !entryExists(t, dataDir, personAddr("david-barnes")) || !entryExists(t, dataDir, personAddr("franz-kafka")) ||
+		!entryExists(t, dataDir, personAddr("ian-johnston")) {
+		t.Error("the completed project's people were not created")
+	}
+}
+
 // seedKafka is a catalogue already holding Metamorphosis by Franz Kafka (in
 // English, from another source, with another narration).
 func seedKafka(t *testing.T, dataDir, author, authorName string) {
