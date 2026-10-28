@@ -10,13 +10,14 @@ package importer
 //     of the other's ("Henrietta Elizabeth Marshall" / "Henrietta Marshall",
 //     "Joseph Sheridan Le Fanu" / "Sheridan Le Fanu"; a generational suffix
 //     on both names or neither), attaches to that work and credits the
-//     catalogued person: the row's author credit is respelled with the person's name, so
-//     the work's credit list is untouched and the person is keyed by the row's
-//     LibriVox author id when the stamp's rules allow (stampLibrivoxID) -
-//     unless LibriVox's spelling is already a person record (catalogued, keyed
-//     by that id, or created earlier in the run), which keeps the credit and
-//     its id (splitLibrivoxRespelling). The person schema has no alias field,
-//     so LibriVox's own spelling is kept in the run's note only. Anything
+//     catalogued person: the row's author credit is respelled with the
+//     person's name, so the work's credit list is untouched and the person is
+//     keyed by the row's LibriVox author id when the stamp's rules allow
+//     (stampLibrivoxID) - unless LibriVox's spelling is already a person
+//     record (catalogued, keyed by that id, or created earlier in the run),
+//     which keeps the credit and its id (splitLibrivoxRespelling). The person
+//     schema has no alias field, so LibriVox's own spelling is kept in the
+//     run's note only. Anything
 //     looser - an initial ("E. Nesbit" / "Edith Nesbit"), another given name
 //     ("Fanny" / "Frances Burney"), a one-word name ("Ovid"), "Saint" against
 //     "St", a Jr. or Sr. on one name only ("Henry James" / "Henry James Sr.":
@@ -156,9 +157,9 @@ func (p *planner) librivoxAuthorPairing(ws *workState, row []string, names map[s
 // are spellings of (variants, with the respelling of the row's credit names
 // that attaching to it takes) and those they only loosely resemble. A
 // spelling whose work author already carries a LibriVox author id other than
-// the one the row states for that credit (ids: credit name -> id) is loose:
-// LibriVox's two ids may well be two people.
-func (p *planner) librivoxAuthorVariants(slugs []string, lang string, authors workAuthors, credits []credit, ids map[string]int) (variants []*workState, renames []map[string]string, loose []*workState) {
+// the one row b states for that credit is loose: LibriVox's two ids may well
+// be two people.
+func (p *planner) librivoxAuthorVariants(b sourceBook, slugs []string, lang string, authors workAuthors, credits []credit) (variants []*workState, renames []map[string]string, loose []*workState) {
 	names := map[string]string{}
 	for _, c := range credits {
 		if slug := p.resolvePerson(c.name).slug; names[slug] == "" {
@@ -176,7 +177,7 @@ func (p *planner) librivoxAuthorVariants(slugs []string, lang string, authors wo
 			for r, w := range pairs {
 				rename[names[r]] = p.people[w]
 			}
-			if !p.respellingResolves(pairs) || p.pairsCarryOtherIDs(pairs, names, ids) {
+			if !p.respellingResolves(pairs) || p.pairsCarryOtherIDs(b, pairs, names) {
 				loose = append(loose, ws)
 				continue
 			}
@@ -204,36 +205,29 @@ func (p *planner) respellingResolves(pairs map[string]string) bool {
 }
 
 // pairsCarryOtherIDs reports whether a work author a pairing names already
-// carries a LibriVox author id other than the paired row credit's.
-func (p *planner) pairsCarryOtherIDs(pairs, names map[string]string, ids map[string]int) bool {
-	var held map[string]int
+// carries a LibriVox author id other than the one row b states for the paired
+// credit (librivoxAuthorIDOf).
+func (p *planner) pairsCarryOtherIDs(b sourceBook, pairs, names map[string]string) bool {
 	for r, w := range pairs {
-		id := ids[names[r]]
-		if id <= 0 {
-			continue
-		}
-		if held == nil {
-			held = p.librivoxAuthorIDsBySlug()
-		}
-		if have := held[w]; have != 0 && have != id {
-			return true
+		name := names[r]
+		if id := p.librivoxAuthorIDOf(b, name, p.resolvePerson(name)); id > 0 {
+			if have := p.librivoxAuthorIDOn(w); have != 0 && have != id {
+				return true
+			}
 		}
 	}
 	return false
 }
 
-// librivoxRowAuthorIDs is a LibriVox row's author and translator credits'
-// LibriVox ids, by the name each cleans to.
-func (p *planner) librivoxRowAuthorIDs(b sourceBook) map[string]int {
-	out := map[string]int{}
-	for _, c := range b.lv.credits {
-		if c.kind == librivoxAuthor && c.id > 0 {
-			if name := p.soleCreditName(c); name != "" {
-				out[name] = c.id
-			}
+// librivoxAuthorIDOn is the LibriVox author id person slug carries, catalogued
+// or stamped earlier in the run, or 0.
+func (p *planner) librivoxAuthorIDOn(slug string) int {
+	for k, s := range p.lv.people {
+		if k.kind == librivoxAuthor && s == slug {
+			return k.id
 		}
 	}
-	return out
+	return 0
 }
 
 // soleAuthorVariant is rule 1's attach test over the works under one title
@@ -243,7 +237,7 @@ func (p *planner) librivoxRowAuthorIDs(b sourceBook) map[string]int {
 // it takes. Otherwise related lists every work rule 1 found, for a worklist
 // row, and several says two or more of them are variants.
 func (p *planner) soleAuthorVariant(b sourceBook, slugs []string, lang string, authors workAuthors, credits []credit, partial []*workState) (ws *workState, rename map[string]string, related []*workState, several bool) {
-	variants, renames, loose := p.librivoxAuthorVariants(slugs, lang, authors, credits, p.librivoxRowAuthorIDs(b))
+	variants, renames, loose := p.librivoxAuthorVariants(b, slugs, lang, authors, credits)
 	if len(variants)+len(loose) == 0 {
 		return nil, nil, nil, false
 	}
@@ -375,9 +369,9 @@ func (p *planner) keyLibrivoxAuthorVariants(books []sourceBook, titles, suffixes
 	if len(proposed) == 0 {
 		return
 	}
-	keyed := p.librivoxAuthorIDsBySlug()
+	keyed := p.librivoxAuthorIDHolders()
 	for id, to := range proposed {
-		if _, held := p.lv.people[librivoxKey{librivoxAuthor, id}]; held || conflicting[id] || keyed[p.resolvePerson(to).slug] != 0 {
+		if _, held := p.lv.people[librivoxKey{librivoxAuthor, id}]; held || conflicting[id] || keyed[p.resolvePerson(to).slug] {
 			delete(proposed, id)
 		}
 	}
@@ -423,13 +417,13 @@ func (p *planner) soleCreditName(c librivoxCredit) string {
 	return ""
 }
 
-// librivoxAuthorIDsBySlug is the LibriVox author id each person slug carries,
-// catalogued or stamped earlier in the run.
-func (p *planner) librivoxAuthorIDsBySlug() map[string]int {
-	out := map[string]int{}
+// librivoxAuthorIDHolders is every person slug that carries a LibriVox author
+// id, catalogued or stamped earlier in the run.
+func (p *planner) librivoxAuthorIDHolders() map[string]bool {
+	out := map[string]bool{}
 	for k, slug := range p.lv.people {
 		if k.kind == librivoxAuthor {
-			out[slug] = k.id
+			out[slug] = true
 		}
 	}
 	return out
