@@ -171,38 +171,27 @@ func TestLibrivoxNonLatinTitlesGetTheProjectSlug(t *testing.T) {
 	// Cyrillic, Greek and CJK titles by Latin-named authors: each is its own
 	// work at librivox-<id>, titled as LibriVox writes it, never "untitled". A
 	// second project of one of them attaches to its work by the same rule as
-	// any spelling variant. A Cyrillic-named author falls back to the catch-all
-	// person, so a title match resting on that person decides nothing.
+	// any spelling variant. (A Cyrillic-named AUTHOR is
+	// TestLibrivoxUnsluggableSoleAuthorGoesToTheWorklist's.)
 	project := func(id int, title, lang, first, last string) LibrivoxProject {
 		return byAuthor(t, id, title, lang, LibrivoxPerson{ID: lvInt(6000 + id%100), FirstName: first, LastName: last})
-	}
-	unslugAuthor := func(id int, title string) LibrivoxProject {
-		p := project(id, title, "Russian", "Лев", "Толстой")
-		p.Sections = append([]LibrivoxSection(nil), p.Sections...)
-		for i := range p.Sections {
-			p.Sections[i].Readers = []LibrivoxReader{{ReaderID: 5000, DisplayName: "Иван"}}
-		}
-		return p
 	}
 	snap := writeSnapshot(t,
 		project(99600, "Война и мир", "Russian", "Leo", "Tolstoy"),
 		project(99601, "Ὀδύσσεια", "Ancient Greek", "", "Homer"),
 		project(99602, "論語", "Chinese", "", "Confucius"),
 		project(99603, "Война и мир (version 2)", "Russian", "Leo", "Tolstoy"),
-		unslugAuthor(99604, "Анна Каренина"),
-		unslugAuthor(99605, "Анна Каренина (version 2)"),
 	)
 	dataDir := t.TempDir()
 	sum := runLibrivox(t, snap, dataDir, allLibrivox)
-	if sum.NewWorks != 4 || sum.NewRecordings != 5 || sum.LibrivoxFallbackSlugs != 4 {
-		t.Fatalf("works/recordings/fallback = %d/%d/%d, want 4/5/4\nworklist: %v\nwarnings: %v",
+	if sum.NewWorks != 3 || sum.NewRecordings != 4 || sum.LibrivoxFallbackSlugs != 3 || len(sum.LibrivoxWorklist) != 0 {
+		t.Fatalf("works/recordings/fallback = %d/%d/%d, want 3/4/3\nworklist: %v\nwarnings: %v",
 			sum.NewWorks, sum.NewRecordings, sum.LibrivoxFallbackSlugs, sum.LibrivoxWorklist, sum.Warnings)
 	}
 	for slug, title := range map[string]string{
 		"librivox-99600": "Война и мир",
 		"librivox-99601": "Ὀδύσσεια",
 		"librivox-99602": "論語",
-		"librivox-99604": "Анна Каренина",
 	} {
 		var w lvWork
 		readEntity(t, dataDir, workAddr(slug), &w)
@@ -218,29 +207,13 @@ func TestLibrivoxNonLatinTitlesGetTheProjectSlug(t *testing.T) {
 	if r.LibrivoxID != 99603 {
 		t.Errorf("the second War and Peace = %+v", r)
 	}
-	want := []LibrivoxWorklistEntry{{
-		Project: 99605, Title: "Анна Каренина", Authors: []string{"Лев Толстой"},
-		Reason: LibrivoxAuthorUnmatched, Candidates: []LibrivoxCandidate{{"librivox-99604", "Анна Каренина"}},
-	}}
-	if !reflect.DeepEqual(sum.LibrivoxWorklist, want) {
-		t.Errorf("worklist = %+v", sum.LibrivoxWorklist)
-	}
-	var p lvPerson
-	readEntity(t, dataDir, personAddr(model.UnslugPersonID), &p)
-	if p.ReaderID != 0 || p.AuthorID != 0 {
-		t.Errorf("the catch-all person was stamped: %+v", p)
-	}
 	mustValidate(t, dataDir)
 
-	// The rerun writes nothing: every landed id dedups first; the worklist row
-	// is listed again, unchanged.
+	// The rerun writes nothing: every landed id dedups first.
 	before := testpack.Snapshot(t, dataDir)
 	again := runLibrivox(t, snap, dataDir, allLibrivox)
-	if again.NewWorks+again.NewRecordings+again.NewPeople+again.LibrivoxFallbackSlugs != 0 || len(again.Files) != 0 || again.Skipped != 5 {
+	if again.NewWorks+again.NewRecordings+again.NewPeople+again.LibrivoxFallbackSlugs != 0 || len(again.Files) != 0 || again.Skipped != 4 {
 		t.Errorf("rerun = %+v", again)
-	}
-	if !reflect.DeepEqual(again.LibrivoxWorklist, want) {
-		t.Errorf("rerun worklist = %+v", again.LibrivoxWorklist)
 	}
 	if after := testpack.Snapshot(t, dataDir); !reflect.DeepEqual(before, after) {
 		t.Error("rerun changed the tree")
@@ -340,63 +313,66 @@ func byAuthor(t *testing.T, id int, title, lang string, author LibrivoxPerson, t
 	return p
 }
 
-func TestLibrivoxOrdinaryWalkNeverAttachesOnTheCatchAllPerson(t *testing.T) {
-	// Agreement on the catch-all person alone is author-unmatched:
-	//   - Gorky's "Childhood" is not a recording of Tolstoy's;
-	//   - nor is Tolstoy's again: a shared translator is not a shared author;
-	//   - nor Dostoevsky's "The Stories" of Chekhov's, both by Garnett.
-	// Two "Letters" that share a real (Latin-named) author beside the
-	// catch-all one attach.
-	tolstoy := LibrivoxPerson{ID: 6100, FirstName: "Лев", LastName: "Толстой"}
-	gorky := LibrivoxPerson{ID: 6101, FirstName: "Максим", LastName: "Горький"}
-	wiener := LibrivoxPerson{ID: 6102, FirstName: "Leo", LastName: "Wiener"}
-	chekhov := LibrivoxPerson{ID: 6103, FirstName: "Антон", LastName: "Чехов"}
-	dostoevsky := LibrivoxPerson{ID: 6104, FirstName: "Фёдор", LastName: "Достоевский"}
-	garnett := LibrivoxPerson{ID: 6105, FirstName: "Constance", LastName: "Garnett"}
-	maude := LibrivoxPerson{ID: 6106, FirstName: "Aylmer", LastName: "Maude"}
-	coauthored := func(id int) LibrivoxProject {
-		p := byAuthor(t, id, "Letters", "English", tolstoy)
-		p.Authors = append(p.Authors, maude)
+func TestLibrivoxUnsluggableCoAuthorIsNotRecorded(t *testing.T) {
+	// A credit whose name slugs to nothing is dropped before the work is
+	// decided and reported unsluggable; the row lands on its other author.
+	// Project 2607's shape: "Йордан Йовков" beside "Yordan Yovkov" creates a
+	// work by Yovkov alone, and two "Letters" by Cyrillic-named Tolstoy and
+	// Aylmer Maude are one work by Maude, attached by the ordinary walk. The
+	// catch-all person is never created.
+	cyrillic := LibrivoxPerson{ID: 6100, FirstName: "Йордан", LastName: "Йовков"}
+	latin := LibrivoxPerson{ID: 6101, FirstName: "Yordan", LastName: "Yovkov"}
+	tolstoy := LibrivoxPerson{ID: 6102, FirstName: "Лев", LastName: "Толстой"}
+	maude := LibrivoxPerson{ID: 6103, FirstName: "Aylmer", LastName: "Maude"}
+	coauthored := func(id int, title string, first, second LibrivoxPerson) LibrivoxProject {
+		p := byAuthor(t, id, title, "English", first)
+		p.Authors = append(p.Authors, second)
 		return p
 	}
 	snap := writeSnapshot(t,
-		byAuthor(t, 99900, "Childhood", "English", tolstoy, wiener),
-		byAuthor(t, 99901, "Childhood", "English", gorky),
-		byAuthor(t, 99902, "Childhood (version 2)", "English", tolstoy, wiener),
-		byAuthor(t, 99903, "The Stories", "English", chekhov, garnett),
-		byAuthor(t, 99904, "The Stories", "English", dostoevsky, garnett),
-		coauthored(99905),
-		coauthored(99906),
+		coauthored(99900, "Short Stories", cyrillic, latin),
+		coauthored(99901, "Letters", tolstoy, maude),
+		coauthored(99902, "Letters (version 2)", tolstoy, maude),
 	)
 	dataDir := t.TempDir()
 	sum := runLibrivox(t, snap, dataDir, allLibrivox)
-	if sum.NewWorks != 3 || sum.NewRecordings != 4 {
-		t.Fatalf("works/recordings = %d/%d, want 3/4\nworklist: %v\nwarnings: %v", sum.NewWorks, sum.NewRecordings, sum.LibrivoxWorklist, sum.Warnings)
+	if sum.NewWorks != 2 || sum.NewRecordings != 3 || len(sum.LibrivoxWorklist) != 0 {
+		t.Fatalf("works/recordings = %d/%d, want 2/3\nworklist: %v\nwarnings: %v", sum.NewWorks, sum.NewRecordings, sum.LibrivoxWorklist, sum.Warnings)
 	}
-	childhood := []LibrivoxCandidate{{"childhood", "Childhood"}}
-	want := []LibrivoxWorklistEntry{{
-		Project: 99901, Title: "Childhood", Authors: []string{"Максим Горький"},
-		Reason: LibrivoxAuthorUnmatched, Candidates: childhood,
-	}, {
-		Project: 99902, Title: "Childhood", Authors: []string{"Лев Толстой", "Leo Wiener (Translator)"},
-		Reason: LibrivoxAuthorUnmatched, Candidates: childhood,
-	}, {
-		Project: 99904, Title: "The Stories", Authors: []string{"Фёдор Достоевский", "Constance Garnett (Translator)"},
-		Reason: LibrivoxAuthorUnmatched, Candidates: []LibrivoxCandidate{{"the-stories", "The Stories"}},
-	}}
-	if !reflect.DeepEqual(sum.LibrivoxWorklist, want) {
-		t.Errorf("worklist = %+v", sum.LibrivoxWorklist)
+	for slug, author := range map[string]string{"short-stories": "yordan-yovkov", "letters": "aylmer-maude"} {
+		var w lvWork
+		readEntity(t, dataDir, workAddr(slug), &w)
+		if !reflect.DeepEqual(w.Authors, []string{author}) || len(w.Credits) != 0 {
+			t.Errorf("%s authors/credits = %v/%v, want [%s]", slug, w.Authors, w.Credits, author)
+		}
 	}
-	for slug, n := range map[string]int{"childhood": 1, "the-stories": 1, "letters": 2} {
-		if got := recSlugsOf(t, dataDir, slug); len(got) != n {
-			t.Errorf("%s recordings = %v, want %d", slug, got, n)
+	unsluggable := func(project, id int, name, work string) LibrivoxUnrecordedCredit {
+		return LibrivoxUnrecordedCredit{Project: project, AuthorID: id, Name: name, Work: work, Reason: librivoxUnsluggable}
+	}
+	want := []LibrivoxUnrecordedCredit{
+		unsluggable(99900, 6100, "Йордан Йовков", "short-stories"),
+		unsluggable(99901, 6102, "Лев Толстой", "letters"),
+		unsluggable(99902, 6102, "Лев Толстой", "letters"),
+	}
+	if !reflect.DeepEqual(sum.LibrivoxUnrecordedCredits, want) {
+		t.Errorf("unrecorded = %+v, want %+v", sum.LibrivoxUnrecordedCredits, want)
+	}
+	if got, line := sum.LibrivoxUnrecordedCredits[0].String(), `99900 "Йордан Йовков" (author, librivox_author_id 6100) -> short-stories, unsluggable`; got != line {
+		t.Errorf("line = %q, want %q", got, line)
+	}
+	if entryExists(t, dataDir, personAddr(model.UnslugPersonID)) {
+		t.Error("the catch-all person was created")
+	}
+	for _, w := range sum.Warnings {
+		if strings.Contains(w, "empty slug") {
+			t.Errorf("a credit reached the catch-all: %s", w)
 		}
 	}
 	mustValidate(t, dataDir)
 
 	before := testpack.Snapshot(t, dataDir)
 	again := runLibrivox(t, snap, dataDir, allLibrivox)
-	if again.NewWorks+again.NewRecordings+again.NewPeople != 0 || len(again.Files) != 0 || !reflect.DeepEqual(again.LibrivoxWorklist, want) {
+	if again.NewWorks+again.NewRecordings+again.NewPeople != 0 || len(again.Files) != 0 || again.Skipped != 3 {
 		t.Errorf("rerun = %+v", again)
 	}
 	if after := testpack.Snapshot(t, dataDir); !reflect.DeepEqual(before, after) {
@@ -404,62 +380,53 @@ func TestLibrivoxOrdinaryWalkNeverAttachesOnTheCatchAllPerson(t *testing.T) {
 	}
 }
 
-func TestLibrivoxCatchAllAgreementIgnoresACollectiveCoAuthor(t *testing.T) {
-	// "Anonymous" beside the catch-all names nobody either: two "Folk Tales" by
-	// two Cyrillic-named authors, each co-credited to Anonymous, are not one work.
-	afanasyev := LibrivoxPerson{ID: 6120, FirstName: "Александр", LastName: "Афанасьев"}
-	khudyakov := LibrivoxPerson{ID: 6121, FirstName: "Иван", LastName: "Худяков"}
-	anon := LibrivoxPerson{ID: 6122, LastName: "Anonymous"}
+func TestLibrivoxUnsluggableSoleAuthorGoesToTheWorklist(t *testing.T) {
+	// A row left with no individual author once its unsluggable credits are
+	// dropped lands nowhere: alone, beside only a translator (Gorky's and
+	// Tolstoy's "Childhood"s, both translated by Leo Wiener, would otherwise be
+	// one work by Wiener), or beside only a collective (two "Folk Tales" by two
+	// Cyrillic-named authors would be one work by Anonymous). Nothing is
+	// written, not even the readers.
+	tolstoy := LibrivoxPerson{ID: 6110, FirstName: "Лев", LastName: "Толстой"}
+	gorky := LibrivoxPerson{ID: 6111, FirstName: "Максим", LastName: "Горький"}
+	wiener := LibrivoxPerson{ID: 6112, FirstName: "Leo", LastName: "Wiener"}
+	anon := LibrivoxPerson{ID: 6113, LastName: "Anonymous"}
 	withAnon := func(id int, author LibrivoxPerson) LibrivoxProject {
 		p := byAuthor(t, id, "Folk Tales", "English", author)
 		p.Authors = append(p.Authors, anon)
 		return p
 	}
-	snap := writeSnapshot(t, withAnon(99930, afanasyev), withAnon(99931, khudyakov))
-	dataDir := t.TempDir()
-	sum := runLibrivox(t, snap, dataDir, allLibrivox)
-	if sum.NewWorks != 1 || sum.NewRecordings != 1 {
-		t.Fatalf("works/recordings = %d/%d, want 1/1\nworklist: %v\nwarnings: %v", sum.NewWorks, sum.NewRecordings, sum.LibrivoxWorklist, sum.Warnings)
-	}
-	if len(sum.LibrivoxWorklist) != 1 || sum.LibrivoxWorklist[0].Project != 99931 || sum.LibrivoxWorklist[0].Reason != LibrivoxAuthorUnmatched {
-		t.Errorf("worklist = %+v", sum.LibrivoxWorklist)
-	}
-	mustValidate(t, dataDir)
-}
-
-func TestLibrivoxSpellingVariantNeverAttachesOnASharedTranslator(t *testing.T) {
-	// Rule 2's single match is held to the same test as the ordinary walk: two
-	// Cyrillic-titled "Детство"s by two Cyrillic-named authors, both translated
-	// by Leo Wiener, agree only on the catch-all person and the translator.
-	tolstoy := LibrivoxPerson{ID: 6110, FirstName: "Лев", LastName: "Толстой"}
-	gorky := LibrivoxPerson{ID: 6111, FirstName: "Максим", LastName: "Горький"}
-	wiener := LibrivoxPerson{ID: 6112, FirstName: "Leo", LastName: "Wiener"}
 	snap := writeSnapshot(t,
-		byAuthor(t, 99920, "Детство", "Russian", tolstoy, wiener),
-		byAuthor(t, 99921, "Детство (version 2)", "Russian", gorky, wiener),
+		byAuthor(t, 99920, "Детство", "Russian", tolstoy),
+		byAuthor(t, 99921, "Childhood", "English", tolstoy, wiener),
+		byAuthor(t, 99922, "Childhood", "English", gorky, wiener),
+		withAnon(99923, tolstoy),
+		withAnon(99924, gorky),
 	)
 	dataDir := t.TempDir()
 	sum := runLibrivox(t, snap, dataDir, allLibrivox)
-	if sum.NewWorks != 1 || sum.NewRecordings != 1 || sum.LibrivoxVariantsAttached != 0 {
-		t.Fatalf("works/recordings/variants = %d/%d/%d, want 1/1/0\nworklist: %v\nwarnings: %v",
-			sum.NewWorks, sum.NewRecordings, sum.LibrivoxVariantsAttached, sum.LibrivoxWorklist, sum.Warnings)
+	if sum.NewWorks+sum.NewRecordings+sum.NewPeople != 0 || len(sum.Files) != 0 {
+		t.Fatalf("works/recordings/people = %d/%d/%d, want nothing\nwarnings: %v", sum.NewWorks, sum.NewRecordings, sum.NewPeople, sum.Warnings)
 	}
-	want := []LibrivoxWorklistEntry{{
-		Project: 99921, Title: "Детство", Authors: []string{"Максим Горький", "Leo Wiener (Translator)"},
-		Reason: LibrivoxAuthorUnmatched, Candidates: []LibrivoxCandidate{{"librivox-99920", "Детство"}},
-	}}
+	entry := func(project int, title string, authors ...string) LibrivoxWorklistEntry {
+		return LibrivoxWorklistEntry{Project: project, Title: title, Authors: authors, Reason: LibrivoxAuthorUnsluggable, Candidates: []LibrivoxCandidate{}}
+	}
+	want := []LibrivoxWorklistEntry{
+		entry(99920, "Детство", "Лев Толстой"),
+		entry(99921, "Childhood", "Лев Толстой", "Leo Wiener (Translator)"),
+		entry(99922, "Childhood", "Максим Горький", "Leo Wiener (Translator)"),
+		entry(99923, "Folk Tales", "Лев Толстой", "Anonymous"),
+		entry(99924, "Folk Tales", "Максим Горький", "Anonymous"),
+	}
 	if !reflect.DeepEqual(sum.LibrivoxWorklist, want) {
 		t.Errorf("worklist = %+v", sum.LibrivoxWorklist)
 	}
-	mustValidate(t, dataDir)
-
-	before := testpack.Snapshot(t, dataDir)
-	again := runLibrivox(t, snap, dataDir, allLibrivox)
-	if again.NewWorks+again.NewRecordings+again.NewPeople != 0 || len(again.Files) != 0 || !reflect.DeepEqual(again.LibrivoxWorklist, want) {
-		t.Errorf("rerun = %+v", again)
+	if got, line := sum.LibrivoxWorklist[0].String(), `99920 "Детство" by Лев Толстой [author-unsluggable]`; got != line {
+		t.Errorf("line = %q, want %q", got, line)
 	}
-	if after := testpack.Snapshot(t, dataDir); !reflect.DeepEqual(before, after) {
-		t.Error("rerun changed the tree")
+	again := runLibrivox(t, snap, dataDir, allLibrivox)
+	if !reflect.DeepEqual(again.LibrivoxWorklist, want) || len(again.Files) != 0 {
+		t.Errorf("rerun = %+v", again)
 	}
 }
 

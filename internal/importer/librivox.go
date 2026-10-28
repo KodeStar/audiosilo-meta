@@ -538,6 +538,9 @@ type librivoxState struct {
 	// use; variantExamples names a few rows it attached, for the run's note.
 	titles          map[string][]string
 	variantExamples []string
+	// authorVariantExamples names a few rows librivoxauthors.go's rule 1
+	// attached, for the run's note.
+	authorVariantExamples []string
 }
 
 // librivoxKey is one LibriVox id in its namespace.
@@ -956,11 +959,16 @@ type LibrivoxUnrecordedCredit struct {
 	// already held it); false means the run withheld it rather than mint an
 	// orphan.
 	PersonExists bool `json:"person_exists"`
+	// Reason is "unsluggable" for a name that slugs to nothing, which no record
+	// can hold (librivoxauthors.go rule 2); "" for a credit the attached work
+	// does not name.
+	Reason string `json:"reason,omitempty"`
 }
 
 // String is the credit as the import report prints it, one line:
 //
 //	2027 "Amy Coulter" (translator, librivox_author_id 9876) -> siddhartha, person not created
+//	2607 "Йордан Йовков" (author, librivox_author_id 6294) -> staroplaninski-legendi, unsluggable
 func (c LibrivoxUnrecordedCredit) String() string {
 	var b strings.Builder
 	fmt.Fprintf(&b, "%d %q (", c.Project, c.Name)
@@ -973,7 +981,10 @@ func (c LibrivoxUnrecordedCredit) String() string {
 		fmt.Fprintf(&b, ", librivox_author_id %d", c.AuthorID)
 	}
 	fmt.Fprintf(&b, ") -> %s", c.Work)
-	if !c.PersonExists {
+	switch {
+	case c.Reason != "":
+		b.WriteString(", " + c.Reason)
+	case !c.PersonExists:
 		b.WriteString(", person not created")
 	}
 	return b.String()

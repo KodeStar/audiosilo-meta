@@ -17,13 +17,17 @@ package importer
 //     that, so the duplicate-identity guard's "skip, never merge" would keep a
 //     large share of the mirror out for want of an article.
 //  3. STILL AMBIGUOUS IS A WORKLIST SKIP. Two or more such works (several-works),
-//     or a work whose authors only partly agree with the row's or whose agreement
-//     rests on the catch-all person an unsluggable name falls back to
+//     or a work whose authors only partly agree with the row's
 //     (author-unmatched), decide nothing: the row is skipped and listed in
 //     Summary.LibrivoxWorklist for a person to resolve, never guessed. So is a
 //     row the duplicate-identity guard refuses (differently-spelled-title: a
 //     coarser match, a subtitle or decoration apart, which this rule does not
-//     read as the same title).
+//     read as the same title). Before author-unmatched, a work by an author the
+//     row spells with more or fewer words is attached, and one by an author it
+//     only loosely resembles is listed author-spelling (librivoxauthors.go rule
+//     1). A credit whose name slugs to nothing never reaches this file
+//     (librivoxauthors.go rule 2), so no agreement can rest on the catch-all
+//     person such a name would fall back to.
 //  4. NON-LATIN TITLES. A title that slugs to nothing (Cyrillic, Greek, CJK...),
 //     or whose letters are mostly in such a script (librivoxNonLatinTitle),
 //     never walks a slug chain: the shared "untitled" one would file every such
@@ -61,9 +65,16 @@ const (
 	// carry its title once articles and punctuation are set aside.
 	LibrivoxSeveralWorks = "several-works"
 	// LibrivoxAuthorUnmatched: a work carries the row's title, but its authors
-	// only partly agree with the row's, or the agreement rests on the catch-all
-	// person a name in an unsluggable script falls back to.
+	// only partly agree with the row's.
 	LibrivoxAuthorUnmatched = "author-unmatched"
+	// LibrivoxAuthorSpelling: a work carries the row's title by an author of
+	// the same surname whose name only loosely agrees with the row's (an
+	// initial, another given name), or alongside other candidates
+	// (librivoxauthors.go rule 1).
+	LibrivoxAuthorSpelling = "author-spelling"
+	// LibrivoxAuthorUnsluggable: every individual author the row credits has a
+	// name that slugs to nothing (librivoxauthors.go rule 2); no candidates.
+	LibrivoxAuthorUnsluggable = "author-unsluggable"
 	// LibrivoxDifferentlySpelled: the duplicate-identity guard (dupidentity.go)
 	// found the row's book under a title this rule does not read as the same
 	// (a subtitle or a decoration apart).
@@ -184,36 +195,6 @@ func mostlyNonLatinLetters(t string) bool {
 	return 2*(letters-latin) > letters
 }
 
-// anyUnsluggedCredit reports whether any credit's name slugs to nothing, i.e.
-// resolves to the catch-all person: a cheap test before resolving the credits.
-func anyUnsluggedCredit(credits []credit) bool {
-	for _, c := range credits {
-		if _, fellBack := personSlug(c.name); fellBack {
-			return true
-		}
-	}
-	return false
-}
-
-// restsOnCatchAll reports whether a work's author agreement with a row rests
-// on the catch-all person: the row's identity authors include it, and none of
-// the row's other INDIVIDUAL identity authors (individualAuthor) is an author
-// of the work. A shared translator or other role-credited person is not
-// enough, nor is a shared collective such as Anonymous: a Cyrillic-named
-// Chekhov and a Cyrillic-named Dostoevsky both translated by Constance Garnett
-// are still two authors on one catch-all record.
-func restsOnCatchAll(authors workAuthors, ws *workState) bool {
-	if !slices.Contains(authors.identity, model.UnslugPersonID) {
-		return false
-	}
-	for _, a := range authors.identity {
-		if individualAuthor(a) && ws.authors[a] {
-			return false
-		}
-	}
-	return true
-}
-
 // joinSlugWords drops a slug's hyphens ("monte-cristo" and "montecristo" are one
 // spelling) except one between two digits, the only thing telling "vol-1-2"
 // from "vol-12".
@@ -291,6 +272,9 @@ type librivoxRoute struct {
 	walk *workWalk
 	// skip says the row is on the worklist and must be dropped.
 	skip bool
+	// renames is an author-variant attach's respelling of the row's credit
+	// names onto the catalogued people it credits (librivoxauthors.go rule 1).
+	renames map[string]string
 }
 
 // routeLibrivox applies the rules in this file's header to one LibriVox row. It
@@ -301,49 +285,38 @@ type librivoxRoute struct {
 // leaves rules 1-3 nothing to decide (the ordinary path, or rule 4), so the row's
 // credits are resolved and its chain walked only when the key holds a work - the
 // duplicate-identity guard's own gate, for the same reason.
-//
-// A rule-1 hit whose author agreement rests on the catch-all person
-// (restsOnCatchAll) decides nothing either: two "Childhood"s by two
-// Cyrillic-named authors both credit that one record, so the hit is an
-// author-unmatched worklist row, never an attach. Such
-// a row is the one case probed even when the index holds nothing, since a chain
-// hit need not share the key (a full or qualified title's walk).
 func (p *planner) routeLibrivox(b sourceBook, workTitle, fullTitle, posSuffix, lang string, credits []credit, claim *seriesClaim) librivoxRoute {
 	if b.lv == nil {
 		return librivoxRoute{}
 	}
 	key, nonLatin := librivoxTitleKeyOf(workTitle)
 	slugs := p.librivoxTitleIndex()[key]
-	if len(slugs) == 0 && (nonLatin || !anyUnsluggedCredit(credits)) {
+	if len(slugs) == 0 {
 		return p.librivoxUndecided(b, workTitle, fullTitle, posSuffix, lang, credits, claim, nonLatin)
 	}
 	authors := p.rowWorkAuthorsRO(credits)
-	if !nonLatin {
-		if ws := p.resolveWork(workTitle, fullTitle, b.qualifiedTitle, posSuffix, authors, lang, claim).ws; ws != nil {
-			if restsOnCatchAll(authors, ws) {
-				p.noteLibrivoxWorklist(b, workTitle, LibrivoxAuthorUnmatched, candidatesOf([]*workState{ws}))
-				return librivoxRoute{skip: true}
-			}
-			return librivoxRoute{}
-		}
+	if !nonLatin && p.resolveWork(workTitle, fullTitle, b.qualifiedTitle, posSuffix, authors, lang, claim).ws != nil {
+		return librivoxRoute{}
 	}
-	if len(slugs) > 0 {
-		matched, partial := p.librivoxCandidates(slugs, lang, authors)
-		switch {
-		case len(matched) == 1 && !restsOnCatchAll(authors, matched[0]):
-			p.summary.LibrivoxVariantsAttached++
-			if len(p.lv.variantExamples) < maxWarnExamples {
-				p.lv.variantExamples = append(p.lv.variantExamples,
-					fmt.Sprintf("%d %q -> %q (%q)", b.lv.id, workTitle, matched[0].slug, matched[0].title))
-			}
-			return librivoxRoute{walk: &workWalk{title: workTitle, ws: matched[0]}}
-		case len(matched) > 1:
-			p.noteLibrivoxWorklist(b, workTitle, LibrivoxSeveralWorks, candidatesOf(matched))
-			return librivoxRoute{skip: true}
-		case len(matched)+len(partial) > 0:
-			p.noteLibrivoxWorklist(b, workTitle, LibrivoxAuthorUnmatched, candidatesOf(slices.Concat(matched, partial)))
-			return librivoxRoute{skip: true}
+	matched, partial := p.librivoxCandidates(slugs, lang, authors)
+	switch {
+	case len(matched) == 1:
+		p.summary.LibrivoxVariantsAttached++
+		if len(p.lv.variantExamples) < maxWarnExamples {
+			p.lv.variantExamples = append(p.lv.variantExamples,
+				fmt.Sprintf("%d %q -> %q (%q)", b.lv.id, workTitle, matched[0].slug, matched[0].title))
 		}
+		return librivoxRoute{walk: &workWalk{title: workTitle, ws: matched[0]}}
+	case len(matched) > 1:
+		p.noteLibrivoxWorklist(b, workTitle, LibrivoxSeveralWorks, candidatesOf(matched))
+		return librivoxRoute{skip: true}
+	}
+	if route, ok := p.routeLibrivoxAuthorVariant(b, workTitle, slugs, lang, authors, credits, partial); ok {
+		return route
+	}
+	if len(partial) > 0 {
+		p.noteLibrivoxWorklist(b, workTitle, LibrivoxAuthorUnmatched, candidatesOf(partial))
+		return librivoxRoute{skip: true}
 	}
 	return p.librivoxUndecided(b, workTitle, fullTitle, posSuffix, lang, credits, claim, nonLatin)
 }
@@ -392,7 +365,6 @@ func (p *planner) librivoxQualifiedTwin(b sourceBook, workTitle, fullTitle, posS
 			authors = &a
 		}
 		matched, _ := p.librivoxCandidates(slugs, lang, *authors)
-		matched = slices.DeleteFunc(matched, func(ws *workState) bool { return restsOnCatchAll(*authors, ws) })
 		switch {
 		case len(matched) == 1:
 			p.noteIdentityDuplicate(b, workTitle, duplicateIdentityMatch{work: matched[0].slug, title: matched[0].title})
