@@ -2027,6 +2027,101 @@
       ],
       "title": "WPD: Book 1"
     },
+    "wrack": {
+      "added_at": "2026-10-28",
+      "authors": [
+        "friedrich-gerstacker"
+      ],
+      "genres": [
+        "action-adventure"
+      ],
+      "id": "wrack",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "karlsson": {
+          "added_at": "2026-10-28",
+          "archive_id": "wrack_hf_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/wrack_hf_librivox/wrack_1_gerstaecker_64kb.mp3",
+              "length_ms": 992000,
+              "start_ms": 0,
+              "title": "1 - Die Windstille"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/wrack_hf_librivox/wrack_2_gerstaecker_64kb.mp3",
+              "length_ms": 1200000,
+              "start_ms": 992000,
+              "title": "2 - Die Einfahrt"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/wrack_hf_librivox/wrack_3_gerstaecker_64kb.mp3",
+              "length_ms": 816000,
+              "start_ms": 2192000,
+              "title": "3 - Das Wrack"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/wrack_hf_librivox/wrack_4_gerstaecker_64kb.mp3",
+              "length_ms": 1040000,
+              "start_ms": 3008000,
+              "title": "4 - Der Einsiedler"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/wrack_hf_librivox/wrack_5_gerstaecker_64kb.mp3",
+              "length_ms": 853000,
+              "start_ms": 4048000,
+              "title": "5 - Eine Entdeckung"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/wrack_hf_librivox/wrack_6_gerstaecker_64kb.mp3",
+              "length_ms": 593000,
+              "start_ms": 4901000,
+              "title": "6 - Unerwartete Stoerung"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/wrack_hf_librivox/wrack_7_gerstaecker_64kb.mp3",
+              "length_ms": 572000,
+              "start_ms": 5494000,
+              "title": "7 - Schluss"
+            }
+          ],
+          "copyright_year": 1870,
+          "cover_url": "https://archive.org/download/LibrivoxCdCoverArt23/wrack_1210.jpg",
+          "id": "karlsson",
+          "language": "de",
+          "librivox_id": 7134,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/das-wrack-by-friedrich-gerstaecker/",
+            "rss": "https://librivox.org/rss/7134",
+            "text": "https://www.projekt-gutenberg.org/gerstaec/wrack/wrack.html",
+            "zip": "https://archive.org/compress/wrack_hf_librivox/formats=64KBPS MP3&file=/wrack_hf_librivox.zip"
+          },
+          "narrators": [
+            "karlsson"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 101,
+          "sources": [
+            {
+              "imported_at": "2026-10-28",
+              "ref": "7134",
+              "type": "librivox"
+            }
+          ],
+          "work": "wrack"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-28",
+          "ref": "7134",
+          "type": "librivox"
+        }
+      ],
+      "title": "Wrack"
+    },
     "wrack-and-rune": {
       "added_at": "2026-07-29",
       "authors": [
