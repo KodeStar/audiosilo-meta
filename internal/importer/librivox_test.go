@@ -504,6 +504,16 @@ func TestLibrivoxTitleStripsTheVersionMarker(t *testing.T) {
 		"Whose Body? (Version 3 - dramatic reading)":      "Whose Body?",
 		"Box-Car Children (Version 3: Dramatic Reading)":  "Box-Car Children",
 		"Story of a Needle (Version 2; Dramatic Reading)": "Story of a Needle",
+		"Kim (Version 4 \u2013 Dramatic Reading)":         "Kim",
+		// A separator before the parenthetical goes with it.
+		"Ballad of Reading Gaol, (version 2)": "Ballad of Reading Gaol",
+		"Gods of Mars - (version 3)":          "Gods of Mars",
+		"- (version 2)":                       "- (version 2)",
+		// "version" in the other languages LibriVox's projects spell it in.
+		"Canti (Versione 2)":            "Canti",
+		"Novelas y Cuentos (Versión 3)": "Novelas y Cuentos",
+		"Relíquia (Versão 2)":           "Relíquia",
+		"Rimas Versión 2":               "Rimas",
 		// Not a bare marker: "ver" alone, a glued word, a lone "Version 2",
 		// a version that is not last.
 		"Walden, Ver 2":                     "Walden, Ver 2",
@@ -512,6 +522,7 @@ func TestLibrivoxTitleStripsTheVersionMarker(t *testing.T) {
 		"Version 2 of Book 1":               "Version 2 of Book 1",
 		"Nana (Version 2), Book Nine":       "Nana (Version 2), Book Nine",
 		"Phantom of the Opera (version 4?)": "Phantom of the Opera (version 4?)",
+		"Bible, King James Version 1611":    "Bible, King James Version 1611",
 	} {
 		if got := librivoxTitle(in); got != want {
 			t.Errorf("librivoxTitle(%q) = %q, want %q", in, got, want)

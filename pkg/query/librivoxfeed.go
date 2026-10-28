@@ -32,8 +32,9 @@ import (
 //     day LibriVox catalogued it: a client syncing LibriVox's own new projects
 //     reads LibriVox's since; ours answers "what reached the mirror since".
 //   - title, author, genre: an exact, case-insensitive match, or with a leading
-//     "^" a prefix match. title is the work's title (LibriVox's "(version N)"
-//     marker is not stored: it numbers projects, not works); author is an
+//     "^" a prefix match. title is the work's title (LibriVox's repeat markers,
+//     "(version N)", "(ver. N)", "(Dramatic Reading)" or a bare "Version N",
+//     are not stored: they name projects, not works); author is an
 //     author's LAST name - the last word of the name - and never a translator;
 //     genre is a LibriVox genre name the importer maps (the same table) or a
 //     genre of this project's vocabulary. LibriVox's own "^" on author matches the
@@ -57,7 +58,8 @@ import (
 // an empty id, an author's first_name/last_name are the stored name split at its
 // last word, and dob/dod are years or "" (LibriVox's "alive" is not a year). The
 // title is the catalogue work's title, so a project attached to an existing work
-// reads in that work's spelling and case, without "(version N)". Translators are
+// reads in that work's spelling and case, without its repeat markers ("(version
+// N)", "(Dramatic Reading)"; the importer's librivoxTitle). Translators are
 // the work's translator credits: a project attached to a catalogued work lists
 // that work's translators, which may differ from LibriVox's; a translator's
 // LibriVox id and years come from the person record, so they appear once the

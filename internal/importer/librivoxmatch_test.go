@@ -509,6 +509,8 @@ func TestLibrivoxRepeatMarkerAttachesToThePlainWork(t *testing.T) {
 		"short version":    "Metamorphosis (ver. 2)",
 		"stacked":          "Metamorphosis (version 3) (Dramatic Reading)",
 		"combined":         "Metamorphosis (Version 3, Dramatic Reading)",
+		"bare version":     "Metamorphosis, Version 2",
+		"separator before": "Metamorphosis - (version 2)",
 	} {
 		t.Run(name, func(t *testing.T) {
 			dataDir := t.TempDir()
