@@ -7,6 +7,7 @@ package scripts_test
 import (
 	"encoding/json"
 	"errors"
+	"io"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -1101,9 +1102,16 @@ func gitFixture(t *testing.T) (repo string, git func(args ...string) string, wri
 // stdout and the exit status; stderr goes to the test log.
 func runScript(t *testing.T, dir, script string, scrub, env []string, args ...string) (string, int) {
 	t.Helper()
+	return runScriptInput(t, dir, script, nil, scrub, env, args...)
+}
+
+// runScriptInput is runScript with stdin read from in (nil for none).
+func runScriptInput(t *testing.T, dir, script string, in io.Reader, scrub, env []string, args ...string) (string, int) {
+	t.Helper()
 	path := abs(t, filepath.Join("..", ".github", "scripts", script))
 	cmd := exec.Command("bash", append([]string{path}, args...)...)
 	cmd.Dir = dir
+	cmd.Stdin = in
 	for _, kv := range os.Environ() {
 		if !slices.Contains(scrub, strings.SplitN(kv, "=", 2)[0]) {
 			cmd.Env = append(cmd.Env, kv)

@@ -3,11 +3,9 @@ package scripts_test
 import (
 	"fmt"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"regexp"
 	"slices"
-	"strconv"
 	"strings"
 	"testing"
 )
@@ -23,22 +21,9 @@ const modulePath = "github.com/kodestar/audiosilo-meta"
 func shard(t *testing.T, pkgs []string, args ...string) ([]string, int) {
 	t.Helper()
 	requireTools(t, "bash", "awk", "sort", "grep")
-	cmd := exec.Command("bash", append([]string{abs(t, filepath.Join("..", ".github", "scripts", "go-test-shard.sh"))}, args...)...)
-	cmd.Stdin = strings.NewReader(strings.Join(pkgs, "\n") + "\n")
-	var stderr strings.Builder
-	cmd.Stderr = &stderr
-	out, err := cmd.Output()
-	if stderr.Len() > 0 {
-		t.Logf("stderr: %s", stderr.String())
-	}
-	code := 0
-	if err != nil {
-		if code = exitCode(err); code < 0 {
-			t.Fatalf("running go-test-shard.sh: %v", err)
-		}
-	}
+	out, code := runScriptInput(t, "", "go-test-shard.sh", strings.NewReader(strings.Join(pkgs, "\n")+"\n"), nil, nil, args...)
 	var lines []string
-	for _, l := range strings.Split(strings.TrimSpace(string(out)), "\n") {
+	for _, l := range strings.Split(strings.TrimSpace(out), "\n") {
 		if l != "" {
 			lines = append(lines, l)
 		}
@@ -120,6 +105,12 @@ func TestGoTestShardRefusesBadInput(t *testing.T) {
 	if got, code := shard(t, nil, "1", "3"); code != 1 || len(got) != 0 {
 		t.Errorf("empty stdin = %v, exit %d; want nothing and exit 1", got, code)
 	}
+	// So is a shard the partition leaves empty (more shards than packages):
+	// `xargs go test` over nothing would test one directory and pass.
+	two := []string{modulePath + "/pkg/a", modulePath + "/pkg/b"}
+	if got, code := shard(t, two, "3", "3"); code != 1 || len(got) != 0 {
+		t.Errorf("empty shard 3 of 3 = %v, exit %d; want nothing and exit 1", got, code)
+	}
 }
 
 // Every package the WEIGHTS table names still exists: a weight left behind by
@@ -143,8 +134,9 @@ func TestGoTestShardWeightsNameRealPackages(t *testing.T) {
 	}
 }
 
-// check.yml's `test` matrix lists exactly the shards 1..N its step passes as the
-// count, so no shard of the partition goes unrun.
+// check.yml's `test` matrix lists exactly the shards 1..N, and its step passes
+// the matrix's own size (strategy.job-total) as the count, so no shard of the
+// partition goes unrun and none is asked for twice.
 func TestCheckWorkflowRunsEveryShard(t *testing.T) {
 	t.Parallel()
 	raw, err := os.ReadFile(filepath.Join("..", ".github", "workflows", "check.yml"))
@@ -155,23 +147,18 @@ func TestCheckWorkflowRunsEveryShard(t *testing.T) {
 	if m == nil {
 		t.Fatal("found no `shard: [...]` matrix in check.yml")
 	}
-	var shards []string
-	for _, s := range strings.Split(string(m[1]), ",") {
+	var shards, want []string
+	for i, s := range strings.Split(string(m[1]), ",") {
 		shards = append(shards, strings.TrimSpace(s))
-	}
-	calls := regexp.MustCompile(`go-test-shard\.sh "\$SHARD" (\d+)`).FindAllSubmatch(raw, -1)
-	if len(calls) != 1 {
-		t.Fatalf("found %d go-test-shard.sh calls in check.yml, want exactly one", len(calls))
-	}
-	var want []string
-	n, err := strconv.Atoi(string(calls[0][1]))
-	if err != nil {
-		t.Fatal(err)
-	}
-	for i := 1; i <= n; i++ {
-		want = append(want, fmt.Sprint(i))
+		want = append(want, fmt.Sprint(i+1))
 	}
 	if !slices.Equal(shards, want) {
-		t.Errorf("check.yml's matrix runs shards %v but partitions into %d (want %v)", shards, n, want)
+		t.Errorf("check.yml's matrix runs shards %v, want %v", shards, want)
+	}
+	if calls := regexp.MustCompile(`go-test-shard\.sh (\S+ \S+)`).FindAllSubmatch(raw, -1); len(calls) != 1 || string(calls[0][1]) != `"$SHARD" "$SHARDS"` {
+		t.Errorf("check.yml's go-test-shard.sh calls = %q, want one passing \"$SHARD\" \"$SHARDS\"", calls)
+	}
+	if !strings.Contains(string(raw), "SHARDS: ${{ strategy.job-total }}") {
+		t.Error("check.yml's test step does not take SHARDS from strategy.job-total")
 	}
 }

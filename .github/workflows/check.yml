@@ -134,7 +134,8 @@ jobs:
   # `go test -race ./...`, in three shards. .github/scripts/go-test-shard.sh
   # partitions `go list ./...` so every package runs in exactly one shard
   # (scripts/gotestshard_test.go pins that, and that this matrix names shards 1
-  # to 3), balanced on measured per-package times. -race, as the documented gate
+  # to N and passes N as strategy.job-total), balanced on measured per-package
+  # times. -race, as the documented gate
   # is. Every real-data test skips under the detector (race_{on,off}_test.go in
   # pkg/check, pkg/canonical, internal/importer and internal/repair) - the
   # fixture suites cover the concurrent code and the real tree is data coverage,
@@ -171,20 +172,16 @@ jobs:
           go-version-file: .go-version
           check-latest: true
 
-      - name: Test (shard ${{ matrix.shard }} of 3)
+      # The count is the matrix's own size, so the list above is its one source.
+      - name: Test (shard ${{ matrix.shard }} of ${{ strategy.job-total }})
         if: needs.changes.outputs.go == 'true'
         env:
           SHARD: ${{ matrix.shard }}
+          SHARDS: ${{ strategy.job-total }}
         run: |
           set -o pipefail
-          go list ./... | bash .github/scripts/go-test-shard.sh "$SHARD" 3 > "$RUNNER_TEMP/packages.txt"
-          if [ ! -s "$RUNNER_TEMP/packages.txt" ]; then
-            # An empty shard would make `go test` test the current directory
-            # alone and pass; the partition has a package for every shard.
-            echo "::error::shard $SHARD of 3 holds no package"
-            exit 1
-          fi
-          echo "shard $SHARD of 3: $(wc -l < "$RUNNER_TEMP/packages.txt") packages"
+          go list ./... | bash .github/scripts/go-test-shard.sh "$SHARD" "$SHARDS" > "$RUNNER_TEMP/packages.txt"
+          echo "shard $SHARD of $SHARDS: $(wc -l < "$RUNNER_TEMP/packages.txt") packages"
           xargs go test -race < "$RUNNER_TEMP/packages.txt" 2>&1 | tee "$RUNNER_TEMP/test.log"
 
       - name: Keep the log for the verdict
@@ -309,9 +306,16 @@ jobs:
     # Observed ~2 minutes of checkout plus ~1.5-2.5 minutes of metacheck.
     timeout-minutes: 20
     steps:
-      - name: Checkout
+      # No data/ in the working tree: the base's data/ is read from git
+      # (advisory-delta.sh's `git archive`, the `git diff` below), never from
+      # disk. No blob filter either, so both find every object locally.
+      - name: Checkout (no data/ on disk)
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          sparse-checkout: |
+            /*
+            !/data/
+          sparse-checkout-cone-mode: false
           persist-credentials: false
           # Two commits: the checkout is GitHub's test MERGE commit, and its
           # first parent is the base compared against.

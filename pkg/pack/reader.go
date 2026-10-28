@@ -59,7 +59,7 @@ func (r *Reader) Read(rel string) (*File, error) {
 	if f, ok := r.cache[rel]; ok {
 		return f, nil
 	}
-	raw, err := os.ReadFile(filepath.Join(r.dir, filepath.FromSlash(rel)))
+	f, err := r.load(rel)
 	if err != nil {
 		if os.IsNotExist(err) {
 			f := NewFile()
@@ -69,11 +69,22 @@ func (r *Reader) Read(rel string) (*File, error) {
 		}
 		return nil, err
 	}
+	r.cache[rel] = f
+	return f, nil
+}
+
+// load reads and parses rel without touching the cache, so Read and prefetch
+// share one way of loading a pack: a read error is returned bare (Read tells a
+// missing file by it) and a parse error names rel.
+func (r *Reader) load(rel string) (*File, error) {
+	raw, err := os.ReadFile(filepath.Join(r.dir, filepath.FromSlash(rel)))
+	if err != nil {
+		return nil, err
+	}
 	f, err := Parse(raw)
 	if err != nil {
 		return nil, fmt.Errorf("%s: %w", rel, err)
 	}
-	r.cache[rel] = f
 	return f, nil
 }
 
@@ -97,11 +108,7 @@ func (r *Reader) prefetch(rels []string) {
 	}
 	parsed := make([]*File, len(todo))
 	parallel.Do(len(todo), func(i int) {
-		raw, err := os.ReadFile(filepath.Join(r.dir, filepath.FromSlash(todo[i])))
-		if err != nil {
-			return
-		}
-		if f, err := Parse(raw); err == nil {
+		if f, err := r.load(todo[i]); err == nil {
 			parsed[i] = f
 		}
 	})

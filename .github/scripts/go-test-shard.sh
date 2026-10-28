@@ -5,8 +5,9 @@
 #   go list ./... | go-test-shard.sh <shard> <count>
 #       Read package import paths on stdin, one per line, and print the ones shard
 #       <shard> (1-based) of <count> runs, one per line, sorted. Exits 2 on a bad
-#       argument and 1 when stdin holds no package at all (an empty shard list
-#       must never come from an empty listing).
+#       argument and 1 when stdin holds no package at all or this shard comes out
+#       empty: `xargs go test` over an empty list would test the current
+#       directory alone and pass, so an empty shard is never an answer.
 #
 # WHY. `go test -race ./...` was the longest step of the `check` job: ~215 s on
 # a push to main and ~310 s on a pull request that also carried a large data
@@ -74,7 +75,7 @@ fi
 
 # Weight each package, order longest first (name breaks a tie, so the order is
 # total), then pack greedily.
-printf '%s\n' "$pkgs" |
+mine="$(printf '%s\n' "$pkgs" |
   awk -v def="$DEFAULT_WEIGHT" '
     NR == FNR { if (NF == 2) w[$1] = $2; next }
     { print (($0 in w) ? w[$0] : def), $0 }' <(printf '%s\n' "$WEIGHTS") - |
@@ -87,4 +88,9 @@ printf '%s\n' "$pkgs" |
       load[best] += $1
       if (best == shard) print $2
     }' |
-  sort
+  sort)"
+if [ -z "$mine" ]; then
+  echo "go-test-shard: shard $shard of $count holds no package" >&2
+  exit 1
+fi
+printf '%s\n' "$mine"

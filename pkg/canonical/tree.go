@@ -69,32 +69,42 @@ func CheckTreeExcept(dir string, skip []string) (nonCanonical, invalid []string,
 	if err != nil {
 		return nil, nil, err
 	}
-	// Every file is judged on its own, so the judging runs on the shared pool:
-	// a worker writes only its own slot, and the lists are assembled in walk
-	// order afterwards, so the result does not depend on the scheduler.
+	return walk(files, checkFile)
+}
+
+// checkFile judges one file without changing it: an unparseable file is both
+// invalid and not canonical.
+func checkFile(f string) fileResult {
+	raw, err := os.ReadFile(f)
+	if err != nil {
+		return fileResult{err: err}
+	}
+	ok, ferr := IsCanonical(raw)
+	return fileResult{changed: ferr != nil || !ok, invalid: ferr != nil}
+}
+
+// walk runs one per-file step over files on the shared pool and assembles the
+// results in walk order: the files that changed (or would), the ones that did
+// not parse, and the FIRST I/O error in walk order, as the sequential loop the
+// pool replaced reported it. Every file is judged on its own and a worker
+// writes only its own slot, so the result does not depend on the scheduler.
+func walk(files []string, step func(string) fileResult) (changed, invalid []string, err error) {
 	results := make([]fileResult, len(files))
 	parallel.Do(len(files), func(i int) {
-		raw, err := os.ReadFile(files[i])
-		if err != nil {
-			results[i].err = err
-			return
-		}
-		ok, ferr := IsCanonical(raw)
-		results[i].invalid = ferr != nil
-		results[i].changed = ferr != nil || !ok
+		results[i] = step(files[i])
 	})
 	for i, r := range results {
 		if r.err != nil {
 			return nil, nil, r.err
 		}
 		if r.changed {
-			nonCanonical = append(nonCanonical, files[i])
+			changed = append(changed, files[i])
 		}
 		if r.invalid {
 			invalid = append(invalid, files[i])
 		}
 	}
-	return nonCanonical, invalid, nil
+	return changed, invalid, nil
 }
 
 // fileResult is what one worker of a tree walk found about one file: whether it
@@ -123,24 +133,7 @@ func WriteTreeExcept(dir string, skip []string) (changed, failed []string, err e
 	if err != nil {
 		return nil, nil, err
 	}
-	// One file per worker, as in CheckTreeExcept: each rewrite touches only its
-	// own file, and the lists are assembled in walk order.
-	results := make([]fileResult, len(files))
-	parallel.Do(len(files), func(i int) {
-		results[i] = writeFile(files[i])
-	})
-	for i, r := range results {
-		if r.err != nil {
-			return nil, nil, r.err
-		}
-		if r.invalid {
-			failed = append(failed, files[i])
-		}
-		if r.changed {
-			changed = append(changed, files[i])
-		}
-	}
-	return changed, failed, nil
+	return walk(files, writeFile)
 }
 
 // writeFile rewrites one file in canonical form if it is not already, leaving
