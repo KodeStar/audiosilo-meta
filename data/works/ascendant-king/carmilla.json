@@ -824,6 +824,8 @@
         "joseph-sheridan-le-fanu"
       ],
       "genres": [
+        "classics",
+        "fantasy",
         "gothic",
         "horror"
       ],
@@ -1264,6 +1266,43 @@
           ],
           "work": "carmilla-joseph-sheridan-le-fanu"
         },
+        "karen-cass-2022": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0B6GDYZ71",
+              "region": "us"
+            },
+            {
+              "asin": "B0B6GLC9TF",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81lScZwzEdL.jpg",
+          "id": "karen-cass-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "karen-cass"
+          ],
+          "publisher": "SNR Audio",
+          "release_date": "2022-08-04",
+          "runtime_min": 182,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0B6GDYZ71",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0B6GLC9TF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "carmilla-joseph-sheridan-le-fanu"
+        },
         "margaret-melosh-2019": {
           "abridged": false,
           "added_at": "2026-08-08",
@@ -1510,6 +1549,11 @@
           "imported_at": "2026-08-08",
           "ref": "B01BDH2USI",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0B6GDYZ71",
+          "type": "libex-import"
         }
       ],
       "title": "Carmilla"
@@ -1556,68 +1600,6 @@
           "imported_at": "2026-10-14",
           "ref": "B00LI9GXYE",
           "type": "audiosilo-books-import"
-        }
-      ],
-      "title": "Carmilla"
-    },
-    "carmilla-sheridan-le-fanu": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "joseph-sheridan-le-fanu"
-      ],
-      "genres": [
-        "classics",
-        "fantasy",
-        "gothic",
-        "horror"
-      ],
-      "id": "carmilla-sheridan-le-fanu",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "karen-cass-2022": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0B6GDYZ71",
-              "region": "us"
-            },
-            {
-              "asin": "B0B6GLC9TF",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81lScZwzEdL.jpg",
-          "id": "karen-cass-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "karen-cass"
-          ],
-          "publisher": "SNR Audio",
-          "release_date": "2022-08-04",
-          "runtime_min": 182,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0B6GDYZ71",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0B6GLC9TF",
-              "type": "libex-import"
-            }
-          ],
-          "work": "carmilla-sheridan-le-fanu"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0B6GDYZ71",
-          "type": "libex-import"
         }
       ],
       "title": "Carmilla"
