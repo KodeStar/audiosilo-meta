@@ -39,6 +39,9 @@ package importer
 //     the section's archive.org file as the chapter's audio_url. One section
 //     without a playtime makes the timeline unknowable past it, so the whole
 //     chapter list is omitted (buildChapters' all-or-nothing rule).
+//   - A project still IN PROGRESS (no runtime and no archive.org item,
+//     librivoxInProgress) is set aside before planning and listed on the run's
+//     summary, never written; a rerun after LibriVox completes it imports it.
 //   - Facts only (LICENSING.md): no description is read at all.
 
 import (
@@ -286,14 +289,34 @@ func RunLibrivox(snapshotDir string, ids LibrivoxIDs, opts Options) (Summary, er
 		return Summary{}, err
 	}
 	books := make([]sourceBook, 0, len(projects))
+	var inProgress []int
 	for _, pr := range projects {
+		if librivoxInProgress(pr) {
+			inProgress = append(inProgress, int(pr.ID))
+			continue
+		}
 		books = append(books, librivoxBook(pr))
 	}
 	sum, err := runBooks(books, sourceLibrivox, opts, nil, func(p *planner) {
 		p.genres = librivoxGenreTable()
 	})
-	sum.LibrivoxProjects = len(books)
+	sum.LibrivoxProjects = len(projects)
+	sum.LibrivoxInProgress = inProgress
 	return sum, err
+}
+
+// librivoxInProgress reports whether pr is a project LibriVox has not finished
+// recording: it states no total runtime (0, missing or unreadable, lvInt) AND
+// no archive.org item. The feed has no status field, and a project still being
+// read is listed with its sections so far, so landing one would publish a
+// recording without most of its audio (LIBRIVOX-PLAN.md keeps in-progress
+// projects a non-goal). Such a row is set aside before planning and writes
+// nothing - no work, person or id stamp - and a rerun once LibriVox completes
+// it (a runtime or an archive.org item appears) imports it like any other.
+// A zero runtime alone is not enough: a finished project can state none while
+// naming its archive.org item (id 66, Grimm's Märchen index).
+func librivoxInProgress(pr LibrivoxProject) bool {
+	return pr.TotalTimeSecs <= 0 && strings.TrimSpace(pr.URLIArchive) == ""
 }
 
 // librivoxVersionRE is one trailing parenthetical of LibriVox's

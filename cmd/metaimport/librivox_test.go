@@ -97,7 +97,7 @@ func TestLibrivoxImportPrintsTheWorklist(t *testing.T) {
 		Project: 2027, AuthorID: 9876, Name: "Amy Coulter", Roles: []string{"translator"}, Work: "siddhartha",
 	}, {
 		Project: 2607, AuthorID: 6294, Name: "Йордан Йовков", Work: "staroplaninski-legendi", Reason: "unsluggable",
-	}}}
+	}}, LibrivoxInProgress: []int{2073, 4333}}
 	run := func(string, importer.LibrivoxIDs, importer.Options) (importer.Summary, error) { return sum, nil }
 	out := captureStdout(t, func() {
 		if code := runLibrivoxImport([]string{"--from", librivoxFixture, "--ids", "527", "--dry-run"}, run); code != 0 {
@@ -105,6 +105,7 @@ func TestLibrivoxImportPrintsTheWorklist(t *testing.T) {
 		}
 	})
 	for _, want := range []string{
+		"librivox: skipped 2 in-progress projects (no runtime and no archive.org item; nothing written, re-import once complete): 2073, 4333",
 		"librivox: 2 new works at librivox-<id> (non-Latin or unsluggable title)",
 		"librivox worklist: 1 project skipped for a person to resolve",
 		`  527 "The Metamorphosis" by Franz Kafka [several-works]: metamorphosis "Metamorphosis"; metamorphosis-2 "Metamorphosis"`,
