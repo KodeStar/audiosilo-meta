@@ -60,6 +60,19 @@
         }
       ]
     },
+    "sunni-west": {
+      "id": "sunni-west",
+      "librivox_reader_id": 6288,
+      "license": "CC0-1.0",
+      "name": "Sunni West",
+      "sources": [
+        {
+          "imported_at": "2026-10-28",
+          "ref": "5237",
+          "type": "librivox"
+        }
+      ]
+    },
     "sunniva-dee": {
       "id": "sunniva-dee",
       "license": "CC0-1.0",
@@ -337,6 +350,19 @@
         {
           "imported_at": "2026-10-28",
           "ref": "3065",
+          "type": "librivox"
+        }
+      ]
+    },
+    "sunshyne": {
+      "id": "sunshyne",
+      "librivox_reader_id": 6015,
+      "license": "CC0-1.0",
+      "name": "sunshyne",
+      "sources": [
+        {
+          "imported_at": "2026-10-28",
+          "ref": "5084",
           "type": "librivox"
         }
       ]
@@ -1843,6 +1869,19 @@
         }
       ]
     },
+    "susan-giese-goldenberg": {
+      "id": "susan-giese-goldenberg",
+      "librivox_reader_id": 6389,
+      "license": "CC0-1.0",
+      "name": "Susan Giese Goldenberg",
+      "sources": [
+        {
+          "imported_at": "2026-10-28",
+          "ref": "5429",
+          "type": "librivox"
+        }
+      ]
+    },
     "susan-gillis-chapman": {
       "id": "susan-gillis-chapman",
       "license": "CC0-1.0",
@@ -1856,7 +1895,10 @@
       ]
     },
     "susan-glaspell": {
+      "birth_year": 1876,
+      "death_year": 1948,
       "id": "susan-glaspell",
+      "librivox_author_id": 1016,
       "license": "CC0-1.0",
       "name": "Susan Glaspell",
       "sources": [
@@ -1864,6 +1906,11 @@
           "imported_at": "2026-07-29",
           "ref": "B005IZZVHO",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-28",
+          "ref": "4606",
+          "type": "librivox"
         }
       ]
     },
@@ -1966,6 +2013,7 @@
     },
     "susan-hanfield": {
       "id": "susan-hanfield",
+      "librivox_reader_id": 6359,
       "license": "CC0-1.0",
       "name": "Susan Hanfield",
       "sources": [
@@ -1973,6 +2021,11 @@
           "imported_at": "2026-08-01",
           "ref": "B00I5N2LGK",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-28",
+          "ref": "5428",
+          "type": "librivox"
         }
       ]
     },
@@ -2394,6 +2447,19 @@
           "imported_at": "2026-07-29",
           "ref": "B01H42PXVC",
           "type": "libex-import"
+        }
+      ]
+    },
+    "susan-k-hawthorne": {
+      "id": "susan-k-hawthorne",
+      "librivox_reader_id": 6972,
+      "license": "CC0-1.0",
+      "name": "Susan K Hawthorne",
+      "sources": [
+        {
+          "imported_at": "2026-10-28",
+          "ref": "5951",
+          "type": "librivox"
         }
       ]
     },
@@ -5241,6 +5307,21 @@
           "imported_at": "2026-07-29",
           "ref": "B013PQW9ZE",
           "type": "libex-import"
+        }
+      ]
+    },
+    "susanna-rowson": {
+      "birth_year": 1762,
+      "death_year": 1824,
+      "id": "susanna-rowson",
+      "librivox_author_id": 1863,
+      "license": "CC0-1.0",
+      "name": "Susanna Rowson",
+      "sources": [
+        {
+          "imported_at": "2026-10-28",
+          "ref": "5150",
+          "type": "librivox"
         }
       ]
     },

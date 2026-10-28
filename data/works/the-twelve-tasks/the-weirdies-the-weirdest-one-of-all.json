@@ -9908,6 +9908,55 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "amy-gramour": {
+          "added_at": "2026-10-28",
+          "archive_id": "wendigo_ag_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/wendigo_ag_librivox/wendigo_blackwood_1_64kb.mp3",
+              "length_ms": 2764000,
+              "start_ms": 0,
+              "title": "1: Parts 1-3"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/wendigo_ag_librivox/wendigo_blackwood_2_64kb.mp3",
+              "length_ms": 1763000,
+              "start_ms": 2764000,
+              "title": "2: Parts 4-5"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/wendigo_ag_librivox/wendigo_blackwood_3_64kb.mp3",
+              "length_ms": 2645000,
+              "start_ms": 4527000,
+              "title": "3: Parts 6-9"
+            }
+          ],
+          "copyright_year": 1910,
+          "cover_url": "https://archive.org/download/LibrivoxCdCoverArt19/Wendigo_1209.jpg",
+          "id": "amy-gramour",
+          "language": "en",
+          "librivox_id": 5449,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/the-wendigo-by-algernon-blackwood/",
+            "rss": "https://librivox.org/rss/5449",
+            "text": "https://www.gutenberg.org/ebooks/10897",
+            "zip": "https://archive.org/compress/wendigo_ag_librivox/formats=64KBPS MP3&file=/wendigo_ag_librivox.zip"
+          },
+          "narrators": [
+            "amy-gramour"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 120,
+          "sources": [
+            {
+              "imported_at": "2026-10-28",
+              "ref": "5449",
+              "type": "librivox"
+            }
+          ],
+          "work": "the-wendigo"
+        },
         "felbrigg-napoleon-herriot-2014": {
           "abridged": false,
           "added_at": "2026-07-29",
