@@ -442,6 +442,13 @@ Latin ("Anna Karenina (Анна Каренина)") stays on the slug rule.
 People are keyed by `librivox_reader_id` / `librivox_author_id`: a known id
 resolves to its catalogued person whatever the feed now calls them (a name that
 slugs to nothing lands on the catch-all person, which is never given an id).
+A reader id is a person of its own even when the name is not: when the slug of
+a reader's name is already held by a person carrying a different reader id
+(LibriVox has several accounts called "Martina"), the reader is created at
+`<name>-librivox-<reader id>` (`martina-librivox-634`), and the first holder of
+the name keeps the plain slug. Re-importing a project the catalogue already holds
+moves a reader folded onto another reader's person (by an import before this
+rule) onto their own; authors are not split.
 
 ## Audiobookshelf
 

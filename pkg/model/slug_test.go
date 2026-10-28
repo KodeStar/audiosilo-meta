@@ -87,6 +87,59 @@ func TestPersonSlug(t *testing.T) {
 	}
 }
 
+func TestLibrivoxReaderSlug(t *testing.T) {
+	long := strings.Repeat("abcdefghi ", 12) // 120 letters: past MaxSlugLen
+	cases := []struct {
+		name   string
+		reader int
+		want   string
+		ok     bool
+	}{
+		{"Martina", 634, "martina-librivox-634", true},
+		{"Ramón De Ocampo", 12, "ramon-de-ocampo-librivox-12", true},
+		{"Search", 5, "search-person-librivox-5", true}, // the reserved variant is the base
+		{"김영하", 9, "", false},                           // the catch-all is no one's name
+		{"Martina", 0, "", false},
+		{"Martina", -3, "", false},
+	}
+	for _, c := range cases {
+		got, ok := LibrivoxReaderSlug(c.name, c.reader)
+		if got != c.want || ok != c.ok {
+			t.Errorf("LibrivoxReaderSlug(%q, %d) = (%q, %v), want (%q, %v)", c.name, c.reader, got, ok, c.want, c.ok)
+		}
+	}
+	got, ok := LibrivoxReaderSlug(long, 123456)
+	if !ok || len(got) > MaxSlugLen || !strings.HasSuffix(got, "-librivox-123456") || !ValidSlug(got) {
+		t.Errorf("long name = %q (%d bytes), want a valid slug within %d ending in the whole id", got, len(got), MaxSlugLen)
+	}
+}
+
+func TestPersonIDMatches(t *testing.T) {
+	cases := []struct {
+		id, name string
+		reader   int
+		want     bool
+	}{
+		{"martina", "Martina", 0, true},
+		{"martina", "Martina", 844, true}, // the first holder keeps the plain slug
+		{"martina-librivox-634", "Martina", 634, true},
+		{"search-person", "Search", 0, true},
+		{"search-person-librivox-5", "Search", 5, true},
+		{"person", "김영하", 0, true},
+		{"martina-librivox-634", "Martina", 0, false},   // no reader id to reach it by
+		{"martina-librivox-634", "Martina", 635, false}, // another reader's form
+		{"martina-librivox-634", "Marina", 634, false},  // another name's form
+		{"person-librivox-9", "김영하", 9, false},          // never off the catch-all
+		{"search-librivox-5", "Search", 5, false},       // the bare reserved word is never a base
+		{"madeleine-l-engle", "Madeleine L'Engle", 0, false},
+	}
+	for _, c := range cases {
+		if got := PersonIDMatches(c.id, c.name, c.reader); got != c.want {
+			t.Errorf("PersonIDMatches(%q, %q, %d) = %v, want %v", c.id, c.name, c.reader, got, c.want)
+		}
+	}
+}
+
 // TestSlugifyTransliteration pins the table of Latin letters NFD leaves whole,
 // each with the romanization the dump corpus attested (see transliterations).
 // Every case is a REAL name or title from that corpus, and the "was" column is

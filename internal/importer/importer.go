@@ -820,7 +820,7 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 		loadedPositions:    opts.AttachEditions,
 		regenRecs:          regenRecsFor(opts.Mode),
 		rowsAsOf:           opts.RowsAsOf,
-		lv:                 librivoxState{ids: map[int]bool{}, people: map[librivoxKey]string{}},
+		lv:                 newLibrivoxState(),
 	}
 }
 
@@ -1217,6 +1217,7 @@ func (p *planner) loadExisting() {
 			}
 			if r.LibrivoxID != 0 {
 				p.lv.ids[r.LibrivoxID] = true
+				p.lv.held[r.LibrivoxID] = RecRef{Work: w.ID, Rec: r.ID}
 			}
 			ri := &recInfo{
 				narrators: ToSet(r.Narrators),
@@ -1518,7 +1519,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 			unrecorded = p.librivoxRowAuthors(b, walk.ws, authorCredits, warn)
 		}
 	}
-	narratorSlugs := p.creditSlugs(narratorNames, warn)
+	narratorSlugs := p.rowNarratorSlugs(b, narratorNames, warn)
 
 	// The book's genre claims are mapped from the source's own strings onto this
 	// project's vocabulary (LICENSING.md: never a retailer's taxonomy verbatim)

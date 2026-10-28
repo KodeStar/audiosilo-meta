@@ -345,10 +345,11 @@ func TestLibrivoxSharedReaderIsOnePerson(t *testing.T) {
 	}
 }
 
-func TestLibrivoxKeepsAPersonsOtherID(t *testing.T) {
-	// David Barnes is already reader 999 here: reader 94 resolves to him by
-	// name, but his id is not overwritten (two ids cannot share one field) and
-	// the run says so.
+func TestLibrivoxSameNameReaderIsAPersonOfTheirOwn(t *testing.T) {
+	// David Barnes is already reader 999 here: reader 94, also "David Barnes",
+	// is another LibriVox account, so another person - at the disambiguated id
+	// model.LibrivoxReaderSlug composes, carrying 94 - and 999 keeps the plain
+	// slug untouched.
 	dataDir := t.TempDir()
 	seedTree(t, dataDir, map[string]string{
 		personAddr("david-barnes"): testpack.WithField(t, testpack.PersonJSON(t, "david-barnes", "David Barnes"), "librivox_reader_id", 999),
@@ -359,8 +360,21 @@ func TestLibrivoxKeepsAPersonsOtherID(t *testing.T) {
 	if p.ReaderID != 999 {
 		t.Errorf("reader id = %d, want the recorded 999 kept", p.ReaderID)
 	}
-	if !strings.Contains(strings.Join(sum.Warnings, "\n"), "already carries librivox_reader_id 999") {
-		t.Errorf("no warning about the kept id: %v", sum.Warnings)
+	var split lvPerson
+	readEntity(t, dataDir, personAddr("david-barnes-librivox-94"), &split)
+	if split.Name != "David Barnes" || split.ReaderID != 94 {
+		t.Errorf("reader 94 = %+v, want David Barnes carrying 94", split)
+	}
+	var r lvRecording
+	readEntity(t, dataDir, recAddr("metamorphosis", "david-barnes-librivox-94"), &r)
+	if !reflect.DeepEqual(r.Narrators, []string{"david-barnes-librivox-94"}) {
+		t.Errorf("narrators = %v", r.Narrators)
+	}
+	if sum.LibrivoxReadersSplit != 1 {
+		t.Errorf("LibrivoxReadersSplit = %d, want 1", sum.LibrivoxReadersSplit)
+	}
+	if strings.Contains(strings.Join(sum.Warnings, "\n"), "librivox_reader_id") {
+		t.Errorf("a split reader is not a dropped id: %v", sum.Warnings)
 	}
 	if res := check.Load(dataDir); !res.OK() {
 		t.Fatalf("tree failed validation:\n%v", res.Problems)

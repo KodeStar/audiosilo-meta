@@ -394,6 +394,25 @@ func TestPersonSlugMatchesName(t *testing.T) {
 	}
 }
 
+// TestLibrivoxReaderSlugIsAPersonSlug is checkPersonSlug's passing fixture for
+// the one other legal id form: a LibriVox reader whose name another reader id
+// holds, at model.LibrivoxReaderSlug for exactly the id they carry - beside the
+// plain holder, and with a reserved name's canonical variant as the base. The
+// last record proves the plain holder is not required: a merge that retired it
+// must not turn the reader red.
+func TestLibrivoxReaderSlugIsAPersonSlug(t *testing.T) {
+	dir := t.TempDir()
+	files := baseValid()
+	files["people/ma/martina.json"] = `{"id":"martina","librivox_reader_id":844,"license":"CC0-1.0","name":"Martina","sources":[{"type":"user"}]}`
+	files["people/ma/martina-librivox-634.json"] = `{"id":"martina-librivox-634","librivox_reader_id":634,"license":"CC0-1.0","name":"Martina","sources":[{"type":"user"}]}`
+	files["people/se/search-person-librivox-5.json"] = `{"id":"search-person-librivox-5","librivox_reader_id":5,"license":"CC0-1.0","name":"Search","sources":[{"type":"user"}]}`
+	files["people/ev/eva-librivox-705.json"] = `{"id":"eva-librivox-705","librivox_reader_id":705,"license":"CC0-1.0","name":"eva","sources":[{"type":"user"}]}`
+	writeEntities(t, dir, files)
+	if res := Load(dir); !res.OK() {
+		t.Fatalf("a LibriVox reader at their disambiguated id reported problems: %v", res.Problems)
+	}
+}
+
 // TestReservedSlugsAbsentIsValid is checkReservedSlug's passing fixture, and it
 // carries the case the rule had to be designed around: a person actually NAMED
 // "Search" sits at the one variant model.PersonSlug mints for a reserved word,
@@ -574,6 +593,37 @@ func TestLoadRuleViolations(t *testing.T) {
 					f["people/au/author-one.json"], `"name":"Author One"`, `"name":"Madeleine L'Engle"`, 1)
 			},
 			want: `person id "author-one" does not match its name "Madeleine L'Engle" (want "madeleine-lengle")`,
+		},
+		{
+			// The LibriVox form is reachable only through the reader id the
+			// record carries: without one, nothing will ever probe it.
+			name: "librivox reader id form without a reader id",
+			mutate: func(f map[string]string) {
+				f["people/ma/martina-librivox-634.json"] = `{"id":"martina-librivox-634","license":"CC0-1.0","name":"Martina","sources":[{"type":"user"}]}`
+			},
+			want: `person id "martina-librivox-634" does not match its name "Martina" (want "martina")`,
+		},
+		{
+			name: "librivox reader id form for another reader id",
+			mutate: func(f map[string]string) {
+				f["people/ma/martina-librivox-634.json"] = `{"id":"martina-librivox-634","librivox_reader_id":635,"license":"CC0-1.0","name":"Martina","sources":[{"type":"user"}]}`
+			},
+			want: `person id "martina-librivox-634" does not match its name "Martina" (want "martina")`,
+		},
+		{
+			name: "librivox reader id form of another name",
+			mutate: func(f map[string]string) {
+				f["people/ma/martina-librivox-634.json"] = `{"id":"martina-librivox-634","librivox_reader_id":634,"license":"CC0-1.0","name":"Marina","sources":[{"type":"user"}]}`
+			},
+			want: `person id "martina-librivox-634" does not match its name "Marina" (want "marina")`,
+		},
+		{
+			// The catch-all is no one's name: no reader is disambiguated off it.
+			name: "librivox reader id form off the catch-all",
+			mutate: func(f map[string]string) {
+				f["people/pe/person-librivox-9.json"] = `{"id":"person-librivox-9","librivox_reader_id":9,"license":"CC0-1.0","name":"김영하","sources":[{"type":"user"}]}`
+			},
+			want: `person id "person-librivox-9" does not match its name "김영하" (want "person")`,
 		},
 		{
 			// The route-literal defect: /api/v1/works/search is a literal

@@ -59,7 +59,7 @@ func detectPersonDup(ix *index) *findings {
 	// one person (importer.MarkedNameKey -> importer.markedKey).
 	byMarked, markedOrder := groupBy(keys, func(k personKeys) string { return k.marked })
 	for _, key := range markedOrder {
-		if group := byMarked[key]; len(group) >= 2 {
+		if group := byMarked[key]; len(group) >= 2 && !distinctLibrivoxReaders(group) {
 			f.add(personDupFinding(ix, pDupInitials, key, group,
 				"the importer treats these spellings as one person; a merge is a rename and needs a human"))
 		}
@@ -71,7 +71,7 @@ func detectPersonDup(ix *index) *findings {
 	byTight, tightOrder := groupBy(keys, func(k personKeys) string { return k.folded })
 	for _, key := range tightOrder {
 		group := byTight[key]
-		if len(group) < 2 || allShareKey(group, func(k personKeys) string { return k.marked }) {
+		if len(group) < 2 || distinctLibrivoxReaders(group) || allShareKey(group, func(k personKeys) string { return k.marked }) {
 			continue
 		}
 		f.add(personDupFinding(ix, pDupTight, key, group,
@@ -132,7 +132,7 @@ func detectPersonEdit1(ix *index, f *findings, keys []personKeys) {
 				if g[i].folded == g[j].folded {
 					continue // an exact fold match is pDupTight's business
 				}
-				if !titlerule.OneEditApart(g[i].folded, g[j].folded) {
+				if !titlerule.OneEditApart(g[i].folded, g[j].folded) || distinctLibrivoxReaders(g[i:i+1], g[j:j+1]) {
 					continue
 				}
 				a, b := g[i].person, g[j].person
@@ -152,6 +152,25 @@ func detectPersonEdit1(ix *index, f *findings, keys []personKeys) {
 			}
 		}
 	}
+}
+
+// distinctLibrivoxReaders reports whether every person in the groups carries a
+// LibriVox reader id and no two carry the same one: two LibriVox accounts, which
+// the import keeps as two people on purpose (model.LibrivoxReaderSlug - "Martina"
+// and `martina-librivox-634`), so a name match between them is not a duplicate to
+// review. Any member without a reader id keeps the group reported.
+func distinctLibrivoxReaders(groups ...[]personKeys) bool {
+	seen := map[int]bool{}
+	for _, g := range groups {
+		for _, k := range g {
+			id := k.person.LibrivoxReaderID
+			if id == 0 || seen[id] {
+				return false
+			}
+			seen[id] = true
+		}
+	}
+	return len(seen) >= 2
 }
 
 // firstNameToken is the folded first word of a name, the bucket key.

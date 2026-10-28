@@ -515,6 +515,13 @@ type Summary struct {
 	// recorded on people (librivox.go). Both 0 for every other source.
 	LibrivoxProjects   int
 	LibrivoxIDsStamped int
+	// LibrivoxReadersSplit counts the readers minted at model.LibrivoxReaderSlug
+	// because another reader id already held their name, and
+	// LibrivoxReadersMoved the narrator credits a rerun moved off that holder
+	// onto such a reader on a recording the catalogue already held (a project
+	// imported before readers were keyed apart). Both 0 for every other source.
+	LibrivoxReadersSplit int
+	LibrivoxReadersMoved int
 	// LibrivoxVariantsAttached counts the LibriVox rows attached to a work whose
 	// title differs from theirs only by a leading article or punctuation, and
 	// LibrivoxFallbackSlugs the works created at `librivox-<id>` for a non-Latin
