@@ -26,7 +26,10 @@ package importer
 //     than the row's (LibriVox keeps them as two people). A surname apart is
 //     another author (a new work, as before).
 //     It works within one run too: a work an earlier row created is in the
-//     title index with its people, so the second spelling meets the first.
+//     title index with its people, so the second spelling meets the first -
+//     and an author id an earlier row of the run claimed counts as carried
+//     (claimLibrivoxAuthors), so a second spelling with another id is the same
+//     worklist row in one run as in two.
 //  2. A NAME THAT SLUGS TO NOTHING IS CREDITED NOWHERE. An author or translator
 //     credit in a script the slug rule folds away entirely ("Йордан Йовков")
 //     would land on the one catch-all person record (model.UnslugPersonID),
@@ -206,14 +209,14 @@ func (p *planner) respellingResolves(pairs map[string]string) bool {
 
 // pairsCarryOtherIDs reports whether a work author a pairing names already
 // carries a LibriVox author id other than the one row b states for the paired
-// credit (librivoxAuthorIDOf). It reads the catalogue's ids only (authorOf):
-// a person this run created is stamped after planning, so a second spelling
-// meeting one within the run is not refused by it.
+// credit (librivoxAuthorIDOf): catalogued, or claimed by a row already planned
+// in this run (librivoxAuthorIDOn), so two spellings with two ids are refused
+// alike whether they arrive in one run or two.
 func (p *planner) pairsCarryOtherIDs(b sourceBook, pairs, names map[string]string) bool {
 	for r, w := range pairs {
 		name := names[r]
 		if id := p.librivoxAuthorIDOf(b, name, p.resolvePerson(name)); id > 0 {
-			if have := p.lv.authorOf[w]; have != 0 && have != id {
+			if have := p.librivoxAuthorIDOn(w); have != 0 && have != id {
 				return true
 			}
 		}

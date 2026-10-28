@@ -285,21 +285,29 @@ func firstKey(m map[string][]string) string {
 	return first
 }
 
+// rowlandsons is two projects of one title whose authors are two spellings
+// with two LibriVox author ids, the longer spelling first.
+func rowlandsons(t *testing.T) (first, second LibrivoxProject) {
+	return byAuthor(t, 99820, "Narrative of the Captivity", "English", lvAuthor(7020, "Mary White", "Rowlandson")),
+		byAuthor(t, 99821, "The Narrative of the Captivity", "English", lvAuthor(7021, "Mary", "Rowlandson"))
+}
+
 func TestLibrivoxAuthorVariantWithinOneRun(t *testing.T) {
 	// Both spellings are new in one run: the first project creates the work and
-	// its person, the second meets them and attaches. Its own author id stays
-	// off the person (one id per person), with a warning.
-	snap := writeSnapshot(t,
-		byAuthor(t, 99820, "Narrative of the Captivity", "English", lvAuthor(7020, "Mary White", "Rowlandson")),
-		byAuthor(t, 99821, "The Narrative of the Captivity", "English", lvAuthor(7021, "Mary", "Rowlandson")),
-	)
+	// its person and claims its author id for them, so the second, with
+	// another id, meets a person LibriVox keys apart - an author-spelling
+	// worklist row, exactly as when the two arrive in separate imports.
+	first, second := rowlandsons(t)
+	snap := writeSnapshot(t, first, second)
 	dataDir := t.TempDir()
 	sum := runLibrivox(t, snap, dataDir, allLibrivox)
-	if sum.NewWorks != 1 || sum.NewRecordings != 2 || sum.LibrivoxAuthorVariants != 1 || entryExists(t, dataDir, personAddr("mary-rowlandson")) {
-		t.Fatalf("works/recordings/variants = %d/%d/%d; worklist %v", sum.NewWorks, sum.NewRecordings, sum.LibrivoxAuthorVariants, sum.LibrivoxWorklist)
+	want := []LibrivoxWorklistEntry{{Project: 99821, Title: "The Narrative of the Captivity", Authors: []string{"Mary Rowlandson"},
+		Reason: LibrivoxAuthorSpelling, Candidates: []LibrivoxCandidate{{"narrative-of-the-captivity", "Narrative of the Captivity"}}}}
+	if sum.NewWorks != 1 || sum.NewRecordings != 1 || sum.LibrivoxAuthorVariants != 0 || !reflect.DeepEqual(sum.LibrivoxWorklist, want) {
+		t.Fatalf("works/recordings/variants = %d/%d/%d; worklist %+v", sum.NewWorks, sum.NewRecordings, sum.LibrivoxAuthorVariants, sum.LibrivoxWorklist)
 	}
-	if got := recSlugsOf(t, dataDir, "narrative-of-the-captivity"); len(got) != 2 {
-		t.Errorf("recordings = %v", got)
+	if entryExists(t, dataDir, personAddr("mary-rowlandson")) {
+		t.Error("the worklist row created its author")
 	}
 	var p lvPerson
 	readEntity(t, dataDir, personAddr("mary-white-rowlandson"), &p)
@@ -310,12 +318,51 @@ func TestLibrivoxAuthorVariantWithinOneRun(t *testing.T) {
 
 	before := testpack.Snapshot(t, dataDir)
 	again := runLibrivox(t, snap, dataDir, allLibrivox)
-	if again.NewWorks+again.NewRecordings+again.NewPeople != 0 || len(again.Files) != 0 || again.Skipped != 2 {
+	if again.NewWorks+again.NewRecordings+again.NewPeople != 0 || len(again.Files) != 0 || again.Skipped != 1 || !reflect.DeepEqual(again.LibrivoxWorklist, want) {
 		t.Errorf("rerun = %+v", again)
 	}
 	if after := testpack.Snapshot(t, dataDir); !reflect.DeepEqual(before, after) {
 		t.Error("rerun changed the tree")
 	}
+}
+
+func TestLibrivoxAuthorVariantOneRunIsTwoRuns(t *testing.T) {
+	// The same two projects imported together and one import at a time leave
+	// the same tree and the same worklist row.
+	first, second := rowlandsons(t)
+	together := t.TempDir()
+	one := runLibrivox(t, writeSnapshot(t, first, second), together, allLibrivox)
+	apart := t.TempDir()
+	runLibrivox(t, writeSnapshot(t, first), apart, allLibrivox)
+	two := runLibrivox(t, writeSnapshot(t, second), apart, allLibrivox)
+	if !reflect.DeepEqual(one.LibrivoxWorklist, two.LibrivoxWorklist) || len(one.LibrivoxWorklist) != 1 {
+		t.Errorf("worklist in one run = %+v, in two = %+v", one.LibrivoxWorklist, two.LibrivoxWorklist)
+	}
+	if a, b := testpack.Snapshot(t, together), testpack.Snapshot(t, apart); !reflect.DeepEqual(a, b) {
+		t.Error("one run and two runs left different trees")
+	}
+}
+
+func TestLibrivoxSameAuthorIDWithinOneRunAttaches(t *testing.T) {
+	// Two spellings under ONE author id are one person whichever run they land
+	// in: the id keys the second credit to the first spelling, so the project
+	// attaches to the work the first created and no second person is made.
+	first, _ := rowlandsons(t)
+	second := byAuthor(t, 99822, "The Narrative of the Captivity", "English", lvAuthor(7020, "Mary", "Rowlandson"))
+	dataDir := t.TempDir()
+	sum := runLibrivox(t, writeSnapshot(t, first, second), dataDir, allLibrivox)
+	if sum.NewWorks != 1 || sum.NewRecordings != 2 || len(sum.LibrivoxWorklist) != 0 || entryExists(t, dataDir, personAddr("mary-rowlandson")) {
+		t.Fatalf("works/recordings = %d/%d; worklist %+v", sum.NewWorks, sum.NewRecordings, sum.LibrivoxWorklist)
+	}
+	if got := recSlugsOf(t, dataDir, "narrative-of-the-captivity"); len(got) != 2 {
+		t.Errorf("recordings = %v", got)
+	}
+	var p lvPerson
+	readEntity(t, dataDir, personAddr("mary-white-rowlandson"), &p)
+	if p.AuthorID != 7020 {
+		t.Errorf("person = %+v", p)
+	}
+	mustValidate(t, dataDir)
 }
 
 func TestLibrivoxAuthorVariantKeysTheIDForTheBatch(t *testing.T) {

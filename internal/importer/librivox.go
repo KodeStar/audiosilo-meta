@@ -535,6 +535,13 @@ type librivoxState struct {
 	// stamped (stampLibrivoxPeople runs after planning, so while rows are
 	// planned it is the catalogue's alone).
 	authorOf map[string]int
+	// authorClaim is the author id a row already planned in this run will
+	// stamp onto each person slug (claimLibrivoxAuthors), and claimedAuthor
+	// the slug each such id goes to: the stamp runs after planning, so these
+	// are what lets a later row of the run see an id an earlier one claimed,
+	// as readerOf does for readers.
+	authorClaim   map[string]int
+	claimedAuthor map[int]string
 	// landed is the rows whose recording this run created, in row order, with
 	// what the stamp checks a resolved person against.
 	landed []librivoxLanding
@@ -564,12 +571,14 @@ type librivoxLanding struct {
 // newLibrivoxState is the empty LibriVox planner state every run starts with.
 func newLibrivoxState() librivoxState {
 	return librivoxState{
-		ids:      map[int]bool{},
-		held:     map[int]RecRef{},
-		people:   map[librivoxKey]string{},
-		readers:  map[int]string{},
-		readerOf: map[string]int{},
-		authorOf: map[string]int{},
+		ids:           map[int]bool{},
+		held:          map[int]RecRef{},
+		people:        map[librivoxKey]string{},
+		readers:       map[int]string{},
+		readerOf:      map[string]int{},
+		authorOf:      map[string]int{},
+		authorClaim:   map[string]int{},
+		claimedAuthor: map[int]string{},
 	}
 }
 
@@ -1139,6 +1148,41 @@ func stampLifeYears(raw map[string]any, life lifeYears) {
 	if life.death != 0 {
 		raw["death_year"] = life.death
 	}
+}
+
+// claimLibrivoxAuthors records, for a row that landed on work, the author ids
+// stampLibrivoxPeople will write once planning is done, by the same tests in
+// the same (row) order: a credit resolving to a person the work credits, whose
+// id no person carries or claimed, onto a person carrying and claiming none
+// (authorOf holds every catalogued author id).
+func (p *planner) claimLibrivoxAuthors(b sourceBook, work string) {
+	for _, c := range b.lv.credits {
+		if c.kind != librivoxAuthor || c.id <= 0 {
+			continue
+		}
+		slug, ok := p.librivoxCreditSlug(c)
+		if !ok || !p.workCreditsPerson(work, slug) {
+			continue
+		}
+		if _, held := p.lv.people[librivoxKey{librivoxAuthor, c.id}]; held || p.lv.claimedAuthor[c.id] != "" {
+			continue
+		}
+		if p.librivoxAuthorIDOn(slug) != 0 {
+			continue
+		}
+		p.lv.authorClaim[slug] = c.id
+		p.lv.claimedAuthor[c.id] = slug
+	}
+}
+
+// librivoxAuthorIDOn is the author id person slug carries, or that a row
+// already planned in this run claimed for it (claimLibrivoxAuthors); 0 for
+// none.
+func (p *planner) librivoxAuthorIDOn(slug string) int {
+	if id := p.lv.authorOf[slug]; id != 0 {
+		return id
+	}
+	return p.lv.authorClaim[slug]
 }
 
 // stampLibrivoxID records one id on one person, appending the row's provenance

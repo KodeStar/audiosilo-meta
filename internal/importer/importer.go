@@ -1576,6 +1576,9 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// (credits, genres - the recording vote reads the recording it landed on);
 	// a no-op for a work loaded from disk, and for the row that created it.
 	p.mergeCreatedWorkFacts(ws, p.landedRec, facts)
+	if p.landedRec != "" && b.lv != nil {
+		p.claimLibrivoxAuthors(b, ws.slug)
+	}
 
 	// addRecording registers the ASIN (p.asins) itself, and only once it landed.
 	// What a merge carries is deliberately narrow: the ASIN, this run's
