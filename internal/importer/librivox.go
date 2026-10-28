@@ -526,7 +526,8 @@ type librivoxState struct {
 	// readers is the person slug each reader id resolved to in this run
 	// (librivoxReaderSlug), and readerOf the reader id each person slug is
 	// HELD by - the one its record carries, or the one this run resolved onto
-	// it before the stamp writes it. Together they are what decides that a
+	// it (a landed row's, which the stamp then writes, or a held recording's
+	// credit, splitHeldLibrivoxReaders). Together they are what decides that a
 	// second reader id meeting a held name is someone else.
 	readers  map[int]string
 	readerOf map[string]int
@@ -614,6 +615,8 @@ func (p *planner) rowNarratorSlugs(b sourceBook, names []string, warn func(strin
 //     side effect of the ordinary path - a tombstone ride's note - is kept);
 //   - a name that slugs away to nothing is "": the catch-all is no one's, so no
 //     reader is disambiguated off it (librivoxCreditSlug stamps no id there);
+//     nor is one that folds onto a shared record (librivoxSharedPeople), which
+//     is a statement rather than somebody's name;
 //   - a name whose resolved person is free, or held by this same reader id,
 //     claims it for this id and is "": the first holder keeps the plain slug;
 //   - otherwise the name is held by ANOTHER reader id, and this reader is a
@@ -640,7 +643,7 @@ func (p *planner) librivoxReaderSlug(c librivoxCredit, name string, project int,
 			return p.librivoxReaderResolved(live, r)
 		}
 	}
-	if r.fellBack {
+	if r.fellBack || librivoxSharedPeople[r.slug] {
 		return ""
 	}
 	if holder := p.lv.readerOf[r.slug]; holder == 0 || holder == c.id {
@@ -664,6 +667,17 @@ func (p *planner) librivoxReaderSlug(c librivoxCredit, name string, project int,
 	p.summary.LibrivoxReadersSplit++
 	return slug
 }
+
+// librivoxSharedPeople is the records a credit FOLDS onto rather than names: the
+// collective statements (CollectiveIDs - Full Cast, Various, Anonymous, ...) and
+// the synthetic voice. Like the catch-all they stand for no one person, so a
+// second reader id meeting one is never minted a "various-librivox-<id>" record
+// beside it (a person named "Various" that every collective rule would miss).
+var librivoxSharedPeople = func() map[string]bool {
+	ids := CollectiveIDs()
+	ids[syntheticVoiceSlug] = true
+	return ids
+}()
 
 // librivoxReaderResolved is librivoxReaderSlug's answer for a reader id already
 // tied to slug: "" when the name resolves there anyway, else slug.
@@ -696,10 +710,15 @@ func (p *planner) dedupeByLibrivox(b sourceBook, warn func(string, ...any)) bool
 // and a second rerun is a no-op by the same test.
 //
 // Only a narrator credit the recording really holds is moved, and only off a
-// person held by ANOTHER reader id: a person carrying no reader id is left as it
-// is (nothing says it is not this reader). When the row also credits the holder
-// under the same name (two readers called "Martina" on one project) the holder's
-// credit stays and this reader's is added after it.
+// person held by ANOTHER reader id, or off any person when this reader's id is
+// catalogued on someone else: a person carrying no reader id is otherwise left
+// as it is (nothing says it is not this reader). A reader the recording already
+// credits under their own person moves nothing (what else it credits is not a
+// fold this can prove). When the row also credits the holder under the same name
+// (two readers called "Martina" on one project) the holder's credit stays and
+// this reader's is added after it. Every decision reads the recording as the
+// catalogue holds it, so two readers folded onto one person (neither of them the
+// holder) are both moved, in row order, by ONE rewrite.
 func (p *planner) splitHeldLibrivoxReaders(b sourceBook, warn func(string, ...any)) {
 	ref, ok := p.lv.held[b.lv.id]
 	if !ok {
@@ -717,6 +736,8 @@ func (p *planner) splitHeldLibrivoxReaders(b sourceBook, warn func(string, ...an
 	if len(names) != len(b.narrators) {
 		return
 	}
+	moves := map[string]*heldMove{}
+	moved := 0
 	for _, c := range b.lv.credits {
 		if c.kind != librivoxReader || c.id <= 0 {
 			continue
@@ -728,28 +749,57 @@ func (p *planner) splitHeldLibrivoxReaders(b sourceBook, warn func(string, ...an
 		}
 		if _, known := p.lv.people[librivoxKey{librivoxReader, c.id}]; !known {
 			if holder := p.lv.readerOf[r.slug]; holder == 0 || holder == c.id {
+				// The held credit IS this reader as far as anything says, so it
+				// holds the name for the run: a new row's other reader of it is
+				// then split at once, rather than taking the name and this
+				// credit being split off it by the next rerun.
+				if _, resolved := p.lv.readers[c.id]; !resolved {
+					p.lv.readers[c.id] = r.slug
+					p.lv.readerOf[r.slug] = c.id
+				}
 				continue
 			}
 		}
 		slug := p.librivoxReaderSlug(c, name, b.lv.id, warn)
-		if slug == "" {
+		if slug == "" || ri.narrators[slug] {
+			continue // already credited: a rerun of a split project
+		}
+		m := moves[r.slug]
+		if m == nil {
+			m = &heldMove{}
+			moves[r.slug] = m
+		}
+		if slices.Contains(m.to, slug) {
 			continue
 		}
-		keep := p.rowCreditsHolder(b, names, c, r.slug)
-		if keep && ri.narrators[slug] {
-			continue // both readers already credited: a rerun of a split project
-		}
-		p.moveHeldNarrator(ref, r.slug, slug, keep)
-		if p.fatal != nil {
-			return
-		}
-		if !keep {
-			delete(ri.narrators, r.slug)
-		}
-		ri.narrators[slug] = true
-		p.narratorPeople[slug] = true
-		p.summary.LibrivoxReadersMoved++
+		m.to = append(m.to, slug)
+		m.keep = m.keep || p.rowCreditsHolder(b, names, c, r.slug)
+		moved++
 	}
+	if moved == 0 {
+		return
+	}
+	p.moveHeldNarrators(ref, moves)
+	if p.fatal != nil {
+		return
+	}
+	for from, m := range moves {
+		if !m.keep {
+			delete(ri.narrators, from)
+		}
+		for _, to := range m.to {
+			ri.narrators[to] = true
+			p.narratorPeople[to] = true
+		}
+	}
+	p.summary.LibrivoxReadersMoved += moved
+}
+
+// heldMove is what splitHeldLibrivoxReaders moves off one credited person: the
+// readers' own people, in row order, and whether the holder's own credit stays.
+type heldMove struct {
+	to   []string
+	keep bool
 }
 
 // rowCreditsHolder reports whether the row also credits, under another reader
@@ -765,27 +815,30 @@ func (p *planner) rowCreditsHolder(b sourceBook, names []string, moved librivoxC
 	return false
 }
 
-// moveHeldNarrator rewrites one held recording's narrator list: from is replaced
-// by to in place, or, with keep, to is inserted right after from. A list already
-// naming to only loses from (or, with keep, is left as it is).
-func (p *planner) moveHeldNarrator(ref RecRef, from, to string, keep bool) {
+// moveHeldNarrators rewrites one held recording's narrator list once: each moved
+// person is replaced in place by the readers moved off them, or, with keep, those
+// readers are inserted right after them. A reader the list already names is not
+// added twice.
+func (p *planner) moveHeldNarrators(ref RecRef, moves map[string]*heldMove) {
 	entry, rec := p.recordingRaw(ref.Work, ref.Rec)
 	if rec == nil {
 		return
 	}
 	list, _ := rec["narrators"].([]any)
-	has := slices.Contains(list, any(to))
-	out := make([]any, 0, len(list)+1)
+	out := make([]any, 0, len(list)+len(moves))
 	for _, v := range list {
-		if v != from {
+		from, _ := v.(string)
+		m := moves[from]
+		if m == nil || m.keep {
 			out = append(out, v)
+		}
+		if m == nil {
 			continue
 		}
-		if keep {
-			out = append(out, v)
-		}
-		if !has {
-			out = append(out, to)
+		for _, to := range m.to {
+			if !slices.Contains(list, any(to)) && !slices.Contains(out, any(to)) {
+				out = append(out, to)
+			}
 		}
 	}
 	rec["narrators"] = out

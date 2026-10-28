@@ -147,6 +147,11 @@ func TestLibrivoxSplitNeverWritesOverAnotherPerson(t *testing.T) {
 	if got := lvNarrators(t, dataDir, "metamorphosis", "martina"); !reflect.DeepEqual(got, []string{"martina"}) {
 		t.Errorf("narrators = %v", got)
 	}
+	// The name's person keeps the id it carries, and the run says the reader's
+	// id was not recorded (the one way a reader id is still dropped).
+	if !strings.Contains(strings.Join(sum.Warnings, "\n"), "already carries librivox_reader_id 844") {
+		t.Errorf("no warning about the kept id: %v", sum.Warnings)
+	}
 	if res := check.Load(dataDir); !res.OK() {
 		t.Fatalf("tree failed validation:\n%v", res.Problems)
 	}
@@ -246,5 +251,100 @@ func TestLibrivoxRerunLeavesAnUnkeyedNarrator(t *testing.T) {
 	}
 	if after := testpack.Snapshot(t, dataDir); !reflect.DeepEqual(before, after) {
 		t.Error("the tree changed")
+	}
+}
+
+func TestLibrivoxRerunSplitsTwoReadersFoldedOntoOne(t *testing.T) {
+	// The folded project was read by two Martinas, NEITHER of them the holder:
+	// both are moved off the holder, in row order, and neither is lost.
+	dataDir := t.TempDir()
+	seedFoldedMartina(t, dataDir, "martina")
+	pr := readProject(t, 91002, LibrivoxReader{ReaderID: 634, DisplayName: "Martina"}, LibrivoxReader{ReaderID: 2089, DisplayName: "Martina"})
+	snap := writeSnapshot(t, pr)
+	sum := runLibrivox(t, snap, dataDir, allLibrivox)
+	if sum.LibrivoxReadersSplit != 2 || sum.LibrivoxReadersMoved != 2 {
+		t.Errorf("split/moved = %d/%d, want 2/2\nwarnings: %v", sum.LibrivoxReadersSplit, sum.LibrivoxReadersMoved, sum.Warnings)
+	}
+	if got := lvNarrators(t, dataDir, "metamorphosis", "martina-2"); !reflect.DeepEqual(got, []string{"martina-librivox-634", "martina-librivox-2089"}) {
+		t.Errorf("narrators = %v", got)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("tree failed validation:\n%v", res.Problems)
+	}
+
+	before := testpack.Snapshot(t, dataDir)
+	if again := runLibrivox(t, snap, dataDir, allLibrivox); again.LibrivoxReadersMoved+again.LibrivoxReadersSplit != 0 || len(again.Files) != 0 {
+		t.Errorf("second rerun = %+v, want a no-op", again)
+	}
+	if after := testpack.Snapshot(t, dataDir); !reflect.DeepEqual(before, after) {
+		t.Error("second rerun changed the tree")
+	}
+}
+
+func TestLibrivoxRerunLeavesARecordingAlreadyCreditingTheReader(t *testing.T) {
+	// The held recording already credits reader 634's own person beside the
+	// holder, though the row no longer states the holder: that is not a fold, so
+	// the holder's credit is not removed.
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, map[string]string{
+		personAddr("martina"):               testpack.WithField(t, testpack.PersonJSON(t, "martina", "Martina"), "librivox_reader_id", 844),
+		personAddr("martina-librivox-634"):  testpack.WithField(t, testpack.PersonJSON(t, "martina-librivox-634", "Martina"), "librivox_reader_id", 634),
+		personAddr("franz-kafka"):           testpack.PersonJSON(t, "franz-kafka", "Franz Kafka"),
+		workAddr("metamorphosis"):           testpack.WorkJSON(t, "metamorphosis", "Metamorphosis", testpack.WithAuthors("franz-kafka")),
+		recAddr("metamorphosis", "martina"): testpack.WithField(t, testpack.RecJSON(t, "martina", "metamorphosis", testpack.WithNarrators("martina", "martina-librivox-634")), "librivox_id", 91002),
+	})
+	before := testpack.Snapshot(t, dataDir)
+	sum := runLibrivox(t, writeSnapshot(t, martinaRow(t, 91002, 634)), dataDir, allLibrivox)
+	if sum.LibrivoxReadersMoved != 0 || len(sum.Files) != 0 {
+		t.Errorf("moved %d, wrote %v; want nothing", sum.LibrivoxReadersMoved, sum.Files)
+	}
+	if after := testpack.Snapshot(t, dataDir); !reflect.DeepEqual(before, after) {
+		t.Error("the tree changed")
+	}
+}
+
+func TestLibrivoxSameNameReadersOfACollectiveAreNotSplit(t *testing.T) {
+	// A collective statement is no one's name: a second reader id spelled
+	// "Various" is not minted a "various-librivox-<id>" person of its own.
+	pr1 := readProject(t, 91001, LibrivoxReader{ReaderID: 11, DisplayName: "Various"})
+	pr2 := readProject(t, 91002, LibrivoxReader{ReaderID: 12, DisplayName: "Various"})
+	pr2.Title = "Metamorphosis (version 2)"
+	dataDir := t.TempDir()
+	sum := runLibrivox(t, writeSnapshot(t, pr1, pr2), dataDir, allLibrivox)
+	if sum.LibrivoxReadersSplit != 0 {
+		t.Errorf("split %d readers off a collective, want 0", sum.LibrivoxReadersSplit)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("tree failed validation:\n%v", res.Problems)
+	}
+}
+
+func TestLibrivoxHeldReaderKeepsTheirNameAgainstANewRow(t *testing.T) {
+	// A held project's reader credited to a person carrying no reader id holds
+	// that name for this run: a NEW row's other reader of the name is a person of
+	// their own at once, so the first rerun is final and the second a no-op
+	// (rather than the new reader taking the name and the next rerun splitting
+	// the held one off it).
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, map[string]string{
+		personAddr("martina"):               testpack.PersonJSON(t, "martina", "Martina"),
+		personAddr("franz-kafka"):           testpack.PersonJSON(t, "franz-kafka", "Franz Kafka"),
+		workAddr("metamorphosis"):           testpack.WorkJSON(t, "metamorphosis", "Metamorphosis", testpack.WithAuthors("franz-kafka")),
+		recAddr("metamorphosis", "martina"): testpack.WithField(t, testpack.RecJSON(t, "martina", "metamorphosis", testpack.WithNarrators("martina")), "librivox_id", 91001),
+	})
+	later := martinaRow(t, 91002, 634)
+	later.Title = "Metamorphosis (version 2)"
+	snap := writeSnapshot(t, martinaRow(t, 91001, 844), later)
+	sum := runLibrivox(t, snap, dataDir, allLibrivox)
+	if sum.LibrivoxReadersSplit != 1 || readerIDOf(t, dataDir, "martina-librivox-634") != 634 || readerIDOf(t, dataDir, "martina") != 0 {
+		t.Errorf("split %d; martina carries %d; want reader 634 split off and martina left unkeyed\nwarnings: %v",
+			sum.LibrivoxReadersSplit, readerIDOf(t, dataDir, "martina"), sum.Warnings)
+	}
+	before := testpack.Snapshot(t, dataDir)
+	if again := runLibrivox(t, snap, dataDir, allLibrivox); again.LibrivoxReadersMoved+again.LibrivoxReadersSplit+again.NewPeople+again.LibrivoxIDsStamped != 0 || len(again.Files) != 0 {
+		t.Errorf("second rerun = %+v, want a no-op", again)
+	}
+	if after := testpack.Snapshot(t, dataDir); !reflect.DeepEqual(before, after) {
+		t.Error("second rerun changed the tree")
 	}
 }
