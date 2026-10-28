@@ -9612,6 +9612,91 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "john-greenman": {
+          "added_at": "2026-10-28",
+          "archive_id": "double_barrelled_1001_librivox_",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/double_barrelled_1001_librivox_/double_01_twain_64kb.mp3",
+              "length_ms": 313000,
+              "start_ms": 0,
+              "title": "Part 1 Chapter 1"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/double_barrelled_1001_librivox_/double_02_twain_64kb.mp3",
+              "length_ms": 704000,
+              "start_ms": 313000,
+              "title": "Chapter 2"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/double_barrelled_1001_librivox_/double_03_twain_64kb.mp3",
+              "length_ms": 1143000,
+              "start_ms": 1017000,
+              "title": "Chapter 3"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/double_barrelled_1001_librivox_/double_04_twain_64kb.mp3",
+              "length_ms": 768000,
+              "start_ms": 2160000,
+              "title": "Chapter 4"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/double_barrelled_1001_librivox_/double_05_twain_64kb.mp3",
+              "length_ms": 763000,
+              "start_ms": 2928000,
+              "title": "Chapter 5"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/double_barrelled_1001_librivox_/double_06_twain_64kb.mp3",
+              "length_ms": 618000,
+              "start_ms": 3691000,
+              "title": "Part 2 Chapter 1"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/double_barrelled_1001_librivox_/double_07_twain_64kb.mp3",
+              "length_ms": 550000,
+              "start_ms": 4309000,
+              "title": "Chapter 2"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/double_barrelled_1001_librivox_/double_08_twain_64kb.mp3",
+              "length_ms": 1366000,
+              "start_ms": 4859000,
+              "title": "Chapter 3"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/double_barrelled_1001_librivox_/double_09_twain_64kb.mp3",
+              "length_ms": 981000,
+              "start_ms": 6225000,
+              "title": "Chapter 4 & Chapter 5"
+            }
+          ],
+          "copyright_year": 1902,
+          "cover_url": "https://archive.org/download/LibrivoxCdCoverArt23/double_barreled_detective_1210.jpg",
+          "id": "john-greenman",
+          "language": "en",
+          "librivox_id": 3929,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/a-double-barreled-detective-story-by-mark-twain/",
+            "rss": "https://librivox.org/rss/3929",
+            "text": "https://www.gutenberg.org/etext/3180",
+            "zip": "https://archive.org/compress/double_barrelled_1001_librivox_/formats=64KBPS MP3&file=/double_barrelled_1001_librivox_.zip"
+          },
+          "narrators": [
+            "john-greenman"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 120,
+          "sources": [
+            {
+              "imported_at": "2026-10-28",
+              "ref": "3929",
+              "type": "librivox"
+            }
+          ],
+          "work": "a-double-barreled-detective-story"
+        },
         "thomas-becker-1902": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",

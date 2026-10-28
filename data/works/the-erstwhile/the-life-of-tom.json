@@ -3750,6 +3750,61 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "bruce-pirie": {
+          "added_at": "2026-10-28",
+          "archive_id": "lifted_veil_0909_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/lifted_veil_0909_librivox/liftedveil_01_eliot_64kb.mp3",
+              "length_ms": 1917000,
+              "start_ms": 0,
+              "title": "Chapter 1 part 1"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lifted_veil_0909_librivox/liftedveil_02_eliot_64kb.mp3",
+              "length_ms": 1827000,
+              "start_ms": 1917000,
+              "title": "Chapter 1 part 2"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lifted_veil_0909_librivox/liftedveil_03_eliot_64kb.mp3",
+              "length_ms": 1865000,
+              "start_ms": 3744000,
+              "title": "Chapter 2 part 1"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lifted_veil_0909_librivox/liftedveil_04_eliot_64kb.mp3",
+              "length_ms": 1525000,
+              "start_ms": 5609000,
+              "title": "Chapter 2 part 2"
+            }
+          ],
+          "copyright_year": 1859,
+          "cover_url": "https://archive.org/download/LibrivoxCdCoverArt20/Lifted_Veil_1206.jpg",
+          "id": "bruce-pirie",
+          "language": "en",
+          "librivox_id": 3451,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/the-lifted-veil-by-george-eliot/",
+            "rss": "https://librivox.org/rss/3451",
+            "text": "https://www.gutenberg.org/etext/2165",
+            "zip": "https://archive.org/compress/lifted_veil_0909_librivox/formats=64KBPS MP3&file=/lifted_veil_0909_librivox.zip"
+          },
+          "narrators": [
+            "bruce-pirie"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 119,
+          "sources": [
+            {
+              "imported_at": "2026-10-28",
+              "ref": "3451",
+              "type": "librivox"
+            }
+          ],
+          "work": "the-lifted-veil-george-eliot"
+        },
         "clive-chafer-2016": {
           "abridged": false,
           "added_at": "2026-08-08",
