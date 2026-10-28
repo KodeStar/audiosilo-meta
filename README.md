@@ -376,7 +376,8 @@ skipped (identity is the project id, never the title), so a rerun changes
 nothing. Otherwise it becomes a new recording - never merged into another
 recording - under the work these rules find, in order (LibriVox's repeat markers are
 stripped from the title first: a trailing "(version 2)", "(ver 2)", "(ver. 2)"
-or "(Dramatic Reading)", stacked or combined in one parenthetical, so a dramatic
+or "(Dramatic Reading)", stacked or combined in one parenthetical, or a bare
+"Version 2" ("Walden, Version 2", "Sea Wolf - Version 2"), so a dramatic
 reading or a numbered version is another recording of the plain-titled work):
 
 1. the importer's ordinary identity walk: same title, same identity authors,

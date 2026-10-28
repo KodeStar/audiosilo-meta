@@ -482,14 +482,36 @@ func TestLibrivoxTitleStripsTheVersionMarker(t *testing.T) {
 		"Dracula (version 2 dramatic reading)":                  "Dracula",
 		// End-anchored: a marker followed by anything else stays, and so does
 		// a title that is nothing but markers.
-		"Metamorphosis (Dramatic Reading) (1915)":   "Metamorphosis (Dramatic Reading) (1915)",
-		"Ulysses (version 2): Circe":                "Ulysses (version 2): Circe",
-		"Song (Donne version)":                      "Song (Donne version)",
-		"Theatre (Dramatic Readings)":               "Theatre (Dramatic Readings)",
-		"Riverside (vertaling 2)":                   "Riverside (vertaling 2)",
-		"(Dramatic Reading)":                        "(Dramatic Reading)",
-		"(Dramatic Reading) (version 2)":            "(Dramatic Reading)",
-		"Thief in the Night - Version 2":            "Thief in the Night - Version 2",
+		"Metamorphosis (Dramatic Reading) (1915)": "Metamorphosis (Dramatic Reading) (1915)",
+		"Ulysses (version 2): Circe":              "Ulysses (version 2): Circe",
+		"Song (Donne version)":                    "Song (Donne version)",
+		"Theatre (Dramatic Readings)":             "Theatre (Dramatic Readings)",
+		"Riverside (vertaling 2)":                 "Riverside (vertaling 2)",
+		"(Dramatic Reading)":                      "(Dramatic Reading)",
+		"(Dramatic Reading) (version 2)":          "(Dramatic Reading)",
+		// The bare version marker: whitespace, optionally behind a comma, dash
+		// or colon, then the full word "version" and a number.
+		"Thief in the Night - Version 2":                            "Thief in the Night",
+		"Walden, Version 2":                                         "Walden",
+		"Daddy-Long-Legs Version 2":                                 "Daddy-Long-Legs",
+		"Study in Scarlet, version 9":                               "Study in Scarlet",
+		"Story of Geographical Discovery: How the World, Version 2": "Story of Geographical Discovery: How the World",
+		"Rubáiyát (Le Gallienne) \u2013 Version 2":                  "Rubáiyát (Le Gallienne)",
+		"Magnificent Ambersons (Growth Trilogy Vol 2) Version 2":    "Magnificent Ambersons (Growth Trilogy Vol 2)",
+		"Emma (Dramatic Reading), Version 2":                        "Emma",
+		"Emma, Version 2 (Dramatic Reading)":                        "Emma",
+		// Separators inside one parenthetical.
+		"Whose Body? (Version 3 - dramatic reading)":      "Whose Body?",
+		"Box-Car Children (Version 3: Dramatic Reading)":  "Box-Car Children",
+		"Story of a Needle (Version 2; Dramatic Reading)": "Story of a Needle",
+		// Not a bare marker: "ver" alone, a glued word, a lone "Version 2",
+		// a version that is not last.
+		"Walden, Ver 2":                             "Walden, Ver 2",
+		"Conversion 2":                              "Conversion 2",
+		"Subversion 2":                              "Subversion 2",
+		"Version 2 of Book 1":                       "Version 2 of Book 1",
+		"Nana (Version 2), Book Nine":               "Nana (Version 2), Book Nine",
+		"Phantom of the Opera (version 4?)":         "Phantom of the Opera (version 4?)",
 		"Persuasion (version 2) (dramatic reading)": "Persuasion",
 	} {
 		if got := librivoxTitle(in); got != want {
