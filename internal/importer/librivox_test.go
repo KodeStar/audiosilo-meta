@@ -254,9 +254,9 @@ func TestLibrivoxSelectsIDs(t *testing.T) {
 	}
 }
 
-// inProgress is fixture project 527 as LibriVox lists a project still being
-// read: no total runtime and no archive.org item.
-func inProgress(t *testing.T) LibrivoxProject {
+// inProgressProject is fixture project 527 as LibriVox lists a project still
+// being read: no total runtime and no archive.org item.
+func inProgressProject(t *testing.T) LibrivoxProject {
 	t.Helper()
 	p := fixtureProject(t, 527)
 	p.TotalTimeSecs, p.URLIArchive = 0, ""
@@ -276,6 +276,9 @@ func TestLibrivoxInProgressIsTheFeedsUnfinishedRow(t *testing.T) {
 		t.Fatal(err)
 	}
 	want := map[int]bool{1: true, 2: true, 3: true, 4: true, 66: false, 5: false, 6: false}
+	if len(books) != len(want) {
+		t.Fatalf("decoded %d projects, want %d", len(books), len(want))
+	}
 	for _, b := range books {
 		if got := librivoxInProgress(b); got != want[int(b.ID)] {
 			t.Errorf("project %d in progress = %v, want %v", b.ID, got, want[int(b.ID)])
@@ -285,7 +288,7 @@ func TestLibrivoxInProgressIsTheFeedsUnfinishedRow(t *testing.T) {
 
 func TestLibrivoxSkipsAnInProgressProject(t *testing.T) {
 	dataDir := t.TempDir()
-	sum := runLibrivox(t, writeSnapshot(t, inProgress(t), fixtureProject(t, 1870)), dataDir, allLibrivox)
+	sum := runLibrivox(t, writeSnapshot(t, inProgressProject(t), fixtureProject(t, 1870)), dataDir, allLibrivox)
 	if !reflect.DeepEqual(sum.LibrivoxInProgress, []int{527}) || sum.LibrivoxProjects != 2 {
 		t.Errorf("in progress = %v of %d selected; want [527] of 2", sum.LibrivoxInProgress, sum.LibrivoxProjects)
 	}
@@ -293,7 +296,7 @@ func TestLibrivoxSkipsAnInProgressProject(t *testing.T) {
 		t.Errorf("summary = %+v; want only 1870 landed", sum)
 	}
 	if entryExists(t, dataDir, workAddr("metamorphosis")) || entryExists(t, dataDir, personAddr("david-barnes")) ||
-		entryExists(t, dataDir, personAddr("franz-kafka")) {
+		entryExists(t, dataDir, personAddr("franz-kafka")) || entryExists(t, dataDir, personAddr("ian-johnston")) {
 		t.Error("the in-progress project wrote a record")
 	}
 	if !entryExists(t, dataDir, workAddr("candide-ou-loptimisme")) {
@@ -302,7 +305,7 @@ func TestLibrivoxSkipsAnInProgressProject(t *testing.T) {
 
 	// Alone, it writes nothing at all.
 	empty := t.TempDir()
-	sum = runLibrivox(t, writeSnapshot(t, inProgress(t)), empty, allLibrivox)
+	sum = runLibrivox(t, writeSnapshot(t, inProgressProject(t)), empty, allLibrivox)
 	if files := treeFiles(t, empty); len(files) != 0 || len(sum.Files) != 0 {
 		t.Errorf("wrote %d files (summary %+v); want nothing written", len(files), sum)
 	}
@@ -325,7 +328,7 @@ func TestLibrivoxImportsAZeroRuntimeProjectWithAnArchiveItem(t *testing.T) {
 
 func TestLibrivoxImportsAnInProgressProjectOnceComplete(t *testing.T) {
 	dataDir := t.TempDir()
-	runLibrivox(t, writeSnapshot(t, inProgress(t)), dataDir, allLibrivox)
+	runLibrivox(t, writeSnapshot(t, inProgressProject(t)), dataDir, allLibrivox)
 	sum := runLibrivox(t, writeSnapshot(t, fixtureProject(t, 527)), dataDir, allLibrivox)
 	if len(sum.LibrivoxInProgress) != 0 || sum.NewWorks != 1 || sum.NewRecordings != 1 {
 		t.Fatalf("summary = %+v; want the completed project imported", sum)
@@ -335,7 +338,8 @@ func TestLibrivoxImportsAnInProgressProjectOnceComplete(t *testing.T) {
 	if r.LibrivoxID != 527 || r.RuntimeMin == 0 {
 		t.Errorf("recording = %d runtime %d; want 527 with its runtime", r.LibrivoxID, r.RuntimeMin)
 	}
-	if !entryExists(t, dataDir, personAddr("david-barnes")) || !entryExists(t, dataDir, personAddr("franz-kafka")) {
+	if !entryExists(t, dataDir, personAddr("david-barnes")) || !entryExists(t, dataDir, personAddr("franz-kafka")) ||
+		!entryExists(t, dataDir, personAddr("ian-johnston")) {
 		t.Error("the completed project's people were not created")
 	}
 }
