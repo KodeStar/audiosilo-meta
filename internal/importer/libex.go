@@ -749,6 +749,17 @@ func creditIdentifies(name string) bool {
 	return !anyUnsluggedCredit(sourceCredits([]string{DecodeHTMLEntities(name)}, "", creditCensus{}))
 }
 
+// anyUnsluggedCredit reports whether any credit's name slugs to nothing, i.e.
+// resolves to the catch-all person.
+func anyUnsluggedCredit(credits []credit) bool {
+	for _, c := range credits {
+		if _, fellBack := personSlug(c.name); fellBack {
+			return true
+		}
+	}
+	return false
+}
+
 // ---------------------------------------------------------------------------
 // AI-narration exclusion (from THIS source)
 //

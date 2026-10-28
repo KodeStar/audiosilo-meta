@@ -378,15 +378,24 @@ recording - under the work these rules find, in order (LibriVox's "(version 2)"
 title marker is stripped first):
 
 1. the importer's ordinary identity walk: same title, same identity authors,
-   same language - except that a hit whose authors agree only through the
-   catch-all person (every name that slugs to nothing, such as two different
-   Cyrillic-named authors, lands on that one record) is `author-unmatched`
-   rather than an attach;
+   same language. An author or translator whose name slugs to nothing (a
+   Cyrillic "Йордан Йовков") is credited nowhere rather than on the one
+   catch-all person record every such name would share: the credit is dropped
+   before the work is decided and listed under `librivox credits not recorded`
+   (`unsluggable`), and a project left with no individual author (only a
+   translator, or only a collective such as Anonymous) goes to the worklist as
+   `author-unsluggable`;
 2. otherwise the ONE work by the same authors, in the same language, whose title
    differs only by a leading article or punctuation, case and accents ("The
    Metamorphosis" and "Metamorphosis" by Franz Kafka). The articles set aside
    are the English the/a/an, French le/la/les/l', German der/die/das, Spanish
-   el/los/las, Italian il/lo and Dutch de/het/een;
+   el/los/las, Italian il/lo and Dutch de/het/een. Failing that, the ONE such
+   work by an author the project spells with more or fewer words (the same
+   surname, one name's words a subset of the other's: "Henrietta Elizabeth
+   Marshall" and "Henrietta Marshall") is attached too, the project's credit
+   respelled with the catalogued name unless LibriVox's spelling is already a
+   person record of its own; a looser likeness (an initial, another given
+   name, a one-word name) is the worklist's `author-spelling`;
 3. otherwise, when the title with its trailing parenthetical or bracketed
    qualifiers removed is a work's title under rule 2 ("Frankenstein (1818)",
    "Black Beauty (The Autobiography of a Horse)" by the same author), the
@@ -415,10 +424,11 @@ librivox worklist: 2 projects skipped for a person to resolve (re-import the ids
 ```
 
 The reasons: `several-works` (two or more works qualify under rule 2),
-`author-unmatched` (a work carries the title but its authors only partly agree,
-or the agreement rests on the catch-all person a name in an unsluggable script
-falls back to: no real author is shared, and a shared translator does not
-count), `differently-spelled-title` (the duplicate-identity guard holds
+`author-unmatched` (a work carries the title but its authors only partly agree),
+`author-spelling` (a work carries the title by an author of the same surname
+whose name only loosely agrees with the project's, or beside other
+candidates), `author-unsluggable` (every individual author's name slugs to
+nothing), `differently-spelled-title` (the duplicate-identity guard holds
 the book under a title rule 2 does not read as the same, such as a subtitle
 apart, or rule 3's trailing qualifier) and `fallback-slug-taken` (below). Once a person has settled the work,
 re-importing the project's id lands it. `--conflicts` rows for these projects

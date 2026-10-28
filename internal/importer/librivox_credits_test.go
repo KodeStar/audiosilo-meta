@@ -273,17 +273,17 @@ func TestLibrivoxAttachToAWorkCreditingTheTranslator(t *testing.T) {
 }
 
 func TestLibrivoxUnrecordedUnsluggableTranslatorsKeepTheirOwnIDs(t *testing.T) {
-	// Two translators whose names slug away to nothing both resolve to the one
-	// catch-all record: each is reported with its own LibriVox id, matched by
-	// name, and neither is said to exist.
+	// Two translators whose names slug away to nothing: each is reported
+	// unsluggable with its own LibriVox id, matched by name, and neither is said
+	// to exist (the catch-all record is never theirs).
 	dataDir := t.TempDir()
 	seedKafka(t, dataDir, "franz-kafka", "Franz Kafka")
 	pr := fixtureProject(t, 527)
 	pr.Translators = []LibrivoxPerson{{ID: 5001, FirstName: "Иван", LastName: "Петров"}, {ID: 5002, FirstName: "Пётр", LastName: "Иванов"}}
 	sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
 	want := []LibrivoxUnrecordedCredit{
-		{Project: 527, AuthorID: 5001, Name: "Иван Петров", Roles: []string{model.RoleTranslator}, Work: "metamorphosis"},
-		{Project: 527, AuthorID: 5002, Name: "Пётр Иванов", Roles: []string{model.RoleTranslator}, Work: "metamorphosis"},
+		{Project: 527, AuthorID: 5001, Name: "Иван Петров", Roles: []string{model.RoleTranslator}, Work: "metamorphosis", Reason: librivoxUnsluggable},
+		{Project: 527, AuthorID: 5002, Name: "Пётр Иванов", Roles: []string{model.RoleTranslator}, Work: "metamorphosis", Reason: librivoxUnsluggable},
 	}
 	if !reflect.DeepEqual(sum.LibrivoxUnrecordedCredits, want) {
 		t.Errorf("unrecorded = %+v, want %+v", sum.LibrivoxUnrecordedCredits, want)

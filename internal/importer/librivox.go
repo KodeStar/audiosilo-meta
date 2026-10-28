@@ -531,6 +531,14 @@ type librivoxState struct {
 	// second reader id meeting a held name is someone else.
 	readers  map[int]string
 	readerOf map[string]int
+	// authorOf is the author id each person slug is HELD by - the one its
+	// record carries, or the one a row already planned in this run claimed
+	// for it (claimLibrivoxAuthors), which the stamp then writes - and
+	// claimedAuthor the ids so claimed. The stamp runs after planning, so the
+	// claims are what lets a later row of the run see an id an earlier one
+	// will stamp, as readerOf does for readers.
+	authorOf      map[string]int
+	claimedAuthor map[int]bool
 	// landed is the rows whose recording this run created, in row order, with
 	// what the stamp checks a resolved person against.
 	landed []librivoxLanding
@@ -538,6 +546,9 @@ type librivoxState struct {
 	// use; variantExamples names a few rows it attached, for the run's note.
 	titles          map[string][]string
 	variantExamples []string
+	// authorVariantExamples names a few rows librivoxauthors.go's rule 1
+	// attached, for the run's note.
+	authorVariantExamples []string
 }
 
 // librivoxKey is one LibriVox id in its namespace.
@@ -557,11 +568,13 @@ type librivoxLanding struct {
 // newLibrivoxState is the empty LibriVox planner state every run starts with.
 func newLibrivoxState() librivoxState {
 	return librivoxState{
-		ids:      map[int]bool{},
-		held:     map[int]RecRef{},
-		people:   map[librivoxKey]string{},
-		readers:  map[int]string{},
-		readerOf: map[string]int{},
+		ids:           map[int]bool{},
+		held:          map[int]RecRef{},
+		people:        map[librivoxKey]string{},
+		readers:       map[int]string{},
+		readerOf:      map[string]int{},
+		authorOf:      map[string]int{},
+		claimedAuthor: map[int]bool{},
 	}
 }
 
@@ -574,6 +587,9 @@ func (p *planner) loadLibrivoxPerson(person *model.Person) {
 	}
 	if person.LibrivoxReaderID != 0 {
 		p.lv.readerOf[person.ID] = person.LibrivoxReaderID
+	}
+	if person.LibrivoxAuthorID != 0 {
+		p.lv.authorOf[person.ID] = person.LibrivoxAuthorID
 	}
 }
 
@@ -956,11 +972,16 @@ type LibrivoxUnrecordedCredit struct {
 	// already held it); false means the run withheld it rather than mint an
 	// orphan.
 	PersonExists bool `json:"person_exists"`
+	// Reason is "unsluggable" for a name that slugs to nothing, which no record
+	// can hold (librivoxauthors.go rule 2); "" for a credit the attached work
+	// does not name.
+	Reason string `json:"reason,omitempty"`
 }
 
 // String is the credit as the import report prints it, one line:
 //
 //	2027 "Amy Coulter" (translator, librivox_author_id 9876) -> siddhartha, person not created
+//	2607 "Йордан Йовков" (author, librivox_author_id 6294) -> staroplaninski-legendi, unsluggable
 func (c LibrivoxUnrecordedCredit) String() string {
 	var b strings.Builder
 	fmt.Fprintf(&b, "%d %q (", c.Project, c.Name)
@@ -973,7 +994,10 @@ func (c LibrivoxUnrecordedCredit) String() string {
 		fmt.Fprintf(&b, ", librivox_author_id %d", c.AuthorID)
 	}
 	fmt.Fprintf(&b, ") -> %s", c.Work)
-	if !c.PersonExists {
+	switch {
+	case c.Reason != "":
+		b.WriteString(", " + c.Reason)
+	case !c.PersonExists:
 		b.WriteString(", person not created")
 	}
 	return b.String()
@@ -1034,11 +1058,11 @@ func (p *planner) librivoxAuthorIDOf(b sourceBook, name string, r personResoluti
 		if c.kind != librivoxAuthor {
 			continue
 		}
-		names := p.librivoxCreditNames(c)
-		if len(names) != 1 {
+		got := p.soleCreditName(c)
+		if got == "" {
 			continue
 		}
-		if names[0] == name || (!r.fellBack && p.resolvePerson(names[0]).slug == r.slug) {
+		if got == name || (!r.fellBack && p.resolvePerson(got).slug == r.slug) {
 			return c.id
 		}
 	}
@@ -1075,11 +1099,11 @@ func (p *planner) librivoxCreditSlug(c librivoxCredit) (string, bool) {
 			return p.livePerson(slug)
 		}
 	}
-	names := p.librivoxCreditNames(c)
-	if len(names) != 1 {
+	name := p.soleCreditName(c)
+	if name == "" {
 		return "", false
 	}
-	r := p.resolvePerson(names[0])
+	r := p.resolvePerson(name)
 	if r.fellBack {
 		return "", false
 	}
@@ -1122,6 +1146,27 @@ func stampLifeYears(raw map[string]any, life lifeYears) {
 	}
 }
 
+// claimLibrivoxAuthors records, for a row that landed on work, the author ids
+// stampLibrivoxPeople will write once planning is done, by the same tests in
+// the same (row) order: a credit resolving to a person the work credits, whose
+// id no person carries or claimed, onto a person holding none (authorOf).
+func (p *planner) claimLibrivoxAuthors(b sourceBook, work string) {
+	for _, c := range b.lv.credits {
+		if c.kind != librivoxAuthor || c.id <= 0 {
+			continue
+		}
+		if _, held := p.lv.people[librivoxKey{librivoxAuthor, c.id}]; held || p.lv.claimedAuthor[c.id] {
+			continue
+		}
+		slug, ok := p.librivoxCreditSlug(c)
+		if !ok || !p.workCreditsPerson(work, slug) || p.lv.authorOf[slug] != 0 {
+			continue
+		}
+		p.lv.authorOf[slug] = c.id
+		p.lv.claimedAuthor[c.id] = true
+	}
+}
+
 // stampLibrivoxID records one id on one person, appending the row's provenance
 // when it does so. An id the record already carries is a no-op. Its warnings are
 // about one row, so they join the per-row tier (labelled as bookLabel labels a
@@ -1152,5 +1197,8 @@ func (p *planner) stampLibrivoxID(slug string, c librivoxCredit, project int) {
 	raw["sources"] = appendSourceUnique(srcArr, OutSource{Type: p.sourceType, Ref: strconv.Itoa(project), ImportedAt: p.importDate})
 	p.putEntry(pack.FamilyPeople, slug, raw)
 	p.lv.people[k] = slug
+	if c.kind == librivoxAuthor {
+		p.lv.authorOf[slug] = c.id
+	}
 	p.summary.LibrivoxIDsStamped++
 }

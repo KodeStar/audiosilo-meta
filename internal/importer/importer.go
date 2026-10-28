@@ -886,6 +886,7 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	p.reportRefreshes()
 	p.reportDuplicateIdentities()
 	p.reportLibrivoxVariants()
+	p.reportLibrivoxAuthorVariants()
 	p.settleLibrivoxUnrecorded()
 	p.reportTombstoneRides()
 	p.reportSeriesNameJoins()
@@ -1087,6 +1088,9 @@ func (p *planner) planCreate(books []sourceBook) {
 	// separating rows whose titles are identical even after the full-title
 	// fallback and which differ only by series position (workidentity.go).
 	suffixes := p.serialPositionSuffixes(books, titles)
+	// A LibriVox author id that is a catalogued author spelled with more or
+	// fewer words is that person for the whole batch (librivoxauthors.go).
+	p.keyLibrivoxAuthorVariants(books, titles, suffixes)
 	for i, b := range books {
 		asin := NormalizeASIN(b.str("asin"))
 		p.setSource(asin, b)
@@ -1416,6 +1420,19 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		p.noteLostSeriesClaims(b, -1, nil)
 		return
 	}
+	// A LibriVox credit whose name slugs to nothing is credited nowhere, never
+	// on the shared catch-all person; a row it leaves with no individual author
+	// is a worklist row (librivoxauthors.go rule 2).
+	var unsluggable []credit
+	if b.lv != nil {
+		var noAuthor bool
+		authorCredits, unsluggable, noAuthor = p.dropUnsluggableLibrivoxCredits(authorCredits)
+		if noAuthor && workTitle != "" {
+			p.noteLibrivoxWorklist(b, workTitle, LibrivoxAuthorUnsluggable, candidatesOf(nil))
+			p.noteLostSeriesClaims(b, -1, nil)
+			return
+		}
+	}
 
 	if workTitle == "" {
 		warn("no title; skipped")
@@ -1480,6 +1497,9 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	if route.skip {
 		p.noteLostSeriesClaims(b, -1, nil)
 		return
+	}
+	if route.renames != nil {
+		authorCredits = p.respellLibrivoxAuthors(b, authorCredits, route.renames)
 	}
 	ident := p.rowIdentityOf(b, workTitle)
 	if route.walk == nil &&
@@ -1548,13 +1568,17 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		p.rememberIdentity(ident, ws.slug, workTitle)
 	}
 	p.addRecording(ws, b, resolvedTitle, asin, lang, narratorSlugs, warn)
-	if p.landedRec != "" {
+	if p.landedRec != "" && b.lv != nil {
 		p.summary.LibrivoxUnrecordedCredits = append(p.summary.LibrivoxUnrecordedCredits, unrecorded...)
+		p.summary.LibrivoxUnrecordedCredits = append(p.summary.LibrivoxUnrecordedCredits, p.unsluggableLibrivoxCredits(b, ws.slug, unsluggable)...)
 	}
 	// A row of this run landing on a work the run created adds what it states
 	// (credits, genres - the recording vote reads the recording it landed on);
 	// a no-op for a work loaded from disk, and for the row that created it.
 	p.mergeCreatedWorkFacts(ws, p.landedRec, facts)
+	if p.landedRec != "" && b.lv != nil {
+		p.claimLibrivoxAuthors(b, ws.slug)
+	}
 
 	// addRecording registers the ASIN (p.asins) itself, and only once it landed.
 	// What a merge carries is deliberately narrow: the ASIN, this run's
