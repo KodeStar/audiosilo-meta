@@ -206,28 +206,19 @@ func (p *planner) respellingResolves(pairs map[string]string) bool {
 
 // pairsCarryOtherIDs reports whether a work author a pairing names already
 // carries a LibriVox author id other than the one row b states for the paired
-// credit (librivoxAuthorIDOf).
+// credit (librivoxAuthorIDOf). It reads the catalogue's ids only (authorOf):
+// a person this run created is stamped after planning, so a second spelling
+// meeting one within the run is not refused by it.
 func (p *planner) pairsCarryOtherIDs(b sourceBook, pairs, names map[string]string) bool {
 	for r, w := range pairs {
 		name := names[r]
 		if id := p.librivoxAuthorIDOf(b, name, p.resolvePerson(name)); id > 0 {
-			if have := p.librivoxAuthorIDOn(w); have != 0 && have != id {
+			if have := p.lv.authorOf[w]; have != 0 && have != id {
 				return true
 			}
 		}
 	}
 	return false
-}
-
-// librivoxAuthorIDOn is the LibriVox author id person slug carries, catalogued
-// or stamped earlier in the run, or 0.
-func (p *planner) librivoxAuthorIDOn(slug string) int {
-	for k, s := range p.lv.people {
-		if k.kind == librivoxAuthor && s == slug {
-			return k.id
-		}
-	}
-	return 0
 }
 
 // soleAuthorVariant is rule 1's attach test over the works under one title
@@ -369,9 +360,8 @@ func (p *planner) keyLibrivoxAuthorVariants(books []sourceBook, titles, suffixes
 	if len(proposed) == 0 {
 		return
 	}
-	keyed := p.librivoxAuthorIDHolders()
 	for id, to := range proposed {
-		if _, held := p.lv.people[librivoxKey{librivoxAuthor, id}]; held || conflicting[id] || keyed[p.resolvePerson(to).slug] {
+		if _, held := p.lv.people[librivoxKey{librivoxAuthor, id}]; held || conflicting[id] || p.lv.authorOf[p.resolvePerson(to).slug] != 0 {
 			delete(proposed, id)
 		}
 	}
@@ -415,18 +405,6 @@ func (p *planner) soleCreditName(c librivoxCredit) string {
 		return names[0]
 	}
 	return ""
-}
-
-// librivoxAuthorIDHolders is every person slug that carries a LibriVox author
-// id, catalogued or stamped earlier in the run.
-func (p *planner) librivoxAuthorIDHolders() map[string]bool {
-	out := map[string]bool{}
-	for k, slug := range p.lv.people {
-		if k.kind == librivoxAuthor {
-			out[slug] = true
-		}
-	}
-	return out
 }
 
 // renameText is a respelling as the run's note prints it, sorted, then the

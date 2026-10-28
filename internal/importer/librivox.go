@@ -531,6 +531,10 @@ type librivoxState struct {
 	// second reader id meeting a held name is someone else.
 	readers  map[int]string
 	readerOf map[string]int
+	// authorOf is the author id each person slug carries: catalogued, or
+	// stamped (stampLibrivoxPeople runs after planning, so while rows are
+	// planned it is the catalogue's alone).
+	authorOf map[string]int
 	// landed is the rows whose recording this run created, in row order, with
 	// what the stamp checks a resolved person against.
 	landed []librivoxLanding
@@ -565,6 +569,7 @@ func newLibrivoxState() librivoxState {
 		people:   map[librivoxKey]string{},
 		readers:  map[int]string{},
 		readerOf: map[string]int{},
+		authorOf: map[string]int{},
 	}
 }
 
@@ -577,6 +582,9 @@ func (p *planner) loadLibrivoxPerson(person *model.Person) {
 	}
 	if person.LibrivoxReaderID != 0 {
 		p.lv.readerOf[person.ID] = person.LibrivoxReaderID
+	}
+	if person.LibrivoxAuthorID != 0 {
+		p.lv.authorOf[person.ID] = person.LibrivoxAuthorID
 	}
 }
 
@@ -1163,5 +1171,8 @@ func (p *planner) stampLibrivoxID(slug string, c librivoxCredit, project int) {
 	raw["sources"] = appendSourceUnique(srcArr, OutSource{Type: p.sourceType, Ref: strconv.Itoa(project), ImportedAt: p.importDate})
 	p.putEntry(pack.FamilyPeople, slug, raw)
 	p.lv.people[k] = slug
+	if c.kind == librivoxAuthor {
+		p.lv.authorOf[slug] = c.id
+	}
 	p.summary.LibrivoxIDsStamped++
 }
