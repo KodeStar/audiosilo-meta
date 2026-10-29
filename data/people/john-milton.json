@@ -1283,7 +1283,6 @@
       "death_year": 1683,
       "id": "john-owen",
       "librivox_author_id": 5000,
-      "librivox_reader_id": 19061,
       "license": "CC0-1.0",
       "name": "John Owen",
       "sources": [
@@ -1295,11 +1294,6 @@
         {
           "imported_at": "2026-10-28",
           "ref": "2616",
-          "type": "librivox"
-        },
-        {
-          "imported_at": "2026-10-29",
-          "ref": "19373",
           "type": "librivox"
         }
       ]
@@ -1313,6 +1307,34 @@
           "imported_at": "2026-08-07",
           "ref": "0241429633",
           "type": "libex-import"
+        }
+      ]
+    },
+    "john-owen-librivox-19061": {
+      "id": "john-owen-librivox-19061",
+      "librivox_reader_id": 19061,
+      "license": "CC0-1.0",
+      "name": "John Owen",
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "19373",
+          "type": "librivox"
+        },
+        {
+          "imported_at": "2026-10-29",
+          "ref": "19886",
+          "type": "librivox"
+        },
+        {
+          "imported_at": "2026-10-29",
+          "ref": "19916",
+          "type": "librivox"
+        },
+        {
+          "imported_at": "2026-10-29",
+          "ref": "19925",
+          "type": "librivox"
         }
       ]
     },

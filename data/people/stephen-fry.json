@@ -245,7 +245,6 @@
       "death_year": 1975,
       "id": "stephen-graham",
       "librivox_author_id": 16060,
-      "librivox_reader_id": 19502,
       "license": "CC0-1.0",
       "name": "Stephen Graham",
       "sources": [
@@ -257,11 +256,6 @@
         {
           "imported_at": "2026-10-29",
           "ref": "16600",
-          "type": "librivox"
-        },
-        {
-          "imported_at": "2026-10-29",
-          "ref": "20400",
           "type": "librivox"
         }
       ]
@@ -275,6 +269,19 @@
           "imported_at": "2026-07-25",
           "ref": "1797123327",
           "type": "audiosilo-books-import"
+        }
+      ]
+    },
+    "stephen-graham-librivox-19502": {
+      "id": "stephen-graham-librivox-19502",
+      "librivox_reader_id": 19502,
+      "license": "CC0-1.0",
+      "name": "Stephen Graham",
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "20400",
+          "type": "librivox"
         }
       ]
     },
@@ -2846,10 +2853,7 @@
       ]
     },
     "stephen-phillips": {
-      "birth_year": 1864,
-      "death_year": 1915,
       "id": "stephen-phillips",
-      "librivox_author_id": 17349,
       "librivox_reader_id": 4264,
       "license": "CC0-1.0",
       "name": "Stephen Phillips",
@@ -2863,10 +2867,25 @@
           "imported_at": "2026-10-28",
           "ref": "3403",
           "type": "librivox"
-        },
+        }
+      ]
+    },
+    "stephen-phillips-1864-1915": {
+      "birth_year": 1864,
+      "death_year": 1915,
+      "id": "stephen-phillips-1864-1915",
+      "librivox_author_id": 17349,
+      "license": "CC0-1.0",
+      "name": "Stephen Phillips (1864-1915)",
+      "sources": [
         {
           "imported_at": "2026-10-29",
           "ref": "18802",
+          "type": "librivox"
+        },
+        {
+          "imported_at": "2026-10-29",
+          "ref": "19291",
           "type": "librivox"
         }
       ]

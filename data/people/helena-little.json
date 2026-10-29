@@ -3897,10 +3897,7 @@
       ]
     },
     "henry-farrell": {
-      "birth_year": 1920,
-      "death_year": 2006,
       "id": "henry-farrell",
-      "librivox_author_id": 18079,
       "license": "CC0-1.0",
       "name": "Henry Farrell",
       "sources": [
@@ -3908,10 +3905,25 @@
           "imported_at": "2026-07-29",
           "ref": "B0BVKRN5FK",
           "type": "libex-import"
-        },
+        }
+      ]
+    },
+    "henry-farrell-1920-2006": {
+      "birth_year": 1920,
+      "death_year": 2006,
+      "id": "henry-farrell-1920-2006",
+      "librivox_author_id": 18079,
+      "license": "CC0-1.0",
+      "name": "Henry Farrell (1920-2006)",
+      "sources": [
         {
           "imported_at": "2026-10-29",
           "ref": "20020",
+          "type": "librivox"
+        },
+        {
+          "imported_at": "2026-10-29",
+          "ref": "20357",
           "type": "librivox"
         }
       ]

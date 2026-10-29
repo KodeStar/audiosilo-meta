@@ -4705,10 +4705,7 @@
       ]
     },
     "samuel-miller": {
-      "birth_year": 1769,
-      "death_year": 1850,
       "id": "samuel-miller",
-      "librivox_author_id": 17818,
       "license": "CC0-1.0",
       "name": "Samuel Miller",
       "sources": [
@@ -4716,7 +4713,17 @@
           "imported_at": "2026-07-29",
           "ref": "B07BHW94DD",
           "type": "libex-import"
-        },
+        }
+      ]
+    },
+    "samuel-miller-1769-1850": {
+      "birth_year": 1769,
+      "death_year": 1850,
+      "id": "samuel-miller-1769-1850",
+      "librivox_author_id": 17818,
+      "license": "CC0-1.0",
+      "name": "Samuel Miller (1769-1850)",
+      "sources": [
         {
           "imported_at": "2026-10-29",
           "ref": "19609",

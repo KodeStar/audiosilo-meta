@@ -8440,10 +8440,7 @@
       ]
     },
     "charles-williams": {
-      "birth_year": 1886,
-      "death_year": 1945,
       "id": "charles-williams",
-      "librivox_author_id": 3169,
       "license": "CC0-1.0",
       "name": "Charles Williams",
       "sources": [
@@ -8451,10 +8448,25 @@
           "imported_at": "2026-08-02",
           "ref": "B01NA0GLL2",
           "type": "libex-import"
-        },
+        }
+      ]
+    },
+    "charles-williams-1886-1945": {
+      "birth_year": 1886,
+      "death_year": 1945,
+      "id": "charles-williams-1886-1945",
+      "librivox_author_id": 3169,
+      "license": "CC0-1.0",
+      "name": "Charles Williams (1886-1945)",
+      "sources": [
         {
           "imported_at": "2026-10-29",
           "ref": "19388",
+          "type": "librivox"
+        },
+        {
+          "imported_at": "2026-10-29",
+          "ref": "19983",
           "type": "librivox"
         }
       ]

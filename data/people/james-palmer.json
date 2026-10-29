@@ -2683,7 +2683,6 @@
       "death_year": 1882,
       "id": "james-thomson",
       "librivox_author_id": 3259,
-      "librivox_reader_id": 19252,
       "license": "CC0-1.0",
       "name": "James Thomson",
       "sources": [
@@ -2696,10 +2695,23 @@
           "imported_at": "2026-10-28",
           "ref": "3425",
           "type": "librivox"
-        },
+        }
+      ]
+    },
+    "james-thomson-librivox-19252": {
+      "id": "james-thomson-librivox-19252",
+      "librivox_reader_id": 19252,
+      "license": "CC0-1.0",
+      "name": "James Thomson",
+      "sources": [
         {
           "imported_at": "2026-10-29",
           "ref": "19883",
+          "type": "librivox"
+        },
+        {
+          "imported_at": "2026-10-29",
+          "ref": "20122",
           "type": "librivox"
         }
       ]
