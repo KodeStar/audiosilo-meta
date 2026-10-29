@@ -10815,6 +10815,81 @@
       ],
       "title": "Iolanthe"
     },
+    "iolanthe-w-s-gilbert": {
+      "added_at": "2026-10-29",
+      "authors": [
+        "w-s-gilbert"
+      ],
+      "id": "iolanthe-w-s-gilbert",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "beth-thomas-1974-2020": {
+          "added_at": "2026-10-29",
+          "archive_id": "iolanthe_1603_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/iolanthe_1603_librivox/iolanthe_1_gilbert_64kb.mp3",
+              "length_ms": 2721000,
+              "start_ms": 0,
+              "title": "Iolanthe Act 1"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/iolanthe_1603_librivox/iolanthe_2_gilbert_64kb.mp3",
+              "length_ms": 2154000,
+              "start_ms": 2721000,
+              "title": "Iolanthe Act 2"
+            }
+          ],
+          "copyright_year": 1882,
+          "cover_url": "https://archive.org/download/iolanthe_1603_librivox/iolanthe2_1603.jpg",
+          "id": "beth-thomas-1974-2020",
+          "language": "en",
+          "librivox_id": 9919,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/iolanthe-by-w-s-gilbert/",
+            "rss": "https://librivox.org/rss/9919",
+            "text": "https://www.gutenberg.org/ebooks/808",
+            "zip": "https://archive.org/compress/iolanthe_1603_librivox/formats=64KBPS MP3&file=/iolanthe_1603_librivox.zip"
+          },
+          "narrators": [
+            "beth-thomas-1974-2020",
+            "kristin-g",
+            "toddhw",
+            "alan-mapstone",
+            "rob-marland",
+            "khand",
+            "lydia",
+            "shakira-searle",
+            "vanessa-cooley",
+            "roohi",
+            "j-e-vorble",
+            "hamlet",
+            "john-burlinson-1950-2024",
+            "jennifer-fournier"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 81,
+          "sources": [
+            {
+              "imported_at": "2026-10-29",
+              "ref": "9919",
+              "type": "librivox"
+            }
+          ],
+          "work": "iolanthe-w-s-gilbert"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "9919",
+          "type": "librivox"
+        }
+      ],
+      "title": "Iolanthe"
+    },
     "iolaos-und-virgine": {
       "added_at": "2026-08-02",
       "authors": [
@@ -12476,6 +12551,87 @@
         }
       ],
       "title": "Iphigenia in Aulis"
+    },
+    "iphigenia-in-tauris": {
+      "added_at": "2026-10-29",
+      "authors": [
+        "euripides",
+        "theodore-alois-buckley"
+      ],
+      "credits": [
+        {
+          "person": "theodore-alois-buckley",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "classics",
+        "drama-plays"
+      ],
+      "id": "iphigenia-in-tauris",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "elizabeth-klett": {
+          "added_at": "2026-10-29",
+          "archive_id": "iphigeniaintauris_1510_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/iphigeniaintauris_1510_librivox/iphigeniaintauris_1_euripides_64kb.mp3",
+              "length_ms": 3281000,
+              "start_ms": 0,
+              "title": "Part 1"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/iphigeniaintauris_1510_librivox/iphigeniaintauris_2_euripides_64kb.mp3",
+              "length_ms": 2142000,
+              "start_ms": 3281000,
+              "title": "Part 2"
+            }
+          ],
+          "copyright_year": 1892,
+          "cover_url": "https://archive.org/download/iphigeniaintauris_1510_librivox/iphigenia_tauris_way_1510.jpg",
+          "id": "elizabeth-klett",
+          "language": "en",
+          "librivox_id": 9997,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/iphigenia-in-tauris-by-euripides/",
+            "rss": "https://librivox.org/rss/9997",
+            "text": "https://www.gutenberg.org/ebooks/15081",
+            "zip": "https://archive.org/compress/iphigeniaintauris_1510_librivox/formats=64KBPS MP3&file=/iphigeniaintauris_1510_librivox.zip"
+          },
+          "narrators": [
+            "elizabeth-klett",
+            "availle",
+            "kristin-g",
+            "rob-marland",
+            "jeffrey-church",
+            "tenorboy",
+            "beth-thomas-1974-2020",
+            "alan-mapstone",
+            "lydia"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 90,
+          "sources": [
+            {
+              "imported_at": "2026-10-29",
+              "ref": "9997",
+              "type": "librivox"
+            }
+          ],
+          "work": "iphigenia-in-tauris"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "9997",
+          "type": "librivox"
+        }
+      ],
+      "title": "Iphigenia in Tauris"
     }
   }
 }

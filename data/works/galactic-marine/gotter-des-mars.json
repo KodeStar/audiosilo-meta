@@ -12116,6 +12116,77 @@
         }
       ],
       "title": "GPS Declassified"
+    },
+    "grab-des-herrn-schefbeck": {
+      "added_at": "2026-10-29",
+      "authors": [
+        "josef-ruederer"
+      ],
+      "genres": [
+        "mystery"
+      ],
+      "id": "grab-des-herrn-schefbeck",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "ramona-deininger-schnabel": {
+          "added_at": "2026-10-29",
+          "archive_id": "grab_herrn_schafbeck_1503_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/grab_herrn_schafbeck_1503_librivox/grabschefbeck_1_ruederer_64kb.mp3",
+              "length_ms": 1642000,
+              "start_ms": 0,
+              "title": "Abschnitt 1"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/grab_herrn_schafbeck_1503_librivox/grabschefbeck_2_ruederer_64kb.mp3",
+              "length_ms": 1005000,
+              "start_ms": 1642000,
+              "title": "Abschnitt 2"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/grab_herrn_schafbeck_1503_librivox/grabschefbeck_3_ruederer_64kb.mp3",
+              "length_ms": 1361000,
+              "start_ms": 2647000,
+              "title": "Abschnitt 3"
+            }
+          ],
+          "copyright_year": 1912,
+          "cover_url": "https://archive.org/download/LibrivoxCdCoverArt17/schefbeck_1503.jpg",
+          "id": "ramona-deininger-schnabel",
+          "language": "de",
+          "librivox_id": 9698,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/das-grab-des-herrn-schafbeck-by-josef-ruederer/",
+            "rss": "https://librivox.org/rss/9698",
+            "text": "https://www.projekt-gutenberg.org/ruederer/grab/grab.html",
+            "zip": "https://archive.org/compress/grab_herrn_schafbeck_1503_librivox/formats=64KBPS MP3&file=/grab_herrn_schafbeck_1503_librivox.zip"
+          },
+          "narrators": [
+            "ramona-deininger-schnabel"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 67,
+          "sources": [
+            {
+              "imported_at": "2026-10-29",
+              "ref": "9698",
+              "type": "librivox"
+            }
+          ],
+          "work": "grab-des-herrn-schefbeck"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "9698",
+          "type": "librivox"
+        }
+      ],
+      "title": "Grab des Herrn Schefbeck"
     }
   }
 }
