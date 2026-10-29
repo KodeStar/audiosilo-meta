@@ -400,6 +400,7 @@
     },
     "eric-johnson": {
       "id": "eric-johnson",
+      "librivox_reader_id": 17485,
       "license": "CC0-1.0",
       "name": "Eric Johnson",
       "sources": [
@@ -407,6 +408,11 @@
           "imported_at": "2026-08-02",
           "ref": "B0G2T4HPD6",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-29",
+          "ref": "17523",
+          "type": "librivox"
         }
       ]
     },
@@ -4831,6 +4837,19 @@
         }
       ]
     },
+    "ericgarretson": {
+      "id": "ericgarretson",
+      "librivox_reader_id": 16396,
+      "license": "CC0-1.0",
+      "name": "EricGarretson",
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "16752",
+          "type": "librivox"
+        }
+      ]
+    },
     "erich-bailey": {
       "id": "erich-bailey",
       "license": "CC0-1.0",
@@ -4929,7 +4948,10 @@
       ]
     },
     "erich-muhsam": {
+      "birth_year": 1878,
+      "death_year": 1934,
       "id": "erich-muhsam",
+      "librivox_author_id": 2554,
       "license": "CC0-1.0",
       "name": "Erich Mühsam",
       "sources": [
@@ -4937,6 +4959,11 @@
           "imported_at": "2026-08-02",
           "ref": "B077V2K9VT",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-29",
+          "ref": "16688",
+          "type": "librivox"
         }
       ]
     },

@@ -4416,6 +4416,54 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "phil-chenevert": {
+          "added_at": "2026-10-29",
+          "archive_id": "snowball_2112_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/snowball_2112_librivox/snowball_01_anderson_64kb.mp3",
+              "length_ms": 2155000,
+              "start_ms": 0,
+              "title": "Part I"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/snowball_2112_librivox/snowball_02_anderson_64kb.mp3",
+              "length_ms": 1886000,
+              "start_ms": 2155000,
+              "title": "Part II"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/snowball_2112_librivox/snowball_03_anderson_64kb.mp3",
+              "length_ms": 1905000,
+              "start_ms": 4041000,
+              "title": "Part III"
+            }
+          ],
+          "cover_url": "https://archive.org/download/snowball_2112_librivox/snowball2_2112.jpg",
+          "id": "phil-chenevert",
+          "language": "en",
+          "librivox_id": 17344,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/snowball-by-poul-william-anderson-2/",
+            "rss": "https://librivox.org/rss/17344",
+            "text": "https://www.gutenberg.org/ebooks/59314",
+            "zip": "https://archive.org/compress/snowball_2112_librivox/formats=64KBPS MP3&file=/snowball_2112_librivox.zip"
+          },
+          "narrators": [
+            "phil-chenevert"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 99,
+          "sources": [
+            {
+              "imported_at": "2026-10-29",
+              "ref": "17344",
+              "type": "librivox"
+            }
+          ],
+          "work": "snowball-poul-anderson"
+        },
         "realisticspeakers": {
           "added_at": "2026-10-29",
           "archive_id": "snowball_1905_librivox",
