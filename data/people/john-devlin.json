@@ -1130,10 +1130,7 @@
       ]
     },
     "john-eliot": {
-      "birth_year": 1604,
-      "death_year": 1690,
       "id": "john-eliot",
-      "librivox_author_id": 16162,
       "license": "CC0-1.0",
       "name": "John Eliot",
       "sources": [
@@ -1141,7 +1138,17 @@
           "imported_at": "2026-07-29",
           "ref": "B00NYBVNOY",
           "type": "libex-import"
-        },
+        }
+      ]
+    },
+    "john-eliot-1604-1690": {
+      "birth_year": 1604,
+      "death_year": 1690,
+      "id": "john-eliot-1604-1690",
+      "librivox_author_id": 16162,
+      "license": "CC0-1.0",
+      "name": "John Eliot (1604-1690)",
+      "sources": [
         {
           "imported_at": "2026-10-29",
           "ref": "16748",

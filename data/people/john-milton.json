@@ -6769,10 +6769,7 @@
       ]
     },
     "john-tyndall": {
-      "birth_year": 1820,
-      "death_year": 1893,
       "id": "john-tyndall",
-      "librivox_author_id": 16171,
       "license": "CC0-1.0",
       "name": "John Tyndall",
       "sources": [
@@ -6780,7 +6777,17 @@
           "imported_at": "2026-07-29",
           "ref": "B077S49PNW",
           "type": "libex-import"
-        },
+        }
+      ]
+    },
+    "john-tyndall-1820-1893": {
+      "birth_year": 1820,
+      "death_year": 1893,
+      "id": "john-tyndall-1820-1893",
+      "librivox_author_id": 16171,
+      "license": "CC0-1.0",
+      "name": "John Tyndall (1820-1893)",
+      "sources": [
         {
           "imported_at": "2026-10-29",
           "ref": "16764",
