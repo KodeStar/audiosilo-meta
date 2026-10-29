@@ -706,8 +706,9 @@ func (p *planner) rowNarratorSlugs(b sourceBook, names []string, warn func(strin
 //     carrying it ("" when that is the name's own resolution anyway, so every
 //     side effect of the ordinary path - a tombstone ride's note - is kept);
 //   - a name that slugs away to nothing is a person of their own at
-//     model.LibrivoxUnslugReaderSlug, created here carrying the id
-//     (librivoxUnslugReader), never the shared catch-all;
+//     model.LibrivoxUnslugReaderSlug, created here carrying the id exactly as
+//     the held-name case below, never the shared catch-all (which pkg/check's
+//     checkUnslugFallback refuses for a LibriVox-stated record);
 //   - a name that folds onto a shared record (librivoxSharedPeople) is "": it
 //     is a statement rather than somebody's name, so no reader is
 //     disambiguated off it;
@@ -737,18 +738,18 @@ func (p *planner) librivoxReaderSlug(c librivoxCredit, name string, project int,
 			return p.librivoxReaderResolved(live, r)
 		}
 	}
-	if r.fellBack {
-		return p.librivoxUnslugReader(c, name, project, r, warn)
-	}
-	if librivoxSharedPeople[r.slug] {
+	mint, counter := model.LibrivoxReaderSlug, &p.summary.LibrivoxReadersSplit
+	switch holder := p.lv.readerOf[r.slug]; {
+	case r.fellBack:
+		mint, counter = model.LibrivoxUnslugReaderSlug, &p.summary.LibrivoxReadersUnslugged
+	case librivoxSharedPeople[r.slug]:
 		return ""
-	}
-	if holder := p.lv.readerOf[r.slug]; holder == 0 || holder == c.id {
+	case holder == 0 || holder == c.id:
 		p.lv.readers[c.id] = r.slug
 		p.lv.readerOf[r.slug] = c.id
 		return ""
 	}
-	slug, ok := model.LibrivoxReaderSlug(name, c.id)
+	slug, ok := mint(name, c.id)
 	if !ok {
 		return ""
 	}
@@ -761,36 +762,7 @@ func (p *planner) librivoxReaderSlug(c librivoxCredit, name string, project int,
 	p.stampLibrivoxID(slug, c, project)
 	p.lv.readers[c.id] = slug
 	p.lv.readerOf[slug] = c.id
-	p.summary.LibrivoxReadersSplit++
-	return slug
-}
-
-// librivoxUnslugReader is librivoxReaderSlug for a reader whose name slugs away
-// to nothing and whose id nothing resolved yet: a person of their own at
-// model.LibrivoxUnslugReaderSlug (`librivox-reader-<reader id>`), created here
-// with the name as written and carrying the id, so a rerun finds them by that id
-// and two such readers are never one record. Without it the name would land on
-// the shared catch-all (model.UnslugPersonID), which pkg/check refuses for a
-// LibriVox-stated record. An
-// occupant there that is not this reader, or a tombstone, is never written over:
-// the run warns and falls back to the name, and the catch-all it reaches is
-// refused by the tree's validation (pkg/check's checkUnslugFallback: the
-// record carries this run's librivox source) rather than committed.
-func (p *planner) librivoxUnslugReader(c librivoxCredit, name string, project int, r personResolution, warn func(string, ...any)) string {
-	slug, ok := model.LibrivoxUnslugReaderSlug(name, c.id)
-	if !ok {
-		return ""
-	}
-	_, taken := p.people[slug]
-	if _, retired := p.redirects.Survivor(model.RedirectPeople, slug); taken || retired {
-		warn("reader %d (%q): %q is another person's id or a retired one; credited to %q", c.id, name, slug, r.slug)
-		return ""
-	}
-	p.createPerson(slug, name)
-	p.stampLibrivoxID(slug, c, project)
-	p.lv.readers[c.id] = slug
-	p.lv.readerOf[slug] = c.id
-	p.summary.LibrivoxReadersUnslugged++
+	(*counter)++
 	return slug
 }
 
@@ -1149,7 +1121,8 @@ func (p *planner) librivoxRowAuthors(b sourceBook, ws *workState, credits []cred
 // settleLibrivoxUnrecorded sets each unrecorded credit's PersonExists from the
 // planner as the run left it: the row's own reader, or a later row's new work,
 // can create the person after the credit was withheld. A name that slugs away
-// to nothing never has a record of its own (the catch-all is not it).
+// to nothing is never found by its name (the catch-all is not them, and an
+// unsluggable reader's own record is reached by reader id only).
 func (p *planner) settleLibrivoxUnrecorded() {
 	for i := range p.summary.LibrivoxUnrecordedCredits {
 		c := &p.summary.LibrivoxUnrecordedCredits[i]
