@@ -378,18 +378,22 @@ func TestPersonKindValid(t *testing.T) {
 	}
 }
 
-// TestPersonSlugMatchesName is checkPersonSlug's passing fixture, over the two
+// TestPersonSlugMatchesName is checkPersonSlug's passing fixture, over the
 // shapes that are easy to get wrong: a name whose punctuation Slugify FOLDS
 // (the apostrophe rule that stranded madeleine-l-engle, whose correctly-slugged
-// twin is the one here), and a LibriVox reader whose name slugs away to
-// nothing, at model.LibrivoxUnslugReaderSlug for the reader id they carry, whose
-// id is legitimately not its name's slug. The recording keyed on that reader
-// passes checkUnslugFallback too.
+// twin is the one here), the catch-all record a user-library import mints for a
+// name that slugs away to nothing (and a recording keyed on it), which
+// checkUnslugFallback leaves alone because LibriVox did not state them, and a
+// LibriVox reader whose name slugs away to nothing, at
+// model.LibrivoxUnslugReaderSlug for the reader id they carry, with the
+// recording keyed on them.
 func TestPersonSlugMatchesName(t *testing.T) {
 	dir := t.TempDir()
 	files := baseValid()
 	files["people/ma/madeleine-lengle.json"] = `{"id":"madeleine-lengle","license":"CC0-1.0","name":"Madeleine L'Engle","sources":[{"type":"user"}]}`
-	files["people/li/librivox-reader-11294.json"] = `{"id":"librivox-reader-11294","librivox_reader_id":11294,"license":"CC0-1.0","name":"Ἑλένη Κεμικτσή","sources":[{"type":"user"}]}`
+	files["people/pe/person.json"] = `{"id":"person","license":"CC0-1.0","name":"김영하","sources":[{"type":"openaudible-import"}]}`
+	files["works/bo/book-one/recordings/person.json"] = `{"abridged":false,"id":"person","language":"en","license":"CC0-1.0","narrators":["person"],"sources":[{"type":"openaudible-import"}],"work":"book-one"}`
+	files["people/li/librivox-reader-11294.json"] = `{"id":"librivox-reader-11294","librivox_reader_id":11294,"license":"CC0-1.0","name":"Ἑλένη Κεμικτσή","sources":[{"type":"librivox","ref":"10662"}]}`
 	files["works/bo/book-one/recordings/librivox-reader-11294.json"] = `{"abridged":false,"id":"librivox-reader-11294","language":"en","license":"CC0-1.0","narrators":["librivox-reader-11294"],"sources":[{"type":"user"}],"work":"book-one"}`
 	writeEntities(t, dir, files)
 	if res := Load(dir); !res.OK() {
@@ -630,19 +634,40 @@ func TestLoadRuleViolations(t *testing.T) {
 		},
 		{
 			// The shared catch-all for a name that slugs to nothing is one record
-			// standing for every such credit, so it is never committed.
-			name: "person id is the unsluggable catch-all",
+			// standing for every such credit, so LibriVox never commits it.
+			name: "librivox-sourced person at the unsluggable catch-all",
 			mutate: func(f map[string]string) {
-				f["people/pe/person.json"] = `{"id":"person","license":"CC0-1.0","name":"김영하","sources":[{"type":"user"}]}`
+				f["people/pe/person.json"] = `{"id":"person","license":"CC0-1.0","name":"Ἑλένη Κεμικτσή","sources":[{"type":"librivox","ref":"10662"}]}`
 			},
-			want: `person id "person" is the catch-all for a name that slugs to nothing ("김영하")`,
+			want: `person id "person" is the catch-all for a name that slugs to nothing ("Ἑλένη Κεμικτσή") and LibriVox states it`,
 		},
 		{
-			name: "recording keyed on the unsluggable catch-all",
+			name: "person at the unsluggable catch-all carrying a librivox reader id",
 			mutate: func(f map[string]string) {
-				f["works/bo/book-one/recordings/person.json"] = `{"abridged":false,"id":"person","language":"en","license":"CC0-1.0","narrators":["narrator-one"],"sources":[{"type":"user"}],"work":"book-one"}`
+				f["people/pe/person.json"] = `{"id":"person","librivox_reader_id":11294,"license":"CC0-1.0","name":"Ἑλένη Κεμικτσή","sources":[{"type":"user"}]}`
 			},
-			want: `recording id "person" is keyed on the catch-all person`,
+			want: `person id "person" is the catch-all for a name that slugs to nothing ("Ἑλένη Κεμικτσή") and LibriVox states it`,
+		},
+		{
+			name: "person at the unsluggable catch-all carrying a librivox author id",
+			mutate: func(f map[string]string) {
+				f["people/pe/person.json"] = `{"id":"person","librivox_author_id":6294,"license":"CC0-1.0","name":"Йордан Йовков","sources":[{"type":"user"}]}`
+			},
+			want: `person id "person" is the catch-all for a name that slugs to nothing ("Йордан Йовков") and LibriVox states it`,
+		},
+		{
+			name: "librivox-sourced recording keyed on the unsluggable catch-all",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/recordings/person.json"] = `{"abridged":false,"id":"person","language":"en","license":"CC0-1.0","narrators":["narrator-one"],"sources":[{"type":"librivox","ref":"10662"}],"work":"book-one"}`
+			},
+			want: `recording id "person" is a LibriVox recording keyed on the catch-all person`,
+		},
+		{
+			name: "recording with a librivox_id keyed on the unsluggable catch-all",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/recordings/person.json"] = `{"abridged":false,"id":"person","language":"en","librivox_id":10662,"license":"CC0-1.0","narrators":["narrator-one"],"sources":[{"type":"user"}],"work":"book-one"}`
+			},
+			want: `recording id "person" is a LibriVox recording keyed on the catch-all person`,
 		},
 		{
 			name: "unsluggable reader slug for another reader id",

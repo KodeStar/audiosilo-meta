@@ -463,7 +463,8 @@ whose name slugs to nothing (Greek, Cyrillic, CJK) is a person of their own at
 `librivox-reader-<reader id>` (`librivox-reader-11294`), the name kept as
 written, so two such readers are never one record and a rerun finds them by
 id; an author or translator whose name slugs to nothing stays a credit not
-recorded (above). The shared catch-all `person` is refused by metacheck.
+recorded (above). metacheck refuses the shared catch-all `person` when LibriVox
+states it (a librivox source or id).
 A reader id is a person of its own even when the name is not: when the slug of
 a reader's name is already held by a person carrying a different reader id
 (LibriVox has several accounts called "Martina"), the reader is created at

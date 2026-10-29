@@ -676,22 +676,13 @@ func enrichSeed(extra string) map[string]string {
 // only way to reach this guard: libex refuses such a row outright at its parse
 // layer (firstUnnamedCredit), and that exclusion is deliberately libex-only. The
 // guard therefore still protects exactly the paths the exclusion does not cover.
-//
-// The catch-all AUTHOR entry the row still mints is refused by the tree's
-// validation since pkg/check's checkUnslugFallback, so the run writes and then
-// fails loudly instead of committing it; the written tree is still what this
-// test reads.
 func TestCreditsNeverNameTheCatchAllPerson(t *testing.T) {
 	export := `[{
 		"asin":"B0CRED0010","title_short":"A Korean Translation","region":"US","language":"english","seconds":18000,
 		"author":"Original Author, 김영하 - Translator, Александр Пушкин - Editor",
 		"narrated_by":"Bea Reader"
 	}]`
-	dataDir := t.TempDir()
-	sum, err := Run(writeBooks(t, export), Options{DataDir: dataDir, ImportDate: testImportDate})
-	if err == nil || !strings.Contains(err.Error(), `person id "person" is the catch-all`) {
-		t.Fatalf("import run error = %v, want the catch-all refused by the post-import validation", err)
-	}
+	sum, dataDir := runImport(t, export, false)
 
 	var work struct {
 		Authors []string       `json:"authors"`
@@ -726,10 +717,8 @@ func TestCreditsNeverNameTheCatchAllPerson(t *testing.T) {
 		t.Errorf("warning does not report the count and an example: %q", lines[0])
 	}
 
-	// The catch-all is the ONLY problem: no role credit names it.
-	res := check.Load(dataDir)
-	if len(res.Problems) != 1 || !strings.Contains(res.Problems[0].String(), "is the catch-all") {
-		t.Fatalf("imported tree problems = %v, want only the catch-all person", res.Problems)
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("imported tree failed validation:\n%v", res.Problems)
 	}
 }
 

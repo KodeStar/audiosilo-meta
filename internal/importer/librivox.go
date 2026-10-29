@@ -770,10 +770,12 @@ func (p *planner) librivoxReaderSlug(c librivoxCredit, name string, project int,
 // model.LibrivoxUnslugReaderSlug (`librivox-reader-<reader id>`), created here
 // with the name as written and carrying the id, so a rerun finds them by that id
 // and two such readers are never one record. Without it the name would land on
-// the shared catch-all (model.UnslugPersonID), which pkg/check refuses. An
+// the shared catch-all (model.UnslugPersonID), which pkg/check refuses for a
+// LibriVox-stated record. An
 // occupant there that is not this reader, or a tombstone, is never written over:
 // the run warns and falls back to the name, and the catch-all it reaches is
-// refused by the tree's validation rather than committed.
+// refused by the tree's validation (pkg/check's checkUnslugFallback: the
+// record carries this run's librivox source) rather than committed.
 func (p *planner) librivoxUnslugReader(c librivoxCredit, name string, project int, r personResolution, warn func(string, ...any)) string {
 	slug, ok := model.LibrivoxUnslugReaderSlug(name, c.id)
 	if !ok {
