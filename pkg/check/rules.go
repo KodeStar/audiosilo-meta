@@ -429,19 +429,51 @@ func normISBN(s string) string { return strings.ToUpper(s) }
 // strands fails here instead of silently forking on the next import.
 //
 // The id is derived through model.PersonSlug - the SAME call the importer mints
-// it with - so the rule can never drift from the minting it polices. That also
-// covers the one record whose id is legitimately not its name's slug: the
-// shared catch-all a fully-folding name falls back to.
+// it with - so the rule can never drift from the minting it polices. (The
+// shared catch-all a fully-folding name falls back to matches here, and is
+// refused by checkUnslugFallback instead, with a message that says why.)
 //
-// The one other legal form, a LibriVox reader's disambiguated id, is stated on
-// model.PersonIDMatches. The plain slug's holder is deliberately not required to
-// exist: a merge that retires it must not turn every reader disambiguated off it
-// red.
+// The other legal forms, a LibriVox reader's disambiguated id and an unsluggable
+// reader's reader-id slug, are stated on model.PersonIDMatches. The plain slug's
+// holder is deliberately not required to exist: a merge that retires it must not
+// turn every reader disambiguated off it red.
 func checkPersonSlug(cat *model.Catalog, idx *pathIndex, add addFunc) {
 	for _, p := range cat.People {
 		if !model.PersonIDMatches(p.ID, p.Name, p.LibrivoxReaderID) {
 			want, _ := model.PersonSlug(p.Name)
+			if lv, ok := model.LibrivoxUnslugReaderSlug(p.Name, p.LibrivoxReaderID); ok {
+				want = lv
+			}
 			add(idx.person[p], "person id %q does not match its name %q (want %q); the slug of the name IS the identity", p.ID, p.Name, want)
+		}
+	}
+}
+
+// checkUnslugFallback refuses the shared catch-all person (model.UnslugPersonID,
+// the id model.PersonSlug substitutes for a name that slugs to nothing) and a
+// recording keyed on it. The catch-all is ONE record standing for every such
+// credit, so committing it makes one person the author or narrator of
+// unrelated books: tranche 6 of the LibriVox backfill would have credited a
+// Greek reader and every later unsluggable reader to the same `person`. A
+// LibriVox reader takes model.LibrivoxUnslugReaderSlug instead; any other
+// unsluggable credit is left out (libex refuses the row, LibriVox authors are
+// "credits not recorded"), so nothing legitimate ever lands here.
+//
+// A recording's id is its first narrator's slug, so a recording keyed `person`
+// is the same defect seen from the work's side and is named on its own: a
+// renamed narrator leaves it behind otherwise.
+func checkUnslugFallback(cat *model.Catalog, recs []recordWithPath, idx *pathIndex, add addFunc) {
+	for _, p := range cat.People {
+		if p.ID == model.UnslugPersonID {
+			add(idx.person[p], "person id %q is the catch-all for a name that slugs to nothing (%q); "+
+				"it would credit one record for every such name, so the person must not be committed "+
+				"(a LibriVox reader belongs at librivox-reader-<reader id>)", p.ID, p.Name)
+		}
+	}
+	for _, r := range recs {
+		if r.rec.ID == model.UnslugPersonID {
+			add(r.path, "recording id %q is keyed on the catch-all person for a name that slugs to nothing; "+
+				"it must be keyed on its narrator's own id", r.rec.ID)
 		}
 	}
 }

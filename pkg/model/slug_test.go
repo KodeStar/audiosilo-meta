@@ -114,6 +114,31 @@ func TestLibrivoxReaderSlug(t *testing.T) {
 	}
 }
 
+func TestLibrivoxUnslugReaderSlug(t *testing.T) {
+	cases := []struct {
+		name   string
+		reader int
+		want   string
+		ok     bool
+	}{
+		{"Ἑλένη Κεμικτσή", 11294, "librivox-reader-11294", true},
+		{"김영하", 9, "librivox-reader-9", true},
+		{"Martina", 634, "", false}, // a name with a slug of its own takes that
+		{"Search", 5, "", false},    // a reserved name has its canonical variant
+		{"김영하", 0, "", false},
+		{"김영하", -3, "", false},
+	}
+	for _, c := range cases {
+		got, ok := LibrivoxUnslugReaderSlug(c.name, c.reader)
+		if got != c.want || ok != c.ok {
+			t.Errorf("LibrivoxUnslugReaderSlug(%q, %d) = (%q, %v), want (%q, %v)", c.name, c.reader, got, ok, c.want, c.ok)
+		}
+		if ok && (!ValidSlug(got) || IsReservedSlug(got)) {
+			t.Errorf("LibrivoxUnslugReaderSlug(%q, %d) = %q is not a usable slug", c.name, c.reader, got)
+		}
+	}
+}
+
 func TestPersonIDMatches(t *testing.T) {
 	cases := []struct {
 		id, name string
@@ -131,6 +156,11 @@ func TestPersonIDMatches(t *testing.T) {
 		{"martina-librivox-634", "Marina", 634, false},  // another name's form
 		{"person-librivox-9", "김영하", 9, false},          // never off the catch-all
 		{"search-librivox-5", "Search", 5, false},       // the bare reserved word is never a base
+		{"librivox-reader-11294", "Ἑλένη Κεμικτσή", 11294, true},
+		{"librivox-reader-11294", "Ἑλένη Κεμικτσή", 14457, false}, // another reader's form
+		{"librivox-reader-11294", "Ἑλένη Κεμικτσή", 0, false},     // no reader id to reach it by
+		{"librivox-reader-634", "Martina", 634, false},            // a sluggable name takes its slug
+		{"person-librivox-11294", "Ἑλένη Κεμικτσή", 11294, false}, // never the held-name form
 		{"madeleine-l-engle", "Madeleine L'Engle", 0, false},
 	}
 	for _, c := range cases {

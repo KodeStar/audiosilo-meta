@@ -471,6 +471,7 @@ func load(lst *pack.Listing, rdr *pack.Reader, opts LoadOptions) (Result, *pathI
 	checkGenresSorted(cat, idx, add)
 	checkCreditPairs(cat, idx, add)
 	checkPersonSlug(cat, idx, add)
+	checkUnslugFallback(cat, recs, idx, add)
 	checkReservedSlug(cat, idx, add)
 	checkRedirects(cat, workByID, peopleIDs, add)
 	checkLanguageLinks(profile, cat, workByID, idx, add, warn)

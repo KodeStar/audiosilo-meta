@@ -381,13 +381,16 @@ func TestPersonKindValid(t *testing.T) {
 // TestPersonSlugMatchesName is checkPersonSlug's passing fixture, over the two
 // shapes that are easy to get wrong: a name whose punctuation Slugify FOLDS
 // (the apostrophe rule that stranded madeleine-l-engle, whose correctly-slugged
-// twin is the one here), and the catch-all record the importer mints for a name
-// that slugs away to nothing, whose id is legitimately not its name's slug.
+// twin is the one here), and a LibriVox reader whose name slugs away to
+// nothing, at model.LibrivoxUnslugReaderSlug for the reader id they carry, whose
+// id is legitimately not its name's slug. The recording keyed on that reader
+// passes checkUnslugFallback too.
 func TestPersonSlugMatchesName(t *testing.T) {
 	dir := t.TempDir()
 	files := baseValid()
 	files["people/ma/madeleine-lengle.json"] = `{"id":"madeleine-lengle","license":"CC0-1.0","name":"Madeleine L'Engle","sources":[{"type":"user"}]}`
-	files["people/pe/person.json"] = `{"id":"person","license":"CC0-1.0","name":"김영하","sources":[{"type":"user"}]}`
+	files["people/li/librivox-reader-11294.json"] = `{"id":"librivox-reader-11294","librivox_reader_id":11294,"license":"CC0-1.0","name":"Ἑλένη Κεμικτσή","sources":[{"type":"user"}]}`
+	files["works/bo/book-one/recordings/librivox-reader-11294.json"] = `{"abridged":false,"id":"librivox-reader-11294","language":"en","license":"CC0-1.0","narrators":["librivox-reader-11294"],"sources":[{"type":"user"}],"work":"book-one"}`
 	writeEntities(t, dir, files)
 	if res := Load(dir); !res.OK() {
 		t.Fatalf("a person whose id IS the slug of their name reported problems: %v", res.Problems)
@@ -623,7 +626,45 @@ func TestLoadRuleViolations(t *testing.T) {
 			mutate: func(f map[string]string) {
 				f["people/pe/person-librivox-9.json"] = `{"id":"person-librivox-9","librivox_reader_id":9,"license":"CC0-1.0","name":"김영하","sources":[{"type":"user"}]}`
 			},
-			want: `person id "person-librivox-9" does not match its name "김영하" (want "person")`,
+			want: `person id "person-librivox-9" does not match its name "김영하" (want "librivox-reader-9")`,
+		},
+		{
+			// The shared catch-all for a name that slugs to nothing is one record
+			// standing for every such credit, so it is never committed.
+			name: "person id is the unsluggable catch-all",
+			mutate: func(f map[string]string) {
+				f["people/pe/person.json"] = `{"id":"person","license":"CC0-1.0","name":"김영하","sources":[{"type":"user"}]}`
+			},
+			want: `person id "person" is the catch-all for a name that slugs to nothing ("김영하")`,
+		},
+		{
+			name: "recording keyed on the unsluggable catch-all",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/recordings/person.json"] = `{"abridged":false,"id":"person","language":"en","license":"CC0-1.0","narrators":["narrator-one"],"sources":[{"type":"user"}],"work":"book-one"}`
+			},
+			want: `recording id "person" is keyed on the catch-all person`,
+		},
+		{
+			name: "unsluggable reader slug for another reader id",
+			mutate: func(f map[string]string) {
+				f["people/li/librivox-reader-11294.json"] = `{"id":"librivox-reader-11294","librivox_reader_id":14457,"license":"CC0-1.0","name":"Ἑλένη Κεμικτσή","sources":[{"type":"user"}]}`
+			},
+			want: `person id "librivox-reader-11294" does not match its name "Ἑλένη Κεμικτσή" (want "librivox-reader-14457")`,
+		},
+		{
+			name: "unsluggable reader slug without a reader id",
+			mutate: func(f map[string]string) {
+				f["people/li/librivox-reader-11294.json"] = `{"id":"librivox-reader-11294","license":"CC0-1.0","name":"Ἑλένη Κεμικτσή","sources":[{"type":"user"}]}`
+			},
+			want: `person id "librivox-reader-11294" does not match its name "Ἑλένη Κεμικτσή" (want "person")`,
+		},
+		{
+			// A name with a slug of its own takes that slug, reader id or not.
+			name: "unsluggable reader slug on a sluggable name",
+			mutate: func(f map[string]string) {
+				f["people/li/librivox-reader-634.json"] = `{"id":"librivox-reader-634","librivox_reader_id":634,"license":"CC0-1.0","name":"Martina","sources":[{"type":"user"}]}`
+			},
+			want: `person id "librivox-reader-634" does not match its name "Martina" (want "martina")`,
 		},
 		{
 			// The route-literal defect: /api/v1/works/search is a literal

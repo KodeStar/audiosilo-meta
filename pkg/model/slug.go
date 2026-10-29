@@ -276,23 +276,56 @@ func LibrivoxReaderSlug(name string, readerID int) (slug string, ok bool) {
 	return BoundedSlugTail(base, librivoxReaderTail+strconv.Itoa(readerID)), true
 }
 
+// librivoxUnslugReaderPrefix is the fixed head of the id a LibriVox reader whose
+// name slugs to nothing takes, ahead of their reader id.
+const librivoxUnslugReaderPrefix = "librivox-reader-"
+
+// LibrivoxUnslugReaderSlug is the id a LibriVox reader takes when their name
+// slugs away to nothing (PersonSlug falls back): "librivox-reader-<reader id>"
+// (reader 11294 "Ἑλένη Κεμικτσή" -> `librivox-reader-11294`). The record keeps
+// the name as written; only the address is built from the reader id.
+//
+// Without it every such reader would land on the shared catch-all
+// (UnslugPersonID), one record credited as the narrator of every unrelated
+// project a Greek, Cyrillic or CJK name read. A LibriVox reader is an account
+// with an id, so the id is an identity of its own where the name gives none.
+//
+// ok is false for a reader id below 1 and for a name that slugs to something:
+// such a reader has a plain slug (PersonSlug) or, when another reader id holds
+// that, LibrivoxReaderSlug. It is the one composition the importer mints the id
+// with and PersonIDMatches accepts it through.
+func LibrivoxUnslugReaderSlug(name string, readerID int) (slug string, ok bool) {
+	if readerID < 1 {
+		return "", false
+	}
+	if _, fellBack := PersonSlug(name); !fellBack {
+		return "", false
+	}
+	return librivoxUnslugReaderPrefix + strconv.Itoa(readerID), true
+}
+
 // PersonIDMatches reports whether id is a legal id for a person named name who
 // carries librivoxReaderID (0 = none): PersonSlug(name), or - only for a person
-// carrying a reader id - LibrivoxReaderSlug(name, librivoxReaderID) for exactly
-// that id.
+// carrying a reader id - LibrivoxReaderSlug(name, librivoxReaderID) or, for a
+// name that slugs to nothing, LibrivoxUnslugReaderSlug(name, librivoxReaderID),
+// each for exactly that id.
 //
-// Both forms are reachable from what the record itself states, which is the
+// Every form is reachable from what the record itself states, which is the
 // whole point of the person-slug rule (pkg/check's checkPersonSlug, the
 // Madeleine L'Engle fork): the plain form from the name, which every importer
-// slugs; the LibriVox form from the reader id, which the LibriVox import
-// resolves a reader by before it ever slugs a name. A record whose id is the
+// slugs; the LibriVox forms from the reader id, which the LibriVox import
+// resolves a reader by before it ever slugs a name. A record whose id is a
 // LibriVox form for some OTHER reader id, or that carries no reader id at all,
-// is reachable from neither and is refused.
+// or a `librivox-reader-<id>` record whose name has a slug of its own, is
+// reachable from none and is refused.
 func PersonIDMatches(id, name string, librivoxReaderID int) bool {
 	if want, _ := PersonSlug(name); id == want {
 		return true
 	}
-	lv, ok := LibrivoxReaderSlug(name, librivoxReaderID)
+	if lv, ok := LibrivoxReaderSlug(name, librivoxReaderID); ok && id == lv {
+		return true
+	}
+	lv, ok := LibrivoxUnslugReaderSlug(name, librivoxReaderID)
 	return ok && id == lv
 }
 
