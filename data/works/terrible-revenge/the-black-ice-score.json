@@ -6407,6 +6407,49 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "daniel-davison": {
+          "added_at": "2026-10-29",
+          "archive_id": "blackmonk_2007_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/blackmonk_2007_librivox/blackmonk_01_chekhov_64kb.mp3",
+              "length_ms": 2551000,
+              "start_ms": 0,
+              "title": "Part 1: Chapters 1-5"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/blackmonk_2007_librivox/blackmonk_02_chekhov_64kb.mp3",
+              "length_ms": 1931000,
+              "start_ms": 2551000,
+              "title": "Part 2: Chapters 6-9"
+            }
+          ],
+          "copyright_year": 1915,
+          "cover_url": "https://archive.org/download/blackmonk_2007_librivox/blackmonk_2007.jpg",
+          "id": "daniel-davison",
+          "language": "en",
+          "librivox_id": 15359,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/the-black-monk-by-anton-chekhov/",
+            "rss": "https://librivox.org/rss/15359",
+            "text": "https://archive.org/details/blackmonkandoth00longgoog",
+            "zip": "https://archive.org/compress/blackmonk_2007_librivox/formats=64KBPS MP3&file=/blackmonk_2007_librivox.zip"
+          },
+          "narrators": [
+            "daniel-davison"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 75,
+          "sources": [
+            {
+              "imported_at": "2026-10-29",
+              "ref": "15359",
+              "type": "librivox"
+            }
+          ],
+          "work": "the-black-monk"
+        },
         "fred-wolinsky-2023": {
           "abridged": false,
           "added_at": "2026-08-01",

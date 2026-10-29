@@ -1597,6 +1597,7 @@
     },
     "longus": {
       "id": "longus",
+      "librivox_author_id": 15488,
       "license": "CC0-1.0",
       "name": "Longus",
       "sources": [
@@ -1604,6 +1605,11 @@
           "imported_at": "2026-08-08",
           "ref": "B07CTVPDMS",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-29",
+          "ref": "15878",
+          "type": "librivox"
         }
       ]
     },
@@ -2911,6 +2917,19 @@
         }
       ]
     },
+    "lorenz": {
+      "id": "lorenz",
+      "librivox_reader_id": 15769,
+      "license": "CC0-1.0",
+      "name": "Lorenz",
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "15993",
+          "type": "librivox"
+        }
+      ]
+    },
     "lorenz-morelli": {
       "id": "lorenz-morelli",
       "license": "CC0-1.0",
@@ -3232,6 +3251,19 @@
           "imported_at": "2026-07-29",
           "ref": "B016V47XKS",
           "type": "libex-import"
+        }
+      ]
+    },
+    "loretta": {
+      "id": "loretta",
+      "librivox_reader_id": 14666,
+      "license": "CC0-1.0",
+      "name": "Loretta",
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "15357",
+          "type": "librivox"
         }
       ]
     },

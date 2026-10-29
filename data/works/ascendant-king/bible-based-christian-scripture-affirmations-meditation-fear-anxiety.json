@@ -4289,6 +4289,54 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "ancientchristian": {
+          "added_at": "2026-10-29",
+          "archive_id": "bible_drv_tobit_version_2_2005_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/bible_drv_tobit_version_2_2005_librivox/tobit_01_drv_64kb.mp3",
+              "length_ms": 1009000,
+              "start_ms": 0,
+              "title": "Chapters 1-5"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/bible_drv_tobit_version_2_2005_librivox/tobit_02_drv_64kb.mp3",
+              "length_ms": 828000,
+              "start_ms": 1009000,
+              "title": "Chapters 6-10"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/bible_drv_tobit_version_2_2005_librivox/tobit_03_drv_64kb.mp3",
+              "length_ms": 732000,
+              "start_ms": 1837000,
+              "title": "Chapters 11-14"
+            }
+          ],
+          "cover_url": "https://archive.org/download/bible_drv_tobit_version_2_2005_librivox/DRV_tobit_2005.jpg",
+          "id": "ancientchristian",
+          "language": "en",
+          "librivox_id": 15147,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/bible-drv-apocryphadeuterocanon-book-of-tobit-tobias-version-2-by-douay-rheims-version-drv/",
+            "rss": "https://librivox.org/rss/15147",
+            "text": "https://www.gutenberg.org/ebooks/8317",
+            "zip": "https://archive.org/compress/bible_drv_tobit_version_2_2005_librivox/formats=64KBPS MP3&file=/bible_drv_tobit_version_2_2005_librivox.zip"
+          },
+          "narrators": [
+            "ancientchristian"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 43,
+          "sources": [
+            {
+              "imported_at": "2026-10-29",
+              "ref": "15147",
+              "type": "librivox"
+            }
+          ],
+          "work": "bible-drv-apocrypha-deuterocanon-book-of-tobit-tobias"
+        },
         "sam-stinson": {
           "added_at": "2026-10-27",
           "archive_id": "tobit_ss_librivox",
@@ -4542,6 +4590,119 @@
         }
       ],
       "title": "Bible (DRV) Apocrypha/Deuterocanon: Wisdom"
+    },
+    "bible-drv-apocrypha-deuterocanon-wisdom-of-sirach-ecclesiasticus": {
+      "added_at": "2026-10-29",
+      "authors": [
+        "douay-rheims-version-drv"
+      ],
+      "genres": [
+        "religion-spirituality"
+      ],
+      "id": "bible-drv-apocrypha-deuterocanon-wisdom-of-sirach-ecclesiasticus",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "ancientchristian": {
+          "added_at": "2026-10-29",
+          "archive_id": "sirach_2005_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/sirach_2005_librivox/sirach_01_drv_64kb.mp3",
+              "length_ms": 1190000,
+              "start_ms": 0,
+              "title": "Chps 1-5"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/sirach_2005_librivox/sirach_02_drv_64kb.mp3",
+              "length_ms": 1122000,
+              "start_ms": 1190000,
+              "title": "Chps 6-10"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/sirach_2005_librivox/sirach_03_drv_64kb.mp3",
+              "length_ms": 1064000,
+              "start_ms": 2312000,
+              "title": "Chps 11-15"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/sirach_2005_librivox/sirach_04_drv_64kb.mp3",
+              "length_ms": 1238000,
+              "start_ms": 3376000,
+              "title": "Chps 16-20"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/sirach_2005_librivox/sirach_05_drv_64kb.mp3",
+              "length_ms": 1332000,
+              "start_ms": 4614000,
+              "title": "Chps 21-25"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/sirach_2005_librivox/sirach_06_drv_64kb.mp3",
+              "length_ms": 1094000,
+              "start_ms": 5946000,
+              "title": "Chps 26-30"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/sirach_2005_librivox/sirach_07_drv_64kb.mp3",
+              "length_ms": 1077000,
+              "start_ms": 7040000,
+              "title": "Chps 31-35"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/sirach_2005_librivox/sirach_08_drv_64kb.mp3",
+              "length_ms": 1151000,
+              "start_ms": 8117000,
+              "title": "Chps 36-40"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/sirach_2005_librivox/sirach_09_drv_64kb.mp3",
+              "length_ms": 1083000,
+              "start_ms": 9268000,
+              "title": "Chps 41-45"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/sirach_2005_librivox/sirach_10_drv_64kb.mp3",
+              "length_ms": 1135000,
+              "start_ms": 10351000,
+              "title": "Chps 46-51"
+            }
+          ],
+          "copyright_year": 1899,
+          "cover_url": "https://archive.org/download/sirach_2005_librivox/DRV_Sirach_2005.jpg",
+          "id": "ancientchristian",
+          "language": "en",
+          "librivox_id": 15157,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/sirach-by-douay-rheims-version-drv/",
+            "rss": "https://librivox.org/rss/15157",
+            "text": "https://www.gutenberg.org/ebooks/8326",
+            "zip": "https://archive.org/compress/sirach_2005_librivox/formats=64KBPS MP3&file=/sirach_2005_librivox.zip"
+          },
+          "narrators": [
+            "ancientchristian"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 191,
+          "sources": [
+            {
+              "imported_at": "2026-10-29",
+              "ref": "15157",
+              "type": "librivox"
+            }
+          ],
+          "work": "bible-drv-apocrypha-deuterocanon-wisdom-of-sirach-ecclesiasticus"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "15157",
+          "type": "librivox"
+        }
+      ],
+      "title": "Bible (DRV) Apocrypha/Deuterocanon: Wisdom of Sirach (Ecclesiasticus)"
     },
     "bible-drv-new-testament": {
       "added_at": "2026-10-28",
