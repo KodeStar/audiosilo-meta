@@ -719,7 +719,9 @@ func (p *planner) rowNarratorSlugs(b sourceBook, names []string, warn func(strin
 //     id (so the record is never written without the id its slug states). An
 //     occupant there that is not this reader (a person whose own name slugs to
 //     it), or a tombstone, is never written over: the run warns and falls back
-//     to the name.
+//     to the name. The unsluggable form shares that tail, and its name falls
+//     back to the catch-all, which the run's post-write validation then refuses
+//     (pkg/check's checkUnslugFallback) rather than committing.
 //
 // Decisions are taken in row order as the planner meets the rows, so a run is
 // deterministic, and a rerun finds every reader through the catalogued id
@@ -1173,9 +1175,10 @@ func (p *planner) workCreditsPerson(work, person string) bool {
 // cleans to nothing or to more than one name, resolves to no live record, or
 // slugs away to nothing: such a name resolves to the shared catch-all person
 // (model.UnslugPersonID), and one LibriVox id stamped there would claim that every
-// unsluggable credit is that one reader or author. An unsluggable READER never
-// gets that far: the run resolved them to their own record at
-// model.LibrivoxUnslugReaderSlug, which the first branch returns.
+// unsluggable credit is that one reader or author. An unsluggable READER the run
+// minted at model.LibrivoxUnslugReaderSlug never gets that far (the first branch
+// returns their record); one it could not mint (an occupied or retired slot, no
+// reader id) still reaches the fellBack refusal below.
 func (p *planner) librivoxCreditSlug(c librivoxCredit) (string, bool) {
 	// A reader id the run resolved is that person, whatever the name slugs to
 	// (librivoxReaderSlug).

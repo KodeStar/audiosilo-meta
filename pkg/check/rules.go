@@ -451,7 +451,7 @@ func checkPersonSlug(cat *model.Catalog, idx *pathIndex, add addFunc) {
 
 // checkUnslugFallback refuses the shared catch-all person (model.UnslugPersonID,
 // the id model.PersonSlug substitutes for a name that slugs to nothing) and a
-// recording keyed on it, when LIBRIVOX put them there: a person carrying a
+// recording keyed on or narrated by it, when LIBRIVOX put them there: a person carrying a
 // librivox source or a LibriVox reader or author id, a recording carrying a
 // librivox source or a librivox_id. The catch-all is ONE record standing for
 // every such credit, so a LibriVox run committing it would make one person the
@@ -467,7 +467,11 @@ func checkPersonSlug(cat *model.Catalog, idx *pathIndex, add addFunc) {
 //
 // A recording's id is its first narrator's slug, so a recording keyed `person`
 // is the same defect seen from the work's side and is named on its own: a
-// renamed narrator leaves it behind otherwise.
+// renamed narrator leaves it behind otherwise. A LibriVox recording NARRATED by
+// the catch-all is refused too, whatever its id (`person-2` beside a recording
+// already keyed `person`, or the catch-all as a later narrator): when the
+// catch-all is a user-library record, a LibriVox credit onto it stamps no
+// librivox source there, so the person half above never sees it.
 func checkUnslugFallback(cat *model.Catalog, recs []recordWithPath, idx *pathIndex, add addFunc) {
 	for _, p := range cat.People {
 		if p.ID == model.UnslugPersonID && (p.LibrivoxReaderID != 0 || p.LibrivoxAuthorID != 0 || hasLibrivoxSource(p.Sources)) {
@@ -477,9 +481,16 @@ func checkUnslugFallback(cat *model.Catalog, recs []recordWithPath, idx *pathInd
 		}
 	}
 	for _, r := range recs {
-		if r.rec.ID == model.UnslugPersonID && (r.rec.LibrivoxID != 0 || hasLibrivoxSource(r.rec.Sources)) {
+		if r.rec.LibrivoxID == 0 && !hasLibrivoxSource(r.rec.Sources) {
+			continue
+		}
+		switch {
+		case r.rec.ID == model.UnslugPersonID:
 			add(r.path, "recording id %q is a LibriVox recording keyed on the catch-all person for a name that slugs to nothing; "+
 				"it must be keyed on its narrator's own id", r.rec.ID)
+		case slices.Contains(r.rec.Narrators, model.UnslugPersonID):
+			add(r.path, "recording %q is a LibriVox recording narrated by the catch-all person %q for a name that slugs to nothing; "+
+				"a LibriVox reader belongs at librivox-reader-<reader id>", r.rec.ID, model.UnslugPersonID)
 		}
 	}
 }

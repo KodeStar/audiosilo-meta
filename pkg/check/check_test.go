@@ -670,6 +670,16 @@ func TestLoadRuleViolations(t *testing.T) {
 			want: `recording id "person" is a LibriVox recording keyed on the catch-all person`,
 		},
 		{
+			// The catch-all here is a user-library record (no librivox source),
+			// so only the recording side can see the LibriVox credit onto it.
+			name: "librivox recording narrated by a user-library catch-all under another id",
+			mutate: func(f map[string]string) {
+				f["people/pe/person.json"] = `{"id":"person","license":"CC0-1.0","name":"김영하","sources":[{"type":"openaudible-import"}]}`
+				f["works/bo/book-one/recordings/person-2.json"] = `{"abridged":false,"id":"person-2","language":"en","librivox_id":10662,"license":"CC0-1.0","narrators":["narrator-one","person"],"sources":[{"type":"librivox","ref":"10662"}],"work":"book-one"}`
+			},
+			want: `recording "person-2" is a LibriVox recording narrated by the catch-all person "person"`,
+		},
+		{
 			name: "unsluggable reader slug for another reader id",
 			mutate: func(f map[string]string) {
 				f["people/li/librivox-reader-11294.json"] = `{"id":"librivox-reader-11294","librivox_reader_id":14457,"license":"CC0-1.0","name":"Ἑλένη Κεμικτσή","sources":[{"type":"user"}]}`
