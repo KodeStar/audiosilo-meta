@@ -962,6 +962,7 @@
     },
     "michael-matthews": {
       "id": "michael-matthews",
+      "librivox_reader_id": 19298,
       "license": "CC0-1.0",
       "name": "Michael Matthews",
       "sources": [
@@ -969,6 +970,11 @@
           "imported_at": "2026-07-29",
           "ref": "B00BTIEXBO",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-29",
+          "ref": "20070",
+          "type": "librivox"
         }
       ]
     },
@@ -1902,6 +1908,19 @@
           "imported_at": "2026-07-29",
           "ref": "B0FHQHQ737",
           "type": "libex-import"
+        }
+      ]
+    },
+    "michael-natale": {
+      "id": "michael-natale",
+      "librivox_reader_id": 18844,
+      "license": "CC0-1.0",
+      "name": "Michael Natale",
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "19254",
+          "type": "librivox"
         }
       ]
     },

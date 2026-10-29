@@ -10477,6 +10477,88 @@
         }
       ],
       "title": "Whisper in the Dark"
+    },
+    "whisper-in-the-dark-louisa-may-alcott": {
+      "added_at": "2026-10-29",
+      "authors": [
+        "louisa-may-alcott"
+      ],
+      "id": "whisper-in-the-dark-louisa-may-alcott",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "christine-rottger": {
+          "added_at": "2026-10-29",
+          "archive_id": "whisperindark_2304_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/whisperindark_2304_librivox/whisperinthedark_1_alcott_64kb.mp3",
+              "length_ms": 1382000,
+              "start_ms": 0,
+              "title": "Section 1"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/whisperindark_2304_librivox/whisperinthedark_2_alcott_64kb.mp3",
+              "length_ms": 1171000,
+              "start_ms": 1382000,
+              "title": "Section 2"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/whisperindark_2304_librivox/whisperinthedark_3_alcott_64kb.mp3",
+              "length_ms": 1664000,
+              "start_ms": 2553000,
+              "title": "Section 3"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/whisperindark_2304_librivox/whisperinthedark_4_alcott_64kb.mp3",
+              "length_ms": 1261000,
+              "start_ms": 4217000,
+              "title": "Section 4"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/whisperindark_2304_librivox/whisperinthedark_5_alcott_64kb.mp3",
+              "length_ms": 1164000,
+              "start_ms": 5478000,
+              "title": "Section 5"
+            }
+          ],
+          "copyright_year": 1889,
+          "cover_url": "https://archive.org/download/whisperindark_2304_librivox/awhisperinthedark_2304.jpg",
+          "id": "christine-rottger",
+          "language": "en",
+          "librivox_id": 19047,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/a-whisper-in-the-dark-by-louisa-may-alcott/",
+            "rss": "https://librivox.org/rss/19047",
+            "text": "https://www.gutenberg.org/ebooks/54212",
+            "zip": "https://archive.org/compress/whisperindark_2304_librivox/formats=64KBPS MP3&file=/whisperindark_2304_librivox.zip"
+          },
+          "narrators": [
+            "christine-rottger",
+            "martha-h-weller",
+            "timbray-shafer"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 111,
+          "sources": [
+            {
+              "imported_at": "2026-10-29",
+              "ref": "19047",
+              "type": "librivox"
+            }
+          ],
+          "work": "whisper-in-the-dark-louisa-may-alcott"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "19047",
+          "type": "librivox"
+        }
+      ],
+      "title": "Whisper in the Dark"
     }
   }
 }
