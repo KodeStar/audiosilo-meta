@@ -8880,6 +8880,53 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "phil-chenevert": {
+          "added_at": "2026-10-29",
+          "archive_id": "3sfstoriesbywilliamtenn_1910_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/3sfstoriesbywilliamtenn_1910_librivox/3sfstoriesbywilliamtenn_01_tenn_64kb.mp3",
+              "length_ms": 3078000,
+              "start_ms": 0,
+              "title": "Venus is a Man's World"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/3sfstoriesbywilliamtenn_1910_librivox/3sfstoriesbywilliamtenn_02_tenn_64kb.mp3",
+              "length_ms": 1015000,
+              "start_ms": 3078000,
+              "title": "Project Hush"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/3sfstoriesbywilliamtenn_1910_librivox/3sfstoriesbywilliamtenn_03_tenn_64kb.mp3",
+              "length_ms": 2280000,
+              "start_ms": 4093000,
+              "title": "Of All Possible Worlds"
+            }
+          ],
+          "cover_url": "https://archive.org/download/3sfstoriesbywilliamtenn_1910_librivox/3sf_stories_tenn_1910.jpg",
+          "id": "phil-chenevert",
+          "language": "en",
+          "librivox_id": 14281,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/3-science-fiction-stories-by-william-tenn/",
+            "rss": "https://librivox.org/rss/14281",
+            "zip": "https://archive.org/compress/3sfstoriesbywilliamtenn_1910_librivox/formats=64KBPS MP3&file=/3sfstoriesbywilliamtenn_1910_librivox.zip"
+          },
+          "narrators": [
+            "phil-chenevert"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 106,
+          "sources": [
+            {
+              "imported_at": "2026-10-29",
+              "ref": "14281",
+              "type": "librivox"
+            }
+          ],
+          "work": "3-science-fiction-stories-william-tenn"
+        },
         "phil-chenevert-2022": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9472,6 +9519,76 @@
         }
       ],
       "title": "Седьмой. Книга 3 [Seventh: Book 3]"
+    },
+    "3-sf-stories-by-jack-williamson": {
+      "added_at": "2026-10-29",
+      "authors": [
+        "jack-williamson"
+      ],
+      "genres": [
+        "science-fiction"
+      ],
+      "id": "3-sf-stories-by-jack-williamson",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "phil-chenevert": {
+          "added_at": "2026-10-29",
+          "archive_id": "3storiesbyjackwilliamson_1908_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/3storiesbyjackwilliamson_1908_librivox/3byjackwilliamson_01_williamson_64kb.mp3",
+              "length_ms": 1769000,
+              "start_ms": 0,
+              "title": "The Cosmic Express"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/3storiesbyjackwilliamson_1908_librivox/3byjackwilliamson_02_williamson_64kb.mp3",
+              "length_ms": 3945000,
+              "start_ms": 1769000,
+              "title": "The Pygmy Planet"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/3storiesbyjackwilliamson_1908_librivox/3byjackwilliamson_03_williamson_64kb.mp3",
+              "length_ms": 3798000,
+              "start_ms": 5714000,
+              "title": "Salvage in Space"
+            }
+          ],
+          "cover_url": "https://archive.org/download/3storiesbyjackwilliamson_1908_librivox/3_sf_stories_1908.jpg",
+          "id": "phil-chenevert",
+          "language": "en",
+          "librivox_id": 14216,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/3-sf-stories-by-jack-williamson-by-jack-williamson/",
+            "rss": "https://librivox.org/rss/14216",
+            "text": "https://www.gutenberg.org/ebooks/26066",
+            "zip": "https://archive.org/compress/3storiesbyjackwilliamson_1908_librivox/formats=64KBPS MP3&file=/3storiesbyjackwilliamson_1908_librivox.zip"
+          },
+          "narrators": [
+            "phil-chenevert"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 159,
+          "sources": [
+            {
+              "imported_at": "2026-10-29",
+              "ref": "14216",
+              "type": "librivox"
+            }
+          ],
+          "work": "3-sf-stories-by-jack-williamson"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "14216",
+          "type": "librivox"
+        }
+      ],
+      "title": "3 SF Stories by Jack Williamson"
     },
     "3-shades-of-blue": {
       "added_at": "2026-07-29",

@@ -6083,6 +6083,47 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "phil-chenevert": {
+          "added_at": "2026-10-29",
+          "archive_id": "thediariesofadamandeve_1809_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/thediariesofadamandeve_1809_librivox/diariesofadamandeve_01_twain_64kb.mp3",
+              "length_ms": 2699000,
+              "start_ms": 0,
+              "title": "Eve's Diary"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/thediariesofadamandeve_1809_librivox/diariesofadamandeve_02_twain_64kb.mp3",
+              "length_ms": 1811000,
+              "start_ms": 2699000,
+              "title": "Extract from Adam's Diary"
+            }
+          ],
+          "cover_url": "https://archive.org/download/thediariesofadamandeve_1809_librivox/adam_eve_diary_1809.jpg",
+          "id": "phil-chenevert",
+          "language": "en",
+          "librivox_id": 13310,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/the-diaries-of-adam-and-eve-by-mark-twain/",
+            "rss": "https://librivox.org/rss/13310",
+            "zip": "https://archive.org/compress/thediariesofadamandeve_1809_librivox/formats=64KBPS MP3&file=/thediariesofadamandeve_1809_librivox.zip"
+          },
+          "narrators": [
+            "phil-chenevert"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 75,
+          "sources": [
+            {
+              "imported_at": "2026-10-29",
+              "ref": "13310",
+              "type": "librivox"
+            }
+          ],
+          "work": "diaries-of-adam-and-eve"
+        },
         "robin-field-2015": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -8927,6 +8968,95 @@
         }
       ],
       "title": "Diary of a Bad Boy"
+    },
+    "diary-of-a-birthday-doll": {
+      "added_at": "2026-10-29",
+      "authors": [
+        "ethel-dow"
+      ],
+      "genres": [
+        "childrens"
+      ],
+      "id": "diary-of-a-birthday-doll",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "emmahatton": {
+          "added_at": "2026-10-29",
+          "archive_id": "diarybirthdaydoll_1812_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/diarybirthdaydoll_1812_librivox/diarybirthdaydoll_01_dow_64kb.mp3",
+              "length_ms": 1256000,
+              "start_ms": 0,
+              "title": "Monday - My First Bath"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/diarybirthdaydoll_1812_librivox/diarybirthdaydoll_02_dow_64kb.mp3",
+              "length_ms": 1027000,
+              "start_ms": 1256000,
+              "title": "Tuesday - a Tea-party and its Sad Results"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/diarybirthdaydoll_1812_librivox/diarybirthdaydoll_03_dow_64kb.mp3",
+              "length_ms": 863000,
+              "start_ms": 2283000,
+              "title": "Wednesday- I get a new dress"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/diarybirthdaydoll_1812_librivox/diarybirthdaydoll_04_dow_64kb.mp3",
+              "length_ms": 1160000,
+              "start_ms": 3146000,
+              "title": "Thursday - Spanked"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/diarybirthdaydoll_1812_librivox/diarybirthdaydoll_05_dow_64kb.mp3",
+              "length_ms": 973000,
+              "start_ms": 4306000,
+              "title": "Friday - My Leg is Broken and Mended"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/diarybirthdaydoll_1812_librivox/diarybirthdaydoll_06_dow_64kb.mp3",
+              "length_ms": 468000,
+              "start_ms": 5279000,
+              "title": "Saturday- My Mama Loves Me"
+            }
+          ],
+          "copyright_year": 1908,
+          "cover_url": "https://archive.org/download/diarybirthdaydoll_1812_librivox/diarybirthdaydoll_1812.jpg",
+          "id": "emmahatton",
+          "language": "en",
+          "librivox_id": 13547,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/the-diary-of-a-birthday-doll-by-ethel-dow/",
+            "rss": "https://librivox.org/rss/13547",
+            "text": "https://archive.org/details/diaryofbirthdayd00dowe",
+            "zip": "https://archive.org/compress/diarybirthdaydoll_1812_librivox/formats=64KBPS MP3&file=/diarybirthdaydoll_1812_librivox.zip"
+          },
+          "narrators": [
+            "emmahatton"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 96,
+          "sources": [
+            {
+              "imported_at": "2026-10-29",
+              "ref": "13547",
+              "type": "librivox"
+            }
+          ],
+          "work": "diary-of-a-birthday-doll"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "13547",
+          "type": "librivox"
+        }
+      ],
+      "title": "Diary of a Birthday Doll"
     },
     "diary-of-a-broken-doll-1": {
       "added_at": "2026-07-29",
