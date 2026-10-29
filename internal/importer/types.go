@@ -526,6 +526,10 @@ type Summary struct {
 	// imported before readers were keyed apart). Both 0 for every other source.
 	LibrivoxReadersSplit int
 	LibrivoxReadersMoved int
+	// LibrivoxReadersUnslugged counts the readers minted at
+	// model.LibrivoxUnslugReaderSlug (`librivox-reader-<reader id>`) because
+	// their name slugs to nothing. 0 for every other source.
+	LibrivoxReadersUnslugged int
 	// LibrivoxVariantsAttached counts the LibriVox rows attached to a work whose
 	// title differs from theirs only by a leading article or punctuation, and
 	// LibrivoxFallbackSlugs the works created at `librivox-<id>` for a non-Latin

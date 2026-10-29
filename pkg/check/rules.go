@@ -430,18 +430,72 @@ func normISBN(s string) string { return strings.ToUpper(s) }
 //
 // The id is derived through model.PersonSlug - the SAME call the importer mints
 // it with - so the rule can never drift from the minting it polices. That also
-// covers the one record whose id is legitimately not its name's slug: the
-// shared catch-all a fully-folding name falls back to.
+// covers the shared catch-all a fully-folding name falls back to (which
+// checkUnslugFallback refuses when LibriVox states it).
 //
-// The one other legal form, a LibriVox reader's disambiguated id, is stated on
-// model.PersonIDMatches. The plain slug's holder is deliberately not required to
-// exist: a merge that retires it must not turn every reader disambiguated off it
-// red.
+// The other legal forms, a LibriVox reader's disambiguated id and an unsluggable
+// reader's reader-id slug, are stated on model.PersonIDMatches. The plain slug's
+// holder is deliberately not required to exist: a merge that retires it must not
+// turn every reader disambiguated off it red.
 func checkPersonSlug(cat *model.Catalog, idx *pathIndex, add addFunc) {
 	for _, p := range cat.People {
 		if !model.PersonIDMatches(p.ID, p.Name, p.LibrivoxReaderID) {
 			want, _ := model.PersonSlug(p.Name)
+			if lv, ok := model.LibrivoxUnslugReaderSlug(p.Name, p.LibrivoxReaderID); ok {
+				want = lv
+			}
 			add(idx.person[p], "person id %q does not match its name %q (want %q); the slug of the name IS the identity", p.ID, p.Name, want)
 		}
 	}
+}
+
+// checkUnslugFallback refuses the shared catch-all person (model.UnslugPersonID,
+// the id model.PersonSlug substitutes for a name that slugs to nothing) and a
+// recording keyed on or narrated by it, when LIBRIVOX put them there: a person carrying a
+// librivox source or a LibriVox reader or author id, a recording carrying a
+// librivox source or a librivox_id. The catch-all is ONE record standing for
+// every such credit, so a LibriVox run committing it would make one person the
+// narrator of unrelated projects (tranche 6 of the backfill would have credited
+// a Greek reader and every later unsluggable reader to the same `person`). A
+// LibriVox reader takes model.LibrivoxUnslugReaderSlug instead, and an
+// unsluggable LibriVox author is a credit not recorded, so nothing LibriVox
+// states legitimately lands here.
+//
+// The user-library importers (OpenAudible, Libation, audiosilo-books) keep the
+// catch-all on purpose (internal/importer/libex.go's note on the
+// unidentifiable-credit exclusion), so a catch-all they mint is out of scope.
+//
+// A recording's id is its first narrator's slug, so a recording keyed `person`
+// is the same defect seen from the work's side and is named on its own: a
+// renamed narrator leaves it behind otherwise. A LibriVox recording NARRATED by
+// the catch-all is refused too, whatever its id (`person-2` beside a recording
+// already keyed `person`, or the catch-all as a later narrator): when the
+// catch-all is a user-library record, a LibriVox credit onto it stamps no
+// librivox source there, so the person half above never sees it.
+func checkUnslugFallback(cat *model.Catalog, recs []recordWithPath, idx *pathIndex, add addFunc) {
+	for _, p := range cat.People {
+		if p.ID == model.UnslugPersonID && (p.LibrivoxReaderID != 0 || p.LibrivoxAuthorID != 0 || hasLibrivoxSource(p.Sources)) {
+			add(idx.person[p], "person id %q is the catch-all for a name that slugs to nothing (%q) and LibriVox states it; "+
+				"it would credit one record for every such name, so it must not be committed "+
+				"(a LibriVox reader belongs at librivox-reader-<reader id>)", p.ID, p.Name)
+		}
+	}
+	for _, r := range recs {
+		if r.rec.LibrivoxID == 0 && !hasLibrivoxSource(r.rec.Sources) {
+			continue
+		}
+		switch {
+		case r.rec.ID == model.UnslugPersonID:
+			add(r.path, "recording id %q is a LibriVox recording keyed on the catch-all person for a name that slugs to nothing; "+
+				"it must be keyed on its narrator's own id", r.rec.ID)
+		case slices.Contains(r.rec.Narrators, model.UnslugPersonID):
+			add(r.path, "recording %q is a LibriVox recording narrated by the catch-all person %q for a name that slugs to nothing; "+
+				"a LibriVox reader belongs at librivox-reader-<reader id>", r.rec.ID, model.UnslugPersonID)
+		}
+	}
+}
+
+// hasLibrivoxSource reports whether any source is the LibriVox import.
+func hasLibrivoxSource(sources []model.Source) bool {
+	return slices.ContainsFunc(sources, func(s model.Source) bool { return s.Type == model.SourceLibrivox })
 }

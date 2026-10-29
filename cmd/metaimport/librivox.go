@@ -122,6 +122,9 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 			sum.LibrivoxReadersSplit, plural(sum.LibrivoxReadersSplit, "reader", "readers"),
 			sum.LibrivoxReadersMoved, plural(sum.LibrivoxReadersMoved, "credit", "credits"))
 	}
+	if n := sum.LibrivoxReadersUnslugged; n > 0 {
+		fmt.Printf("librivox: %d %s whose name slugs to nothing (a person at librivox-reader-<reader id>)\n", n, plural(n, "reader", "readers"))
+	}
 	printLibrivoxInProgress(sum.LibrivoxInProgress)
 	// The spelling-variant attachments are a run note (printSummary prints it).
 	if n := sum.LibrivoxFallbackSlugs; n > 0 {

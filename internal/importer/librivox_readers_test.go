@@ -7,6 +7,7 @@ import (
 
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // readProject is fixture project 527 (Metamorphosis, one reader over every
@@ -346,5 +347,97 @@ func TestLibrivoxHeldReaderKeepsTheirNameAgainstANewRow(t *testing.T) {
 	}
 	if after := testpack.Snapshot(t, dataDir); !reflect.DeepEqual(before, after) {
 		t.Error("second rerun changed the tree")
+	}
+}
+
+// greekRow is project id read by one reader whose name slugs away to nothing.
+func greekRow(t *testing.T, id, reader int, name string) LibrivoxProject {
+	return readProject(t, id, LibrivoxReader{ReaderID: lvInt(reader), DisplayName: name})
+}
+
+func TestLibrivoxUnsluggableReadersArePeopleOfTheirOwn(t *testing.T) {
+	// Tranche 6's real shape: reader 11294 "Ἑλένη Κεμικτσή" slugs to nothing.
+	// She is minted at librivox-reader-11294 with her name as written and her
+	// reader id, and her recording is keyed on that id; a second unsluggable
+	// reader is a second record, never the shared catch-all `person`.
+	snap := writeSnapshot(t,
+		greekRow(t, 91001, 11294, "Ἑλένη Κεμικτσή"),
+		greekRow(t, 91002, 14457, "Γιώργος Παπαδόπουλος"),
+		greekRow(t, 91003, 11294, "Ἑλένη Κεμικτσή"))
+	dataDir := t.TempDir()
+	sum := runLibrivox(t, snap, dataDir, allLibrivox)
+	if sum.NewRecordings != 3 || sum.LibrivoxReadersUnslugged != 2 || sum.LibrivoxReadersSplit != 0 {
+		t.Fatalf("recordings/unslugged/split = %d/%d/%d, want 3/2/0\nwarnings: %v",
+			sum.NewRecordings, sum.LibrivoxReadersUnslugged, sum.LibrivoxReadersSplit, sum.Warnings)
+	}
+	for slug, want := range map[string]lvPerson{
+		"librivox-reader-11294": {Name: "Ἑλένη Κεμικτσή", ReaderID: 11294},
+		"librivox-reader-14457": {Name: "Γιώργος Παπαδόπουλος", ReaderID: 14457},
+	} {
+		var p lvPerson
+		readEntity(t, dataDir, personAddr(slug), &p)
+		if p.Name != want.Name || p.ReaderID != want.ReaderID || len(p.Sources) != 1 || p.Sources[0].Type != "librivox" {
+			t.Errorf("%s = %+v, want name %q, reader %d and one librivox source", slug, p, want.Name, want.ReaderID)
+		}
+	}
+	if entryExists(t, dataDir, personAddr(model.UnslugPersonID)) {
+		t.Error("the catch-all person was created")
+	}
+	for rec, want := range map[string]string{
+		"librivox-reader-11294":   "librivox-reader-11294",
+		"librivox-reader-14457":   "librivox-reader-14457",
+		"librivox-reader-11294-2": "librivox-reader-11294",
+	} {
+		if got := lvNarrators(t, dataDir, "metamorphosis", rec); !reflect.DeepEqual(got, []string{want}) {
+			t.Errorf("recording %s narrators = %v, want [%s]", rec, got, want)
+		}
+	}
+	if w := strings.Join(sum.Warnings, "\n"); strings.Contains(w, "empty slug") || strings.Contains(w, "librivox_reader_id") {
+		t.Errorf("a reader reached the catch-all or lost their id: %v", sum.Warnings)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("tree failed validation:\n%v", res.Problems)
+	}
+
+	// A rerun resolves both readers by id: nothing minted, nothing rewritten.
+	before := testpack.Snapshot(t, dataDir)
+	again := runLibrivox(t, snap, dataDir, allLibrivox)
+	if again.NewPeople+again.NewRecordings+again.LibrivoxReadersUnslugged+again.LibrivoxIDsStamped != 0 || len(again.Files) != 0 {
+		t.Errorf("rerun = %+v, want a no-op", again)
+	}
+	if after := testpack.Snapshot(t, dataDir); !reflect.DeepEqual(before, after) {
+		t.Error("rerun changed the tree")
+	}
+
+	// A later tranche meeting reader 14457 again lands on their record.
+	later := greekRow(t, 91004, 14457, "Γιώργος Παπαδόπουλος")
+	later.Title = "Metamorphosis (version 4)"
+	more := runLibrivox(t, writeSnapshot(t, later), dataDir, allLibrivox)
+	if more.NewPeople != 0 || more.NewRecordings != 1 || more.LibrivoxReadersUnslugged != 0 {
+		t.Fatalf("people/recordings/unslugged = %d/%d/%d, want 0/1/0\nwarnings: %v",
+			more.NewPeople, more.NewRecordings, more.LibrivoxReadersUnslugged, more.Warnings)
+	}
+	if got := lvNarrators(t, dataDir, "metamorphosis", "librivox-reader-14457-2"); !reflect.DeepEqual(got, []string{"librivox-reader-14457"}) {
+		t.Errorf("narrators = %v", got)
+	}
+}
+
+func TestLibrivoxUnsluggableReaderNeverWritesOverAnotherPerson(t *testing.T) {
+	// librivox-reader-11294 is held by a person who is not this reader: the run
+	// warns and never writes over that record.
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, map[string]string{
+		personAddr("librivox-reader-11294"): testpack.PersonJSON(t, "librivox-reader-11294", "LibriVox Reader 11294"),
+	})
+	sum, err := RunLibrivox(writeSnapshot(t, greekRow(t, 91001, 11294, "Ἑλένη Κεμικτσή")), allLibrivox,
+		Options{DataDir: dataDir, ImportDate: testImportDate, DryRun: true})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !strings.Contains(strings.Join(sum.Warnings, "\n"), `"librivox-reader-11294" is another person's id`) {
+		t.Errorf("no occupant warning: %v", sum.Warnings)
+	}
+	if sum.LibrivoxReadersUnslugged != 0 {
+		t.Errorf("unslugged = %d, want 0", sum.LibrivoxReadersUnslugged)
 	}
 }

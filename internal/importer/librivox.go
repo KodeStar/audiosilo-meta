@@ -34,7 +34,10 @@ package importer
 //     person already holds under a different reader id is minted at
 //     model.LibrivoxReaderSlug (`martina-librivox-634`) instead of being folded
 //     onto them (librivoxReaderSlug), so two LibriVox accounts called "Martina"
-//     are two people and the first holder keeps the plain slug.
+//     are two people and the first holder keeps the plain slug; a reader whose
+//     name slugs to nothing (Greek, Cyrillic, CJK) is minted at
+//     model.LibrivoxUnslugReaderSlug (`librivox-reader-11294`) rather than on
+//     the shared catch-all.
 //   - Sections are chapters: start_ms cumulative from each section's playtime,
 //     the section's archive.org file as the chapter's audio_url. One section
 //     without a playtime makes the timeline unknowable past it, so the whole
@@ -702,10 +705,13 @@ func (p *planner) rowNarratorSlugs(b sourceBook, names []string, warn func(strin
 //   - an id this run already resolved, or one the catalogue holds, is the person
 //     carrying it ("" when that is the name's own resolution anyway, so every
 //     side effect of the ordinary path - a tombstone ride's note - is kept);
-//   - a name that slugs away to nothing is "": the catch-all is no one's, so no
-//     reader is disambiguated off it (librivoxCreditSlug stamps no id there);
-//     nor is one that folds onto a shared record (librivoxSharedPeople), which
-//     is a statement rather than somebody's name;
+//   - a name that slugs away to nothing is a person of their own at
+//     model.LibrivoxUnslugReaderSlug, created here carrying the id exactly as
+//     the held-name case below, never the shared catch-all (which pkg/check's
+//     checkUnslugFallback refuses for a LibriVox-stated record);
+//   - a name that folds onto a shared record (librivoxSharedPeople) is "": it
+//     is a statement rather than somebody's name, so no reader is
+//     disambiguated off it;
 //   - a name whose resolved person is free, or held by this same reader id,
 //     claims it for this id and is "": the first holder keeps the plain slug;
 //   - otherwise the name is held by ANOTHER reader id, and this reader is a
@@ -713,7 +719,9 @@ func (p *planner) rowNarratorSlugs(b sourceBook, names []string, warn func(strin
 //     id (so the record is never written without the id its slug states). An
 //     occupant there that is not this reader (a person whose own name slugs to
 //     it), or a tombstone, is never written over: the run warns and falls back
-//     to the name.
+//     to the name. The unsluggable form shares that tail, and its name falls
+//     back to the catch-all, which the run's post-write validation then refuses
+//     (pkg/check's checkUnslugFallback) rather than committing.
 //
 // Decisions are taken in row order as the planner meets the rows, so a run is
 // deterministic, and a rerun finds every reader through the catalogued id
@@ -732,15 +740,18 @@ func (p *planner) librivoxReaderSlug(c librivoxCredit, name string, project int,
 			return p.librivoxReaderResolved(live, r)
 		}
 	}
-	if r.fellBack || librivoxSharedPeople[r.slug] {
+	mint, counter := model.LibrivoxReaderSlug, &p.summary.LibrivoxReadersSplit
+	switch holder := p.lv.readerOf[r.slug]; {
+	case r.fellBack:
+		mint, counter = model.LibrivoxUnslugReaderSlug, &p.summary.LibrivoxReadersUnslugged
+	case librivoxSharedPeople[r.slug]:
 		return ""
-	}
-	if holder := p.lv.readerOf[r.slug]; holder == 0 || holder == c.id {
+	case holder == 0 || holder == c.id:
 		p.lv.readers[c.id] = r.slug
 		p.lv.readerOf[r.slug] = c.id
 		return ""
 	}
-	slug, ok := model.LibrivoxReaderSlug(name, c.id)
+	slug, ok := mint(name, c.id)
 	if !ok {
 		return ""
 	}
@@ -753,7 +764,7 @@ func (p *planner) librivoxReaderSlug(c librivoxCredit, name string, project int,
 	p.stampLibrivoxID(slug, c, project)
 	p.lv.readers[c.id] = slug
 	p.lv.readerOf[slug] = c.id
-	p.summary.LibrivoxReadersSplit++
+	(*counter)++
 	return slug
 }
 
@@ -1112,7 +1123,8 @@ func (p *planner) librivoxRowAuthors(b sourceBook, ws *workState, credits []cred
 // settleLibrivoxUnrecorded sets each unrecorded credit's PersonExists from the
 // planner as the run left it: the row's own reader, or a later row's new work,
 // can create the person after the credit was withheld. A name that slugs away
-// to nothing never has a record of its own (the catch-all is not it).
+// to nothing is never found by its name (the catch-all is not them, and an
+// unsluggable reader's own record is reached by reader id only).
 func (p *planner) settleLibrivoxUnrecorded() {
 	for i := range p.summary.LibrivoxUnrecordedCredits {
 		c := &p.summary.LibrivoxUnrecordedCredits[i]
@@ -1161,9 +1173,12 @@ func (p *planner) workCreditsPerson(work, person string) bool {
 // librivoxCreditSlug is the person a credit's name resolves to, through the same
 // cleaning and resolution the planner used for the row, or ok=false when it
 // cleans to nothing or to more than one name, resolves to no live record, or
-// slugs away to nothing: such a name lands on the shared catch-all person
+// slugs away to nothing: such a name resolves to the shared catch-all person
 // (model.UnslugPersonID), and one LibriVox id stamped there would claim that every
-// unsluggable credit is that one reader or author.
+// unsluggable credit is that one reader or author. An unsluggable READER the run
+// minted at model.LibrivoxUnslugReaderSlug never gets that far (the first branch
+// returns their record); one it could not mint (an occupied or retired slot, no
+// reader id) still reaches the fellBack refusal below.
 func (p *planner) librivoxCreditSlug(c librivoxCredit) (string, bool) {
 	// A reader id the run resolved is that person, whatever the name slugs to
 	// (librivoxReaderSlug).
