@@ -889,6 +889,7 @@
     },
     "david-loving": {
       "id": "david-loving",
+      "librivox_reader_id": 10825,
       "license": "CC0-1.0",
       "name": "David Loving",
       "sources": [
@@ -896,6 +897,11 @@
           "imported_at": "2026-08-01",
           "ref": "B071XWNTMG",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-29",
+          "ref": "10654",
+          "type": "librivox"
         }
       ]
     },
@@ -2484,6 +2490,21 @@
         {
           "imported_at": "2026-10-27",
           "ref": "275",
+          "type": "librivox"
+        }
+      ]
+    },
+    "david-miller-dewitt": {
+      "birth_year": 1837,
+      "death_year": 1912,
+      "id": "david-miller-dewitt",
+      "librivox_author_id": 12918,
+      "license": "CC0-1.0",
+      "name": "David Miller DeWitt",
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "12254",
           "type": "librivox"
         }
       ]
