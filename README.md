@@ -458,8 +458,12 @@ it (`fallback-slug-taken` when that slug is already used). A title exactly half
 Latin ("Anna Karenina (Анна Каренина)") stays on the slug rule.
 
 People are keyed by `librivox_reader_id` / `librivox_author_id`: a known id
-resolves to its catalogued person whatever the feed now calls them (a name that
-slugs to nothing lands on the catch-all person, which is never given an id).
+resolves to its catalogued person whatever the feed now calls them. A reader
+whose name slugs to nothing (Greek, Cyrillic, CJK) is a person of their own at
+`librivox-reader-<reader id>` (`librivox-reader-11294`), the name kept as
+written, so two such readers are never one record and a rerun finds them by
+id; an author or translator whose name slugs to nothing stays a credit not
+recorded (above). The shared catch-all `person` is refused by metacheck.
 A reader id is a person of its own even when the name is not: when the slug of
 a reader's name is already held by a person carrying a different reader id
 (LibriVox has several accounts called "Martina"), the reader is created at

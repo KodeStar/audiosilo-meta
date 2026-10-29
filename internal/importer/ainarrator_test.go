@@ -695,6 +695,10 @@ func TestSyntheticNarratorNameFoldsEveryShape(t *testing.T) {
 // slugs away to nothing keeps today's behaviour (the catch-all conflation, which
 // is visible to the user whose book it is) rather than losing them their book.
 // Only the AI vocabulary crosses over - see the note above refuseAIBooks.
+//
+// It is a dry run because the catch-all record the row would mint is refused
+// by the tree's validation (pkg/check's checkUnslugFallback); what this pins is
+// that the PARSE layer does not refuse the row.
 func TestAudiosiloBooksKeepsTheNonAIRefusalsLibexOnly(t *testing.T) {
 	const export = `{
   "format": "audiosilo-books",
@@ -709,7 +713,7 @@ func TestAudiosiloBooksKeepsTheNonAIRefusalsLibexOnly(t *testing.T) {
     }
   ]
 }`
-	sum, _ := runAudiosiloBooks(t, export, false)
+	sum, _ := runAudiosiloBooks(t, export, true)
 	if sum.NewWorks != 1 {
 		t.Errorf("NewWorks = %d, want 1: a user's own library is not refused for an unslugabble name", sum.NewWorks)
 	}

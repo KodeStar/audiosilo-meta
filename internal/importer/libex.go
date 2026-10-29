@@ -709,7 +709,10 @@ func refuseLibexCredits(authors, narrators []string) (creditRefusal, bool) {
 // keeps today's behaviour: a user who owns a Korean audiobook wants it in their
 // catalogue, the conflation is visible to them, and refusing their book to keep a
 // shared database tidy would be the wrong trade. What to do for user libraries is
-// a separate open decision; this rule takes no position on it.
+// a separate open decision; this rule takes no position on it. Note that pkg/check
+// now refuses the catch-all record itself (checkUnslugFallback), so such a run
+// still plans the book but fails its post-import validation rather than
+// committing `person`.
 //
 // There is no SQL twin of this rule in scripts/libex-export-rows.sql, unlike the
 // AI-narration vocabulary. Slugify's behaviour is Unicode folding in Go, not a
