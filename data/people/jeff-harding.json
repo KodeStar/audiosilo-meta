@@ -490,6 +490,7 @@
     },
     "jeff-konrad": {
       "id": "jeff-konrad",
+      "librivox_reader_id": 11042,
       "license": "CC0-1.0",
       "name": "Jeff Konrad",
       "sources": [
@@ -497,6 +498,11 @@
           "imported_at": "2026-08-01",
           "ref": "B01M336XP0",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-29",
+          "ref": "9971",
+          "type": "librivox"
         }
       ]
     },
@@ -1006,6 +1012,7 @@
     },
     "jeff-moon": {
       "id": "jeff-moon",
+      "librivox_reader_id": 10436,
       "license": "CC0-1.0",
       "name": "Jeff Moon",
       "sources": [
@@ -1013,6 +1020,11 @@
           "imported_at": "2026-07-25",
           "ref": "B09NJQ87TP",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-10-29",
+          "ref": "9511",
+          "type": "librivox"
         }
       ]
     },
@@ -2446,6 +2458,19 @@
         }
       ]
     },
+    "jeffatnip": {
+      "id": "jeffatnip",
+      "librivox_reader_id": 9513,
+      "license": "CC0-1.0",
+      "name": "jeffatnip",
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "9158",
+          "type": "librivox"
+        }
+      ]
+    },
     "jeffe-kennedy": {
       "id": "jeffe-kennedy",
       "license": "CC0-1.0",
@@ -2711,6 +2736,19 @@
           "imported_at": "2026-08-02",
           "ref": "B09VYCF9CW",
           "type": "libex-import"
+        }
+      ]
+    },
+    "jefferson-tholen": {
+      "id": "jefferson-tholen",
+      "librivox_reader_id": 10490,
+      "license": "CC0-1.0",
+      "name": "Jefferson Tholen",
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "9891",
+          "type": "librivox"
         }
       ]
     },
