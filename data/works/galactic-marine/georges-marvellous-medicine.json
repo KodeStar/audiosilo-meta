@@ -3455,6 +3455,89 @@
       ],
       "title": "Georgics"
     },
+    "georgics-a-poem-of-the-land": {
+      "added_at": "2026-10-29",
+      "authors": [
+        "virgil",
+        "james-rhoades"
+      ],
+      "credits": [
+        {
+          "person": "james-rhoades",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "classics"
+      ],
+      "id": "georgics-a-poem-of-the-land",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "george-emerson": {
+          "added_at": "2026-10-29",
+          "archive_id": "the_georgics_2110_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/the_georgics_2110_librivox/georgics_01_virgil_64kb.mp3",
+              "length_ms": 2665000,
+              "start_ms": 0,
+              "title": "Georgic I"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/the_georgics_2110_librivox/georgics_02_virgil_64kb.mp3",
+              "length_ms": 2580000,
+              "start_ms": 2665000,
+              "title": "Georgic II"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/the_georgics_2110_librivox/georgics_03_virgil_64kb.mp3",
+              "length_ms": 2743000,
+              "start_ms": 5245000,
+              "title": "Georgic III"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/the_georgics_2110_librivox/georgics_04_virgil_64kb.mp3",
+              "length_ms": 2995000,
+              "start_ms": 7988000,
+              "title": "Georgic IV"
+            }
+          ],
+          "cover_url": "https://archive.org/download/the_georgics_2110_librivox/georgics_2110.jpg",
+          "id": "george-emerson",
+          "language": "en",
+          "librivox_id": 17072,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/the-georgics-a-poem-of-the-land-by-virgil/",
+            "rss": "https://librivox.org/rss/17072",
+            "text": "https://www.gutenberg.org/ebooks/232",
+            "zip": "https://archive.org/compress/the_georgics_2110_librivox/formats=64KBPS MP3&file=/the_georgics_2110_librivox.zip"
+          },
+          "narrators": [
+            "george-emerson"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 183,
+          "sources": [
+            {
+              "imported_at": "2026-10-29",
+              "ref": "17072",
+              "type": "librivox"
+            }
+          ],
+          "work": "georgics-a-poem-of-the-land"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "17072",
+          "type": "librivox"
+        }
+      ],
+      "title": "Georgics: A Poem of the Land"
+    },
     "georgie-all-along": {
       "added_at": "2026-07-29",
       "authors": [
@@ -12572,6 +12655,85 @@
         }
       ],
       "title": "Germania"
+    },
+    "germanias": {
+      "added_at": "2026-10-29",
+      "authors": [
+        "publius-cornelius-tacitus",
+        "baltasar-alamos"
+      ],
+      "credits": [
+        {
+          "person": "baltasar-alamos",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "classics",
+        "military-history"
+      ],
+      "id": "germanias",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
+        "epachuko": {
+          "added_at": "2026-10-29",
+          "archive_id": "las_germanias_2203_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/las_germanias_2203_librivox/germanias_01_tacitus_64kb.mp3",
+              "length_ms": 1218000,
+              "start_ms": 0,
+              "title": "Capitulo 1"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/las_germanias_2203_librivox/germanias_02_tacitus_64kb.mp3",
+              "length_ms": 1168000,
+              "start_ms": 1218000,
+              "title": "Capitulo 2"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/las_germanias_2203_librivox/germanias_03_tacitus_64kb.mp3",
+              "length_ms": 1389000,
+              "start_ms": 2386000,
+              "title": "Capítulo 3"
+            }
+          ],
+          "copyright_year": 1919,
+          "cover_url": "https://archive.org/download/las_germanias_2203_librivox/lagermania_2203.jpg",
+          "id": "epachuko",
+          "language": "es",
+          "librivox_id": 17648,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/las-germanias-by-publius-cornelius-tacitus/",
+            "rss": "https://librivox.org/rss/17648",
+            "text": "https://www.cervantesvirtual.com/obra/la-germania--0/",
+            "zip": "https://archive.org/compress/las_germanias_2203_librivox/formats=64KBPS MP3&file=/las_germanias_2203_librivox.zip"
+          },
+          "narrators": [
+            "epachuko"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 63,
+          "sources": [
+            {
+              "imported_at": "2026-10-29",
+              "ref": "17648",
+              "type": "librivox"
+            }
+          ],
+          "work": "germanias"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "17648",
+          "type": "librivox"
+        }
+      ],
+      "title": "Germanias"
     },
     "germanische-gottersagen": {
       "added_at": "2026-08-02",

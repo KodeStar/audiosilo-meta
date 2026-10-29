@@ -8384,6 +8384,93 @@
       ],
       "title": "Canticle"
     },
+    "cantico-de-navidad": {
+      "added_at": "2026-10-29",
+      "authors": [
+        "charles-dickens",
+        "luis-barthe"
+      ],
+      "credits": [
+        {
+          "person": "luis-barthe",
+          "role": "translator"
+        }
+      ],
+      "id": "cantico-de-navidad",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
+        "epachuko": {
+          "added_at": "2026-10-29",
+          "archive_id": "cantico_de_navidad_2112_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/cantico_de_navidad_2112_librivox/canticonavidad_01_dickens_64kb.mp3",
+              "length_ms": 2897000,
+              "start_ms": 0,
+              "title": "Primera estrofa: El fantasma de Marley"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/cantico_de_navidad_2112_librivox/canticonavidad_02_dickens_64kb.mp3",
+              "length_ms": 2586000,
+              "start_ms": 2897000,
+              "title": "Segunda estrofa: El primero de los tres espíritus"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/cantico_de_navidad_2112_librivox/canticonavidad_03_dickens_64kb.mp3",
+              "length_ms": 3342000,
+              "start_ms": 5483000,
+              "title": "Tercera estrofa: El segundo de los tres espíritus"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/cantico_de_navidad_2112_librivox/canticonavidad_04_dickens_64kb.mp3",
+              "length_ms": 2166000,
+              "start_ms": 8825000,
+              "title": "Cuarta estrofa: El último de los espíritus"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/cantico_de_navidad_2112_librivox/canticonavidad_05_dickens_64kb.mp3",
+              "length_ms": 869000,
+              "start_ms": 10991000,
+              "title": "Quinta estrofa: Conclusión"
+            }
+          ],
+          "copyright_year": 1883,
+          "cover_url": "https://archive.org/download/cantico_de_navidad_2112_librivox/cantico_navidad_2112.jpg",
+          "id": "epachuko",
+          "language": "es",
+          "librivox_id": 17345,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/el-cantico-de-navidad-by-charles-dickens/",
+            "rss": "https://librivox.org/rss/17345",
+            "text": "https://es.wikisource.org/wiki/El_cántico_de_Navidad",
+            "zip": "https://archive.org/compress/cantico_de_navidad_2112_librivox/formats=64KBPS MP3&file=/cantico_de_navidad_2112_librivox.zip"
+          },
+          "narrators": [
+            "epachuko"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 198,
+          "sources": [
+            {
+              "imported_at": "2026-10-29",
+              "ref": "17345",
+              "type": "librivox"
+            }
+          ],
+          "work": "cantico-de-navidad"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "17345",
+          "type": "librivox"
+        }
+      ],
+      "title": "Cántico de Navidad"
+    },
     "cantico-de-sangre-blood-canticle": {
       "added_at": "2026-08-02",
       "authors": [

@@ -5091,6 +5091,94 @@
       ],
       "title": "Last Dragon Standing"
     },
+    "last-drive": {
+      "added_at": "2026-10-29",
+      "authors": [
+        "rex-stout"
+      ],
+      "genres": [
+        "mystery"
+      ],
+      "id": "last-drive",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "ben-tucker": {
+          "added_at": "2026-10-29",
+          "archive_id": "lastdrive_2210_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/lastdrive_2210_librivox/lastdrive_01_stout_64kb.mp3",
+              "length_ms": 1214000,
+              "start_ms": 0,
+              "title": "Chapter I"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lastdrive_2210_librivox/lastdrive_02_stout_64kb.mp3",
+              "length_ms": 1438000,
+              "start_ms": 1214000,
+              "title": "Chapter II"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lastdrive_2210_librivox/lastdrive_03_stout_64kb.mp3",
+              "length_ms": 1294000,
+              "start_ms": 2652000,
+              "title": "Chapter III"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lastdrive_2210_librivox/lastdrive_04_stout_64kb.mp3",
+              "length_ms": 1240000,
+              "start_ms": 3946000,
+              "title": "Chapter IV"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lastdrive_2210_librivox/lastdrive_05_stout_64kb.mp3",
+              "length_ms": 1275000,
+              "start_ms": 5186000,
+              "title": "Chapter V"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lastdrive_2210_librivox/lastdrive_06_stout_64kb.mp3",
+              "length_ms": 1226000,
+              "start_ms": 6461000,
+              "title": "Chapter VI"
+            }
+          ],
+          "copyright_year": 1916,
+          "cover_url": "https://archive.org/download/lastdrive_2210_librivox/lastdrive_2210.jpg",
+          "id": "ben-tucker",
+          "language": "en",
+          "librivox_id": 18422,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/the-last-drive-by-rex-stout/",
+            "rss": "https://librivox.org/rss/18422",
+            "zip": "https://archive.org/compress/lastdrive_2210_librivox/formats=64KBPS MP3&file=/lastdrive_2210_librivox.zip"
+          },
+          "narrators": [
+            "ben-tucker"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 128,
+          "sources": [
+            {
+              "imported_at": "2026-10-29",
+              "ref": "18422",
+              "type": "librivox"
+            }
+          ],
+          "work": "last-drive"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "18422",
+          "type": "librivox"
+        }
+      ],
+      "title": "Last Drive"
+    },
     "last-egyptian": {
       "added_at": "2026-10-29",
       "authors": [
@@ -5936,6 +6024,70 @@
         }
       ],
       "title": "Last Essays of Elia"
+    },
+    "last-evolution": {
+      "added_at": "2026-10-29",
+      "authors": [
+        "john-wood-campbell-jr"
+      ],
+      "genres": [
+        "science-fiction"
+      ],
+      "id": "last-evolution",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "phil-chenevert": {
+          "added_at": "2026-10-29",
+          "archive_id": "thelastevolution_2211_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/thelastevolution_2211_librivox/thelastevolution_01_campbell_64kb.mp3",
+              "length_ms": 1718000,
+              "start_ms": 0,
+              "title": "Part 1"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/thelastevolution_2211_librivox/thelastevolution_02_campbell_64kb.mp3",
+              "length_ms": 1441000,
+              "start_ms": 1718000,
+              "title": "Part 2"
+            }
+          ],
+          "cover_url": "https://archive.org/download/thelastevolution_2211_librivox/lastevolution_2211.jpg",
+          "id": "phil-chenevert",
+          "language": "en",
+          "librivox_id": 18535,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/the-last-evolution-by-john-wood-campbell-jr/",
+            "rss": "https://librivox.org/rss/18535",
+            "text": "https://www.gutenberg.org/ebooks/27462",
+            "zip": "https://archive.org/compress/thelastevolution_2211_librivox/formats=64KBPS MP3&file=/thelastevolution_2211_librivox.zip"
+          },
+          "narrators": [
+            "phil-chenevert"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 53,
+          "sources": [
+            {
+              "imported_at": "2026-10-29",
+              "ref": "18535",
+              "type": "librivox"
+            }
+          ],
+          "work": "last-evolution"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "18535",
+          "type": "librivox"
+        }
+      ],
+      "title": "Last Evolution"
     },
     "last-exit-to-the-end-minecraft-ironsword-academy-chapter-book-6": {
       "added_at": "2026-08-02",
@@ -7170,6 +7322,199 @@
         }
       ],
       "title": "Last Friends"
+    },
+    "last-galley-impressions-and-tales": {
+      "added_at": "2026-10-29",
+      "authors": [
+        "arthur-conan-doyle"
+      ],
+      "genres": [
+        "historical-fiction"
+      ],
+      "id": "last-galley-impressions-and-tales",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "ben-tucker": {
+          "added_at": "2026-10-29",
+          "archive_id": "lastgalley_2208_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/lastgalley_2208_librivox/lastgalley_01_doyle_64kb.mp3",
+              "length_ms": 107000,
+              "start_ms": 0,
+              "title": "Preface"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lastgalley_2208_librivox/lastgalley_02_doyle_64kb.mp3",
+              "length_ms": 1137000,
+              "start_ms": 107000,
+              "title": "The Last Galley"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lastgalley_2208_librivox/lastgalley_03_doyle_64kb.mp3",
+              "length_ms": 1157000,
+              "start_ms": 1244000,
+              "title": "The Contest"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lastgalley_2208_librivox/lastgalley_04_doyle_64kb.mp3",
+              "length_ms": 1036000,
+              "start_ms": 2401000,
+              "title": "Through the Veil"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lastgalley_2208_librivox/lastgalley_05_doyle_64kb.mp3",
+              "length_ms": 887000,
+              "start_ms": 3437000,
+              "title": "An Iconoclast"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lastgalley_2208_librivox/lastgalley_06_doyle_64kb.mp3",
+              "length_ms": 2427000,
+              "start_ms": 4324000,
+              "title": "Giant Maximin"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lastgalley_2208_librivox/lastgalley_07_doyle_64kb.mp3",
+              "length_ms": 1475000,
+              "start_ms": 6751000,
+              "title": "The Coming of the Huns"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lastgalley_2208_librivox/lastgalley_08_doyle_64kb.mp3",
+              "length_ms": 999000,
+              "start_ms": 8226000,
+              "title": "The Last of the Legions"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lastgalley_2208_librivox/lastgalley_09_doyle_64kb.mp3",
+              "length_ms": 1174000,
+              "start_ms": 9225000,
+              "title": "The First Cargo"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lastgalley_2208_librivox/lastgalley_10_doyle_64kb.mp3",
+              "length_ms": 1781000,
+              "start_ms": 10399000,
+              "title": "The Home-Coming"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lastgalley_2208_librivox/lastgalley_11_doyle_64kb.mp3",
+              "length_ms": 1220000,
+              "start_ms": 12180000,
+              "title": "The Red Star"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lastgalley_2208_librivox/lastgalley_12_doyle_64kb.mp3",
+              "length_ms": 1588000,
+              "start_ms": 13400000,
+              "title": "The Silver Mirror"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lastgalley_2208_librivox/lastgalley_13_doyle_64kb.mp3",
+              "length_ms": 2038000,
+              "start_ms": 14988000,
+              "title": "The Blighting of Sharkey"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lastgalley_2208_librivox/lastgalley_14_doyle_64kb.mp3",
+              "length_ms": 1247000,
+              "start_ms": 17026000,
+              "title": "The Marriage of the Brigadier"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lastgalley_2208_librivox/lastgalley_15_doyle_64kb.mp3",
+              "length_ms": 1122000,
+              "start_ms": 18273000,
+              "title": "The Lord of Falconbridge Part 1"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lastgalley_2208_librivox/lastgalley_16_doyle_64kb.mp3",
+              "length_ms": 676000,
+              "start_ms": 19395000,
+              "title": "The Lord of Falconbridge Part 2"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lastgalley_2208_librivox/lastgalley_17_doyle_64kb.mp3",
+              "length_ms": 1119000,
+              "start_ms": 20071000,
+              "title": "The Lord of Falconbridge Part 3"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lastgalley_2208_librivox/lastgalley_18_doyle_64kb.mp3",
+              "length_ms": 2004000,
+              "start_ms": 21190000,
+              "title": "Out of the Running"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lastgalley_2208_librivox/lastgalley_19_doyle_64kb.mp3",
+              "length_ms": 1628000,
+              "start_ms": 23194000,
+              "title": "\"De Profundis\""
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lastgalley_2208_librivox/lastgalley_20_doyle_64kb.mp3",
+              "length_ms": 1038000,
+              "start_ms": 24822000,
+              "title": "The Great Brown-Pericord Motor"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lastgalley_2208_librivox/lastgalley_21_doyle_64kb.mp3",
+              "length_ms": 2404000,
+              "start_ms": 25860000,
+              "title": "The Terror of Blue John Gap"
+            }
+          ],
+          "copyright_year": 1911,
+          "cover_url": "https://archive.org/download/lastgalley_2208_librivox/last_galley_2208.jpg",
+          "id": "ben-tucker",
+          "language": "en",
+          "librivox_id": 17905,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/the-last-galley-by-sir-arthur-conan-doyle/",
+            "rss": "https://librivox.org/rss/17905",
+            "text": "https://archive.org/details/lastgalleyimpres00doylrich/page/n7/mode/2up",
+            "zip": "https://archive.org/compress/lastgalley_2208_librivox/formats=64KBPS MP3&file=/lastgalley_2208_librivox.zip"
+          },
+          "narrators": [
+            "ben-tucker",
+            "ted-perkins",
+            "wallace-morgan",
+            "kerry-adams",
+            "redpoppy",
+            "christine-rottger",
+            "czandra",
+            "james-k-white",
+            "laurie-banza",
+            "claudia-caldi",
+            "jeff-pierpont",
+            "michael-james",
+            "rita-boutros",
+            "cavaet",
+            "aaronjwalker9"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 471,
+          "sources": [
+            {
+              "imported_at": "2026-10-29",
+              "ref": "17905",
+              "type": "librivox"
+            }
+          ],
+          "work": "last-galley-impressions-and-tales"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "17905",
+          "type": "librivox"
+        }
+      ],
+      "title": "Last Galley, Impressions and Tales"
     },
     "last-gamer-standing": {
       "added_at": "2026-07-29",
