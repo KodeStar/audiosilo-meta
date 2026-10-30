@@ -163,19 +163,21 @@ var librivoxGenericWords = func() map[string]bool {
 }()
 
 // librivoxGenericTitle reports whether a title, its trailing qualifiers
-// removed ("Poems (1915)"), is made only of librivoxGenericWords and numbers:
-// a title many authors share, so sharing it says nothing about who wrote it.
+// removed ("Poems (1915)"), is made only of librivoxGenericWords and numbers,
+// at least one a word (a title of numbers alone, "1601", names a work): a
+// title many authors share, so sharing it says nothing about who wrote it.
 func librivoxGenericTitle(title string) bool {
-	words := strings.Fields(strings.ReplaceAll(model.Slugify(stripTrailingQualifiers(title)), "-", " "))
-	if len(words) == 0 {
-		return false
-	}
-	for _, w := range words {
-		if strings.TrimLeft(w, "0123456789") != "" && !librivoxGenericWords[w] {
+	generic := false
+	for _, w := range strings.Split(model.Slugify(stripTrailingQualifiers(title)), "-") {
+		switch {
+		case strings.TrimLeft(w, "0123456789") == "":
+			continue
+		case !librivoxGenericWords[w]:
 			return false
 		}
+		generic = true
 	}
-	return true
+	return generic
 }
 
 // lvAuthorClaim is one LibriVox author id as the batch's rows to be planned
@@ -242,7 +244,7 @@ func (p *planner) decideLibrivoxAuthors(books []sourceBook) {
 	// The indexes below are read only here.
 	defer func() { p.lv.works, p.lv.titledTwins = nil, nil }()
 	renames := map[int]string{}
-	holder := map[string]*lvAuthorClaim{}
+	holder := map[string]lifeYears{}
 	var decided []string
 	for i, cl := range order {
 		id, name, slug := ids[i], cl.name, cl.slug
@@ -268,11 +270,17 @@ func (p *planner) decideLibrivoxAuthors(books []sourceBook) {
 		to, against, v := p.librivoxAuthorName(name, cl)
 		if v == lvSame && to == "" {
 			// A second id of this run on a taken name is judged as
-			// librivoxVerdict judges a person already carrying an id.
-			if h, ok := holder[slug]; ok && !sameLife(h.life, cl.life) {
+			// librivoxVerdict judges a person already carrying an id, by the
+			// years that person will carry: a catalogued person's own, else
+			// the first id's (stampLifeYears).
+			if life, ok := holder[slug]; ok && !sameLife(life, cl.life) {
 				v = lvApart
 			} else if !ok {
-				holder[slug] = cl
+				life, dated := p.lv.life[against]
+				if !dated {
+					life = cl.life
+				}
+				holder[slug] = life
 			}
 		}
 		switch v {

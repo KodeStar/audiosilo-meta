@@ -699,6 +699,7 @@ func TestLibrivoxGenericTitle(t *testing.T) {
 		"Poems of Conformity":         false,
 		"Letters from Egypt":          false,
 		"Fragments of Science":        false,
+		"1601":                        false,
 		"":                            false,
 	} {
 		if got := librivoxGenericTitle(title); got != want {
@@ -755,4 +756,32 @@ func TestLibrivoxSecondUndatedIDInARunIsHeld(t *testing.T) {
 		}
 	}
 	mustValidate(t, same)
+}
+
+func TestLibrivoxSecondIDInARunMeetsTheCataloguedYears(t *testing.T) {
+	// The first id lands on a catalogued dated person, so a later run judges
+	// the second id by that person's years, not the first id's (none): one run
+	// must credit the second there too, not mint a dated twin of the same years.
+	seed := func() string {
+		dataDir := t.TempDir()
+		files := map[string]string{}
+		files[personAddr("john-smith")] = personFiles(t, "john-smith", "John Smith", map[string]any{"birth_year": 1800, "death_year": 1870})
+		retailWork(t, files, "old-sermons-of-the-moor", "Old Sermons of the Moor", "john-smith", "1850")
+		seedTree(t, dataDir, files)
+		return dataDir
+	}
+	first := byAuthors(t, 99040, "Alpha Tales", LibrivoxPerson{ID: lvInt(5001), FirstName: "John", LastName: "Smith"})
+	second := byAuthors(t, 99041, "Beta Tales", lvDated(5002, "John", "Smith", "1800", "1870"))
+
+	oneRun := seed()
+	runLibrivox(t, writeSnapshot(t, first, second), oneRun, allLibrivox)
+	if got := workAuthorsOf(t, oneRun, "beta-tales"); !reflect.DeepEqual(got, []string{"john-smith"}) {
+		t.Errorf("beta-tales authors = %v", got)
+	}
+	twoRuns := seed()
+	runLibrivox(t, writeSnapshot(t, first), twoRuns, allLibrivox)
+	runLibrivox(t, writeSnapshot(t, second), twoRuns, allLibrivox)
+	if !reflect.DeepEqual(testpack.Snapshot(t, oneRun), testpack.Snapshot(t, twoRuns)) {
+		t.Error("one run and two runs left different trees")
+	}
 }
