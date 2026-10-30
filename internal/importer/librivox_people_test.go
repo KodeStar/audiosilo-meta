@@ -652,3 +652,107 @@ func TestLibrivoxReaderMetBeforeADeadAuthorOfTheRun(t *testing.T) {
 	mustValidate(t, dataDir)
 	rerunIsANoOp(t, snap, dataDir)
 }
+
+func TestLibrivoxGenericTitleIsNoTitleInCommon(t *testing.T) {
+	// Two poets may each publish "Poems": a generic title shared with the
+	// catalogued twin does not outweigh dates that say they are two people.
+	for name, tc := range map[string]struct {
+		published string
+		dated     bool
+	}{
+		"first published long after": {"1998", true},
+		"dated by release dates":     {"", false},
+	} {
+		t.Run(name, func(t *testing.T) {
+			dataDir := t.TempDir()
+			files := map[string]string{}
+			files[personAddr("james-grant")] = personFiles(t, "james-grant", "James Grant", nil)
+			retailWork(t, files, "selected-poems", "Selected Poems", "james-grant", tc.published)
+			seedTree(t, dataDir, files)
+			snap := writeSnapshot(t, byAuthors(t, 99020, "Selected Poems (1880)", lvDated(16128, "James", "Grant", "1822", "1887")))
+			sum := runLibrivox(t, snap, dataDir, allLibrivox)
+			if p := personOf(t, dataDir, "james-grant"); p.AuthorID != 0 {
+				t.Fatalf("james-grant stamped: %+v", p)
+			}
+			if tc.dated {
+				if !entryExists(t, dataDir, personAddr("james-grant-1822-1887")) {
+					t.Errorf("no dated person\nnotes: %v\nworklist: %v", sum.Notes, sum.LibrivoxWorklist)
+				}
+				return
+			}
+			if len(sum.LibrivoxWorklist) != 1 || sum.LibrivoxWorklist[0].Reason != LibrivoxSameNameAuthor {
+				t.Errorf("worklist = %+v", sum.LibrivoxWorklist)
+			}
+		})
+	}
+}
+
+func TestLibrivoxGenericTitle(t *testing.T) {
+	for title, want := range map[string]bool{
+		"Poems":                       true,
+		"Selected Poems":              true,
+		"Short Stories":               true,
+		"The Essays and Other Pieces": true,
+		"Letters, Volume 2":           true,
+		"Poems (1915)":                true,
+		"Collected Works [Johnston]":  true,
+		"Poems of Conformity":         false,
+		"Letters from Egypt":          false,
+		"Fragments of Science":        false,
+		"":                            false,
+	} {
+		if got := librivoxGenericTitle(title); got != want {
+			t.Errorf("librivoxGenericTitle(%q) = %v, want %v", title, got, want)
+		}
+	}
+}
+
+func TestLibrivoxSecondUndatedIDInARunIsHeld(t *testing.T) {
+	// Two undated author ids of one free name: in one run the second is held
+	// as a later run holds it against the first's person, not credited there.
+	first := byAuthors(t, 99030, "A Soldier's Diary", LibrivoxPerson{ID: lvInt(17170), FirstName: "Ralph", LastName: "Scott"})
+	second := byAuthors(t, 99031, "Letters Home", LibrivoxPerson{ID: lvInt(17999), FirstName: "Ralph", LastName: "Scott"})
+	heldOf := func(sum Summary) []int {
+		var held []int
+		for _, e := range sum.LibrivoxWorklist {
+			if e.Reason == LibrivoxSameNameAuthor {
+				held = append(held, e.Project)
+			}
+		}
+		return held
+	}
+
+	oneRun := t.TempDir()
+	sum := runLibrivox(t, writeSnapshot(t, first, second), oneRun, allLibrivox)
+	if got := heldOf(sum); !reflect.DeepEqual(got, []int{99031}) {
+		t.Fatalf("one run held %v, want [99031]\nnotes: %v", got, sum.Notes)
+	}
+	if p := personOf(t, oneRun, "ralph-scott"); p.AuthorID != 17170 {
+		t.Errorf("ralph-scott = %+v", p)
+	}
+
+	twoRuns := t.TempDir()
+	runLibrivox(t, writeSnapshot(t, first), twoRuns, allLibrivox)
+	if got := heldOf(runLibrivox(t, writeSnapshot(t, second), twoRuns, allLibrivox)); !reflect.DeepEqual(got, []int{99031}) {
+		t.Errorf("two runs held %v, want [99031]", got)
+	}
+	if !reflect.DeepEqual(testpack.Snapshot(t, oneRun), testpack.Snapshot(t, twoRuns)) {
+		t.Error("one run and two runs left different trees")
+	}
+
+	// The same birth and death years under two ids are one person in a run.
+	same := t.TempDir()
+	sum = runLibrivox(t, writeSnapshot(t,
+		byAuthors(t, 99032, "The Flame in the Wind", lvDated(12383, "Margaret Steele", "Anderson", "1867", "1921")),
+		byAuthors(t, 99033, "The Heart of Life", lvDated(17348, "Margaret Steele", "Anderson", "1867", "1921")),
+	), same, allLibrivox)
+	if len(sum.LibrivoxWorklist) != 0 || sum.NewRecordings != 2 {
+		t.Fatalf("worklist = %+v, recordings = %d", sum.LibrivoxWorklist, sum.NewRecordings)
+	}
+	for _, w := range []string{"the-flame-in-the-wind", "the-heart-of-life"} {
+		if got := workAuthorsOf(t, same, w); !reflect.DeepEqual(got, []string{"margaret-steele-anderson"}) {
+			t.Errorf("%s authors = %v", w, got)
+		}
+	}
+	mustValidate(t, same)
+}

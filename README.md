@@ -492,7 +492,9 @@ meets before it is credited there:
   `librivox_author_id` with other years; years that disagree, a flourished year
   outside the person's life included; or, with neither, a person credited only
   as a narrator who is not a LibriVox reader meeting an undated author, or only
-  on works first published more than 25 years after the author's death), the
+  on works first published more than 25 years after the author's death and
+  sharing no title with the project; a generic title such as "Poems" or
+  "Selected Essays" is not a shared title), the
   author is a person of their own at the name with their years:
   `james-grant-1822-1887` ("James Grant (1822-1887)"), `richard-wilson-fl-1916` ("Richard Wilson (fl. 1916)"). With no
   year to tell them apart, or when the catalogued person's works are dated only
@@ -500,7 +502,9 @@ meets before it is credited there:
   old one look alike there), the project goes to the worklist as
   `same-name-author`, naming that person's works. Settling it means putting the
   `librivox_author_id` on the right person (the catalogued one, or a new dated
-  record); re-importing the id then finds that person by id.
+  record); re-importing the id then finds that person by id. Two new author ids
+  of one name in a single import are told apart the same way: the second is
+  the first's person only when both state the same birth and death years.
 
 ## Audiobookshelf
 

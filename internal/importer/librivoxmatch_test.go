@@ -192,7 +192,8 @@ func TestLibrivoxNonLatinTitlesGetTheProjectSlug(t *testing.T) {
 		project(99600, "Война и мир", "Russian", "Leo", "Tolstoy"),
 		project(99601, "Ὀδύσσεια", "Ancient Greek", "", "Homer"),
 		project(99602, "論語", "Chinese", "", "Confucius"),
-		project(99603, "Война и мир (version 2)", "Russian", "Leo", "Tolstoy"),
+		// One author id: a second id of one undated name would be held.
+		byAuthor(t, 99603, "Война и мир (version 2)", "Russian", LibrivoxPerson{ID: lvInt(6000), FirstName: "Leo", LastName: "Tolstoy"}),
 	)
 	dataDir := t.TempDir()
 	sum := runLibrivox(t, snap, dataDir, allLibrivox)

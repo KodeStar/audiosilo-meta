@@ -39,7 +39,8 @@ package importer
 //     a LibriVox reader is the undated id's own volunteer), or only on works
 //     first published more than librivoxLateMargin years after the author's
 //     death (or flourished year), with no title in common with the id's
-//     projects (librivoxCreditEvidence).
+//     projects (librivoxCreditEvidence; a generic title such as "Poems" or
+//     "Selected Essays" is no title in common, librivoxGenericTitle).
 //     A work's first publication is its first_published, else the earliest
 //     release date of its recordings, and a work co-credited with someone who
 //     died within the margin is an old text whatever its recordings say; a
@@ -48,8 +49,10 @@ package importer
 //     "Richard Wilson (fl. 1916)" -> `richard-wilson-fl-1916`), the form the
 //     tranches minted by hand; when LibriVox states no year its rows go to the
 //     worklist as `same-name-author` (Ralph Scott), never stamped silently. Two
-//     ids of the batch meeting one free name are decided the same way: the
-//     first keeps it, a second whose years disagree is dated.
+//     ids of the batch meeting one free name are decided as a later run would
+//     decide them: the first keeps it, a second is the same person only on
+//     the same birth and death years, else dated, or on the worklist when it
+//     states no year.
 //  3. READERS ON AUTHORS. A reader whose name meets a catalogued person holding
 //     no reader id claims them, unless that person is an AUTHOR record
 //     (librivoxAuthorRecord: a librivox_author_id, or a death year before
@@ -117,9 +120,14 @@ type lvPersonWork struct {
 // its trailing qualifiers removed one at a time ("Metamorphosis (1915)" is
 // "Metamorphosis"), and the duplicate-identity key (titlerule.IdentityTitleKey:
 // "Metamorphosis: A Novella"). A shared title is the strongest sign that a
-// catalogued author is the LibriVox one, whatever their works' dates say.
+// catalogued author is the LibriVox one, whatever their works' dates say,
+// except a generic one (librivoxGenericTitle), which has no keys: two poets
+// may each publish "Poems".
 func librivoxTitleKeys(title string) map[string]bool {
 	keys := map[string]bool{}
+	if librivoxGenericTitle(title) {
+		return keys
+	}
 	for t := title; t != ""; {
 		if k := librivoxTitleKey(t); k != "" {
 			keys[k] = true
@@ -134,6 +142,47 @@ func librivoxTitleKeys(title string) map[string]bool {
 		keys["identity:"+k] = true
 	}
 	return keys
+}
+
+// librivoxGenericWords are the words a generic collection title is made of:
+// what kind of writing it holds ("Poems", "Letters", "Short Stories"), how it
+// was gathered ("Selected", "Collected", "Complete") and the glue between
+// them ("Essays and Other Pieces", "The Poems of"). Deliberately small: a
+// title with any other word in it names something.
+var librivoxGenericWords = func() map[string]bool {
+	m := map[string]bool{}
+	for _, w := range strings.Fields(`a an the and of other some more few various
+		selected select selections collected complete miscellaneous minor early later last new
+		short shorter poems poem poetry verse verses rhymes sonnets songs ballads hymns lyrics
+		essays essay letters letter stories story tales tale fables sketches pieces works
+		writings prose plays sermons speeches addresses lectures papers collection anthology
+		volume vol book part`) {
+		m[w] = true
+	}
+	return m
+}()
+
+// librivoxGenericTitle reports whether a title, its trailing qualifiers
+// removed ("Poems (1915)"), is made only of librivoxGenericWords and numbers:
+// a title many authors share, so sharing it says nothing about who wrote it.
+func librivoxGenericTitle(title string) bool {
+	for {
+		stripped := stripTrailingQualifier(title)
+		if stripped == title {
+			break
+		}
+		title = stripped
+	}
+	words := strings.Fields(strings.ReplaceAll(model.Slugify(title), "-", " "))
+	if len(words) == 0 {
+		return false
+	}
+	for _, w := range words {
+		if _, err := strconv.Atoi(w); err != nil && !librivoxGenericWords[w] {
+			return false
+		}
+	}
+	return true
 }
 
 // lvAuthorClaim is one LibriVox author id as the batch's rows to be planned
@@ -225,7 +274,12 @@ func (p *planner) decideLibrivoxAuthors(books []sourceBook) {
 		}
 		to, against, v := p.librivoxAuthorName(name, cl)
 		if v == lvSame && to == "" {
-			if h, ok := holder[slug]; ok && !lifeCompatible(h.life, cl.life) {
+			// A second id meeting a free name an earlier id of this run took
+			// is judged as a later run would judge it against that person,
+			// who then carries the first id: the same person only on the
+			// same birth AND death years (librivoxVerdict), else apart, which
+			// mints a dated name or, with no years to date it by, holds it.
+			if h, ok := holder[slug]; ok && !sameLife(h.life, cl.life) {
 				v = lvApart
 			} else if !ok {
 				holder[slug] = cl
