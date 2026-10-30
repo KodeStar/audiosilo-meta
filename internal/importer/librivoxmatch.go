@@ -83,6 +83,11 @@ const (
 	// and its `librivox-<id>` work slug is already taken (or retired) by another
 	// record.
 	LibrivoxFallbackTaken = "fallback-slug-taken"
+	// LibrivoxSameNameAuthor: an author id no person carries meets, by name, a
+	// catalogued person who is someone else, and LibriVox states no year to
+	// mint a record of their own by (librivoxpeople.go rule 2); the candidates
+	// are that person's works.
+	LibrivoxSameNameAuthor = "same-name-author"
 )
 
 // LibrivoxWorklistEntry is one LibriVox project a run skipped for a person to

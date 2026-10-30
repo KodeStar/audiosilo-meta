@@ -1494,7 +1494,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// `librivox-<id>` slug for a title that slugs to nothing, a worklist skip,
 	// or the ordinary walk - which alone the guard still judges.
 	route := p.routeLibrivox(b, workTitle, b.str("title"), posSuffix, lang, authorCredits, claim)
-	if route.skip {
+	if route.skip || p.librivoxSameNameSkip(b, workTitle) {
 		p.noteLostSeriesClaims(b, -1, nil)
 		return
 	}
@@ -1824,7 +1824,11 @@ func (p *planner) creditCensusesOf(books []sourceBook) (author, narrator creditC
 	// itself (sourceCredits), the batch credit census and the initials pre-pass
 	// all resolve a synthetic credit to the canonical, so a persona spelling
 	// never becomes evidence of its own name.
-	return notify(seenIn(authorSide), false), notify(seenIn(narratorSide), p.userTier)
+	author = notify(seenIn(authorSide), false)
+	if keep := p.lv.keepTitled; len(keep) > 0 {
+		author.keepHonorific = func(name string) bool { return keep[Slugify(name)] }
+	}
+	return author, notify(seenIn(narratorSide), p.userTier)
 }
 
 // noteHonorific records one honorific merge for the run's report. It is a SET

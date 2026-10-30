@@ -47,6 +47,10 @@ import "strings"
 // ("Lord Dunsany" and "St. Augustine" ARE how those authors are published), and
 // merging them is a maintainer's call on a name-by-name basis, not a mechanical
 // rule.
+//
+// On a LibriVox row the ids speak first: a catalogued id holder's spelling, and
+// a titled author whose bare twin is another LibriVox author or another person,
+// are never folded (creditCensus.keepHonorific, librivoxpeople.go rule 1).
 
 // honorificPrefixes are the courtesy titles a credit may carry in front of an
 // otherwise ordinary name. Each is matched case-insensitively at a word

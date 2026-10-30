@@ -24,12 +24,24 @@ func retitled(t *testing.T, id int, title string) LibrivoxProject {
 // read by someone-else, plus a person record for every author named.
 func seedWorks(t *testing.T, dataDir string, works map[string][]string) {
 	t.Helper()
+	seedDatedWorks(t, dataDir, works, nil)
+}
+
+// seedDatedWorks is seedWorks with life years ([birth, death]) on the named
+// people, for a test whose author must read as one person with the LibriVox
+// credit (the person rules hold an undated name whose only works are later
+// retail recordings, librivoxpeople.go).
+func seedDatedWorks(t *testing.T, dataDir string, works map[string][]string, lives map[string][2]int) {
+	t.Helper()
 	files := map[string]string{
 		personAddr("someone-else"): testpack.PersonJSON(t, "someone-else", "Someone Else"),
 	}
 	for slug, spec := range works {
 		for _, a := range spec[1:] {
 			files[personAddr(a)] = testpack.PersonJSON(t, a, a)
+			if life, ok := lives[a]; ok {
+				files[personAddr(a)] = testpack.WithFields(t, files[personAddr(a)], map[string]any{"birth_year": life[0], "death_year": life[1]})
+			}
 		}
 		files[workAddr(slug)] = testpack.WorkJSON(t, slug, spec[0], testpack.WithAuthors(spec[1:]...))
 		files[recAddr(slug, "se")] = testpack.RecJSON(t, "se", slug, testpack.WithNarrators("someone-else"))

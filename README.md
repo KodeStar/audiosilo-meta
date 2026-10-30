@@ -438,7 +438,7 @@ whose name only loosely agrees with the project's, or beside other
 candidates), `author-unsluggable` (every individual author's name slugs to
 nothing), `differently-spelled-title` (the duplicate-identity guard holds
 the book under a title rule 2 does not read as the same, such as a subtitle
-apart, or rule 3's trailing qualifier) and `fallback-slug-taken` (below). Once a person has settled the work,
+apart, or rule 3's trailing qualifier), `same-name-author` (below) and `fallback-slug-taken` (below). Once a person has settled the work,
 re-importing the project's id lands it. `--conflicts` rows for these projects
 carry `librivox_id`, since they have no ASIN.
 
@@ -471,7 +471,33 @@ a reader's name is already held by a person carrying a different reader id
 `<name>-librivox-<reader id>` (`martina-librivox-634`), and the first holder of
 the name keeps the plain slug. Re-importing a project the catalogue already holds
 moves a reader folded onto another reader's person (by an import before this
-rule) onto their own; authors are not split.
+rule) onto their own; authors are not split. Nor is a reader stamped onto an
+AUTHOR record (one carrying a `librivox_author_id`, or whose death year is before
+2005, when LibriVox began): a reader called Adam Smith is
+`adam-smith-librivox-19341`, never Adam Smith (1723-1790).
+
+An author id no person carries yet is checked against the person its name
+meets before it is credited there:
+
+- **Courtesy titles.** "Mrs. William Platt" is not folded onto "William Platt"
+  when LibriVox lists them as two authors, and "Sir Hugh Fraser" is not folded
+  onto a catalogued Hugh Fraser who only narrates. A catalogued id holder keeps
+  its own spelling. A bare name that would be a new person lands on the one
+  catalogued record with a courtesy title or a military rank in front of it
+  ("Frederick Treves" on Sir Frederick Treves, "Joseph H. Alexander" on Colonel
+  Joseph H. Alexander) unless their years disagree.
+- **Same-name authors.** When the catalogued person is someone else (another
+  `librivox_author_id` with other years; years that disagree; or, with neither,
+  a person credited only as a narrator, or only on works first published more
+  than 25 years after the author's death), the author is a person of their own
+  at the name with their years: `james-grant-1822-1887` ("James Grant
+  (1822-1887)"), `richard-wilson-fl-1916` ("Richard Wilson (fl. 1916)"). With no
+  year to tell them apart, or when the catalogued person's works are dated only
+  by their recordings' release dates (a modern book and a modern edition of an
+  old one look alike there), the project goes to the worklist as
+  `same-name-author`, naming that person's works. Settling it means putting the
+  `librivox_author_id` on the right person (the catalogued one, or a new dated
+  record); re-importing the id then finds that person by id.
 
 ## Audiobookshelf
 
