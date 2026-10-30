@@ -1,6 +1,9 @@
 package importer
 
-import "strings"
+import (
+	"slices"
+	"strings"
+)
 
 // honorific.go implements the honorific-prefix merge: "Sir Arthur Conan Doyle"
 // and "Arthur Conan Doyle" are one person, and the catalogue held both.
@@ -66,13 +69,20 @@ const minDeHonorifiedWords = 2
 // deHonorified strips a leading courtesy title from a credit name, reporting
 // whether one was there and left an acceptable full name behind.
 func deHonorified(name string) (bare string, stripped bool) {
+	return dePrefixed(name, honorificPrefixes)
+}
+
+// dePrefixed strips a leading word found in any of the prefix lists (compared
+// lower-cased, a trailing period ignored), when it leaves an acceptable full
+// name behind (minDeHonorifiedWords).
+func dePrefixed(name string, prefixes ...[]string) (bare string, stripped bool) {
 	fields := strings.Fields(strings.TrimSpace(name))
 	if len(fields) <= minDeHonorifiedWords {
 		return "", false
 	}
 	head := strings.ToLower(strings.TrimSuffix(fields[0], "."))
-	for _, h := range honorificPrefixes {
-		if head == h {
+	for _, list := range prefixes {
+		if slices.Contains(list, head) {
 			return strings.Join(fields[1:], " "), true
 		}
 	}

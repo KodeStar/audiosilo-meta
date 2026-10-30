@@ -59,7 +59,7 @@ package importer
 
 import (
 	"fmt"
-	"regexp"
+	"maps"
 	"slices"
 	"strconv"
 	"strings"
@@ -89,17 +89,7 @@ var librivoxRankPrefixes = []string{
 
 // deTitled is deHonorified with the military ranks too.
 func deTitled(name string) (bare string, stripped bool) {
-	if bare, ok := deHonorified(name); ok {
-		return bare, true
-	}
-	fields := strings.Fields(strings.TrimSpace(name))
-	if len(fields) <= minDeHonorifiedWords {
-		return "", false
-	}
-	if slices.Contains(librivoxRankPrefixes, strings.ToLower(strings.TrimSuffix(fields[0], "."))) {
-		return strings.Join(fields[1:], " "), true
-	}
-	return "", false
+	return dePrefixed(name, honorificPrefixes, librivoxRankPrefixes)
 }
 
 // lvPersonWork is one catalogued work crediting a person, with the year it was
@@ -141,11 +131,25 @@ func librivoxTitleKeys(title string) map[string]bool {
 }
 
 // lvAuthorClaim is one LibriVox author id as the batch's rows to be planned
-// state it: its (keyed) name, life years and the title keys of its projects.
+// state it: its cleaned name and the slug of it ("" on the catch-all), life
+// years and the titles of its projects, keyed on first use (titleKeys).
 type lvAuthorClaim struct {
-	name   string
-	life   lifeYears
-	titles map[string]bool
+	name, slug string
+	life       lifeYears
+	titles     []string
+	keys       map[string]bool
+}
+
+// titleKeys is the union of librivoxTitleKeys over the claim's project
+// titles, built on first use: most claims are decided without them.
+func (cl *lvAuthorClaim) titleKeys() map[string]bool {
+	if cl.keys == nil {
+		cl.keys = map[string]bool{}
+		for _, t := range cl.titles {
+			maps.Copy(cl.keys, librivoxTitleKeys(t))
+		}
+	}
+	return cl.keys
 }
 
 // decideLibrivoxAuthors applies rules 1 and 2 to every author id the
@@ -155,13 +159,14 @@ type lvAuthorClaim struct {
 // catalogued ids are keyed and before the censuses read a name.
 func (p *planner) decideLibrivoxAuthors(books []sourceBook) {
 	claims := map[int]*lvAuthorClaim{}
-	var order []int
+	var order []*lvAuthorClaim
+	var ids []int
+	bySlug := map[string][]*lvAuthorClaim{}
 	for i := range books {
 		b := &books[i]
 		if b.lv == nil || p.lv.ids[b.lv.id] {
 			continue
 		}
-		keys := librivoxTitleKeys(b.str("title"))
 		for _, c := range b.lv.credits {
 			if c.kind != librivoxAuthor || c.id <= 0 {
 				continue
@@ -171,36 +176,33 @@ func (p *planner) decideLibrivoxAuthors(books []sourceBook) {
 			}
 			cl := claims[c.id]
 			if cl == nil {
-				cl = &lvAuthorClaim{name: c.name, life: c.life, titles: map[string]bool{}}
+				cl = &lvAuthorClaim{name: CleanCreditName(c.name), life: c.life}
+				if slug, fellBack := personSlug(cl.name); !fellBack {
+					cl.slug = slug // librivoxauthors.go rule 2: never on the catch-all
+					bySlug[slug] = append(bySlug[slug], cl)
+				}
 				claims[c.id] = cl
-				order = append(order, c.id)
+				order = append(order, cl)
+				ids = append(ids, c.id)
 			}
-			for k := range keys {
-				cl.titles[k] = true
-			}
+			cl.titles = append(cl.titles, b.str("title"))
 		}
 	}
 	if len(order) == 0 {
 		return
 	}
-	bySlug := map[string][]int{}
-	for _, id := range order {
-		if slug, fellBack := personSlug(cleanLibrivoxName(claims[id].name)); !fellBack {
-			bySlug[slug] = append(bySlug[slug], id)
-		}
-	}
+	// The indexes below are read only here.
+	defer func() { p.lv.works, p.lv.titledTwins = nil, nil }()
 	renames := map[int]string{}
-	holder := map[string]int{}
+	holder := map[string]*lvAuthorClaim{}
 	var decided []string
-	for _, id := range order {
-		cl := claims[id]
-		name := cleanLibrivoxName(cl.name)
-		slug, fellBack := personSlug(name)
-		if fellBack {
-			continue // librivoxauthors.go rule 2: never on the catch-all
+	for i, cl := range order {
+		id, name, slug := ids[i], cl.name, cl.slug
+		if slug == "" {
+			continue
 		}
 		if bare, titled := deHonorified(name); titled {
-			if !p.librivoxFoldAllowed(id, bare, cl, claims, bySlug) {
+			if !p.librivoxFoldAllowed(bare, cl, bySlug) {
 				p.lv.keepTitled[slug] = true
 				decided = append(decided, fmt.Sprintf("%d %q kept apart from %q", id, name, bare))
 			}
@@ -208,10 +210,10 @@ func (p *planner) decideLibrivoxAuthors(books []sourceBook) {
 		}
 		to, against, v := p.librivoxAuthorName(name, cl)
 		if v == lvSame && to == "" {
-			if h, ok := holder[slug]; ok && !lifeCompatible(claims[h].life, cl.life) {
+			if h, ok := holder[slug]; ok && !lifeCompatible(h.life, cl.life) {
 				v = lvApart
 			} else if !ok {
-				holder[slug] = id
+				holder[slug] = cl
 			}
 		}
 		switch v {
@@ -247,23 +249,16 @@ func (p *planner) decideLibrivoxAuthors(books []sourceBook) {
 	}
 }
 
-// cleanLibrivoxName is a LibriVox credit name as the self-evidencing cleaning
-// leaves it (no census: the decisions here must not depend on one).
-func cleanLibrivoxName(name string) string {
-	cleaned, _ := creditWithRoles(name, nil)
-	return cleaned
-}
-
-// librivoxFoldAllowed is rule 1b for a titled credit (id, its claim) whose bare
+// librivoxFoldAllowed is rule 1b for a titled credit (its claim cl) whose bare
 // spelling is bare: false when the bare twin is another id of the batch with
 // other life years, or a catalogued person rule 2 says is someone else.
-func (p *planner) librivoxFoldAllowed(id int, bare string, cl *lvAuthorClaim, claims map[int]*lvAuthorClaim, bySlug map[string][]int) bool {
+func (p *planner) librivoxFoldAllowed(bare string, cl *lvAuthorClaim, bySlug map[string][]*lvAuthorClaim) bool {
 	bareSlug, fellBack := personSlug(bare)
 	if fellBack {
 		return true
 	}
 	for _, other := range bySlug[bareSlug] {
-		if other != id && !sameLife(claims[other].life, cl.life) {
+		if !sameLife(other.life, cl.life) {
 			return false
 		}
 	}
@@ -339,13 +334,6 @@ func (p *planner) librivoxVerdict(slug string, cl *lvAuthorClaim) lvVerdict {
 // is a claim stating no year at all (nothing to measure a date against).
 func (p *planner) librivoxCreditEvidence(slug string, cl *lvAuthorClaim) lvVerdict {
 	works := p.librivoxPersonWorks()[slug]
-	for _, w := range works {
-		for k := range librivoxTitleKeys(w.title) {
-			if cl.titles[k] {
-				return lvSame
-			}
-		}
-	}
 	if len(works) == 0 {
 		if p.narratorPeople[slug] {
 			return lvApart
@@ -367,6 +355,15 @@ func (p *planner) librivoxCreditEvidence(slug string, cl *lvAuthorClaim) lvVerdi
 		}
 		if !w.published {
 			v = lvUnsure
+		}
+	}
+	// Only now, with the dates against the match, is a title in common read.
+	keys := cl.titleKeys()
+	for _, w := range works {
+		for k := range librivoxTitleKeys(w.title) {
+			if keys[k] {
+				return lvSame
+			}
 		}
 	}
 	return v
@@ -432,7 +429,7 @@ func (p *planner) librivoxDatedName(id int, name string, life lifeYears) string 
 // (same-name-author), naming the works of the catalogued person its name
 // meets (against; none for another id of the batch).
 func (p *planner) holdLibrivoxAuthor(id int, against string) {
-	var candidates []LibrivoxCandidate
+	candidates := []LibrivoxCandidate{}
 	if against != "" {
 		for _, w := range p.librivoxPersonWorks()[against] {
 			candidates = append(candidates, LibrivoxCandidate{Work: w.slug, Title: w.title})
@@ -440,9 +437,6 @@ func (p *planner) holdLibrivoxAuthor(id int, against string) {
 				break
 			}
 		}
-	}
-	if candidates == nil {
-		candidates = []LibrivoxCandidate{}
 	}
 	p.lv.sameName[id] = candidates
 }
@@ -510,8 +504,8 @@ func (p *planner) librivoxSameNameSkip(b sourceBook, title string) bool {
 
 // librivoxPersonWorks indexes the catalogue's works by every person they
 // credit (authors and credits[]), each with its first-publication year, built
-// on first use from the catalogue load (nil once that is let go, so it is
-// asked only while the credits are keyed).
+// on first use from the catalogue load; decideLibrivoxAuthors, its only
+// reader, lets it go.
 func (p *planner) librivoxPersonWorks() map[string][]lvPersonWork {
 	if p.lv.works != nil {
 		return p.lv.works
@@ -541,9 +535,6 @@ func (p *planner) librivoxPersonWorks() map[string][]lvPersonWork {
 	return p.lv.works
 }
 
-// leadingYearRE is the year a date string starts with ("1984", "2019-08-13").
-var leadingYearRE = regexp.MustCompile(`^(-?\d{1,4})`)
-
 // workFirstYear is the year a work first appeared as far as the catalogue
 // says: its first_published (published), else the earliest release date of its
 // recordings; 0 when it states neither.
@@ -559,12 +550,9 @@ func workFirstYear(w *model.Work) (year int, published bool) {
 	return year, false
 }
 
-// leadingYear reads the year a date string starts with, 0 when none.
+// leadingYear reads the four-digit year a date string starts with (YearOf),
+// 0 when none.
 func leadingYear(s string) int {
-	m := leadingYearRE.FindStringSubmatch(strings.TrimSpace(s))
-	if m == nil {
-		return 0
-	}
-	y, _ := strconv.Atoi(m[1])
+	y, _ := strconv.Atoi(YearOf(s))
 	return y
 }

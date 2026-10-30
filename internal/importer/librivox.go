@@ -531,14 +531,14 @@ func lifeYearsOf(p LibrivoxPerson) lifeYears {
 	if b != 0 && d != 0 && d < b {
 		return lifeYears{}
 	}
+	if b != 0 || d != 0 {
+		return lifeYears{birth: b, death: d}
+	}
 	fl := librivoxFlourished(string(p.DOD))
 	if fl == 0 {
 		fl = librivoxFlourished(string(p.DOB))
 	}
-	if b != 0 || d != 0 {
-		fl = 0
-	}
-	return lifeYears{birth: b, death: d, fl: fl}
+	return lifeYears{fl: fl}
 }
 
 // librivoxFlourishedRE is LibriVox's "flourished" year: "fl.1916", "fl. 1925".
@@ -1021,7 +1021,7 @@ func (p *planner) keyLibrivoxCredits(books []sourceBook) {
 			name := c.name
 			if slug, ok := p.lv.people[k]; ok && p.people[slug] != "" {
 				name = p.people[slug]
-				if c.kind == librivoxAuthor {
+				if _, titled := deHonorified(name); titled && c.kind == librivoxAuthor {
 					// The id holder's own name is never folded onto a bare
 					// twin: the id, not the spelling, is the person (rule 1
 					// of librivoxpeople.go).

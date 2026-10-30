@@ -10,7 +10,6 @@ import (
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
-	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -55,9 +54,6 @@ func workAuthorsOf(t *testing.T, dataDir, slug string) []string {
 // personFiles is a person record carrying fields.
 func personFiles(t *testing.T, slug, name string, fields map[string]any) string {
 	t.Helper()
-	if len(fields) == 0 {
-		return testpack.PersonJSON(t, slug, name)
-	}
 	return testpack.WithFields(t, testpack.PersonJSON(t, slug, name), fields)
 }
 
@@ -430,14 +426,8 @@ func TestLibrivoxGenuineSameNameAuthorStillAttaches(t *testing.T) {
 			if len(sum.LibrivoxWorklist) != 0 || sum.NewRecordings != 1 {
 				t.Fatalf("worklist = %v, recordings %d\nnotes: %v", sum.LibrivoxWorklist, sum.NewRecordings, sum.Notes)
 			}
-			var w lvWork
-			for slug := range map[string]bool{"fragments-of-science": true, "glaciers-of-the-alps": true, "the-flame-in-the-wind": true, "nine-lives": true} {
-				if entryExists(t, dataDir, workAddr(slug)) {
-					readEntity(t, dataDir, workAddr(slug), &w)
-				}
-			}
-			if !reflect.DeepEqual(w.Authors, []string{tc.plain}) {
-				t.Errorf("authors = %v, want [%s]\nnotes: %v", w.Authors, tc.plain, sum.Notes)
+			if got := workAuthorsOf(t, dataDir, Slugify(tc.title)); !reflect.DeepEqual(got, []string{tc.plain}) {
+				t.Errorf("authors = %v, want [%s]\nnotes: %v", got, tc.plain, sum.Notes)
 			}
 			mustValidate(t, dataDir)
 		})
@@ -526,9 +516,7 @@ func TestLibrivoxReaderIsSplitOffAnAuthorRecord(t *testing.T) {
 			if sum.LibrivoxReadersSplit != 1 {
 				t.Errorf("LibrivoxReadersSplit = %d, want 1", sum.LibrivoxReadersSplit)
 			}
-			if res := check.Load(dataDir); !res.OK() {
-				t.Fatalf("tree failed validation:\n%v", res.Problems)
-			}
+			mustValidate(t, dataDir)
 			rerunIsANoOp(t, snap, dataDir)
 		})
 	}

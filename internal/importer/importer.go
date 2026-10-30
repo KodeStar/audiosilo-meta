@@ -1825,9 +1825,7 @@ func (p *planner) creditCensusesOf(books []sourceBook) (author, narrator creditC
 	// all resolve a synthetic credit to the canonical, so a persona spelling
 	// never becomes evidence of its own name.
 	author = notify(seenIn(authorSide), false)
-	if keep := p.lv.keepTitled; len(keep) > 0 {
-		author.keepHonorific = func(name string) bool { return keep[Slugify(name)] }
-	}
+	author.keepHonorific = p.lv.keepTitled
 	return author, notify(seenIn(narratorSide), p.userTier)
 }
 

@@ -727,10 +727,20 @@ type creditCensus struct {
 	// a maintainer auditing one is not auditing the other.
 	onHonorific  func(from, to string)
 	onCredential func(from, to string)
-	// keepHonorific, when set, names the credits the honorific fold must leave
+	// keepHonorific is the slugs of the credits the honorific fold must leave
 	// as they are: a LibriVox run's id holders and titled authors whose bare
 	// twin is someone else (librivoxpeople.go rule 1). nil keeps every fold.
-	keepHonorific func(name string) bool
+	keepHonorific map[string]bool
+}
+
+// keepsHonorific reports whether the honorific fold must leave name as it is
+// (keepHonorific); only a titled name is slugged to ask.
+func (c creditCensus) keepsHonorific(name string) bool {
+	if len(c.keepHonorific) == 0 {
+		return false
+	}
+	_, titled := deHonorified(name)
+	return titled && c.keepHonorific[Slugify(name)]
 }
 
 // reportedFold applies one census-backed fold and tells the planner about the
@@ -771,7 +781,7 @@ func creditWithRolesSided(name string, c creditCensus) (cleaned string, roles []
 		stripped, parenRoles := stripParenRoleQualifier(stripped)
 		stripped, bareRoles := stripBareRoleTail(stripped, c.anySide)
 		stripped = stripLeadingConjunction(collapseDoubledName(stripped), c.sameSide)
-		if c.keepHonorific == nil || !c.keepHonorific(stripped) {
+		if !c.keepsHonorific(stripped) {
 			stripped = reportedFold(stripped, c.sameSide, stripHonorific, c.onHonorific)
 		}
 		stripped = reportedFold(stripped, c.sameSide, stripCredential, c.onCredential)
