@@ -166,19 +166,12 @@ var librivoxGenericWords = func() map[string]bool {
 // removed ("Poems (1915)"), is made only of librivoxGenericWords and numbers:
 // a title many authors share, so sharing it says nothing about who wrote it.
 func librivoxGenericTitle(title string) bool {
-	for {
-		stripped := stripTrailingQualifier(title)
-		if stripped == title {
-			break
-		}
-		title = stripped
-	}
-	words := strings.Fields(strings.ReplaceAll(model.Slugify(title), "-", " "))
+	words := strings.Fields(strings.ReplaceAll(model.Slugify(stripTrailingQualifiers(title)), "-", " "))
 	if len(words) == 0 {
 		return false
 	}
 	for _, w := range words {
-		if _, err := strconv.Atoi(w); err != nil && !librivoxGenericWords[w] {
+		if strings.TrimLeft(w, "0123456789") != "" && !librivoxGenericWords[w] {
 			return false
 		}
 	}
@@ -274,11 +267,8 @@ func (p *planner) decideLibrivoxAuthors(books []sourceBook) {
 		}
 		to, against, v := p.librivoxAuthorName(name, cl)
 		if v == lvSame && to == "" {
-			// A second id meeting a free name an earlier id of this run took
-			// is judged as a later run would judge it against that person,
-			// who then carries the first id: the same person only on the
-			// same birth AND death years (librivoxVerdict), else apart, which
-			// mints a dated name or, with no years to date it by, holds it.
+			// A second id of this run on a taken name is judged as
+			// librivoxVerdict judges a person already carrying an id.
 			if h, ok := holder[slug]; ok && !sameLife(h.life, cl.life) {
 				v = lvApart
 			} else if !ok {

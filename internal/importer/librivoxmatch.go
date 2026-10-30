@@ -388,6 +388,18 @@ func stripTrailingQualifier(t string) string {
 	return strings.TrimSpace(trailingParenRE.ReplaceAllString(t, ""))
 }
 
+// stripTrailingQualifiers is t with every trailing qualifier removed
+// ("Poems (1915) [Johnston]" is "Poems").
+func stripTrailingQualifiers(t string) string {
+	for {
+		stripped := stripTrailingQualifier(t)
+		if stripped == t {
+			return t
+		}
+		t = stripped
+	}
+}
+
 // librivoxFallback is a row rules 1-3 left undecided: the ordinary path, or for
 // a non-Latin title (rule 4) its `librivox-<id>` slug, a worklist skip when
 // another record already holds that slug.
