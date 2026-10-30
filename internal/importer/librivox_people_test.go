@@ -539,3 +539,116 @@ func TestLibrivoxReaderStillClaimsALivingOrUndatedRecord(t *testing.T) {
 		})
 	}
 }
+
+// Review regressions: each case below reached the wrong person before.
+
+func TestLibrivoxPersonRulesEdgeCases(t *testing.T) {
+	t.Run("flourished year outside a catalogued life", func(t *testing.T) {
+		// Richard Wilson (fl. 1916) is not the catalogued Richard Wilson born
+		// in 1920, though that record carries no author id.
+		dataDir := t.TempDir()
+		seedTree(t, dataDir, map[string]string{
+			personAddr("richard-wilson"): personFiles(t, "richard-wilson", "Richard Wilson", map[string]any{"birth_year": 1920, "death_year": 1987}),
+		})
+		runLibrivox(t, writeSnapshot(t, byAuthors(t, 99060, "Old Text", lvDated(11394, "Richard", "Wilson", "", "fl.1916"))), dataDir, allLibrivox)
+		if got := workAuthorsOf(t, dataDir, "old-text"); !reflect.DeepEqual(got, []string{"richard-wilson-fl-1916"}) {
+			t.Errorf("authors = %v", got)
+		}
+		if p := personOf(t, dataDir, "richard-wilson"); p.AuthorID != 0 {
+			t.Errorf("richard-wilson was stamped: %+v", p)
+		}
+	})
+	t.Run("titled name meeting a titled someone else", func(t *testing.T) {
+		// Rule 2 reads a titled credit's own name too.
+		dataDir := t.TempDir()
+		seedTree(t, dataDir, map[string]string{
+			personAddr("mrs-henry-wood"): personFiles(t, "mrs-henry-wood", "Mrs. Henry Wood",
+				map[string]any{"librivox_author_id": 500, "birth_year": 1814, "death_year": 1887}),
+		})
+		runLibrivox(t, writeSnapshot(t, byAuthors(t, 99070, "Modern Text", lvDated(600, "Mrs. Henry", "Wood", "1900", "1950"))), dataDir, allLibrivox)
+		if got := workAuthorsOf(t, dataDir, "modern-text"); !reflect.DeepEqual(got, []string{"mrs-henry-wood-1900-1950"}) {
+			t.Errorf("authors = %v", got)
+		}
+		mustValidate(t, dataDir)
+	})
+	t.Run("bare name behind a titled narrator", func(t *testing.T) {
+		// Rule 1c never lands an author on a titled twin who only narrates.
+		dataDir := t.TempDir()
+		files := map[string]string{personAddr("sir-derek-jacobi"): personFiles(t, "sir-derek-jacobi", "Sir Derek Jacobi", nil)}
+		narratedWork(t, files, "curtain", "Curtain", "sir-derek-jacobi")
+		seedTree(t, dataDir, files)
+		runLibrivox(t, writeSnapshot(t, byAuthors(t, 99080, "Old Poems", lvDated(777, "Derek", "Jacobi", "1801", "1870"))), dataDir, allLibrivox)
+		if got := workAuthorsOf(t, dataDir, "old-poems"); !reflect.DeepEqual(got, []string{"derek-jacobi"}) {
+			t.Errorf("authors = %v", got)
+		}
+		if p := personOf(t, dataDir, "sir-derek-jacobi"); p.AuthorID != 0 || p.DeathYear != 0 {
+			t.Errorf("sir-derek-jacobi was stamped: %+v", p)
+		}
+	})
+	t.Run("undated translator who is a catalogued reader", func(t *testing.T) {
+		// LibriVox's undated translators are its own volunteers: one who
+		// already reads for it is not a narrator someone else.
+		dataDir := t.TempDir()
+		files := map[string]string{personAddr("jane-doe"): personFiles(t, "jane-doe", "Jane Doe", map[string]any{"librivox_reader_id": 123})}
+		narratedWork(t, files, "curtain", "Curtain", "jane-doe")
+		seedTree(t, dataDir, files)
+		sum := runLibrivox(t, writeSnapshot(t, byAuthor(t, 99090, "Old Foreign Book", "English",
+			lvDated(800, "Hans", "Muller", "1801", "1870"), lvDated(9000, "Jane", "Doe", "", ""))), dataDir, allLibrivox)
+		if len(sum.LibrivoxWorklist) != 0 || sum.NewRecordings != 1 {
+			t.Fatalf("worklist = %v, recordings %d", sum.LibrivoxWorklist, sum.NewRecordings)
+		}
+		if p := personOf(t, dataDir, "jane-doe"); p.AuthorID != 9000 || p.ReaderID != 123 {
+			t.Errorf("jane-doe = %+v", p)
+		}
+	})
+}
+
+func TestLibrivoxTitledAuthorUnsureGoesToTheWorklist(t *testing.T) {
+	// Sir Arthur Conan Doyle beside a catalogued Arthur Conan Doyle whose only
+	// work is dated by its recording's release date: a person decides, rather
+	// than the run minting sir-arthur-conan-doyle beside him.
+	dataDir := t.TempDir()
+	files := map[string]string{personAddr("arthur-conan-doyle"): personFiles(t, "arthur-conan-doyle", "Arthur Conan Doyle", nil)}
+	retailWork(t, files, "retail", "The Land of Mist", "arthur-conan-doyle", "")
+	seedTree(t, dataDir, files)
+	sum := runLibrivox(t, writeSnapshot(t, byAuthors(t, 99003, "The Poison Belt", lvDated(69, "Sir Arthur Conan", "Doyle", "1859", "1930"))), dataDir, allLibrivox)
+	want := []LibrivoxWorklistEntry{{
+		Project: 99003, Title: "The Poison Belt", Authors: []string{"Sir Arthur Conan Doyle"},
+		Reason: LibrivoxSameNameAuthor, Candidates: []LibrivoxCandidate{{Work: "retail", Title: "The Land of Mist"}},
+	}}
+	if !reflect.DeepEqual(sum.LibrivoxWorklist, want) || sum.NewPeople != 0 {
+		t.Fatalf("worklist = %+v, new people %d", sum.LibrivoxWorklist, sum.NewPeople)
+	}
+}
+
+func TestLibrivoxSameNameSkipCountsNoAttach(t *testing.T) {
+	// A worklisted row whose title is a spelling variant of the catalogued
+	// person's work is not also reported as attached to it.
+	dataDir := t.TempDir()
+	files := map[string]string{personAddr("andy-adams"): personFiles(t, "andy-adams", "Andy Adams", map[string]any{"librivox_author_id": 940})}
+	retailWork(t, files, "the-trail-drive", "The Trail Drive", "andy-adams", "")
+	seedTree(t, dataDir, files)
+	sum := runLibrivox(t, writeSnapshot(t, byAuthors(t, 17170, "Trail Drive", lvDated(12675, "Andy", "Adams", "", ""))), dataDir, allLibrivox)
+	if len(sum.LibrivoxWorklist) != 1 || sum.LibrivoxVariantsAttached != 0 || sum.LibrivoxAuthorVariants != 0 {
+		t.Errorf("worklist = %v, variants attached %d, author variants %d", sum.LibrivoxWorklist, sum.LibrivoxVariantsAttached, sum.LibrivoxAuthorVariants)
+	}
+}
+
+func TestLibrivoxReaderMetBeforeADeadAuthorOfTheRun(t *testing.T) {
+	// Rule 3 whatever the row order: a reader called Adam Smith met before
+	// the run's Adam Smith (1723-1790) is still a person of their own.
+	dataDir := t.TempDir()
+	snap := writeSnapshot(t,
+		readProject(t, 20320, LibrivoxReader{ReaderID: 19341, DisplayName: "Adam Smith"}),
+		byAuthors(t, 99050, "Wealth of Nations", lvDated(395, "Adam", "Smith", "1723", "1790")),
+	)
+	sum := runLibrivox(t, snap, dataDir, allLibrivox)
+	if p := personOf(t, dataDir, "adam-smith"); p.ReaderID != 0 || p.AuthorID != 395 {
+		t.Errorf("adam-smith = %+v", p)
+	}
+	if sum.LibrivoxReadersSplit != 1 {
+		t.Errorf("LibrivoxReadersSplit = %d, want 1", sum.LibrivoxReadersSplit)
+	}
+	mustValidate(t, dataDir)
+	rerunIsANoOp(t, snap, dataDir)
+}

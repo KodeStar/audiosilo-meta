@@ -1493,8 +1493,12 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// A LibriVox row's work is decided by librivoxmatch.go first: an attach, a
 	// `librivox-<id>` slug for a title that slugs to nothing, a worklist skip,
 	// or the ordinary walk - which alone the guard still judges.
+	if p.librivoxSameNameSkip(b, workTitle) {
+		p.noteLostSeriesClaims(b, -1, nil)
+		return
+	}
 	route := p.routeLibrivox(b, workTitle, b.str("title"), posSuffix, lang, authorCredits, claim)
-	if route.skip || p.librivoxSameNameSkip(b, workTitle) {
+	if route.skip {
 		p.noteLostSeriesClaims(b, -1, nil)
 		return
 	}

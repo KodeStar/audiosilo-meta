@@ -473,25 +473,28 @@ the name keeps the plain slug. Re-importing a project the catalogue already hold
 moves a reader folded onto another reader's person (by an import before this
 rule) onto their own; authors are not split. Nor is a reader stamped onto an
 AUTHOR record (one carrying a `librivox_author_id`, or whose death year is before
-2005, when LibriVox began): a reader called Adam Smith is
-`adam-smith-librivox-19341`, never Adam Smith (1723-1790).
+2005, when LibriVox began, in whichever order the run meets the two): a reader
+called Adam Smith is `adam-smith-librivox-19341`, never Adam Smith (1723-1790).
 
 An author id no person carries yet is checked against the person its name
 meets before it is credited there:
 
 - **Courtesy titles.** "Mrs. William Platt" is not folded onto "William Platt"
   when LibriVox lists them as two authors, and "Sir Hugh Fraser" is not folded
-  onto a catalogued Hugh Fraser who only narrates. A catalogued id holder keeps
+  onto a catalogued Hugh Fraser who only narrates (when the dates cannot tell,
+  the project goes to the worklist as below). A catalogued id holder keeps
   its own spelling. A bare name that would be a new person lands on the one
   catalogued record with a courtesy title or a military rank in front of it
   ("Frederick Treves" on Sir Frederick Treves, "Joseph H. Alexander" on Colonel
-  Joseph H. Alexander) unless their years disagree.
+  Joseph H. Alexander) unless their years disagree or that record only
+  narrates.
 - **Same-name authors.** When the catalogued person is someone else (another
-  `librivox_author_id` with other years; years that disagree; or, with neither,
-  a person credited only as a narrator, or only on works first published more
-  than 25 years after the author's death), the author is a person of their own
-  at the name with their years: `james-grant-1822-1887` ("James Grant
-  (1822-1887)"), `richard-wilson-fl-1916` ("Richard Wilson (fl. 1916)"). With no
+  `librivox_author_id` with other years; years that disagree, a flourished year
+  outside the person's life included; or, with neither, a person credited only
+  as a narrator who is not a LibriVox reader meeting an undated author, or only
+  on works first published more than 25 years after the author's death), the
+  author is a person of their own at the name with their years:
+  `james-grant-1822-1887` ("James Grant (1822-1887)"), `richard-wilson-fl-1916` ("Richard Wilson (fl. 1916)"). With no
   year to tell them apart, or when the catalogued person's works are dated only
   by their recordings' release dates (a modern book and a modern edition of an
   old one look alike there), the project goes to the worklist as

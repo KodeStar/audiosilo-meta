@@ -662,6 +662,11 @@ type librivoxState struct {
 	// same-name-author (librivoxpeople.go rule 2), each with the works of the
 	// catalogued person their name meets (none for another id of the batch).
 	sameName map[int][]LibrivoxCandidate
+	// deadAuthors is the person slugs the run's author ids no person carries
+	// land on when their years end before LibriVox began
+	// (decideLibrivoxAuthors): author records for rule 3 before their rows
+	// are planned.
+	deadAuthors map[string]bool
 	// works is each catalogued person's works (librivoxpeople.go), built on
 	// first use; titledTwins the catalogued titled names by their bare slug.
 	works       map[string][]lvPersonWork
@@ -695,6 +700,7 @@ func newLibrivoxState() librivoxState {
 		life:          map[string]lifeYears{},
 		keepTitled:    map[string]bool{},
 		sameName:      map[int][]LibrivoxCandidate{},
+		deadAuthors:   map[string]bool{},
 	}
 }
 
@@ -761,10 +767,11 @@ func (p *planner) rowNarratorSlugs(b sourceBook, names []string, warn func(strin
 //     disambiguated off it;
 //   - a name whose resolved person is free, or held by this same reader id,
 //     claims it for this id and is "": the first holder keeps the plain slug;
-//     except a catalogued AUTHOR record (librivoxAuthorRecord: it carries a
-//     librivox_author_id, or life years ending before LibriVox began), which
-//     no reader is stamped onto (librivoxpeople.go rule 3): the reader is
-//     split off it as below, as though another reader id held it;
+//     except an AUTHOR record (librivoxAuthorRecord: it carries a
+//     librivox_author_id, or its life years, or those of an author id of this
+//     run landing on it, end before LibriVox began), which no reader is
+//     stamped onto (librivoxpeople.go rule 3): the reader is split off it as
+//     below, as though another reader id held it;
 //   - otherwise the name is held by ANOTHER reader id, and this reader is a
 //     person of their own at model.LibrivoxReaderSlug, created here carrying the
 //     id (so the record is never written without the id its slug states). An
@@ -797,7 +804,7 @@ func (p *planner) librivoxReaderSlug(c librivoxCredit, name string, project int,
 		mint, counter = model.LibrivoxUnslugReaderSlug, &p.summary.LibrivoxReadersUnslugged
 	case librivoxSharedPeople[r.slug]:
 		return ""
-	case holder == c.id, holder == 0 && (r.create || !p.librivoxAuthorRecord(r.slug)):
+	case holder == c.id, holder == 0 && !p.librivoxAuthorRecord(r.slug):
 		p.lv.readers[c.id] = r.slug
 		p.lv.readerOf[r.slug] = c.id
 		return ""
