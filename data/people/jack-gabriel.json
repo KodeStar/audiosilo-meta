@@ -637,10 +637,7 @@
       ]
     },
     "jack-johnson": {
-      "birth_year": 1896,
-      "death_year": 1973,
       "id": "jack-johnson",
-      "librivox_author_id": 19075,
       "license": "CC0-1.0",
       "name": "Jack Johnson",
       "sources": [
@@ -648,7 +645,17 @@
           "imported_at": "2026-08-02",
           "ref": "B0FJ8ZXVTG",
           "type": "libex-import"
-        },
+        }
+      ]
+    },
+    "jack-johnson-1896-1973": {
+      "birth_year": 1896,
+      "death_year": 1973,
+      "id": "jack-johnson-1896-1973",
+      "librivox_author_id": 19075,
+      "license": "CC0-1.0",
+      "name": "Jack Johnson (1896-1973)",
+      "sources": [
         {
           "imported_at": "2026-10-30",
           "ref": "21581",

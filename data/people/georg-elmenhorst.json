@@ -5699,10 +5699,7 @@
       ]
     },
     "george-smith": {
-      "birth_year": 1833,
-      "death_year": 1919,
       "id": "george-smith",
-      "librivox_author_id": 19800,
       "license": "CC0-1.0",
       "name": "George Smith",
       "sources": [
@@ -5710,7 +5707,17 @@
           "imported_at": "2026-07-29",
           "ref": "B07GSDQC3S",
           "type": "libex-import"
-        },
+        }
+      ]
+    },
+    "george-smith-1833-1919": {
+      "birth_year": 1833,
+      "death_year": 1919,
+      "id": "george-smith-1833-1919",
+      "librivox_author_id": 19800,
+      "license": "CC0-1.0",
+      "name": "George Smith (1833-1919)",
+      "sources": [
         {
           "imported_at": "2026-10-30",
           "ref": "22895",
