@@ -83,6 +83,11 @@ const (
 	// and its `librivox-<id>` work slug is already taken (or retired) by another
 	// record.
 	LibrivoxFallbackTaken = "fallback-slug-taken"
+	// LibrivoxSameNameAuthor: an author id no person carries meets, by name, a
+	// catalogued person who is someone else, and LibriVox states no year to
+	// mint a record of their own by (librivoxpeople.go rule 2); the candidates
+	// are that person's works.
+	LibrivoxSameNameAuthor = "same-name-author"
 )
 
 // LibrivoxWorklistEntry is one LibriVox project a run skipped for a person to
@@ -381,6 +386,18 @@ func (p *planner) librivoxQualifiedTwin(b sourceBook, workTitle, fullTitle, posS
 // Saga Vol. 1]"), trimmed: trailingParenRE is the package's one locator.
 func stripTrailingQualifier(t string) string {
 	return strings.TrimSpace(trailingParenRE.ReplaceAllString(t, ""))
+}
+
+// stripTrailingQualifiers is t with every trailing qualifier removed
+// ("Poems (1915) [Johnston]" is "Poems").
+func stripTrailingQualifiers(t string) string {
+	for {
+		stripped := stripTrailingQualifier(t)
+		if stripped == t {
+			return t
+		}
+		t = stripped
+	}
 }
 
 // librivoxFallback is a row rules 1-3 left undecided: the ordinary path, or for

@@ -513,18 +513,45 @@ func librivoxYear(s string) (int, bool) {
 	return y, true
 }
 
-// lifeYears is a person's stated birth and death years (0 = not stated).
-type lifeYears struct{ birth, death int }
+// lifeYears is a person's stated birth and death years (0 = not stated), and
+// the year LibriVox says an author with no dates FLOURISHED ("fl. 1916"), which
+// is never written as a birth or death year: it only dates the person for the
+// same-name rule (librivoxpeople.go), and names a record minted for them.
+type lifeYears struct{ birth, death, fl int }
+
+// stated reports whether any year is stated.
+func (l lifeYears) stated() bool { return l.birth != 0 || l.death != 0 || l.fl != 0 }
 
 // lifeYearsOf reads an author's dob and dod. A pair whose death precedes its
-// birth is dropped whole: one of the two is wrong and nothing says which.
+// birth is dropped whole: one of the two is wrong and nothing says which. A
+// dod (or dob) of "fl.1916" / "fl. 1925" is the flourished year.
 func lifeYearsOf(p LibrivoxPerson) lifeYears {
 	b, _ := librivoxYear(string(p.DOB))
 	d, _ := librivoxYear(string(p.DOD))
 	if b != 0 && d != 0 && d < b {
 		return lifeYears{}
 	}
-	return lifeYears{birth: b, death: d}
+	if b != 0 || d != 0 {
+		return lifeYears{birth: b, death: d}
+	}
+	fl := librivoxFlourished(string(p.DOD))
+	if fl == 0 {
+		fl = librivoxFlourished(string(p.DOB))
+	}
+	return lifeYears{fl: fl}
+}
+
+// librivoxFlourishedRE is LibriVox's "flourished" year: "fl.1916", "fl. 1925".
+var librivoxFlourishedRE = regexp.MustCompile(`(?i)^fl\.?\s*(\d{3,4})$`)
+
+// librivoxFlourished reads a flourished year, 0 when s states none.
+func librivoxFlourished(s string) int {
+	m := librivoxFlourishedRE.FindStringSubmatch(strings.TrimSpace(s))
+	if m == nil {
+		return 0
+	}
+	y, _ := strconv.Atoi(m[1])
+	return y
 }
 
 // archiveIDRE is the schema's archive_id pattern.
@@ -625,6 +652,25 @@ type librivoxState struct {
 	// authorVariantExamples names a few rows librivoxauthors.go's rule 1
 	// attached, for the run's note.
 	authorVariantExamples []string
+	// life is the birth and death years each catalogued person states.
+	life map[string]lifeYears
+	// keepTitled is the slugs of the credit names the honorific fold must
+	// leave as they are (librivoxpeople.go rule 1): a catalogued id holder's
+	// own name, and a titled author whose bare twin is someone else.
+	keepTitled map[string]bool
+	// sameName is the author ids whose rows go to the worklist as
+	// same-name-author (librivoxpeople.go rule 2), each with the works of the
+	// catalogued person their name meets (none for another id of the batch).
+	sameName map[int][]LibrivoxCandidate
+	// deadAuthors is the person slugs the run's author ids no person carries
+	// land on when their years end before LibriVox began
+	// (decideLibrivoxAuthors): author records for rule 3 before their rows
+	// are planned.
+	deadAuthors map[string]bool
+	// works is each catalogued person's works (librivoxpeople.go), built on
+	// first use; titledTwins the catalogued titled names by their bare slug.
+	works       map[string][]lvPersonWork
+	titledTwins map[string][]string
 }
 
 // librivoxKey is one LibriVox id in its namespace.
@@ -651,6 +697,10 @@ func newLibrivoxState() librivoxState {
 		readerOf:      map[string]int{},
 		authorOf:      map[string]int{},
 		claimedAuthor: map[int]bool{},
+		life:          map[string]lifeYears{},
+		keepTitled:    map[string]bool{},
+		sameName:      map[int][]LibrivoxCandidate{},
+		deadAuthors:   map[string]bool{},
 	}
 }
 
@@ -666,6 +716,9 @@ func (p *planner) loadLibrivoxPerson(person *model.Person) {
 	}
 	if person.LibrivoxAuthorID != 0 {
 		p.lv.authorOf[person.ID] = person.LibrivoxAuthorID
+	}
+	if person.BirthYear != 0 || person.DeathYear != 0 {
+		p.lv.life[person.ID] = lifeYears{birth: person.BirthYear, death: person.DeathYear}
 	}
 }
 
@@ -714,6 +767,11 @@ func (p *planner) rowNarratorSlugs(b sourceBook, names []string, warn func(strin
 //     disambiguated off it;
 //   - a name whose resolved person is free, or held by this same reader id,
 //     claims it for this id and is "": the first holder keeps the plain slug;
+//     except an AUTHOR record (librivoxAuthorRecord: it carries a
+//     librivox_author_id, or its life years, or those of an author id of this
+//     run landing on it, end before LibriVox began), which no reader is
+//     stamped onto (librivoxpeople.go rule 3): the reader is split off it as
+//     below, as though another reader id held it;
 //   - otherwise the name is held by ANOTHER reader id, and this reader is a
 //     person of their own at model.LibrivoxReaderSlug, created here carrying the
 //     id (so the record is never written without the id its slug states). An
@@ -746,7 +804,7 @@ func (p *planner) librivoxReaderSlug(c librivoxCredit, name string, project int,
 		mint, counter = model.LibrivoxUnslugReaderSlug, &p.summary.LibrivoxReadersUnslugged
 	case librivoxSharedPeople[r.slug]:
 		return ""
-	case holder == 0 || holder == c.id:
+	case holder == c.id, holder == 0 && !p.librivoxAuthorRecord(r.slug):
 		p.lv.readers[c.id] = r.slug
 		p.lv.readerOf[r.slug] = c.id
 		return ""
@@ -970,6 +1028,12 @@ func (p *planner) keyLibrivoxCredits(books []sourceBook) {
 			name := c.name
 			if slug, ok := p.lv.people[k]; ok && p.people[slug] != "" {
 				name = p.people[slug]
+				if _, titled := deHonorified(name); titled && c.kind == librivoxAuthor {
+					// The id holder's own name is never folded onto a bare
+					// twin: the id, not the spelling, is the person (rule 1
+					// of librivoxpeople.go).
+					p.lv.keepTitled[Slugify(name)] = true
+				}
 			} else if first, ok := batch[k]; ok {
 				name = first
 			} else {
@@ -983,6 +1047,7 @@ func (p *planner) keyLibrivoxCredits(books []sourceBook) {
 			list[c.index] = name + c.suffix
 		}
 	}
+	p.decideLibrivoxAuthors(books)
 }
 
 // applyLibrivoxRecording puts a LibriVox row's identity and publication facts on

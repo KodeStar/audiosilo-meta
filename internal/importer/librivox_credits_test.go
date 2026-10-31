@@ -207,7 +207,8 @@ func TestLibrivoxTrailingQualifierLeavesOtherTitlesAlone(t *testing.T) {
 	// A new work, no worklist: the stripped title is another author's, the
 	// stripped title is no catalogued work, the qualifier is not trailing, or
 	// the volume is stated outside brackets. A title the ordinary walk finds as
-	// is still attaches (rule 1 first).
+	// is still attaches (rule 1 first). Kafka is dated, so the person rules
+	// read the credit as the catalogued person whatever the titles.
 	cases := map[string]struct {
 		works    map[string][]string
 		title    string
@@ -222,7 +223,7 @@ func TestLibrivoxTrailingQualifierLeavesOtherTitlesAlone(t *testing.T) {
 	for name, tc := range cases {
 		t.Run(name, func(t *testing.T) {
 			dataDir := t.TempDir()
-			seedWorks(t, dataDir, tc.works)
+			seedDatedWorks(t, dataDir, tc.works, map[string][2]int{"franz-kafka": {1883, 1924}})
 			sum := runLibrivox(t, writeSnapshot(t, retitled(t, 99602, tc.title)), dataDir, allLibrivox)
 			if sum.NewWorks != tc.newWorks || sum.NewRecordings != 1 || len(sum.LibrivoxWorklist) != 0 {
 				t.Fatalf("works/recordings = %d/%d (want %d/1), worklist = %+v\nwarnings: %v",

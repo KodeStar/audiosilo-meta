@@ -328,6 +328,9 @@ func (p *planner) keyLibrivoxAuthorVariants(books []sourceBook, titles, suffixes
 		if b.lv == nil || p.lv.ids[b.lv.id] {
 			continue
 		}
+		if _, held := p.librivoxSameNameOf(*b); held {
+			continue // a same-name-author worklist skip (librivoxpeople.go rule 2)
+		}
 		lang, ok := b.language()
 		if !ok || len(p.rowNarratorNames(*b)) == 0 {
 			continue
@@ -374,6 +377,9 @@ func (p *planner) keyLibrivoxAuthorVariants(books []sourceBook, titles, suffixes
 	for i := range books {
 		b := &books[i]
 		if b.lv == nil || p.lv.ids[b.lv.id] {
+			continue
+		}
+		if _, held := p.librivoxSameNameOf(*b); held {
 			continue
 		}
 		var rename map[string]string
