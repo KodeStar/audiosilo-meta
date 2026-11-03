@@ -288,8 +288,24 @@ func (c *composer) aliasRetitle(addr entryAddr, record map[string]any) (func() s
 	if alias == "" {
 		return nil, true
 	}
+	cur := c.redirects
+	if cur == nil {
+		// The catalogue load leaves NO table both when the tree carries none and when
+		// it could not read the one it carries (a problem it reported and carried on
+		// past). Adding the alias to an empty table in the second case would write a
+		// file holding only the alias - every tombstone dropped, and a table the
+		// post-write metacheck passes - so the writer's own read tells the two apart,
+		// and a table it cannot read is never rewritten.
+		loaded, err := redirects.Load(c.dataDir)
+		if err != nil {
+			c.fail(StatusNeedsHuman, "the retitle of %s needs the alias %s, but %s could not be read (%v) - a maintainer will apply it",
+				addr.label(c), alias, redirectsPath, err)
+			return nil, false
+		}
+		cur = loaded
+	}
 	next := model.NewRedirects()
-	for kind, table := range c.redirects {
+	for kind, table := range cur {
 		next[kind] = maps.Clone(table)
 	}
 	if err := redirects.Add(next, model.RedirectWorks, alias, addr.slug); err != nil {

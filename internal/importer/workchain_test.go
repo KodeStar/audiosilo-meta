@@ -110,6 +110,36 @@ func TestWorkTitleAlias(t *testing.T) {
 	if got := WorkTitleAlias(horsemen, live, reds); got != "war" {
 		t.Errorf("retitled decorated work: alias = %q, want war", got)
 	}
+	// Nor is a long decorated slug that merely carries the WORD "book": the rest of
+	// such a slug after "-book-" is no position, and reading it as a shortened
+	// volume's tail would cost exactly the retitles this alias is for (real slugs).
+	for _, decorated := range []*model.Work{
+		{ID: "read-people-like-a-book-how-to-analyze-understand-and-predict-peoples-emotions-thoughts-intentions-a",
+			Title: "Read People like a Book", Authors: w.Authors},
+		{ID: "the-book-of-five-rings-by-miyamoto-musashi-complete-edition-the-new-modern-english-translation-trans",
+			Title: "The Book of Five Rings", Authors: w.Authors},
+	} {
+		want := Slugify(decorated.Title)
+		if got := WorkTitleAlias(decorated, live, reds); got != want {
+			t.Errorf("retitled long decorated work %s: alias = %q, want %q", decorated.ID, got, want)
+		}
+	}
+}
+
+// serialPositionTail must read back every tail serialPositionSuffix composes for a
+// schema position, or a shortened serial volume would go unrecognized.
+func TestSerialPositionTailMatchesTheSuffix(t *testing.T) {
+	for _, pos := range []string{"1", "11", "2.5", "1-3", "1-3.5", "2.5-4", "1.5-3.5", "3040-3049"} {
+		tail := serialPositionSuffix(pos)
+		if !strings.HasPrefix(tail, serialTailPrefix) || !serialPositionTail.MatchString(strings.TrimPrefix(tail, serialTailPrefix)) {
+			t.Errorf("position %q: suffix %q is not read back by serialPositionTail", pos, tail)
+		}
+	}
+	for _, rest := range []string{"how-to-analyze", "of-five-rings", "2-jane-doe", "one", ""} {
+		if serialPositionTail.MatchString(rest) {
+			t.Errorf("serialPositionTail matches %q, which no position slugs to", rest)
+		}
+	}
 }
 
 // The alias is what makes a retitle safe end to end. Without it the next import of

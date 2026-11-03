@@ -152,6 +152,26 @@ func TestBatchTitleRecordsRetitleAlias(t *testing.T) {
 	}
 }
 
+// TestCorrectTitleNeverRewritesAnUnreadableTable: the catalogue load leaves NO table
+// when it cannot read data/redirects.json (here a repeated key), exactly as when the
+// tree has none - so an alias added to "the" table would write a file holding only
+// itself, dropping every tombstone the real one carries, and the post-write metacheck
+// would pass the result. The writer reads the file itself instead and refuses.
+func TestCorrectTitleNeverRewritesAnUnreadableTable(t *testing.T) {
+	dir := seedTree(t)
+	broken := []byte(`{"people": {}, "series": {}, "works": {"old-a": "existing-work", "old-a": "existing-work", "old-b": "existing-work"}}` + "\n")
+	if err := os.WriteFile(redirects.Path(dir), broken, 0o644); err != nil {
+		t.Fatal(err)
+	}
+	res := correctTitle(t, dir, "existing-work", "A Better Title")
+	if res.Status == StatusOK {
+		t.Fatalf("status = ok over an unreadable tombstone table: files = %v, messages = %v", res.Files, res.Messages)
+	}
+	if got, err := os.ReadFile(redirects.Path(dir)); err != nil || string(got) != string(broken) {
+		t.Errorf("the unreadable table was rewritten (err %v):\n%s", err, got)
+	}
+}
+
 // TestRetitleAliasCommitsOnlyWithItsRecord pins the hook's contract: aliasRetitle
 // decides the alias but records nothing - neither the table nor the flag flush
 // reads - until correctOne runs its commit, which it does only once the retitled

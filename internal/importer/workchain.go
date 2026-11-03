@@ -1,6 +1,7 @@
 package importer
 
 import (
+	"regexp"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -52,8 +53,9 @@ func OnWorkSlugChain(w *model.Work) bool {
 // import would MINT at: the first create candidate that is neither held (live) nor
 // retired, found by the same walk walkWorkChain makes, stopping where it stops.
 // Recording that slug as a tombstone onto w (the retitle ALIAS: internal/repair's
-// retitleWork and internal/issueform's title correction) makes the importer judge it as w, so the import merges instead of
-// minting - exactly what it would have done had w been created under its new title.
+// retitleWork and internal/issueform's title correction) makes the importer judge
+// it as w, so the import merges instead of minting - exactly what it would have
+// done had w been created under its new title.
 //
 // It judges no live candidate: whether a live record would absorb the row is the
 // planner's identity question (authors, language, claim), so a same-author
@@ -105,17 +107,34 @@ func WorkTitleAlias(w *model.Work, live func(slug string) bool, reds model.Redir
 }
 
 // serialVolumeSlug reports whether id is the serial pre-pass's slug for a volume of
-// the title whose slug is base: base with a "book-<position>" tail, composed the way
-// posSuffixSlugs composes it (model.BoundedSlugTail), so a long title the pre-pass
-// had to SHORTEN to fit the tail is recognized too - "my-daughter-left-the-nest-and-
-// book-11" is that title's volume 11 although it does not begin with the whole base.
+// the title whose slug is base: base followed by a "book-" tail, or - for a long
+// title the pre-pass had to SHORTEN to fit the tail - exactly what posSuffixSlugs
+// composes (model.BoundedSlugTail over "-book-<position>"), so "my-daughter-left-
+// the-nest-and-book-11" is that title's volume 11 although it does not begin with
+// the whole base.
+//
+// The shortened arm demands a POSITION tail (serialPositionTail) and nothing after
+// it. Without that, any long slug carrying the word "book" read as a shortened
+// volume: BoundedSlugTail reproduces a slug's own head whenever the "tail" is all
+// the rest of it, so "read-people-like-a-book-how-to-analyze-..." retitled "Read
+// People like a Book" (or "the-book-of-five-rings-by-miyamoto-musashi-..." retitled
+// "The Book of Five Rings") lost the alias the retitle exists to record.
 func serialVolumeSlug(base, id string) bool {
+	if strings.HasPrefix(id, base+"-"+serialTailPrefix) {
+		return true
+	}
 	i := strings.LastIndex(id, "-"+serialTailPrefix)
-	if i < 0 {
+	if i < 0 || !serialPositionTail.MatchString(id[i+1+len(serialTailPrefix):]) {
 		return false
 	}
 	return model.BoundedSlugTail(base, id[i:]) == id
 }
+
+// serialPositionTail matches what serialPositionSuffix puts after "book-" for a
+// position the schema admits (series.schema.json, model.NormalizeSequence): a
+// number, its decimal point slugged to a hyphen ("2.5" -> "2-5"), and an omnibus
+// range spelled out with "-to-" ("1-3.5" -> "1-to-3-5").
+var serialPositionTail = regexp.MustCompile(`^\d+(-\d+)?(-to-\d+(-\d+)?)?$`)
 
 // ownTitleChain is the create path's candidate chain for a catalogued work's own
 // cleaned title and credits, with no position claim; ok is false when the work

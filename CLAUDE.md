@@ -400,8 +400,10 @@ the record as on the chain, which is the importer's own reach. An intake TITLE
 correction (correct-data and the correction batch) records the same alias through
 the same `importer.WorkTitleAlias` (`internal/issueform`'s `aliasRetitle`), and the
 bot's pull request carries `data/redirects.json` beside the work's pack. The table
-has no merge driver, so two open intake retitles whose aliases collide in git's line
-merge stop the rebase sweep on that file for a maintainer.
+has no merge driver, so an open intake retitle whose alias line conflicts with a
+table change landed on main meanwhile (another retitle, a repair wave's tombstones)
+stops the rebase sweep on that file for a maintainer (`pack-union-merge.sh` refuses
+it).
 
 **Storage is range-packed** ([PACK-SPEC.md](PACK-SPEC.md), implemented in
 `pkg/pack`): four families of pack files, each `{"entries": {"<slug>": {...}}}`,
