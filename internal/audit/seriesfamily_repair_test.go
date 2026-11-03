@@ -2,7 +2,6 @@ package audit_test
 
 import (
 	"encoding/json"
-	"os/exec"
 	"path/filepath"
 	"slices"
 	"strings"
@@ -80,13 +79,7 @@ func TestReviewedFamilyFoldsReachMetarepair(t *testing.T) {
 		t.Fatal(err)
 	}
 	audit.SetReviewedForTest(t, raw)
-	for _, args := range [][]string{{"init", "-q"}, {"config", "user.email", "fixture@example.com"}, {"config", "user.name", "Fixture"}, {"config", "commit.gpgsign", "false"}, {"add", "-A"}, {"commit", "-qm", "seed"}} {
-		cmd := exec.Command("git", args...)
-		cmd.Dir = root
-		if out, err := cmd.CombinedOutput(); err != nil {
-			t.Fatalf("git %v: %v: %s", args, err, out)
-		}
-	}
+	commitFixture(t, root)
 	opts := repair.Options{DataDir: data, Profile: pack.ProfileCore, Ops: []string{audit.OpMergeSeries}, Write: true}
 	rep, err := repair.Run(opts)
 	if err != nil {
