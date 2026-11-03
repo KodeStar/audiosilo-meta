@@ -63,6 +63,11 @@ go build ./... && go vet ./... && go test -race ./... && golangci-lint run
 # suite without -race daily, on dispatch and on Go-touching pushes to main (see
 # its header), and a red run opens or comments on the one open `ci-real-data`
 # issue, which the next green run closes (.github/scripts/real-data-report.sh).
+# The one real-checkout test that DOES run under -race is internal/recorddiff's
+# TestAgainstTheRealCheckout (git objects of HEAD~1..HEAD, not the tree walk):
+# under the detector it diffs a bounded, family-preserving sample of the
+# commit's changed packs (raceMaxPaths), since the whole of a ~1,500-pack data
+# merge outran the 10-minute test timeout; without -race it diffs them all.
 # Locally: `go test -count=1 ./...`.
 go run ./cmd/metacheck --profile core       # validate the data tree (~10s over 133k works)
 go run ./cmd/metafmt --check --profile core # canonical formatting (--write to fix)
