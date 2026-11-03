@@ -280,11 +280,14 @@ func (s LibrivoxIDs) Has(id int) bool {
 }
 
 // RunLibrivox imports the projects of the snapshot at snapshotDir whose ids are
-// selected into opts.DataDir, through the shared planner. Only the create mode
-// exists for this source.
+// selected into opts.DataDir, through the shared planner. Two modes exist for
+// this source: the create mode, and the genre regeneration (regenerate.go),
+// which re-derives the genres of the works holding the selected projects under
+// today's table (model.LibrivoxGenres) - how a table change reaches the works a
+// tranche already wrote.
 func RunLibrivox(snapshotDir string, ids LibrivoxIDs, opts Options) (Summary, error) {
-	if opts.Mode != ModeCreate {
-		return Summary{}, fmt.Errorf("a LibriVox import creates only; it has no %s mode", opts.Mode.runName())
+	if opts.Mode != ModeCreate && opts.Mode != ModeRegenerateGenres {
+		return Summary{}, fmt.Errorf("a LibriVox import creates or regenerates genres; it has no %s mode", opts.Mode.runName())
 	}
 	// ParseLibrivoxIDs admits no id below 1, so every selected project has one.
 	projects, err := readLibrivoxSnapshot(snapshotDir, ids.Has)

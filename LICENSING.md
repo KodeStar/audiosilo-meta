@@ -316,11 +316,12 @@ The rule, applied at **record** granularity (not per field):
    more recordings that state a genre, a genre is kept when at least two of
    them state it, and with fewer the recordings' genres are all kept. That is
    what the mirror's create path writes, what its enrichment writes into a
-   work that had no genres, and what `metaimport libex --regenerate-genres`
+   work that had no genres, and what the genre regeneration (`metaimport libex
+   --regenerate-genres`, and its LibriVox twin)
    re-derives for an existing work - and the regeneration may only
    TRIM a set no user-library source contributed to (a user-library source on
    the work or on any of its recordings counts), and only when every
-   recording carrying an ASIN was in the evidence. A set any user-library
+   recording carrying an ASIN or a LibriVox project id was in the evidence. A set any user-library
    source contributed to is only ever added to, by the vote as by a user row.
    The regeneration appends no source: the genres are derived from rows the
    work already cites.

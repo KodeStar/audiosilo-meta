@@ -129,6 +129,10 @@ type recInfo struct {
 	// them apart is not worth it, so a disk incumbent never blocks a merge on
 	// abridged grounds. See abridgedConflict.
 	abridged *bool
+	// librivox says a recording loaded from disk carries a LibriVox project id:
+	// beside its ASINs, the other identifier a genre regeneration's rows can
+	// reach it by (regenerate.go's completeness test).
+	librivox bool
 }
 
 // workState tracks a work's identity (slug + author set) and its recordings.
@@ -716,7 +720,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options, parseSkips []
 	// The regeneration trims a mirror-derived set to what the mirror's own rows
 	// vote for, so its rows must be the mirror's (regenerate.go).
 	if opts.Mode == ModeRegenerateGenres && model.TierOfSource(sourceType) != model.TierBulkMirror {
-		return Summary{}, fmt.Errorf("genre regeneration requires bulk-mirror (libex) rows; use RunLibex")
+		return Summary{}, fmt.Errorf("genre regeneration requires bulk-mirror (libex or LibriVox) rows; use RunLibex or RunLibrivox")
 	}
 	if err := ValidateRowsAsOf(opts.Mode, opts.RowsAsOf, time.Now().UTC()); err != nil {
 		return Summary{}, err
@@ -1239,6 +1243,7 @@ func (p *planner) loadExisting() {
 				// plain bool can't distinguish stated-false from absent, so we do
 				// not let it block a merge. See recInfo.abridged.
 				abridged: nil,
+				librivox: r.LibrivoxID != 0,
 			}
 			for _, a := range r.ASIN {
 				// One ASIN listed under several regions is ONE identifier of this

@@ -583,6 +583,30 @@ live-libex gap fill, the chapter live-lookup batches), which is why the snapshot
 date is the default: a day after any import of newer rows lets those works be
 trimmed of genres the newer rows stated.
 
+### Regenerate LibriVox works' genres
+
+`metaimport librivox import --regenerate-genres` is the same regeneration over a
+LibriVox snapshot, matched by project id: how a change to the LibriVox genre
+table (`pkg/model/librivox.go`, `model.LibrivoxGenres`) reaches the works the
+tranches already wrote. Run it over the whole snapshot (`--ids 1-`) so every
+recording of a work casts its vote:
+
+```sh
+go run ./cmd/metaimport librivox import --from ~/dev/librivox-snapshot --ids 1- \
+  --regenerate-genres --rows-as-of 2026-10-30 --dry-run --genre-changes /tmp/lv-genre-changes.ndjson
+```
+
+A work that also holds a libex (ASIN-carrying) recording is only added to, as
+is one a user-library source contributed to. `--rows-as-of` is the LAST day a
+LibriVox tranche was imported from that snapshot (the 2026-10-27 snapshot was
+imported through 2026-10-30), not the fetch day: every provenance stamp up to it
+came from the same rows. Run it over the snapshot with the OLD table first
+(a binary built from the base commit): the works it changes there are not the
+table's doing - a work whose projects landed in different tranches stores the
+first tranche's vote, and a libex work a project attached to never took
+LibriVox's genres - so a table change's data commit reviews the two worklists
+side by side.
+
 ### Relocate cross-language recordings
 
 `metaimport libex --relocate` moves a recording filed under a work in another

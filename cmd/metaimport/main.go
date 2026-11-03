@@ -10,11 +10,15 @@
 //	metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--refusals <path>] [--attachments <path>] [--date YYYY-MM-DD]
 //	metaimport librivox fetch  --out <snapshot> [--max-pages N]
 //	metaimport librivox import --from <snapshot> --ids <range> [--data data] [--dry-run] [--date YYYY-MM-DD] [--conflicts <path>]
+//	metaimport librivox import --from <snapshot> --ids <range> --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>] [--data data] [--dry-run]
 //
 // librivox (LICENSING.md's public-domain exception) is two steps: fetch pages
 // LibriVox's audiobooks feed into a local snapshot - the one command here that
 // calls LibriVox, politely and resumably (see librivox.go) - and import lands the
 // snapshot projects --ids selects, offline, deduplicating on the project id.
+// import --regenerate-genres is the LibriVox twin of libex's genre regeneration
+// below, matched by project id: how a LibriVox genre table change reaches the
+// works already imported.
 //
 // libex-select writes no records: it reduces a full libex export to the
 // bounded, series-completing subset LICENSING.md's import posture allows, and
@@ -117,7 +121,7 @@
 // that position), and would mint a duplicate work on the
 // create path. Mutually exclusive with --enrich.
 //
-// --regenerate-genres (libex only) re-derives the GENRES of catalogued works from
+// --regenerate-genres (libex; and `librivox import`, librivox.go) re-derives the GENRES of catalogued works from
 // the libex rows of their own recordings, under today's mapping table and the
 // recording vote: a work no user-library source contributed to, whose every
 // ASIN-carrying recording met a row, takes the vote as its set; every other work
@@ -684,6 +688,7 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  metaimport libex-fill  [--data data] [--works a,b] [--limit N] [--all-tiers | --released-preorders] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport librivox fetch  --out <snapshot> [--max-pages N]")
 	fmt.Fprintln(os.Stderr, "  metaimport librivox import --from <snapshot> --ids <range> [--data data] [--dry-run] [--date YYYY-MM-DD] [--conflicts <path>]")
+	fmt.Fprintln(os.Stderr, "  metaimport librivox import --from <snapshot> --ids <range> --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>] [--data data] [--dry-run]")
 	fmt.Fprintln(os.Stderr, "")
 	fmt.Fprintln(os.Stderr, "  --conflicts <path> appends one NDJSON row per refused contradiction (a durable worklist).")
 	fmt.Fprintln(os.Stderr, "  --series-lookup (user-library sources) fills a series position the export did not state by")
@@ -700,12 +705,13 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "    it never creates a work and never touches a series.")
 	fmt.Fprintln(os.Stderr, "  --relocate (libex only) moves cross-language recordings using all their source rows;")
 	fmt.Fprintln(os.Stderr, "    it may create a work, never a series; --skipped records relocation refusals.")
-	fmt.Fprintln(os.Stderr, "  --regenerate-genres (libex only) re-derives catalogued works' genres from their recordings'")
+	fmt.Fprintln(os.Stderr, "  --regenerate-genres (libex; librivox import) re-derives catalogued works' genres from their recordings'")
 	fmt.Fprintln(os.Stderr, "    rows (the recording vote); --rows-as-of <the rows' snapshot date> is required, and a work")
 	fmt.Fprintln(os.Stderr, "    with newer provenance is not judged; --genre-changes <path> writes one NDJSON line per changed work.")
 	fmt.Fprintln(os.Stderr, "  librivox fetch pages LibriVox's audiobooks feed into a local snapshot, politely (100 a page,")
 	fmt.Fprintln(os.Stderr, "    5 s apart, Retry-After honoured, resumable); the snapshot is never committed. librivox import")
-	fmt.Fprintln(os.Stderr, "    lands the --ids it selects (527, 1-2000, 5000-), deduplicating on the LibriVox project id.")
+	fmt.Fprintln(os.Stderr, "    lands the --ids it selects (527, 1-2000, 5000-), deduplicating on the LibriVox project id;")
+	fmt.Fprintln(os.Stderr, "    with --regenerate-genres it re-derives the genres of the works holding them instead.")
 	fmt.Fprintln(os.Stderr, "  libex-fill looks up the recordings that carry an ASIN but no cover (or no chapters) and")
 	fmt.Fprintln(os.Stderr, "    enriches them from the live libex service. It covers USER-LIBRARY imports only unless")
 	fmt.Fprintln(os.Stderr, "    --all-tiers is given; --works limits it further to those work ids. --released-preorders instead")
