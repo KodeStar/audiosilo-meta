@@ -39,6 +39,8 @@ type recSpec struct {
 	Chapters  bool
 	Abridged  *bool
 	AddedAt   string
+	// LibrivoxID is the recording's librivox_id, 0 for none.
+	LibrivoxID int
 }
 
 // workSpec is a work entry as a test states it.
@@ -127,6 +129,9 @@ func recJSON(t testing.TB, w workSpec, r recSpec) string {
 	}
 	if r.Abridged != nil {
 		entry["abridged"] = *r.Abridged
+	}
+	if r.LibrivoxID > 0 {
+		entry["librivox_id"] = r.LibrivoxID
 	}
 	if r.Chapters {
 		entry["chapters"] = []any{

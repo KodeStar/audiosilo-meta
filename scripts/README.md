@@ -469,7 +469,11 @@ recorded under two author sets (one of them is a narrator credited as an
 author); a part carrying more than one recording (so which production it belongs
 to is not stated); a merged slug another work already holds; a book with more
 than one candidate plain edition; and any series whose repair would put two
-works on one position. Each is a maintainer's call, not a rule to relax.
+works on one position. A part or twin that is a LibriVox recording (it carries a
+`librivox_id`) is refused as `librivox-recording` too: a LibriVox project is a
+production of its own, never a part of another (the publisher gate keeps such
+records out of the cohort, so the live tree has none). Each is a maintainer's
+call, not a rule to relax.
 
 ## genrepaths - derive the genre table's by_path half
 
