@@ -85,7 +85,7 @@ func TestBatchGoldenBody(t *testing.T) {
 	}
 	// The title leaves existing-work off the chain "The Existing Work" composes, so
 	// its retitle alias rides beside the works pack (retitlealias_test.go).
-	if want := []string{"data/redirects.json", worksPack}; !slices.Equal(res.Files, want) {
+	if want := []string{redirectsPath, worksPack}; !slices.Equal(res.Files, want) {
 		t.Errorf("files = %v, want %v", res.Files, want)
 	}
 	if got := workRedirects(t, dir); got["the-existing-work"] != "existing-work" {

@@ -6,8 +6,8 @@ import (
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
-	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
 	"github.com/kodestar/audiosilo-meta/pkg/redirects"
 )
 
@@ -16,13 +16,11 @@ import (
 // correction leaving the record off the chain its new title composes would let the
 // next import of that title mint a duplicate beside it.
 
-const redirectsFile = "data/redirects.json"
-
-// correctTitle files a correct-data title correction on the seed's existing-work.
-func correctTitle(t *testing.T, dir, title string) Result {
+// correctTitle files a correct-data title correction on the work at slug.
+func correctTitle(t *testing.T, dir, slug, title string) Result {
 	t.Helper()
 	return Process(Options{DataDir: dir, Template: "correct-data",
-		Body: correctBody("https://meta.audiosilo.app/works/existing-work", "title", title, "the cover", true)})
+		Body: correctBody(workPageURL(slug), "title", title, "the cover", true)})
 }
 
 // workRedirects reads the tree's works tombstones; an absent table reads as none.
@@ -35,48 +33,40 @@ func workRedirects(t *testing.T, dir string) map[string]string {
 	return reds[model.RedirectWorks]
 }
 
-func mustValidate(t *testing.T, dir string) {
-	t.Helper()
-	if res := check.Load(dir); !res.OK() {
-		t.Fatalf("the composed tree does not validate: %v", res.Problems)
-	}
-}
-
 // TestCorrectTitleRecordsRetitleAlias is the passing fixture: "Existing Work"
 // retitled "A Better Title" leaves existing-work off the new chain, so the slug an
 // import of the new title would mint at is retired onto it, the table rides in the
 // bot's commit (Result.Files) and the verdict says so.
 func TestCorrectTitleRecordsRetitleAlias(t *testing.T) {
 	dir := seedTree(t)
-	res := correctTitle(t, dir, "A Better Title")
+	res := correctTitle(t, dir, "existing-work", "A Better Title")
 	if res.Status != StatusOK {
 		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
 	}
 	if got := workRedirects(t, dir); !maps.Equal(got, map[string]string{"a-better-title": "existing-work"}) {
 		t.Errorf("works redirects = %v, want the alias a-better-title -> existing-work", got)
 	}
-	if !hasFile(res.Files, worksPack) || !hasFile(res.Files, redirectsFile) {
-		t.Errorf("files = %v, want the works pack and %s", res.Files, redirectsFile)
+	if !hasFile(res.Files, worksPack) || !hasFile(res.Files, redirectsPath) {
+		t.Errorf("files = %v, want the works pack and %s", res.Files, redirectsPath)
 	}
 	if !anyContains(res.Messages, "aliased a-better-title -> existing-work") {
 		t.Errorf("the verdict does not report the alias: %v", res.Messages)
 	}
-	mustValidate(t, dir)
 }
 
 // TestCorrectTitleOnItsChainRecordsNoAlias: a correction whose new title still slugs
 // to the record's own id needs no alias, and the table is not written at all.
 func TestCorrectTitleOnItsChainRecordsNoAlias(t *testing.T) {
 	dir := seedTree(t)
-	res := correctTitle(t, dir, "Existing work")
+	res := correctTitle(t, dir, "existing-work", "Existing work")
 	if res.Status != StatusOK {
 		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
 	}
-	if hasFile(res.Files, redirectsFile) {
+	if hasFile(res.Files, redirectsPath) {
 		t.Errorf("files = %v: a title still on its chain wrote the tombstone table", res.Files)
 	}
 	if _, err := os.Stat(redirects.Path(dir)); !os.IsNotExist(err) {
-		t.Errorf("a title still on its chain created %s (stat: %v)", redirectsFile, err)
+		t.Errorf("a title still on its chain created %s (stat: %v)", redirectsPath, err)
 	}
 }
 
@@ -95,14 +85,13 @@ func TestCorrectTitleAliasStepsOverALiveWork(t *testing.T) {
 }`
 	dir := t.TempDir()
 	testpack.Seed(t, dir, files)
-	res := correctTitle(t, dir, "A Better Title")
+	res := correctTitle(t, dir, "existing-work", "A Better Title")
 	if res.Status != StatusOK {
 		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
 	}
 	if got := workRedirects(t, dir); !maps.Equal(got, map[string]string{"a-better-title-jane-doe": "existing-work"}) {
 		t.Errorf("works redirects = %v, want only a-better-title-jane-doe -> existing-work", got)
 	}
-	mustValidate(t, dir)
 }
 
 // TestCorrectTitleAlreadyAliasedWritesNothingMore: a chain candidate already retired
@@ -113,11 +102,11 @@ func TestCorrectTitleAlreadyAliasedWritesNothingMore(t *testing.T) {
 	if err := redirects.Write(dir, model.Redirects{model.RedirectWorks: {"a-better-title": "existing-work"}}); err != nil {
 		t.Fatal(err)
 	}
-	res := correctTitle(t, dir, "A Better Title")
+	res := correctTitle(t, dir, "existing-work", "A Better Title")
 	if res.Status != StatusOK {
 		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
 	}
-	if hasFile(res.Files, redirectsFile) || anyContains(res.Messages, "aliased") {
+	if hasFile(res.Files, redirectsPath) || anyContains(res.Messages, "aliased") {
 		t.Errorf("an already-aliased title was aliased again: files = %v, messages = %v", res.Files, res.Messages)
 	}
 }
@@ -138,12 +127,11 @@ func TestCorrectTitleOfASerialVolumeRecordsNoAlias(t *testing.T) {
 }`
 	dir := t.TempDir()
 	testpack.Seed(t, dir, files)
-	res := Process(Options{DataDir: dir, Template: "correct-data",
-		Body: correctBody("https://meta.audiosilo.app/works/the-saga-book-2", "title", "The Saga", "the cover", true)})
+	res := correctTitle(t, dir, "the-saga-book-2", "The Saga")
 	if res.Status != StatusOK {
 		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
 	}
-	if hasFile(res.Files, redirectsFile) || len(workRedirects(t, dir)) != 0 {
+	if hasFile(res.Files, redirectsPath) || len(workRedirects(t, dir)) != 0 {
 		t.Errorf("a serial volume was aliased: files = %v, redirects = %v", res.Files, workRedirects(t, dir))
 	}
 }
@@ -159,8 +147,35 @@ func TestBatchTitleRecordsRetitleAlias(t *testing.T) {
 	if got := workRedirects(t, dir); got["a-better-title"] != "existing-work" {
 		t.Errorf("works redirects = %v, want the alias a-better-title -> existing-work", got)
 	}
-	if !hasFile(res.Files, redirectsFile) {
-		t.Errorf("files = %v, want %s", res.Files, redirectsFile)
+	if !hasFile(res.Files, redirectsPath) {
+		t.Errorf("files = %v, want %s", res.Files, redirectsPath)
 	}
-	mustValidate(t, dir)
+}
+
+// TestRetitleAliasCommitsOnlyWithItsRecord pins the hook's contract: aliasRetitle
+// decides the alias but records nothing - neither the table nor the flag flush
+// reads - until correctOne runs its commit, which it does only once the retitled
+// record is queued. So a change whose record fails to queue (a batch then refuses
+// as a whole) leaves no alias behind for flush to write without its retitle.
+func TestRetitleAliasCommitsOnlyWithItsRecord(t *testing.T) {
+	dir := seedTree(t)
+	store, err := openStore(dir, pack.ProfileAll, "correct-data")
+	if err != nil {
+		t.Fatal(err)
+	}
+	c := &composer{dataDir: dir, store: store, people: map[string]bool{}, works: map[string]*model.Work{},
+		series: map[string]*model.Series{}, asinRec: map[string]recRef{}, isbnRec: map[string]recRef{}}
+	c.loadExisting()
+	addr := entryAddr{family: pack.FamilyWorks, slug: "existing-work"}
+	commit, ok := c.aliasRetitle(addr, map[string]any{"title": "A Better Title"})
+	if !ok || commit == nil {
+		t.Fatalf("ok = %v, commit = %v; messages = %v", ok, commit != nil, c.messages)
+	}
+	if c.redirectsChanged || c.redirects.Len() != 0 {
+		t.Fatalf("the alias was recorded before its commit: changed = %v, table = %v", c.redirectsChanged, c.redirects)
+	}
+	commit()
+	if !c.redirectsChanged || c.redirects[model.RedirectWorks]["a-better-title"] != "existing-work" {
+		t.Errorf("after commit: changed = %v, table = %v", c.redirectsChanged, c.redirects)
+	}
 }

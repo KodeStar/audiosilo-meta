@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"maps"
 	"sort"
 	"strconv"
 	"strings"
@@ -52,10 +53,12 @@ const (
 //
 // A scalar may also carry implies, which records what the write means OUTSIDE
 // the record - a work's retitle ALIAS in the tombstone table (aliasRetitle). It
-// runs on the corrected record after the no-op test and BEFORE the record is
-// queued, so a refusal leaves nothing written, and it fails the run itself and
-// reports false when the consequence cannot be recorded. Its note, when not
-// empty, joins the verdict after the applied line.
+// runs on the corrected record after the no-op test and decides everything before
+// the record is queued: it fails the run itself and reports false when the
+// consequence cannot be recorded, and otherwise hands back commit (nil when there
+// is nothing to record), which correctOne runs only once the record is queued -
+// so a change that fails writes nothing, its consequence included. commit's note,
+// when not empty, joins the verdict after the applied line.
 //
 // Two shapes, one table, one lookup: a field named here is always applied by the
 // op recorded beside it, so a name can never be reachable with nothing to do -
@@ -64,7 +67,7 @@ const (
 type correctOp struct {
 	kind    fieldKind
 	resolve func(*composer, entryAddr, map[string]any, any) (value any, ok bool)
-	implies func(*composer, entryAddr, map[string]any) (note string, ok bool)
+	implies func(*composer, entryAddr, map[string]any) (commit func() (note string), ok bool)
 	add     func(*composer, entryAddr, map[string]any, string) (applied string, ok bool)
 }
 
@@ -217,9 +220,9 @@ func (c *composer) correctOne(ref recordRef, field, corrected, evidence string) 
 		return
 	}
 	record[fieldName] = value
-	implied := ""
+	var commit func() string
 	if op.implies != nil {
-		if implied, ok = op.implies(c, addr, record); !ok {
+		if commit, ok = op.implies(c, addr, record); !ok {
 			return
 		}
 	}
@@ -233,8 +236,10 @@ func (c *composer) correctOne(ref recordRef, field, corrected, evidence string) 
 		return
 	}
 	c.note("applied %s = %v on %s", fieldName, value, addr.label(c))
-	if implied != "" {
-		c.note("%s", implied)
+	if commit != nil {
+		if note := commit(); note != "" {
+			c.note("%s", note)
+		}
 	}
 }
 
@@ -250,58 +255,58 @@ func (c *composer) correctOne(ref recordRef, field, corrected, evidence string) 
 // already retired onto it), when nothing could be minted, or for a serial volume at
 // "<title>-book-<n>" - all WorkTitleAlias's own answers.
 //
-// The alias lands in the composer's copy of the table and reaches disk at flush
-// (c.redirectsChanged), beside the pack the corrected work is written to, so the
-// bot's pull request carries data/redirects.json with the retitle. The post-write
-// metacheck judges the table as it judges any other: a source that is a live work
-// can never be written, because WorkTitleAlias steps over every held candidate.
-func (c *composer) aliasRetitle(addr entryAddr, record map[string]any) (string, bool) {
-	if addr.family != pack.FamilyWorks || addr.recSlug != "" || !c.profile.Redirects() {
-		return "", true
+// The alias is decided against a copy of the composer's table, and the returned
+// commit swaps that copy in (c.redirectsChanged) only once the retitled record is
+// queued; it reaches disk at flush, beside the pack the corrected work is written
+// to, so the bot's pull request carries data/redirects.json with the retitle. A
+// source that is a live work can never be written, because WorkTitleAlias steps
+// over every held candidate, and the post-write metacheck judges the table anyway.
+func (c *composer) aliasRetitle(addr entryAddr, record map[string]any) (func() string, bool) {
+	held := c.works[addr.slug]
+	if held == nil || !c.profile.Redirects() {
+		return nil, true
 	}
-	raw, err := json.Marshal(record)
-	if err != nil {
-		c.fail(StatusInvalid, "marshal work %q: %v", addr.slug, err)
-		return "", false
-	}
-	var w model.Work
-	if err := json.Unmarshal(raw, &w); err != nil {
-		c.fail(StatusInvalid, "decode work %q: %v", addr.slug, err)
-		return "", false
-	}
-	w.ID = addr.slug
+	title, _ := record["title"].(string)
+	w := &model.Work{ID: addr.slug, Title: title, Authors: held.Authors, Credits: held.Credits}
 	var readErr error
 	live := func(slug string) bool {
 		if readErr != nil {
 			return true
 		}
-		held, err := c.store.Has(pack.FamilyWorks, slug)
+		taken, err := c.store.Has(pack.FamilyWorks, slug)
 		if err != nil {
 			readErr = err
 			return true
 		}
-		return held
+		return taken
 	}
-	alias := importer.WorkTitleAlias(&w, live, c.redirects)
+	alias := importer.WorkTitleAlias(w, live, c.redirects)
 	if readErr != nil {
 		c.fail(StatusInvalid, "read works entry while aliasing the retitle of %q: %v", addr.slug, readErr)
-		return "", false
+		return nil, false
 	}
 	if alias == "" {
-		return "", true
+		return nil, true
 	}
-	if c.redirects == nil {
-		c.redirects = model.NewRedirects()
+	next := model.NewRedirects()
+	for kind, table := range c.redirects {
+		next[kind] = maps.Clone(table)
 	}
-	if err := redirects.Add(c.redirects, model.RedirectWorks, alias, addr.slug); err != nil {
+	if err := redirects.Add(next, model.RedirectWorks, alias, addr.slug); err != nil {
 		c.fail(StatusNeedsHuman, "the retitle of %s needs the alias %s, which the tombstone table refuses (%v) - a maintainer will apply it",
 			addr.label(c), alias, err)
-		return "", false
+		return nil, false
 	}
-	c.redirectsChanged = true
-	return fmt.Sprintf("aliased %s -> %s in %s: the slug an import of the new title would mint at, so that import finds the work",
-		alias, addr.slug, "data/"+pack.RedirectsFile), true
+	return func() string {
+		c.redirects, c.redirectsChanged = next, true
+		return fmt.Sprintf("aliased %s -> %s in %s: the slug an import of the new title would mint at, so that import finds the work",
+			alias, addr.slug, redirectsPath)
+	}, true
 }
+
+// redirectsPath is the tombstone table's repository path, as a verdict and
+// Result.Files spell it.
+const redirectsPath = "data/" + pack.RedirectsFile
 
 // misaddressedField fails a correction that names a field its record does not
 // carry but the record's work/recording sibling does, and reports whether it

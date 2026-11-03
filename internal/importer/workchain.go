@@ -106,7 +106,7 @@ func WorkTitleAlias(w *model.Work, live func(slug string) bool, reds model.Redir
 
 // serialVolumeSlug reports whether id is the serial pre-pass's slug for a volume of
 // the title whose slug is base: base with a "book-<position>" tail, composed the way
-// posSuffixSlugs composes it (model.BoundedSlugTailCut), so a long title the pre-pass
+// posSuffixSlugs composes it (model.BoundedSlugTail), so a long title the pre-pass
 // had to SHORTEN to fit the tail is recognized too - "my-daughter-left-the-nest-and-
 // book-11" is that title's volume 11 although it does not begin with the whole base.
 func serialVolumeSlug(base, id string) bool {
@@ -114,8 +114,7 @@ func serialVolumeSlug(base, id string) bool {
 	if i < 0 {
 		return false
 	}
-	slug, _ := model.BoundedSlugTailCut(base, id[i:])
-	return slug == id
+	return model.BoundedSlugTail(base, id[i:]) == id
 }
 
 // ownTitleChain is the create path's candidate chain for a catalogued work's own
