@@ -6,6 +6,7 @@ import (
 
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // libexOnlyRecording is the seed catalogue's recording with libex-import as its
@@ -576,5 +577,57 @@ func TestAddWorkSlugDuplicateOfAttestedWorkStaysDuplicate(t *testing.T) {
 	}
 	if anyContains(res.Messages, "libex mirror") {
 		t.Errorf("an attested work must not be reported as a mirror seed: %v", res.Messages)
+	}
+}
+
+// TestMirrorSeedVerdictNamesTheRecordsMirror: a work only LibriVox has stated
+// is a mirror seed too, and the verdict says LibriVox seeded it - never libex.
+func TestMirrorSeedVerdictNamesTheRecordsMirror(t *testing.T) {
+	dir := t.TempDir()
+	files := seedFiles()
+	files["works/ex/existing-work/work.json"] = `{
+  "authors": ["jane-doe"],
+  "id": "existing-work",
+  "language": "en",
+  "license": "CC0-1.0",
+  "sources": [{"type": "librivox", "ref": "527", "imported_at": "2026-10-27"}],
+  "title": "Existing Work"
+}`
+	testpack.Seed(t, dir, files)
+
+	body := addWorkBody("Existing Work", "Jane Doe", "en", "Different Narrator", "US: B0FRESH001", "web", true)
+	res := Process(Options{DataDir: dir, Template: "add-work", Body: body})
+	if res.Status != StatusNeedsHuman {
+		t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
+	}
+	if !anyContains(res.Messages, "was seeded from the LibriVox mirror and no user has attested it yet") {
+		t.Errorf("the verdict must name LibriVox: %v", res.Messages)
+	}
+	if anyContains(res.Messages, "libex") {
+		t.Errorf("a LibriVox seed must not be said to come from libex: %v", res.Messages)
+	}
+}
+
+func TestSeededFrom(t *testing.T) {
+	src := func(types ...string) []model.Source {
+		var out []model.Source
+		for _, ty := range types {
+			out = append(out, model.Source{Type: ty})
+		}
+		return out
+	}
+	for _, tc := range []struct {
+		sources []model.Source
+		want    string
+	}{
+		{src(model.SourceLibexImport), "the libex mirror"},
+		{src(model.SourceLibrivox, model.SourceLibrivox), "the LibriVox mirror"},
+		{src(model.SourceLibrivox, model.SourceLibexImport), "the libex and LibriVox mirrors"},
+		{src(model.SourceUser, model.SourceLibrivox), "the LibriVox mirror"},
+		{nil, "a bulk mirror"},
+	} {
+		if got := seededFrom(tc.sources); got != tc.want {
+			t.Errorf("seededFrom(%v) = %q, want %q", tc.sources, got, tc.want)
+		}
 	}
 }
