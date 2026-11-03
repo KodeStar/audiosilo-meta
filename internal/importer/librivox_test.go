@@ -39,7 +39,18 @@ func mustLibrivoxIDs(s string) LibrivoxIDs {
 // runLibrivox imports the snapshot at snap into dataDir.
 func runLibrivox(t *testing.T, snap, dataDir string, ids LibrivoxIDs) Summary {
 	t.Helper()
-	sum, err := RunLibrivox(snap, ids, Options{DataDir: dataDir, ImportDate: testImportDate})
+	return runLibrivoxWith(t, snap, dataDir, ids, Options{})
+}
+
+// runLibrivoxWith is runLibrivox with options, shaped like runLibexWith: the
+// data root and (unless set) the import date are filled in.
+func runLibrivoxWith(t *testing.T, snap, dataDir string, ids LibrivoxIDs, opts Options) Summary {
+	t.Helper()
+	opts.DataDir = dataDir
+	if opts.ImportDate == "" {
+		opts.ImportDate = testImportDate
+	}
+	sum, err := RunLibrivox(snap, ids, opts)
 	if err != nil {
 		t.Fatalf("librivox import: %v\nwarnings: %v", err, sum.Warnings)
 	}
