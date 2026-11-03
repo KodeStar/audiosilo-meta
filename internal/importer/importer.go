@@ -314,6 +314,11 @@ type planner struct {
 	// its survivor rather than minting there (tombstone.go).
 	redirects      model.Redirects
 	tombstoneRides map[string]string
+	// distinct is Options.Distinct as given, and keptApart its resolution
+	// through redirects (loadExisting): the reviewed pairs the honorific fold
+	// may not merge (peopleKeptApart).
+	distinct  []check.ReviewedDistinct
+	keptApart check.DistinctPairs
 	// seriesNameJoins is every claim this run JOINED to a catalogued series stored
 	// under another name than the claim gave (reportSeriesNameJoins).
 	seriesNameJoins map[SeriesNameJoin]bool
@@ -820,6 +825,7 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 		loadedPositions:    opts.AttachEditions,
 		regenRecs:          regenRecsFor(opts.Mode),
 		rowsAsOf:           opts.RowsAsOf,
+		distinct:           opts.Distinct,
 		lv:                 newLibrivoxState(),
 	}
 }
@@ -1180,6 +1186,9 @@ func seriesClaimsAbridged(refs []seriesRef) *bool {
 // reads share one walk and one parse of each pack: the packs the planner then
 // composes into are already in hand rather than read a second time.
 func (p *planner) loadExisting() {
+	// The reviewed pairs resolve through the tombstone table this load reads,
+	// on every way out of it (an unreadable catalogue still has its batch).
+	defer func() { p.keptApart = check.ResolveDistinct(p.distinct, p.redirects) }()
 	res := check.LoadStore(p.store)
 	p.loadProblems = len(res.Problems)
 	// The create path's duplicate-identity index, off the load that is already
@@ -1820,6 +1829,7 @@ func (p *planner) creditCensusesOf(books []sourceBook) (author, narrator creditC
 			foldSyntheticVoice: foldSynthetic,
 			onHonorific:        p.noteHonorific,
 			onCredential:       p.noteCredential,
+			keptApart:          p.peopleKeptApart,
 		}
 	}
 	// The AI-narration fold is the NARRATOR side of a USER-LIBRARY run and
@@ -1831,6 +1841,35 @@ func (p *planner) creditCensusesOf(books []sourceBook) (author, narrator creditC
 	author = notify(seenIn(authorSide), false)
 	author.keepHonorific = p.lv.keepTitled
 	return author, notify(seenIn(narratorSide), p.userTier)
+}
+
+// peopleKeptApart reports whether a reviewed merge-people rejection
+// (Options.Distinct) recorded the persons credit names a and b land on as two
+// people, so that no honorific fold may resolve one onto the other: "Dr. Alex
+// George" is not `alex-george`, the novelist. Each name is asked as its person
+// slug, a retired one as its survivor (the decisions were resolved the same
+// way); a name that slugs away to nothing is no record a review named.
+func (p *planner) peopleKeptApart(a, b string) bool {
+	if len(p.keptApart[model.RedirectPeople]) == 0 {
+		return false
+	}
+	sa, fa := personSlug(a)
+	sb, fb := personSlug(b)
+	return !fa && !fb && p.personSlugsKeptApart(sa, sb)
+}
+
+// personSlugsKeptApart is peopleKeptApart for two person slugs.
+func (p *planner) personSlugsKeptApart(a, b string) bool {
+	if len(p.keptApart[model.RedirectPeople]) == 0 {
+		return false
+	}
+	live := func(s string) string {
+		if to, ok := p.redirects.Survivor(model.RedirectPeople, s); ok {
+			return to
+		}
+		return s
+	}
+	return p.keptApart.Has(model.RedirectPeople, live(a), live(b))
 }
 
 // noteHonorific records one honorific merge for the run's report. It is a SET

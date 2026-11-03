@@ -45,13 +45,27 @@ type LoadOptions struct {
 // live ids a decision covers, per namespace, plus the count of pairs it has
 // withheld. Empty for a load given no decisions.
 type reviewedPairs struct {
-	pairs      map[model.RedirectKind]map[[2]string]bool
+	pairs      DistinctPairs
 	suppressed int
 }
 
 // newReviewedPairs resolves ds through the tombstone table reds.
 func newReviewedPairs(ds []ReviewedDistinct, reds model.Redirects) *reviewedPairs {
-	r := &reviewedPairs{pairs: map[model.RedirectKind]map[[2]string]bool{}}
+	return &reviewedPairs{pairs: ResolveDistinct(ds, reds)}
+}
+
+// DistinctPairs is a resolved set of reviewed "not one record" decisions: per
+// namespace, every PAIR of surviving ids a decision covers, keyed in sorted order.
+// It is the one resolution of ReviewedDistinct, shared by this package's census
+// and by internal/importer's honorific fold, which may not re-merge a pair a
+// review separated - so the two can never disagree about which pairs a decision
+// names.
+type DistinctPairs map[model.RedirectKind]map[[2]string]bool
+
+// ResolveDistinct resolves ds through the tombstone table reds: each id is read
+// as its survivor, and two members merged since are one record, not a pair.
+func ResolveDistinct(ds []ReviewedDistinct, reds model.Redirects) DistinctPairs {
+	out := DistinctPairs{}
 	for _, d := range ds {
 		ids := make([]string, 0, len(d.IDs))
 		for _, id := range d.IDs {
@@ -62,10 +76,10 @@ func newReviewedPairs(ds []ReviewedDistinct, reds model.Redirects) *reviewedPair
 		}
 		slices.Sort(ids)
 		ids = slices.Compact(ids) // two members merged since are one record, not a pair
-		set := r.pairs[d.Kind]
+		set := out[d.Kind]
 		if set == nil {
 			set = map[[2]string]bool{}
-			r.pairs[d.Kind] = set
+			out[d.Kind] = set
 		}
 		for i := range ids {
 			for j := i + 1; j < len(ids); j++ {
@@ -73,7 +87,17 @@ func newReviewedPairs(ds []ReviewedDistinct, reds model.Redirects) *reviewedPair
 			}
 		}
 	}
-	return r
+	return out
+}
+
+// Has reports whether a decision recorded a and b, of namespace kind, as distinct.
+// The ids are asked as given: a caller holding a retired slug resolves it to its
+// survivor first, as the decisions were.
+func (d DistinctPairs) Has(kind model.RedirectKind, a, b string) bool {
+	if b < a {
+		a, b = b, a
+	}
+	return d[kind][[2]string{a, b}]
 }
 
 // withheld reports whether a reviewed decision recorded a and b, of namespace kind,
@@ -84,10 +108,7 @@ func newReviewedPairs(ds []ReviewedDistinct, reds model.Redirects) *reviewedPair
 // group, a duplicate series' supersets) counts each pair it drops, the group still
 // being reported for whatever pairs remain.
 func (r *reviewedPairs) withheld(kind model.RedirectKind, a, b string) bool {
-	if b < a {
-		a, b = b, a
-	}
-	if !r.pairs[kind][[2]string{a, b}] {
+	if !r.pairs.Has(kind, a, b) {
 		return false
 	}
 	r.suppressed++
