@@ -471,7 +471,8 @@ A reader id is a person of its own even when the name is not: when the slug of
 a reader's name is already held by a person carrying a different reader id
 (LibriVox has several accounts called "Martina"), the reader is created at
 `<name>-librivox-<reader id>` (`martina-librivox-634`), and the first holder of
-the name keeps the plain slug. Re-importing a project the catalogue already holds
+the name (by project id, whatever order the import reads them in) keeps the
+plain slug. Re-importing a project the catalogue already holds
 moves a reader folded onto another reader's person (by an import before this
 rule) onto their own; authors are not split. Nor is a reader stamped onto an
 AUTHOR record (one carrying a `librivox_author_id`, or whose life ended before

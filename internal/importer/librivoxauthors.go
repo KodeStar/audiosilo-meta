@@ -421,11 +421,17 @@ func (p *planner) keyLibrivoxAuthorVariants(books []sourceBook, titles, suffixes
 }
 
 // librivoxCreditPerson is the person slug a LibriVox credit names as the row's
-// credits resolve it: its decided person, else its name's resolution (""
-// when it cleans to no single name).
+// credits resolve it: an author credit's decided person, a reader id's
+// decided person, else its name's resolution ("" when it cleans to no single
+// name).
 func (p *planner) librivoxCreditPerson(c librivoxCredit) string {
 	if c.person != nil {
 		return p.resolveCredit(credit{person: c.person}).slug
+	}
+	if c.kind == librivoxReader {
+		if slug, ok := p.lv.readers[c.id]; ok && c.id > 0 {
+			return slug
+		}
 	}
 	if name := p.soleCreditName(c); name != "" {
 		return p.resolvePerson(name).slug

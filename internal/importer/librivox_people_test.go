@@ -1096,3 +1096,30 @@ func TestLibrivoxEditionsOfTheIDsOwnTextAreNoEvidence(t *testing.T) {
 		t.Errorf("without the edition 5142 = %q, want same-name-author", got[5142])
 	}
 }
+
+func TestLibrivoxReaderFoldSplitOffIsNoMerge(t *testing.T) {
+	// "Dr. Jane Roe" (9301) folds to "Jane Roe", a name reader 9300 holds, so
+	// she is split onto a record of her own: no honorific merge happened, and
+	// none is reported. A fold that does land is: "Dr. Kim Lee" (9302) claims
+	// the catalogued narrator Kim Lee, who carries no reader id.
+	dataDir := t.TempDir()
+	files := map[string]string{}
+	files[personAddr("kim-lee")] = personFiles(t, "kim-lee", "Kim Lee", nil)
+	narratedWork(t, files, "a-retail-reading", "A Retail Reading", "kim-lee")
+	seedTree(t, dataDir, files)
+	sum := runLibrivox(t, writeSnapshot(t,
+		withReader(byAuthor(t, 99150, "First Readings", "English", lvAuthor(5401, "Ann", "One")), 9300, "Jane Roe"),
+		withReader(byAuthor(t, 99151, "Second Readings", "English", lvAuthor(5402, "Bea", "Two")), 9301, "Dr. Jane Roe"),
+		withReader(byAuthor(t, 99152, "Third Readings", "English", lvAuthor(5403, "Cy", "Three")), 9302, "Dr. Kim Lee"),
+	), dataDir, allLibrivox)
+	if p := personOf(t, dataDir, "jane-roe-librivox-9301"); p.ReaderID != 9301 {
+		t.Fatalf("jane-roe-librivox-9301 = %+v", p)
+	}
+	if p := personOf(t, dataDir, "kim-lee"); p.ReaderID != 9302 {
+		t.Errorf("kim-lee = %+v, want reader 9302", p)
+	}
+	if want := []string{"Dr. Kim Lee -> Kim Lee"}; !reflect.DeepEqual(sum.HonorificMerges, want) {
+		t.Errorf("HonorificMerges = %v, want %v", sum.HonorificMerges, want)
+	}
+	mustValidate(t, dataDir)
+}

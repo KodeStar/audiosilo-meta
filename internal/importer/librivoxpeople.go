@@ -373,6 +373,7 @@ func (p *planner) resolveLibrivoxAuthors(books []sourceBook) {
 		p.summary.LibrivoxAuthorPairs = append(p.summary.LibrivoxAuthorPairs,
 			LibrivoxAuthorPair{Titled: p.librivoxPairAuthor(pr[0]), Bare: p.librivoxPairAuthor(pr[1])})
 	}
+	p.decideLibrivoxReaders(books)
 	p.noteLibrivoxFolds(books)
 	if len(decided) > 0 {
 		p.summary.Notes = append(p.summary.Notes, fmt.Sprintf(
@@ -512,26 +513,23 @@ func (p *planner) pinLibrivoxAuthor(cl *lvAuthorClaim, spelling string) {
 }
 
 // noteLibrivoxFolds reports the honorific merges the import makes on LibriVox
-// rows (the censuses report none there, creditCensusesOf): a credit whose name
-// the fold strips of a courtesy title and which is credited by the stripped
-// name - an author credit with no decided person, or one whose decided person
-// is the stripped name's, and a reader whose id the catalogue does not hold. A
-// catalogued id is its holder whatever its spelling, so it folds nothing.
+// rows (the censuses report none there, creditCensusesOf), once every author
+// and reader id is decided: a credit whose name the fold strips of a courtesy
+// title and which lands on the stripped name's person - one whose id decided
+// that person (librivoxCreditPerson), or one no id decides, which its name
+// does. A catalogued id is its holder whatever its spelling, and a reader
+// split onto a record of their own is no merge, so neither folds anything.
 // Every row is read, held ones too, as the censuses would have read them.
 func (p *planner) noteLibrivoxFolds(books []sourceBook) {
-	sides := map[librivoxKind][2]creditCensus{
-		librivoxAuthor: {p.credits.author.quiet(), p.credits.author.unfolded()},
-		librivoxReader: {p.credits.narrator.quiet(), p.credits.narrator.unfolded()},
-	}
 	for i := range books {
 		b := &books[i]
 		if b.lv == nil {
 			continue
 		}
 		for _, c := range b.lv.credits {
-			list := b.authors
+			list, census := b.authors, p.credits.author
 			if c.kind == librivoxReader {
-				list = b.narrators
+				list, census = b.narrators, p.credits.narrator
 			}
 			if c.index >= len(list) {
 				continue
@@ -539,12 +537,12 @@ func (p *planner) noteLibrivoxFolds(books []sourceBook) {
 			if _, held := p.lv.people[librivoxKey{c.kind, c.id}]; held && c.id > 0 {
 				continue
 			}
-			folded, _ := creditWithRolesSided(list[c.index], sides[c.kind][0])
-			plain, _ := creditWithRolesSided(list[c.index], sides[c.kind][1])
+			folded, _ := creditWithRolesSided(list[c.index], census.quiet())
+			plain, _ := creditWithRolesSided(list[c.index], census.unfolded())
 			if folded == plain {
 				continue
 			}
-			if c.person != nil && p.resolveCredit(credit{person: c.person}).slug != p.resolvePerson(folded).slug {
+			if person := p.librivoxCreditPerson(c); person != "" && person != p.resolvePerson(folded).slug {
 				continue
 			}
 			p.noteHonorific(plain, folded)
