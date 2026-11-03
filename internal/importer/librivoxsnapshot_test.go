@@ -1,6 +1,7 @@
 package importer
 
 import (
+	"encoding/json"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -32,7 +33,7 @@ func writeRawSnapshot(t *testing.T, manifest bool, pages map[string]string) stri
 func snapshotIDs(t *testing.T, dir, sel string) []int {
 	t.Helper()
 	ids := mustLibrivoxIDs(sel)
-	projects, err := readLibrivoxSnapshot(dir, &ids)
+	projects, _, err := readLibrivoxSnapshot(dir, &ids)
 	if err != nil {
 		t.Fatalf("--ids %s: %v", sel, err)
 	}
@@ -65,7 +66,7 @@ func TestLibrivoxTrancheDecodesOnlyItsPages(t *testing.T) {
 	}
 	// The pages that can hold the selection ARE decoded.
 	ids := mustLibrivoxIDs("300")
-	if _, err := readLibrivoxSnapshot(dir, &ids); err == nil {
+	if _, _, err := readLibrivoxSnapshot(dir, &ids); err == nil {
 		t.Error("--ids 300 read past the broken page")
 	}
 }
@@ -79,11 +80,11 @@ func TestLibrivoxHandAssembledSnapshotIsReadWhole(t *testing.T) {
 		"offset-0000001.json": `{"books":[{"id":"300","title":"C"}, NOT JSON`,
 	}
 	ids := mustLibrivoxIDs("100")
-	if _, err := readLibrivoxSnapshot(writeRawSnapshot(t, false, pages), &ids); err == nil {
+	if _, _, err := readLibrivoxSnapshot(writeRawSnapshot(t, false, pages), &ids); err == nil {
 		t.Error("a snapshot without a manifest was read by its page index")
 	}
 	pages["extra.json"] = `{"books":[{"id":"500","title":"E"}]}`
-	if _, err := readLibrivoxSnapshot(writeRawSnapshot(t, true, pages), &ids); err == nil {
+	if _, _, err := readLibrivoxSnapshot(writeRawSnapshot(t, true, pages), &ids); err == nil {
 		t.Error("a snapshot with a page not named by its offset was read by its page index")
 	}
 }
@@ -140,5 +141,34 @@ func TestLibrivoxIDsOverlaps(t *testing.T) {
 		if got := ids.overlaps(tc.lo, tc.hi); got != tc.want {
 			t.Errorf("overlaps(%d, %d) = %v, want %v", tc.lo, tc.hi, got, tc.want)
 		}
+	}
+}
+
+// A project whose id is missing or unreadable is warned about and skipped,
+// never imported as project 0; the rest of its page imports as usual.
+func TestLibrivoxUnreadableProjectIDIsWarnedAndSkipped(t *testing.T) {
+	good, err := json.Marshal(fixtureProject(t, 527))
+	if err != nil {
+		t.Fatal(err)
+	}
+	snap := writeRawSnapshot(t, false, map[string]string{
+		"page.json": `{"books":[{"id":"abc","title":"Bad Id"},{"title":"No Id"},{"id":"-3","title":"Negative Id"},` + string(good) + `]}`,
+	})
+	sum := runLibrivox(t, snap, t.TempDir(), allLibrivox)
+	if sum.LibrivoxProjects != 1 || sum.NewRecordings != 1 {
+		t.Errorf("projects/recordings = %d/%d, want only 527", sum.LibrivoxProjects, sum.NewRecordings)
+	}
+	page := filepath.Join(snap, librivoxPagesDir, "page.json")
+	var want []string
+	for _, title := range []string{"Bad Id", "No Id", "Negative Id"} {
+		want = append(want, "librivox snapshot "+page+": project \""+title+"\" has no readable id; skipped (no --ids can select it)")
+	}
+	if !reflect.DeepEqual(sum.Warnings[:min(3, len(sum.Warnings))], want) || sum.RunLevelWarnings < 3 {
+		t.Errorf("warnings = %q (run-level %d), want them to lead with %q", sum.Warnings, sum.RunLevelWarnings, want)
+	}
+	// The whole-snapshot reader leaves them out too.
+	projects, err := ReadLibrivoxSnapshot(snap)
+	if err != nil || len(projects) != 1 || projects[0].ID != 527 {
+		t.Errorf("ReadLibrivoxSnapshot = %d projects, %v", len(projects), err)
 	}
 }

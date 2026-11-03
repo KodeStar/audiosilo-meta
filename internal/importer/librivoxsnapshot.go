@@ -17,7 +17,10 @@ import (
 // The reader needs only pages/: every *.json file under it is a {"books": [...]}
 // body, read in name order. A project id seen twice keeps its LAST copy (a
 // later page is a later reading), which never happens in a fetch that ran to
-// completion but makes a hand-assembled snapshot unambiguous.
+// completion but makes a hand-assembled snapshot unambiguous. A project whose
+// id is missing or unreadable (lvInt's 0, or a negative number) can be selected
+// by no --ids and keyed by nothing: it is skipped with a warning naming its page
+// and title, never kept as project 0.
 //
 // A TRANCHE (an --ids selection) reads only the pages that can hold its ids
 // when the snapshot is one the fetcher wrote: a manifest beside pages named
@@ -41,20 +44,23 @@ type librivoxPageSpan struct {
 	lo, hi int
 }
 
-// ReadLibrivoxSnapshot reads every project a snapshot holds, sorted by id.
+// ReadLibrivoxSnapshot reads every project a snapshot holds, sorted by id. A
+// project with no readable id is left out (RunLibrivox warns about it).
 func ReadLibrivoxSnapshot(dir string) ([]LibrivoxProject, error) {
-	return readLibrivoxSnapshot(dir, nil)
+	projects, _, err := readLibrivoxSnapshot(dir, nil)
+	return projects, err
 }
 
 // readLibrivoxSnapshot is ReadLibrivoxSnapshot keeping only the projects ids
 // selects (every project when ids is nil), so a tranche import holds only its
 // own projects rather than the whole catalogue, and decodes only the pages that
-// can hold them where the snapshot's order allows (see above).
-func readLibrivoxSnapshot(dir string, ids *LibrivoxIDs) ([]LibrivoxProject, error) {
+// can hold them where the snapshot's order allows (see above). warnings names
+// each project of the pages read that was skipped for an unreadable id.
+func readLibrivoxSnapshot(dir string, ids *LibrivoxIDs) (projects []LibrivoxProject, warnings []string, err error) {
 	pagesDir := filepath.Join(dir, librivoxPagesDir)
 	entries, err := os.ReadDir(pagesDir)
 	if err != nil {
-		return nil, fmt.Errorf("read LibriVox snapshot %s: %w", dir, err)
+		return nil, nil, fmt.Errorf("read LibriVox snapshot %s: %w", dir, err)
 	}
 	var names []string
 	for _, e := range entries {
@@ -63,8 +69,8 @@ func readLibrivoxSnapshot(dir string, ids *LibrivoxIDs) ([]LibrivoxProject, erro
 		}
 	}
 	if ids == nil {
-		projects, _, err := decodeLibrivoxPages(pagesDir, unboundedSpans(names), nil)
-		return projects, err
+		projects, warnings, _, err := decodeLibrivoxPages(pagesDir, unboundedSpans(names), nil)
+		return projects, warnings, err
 	}
 	if spans, ok := librivoxPageIndex(dir, names); ok {
 		var selected []librivoxPageSpan
@@ -73,13 +79,13 @@ func readLibrivoxSnapshot(dir string, ids *LibrivoxIDs) ([]LibrivoxProject, erro
 				selected = append(selected, sp)
 			}
 		}
-		projects, inSpan, err := decodeLibrivoxPages(pagesDir, selected, ids.Has)
+		projects, warnings, inSpan, err := decodeLibrivoxPages(pagesDir, selected, ids.Has)
 		if err != nil || inSpan {
-			return projects, err
+			return projects, warnings, err
 		}
 	}
-	projects, _, err := decodeLibrivoxPages(pagesDir, unboundedSpans(names), ids.Has)
-	return projects, err
+	projects, warnings, _, err = decodeLibrivoxPages(pagesDir, unboundedSpans(names), ids.Has)
+	return projects, warnings, err
 }
 
 // unboundedSpans is every page with no span: decoded, never checked.
@@ -92,25 +98,29 @@ func unboundedSpans(names []string) []librivoxPageSpan {
 }
 
 // decodeLibrivoxPages decodes the pages in order, keeping the projects keep
-// selects (all when keep is nil). inSpan=false means a page held an id outside
-// its span: the snapshot's order did not hold, and the caller reads it whole
-// instead.
-func decodeLibrivoxPages(pagesDir string, pages []librivoxPageSpan, keep func(id int) bool) (projects []LibrivoxProject, inSpan bool, err error) {
+// selects (all when keep is nil), and warns about each project with no
+// readable id. inSpan=false means a page held an id outside its span: the
+// snapshot's order did not hold, and the caller reads it whole instead.
+func decodeLibrivoxPages(pagesDir string, pages []librivoxPageSpan, keep func(id int) bool) (projects []LibrivoxProject, warnings []string, inSpan bool, err error) {
 	byID := map[int]LibrivoxProject{}
 	for _, pg := range pages {
 		path := filepath.Join(pagesDir, pg.name)
 		body, err := os.ReadFile(path)
 		if err != nil {
-			return nil, false, err
+			return nil, nil, false, err
 		}
 		books, err := parseLibrivoxPage(body)
 		if err != nil {
-			return nil, false, fmt.Errorf("%s: %w", path, err)
+			return nil, nil, false, fmt.Errorf("%s: %w", path, err)
 		}
 		for _, b := range books {
 			id := int(b.ID)
-			if id > 0 && ((pg.lo > 0 && id < pg.lo) || (pg.hi > 0 && id > pg.hi)) {
-				return nil, false, nil
+			if id <= 0 {
+				warnings = append(warnings, fmt.Sprintf("librivox snapshot %s: project %q has no readable id; skipped (no --ids can select it)", path, b.Title))
+				continue
+			}
+			if (pg.lo > 0 && id < pg.lo) || (pg.hi > 0 && id > pg.hi) {
+				return nil, nil, false, nil
 			}
 			if keep == nil || keep(id) {
 				byID[id] = b
@@ -122,7 +132,7 @@ func decodeLibrivoxPages(pagesDir string, pages []librivoxPageSpan, keep func(id
 		out = append(out, b)
 	}
 	sort.Slice(out, func(i, j int) bool { return out[i].ID < out[j].ID })
-	return out, true, nil
+	return out, warnings, true, nil
 }
 
 // librivoxPageIndex is the spans of a fetcher-written snapshot's pages (see the

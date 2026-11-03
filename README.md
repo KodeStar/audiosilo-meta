@@ -375,7 +375,9 @@ manifest beside offset-named pages) decodes only the pages that can hold its
 `--ids`: the fetcher pages the feed in ascending project id, so each page's
 first id, read off the head of the file, bounds it (0.18 s instead of 2.0 s for
 a 2,000-project tranche of the 22,449-project snapshot). A decoded page holding
-an id outside its bounds, or any other snapshot, is read whole.
+an id outside its bounds, or any other snapshot, is read whole. A project
+whose id is missing or unreadable is skipped with a warning naming its page
+and title (no `--ids` could select it).
 
 What an import does: a project LibriVox is still recording (no `totaltimesecs`
 and no archive.org item in `url_iarchive`; the feed has no status field) is set

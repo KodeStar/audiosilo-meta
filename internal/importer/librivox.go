@@ -240,7 +240,7 @@ func RunLibrivox(snapshotDir string, ids LibrivoxIDs, opts Options) (Summary, er
 		return Summary{}, fmt.Errorf("a LibriVox import creates only; it has no %s mode", opts.Mode.runName())
 	}
 	// ParseLibrivoxIDs admits no id below 1, so every selected project has one.
-	projects, err := readLibrivoxSnapshot(snapshotDir, &ids)
+	projects, snapshotWarnings, err := readLibrivoxSnapshot(snapshotDir, &ids)
 	if err != nil {
 		return Summary{}, err
 	}
@@ -258,6 +258,9 @@ func RunLibrivox(snapshotDir string, ids LibrivoxIDs, opts Options) (Summary, er
 	})
 	sum.LibrivoxProjects = len(projects)
 	sum.LibrivoxInProgress = inProgress
+	// A snapshot row no --ids can select is a run-level line, ahead of the rows'.
+	sum.Warnings = slices.Concat(snapshotWarnings, sum.Warnings)
+	sum.RunLevelWarnings += len(snapshotWarnings)
 	return sum, err
 }
 
