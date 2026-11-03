@@ -275,6 +275,26 @@ type Chapter struct {
 	// one file per section (a LibriVox section's archive.org MP3). pkg/check
 	// requires the recording's LibrivoxID beside it.
 	AudioURL string `json:"audio_url,omitempty"`
+	// Readers is who reads THIS chapter (person slugs, each one of the
+	// recording's narrators), for a recording whose chapters are read by
+	// different people. When no chapter of a recording carries readers, every
+	// chapter is read by its narrators; once one does, a chapter without them
+	// states none (ChapterReaders).
+	Readers []string `json:"readers,omitempty"`
+	// SectionNumber is the source's own number for the chapter (LibriVox's
+	// section_number), set only where it differs from the 1-based position:
+	// nil means the position is the number (SectionNumberAt). A pointer because
+	// LibriVox numbers some projects from 0.
+	SectionNumber *int `json:"section_number,omitempty"`
+}
+
+// SectionNumberAt is the number of the chapter at 0-based index i: its stated
+// SectionNumber, else its 1-based position.
+func (c Chapter) SectionNumberAt(i int) int {
+	if c.SectionNumber != nil {
+		return *c.SectionNumber
+	}
+	return i + 1
 }
 
 // RecordingLinks is where a recording is published, each URL as its source
@@ -317,6 +337,17 @@ type Recording struct {
 	// A fact about the recorded TEXT edition, kept on the recording and never
 	// written onto Work.FirstPublished, which another source may own.
 	CopyrightYear int `json:"copyright_year,omitempty"`
+	// LibrivoxTitle is the LibriVox project's own title, repeat markers and
+	// spelling kept ("Metamorphosis (version 2)"); the work's Title is the
+	// work's. LibrivoxGenres is the project's own genre names, verbatim, in
+	// LibriVox's order (LICENSING.md's public-domain exception) - never the
+	// work's Genres. Both require LibrivoxID (pkg/check).
+	LibrivoxTitle  string   `json:"librivox_title,omitempty"`
+	LibrivoxGenres []string `json:"librivox_genres,omitempty"`
+	// Credits are the recording's own role credits (a LibriVox project's
+	// translator): a fact about this production, not the work, in the same
+	// (person, role) shape as Work.Credits.
+	Credits []Credit `json:"credits,omitempty"`
 	// AddedAt is when the recording entered the database, in the same two
 	// accepted shapes as Work.AddedAt.
 	AddedAt string   `json:"added_at,omitempty"`

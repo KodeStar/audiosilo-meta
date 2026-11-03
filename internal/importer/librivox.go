@@ -384,7 +384,7 @@ func librivoxTitle(t string) string {
 // language - is the planner's own, so it is worded and counted like every other
 // source's.
 func librivoxBook(pr LibrivoxProject) sourceBook {
-	facts := &librivoxFacts{id: int(pr.ID), archiveID: archiveIDOf(pr.URLIArchive)}
+	facts := &librivoxFacts{id: int(pr.ID), archiveID: archiveIDOf(pr.URLIArchive), title: strings.TrimSpace(pr.Title)}
 	facts.copyrightYear, _ = librivoxYear(string(pr.CopyrightYear))
 	links := model.RecordingLinks{
 		Librivox: httpsOrEmpty(pr.URLLibrivox),
@@ -431,20 +431,29 @@ func librivoxBook(pr LibrivoxProject) sourceBook {
 
 	sections := append([]LibrivoxSection(nil), pr.Sections...)
 	sort.SliceStable(sections, func(i, j int) bool { return sections[i].SectionNumber < sections[j].SectionNumber })
-	seenReader := map[string]bool{}
+	readerCredit := map[string]int{} // a reader's key -> their credit's index in facts.credits
 	var start int64
 	chapters := make([]sourceChapter, 0, len(sections))
 	for _, s := range sections {
+		sec := librivoxSection{number: int(s.SectionNumber)}
 		for _, r := range s.Readers {
 			name := strings.TrimSpace(r.DisplayName)
-			key := strconv.Itoa(int(r.ReaderID)) + "\x00" + name
-			if name == "" || seenReader[key] {
+			if name == "" {
 				continue
 			}
-			seenReader[key] = true
-			facts.credits = append(facts.credits, librivoxCredit{kind: librivoxReader, id: int(r.ReaderID), name: name, index: len(b.narrators)})
-			b.narrators = append(b.narrators, name)
+			key := strconv.Itoa(int(r.ReaderID)) + "\x00" + name
+			ci, seen := readerCredit[key]
+			if !seen {
+				ci = len(facts.credits)
+				readerCredit[key] = ci
+				facts.credits = append(facts.credits, librivoxCredit{kind: librivoxReader, id: int(r.ReaderID), name: name, index: len(b.narrators)})
+				b.narrators = append(b.narrators, name)
+			}
+			if !slices.Contains(sec.readers, ci) {
+				sec.readers = append(sec.readers, ci)
+			}
 		}
+		facts.sections = append(facts.sections, sec)
 		length := int64(s.Playtime) * 1000
 		ch := sourceChapter{title: strings.TrimSpace(s.Title), startMS: start, lengthMS: length, hasStart: true, hasLength: true}
 		facts.audioURLs = append(facts.audioURLs, httpsOrEmpty(s.ListenURL))
@@ -457,6 +466,9 @@ func librivoxBook(pr LibrivoxProject) sourceBook {
 	for _, g := range pr.Genres {
 		if name := strings.TrimSpace(g.Name); name != "" {
 			b.genres = append(b.genres, genreClaim{name: name})
+			if !slices.Contains(facts.genres, name) {
+				facts.genres = append(facts.genres, name)
+			}
 		}
 	}
 	return b
@@ -610,6 +622,13 @@ type librivoxFacts struct {
 	// states none). Only applyLibrivoxRecording puts them on chapters, so no
 	// other source's chapter rows can ever carry one.
 	audioURLs []string
+	// title is the project's own title, its repeat markers kept, and genres its
+	// own genre names, verbatim, each once, in LibriVox's order; sections is
+	// each section's number and readers in chapter order. The recording pass
+	// (librivoxrecording.go) writes them onto the recording.
+	title    string
+	genres   []string
+	sections []librivoxSection
 }
 
 // librivoxState is a LibriVox run's planner state. The zero value is every
@@ -641,6 +660,10 @@ type librivoxState struct {
 	// landed is the rows whose recording this run created, in row order, with
 	// what the stamp checks a resolved person against.
 	landed []librivoxLanding
+	// heldRows is the rows whose project the catalogue already held
+	// (dedupeByLibrivox), in row order, for the recording pass to restate
+	// LibriVox's facts on (librivoxrecording.go).
+	heldRows []librivoxHeld
 	// titles is the spelling-variant index (librivoxmatch.go), built on first
 	// use; variantExamples names a few rows it attached, for the run's note.
 	titles          map[string][]string
@@ -679,7 +702,7 @@ type librivoxKey struct {
 // recording's narrator slugs.
 type librivoxLanding struct {
 	facts     *librivoxFacts
-	work      string
+	work, rec string
 	narrators map[string]bool
 }
 
@@ -849,6 +872,9 @@ func (p *planner) dedupeByLibrivox(b sourceBook, warn func(string, ...any)) bool
 		return false
 	}
 	p.splitHeldLibrivoxReaders(b, warn)
+	if ref, ok := p.lv.held[b.lv.id]; ok {
+		p.lv.heldRows = append(p.lv.heldRows, librivoxHeld{facts: b.lv, ref: ref})
+	}
 	p.summary.Skipped++
 	return true
 }
@@ -1064,7 +1090,7 @@ func (p *planner) applyLibrivoxRecording(rec *outRecording, b sourceBook) {
 		}
 	}
 	p.lv.ids[b.lv.id] = true
-	p.lv.landed = append(p.lv.landed, librivoxLanding{facts: b.lv, work: rec.Work, narrators: ToSet(rec.Narrators)})
+	p.lv.landed = append(p.lv.landed, librivoxLanding{facts: b.lv, work: rec.Work, rec: rec.ID, narrators: ToSet(rec.Narrators)})
 }
 
 // stampLibrivoxPeople writes each landed row's LibriVox ids onto the people its

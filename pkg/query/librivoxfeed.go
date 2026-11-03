@@ -32,13 +32,17 @@ import (
 //     day LibriVox catalogued it: a client syncing LibriVox's own new projects
 //     reads LibriVox's since; ours answers "what reached the mirror since".
 //   - title, author, genre: an exact, case-insensitive match, or with a leading
-//     "^" a prefix match. title is the work's title (LibriVox's repeat markers,
-//     "(version N)", "(ver. N)", "(Dramatic Reading)" or a bare "Version N",
-//     are not stored: they name projects, not works); author is an
-//     author's LAST name - the last word of the name - and never a translator;
-//     genre is a LibriVox genre name the importer maps (the same table) or a
-//     genre of this project's vocabulary. LibriVox's own "^" on author matches the
-//     END of the name (an inverted LIKE); here it is the prefix it documents.
+//     "^" a prefix match. title is the project's own title, LibriVox's repeat
+//     markers ("(version N)", "(Dramatic Reading)") and spelling kept
+//     (recording.librivox_title); author is an author's LAST name - the last
+//     word of the name - and never a translator; genre is one of the project's
+//     own LibriVox genre names (recording.librivox_genres), exactly as LibriVox
+//     filters, never widened through the vocabulary mapping. LibriVox's own "^"
+//     on author matches the END of the name (an inverted LIKE); here it is the
+//     prefix it documents. On an artifact older than
+//     librivoxRecordingSchemaVersion (no project title or genre names stored)
+//     title is the work's title and genre a LibriVox name the importer maps or a
+//     vocabulary value, as before.
 //   - extended=1 adds url_iarchive, sections, genres and translators;
 //     coverart=1 adds coverart_jpg, coverart_pdf and coverart_thumbnail (null when
 //     unstated); fields ({id,title}, a comma list, or fields[]=) keeps only the
@@ -52,24 +56,26 @@ import (
 // What comes back differs from LibriVox's answer in the facts the mirror does
 // not keep, by design (LICENSING.md, facts only): description is always "",
 // url_project and url_other are "", coverart_pdf and coverart_thumbnail are null,
-// a section's id is "" and its section_number is its 1-based position (LibriVox
-// numbers some projects from 0), a section's language is the project's language,
-// genres are this project's vocabulary (never LibriVox's taxonomy verbatim) with
-// an empty id, an author's first_name/last_name are the stored name split at its
-// last word, and dob/dod are years or "" (LibriVox's "alive" is not a year). The
-// title is the catalogue work's title, so a project attached to an existing work
-// reads in that work's spelling and case, without its repeat markers ("(version
-// N)", "(Dramatic Reading)"; the importer's librivoxTitle). Translators are
-// the work's translator credits: a project attached to a catalogued work lists
-// that work's translators, which may differ from LibriVox's; a translator's
-// LibriVox id and years come from the person record, so they appear once the
-// importer has stamped that person (an attach stamps only people the work
-// names). Per-section readers are not stored: a recording with ONE narrator
-// names that reader on every section, a multi-reader recording names none.
-// Everything else - ids, the language name, copyright_year, URLs, runtimes,
-// section titles, files and playtimes, author ids and years - is LibriVox's value
-// as the mirror stored it, and the golden test compares each one with the real
-// LibriVox responses in the importer's fixture.
+// a section's id is "", a section's language is the project's language, a
+// genre's id is "", an author's first_name/last_name are the stored name split
+// at its last word, and dob/dod are years or "" (LibriVox's "alive" is not a
+// year). A genre LibriVox lists twice on one project is listed once. Everything
+// else is LibriVox's value as the mirror stored it (the LIBRIVOX RECORDING
+// layer, librivoxRecordingSchemaVersion): the title is the project's own
+// (recording.librivox_title), a section's section_number LibriVox's own (from
+// 0 on some projects), a section's readers its own (chapter readers, or the
+// recording's one narrator on every section), the translators the project's
+// own (the recording's credits, never the work's), the genres LibriVox's names
+// (recording.librivox_genres) - and ids, the language name, copyright_year,
+// URLs, runtimes, section titles, files and playtimes, author and translator ids
+// and years. The golden test compares each one with the real LibriVox responses
+// in the importer's fixture. A person's LibriVox id and years come from the
+// person record, so a translator the importer resolved by name alone names none.
+//
+// On an artifact older than librivoxRecordingSchemaVersion the answer is what
+// the mirror stored before: the work's title without its repeat markers, the
+// 1-based position as section_number, the work's translators, the vocabulary
+// genres, and readers only for a one-narrator recording.
 //
 // No results is LibriVox's 404 {"error": "Audiobooks could not be found"}, which
 // is also every answer of an artifact older than librivoxSchemaVersion (it holds
@@ -211,11 +217,23 @@ func likeEscape(s string) string {
 // word is what follows. A one-word name ("Voltaire") is the whole name.
 const lastNameSQL = `substr(p.name, length(rtrim(p.name, replace(p.name, ' ', ''))) + 1)`
 
-// librivoxFeedSelect is the feed page's row: the recording, its work's title,
-// its LibriVox columns. Every page reads idx_recordings_librivox in id order.
-const librivoxFeedSelect = `SELECT r.work_id, r.id, r.librivox_id, w.title, r.language, r.copyright_year, ` +
-	`r.link_librivox, r.link_zip, r.link_rss, r.link_text, r.archive_id, r.cover_url, r.runtime_min ` +
-	`FROM recordings r JOIN works w ON w.id = r.work_id WHERE r.librivox_id IS NOT NULL`
+// librivoxFeedSelect is the feed page's row: the recording, its title (the
+// project's own, else its work's: lvTitleExpr), its LibriVox columns. Every page
+// reads idx_recordings_librivox in id order.
+func librivoxFeedSelect(recordingLayer bool) string {
+	return `SELECT r.work_id, r.id, r.librivox_id, ` + lvTitleExpr(recordingLayer) + `, r.language, r.copyright_year, ` +
+		`r.link_librivox, r.link_zip, r.link_rss, r.link_text, r.archive_id, r.cover_url, r.runtime_min ` +
+		`FROM recordings r JOIN works w ON w.id = r.work_id WHERE r.librivox_id IS NOT NULL`
+}
+
+// lvTitleExpr is a feed row's title: the project's own (librivox_title, from
+// librivoxRecordingSchemaVersion), else the work's.
+func lvTitleExpr(recordingLayer bool) string {
+	if recordingLayer {
+		return `coalesce(r.librivox_title, w.title)`
+	}
+	return `w.title`
+}
 
 // librivoxFeedQuery builds the page query for p: the filters as SQL arms, the
 // project-id order and the window. Every filter is an arm evaluated per LibriVox
@@ -223,8 +241,12 @@ const librivoxFeedSelect = `SELECT r.work_id, r.id, r.librivox_id, w.title, r.la
 // genre ones as EXISTS probes through each work's own index - so a filtered page
 // costs at most one walk of the LibriVox range, never a scan of the people or
 // genre tables.
-func librivoxFeedQuery(p librivoxFeedParams) (string, []any) {
-	query, args := librivoxFeedSelect, []any{}
+//
+// recordingLayer is whether the artifact carries the LIBRIVOX RECORDING layer
+// (librivoxRecordingSchemaVersion): title and genre then match the project's own
+// title and genre names.
+func librivoxFeedQuery(p librivoxFeedParams, recordingLayer bool) (string, []any) {
+	query, args := librivoxFeedSelect(recordingLayer), []any{}
 	if p.id != 0 {
 		query += ` AND r.librivox_id = ?`
 		args = append(args, p.id)
@@ -237,10 +259,10 @@ func librivoxFeedQuery(p librivoxFeedParams) (string, []any) {
 	}
 	if p.title.value != "" {
 		if p.title.prefix {
-			query += ` AND w.title LIKE ? ESCAPE '\'`
+			query += ` AND ` + lvTitleExpr(recordingLayer) + ` LIKE ? ESCAPE '\'`
 			args = append(args, likeEscape(p.title.value)+"%")
 		} else {
-			query += ` AND w.title = ? COLLATE NOCASE`
+			query += ` AND ` + lvTitleExpr(recordingLayer) + ` = ? COLLATE NOCASE`
 			args = append(args, p.title.value)
 		}
 	}
@@ -256,7 +278,16 @@ func librivoxFeedQuery(p librivoxFeedParams) (string, []any) {
 			` AND ` + notTranslatorArm + `)`
 		args = append(args, arg)
 	}
-	if p.genre.value != "" {
+	if p.genre.value != "" && recordingLayer {
+		// The project's own genre names, exactly as LibriVox filters them: a
+		// LibriVox name is never widened through the vocabulary mapping (meta#2761).
+		match, arg := `g.genre = ? COLLATE NOCASE`, any(p.genre.value)
+		if p.genre.prefix {
+			match, arg = `g.genre LIKE ? ESCAPE '\'`, likeEscape(p.genre.value)+"%"
+		}
+		query += ` AND EXISTS (SELECT 1 FROM recording_librivox_genres g WHERE g.work_id = r.work_id AND g.recording_id = r.id AND ` + match + `)`
+		args = append(args, arg)
+	} else if p.genre.value != "" {
 		slugs, like := librivoxGenreSlugs(p.genre)
 		arms := []string{}
 		if len(slugs) > 0 {
@@ -282,8 +313,10 @@ func librivoxFeedQuery(p librivoxFeedParams) (string, []any) {
 var librivoxGenres = model.LibrivoxGenres()
 
 // librivoxGenreSlugs resolves a genre parameter to the vocabulary values it
-// names: a LibriVox genre name through the importer's own table
-// (model.LibrivoxGenres) or a vocabulary value as itself, case-insensitively.
+// names, on an artifact older than librivoxRecordingSchemaVersion (one with no
+// LibriVox genre names stored): a LibriVox genre name through the importer's own
+// table (model.LibrivoxGenres) or a vocabulary value as itself,
+// case-insensitively.
 // A prefix match takes every LibriVox name that starts with the value, plus a
 // LIKE pattern over the vocabulary values themselves.
 func librivoxGenreSlugs(m textMatch) (slugs []string, like string) {
@@ -325,11 +358,13 @@ type lvPerson struct {
 	birthYear, deathYear int
 }
 
-// lvChapter is one section as the feed names one.
+// lvChapter is one section as the feed names one: number is LibriVox's
+// section_number (the stated one, else the 1-based position).
 type lvChapter struct {
 	title    string
 	lengthMS int64
 	audioURL string
+	number   int
 }
 
 // lvReader is one recording narrator as the feed names a reader.
@@ -346,7 +381,8 @@ func (s *DB) librivoxFeed(ctx context.Context, p librivoxFeedParams) ([]map[stri
 	if !s.hasLibrivoxLayer() {
 		return nil, nil
 	}
-	query, args := librivoxFeedQuery(p)
+	recordingLayer := s.hasLibrivoxRecordingLayer()
+	query, args := librivoxFeedQuery(p, recordingLayer)
 	rows, err := s.db.QueryContext(ctx, query, args...)
 	if err != nil {
 		return nil, err
@@ -359,7 +395,7 @@ func (s *DB) librivoxFeed(ctx context.Context, p librivoxFeedParams) ([]map[stri
 	for _, r := range page {
 		workIDs = append(workIDs, r.workID)
 	}
-	facts, err := s.librivoxFeedFacts(ctx, workIDs, p.extended)
+	facts, err := s.librivoxFeedFacts(ctx, workIDs, p.extended, recordingLayer)
 	if err != nil {
 		return nil, err
 	}
@@ -392,13 +428,21 @@ func scanLibrivoxRows(rows *sql.Rows) ([]lvRow, error) {
 // recKey is a recording's key in the artifact.
 type recKey struct{ work, rec string }
 
-// lvFacts is what a feed page reads per work and per recording, batched.
+// lvFacts is what a feed page reads per work and per recording, batched. On an
+// artifact carrying the LIBRIVOX RECORDING layer the translators, genres and
+// section readers are the recording's own (byRecording); on an older one the
+// work's translators and vocabulary genres, and no section readers.
 type lvFacts struct {
 	authors     map[string][]lvPerson // by work: authors that are not translators
-	translators map[string][]lvPerson // by work
-	genres      map[string][]string   // by work
+	translators map[string][]lvPerson // by work (an older artifact)
+	genres      map[string][]string   // by work (an older artifact)
 	chapters    map[recKey][]lvChapter
-	readers     map[recKey][]lvReader
+	readers     map[recKey][]lvReader // the recording's narrators
+
+	byRecording    bool
+	recTranslators map[recKey][]lvPerson
+	recGenres      map[recKey][]string
+	sectionReaders map[recKey]map[int][]lvReader // by chapter idx
 }
 
 // notTranslatorArm keeps a work_authors row (wa) whose person the work does not
@@ -429,10 +473,16 @@ func lvGenresSQL(ph string) string {
 // CROSS JOIN is SQLite's join-order pin: left to its own plan (no sqlite_stat1)
 // the planner drives from chapters through the transitive work_id constraint,
 // reading every recording's chapters and filtering after.
-func lvChaptersSQL(ph string) string {
-	return `SELECT r.work_id, r.id, c.title, c.length_ms, c.audio_url FROM recordings r ` +
-		`CROSS JOIN chapters c ON c.work_id = r.work_id AND c.recording_id = r.id ` +
-		`WHERE r.work_id IN (` + ph + `) AND r.librivox_id IS NOT NULL ORDER BY r.work_id, r.id, c.idx`
+func lvChaptersSQL(recordingLayer bool) func(string) string {
+	number := `c.idx + 1`
+	if recordingLayer {
+		number = `coalesce(c.section_number, c.idx + 1)`
+	}
+	return func(ph string) string {
+		return `SELECT r.work_id, r.id, c.title, c.length_ms, c.audio_url, ` + number + ` FROM recordings r ` +
+			`CROSS JOIN chapters c ON c.work_id = r.work_id AND c.recording_id = r.id ` +
+			`WHERE r.work_id IN (` + ph + `) AND r.librivox_id IS NOT NULL ORDER BY r.work_id, r.id, c.idx`
+	}
 }
 
 func lvReadersSQL(ph string) string {
@@ -441,13 +491,39 @@ func lvReadersSQL(ph string) string {
 		`JOIN people p ON p.id = rn.person_id WHERE r.work_id IN (` + ph + `) AND r.librivox_id IS NOT NULL ORDER BY r.work_id, r.id, rn.ord`
 }
 
+// The LIBRIVOX RECORDING layer's per-recording reads (librivoxRecordingSchemaVersion),
+// driven from the page's LibriVox recordings as lvChaptersSQL is: the
+// recording's own translators, its LibriVox genre names and each section's
+// readers, each in the record's order.
+func lvRecTranslatorsSQL(ph string) string {
+	return `SELECT r.work_id, r.id, p.name, p.librivox_author_id, p.birth_year, p.death_year FROM recordings r ` +
+		`CROSS JOIN recording_credits rc ON rc.work_id = r.work_id AND rc.recording_id = r.id ` +
+		`JOIN people p ON p.id = rc.person_id WHERE r.work_id IN (` + ph + `) AND r.librivox_id IS NOT NULL ` +
+		`AND rc.role = '` + model.RoleTranslator + `' ORDER BY r.work_id, r.id, rc.ord`
+}
+
+func lvRecGenresSQL(ph string) string {
+	return `SELECT r.work_id, r.id, g.genre FROM recordings r ` +
+		`CROSS JOIN recording_librivox_genres g ON g.work_id = r.work_id AND g.recording_id = r.id ` +
+		`WHERE r.work_id IN (` + ph + `) AND r.librivox_id IS NOT NULL ORDER BY r.work_id, r.id, g.ord`
+}
+
+func lvSectionReadersSQL(ph string) string {
+	return `SELECT r.work_id, r.id, cr.chapter_idx, p.name, p.librivox_reader_id FROM recordings r ` +
+		`CROSS JOIN chapter_readers cr ON cr.work_id = r.work_id AND cr.recording_id = r.id ` +
+		`JOIN people p ON p.id = cr.person_id WHERE r.work_id IN (` + ph + `) AND r.librivox_id IS NOT NULL ` +
+		`ORDER BY r.work_id, r.id, cr.chapter_idx, cr.ord`
+}
+
 // librivoxFeedFacts reads the page's per-work and per-recording facts. The
 // translators, genres and readers appear only on an extended page, so a plain
-// one does not read them.
-func (s *DB) librivoxFeedFacts(ctx context.Context, workIDs []string, extended bool) (*lvFacts, error) {
+// one does not read them. recordingLayer reads the recording's own (lvFacts).
+func (s *DB) librivoxFeedFacts(ctx context.Context, workIDs []string, extended, recordingLayer bool) (*lvFacts, error) {
 	f := &lvFacts{
 		authors: map[string][]lvPerson{}, translators: map[string][]lvPerson{}, genres: map[string][]string{},
 		chapters: map[recKey][]lvChapter{}, readers: map[recKey][]lvReader{},
+		byRecording: recordingLayer, recTranslators: map[recKey][]lvPerson{}, recGenres: map[recKey][]string{},
+		sectionReaders: map[recKey]map[int][]lvReader{},
 	}
 	// each runs one batched read over the page's works, handing every row to scan.
 	each := func(sqlOf func(string) string, scan func(*sql.Rows) error) error {
@@ -478,14 +554,25 @@ func (s *DB) librivoxFeedFacts(ctx context.Context, workIDs []string, extended b
 			return nil
 		}
 	}
+	recPeople := func(rows *sql.Rows) error {
+		var k recKey
+		var p lvPerson
+		var lvID, birth, death sql.NullInt64
+		if err := rows.Scan(&k.work, &k.rec, &p.name, &lvID, &birth, &death); err != nil {
+			return err
+		}
+		p.librivoxID, p.birthYear, p.deathYear = int(lvID.Int64), int(birth.Int64), int(death.Int64)
+		f.recTranslators[k] = append(f.recTranslators[k], p)
+		return nil
+	}
 	if err := each(lvAuthorsSQL, people(f.authors)); err != nil {
 		return nil, err
 	}
-	if err := each(lvChaptersSQL, func(rows *sql.Rows) error {
+	if err := each(lvChaptersSQL(recordingLayer), func(rows *sql.Rows) error {
 		var k recKey
 		var c lvChapter
 		var audio sql.NullString
-		if err := rows.Scan(&k.work, &k.rec, &c.title, &c.lengthMS, &audio); err != nil {
+		if err := rows.Scan(&k.work, &k.rec, &c.title, &c.lengthMS, &audio, &c.number); err != nil {
 			return err
 		}
 		c.audioURL = audio.String
@@ -497,18 +584,52 @@ func (s *DB) librivoxFeedFacts(ctx context.Context, workIDs []string, extended b
 	if !extended {
 		return f, nil
 	}
-	if err := each(lvTranslatorsSQL, people(f.translators)); err != nil {
-		return nil, err
-	}
-	if err := each(lvGenresSQL, func(rows *sql.Rows) error {
-		var work, genre string
-		if err := rows.Scan(&work, &genre); err != nil {
-			return err
+	if recordingLayer {
+		if err := each(lvRecTranslatorsSQL, recPeople); err != nil {
+			return nil, err
 		}
-		f.genres[work] = append(f.genres[work], genre)
-		return nil
-	}); err != nil {
-		return nil, err
+		if err := each(lvRecGenresSQL, func(rows *sql.Rows) error {
+			var k recKey
+			var genre string
+			if err := rows.Scan(&k.work, &k.rec, &genre); err != nil {
+				return err
+			}
+			f.recGenres[k] = append(f.recGenres[k], genre)
+			return nil
+		}); err != nil {
+			return nil, err
+		}
+		if err := each(lvSectionReadersSQL, func(rows *sql.Rows) error {
+			var k recKey
+			var idx int
+			var rd lvReader
+			var id sql.NullInt64
+			if err := rows.Scan(&k.work, &k.rec, &idx, &rd.name, &id); err != nil {
+				return err
+			}
+			rd.readerID = int(id.Int64)
+			if f.sectionReaders[k] == nil {
+				f.sectionReaders[k] = map[int][]lvReader{}
+			}
+			f.sectionReaders[k][idx] = append(f.sectionReaders[k][idx], rd)
+			return nil
+		}); err != nil {
+			return nil, err
+		}
+	} else {
+		if err := each(lvTranslatorsSQL, people(f.translators)); err != nil {
+			return nil, err
+		}
+		if err := each(lvGenresSQL, func(rows *sql.Rows) error {
+			var work, genre string
+			if err := rows.Scan(&work, &genre); err != nil {
+				return err
+			}
+			f.genres[work] = append(f.genres[work], genre)
+			return nil
+		}); err != nil {
+			return nil, err
+		}
 	}
 	if err := each(lvReadersSQL, func(rows *sql.Rows) error {
 		var k recKey
@@ -570,13 +691,17 @@ func librivoxBook(r lvRow, f *lvFacts, p librivoxFeedParams) map[string]any {
 			iarchive = librivoxArchiveDetails + r.archiveID
 		}
 		book["url_iarchive"] = iarchive
-		book["sections"] = librivoxSections(chapters, f.readers[key], language)
-		genres := make([]map[string]string, 0, len(f.genres[r.workID]))
-		for _, g := range f.genres[r.workID] {
+		book["sections"] = librivoxSections(chapters, f.readers[key], f.sectionReaders[key], language)
+		names, translators := f.genres[r.workID], f.translators[r.workID]
+		if f.byRecording {
+			names, translators = f.recGenres[key], f.recTranslators[key]
+		}
+		genres := make([]map[string]string, 0, len(names))
+		for _, g := range names {
 			genres = append(genres, map[string]string{"id": "", "name": g})
 		}
 		book["genres"] = genres
-		book["translators"] = librivoxPeople(f.translators[r.workID])
+		book["translators"] = librivoxPeople(translators)
 	}
 	if p.fields != nil {
 		for k := range book {
@@ -601,19 +726,31 @@ func librivoxPeople(ps []lvPerson) []map[string]string {
 	return out
 }
 
-// librivoxSections renders chapters as LibriVox sections. Readers are recording
-// narrators: named on every section when the recording has exactly one, else
-// none (a per-section reader is not stored).
-func librivoxSections(chapters []lvChapter, narrators []lvReader, language string) []map[string]any {
-	readers := []map[string]string{}
+// librivoxSections renders chapters as LibriVox sections. A section's readers
+// are its own (bySection, the chapter readers, keyed by chapter index) when the
+// recording states any; else the recording's narrator on every section when it
+// has exactly one, and none when it has several (the readers are unknown).
+func librivoxSections(chapters []lvChapter, narrators []lvReader, bySection map[int][]lvReader, language string) []map[string]any {
+	render := func(rs []lvReader) []map[string]string {
+		out := make([]map[string]string, 0, len(rs))
+		for _, rd := range rs {
+			out = append(out, map[string]string{"reader_id": intOr(rd.readerID, ""), "display_name": rd.name})
+		}
+		return out
+	}
+	solo := render(nil)
 	if len(narrators) == 1 {
-		readers = append(readers, map[string]string{"reader_id": intOr(narrators[0].readerID, ""), "display_name": narrators[0].name})
+		solo = render(narrators)
 	}
 	out := make([]map[string]any, 0, len(chapters))
 	for i, c := range chapters {
+		readers := solo
+		if bySection != nil {
+			readers = render(bySection[i])
+		}
 		out = append(out, map[string]any{
 			"id":             "",
-			"section_number": strconv.Itoa(i + 1),
+			"section_number": strconv.Itoa(c.number),
 			"title":          c.title,
 			"listen_url":     c.audioURL,
 			"language":       language,

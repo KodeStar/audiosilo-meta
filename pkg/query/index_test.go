@@ -77,11 +77,17 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 	latestSrc, latestSrcArgs := snap.latestCandidatesQuery(nil, model.SourceLibrivox, 200)
 	latestSrcLang, latestSrcLangArgs := snap.latestCandidatesQuery(langFilter{"de"}, model.SourceLibrivox, 200)
 	searchSrc, searchSrcArgs := ftsSearchQuery(kindAny, `"kafka"*`, 20, nil, model.SourceLibrivox)
-	feedAll, feedAllArgs := librivoxFeedQuery(librivoxFeedParams{limit: 50})
-	feedFiltered, feedFilteredArgs := librivoxFeedQuery(librivoxFeedParams{limit: 50, id: 527, since: 1, hasSince: true,
-		title: textMatch{value: "Metamorphosis"}, author: textMatch{value: "Kafka"}, genre: textMatch{value: "Short Stories"}, desc: true})
-	feedPrefix, feedPrefixArgs := librivoxFeedQuery(librivoxFeedParams{limit: 500, offset: 10,
-		title: textMatch{value: "meta", prefix: true}, author: textMatch{value: "kaf", prefix: true}, genre: textMatch{value: "short", prefix: true}})
+	feedAll, feedAllArgs := librivoxFeedQuery(librivoxFeedParams{limit: 50}, true)
+	filtered := librivoxFeedParams{limit: 50, id: 527, since: 1, hasSince: true,
+		title: textMatch{value: "Metamorphosis"}, author: textMatch{value: "Kafka"}, genre: textMatch{value: "Short Stories"}, desc: true}
+	prefixes := librivoxFeedParams{limit: 500, offset: 10,
+		title: textMatch{value: "meta", prefix: true}, author: textMatch{value: "kaf", prefix: true}, genre: textMatch{value: "short", prefix: true}}
+	feedFiltered, feedFilteredArgs := librivoxFeedQuery(filtered, true)
+	feedPrefix, feedPrefixArgs := librivoxFeedQuery(prefixes, true)
+	// The schema_version 8 spellings (the work's title, the vocabulary genres),
+	// which a newer binary still issues against an older release.
+	feedFilteredV8, feedFilteredV8Args := librivoxFeedQuery(filtered, false)
+	feedPrefixV8, feedPrefixV8Args := librivoxFeedQuery(prefixes, false)
 
 	const (
 		work      = "project-hail-mary"
@@ -191,6 +197,8 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 		{"librivox feed page", feedAll, feedAllArgs},
 		{"librivox feed page, filtered", feedFiltered, feedFilteredArgs},
 		{"librivox feed page, prefixes", feedPrefix, feedPrefixArgs},
+		{"librivox feed page, filtered, v8", feedFilteredV8, feedFilteredV8Args},
+		{"librivox feed page, prefixes, v8", feedPrefixV8, feedPrefixV8Args},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
@@ -243,8 +251,14 @@ func TestBatchLookupsAreIndexed(t *testing.T) {
 		{"librivox feed: authors", ids, lvAuthorsSQL, nil},
 		{"librivox feed: translators", ids, lvTranslatorsSQL, nil},
 		{"librivox feed: genres", ids, lvGenresSQL, nil},
-		{"librivox feed: chapters", ids, lvChaptersSQL, nil},
+		{"librivox feed: chapters", ids, lvChaptersSQL(true), nil},
+		{"librivox feed: chapters, v8", ids, lvChaptersSQL(false), nil},
 		{"librivox feed: readers", ids, lvReadersSQL, nil},
+		// The LibriVox recording layer (schema_version 9): the recording's own
+		// translators, genre names and section readers.
+		{"librivox feed: recording translators", ids, lvRecTranslatorsSQL, nil},
+		{"librivox feed: recording genres", ids, lvRecGenresSQL, nil},
+		{"librivox feed: section readers", ids, lvSectionReadersSQL, nil},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {

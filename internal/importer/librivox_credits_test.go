@@ -33,29 +33,50 @@ func ianJohnston(work string, created bool) UnrecordedCredit {
 		Roles: []string{model.RoleTranslator}, Work: work, PersonExists: created}
 }
 
-func TestLibrivoxAttachCreatesNoUncreditedTranslator(t *testing.T) {
+func TestLibrivoxAttachCreditsItsTranslatorOnTheRecording(t *testing.T) {
 	// The catalogue holds Metamorphosis by Kafka with no translator: the project
-	// attaches (rule 1), its translator is credited nowhere, so no record is made
-	// for him and the run reports the credit instead.
+	// attaches (rule 1) and records no WORK credit (reported as not recorded),
+	// but the translation is the project's own fact, so the recording credits
+	// its translator - created for it, carrying his LibriVox id and years - and
+	// he is no orphan.
 	dataDir := t.TempDir()
 	seedKafka(t, dataDir, "franz-kafka", "Franz Kafka")
 	sum := runLibrivox(t, librivoxFixture, dataDir, mustLibrivoxIDs("527"))
-	if sum.NewWorks != 0 || sum.NewRecordings != 1 || sum.NewPeople != 1 {
-		t.Fatalf("works/recordings/people = %d/%d/%d, want 0/1/1 (the reader only)\nwarnings: %v",
-			sum.NewWorks, sum.NewRecordings, sum.NewPeople, sum.Warnings)
+	if sum.NewWorks != 0 || sum.NewRecordings != 1 || sum.NewPeople != 2 || sum.LibrivoxRestated.TranslatorsCreated != 1 {
+		t.Fatalf("works/recordings/people/translators = %d/%d/%d/%d, want 0/1/2/1 (the reader and the translator)\nwarnings: %v",
+			sum.NewWorks, sum.NewRecordings, sum.NewPeople, sum.LibrivoxRestated.TranslatorsCreated, sum.Warnings)
 	}
-	requireTranslatorWithheld(t, dataDir)
-	if want := []UnrecordedCredit{ianJohnston("metamorphosis", false)}; !reflect.DeepEqual(sum.UnrecordedCredits, want) {
+	if p := personOf(t, dataDir, "ian-johnston"); p.AuthorID != 1019 || p.BirthYear != 1938 {
+		t.Errorf("ian-johnston = %+v, want author id 1019 and born 1938", p)
+	}
+	if _, _, f := lvRecordingOf(t, dataDir, 527); !reflect.DeepEqual(f.Credits, []model.Credit{{Person: "ian-johnston", Role: model.RoleTranslator}}) {
+		t.Errorf("recording credits = %v", f.Credits)
+	}
+	if w := workCreditsOf(t, dataDir, "metamorphosis"); len(w) != 0 {
+		t.Errorf("work credits = %v, want none (an attach records no work credit)", w)
+	}
+	if got := orphanPeople(t, dataDir); len(got) != 0 {
+		t.Errorf("orphans: %v", got)
+	}
+	if want := []UnrecordedCredit{ianJohnston("metamorphosis", true)}; !reflect.DeepEqual(sum.UnrecordedCredits, want) {
 		t.Errorf("unrecorded = %+v, want %+v", sum.UnrecordedCredits, want)
 	}
 }
 
-func TestLibrivoxSpellingVariantAttachCreatesNoUncreditedTranslator(t *testing.T) {
+// workCreditsOf reads one work's credits.
+func workCreditsOf(t *testing.T, dataDir, slug string) []model.Credit {
+	t.Helper()
+	var w lvWork
+	readEntity(t, dataDir, workAddr(slug), &w)
+	return w.Credits
+}
+
+func TestLibrivoxSpellingVariantAttachCreditsItsTranslatorOnTheRecording(t *testing.T) {
 	// The same through rule 2 (a spelling variant), and the reported line.
 	dataDir := t.TempDir()
 	seedWorks(t, dataDir, map[string][]string{"kafkas-book": {"The Metamorphosis", "franz-kafka"}})
 	sum := runLibrivox(t, writeSnapshot(t, fixtureProject(t, 527)), dataDir, allLibrivox)
-	if sum.LibrivoxVariantsAttached != 1 || entryExists(t, dataDir, personAddr("ian-johnston")) {
+	if sum.LibrivoxVariantsAttached != 1 || !entryExists(t, dataDir, personAddr("ian-johnston")) {
 		t.Fatalf("attached = %d, ian-johnston created = %v", sum.LibrivoxVariantsAttached,
 			entryExists(t, dataDir, personAddr("ian-johnston")))
 	}
@@ -63,7 +84,7 @@ func TestLibrivoxSpellingVariantAttachCreatesNoUncreditedTranslator(t *testing.T
 		t.Fatalf("unrecorded = %+v", sum.UnrecordedCredits)
 	}
 	if got, want := sum.UnrecordedCredits[0].String(),
-		`527 "Ian Johnston" (translator, librivox_author_id 1019) -> kafkas-book, person not created`; got != want {
+		`527 "Ian Johnston" (translator, librivox_author_id 1019) -> kafkas-book`; got != want {
 		t.Errorf("line = %q, want %q", got, want)
 	}
 	if got := orphanPeople(t, dataDir); len(got) != 0 {

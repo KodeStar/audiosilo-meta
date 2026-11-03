@@ -15,7 +15,7 @@ import (
 
 // librivox.go is the API's side of the LibriVox layer (librivoxSchemaVersion):
 // the ?source= filter on the list surfaces, lookup?librivox_id=, and the load
-// gate proving what a version 8 artifact claims. The LibriVox-shaped feed is
+// gates proving what a version 8 and a version 9 artifact claim. The LibriVox-shaped feed is
 // librivoxfeed.go.
 
 // librivoxShapeSQL proves the columns and tables a version 8 artifact claims:
@@ -27,6 +27,16 @@ var librivoxShapeSQL = []string{
 	`SELECT librivox_reader_id, librivox_author_id, birth_year, death_year FROM people LIMIT 0`,
 	`SELECT work_id, person_id, role, ord FROM work_credits LIMIT 0`,
 	`SELECT work_id, recording_id, type FROM recording_sources LIMIT 0`,
+}
+
+// librivoxRecordingShapeSQL proves what a version 9 artifact claims (the
+// LIBRIVOX RECORDING layer, librivoxRecordingSchemaVersion), the same way.
+var librivoxRecordingShapeSQL = []string{
+	`SELECT librivox_title FROM recordings LIMIT 0`,
+	`SELECT section_number FROM chapters LIMIT 0`,
+	`SELECT work_id, recording_id, person_id, role, ord FROM recording_credits LIMIT 0`,
+	`SELECT work_id, recording_id, chapter_idx, person_id, ord FROM chapter_readers LIMIT 0`,
+	`SELECT work_id, recording_id, genre, ord FROM recording_librivox_genres LIMIT 0`,
 }
 
 // ---- the source filter --------------------------------------------------------
@@ -66,6 +76,13 @@ func sourceParam(w http.ResponseWriter, q url.Values) (string, bool) {
 // hasLibrivoxLayer reports whether this artifact carries the LibriVox layer
 // (librivoxSchemaVersion): the source filter, the LibriVox columns and the feed.
 func (s *DB) hasLibrivoxLayer() bool { return s.schemaVersion >= librivoxSchemaVersion }
+
+// hasLibrivoxRecordingLayer reports whether this artifact carries the LIBRIVOX
+// RECORDING layer (librivoxRecordingSchemaVersion): a project's own title,
+// section numbers, translators, section readers and genre names.
+func (s *DB) hasLibrivoxRecordingLayer() bool {
+	return s.schemaVersion >= librivoxRecordingSchemaVersion
+}
 
 // ---- lookup?librivox_id= ------------------------------------------------------
 

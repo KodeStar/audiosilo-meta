@@ -517,9 +517,15 @@ it, `pkg/check` and every writer now refuse it loudly.
   narration/production, with narrators, abridged (**optional**: absence =
   unknown, so importers omit it rather than guess), runtime_min, release_date,
   publisher, region-scoped `asin[]`, `isbn[]`, cover_url, chapters, and for a
-  LibriVox project `librivox_id` (its identity, unique), `archive_id`, `links`
-  and a per-chapter `audio_url` (LICENSING.md's public-domain exception;
-  `metaimport librivox`). One work,
+  LibriVox project `librivox_id` (its identity, unique), `archive_id`, `links`,
+  a per-chapter `audio_url`, the project's own `librivox_title` and
+  `librivox_genres` (verbatim), its translators as the recording's own
+  `credits` (a translation is the project's fact, not the work's), and per
+  chapter LibriVox's `section_number` (only where it differs from the 1-based
+  position) and `readers` (person slugs among the narrators; none on a
+  one-narrator recording) (LICENSING.md's public-domain exception;
+  `metaimport librivox`, whose rerun over a snapshot restates them on held
+  recordings). One work,
   many recordings (Harry Potter: Stephen Fry AND Jim Dale, each with its own
   ASINs). It keeps its own `id`, `work` backref, `license` and `sources`, so its
   bytes are the same as when it was a file of its own.
@@ -685,9 +691,14 @@ spelling as in `redirects`, `id` always the translation - plus three `series`
 columns (`language`, DERIVED at build through `model.SeriesLanguage` and NULL on
 a tie, `ordering`, `ordering_of`), `search_fts.language` as its LAST column and
 `idx_works_language(language)`; the LIBRIVOX layer landed in **schema_version 8**
-(the current version: recording LibriVox columns, `chapters.audio_url`, people
+(recording LibriVox columns, `chapters.audio_url`, people
 LibriVox ids and life years, `work_credits`, `recording_sources`; PACKAGES.md
-"The LIBRIVOX layer"); character `ord`/recap
+"The LIBRIVOX layer"); the LIBRIVOX RECORDING layer in **schema_version 9** (the
+current version: `recordings.librivox_title`, `chapters.section_number`,
+`recording_credits`, `chapter_readers`, `recording_librivox_genres` - a LibriVox
+project's own title, section numbers, translators, section readers and genre
+names, which the LibriVox-shaped feed answers with; PACKAGES.md "The LIBRIVOX
+RECORDING layer"); character `ord`/recap
 position order preserved, deterministic), and `metaserve` returns
 them inline on `GET /works/{id}`
 (`workDetail.characters`/`.recaps`/`.recap_summary`/`.genres`/
@@ -695,16 +706,17 @@ them inline on `GET /works/{id}`
 serve queries degrade gracefully if the tables are absent (a newer binary
 briefly serving an older release): characters/recaps gate on schema_version >= 2,
 the recap summary on >= 3, genres on >= 4, the slug redirects on >= 5, the
-community description on >= 6, the languages layer on >= 7 and the LibriVox
-layer on >= 8, so a
+community description on >= 6, the languages layer on >= 7, the LibriVox
+layer on >= 8 and the LibriVox recording layer on >= 9, so a
 table's absence is "no data" (for redirects: a retired slug 404s as it did before
 the mechanism existed), not a 500. The redirect, description and languages gates
 are asked ONCE at load rather than per request - those tables are EMPTY in every
 release until their first record lands, and all sit on ordinary 200 paths (the
 description on every work page, both guide pages and every ABS candidate; the
 translations and the ordering family on every work and series page) - so an
-artifact that CLAIMS version 5, 6, 7 or 8 without its table (for 7: the
-translations table or the series ordering columns; for 8: `librivoxShapeSQL`) fails to open, with an
+artifact that CLAIMS version 5, 6, 7, 8 or 9 without its table (for 7: the
+translations table or the series ordering columns; for 8: `librivoxShapeSQL`;
+for 9: `librivoxRecordingShapeSQL`) fails to open, with an
 error naming that claim; the builder writes the version and the table together,
 so the combination is a corrupt file rather than an old one. **Authoring the expressive
 layer is documented in the COMMUNITY repository's `AUTHORING.md`** (the reusable

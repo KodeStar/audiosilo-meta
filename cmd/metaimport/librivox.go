@@ -128,6 +128,16 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 	if n := sum.LibrivoxReadersUnslugged; n > 0 {
 		fmt.Printf("librivox: %d %s whose name slugs to nothing (a person at librivox-reader-<reader id>)\n", n, plural(n, "reader", "readers"))
 	}
+	if r := sum.LibrivoxRestated; r != (importer.LibrivoxRestated{}) {
+		fmt.Printf("librivox: %d %s restated (the project's own title, genres, translators, section numbers and readers); "+
+			"%d without the project's sections as chapters, %d with an unresolved section reader, %d %s created, %d unresolved translator %s\n",
+			r.Recordings, plural(r.Recordings, "recording", "recordings"), r.Chapterless, r.ReadersUnresolved,
+			r.TranslatorsCreated, plural(r.TranslatorsCreated, "translator", "translators"),
+			r.TranslatorsUnresolved, plural(r.TranslatorsUnresolved, "credit", "credits"))
+		fmt.Printf("librivox: life years filled on %d %s; %d %s a year LibriVox contradicts (kept, warned)\n",
+			r.LifeYearsFilled, plural(r.LifeYearsFilled, "person", "people"),
+			r.LifeYearConflicts, plural(r.LifeYearConflicts, "person states", "people state"))
+	}
 	printLibrivoxInProgress(sum.LibrivoxInProgress)
 	// The spelling-variant attachments are a run note (printSummary prints it).
 	if n := sum.LibrivoxFallbackSlugs; n > 0 {

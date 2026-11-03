@@ -455,6 +455,17 @@ const languagesSchemaVersion = 7
 // fails to open (loadStats, the redirects precedent).
 const librivoxSchemaVersion = 8
 
+// librivoxRecordingSchemaVersion is the artifact schema_version that first
+// carried the LIBRIVOX RECORDING layer: recordings.librivox_title,
+// chapters.section_number and the recording_credits, chapter_readers and
+// recording_librivox_genres tables - a LibriVox project's own title, section
+// numbers, translators, section readers and genre names, which the
+// LibriVox-shaped feed answers with. A newer binary serving an older release
+// degrades to the feed's earlier answer (the work's title and translators, the
+// vocabulary genres, positions as section numbers), and an artifact CLAIMING it
+// without them fails to open (loadStats, the redirects precedent).
+const librivoxRecordingSchemaVersion = 9
+
 const (
 	// anyRedirectSQL asks whether the tombstone table holds anything, once per
 	// snapshot (see DB.hasRedirects).
