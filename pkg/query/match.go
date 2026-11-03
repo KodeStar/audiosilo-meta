@@ -13,6 +13,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+	"unicode"
+	"unicode/utf8"
 
 	"github.com/kodestar/audiosilo-meta/internal/httpx"
 )
@@ -59,7 +61,9 @@ import (
 //
 //   - every text input is cut to maxQueryBytes, as a search query is, and at
 //     most matchHypothesesMax values of each repeatable field are read;
-//   - an author guess resolves through a matchPeopleWindow-row FTS window, and
+//   - an author guess resolves through a matchPeopleWindow-row FTS window (the
+//     surname fallback's ordered by the guess's initial before the cut, so a
+//     common surname cannot crowd out the bearer the first name names), and
 //     the author and series probes together add at most matchCandidatesMax
 //     works (the most prolific author in the catalogue has ~1,100);
 //   - every comparison is bounded (maxEditRunes) and runs in Go over facts read
@@ -604,6 +608,32 @@ func (p *candidatePool) full() bool { return len(p.ids) >= matchCandidatesMax }
 // every row it returns is checked in Go, so rank adds nothing.
 const personMatchSQL = `SELECT id, title FROM search_fts WHERE search_fts MATCH ? AND kind='` + string(kindPerson) + `' LIMIT ?`
 
+// personInitialSQL is personMatchSQL ORDERED before the cut, for the surname
+// fallback of a guess that has a first name. An unordered window over a common
+// surname is an arbitrary matchPeopleWindow of its bearers - the real
+// catalogue holds 594 people named Smith - so "J Smith" could miss John Smith
+// for no reason but row order. The rows are sorted by how many of their words
+// begin with the guess's initial, most first: every person givenCompatible
+// accepts has a first name beginning with it, so an agreeing bearer counts one
+// more than the surname alone gives every bearer (one for "J Jones", none for
+// "J Smith"), and the cut can drop one only when more than the window's worth
+// of rows count as many. A word begins at the start of the name or after a
+// space, comma, period or hyphen ("Smith, John", "J.R. Smith", "Anne-Jo
+// Smith"); the two needles (?2, ?3) are the initial in its lower and upper case
+// after a space, so a non-Latin initial needs no SQL case folding, and the
+// count is the characters each needle's removal takes away. It is not the
+// tokenizer, so a name whose initial carries a mark the query's does not
+// ("Émile" for "E") sorts with the rest, as every row did before. The sort
+// reads the surname's whole match set, which the unordered window also does
+// whenever it holds fewer than the window's worth of people: 7ms warm for
+// "smith" over the real artifact against 0.6ms unordered, where a
+// prefix-starred initial ("j"*) cost ~40ms. Measured there, the unordered
+// window held none of the 29 R, 26 T or 42 S Smiths; the ordered one holds all.
+const personInitialSQL = `SELECT id, title FROM (
+	SELECT id, title, rowid AS r, ' ' || replace(replace(replace(title, ',', ' '), '.', ' '), '-', ' ') AS words
+	FROM search_fts WHERE search_fts MATCH ?1 AND kind='` + string(kindPerson) + `'
+) ORDER BY 2 * length(words) - length(replace(words, ?2, '')) - length(replace(words, ?3, '')) DESC, r LIMIT ?4`
+
 // peopleNamed resolves one author guess to person ids. Every word of the name
 // is tried first ("bernard cornwell" is Bernard Cornwell); when that finds
 // nobody, the surname alone is, keeping the people whose surname IS that word
@@ -620,7 +650,7 @@ func (s *DB) peopleNamed(ctx context.Context, n personName) ([]string, error) {
 			return ids, nil
 		}
 	}
-	people, err := s.peopleMatching(ctx, n.surname)
+	people, err := s.surnameBearers(ctx, n)
 	if err != nil {
 		return nil, err
 	}
@@ -639,7 +669,25 @@ type personRow struct {
 
 // peopleMatching runs one person probe over the name words.
 func (s *DB) peopleMatching(ctx context.Context, words string) ([]personRow, error) {
-	rows, err := s.db.QueryContext(ctx, personMatchSQL, titleMatch(words), matchPeopleWindow)
+	return s.personRows(ctx, personMatchSQL, titleMatch(words), matchPeopleWindow)
+}
+
+// surnameBearers runs the surname probe for n: the window is ordered by n's
+// initial when n has a first name (personInitialSQL), and unordered when it
+// has none, since every bearer then agrees alike.
+func (s *DB) surnameBearers(ctx context.Context, n personName) ([]personRow, error) {
+	if len(n.given) == 0 {
+		return s.peopleMatching(ctx, n.surname)
+	}
+	r, _ := utf8.DecodeRuneInString(n.given[0])
+	lower, upper := " "+string(unicode.ToLower(r)), " "+string(unicode.ToUpper(r))
+	return s.personRows(ctx, personInitialSQL, titleMatch(n.surname), lower, upper, matchPeopleWindow)
+}
+
+// personRows runs one person query and parses each row's name, dropping the
+// rows parseName cannot read.
+func (s *DB) personRows(ctx context.Context, query string, args ...any) ([]personRow, error) {
+	rows, err := s.db.QueryContext(ctx, query, args...)
 	if err != nil {
 		return nil, err
 	}

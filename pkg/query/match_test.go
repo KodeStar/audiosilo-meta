@@ -903,3 +903,41 @@ func TestPeopleNamed(t *testing.T) {
 		}
 	}
 }
+
+// TestPeopleNamedOrdersTheSurnameWindowByTheInitial: more people bear the
+// surname than the window holds, every decoy sorts (and so is indexed) ahead of
+// the one bearer whose first name agrees, and the surname fallback still finds
+// him - an unordered window cut him off. A name in the inverted form is found
+// the same way, and so is a Cyrillic one whose initial is the surname's own
+// (every Иванов row holds one И word, the agreeing bearer two) and upper-case
+// in the row; a bare surname still reads every bearer the window holds.
+func TestPeopleNamedOrdersTheSurnameWindowByTheInitial(t *testing.T) {
+	cat := &model.Catalog{}
+	add := func(id, name string) {
+		cat.People = append(cat.People, &model.Person{ID: id, Name: name, License: "CC0-1.0"})
+	}
+	for i := range matchPeopleWindow + 50 {
+		n := strconv.Itoa(1000 + i)
+		add("a-smith-"+n, "Al"+n+" Smith")
+		add("a-ivanov-"+n, "Ал"+n+" Иванов")
+	}
+	add("smith-john", "Smith, John")
+	add("zz-ivan-ivanov", "Иван Иванов")
+	snap := openTestDB(t, artifacttest.Build(t, cat))
+	for in, want := range map[string]string{
+		"J Smith":      "smith-john",
+		"J. Smith":     "smith-john",
+		"John Smith":   "smith-john",
+		"И. Иванов":    "zz-ivan-ivanov",
+		"Al1001 Smith": "a-smith-1001",
+	} {
+		ids, err := snap.peopleNamed(context.Background(), splitAuthors(in)[0])
+		if err != nil || strings.Join(ids, ",") != want {
+			t.Errorf("peopleNamed(%q) = %v, %v; want %s", in, ids, err, want)
+		}
+	}
+	ids, err := snap.peopleNamed(context.Background(), splitAuthors("Smith")[0])
+	if err != nil || len(ids) != matchPeopleWindow {
+		t.Errorf("peopleNamed(Smith) = %d people, %v; want the %d-person window", len(ids), err, matchPeopleWindow)
+	}
+}
