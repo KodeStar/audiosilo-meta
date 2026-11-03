@@ -376,19 +376,10 @@ entity kind, because the namespace doubles as the route segment a `Location` is
 built from. Recordings are deliberately not a namespace: a recording is addressed
 inside its work, so it travels with the work slug. The full rationale and the
 invariants live on `model.Redirects` - one statement, pointed at from everywhere
-else that touches the table. **The file has its own three-way merge driver**,
-`cmd/metaredirectmerge` over `redirects.Merge` (git's line merge is sound-or-loud
-on it, but two pull requests each recording one tombstone touch adjacent sorted
-lines and conflict, which stalled the intake sweep): per namespace the base
-decides each key (added on one side kept, the same target on both kept, one side
-unchanged takes the other, deleted against an unchanged base deleted; two targets
-for one slug or delete-versus-retarget refused, exit 5, the file left with
-conflict markers), then the union is rebuilt through `redirects.Add`, so a chain
-the two sides make together (a -> b here, b -> c there) collapses to a -> c
-exactly as the two edits landing in sequence would, and a cycle is refused; the
-output is `redirects.Render`'s bytes, Write's. The sweep builds it from main beside
-metafmt and metacheck and configures it as `merge.redirectsjson`. **No minter creates a record at a retired
-slug**: a retired person slug resolves to its survivor, a retired series BASE
+else that touches the table. **The file has its own three-way merge driver**
+(`cmd/metaredirectmerge` over `redirects.Merge`, whose doc holds the rules and the
+chain collapse), built from main and configured by the intake sweep. **No
+minter creates a record at a retired slug**: a retired person slug resolves to its survivor, a retired series BASE
 slug joins its survivor (a retired numbered candidate is stepped past), and a
 retired work candidate is judged as its survivor - one lookup,
 `model.Redirects.Survivor`; the per-family rule is stated once, in

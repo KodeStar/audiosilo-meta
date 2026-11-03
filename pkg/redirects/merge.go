@@ -2,6 +2,7 @@ package redirects
 
 import (
 	"fmt"
+	"maps"
 	"slices"
 	"strings"
 
@@ -40,7 +41,7 @@ func (c *MergeConflict) Error() string {
 // recording one alias, which git's line merge sees as overlapping hunks because
 // the sorted lines are adjacent - is the first-but-one row on each side.
 //
-// THEN THE CHAINS ARE COLLAPSED, through Add, because the union of two valid
+// THE CHAINS ARE COLLAPSED, through Add, because the union of two valid
 // tables need not be one. One side retiring a -> b while the other retires b -> c
 // is two individually correct edits whose union is the chain a -> b -> c, which
 // pkg/check refuses. Collapsing it (a -> c, b -> c) is what Add would have done had
@@ -49,9 +50,10 @@ func (c *MergeConflict) Error() string {
 // implementation rather than a second one here. Refusing instead would stall
 // exactly the case a sequence of repair waves produces. What Add refuses stays
 // refused - a pair of edits whose union is a cycle (a -> b on one side, b -> a on
-// the other) is two people disagreeing about which record survived, and a slug
-// the table may not hold is reported rather than carried - so either is returned
-// as a MergeConflict too.
+// the other) is two people disagreeing about which record survived, and an
+// incoming slug the table may not hold is reported rather than carried - so
+// either is returned as a MergeConflict too. Only THEIR changes go through Add
+// (see below); ours is taken as it stands, which metacheck has already judged.
 //
 // Whether every target still names a live record is a question about the
 // catalogue (the other side may have deleted the record a new tombstone points
@@ -71,60 +73,81 @@ func Merge(base, ours, theirs model.Redirects) (model.Redirects, error) {
 		return nil, fmt.Errorf("theirs: %w", err)
 	}
 
-	kept := model.NewRedirects()
+	// The result starts as OURS and takes only what theirs changed, so the cost is
+	// one copy plus one Add per incoming change rather than an Add (each a walk of
+	// the table) per tombstone. Starting from ours is the same table as building
+	// every kept entry through Add whenever ours is a table Add could have built
+	// (no chain), which pkg/check holds every committed version to.
+	out := model.NewRedirects()
+	for kind, table := range o {
+		maps.Copy(out[kind], table)
+	}
 	var clashes []string
+	type change struct {
+		kind     model.RedirectKind
+		from, to string
+	}
+	var incoming []change
 	for _, kind := range model.RedirectKinds() {
 		for _, slug := range unionKeys(b[kind], o[kind], t[kind]) {
-			bv, inB := b[kind][slug]
-			ov, inO := o[kind][slug]
-			tv, inT := t[kind][slug]
+			bv, ov, tv := lookup(b[kind], slug), lookup(o[kind], slug), lookup(t[kind], slug)
 			switch {
-			case inO && inT:
-				switch {
-				case ov == tv, inB && bv == tv:
-					kept[kind][slug] = ov
-				case inB && bv == ov:
-					kept[kind][slug] = tv
-				case inB:
-					clashes = append(clashes, fmt.Sprintf("%s %s: both sides retargeted it (base %s, ours %s, theirs %s)",
-						kind, slug, bv, ov, tv))
-				default:
-					clashes = append(clashes, fmt.Sprintf("%s %s: both sides added it, to different targets (ours %s, theirs %s)",
-						kind, slug, ov, tv))
+			case ov == tv, tv == bv:
+				// Ours already holds the result.
+			case ov == bv:
+				// Only theirs changed it: drop ours' copy, and record theirs' target
+				// (if it kept one) once every removal is done.
+				delete(out[kind], slug)
+				if tv.ok {
+					incoming = append(incoming, change{kind, slug, tv.v})
 				}
-			case inO:
-				if !inB {
-					kept[kind][slug] = ov
-				} else if bv != ov {
-					clashes = append(clashes, fmt.Sprintf("%s %s: theirs deleted it, ours retargeted it (base %s, ours %s)",
-						kind, slug, bv, ov))
-				}
-			case inT:
-				if !inB {
-					kept[kind][slug] = tv
-				} else if bv != tv {
-					clashes = append(clashes, fmt.Sprintf("%s %s: ours deleted it, theirs retargeted it (base %s, theirs %s)",
-						kind, slug, bv, tv))
-				}
+			default:
+				clashes = append(clashes, clash(kind, slug, bv, ov, tv))
 			}
 		}
 	}
 	if len(clashes) > 0 {
 		return nil, &MergeConflict{Clashes: clashes}
 	}
-
-	// Rebuild through Add in slug order. The order cannot change the result of a
-	// table that collapses at all (Add repoints in both directions), but a fixed
-	// one keeps the reported refusal stable.
-	out := model.NewRedirects()
-	for _, kind := range model.RedirectKinds() {
-		for _, slug := range unionKeys(kept[kind]) {
-			if err := Add(out, kind, slug, kept[kind][slug]); err != nil {
-				return nil, &MergeConflict{Clashes: []string{"the merged table cannot be collapsed: " + err.Error()}}
-			}
+	// The additions wait for the removals: an Add collapses through whatever the
+	// table holds, so one made before theirs' deletion of the tombstone it walks
+	// through would collapse onto a target theirs no longer states.
+	for _, c := range incoming {
+		if err := Add(out, c.kind, c.from, c.to); err != nil {
+			return nil, &MergeConflict{Clashes: []string{"the merged table cannot be collapsed: " + err.Error()}}
 		}
 	}
 	return out, nil
+}
+
+// target is one side's view of one slug: the target it states, or absent. Being
+// comparable is the point - absence is a value, so the base rules are three
+// equalities.
+type target struct {
+	v  string
+	ok bool
+}
+
+func lookup(table map[string]string, slug string) target {
+	v, ok := table[slug]
+	return target{v, ok}
+}
+
+// clash words a refusal by which of the three versions hold the slug. The only
+// shapes that reach it are both sides holding it (added or retargeted) and one
+// side deleting what the other retargeted: every other one has a side equal to
+// the base.
+func clash(kind model.RedirectKind, slug string, b, o, t target) string {
+	switch {
+	case !o.ok:
+		return fmt.Sprintf("%s %s: ours deleted it, theirs retargeted it (base %s, theirs %s)", kind, slug, b.v, t.v)
+	case !t.ok:
+		return fmt.Sprintf("%s %s: theirs deleted it, ours retargeted it (base %s, ours %s)", kind, slug, b.v, o.v)
+	case b.ok:
+		return fmt.Sprintf("%s %s: both sides retargeted it (base %s, ours %s, theirs %s)", kind, slug, b.v, o.v, t.v)
+	default:
+		return fmt.Sprintf("%s %s: both sides added it, to different targets (ours %s, theirs %s)", kind, slug, o.v, t.v)
+	}
 }
 
 // unionKeys returns every key of the maps, sorted and deduplicated.

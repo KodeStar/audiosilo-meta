@@ -2,9 +2,13 @@ package redirects
 
 import (
 	"errors"
+	"fmt"
+	"maps"
 	"reflect"
+	"slices"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
@@ -107,11 +111,23 @@ func TestMerge(t *testing.T) {
 			want:   works("aaa=ccc", "bbb=ccc"),
 		},
 		{
-			name:   "a chain through an existing tombstone collapses",
+			// Ours retired bbb into ccc (Add repointing aaa); theirs merged zzz
+			// into bbb. zzz must land on ccc.
+			name:   "theirs' tombstone onto a slug ours retired collapses",
 			base:   works("aaa=bbb"),
-			ours:   works("aaa=bbb", "zzz=aaa"),
-			theirs: works("aaa=bbb"),
-			want:   works("aaa=bbb", "zzz=bbb"),
+			ours:   works("aaa=ccc", "bbb=ccc"),
+			theirs: works("aaa=bbb", "zzz=bbb"),
+			want:   works("aaa=ccc", "bbb=ccc", "zzz=ccc"),
+		},
+		{
+			// Theirs dropped the kkk tombstone (kkk is a record again) and retired
+			// aaa into it. aaa sorts first, so an Add made before the removal would
+			// have collapsed it through the dropped tombstone onto yyy.
+			name:   "an incoming tombstone is added after theirs' removals",
+			base:   works("kkk=yyy"),
+			ours:   works("kkk=yyy"),
+			theirs: works("aaa=kkk"),
+			want:   works("aaa=kkk"),
 		},
 		{
 			name:   "a cycle across the two sides is refused",
@@ -187,5 +203,116 @@ func TestRenderIsWriteBytes(t *testing.T) {
 	}
 	if string(got) != read(t, dir) {
 		t.Errorf("Render = %q, Write wrote %q", got, read(t, dir))
+	}
+}
+
+// slowMerge is the reference Merge is measured against: the three-way rules over
+// the kept values, then EVERY kept tombstone rebuilt through Add.
+func slowMerge(t *testing.T, base, ours, theirs model.Redirects) model.Redirects {
+	t.Helper()
+	out := model.NewRedirects()
+	for _, kind := range model.RedirectKinds() {
+		kept := map[string]string{}
+		for _, slug := range unionKeys(base[kind], ours[kind], theirs[kind]) {
+			b, o, th := lookup(base[kind], slug), lookup(ours[kind], slug), lookup(theirs[kind], slug)
+			var keep target
+			switch {
+			case o == th, th == b:
+				keep = o
+			case o == b:
+				keep = th
+			default:
+				t.Fatalf("the fixture clashes at %s", slug)
+			}
+			if keep.ok {
+				kept[slug] = keep.v
+			}
+		}
+		for _, slug := range slices.Sorted(maps.Keys(kept)) {
+			if err := Add(out, kind, slug, kept[slug]); err != nil {
+				t.Fatal(err)
+			}
+		}
+	}
+	return out
+}
+
+// largeFixture is n tombstones in the base, with each side's edits on top: ours
+// adds and deletes, theirs adds, retargets, deletes, and retires both a target
+// the base points at and one of ours' new targets - so the merge collapses chains
+// from both directions.
+func largeFixture(t *testing.T, n int) (base, ours, theirs model.Redirects) {
+	t.Helper()
+	base = model.NewRedirects()
+	for i := range n {
+		base[model.RedirectWorks][fmt.Sprintf("old-%06d", i)] = fmt.Sprintf("new-%06d", i)
+	}
+	ours, theirs = clone(base), clone(base)
+	for _, step := range []struct {
+		r        model.Redirects
+		from, to string
+	}{
+		{ours, "ours-a", "ours-target"},
+		{ours, "ours-b", "new-000003"},
+		{theirs, "theirs-a", "theirs-target"},
+		{theirs, "new-000005", "theirs-survivor"},
+		{theirs, "ours-target", "theirs-survivor"},
+	} {
+		if err := Add(step.r, model.RedirectWorks, step.from, step.to); err != nil {
+			t.Fatal(err)
+		}
+	}
+	delete(ours[model.RedirectWorks], "old-000001")
+	delete(theirs[model.RedirectWorks], "old-000002")
+	theirs[model.RedirectWorks]["old-000004"] = "elsewhere"
+	return base, ours, theirs
+}
+
+// TestMergeMatchesTheSlowPath: starting from ours and adding only theirs' changes
+// is the table every kept tombstone rebuilt through Add would be.
+func TestMergeMatchesTheSlowPath(t *testing.T) {
+	base, ours, theirs := largeFixture(t, 300)
+	got, err := Merge(base, ours, theirs)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if want := slowMerge(t, base, ours, theirs); !reflect.DeepEqual(got, want) {
+		t.Errorf("Merge differs from the slow path")
+	}
+	w := got[model.RedirectWorks]
+	for from, to := range map[string]string{
+		"old-000005": "theirs-survivor", "new-000005": "theirs-survivor",
+		"ours-a": "theirs-survivor", "ours-target": "theirs-survivor",
+		"old-000004": "elsewhere", "ours-b": "new-000003",
+	} {
+		if w[from] != to {
+			t.Errorf("%s -> %q, want %q", from, w[from], to)
+		}
+	}
+	for _, gone := range []string{"old-000001", "old-000002"} {
+		if _, ok := w[gone]; ok {
+			t.Errorf("%s survived a deletion", gone)
+		}
+	}
+}
+
+// TestMergeLargeTableIsFast: the driver runs on every rebase that touches the
+// file, so its cost must not grow with the square of the table. Rebuilding 20k
+// tombstones through Add took seconds; the bound is generous for -race.
+func TestMergeLargeTableIsFast(t *testing.T) {
+	base, ours, theirs := largeFixture(t, 20000)
+	start := time.Now()
+	got, err := Merge(base, ours, theirs)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if d := time.Since(start); d > 2*time.Second {
+		t.Errorf("merging a 20k-entry table took %v", d)
+	}
+	if n := len(got[model.RedirectWorks]); n != 20000+5-2 {
+		t.Errorf("merged %d tombstones, want %d", n, 20000+5-2)
+	}
+	if got[model.RedirectWorks]["ours-a"] != "theirs-survivor" {
+		t.Errorf("the cross-side chain did not collapse: ours-a -> %q", got[model.RedirectWorks]["ours-a"])
 	}
 }

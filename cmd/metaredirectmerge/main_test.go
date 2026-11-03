@@ -51,20 +51,9 @@ func table(t *testing.T, pairs ...string) string {
 	return string(out)
 }
 
-func TestLineMergeStopsOnAdjacentAliases(t *testing.T) {
-	requireGit(t)
-	// Two intake pull requests each recording one alias: the hazard the driver
-	// exists for. Without it git sees two insertions at one place and stops.
-	_, out, err := rebaseFixture(t,
-		table(t, "aaa-old=aaa"),
-		table(t, "aaa-old=aaa", "bbb-old=bbb"),
-		table(t, "aaa-old=aaa", "ccc-old=ccc"),
-		false)
-	if err == nil {
-		t.Logf("git merged the adjacent insertions on its own; the driver is still the sound path:\n%s", out)
-	}
-}
-
+// TestDriver runs the driver the way the sweep does. The merge RULES are
+// pkg/redirects' TestMerge; this pins the git seam: a clean merge's bytes and
+// marker line, a collapse, and a refusal left as a git conflict.
 func TestDriver(t *testing.T) {
 	requireGit(t)
 	cases := []struct {
@@ -83,13 +72,6 @@ func TestDriver(t *testing.T) {
 			want:   table(t, "aaa-old=aaa", "bbb-old=bbb", "ccc-old=ccc"),
 		},
 		{
-			name:   "both sides adding the same alias merge",
-			base:   table(t),
-			main:   table(t, "bbb-old=bbb"),
-			branch: table(t, "bbb-old=bbb", "ccc-old=ccc"),
-			want:   table(t, "bbb-old=bbb", "ccc-old=ccc"),
-		},
-		{
 			name:   "a chain across the two sides collapses",
 			base:   table(t),
 			main:   table(t, "aaa=bbb"),
@@ -97,32 +79,11 @@ func TestDriver(t *testing.T) {
 			want:   table(t, "aaa=ccc", "bbb=ccc"),
 		},
 		{
-			name:   "a tombstone one side deleted and the other left stays deleted",
-			base:   table(t, "aaa-old=aaa", "ddd-old=ddd"),
-			main:   table(t, "aaa-old=aaa", "ddd-old=ddd", "eee-old=eee"),
-			branch: table(t, "aaa-old=aaa"),
-			want:   table(t, "aaa-old=aaa", "eee-old=eee"),
-		},
-		{
 			name:   "one slug sent to two different targets is refused",
 			base:   table(t, "aaa-old=aaa"),
 			main:   table(t, "aaa-old=aaa", "bbb-old=bbb-one"),
 			branch: table(t, "aaa-old=aaa", "bbb-old=bbb-two"),
 			clash:  "works bbb-old: both sides added it, to different targets",
-		},
-		{
-			name:   "one side deleting what the other retargeted is refused",
-			base:   table(t, "aaa-old=aaa", "ddd-old=ddd"),
-			main:   table(t, "aaa-old=aaa", "ddd-old=ddd-two"),
-			branch: table(t, "aaa-old=aaa"),
-			clash:  "works ddd-old: theirs deleted it, ours retargeted it",
-		},
-		{
-			name:   "a cycle across the two sides is refused",
-			base:   table(t),
-			main:   table(t, "aaa=bbb"),
-			branch: table(t, "bbb=aaa"),
-			clash:  "cannot be collapsed",
 		},
 	}
 	for _, tc := range cases {
@@ -135,6 +96,11 @@ func TestDriver(t *testing.T) {
 				}
 				if !strings.Contains(out, driverMergedMarker) {
 					t.Errorf("the rebase output does not carry %q, which .github/workflows/intake.yml greps for:\n%s", driverMergedMarker, out)
+				}
+				// The pack driver's line, which makes the sweep run a tree-wide
+				// metafmt --write this file never needs.
+				if strings.Contains(out, "merged both sides' records") {
+					t.Errorf("the output carries the pack driver's marker:\n%s", out)
 				}
 				if got != tc.want {
 					t.Errorf("merged file:\n%s\nwant (pkg/redirects.Write's bytes):\n%s", got, tc.want)

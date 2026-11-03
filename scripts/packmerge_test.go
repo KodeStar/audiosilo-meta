@@ -635,7 +635,7 @@ func TestLineMergeDoesNotConvergeOnAnAddAddPackConflict(t *testing.T) {
 // the line stops reaching the rebase output - a reworded echo, a git that stops
 // surfacing a driver's stdout - that step silently disarms and the branch is
 // pushed un-normalized. The driver subtests assert it, so it fails here instead.
-const driverMergedMarker = "merged both sides"
+const driverMergedMarker = "merged both sides' records"
 
 // TestPackMergeDriver runs the script the way the intake sweep runs it: as the
 // merge driver .gitattributes names, so the entry maps are merged before any line

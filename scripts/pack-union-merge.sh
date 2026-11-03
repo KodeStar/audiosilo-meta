@@ -398,7 +398,9 @@ else
   # git takes the driver's result from the file it passed as %A.
   mv "$tmpdir/merged" "$oursfile"
 fi
-# The intake sweep greps a rebase's output for "merged both sides", because a
-# driver merge is the one way a CLEAN rebase can still need metafmt to re-render
-# and re-place what was merged. Keep this line's wording.
+# The intake sweep greps a rebase's output for "merged both sides' records",
+# because a driver merge is the one way a CLEAN rebase can still need metafmt to
+# re-render and re-place what was merged (the tombstone table's driver prints
+# "merged both sides" without "records", and needs metacheck only). Keep this
+# line's wording.
 echo "$path: merged both sides' records"

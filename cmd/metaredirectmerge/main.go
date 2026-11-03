@@ -141,31 +141,13 @@ func staged(stage int, path string) ([]byte, error) {
 // merge parses the three versions and merges them, returning the canonical bytes
 // and an exit code; a refusal is reported on stderr.
 func merge(path string, base, ours, theirs []byte, stderr io.Writer) ([]byte, int) {
-	var b model.Redirects
-	if len(base) > 0 {
-		var err error
-		if b, err = redirects.Parse(base); err != nil {
-			say(stderr, "%s: the base version is not a tombstone table: %v\n", path, err)
-			return nil, exitCannot
-		}
+	b, okB := parse(path, "the base", base, true, stderr)
+	o, okO := parse(path, "our", ours, false, stderr)
+	t, okT := parse(path, "their", theirs, false, stderr)
+	if !okB || !okO || !okT {
+		return nil, exitCannot
 	}
-	sides := [2]model.Redirects{}
-	for i, side := range [2]struct {
-		name string
-		raw  []byte
-	}{{"our", ours}, {"their", theirs}} {
-		if len(side.raw) == 0 {
-			say(stderr, "%s: %s version is empty; resolve this one by hand\n", path, side.name)
-			return nil, exitCannot
-		}
-		r, err := redirects.Parse(side.raw)
-		if err != nil {
-			say(stderr, "%s: %s version is not a tombstone table: %v\n", path, side.name, err)
-			return nil, exitCannot
-		}
-		sides[i] = r
-	}
-	merged, err := redirects.Merge(b, sides[0], sides[1])
+	merged, err := redirects.Merge(b, o, t)
 	if err != nil {
 		say(stderr, "%s: %v\n", path, err)
 		var mc *redirects.MergeConflict
@@ -180,6 +162,24 @@ func merge(path string, base, ours, theirs []byte, stderr io.Writer) ([]byte, in
 		return nil, exitCannot
 	}
 	return out, exitMerged
+}
+
+// parse reads one version, reporting why it cannot be merged. Only the base may be
+// empty: a file both sides created has none, which is an empty table.
+func parse(path, name string, raw []byte, emptyOK bool, stderr io.Writer) (model.Redirects, bool) {
+	if len(raw) == 0 {
+		if emptyOK {
+			return nil, true
+		}
+		say(stderr, "%s: %s version is empty; resolve this one by hand\n", path, name)
+		return nil, false
+	}
+	r, err := redirects.Parse(raw)
+	if err != nil {
+		say(stderr, "%s: %s version is not a tombstone table: %v\n", path, name, err)
+		return nil, false
+	}
+	return r, true
 }
 
 // markConflict leaves oursFile holding conflict markers, as git's own merge would
