@@ -19,6 +19,7 @@ import (
 	"encoding/json"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"testing"
 	"unicode/utf8"
@@ -262,6 +263,10 @@ func TestDataPeopleSlugsAreTransliterated(t *testing.T) {
 // volume reached only by a claim this model does not carry). Scoping the assertion
 // to the characters a rule change moved is what keeps this a proof of the two
 // migrations rather than a standing complaint about composed identity in general.
+// A LibriVox non-Latin title (rule 4, librivoxmatch.go) is off-chain by design:
+// it never walks a chain, sits at librivox-<project id> and is reached by its
+// own-script title key, so a work at its own project's rule-4 address is skipped
+// (atLibrivoxAddress).
 //
 // The SERIES arm asks the importer's real reach question, not the chain alone:
 // a series off its name's chain is current when SeriesAuthorIndex.Resolve over
@@ -280,6 +285,9 @@ func TestDataWorkAndSeriesSlugsAreCurrent(t *testing.T) {
 	walkEntries(t, "works", func(path, key string, e map[string]any) {
 		title := str(e, "title")
 		if !movedByTransliteration(title) && !movedByApostrophe(title) {
+			return
+		}
+		if atLibrivoxAddress(key, e) {
 			return
 		}
 		cands, _ := workCandidates(Slugify(cleanWorkTitle(title)),
@@ -342,6 +350,29 @@ func TestDataWorkAndSeriesSlugsAreCurrent(t *testing.T) {
 			"an import naming this series would mint a duplicate",
 			o.path, o.key, o.name, m.Slug, m.Found, why)
 	}
+}
+
+// atLibrivoxAddress reports whether a work sits where the LibriVox importer's
+// rule 4 creates one: a non-Latin title (librivoxNonLatinTitle) at
+// librivoxWorkSlug of a project its own sources[] names. Both halves are asked,
+// so a Latin title at a librivox-<id> slug is still held to its chain. The
+// work's sources[] is the signal rather than a recording's librivox_id, since it
+// records the project that CREATED the work, which is the one its slug names.
+func atLibrivoxAddress(key string, entry map[string]any) bool {
+	if !librivoxNonLatinTitle(str(entry, "title")) {
+		return false
+	}
+	sources, _ := entry["sources"].([]any)
+	for _, s := range sources {
+		m, ok := s.(map[string]any)
+		if !ok || str(m, "type") != sourceLibrivox {
+			continue
+		}
+		if id, err := strconv.Atoi(str(m, "ref")); err == nil && librivoxWorkSlug(id) == key {
+			return true
+		}
+	}
+	return false
 }
 
 // slugCatalogue is the loaded catalogue the series arm resolves against: the
