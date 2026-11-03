@@ -311,7 +311,7 @@ func selectLibexRows(r io.Reader, opts SelectOptions, refusals *refusalLog) (Sel
 	st := newSelectState()
 	var kept []selectedRow
 
-	err := streamLibexRows(r, func(raw []byte, e rawBook) {
+	err := streamLibexRows(r, true, func(raw []byte, e rawBook) {
 		res.RowsRead++
 		row, asin, reason := selectLibexRow(e, idx, st, opts.AttachEditions)
 		switch {
@@ -1031,16 +1031,27 @@ func (idx seriesIndex) catalogue() seriesCatalogue {
 	return idx.p.seriesCatalogue()
 }
 
-// streamLibexRows decodes an export and calls fn for every row, handing over
-// BOTH the row's verbatim JSON bytes and its decoded map. It accepts the same
-// three shapes parseLibex does (a top-level array, NDJSON, or a wrapper object
-// holding the array), but streams rather than materializing the file: the
-// intended input here IS libex's full dump.
+// libexRowFn receives one row of an export: its decoded map, and its verbatim
+// JSON bytes when the stream keeps them (nil otherwise).
+type libexRowFn func(raw []byte, e rawBook)
+
+// streamLibexRows is the ONE reader of the libex export format: the importer's
+// parse layer and this selector both read through it, so the shapes the two
+// accept, the rows they see and the wording they refuse a file with cannot
+// drift apart. It accepts a top-level array, NDJSON, or a wrapper object
+// holding the array, and streams rather than materializing the file - the
+// intended input IS libex's full dump.
 //
-// A lone object is the ambiguous case and is resolved exactly as
-// decodeLibexEntries resolves it - the row's own "asin" key decides, and an
-// envelope without one is unwrapped rather than silently imported as zero rows.
-func streamLibexRows(r io.Reader, fn func(raw []byte, e rawBook)) error {
+// A lone object is the ambiguous case and the row's own "asin" key decides: a
+// row with one is a row, and an envelope without one is unwrapped rather than
+// silently imported as zero rows. A non-object ARRAY element arrives as a nil
+// map: it fails the first rule (no ASIN) and is counted there, so one file
+// reports the same totals whichever shape spells it.
+//
+// keepRaw hands each row's verbatim bytes over too, which this selector needs
+// to write its kept rows unchanged; the importer never reads them, so it
+// passes false and each row is decoded once, straight into its map.
+func streamLibexRows(r io.Reader, keepRaw bool, fn libexRowFn) error {
 	br := bufio.NewReaderSize(r, 1<<20)
 	if err := skipBOMAndSpace(br); err != nil {
 		if errors.Is(err, io.EOF) {
@@ -1055,20 +1066,20 @@ func streamLibexRows(r io.Reader, fn func(raw []byte, e rawBook)) error {
 
 	dec := json.NewDecoder(br)
 	dec.UseNumber()
+	s := libexStream{dec: dec, keepRaw: keepRaw, fn: fn}
 	switch lead[0] {
 	case '[':
 		if _, err := dec.Token(); err != nil { // the opening '['
 			return fmt.Errorf("parse libex export: %w", err)
 		}
 		for dec.More() {
-			if err := decodeRow(dec, fn); err != nil {
+			if err := s.element(); err != nil {
 				return err
 			}
 		}
 		// The loop ends at ']' OR at EOF, and a stream that simply stopped is a
 		// TRUNCATED export - so the closing bracket has to be consumed and the
-		// stream checked for more, exactly as decodeEntries checks the file it
-		// holds in memory. Without this, "[r1,r2" imported cleanly and
+		// stream checked for more. Without this, "[r1,r2" imported cleanly and
 		// "[r1][r2]" imported only its first half, both reporting success.
 		if _, err := dec.Token(); err != nil { // the closing ']'
 			if errors.Is(err, io.EOF) {
@@ -1076,130 +1087,132 @@ func streamLibexRows(r io.Reader, fn func(raw []byte, e rawBook)) error {
 			}
 			return fmt.Errorf("parse libex export: %w", err)
 		}
-		if dec.More() {
-			return errors.New("parse libex export: trailing content after the first JSON value (concatenated exports?)")
-		}
-		return nil
+		return s.end()
 	case '{':
-		return streamLibexObjects(dec, fn)
+		return s.objects()
 	default:
 		return errors.New("parse libex export: expected a JSON array of rows, NDJSON, or a wrapper object holding an array")
 	}
 }
 
-// streamLibexObjects consumes a stream of top-level objects (NDJSON, or a
-// single wrapper/row object). Only the FIRST object can be a wrapper, and only
-// when it is also the last and carries no "asin" - so the wrapper path buffers
-// exactly one object and the NDJSON path buffers none.
-func streamLibexObjects(dec *json.Decoder, fn func(raw []byte, e rawBook)) error {
-	first := true
-	for {
-		var raw json.RawMessage
-		if err := dec.Decode(&raw); err != nil {
+// libexStream is one streamLibexRows pass.
+type libexStream struct {
+	dec     *json.Decoder
+	keepRaw bool
+	fn      libexRowFn
+}
+
+// decode reads the next stream value into v, numbers preserved as json.Number
+// so the shared coercion helpers read them as every importer does. With keepRaw
+// the value is read as its verbatim bytes first and those are returned.
+func (s libexStream) decode(v any) ([]byte, error) {
+	if !s.keepRaw {
+		if err := s.dec.Decode(v); err != nil {
+			return nil, fmt.Errorf("parse libex export: %w", err)
+		}
+		return nil, nil
+	}
+	var raw json.RawMessage
+	if err := s.dec.Decode(&raw); err != nil {
+		return nil, fmt.Errorf("parse libex export: %w", err)
+	}
+	if err := decodeNumbers(raw, v); err != nil {
+		return nil, fmt.Errorf("parse libex export: %w", err)
+	}
+	return raw, nil
+}
+
+// decodeNumbers decodes raw into v with numbers kept as json.Number.
+func decodeNumbers(raw []byte, v any) error {
+	d := json.NewDecoder(bytes.NewReader(raw))
+	d.UseNumber()
+	return d.Decode(v)
+}
+
+// element reads the next array element; a non-object one is handed over as a
+// nil map (see streamLibexRows).
+func (s libexStream) element() error {
+	var v any
+	raw, err := s.decode(&v)
+	if err != nil {
+		return err
+	}
+	m, _ := v.(map[string]any)
+	s.fn(raw, rawBook(m))
+	return nil
+}
+
+// objects consumes a stream of top-level values, each of which must be an
+// object (NDJSON, or a single wrapper/row object); anything else is refused
+// with json's own wording. Only the FIRST object can be a wrapper, and only when
+// it is also the last and carries no "asin".
+func (s libexStream) objects() error {
+	for first := true; ; first = false {
+		var m map[string]any
+		raw, err := s.decode(&m)
+		if err != nil {
 			if errors.Is(err, io.EOF) {
 				return nil
 			}
-			return fmt.Errorf("parse libex export: %w", err)
-		}
-		entry, err := decodeObjectBytes(raw)
-		if err != nil {
 			return err
 		}
-		if first {
-			first = false
-			if _, isRow := entry["asin"]; !isRow && !dec.More() {
-				return streamWrapped(raw, fn)
+		if _, isRow := m["asin"]; first && !isRow && !s.dec.More() {
+			if err := s.end(); err != nil {
+				return err
 			}
+			return s.wrapped(raw, m)
 		}
-		fn(raw, entry)
+		s.fn(raw, rawBook(m))
 	}
 }
 
-// streamWrapped emits the rows of a wrapper object ({"books":[...]}), reusing
-// decodeEntries' wrapper-key list AND its refusal wording so the shapes this
-// tool accepts and the shapes the importer accepts cannot drift apart. Each
-// element is handed over as its own bytes, like every other shape - a wrapper
-// is a hand-assembled file rather than the dump, but there is no reason for it
-// to be the one shape whose rows get re-rendered.
-func streamWrapped(raw json.RawMessage, fn func(raw []byte, e rawBook)) error {
-	var obj map[string]json.RawMessage
-	if err := json.Unmarshal(raw, &obj); err != nil {
-		return fmt.Errorf("parse libex export: %w", err)
+// end refuses anything after the file's one top-level value. dec.More cannot
+// ask it: it reports false at a stray ']' or '}' as well as at EOF, so
+// "[r1]}r2" and `{"books":[r1]}]` + r2 would import their first half and
+// report success.
+func (s libexStream) end() error {
+	_, err := s.dec.Token()
+	if errors.Is(err, io.EOF) {
+		return nil
 	}
+	var syntax *json.SyntaxError
+	if err == nil || errors.As(err, &syntax) || errors.Is(err, io.ErrUnexpectedEOF) {
+		return errors.New("parse libex export: trailing content after the first JSON value (concatenated exports?)")
+	}
+	return fmt.Errorf("parse libex export: %w", err)
+}
+
+// wrapped emits the rows of a wrapper object ({"books":[...]}) under
+// decodeEntries' wrapper-key list and refusal wording: the first key holding an
+// array (a null one is no array) is the list. With keepRaw each element is
+// handed over as its own verbatim bytes, like every other shape.
+func (s libexStream) wrapped(raw []byte, obj map[string]any) error {
 	for _, key := range wrapperKeys {
-		body, ok := obj[key]
+		arr, ok := obj[key].([]any)
 		if !ok {
 			continue
 		}
-		var arr []json.RawMessage
-		if err := json.Unmarshal(body, &arr); err != nil {
-			continue
-		}
-		for _, el := range arr {
-			entry, err := decodeRowBytes(el)
-			if err != nil {
-				return err
+		var els []json.RawMessage
+		if s.keepRaw {
+			var o map[string]json.RawMessage
+			if err := json.Unmarshal(raw, &o); err != nil {
+				return fmt.Errorf("parse libex export: %w", err)
 			}
-			fn(el, entry) // a non-object element rides through as a no-ASIN row
+			if err := json.Unmarshal(o[key], &els); err != nil {
+				return fmt.Errorf("parse libex export: %w", err)
+			}
+		}
+		for i, el := range arr {
+			m, _ := el.(map[string]any)
+			var elRaw []byte
+			if s.keepRaw {
+				elRaw = els[i]
+			}
+			s.fn(elRaw, rawBook(m))
 		}
 		return nil
 	}
 	return errNotAnEntryList("libex export")
-}
-
-// decodeRow reads the next array element as raw bytes plus a decoded map.
-//
-// A non-object element decodes to a nil map and is handed over ANYWAY: it fails
-// the first rule (no ASIN) and is counted there. Returning early instead made
-// it invisible in the array shape while the NDJSON shape counted it, so the
-// same file reported different totals depending on how it was spelled. The
-// import path drops such an element silently (decodeEntries); this tool
-// reports every element it read, which is the stronger property for a step
-// whose whole output is a report.
-func decodeRow(dec *json.Decoder, fn func(raw []byte, e rawBook)) error {
-	var raw json.RawMessage
-	if err := dec.Decode(&raw); err != nil {
-		return fmt.Errorf("parse libex export: %w", err)
-	}
-	entry, err := decodeRowBytes(raw)
-	if err != nil {
-		return err
-	}
-	fn(raw, entry)
-	return nil
-}
-
-// decodeObjectBytes decodes one TOP-LEVEL stream value, which must be an
-// object. NDJSON carrying anything else is not a file the import path reads
-// either - decodeLibexEntries decodes the same stream straight into objects -
-// so it is refused here, with json's own wording, rather than counted as an odd
-// row. (Inside an ARRAY a non-object element is tolerated by both, see
-// decodeRow.)
-func decodeObjectBytes(raw []byte) (rawBook, error) {
-	d := json.NewDecoder(bytes.NewReader(raw))
-	d.UseNumber()
-	var m map[string]any
-	if err := d.Decode(&m); err != nil {
-		return nil, fmt.Errorf("parse libex export: %w", err)
-	}
-	return rawBook(m), nil
-}
-
-// decodeRowBytes decodes one row's JSON into a rawBook, preserving numbers as
-// json.Number so the shared coercion helpers behave exactly as they do on the
-// import path. A non-object value decodes to a nil map (the caller skips it).
-func decodeRowBytes(raw []byte) (rawBook, error) {
-	d := json.NewDecoder(bytes.NewReader(raw))
-	d.UseNumber()
-	var v any
-	if err := d.Decode(&v); err != nil {
-		return nil, fmt.Errorf("parse libex export: %w", err)
-	}
-	m, ok := v.(map[string]any)
-	if !ok {
-		return nil, nil
-	}
-	return rawBook(m), nil
 }
 
 // skipBOMAndSpace advances past a UTF-8 BOM and any leading whitespace, so the
