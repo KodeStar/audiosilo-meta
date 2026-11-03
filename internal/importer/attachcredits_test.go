@@ -252,11 +252,11 @@ func TestAttachEditionsOntoARunCreatedVolumeCreditsTheTranslator(t *testing.T) {
 func runAttachParsed(t *testing.T, row string, edit func(*sourceBook), setup ...func(*planner)) (Summary, string) {
 	t.Helper()
 	dataDir := seedAttachCatalogue(t)
-	entries, err := decodeLibexEntries([]byte(row + "\n"))
+	parsed, err := parseLibex([]byte(row + "\n"))
 	if err != nil {
 		t.Fatal(err)
 	}
-	books := parseLibexEntries(entries).books
+	books := parsed.books
 	if len(books) != 1 {
 		t.Fatalf("parsed %d rows, want 1", len(books))
 	}
