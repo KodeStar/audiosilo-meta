@@ -1062,7 +1062,15 @@ absent), the RecordingDetail fields, `ChapterOut.AudioURL` and a leading free
 LibriVox's audiobooks API from the mirror; its file comment lists every
 parameter and every place the answer differs from LibriVox's (facts the mirror
 does not keep), and `TestLibrivoxFeedGolden` compares four projects field by
-field with the real LibriVox responses in the importer's fixture. Known gaps,
+field with the real LibriVox responses in the importer's fixture. Every
+LibriVox fact the importer reads is stored: `link_text` is the project's
+`url_text_source`, `copyright_year` its `copyright_year` (LibriVox's 0, not
+stated, is never written), and `birth_year`/`death_year` an author's or
+translator's `dob`/`dod` (`lifeYearsOf`: "alive" and a death before the birth
+are nothing). The one part deliberately not stored is a FLOURISHED year
+("fl. 1916"): it is neither a birth nor a death, so writing it as either would
+state a fact LibriVox did not, and no reader needs it (it only dates a person
+for the same-name rule within a run). Known gaps,
 deliberately left: a project's `(version N)` title and per-section readers are
 not stored, so `title=` matches the work title and a multi-reader recording
 names no section reader.
