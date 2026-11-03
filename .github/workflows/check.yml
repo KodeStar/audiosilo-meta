@@ -164,7 +164,25 @@ jobs:
           persist-credentials: false
           fetch-depth: 2
 
+      # A RACE build cache of this shard's own, not setup-go's. setup-go keys
+      # its cache on the runner, the Go version and go.sum alone, so all seven
+      # Go jobs share ONE key, and the first to finish saves it - nearly always
+      # `build`, a minute in and without -race - after which every other job
+      # gets a hit on that key and saves nothing. -race compiles every package
+      # (the standard library included) a second time with instrumentation, so
+      # the shards restored a cache holding none of what they build and
+      # rebuilt it on every run. So setup-go's cache is off here (`cache:
+      # false`; the version file and check-latest stay as every job has them),
+      # and actions/cache keeps one per shard: the shards build different
+      # packages, so one shared race key would hold only the first finisher's.
+      # The key is setup-go's own inputs - the resolved patch (its
+      # `go-version` output, so check-latest moving to a new patch starts a
+      # new cache) and go.sum - plus `race` and the shard, and like setup-go's
+      # it is saved once per key (on success). A shard's packages
+      # changing between saves only means recompiling those, as setup-go's
+      # cache already did for `build`.
       - name: Set up Go
+        id: go
         if: needs.changes.outputs.go == 'true'
         uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
@@ -173,6 +191,20 @@ jobs:
           # (PACKAGES.md, the `.github/` entry).
           go-version-file: .go-version
           check-latest: true
+          cache: false
+
+      - name: Race build cache (shard ${{ matrix.shard }})
+        if: needs.changes.outputs.go == 'true'
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: go-race-${{ runner.os }}-${{ runner.arch }}-go-${{ steps.go.outputs.go-version }}-shard-${{ matrix.shard }}-${{ hashFiles('go.sum') }}
+          # A go.sum change keeps the shard's compiled standard library and
+          # unchanged modules; a new Go patch is a different compiler and starts
+          # cold, so the version stays in the prefix.
+          restore-keys: go-race-${{ runner.os }}-${{ runner.arch }}-go-${{ steps.go.outputs.go-version }}-shard-${{ matrix.shard }}-
 
       # The count is the matrix's own size, so the list above is its one source.
       - name: Test (shard ${{ matrix.shard }} of ${{ strategy.job-total }})
