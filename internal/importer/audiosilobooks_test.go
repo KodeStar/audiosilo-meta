@@ -24,7 +24,7 @@ const audiosiloBooksExport = `{
       "series": "The Stormlight Archive",
       "series_position": "1",
       "asin": "B0ABS00001",
-      "isbn": "978-1-4272-1000-7",
+      "isbn": "978-1-4272-1000-5",
       "language": "en",
       "release_date": "2010-08-31",
       "publisher": "Macmillan Audio",
@@ -101,8 +101,8 @@ func TestRunAudiosiloBooks(t *testing.T) {
 		} `json:"asin"`
 	}
 	readEntity(t, dataDir, "works/th/the-way-of-kings/recordings/kate-reading-2010.json", &rec)
-	if len(rec.ISBN) != 1 || rec.ISBN[0] != "9781427210007" {
-		t.Errorf("isbn = %v, want [9781427210007]", rec.ISBN)
+	if len(rec.ISBN) != 1 || rec.ISBN[0] != "9781427210005" {
+		t.Errorf("isbn = %v, want [9781427210005]", rec.ISBN)
 	}
 	if len(rec.Narrators) != 2 {
 		t.Errorf("narrators = %v, want 2", rec.Narrators)
@@ -147,7 +147,7 @@ func TestAudiosiloBooksISBNRidesAnAttestingMerge(t *testing.T) {
 	dataDir := seedTierTree(t, nil)
 	env := `{"format":"audiosilo-books","version":1,"books":[{
 	  "title": "The Lost Cartographer", "authors": ["Ada Mapmaker"], "narrators": ["Bea Reader"],
-	  "asin": "B0USER0001", "isbn": "9781427210007", "language": "en", "runtime_min": 605
+	  "asin": "B0USER0001", "isbn": "9781427210005", "language": "en", "runtime_min": 605
 	}]}`
 	sum, err := RunAudiosiloBooks(writeBooks(t, env), Options{DataDir: dataDir, ImportDate: testImportDate})
 	if err != nil {
@@ -161,8 +161,8 @@ func TestAudiosiloBooksISBNRidesAnAttestingMerge(t *testing.T) {
 	}
 	var rec recordingFile
 	readEntity(t, dataDir, tierRecRel, &rec)
-	if len(rec.ISBN) != 1 || rec.ISBN[0] != "9781427210007" {
-		t.Errorf("isbn = %v, want [9781427210007] once", rec.ISBN)
+	if len(rec.ISBN) != 1 || rec.ISBN[0] != "9781427210005" {
+		t.Errorf("isbn = %v, want [9781427210005] once", rec.ISBN)
 	}
 }
 
