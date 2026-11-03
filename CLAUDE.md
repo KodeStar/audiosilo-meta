@@ -241,8 +241,13 @@ never a failure), `lint` (`golangci-lint run`), `vuln` (`govulncheck ./...`),
 `site`, and **`check`, the VERDICT**: it needs build, test, metacheck, metafmt and
 advisories, passes only when every one but advisories concluded `success`
 (`.github/scripts/check-verdict.sh`), prints the advisories a data pull request
-introduces in its job summary, and ends its log with the failing jobs' captured
-output. The NAME `check` is load-bearing - branch protection requires it, and
+introduces in its job summary, and ends its log with the failing jobs' own
+output - fetched from the API (`actions: read`) for the CURRENT run attempt only
+(`.github/scripts/failed-job-logs.sh`, cut before the post-job cleanup), so no job
+tees or uploads a log and a re-run no longer prints a shard's stale failure from
+an earlier attempt. The test shards keep a race build cache of their own (one
+actions/cache key per shard, setup-go's cache off there), since setup-go's single
+shared key is saved by the non-race `build` job. The NAME `check` is load-bearing - branch protection requires it, and
 audiosilo-meta-sync's merge gate waits for `check`, `compose`, `site` and `verify`
 and hands the tail of a failed check's log to its resolver - which is why the
 split kept one job of that name instead of renaming the work. It was one

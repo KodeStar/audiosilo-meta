@@ -92,8 +92,8 @@ func TestCheckVerdictFails(t *testing.T) {
 	}
 }
 
-// writeLogs writes the logs the verdict's merged download holds: one flat
-// directory, a file per job (check.yml's download-artifact merge-multiple).
+// writeLogs writes the logs the verdict reads: one flat directory, a file per
+// job (what failed-job-logs.sh writes).
 func writeLogs(t *testing.T, logs map[string]string) string {
 	t.Helper()
 	dir := t.TempDir()
@@ -185,10 +185,12 @@ func TestCheckVerdictSharesTheTailBudget(t *testing.T) {
 	}
 }
 
-// check.yml's verdict job: it waits for every job that uploads a log for it,
-// names only `advisories` as advisory, and runs under always() - a cancelled
-// run under !cancelled() would SKIP it, and a skipped required check reads as
-// a pass to branch protection and to audiosilo-meta-sync.
+// check.yml's verdict job: it waits for every job of the gate, names only
+// `advisories` as advisory, runs under always() - a cancelled run under
+// !cancelled() would SKIP it, and a skipped required check reads as a pass to
+// branch protection and to audiosilo-meta-sync - and reads the failing jobs'
+// logs from the API (actions: read) rather than from artifacts, which outlive
+// the attempt that uploaded them.
 func TestCheckWorkflowVerdictWiring(t *testing.T) {
 	t.Parallel()
 	raw, err := os.ReadFile(filepath.Join("..", ".github", "workflows", "check.yml"))
@@ -208,13 +210,9 @@ func TestCheckWorkflowVerdictWiring(t *testing.T) {
 	for _, n := range strings.Split(m[1], ",") {
 		needs[strings.TrimSpace(n)] = true
 	}
-	uploaders := regexp.MustCompile(`(?m)^          name: check-log-([a-z]+)`).FindAllStringSubmatch(string(raw), -1)
-	if len(uploaders) == 0 {
-		t.Fatal("found no `check-log-*` artifact in check.yml")
-	}
-	for _, u := range append(uploaders, []string{"", "changes"}, []string{"", "advisories"}) {
-		if !needs[u[1]] {
-			t.Errorf("the check job does not need %q, so the verdict cannot see it fail", u[1])
+	for _, j := range verdictJobs {
+		if !needs[j] {
+			t.Errorf("the check job does not need %q, so the verdict cannot see it fail", j)
 		}
 	}
 	if !strings.Contains(body, "    if: ${{ always() }}\n") {
@@ -222,6 +220,18 @@ func TestCheckWorkflowVerdictWiring(t *testing.T) {
 	}
 	if !strings.Contains(body, `check-verdict.sh "$RUNNER_TEMP/logs" advisories`+"\n") {
 		t.Error("the verdict must name `advisories`, and only it, as advisory")
+	}
+	if !strings.Contains(body, "    permissions:\n      contents: read\n      actions: read\n") {
+		t.Error("the check job must read the jobs' logs with `actions: read` (and keep `contents: read`)")
+	}
+	if !strings.Contains(body, `failed-job-logs.sh "$RUNNER_TEMP/logs"`) ||
+		!strings.Contains(body, "RUN_ATTEMPT: ${{ github.run_attempt }}") {
+		t.Error("the check job must fetch the failing jobs' logs of the current attempt (failed-job-logs.sh)")
+	}
+	// No job uploads a log for the verdict any more: an artifact is the run's,
+	// not the attempt's, and is what printed stale logs.
+	if regexp.MustCompile(`name: check-log-`).Match(raw) {
+		t.Error("a job still uploads a check-log-* artifact; the verdict reads logs from the API")
 	}
 }
 

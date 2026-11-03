@@ -6,9 +6,9 @@
 #       Read the `needs` context of the aggregate job (every job it waits on,
 #       each with its `result`) from $NEEDS. Exit 0 when every job not named as
 #       an advisory one concluded `success`; otherwise name each one that did
-#       not, print the tail of each FAILING job's log found under <log-dir> (the
-#       captured output, downloaded as artifacts, one file per job named
-#       <job>.log or, for a matrix job, <job>-<n>.log), and exit 1. An absent,
+#       not, print the tail of each FAILING job's log found under <log-dir> (its
+#       output as failed-job-logs.sh fetched it from the API, one file per job
+#       named <job>.log or, for a matrix job, <job>-<n>.log), and exit 1. An absent,
 #       empty or unreadable $NEEDS is a failure: a verdict nobody could read is
 #       never a pass.
 #
@@ -28,16 +28,18 @@
 # WHY THE LOGS. When a required check fails twice, the sync bot hands the
 # resolver the last lines of THAT check run's log (its evidence.CheckFlag). A
 # verdict job whose log only said "metacheck: failure" would hand it nothing to
-# fix, so each gated job tees its output to a file, uploads it when it fails, and
-# this script prints those files last - where the bot's tail reads them - just
-# as the single job's own log used to end with the failing step's output.
+# fix, so the verdict job fetches each failing job's log from the API
+# (failed-job-logs.sh, which cuts it off before the post-job cleanup) and this
+# script prints those files last - where the bot's tail reads them - just as the
+# single job's own log used to end with the failing step's output.
 #
-# ONLY THE FAILING JOBS' LOGS. Artifacts belong to the workflow RUN, not to an
-# attempt: after a "re-run failed jobs" (which the sync bot always asks for once
-# before believing a failure) the download still holds the log every job
-# uploaded in an EARLIER attempt, including one that has passed since. Printed,
-# a stale log could be the last thing in this one and become the bot's evidence
-# for a failure it is not, so a log whose job concluded `success` is skipped.
+# ONLY THE FAILING JOBS' LOGS. failed-job-logs.sh reads the CURRENT attempt's
+# job listing, so a job that failed in an earlier attempt and has passed since
+# is not fetched at all (artifacts, which the logs used to travel as, belong to
+# the RUN and still held such a log after a "re-run failed jobs", which the sync
+# bot always asks for once before believing a failure). A log whose job
+# concluded `success` is still skipped here: printed, a stale log could be the
+# last thing in this one and become the bot's evidence for a failure it is not.
 #
 # RESULTS. `success` is the only pass. `failure`, `cancelled` and `skipped` are
 # not: the gated jobs never skip at the job level (their STEPS are gated, so a
