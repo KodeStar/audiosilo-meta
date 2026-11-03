@@ -120,8 +120,13 @@ func WorkTitleAlias(w *model.Work, live func(slug string) bool, reds model.Redir
 // People like a Book" (or "the-book-of-five-rings-by-miyamoto-musashi-..." retitled
 // "The Book of Five Rings") lost the alias the retitle exists to record.
 func serialVolumeSlug(base, id string) bool {
-	if strings.HasPrefix(id, base+"-"+serialTailPrefix) {
-		return true
+	// The whole base, then a position - possibly followed by the collision
+	// suffix a later candidate carries ("the-saga-book-3-marty-book-2"). The
+	// rest must OPEN with the position's number, or a title that merely
+	// continues with the word "book" ("The Saga Book of Shadows" retitled "The
+	// Saga") would be read as a volume and lose its alias.
+	if rest, ok := strings.CutPrefix(id, base+"-"+serialTailPrefix); ok {
+		return serialPositionHead.MatchString(rest)
 	}
 	i := strings.LastIndex(id, "-"+serialTailPrefix)
 	if i < 0 || !serialPositionTail.MatchString(id[i+1+len(serialTailPrefix):]) {
@@ -135,6 +140,10 @@ func serialVolumeSlug(base, id string) bool {
 // number, its decimal point slugged to a hyphen ("2.5" -> "2-5"), and an omnibus
 // range spelled out with "-to-" ("1-3.5" -> "1-to-3-5").
 var serialPositionTail = regexp.MustCompile(`^\d+(-\d+)?(-to-\d+(-\d+)?)?$`)
+
+// serialPositionHead matches the start of a position tail that may be followed by
+// more slug: a number, then the end or a hyphen.
+var serialPositionHead = regexp.MustCompile(`^\d+(-|$)`)
 
 // ownTitleChain is the create path's candidate chain for a catalogued work's own
 // cleaned title and credits, with no position claim; ok is false when the work

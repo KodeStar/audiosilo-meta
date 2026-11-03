@@ -118,6 +118,8 @@ func TestWorkTitleAlias(t *testing.T) {
 			Title: "Read People like a Book", Authors: w.Authors},
 		{ID: "the-book-of-five-rings-by-miyamoto-musashi-complete-edition-the-new-modern-english-translation-trans",
 			Title: "The Book of Five Rings", Authors: w.Authors},
+		// The whole base followed by the word "book" opens no position either.
+		{ID: "the-saga-book-of-shadows", Title: "The Saga", Authors: w.Authors},
 	} {
 		want := Slugify(decorated.Title)
 		if got := WorkTitleAlias(decorated, live, reds); got != want {
