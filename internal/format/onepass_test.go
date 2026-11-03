@@ -77,9 +77,12 @@ func TestOneParseCheckMatchesTheTwoPassCheck(t *testing.T) {
 		writeFile(t, filepath.Join(dir, filepath.FromSlash(rel)), body)
 	}
 	// The one-pass check is run on one worker and on many: the verdicts are
-	// filled from a pool, and the report must not depend on its scheduling.
+	// filled from a pool, and the report must not depend on its scheduling. The
+	// setting is restored however the test ends - a Fatalf below included, which
+	// would otherwise leave every later test in the binary on one worker.
+	defer runtime.GOMAXPROCS(runtime.GOMAXPROCS(0))
 	for _, procs := range []int{1, 8} {
-		restore := runtime.GOMAXPROCS(procs)
+		runtime.GOMAXPROCS(procs)
 		for _, p := range []pack.Profile{pack.ProfileAll, pack.ProfileCore, pack.ProfileCommunity} {
 			want, werr := twoPassCheck(t, dir, p)
 			got, gerr := CheckProfile(dir, p)
@@ -96,7 +99,6 @@ func TestOneParseCheckMatchesTheTwoPassCheck(t *testing.T) {
 				t.Errorf("%s: summary %q / %q, want %q / %q", p, got.Summary(), got.Advice(), want.Summary(), want.Advice())
 			}
 		}
-		runtime.GOMAXPROCS(restore)
 	}
 }
 
