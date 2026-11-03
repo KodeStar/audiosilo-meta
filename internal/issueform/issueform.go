@@ -653,7 +653,7 @@ func (c *composer) dedupIdentifiers(asins []outASIN, isbns []model.ISBNRef, asin
 			if other := matched[k]; other != first {
 				c.fail(StatusNeedsHuman, "your ASINs name two different recordings, both seeded from %s: "+
 					"%s is recorded at %s and %s at %s - a maintainer checks which edition this submission is",
-					seededFrom(append(c.recordingSources(first), c.recordingSources(other)...)),
+					seededFrom(slices.Concat(c.recordingSources(first), c.recordingSources(other))),
 					keys[0], c.recLocation(first), k, c.recLocation(other))
 				return nil, true
 			}
@@ -779,21 +779,15 @@ var mirrorNames = map[string]string{
 
 // seededFrom names the bulk mirror(s) among sources as a verdict states them:
 // "the libex mirror", "the LibriVox mirror", or "the libex and LibriVox
-// mirrors" for a record both seeded. A bulk-mirror type with no name of its
-// own is named by its source type; sources holding no bulk-mirror source at
-// all (never asked: every caller has seen BulkMirrorOnly hold) read "a bulk
-// mirror".
+// mirrors" for a record both seeded. Every bulk-mirror source type has a name
+// (TestMirrorNamesCoverTheBulkMirrorTier). Sources naming no mirror read "a
+// bulk mirror": the import note, whose summary counts attestations without
+// their sources, asks for exactly that.
 func seededFrom(sources []model.Source) string {
 	var names []string
 	for _, s := range sources {
-		if model.TierOfSource(s.Type) != model.TierBulkMirror {
-			continue
-		}
-		name := mirrorNames[s.Type]
-		if name == "" {
-			name = s.Type
-		}
-		if !slices.Contains(names, name) {
+		name, ok := mirrorNames[s.Type]
+		if ok && !slices.Contains(names, name) {
 			names = append(names, name)
 		}
 	}

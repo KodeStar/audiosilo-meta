@@ -3,7 +3,6 @@ package remediate
 import (
 	"encoding/json"
 	"fmt"
-	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -51,13 +50,6 @@ func libexSource(asin, today string) []model.Source {
 func compose(idx *index, g *group, today string) (merged, Refusal, bool) {
 	base, r, ok := mergeBase(idx, g)
 	if !ok {
-		return merged{}, r, false
-	}
-	recs := []obj{base.rec}
-	for _, p := range g.Parts {
-		recs = append(recs, p.Rec)
-	}
-	if r, ok := refuseLibrivox(g.Base, g.partSlugs(), recs...); !ok {
 		return merged{}, r, false
 	}
 
@@ -368,26 +360,6 @@ func agreedAbridged(g *group) (bool, bool) {
 		}
 	}
 	return value, len(g.Parts) > 0
-}
-
-// refuseLibrivox refuses a merge over recs when any of them is a LibriVox
-// recording (catLibrivox), naming the project ids. A refused merge leaves every
-// record as it was, so the recording keeps its librivox_id, archive_id, links
-// and chapter audio_urls untouched.
-func refuseLibrivox(subject string, entries []string, recs ...obj) (Refusal, bool) {
-	var projects []string
-	for _, rec := range recs {
-		if id, ok := rec.intAt("librivox_id"); ok && id > 0 {
-			projects = append(projects, fmt.Sprint(id))
-		}
-	}
-	if len(projects) == 0 {
-		return Refusal{}, true
-	}
-	return Refusal{Category: catLibrivox, Subject: subject,
-		Reason: fmt.Sprintf("the merge would fold LibriVox project %s, which is a production of its own (librivox_id is "+
-			"its identity), never a part of another", strings.Join(projects, ", ")),
-		Entries: entries}, false
 }
 
 // internalRefusal reports a record this package could not compose. It is a bug

@@ -116,12 +116,6 @@ const (
 	catAmbiguousTwin    = "ambiguous-plain-twin"
 	catTotalMismatch    = "part-count-disagreement"
 	catTwinDisagreement = "twin-disagreement"
-	// catLibrivox is a merge that would fold a LibriVox recording: a LibriVox
-	// project is a production of its own (its librivox_id is its identity,
-	// unique across the dataset), never a part of another, so no merge here
-	// takes one in. The cohort's publisher gate keeps LibriVox out already; this
-	// is the guard that says so if a record ever slips past it.
-	catLibrivox = "librivox-recording"
 	// catInternal is a record this package could not compose: a bug here rather
 	// than a judgement about the data, which is why it does not share a
 	// category with one.

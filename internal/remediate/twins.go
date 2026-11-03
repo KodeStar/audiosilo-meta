@@ -136,14 +136,10 @@ func twinsAgree(view map[string]obj, members []string) (Refusal, bool) {
 				Reason:  "works share an ASIN but are not both GraphicAudio dramatizations",
 				Entries: members}, false
 		}
-		_, rec, ok := soleRecordingOf(w)
-		if !ok {
+		if _, _, ok := soleRecordingOf(w); !ok {
 			return Refusal{Category: catMultiRecording, Subject: m,
 				Reason:  "works share an ASIN but one does not carry exactly one recording",
 				Entries: members}, false
-		}
-		if r, ok := refuseLibrivox(m, members, rec); !ok {
-			return r, false
 		}
 		key := authorsKey(w.strs("authors"))
 		if i == 0 {

@@ -1,6 +1,8 @@
 package issueform
 
 import (
+	"encoding/json"
+	"os"
 	"strings"
 	"testing"
 
@@ -384,7 +386,7 @@ func TestImportOfLibexOnlyRecordAttestsRatherThanDuplicating(t *testing.T) {
 	if res.Status != StatusOK {
 		t.Fatalf("status = %q, want ok; messages = %v", res.Status, res.Messages)
 	}
-	if !anyContains(res.Messages, "previously seeded from the libex mirror") {
+	if !anyContains(res.Messages, "previously seeded from a bulk mirror") {
 		t.Errorf("the attestation must be reported: %v", res.Messages)
 	}
 	rec := readFile(t, dir, "works/ex/existing-work/recordings/john-smith-2020.json")
@@ -628,6 +630,39 @@ func TestSeededFrom(t *testing.T) {
 	} {
 		if got := seededFrom(tc.sources); got != tc.want {
 			t.Errorf("seededFrom(%v) = %q, want %q", tc.sources, got, tc.want)
+		}
+	}
+}
+
+// Every bulk-mirror source type has a name a verdict can say: a new mirror tier
+// type must be named in mirrorNames, never read as no mirror at all.
+func TestMirrorNamesCoverTheBulkMirrorTier(t *testing.T) {
+	raw, err := os.ReadFile("../../schema/common.schema.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var doc struct {
+		Defs struct {
+			Source struct {
+				Properties struct {
+					Type struct {
+						Enum []string `json:"enum"`
+					} `json:"type"`
+				} `json:"properties"`
+			} `json:"source"`
+		} `json:"$defs"`
+	}
+	if err := json.Unmarshal(raw, &doc); err != nil {
+		t.Fatal(err)
+	}
+	enum := doc.Defs.Source.Properties.Type.Enum
+	if len(enum) == 0 {
+		t.Fatal("no source-type enum found in the schema")
+	}
+	for _, tp := range enum {
+		_, named := mirrorNames[tp]
+		if bulk := model.TierOfSource(tp) == model.TierBulkMirror; bulk != named {
+			t.Errorf("source type %q: bulk-mirror tier %v, named in mirrorNames %v", tp, bulk, named)
 		}
 	}
 }

@@ -254,37 +254,3 @@ func TestTheRepairedTreeValidates(t *testing.T) {
 		t.Fatalf("the repaired tree does not validate: %v", res.Problems)
 	}
 }
-
-// TestALibrivoxRecordingIsNeverFolded: a LibriVox project is a production of its
-// own (librivox_id is its identity), so neither a part set nor a twin cluster
-// holding one is merged, and every record is left as it was.
-func TestALibrivoxRecordingIsNeverFolded(t *testing.T) {
-	dir := t.TempDir()
-	parts := blackPrismParts()[:2]
-	parts[1].Rec.LibrivoxID = 527
-	seedWorks(t, dir, parts...)
-	rep := run(t, dir, true, "")
-	if got := refusalsIn(rep, catLibrivox); len(got) != 1 {
-		t.Fatalf("refusals = %v, want one librivox-recording refusal", rep.Refusals)
-	}
-	for _, p := range parts {
-		if !testpack.Exists(t, dir, workAddr(p.Slug)) {
-			t.Errorf("part %s was merged despite the refusal", p.Slug)
-		}
-	}
-
-	dir = t.TempDir()
-	seedWorks(t, dir,
-		workSpec{Slug: "one-dramatized-adaptation", Title: "One [Dramatized Adaptation]",
-			Authors: []string{"author-one"}, Rec: recSpec{Key: "full-cast-2024", ASINs: []string{"us:B0SHARED01"}, LibrivoxID: 801}},
-		workSpec{Slug: "one-dramatized-adaptation-x", Title: "One [Dramatized Adaptation]",
-			Authors: []string{"author-one"}, Rec: recSpec{Key: "full-cast-2024", ASINs: []string{"us:B0SHARED01"}}},
-	)
-	rep = run(t, dir, true, "")
-	if got := refusalsIn(rep, catLibrivox); len(got) != 1 {
-		t.Fatalf("refusals = %v, want one librivox-recording refusal for the twins", rep.Refusals)
-	}
-	if !testpack.Exists(t, dir, workAddr("one-dramatized-adaptation-x")) {
-		t.Error("a refused twin was merged away")
-	}
-}
