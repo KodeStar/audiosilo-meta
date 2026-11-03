@@ -5758,6 +5758,42 @@
             {
               "asin": "B0FJK428P1",
               "region": "uk"
+            },
+            {
+              "asin": "B0FJJJBLQ2",
+              "region": "de"
+            },
+            {
+              "asin": "B0FJJ2PD9P",
+              "region": "ca"
+            },
+            {
+              "asin": "B0FJJK97BC",
+              "region": "au"
+            },
+            {
+              "asin": "B0FJK436XT",
+              "region": "fr"
+            },
+            {
+              "asin": "B0FJJRSXKN",
+              "region": "es"
+            },
+            {
+              "asin": "B0FJJ5Y1MW",
+              "region": "it"
+            },
+            {
+              "asin": "B0FJJ4ZYCQ",
+              "region": "jp"
+            },
+            {
+              "asin": "B0FJJ38WTP",
+              "region": "in"
+            },
+            {
+              "asin": "B0FJJDYZ9D",
+              "region": "br"
             }
           ],
           "chapters": [
@@ -5928,6 +5964,51 @@
               "imported_at": "2026-10-09",
               "ref": "B0FJK428P1",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-03",
+              "ref": "B0FJJJBLQ2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-03",
+              "ref": "B0FJJ2PD9P",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-03",
+              "ref": "B0FJJK97BC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-03",
+              "ref": "B0FJK436XT",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-03",
+              "ref": "B0FJJRSXKN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-03",
+              "ref": "B0FJJ5Y1MW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-03",
+              "ref": "B0FJJ4ZYCQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-03",
+              "ref": "B0FJJ38WTP",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-03",
+              "ref": "B0FJJDYZ9D",
+              "type": "libex-import"
             }
           ],
           "work": "property-of-bigfoot"
@@ -6057,6 +6138,128 @@
         }
       ],
       "title": "Property of Fox"
+    },
+    "property-of-knuckles": {
+      "added_at": "2026-11-03",
+      "authors": [
+        "christine-michelle"
+      ],
+      "genres": [
+        "action-adventure",
+        "contemporary-romance",
+        "romance",
+        "romantic-suspense"
+      ],
+      "id": "property-of-knuckles",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "andi-eloise-2026": {
+          "abridged": false,
+          "added_at": "2026-11-03",
+          "asin": [
+            {
+              "asin": "B0HPNN7ZFH",
+              "region": "de"
+            },
+            {
+              "asin": "B0HPNHSN6R",
+              "region": "ca"
+            },
+            {
+              "asin": "B0HPNGWTHJ",
+              "region": "us"
+            },
+            {
+              "asin": "B0HPNN8DP4",
+              "region": "uk"
+            },
+            {
+              "asin": "B0HPNNBHJR",
+              "region": "au"
+            },
+            {
+              "asin": "B0HPNJNGQ4",
+              "region": "fr"
+            },
+            {
+              "asin": "B0HPNK2PTN",
+              "region": "jp"
+            },
+            {
+              "asin": "B0HPNNNJMF",
+              "region": "br"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91iBXR+9aSL.jpg",
+          "id": "andi-eloise-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andi-eloise",
+            "scott-rose"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2026-12-08",
+          "runtime_min": 402,
+          "sources": [
+            {
+              "imported_at": "2026-10-31",
+              "ref": "B0HPNN7ZFH",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-01",
+              "ref": "B0HPNHSN6R",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-03",
+              "ref": "B0HPNGWTHJ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-03",
+              "ref": "B0HPNN8DP4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-03",
+              "ref": "B0HPNNBHJR",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-03",
+              "ref": "B0HPNJNGQ4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-03",
+              "ref": "B0HPNK2PTN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-03",
+              "ref": "B0HPNNNJMF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "property-of-knuckles"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-31",
+          "ref": "B0HPNN7ZFH",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-11-01",
+          "ref": "B0HPNHSN6R",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Property of Knuckles"
     },
     "property-of-the-babymaker-a-scifi-alien-warrior-romance": {
       "added_at": "2026-08-01",
