@@ -1041,8 +1041,11 @@ recording_id, type)` with `idx_recording_sources_type(type, work_id,
 recording_id)`. loadStats proves the claim (`librivoxShapeSQL`), so a version 8
 artifact without them fails to open, as for 5-7. pkg/query reads it as: the
 `?source=` filter (librivox.go: `sourceParam` 400s an unknown type through
-`model.KnownSourceType`; `worksWithSourceArm` inside the FTS query and
-`latestCandidatesQuery`, `workHasSourceArm` in `worksAdmitted` over the boosts; the combined
+`model.KnownSourceType`; `worksWithSourceArm` inside the FTS query and the
+exact-title probe's window (`exactTitleQuery`), `workHasSourceArm` in
+`worksAdmitted` over the boosts; a filtered `works/latest` is `latestSourceSQL`,
+ordered by the newest added_at among the work's recordings of that source, the
+work's own as the fallback; the combined
 search turns works-only; an older artifact answers an empty list, never the
 unfiltered one), `lookup?librivox_id=` (read only when `asin` and `isbn` are
 absent), the RecordingDetail fields, `ChapterOut.AudioURL` and a leading free

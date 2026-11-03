@@ -167,7 +167,9 @@ Key endpoints (all under `/api/v1`): `stats`, `search?q=&limit=`,
 The LibriVox layer (artifact schema version 8). `search`, `works/search` and
 `works/latest` take `?source=librivox` (any source type of the schema), which
 keeps only works with a recording from that source - a typo is a 400, never an
-empty list. A LibriVox recording on `works/{id}` carries `librivox_id`,
+empty list. Filtered, `works/latest` orders by the newest recording from that
+source rather than by the work, so a new LibriVox reading of an old classic is
+new. A LibriVox recording on `works/{id}` carries `librivox_id`,
 `archive_id`, `links` (`librivox`, `zip`, `rss`, `text`) and `copyright_year`,
 leads its `purchase_links` with a free `librivox` link, and its chapters carry
 `audio_url`. `lookup?librivox_id=52` resolves a project id.
