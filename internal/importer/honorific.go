@@ -54,6 +54,14 @@ import (
 // On a LibriVox row the ids speak first: a catalogued id holder's spelling, and
 // a titled author whose bare twin is another LibriVox author or another person,
 // are never folded (creditCensus.keepHonorific, librivoxpeople.go rule 1).
+//
+// And a REVIEW speaks above the census: a merge-people rejection in
+// internal/audit/reviewed.json is how a maintainer records "two people, not one"
+// for an honorific pair (Dr. Alex George the TV doctor, Alex George the
+// novelist), and a pair it names is never folded, whatever the census says
+// (creditCensus.keptApart, planner.peopleKeptApart, fed Options.Distinct). The
+// LibriVox rule 1 paths ask the same list, so a review also stops a bare credit
+// being resolved onto its titled twin (rule 1c).
 
 // honorificPrefixes are the courtesy titles a credit may carry in front of an
 // otherwise ordinary name. Each is matched case-insensitively at a word

@@ -28,6 +28,9 @@ package importer
 //     `mrs-c-m-livingston`. Not when the twin only narrates, nor when the
 //     life years disagree, nor when the twin carries another author id and
 //     the credit states years of its own.
+//     d. a pair a reviewed merge-people rejection names (Options.Distinct) is
+//     two people in both directions: 1b reads it as kept apart, 1c does not
+//     resolve onto that twin.
 //  2. SAME-NAME AUTHORS. An author id no person carries, whose name resolves to
 //     a catalogued person who is someone else, is not credited (and stamped)
 //     there. Someone else means: the person carries ANOTHER librivox_author_id
@@ -337,6 +340,9 @@ func (p *planner) librivoxFoldVerdict(bare string, cl *lvAuthorClaim, bySlug map
 	if fellBack {
 		return "", lvSame
 	}
+	if p.personSlugsKeptApart(cl.slug, bareSlug) {
+		return "", lvApart // a review recorded two people (Options.Distinct)
+	}
 	for _, other := range bySlug[bareSlug] {
 		if !sameLife(other.life, cl.life) {
 			return "", lvApart
@@ -462,6 +468,9 @@ func (p *planner) librivoxTitledTwin(slug string, life lifeYears) string {
 		return ""
 	}
 	twin := twins[0]
+	if p.personSlugsKeptApart(slug, twin) {
+		return "" // a review recorded two people (Options.Distinct)
+	}
 	if p.narratorPeople[twin] && len(p.librivoxPersonWorks()[twin]) == 0 {
 		return ""
 	}

@@ -9,6 +9,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/kodestar/audiosilo-meta/internal/audit"
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 )
 
@@ -110,7 +111,9 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 		return 2
 	}
 	defer closeLog()
-	sum, err := run(*from, ids, importer.Options{DataDir: *data, ImportDate: stamp, DryRun: *dryRun, Conflicts: conflictLog})
+	sum, err := run(*from, ids, importer.Options{
+		DataDir: *data, ImportDate: stamp, DryRun: *dryRun, Conflicts: conflictLog, Distinct: audit.ReviewedDistinct(),
+	})
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "metaimport librivox import:", err)
 		return 1

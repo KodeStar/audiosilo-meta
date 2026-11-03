@@ -139,7 +139,9 @@ func mustParseReviewed(raw []byte) []reviewedDecision {
 // ReviewedDistinct returns this list's `reject`s of `merge-works`, `merge-series` and
 // `merge-people` proposals as the decisions pkg/check's advisory census honours
 // (check.ReviewedDistinct states what one means). cmd/metacheck hands them to the
-// load, since pkg/check cannot import this package.
+// load, since pkg/check cannot import this package; cmd/metaimport and
+// internal/issueform hand them to the importer (importer.Options.Distinct), whose
+// honorific fold reads the people namespace.
 func ReviewedDistinct() []check.ReviewedDistinct { return distinctOf(reviewedDecisions) }
 
 // distinctOf is ReviewedDistinct over a given list.
@@ -474,12 +476,7 @@ func survivorHolds(p Proposal, ix *index) string {
 }
 
 func resolvedProposal(p Proposal, class string, reds model.Redirects) Proposal {
-	live := func(kind model.RedirectKind, slug string) string {
-		if to, ok := reds.Survivor(kind, slug); ok {
-			return to
-		}
-		return slug
-	}
+	live := reds.Live
 	kind := model.RedirectWorks
 	switch p.Op {
 	case OpMergeSeries, OpSplitSeries:
