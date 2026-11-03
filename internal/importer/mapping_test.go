@@ -698,7 +698,7 @@ func TestNormalizeISBN(t *testing.T) {
 		// a bulk import used to reject it).
 		{"978-1-234-56789-7", "9781234567897", true},
 		{" 978 1 234 56789 7 ", "9781234567897", true},
-		{"030640615X", "030640615X", true},
+		{"080442957X", "080442957X", true},
 		{"123", "", false},
 		{"", "", false},
 		{"97812345678979", "", false},
@@ -708,5 +708,27 @@ func TestNormalizeISBN(t *testing.T) {
 		if got != c.want || ok != c.wantOK {
 			t.Errorf("NormalizeISBN(%q) = (%q,%v), want (%q,%v)", c.in, got, ok, c.want, c.wantOK)
 		}
+	}
+}
+
+func TestSourceISBNs(t *testing.T) {
+	var malformed []string
+	got := sourceISBNs([]any{"978-1-234-56789-7", "9781234567897", "123", "", "080442957x", "0-8044-2957-X"},
+		func(raw string) { malformed = append(malformed, raw) })
+	// Normalized (the X check digit upper-cased, as the tree spells it and the
+	// lookup asks), deduplicated across spellings, in order.
+	if want := []string{"9781234567897", "080442957X"}; !slices.Equal(got, want) {
+		t.Errorf("sourceISBNs = %v, want %v", got, want)
+	}
+	if want := []string{"123"}; !slices.Equal(malformed, want) {
+		t.Errorf("malformed = %v, want %v", malformed, want)
+	}
+	// A single string is one candidate; a nil callback drops a malformed value
+	// quietly.
+	if got := sourceISBNs("978 1 234 56789 7", nil); !slices.Equal(got, []string{"9781234567897"}) {
+		t.Errorf("sourceISBNs(string) = %v", got)
+	}
+	if got := sourceISBNs("bad", nil); got != nil {
+		t.Errorf("sourceISBNs(bad, nil) = %v, want nil", got)
 	}
 }
