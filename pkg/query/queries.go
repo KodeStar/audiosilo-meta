@@ -74,8 +74,8 @@ func (s *DB) latestCandidatesQuery(lang langFilter, src string, fetch int) (stri
 // and the work's own added_at cannot say: a LibriVox reading attached to a
 // classic the catalogue held for months (Pride and Prejudice, Candide) is new
 // while its work is not, and ordered by the work it would never surface - which
-// is what the LibriVox lane (meta-sync) and a player's "new on LibriVox" shelf
-// read it for. So the date is the newest added_at among the work's recordings OF
+// is what the LibriVox lane (meta-sync, L4) and a player's "new on LibriVox"
+// shelf (L5) are planned to read it for. So the date is the newest added_at among the work's recordings OF
 // THAT SOURCE (a recording's added_at is addedAt's rule: its own, else its
 // newest imported_at), falling back to the work's added_at when none of them
 // carries one, with the unfiltered order's NULLS LAST and title, id tie-break.
