@@ -6355,12 +6355,77 @@
         "miguel-de-cervantes"
       ],
       "genres": [
+        "historical-fiction",
+        "literary-fiction",
         "short-stories"
       ],
       "id": "novelas-ejemplares",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "santiago-munevar-2006": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V1BOGU",
+              "region": "us"
+            },
+            {
+              "asin": "B004V19AUU",
+              "region": "de"
+            },
+            {
+              "asin": "B004F332QC",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3805425,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 3595424,
+              "start_ms": 3805425,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 4612226,
+              "start_ms": 7400849,
+              "title": "Capítulo 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71HHC0En+zL.jpg",
+          "id": "santiago-munevar-2006",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "santiago-munevar"
+          ],
+          "publisher": "Yoyo USA, Inc",
+          "release_date": "2006-07-14",
+          "runtime_min": 200,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V1BOGU",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004V19AUU",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004F332QC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "novelas-ejemplares"
+        },
         "tux": {
           "added_at": "2026-10-28",
           "archive_id": "novelas_ejemplares_1110_librivox",
@@ -6547,95 +6612,14 @@
           "imported_at": "2026-10-28",
           "ref": "4369",
           "type": "librivox"
-        }
-      ],
-      "title": "Novelas Ejemplares"
-    },
-    "novelas-ejemplares-exemplary-novels": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "miguel-de-cervantes"
-      ],
-      "genres": [
-        "historical-fiction",
-        "literary-fiction"
-      ],
-      "id": "novelas-ejemplares-exemplary-novels",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "santiago-munevar-2006": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V1BOGU",
-              "region": "us"
-            },
-            {
-              "asin": "B004V19AUU",
-              "region": "de"
-            },
-            {
-              "asin": "B004F332QC",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3805425,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 3595424,
-              "start_ms": 3805425,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 4612226,
-              "start_ms": 7400849,
-              "title": "Capítulo 3"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71HHC0En+zL.jpg",
-          "id": "santiago-munevar-2006",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "santiago-munevar"
-          ],
-          "publisher": "Yoyo USA, Inc",
-          "release_date": "2006-07-14",
-          "runtime_min": 200,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V1BOGU",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004V19AUU",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004F332QC",
-              "type": "libex-import"
-            }
-          ],
-          "work": "novelas-ejemplares-exemplary-novels"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002V1BOGU",
           "type": "libex-import"
         }
       ],
-      "title": "Novelas Ejemplares [Exemplary Novels]"
+      "title": "Novelas Ejemplares"
     },
     "novelas-y-cuentos": {
       "added_at": "2026-10-29",
