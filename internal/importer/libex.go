@@ -3,12 +3,12 @@ package importer
 import (
 	"bytes"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"io"
 	"os"
 	"regexp"
 	"slices"
+	"sort"
 	"strconv"
 	"strings"
 	"unicode"
@@ -27,19 +27,17 @@ import (
 // are not in the catalogue yet. The ASIN-matched enrichment of records already
 // here (enrich.go, reached with --enrich), and the bounded subset selection
 // LICENSING.md's import posture requires, build on the same parse layer, which
-// stays a plain []byte -> rows function with no I/O.
+// stays a plain reader -> rows function doing no I/O of its own.
 //
 // RECOMMENDED INPUT, both modes: a PRE-FILTERED row set - what the libex-select
 // tool emits (a series completion, a contributor's shelf), or rows filtered to
 // the catalogue's ASINs at export time - not libex's raw 1.06M-row dump. For the
 // CREATE mode that is the import posture itself: importing the dump would be
 // mirroring it, which LICENSING.md refuses. For the ENRICHMENT mode the posture
-// is satisfied (the run is bounded by our catalogue, not by the source's), and
-// the remaining limit is purely mechanical: this parse layer is all-in-memory
-// and slurps every row before the ASIN match discards the ones that do not
-// apply, measured at roughly 6GB of live heap for the 1.06M-row dump. Feeding it
-// the whole dump therefore works only on a machine sized for it - filtering
-// first is cheaper for everyone.
+// is satisfied (the run is bounded by our catalogue, not by the source's). The
+// parse layer STREAMS the file (parseLibexStream): each row map is dropped once
+// its row is parsed, so only the accepted rows' compact sourceBooks are held
+// for planning, which still reads the whole batch at once.
 //
 // Only factual fields are read. Per LICENSING.md the row's description /
 // summary / rating / copyright fields are never touched at all, and the row's
@@ -55,7 +53,7 @@ import (
 //	chapters[{title, startOffsetMs, lengthMs}].
 //
 // The file itself may be a top-level JSON array of rows, NDJSON (one row per
-// line), or a {"books":[...]} wrapper (parseLibex sniffs which).
+// line), or a {"books":[...]} wrapper (streamLibexRows sniffs which).
 
 // utf8BOM is stripped before sniffing: a Windows-side export tool can prepend
 // it, and it would otherwise make every shape check fail on the first byte.
@@ -69,21 +67,26 @@ var utf8BOM = []byte{0xEF, 0xBB, 0xBF}
 // aggregated (see libexParse.warningLines) and lead, as run-level lines; when
 // creating they are per-row lines and follow everything the run raised.
 func RunLibex(exportPath string, opts Options) (Summary, error) {
-	raw, err := os.ReadFile(exportPath)
+	f, err := os.Open(exportPath)
 	if err != nil {
 		return Summary{}, fmt.Errorf("read %s: %w", exportPath, err)
 	}
-	entries, err := decodeLibexEntries(raw)
+	defer func() { _ = f.Close() }()
+	var (
+		parsed libexParse
+		setup  []func(*planner)
+	)
+	if opts.Mode == ModeRelocate {
+		var evidence []relocationEvidence
+		parsed, evidence, err = parseLibexRelocation(f)
+		if err == nil {
+			setup = append(setup, relocationSetup(evidence, parsed.skips))
+		}
+	} else {
+		parsed, err = parseLibexStream(f)
+	}
 	if err != nil {
 		return Summary{}, err
-	}
-	var setup []func(*planner)
-	if opts.Mode == ModeRelocate {
-		sortedRelocationRows(entries)
-	}
-	parsed := parseLibexEntries(entries)
-	if opts.Mode == ModeRelocate {
-		setup = append(setup, relocationSetup(entries, parsed.skips))
 	}
 	// All modes share decoding, admission, planner setup and reporting.
 	sum, runErr := runBooks(parsed.books, sourceLibex, opts, parsed.skips, setup...)
@@ -240,108 +243,132 @@ func (lp libexParse) warningLines(aggregate bool) []string {
 	return lines
 }
 
-// parseLibex decodes a libex export and converts every usable row into the
-// OpenAudible-shaped sourceBook the shared pipeline consumes. A row is skipped
-// here (with a warning) when it lacks either of the two things the parse layer
-// can decide on its own: a well-formed ASIN (this source's identity and dedup
-// key) or a marketplace the recording schema knows. Rows missing a title,
-// author, narrator or language are left to addBook, which owns those rules for
-// every source.
+// parseLibex is parseLibexStream over an export already in memory (the tests'
+// door; RunLibex streams the file).
 func parseLibex(data []byte) (libexParse, error) {
-	entries, err := decodeLibexEntries(data)
+	return parseLibexStream(bytes.NewReader(data))
+}
+
+// parseLibexStream decodes a libex export ROW BY ROW and converts every usable
+// row into the OpenAudible-shaped sourceBook the shared pipeline consumes (see
+// parseRow for what refuses a row here). The decoded row map is dropped as soon
+// as its row is parsed, so what the parse layer retains is the compact
+// sourceBook of each ACCEPTED row plus the warnings - never the file and never
+// the row maps, which for libex's full dump was most of the run's memory.
+//
+// The shapes are streamLibexRows' (one reader of the format, shared with
+// libex-select). A non-object ARRAY element is dropped without a trace, the
+// import path's long-standing rule (decodeEntries); an NDJSON `null` line is
+// a no-ASIN row, as it always was.
+func parseLibexStream(r io.Reader) (libexParse, error) {
+	var lp libexParse
+	err := streamLibexValues(r, func(_ []byte, e rawBook, element bool) {
+		if element && e == nil {
+			return
+		}
+		lp.parseRow(e)
+	})
 	if err != nil {
 		return libexParse{}, err
 	}
-	return parseLibexEntries(entries), nil
+	return lp, nil
 }
 
-func parseLibexEntries(entries []rawBook) libexParse {
-	lp := libexParse{books: make([]sourceBook, 0, len(entries))}
-	for _, e := range entries {
-		asin := NormalizeASIN(e.str("asin"))
-		if asin == "" {
-			label := firstNonEmpty(e.str("title"), e.str("asin"), "(unknown row)")
-			lp.skipped++
-			lp.skips = appendSkip(lp.skips, refusedRowASIN(e.str("asin")), reasonNoASIN)
-			lp.add(warnNoASIN, label, "row %q has no well-formed ASIN (%q); skipped", label, e.str("asin"))
-			continue
-		}
-		// A row whose marketplace does not map would import as a work and a
-		// recording carrying NO asin[] at all: unreachable by lookup and
-		// invisible to the ASIN dedup, so a later row for the same book would
-		// collide with it. Refusing the row here keeps the ASIN available for a
-		// sibling row that does state a marketplace.
-		region, rawRegion, ok := libexRegion(e)
-		if !ok {
-			lp.skipped++
-			lp.skips = appendSkip(lp.skips, asin, reasonRegion)
-			lp.add(warnUnknownRegion, asin, "%s: region %q is not a known marketplace; row skipped (an ASIN must be marketplace-scoped)", asin, rawRegion)
-			continue
-		}
-		// The credit-side refusals: a synthetic narrator, and a credit naming
-		// nobody this catalogue can identify (see refuseLibexCredits). Refusing
-		// them HERE rather than in a planner is what makes both rules hold for
-		// every libex mode - create, enrich and recordings-only alike - and keeps
-		// them out of the run's ASIN accounting entirely. The credit lists are read
-		// once and handed to libexToBook, which would otherwise re-read them.
-		authors, narrators := libexNames(e["authors"]), libexNames(e["narrators"])
-		if r, refused := refuseLibexCredits(authors, narrators); refused {
-			lp.skipped++
-			lp.skips = appendSkip(lp.skips, asin, r.reason)
-			lp.add(r.class, r.label(asin), "%s: %s; row skipped", asin, r.detail)
-			continue
-		}
-		// The names stay escaped here: the list refusal above reads the
-		// SEPARATORS, and an entity reference is a place a ';' hides, so it has
-		// to see the escaped spelling. runBooks decodes them with the rest of the
-		// book's text (entities.go).
-		lp.books = append(lp.books, libexToBook(e, asin, region, authors, narrators, &lp))
-	}
-	return lp
+// relocationEvidence is the one fact relocation reads from EVERY row, the ones
+// parseRow refuses included: the row's normalized ASIN and the language it
+// states (relocationSetup).
+type relocationEvidence struct {
+	asin, lang string
 }
 
-// decodeLibexEntries accepts the three shapes a libex export can arrive in: a
-// top-level JSON array of rows, NDJSON (a stream of one row per line), or a
-// wrapper object holding the array under one of wrapperKeys. The first
-// non-whitespace byte distinguishes the array; '{' is decoded as a STREAM of
-// top-level objects, which covers NDJSON and (for a single object) the wrapper
-// and one-row-per-file cases alike.
-//
-// A LONE object is the ambiguous case, and the row's own "asin" key resolves it:
-// with one, it is a row (even if it happens to carry a "library" field); without
-// one, it can only be an envelope, so it goes through decodeEntries - which
-// finds the array under a recognized key or fails loudly. Guessing "row" there
-// silently imported zero books from a valid-looking file.
-func decodeLibexEntries(data []byte) ([]rawBook, error) {
-	trimmed := bytes.TrimLeft(bytes.TrimPrefix(data, utf8BOM), " \t\r\n")
-	switch {
-	case len(trimmed) == 0:
-		return nil, errors.New("parse libex export: empty input")
-	case trimmed[0] == '[':
-		return decodeEntries(trimmed, "libex export")
-	case trimmed[0] != '{':
-		return nil, errors.New("parse libex export: expected a JSON array of rows, NDJSON, or a wrapper object holding an array")
+// parseLibexRelocation is parseLibexStream for the relocation pass, which needs
+// the rows in a CANONICAL order rather than the file's: the rows are ordered by
+// their own re-marshalled JSON (stable among identical rows), so titles,
+// credits, notes and source stamps are independent of the order duplicate and
+// regional rows arrive in. Each row is parsed as it is read into its own
+// outcome, and the outcomes - not the row maps - are what is sorted: the row's
+// sort key, its evidence and its parse result. Merging them in key order yields
+// exactly the books, refusals and warnings sorting the decoded rows first and
+// parsing them in that order did.
+func parseLibexRelocation(r io.Reader) (libexParse, []relocationEvidence, error) {
+	type parsedRow struct {
+		key      string
+		evidence relocationEvidence
+		parse    libexParse
 	}
+	var rows []parsedRow
+	err := streamLibexValues(r, func(_ []byte, e rawBook, element bool) {
+		if element && e == nil {
+			return
+		}
+		key, _ := json.Marshal(e) // decoded JSON values are always marshalable
+		lang, _ := mapLanguage(e.str("language"))
+		row := parsedRow{key: string(key), evidence: relocationEvidence{asin: NormalizeASIN(e.str("asin")), lang: lang}}
+		row.parse.parseRow(e)
+		rows = append(rows, row)
+	})
+	if err != nil {
+		return libexParse{}, nil, err
+	}
+	sort.SliceStable(rows, func(i, j int) bool { return rows[i].key < rows[j].key })
+	var lp libexParse
+	evidence := make([]relocationEvidence, 0, len(rows))
+	for _, row := range rows {
+		evidence = append(evidence, row.evidence)
+		lp.books = append(lp.books, row.parse.books...)
+		lp.skipped += row.parse.skipped
+		lp.warnings = append(lp.warnings, row.parse.warnings...)
+		lp.skips = append(lp.skips, row.parse.skips...)
+	}
+	return lp, evidence, nil
+}
 
-	dec := json.NewDecoder(bytes.NewReader(trimmed))
-	dec.UseNumber()
-	var objs []rawBook
-	for {
-		var obj map[string]any
-		if err := dec.Decode(&obj); err != nil {
-			if errors.Is(err, io.EOF) {
-				break
-			}
-			return nil, fmt.Errorf("parse libex export: %w", err)
-		}
-		objs = append(objs, rawBook(obj))
+// parseRow parses one decoded row into lp. A row is refused here (with a
+// warning) when it lacks either of the two things the parse layer can decide on
+// its own - a well-formed ASIN (this source's identity and dedup key) or a
+// marketplace the recording schema knows - or when a credit names nobody this
+// catalogue can identify (refuseLibexCredits). Rows missing a title, author,
+// narrator or language are left to addBook, which owns those rules for every
+// source.
+func (lp *libexParse) parseRow(e rawBook) {
+	asin := NormalizeASIN(e.str("asin"))
+	if asin == "" {
+		label := firstNonEmpty(e.str("title"), e.str("asin"), "(unknown row)")
+		lp.skipped++
+		lp.skips = appendSkip(lp.skips, refusedRowASIN(e.str("asin")), reasonNoASIN)
+		lp.add(warnNoASIN, label, "row %q has no well-formed ASIN (%q); skipped", label, e.str("asin"))
+		return
 	}
-	if len(objs) == 1 {
-		if _, isRow := objs[0]["asin"]; !isRow {
-			return decodeEntries(trimmed, "libex export")
-		}
+	// A row whose marketplace does not map would import as a work and a
+	// recording carrying NO asin[] at all: unreachable by lookup and
+	// invisible to the ASIN dedup, so a later row for the same book would
+	// collide with it. Refusing the row here keeps the ASIN available for a
+	// sibling row that does state a marketplace.
+	region, rawRegion, ok := libexRegion(e)
+	if !ok {
+		lp.skipped++
+		lp.skips = appendSkip(lp.skips, asin, reasonRegion)
+		lp.add(warnUnknownRegion, asin, "%s: region %q is not a known marketplace; row skipped (an ASIN must be marketplace-scoped)", asin, rawRegion)
+		return
 	}
-	return objs, nil
+	// The credit-side refusals: a synthetic narrator, and a credit naming
+	// nobody this catalogue can identify (see refuseLibexCredits). Refusing
+	// them HERE rather than in a planner is what makes both rules hold for
+	// every libex mode - create, enrich and recordings-only alike - and keeps
+	// them out of the run's ASIN accounting entirely. The credit lists are read
+	// once and handed to libexToBook, which would otherwise re-read them.
+	authors, narrators := libexNames(e["authors"]), libexNames(e["narrators"])
+	if r, refused := refuseLibexCredits(authors, narrators); refused {
+		lp.skipped++
+		lp.skips = appendSkip(lp.skips, asin, r.reason)
+		lp.add(r.class, r.label(asin), "%s: %s; row skipped", asin, r.detail)
+		return
+	}
+	// The names stay escaped here: the list refusal above reads the
+	// SEPARATORS, and an entity reference is a place a ';' hides, so it has
+	// to see the escaped spelling. runBooks decodes them with the rest of the
+	// book's text (entities.go).
+	lp.books = append(lp.books, libexToBook(e, asin, region, authors, narrators, lp))
 }
 
 // libexToBook normalizes one libex row into a sourceBook, translating field

@@ -591,12 +591,13 @@ func TestLibexSelectRefusesBrokenExports(t *testing.T) {
 	}
 }
 
-// TestLibexSelectParserParity pins the selector's streamer to the importer's
-// in-memory parser over the whole shape vocabulary. Two parsers for one file
-// format is one more than the operator can reason about: a file the selector
-// accepts must be a file `metaimport libex` accepts, and vice versa. The
-// verdicts compared are what each one ACCEPTS as a usable row, plus whether it
-// refused the file at all.
+// TestLibexSelectParserParity pins the selector to the importer's parse layer
+// over the whole shape vocabulary. Both now read through streamLibexValues, but
+// they still differ by design on a non-object array element (the selector
+// counts it, the importer drops it), so a file the selector accepts must still
+// be a file `metaimport libex` accepts, and vice versa. The verdicts compared
+// are what each one ACCEPTS as a usable row, plus whether it refused the file
+// at all.
 func TestLibexSelectParserParity(t *testing.T) {
 	row := selectRow("B0SELECT02", "Volume Two", "us", "english", seriesName, "2")
 	other := selectRow("B0SELECT06", "Volume Six", "us", "english", seriesName, "6")
@@ -616,6 +617,7 @@ func TestLibexSelectParserParity(t *testing.T) {
 		{"wrapper books", `{"books":[` + row + `]}`},
 		{"wrapper items", `{"Items":[` + row + `,` + other + `]}`},
 		{"wrapper library empty", `{"library":[]}`},
+		{"wrapper with a null array", `{"books":null}`},
 		{"lone object with asin", row},
 		{"lone object without asin", noASIN},
 		{"ndjson leading no-asin row", noASIN + "\n" + row + "\n"},

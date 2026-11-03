@@ -1026,15 +1026,31 @@ func (idx seriesIndex) catalogue() seriesCatalogue {
 }
 
 // streamLibexRows decodes an export and calls fn for every row, handing over
-// BOTH the row's verbatim JSON bytes and its decoded map. It accepts the same
-// three shapes parseLibex does (a top-level array, NDJSON, or a wrapper object
-// holding the array), but streams rather than materializing the file: the
-// intended input here IS libex's full dump.
+// BOTH the row's verbatim JSON bytes and its decoded map. It accepts three
+// shapes (a top-level array, NDJSON, or a wrapper object holding the array) and
+// streams rather than materializing the file: the intended input IS libex's
+// full dump. It is the ONE reader of the format - the importer's parse layer
+// (parseLibexStream) and this selector both go through it, so the shapes the
+// two accept cannot drift apart.
 //
-// A lone object is the ambiguous case and is resolved exactly as
-// decodeLibexEntries resolves it - the row's own "asin" key decides, and an
-// envelope without one is unwrapped rather than silently imported as zero rows.
+// A lone object is the ambiguous case and the row's own "asin" key decides: a
+// row with one is a row, and an envelope without one is unwrapped rather than
+// silently imported as zero rows.
 func streamLibexRows(r io.Reader, fn func(raw []byte, e rawBook)) error {
+	return streamLibexValues(r, func(raw []byte, e rawBook, _ bool) { fn(raw, e) })
+}
+
+// libexValueFn receives one decoded value of an export. element is true for a
+// value read as an ARRAY ELEMENT (the array and wrapper shapes), where a
+// non-object value arrives as a nil map; a top-level NDJSON value is never an
+// element. The flag is what lets the importer keep its silent drop of a
+// non-object element (decodeEntries' rule) while this selector counts one, and
+// still count an NDJSON `null` line - which also decodes to a nil map - as the
+// no-ASIN row it always was.
+type libexValueFn func(raw []byte, e rawBook, element bool)
+
+// streamLibexValues is streamLibexRows with the element flag (libexValueFn).
+func streamLibexValues(r io.Reader, fn libexValueFn) error {
 	br := bufio.NewReaderSize(r, 1<<20)
 	if err := skipBOMAndSpace(br); err != nil {
 		if errors.Is(err, io.EOF) {
@@ -1085,7 +1101,7 @@ func streamLibexRows(r io.Reader, fn func(raw []byte, e rawBook)) error {
 // single wrapper/row object). Only the FIRST object can be a wrapper, and only
 // when it is also the last and carries no "asin" - so the wrapper path buffers
 // exactly one object and the NDJSON path buffers none.
-func streamLibexObjects(dec *json.Decoder, fn func(raw []byte, e rawBook)) error {
+func streamLibexObjects(dec *json.Decoder, fn libexValueFn) error {
 	first := true
 	for {
 		var raw json.RawMessage
@@ -1105,7 +1121,7 @@ func streamLibexObjects(dec *json.Decoder, fn func(raw []byte, e rawBook)) error
 				return streamWrapped(raw, fn)
 			}
 		}
-		fn(raw, entry)
+		fn(raw, entry, false)
 	}
 }
 
@@ -1115,7 +1131,7 @@ func streamLibexObjects(dec *json.Decoder, fn func(raw []byte, e rawBook)) error
 // element is handed over as its own bytes, like every other shape - a wrapper
 // is a hand-assembled file rather than the dump, but there is no reason for it
 // to be the one shape whose rows get re-rendered.
-func streamWrapped(raw json.RawMessage, fn func(raw []byte, e rawBook)) error {
+func streamWrapped(raw json.RawMessage, fn libexValueFn) error {
 	var obj map[string]json.RawMessage
 	if err := json.Unmarshal(raw, &obj); err != nil {
 		return fmt.Errorf("parse libex export: %w", err)
@@ -1125,8 +1141,10 @@ func streamWrapped(raw json.RawMessage, fn func(raw []byte, e rawBook)) error {
 		if !ok {
 			continue
 		}
+		// A null body is no array (Unmarshal leaves arr nil without an error), so
+		// it falls through to the next key exactly as a string or a number does.
 		var arr []json.RawMessage
-		if err := json.Unmarshal(body, &arr); err != nil {
+		if err := json.Unmarshal(body, &arr); err != nil || arr == nil {
 			continue
 		}
 		for _, el := range arr {
@@ -1134,7 +1152,7 @@ func streamWrapped(raw json.RawMessage, fn func(raw []byte, e rawBook)) error {
 			if err != nil {
 				return err
 			}
-			fn(el, entry) // a non-object element rides through as a no-ASIN row
+			fn(el, entry, true) // a non-object element rides through as a nil map
 		}
 		return nil
 	}
@@ -1147,10 +1165,10 @@ func streamWrapped(raw json.RawMessage, fn func(raw []byte, e rawBook)) error {
 // the first rule (no ASIN) and is counted there. Returning early instead made
 // it invisible in the array shape while the NDJSON shape counted it, so the
 // same file reported different totals depending on how it was spelled. The
-// import path drops such an element silently (decodeEntries); this tool
-// reports every element it read, which is the stronger property for a step
-// whose whole output is a report.
-func decodeRow(dec *json.Decoder, fn func(raw []byte, e rawBook)) error {
+// import path drops such an element silently (parseLibexStream, keyed on the
+// element flag); this tool reports every element it read, which is the
+// stronger property for a step whose whole output is a report.
+func decodeRow(dec *json.Decoder, fn libexValueFn) error {
 	var raw json.RawMessage
 	if err := dec.Decode(&raw); err != nil {
 		return fmt.Errorf("parse libex export: %w", err)
@@ -1159,15 +1177,13 @@ func decodeRow(dec *json.Decoder, fn func(raw []byte, e rawBook)) error {
 	if err != nil {
 		return err
 	}
-	fn(raw, entry)
+	fn(raw, entry, true)
 	return nil
 }
 
 // decodeObjectBytes decodes one TOP-LEVEL stream value, which must be an
-// object. NDJSON carrying anything else is not a file the import path reads
-// either - decodeLibexEntries decodes the same stream straight into objects -
-// so it is refused here, with json's own wording, rather than counted as an odd
-// row. (Inside an ARRAY a non-object element is tolerated by both, see
+// object. NDJSON carrying anything else is not a file this format allows, so it
+// is refused here, with json's own wording, rather than counted as an odd row. (Inside an ARRAY a non-object element is tolerated by both, see
 // decodeRow.)
 func decodeObjectBytes(raw []byte) (rawBook, error) {
 	d := json.NewDecoder(bytes.NewReader(raw))
