@@ -13,6 +13,7 @@ import (
 	"strings"
 	"unicode"
 	"unicode/utf8"
+	"unique"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"golang.org/x/text/unicode/norm"
@@ -249,26 +250,15 @@ func parseLibex(data []byte) (libexParse, error) {
 	return parseLibexStream(bytes.NewReader(data))
 }
 
-// parseLibexStream decodes a libex export ROW BY ROW and converts every usable
-// row into the OpenAudible-shaped sourceBook the shared pipeline consumes (see
-// parseRow for what refuses a row here). The decoded row map is dropped as soon
-// as its row is parsed, so what the parse layer retains is the compact
+// parseLibexStream decodes a libex export ROW BY ROW (streamLibexRows) and
+// converts every usable row into the OpenAudible-shaped sourceBook the shared
+// pipeline consumes (see parseRow for what refuses a row here). Each row map is
+// dropped as soon as its row is parsed, so the parse layer retains the compact
 // sourceBook of each ACCEPTED row plus the warnings - never the file and never
-// the row maps, which for libex's full dump was most of the run's memory.
-//
-// The shapes are streamLibexRows' (one reader of the format, shared with
-// libex-select). A non-object ARRAY element is dropped without a trace, the
-// import path's long-standing rule (decodeEntries); an NDJSON `null` line is
-// a no-ASIN row, as it always was.
+// the row maps, which for libex's full dump was most of its memory.
 func parseLibexStream(r io.Reader) (libexParse, error) {
 	var lp libexParse
-	err := streamLibexValues(r, func(_ []byte, e rawBook, element bool) {
-		if element && e == nil {
-			return
-		}
-		lp.parseRow(e)
-	})
-	if err != nil {
+	if err := streamLibexRows(r, false, func(_ []byte, e rawBook) { lp.parseRow(e) }); err != nil {
 		return libexParse{}, err
 	}
 	return lp, nil
@@ -281,31 +271,22 @@ type relocationEvidence struct {
 	asin, lang string
 }
 
-// parseLibexRelocation is parseLibexStream for the relocation pass, which needs
-// the rows in a CANONICAL order rather than the file's: the rows are ordered by
-// their own re-marshalled JSON (stable among identical rows), so titles,
-// credits, notes and source stamps are independent of the order duplicate and
-// regional rows arrive in. Each row is parsed as it is read into its own
-// outcome, and the outcomes - not the row maps - are what is sorted: the row's
-// sort key, its evidence and its parse result. Merging them in key order yields
-// exactly the books, refusals and warnings sorting the decoded rows first and
-// parsing them in that order did.
+// parseLibexRelocation is parseLibexStream for the relocation pass, which reads
+// the rows in a CANONICAL order rather than the file's: sorted by their own
+// re-marshalled JSON (stable among identical rows) before any is parsed, so
+// titles, credits, notes and source stamps are independent of the order
+// duplicate and regional rows arrive in. The rows are therefore held until the
+// sort (relocation's input is bounded by its candidates); only the compact
+// evidence outlives the parse.
 func parseLibexRelocation(r io.Reader) (libexParse, []relocationEvidence, error) {
-	type parsedRow struct {
-		key      string
-		evidence relocationEvidence
-		parse    libexParse
+	type keyedRow struct {
+		key string
+		row rawBook
 	}
-	var rows []parsedRow
-	err := streamLibexValues(r, func(_ []byte, e rawBook, element bool) {
-		if element && e == nil {
-			return
-		}
+	var rows []keyedRow
+	err := streamLibexRows(r, false, func(_ []byte, e rawBook) {
 		key, _ := json.Marshal(e) // decoded JSON values are always marshalable
-		lang, _ := mapLanguage(e.str("language"))
-		row := parsedRow{key: string(key), evidence: relocationEvidence{asin: NormalizeASIN(e.str("asin")), lang: lang}}
-		row.parse.parseRow(e)
-		rows = append(rows, row)
+		rows = append(rows, keyedRow{key: string(key), row: e})
 	})
 	if err != nil {
 		return libexParse{}, nil, err
@@ -313,12 +294,10 @@ func parseLibexRelocation(r io.Reader) (libexParse, []relocationEvidence, error)
 	sort.SliceStable(rows, func(i, j int) bool { return rows[i].key < rows[j].key })
 	var lp libexParse
 	evidence := make([]relocationEvidence, 0, len(rows))
-	for _, row := range rows {
-		evidence = append(evidence, row.evidence)
-		lp.books = append(lp.books, row.parse.books...)
-		lp.skipped += row.parse.skipped
-		lp.warnings = append(lp.warnings, row.parse.warnings...)
-		lp.skips = append(lp.skips, row.parse.skips...)
+	for _, kr := range rows {
+		lang, _ := mapLanguage(kr.row.str("language"))
+		evidence = append(evidence, relocationEvidence{asin: NormalizeASIN(kr.row.str("asin")), lang: lang})
+		lp.parseRow(kr.row)
 	}
 	return lp, evidence, nil
 }
@@ -559,26 +538,36 @@ func libexGenreClaims(v any) []genreClaim {
 	if !ok {
 		return nil
 	}
-	var claims []genreClaim
+	// The node ids and names come from one small vocabulary repeated across
+	// every row of a dump, so they are interned: the parse holds one copy of
+	// each spelling rather than one per claim.
+	claims := make([]genreClaim, 0, len(arr))
 	for _, el := range arr {
 		switch x := el.(type) {
 		case map[string]any:
 			// Names are decoded where the claim is built, as a series name is
 			// (entities.go): libex escapes its text, and "Science Fiction &amp;
 			// Fantasy" is in no vocabulary.
-			c := genreClaim{node: coerceStr(x["asin"]), name: DecodeHTMLEntities(coerceStr(x["name"]))}
+			c := genreClaim{node: intern(coerceStr(x["asin"])), name: intern(DecodeHTMLEntities(coerceStr(x["name"])))}
 			if c.node == "" && c.name == "" {
 				continue
 			}
 			claims = append(claims, c)
 		default:
 			if name := DecodeHTMLEntities(coerceStr(el)); name != "" {
-				claims = append(claims, genreClaim{name: name})
+				claims = append(claims, genreClaim{name: intern(name)})
 			}
 		}
 	}
+	if len(claims) == 0 {
+		return nil // as before the preallocation: no claims is a nil list
+	}
 	return claims
 }
+
+// intern returns the canonical copy of s, so a string repeated across rows is
+// held once.
+func intern(s string) string { return unique.Make(s).Value() }
 
 // libexISBNs reads a row's ISBN field (a single string, or an array of them),
 // keeping only well-formed, deduplicated values in their normalized (hyphenless)

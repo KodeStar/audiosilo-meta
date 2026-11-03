@@ -591,84 +591,11 @@ func TestLibexSelectRefusesBrokenExports(t *testing.T) {
 	}
 }
 
-// TestLibexSelectParserParity pins the selector to the importer's parse layer
-// over the whole shape vocabulary. Both now read through streamLibexValues, but
-// they still differ by design on a non-object array element (the selector
-// counts it, the importer drops it), so a file the selector accepts must still
-// be a file `metaimport libex` accepts, and vice versa. The verdicts compared
-// are what each one ACCEPTS as a usable row, plus whether it refused the file
-// at all.
-func TestLibexSelectParserParity(t *testing.T) {
-	row := selectRow("B0SELECT02", "Volume Two", "us", "english", seriesName, "2")
-	other := selectRow("B0SELECT06", "Volume Six", "us", "english", seriesName, "6")
-	noASIN := `{"title":"Nameless","region":"us","language":"english","series":[]}`
-
-	for _, tc := range []struct {
-		name  string
-		input string
-	}{
-		{"empty", ""},
-		{"whitespace only", "  \n\t "},
-		{"bom + array", "\ufeff[" + row + "]"},
-		{"bom + ndjson", "\ufeff" + row + "\n" + other + "\n"},
-		{"array", "[" + row + "," + other + "]"},
-		{"empty array", "[]"},
-		{"ndjson", row + "\n" + other + "\n"},
-		{"wrapper books", `{"books":[` + row + `]}`},
-		{"wrapper items", `{"Items":[` + row + `,` + other + `]}`},
-		{"wrapper library empty", `{"library":[]}`},
-		{"wrapper with a null array", `{"books":null}`},
-		{"lone object with asin", row},
-		{"lone object without asin", noASIN},
-		{"ndjson leading no-asin row", noASIN + "\n" + row + "\n"},
-		{"non-object array element", `[7,` + row + `]`},
-		{"non-object ndjson value", row + "\n7\n"},
-		{"truncated array", "[" + row},
-		{"truncated object", `{"asin":`},
-		{"concatenated arrays", "[" + row + "][" + other + "]"},
-		{"array then garbage", "[" + row + "] garbage"},
-		{"not json at all", "hello"},
-		{"scalar", "42"},
-	} {
-		t.Run(tc.name, func(t *testing.T) {
-			var streamed []string
-			streamErr := streamLibexRows(strings.NewReader(tc.input), func(_ []byte, e rawBook) {
-				if asin := NormalizeASIN(e.str("asin")); asin != "" {
-					streamed = append(streamed, asin)
-				}
-			})
-
-			lp, parseErr := parseLibex([]byte(tc.input))
-			var parsed []string
-			for _, b := range lp.books {
-				parsed = append(parsed, b.str("asin"))
-			}
-
-			if (streamErr != nil) != (parseErr != nil) {
-				t.Fatalf("refusal disagrees: stream err = %v, parse err = %v", streamErr, parseErr)
-			}
-			if streamErr != nil {
-				// The wording is shared too, so an operator reads one message
-				// whichever tool refused the file.
-				if streamErr.Error() != parseErr.Error() {
-					t.Errorf("error wording differs:\n stream %v\n parse  %v", streamErr, parseErr)
-				}
-				return
-			}
-			if strings.Join(streamed, ",") != strings.Join(parsed, ",") {
-				t.Errorf("accepted rows differ: stream %v, parse %v", streamed, parsed)
-			}
-		})
-	}
-}
-
-// TestLibexSelectCountsNonObjectElements is the one place the selector is
-// deliberately NOT silent where the import parser is: a non-object ARRAY
-// element is dropped by decodeEntries without a trace, but the selector's whole
-// output is a report, so it counts the element (under the first rule it fails)
-// in both array-carrying shapes. Neither tool accepts it as a row.
-// (NDJSON has no such case - a non-object top-level value is refused outright
-// by both, which the parity table pins.)
+// TestLibexSelectCountsNonObjectElements pins that the selector counts a
+// non-object ARRAY element (under the first rule it fails, no ASIN) in both
+// array-carrying shapes, as the importer does (TestLibexStreamShapes). Neither
+// tool accepts it as a row. (NDJSON has no such case - a non-object top-level
+// value is refused outright, which the shape table pins.)
 func TestLibexSelectCountsNonObjectElements(t *testing.T) {
 	dataDir := seedSelectCatalogue(t)
 	row := selectRow("B0SELECT02", "Volume Two", "us", "english", seriesName, "2")

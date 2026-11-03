@@ -169,19 +169,38 @@ func parseOpenAudibleDuration(s string) (int, bool) {
 // form ("3", "0.5"); bools render as "true"/"false"; nil and absent yield "".
 func (b rawBook) str(key string) string { return coerceStr(b[key]) }
 
-// chapters returns the book's chapters array as rawChapters, or nil.
-func (b rawBook) chapters() []rawChapter {
+// chapters returns the book's chapters array as typed chapter rows, or nil.
+// Non-object elements are skipped.
+func (b rawBook) chapters() []sourceChapter {
 	arr, ok := b["chapters"].([]any)
 	if !ok {
 		return nil
 	}
-	out := make([]rawChapter, 0, len(arr))
+	out := make([]sourceChapter, 0, len(arr))
 	for _, el := range arr {
 		if m, ok := el.(map[string]any); ok {
-			out = append(out, rawChapter(m))
+			out = append(out, rawChapter(m).typed())
 		}
 	}
 	return out
+}
+
+// sourceChapter is one chapter row as buildChapters reads it, resolved from the
+// source's own map once, at parse time: the title (trimmed, HTML references
+// decoded by decodeText) and the two offsets with whether each was stated.
+// Holding the typed row rather than the decoded map is most of a chaptered
+// row's parse-time footprint (a map per chapter is ~480 bytes).
+type sourceChapter struct {
+	title               string
+	startMS, lengthMS   int64
+	hasStart, hasLength bool
+}
+
+// typed resolves a chapter map into its sourceChapter.
+func (c rawChapter) typed() sourceChapter {
+	start, hasStart := c.startMS()
+	length, hasLength := c.lengthMS()
+	return sourceChapter{title: c.str("title"), startMS: start, lengthMS: length, hasStart: hasStart, hasLength: hasLength}
 }
 
 func (c rawChapter) str(key string) string { return coerceStr(c[key]) }
@@ -189,8 +208,8 @@ func (c rawChapter) str(key string) string { return coerceStr(c[key]) }
 // startMS / lengthMS read a chapter's offsets under either spelling a source
 // documents for them: OpenAudible's snake_case (start_offset_ms / length_ms) or
 // libex's camelCase (startOffsetMs / lengthMs). Accepting both here is what lets
-// each parser hand buildChapters its own chapter rows instead of re-boxing them
-// into the other source's key names.
+// each parser hand its own chapter rows to rawChapter.typed instead of re-boxing
+// them into the other source's key names.
 func (c rawChapter) startMS() (int64, bool)  { return c.firstInt("start_offset_ms", "startOffsetMs") }
 func (c rawChapter) lengthMS() (int64, bool) { return c.firstInt("length_ms", "lengthMs") }
 

@@ -1926,23 +1926,25 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   Remaining
   follow-ups tracked in the plan:
   surfacing genres in the player (three-repo seam), surfacing **credits** in the
-  artifact/API/site (a later, separate change), classifying the existing
-  and classifying the existing
+  artifact/API/site (a later, separate change), and classifying the existing
   corporate person records with `kind` (a human pass, deliberately not inferred).
-  The libex parse layer STREAMS (`parseLibexStream`, over the one format reader
-  `streamLibexRows` that libex-select uses too; a `libexValueFn` element flag
-  keeps the import path's silent drop of a non-object array element): each row
-  map is dropped once parsed, so the parse holds only the accepted rows'
-  sourceBooks - measured over the 915k-row dump, 2.3GB against the 7.4GB the
-  whole-file decode held (file + row maps + books). Relocation's canonical row
-  order is kept by sorting each row's PARSE OUTCOME by its re-marshalled JSON
-  (`parseLibexRelocation`), not the rows. The run's peak is now planning's
+  The libex parse layer STREAMS (`parseLibexStream`, over `streamLibexRows`,
+  the one reader of the format, which libex-select calls with `keepRaw` for
+  the row bytes it writes and the importer without, so its rows are decoded
+  once): each row map is dropped once parsed, so the parse holds only the
+  accepted rows' sourceBooks, their chapters typed (`sourceChapter`) and their
+  genre strings interned. A non-object array element is a no-ASIN row in both
+  tools. Relocation alone holds its rows, to sort them by their re-marshalled
+  JSON before parsing (`parseLibexRelocation`). The run's peak is now planning's
   (catalogue + batch censuses, which read every accepted row by design, so a
-  row that cannot apply is still evidence and is not dropped early): a
-  full-dump `--recordings-only` dry run 13.4 -> 12.5GB peak RSS and 357 -> 184s,
-  a create dry run 16.0 -> 15.0GB and 543 -> 237s, reports byte-identical. The
-  `split -l` workaround is withdrawn (it never saved the catalogue's share, and
-  it shrinks the batch census each chunk is judged against).
+  row that cannot apply is still evidence and is not dropped early).
+  Measured over the 915k-row dump (`r5/full.ndjson`): the parse layer holds
+  1.4GB against the 7.4GB the whole-file decode held (file + row maps +
+  books); a full-dump `--recordings-only` dry run peaks at 9.9GB RSS (was
+  13.4GB) and a create dry run at 14.4GB (was 17.8GB), wall unchanged, reports
+  byte-identical. The `split -l` workaround is withdrawn (it never saved the
+  catalogue's share, and it shrinks the batch census each chunk is judged
+  against).
   **The SERIES-COMPLETION SYNC BOT is the standing consumer of these modes**:
   `KodeStar/audiosilo-meta-sync`, a private sibling repository holding a daily
   service that reads libex's new-releases and coming-soon feeds, runs
