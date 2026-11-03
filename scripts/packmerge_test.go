@@ -842,8 +842,8 @@ func TestPackMergeRefusesANonPackFile(t *testing.T) {
 	branch := redirects(`"old-one":"live-one","old-three":"live-three"`)
 
 	// The driver is configured for this path deliberately, overriding
-	// .gitattributes' own exclusion: the point is that the script refuses even when
-	// something hands it the file.
+	// .gitattributes' routing of it to its own driver (cmd/metaredirectmerge): the
+	// point is that the script refuses even when something hands it the file.
 	repo := t.TempDir()
 	git := func(args ...string) string {
 		t.Helper()

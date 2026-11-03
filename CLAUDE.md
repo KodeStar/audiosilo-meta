@@ -354,8 +354,9 @@ slug is no entity, so there is nothing to place, bound, split or heal - it is th
 one recognized non-pack file of the data tree, accounted for by
 `pack.RedirectsFile`/`Listing.Aux` (so metacheck's "every file is accounted for"
 rule stays total rather than gaining an exemption per caller) and by a
-`.gitattributes` line keeping the pack merge driver off it (which
-`scripts/pack-union-merge.sh` now backs up by REFUSING any file with no top-level
+`.gitattributes` line routing it to a merge driver of its own,
+`cmd/metaredirectmerge`, rather than the pack driver (which
+`scripts/pack-union-merge.sh` backs up by REFUSING any file with no top-level
 `entries` object - handed this one it used to "merge" it into `{"entries":{}}` and
 report success). Duplicate JSON keys are refused by both readers through
 `pack.CheckNoDuplicateKeys`, the same scan a pack goes through: last-wins would
@@ -375,10 +376,18 @@ entity kind, because the namespace doubles as the route segment a `Location` is
 built from. Recordings are deliberately not a namespace: a recording is addressed
 inside its work, so it travels with the work slug. The full rationale and the
 invariants live on `model.Redirects` - one statement, pointed at from everywhere
-else that touches the table. One gap is open by design and recorded on
-`pkg/redirects`: the file has no merge driver of its own (git's line merge is
-sound-or-loud on it, but conflicts often enough that the intake sweep may stall
-once redirects are added regularly). **No minter creates a record at a retired
+else that touches the table. **The file has its own three-way merge driver**,
+`cmd/metaredirectmerge` over `redirects.Merge` (git's line merge is sound-or-loud
+on it, but two pull requests each recording one tombstone touch adjacent sorted
+lines and conflict, which stalled the intake sweep): per namespace the base
+decides each key (added on one side kept, the same target on both kept, one side
+unchanged takes the other, deleted against an unchanged base deleted; two targets
+for one slug or delete-versus-retarget refused, exit 5, the file left with
+conflict markers), then the union is rebuilt through `redirects.Add`, so a chain
+the two sides make together (a -> b here, b -> c there) collapses to a -> c
+exactly as the two edits landing in sequence would, and a cycle is refused; the
+output is `redirects.Render`'s bytes, Write's. The sweep builds it from main beside
+metafmt and metacheck and configures it as `merge.redirectsjson`. **No minter creates a record at a retired
 slug**: a retired person slug resolves to its survivor, a retired series BASE
 slug joins its survivor (a retired numbered candidate is stepped past), and a
 retired work candidate is judged as its survivor - one lookup,
@@ -458,7 +467,8 @@ order keeping the order already on main, a key only one copy carries taken, and
 anything the two state differently still refused. That is what two overlapping
 library imports collide on (29 packs across issues #2274/#2275, all of them one
 record minted twice). It is also a git MERGE DRIVER, which is how the
-sweep runs it (`.gitattributes` names it for `data/**/*.json`; the driver is
+sweep runs it (`.gitattributes` names it for `data/**/*.json` except
+`data/redirects.json`, which has its own; the driver is
 configured in the sweep and by any contributor who wants it, and where it is not
 configured git falls back to its own merge exactly as before). That is not a
 convenience: git's LINE merge is unsound for a pack file. Two branches adding the
@@ -721,6 +731,7 @@ keep this index in step (one line per topic).
   - `cmd/metaaudit`
   - `cmd/metarepair`
   - `cmd/metadiff`
+  - `cmd/metaredirectmerge`
   - `pkg/model`
   - `pkg/canonical`
   - `pkg/check`
@@ -788,8 +799,8 @@ keep this index in step (one line per topic).
   dist-tag); dependabot ignores the ODD `node` image majors, since only even
   ones become LTS, and every `golang` minor and major, since the image's minor
   is the Go version and moves by hand with go.mod and every setup-go. The
-  rebase sweep runs only MAIN's tools (metafmt, metacheck and the merge
-  driver, built and copied before the loop) and sweeps only same-repository
+  rebase sweep runs only MAIN's tools (metafmt, metacheck and the two merge
+  drivers, built and copied before the loop) and sweeps only same-repository
   branches whose diff is confined to `data/` and whose commits add or change
   no symbolic link; a branch it refuses gets ONE marked comment saying why,
   and a branch it fails to rebase gets one per (attempted head, reason) through

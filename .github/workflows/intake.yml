@@ -410,7 +410,8 @@ jobs:
   # the bot-intake LABEL, which is data rather than proof of who wrote the
   # branch, and a checked-out tree's `go run ./cmd/...` or `scripts/...` is that
   # branch's code, not main's. So the tools the loop runs - metafmt, metacheck
-  # and the packjson merge driver - are built and copied from MAIN into the
+  # and the two merge drivers (packjson for the packs, redirectsjson for
+  # data/redirects.json) - are built and copied from MAIN into the
   # runner temp before the first branch is touched, and a branch is swept at all
   # only when it is a same-repository branch whose whole diff against main is
   # under data/ (both skips are log lines, not comments: they recur on every
@@ -488,7 +489,7 @@ jobs:
           # tools there is nothing it may run.
           tools="${RUNNER_TEMP}/intake-sweep-tools"
           if ! mkdir -p "$tools" \
-              || ! go build -o "$tools/" ./cmd/metafmt ./cmd/metacheck \
+              || ! go build -o "$tools/" ./cmd/metafmt ./cmd/metacheck ./cmd/metaredirectmerge \
               || ! install -m 0755 scripts/pack-union-merge.sh "$tools/pack-union-merge.sh"; then
             echo "::error::could not build the sweep's tools from main; no branch was touched"
             exit 1
@@ -506,6 +507,14 @@ jobs:
           # relative path would resolve to the replayed branch's script.
           git config merge.packjson.name "three-way merge of pack-file entries"
           git config merge.packjson.driver "'$tools/pack-union-merge.sh' %O %A %B %P"
+          # data/redirects.json is no pack, so .gitattributes routes it to a
+          # driver of its own: two branches each recording one tombstone touch
+          # adjacent sorted lines, which git's line merge stops on. It prints the
+          # same "merged both sides" line, so a driver merge of it is followed by
+          # the metacheck pass below (a merged tombstone may name a record the
+          # other side deleted).
+          git config merge.redirectsjson.name "three-way merge of the slug tombstone table"
+          git config merge.redirectsjson.driver "'$tools/metaredirectmerge' %O %A %B %P"
 
           # restore returns the checkout to a clean copy of main. `git clean` is
           # not optional: metafmt --write can CREATE pack files before metacheck
@@ -676,6 +685,8 @@ jobs:
                 mapfile -d '' -t conflicted < <(git diff -z --name-only --diff-filter=U)
                 for f in "${conflicted[@]}"; do
                   case "$f" in
+                    # Before data/*.json, which a case pattern's * also matches.
+                    data/redirects.json) noted '' "$tools/metaredirectmerge" "$f" || failure="the tombstone merge could not resolve ${f}${detail:+: ${detail}}" ;;
                     data/*.json) noted '' "$tools/pack-union-merge.sh" "$f" || failure="the pack merge could not resolve ${f}${detail:+: ${detail}}" ;;
                     *) failure="conflict outside the data tree: ${f}" ;;
                   esac

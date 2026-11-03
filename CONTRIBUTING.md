@@ -312,6 +312,22 @@ git config merge.packjson.name "three-way merge of pack-file entries"
 git config merge.packjson.driver "scripts/pack-union-merge.sh %O %A %B %P"
 ```
 
+The slug tombstone table, `data/redirects.json`, is no pack and has a driver of
+its own (two pull requests that each record a retired slug touch adjacent lines
+and would otherwise conflict):
+
+```sh
+git config merge.redirectsjson.name "three-way merge of the slug tombstone table"
+git config merge.redirectsjson.driver "go run ./cmd/metaredirectmerge %O %A %B %P"
+```
+
+It keeps every tombstone either side added, collapses a chain the two sides make
+together (one retired `a` into `b`, the other `b` into `c`: both end at `c`), and
+refuses - leaving conflict markers - one slug sent to two different targets, or
+deleted on one side and retargeted on the other. Without the driver configured,
+`go run ./cmd/metaredirectmerge data/redirects.json` resolves the same conflict by
+hand mid-rebase.
+
 Then `git rebase origin/main` resolves the mechanical cases on its own and stops
 only on the ones a person has to settle. Run `metafmt --write --profile core` and
 `metacheck --profile core`
