@@ -5,6 +5,7 @@ import (
 	"slices"
 	"strings"
 
+	"github.com/kodestar/audiosilo-meta/pkg/extract"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -25,11 +26,13 @@ import (
 // the recording, not a divider, and a run of "Scene N" or "Section N" tracks is
 // the chapter list itself.
 
-// numberWordRe spells a number word up to ninety-nine ("Seven", "Twenty-One"),
-// the form a part divider takes when a recording titles it "One: Thief at Sea".
-const numberWordRe = `(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|` +
-	`fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|` +
-	`eighty|ninety)(?:[- ](?:one|two|three|four|five|six|seven|eight|nine))?`
+// numberWordRe is a number word up to the ninety-nines ("Seven", "Twenty-One"),
+// the form a part divider takes when a recording titles it "One: Thief at Sea",
+// over pkg/extract's vocabulary.
+var numberWordRe = func() string {
+	alt := strings.Join(extract.NumberWords(), "|")
+	return `(?:` + alt + `)(?:[- ](?:` + alt + `))?`
+}()
 
 var (
 	// reTrackNumber is a leading track number an encoder prefixed to the title

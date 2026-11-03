@@ -791,12 +791,22 @@ func checkSidecarPositionScale(cat *model.Catalog, idx *pathIndex, warn addFunc)
 	if len(cat.Characters) == 0 && len(cat.Recaps) == 0 {
 		return
 	}
+	// Only a work carrying a positioned member is measured: shapeOf reads every
+	// track title through several patterns, and the works with a sidecar are about
+	// one in a hundred of the catalogue.
+	positioned := map[string]bool{}
+	for _, c := range cat.Characters {
+		positioned[c.Work] = true
+	}
+	for _, rc := range cat.Recaps {
+		positioned[rc.Work] = true
+	}
 	measures := map[string]*sidecarScaleMeasure{}
 	for _, w := range cat.Works {
+		if !positioned[w.ID] {
+			continue
+		}
 		for _, r := range w.Recordings {
-			if len(r.Chapters) == 0 {
-				continue
-			}
 			s := shapeOf(r.Chapters)
 			if s.chapters == 0 {
 				continue
@@ -819,30 +829,29 @@ func checkSidecarPositionScale(cat *model.Catalog, idx *pathIndex, warn addFunc)
 	}
 
 	// judge reports a member whose positions stage a gradient of at least
-	// minPositions that stops short of the floor.
-	judge := func(rel, kind, workID string, positions []int, minPositions int) {
-		m, ok := measures[workID]
-		if !ok || m.chapters < sidecarScaleMinChapters {
-			return
-		}
-		top, distinct := 0, map[int]bool{}
+	// minPositions that stops short of the floor, and returns its last position.
+	judge := func(rel, kind, workID string, positions []int, minPositions int) (top int) {
+		distinct := map[int]bool{}
 		for _, p := range positions {
 			distinct[p] = true
 			top = max(top, p)
 		}
-		if len(distinct) < minPositions || float64(top) >= float64(m.chapters)*sidecarScaleFloor {
-			return
+		m, ok := measures[workID]
+		if !ok || m.chapters < sidecarScaleMinChapters ||
+			len(distinct) < minPositions || float64(top) >= float64(m.chapters)*sidecarScaleFloor {
+			return top
 		}
 		if rec, ok := m.parts[top]; ok {
 			warn(rel, "%s sidecar for %q stops at chapter %d but the work's recordings carry %d chapters, "+
 				"and its positions match the recording's %d parts (%s): "+
 				"the positions may be scaled to something other than the work's chapters",
 				kind, workID, top, m.chapters, top, rec)
-			return
+			return top
 		}
 		warn(rel, "%s sidecar for %q stops at chapter %d but the work's recordings carry %d chapters: "+
 			"the positions may be scaled to something other than the work's chapters",
 			kind, workID, top, m.chapters)
+		return top
 	}
 
 	// The last position of each work's recaps member, which is what vouches for
@@ -852,9 +861,8 @@ func checkSidecarPositionScale(cat *model.Catalog, idx *pathIndex, warn addFunc)
 		var through []int
 		for _, r := range rc.Recaps {
 			through = append(through, r.Through.Chapter)
-			recapsTop[rc.Work] = max(recapsTop[rc.Work], r.Through.Chapter)
 		}
-		judge(idx.recaps[rc], "recaps", rc.Work, through, sidecarScaleMinPositions)
+		recapsTop[rc.Work] = max(recapsTop[rc.Work], judge(idx.recaps[rc], "recaps", rc.Work, through, sidecarScaleMinPositions))
 	}
 
 	for _, c := range cat.Characters {
