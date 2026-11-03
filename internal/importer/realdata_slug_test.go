@@ -25,6 +25,7 @@ import (
 	"testing"
 	"unicode/utf8"
 
+	"github.com/kodestar/audiosilo-meta/internal/raceflag"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/redirects"
@@ -91,7 +92,7 @@ func movedByTransliteration(s string) bool {
 // starts no goroutine, so the detector has nothing to find, and it cost ~3.5
 // minutes there against ~16s without it. The non-race run still walks the tree.
 func walkEntries(t *testing.T, family string, fn func(path, key string, entry map[string]any)) {
-	if raceEnabled {
+	if raceflag.Enabled {
 		t.Skip("skipped under -race: the real-data walk is sequential, so it adds no race coverage; the non-race run covers it")
 	}
 	root := filepath.Join(dataDir, family)

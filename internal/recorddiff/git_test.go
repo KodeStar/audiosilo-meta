@@ -10,6 +10,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/kodestar/audiosilo-meta/internal/raceflag"
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -57,7 +58,7 @@ func TestAgainstTheRealCheckout(t *testing.T) {
 	if err != nil {
 		t.Fatalf("GitChangedPaths: %v", err)
 	}
-	if raceEnabled && len(paths) > raceMaxPaths {
+	if raceflag.Enabled && len(paths) > raceMaxPaths {
 		t.Logf("diffing %d of the last commit's %d changed paths under -race", raceMaxPaths, len(paths))
 		paths = samplePaths(paths, raceMaxPaths)
 	}
@@ -120,10 +121,8 @@ func samplePaths(paths []string, n int) []string {
 	spare, rest := n-len(groups), len(sorted)-len(groups)
 	var out []string
 	for _, g := range groups {
-		quota := 1
-		if rest > 0 {
-			quota += spare * (len(g) - 1) / rest
-		}
+		// rest > 0: there are more paths than n, and at most n groups.
+		quota := 1 + spare*(len(g)-1)/rest
 		for j := range quota {
 			out = append(out, g[j*len(g)/quota])
 		}

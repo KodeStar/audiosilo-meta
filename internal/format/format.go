@@ -14,6 +14,7 @@ package format
 
 import (
 	"fmt"
+	"maps"
 	"path/filepath"
 	"sort"
 
@@ -196,9 +197,7 @@ func CheckProfile(dataDir string, p pack.Profile) (Report, error) {
 				return perr
 			}
 			mergePending(&rep.Pending, pend)
-			for rel, ok := range canon {
-				judged[rel] = ok
-			}
+			maps.Copy(judged, canon)
 		}
 		return nil
 	})

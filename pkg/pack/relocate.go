@@ -235,17 +235,7 @@ func (p Pending) LinesUnder(prefix string) []string {
 // Pending reports family f's outstanding structural work without queueing or
 // writing anything. It reads every file under the family root, so unlike Flush
 // it also sees violations in packs no writer touched.
-func (s *Store) Pending(f Family) (Pending, error) {
-	def, err := s.def(f)
-	if err != nil {
-		return Pending{}, err
-	}
-	fs, err := s.survey(def, nil)
-	if err != nil {
-		return Pending{}, err
-	}
-	return s.pendingFrom(fs)
-}
+func (s *Store) Pending(f Family) (Pending, error) { return s.pending(f, nil) }
 
 // PendingCanonical is Pending plus the canonical-form verdict of every file of
 // the family the survey parsed: data-relative path -> whether its bytes on disk
@@ -262,20 +252,26 @@ func (s *Store) Pending(f Family) (Pending, error) {
 // afterwards is its entries alone rather than its entries plus a second copy of
 // the tree.
 func (s *Store) PendingCanonical(f Family) (Pending, map[string]bool, error) {
-	def, err := s.def(f)
-	if err != nil {
-		return Pending{}, nil, err
-	}
 	canon := map[string]bool{}
-	fs, err := s.survey(def, canon)
-	if err != nil {
-		return Pending{}, nil, err
-	}
-	p, err := s.pendingFrom(fs)
+	p, err := s.pending(f, canon)
 	if err != nil {
 		return Pending{}, nil, err
 	}
 	return p, canon, nil
+}
+
+// pending is Pending and PendingCanonical: one survey of family f, judging
+// canonical form into canon when it is not nil (Reader.prefetch).
+func (s *Store) pending(f Family, canon map[string]bool) (Pending, error) {
+	def, err := s.def(f)
+	if err != nil {
+		return Pending{}, err
+	}
+	fs, err := s.survey(def, canon)
+	if err != nil {
+		return Pending{}, err
+	}
+	return s.pendingFrom(fs)
 }
 
 // pendingFrom computes the report from an already-classified family.
