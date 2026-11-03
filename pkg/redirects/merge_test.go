@@ -134,7 +134,7 @@ func TestMerge(t *testing.T) {
 			base:   works(),
 			ours:   works("aaa=bbb"),
 			theirs: works("bbb=aaa"),
-			clash:  "cannot be collapsed",
+			clash:  "theirs' works bbb -> aaa cannot be added to ours: works redirect bbb: target \"aaa\" already redirects back to it, which would be a cycle",
 		},
 	}
 	for _, tc := range cases {

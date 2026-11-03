@@ -10,9 +10,11 @@
 // here validates against the catalogue: this package knows the file, not the
 // database.
 //
-// ITS ONE CALLER is internal/repair, the duplicate-merge pass this mechanism was
-// built ahead of: retiring a slug without a tombstone is what had to be made
-// impossible before any such pass ran, and every slug a merge retires is recorded
+// ITS ONE EDITOR is internal/repair, the duplicate-merge pass this mechanism was
+// built ahead of (the merge driver below only combines two such edits, and
+// pkg/check and internal/recorddiff only read): retiring a slug without a
+// tombstone is what had to be made impossible before any such pass ran, and
+// every slug a merge retires is recorded
 // here in the same change. The same pass also records a retitle's ALIAS here (see
 // model.Redirects). The chain collapse is what that caller actually needs -
 // waves land over each other, so today's target is tomorrow's source. The one

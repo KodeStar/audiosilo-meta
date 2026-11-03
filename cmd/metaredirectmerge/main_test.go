@@ -162,6 +162,40 @@ func TestByHand(t *testing.T) {
 	}
 }
 
+// TestByHandFromASubdirectory: the path names one file for the stage reads, the
+// write and the `git add` alike. Read root-relative and written cwd-relative, a
+// run from data/ on redirects.json found no stages, and one on
+// data/redirects.json read the real stages and aimed the write at
+// data/data/redirects.json.
+func TestByHandFromASubdirectory(t *testing.T) {
+	requireGit(t)
+	repo, out, err := rebaseFixture(t,
+		table(t, "aaa-old=aaa"),
+		table(t, "aaa-old=aaa", "bbb-old=bbb"),
+		table(t, "aaa-old=aaa", "ccc-old=ccc"),
+		false)
+	if err == nil {
+		t.Skipf("git merged the adjacent insertions itself, so there is no conflict to resolve:\n%s", out)
+	}
+	sub := filepath.Join(repo, "data")
+	if out, code := runMain(t, sub, redirectsPath); code == exitMerged {
+		t.Errorf("a root-relative path run from data/ merged: %s", out)
+	}
+	if _, err := os.Stat(filepath.Join(sub, redirectsPath)); !os.IsNotExist(err) {
+		t.Errorf("a stray %s was written under data/ (stat: %v)", redirectsPath, err)
+	}
+	if out, code := runMain(t, sub, filepath.Base(redirectsPath)); code != exitMerged {
+		t.Fatalf("by hand from data/: exit %d, want 0: %s", code, out)
+	}
+	want := table(t, "aaa-old=aaa", "bbb-old=bbb", "ccc-old=ccc")
+	if got := readFile(t, filepath.Join(repo, redirectsPath)); got != want {
+		t.Errorf("merged file:\n%s\nwant:\n%s", got, want)
+	}
+	if u := gitOut(t, repo, "diff", "--name-only", "--diff-filter=U"); strings.TrimSpace(u) != "" {
+		t.Errorf("still unmerged after the by-hand merge: %q", u)
+	}
+}
+
 func TestUsage(t *testing.T) {
 	var stdout, stderr strings.Builder
 	if code := run(nil, &stdout, &stderr); code != exitUsage {
@@ -170,8 +204,11 @@ func TestUsage(t *testing.T) {
 }
 
 // TestDriverRefusesANonTable: a version that does not parse is "cannot merge
-// this way" (exit 1), never an empty table merged over.
+// this way" (exit 1), never an empty table merged over - and the file git keeps
+// carries conflict markers, never ours' valid table alone, which would read as
+// resolved and lose theirs' side on a `git add`.
 func TestDriverRefusesANonTable(t *testing.T) {
+	requireGit(t)
 	dir := t.TempDir()
 	write := func(name, body string) string {
 		p := filepath.Join(dir, name)
@@ -193,8 +230,15 @@ func TestDriverRefusesANonTable(t *testing.T) {
 			if code != exitCannot {
 				t.Errorf("exit %d, want %d: %s", code, exitCannot, stderr.String())
 			}
-			if got := readFile(t, ours); got != ok {
-				t.Errorf("our version was rewritten:\n%s", got)
+			got := readFile(t, ours)
+			if !strings.Contains(got, "<<<<<<< ") || !strings.Contains(got, ">>>>>>> ") {
+				t.Errorf("the refused file carries no conflict markers:\n%s", got)
+			}
+			if !strings.Contains(got, `"aaa-old": "aaa"`) {
+				t.Errorf("our side is missing from the conflicted file:\n%s", got)
+			}
+			if _, err := redirects.Parse([]byte(got)); err == nil {
+				t.Errorf("the refused file still parses as a tombstone table:\n%s", got)
 			}
 		})
 	}

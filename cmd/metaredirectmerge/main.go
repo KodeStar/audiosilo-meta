@@ -25,11 +25,13 @@
 // tombstone can name a record the other side deleted, and only the catalogue can
 // tell.
 //
-// On a conflict the driver leaves the file the way git's own merge would - the
-// line merge's conflict markers (git merge-file), or, if the lines happen to merge
-// cleanly where the tombstones do not, the two whole sides between markers - so a
-// person resolving it sees the disagreement and a file left unresolved can never
-// pass metacheck. By hand, the file already holds git's markers and is left alone.
+// On a conflict - and on a refusal of a version it cannot read as a table (exit 1)
+// - the driver leaves the file the way git's own merge would: the line merge's
+// conflict markers (git merge-file), or, if the lines happen to merge cleanly where
+// the tombstones do not, the two whole sides between markers. So a person resolving
+// it sees the disagreement, and a file left unresolved can never pass metacheck: left
+// as OURS' valid table, a `git add` would drop every tombstone theirs carried
+// without a word. By hand, the file already holds git's markers and is left alone.
 //
 // Exit codes: 0 merged, 1 the file cannot be merged this way (a version is
 // missing, empty or not a tombstone table), 2 usage, 5 a real conflict that needs
@@ -43,6 +45,8 @@ import (
 	"io"
 	"os"
 	"os/exec"
+	"path/filepath"
+	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/redirects"
@@ -98,7 +102,9 @@ func driver(baseFile, oursFile, theirsFile, path string, stdout, stderr io.Write
 			return exitCannot
 		}
 		say(stdout, "%s: merged both sides' redirects\n", path)
-	case exitConflict:
+	default:
+		// A conflict, or a version that is no table: either way the file must
+		// not be left as ours' valid table, which reads as resolved.
 		markConflict(oursFile, baseFile, theirsFile, ours, theirs, path, stderr)
 	}
 	return code
@@ -134,8 +140,19 @@ func byHand(path string, stdout, stderr io.Writer) int {
 	return exitMerged
 }
 
+// staged reads one index stage of path. A bare path in git's :<stage>:<path> is
+// REPOSITORY-ROOT relative while the write and the `git add` below read path from
+// the current directory, so a relative path is given its ./ form, which git
+// resolves from the current directory too. With the bare form, a run from data/
+// on redirects.json found no stages at all, and one on data/redirects.json read
+// the real stages and then wrote (and, where that directory existed, staged)
+// data/data/redirects.json, leaving the conflict where it was.
 func staged(stage int, path string) ([]byte, error) {
-	return exec.Command("git", "show", fmt.Sprintf(":%d:%s", stage, path)).Output()
+	p := filepath.ToSlash(path)
+	if !filepath.IsAbs(path) && !strings.HasPrefix(p, "./") && !strings.HasPrefix(p, "../") {
+		p = "./" + p
+	}
+	return exec.Command("git", "show", fmt.Sprintf(":%d:%s", stage, p)).Output()
 }
 
 // merge parses the three versions and merges them, returning the canonical bytes
@@ -184,8 +201,9 @@ func parse(path, name string, raw []byte, emptyOK bool, stderr io.Writer) (model
 
 // markConflict leaves oursFile holding conflict markers, as git's own merge would
 // have: git merge-file's, or - when the line merge is clean although the
-// tombstones conflict, so its result would read as resolved - the two whole
-// sides. Exit 1..127 from merge-file is the number of conflicts it marked.
+// tombstones conflict (or a version is no table), so its result would read as
+// resolved - the two whole sides. Exit 1..127 from merge-file is the number of
+// conflicts it marked.
 func markConflict(oursFile, baseFile, theirsFile string, ours, theirs []byte, path string, stderr io.Writer) {
 	cmd := exec.Command("git", "merge-file", "-L", "ours", "-L", "base", "-L", "theirs",
 		oursFile, baseFile, theirsFile)

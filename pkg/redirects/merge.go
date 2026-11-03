@@ -39,7 +39,8 @@ func (c *MergeConflict) Error() string {
 //
 // Two sides adding different slugs - the common case, two pull requests each
 // recording one alias, which git's line merge sees as overlapping hunks because
-// the sorted lines are adjacent - is the first-but-one row on each side.
+// the sorted lines are adjacent - is the "on one side, absent from base" row, once
+// for each side's slug.
 //
 // THE CHAINS ARE COLLAPSED, through Add, because the union of two valid
 // tables need not be one. One side retiring a -> b while the other retires b -> c
@@ -114,7 +115,10 @@ func Merge(base, ours, theirs model.Redirects) (model.Redirects, error) {
 	// through would collapse onto a target theirs no longer states.
 	for _, c := range incoming {
 		if err := Add(out, c.kind, c.from, c.to); err != nil {
-			return nil, &MergeConflict{Clashes: []string{"the merged table cannot be collapsed: " + err.Error()}}
+			// A cycle across the two sides, or a slug the table may not hold:
+			// Add's own error says which, so it is not re-worded as either.
+			return nil, &MergeConflict{Clashes: []string{fmt.Sprintf(
+				"theirs' %s %s -> %s cannot be added to ours: %v", c.kind, c.from, c.to, err)}}
 		}
 	}
 	return out, nil
@@ -150,10 +154,10 @@ func clash(kind model.RedirectKind, slug string, b, o, t target) string {
 	}
 }
 
-// unionKeys returns every key of the maps, sorted and deduplicated.
-func unionKeys(maps ...map[string]string) []string {
+// unionKeys returns every key of the tables, sorted and deduplicated.
+func unionKeys(tables ...map[string]string) []string {
 	var keys []string
-	for _, m := range maps {
+	for _, m := range tables {
 		for k := range m {
 			keys = append(keys, k)
 		}
