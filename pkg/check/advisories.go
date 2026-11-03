@@ -145,7 +145,10 @@ func deHonorifiedSlug(id string) (bare string, ok bool) {
 //
 // Works are compared within a TITLE group, which is both cheap and exactly
 // right: a fork's slug is derived from the same title as its base, so a pair
-// that is not in one group is not this class. Pairs in different languages are
+// that is not in one group is not this class. The group is the WHOLE title's slug
+// (model.SlugifyWhole), never the id-capped one: grouped by the cut slug, the
+// three volumes of the Watergate Report or "History of Our Own Times" Vol II and
+// III - titles that differ only past the cap - read as one title. Pairs in different languages are
 // skipped - those are a translation and its original, which SHOULD be two works.
 // The subset shape is STRICT on purpose: two works with the very same author
 // list are the identity rule's own business, and the one case where that rule
@@ -157,7 +160,10 @@ func deHonorifiedSlug(id string) (bare string, ok bool) {
 func checkIdentityEqualWorks(cat *model.Catalog, idx *pathIndex, reviewed *reviewedPairs, warn addFunc) {
 	groups := map[string][]*model.Work{}
 	for _, w := range cat.Works {
-		key := model.Slugify(w.Title)
+		// The WHOLE title's slug: model.Slugify cuts at the id cap, and a long
+		// volume title ("Final Report of the Senate Select Committee ... Watergate
+		// Report Vol. 3") says which volume it is only past the cut.
+		key := model.SlugifyWhole(w.Title)
 		if key == "" {
 			continue
 		}
@@ -432,12 +438,17 @@ type dupCandidate struct {
 // sets, so a key group can hold two unrelated books by different authors - and for the
 // same reason a REVIEWED pair (reviewed) drops only that pair: a member left pairing
 // with nobody drops out, and a group left with fewer than two is no finding at all.
+//
+// The disjointness test compares WHOLE title slugs (model.SlugifyWhole), as
+// checkIdentityEqualWorks groups by them: two long titles that differ only past the
+// id cap are not the same title, so neither class may skip them as the other's.
 func normalizedDuplicateGroup(ix *WorkIdentity, works []*model.Work, reviewed *reviewedPairs) []*model.Work {
 	cands := make([]dupCandidate, 0, len(works))
 	for _, w := range works {
 		all, identity := identitySets(w)
-		cands = append(cands, dupCandidate{work: w, slug: model.Slugify(w.Title), all: all, identity: identity})
+		cands = append(cands, dupCandidate{work: w, slug: model.SlugifyWhole(w.Title), all: all, identity: identity})
 	}
+	parts := ix.partsOfAWhole(works)
 	keep := map[string]*model.Work{}
 	for i := 0; i < len(cands); i++ {
 		for j := i + 1; j < len(cands); j++ {
@@ -445,7 +456,7 @@ func normalizedDuplicateGroup(ix *WorkIdentity, works []*model.Work, reviewed *r
 			if a.slug == b.slug {
 				continue // checkIdentityEqualWorks' finding, not this one
 			}
-			if differentVolumes(a.work, b.work) {
+			if differentVolumes(a.work, b.work) || ix.partAndWhole(parts, a.work, b.work) {
 				continue
 			}
 			if !ix.matches(b.work, &b.coll, a.work.Title, ix.SeriesNameOf(a.work.ID), ix.statementOf[a.work.ID], a.work.Language, a.all, a.identity, &a.coll) ||
@@ -461,6 +472,74 @@ func normalizedDuplicateGroup(ix *WorkIdentity, works []*model.Work, reviewed *r
 	}
 	sort.Slice(out, func(i, j int) bool { return out[i].ID < out[j].ID })
 	return out
+}
+
+// partsOfAWhole returns the members of one key group that are PARTS of a multi-part
+// work: each stating a volume (its WriterPolicy statement), listed by no series, and
+// with a SIBLING - another such member of the same book (the same language, nested
+// identity authors: IdentityEqualWorks) stating a DIFFERENT volume. nil when the
+// group holds none.
+//
+// LibriVox records a long book as one project per part - "Anna Karenina, Book 1"
+// through "Book 8", "Wealth of Nations, Book 1", "Portrait of a Lady, Volume 1",
+// twelve volumes of Aesop - and each project is a work of its own by design: a part
+// is not the book. The key strips the part marker, so every part keys with the whole
+// ("Anna Karenina"), and a statement of nothing never disagrees with one, so the
+// census paired the whole with each part and listed the set as one book.
+//
+// What tells a part from a series position is the evidence on BOTH halves of the
+// rule, and each is deliberately narrow:
+//
+//   - NO series lists it. A retail serial volume ("Ashlani's Reincarnation, Volume
+//     1", "The Hunter's Code: Book 22") sits in its series at that position, and
+//     the bare title beside it ("Hammered" beside "Hammered, Book 3") is exactly the
+//     duplicate the census exists for, so a placed work never counts as a part.
+//   - A SIBLING part of the same book states another volume. One unplaced "Foo,
+//     Book 3" beside "Foo" is the Hammered shape with its series claim lost, and
+//     stays a finding (a maintainer records "not one book" as a reviewed rejection);
+//     two of them stating different volumes of one title by one author are a set of
+//     parts, which no retail decoration of one book produces. The sibling must be
+//     the same book because a key group is a TITLE: Helen Keller's "Story of My
+//     Life, Part 1" is no part of a set because Casanova's "Story of My Life" is
+//     recorded in volumes.
+//
+// Two parts stating the SAME volume are not touched here (they agree, and stay a
+// finding: "War and Peace, Volume 1" in two translations), and two stating different
+// volumes already disagree (VolumeStatement.Agrees). What it withholds is only the
+// whole-and-part pair - see partAndWhole.
+func (ix *WorkIdentity) partsOfAWhole(works []*model.Work) map[string]bool {
+	var stating []*model.Work
+	for _, w := range works {
+		if ix.statementOf[w.ID].States && !ix.placed[w.ID] {
+			stating = append(stating, w)
+		}
+	}
+	var set map[string]bool
+	for i, a := range stating {
+		for _, b := range stating[i+1:] {
+			if ix.statementOf[a.ID].Volume == ix.statementOf[b.ID].Volume ||
+				!languagesCompatible(a.Language, b.Language) || !IdentityEqualWorks(a, b) {
+				continue
+			}
+			if set == nil {
+				set = map[string]bool{}
+			}
+			set[a.ID], set[b.ID] = true, true
+		}
+	}
+	return set
+}
+
+// partAndWhole reports whether one of two works is a part of a multi-part set
+// (parts, partsOfAWhole's answer for their key group) and the other states no part
+// at all - no volume and no division: the whole beside one of its parts, which is
+// not one book.
+func (ix *WorkIdentity) partAndWhole(parts map[string]bool, a, b *model.Work) bool {
+	silent := func(w *model.Work) bool {
+		st := ix.statementOf[w.ID]
+		return !st.States && len(st.Divisions) == 0
+	}
+	return (parts[a.ID] && silent(b)) || (parts[b.ID] && silent(a))
 }
 
 // checkOrphanPeople reports a person record that nothing in the tree credits.

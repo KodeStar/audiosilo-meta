@@ -84,6 +84,10 @@ type WorkIdentity struct {
 	// more series spell them - so Admits can tell "the catalogue does not hold this
 	// name" from "it holds it twice", which are opposite answers.
 	droppedFolds map[string]bool
+	// placed holds every work some series lists, by work id: the census's part
+	// rule (partsOfAWhole, advisories.go) reads a volume a work in NO series states
+	// as a part of a whole rather than as a series position.
+	placed map[string]bool
 }
 
 type seriesNamed struct {
@@ -103,6 +107,7 @@ func NewWorkIdentity(cat *model.Catalog) *WorkIdentity {
 		seriesOf:     map[string]string{},
 		statementOf:  map[string]titlerule.VolumeStatement{},
 		droppedFolds: map[string]bool{},
+		placed:       map[string]bool{},
 	}
 	if cat == nil {
 		return ix
@@ -115,6 +120,7 @@ func NewWorkIdentity(cat *model.Catalog) *WorkIdentity {
 		byID[s.ID] = s.Name
 		for _, sw := range s.Works {
 			members[sw.Work] = append(members[sw.Work], s.ID)
+			ix.placed[sw.Work] = true
 		}
 	}
 	ix.seriesNames, ix.droppedFolds = newSeriesNameList(cat.Series)

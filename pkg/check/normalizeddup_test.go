@@ -214,3 +214,74 @@ func TestAdvisoryCensusCountsNormalizedDuplicates(t *testing.T) {
 		t.Errorf("the new class must be appended, not reordered in: %q", census)
 	}
 }
+
+// dupPart adds an unplaced record of the base work's author under title, with no
+// advisory read - for a fixture that needs several before it asks.
+func dupPart(files map[string]string, id, title string) {
+	files["works/"+id[:2]+"/"+id+"/work.json"] = `{"authors":["author-one"],"id":"` + id + `",` +
+		`"language":"en","license":"CC0-1.0","sources":[{"type":"librivox"}],"title":"` + title + `"}`
+}
+
+// A long book LibriVox records one project per part is a whole plus a SET of parts,
+// each a work of its own: the key strips the part marker, so every part keys with the
+// whole, and a whole stating no volume disagreed with none of them. Two parts in no
+// series stating different volumes are a set, and neither pairs with the whole.
+func TestAdvisoryNormalizedDuplicateSkipsPartsOfAWhole(t *testing.T) {
+	files := dupBase("Anna Karenina")
+	dupPart(files, "anna-karenina-book-1", "Anna Karenina, Book 1")
+	if got := dupTwin(t, files, "anna-karenina-book-2", "Anna Karenina, Book 2"); len(got) != 0 {
+		t.Errorf("a whole and its parts were reported as one book: %v", got)
+	}
+
+	// A whole of its own beside the parts still pairs with the first whole: the
+	// part rule withholds only the whole-and-part pairs.
+	files = dupBase("Wealth of Nations")
+	dupPart(files, "wealth-of-nations-book-1", "Wealth of Nations, Book 1")
+	dupPart(files, "wealth-of-nations-book-4", "Wealth of Nations, Book 4")
+	got := dupTwin(t, files, "the-wealth-of-nations-unabridged", "The Wealth of Nations (Unabridged)")
+	if len(got) != 1 || strings.Contains(got[0], "wealth-of-nations-book-") {
+		t.Errorf("advisories = %v, want the two wholes alone", got)
+	}
+}
+
+// ONE unplaced part beside the bare title is the Hammered shape with its series
+// claim lost - "Hammered, Book 3" IS "Hammered" - so it stays a finding; so do two
+// parts that sit in a series, which is a retail serial's volumes, not parts.
+func TestAdvisoryNormalizedDuplicateKeepsAPartWithoutASet(t *testing.T) {
+	if got := dupTwin(t, dupBase("Hammered"), "hammered-book-3", "Hammered, Book 3"); len(got) != 1 {
+		t.Errorf("a lone stated volume beside the bare title = %v, want one finding", got)
+	}
+
+	files := dupBase("Ashlani's Reincarnation")
+	dupPart(files, "ashlanis-reincarnation-volume-1", "Ashlani's Reincarnation, Volume 1")
+	files["works/as/ashlanis-reincarnation-volume-2/work.json"] = `{"authors":["author-one"],` +
+		`"id":"ashlanis-reincarnation-volume-2","language":"en","license":"CC0-1.0",` +
+		`"sources":[{"type":"libex-import"}],"title":"Ashlani's Reincarnation: Volume 2"}`
+	files["series/se/series-one.json"] = `{"id":"series-one","license":"CC0-1.0","name":"Series One",` +
+		`"sources":[{"type":"user"}],"works":[{"position":"1","work":"ashlanis-reincarnation-volume-1"},` +
+		`{"position":"2","work":"ashlanis-reincarnation-volume-2"},{"position":"4","work":"book-one"}]}`
+	if got := advisoryMatching(advisoryWarnings(t, files), normalizedDupMarker); len(got) != 1 {
+		t.Errorf("a serial's placed volumes beside its bare title = %v, want one finding", got)
+	}
+
+	// A key group is a TITLE: another author's volumes of the same title are no
+	// sibling of this part, so it stays a lone part beside the bare title.
+	files = dupBase("The Story of My Life")
+	files["people/ot/other-author.json"] = `{"id":"other-author","license":"CC0-1.0","name":"Other Author","sources":[{"type":"user"}]}`
+	dupPart(files, "story-of-my-life-part-1", "Story of My Life, Part 1")
+	files["works/st/story-of-my-life-volume-2/work.json"] = `{"authors":["other-author"],"id":"story-of-my-life-volume-2",` +
+		`"language":"en","license":"CC0-1.0","sources":[{"type":"librivox"}],"title":"Story of My Life, Volume 2"}`
+	got := advisoryMatching(advisoryWarnings(t, files), normalizedDupMarker)
+	if len(got) != 1 || !strings.Contains(got[0], "story-of-my-life-part-1") || strings.Contains(got[0], "volume-2") {
+		t.Errorf("a lone part beside another author's volume = %v, want the part and the whole", got)
+	}
+}
+
+// A history LibriVox records one project per CHAPTER states the same volume on every
+// chapter of it; the chapter nested under the volume is what tells them apart.
+func TestAdvisoryNormalizedDuplicateSkipsChaptersOfOneVolume(t *testing.T) {
+	if got := dupTwin(t, dupBase("History of England (Volume 1, Chapter 01)"),
+		"history-of-england-volume-1-chapter-02", "History of England (Volume 1, Chapter 02)"); len(got) != 0 {
+		t.Errorf("two chapters of one volume were reported as one book: %v", got)
+	}
+}

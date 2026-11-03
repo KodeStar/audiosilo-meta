@@ -667,10 +667,16 @@ func SameStatedVolume(titleA, seriesA, titleB, seriesB string, p VolumePolicy) b
 }
 
 // divisionMarker matches any keyword that names WHICH PART of a product a title is,
-// with its number - markerSeq's vocabulary (pluralized) plus the division words. It is
-// the union on purpose: a title can nest two of them, and which family each keyword
-// belongs to says nothing about whether the pair agrees.
-var divisionMarker = regexp.MustCompile(`(?i)\b(?:books?|bks?|vols?|volumes?|parts?|pts?|episodes?|eps?|#|` + divisionWords + `)` +
+// with its number - markerSeq's vocabulary (pluralized) plus the division words, plus
+// "chapter". It is the union on purpose: a title can nest two of them, and which
+// family each keyword belongs to says nothing about whether the pair agrees.
+//
+// "Chapter" is a sequence word only, never a volume: LibriVox records a long history
+// one project per chapter ("History of England, from the Accession of James II -
+// (Volume 1, Chapter 02)"), and those titles agree on their volume and differ only in
+// the chapter nested under it, so without it the sequence read [1] for every chapter
+// of a volume and the census paired them all as one book.
+var divisionMarker = regexp.MustCompile(`(?i)\b(?:books?|bks?|vols?|volumes?|parts?|pts?|episodes?|eps?|chapters?|#|` + divisionWords + `)` +
 	divisionNumberArms)
 
 // divisionSequence is every division number a title states, in the order it states

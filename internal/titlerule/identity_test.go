@@ -540,6 +540,11 @@ func TestSameStatedVolumeComparesNestedDivisions(t *testing.T) {
 		{"Ranger's Apprentice: Part One, Episode 2", "Ranger's Apprentice: Part One, Episode 3", false},
 		{"Wildwood, Part One", "Wildwood, Part 1", true},
 		{"Ranger's Apprentice: Part Two, Episode 2", "Ranger's Apprentice: Part One, Episode 2", false},
+		// A chapter nests under its volume: LibriVox's one-project-per-chapter
+		// histories agree on the volume and differ in the chapter.
+		{"History of England - (Volume 1, Chapter 01)", "History of England - (Volume 1, Chapter 02)", false},
+		{"History of England - (Volume 1, Chapter 01)", "History of England - (Volume 1, Chapter 01)", true},
+		{"History of England - (Volume 1, Chapter 01)", "History of England", true},
 	} {
 		if got := SameStatedVolume(c.a, "", c.b, "", ReaderPolicy); got != c.same {
 			t.Errorf("SameStatedVolume(%q, %q, ReaderPolicy) = %v, want %v", c.a, c.b, got, c.same)
