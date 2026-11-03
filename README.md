@@ -442,7 +442,11 @@ nothing), `differently-spelled-title` (the duplicate-identity guard holds
 the book under a title rule 2 does not read as the same, such as a subtitle
 apart, or rule 3's trailing qualifier), `same-name-author` (below) and `fallback-slug-taken` (below). Once a person has settled the work,
 re-importing the project's id lands it. `--conflicts` rows for these projects
-carry `librivox_id`, since they have no ASIN.
+carry `librivox_id`, since they have no ASIN, and so do the `--skipped` lines
+(one `{"librivox_id","reason"}` NDJSON line per project refused under a
+refusal code: an unknown language, no narrator or author, or the
+duplicate-identity guard's `identity-duplicate`; the libex `--skipped` shape
+with the project id in place of the ASIN).
 
 Readers are the narrators, translators are `translator` credits, sections are
 chapters (`start_ms` cumulative from each playtime, the section's file as

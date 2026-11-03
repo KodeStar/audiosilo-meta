@@ -1825,7 +1825,8 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   refused by both, never a second work. The sync bot's contract is three NDJSON worklists with the stable codes of
   `internal/importer/refusalcodes.go` (the import adds identity-duplicate and
   missing-author/title/narrator): `--refusals` and `--attachments`
-  (libex-select) and `--skipped` (libex). `--refusals` and `--skipped` stream one
+  (libex-select) and `--skipped` (libex; `librivox import` writes the same shape, a LibriVox row keyed by
+  `librivox_id` in place of the ASIN, which a line then omits - planner.noteSkip). `--refusals` and `--skipped` stream one
   line per refused COPY, so an ASIN may repeat and one carrying a duplicate-asin
   line is not a clean refusal; neither names an ASIN the subset carries or the
   run imported. All are written through `internal/atomicfile`, the subset

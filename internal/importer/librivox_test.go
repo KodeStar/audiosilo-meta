@@ -507,6 +507,15 @@ func TestLibrivoxRowRefusals(t *testing.T) {
 	if sum.NewRecordings != 1 {
 		t.Fatalf("NewRecordings = %d, want only the gappy book", sum.NewRecordings)
 	}
+	// The refusals reach Summary.Skips (the --skipped worklist) keyed by the
+	// project id, since a LibriVox row has no ASIN to name it by.
+	wantSkips := []RowSkip{
+		{LibrivoxID: 99002, Reason: RefusalUnmappedLanguage},
+		{LibrivoxID: 99004, Reason: RefusalMissingNarrator},
+	}
+	if !reflect.DeepEqual(sum.Skips, wantSkips) {
+		t.Errorf("Skips = %+v, want %+v", sum.Skips, wantSkips)
+	}
 	var r lvRecording
 	readEntity(t, dataDir, recAddr("gappy-book", "david-barnes"), &r)
 	if r.LibrivoxID != 99003 || r.Chapters != nil {
@@ -701,5 +710,27 @@ func TestArchiveIDPatternIsTheSchemas(t *testing.T) {
 	}
 	if got := archiveIDRE.String(); got != want {
 		t.Errorf("archiveIDRE = %q, the schema's = %q", got, want)
+	}
+}
+
+// A LibriVox row's worklist line names the project in place of the ASIN, and an
+// ASIN line keeps its old two-field shape (the sync bot's contract).
+func TestRowSkipLineIsKeyedByASINOrProject(t *testing.T) {
+	for _, tc := range []struct {
+		skip RowSkip
+		want string
+	}{
+		{RowSkip{ASIN: "B0X", Reason: RefusalMissingNarrator}, `{"asin":"B0X","reason":"missing-narrator"}`},
+		{RowSkip{LibrivoxID: 527, Reason: RefusalMissingNarrator}, `{"librivox_id":527,"reason":"missing-narrator"}`},
+	} {
+		raw, err := json.Marshal(tc.skip)
+		if err != nil || string(raw) != tc.want {
+			t.Errorf("marshal %+v = %s, %v; want %s", tc.skip, raw, err, tc.want)
+		}
+	}
+	// dropRecorded asks only about an ASIN: a project-keyed entry stays.
+	kept := dropRecorded([]RowSkip{{LibrivoxID: 527, Reason: RefusalMissingNarrator}}, func(string) bool { return true })
+	if len(kept) != 1 {
+		t.Errorf("dropRecorded dropped a project-keyed skip: %+v", kept)
 	}
 }

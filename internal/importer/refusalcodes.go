@@ -135,19 +135,24 @@ func RefusalCodes() []string {
 	return out
 }
 
-// RowSkip is one refused row as a worklist states it: the row's ASIN and its
+// RowSkip is one refused row as a worklist states it: the row's key and its
 // rule's code. Its JSON form, in this field order, is one line of
-// `libex-select --refusals` and of `metaimport libex --skipped` - one shape, a
-// contract with the series-completion sync bot. Ambiguous relocation homes also
+// `libex-select --refusals`, `metaimport libex --skipped` and `metaimport
+// librivox import --skipped` - one shape, a contract with the series-completion
+// sync bot. A row is keyed by its ASIN, or - a LibriVox row, which has none - by
+// its project id (`librivox_id`), so a line carries exactly one of the two:
+// {"asin","reason"} or {"librivox_id","reason"}. Ambiguous relocation homes also
 // carry sorted candidate work IDs; other refusals retain the two-field shape.
 type RowSkip struct {
-	ASIN       string   `json:"asin"`
+	ASIN       string   `json:"asin,omitempty"`
+	LibrivoxID int      `json:"librivox_id,omitempty"`
 	Reason     string   `json:"reason"`
 	Candidates []string `json:"candidates,omitempty"`
 }
 
 // appendSkip records one refused row under its rule, unless the row states no
-// ASIN to name it by.
+// ASIN to name it by. It is the libex parse layer's; the planner names a row by
+// its whole key through noteSkip.
 func appendSkip(skips []RowSkip, asin string, r refusal) []RowSkip {
 	if asin == "" {
 		return skips
@@ -155,13 +160,27 @@ func appendSkip(skips []RowSkip, asin string, r refusal) []RowSkip {
 	return append(skips, RowSkip{ASIN: asin, Reason: r.code})
 }
 
+// noteSkip records the planner's refusal of row b under rule r on
+// Summary.Skips, keyed as UnrecordedCredit and Conflict are: by the row's
+// ASIN, or for a LibriVox row by its project id. A row with neither is not
+// listed (there is nothing to name it by).
+func (p *planner) noteSkip(b sourceBook, r refusal) {
+	asin, project := NormalizeASIN(b.str("asin")), librivoxIDOf(b)
+	if asin == "" && project == 0 {
+		return
+	}
+	p.summary.Skips = append(p.summary.Skips, RowSkip{ASIN: asin, LibrivoxID: project, Reason: r.code})
+}
+
 // dropRecorded is skips without every entry whose ASIN recorded reports: a
 // refused row whose ASIN landed anyway (a sibling row of the same ASIN, or the
-// other copy a selection kept) is no refusal worth memoizing.
+// other copy a selection kept) is no refusal worth memoizing. An entry keyed
+// by a LibriVox project id is always kept: a snapshot holds one row per
+// project, so no sibling can land it.
 func dropRecorded(skips []RowSkip, recorded func(asin string) bool) []RowSkip {
 	out := skips[:0:0]
 	for _, s := range skips {
-		if !recorded(s.ASIN) {
+		if s.ASIN == "" || !recorded(s.ASIN) {
 			out = append(out, s)
 		}
 	}

@@ -177,6 +177,9 @@ func TestLibrivoxGuardRefusalIsOnTheWorklist(t *testing.T) {
 	if !strings.Contains(conflicts.String(), `"asin":"","librivox_id":99503,"work":"metamorphosis"`) {
 		t.Errorf("conflict row = %s", conflicts.String())
 	}
+	if want := []RowSkip{{LibrivoxID: 99503, Reason: RefusalIdentityDuplicate}}; !reflect.DeepEqual(sum.Skips, want) {
+		t.Errorf("Skips = %+v, want %+v", sum.Skips, want)
+	}
 }
 
 func TestLibrivoxNonLatinTitlesGetTheProjectSlug(t *testing.T) {
