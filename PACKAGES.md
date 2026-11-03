@@ -535,9 +535,13 @@ of its leading/trailing word runs; every title guess as whole words plus the
 exact-title probe; EVERY WORK BY THE NAMED AUTHORS, people resolved through the
 FTS person rows by full name then by surname with first-name/initial agreement,
 the surname's 400-row window ORDERED by how many of a row's words begin with the
-guess's initial before it is cut (`personInitialSQL`), so a surname with more
-bearers than the window - 594 Smiths - cannot crowd out the one the initial
-names (`TestPeopleNamedOrdersTheSurnameWindowByTheInitial`);
+guess's initial (a given-less mononym ranked level, since it agrees too) before it
+is cut (`personInitialSQL`), so a surname with more bearers than the window - 594
+Smiths - cannot crowd out the one the initial names
+(`TestPeopleNamedOrdersTheSurnameWindowByTheInitial`); a bare surname keeps the
+unordered window, which cannot lose a book the title probe found, since every
+candidate is judged on its own credits
+(`TestMatchABareSurnameBeyondTheWindowKeepsTheTitledBook`);
 the members of the named series) into one pool capped at 2,500 works, loads each
 candidate's title/subtitle, authors, memberships and runtimes in batched indexed
 reads (`TestBatchLookupsAreIndexed` covers all of them), and scores in Go. A

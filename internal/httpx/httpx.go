@@ -79,15 +79,8 @@ const InternalErrMsg = "internal error"
 // forging whatever an operator or a log pipeline then believes. %q keeps it on
 // one line, with the control characters visible as escapes.
 //
-// A failure that IS the request's own cancellation is not logged: the search
-// and lookup reads run under the request's context, so a client that abandons a
-// query (the site's search box does, on every keystroke) fails it with the
-// context's error, which is no fault of the server's and nobody reads the 500.
-// The test is the ERROR, not merely a gone client (cancelledByClient): a
-// handler reading on a context of its own - the card batches run on
-// context.Background(), the match on its budget - can fail for a real reason
-// while the client happens to be gone, and that database error must still
-// reach the log.
+// A failure that is the request's own cancellation is not logged (see
+// cancelledByClient).
 func Fail(w http.ResponseWriter, r *http.Request, logger *log.Logger, component string, err error) {
 	if !cancelledByClient(r, err) {
 		logger.Printf("%s: 500 %q %q: %v", component, r.Method, r.URL.Path, err)
@@ -96,7 +89,14 @@ func Fail(w http.ResponseWriter, r *http.Request, logger *log.Logger, component 
 }
 
 // cancelledByClient reports whether err is the request context's own error:
-// the context is done and err is (or wraps) exactly what it ended with. A
+// the context is done and err is (or wraps) exactly what it ended with. The
+// search and lookup reads run under the request's context, so a client that
+// abandons a query (the site's search box does, on every keystroke) fails it
+// with that error, which is no fault of the server's and nobody reads the 500.
+// The test is the ERROR, not merely a gone client: a handler reading on a
+// context of its own - the card batches run on context.Background(), the match
+// on its budget - can fail for a real reason while the client happens to be
+// gone, and that database error must still reach the log. A
 // context derived from the request's ends with the same error, so a read under
 // one counts; a deadline of the handler's own (DeadlineExceeded beside a
 // request that was Canceled) does not, and neither does any error at all on a

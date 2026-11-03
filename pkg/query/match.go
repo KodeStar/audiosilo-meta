@@ -612,27 +612,31 @@ const personMatchSQL = `SELECT id, title FROM search_fts WHERE search_fts MATCH 
 // fallback of a guess that has a first name. An unordered window over a common
 // surname is an arbitrary matchPeopleWindow of its bearers - the real
 // catalogue holds 594 people named Smith - so "J Smith" could miss John Smith
-// for no reason but row order. The rows are sorted by how many of their words
-// begin with the guess's initial, most first: every person givenCompatible
-// accepts has a first name beginning with it, so an agreeing bearer counts one
-// more than the surname alone gives every bearer (one for "J Jones", none for
-// "J Smith"), and the cut can drop one only when more than the window's worth
-// of rows count as many. A word begins at the start of the name or after a
-// space, comma, period or hyphen ("Smith, John", "J.R. Smith", "Anne-Jo
-// Smith"); the two needles (?2, ?3) are the initial in its lower and upper case
-// after a space, so a non-Latin initial needs no SQL case folding, and the
-// count is the characters each needle's removal takes away. It is not the
-// tokenizer, so a name whose initial carries a mark the query's does not
-// ("Émile" for "E") sorts with the rest, as every row did before. The sort
-// reads the surname's whole match set, which the unordered window also does
-// whenever it holds fewer than the window's worth of people: 7ms warm for
-// "smith" over the real artifact against 0.6ms unordered, where a
-// prefix-starred initial ("j"*) cost ~40ms. Measured there, the unordered
-// window held none of the 29 R, 26 T or 42 S Smiths; the ordered one holds all.
+// for no reason but row order. A row's rank is how many of its words begin with
+// the guess's initial, plus one when it is a single word. Every person
+// givenCompatible accepts either has a first name beginning with the initial,
+// counting one more than the surname alone gives every bearer (one for "J
+// Jones", none for "J Smith"), or has no given name at all (a "Smith" mononym,
+// which it accepts too), levelled with them by the plus one. So the cut can drop
+// an agreeing bearer only when more than the window's worth of rows rank as
+// high. A word begins at the start of the name or after a space, comma, period
+// or hyphen ("Smith, John", "J.R. Smith", "Anne-Jo Smith"); the needles (?2,
+// ?3) are the initial and its upper case after a space, so a non-Latin initial
+// needs no SQL case folding, and each removed occurrence is two characters
+// (one removal pass when the two are the same rune). It is not the tokenizer,
+// so a name whose initial carries a mark the query's does not ("Émile" for
+// "E") ranks with the rest, as every row did before. The sort reads the
+// surname's whole match set, which the unordered window also does whenever it
+// holds fewer than the window's worth of people. Warm, over the real artifact:
+// 3ms for "smith" (594 bearers), 6ms for "john" (1,752) and 17ms for "de"
+// (510) against well under 1ms unordered, and "the" no slower; a
+// prefix-starred initial ("j"*) cost ~40ms. Measured there, the unordered window held none of the 29 R, 26 T
+// or 42 S Smiths; the ordered one holds all.
 const personInitialSQL = `SELECT id, title FROM (
 	SELECT id, title, rowid AS r, ' ' || replace(replace(replace(title, ',', ' '), '.', ' '), '-', ' ') AS words
 	FROM search_fts WHERE search_fts MATCH ?1 AND kind='` + string(kindPerson) + `'
-) ORDER BY 2 * length(words) - length(replace(words, ?2, '')) - length(replace(words, ?3, '')) DESC, r LIMIT ?4`
+) ORDER BY (length(words) - length(replace(replace(words, ?2, ''), ?3, ''))) / 2
+	+ (instr(trim(words), ' ') = 0) DESC, r LIMIT ?4`
 
 // peopleNamed resolves one author guess to person ids. Every word of the name
 // is tried first ("bernard cornwell" is Bernard Cornwell); when that finds
@@ -679,9 +683,10 @@ func (s *DB) surnameBearers(ctx context.Context, n personName) ([]personRow, err
 	if len(n.given) == 0 {
 		return s.peopleMatching(ctx, n.surname)
 	}
-	r, _ := utf8.DecodeRuneInString(n.given[0])
-	lower, upper := " "+string(unicode.ToLower(r)), " "+string(unicode.ToUpper(r))
-	return s.personRows(ctx, personInitialSQL, titleMatch(n.surname), lower, upper, matchPeopleWindow)
+	// n.given is already lower-cased and mark-stripped (matchTerms).
+	r, size := utf8.DecodeRuneInString(n.given[0])
+	initial, upper := " "+n.given[0][:size], " "+string(unicode.ToUpper(r))
+	return s.personRows(ctx, personInitialSQL, titleMatch(n.surname), initial, upper, matchPeopleWindow)
 }
 
 // personRows runs one person query and parses each row's name, dropping the
