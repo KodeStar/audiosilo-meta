@@ -20,7 +20,8 @@ import (
 // whose entries are already the flat, factual ParsedBook projection (title,
 // subtitle, authors[], narrators[], series, series_position, asin, isbn,
 // language, release_date, publisher, runtime_min, chapters (a COUNT), abridged,
-// cover_url (https only, optional)).
+// cover_url (https only, optional)). Its isbn rides onto the recording (claimISBNs:
+// a value another recording already holds is dropped, a malformed one quietly).
 // Each entry is normalized into the same internal sourceBook the OpenAudible and
 // Libation paths produce, so it shares every mapping/dedup/series/person rule via
 // runBooks. Consuming this envelope is a cross-repo contract: the site produces
@@ -168,6 +169,9 @@ func audiosiloBookToBook(e rawBook) sourceBook {
 		sb.runtimeMin = int(mins)
 	}
 	sb.abridged = coerceBoolPtr(e["abridged"])
+	// Dropped quietly when malformed, like a non-https cover: the site already
+	// normalized it (import-parse.ts normalizeIsbn).
+	sb.isbns = sourceISBNs(e["isbn"], nil)
 
 	if name := e.str("series"); name != "" {
 		sb.series = []seriesRef{makeSeriesRef(name, e.str("series_position"))}

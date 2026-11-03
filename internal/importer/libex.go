@@ -413,7 +413,10 @@ func libexToBook(e rawBook, asin, region string, authors, narrators []string, lp
 	sb.abridged = libexAbridged(e.str("bookFormat"))
 	sb.series = libexSeries(e["series"])
 	sb.genres = libexGenreClaims(e["genres"])
-	sb.isbns = libexISBNs(e["isbn"], asin, lp.rowWarn(warnMalformedISBN, asin))
+	warnISBN := lp.rowWarn(warnMalformedISBN, asin)
+	sb.isbns = sourceISBNs(e["isbn"], func(raw string) {
+		warnISBN("%s: ISBN %q is malformed; dropped", asin, raw)
+	})
 	sb.chapters = e.chapters()
 	return sb
 }
@@ -551,41 +554,6 @@ func libexGenreClaims(v any) []genreClaim {
 		}
 	}
 	return claims
-}
-
-// libexISBNs reads a row's ISBN field (a single string, or an array of them),
-// keeping only well-formed, deduplicated values in their normalized (hyphenless)
-// form. A malformed value is dropped with a warning rather than emitted - an
-// ISBN that fails the schema pattern would fail the post-import validation for
-// the whole tree.
-func libexISBNs(v any, asin string, warn func(string, ...any)) []string {
-	var candidates []string
-	if arr, ok := v.([]any); ok {
-		for _, el := range arr {
-			candidates = append(candidates, coerceStr(el))
-		}
-	} else if s := coerceStr(v); s != "" {
-		candidates = []string{s}
-	}
-	seen := map[string]bool{}
-	var out []string
-	for _, c := range candidates {
-		if strings.TrimSpace(c) == "" {
-			continue
-		}
-		isbn, ok := NormalizeISBN(c)
-		if !ok {
-			warn("%s: ISBN %q is malformed; dropped", asin, c)
-			continue
-		}
-		key := strings.ToUpper(isbn)
-		if seen[key] {
-			continue
-		}
-		seen[key] = true
-		out = append(out, isbn)
-	}
-	return out
 }
 
 // ---------------------------------------------------------------------------

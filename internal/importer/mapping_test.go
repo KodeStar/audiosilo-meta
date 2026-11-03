@@ -710,3 +710,24 @@ func TestNormalizeISBN(t *testing.T) {
 		}
 	}
 }
+
+func TestSourceISBNs(t *testing.T) {
+	var malformed []string
+	got := sourceISBNs([]any{"978-1-234-56789-7", "9781234567897", "123", "", "030640615x"},
+		func(raw string) { malformed = append(malformed, raw) })
+	// Normalized, deduplicated across spellings (case-insensitively), in order.
+	if want := []string{"9781234567897", "030640615x"}; !slices.Equal(got, want) {
+		t.Errorf("sourceISBNs = %v, want %v", got, want)
+	}
+	if want := []string{"123"}; !slices.Equal(malformed, want) {
+		t.Errorf("malformed = %v, want %v", malformed, want)
+	}
+	// A single string is one candidate; a nil callback drops a malformed value
+	// quietly.
+	if got := sourceISBNs("978 1 234 56789 7", nil); !slices.Equal(got, []string{"9781234567897"}) {
+		t.Errorf("sourceISBNs(string) = %v", got)
+	}
+	if got := sourceISBNs("bad", nil); got != nil {
+		t.Errorf("sourceISBNs(bad, nil) = %v, want nil", got)
+	}
+}
