@@ -1952,7 +1952,7 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   Measured over the 915k-row dump (`r5/full.ndjson`): the parse layer holds
   1.4GB against the 7.4GB the whole-file decode held (file + row maps +
   books); a full-dump `--recordings-only` dry run peaks at 9.9GB RSS (was
-  13.4GB) and a create dry run at 14.4GB (was 17.8GB), wall unchanged, reports
+  13.4GB) and a create dry run at about 15.5GB (was 17.5-17.8GB), wall unchanged, reports
   byte-identical. The `split -l` workaround is withdrawn (it never saved the
   catalogue's share, and it shrinks the batch census each chunk is judged
   against).

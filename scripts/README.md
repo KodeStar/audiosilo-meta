@@ -328,7 +328,7 @@ file and every decoded row). The rest of the peak is planning's - the loaded
 catalogue plus the batch censuses, which read EVERY accepted row by design so no
 row's credits or series depend on which rows came with it - and measured over
 the full dump against the current catalogue a `--recordings-only` dry run peaks
-at about 10GB RSS (a create dry run about 14.5GB). Run the full dump on a machine
+at about 10GB RSS (a create dry run about 15.5GB). Run the full dump on a machine
 with that headroom. Do not split the input to save memory: the catalogue's share
 does not shrink with the chunk, and each chunk would be judged against a smaller
 batch census than the whole dump gives it.
