@@ -2,6 +2,7 @@ package audit_test
 
 import (
 	"encoding/json"
+	"os"
 	"os/exec"
 	"path/filepath"
 	"slices"
@@ -394,6 +395,80 @@ func TestReviewedAssertedDropReachesMetarepair(t *testing.T) {
 	}
 	if len(again.Applied) != 0 || again.Considered != 0 {
 		t.Fatalf("second run=%+v", again)
+	}
+}
+
+// A reviewed drop or retitle naming a work since retired onto a survivor at the very
+// slot, stating the very title, never reaches metarepair: the fresh-audit gate reads it
+// STALE, so nothing is considered and the survivor keeps its membership and its title.
+func TestReviewedDropOrRetitleOfARetiredWorkNeverReachesMetarepair(t *testing.T) {
+	files := map[string]string{
+		"people/xx/jane-doe.json":      testpack.PersonJSON(t, "jane-doe", "Jane Doe"),
+		"people/xx/nate-narrator.json": testpack.PersonJSON(t, "nate-narrator", "Nate Narrator"),
+		"series/xx/narnia.json": testpack.SeriesJSON(t, "narnia", "The Chronicles of Narnia",
+			"the-magicians-nephew@1", "prince-caspian@4"),
+	}
+	for id, title := range map[string]string{"the-magicians-nephew": "The Magician's Nephew", "prince-caspian": "Prince Caspian"} {
+		files["works/xx/"+id+"/work.json"] = testpack.WorkJSON(t, id, title)
+		files["works/xx/"+id+"/recordings/r.json"] = testpack.RecJSON(t, "r", id)
+	}
+	root := t.TempDir()
+	data := filepath.Join(root, "data")
+	testpack.Seed(t, data, files)
+	if err := os.WriteFile(filepath.Join(data, "redirects.json"),
+		[]byte(`{"people":{},"series":{},"works":{"prince-caspian-old":"prince-caspian"}}`), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	audit.SetReviewedForTest(t, []byte(`[
+  {
+    "decision": "assert",
+    "from": "4",
+    "op": "drop-membership",
+    "reason": "a duplicate of Prince Caspian is not a volume of the series",
+    "series": "narnia",
+    "target": "prince-caspian-old"
+  },
+  {
+    "decision": "assert",
+    "from": "Prince Caspian",
+    "op": "retitle-work",
+    "reason": "the duplicate's title was a retailer listing",
+    "target": "prince-caspian-old",
+    "to": "Prince Caspian (Duplicate)"
+  }
+]
+`))
+	for _, args := range [][]string{{"init", "-q"}, {"config", "user.email", "fixture@example.com"}, {"config", "user.name", "Fixture"}, {"config", "commit.gpgsign", "false"}, {"add", "-A"}, {"commit", "-qm", "seed"}} {
+		cmd := exec.Command("git", args...)
+		cmd.Dir = root
+		if out, err := cmd.CombinedOutput(); err != nil {
+			t.Fatalf("git %v: %v: %s", args, err, out)
+		}
+	}
+	before := check.Load(data)
+	if len(before.Problems) > 0 {
+		t.Fatalf("fixture: %v", before.Problems)
+	}
+	if fresh := audit.Analyze(before); len(fresh.Reviewed.Stale()) != 2 || len(fresh.Reviewed.Outcomes()) != 0 {
+		t.Fatalf("reviewed = %+v, want both decisions stale", fresh.Reviewed)
+	}
+	rep, err := repair.Run(repair.Options{DataDir: data, Ops: []string{audit.OpDropMembership, audit.OpRetitle}, Write: true})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(rep.Applied) != 0 || len(rep.Refused) != 0 || rep.Considered != 0 {
+		t.Fatalf("repair applied %+v, refused %+v, considered %d", rep.Applied, rep.Refused, rep.Considered)
+	}
+	after := check.Load(data)
+	for _, s := range after.Catalog.Series {
+		if s.ID == "narnia" && (len(s.Works) != 2 || s.Works[1].Work != "prince-caspian" || s.Works[1].Position != "4") {
+			t.Fatalf("narnia = %+v: the survivor lost its membership", s.Works)
+		}
+	}
+	for _, w := range after.Catalog.Works {
+		if w.ID == "prince-caspian" && w.Title != "Prince Caspian" {
+			t.Fatalf("survivor retitled to %q", w.Title)
+		}
 	}
 }
 

@@ -494,13 +494,13 @@ func TestReviewedAssertDropLookups(t *testing.T) {
 	}
 }
 
-// Both slugs of an asserted drop resolve through the tombstones, so an assertion
-// written before a merge still sources the drop under the survivors - and one written
-// after it meets that same finding, as a second assertion of one proposal does.
+// An asserted drop's SERIES resolves through the tombstones, so an assertion written
+// before a series merge still sources the drop under the survivor - and one written
+// after it meets that same finding, as a second assertion of one proposal does. (Its
+// WORK never does: TestReviewedDropOrRetitleOfARetiredWork.)
 func TestReviewedAssertDropResolvesTombstones(t *testing.T) {
-	old := dropAssertion("complete-chronicles-old", "narnia-old", "", "1-7")
-	rep := runFixtureRejectingWith(t, rangerTree(t),
-		`{"people":{},"series":{"narnia-old":"narnia"},"works":{"complete-chronicles-old":"the-complete-chronicles"}}`, old, assertOmnibus)
+	old := dropAssertion("the-complete-chronicles", "narnia-old", "", "1-7")
+	rep := runFixtureRejectingWith(t, rangerTree(t), `{"people":{},"series":{"narnia-old":"narnia"},"works":{}}`, old, assertOmnibus)
 	got := subclassOf(t, rep, ClassSeriesInteg, SubclassAsserted)
 	if len(got) != 1 || got[0].Propose.Target != "the-complete-chronicles" || got[0].Propose.Series != "narnia" || got[0].Propose.Advisory {
 		t.Fatalf("sourced %+v, want one mechanical drop under the live slugs", got)
@@ -512,40 +512,73 @@ func TestReviewedAssertDropResolvesTombstones(t *testing.T) {
 	assertProposalsConsistent(t, rep)
 }
 
-// A drop whose target was retired since (the Dawnshard shape: the drop applied, then the
-// work merged into a twin the series lists at another slot) is the applied steady state,
-// STALE. A survivor listed AT the asserted slot is still the drop (a LIVE target listed
-// elsewhere stays REFUSED: TestReviewedAssertDropLookups).
-func TestReviewedAssertDropOfARetiredTarget(t *testing.T) {
-	const reds = `{"people":{},"series":{},"works":{"complete-chronicles-old":"the-complete-chronicles"}}`
+// A drop or retitle whose target WORK was retired since is STALE whatever its survivor
+// holds. The Dawnshard shape (the drop applied, then the work merged into a twin the
+// series lists at another slot) is the applied steady state; a survivor listed AT the
+// named slot, or stating the very title, is ANOTHER record nobody reviewed (a reviewed
+// drop of a duplicate Philosopher's Stone, once merged, must not remove the real one).
+// An acceptance of the survivor's detector proposal is the same review of a gone work.
+// A LIVE target listed elsewhere stays REFUSED (TestReviewedAssertDropLookups).
+func TestReviewedDropOrRetitleOfARetiredWork(t *testing.T) {
+	const why = " since: the work it names is gone, and a review of it never applies to its survivor"
+	files := rangerTree(t)
+	files["works/xx/mageling/work.json"] = workJSON(t, "mageling", "Mageling (Unabridged)")
+	files["works/xx/mageling/recordings/r.json"] = recJSON(t, "r", "mageling")
+	var detected *Finding
+	for _, fd := range classOf(t, runFixtureRejecting(t, files), ClassWorkTitle) {
+		if fd.Propose.Op == OpRetitle && fd.Propose.Target == "mageling" {
+			detected = &fd
+		}
+	}
+	if detected == nil || detected.Propose.Advisory {
+		t.Fatalf("fixture must carry W-TITLE's mechanical retitle of mageling, got %+v", detected)
+	}
+	accept := retitleAssertion("mageling-old", detected.Propose.Field, detected.Propose.From, detected.Propose.To)
+	accept.Decision = "accept"
+	const reds = `{"people":{},"series":{},"works":{"complete-chronicles-old":"the-complete-chronicles",` +
+		`"mageling-old":"mageling","world-without-end-old":"world-without-end"}}`
 	for _, tc := range []struct {
-		name   string
-		r      reviewedDecision
-		status outcomeStatus
-		why    string
+		name string
+		r    reviewedDecision
+		why  string
 	}{
-		{"survivor elsewhere", dropAssertion("complete-chronicles-old", "narnia", "", "1"), statusStale,
-			`applied: complete-chronicles-old was merged into the-complete-chronicles, which series narnia lists at position "1-7", not "1"`},
-		{"survivor at the slot", dropAssertion("complete-chronicles-old", "narnia", "", "1-7"), statusAsserted, ""},
+		{"drop, survivor elsewhere", dropAssertion("complete-chronicles-old", "narnia", "", "1"),
+			"complete-chronicles-old was retired onto the-complete-chronicles" + why},
+		{"drop, survivor at the slot", dropAssertion("complete-chronicles-old", "narnia", "", "1-7"),
+			"complete-chronicles-old was retired onto the-complete-chronicles" + why},
+		{"retitle, survivor states the old title", retitleAssertion("world-without-end-old", "", "World Without End", "World without End"),
+			"world-without-end-old was retired onto world-without-end" + why},
+		{"retitle, survivor states another title", retitleAssertion("world-without-end-old", "", "World Without End: Old", "World without End"),
+			"world-without-end-old was retired onto world-without-end" + why},
+		{"accepted retitle, survivor proposed", accept, "mageling-old was retired onto mageling" + why},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			rep := runFixtureRejectingWith(t, rangerTree(t), reds, tc.r)
+			rep := runFixtureRejectingWith(t, files, reds, tc.r)
 			o := rep.Reviewed.All
-			if len(o) != 1 || o[0].Status != tc.status || !strings.Contains(o[0].Why, tc.why) {
-				t.Fatalf("tally = %+v, want %s naming %q", rep.Reviewed, tc.status, tc.why)
+			if len(o) != 1 || o[0].Status != statusStale || o[0].Why != tc.why {
+				t.Fatalf("tally = %+v, want STALE naming %q", rep.Reviewed, tc.why)
 			}
-			got := subclassOf(t, rep, ClassSeriesInteg, SubclassAsserted)
-			if tc.status != statusAsserted {
-				if len(got) != 0 {
-					t.Fatalf("sourced %+v", got)
+			if got := subclassOf(t, rep, ClassSeriesInteg, SubclassAsserted); len(got) != 0 {
+				t.Fatalf("sourced %+v", got)
+			}
+			if got := subclassOf(t, rep, ClassWorkTitle, SubclassAsserted); len(got) != 0 {
+				t.Fatalf("sourced %+v", got)
+			}
+			for _, fd := range classOf(t, rep, ClassWorkTitle) {
+				if fd.Propose.Target == "mageling" && fd.Propose.Advisory {
+					t.Fatalf("the survivor's own proposal changed: %+v, was %+v", fd.Propose, detected.Propose)
 				}
-				return
 			}
-			if len(got) != 1 || got[0].Propose.Target != "the-complete-chronicles" || got[0].Propose.From != "1-7" || got[0].Propose.Advisory {
-				t.Fatalf("sourced %+v, want one mechanical drop of the survivor at 1-7", got)
-			}
-			assertProposalsConsistent(t, rep)
 		})
+	}
+	// A rejection still resolves: withholding the survivor's proposal writes nothing.
+	reject := accept
+	reject.Decision = "reject"
+	rep := runFixtureRejectingWith(t, files, reds, reject)
+	for _, fd := range classOf(t, rep, ClassWorkTitle) {
+		if fd.Propose.Target == "mageling" && !fd.Propose.Advisory {
+			t.Fatalf("a rejection naming a retired work no longer withholds its survivor's proposal: %+v", fd.Propose)
+		}
 	}
 }
 
@@ -596,9 +629,10 @@ func TestReviewedAssertDropOfOneOfTwoMemberships(t *testing.T) {
 // An asserted retitle is compared with the title the work states NOW: its new title is
 // the applied steady state (STALE), any title but its old one is the record having
 // moved (REFUSED naming it, so a stale review cannot overwrite a title nobody
-// reviewed), and a typo is REFUSED. A retired target is judged by its survivor.
+// reviewed), and a typo is REFUSED. A retired target is STALE
+// (TestReviewedDropOrRetitleOfARetiredWork).
 func TestReviewedAssertRetitleLookups(t *testing.T) {
-	const reds = `{"people":{},"series":{},"works":{"world-without-end-old":"world-without-end"}}`
+	const reds = ""
 	for _, tc := range []struct {
 		name   string
 		r      reviewedDecision
@@ -611,9 +645,6 @@ func TestReviewedAssertRetitleLookups(t *testing.T) {
 			statusRefused, `work world-without-end now states the title "World Without End", not the "World Without End (Unabridged)"`},
 		{"no such work", retitleAssertion("world-without-ends", "", "World Without End", "World without End"), statusRefused,
 			"no such work world-without-ends"},
-		{"retired target", retitleAssertion("world-without-end-old", "", "World Without End", "World without End"), statusAsserted, ""},
-		{"retired target moved", retitleAssertion("world-without-end-old", "", "World Without End: Old", "World without End"), statusStale,
-			`applied: world-without-end-old was merged into world-without-end, which states the title "World Without End"`},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			rep := runFixtureRejectingWith(t, rangerTree(t), reds, tc.r)
