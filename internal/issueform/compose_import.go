@@ -209,18 +209,21 @@ func (c *composer) noteImportWarnings(sum importer.Summary) {
 const maxUnrecordedNotes = 20
 
 // noteUnrecordedCredits reports the credits the import withheld
-// (importer.Summary.UnrecordedCredits): a book of the export joined a work the
-// catalogue already holds, which a library import never edits, so a translator
-// or other contributor that work does not name was not recorded and no person
-// record was made for them. They are notes, not warnings - nothing fell out of
-// the export - but a maintainer should see them in the pull request, since
-// adding the credit to the work is a correction only a person makes.
+// (importer.Summary.UnrecordedCredits): a book of the export attached to a work
+// that does not name an author, translator or other contributor it states, and
+// a library import never edits a catalogued work's credits, so the credit was
+// not recorded and a person not already catalogued was not created (the
+// per-credit line says which: "person not created", or "unsluggable" for a name
+// no record can hold). They are notes, not warnings - nothing fell out of the
+// export - but a maintainer should see them in the pull request, since adding
+// the credit to the work is a correction only a person makes.
 func (c *composer) noteUnrecordedCredits(credits []importer.UnrecordedCredit) {
 	if len(credits) == 0 {
 		return
 	}
-	c.note("import note: %d credit(s) were not recorded - the book joined a catalogued work that does not name them, "+
-		"so no person record was made (kept for recording-level credits, meta#2752)", len(credits))
+	c.note("import note: %d credit(s) were not recorded - the book attached to a work that does not name them, "+
+		"whose credits a library import never edits; a person not already catalogued was not created "+
+		"(kept for recording-level credits, meta#2752)", len(credits))
 	for _, u := range credits[:min(maxUnrecordedNotes, len(credits))] {
 		c.note("credit not recorded: %s", u)
 	}
