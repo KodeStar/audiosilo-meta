@@ -2003,6 +2003,15 @@
     "target": "der-kleine-drache-kokosnuss-sachhorbucher"
   },
   {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "rauber-hotzenplotz"
+    ],
+    "reason": "two series: Räuber Hotzenplotz is the Karussell radio-play series adapted by Jürgen Nola, a different work at every slot from the readings in Der Räuber Hotzenplotz",
+    "target": "der-rauber-hotzenplotz"
+  },
+  {
     "decision": "assert",
     "op": "merge-series",
     "others": [
@@ -2091,6 +2100,15 @@
     ],
     "reason": "a named sub-series, not a second spelling: Torsten Weitze's five Turm books, which the publisher lists both as Sturmfels-Akademie and inside Die Streitenden Götter",
     "target": "die-streitenden-gotter"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "sturmkonige"
+    ],
+    "reason": "two series: Sturmkönige is the Holysoft radio-play series adapted by Marco Göllner (about 180 min each), a different work at every slot from the Lübbe Audio readings of Kai Meyer's novels in Die Sturmkönige",
+    "target": "die-sturmkonige"
   },
   {
     "decision": "assert",
@@ -2982,6 +3000,15 @@
     ],
     "reason": "a named sub-series, not a second spelling: Melissa Foster's Snow Sisters arc of Love in Bloom",
     "target": "love-in-bloom"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "luke-jensen-bounty-hunter-series"
+    ],
+    "reason": "one series under two spellings: once the Bounty Hunter dramatization is folded onto its novel the two lists agree at every slot they share (1, 2, 3, 5), and the Series spelling adds the dramatized volumes 4, 6 and 7",
+    "target": "luke-jensen-bounty-hunter"
   },
   {
     "decision": "assert",
@@ -4441,6 +4468,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "nineteen-eighty-four"
+    ],
+    "reason": "the same novel by George Orwell, both English: Nineteen Eighty-Four is the title as published (Peter Capaldi's 742-minute Penguin Modern Classics reading, 0141989963) and 1984 its common spelling; held back until the community layer keeps one of the two works' sidecars",
+    "target": "1984"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "20-000-leagues-under-the-sea-classic-tales-edition",
       "20-000-leagues-under-the-sea-dramatized"
     ],
@@ -5659,6 +5695,16 @@
     "target": "andersens-fairy-tales-amazonclassics-edition"
   },
   {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "andersens-fairy-tales-amazonclassics-edition",
+      "andersens-fairy-tales-hans-christian-andersen"
+    ],
+    "reason": "different selections: the AmazonClassics revised edition has 22 tracks of another length profile, while Dreamscape's Volume 1 (18 tales) is one of two volumes (Volume 2 holds 25 more), and the Naxos record is a 154-minute selection",
+    "target": "andersens-fairy-tales-volume-1"
+  },
+  {
     "decision": "assert",
     "op": "merge-works",
     "others": [
@@ -6477,6 +6523,15 @@
     ],
     "reason": "the same novel by the same author and narrators: Third Edition names a revised re-release, a property of the recording, and only one side states an edition",
     "target": "birth-of-the-fae-locked-out-of-heaven"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dork-diaries-13"
+    ],
+    "reason": "Dork Diaries 13 in two markets: Jenni Barber's 222-minute Simon & Schuster reading (B07BH696Q8, subtitled Tales from a Not-So-Happy Birthday) and her 221-minute Bolinda release under the UK title Birthday Drama (1489469443), both at Dork Diaries 13 on Audible",
+    "target": "birthday-drama"
   },
   {
     "decision": "assert",
@@ -7671,6 +7726,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "cruel-winter-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dork-diaries-12"
+    ],
+    "reason": "Dork Diaries 12 in two markets: Jenni Barber's 198-minute Simon & Schuster reading (B074TJ28GD) and her 198-minute Bolinda release under the UK title Crush Catastrophe (B076QRZ97N), both at Dork Diaries 12 on Audible",
+    "target": "crush-catastrophe"
   },
   {
     "decision": "reject",
@@ -9365,6 +9429,15 @@
     "target": "dragons-justice"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dork-diaries-9"
+    ],
+    "reason": "Dork Diaries 9 in two markets: Jenni Barber's 224-minute Simon & Schuster reading (B00XI0TMQM) and her 224-minute Bolinda release under the UK title Drama Queen (B01609IFVA), both at Dork Diaries 9 on Audible",
+    "target": "drama-queen"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -10555,6 +10628,15 @@
     ],
     "reason": "the same book by the same author: \"Free Fall: An Elvis Cole and Joe Pike Novel, Book 4\" only adds a retailer series decoration to \"Free Fall\", and both sit at the same position of two spellings of one series",
     "target": "free-fall-robert-crais"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dork-diaries-11"
+    ],
+    "reason": "Dork Diaries 11 in two markets: Jenni Barber's 167-minute Simon & Schuster reading (B01IA60WT4) and her 166-minute Bolinda release under the UK title Frenemies Forever (B01NC0TQ3F), both at Dork Diaries 11 on Audible",
+    "target": "frenemies-forever"
   },
   {
     "decision": "assert",
@@ -13397,6 +13479,15 @@
     "target": "love-will-tear-us-apart-nach-dem-tod-fangt-das-leben-erst-richtig-an-the-stranger-times-ermittelt"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "bounty-hunter-dramatized-adaptation"
+    ],
+    "reason": "Luke Jensen 1: the GraphicAudio Bounty Hunter dramatization (1648803229) and the Recorded Books reading of Luke Jensen, Bounty Hunter (B00A4H2MPK) tell the same story of Luke smuggling Confederate gold out of Richmond; a dramatization is a recording of the novel, as on Dead Shot and Bloody Sunday",
+    "target": "luke-jensen-bounty-hunter"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -13414,6 +13505,24 @@
     ],
     "reason": "different volumes: positions 1, 2 and 3 of duff-maccallister-western, with different runtimes and release dates",
     "target": "maccallister-the-eagles-legacy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-eagles-legacy-dramatized-adaptation"
+    ],
+    "reason": "Duff MacCallister 1, The Eagles Legacy: the GraphicAudio dramatization (1648803369, MacCallister Book 1) carries the same publisher blurb as the Tantor reading (1977334377, Book 1), and a dramatization is a recording of the novel as on Kill Crazy and Kingdom Come",
+    "target": "maccallister-the-eagles-legacy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dry-gulch-ambush-dramatized-adaptation"
+    ],
+    "reason": "Duff MacCallister 3, Dry Gulch Ambush: the Tantor reading (1977334393, Book 3, its CD edition subtitled Dry Gulch Ambush) and the GraphicAudio dramatization (1648803407, MacCallister Book 3) carry the same publisher blurb; a dramatization is a recording of the novel",
+    "target": "maccallister-the-eagles-legacy-duff-maccallister-western-series-book-3"
   },
   {
     "decision": "assert",
@@ -15440,6 +15549,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "dork-diaries-10"
+    ],
+    "reason": "Dork Diaries 10 in two markets: Jenni Barber's 206-minute Simon & Schuster reading (B015TTN0EE, the US title Tales from a Not-So-Perfect Pet Sitter) and her 205-minute Bolinda release (B016N19JCE, the UK title Puppy Love), both at Dork Diaries 10 on Audible",
+    "target": "puppy-love-dork-diaries-book-10"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-divine-comedy-purgatorio"
     ],
     "reason": "the same book: The Divine Comedy prefix is the series name and Ichabod Charles Wright is the translator, not a co-author",
@@ -15730,6 +15848,15 @@
     ],
     "reason": "same book: two narrations of one work, and the series spellings are one series",
     "target": "record-of-a-spaceborn-few"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "federation-marine-recruit"
+    ],
+    "reason": "Jonathan P. Brazee's Recruit, United Federation Marine Corps 1: Variant's 2023 Federation Marine reissue (B0CKXW1T6R, 441 min, 31 chapters) tells the same story of Ryck Lysander enlisting as the 2014 reading (409 min, 31 chapters), as its Sergeant already sits on the original work",
+    "target": "recruit"
   },
   {
     "decision": "assert",
@@ -16575,12 +16702,12 @@
     "target": "serpents-silver"
   },
   {
-    "decision": "reject",
+    "decision": "assert",
     "op": "merge-works",
     "others": [
       "seven-days-to-die-dramatized-adaptation"
     ],
-    "reason": "Brian Hutchison's unabridged reading of Loner 6 (B009EVFB32), apart from the GraphicAudio dramatization",
+    "reason": "Loner 6, Seven Days to Die: the GraphicAudio dramatization (1648801838, Loner Book 6) and Brian Hutchison's Recorded Books reading (B009EVFB32, Loner 6) carry the same publisher blurb; a dramatization is a recording of the novel",
     "target": "seven-days-to-die"
   },
   {
@@ -17870,6 +17997,15 @@
     ],
     "reason": "different series: these same-day-number episodes belong to three different Anna Scheinfrei series (Die Flammen von Eryndor, Sieben Tage mit Orbis, Zehn Tage fur die Liebe) with different casts",
     "target": "tag-9-die-flammen-von-eryndor-folge-9"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dork-diaries-4"
+    ],
+    "reason": "Dork Diaries 4 in two releases: Jenni Barber's 218-minute Simon & Schuster reading (B0087E241E, subtitled Tales from a Not-So-Graceful Ice Princess) and her 220-minute Recorded Books release (B0085XE636), both at Dork Diaries 4 on Audible",
+    "target": "tales-from-a-not-so-graceful-ice-princess"
   },
   {
     "decision": "assert",
@@ -19193,12 +19329,12 @@
     "target": "the-detective"
   },
   {
-    "decision": "reject",
+    "decision": "assert",
     "op": "merge-works",
     "others": [
       "devils-badland-dramatized-adaptation"
     ],
-    "reason": "Brian Hutchison's unabridged reading of Loner 2 (B00563ID3M), apart from the GraphicAudio dramatization",
+    "reason": "Loner 2, The Devil's Badland: the GraphicAudio dramatization (1648801757, Loner Book 2) and Brian Hutchison's Recorded Books reading (B00563ID3M, Loner 2) tell the same story of Conrad Browning at his wife's grave in New Mexico; a dramatization is a recording of the novel",
     "target": "the-devils-badland"
   },
   {
@@ -21677,6 +21813,16 @@
     ],
     "reason": "the same book: \"The Stranger Times (German edition)\" and \"The Stranger Times - Was, wenn die seltsamsten News die wirklich wahren wären\" differ only by retailer decoration; both sit at 1 of the-stranger-times-gekurzt and its canonical series, by the same author",
     "target": "the-stranger-times-was-wenn-die-seltsamsten-news-die-wirklich-wahren-waren"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "his-dark-materials-the-subtle-knife-book-2",
+      "the-subtle-knife-his-dark-materials-trilogy-book-2"
+    ],
+    "reason": "the same novel, His Dark Materials 2 by Philip Pullman: all three records carry the same fifteen chapter titles, and the 2003 Listening Library and 2006 Audible Studios full-cast readings (535 and 534 min) are the production the 2021 Penguin record (533 min) reissues; the decorations only name the series",
+    "target": "the-subtle-knife"
   },
   {
     "decision": "reject",
@@ -24845,6 +24991,15 @@
     "reason": "OBO's listing (B0GR1YP9SK) titles the 1234 min exclusive of all three Treasure Hunt novels Lost Treasure, Der Schatz der heiligen Jungfrau; German Edition is a retailer note",
     "target": "lost-treasure-german-edition",
     "to": "Lost Treasure: Der Schatz der heiligen Jungfrau"
+  },
+  {
+    "decision": "assert",
+    "field": "title",
+    "from": "MacCallister: The Eagles Legacy: Duff MacCallister Western Series, Book 3",
+    "op": "retitle-work",
+    "reason": "MacCallister: The Eagles Legacy is Tantor's umbrella title for the series: its CD edition of Book 3 (9781515939740) is subtitled Dry Gulch Ambush, and the GraphicAudio Book 3 with the same blurb is Dry Gulch Ambush",
+    "target": "maccallister-the-eagles-legacy-duff-maccallister-western-series-book-3",
+    "to": "Dry Gulch Ambush"
   },
   {
     "decision": "assert",
