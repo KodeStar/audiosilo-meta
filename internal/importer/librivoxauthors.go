@@ -502,14 +502,9 @@ func (p *planner) dropUnsluggableLibrivoxCredits(credits []credit) (kept, droppe
 func (p *planner) unsluggableLibrivoxCredits(b sourceBook, work string, dropped []credit) []UnrecordedCredit {
 	out := make([]UnrecordedCredit, 0, len(dropped))
 	for _, c := range dropped {
-		out = append(out, UnrecordedCredit{
-			Project:  b.lv.id,
-			AuthorID: p.librivoxAuthorIDOf(b, c.name, p.resolvePerson(c.name)),
-			Name:     c.name,
-			Roles:    slices.Clone(c.roles),
-			Work:     work,
-			Reason:   librivoxUnsluggable,
-		})
+		u := p.unrecordedOf(b, "", c, p.resolvePerson(c.name), work)
+		u.Reason = librivoxUnsluggable
+		out = append(out, u)
 	}
 	return out
 }

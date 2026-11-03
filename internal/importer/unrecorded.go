@@ -13,25 +13,25 @@ import (
 // other row by its ASIN.
 type UnrecordedCredit struct {
 	// Project is the LibriVox project id, 0 for every other source.
-	Project int `json:"librivox_id,omitempty"`
+	Project int
 	// ASIN is the row's ASIN for every source but LibriVox ("" when the row
 	// carries none).
-	ASIN string `json:"asin,omitempty"`
+	ASIN string
 	// AuthorID is the person's librivox_author_id, 0 when the row states none
 	// (always, outside LibriVox).
-	AuthorID int      `json:"librivox_author_id,omitempty"`
-	Name     string   `json:"name"`
-	Roles    []string `json:"roles,omitempty"`
+	AuthorID int
+	Name     string
+	Roles    []string
 	// Work is the work the row's recording landed on.
-	Work string `json:"work"`
+	Work string
 	// PersonExists says the person record exists (the catalogue or the run
 	// already held it); false means the run withheld it rather than mint an
 	// orphan.
-	PersonExists bool `json:"person_exists"`
+	PersonExists bool
 	// Reason is "unsluggable" for a LibriVox name that slugs to nothing, which
 	// no record can hold (librivoxauthors.go rule 2); "" for a credit the
 	// attached work does not name.
-	Reason string `json:"reason,omitempty"`
+	Reason string
 }
 
 // String is the credit as the import report prints it, one line, led by the
@@ -89,18 +89,25 @@ func (p *planner) attachRowAuthors(b sourceBook, asin string, ws *workState, cre
 	for _, c := range credits {
 		r := p.resolvePerson(c.name)
 		if ws.names(r.slug) || (runCreated && len(c.roles) > 0 && !r.fellBack) {
-			p.getOrCreatePerson(c.name, warn)
+			p.applyPerson(c.name, r, warn)
 			continue
 		}
-		u := UnrecordedCredit{Name: c.name, Roles: slices.Clone(c.roles), Work: ws.slug}
-		if b.lv != nil {
-			u.Project, u.AuthorID = b.lv.id, p.librivoxAuthorIDOf(b, c.name, r)
-		} else {
-			u.ASIN = asin
-		}
-		out = append(out, u)
+		out = append(out, p.unrecordedOf(b, asin, c, r, ws.slug))
 	}
 	return out
+}
+
+// unrecordedOf is the report entry for credit c (r its resolution) of row b,
+// which landed on work: keyed by the LibriVox project id, with the credit's
+// librivox_author_id, or for any other source by the row's asin.
+func (p *planner) unrecordedOf(b sourceBook, asin string, c credit, r personResolution, work string) UnrecordedCredit {
+	u := UnrecordedCredit{Name: c.name, Roles: slices.Clone(c.roles), Work: work}
+	if b.lv != nil {
+		u.Project, u.AuthorID = b.lv.id, p.librivoxAuthorIDOf(b, c.name, r)
+	} else {
+		u.ASIN = asin
+	}
+	return u
 }
 
 // settleUnrecordedCredits sets each unrecorded credit's PersonExists from the

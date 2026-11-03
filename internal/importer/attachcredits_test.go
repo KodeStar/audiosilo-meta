@@ -35,21 +35,40 @@ var attachSources = []attachSource{
 			`"LengthInMinutes":100,"ContentType":"Product","Language":"English"}`
 	}},
 	{"libex", RunLibex, func(asin string) string {
-		return `{"asin":"` + asin + `","title":"Metamorphosis","region":"us","language":"english",` +
-			`"bookFormat":"unabridged","releaseDate":"2024-05-01T00:00:00Z","lengthMinutes":100,` +
-			`"authors":[{"name":"Franz Kafka"},{"name":"Ian Johnston - Translator"}],` +
-			`"narrators":[{"name":"Bea Reader"}]}`
+		return libexRow{asin: asin, title: "Metamorphosis", minutes: 100,
+			authors:   `{"name":"Franz Kafka"},{"name":"Ian Johnston - Translator"}`,
+			narrators: `{"name":"Bea Reader"}`}.render()
 	}},
 }
 
-func runSourceInto(t *testing.T, src attachSource, dataDir string, rows ...string) Summary {
+// runInto runs an import entrypoint (Run, RunLibation, RunLibex) in create
+// mode against an existing, possibly seeded, data dir - runWith always starts
+// from an empty tree.
+func runInto(t *testing.T, run func(string, Options) (Summary, error), dataDir, export string) Summary {
 	t.Helper()
-	export := "[" + strings.Join(rows, ",") + "]"
-	sum, err := src.run(writeBooks(t, export), Options{DataDir: dataDir, ImportDate: testImportDate})
+	sum, err := run(writeBooks(t, export), Options{DataDir: dataDir, ImportDate: testImportDate})
 	if err != nil {
-		t.Fatalf("%s import: %v", src.name, err)
+		t.Fatalf("import run: %v", err)
 	}
 	return sum
+}
+
+// runSourceInto imports rows (src's spelling) into dataDir.
+func runSourceInto(t *testing.T, src attachSource, dataDir string, rows ...string) Summary {
+	t.Helper()
+	return runInto(t, src.run, dataDir, "["+strings.Join(rows, ",")+"]")
+}
+
+// requireTranslatorWithheld asserts the attach made no record for the
+// uncredited translator ian-johnston and left the tree with no orphan person.
+func requireTranslatorWithheld(t *testing.T, dataDir string) {
+	t.Helper()
+	if entryExists(t, dataDir, personAddr("ian-johnston")) {
+		t.Error("the uncredited translator was created")
+	}
+	if got := orphanPeople(t, dataDir); len(got) != 0 {
+		t.Errorf("orphans: %v", got)
+	}
 }
 
 func TestAttachCreatesNoUncreditedTranslator(t *testing.T) {
@@ -62,9 +81,7 @@ func TestAttachCreatesNoUncreditedTranslator(t *testing.T) {
 				t.Fatalf("works/recordings/people = %d/%d/%d, want 0/1/1 (the narrator only)\nwarnings: %v",
 					sum.NewWorks, sum.NewRecordings, sum.NewPeople, sum.Warnings)
 			}
-			if entryExists(t, dataDir, personAddr("ian-johnston")) {
-				t.Error("the uncredited translator was created")
-			}
+			requireTranslatorWithheld(t, dataDir)
 			want := []UnrecordedCredit{{ASIN: "B0ORPHAN01", Name: "Ian Johnston",
 				Roles: []string{model.RoleTranslator}, Work: "metamorphosis"}}
 			if !reflect.DeepEqual(sum.UnrecordedCredits, want) {
@@ -73,9 +90,6 @@ func TestAttachCreatesNoUncreditedTranslator(t *testing.T) {
 			if got, want := sum.UnrecordedCredits[0].String(),
 				`B0ORPHAN01 "Ian Johnston" (translator) -> metamorphosis, person not created`; got != want {
 				t.Errorf("line = %q, want %q", got, want)
-			}
-			if got := orphanPeople(t, dataDir); len(got) != 0 {
-				t.Errorf("orphans: %v", got)
 			}
 		})
 	}
@@ -88,13 +102,14 @@ func TestAttachKeepsACreditedTranslator(t *testing.T) {
 	for _, src := range attachSources {
 		t.Run(src.name, func(t *testing.T) {
 			dataDir := t.TempDir()
+			seedKafka(t, dataDir, "franz-kafka", "Franz Kafka")
 			seedTree(t, dataDir, map[string]string{
-				personAddr("franz-kafka"):  testpack.PersonJSON(t, "franz-kafka", "Franz Kafka"),
 				personAddr("ian-johnston"): testpack.PersonJSON(t, "ian-johnston", "Ian Johnston"),
-				personAddr("someone-else"): testpack.PersonJSON(t, "someone-else", "Someone Else"),
-				workAddr("metamorphosis"): testpack.WithFields(t,
-					testpack.WorkJSON(t, "metamorphosis", "Metamorphosis", testpack.WithAuthors("franz-kafka", "ian-johnston")),
-					map[string]any{"credits": []model.Credit{{Person: "ian-johnston", Role: model.RoleTranslator}}}),
+				workAddr("metamorphosis"): testpack.WithField(t,
+					testpack.WorkJSON(t, "metamorphosis", "Metamorphosis", testpack.WithAuthors("franz-kafka")),
+					"credits", []model.Credit{{Person: "ian-johnston", Role: model.RoleTranslator}}),
+				// The override replaces the whole work entry, so its recording is
+				// seeded again (an orphan narrator otherwise).
 				recAddr("metamorphosis", "se"): testpack.RecJSON(t, "se", "metamorphosis", testpack.WithNarrators("someone-else")),
 			})
 			sum := runSourceInto(t, src, dataDir, src.row("B0ORPHAN02"))

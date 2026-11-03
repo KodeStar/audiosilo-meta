@@ -44,14 +44,9 @@ func TestLibrivoxAttachCreatesNoUncreditedTranslator(t *testing.T) {
 		t.Fatalf("works/recordings/people = %d/%d/%d, want 0/1/1 (the reader only)\nwarnings: %v",
 			sum.NewWorks, sum.NewRecordings, sum.NewPeople, sum.Warnings)
 	}
-	if entryExists(t, dataDir, personAddr("ian-johnston")) {
-		t.Error("the uncredited translator was created")
-	}
+	requireTranslatorWithheld(t, dataDir)
 	if want := []UnrecordedCredit{ianJohnston("metamorphosis", false)}; !reflect.DeepEqual(sum.UnrecordedCredits, want) {
 		t.Errorf("unrecorded = %+v, want %+v", sum.UnrecordedCredits, want)
-	}
-	if got := orphanPeople(t, dataDir); len(got) != 0 {
-		t.Errorf("orphans: %v", got)
 	}
 }
 

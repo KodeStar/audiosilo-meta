@@ -1513,30 +1513,15 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		return
 	}
 
-	// The row's author slugs, split into the list the record stores and the
-	// subset work identity is matched on (workidentity.go).
-	//
-	// Every row decides its work FIRST, on the read-only author set (the same
-	// slugs the create path mints), because an attach to a work the walk found
-	// records none of the row's credits the work does not already name: a
-	// translator it does not name would otherwise be created and credited
-	// nowhere, an orphan person (meta#2760). A row that creates its work then
-	// mints them with rowWorkAuthors; one that attaches creates only the people
-	// the work credits and reports the rest (attachRowAuthors).
-	authors := p.rowWorkAuthorsRO(authorCredits)
+	// The work is decided on the row's READ-ONLY author set (the same slugs the
+	// create path mints, workidentity.go): its people are created only by
+	// getOrCreateWork, once the work is decided (meta#2760).
 	var walk workWalk
 	if route.walk != nil {
 		walk = *route.walk
 	} else {
-		walk = p.resolveWork(workTitle, b.str("title"), b.qualifiedTitle, posSuffix, authors, lang, claim)
+		walk = p.resolveWork(workTitle, b.str("title"), b.qualifiedTitle, posSuffix, p.rowWorkAuthorsRO(authorCredits), lang, claim)
 	}
-	var unrecorded []UnrecordedCredit
-	if walk.ws == nil {
-		authors = p.rowWorkAuthors(authorCredits, warn)
-	} else {
-		unrecorded = p.attachRowAuthors(b, asin, walk.ws, authorCredits, warn)
-	}
-	narratorSlugs := p.rowNarratorSlugs(b, narratorNames, warn)
 
 	// The book's genre claims are mapped from the source's own strings onto this
 	// project's vocabulary (LICENSING.md: never a retailer's taxonomy verbatim)
@@ -1549,7 +1534,8 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// raw for the same reason too - resolving them is wasted work on every row
 	// that merges.
 	facts := &workFacts{genres: b.genres, credits: authorCredits}
-	ws := p.getOrCreateWork(walk, authors, lang, facts, warn)
+	ws, unrecorded := p.getOrCreateWork(walk, b, asin, lang, facts, warn)
+	narratorSlugs := p.rowNarratorSlugs(b, narratorNames, warn)
 	// The title the row was RESOLVED by - its own, or its full title when the
 	// work was found or created on the full title's chain - is the one the
 	// recording's serial guard and the series placement read a stated volume
@@ -1566,10 +1552,9 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	}
 	p.addRecording(ws, b, resolvedTitle, asin, lang, narratorSlugs, warn)
 	if p.landedRec != "" {
+		// unsluggable is only ever set for a LibriVox row.
 		p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, unrecorded...)
-		if b.lv != nil {
-			p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, p.unsluggableLibrivoxCredits(b, ws.slug, unsluggable)...)
-		}
+		p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, p.unsluggableLibrivoxCredits(b, ws.slug, unsluggable)...)
 	}
 	// A row of this run landing on a work the run created adds what it states
 	// (credits, genres - the recording vote reads the recording it landed on);
@@ -2095,7 +2080,14 @@ func dedupeSlugs(names []string, resolve func(i int, name string) string) []stri
 // Otherwise the surviving name would be whichever row arrived first, which is
 // the order dependence the pre-pass exists to remove.
 func (p *planner) getOrCreatePerson(name string, warn func(string, ...any)) string {
-	r := p.resolvePerson(name)
+	return p.applyPerson(name, p.resolvePerson(name), warn)
+}
+
+// applyPerson acts on resolvePerson's answer r for name: it creates the record
+// r names, or notes the tombstone r rode, and returns the slug. r must be FRESH
+// (resolved with nothing created since), which is what lets a caller that has
+// already asked resolvePerson skip asking again.
+func (p *planner) applyPerson(name string, r personResolution, warn func(string, ...any)) string {
 	if r.fellBack {
 		warn("name %q produced an empty slug; using %q", name, r.slug)
 	}
@@ -2359,14 +2351,30 @@ func (f *workFacts) workCredits(p *planner) []model.Credit {
 // chain. facts are the creation-only facts (genres, credits); they are stored only
 // on the branch that creates a work, which is the only place they can be stored.
 // WHICH work a row belongs to, and why, is resolveWork's to say.
-func (p *planner) getOrCreateWork(walk workWalk, authors workAuthors, lang string, facts *workFacts, warn func(string, ...any)) *workState {
+//
+// It is also the ONE place a row's author-side people are created, which is why
+// the caller hands it the row's raw credits (facts.credits) and never a resolved
+// author set: a row creating its work mints every author (rowWorkAuthors), and
+// a row merging into the work the walk found creates only the people that work
+// credits, returning the rest as unrecorded credits (attachRowAuthors). A person
+// created before the decision would be an orphan whenever the row merges into a
+// work that does not name them (meta#2760). asin keys those credits for a
+// non-LibriVox row.
+func (p *planner) getOrCreateWork(walk workWalk, b sourceBook, asin, lang string, facts *workFacts, warn func(string, ...any)) (*workState, []UnrecordedCredit) {
+	var authors workAuthors
+	var unrecorded []UnrecordedCredit
+	if walk.ws != nil {
+		unrecorded = p.attachRowAuthors(b, asin, walk.ws, facts.credits, warn)
+	} else {
+		authors = p.rowWorkAuthors(facts.credits, warn)
+	}
 	ws := p.mergeOrCreate(walk, authors, lang, facts, warn)
 	// Said after the decision so it names the slug the row actually landed on,
 	// not the fallback base the chain composed for the unslugifiable title.
 	if ws != nil && walk.untitled != "" {
 		warn("title %q produced an empty slug; using %q", walk.untitled, ws.slug)
 	}
-	return ws
+	return ws, unrecorded
 }
 
 func (p *planner) mergeOrCreate(walk workWalk, authors workAuthors, lang string, facts *workFacts, warn func(string, ...any)) *workState {

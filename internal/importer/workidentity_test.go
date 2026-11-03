@@ -11,13 +11,7 @@ import (
 // row meets a work the catalogue already holds.
 func runLibexInto(t *testing.T, dataDir, exportJSON string) Summary {
 	t.Helper()
-	sum, err := RunLibex(writeBooks(t, exportJSON), Options{
-		DataDir: dataDir, ImportDate: testImportDate,
-	})
-	if err != nil {
-		t.Fatalf("libex create run: %v", err)
-	}
-	return sum
+	return runInto(t, RunLibex, dataDir, exportJSON)
 }
 
 // libexRow renders one libex NDJSON row from the fields these tests vary.
