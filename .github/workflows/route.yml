@@ -19,7 +19,6 @@ jobs:
     permissions:
       contents: read
       issues: write
-      pull-requests: read
     # Local path: the same commit as this file, so a change to the routing
     # reaches this repository as it merges.
     uses: ./.github/workflows/route-reusable.yml

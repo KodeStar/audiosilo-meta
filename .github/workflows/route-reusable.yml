@@ -34,12 +34,16 @@ name: route (reusable)
 # A RE-RUN is a no-op once the issue is decided. The payload is the issue as
 # opened, so the job-level `if` cannot tell; the first step therefore reads the
 # issue as it is NOW and skips when it carries a `data:` label (the routing
-# label this workflow applied, or an outcome intake applied), `intake:held`, a
-# comment the workflow token posted ending "_Posted by the intake bot._" (a
-# hold or an intake verdict), or an intake pull request (branch
-# `intake/issue-<n>`). Without it, re-running a route run labelled and called
-# intake again for the same issue. Re-running only a FAILED intake job is not
-# covered (it reuses this job's outputs): that is a deliberate retry.
+# label this workflow applied, a maintainer's, or an outcome intake applied),
+# `intake:held`, or a comment the workflow token posted ending "_Posted by the
+# intake bot._" (a hold or an intake verdict). An intake pull request needs no
+# check of its own: one exists only once the routing label was applied.
+# Without the guard, re-running a route run labelled and called intake again for
+# the same issue. The trade-off: re-running a run that HELD an issue on a
+# transient failure (an API read, a label that could not be applied) is now a
+# no-op too, not a retry - the hold comment is there, so a maintainer routes it
+# by applying the routing label by hand. Re-running only a FAILED intake job is
+# not covered (it reuses this job's outputs): that is a deliberate retry.
 #
 # Abuse bounds (held, not refused - a maintainer decides): a submitter is held
 # with the `intake:held` label and a comment when their GitHub account is younger
@@ -105,8 +109,6 @@ jobs:
     permissions:
       contents: read
       issues: write
-      # The intake pull-request lookup of the re-run guard.
-      pull-requests: read
     outputs:
       # The apply step has the last word: a label it could not apply holds.
       decision: ${{ steps.apply.outputs.decision || steps.classify.outputs.decision }}
@@ -136,23 +138,29 @@ jobs:
 
           # The caller's configuration first, so a malformed one is a red run
           # on the first App-filed issue rather than a silent "never routes".
+          # The whole list is validated even after the title matched. A label
+          # is any data:<template>: intake routes the template through
+          # issueform.TemplateFromLabels's allowlist, so a non-template (an
+          # outcome label, say) composes as an invalid verdict, never as data -
+          # no third copy of intake.yml's outcome-label list is kept here.
           if ! [[ "$CAP" =~ ^[0-9]+$ ]] || [ "$CAP" -lt 1 ]; then
             echo "::error::the cap input must be a positive integer, got '${CAP}'"
             exit 1
           fi
-          tags=()
-          labels=()
-          while read -r tag label rest; do
+          routes=0
+          label=""
+          while read -r tag lbl rest; do
             case "$tag" in ""|"#"*) continue ;; esac
-            if ! [[ "$tag" =~ ^[a-z][a-z-]*$ ]] || ! [[ "$label" =~ ^data:[a-z][a-z-]*$ ]] || [ -n "$rest" ] \
-                || [ "$label" = "data:invalid" ] || [ "$label" = "data:needs-human" ] || [ "$label" = "data:duplicate" ]; then
-              echo "::error::malformed routes line: '${tag} ${label} ${rest}' (want '<tag> data:<template>')"
+            if ! [[ "$tag" =~ ^[a-z][a-z-]*$ ]] || ! [[ "$lbl" =~ ^data:[a-z][a-z-]*$ ]] || [ -n "$rest" ]; then
+              echo "::error::malformed routes line: '${tag} ${lbl} ${rest}' (want '<tag> data:<template>')"
               exit 1
             fi
-            tags+=("$tag")
-            labels+=("$label")
+            routes=$((routes + 1))
+            if [ -z "$label" ]; then
+              case "$TITLE" in "[${tag}] "*) label="$lbl" ;; esac
+            fi
           done <<< "$ROUTES"
-          if [ "${#tags[@]}" -eq 0 ]; then
+          if [ "$routes" -eq 0 ]; then
             echo "::error::the routes input lists no route"
             exit 1
           fi
@@ -162,45 +170,25 @@ jobs:
             out decision skip
             exit 0
           fi
-
-          # The re-run guard (see the header): the issue as it is NOW. Any
-          # read failure holds, as the other reads below do - it must not be
-          # taken as "nothing decided yet".
-          if ! current="$(gh api "repos/${GITHUB_REPOSITORY}/issues/${ISSUE}" \
-              --jq '[.labels[].name | select(startswith("data:") or . == "intake:held")] | join(",")')"; then
-            held "the issue's current labels could not be read"
-          fi
-          if [ -n "$current" ]; then
-            echo "already routed or decided (${current}); nothing to do"
-            out decision skip
-            exit 0
-          fi
-          if ! posted="$(gh api --paginate "repos/${GITHUB_REPOSITORY}/issues/${ISSUE}/comments?per_page=100" \
-              | jq -s '[.[][] | select(.user.login == "github-actions[bot]" and ((.body // "") | contains("_Posted by the intake bot._")))] | length')"; then
-            held "the issue's comments could not be read"
-          fi
-          if [ "$posted" -gt 0 ]; then
-            echo "the intake bot already commented on this issue; nothing to do"
-            out decision skip
-            exit 0
-          fi
-          if ! prs="$(gh api "repos/${GITHUB_REPOSITORY}/pulls?state=all&head=${GITHUB_REPOSITORY_OWNER}:intake/issue-${ISSUE}" --jq length)"; then
-            held "the issue's intake pull request could not be looked up"
-          fi
-          if [ "$prs" -gt 0 ]; then
-            echo "an intake pull request already exists for this issue; nothing to do"
-            out decision skip
-            exit 0
-          fi
-
-          label=""
-          for i in "${!tags[@]}"; do
-            case "$TITLE" in
-              "[${tags[$i]}] "*) label="${labels[$i]}"; break ;;
-            esac
-          done
           if [ -z "$label" ]; then
             echo "no routing prefix on the title; left for a maintainer"
+            out decision skip
+            exit 0
+          fi
+
+          # The re-run guard (see the header): the issue as it is NOW, labels
+          # and comments in one read. On the GraphQL path gh reads, the workflow
+          # token's author is `github-actions` (no [bot] suffix). A read failure
+          # holds, as the other reads below do - it must not be taken as
+          # "nothing decided yet".
+          if ! decided="$(gh issue view "$ISSUE" --repo "$GITHUB_REPOSITORY" --json labels,comments --jq '
+              ([.labels[].name | select(startswith("data:") or . == "intake:held")]
+               + [.comments[] | select(.author.login == "github-actions" and ((.body // "") | contains("_Posted by the intake bot._"))) | "an intake-bot comment"])
+              | unique | join(", ")')"; then
+            held "the issue's current state could not be read"
+          fi
+          if [ -n "$decided" ]; then
+            echo "already routed or decided (${decided}); nothing to do"
             out decision skip
             exit 0
           fi

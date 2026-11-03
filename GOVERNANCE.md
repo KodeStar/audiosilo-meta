@@ -128,8 +128,8 @@ Two automations sit in front of the human review step. Neither bypasses it.
   workflow in the same run. The routing rules below are one reusable workflow,
   `route-reusable.yml`, shared with the community repository (which calls it at
   a pinned commit with its own two prefixes and cap), so the two cannot drift.
-  Re-running a route run does nothing once the issue is routed, held or
-  answered by the intake bot. The App id only says which tool filed the issue -
+  Re-running a route run does nothing once the issue is decided (the conditions
+  are in that workflow's header). The App id only says which tool filed the issue -
   anyone can sign in to a public App - so it is a routing hint, never trust: the
   body is validated like any form and the merge policy below is unchanged. The
   abuse bounds hold an issue (`intake:held` plus a comment) instead of routing
