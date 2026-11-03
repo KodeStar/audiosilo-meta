@@ -267,8 +267,8 @@ func TestDataPeopleSlugsAreTransliterated(t *testing.T) {
 // A LibriVox non-Latin title (rule 4, librivoxmatch.go) is off-chain by design:
 // it never walks a chain and a LibriVox row reaches it by its own-script title
 // key, so a migration cannot have moved it and it is skipped (atLibrivoxAddress).
-// That another importer's row composes no slug reaching it predates the
-// migrations and is outside this test.
+// That another importer's row composes no slug reaching it is rule 4's own
+// design, not a migration's doing, and is outside this test.
 //
 // The SERIES arm asks the importer's real reach question, not the chain alone:
 // a series off its name's chain is current when SeriesAuthorIndex.Resolve over
@@ -362,10 +362,47 @@ func TestDataWorkAndSeriesSlugsAreCurrent(t *testing.T) {
 // records the project that CREATED the work, which is the one its slug names.
 func atLibrivoxAddress(key string, entry map[string]any) bool {
 	atOwnProject := slices.ContainsFunc(rawSources(entry), func(s model.Source) bool {
+		if s.Type != sourceLibrivox {
+			return false
+		}
 		id, err := strconv.Atoi(s.Ref)
-		return s.Type == sourceLibrivox && err == nil && librivoxWorkSlug(id) == key
+		return err == nil && librivoxWorkSlug(id) == key
 	})
 	return atOwnProject && librivoxNonLatinTitle(str(entry, "title"))
+}
+
+// TestAtLibrivoxAddress pins both halves of the rule-4 skip on fixtures. The
+// real-data test exercises it on one record only, and a predicate that skipped
+// every in-scope work would let that test pass without checking anything.
+func TestAtLibrivoxAddress(t *testing.T) {
+	src := func(typ, ref string) any { return map[string]any{"type": typ, "ref": ref} }
+	entry := func(title string, sources ...any) map[string]any {
+		return map[string]any{"title": title, "sources": sources}
+	}
+	const greek = "Ο γάμος της Λίτσας (Litsa's Marriage)"
+	for _, tc := range []struct {
+		name, key string
+		entry     map[string]any
+		want      bool
+	}{
+		{"non-Latin title at its own project's address", "librivox-15132",
+			entry(greek, src(sourceLibrivox, "15132")), true},
+		{"a later project stamped beside the creating one", "librivox-15132",
+			entry(greek, src(sourceLibrivox, "20000"), src(sourceLibrivox, "15132")), true},
+		{"Latin title at the address", "librivox-15132",
+			entry("Litsa's Marriage", src(sourceLibrivox, "15132")), false},
+		{"another project's address", "librivox-15133",
+			entry(greek, src(sourceLibrivox, "15132")), false},
+		{"the ref under another source type", "librivox-15132",
+			entry(greek, src(sourceLibex, "15132")), false},
+		{"a chain slug", "litsas-marriage",
+			entry(greek, src(sourceLibrivox, "15132")), false},
+		{"no sources", "librivox-15132", entry(greek), false},
+	} {
+		if got := atLibrivoxAddress(tc.key, tc.entry); got != tc.want {
+			t.Errorf("%s: atLibrivoxAddress(%q) = %v, want %v", tc.name, tc.key, got, tc.want)
+		}
+	}
 }
 
 // slugCatalogue is the loaded catalogue the series arm resolves against: the
