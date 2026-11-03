@@ -281,10 +281,10 @@ func TestNoRateLimitWhenOff(t *testing.T) {
 //
 // The numbers are COPIES of audiosilo-server's, which this repository cannot
 // import, so a change there is not caught here - re-derive them when it moves:
-// workers is internal/matchrun/runner.go's `workers` (2, and `bulkCandidates`,
-// the works expanded per book, 2); perBook's fan-out is bounded by
-// internal/meta/service.go's `maxConcurrentWorkFetches` (4), and the Series
-// page's lookups by its `maxConcurrentLookups` (4). CROSS-REPO.md records the
+// workers is internal/matchrun/runner.go's `workers` (2); perBook is one
+// works/match, its `bulkCandidates` (2) work reads and their series facts, the
+// reads sharing internal/meta/service.go's `maxConcurrentWorkFetches` (4)
+// bound; the Series page's lookups are bounded by its `maxConcurrentLookups` (4). CROSS-REPO.md records the
 // coupling from the server's side.
 func TestDefaultsHoldAnAudioSiloBulkMatch(t *testing.T) {
 	clock := &fakeClock{t: time.Date(2026, 10, 27, 12, 0, 0, 0, time.UTC)}
@@ -384,7 +384,11 @@ func TestComposeTrustsOnlyTheProxyNetwork(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	gateway := netip.MustParsePrefix(subnet[1]).Addr().Next()
+	pinned, err := netip.ParsePrefix(subnet[1])
+	if err != nil {
+		t.Fatalf("pinned subnet default %q: %v", subnet[1], err)
+	}
+	gateway := pinned.Masked().Addr().Next()
 	l := newRateLimiter(1, 1, proxies, nil)
 	for _, tc := range []struct {
 		addr    netip.Addr

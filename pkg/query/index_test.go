@@ -354,7 +354,10 @@ func TestGuidePresenceProbesAreIndexed(t *testing.T) {
 // co-routine SCAN; the step this pins is the join back to works, which must
 // never read the table without an index. Every filter shape goes through
 // exactTitleQuery, and a source-filtered one must also reach recording_sources
-// through its index (the correlated workHasSourceArm, one probe per row).
+// through its index (the correlated workHasSourceArm, one probe per row). The
+// plan names that table by its alias, rs, so the probe is pinned as an
+// equality SEARCH on both leading columns: a SCAN of rs, even one walking the
+// index, would read the source's whole range per matched title.
 func TestExactTitleWorksJoinIsIndexed(t *testing.T) {
 	snap := openTestDB(t, artifacttest.Build(t, artifacttest.Fixture()))
 	for _, tc := range []struct {
@@ -370,11 +373,11 @@ func TestExactTitleWorksJoinIsIndexed(t *testing.T) {
 			query, args := exactTitleQuery("spare", tc.lang, tc.src)
 			plan := queryPlan(t, snap, query, args...)
 			joined := strings.Join(plan, " | ")
-			if strings.Contains(joined, "SCAN recording_sources") {
-				t.Errorf("recording_sources read without its index: %s", joined)
+			if strings.Contains(joined, "SCAN rs") {
+				t.Errorf("recording_sources scanned rather than probed: %s", joined)
 			}
-			if tc.src != "" && !strings.Contains(joined, "idx_recording_sources_type") {
-				t.Errorf("source arm does not reach idx_recording_sources_type: %s", joined)
+			if tc.src != "" && !strings.Contains(joined, "idx_recording_sources_type (type=? AND work_id=?)") {
+				t.Errorf("source arm is not one idx_recording_sources_type probe per row: %s", joined)
 			}
 			for _, step := range plan {
 				if strings.HasPrefix(step, "SEARCH w ") && strings.Contains(step, "USING") && strings.Contains(step, "INDEX") {

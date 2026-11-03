@@ -100,7 +100,8 @@ const (
 const latestSeriesCap = 2
 
 // latestWorks returns up to limit work cards ordered by added_at DESC (NULLS
-// LAST), then title (under a source filter, the source recordings' added_at), with at most latestSeriesCap works from any one series
+// LAST; under a source filter, the source's recordings' added_at), then title,
+// with at most latestSeriesCap works from any one series
 // (keyed by the work's first series membership, the one the card carries).
 // The key is that membership's ordering FAMILY - its ordering_of where it is a
 // variant, else its own id (model.Series.OrderingPrimary) - so two reading
@@ -122,8 +123,8 @@ const latestSeriesCap = 2
 // so the cap and the page are taken over those alone (latestCandidatesQuery).
 //
 // src narrows it to the works a source filter admits ("" for none), ordered by
-// their newest recording from that source (latestSourceHeadSQL); an artifact with no
-// recording_sources table answers a filtered request with no works.
+// their newest recording from that source (latestSourceHeadSQL); an artifact
+// with no recording_sources table answers a filtered request with no works.
 func (s *DB) latestWorks(limit int, lang langFilter, src string) ([]*WorkCard, error) {
 	if src != "" && !s.hasLibrivoxLayer() {
 		return []*WorkCard{}, nil

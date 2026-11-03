@@ -657,6 +657,12 @@ func TestLatestBySourceOrdersBySourceRecordings(t *testing.T) {
 			work("undated", "Undated", "2026-09-01", rec("lv-undated", "undated", "", []model.Source{{Type: model.SourceLibrivox}})),
 			// A newer retail-only work: in the unfiltered list, never the filtered.
 			work("retail-only", "Retail Only", "2026-10-15", rec("retail-new", "retail-only", "2026-10-15", user)),
+			// An older LibriVox reading beside the newest recording in the
+			// catalogue, a retail one: the filtered list dates it by the LibriVox
+			// reading alone, so it sorts last there rather than first.
+			work("lv-then-retail", "LibriVox Then Retail", "2026-06-01",
+				rec("lv-aug", "lv-then-retail", "2026-08-01", lv),
+				rec("retail-latest", "lv-then-retail", "2026-11-02", user)),
 		},
 	}
 	_, ts := serveDB(t, artifacttest.Build(t, cat), HandlerOptions{})
@@ -665,9 +671,9 @@ func TestLatestBySourceOrdersBySourceRecordings(t *testing.T) {
 		path string
 		want []string
 	}{
-		{"/api/v1/works/latest?source=librivox", []string{"classic", "lv-only", "undated"}},
-		{"/api/v1/works/latest?source=librivox&lang=en", []string{"classic", "lv-only", "undated"}},
-		{"/api/v1/works/latest", []string{"retail-only", "lv-only", "undated", "classic"}},
+		{"/api/v1/works/latest?source=librivox", []string{"classic", "lv-only", "undated", "lv-then-retail"}},
+		{"/api/v1/works/latest?source=librivox&lang=en", []string{"classic", "lv-only", "undated", "lv-then-retail"}},
+		{"/api/v1/works/latest", []string{"retail-only", "lv-only", "undated", "lv-then-retail", "classic"}},
 	} {
 		code, body := artifacttest.GetJSON(t, ts.URL, tc.path)
 		if code != http.StatusOK {

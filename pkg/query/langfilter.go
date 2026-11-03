@@ -214,7 +214,7 @@ func worksAdmittedSQL(ph, pred string) string {
 // work by idCol (works.id in worksAdmitted, search_fts.id in the exact-title
 // window): one probe of idx_recording_sources_type per row, where
 // worksWithSourceArm, which drives a list, reads the source's whole range up
-// front - about 25k ids for librivox, and most of the catalogue for a source
+// front - about 21k rows for librivox, and most of the catalogue for a source
 // like libex-import.
 func workHasSourceArm(idCol string) string {
 	return `EXISTS (SELECT 1 FROM recording_sources rs WHERE rs.type = ? AND rs.work_id = ` + idCol + `)`
