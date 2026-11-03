@@ -399,11 +399,14 @@ IS - never a live id - not what it was), and metaserve answers it with a harmles
 301. A serial volume at `<title>-book-<n>` gets none (its position probes reach
 it; an alias would pull every claim-free row into that one volume). The real-data
 `TestDataWorkAndSeriesSlugsAreCurrent` counts a chain candidate tombstoned onto
-the record as on the chain, which is the importer's own reach. Only metarepair
-records aliases today: an intake correct-data TITLE correction does not (no
-intake path writes the tombstone table), so one that leaves an apostrophe or
-transliterated title off its chain turns that real-data test red until a
-maintainer adds the alias.
+the record as on the chain, which is the importer's own reach. An intake TITLE
+correction (correct-data and the correction batch) records the same alias through
+the same `importer.WorkTitleAlias` (`internal/issueform`'s `aliasRetitle`), and the
+bot's pull request carries `data/redirects.json` beside the work's pack. The table
+has no merge driver, so an open intake retitle whose alias line conflicts with a
+table change landed on main meanwhile (another retitle, a repair wave's tombstones)
+stops the rebase sweep on that file for a maintainer (`pack-union-merge.sh` refuses
+it).
 
 **Storage is range-packed** ([PACK-SPEC.md](PACK-SPEC.md), implemented in
 `pkg/pack`): four families of pack files, each `{"entries": {"<slug>": {...}}}`,
