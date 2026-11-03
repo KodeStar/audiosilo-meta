@@ -734,3 +734,22 @@ func TestRowSkipLineIsKeyedByASINOrProject(t *testing.T) {
 		t.Errorf("dropRecorded dropped a project-keyed skip: %+v", kept)
 	}
 }
+
+// A retail row read by the LibriVox reader at the project's runtime is still
+// another production: its ASIN never merges into the LibriVox recording (which
+// would attest the volunteer project over with retail facts), so it lands as a
+// recording of its own and the project's recording is untouched.
+func TestARetailRowNeverMergesIntoALibrivoxRecording(t *testing.T) {
+	dataDir := t.TempDir()
+	runLibrivox(t, librivoxFixture, dataDir, mustLibrivoxIDs("527"))
+	before := string(rawEntity(t, dataDir, recAddr("metamorphosis", "david-barnes")))
+	row := `{"asin":"B0RETAIL01","title":"Metamorphosis","region":"us","language":"english","bookFormat":"unabridged",` +
+		`"lengthMinutes":154,"publisherName":"Retail House","authors":[{"name":"Franz Kafka"}],"narrators":[{"name":"David Barnes"}]}`
+	sum := runLibexWith(t, dataDir, Options{}, row)
+	if sum.MergedASINs != 0 || sum.NewRecordings != 1 {
+		t.Fatalf("merged/new recordings = %d/%d, want the row as a recording of its own\nwarnings: %v", sum.MergedASINs, sum.NewRecordings, sum.Warnings)
+	}
+	if after := string(rawEntity(t, dataDir, recAddr("metamorphosis", "david-barnes"))); after != before {
+		t.Errorf("the LibriVox recording changed:\n%s\nwant:\n%s", after, before)
+	}
+}

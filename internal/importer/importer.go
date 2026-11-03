@@ -121,6 +121,12 @@ type recInfo struct {
 	// narrators, so nothing else in the merge test can tell them apart. Empty is
 	// "unknown", which never blocks - the same posture abridged takes.
 	claims []posClaim
+	// librivox reports that the recording is a LibriVox project (it carries a
+	// librivox_id): a production of its own, so no other row's ASIN is ever
+	// merged into it however alike the readers and runtime look - the rule
+	// rawentry.SameProduction states for metarepair, here on the importer's
+	// side. A LibriVox row never merges into a sibling either (addRecording).
+	librivox bool
 	// abridged is the recording's tri-state abridged flag as far as this run
 	// knows it. For a recording created THIS run it carries the entry's tri-state
 	// (nil = the source did not state it); for a recording loaded from disk it is
@@ -1233,6 +1239,7 @@ func (p *planner) loadExisting() {
 			ri := &recInfo{
 				narrators: ToSet(r.Narrators),
 				asins:     map[string]bool{},
+				librivox:  r.LibrivoxID != 0,
 				known: knownRuntime(r.RuntimeMin, r.ReleaseDate, r.AddedAt, r.Sources,
 					func() int { return chapterMinutes(r.Chapters) }),
 				// abridged stays nil (unknown) for a disk incumbent: the model's
@@ -3056,6 +3063,13 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 		// through to a distinct slug under the same work.
 		prod := resolvedRowProduction(b, narrSet)
 		for _, m := range matches {
+			// A LibriVox project is a production of its own: a retail row read by
+			// the same volunteer at a compatible runtime is still another
+			// production, and merging its ASIN would attest the project over
+			// with retail facts (attestOnMerge).
+			if m.info.librivox {
+				continue
+			}
 			// A sibling recording whose row claimed a DIFFERENT position in a
 			// series this row also claims is a different volume, however alike the
 			// two productions look. Checked before the runtime and abridged guards
@@ -3136,7 +3150,7 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 	rec.AddedAt = p.importDate
 
 	ri := &recInfo{
-		narrators: narrSet, asins: map[string]bool{}, abridged: b.abridged, claims: claims,
+		narrators: narrSet, asins: map[string]bool{}, abridged: b.abridged, claims: claims, librivox: rec.LibrivoxID != 0,
 		known: knownRuntime(rec.RuntimeMin, rec.ReleaseDate, rec.AddedAt, []model.Source{model.Source(p.curSource)},
 			func() int { return chapterMinutes(rec.Chapters) }),
 	}
