@@ -477,12 +477,12 @@ func TestReviewedRejectsBeforeAccepting(t *testing.T) {
 
 func TestReviewedMembershipTombstonesAndSharedDecisions(t *testing.T) {
 	p := Proposal{Op: OpMoveMembership, Target: "work", Series: "source", Field: "position", From: "1", To: "1", Others: []string{"dest"}, Advisory: true}
+	// Only the SERIES are retired: a decision naming a retired WORK is STALE
+	// (TestReviewedDecisionJudgingARetiredWork).
 	old := p
-	old.Target = "old-work"
 	old.Series = "old-source"
 	old.Others = []string{"old-dest"}
 	reds := model.NewRedirects()
-	reds[model.RedirectWorks]["old-work"] = "work"
 	reds[model.RedirectSeries]["old-source"] = "source"
 	reds[model.RedirectSeries]["old-dest"] = "dest"
 	for _, decision := range []string{"accept", "reject"} {
@@ -499,6 +499,82 @@ func TestReviewedMembershipTombstonesAndSharedDecisions(t *testing.T) {
 	tally := applyReviewed(rep, []reviewedDecision{review(old, "accept"), review(p, "reject")}, reds, nil)
 	if tally.Outcomes()[0].Status != "refused" || !rep.classes[0].rows[0].Propose.Advisory {
 		t.Fatalf("opposite decisions: %+v", tally)
+	}
+}
+
+// An accept of an op judging one work's own record, naming a work since retired, is
+// STALE and leaves the survivor's own advisory proposal advisory (retiredSubject); a
+// rejection of it still resolves and withholds. A merge, an added membership and an
+// added link state a fact of the book, so an accept of one naming a retired target
+// still resolves; so does a recording-level fill-field, whose target is a recording id
+// no tombstone resolves even where it spells a retired work slug.
+func TestReviewedDecisionJudgingARetiredWork(t *testing.T) {
+	reds := model.NewRedirects()
+	reds[model.RedirectWorks]["old-work"] = "work"
+	for _, p := range []Proposal{
+		{Op: OpMoveMembership, Target: "work", Series: "source", Field: "position", From: "1", To: "1", Others: []string{"dest"}},
+		{Op: OpRestatePosition, Target: "work", Series: "source", Field: "position", From: "1.0", To: "1"},
+		{Op: OpDropMembership, Target: "work", Series: "source", Field: "position", From: "1", Others: []string{"home"}},
+		{Op: OpRetitle, Target: "work", Field: "title", From: "Work (Unabridged)", To: "Work"},
+		{Op: OpSetWorkLanguage, Target: "work", Field: "language", From: "en", To: "de"},
+		{Op: OpFillField, Target: "work", Field: "language", To: "de"},
+	} {
+		t.Run(p.Op, func(t *testing.T) {
+			p.Advisory = true
+			old := p
+			old.Target = "old-work"
+			rep := proposalReport(p)
+			tally := applyReviewed(rep, []reviewedDecision{review(old, "accept")}, reds, nil)
+			if o := tally.All; len(o) != 1 || o[0].Status != statusStale ||
+				o[0].Why != "old-work was retired onto work since: the work it names is gone, and a review of it never applies to its survivor" {
+				t.Fatalf("tally = %+v, want the accept STALE", tally)
+			}
+			if !rep.classes[0].rows[0].Propose.Advisory {
+				t.Fatalf("the survivor's proposal was promoted: %+v", rep.classes[0].rows[0].Propose)
+			}
+			p.Advisory = false
+			rep = proposalReport(p)
+			if tally := applyReviewed(rep, []reviewedDecision{review(old, "reject")}, reds, nil); tally.All[0].Status != statusRejected ||
+				!rep.classes[0].rows[0].Propose.Advisory {
+				t.Fatalf("the rejection no longer withholds the survivor's proposal: %+v", tally)
+			}
+		})
+	}
+	for _, p := range []Proposal{
+		{Op: OpMergeWorks, Target: "work", Others: []string{"twin"}},
+		{Op: OpAddSeriesMember, Target: "work", Series: "source", Field: "series", To: "1"},
+		{Op: OpAddWorkLink, Target: "work", Field: "translation_of", To: "original"},
+	} {
+		p.Advisory = true
+		old := p
+		old.Target = "old-work"
+		rep := proposalReport(p)
+		if tally := applyReviewed(rep, []reviewedDecision{review(old, "accept")}, reds, nil); tally.All[0].Status != statusAccepted {
+			t.Fatalf("%s naming a retired target no longer resolves: %+v", p.Op, tally)
+		}
+	}
+	rec := Proposal{Op: OpFillField, Target: "old-work", Field: "narrators", Advisory: true}
+	rep := proposalReport(rec)
+	if tally := applyReviewed(rep, []reviewedDecision{review(rec, "accept")}, reds, nil); tally.All[0].Status != statusAccepted {
+		t.Fatalf("a recording-level fill-field was read as naming a retired work: %+v", tally)
+	}
+}
+
+// Every op is classified for a retired work: judgesOneWork (STALE once its work is
+// retired) or resolving onto the survivor. A new op must be placed in one deliberately.
+func TestJudgesOneWorkClassifiesEveryOp(t *testing.T) {
+	resolves := map[string]bool{OpMergeWorks: true, OpMergeSeries: true, OpMergePeople: true, OpSplitSeries: true,
+		OpAddSeriesMember: true, OpAddWorkLink: true, OpAddSeriesLink: true,
+		OpReview: true, OpRenameCandidate: true, OpRepointSidecar: true}
+	for _, op := range Ops() {
+		if judgesOneWork[op] == resolves[op] {
+			t.Errorf("op %q: judgesOneWork %v, resolves %v - classify it exactly once", op, judgesOneWork[op], resolves[op])
+		}
+	}
+	for op := range judgesOneWork {
+		if !slices.Contains(Ops(), op) {
+			t.Errorf("judgesOneWork names %q, which Ops does not list", op)
+		}
 	}
 }
 
