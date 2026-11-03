@@ -99,6 +99,39 @@ func NormalizeISBN(raw string) (isbn string, ok bool) {
 	return isbn, true
 }
 
+// sourceISBNs reads a source row's ISBN field (a single string, or an array of
+// them), keeping only well-formed, deduplicated values in their normalized form:
+// hyphenless, with an ISBN-10's X check digit upper-cased, which is how every
+// ISBN in the tree is spelled and how the site's lookup asks (recording_isbns is
+// an exact match, so a stored "x" would never be found). A malformed value is
+// handed to malformed (nil drops it quietly) rather than emitted - an ISBN that
+// fails the schema pattern would fail the post-import validation for the whole
+// tree.
+func sourceISBNs(v any, malformed func(raw string)) []string {
+	candidates, ok := v.([]any)
+	if !ok {
+		candidates = []any{v}
+	}
+	var out []string
+	for _, el := range candidates {
+		c := coerceStr(el)
+		if c == "" { // coerceStr trims
+			continue
+		}
+		isbn, ok := NormalizeISBN(c)
+		if !ok {
+			if malformed != nil {
+				malformed(c)
+			}
+			continue
+		}
+		if isbn = strings.ToUpper(isbn); !slices.Contains(out, isbn) {
+			out = append(out, isbn)
+		}
+	}
+	return out
+}
+
 // CleanSeriesName strips the trailing RECORDING QUALIFIERS from a series name (a
 // narrator credit, "(abridged)", "(Full-Cast Editions)", "[Dramatized Adaptation]"), so
 // every production of one serial resolves to ONE series: narration and production are

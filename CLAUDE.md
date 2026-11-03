@@ -64,7 +64,7 @@ go build ./... && go vet ./... && go test -race ./... && golangci-lint run
 # its header), and a red run opens or comments on the one open `ci-real-data`
 # issue, which the next green run closes (.github/scripts/real-data-report.sh).
 # Locally: `go test -count=1 ./...`.
-go run ./cmd/metacheck --profile core       # validate the data tree (~10s over 133k works)
+go run ./cmd/metacheck --profile core       # validate the data tree (~40s over 302k works)
 go run ./cmd/metafmt --check --profile core # canonical formatting (--write to fix)
 go run ./cmd/metabuild -o meta.sqlite   # build the CORE-ONLY artifact (no sidecars)
 go run ./cmd/metabuild -data data --community <community-repo>/data -o meta.sqlite  # ... the REAL artifact, from both repos
