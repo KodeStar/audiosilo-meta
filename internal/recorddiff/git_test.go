@@ -59,8 +59,11 @@ func TestAgainstTheRealCheckout(t *testing.T) {
 		t.Fatalf("GitChangedPaths: %v", err)
 	}
 	if raceflag.Enabled && len(paths) > raceMaxPaths {
-		t.Logf("diffing %d of the last commit's %d changed paths under -race", raceMaxPaths, len(paths))
-		paths = samplePaths(paths, raceMaxPaths)
+		// The sample can come in under the bound (each group's share rounds
+		// down), so the count logged is the one diffed.
+		sample := samplePaths(paths, raceMaxPaths)
+		t.Logf("diffing %d of the last commit's %d changed paths under -race", len(sample), len(paths))
+		paths = sample
 	}
 
 	base, err := OpenGitSource(repo, "data", "HEAD~1")
