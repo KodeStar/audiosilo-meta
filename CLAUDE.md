@@ -54,8 +54,9 @@ verification, so the large main context is never what reviews or edits code.
 cd ~/dev/audiosilo/audiosilo-meta
 go build ./... && go vet ./... && go test -race ./... && golangci-lint run
 # ~45s wall for the -race suite; no -timeout flag needed. Every REAL-DATA test
-# skips under -race (raceEnabled, race_{on,off}_test.go in pkg/check,
-# pkg/canonical, internal/importer and internal/repair) - the fixture suites
+# skips under -race (`raceflag.Enabled`, internal/raceflag's build-tagged
+# constant, asked in pkg/check, pkg/canonical, internal/importer and
+# internal/repair) - the fixture suites
 # cover the concurrent code and the real tree is data coverage, still read by
 # the non-race run and by metacheck/metafmt below. Unskipped, pkg/canonical's
 # tree walk alone was ~400s and internal/importer's slug walk ~220s (403s wall).
@@ -743,6 +744,7 @@ keep this index in step (one line per topic).
   - `internal/ghhost`
   - `internal/unionfind`
   - `internal/parallel`
+  - `internal/raceflag`
   - `internal/atomicfile`
   - `internal/reportdir`
   - `internal/remediate`

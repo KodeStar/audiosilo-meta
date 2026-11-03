@@ -71,7 +71,7 @@ func TestJudgedVerdictMatchesCanonical(t *testing.T) {
 
 	r := NewReader(dir)
 	got := map[string]bool{}
-	r.prefetchJudged(rels, got)
+	r.prefetch(rels, got)
 	if !reflect.DeepEqual(got, want) {
 		for rel, w := range want {
 			if g, ok := got[rel]; !ok || g != w {

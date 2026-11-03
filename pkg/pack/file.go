@@ -22,12 +22,12 @@ type File struct {
 
 	rendered []byte
 	sizes    map[string]int
-	// size is the length of the last render, meaningful only while sized is
-	// set (so the zero File knows no size). It outlives ReleaseMemo, which drops
-	// the bytes and keeps this int, so a read-only pass that released the render
-	// can still ask Size without paying for a second one.
-	size  int
-	sized bool
+	// size is the length of the last render, 0 when none is known (a render
+	// is never empty, so 0 is free to mean that, and the zero File knows no
+	// size). It outlives ReleaseMemo, which drops the bytes and keeps this int,
+	// so a read-only pass that released the render can still ask Size without
+	// paying for a second one.
+	size int
 }
 
 // NewFile returns an empty pack.
@@ -106,7 +106,7 @@ func (f *File) Remove(slug string) {
 }
 
 // invalidate drops the memoized render. Every mutator calls it.
-func (f *File) invalidate() { f.rendered, f.sizes, f.size, f.sized = nil, nil, 0, false }
+func (f *File) invalidate() { f.rendered, f.sizes, f.size = nil, nil, 0 }
 
 // ReleaseMemo drops the memoized render without changing what the pack holds,
 // for a caller that has finished with the sizes but is holding the pack itself
@@ -143,7 +143,7 @@ func (f *File) Bytes() ([]byte, error) {
 
 // Size returns the canonical byte length of the pack file.
 func (f *File) Size() (int, error) {
-	if f.rendered == nil && f.sized {
+	if f.rendered == nil && f.size > 0 {
 		return f.size, nil
 	}
 	data, _, err := f.render()
@@ -188,7 +188,7 @@ func (f *File) render() ([]byte, map[string]int, error) {
 	buf.WriteString(packPrefix)
 	if len(slugs) == 0 {
 		buf.WriteString("}\n}\n")
-		f.rendered, f.sizes, f.size, f.sized = buf.Bytes(), per, buf.Len(), true
+		f.rendered, f.sizes, f.size = buf.Bytes(), per, buf.Len()
 		return f.rendered, f.sizes, nil
 	}
 	buf.WriteString("\n")
@@ -213,7 +213,7 @@ func (f *File) render() ([]byte, map[string]int, error) {
 		per[s] = buf.Len() - start
 	}
 	buf.WriteString(packSuffix)
-	f.rendered, f.sizes, f.size, f.sized = buf.Bytes(), per, buf.Len(), true
+	f.rendered, f.sizes, f.size = buf.Bytes(), per, buf.Len()
 	return f.rendered, f.sizes, nil
 }
 

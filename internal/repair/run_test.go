@@ -9,6 +9,7 @@ import (
 
 	"github.com/kodestar/audiosilo-meta/internal/audit"
 	"github.com/kodestar/audiosilo-meta/internal/format"
+	"github.com/kodestar/audiosilo-meta/internal/raceflag"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -215,7 +216,7 @@ func equalTrees(a, b map[string]string) bool {
 // cover every code path, the real tree adds DATA coverage, and the load costs minutes
 // under the detector.
 func TestRealTreeDryRunComposesAPlan(t *testing.T) {
-	if raceEnabled {
+	if raceflag.Enabled {
 		t.Skip("skipped under -race: the fixtures cover every path; the real tree is data coverage, and CI plans it in the non-race run")
 	}
 	const dataDir = "../../data"
