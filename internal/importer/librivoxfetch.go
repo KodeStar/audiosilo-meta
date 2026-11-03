@@ -23,7 +23,9 @@ package importer
 // feed's "no results" answer (a 404 carrying {"error": ...}). Pages are offset
 // windows over the feed's default order, ascending project id, so a project
 // catalogued during a long fetch lands at the end rather than shifting a window
-// already read.
+// already read - and so a tranche import can decode only the pages that can
+// hold its ids (librivoxsnapshot.go's page index, which checks the order on
+// every page it decodes).
 
 import (
 	"context"

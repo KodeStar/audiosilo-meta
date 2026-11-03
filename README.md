@@ -368,8 +368,13 @@ go run ./cmd/metaimport librivox import --from ~/librivox-snapshot --ids 1-2000 
 A snapshot is a directory: `manifest.json` (the fetch's resume state: feed,
 query, limit, next offset, page and project counts, complete or not) and
 `pages/offset-NNNNNNN.json`, each one feed response body verbatim. The importer
-reads every `pages/*.json` and needs nothing else, so a hand-assembled snapshot
-(the test fixtures are one) works too.
+reads `pages/*.json` and needs nothing else, so a hand-assembled snapshot (the
+test fixtures are one) works too. A tranche of a fetcher-written snapshot (a
+manifest beside offset-named pages) decodes only the pages that can hold its
+`--ids`: the fetcher pages the feed in ascending project id, so each page's
+first id, read off the head of the file, bounds it (0.18 s instead of 2.0 s for
+a 2,000-project tranche of the 22,449-project snapshot). A decoded page holding
+an id outside its bounds, or any other snapshot, is read whole.
 
 What an import does: a project LibriVox is still recording (no `totaltimesecs`
 and no archive.org item in `url_iarchive`; the feed has no status field) is set
