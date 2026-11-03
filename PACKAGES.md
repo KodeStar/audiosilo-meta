@@ -1053,8 +1053,13 @@ recording_id, type)` with `idx_recording_sources_type(type, work_id,
 recording_id)`. loadStats proves the claim (`librivoxShapeSQL`), so a version 8
 artifact without them fails to open, as for 5-7. pkg/query reads it as: the
 `?source=` filter (librivox.go: `sourceParam` 400s an unknown type through
-`model.KnownSourceType`; `worksWithSourceArm` inside the FTS query and
-`latestCandidatesQuery`, `workHasSourceArm` in `worksAdmitted` over the boosts; the combined
+`model.KnownSourceType`; `worksWithSourceArm` inside the FTS query, the
+correlated `workHasSourceArm(idCol)` inside the exact-title probe's window
+(`exactTitleQuery`, over `search_fts.id`) and in `worksAdmitted` over the boosts
+(over `works.id`); a filtered `works/latest` is `latestSourceHeadSQL` +
+`latestSourceTailSQL`, grouped by `rs.work_id` in index order and ordered by the
+newest added_at among the work's recordings of that source, the work's own as
+the fallback; the combined
 search turns works-only; an older artifact answers an empty list, never the
 unfiltered one), `lookup?librivox_id=` (read only when `asin` and `isbn` are
 absent), the RecordingDetail fields, `ChapterOut.AudioURL` and a leading free
@@ -1074,7 +1079,7 @@ and a browser can read a 429's `Retry-After` (corsMW exposes it); `/healthz` doe
 is a per-client-address token bucket (an IPv6 address keyed as its /64, `bucketKey`; `Config.RateLimit`/`RateBurst`, metaserve
 `--rate-limit 100 --rate-burst 400` and their `METASERVE_*` env twins, sized from
 audiosilo-server internal/meta's concurrency so a bulk match never trips it and
-checked by TestDefaultsHoldAnAudioSiloBulkMatch against copies of those numbers (a change on the server side is not caught); a rate of zero is off, which is the
+checked by TestDefaultsHoldAnAudioSiloBulkMatch against copies of those numbers (a change on the server side is not caught; the test's comment names each source constant: internal/matchrun/runner.go `workers`, internal/meta/service.go `maxConcurrentWorkFetches` and `maxConcurrentLookups`); a rate of zero is off, which is the
 zero Config every test builds on, and New refuses a negative, non-finite or vanishingly small rate (a refill past a Duration) or
 a limit with a burst under 1 (`validateRateLimit`) rather than defaulting it), idle full buckets swept each
 minute. The client is the connection's address, or - only when that is one of
