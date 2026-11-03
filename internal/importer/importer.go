@@ -887,7 +887,7 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	p.reportDuplicateIdentities()
 	p.reportLibrivoxVariants()
 	p.reportLibrivoxAuthorVariants()
-	p.settleLibrivoxUnrecorded()
+	p.settleUnrecordedCredits()
 	p.reportTombstoneRides()
 	p.reportSeriesNameJoins()
 	p.stampLibrivoxPeople()
@@ -1514,34 +1514,27 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	}
 
 	// The row's author slugs, split into the list the record stores and the
-	// subset work identity is matched on (workidentity.go). Resolving them with
-	// rowWorkAuthors is what creates their person records, exactly as
-	// creditSlugs did.
+	// subset work identity is matched on (workidentity.go).
 	//
-	// A LibriVox row decides its work FIRST, on the read-only author set (the
-	// same slugs the create path mints), because an attach to a catalogued work
-	// records none of the row's credits: a translator the work does not name
-	// would otherwise be created and credited nowhere (librivoxRowAuthors). A
-	// LibriVox row that creates its work then mints them like any other.
-	var authors workAuthors
-	if b.lv != nil {
-		authors = p.rowWorkAuthorsRO(authorCredits)
-	} else {
-		authors = p.rowWorkAuthors(authorCredits, warn)
-	}
+	// Every row decides its work FIRST, on the read-only author set (the same
+	// slugs the create path mints), because an attach to a work the walk found
+	// records none of the row's credits the work does not already name: a
+	// translator it does not name would otherwise be created and credited
+	// nowhere, an orphan person (meta#2760). A row that creates its work then
+	// mints them with rowWorkAuthors; one that attaches creates only the people
+	// the work credits and reports the rest (attachRowAuthors).
+	authors := p.rowWorkAuthorsRO(authorCredits)
 	var walk workWalk
 	if route.walk != nil {
 		walk = *route.walk
 	} else {
 		walk = p.resolveWork(workTitle, b.str("title"), b.qualifiedTitle, posSuffix, authors, lang, claim)
 	}
-	var unrecorded []LibrivoxUnrecordedCredit
-	if b.lv != nil {
-		if walk.ws == nil {
-			authors = p.rowWorkAuthors(authorCredits, warn)
-		} else {
-			unrecorded = p.librivoxRowAuthors(b, walk.ws, authorCredits, warn)
-		}
+	var unrecorded []UnrecordedCredit
+	if walk.ws == nil {
+		authors = p.rowWorkAuthors(authorCredits, warn)
+	} else {
+		unrecorded = p.attachRowAuthors(b, asin, walk.ws, authorCredits, warn)
 	}
 	narratorSlugs := p.rowNarratorSlugs(b, narratorNames, warn)
 
@@ -1572,9 +1565,11 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		p.rememberIdentity(ident, ws.slug, workTitle)
 	}
 	p.addRecording(ws, b, resolvedTitle, asin, lang, narratorSlugs, warn)
-	if p.landedRec != "" && b.lv != nil {
-		p.summary.LibrivoxUnrecordedCredits = append(p.summary.LibrivoxUnrecordedCredits, unrecorded...)
-		p.summary.LibrivoxUnrecordedCredits = append(p.summary.LibrivoxUnrecordedCredits, p.unsluggableLibrivoxCredits(b, ws.slug, unsluggable)...)
+	if p.landedRec != "" {
+		p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, unrecorded...)
+		if b.lv != nil {
+			p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, p.unsluggableLibrivoxCredits(b, ws.slug, unsluggable)...)
+		}
 	}
 	// A row of this run landing on a work the run created adds what it states
 	// (credits, genres - the recording vote reads the recording it landed on);

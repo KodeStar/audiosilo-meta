@@ -115,9 +115,9 @@ func TestLibrivoxAuthorVariantAttaches(t *testing.T) {
 			seedAuthoredWorks(t, dataDir, map[string][]string{"the-work": {tc.catalogued, tc.person, tc.personName}})
 			snap := writeSnapshot(t, byAuthor(t, 99800, tc.title, "English", lvAuthor(7000, tc.first, tc.last)))
 			sum := runLibrivox(t, snap, dataDir, allLibrivox)
-			if sum.NewWorks != 0 || sum.NewRecordings != 1 || sum.LibrivoxAuthorVariants != 1 || len(sum.LibrivoxWorklist) != 0 || len(sum.LibrivoxUnrecordedCredits) != 0 {
+			if sum.NewWorks != 0 || sum.NewRecordings != 1 || sum.LibrivoxAuthorVariants != 1 || len(sum.LibrivoxWorklist) != 0 || len(sum.UnrecordedCredits) != 0 {
 				t.Fatalf("works/recordings/variants/worklist/unrecorded = %d/%d/%d/%v/%v\nwarnings: %v\nnotes: %v",
-					sum.NewWorks, sum.NewRecordings, sum.LibrivoxAuthorVariants, sum.LibrivoxWorklist, sum.LibrivoxUnrecordedCredits, sum.Warnings, sum.Notes)
+					sum.NewWorks, sum.NewRecordings, sum.LibrivoxAuthorVariants, sum.LibrivoxWorklist, sum.UnrecordedCredits, sum.Warnings, sum.Notes)
 			}
 			if got := recSlugsOf(t, dataDir, "the-work"); !reflect.DeepEqual(got, []string{"david-barnes", "se"}) {
 				t.Errorf("recordings = %v", got)
@@ -473,9 +473,9 @@ func TestLibrivoxAuthorVariantKeepsAHeldIDsCredit(t *testing.T) {
 	if w := strings.Join(sum.Warnings, "\n"); strings.Contains(w, "not recorded") {
 		t.Errorf("an id was refused: %s", w)
 	}
-	want := []LibrivoxUnrecordedCredit{{Project: 99850, AuthorID: 94, Name: "Joseph Sheridan Le Fanu", Work: "the-work", PersonExists: true}}
-	if !reflect.DeepEqual(sum.LibrivoxUnrecordedCredits, want) {
-		t.Errorf("unrecorded = %+v, want %+v", sum.LibrivoxUnrecordedCredits, want)
+	want := []UnrecordedCredit{{Project: 99850, AuthorID: 94, Name: "Joseph Sheridan Le Fanu", Work: "the-work", PersonExists: true}}
+	if !reflect.DeepEqual(sum.UnrecordedCredits, want) {
+		t.Errorf("unrecorded = %+v, want %+v", sum.UnrecordedCredits, want)
 	}
 	if note := strings.Join(sum.Notes, "\n"); !strings.Contains(note, `99850 "Uncle Silas": "Joseph Sheridan Le Fanu" kept (a person record) -> "the-work"`) {
 		t.Errorf("no note naming the kept credit: %s", note)

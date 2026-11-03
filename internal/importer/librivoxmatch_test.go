@@ -359,18 +359,18 @@ func TestLibrivoxUnsluggableCoAuthorIsNotRecorded(t *testing.T) {
 			t.Errorf("%s authors/credits = %v/%v, want [%s]", slug, w.Authors, w.Credits, author)
 		}
 	}
-	unsluggable := func(project, id int, name, work string) LibrivoxUnrecordedCredit {
-		return LibrivoxUnrecordedCredit{Project: project, AuthorID: id, Name: name, Work: work, Reason: librivoxUnsluggable}
+	unsluggable := func(project, id int, name, work string) UnrecordedCredit {
+		return UnrecordedCredit{Project: project, AuthorID: id, Name: name, Work: work, Reason: librivoxUnsluggable}
 	}
-	want := []LibrivoxUnrecordedCredit{
+	want := []UnrecordedCredit{
 		unsluggable(99900, 6100, "Йордан Йовков", "short-stories"),
 		unsluggable(99901, 6102, "Лев Толстой", "letters"),
 		unsluggable(99902, 6102, "Лев Толстой", "letters"),
 	}
-	if !reflect.DeepEqual(sum.LibrivoxUnrecordedCredits, want) {
-		t.Errorf("unrecorded = %+v, want %+v", sum.LibrivoxUnrecordedCredits, want)
+	if !reflect.DeepEqual(sum.UnrecordedCredits, want) {
+		t.Errorf("unrecorded = %+v, want %+v", sum.UnrecordedCredits, want)
 	}
-	if got, line := sum.LibrivoxUnrecordedCredits[0].String(), `99900 "Йордан Йовков" (author, librivox_author_id 6100) -> short-stories, unsluggable`; got != line {
+	if got, line := sum.UnrecordedCredits[0].String(), `99900 "Йордан Йовков" (author, librivox_author_id 6100) -> short-stories, unsluggable`; got != line {
 		t.Errorf("line = %q, want %q", got, line)
 	}
 	if entryExists(t, dataDir, personAddr(model.UnslugPersonID)) {
