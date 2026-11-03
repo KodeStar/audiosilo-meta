@@ -3,6 +3,8 @@ package importer
 import (
 	"context"
 	"encoding/json"
+	"errors"
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"os"
@@ -298,6 +300,37 @@ func TestLibrivoxFetchRefusesAClientError(t *testing.T) {
 	}
 	if len(feed.requested()) != 1 {
 		t.Errorf("a 400 was retried: %v", feed.requested())
+	}
+}
+
+// A body past MaxBody fails the fetch, named as too large and never retried,
+// rather than being cut off and failing the decode; nothing is written. A body
+// of exactly MaxBody is read whole.
+func TestLibrivoxFetchRefusesAnOversizedBody(t *testing.T) {
+	feed := newFakeFeed(t)
+	srv := httptest.NewServer(feed)
+	defer srv.Close()
+	f, _ := testFetcher(srv, 100)
+	body, _ := json.Marshal(map[string]any{"books": feed.books})
+	f.MaxBody = len(body)
+	dir := t.TempDir()
+	if res, err := f.Fetch(context.Background(), dir, 0); err != nil || !res.Complete {
+		t.Fatalf("a body of exactly MaxBody: %+v, %v", res, err)
+	}
+
+	f, _ = testFetcher(srv, 100)
+	f.MaxBody = len(body) - 1
+	dir = t.TempDir()
+	before := len(feed.requested())
+	_, err := f.Fetch(context.Background(), dir, 0)
+	if !errors.Is(err, errBodyTooLarge) || !strings.Contains(err.Error(), fmt.Sprintf("over %d bytes", f.MaxBody)) {
+		t.Fatalf("err = %v, want errBodyTooLarge", err)
+	}
+	if n := len(feed.requested()) - before; n != 1 {
+		t.Errorf("an oversized body was requested %d times, want once", n)
+	}
+	if _, err := os.Stat(filepath.Join(dir, librivoxPagesDir)); !os.IsNotExist(err) {
+		t.Errorf("an oversized body left pages behind: %v", err)
 	}
 }
 

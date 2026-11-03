@@ -358,7 +358,8 @@ the project descriptions. It is two steps:
 # 1) Fetch a local snapshot of LibriVox's audiobooks feed. Polite by design:
 #    100 projects a page, 5 s between requests, a User-Agent naming
 #    meta.audiosilo.app, Retry-After honoured on 429/5xx. Resumable: rerun the
-#    same command after an interrupt. The snapshot is never committed.
+#    same command after an interrupt. A response body over 64 MiB is no feed
+#    page: it stops the run, never cut off. The snapshot is never committed.
 go run ./cmd/metaimport librivox fetch --out ~/librivox-snapshot [--max-pages N]
 
 # 2) Import a tranche of it by project-id range (offline; --dry-run first).
