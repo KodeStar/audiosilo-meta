@@ -433,7 +433,7 @@ func librivoxBook(pr LibrivoxProject) sourceBook {
 	sort.SliceStable(sections, func(i, j int) bool { return sections[i].SectionNumber < sections[j].SectionNumber })
 	seenReader := map[string]bool{}
 	var start int64
-	chapters := make([]rawChapter, 0, len(sections))
+	chapters := make([]sourceChapter, 0, len(sections))
 	for _, s := range sections {
 		for _, r := range s.Readers {
 			name := strings.TrimSpace(r.DisplayName)
@@ -446,11 +446,7 @@ func librivoxBook(pr LibrivoxProject) sourceBook {
 			b.narrators = append(b.narrators, name)
 		}
 		length := int64(s.Playtime) * 1000
-		ch := rawChapter{
-			"title":           strings.TrimSpace(s.Title),
-			"start_offset_ms": json.Number(strconv.FormatInt(start, 10)),
-			"length_ms":       json.Number(strconv.FormatInt(length, 10)),
-		}
+		ch := sourceChapter{title: strings.TrimSpace(s.Title), startMS: start, lengthMS: length, hasStart: true, hasLength: true}
 		facts.audioURLs = append(facts.audioURLs, httpsOrEmpty(s.ListenURL))
 		chapters = append(chapters, ch)
 		start += length

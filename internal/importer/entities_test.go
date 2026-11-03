@@ -192,7 +192,7 @@ func TestGenreClaimsAreDecoded(t *testing.T) {
 	claims := libexGenreClaims([]any{
 		map[string]any{"asin": "18580606011", "name": "Science Fiction &amp; Fantasy"},
 		"Mystery &amp; Thriller",
-	})
+	}, (&libexParse{}).intern)
 	if len(claims) != 2 || claims[0].name != "Science Fiction & Fantasy" || claims[1].name != "Mystery & Thriller" {
 		t.Errorf("libex claims = %+v", claims)
 	}

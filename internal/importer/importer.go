@@ -626,11 +626,9 @@ type sourceBook struct {
 	// it is set.
 	authorCredits []credit
 	creditsCached bool
-	// chapters is the source's own chapter rows, read when non-nil instead of
-	// raw's chapters array. buildChapters accepts either documented offset
-	// spelling (see rawChapter.startMS), so a parser hands its rows over
-	// as-is.
-	chapters []rawChapter
+	// chapters is the source's chapter rows, typed at parse time (sourceChapter),
+	// read when non-nil instead of raw's chapters array.
+	chapters []sourceChapter
 	// qualifiedTitle is the full title as the work identity read it before the
 	// title QUALIFIERS were stripped (qualifiedWorkTitle), set by
 	// normalizeEditionMarkers only when the strip changed it. resolveWork walks its
@@ -663,7 +661,7 @@ func (s sourceBook) str(key string) string { return s.raw.str(key) }
 
 // chapterRows returns the book's chapter rows: the typed field when the parser
 // set one, else the raw entry's own chapters array.
-func (s sourceBook) chapterRows() []rawChapter {
+func (s sourceBook) chapterRows() []sourceChapter {
 	if s.chapters != nil {
 		return s.chapters
 	}
@@ -3887,19 +3885,18 @@ func (p *planner) finalizeSeries() {
 // titles and enforcing the same monotonic-from-zero rule metacheck applies. On
 // any structural violation it warns and returns nil (the recording is emitted
 // without chapters).
-func buildChapters(raw []rawChapter, warn func(string, ...any)) []outChapter {
-	if len(raw) == 0 {
+func buildChapters(rows []sourceChapter, warn func(string, ...any)) []outChapter {
+	if len(rows) == 0 {
 		return nil
 	}
-	out := make([]outChapter, 0, len(raw))
-	for i, rc := range raw {
-		start, sOK := rc.startMS()
-		length, lOK := rc.lengthMS()
-		if !sOK || !lOK || length <= 0 || start < 0 {
+	out := make([]outChapter, 0, len(rows))
+	for i, rc := range rows {
+		start, length := rc.startMS, rc.lengthMS
+		if !rc.hasStart || !rc.hasLength || length <= 0 || start < 0 {
 			warn("chapter %d has invalid offsets; chapters omitted", i+1)
 			return nil
 		}
-		title := strings.TrimSpace(rc.str("title"))
+		title := strings.TrimSpace(rc.title)
 		if title == "" {
 			title = fmt.Sprintf("Chapter %d", i+1)
 		}

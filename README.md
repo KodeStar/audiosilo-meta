@@ -167,7 +167,9 @@ Key endpoints (all under `/api/v1`): `stats`, `search?q=&limit=`,
 The LibriVox layer (artifact schema version 8). `search`, `works/search` and
 `works/latest` take `?source=librivox` (any source type of the schema), which
 keeps only works with a recording from that source - a typo is a 400, never an
-empty list. A LibriVox recording on `works/{id}` carries `librivox_id`,
+empty list. Filtered, `works/latest` orders by the newest recording from that
+source rather than by the work, so a new LibriVox reading of an old classic is
+new. A LibriVox recording on `works/{id}` carries `librivox_id`,
 `archive_id`, `links` (`librivox`, `zip`, `rss`, `text`) and `copyright_year`,
 leads its `purchase_links` with a free `librivox` link, and its chapters carry
 `audio_url`. `lookup?librivox_id=52` resolves a project id.
@@ -246,8 +248,14 @@ comma-separated list of addresses and CIDR prefixes), the rightmost
 counts as its /64). **Behind a reverse
 proxy, name it there**, or every request counts as the proxy and shares one
 bucket; a forwarded header from anywhere else is never read. The shipped
-`docker-compose.yml` already trusts the loopback and private ranges (its port is
-published on loopback only, so only the host's proxy can reach it). A 200 that states
+`docker-compose.yml` trusts only the loopback and its own network's pinned
+subnet (`METASERVE_SUBNET`, default `10.217.53.0/28`) - in practice that network's
+gateway, which is where a host proxy on the loopback-only port arrives from. That
+is right for a host proxy; a containerised proxy on another Docker network must
+add its own address to `METASERVE_TRUSTED_PROXIES`, or every visitor shares one
+bucket. Never trust the private ranges wholesale: a LAN client of the proxy could
+then choose its own bucket. An existing deployment's first start after the subnet
+was pinned needs `docker compose down && docker compose up -d` once. A 200 that states
 no `Cache-Control` of its own gets `public, max-age=600`, or `public,
 max-age=60` on the searches and `works/match`.
 
