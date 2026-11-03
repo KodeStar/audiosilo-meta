@@ -213,3 +213,56 @@ func TestAttachEditionsReportsAnUncreditedTranslator(t *testing.T) {
 		t.Errorf("orphans: %v", got)
 	}
 }
+
+func TestAttachEditionsOntoARunCreatedVolumeCreditsTheTranslator(t *testing.T) {
+	// Under --attach-editions, a second edition of a volume an EARLIER row of the
+	// same run created, stating a translator: the position was free in the
+	// catalogue, so the row is not an attachment (attachFor reads the series as
+	// loaded) and joins the run's own work through the create path, which mints
+	// the translator AND credits him there - never an orphan.
+	dataDir := seedAttachCatalogue(t)
+	translated := `{"asin":"B0ATTACH21","title":"Volume Two","region":"gb","language":"english",` +
+		`"authors":[{"name":"Ada Mapmaker"},{"name":"Tina Translator - Translator"}],"narrators":[{"name":"Cal Voice"}],` +
+		`"series":[{"name":"` + seriesName + `","position":"2"}]}`
+	sum := runLibexWith(t, dataDir, Options{ExistingSeriesOnly: true, AttachEditions: true},
+		attachExportRow("B0ATTACH20", "Volume Two", "us", "english", "Ada Mapmaker", "Bea Reader", "2"), translated)
+	if sum.NewWorks != 1 || sum.NewRecordings != 2 || sum.Attached != 0 || len(sum.UnrecordedCredits) != 0 {
+		t.Fatalf("works/recordings/attached = %d/%d/%d, unrecorded %+v; want 1/2/0 and none\nwarnings: %v",
+			sum.NewWorks, sum.NewRecordings, sum.Attached, sum.UnrecordedCredits, sum.Warnings)
+	}
+	var work struct {
+		Credits []model.Credit `json:"credits"`
+	}
+	readEntity(t, dataDir, workAddr("volume-two"), &work)
+	if want := []model.Credit{{Person: "tina-translator", Role: model.RoleTranslator}}; !reflect.DeepEqual(work.Credits, want) {
+		t.Errorf("credits = %+v, want %+v", work.Credits, want)
+	}
+	if !entryExists(t, dataDir, personAddr("tina-translator")) {
+		t.Error("the translator was not created")
+	}
+	if got := orphanPeople(t, dataDir); len(got) != 0 {
+		t.Errorf("orphans: %v", got)
+	}
+}
+
+func TestAttachEditionsRowAGuardRefusesCreatesNoAuthor(t *testing.T) {
+	// An attach-editions row the recording guards turn away (the occupant's own
+	// production, in a region that is no marketplace, so its ASIN cannot be
+	// recorded: addRecording's recNone) attaches nothing, so none of its
+	// author-side people is created and nothing is reported.
+	dataDir := seedAttachCatalogue(t)
+	row := `{"asin":"B0ATTACH22","title":"The Lost Coast","region":"xx","language":"english",` +
+		`"authors":[{"name":"Ada Mapmaker"},{"name":"Tina Translator - Translator"}],"narrators":[{"name":"Bea Reader"}],` +
+		`"series":[{"name":"` + seriesName + `","position":"1"}]}`
+	sum := runLibexWith(t, dataDir, Options{ExistingSeriesOnly: true, AttachEditions: true}, row)
+	if sum.Attached != 0 || sum.NewPeople != 0 || len(sum.UnrecordedCredits) != 0 {
+		t.Fatalf("attached/people = %d/%d, unrecorded %+v; want 0/0 and none\nwarnings: %v",
+			sum.Attached, sum.NewPeople, sum.UnrecordedCredits, sum.Warnings)
+	}
+	if countWarnings(sum.Warnings, "is not a known marketplace") != 1 {
+		t.Errorf("the row did not reach the recording guard: %v", sum.Warnings)
+	}
+	if entryExists(t, dataDir, personAddr("tina-translator")) {
+		t.Error("a refused row created its translator")
+	}
+}
