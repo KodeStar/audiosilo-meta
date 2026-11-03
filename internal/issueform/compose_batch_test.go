@@ -83,8 +83,13 @@ func TestBatchGoldenBody(t *testing.T) {
 	if len(res.NeedsHuman) != 1 || !strings.Contains(res.NeedsHuman[0], "authors") || !strings.Contains(res.NeedsHuman[0], "Jane Doe, John Smith") {
 		t.Errorf("needs_human = %v, want the authors change with its value", res.NeedsHuman)
 	}
-	if len(res.Files) != 1 || res.Files[0] != worksPack {
-		t.Errorf("files = %v, want the one works pack", res.Files)
+	// The title leaves existing-work off the chain "The Existing Work" composes, so
+	// its retitle alias rides beside the works pack (retitlealias_test.go).
+	if want := []string{redirectsPath, worksPack}; !slices.Equal(res.Files, want) {
+		t.Errorf("files = %v, want %v", res.Files, want)
+	}
+	if got := workRedirects(t, dir); got["the-existing-work"] != "existing-work" {
+		t.Errorf("works redirects = %v, want the retitle alias the-existing-work -> existing-work", got)
 	}
 	work := readFile(t, dir, "works/ex/existing-work/work.json")
 	if !strings.Contains(work, `"title": "The Existing Work"`) {

@@ -764,6 +764,11 @@ type creditCensus struct {
 	// as they are: a LibriVox run's id holders and titled authors whose bare
 	// twin is someone else (librivoxpeople.go rule 1). nil keeps every fold.
 	keepHonorific map[string]bool
+	// keptApart, when set, reports whether a reviewed merge-people rejection
+	// recorded the two credit names as two people (planner.peopleKeptApart):
+	// the honorific fold then leaves the titled name as it is. nil keeps every
+	// fold.
+	keptApart func(titled, bare string) bool
 }
 
 // keepsHonorific reports whether the honorific fold must leave name as it is
@@ -774,6 +779,23 @@ func (c creditCensus) keepsHonorific(name string) bool {
 	}
 	_, titled := deHonorified(name)
 	return titled && c.keepHonorific[Slugify(name)]
+}
+
+// foldHonorific is the honorific fold (honorific.go) under the census's two
+// vetoes: a credit keepHonorific names, and a pair a review kept apart
+// (keptApart), stay titled. A merge it does make is reported (onHonorific).
+func (c creditCensus) foldHonorific(name string) string {
+	if c.keepsHonorific(name) {
+		return name
+	}
+	bare := stripHonorific(name, c.sameSide)
+	if bare == name || (c.keptApart != nil && c.keptApart(name, bare)) {
+		return name
+	}
+	if c.onHonorific != nil {
+		c.onHonorific(name, bare)
+	}
+	return bare
 }
 
 // reportedFold applies one census-backed fold and tells the planner about the
@@ -814,9 +836,7 @@ func creditWithRolesSided(name string, c creditCensus) (cleaned string, roles []
 		stripped, parenRoles := stripParenRoleQualifier(stripped)
 		stripped, bareRoles := stripBareRoleTail(stripped, c.anySide)
 		stripped = stripLeadingConjunction(collapseDoubledName(stripped), c.sameSide)
-		if !c.keepsHonorific(stripped) {
-			stripped = reportedFold(stripped, c.sameSide, stripHonorific, c.onHonorific)
-		}
+		stripped = c.foldHonorific(stripped)
 		stripped = reportedFold(stripped, c.sameSide, stripCredential, c.onCredential)
 		next, tailRoles := stripStudioConcat(stripped, c.anySide)
 		if next == cleaned {

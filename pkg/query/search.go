@@ -552,7 +552,8 @@ const workIDsInFTSSQL = `SELECT id FROM search_fts WHERE search_fts MATCH ? AND 
 //
 // src is a source filter (librivox.go; "" for none). A filtered page holds works
 // only, so the exact-series pull, which places a SERIES, does not run on it; the
-// boosts are kept to the works the filter admits. An artifact with no
+// boosts are kept to the works the filter admits, the exact-title probe applying
+// it inside its window as it does lang (exactTitleQuery). An artifact with no
 // recording_sources table answers a filtered request with an empty page.
 func (s *DB) search(ctx context.Context, kind searchKind, q string, limit int, lang langFilter, src string) ([]any, error) {
 	if src != "" && !s.hasLibrivoxLayer() {
@@ -577,7 +578,7 @@ func (s *DB) searchPage(ctx context.Context, kind searchKind, q string, limit in
 	}
 	var boosted []string
 	if kind == kindAny || kind == kindWork {
-		boosted = s.boostedWorks(ctx, q, lang)
+		boosted = s.boostedWorks(ctx, q, lang, src)
 		if boosted, err = s.worksAdmitted(ctx, boosted, lang, src); err != nil {
 			return nil, err
 		}
@@ -621,9 +622,13 @@ func (s *DB) ftsHits(ctx context.Context, kind searchKind, match string, limit i
 // and both are logged rather than silent.
 //
 // lang (live, nil for none) is handed to both probes, which filter inside their
-// windows; with none each issues exactly the SQL it always did.
-func (s *DB) boostedWorks(ctx context.Context, q string, lang langFilter) []string {
-	titles, err := s.exactTitleHits(ctx, q, lang)
+// windows; with none each issues exactly the SQL it always did. src (a source
+// filter, "" for none) is handed to the exact-title probe alone, whose window
+// is of WORKS and so can be crowded by works of another source; the
+// series-position window is of series, which carry no source, and the volume it
+// resolves is judged by the caller's worksAdmitted.
+func (s *DB) boostedWorks(ctx context.Context, q string, lang langFilter, src string) []string {
+	titles, err := s.exactTitleHits(ctx, q, lang, src)
 	if err != nil && ctx.Err() == nil {
 		s.logf("query: exact-title probe for %q failed, serving the plain search page: %v", q, err)
 	}

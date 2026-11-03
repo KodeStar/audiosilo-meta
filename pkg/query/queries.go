@@ -48,8 +48,9 @@ const latestCandidatesSQL = `SELECT id FROM works` + latestOrderSQL
 // the measurement).
 //
 // src is a source filter (librivox.go; "" for none): the works with a recording
-// of that source type, reached through idx_recording_sources_type, then by
-// primary key.
+// of that source type, reached through idx_recording_sources_type, then each
+// recording and work by primary key - and ORDERED BY THAT SOURCE'S RECORDINGS
+// (latestSourceHeadSQL), not by the work.
 func (s *DB) latestCandidatesQuery(lang langFilter, src string, fetch int) (string, []any) {
 	if src == "" {
 		if len(lang) == 0 {
@@ -58,14 +59,40 @@ func (s *DB) latestCandidatesQuery(lang langFilter, src string, fetch int) (stri
 		pred, args := s.worksPredicate(lang, "language")
 		return `SELECT id FROM works WHERE ` + pred + latestOrderSQL, append(args, fetch)
 	}
-	query, args := `SELECT id FROM works WHERE `+worksWithSourceArm, []any{src}
+	query, args := latestSourceHeadSQL, []any{src}
 	if len(lang) > 0 {
-		pred, predArgs := lang.predicate("language", false)
+		pred, predArgs := lang.predicate("w.language", false)
 		query += ` AND ` + pred
 		args = append(args, predArgs...)
 	}
-	return query + latestOrderSQL, append(args, fetch)
+	return query + latestSourceTailSQL, append(args, fetch)
 }
+
+// latestSourceHeadSQL and latestSourceTailSQL are works/latest's phase one
+// under a source filter: the works with a recording of the source type, newest
+// SOURCE RECORDING first. A filtered list answers "what is new from LibriVox",
+// and the work's own added_at cannot say: a LibriVox reading attached to a
+// classic the catalogue held for months (Pride and Prejudice, Candide) is new
+// while its work is not, and ordered by the work it would never surface - which
+// is what the LibriVox lane (meta-sync, L4) and a player's "new on LibriVox"
+// shelf (L5) are planned to read it for. So the date is the newest added_at among the work's recordings OF
+// THAT SOURCE (a recording's added_at is addedAt's rule: its own, else its
+// newest imported_at), falling back to the work's added_at when none of them
+// carries one, with the unfiltered order's NULLS LAST and title, id tie-break.
+// The unfiltered list, and a language filter alone, keep ordering by the work
+// (latestOrderSQL).
+//
+// Two halves so a language predicate (over w.language - the recordings table
+// has a language column too) sits between them. The GROUP BY is on rs.work_id,
+// which idx_recording_sources_type already yields in order under type = ?, so
+// the grouping needs no temp b-tree; only the ORDER BY sorts.
+const (
+	latestSourceHeadSQL = `SELECT w.id FROM recording_sources rs` +
+		` JOIN recordings r ON r.work_id = rs.work_id AND r.id = rs.recording_id` +
+		` JOIN works w ON w.id = rs.work_id WHERE rs.type = ?`
+	latestSourceTailSQL = ` GROUP BY rs.work_id` +
+		` ORDER BY (COALESCE(MAX(r.added_at), w.added_at) IS NULL) ASC, COALESCE(MAX(r.added_at), w.added_at) DESC, w.title ASC, w.id ASC LIMIT ?`
+)
 
 // latestSeriesCap is the per-series diversity cap for the latest-works list: a
 // bulk import shares one added_at date, so without a cap the title tie-break
@@ -73,7 +100,8 @@ func (s *DB) latestCandidatesQuery(lang langFilter, src string, fetch int) (stri
 const latestSeriesCap = 2
 
 // latestWorks returns up to limit work cards ordered by added_at DESC (NULLS
-// LAST), then title, with at most latestSeriesCap works from any one series
+// LAST; under a source filter, the source's recordings' added_at), then title,
+// with at most latestSeriesCap works from any one series
 // (keyed by the work's first series membership, the one the card carries).
 // The key is that membership's ordering FAMILY - its ordering_of where it is a
 // variant, else its own id (model.Series.OrderingPrimary) - so two reading
@@ -94,7 +122,8 @@ const latestSeriesCap = 2
 // lang (already live) narrows phase one to the works in the languages it names,
 // so the cap and the page are taken over those alone (latestCandidatesQuery).
 //
-// src narrows it to the works a source filter admits ("" for none); an artifact
+// src narrows it to the works a source filter admits ("" for none), ordered by
+// their newest recording from that source (latestSourceHeadSQL); an artifact
 // with no recording_sources table answers a filtered request with no works.
 func (s *DB) latestWorks(limit int, lang langFilter, src string) ([]*WorkCard, error) {
 	if src != "" && !s.hasLibrivoxLayer() {

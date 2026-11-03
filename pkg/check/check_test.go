@@ -7,6 +7,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/raceflag"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
@@ -1067,7 +1068,7 @@ func joinProblems(ps []Problem) string {
 // ./...` a 13-minute gate. The tree is still validated on every push - by this
 // test in the ordinary (non-race) run, and by `go run ./cmd/metacheck` in CI.
 func TestRealDataTree(t *testing.T) {
-	if raceEnabled {
+	if raceflag.Enabled {
 		t.Skip("skipped under -race: the fixture suites cover the parallel loader; the real tree is data coverage, and CI validates it in the non-race run and through metacheck")
 	}
 	const dataDir = "../../data"
