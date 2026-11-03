@@ -1850,9 +1850,6 @@ func (p *planner) creditCensusesOf(books []sourceBook) (author, narrator creditC
 // slug, a retired one as its survivor (the decisions were resolved the same
 // way); a name that slugs away to nothing is no record a review named.
 func (p *planner) peopleKeptApart(a, b string) bool {
-	if len(p.keptApart[model.RedirectPeople]) == 0 {
-		return false
-	}
 	sa, fa := personSlug(a)
 	sb, fb := personSlug(b)
 	return !fa && !fb && p.personSlugsKeptApart(sa, sb)
@@ -1863,13 +1860,8 @@ func (p *planner) personSlugsKeptApart(a, b string) bool {
 	if len(p.keptApart[model.RedirectPeople]) == 0 {
 		return false
 	}
-	live := func(s string) string {
-		if to, ok := p.redirects.Survivor(model.RedirectPeople, s); ok {
-			return to
-		}
-		return s
-	}
-	return p.keptApart.Has(model.RedirectPeople, live(a), live(b))
+	return p.keptApart.Has(model.RedirectPeople,
+		p.redirects.Live(model.RedirectPeople, a), p.redirects.Live(model.RedirectPeople, b))
 }
 
 // noteHonorific records one honorific merge for the run's report. It is a SET

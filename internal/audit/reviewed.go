@@ -403,12 +403,7 @@ func retiredElsewhere(r reviewedDecision, target string, reds model.Redirects) [
 }
 
 func resolvedProposal(p Proposal, class string, reds model.Redirects) Proposal {
-	live := func(kind model.RedirectKind, slug string) string {
-		if to, ok := reds.Survivor(kind, slug); ok {
-			return to
-		}
-		return slug
-	}
+	live := reds.Live
 	kind := model.RedirectWorks
 	switch p.Op {
 	case OpMergeSeries, OpSplitSeries:

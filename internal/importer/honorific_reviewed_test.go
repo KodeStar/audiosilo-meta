@@ -75,14 +75,22 @@ func TestHonorificFoldHonoursAReviewedRejection(t *testing.T) {
 	}
 }
 
-// runLibrivoxApart is runLibrivox with reviewed decisions.
-func runLibrivoxApart(t *testing.T, snap, dataDir string, distinct []check.ReviewedDistinct) Summary {
-	t.Helper()
-	sum, err := RunLibrivox(snap, allLibrivox, Options{DataDir: dataDir, ImportDate: testImportDate, Distinct: distinct})
-	if err != nil {
-		t.Fatalf("librivox import: %v\nwarnings: %v", err, sum.Warnings)
+// reviewedCase is one run of a reviewed-rejection table: the decisions given
+// and the person the credit must land on.
+type reviewedCase struct {
+	distinct []check.ReviewedDistinct
+	want     string
+}
+
+// reviewedCases is the table both LibriVox tests run: no review (the rule
+// fires and lands on fired), a review of this very pair (the credit stays on
+// apart) and a review of another pair (which changes nothing).
+func reviewedCases(pair []string, fired, apart string) map[string]reviewedCase {
+	return map[string]reviewedCase{
+		"no review":     {want: fired},
+		"reviewed pair": {distinct: peopleApart(pair...), want: apart},
+		"other pair":    {distinct: peopleApart("alex-george", "dr-alex-george"), want: fired},
 	}
-	return sum
 }
 
 func TestLibrivoxTitledFoldHonoursAReviewedRejection(t *testing.T) {
@@ -90,21 +98,14 @@ func TestLibrivoxTitledFoldHonoursAReviewedRejection(t *testing.T) {
 	// work): "Sir Arthur Conan Doyle" folds onto the catalogued
 	// arthur-conan-doyle, whose work is dated within his life - unless a review
 	// recorded two people.
-	for name, tc := range map[string]struct {
-		distinct []check.ReviewedDistinct
-		want     string
-	}{
-		"no review folds": {want: "arthur-conan-doyle"},
-		"reviewed pair":   {distinct: peopleApart("arthur-conan-doyle", "sir-arthur-conan-doyle"), want: "sir-arthur-conan-doyle"},
-		"other pair":      {distinct: peopleApart("alex-george", "dr-alex-george"), want: "arthur-conan-doyle"},
-	} {
+	for name, tc := range reviewedCases([]string{"arthur-conan-doyle", "sir-arthur-conan-doyle"}, "arthur-conan-doyle", "sir-arthur-conan-doyle") {
 		t.Run(name, func(t *testing.T) {
 			dataDir := t.TempDir()
 			files := map[string]string{personAddr("arthur-conan-doyle"): personFiles(t, "arthur-conan-doyle", "Arthur Conan Doyle", nil)}
 			retailWork(t, files, "retail", "The Land of Mist", "arthur-conan-doyle", "1926")
 			seedTree(t, dataDir, files)
 			snap := writeSnapshot(t, byAuthors(t, 99003, "The Poison Belt", lvDated(69, "Sir Arthur Conan", "Doyle", "1859", "1930")))
-			sum := runLibrivoxApart(t, snap, dataDir, tc.distinct)
+			sum := runLibrivoxWith(t, snap, dataDir, allLibrivox, Options{Distinct: tc.distinct})
 			if got := workAuthorsOf(t, dataDir, "the-poison-belt"); !reflect.DeepEqual(got, []string{tc.want}) {
 				t.Errorf("authors = %v, want [%s]\nnotes: %v", got, tc.want, sum.Notes)
 			}
@@ -128,21 +129,14 @@ func TestLibrivoxTitledTwinHonoursAReviewedRejection(t *testing.T) {
 	// Rule 1c's own case (TestLibrivoxBareAuthorResolvesOntoATitledTwin): a
 	// bare "Frederick Treves" resolves onto the catalogued sir-frederick-treves
 	// - unless a review recorded two people, when the bare name is minted.
-	for name, tc := range map[string]struct {
-		distinct []check.ReviewedDistinct
-		want     string
-	}{
-		"no review resolves": {want: "sir-frederick-treves"},
-		"reviewed pair":      {distinct: peopleApart("frederick-treves", "sir-frederick-treves"), want: "frederick-treves"},
-		"other pair":         {distinct: peopleApart("alex-george", "dr-alex-george"), want: "sir-frederick-treves"},
-	} {
+	for name, tc := range reviewedCases([]string{"frederick-treves", "sir-frederick-treves"}, "sir-frederick-treves", "frederick-treves") {
 		t.Run(name, func(t *testing.T) {
 			dataDir := t.TempDir()
 			files := map[string]string{personAddr("sir-frederick-treves"): personFiles(t, "sir-frederick-treves", "Sir Frederick Treves", nil)}
 			retailWork(t, files, "a-retail-book", "A Retail Book", "sir-frederick-treves", "")
 			seedTree(t, dataDir, files)
 			snap := writeSnapshot(t, byAuthors(t, 99001, "Elephant Man and Other Reminiscences", lvDated(14047, "Frederick", "Treves", "1853", "1923")))
-			sum := runLibrivoxApart(t, snap, dataDir, tc.distinct)
+			sum := runLibrivoxWith(t, snap, dataDir, allLibrivox, Options{Distinct: tc.distinct})
 			if got := workAuthorsOf(t, dataDir, "elephant-man-and-other-reminiscences"); !reflect.DeepEqual(got, []string{tc.want}) {
 				t.Fatalf("authors = %v, want [%s]\nnotes: %v", got, tc.want, sum.Notes)
 			}

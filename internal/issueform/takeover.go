@@ -6,7 +6,6 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/kodestar/audiosilo-meta/internal/audit"
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
@@ -110,9 +109,8 @@ func (c *composer) applyTakeover(s sections, t *takeover, genres []string, named
 		Source:     srcs[len(srcs)-1],
 		RuntimeMin: runtimeMin, ReleaseDate: releaseDate, CoverURL: coverURL,
 		Publisher: s.get(fRecPublisher), ISBNs: isbns, Genres: genres,
-	}, importer.Options{
-		DataDir: c.dataDir, Profile: c.profile, ImportDate: c.date, Distinct: audit.ReviewedDistinct(),
-	})
+		// no reviewed decisions: an attestation plans no credits, so no fold reads them.
+	}, importer.Options{DataDir: c.dataDir, Profile: c.profile, ImportDate: c.date})
 	switch {
 	case err != nil:
 		// The submission is fine; the tree it produced is not, which is the bot's

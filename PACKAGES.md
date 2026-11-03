@@ -1312,7 +1312,10 @@ a concatenated studio credit removed, per the tiers above; and four
 CENSUS-BACKED rules that mint no id of their own - a courtesy title folded onto
 the bare twin the census already holds ("Dr. Jane Doe", `honorific.go`; never
 a pair a reviewed merge-people REJECTION names - `Options.Distinct`, filled from
-`audit.ReviewedDistinct()` by cmd/metaimport and internal/issueform, the ids
+`audit.ReviewedDistinct()` by cmd/metaimport and internal/issueform, and
+`SelectOptions.Distinct` so libex-select folds as its import will - every
+Options literal in the module sets it or says why not,
+`TestEveryOptionsLiteralCarriesDistinct` - the ids
 resolved through redirects.json by `check.ResolveDistinct`, the census's own
 resolution - so an import cannot re-merge Dr. Alex George onto `alex-george`
 the novelist: `creditCensus.keptApart`, `planner.peopleKeptApart`), the

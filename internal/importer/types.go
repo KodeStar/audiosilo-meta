@@ -303,7 +303,8 @@ type Options struct {
 	// too (librivoxpeople.go rule 1). The ids resolve through the catalogue's
 	// tombstone table, as the census's do. This package cannot import the audit
 	// (the audit imports it), so the decisions arrive as data, supplied by every
-	// caller that runs an import (cmd/metaimport, internal/issueform). nil folds
+	// caller that runs an import (cmd/metaimport, internal/issueform), which
+	// TestEveryOptionsLiteralCarriesDistinct holds every literal to. nil folds
 	// as the fold always has.
 	Distinct []check.ReviewedDistinct
 }

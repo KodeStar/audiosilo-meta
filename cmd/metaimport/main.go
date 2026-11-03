@@ -479,6 +479,7 @@ func runLibexSelect(args []string) int {
 		RefusalsPath:    *refusals,
 		AttachmentsPath: *attachments,
 		ImportDate:      day,
+		Distinct:        audit.ReviewedDistinct(),
 	})
 	if err != nil {
 		// The report is deliberately NOT printed here. A run that aborted

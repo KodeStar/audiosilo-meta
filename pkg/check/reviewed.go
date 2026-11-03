@@ -49,11 +49,6 @@ type reviewedPairs struct {
 	suppressed int
 }
 
-// newReviewedPairs resolves ds through the tombstone table reds.
-func newReviewedPairs(ds []ReviewedDistinct, reds model.Redirects) *reviewedPairs {
-	return &reviewedPairs{pairs: ResolveDistinct(ds, reds)}
-}
-
 // DistinctPairs is a resolved set of reviewed "not one record" decisions: per
 // namespace, every PAIR of surviving ids a decision covers, keyed in sorted order.
 // It is the one resolution of ReviewedDistinct, shared by this package's census
@@ -69,10 +64,7 @@ func ResolveDistinct(ds []ReviewedDistinct, reds model.Redirects) DistinctPairs 
 	for _, d := range ds {
 		ids := make([]string, 0, len(d.IDs))
 		for _, id := range d.IDs {
-			if to, ok := reds.Survivor(d.Kind, id); ok {
-				id = to
-			}
-			ids = append(ids, id)
+			ids = append(ids, reds.Live(d.Kind, id))
 		}
 		slices.Sort(ids)
 		ids = slices.Compact(ids) // two members merged since are one record, not a pair
