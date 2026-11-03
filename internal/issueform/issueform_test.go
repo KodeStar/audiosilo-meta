@@ -2,6 +2,7 @@ package issueform
 
 import (
 	"encoding/json"
+	"fmt"
 	"slices"
 	"sort"
 	"strings"
@@ -1184,5 +1185,57 @@ func TestCorrectDataRefusesARecordingQualifiedSeriesName(t *testing.T) {
 	res = Process(Options{DataDir: dir, Template: "correct-data", Body: correctBody(addr, "name", "Existing Series (abridged)", "web", true)})
 	if res.Status != StatusDuplicate {
 		t.Errorf("restating the carried name: status = %q, want duplicate; messages = %v", res.Status, res.Messages)
+	}
+}
+
+// TestImportReportsWithheldCredits: a library book that joins a catalogued work
+// that does not name its translator records only its recording, so the
+// translator gets no person record (meta#2760) - and the verdict says so, one
+// line per credit, rather than leaving no trace of them.
+func TestImportReportsWithheldCredits(t *testing.T) {
+	dir := seedTree(t)
+	export := `[{"asin":"B0IMPORTAB","title_short":"Existing Work","author":"Jane Doe, Ian Johnston - translator",` +
+		`"narrated_by":"Nell Reader","language":"English","region":"US","seconds":24000}]`
+	res := Process(Options{DataDir: dir, Template: "import", Body: importBody("OpenAudible (books.json)", export)})
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
+	}
+	if recordExists(t, dir, "people/ia/ian-johnston.json") {
+		t.Error("the withheld translator was created")
+	}
+	msgs := strings.Join(res.Messages, "\n")
+	for _, want := range []string{
+		"import note: 1 credit(s) were not recorded",
+		`credit not recorded: B0IMPORTAB "Ian Johnston" (translator) -> existing-work, person not created`,
+	} {
+		if !strings.Contains(msgs, want) {
+			t.Errorf("no %q in:\n%s", want, msgs)
+		}
+	}
+}
+
+// TestUnrecordedCreditNotesAreCapped: the per-credit lines stop at
+// maxUnrecordedNotes, and the count line and the remainder line say how many
+// there were.
+func TestUnrecordedCreditNotesAreCapped(t *testing.T) {
+	credits := make([]importer.UnrecordedCredit, maxUnrecordedNotes+3)
+	for i := range credits {
+		credits[i] = importer.UnrecordedCredit{ASIN: "B0CAP0000" + string(rune('A'+i)), Name: "N", Work: "w"}
+	}
+	c := &composer{}
+	c.noteUnrecordedCredits(credits)
+	if len(c.messages) != maxUnrecordedNotes+2 {
+		t.Fatalf("%d lines, want %d:\n%s", len(c.messages), maxUnrecordedNotes+2, strings.Join(c.messages, "\n"))
+	}
+	if got := c.messages[0]; !strings.HasPrefix(got, fmt.Sprintf("import note: %d credit(s)", len(credits))) {
+		t.Errorf("count line = %q", got)
+	}
+	if got, want := c.messages[len(c.messages)-1], "credit not recorded: ... and 3 more"; got != want {
+		t.Errorf("last line = %q, want %q", got, want)
+	}
+	c = &composer{}
+	c.noteUnrecordedCredits(nil)
+	if len(c.messages) != 0 {
+		t.Errorf("an empty list noted %v", c.messages)
 	}
 }
