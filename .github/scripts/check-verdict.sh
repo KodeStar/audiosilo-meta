@@ -6,9 +6,9 @@
 #       Read the `needs` context of the aggregate job (every job it waits on,
 #       each with its `result`) from $NEEDS. Exit 0 when every job not named as
 #       an advisory one concluded `success`; otherwise name each one that did
-#       not, print the tail of each FAILING job's log found under <log-dir> (its
-#       output as failed-job-logs.sh fetched it from the API, one file per job
-#       named <job>.log or, for a matrix job, <job>-<n>.log), and exit 1. An absent,
+#       not, print the tail of every non-empty *.log under <log-dir> (the
+#       failing jobs' output, as failed-job-logs.sh fetched it from the API for
+#       exactly the jobs this verdict fails on), and exit 1. An absent,
 #       empty or unreadable $NEEDS is a failure: a verdict nobody could read is
 #       never a pass.
 #
@@ -33,13 +33,11 @@
 # script prints those files last - where the bot's tail reads them - just as the
 # single job's own log used to end with the failing step's output.
 #
-# ONLY THE FAILING JOBS' LOGS. failed-job-logs.sh reads the CURRENT attempt's
-# job listing, so a job that failed in an earlier attempt and has passed since
-# is not fetched at all (artifacts, which the logs used to travel as, belong to
-# the RUN and still held such a log after a "re-run failed jobs", which the sync
-# bot always asks for once before believing a failure). A log whose job
-# concluded `success` is still skipped here: printed, a stale log could be the
-# last thing in this one and become the bot's evidence for a failure it is not.
+# ONLY THE FAILING JOBS' LOGS, decided once, upstream: check.yml hands
+# failed-job-logs.sh the non-advisory jobs whose result is not `success`, and it
+# fetches those of them that failed in the CURRENT attempt - so <log-dir> holds
+# nothing else, and this script prints what it finds rather than filtering it a
+# second time.
 #
 # RESULTS. `success` is the only pass. `failure`, `cancelled` and `skipped` are
 # not: the gated jobs never skip at the job level (their STEPS are gated, so a
@@ -67,7 +65,6 @@ if ! rows="$(jq -r 'to_entries[] | "\(.key)\t\(.value.result)"' <<<"$NEEDS" 2>/d
 fi
 
 bad=0
-failing=" "
 while IFS=$'\t' read -r job result; do
   if [[ "$advisory" == *" $job "* ]]; then
     echo "$job: $result (advisory, never the verdict)"
@@ -76,7 +73,6 @@ while IFS=$'\t' read -r job result; do
   echo "$job: $result"
   if [ "$result" != "success" ]; then
     bad=1
-    failing+="$job "
   fi
 done <<<"$rows"
 
@@ -86,21 +82,12 @@ if [ "$bad" -eq 0 ]; then
 fi
 
 # The failing jobs' own output, last, so a reader of this log's tail sees it.
-# A log names its job by its file name (<job>.log, <job>-<n>.log for a matrix
-# job); one whose job passed is an earlier attempt's, and an empty one says
-# nothing.
+# An empty log says nothing and is left out.
 logs=()
 if [ -d "$logdir" ]; then
   while IFS= read -r log; do
-    stem="$(basename "$log" .log)"
-    job="$stem"
-    if [[ "$stem" =~ ^(.+)-[0-9]+$ ]]; then
-      job="${BASH_REMATCH[1]}"
-    fi
-    if [[ "$failing" == *" $job "* || "$failing" == *" $stem "* ]] && [ -s "$log" ]; then
-      logs+=("$log")
-    fi
-  done < <(find "$logdir" -type f -name '*.log' | LC_ALL=C sort)
+    logs+=("$log")
+  done < <(find "$logdir" -type f -name '*.log' -size +0 | LC_ALL=C sort)
 fi
 if [ "${#logs[@]}" -gt 0 ]; then
   per=$((TAIL_LINES / ${#logs[@]}))

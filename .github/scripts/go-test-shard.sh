@@ -11,8 +11,9 @@
 #
 # WHY. `go test -race ./...` was the longest step of the `check` job: ~215 s on
 # a push to main and ~310 s on a pull request that also carried a large data
-# change, because internal/recorddiff's TestAgainstTheRealCheckout reads the
-# commit's whole data diff (HEAD~1..HEAD) under the detector. go test already
+# change (internal/recorddiff's TestAgainstTheRealCheckout then read the
+# commit's whole data diff under the detector; it reads a bounded sample of it
+# under -race now, so it no longer follows the merge). go test already
 # runs packages in parallel inside one runner, so the wall time is bounded by its
 # few long packages sharing four cores with everything else; splitting the list
 # across runners is what shortens it.
@@ -35,12 +36,12 @@ set -euo pipefail
 DEFAULT_WEIGHT=2
 
 # Seconds under -race on a GitHub ubuntu-latest runner (check runs of
-# 2026-10-27/28). recorddiff is ~3 s on most changes and ~240 s on a large data
-# change; it is weighted between the two so it never shares a shard with the
-# other long package.
+# 2026-10-27/28). recorddiff was ~3 s on most changes and ~240 s on a large data
+# change until its real-checkout test was bounded under -race (raceMaxPaths);
+# it is ~3 s now whatever merged last, and weighted so.
 WEIGHTS='
 github.com/kodestar/audiosilo-meta/internal/importer 130
-github.com/kodestar/audiosilo-meta/internal/recorddiff 120
+github.com/kodestar/audiosilo-meta/internal/recorddiff 3
 github.com/kodestar/audiosilo-meta/internal/serve 60
 github.com/kodestar/audiosilo-meta/pkg/check 56
 github.com/kodestar/audiosilo-meta/internal/issueform 52

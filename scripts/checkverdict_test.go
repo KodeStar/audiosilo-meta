@@ -135,29 +135,28 @@ func TestCheckVerdictEndsWithTheFailedLogs(t *testing.T) {
 	}
 }
 
-// Artifacts outlive the attempt that uploaded them, so after a re-run of the
-// failed jobs the download still holds the log of a job that has passed since.
-// Only the jobs failing NOW are evidence: a stale log printed last would be the
-// tail the sync bot hands its resolver.
-func TestCheckVerdictSkipsThePassedJobsLogs(t *testing.T) {
+// The log directory holds exactly the failing jobs' logs (failed-job-logs.sh
+// fetches only the verdict's failing set, from the current attempt), so the
+// verdict prints every one of them - and leaves an empty one out, since it
+// says nothing.
+func TestCheckVerdictPrintsEveryNonEmptyLog(t *testing.T) {
 	t.Parallel()
 	logs := writeLogs(t, map[string]string{
 		"metacheck.log": "error: works/0/a.json: entry a: the real problem\n",
-		"metafmt.log":   "works/0/b.json is not canonical (attempt 1, since fixed)\n",
-		"test-3.log":    "--- FAIL: TestFlaky (attempt 1)\n",
+		"test-3.log":    "--- FAIL: TestShard3\n",
 		"build.log":     "",
 	})
-	out, code := verdict(t, needsOf(gate(map[string]string{"metacheck": "failure", "build": "failure"})), logs, "advisories")
+	out, code := verdict(t, needsOf(gate(map[string]string{"metacheck": "failure", "test": "failure", "build": "failure"})), logs, "advisories")
 	if code != 1 {
 		t.Fatalf("exit %d, want 1:\n%s", code, out)
 	}
-	if !strings.Contains(out, "the real problem") {
-		t.Errorf("the failing job's log is missing:\n%s", out)
-	}
-	for _, stale := range []string{"since fixed", "TestFlaky", "===== build.log"} {
-		if strings.Contains(out, stale) {
-			t.Errorf("printed %q, from a job that passed or a log that is empty:\n%s", stale, out)
+	for _, want := range []string{"the real problem", "--- FAIL: TestShard3"} {
+		if !strings.Contains(out, want) {
+			t.Errorf("the verdict did not print %q:\n%s", want, out)
 		}
+	}
+	if strings.Contains(out, "===== build.log") {
+		t.Errorf("an empty log was printed:\n%s", out)
 	}
 }
 
@@ -223,6 +222,9 @@ func TestCheckWorkflowVerdictWiring(t *testing.T) {
 	}
 	if !strings.Contains(body, "    permissions:\n      contents: read\n      actions: read\n") {
 		t.Error("the check job must read the jobs' logs with `actions: read` (and keep `contents: read`)")
+	}
+	if !strings.Contains(body, `select(.key != "advisories" and .value.result != "success")`) {
+		t.Error("the fetch must be handed the verdict's own failing set (every need but advisories that did not succeed)")
 	}
 	if !strings.Contains(body, `failed-job-logs.sh "$RUNNER_TEMP/logs"`) ||
 		!strings.Contains(body, "RUN_ATTEMPT: ${{ github.run_attempt }}") {

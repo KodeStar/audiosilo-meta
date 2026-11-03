@@ -7,7 +7,9 @@
 #     failed-job-logs.sh <out-dir> <job>...
 #       List the jobs of run RUN_ID's attempt RUN_ATTEMPT and, for every one
 #       that concluded `failure`, `cancelled` or `timed_out` and is one of the
-#       named <job>s (a matrix job "<job> (<n>)" counts as <job>), write its log
+#       named <job>s (check.yml names the verdict's own failing set: the
+#       non-advisory needs whose result is not `success`; a matrix job
+#       "<job> (<n>)" counts as <job>), write its log
 #       to <out-dir>/<job>.log, or <job>-<n>.log for a matrix job - the file
 #       names check-verdict.sh reads. Exit 2 on a usage error, 1 when the job
 #       listing cannot be read, else 0: a log that cannot be fetched is written
@@ -55,6 +57,22 @@ if ! jobs="$(gh api --paginate "repos/$REPO/actions/runs/$RUN_ID/attempts/$RUN_A
   exit 1
 fi
 
+# fetch_log <job id> <file>: the job's raw log, in up to three tries - a job
+# that has only just finished can briefly have no log to serve.
+fetch_log() {
+  local try
+  for try in 1 2 3; do
+    if gh api "repos/$REPO/actions/jobs/$1/logs" > "$2"; then
+      return 0
+    fi
+    [ "$try" -lt 3 ] && sleep "${RETRY_SLEEP:-5}"
+  done
+  return 1
+}
+
+raw="$(mktemp)"
+trap 'rm -f "$raw"' EXIT
+
 while IFS=$'\t' read -r id name; do
   [ -n "$id" ] || continue
   job="$name"
@@ -67,17 +85,7 @@ while IFS=$'\t' read -r id name; do
     continue
   fi
   out="$outdir/$stem.log"
-  raw="$(mktemp)"
-  fetched=0
-  # A job that has only just finished can briefly have no log to serve.
-  for try in 1 2 3; do
-    if gh api "repos/$REPO/actions/jobs/$id/logs" > "$raw"; then
-      fetched=1
-      break
-    fi
-    [ "$try" -lt 3 ] && sleep "${RETRY_SLEEP:-5}"
-  done
-  if [ "$fetched" -eq 1 ]; then
+  if fetch_log "$id" "$raw"; then
     sed -E -e $'1s/^\xEF\xBB\xBF//' -e 's/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]+Z ?//' "$raw" |
       awk '$0 == "Post job cleanup." || $0 == "Cleaning up orphan processes" { exit } { print }' > "$out"
     echo "fetched the log of $name ($(wc -l < "$out" | tr -d ' ') lines)"
@@ -85,6 +93,5 @@ while IFS=$'\t' read -r id name; do
     echo "(the log of $name, job $id, could not be fetched from the API; see the run)" > "$out"
     echo "failed-job-logs: could not fetch the log of $name (job $id)" >&2
   fi
-  rm -f "$raw"
 done <<<"$jobs"
 exit 0

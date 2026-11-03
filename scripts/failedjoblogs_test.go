@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 	"slices"
+	"strconv"
 	"strings"
 	"testing"
 )
@@ -69,7 +70,7 @@ func runFailedJobLogs(t *testing.T, jobs []stubJob, logs map[int64]string, env [
 		t.Fatal(err)
 	}
 	for id, body := range logs {
-		if err := os.WriteFile(filepath.Join(stub, jsonID(id)+".log"), []byte(body), 0o644); err != nil {
+		if err := os.WriteFile(filepath.Join(stub, strconv.FormatInt(id, 10)+".log"), []byte(body), 0o644); err != nil {
 			t.Fatal(err)
 		}
 	}
@@ -97,11 +98,6 @@ func runFailedJobLogs(t *testing.T, jobs []stubJob, logs map[int64]string, env [
 		calls = strings.Split(strings.TrimSuffix(string(b), "\n"), "\n")
 	}
 	return files, stdout, code, calls
-}
-
-func jsonID(id int64) string {
-	b, _ := json.Marshal(id)
-	return string(b)
 }
 
 // jobLog renders a log the way the API serves one: a BOM, a timestamp on every
