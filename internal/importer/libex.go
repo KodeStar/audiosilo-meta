@@ -174,13 +174,6 @@ func (lp *libexParse) add(class libexWarnClass, label, format string, args ...an
 	lp.warnings = append(lp.warnings, libexWarning{class: class, label: label, text: fmt.Sprintf(format, args...)})
 }
 
-// rowWarn returns the per-row warning sink for one accepted row, bound to a
-// class and the row's ASIN, so the deeper field parsers (covers, ISBNs) keep the
-// plain warn-func shape every other parser uses.
-func (lp *libexParse) rowWarn(class libexWarnClass, asin string) func(string, ...any) {
-	return func(format string, args ...any) { lp.add(class, asin, format, args...) }
-}
-
 // maxWarnExamples caps how many rows an aggregated warning names. A handful is
 // enough to go and look at the data; a full list would be the per-row output the
 // aggregation exists to avoid.
@@ -413,9 +406,8 @@ func libexToBook(e rawBook, asin, region string, authors, narrators []string, lp
 	sb.abridged = libexAbridged(e.str("bookFormat"))
 	sb.series = libexSeries(e["series"])
 	sb.genres = libexGenreClaims(e["genres"])
-	warnISBN := lp.rowWarn(warnMalformedISBN, asin)
 	sb.isbns = sourceISBNs(e["isbn"], func(raw string) {
-		warnISBN("%s: ISBN %q is malformed; dropped", asin, raw)
+		lp.add(warnMalformedISBN, asin, "%s: ISBN %q is malformed; dropped", asin, raw)
 	})
 	sb.chapters = e.chapters()
 	return sb

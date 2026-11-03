@@ -20,8 +20,7 @@ import (
 // whose entries are already the flat, factual ParsedBook projection (title,
 // subtitle, authors[], narrators[], series, series_position, asin, isbn,
 // language, release_date, publisher, runtime_min, chapters (a COUNT), abridged,
-// cover_url (https only, optional)). Its isbn rides onto the recording (claimISBNs:
-// a value another recording already holds is dropped, a malformed one quietly).
+// cover_url (https only, optional)).
 // Each entry is normalized into the same internal sourceBook the OpenAudible and
 // Libation paths produce, so it shares every mapping/dedup/series/person rule via
 // runBooks. Consuming this envelope is a cross-repo contract: the site produces

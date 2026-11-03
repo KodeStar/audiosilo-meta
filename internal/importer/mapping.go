@@ -110,13 +110,13 @@ func sourceISBNs(v any, malformed func(raw string)) []string {
 		for _, el := range arr {
 			candidates = append(candidates, coerceStr(el))
 		}
-	} else if s := coerceStr(v); s != "" {
-		candidates = []string{s}
+	} else {
+		candidates = []string{coerceStr(v)}
 	}
 	seen := map[string]bool{}
 	var out []string
 	for _, c := range candidates {
-		if strings.TrimSpace(c) == "" {
+		if c == "" { // coerceStr trims
 			continue
 		}
 		isbn, ok := NormalizeISBN(c)
