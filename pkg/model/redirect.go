@@ -119,6 +119,15 @@ func (r Redirects) Survivor(kind RedirectKind, slug string) (string, bool) {
 	return to, true
 }
 
+// Live is the slug a lookup of kind should ask for slug: its survivor when the
+// table retires it (Survivor), else slug itself.
+func (r Redirects) Live(kind RedirectKind, slug string) string {
+	if to, ok := r.Survivor(kind, slug); ok {
+		return to
+	}
+	return slug
+}
+
 // ErrReservedRedirectSlug is what a redirect naming an API route literal fails
 // with. It is a sentinel so a caller can tell it from a malformed slug.
 var ErrReservedRedirectSlug = errors.New("is a reserved slug: it names an API route segment, not a record")

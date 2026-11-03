@@ -15,6 +15,7 @@ import (
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/atomicfile"
+	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -89,6 +90,10 @@ type SelectOptions struct {
 	// runtime is an estimate, judged exactly as the import of it judges it.
 	// Empty makes no undated row an estimate.
 	ImportDate string
+	// Distinct are the reviewed "not one record" decisions, as Options.Distinct:
+	// the selection folds credits exactly as the import of its subset will, so a
+	// pair a merge-people rejection names is two people here too.
+	Distinct []check.ReviewedDistinct
 }
 
 // SeriesCount is one catalogue series' share of a selection.
@@ -300,7 +305,7 @@ func (st *selectState) claimPosition(slug, seq, workKey string) bool {
 func selectLibexRows(r io.Reader, opts SelectOptions, refusals *refusalLog) (SelectResult, []selectedRow, error) {
 	res := SelectResult{Excluded: map[string]int{}}
 	x := exclusions{res: &res, log: refusals}
-	idx, warnings := loadSeriesIndex(opts.DataDir, opts.AttachEditions, opts.ImportDate)
+	idx, warnings := loadSeriesIndex(opts.DataDir, opts.AttachEditions, opts.ImportDate, opts.Distinct)
 	res.Warnings = append(res.Warnings, warnings...)
 
 	st := newSelectState()
@@ -830,7 +835,8 @@ type seriesIndex struct {
 //
 // attach says the run applies the attach rule; without it the planner lets go
 // of the normalized-identity index, exactly as a plain selection always has.
-func loadSeriesIndex(dataDir string, attach bool, importDate string) (seriesIndex, []string) {
+// distinct is SelectOptions.Distinct, for the planner's honorific fold.
+func loadSeriesIndex(dataDir string, attach bool, importDate string, distinct []check.ReviewedDistinct) (seriesIndex, []string) {
 	idx := seriesIndex{
 		bySlug:    map[string]string{},
 		asins:     map[string]bool{},
@@ -841,7 +847,7 @@ func loadSeriesIndex(dataDir string, attach bool, importDate string) (seriesInde
 	if err != nil {
 		return idx, []string{fmt.Sprintf("catalogue at %s: %v; selecting against nothing", dataDir, err)}
 	}
-	p := newPlanner(store, sourceLibex, Options{DataDir: dataDir, ImportDate: importDate})
+	p := newPlanner(store, sourceLibex, Options{DataDir: dataDir, ImportDate: importDate, Distinct: distinct})
 	p.loadedPositions = attach
 	p.loadExisting()
 	if !attach {

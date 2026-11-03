@@ -142,6 +142,7 @@ import (
 	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/atomicfile"
+	"github.com/kodestar/audiosilo-meta/internal/audit"
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 )
 
@@ -308,6 +309,7 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		ExistingSeriesOnly: *existingSeriesOnly,
 		AttachEditions:     *attachEditions,
 		RowsAsOf:           *rowsAsOf,
+		Distinct:           audit.ReviewedDistinct(),
 	}
 	if *seriesLookup {
 		client := importer.NewLibexClient()
@@ -478,6 +480,7 @@ func runLibexSelect(args []string) int {
 		RefusalsPath:    *refusals,
 		AttachmentsPath: *attachments,
 		ImportDate:      day,
+		Distinct:        audit.ReviewedDistinct(),
 	})
 	if err != nil {
 		// The report is deliberately NOT printed here. A run that aborted
@@ -808,7 +811,7 @@ func runLibexFill(args []string) int {
 		return 0
 	}
 
-	opts := importer.Options{DataDir: *dataDir, ImportDate: day, DryRun: *dryRun, Mode: importer.ModeEnrich}
+	opts := importer.Options{DataDir: *dataDir, ImportDate: day, DryRun: *dryRun, Mode: importer.ModeEnrich, Distinct: audit.ReviewedDistinct()}
 	if *conflicts != "" {
 		f, err := os.OpenFile(*conflicts, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0o644)
 		if err != nil {

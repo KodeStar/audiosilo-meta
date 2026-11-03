@@ -167,9 +167,12 @@ never noticed (ai-verify read only the metadiff summary). Two halves:
   rejection matching no fresh proposal is reported `census-only` in SUMMARY.md, not
   STALE, because the census honours it whatever the detectors propose and pruning
   it would bring the pair back - unless fewer than two of its records are still
-  live (merged onto one survivor, or deleted), which withholds nothing and is STALE. Follow-up, not built: internal/importer's honorific
-  fold could consult the same list before folding a "Dr. X" credit onto a bare
-  record of another person. metabuild's census and metaaudit's LOADER carry-through load
+  live (merged onto one survivor, or deleted), which withholds nothing and is STALE. The importer's
+  honorific fold honours the same rejections: a pair a merge-people rejection names
+  is never folded, titled onto bare or (LibriVox rule 1c) bare onto titled, so an
+  import cannot re-merge a pair a maintainer separated (`importer.Options.Distinct`,
+  filled from `audit.ReviewedDistinct()` by cmd/metaimport and internal/issueform,
+  resolved through redirects.json by `check.ResolveDistinct`). metabuild's census and metaaudit's LOADER carry-through load
   without the decisions (neither is the census anyone reads).
 - **New advisories reach the automation.** On a pull request touching data/,
   `.github/scripts/advisory-delta.sh` runs the same metacheck binary over the base and
