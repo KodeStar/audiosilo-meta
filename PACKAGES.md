@@ -533,7 +533,16 @@ together, so the best agreement wins) + one `position`, `runtime` (seconds),
 identifier lookup; `q` exactly as works/search reads it plus the exact-title probe
 of its leading/trailing word runs; every title guess as whole words plus the
 exact-title probe; EVERY WORK BY THE NAMED AUTHORS, people resolved through the
-FTS person rows by full name then by surname with first-name/initial agreement;
+FTS person rows by full name then by surname with first-name/initial agreement,
+the surname's 400-row window ORDERED by how many of a row's words begin with the
+guess's initial (a given-less mononym ranked level, since it agrees too) before it
+is cut (`personInitialSQL`), so a surname with more bearers than the window - 594
+Smiths - cannot crowd out the one the initial names
+(`TestPeopleNamedOrdersTheSurnameWindowByTheInitial`), save a given-less name read
+through a suffix or bracket ("James III"), which ranks as two words; a bare surname keeps the
+unordered window, which cannot lose a book the title probe found, since every
+candidate is judged on its own credits
+(`TestMatchABareSurnameBeyondTheWindowKeepsTheTitledBook`);
 the members of the named series) into one pool capped at 2,500 works, loads each
 candidate's title/subtitle, authors, memberships and runtimes in batched indexed
 reads (`TestBatchLookupsAreIndexed` covers all of them), and scores in Go. A
@@ -599,7 +608,9 @@ with search, lookup and the ABS facade (`ftsHits`, the boosts, `lookupIDs`,
 `cardsByID` and the batches) take a context and run QueryContext, so a spent
 budget refuses the next query rather than letting a slow FTS walk hold a slot
 (`TestMatchReadsHonourTheContext`); search and lookup pass the request's, and a
-client gone mid-request is not logged as a 500. No Cache-Control, like the searches. Measured against the
+failure that IS the request's own cancellation is not logged as a 500 (a real
+error still is when the client has gone: `httpx.Fail` tests the error, not the
+context). No Cache-Control, like the searches. Measured against the
 2026-10 core artifact (282k works) over that library's 434 books with a reviewed
 answer: every pick right (8 differ from the reference, 4 being reference errors the
 path's numbering and runtime refute and 4 duplicate records of the same book),
