@@ -1,12 +1,21 @@
 package importer
 
 import (
+	"bytes"
 	"fmt"
 	"reflect"
+	"runtime"
 	"slices"
 	"strings"
 	"testing"
+	"unsafe"
 )
+
+// parseLibex is parseLibexStream over an export already in memory (the tests'
+// door; RunLibex streams the file).
+func parseLibex(data []byte) (libexParse, error) {
+	return parseLibexStream(bytes.NewReader(data))
+}
 
 // libexStreamRow is one well-formed libex row; extra is spliced in verbatim.
 func libexStreamRow(asin, title, region, lang, narrator, extra string) string {
@@ -59,6 +68,10 @@ func TestLibexStreamShapes(t *testing.T) {
 		{"truncated object", `{"asin":`, nil, 0, truncated},
 		{"concatenated arrays", "[" + one + "][" + two + "]", nil, 0, trailing},
 		{"array then garbage", "[" + one + "] garbage", nil, 0, trailing},
+		{"array then a stray brace", "[" + one + "]}" + two, nil, 0, trailing},
+		{"array then a stray bracket", "[" + one + "]]", nil, 0, trailing},
+		{"wrapper then a stray bracket", `{"books":[` + one + `]}]` + "\n" + two, nil, 0, trailing},
+		{"wrapper then a stray brace", `{"books":[` + one + `]}}`, nil, 0, trailing},
 		{"non-object ndjson value", one + "\n7\n", nil, 0, "parse libex export: json: cannot unmarshal number into Go value of type map[string]interface {}"},
 		{"scalar", "42", nil, 0, wrongShape},
 		{"not json at all", "hello", nil, 0, wrongShape},
@@ -147,5 +160,31 @@ func TestLibexRelocationOrderIsCanonical(t *testing.T) {
 	}
 	if reflect.DeepEqual(plain.books, a.books) {
 		t.Error("the relocation order equals the file order; the fixture no longer exercises the sort")
+	}
+}
+
+// TestLibexGenreClaimsAreInterned pins that the parse holds ONE copy of a genre
+// spelling repeated across rows, and that a GC between two rows does not undo it
+// (what interning through package unique did).
+func TestLibexGenreClaimsAreInterned(t *testing.T) {
+	genres := `,"genres":[{"asin":"18580606011","name":"Science Fiction &amp; Fantasy"}]`
+	lp, err := parseLibex([]byte(libexStreamRow("B0STREAM01", "First Book", "us", "english", "Bea Reader", genres) + "\n" +
+		libexStreamRow("B0STREAM02", "Second Book", "us", "english", "Bea Reader", genres) + "\n"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(lp.books) != 2 || len(lp.books[0].genres) != 1 || len(lp.books[1].genres) != 1 {
+		t.Fatalf("books = %+v", lp.books)
+	}
+	a, b := lp.books[0].genres[0], lp.books[1].genres[0]
+	if a.name != "Science Fiction & Fantasy" || unsafe.StringData(a.name) != unsafe.StringData(b.name) ||
+		unsafe.StringData(a.node) != unsafe.StringData(b.node) {
+		t.Errorf("claims %+v and %+v do not share one copy of each string", a, b)
+	}
+
+	first := lp.intern(strings.Clone("Mystery"))
+	runtime.GC()
+	if again := lp.intern(strings.Clone("Mystery")); unsafe.StringData(first) != unsafe.StringData(again) {
+		t.Error("a GC between two rows made the parse copy a spelling again")
 	}
 }

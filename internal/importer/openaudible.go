@@ -24,9 +24,9 @@ var wrapperKeys = []string{"Books", "books", "Items", "items", "Library", "libra
 
 // errNotAnEntryList is the refusal for a file that is neither an array of
 // entries nor an envelope holding one. It is a function rather than an inline
-// Errorf because the libex STREAMING reader (libexselect.go) must refuse the
-// same file with the same words: an operator who is told to select a file and
-// then to import it should never see two descriptions of one problem.
+// Errorf because the libex reader (streamLibexRows, libexselect.go) refuses an
+// envelope it cannot unwrap with the same words, so one problem has one
+// description whichever export format it turns up in.
 func errNotAnEntryList(label string) error {
 	return fmt.Errorf("parse %s: expected a JSON array of objects (or a wrapper object holding one)", label)
 }

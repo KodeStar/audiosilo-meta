@@ -551,8 +551,8 @@ func TestLibexSelectAcceptsExportShapes(t *testing.T) {
 }
 
 // TestLibexSelectRefusesBrokenExports pins the shapes the streamer must NOT
-// accept. Each is a file the in-memory parser already refuses, and each used to
-// stream through happily because the array loop never consumed the closing
+// accept. Each is a file the importer refuses too (it reads through the same
+// streamLibexRows), and each used to stream through happily because the array loop never consumed the closing
 // bracket: a truncated dump imported as though it were whole, and two
 // concatenated exports imported only the first.
 func TestLibexSelectRefusesBrokenExports(t *testing.T) {

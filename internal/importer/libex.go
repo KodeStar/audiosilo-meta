@@ -1,7 +1,6 @@
 package importer
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -13,7 +12,6 @@ import (
 	"strings"
 	"unicode"
 	"unicode/utf8"
-	"unique"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"golang.org/x/text/unicode/norm"
@@ -170,6 +168,26 @@ type libexParse struct {
 	// skips names each refused row that has an ASIN to name it by, under its
 	// rule (Summary.Skips, the --skipped worklist).
 	skips []RowSkip
+	// strs holds one copy of each genre-claim string the parse has kept
+	// (intern). nil leaves strings as they are: a one-row parse, such as
+	// libex-select's libexBook, keeps nothing that could share them.
+	strs map[string]string
+}
+
+// intern returns the parse's copy of s, so a spelling repeated across rows (a
+// genre node id or name, from one small vocabulary) is held once however many
+// rows the parse keeps. A parse-scoped map rather than package unique: a
+// unique.Handle that nobody keeps is collected at the next GC, after which the
+// same spelling is copied again.
+func (lp *libexParse) intern(s string) string {
+	if lp.strs == nil || s == "" {
+		return s
+	}
+	if c, ok := lp.strs[s]; ok {
+		return c
+	}
+	lp.strs[s] = s
+	return s
 }
 
 // add records a parse-layer warning. label names the row (its ASIN, else its
@@ -244,12 +262,6 @@ func (lp libexParse) warningLines(aggregate bool) []string {
 	return lines
 }
 
-// parseLibex is parseLibexStream over an export already in memory (the tests'
-// door; RunLibex streams the file).
-func parseLibex(data []byte) (libexParse, error) {
-	return parseLibexStream(bytes.NewReader(data))
-}
-
 // parseLibexStream decodes a libex export ROW BY ROW (streamLibexRows) and
 // converts every usable row into the OpenAudible-shaped sourceBook the shared
 // pipeline consumes (see parseRow for what refuses a row here). Each row map is
@@ -257,7 +269,7 @@ func parseLibex(data []byte) (libexParse, error) {
 // sourceBook of each ACCEPTED row plus the warnings - never the file and never
 // the row maps, which for libex's full dump was most of its memory.
 func parseLibexStream(r io.Reader) (libexParse, error) {
-	var lp libexParse
+	lp := libexParse{strs: map[string]string{}}
 	if err := streamLibexRows(r, false, func(_ []byte, e rawBook) { lp.parseRow(e) }); err != nil {
 		return libexParse{}, err
 	}
@@ -292,7 +304,7 @@ func parseLibexRelocation(r io.Reader) (libexParse, []relocationEvidence, error)
 		return libexParse{}, nil, err
 	}
 	sort.SliceStable(rows, func(i, j int) bool { return rows[i].key < rows[j].key })
-	var lp libexParse
+	lp := libexParse{strs: map[string]string{}}
 	evidence := make([]relocationEvidence, 0, len(rows))
 	for _, kr := range rows {
 		lang, _ := mapLanguage(kr.row.str("language"))
@@ -354,7 +366,7 @@ func (lp *libexParse) parseRow(e rawBook) {
 // names and shapes to the OpenAudible keys addBook understands and reading only
 // the factual fields (description / summary / rating / copyright are never
 // touched). asin, region, authors and narrators are already resolved by
-// parseLibex (the credit lists because the credit-side refusals have to read
+// parseRow (the credit lists because the credit-side refusals have to read
 // them first). The credits,
 // runtime, abridged flag, series claims, genre claims, ISBNs and chapters are
 // parse-time facts carried as typed fields on the sourceBook, never smuggled
@@ -418,7 +430,7 @@ func libexToBook(e rawBook, asin, region string, authors, narrators []string, lp
 	// abridged unknown for runBooks' title-marker derivation to seed.
 	sb.abridged = libexAbridged(e.str("bookFormat"))
 	sb.series = libexSeries(e["series"])
-	sb.genres = libexGenreClaims(e["genres"])
+	sb.genres = libexGenreClaims(e["genres"], lp.intern)
 	sb.isbns = libexISBNs(e["isbn"], asin, lp.rowWarn(warnMalformedISBN, asin))
 	sb.chapters = e.chapters()
 	return sb
@@ -533,14 +545,13 @@ func libexSeries(v any) []seriesRef {
 // product ASIN). The node type is deliberately not filtered: both Audible
 // "Genres" and "Tags" nodes are eligible, and the mapping table decides which
 // map onto the project vocabulary (see audiblegenres.go).
-func libexGenreClaims(v any) []genreClaim {
+func libexGenreClaims(v any, intern func(string) string) []genreClaim {
 	arr, ok := v.([]any)
 	if !ok {
 		return nil
 	}
 	// The node ids and names come from one small vocabulary repeated across
-	// every row of a dump, so they are interned: the parse holds one copy of
-	// each spelling rather than one per claim.
+	// every row of a dump, so they are interned (libexParse.intern).
 	claims := make([]genreClaim, 0, len(arr))
 	for _, el := range arr {
 		switch x := el.(type) {
@@ -564,10 +575,6 @@ func libexGenreClaims(v any) []genreClaim {
 	}
 	return claims
 }
-
-// intern returns the canonical copy of s, so a string repeated across rows is
-// held once.
-func intern(s string) string { return unique.Make(s).Value() }
 
 // libexISBNs reads a row's ISBN field (a single string, or an array of them),
 // keeping only well-formed, deduplicated values in their normalized (hyphenless)

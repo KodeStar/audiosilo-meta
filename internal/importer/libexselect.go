@@ -1081,10 +1081,7 @@ func streamLibexRows(r io.Reader, keepRaw bool, fn libexRowFn) error {
 			}
 			return fmt.Errorf("parse libex export: %w", err)
 		}
-		if dec.More() {
-			return errors.New("parse libex export: trailing content after the first JSON value (concatenated exports?)")
-		}
-		return nil
+		return s.end()
 	case '{':
 		return s.objects()
 	default:
@@ -1154,10 +1151,29 @@ func (s libexStream) objects() error {
 			return err
 		}
 		if _, isRow := m["asin"]; first && !isRow && !s.dec.More() {
+			if err := s.end(); err != nil {
+				return err
+			}
 			return s.wrapped(raw, m)
 		}
 		s.fn(raw, rawBook(m))
 	}
+}
+
+// end refuses anything after the file's one top-level value. dec.More cannot
+// ask it: it reports false at a stray ']' or '}' as well as at EOF, so
+// "[r1]}r2" and `{"books":[r1]}]` + r2 would import their first half and
+// report success.
+func (s libexStream) end() error {
+	_, err := s.dec.Token()
+	if errors.Is(err, io.EOF) {
+		return nil
+	}
+	var syntax *json.SyntaxError
+	if err == nil || errors.As(err, &syntax) || errors.Is(err, io.ErrUnexpectedEOF) {
+		return errors.New("parse libex export: trailing content after the first JSON value (concatenated exports?)")
+	}
+	return fmt.Errorf("parse libex export: %w", err)
 }
 
 // wrapped emits the rows of a wrapper object ({"books":[...]}) under
