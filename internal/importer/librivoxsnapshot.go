@@ -22,13 +22,15 @@ import (
 // by no --ids and keyed by nothing: it is skipped with a warning naming its page
 // and title, never kept as project 0.
 //
-// A TRANCHE (an --ids selection) decodes only the pages that can hold its ids
-// when the manifest records each page's id range (librivoxManifest.PageIDs,
-// which the fetcher writes with the page): a page whose lowest-to-highest
-// range misses the selection is never opened. Every page decoded is checked
-// against its recorded range, and an id outside it (a page rewritten since)
-// reads the snapshot whole, as does a snapshot whose manifest leaves any page
-// out (one fetched before the ranges were recorded, a hand-assembled one).
+// A TRANCHE (an --ids selection) skips the pages the manifest RANGES away from
+// it (librivoxManifest.PageIDs, which the fetcher writes with each page): a
+// page whose recorded lowest-to-highest range misses the selection, and whose
+// file still has the size recorded beside that range, is never opened. Every
+// other page is decoded - one the manifest does not range (fetched before the
+// ranges were recorded, a hand-assembled one, one holding no readable id) and
+// one whose size changed since (rewritten since the fetch) - so a range the
+// manifest no longer vouches for never hides a project. A ranged page that is
+// decoded and holds an id outside its range reads the snapshot whole.
 const (
 	librivoxPagesDir     = "pages"
 	librivoxManifestFile = "manifest.json"
@@ -38,10 +40,22 @@ const (
 func librivoxPageName(offset int) string { return fmt.Sprintf("offset-%07d.json", offset) }
 
 // librivoxPageIDs is the range of project ids one page holds, lowest and
-// highest, as the fetcher recorded it.
+// highest, and the size of the body they were read from, as the fetcher
+// recorded them. Bytes 0 (a range recorded without a size) is not checked.
 type librivoxPageIDs struct {
-	First int `json:"first"`
-	Last  int `json:"last"`
+	First int   `json:"first"`
+	Last  int   `json:"last"`
+	Bytes int64 `json:"bytes,omitempty"`
+}
+
+// describes reports whether the range still describes the page file e: its
+// size is the one recorded, or none was.
+func (r librivoxPageIDs) describes(e os.DirEntry) bool {
+	if r.Bytes == 0 {
+		return true
+	}
+	info, err := e.Info()
+	return err == nil && info.Size() == r.Bytes
 }
 
 // pageIDRange is the lowest and highest readable id among books; ok=false when
@@ -62,7 +76,8 @@ func pageIDRange(books []LibrivoxProject) (librivoxPageIDs, bool) {
 }
 
 // librivoxPageSpan is one page file and the ids it can hold, [lo, hi]; 0 on
-// both is unbounded (a page with no recorded range, never checked).
+// both is unbounded (a page with no range the manifest vouches for, never
+// checked).
 type librivoxPageSpan struct {
 	name   string
 	lo, hi int
@@ -77,48 +92,45 @@ func ReadLibrivoxSnapshot(dir string) ([]LibrivoxProject, error) {
 
 // readLibrivoxSnapshot is ReadLibrivoxSnapshot keeping only the projects ids
 // selects (every project when ids is nil), so a tranche import holds only its
-// own projects rather than the whole catalogue, and decodes only the pages that
-// can hold them where the manifest records their ranges (see above). warnings
-// names each project of the pages read that was skipped for an unreadable id.
+// own projects rather than the whole catalogue, and skips the pages the
+// manifest ranges away from them (see above). warnings names each project of
+// the pages read that was skipped for an unreadable id.
 func readLibrivoxSnapshot(dir string, ids *LibrivoxIDs) (projects []LibrivoxProject, warnings []string, err error) {
 	pagesDir := filepath.Join(dir, librivoxPagesDir)
 	entries, err := os.ReadDir(pagesDir)
 	if err != nil {
 		return nil, nil, fmt.Errorf("read LibriVox snapshot %s: %w", dir, err)
 	}
-	var names []string
+	var pages []os.DirEntry
 	for _, e := range entries {
 		if !e.IsDir() && strings.HasSuffix(e.Name(), ".json") {
-			names = append(names, e.Name())
+			pages = append(pages, e)
 		}
 	}
-	whole := make([]librivoxPageSpan, len(names))
-	for i, n := range names {
-		whole[i] = librivoxPageSpan{name: n}
+	whole := make([]librivoxPageSpan, len(pages))
+	for i, e := range pages {
+		whole[i] = librivoxPageSpan{name: e.Name()}
 	}
 	if ids == nil {
 		projects, warnings, _, err := decodeLibrivoxPages(pagesDir, whole, nil)
 		return projects, warnings, err
 	}
-	if ranges := recordedPageIDs(dir); ranges != nil {
-		var selected []librivoxPageSpan
-		indexed := true
-		for _, n := range names {
-			r, ok := ranges[n]
-			if !ok {
-				indexed = false
-				break
-			}
-			if ids.overlaps(r.First, r.Last) {
-				selected = append(selected, librivoxPageSpan{name: n, lo: r.First, hi: r.Last})
-			}
+	// A page the manifest does not range, or ranges at another size, is
+	// decoded unbounded; a ranged one only when its range meets the selection.
+	ranges := recordedPageIDs(dir)
+	var selected []librivoxPageSpan
+	for i, e := range pages {
+		r, ok := ranges[e.Name()]
+		switch {
+		case !ok || !r.describes(e):
+			selected = append(selected, whole[i])
+		case ids.overlaps(r.First, r.Last):
+			selected = append(selected, librivoxPageSpan{name: e.Name(), lo: r.First, hi: r.Last})
 		}
-		if indexed {
-			projects, warnings, inSpan, err := decodeLibrivoxPages(pagesDir, selected, ids.Has)
-			if err != nil || inSpan {
-				return projects, warnings, err
-			}
-		}
+	}
+	projects, warnings, inSpan, err := decodeLibrivoxPages(pagesDir, selected, ids.Has)
+	if err != nil || inSpan {
+		return projects, warnings, err
 	}
 	projects, warnings, _, err = decodeLibrivoxPages(pagesDir, whole, ids.Has)
 	return projects, warnings, err

@@ -6,7 +6,8 @@ import "strings"
 // each rule's machine-readable CODE and the wording the libex-select report
 // counts it under. The codes are what `libex-select --refusals` and
 // `metaimport libex --skipped` write, one {"asin":"<ASIN>","reason":"<code>"}
-// line per refused row.
+// line per refused row - and `metaimport librivox import --skipped`, whose
+// lines name the project instead ({"librivox_id":<id>,"reason":"<code>"}).
 //
 // THE CODES ARE A CONTRACT with audiosilo-meta-sync, the series-completion bot,
 // which reads those files to decide what a refused row means for its queue. A
@@ -42,8 +43,9 @@ const (
 	RefusalCreditNotAPerson        = "credit-not-a-person"
 	RefusalPositionClaimed         = "position-claimed"
 	RefusalOverSeriesCap           = "over-series-cap"
-	// The IMPORT-side codes: rows `metaimport libex` itself skips, which only
-	// its --skipped worklist carries (libex-select never refuses for these).
+	// The IMPORT-side codes: rows `metaimport libex` (and `librivox import`)
+	// itself skips, which only its --skipped worklist carries (libex-select
+	// never refuses for these).
 	RefusalIdentityDuplicate         = "identity-duplicate"
 	RefusalMissingAuthor             = "missing-author"
 	RefusalMissingTitle              = "missing-title"

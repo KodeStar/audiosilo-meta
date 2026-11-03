@@ -170,8 +170,17 @@ func TestLibrivoxFetchPagesTheCatalogue(t *testing.T) {
 	if !reflect.DeepEqual(ids, []int{296, 527, 801, 1870}) {
 		t.Errorf("snapshot ids = %v", ids)
 	}
-	// Each page's id range is recorded, so a tranche opens only its own pages.
+	// Each page's id range is recorded with its body's size, so a tranche
+	// opens only its own pages.
 	wantRanges := map[string]librivoxPageIDs{librivoxPageName(0): {First: 296, Last: 527}, librivoxPageName(2): {First: 801, Last: 1870}}
+	for name, r := range wantRanges {
+		info, err := os.Stat(filepath.Join(dir, librivoxPagesDir, name))
+		if err != nil {
+			t.Fatal(err)
+		}
+		r.Bytes = info.Size()
+		wantRanges[name] = r
+	}
 	if !reflect.DeepEqual(m.PageIDs, wantRanges) {
 		t.Errorf("page ids = %+v, want %+v", m.PageIDs, wantRanges)
 	}
@@ -347,6 +356,22 @@ func TestLibrivoxFetchRefusesAnOverLimit(t *testing.T) {
 	f.Limit = 501
 	if _, err := f.Fetch(context.Background(), t.TempDir(), 0); err == nil {
 		t.Fatal("limit 501 accepted; the feed caps at 500")
+	}
+}
+
+// A MaxBody of 0 would refuse every page as too large; it is refused before any
+// request instead.
+func TestLibrivoxFetchRefusesANonPositiveMaxBody(t *testing.T) {
+	feed := newFakeFeed(t)
+	srv := httptest.NewServer(feed)
+	defer srv.Close()
+	f, _ := testFetcher(srv, 100)
+	f.MaxBody = 0
+	if _, err := f.Fetch(context.Background(), t.TempDir(), 0); err == nil || !strings.Contains(err.Error(), "max body 0") {
+		t.Fatalf("err = %v, want the zero MaxBody refused", err)
+	}
+	if n := len(feed.requested()); n != 0 {
+		t.Errorf("%d requests made with a zero MaxBody", n)
 	}
 }
 

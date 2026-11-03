@@ -371,14 +371,14 @@ query, limit, next offset, page and project counts, complete or not) and
 `pages/offset-NNNNNNN.json`, each one feed response body verbatim. The importer
 reads `pages/*.json` and needs nothing else, so a hand-assembled snapshot (the
 test fixtures are one) works too. The fetcher records each page's range of
-project ids in the manifest (`page_ids`), and a tranche decodes only the pages
-whose range meets its `--ids` (0.19 s instead of 2.0 s for a 2,000-project
-tranche of the 22,449-project snapshot). A snapshot whose manifest does not
-range every page (one fetched before the ranges were recorded, a
-hand-assembled one), or a decoded page holding an id outside its range, is read
-whole. A project
-whose id is missing or unreadable is skipped with a warning naming its page
-and title (no `--ids` could select it).
+project ids and its size in the manifest (`page_ids`), and a tranche skips
+every page whose range misses its `--ids` (0.19 s instead of 2.0 s for a
+2,000-project tranche of the 22,449-project snapshot). A page the manifest does
+not range (fetched before the ranges were recorded, a hand-assembled one) or
+whose size has changed since is always decoded, and a decoded page holding an
+id outside its range reads the snapshot whole. A project whose id is missing or
+unreadable is skipped with a warning naming its page and title (no `--ids`
+could select it).
 
 What an import does: a project LibriVox is still recording (no `totaltimesecs`
 and no archive.org item in `url_iarchive`; the feed has no status field) is set
@@ -453,7 +453,7 @@ apart, or rule 3's trailing qualifier), `same-name-author` (below) and `fallback
 re-importing the project's id lands it. `--conflicts` rows for these projects
 carry `librivox_id`, since they have no ASIN, and so do the `--skipped` lines
 (one `{"librivox_id","reason"}` NDJSON line per project refused under a
-refusal code: an unknown language, no narrator or author, or the
+refusal code: an unknown language, no narrator, author or title, or the
 duplicate-identity guard's `identity-duplicate`; the libex `--skipped` shape
 with the project id in place of the ASIN).
 

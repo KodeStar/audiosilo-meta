@@ -139,10 +139,10 @@ type librivoxManifest struct {
 	Complete   bool   `json:"complete"`
 	StartedAt  string `json:"started_at"`
 	UpdatedAt  string `json:"updated_at"`
-	// PageIDs is each page's range of project ids, by page file name, so a
-	// tranche import opens only the pages that can hold its ids
-	// (librivoxsnapshot.go). A manifest from before it was recorded has none,
-	// and its snapshot is read whole.
+	// PageIDs is each page's range of project ids and body size, by page file
+	// name, so a tranche import skips the pages that cannot hold its ids
+	// (librivoxsnapshot.go). A page it does not name (a manifest from before it
+	// was recorded, a page holding no readable id) is always decoded.
 	PageIDs map[string]librivoxPageIDs `json:"page_ids,omitempty"`
 }
 
@@ -163,6 +163,11 @@ type LibrivoxFetchResult struct {
 func (f *LibrivoxFetcher) Fetch(ctx context.Context, dir string, maxPages int) (LibrivoxFetchResult, error) {
 	if f.Limit < 1 || f.Limit > 500 {
 		return LibrivoxFetchResult{}, fmt.Errorf("librivox fetch: limit %d is outside 1-500 (the feed's cap)", f.Limit)
+	}
+	// A zero MaxBody (a fetcher built without NewLibrivoxFetcher) would refuse
+	// every page as too large rather than fetch anything.
+	if f.MaxBody < 1 {
+		return LibrivoxFetchResult{}, fmt.Errorf("librivox fetch: max body %d is not a positive byte count", f.MaxBody)
 	}
 	m, err := f.openManifest(dir)
 	if err != nil {
@@ -188,6 +193,7 @@ func (f *LibrivoxFetcher) Fetch(ctx context.Context, dir string, maxPages int) (
 				return res, err
 			}
 			if r, ok := pageIDRange(books); ok {
+				r.Bytes = int64(len(body))
 				if m.PageIDs == nil {
 					m.PageIDs = map[string]librivoxPageIDs{}
 				}

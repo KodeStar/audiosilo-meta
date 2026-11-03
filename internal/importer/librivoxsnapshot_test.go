@@ -85,10 +85,10 @@ func TestLibrivoxTrancheDecodesOnlyItsPages(t *testing.T) {
 	}
 }
 
-// Without a range for every page - no manifest, a manifest from before the
-// ranges were recorded, or a page the manifest does not name - the snapshot is
-// read whole, so the broken page fails the run whatever it selects.
-func TestLibrivoxSnapshotWithoutRangesIsReadWhole(t *testing.T) {
+// A page the manifest does not range - no manifest, a manifest from before the
+// ranges were recorded, or a page it does not name - is always decoded, so the
+// broken page fails the run whatever it selects.
+func TestLibrivoxUnrangedPageIsAlwaysDecoded(t *testing.T) {
 	partial := map[string]librivoxPageIDs{}
 	for k, v := range threeRanges {
 		if k != librivoxPageName(100) {
@@ -103,6 +103,49 @@ func TestLibrivoxSnapshotWithoutRangesIsReadWhole(t *testing.T) {
 		ids := mustLibrivoxIDs("100")
 		if _, _, err := readLibrivoxSnapshot(writeRawSnapshot(t, m, threePages), &ids); err == nil {
 			t.Errorf("%s: the snapshot was read by page ranges", name)
+		}
+	}
+}
+
+// One unranged page does not undo the others' ranges: a tranche still skips a
+// ranged page that misses it (here a broken one) while decoding the unranged
+// page beside it.
+func TestLibrivoxPartlyRangedSnapshotSkipsTheRangedPages(t *testing.T) {
+	dir := writeRawSnapshot(t, withPageIDs(map[string]librivoxPageIDs{
+		librivoxPageName(0):   {First: 100, Last: 150},
+		librivoxPageName(200): {First: 400, Last: 450},
+	}), map[string]string{
+		librivoxPageName(0):   `{"books":[{"id":"100","title":"A"}, NOT JSON`,
+		librivoxPageName(100): `{"books":[{"id":"300","title":"C"}]}`,
+		librivoxPageName(200): `{"books":[{"id":"400","title":"D"},{"id":"450","title":"E"}]}`,
+	})
+	if got, want := snapshotIDs(t, dir, "300-"), []int{300, 400, 450}; !reflect.DeepEqual(got, want) {
+		t.Errorf("--ids 300- = %v, want %v", got, want)
+	}
+}
+
+// A ranged page whose file no longer has the size the fetcher recorded was
+// rewritten since: its range no longer vouches for it, so it is decoded even
+// when the range misses the selection. A range recorded without a size is
+// trusted.
+func TestLibrivoxResizedPageIsDecoded(t *testing.T) {
+	first := `{"books":[{"id":"100","title":"A"},{"id":"150","title":"B"}]}`
+	rewritten := `{"books":[{"id":"120","title":"Moved here"}]}`
+	pages := map[string]string{librivoxPageName(0): first, librivoxPageName(100): rewritten}
+	for _, tc := range []struct {
+		name  string
+		bytes int64
+		want  []int
+	}{
+		{"size changed", int64(len(rewritten)) + 7, []int{100, 120, 150}},
+		{"no size recorded", 0, []int{100, 150}},
+	} {
+		dir := writeRawSnapshot(t, withPageIDs(map[string]librivoxPageIDs{
+			librivoxPageName(0):   {First: 100, Last: 150, Bytes: int64(len(first))},
+			librivoxPageName(100): {First: 300, Last: 300, Bytes: tc.bytes},
+		}), pages)
+		if got := snapshotIDs(t, dir, "100-150"); !reflect.DeepEqual(got, tc.want) {
+			t.Errorf("%s: --ids 100-150 = %v, want %v", tc.name, got, tc.want)
 		}
 	}
 }
