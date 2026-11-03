@@ -534,6 +534,7 @@ func magelingTree(t testing.TB) (map[string]string, *Finding) {
 // named slot, or stating the very title, is ANOTHER record nobody reviewed (a reviewed
 // drop of a duplicate Philosopher's Stone, once merged, must not remove the real one).
 // An acceptance of the survivor's detector proposal is the same review of a gone work.
+// A survivor still holding what the review names is said so, to be reviewed there.
 // A LIVE target listed elsewhere stays REFUSED (TestReviewedAssertDropLookups).
 func TestReviewedDropOrRetitleOfARetiredWork(t *testing.T) {
 	const why = " since: the work it names is gone, and a review of it never applies to its survivor"
@@ -550,12 +551,15 @@ func TestReviewedDropOrRetitleOfARetiredWork(t *testing.T) {
 		{"drop, survivor elsewhere", dropAssertion("complete-chronicles-old", "narnia", "", "1"),
 			"complete-chronicles-old was retired onto the-complete-chronicles" + why},
 		{"drop, survivor at the slot", dropAssertion("complete-chronicles-old", "narnia", "", "1-7"),
-			"complete-chronicles-old was retired onto the-complete-chronicles" + why},
+			"complete-chronicles-old was retired onto the-complete-chronicles" + why +
+				`; series narnia lists the-complete-chronicles at that very position "1-7", so review it there`},
 		{"retitle, survivor states the old title", retitleAssertion("world-without-end-old", "", "World Without End", "World without End"),
-			"world-without-end-old was retired onto world-without-end" + why},
+			"world-without-end-old was retired onto world-without-end" + why +
+				`; world-without-end states that very title "World Without End", so review it there`},
 		{"retitle, survivor states another title", retitleAssertion("world-without-end-old", "", "World Without End: Old", "World without End"),
 			"world-without-end-old was retired onto world-without-end" + why},
-		{"accepted retitle, survivor proposed", accept, "mageling-old was retired onto mageling" + why},
+		{"accepted retitle, survivor proposed", accept, "mageling-old was retired onto mageling" + why +
+			`; mageling states that very title "Mageling (Unabridged)", so review it there`},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			rep := runFixtureRejectingWith(t, files, reds, tc.r)

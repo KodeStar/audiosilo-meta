@@ -32,7 +32,9 @@ import (
 // the match only adds the note, and a review can never be accepted.
 //
 // Slug-valued fields resolve through the appropriate tombstone namespace; literal
-// titles, positions and languages never do. Entries retain the reviewed spelling.
+// titles, positions and languages never do. The one exception is the WORK an
+// acceptance or assertion of a judgesOneWork op names: once retired it reads STALE
+// rather than resolving onto its survivor (retiredSubject). Entries retain the reviewed spelling.
 // Reviews converging after redirects keep all distinct reasons in file order. If
 // opposite decisions converge, rejection wins and the acceptance is refused.
 // STALE means no fresh proposal matches, not an error or permission to apply it.
@@ -47,9 +49,9 @@ import (
 // refusals and post-write validation still apply. A detector already proposing the same
 // identity turns it into an acceptance (REDUNDANT): like an accept, it promotes that
 // proposal even where the detector made it advisory, overriding the detector's veto. Once applied its records are
-// retired or joined, so it reads STALE and a re-run proposes nothing. A decision judging
-// one work's own record whose work was since retired is STALE whatever its survivor
-// holds (retiredSubject says why). A live drop target listed only at other slots is
+// retired or joined, so it reads STALE and a re-run proposes nothing. An acceptance or
+// assertion judging one work's own record whose work was since retired is STALE whatever
+// its survivor holds (retiredSubject says why). A live drop target listed only at other slots is
 // REFUSED. A retitle is compared with the title the work states
 // NOW: the asserted To is STALE (applied), the asserted From is sourced, and any other
 // title is REFUSED naming it - the record moved, and a stale review must not overwrite a
@@ -403,9 +405,13 @@ func retiredElsewhere(r reviewedDecision, target string, reds model.Redirects) [
 
 // judgesOneWork are the ops whose Target is a WORK and whose action judges that one
 // record as it stands - its place in a series (drop, move, restate), its title, its
-// language, a field it lacks - rather than stating a fact a merge carries over onto
-// its survivor (a merge, an added membership or link). fill-field's recording-level
-// fields name a recording, which no tombstone resolves, so they never meet the rule.
+// language, a field it lacks - rather than stating a positive fact of the book, which
+// is as true of its survivor (a merge, an added membership or link). A merge does
+// carry the loser's memberships over (internal/repair's rewriteMemberships), so the
+// survivor may sit at the very slot a drop names; that membership is still the
+// survivor's now, beside its own title and language, which nobody reviewed.
+// fill-field's recording-level fields name a recording, which no tombstone resolves,
+// so they never meet the rule. TestJudgesOneWorkClassifiesEveryOp pins the split.
 var judgesOneWork = map[string]bool{
 	OpDropMembership:  true,
 	OpMoveMembership:  true,
@@ -426,13 +432,45 @@ var judgesOneWork = map[string]bool{
 // also what keeps it from metarepair. A rejection still resolves: withholding the
 // survivor's proposal is conservative, never a write. A work deleted without a
 // redirect is no survivor either: an assertion naming it is REFUSED as naming no
-// record, an acceptance meets no fresh proposal and is STALE.
-func retiredSubject(r reviewedDecision, p Proposal) string {
+// record, an acceptance meets no fresh proposal and is STALE. A survivor still holding
+// what the review was written against is named (survivorHolds): that STALE line is the
+// one a reviewer must not prune unread, since the judgement may still be owed there.
+func retiredSubject(r reviewedDecision, p Proposal, ix *index) string {
 	if r.Decision == "reject" || !judgesOneWork[r.Op] || r.Target == p.Target {
 		return ""
 	}
-	return fmt.Sprintf("%s was retired onto %s since: the work it names is gone, and a review of it never applies to its survivor",
+	why := fmt.Sprintf("%s was retired onto %s since: the work it names is gone, and a review of it never applies to its survivor",
 		r.Target, p.Target)
+	if held := survivorHolds(p, ix); held != "" {
+		why += "; " + held + ", so review it there"
+	}
+	return why
+}
+
+// survivorHolds names the part of a judgesOneWork proposal's precondition its resolved
+// target still meets - listed in the series at the slot it names, or stating the title
+// or language it changes from - or "" (nothing, or no catalogue to look in).
+func survivorHolds(p Proposal, ix *index) string {
+	if ix == nil {
+		return ""
+	}
+	switch p.Op {
+	case OpDropMembership, OpMoveMembership, OpRestatePosition:
+		for _, m := range ix.memberships[p.Target] {
+			if m.series == p.Series && importer.SameSlot(m.position, p.From) {
+				return fmt.Sprintf("series %s lists %s at that very position %q", p.Series, p.Target, m.position)
+			}
+		}
+	case OpRetitle:
+		if w := ix.workByID[p.Target]; w != nil && w.Title == p.From {
+			return fmt.Sprintf("%s states that very title %q", p.Target, w.Title)
+		}
+	case OpSetWorkLanguage:
+		if w := ix.workByID[p.Target]; w != nil && w.Language == p.From {
+			return fmt.Sprintf("%s states that very language %q", p.Target, w.Language)
+		}
+	}
+	return ""
 }
 
 func resolvedProposal(p Proposal, class string, reds model.Redirects) Proposal {
@@ -580,7 +618,7 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 	for j, r := range rs {
 		if r.Op != OpReview {
 			resolved[j] = resolvedProposal(r.proposal(), "", reds)
-			if why := retiredSubject(r, resolved[j]); why != "" {
+			if why := retiredSubject(r, resolved[j], ix); why != "" {
 				// It matches nothing and sources nothing: see retiredSubject.
 				statuses[j], whys[j] = statusStale, why
 				continue

@@ -446,15 +446,26 @@ func TestReviewedDropOrRetitleOfARetiredWorkNeverReachesMetarepair(t *testing.T)
 		t.Fatalf("repair applied %+v, refused %+v, considered %d", rep.Applied, rep.Refused, rep.Considered)
 	}
 	after := check.Load(data)
+	if len(after.Problems) > 0 {
+		t.Fatalf("after: %v", after.Problems)
+	}
+	var narnia *model.Series
 	for _, s := range after.Catalog.Series {
-		if s.ID == "narnia" && (len(s.Works) != 2 || s.Works[1].Work != "prince-caspian" || s.Works[1].Position != "4") {
-			t.Fatalf("narnia = %+v: the survivor lost its membership", s.Works)
+		if s.ID == "narnia" {
+			narnia = s
 		}
 	}
+	if narnia == nil || len(narnia.Works) != 2 || narnia.Works[1].Work != "prince-caspian" || narnia.Works[1].Position != "4" {
+		t.Fatalf("narnia = %+v: the survivor lost its membership", narnia)
+	}
+	var survivor *model.Work
 	for _, w := range after.Catalog.Works {
-		if w.ID == "prince-caspian" && w.Title != "Prince Caspian" {
-			t.Fatalf("survivor retitled to %q", w.Title)
+		if w.ID == "prince-caspian" {
+			survivor = w
 		}
+	}
+	if survivor == nil || survivor.Title != "Prince Caspian" {
+		t.Fatalf("survivor = %+v, want prince-caspian still titled Prince Caspian", survivor)
 	}
 }
 
