@@ -77,7 +77,7 @@ func WorkTitleAlias(w *model.Work, live func(slug string) bool, reds model.Redir
 	if !ok {
 		return ""
 	}
-	if serialVolumeSlug(chain.base, w.ID) {
+	if serialVolumeSlug(chain.base, w.ID, w.Authors) {
 		return ""
 	}
 	free := ""
@@ -107,32 +107,59 @@ func WorkTitleAlias(w *model.Work, live func(slug string) bool, reds model.Redir
 }
 
 // serialVolumeSlug reports whether id is the serial pre-pass's slug for a volume of
-// the title whose slug is base: base followed by a "book-" tail, or - for a long
-// title the pre-pass had to SHORTEN to fit the tail - exactly what posSuffixSlugs
-// composes (model.BoundedSlugTail over "-book-<position>"), so "my-daughter-left-
-// the-nest-and-book-11" is that title's volume 11 although it does not begin with
-// the whole base.
+// the title whose slug is base, or one of that volume's collision candidates: it
+// recomposes the volume exactly as posSuffixSlugs does (model.BoundedSlugTail over
+// "-book-<position>") for every position tail id carries, then asks whether id IS
+// that volume or a candidate the chain composes after it ("<volume>-<author>",
+// "<volume>-<author>-<n>", workSlugAt over any credited author). So
+// "bravelands-book-3" and "bravelands-book-3-jane-doe-2" are volumes, and so is
+// "my-daughter-left-the-nest-and-book-11", a long title the pre-pass had to
+// SHORTEN to fit the tail although it does not begin with the whole base.
 //
-// The shortened arm demands a POSITION tail (serialPositionTail) and nothing after
-// it. Without that, any long slug carrying the word "book" read as a shortened
-// volume: BoundedSlugTail reproduces a slug's own head whenever the "tail" is all
-// the rest of it, so "read-people-like-a-book-how-to-analyze-..." retitled "Read
-// People like a Book" (or "the-book-of-five-rings-by-miyamoto-musashi-..." retitled
-// "The Book of Five Rings") lost the alias the retitle exists to record.
-func serialVolumeSlug(base, id string) bool {
-	// The whole base, then a position - possibly followed by the collision
-	// suffix a later candidate carries ("the-saga-book-3-marty-book-2"). The
-	// rest must OPEN with the position's number, or a title that merely
-	// continues with the word "book" ("The Saga Book of Shadows" retitled "The
-	// Saga") would be read as a volume and lose its alias.
-	if rest, ok := strings.CutPrefix(id, base+"-"+serialTailPrefix); ok {
-		return serialPositionHead.MatchString(rest)
+// Asking the composer rather than matching a shape is what keeps a slug that
+// merely carries the word "book" out: "the-saga-book-of-shadows" or
+// "the-saga-book-2-the-reckoning" retitled "The Saga", or
+// "read-people-like-a-book-how-to-analyze-..." retitled "Read People like a Book",
+// is a decorated title's own slug, and reading it as a volume would cost exactly
+// the alias the retitle exists to record (BoundedSlugTail reproduces a slug's own
+// head whenever the "tail" is all the rest of it, so a shape test cannot tell).
+func serialVolumeSlug(base, id string, authors []string) bool {
+	sep := "-" + serialTailPrefix
+	for at := 0; ; {
+		i := strings.Index(id[at:], sep)
+		if i < 0 {
+			return false
+		}
+		i += at
+		rest := id[i+len(sep):]
+		for j := 1; j <= len(rest); j++ {
+			if j < len(rest) && rest[j] != '-' {
+				continue
+			}
+			if pos := rest[:j]; serialPositionTail.MatchString(pos) &&
+				onVolumeChain(model.BoundedSlugTail(base, sep+pos), id, authors) {
+				return true
+			}
+		}
+		at = i + 1
 	}
-	i := strings.LastIndex(id, "-"+serialTailPrefix)
-	if i < 0 || !serialPositionTail.MatchString(id[i+1+len(serialTailPrefix):]) {
-		return false
+}
+
+// onVolumeChain reports whether id is the volume slug vol or one of the collision
+// candidates a chain built on vol composes for one of authors (workSlugAt, the
+// first through the last numbered candidate).
+func onVolumeChain(vol, id string, authors []string) bool {
+	if id == vol {
+		return true
 	}
-	return model.BoundedSlugTail(base, id[i:]) == id
+	for _, a := range authors {
+		for n := 1; n <= maxWorkCandidate; n++ {
+			if slug, _ := workSlugAt(vol, a, n); slug == id {
+				return true
+			}
+		}
+	}
+	return false
 }
 
 // serialPositionTail matches what serialPositionSuffix puts after "book-" for a
@@ -140,10 +167,6 @@ func serialVolumeSlug(base, id string) bool {
 // number, its decimal point slugged to a hyphen ("2.5" -> "2-5"), and an omnibus
 // range spelled out with "-to-" ("1-3.5" -> "1-to-3-5").
 var serialPositionTail = regexp.MustCompile(`^\d+(-\d+)?(-to-\d+(-\d+)?)?$`)
-
-// serialPositionHead matches the start of a position tail that may be followed by
-// more slug: a number, then the end or a hyphen.
-var serialPositionHead = regexp.MustCompile(`^\d+(-|$)`)
 
 // ownTitleChain is the create path's candidate chain for a catalogued work's own
 // cleaned title and credits, with no position claim; ok is false when the work
