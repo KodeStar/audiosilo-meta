@@ -2,6 +2,7 @@ package query
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"os"
@@ -687,5 +688,46 @@ func TestLatestBySourceOrdersBySourceRecordings(t *testing.T) {
 	}
 	if q, args := (&DB{}).latestCandidatesQuery(nil, model.SourceLibrivox, 200); q != latestSourceSQL || len(args) != 2 {
 		t.Errorf("latest, source only = %q %v, want latestSourceSQL", q, args)
+	}
+}
+
+// TestExactTitleProbeFiltersSourceInsideItsWindow pins that the exact-title
+// boost applies ?source= INSIDE its bounded window: more same-titled works from
+// other sources than the window holds must not crowd the LibriVox one out, which
+// the old after-the-window filter did (q=poems&source=librivox, issue #2752).
+func TestExactTitleProbeFiltersSourceInsideItsWindow(t *testing.T) {
+	cat := &model.Catalog{People: []*model.Person{
+		{ID: "author", Name: "Author", License: "CC0-1.0"},
+		{ID: "reader", Name: "Reader", License: "CC0-1.0"},
+	}}
+	work := func(id, src string) *model.Work {
+		return &model.Work{ID: id, Title: "Poems", Authors: []string{"author"}, Language: "en", License: "CC0-1.0",
+			Recordings: []*model.Recording{{ID: "reading", Work: id, Narrators: []string{"reader"}, Language: "en",
+				License: "CC0-1.0", Sources: []model.Source{{Type: src}}}}}
+	}
+	// exactTitleProbeLimit retail "Poems" sort ahead of the LibriVox one by id.
+	for i := 0; i < exactTitleProbeLimit; i++ {
+		cat.Works = append(cat.Works, work(fmt.Sprintf("poems-%02d", i), model.SourceUser))
+	}
+	cat.Works = append(cat.Works, work("zz-poems-librivox", model.SourceLibrivox))
+	snap, ts := serveDB(t, artifacttest.Build(t, cat), HandlerOptions{})
+
+	if q, args := exactTitleQuery("poems", nil, ""); q != exactTitleSQL || len(args) != 2 {
+		t.Errorf("unfiltered exact-title probe = %q %v, want exactTitleSQL unchanged", q, args)
+	}
+	if got, err := snap.exactTitleHits(t.Context(), "poems", nil, ""); err != nil || containsString(got, "zz-poems-librivox") {
+		t.Fatalf("fixture: unfiltered exact-title window = %v (%v), want it full without the LibriVox Poems", got, err)
+	}
+	if got, err := snap.exactTitleHits(t.Context(), "poems", nil, model.SourceLibrivox); err != nil || strings.Join(got, ",") != "zz-poems-librivox" {
+		t.Errorf("exact-title probe under source=librivox = %v (%v), want [zz-poems-librivox]", got, err)
+	}
+	if got, err := snap.exactTitleHits(t.Context(), "poems", langFilter{"en"}, model.SourceLibrivox); err != nil || strings.Join(got, ",") != "zz-poems-librivox" {
+		t.Errorf("exact-title probe under lang=en&source=librivox = %v (%v), want [zz-poems-librivox]", got, err)
+	}
+	for _, path := range []string{"/api/v1/search?q=poems&source=librivox&limit=1", "/api/v1/works/search?q=poems&source=librivox&limit=1"} {
+		code, body := artifacttest.GetJSON(t, ts.URL, path)
+		if got := workIDsOf(t, body, "results"); code != http.StatusOK || strings.Join(got, ",") != "zz-poems-librivox" {
+			t.Errorf("GET %s = %d %v, want [zz-poems-librivox]", path, code, got)
+		}
 	}
 }

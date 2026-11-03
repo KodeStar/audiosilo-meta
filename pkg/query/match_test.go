@@ -723,7 +723,7 @@ func TestMatchReadsHonourTheContext(t *testing.T) {
 			return err
 		},
 		"exactTitleHits": func(ctx context.Context) error {
-			_, err := snap.exactTitleHits(ctx, "Dune", nil)
+			_, err := snap.exactTitleHits(ctx, "Dune", nil, "")
 			return err
 		},
 		"seriesPositionHits": func(ctx context.Context) error {
@@ -758,7 +758,7 @@ func TestMatchReadsHonourTheContext(t *testing.T) {
 		}
 	}
 	// The boosts degrade to none rather than failing; the next read then fails.
-	if got := snap.boostedWorks(cancelled, "dork diaries 6", nil); got != nil {
+	if got := snap.boostedWorks(cancelled, "dork diaries 6", nil, ""); got != nil {
 		t.Errorf("boostedWorks with a cancelled context = %v, want none", got)
 	}
 }

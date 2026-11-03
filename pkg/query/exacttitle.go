@@ -108,18 +108,29 @@ const (
 )
 
 // exactTitleQuery is the probe's SQL and arguments for q under a (live) language
-// filter: exactly exactTitleSQL with none, else the same query with the
-// language predicate INSIDE the windowed subquery. The window is the point - it
-// is exactTitleProbeLimit rows wide, so filtering the ids after the fact would let
-// works in other languages sharing the title fill it and crowd out the one the
-// reader asked for ("Dune" in German behind twenty English "Dune"s).
-func exactTitleQuery(q string, lang langFilter) (string, []any) {
-	if len(lang) == 0 {
+// filter and a source filter (librivox.go; "" for none): exactly exactTitleSQL
+// with neither, else the same query with the predicates INSIDE the windowed
+// subquery. The window is the point - it is exactTitleProbeLimit rows wide, so
+// filtering the ids after the fact would let other works sharing the title fill
+// it and crowd out the one the reader asked for: "Dune" in German behind twenty
+// English "Dune"s, or the LibriVox "Poems" behind twenty retail ones
+// (q=poems&source=librivox, issue #2752). The source arm is the list's own
+// (worksWithSourceArm) over the FTS row's id, a work id under the kind arm.
+func exactTitleQuery(q string, lang langFilter, src string) (string, []any) {
+	if len(lang) == 0 && src == "" {
 		return exactTitleSQL, []any{titleMatch(q), exactTitleProbeLimit}
 	}
-	pred, predArgs := lang.predicate("language", false)
-	args := append([]any{titleMatch(q)}, predArgs...)
-	return exactTitleHeadSQL + `AND ` + pred + ` ` + exactTitleTailSQL, append(args, exactTitleProbeLimit)
+	query, args := exactTitleHeadSQL, []any{titleMatch(q)}
+	if len(lang) > 0 {
+		pred, predArgs := lang.predicate("language", false)
+		query += `AND ` + pred + ` `
+		args = append(args, predArgs...)
+	}
+	if src != "" {
+		query += `AND ` + worksWithSourceArm + ` `
+		args = append(args, src)
+	}
+	return query + exactTitleTailSQL, append(args, exactTitleProbeLimit)
 }
 
 // titleMatch builds the column-filtered MATCH expression for a title probe. It
@@ -145,8 +156,8 @@ type titleCandidate struct{ id, title string }
 // shortest-titled works whose title matches, each with its authoritative title.
 // It is the one place the probe's column contract is spelled, shared by
 // exactTitleHits and the test that pins the column filter's scope.
-func (s *DB) titleCandidates(ctx context.Context, q string, lang langFilter) ([]titleCandidate, error) {
-	query, args := exactTitleQuery(q, lang)
+func (s *DB) titleCandidates(ctx context.Context, q string, lang langFilter, src string) ([]titleCandidate, error) {
+	query, args := exactTitleQuery(q, lang, src)
 	rows, err := s.db.QueryContext(ctx, query, args...)
 	if err != nil {
 		return nil, err
@@ -170,7 +181,7 @@ func (s *DB) titleCandidates(ctx context.Context, q string, lang langFilter) ([]
 // Ordering by id makes the answer independent of the row order the probe
 // happened to return, so two works sharing a title always boost the same way
 // round.
-func (s *DB) exactTitleHits(ctx context.Context, q string, lang langFilter) ([]string, error) {
+func (s *DB) exactTitleHits(ctx context.Context, q string, lang langFilter, src string) ([]string, error) {
 	if !worthTitleProbing(q) {
 		return nil, nil
 	}
@@ -182,7 +193,7 @@ func (s *DB) exactTitleHits(ctx context.Context, q string, lang langFilter) ([]s
 	if want == "" {
 		return nil, nil
 	}
-	cands, err := s.titleCandidates(ctx, q, lang)
+	cands, err := s.titleCandidates(ctx, q, lang, src)
 	if err != nil {
 		return nil, err
 	}

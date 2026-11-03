@@ -451,7 +451,7 @@ func (s *DB) match(ctx context.Context, req matchRequest) ([]matchResult, error)
 			return nil
 		}
 		probed[key] = true
-		ids, err := s.exactTitleHits(ctx, phrase, nil)
+		ids, err := s.exactTitleHits(ctx, phrase, nil, "")
 		pool.add(ids...)
 		return err
 	}
@@ -462,7 +462,7 @@ func (s *DB) match(ctx context.Context, req matchRequest) ([]matchResult, error)
 		}
 		// boostedWorks runs the exact-title probe of the whole text, so a title
 		// guess spelling the same key is not probed again.
-		pool.add(s.boostedWorks(ctx, req.text, nil)...)
+		pool.add(s.boostedWorks(ctx, req.text, nil, "")...)
 		probed[nameKey(req.text)] = true
 		for _, h := range hits {
 			pool.add(h.id)

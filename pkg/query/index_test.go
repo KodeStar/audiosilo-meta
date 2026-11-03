@@ -351,18 +351,34 @@ func TestGuidePresenceProbesAreIndexed(t *testing.T) {
 // primary-key SEARCH, run from the very constant the request path uses. The FTS
 // half reports as the usual VIRTUAL TABLE step and the LIMITed subquery as a
 // co-routine SCAN; the step this pins is the join back to works, which must
-// never read the table without an index.
+// never read the table without an index. The source-filtered form (the source
+// arm inside the window) must also reach recording_sources through its index.
 func TestExactTitleWorksJoinIsIndexed(t *testing.T) {
 	snap := openTestDB(t, artifacttest.Build(t, artifacttest.Fixture()))
-	plan := queryPlan(t, snap, exactTitleSQL, titleMatch("spare"), exactTitleProbeLimit)
-	joined := strings.Join(plan, " | ")
-	for _, step := range plan {
-		if strings.HasPrefix(step, "SEARCH w ") && strings.Contains(step, "USING") && strings.Contains(step, "INDEX") {
-			t.Logf("plan -> %s", joined)
-			return
-		}
+	srcQuery, srcArgs := exactTitleQuery("spare", nil, model.SourceLibrivox)
+	for _, tc := range []struct {
+		name  string
+		query string
+		args  []any
+	}{
+		{"unfiltered", exactTitleSQL, []any{titleMatch("spare"), exactTitleProbeLimit}},
+		{"source", srcQuery, srcArgs},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			plan := queryPlan(t, snap, tc.query, tc.args...)
+			joined := strings.Join(plan, " | ")
+			if strings.Contains(joined, "SCAN recording_sources") {
+				t.Errorf("recording_sources read without its index: %s", joined)
+			}
+			for _, step := range plan {
+				if strings.HasPrefix(step, "SEARCH w ") && strings.Contains(step, "USING") && strings.Contains(step, "INDEX") {
+					t.Logf("plan -> %s", joined)
+					return
+				}
+			}
+			t.Errorf("no indexed SEARCH of works in the exact-title plan: %s", joined)
+		})
 	}
-	t.Errorf("no indexed SEARCH of works in the exact-title plan: %s", joined)
 }
 
 // TestReverseTranslationsUseTheTargetIndex pins the translation reads POSITIVELY.
