@@ -3,6 +3,7 @@ package importer
 import (
 	"io"
 
+	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -294,6 +295,18 @@ type Options struct {
 	// its added_at, every recording's, every sources[].imported_at on it and its
 	// recordings - falls on a later day is not judged (regenerate.go).
 	RowsAsOf string
+	// Distinct are the reviewed "not one record" decisions
+	// (internal/audit/reviewed.json's merge rejections, audit.ReviewedDistinct),
+	// of which the run reads the PEOPLE namespace: a pair a merge-people
+	// rejection names is two people, so the honorific fold never folds one onto
+	// the other (honorific.go), in either direction and on the LibriVox paths
+	// too (librivoxpeople.go rule 1). The ids resolve through the catalogue's
+	// tombstone table, as the census's do. This package cannot import the audit
+	// (the audit imports it), so the decisions arrive as data, supplied by every
+	// caller that runs an import (cmd/metaimport, internal/issueform), which
+	// TestEveryOptionsLiteralCarriesDistinct holds every literal to. nil folds
+	// as the fold always has.
+	Distinct []check.ReviewedDistinct
 }
 
 // Summary is the outcome counts of a run.

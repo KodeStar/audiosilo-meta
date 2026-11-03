@@ -4,6 +4,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/kodestar/audiosilo-meta/internal/audit"
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 )
 
@@ -76,6 +77,7 @@ func (c *composer) importLibrary(s sections) {
 		ImportDate:        c.date,
 		SeriesLookup:      c.seriesLookup,
 		SeriesLookupLimit: c.seriesLookupLimit,
+		Distinct:          audit.ReviewedDistinct(),
 	})
 	if err != nil {
 		c.fail(StatusInvalid, "import failed: %v", err)
