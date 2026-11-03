@@ -100,22 +100,21 @@ func NormalizeISBN(raw string) (isbn string, ok bool) {
 }
 
 // sourceISBNs reads a source row's ISBN field (a single string, or an array of
-// them), keeping only well-formed, deduplicated values in their normalized
-// (hyphenless) form. A malformed value is handed to malformed (nil drops it
-// quietly) rather than emitted - an ISBN that fails the schema pattern would fail
-// the post-import validation for the whole tree.
+// them), keeping only well-formed, deduplicated values in their normalized form:
+// hyphenless, with an ISBN-10's X check digit upper-cased, which is how every
+// ISBN in the tree is spelled and how the site's lookup asks (recording_isbns is
+// an exact match, so a stored "x" would never be found). A malformed value is
+// handed to malformed (nil drops it quietly) rather than emitted - an ISBN that
+// fails the schema pattern would fail the post-import validation for the whole
+// tree.
 func sourceISBNs(v any, malformed func(raw string)) []string {
-	var candidates []string
-	if arr, ok := v.([]any); ok {
-		for _, el := range arr {
-			candidates = append(candidates, coerceStr(el))
-		}
-	} else {
-		candidates = []string{coerceStr(v)}
+	candidates, ok := v.([]any)
+	if !ok {
+		candidates = []any{v}
 	}
-	seen := map[string]bool{}
 	var out []string
-	for _, c := range candidates {
+	for _, el := range candidates {
+		c := coerceStr(el)
 		if c == "" { // coerceStr trims
 			continue
 		}
@@ -126,12 +125,9 @@ func sourceISBNs(v any, malformed func(raw string)) []string {
 			}
 			continue
 		}
-		key := strings.ToUpper(isbn)
-		if seen[key] {
-			continue
+		if isbn = strings.ToUpper(isbn); !slices.Contains(out, isbn) {
+			out = append(out, isbn)
 		}
-		seen[key] = true
-		out = append(out, isbn)
 	}
 	return out
 }

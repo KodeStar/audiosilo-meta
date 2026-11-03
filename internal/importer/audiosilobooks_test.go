@@ -137,6 +137,35 @@ func TestRunAudiosiloBooks(t *testing.T) {
 	}
 }
 
+// TestAudiosiloBooksISBNRidesAnAttestingMerge pins the one path where a
+// user-tier row's ISBN is claimed twice over: a new ASIN merging into a
+// bulk-mirror-only recording attests it first (attestOnMerge appends the ISBN)
+// and then merges (mergeRecordingASIN offers it again). The second offer must
+// see the first's write - one ISBN, and no "another recording" collision
+// reported about the record being written.
+func TestAudiosiloBooksISBNRidesAnAttestingMerge(t *testing.T) {
+	dataDir := seedTierTree(t, nil)
+	env := `{"format":"audiosilo-books","version":1,"books":[{
+	  "title": "The Lost Cartographer", "authors": ["Ada Mapmaker"], "narrators": ["Bea Reader"],
+	  "asin": "B0USER0001", "isbn": "9781427210007", "language": "en", "runtime_min": 605
+	}]}`
+	sum, err := RunAudiosiloBooks(writeBooks(t, env), Options{DataDir: dataDir, ImportDate: testImportDate})
+	if err != nil {
+		t.Fatalf("import: %v", err)
+	}
+	if sum.MergedASINs != 1 || sum.AttestedRecordings != 1 {
+		t.Errorf("summary = %+v, want one attesting merge", sum)
+	}
+	if hasWarning(sum.Warnings, "already recorded") {
+		t.Errorf("the record's own ISBN was reported as a collision: %v", sum.Warnings)
+	}
+	var rec recordingFile
+	readEntity(t, dataDir, tierRecRel, &rec)
+	if len(rec.ISBN) != 1 || rec.ISBN[0] != "9781427210007" {
+		t.Errorf("isbn = %v, want [9781427210007] once", rec.ISBN)
+	}
+}
+
 func TestParseAudiosiloBooksRejectsForeignEnvelope(t *testing.T) {
 	// A bare array (no format marker) is not an audiosilo-books envelope and must
 	// fail loud rather than misparse.
