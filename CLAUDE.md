@@ -54,8 +54,9 @@ verification, so the large main context is never what reviews or edits code.
 cd ~/dev/audiosilo/audiosilo-meta
 go build ./... && go vet ./... && go test -race ./... && golangci-lint run
 # ~45s wall for the -race suite; no -timeout flag needed. Every REAL-DATA test
-# skips under -race (raceEnabled, race_{on,off}_test.go in pkg/check,
-# pkg/canonical, internal/importer and internal/repair) - the fixture suites
+# skips under -race (`raceflag.Enabled`, internal/raceflag's build-tagged
+# constant, asked in pkg/check, pkg/canonical, internal/importer and
+# internal/repair) - the fixture suites
 # cover the concurrent code and the real tree is data coverage, still read by
 # the non-race run and by metacheck/metafmt below. Unskipped, pkg/canonical's
 # tree walk alone was ~400s and internal/importer's slug walk ~220s (403s wall).
@@ -63,6 +64,11 @@ go build ./... && go vet ./... && go test -race ./... && golangci-lint run
 # suite without -race daily, on dispatch and on Go-touching pushes to main (see
 # its header), and a red run opens or comments on the one open `ci-real-data`
 # issue, which the next green run closes (.github/scripts/real-data-report.sh).
+# The one real-checkout test that DOES run under -race is internal/recorddiff's
+# TestAgainstTheRealCheckout (git objects of HEAD~1..HEAD, not the tree walk):
+# under the detector it diffs a bounded, family-preserving sample of the
+# commit's changed packs (raceMaxPaths), since the whole of a ~1,500-pack data
+# merge outran the 10-minute test timeout; without -race it diffs them all.
 # Locally: `go test -count=1 ./...`.
 go run ./cmd/metacheck --profile core       # validate the data tree (~40s over 302k works)
 go run ./cmd/metafmt --check --profile core # canonical formatting (--write to fix)
@@ -167,9 +173,12 @@ never noticed (ai-verify read only the metadiff summary). Two halves:
   rejection matching no fresh proposal is reported `census-only` in SUMMARY.md, not
   STALE, because the census honours it whatever the detectors propose and pruning
   it would bring the pair back - unless fewer than two of its records are still
-  live (merged onto one survivor, or deleted), which withholds nothing and is STALE. Follow-up, not built: internal/importer's honorific
-  fold could consult the same list before folding a "Dr. X" credit onto a bare
-  record of another person. metabuild's census and metaaudit's LOADER carry-through load
+  live (merged onto one survivor, or deleted), which withholds nothing and is STALE. The importer's
+  honorific fold honours the same rejections: a pair a merge-people rejection names
+  is never folded, titled onto bare or (LibriVox rule 1c) bare onto titled, so an
+  import cannot re-merge a pair a maintainer separated (`importer.Options.Distinct`,
+  filled from `audit.ReviewedDistinct()` by cmd/metaimport and internal/issueform,
+  resolved through redirects.json by `check.ResolveDistinct`). metabuild's census and metaaudit's LOADER carry-through load
   without the decisions (neither is the census anyone reads).
 - **New advisories reach the automation.** On a pull request touching data/,
   `.github/scripts/advisory-delta.sh` runs the same metacheck binary over the base and
@@ -396,11 +405,14 @@ IS - never a live id - not what it was), and metaserve answers it with a harmles
 301. A serial volume at `<title>-book-<n>` gets none (its position probes reach
 it; an alias would pull every claim-free row into that one volume). The real-data
 `TestDataWorkAndSeriesSlugsAreCurrent` counts a chain candidate tombstoned onto
-the record as on the chain, which is the importer's own reach. Only metarepair
-records aliases today: an intake correct-data TITLE correction does not (no
-intake path writes the tombstone table), so one that leaves an apostrophe or
-transliterated title off its chain turns that real-data test red until a
-maintainer adds the alias.
+the record as on the chain, which is the importer's own reach. An intake TITLE
+correction (correct-data and the correction batch) records the same alias through
+the same `importer.WorkTitleAlias` (`internal/issueform`'s `aliasRetitle`), and the
+bot's pull request carries `data/redirects.json` beside the work's pack. The table
+has no merge driver, so an open intake retitle whose alias line conflicts with a
+table change landed on main meanwhile (another retitle, a repair wave's tombstones)
+stops the rebase sweep on that file for a maintainer (`pack-union-merge.sh` refuses
+it).
 
 **Storage is range-packed** ([PACK-SPEC.md](PACK-SPEC.md), implemented in
 `pkg/pack`): four families of pack files, each `{"entries": {"<slug>": {...}}}`,
@@ -738,6 +750,7 @@ keep this index in step (one line per topic).
   - `internal/ghhost`
   - `internal/unionfind`
   - `internal/parallel`
+  - `internal/raceflag`
   - `internal/atomicfile`
   - `internal/reportdir`
   - `internal/remediate`

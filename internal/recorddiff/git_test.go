@@ -1,13 +1,16 @@
 package recorddiff
 
 import (
+	"fmt"
 	"os"
 	"os/exec"
 	"path/filepath"
+	"slices"
 	"strings"
 	"testing"
 	"time"
 
+	"github.com/kodestar/audiosilo-meta/internal/raceflag"
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -22,6 +25,22 @@ import (
 // mistake, a path the walk does not recognize, an entry in the live tree that
 // the summary renderer panics on. The CONTENT of HEAD~1 is not this suite's to
 // know.
+//
+// Its SIZE is not either, and that is what made it the one unpredictable test
+// in the -race gate: the last commit of a checkout is whatever merged last, from
+// nothing (a code merge) to a tranche of ~1,500 pack files, and under the race
+// detector the cost runs with the files - ~3 s to past the 10-minute default
+// timeout. So under -race it diffs a bounded SAMPLE of the changed paths
+// (samplePaths, raceMaxPaths of them), which still drives every piece the
+// fixtures cannot reach - the cat-file stream over real objects, real packs of
+// every family the commit touched, the render and the JSON - in a time that no
+// longer depends on the merge. Without -race (real-data.yml, `go test ./...`)
+// it diffs the whole commit, as it always did.
+
+// raceMaxPaths bounds the changed paths TestAgainstTheRealCheckout diffs under
+// the race detector: a few seconds there on a loaded machine, whatever the last
+// commit was.
+const raceMaxPaths = 16
 
 func TestAgainstTheRealCheckout(t *testing.T) {
 	if _, err := exec.LookPath("git"); err != nil {
@@ -38,6 +57,13 @@ func TestAgainstTheRealCheckout(t *testing.T) {
 	paths, err := GitChangedPaths(repo, "data", "HEAD~1", "HEAD")
 	if err != nil {
 		t.Fatalf("GitChangedPaths: %v", err)
+	}
+	if raceflag.Enabled && len(paths) > raceMaxPaths {
+		// The sample can come in under the bound (each group's share rounds
+		// down), so the count logged is the one diffed.
+		sample := samplePaths(paths, raceMaxPaths)
+		t.Logf("diffing %d of the last commit's %d changed paths under -race", len(sample), len(paths))
+		paths = sample
 	}
 
 	base, err := OpenGitSource(repo, "data", "HEAD~1")
@@ -70,6 +96,46 @@ func TestAgainstTheRealCheckout(t *testing.T) {
 	if _, err := d.JSON(); err != nil {
 		t.Errorf("JSON: %v", err)
 	}
+}
+
+// samplePaths returns at most n of paths, keeping every top-level group the
+// commit touched - each family, and the tombstone table as a group of its own -
+// so a commit touching several of them keeps each in the sample rather than
+// only the first n paths in sorted order (which would be works/ alone, or
+// people/ alone). Every group gets one path, the rest of the budget is shared in
+// proportion to the group's size, and a group's share is spread evenly over it.
+// Deterministic, so a failure reproduces.
+func samplePaths(paths []string, n int) []string {
+	if len(paths) <= n {
+		return paths
+	}
+	sorted := slices.Clone(paths)
+	slices.Sort(sorted)
+	var groups [][]string
+	for i, p := range sorted {
+		if i == 0 || groupOf(p) != groupOf(groups[len(groups)-1][0]) {
+			groups = append(groups, nil)
+		}
+		groups[len(groups)-1] = append(groups[len(groups)-1], p)
+	}
+	if len(groups) >= n {
+		groups = groups[:n]
+	}
+	spare, rest := n-len(groups), len(sorted)-len(groups)
+	var out []string
+	for _, g := range groups {
+		// rest > 0: there are more paths than n, and at most n groups.
+		quota := 1 + spare*(len(g)-1)/rest
+		for j := range quota {
+			out = append(out, g[j*len(g)/quota])
+		}
+	}
+	return out
+}
+
+func groupOf(path string) string {
+	g, _, _ := strings.Cut(path, "/")
+	return g
 }
 
 // repoRoot finds the checkout the test is running in.
@@ -415,5 +481,48 @@ func TestGitSourceRefusesToReadOnABrokenStream(t *testing.T) {
 	}
 	if _, _, err := g.Read("works/0/0.json"); err == nil {
 		t.Fatal("a read on a broken stream returned success")
+	}
+}
+
+// TestSamplePathsIsBoundedAndKeepsEveryGroup pins the sample the real-checkout
+// test diffs under -race: never more than asked, every family and the tombstone
+// table represented however lopsided the commit, deterministic, and the whole
+// listing when it already fits.
+func TestSamplePathsIsBoundedAndKeepsEveryGroup(t *testing.T) {
+	var paths []string
+	for i := range 1000 {
+		paths = append(paths, fmt.Sprintf("works/%03d/%04d.json", i/100, i))
+	}
+	paths = append(paths, "series/a.json", "series/b.json", "people/a.json", pack.RedirectsFile)
+
+	got := samplePaths(paths, raceMaxPaths)
+	if len(got) > raceMaxPaths {
+		t.Errorf("sampled %d paths, over the %d asked for", len(got), raceMaxPaths)
+	}
+	groups := map[string]int{}
+	seen := map[string]bool{}
+	for _, p := range got {
+		if seen[p] {
+			t.Errorf("%s sampled twice", p)
+		}
+		seen[p] = true
+		if !slices.Contains(paths, p) {
+			t.Errorf("%s is not one of the changed paths", p)
+		}
+		groups[groupOf(p)]++
+	}
+	for _, g := range []string{"works", "series", "people", pack.RedirectsFile} {
+		if groups[g] == 0 {
+			t.Errorf("the sample lost %s: %v", g, got)
+		}
+	}
+	if groups["works"] < raceMaxPaths/2 {
+		t.Errorf("works, nearly all of the commit, got %d of %d", groups["works"], len(got))
+	}
+	if !slices.Equal(got, samplePaths(slices.Clone(paths), raceMaxPaths)) {
+		t.Error("the sample is not deterministic")
+	}
+	if small := paths[:raceMaxPaths]; !slices.Equal(samplePaths(small, raceMaxPaths), small) {
+		t.Error("a listing that fits was not kept whole")
 	}
 }

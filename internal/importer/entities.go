@@ -119,14 +119,11 @@ func (s *sourceBook) decodeText() {
 			list[i] = decodeField(name)
 		}
 	}
-	// The rows are maps shared with the raw entry, so the decode is written
-	// through them; keeping the slice on the book only spares the record builder
-	// a second rawBook.chapters() walk.
+	// The typed rows are kept on the book, so the record builder reads the
+	// decoded titles without a second rawBook.chapters() walk.
 	s.chapters = s.chapterRows()
-	for _, ch := range s.chapters {
-		if v, ok := ch["title"].(string); ok {
-			ch["title"] = decodeField(v)
-		}
+	for i := range s.chapters {
+		s.chapters[i].title = decodeField(s.chapters[i].title)
 	}
 }
 

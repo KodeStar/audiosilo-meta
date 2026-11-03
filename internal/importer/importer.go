@@ -314,6 +314,11 @@ type planner struct {
 	// its survivor rather than minting there (tombstone.go).
 	redirects      model.Redirects
 	tombstoneRides map[string]string
+	// distinct is Options.Distinct as given, and keptApart its resolution
+	// through redirects (loadExisting): the reviewed pairs the honorific fold
+	// may not merge (peopleKeptApart).
+	distinct  []check.ReviewedDistinct
+	keptApart check.DistinctPairs
 	// seriesNameJoins is every claim this run JOINED to a catalogued series stored
 	// under another name than the claim gave (reportSeriesNameJoins).
 	seriesNameJoins map[SeriesNameJoin]bool
@@ -621,11 +626,9 @@ type sourceBook struct {
 	// it is set.
 	authorCredits []credit
 	creditsCached bool
-	// chapters is the source's own chapter rows, read when non-nil instead of
-	// raw's chapters array. buildChapters accepts either documented offset
-	// spelling (see rawChapter.startMS), so a parser hands its rows over
-	// as-is.
-	chapters []rawChapter
+	// chapters is the source's chapter rows, typed at parse time (sourceChapter),
+	// read when non-nil instead of raw's chapters array.
+	chapters []sourceChapter
 	// qualifiedTitle is the full title as the work identity read it before the
 	// title QUALIFIERS were stripped (qualifiedWorkTitle), set by
 	// normalizeEditionMarkers only when the strip changed it. resolveWork walks its
@@ -658,7 +661,7 @@ func (s sourceBook) str(key string) string { return s.raw.str(key) }
 
 // chapterRows returns the book's chapter rows: the typed field when the parser
 // set one, else the raw entry's own chapters array.
-func (s sourceBook) chapterRows() []rawChapter {
+func (s sourceBook) chapterRows() []sourceChapter {
 	if s.chapters != nil {
 		return s.chapters
 	}
@@ -820,6 +823,7 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 		loadedPositions:    opts.AttachEditions,
 		regenRecs:          regenRecsFor(opts.Mode),
 		rowsAsOf:           opts.RowsAsOf,
+		distinct:           opts.Distinct,
 		lv:                 newLibrivoxState(),
 	}
 }
@@ -1180,6 +1184,9 @@ func seriesClaimsAbridged(refs []seriesRef) *bool {
 // reads share one walk and one parse of each pack: the packs the planner then
 // composes into are already in hand rather than read a second time.
 func (p *planner) loadExisting() {
+	// The reviewed pairs resolve through the tombstone table this load reads,
+	// on every way out of it (an unreadable catalogue still has its batch).
+	defer func() { p.keptApart = check.ResolveDistinct(p.distinct, p.redirects) }()
 	res := check.LoadStore(p.store)
 	p.loadProblems = len(res.Problems)
 	// The create path's duplicate-identity index, off the load that is already
@@ -1820,6 +1827,7 @@ func (p *planner) creditCensusesOf(books []sourceBook) (author, narrator creditC
 			foldSyntheticVoice: foldSynthetic,
 			onHonorific:        p.noteHonorific,
 			onCredential:       p.noteCredential,
+			keptApart:          p.peopleKeptApart,
 		}
 	}
 	// The AI-narration fold is the NARRATOR side of a USER-LIBRARY run and
@@ -1831,6 +1839,28 @@ func (p *planner) creditCensusesOf(books []sourceBook) (author, narrator creditC
 	author = notify(seenIn(authorSide), false)
 	author.keepHonorific = p.lv.keepTitled
 	return author, notify(seenIn(narratorSide), p.userTier)
+}
+
+// peopleKeptApart reports whether a reviewed merge-people rejection
+// (Options.Distinct) recorded the persons credit names a and b spell as two
+// people, so that no honorific fold may resolve one onto the other: "Dr. Alex
+// George" is not `alex-george`, the novelist. Each name is asked as its person
+// slug, a retired one as its survivor (the decisions were resolved the same
+// way) - not through the initials merge, which the census predates; a name that
+// slugs away to nothing is no record a review named.
+func (p *planner) peopleKeptApart(a, b string) bool {
+	sa, fa := personSlug(a)
+	sb, fb := personSlug(b)
+	return !fa && !fb && p.personSlugsKeptApart(sa, sb)
+}
+
+// personSlugsKeptApart is peopleKeptApart for two person slugs.
+func (p *planner) personSlugsKeptApart(a, b string) bool {
+	if len(p.keptApart[model.RedirectPeople]) == 0 {
+		return false
+	}
+	return p.keptApart.Has(model.RedirectPeople,
+		p.redirects.Live(model.RedirectPeople, a), p.redirects.Live(model.RedirectPeople, b))
 }
 
 // noteHonorific records one honorific merge for the run's report. It is a SET
@@ -3846,19 +3876,18 @@ func (p *planner) finalizeSeries() {
 // titles and enforcing the same monotonic-from-zero rule metacheck applies. On
 // any structural violation it warns and returns nil (the recording is emitted
 // without chapters).
-func buildChapters(raw []rawChapter, warn func(string, ...any)) []outChapter {
-	if len(raw) == 0 {
+func buildChapters(rows []sourceChapter, warn func(string, ...any)) []outChapter {
+	if len(rows) == 0 {
 		return nil
 	}
-	out := make([]outChapter, 0, len(raw))
-	for i, rc := range raw {
-		start, sOK := rc.startMS()
-		length, lOK := rc.lengthMS()
-		if !sOK || !lOK || length <= 0 || start < 0 {
+	out := make([]outChapter, 0, len(rows))
+	for i, rc := range rows {
+		start, length := rc.startMS, rc.lengthMS
+		if !rc.hasStart || !rc.hasLength || length <= 0 || start < 0 {
 			warn("chapter %d has invalid offsets; chapters omitted", i+1)
 			return nil
 		}
-		title := strings.TrimSpace(rc.str("title"))
+		title := strings.TrimSpace(rc.title)
 		if title == "" {
 			title = fmt.Sprintf("Chapter %d", i+1)
 		}

@@ -90,12 +90,12 @@
 // already here: a row whose ASIN the catalogue does not hold is counted and
 // ignored, and a matched row only fills facts the existing work/recording does
 // not have. Nothing is ever created, so the run is bounded by this catalogue
-// rather than by the source's. What it READS is not bounded, though - the parser
-// slurps the whole file before the ASIN match discards the rows that do not
-// apply (roughly 6GB of live heap for libex's 1.06M-row dump), so the
-// recommended input is still a pre-filtered row set: the libex-select output, or
-// rows filtered to catalogued ASINs at export time. Feeding the raw dump needs a
-// machine sized for it. The one replacement it makes is the POST-RELEASE
+// rather than by the source's. What it READS is not bounded, though: the parser
+// streams the file, but planning holds every accepted row at once (the batch
+// censuses read them all), so the raw dump still needs a machine sized for it
+// (scripts/README.md step 7 has the figures) and the recommended input is a
+// pre-filtered row set: the libex-select output, or rows filtered to catalogued
+// ASINs at export time. The one replacement it makes is the POST-RELEASE
 // REFRESH: a recording catalogued from a preorder listing, met by a released row
 // of its own ASIN, takes that row's runtime, cover, chapters and release date
 // (internal/importer/refresh.go).
@@ -142,6 +142,7 @@ import (
 	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/atomicfile"
+	"github.com/kodestar/audiosilo-meta/internal/audit"
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 )
 
@@ -308,6 +309,7 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		ExistingSeriesOnly: *existingSeriesOnly,
 		AttachEditions:     *attachEditions,
 		RowsAsOf:           *rowsAsOf,
+		Distinct:           audit.ReviewedDistinct(),
 	}
 	if *seriesLookup {
 		client := importer.NewLibexClient()
@@ -372,8 +374,7 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 // The returned writer is the *os.File itself, deliberately unbuffered: the
 // importer writes one row per conflict, so a wave killed after six hours keeps
 // every conflict it had already found. Append (rather than truncate) is what
-// lets a dump split into chunks with `split -l` accumulate ONE worklist across
-// every chunk's run.
+// lets several runs accumulate ONE worklist.
 //
 // The nil is returned as an untyped io.Writer rather than a nil *os.File, which
 // would be a non-nil interface holding a nil pointer - the importer's "was I
@@ -477,6 +478,7 @@ func runLibexSelect(args []string) int {
 		RefusalsPath:    *refusals,
 		AttachmentsPath: *attachments,
 		ImportDate:      day,
+		Distinct:        audit.ReviewedDistinct(),
 	})
 	if err != nil {
 		// The report is deliberately NOT printed here. A run that aborted
@@ -790,7 +792,7 @@ func runLibexFill(args []string) int {
 		return 0
 	}
 
-	opts := importer.Options{DataDir: *dataDir, ImportDate: day, DryRun: *dryRun, Mode: importer.ModeEnrich}
+	opts := importer.Options{DataDir: *dataDir, ImportDate: day, DryRun: *dryRun, Mode: importer.ModeEnrich, Distinct: audit.ReviewedDistinct()}
 	if *conflicts != "" {
 		f, err := os.OpenFile(*conflicts, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0o644)
 		if err != nil {

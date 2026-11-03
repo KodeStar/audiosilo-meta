@@ -240,3 +240,30 @@ func TestReviewedHonorificPairIsWithheld(t *testing.T) {
 		t.Errorf("reviewed person pair: %v (suppressed %d), want only the unreviewed pair and 1 suppressed", got, res.Suppressed)
 	}
 }
+
+// TestResolveDistinct pins the exported resolution internal/importer's honorific
+// fold reads: every pair of a decision, either order, its retired ids as their
+// survivors, members merged since no pair, and nothing in another namespace.
+func TestResolveDistinct(t *testing.T) {
+	reds := model.Redirects{model.RedirectPeople: {"old-alex-george": "alex-george", "old-bea": "bea"}}
+	d := ResolveDistinct([]ReviewedDistinct{
+		{Kind: model.RedirectPeople, IDs: []string{"old-alex-george", "dr-alex-george", "dr-alex-george-2"}},
+		{Kind: model.RedirectPeople, IDs: []string{"bea", "old-bea"}},
+	}, reds)
+	for _, tc := range []struct {
+		kind model.RedirectKind
+		a, b string
+		want bool
+	}{
+		{model.RedirectPeople, "alex-george", "dr-alex-george", true},
+		{model.RedirectPeople, "dr-alex-george", "alex-george", true},
+		{model.RedirectPeople, "dr-alex-george", "dr-alex-george-2", true},
+		{model.RedirectPeople, "old-alex-george", "dr-alex-george", false}, // asked as given: the caller resolves
+		{model.RedirectPeople, "bea", "bea", false},                        // merged since: one record
+		{model.RedirectWorks, "alex-george", "dr-alex-george", false},
+	} {
+		if got := d.Has(tc.kind, tc.a, tc.b); got != tc.want {
+			t.Errorf("Has(%s, %s, %s) = %v, want %v", tc.kind, tc.a, tc.b, got, tc.want)
+		}
+	}
+}
