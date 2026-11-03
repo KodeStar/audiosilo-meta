@@ -619,13 +619,19 @@ const personMatchSQL = `SELECT id, title FROM search_fts WHERE search_fts MATCH 
 // Jones", none for "J Smith"), or has no given name at all (a "Smith" mononym,
 // which it accepts too), levelled with them by the plus one. So the cut can drop
 // an agreeing bearer only when more than the window's worth of rows rank as
-// high. A word begins at the start of the name or after a space, comma, period
-// or hyphen ("Smith, John", "J.R. Smith", "Anne-Jo Smith"); the needles (?2,
-// ?3) are the initial and its upper case after a space, so a non-Latin initial
-// needs no SQL case folding, and each removed occurrence is two characters
-// (one removal pass when the two are the same rune). It is not the tokenizer,
-// so a name whose initial carries a mark the query's does not ("Émile" for
-// "E") ranks with the rest, as every row did before. The sort reads the
+// high - with one exception: a given-less name parseName reads THROUGH a
+// trailing suffix or bracket ("James III", "Smith (editor)") is two words here,
+// so it ranks with the bearers that disagree and a full window can still cut
+// it (over the real artifact, james-iii behind 1,393 James rows, the only
+// agreeing bearer of "Q James"). A word begins at the start of the name or
+// after a space, comma, period or hyphen ("Smith, John", "J.R. Smith",
+// "Anne-Jo Smith"); the needles (?2, ?3) are the initial and its upper case
+// after a space, so a non-Latin initial needs no SQL case folding, and each
+// removed occurrence is two characters (one removal pass when the two are the
+// same rune). It is not the tokenizer, and the initial is folded (matchTerms
+// strips marks), so a row whose initial is a precomposed marked letter
+// ("Émile") ranks with the rest whatever the guess spelled, as every row did
+// before. The sort reads the
 // surname's whole match set, which the unordered window also does whenever it
 // holds fewer than the window's worth of people. Warm, over the real artifact:
 // 3ms for "smith" (594 bearers), 6ms for "john" (1,752) and 17ms for "de"

@@ -738,6 +738,12 @@ func TestMatchReadsHonourTheContext(t *testing.T) {
 			_, err := snap.peopleNamed(ctx, splitAuthors("Bernard Cornwell")[0])
 			return err
 		},
+		// peopleNamed above stops at the full-name probe, so the ordered surname
+		// window (personInitialSQL) is asked on its own.
+		"surnameBearers": func(ctx context.Context) error {
+			_, err := snap.surnameBearers(ctx, splitAuthors("B Cornwell")[0])
+			return err
+		},
 		"candidateFacts": func(ctx context.Context) error {
 			_, err := snap.candidateFacts(ctx, pool)
 			return err
@@ -928,6 +934,12 @@ func TestPeopleNamedOrdersTheSurnameWindowByTheInitial(t *testing.T) {
 	add("zz-smith", "Smith")
 	add("zz-ivan-ivanov", "Иван Иванов")
 	snap := openTestDB(t, artifacttest.Build(t, cat))
+	for _, c := range []struct{ surname, id string }{{"smith", "smith-john"}, {"smith", "zz-smith"}, {"иванов", "zz-ivan-ivanov"}} {
+		rows, err := snap.peopleMatching(context.Background(), c.surname)
+		if err != nil || slices.ContainsFunc(rows, func(p personRow) bool { return p.id == c.id }) {
+			t.Fatalf("%s is inside the unordered %s window (%v): the case is vacuous", c.id, c.surname, err)
+		}
+	}
 	for in, want := range map[string]string{
 		"J Smith":      "smith-john,zz-smith",
 		"J. Smith":     "smith-john,zz-smith",

@@ -16,8 +16,8 @@ import (
 // TestFailLogsUnlessTheErrorIsTheRequestsCancellation pins which 500s reach the
 // log. Only the request context's OWN error is silent - the abandoned keystroke
 // search - and a real failure is logged even when the client has gone, which is
-// what a handler reading on a context of its own (the card batches, a match
-// budget) depends on. Every case answers the same fixed body.
+// what a read on a context of its own (the card batches) depends on. Every case
+// answers the same fixed body.
 func TestFailLogsUnlessTheErrorIsTheRequestsCancellation(t *testing.T) {
 	dbErr := errors.New("database disk image is malformed")
 	cancelled := func() context.Context {

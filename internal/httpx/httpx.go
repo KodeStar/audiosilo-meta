@@ -93,10 +93,12 @@ func Fail(w http.ResponseWriter, r *http.Request, logger *log.Logger, component 
 // search and lookup reads run under the request's context, so a client that
 // abandons a query (the site's search box does, on every keystroke) fails it
 // with that error, which is no fault of the server's and nobody reads the 500.
-// The test is the ERROR, not merely a gone client: a handler reading on a
-// context of its own - the card batches run on context.Background(), the match
-// on its budget - can fail for a real reason while the client happens to be
-// gone, and that database error must still reach the log. A
+// The test is the ERROR, not merely a gone client: a read on a context of its
+// own - the card batches run on context.Background() - can fail for a real
+// reason while the client happens to be gone, and that database error must
+// still reach the log. (works/match never gets here with a done context: its
+// budget derives from the request's, and handleMatch answers any failure under
+// a spent context as its 503.) A
 // context derived from the request's ends with the same error, so a read under
 // one counts; a deadline of the handler's own (DeadlineExceeded beside a
 // request that was Canceled) does not, and neither does any error at all on a

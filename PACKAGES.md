@@ -538,7 +538,8 @@ the surname's 400-row window ORDERED by how many of a row's words begin with the
 guess's initial (a given-less mononym ranked level, since it agrees too) before it
 is cut (`personInitialSQL`), so a surname with more bearers than the window - 594
 Smiths - cannot crowd out the one the initial names
-(`TestPeopleNamedOrdersTheSurnameWindowByTheInitial`); a bare surname keeps the
+(`TestPeopleNamedOrdersTheSurnameWindowByTheInitial`), save a given-less name read
+through a suffix or bracket ("James III"), which ranks as two words; a bare surname keeps the
 unordered window, which cannot lose a book the title probe found, since every
 candidate is judged on its own credits
 (`TestMatchABareSurnameBeyondTheWindowKeepsTheTitledBook`);
