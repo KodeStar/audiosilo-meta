@@ -260,7 +260,7 @@ func TestBatchLookupsAreIndexed(t *testing.T) {
 }
 
 // NOT guarded here: seriesMatchSQL and exactTitleSQL, the two search boosts'
-// probes, and personMatchSQL, works/match's author probe. This test checks INDEX SELECTION, and an FTS5 MATCH selects no index a
+// probes, and personMatchSQL and personInitialSQL, works/match's author probes. This test checks INDEX SELECTION, and an FTS5 MATCH selects no index a
 // plan can name - every FTS query reports as "SCAN <fts> VIRTUAL TABLE INDEX
 // n:M...", which assertNoFullScan deliberately allows, and the ORDER BY
 // legitimately sorts in a temp b-tree. A case here would pass no matter how
