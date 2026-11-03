@@ -5309,7 +5309,6 @@
     },
     "andrew-wilson": {
       "id": "andrew-wilson",
-      "librivox_reader_id": 3397,
       "license": "CC0-1.0",
       "name": "Andrew Wilson",
       "sources": [
@@ -5317,11 +5316,6 @@
           "imported_at": "2026-07-29",
           "ref": "B0CFSF6KM1",
           "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-10-28",
-          "ref": "2745",
-          "type": "librivox"
         }
       ]
     },
@@ -5336,6 +5330,19 @@
         {
           "imported_at": "2026-10-29",
           "ref": "15421",
+          "type": "librivox"
+        }
+      ]
+    },
+    "andrew-wilson-librivox-3397": {
+      "id": "andrew-wilson-librivox-3397",
+      "librivox_reader_id": 3397,
+      "license": "CC0-1.0",
+      "name": "Andrew Wilson",
+      "sources": [
+        {
+          "imported_at": "2026-10-28",
+          "ref": "2745",
           "type": "librivox"
         }
       ]

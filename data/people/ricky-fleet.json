@@ -1704,18 +1704,12 @@
       "death_year": 1938,
       "id": "rita",
       "librivox_author_id": 89,
-      "librivox_reader_id": 9714,
       "license": "CC0-1.0",
       "name": "Rita",
       "sources": [
         {
           "imported_at": "2026-10-28",
           "ref": "3410",
-          "type": "librivox"
-        },
-        {
-          "imported_at": "2026-10-29",
-          "ref": "9385",
           "type": "librivox"
         }
       ]
@@ -1982,6 +1976,19 @@
           "imported_at": "2026-07-29",
           "ref": "B00CICA260",
           "type": "libex-import"
+        }
+      ]
+    },
+    "rita-librivox-9714": {
+      "id": "rita-librivox-9714",
+      "librivox_reader_id": 9714,
+      "license": "CC0-1.0",
+      "name": "Rita",
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "9385",
+          "type": "librivox"
         }
       ]
     },

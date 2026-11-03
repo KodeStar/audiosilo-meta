@@ -2314,7 +2314,6 @@
     },
     "will": {
       "id": "will",
-      "librivox_reader_id": 19966,
       "license": "CC0-1.0",
       "name": "Will",
       "sources": [
@@ -2322,11 +2321,6 @@
           "imported_at": "2026-07-29",
           "ref": "B002V08DQ0",
           "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-10-29",
-          "ref": "19926",
-          "type": "librivox"
         }
       ]
     },
@@ -3352,6 +3346,19 @@
         {
           "imported_at": "2026-10-29",
           "ref": "9529",
+          "type": "librivox"
+        }
+      ]
+    },
+    "will-librivox-19966": {
+      "id": "will-librivox-19966",
+      "librivox_reader_id": 19966,
+      "license": "CC0-1.0",
+      "name": "Will",
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "19926",
           "type": "librivox"
         }
       ]
