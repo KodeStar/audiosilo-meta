@@ -278,6 +278,14 @@ func TestNoRateLimitWhenOff(t *testing.T) {
 // console Series page's few hundred lookups, then runs a bulk match at its fast
 // case (2 workers x 4 requests per 90 ms, about 89 a second) for ten minutes,
 // is never refused. A client at twice that rate is, so the limit still binds.
+//
+// The numbers are COPIES of audiosilo-server's, which this repository cannot
+// import, so a change there is not caught here - re-derive them when it moves:
+// workers is internal/matchrun/runner.go's `workers` (2, and `bulkCandidates`,
+// the works expanded per book, 2); perBook's fan-out is bounded by
+// internal/meta/service.go's `maxConcurrentWorkFetches` (4), and the Series
+// page's lookups by its `maxConcurrentLookups` (4). CROSS-REPO.md records the
+// coupling from the server's side.
 func TestDefaultsHoldAnAudioSiloBulkMatch(t *testing.T) {
 	clock := &fakeClock{t: time.Date(2026, 10, 27, 12, 0, 0, 0, time.UTC)}
 	l := newRateLimiter(DefaultRateLimit, DefaultRateBurst, nil, clock.now)

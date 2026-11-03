@@ -1065,7 +1065,7 @@ and a browser can read a 429's `Retry-After` (corsMW exposes it); `/healthz` doe
 is a per-client-address token bucket (an IPv6 address keyed as its /64, `bucketKey`; `Config.RateLimit`/`RateBurst`, metaserve
 `--rate-limit 100 --rate-burst 400` and their `METASERVE_*` env twins, sized from
 audiosilo-server internal/meta's concurrency so a bulk match never trips it and
-checked by TestDefaultsHoldAnAudioSiloBulkMatch against copies of those numbers (a change on the server side is not caught); a rate of zero is off, which is the
+checked by TestDefaultsHoldAnAudioSiloBulkMatch against copies of those numbers (a change on the server side is not caught; the test's comment names each source constant: internal/matchrun/runner.go `workers`, internal/meta/service.go `maxConcurrentWorkFetches` and `maxConcurrentLookups`); a rate of zero is off, which is the
 zero Config every test builds on, and New refuses a negative, non-finite or vanishingly small rate (a refill past a Duration) or
 a limit with a burst under 1 (`validateRateLimit`) rather than defaulting it), idle full buckets swept each
 minute. The client is the connection's address, or - only when that is one of
