@@ -599,7 +599,9 @@ with search, lookup and the ABS facade (`ftsHits`, the boosts, `lookupIDs`,
 `cardsByID` and the batches) take a context and run QueryContext, so a spent
 budget refuses the next query rather than letting a slow FTS walk hold a slot
 (`TestMatchReadsHonourTheContext`); search and lookup pass the request's, and a
-client gone mid-request is not logged as a 500. No Cache-Control, like the searches. Measured against the
+failure that IS the request's own cancellation is not logged as a 500 (a real
+error still is when the client has gone: `httpx.Fail` tests the error, not the
+context). No Cache-Control, like the searches. Measured against the
 2026-10 core artifact (282k works) over that library's 434 books with a reviewed
 answer: every pick right (8 differ from the reference, 4 being reference errors the
 path's numbering and runtime refute and 4 duplicate records of the same book),

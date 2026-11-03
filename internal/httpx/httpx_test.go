@@ -1,6 +1,65 @@
 package httpx
 
-import "testing"
+import (
+	"bytes"
+	"context"
+	"errors"
+	"fmt"
+	"log"
+	"net/http"
+	"net/http/httptest"
+	"strings"
+	"testing"
+	"time"
+)
+
+// TestFailLogsUnlessTheErrorIsTheRequestsCancellation pins which 500s reach the
+// log. Only the request context's OWN error is silent - the abandoned keystroke
+// search - and a real failure is logged even when the client has gone, which is
+// what a handler reading on a context of its own (the card batches, a match
+// budget) depends on. Every case answers the same fixed body.
+func TestFailLogsUnlessTheErrorIsTheRequestsCancellation(t *testing.T) {
+	dbErr := errors.New("database disk image is malformed")
+	cancelled := func() context.Context {
+		ctx, cancel := context.WithCancel(context.Background())
+		cancel()
+		return ctx
+	}
+	expired := func() context.Context {
+		ctx, cancel := context.WithDeadline(context.Background(), time.Unix(0, 0))
+		t.Cleanup(cancel)
+		return ctx
+	}
+	cases := []struct {
+		name   string
+		ctx    context.Context
+		err    error
+		logged bool
+	}{
+		{"live request, real error", context.Background(), dbErr, true},
+		{"live request, a context error of the handler's own", context.Background(), context.Canceled, true},
+		{"client gone, the request's cancellation", cancelled(), context.Canceled, false},
+		{"client gone, the cancellation wrapped", cancelled(), fmt.Errorf("cards: %w", context.Canceled), false},
+		{"request deadline, its own deadline error", expired(), context.DeadlineExceeded, false},
+		{"client gone, a real database error", cancelled(), dbErr, true},
+		{"client gone, the handler's own budget expired", cancelled(), context.DeadlineExceeded, true},
+	}
+	for _, tc := range cases {
+		var buf bytes.Buffer
+		r := httptest.NewRequestWithContext(tc.ctx, http.MethodGet, "/api/v1/works/x", nil)
+		w := httptest.NewRecorder()
+		Fail(w, r, log.New(&buf, "", 0), "query", tc.err)
+		if got := buf.Len() > 0; got != tc.logged {
+			t.Errorf("%s: logged = %v (%q), want %v", tc.name, got, buf.String(), tc.logged)
+		}
+		if tc.logged && !strings.Contains(buf.String(), tc.err.Error()) {
+			t.Errorf("%s: log %q does not carry the error", tc.name, buf.String())
+		}
+		if w.Code != http.StatusInternalServerError || !strings.Contains(w.Body.String(), InternalErrMsg) {
+			t.Errorf("%s: answered %d %q, want the fixed 500", tc.name, w.Code, w.Body.String())
+		}
+	}
+}
 
 // TestMatchesETag covers the If-None-Match forms RFC 9110 allows, since a wrong
 // answer either serves a 304 for a document the client does not have or never
