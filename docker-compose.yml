@@ -47,19 +47,30 @@ services:
       # The API is rate limited per client (100 requests a second, burst 400,
       # sized so an AudioSilo server's bulk match never trips it;
       # METASERVE_RATE_LIMIT / METASERVE_RATE_BURST; a rate of 0 turns it off,
-      # a burst of 0 with the limit on is refused at startup). The client
-      # is the connection's address unless that address is a trusted proxy, and
-      # behind the reverse proxy every connection comes from the proxy: from
-      # 127.0.0.1 or the compose network's gateway (a private address). Trusting
-      # the loopback and private ranges lets the limit read the proxy's
-      # X-Forwarded-For instead, so each visitor gets their own bucket rather
-      # than the whole site sharing one. Safe here because the port above is
-      # published on loopback only, so nothing outside this host can connect.
-      # The proxy must send X-Forwarded-For (nginx: proxy_set_header
-      # X-Forwarded-For $proxy_add_x_forwarded_for). If another proxy or CDN
-      # sits in front of it, add that CDN's ranges too, or rewrite the header at
-      # the host proxy (nginx real_ip), or the CDN's edges become the clients.
-      METASERVE_TRUSTED_PROXIES: "127.0.0.0/8,::1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,fc00::/7"
+      # a burst of 0 with the limit on is refused at startup).
+      #
+      # The client is the connection's address unless that address is a trusted
+      # proxy, and behind the reverse proxy every connection comes from the
+      # proxy: a host proxy reaching the loopback port above arrives from the
+      # compose network's GATEWAY, an address inside that network's subnet
+      # (127.0.0.1 only under network_mode: host). Trusting exactly that subnet
+      # and the loopback lets the limit read the proxy's X-Forwarded-For, so
+      # each visitor gets their own bucket rather than the whole site sharing
+      # one - and trusts nothing else. The subnet is PINNED (networks: below) so
+      # the trusted range is known rather than whatever Docker allocated; both
+      # read METASERVE_SUBNET, so they cannot disagree. Override it in .env when
+      # the default collides with a network on this host (`docker compose up`
+      # then refuses with "Pool overlaps"), e.g. METASERVE_SUBNET=10.99.0.0/28.
+      #
+      # Do NOT widen this to the private ranges (10/8, 172.16/12, 192.168/16):
+      # if the host proxy also serves a LAN, a LAN client's own address is then
+      # a "trusted proxy" hop, so the X-Forwarded-For it sends is believed and it
+      # can pick any bucket it likes. The proxy must send X-Forwarded-For (nginx:
+      # proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for). If another
+      # proxy or CDN sits in front of it, add that CDN's ranges too, or rewrite
+      # the header at the host proxy (nginx real_ip), or the CDN's edges become
+      # the clients.
+      METASERVE_TRUSTED_PROXIES: "127.0.0.0/8,::1,${METASERVE_SUBNET:-10.217.53.0/28}"
       #
       # Optional: enable immediate refreshes from the release workflow. Configure
       # the same 32+ byte value as the repository secret
@@ -68,6 +79,15 @@ services:
       # here.
       # METASERVE_WEBHOOK_SECRET: ${METASERVE_WEBHOOK_SECRET}
       # GITHUB_TOKEN: ghp_... # optional higher polling rate limit
+
+# The project's default network, with its subnet pinned so the trusted-proxy
+# range above names it exactly. Changing it on a running deployment recreates the
+# network: `docker compose down && docker compose up -d`.
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: ${METASERVE_SUBNET:-10.217.53.0/28}
 
 volumes:
   meta-cache:
