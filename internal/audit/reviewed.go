@@ -47,11 +47,10 @@ import (
 // refusals and post-write validation still apply. A detector already proposing the same
 // identity turns it into an acceptance (REDUNDANT): like an accept, it promotes that
 // proposal even where the detector made it advisory, overriding the detector's veto. Once applied its records are
-// retired or joined, so it reads STALE and a re-run proposes nothing. An accepted or
-// asserted drop or retitle whose target WORK was since retired is STALE whatever its
-// survivor holds, even the very slot or title it names: the work it named is gone, and a
-// review of it never applies to another record (retiredSubject). A live target listed
-// only at other slots is REFUSED. A retitle is compared with the title the work states
+// retired or joined, so it reads STALE and a re-run proposes nothing. A decision judging
+// one work's own record whose work was since retired is STALE whatever its survivor
+// holds (retiredSubject says why). A live drop target listed only at other slots is
+// REFUSED. A retitle is compared with the title the work states
 // NOW: the asserted To is STALE (applied), the asserted From is sourced, and any other
 // title is REFUSED naming it - the record moved, and a stale review must not overwrite a
 // title nobody reviewed.
@@ -402,21 +401,34 @@ func retiredElsewhere(r reviewedDecision, target string, reds model.Redirects) [
 	return out
 }
 
-// retiredSubject says why an accepted or asserted drop-membership or retitle-work
-// whose named WORK was retired (onto r's resolved target, p.Target) reads STALE, or ""
-// when it does not. Those two ops judge one work - its place in a series, its title -
-// and a survivor is another record: it can sit at the very slot, or state the very
-// title, the review was written against (two duplicates of one book usually do), so
-// resolving the decision onto it would drop or retitle a record nobody reviewed - a
-// reviewed drop of a duplicate Philosopher's Stone, once merged, removing the real one.
-// The work it named is gone, so there is nothing left for it to apply to, whatever the
-// survivor holds. A rejection still resolves: withholding the survivor's proposal is
-// conservative, never a write. A merge, an addition and the rest still resolve too:
-// they name what a merge carries over. A work deleted without a redirect is no survivor
-// either: an assertion naming it is REFUSED as naming no record, an acceptance meets no
-// fresh proposal and is STALE.
+// judgesOneWork are the ops whose Target is a WORK and whose action judges that one
+// record as it stands - its place in a series (drop, move, restate), its title, its
+// language, a field it lacks - rather than stating a fact a merge carries over onto
+// its survivor (a merge, an added membership or link). fill-field's recording-level
+// fields name a recording, which no tombstone resolves, so they never meet the rule.
+var judgesOneWork = map[string]bool{
+	OpDropMembership:  true,
+	OpMoveMembership:  true,
+	OpRestatePosition: true,
+	OpRetitle:         true,
+	OpSetWorkLanguage: true,
+	OpFillField:       true,
+}
+
+// retiredSubject says why an accepted or asserted decision of a judgesOneWork op whose
+// named work was retired (onto its resolved target, p.Target) reads STALE, or "" when
+// it does not. A survivor is another record: it can sit at the very slot, state the
+// very title or lack the very field the review was written against (two duplicates of
+// one book usually do), so resolving the decision onto it would change a record nobody
+// reviewed - a reviewed drop of a duplicate Philosopher's Stone, once merged, removing
+// the real one. The work it named is gone, so there is nothing left for it to apply
+// to, and it neither promotes the survivor's fresh proposal nor sources one, which is
+// also what keeps it from metarepair. A rejection still resolves: withholding the
+// survivor's proposal is conservative, never a write. A work deleted without a
+// redirect is no survivor either: an assertion naming it is REFUSED as naming no
+// record, an acceptance meets no fresh proposal and is STALE.
 func retiredSubject(r reviewedDecision, p Proposal) string {
-	if r.Decision == "reject" || (r.Op != OpDropMembership && r.Op != OpRetitle) || r.Target == "" || r.Target == p.Target {
+	if r.Decision == "reject" || !judgesOneWork[r.Op] || r.Target == p.Target {
 		return ""
 	}
 	return fmt.Sprintf("%s was retired onto %s since: the work it names is gone, and a review of it never applies to its survivor",

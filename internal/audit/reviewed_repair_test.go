@@ -2,7 +2,6 @@ package audit_test
 
 import (
 	"encoding/json"
-	"os"
 	"os/exec"
 	"path/filepath"
 	"slices"
@@ -13,8 +12,24 @@ import (
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/canonical"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
+	"github.com/kodestar/audiosilo-meta/pkg/redirects"
 )
+
+// commitFixture commits the tree seeded under root as a fresh git repository, so a
+// writing metarepair run meets a clean checkout, as it does on the real tree.
+func commitFixture(t *testing.T, root string) {
+	t.Helper()
+	for _, args := range [][]string{{"init", "-q"}, {"config", "user.email", "fixture@example.com"}, {"config", "user.name", "Fixture"},
+		{"config", "commit.gpgsign", "false"}, {"add", "-A"}, {"commit", "-qm", "seed"}} {
+		cmd := exec.Command("git", args...)
+		cmd.Dir = root
+		if out, err := cmd.CombinedOutput(); err != nil {
+			t.Fatalf("git %v: %v: %s", args, err, out)
+		}
+	}
+}
 
 // Exercise the real fresh-audit gate and writer, not a direct call to the planner.
 // No repair code, options or worklist can bypass the embedded policy.
@@ -85,13 +100,7 @@ func TestReviewedDecisionsReachMetarepair(t *testing.T) {
 	}
 	audit.SetReviewedForTest(t, raw)
 	// Only the disposable fixture needs commits to exercise repair's clean-tree gate.
-	for _, args := range [][]string{{"init", "-q"}, {"config", "user.email", "fixture@example.com"}, {"config", "user.name", "Fixture"}, {"config", "commit.gpgsign", "false"}, {"add", "-A"}, {"commit", "-qm", "seed"}} {
-		cmd := exec.Command("git", args...)
-		cmd.Dir = root
-		if out, err := cmd.CombinedOutput(); err != nil {
-			t.Fatalf("git %v: %v: %s", args, err, out)
-		}
-	}
+	commitFixture(t, root)
 	opts := repair.Options{DataDir: data, Profile: pack.ProfileCore, Ops: []string{audit.OpSetWorkLanguage, audit.OpSplitSeries}, Write: true}
 	rep, err := repair.Run(opts)
 	if err != nil {
@@ -185,13 +194,7 @@ func TestReviewedOtherOrientationReachesMetarepair(t *testing.T) {
 		t.Fatal(err)
 	}
 	audit.SetReviewedForTest(t, raw)
-	for _, args := range [][]string{{"init", "-q"}, {"config", "user.email", "fixture@example.com"}, {"config", "user.name", "Fixture"}, {"config", "commit.gpgsign", "false"}, {"add", "-A"}, {"commit", "-qm", "seed"}} {
-		cmd := exec.Command("git", args...)
-		cmd.Dir = root
-		if out, err := cmd.CombinedOutput(); err != nil {
-			t.Fatalf("git %v: %v: %s", args, err, out)
-		}
-	}
+	commitFixture(t, root)
 	opts := repair.Options{DataDir: data, Profile: pack.ProfileCore, Ops: []string{audit.OpSplitSeries}, Write: true}
 	rep, err := repair.Run(opts)
 	if err != nil {
@@ -271,13 +274,7 @@ func TestReviewedAssertReachesMetarepair(t *testing.T) {
   }
 ]
 `))
-	for _, args := range [][]string{{"init", "-q"}, {"config", "user.email", "fixture@example.com"}, {"config", "user.name", "Fixture"}, {"config", "commit.gpgsign", "false"}, {"add", "-A"}, {"commit", "-qm", "seed"}} {
-		cmd := exec.Command("git", args...)
-		cmd.Dir = root
-		if out, err := cmd.CombinedOutput(); err != nil {
-			t.Fatalf("git %v: %v: %s", args, err, out)
-		}
-	}
+	commitFixture(t, root)
 	opts := repair.Options{DataDir: data, Ops: []string{audit.OpMergeWorks, audit.OpAddSeriesMember}, Write: true}
 	rep, err := repair.Run(opts)
 	if err != nil {
@@ -349,13 +346,7 @@ func TestReviewedAssertedDropReachesMetarepair(t *testing.T) {
   }
 ]
 `))
-	for _, args := range [][]string{{"init", "-q"}, {"config", "user.email", "fixture@example.com"}, {"config", "user.name", "Fixture"}, {"config", "commit.gpgsign", "false"}, {"add", "-A"}, {"commit", "-qm", "seed"}} {
-		cmd := exec.Command("git", args...)
-		cmd.Dir = root
-		if out, err := cmd.CombinedOutput(); err != nil {
-			t.Fatalf("git %v: %v: %s", args, err, out)
-		}
-	}
+	commitFixture(t, root)
 	before := check.Load(data)
 	opts := repair.Options{DataDir: data, Ops: []string{audit.OpDropMembership}, Subclasses: []string{audit.SubclassAsserted}, Write: true}
 	rep, err := repair.Run(opts)
@@ -415,8 +406,9 @@ func TestReviewedDropOrRetitleOfARetiredWorkNeverReachesMetarepair(t *testing.T)
 	root := t.TempDir()
 	data := filepath.Join(root, "data")
 	testpack.Seed(t, data, files)
-	if err := os.WriteFile(filepath.Join(data, "redirects.json"),
-		[]byte(`{"people":{},"series":{},"works":{"prince-caspian-old":"prince-caspian"}}`), 0o644); err != nil {
+	reds := model.NewRedirects()
+	reds[model.RedirectWorks]["prince-caspian-old"] = "prince-caspian"
+	if err := redirects.Write(data, reds); err != nil {
 		t.Fatal(err)
 	}
 	audit.SetReviewedForTest(t, []byte(`[
@@ -438,13 +430,7 @@ func TestReviewedDropOrRetitleOfARetiredWorkNeverReachesMetarepair(t *testing.T)
   }
 ]
 `))
-	for _, args := range [][]string{{"init", "-q"}, {"config", "user.email", "fixture@example.com"}, {"config", "user.name", "Fixture"}, {"config", "commit.gpgsign", "false"}, {"add", "-A"}, {"commit", "-qm", "seed"}} {
-		cmd := exec.Command("git", args...)
-		cmd.Dir = root
-		if out, err := cmd.CombinedOutput(); err != nil {
-			t.Fatalf("git %v: %v: %s", args, err, out)
-		}
-	}
+	commitFixture(t, root)
 	before := check.Load(data)
 	if len(before.Problems) > 0 {
 		t.Fatalf("fixture: %v", before.Problems)
@@ -499,13 +485,7 @@ func TestReviewedAssertedDropOfOneOfTwoMembershipsReachesMetarepair(t *testing.T
   }
 ]
 `))
-	for _, args := range [][]string{{"init", "-q"}, {"config", "user.email", "fixture@example.com"}, {"config", "user.name", "Fixture"}, {"config", "commit.gpgsign", "false"}, {"add", "-A"}, {"commit", "-qm", "seed"}} {
-		cmd := exec.Command("git", args...)
-		cmd.Dir = root
-		if out, err := cmd.CombinedOutput(); err != nil {
-			t.Fatalf("git %v: %v: %s", args, err, out)
-		}
-	}
+	commitFixture(t, root)
 	rep, err := repair.Run(repair.Options{DataDir: data, Ops: []string{audit.OpDropMembership}, Write: true})
 	if err != nil {
 		t.Fatal(err)
@@ -556,13 +536,7 @@ func TestReviewedAssertedRetitleReachesMetarepair(t *testing.T) {
   }
 ]
 `))
-	for _, args := range [][]string{{"init", "-q"}, {"config", "user.email", "fixture@example.com"}, {"config", "user.name", "Fixture"}, {"config", "commit.gpgsign", "false"}, {"add", "-A"}, {"commit", "-qm", "seed"}} {
-		cmd := exec.Command("git", args...)
-		cmd.Dir = root
-		if out, err := cmd.CombinedOutput(); err != nil {
-			t.Fatalf("git %v: %v: %s", args, err, out)
-		}
-	}
+	commitFixture(t, root)
 	opts := repair.Options{DataDir: data, Ops: []string{audit.OpRetitle}, Subclasses: []string{audit.SubclassAsserted}, Write: true}
 	rep, err := repair.Run(opts)
 	if err != nil {

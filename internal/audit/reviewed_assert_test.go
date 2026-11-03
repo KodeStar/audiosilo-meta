@@ -512,6 +512,22 @@ func TestReviewedAssertDropResolvesTombstones(t *testing.T) {
 	assertProposalsConsistent(t, rep)
 }
 
+// magelingTree is the ranger tree plus mageling, whose "Mageling (Unabridged)" W-TITLE
+// proposes retitling mechanically; it returns that proposal's finding beside the files.
+func magelingTree(t testing.TB) (map[string]string, *Finding) {
+	t.Helper()
+	files := rangerTree(t)
+	files["works/xx/mageling/work.json"] = workJSON(t, "mageling", "Mageling (Unabridged)")
+	files["works/xx/mageling/recordings/r.json"] = recJSON(t, "r", "mageling")
+	for _, fd := range classOf(t, runFixtureRejecting(t, files), ClassWorkTitle) {
+		if fd.Propose.Op == OpRetitle && fd.Propose.Target == "mageling" && !fd.Propose.Advisory {
+			return files, &fd
+		}
+	}
+	t.Fatal("fixture must carry W-TITLE's mechanical retitle of mageling")
+	return nil, nil
+}
+
 // A drop or retitle whose target WORK was retired since is STALE whatever its survivor
 // holds. The Dawnshard shape (the drop applied, then the work merged into a twin the
 // series lists at another slot) is the applied steady state; a survivor listed AT the
@@ -521,18 +537,7 @@ func TestReviewedAssertDropResolvesTombstones(t *testing.T) {
 // A LIVE target listed elsewhere stays REFUSED (TestReviewedAssertDropLookups).
 func TestReviewedDropOrRetitleOfARetiredWork(t *testing.T) {
 	const why = " since: the work it names is gone, and a review of it never applies to its survivor"
-	files := rangerTree(t)
-	files["works/xx/mageling/work.json"] = workJSON(t, "mageling", "Mageling (Unabridged)")
-	files["works/xx/mageling/recordings/r.json"] = recJSON(t, "r", "mageling")
-	var detected *Finding
-	for _, fd := range classOf(t, runFixtureRejecting(t, files), ClassWorkTitle) {
-		if fd.Propose.Op == OpRetitle && fd.Propose.Target == "mageling" {
-			detected = &fd
-		}
-	}
-	if detected == nil || detected.Propose.Advisory {
-		t.Fatalf("fixture must carry W-TITLE's mechanical retitle of mageling, got %+v", detected)
-	}
+	files, detected := magelingTree(t)
 	accept := retitleAssertion("mageling-old", detected.Propose.Field, detected.Propose.From, detected.Propose.To)
 	accept.Decision = "accept"
 	const reds = `{"people":{},"series":{},"works":{"complete-chronicles-old":"the-complete-chronicles",` +
@@ -632,7 +637,6 @@ func TestReviewedAssertDropOfOneOfTwoMemberships(t *testing.T) {
 // reviewed), and a typo is REFUSED. A retired target is STALE
 // (TestReviewedDropOrRetitleOfARetiredWork).
 func TestReviewedAssertRetitleLookups(t *testing.T) {
-	const reds = ""
 	for _, tc := range []struct {
 		name   string
 		r      reviewedDecision
@@ -647,7 +651,7 @@ func TestReviewedAssertRetitleLookups(t *testing.T) {
 			"no such work world-without-ends"},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			rep := runFixtureRejectingWith(t, rangerTree(t), reds, tc.r)
+			rep := runFixtureRejecting(t, rangerTree(t), tc.r)
 			o := rep.Reviewed.All
 			if len(o) != 1 || o[0].Status != tc.status || !strings.Contains(o[0].Why, tc.why) {
 				t.Fatalf("tally = %+v, want %s naming %q", rep.Reviewed, tc.status, tc.why)
@@ -670,18 +674,7 @@ func TestReviewedAssertRetitleLookups(t *testing.T) {
 // An asserted retitle W-TITLE already proposes (its field omitted, read as "title") is
 // an acceptance of that proposal: nothing is sourced beside it.
 func TestReviewedAssertRetitleRedundantWithWTitle(t *testing.T) {
-	files := rangerTree(t)
-	files["works/xx/mageling/work.json"] = workJSON(t, "mageling", "Mageling (Unabridged)")
-	files["works/xx/mageling/recordings/r.json"] = recJSON(t, "r", "mageling")
-	var detected *Finding
-	for _, fd := range classOf(t, runFixtureRejecting(t, files), ClassWorkTitle) {
-		if fd.Propose.Op == OpRetitle && fd.Propose.Target == "mageling" {
-			detected = &fd
-		}
-	}
-	if detected == nil {
-		t.Fatal("fixture must carry W-TITLE's retitle of mageling")
-	}
+	files, detected := magelingTree(t)
 	rep := runFixtureRejecting(t, files, retitleAssertion("mageling", "", detected.Propose.From, detected.Propose.To))
 	if got := subclassOf(t, rep, ClassWorkTitle, SubclassAsserted); len(got) != 0 {
 		t.Fatalf("sourced %+v beside the detector's proposal", got)
