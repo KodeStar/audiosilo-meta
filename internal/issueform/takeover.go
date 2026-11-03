@@ -109,6 +109,7 @@ func (c *composer) applyTakeover(s sections, t *takeover, genres []string, named
 		Source:     srcs[len(srcs)-1],
 		RuntimeMin: runtimeMin, ReleaseDate: releaseDate, CoverURL: coverURL,
 		Publisher: s.get(fRecPublisher), ISBNs: isbns, Genres: genres,
+		// no reviewed decisions: an attestation plans no credits, so no fold reads them.
 	}, importer.Options{DataDir: c.dataDir, Profile: c.profile, ImportDate: c.date})
 	switch {
 	case err != nil:
