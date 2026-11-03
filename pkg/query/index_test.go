@@ -1,6 +1,7 @@
 package query
 
 import (
+	"fmt"
 	"strings"
 	"testing"
 
@@ -238,7 +239,7 @@ func TestBatchLookupsAreIndexed(t *testing.T) {
 		{"match: recording runtimes", ids, matchRuntimesSQL, nil},
 		// The LibriVox layer: the boosts' source filter and the feed page's five
 		// batches, each over up to a page (500) of works.
-		{"works with a source", ids, func(ph string) string { return worksAdmittedSQL(ph, workHasSourceArm) }, []any{model.SourceLibrivox}},
+		{"works with a source", ids, func(ph string) string { return worksAdmittedSQL(ph, workHasSourceArm("works.id")) }, []any{model.SourceLibrivox}},
 		{"librivox feed: authors", ids, lvAuthorsSQL, nil},
 		{"librivox feed: translators", ids, lvTranslatorsSQL, nil},
 		{"librivox feed: genres", ids, lvGenresSQL, nil},
@@ -351,24 +352,29 @@ func TestGuidePresenceProbesAreIndexed(t *testing.T) {
 // primary-key SEARCH, run from the very constant the request path uses. The FTS
 // half reports as the usual VIRTUAL TABLE step and the LIMITed subquery as a
 // co-routine SCAN; the step this pins is the join back to works, which must
-// never read the table without an index. The source-filtered form (the source
-// arm inside the window) must also reach recording_sources through its index.
+// never read the table without an index. Every filter shape goes through
+// exactTitleQuery, and a source-filtered one must also reach recording_sources
+// through its index (the correlated workHasSourceArm, one probe per row).
 func TestExactTitleWorksJoinIsIndexed(t *testing.T) {
 	snap := openTestDB(t, artifacttest.Build(t, artifacttest.Fixture()))
-	srcQuery, srcArgs := exactTitleQuery("spare", nil, model.SourceLibrivox)
 	for _, tc := range []struct {
-		name  string
-		query string
-		args  []any
+		lang langFilter
+		src  string
 	}{
-		{"unfiltered", exactTitleSQL, []any{titleMatch("spare"), exactTitleProbeLimit}},
-		{"source", srcQuery, srcArgs},
+		{nil, ""},
+		{langFilter{"de"}, ""},
+		{nil, model.SourceLibrivox},
+		{langFilter{"de"}, model.SourceLibrivox},
 	} {
-		t.Run(tc.name, func(t *testing.T) {
-			plan := queryPlan(t, snap, tc.query, tc.args...)
+		t.Run(fmt.Sprintf("lang=%v source=%q", tc.lang, tc.src), func(t *testing.T) {
+			query, args := exactTitleQuery("spare", tc.lang, tc.src)
+			plan := queryPlan(t, snap, query, args...)
 			joined := strings.Join(plan, " | ")
 			if strings.Contains(joined, "SCAN recording_sources") {
 				t.Errorf("recording_sources read without its index: %s", joined)
+			}
+			if tc.src != "" && !strings.Contains(joined, "idx_recording_sources_type") {
+				t.Errorf("source arm does not reach idx_recording_sources_type: %s", joined)
 			}
 			for _, step := range plan {
 				if strings.HasPrefix(step, "SEARCH w ") && strings.Contains(step, "USING") && strings.Contains(step, "INDEX") {
@@ -426,4 +432,18 @@ func TestSeriesTranslatorsReadIsIndexed(t *testing.T) {
 		t.Errorf("the probe does not seek the translations kind prefix: %s", joined)
 	}
 	t.Logf("plan -> %s", joined)
+}
+
+// TestLatestBySourceGroupsInIndexOrder pins works/latest's source-filtered phase
+// one to group in idx_recording_sources_type's own work_id order: grouping by
+// the works side (w.id) instead cost a temp b-tree over the source's whole range
+// (about 21k rows for librivox) on top of the ORDER BY's.
+func TestLatestBySourceGroupsInIndexOrder(t *testing.T) {
+	snap := openTestDB(t, artifacttest.Build(t, artifacttest.Fixture()))
+	for _, lang := range []langFilter{nil, {"de"}} {
+		query, args := snap.latestCandidatesQuery(lang, model.SourceLibrivox, 200)
+		if joined := strings.Join(queryPlan(t, snap, query, args...), " | "); strings.Contains(joined, "FOR GROUP BY") {
+			t.Errorf("lang=%v: the grouping sorts: %s", lang, joined)
+		}
+	}
 }

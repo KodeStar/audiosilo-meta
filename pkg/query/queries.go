@@ -50,7 +50,7 @@ const latestCandidatesSQL = `SELECT id FROM works` + latestOrderSQL
 // src is a source filter (librivox.go; "" for none): the works with a recording
 // of that source type, reached through idx_recording_sources_type, then each
 // recording and work by primary key - and ORDERED BY THAT SOURCE'S RECORDINGS
-// (latestSourceSQL), not by the work.
+// (latestSourceHeadSQL), not by the work.
 func (s *DB) latestCandidatesQuery(lang langFilter, src string, fetch int) (string, []any) {
 	if src == "" {
 		if len(lang) == 0 {
@@ -68,28 +68,29 @@ func (s *DB) latestCandidatesQuery(lang langFilter, src string, fetch int) (stri
 	return query + latestSourceTailSQL, append(args, fetch)
 }
 
-// latestSourceSQL is works/latest's phase one under a source filter: the works
-// with a recording of the source type, newest SOURCE RECORDING first. A
-// filtered list answers "what is new from LibriVox", and the work's own
-// added_at cannot say: a LibriVox reading attached to a classic the catalogue
-// held for months (Pride and Prejudice, Candide) is new while its work is not,
-// and ordered by the work it would never surface - which is what the LibriVox
-// lane (meta-sync) and a player's "new on LibriVox" shelf read it for. So the
-// date is the newest added_at among the work's recordings OF THAT SOURCE (a
-// recording's added_at is addedAt's rule: its own, else its newest imported_at),
-// falling back to the work's added_at when none of them carries one, with the
-// unfiltered order's NULLS LAST and title, id tie-break. The unfiltered list,
-// and a language filter alone, keep ordering by the work (latestOrderSQL).
+// latestSourceHeadSQL and latestSourceTailSQL are works/latest's phase one
+// under a source filter: the works with a recording of the source type, newest
+// SOURCE RECORDING first. A filtered list answers "what is new from LibriVox",
+// and the work's own added_at cannot say: a LibriVox reading attached to a
+// classic the catalogue held for months (Pride and Prejudice, Candide) is new
+// while its work is not, and ordered by the work it would never surface - which
+// is what the LibriVox lane (meta-sync) and a player's "new on LibriVox" shelf
+// read it for. So the date is the newest added_at among the work's recordings OF
+// THAT SOURCE (a recording's added_at is addedAt's rule: its own, else its
+// newest imported_at), falling back to the work's added_at when none of them
+// carries one, with the unfiltered order's NULLS LAST and title, id tie-break.
+// The unfiltered list, and a language filter alone, keep ordering by the work
+// (latestOrderSQL).
 //
-// Composed from two halves so a language predicate (over w.language - the
-// recordings table has a language column too) sits between them.
-const latestSourceSQL = latestSourceHeadSQL + latestSourceTailSQL
-
+// Two halves so a language predicate (over w.language - the recordings table
+// has a language column too) sits between them. The GROUP BY is on rs.work_id,
+// which idx_recording_sources_type already yields in order under type = ?, so
+// the grouping needs no temp b-tree; only the ORDER BY sorts.
 const (
 	latestSourceHeadSQL = `SELECT w.id FROM recording_sources rs` +
 		` JOIN recordings r ON r.work_id = rs.work_id AND r.id = rs.recording_id` +
 		` JOIN works w ON w.id = rs.work_id WHERE rs.type = ?`
-	latestSourceTailSQL = ` GROUP BY w.id` +
+	latestSourceTailSQL = ` GROUP BY rs.work_id` +
 		` ORDER BY (COALESCE(MAX(r.added_at), w.added_at) IS NULL) ASC, COALESCE(MAX(r.added_at), w.added_at) DESC, w.title ASC, w.id ASC LIMIT ?`
 )
 
@@ -121,7 +122,7 @@ const latestSeriesCap = 2
 // so the cap and the page are taken over those alone (latestCandidatesQuery).
 //
 // src narrows it to the works a source filter admits ("" for none), ordered by
-// their newest recording from that source (latestSourceSQL); an artifact with no
+// their newest recording from that source (latestSourceHeadSQL); an artifact with no
 // recording_sources table answers a filtered request with no works.
 func (s *DB) latestWorks(limit int, lang langFilter, src string) ([]*WorkCard, error) {
 	if src != "" && !s.hasLibrivoxLayer() {

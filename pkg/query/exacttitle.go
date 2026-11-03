@@ -114,12 +114,11 @@ const (
 // filtering the ids after the fact would let other works sharing the title fill
 // it and crowd out the one the reader asked for: "Dune" in German behind twenty
 // English "Dune"s, or the LibriVox "Poems" behind twenty retail ones
-// (q=poems&source=librivox, issue #2752). The source arm is the list's own
-// (worksWithSourceArm) over the FTS row's id, a work id under the kind arm.
+// (q=poems&source=librivox, issue #2752). The source arm is the correlated
+// workHasSourceArm over the FTS row's id (a work id under the kind arm), one
+// index probe per matched title rather than the source's whole id list per
+// keystroke.
 func exactTitleQuery(q string, lang langFilter, src string) (string, []any) {
-	if len(lang) == 0 && src == "" {
-		return exactTitleSQL, []any{titleMatch(q), exactTitleProbeLimit}
-	}
 	query, args := exactTitleHeadSQL, []any{titleMatch(q)}
 	if len(lang) > 0 {
 		pred, predArgs := lang.predicate("language", false)
@@ -127,7 +126,7 @@ func exactTitleQuery(q string, lang langFilter, src string) (string, []any) {
 		args = append(args, predArgs...)
 	}
 	if src != "" {
-		query += `AND ` + worksWithSourceArm + ` `
+		query += `AND ` + workHasSourceArm("search_fts.id") + ` `
 		args = append(args, src)
 	}
 	return query + exactTitleTailSQL, append(args, exactTitleProbeLimit)

@@ -7,6 +7,7 @@ import (
 	"net/http/httptest"
 	"os"
 	"path/filepath"
+	"slices"
 	"sort"
 	"strings"
 	"testing"
@@ -124,7 +125,7 @@ func TestSourceFilter(t *testing.T) {
 				return
 			}
 			_, plain := artifacttest.GetJSON(t, ts.URL, tc.unfilterd)
-			if ids := workIDsOf(t, plain, tc.key); !containsString(ids, lvControlWork) {
+			if ids := workIDsOf(t, plain, tc.key); !slices.Contains(ids, lvControlWork) {
 				t.Errorf("control: %s does not hold %s (%v), so the filter proved nothing", tc.unfilterd, lvControlWork, ids)
 			}
 		})
@@ -133,7 +134,7 @@ func TestSourceFilter(t *testing.T) {
 	// The combined search, filtered, is works only: Franz Kafka the person
 	// matches "kafka" unfiltered.
 	_, plain := artifacttest.GetJSON(t, ts.URL, "/api/v1/search?q=kafka")
-	if !containsString(workIDsOf(t, plain, "results"), "person:franz-kafka") {
+	if !slices.Contains(workIDsOf(t, plain, "results"), "person:franz-kafka") {
 		t.Errorf("control: the unfiltered search holds no person: %v", workIDsOf(t, plain, "results"))
 	}
 
@@ -150,15 +151,6 @@ func TestSourceFilter(t *testing.T) {
 	if code, _ := artifacttest.GetJSON(t, ts.URL, "/api/v1/people/search?q=kafka&source=nonsense"); code != http.StatusOK {
 		t.Errorf("people/search with a source = %d, want 200 (unread)", code)
 	}
-}
-
-func containsString(list []string, s string) bool {
-	for _, v := range list {
-		if v == s {
-			return true
-		}
-	}
-	return false
 }
 
 func TestLookupLibrivoxID(t *testing.T) {
@@ -660,14 +652,13 @@ func TestLatestBySourceOrdersBySourceRecordings(t *testing.T) {
 			// A LibriVox-only work added a month earlier.
 			work("lv-only", "LibriVox Only", "2026-10-01", rec("lv-old", "lv-only", "2026-10-01", lv)),
 			// A LibriVox recording with no date of its own falls back to its work's.
-			work("undated", "Undated", "2026-09-01", rec("lv-undated", "undated", "", nil)),
+			// Its source is LibriVox with no imported_at either, so the column is
+			// NULL and the work's added_at decides.
+			work("undated", "Undated", "2026-09-01", rec("lv-undated", "undated", "", []model.Source{{Type: model.SourceLibrivox}})),
 			// A newer retail-only work: in the unfiltered list, never the filtered.
 			work("retail-only", "Retail Only", "2026-10-15", rec("retail-new", "retail-only", "2026-10-15", user)),
 		},
 	}
-	// The undated recording's source is LibriVox, with no imported_at either, so
-	// the column is NULL and the work's added_at decides.
-	cat.Works[2].Recordings[0].Sources = []model.Source{{Type: model.SourceLibrivox}}
 	_, ts := serveDB(t, artifacttest.Build(t, cat), HandlerOptions{})
 
 	for _, tc := range []struct {
@@ -682,12 +673,9 @@ func TestLatestBySourceOrdersBySourceRecordings(t *testing.T) {
 		if code != http.StatusOK {
 			t.Fatalf("GET %s = %d %v", tc.path, code, body)
 		}
-		if got := workIDsOf(t, body, "works"); strings.Join(got, ",") != strings.Join(tc.want, ",") {
+		if got := workIDsOf(t, body, "works"); !slices.Equal(got, tc.want) {
 			t.Errorf("GET %s = %v, want %v", tc.path, got, tc.want)
 		}
-	}
-	if q, args := (&DB{}).latestCandidatesQuery(nil, model.SourceLibrivox, 200); q != latestSourceSQL || len(args) != 2 {
-		t.Errorf("latest, source only = %q %v, want latestSourceSQL", q, args)
 	}
 }
 
@@ -712,21 +700,18 @@ func TestExactTitleProbeFiltersSourceInsideItsWindow(t *testing.T) {
 	cat.Works = append(cat.Works, work("zz-poems-librivox", model.SourceLibrivox))
 	snap, ts := serveDB(t, artifacttest.Build(t, cat), HandlerOptions{})
 
-	if q, args := exactTitleQuery("poems", nil, ""); q != exactTitleSQL || len(args) != 2 {
-		t.Errorf("unfiltered exact-title probe = %q %v, want exactTitleSQL unchanged", q, args)
-	}
-	if got, err := snap.exactTitleHits(t.Context(), "poems", nil, ""); err != nil || containsString(got, "zz-poems-librivox") {
+	if got, err := snap.exactTitleHits(t.Context(), "poems", nil, ""); err != nil || slices.Contains(got, "zz-poems-librivox") {
 		t.Fatalf("fixture: unfiltered exact-title window = %v (%v), want it full without the LibriVox Poems", got, err)
 	}
-	if got, err := snap.exactTitleHits(t.Context(), "poems", nil, model.SourceLibrivox); err != nil || strings.Join(got, ",") != "zz-poems-librivox" {
+	if got, err := snap.exactTitleHits(t.Context(), "poems", nil, model.SourceLibrivox); err != nil || !slices.Equal(got, []string{"zz-poems-librivox"}) {
 		t.Errorf("exact-title probe under source=librivox = %v (%v), want [zz-poems-librivox]", got, err)
 	}
-	if got, err := snap.exactTitleHits(t.Context(), "poems", langFilter{"en"}, model.SourceLibrivox); err != nil || strings.Join(got, ",") != "zz-poems-librivox" {
+	if got, err := snap.exactTitleHits(t.Context(), "poems", langFilter{"en"}, model.SourceLibrivox); err != nil || !slices.Equal(got, []string{"zz-poems-librivox"}) {
 		t.Errorf("exact-title probe under lang=en&source=librivox = %v (%v), want [zz-poems-librivox]", got, err)
 	}
 	for _, path := range []string{"/api/v1/search?q=poems&source=librivox&limit=1", "/api/v1/works/search?q=poems&source=librivox&limit=1"} {
 		code, body := artifacttest.GetJSON(t, ts.URL, path)
-		if got := workIDsOf(t, body, "results"); code != http.StatusOK || strings.Join(got, ",") != "zz-poems-librivox" {
+		if got := workIDsOf(t, body, "results"); code != http.StatusOK || !slices.Equal(got, []string{"zz-poems-librivox"}) {
 			t.Errorf("GET %s = %d %v, want [zz-poems-librivox]", path, code, got)
 		}
 	}

@@ -50,26 +50,32 @@ services:
       # a burst of 0 with the limit on is refused at startup).
       #
       # The client is the connection's address unless that address is a trusted
-      # proxy, and behind the reverse proxy every connection comes from the
-      # proxy: a host proxy reaching the loopback port above arrives from the
-      # compose network's GATEWAY, an address inside that network's subnet
-      # (127.0.0.1 only under network_mode: host). Trusting exactly that subnet
-      # and the loopback lets the limit read the proxy's X-Forwarded-For, so
-      # each visitor gets their own bucket rather than the whole site sharing
-      # one - and trusts nothing else. The subnet is PINNED (networks: below) so
-      # the trusted range is known rather than whatever Docker allocated; both
-      # read METASERVE_SUBNET, so they cannot disagree. Override it in .env when
-      # the default collides with a network on this host (`docker compose up`
-      # then refuses with "Pool overlaps"), e.g. METASERVE_SUBNET=10.99.0.0/28.
+      # proxy, whose X-Forwarded-For then names the client. THIS FILE TRUSTS ONLY
+      # THE LOOPBACK AND THIS COMPOSE NETWORK'S SUBNET - in practice its gateway,
+      # the one address a HOST proxy (nginx on the host, proxying to the loopback
+      # port above) arrives from. That is right for that setup and for no other:
       #
-      # Do NOT widen this to the private ranges (10/8, 172.16/12, 192.168/16):
-      # if the host proxy also serves a LAN, a LAN client's own address is then
-      # a "trusted proxy" hop, so the X-Forwarded-For it sends is believed and it
-      # can pick any bucket it likes. The proxy must send X-Forwarded-For (nginx:
-      # proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for). If another
-      # proxy or CDN sits in front of it, add that CDN's ranges too, or rewrite
-      # the header at the host proxy (nginx real_ip), or the CDN's edges become
-      # the clients.
+      #   - A CONTAINERISED proxy on another Docker network arrives from its own
+      #     address, which is not trusted, so every visitor shares one rate-limit
+      #     bucket. Add that proxy's address (or its network's subnet) to the
+      #     list below.
+      #   - A CDN or second proxy in front of the host proxy: add its ranges, or
+      #     rewrite the header at the host proxy (nginx real_ip), or the CDN's
+      #     edges become the clients.
+      #   - Never widen the list to the private ranges (10/8, 172.16/12,
+      #     192.168/16): if the host proxy also serves a LAN, a LAN client's own
+      #     address is then a trusted hop, the X-Forwarded-For it sends is
+      #     believed, and it picks its own bucket.
+      #
+      # The subnet is PINNED (networks: below) so the trusted range is known
+      # rather than whatever Docker allocated; both read METASERVE_SUBNET, so
+      # they cannot disagree. Override it in .env when the default collides with
+      # a network on this host (`docker compose up` refuses with "Pool
+      # overlaps"), e.g. METASERVE_SUBNET=10.99.0.0/28. An existing deployment's
+      # first start after this change needs `docker compose down && docker
+      # compose up -d` ONCE, which recreates the network with the pinned subnet.
+      # The proxy must send X-Forwarded-For (nginx: proxy_set_header
+      # X-Forwarded-For $proxy_add_x_forwarded_for).
       METASERVE_TRUSTED_PROXIES: "127.0.0.0/8,::1,${METASERVE_SUBNET:-10.217.53.0/28}"
       #
       # Optional: enable immediate refreshes from the release workflow. Configure
@@ -81,8 +87,9 @@ services:
       # GITHUB_TOKEN: ghp_... # optional higher polling rate limit
 
 # The project's default network, with its subnet pinned so the trusted-proxy
-# range above names it exactly. Changing it on a running deployment recreates the
-# network: `docker compose down && docker compose up -d`.
+# range above names it exactly. The first start after pinning it, or after
+# changing METASERVE_SUBNET, needs `docker compose down && docker compose up -d`
+# once: the network is recreated.
 networks:
   default:
     ipam:

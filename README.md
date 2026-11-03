@@ -248,11 +248,14 @@ comma-separated list of addresses and CIDR prefixes), the rightmost
 counts as its /64). **Behind a reverse
 proxy, name it there**, or every request counts as the proxy and shares one
 bucket; a forwarded header from anywhere else is never read. The shipped
-`docker-compose.yml` already trusts the loopback and its own network's pinned
-subnet (`METASERVE_SUBNET`, default `10.217.53.0/28`; a host proxy reaching the
-loopback-only port arrives from that network's gateway) and nothing else - never
-the private ranges wholesale, which would let a LAN client of the proxy choose its
-own bucket. A 200 that states
+`docker-compose.yml` trusts only the loopback and its own network's pinned
+subnet (`METASERVE_SUBNET`, default `10.217.53.0/28`) - in practice that network's
+gateway, which is where a host proxy on the loopback-only port arrives from. That
+is right for a host proxy; a containerised proxy on another Docker network must
+add its own address to `METASERVE_TRUSTED_PROXIES`, or every visitor shares one
+bucket. Never trust the private ranges wholesale: a LAN client of the proxy could
+then choose its own bucket. An existing deployment's first start after the subnet
+was pinned needs `docker compose down && docker compose up -d` once. A 200 that states
 no `Cache-Control` of its own gets `public, max-age=600`, or `public,
 max-age=60` on the searches and `works/match`.
 
