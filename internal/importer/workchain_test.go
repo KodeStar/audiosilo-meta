@@ -93,6 +93,18 @@ func TestWorkTitleAlias(t *testing.T) {
 	if got := WorkTitleAlias(&model.Work{ID: "bravelands-book-3", Title: "Bravelands", Authors: w.Authors}, live, reds); got != "" {
 		t.Errorf("serial volume: alias = %q, want none", got)
 	}
+	// ... and so is one whose title the pre-pass had to SHORTEN to fit the tail: the
+	// volume does not begin with the whole base, and aliasing the bare title onto it
+	// would pull every claim-free row of the title into that one volume.
+	long := "My Daughter Left the Nest and Returned an S-Rank Adventurer: My Daughter Left the Nest and Returned an S-Rank Adventurer"
+	base := Slugify(cleanWorkTitle(long))
+	vol := model.BoundedSlugTail(base, "-book-11")
+	if strings.HasPrefix(vol, base) {
+		t.Fatalf("fixture: %q is not shortened, so it pins nothing", vol)
+	}
+	if got := WorkTitleAlias(&model.Work{ID: vol, Title: long, Authors: w.Authors}, live, reds); got != "" {
+		t.Errorf("shortened serial volume %s: alias = %q, want none", vol, got)
+	}
 	// A decorated title's own slug is not one, whatever its tail reads like.
 	horsemen := &model.Work{ID: "war-the-four-horsemen-book-2", Title: "War", Authors: []string{"laura-thalassa"}}
 	if got := WorkTitleAlias(horsemen, live, reds); got != "war" {

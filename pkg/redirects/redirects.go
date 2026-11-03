@@ -10,11 +10,11 @@
 // here validates against the catalogue: this package knows the file, not the
 // database.
 //
-// ITS ONE CALLER is internal/repair, the duplicate-merge pass this mechanism was
+// ITS FIRST CALLER is internal/repair, the duplicate-merge pass this mechanism was
 // built ahead of: retiring a slug without a tombstone is what had to be made
 // impossible before any such pass ran, and every slug a merge retires is recorded
 // here in the same change. The same pass also records a retitle's ALIAS here (see
-// model.Redirects). The chain collapse is what that caller actually needs -
+// model.Redirects), and so does internal/issueform, for an intake title correction. The chain collapse is what that caller actually needs -
 // waves land over each other, so today's target is tomorrow's source. The one
 // repair that predates the mechanism, internal/remediate's GraphicAudio fold, was
 // not retrofitted - it is a documented one-off that has done its work, so

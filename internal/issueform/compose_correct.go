@@ -8,9 +8,11 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
+	"github.com/kodestar/audiosilo-meta/pkg/redirects"
 )
 
 // Field labels for correct-data.yml.
@@ -48,6 +50,13 @@ const (
 // name slugs to its id, a publisher of record is not a regional imprint, a link
 // already written introduces no fault), and that one no-op rule stays the verdict.
 //
+// A scalar may also carry implies, which records what the write means OUTSIDE
+// the record - a work's retitle ALIAS in the tombstone table (aliasRetitle). It
+// runs on the corrected record after the no-op test and BEFORE the record is
+// queued, so a refusal leaves nothing written, and it fails the run itself and
+// reports false when the consequence cannot be recorded. Its note, when not
+// empty, joins the verdict after the applied line.
+//
 // Two shapes, one table, one lookup: a field named here is always applied by the
 // op recorded beside it, so a name can never be reachable with nothing to do -
 // which would stamp the correction's provenance onto a record it left otherwise
@@ -55,6 +64,7 @@ const (
 type correctOp struct {
 	kind    fieldKind
 	resolve func(*composer, entryAddr, map[string]any, any) (value any, ok bool)
+	implies func(*composer, entryAddr, map[string]any) (note string, ok bool)
 	add     func(*composer, entryAddr, map[string]any, string) (applied string, ok bool)
 }
 
@@ -71,7 +81,7 @@ type correctOp struct {
 // ordering fields' compose-time checks).
 var correctableFields = map[model.Kind]map[string]correctOp{
 	model.KindWork: {
-		"title": {kind: kindString}, "subtitle": {kind: kindString},
+		"title": {kind: kindString, implies: (*composer).aliasRetitle}, "subtitle": {kind: kindString},
 		"language": {kind: kindLanguage, resolve: (*composer).checkWorkLanguage}, "first_published": {kind: kindDateYear},
 		"translation_of": {add: (*composer).correctTranslationOf},
 	},
@@ -207,6 +217,12 @@ func (c *composer) correctOne(ref recordRef, field, corrected, evidence string) 
 		return
 	}
 	record[fieldName] = value
+	implied := ""
+	if op.implies != nil {
+		if implied, ok = op.implies(c, addr, record); !ok {
+			return
+		}
+	}
 
 	// Record the correction's provenance so the source can be audited later.
 	record["sources"] = appendSource(record["sources"], map[string]any{
@@ -217,6 +233,74 @@ func (c *composer) correctOne(ref recordRef, field, corrected, evidence string) 
 		return
 	}
 	c.note("applied %s = %v on %s", fieldName, value, addr.label(c))
+	if implied != "" {
+		c.note("%s", implied)
+	}
+}
+
+// aliasRetitle records a work's retitle ALIAS, the rule metarepair's retitle-work
+// follows (internal/repair's aliasRetitle), through the one function that states it:
+// importer.WorkTitleAlias. A work's slug never follows its title, and the importer
+// FINDS an existing work by composing its title's candidate chain, so a title
+// correction that leaves the record off the chain its new title composes is one the
+// next import of that title misses - and mints a duplicate beside. The slug that
+// import would mint at is recorded as a works tombstone onto the record: a retired
+// work candidate is judged as its survivor, so the import merges instead. No alias
+// is written when the chain still reaches the record (a candidate is its slug, or is
+// already retired onto it), when nothing could be minted, or for a serial volume at
+// "<title>-book-<n>" - all WorkTitleAlias's own answers.
+//
+// The alias lands in the composer's copy of the table and reaches disk at flush
+// (c.redirectsChanged), beside the pack the corrected work is written to, so the
+// bot's pull request carries data/redirects.json with the retitle. The post-write
+// metacheck judges the table as it judges any other: a source that is a live work
+// can never be written, because WorkTitleAlias steps over every held candidate.
+func (c *composer) aliasRetitle(addr entryAddr, record map[string]any) (string, bool) {
+	if addr.family != pack.FamilyWorks || addr.recSlug != "" || !c.profile.Redirects() {
+		return "", true
+	}
+	raw, err := json.Marshal(record)
+	if err != nil {
+		c.fail(StatusInvalid, "marshal work %q: %v", addr.slug, err)
+		return "", false
+	}
+	var w model.Work
+	if err := json.Unmarshal(raw, &w); err != nil {
+		c.fail(StatusInvalid, "decode work %q: %v", addr.slug, err)
+		return "", false
+	}
+	w.ID = addr.slug
+	var readErr error
+	live := func(slug string) bool {
+		if readErr != nil {
+			return true
+		}
+		held, err := c.store.Has(pack.FamilyWorks, slug)
+		if err != nil {
+			readErr = err
+			return true
+		}
+		return held
+	}
+	alias := importer.WorkTitleAlias(&w, live, c.redirects)
+	if readErr != nil {
+		c.fail(StatusInvalid, "read works entry while aliasing the retitle of %q: %v", addr.slug, readErr)
+		return "", false
+	}
+	if alias == "" {
+		return "", true
+	}
+	if c.redirects == nil {
+		c.redirects = model.NewRedirects()
+	}
+	if err := redirects.Add(c.redirects, model.RedirectWorks, alias, addr.slug); err != nil {
+		c.fail(StatusNeedsHuman, "the retitle of %s needs the alias %s, which the tombstone table refuses (%v) - a maintainer will apply it",
+			addr.label(c), alias, err)
+		return "", false
+	}
+	c.redirectsChanged = true
+	return fmt.Sprintf("aliased %s -> %s in %s: the slug an import of the new title would mint at, so that import finds the work",
+		alias, addr.slug, "data/"+pack.RedirectsFile), true
 }
 
 // misaddressedField fails a correction that names a field its record does not

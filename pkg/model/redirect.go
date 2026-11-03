@@ -62,8 +62,9 @@ func ValidRedirectKind(k RedirectKind) bool { return slices.Contains(redirectKin
 // off the candidate chain its new title composes, and the importer - which finds
 // an existing work by composing that chain - would mint a duplicate beside it. The
 // retitle therefore records the slug that import would mint at as a tombstone onto
-// the record (internal/repair's retitleWork, importer.WorkTitleAlias), and a
-// retired work candidate is judged as its survivor. Such a source never held a
+// the record (internal/repair's retitleWork and internal/issueform's title
+// correction, both through importer.WorkTitleAlias), and a retired work candidate
+// is judged as its survivor. Such a source never held a
 // record. Nothing below asks that it did: the rules say what a source IS (never a
 // live id), and a 301 from a slug nobody ever held is harmless. One consequence for
 // a future RENAME pass (none exists): moving a record onto its own alias's source

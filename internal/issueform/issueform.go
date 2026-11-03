@@ -26,6 +26,7 @@ import (
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
+	"github.com/kodestar/audiosilo-meta/pkg/redirects"
 )
 
 // Status is the outcome of processing a submission.
@@ -193,6 +194,10 @@ type composer struct {
 	// A profile carrying no tombstone table leaves it empty, and the artifact
 	// carries the answer there instead.
 	redirects model.Redirects
+	// redirectsChanged is set when a composed change added a tombstone to
+	// redirects (a title correction's retitle alias, aliasRetitle), so flush writes
+	// the table back and the bot's pull request carries it.
+	redirectsChanged bool
 	// links is the catalogue as pkg/check's link rules read it (check.NewLinkView),
 	// built on the first link judgement (compose_links.go), since most corrections
 	// never make one.
@@ -803,6 +808,12 @@ func (c *composer) flush() string {
 		return fmt.Sprintf("write packs: %v", err)
 	}
 	c.wrote = w.Wrote
+	if c.redirectsChanged {
+		if err := redirects.Write(c.dataDir, c.redirects); err != nil {
+			return fmt.Sprintf("write %s: %v", pack.RedirectsFile, err)
+		}
+		c.wrote = append(c.wrote, pack.RedirectsFile)
+	}
 	return ""
 }
 
@@ -821,9 +832,10 @@ func (c *composer) validate() []string {
 	return msgs
 }
 
-// fileList returns the pack files flush rewrote, data/-prefixed and sorted. It
-// is what the intake workflow commits, so it names FILES rather than entries -
-// one pack usually carries several of a submission's records.
+// fileList returns the pack files flush rewrote, data/-prefixed and sorted, plus
+// data/redirects.json when a retitle alias was added to it. It is what the intake
+// workflow commits, so it names FILES rather than entries - one pack usually
+// carries several of a submission's records.
 func (c *composer) fileList() []string {
 	out := make([]string, 0, len(c.wrote))
 	for _, rel := range c.wrote {
