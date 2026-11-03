@@ -49,12 +49,13 @@ func TestRegenerateGenresFromALibrivoxSnapshot(t *testing.T) {
 		"works/mi/mixed/recordings/retail.json":  regenRecJSON("mixed", "retail", "B0MIXED001"),
 		"works/mi/mixed/recordings/project.json": lvRegenRecJSON("mixed", "project", 99803),
 	})
-	sum := runLibrivoxRegen(t, dataDir,
+	projects := []LibrivoxProject{
 		lvRegenProject(t, 99801, "Comedy", "Published 1800 -1900"),
 		lvRegenProject(t, 99802, "Animals & Nature", "Children's Fiction"),
 		lvRegenProject(t, 99803, "Comedy"),
 		lvRegenProject(t, 99804, "Exploration"), // not catalogued
-	)
+	}
+	sum := runLibrivoxRegen(t, dataDir, projects...)
 	if got, want := regenGenres(t, dataDir, "play"), []string{"childrens", "drama-plays"}; !reflect.DeepEqual(got, want) {
 		t.Errorf("play genres = %v, want the new table's vote %v", got, want)
 	}
@@ -75,11 +76,7 @@ func TestRegenerateGenresFromALibrivoxSnapshot(t *testing.T) {
 		t.Fatalf("tree failed validation: %v", res.Problems)
 	}
 	// Idempotent: the same snapshot again changes nothing.
-	again := runLibrivoxRegen(t, dataDir,
-		lvRegenProject(t, 99801, "Comedy", "Published 1800 -1900"),
-		lvRegenProject(t, 99802, "Animals & Nature", "Children's Fiction"),
-		lvRegenProject(t, 99803, "Comedy"),
-	)
+	again := runLibrivoxRegen(t, dataDir, projects...)
 	if len(again.GenreChanges) != 0 {
 		t.Errorf("second run changed something: %+v", again.GenreChanges)
 	}

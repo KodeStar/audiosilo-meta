@@ -69,11 +69,15 @@ func (p *planner) planEnrich(books []sourceBook) {
 // at the first fatal error.
 func (p *planner) forEachMatchedRow(books []sourceBook, fn func(b sourceBook, ref RecRef)) {
 	for _, b := range books {
-		asin := NormalizeASIN(b.str("asin"))
-		p.setSource(asin, b)
-		ref, matched := p.asinLoc[asin]
+		var ref RecRef
+		var matched bool
 		if b.lv != nil {
+			p.setSource("", b)
 			ref, matched = p.lv.held[b.lv.id]
+		} else {
+			asin := NormalizeASIN(b.str("asin"))
+			p.setSource(asin, b)
+			ref, matched = p.asinLoc[asin]
 		}
 		if !matched {
 			p.summary.NotInCatalog++

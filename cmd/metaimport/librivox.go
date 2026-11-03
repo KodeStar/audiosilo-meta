@@ -117,20 +117,8 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 	if *regenerate {
 		mode = importer.ModeRegenerateGenres
 	}
-	explicit := map[string]bool{}
-	fs.Visit(func(f *flag.Flag) { explicit["--"+f.Name] = true })
-	for _, f := range []struct {
-		name  string
-		regen bool // valid only under --regenerate-genres (else: only without it)
-	}{{"--date", false}, {"--conflicts", false}, {"--rows-as-of", true}, {"--genre-changes", true}} {
-		if explicit[f.name] && f.regen != *regenerate {
-			if f.regen {
-				fmt.Fprintf(os.Stderr, "metaimport librivox import: %s is valid with --regenerate-genres only\n", f.name)
-			} else {
-				fmt.Fprintf(os.Stderr, "metaimport librivox import: %s does nothing under --regenerate-genres, which writes genres only and stamps no source\n", f.name)
-			}
-			return 2
-		}
+	if refuseFlags("metaimport librivox import", fs, mode, "librivox", regenFlagRules) {
+		return 2
 	}
 	if err := importer.ValidateRowsAsOf(mode, *rowsAsOf, time.Now().UTC()); err != nil {
 		fmt.Fprintln(os.Stderr, "metaimport librivox import: --rows-as-of:", err)
@@ -168,9 +156,7 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 		if !*dryRun {
 			fmt.Printf("  %d pack files written\n", len(sum.Files))
 		}
-		for _, c := range sum.GenreChanges {
-			changesLog.Encode(c)
-		}
+		encodeGenreChanges(changesLog, sum)
 		if err := atomicfile.CommitInOrder(changesLog); err != nil {
 			fmt.Fprintln(os.Stderr, "metaimport librivox import: --genre-changes:", err)
 			return 1

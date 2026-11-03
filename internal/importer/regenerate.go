@@ -147,7 +147,7 @@ func (p *planner) planRegenerateGenres(books []sourceBook) {
 			set, seen := p.regenRecs[RecRef{Work: slug, Rec: rec}]
 			if seen {
 				sets = append(sets, set)
-			} else if len(ri.asins) > 0 || ri.librivox {
+			} else if ri.rowAddressable() {
 				complete = false
 			}
 		}

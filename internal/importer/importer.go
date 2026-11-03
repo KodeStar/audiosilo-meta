@@ -130,10 +130,16 @@ type recInfo struct {
 	// abridged grounds. See abridgedConflict.
 	abridged *bool
 	// librivox says a recording loaded from disk carries a LibriVox project id:
-	// beside its ASINs, the other identifier a genre regeneration's rows can
-	// reach it by (regenerate.go's completeness test).
+	// beside its ASINs, the other identifier a row can reach it by
+	// (rowAddressable).
 	librivox bool
 }
+
+// rowAddressable reports whether a source row can reach the recording by an
+// identifier - an ASIN, or a LibriVox project id - which is what makes the rows
+// forEachMatchedRow matches an account of it: a recording that carries one and
+// met no row is evidence the run did not see (regenerate.go's completeness test).
+func (ri *recInfo) rowAddressable() bool { return len(ri.asins) > 0 || ri.librivox }
 
 // workState tracks a work's identity (slug + author set) and its recordings.
 //
@@ -788,10 +794,13 @@ func openPlanner(sourceType string, opts Options) (*planner, error) {
 
 // plannerOn is openPlanner over a store the caller already holds (AttestAt): the
 // planner, plus the ASIN LOCATION index a run that can attest or enrich needs
-// (the other runs never ask where an ASIN sits, so they never pay for it).
+// (the other runs never ask where an ASIN sits, so they never pay for it). A
+// LibriVox run never does either: its rows carry no ASIN, and its regeneration
+// locates them by project id (librivoxState.held), so building the index would
+// only add the catalogue's ASIN-collision warnings to its summary.
 func plannerOn(store *pack.Store, sourceType string, opts Options) *planner {
 	p := newPlanner(store, sourceType, opts)
-	if opts.Mode.locatesASINs() || p.userTier {
+	if (opts.Mode.locatesASINs() || p.userTier) && sourceType != sourceLibrivox {
 		p.asinLoc = map[string]RecRef{}
 	}
 	return p

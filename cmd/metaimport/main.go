@@ -253,36 +253,16 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	// inert is a refusal instead: --regenerate-genres writes nothing but genres
 	// and stamps no source, so a date, a conflict worklist, a series rule or the
 	// series lookup would all be ignored there.
-	explicit := map[string]bool{}
-	fs.Visit(func(f *flag.Flag) { explicit["--"+f.Name] = true })
-	notRegen := func(m importer.Mode) bool { return m != importer.ModeRegenerateGenres }
-	const inertInRegen = "does nothing under --regenerate-genres, which writes genres only and stamps no source"
-	for _, f := range []struct {
-		name      string
-		libexOnly bool
-		valid     func(importer.Mode) bool // nil: every mode
-		what      string
-	}{
+	rules := append([]flagRule{
 		{"--skipped", true, notRegen, "cannot report a --regenerate-genres run's refusals: a refused row whose ASIN the catalogue holds is not listed, and every other row matched nothing"},
 		{"--attach-editions", true, func(m importer.Mode) bool { return m == importer.ModeCreate }, "attaches rows the CREATE path would plan; it is valid in that mode only"},
-		{"--genre-changes", true, func(m importer.Mode) bool { return m == importer.ModeRegenerateGenres }, "is the --regenerate-genres worklist; it is valid in that mode only"},
-		{"--rows-as-of", true, func(m importer.Mode) bool { return m == importer.ModeRegenerateGenres }, "is the --regenerate-genres rows' snapshot date; it is valid in that mode only"},
-		{"--date", false, notRegen, inertInRegen},
-		{"--conflicts", false, notRegen, inertInRegen},
 		{"--existing-series-only", false, notRegen, inertInRegen},
 		{"--series-lookup", false, notRegen, inertInRegen},
 		{"--series-lookup-limit", false, notRegen, inertInRegen},
 		{"--libex", false, notRegen, inertInRegen},
-	} {
-		switch {
-		case !explicit[f.name]:
-		case f.valid != nil && !f.valid(mode):
-			fmt.Fprintf(os.Stderr, "metaimport: %s %s\n", f.name, f.what)
-			return 2
-		case f.libexOnly && name != boundedSource:
-			fmt.Fprintf(os.Stderr, "metaimport: %s is only supported for the %s source, not %q\n", f.name, boundedSource, name)
-			return 2
-		}
+	}, regenFlagRules...)
+	if refuseFlags("metaimport", fs, mode, name, rules) {
+		return 2
 	}
 
 	// The regeneration never judges a record with evidence older than the
@@ -362,14 +342,70 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 			skippedLog.Encode(s)
 		}
 	}
-	for _, c := range sum.GenreChanges {
-		changesLog.Encode(c)
-	}
+	encodeGenreChanges(changesLog, sum)
 	if err := atomicfile.CommitInOrder(skippedLog, changesLog); err != nil {
 		fmt.Fprintln(os.Stderr, "metaimport: worklists:", err)
 		return 1
 	}
 	return 0
+}
+
+// flagRule is one flag that belongs to one source or one mode (refuseFlags):
+// libexOnly says it is for the catalogue-bounded source alone, valid (nil: every
+// mode) which modes it does something in, and what is the refusal's wording.
+type flagRule struct {
+	name      string
+	libexOnly bool
+	valid     func(importer.Mode) bool
+	what      string
+}
+
+// notRegen is the mode test of a flag the genre regeneration would ignore.
+func notRegen(m importer.Mode) bool { return m != importer.ModeRegenerateGenres }
+
+// regenOnly is the mode test of the genre regeneration's own flags.
+func regenOnly(m importer.Mode) bool { return m == importer.ModeRegenerateGenres }
+
+const inertInRegen = "does nothing under --regenerate-genres, which writes genres only and stamps no source"
+
+// regenFlagRules are the genre regeneration's flag rules, shared by the libex
+// command and `librivox import` (both run the regeneration): its own two flags,
+// valid in that mode only, and the two create flags it would silently ignore.
+var regenFlagRules = []flagRule{
+	{"--genre-changes", true, regenOnly, "is the --regenerate-genres worklist; it is valid in that mode only"},
+	{"--rows-as-of", true, regenOnly, "is the --regenerate-genres rows' snapshot date; it is valid in that mode only"},
+	{"--date", false, notRegen, inertInRegen},
+	{"--conflicts", false, notRegen, inertInRegen},
+}
+
+// refuseFlags validates the flags fs was given explicitly against rules, for a
+// run of source in mode, printing the first refusal under the command's prefix:
+// a flag that would be silently inert is a refusal instead. A libexOnly flag is
+// refused for every source but the catalogue-bounded ones (boundedSource, and
+// librivox, whose import runs the genre regeneration too).
+func refuseFlags(prefix string, fs *flag.FlagSet, mode importer.Mode, source string, rules []flagRule) bool {
+	explicit := map[string]bool{}
+	fs.Visit(func(f *flag.Flag) { explicit["--"+f.Name] = true })
+	for _, f := range rules {
+		switch {
+		case !explicit[f.name]:
+		case f.valid != nil && !f.valid(mode):
+			fmt.Fprintf(os.Stderr, "%s: %s %s\n", prefix, f.name, f.what)
+			return true
+		case f.libexOnly && source != boundedSource && source != "librivox":
+			fmt.Fprintf(os.Stderr, "%s: %s is only supported for the %s source, not %q\n", prefix, f.name, boundedSource, source)
+			return true
+		}
+	}
+	return false
+}
+
+// encodeGenreChanges writes a genre regeneration's worklist (one line per changed
+// work) to its staged file; a no-op for a run that changed none or a nil file.
+func encodeGenreChanges(log *atomicfile.File, sum importer.Summary) {
+	for _, c := range sum.GenreChanges {
+		log.Encode(c)
+	}
 }
 
 // openConflictLog opens the --conflicts worklist for APPEND, returning the sink
