@@ -241,10 +241,17 @@ func (p *planner) attachTarget(b sourceBook, workTitle string) (ws *workState, o
 // Summary.Attached counts the row only when addRecording wrote something; a row
 // one of its guards turned away is a position-claimed skip instead, so the sync
 // bot memoizes it rather than the selector keeping it every cycle.
-func (p *planner) attachRow(ws *workState, b sourceBook, workTitle, asin, lang string, narratorNames []string, warn func(string, ...any)) {
+//
+// The row's author-side credits (credits) are judged as on any attach
+// (attachRowAuthors, meta#2760): the occupant is a catalogued work, so no one it
+// does not name is created, and each credit it does not name is reported
+// (Summary.UnrecordedCredits) once the row is attached.
+func (p *planner) attachRow(ws *workState, b sourceBook, workTitle, asin, lang string, credits []credit, narratorNames []string, warn func(string, ...any)) {
+	unrecorded := p.attachRowAuthors(b, asin, ws, credits, warn)
 	switch p.addRecording(ws, b, workTitle, asin, lang, p.rowNarratorSlugs(b, narratorNames, warn), warn) {
 	case recMerged, recNew:
 		p.summary.Attached++
+		p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, unrecorded...)
 	case recNone:
 		p.summary.Skips = appendSkip(p.summary.Skips, asin, reasonPositionTaken)
 	}

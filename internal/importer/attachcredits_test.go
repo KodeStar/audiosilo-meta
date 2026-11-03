@@ -157,3 +157,59 @@ func TestCreateStillMintsTheTranslator(t *testing.T) {
 		})
 	}
 }
+
+func TestAttachReportsAnUnsluggableTranslator(t *testing.T) {
+	// A translator whose name slugs to nothing could only land on the shared
+	// catch-all, which is not them: the attach reports the credit as
+	// unsluggable (not as a withheld person) and makes no record. libex is not
+	// asked: its parse refuses such a row outright (credit-not-a-person).
+	for _, src := range attachSources {
+		if src.name == "libex" {
+			continue
+		}
+		t.Run(src.name, func(t *testing.T) {
+			dataDir := t.TempDir()
+			seedKafka(t, dataDir, "franz-kafka", "Franz Kafka")
+			sum := runSourceInto(t, src, dataDir, strings.Replace(src.row("B0ORPHAN05"), "Ian Johnston", "Иван Петров", 1))
+			want := []UnrecordedCredit{{ASIN: "B0ORPHAN05", Name: "Иван Петров",
+				Roles: []string{model.RoleTranslator}, Work: "metamorphosis", Reason: librivoxUnsluggable}}
+			if !reflect.DeepEqual(sum.UnrecordedCredits, want) {
+				t.Fatalf("unrecorded = %+v, want %+v\nwarnings: %v", sum.UnrecordedCredits, want, sum.Warnings)
+			}
+			if got, want := sum.UnrecordedCredits[0].String(),
+				`B0ORPHAN05 "Иван Петров" (translator) -> metamorphosis, unsluggable`; got != want {
+				t.Errorf("line = %q, want %q", got, want)
+			}
+			if entryExists(t, dataDir, personAddr(model.UnslugPersonID)) {
+				t.Error("the catch-all person was created")
+			}
+			if got := orphanPeople(t, dataDir); len(got) != 0 {
+				t.Errorf("orphans: %v", got)
+			}
+		})
+	}
+}
+
+func TestAttachEditionsReportsAnUncreditedTranslator(t *testing.T) {
+	// The --attach-editions rule (attach.go) attaches a row to the catalogued
+	// occupant of its series position: it is an attach like any other, so a
+	// translator the occupant does not name is reported and gets no record.
+	row := `{"asin":"B0ATTACH09","title":"The Lost Coast","region":"us","language":"english",` +
+		`"authors":[{"name":"Ada Mapmaker"},{"name":"Tina Translator - Translator"}],"narrators":[{"name":"Cal Voice"}],` +
+		`"series":[{"name":"` + seriesName + `","position":"1"}]}`
+	_, sum, dataDir := attachImport(t, nil, row)
+	if sum.Attached != 1 || sum.NewRecordings != 1 {
+		t.Fatalf("Attached/NewRecordings = %d/%d, want 1/1\nwarnings: %v", sum.Attached, sum.NewRecordings, sum.Warnings)
+	}
+	if entryExists(t, dataDir, personAddr("tina-translator")) {
+		t.Error("the uncredited translator was created")
+	}
+	want := []UnrecordedCredit{{ASIN: "B0ATTACH09", Name: "Tina Translator",
+		Roles: []string{model.RoleTranslator}, Work: "the-lost-coast"}}
+	if !reflect.DeepEqual(sum.UnrecordedCredits, want) {
+		t.Errorf("unrecorded = %+v, want %+v", sum.UnrecordedCredits, want)
+	}
+	if got := orphanPeople(t, dataDir); len(got) != 0 {
+		t.Errorf("orphans: %v", got)
+	}
+}

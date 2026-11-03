@@ -28,8 +28,10 @@ type UnrecordedCredit struct {
 	// already held it); false means the run withheld it rather than mint an
 	// orphan.
 	PersonExists bool
-	// Reason is "unsluggable" for a LibriVox name that slugs to nothing, which
-	// no record can hold (librivoxauthors.go rule 2); "" for a credit the
+	// Reason is "unsluggable" for a name that slugs to nothing, which no record
+	// can hold (the shared catch-all is not them): a LibriVox credit of any landed
+	// row (librivoxauthors.go rule 2), or any other source's credit the attached
+	// work does not name (attachRowAuthors). "" for every other credit the
 	// attached work does not name.
 	Reason string
 }
@@ -92,7 +94,13 @@ func (p *planner) attachRowAuthors(b sourceBook, asin string, ws *workState, cre
 			p.applyPerson(c.name, r, warn)
 			continue
 		}
-		out = append(out, p.unrecordedOf(b, asin, c, r, ws.slug))
+		u := p.unrecordedOf(b, asin, c, r, ws.slug)
+		if r.fellBack {
+			// Only the shared catch-all could hold it, and it is not them: no
+			// record was withheld, there is none to make.
+			u.Reason = librivoxUnsluggable
+		}
+		out = append(out, u)
 	}
 	return out
 }

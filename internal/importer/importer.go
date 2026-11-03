@@ -1449,7 +1449,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// COMPLETION claim lost nothing (the position is the incumbent's), so only
 	// the row's other claims are noted as lost.
 	if ws, occupant := p.attachTarget(b, workTitle); ws != nil {
-		p.attachRow(ws, b, workTitle, asin, lang, narratorNames, warn)
+		p.attachRow(ws, b, workTitle, asin, lang, authorCredits, narratorNames, warn)
 		_, at := completionClaim(b)
 		p.noteLostSeriesClaims(b, at, ws)
 		return
@@ -2650,12 +2650,11 @@ func (p *planner) walkWorkChain(title string, chain workChain, authors workAutho
 // function (the guard to learn whether the row would create a work, addBook to
 // act), and both hand it the row's authors resolved the same way (resolvePerson,
 // which getOrCreatePerson acts on and rowWorkAuthorsRO reads). addBook does not
-// reuse the guard's walk: it resolves again with the author set the create path
-// actually minted, so an in-row difference between the read-only and the created
-// resolution can never make the create path act on an answer it did not reach.
-// The one exception is a LibriVox row, which walks on the read-only set and mints
-// only afterwards (an attach creates only the people its work credits): that
-// rests on resolvePerson's own guarantee that the two resolutions name one slug.
+// reuse the guard's walk: it resolves again, on the same read-only author set,
+// and every row of every source mints its people only afterwards, inside
+// getOrCreateWork (an attach creates only the people its work credits,
+// meta#2760). That rests on resolvePerson's own guarantee that the read-only and
+// the created resolution name one slug.
 //
 // The row's resolved title is walked first; that is where the overwhelming
 // majority of works are. When it holds no match, the FULL title's chain is walked

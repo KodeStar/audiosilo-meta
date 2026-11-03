@@ -419,8 +419,9 @@ an author or translator that work does not name is not recorded there, and no
 person record is created for them (it would be credited nowhere). The import
 report lists each such credit (project id, name, role, `librivox_author_id`,
 work) under `credits not recorded`, for recording-level credits to pick up
-later (meta#2752). An OpenAudible, Libation or libex row that attaches to a
-catalogued work follows the same rule, its credits listed there by ASIN.
+later (meta#2752). A row of any other source (OpenAudible, Libation, AudioSilo
+books, libex) that attaches to a catalogued work, or is relocated onto one,
+follows the same rule, its credits listed there by ASIN.
 
 A match the rules cannot settle is never guessed: the project is skipped and
 listed in the import report's **worklist**, one line per project with its id,
