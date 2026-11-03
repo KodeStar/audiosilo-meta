@@ -160,6 +160,40 @@ func TestCheckVerdictPrintsEveryNonEmptyLog(t *testing.T) {
 	}
 }
 
+// The printed logs are other jobs' output as the API serves it, runner markers
+// included, and this job's runner would act on them (a second annotation per
+// failing job, a group folding the evidence away), so they print between a
+// stop-commands and its resume token - on a line of its own even when the last
+// log does not end in a newline, and a token none of them holds.
+func TestCheckVerdictStopsCommandsAroundTheLogs(t *testing.T) {
+	t.Parallel()
+	logs := writeLogs(t, map[string]string{
+		"build.log": "##[group]Run go build ./...\n##[endgroup]\nx.go:1:1: undefined: y\n##[error]Process completed with exit code 1.",
+	})
+	out, code := verdict(t, needsOf(gate(map[string]string{"build": "failure"})), logs, "advisories")
+	if code != 1 {
+		t.Fatalf("exit %d, want 1:\n%s", code, out)
+	}
+	m := regexp.MustCompile(`(?m)^::stop-commands::(\S+)$`).FindStringSubmatch(out)
+	if m == nil {
+		t.Fatalf("the logs are printed with workflow commands live:\n%s", out)
+	}
+	stop := strings.Index(out, m[0])
+	resume := strings.Index(out, "\n::"+m[1]+"::\n")
+	evidence := strings.Index(out, "##[error]Process completed")
+	if resume < 0 || stop > evidence || evidence > resume {
+		t.Errorf("the logs are not between the stop and the resume (stop %d, log %d, resume %d):\n%s", stop, evidence, resume, out)
+	}
+	if n := strings.Count(out, m[1]); n != 2 {
+		t.Errorf("the resume token appears %d times, want 2:\n%s", n, out)
+	}
+
+	out, _ = verdict(t, needsOf(gate(nil)), logs, "advisories")
+	if strings.Contains(out, "::stop-commands::") {
+		t.Errorf("a passing verdict stopped commands:\n%s", out)
+	}
+}
+
 // TAIL_LINES is shared between the logs, so two failing jobs both land in the
 // sync bot's 200-line window, each cut to its share with a floor of 40.
 func TestCheckVerdictSharesTheTailBudget(t *testing.T) {

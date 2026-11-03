@@ -17,11 +17,18 @@
 #       under that job's name.
 #
 # WHAT A LOG HOLDS. The job's log as the API serves it, with the runner's
-# per-line timestamps removed and everything from the first post-job step on
-# cut off ("Post job cleanup." / "Cleaning up orphan processes"): the steps after
-# a failing one are skipped and write nothing, so what is left ENDS with the
-# failing step's output - the part check-verdict.sh tails into the sync bot's
-# evidence window, which a checkout's cleanup chatter would otherwise fill.
+# per-line timestamps and colour codes removed, everything from the first
+# post-job step on cut off ("Post job cleanup." / "Cleaning up orphan
+# processes"), and what is left cut again after its LAST `##[error]` line - the
+# runner's "Process completed with exit code N." of a failing run step, an
+# action's own error, or "The operation was canceled." of a timed-out job. Most
+# steps after a failing one are skipped and write nothing, but an `always()` one
+# still runs (metacheck's upload of its advisory keys, on a pull request), and
+# its chatter would otherwise be the tail. So the file ENDS with the failing
+# step's output - the part check-verdict.sh tails into the sync bot's evidence
+# window, which a checkout's cleanup or an upload's progress would otherwise
+# fill. A log with no `##[error]` line at all is kept whole up to the post-job
+# steps.
 #
 # WHY THE API AND NOT ARTIFACTS. Every gated job used to tee its output to a file
 # and upload it when it failed. Artifacts belong to the RUN, not to an attempt,
@@ -86,8 +93,18 @@ while IFS=$'\t' read -r id name; do
   fi
   out="$outdir/$stem.log"
   if fetch_log "$id" "$raw"; then
-    sed -E -e $'1s/^\xEF\xBB\xBF//' -e 's/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]+Z ?//' "$raw" |
-      awk '$0 == "Post job cleanup." || $0 == "Cleaning up orphan processes" { exit } { print }' > "$out"
+    # The runner colours a step's script and env in its "Run" header
+    # (ESC[36;1m ... ESC[0m); the codes are noise in the evidence.
+    sed -E -e $'1s/^\xEF\xBB\xBF//' -e 's/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]+Z ?//' \
+      -e $'s/\033\\[[0-9;]*m//g' "$raw" |
+      awk '
+        $0 == "Post job cleanup." || $0 == "Cleaning up orphan processes" { exit }
+        { line[++n] = $0 }
+        /^##\[error\]/ { last = n }
+        END {
+          if (!last) last = n
+          for (i = 1; i <= last; i++) print line[i]
+        }' > "$out"
     echo "fetched the log of $name ($(wc -l < "$out" | tr -d ' ') lines)"
   else
     echo "(the log of $name, job $id, could not be fetched from the API; see the run)" > "$out"

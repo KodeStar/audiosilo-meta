@@ -29,7 +29,7 @@
 # resolver the last lines of THAT check run's log (its evidence.CheckFlag). A
 # verdict job whose log only said "metacheck: failure" would hand it nothing to
 # fix, so the verdict job fetches each failing job's log from the API
-# (failed-job-logs.sh, which cuts it off before the post-job cleanup) and this
+# (failed-job-logs.sh, which cuts it off after the failing step) and this
 # script prints those files last - where the bot's tail reads them - just as the
 # single job's own log used to end with the failing step's output.
 #
@@ -94,11 +94,22 @@ if [ "${#logs[@]}" -gt 0 ]; then
   if [ "$per" -lt 40 ]; then
     per=40
   fi
+  # The logs are other jobs' output as the API serves it, the runner's own
+  # markers included (##[group], ##[error], setup-go's ##[add-matcher]), and the
+  # runner of THIS job acts on such a line wherever it appears: every failing
+  # job's error would become a second annotation on `check`, and a group opened
+  # in the tail would fold the evidence away in the UI. So command processing is
+  # stopped while they print and resumed by a token made up for this run (on a
+  # line of its own: the last log may not end in a newline).
+  resume="check-verdict-logs-$$-$RANDOM$RANDOM"
+  echo "::stop-commands::$resume"
   for log in "${logs[@]}"; do
     echo
     echo "===== $(basename "$log"), last ${per} lines ====="
     tail -n "$per" "$log"
   done
+  echo
+  echo "::$resume::"
 fi
 echo
 echo "check-verdict: a required job did not pass (see above)" >&2

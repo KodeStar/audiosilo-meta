@@ -178,6 +178,53 @@ func TestFailedJobLogsTrimsTheLog(t *testing.T) {
 	}
 }
 
+// An always() step after the failing one (metacheck's upload of its advisory
+// keys, on a pull request) still writes to the log, so the file is cut after its
+// LAST error line, not only before the post-job steps - and the runner's colour
+// codes go too. A log with no error line is kept whole up to the post-job steps.
+func TestFailedJobLogsEndsAtTheLastError(t *testing.T) {
+	t.Parallel()
+	stamped := func(lines ...string) string {
+		var b strings.Builder
+		b.WriteString("\ufeff")
+		for _, l := range lines {
+			b.WriteString("2026-11-03T18:31:48.6464898Z " + l + "\n")
+		}
+		return b.String()
+	}
+	header := []string{
+		"##[group]Run go run ./cmd/metacheck --profile core",
+		"\x1b[36;1mgo run ./cmd/metacheck --profile core\x1b[0m",
+		"shell: /usr/bin/bash -e {0}",
+		"##[endgroup]",
+		"error: works/0/a.json: entry a: the problem",
+	}
+	failed := append(slices.Clone(header),
+		"##[error]Process completed with exit code 1.",
+		"##[group]Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+		"with:",
+		"  name: advisories-head",
+		"##[endgroup]",
+		"Artifact advisories-head has been successfully uploaded!",
+		"Post job cleanup.",
+		"Cleaning up orphan processes")
+	noError := append(slices.Clone(header), "Post job cleanup.", "[command]/usr/bin/git version")
+	files, _, code, _ := runFailedJobLogs(t,
+		[]stubJob{{6, "metacheck", conclusion("failure")}, {7, "metafmt", conclusion("cancelled")}},
+		map[int64]string{6: stamped(failed...), 7: stamped(noError...)}, nil, verdictJobs...)
+	if code != 0 {
+		t.Fatalf("exit %d, want 0", code)
+	}
+	body := "##[group]Run go run ./cmd/metacheck --profile core\ngo run ./cmd/metacheck --profile core\n" +
+		"shell: /usr/bin/bash -e {0}\n##[endgroup]\nerror: works/0/a.json: entry a: the problem\n"
+	if got, want := files["metacheck.log"], body+"##[error]Process completed with exit code 1.\n"; got != want {
+		t.Errorf("metacheck.log =\n%q\nwant\n%q", got, want)
+	}
+	if got := files["metafmt.log"]; got != body {
+		t.Errorf("metafmt.log =\n%q\nwant\n%q", got, body)
+	}
+}
+
 // A log that cannot be fetched still leaves a file saying so, so the verdict
 // prints something under the job's name; a listing that cannot be read is a
 // failure of the step (which the workflow does not let decide the verdict).
