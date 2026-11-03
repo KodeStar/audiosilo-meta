@@ -8,9 +8,10 @@ import (
 	"testing"
 )
 
-// writeRawSnapshot writes pages (file name -> body) verbatim under pages/, with
-// a fetcher's manifest beside them when manifest is set.
-func writeRawSnapshot(t *testing.T, manifest bool, pages map[string]string) string {
+// writeRawSnapshot writes pages (file name -> body) verbatim under pages/, and
+// the manifest beside them when m is not nil, through the fetcher's own
+// writeManifest.
+func writeRawSnapshot(t *testing.T, m *librivoxManifest, pages map[string]string) string {
 	t.Helper()
 	dir := t.TempDir()
 	if err := os.MkdirAll(filepath.Join(dir, librivoxPagesDir), 0o755); err != nil {
@@ -21,13 +22,17 @@ func writeRawSnapshot(t *testing.T, manifest bool, pages map[string]string) stri
 			t.Fatal(err)
 		}
 	}
-	if manifest {
-		m := `{"feed":"` + LibrivoxFeedURL + `","query":"` + librivoxQuery + `","limit":100,"complete":true}`
-		if err := os.WriteFile(filepath.Join(dir, librivoxManifestFile), []byte(m), 0o644); err != nil {
+	if m != nil {
+		if err := writeManifest(dir, *m); err != nil {
 			t.Fatal(err)
 		}
 	}
 	return dir
+}
+
+// withPageIDs is a complete fetch's manifest recording the given page ranges.
+func withPageIDs(ranges map[string]librivoxPageIDs) *librivoxManifest {
+	return &librivoxManifest{Feed: LibrivoxFeedURL, Query: librivoxQuery, Limit: librivoxPageLimit, Complete: true, PageIDs: ranges}
 }
 
 func snapshotIDs(t *testing.T, dir, sel string) []int {
@@ -44,20 +49,29 @@ func snapshotIDs(t *testing.T, dir, sel string) []int {
 	return out
 }
 
-// A tranche of a fetcher-written snapshot decodes only the pages that can hold
-// its ids: the middle page here is not JSON past its first project, so any run
-// that decoded it would fail.
+// threePages is a snapshot whose middle page is not JSON past its first
+// project, so any read that decoded it fails.
+var threePages = map[string]string{
+	librivoxPageName(0):   `{"books":[{"id":"100","title":"A"},{"id":"150","title":"B"}]}`,
+	librivoxPageName(100): `{"books":[{"id":"300","title":"C"}, NOT JSON`,
+	librivoxPageName(200): `{"books":[{"id":"400","title":"D"},{"id":"450","title":"E"}]}`,
+}
+
+var threeRanges = map[string]librivoxPageIDs{
+	librivoxPageName(0):   {First: 100, Last: 150},
+	librivoxPageName(100): {First: 300, Last: 300},
+	librivoxPageName(200): {First: 400, Last: 450},
+}
+
+// A tranche decodes only the pages whose recorded id range meets it.
 func TestLibrivoxTrancheDecodesOnlyItsPages(t *testing.T) {
-	dir := writeRawSnapshot(t, true, map[string]string{
-		"offset-0000000.json": `{"books":[{"id":"100","title":"A"},{"id":"150","title":"B"}]}`,
-		"offset-0000002.json": `{"books":[{"id":"300","title":"C"}, NOT JSON`,
-		"offset-0000003.json": `{"books":[{"id":"400","title":"D"},{"id":"450","title":"E"}]}`,
-	})
+	dir := writeRawSnapshot(t, withPageIDs(threeRanges), threePages)
 	for sel, want := range map[string][]int{
 		"100-299":     {100, 150},
 		"400-":        {400, 450},
 		"150,450":     {150, 450},
 		"1-99":        {},
+		"151-299":     {},
 		"100-150,401": {100, 150},
 	} {
 		if got := snapshotIDs(t, dir, sel); !reflect.DeepEqual(got, want) {
@@ -71,62 +85,41 @@ func TestLibrivoxTrancheDecodesOnlyItsPages(t *testing.T) {
 	}
 }
 
-// The page index needs a fetcher-written snapshot: without a manifest, or with
-// a page not named by its offset, every page is read (the broken middle page
-// fails the run whatever it selects).
-func TestLibrivoxHandAssembledSnapshotIsReadWhole(t *testing.T) {
-	pages := map[string]string{
-		"offset-0000000.json": `{"books":[{"id":"100","title":"A"}]}`,
-		"offset-0000001.json": `{"books":[{"id":"300","title":"C"}, NOT JSON`,
+// Without a range for every page - no manifest, a manifest from before the
+// ranges were recorded, or a page the manifest does not name - the snapshot is
+// read whole, so the broken page fails the run whatever it selects.
+func TestLibrivoxSnapshotWithoutRangesIsReadWhole(t *testing.T) {
+	partial := map[string]librivoxPageIDs{}
+	for k, v := range threeRanges {
+		if k != librivoxPageName(100) {
+			partial[k] = v
+		}
 	}
-	ids := mustLibrivoxIDs("100")
-	if _, _, err := readLibrivoxSnapshot(writeRawSnapshot(t, false, pages), &ids); err == nil {
-		t.Error("a snapshot without a manifest was read by its page index")
-	}
-	pages["extra.json"] = `{"books":[{"id":"500","title":"E"}]}`
-	if _, _, err := readLibrivoxSnapshot(writeRawSnapshot(t, true, pages), &ids); err == nil {
-		t.Error("a snapshot with a page not named by its offset was read by its page index")
+	for name, m := range map[string]*librivoxManifest{
+		"no manifest":     nil,
+		"no ranges":       withPageIDs(nil),
+		"a page left out": withPageIDs(partial),
+	} {
+		ids := mustLibrivoxIDs("100")
+		if _, _, err := readLibrivoxSnapshot(writeRawSnapshot(t, m, threePages), &ids); err == nil {
+			t.Errorf("%s: the snapshot was read by page ranges", name)
+		}
 	}
 }
 
-// A decoded page holding an id outside its span means the order did not hold:
-// the snapshot is read whole, so a selected id on another page is still found.
-func TestLibrivoxOutOfOrderSnapshotIsReadWhole(t *testing.T) {
-	dir := writeRawSnapshot(t, true, map[string]string{
-		"offset-0000000.json": `{"books":[{"id":"100","title":"A"},{"id":"250","title":"B"}]}`,
-		"offset-0000002.json": `{"books":[{"id":"200","title":"C"},{"id":"120","title":"D"}]}`,
+// A decoded page holding an id outside its recorded range means the manifest no
+// longer describes it: the snapshot is read whole, so an id another page holds
+// outside ITS range is still found.
+func TestLibrivoxPageOutsideItsRangeIsReadWhole(t *testing.T) {
+	dir := writeRawSnapshot(t, withPageIDs(map[string]librivoxPageIDs{
+		librivoxPageName(0):   {First: 100, Last: 150},
+		librivoxPageName(100): {First: 200, Last: 250},
+	}), map[string]string{
+		librivoxPageName(0):   `{"books":[{"id":"100","title":"A"},{"id":"170","title":"B"}]}`,
+		librivoxPageName(100): `{"books":[{"id":"200","title":"C"},{"id":"120","title":"D"}]}`,
 	})
 	if got, want := snapshotIDs(t, dir, "100-150"), []int{100, 120}; !reflect.DeepEqual(got, want) {
 		t.Errorf("--ids 100-150 = %v, want %v", got, want)
-	}
-	// First ids that do not ascend are never indexed either.
-	dir = writeRawSnapshot(t, true, map[string]string{
-		"offset-0000000.json": `{"books":[{"id":"300","title":"A"}]}`,
-		"offset-0000001.json": `{"books":[{"id":"100","title":"B"}]}`,
-	})
-	if got, want := snapshotIDs(t, dir, "300-"), []int{300}; !reflect.DeepEqual(got, want) {
-		t.Errorf("--ids 300- = %v, want %v", got, want)
-	}
-}
-
-func TestLibrivoxFirstID(t *testing.T) {
-	dir := t.TempDir()
-	for body, want := range map[string]int{
-		`{"books":[{"id":"527","title":"Metamorphosis"}]}`:         527,
-		`{"books":[{"title":"x","authors":[{"id":"9"}],"id":42}]}`: 42,
-		`{"meta":{"n":1},"books":[{"id":"7"}]}`:                    7,
-		`{"books":[]}`:                                             0,
-		`{"books":[{"id":"abc"}]}`:                                 0,
-		`not json`:                                                 0,
-	} {
-		path := filepath.Join(dir, "page.json")
-		if err := os.WriteFile(path, []byte(body), 0o644); err != nil {
-			t.Fatal(err)
-		}
-		got, ok := librivoxFirstID(path)
-		if got != want || ok != (want > 0) {
-			t.Errorf("librivoxFirstID(%s) = %d, %v; want %d", body, got, ok, want)
-		}
 	}
 }
 
@@ -151,7 +144,7 @@ func TestLibrivoxUnreadableProjectIDIsWarnedAndSkipped(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	snap := writeRawSnapshot(t, false, map[string]string{
+	snap := writeRawSnapshot(t, nil, map[string]string{
 		"page.json": `{"books":[{"id":"abc","title":"Bad Id"},{"title":"No Id"},{"id":"-3","title":"Negative Id"},` + string(good) + `]}`,
 	})
 	sum := runLibrivox(t, snap, t.TempDir(), allLibrivox)

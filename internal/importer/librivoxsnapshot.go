@@ -22,23 +22,47 @@ import (
 // by no --ids and keyed by nothing: it is skipped with a warning naming its page
 // and title, never kept as project 0.
 //
-// A TRANCHE (an --ids selection) reads only the pages that can hold its ids
-// when the snapshot is one the fetcher wrote: a manifest beside pages named
-// offset-NNNNNNN.json. The fetcher pages the feed's default order, ascending
-// project id, so page i holds the ids from its own first id up to the next
-// page's first id, exclusive; each page's first id is read off the head of the
-// file alone (librivoxFirstID), and only the pages whose span meets the
-// selection are decoded. Every page decoded is checked against its span: an id
-// outside it means the order did not hold, and the snapshot is then read whole,
-// as is a snapshot that is not fetcher-shaped (a hand-assembled one, the test
-// fixtures), or one whose first ids do not ascend.
+// A TRANCHE (an --ids selection) decodes only the pages that can hold its ids
+// when the manifest records each page's id range (librivoxManifest.PageIDs,
+// which the fetcher writes with the page): a page whose lowest-to-highest
+// range misses the selection is never opened. Every page decoded is checked
+// against its recorded range, and an id outside it (a page rewritten since)
+// reads the snapshot whole, as does a snapshot whose manifest leaves any page
+// out (one fetched before the ranges were recorded, a hand-assembled one).
 const (
 	librivoxPagesDir     = "pages"
 	librivoxManifestFile = "manifest.json"
 )
 
-// librivoxPageSpan is one page file and the ids it can hold, [lo, hi]; lo 0 and
-// hi 0 are unbounded.
+// librivoxPageName is the file a fetched page is written to, by its offset.
+func librivoxPageName(offset int) string { return fmt.Sprintf("offset-%07d.json", offset) }
+
+// librivoxPageIDs is the range of project ids one page holds, lowest and
+// highest, as the fetcher recorded it.
+type librivoxPageIDs struct {
+	First int `json:"first"`
+	Last  int `json:"last"`
+}
+
+// pageIDRange is the lowest and highest readable id among books; ok=false when
+// none has one.
+func pageIDRange(books []LibrivoxProject) (librivoxPageIDs, bool) {
+	var r librivoxPageIDs
+	for _, b := range books {
+		id := int(b.ID)
+		if id <= 0 {
+			continue
+		}
+		if r.First == 0 || id < r.First {
+			r.First = id
+		}
+		r.Last = max(r.Last, id)
+	}
+	return r, r.First > 0
+}
+
+// librivoxPageSpan is one page file and the ids it can hold, [lo, hi]; 0 on
+// both is unbounded (a page with no recorded range, never checked).
 type librivoxPageSpan struct {
 	name   string
 	lo, hi int
@@ -54,8 +78,8 @@ func ReadLibrivoxSnapshot(dir string) ([]LibrivoxProject, error) {
 // readLibrivoxSnapshot is ReadLibrivoxSnapshot keeping only the projects ids
 // selects (every project when ids is nil), so a tranche import holds only its
 // own projects rather than the whole catalogue, and decodes only the pages that
-// can hold them where the snapshot's order allows (see above). warnings names
-// each project of the pages read that was skipped for an unreadable id.
+// can hold them where the manifest records their ranges (see above). warnings
+// names each project of the pages read that was skipped for an unreadable id.
 func readLibrivoxSnapshot(dir string, ids *LibrivoxIDs) (projects []LibrivoxProject, warnings []string, err error) {
 	pagesDir := filepath.Join(dir, librivoxPagesDir)
 	entries, err := os.ReadDir(pagesDir)
@@ -68,39 +92,56 @@ func readLibrivoxSnapshot(dir string, ids *LibrivoxIDs) (projects []LibrivoxProj
 			names = append(names, e.Name())
 		}
 	}
+	whole := make([]librivoxPageSpan, len(names))
+	for i, n := range names {
+		whole[i] = librivoxPageSpan{name: n}
+	}
 	if ids == nil {
-		projects, warnings, _, err := decodeLibrivoxPages(pagesDir, unboundedSpans(names), nil)
+		projects, warnings, _, err := decodeLibrivoxPages(pagesDir, whole, nil)
 		return projects, warnings, err
 	}
-	if spans, ok := librivoxPageIndex(dir, names); ok {
+	if ranges := recordedPageIDs(dir); ranges != nil {
 		var selected []librivoxPageSpan
-		for _, sp := range spans {
-			if ids.overlaps(sp.lo, sp.hi) {
-				selected = append(selected, sp)
+		indexed := true
+		for _, n := range names {
+			r, ok := ranges[n]
+			if !ok {
+				indexed = false
+				break
+			}
+			if ids.overlaps(r.First, r.Last) {
+				selected = append(selected, librivoxPageSpan{name: n, lo: r.First, hi: r.Last})
 			}
 		}
-		projects, warnings, inSpan, err := decodeLibrivoxPages(pagesDir, selected, ids.Has)
-		if err != nil || inSpan {
-			return projects, warnings, err
+		if indexed {
+			projects, warnings, inSpan, err := decodeLibrivoxPages(pagesDir, selected, ids.Has)
+			if err != nil || inSpan {
+				return projects, warnings, err
+			}
 		}
 	}
-	projects, warnings, _, err = decodeLibrivoxPages(pagesDir, unboundedSpans(names), ids.Has)
+	projects, warnings, _, err = decodeLibrivoxPages(pagesDir, whole, ids.Has)
 	return projects, warnings, err
 }
 
-// unboundedSpans is every page with no span: decoded, never checked.
-func unboundedSpans(names []string) []librivoxPageSpan {
-	spans := make([]librivoxPageSpan, len(names))
-	for i, n := range names {
-		spans[i] = librivoxPageSpan{name: n}
+// recordedPageIDs is the manifest's per-page id ranges, nil when it has none
+// (no manifest, or one written before the fetcher recorded them).
+func recordedPageIDs(dir string) map[string]librivoxPageIDs {
+	raw, err := os.ReadFile(filepath.Join(dir, librivoxManifestFile))
+	if err != nil {
+		return nil
 	}
-	return spans
+	var m librivoxManifest
+	if json.Unmarshal(raw, &m) != nil {
+		return nil
+	}
+	return m.PageIDs
 }
 
 // decodeLibrivoxPages decodes the pages in order, keeping the projects keep
 // selects (all when keep is nil), and warns about each project with no
 // readable id. inSpan=false means a page held an id outside its span: the
-// snapshot's order did not hold, and the caller reads it whole instead.
+// manifest no longer describes the page, and the caller reads it whole instead.
 func decodeLibrivoxPages(pagesDir string, pages []librivoxPageSpan, keep func(id int) bool) (projects []LibrivoxProject, warnings []string, inSpan bool, err error) {
 	byID := map[int]LibrivoxProject{}
 	for _, pg := range pages {
@@ -119,7 +160,7 @@ func decodeLibrivoxPages(pagesDir string, pages []librivoxPageSpan, keep func(id
 				warnings = append(warnings, fmt.Sprintf("librivox snapshot %s: project %q has no readable id; skipped (no --ids can select it)", path, b.Title))
 				continue
 			}
-			if (pg.lo > 0 && id < pg.lo) || (pg.hi > 0 && id > pg.hi) {
+			if pg.hi > 0 && (id < pg.lo || id > pg.hi) {
 				return nil, nil, false, nil
 			}
 			if keep == nil || keep(id) {
@@ -133,102 +174,4 @@ func decodeLibrivoxPages(pagesDir string, pages []librivoxPageSpan, keep func(id
 	}
 	sort.Slice(out, func(i, j int) bool { return out[i].ID < out[j].ID })
 	return out, warnings, true, nil
-}
-
-// librivoxPageIndex is the spans of a fetcher-written snapshot's pages (see the
-// layout comment), ok=false when dir is not one: no manifest, a page not named
-// offset-NNNNNNN.json, a page whose first id cannot be read, or first ids that
-// do not ascend in page order.
-func librivoxPageIndex(dir string, names []string) ([]librivoxPageSpan, bool) {
-	raw, err := os.ReadFile(filepath.Join(dir, librivoxManifestFile))
-	if err != nil {
-		return nil, false
-	}
-	var m librivoxManifest
-	if json.Unmarshal(raw, &m) != nil || m.Feed == "" {
-		return nil, false
-	}
-	spans := make([]librivoxPageSpan, 0, len(names))
-	for _, n := range names {
-		var offset int
-		if len(n) != len("offset-0000000.json") || !strings.HasPrefix(n, "offset-") {
-			return nil, false
-		}
-		if _, err := fmt.Sscanf(n, "offset-%07d.json", &offset); err != nil {
-			return nil, false
-		}
-		first, ok := librivoxFirstID(filepath.Join(dir, librivoxPagesDir, n))
-		if !ok {
-			return nil, false
-		}
-		if k := len(spans); k > 0 {
-			if first <= spans[k-1].lo {
-				return nil, false
-			}
-			spans[k-1].hi = first - 1
-		}
-		spans = append(spans, librivoxPageSpan{name: n, lo: first})
-	}
-	return spans, true
-}
-
-// librivoxFirstID reads the id of a page's first project off the head of the
-// file, decoding nothing past it: the feed writes "id" as each project's first
-// key, so this reads a few hundred bytes of a page. ok=false for a page it
-// cannot read that way (no books, no readable id).
-func librivoxFirstID(path string) (int, bool) {
-	f, err := os.Open(path)
-	if err != nil {
-		return 0, false
-	}
-	defer func() { _ = f.Close() }()
-	dec := json.NewDecoder(f)
-	if !nextDelim(dec, '{') {
-		return 0, false
-	}
-	for dec.More() {
-		key, err := dec.Token()
-		if err != nil {
-			return 0, false
-		}
-		if key != "books" {
-			if !skipValue(dec) {
-				return 0, false
-			}
-			continue
-		}
-		if !nextDelim(dec, '[') || !dec.More() || !nextDelim(dec, '{') {
-			return 0, false
-		}
-		for dec.More() {
-			k, err := dec.Token()
-			if err != nil {
-				return 0, false
-			}
-			if k == "id" {
-				var id lvInt
-				if dec.Decode(&id) != nil || id <= 0 {
-					return 0, false
-				}
-				return int(id), true
-			}
-			if !skipValue(dec) {
-				return 0, false
-			}
-		}
-		return 0, false
-	}
-	return 0, false
-}
-
-// nextDelim reads the next token and reports whether it is the delimiter d.
-func nextDelim(dec *json.Decoder, d json.Delim) bool {
-	tok, err := dec.Token()
-	return err == nil && tok == d
-}
-
-// skipValue reads past the next value.
-func skipValue(dec *json.Decoder) bool {
-	var skip json.RawMessage
-	return dec.Decode(&skip) == nil
 }

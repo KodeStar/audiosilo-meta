@@ -170,6 +170,14 @@ func TestLibrivoxFetchPagesTheCatalogue(t *testing.T) {
 	if !reflect.DeepEqual(ids, []int{296, 527, 801, 1870}) {
 		t.Errorf("snapshot ids = %v", ids)
 	}
+	// Each page's id range is recorded, so a tranche opens only its own pages.
+	wantRanges := map[string]librivoxPageIDs{librivoxPageName(0): {First: 296, Last: 527}, librivoxPageName(2): {First: 801, Last: 1870}}
+	if !reflect.DeepEqual(m.PageIDs, wantRanges) {
+		t.Errorf("page ids = %+v, want %+v", m.PageIDs, wantRanges)
+	}
+	if got := snapshotIDs(t, dir, "800-"); !reflect.DeepEqual(got, []int{801, 1870}) {
+		t.Errorf("--ids 800- = %v", got)
+	}
 
 	// A complete snapshot asks nothing more of LibriVox.
 	again, _ := testFetcher(srv, 2)

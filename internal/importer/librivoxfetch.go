@@ -23,9 +23,7 @@ package importer
 // feed's "no results" answer (a 404 carrying {"error": ...}). Pages are offset
 // windows over the feed's default order, ascending project id, so a project
 // catalogued during a long fetch lands at the end rather than shifting a window
-// already read - and so a tranche import can decode only the pages that can
-// hold its ids (librivoxsnapshot.go's page index, which checks the order on
-// every page it decodes).
+// already read.
 
 import (
 	"context"
@@ -141,6 +139,11 @@ type librivoxManifest struct {
 	Complete   bool   `json:"complete"`
 	StartedAt  string `json:"started_at"`
 	UpdatedAt  string `json:"updated_at"`
+	// PageIDs is each page's range of project ids, by page file name, so a
+	// tranche import opens only the pages that can hold its ids
+	// (librivoxsnapshot.go). A manifest from before it was recorded has none,
+	// and its snapshot is read whole.
+	PageIDs map[string]librivoxPageIDs `json:"page_ids,omitempty"`
 }
 
 // LibrivoxFetchResult is what one Fetch call did.
@@ -172,17 +175,23 @@ func (f *LibrivoxFetcher) Fetch(ctx context.Context, dir string, maxPages int) (
 		if err != nil {
 			return res, err
 		}
-		n := 0
+		var books []LibrivoxProject
 		if body != nil {
-			books, err := parseLibrivoxPage(body)
-			if err != nil {
+			if books, err = parseLibrivoxPage(body); err != nil {
 				return res, fmt.Errorf("librivox fetch: offset %d: %w", m.NextOffset, err)
 			}
-			n = len(books)
 		}
+		n := len(books)
 		if n > 0 {
-			if err := writeAtomic(filepath.Join(dir, librivoxPagesDir, fmt.Sprintf("offset-%07d.json", m.NextOffset)), body); err != nil {
+			name := librivoxPageName(m.NextOffset)
+			if err := writeAtomic(filepath.Join(dir, librivoxPagesDir, name), body); err != nil {
 				return res, err
+			}
+			if r, ok := pageIDRange(books); ok {
+				if m.PageIDs == nil {
+					m.PageIDs = map[string]librivoxPageIDs{}
+				}
+				m.PageIDs[name] = r
 			}
 			m.Pages++
 			m.Projects += n

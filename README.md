@@ -370,12 +370,13 @@ A snapshot is a directory: `manifest.json` (the fetch's resume state: feed,
 query, limit, next offset, page and project counts, complete or not) and
 `pages/offset-NNNNNNN.json`, each one feed response body verbatim. The importer
 reads `pages/*.json` and needs nothing else, so a hand-assembled snapshot (the
-test fixtures are one) works too. A tranche of a fetcher-written snapshot (a
-manifest beside offset-named pages) decodes only the pages that can hold its
-`--ids`: the fetcher pages the feed in ascending project id, so each page's
-first id, read off the head of the file, bounds it (0.18 s instead of 2.0 s for
-a 2,000-project tranche of the 22,449-project snapshot). A decoded page holding
-an id outside its bounds, or any other snapshot, is read whole. A project
+test fixtures are one) works too. The fetcher records each page's range of
+project ids in the manifest (`page_ids`), and a tranche decodes only the pages
+whose range meets its `--ids` (0.19 s instead of 2.0 s for a 2,000-project
+tranche of the 22,449-project snapshot). A snapshot whose manifest does not
+range every page (one fetched before the ranges were recorded, a
+hand-assembled one), or a decoded page holding an id outside its range, is read
+whole. A project
 whose id is missing or unreadable is skipped with a warning naming its page
 and title (no `--ids` could select it).
 

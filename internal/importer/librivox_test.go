@@ -2,8 +2,6 @@ package importer
 
 import (
 	"encoding/json"
-	"os"
-	"path/filepath"
 	"reflect"
 	"slices"
 	"strings"
@@ -76,18 +74,11 @@ func fixtureProject(t *testing.T, id int) LibrivoxProject {
 // writeSnapshot writes projects as a one-page snapshot and returns its dir.
 func writeSnapshot(t *testing.T, projects ...LibrivoxProject) string {
 	t.Helper()
-	dir := t.TempDir()
 	body, err := json.Marshal(librivoxPage{Books: &projects})
 	if err != nil {
 		t.Fatal(err)
 	}
-	if err := os.MkdirAll(filepath.Join(dir, librivoxPagesDir), 0o755); err != nil {
-		t.Fatal(err)
-	}
-	if err := os.WriteFile(filepath.Join(dir, librivoxPagesDir, "offset-0000000.json"), body, 0o644); err != nil {
-		t.Fatal(err)
-	}
-	return dir
+	return writeRawSnapshot(t, nil, map[string]string{librivoxPageName(0): string(body)})
 }
 
 type lvRecording struct {
