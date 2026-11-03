@@ -24,6 +24,7 @@ const audiosiloBooksExport = `{
       "series": "The Stormlight Archive",
       "series_position": "1",
       "asin": "B0ABS00001",
+      "isbn": "978-1-4272-1000-5",
       "language": "en",
       "release_date": "2010-08-31",
       "publisher": "Macmillan Audio",
@@ -37,6 +38,7 @@ const audiosiloBooksExport = `{
       "authors": ["Solo Author"],
       "narrators": ["A Narrator"],
       "asin": "B0ABS00002",
+      "isbn": "not-an-isbn",
       "language": "en",
       "cover_url": "http://insecure.example/cover.jpg"
     }
@@ -85,9 +87,11 @@ func TestRunAudiosiloBooks(t *testing.T) {
 		t.Errorf("work sources = %+v", work.Sources)
 	}
 
-	// Recording: two narrators, region defaulted to us, abridged emitted, and the
-	// projection's https cover_url carried through to cover_url.
+	// Recording: two narrators, region defaulted to us, abridged emitted, the
+	// projection's https cover_url carried through to cover_url, and its isbn
+	// recorded in normalized (hyphenless) form.
 	var rec struct {
+		ISBN      []string `json:"isbn"`
 		Narrators []string `json:"narrators"`
 		Abridged  *bool    `json:"abridged"`
 		CoverURL  string   `json:"cover_url"`
@@ -97,6 +101,9 @@ func TestRunAudiosiloBooks(t *testing.T) {
 		} `json:"asin"`
 	}
 	readEntity(t, dataDir, "works/th/the-way-of-kings/recordings/kate-reading-2010.json", &rec)
+	if len(rec.ISBN) != 1 || rec.ISBN[0] != "9781427210005" {
+		t.Errorf("isbn = %v, want [9781427210005]", rec.ISBN)
+	}
 	if len(rec.Narrators) != 2 {
 		t.Errorf("narrators = %v, want 2", rec.Narrators)
 	}
@@ -111,11 +118,12 @@ func TestRunAudiosiloBooks(t *testing.T) {
 	}
 
 	// The second book stated no abridged flag: the field must be OMITTED, never
-	// fabricated to false (omit-never-guess). Its cover_url is non-https, so it is
-	// dropped rather than recorded as an invalid cover.
+	// fabricated to false (omit-never-guess). Its cover_url is non-https and its
+	// isbn malformed, so both are dropped rather than recorded as invalid values.
 	var rec2 struct {
-		Abridged *bool  `json:"abridged"`
-		CoverURL string `json:"cover_url"`
+		Abridged *bool    `json:"abridged"`
+		CoverURL string   `json:"cover_url"`
+		ISBN     []string `json:"isbn"`
 	}
 	readEntity(t, dataDir, "works/un/unknown-abridgement/recordings/a-narrator.json", &rec2)
 	if rec2.Abridged != nil {
@@ -123,6 +131,38 @@ func TestRunAudiosiloBooks(t *testing.T) {
 	}
 	if rec2.CoverURL != "" {
 		t.Errorf("cover_url = %q, want empty (non-https dropped)", rec2.CoverURL)
+	}
+	if len(rec2.ISBN) != 0 {
+		t.Errorf("isbn = %v, want empty (malformed dropped)", rec2.ISBN)
+	}
+}
+
+// TestAudiosiloBooksISBNRidesAnAttestingMerge pins the one path where a
+// user-tier row's ISBN is claimed twice over: a new ASIN merging into a
+// bulk-mirror-only recording attests it first (attestOnMerge appends the ISBN)
+// and then merges (mergeRecordingASIN offers it again). The second offer must
+// see the first's write - one ISBN, and no "another recording" collision
+// reported about the record being written.
+func TestAudiosiloBooksISBNRidesAnAttestingMerge(t *testing.T) {
+	dataDir := seedTierTree(t, nil)
+	env := `{"format":"audiosilo-books","version":1,"books":[{
+	  "title": "The Lost Cartographer", "authors": ["Ada Mapmaker"], "narrators": ["Bea Reader"],
+	  "asin": "B0USER0001", "isbn": "9781427210005", "language": "en", "runtime_min": 605
+	}]}`
+	sum, err := RunAudiosiloBooks(writeBooks(t, env), Options{DataDir: dataDir, ImportDate: testImportDate})
+	if err != nil {
+		t.Fatalf("import: %v", err)
+	}
+	if sum.MergedASINs != 1 || sum.AttestedRecordings != 1 {
+		t.Errorf("summary = %+v, want one attesting merge", sum)
+	}
+	if hasWarning(sum.Warnings, "already recorded") {
+		t.Errorf("the record's own ISBN was reported as a collision: %v", sum.Warnings)
+	}
+	var rec recordingFile
+	readEntity(t, dataDir, tierRecRel, &rec)
+	if len(rec.ISBN) != 1 || rec.ISBN[0] != "9781427210005" {
+		t.Errorf("isbn = %v, want [9781427210005] once", rec.ISBN)
 	}
 }
 
