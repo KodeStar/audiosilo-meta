@@ -448,7 +448,7 @@ func normalizedDuplicateGroup(ix *WorkIdentity, works []*model.Work, reviewed *r
 		all, identity := identitySets(w)
 		cands = append(cands, dupCandidate{work: w, slug: model.SlugifyWhole(w.Title), all: all, identity: identity})
 	}
-	parts := ix.partsOfAWhole(works)
+	parts := ix.partsOfAWhole(cands)
 	keep := map[string]*model.Work{}
 	for i := 0; i < len(cands); i++ {
 		for j := i + 1; j < len(cands); j++ {
@@ -456,7 +456,7 @@ func normalizedDuplicateGroup(ix *WorkIdentity, works []*model.Work, reviewed *r
 			if a.slug == b.slug {
 				continue // checkIdentityEqualWorks' finding, not this one
 			}
-			if differentVolumes(a.work, b.work) || ix.partAndWhole(parts, a.work, b.work) {
+			if differentVolumes(a.work, b.work) || (parts != nil && ix.partAndWhole(parts, a.work, b.work)) {
 				continue
 			}
 			if !ix.matches(b.work, &b.coll, a.work.Title, ix.SeriesNameOf(a.work.ID), ix.statementOf[a.work.ID], a.work.Language, a.all, a.identity, &a.coll) ||
@@ -507,24 +507,29 @@ func normalizedDuplicateGroup(ix *WorkIdentity, works []*model.Work, reviewed *r
 // finding: "War and Peace, Volume 1" in two translations), and two stating different
 // volumes already disagree (VolumeStatement.Agrees). What it withholds is only the
 // whole-and-part pair - see partAndWhole.
-func (ix *WorkIdentity) partsOfAWhole(works []*model.Work) map[string]bool {
-	var stating []*model.Work
-	for _, w := range works {
-		if ix.statementOf[w.ID].States && !ix.placed[w.ID] {
-			stating = append(stating, w)
+//
+// cands are the group's members with their author sets already derived
+// (normalizedDuplicateGroup's), so the nesting test reads them rather than
+// rebuilding them per pair.
+func (ix *WorkIdentity) partsOfAWhole(cands []dupCandidate) map[string]bool {
+	var stating []*dupCandidate
+	for i := range cands {
+		if id := cands[i].work.ID; ix.statementOf[id].States && !ix.placed[id] {
+			stating = append(stating, &cands[i])
 		}
 	}
 	var set map[string]bool
 	for i, a := range stating {
 		for _, b := range stating[i+1:] {
-			if ix.statementOf[a.ID].Volume == ix.statementOf[b.ID].Volume ||
-				!languagesCompatible(a.Language, b.Language) || !IdentityEqualWorks(a, b) {
+			if ix.statementOf[a.work.ID].Volume == ix.statementOf[b.work.ID].Volume ||
+				!languagesCompatible(a.work.Language, b.work.Language) ||
+				!authorSetsNest(a.all, a.identity, b.all, b.identity) {
 				continue
 			}
 			if set == nil {
 				set = map[string]bool{}
 			}
-			set[a.ID], set[b.ID] = true, true
+			set[a.work.ID], set[b.work.ID] = true, true
 		}
 	}
 	return set
@@ -535,11 +540,7 @@ func (ix *WorkIdentity) partsOfAWhole(works []*model.Work) map[string]bool {
 // at all - no volume and no division: the whole beside one of its parts, which is
 // not one book.
 func (ix *WorkIdentity) partAndWhole(parts map[string]bool, a, b *model.Work) bool {
-	silent := func(w *model.Work) bool {
-		st := ix.statementOf[w.ID]
-		return !st.States && len(st.Divisions) == 0
-	}
-	return (parts[a.ID] && silent(b)) || (parts[b.ID] && silent(a))
+	return (parts[a.ID] && ix.statementOf[b.ID].Silent()) || (parts[b.ID] && ix.statementOf[a.ID].Silent())
 }
 
 // checkOrphanPeople reports a person record that nothing in the tree credits.

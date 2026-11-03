@@ -29,12 +29,18 @@ func dupBase(title string) map[string]string {
 	return files
 }
 
+// dupWork adds an English work record id titled title, by author, with one source
+// of the given type - the one writer of the fixtures below.
+func dupWork(files map[string]string, id, title, author, source string) {
+	files["works/"+id[:2]+"/"+id+"/work.json"] = `{"authors":["` + author + `"],"id":"` + id + `",` +
+		`"language":"en","license":"CC0-1.0","sources":[{"type":"` + source + `"}],"title":"` + title + `"}`
+}
+
 // dupTwin adds a second record of the base work under another spelling of its title,
 // and returns the advisories the class reported.
 func dupTwin(t *testing.T, files map[string]string, id, title string) []string {
 	t.Helper()
-	files["works/"+id[:2]+"/"+id+"/work.json"] = `{"authors":["author-one"],"id":"` + id + `",` +
-		`"language":"en","license":"CC0-1.0","sources":[{"type":"libex-import"}],"title":"` + title + `"}`
+	dupWork(files, id, title, "author-one", "libex-import")
 	return advisoryMatching(advisoryWarnings(t, files), normalizedDupMarker)
 }
 
@@ -62,9 +68,7 @@ func TestAdvisoryNormalizedDuplicateWorks(t *testing.T) {
 // census line useless for tracking a repair wave.
 func TestAdvisoryNormalizedDuplicateLeavesSameTitlePairsToItsNeighbour(t *testing.T) {
 	files := dupBase("Hollow Crown")
-	files["works/ho/hollow-crown-author-one/work.json"] = `{"authors":["author-one"],` +
-		`"id":"hollow-crown-author-one","language":"en","license":"CC0-1.0",` +
-		`"sources":[{"type":"user"}],"title":"Hollow Crown"}`
+	dupWork(files, "hollow-crown-author-one", "Hollow Crown", "author-one", "user")
 	lines := advisoryWarnings(t, files)
 	if got := advisoryMatching(lines, normalizedDupMarker); len(got) != 0 {
 		t.Errorf("a same-title pair was reported by both classes: %v", got)
@@ -141,9 +145,7 @@ func TestAdvisoryNormalizedDuplicateSkipsDifferentAuthors(t *testing.T) {
 	files := dupBase("Hollow Crown")
 	files["people/au/author-two.json"] = `{"id":"author-two","license":"CC0-1.0",` +
 		`"name":"Author Two","sources":[{"type":"user"}]}`
-	files["works/ho/hollow-crown-author-two/work.json"] = `{"authors":["author-two"],` +
-		`"id":"hollow-crown-author-two","language":"en","license":"CC0-1.0",` +
-		`"sources":[{"type":"user"}],"title":"Hollow Crown (Unabridged)"}`
+	dupWork(files, "hollow-crown-author-two", "Hollow Crown (Unabridged)", "author-two", "user")
 	if got := advisoryMatching(advisoryWarnings(t, files), normalizedDupMarker); len(got) != 0 {
 		t.Errorf("two authors' books sharing a title were reported as one: %v", got)
 	}
@@ -196,9 +198,7 @@ func TestAdvisoryNormalizedDuplicateSeesTheRoleCreditFork(t *testing.T) {
 // than reordering the columns a maintainer compares two waves by.
 func TestAdvisoryCensusCountsNormalizedDuplicates(t *testing.T) {
 	files := dupBase("Hollow Crown")
-	files["works/ho/hollow-crown-a-litrpg-adventure/work.json"] = `{"authors":["author-one"],` +
-		`"id":"hollow-crown-a-litrpg-adventure","language":"en","license":"CC0-1.0",` +
-		`"sources":[{"type":"libex-import"}],"title":"Hollow Crown: A LitRPG Adventure"}`
+	dupWork(files, "hollow-crown-a-litrpg-adventure", "Hollow Crown: A LitRPG Adventure", "author-one", "libex-import")
 	dir := t.TempDir()
 	writeEntities(t, dir, files)
 	res := Load(dir)
@@ -215,20 +215,13 @@ func TestAdvisoryCensusCountsNormalizedDuplicates(t *testing.T) {
 	}
 }
 
-// dupPart adds an unplaced record of the base work's author under title, with no
-// advisory read - for a fixture that needs several before it asks.
-func dupPart(files map[string]string, id, title string) {
-	files["works/"+id[:2]+"/"+id+"/work.json"] = `{"authors":["author-one"],"id":"` + id + `",` +
-		`"language":"en","license":"CC0-1.0","sources":[{"type":"librivox"}],"title":"` + title + `"}`
-}
-
 // A long book LibriVox records one project per part is a whole plus a SET of parts,
 // each a work of its own: the key strips the part marker, so every part keys with the
 // whole, and a whole stating no volume disagreed with none of them. Two parts in no
 // series stating different volumes are a set, and neither pairs with the whole.
 func TestAdvisoryNormalizedDuplicateSkipsPartsOfAWhole(t *testing.T) {
 	files := dupBase("Anna Karenina")
-	dupPart(files, "anna-karenina-book-1", "Anna Karenina, Book 1")
+	dupWork(files, "anna-karenina-book-1", "Anna Karenina, Book 1", "author-one", "librivox")
 	if got := dupTwin(t, files, "anna-karenina-book-2", "Anna Karenina, Book 2"); len(got) != 0 {
 		t.Errorf("a whole and its parts were reported as one book: %v", got)
 	}
@@ -236,8 +229,8 @@ func TestAdvisoryNormalizedDuplicateSkipsPartsOfAWhole(t *testing.T) {
 	// A whole of its own beside the parts still pairs with the first whole: the
 	// part rule withholds only the whole-and-part pairs.
 	files = dupBase("Wealth of Nations")
-	dupPart(files, "wealth-of-nations-book-1", "Wealth of Nations, Book 1")
-	dupPart(files, "wealth-of-nations-book-4", "Wealth of Nations, Book 4")
+	dupWork(files, "wealth-of-nations-book-1", "Wealth of Nations, Book 1", "author-one", "librivox")
+	dupWork(files, "wealth-of-nations-book-4", "Wealth of Nations, Book 4", "author-one", "librivox")
 	got := dupTwin(t, files, "the-wealth-of-nations-unabridged", "The Wealth of Nations (Unabridged)")
 	if len(got) != 1 || strings.Contains(got[0], "wealth-of-nations-book-") {
 		t.Errorf("advisories = %v, want the two wholes alone", got)
@@ -253,10 +246,8 @@ func TestAdvisoryNormalizedDuplicateKeepsAPartWithoutASet(t *testing.T) {
 	}
 
 	files := dupBase("Ashlani's Reincarnation")
-	dupPart(files, "ashlanis-reincarnation-volume-1", "Ashlani's Reincarnation, Volume 1")
-	files["works/as/ashlanis-reincarnation-volume-2/work.json"] = `{"authors":["author-one"],` +
-		`"id":"ashlanis-reincarnation-volume-2","language":"en","license":"CC0-1.0",` +
-		`"sources":[{"type":"libex-import"}],"title":"Ashlani's Reincarnation: Volume 2"}`
+	dupWork(files, "ashlanis-reincarnation-volume-1", "Ashlani's Reincarnation, Volume 1", "author-one", "librivox")
+	dupWork(files, "ashlanis-reincarnation-volume-2", "Ashlani's Reincarnation: Volume 2", "author-one", "libex-import")
 	files["series/se/series-one.json"] = `{"id":"series-one","license":"CC0-1.0","name":"Series One",` +
 		`"sources":[{"type":"user"}],"works":[{"position":"1","work":"ashlanis-reincarnation-volume-1"},` +
 		`{"position":"2","work":"ashlanis-reincarnation-volume-2"},{"position":"4","work":"book-one"}]}`
@@ -268,9 +259,8 @@ func TestAdvisoryNormalizedDuplicateKeepsAPartWithoutASet(t *testing.T) {
 	// sibling of this part, so it stays a lone part beside the bare title.
 	files = dupBase("The Story of My Life")
 	files["people/ot/other-author.json"] = `{"id":"other-author","license":"CC0-1.0","name":"Other Author","sources":[{"type":"user"}]}`
-	dupPart(files, "story-of-my-life-part-1", "Story of My Life, Part 1")
-	files["works/st/story-of-my-life-volume-2/work.json"] = `{"authors":["other-author"],"id":"story-of-my-life-volume-2",` +
-		`"language":"en","license":"CC0-1.0","sources":[{"type":"librivox"}],"title":"Story of My Life, Volume 2"}`
+	dupWork(files, "story-of-my-life-part-1", "Story of My Life, Part 1", "author-one", "librivox")
+	dupWork(files, "story-of-my-life-volume-2", "Story of My Life, Volume 2", "other-author", "librivox")
 	got := advisoryMatching(advisoryWarnings(t, files), normalizedDupMarker)
 	if len(got) != 1 || !strings.Contains(got[0], "story-of-my-life-part-1") || strings.Contains(got[0], "volume-2") {
 		t.Errorf("a lone part beside another author's volume = %v, want the part and the whole", got)

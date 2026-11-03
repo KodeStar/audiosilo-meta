@@ -315,6 +315,10 @@ func StatementOf(title, series string, p VolumePolicy) VolumeStatement {
 	return VolumeStatement{Volume: v, States: ok, Divisions: divisionSequenceOf(residual)}
 }
 
+// Silent reports whether a statement states nothing at all: no volume and no
+// division. A silent title agrees with every statement (Agrees).
+func (a VolumeStatement) Silent() bool { return !a.States && len(a.Divisions) == 0 }
+
 // Agrees reports whether two statements are of the same volume - or, either way, do
 // not contradict each other. A statement of nothing is not a disagreement: "Hammered"
 // beside "Hammered: The Iron Druid Chronicles, Book 3" is the duplicate the gates

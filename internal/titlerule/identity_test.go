@@ -481,6 +481,20 @@ func TestContradictionFollowsThePolicy(t *testing.T) {
 	}
 }
 
+// Silent is a statement of nothing: no volume and no division.
+func TestVolumeStatementSilent(t *testing.T) {
+	for title, want := range map[string]bool{
+		"Anna Karenina":                               true,
+		"Anna Karenina, Book 1":                       false,
+		"Level 1 Lessons 1-5":                         false,
+		"History of England - (Volume 1, Chapter 01)": false,
+	} {
+		if got := StatementOf(title, "", WriterPolicy).Silent(); got != want {
+			t.Errorf("StatementOf(%q).Silent() = %v, want %v", title, got, want)
+		}
+	}
+}
+
 // Label is injective over what Agrees compares: statements that disagree never share a
 // label.
 func TestLabelSeparatesWhatAgreesSeparates(t *testing.T) {
