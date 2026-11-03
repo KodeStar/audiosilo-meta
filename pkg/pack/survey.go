@@ -47,8 +47,10 @@ type surveyed struct {
 	file  *File
 }
 
-// survey classifies every JSON file under family f's root.
-func (s *Store) survey(def FamilyDef) (*familySurvey, error) {
+// survey classifies every JSON file under family f's root. A non-nil canon is
+// filled with the canonical verdict of every file the survey parsed
+// (Reader.prefetchJudged); nil asks for none.
+func (s *Store) survey(def FamilyDef, canon map[string]bool) (*familySurvey, error) {
 	root := def.Family.Root()
 	// A FRESH scan of the family root, never the walk the store was opened on.
 	// A survey is a statement about the files that are there NOW: it decides what
@@ -66,7 +68,11 @@ func (s *Store) survey(def FamilyDef) (*familySurvey, error) {
 	// Parsing is nearly all of a survey's cost and every file parses on its own,
 	// so the family is parsed on the worker pool first; the classification below
 	// then reads it from the cache, in listing order, exactly as it always did.
-	s.reader.prefetch(rels)
+	if canon != nil {
+		s.reader.prefetchJudged(rels, canon)
+	} else {
+		s.reader.prefetch(rels)
+	}
 
 	fs := &familySurvey{def: def, files: map[string]*File{}}
 	var cands []surveyed

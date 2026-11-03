@@ -1,6 +1,7 @@
 package pack
 
 import (
+	"bytes"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -77,15 +78,22 @@ func (r *Reader) Read(rel string) (*File, error) {
 // share one way of loading a pack: a read error is returned bare (Read tells a
 // missing file by it) and a parse error names rel.
 func (r *Reader) load(rel string) (*File, error) {
+	f, _, err := r.loadRaw(rel)
+	return f, err
+}
+
+// loadRaw is load that also hands back the bytes the pack was parsed from, for
+// the one caller that judges them (prefetchJudged).
+func (r *Reader) loadRaw(rel string) (*File, []byte, error) {
 	raw, err := os.ReadFile(filepath.Join(r.dir, filepath.FromSlash(rel)))
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 	f, err := Parse(raw)
 	if err != nil {
-		return nil, fmt.Errorf("%s: %w", rel, err)
+		return nil, nil, fmt.Errorf("%s: %w", rel, err)
 	}
-	return f, nil
+	return f, raw, nil
 }
 
 // prefetch reads and parses, on the shared worker pool, every one of rels the
@@ -99,7 +107,26 @@ func (r *Reader) load(rel string) (*File, error) {
 // would have done without the prefetch - the same error, the same stand-in for
 // a file that has gone - and the cost of that second attempt falls only on the
 // broken files.
-func (r *Reader) prefetch(rels []string) {
+func (r *Reader) prefetch(rels []string) { r.fill(rels, nil) }
+
+// prefetchJudged is prefetch that also records, in canon, whether each pack it
+// parsed is already in pkg/canonical's form on disk - a read-only caller's way
+// of asking the canonical question of a family without parsing it a second
+// time (Store.PendingCanonical says who and why).
+//
+// The verdict is the file's bytes against the pack's own render, which IS
+// canonical.Format of the file for every document Parse accepts (the render goes
+// through canonical.FormatIndent entry by entry, and TestRenderMatchesCanonical
+// and TestJudgedVerdictMatchesCanonical pin the equivalence). The render is then
+// released - only its size is kept, for the cap check - so a judged family holds
+// its entries and nothing more. A path left out of canon was not judged: one
+// already held (no parse happened here to judge), one that would not read or
+// parse, or one whose render failed; its caller judges it itself.
+func (r *Reader) prefetchJudged(rels []string, canon map[string]bool) { r.fill(rels, canon) }
+
+// fill is prefetch's body, judging each parsed pack into canon when it is not
+// nil.
+func (r *Reader) fill(rels []string, canon map[string]bool) {
 	var todo []string
 	for _, rel := range rels {
 		if _, ok := r.cache[rel]; !ok {
@@ -107,14 +134,33 @@ func (r *Reader) prefetch(rels []string) {
 		}
 	}
 	parsed := make([]*File, len(todo))
+	// verdict[i] is 0 for "not judged", 1 for canonical, 2 for not.
+	verdict := make([]uint8, len(todo))
 	parallel.Do(len(todo), func(i int) {
-		if f, err := r.load(todo[i]); err == nil {
-			parsed[i] = f
+		f, raw, err := r.loadRaw(todo[i])
+		if err != nil {
+			return
 		}
+		parsed[i] = f
+		if canon == nil {
+			return
+		}
+		data, _, rerr := f.render()
+		if rerr != nil {
+			return
+		}
+		verdict[i] = 2
+		if bytes.Equal(raw, data) {
+			verdict[i] = 1
+		}
+		f.ReleaseMemo()
 	})
 	for i, f := range parsed {
 		if f != nil {
 			r.cache[todo[i]] = f
+		}
+		if verdict[i] != 0 {
+			canon[todo[i]] = verdict[i] == 1
 		}
 	}
 }
