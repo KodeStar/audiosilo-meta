@@ -235,8 +235,8 @@ func (p *planner) attachTarget(b sourceBook, workTitle string) (ws *workState, o
 // attachRow writes an attached row onto its work: a new recording, or its ASIN
 // merged onto the same-narrator recording (addRecording decides, with every
 // guard it applies to any recording - the same-production runtime and abridged
-// tests, the serial guard, the region and ISBN rules). Nothing else is written:
-// no work fact, no series placement.
+// tests, the serial guard, the region and ISBN rules). Nothing else is written
+// onto the catalogued occupant: no work fact, no series placement.
 //
 // Summary.Attached counts the row only when addRecording wrote something; a row
 // one of its guards turned away is a position-claimed skip instead, so the sync
