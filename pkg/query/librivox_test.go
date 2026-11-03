@@ -629,3 +629,63 @@ func TestSinceDay(t *testing.T) {
 		}
 	}
 }
+
+// TestLatestBySourceOrdersBySourceRecordings pins that works/latest under
+// ?source= orders by the newest recording FROM THAT SOURCE, not by the work: a
+// LibriVox reading attached to a classic the catalogue held long before is the
+// newest thing LibriVox has, and ordered by the work it would never surface.
+// The unfiltered list must keep ordering by the work, so the same catalogue
+// answers the two requests in opposite orders.
+func TestLatestBySourceOrdersBySourceRecordings(t *testing.T) {
+	lv := []model.Source{{Type: model.SourceLibrivox, Ref: "https://librivox.org/api", ImportedAt: "2026-01-01"}}
+	user := []model.Source{{Type: model.SourceUser}}
+	rec := func(id, work, added string, sources []model.Source) *model.Recording {
+		return &model.Recording{ID: id, Work: work, Narrators: []string{"reader"}, Language: "en", License: "CC0-1.0", AddedAt: added, Sources: sources}
+	}
+	work := func(id, title, added string, recs ...*model.Recording) *model.Work {
+		return &model.Work{ID: id, Title: title, Authors: []string{"author"}, Language: "en", License: "CC0-1.0", AddedAt: added, Recordings: recs, Sources: user}
+	}
+	cat := &model.Catalog{
+		People: []*model.Person{
+			{ID: "author", Name: "Author", License: "CC0-1.0"},
+			{ID: "reader", Name: "Reader", License: "CC0-1.0"},
+		},
+		Works: []*model.Work{
+			// A classic catalogued in 2020 whose LibriVox reading landed today,
+			// beside an older retail recording of its own.
+			work("classic", "Classic", "2020-01-01",
+				rec("retail", "classic", "2020-01-01", user),
+				rec("lv-new", "classic", "2026-11-01", lv)),
+			// A LibriVox-only work added a month earlier.
+			work("lv-only", "LibriVox Only", "2026-10-01", rec("lv-old", "lv-only", "2026-10-01", lv)),
+			// A LibriVox recording with no date of its own falls back to its work's.
+			work("undated", "Undated", "2026-09-01", rec("lv-undated", "undated", "", nil)),
+			// A newer retail-only work: in the unfiltered list, never the filtered.
+			work("retail-only", "Retail Only", "2026-10-15", rec("retail-new", "retail-only", "2026-10-15", user)),
+		},
+	}
+	// The undated recording's source is LibriVox, with no imported_at either, so
+	// the column is NULL and the work's added_at decides.
+	cat.Works[2].Recordings[0].Sources = []model.Source{{Type: model.SourceLibrivox}}
+	_, ts := serveDB(t, artifacttest.Build(t, cat), HandlerOptions{})
+
+	for _, tc := range []struct {
+		path string
+		want []string
+	}{
+		{"/api/v1/works/latest?source=librivox", []string{"classic", "lv-only", "undated"}},
+		{"/api/v1/works/latest?source=librivox&lang=en", []string{"classic", "lv-only", "undated"}},
+		{"/api/v1/works/latest", []string{"retail-only", "lv-only", "undated", "classic"}},
+	} {
+		code, body := artifacttest.GetJSON(t, ts.URL, tc.path)
+		if code != http.StatusOK {
+			t.Fatalf("GET %s = %d %v", tc.path, code, body)
+		}
+		if got := workIDsOf(t, body, "works"); strings.Join(got, ",") != strings.Join(tc.want, ",") {
+			t.Errorf("GET %s = %v, want %v", tc.path, got, tc.want)
+		}
+	}
+	if q, args := (&DB{}).latestCandidatesQuery(nil, model.SourceLibrivox, 200); q != latestSourceSQL || len(args) != 2 {
+		t.Errorf("latest, source only = %q %v, want latestSourceSQL", q, args)
+	}
+}

@@ -35,7 +35,9 @@ var librivoxShapeSQL = []string{
 // recordings asks for `source=librivox`. It narrows the work lists - the combined
 // and work searches (both boosts included) and works/latest - to works with at
 // least one recording whose sources[] names that type, through the
-// recording_sources table (idx_recording_sources_type). Like ?lang= it narrows
+// recording_sources table (idx_recording_sources_type); works/latest then orders
+// them by that source's recordings rather than by the work (latestSourceSQL in
+// queries.go), so a new reading of an old classic is new. Like ?lang= it narrows
 // LISTS only; a record page or a lookup names its record outright.
 //
 // The value is one source type the schema's enum names (model.KnownSourceType);
