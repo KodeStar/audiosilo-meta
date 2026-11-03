@@ -37,14 +37,14 @@ type relocationPlan struct {
 
 // All rows are evidence, even ones the ordinary libex parser refuses. Otherwise
 // a bad-region copy could disappear before its contradictory language is read.
-func relocationSetup(entries []rawBook, skips []RowSkip) func(*planner) {
+// evidence is every row's (ASIN, language) in the canonical row order
+// (parseLibexRelocation).
+func relocationSetup(evidence []relocationEvidence, skips []RowSkip) func(*planner) {
 	return func(p *planner) {
 		p.existingSeriesOnly = true
 		p.relocation = &relocationPlan{evidence: map[string][]string{}, unusable: map[string]bool{}, newWorks: map[string]bool{}}
-		for _, e := range entries {
-			asin := NormalizeASIN(e.str("asin"))
-			lang, _ := mapLanguage(e.str("language"))
-			p.relocation.evidence[asin] = append(p.relocation.evidence[asin], lang)
+		for _, ev := range evidence {
+			p.relocation.evidence[ev.asin] = append(p.relocation.evidence[ev.asin], ev.lang)
 		}
 		for _, s := range skips {
 			p.relocation.unusable[s.ASIN] = true
@@ -466,24 +466,6 @@ func (p *planner) repointMembership(r seriesRef, old, target, lang string) bool 
 	ss.dirty = true
 	p.summary.MembershipsRepointed++
 	return true
-}
-
-// Sorting the source objects before parsing makes titles, credits, notes and
-// source stamps independent of the order of duplicate and regional rows.
-func sortedRelocationRows(entries []rawBook) {
-	type keyedRow struct {
-		row rawBook
-		key string
-	}
-	rows := make([]keyedRow, len(entries))
-	for i, row := range entries {
-		key, _ := json.Marshal(row) // decoded JSON values are always marshalable
-		rows[i] = keyedRow{row: row, key: string(key)}
-	}
-	sort.SliceStable(rows, func(i, j int) bool { return rows[i].key < rows[j].key })
-	for i, row := range rows {
-		entries[i] = row.row
-	}
 }
 
 // Keep relocation's raw-value note format, including fields repair deliberately
