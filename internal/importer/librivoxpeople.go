@@ -1,22 +1,33 @@
 package importer
 
 // librivoxpeople.go is the LibriVox import's three PERSON rules (meta#2778),
-// the classes LibriVox tranches 7 to 11 fixed by hand in every tranche. Each is
-// decided per LibriVox author id before any census reads a name
-// (decideLibrivoxAuthors, called from keyLibrivoxCredits), by respelling the
-// id's credits, because a person's identity here IS the slug of the name it is
-// credited by: whatever a credit is spelled as is who it lands on.
+// the classes LibriVox tranches 7 to 11 fixed by hand in every tranche, and the
+// one decision they feed (meta#2799): the person every author or translator
+// credit names is decided ONCE for the batch, keyed by its LibriVox author id,
+// before any row is planned and after the batch's credit decisions (the
+// censuses and the initials step) - resolveLibrivoxAuthors - and carried on
+// the credit (librivoxCredit.person, credit.person). Every later reader (the
+// work's identity and credits, the narrators' rule 3, the claims, the stamp,
+// the report) asks resolveCredit for that person instead of resolving the
+// name again, so a rule judges the person the import credits, and nothing the
+// cleaning does to a name afterwards (the honorific fold) can move a credit
+// the id decided. Decisions are taken in the order of the lowest project
+// crediting each id, so a batch decides the same whatever order its rows
+// arrive in.
 //
 //  1. THE FOLD. The honorific fold (honorific.go) strips a courtesy title when
 //     the bare name is a credit too. On a LibriVox row the ids say more than
 //     the census does, so:
-//     a. a credit whose id the catalogue holds is spelled as its holder and
-//     never folded (keepTitled): the id, not the spelling, is the person, so
-//     "Mrs. C. M. Livingston" (1456) stays on `mrs-c-m-livingston`;
+//     a. a credit whose id the catalogue holds is its holder, spelled as the
+//     holder is: the id, not the spelling, is the person, so "Mrs. C. M.
+//     Livingston" (1456) stays on `mrs-c-m-livingston`;
 //     b. a titled credit is not folded onto a bare twin that is another
-//     LibriVox author id of the batch with other life years ("Mrs. William
-//     Platt" 14096 beside "William Platt" 13717, one project), nor onto a
-//     catalogued bare record that is another person by rule 2's test ("Sir
+//     LibriVox author id of the batch, whatever their years (the owner's
+//     rule: two ids are never folded into one person by a run - "Mrs. William
+//     Platt" 14096 beside "William Platt" 13717 are two people, Livingston
+//     1456 and 15071 LibriVox's own duplicate, and only a person can tell
+//     them apart; the pair is listed, Summary.LibrivoxAuthorPairs), nor onto
+//     a catalogued bare record that is another person by rule 2's test ("Sir
 //     Hugh Fraser" is not `hugh-fraser`, the actor who narrates Poirot), and
 //     when that test is unsure the row goes to the worklist as rule 2's does;
 //     a titled name the fold leaves meets rule 2 under its own spelling;
@@ -24,7 +35,7 @@ package importer
 //     catalogued twin carrying a courtesy title or a military rank
 //     (librivoxTitledTwin): "Frederick Treves" onto `sir-frederick-treves`,
 //     "Joseph H. Alexander" onto `colonel-joseph-h-alexander`, and LibriVox's
-//     undated duplicate record "C. M. Livingston" (15071) onto
+//     undated duplicate record "C. M. Livingston" (15071) onto a catalogued
 //     `mrs-c-m-livingston`. Not when the twin only narrates, nor when the
 //     life years disagree, nor when the twin carries another author id and
 //     the credit states years of its own.
@@ -41,29 +52,44 @@ package importer
 //     carrying neither id nor years, they are credited only as a narrator (but
 //     a LibriVox reader is the undated id's own volunteer), or only on works
 //     first published more than librivoxLateMargin years after the author's
-//     death (or flourished year), with no title in common with the id's
+//     death, flourished year, or - stating a birth year alone - the end of a
+//     librivoxLifespan from it, with no title in common with the id's
 //     projects (librivoxCreditEvidence; a generic title such as "Poems" or
-//     "Selected Essays" is no title in common, librivoxGenericTitle).
-//     A work's first publication is its first_published, else the earliest
-//     release date of its recordings, and a work co-credited with someone who
-//     died within the margin is an old text whatever its recordings say; a
-//     work with no date at all is no evidence against the match. Instead the id is minted at its DATED name
+//     "Selected Essays" is no title in common, librivoxGenericTitle, though
+//     "Poems (Ballads of a Cheechako)" is).
+//     A work's first publication is its TEXT's date - its first_published,
+//     else the copyright year a LibriVox recording of it states - else the
+//     earliest release date of its recordings, and a work co-credited with
+//     someone who died within the margin is an old text whatever its
+//     recordings say; a work with no date at all is no evidence against the
+//     match. A release date dates a modern book and a modern edition of an old
+//     one alike, so works dated only by releases leave the id unsure - unless
+//     a project the id authors shows they are editions (librivoxReleasesAreEditions:
+//     the catalogue holds that very text under its full title, dated only by a
+//     release past the bound, credited to a surname the project names - the
+//     Sojourner Truth hold of #2798; a translator's project shows nothing of
+//     the kind, so Margaret Hunt stays a worklist row and Thomas Taylor, the
+//     translator of Proclus, never lands on the modern novelist). Instead the id is minted at its DATED name
 //     (librivoxDatedName: "James Grant (1822-1887)" -> `james-grant-1822-1887`,
 //     "Richard Wilson (fl. 1916)" -> `richard-wilson-fl-1916`), the form the
-//     tranches minted by hand; when LibriVox states no year its rows go to the
-//     worklist as `same-name-author` (Ralph Scott), never stamped silently. Two
-//     ids of the batch meeting one free name are decided as a later run would
-//     decide them: the first keeps it, a second is the same person only on
-//     the same birth and death years, else dated, or on the worklist when it
-//     states no year.
+//     tranches minted by hand; when LibriVox states no year, or the dates are
+//     unsure, its rows go to the worklist as `same-name-author` (Ralph Scott,
+//     J. J. Howard fl. 1807 against a modern J.J. Howard), never stamped
+//     silently. Two ids of the batch meeting one person are decided as a later
+//     run would decide them: the first keeps it, a second is the same person
+//     only on the same birth and death years, else dated, or on the worklist
+//     naming the first's works (finishLibrivoxHolds) when it states no year.
 //  3. READERS ON AUTHORS. A reader whose name meets a catalogued person holding
 //     no reader id claims them, unless that person is an AUTHOR record
-//     (librivoxAuthorRecord: a librivox_author_id, or a death year before
-//     LibriVox began, librivoxFounded, its own or that of an author id of the
-//     run landing on it, whatever the row order): the reader is then a person
-//     of their own at `<name>-librivox-<reader id>`, as for a second reader of
-//     one name (`adam-smith-librivox-19341`, not Adam Smith 1723-1790
-//     narrating a 2023 recording). In librivoxReaderSlug.
+//     (librivoxAuthorRecord: a catalogued librivox_author_id, or a life that
+//     ended before LibriVox began, librivoxFounded - its own, or that of an
+//     author id of the run landing on it, decided before any row is planned):
+//     the reader is then a person of their own at `<name>-librivox-<reader
+//     id>`, as for a second reader of one name (`adam-smith-librivox-19341`,
+//     not Adam Smith 1723-1790 narrating a 2023 recording). A living or
+//     undated author id of the same run is not an author record to a reader:
+//     the two are one person, whichever row the run meets first. In
+//     librivoxReaderSlug.
 //
 // A project the catalogue already holds is never decided here (it is skipped
 // before planning; its readers are librivoxReaderSlug's), so a rerun of a
@@ -83,6 +109,22 @@ import (
 // librivoxFounded is the year LibriVox began (August 2005): a person who died
 // before it read nothing for it.
 const librivoxFounded = 2005
+
+// librivoxLifespan bounds a life LibriVox states by its birth year alone: no
+// one born in 1840 read for LibriVox (2005) or wrote a 2020 first edition.
+const librivoxLifespan = 100
+
+// lifeEnd is the last year a life can have reached: its death year, else its
+// birth year plus librivoxLifespan; 0 when it states neither.
+func lifeEnd(l lifeYears) int {
+	switch {
+	case l.death != 0:
+		return l.death
+	case l.birth != 0:
+		return l.birth + librivoxLifespan
+	}
+	return 0
+}
 
 // librivoxLateMargin is how many years after an author's death a work may
 // first appear and still be evidence for them (posthumous editions and
@@ -109,9 +151,12 @@ func deTitled(name string) (bare string, stripped bool) {
 type lvPersonWork struct {
 	slug, title string
 	year        int
-	// published says year is the work's stated first_published, not the
+	// published says year dates the work's TEXT - its stated first_published,
+	// or the copyright year a LibriVox recording of it states - not the
 	// earliest release of its recordings.
 	published bool
+	// people is every person the work credits.
+	people []string
 	// died is the earliest death year any person the work credits states (0 =
 	// none): a work co-credited with someone long dead is an old text, however
 	// recent its recordings (a translator of Grimm).
@@ -124,15 +169,14 @@ type lvPersonWork struct {
 // "Metamorphosis"), and the duplicate-identity key (titlerule.IdentityTitleKey:
 // "Metamorphosis: A Novella"). A shared title is the strongest sign that a
 // catalogued author is the LibriVox one, whatever their works' dates say,
-// except a generic one (librivoxGenericTitle), which has no keys: two poets
-// may each publish "Poems".
+// except a generic one (librivoxGenericWordsOnly), which keys nothing: two
+// poets may each publish "Poems". The test is per form, so a generic base
+// with a qualifier that names a work ("Poems (Ballads of a Cheechako)") keeps
+// its full title's key while its bare "Poems" keys nothing.
 func librivoxTitleKeys(title string) map[string]bool {
 	keys := map[string]bool{}
-	if librivoxGenericTitle(title) {
-		return keys
-	}
 	for t := title; t != ""; {
-		if k := librivoxTitleKey(t); k != "" {
+		if k := librivoxTitleKey(t); k != "" && !librivoxGenericWordsOnly(t) {
 			keys[k] = true
 		}
 		stripped := stripTrailingQualifier(t)
@@ -141,9 +185,26 @@ func librivoxTitleKeys(title string) map[string]bool {
 		}
 		t = stripped
 	}
-	if k := titlerule.IdentityTitleKey(title, ""); k != "" {
+	// The identity key sets trailing qualifiers aside itself, so a generic
+	// base under a qualifier would key as the bare base: none.
+	if k := titlerule.IdentityTitleKey(title, ""); k != "" && !librivoxGenericTitle(title) {
 		keys["identity:"+k] = true
 	}
+	return keys
+}
+
+// librivoxWorkKeys is librivoxTitleKeys of a catalogued work's title, memoized
+// for the run's decisions (librivoxCreditEvidence asks it for every work of
+// every person it judges).
+func (p *planner) librivoxWorkKeys(w lvPersonWork) map[string]bool {
+	if keys, ok := p.lv.workKeys[w.slug]; ok {
+		return keys
+	}
+	if p.lv.workKeys == nil {
+		p.lv.workKeys = map[string]map[string]bool{}
+	}
+	keys := librivoxTitleKeys(w.title)
+	p.lv.workKeys[w.slug] = keys
 	return keys
 }
 
@@ -170,8 +231,15 @@ var librivoxGenericWords = func() map[string]bool {
 // at least one a word (a title of numbers alone, "1601", names a work): a
 // title many authors share, so sharing it says nothing about who wrote it.
 func librivoxGenericTitle(title string) bool {
+	return librivoxGenericWordsOnly(stripTrailingQualifiers(title))
+}
+
+// librivoxGenericWordsOnly is librivoxGenericTitle's test of title as it
+// stands, qualifiers and all: "Poems (1915)" is generic, "Poems (Ballads of a
+// Cheechako)" is not.
+func librivoxGenericWordsOnly(title string) bool {
 	generic := false
-	for _, w := range strings.Split(model.Slugify(stripTrailingQualifiers(title)), "-") {
+	for _, w := range strings.Split(model.Slugify(title), "-") {
 		switch {
 		case strings.TrimLeft(w, "0123456789") == "":
 			continue
@@ -183,14 +251,22 @@ func librivoxGenericTitle(title string) bool {
 	return generic
 }
 
-// lvAuthorClaim is one LibriVox author id as the batch's rows to be planned
-// state it: its cleaned name and the slug of it ("" on the catch-all), life
-// years and the titles of its projects, keyed on first use (titleKeys).
+// lvAuthorClaim is one LibriVox author id no person carries, as the batch's
+// rows to be planned state it: its cleaned name (CleanCreditName) and the slug
+// of it ("" on the catch-all), the spellings the import's census cleans its
+// first credit to with the honorific fold (folded: the name it is credited by
+// unless a rule decides otherwise) and without it (unfolded), its life years
+// and the titles of its projects, keyed on first use (titleKeys). The first
+// credit is the one on the lowest project id, so a claim never depends on the
+// order the rows arrive in.
 type lvAuthorClaim struct {
-	name, slug string
-	life       lifeYears
-	titles     []string
-	keys       map[string]bool
+	id, project      int
+	name, slug       string
+	folded, unfolded string
+	life             lifeYears
+	titles           []string
+	projects         []lvClaimProject
+	keys             map[string]bool
 }
 
 // titleKeys is the union of librivoxTitleKeys over the claim's project
@@ -205,123 +281,99 @@ func (cl *lvAuthorClaim) titleKeys() map[string]bool {
 	return cl.keys
 }
 
-// decideLibrivoxAuthors applies rules 1 and 2 to every author id the
-// catalogue does not hold, over the rows that will be planned (a held project
-// is skipped and decides nothing), in the order the ids first appear, and
-// respells their credits. It runs inside keyLibrivoxCredits, after the
-// catalogued ids are keyed and before the censuses read a name.
-func (p *planner) decideLibrivoxAuthors(books []sourceBook) {
+// lvHold is one author id rule 2 sent to the worklist: the person its name
+// meets (against: catalogued, or the person an earlier id of the run lands
+// on) and that person's catalogued works, the worklist row's candidates.
+// deferred says against is a person of this run, whose works are named once
+// the run has planned them (finishLibrivoxHolds), as a later run would name
+// them.
+type lvHold struct {
+	against    string
+	candidates []LibrivoxCandidate
+	deferred   bool
+}
+
+// librivoxRowsByProject is the indexes of the LibriVox rows to be planned (a
+// project the catalogue holds is skipped and decides nothing), ordered by
+// project id: the order every per-id decision is taken in, whatever order the
+// rows arrive in.
+func (p *planner) librivoxRowsByProject(books []sourceBook) []int {
+	var rows []int
+	for i := range books {
+		if b := &books[i]; b.lv != nil && !p.lv.ids[b.lv.id] {
+			rows = append(rows, i)
+		}
+	}
+	slices.SortStableFunc(rows, func(a, b int) int { return books[a].lv.id - books[b].lv.id })
+	return rows
+}
+
+// resolveLibrivoxAuthors decides, once for the batch and before any row is
+// planned, the person every LibriVox author and translator credit names, keyed
+// by its author id, and puts it on the credit (librivoxCredit.person, which
+// rowAuthorCreditsIn carries onto the row's credits): every later reader - the
+// work's identity and credits, the stamp, the claims, the report - reads that
+// person rather than resolving the name again. A catalogued id is its holder;
+// an id no person carries is decided by rules 1 and 2 (decideLibrivoxAuthor),
+// in the order of the lowest project crediting each, AFTER the batch's credit
+// decisions (the censuses and the initials step, creditContextOf), so a rule
+// judges the very person the import would credit. A credit with no id, or one
+// whose name slugs to nothing, keeps its name's resolution.
+func (p *planner) resolveLibrivoxAuthors(books []sourceBook) {
+	rows := p.librivoxRowsByProject(books)
+	// The indexes below are read only here.
+	defer func() { p.lv.works, p.lv.workDates, p.lv.workKeys, p.lv.titledTwins = nil, nil, nil, nil }()
+	quiet, unfolded := p.credits.author.quiet(), p.credits.author.unfolded()
 	claims := map[int]*lvAuthorClaim{}
 	var order []*lvAuthorClaim
-	var ids []int
 	bySlug := map[string][]*lvAuthorClaim{}
-	for i := range books {
+	for _, i := range rows {
 		b := &books[i]
-		if b.lv == nil || p.lv.ids[b.lv.id] {
-			continue
-		}
 		for _, c := range b.lv.credits {
-			if c.kind != librivoxAuthor || c.id <= 0 {
+			if c.kind != librivoxAuthor || c.id <= 0 || c.index >= len(b.authors) {
 				continue
 			}
-			if _, held := p.lv.people[librivoxKey{librivoxAuthor, c.id}]; held {
+			if owner, held := p.lv.people[librivoxKey{librivoxAuthor, c.id}]; held {
+				if live, ok := p.livePerson(owner); ok && p.lv.authorPins[c.id] == nil {
+					p.lv.authorPins[c.id] = pinAt(live, p.people[live])
+				}
 				continue
 			}
 			cl := claims[c.id]
 			if cl == nil {
-				cl = &lvAuthorClaim{name: CleanCreditName(c.name), life: c.life}
+				cl = &lvAuthorClaim{id: c.id, project: b.lv.id, name: CleanCreditName(c.name), life: c.life}
+				cl.folded, _ = creditWithRolesSided(b.authors[c.index], quiet)
+				cl.unfolded, _ = creditWithRolesSided(b.authors[c.index], unfolded)
 				if slug, fellBack := personSlug(cl.name); !fellBack {
 					cl.slug = slug // librivoxauthors.go rule 2: never on the catch-all
 					bySlug[slug] = append(bySlug[slug], cl)
 				}
 				claims[c.id] = cl
 				order = append(order, cl)
-				ids = append(ids, c.id)
 			}
 			cl.titles = append(cl.titles, b.str("title"))
+			cl.projects = append(cl.projects, librivoxClaimProject(b, c.suffix == ""))
 		}
 	}
-	if len(order) == 0 {
-		return
-	}
-	// The indexes below are read only here.
-	defer func() { p.lv.works, p.lv.titledTwins = nil, nil }()
-	renames := map[int]string{}
 	holder := map[string]lifeYears{}
 	var decided []string
-	for i, cl := range order {
-		id, name, slug := ids[i], cl.name, cl.slug
-		if slug == "" {
-			continue
-		}
-		if bare, titled := deHonorified(name); titled {
-			against, v := p.librivoxFoldVerdict(bare, cl, bySlug)
-			switch {
-			case v == lvUnsure:
-				p.holdLibrivoxAuthor(id, against)
-				continue
-			case v == lvApart:
-				p.lv.keepTitled[slug] = true
-				decided = append(decided, fmt.Sprintf("%d %q kept apart from %q", id, name, bare))
-			case against != "":
-				// Folds onto the catalogued bare person the verdict accepted.
-				p.noteDeadAuthor(cl, against)
-				continue
-			}
-			// The titled name itself still meets rule 2 below.
-		}
-		to, against, v := p.librivoxAuthorName(name, cl)
-		if v == lvSame && to == "" {
-			// A second id of this run on a taken name is judged as
-			// librivoxVerdict judges a person already carrying an id, by the
-			// years that person will carry: a catalogued person's own, else
-			// the first id's (stampLifeYears).
-			if life, ok := holder[slug]; ok && !sameLife(life, cl.life) {
-				v = lvApart
-			} else if !ok {
-				life, dated := p.lv.life[against]
-				if !dated {
-					life = cl.life
-				}
-				holder[slug] = life
-			}
-		}
-		switch v {
-		case lvApart:
-			if to = p.librivoxDatedName(id, name, cl.life); to == "" {
-				p.holdLibrivoxAuthor(id, against)
-				continue
-			}
-		case lvUnsure:
-			p.holdLibrivoxAuthor(id, against)
-			continue
-		}
-		credited := name
-		if to != "" {
-			credited = to
-			renames[id] = to
-			decided = append(decided, fmt.Sprintf("%d %q credited as %q", id, name, to))
-			if _, titled := deHonorified(to); titled {
-				p.lv.keepTitled[Slugify(to)] = true
-			}
-		}
-		if r := p.resolvePerson(credited); !r.fellBack {
-			p.noteDeadAuthor(cl, r.slug)
-		}
+	for _, cl := range order {
+		decided = append(decided, p.decideLibrivoxAuthor(cl, bySlug, holder)...)
 	}
 	for i := range books {
-		b := &books[i]
-		if b.lv == nil || p.lv.ids[b.lv.id] {
-			continue
-		}
-		for j := range b.lv.credits {
-			c := &b.lv.credits[j]
-			if to, ok := renames[c.id]; ok && c.kind == librivoxAuthor {
-				c.name = to
-				b.authors[c.index] = to + c.suffix
+		if b := &books[i]; b.lv != nil {
+			for j := range b.lv.credits {
+				if c := &b.lv.credits[j]; c.kind == librivoxAuthor && c.id > 0 {
+					c.person = p.lv.authorPins[c.id]
+				}
 			}
 		}
 	}
+	for _, pr := range p.lv.pairs {
+		p.summary.LibrivoxAuthorPairs = append(p.summary.LibrivoxAuthorPairs,
+			LibrivoxAuthorPair{Titled: p.librivoxPairAuthor(pr[0]), Bare: p.librivoxPairAuthor(pr[1])})
+	}
+	p.noteLibrivoxFolds(books)
 	if len(decided) > 0 {
 		p.summary.Notes = append(p.summary.Notes, fmt.Sprintf(
 			"%d LibriVox author id(s) kept off a same-name or courtesy-title twin, or credited by another name (the rest the person rules held are on the worklist as same-name-author): %s",
@@ -329,9 +381,183 @@ func (p *planner) decideLibrivoxAuthors(books []sourceBook) {
 	}
 }
 
+// LibrivoxAuthorPair is two LibriVox author ids of one run that the honorific
+// fold would make one person - a courtesy title on one ("Mrs. C. M.
+// Livingston", 1456), the bare name on the other ("C. M. Livingston", 15071) -
+// kept as two because LibriVox lists them under two ids (librivoxpeople.go
+// rule 1b). Only a person can tell LibriVox's own duplicate record (Livingston)
+// from two people (Mrs. William Platt and William Platt): merging is theirs to
+// do, by moving the projects and the ids onto one record.
+type LibrivoxAuthorPair struct {
+	Titled, Bare LibrivoxPairAuthor
+}
+
+// LibrivoxPairAuthor is one side of a LibrivoxAuthorPair: the author id, its
+// name as LibriVox states it, the person the run credits it to ("" when the
+// person rules held its rows) and the lowest project crediting it.
+type LibrivoxPairAuthor struct {
+	AuthorID int    `json:"librivox_author_id"`
+	Name     string `json:"name"`
+	Person   string `json:"person"`
+	Project  int    `json:"librivox_id"`
+}
+
+// String is the pair as the import report prints it, one line:
+//
+//	1456 "Mrs. C. M. Livingston" -> mrs-c-m-livingston (project 4714); 15071 "C. M. Livingston" -> c-m-livingston (project 9999)
+func (pr LibrivoxAuthorPair) String() string {
+	side := func(a LibrivoxPairAuthor) string {
+		person := a.Person
+		if person == "" {
+			person = "held"
+		}
+		return fmt.Sprintf("%d %q -> %s (project %d)", a.AuthorID, a.Name, person, a.Project)
+	}
+	return side(pr.Titled) + "; " + side(pr.Bare)
+}
+
+// librivoxPairAuthor is one claim of a LibrivoxAuthorPair, as decided.
+func (p *planner) librivoxPairAuthor(cl *lvAuthorClaim) LibrivoxPairAuthor {
+	a := LibrivoxPairAuthor{AuthorID: cl.id, Name: cl.name, Project: cl.project}
+	if pin := p.lv.authorPins[cl.id]; pin != nil {
+		a.Person = pin.slug
+	}
+	return a
+}
+
+// decideLibrivoxAuthor applies rules 1 and 2 to one claim and records its
+// person (pinLibrivoxAuthor) or its hold (holdLibrivoxAuthor), returning the
+// run notes it makes. holder is the life years each person a claim of the run
+// already lands on will carry, which a second id meeting that person is
+// judged against.
+func (p *planner) decideLibrivoxAuthor(cl *lvAuthorClaim, bySlug map[string][]*lvAuthorClaim, holder map[string]lifeYears) []string {
+	id, name := cl.id, cl.name
+	if cl.slug == "" {
+		return nil
+	}
+	var notes []string
+	credited := cl.folded
+	if bare, titled := deHonorified(name); titled {
+		against, v := p.librivoxFoldVerdict(bare, cl, bySlug)
+		switch {
+		case v == lvUnsure:
+			p.holdLibrivoxAuthor(id, against, false)
+			return nil
+		case v == lvApart:
+			credited = cl.unfolded
+			notes = append(notes, fmt.Sprintf("%d %q kept apart from %q", id, name, bare))
+		case against != "":
+			// Credited as the census folds it: onto the catalogued bare
+			// person the verdict accepted.
+			p.pinLibrivoxAuthor(cl, cl.folded)
+			return nil
+		}
+		// The titled name itself still meets rule 2 below.
+	}
+	to, against, v := p.librivoxAuthorName(credited, cl)
+	if r := p.resolvePerson(credited); v == lvSame && to == "" && !r.fellBack {
+		// A second id of this run on a person another id lands on is judged
+		// as librivoxVerdict judges a person already carrying an id, by the
+		// years that person will carry: a catalogued person's own, else the
+		// first id's (stampLifeYears).
+		if life, ok := holder[r.slug]; ok && !sameLife(life, cl.life) {
+			v, against = lvApart, r.slug
+		} else if !ok {
+			life, dated := p.lv.life[r.slug]
+			if !dated {
+				life = cl.life
+			}
+			holder[r.slug] = life
+		}
+	}
+	switch v {
+	case lvApart:
+		if to = p.librivoxDatedName(id, name, cl.life); to == "" {
+			p.holdLibrivoxAuthor(id, against, true)
+			return notes
+		}
+	case lvUnsure:
+		p.holdLibrivoxAuthor(id, against, false)
+		return notes
+	}
+	if to != "" {
+		credited = to
+		notes = append(notes, fmt.Sprintf("%d %q credited as %q", id, name, to))
+	}
+	if p.pinLibrivoxAuthor(cl, credited); to != "" && p.lv.authorPins[id] != nil {
+		p.lv.authorPins[id].respelled = true
+	}
+	return notes
+}
+
+// pinLibrivoxAuthor records the person the claim's credits name: the one the
+// spelling resolves to (resolvePerson, under the batch's initials decision),
+// created under that spelling when the run has to create it. When the claim's
+// years end before LibriVox began its person is an author record for rule 3
+// from now on (runAuthors): no LibriVox reader is them, whichever of the two
+// rows the run meets first. Any other author is not: a living or undated
+// author or translator of LibriVox may well read too (rule 2's reader
+// exception), so a reader of that name is that person in either order. A
+// spelling that slugs to nothing pins nothing: the credit is dropped as
+// unsluggable.
+func (p *planner) pinLibrivoxAuthor(cl *lvAuthorClaim, spelling string) {
+	r := p.resolvePerson(spelling)
+	if r.fellBack {
+		return
+	}
+	p.lv.authorPins[cl.id] = pinOf(r, spelling)
+	if end := lifeEnd(cl.life); end != 0 && end < librivoxFounded {
+		p.lv.runAuthors[r.slug] = true
+	}
+}
+
+// noteLibrivoxFolds reports the honorific merges the import makes on LibriVox
+// rows (the censuses report none there, creditCensusesOf): a credit whose name
+// the fold strips of a courtesy title and which is credited by the stripped
+// name - an author credit with no decided person, or one whose decided person
+// is the stripped name's, and a reader whose id the catalogue does not hold. A
+// catalogued id is its holder whatever its spelling, so it folds nothing.
+// Every row is read, held ones too, as the censuses would have read them.
+func (p *planner) noteLibrivoxFolds(books []sourceBook) {
+	sides := map[librivoxKind][2]creditCensus{
+		librivoxAuthor: {p.credits.author.quiet(), p.credits.author.unfolded()},
+		librivoxReader: {p.credits.narrator.quiet(), p.credits.narrator.unfolded()},
+	}
+	for i := range books {
+		b := &books[i]
+		if b.lv == nil {
+			continue
+		}
+		for _, c := range b.lv.credits {
+			list := b.authors
+			if c.kind == librivoxReader {
+				list = b.narrators
+			}
+			if c.index >= len(list) {
+				continue
+			}
+			if _, held := p.lv.people[librivoxKey{c.kind, c.id}]; held && c.id > 0 {
+				continue
+			}
+			folded, _ := creditWithRolesSided(list[c.index], sides[c.kind][0])
+			plain, _ := creditWithRolesSided(list[c.index], sides[c.kind][1])
+			if folded == plain {
+				continue
+			}
+			if c.person != nil && p.resolveCredit(credit{person: c.person}).slug != p.resolvePerson(folded).slug {
+				continue
+			}
+			p.noteHonorific(plain, folded)
+		}
+	}
+}
+
 // librivoxFoldVerdict is rule 1b for a titled credit (its claim cl) whose bare
-// spelling is bare: lvApart when the bare twin is another id of the batch with
-// other life years, else rule 2's verdict on the catalogued person the bare
+// spelling is bare: lvApart when the bare twin is another author id of the
+// batch, whatever their years - two LibriVox ids are never folded into one
+// person by a run; the pair is listed for a person to merge or confirm
+// (Summary.LibrivoxAuthorPairs), and metacheck's honorific-person-pair
+// advisory names it too - else rule 2's verdict on the catalogued person the bare
 // spelling resolves to (against; "" and lvSame when it resolves to no one). An
 // lvUnsure goes to the worklist as rule 2's does, rather than minting a titled
 // twin of a person who may well be the author.
@@ -343,10 +569,11 @@ func (p *planner) librivoxFoldVerdict(bare string, cl *lvAuthorClaim, bySlug map
 	if p.personSlugsKeptApart(cl.slug, bareSlug) {
 		return "", lvApart // a review recorded two people (Options.Distinct)
 	}
-	for _, other := range bySlug[bareSlug] {
-		if !sameLife(other.life, cl.life) {
-			return "", lvApart
+	if others := bySlug[bareSlug]; len(others) > 0 {
+		for _, other := range others {
+			p.lv.pairs = append(p.lv.pairs, [2]*lvAuthorClaim{cl, other})
 		}
+		return "", lvApart
 	}
 	r := p.resolvePerson(bare)
 	if r.create || r.fellBack {
@@ -428,33 +655,112 @@ func (p *planner) librivoxCreditEvidence(slug string, cl *lvAuthorClaim) lvVerdi
 		}
 		return lvSame
 	}
-	bound := cl.life.death
-	if bound == 0 {
-		bound = cl.life.fl
-	}
+	bound := librivoxBound(cl.life)
 	if bound == 0 {
 		return lvSame
 	}
-	bound += librivoxLateMargin
-	v := lvApart
+	v, texts := lvApart, false
 	for _, w := range works {
 		if w.year == 0 || w.year <= bound || (w.died != 0 && w.died <= bound) {
 			return lvSame
 		}
-		if !w.published {
+		if w.published {
+			texts = true
+		} else {
 			v = lvUnsure
 		}
 	}
 	// Only now, with the dates against the match, is a title in common read.
 	keys := cl.titleKeys()
 	for _, w := range works {
-		for k := range librivoxTitleKeys(w.title) {
+		for k := range p.librivoxWorkKeys(w) {
 			if keys[k] {
 				return lvSame
 			}
 		}
 	}
+	if v == lvUnsure && p.librivoxReleasesAreEditions(cl, bound) {
+		// The release dates are shown to date editions, not texts: only a
+		// text date past the bound still says someone else.
+		if texts {
+			return lvApart
+		}
+		return lvSame
+	}
 	return v
+}
+
+// librivoxBound is the last year a work may first appear and still be evidence
+// for an author of life: the end of their life (lifeEnd: a birth year alone
+// bounds it too) or their flourished year, plus librivoxLateMargin; 0 when
+// life states no year.
+func librivoxBound(life lifeYears) int {
+	end := life.death
+	if end == 0 {
+		end = life.fl
+	}
+	if end == 0 {
+		end = lifeEnd(life)
+	}
+	if end == 0 {
+		return 0
+	}
+	return end + librivoxLateMargin
+}
+
+// librivoxReleasesAreEditions reports whether the claim's own work shows that
+// the catalogue's release dates date modern editions of its texts, not the
+// texts: a project the id AUTHORS (a translation is another author's book:
+// Thomas Taylor's 1816 Proclus, catalogued as Proclus's own, says nothing of a
+// modern Thomas Taylor's novels), which LibriVox dates by its text within the
+// bound ("Narrative of Sojourner Truth", 1850), and which the catalogue holds
+// under the same full title (librivoxTitleKey, a qualifier and all:
+// "Metamorphoses (Howard Version)" names one translation, not Ovid's book) as
+// a work dated only by a release past the bound (2009), credited to someone
+// the project names too (the same surname: Olive Gilbert). A same-name person
+// dated only by such releases is then no evidence against the match.
+func (p *planner) librivoxReleasesAreEditions(cl *lvAuthorClaim, bound int) bool {
+	for _, pr := range cl.projects {
+		if !pr.own || pr.textYear == 0 || pr.textYear > bound {
+			continue
+		}
+		key, nonLatin := librivoxTitleKeyOf(pr.title)
+		if nonLatin || key == "" {
+			continue
+		}
+		for _, slug := range p.librivoxTitleIndex()[key] {
+			w, ok := p.librivoxCatalogueWorks()[slug]
+			if !ok || w.published || w.year <= bound {
+				continue
+			}
+			for _, person := range w.people {
+				if surname := librivoxSurname(p.people[person]); surname != "" && pr.surnames[surname] {
+					return true
+				}
+			}
+		}
+	}
+	return false
+}
+
+// librivoxSurname is the last word of a name as the slug rule folds it, its
+// generational suffix set aside (librivoxNameWords); "" for none.
+func librivoxSurname(name string) string {
+	if words, _ := librivoxNameWords(name); len(words) > 0 {
+		return words[len(words)-1]
+	}
+	return ""
+}
+
+// lvClaimProject is one project of a claim, as librivoxReleasesAreEditions
+// reads it: its title, the year LibriVox dates its text by (0 = none), the
+// surnames of the people it credits, and whether the claim authors it (own)
+// rather than translating it.
+type lvClaimProject struct {
+	title    string
+	textYear int
+	surnames map[string]bool
+	own      bool
 }
 
 // librivoxTitledTwin is rule 1c: the catalogued name of the ONE person whose
@@ -487,8 +793,9 @@ func (p *planner) librivoxTitledTwin(slug string, life lifeYears) string {
 // librivoxTitledTwins indexes the catalogue's titled names (a courtesy title
 // or a rank, deTitled) by the slug of the bare name, built on first use, while
 // p.people still holds the catalogue alone. Only a record at its own name's
-// slug is indexed: rule 1c respells the credit by the twin's NAME, which
-// reaches no other record (a `-librivox-<id>` reader's).
+// slug is indexed: rule 1c credits the twin through its NAME (the spelling
+// pinLibrivoxAuthor resolves), which reaches no other record (a
+// `-librivox-<id>` reader's).
 func (p *planner) librivoxTitledTwins() map[string][]string {
 	if p.lv.titledTwins != nil {
 		return p.lv.titledTwins
@@ -526,19 +833,20 @@ func (p *planner) librivoxDatedName(id int, name string, life lifeYears) string 
 }
 
 // holdLibrivoxAuthor sends an author id's rows to the worklist
-// (same-name-author), naming the works of the catalogued person its name
-// meets (against; none for another id of the batch).
-func (p *planner) holdLibrivoxAuthor(id int, against string) {
-	candidates := []LibrivoxCandidate{}
-	if against != "" {
+// (same-name-author), naming the works of the person its name meets (against):
+// a catalogued person's now, a person of this run (deferred) once the run has
+// planned them.
+func (p *planner) holdLibrivoxAuthor(id int, against string, deferred bool) {
+	h := lvHold{against: against, candidates: []LibrivoxCandidate{}, deferred: deferred}
+	if against != "" && !deferred {
 		for _, w := range p.librivoxPersonWorks()[against] {
-			candidates = append(candidates, LibrivoxCandidate{Work: w.slug, Title: w.title})
-			if len(candidates) == maxWarnExamples {
+			h.candidates = append(h.candidates, LibrivoxCandidate{Work: w.slug, Title: w.title})
+			if len(h.candidates) == maxWarnExamples {
 				break
 			}
 		}
 	}
-	p.lv.sameName[id] = candidates
+	p.lv.sameName[id] = h
 }
 
 // datedName is name with life's years in the form the tranches minted by hand:
@@ -585,25 +893,34 @@ func sameLife(a, b lifeYears) bool {
 	return a.birth != 0 && a.death != 0 && a.birth == b.birth && a.death == b.death
 }
 
-// librivoxAuthorRecord is rule 3's test: the catalogued (or claimed) person
-// slug is an author record no LibriVox reader is stamped onto. A person an
-// author id of the run who died before LibriVox began lands on (deadAuthors)
-// is one before its row is planned, so a reader met first is split from them
-// as one met after.
+// librivoxAuthorRecord is rule 3's test: the person slug is an author record
+// no LibriVox reader is stamped onto - one carrying a catalogued
+// librivox_author_id, one an author id of the run whose years end before
+// LibriVox began lands on (runAuthors, decided before any row is planned, so a
+// reader met first is split from them as one met after), or one whose
+// catalogued years end so.
+// An id a row of this run only claimed (claimLibrivoxAuthors) does not count:
+// the claim is made as rows land, so counting it would split a reader from an
+// undated author when the author's row came first and not otherwise.
 func (p *planner) librivoxAuthorRecord(slug string) bool {
-	if p.lv.authorOf[slug] != 0 || p.lv.deadAuthors[slug] {
+	if id := p.lv.authorOf[slug]; (id != 0 && !p.lv.claimedAuthor[id]) || p.lv.runAuthors[slug] {
 		return true
 	}
-	d := p.lv.life[slug].death
-	return d != 0 && d < librivoxFounded
+	end := lifeEnd(p.lv.life[slug])
+	return end != 0 && end < librivoxFounded
 }
 
-// noteDeadAuthor records that the claim cl lands on slug, for rule 3, when its
-// years end before LibriVox began.
-func (p *planner) noteDeadAuthor(cl *lvAuthorClaim, slug string) {
-	if d := cl.life.death; d != 0 && d < librivoxFounded {
-		p.lv.deadAuthors[slug] = true
+// librivoxClaimProject is a planned row as a claim's project.
+func librivoxClaimProject(b *sourceBook, own bool) lvClaimProject {
+	pr := lvClaimProject{title: b.str("title"), textYear: b.lv.copyrightYear, surnames: map[string]bool{}, own: own}
+	for _, c := range b.lv.credits {
+		if c.kind == librivoxAuthor {
+			if surname := librivoxSurname(c.name); surname != "" {
+				pr.surnames[surname] = true
+			}
+		}
 	}
+	return pr
 }
 
 // librivoxSameNameSkip puts a row crediting an author id rule 2 could not
@@ -611,36 +928,73 @@ func (p *planner) noteDeadAuthor(cl *lvAuthorClaim, slug string) {
 // person its name meets. false for every other row.
 // It is asked before routeLibrivox, so no attach is counted for a row it skips.
 func (p *planner) librivoxSameNameSkip(b sourceBook, title string) bool {
-	candidates, ok := p.librivoxSameNameOf(b)
+	h, ok := p.librivoxSameNameOf(b)
 	if ok {
-		p.noteLibrivoxWorklist(b, title, LibrivoxSameNameAuthor, candidates)
+		if h.deferred {
+			p.lv.pendingHolds = append(p.lv.pendingHolds, lvPending{entry: len(p.summary.LibrivoxWorklist), against: h.against})
+		}
+		p.noteLibrivoxWorklist(b, title, LibrivoxSameNameAuthor, h.candidates)
 	}
 	return ok
 }
 
-// librivoxSameNameOf is the candidates of the row's first author id rule 2
-// sent to the worklist; ok=false for every other row.
-func (p *planner) librivoxSameNameOf(b sourceBook) (candidates []LibrivoxCandidate, ok bool) {
+// librivoxSameNameOf is the hold of the row's first author id rule 2 sent to
+// the worklist; ok=false for every other row.
+func (p *planner) librivoxSameNameOf(b sourceBook) (h lvHold, ok bool) {
 	if b.lv == nil || len(p.lv.sameName) == 0 {
-		return nil, false
+		return lvHold{}, false
 	}
 	for _, c := range b.lv.credits {
-		if candidates, ok := p.lv.sameName[c.id]; ok && c.kind == librivoxAuthor {
-			return candidates, true
+		if h, ok := p.lv.sameName[c.id]; ok && c.kind == librivoxAuthor {
+			return h, true
 		}
 	}
-	return nil, false
+	return lvHold{}, false
+}
+
+// lvPending is a same-name-author worklist row (its index) whose candidates are
+// the works of a person this run lands another id on (lvHold.deferred).
+type lvPending struct {
+	entry   int
+	against string
+}
+
+// finishLibrivoxHolds names, on each deferred same-name-author worklist row,
+// the works the person its name meets is credited on once the run has planned
+// every row - what a later run, with that person catalogued, would name.
+func (p *planner) finishLibrivoxHolds() {
+	for _, h := range p.lv.pendingHolds {
+		var works []LibrivoxCandidate
+		for slug, ws := range p.works {
+			if p.workCreditsPerson(slug, h.against) {
+				works = append(works, LibrivoxCandidate{Work: slug, Title: ws.title})
+			}
+		}
+		slices.SortFunc(works, func(a, b LibrivoxCandidate) int { return strings.Compare(a.Work, b.Work) })
+		if len(works) > maxWarnExamples {
+			works = works[:maxWarnExamples]
+		}
+		if works != nil {
+			p.summary.LibrivoxWorklist[h.entry].Candidates = works
+		}
+	}
+}
+
+// librivoxCatalogueWorks is librivoxPersonWorks' works by slug.
+func (p *planner) librivoxCatalogueWorks() map[string]lvPersonWork {
+	p.librivoxPersonWorks()
+	return p.lv.workDates
 }
 
 // librivoxPersonWorks indexes the catalogue's works by every person they
 // credit (authors and credits[]), each with its first-publication year, built
-// on first use from the catalogue load; decideLibrivoxAuthors, its only
+// on first use from the catalogue load; resolveLibrivoxAuthors, its only
 // reader, lets it go.
 func (p *planner) librivoxPersonWorks() map[string][]lvPersonWork {
 	if p.lv.works != nil {
 		return p.lv.works
 	}
-	p.lv.works = map[string][]lvPersonWork{}
+	p.lv.works, p.lv.workDates = map[string][]lvPersonWork{}, map[string]lvPersonWork{}
 	if p.catalog == nil {
 		return p.lv.works
 	}
@@ -651,8 +1005,9 @@ func (p *planner) librivoxPersonWorks() map[string][]lvPersonWork {
 		}
 		slices.Sort(people)
 		people = slices.Compact(people)
-		pw := lvPersonWork{slug: w.ID, title: w.Title}
+		pw := lvPersonWork{slug: w.ID, title: w.Title, people: people}
 		pw.year, pw.published = workFirstYear(w)
+		p.lv.workDates[w.ID] = pw
 		for _, person := range people {
 			if d := p.lv.life[person].death; d != 0 && (pw.died == 0 || d < pw.died) {
 				pw.died = d
@@ -666,11 +1021,20 @@ func (p *planner) librivoxPersonWorks() map[string][]lvPersonWork {
 }
 
 // workFirstYear is the year a work first appeared as far as the catalogue
-// says: its first_published (published), else the earliest release date of its
-// recordings; 0 when it states neither.
+// says: its text's date (published) - its first_published, else the earliest
+// copyright year a LibriVox recording of it states - else the earliest
+// release date of its recordings; 0 when it states none.
 func workFirstYear(w *model.Work) (year int, published bool) {
 	if y := leadingYear(w.FirstPublished); y != 0 {
 		return y, true
+	}
+	for _, r := range w.Recordings {
+		if y := r.CopyrightYear; r.LibrivoxID != 0 && y != 0 && (year == 0 || y < year) {
+			year = y
+		}
+	}
+	if year != 0 {
+		return year, true
 	}
 	for _, r := range w.Recordings {
 		if y := leadingYear(r.ReleaseDate); y != 0 && (year == 0 || y < year) {

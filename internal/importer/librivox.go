@@ -24,10 +24,11 @@ package importer
 //     work. A non-Latin title (it slugs to nothing, or most of its letters are
 //     not Latin script) never walks a slug chain: its new work is created at
 //     `librivox-<project id>`.
-//   - Its PEOPLE are keyed by LibriVox id. Before any census reads a name, a
-//     reader or author id the catalogue already holds is spelled the way that
-//     person is catalogued (keyLibrivoxCredits), so a reader renamed on
-//     LibriVox, or reread from a later snapshot, never mints a second record;
+//   - Its PEOPLE are keyed by LibriVox id. A reader id the catalogue already
+//     holds is its person whatever the feed now calls them (librivoxReaderSlug),
+//     and every author id's person is decided once before planning
+//     (resolveLibrivoxAuthors), so a person renamed on LibriVox, or reread
+//     from a later snapshot, never mints a second record;
 //     after planning, the ids of the rows that landed are stamped onto the
 //     people they resolved to (stampLibrivoxPeople). A READER id is a person of
 //     its own even when its name is not: a reader whose name's slug another
@@ -596,6 +597,10 @@ type librivoxCredit struct {
 	// life is an author's or translator's stated birth and death years (a
 	// reader states none), written with the id (stampLibrivoxID).
 	life lifeYears
+	// person is an author or translator credit's person, decided for its id
+	// before planning (resolveLibrivoxAuthors); nil for a reader, a credit
+	// with no id, and one the person rules held or left to its name.
+	person *creditPerson
 }
 
 // librivoxFacts is what a LibriVox row carries beyond the shared sourceBook
@@ -650,22 +655,31 @@ type librivoxState struct {
 	authorVariantExamples []string
 	// life is the birth and death years each catalogued person states.
 	life map[string]lifeYears
-	// keepTitled is the slugs of the credit names the honorific fold must
-	// leave as they are (librivoxpeople.go rule 1): a catalogued id holder's
-	// own name, and a titled author whose bare twin is someone else.
-	keepTitled map[string]bool
+	// authorPins is the person each author id of the rows to be planned was
+	// resolved to before planning (resolveLibrivoxAuthors): the catalogued
+	// holder of a known id, else the person rules' decision. Every credit of
+	// the id carries it (librivoxCredit.person, credit.person).
+	authorPins map[int]*creditPerson
+	// runAuthors is the person slugs a new author id of the run lands on
+	// (authorPins): author records for rule 3 whatever order the run meets
+	// their rows and a same-name reader's in (librivoxAuthorRecord).
+	runAuthors map[string]bool
 	// sameName is the author ids whose rows go to the worklist as
-	// same-name-author (librivoxpeople.go rule 2), each with the works of the
-	// catalogued person their name meets (none for another id of the batch).
-	sameName map[int][]LibrivoxCandidate
-	// deadAuthors is the person slugs the run's author ids no person carries
-	// land on when their years end before LibriVox began
-	// (decideLibrivoxAuthors): author records for rule 3 before their rows
-	// are planned.
-	deadAuthors map[string]bool
+	// same-name-author (librivoxpeople.go rule 2), and pendingHolds the
+	// worklist rows among them whose candidates are named once the run has
+	// planned every row (finishLibrivoxHolds).
+	sameName     map[int]lvHold
+	pendingHolds []lvPending
+	// pairs is the titled and bare author ids of the batch rule 1b kept
+	// apart (Summary.LibrivoxAuthorPairs).
+	pairs [][2]*lvAuthorClaim
 	// works is each catalogued person's works (librivoxpeople.go), built on
-	// first use; titledTwins the catalogued titled names by their bare slug.
+	// first use (workDates the same works by slug); workKeys each catalogued
+	// work's title keys, memoized;
+	// titledTwins the catalogued titled names by their bare slug.
 	works       map[string][]lvPersonWork
+	workDates   map[string]lvPersonWork
+	workKeys    map[string]map[string]bool
 	titledTwins map[string][]string
 }
 
@@ -694,9 +708,9 @@ func newLibrivoxState() librivoxState {
 		authorOf:      map[string]int{},
 		claimedAuthor: map[int]bool{},
 		life:          map[string]lifeYears{},
-		keepTitled:    map[string]bool{},
-		sameName:      map[int][]LibrivoxCandidate{},
-		deadAuthors:   map[string]bool{},
+		authorPins:    map[int]*creditPerson{},
+		runAuthors:    map[string]bool{},
+		sameName:      map[int]lvHold{},
 	}
 }
 
@@ -745,6 +759,38 @@ func (p *planner) rowNarratorSlugs(b sourceBook, names []string, warn func(strin
 		}
 		return p.getOrCreatePerson(name, warn)
 	})
+}
+
+// librivoxAuthorCredits is rowAuthorCreditsIn for a LibriVox row: its author
+// list cleaned as sourceCredits cleans it, except that a credit whose person
+// was decided for its author id (librivoxCredit.person, resolveLibrivoxAuthors)
+// carries that person and is spelled by the person's name, its roles read
+// through a quiet census: the id, not the cleaning, says who it is, so no fold
+// the cleaning would make is a merge to report. The cleaned list lines up with
+// the row's credits by index, as rowNarratorSlugs' does (librivoxBook appends
+// one non-empty name per credit); the length test guards that.
+func librivoxAuthorCredits(ctx creditContext, b sourceBook) []credit {
+	names := sourceNames(b.authors, "")
+	pins := map[int]*creditPerson{}
+	for _, c := range b.lv.credits {
+		if c.kind == librivoxAuthor && c.person != nil {
+			pins[c.index] = c.person
+		}
+	}
+	if len(pins) == 0 || len(names) != len(b.authors) {
+		return sourceCredits(b.authors, b.str("author"), ctx.author)
+	}
+	out := make([]credit, 0, len(names))
+	for i, name := range names {
+		if pin := pins[i]; pin != nil {
+			_, roles := creditWithRolesSided(name, ctx.author.quiet())
+			out = append(out, credit{name: pin.spelled, roles: roles, person: pin})
+			continue
+		}
+		cleaned, roles := creditWithRolesSided(name, ctx.author)
+		out = append(out, credit{name: cleaned, roles: roles})
+	}
+	return out
 }
 
 // librivoxReaderSlug resolves one reader credit (name its cleaned name) by its
@@ -999,51 +1045,19 @@ func (p *planner) moveHeldNarrators(ref RecRef, moves map[string]*heldMove) {
 	p.putWorkEntry(ref.Work, entry)
 }
 
-// keyLibrivoxCredits spells every LibriVox credit whose id is already known the
-// way it is known, BEFORE the censuses and the planner read a name: a catalogued
-// id takes its person's catalogued name, and an id this batch states twice takes
-// the name its first row gave it. A person slug is derived from the name, so
-// this is what makes the id - not the spelling - the person's key.
-//
-// It runs after runBooks' entity decode, so the names it compares and the ones
-// it writes are both decoded.
-func (p *planner) keyLibrivoxCredits(books []sourceBook) {
-	batch := map[librivoxKey]string{}
+// decodeLibrivoxCredits decodes every LibriVox credit's name as runBooks' entity
+// decode has decoded the row's own lists, before anything reads one. A credit's
+// PERSON is not its spelling: an author credit's is decided once for the batch
+// (resolveLibrivoxAuthors, librivoxpeople.go) and a reader's by reader id
+// (librivoxReaderSlug), so the names stay as LibriVox spells them.
+func (p *planner) decodeLibrivoxCredits(books []sourceBook) {
 	for i := range books {
-		b := &books[i]
-		if b.lv == nil {
-			continue
-		}
-		for j := range b.lv.credits {
-			c := &b.lv.credits[j]
-			c.name = decodeField(c.name)
-			if c.id <= 0 {
-				continue
+		if b := &books[i]; b.lv != nil {
+			for j := range b.lv.credits {
+				b.lv.credits[j].name = decodeField(b.lv.credits[j].name)
 			}
-			k := librivoxKey{c.kind, c.id}
-			name := c.name
-			if slug, ok := p.lv.people[k]; ok && p.people[slug] != "" {
-				name = p.people[slug]
-				if _, titled := deHonorified(name); titled && c.kind == librivoxAuthor {
-					// The id holder's own name is never folded onto a bare
-					// twin: the id, not the spelling, is the person (rule 1
-					// of librivoxpeople.go).
-					p.lv.keepTitled[Slugify(name)] = true
-				}
-			} else if first, ok := batch[k]; ok {
-				name = first
-			} else {
-				batch[k] = name
-			}
-			c.name = name
-			list := b.authors
-			if c.kind == librivoxReader {
-				list = b.narrators
-			}
-			list[c.index] = name + c.suffix
 		}
 	}
-	p.decideLibrivoxAuthors(books)
 }
 
 // applyLibrivoxRecording puts a LibriVox row's identity and publication facts on
@@ -1104,20 +1118,27 @@ func (p *planner) stampLibrivoxPeople() {
 }
 
 // librivoxAuthorIDOf is the librivox_author_id of the row's author or
-// translator credit named name (r its resolution), or 0: the credit whose name
-// cleans to it (librivoxCreditNames, the cleaning librivoxCreditSlug uses) or
+// translator credit cr (r its resolution), or 0: the credit carrying the person
+// r names (librivoxCredit.person), or one with no decided person whose name
+// cleans to cr's (librivoxCreditNames, the cleaning librivoxCreditSlug uses) or
 // resolves to the same person. A name that slugs away to nothing matches by
 // name alone - every such name resolves to the one catch-all record.
-func (p *planner) librivoxAuthorIDOf(b sourceBook, name string, r personResolution) int {
+func (p *planner) librivoxAuthorIDOf(b sourceBook, cr credit, r personResolution) int {
 	for _, c := range b.lv.credits {
 		if c.kind != librivoxAuthor {
+			continue
+		}
+		if c.person != nil {
+			if !r.fellBack && p.resolveCredit(credit{person: c.person}).slug == r.slug {
+				return c.id
+			}
 			continue
 		}
 		got := p.soleCreditName(c)
 		if got == "" {
 			continue
 		}
-		if got == name || (!r.fellBack && p.resolvePerson(got).slug == r.slug) {
+		if got == cr.name || (!r.fellBack && p.resolvePerson(got).slug == r.slug) {
 			return c.id
 		}
 	}
@@ -1151,11 +1172,13 @@ func (p *planner) workCreditsPerson(work, person string) bool {
 // reader id) still reaches the fellBack refusal below.
 func (p *planner) librivoxCreditSlug(c librivoxCredit) (string, bool) {
 	// A reader id the run resolved is that person, whatever the name slugs to
-	// (librivoxReaderSlug).
+	// (librivoxReaderSlug), and so is an author credit's decided person.
 	if c.kind == librivoxReader {
 		if slug, ok := p.lv.readers[c.id]; ok {
 			return p.livePerson(slug)
 		}
+	} else if c.person != nil {
+		return p.livePerson(c.person.slug)
 	}
 	name := p.soleCreditName(c)
 	if name == "" {

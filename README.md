@@ -401,7 +401,7 @@ reading or a numbered version is another recording of the plain-titled work):
    work by an author the project spells with more or fewer words (the same
    surname, one name's words a subset of the other's: "Henrietta Elizabeth
    Marshall" and "Henrietta Marshall") is attached too, the project's credit
-   respelled with the catalogued name unless LibriVox's spelling is already a
+   moved onto the catalogued person unless LibriVox's spelling is already a
    person record of its own; a looser likeness (an initial, another given
    name, a one-word name) is the worklist's `author-spelling`;
 3. otherwise, when the title with its trailing parenthetical or bracketed
@@ -474,15 +474,26 @@ a reader's name is already held by a person carrying a different reader id
 the name keeps the plain slug. Re-importing a project the catalogue already holds
 moves a reader folded onto another reader's person (by an import before this
 rule) onto their own; authors are not split. Nor is a reader stamped onto an
-AUTHOR record (one carrying a `librivox_author_id`, or whose death year is before
-2005, when LibriVox began, in whichever order the run meets the two): a reader
-called Adam Smith is `adam-smith-librivox-19341`, never Adam Smith (1723-1790).
+AUTHOR record (one carrying a `librivox_author_id`, or whose life ended before
+2005, when LibriVox began - a birth year alone counts: no one born in 1840 read
+for LibriVox - in whichever order the run meets the two): a reader called Adam
+Smith is `adam-smith-librivox-19341`, never Adam Smith (1723-1790). A living or
+undated author of the same import and a reader of the same name are one person,
+whichever project comes first.
 
 An author id no person carries yet is checked against the person its name
-meets before it is credited there:
+meets before it is credited there. The decision is taken once per author id,
+for the whole import and before any project is placed, against the person the
+import would actually credit (after its spelling rules, initials included), and
+every project of the id then credits that person: the result never depends on
+the order the projects are read in.
 
-- **Courtesy titles.** "Mrs. William Platt" is not folded onto "William Platt"
-  when LibriVox lists them as two authors, and "Sir Hugh Fraser" is not folded
+- **Courtesy titles.** "Mrs. William Platt" is never folded onto "William
+  Platt" when LibriVox lists them under two author ids in one import, whatever
+  their years: both records are kept, and the import report lists the pair
+  (`librivox worklist: N author id pairs one courtesy title apart`) for a
+  person to merge or confirm, since LibriVox also keeps duplicate records of
+  one author ("Mrs. C. M. Livingston" and "C. M. Livingston"). And "Sir Hugh Fraser" is not folded
   onto a catalogued Hugh Fraser who only narrates (when the dates cannot tell,
   the project goes to the worklist as below). A catalogued id holder keeps
   its own spelling. A bare name that would be a new person lands on the one
@@ -494,9 +505,11 @@ meets before it is credited there:
   `librivox_author_id` with other years; years that disagree, a flourished year
   outside the person's life included; or, with neither, a person credited only
   as a narrator who is not a LibriVox reader meeting an undated author, or only
-  on works first published more than 25 years after the author's death and
-  sharing no title with the project; a generic title such as "Poems" or
-  "Selected Essays" is not a shared title), the
+  on works first published more than 25 years after the author's death - or,
+  when LibriVox states only a birth year, after a hundred-year life from it -
+  and sharing no title with the project; a generic title such as "Poems" or
+  "Selected Essays" is not a shared title, though "Poems (Ballads of a
+  Cheechako)" is), the
   author is a person of their own at the name with their years:
   `james-grant-1822-1887` ("James Grant (1822-1887)"), `richard-wilson-fl-1916` ("Richard Wilson (fl. 1916)"). With no
   year to tell them apart, or when the catalogued person's works are dated only
@@ -504,9 +517,18 @@ meets before it is credited there:
   old one look alike there), the project goes to the worklist as
   `same-name-author`, naming that person's works. Settling it means putting the
   `librivox_author_id` on the right person (the catalogued one, or a new dated
-  record); re-importing the id then finds that person by id. Two new author ids
+  record); re-importing the id then finds that person by id. A work is dated by
+  its text: its first publication, or the copyright year a LibriVox recording of
+  it states. And release dates stop counting against the author when a
+  project they wrote (not one they translated) shows they are editions: the
+  catalogue holds that text, under its full title, by someone the project also
+  credits (the same surname), dated only by a release long after the author
+  died ("Narrative of Sojourner Truth", 1850, beside Olive Gilbert's edition of
+  2009). Two new author ids
   of one name in a single import are told apart the same way: the second is
-  the first's person only when both state the same birth and death years.
+  the first's person only when both state the same birth and death years, and
+  one held as `same-name-author` names the first's works, as a later import
+  would.
 
 ## Audiobookshelf
 

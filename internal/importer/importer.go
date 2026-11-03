@@ -847,11 +847,14 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 		p.setEvidenceRuntime(&books[i])
 	}
 	p.loadExisting()
-	// A LibriVox row's credits are keyed by LibriVox id before any census reads
-	// their names (librivox.go); a no-op for every other source.
-	p.keyLibrivoxCredits(books)
+	// A LibriVox row's credit names are decoded before any census reads them,
+	// and its author credits are resolved by LibriVox id once the batch's
+	// credit decisions are taken (librivox.go, librivoxpeople.go); no-ops for
+	// every other source.
+	p.decodeLibrivoxCredits(books)
 	if p.mode.plansRows() {
 		p.credits = p.creditContextOf(books)
+		p.resolveLibrivoxAuthors(books)
 	}
 	if p.mode == ModeRelocate {
 		p.prepareRelocation()
@@ -889,6 +892,7 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	p.reportEstimates()
 	p.reportRefreshes()
 	p.reportDuplicateIdentities()
+	p.finishLibrivoxHolds()
 	p.reportLibrivoxVariants()
 	p.reportLibrivoxAuthorVariants()
 	p.settleUnrecordedCredits()
@@ -1678,6 +1682,9 @@ func rowAuthorCreditsIn(ctx creditContext, b sourceBook) []credit {
 	if b.creditsCached {
 		return b.authorCredits
 	}
+	if b.lv != nil {
+		return librivoxAuthorCredits(ctx, b)
+	}
 	return sourceCredits(b.authors, b.str("author"), ctx.author)
 }
 
@@ -1817,8 +1824,15 @@ func (p *planner) creditCensusesOf(books []sourceBook) (author, narrator creditC
 	// all resolve a synthetic credit to the canonical, so a persona spelling
 	// never becomes evidence of its own name.
 	author = notify(seenIn(authorSide), false)
-	author.keepHonorific = p.lv.keepTitled
-	return author, notify(seenIn(narratorSide), p.userTier)
+	narrator = notify(seenIn(narratorSide), p.userTier)
+	if p.sourceType == sourceLibrivox {
+		// A LibriVox credit's person is decided by its LibriVox id (an author's
+		// by resolveLibrivoxAuthors, a known reader's by librivoxReaderSlug),
+		// so whether a fold the cleaning makes is a merge the import performs
+		// is known only there: noteLibrivoxFolds reports them.
+		author.onHonorific, narrator.onHonorific = nil, nil
+	}
+	return author, narrator
 }
 
 // peopleKeptApart reports whether a reviewed merge-people rejection
@@ -2039,12 +2053,12 @@ func (p *planner) workCredits(credits []credit) []model.Credit {
 		if len(c.roles) == 0 {
 			continue
 		}
-		// resolvePerson, not personSlug: the person may have been created under
+		// resolveCredit, not personSlug: the person may have been created under
 		// another spelling of their initials, which is a record this credit must
 		// NAME rather than miss - resolving "A.B. Kovacs" straight through
 		// personSlug lands on a slug nothing created, and the role credit was
 		// silently dropped.
-		r := p.resolvePerson(c.name)
+		r := p.resolveCredit(c)
 		if r.fellBack {
 			p.noteUnnamedCredit(c.name)
 			continue
@@ -2153,6 +2167,25 @@ type personResolution struct {
 // create).
 func (p *planner) resolvePerson(name string) personResolution {
 	return p.resolvePersonIn(p.credits, name)
+}
+
+// resolveCredit is resolvePerson for one author-side credit: the person decided
+// for it before planning when there is one (credit.person, a LibriVox author
+// credit), resolved as resolvePerson resolves a name (live, or to be created
+// under the decided name), else its name's resolution.
+func (p *planner) resolveCredit(c credit) personResolution {
+	return p.resolveCreditIn(p.credits, c)
+}
+
+// resolveCreditIn is resolveCredit under an explicit batch context.
+func (p *planner) resolveCreditIn(ctx creditContext, c credit) personResolution {
+	if c.person == nil {
+		return p.resolvePersonIn(ctx, c.name)
+	}
+	if live, ok := p.livePerson(c.person.slug); ok {
+		return personResolution{slug: live, from: c.person.from}
+	}
+	return personResolution{slug: c.person.slug, create: true, name: c.person.name}
 }
 
 // resolvePersonIn is resolvePerson under an explicit batch context (its initials

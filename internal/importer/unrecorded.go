@@ -89,7 +89,7 @@ func (p *planner) attachRowAuthors(b sourceBook, asin string, ws *workState, cre
 	_, runCreated := p.runCredits[ws.slug]
 	var out []UnrecordedCredit
 	for _, c := range credits {
-		r := p.resolvePerson(c.name)
+		r := p.resolveCredit(c)
 		if ws.names(r.slug) || (runCreated && len(c.roles) > 0 && !r.fellBack) {
 			p.applyPerson(c.name, r, warn)
 			continue
@@ -111,7 +111,7 @@ func (p *planner) attachRowAuthors(b sourceBook, asin string, ws *workState, cre
 func (p *planner) unrecordedOf(b sourceBook, asin string, c credit, r personResolution, work string) UnrecordedCredit {
 	u := UnrecordedCredit{Name: c.name, Roles: slices.Clone(c.roles), Work: work}
 	if b.lv != nil {
-		u.Project, u.AuthorID = b.lv.id, p.librivoxAuthorIDOf(b, c.name, r)
+		u.Project, u.AuthorID = b.lv.id, p.librivoxAuthorIDOf(b, c, r)
 	} else {
 		u.ASIN = asin
 	}
@@ -122,11 +122,17 @@ func (p *planner) unrecordedOf(b sourceBook, asin string, c credit, r personReso
 // planner as the run left it: the row's own narrator, or a later row's new
 // work, can create the person after the credit was withheld. A name that slugs
 // away to nothing is never found by its name (the catch-all is not them, and an
-// unsluggable reader's own record is reached by reader id only).
+// unsluggable reader's own record is reached by reader id only). A LibriVox
+// author id whose person was decided before planning is asked as that person
+// (librivoxState.authorPins), not by its name.
 func (p *planner) settleUnrecordedCredits() {
 	for i := range p.summary.UnrecordedCredits {
 		c := &p.summary.UnrecordedCredits[i]
-		r := p.resolvePerson(c.Name)
+		cr := credit{name: c.Name}
+		if c.Project > 0 && c.AuthorID > 0 {
+			cr.person = p.lv.authorPins[c.AuthorID]
+		}
+		r := p.resolveCredit(cr)
 		c.PersonExists = !r.create && !r.fellBack
 	}
 }
