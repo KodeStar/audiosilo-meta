@@ -138,7 +138,9 @@ func mustParseReviewed(raw []byte) []reviewedDecision {
 // ReviewedDistinct returns this list's `reject`s of `merge-works`, `merge-series` and
 // `merge-people` proposals as the decisions pkg/check's advisory census honours
 // (check.ReviewedDistinct states what one means). cmd/metacheck hands them to the
-// load, since pkg/check cannot import this package.
+// load, since pkg/check cannot import this package; cmd/metaimport and
+// internal/issueform hand them to the importer (importer.Options.Distinct), whose
+// honorific fold reads the people namespace.
 func ReviewedDistinct() []check.ReviewedDistinct { return distinctOf(reviewedDecisions) }
 
 // distinctOf is ReviewedDistinct over a given list.

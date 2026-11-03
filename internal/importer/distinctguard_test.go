@@ -37,10 +37,26 @@ func TestEveryOptionsLiteralCarriesDistinct(t *testing.T) {
 			if err != nil {
 				return err
 			}
-			inImporter := f.Name.Name == "importer"
+			q := importerQualifier(f)
+			// elided are the element literals of an Options-typed slice, array or
+			// map, which spell no type of their own ([]importer.Options{{...}}).
+			elided := map[*ast.CompositeLit]bool{}
 			ast.Inspect(f, func(n ast.Node) bool {
 				lit, ok := n.(*ast.CompositeLit)
-				if !ok || !isOptionsType(lit.Type, inImporter) {
+				if !ok {
+					return true
+				}
+				if elt := containerElem(lit.Type); elt != nil && q.isOptions(elt) {
+					for _, el := range lit.Elts {
+						if kv, ok := el.(*ast.KeyValueExpr); ok {
+							el = kv.Value
+						}
+						if inner, ok := el.(*ast.CompositeLit); ok && inner.Type == nil {
+							elided[inner] = true
+						}
+					}
+				}
+				if !elided[lit] && !q.isOptions(lit.Type) {
 					return true
 				}
 				literals++
@@ -62,18 +78,60 @@ func TestEveryOptionsLiteralCarriesDistinct(t *testing.T) {
 	}
 }
 
-// isOptionsType reports whether a literal's type is the importer's Options or
-// SelectOptions: the bare name inside this package, importer.<name> elsewhere.
-func isOptionsType(typ ast.Expr, inImporter bool) bool {
+// qualifier is how one file names the importer package: bare inside the
+// package itself (or under a dot import), else by its import name, which an alias
+// changes ("" when the file does not import it).
+type qualifier struct {
+	bare bool
+	name string
+}
+
+// importerQualifier reads f's own name for the importer package.
+func importerQualifier(f *ast.File) qualifier {
+	q := qualifier{bare: f.Name.Name == "importer"}
+	for _, imp := range f.Imports {
+		if strings.Trim(imp.Path.Value, `"`) != "github.com/kodestar/audiosilo-meta/internal/importer" {
+			continue
+		}
+		switch {
+		case imp.Name == nil:
+			q.name = "importer"
+		case imp.Name.Name == ".":
+			q.bare = true
+		default:
+			q.name = imp.Name.Name
+		}
+	}
+	return q
+}
+
+// isOptions reports whether typ is the importer's Options or SelectOptions (or a
+// pointer to one), as this file spells it.
+func (q qualifier) isOptions(typ ast.Expr) bool {
 	named := func(name string) bool { return name == "Options" || name == "SelectOptions" }
+	if star, ok := typ.(*ast.StarExpr); ok {
+		typ = star.X
+	}
 	switch e := typ.(type) {
 	case *ast.Ident:
-		return inImporter && named(e.Name)
+		return q.bare && named(e.Name)
 	case *ast.SelectorExpr:
 		x, ok := e.X.(*ast.Ident)
-		return ok && x.Name == "importer" && named(e.Sel.Name)
+		return ok && q.name != "" && x.Name == q.name && named(e.Sel.Name)
 	}
 	return false
+}
+
+// containerElem is the element type of a slice, array or map literal's type, nil
+// for any other.
+func containerElem(typ ast.Expr) ast.Expr {
+	switch e := typ.(type) {
+	case *ast.ArrayType:
+		return e.Elt
+	case *ast.MapType:
+		return e.Value
+	}
+	return nil
 }
 
 // setsField reports whether a keyed literal sets field.

@@ -12,7 +12,9 @@ import (
 // keeps naming a pair somebody has already read and ruled on is a census nobody reads.
 // The rulings live in internal/audit/reviewed.json, which this package cannot import
 // (audit imports check), so they arrive as plain data on LoadOptions and the caller that
-// may import the audit - cmd/metacheck - supplies them.
+// may import the audit - cmd/metacheck - supplies them. The same resolution
+// (ResolveDistinct) is what internal/importer's honorific fold reads, so an import
+// never re-merges a pair the census withholds.
 
 // ReviewedDistinct is one reviewed decision that the records it names are NOT one
 // record: internal/audit/reviewed.json's `reject` of a `merge-works` (Kind

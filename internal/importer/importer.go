@@ -1844,11 +1844,12 @@ func (p *planner) creditCensusesOf(books []sourceBook) (author, narrator creditC
 }
 
 // peopleKeptApart reports whether a reviewed merge-people rejection
-// (Options.Distinct) recorded the persons credit names a and b land on as two
+// (Options.Distinct) recorded the persons credit names a and b spell as two
 // people, so that no honorific fold may resolve one onto the other: "Dr. Alex
 // George" is not `alex-george`, the novelist. Each name is asked as its person
 // slug, a retired one as its survivor (the decisions were resolved the same
-// way); a name that slugs away to nothing is no record a review named.
+// way) - not through the initials merge, which the census predates; a name that
+// slugs away to nothing is no record a review named.
 func (p *planner) peopleKeptApart(a, b string) bool {
 	sa, fa := personSlug(a)
 	sb, fb := personSlug(b)
