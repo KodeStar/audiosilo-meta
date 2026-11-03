@@ -19,6 +19,7 @@ import (
 	"encoding/json"
 	"os"
 	"path/filepath"
+	"slices"
 	"strconv"
 	"strings"
 	"testing"
@@ -264,9 +265,10 @@ func TestDataPeopleSlugsAreTransliterated(t *testing.T) {
 // to the characters a rule change moved is what keeps this a proof of the two
 // migrations rather than a standing complaint about composed identity in general.
 // A LibriVox non-Latin title (rule 4, librivoxmatch.go) is off-chain by design:
-// it never walks a chain, sits at librivox-<project id> and is reached by its
-// own-script title key, so a work at its own project's rule-4 address is skipped
-// (atLibrivoxAddress).
+// it never walks a chain and a LibriVox row reaches it by its own-script title
+// key, so a migration cannot have moved it and it is skipped (atLibrivoxAddress).
+// That another importer's row composes no slug reaching it predates the
+// migrations and is outside this test.
 //
 // The SERIES arm asks the importer's real reach question, not the chain alone:
 // a series off its name's chain is current when SeriesAuthorIndex.Resolve over
@@ -359,20 +361,11 @@ func TestDataWorkAndSeriesSlugsAreCurrent(t *testing.T) {
 // work's sources[] is the signal rather than a recording's librivox_id, since it
 // records the project that CREATED the work, which is the one its slug names.
 func atLibrivoxAddress(key string, entry map[string]any) bool {
-	if !librivoxNonLatinTitle(str(entry, "title")) {
-		return false
-	}
-	sources, _ := entry["sources"].([]any)
-	for _, s := range sources {
-		m, ok := s.(map[string]any)
-		if !ok || str(m, "type") != sourceLibrivox {
-			continue
-		}
-		if id, err := strconv.Atoi(str(m, "ref")); err == nil && librivoxWorkSlug(id) == key {
-			return true
-		}
-	}
-	return false
+	atOwnProject := slices.ContainsFunc(rawSources(entry), func(s model.Source) bool {
+		id, err := strconv.Atoi(s.Ref)
+		return s.Type == sourceLibrivox && err == nil && librivoxWorkSlug(id) == key
+	})
+	return atOwnProject && librivoxNonLatinTitle(str(entry, "title"))
 }
 
 // slugCatalogue is the loaded catalogue the series arm resolves against: the
