@@ -15,6 +15,7 @@ package format
 import (
 	"fmt"
 	"path/filepath"
+	"sort"
 
 	"github.com/kodestar/audiosilo-meta/pkg/canonical"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
@@ -171,29 +172,55 @@ func Check(dataDir string) (Report, error) { return CheckProfile(dataDir, pack.P
 // LEGACY layout it rewrote those files IN PLACE while exiting 0, since
 // refuseLegacy no longer reaches them - the precise failure refuseLegacy exists
 // to prevent, making a stale checkout look freshly maintained.
+//
+// ONE PARSE PER PACK. The structural survey parses every pack of the profile's
+// families and renders the authoritative ones for their size, and a pack's
+// render is its canonical form - so the survey runs first and judges canonical
+// form on the way (pack.Store.PendingCanonical), and the canonical walk is
+// handed every file it judged as one more skipped path. What the walk still
+// reads is everything the survey did not parse: stray JSON outside the family
+// roots, and the files that would not read or parse, which keep the verdicts
+// and the errors they always had (an unreadable file is still the walk's I/O
+// error, named as before). The two lists merge back into the walk's own sorted
+// order, so the report is the one the two-pass check printed.
 func CheckProfile(dataDir string, p pack.Profile) (Report, error) {
 	rep := Report{Dir: dataDir}
 	if err := refuseLegacy(dataDir, p); err != nil {
 		return Report{}, err
 	}
-	nonCanonical, invalid, err := canonical.CheckTreeExcept(dataDir, p.Excluded())
-	if err != nil {
-		return Report{}, err
-	}
-	rep.NonCanonical, rep.Invalid = nonCanonical, invalid
-	err = withPackedFamilies(dataDir, p, func(s *pack.Store, families []pack.Family) error {
+	judged := map[string]bool{}
+	err := withPackedFamilies(dataDir, p, func(s *pack.Store, families []pack.Family) error {
 		for _, f := range families {
-			pend, perr := s.Pending(f)
+			pend, canon, perr := s.PendingCanonical(f)
 			if perr != nil {
 				return perr
 			}
 			mergePending(&rep.Pending, pend)
+			for rel, ok := range canon {
+				judged[rel] = ok
+			}
 		}
 		return nil
 	})
 	if err != nil {
 		return Report{}, err
 	}
+	excluded := p.Excluded()
+	skip := make([]string, 0, len(excluded)+len(judged))
+	skip = append(skip, excluded...)
+	for rel, ok := range judged {
+		skip = append(skip, rel)
+		if !ok {
+			rep.NonCanonical = append(rep.NonCanonical, rep.path(rel))
+		}
+	}
+	nonCanonical, invalid, err := canonical.CheckTreeExcept(dataDir, skip)
+	if err != nil {
+		return Report{}, err
+	}
+	rep.NonCanonical = append(rep.NonCanonical, nonCanonical...)
+	sort.Strings(rep.NonCanonical)
+	rep.Invalid = invalid
 	rep.dropUnreadableDuplicates()
 	return rep, nil
 }

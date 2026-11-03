@@ -22,6 +22,12 @@ type File struct {
 
 	rendered []byte
 	sizes    map[string]int
+	// size is the length of the last render, meaningful only while sized is
+	// set (so the zero File knows no size). It outlives ReleaseMemo, which drops
+	// the bytes and keeps this int, so a read-only pass that released the render
+	// can still ask Size without paying for a second one.
+	size  int
+	sized bool
 }
 
 // NewFile returns an empty pack.
@@ -100,7 +106,7 @@ func (f *File) Remove(slug string) {
 }
 
 // invalidate drops the memoized render. Every mutator calls it.
-func (f *File) invalidate() { f.rendered, f.sizes = nil, nil }
+func (f *File) invalidate() { f.rendered, f.sizes, f.size, f.sized = nil, nil, 0, false }
 
 // ReleaseMemo drops the memoized render without changing what the pack holds,
 // for a caller that has finished with the sizes but is holding the pack itself
@@ -111,7 +117,9 @@ func (f *File) invalidate() { f.rendered, f.sizes = nil, nil }
 // resident, unread afterwards: a validating pass asks every pack for its Sizes
 // (the cap check) and then never renders it again, which used to leave a second
 // copy of the whole tree - larger than the entries themselves - alive for as
-// long as the pack was. See check.readPack, its only caller in this repo.
+// long as the pack was. See check.readPack and Reader.prefetch's judging arm,
+// its callers in this repo. The total SIZE is kept (an int, and still true of the
+// entries), so Size after a release does not render again; Sizes and Bytes do.
 func (f *File) ReleaseMemo() { f.rendered, f.sizes = nil, nil }
 
 // Clone returns a deep copy.
@@ -135,6 +143,9 @@ func (f *File) Bytes() ([]byte, error) {
 
 // Size returns the canonical byte length of the pack file.
 func (f *File) Size() (int, error) {
+	if f.rendered == nil && f.sized {
+		return f.size, nil
+	}
 	data, _, err := f.render()
 	if err != nil {
 		return 0, err
@@ -177,7 +188,7 @@ func (f *File) render() ([]byte, map[string]int, error) {
 	buf.WriteString(packPrefix)
 	if len(slugs) == 0 {
 		buf.WriteString("}\n}\n")
-		f.rendered, f.sizes = buf.Bytes(), per
+		f.rendered, f.sizes, f.size, f.sized = buf.Bytes(), per, buf.Len(), true
 		return f.rendered, f.sizes, nil
 	}
 	buf.WriteString("\n")
@@ -202,7 +213,7 @@ func (f *File) render() ([]byte, map[string]int, error) {
 		per[s] = buf.Len() - start
 	}
 	buf.WriteString(packSuffix)
-	f.rendered, f.sizes = buf.Bytes(), per
+	f.rendered, f.sizes, f.size, f.sized = buf.Bytes(), per, buf.Len(), true
 	return f.rendered, f.sizes, nil
 }
 
