@@ -839,24 +839,21 @@ func newLibrivoxState() librivoxState {
 	}
 }
 
-// loadLibrivoxPerson indexes a catalogued person's LibriVox ids: their own and
-// the further ids an evidenced decision recorded on them
-// (librivox_reader_aliases, librivox_author_aliases: only that decision writes
-// them). An alias resolves as the record's own id does, so a second id of one
-// person cannot mint a twin; readerOf and authorOf stay the record's own, and a
-// person of two author ids is asked through answersToAuthorID.
+// loadLibrivoxPerson indexes a catalogued person's LibriVox ids, their own and
+// their aliases (model.Person.LibrivoxReaderAliases): an alias resolves as the
+// record's own id does. readerOf and authorOf stay the record's own, and a test
+// comparing ids asks answersTo.
 func (p *planner) loadLibrivoxPerson(person *model.Person) {
-	for _, k := range []librivoxKey{{librivoxReader, person.LibrivoxReaderID}, {librivoxAuthor, person.LibrivoxAuthorID}} {
-		if k.id != 0 {
-			p.lv.people[k] = person.ID
+	index := func(kind librivoxKind, own int, aliases []int) {
+		if own != 0 {
+			p.lv.people[librivoxKey{kind, own}] = person.ID
+		}
+		for _, id := range aliases {
+			p.lv.people[librivoxKey{kind, id}] = person.ID
 		}
 	}
-	for _, id := range person.LibrivoxReaderAliases {
-		p.lv.people[librivoxKey{librivoxReader, id}] = person.ID
-	}
-	for _, id := range person.LibrivoxAuthorAliases {
-		p.lv.people[librivoxKey{librivoxAuthor, id}] = person.ID
-	}
+	index(librivoxReader, person.LibrivoxReaderID, person.LibrivoxReaderAliases)
+	index(librivoxAuthor, person.LibrivoxAuthorID, person.LibrivoxAuthorAliases)
 	if person.LibrivoxReaderID != 0 {
 		p.lv.readerOf[person.ID] = person.LibrivoxReaderID
 	}
@@ -1319,9 +1316,8 @@ type heldMove struct {
 // credit, the reader id that holds slug - the holder's own credit on this
 // recording, which a move must keep.
 func (p *planner) rowCreditsHolder(b sourceBook, names []string, moved librivoxCredit, slug string) bool {
-	holder := p.lv.readerOf[slug]
 	for _, c := range b.lv.credits {
-		if c.kind == librivoxReader && c.index != moved.index && c.id == holder && p.resolvePerson(names[c.index]).slug == slug {
+		if c.kind == librivoxReader && c.index != moved.index && p.answersTo(librivoxReader, slug, c.id) && p.resolvePerson(names[c.index]).slug == slug {
 			return true
 		}
 	}

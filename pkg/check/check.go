@@ -474,6 +474,7 @@ func load(lst *pack.Listing, rdr *pack.Reader, opts LoadOptions) (Result, *pathI
 	checkUnslugFallback(cat, recs, idx, add)
 	checkReservedSlug(cat, idx, add)
 	checkRedirects(cat, workByID, peopleIDs, add)
+	checkLibrivoxTombstones(cat, add)
 	checkLanguageLinks(profile, cat, workByID, idx, add, warn)
 	checkSidecarUniqueness(cat, idx, add)
 	checkCharacters(cat, idx, add)

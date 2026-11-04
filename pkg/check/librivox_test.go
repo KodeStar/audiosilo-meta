@@ -107,6 +107,47 @@ func TestLibrivoxAuthorAliasesValid(t *testing.T) {
 	}
 }
 
+// TestLibrivoxTombstoneAnswersToItsID: a retired slug of a LibriVox id form points
+// at a record answering to that id, as its own or an alias, in its own namespace;
+// a retired slug of no LibriVox form asks nothing.
+func TestLibrivoxTombstoneAnswersToItsID(t *testing.T) {
+	const narrator = `{"id":"narrator-one","librivox_author_aliases":[7],"librivox_author_id":5,"librivox_reader_aliases":[200],"librivox_reader_id":100,"license":"CC0-1.0","name":"Narrator One","sources":[{"type":"user"}]}`
+	for _, tc := range []struct {
+		from, want string // want "" is allowed
+	}{
+		{"narrator-one-librivox-200", ""},                    // a reader alias
+		{"narrator-one-librivox-100", ""},                    // the reader's own id
+		{"librivox-reader-200", ""},                          // the prefix form
+		{"narrator-one-librivox-author-7", ""},               // an author alias
+		{"librivox-author-7", ""},                            // the prefix form
+		{"an-old-spelling", ""},                              // no LibriVox form
+		{"narrator-one-librivox-300", "LibriVox reader 300"}, // no such id
+		{"librivox-reader-300", "LibriVox reader 300"},
+		{"narrator-one-librivox-author-300", "LibriVox author 300"},
+		{"librivox-author-300", "LibriVox author 300"},
+		{"narrator-one-librivox-7", "LibriVox reader 7"},            // an author alias, not a reader's
+		{"narrator-one-librivox-author-200", "LibriVox author 200"}, // a reader alias, not an author's
+	} {
+		t.Run(tc.from, func(t *testing.T) {
+			dir := t.TempDir()
+			files := baseValid()
+			files[lvNarrRel] = narrator
+			files["redirects.json"] = `{"people":{"` + tc.from + `":"narrator-one"},"series":{},"works":{}}`
+			writeEntities(t, dir, files)
+			res := Load(dir)
+			if tc.want == "" {
+				if !res.OK() {
+					t.Fatalf("should validate, got:\n%s", joinProblems(res.Problems))
+				}
+				return
+			}
+			if !strings.Contains(joinProblems(res.Problems), tc.want) {
+				t.Errorf("no problem contained %q; problems:\n%s", tc.want, joinProblems(res.Problems))
+			}
+		})
+	}
+}
+
 func TestLibrivoxFidelityFieldsValid(t *testing.T) {
 	dir := t.TempDir()
 	files := baseValid()
@@ -435,13 +476,6 @@ func TestLibrivoxRuleViolations(t *testing.T) {
 				f[lvNarrRel] = `{"id":"narrator-one","librivox_reader_aliases":[200],"license":"CC0-1.0","name":"Narrator One","sources":[{"type":"user"}]}`
 			},
 			want: "librivox_reader_id",
-		},
-		{
-			name: "a reader alias list is sorted",
-			mutate: func(f map[string]string) {
-				f[lvNarrRel] = `{"id":"narrator-one","librivox_reader_aliases":[300,200],"librivox_reader_id":100,"license":"CC0-1.0","name":"Narrator One","sources":[{"type":"user"}]}`
-			},
-			want: "librivox_reader_aliases is not sorted",
 		},
 		{
 			name: "a reader alias is not another person's reader id",

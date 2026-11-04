@@ -606,9 +606,10 @@ the order the projects are read in.
   both reader pages), the fold moves the credits, retires the twin's slug in
   `data/redirects.json` and records the second id in `librivox_author_aliases`
   or `librivox_reader_aliases` on the surviving person. An import resolves an
-  alias as it does the record's own id, so the twin is not minted again. Evidence
-  of two people is a reviewed `merge-people` rejection in
-  `internal/audit/reviewed.json` instead. No run writes either.
+  alias as it does the record's own id, so the twin is not minted again, and
+  metacheck refuses a retired slug of a LibriVox id form whose target does not
+  answer to that id. Evidence of two people is a reviewed `merge-people` rejection
+  in `internal/audit/reviewed.json` instead. No run writes either.
 
 ## Audiobookshelf
 

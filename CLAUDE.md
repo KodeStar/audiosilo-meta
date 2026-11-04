@@ -639,16 +639,9 @@ it, `pkg/check` and every writer now refuse it loudly.
   author whose name slugs to nothing at `librivox-author-<author id>`
   (`model.LibrivoxUnslugAuthorSlug`). Each is legal only on a record carrying
   that id - every form is asked through `model.PersonIDMatches`, and a
-  refusal's hint is `model.WantPersonID`. LibriVox lists some people under two
-  ids, and the decision that they are one person lives in the optional
-  `librivox_reader_aliases` / `librivox_author_aliases` (sorted, each unique
-  against every id and alias of its namespace, the record's own id required
-  beside it): an import resolves an alias to the record, so a fold sticks and no
-  twin is re-minted. Only an evidenced decision writes those lists, never an
-  importer (two ids never fold automatically); a record's slug composes from its
-  own id, never an alias, and the artifact and the LibriVox-shaped feed carry the
-  own id alone (`pkg/query/librivoxfeed.go`). Two people of one name are recorded
-  as a reviewed `merge-people` rejection instead.
+  refusal's hint is `model.WantPersonID`. One person under two LibriVox ids keeps
+  the second in `librivox_reader_aliases` / `librivox_author_aliases`, which an
+  import resolves to the record; the rule is on `model.Person`.
 - **series** - an entry in the series family: name + ordered works with **string**
   positions ("1", "2.5") including omnibus ranges ("1-3.5"); no two works may
   share a position. Optional `translation_of` (the work's slug set and rules one

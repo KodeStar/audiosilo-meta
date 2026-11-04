@@ -87,13 +87,13 @@ type Person struct {
 	// LibrivoxReaderAliases / LibrivoxAuthorAliases are further LibriVox ids
 	// this person answers to, each in its namespace: LibriVox lists some people
 	// under two records, and a person is one record. An import resolves an alias
-	// to this record as it does the record's own id, so the second id cannot
-	// mint a twin, and it is the durable home of the decision that the ids are
-	// one person: only an evidenced decision writes it, never an importer (two
-	// ids never fold automatically). LibrivoxReaderID and LibrivoxAuthorID stay
-	// the record's own ids, the ones its slug (PersonIDMatches) and the
-	// LibriVox-shaped feed state. Sorted ascending, each unique across every id
-	// and alias of its namespace (pkg/check).
+	// to this record as it does the record's own id, so a second id cannot mint
+	// a twin. THE RULE, stated here and pointed at from everywhere else: only an
+	// evidenced decision writes these lists, never an importer (two ids never
+	// fold automatically). LibrivoxReaderID and LibrivoxAuthorID stay the
+	// record's own ids, the ones its slug (PersonIDMatches) and the LibriVox-shaped
+	// feed state. Sorted ascending, each unique across every id and alias of its
+	// namespace (pkg/check).
 	LibrivoxReaderAliases []int `json:"librivox_reader_aliases,omitempty"`
 	LibrivoxAuthorAliases []int `json:"librivox_author_aliases,omitempty"`
 	// BirthYear / DeathYear are the years the person was born and died, as a

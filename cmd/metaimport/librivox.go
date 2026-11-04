@@ -290,10 +290,9 @@ func printLibrivoxAuthorPairs(pairs []importer.LibrivoxAuthorPair) {
 }
 
 // printLibrivoxAuthorSplits prints the author ids the run filed at their
-// author-id form beside a same-name person, for a person to merge (retire the
-// twin, record the id in the survivor's librivox_author_aliases) or confirm (a
-// reviewed merge-people rejection), one line each
-// (importer.LibrivoxAuthorSplit.String). Nothing when there are none.
+// author-id form beside a same-name person, for a decision (an alias,
+// model.Person.LibrivoxAuthorAliases, or a reviewed merge-people rejection), one
+// line each (importer.LibrivoxAuthorSplit.String). Nothing when there are none.
 func printLibrivoxAuthorSplits(splits []importer.LibrivoxAuthorSplit) {
 	if len(splits) == 0 {
 		return

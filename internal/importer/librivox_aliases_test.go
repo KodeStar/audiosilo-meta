@@ -2,64 +2,26 @@ package importer
 
 import (
 	"reflect"
-	"slices"
 	"testing"
 
-	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
-// A person LibriVox lists under two author ids keeps the second in
-// librivox_author_aliases, and that decision is what makes a fold stick: the
-// next import resolves the alias to the record instead of re-deciding it and
-// minting the twin again (meta#2863). No run writes the list.
-
-// aliasedWalter is F. P. Walter as the fold leaves him: 6492 his own, 6858 the
-// second record LibriVox holds for him.
-func aliasedWalter(t *testing.T) string {
-	t.Helper()
-	return personFiles(t, "f-p-walter", "F. P. Walter", map[string]any{
-		"librivox_author_id": 6492, "librivox_author_aliases": []int{6858},
-		"birth_year": 1943, "death_year": 2024,
-	})
-}
-
-// readBy restates each section as read by the next of readers, cycling.
-func readBy(sections []LibrivoxSection, readers ...LibrivoxReader) []LibrivoxSection {
-	out := slices.Clone(sections)
-	for i := range out {
-		out[i].Readers = []LibrivoxReader{readers[i%len(readers)]}
-	}
-	return out
-}
-
-// lvNarratorsOf reads the narrators of a project's recording.
-func lvNarratorsOf(t *testing.T, dataDir string, project int) []string {
-	t.Helper()
-	work, rec, _ := lvRecordingOf(t, dataDir, project)
-	var r struct {
-		Narrators []string `json:"narrators"`
-	}
-	readEntity(t, dataDir, recAddr(work, rec), &r)
-	return r.Narrators
-}
-
-// authorAliases reads a person's alias list off the tree.
-func authorAliases(t *testing.T, dataDir, slug string) []int {
-	t.Helper()
-	var p struct {
-		Aliases []int `json:"librivox_author_aliases"`
-	}
-	readEntity(t, dataDir, personAddr(slug), &p)
-	return p.Aliases
-}
+// A person LibriVox lists under two ids keeps the second as an alias, and that
+// decision is what makes a fold stick: the next import resolves the alias to the
+// record instead of re-deciding it and minting the twin again (meta#2863). No run
+// writes the list (the rule is on model.Person).
 
 func TestLibrivoxAuthorAliasResolvesToTheRecord(t *testing.T) {
-	// Under another spelling too: the id, not the name, is the person.
+	// Under another spelling too: the id, not the name, is the person. LibriVox
+	// states years under the alias, which the run fills, keeping the list: the
+	// one write a run makes onto a record it already holds, as a raw map.
 	for _, first := range []string{"F. P.", "Frederick Paul"} {
 		dataDir := t.TempDir()
-		seedTree(t, dataDir, map[string]string{personAddr("f-p-walter"): aliasedWalter(t)})
-		snap := writeSnapshot(t, byAuthors(t, 99040, "Notes on Verne", lvDated(6858, first, "Walter", "", "")))
+		seedTree(t, dataDir, map[string]string{personAddr("f-p-walter"): personFiles(t, "f-p-walter", "F. P. Walter", map[string]any{
+			"librivox_author_id": 6492, "librivox_author_aliases": []int{6858},
+		})})
+		snap := writeSnapshot(t, byAuthors(t, 99040, "Notes on Verne", lvDated(6858, first, "Walter", "1943", "2024")))
 		sum := runLibrivox(t, snap, dataDir, allLibrivox)
 		if got := workAuthorsOf(t, dataDir, "notes-on-verne"); !reflect.DeepEqual(got, []string{"f-p-walter"}) {
 			t.Fatalf("%s: authors = %v\nnotes: %v", first, got, sum.Notes)
@@ -67,11 +29,9 @@ func TestLibrivoxAuthorAliasResolvesToTheRecord(t *testing.T) {
 		if len(sum.LibrivoxAuthorSplits) != 0 || len(sum.LibrivoxWorklist) != 0 {
 			t.Errorf("%s: splits %+v, worklist %+v; want none", first, sum.LibrivoxAuthorSplits, sum.LibrivoxWorklist)
 		}
-		if p := personOf(t, dataDir, "f-p-walter"); p.AuthorID != 6492 || p.Name != "F. P. Walter" {
+		p := personOf(t, dataDir, "f-p-walter")
+		if p.AuthorID != 6492 || p.Name != "F. P. Walter" || !reflect.DeepEqual(p.AuthorAliases, []int{6858}) || p.BirthYear != 1943 || p.DeathYear != 2024 {
 			t.Errorf("%s: f-p-walter = %+v", first, p)
-		}
-		if got := authorAliases(t, dataDir, "f-p-walter"); !reflect.DeepEqual(got, []int{6858}) {
-			t.Errorf("%s: aliases = %v", first, got)
 		}
 		if entryExists(t, dataDir, personAddr("f-p-walter-librivox-author-6858")) {
 			t.Errorf("%s: the twin was minted", first)
@@ -81,10 +41,32 @@ func TestLibrivoxAuthorAliasResolvesToTheRecord(t *testing.T) {
 	}
 }
 
+func TestLibrivoxOneProjectCreditingBothAuthorIDs(t *testing.T) {
+	// LibriVox credits one person twice on one project, under each id (Livingston
+	// 1456 and 15071 on Sevenfold Trouble): one identity author, and one
+	// translator credit on the recording.
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, map[string]string{personAddr("f-p-walter"): personFiles(t, "f-p-walter", "F. P. Walter", map[string]any{
+		"librivox_author_id": 6492, "librivox_author_aliases": []int{6858},
+	})})
+	pr := byAuthors(t, 99042, "Two Names One Hand", lvDated(6492, "F. P.", "Walter", "", ""), lvDated(6858, "F. P.", "Walter", "", ""))
+	pr.Translators = []LibrivoxPerson{lvDated(6858, "F. P.", "Walter", "", ""), lvDated(6492, "F. P.", "Walter", "", "")}
+	snap := writeSnapshot(t, pr)
+	runLibrivox(t, snap, dataDir, allLibrivox)
+	if got := workAuthorsOf(t, dataDir, "two-names-one-hand"); !reflect.DeepEqual(got, []string{"f-p-walter"}) {
+		t.Errorf("authors = %v, want one credit", got)
+	}
+	_, _, f := lvRecordingOf(t, dataDir, 99042)
+	if !reflect.DeepEqual(f.Credits, []model.Credit{{Person: "f-p-walter", Role: model.RoleTranslator}}) {
+		t.Errorf("recording credits = %v, want one", f.Credits)
+	}
+	mustValidate(t, dataDir)
+	rerunIsANoOp(t, snap, dataDir)
+}
+
 func TestLibrivoxWithoutTheAliasTheTwinIsMinted(t *testing.T) {
 	// The other half of the decision: with no alias recorded the two ids stay
-	// two people and are listed. Two ids never fold automatically, and no run
-	// writes the list.
+	// two people and are listed, and no run writes the list.
 	dataDir := t.TempDir()
 	seedTree(t, dataDir, map[string]string{
 		personAddr("f-p-walter"): personFiles(t, "f-p-walter", "F. P. Walter", map[string]any{"librivox_author_id": 6492}),
@@ -97,11 +79,10 @@ func TestLibrivoxWithoutTheAliasTheTwinIsMinted(t *testing.T) {
 	if len(sum.LibrivoxAuthorSplits) != 1 {
 		t.Errorf("splits = %+v, want the one", sum.LibrivoxAuthorSplits)
 	}
-	if got := authorAliases(t, dataDir, "f-p-walter"); got != nil {
-		t.Errorf("a run wrote aliases %v", got)
-	}
-	if got := authorAliases(t, dataDir, twin); got != nil {
-		t.Errorf("a run wrote aliases %v on the twin", got)
+	for _, slug := range []string{"f-p-walter", twin} {
+		if got := personOf(t, dataDir, slug).AuthorAliases; got != nil {
+			t.Errorf("a run wrote aliases %v on %s", got, slug)
+		}
 	}
 }
 
@@ -128,19 +109,13 @@ func TestLibrivoxHeldTranslatorUnderAnAliasIsCredited(t *testing.T) {
 	if p := personOf(t, dataDir, "ian-johnston"); p.AuthorID != 5555 {
 		t.Errorf("ian-johnston = %+v", p)
 	}
-	before := testpack.Snapshot(t, dataDir)
-	if again := runLibrivox(t, snap, dataDir, allLibrivox); again.NewPeople+again.LibrivoxRestated.Recordings != 0 || len(again.Files) != 0 {
-		t.Errorf("rerun = %+v, want a no-op", again.LibrivoxRestated)
-	}
-	if after := testpack.Snapshot(t, dataDir); !reflect.DeepEqual(before, after) {
-		t.Error("rerun changed the tree")
-	}
+	rerunIsANoOp(t, snap, dataDir)
 }
 
 func TestLibrivoxVariantAttachUnderAnAlias(t *testing.T) {
 	// The work credits the record under a fuller spelling of the name: a row
 	// crediting the alias is the same person, so nothing refuses the pairing
-	// as two ids (heldByOtherAuthorID, answersToAuthorID) and the row attaches.
+	// as two ids (heldByOtherAuthorID, answersTo) and the row attaches.
 	dataDir := t.TempDir()
 	files := map[string]string{
 		personAddr("henrietta-elizabeth-marshall"): personFiles(t, "henrietta-elizabeth-marshall", "Henrietta Elizabeth Marshall",
@@ -162,22 +137,26 @@ func TestLibrivoxVariantAttachUnderAnAlias(t *testing.T) {
 }
 
 func TestLibrivoxReaderAliasResolvesToTheRecord(t *testing.T) {
-	// A reader id held as an alias reads under the record, under its own
-	// spelling or another, never minted at -librivox-<id>; a recording read by
-	// both ids of one person credits them once.
-	aliased := func() string {
-		return personFiles(t, "branko-collin", "Branko Collin", map[string]any{"librivox_reader_id": 778, "librivox_reader_aliases": []int{1775}})
-	}
-	for _, name := range []string{"Branko Collin", "Branko"} {
+	// A reader id held as an alias reads under the record, under its own spelling
+	// or another, never minted at -librivox-<id>; a recording read by both ids of
+	// one person credits them once.
+	aliased := personFiles(t, "branko-collin", "Branko Collin", map[string]any{"librivox_reader_id": 778, "librivox_reader_aliases": []int{1775}})
+	for name, readers := range map[string][]LibrivoxReader{
+		"under the record's spelling": {{ReaderID: 1775, DisplayName: "Branko Collin"}},
+		"under another spelling":      {{ReaderID: 1775, DisplayName: "Branko"}},
+		"under both ids":              {{ReaderID: 778, DisplayName: "Branko Collin"}, {ReaderID: 1775, DisplayName: "Branko Collin"}},
+	} {
 		dataDir := t.TempDir()
-		seedTree(t, dataDir, map[string]string{personAddr("branko-collin"): aliased()})
-		pr := byAuthor(t, 99050, "Notes on Reading", "English", lvDated(1, "Some", "Writer", "", ""))
-		pr.Sections = readBy(pr.Sections, LibrivoxReader{ReaderID: 1775, DisplayName: name})
+		seedTree(t, dataDir, map[string]string{personAddr("branko-collin"): aliased})
+		pr := readProject(t, 99050, readers...)
+		if len(pr.Sections) < len(readers) {
+			t.Fatalf("the fixture has %d sections, %d readers", len(pr.Sections), len(readers))
+		}
 		snap := writeSnapshot(t, pr)
 		sum := runLibrivox(t, snap, dataDir, allLibrivox)
-		rec := lvNarratorsOf(t, dataDir, 99050)
-		if !reflect.DeepEqual(rec, []string{"branko-collin"}) {
-			t.Fatalf("%s: narrators = %v\nwarnings: %v", name, rec, sum.Warnings)
+		_, _, f := lvRecordingOf(t, dataDir, 99050)
+		if !reflect.DeepEqual(f.Narrators, []string{"branko-collin"}) {
+			t.Fatalf("%s: narrators = %v\nwarnings: %v", name, f.Narrators, sum.Warnings)
 		}
 		if entryExists(t, dataDir, personAddr("branko-collin-librivox-1775")) {
 			t.Errorf("%s: the twin was minted", name)
@@ -188,36 +167,27 @@ func TestLibrivoxReaderAliasResolvesToTheRecord(t *testing.T) {
 		mustValidate(t, dataDir)
 		rerunIsANoOp(t, snap, dataDir)
 	}
+}
 
+func TestLibrivoxHeldRowKeepsAReaderCreditedUnderAnAlias(t *testing.T) {
+	// A held project read by the person under an alias AND by a third reader id
+	// of the same name: the third is split off, and the narrator credit stays
+	// (rowCreditsHolder, answersTo). Comparing the record's own id alone dropped
+	// it, and no rerun restored it.
 	dataDir := t.TempDir()
-	seedTree(t, dataDir, map[string]string{personAddr("branko-collin"): aliased()})
-	pr := byAuthor(t, 99051, "Two Ids", "English", lvDated(1, "Some", "Writer", "", ""))
-	if len(pr.Sections) < 2 {
-		t.Fatalf("the fixture has %d sections, this needs two", len(pr.Sections))
+	first := readProject(t, 99060, LibrivoxReader{ReaderID: 778, DisplayName: "Branko Collin"})
+	runLibrivox(t, writeSnapshot(t, first), dataDir, allLibrivox)
+	seedTree(t, dataDir, map[string]string{personAddr("branko-collin"): personFiles(t, "branko-collin", "Branko Collin", map[string]any{"librivox_reader_id": 778, "librivox_reader_aliases": []int{1775}})})
+	held := readProject(t, 99060, LibrivoxReader{ReaderID: 1775, DisplayName: "Branko Collin"}, LibrivoxReader{ReaderID: 9999, DisplayName: "Branko Collin"})
+	snap := writeSnapshot(t, held)
+	sum := runLibrivox(t, snap, dataDir, allLibrivox)
+	if sum.LibrivoxReadersMoved != 1 {
+		t.Errorf("moved = %d, want the third reader", sum.LibrivoxReadersMoved)
 	}
-	pr.Sections = readBy(pr.Sections, LibrivoxReader{ReaderID: 778, DisplayName: "Branko Collin"}, LibrivoxReader{ReaderID: 1775, DisplayName: "Branko Collin"})
-	snap := writeSnapshot(t, pr)
-	runLibrivox(t, snap, dataDir, allLibrivox)
-	if rec := lvNarratorsOf(t, dataDir, 99051); !reflect.DeepEqual(rec, []string{"branko-collin"}) {
-		t.Errorf("narrators = %v, want one credit", rec)
+	_, _, f := lvRecordingOf(t, dataDir, 99060)
+	if want := []string{"branko-collin", "branko-collin-librivox-9999"}; !reflect.DeepEqual(f.Narrators, want) {
+		t.Errorf("narrators = %v, want %v", f.Narrators, want)
 	}
 	mustValidate(t, dataDir)
 	rerunIsANoOp(t, snap, dataDir)
-}
-
-func TestLibrivoxRunKeepsTheAliasesOnALifeYearFill(t *testing.T) {
-	// Every run edits a person as a raw map, so the list rides through the
-	// year fill, the one write a run makes onto a record it already holds.
-	dataDir := t.TempDir()
-	seedTree(t, dataDir, map[string]string{
-		personAddr("f-p-walter"): personFiles(t, "f-p-walter", "F. P. Walter", map[string]any{"librivox_author_id": 6492, "librivox_author_aliases": []int{6858}}),
-	})
-	runLibrivox(t, writeSnapshot(t, byAuthors(t, 99040, "Notes on Verne", lvDated(6858, "F. P.", "Walter", "1943", "2024"))), dataDir, allLibrivox)
-	p := personOf(t, dataDir, "f-p-walter")
-	if p.BirthYear != 1943 || p.DeathYear != 2024 {
-		t.Errorf("f-p-walter = %+v, want the years filled", p)
-	}
-	if got := authorAliases(t, dataDir, "f-p-walter"); !reflect.DeepEqual(got, []int{6858}) {
-		t.Errorf("aliases = %v", got)
-	}
 }

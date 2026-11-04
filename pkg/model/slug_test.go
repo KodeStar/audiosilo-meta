@@ -414,3 +414,24 @@ func TestSlugifyInvalidUTF8(t *testing.T) {
 		}
 	}
 }
+
+func TestLibrivoxIDOfSlug(t *testing.T) {
+	for _, tc := range []struct {
+		slug           string
+		reader, author int
+	}{
+		{"adam-smith-librivox-19341", 19341, 0},
+		{"librivox-reader-11294", 11294, 0},
+		{"ralph-scott-librivox-author-16428", 0, 16428},
+		{"librivox-author-17538", 0, 17538},
+		{"adam-smith", 0, 0},
+		{"librivox-volunteer", 0, 0},
+		{"a-librivox-volunteer", 0, 0},
+		{"james-grant-1822-1887", 0, 0},
+		{"librivox-19341", 0, 0},
+	} {
+		if r, a := LibrivoxIDOfSlug(tc.slug); r != tc.reader || a != tc.author {
+			t.Errorf("LibrivoxIDOfSlug(%q) = %d, %d, want %d, %d", tc.slug, r, a, tc.reader, tc.author)
+		}
+	}
+}

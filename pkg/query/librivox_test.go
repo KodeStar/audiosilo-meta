@@ -875,10 +875,6 @@ func TestExactTitleProbeFiltersSourceInsideItsWindow(t *testing.T) {
 	}
 }
 
-// TestPersonPageListsARecordingOnlyTranslator: a translator credited only in a
-// recording's own credits (an attach to a catalogued work records no work
-// credit) is listed on their person page under translated, with its total; a
-// version 8 artifact names no such list.
 // TestLibrivoxFeedStatesTheRecordsOwnID: a person LibriVox lists under two
 // author ids keeps a usable id in the feed, the record's own, and the alias
 // changes nothing in the artifact (no schema_version moves for it).
@@ -893,16 +889,16 @@ func TestLibrivoxFeedStatesTheRecordsOwnID(t *testing.T) {
 		}
 	}
 	_, ts := serveDB(t, artifacttest.Build(t, cat), HandlerOptions{})
-	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/librivox/audiobooks?id=527&extended=1")
-	if code != http.StatusOK {
-		t.Fatalf("feed = %d %v", code, body)
-	}
-	tr := body["books"].([]any)[0].(map[string]any)["translators"].([]any)
+	tr := feedBooks(t, ts.URL, "/api/v1/librivox/audiobooks?id=527&extended=1")[0]["translators"].([]any)
 	if len(tr) != 1 || tr[0].(map[string]any)["id"] != "1019" {
 		t.Errorf("translators = %v, want the record's own id", tr)
 	}
 }
 
+// TestPersonPageListsARecordingOnlyTranslator: a translator credited only in a
+// recording's own credits (an attach to a catalogued work records no work
+// credit) is listed on their person page under translated, with its total; a
+// version 8 artifact names no such list.
 func TestPersonPageListsARecordingOnlyTranslator(t *testing.T) {
 	cat := librivoxCatalog(t)
 	for _, w := range cat.Works {

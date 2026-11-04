@@ -110,12 +110,8 @@ package importer
 //     to the worklist (a sluggable name) or to a credit not recorded (one
 //     that slugs to nothing). A later run finds the record by its id.
 //
-// A person confirmed to be LibriVox's one person under two ids keeps the second
-// in librivox_author_aliases, or librivox_reader_aliases for a reader
-// (model.Person.LibrivoxAuthorAliases): every rule above treats it as the
-// record's own, so nothing re-decides it and no twin is minted. Only an evidenced
-// decision writes those lists, never a run, so the owner's rule stands: two ids
-// never fold automatically.
+// A person's aliases (model.Person.LibrivoxAuthorAliases) are held ids: every
+// rule above reads one as the record's own, so nothing re-decides it.
 //
 // A project the catalogue already holds is never planned (it is skipped before
 // planning; its readers are librivoxReaderSlug's), and decides nothing here but
@@ -527,22 +523,22 @@ func (p *planner) heldTranslatorLeft(id int) (lvHold, bool) {
 		return h, true
 	}
 	if pin := p.lv.authorPins[id]; pin != nil {
-		if live, ok := p.livePerson(pin.slug); ok && p.lv.authorOf[live] != 0 && !p.answersToAuthorID(live, id) {
+		if live, ok := p.livePerson(pin.slug); ok && p.lv.authorOf[live] != 0 && !p.answersTo(librivoxAuthor, live, id) {
 			return lvHold{against: live, candidates: p.librivoxPersonCandidates(live)}, true
 		}
 	}
 	return lvHold{}, false
 }
 
-// answersToAuthorID reports whether the person answers to author id: it is their
-// own (authorOf, a stamped or claimed id included) or one of the aliases an
-// evidenced decision recorded on them (loadLibrivoxPerson).
-func (p *planner) answersToAuthorID(slug string, id int) bool {
-	if p.lv.authorOf[slug] == id {
-		return true
+// answersTo reports whether the person answers to a LibriVox id of kind: their
+// own (readerOf, authorOf, which hold an id this run claimed too) or an alias
+// (lv.people, which holds no claimed id).
+func (p *planner) answersTo(kind librivoxKind, slug string, id int) bool {
+	own := p.lv.authorOf
+	if kind == librivoxReader {
+		own = p.lv.readerOf
 	}
-	owner, held := p.lv.people[librivoxKey{librivoxAuthor, id}]
-	return held && owner == slug
+	return own[slug] == id || p.lv.people[librivoxKey{kind, id}] == slug
 }
 
 // settleLibrivoxPeople takes the run's person decisions that read where the
@@ -762,9 +758,8 @@ type lvAuthorSplit struct {
 // from (librivoxpeople.go rule 4): the other person carries another LibriVox
 // author id, or only narrates, and LibriVox states no year to tell the two by.
 // Only evidence can tell LibriVox's own duplicate record from a namesake, so the
-// pair is listed for a decision: a fold records the id in the survivor's
-// librivox_author_aliases, which keeps it from being split again, and two people
-// are a reviewed merge-people rejection.
+// pair is listed for a decision: an alias (model.Person.LibrivoxAuthorAliases) or
+// a reviewed merge-people rejection.
 type LibrivoxAuthorSplit struct {
 	Author  LibrivoxPairAuthor `json:"author"`
 	Against string             `json:"against"`
