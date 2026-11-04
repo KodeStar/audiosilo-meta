@@ -37,6 +37,7 @@ var librivoxRecordingShapeSQL = []string{
 	`SELECT work_id, recording_id, person_id, role, ord FROM recording_credits LIMIT 0`,
 	`SELECT work_id, recording_id, chapter_idx, person_id, ord FROM chapter_readers LIMIT 0`,
 	`SELECT work_id, recording_id, genre, ord FROM recording_librivox_genres LIMIT 0`,
+	`SELECT added_at FROM recording_sources LIMIT 0`,
 }
 
 // ---- the source filter --------------------------------------------------------

@@ -35,7 +35,8 @@ import (
 // arrived - recordings.librivox_title, chapters.section_number and the
 // recording_credits, chapter_readers and recording_librivox_genres tables (a
 // LibriVox project's own title, section numbers, translators, section readers
-// and genre names).
+// and genre names) and recording_sources.added_at (the source-filtered
+// works/latest's order).
 //
 // It versions what a reader may SELECT, so it is bumped only when a table or
 // column appears. Adding an index is invisible to every reader (the same rows
@@ -112,8 +113,12 @@ CREATE INDEX idx_recordings_librivox ON recordings(librivox_id) WHERE librivox_i
 -- One row per (recording, source type) its sources[] name, deduplicated: what
 -- the API's ?source= filter joins through. (type, work_id) leads so the filter's
 -- "works with a recording of this source" is a covering range read.
-CREATE TABLE recording_sources (work_id TEXT NOT NULL, recording_id TEXT NOT NULL, type TEXT NOT NULL);
-CREATE INDEX idx_recording_sources_type ON recording_sources(type, work_id, recording_id);
+-- schema_version 9 appends added_at, the recording's own (recordings.added_at,
+-- addedAtOf's rule), and the index carries it: the source-filtered works/latest
+-- takes each work's newest recording of the source as MAX(added_at) straight
+-- off the index, never joining recordings.
+CREATE TABLE recording_sources (work_id TEXT NOT NULL, recording_id TEXT NOT NULL, type TEXT NOT NULL, added_at TEXT);
+CREATE INDEX idx_recording_sources_type ON recording_sources(type, work_id, recording_id, added_at);
 -- schema_version 9: a recording's own role credits (a LibriVox project's
 -- translator), in the record's order, and a LibriVox project's own genre names,
 -- verbatim, in LibriVox's order. The LibriVox feed reads both per recording.
@@ -519,7 +524,7 @@ func prepareStmts(tx *sql.Tx) (*stmts, func(), error) {
 		{&s.recCredit, `INSERT INTO recording_credits(work_id, recording_id, person_id, role, ord) VALUES(?,?,?,?,?)`},
 		{&s.recGenre, `INSERT INTO recording_librivox_genres(work_id, recording_id, genre, ord) VALUES(?,?,?,?)`},
 		{&s.chapterReader, `INSERT INTO chapter_readers(work_id, recording_id, chapter_idx, person_id, ord) VALUES(?,?,?,?,?)`},
-		{&s.recSource, `INSERT INTO recording_sources(work_id, recording_id, type) VALUES(?,?,?)`},
+		{&s.recSource, `INSERT INTO recording_sources(work_id, recording_id, type, added_at) VALUES(?,?,?,?)`},
 		{&s.recNarrator, `INSERT INTO recording_narrators(work_id, recording_id, person_id, ord) VALUES(?,?,?,?)`},
 		{&s.recASIN, `INSERT INTO recording_asins(region, asin, work_id, recording_id) VALUES(?,?,?,?)`},
 		{&s.recISBN, `INSERT INTO recording_isbns(work_id, recording_id, isbn) VALUES(?,?,?)`},
@@ -664,8 +669,9 @@ func insertRecording(st *stmts, workID string, r *model.Recording) error {
 		types = append(types, src.Type)
 	}
 	slices.Sort(types)
+	added := addedAtOf(r.AddedAt, r.Sources)
 	for _, t := range slices.Compact(types) {
-		if _, err := st.recSource.Exec(workID, r.ID, t); err != nil {
+		if _, err := st.recSource.Exec(workID, r.ID, t, added); err != nil {
 			return err
 		}
 	}

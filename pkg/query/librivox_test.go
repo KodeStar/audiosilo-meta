@@ -291,16 +291,27 @@ func TestOpenRefusesAFalseLibrivoxClaim(t *testing.T) {
 	}
 }
 
+// lvDropSourcesAddedAt takes recording_sources back to its version 8 shape
+// (SQLite drops no indexed column, so the index goes and comes back without it),
+// and lvDropRecordingLayer the whole LIBRIVOX RECORDING layer with it.
+var (
+	lvDropSourcesAddedAt = []string{
+		"DROP INDEX idx_recording_sources_type", "ALTER TABLE recording_sources DROP COLUMN added_at",
+		"CREATE INDEX idx_recording_sources_type ON recording_sources(type, work_id, recording_id)",
+	}
+	lvDropRecordingLayer = append([]string{
+		"DROP TABLE recording_credits", "DROP TABLE chapter_readers", "DROP TABLE recording_librivox_genres",
+		"ALTER TABLE recordings DROP COLUMN librivox_title", "ALTER TABLE chapters DROP COLUMN section_number",
+	}, lvDropSourcesAddedAt...)
+)
+
 // TestLibrivoxRecordingLayerOnAnOlderArtifact: a newer binary serving a version 8
 // release (no project titles, section numbers, recording credits, section
 // readers or LibriVox genre names) answers the feed as it did before - the
 // work's title, positions as section numbers, the work's translators, the
 // vocabulary genres and filter, and readers only for a one-narrator recording.
 func TestLibrivoxRecordingLayerOnAnOlderArtifact(t *testing.T) {
-	path := artifacttest.Altered(t, librivoxCatalog(t), 8,
-		"DROP TABLE recording_credits", "DROP TABLE chapter_readers", "DROP TABLE recording_librivox_genres",
-		"ALTER TABLE recordings DROP COLUMN librivox_title", "ALTER TABLE chapters DROP COLUMN section_number",
-	)
+	path := artifacttest.Altered(t, librivoxCatalog(t), 8, lvDropRecordingLayer...)
 	assertPreRecordingLayerFeed(t, downgradedServer(t, path))
 }
 
@@ -365,11 +376,12 @@ func assertPreRecordingLayerFeed(t *testing.T, ts *httptest.Server) {
 // TestOpenRefusesAFalseLibrivoxRecordingClaim: a version 9 claim without each
 // part of the recording layer is a corrupt file, refused at open naming it.
 func TestOpenRefusesAFalseLibrivoxRecordingClaim(t *testing.T) {
-	for _, drop := range []string{
-		"DROP TABLE recording_credits", "DROP TABLE chapter_readers", "DROP TABLE recording_librivox_genres",
-		"ALTER TABLE recordings DROP COLUMN librivox_title", "ALTER TABLE chapters DROP COLUMN section_number",
+	for _, drop := range [][]string{
+		{"DROP TABLE recording_credits"}, {"DROP TABLE chapter_readers"}, {"DROP TABLE recording_librivox_genres"},
+		{"ALTER TABLE recordings DROP COLUMN librivox_title"}, {"ALTER TABLE chapters DROP COLUMN section_number"},
+		lvDropSourcesAddedAt,
 	} {
-		path := artifacttest.Altered(t, librivoxCatalog(t), 9, drop)
+		path := artifacttest.Altered(t, librivoxCatalog(t), 9, drop...)
 		db, err := Open(path, "")
 		if err == nil {
 			_ = db.Close()
@@ -763,6 +775,16 @@ func TestLatestBySourceOrdersBySourceRecordings(t *testing.T) {
 			t.Errorf("GET %s = %v, want %v", tc.path, got, tc.want)
 		}
 	}
+
+	// The version 8 spelling (recording_sources without added_at, joined to
+	// recordings) answers in the same order as the version 9 one.
+	_, old := serveDB(t, artifacttest.Altered(t, cat, 8, lvDropRecordingLayer...), HandlerOptions{})
+	for _, path := range []string{"/api/v1/works/latest?source=librivox", "/api/v1/works/latest?source=librivox&lang=en"} {
+		_, body := artifacttest.GetJSON(t, old.URL, path)
+		if got, want := workIDsOf(t, body, "works"), []string{"classic", "lv-only", "undated", "lv-then-retail"}; !slices.Equal(got, want) {
+			t.Errorf("v8 GET %s = %v, want %v", path, got, want)
+		}
+	}
 }
 
 // TestExactTitleProbeFiltersSourceInsideItsWindow pins that the exact-title
@@ -829,9 +851,7 @@ func TestPersonPageListsARecordingOnlyTranslator(t *testing.T) {
 		t.Errorf("translated entry = %v", e)
 	}
 
-	old := artifacttest.Altered(t, cat, 8,
-		"DROP TABLE recording_credits", "DROP TABLE chapter_readers", "DROP TABLE recording_librivox_genres",
-		"ALTER TABLE recordings DROP COLUMN librivox_title", "ALTER TABLE chapters DROP COLUMN section_number")
+	old := artifacttest.Altered(t, cat, 8, lvDropRecordingLayer...)
 	if _, body := artifacttest.GetJSON(t, downgradedServer(t, old).URL, "/api/v1/people/ian-johnston"); body["translated"] != nil || body["translated_total"] != nil {
 		t.Errorf("v8 person page = %v, want no translated list", body)
 	}

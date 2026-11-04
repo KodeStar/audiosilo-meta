@@ -59,13 +59,17 @@ func (s *DB) latestCandidatesQuery(lang langFilter, src string, fetch int) (stri
 		pred, args := s.worksPredicate(lang, "language")
 		return `SELECT id FROM works WHERE ` + pred + latestOrderSQL, append(args, fetch)
 	}
-	query, args := latestSourceHeadSQL, []any{src}
+	head, tail := latestSourceHeadSQL, latestSourceTailSQL
+	if s.hasLibrivoxRecordingLayer() {
+		head, tail = latestSourceHeadV9SQL, latestSourceTailV9SQL
+	}
+	query, args := head, []any{src}
 	if len(lang) > 0 {
 		pred, predArgs := lang.predicate("w.language", false)
 		query += ` AND ` + pred
 		args = append(args, predArgs...)
 	}
-	return query + latestSourceTailSQL, append(args, fetch)
+	return query + tail, append(args, fetch)
 }
 
 // latestSourceHeadSQL and latestSourceTailSQL are works/latest's phase one
@@ -92,6 +96,17 @@ const (
 		` JOIN works w ON w.id = rs.work_id WHERE rs.type = ?`
 	latestSourceTailSQL = ` GROUP BY rs.work_id` +
 		` ORDER BY (COALESCE(MAX(r.added_at), w.added_at) IS NULL) ASC, COALESCE(MAX(r.added_at), w.added_at) DESC, w.title ASC, w.id ASC LIMIT ?`
+
+	// The same order from artifact schema_version 9 on, where recording_sources
+	// carries each recording's added_at and idx_recording_sources_type covers
+	// it: the newest recording of the source is MAX(rs.added_at) off the index,
+	// so no recording is read at all. The version 8 spelling above, one
+	// recordings lookup per recording of the source, stays for an older
+	// artifact.
+	latestSourceHeadV9SQL = `SELECT w.id FROM recording_sources rs` +
+		` JOIN works w ON w.id = rs.work_id WHERE rs.type = ?`
+	latestSourceTailV9SQL = ` GROUP BY rs.work_id` +
+		` ORDER BY (COALESCE(MAX(rs.added_at), w.added_at) IS NULL) ASC, COALESCE(MAX(rs.added_at), w.added_at) DESC, w.title ASC, w.id ASC LIMIT ?`
 )
 
 // latestSeriesCap is the per-series diversity cap for the latest-works list: a

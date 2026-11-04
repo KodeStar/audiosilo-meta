@@ -87,6 +87,12 @@ func TestBuildLibrivoxLayer(t *testing.T) {
 		t.Errorf("person columns = %v %v %v %v", author, birth, death, reader)
 	}
 
+	// Each row carries its recording's added_at (addedAtOf), schema_version 9.
+	if got := triples(t, db, `SELECT recording_id, type, coalesce(added_at, 'NULL') FROM recording_sources ORDER BY recording_id, type`); !slices.Equal(got, [][3]string{
+		{"david-barnes", "librivox", "2026-10-27"}, {"david-barnes", "user", "2026-10-27"}, {"someone-else", "libex-import", "2026-09-01"},
+	}) {
+		t.Errorf("recording_sources added_at = %v", got)
+	}
 	got := triples(t, db, `SELECT work_id, recording_id, type FROM recording_sources`)
 	want := [][3]string{
 		{"metamorphosis", "david-barnes", "librivox"},

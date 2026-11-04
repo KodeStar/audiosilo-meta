@@ -461,8 +461,25 @@ func TestLatestBySourceGroupsInIndexOrder(t *testing.T) {
 	snap := openTestDB(t, artifacttest.Build(t, artifacttest.Fixture()))
 	for _, lang := range []langFilter{nil, {"de"}} {
 		query, args := snap.latestCandidatesQuery(lang, model.SourceLibrivox, 200)
-		if joined := strings.Join(queryPlan(t, snap, query, args...), " | "); strings.Contains(joined, "FOR GROUP BY") {
+		joined := strings.Join(queryPlan(t, snap, query, args...), " | ")
+		if strings.Contains(joined, "FOR GROUP BY") {
 			t.Errorf("lang=%v: the grouping sorts: %s", lang, joined)
+		}
+		// From schema_version 9 the source's recordings' added_at is read off
+		// the covering index: no recordings lookup at all.
+		if !strings.Contains(joined, "USING COVERING INDEX idx_recording_sources_type") || strings.Contains(joined, "recordings") {
+			t.Errorf("lang=%v: the v9 phase one reads past idx_recording_sources_type: %s", lang, joined)
+		}
+	}
+}
+
+// TestLatestBySourceKeepsTheV8SpellingOnAnOlderArtifact: an artifact older than
+// librivoxRecordingSchemaVersion has no recording_sources.added_at, so the
+// source-filtered phase one still joins recordings there.
+func TestLatestBySourceKeepsTheV8SpellingOnAnOlderArtifact(t *testing.T) {
+	for v, want := range map[int]string{8: latestSourceHeadSQL, 9: latestSourceHeadV9SQL} {
+		if q, _ := (&DB{schemaVersion: v}).latestCandidatesQuery(nil, model.SourceLibrivox, 200); !strings.HasPrefix(q, want) {
+			t.Errorf("schema_version %d: phase one = %s", v, q)
 		}
 	}
 }

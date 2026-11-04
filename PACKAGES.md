@@ -1078,7 +1078,12 @@ own statements, which the work cannot hold: `recordings.librivox_title`,
 `chapters.section_number` (NULL where the position is the number),
 `recording_credits(work_id, recording_id, person_id, role, ord)` (the project's
 translators), `chapter_readers(work_id, recording_id, chapter_idx, person_id,
-ord)` and `recording_librivox_genres(work_id, recording_id, genre, ord)`, each
+ord)`, `recording_librivox_genres(work_id, recording_id, genre, ord)` and
+`recording_sources.added_at` (the recording's own, addedAtOf's rule, carried
+by `idx_recording_sources_type` so the source-filtered works/latest takes each
+work's newest recording of the source off that index without reading
+recordings: `latestSourceHeadV9SQL`; the version 8 join stays for an older
+artifact), each new
 table indexed on (work_id, recording_id) (chapter_readers' index runs on through
 (chapter_idx, ord), the feed's order). loadStats proves the claim
 (`librivoxRecordingShapeSQL`), and asks once whether it is FILLED

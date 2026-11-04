@@ -702,7 +702,8 @@ a tie, `ordering`, `ordering_of`), `search_fts.language` as its LAST column and
 LibriVox ids and life years, `work_credits`, `recording_sources`; PACKAGES.md
 "The LIBRIVOX layer"); the LIBRIVOX RECORDING layer in **schema_version 9** (the
 current version: `recordings.librivox_title`, `chapters.section_number`,
-`recording_credits`, `chapter_readers`, `recording_librivox_genres` - a LibriVox
+`recording_credits`, `chapter_readers`, `recording_librivox_genres` and
+`recording_sources.added_at` (the source-filtered works/latest's order) - a LibriVox
 project's own title, section numbers, translators, section readers and genre
 names, which the LibriVox-shaped feed answers with; PACKAGES.md "The LIBRIVOX
 RECORDING layer"); character `ord`/recap
