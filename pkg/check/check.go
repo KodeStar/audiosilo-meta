@@ -203,8 +203,8 @@ type sidecarRef struct {
 // itself and fails when this list is short.
 //
 // The one rule that deliberately does NOT read it is checkSidecarPositionScale:
-// it judges POSITIONS, and a description and a scale carry none, so its shorter list is a
-// statement rather than an omission.
+// it judges POSITIONS, and a description and a scale carry none, so its shorter list
+// is a statement rather than an omission.
 //
 // The kind string is the MEMBER NAME (model.Kind's own spelling), not the
 // catalogue field's - `description` is one member of one work however many of

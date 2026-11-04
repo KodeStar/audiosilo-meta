@@ -891,8 +891,9 @@ func belowFloor(top, n int) bool { return float64(top) < float64(n)*sidecarScale
 //
 // A work's chapter count is stated only where its entry carries a position_scale,
 // which is then the ruler. Everywhere else the rule reads the one independent
-// measure the data does carry: the chapter list on the work's own recordings. That is an audiobook's track list rather than the work's chapter
-// numbering, so it is read through shapeOf - credits, dedication and the other
+// measure the data does carry: the chapter list on the work's own recordings. That
+// is an audiobook's track list rather than the work's chapter numbering, so it is
+// read through shapeOf - credits, dedication and the other
 // matter tracks and the part dividers are not chapters - and the comparison
 // stays deliberately coarse. It fires only on an order-of-magnitude mismatch, and
 // it compares against the SMALLEST chapter list among the recordings, so the
@@ -994,9 +995,9 @@ func checkSidecarPositionScale(cat *model.Catalog, idx *pathIndex, warn addFunc)
 		}
 		if m.scale != nil {
 			if !m.scale.Partial && belowFloor(top, m.scale.Length) {
-				warn(rel, "%s sidecar for %q stops at chapter %d of the %d its position_scale states: "+
+				warn(rel, "%s sidecar for %q stops at %s %d of the %d its position_scale states: "+
 					"the positions may be scaled to something other than the work's chapters",
-					kind, workID, top, m.scale.Length)
+					kind, workID, m.scale.Unit, top, m.scale.Length)
 			}
 			return top
 		}

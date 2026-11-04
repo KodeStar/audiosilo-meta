@@ -25,7 +25,7 @@ type DB struct {
 	tag           string // release tag this artifact came from ("" for a local --db)
 	path          string // on-disk path of the artifact
 	stats         Stats  // precomputed once, at load
-	schemaVersion int    // meta(schema_version); characters/recaps arrived in v2, recap_summaries in v3, work_genres in v4, redirects in v5, work_descriptions in v6, translations + the series ordering columns in v7, the LibriVox layer in v8
+	schemaVersion int    // meta(schema_version); characters/recaps arrived in v2, recap_summaries in v3, work_genres in v4, redirects in v5, work_descriptions in v6, translations + the series ordering columns in v7, the LibriVox layer in v8, the LibriVox recording layer in v9, position_scales in v10
 
 	// The GUIDE PAGE counts, settled at load (see loadStats). They are what the
 	// two guide sitemap families are sharded and windowed by, and they are

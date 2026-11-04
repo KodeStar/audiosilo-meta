@@ -703,8 +703,11 @@ it, `pkg/check` and every writer now refuse it loudly.
 
 - **position_scale** - the same entry's optional `{"length", "unit", "partial"?}`,
   the ruler its characters and recaps are numbered on; a wire contract served on
-  `GET /works/{id}`. No issue form (decided, as for `description`): a coarse sidecar
-  by form gets the census advisory until a PR states its ruler. PACKAGES.md `pkg/check`.
+  `GET /works/{id}`. It carries no `license` or `sources` of its own: it is community
+  data about the members beside it, in the CC BY-SA layer by where it sits. No issue
+  form (decided, as for `description`): a coarse sidecar by form gets the census
+  advisory until a PR states its ruler, and the intake refuses a member beside a
+  stated scale. PACKAGES.md `pkg/check`.
 
 **Position model** (`common.schema.json#/$defs/position`): `{ "chapter": <int
 >= 0> }`, the logical **edition-independent** work chapter (1-based; `0` = front

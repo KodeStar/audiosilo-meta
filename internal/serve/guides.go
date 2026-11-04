@@ -181,11 +181,12 @@ func guidePage(siteURL string, d *query.WorkDetail, suffix, title, description s
 // works in "summary", and ends on the site name every page title ends on. The
 // middle clause is chosen by the FACTS: a work whose sidecar carries only a
 // whole-book summary has no chapter summaries to promise, and a title promising
-// them would be the fabricated claim this project does not make.
+// them would be the fabricated claim this project does not make - as would promising
+// chapters of a work whose position_scale counts acts (positionUnit).
 func recapTitle(d *query.WorkDetail) string {
 	clause := " - story summary"
 	if hasChapteredRecaps(d) {
-		clause = " - story so far and chapter summaries"
+		clause = " - story so far and " + positionUnit(d) + " summaries"
 	}
 	return d.Title + " recap" + clause + " - " + siteName
 }
@@ -377,7 +378,8 @@ func workGuideLinks(d *query.WorkDetail) []guideLink {
 	if hasRecapGuide(d) {
 		text := "Story summary of " + d.Title
 		if hasChapteredRecaps(d) {
-			text = "Chapter-by-chapter recap of " + d.Title
+			unit := positionUnit(d)
+			text = strings.ToUpper(unit[:1]) + unit[1:] + "-by-" + unit + " recap of " + d.Title
 		}
 		out = append(out, guideLink{URL: workGuidePath(d.ID, recapSuffix), Text: text})
 	}
@@ -395,9 +397,10 @@ func contributeURL(workID, kind string) string {
 }
 
 // positionUnit is what a position counts on this work's pages: the unit its
-// position_scale states, else the chapter a position is by default.
+// position_scale states, else the chapter a position is by default. Never empty,
+// because workGuideLinks capitalizes it and an artifact is only as sound as its build.
 func positionUnit(d *query.WorkDetail) string {
-	if d.PositionScale != nil {
+	if d.PositionScale != nil && d.PositionScale.Unit != "" {
 		return d.PositionScale.Unit
 	}
 	return "chapter"

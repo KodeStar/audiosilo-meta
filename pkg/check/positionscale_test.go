@@ -86,6 +86,7 @@ func TestAdvisoryPositionScaleIsARuler(t *testing.T) {
 		{"a short recording is no excuse", 10, `{"length":50,"unit":"chapter"}`, []int{1, 2, 3, 4, 5}, 2, "of the 50 its position_scale states"},
 		{"partial says it stops short on purpose", 80, `{"length":60,"partial":true,"unit":"chapter"}`, []int{3, 7, 11, 15, 19}, 0, ""},
 		{"a short length is judged", 80, `{"length":5,"unit":"act"}`, []int{1, 2, 3, 4, 5}, 0, ""},
+		{"a length under the recording minimum still reports", 80, `{"length":15,"unit":"act"}`, []int{1, 2, 3, 4, 5}, 2, "act 5 of the 15"},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			res := loadTree(t, scaledFixture(tc.tracks, tc.scale, tc.at...))

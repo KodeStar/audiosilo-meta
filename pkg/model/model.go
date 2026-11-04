@@ -490,6 +490,13 @@ type PositionScale struct {
 	Partial bool `json:"partial,omitempty"`
 }
 
+// PositionScaleUnits is the position_scale.unit vocabulary, in the schema enum's own
+// order: the ONE list a Go reader takes it from. TestPositionScaleUnitsAreTheSchemaEnum
+// pins it to the schema, and the OpenAPI document's restatement is pinned to it.
+func PositionScaleUnits() []string {
+	return []string{"act", "chapter", "entry", "episode", "letter", "part", "piece", "poem", "scene", "section", "track"}
+}
+
 // Description is the per-work sidecar holding a work's spoiler-free
 // description - the paragraph a stranger reads before deciding to listen. It
 // lives in the CC BY-SA layer, decoupled from the CC0 core work record.

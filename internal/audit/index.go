@@ -27,8 +27,8 @@ type index struct {
 	// memberships maps a work id to its series memberships, sorted by series id.
 	memberships map[string][]membership
 	// sidecars maps a work slug to the works-community members its entry holds
-	// ("characters", "recaps", "description", "position_scale"), built in this one pass. Before it
-	// existed, naming a sidecar's members walked every catalogue slice per sidecar -
+	// ("characters", "recaps", "description", "position_scale"), built in this one
+	// pass. Before it existed, naming a sidecar's members walked every catalogue slice per sidecar -
 	// the run's one genuine quadratic.
 	sidecars map[string][]string
 
