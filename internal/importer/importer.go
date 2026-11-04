@@ -121,6 +121,14 @@ type recInfo struct {
 	// narrators, so nothing else in the merge test can tell them apart. Empty is
 	// "unknown", which never blocks - the same posture abridged takes.
 	claims []posClaim
+	// librivox reports that the recording is a LibriVox project (it carries a
+	// librivox_id): a production of its own, so no other row's ASIN is ever
+	// merged into it however alike the readers and runtime look - the rule
+	// rawentry.SameProduction states for metarepair, here on the importer's
+	// side. A LibriVox row never merges into a sibling either (addRecording).
+	// Beside its ASINs it is the other identifier a genre regeneration's row can
+	// reach the recording by (regenCovered).
+	librivox bool
 	// abridged is the recording's tri-state abridged flag as far as this run
 	// knows it. For a recording created THIS run it carries the entry's tri-state
 	// (nil = the source did not state it); for a recording loaded from disk it is
@@ -129,6 +137,23 @@ type recInfo struct {
 	// them apart is not worth it, so a disk incumbent never blocks a merge on
 	// abridged grounds. See abridgedConflict.
 	abridged *bool
+}
+
+// regenCovered is the genre regeneration's completeness test for one
+// recording (regenerate.go): whether a run whose rows address recordings by
+// LibriVox project id (lvRun) or else by ASIN holds the recording's whole
+// account. A row can reach a recording by either identifier
+// (forEachMatchedRow), so one carrying the identifier this run's rows address
+// is covered only when a row met it (seen), and one carrying the OTHER kind -
+// an ASIN in a LibriVox run, a project id in a libex one - never is, even when
+// a row of this run's kind met it: the other source's rows, which this run did
+// not read, are an account of it too. A recording carrying neither is evidence
+// no row can give, so it never blocks a trim.
+func (ri *recInfo) regenCovered(seen, lvRun bool) bool {
+	if lvRun && len(ri.asins) > 0 || !lvRun && ri.librivox {
+		return false
+	}
+	return seen || (len(ri.asins) == 0 && !ri.librivox)
 }
 
 // workState tracks a work's identity (slug + author set) and its recordings.
@@ -314,6 +339,11 @@ type planner struct {
 	// its survivor rather than minting there (tombstone.go).
 	redirects      model.Redirects
 	tombstoneRides map[string]string
+	// distinct is Options.Distinct as given, and keptApart its resolution
+	// through redirects (loadExisting): the reviewed pairs the honorific fold
+	// may not merge (peopleKeptApart).
+	distinct  []check.ReviewedDistinct
+	keptApart check.DistinctPairs
 	// seriesNameJoins is every claim this run JOINED to a catalogued series stored
 	// under another name than the claim gave (reportSeriesNameJoins).
 	seriesNameJoins map[SeriesNameJoin]bool
@@ -621,11 +651,9 @@ type sourceBook struct {
 	// it is set.
 	authorCredits []credit
 	creditsCached bool
-	// chapters is the source's own chapter rows, read when non-nil instead of
-	// raw's chapters array. buildChapters accepts either documented offset
-	// spelling (see rawChapter.startMS), so a parser hands its rows over
-	// as-is.
-	chapters []rawChapter
+	// chapters is the source's chapter rows, typed at parse time (sourceChapter),
+	// read when non-nil instead of raw's chapters array.
+	chapters []sourceChapter
 	// qualifiedTitle is the full title as the work identity read it before the
 	// title QUALIFIERS were stripped (qualifiedWorkTitle), set by
 	// normalizeEditionMarkers only when the strip changed it. resolveWork walks its
@@ -658,7 +686,7 @@ func (s sourceBook) str(key string) string { return s.raw.str(key) }
 
 // chapterRows returns the book's chapter rows: the typed field when the parser
 // set one, else the raw entry's own chapters array.
-func (s sourceBook) chapterRows() []rawChapter {
+func (s sourceBook) chapterRows() []sourceChapter {
 	if s.chapters != nil {
 		return s.chapters
 	}
@@ -713,7 +741,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options, parseSkips []
 	// The regeneration trims a mirror-derived set to what the mirror's own rows
 	// vote for, so its rows must be the mirror's (regenerate.go).
 	if opts.Mode == ModeRegenerateGenres && model.TierOfSource(sourceType) != model.TierBulkMirror {
-		return Summary{}, fmt.Errorf("genre regeneration requires bulk-mirror (libex) rows; use RunLibex")
+		return Summary{}, fmt.Errorf("genre regeneration requires bulk-mirror (libex or LibriVox) rows; use RunLibex or RunLibrivox")
 	}
 	if err := ValidateRowsAsOf(opts.Mode, opts.RowsAsOf, time.Now().UTC()); err != nil {
 		return Summary{}, err
@@ -781,10 +809,13 @@ func openPlanner(sourceType string, opts Options) (*planner, error) {
 
 // plannerOn is openPlanner over a store the caller already holds (AttestAt): the
 // planner, plus the ASIN LOCATION index a run that can attest or enrich needs
-// (the other runs never ask where an ASIN sits, so they never pay for it).
+// (the other runs never ask where an ASIN sits, so they never pay for it). A
+// LibriVox run never does either: its rows carry no ASIN, and its regeneration
+// locates them by project id (librivoxState.held), so building the index would
+// only add the catalogue's ASIN-collision warnings to its summary.
 func plannerOn(store *pack.Store, sourceType string, opts Options) *planner {
 	p := newPlanner(store, sourceType, opts)
-	if opts.Mode.locatesASINs() || p.userTier {
+	if (opts.Mode.locatesASINs() || p.userTier) && sourceType != sourceLibrivox {
 		p.asinLoc = map[string]RecRef{}
 	}
 	return p
@@ -820,6 +851,7 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 		loadedPositions:    opts.AttachEditions,
 		regenRecs:          regenRecsFor(opts.Mode),
 		rowsAsOf:           opts.RowsAsOf,
+		distinct:           opts.Distinct,
 		lv:                 newLibrivoxState(),
 	}
 }
@@ -843,11 +875,17 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 		p.setEvidenceRuntime(&books[i])
 	}
 	p.loadExisting()
-	// A LibriVox row's credits are keyed by LibriVox id before any census reads
-	// their names (librivox.go); a no-op for every other source.
-	p.keyLibrivoxCredits(books)
+	// A LibriVox row's credit names are decoded before any census reads them,
+	// and its author credits are resolved by LibriVox id once the batch's
+	// credit decisions are taken (librivox.go, librivoxpeople.go); no-ops for
+	// every other source.
+	p.decodeLibrivoxCredits(books)
 	if p.mode.plansRows() {
+		// The genre regeneration reads no credit, so it takes no credit
+		// decisions and runs no author rules over the unheld projects of its
+		// selection, whose notes would describe a create run it is not.
 		p.credits = p.creditContextOf(books)
+		p.resolveLibrivoxAuthors(books)
 	}
 	if p.mode == ModeRelocate {
 		p.prepareRelocation()
@@ -885,12 +923,14 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	p.reportEstimates()
 	p.reportRefreshes()
 	p.reportDuplicateIdentities()
+	p.finishLibrivoxHolds()
 	p.reportLibrivoxVariants()
 	p.reportLibrivoxAuthorVariants()
-	p.settleLibrivoxUnrecorded()
+	p.settleUnrecordedCredits()
 	p.reportTombstoneRides()
 	p.reportSeriesNameJoins()
 	p.stampLibrivoxPeople()
+	p.restateLibrivoxRecordings()
 	if p.fatal != nil {
 		return p.fatal
 	}
@@ -1091,6 +1131,9 @@ func (p *planner) planCreate(books []sourceBook) {
 	// A LibriVox author id that is a catalogued author spelled with more or
 	// fewer words is that person for the whole batch (librivoxauthors.go).
 	p.keyLibrivoxAuthorVariants(books, titles, suffixes)
+	// Only now does every author id land where it will: the readers, and the
+	// rest that reads the authors' people, are decided against that.
+	p.settleLibrivoxPeople(books)
 	for i, b := range books {
 		asin := NormalizeASIN(b.str("asin"))
 		p.setSource(asin, b)
@@ -1180,6 +1223,9 @@ func seriesClaimsAbridged(refs []seriesRef) *bool {
 // reads share one walk and one parse of each pack: the packs the planner then
 // composes into are already in hand rather than read a second time.
 func (p *planner) loadExisting() {
+	// The reviewed pairs resolve through the tombstone table this load reads,
+	// on every way out of it (an unreadable catalogue still has its batch).
+	defer func() { p.keptApart = check.ResolveDistinct(p.distinct, p.redirects) }()
 	res := check.LoadStore(p.store)
 	p.loadProblems = len(res.Problems)
 	// The create path's duplicate-identity index, off the load that is already
@@ -1226,6 +1272,7 @@ func (p *planner) loadExisting() {
 			ri := &recInfo{
 				narrators: ToSet(r.Narrators),
 				asins:     map[string]bool{},
+				librivox:  r.LibrivoxID != 0,
 				known: knownRuntime(r.RuntimeMin, r.ReleaseDate, r.AddedAt, r.Sources,
 					func() int { return chapterMinutes(r.Chapters) }),
 				// abridged stays nil (unknown) for a disk incumbent: the model's
@@ -1416,7 +1463,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	authorCredits := p.rowAuthorCredits(b)
 	if len(authorCredits) == 0 {
 		warn("no author; a work requires an author; skipped")
-		p.summary.Skips = appendSkip(p.summary.Skips, asin, reasonMissingAuthor)
+		p.noteSkip(b, reasonMissingAuthor)
 		p.noteLostSeriesClaims(b, -1, nil)
 		return
 	}
@@ -1436,7 +1483,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 
 	if workTitle == "" {
 		warn("no title; skipped")
-		p.summary.Skips = appendSkip(p.summary.Skips, asin, reasonMissingTitle)
+		p.noteSkip(b, reasonMissingTitle)
 		p.noteLostSeriesClaims(b, -1, nil)
 		return
 	}
@@ -1449,12 +1496,12 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// COMPLETION claim lost nothing (the position is the incumbent's), so only
 	// the row's other claims are noted as lost.
 	if ws, occupant := p.attachTarget(b, workTitle); ws != nil {
-		p.attachRow(ws, b, workTitle, asin, lang, narratorNames, warn)
+		p.attachRow(ws, b, workTitle, asin, lang, authorCredits, narratorNames, warn)
 		_, at := completionClaim(b)
 		p.noteLostSeriesClaims(b, at, ws)
 		return
 	} else if occupant != "" {
-		p.summary.Skips = appendSkip(p.summary.Skips, asin, reasonPositionTaken)
+		p.noteSkip(b, reasonPositionTaken)
 		warn("its series position is already held by %q, and it is not another edition of that work; skipped (--attach-editions never adds a second work at an occupied position)", occupant)
 		_, at := completionClaim(b)
 		p.noteLostSeriesClaims(b, at, nil)
@@ -1502,48 +1549,25 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		p.noteLostSeriesClaims(b, -1, nil)
 		return
 	}
-	if route.renames != nil {
-		authorCredits = p.respellLibrivoxAuthors(b, authorCredits, route.renames)
+	if route.moves != nil {
+		authorCredits = p.moveLibrivoxAuthors(b, authorCredits, route.moves)
 	}
 	ident := p.rowIdentityOf(b, workTitle)
 	if route.walk == nil &&
 		p.refuseDuplicateIdentity(b, ident, workTitle, b.str("title"), posSuffix, lang, authorCredits, claim) {
-		p.summary.Skips = appendSkip(p.summary.Skips, asin, reasonIdentityDuplicate)
 		p.noteLostSeriesClaims(b, -1, nil)
 		return
 	}
 
-	// The row's author slugs, split into the list the record stores and the
-	// subset work identity is matched on (workidentity.go). Resolving them with
-	// rowWorkAuthors is what creates their person records, exactly as
-	// creditSlugs did.
-	//
-	// A LibriVox row decides its work FIRST, on the read-only author set (the
-	// same slugs the create path mints), because an attach to a catalogued work
-	// records none of the row's credits: a translator the work does not name
-	// would otherwise be created and credited nowhere (librivoxRowAuthors). A
-	// LibriVox row that creates its work then mints them like any other.
-	var authors workAuthors
-	if b.lv != nil {
-		authors = p.rowWorkAuthorsRO(authorCredits)
-	} else {
-		authors = p.rowWorkAuthors(authorCredits, warn)
-	}
+	// The work is decided on the row's READ-ONLY author set (the same slugs the
+	// create path mints, workidentity.go): its people are created only by
+	// getOrCreateWork, once the work is decided (meta#2760).
 	var walk workWalk
 	if route.walk != nil {
 		walk = *route.walk
 	} else {
-		walk = p.resolveWork(workTitle, b.str("title"), b.qualifiedTitle, posSuffix, authors, lang, claim)
+		walk = p.resolveWork(workTitle, b.str("title"), b.qualifiedTitle, posSuffix, p.rowWorkAuthorsRO(authorCredits), lang, claim)
 	}
-	var unrecorded []LibrivoxUnrecordedCredit
-	if b.lv != nil {
-		if walk.ws == nil {
-			authors = p.rowWorkAuthors(authorCredits, warn)
-		} else {
-			unrecorded = p.librivoxRowAuthors(b, walk.ws, authorCredits, warn)
-		}
-	}
-	narratorSlugs := p.rowNarratorSlugs(b, narratorNames, warn)
 
 	// The book's genre claims are mapped from the source's own strings onto this
 	// project's vocabulary (LICENSING.md: never a retailer's taxonomy verbatim)
@@ -1556,7 +1580,8 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// raw for the same reason too - resolving them is wasted work on every row
 	// that merges.
 	facts := &workFacts{genres: b.genres, credits: authorCredits}
-	ws := p.getOrCreateWork(walk, authors, lang, facts, warn)
+	ws, unrecorded := p.getOrCreateWork(walk, b, asin, lang, facts, warn)
+	narratorSlugs := p.rowNarratorSlugs(b, narratorNames, warn)
 	// The title the row was RESOLVED by - its own, or its full title when the
 	// work was found or created on the full title's chain - is the one the
 	// recording's serial guard and the series placement read a stated volume
@@ -1572,9 +1597,10 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		p.rememberIdentity(ident, ws.slug, workTitle)
 	}
 	p.addRecording(ws, b, resolvedTitle, asin, lang, narratorSlugs, warn)
-	if p.landedRec != "" && b.lv != nil {
-		p.summary.LibrivoxUnrecordedCredits = append(p.summary.LibrivoxUnrecordedCredits, unrecorded...)
-		p.summary.LibrivoxUnrecordedCredits = append(p.summary.LibrivoxUnrecordedCredits, p.unsluggableLibrivoxCredits(b, ws.slug, unsluggable)...)
+	if p.landedRec != "" {
+		// unsluggable is only ever set for a LibriVox row.
+		p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, unrecorded...)
+		p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, p.unsluggableLibrivoxCredits(b, ws.slug, unsluggable)...)
 	}
 	// A row of this run landing on a work the run created adds what it states
 	// (credits, genres - the recording vote reads the recording it landed on);
@@ -1659,13 +1685,13 @@ func (p *planner) admitRecordingFacts(b sourceBook, warn func(string, ...any)) (
 	lang, ok = b.language()
 	if !ok {
 		warn("unknown language %q; skipped", b.str("language"))
-		p.summary.Skips = appendSkip(p.summary.Skips, NormalizeASIN(b.str("asin")), reasonLanguage)
+		p.noteSkip(b, reasonLanguage)
 		return "", nil, false
 	}
 	narratorNames = p.rowNarratorNames(b)
 	if len(narratorNames) == 0 {
 		warn("no narrator; a recording requires narrators; skipped")
-		p.summary.Skips = appendSkip(p.summary.Skips, NormalizeASIN(b.str("asin")), reasonMissingNarrator)
+		p.noteSkip(b, reasonMissingNarrator)
 		return "", nil, false
 	}
 	return lang, narratorNames, true
@@ -1690,6 +1716,9 @@ func (p *planner) rowAuthorCredits(b sourceBook) []credit { return rowAuthorCred
 func rowAuthorCreditsIn(ctx creditContext, b sourceBook) []credit {
 	if b.creditsCached {
 		return b.authorCredits
+	}
+	if b.lv != nil {
+		return librivoxAuthorCredits(ctx, b)
 	}
 	return sourceCredits(b.authors, b.str("author"), ctx.author)
 }
@@ -1820,6 +1849,7 @@ func (p *planner) creditCensusesOf(books []sourceBook) (author, narrator creditC
 			foldSyntheticVoice: foldSynthetic,
 			onHonorific:        p.noteHonorific,
 			onCredential:       p.noteCredential,
+			keptApart:          p.peopleKeptApart,
 		}
 	}
 	// The AI-narration fold is the NARRATOR side of a USER-LIBRARY run and
@@ -1829,8 +1859,37 @@ func (p *planner) creditCensusesOf(books []sourceBook) (author, narrator creditC
 	// all resolve a synthetic credit to the canonical, so a persona spelling
 	// never becomes evidence of its own name.
 	author = notify(seenIn(authorSide), false)
-	author.keepHonorific = p.lv.keepTitled
-	return author, notify(seenIn(narratorSide), p.userTier)
+	narrator = notify(seenIn(narratorSide), p.userTier)
+	if p.sourceType == sourceLibrivox {
+		// A LibriVox credit's person is decided by its LibriVox id (an author's
+		// by resolveLibrivoxAuthors, a known reader's by librivoxReaderSlug),
+		// so whether a fold the cleaning makes is a merge the import performs
+		// is known only there: noteLibrivoxFolds reports them.
+		author.onHonorific, narrator.onHonorific = nil, nil
+	}
+	return author, narrator
+}
+
+// peopleKeptApart reports whether a reviewed merge-people rejection
+// (Options.Distinct) recorded the persons credit names a and b spell as two
+// people, so that no honorific fold may resolve one onto the other: "Dr. Alex
+// George" is not `alex-george`, the novelist. Each name is asked as its person
+// slug, a retired one as its survivor (the decisions were resolved the same
+// way) - not through the initials merge, which the census predates; a name that
+// slugs away to nothing is no record a review named.
+func (p *planner) peopleKeptApart(a, b string) bool {
+	sa, fa := personSlug(a)
+	sb, fb := personSlug(b)
+	return !fa && !fb && p.personSlugsKeptApart(sa, sb)
+}
+
+// personSlugsKeptApart is peopleKeptApart for two person slugs.
+func (p *planner) personSlugsKeptApart(a, b string) bool {
+	if len(p.keptApart[model.RedirectPeople]) == 0 {
+		return false
+	}
+	return p.keptApart.Has(model.RedirectPeople,
+		p.redirects.Live(model.RedirectPeople, a), p.redirects.Live(model.RedirectPeople, b))
 }
 
 // noteHonorific records one honorific merge for the run's report. It is a SET
@@ -2029,12 +2088,12 @@ func (p *planner) workCredits(credits []credit) []model.Credit {
 		if len(c.roles) == 0 {
 			continue
 		}
-		// resolvePerson, not personSlug: the person may have been created under
+		// resolveCredit, not personSlug: the person may have been created under
 		// another spelling of their initials, which is a record this credit must
 		// NAME rather than miss - resolving "A.B. Kovacs" straight through
 		// personSlug lands on a slug nothing created, and the role credit was
 		// silently dropped.
-		r := p.resolvePerson(c.name)
+		r := p.resolveCredit(c)
 		if r.fellBack {
 			p.noteUnnamedCredit(c.name)
 			continue
@@ -2100,17 +2159,39 @@ func dedupeSlugs(names []string, resolve func(i int, name string) string) []stri
 // Otherwise the surviving name would be whichever row arrived first, which is
 // the order dependence the pre-pass exists to remove.
 func (p *planner) getOrCreatePerson(name string, warn func(string, ...any)) string {
-	r := p.resolvePerson(name)
+	r, _ := p.getOrCreatePersonIf(name, warn, func(personResolution) bool { return true })
+	return r.slug
+}
+
+// getOrCreatePersonIf resolves name and, only when keep accepts the resolution,
+// acts on it as getOrCreatePerson does: it creates the record the resolution
+// names, or notes the tombstone it rode. The resolution and the act are one
+// call, so the act can never run on a stale answer (one resolved before
+// another credit created the person), and a caller that has to look at who a
+// credit names before deciding (attachRowAuthors) resolves it once. It returns
+// the resolution and whether keep accepted it.
+func (p *planner) getOrCreatePersonIf(name string, warn func(string, ...any), keep func(personResolution) bool) (personResolution, bool) {
+	return p.getOrCreateCreditIf(credit{name: name}, warn, keep)
+}
+
+// getOrCreateCreditIf is getOrCreatePersonIf for one author-side credit: the
+// resolution is the credit's (resolveCredit: its decided person when it
+// carries one, a LibriVox author id's, else its name's), and a record it
+// creates is created under the name that resolution gives.
+func (p *planner) getOrCreateCreditIf(c credit, warn func(string, ...any), keep func(personResolution) bool) (personResolution, bool) {
+	r := p.resolveCredit(c)
+	if !keep(r) {
+		return r, false
+	}
 	if r.fellBack {
-		warn("name %q produced an empty slug; using %q", name, r.slug)
+		warn("name %q produced an empty slug; using %q", c.name, r.slug)
 	}
 	if r.create {
-		return p.createPerson(r.slug, r.name)
-	}
-	if r.from != r.slug {
+		p.createPerson(r.slug, r.name)
+	} else if r.from != r.slug {
 		p.noteTombstone(model.RedirectPeople, r.from, r.slug)
 	}
-	return r.slug
+	return r, true
 }
 
 // personResolution is resolvePerson's answer: the slug a credit lands on, and
@@ -2136,6 +2217,25 @@ type personResolution struct {
 // create).
 func (p *planner) resolvePerson(name string) personResolution {
 	return p.resolvePersonIn(p.credits, name)
+}
+
+// resolveCredit is resolvePerson for one author-side credit: the person decided
+// for it before planning when there is one (credit.person, a LibriVox author
+// credit), resolved as resolvePerson resolves a name (live, or to be created
+// under the decided name), else its name's resolution.
+func (p *planner) resolveCredit(c credit) personResolution {
+	return p.resolveCreditIn(p.credits, c)
+}
+
+// resolveCreditIn is resolveCredit under an explicit batch context.
+func (p *planner) resolveCreditIn(ctx creditContext, c credit) personResolution {
+	if c.person == nil {
+		return p.resolvePersonIn(ctx, c.name)
+	}
+	if live, ok := p.livePerson(c.person.slug); ok {
+		return personResolution{slug: live, from: c.person.from}
+	}
+	return personResolution{slug: c.person.slug, create: true, name: c.person.name}
 }
 
 // resolvePersonIn is resolvePerson under an explicit batch context (its initials
@@ -2364,14 +2464,30 @@ func (f *workFacts) workCredits(p *planner) []model.Credit {
 // chain. facts are the creation-only facts (genres, credits); they are stored only
 // on the branch that creates a work, which is the only place they can be stored.
 // WHICH work a row belongs to, and why, is resolveWork's to say.
-func (p *planner) getOrCreateWork(walk workWalk, authors workAuthors, lang string, facts *workFacts, warn func(string, ...any)) *workState {
+//
+// It is also the ONE place a row's author-side people are created, which is why
+// the caller hands it the row's raw credits (facts.credits) and never a resolved
+// author set: a row creating its work mints every author (rowWorkAuthors), and
+// a row merging into the work the walk found creates only the people that work
+// credits, returning the rest as unrecorded credits (attachRowAuthors). A person
+// created before the decision would be an orphan whenever the row merges into a
+// work that does not name them (meta#2760). asin keys those credits for a
+// non-LibriVox row.
+func (p *planner) getOrCreateWork(walk workWalk, b sourceBook, asin, lang string, facts *workFacts, warn func(string, ...any)) (*workState, []UnrecordedCredit) {
+	var authors workAuthors
+	var unrecorded []UnrecordedCredit
+	if walk.ws != nil {
+		unrecorded = p.attachRowAuthors(b, asin, walk.ws, facts.credits, warn)
+	} else {
+		authors = p.rowWorkAuthors(facts.credits, warn)
+	}
 	ws := p.mergeOrCreate(walk, authors, lang, facts, warn)
 	// Said after the decision so it names the slug the row actually landed on,
 	// not the fallback base the chain composed for the unslugifiable title.
 	if ws != nil && walk.untitled != "" {
 		warn("title %q produced an empty slug; using %q", walk.untitled, ws.slug)
 	}
-	return ws
+	return ws, unrecorded
 }
 
 func (p *planner) mergeOrCreate(walk workWalk, authors workAuthors, lang string, facts *workFacts, warn func(string, ...any)) *workState {
@@ -2647,12 +2763,11 @@ func (p *planner) walkWorkChain(title string, chain workChain, authors workAutho
 // function (the guard to learn whether the row would create a work, addBook to
 // act), and both hand it the row's authors resolved the same way (resolvePerson,
 // which getOrCreatePerson acts on and rowWorkAuthorsRO reads). addBook does not
-// reuse the guard's walk: it resolves again with the author set the create path
-// actually minted, so an in-row difference between the read-only and the created
-// resolution can never make the create path act on an answer it did not reach.
-// The one exception is a LibriVox row, which walks on the read-only set and mints
-// only afterwards (an attach creates only the people its work credits): that
-// rests on resolvePerson's own guarantee that the two resolutions name one slug.
+// reuse the guard's walk: it resolves again, on the same read-only author set,
+// and every row of every source mints its people only afterwards, inside
+// getOrCreateWork (an attach creates only the people its work credits,
+// meta#2760). That rests on resolvePerson's own guarantee that the read-only and
+// the created resolution name one slug.
 //
 // The row's resolved title is walked first; that is where the overwhelming
 // majority of works are. When it holds no match, the FULL title's chain is walked
@@ -3025,6 +3140,13 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 		// through to a distinct slug under the same work.
 		prod := resolvedRowProduction(b, narrSet)
 		for _, m := range matches {
+			// A LibriVox project is a production of its own: a retail row read by
+			// the same volunteer at a compatible runtime is still another
+			// production, and merging its ASIN would attest the project over
+			// with retail facts (attestOnMerge).
+			if m.info.librivox {
+				continue
+			}
 			// A sibling recording whose row claimed a DIFFERENT position in a
 			// series this row also claims is a different volume, however alike the
 			// two productions look. Checked before the runtime and abridged guards
@@ -3105,7 +3227,7 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 	rec.AddedAt = p.importDate
 
 	ri := &recInfo{
-		narrators: narrSet, asins: map[string]bool{}, abridged: b.abridged, claims: claims,
+		narrators: narrSet, asins: map[string]bool{}, abridged: b.abridged, claims: claims, librivox: rec.LibrivoxID != 0,
 		known: knownRuntime(rec.RuntimeMin, rec.ReleaseDate, rec.AddedAt, []model.Source{model.Source(p.curSource)},
 			func() int { return chapterMinutes(rec.Chapters) }),
 	}
@@ -3846,19 +3968,18 @@ func (p *planner) finalizeSeries() {
 // titles and enforcing the same monotonic-from-zero rule metacheck applies. On
 // any structural violation it warns and returns nil (the recording is emitted
 // without chapters).
-func buildChapters(raw []rawChapter, warn func(string, ...any)) []outChapter {
-	if len(raw) == 0 {
+func buildChapters(rows []sourceChapter, warn func(string, ...any)) []outChapter {
+	if len(rows) == 0 {
 		return nil
 	}
-	out := make([]outChapter, 0, len(raw))
-	for i, rc := range raw {
-		start, sOK := rc.startMS()
-		length, lOK := rc.lengthMS()
-		if !sOK || !lOK || length <= 0 || start < 0 {
+	out := make([]outChapter, 0, len(rows))
+	for i, rc := range rows {
+		start, length := rc.startMS, rc.lengthMS
+		if !rc.hasStart || !rc.hasLength || length <= 0 || start < 0 {
 			warn("chapter %d has invalid offsets; chapters omitted", i+1)
 			return nil
 		}
-		title := strings.TrimSpace(rc.str("title"))
+		title := strings.TrimSpace(rc.title)
 		if title == "" {
 			title = fmt.Sprintf("Chapter %d", i+1)
 		}

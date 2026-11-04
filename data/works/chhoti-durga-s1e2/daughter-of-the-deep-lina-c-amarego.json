@@ -2407,6 +2407,7 @@
         "gene-stratton-porter"
       ],
       "genres": [
+        "historical-fiction",
         "romance"
       ],
       "id": "daughter-of-the-land",
@@ -3690,6 +3691,18 @@
             {
               "asin": "B09CLHJZL5",
               "region": "uk"
+            },
+            {
+              "asin": "B09CLGW5L3",
+              "region": "ca"
+            },
+            {
+              "asin": "B09CLJFZJF",
+              "region": "de"
+            },
+            {
+              "asin": "B091QDSZJD",
+              "region": "ca"
             }
           ],
           "chapters": [
@@ -3823,6 +3836,21 @@
             {
               "imported_at": "2026-10-03",
               "ref": "B09CLHJZL5",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-03",
+              "ref": "B09CLGW5L3",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-03",
+              "ref": "B09CLJFZJF",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-03",
+              "ref": "B091QDSZJD",
               "type": "libex-import"
             }
           ],
@@ -6022,7 +6050,7 @@
     "daughter-of-the-sioux": {
       "added_at": "2026-10-28",
       "authors": [
-        "charles-king"
+        "charles-king-1844-1933"
       ],
       "genres": [
         "historical-fiction"

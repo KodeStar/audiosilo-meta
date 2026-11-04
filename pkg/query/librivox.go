@@ -15,7 +15,7 @@ import (
 
 // librivox.go is the API's side of the LibriVox layer (librivoxSchemaVersion):
 // the ?source= filter on the list surfaces, lookup?librivox_id=, and the load
-// gate proving what a version 8 artifact claims. The LibriVox-shaped feed is
+// gates proving what a version 8 and a version 9 artifact claim. The LibriVox-shaped feed is
 // librivoxfeed.go.
 
 // librivoxShapeSQL proves the columns and tables a version 8 artifact claims:
@@ -29,13 +29,26 @@ var librivoxShapeSQL = []string{
 	`SELECT work_id, recording_id, type FROM recording_sources LIMIT 0`,
 }
 
+// librivoxRecordingShapeSQL proves what a version 9 artifact claims (the
+// LIBRIVOX RECORDING layer, librivoxRecordingSchemaVersion), the same way.
+var librivoxRecordingShapeSQL = []string{
+	`SELECT librivox_title FROM recordings LIMIT 0`,
+	`SELECT section_number FROM chapters LIMIT 0`,
+	`SELECT work_id, recording_id, person_id, role, ord FROM recording_credits LIMIT 0`,
+	`SELECT work_id, recording_id, chapter_idx, person_id, ord FROM chapter_readers LIMIT 0`,
+	`SELECT work_id, recording_id, genre, ord FROM recording_librivox_genres LIMIT 0`,
+	`SELECT added_at FROM recording_sources LIMIT 0`,
+}
+
 // ---- the source filter --------------------------------------------------------
 
 // The SOURCE FILTER (?source=<type>): a reader who wants only LibriVox's free
 // recordings asks for `source=librivox`. It narrows the work lists - the combined
 // and work searches (both boosts included) and works/latest - to works with at
 // least one recording whose sources[] names that type, through the
-// recording_sources table (idx_recording_sources_type). Like ?lang= it narrows
+// recording_sources table (idx_recording_sources_type); works/latest then orders
+// them by that source's recordings rather than by the work (latestSourceHeadSQL
+// in queries.go), so a new reading of an old classic is new. Like ?lang= it narrows
 // LISTS only; a record page or a lookup names its record outright.
 //
 // The value is one source type the schema's enum names (model.KnownSourceType);
@@ -64,6 +77,30 @@ func sourceParam(w http.ResponseWriter, q url.Values) (string, bool) {
 // hasLibrivoxLayer reports whether this artifact carries the LibriVox layer
 // (librivoxSchemaVersion): the source filter, the LibriVox columns and the feed.
 func (s *DB) hasLibrivoxLayer() bool { return s.schemaVersion >= librivoxSchemaVersion }
+
+// hasLibrivoxRecordingLayer reports whether this artifact carries the LIBRIVOX
+// RECORDING layer (librivoxRecordingSchemaVersion): a project's own title,
+// section numbers, translators, section readers and genre names.
+func (s *DB) hasLibrivoxRecordingLayer() bool {
+	return s.schemaVersion >= librivoxRecordingSchemaVersion
+}
+
+// librivoxRecordingFilledSQL asks whether the LIBRIVOX RECORDING layer holds
+// anything: a LibriVox genre name, or a LibriVox recording carrying its
+// project's title (walked through idx_recordings_librivox, stopping at the
+// first). Every restated LibriVox recording carries the title, so an artifact
+// whose LibriVox recordings were never restated answers false.
+const librivoxRecordingFilledSQL = `SELECT EXISTS (SELECT 1 FROM recording_librivox_genres) ` +
+	`OR EXISTS (SELECT 1 FROM recordings WHERE librivox_id IS NOT NULL AND librivox_title IS NOT NULL)`
+
+// librivoxFeedLayer reports whether the LibriVox-shaped feed reads the LIBRIVOX
+// RECORDING layer at all: the artifact carries it AND it is filled
+// (DB.librivoxRecordingFilled). Otherwise every row gets the version 8 answer
+// from the version 8 queries; with it, each row still falls back on its own
+// when the pass has not reached it (lvRestatedExpr).
+func (s *DB) librivoxFeedLayer() bool {
+	return s.hasLibrivoxRecordingLayer() && s.librivoxRecordingFilled
+}
 
 // ---- lookup?librivox_id= ------------------------------------------------------
 

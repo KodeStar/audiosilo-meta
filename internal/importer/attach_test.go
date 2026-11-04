@@ -820,9 +820,13 @@ func TestAttachThatWritesNothingIsASkip(t *testing.T) {
 	ws.recs["ghost"] = &recInfo{narrators: map[string]bool{"cal-voice": true}, asins: map[string]bool{}}
 	p.people["cal-voice"] = "Cal Voice"
 	b := sourceBook{raw: rawBook{"asin": "B0ATTACH13", "title": "The Lost Coast", "region": "us"}}
-	p.attachRow(ws, b, "The Lost Coast", "B0ATTACH13", "en", []string{"Cal Voice"}, func(string, ...any) {})
-	if p.summary.Attached != 0 || p.summary.MergedASINs != 0 {
-		t.Errorf("Attached/MergedASINs = %d/%d, want 0/0", p.summary.Attached, p.summary.MergedASINs)
+	// Its translator, whom the work does not name, is not reported either: the
+	// row was not attached.
+	credits := []credit{{name: "Ada Mapmaker"}, {name: "Tina Translator", roles: []string{"translator"}}}
+	p.attachRow(ws, b, "The Lost Coast", "B0ATTACH13", "en", credits, []string{"Cal Voice"}, func(string, ...any) {})
+	if p.summary.Attached != 0 || p.summary.MergedASINs != 0 || len(p.summary.UnrecordedCredits) != 0 {
+		t.Errorf("Attached/MergedASINs/UnrecordedCredits = %d/%d/%+v, want 0/0/none",
+			p.summary.Attached, p.summary.MergedASINs, p.summary.UnrecordedCredits)
 	}
 	if want := []RowSkip{{ASIN: "B0ATTACH13", Reason: RefusalPositionClaimed}}; !reflect.DeepEqual(p.summary.Skips, want) {
 		t.Errorf("Skips = %+v, want %+v", p.summary.Skips, want)

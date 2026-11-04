@@ -260,14 +260,26 @@ export interface ChaptersResponse {
     counts: a prolific narrator (or a corporate credit like "Full Cast") has more
     credits than one response carries, so counts come from the totals and the
     lists are what is shown. */
+/** One credit on a recording: which recording of which work. */
+export interface RecordingCredit {
+  work: WorkCard
+  recording_id: string
+}
+
 export interface Person {
   id: string
   name: string
   sort_name?: string
   authored: WorkCard[]
-  narrated: { work: WorkCard; recording_id: string }[]
+  narrated: RecordingCredit[]
   authored_total: number
   narrated_total: number
+  /** The recordings that credit this person as their own translator (a
+      LibriVox project's translator, credited on the recording rather than the
+      work). Absent when there are none, and on an artifact older than
+      schema_version 9; a translator a work credits is in `authored` already. */
+  translated?: RecordingCredit[]
+  translated_total?: number
   limit: number
   offset: number
 }

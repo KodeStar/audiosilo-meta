@@ -32,7 +32,9 @@ import (
 // the match only adds the note, and a review can never be accepted.
 //
 // Slug-valued fields resolve through the appropriate tombstone namespace; literal
-// titles, positions and languages never do. Entries retain the reviewed spelling.
+// titles, positions and languages never do. The one exception is the WORK an
+// acceptance or assertion of a judgesOneWork op names: once retired it reads STALE
+// rather than resolving onto its survivor (retiredSubject). Entries retain the reviewed spelling.
 // Reviews converging after redirects keep all distinct reasons in file order. If
 // opposite decisions converge, rejection wins and the acceptance is refused.
 // STALE means no fresh proposal matches, not an error or permission to apply it.
@@ -47,14 +49,13 @@ import (
 // refusals and post-write validation still apply. A detector already proposing the same
 // identity turns it into an acceptance (REDUNDANT): like an accept, it promotes that
 // proposal even where the detector made it advisory, overriding the detector's veto. Once applied its records are
-// retired or joined, so it reads STALE and a re-run proposes nothing. A drop whose target
-// was since retired onto a survivor the series lists only at other slots is STALE too:
-// the work it named is gone and its survivor is not at that slot; a live target listed elsewhere
-// is REFUSED. A retitle is compared with the title the work (its survivor, if retired)
-// states NOW: the asserted To is STALE (applied), the asserted From is sourced, and any
-// other title is REFUSED naming it - the record moved, and a stale review must not
-// overwrite a title nobody reviewed - unless the target was retired, whose survivor's
-// other title is STALE, as for a drop.
+// retired or joined, so it reads STALE and a re-run proposes nothing. An acceptance or
+// assertion judging one work's own record whose work was since retired is STALE whatever
+// its survivor holds (retiredSubject says why). A live drop target listed only at other slots is
+// REFUSED. A retitle is compared with the title the work states
+// NOW: the asserted To is STALE (applied), the asserted From is sourced, and any other
+// title is REFUSED naming it - the record moved, and a stale review must not overwrite a
+// title nobody reviewed.
 //
 //go:embed reviewed.json
 var reviewedFile []byte
@@ -138,7 +139,9 @@ func mustParseReviewed(raw []byte) []reviewedDecision {
 // ReviewedDistinct returns this list's `reject`s of `merge-works`, `merge-series` and
 // `merge-people` proposals as the decisions pkg/check's advisory census honours
 // (check.ReviewedDistinct states what one means). cmd/metacheck hands them to the
-// load, since pkg/check cannot import this package.
+// load, since pkg/check cannot import this package; cmd/metaimport and
+// internal/issueform hand them to the importer (importer.Options.Distinct), whose
+// honorific fold reads the people namespace.
 func ReviewedDistinct() []check.ReviewedDistinct { return distinctOf(reviewedDecisions) }
 
 // distinctOf is ReviewedDistinct over a given list.
@@ -402,13 +405,78 @@ func retiredElsewhere(r reviewedDecision, target string, reds model.Redirects) [
 	return out
 }
 
-func resolvedProposal(p Proposal, class string, reds model.Redirects) Proposal {
-	live := func(kind model.RedirectKind, slug string) string {
-		if to, ok := reds.Survivor(kind, slug); ok {
-			return to
-		}
-		return slug
+// judgesOneWork are the ops whose Target is a WORK and whose action judges that one
+// record as it stands - its place in a series (drop, move, restate), its title, its
+// language, a field it lacks - rather than stating a positive fact of the book, which
+// is as true of its survivor (a merge, an added membership or link). A merge does
+// carry the loser's memberships over (internal/repair's rewriteMemberships), so the
+// survivor may sit at the very slot a drop names; that membership is still the
+// survivor's now, beside its own title and language, which nobody reviewed.
+// fill-field's recording-level fields name a recording, which no tombstone resolves,
+// so they never meet the rule. TestJudgesOneWorkClassifiesEveryOp pins the split.
+var judgesOneWork = map[string]bool{
+	OpDropMembership:  true,
+	OpMoveMembership:  true,
+	OpRestatePosition: true,
+	OpRetitle:         true,
+	OpSetWorkLanguage: true,
+	OpFillField:       true,
+}
+
+// retiredSubject says why an accepted or asserted decision of a judgesOneWork op whose
+// named work was retired (onto its resolved target, p.Target) reads STALE, or "" when
+// it does not. A survivor is another record: it can sit at the very slot, state the
+// very title or lack the very field the review was written against (two duplicates of
+// one book usually do), so resolving the decision onto it would change a record nobody
+// reviewed - a reviewed drop of a duplicate Philosopher's Stone, once merged, removing
+// the real one. The work it named is gone, so there is nothing left for it to apply
+// to, and it neither promotes the survivor's fresh proposal nor sources one, which is
+// also what keeps it from metarepair. A rejection still resolves: withholding the
+// survivor's proposal is conservative, never a write. A work deleted without a
+// redirect is no survivor either: an assertion naming it is REFUSED as naming no
+// record, an acceptance meets no fresh proposal and is STALE. A survivor still holding
+// what the review was written against is named (survivorHolds): that STALE line is the
+// one a reviewer must not prune unread, since the judgement may still be owed there.
+func retiredSubject(r reviewedDecision, p Proposal, ix *index) string {
+	if r.Decision == "reject" || !judgesOneWork[r.Op] || r.Target == p.Target {
+		return ""
 	}
+	why := fmt.Sprintf("%s was retired onto %s since: the work it names is gone, and a review of it never applies to its survivor",
+		r.Target, p.Target)
+	if held := survivorHolds(p, ix); held != "" {
+		why += "; " + held + ", so review it there"
+	}
+	return why
+}
+
+// survivorHolds names the part of a judgesOneWork proposal's precondition its resolved
+// target still meets - listed in the series at the slot it names, or stating the title
+// or language it changes from - or "" (nothing, or no catalogue to look in).
+func survivorHolds(p Proposal, ix *index) string {
+	if ix == nil {
+		return ""
+	}
+	switch p.Op {
+	case OpDropMembership, OpMoveMembership, OpRestatePosition:
+		for _, m := range ix.memberships[p.Target] {
+			if m.series == p.Series && importer.SameSlot(m.position, p.From) {
+				return fmt.Sprintf("series %s lists %s at that very position %q", p.Series, p.Target, m.position)
+			}
+		}
+	case OpRetitle:
+		if w := ix.workByID[p.Target]; w != nil && w.Title == p.From {
+			return fmt.Sprintf("%s states that very title %q", p.Target, w.Title)
+		}
+	case OpSetWorkLanguage:
+		if w := ix.workByID[p.Target]; w != nil && w.Language == p.From {
+			return fmt.Sprintf("%s states that very language %q", p.Target, w.Language)
+		}
+	}
+	return ""
+}
+
+func resolvedProposal(p Proposal, class string, reds model.Redirects) Proposal {
+	live := reds.Live
 	kind := model.RedirectWorks
 	switch p.Op {
 	case OpMergeSeries, OpSplitSeries:
@@ -547,6 +615,11 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 	for j, r := range rs {
 		if r.Op != OpReview {
 			resolved[j] = resolvedProposal(r.proposal(), "", reds)
+			if why := retiredSubject(r, resolved[j], ix); why != "" {
+				// It matches nothing and sources nothing: see retiredSubject.
+				statuses[j], whys[j] = statusStale, why
+				continue
+			}
 			if r.Decision == "assert" {
 				if elsewhere := retiredElsewhere(r, resolved[j].Target, reds); len(elsewhere) > 0 {
 					// Never widened: folding the other survivor onto the target is a decision
@@ -794,11 +867,11 @@ type sourcing struct {
 // returning where it sits; or, with a nil class, the status and why: STALE when a
 // record it names is gone or it has been applied (a merge's others all resolve to its
 // target, an added membership is listed at its slot, a dropped one is not listed at
-// all, its target was retired onto a survivor listed only at other slots, or a retitled
-// work already states the new title or was retired onto a survivor stating neither), REFUSED when it names no record (live or
-// retired), would widen or move one, the series holds an added position already, lists
-// a live dropped work at another position, would be left with no members by the drop,
-// or a live retitled work states neither title.
+// all, or a retitled work already states the new title), REFUSED when it names no record
+// (live or retired), would widen or move one, the series holds an added position
+// already, lists a dropped work at another position, would be left with no members by
+// the drop, or a retitled work states neither title. A drop or retitle of a retired work
+// never reaches it (retiredSubject).
 func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, status outcomeStatus, why string) {
 	if s.ix == nil {
 		return nil, 0, statusStale, "no catalogue to find its records in"
@@ -861,18 +934,13 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, s
 	}
 	switch p.Op {
 	case OpRetitle:
-		// The title is compared with the work as it stands now (a retired target's survivor):
+		// The title is compared with the work as it stands now:
 		// metarepair re-reads it the same way and refuses any other title as stale-value.
 		switch title := s.ix.workByID[p.Target].Title; title {
 		case p.To:
 			return nil, 0, statusStale, fmt.Sprintf("applied: work %s states the title %q", p.Target, title)
 		case p.From:
 		default:
-			// A retired target is the work the decision named no longer existing, as for a drop:
-			// its survivor's own title is nobody's review, so there is nothing left to apply.
-			if r.Target != p.Target {
-				return nil, 0, statusStale, fmt.Sprintf("applied: %s was merged into %s, which states the title %q", r.Target, p.Target, title)
-			}
 			return nil, 0, statusRefused, fmt.Sprintf("work %s now states the title %q, not the %q the assertion was written against",
 				p.Target, title, p.From)
 		}
@@ -892,18 +960,11 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, s
 		}
 	case OpDropMembership:
 		if listedAt == "" {
-			switch {
-			case len(elsewhere) == 0:
+			if len(elsewhere) == 0 {
 				return nil, 0, statusStale, fmt.Sprintf("applied: series %s does not list %s", p.Series, p.Target)
-			case r.Target != p.Target:
-				// A retired target is the work the decision named no longer existing: its survivor
-				// listed at another slot leaves nothing at the one named, so the drop is applied.
-				return nil, 0, statusStale, fmt.Sprintf("applied: %s was merged into %s, which series %s lists at position %s, not %q",
-					r.Target, p.Target, p.Series, strings.Join(elsewhere, ", "), p.From)
-			default:
-				return nil, 0, statusRefused, fmt.Sprintf("series %s lists %s at position %s, not %q", p.Series, p.Target,
-					strings.Join(elsewhere, ", "), p.From)
 			}
+			return nil, 0, statusRefused, fmt.Sprintf("series %s lists %s at position %s, not %q", p.Series, p.Target,
+				strings.Join(elsewhere, ", "), p.From)
 		}
 		// metarepair refuses to empty a series on every run: retiring it is a merge-series.
 		if !slices.ContainsFunc(s.ix.seriesByID[p.Series].Works, func(sw model.SeriesWork) bool {

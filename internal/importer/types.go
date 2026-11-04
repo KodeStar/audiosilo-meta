@@ -3,6 +3,7 @@ package importer
 import (
 	"io"
 
+	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -87,6 +88,9 @@ type outChapter struct {
 	// AudioURL is the section's own audio file (a LibriVox archive.org MP3);
 	// only a LibriVox recording states one (pkg/check requires librivox_id).
 	AudioURL string `json:"audio_url,omitempty"`
+	// A LibriVox section's readers and number (model.Chapter's) are never on a
+	// planned chapter: the LibriVox recording pass writes them onto the stored
+	// recording after planning (librivoxrecording.go).
 }
 
 type outRecording struct {
@@ -179,9 +183,11 @@ func (m Mode) locatesASINs() bool {
 }
 
 // plansRows reports whether the mode plans rows as BOOKS - credits, people,
-// series - and so needs the batch's credit decisions and series resolution.
-// The genre regeneration reads a row's ASIN and genres alone, and both
-// whole-batch passes over a row set the size of the catalogue would be waste.
+// series - and so needs the batch's credit decisions (a LibriVox batch's id
+// keying among them) and series resolution. The genre regeneration reads a
+// row's identifier (an ASIN, or a LibriVox project id), runtime and genres
+// alone, and the whole-batch passes over a row set the size of the catalogue
+// would be waste.
 func (m Mode) plansRows() bool {
 	return m != ModeRegenerateGenres
 }
@@ -294,6 +300,18 @@ type Options struct {
 	// its added_at, every recording's, every sources[].imported_at on it and its
 	// recordings - falls on a later day is not judged (regenerate.go).
 	RowsAsOf string
+	// Distinct are the reviewed "not one record" decisions
+	// (internal/audit/reviewed.json's merge rejections, audit.ReviewedDistinct),
+	// of which the run reads the PEOPLE namespace: a pair a merge-people
+	// rejection names is two people, so the honorific fold never folds one onto
+	// the other (honorific.go), in either direction and on the LibriVox paths
+	// too (librivoxpeople.go rule 1). The ids resolve through the catalogue's
+	// tombstone table, as the census's do. This package cannot import the audit
+	// (the audit imports it), so the decisions arrive as data, supplied by every
+	// caller that runs an import (cmd/metaimport, internal/issueform), which
+	// TestEveryOptionsLiteralCarriesDistinct holds every literal to. nil folds
+	// as the fold always has.
+	Distinct []check.ReviewedDistinct
 }
 
 // Summary is the outcome counts of a run.
@@ -455,14 +473,16 @@ type Summary struct {
 	// --skipped worklist cannot disagree. Always 0 without the option.
 	SkippedOccupied int
 	// Skips names the rows the run refused for a reason that has a refusal
-	// code (refusalcodes.go), one entry per refused COPY with an ASIN: the parse
+	// code (refusalcodes.go), one entry per refused COPY with an ASIN or a
+	// LibriVox project id (RowSkip carries whichever the row has): the parse
 	// layer's malformed-ASIN, unmapped-region and credit refusals, an unmapped
 	// language, SkippedOccupied's position-claimed, and the import-only codes -
-	// identity-duplicate (the create path's duplicate-identity guard),
-	// missing-author, missing-title and missing-narrator. An entry whose ASIN
-	// the run recorded after all (a sibling copy imported) is dropped. It is
-	// what `metaimport libex --skipped` writes; an ASIN may appear more than
-	// once, and a row stating no ASIN is not listed.
+	// identity-duplicate (the create path's duplicate-identity guard and the
+	// LibriVox trailing-qualifier rule), missing-author, missing-title and
+	// missing-narrator. An entry whose ASIN the run recorded after all (a
+	// sibling copy imported) is dropped. It is what `metaimport libex
+	// --skipped` and `metaimport librivox import --skipped` write; an ASIN may
+	// appear more than once, and a row stating neither key is not listed.
 	Skips []RowSkip
 
 	// RelocationSkips records relocation refusals independently of ASIN admission.
@@ -526,6 +546,10 @@ type Summary struct {
 	// imported before readers were keyed apart). Both 0 for every other source.
 	LibrivoxReadersSplit int
 	LibrivoxReadersMoved int
+	// LibrivoxRestated is what the recording pass restated on the run's
+	// LibriVox recordings, landed and held (librivoxrecording.go). Zero for
+	// every other source.
+	LibrivoxRestated LibrivoxRestated
 	// LibrivoxReadersUnslugged counts the readers minted at
 	// model.LibrivoxUnslugReaderSlug (`librivox-reader-<reader id>`) because
 	// their name slugs to nothing. 0 for every other source.
@@ -543,15 +567,22 @@ type Summary struct {
 	// (librivoxauthors.go rule 1). 0 for other sources.
 	LibrivoxAuthorVariants int
 	LibrivoxWorklist       []LibrivoxWorklistEntry
-	// LibrivoxUnrecordedCredits is every author or translator credit a landed
-	// LibriVox row states that the run did not record, in row order: the row
-	// attached to a work that does not name the person, and a create run never
-	// edits a catalogued work's credits. A person such a credit would have
-	// created is not created (an orphan record), so these are kept for
-	// recording-level credits (meta#2752) to pick up. A credit whose name slugs
-	// to nothing is listed here too, with Reason "unsluggable", whether the row
-	// attached or created its work (librivoxauthors.go rule 2).
-	LibrivoxUnrecordedCredits []LibrivoxUnrecordedCredit
+	// LibrivoxAuthorPairs is the worklist's people half: two author ids of
+	// the run one courtesy title apart, kept as people of their own (or held
+	// by rule 2, LibrivoxPairAuthor.Person ""), for a person to merge or
+	// confirm (librivoxpeople.go rule 1b).
+	LibrivoxAuthorPairs []LibrivoxAuthorPair
+	// UnrecordedCredits is every author, translator or other role credit a
+	// landed row of ANY source states that the run did not record, in row
+	// order: the row attached to a work that does not name the person, and a
+	// create run never edits a catalogued work's credits (attachRowAuthors). A
+	// person such a credit would have created is not created (an orphan
+	// record, meta#2760), so these are kept for recording-level credits
+	// (meta#2752) to pick up. A credit whose name slugs to nothing carries
+	// Reason "unsluggable": any source's on an attach, and a LibriVox one
+	// whether the row attached or created its work (librivoxauthors.go rule 2).
+	// A row the --attach-editions rule attaches reports its credits here too.
+	UnrecordedCredits []UnrecordedCredit
 	// Notes are aggregated lines about what a run DID, where the doing is a
 	// decision a reader should see rather than something that went wrong -
 	// today, the AI-narration fold (synthetic.go). They are kept apart from

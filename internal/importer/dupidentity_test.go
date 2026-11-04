@@ -736,3 +736,34 @@ func TestRecordingsOnlyCountsAQualifiedTitleMismatch(t *testing.T) {
 			sum.NewRecordings, sum.SkippedNoWork, sum.SkippedTitleNoMatch, sum.Warnings)
 	}
 }
+
+// "Chapter" reads into the division SEQUENCE (titlerule's divisionMarker), so two
+// listings of ONE chapter-titled work must still agree - [3] beside [3] - and the
+// decorated second listing is refused as before. A different chapter of the same
+// title is created: here the key itself keeps "chapter 4" apart, and where the key
+// strips the marker (a bracketed "(Volume 1, Chapter 02)") the sequences disagree.
+func TestCreateRefusesADecoratedDuplicateOfAChapterTitledWork(t *testing.T) {
+	dataDir := t.TempDir()
+	if sum := runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0CHAPT001", title: "The Long History: Chapter 3", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Ann Reader"}`, minutes: 300},
+	)); sum.NewWorks != 1 {
+		t.Fatalf("seed run: NewWorks = %d, want 1", sum.NewWorks)
+	}
+	sum := runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0CHAPT002", title: "The Long History: Chapter 3 (A LitRPG Adventure)", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Bob Reader"}`, minutes: 305},
+	))
+	if sum.SkippedDuplicateIdentity != 1 || sum.NewWorks != 0 {
+		t.Errorf("SkippedDuplicateIdentity = %d, NewWorks = %d, want 1 and 0: the decorated listing is the catalogued chapter; warnings = %v",
+			sum.SkippedDuplicateIdentity, sum.NewWorks, sum.Warnings)
+	}
+	sum = runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0CHAPT004", title: "The Long History: Chapter 4 (A LitRPG Adventure)", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Cy Reader"}`, minutes: 310},
+	))
+	if sum.SkippedDuplicateIdentity != 0 || sum.NewWorks != 1 {
+		t.Errorf("chapter 4: SkippedDuplicateIdentity = %d, NewWorks = %d, want 0 and 1; warnings = %v",
+			sum.SkippedDuplicateIdentity, sum.NewWorks, sum.Warnings)
+	}
+}

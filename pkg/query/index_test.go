@@ -1,6 +1,7 @@
 package query
 
 import (
+	"fmt"
 	"strings"
 	"testing"
 
@@ -76,11 +77,17 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 	latestSrc, latestSrcArgs := snap.latestCandidatesQuery(nil, model.SourceLibrivox, 200)
 	latestSrcLang, latestSrcLangArgs := snap.latestCandidatesQuery(langFilter{"de"}, model.SourceLibrivox, 200)
 	searchSrc, searchSrcArgs := ftsSearchQuery(kindAny, `"kafka"*`, 20, nil, model.SourceLibrivox)
-	feedAll, feedAllArgs := librivoxFeedQuery(librivoxFeedParams{limit: 50})
-	feedFiltered, feedFilteredArgs := librivoxFeedQuery(librivoxFeedParams{limit: 50, id: 527, since: 1, hasSince: true,
-		title: textMatch{value: "Metamorphosis"}, author: textMatch{value: "Kafka"}, genre: textMatch{value: "Short Stories"}, desc: true})
-	feedPrefix, feedPrefixArgs := librivoxFeedQuery(librivoxFeedParams{limit: 500, offset: 10,
-		title: textMatch{value: "meta", prefix: true}, author: textMatch{value: "kaf", prefix: true}, genre: textMatch{value: "short", prefix: true}})
+	feedAll, feedAllArgs := librivoxFeedQuery(librivoxFeedParams{limit: 50}, true)
+	filtered := librivoxFeedParams{limit: 50, id: 527, since: 1, hasSince: true,
+		title: textMatch{value: "Metamorphosis"}, author: textMatch{value: "Kafka"}, genre: textMatch{value: "Short Stories"}, desc: true}
+	prefixes := librivoxFeedParams{limit: 500, offset: 10,
+		title: textMatch{value: "meta", prefix: true}, author: textMatch{value: "kaf", prefix: true}, genre: textMatch{value: "short", prefix: true}}
+	feedFiltered, feedFilteredArgs := librivoxFeedQuery(filtered, true)
+	feedPrefix, feedPrefixArgs := librivoxFeedQuery(prefixes, true)
+	// The schema_version 8 spellings (the work's title, the vocabulary genres),
+	// which a newer binary still issues against an older release.
+	feedFilteredV8, feedFilteredV8Args := librivoxFeedQuery(filtered, false)
+	feedPrefixV8, feedPrefixV8Args := librivoxFeedQuery(prefixes, false)
 
 	const (
 		work      = "project-hail-mary"
@@ -119,6 +126,8 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 		{"narrated total", narratedTotalSQL, []any{person}},
 		{"authored page", authoredPageSQL, []any{person, 100, 0}},
 		{"narrated page", narratedPageSQL, []any{person, 100, 0}},
+		{"translated total", translatedTotalSQL, []any{person}},
+		{"translated page", translatedPageSQL, []any{person, 100, 0}},
 		// The sitemap shards. Each pages a whole family, so an ORDER BY that did
 		// not walk the primary key would sort the entire catalogue in a temp
 		// b-tree once per shard - six times over for works, on a route a crawler
@@ -190,6 +199,8 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 		{"librivox feed page", feedAll, feedAllArgs},
 		{"librivox feed page, filtered", feedFiltered, feedFilteredArgs},
 		{"librivox feed page, prefixes", feedPrefix, feedPrefixArgs},
+		{"librivox feed page, filtered, v8", feedFilteredV8, feedFilteredV8Args},
+		{"librivox feed page, prefixes, v8", feedPrefixV8, feedPrefixV8Args},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
@@ -238,12 +249,18 @@ func TestBatchLookupsAreIndexed(t *testing.T) {
 		{"match: recording runtimes", ids, matchRuntimesSQL, nil},
 		// The LibriVox layer: the boosts' source filter and the feed page's five
 		// batches, each over up to a page (500) of works.
-		{"works with a source", ids, func(ph string) string { return worksAdmittedSQL(ph, workHasSourceArm) }, []any{model.SourceLibrivox}},
+		{"works with a source", ids, func(ph string) string { return worksAdmittedSQL(ph, workHasSourceArm("works.id")) }, []any{model.SourceLibrivox}},
 		{"librivox feed: authors", ids, lvAuthorsSQL, nil},
-		{"librivox feed: translators", ids, lvTranslatorsSQL, nil},
-		{"librivox feed: genres", ids, lvGenresSQL, nil},
-		{"librivox feed: chapters", ids, lvChaptersSQL, nil},
+		{"librivox feed: translators", ids, lvTranslatorsSQL(true), nil},
+		{"librivox feed: translators, v8", ids, lvTranslatorsSQL(false), nil},
+		{"librivox feed: genres", ids, lvGenresSQL(true), nil},
+		{"librivox feed: genres, v8", ids, lvGenresSQL(false), nil},
+		{"librivox feed: chapters", ids, lvChaptersSQL(true), nil},
+		{"librivox feed: chapters, v8", ids, lvChaptersSQL(false), nil},
 		{"librivox feed: readers", ids, lvReadersSQL, nil},
+		// The LibriVox recording layer (schema_version 9): the recording's own
+		// translators, genre names and section readers.
+		{"librivox feed: section readers", ids, lvSectionReadersSQL, nil},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
@@ -259,7 +276,7 @@ func TestBatchLookupsAreIndexed(t *testing.T) {
 }
 
 // NOT guarded here: seriesMatchSQL and exactTitleSQL, the two search boosts'
-// probes, and personMatchSQL, works/match's author probe. This test checks INDEX SELECTION, and an FTS5 MATCH selects no index a
+// probes, and personMatchSQL and personInitialSQL, works/match's author probes. This test checks INDEX SELECTION, and an FTS5 MATCH selects no index a
 // plan can name - every FTS query reports as "SCAN <fts> VIRTUAL TABLE INDEX
 // n:M...", which assertNoFullScan deliberately allows, and the ORDER BY
 // legitimately sorts in a temp b-tree. A case here would pass no matter how
@@ -351,18 +368,42 @@ func TestGuidePresenceProbesAreIndexed(t *testing.T) {
 // primary-key SEARCH, run from the very constant the request path uses. The FTS
 // half reports as the usual VIRTUAL TABLE step and the LIMITed subquery as a
 // co-routine SCAN; the step this pins is the join back to works, which must
-// never read the table without an index.
+// never read the table without an index. Every filter shape goes through
+// exactTitleQuery, and a source-filtered one must also reach recording_sources
+// through its index (the correlated workHasSourceArm, one probe per row). The
+// plan names that table by its alias, rs, so the probe is pinned as an
+// equality SEARCH on both leading columns: a SCAN of rs, even one walking the
+// index, would read the source's whole range per matched title.
 func TestExactTitleWorksJoinIsIndexed(t *testing.T) {
 	snap := openTestDB(t, artifacttest.Build(t, artifacttest.Fixture()))
-	plan := queryPlan(t, snap, exactTitleSQL, titleMatch("spare"), exactTitleProbeLimit)
-	joined := strings.Join(plan, " | ")
-	for _, step := range plan {
-		if strings.HasPrefix(step, "SEARCH w ") && strings.Contains(step, "USING") && strings.Contains(step, "INDEX") {
-			t.Logf("plan -> %s", joined)
-			return
-		}
+	for _, tc := range []struct {
+		lang langFilter
+		src  string
+	}{
+		{nil, ""},
+		{langFilter{"de"}, ""},
+		{nil, model.SourceLibrivox},
+		{langFilter{"de"}, model.SourceLibrivox},
+	} {
+		t.Run(fmt.Sprintf("lang=%v source=%q", tc.lang, tc.src), func(t *testing.T) {
+			query, args := exactTitleQuery("spare", tc.lang, tc.src)
+			plan := queryPlan(t, snap, query, args...)
+			joined := strings.Join(plan, " | ")
+			if strings.Contains(joined, "SCAN rs") {
+				t.Errorf("recording_sources scanned rather than probed: %s", joined)
+			}
+			if tc.src != "" && !strings.Contains(joined, "idx_recording_sources_type (type=? AND work_id=?)") {
+				t.Errorf("source arm is not one idx_recording_sources_type probe per row: %s", joined)
+			}
+			for _, step := range plan {
+				if strings.HasPrefix(step, "SEARCH w ") && strings.Contains(step, "USING") && strings.Contains(step, "INDEX") {
+					t.Logf("plan -> %s", joined)
+					return
+				}
+			}
+			t.Errorf("no indexed SEARCH of works in the exact-title plan: %s", joined)
+		})
 	}
-	t.Errorf("no indexed SEARCH of works in the exact-title plan: %s", joined)
 }
 
 // TestReverseTranslationsUseTheTargetIndex pins the translation reads POSITIVELY.
@@ -410,4 +451,35 @@ func TestSeriesTranslatorsReadIsIndexed(t *testing.T) {
 		t.Errorf("the probe does not seek the translations kind prefix: %s", joined)
 	}
 	t.Logf("plan -> %s", joined)
+}
+
+// TestLatestBySourceGroupsInIndexOrder pins works/latest's source-filtered phase
+// one to group in idx_recording_sources_type's own work_id order: grouping by
+// the works side (w.id) instead cost a temp b-tree over the source's whole range
+// (about 21k rows for librivox) on top of the ORDER BY's.
+func TestLatestBySourceGroupsInIndexOrder(t *testing.T) {
+	snap := openTestDB(t, artifacttest.Build(t, artifacttest.Fixture()))
+	for _, lang := range []langFilter{nil, {"de"}} {
+		query, args := snap.latestCandidatesQuery(lang, model.SourceLibrivox, 200)
+		joined := strings.Join(queryPlan(t, snap, query, args...), " | ")
+		if strings.Contains(joined, "FOR GROUP BY") {
+			t.Errorf("lang=%v: the grouping sorts: %s", lang, joined)
+		}
+		// From schema_version 9 the source's recordings' added_at is read off
+		// the covering index: no recordings lookup at all.
+		if !strings.Contains(joined, "USING COVERING INDEX idx_recording_sources_type") || strings.Contains(joined, "recordings") {
+			t.Errorf("lang=%v: the v9 phase one reads past idx_recording_sources_type: %s", lang, joined)
+		}
+	}
+}
+
+// TestLatestBySourceKeepsTheV8SpellingOnAnOlderArtifact: an artifact older than
+// librivoxRecordingSchemaVersion has no recording_sources.added_at, so the
+// source-filtered phase one still joins recordings there.
+func TestLatestBySourceKeepsTheV8SpellingOnAnOlderArtifact(t *testing.T) {
+	for v, want := range map[int]string{8: latestSourceHeadSQL, 9: latestSourceHeadV9SQL} {
+		if q, _ := (&DB{schemaVersion: v}).latestCandidatesQuery(nil, model.SourceLibrivox, 200); !strings.HasPrefix(q, want) {
+			t.Errorf("schema_version %d: phase one = %s", v, q)
+		}
+	}
 }

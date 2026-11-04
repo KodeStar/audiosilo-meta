@@ -1014,3 +1014,23 @@ func TestSiteURLIsNormalized(t *testing.T) {
 		}
 	}
 }
+
+// TestPersonFactSheetListsTranslatedRecordings: a recording-level translator's
+// fact sheet and description name the recordings they translated.
+func TestPersonFactSheetListsTranslatedRecordings(t *testing.T) {
+	d := &query.PersonDetail{
+		ID: "ian-johnston", Name: "Ian Johnston", Authored: []*query.WorkCard{}, Narrated: []query.NarratedEntry{},
+		Translated:      []query.NarratedEntry{{Work: &query.WorkCard{ID: "metamorphosis", Title: "Metamorphosis"}, RecordingID: "david-barnes"}},
+		TranslatedTotal: 1, Limit: 100,
+	}
+	if got := personDescription(d); !strings.Contains(got, "translator of 1 recording") {
+		t.Errorf("description = %q", got)
+	}
+	sheet, err := renderTemplate("person", newPersonView(d))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if s := string(sheet); !strings.Contains(s, "Recordings translated") || !strings.Contains(s, `href="/works/metamorphosis"`) {
+		t.Errorf("fact sheet = %s", s)
+	}
+}

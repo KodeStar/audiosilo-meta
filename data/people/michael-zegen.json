@@ -7568,18 +7568,6 @@
         }
       ]
     },
-    "miguel-cervantes": {
-      "id": "miguel-cervantes",
-      "license": "CC0-1.0",
-      "name": "Miguel Cervantes",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B01IRCBNTO",
-          "type": "libex-import"
-        }
-      ]
-    },
     "miguel-cisneros-perales": {
       "id": "miguel-cisneros-perales",
       "license": "CC0-1.0",
@@ -7617,7 +7605,10 @@
       ]
     },
     "miguel-de-cervantes": {
+      "birth_year": 1547,
+      "death_year": 1616,
       "id": "miguel-de-cervantes",
+      "librivox_author_id": 4220,
       "license": "CC0-1.0",
       "name": "Miguel de Cervantes",
       "sources": [
@@ -7625,17 +7616,7 @@
           "imported_at": "2026-08-07",
           "ref": "B06WWH8FGC",
           "type": "libex-import"
-        }
-      ]
-    },
-    "miguel-de-cervantes-saavedra": {
-      "birth_year": 1547,
-      "death_year": 1616,
-      "id": "miguel-de-cervantes-saavedra",
-      "librivox_author_id": 4220,
-      "license": "CC0-1.0",
-      "name": "Miguel de Cervantes Saavedra",
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/3836.Don_Quixote",
@@ -7645,6 +7626,11 @@
           "imported_at": "2026-10-27",
           "ref": "480",
           "type": "librivox"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01IRCBNTO",
+          "type": "libex-import"
         }
       ]
     },

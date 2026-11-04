@@ -937,3 +937,31 @@ func TestRegenerateGenresRefusesInertFlags(t *testing.T) {
 		}
 	})
 }
+
+// TestCreateRunPrintsUnrecordedCredits: an ordinary (non-LibriVox) create run
+// lists the credits its attached rows did not record, after the summary line
+// the sync bot parses, and prints nothing extra when there are none.
+func TestCreateRunPrintsUnrecordedCredits(t *testing.T) {
+	sum := importer.Summary{UnrecordedCredits: []importer.UnrecordedCredit{{
+		ASIN: "B0ORPHAN01", Name: "Ian Johnston", Roles: []string{"translator"}, Work: "metamorphosis",
+	}}}
+	run := func(string, importer.Options) (importer.Summary, error) { return sum, nil }
+	out := captureStdout(t, func() {
+		if code := runSource("openaudible", []string{"books.json", "--dry-run"}, run); code != 0 {
+			t.Errorf("exit code = %d, want 0", code)
+		}
+	})
+	head := strings.Index(out, "new works")
+	list := strings.Index(out, "credits not recorded: 1 (")
+	if head < 0 || list < head {
+		t.Errorf("want the list after the summary line:\n%s", out)
+	}
+	if want := `  B0ORPHAN01 "Ian Johnston" (translator) -> metamorphosis, person not created`; !strings.Contains(out, want) {
+		t.Errorf("no %q in:\n%s", want, out)
+	}
+
+	sum = importer.Summary{}
+	if out := captureStdout(t, func() { runSource("openaudible", []string{"books.json", "--dry-run"}, run) }); strings.Contains(out, "not recorded") {
+		t.Errorf("an empty list printed:\n%s", out)
+	}
+}

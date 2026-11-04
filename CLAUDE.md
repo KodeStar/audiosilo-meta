@@ -54,8 +54,9 @@ verification, so the large main context is never what reviews or edits code.
 cd ~/dev/audiosilo/audiosilo-meta
 go build ./... && go vet ./... && go test -race ./... && golangci-lint run
 # ~45s wall for the -race suite; no -timeout flag needed. Every REAL-DATA test
-# skips under -race (raceEnabled, race_{on,off}_test.go in pkg/check,
-# pkg/canonical, internal/importer and internal/repair) - the fixture suites
+# skips under -race (`raceflag.Enabled`, internal/raceflag's build-tagged
+# constant, asked in pkg/check, pkg/canonical, internal/importer and
+# internal/repair) - the fixture suites
 # cover the concurrent code and the real tree is data coverage, still read by
 # the non-race run and by metacheck/metafmt below. Unskipped, pkg/canonical's
 # tree walk alone was ~400s and internal/importer's slug walk ~220s (403s wall).
@@ -63,8 +64,13 @@ go build ./... && go vet ./... && go test -race ./... && golangci-lint run
 # suite without -race daily, on dispatch and on Go-touching pushes to main (see
 # its header), and a red run opens or comments on the one open `ci-real-data`
 # issue, which the next green run closes (.github/scripts/real-data-report.sh).
+# The one real-checkout test that DOES run under -race is internal/recorddiff's
+# TestAgainstTheRealCheckout (git objects of HEAD~1..HEAD, not the tree walk):
+# under the detector it diffs a bounded, family-preserving sample of the
+# commit's changed packs (raceMaxPaths), since the whole of a ~1,500-pack data
+# merge outran the 10-minute test timeout; without -race it diffs them all.
 # Locally: `go test -count=1 ./...`.
-go run ./cmd/metacheck --profile core       # validate the data tree (~10s over 133k works)
+go run ./cmd/metacheck --profile core       # validate the data tree (~40s over 302k works)
 go run ./cmd/metafmt --check --profile core # canonical formatting (--write to fix)
 go run ./cmd/metabuild -o meta.sqlite   # build the CORE-ONLY artifact (no sidecars)
 go run ./cmd/metabuild -data data --community <community-repo>/data -o meta.sqlite  # ... the REAL artifact, from both repos
@@ -144,7 +150,10 @@ of that campaign and is in the gate (three layers over one rule -
 
 **The census is a READING LIST, so it honours the reading and reports what a pull
 request ADDS.** It is deliberately broad (`checkIdentityEqualWorks`,
-`differentVolumes`): most of its groups are not one book, and a census that keeps
+`differentVolumes`, which with `partsOfAWhole` withholds a whole beside the PARTS
+of a multi-part work - LibriVox's one project per part, and any unplaced set of
+parts stating different volumes, such as a retailer's "(Part 1)"/"(Part 2)"): most
+of its groups are not one book, and a census that keeps
 naming pairs somebody has already ruled on - ~1,900 advisory lines scrolling past in
 the `check` log - is one nobody reads, so a pull request that ADDED a duplicate was
 never noticed (ai-verify read only the metadiff summary). Two halves:
@@ -167,9 +176,12 @@ never noticed (ai-verify read only the metadiff summary). Two halves:
   rejection matching no fresh proposal is reported `census-only` in SUMMARY.md, not
   STALE, because the census honours it whatever the detectors propose and pruning
   it would bring the pair back - unless fewer than two of its records are still
-  live (merged onto one survivor, or deleted), which withholds nothing and is STALE. Follow-up, not built: internal/importer's honorific
-  fold could consult the same list before folding a "Dr. X" credit onto a bare
-  record of another person. metabuild's census and metaaudit's LOADER carry-through load
+  live (merged onto one survivor, or deleted), which withholds nothing and is STALE. The importer's
+  honorific fold honours the same rejections: a pair a merge-people rejection names
+  is never folded, titled onto bare or (LibriVox rule 1c) bare onto titled, so an
+  import cannot re-merge a pair a maintainer separated (`importer.Options.Distinct`,
+  filled from `audit.ReviewedDistinct()` by cmd/metaimport and internal/issueform,
+  resolved through redirects.json by `check.ResolveDistinct`). metabuild's census and metaaudit's LOADER carry-through load
   without the decisions (neither is the census anyone reads).
 - **New advisories reach the automation.** On a pull request touching data/,
   `.github/scripts/advisory-delta.sh` runs the same metacheck binary over the base and
@@ -396,11 +408,14 @@ IS - never a live id - not what it was), and metaserve answers it with a harmles
 301. A serial volume at `<title>-book-<n>` gets none (its position probes reach
 it; an alias would pull every claim-free row into that one volume). The real-data
 `TestDataWorkAndSeriesSlugsAreCurrent` counts a chain candidate tombstoned onto
-the record as on the chain, which is the importer's own reach. Only metarepair
-records aliases today: an intake correct-data TITLE correction does not (no
-intake path writes the tombstone table), so one that leaves an apostrophe or
-transliterated title off its chain turns that real-data test red until a
-maintainer adds the alias.
+the record as on the chain, which is the importer's own reach. An intake TITLE
+correction (correct-data and the correction batch) records the same alias through
+the same `importer.WorkTitleAlias` (`internal/issueform`'s `aliasRetitle`), and the
+bot's pull request carries `data/redirects.json` beside the work's pack. The table
+has no merge driver, so an open intake retitle whose alias line conflicts with a
+table change landed on main meanwhile (another retitle, a repair wave's tombstones)
+stops the rebase sweep on that file for a maintainer (`pack-union-merge.sh` refuses
+it).
 
 **Storage is range-packed** ([PACK-SPEC.md](PACK-SPEC.md), implemented in
 `pkg/pack`): four families of pack files, each `{"entries": {"<slug>": {...}}}`,
@@ -493,7 +508,12 @@ it, `pkg/check` and every writer now refuse it loudly.
   (person, role) so one set of credits has exactly one byte-form)) PLUS its
   recordings, nested as `"recordings": {"<rec-slug>": {...}}`.
   One book is one entry, so a recording edit is a read-modify-write of its work.
-  Contributor roles are a WORK-level fact: a qualifier on a narrator credit is
+  Contributor roles are a WORK-level fact, with ONE recording-level addition: a
+  LibriVox recording also states its own translators in the recording's
+  `credits` (translator only, by schema), because a translation is the
+  project's fact - the work keeps the translator credits its sources stated
+  beside them (credits are additive; authors stays the identity list). A
+  qualifier on a narrator credit is
   edition-level evidence and is stripped without stating anything (measured at
   0.027% of narrator credits, nearly all of it scraping junk). Optional
   `translation_of` (`$defs/slug_set`, sorted ascending) links a TRANSLATION to
@@ -505,9 +525,17 @@ it, `pkg/check` and every writer now refuse it loudly.
   narration/production, with narrators, abridged (**optional**: absence =
   unknown, so importers omit it rather than guess), runtime_min, release_date,
   publisher, region-scoped `asin[]`, `isbn[]`, cover_url, chapters, and for a
-  LibriVox project `librivox_id` (its identity, unique), `archive_id`, `links`
-  and a per-chapter `audio_url` (LICENSING.md's public-domain exception;
-  `metaimport librivox`). One work,
+  LibriVox project `librivox_id` (its identity, unique), `archive_id`, `links`,
+  a per-chapter `audio_url`, the project's own `librivox_title` and
+  `librivox_genres` (verbatim), its translators as the recording's own
+  `credits` (a translation is the project's fact; the work's own translator
+  credits stay as its sources stated them), and per
+  chapter LibriVox's `section_number` (only where it differs from the 1-based
+  position) and `readers` (person slugs among the narrators; none on a
+  recording one narrator reads throughout, and metacheck refuses them on every
+  chapter of a one-narrator recording) (LICENSING.md's public-domain exception;
+  `metaimport librivox`, whose rerun over a snapshot restates them on held
+  recordings). One work,
   many recordings (Harry Potter: Stephen Fry AND Jim Dale, each with its own
   ASINs). It keeps its own `id`, `work` backref, `license` and `sources`, so its
   bytes are the same as when it was a file of its own.
@@ -673,9 +701,15 @@ spelling as in `redirects`, `id` always the translation - plus three `series`
 columns (`language`, DERIVED at build through `model.SeriesLanguage` and NULL on
 a tie, `ordering`, `ordering_of`), `search_fts.language` as its LAST column and
 `idx_works_language(language)`; the LIBRIVOX layer landed in **schema_version 8**
-(the current version: recording LibriVox columns, `chapters.audio_url`, people
+(recording LibriVox columns, `chapters.audio_url`, people
 LibriVox ids and life years, `work_credits`, `recording_sources`; PACKAGES.md
-"The LIBRIVOX layer"); character `ord`/recap
+"The LIBRIVOX layer"); the LIBRIVOX RECORDING layer in **schema_version 9** (the
+current version: `recordings.librivox_title`, `chapters.section_number`,
+`recording_credits`, `chapter_readers`, `recording_librivox_genres` and
+`recording_sources.added_at` (the source-filtered works/latest's order) - a LibriVox
+project's own title, section numbers, translators, section readers and genre
+names, which the LibriVox-shaped feed answers with; PACKAGES.md "The LIBRIVOX
+RECORDING layer"); character `ord`/recap
 position order preserved, deterministic), and `metaserve` returns
 them inline on `GET /works/{id}`
 (`workDetail.characters`/`.recaps`/`.recap_summary`/`.genres`/
@@ -683,16 +717,17 @@ them inline on `GET /works/{id}`
 serve queries degrade gracefully if the tables are absent (a newer binary
 briefly serving an older release): characters/recaps gate on schema_version >= 2,
 the recap summary on >= 3, genres on >= 4, the slug redirects on >= 5, the
-community description on >= 6, the languages layer on >= 7 and the LibriVox
-layer on >= 8, so a
+community description on >= 6, the languages layer on >= 7, the LibriVox
+layer on >= 8 and the LibriVox recording layer on >= 9, so a
 table's absence is "no data" (for redirects: a retired slug 404s as it did before
 the mechanism existed), not a 500. The redirect, description and languages gates
 are asked ONCE at load rather than per request - those tables are EMPTY in every
 release until their first record lands, and all sit on ordinary 200 paths (the
 description on every work page, both guide pages and every ABS candidate; the
 translations and the ordering family on every work and series page) - so an
-artifact that CLAIMS version 5, 6, 7 or 8 without its table (for 7: the
-translations table or the series ordering columns; for 8: `librivoxShapeSQL`) fails to open, with an
+artifact that CLAIMS version 5, 6, 7, 8 or 9 without its table (for 7: the
+translations table or the series ordering columns; for 8: `librivoxShapeSQL`;
+for 9: `librivoxRecordingShapeSQL`) fails to open, with an
 error naming that claim; the builder writes the version and the table together,
 so the combination is a corrupt file rather than an old one. **Authoring the expressive
 layer is documented in the COMMUNITY repository's `AUTHORING.md`** (the reusable
@@ -738,6 +773,7 @@ keep this index in step (one line per topic).
   - `internal/ghhost`
   - `internal/unionfind`
   - `internal/parallel`
+  - `internal/raceflag`
   - `internal/atomicfile`
   - `internal/reportdir`
   - `internal/remediate`
