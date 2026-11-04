@@ -206,8 +206,9 @@ func (g *personGroups) union(a, b int) {
 	joined := slices.Concat(g.held[ra], g.held[rb])
 	g.set.Union(a, b)
 	if len(joined) > 0 {
+		slices.Sort(joined)
 		delete(g.held, max(ra, rb))
-		g.held[min(ra, rb)] = joined
+		g.held[min(ra, rb)] = slices.Compact(joined) // rows of one person hold them each
 	}
 }
 

@@ -106,6 +106,11 @@ func TestSeriesFitAsksTheWholeGroup(t *testing.T) {
 	rowOf := func(forms ...personForm) *SeriesRow {
 		return &SeriesRow{apart: georgeReview, prepared: true, forms: forms}
 	}
+	titled := func(f personForm) *SeriesRow {
+		row := rowOf(f)
+		row.titleSlugs = []string{"-dr-alex-georges-mind-manual-"}
+		return row
+	}
 	for name, tc := range map[string]struct {
 		sa   *seriesAuthors
 		row  *SeriesRow
@@ -125,6 +130,11 @@ func TestSeriesFitAsksTheWholeGroup(t *testing.T) {
 		"doctor, the initial alone":  {seriesOf(initial, initial), rowOf(doctor), seriesShared},
 		"initial, novelist's series": {seriesOf(novelist, novelist), rowOf(initial), seriesShared},
 		"novelist, own series":       {seriesOf(novelist, initial), rowOf(novelist), seriesShared},
+		// The title arm: a title naming the series' own author opens it, and the
+		// doctor's book spells the novelist's name too. His own continuation still
+		// opens it, and so does a title naming neither of a pair.
+		"doctor, title names the novelist": {seriesOf(novelist, novelist, novelist), titled(doctor), seriesClosed},
+		"stranger, title names the author": {seriesOf(novelist, novelist, novelist), titled(georgeReview.form("bea-writer", "Bea Writer")), seriesOpen},
 	} {
 		t.Run(name, func(t *testing.T) {
 			if got := tc.sa.fit(tc.row, nil); got != tc.want {
@@ -168,6 +178,9 @@ func TestAuthorClustersNeverJoinAReviewedPair(t *testing.T) {
 		"a co-author of both":         {georgeReview, [][]seriesPerson{{novelist, x}, {doctor, x}, {x}}, [][]int{{0, 2}, {1}}},
 		"a co-author, no review":      {nil, [][]seriesPerson{{novelist, x}, {doctor, x}, {x}}, [][]int{{0, 1, 2}}},
 		"one row crediting both":      {georgeReview, [][]seriesPerson{{novelist, doctor}, {novelist}}, [][]int{{0}, {1}}},
+		// Such a row comes first in canonical order and is alone, and each person's
+		// own rows still meet.
+		"both, then each": {georgeReview, [][]seriesPerson{{novelist, doctor}, {novelist}, {novelist}, {doctor}, {doctor}}, [][]int{{1, 2}, {3, 4}, {0}}},
 	} {
 		t.Run(name, func(t *testing.T) {
 			if got := clusters(tc.ap, tc.authors...); !reflect.DeepEqual(got, tc.want) {
@@ -278,13 +291,12 @@ func TestBatchClusterDoesNotBridgeAReviewedPair(t *testing.T) {
 	}
 }
 
-// The pre-pass judges a landing before the batch's initials decision and the
-// import after it. No spelling of "Dr. AB Kovacs" is committed, so the pre-pass
-// judges its own `dr-ab-kovacs` against the bare name's committed `a-b-kovacs` -
-// the pair the review names - and refuses the fold. The decision then moves it
-// onto the batch's majority `dr-a-b-kovacs`, which the review does not name. The
-// import must keep the refusal rather than fold the credit onto the record the
-// review kept it from.
+// The pre-pass cleans names before the batch's initials decision and the import
+// after it, and the two must judge one fold alike. No spelling of "Dr. AB Kovacs"
+// is committed, the review names its own `dr-ab-kovacs` and the bare name's
+// committed `a-b-kovacs`, and the decision moves it onto the batch's majority
+// `dr-a-b-kovacs`, which the review does not name. The refusal stands at import:
+// the credit does not fold onto the record the review kept it from.
 func TestImportKeepsAFoldThePrePassRefused(t *testing.T) {
 	for name, tc := range reviewedCases([]string{"a-b-kovacs", "dr-ab-kovacs"}, "a-b-kovacs", "dr-a-b-kovacs") {
 		t.Run(name, func(t *testing.T) {
@@ -318,7 +330,102 @@ func TestImportKeepsAFoldThePrePassRefused(t *testing.T) {
 	}
 }
 
-// Rule 1b asks the review by the records the two spellings LAND on: "Dr. AB Kovacs"
+// The review names a spelling the catalogue does not hold (a deleted titled record,
+// which a people rejection outlives) and the credit is another spelling of it: "Dr.
+// AB Kovacs" is `dr-a-b-kovacs` by its initials, so it does not fold onto the bare
+// record however few rows spell it that way. The batch's "Dr. A.B. Kovacs" is why the
+// decision would never see it: a fold taken in the pre-pass takes the spelling out of
+// the group the decision reads.
+func TestFoldAsksEverySpellingOfAReviewedRecord(t *testing.T) {
+	for name, tc := range reviewedCases([]string{"a-b-kovacs", "dr-a-b-kovacs"}, "a-b-kovacs", "dr-a-b-kovacs") {
+		t.Run(name, func(t *testing.T) {
+			dataDir := seedTombstoneTree(t, map[string]string{
+				personAddr("a-b-kovacs"):   testpack.PersonJSON(t, "a-b-kovacs", "A.B. Kovacs"),
+				personAddr("ann-author"):   testpack.PersonJSON(t, "ann-author", "Ann Author"),
+				workAddr("the-novel"):      testpack.WorkJSON(t, "the-novel", "The Novel", testpack.WithAuthors("ann-author")),
+				recAddr("the-novel", "r1"): testpack.RecJSON(t, "r1", "the-novel", testpack.WithNarrators("a-b-kovacs")),
+			}, nil)
+			runLibexWith(t, dataDir, Options{Distinct: tc.distinct},
+				tombRow("B0KOVACS01", "Healthy Habits", "Dr. AB Kovacs", "Bea Reader", 300, "", ""),
+				tombRow("B0KOVACS02", "Second Opinion", "Dr. A.B. Kovacs", "Bea Reader", 300, "", ""),
+				tombRow("B0KOVACS03", "Third Opinion", "Dr. A.B. Kovacs", "Bea Reader", 300, "", ""),
+				tombRow("B0KOVACS04", "The Sequel", "AB Kovacs", "Bea Reader", 300, "", ""))
+			if got := workAuthorsOf(t, dataDir, "healthy-habits"); !reflect.DeepEqual(got, []string{tc.want}) {
+				t.Errorf("Healthy Habits authors = %v, want [%s]", got, tc.want)
+			}
+			mustValidate(t, dataDir)
+		})
+	}
+}
+
+// The bare spelling's slug can be the one the review names: "AB Kovacs" spells
+// `ab-kovacs`, and is `a-b-kovacs` by the batch's decision. The pre-pass and the
+// import agree, so a merge is reported only when it happened.
+func TestFoldReportedOnlyWhenTheImportMakesIt(t *testing.T) {
+	for name, tc := range reviewedCases([]string{"a-b-kovacs", "dr-ab-kovacs"}, "a-b-kovacs", "dr-a-b-kovacs") {
+		t.Run(name, func(t *testing.T) {
+			dataDir := seedTombstoneTree(t, map[string]string{personAddr("nate-narrator"): testpack.PersonJSON(t, "nate-narrator", "Nate Narrator")}, nil)
+			sum := runLibexWith(t, dataDir, Options{Distinct: tc.distinct},
+				tombRow("B0KOVACS01", "Healthy Habits", "Dr. AB Kovacs", "Nate Narrator", 300, "", ""),
+				tombRow("B0KOVACS02", "Second Opinion", "A.B. Kovacs", "Nate Narrator", 300, "", ""),
+				tombRow("B0KOVACS03", "Third Opinion", "A.B. Kovacs", "Nate Narrator", 300, "", ""),
+				tombRow("B0KOVACS04", "The Sequel", "AB Kovacs", "Nate Narrator", 300, "", ""))
+			got := workAuthorsOf(t, dataDir, "healthy-habits")
+			folded := reflect.DeepEqual(got, []string{"a-b-kovacs"})
+			if folded != (tc.want == "a-b-kovacs") {
+				t.Errorf("Healthy Habits authors = %v, want it on the bare record only without the review", got)
+			}
+			if reported := slices.Contains(sum.HonorificMerges, "Dr. AB Kovacs -> AB Kovacs"); reported != folded {
+				t.Errorf("HonorificMerges = %v, but the credit landed on %v", sum.HonorificMerges, got)
+			}
+			mustValidate(t, dataDir)
+		})
+	}
+}
+
+// The initials rule makes "AB Kovacs" and "A.B. Kovacs" one person, and a review
+// speaks above it: a credit stays on its own slug rather than landing on the record
+// a maintainer told it apart from, even with that slug's record gone.
+func TestInitialsMergeHonoursAReview(t *testing.T) {
+	for name, tc := range reviewedCases([]string{"a-b-kovacs", "ab-kovacs"}, "a-b-kovacs", "ab-kovacs") {
+		t.Run(name, func(t *testing.T) {
+			dataDir := seedTombstoneTree(t, map[string]string{
+				personAddr("a-b-kovacs"):    testpack.PersonJSON(t, "a-b-kovacs", "A.B. Kovacs"),
+				personAddr("nate-narrator"): testpack.PersonJSON(t, "nate-narrator", "Nate Narrator"),
+				workAddr("the-novel"):       testpack.WorkJSON(t, "the-novel", "The Novel", testpack.WithAuthors("a-b-kovacs")),
+				recAddr("the-novel", "r1"):  testpack.RecJSON(t, "r1", "the-novel", testpack.WithNarrators("nate-narrator")),
+			}, nil)
+			runLibexWith(t, dataDir, Options{Distinct: tc.distinct},
+				tombRow("B0KOVACS01", "Other Book", "AB Kovacs", "Nate Narrator", 300, "", ""))
+			if got := workAuthorsOf(t, dataDir, "other-book"); !reflect.DeepEqual(got, []string{tc.want}) {
+				t.Errorf("Other Book authors = %v, want [%s]", got, tc.want)
+			}
+			mustValidate(t, dataDir)
+		})
+	}
+}
+
+// Rule 1c asks the same: "AB Kovacs" is `a-b-kovacs` by its initials, a record a
+// review keeps from the catalogued titled twin, so the credit is not resolved onto
+// him even with no such record committed yet.
+func TestLibrivoxTitledTwinAsksEverySpelling(t *testing.T) {
+	for name, tc := range reviewedCases([]string{"a-b-kovacs", "dr-ab-kovacs"}, "dr-ab-kovacs", "ab-kovacs") {
+		t.Run(name, func(t *testing.T) {
+			dataDir := t.TempDir()
+			files := map[string]string{personAddr("dr-ab-kovacs"): personFiles(t, "dr-ab-kovacs", "Dr. AB Kovacs", nil)}
+			retailWork(t, files, "a-retail-book", "A Retail Book", "dr-ab-kovacs", "")
+			seedTree(t, dataDir, files)
+			snap := writeSnapshot(t, byAuthors(t, 99001, "The Old Clinic", lvDated(14047, "AB", "Kovacs", "1853", "1923")))
+			sum := runLibrivoxWith(t, snap, dataDir, allLibrivox, Options{Distinct: tc.distinct})
+			if got := workAuthorsOf(t, dataDir, "the-old-clinic"); !reflect.DeepEqual(got, []string{tc.want}) {
+				t.Errorf("authors = %v, want [%s]\nnotes: %v", got, tc.want, sum.Notes)
+			}
+			mustValidate(t, dataDir)
+		})
+	}
+}
+
+// Rule 1b asks the review by every slug the two spellings can LAND on: "Dr. AB Kovacs"
 // lands on the committed `dr-a-b-kovacs` and "AB Kovacs" (a reader of the same
 // project, which is what makes the initials group decide) on `a-b-kovacs`. Neither
 // spelled slug is one the review names. Without the review the bare record's dates

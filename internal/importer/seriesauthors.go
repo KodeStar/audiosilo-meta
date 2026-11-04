@@ -217,8 +217,11 @@ type seriesAuthors struct {
 	order []string
 	index map[string]int
 	// people groups the slugs, by their index in order, into PEOPLE (groupPeople,
-	// derived in refresh). A group's root is its earliest-seen slug.
-	people personGroups
+	// derived in refresh, and only when a spelling arrived since: grouped). A
+	// group's root is its earliest-seen slug. A clone shares it until then:
+	// nothing rewrites a grouping, a new spelling builds another.
+	people  personGroups
+	grouped bool
 	// memberSlugs is each member's distinct individual slugs and memberKeys its
 	// key, which is what the co-credit test and a merge read.
 	memberSlugs [][]string
@@ -226,8 +229,8 @@ type seriesAuthors struct {
 	// publishers is every member recording's publisher key (publisherKey).
 	publishers map[string]bool
 
-	// people, credits (members crediting any spelling in a group, by root) and top
-	// (the most any group has) are derived, recomputed when stale.
+	// credits (members crediting any spelling in a group, by root) and top (the
+	// most any group has) are derived, recomputed when stale.
 	stale   bool
 	credits map[string]int
 	top     int
@@ -270,7 +273,7 @@ func (sa *seriesAuthors) addForm(f personForm) {
 	sa.forms[f.slug] = f
 	sa.index[f.slug] = len(sa.order)
 	sa.order = append(sa.order, f.slug)
-	sa.stale = true
+	sa.stale, sa.grouped = true, false
 }
 
 // addMember records a member crediting slugs (already added as forms).
@@ -306,11 +309,14 @@ func (sa *seriesAuthors) root(s string) string {
 // him in the cluster. So a row crediting both people of a pair shares neither
 // through a group holding one: rare, and the cost is a sibling series.
 func (sa *seriesAuthors) sharedWith(s string, row []personForm) bool {
-	if !slices.ContainsFunc(row, sa.forms[s].same) {
-		return false
-	}
+	return slices.ContainsFunc(row, sa.forms[s].same) && !sa.keptFromRow(s, row)
+}
+
+// keptFromRow reports whether a review keeps a row author apart from anyone in
+// spelling s's group.
+func (sa *seriesAuthors) keptFromRow(s string, row []personForm) bool {
 	i := sa.index[s]
-	return !slices.ContainsFunc(row, func(f personForm) bool { return sa.people.keptFrom(i, f.slug) })
+	return slices.ContainsFunc(row, func(f personForm) bool { return sa.people.keptFrom(i, f.slug) })
 }
 
 // refresh recomputes the people and their credit counts.
@@ -318,11 +324,13 @@ func (sa *seriesAuthors) refresh() {
 	if !sa.stale && sa.credits != nil {
 		return
 	}
-	forms := make([]personForm, len(sa.order))
-	for i, s := range sa.order {
-		forms[i] = sa.forms[s]
+	if !sa.grouped {
+		forms := make([]personForm, len(sa.order))
+		for i, s := range sa.order {
+			forms[i] = sa.forms[s]
+		}
+		sa.people, sa.grouped = groupPeople(forms), true
 	}
-	sa.people = groupPeople(forms)
 	sa.stale = false // before rootsOf, which asks root
 	sa.credits = map[string]int{}
 	sa.top = 0
@@ -369,6 +377,7 @@ func (sa *seriesAuthors) clone() *seriesAuthors {
 	out.forms = maps.Clone(sa.forms)
 	out.order = slices.Clone(sa.order)
 	out.index = maps.Clone(sa.index)
+	out.people, out.grouped = sa.people, sa.grouped
 	out.memberSlugs = slices.Clone(sa.memberSlugs)
 	out.memberKeys = slices.Clone(sa.memberKeys)
 	out.publishers = maps.Clone(sa.publishers)
@@ -426,9 +435,11 @@ func (sa *seriesAuthors) fit(row *SeriesRow, large map[string]bool) seriesFit {
 		return seriesOpen
 	}
 	// The title arm reads the series' OWN authors only: a title naming an
-	// earlier squatter says nothing about whose series this is.
+	// earlier squatter says nothing about whose series this is. Nor does one
+	// naming an author the review keeps from the row: the words drop the courtesy
+	// title, so "Dr. Alex George's Mind Manual" spells the novelist's name too.
 	for _, s := range sa.order {
-		if titleNamesPerson(row.titleSlugs, sa.forms[s].words) && sa.owns(sa.root(s)) {
+		if titleNamesPerson(row.titleSlugs, sa.forms[s].words) && sa.owns(sa.root(s)) && !sa.keptFromRow(s, mine) {
 			return seriesOpen
 		}
 	}

@@ -242,36 +242,11 @@ func TestInitialsSingleSpellingIsNotDecided(t *testing.T) {
 	}
 }
 
-// TestInitialsCommittedSurvivor pins the read-only probe the reviewed-pair check
-// asks before the batch is decided: a spelling's group answers its lowest
-// committed record, exactly as decide would, and only a record the spelling's
-// own initials respell to - as initialsMerge accepts a decision - so a committed
-// id that no respelling produces is no answer. Taking it adds nothing to the
-// census.
-func TestInitialsCommittedSurvivor(t *testing.T) {
+// A committed id that no respelling of a name produces is no decision for it:
+// "CD Moreau" keeps its own slug beside `c-d-old-slug`, "C.D. Moreau".
+func TestInitialsMergeRefusesAnIDNoRespellingProduces(t *testing.T) {
 	c := newInitialsCensus()
-	c.addCatalogue("ab-kovacs", "AB Kovacs")
-	c.addCatalogue("a-b-kovacs", "A.B. Kovacs")
 	c.addCatalogue("c-d-old-slug", "C.D. Moreau")
-	committed := c.committed()
-	c.addBatch("A. B. Kovacs")
-	for name, want := range map[string]string{"A.B. Kovacs": "a-b-kovacs", "A B Kovacs": "a-b-kovacs", "AB Kovacs": "a-b-kovacs"} {
-		if got, ok := committed.survivor(name); !ok || got != want {
-			t.Errorf("survivor(%q) = %q, %v; want %q", name, got, ok, want)
-		}
-	}
-	for _, name := range []string{"Em Brown", "E.M. Brown", "Ada Mapmaker", "CD Moreau"} {
-		if got, ok := committed.survivor(name); ok {
-			t.Errorf("survivor(%q) = %q, want none (no committed record, no initials, or no respelling of it)", name, got)
-		}
-	}
-	if got, ok := committedInitials(nil).survivor("AB Kovacs"); ok {
-		t.Errorf("an empty index answered %q", got)
-	}
-	if decided := c.decide(); decided["a-b-kovacs"].slug != "a-b-kovacs" || len(c.groups) != 2 {
-		t.Errorf("the probe changed the census: %v, %d groups", decided, len(c.groups))
-	}
-	// decide refuses the same respelling: "CD Moreau" keeps its own slug.
 	c.addBatch("CD Moreau")
 	if s, merges := initialsMerge(c.decide(), "CD Moreau", "cd-moreau", false); merges {
 		t.Errorf("initialsMerge(CD Moreau) = %+v, want its own slug", s)

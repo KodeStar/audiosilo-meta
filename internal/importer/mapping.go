@@ -761,9 +761,9 @@ type creditCensus struct {
 	onHonorific  func(from, to string)
 	onCredential func(from, to string)
 	// keptApart, when set, reports whether a reviewed merge-people rejection
-	// recorded the two credit names as two people - judged by the records they
-	// land on (planner.landingsKeptApart): the honorific and credential folds
-	// then leave the name as it is. nil keeps every fold.
+	// recorded the two credit names as two people - judged by every slug they can
+	// land on (planner.peopleKeptApart): the honorific and credential folds then
+	// leave the name as it is. nil keeps every fold.
 	keptApart func(titled, bare string) bool
 	// noHonorific turns the honorific fold off (unfolded) and nothing else: the
 	// credential fold still runs, so a LibriVox credit's folded and unfolded
