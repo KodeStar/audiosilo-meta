@@ -820,6 +820,7 @@ func authorClusters(claims []nameClaim, idx, rest []int) [][]int {
 	// spelling rungs across the distinct slugs of that language: a cluster never
 	// spans two languages (languageCloses judges it by its lead claim), so one
 	// author's German and English rows are two clusters.
+	type authorKey struct{ lang, slug string }
 	bySlug := map[authorKey]int{}
 	var keys []authorKey
 	forms := map[authorKey]personForm{}
@@ -846,13 +847,20 @@ func authorClusters(claims []nameClaim, idx, rest []int) [][]int {
 		}
 		return keys[a].slug < keys[b].slug
 	})
-	bridges := reviewedBridges(keys, forms)
-	for i := range keys {
-		if bridges[keys[i]] {
-			continue
+	if len(groups.held) > 0 {
+		byLang := map[string][]personForm{}
+		for _, k := range keys {
+			byLang[k.lang] = append(byLang[k.lang], forms[k])
 		}
+		bridges := map[string]map[string]bool{}
+		for lang, fs := range byLang {
+			bridges[lang] = reviewedBridges(fs)
+		}
+		keys = slices.DeleteFunc(keys, func(k authorKey) bool { return bridges[k.lang][k.slug] })
+	}
+	for i := range keys {
 		for j := i + 1; j < len(keys) && keys[j].lang == keys[i].lang; j++ {
-			if !bridges[keys[j]] && forms[keys[i]].same(forms[keys[j]]) {
+			if forms[keys[i]].same(forms[keys[j]]) {
 				groups.union(bySlug[keys[i]], bySlug[keys[j]])
 			}
 		}
@@ -873,42 +881,6 @@ func authorClusters(claims []nameClaim, idx, rest []int) [][]int {
 		}
 		return claims[idx[out[a][0]]].order < claims[idx[out[b][0]]].order
 	})
-	return out
-}
-
-// authorKey is one author slug in one language, as authorClusters groups them.
-type authorKey struct{ lang, slug string }
-
-// reviewedBridges is the keys that are a spelling of BOTH people of a reviewed pair
-// of their language ("A. George", with both Alex George and Dr. Alex George in the
-// claims). Nothing says which of the two such a spelling is, and the slug order the
-// rungs run in is no evidence: `dr-` sorts first, so it would hand "Robert E. Lee" to
-// Mrs. Robert Lee. So it takes no spelling union and its claims are judged as a
-// cluster of their own, after a larger cluster has founded: they then join whichever
-// of the two the series already belongs to, by the evidence. Nil, at the cost of one
-// scan, for a batch naming no reviewed person.
-func reviewedBridges(keys []authorKey, forms map[authorKey]personForm) map[authorKey]bool {
-	var out map[authorKey]bool
-	for i, a := range keys {
-		fa := forms[a]
-		if !fa.apart.names(fa.slug) {
-			continue
-		}
-		for _, b := range keys[i+1:] {
-			if b.lang != a.lang || !fa.apart.Has(fa.slug, b.slug) {
-				continue
-			}
-			for _, k := range keys {
-				f := forms[k]
-				if k.lang == a.lang && k != a && k != b && f.same(fa) && f.same(forms[b]) {
-					if out == nil {
-						out = map[authorKey]bool{}
-					}
-					out[k] = true
-				}
-			}
-		}
-	}
 	return out
 }
 

@@ -9,6 +9,7 @@ package importer
 
 import (
 	"fmt"
+	"maps"
 	"reflect"
 	"slices"
 	"testing"
@@ -28,77 +29,73 @@ func georgeForms(ap *PeopleApart) (novelist, doctor, initial personForm) {
 	return ap.form("alex-george", "Alex George"), ap.form("dr-alex-george", "Dr. Alex George"), ap.form("a-george", "A. George")
 }
 
+// seriesOf is series evidence of one member per form, in order, grouped.
+func seriesOf(forms ...personForm) *seriesAuthors {
+	sa := &seriesAuthors{}
+	for i, f := range forms {
+		sa.add(fmt.Sprint("work-", i), []personForm{f}, nil)
+	}
+	sa.refresh()
+	return sa
+}
+
 func TestSeriesGroupsNeverJoinAReviewedPair(t *testing.T) {
 	novelist, doctor, initial := georgeForms(georgeReview)
 	if !initial.same(novelist) || !initial.same(doctor) || novelist.same(doctor) {
 		t.Fatalf("fixture: initial~novelist %v, initial~doctor %v, novelist~doctor %v",
 			initial.same(novelist), initial.same(doctor), novelist.same(doctor))
 	}
-	people := func(sa *seriesAuthors) int {
-		sa.refresh()
-		return len(sa.credits)
-	}
-	for name, order := range map[string][]personForm{
+	for name, forms := range map[string][]personForm{
 		"the initial last":    {novelist, doctor, initial},
 		"the initial first":   {initial, doctor, novelist},
 		"the initial between": {doctor, initial, novelist},
 	} {
 		t.Run(name, func(t *testing.T) {
-			sa := &seriesAuthors{}
-			for i, f := range order {
-				sa.add(string(rune('a'+i)), []personForm{f}, nil)
+			// A spelling of both is a person of its own, whatever the order.
+			sa := seriesOf(forms...)
+			if len(sa.credits) != 3 || sa.root("a-george") != "a-george" {
+				t.Errorf("%d people, the initial in %s: want 3, the initial alone", len(sa.credits), sa.root("a-george"))
 			}
-			if got := people(sa); got != 2 {
-				t.Errorf("%d people, want 2: the initial joins one of the pair", got)
-			}
-			if sa.root("alex-george") == sa.root("dr-alex-george") {
-				t.Error("the reviewed pair is one group")
-			}
-			// The first person the initial met keeps it, whatever came next.
-			first := order[0].slug
-			if order[0].slug == "a-george" {
-				first = order[1].slug
-			}
-			if sa.root("a-george") != sa.root(first) {
-				t.Errorf("the initial joined %s, want %s", sa.root("a-george"), first)
-			}
-			// A clone (what admits judges) keeps the constraint.
+			// A clone (what admits judges) keeps the policy.
 			c := sa.clone()
 			c.add("z", []personForm{doctor}, nil)
+			c.refresh()
 			if c.root("alex-george") == c.root("dr-alex-george") {
-				t.Error("the clone lost the constraint")
+				t.Error("the clone joined the pair")
 			}
 		})
 	}
-	t.Run("a group is judged whole", func(t *testing.T) {
-		// The doctor meets the novelist's group through its middle-name spelling,
-		// which no review names and which he is pairwise a spelling of.
-		middle := georgeReview.form("alex-j-george", "Alex J. George")
-		if !middle.same(doctor) {
-			t.Fatal("fixture: the middle-name spelling is not a spelling of the doctor")
+	t.Run("with one of the pair it is his", func(t *testing.T) {
+		for _, person := range []personForm{novelist, doctor} {
+			if sa := seriesOf(person, initial); len(sa.credits) != 1 {
+				t.Errorf("%s and the initial are %d people, want 1", person.slug, len(sa.credits))
+			}
 		}
-		sa := &seriesAuthors{}
-		sa.add("a", []personForm{novelist}, nil)
-		sa.add("b", []personForm{middle}, nil)
-		sa.add("c", []personForm{doctor}, nil)
-		sa.add("d", []personForm{initial}, nil)
-		if sa.root("alex-j-george") != "alex-george" || sa.root("a-george") != "alex-george" {
-			t.Errorf("the novelist's spellings are %s and %s", sa.root("alex-j-george"), sa.root("a-george"))
+	})
+	t.Run("a chain is judged whole", func(t *testing.T) {
+		// Alex George - Alex J. George - A.J. George - A.J. Georges: each only a
+		// spelling of its neighbours, so nobody reaches both ends and the union has
+		// to refuse by what the groups already hold.
+		ap := NewPeopleApart(peopleApart("alex-george", "a-j-georges"), nil)
+		a, x := ap.form("alex-george", "Alex George"), ap.form("alex-j-george", "Alex J. George")
+		y, b := ap.form("a-j-george", "A.J. George"), ap.form("a-j-georges", "A.J. Georges")
+		if !a.same(x) || !x.same(y) || !y.same(b) || a.same(y) || x.same(b) {
+			t.Fatalf("fixture: a~x %v, x~y %v, y~b %v, a~y %v, x~b %v", a.same(x), x.same(y), y.same(b), a.same(y), x.same(b))
 		}
-		if sa.root("dr-alex-george") == "alex-george" {
-			t.Error("the doctor joined the novelist's group")
+		sa := seriesOf(a, x, y, b)
+		if sa.root("a-j-georges") == sa.root("alex-george") {
+			t.Error("the chain joined the reviewed pair")
+		}
+		if sa.root("alex-j-george") != "alex-george" || sa.root("a-j-george") != "alex-george" {
+			t.Errorf("the chain's spellings are in %s and %s", sa.root("alex-j-george"), sa.root("a-j-george"))
 		}
 	})
 	t.Run("no review of the pair", func(t *testing.T) {
 		// The grouping is unchanged for everyone else: all three are one person.
 		for _, ap := range []*PeopleApart{nil, otherReview} {
 			n, d, i := georgeForms(ap)
-			sa := &seriesAuthors{}
-			sa.add("a", []personForm{n}, nil)
-			sa.add("b", []personForm{d}, nil)
-			sa.add("c", []personForm{i}, nil)
-			if got := people(sa); got != 1 {
-				t.Errorf("%d people, want 1", got)
+			if sa := seriesOf(n, d, i); len(sa.credits) != 1 {
+				t.Errorf("%d people, want 1", len(sa.credits))
 			}
 		}
 	})
@@ -106,13 +103,6 @@ func TestSeriesGroupsNeverJoinAReviewedPair(t *testing.T) {
 
 func TestSeriesFitAsksTheWholeGroup(t *testing.T) {
 	novelist, doctor, initial := georgeForms(georgeReview)
-	series := func(forms ...personForm) *seriesAuthors {
-		sa := &seriesAuthors{}
-		for i, f := range forms {
-			sa.add(string(rune('a'+i)), []personForm{f}, nil)
-		}
-		return sa
-	}
 	rowOf := func(forms ...personForm) *SeriesRow {
 		return &SeriesRow{apart: georgeReview, prepared: true, forms: forms}
 	}
@@ -123,16 +113,18 @@ func TestSeriesFitAsksTheWholeGroup(t *testing.T) {
 	}{
 		// The denied half: "A. George" in the novelist's series is no way in for
 		// the doctor, in the doctor's for the novelist, nor for a cluster that
-		// holds the novelist beside the initial.
-		"doctor, novelist's series": {series(novelist, novelist, initial), rowOf(doctor), seriesClosed},
-		"novelist, doctor's series": {series(doctor, initial, initial), rowOf(novelist), seriesClosed},
-		"cluster, doctor's series":  {series(doctor, doctor), rowOf(initial, novelist), seriesClosed},
+		// holds the novelist beside the initial. Nor for a row built without the
+		// review: the group's own review keeps the veto.
+		"doctor, novelist's series": {seriesOf(novelist, novelist, initial), rowOf(doctor), seriesClosed},
+		"novelist, doctor's series": {seriesOf(doctor, initial, initial), rowOf(novelist), seriesClosed},
+		"cluster, doctor's series":  {seriesOf(doctor, doctor), rowOf(initial, novelist), seriesClosed},
+		"row without the review":    {seriesOf(novelist, novelist, initial), &SeriesRow{prepared: true, forms: []personForm{formOf(doctor.slug, "Dr. Alex George")}}, seriesClosed},
 		// The allowed half: the review says nothing about a group holding neither,
 		// the initial itself is still the novelist, and the novelist still meets
 		// his own series.
-		"doctor, the initial alone":  {series(initial, initial), rowOf(doctor), seriesShared},
-		"initial, novelist's series": {series(novelist, novelist), rowOf(initial), seriesShared},
-		"novelist, own series":       {series(novelist, initial), rowOf(novelist), seriesShared},
+		"doctor, the initial alone":  {seriesOf(initial, initial), rowOf(doctor), seriesShared},
+		"initial, novelist's series": {seriesOf(novelist, novelist), rowOf(initial), seriesShared},
+		"novelist, own series":       {seriesOf(novelist, initial), rowOf(novelist), seriesShared},
 	} {
 		t.Run(name, func(t *testing.T) {
 			if got := tc.sa.fit(tc.row, nil); got != tc.want {
@@ -147,14 +139,12 @@ func TestAuthorClustersNeverJoinAReviewedPair(t *testing.T) {
 	novelist := seriesPerson{slug: "alex-george", name: "Alex George"}
 	doctor := seriesPerson{slug: "dr-alex-george", name: "Dr. Alex George"}
 	initial := seriesPerson{slug: "a-george", name: "A. George"}
-	claim := func(ap *PeopleApart, order int, authors ...seriesPerson) nameClaim {
-		return nameClaim{row: &SeriesRow{authors: authors, apart: ap}, order: fmt.Sprintf("%03d", order)}
-	}
 	clusters := func(ap *PeopleApart, authors ...[]seriesPerson) [][]int {
 		claims := make([]nameClaim, len(authors))
 		idx := make([]int, len(authors))
 		for i, a := range authors {
-			claims[i], idx[i] = claim(ap, i, a...), i
+			claims[i] = nameClaim{row: &SeriesRow{authors: a, apart: ap}, order: fmt.Sprintf("%03d", i)}
+			idx[i] = i
 		}
 		return authorClusters(claims, idx, idx)
 	}
@@ -193,12 +183,7 @@ func mindMattersWith(t *testing.T, works map[string]string, people map[string]st
 	t.Helper()
 	files := map[string]string{personAddr("nate-narrator"): testpack.PersonJSON(t, "nate-narrator", "Nate Narrator")}
 	var members []string
-	titles := make([]string, 0, len(works))
-	for w := range works {
-		titles = append(titles, w)
-	}
-	slices.Sort(titles)
-	for i, w := range titles {
+	for i, w := range slices.Sorted(maps.Keys(works)) {
 		files[workAddr(w)] = testpack.WorkJSON(t, w, w, testpack.WithAuthors(works[w]))
 		files[recAddr(w, "r1")] = testpack.RecJSON(t, "r1", w, testpack.WithNarrators("nate-narrator"))
 		members = append(members, w+"@"+string(rune('1'+i)))
@@ -251,64 +236,46 @@ func TestThirdSpellingDoesNotBridgeAReviewedPair(t *testing.T) {
 	}
 }
 
-// The same bridge inside one batch, with no catalogued series to judge against:
-// the novelist's rows found the series, the initial joins them and the doctor founds
-// his own, rather than the initial carrying all three into one. The evidence decides
-// whose the initial is, not the slug order that puts `dr-` first: with more rows the
-// doctor founds and the initial joins him (TestBatchBridgeFollowsTheEvidence).
+// The same bridge inside one batch, with no catalogued series to judge against: the
+// largest cluster founds the series, the initial joins it and the other of the pair
+// founds his own, rather than the initial carrying all three into one. The evidence
+// decides whose the initial is, not the slug order that puts `dr-` first.
 func TestBatchClusterDoesNotBridgeAReviewedPair(t *testing.T) {
-	rows := []string{
-		tombRow("B0CLUSTER1", "Volume One", "A. George", "Nate Narrator", 300, "New Saga", "1"),
-		tombRow("B0CLUSTER2", "Volume Two", "Alex George", "Nate Narrator", 300, "New Saga", "2"),
-		tombRow("B0CLUSTER3", "Volume Three", "Alex George", "Nate Narrator", 300, "New Saga", "3"),
-		tombRow("B0CLUSTER4", "Volume Four", "Dr. Alex George", "Nate Narrator", 300, "New Saga", "4"),
+	rowsOf := func(credits ...string) []string {
+		var rows []string
+		for i, c := range credits {
+			n := []string{"One", "Two", "Three", "Four"}[i]
+			rows = append(rows, tombRow(fmt.Sprint("B0CLUSTER", i), "Volume "+n, c, "Nate Narrator", 300, "New Saga", fmt.Sprint(i+1)))
+		}
+		return rows
 	}
+	review := peopleApart("alex-george", "dr-alex-george")
 	for name, tc := range map[string]struct {
 		distinct []check.ReviewedDistinct
+		rows     []string
 		want     map[string][]string
 	}{
-		"reviewed pair": {peopleApart("alex-george", "dr-alex-george"), map[string][]string{
+		"reviewed pair": {review, rowsOf("A. George", "Alex George", "Alex George", "Dr. Alex George"), map[string][]string{
 			"new-saga": {"volume-one", "volume-three", "volume-two"}, "new-saga-2": {"volume-four"},
 		}},
-		"other pair": {peopleApart("adam-brown", "mr-adam-brown"), map[string][]string{
+		"the evidence is the doctor's": {review, rowsOf("Dr. Alex George", "Dr. Alex George", "A. George", "Alex George"), map[string][]string{
+			"new-saga": {"volume-one", "volume-three", "volume-two"}, "new-saga-2": {"volume-four"},
+		}},
+		"other pair": {peopleApart("adam-brown", "mr-adam-brown"), rowsOf("A. George", "Alex George", "Alex George", "Dr. Alex George"), map[string][]string{
 			"new-saga": {"volume-four", "volume-one", "volume-three", "volume-two"},
 		}},
 	} {
 		t.Run(name, func(t *testing.T) {
 			dataDir := seedTombstoneTree(t, map[string]string{personAddr("nate-narrator"): testpack.PersonJSON(t, "nate-narrator", "Nate Narrator")}, nil)
-			runLibexWith(t, dataDir, Options{Distinct: tc.distinct}, rows...)
+			runLibexWith(t, dataDir, Options{Distinct: tc.distinct}, tc.rows...)
 			for slug, want := range tc.want {
-				got := make([]string, 0, len(want))
-				for w := range seriesWorks(t, dataDir, slug) {
-					got = append(got, w)
-				}
-				slices.Sort(got)
-				if !reflect.DeepEqual(got, want) {
+				if got := slices.Sorted(maps.Keys(seriesWorks(t, dataDir, slug))); !reflect.DeepEqual(got, want) {
 					t.Errorf("%s = %v, want %v", slug, got, want)
 				}
 			}
 			mustValidate(t, dataDir)
 		})
 	}
-}
-
-func TestBatchBridgeFollowsTheEvidence(t *testing.T) {
-	dataDir := seedTombstoneTree(t, map[string]string{personAddr("nate-narrator"): testpack.PersonJSON(t, "nate-narrator", "Nate Narrator")}, nil)
-	runLibexWith(t, dataDir, Options{Distinct: peopleApart("alex-george", "dr-alex-george")},
-		tombRow("B0CLUSTER1", "Volume One", "Dr. Alex George", "Nate Narrator", 300, "New Saga", "1"),
-		tombRow("B0CLUSTER2", "Volume Two", "Dr. Alex George", "Nate Narrator", 300, "New Saga", "2"),
-		tombRow("B0CLUSTER3", "Volume Three", "A. George", "Nate Narrator", 300, "New Saga", "3"),
-		tombRow("B0CLUSTER4", "Volume Four", "Alex George", "Nate Narrator", 300, "New Saga", "4"))
-	saga := seriesWorks(t, dataDir, "new-saga")
-	for _, w := range []string{"volume-one", "volume-two", "volume-three"} {
-		if _, ok := saga[w]; !ok {
-			t.Errorf("new-saga = %v, want %s in it", saga, w)
-		}
-	}
-	if _, ok := seriesWorks(t, dataDir, "new-saga-2")["volume-four"]; !ok {
-		t.Errorf("the novelist's volume is not in new-saga-2; new-saga = %v", saga)
-	}
-	mustValidate(t, dataDir)
 }
 
 // The pre-pass judges a landing before the batch's initials decision and the
@@ -388,12 +355,9 @@ func TestLibrivoxFoldVerdictJudgesTheLandedRecords(t *testing.T) {
 				if got := workAuthorsOf(t, dataDir, "the-old-clinic"); !reflect.DeepEqual(got, []string{"dr-a-b-kovacs"}) {
 					t.Errorf("authors = %v, want [dr-a-b-kovacs]\nnotes: %v", got, sum.Notes)
 				}
-				if p := personOf(t, dataDir, "a-b-kovacs"); p.AuthorID != 0 || p.DeathYear != 0 {
-					t.Errorf("the reviewed-apart bare record was stamped: %+v", p)
-				}
 			}
-			if p := personOf(t, dataDir, "a-b-kovacs"); p.AuthorID != 0 {
-				t.Errorf("a-b-kovacs = %+v, want no author id", p)
+			if p := personOf(t, dataDir, "a-b-kovacs"); p.AuthorID != 0 || p.DeathYear != 0 {
+				t.Errorf("a-b-kovacs = %+v, want it unstamped", p)
 			}
 			mustValidate(t, dataDir)
 		})

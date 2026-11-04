@@ -216,11 +216,8 @@ type seriesAuthors struct {
 	forms map[string]personForm
 	order []string
 	index map[string]int
-	// people groups the slugs, by their index in order, into PEOPLE: every
-	// spelling of one person (personForm.same) is one group, a spelling that
-	// matches two groups bridging them - unless a review keeps the two apart
-	// (personGroups), when it stays in the first. A group's root is its
-	// earliest-seen slug.
+	// people groups the slugs, by their index in order, into PEOPLE (groupPeople,
+	// derived in refresh). A group's root is its earliest-seen slug.
 	people personGroups
 	// memberSlugs is each member's distinct individual slugs and memberKeys its
 	// key, which is what the co-credit test and a merge read.
@@ -229,8 +226,8 @@ type seriesAuthors struct {
 	// publishers is every member recording's publisher key (publisherKey).
 	publishers map[string]bool
 
-	// credits (members crediting any spelling in a group, by root) and top (the
-	// most any group has) are derived, recomputed when stale.
+	// people, credits (members crediting any spelling in a group, by root) and top
+	// (the most any group has) are derived, recomputed when stale.
 	stale   bool
 	credits map[string]int
 	top     int
@@ -265,21 +262,13 @@ func (sa *seriesAuthors) init() {
 	}
 }
 
-// addForm records a credited spelling, joining the group of every person it is
-// a spelling of.
+// addForm records a credited spelling.
 func (sa *seriesAuthors) addForm(f personForm) {
 	if _, known := sa.forms[f.slug]; known {
 		return
 	}
 	sa.forms[f.slug] = f
-	i := sa.people.add()
-	sa.index[f.slug] = i
-	sa.people.hold(i, f)
-	for j, s := range sa.order {
-		if sa.forms[s].same(f) {
-			sa.people.union(j, i)
-		}
-	}
+	sa.index[f.slug] = len(sa.order)
 	sa.order = append(sa.order, f.slug)
 	sa.stale = true
 }
@@ -303,6 +292,7 @@ func (sa *seriesAuthors) addMember(key string, slugs []string) {
 
 // root is the slug naming s's group: its earliest-seen spelling.
 func (sa *seriesAuthors) root(s string) string {
+	sa.refresh()
 	return sa.order[sa.people.find(sa.index[s])]
 }
 
@@ -320,14 +310,20 @@ func (sa *seriesAuthors) sharedWith(s string, row []personForm) bool {
 		return false
 	}
 	i := sa.index[s]
-	return !slices.ContainsFunc(row, func(f personForm) bool { return sa.people.keptFrom(i, f) })
+	return !slices.ContainsFunc(row, func(f personForm) bool { return sa.people.keptFrom(i, f.slug) })
 }
 
-// refresh recomputes the per-person credit counts.
+// refresh recomputes the people and their credit counts.
 func (sa *seriesAuthors) refresh() {
 	if !sa.stale && sa.credits != nil {
 		return
 	}
+	forms := make([]personForm, len(sa.order))
+	for i, s := range sa.order {
+		forms[i] = sa.forms[s]
+	}
+	sa.people = groupPeople(forms)
+	sa.stale = false // before rootsOf, which asks root
 	sa.credits = map[string]int{}
 	sa.top = 0
 	for _, m := range sa.memberSlugs {
@@ -336,7 +332,6 @@ func (sa *seriesAuthors) refresh() {
 			sa.top = max(sa.top, sa.credits[r])
 		}
 	}
-	sa.stale = false
 }
 
 // rootsOf is the distinct people a member's slugs name.
@@ -374,7 +369,6 @@ func (sa *seriesAuthors) clone() *seriesAuthors {
 	out.forms = maps.Clone(sa.forms)
 	out.order = slices.Clone(sa.order)
 	out.index = maps.Clone(sa.index)
-	out.people = *sa.people.clone()
 	out.memberSlugs = slices.Clone(sa.memberSlugs)
 	out.memberKeys = slices.Clone(sa.memberKeys)
 	out.publishers = maps.Clone(sa.publishers)

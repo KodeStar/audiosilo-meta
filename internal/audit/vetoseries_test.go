@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
+	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -180,6 +181,18 @@ func TestSamePersonSpellingToleratesOneNameSpelledTwoWays(t *testing.T) {
 		if got := samePersonSpelling(ix, c.a, c.b); got != c.want {
 			t.Errorf("samePersonSpelling(%q, %q) = %v, want %v: %s", c.a, c.b, got, c.want, c.why)
 		}
+	}
+
+	// A reviewed merge-people rejection speaks above the rungs, and only for its pair.
+	ix.distinct = check.ResolveDistinct([]check.ReviewedDistinct{{Kind: model.RedirectPeople, IDs: []string{"a-b-kovacs", "ab-kovacs"}}}, nil)
+	if samePersonSpelling(ix, "a-b-kovacs", "ab-kovacs") {
+		t.Error("a reviewed pair is two people, whatever the initials say")
+	}
+	if !samePersonSpelling(ix, "cheree-alsop", "cheree-lynn-alsop") {
+		t.Error("a review of another pair changed this one")
+	}
+	if !newIndex(&model.Catalog{}).distinct.Has(model.RedirectPeople, "alex-george", "dr-alex-george") {
+		t.Error("newIndex does not read the reviewed list")
 	}
 }
 

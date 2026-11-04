@@ -1890,14 +1890,8 @@ func (p *planner) creditContextOf(books []sourceBook) creditContext {
 		refused := map[[2]string]bool{}
 		apart := func(a, b string) bool {
 			pair := [2]string{a, b}
-			if refused[pair] {
-				return true
-			}
-			if p.landingsKeptApart(decided, committed, a, b) {
-				refused[pair] = true
-				return true
-			}
-			return false
+			refused[pair] = refused[pair] || p.landingsKeptApart(decided, committed, a, b)
+			return refused[pair]
 		}
 		author.keptApart, narrator.keptApart = apart, apart
 	}
