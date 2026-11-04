@@ -16773,102 +16773,119 @@
             {
               "audio_url": "https://www.archive.org/download/we_2502_librivox/we_00_lindbergh_64kb.mp3",
               "length_ms": 448000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Foreword"
             },
             {
               "audio_url": "https://www.archive.org/download/we_2502_librivox/we_01_lindbergh_64kb.mp3",
               "length_ms": 1276000,
+              "section_number": 1,
               "start_ms": 448000,
               "title": "Boyhood and Early Flights"
             },
             {
               "audio_url": "https://www.archive.org/download/we_2502_librivox/we_02_lindbergh_64kb.mp3",
               "length_ms": 1552000,
+              "section_number": 2,
               "start_ms": 1724000,
               "title": "My First Plane"
             },
             {
               "audio_url": "https://www.archive.org/download/we_2502_librivox/we_03_lindbergh_64kb.mp3",
               "length_ms": 1264000,
+              "section_number": 3,
               "start_ms": 3276000,
               "title": "Barnstorming Experiences"
             },
             {
               "audio_url": "https://www.archive.org/download/we_2502_librivox/we_04_lindbergh_64kb.mp3",
               "length_ms": 1255000,
+              "section_number": 4,
               "start_ms": 4540000,
               "title": "Heading South"
             },
             {
               "audio_url": "https://www.archive.org/download/we_2502_librivox/we_05_lindbergh_64kb.mp3",
               "length_ms": 1362000,
+              "section_number": 5,
               "start_ms": 5795000,
               "title": "Training at Brooks Field"
             },
             {
               "audio_url": "https://www.archive.org/download/we_2502_librivox/we_06_lindbergh_64kb.mp3",
               "length_ms": 1696000,
+              "section_number": 6,
               "start_ms": 7157000,
               "title": "Receiving a Pilot's Wings"
             },
             {
               "audio_url": "https://www.archive.org/download/we_2502_librivox/we_07_lindbergh_64kb.mp3",
               "length_ms": 1296000,
+              "section_number": 7,
               "start_ms": 8853000,
               "title": "I Join the Air Mail"
             },
             {
               "audio_url": "https://www.archive.org/download/we_2502_librivox/we_08_lindbergh_64kb.mp3",
               "length_ms": 1438000,
+              "section_number": 8,
               "start_ms": 10149000,
               "title": "Two Emergency Jumps"
             },
             {
               "audio_url": "https://www.archive.org/download/we_2502_librivox/we_09_lindbergh_64kb.mp3",
               "length_ms": 878000,
+              "section_number": 9,
               "start_ms": 11587000,
               "title": "San Diego-St. Louis-New York"
             },
             {
               "audio_url": "https://www.archive.org/download/we_2502_librivox/we_10_lindbergh_64kb.mp3",
               "length_ms": 1109000,
+              "section_number": 10,
               "start_ms": 12465000,
               "title": "New York to Paris"
             },
             {
               "audio_url": "https://www.archive.org/download/we_2502_librivox/we_11_lindbergh_64kb.mp3",
               "length_ms": 931000,
+              "section_number": 11,
               "start_ms": 13574000,
               "title": "Paris"
             },
             {
               "audio_url": "https://www.archive.org/download/we_2502_librivox/we_12_lindbergh_64kb.mp3",
               "length_ms": 386000,
+              "section_number": 12,
               "start_ms": 14505000,
               "title": "Brussels"
             },
             {
               "audio_url": "https://www.archive.org/download/we_2502_librivox/we_13_lindbergh_64kb.mp3",
               "length_ms": 618000,
+              "section_number": 13,
               "start_ms": 14891000,
               "title": "London"
             },
             {
               "audio_url": "https://www.archive.org/download/we_2502_librivox/we_14_lindbergh_64kb.mp3",
               "length_ms": 1844000,
+              "section_number": 14,
               "start_ms": 15509000,
               "title": "Washington"
             },
             {
               "audio_url": "https://www.archive.org/download/we_2502_librivox/we_15_lindbergh_64kb.mp3",
               "length_ms": 1242000,
+              "section_number": 15,
               "start_ms": 17353000,
               "title": "New York"
             },
             {
               "audio_url": "https://www.archive.org/download/we_2502_librivox/we_16_lindbergh_64kb.mp3",
               "length_ms": 267000,
+              "section_number": 16,
               "start_ms": 18595000,
               "title": "St. Louis"
             }
@@ -16877,7 +16894,11 @@
           "cover_url": "https://archive.org/download/we_2502_librivox/we_2502.jpg",
           "id": "jim-locke",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography"
+          ],
           "librivox_id": 21309,
+          "librivox_title": "We",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/we-by-charles-lindbergh/",

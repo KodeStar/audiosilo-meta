@@ -432,7 +432,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt30/20emesiecle_1304.jpg",
           "id": "nadine-eckert-boulet",
           "language": "fr",
+          "librivox_genres": [
+            "General Fiction",
+            "Science Fiction"
+          ],
           "librivox_id": 7269,
+          "librivox_title": "Vingtième siècle",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/le-vingtieme-siecle-by-albert-robida/",
@@ -2819,7 +2824,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt23/vintage_verse_rhapsody_1210.jpg",
           "id": "bob-gonzalez",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 5730,
+          "librivox_title": "Vintage Verse Rhapsody: A Poetry Collection",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/vintage-verse-rhapsody-a-poetry-collection/",
@@ -2937,81 +2946,103 @@
             {
               "audio_url": "https://www.archive.org/download/vinzi_as_2002_librivox/vinzi_00_spyri_64kb.mp3",
               "length_ms": 212000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Foreword"
             },
             {
               "audio_url": "https://www.archive.org/download/vinzi_as_2002_librivox/vinzi_01_spyri_64kb.mp3",
               "length_ms": 1325000,
+              "section_number": 1,
               "start_ms": 212000,
               "title": "In Leuk"
             },
             {
               "audio_url": "https://www.archive.org/download/vinzi_as_2002_librivox/vinzi_02_spyri_64kb.mp3",
               "length_ms": 1665000,
+              "section_number": 2,
               "start_ms": 1537000,
               "title": "On the Pasture"
             },
             {
               "audio_url": "https://www.archive.org/download/vinzi_as_2002_librivox/vinzi_03_spyri_64kb.mp3",
               "length_ms": 1660000,
+              "section_number": 3,
               "start_ms": 3202000,
               "title": "Unlooked-for Events"
             },
             {
               "audio_url": "https://www.archive.org/download/vinzi_as_2002_librivox/vinzi_04_spyri_64kb.mp3",
               "length_ms": 1743000,
+              "section_number": 4,
               "start_ms": 4862000,
               "title": "A Departure and an Arrival"
             },
             {
               "audio_url": "https://www.archive.org/download/vinzi_as_2002_librivox/vinzi_05_spyri_64kb.mp3",
               "length_ms": 2732000,
+              "section_number": 5,
               "start_ms": 6605000,
               "title": "Banishment"
             },
             {
               "audio_url": "https://www.archive.org/download/vinzi_as_2002_librivox/vinzi_06_spyri_64kb.mp3",
               "length_ms": 2477000,
+              "section_number": 6,
               "start_ms": 9337000,
               "title": "Higher Up the Mountain"
             },
             {
               "audio_url": "https://www.archive.org/download/vinzi_as_2002_librivox/vinzi_07_spyri_64kb.mp3",
               "length_ms": 2560000,
+              "section_number": 7,
               "start_ms": 11814000,
               "title": "Still More Music"
             },
             {
               "audio_url": "https://www.archive.org/download/vinzi_as_2002_librivox/vinzi_08_spyri_64kb.mp3",
               "length_ms": 2023000,
+              "section_number": 8,
               "start_ms": 14374000,
               "title": "Unexpected Happenings"
             },
             {
               "audio_url": "https://www.archive.org/download/vinzi_as_2002_librivox/vinzi_09_spyri_64kb.mp3",
               "length_ms": 1081000,
+              "section_number": 9,
               "start_ms": 16397000,
               "title": "Surprises, But Not Only For Russli"
             },
             {
               "audio_url": "https://www.archive.org/download/vinzi_as_2002_librivox/vinzi_10_spyri_64kb.mp3",
               "length_ms": 2378000,
+              "section_number": 10,
               "start_ms": 17478000,
               "title": "Old Friends and New Life"
             },
             {
               "audio_url": "https://www.archive.org/download/vinzi_as_2002_librivox/vinzi_11_spyri_64kb.mp3",
               "length_ms": 2037000,
+              "section_number": 11,
               "start_ms": 19856000,
               "title": "The Old Song Once More"
             }
           ],
           "copyright_year": 1923,
           "cover_url": "https://archive.org/download/vinzi_as_2002_librivox/vinzi_2002.jpg",
+          "credits": [
+            {
+              "person": "elisabeth-p-stork",
+              "role": "translator"
+            }
+          ],
           "id": "anita-sloma-martinez",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction"
+          ],
           "librivox_id": 14591,
+          "librivox_title": "Vinzi: A Story of the Swiss Alps",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/vinzi-a-story-of-the-swiss-alps-by-johanna-spyri/",
@@ -10443,174 +10474,290 @@
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_00_guild_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "phil-chenevert"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 - Publisher's Advertisement"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_01_guild_64kb.mp3",
               "length_ms": 276000,
+              "readers": [
+                "phil-chenevert"
+              ],
+              "section_number": 1,
               "start_ms": 69000,
               "title": "01 - Violet's Home"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_02_guild_64kb.mp3",
               "length_ms": 317000,
+              "readers": [
+                "phil-chenevert"
+              ],
+              "section_number": 2,
               "start_ms": 345000,
               "title": "02 - Strange Playfellows"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_03_guild_64kb.mp3",
               "length_ms": 238000,
+              "readers": [
+                "sbburke"
+              ],
+              "section_number": 3,
               "start_ms": 662000,
               "title": "03 - The Mountain Brook"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_04_guild_64kb.mp3",
               "length_ms": 277000,
+              "readers": [
+                "sbburke"
+              ],
+              "section_number": 4,
               "start_ms": 900000,
               "title": "04 - Toady"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_05_guild_64kb.mp3",
               "length_ms": 261000,
+              "readers": [
+                "sbburke"
+              ],
+              "section_number": 5,
               "start_ms": 1177000,
               "title": "05 - Love's Charm"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_06_guild_64kb.mp3",
               "length_ms": 224000,
+              "readers": [
+                "sbburke"
+              ],
+              "section_number": 6,
               "start_ms": 1438000,
               "title": "06 - How Fairies Look"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_07_guild_64kb.mp3",
               "length_ms": 275000,
+              "readers": [
+                "sbburke"
+              ],
+              "section_number": 7,
               "start_ms": 1662000,
               "title": "07 - The Birthday Present"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_08_guild_64kb.mp3",
               "length_ms": 251000,
+              "readers": [
+                "sbburke"
+              ],
+              "section_number": 8,
               "start_ms": 1937000,
               "title": "08 - Violet's Troubles"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_09_guild_64kb.mp3",
               "length_ms": 382000,
+              "readers": [
+                "sbburke"
+              ],
+              "section_number": 9,
               "start_ms": 2188000,
               "title": "09 - Fairies Again"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_10_guild_64kb.mp3",
               "length_ms": 327000,
+              "readers": [
+                "sbburke"
+              ],
+              "section_number": 10,
               "start_ms": 2570000,
               "title": "10 - The Strangers"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_11_guild_64kb.mp3",
               "length_ms": 223000,
+              "readers": [
+                "sbburke"
+              ],
+              "section_number": 11,
               "start_ms": 2897000,
               "title": "11 - The Doctor Doctored"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_12_guild_64kb.mp3",
               "length_ms": 226000,
+              "readers": [
+                "sbburke"
+              ],
+              "section_number": 12,
               "start_ms": 3120000,
               "title": "12 - Who Are Happiest"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_13_guild_64kb.mp3",
               "length_ms": 161000,
+              "readers": [
+                "jedopi"
+              ],
+              "section_number": 13,
               "start_ms": 3346000,
               "title": "13 - Violet Berrying"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_14_guild_64kb.mp3",
               "length_ms": 304000,
+              "readers": [
+                "jedopi"
+              ],
+              "section_number": 14,
               "start_ms": 3507000,
               "title": "14 - The Birds' Harvest Time"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_15_guild_64kb.mp3",
               "length_ms": 270000,
+              "readers": [
+                "jedopi"
+              ],
+              "section_number": 15,
               "start_ms": 3811000,
               "title": "15 - Where The Squirrel Led Violet"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_16_guild_64kb.mp3",
               "length_ms": 239000,
+              "readers": [
+                "jedopi"
+              ],
+              "section_number": 16,
               "start_ms": 4081000,
               "title": "16 - Alone in the Wood"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_17_guild_64kb.mp3",
               "length_ms": 259000,
+              "readers": [
+                "jedopi"
+              ],
+              "section_number": 17,
               "start_ms": 4320000,
               "title": "17 - The Kitten's Bath"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_18_guild_64kb.mp3",
               "length_ms": 210000,
+              "readers": [
+                "cheri-gardner"
+              ],
+              "section_number": 18,
               "start_ms": 4579000,
               "title": "18 - The Price of Toady's Leg"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_19_guild_64kb.mp3",
               "length_ms": 242000,
+              "readers": [
+                "cheri-gardner"
+              ],
+              "section_number": 19,
               "start_ms": 4789000,
               "title": "19 - Going To School"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_20_guild_64kb.mp3",
               "length_ms": 256000,
+              "readers": [
+                "cheri-gardner"
+              ],
+              "section_number": 20,
               "start_ms": 5031000,
               "title": "20 - Old Reuben Dead"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_21_guild_64kb.mp3",
               "length_ms": 272000,
+              "readers": [
+                "cheri-gardner"
+              ],
+              "section_number": 21,
               "start_ms": 5287000,
               "title": "21 - A New Home and Old Friends"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_22_guild_64kb.mp3",
               "length_ms": 250000,
+              "readers": [
+                "cheri-gardner"
+              ],
+              "section_number": 22,
               "start_ms": 5559000,
               "title": "22 - The New Old Home"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_23_guild_64kb.mp3",
               "length_ms": 316000,
+              "readers": [
+                "cheri-gardner"
+              ],
+              "section_number": 23,
               "start_ms": 5809000,
               "title": "23 - Alfred"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_24_guild_64kb.mp3",
               "length_ms": 222000,
+              "readers": [
+                "cheri-gardner"
+              ],
+              "section_number": 24,
               "start_ms": 6125000,
               "title": "24 - Narcissa"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_25_guild_64kb.mp3",
               "length_ms": 333000,
+              "readers": [
+                "cheri-gardner"
+              ],
+              "section_number": 25,
               "start_ms": 6347000,
               "title": "25 - New Plans"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_26_guild_64kb.mp3",
               "length_ms": 447000,
+              "readers": [
+                "cheri-gardner"
+              ],
+              "section_number": 26,
               "start_ms": 6680000,
               "title": "26 - Spring at the Cottage"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_27_guild_64kb.mp3",
               "length_ms": 308000,
+              "readers": [
+                "cheri-gardner"
+              ],
+              "section_number": 27,
               "start_ms": 7127000,
               "title": "27 - Violet's Scholars"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1107_librivox/violetfairystory_28_guild_64kb.mp3",
               "length_ms": 1088000,
+              "readers": [
+                "cheri-gardner"
+              ],
+              "section_number": 28,
               "start_ms": 7435000,
               "title": "28 - Violet's Story, Parts I & II"
             }
@@ -10619,7 +10766,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt29/Violet_1302.jpg",
           "id": "phil-chenevert",
           "language": "en",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 5430,
+          "librivox_title": "Violet: A Fairy Story",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/violet-a-fairy-story-by-caroline-snowden-guild/",
@@ -11412,216 +11563,360 @@
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_00_lang_64kb.mp3",
               "length_ms": 269000,
+              "readers": [
+                "bdsempire"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 - Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_01_lang_64kb.mp3",
               "length_ms": 2011000,
+              "readers": [
+                "sandra-estenson"
+              ],
+              "section_number": 1,
               "start_ms": 269000,
               "title": "01 - A Tale of the Tontlawald"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_02_lang_64kb.mp3",
               "length_ms": 464000,
+              "readers": [
+                "eden-rea-hedrick"
+              ],
+              "section_number": 2,
               "start_ms": 2280000,
               "title": "02 - The Finest Liar in the World"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_03_lang_64kb.mp3",
               "length_ms": 930000,
+              "readers": [
+                "christopher-webber"
+              ],
+              "section_number": 3,
               "start_ms": 2744000,
               "title": "03 - The Story of Three Wonderful Beggars"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_04_lang_64kb.mp3",
               "length_ms": 317000,
+              "readers": [
+                "julia-niedermaier"
+              ],
+              "section_number": 4,
               "start_ms": 3674000,
               "title": "04 - Schippeitaro"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_05_lang_64kb.mp3",
               "length_ms": 981000,
+              "readers": [
+                "patti-cunningham"
+              ],
+              "section_number": 5,
               "start_ms": 3991000,
               "title": "05 - The Three Princes and Their Beasts"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_06_lang_64kb.mp3",
               "length_ms": 340000,
+              "readers": [
+                "david-lawrence"
+              ],
+              "section_number": 6,
               "start_ms": 4972000,
               "title": "06 - The Goat's Ears of the Emperor Trojan"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_07_lang_64kb.mp3",
               "length_ms": 1212000,
+              "readers": [
+                "christopher-webber"
+              ],
+              "section_number": 7,
               "start_ms": 5312000,
               "title": "07 - The Nine Pea-Hens and the Golden Apples"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_08_lang_64kb.mp3",
               "length_ms": 595000,
+              "readers": [
+                "eden-rea-hedrick"
+              ],
+              "section_number": 8,
               "start_ms": 6524000,
               "title": "08 - The Lute Player"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_09_lang_64kb.mp3",
               "length_ms": 2140000,
+              "readers": [
+                "jeannie-tirado"
+              ],
+              "section_number": 9,
               "start_ms": 7119000,
               "title": "09 - The Grateful Prince"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_10_lang_64kb.mp3",
               "length_ms": 1140000,
+              "readers": [
+                "jeannie-tirado"
+              ],
+              "section_number": 10,
               "start_ms": 9259000,
               "title": "10 - The Child Who Came from an Egg"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_11_lang_64kb.mp3",
               "length_ms": 1446000,
+              "readers": [
+                "bellona-times"
+              ],
+              "section_number": 11,
               "start_ms": 10399000,
               "title": "11 - Stan Bolovan"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_12_lang_64kb.mp3",
               "length_ms": 234000,
+              "readers": [
+                "david-lawrence"
+              ],
+              "section_number": 12,
               "start_ms": 11845000,
               "title": "12 - The Two Frogs"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_13_lang_64kb.mp3",
               "length_ms": 1933000,
+              "readers": [
+                "vin-reilly"
+              ],
+              "section_number": 13,
               "start_ms": 12079000,
               "title": "13 - The Story of a Gazelle"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_14_lang_64kb.mp3",
               "length_ms": 432000,
+              "readers": [
+                "kalynda"
+              ],
+              "section_number": 14,
               "start_ms": 14012000,
               "title": "14 - How a Fish Swam in the Air and a Hare in the Water"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_15_lang_64kb.mp3",
               "length_ms": 532000,
+              "readers": [
+                "sherri-vance"
+              ],
+              "section_number": 15,
               "start_ms": 14444000,
               "title": "15 - Two in a Sack"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_16_lang_64kb.mp3",
               "length_ms": 477000,
+              "readers": [
+                "julia-niedermaier"
+              ],
+              "section_number": 16,
               "start_ms": 14976000,
               "title": "16 - The Envious Neighbour"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_17_lang_64kb.mp3",
               "length_ms": 3144000,
+              "readers": [
+                "vin-reilly"
+              ],
+              "section_number": 17,
               "start_ms": 15453000,
               "title": "17 - The Fairy of the Dawn"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_18_lang_64kb.mp3",
               "length_ms": 299000,
+              "readers": [
+                "april-gonzales"
+              ],
+              "section_number": 18,
               "start_ms": 18597000,
               "title": "18 - The Enchanted Knife"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_19_lang_64kb.mp3",
               "length_ms": 1095000,
+              "readers": [
+                "eden-rea-hedrick"
+              ],
+              "section_number": 19,
               "start_ms": 18896000,
               "title": "19 - Jesper Who Herded The Hares"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_20_lang_64kb.mp3",
               "length_ms": 775000,
+              "readers": [
+                "dflute"
+              ],
+              "section_number": 20,
               "start_ms": 19991000,
               "title": "20 - The Underground Workers"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_21_lang_64kb.mp3",
               "length_ms": 2719000,
+              "readers": [
+                "karen-howard"
+              ],
+              "section_number": 21,
               "start_ms": 20766000,
               "title": "21 - The History of Dwarf Long Nose"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_22_lang_64kb.mp3",
               "length_ms": 1298000,
+              "readers": [
+                "derek"
+              ],
+              "section_number": 22,
               "start_ms": 23485000,
               "title": "22 - The Nunda, Eater of People"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_23_lang_64kb.mp3",
               "length_ms": 705000,
+              "readers": [
+                "bdsempire"
+              ],
+              "section_number": 23,
               "start_ms": 24783000,
               "title": "23 - The Story of Hassebu"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_24_lang_64kb.mp3",
               "length_ms": 538000,
+              "readers": [
+                "pamela-krantz"
+              ],
+              "section_number": 24,
               "start_ms": 25488000,
               "title": "24 - The Maiden With the Wooden Helmet"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_25_lang_64kb.mp3",
               "length_ms": 486000,
+              "readers": [
+                "pamela-krantz"
+              ],
+              "section_number": 25,
               "start_ms": 26026000,
               "title": "25 - The Monkey and the Jelly-Fish"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_26_lang_64kb.mp3",
               "length_ms": 957000,
+              "readers": [
+                "derek"
+              ],
+              "section_number": 26,
               "start_ms": 26512000,
               "title": "26 - The Headless Dwarfs"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_27_lang_64kb.mp3",
               "length_ms": 494000,
+              "readers": [
+                "pamela-krantz"
+              ],
+              "section_number": 27,
               "start_ms": 27469000,
               "title": "27 - The Young Man Who Would Have His Eyes Opened"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_28_lang_64kb.mp3",
               "length_ms": 1011000,
+              "readers": [
+                "suebee"
+              ],
+              "section_number": 28,
               "start_ms": 27963000,
               "title": "28 - The Boys With the Golden Stars"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_29_lang_64kb.mp3",
               "length_ms": 468000,
+              "readers": [
+                "j-carl-brown"
+              ],
+              "section_number": 29,
               "start_ms": 28974000,
               "title": "29 - The Frog"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_30_lang_64kb.mp3",
               "length_ms": 325000,
+              "readers": [
+                "kalynda"
+              ],
+              "section_number": 30,
               "start_ms": 29442000,
               "title": "30 - The Princess Who Was Hidden Underground"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_31_lang_64kb.mp3",
               "length_ms": 2494000,
+              "readers": [
+                "jeannie-tirado"
+              ],
+              "section_number": 31,
               "start_ms": 29767000,
               "title": "31 - The Girl Who Pretended to be a Boy"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_32_lang_64kb.mp3",
               "length_ms": 1292000,
+              "readers": [
+                "derek"
+              ],
+              "section_number": 32,
               "start_ms": 32261000,
               "title": "32 - The Story of Halfman"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_33_lang_64kb.mp3",
               "length_ms": 669000,
+              "readers": [
+                "julia-niedermaier"
+              ],
+              "section_number": 33,
               "start_ms": 33553000,
               "title": "33 - The Prince Who Wanted to See the World"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_34_lang_64kb.mp3",
               "length_ms": 1298000,
+              "readers": [
+                "bdsempire"
+              ],
+              "section_number": 34,
               "start_ms": 34222000,
               "title": "34 - Virgilius the Sorcerer"
             },
             {
               "audio_url": "https://www.archive.org/download/violetfairy_1302_librivox/violetfairybook_35_lang_64kb.mp3",
               "length_ms": 747000,
+              "readers": [
+                "tonya-ross"
+              ],
+              "section_number": 35,
               "start_ms": 35520000,
               "title": "35 - Mogarzea and His Son"
             }
@@ -11630,7 +11925,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt29/violet_fairy_book_1302.jpg",
           "id": "bdsempire",
           "language": "en",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 6835,
+          "librivox_title": "Violet Fairy Book",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-violet-fairy-book-by-andrew-lang/",
@@ -12522,252 +12821,378 @@
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_01_ponsonby_64kb.mp3",
               "length_ms": 832000,
+              "readers": [
+                "monika-rolley"
+              ],
               "start_ms": 0,
               "title": "Volume I Chapter I"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_02_ponsonby_64kb.mp3",
               "length_ms": 1151000,
+              "readers": [
+                "monika-rolley"
+              ],
               "start_ms": 832000,
               "title": "Volume I Chapter II"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_03_ponsonby_64kb.mp3",
               "length_ms": 1360000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 1983000,
               "title": "Volume I Chapter III"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_04_ponsonby_64kb.mp3",
               "length_ms": 1288000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 3343000,
               "title": "Volume I Chapter IV"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_05_ponsonby_64kb.mp3",
               "length_ms": 1390000,
+              "readers": [
+                "alice-hastie"
+              ],
               "start_ms": 4631000,
               "title": "Volume I Chapter V"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_06_ponsonby_64kb.mp3",
               "length_ms": 1221000,
+              "readers": [
+                "alice-hastie"
+              ],
               "start_ms": 6021000,
               "title": "Volume I Chapter VI"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_07_ponsonby_64kb.mp3",
               "length_ms": 785000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 7242000,
               "title": "Volume I Chapter VII"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_08_ponsonby_64kb.mp3",
               "length_ms": 888000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 8027000,
               "title": "Volume I Chapter VIII"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_09_ponsonby_64kb.mp3",
               "length_ms": 1394000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 8915000,
               "title": "Volume I Chapter IX"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_10_ponsonby_64kb.mp3",
               "length_ms": 1600000,
+              "readers": [
+                "drandall"
+              ],
               "start_ms": 10309000,
               "title": "Volume I Chapter X"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_11_ponsonby_64kb.mp3",
               "length_ms": 989000,
+              "readers": [
+                "drandall"
+              ],
               "start_ms": 11909000,
               "title": "Volume I Chapter XI"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_12_ponsonby_64kb.mp3",
               "length_ms": 601000,
+              "readers": [
+                "drandall"
+              ],
               "start_ms": 12898000,
               "title": "Volume I Chapter XII"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_13_ponsonby_64kb.mp3",
               "length_ms": 615000,
+              "readers": [
+                "drandall"
+              ],
               "start_ms": 13499000,
               "title": "Volume I Chapter XIII"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_14_ponsonby_64kb.mp3",
               "length_ms": 1011000,
+              "readers": [
+                "drandall"
+              ],
               "start_ms": 14114000,
               "title": "Volume I Chapter XIV"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_15_ponsonby_64kb.mp3",
               "length_ms": 638000,
+              "readers": [
+                "drandall"
+              ],
               "start_ms": 15125000,
               "title": "Volume I Chapter XV"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_16_ponsonby_64kb.mp3",
               "length_ms": 981000,
+              "readers": [
+                "jaanu-ramesh"
+              ],
               "start_ms": 15763000,
               "title": "Volume II Chapter I"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_17_ponsonby_64kb.mp3",
               "length_ms": 682000,
+              "readers": [
+                "chadh94"
+              ],
               "start_ms": 16744000,
               "title": "Volume II Chapter II"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_18_ponsonby_64kb.mp3",
               "length_ms": 721000,
+              "readers": [
+                "drandall"
+              ],
               "start_ms": 17426000,
               "title": "Volume II Chapter III"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_19_ponsonby_64kb.mp3",
               "length_ms": 902000,
+              "readers": [
+                "racquelolea"
+              ],
               "start_ms": 18147000,
               "title": "Volume II Chapter IV"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_20_ponsonby_64kb.mp3",
               "length_ms": 1052000,
+              "readers": [
+                "drandall"
+              ],
               "start_ms": 19049000,
               "title": "Volume II Chapter V"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_21_ponsonby_64kb.mp3",
               "length_ms": 1279000,
+              "readers": [
+                "drandall"
+              ],
               "start_ms": 20101000,
               "title": "Volume II Chapter VI"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_22_ponsonby_64kb.mp3",
               "length_ms": 1081000,
+              "readers": [
+                "vijeta-sharma"
+              ],
               "start_ms": 21380000,
               "title": "Volume II Chapter VII"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_23_ponsonby_64kb.mp3",
               "length_ms": 1194000,
+              "readers": [
+                "vijeta-sharma"
+              ],
               "start_ms": 22461000,
               "title": "Volume II Chapter VIII"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_24_ponsonby_64kb.mp3",
               "length_ms": 599000,
+              "readers": [
+                "clarekoesters"
+              ],
               "start_ms": 23655000,
               "title": "Volume II Chapter IX"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_25_ponsonby_64kb.mp3",
               "length_ms": 1811000,
+              "readers": [
+                "vijeta-sharma"
+              ],
               "start_ms": 24254000,
               "title": "Volume II Chapter X"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_26_ponsonby_64kb.mp3",
               "length_ms": 1677000,
+              "readers": [
+                "vijeta-sharma"
+              ],
               "start_ms": 26065000,
               "title": "Volume II Chapter XI"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_27_ponsonby_64kb.mp3",
               "length_ms": 1424000,
+              "readers": [
+                "vijeta-sharma"
+              ],
               "start_ms": 27742000,
               "title": "Volume II Chapter XII"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_28_ponsonby_64kb.mp3",
               "length_ms": 1254000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 29166000,
               "title": "Volume II Chapter XIII"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_29_ponsonby_64kb.mp3",
               "length_ms": 1046000,
+              "readers": [
+                "monika-rolley"
+              ],
               "start_ms": 30420000,
               "title": "Volume III Chapter I"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_30_ponsonby_64kb.mp3",
               "length_ms": 1237000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 31466000,
               "title": "Volume III Chapter II"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_31_ponsonby_64kb.mp3",
               "length_ms": 1502000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 32703000,
               "title": "Volume III Chapter III"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_32_ponsonby_64kb.mp3",
               "length_ms": 829000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 34205000,
               "title": "Volume III Chapter IV"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_33_ponsonby_64kb.mp3",
               "length_ms": 969000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 35034000,
               "title": "Volume III Chapter V"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_34_ponsonby_64kb.mp3",
               "length_ms": 839000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 36003000,
               "title": "Volume III Chapter VI"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_35_ponsonby_64kb.mp3",
               "length_ms": 966000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 36842000,
               "title": "Volume III Chapter VII"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_36_ponsonby_64kb.mp3",
               "length_ms": 536000,
+              "readers": [
+                "schrm"
+              ],
               "start_ms": 37808000,
               "title": "Volume III Chapter VIII"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_37_ponsonby_64kb.mp3",
               "length_ms": 1486000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 38344000,
               "title": "Volume III Chapter IX"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_38_ponsonby_64kb.mp3",
               "length_ms": 1039000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 39830000,
               "title": "Volume III Chapter X"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_39_ponsonby_64kb.mp3",
               "length_ms": 1033000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 40869000,
               "title": "Volume III Chapter XI"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_40_ponsonby_64kb.mp3",
               "length_ms": 1415000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 41902000,
               "title": "Volume III Chapter XII"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_41_ponsonby_64kb.mp3",
               "length_ms": 452000,
+              "readers": [
+                "monika-rolley"
+              ],
               "start_ms": 43317000,
               "title": "Volume III Chapter XIII"
             },
             {
               "audio_url": "https://www.archive.org/download/violet_osborne_1907_librivox/violetosborne_42_ponsonby_64kb.mp3",
               "length_ms": 770000,
+              "readers": [
+                "monika-rolley"
+              ],
               "start_ms": 43769000,
               "title": "Volume III Chapter XIV"
             }
@@ -12776,7 +13201,13 @@
           "cover_url": "https://archive.org/download/violet_osborne_1907_librivox/violet_1907.jpg",
           "id": "monika-rolley",
           "language": "en",
+          "librivox_genres": [
+            "Culture & Heritage Fiction",
+            "Fictional Biographies & Memoirs",
+            "Romance"
+          ],
           "librivox_id": 13053,
+          "librivox_title": "Violet Osborne - Trilogy",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/violet-osborne-trilogy-by-emily-ponsonby/",
@@ -14590,138 +15021,161 @@
             {
               "audio_url": "https://www.archive.org/download/violetsandothertales_2004_librivox/violetsandothertales_00_moore_64kb.mp3",
               "length_ms": 304000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction and Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/violetsandothertales_2004_librivox/violetsandothertales_01_moore_64kb.mp3",
               "length_ms": 351000,
+              "section_number": 1,
               "start_ms": 304000,
               "title": "Violets"
             },
             {
               "audio_url": "https://www.archive.org/download/violetsandothertales_2004_librivox/violetsandothertales_02_moore_64kb.mp3",
               "length_ms": 207000,
+              "section_number": 2,
               "start_ms": 655000,
               "title": "Three Thoughts"
             },
             {
               "audio_url": "https://www.archive.org/download/violetsandothertales_2004_librivox/violetsandothertales_03_moore_64kb.mp3",
               "length_ms": 556000,
+              "section_number": 3,
               "start_ms": 862000,
               "title": "The Woman"
             },
             {
               "audio_url": "https://www.archive.org/download/violetsandothertales_2004_librivox/violetsandothertales_04_moore_64kb.mp3",
               "length_ms": 360000,
+              "section_number": 4,
               "start_ms": 1418000,
               "title": "Ten Minutes' Musing"
             },
             {
               "audio_url": "https://www.archive.org/download/violetsandothertales_2004_librivox/violetsandothertales_05_moore_64kb.mp3",
               "length_ms": 680000,
+              "section_number": 5,
               "start_ms": 1778000,
               "title": "A Plaint/In Unconsciousness"
             },
             {
               "audio_url": "https://www.archive.org/download/violetsandothertales_2004_librivox/violetsandothertales_06_moore_64kb.mp3",
               "length_ms": 845000,
+              "section_number": 6,
               "start_ms": 2458000,
               "title": "Titee"
             },
             {
               "audio_url": "https://www.archive.org/download/violetsandothertales_2004_librivox/violetsandothertales_07_moore_64kb.mp3",
               "length_ms": 519000,
+              "section_number": 7,
               "start_ms": 3303000,
               "title": "Anarchy Alley"
             },
             {
               "audio_url": "https://www.archive.org/download/violetsandothertales_2004_librivox/violetsandothertales_08_moore_64kb.mp3",
               "length_ms": 156000,
+              "section_number": 8,
               "start_ms": 3822000,
               "title": "Impressions"
             },
             {
               "audio_url": "https://www.archive.org/download/violetsandothertales_2004_librivox/violetsandothertales_09_moore_64kb.mp3",
               "length_ms": 524000,
+              "section_number": 9,
               "start_ms": 3978000,
               "title": "Salammbo"
             },
             {
               "audio_url": "https://www.archive.org/download/violetsandothertales_2004_librivox/violetsandothertales_10_moore_64kb.mp3",
               "length_ms": 279000,
+              "section_number": 10,
               "start_ms": 4502000,
               "title": "Legend of the Newspaper"
             },
             {
               "audio_url": "https://www.archive.org/download/violetsandothertales_2004_librivox/violetsandothertales_11_moore_64kb.mp3",
               "length_ms": 570000,
+              "section_number": 11,
               "start_ms": 4781000,
               "title": "A Carnival Jangle"
             },
             {
               "audio_url": "https://www.archive.org/download/violetsandothertales_2004_librivox/violetsandothertales_12_moore_64kb.mp3",
               "length_ms": 668000,
+              "section_number": 12,
               "start_ms": 5351000,
               "title": "Paul to Virginia (Fin de Siecle)/The Maiden's Dream"
             },
             {
               "audio_url": "https://www.archive.org/download/violetsandothertales_2004_librivox/violetsandothertales_13_moore_64kb.mp3",
               "length_ms": 257000,
+              "section_number": 13,
               "start_ms": 6019000,
               "title": "In Memoriam"
             },
             {
               "audio_url": "https://www.archive.org/download/violetsandothertales_2004_librivox/violetsandothertales_14_moore_64kb.mp3",
               "length_ms": 580000,
+              "section_number": 14,
               "start_ms": 6276000,
               "title": "A Story of Vengeance"
             },
             {
               "audio_url": "https://www.archive.org/download/violetsandothertales_2004_librivox/violetsandothertales_15_moore_64kb.mp3",
               "length_ms": 249000,
+              "section_number": 15,
               "start_ms": 6856000,
               "title": "At Bay St. Louis/New Year's Day"
             },
             {
               "audio_url": "https://www.archive.org/download/violetsandothertales_2004_librivox/violetsandothertales_16_moore_64kb.mp3",
               "length_ms": 826000,
+              "section_number": 16,
               "start_ms": 7105000,
               "title": "The Unknown Life of Jesus Christ"
             },
             {
               "audio_url": "https://www.archive.org/download/violetsandothertales_2004_librivox/violetsandothertales_17_moore_64kb.mp3",
               "length_ms": 1090000,
+              "section_number": 17,
               "start_ms": 7931000,
               "title": "In Our Neighborhood"
             },
             {
               "audio_url": "https://www.archive.org/download/violetsandothertales_2004_librivox/violetsandothertales_18_moore_64kb.mp3",
               "length_ms": 1164000,
+              "section_number": 18,
               "start_ms": 9021000,
               "title": "Farewell/Little Miss Sophie"
             },
             {
               "audio_url": "https://www.archive.org/download/violetsandothertales_2004_librivox/violetsandothertales_19_moore_64kb.mp3",
               "length_ms": 307000,
+              "section_number": 19,
               "start_ms": 10185000,
               "title": "If I Had Known/Chalmette"
             },
             {
               "audio_url": "https://www.archive.org/download/violetsandothertales_2004_librivox/violetsandothertales_20_moore_64kb.mp3",
               "length_ms": 564000,
+              "section_number": 20,
               "start_ms": 10492000,
               "title": "At Eventide"
             },
             {
               "audio_url": "https://www.archive.org/download/violetsandothertales_2004_librivox/violetsandothertales_21_moore_64kb.mp3",
               "length_ms": 173000,
+              "section_number": 21,
               "start_ms": 11056000,
               "title": "The Idler/Love and the Butterfly"
             },
             {
               "audio_url": "https://www.archive.org/download/violetsandothertales_2004_librivox/violetsandothertales_22_moore_64kb.mp3",
               "length_ms": 526000,
+              "section_number": 22,
               "start_ms": 11229000,
               "title": "The Bee-Man/Amid The Roses"
             }
@@ -14730,7 +15184,13 @@
           "cover_url": "https://archive.org/download/librivoxcdcoverart36/violetsandothertales_2004.jpg",
           "id": "james-k-white",
           "language": "en",
+          "librivox_genres": [
+            "Culture & Heritage Fiction",
+            "Single author",
+            "Single Author Collections"
+          ],
           "librivox_id": 14777,
+          "librivox_title": "Violets And Other Tales",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/violets-and-other-tales-by-alice-dunbar-nelson/",

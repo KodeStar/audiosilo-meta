@@ -4582,7 +4582,11 @@
           "cover_url": "https://archive.org/download/towertreasurev5_2404_librivox/tower_treasure5_2404.jpg",
           "id": "cluechaser",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure"
+          ],
           "librivox_id": 20096,
+          "librivox_title": "Tower Treasure (version 5)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-tower-treasure-version-5-by-franklin-w-dixon/",
@@ -5331,7 +5335,11 @@
           "cover_url": "https://archive.org/download/ttowertreasure_2304_librivox/tower_treasure2_2304.jpg",
           "id": "james-r-hedrick",
           "language": "en",
+          "librivox_genres": [
+            "Detective Fiction"
+          ],
           "librivox_id": 19084,
+          "librivox_title": "Tower Treasure (Version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-tower-treasure-by-franklin-w-dixon-2/",
@@ -5916,7 +5924,11 @@
           "cover_url": "https://archive.org/download/tower_treasure_v4_2310_librivox/TOWER_TREASURE4_2310.jpg",
           "id": "luke-sieburg",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure"
+          ],
           "librivox_id": 18853,
+          "librivox_title": "Tower Treasure (Version 4)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-tower-treasure-version-4-by-franklin-w-dixon/",
@@ -5945,144 +5957,362 @@
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2309_librivox/towertreasure_01_dixon_64kb.mp3",
               "length_ms": 573000,
+              "readers": [
+                "majortoast",
+                "ben-tucker",
+                "redrun"
+              ],
               "start_ms": 0,
               "title": "The Speed Demon"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2309_librivox/towertreasure_02_dixon_64kb.mp3",
               "length_ms": 621000,
+              "readers": [
+                "rich-brown",
+                "majortoast",
+                "ben-tucker",
+                "redrun"
+              ],
               "start_ms": 573000,
               "title": "The Stolen Roadster"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2309_librivox/towertreasure_03_dixon_64kb.mp3",
               "length_ms": 590000,
+              "readers": [
+                "chuck-williamson",
+                "scotty-smith",
+                "rich-brown",
+                "majortoast",
+                "lynette-caulkins",
+                "james-r-hedrick",
+                "ben-tucker",
+                "redrun",
+                "helen-cole"
+              ],
               "start_ms": 1194000,
               "title": "Traces of the Thief"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2309_librivox/towertreasure_04_dixon_64kb.mp3",
               "length_ms": 554000,
+              "readers": [
+                "scotty-smith",
+                "rich-brown",
+                "majortoast",
+                "wayne-cooke",
+                "james-r-hedrick",
+                "ben-tucker",
+                "redrun",
+                "eric-david-harrington"
+              ],
               "start_ms": 1784000,
               "title": "The Hold-Up"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2309_librivox/towertreasure_05_dixon_64kb.mp3",
               "length_ms": 1033000,
+              "readers": [
+                "bill-mosley",
+                "greg-giordano",
+                "rich-brown",
+                "majortoast",
+                "james-r-hedrick",
+                "ben-tucker",
+                "redrun",
+                "voicegadget"
+              ],
               "start_ms": 2338000,
               "title": "Chet's Auto Horn"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2309_librivox/towertreasure_06_dixon_64kb.mp3",
               "length_ms": 641000,
+              "readers": [
+                "bill-mosley",
+                "rich-brown",
+                "majortoast",
+                "elsie-selwyn",
+                "ben-tucker",
+                "emily-grace",
+                "redrun",
+                "christian-wordell",
+                "eric-david-harrington",
+                "voicegadget"
+              ],
               "start_ms": 3371000,
               "title": "Tire Tracks"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2309_librivox/towertreasure_07_dixon_64kb.mp3",
               "length_ms": 701000,
+              "readers": [
+                "bill-mosley",
+                "greg-giordano",
+                "larry-wilson",
+                "scotty-smith",
+                "majortoast",
+                "elsie-selwyn",
+                "ben-tucker",
+                "redrun"
+              ],
               "start_ms": 4012000,
               "title": "The Mansion Robbery"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2309_librivox/towertreasure_08_dixon_64kb.mp3",
               "length_ms": 562000,
+              "readers": [
+                "bill-mosley",
+                "greg-giordano",
+                "larry-wilson",
+                "majortoast",
+                "elsie-selwyn",
+                "christina-fu",
+                "ben-tucker",
+                "redrun",
+                "helen-cole",
+                "magpie42"
+              ],
               "start_ms": 4713000,
               "title": "The Arrest"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2309_librivox/towertreasure_09_dixon_64kb.mp3",
               "length_ms": 599000,
+              "readers": [
+                "greg-giordano",
+                "majortoast",
+                "elsie-selwyn",
+                "ben-tucker",
+                "redrun"
+              ],
               "start_ms": 5275000,
               "title": "Red Hair"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2309_librivox/towertreasure_10_dixon_64kb.mp3",
               "length_ms": 800000,
+              "readers": [
+                "greg-giordano",
+                "majortoast",
+                "elsie-selwyn",
+                "ben-tucker",
+                "redrun"
+              ],
               "start_ms": 5874000,
               "title": "An Important Discovery"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2309_librivox/towertreasure_11_dixon_64kb.mp3",
               "length_ms": 721000,
+              "readers": [
+                "greg-giordano",
+                "majortoast",
+                "elsie-selwyn",
+                "ben-tucker",
+                "redrun"
+              ],
               "start_ms": 6674000,
               "title": "Mr. Hardy Investigates"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2309_librivox/towertreasure_12_dixon_64kb.mp3",
               "length_ms": 832000,
+              "readers": [
+                "bill-mosley",
+                "chuck-williamson",
+                "greg-giordano",
+                "redrun",
+                "voicegadget"
+              ],
               "start_ms": 7395000,
               "title": "Days of Waiting"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2309_librivox/towertreasure_13_dixon_64kb.mp3",
               "length_ms": 732000,
+              "readers": [
+                "majortoast",
+                "lynette-caulkins",
+                "christina-fu",
+                "ben-tucker",
+                "redrun",
+                "helen-cole",
+                "magpie42"
+              ],
               "start_ms": 8227000,
               "title": "In Poor Quarters"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2309_librivox/towertreasure_14_dixon_64kb.mp3",
               "length_ms": 1011000,
+              "readers": [
+                "greg-giordano",
+                "majortoast",
+                "james-r-hedrick",
+                "ben-tucker",
+                "redrun",
+                "eric-david-harrington"
+              ],
               "start_ms": 8959000,
               "title": "Red Jackley"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2309_librivox/towertreasure_15_dixon_64kb.mp3",
               "length_ms": 841000,
+              "readers": [
+                "bill-mosley",
+                "rich-brown",
+                "majortoast",
+                "wayne-cooke",
+                "james-r-hedrick",
+                "ben-tucker",
+                "emily-grace",
+                "redrun",
+                "christian-wordell",
+                "eric-david-harrington",
+                "voicegadget"
+              ],
               "start_ms": 9970000,
               "title": "The Chief Gets a Bomb"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2309_librivox/towertreasure_16_dixon_64kb.mp3",
               "length_ms": 607000,
+              "readers": [
+                "bill-mosley",
+                "greg-giordano",
+                "majortoast",
+                "wayne-cooke",
+                "james-r-hedrick",
+                "ben-tucker",
+                "emily-grace",
+                "redrun",
+                "christian-wordell",
+                "eric-david-harrington"
+              ],
               "start_ms": 10811000,
               "title": "A Confession"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2309_librivox/towertreasure_17_dixon_64kb.mp3",
               "length_ms": 717000,
+              "readers": [
+                "larry-wilson",
+                "majortoast",
+                "ben-tucker",
+                "redrun",
+                "magpie42"
+              ],
               "start_ms": 11418000,
               "title": "The Search of the Tower"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2309_librivox/towertreasure_18_dixon_64kb.mp3",
               "length_ms": 612000,
+              "readers": [
+                "larry-wilson",
+                "majortoast",
+                "ben-tucker",
+                "redrun",
+                "magpie42"
+              ],
               "start_ms": 12135000,
               "title": "The New Tower"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2309_librivox/towertreasure_19_dixon_64kb.mp3",
               "length_ms": 812000,
+              "readers": [
+                "bill-mosley",
+                "greg-giordano",
+                "larry-wilson",
+                "majortoast",
+                "ben-tucker",
+                "redrun",
+                "magpie42"
+              ],
               "start_ms": 12747000,
               "title": "The Mystery Deepens"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2309_librivox/towertreasure_20_dixon_64kb.mp3",
               "length_ms": 781000,
+              "readers": [
+                "bill-mosley",
+                "greg-giordano",
+                "rich-brown",
+                "majortoast",
+                "elsie-selwyn",
+                "lynette-caulkins",
+                "ben-tucker",
+                "the-countess",
+                "redrun",
+                "voicegadget"
+              ],
               "start_ms": 13559000,
               "title": "The Flash in the Tower"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2309_librivox/towertreasure_21_dixon_64kb.mp3",
               "length_ms": 661000,
+              "readers": [
+                "majortoast",
+                "james-r-hedrick",
+                "ben-tucker",
+                "emily-grace",
+                "redrun",
+                "eric-david-harrington"
+              ],
               "start_ms": 14340000,
               "title": "A New Idea"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2309_librivox/towertreasure_22_dixon_64kb.mp3",
               "length_ms": 638000,
+              "readers": [
+                "majortoast",
+                "ben-tucker",
+                "redrun"
+              ],
               "start_ms": 15001000,
               "title": "The Search"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2309_librivox/towertreasure_23_dixon_64kb.mp3",
               "length_ms": 652000,
+              "readers": [
+                "bill-mosley",
+                "greg-giordano",
+                "larry-wilson",
+                "majortoast",
+                "james-r-hedrick",
+                "ben-tucker",
+                "redrun",
+                "eric-david-harrington",
+                "magpie42"
+              ],
               "start_ms": 15639000,
               "title": "Adelia Applegate's Compliment"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2309_librivox/towertreasure_24_dixon_64kb.mp3",
               "length_ms": 665000,
+              "readers": [
+                "bill-mosley",
+                "larry-wilson",
+                "rich-brown",
+                "majortoast",
+                "elsie-selwyn",
+                "ben-tucker",
+                "emily-grace",
+                "redrun",
+                "christian-wordell",
+                "voicegadget",
+                "magpie42"
+              ],
               "start_ms": 16291000,
               "title": "The Last of the Tower Case (and Voice Credits)"
             }
@@ -6091,7 +6321,12 @@
           "cover_url": "https://archive.org/download/towertreasure_2309_librivox/tower_treasure3_2309.jpg",
           "id": "majortoast",
           "language": "en",
+          "librivox_genres": [
+            "Dramatic Readings",
+            "Detective Fiction"
+          ],
           "librivox_id": 19020,
+          "librivox_title": "Tower Treasure (Version 3 - Dramatic Reading)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-tower-treasure-version-3-dramatic-reading-by-franklin-w-dixon/",
@@ -6140,144 +6375,216 @@
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2303_librivox/towertreasure_01_dixon_64kb.mp3",
               "length_ms": 493000,
+              "readers": [
+                "mozartjr"
+              ],
               "start_ms": 0,
               "title": "The Speed Demon"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2303_librivox/towertreasure_02_dixon_64kb.mp3",
               "length_ms": 578000,
+              "readers": [
+                "afaulds"
+              ],
               "start_ms": 493000,
               "title": "The Stolen Roadster"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2303_librivox/towertreasure_03_dixon_64kb.mp3",
               "length_ms": 495000,
+              "readers": [
+                "jacobvaldez"
+              ],
               "start_ms": 1071000,
               "title": "Traces of the Thief"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2303_librivox/towertreasure_04_dixon_64kb.mp3",
               "length_ms": 524000,
+              "readers": [
+                "nancy-gorgen"
+              ],
               "start_ms": 1566000,
               "title": "The Hold-Up"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2303_librivox/towertreasure_05_dixon_64kb.mp3",
               "length_ms": 935000,
+              "readers": [
+                "nancy-gorgen"
+              ],
               "start_ms": 2090000,
               "title": "Chet's Auto Horn"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2303_librivox/towertreasure_06_dixon_64kb.mp3",
               "length_ms": 621000,
+              "readers": [
+                "nancy-gorgen"
+              ],
               "start_ms": 3025000,
               "title": "Tire Tracks"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2303_librivox/towertreasure_07_dixon_64kb.mp3",
               "length_ms": 657000,
+              "readers": [
+                "nancy-gorgen"
+              ],
               "start_ms": 3646000,
               "title": "The Mansion Robbery"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2303_librivox/towertreasure_08_dixon_64kb.mp3",
               "length_ms": 497000,
+              "readers": [
+                "nancy-gorgen"
+              ],
               "start_ms": 4303000,
               "title": "The Arrest"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2303_librivox/towertreasure_09_dixon_64kb.mp3",
               "length_ms": 618000,
+              "readers": [
+                "fred"
+              ],
               "start_ms": 4800000,
               "title": "Red Hair"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2303_librivox/towertreasure_10_dixon_64kb.mp3",
               "length_ms": 821000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 5418000,
               "title": "An Important Discovery"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2303_librivox/towertreasure_11_dixon_64kb.mp3",
               "length_ms": 716000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 6239000,
               "title": "Mr. Hardy Investigates"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2303_librivox/towertreasure_12_dixon_64kb.mp3",
               "length_ms": 695000,
+              "readers": [
+                "hdgordon"
+              ],
               "start_ms": 6955000,
               "title": "Days of Waiting"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2303_librivox/towertreasure_13_dixon_64kb.mp3",
               "length_ms": 644000,
+              "readers": [
+                "hdgordon"
+              ],
               "start_ms": 7650000,
               "title": "In Poor Quarters"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2303_librivox/towertreasure_14_dixon_64kb.mp3",
               "length_ms": 999000,
+              "readers": [
+                "elijah-fisher"
+              ],
               "start_ms": 8294000,
               "title": "Red Jackley"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2303_librivox/towertreasure_15_dixon_64kb.mp3",
               "length_ms": 762000,
+              "readers": [
+                "elijah-fisher"
+              ],
               "start_ms": 9293000,
               "title": "The Chief Gets a Bomb"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2303_librivox/towertreasure_16_dixon_64kb.mp3",
               "length_ms": 591000,
+              "readers": [
+                "fred"
+              ],
               "start_ms": 10055000,
               "title": "A Confession"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2303_librivox/towertreasure_17_dixon_64kb.mp3",
               "length_ms": 679000,
+              "readers": [
+                "larry-gieseke"
+              ],
               "start_ms": 10646000,
               "title": "The Search of the Tower"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2303_librivox/towertreasure_18_dixon_64kb.mp3",
               "length_ms": 659000,
+              "readers": [
+                "jmac698"
+              ],
               "start_ms": 11325000,
               "title": "The New Tower"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2303_librivox/towertreasure_19_dixon_64kb.mp3",
               "length_ms": 648000,
+              "readers": [
+                "afaulds"
+              ],
               "start_ms": 11984000,
               "title": "The Mystery Deepens"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2303_librivox/towertreasure_20_dixon_64kb.mp3",
               "length_ms": 635000,
+              "readers": [
+                "afaulds"
+              ],
               "start_ms": 12632000,
               "title": "The Flash in the Tower"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2303_librivox/towertreasure_21_dixon_64kb.mp3",
               "length_ms": 757000,
+              "readers": [
+                "bookbard"
+              ],
               "start_ms": 13267000,
               "title": "A New Idea"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2303_librivox/towertreasure_22_dixon_64kb.mp3",
               "length_ms": 770000,
+              "readers": [
+                "bookbard"
+              ],
               "start_ms": 14024000,
               "title": "The Search"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2303_librivox/towertreasure_23_dixon_64kb.mp3",
               "length_ms": 734000,
+              "readers": [
+                "bookbard"
+              ],
               "start_ms": 14794000,
               "title": "Adelia Applegate's Compliment"
             },
             {
               "audio_url": "https://www.archive.org/download/towertreasure_2303_librivox/towertreasure_24_dixon_64kb.mp3",
               "length_ms": 451000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 15528000,
               "title": "The Last of the Tower Case"
             }
@@ -6286,7 +6593,11 @@
           "cover_url": "https://archive.org/download/towertreasure_2303_librivox/tower_treasure_2303.jpg",
           "id": "mozartjr",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure"
+          ],
           "librivox_id": 18793,
+          "librivox_title": "Tower Treasure",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-tower-treasure-by-franklin-w-dixon/",

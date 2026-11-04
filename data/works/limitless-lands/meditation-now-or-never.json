@@ -413,99 +413,170 @@
             {
               "audio_url": "https://www.archive.org/download/meditations_0708_librivox/meditations_00_marcusaurelius_64kb.mp3",
               "length_ms": 167000,
+              "readers": [
+                "aegist"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_0708_librivox/meditations_01_marcusaurelius_64kb.mp3",
               "length_ms": 985000,
+              "readers": [
+                "kevin-mcash"
+              ],
+              "section_number": 1,
               "start_ms": 167000,
               "title": "Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_0708_librivox/meditations_02_marcusaurelius_64kb.mp3",
               "length_ms": 829000,
+              "readers": [
+                "kevin-mcash"
+              ],
+              "section_number": 2,
               "start_ms": 1152000,
               "title": "Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_0708_librivox/meditations_03_marcusaurelius_64kb.mp3",
               "length_ms": 1060000,
+              "readers": [
+                "aegist"
+              ],
+              "section_number": 3,
               "start_ms": 1981000,
               "title": "Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_0708_librivox/meditations_04_marcusaurelius_64kb.mp3",
               "length_ms": 1725000,
+              "readers": [
+                "davyobrian"
+              ],
+              "section_number": 4,
               "start_ms": 3041000,
               "title": "Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_0708_librivox/meditations_05_marcusaurelius_64kb.mp3",
               "length_ms": 1956000,
+              "readers": [
+                "cicoree"
+              ],
+              "section_number": 5,
               "start_ms": 4766000,
               "title": "Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_0708_librivox/meditations_06_marcusaurelius_64kb.mp3",
               "length_ms": 1663000,
+              "readers": [
+                "ontheroad"
+              ],
+              "section_number": 6,
               "start_ms": 6722000,
               "title": "Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_0708_librivox/meditations_07_marcusaurelius_64kb.mp3",
               "length_ms": 1957000,
+              "readers": [
+                "davyobrian"
+              ],
+              "section_number": 7,
               "start_ms": 8385000,
               "title": "Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_0708_librivox/meditations_08_marcusaurelius_64kb.mp3",
               "length_ms": 2159000,
+              "readers": [
+                "fr-richard-zeile-of-detroit"
+              ],
+              "section_number": 8,
               "start_ms": 10342000,
               "title": "Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_0708_librivox/meditations_09_marcusaurelius_64kb.mp3",
               "length_ms": 1969000,
+              "readers": [
+                "fr-richard-zeile-of-detroit"
+              ],
+              "section_number": 9,
               "start_ms": 12501000,
               "title": "Chapter 9"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_0708_librivox/meditations_10_marcusaurelius_64kb.mp3",
               "length_ms": 1716000,
+              "readers": [
+                "ml-cohen"
+              ],
+              "section_number": 10,
               "start_ms": 14470000,
               "title": "Chapter 10"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_0708_librivox/meditations_11_marcusaurelius_64kb.mp3",
               "length_ms": 1543000,
+              "readers": [
+                "leon-mire"
+              ],
+              "section_number": 11,
               "start_ms": 16186000,
               "title": "Chapter 11"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_0708_librivox/meditations_12_marcusaurelius_64kb.mp3",
               "length_ms": 1372000,
+              "readers": [
+                "leon-mire"
+              ],
+              "section_number": 12,
               "start_ms": 17729000,
               "title": "Chapter 12"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_0708_librivox/meditations_13_marcusaurelius_64kb.mp3",
               "length_ms": 2575000,
+              "readers": [
+                "leon-mire"
+              ],
+              "section_number": 13,
               "start_ms": 19101000,
               "title": "M. Aurelius Antoninus"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_0708_librivox/meditations_14_marcusaurelius_64kb.mp3",
               "length_ms": 3484000,
+              "readers": [
+                "ml-cohen"
+              ],
+              "section_number": 14,
               "start_ms": 21676000,
               "title": "The Philosophy of Marcus Aurelius"
             }
           ],
           "copyright_year": 1862,
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt4/Meditations_1005.jpg",
+          "credits": [
+            {
+              "person": "george-long",
+              "role": "translator"
+            }
+          ],
           "id": "aegist",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Ancient"
+          ],
           "librivox_id": 1095,
+          "librivox_title": "Meditations",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-meditations-of-marcus-aurelius/",
@@ -1664,7 +1735,11 @@
           "cover_url": "https://archive.org/download/meditationsandprayers_2212_librivox/meditationsandprayers_2212.jpg",
           "id": "inthedesert",
           "language": "en",
+          "librivox_genres": [
+            "Christianity - Other"
+          ],
           "librivox_id": 18707,
+          "librivox_title": "Meditations and Prayers",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/meditations-and-prayers-by-john-bradford/",
@@ -3064,90 +3139,105 @@
             {
               "audio_url": "https://www.archive.org/download/meditations_pen_librivox/meditations_00_stewart_64kb.mp3",
               "length_ms": 1552000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 - Preface/Letters and Commendations"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_pen_librivox/meditations_01_stewart_64kb.mp3",
               "length_ms": 1719000,
+              "section_number": 1,
               "start_ms": 1552000,
               "title": "01 - Sufferings During The War"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_pen_librivox/meditations_02_stewart_64kb.mp3",
               "length_ms": 694000,
+              "section_number": 2,
               "start_ms": 3271000,
               "title": "02 - Religion - Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_pen_librivox/meditations_03_stewart_64kb.mp3",
               "length_ms": 1394000,
+              "section_number": 3,
               "start_ms": 3965000,
               "title": "03 - Religion - Prayer"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_pen_librivox/meditations_04_stewart_64kb.mp3",
               "length_ms": 588000,
+              "section_number": 4,
               "start_ms": 5359000,
               "title": "04 - Meditations Introduction, I, II and Prayer"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_pen_librivox/meditations_05_stewart_64kb.mp3",
               "length_ms": 437000,
+              "section_number": 5,
               "start_ms": 5947000,
               "title": "05 - Meditations III, IV and Prayer"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_pen_librivox/meditations_06_stewart_64kb.mp3",
               "length_ms": 601000,
+              "section_number": 6,
               "start_ms": 6384000,
               "title": "06 - Meditations V, VI, VII and Prayer"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_pen_librivox/meditations_07_stewart_64kb.mp3",
               "length_ms": 322000,
+              "section_number": 7,
               "start_ms": 6985000,
               "title": "07 - Meditation VIII and Prayer"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_pen_librivox/meditations_08_stewart_64kb.mp3",
               "length_ms": 731000,
+              "section_number": 8,
               "start_ms": 7307000,
               "title": "08 - Meditations IX, X and Prayer"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_pen_librivox/meditations_09_stewart_64kb.mp3",
               "length_ms": 572000,
+              "section_number": 9,
               "start_ms": 8038000,
               "title": "09 - Meditations XI, XII and Prayer"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_pen_librivox/meditations_10_stewart_64kb.mp3",
               "length_ms": 704000,
+              "section_number": 10,
               "start_ms": 8610000,
               "title": "10 - Meditation XIII, Prayer and Meditation XIV"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_pen_librivox/meditations_11_stewart_64kb.mp3",
               "length_ms": 862000,
+              "section_number": 11,
               "start_ms": 9314000,
               "title": "11 - Lecture"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_pen_librivox/meditations_12_stewart_64kb.mp3",
               "length_ms": 906000,
+              "section_number": 12,
               "start_ms": 10176000,
               "title": "12 - An Address Delivered Before The Afric-American Female Intelligence Society of Boston"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_pen_librivox/meditations_13_stewart_64kb.mp3",
               "length_ms": 1414000,
+              "section_number": 13,
               "start_ms": 11082000,
               "title": "13 - An Address Delivered at the African Masonic Hall, Boston"
             },
             {
               "audio_url": "https://www.archive.org/download/meditations_pen_librivox/meditations_14_stewart_64kb.mp3",
               "length_ms": 1607000,
+              "section_number": 14,
               "start_ms": 12496000,
               "title": "14 - Mrs. Stewart's Farewell Address To Her Friends In The City Of Boston"
             }
@@ -3156,7 +3246,14 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt25/meditations_pen_1211.jpg",
           "id": "james-k-white",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "*Non-fiction",
+            "Political Science",
+            "Religion"
+          ],
           "librivox_id": 5236,
+          "librivox_title": "Meditations from the Pen of Mrs. Maria W. Stewart",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/meditations-from-the-pen-by-maria-w-stewart/",
@@ -3706,81 +3803,128 @@
             {
               "audio_url": "https://www.archive.org/download/themeditationsofmarcusaurelius_1801_librivox/meditationsofmarcusaurelius_01_aurelius_64kb.mp3",
               "length_ms": 1356000,
+              "readers": [
+                "realisticspeakers"
+              ],
               "start_ms": 0,
               "title": "Book I"
             },
             {
               "audio_url": "https://www.archive.org/download/themeditationsofmarcusaurelius_1801_librivox/meditationsofmarcusaurelius_02_aurelius_64kb.mp3",
               "length_ms": 805000,
+              "readers": [
+                "george-allen"
+              ],
               "start_ms": 1356000,
               "title": "Book II"
             },
             {
               "audio_url": "https://www.archive.org/download/themeditationsofmarcusaurelius_1801_librivox/meditationsofmarcusaurelius_03_aurelius_64kb.mp3",
               "length_ms": 981000,
+              "readers": [
+                "gemma-l-myers"
+              ],
               "start_ms": 2161000,
               "title": "Book III"
             },
             {
               "audio_url": "https://www.archive.org/download/themeditationsofmarcusaurelius_1801_librivox/meditationsofmarcusaurelius_04_aurelius_64kb.mp3",
               "length_ms": 2065000,
+              "readers": [
+                "realisticspeakers"
+              ],
               "start_ms": 3142000,
               "title": "Book IV"
             },
             {
               "audio_url": "https://www.archive.org/download/themeditationsofmarcusaurelius_1801_librivox/meditationsofmarcusaurelius_05_aurelius_64kb.mp3",
               "length_ms": 1859000,
+              "readers": [
+                "realisticspeakers"
+              ],
               "start_ms": 5207000,
               "title": "Book V"
             },
             {
               "audio_url": "https://www.archive.org/download/themeditationsofmarcusaurelius_1801_librivox/meditationsofmarcusaurelius_06_aurelius_64kb.mp3",
               "length_ms": 1697000,
+              "readers": [
+                "kuba-orlowski"
+              ],
               "start_ms": 7066000,
               "title": "Book VI"
             },
             {
               "audio_url": "https://www.archive.org/download/themeditationsofmarcusaurelius_1801_librivox/meditationsofmarcusaurelius_07_aurelius_64kb.mp3",
               "length_ms": 1505000,
+              "readers": [
+                "yonesantana"
+              ],
               "start_ms": 8763000,
               "title": "Book VII"
             },
             {
               "audio_url": "https://www.archive.org/download/themeditationsofmarcusaurelius_1801_librivox/meditationsofmarcusaurelius_08_aurelius_64kb.mp3",
               "length_ms": 1558000,
+              "readers": [
+                "alextheyounger"
+              ],
               "start_ms": 10268000,
               "title": "Book VIII"
             },
             {
               "audio_url": "https://www.archive.org/download/themeditationsofmarcusaurelius_1801_librivox/meditationsofmarcusaurelius_09_aurelius_64kb.mp3",
               "length_ms": 1429000,
+              "readers": [
+                "drpgould"
+              ],
               "start_ms": 11826000,
               "title": "Book IX"
             },
             {
               "audio_url": "https://www.archive.org/download/themeditationsofmarcusaurelius_1801_librivox/meditationsofmarcusaurelius_10_aurelius_64kb.mp3",
               "length_ms": 1420000,
+              "readers": [
+                "drpgould"
+              ],
               "start_ms": 13255000,
               "title": "Book X"
             },
             {
               "audio_url": "https://www.archive.org/download/themeditationsofmarcusaurelius_1801_librivox/meditationsofmarcusaurelius_11_aurelius_64kb.mp3",
               "length_ms": 1207000,
+              "readers": [
+                "pyfeman43"
+              ],
               "start_ms": 14675000,
               "title": "Book XI"
             },
             {
               "audio_url": "https://www.archive.org/download/themeditationsofmarcusaurelius_1801_librivox/meditationsofmarcusaurelius_12_aurelius_64kb.mp3",
               "length_ms": 1384000,
+              "readers": [
+                "linda-johnson"
+              ],
               "start_ms": 15882000,
               "title": "Book XII"
             }
           ],
           "copyright_year": 1902,
           "cover_url": "https://archive.org/download/themeditationsofmarcusaurelius_1801_librivox/MeditationsAnton_1712.jpg",
+          "credits": [
+            {
+              "person": "george-chrystal",
+              "role": "translator"
+            }
+          ],
           "id": "realisticspeakers",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Biography & Autobiography"
+          ],
           "librivox_id": 12252,
+          "librivox_title": "Meditations of the Emperor Marcus Aurelius Antoninus",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-meditations-of-the-emperor-marcus-aurelius-antoninus-by-marcus-aurelius/",
@@ -4197,9 +4341,20 @@
           ],
           "copyright_year": 1852,
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt6/meditations_on_first_philosophy_1101.jpg",
+          "credits": [
+            {
+              "person": "john-veitch",
+              "role": "translator"
+            }
+          ],
           "id": "d-e-wittkower",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Philosophy"
+          ],
           "librivox_id": 1502,
+          "librivox_title": "Meditations on First Philosophy",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/meditations-on-first-philosophy-by-rene-descartes/",
@@ -8037,72 +8192,108 @@
             {
               "audio_url": "https://www.archive.org/download/medley_weatherlore_2103_librivox/medleyofweatherlore_01_wright_64kb.mp3",
               "length_ms": 392000,
+              "readers": [
+                "wanderingwalker"
+              ],
               "start_ms": 0,
               "title": "January"
             },
             {
               "audio_url": "https://www.archive.org/download/medley_weatherlore_2103_librivox/medleyofweatherlore_02_wright_64kb.mp3",
               "length_ms": 320000,
+              "readers": [
+                "wanderingwalker"
+              ],
               "start_ms": 392000,
               "title": "February"
             },
             {
               "audio_url": "https://www.archive.org/download/medley_weatherlore_2103_librivox/medleyofweatherlore_03_wright_64kb.mp3",
               "length_ms": 716000,
+              "readers": [
+                "rebecca-eden-walker"
+              ],
               "start_ms": 712000,
               "title": "March"
             },
             {
               "audio_url": "https://www.archive.org/download/medley_weatherlore_2103_librivox/medleyofweatherlore_04_wright_64kb.mp3",
               "length_ms": 717000,
+              "readers": [
+                "wanderingwalker"
+              ],
               "start_ms": 1428000,
               "title": "April"
             },
             {
               "audio_url": "https://www.archive.org/download/medley_weatherlore_2103_librivox/medleyofweatherlore_05_wright_64kb.mp3",
               "length_ms": 861000,
+              "readers": [
+                "nicole-gee"
+              ],
               "start_ms": 2145000,
               "title": "May"
             },
             {
               "audio_url": "https://www.archive.org/download/medley_weatherlore_2103_librivox/medleyofweatherlore_06_wright_64kb.mp3",
               "length_ms": 1076000,
+              "readers": [
+                "hannie"
+              ],
               "start_ms": 3006000,
               "title": "June"
             },
             {
               "audio_url": "https://www.archive.org/download/medley_weatherlore_2103_librivox/medleyofweatherlore_07_wright_64kb.mp3",
               "length_ms": 591000,
+              "readers": [
+                "rebecca-eden-walker"
+              ],
               "start_ms": 4082000,
               "title": "July"
             },
             {
               "audio_url": "https://www.archive.org/download/medley_weatherlore_2103_librivox/medleyofweatherlore_08_wright_64kb.mp3",
               "length_ms": 243000,
+              "readers": [
+                "brandy-jay"
+              ],
               "start_ms": 4673000,
               "title": "August"
             },
             {
               "audio_url": "https://www.archive.org/download/medley_weatherlore_2103_librivox/medleyofweatherlore_09_wright_64kb.mp3",
               "length_ms": 625000,
+              "readers": [
+                "toddhw"
+              ],
               "start_ms": 4916000,
               "title": "September"
             },
             {
               "audio_url": "https://www.archive.org/download/medley_weatherlore_2103_librivox/medleyofweatherlore_10_wright_64kb.mp3",
               "length_ms": 402000,
+              "readers": [
+                "alan-mapstone"
+              ],
               "start_ms": 5541000,
               "title": "October"
             },
             {
               "audio_url": "https://www.archive.org/download/medley_weatherlore_2103_librivox/medleyofweatherlore_11_wright_64kb.mp3",
               "length_ms": 215000,
+              "readers": [
+                "brandy-jay"
+              ],
               "start_ms": 5943000,
               "title": "November"
             },
             {
               "audio_url": "https://www.archive.org/download/medley_weatherlore_2103_librivox/medleyofweatherlore_12_wright_64kb.mp3",
               "length_ms": 549000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 6158000,
               "title": "December"
             }
@@ -8111,7 +8302,12 @@
           "cover_url": "https://archive.org/download/medley_weatherlore_2103_librivox/medley_wheather_lore_mes_wright_2103.jpg",
           "id": "wanderingwalker",
           "language": "en",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales",
+            "Anthologies"
+          ],
           "librivox_id": 16118,
+          "librivox_title": "Medley of Weather Lore",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-medley-of-weather-lore-by-mes-wright/",
@@ -10403,180 +10599,270 @@
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_aani_64kb.mp3",
               "length_ms": 54000,
+              "readers": [
+                "aani"
+              ],
               "start_ms": 0,
               "title": "Medusa - Read by AANI"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_aea_64kb.mp3",
               "length_ms": 51000,
+              "readers": [
+                "a-e-armstrong"
+              ],
               "start_ms": 54000,
               "title": "Medusa - Read by AEA"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_aps_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "adrian-stephens"
+              ],
               "start_ms": 105000,
               "title": "Medusa - Read by APS"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_ar_64kb.mp3",
               "length_ms": 54000,
+              "readers": [
+                "annie-ryder"
+              ],
               "start_ms": 173000,
               "title": "Medusa - Read by AR"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_bc_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "brize-c"
+              ],
               "start_ms": 227000,
               "title": "Medusa - Read by BC"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_bk_64kb.mp3",
               "length_ms": 59000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 284000,
               "title": "Medusa - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_bwc_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "beeswaxcandle"
+              ],
               "start_ms": 343000,
               "title": "Medusa - Read by BWC"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_dd_64kb.mp3",
               "length_ms": 56000,
+              "readers": [
+                "desiree-dunning"
+              ],
               "start_ms": 398000,
               "title": "Medusa - Read by DD"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_dl_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 454000,
               "title": "Medusa - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_eb_64kb.mp3",
               "length_ms": 60000,
+              "readers": [
+                "erinbrown23"
+              ],
               "start_ms": 519000,
               "title": "Medusa - Read by EB"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_fs_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "fshort"
+              ],
               "start_ms": 579000,
               "title": "Medusa - Read by FS"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_gln_64kb.mp3",
               "length_ms": 64000,
+              "readers": [
+                "garth-burton"
+              ],
               "start_ms": 634000,
               "title": "Medusa - Read by GLN"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_hs_64kb.mp3",
               "length_ms": 51000,
+              "readers": [
+                "hannah-shephard"
+              ],
               "start_ms": 698000,
               "title": "Medusa - Read by HS"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_jbw_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 749000,
               "title": "Medusa - Read by JBW"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_ks_64kb.mp3",
               "length_ms": 53000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 806000,
               "title": "Medusa - Read by KS"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_lah_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 859000,
               "title": "Medusa - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_lcw_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 916000,
               "title": "Medusa - Read by LCW"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_ls_64kb.mp3",
               "length_ms": 58000,
+              "readers": [
+                "leesalter"
+              ],
               "start_ms": 973000,
               "title": "Medusa - Read by LS"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_map_64kb.mp3",
               "length_ms": 48000,
+              "readers": [
+                "moses-peterson"
+              ],
               "start_ms": 1031000,
               "title": "Medusa - Read by MAP"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_mjh_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "maggie-h"
+              ],
               "start_ms": 1079000,
               "title": "Medusa - Read by MJH"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_nbl_64kb.mp3",
               "length_ms": 59000,
+              "readers": [
+                "slowcyclist1"
+              ],
               "start_ms": 1145000,
               "title": "Medusa - Read by NBL"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_pfs_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 1204000,
               "title": "Medusa - Read by PFS"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_pr_64kb.mp3",
               "length_ms": 61000,
+              "readers": [
+                "patrick-randall"
+              ],
               "start_ms": 1259000,
               "title": "Medusa - Read by PR"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_ri_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "remington"
+              ],
               "start_ms": 1320000,
               "title": "Medusa - Read by RI"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_rr_64kb.mp3",
               "length_ms": 61000,
+              "readers": [
+                "redrun"
+              ],
               "start_ms": 1375000,
               "title": "Medusa - Read by RR"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_sd_64kb.mp3",
               "length_ms": 43000,
+              "readers": [
+                "hexginge"
+              ],
               "start_ms": 1436000,
               "title": "Medusa - Read by SD"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_slm_64kb.mp3",
               "length_ms": 52000,
+              "readers": [
+                "stacey-malcolm"
+              ],
               "start_ms": 1479000,
               "title": "Medusa - Read by SLM"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_sp_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "shrimpphish"
+              ],
               "start_ms": 1531000,
               "title": "Medusa - Read by SP"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_sw_64kb.mp3",
               "length_ms": 53000,
+              "readers": [
+                "seraphina"
+              ],
               "start_ms": 1586000,
               "title": "Medusa - Read by SW"
             },
             {
               "audio_url": "https://www.archive.org/download/medusa_2502.poem_librivox/medusa_herford_vod_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "dave-campbell"
+              ],
               "start_ms": 1639000,
               "title": "Medusa - Read by VOD"
             }
@@ -10585,7 +10871,11 @@
           "cover_url": "https://archive.org/download/medusa_2502.poem_librivox/medusa_2502.jpg",
           "id": "aani",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 21324,
+          "librivox_title": "Medusa",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/medusa-by-oliver-herford/",

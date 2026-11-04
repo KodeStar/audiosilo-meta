@@ -8853,24 +8853,28 @@
             {
               "audio_url": "https://www.archive.org/download/tschaikovsky_orchestral_music_dw_1607_librivox/tsaikowskymusic_00_biancolli_64kb.mp3",
               "length_ms": 72000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Foreword"
             },
             {
               "audio_url": "https://www.archive.org/download/tschaikovsky_orchestral_music_dw_1607_librivox/tsaikowskymusic_01_biancolli_64kb.mp3",
               "length_ms": 1582000,
+              "section_number": 1,
               "start_ms": 72000,
               "title": "Part 1: Opening Biography; Marches, Overtures, Fantasias, Etc.; Overture 1812, Opus 49; Capriccio Italien, Opus 45; Suite For Strings, Souvenir de Florence, Opus 70Opening Biography; Marches, Overtures, Fantasias, Etc.; Overture 1812, Opus 49; Capriccio Italien, Opus 45; Suite For Strings, Souvenir de Florence, Opus 70"
             },
             {
               "audio_url": "https://www.archive.org/download/tschaikovsky_orchestral_music_dw_1607_librivox/tsaikowskymusic_02_biancolli_64kb.mp3",
               "length_ms": 2028000,
+              "section_number": 2,
               "start_ms": 1654000,
               "title": "Part 2: Overture-Fantasy, Romeo and Juliet; Francesca da Rimini, Fantasie For Orchestra (After Dante), Opus 32; Ballet Suites: Suite From The Ballet, Swan Lake (Le Lac des Cygnes) – Suite From The Ballet, The Sleeping Beauty, Opus 66 – Suite From The Ballet, The Nutcracker, Opus 71-a; Concertos: Concerto For Violin And Orchestra, in D Major, Opus 35 – Concerto For Piano And Orchestra, in B-Flat Minor, No. 1, Opus 23"
             },
             {
               "audio_url": "https://www.archive.org/download/tschaikovsky_orchestral_music_dw_1607_librivox/tsaikowskymusic_03_biancolli_64kb.mp3",
               "length_ms": 1549000,
+              "section_number": 3,
               "start_ms": 3682000,
               "title": "Part 3: Symphonies: Symphony In F Minor, No. 4, Opus 36 – symphony In E Minor, No. 5, Opus 64 – Symphony In B  Minor, No. 6, Opus 74 Pathetic; Death"
             }
@@ -8879,7 +8883,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt22/tschaikowskymusic_1607.jpg",
           "id": "david-wales",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "Music"
+          ],
           "librivox_id": 11070,
+          "librivox_title": "Tschaikovsky And His Orchestral Music",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/tschaikovsky-and-his-orchestral-music-by-louis-biancolli/",
@@ -9805,7 +9814,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt17/tschun_1505.jpg",
           "id": "ramona-deininger-schnabel",
           "language": "de",
+          "librivox_genres": [
+            "Historical Fiction"
+          ],
           "librivox_id": 9769,
+          "librivox_title": "Tschun",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/tschun-by-elisabeth-von-heyking/",

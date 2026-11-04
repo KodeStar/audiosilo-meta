@@ -410,7 +410,11 @@
           "cover_url": "https://archive.org/download/librivoxcCDCoverArt35/worldofsound_1601.jpg",
           "id": "ruth-golding",
           "language": "en",
+          "librivox_genres": [
+            "Science"
+          ],
           "librivox_id": 10329,
+          "librivox_title": "World of Sound",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-world-of-sound-by-sir-william-h-bragg/",
@@ -7702,90 +7706,105 @@
             {
               "audio_url": "https://www.archive.org/download/world-power_and_evolution_2402_librivox/worldpowerandevolution_00_huntington_64kb.mp3",
               "length_ms": 305000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/world-power_and_evolution_2402_librivox/worldpowerandevolution_01_huntington_64kb.mp3",
               "length_ms": 1244000,
+              "section_number": 1,
               "start_ms": 305000,
               "title": "I. The Chart of Evolution"
             },
             {
               "audio_url": "https://www.archive.org/download/world-power_and_evolution_2402_librivox/worldpowerandevolution_02_huntington_64kb.mp3",
               "length_ms": 1831000,
+              "section_number": 2,
               "start_ms": 1549000,
               "title": "II. Health and Business"
             },
             {
               "audio_url": "https://www.archive.org/download/world-power_and_evolution_2402_librivox/worldpowerandevolution_03_huntington_64kb.mp3",
               "length_ms": 897000,
+              "section_number": 3,
               "start_ms": 3380000,
               "title": "III. Business Cycles in Foreign Countries"
             },
             {
               "audio_url": "https://www.archive.org/download/world-power_and_evolution_2402_librivox/worldpowerandevolution_04_huntington_64kb.mp3",
               "length_ms": 810000,
+              "section_number": 4,
               "start_ms": 4277000,
               "title": "IV. How Health does its Work"
             },
             {
               "audio_url": "https://www.archive.org/download/world-power_and_evolution_2402_librivox/worldpowerandevolution_05_huntington_64kb.mp3",
               "length_ms": 1707000,
+              "section_number": 5,
               "start_ms": 5087000,
               "title": "V. Climate and Health"
             },
             {
               "audio_url": "https://www.archive.org/download/world-power_and_evolution_2402_librivox/worldpowerandevolution_06_huntington_64kb.mp3",
               "length_ms": 1895000,
+              "section_number": 6,
               "start_ms": 6794000,
               "title": "VI. The Importance of Variability"
             },
             {
               "audio_url": "https://www.archive.org/download/world-power_and_evolution_2402_librivox/worldpowerandevolution_07_huntington_64kb.mp3",
               "length_ms": 2159000,
+              "section_number": 7,
               "start_ms": 8689000,
               "title": "VII. The Voyage of Evolution"
             },
             {
               "audio_url": "https://www.archive.org/download/world-power_and_evolution_2402_librivox/worldpowerandevolution_08_huntington_64kb.mp3",
               "length_ms": 2752000,
+              "section_number": 8,
               "start_ms": 10848000,
               "title": "VIII. The Environment of Mental Evolution"
             },
             {
               "audio_url": "https://www.archive.org/download/world-power_and_evolution_2402_librivox/worldpowerandevolution_09_huntington_64kb.mp3",
               "length_ms": 1877000,
+              "section_number": 9,
               "start_ms": 13600000,
               "title": "IX. The Origin of New Types among Animals"
             },
             {
               "audio_url": "https://www.archive.org/download/world-power_and_evolution_2402_librivox/worldpowerandevolution_10_huntington_64kb.mp3",
               "length_ms": 2681000,
+              "section_number": 10,
               "start_ms": 15477000,
               "title": "X. The Origin of New Types among Men"
             },
             {
               "audio_url": "https://www.archive.org/download/world-power_and_evolution_2402_librivox/worldpowerandevolution_11_huntington_64kb.mp3",
               "length_ms": 2504000,
+              "section_number": 11,
               "start_ms": 18158000,
               "title": "XI. The Example of Rome"
             },
             {
               "audio_url": "https://www.archive.org/download/world-power_and_evolution_2402_librivox/worldpowerandevolution_12_huntington_64kb.mp3",
               "length_ms": 2250000,
+              "section_number": 12,
               "start_ms": 20662000,
               "title": "XII. The Problem of Turkey"
             },
             {
               "audio_url": "https://www.archive.org/download/world-power_and_evolution_2402_librivox/worldpowerandevolution_13_huntington_64kb.mp3",
               "length_ms": 1896000,
+              "section_number": 13,
               "start_ms": 22912000,
               "title": "XIII. Germany and Her Neighbors"
             },
             {
               "audio_url": "https://www.archive.org/download/world-power_and_evolution_2402_librivox/worldpowerandevolution_14_huntington_64kb.mp3",
               "length_ms": 2548000,
+              "section_number": 14,
               "start_ms": 24808000,
               "title": "Appendix"
             }
@@ -7794,7 +7813,11 @@
           "cover_url": "https://archive.org/download/world-power_and_evolution_2402_librivox/worldpowerandevolution_2402.jpg",
           "id": "leon-harvey",
           "language": "en",
+          "librivox_genres": [
+            "Earth Sciences"
+          ],
           "librivox_id": 19881,
+          "librivox_title": "World-Power and Evolution",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/world-power-and-evolution-by-ellsworth-huntington/",
@@ -10428,66 +10451,110 @@
             {
               "audio_url": "https://www.archive.org/download/world_set_free_1110_librivox/worldsetfree_00_wells_64kb.mp3",
               "length_ms": 2444000,
+              "readers": [
+                "jules-hawryluk"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 -- Preface, Prelude Sec 1-6"
             },
             {
               "audio_url": "https://www.archive.org/download/world_set_free_1110_librivox/worldsetfree_01_wells_64kb.mp3",
               "length_ms": 3305000,
+              "readers": [
+                "jules-hawryluk"
+              ],
+              "section_number": 1,
               "start_ms": 2444000,
               "title": "01 -- Prelude Sec 7 & 8, Ch First Sec 1-3"
             },
             {
               "audio_url": "https://www.archive.org/download/world_set_free_1110_librivox/worldsetfree_02_wells_64kb.mp3",
               "length_ms": 2611000,
+              "readers": [
+                "jules-hawryluk"
+              ],
+              "section_number": 2,
               "start_ms": 5749000,
               "title": "02 -- Ch First Sec 4-8"
             },
             {
               "audio_url": "https://www.archive.org/download/world_set_free_1110_librivox/worldsetfree_03_wells_64kb.mp3",
               "length_ms": 2515000,
+              "readers": [
+                "jules-hawryluk"
+              ],
+              "section_number": 3,
               "start_ms": 8360000,
               "title": "03 -- Ch Second Sec 1-3"
             },
             {
               "audio_url": "https://www.archive.org/download/world_set_free_1110_librivox/worldsetfree_04_wells_64kb.mp3",
               "length_ms": 2798000,
+              "readers": [
+                "jules-hawryluk"
+              ],
+              "section_number": 4,
               "start_ms": 10875000,
               "title": "04 -- Ch Second Sec 4-8"
             },
             {
               "audio_url": "https://www.archive.org/download/world_set_free_1110_librivox/worldsetfree_05_wells_64kb.mp3",
               "length_ms": 2462000,
+              "readers": [
+                "william-tomcho"
+              ],
+              "section_number": 5,
               "start_ms": 13673000,
               "title": "05 -- Ch Second Sec 9 & 10, Ch Third Sec 1 & 2"
             },
             {
               "audio_url": "https://www.archive.org/download/world_set_free_1110_librivox/worldsetfree_06_wells_64kb.mp3",
               "length_ms": 3071000,
+              "readers": [
+                "william-tomcho"
+              ],
+              "section_number": 6,
               "start_ms": 16135000,
               "title": "06 -- Ch Third Sec 3-7"
             },
             {
               "audio_url": "https://www.archive.org/download/world_set_free_1110_librivox/worldsetfree_07_wells_64kb.mp3",
               "length_ms": 2433000,
+              "readers": [
+                "william-tomcho"
+              ],
+              "section_number": 7,
               "start_ms": 19206000,
               "title": "07 -- Ch Third Sec 8, Ch Fourth Sec 1-6"
             },
             {
               "audio_url": "https://www.archive.org/download/world_set_free_1110_librivox/worldsetfree_08_wells_64kb.mp3",
               "length_ms": 2453000,
+              "readers": [
+                "jules-hawryluk"
+              ],
+              "section_number": 8,
               "start_ms": 21639000,
               "title": "08 -- Ch Fourth Sec 7-11"
             },
             {
               "audio_url": "https://www.archive.org/download/world_set_free_1110_librivox/worldsetfree_09_wells_64kb.mp3",
               "length_ms": 2371000,
+              "readers": [
+                "jules-hawryluk"
+              ],
+              "section_number": 9,
               "start_ms": 24092000,
               "title": "09 -- Ch Fourth Sec 12, Ch Fifth Sec 1-4"
             },
             {
               "audio_url": "https://www.archive.org/download/world_set_free_1110_librivox/worldsetfree_10_wells_64kb.mp3",
               "length_ms": 2596000,
+              "readers": [
+                "jules-hawryluk"
+              ],
+              "section_number": 10,
               "start_ms": 26463000,
               "title": "10 -- Ch Fifth Sec 5-10"
             }
@@ -10496,7 +10563,13 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt16/WorldSetFreeV2_1204.jpg",
           "id": "jules-hawryluk",
           "language": "en",
+          "librivox_genres": [
+            "Fantastic Fiction",
+            "General Fiction",
+            "Science Fiction"
+          ],
           "librivox_id": 5605,
+          "librivox_title": "World Set Free (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-world-set-free-by-h-g-wells-2/",
@@ -10526,66 +10599,77 @@
             {
               "audio_url": "https://www.archive.org/download/world_set_free_0907_librivox/the_world_set_free_00_wells_64kb.mp3",
               "length_ms": 56000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Prelude"
             },
             {
               "audio_url": "https://www.archive.org/download/world_set_free_0907_librivox/the_world_set_free_01_wells_64kb.mp3",
               "length_ms": 2369000,
+              "section_number": 1,
               "start_ms": 56000,
               "title": "Chapter 1, The Sun Snarers, part one"
             },
             {
               "audio_url": "https://www.archive.org/download/world_set_free_0907_librivox/the_world_set_free_02_wells_64kb.mp3",
               "length_ms": 2278000,
+              "section_number": 2,
               "start_ms": 2425000,
               "title": "Chapter 1, The Sun Snarers, part two"
             },
             {
               "audio_url": "https://www.archive.org/download/world_set_free_0907_librivox/the_world_set_free_03_wells_64kb.mp3",
               "length_ms": 2758000,
+              "section_number": 3,
               "start_ms": 4703000,
               "title": "Chapter 2, The Last War, part one"
             },
             {
               "audio_url": "https://www.archive.org/download/world_set_free_0907_librivox/the_world_set_free_04_wells_64kb.mp3",
               "length_ms": 3081000,
+              "section_number": 4,
               "start_ms": 7461000,
               "title": "Chapter 2, The Last War, part two"
             },
             {
               "audio_url": "https://www.archive.org/download/world_set_free_0907_librivox/the_world_set_free_05_wells_64kb.mp3",
               "length_ms": 3540000,
+              "section_number": 5,
               "start_ms": 10542000,
               "title": "Chapter 3, The Ending of War, part one"
             },
             {
               "audio_url": "https://www.archive.org/download/world_set_free_0907_librivox/the_world_set_free_06_wells_64kb.mp3",
               "length_ms": 2366000,
+              "section_number": 6,
               "start_ms": 14082000,
               "title": "Chapter 3, The Ending of War, part two"
             },
             {
               "audio_url": "https://www.archive.org/download/world_set_free_0907_librivox/the_world_set_free_07_wells_64kb.mp3",
               "length_ms": 3303000,
+              "section_number": 7,
               "start_ms": 16448000,
               "title": "Chapter 4, The New Phase, part one"
             },
             {
               "audio_url": "https://www.archive.org/download/world_set_free_0907_librivox/the_world_set_free_08_wells_64kb.mp3",
               "length_ms": 2167000,
+              "section_number": 8,
               "start_ms": 19751000,
               "title": "Chapter 4, The New Phase, part two"
             },
             {
               "audio_url": "https://www.archive.org/download/world_set_free_0907_librivox/the_world_set_free_09_wells_64kb.mp3",
               "length_ms": 2169000,
+              "section_number": 9,
               "start_ms": 21918000,
               "title": "Chapter 5, The Last Days of Marcus Karenin, part one"
             },
             {
               "audio_url": "https://www.archive.org/download/world_set_free_0907_librivox/the_world_set_free_10_wells_64kb.mp3",
               "length_ms": 2036000,
+              "section_number": 10,
               "start_ms": 24087000,
               "title": "Chapter 5, The Last Days of Marcus Karenin, part two"
             }
@@ -10594,7 +10678,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt15/WorldSetFree_1203.jpg",
           "id": "livelyhive",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 3325,
+          "librivox_title": "World Set Free",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-world-set-free-by-h-g-wells/",
@@ -11576,7 +11664,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt25/world_couldnt_be_1211.jpg",
           "id": "gregg-margarite-1957-2012",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 4877,
+          "librivox_title": "World That Couldn't Be",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-world-that-couldnt-be-by-clifford-d-simak/",
@@ -11643,7 +11735,11 @@
           "cover_url": "https://archive.org/download/theworldthatcouldntbe_1310_librivox/world_couldnt_be_1310.jpg",
           "id": "phil-chenevert",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 8226,
+          "librivox_title": "World That Couldn't Be (Version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-world-that-couldnt-be-by-clifford-d-simak-2/",
@@ -11694,126 +11790,189 @@
             {
               "audio_url": "https://www.archive.org/download/worldthatneverwas_2404_librivox/worldthatneverwas_01_adcock_64kb.mp3",
               "length_ms": 640000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 0,
               "title": "Chapter I Olive and Tony at Home"
             },
             {
               "audio_url": "https://www.archive.org/download/worldthatneverwas_2404_librivox/worldthatneverwas_02_adcock_64kb.mp3",
               "length_ms": 722000,
+              "readers": [
+                "elijah-fisher"
+              ],
               "start_ms": 640000,
               "title": "Chapter II The People of the Night"
             },
             {
               "audio_url": "https://www.archive.org/download/worldthatneverwas_2404_librivox/worldthatneverwas_03_adcock_64kb.mp3",
               "length_ms": 735000,
+              "readers": [
+                "elijah-fisher"
+              ],
               "start_ms": 1362000,
               "title": "Chapter III Olive Starts on Her Adventures"
             },
             {
               "audio_url": "https://www.archive.org/download/worldthatneverwas_2404_librivox/worldthatneverwas_04_adcock_64kb.mp3",
               "length_ms": 1033000,
+              "readers": [
+                "john-leloup"
+              ],
               "start_ms": 2097000,
               "title": "Chapter IV The Troubles of P.C. 1 and a 1/2"
             },
             {
               "audio_url": "https://www.archive.org/download/worldthatneverwas_2404_librivox/worldthatneverwas_05_adcock_64kb.mp3",
               "length_ms": 608000,
+              "readers": [
+                "john-leloup"
+              ],
               "start_ms": 3130000,
               "title": "Chapter V The Romance of Bluebeard and the Princess Pearl"
             },
             {
               "audio_url": "https://www.archive.org/download/worldthatneverwas_2404_librivox/worldthatneverwas_06_adcock_64kb.mp3",
               "length_ms": 714000,
+              "readers": [
+                "joao-senna"
+              ],
               "start_ms": 3738000,
               "title": "Chapter VI The Two Mr. P's and Some Others"
             },
             {
               "audio_url": "https://www.archive.org/download/worldthatneverwas_2404_librivox/worldthatneverwas_07_adcock_64kb.mp3",
               "length_ms": 888000,
+              "readers": [
+                "shelly-weingart"
+              ],
               "start_ms": 4452000,
               "title": "Chapter VII Olive and Tony Try to Befriend Bluebeard"
             },
             {
               "audio_url": "https://www.archive.org/download/worldthatneverwas_2404_librivox/worldthatneverwas_08_adcock_64kb.mp3",
               "length_ms": 339000,
+              "readers": [
+                "john-leloup"
+              ],
               "start_ms": 5340000,
               "title": "Chapter VIII The Conspiracy Succeeds"
             },
             {
               "audio_url": "https://www.archive.org/download/worldthatneverwas_2404_librivox/worldthatneverwas_09_adcock_64kb.mp3",
               "length_ms": 454000,
+              "readers": [
+                "john-leloup"
+              ],
               "start_ms": 5679000,
               "title": "Chapter IX In Trafalgar Square"
             },
             {
               "audio_url": "https://www.archive.org/download/worldthatneverwas_2404_librivox/worldthatneverwas_10_adcock_64kb.mp3",
               "length_ms": 584000,
+              "readers": [
+                "john-leloup"
+              ],
               "start_ms": 6133000,
               "title": "Chapter X How Tony Was Lost and the Strand Was Cleared to Find Him"
             },
             {
               "audio_url": "https://www.archive.org/download/worldthatneverwas_2404_librivox/worldthatneverwas_11_adcock_64kb.mp3",
               "length_ms": 722000,
+              "readers": [
+                "john-leloup"
+              ],
               "start_ms": 6717000,
               "title": "Chapter XI Of the Charm that Gog and Magog Gave to Olive"
             },
             {
               "audio_url": "https://www.archive.org/download/worldthatneverwas_2404_librivox/worldthatneverwas_12_adcock_64kb.mp3",
               "length_ms": 918000,
+              "readers": [
+                "john-leloup"
+              ],
               "start_ms": 7439000,
               "title": "Chapter XII Of the Shocking Fate of Gog and Magog"
             },
             {
               "audio_url": "https://www.archive.org/download/worldthatneverwas_2404_librivox/worldthatneverwas_13_adcock_64kb.mp3",
               "length_ms": 468000,
+              "readers": [
+                "john-leloup"
+              ],
               "start_ms": 8357000,
               "title": "Chapter XIII The Idols Who Winked"
             },
             {
               "audio_url": "https://www.archive.org/download/worldthatneverwas_2404_librivox/worldthatneverwas_14_adcock_64kb.mp3",
               "length_ms": 634000,
+              "readers": [
+                "john-leloup"
+              ],
               "start_ms": 8825000,
               "title": "Chapter XIV The Riddle of the Sphinx"
             },
             {
               "audio_url": "https://www.archive.org/download/worldthatneverwas_2404_librivox/worldthatneverwas_15_adcock_64kb.mp3",
               "length_ms": 667000,
+              "readers": [
+                "john-leloup"
+              ],
               "start_ms": 9459000,
               "title": "Chapter XV Olive Helps Gog, but Can Do Nothing for Magog"
             },
             {
               "audio_url": "https://www.archive.org/download/worldthatneverwas_2404_librivox/worldthatneverwas_16_adcock_64kb.mp3",
               "length_ms": 1202000,
+              "readers": [
+                "noelle-merritt"
+              ],
               "start_ms": 10126000,
               "title": "Chapter XVI Father Christmas Answers the Riddle"
             },
             {
               "audio_url": "https://www.archive.org/download/worldthatneverwas_2404_librivox/worldthatneverwas_17_adcock_64kb.mp3",
               "length_ms": 414000,
+              "readers": [
+                "elijah-fisher"
+              ],
               "start_ms": 11328000,
               "title": "Chapter XVII How the Snuff-Box Was Stolen"
             },
             {
               "audio_url": "https://www.archive.org/download/worldthatneverwas_2404_librivox/worldthatneverwas_18_adcock_64kb.mp3",
               "length_ms": 848000,
+              "readers": [
+                "elijah-fisher"
+              ],
               "start_ms": 11742000,
               "title": "Chapter XIX Magog is Cured, and Bluebeard and Becky Made Happy"
             },
             {
               "audio_url": "https://www.archive.org/download/worldthatneverwas_2404_librivox/worldthatneverwas_19_adcock_64kb.mp3",
               "length_ms": 917000,
+              "readers": [
+                "elijah-fisher"
+              ],
               "start_ms": 12590000,
               "title": "Chapter XVIII At the Court of the Fairy Queen"
             },
             {
               "audio_url": "https://www.archive.org/download/worldthatneverwas_2404_librivox/worldthatneverwas_20_adcock_64kb.mp3",
               "length_ms": 424000,
+              "readers": [
+                "elijah-fisher"
+              ],
               "start_ms": 13507000,
               "title": "Chapter XX Tells How Tony Was Found"
             },
             {
               "audio_url": "https://www.archive.org/download/worldthatneverwas_2404_librivox/worldthatneverwas_21_adcock_64kb.mp3",
               "length_ms": 418000,
+              "readers": [
+                "elijah-fisher"
+              ],
               "start_ms": 13931000,
               "title": "Chapter XXI At Home Again"
             }
@@ -11822,7 +11981,11 @@
           "cover_url": "https://archive.org/download/worldthatneverwas_2404_librivox/world_never_was_2404.jpg",
           "id": "john",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure"
+          ],
           "librivox_id": 20143,
+          "librivox_title": "World that Never Was",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-world-that-never-was-by-arthur-st-john-adcock/",

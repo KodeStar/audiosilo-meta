@@ -603,12 +603,41 @@
             {
               "audio_url": "https://www.archive.org/download/sorcerer_2108_librivox/sorcerer_1_gilbert_64kb.mp3",
               "length_ms": 2426000,
+              "readers": [
+                "toddhw",
+                "michele-eaton",
+                "alan-mapstone",
+                "lauren-emma-blake",
+                "scotty-smith",
+                "tj-burns",
+                "jenn-broda",
+                "rwraptor",
+                "andrew-kennedy",
+                "tchaikovsky",
+                "annie-mars",
+                "april-mendis",
+                "mira-williams"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/sorcerer_2108_librivox/sorcerer_2_gilbert_64kb.mp3",
               "length_ms": 1590000,
+              "readers": [
+                "toddhw",
+                "michele-eaton",
+                "alan-mapstone",
+                "scotty-smith",
+                "tj-burns",
+                "jenn-broda",
+                "rwraptor",
+                "andrew-kennedy",
+                "tchaikovsky",
+                "annie-mars",
+                "april-mendis",
+                "mira-williams"
+              ],
               "start_ms": 2426000,
               "title": "Act 2"
             }
@@ -617,7 +646,11 @@
           "cover_url": "https://archive.org/download/sorcerer_2108_librivox/thesorcerer_2109.jpg",
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Comedy"
+          ],
           "librivox_id": 16273,
+          "librivox_title": "Sorcerer",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-sorcerer-by-w-s-gilbert/",

@@ -3374,72 +3374,117 @@
             {
               "audio_url": "https://www.archive.org/download/ecloga_0810_librivox/eclogae_01_1_vergil_64kb.mp3",
               "length_ms": 428000,
+              "readers": [
+                "hefyd",
+                "leni"
+              ],
               "start_ms": 0,
               "title": "Ecloga 1 vs 1"
             },
             {
               "audio_url": "https://www.archive.org/download/ecloga_0810_librivox/eclogae_01_2_vergil_64kb.mp3",
               "length_ms": 337000,
+              "readers": [
+                "martina"
+              ],
               "start_ms": 428000,
               "title": "Ecloga 1 vs 2"
             },
             {
               "audio_url": "https://www.archive.org/download/ecloga_0810_librivox/eclogae_02_vergil_64kb.mp3",
               "length_ms": 315000,
+              "readers": [
+                "martina"
+              ],
               "start_ms": 765000,
               "title": "Ecloga 2"
             },
             {
               "audio_url": "https://www.archive.org/download/ecloga_0810_librivox/eclogae_03_1_vergil_64kb.mp3",
               "length_ms": 619000,
+              "readers": [
+                "hefyd",
+                "ruth-golding",
+                "leni"
+              ],
               "start_ms": 1080000,
               "title": "Ecloga 3 vs 1"
             },
             {
               "audio_url": "https://www.archive.org/download/ecloga_0810_librivox/eclogae_03_2_vergil_64kb.mp3",
               "length_ms": 507000,
+              "readers": [
+                "martina"
+              ],
               "start_ms": 1699000,
               "title": "Ecloga 3 vs 2"
             },
             {
               "audio_url": "https://www.archive.org/download/ecloga_0810_librivox/eclogae_04_vergil_64kb.mp3",
               "length_ms": 341000,
+              "readers": [
+                "leni"
+              ],
               "start_ms": 2206000,
               "title": "Ecloga 4"
             },
             {
               "audio_url": "https://www.archive.org/download/ecloga_0810_librivox/eclogae_05_vergil_64kb.mp3",
               "length_ms": 480000,
+              "readers": [
+                "clayton-j-smith",
+                "leni"
+              ],
               "start_ms": 2547000,
               "title": "Ecloga 5"
             },
             {
               "audio_url": "https://www.archive.org/download/ecloga_0810_librivox/eclogae_06_vergil_64kb.mp3",
               "length_ms": 451000,
+              "readers": [
+                "hefyd"
+              ],
               "start_ms": 3027000,
               "title": "Ecloga 6"
             },
             {
               "audio_url": "https://www.archive.org/download/ecloga_0810_librivox/eclogae_07_vergil_64kb.mp3",
               "length_ms": 376000,
+              "readers": [
+                "hefyd",
+                "anna-simon",
+                "leni"
+              ],
               "start_ms": 3478000,
               "title": "Ecloga 7"
             },
             {
               "audio_url": "https://www.archive.org/download/ecloga_0810_librivox/eclogae_08_vergil_64kb.mp3",
               "length_ms": 689000,
+              "readers": [
+                "alan-brown",
+                "julie-vw",
+                "ruth-golding"
+              ],
               "start_ms": 3854000,
               "title": "Ecloga 8"
             },
             {
               "audio_url": "https://www.archive.org/download/ecloga_0810_librivox/eclogae_09_vergil_64kb.mp3",
               "length_ms": 437000,
+              "readers": [
+                "fr-richard-zeile-of-detroit",
+                "alan-brown"
+              ],
               "start_ms": 4543000,
               "title": "Ecloga 9"
             },
             {
               "audio_url": "https://www.archive.org/download/ecloga_0810_librivox/eclogae_10_vergil_64kb.mp3",
               "length_ms": 413000,
+              "readers": [
+                "hefyd"
+              ],
               "start_ms": 4980000,
               "title": "Ecloga 10"
             }
@@ -3447,7 +3492,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt14/Eclogae_1202.jpg",
           "id": "hefyd",
           "language": "la",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Poetry"
+          ],
           "librivox_id": 135,
+          "librivox_title": "Eclogae (dramatic reading)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/eclogae-by-publius-vergilius-maro/",
@@ -3511,57 +3561,92 @@
             {
               "audio_url": "https://www.archive.org/download/eclogae_alighieri_1407_librivox/eclogae_01_alighieri_64kb.mp3",
               "length_ms": 320000,
+              "readers": [
+                "leni"
+              ],
               "start_ms": 0,
               "title": "Ecloga Prima"
             },
             {
               "audio_url": "https://www.archive.org/download/eclogae_alighieri_1407_librivox/eclogae_02_alighieri_64kb.mp3",
               "length_ms": 369000,
+              "readers": [
+                "martin-geeson"
+              ],
               "start_ms": 320000,
               "title": "First Eclogue"
             },
             {
               "audio_url": "https://www.archive.org/download/eclogae_alighieri_1407_librivox/eclogae_03_alighieri_64kb.mp3",
               "length_ms": 395000,
+              "readers": [
+                "leni"
+              ],
               "start_ms": 689000,
               "title": "Ecloga Secunda"
             },
             {
               "audio_url": "https://www.archive.org/download/eclogae_alighieri_1407_librivox/eclogae_04_alighieri_64kb.mp3",
               "length_ms": 467000,
+              "readers": [
+                "martin-geeson"
+              ],
               "start_ms": 1084000,
               "title": "Second Eclogue"
             },
             {
               "audio_url": "https://www.archive.org/download/eclogae_alighieri_1407_librivox/eclogae_05_alighieri_64kb.mp3",
               "length_ms": 531000,
+              "readers": [
+                "leni"
+              ],
               "start_ms": 1551000,
               "title": "Ecloga Tertia"
             },
             {
               "audio_url": "https://www.archive.org/download/eclogae_alighieri_1407_librivox/eclogae_06_alighieri_64kb.mp3",
               "length_ms": 609000,
+              "readers": [
+                "martin-geeson"
+              ],
               "start_ms": 2082000,
               "title": "Third Eclogue"
             },
             {
               "audio_url": "https://www.archive.org/download/eclogae_alighieri_1407_librivox/eclogae_07_alighieri_64kb.mp3",
               "length_ms": 544000,
+              "readers": [
+                "leni"
+              ],
               "start_ms": 2691000,
               "title": "Ecloga Quarta"
             },
             {
               "audio_url": "https://www.archive.org/download/eclogae_alighieri_1407_librivox/eclogae_08_alighieri_64kb.mp3",
               "length_ms": 630000,
+              "readers": [
+                "martin-geeson"
+              ],
               "start_ms": 3235000,
               "title": "Fourth Eclogue"
             }
           ],
           "copyright_year": 1899,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt17/eclogae_1407.jpg",
+          "credits": [
+            {
+              "person": "edward-hayes-plumptre",
+              "role": "translator"
+            }
+          ],
           "id": "leni",
           "language": "mul",
+          "librivox_genres": [
+            "Epistolary Fiction",
+            "Single author"
+          ],
           "librivox_id": 8924,
+          "librivox_title": "Eclogae (Eclogues)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/eclogae-eclogues-by-dante-alighieri/",
@@ -3620,68 +3705,118 @@
             {
               "audio_url": "https://www.archive.org/download/eclogues_0810_librivox/eclogues_01_virgil_64kb.mp3",
               "length_ms": 446000,
+              "readers": [
+                "kara-shallenberg-1969-2023",
+                "denny-sayers-d-2015"
+              ],
               "start_ms": 0,
               "title": "Eclogue 01"
             },
             {
               "audio_url": "https://www.archive.org/download/eclogues_0810_librivox/eclogues_02_virgil_64kb.mp3",
               "length_ms": 362000,
+              "readers": [
+                "cori-samuel"
+              ],
               "start_ms": 446000,
               "title": "Eclogue 02"
             },
             {
               "audio_url": "https://www.archive.org/download/eclogues_0810_librivox/eclogues_03_virgil_64kb.mp3",
               "length_ms": 478000,
+              "readers": [
+                "kara-shallenberg-1969-2023",
+                "rosalind-wills",
+                "leni"
+              ],
               "start_ms": 808000,
               "title": "Eclogue 03"
             },
             {
               "audio_url": "https://www.archive.org/download/eclogues_0810_librivox/eclogues_04_virgil_64kb.mp3",
               "length_ms": 329000,
+              "readers": [
+                "cori-samuel"
+              ],
               "start_ms": 1286000,
               "title": "Eclogue 04"
             },
             {
               "audio_url": "https://www.archive.org/download/eclogues_0810_librivox/eclogues_05_virgil_64kb.mp3",
               "length_ms": 396000,
+              "readers": [
+                "anna-simon",
+                "leni"
+              ],
               "start_ms": 1615000,
               "title": "Eclogue 05"
             },
             {
               "audio_url": "https://www.archive.org/download/eclogues_0810_librivox/eclogues_06_virgil_64kb.mp3",
               "length_ms": 431000,
+              "readers": [
+                "cori-samuel"
+              ],
               "start_ms": 2011000,
               "title": "Eclogue 06"
             },
             {
               "audio_url": "https://www.archive.org/download/eclogues_0810_librivox/eclogues_07_virgil_64kb.mp3",
               "length_ms": 351000,
+              "readers": [
+                "denny-sayers-d-2015",
+                "anna-simon",
+                "leni"
+              ],
               "start_ms": 2442000,
               "title": "Eclogue 07"
             },
             {
               "audio_url": "https://www.archive.org/download/eclogues_0810_librivox/eclogues_08_virgil_64kb.mp3",
               "length_ms": 595000,
+              "readers": [
+                "squid-varilekova",
+                "anna-simon",
+                "ruth-golding"
+              ],
               "start_ms": 2793000,
               "title": "Eclogue 08"
             },
             {
               "audio_url": "https://www.archive.org/download/eclogues_0810_librivox/eclogues_09_virgil_64kb.mp3",
               "length_ms": 308000,
+              "readers": [
+                "greg-elmensdorp",
+                "leni"
+              ],
               "start_ms": 3388000,
               "title": "Eclogue 09"
             },
             {
               "audio_url": "https://www.archive.org/download/eclogues_0810_librivox/eclogues_10_virgil_64kb.mp3",
               "length_ms": 405000,
+              "readers": [
+                "cori-samuel"
+              ],
               "start_ms": 3696000,
               "title": "Eclogue 10"
             }
           ],
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt14/Eclogues_1202.jpg",
+          "credits": [
+            {
+              "person": "unknown",
+              "role": "translator"
+            }
+          ],
           "id": "kara-shallenberg-1969-2023",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Poetry"
+          ],
           "librivox_id": 134,
+          "librivox_title": "Eclogues",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-eclogues-by-publius-vergilius-maro/",
@@ -6365,255 +6500,388 @@
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_01_bastiat_64kb.mp3",
               "length_ms": 427000,
+              "readers": [
+                "george-banfield"
+              ],
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_02_bastiat_64kb.mp3",
               "length_ms": 1394000,
+              "readers": [
+                "owlivia"
+              ],
               "start_ms": 427000,
               "title": "Abundance, Scarcity"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_03_bastiat_64kb.mp3",
               "length_ms": 437000,
+              "readers": [
+                "mason-lewis"
+              ],
               "start_ms": 1821000,
               "title": "Obstacle, Cause"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_04_bastiat_64kb.mp3",
               "length_ms": 1048000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 2258000,
               "title": "Effort, Result"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_05_bastiat_64kb.mp3",
               "length_ms": 2351000,
+              "readers": [
+                "andrewjward"
+              ],
               "start_ms": 3306000,
               "title": "To Equalize the Conditions of Production"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_06_bastiat_64kb.mp3",
               "length_ms": 774000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 5657000,
               "title": "Our Products are Burdened with Taxes"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_07_bastiat_64kb.mp3",
               "length_ms": 587000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 6431000,
               "title": "Balance of Trade"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_08_bastiat_64kb.mp3",
               "length_ms": 692000,
+              "readers": [
+                "disillusionedjimson"
+              ],
               "start_ms": 7018000,
               "title": "Of the Manufacturers"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_09_bastiat_64kb.mp3",
               "length_ms": 140000,
+              "readers": [
+                "inthedesert"
+              ],
               "start_ms": 7710000,
               "title": "Differential Duties"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_10_bastiat_64kb.mp3",
               "length_ms": 505000,
+              "readers": [
+                "michele-fry"
+              ],
               "start_ms": 7850000,
               "title": "Immense Discovery"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_11_bastiat_64kb.mp3",
               "length_ms": 472000,
+              "readers": [
+                "shrimpphish"
+              ],
               "start_ms": 8355000,
               "title": "Reciprocity"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_12_bastiat_64kb.mp3",
               "length_ms": 510000,
+              "readers": [
+                "andrewjward"
+              ],
               "start_ms": 8827000,
               "title": "Nominal Prices"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_13_bastiat_64kb.mp3",
               "length_ms": 682000,
+              "readers": [
+                "mpinedag"
+              ],
               "start_ms": 9337000,
               "title": "Does Protection Raise the Rate of Wages?"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_14_bastiat_64kb.mp3",
               "length_ms": 805000,
+              "readers": [
+                "mpinedag"
+              ],
               "start_ms": 10019000,
               "title": "Theory, Practice"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_15_bastiat_64kb.mp3",
               "length_ms": 482000,
+              "readers": [
+                "mpinedag"
+              ],
               "start_ms": 10824000,
               "title": "Conflict of Principles"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_16_bastiat_64kb.mp3",
               "length_ms": 263000,
+              "readers": [
+                "stacey-malcolm"
+              ],
               "start_ms": 11306000,
               "title": "Reciprocity Again"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_17_bastiat_64kb.mp3",
               "length_ms": 143000,
+              "readers": [
+                "inthedesert"
+              ],
               "start_ms": 11569000,
               "title": "Obstructed Navigation Pleading for the Prohibitionists"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_18_bastiat_64kb.mp3",
               "length_ms": 146000,
+              "readers": [
+                "andrewjward"
+              ],
               "start_ms": 11712000,
               "title": "A Negative Railway"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_19_bastiat_64kb.mp3",
               "length_ms": 429000,
+              "readers": [
+                "andrewjward"
+              ],
               "start_ms": 11858000,
               "title": "There are No Absolute Principles"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_20_bastiat_64kb.mp3",
               "length_ms": 376000,
+              "readers": [
+                "michele-fry"
+              ],
               "start_ms": 12287000,
               "title": "National Independence"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_21_bastiat_64kb.mp3",
               "length_ms": 718000,
+              "readers": [
+                "patrickreddy"
+              ],
               "start_ms": 12663000,
               "title": "Human Labour, National Labour"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_22_bastiat_64kb.mp3",
               "length_ms": 1200000,
+              "readers": [
+                "patrickreddy"
+              ],
               "start_ms": 13381000,
               "title": "Raw Materials"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_23_bastiat_64kb.mp3",
               "length_ms": 616000,
+              "readers": [
+                "vealeigh"
+              ],
               "start_ms": 14581000,
               "title": "Metaphors"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_24_bastiat_64kb.mp3",
               "length_ms": 797000,
+              "readers": [
+                "vealeigh"
+              ],
               "start_ms": 15197000,
               "title": "Conclusion"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_25_bastiat_64kb.mp3",
               "length_ms": 2165000,
+              "readers": [
+                "cbteddy"
+              ],
               "start_ms": 15994000,
               "title": "Physiology of Spoliation"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_26_bastiat_64kb.mp3",
               "length_ms": 1094000,
+              "readers": [
+                "andrewjward"
+              ],
               "start_ms": 18159000,
               "title": "Two Principles of Morality"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_27_bastiat_64kb.mp3",
               "length_ms": 450000,
+              "readers": [
+                "patrickreddy"
+              ],
               "start_ms": 19253000,
               "title": "The Two Hatchets"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_28_bastiat_64kb.mp3",
               "length_ms": 412000,
+              "readers": [
+                "vigneshsundaram"
+              ],
               "start_ms": 19703000,
               "title": "Lower Council of Labour"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_29_bastiat_64kb.mp3",
               "length_ms": 1097000,
+              "readers": [
+                "vigneshsundaram"
+              ],
               "start_ms": 20115000,
               "title": "Dearness — Cheapness"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_30_bastiat_64kb.mp3",
               "length_ms": 1323000,
+              "readers": [
+                "disillusionedjimson"
+              ],
               "start_ms": 21212000,
               "title": "To Artisans and Workmen"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_31_bastiat_64kb.mp3",
               "length_ms": 717000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 22535000,
               "title": "A Chinese Story"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_32_bastiat_64kb.mp3",
               "length_ms": 268000,
+              "readers": [
+                "andrewjward"
+              ],
               "start_ms": 23252000,
               "title": "Post Hoc, Ergo Propter Hoc"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_33_bastiat_64kb.mp3",
               "length_ms": 923000,
+              "readers": [
+                "vigneshsundaram"
+              ],
               "start_ms": 23520000,
               "title": "The Premium Theft"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_34_bastiat_64kb.mp3",
               "length_ms": 877000,
+              "readers": [
+                "jkilly"
+              ],
               "start_ms": 24443000,
               "title": "The Taxgatherer"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_35_bastiat_64kb.mp3",
               "length_ms": 1098000,
+              "readers": [
+                "jkilly"
+              ],
               "start_ms": 25320000,
               "title": "The Utopian Free — Trader"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_36_bastiat_64kb.mp3",
               "length_ms": 2586000,
+              "readers": [
+                "bookspeakerr"
+              ],
               "start_ms": 26418000,
               "title": "The Salt — Tax, Rates of Postage, and Customhouse Duties"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_37_bastiat_64kb.mp3",
               "length_ms": 1596000,
+              "readers": [
+                "brize-c"
+              ],
               "start_ms": 29004000,
               "title": "Demonstration in Four"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_38_bastiat_64kb.mp3",
               "length_ms": 1185000,
+              "readers": [
+                "brize-c"
+              ],
               "start_ms": 30600000,
               "title": "Something Else"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_39_bastiat_64kb.mp3",
               "length_ms": 740000,
+              "readers": [
+                "andrewjward"
+              ],
               "start_ms": 31785000,
               "title": "The Little Arsenal of the Free — Trader"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_40_bastiat_64kb.mp3",
               "length_ms": 851000,
+              "readers": [
+                "andrewjward"
+              ],
               "start_ms": 32525000,
               "title": "The Right Hand and the Left"
             },
             {
               "audio_url": "https://www.archive.org/download/economicsophisms_2509_librivox/economicsophisms_41_bastiat_64kb.mp3",
               "length_ms": 1000000,
+              "readers": [
+                "vealeigh"
+              ],
               "start_ms": 33376000,
               "title": "Domination by Labour"
             }
           ],
           "copyright_year": 1873,
           "cover_url": "https://archive.org/download/economicsophisms_2509_librivox/economicsophisms_2509.jpg",
+          "credits": [
+            {
+              "person": "patrick-james-stirling",
+              "role": "translator"
+            }
+          ],
           "id": "george-banfield",
           "language": "en",
+          "librivox_genres": [
+            "Business & Economics"
+          ],
           "librivox_id": 20740,
+          "librivox_title": "Economic Sophisms",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/economic-sophisms-by-frederic-bastiat/",
@@ -7314,9 +7582,21 @@
           ],
           "copyright_year": 1920,
           "cover_url": "https://archive.org/download/economics_1408_librivox/economics_1408.jpg",
+          "credits": [
+            {
+              "person": "edward-seymour-forster",
+              "role": "translator"
+            }
+          ],
           "id": "geoffrey-edwards",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Business & Economics",
+            "Ancient"
+          ],
           "librivox_id": 9077,
+          "librivox_title": "Economics",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/economics-by-aristotle/",
@@ -13942,168 +14222,280 @@
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_00_marti_64kb.mp3",
               "length_ms": 318000,
+              "readers": [
+                "karen-savage"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "A los ninos que lean La Edad de Oro"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_01_marti_64kb.mp3",
               "length_ms": 959000,
+              "readers": [
+                "luigina"
+              ],
+              "section_number": 1,
               "start_ms": 318000,
               "title": "Tres heroes"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_02_marti_64kb.mp3",
               "length_ms": 64000,
+              "readers": [
+                "shantii"
+              ],
+              "section_number": 2,
               "start_ms": 1277000,
               "title": "Dos milagros"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_03_marti_64kb.mp3",
               "length_ms": 2213000,
+              "readers": [
+                "luigina"
+              ],
+              "section_number": 3,
               "start_ms": 1341000,
               "title": "Menique"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_04_marti_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "carlos"
+              ],
+              "section_number": 4,
               "start_ms": 3554000,
               "title": "Cada uno a su oficio"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_05_marti_64kb.mp3",
               "length_ms": 2006000,
+              "readers": [
+                "christian-al-kadi"
+              ],
+              "section_number": 5,
               "start_ms": 3623000,
               "title": "La Iliada, de Homero"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_06_marti_64kb.mp3",
               "length_ms": 806000,
+              "readers": [
+                "luigina"
+              ],
+              "section_number": 6,
               "start_ms": 5629000,
               "title": "Un juego nuevo y otros viejos"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_07_marti_64kb.mp3",
               "length_ms": 596000,
+              "readers": [
+                "luigina"
+              ],
+              "section_number": 7,
               "start_ms": 6435000,
               "title": "Bebe y el senor don Pomposo"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_08_marti-fixed_64kb.mp3",
               "length_ms": 323000,
+              "readers": [
+                "luc-kordas"
+              ],
+              "section_number": 8,
               "start_ms": 7031000,
               "title": "La ultima pagina"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_09_marti_64kb.mp3",
               "length_ms": 1809000,
+              "readers": [
+                "alejandra-gonzalez"
+              ],
+              "section_number": 9,
               "start_ms": 7354000,
               "title": "La historia del hombre, contada por sus casas"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_10_marti_64kb.mp3",
               "length_ms": 120000,
+              "readers": [
+                "luigina"
+              ],
+              "section_number": 10,
               "start_ms": 9163000,
               "title": "Los dos principes"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_11_marti_64kb.mp3",
               "length_ms": 775000,
+              "readers": [
+                "luigina"
+              ],
+              "section_number": 11,
               "start_ms": 9283000,
               "title": "Nene traviesa"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_12_marti_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "jc-guan"
+              ],
+              "section_number": 12,
               "start_ms": 10058000,
               "title": "La perla de la mora"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_13_marti-fixed_64kb.mp3",
               "length_ms": 2033000,
+              "readers": [
+                "phossil"
+              ],
+              "section_number": 13,
               "start_ms": 10132000,
               "title": "Las ruinas indias"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_14_marti_64kb.mp3",
               "length_ms": 2479000,
+              "readers": [
+                "bob-sage"
+              ],
+              "section_number": 14,
               "start_ms": 12165000,
               "title": "Musicos, poetas y pintores"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_15_marti_64kb.mp3",
               "length_ms": 184000,
+              "readers": [
+                "bob-sage"
+              ],
+              "section_number": 15,
               "start_ms": 14644000,
               "title": "La ultima pagina"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_16_marti_64kb.mp3",
               "length_ms": 3834000,
+              "readers": [
+                "bob-sage"
+              ],
+              "section_number": 16,
               "start_ms": 14828000,
               "title": "La exposicion de Paris"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_17_marti_64kb.mp3",
               "length_ms": 1398000,
+              "readers": [
+                "jaid"
+              ],
+              "section_number": 17,
               "start_ms": 18662000,
               "title": "El camaron encantado"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_18_marti_64kb.mp3",
               "length_ms": 1549000,
+              "readers": [
+                "jaid"
+              ],
+              "section_number": 18,
               "start_ms": 20060000,
               "title": "El Padre las Casas"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_19_marti_64kb.mp3",
               "length_ms": 386000,
+              "readers": [
+                "jaid"
+              ],
+              "section_number": 19,
               "start_ms": 21609000,
               "title": "Los zapaticos de rosa"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_20_marti_64kb.mp3",
               "length_ms": 145000,
+              "readers": [
+                "jaid"
+              ],
+              "section_number": 20,
               "start_ms": 21995000,
               "title": "La ultima pagina"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_21_marti_64kb.mp3",
               "length_ms": 1571000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 21,
               "start_ms": 22140000,
               "title": "Un paseo por la tierra de los anamitas"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_22_marti_64kb.mp3",
               "length_ms": 1064000,
+              "readers": [
+                "andy"
+              ],
+              "section_number": 22,
               "start_ms": 23711000,
               "title": "Historia de la cuchara y el tenedor"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_23_marti_64kb.mp3",
               "length_ms": 1066000,
+              "readers": [
+                "karen-savage"
+              ],
+              "section_number": 23,
               "start_ms": 24775000,
               "title": "La muneca negra"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_24_marti_64kb.mp3",
               "length_ms": 1406000,
+              "readers": [
+                "bob-sage"
+              ],
+              "section_number": 24,
               "start_ms": 25841000,
               "title": "Cuentos de elefantes"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_25_marti_64kb.mp3",
               "length_ms": 2047000,
+              "readers": [
+                "bob-sage"
+              ],
+              "section_number": 25,
               "start_ms": 27247000,
               "title": "Los dos ruisenores"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_26_marti_64kb.mp3",
               "length_ms": 222000,
+              "readers": [
+                "bob-sage"
+              ],
+              "section_number": 26,
               "start_ms": 29294000,
               "title": "La galería de las maquinas"
             },
             {
               "audio_url": "https://www.archive.org/download/edad_de_oro_1001_librivox/edaddeoro_27_marti_64kb.mp3",
               "length_ms": 466000,
+              "readers": [
+                "bob-sage"
+              ],
+              "section_number": 27,
               "start_ms": 29516000,
               "title": "La ultima pagina"
             }
@@ -14112,7 +14504,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt28/La_Edad_Oro_1212.jpg",
           "id": "karen-savage",
           "language": "es",
+          "librivox_genres": [
+            "Children's Fiction",
+            "Short works"
+          ],
           "librivox_id": 2162,
+          "librivox_title": "Edad de Oro",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/la-edad-de-oro-by-jose-marti/",
@@ -15940,279 +16337,336 @@
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_00_sturleson_64kb.mp3",
               "length_ms": 617000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Noticia Preliminar sobre los Eddas"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_01_sturleson_64kb.mp3",
               "length_ms": 1549000,
+              "section_number": 1,
               "start_ms": 617000,
               "title": "El Edda Prosaico - Prólogo"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_02_sturleson_64kb.mp3",
               "length_ms": 1509000,
+              "section_number": 2,
               "start_ms": 2166000,
               "title": "El Edda Prosaico - El viaje de Gilfo (1ra parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_03_sturleson_64kb.mp3",
               "length_ms": 1664000,
+              "section_number": 3,
               "start_ms": 3675000,
               "title": "El Edda Prosaico - El viaje de Gilfo (2da parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_04_sturleson_64kb.mp3",
               "length_ms": 1450000,
+              "section_number": 4,
               "start_ms": 5339000,
               "title": "El Edda Prosaico - El viaje de Gilfo (3ra parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_05_sturleson_64kb.mp3",
               "length_ms": 1789000,
+              "section_number": 5,
               "start_ms": 6789000,
               "title": "El Edda Prosaico - El viaje de Gilfo (4ta parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_06_sturleson_64kb.mp3",
               "length_ms": 1335000,
+              "section_number": 6,
               "start_ms": 8578000,
               "title": "El Edda Prosaico - El viaje de Gilfo (5ta parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_07_sturleson_64kb.mp3",
               "length_ms": 2282000,
+              "section_number": 7,
               "start_ms": 9913000,
               "title": "El Edda Prosaico - El viaje de Gilfo (6ta parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_08_sturleson_64kb.mp3",
               "length_ms": 1253000,
+              "section_number": 8,
               "start_ms": 12195000,
               "title": "El Edda Prosaico - Coloquio de Brage con Aeger"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_09_sturleson_64kb.mp3",
               "length_ms": 1349000,
+              "section_number": 9,
               "start_ms": 13448000,
               "title": "El Edda Poético - Predicción de la sabia Wola"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_10_sturleson_64kb.mp3",
               "length_ms": 2721000,
+              "section_number": 10,
               "start_ms": 14797000,
               "title": "El Edda Poético - Los Poemas de Odin"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_11_sturleson_64kb.mp3",
               "length_ms": 1025000,
+              "section_number": 11,
               "start_ms": 17518000,
               "title": "El Edda Poético - El Poema de Vafthrudner"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_12_sturleson_64kb.mp3",
               "length_ms": 1276000,
+              "section_number": 12,
               "start_ms": 18543000,
               "title": "El Edda Poético - El Poema de Grimner"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_13_sturleson_64kb.mp3",
               "length_ms": 705000,
+              "section_number": 13,
               "start_ms": 19819000,
               "title": "El Edda Poético - El Poema del enano Alvis"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_14_sturleson_64kb.mp3",
               "length_ms": 677000,
+              "section_number": 14,
               "start_ms": 20524000,
               "title": "El Edda Poético - El Poema de Hymer"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_15_sturleson_64kb.mp3",
               "length_ms": 1327000,
+              "section_number": 15,
               "start_ms": 21201000,
               "title": "El Edda Poético - El Festín de Aeger"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_16_sturleson_64kb.mp3",
               "length_ms": 601000,
+              "section_number": 16,
               "start_ms": 22528000,
               "title": "El Edda Poético - El Poema del Martillo"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_17_sturleson_64kb.mp3",
               "length_ms": 841000,
+              "section_number": 17,
               "start_ms": 23129000,
               "title": "El Edda Poético - El Poema de Harbard"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_18_sturleson_64kb.mp3",
               "length_ms": 731000,
+              "section_number": 18,
               "start_ms": 23970000,
               "title": "El Edda Poético - El Viaje de Skirner"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_19_sturleson_64kb.mp3",
               "length_ms": 512000,
+              "section_number": 19,
               "start_ms": 24701000,
               "title": "El Edda Poético - El Poema del cuervo de Odín"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_20_sturleson_64kb.mp3",
               "length_ms": 377000,
+              "section_number": 20,
               "start_ms": 25213000,
               "title": "El Edda Poético - El Poema de Vegtam"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_21_sturleson_64kb.mp3",
               "length_ms": 284000,
+              "section_number": 21,
               "start_ms": 25590000,
               "title": "El Edda Poético - La evocación de Groa"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_22_sturleson_64kb.mp3",
               "length_ms": 785000,
+              "section_number": 22,
               "start_ms": 25874000,
               "title": "El Edda Poético - El Poema de Fioelsving"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_23_sturleson_64kb.mp3",
               "length_ms": 859000,
+              "section_number": 23,
               "start_ms": 26659000,
               "title": "El Edda Poético - El Poema de Hyndla"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_24_sturleson_64kb.mp3",
               "length_ms": 760000,
+              "section_number": 24,
               "start_ms": 27518000,
               "title": "El Edda Poético - El Poema de Rig"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_25_sturleson_64kb.mp3",
               "length_ms": 1147000,
+              "section_number": 25,
               "start_ms": 28278000,
               "title": "El Edda Poético - El Canto del Sol"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_26_sturleson_64kb.mp3",
               "length_ms": 780000,
+              "section_number": 26,
               "start_ms": 29425000,
               "title": "El Edda Poético - El Poema de Voelund"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_27_sturleson_64kb.mp3",
               "length_ms": 861000,
+              "section_number": 27,
               "start_ms": 30205000,
               "title": "El Edda Poético - El Poema de Helge (1ra parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_28_sturleson_64kb.mp3",
               "length_ms": 1225000,
+              "section_number": 28,
               "start_ms": 31066000,
               "title": "El Edda Poético - El Poema de Helge (2da parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_29_sturleson_64kb.mp3",
               "length_ms": 782000,
+              "section_number": 29,
               "start_ms": 32291000,
               "title": "El Edda Poético - El Poema antiguo de los Voels"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_30_sturleson_64kb.mp3",
               "length_ms": 229000,
+              "section_number": 30,
               "start_ms": 33073000,
               "title": "El Edda Poético - La muerte de Sinfioetle"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_31_sturleson_64kb.mp3",
               "length_ms": 865000,
+              "section_number": 31,
               "start_ms": 33302000,
               "title": "El Edda Poético - El Poema de Sigurd (canto primero)"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_32_sturleson_64kb.mp3",
               "length_ms": 554000,
+              "section_number": 32,
               "start_ms": 34167000,
               "title": "El Edda Poético - El Poema de Sigurd (canto segundo)"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_33_sturleson_64kb.mp3",
               "length_ms": 753000,
+              "section_number": 33,
               "start_ms": 34721000,
               "title": "El Edda Poético - El Poema de Fafner"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_34_sturleson_64kb.mp3",
               "length_ms": 730000,
+              "section_number": 34,
               "start_ms": 35474000,
               "title": "El Edda Poético - El Poema de Brynhilda la hija de Budle"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_35_sturleson_64kb.mp3",
               "length_ms": 390000,
+              "section_number": 35,
               "start_ms": 36204000,
               "title": "El Edda Poético - Fragmentos de poemas sobre Sigurd y Brynhilda"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_36_sturleson_64kb.mp3",
               "length_ms": 478000,
+              "section_number": 36,
               "start_ms": 36594000,
               "title": "El Edda Poético - El primer poema de Gudruna"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_37_sturleson_64kb.mp3",
               "length_ms": 1001000,
+              "section_number": 37,
               "start_ms": 37072000,
               "title": "El Edda Poético - El segundo poema de Brynhilda"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_38_sturleson_64kb.mp3",
               "length_ms": 247000,
+              "section_number": 38,
               "start_ms": 38073000,
               "title": "El Edda Poético - El viaje de Brynhilda a Hela"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_39_sturleson_64kb.mp3",
               "length_ms": 991000,
+              "section_number": 39,
               "start_ms": 38320000,
               "title": "El Edda Poético - El dolor de Gudruna"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_40_sturleson_64kb.mp3",
               "length_ms": 486000,
+              "section_number": 40,
               "start_ms": 39311000,
               "title": "El Edda Poético - Las lágrimas de Odruna"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_41_sturleson_64kb.mp3",
               "length_ms": 831000,
+              "section_number": 41,
               "start_ms": 39797000,
               "title": "El Edda Poético - La venganza de Gudruna"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_42_sturleson_64kb.mp3",
               "length_ms": 1878000,
+              "section_number": 42,
               "start_ms": 40628000,
               "title": "El Edda Poético - El poema groenladés de Atle"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_43_sturleson_64kb.mp3",
               "length_ms": 410000,
+              "section_number": 43,
               "start_ms": 42506000,
               "title": "El Edda Poético - El canto provocativo de Gudruna"
             },
             {
               "audio_url": "https://www.archive.org/download/eddas_1904_librivox/eddas_44_sturleson_64kb.mp3",
               "length_ms": 501000,
+              "section_number": 44,
               "start_ms": 42916000,
               "title": "El Edda Poético - El poema antiguo de Hamdir"
             }
           ],
           "copyright_year": 1856,
           "cover_url": "https://archive.org/download/eddas_1904_librivox/eddas_s_sturleson_s_sigfusson_1904.jpg",
+          "credits": [
+            {
+              "person": "angel-de-los-rios",
+              "role": "translator"
+            }
+          ],
           "id": "victor-villarraza",
           "language": "es",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales",
+            "Sagas",
+            "Epics"
+          ],
           "librivox_id": 11438,
+          "librivox_title": "Eddas",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/los-eddas-by-snorri-sturleson",
@@ -17364,7 +17818,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt8/eddiejacksonsgang_1103.jpg",
           "id": "maria-therese",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure",
+            "Family"
+          ],
           "librivox_id": 5249,
+          "librivox_title": "Eddie of Jackson's Gang",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/eddie-of-jacksons-gang-by-brother-ernest-ryan/",

@@ -1556,7 +1556,12 @@
           "cover_url": "https://archive.org/download/rookeriesoflondon_2210_librivox/rookeriesoflondon_2210.jpg",
           "id": "peter-yearsley",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Modern (19th C)"
+          ],
           "librivox_id": 17134,
+          "librivox_title": "Rookeries of London",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-rookeries-of-london-by-thomas-beames/",
@@ -4721,7 +4726,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt/Rookwood_1003.jpg",
           "id": "paul-curran",
           "language": "en",
+          "librivox_genres": [
+            "Gothic Fiction"
+          ],
           "librivox_id": 1921,
+          "librivox_title": "Rookwood",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/rookwood-by-william-harrison-ainsworth/",
@@ -7621,7 +7630,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt21/Room_in_the_Dragon_Volant_1207.jpg",
           "id": "elizabeth-klett",
           "language": "en",
+          "librivox_genres": [
+            "Horror & Supernatural Fiction",
+            "Detective Fiction"
+          ],
           "librivox_id": 4752,
+          "librivox_title": "Room in the Dragon Volant",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-room-in-the-dragon-volant-by-joseph-sheridan-lefanu/",
@@ -7673,102 +7687,153 @@
             {
               "audio_url": "https://www.archive.org/download/room_tower_other_stories_2012_librivox/roominthetower_01_benson_64kb.mp3",
               "length_ms": 1860000,
+              "readers": [
+                "andrew-gaunce"
+              ],
               "start_ms": 0,
               "title": "The Room in the Tower"
             },
             {
               "audio_url": "https://www.archive.org/download/room_tower_other_stories_2012_librivox/roominthetower_02_benson_64kb.mp3",
               "length_ms": 2076000,
+              "readers": [
+                "shruti-sinha"
+              ],
               "start_ms": 1860000,
               "title": "The Dust-Cloud"
             },
             {
               "audio_url": "https://www.archive.org/download/room_tower_other_stories_2012_librivox/roominthetower_03_benson_64kb.mp3",
               "length_ms": 1442000,
+              "readers": [
+                "dom-ford"
+              ],
               "start_ms": 3936000,
               "title": "Gavon's Eve"
             },
             {
               "audio_url": "https://www.archive.org/download/room_tower_other_stories_2012_librivox/roominthetower_04_benson_64kb.mp3",
               "length_ms": 2180000,
+              "readers": [
+                "eliza-dalton"
+              ],
               "start_ms": 5378000,
               "title": "The Confessions of Charles Linkworth"
             },
             {
               "audio_url": "https://www.archive.org/download/room_tower_other_stories_2012_librivox/roominthetower_05_benson_64kb.mp3",
               "length_ms": 1773000,
+              "readers": [
+                "shruti-sinha"
+              ],
               "start_ms": 7558000,
               "title": "At Abdul Ali's Grave"
             },
             {
               "audio_url": "https://www.archive.org/download/room_tower_other_stories_2012_librivox/roominthetower_06_benson_64kb.mp3",
               "length_ms": 2131000,
+              "readers": [
+                "loretta"
+              ],
               "start_ms": 9331000,
               "title": "The Shootings of Achnaleish"
             },
             {
               "audio_url": "https://www.archive.org/download/room_tower_other_stories_2012_librivox/roominthetower_07_benson_64kb.mp3",
               "length_ms": 2341000,
+              "readers": [
+                "mooninya"
+              ],
               "start_ms": 11462000,
               "title": "How Fear Departed From the Long Gallery"
             },
             {
               "audio_url": "https://www.archive.org/download/room_tower_other_stories_2012_librivox/roominthetower_08_benson_64kb.mp3",
               "length_ms": 1173000,
+              "readers": [
+                "andrew-gaunce"
+              ],
               "start_ms": 13803000,
               "title": "Caterpillars"
             },
             {
               "audio_url": "https://www.archive.org/download/room_tower_other_stories_2012_librivox/roominthetower_09_benson_64kb.mp3",
               "length_ms": 1985000,
+              "readers": [
+                "andrew-james"
+              ],
               "start_ms": 14976000,
               "title": "The Cat"
             },
             {
               "audio_url": "https://www.archive.org/download/room_tower_other_stories_2012_librivox/roominthetower_10_benson_64kb.mp3",
               "length_ms": 1166000,
+              "readers": [
+                "doug-daly"
+              ],
               "start_ms": 16961000,
               "title": "The Bus-Conductor"
             },
             {
               "audio_url": "https://www.archive.org/download/room_tower_other_stories_2012_librivox/roominthetower_11_benson_64kb.mp3",
               "length_ms": 3483000,
+              "readers": [
+                "rafe-ball"
+              ],
               "start_ms": 18127000,
               "title": "The Man Who Went Too Far"
             },
             {
               "audio_url": "https://www.archive.org/download/room_tower_other_stories_2012_librivox/roominthetower_12_benson_64kb.mp3",
               "length_ms": 1667000,
+              "readers": [
+                "ak-jumpsen"
+              ],
               "start_ms": 21610000,
               "title": "Between the Lights"
             },
             {
               "audio_url": "https://www.archive.org/download/room_tower_other_stories_2012_librivox/roominthetower_13_benson_64kb.mp3",
               "length_ms": 995000,
+              "readers": [
+                "julian-pratley"
+              ],
               "start_ms": 23277000,
               "title": "Outside the Door"
             },
             {
               "audio_url": "https://www.archive.org/download/room_tower_other_stories_2012_librivox/roominthetower_14_benson_64kb.mp3",
               "length_ms": 1018000,
+              "readers": [
+                "andrew-gaunce"
+              ],
               "start_ms": 24272000,
               "title": "The Terror by Night"
             },
             {
               "audio_url": "https://www.archive.org/download/room_tower_other_stories_2012_librivox/roominthetower_15_benson_64kb.mp3",
               "length_ms": 1321000,
+              "readers": [
+                "noelvox"
+              ],
               "start_ms": 25290000,
               "title": "The Other Bed"
             },
             {
               "audio_url": "https://www.archive.org/download/room_tower_other_stories_2012_librivox/roominthetower_16_benson_64kb.mp3",
               "length_ms": 1613000,
+              "readers": [
+                "andrew-gaunce"
+              ],
               "start_ms": 26611000,
               "title": "The Thing in the Hall"
             },
             {
               "audio_url": "https://www.archive.org/download/room_tower_other_stories_2012_librivox/roominthetower_17_benson_64kb.mp3",
               "length_ms": 1688000,
+              "readers": [
+                "susheel-c"
+              ],
               "start_ms": 28224000,
               "title": "The House With the Brick-Kiln"
             }
@@ -7777,7 +7842,12 @@
           "cover_url": "https://archive.org/download/room_tower_other_stories_2012_librivox/roominthetower_2012.jpg",
           "id": "andrew-gaunce",
           "language": "en",
+          "librivox_genres": [
+            "Horror & Supernatural Fiction",
+            "Gothic Fiction"
+          ],
           "librivox_id": 15357,
+          "librivox_title": "Room in the Tower, and Other Stories",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-room-in-the-tower-and-other-stories-by-e-f-benson/",

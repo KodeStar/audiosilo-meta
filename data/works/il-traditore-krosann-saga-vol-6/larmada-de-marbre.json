@@ -5598,7 +5598,12 @@
           "cover_url": "https://archive.org/download/lart_de_lire_1903_librivox/lartdelire_1903.jpg",
           "id": "christiane-jehanne",
           "language": "fr",
+          "librivox_genres": [
+            "Education",
+            "Literary Criticism"
+          ],
           "librivox_id": 13651,
+          "librivox_title": "L'Art de Lire",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/lart-de-lire-by-emile-faguet/",
@@ -5779,66 +5784,99 @@
             {
               "audio_url": "https://www.archive.org/download/lartpourlart_1908_librivox/lartpourlart_01_various_64kb.mp3",
               "length_ms": 1167000,
+              "readers": [
+                "kilpatrick83"
+              ],
               "start_ms": 0,
               "title": "Sir Eustace Grey, by George Crabbe"
             },
             {
               "audio_url": "https://www.archive.org/download/lartpourlart_1908_librivox/lartpourlart_02_various_64kb.mp3",
               "length_ms": 1170000,
+              "readers": [
+                "rebeccag"
+              ],
               "start_ms": 1167000,
               "title": "The Stone Dog, by Sir Charles G. D. Roberts"
             },
             {
               "audio_url": "https://www.archive.org/download/lartpourlart_1908_librivox/lartpourlart_03_various_64kb.mp3",
               "length_ms": 796000,
+              "readers": [
+                "kilpatrick83"
+              ],
               "start_ms": 2337000,
               "title": "Testament of a Man Forbid, by John Davidson"
             },
             {
               "audio_url": "https://www.archive.org/download/lartpourlart_1908_librivox/lartpourlart_04_various_64kb.mp3",
               "length_ms": 1317000,
+              "readers": [
+                "rebeccag"
+              ],
               "start_ms": 3133000,
               "title": "Stillness, by G. Ranger Wormser"
             },
             {
               "audio_url": "https://www.archive.org/download/lartpourlart_1908_librivox/lartpourlart_05_various_64kb.mp3",
               "length_ms": 629000,
+              "readers": [
+                "kilpatrick83"
+              ],
               "start_ms": 4450000,
               "title": "Cain, by Francis S. Saltus"
             },
             {
               "audio_url": "https://www.archive.org/download/lartpourlart_1908_librivox/lartpourlart_06_various_64kb.mp3",
               "length_ms": 749000,
+              "readers": [
+                "rebeccag"
+              ],
               "start_ms": 5079000,
               "title": "Silence, by Benjamin de Casseres"
             },
             {
               "audio_url": "https://www.archive.org/download/lartpourlart_1908_librivox/lartpourlart_07_various_64kb.mp3",
               "length_ms": 1979000,
+              "readers": [
+                "kilpatrick83"
+              ],
               "start_ms": 5828000,
               "title": "Mister Whistler's Ten O'Clock, by James Abbott McNeill Whistler"
             },
             {
               "audio_url": "https://www.archive.org/download/lartpourlart_1908_librivox/lartpourlart_08_various_64kb.mp3",
               "length_ms": 966000,
+              "readers": [
+                "rebeccag"
+              ],
               "start_ms": 7807000,
               "title": "Tocsin, by Leonid Andreyev"
             },
             {
               "audio_url": "https://www.archive.org/download/lartpourlart_1908_librivox/lartpourlart_09_various_64kb.mp3",
               "length_ms": 1508000,
+              "readers": [
+                "kilpatrick83"
+              ],
               "start_ms": 8773000,
               "title": "from Maldoror, by Comte de Lautréamont"
             },
             {
               "audio_url": "https://www.archive.org/download/lartpourlart_1908_librivox/lartpourlart_10_various_64kb.mp3",
               "length_ms": 403000,
+              "readers": [
+                "rebeccag"
+              ],
               "start_ms": 10281000,
               "title": "Gridale, by Jean de Bosschère"
             },
             {
               "audio_url": "https://www.archive.org/download/lartpourlart_1908_librivox/lartpourlart_11_various_64kb.mp3",
               "length_ms": 102000,
+              "readers": [
+                "kilpatrick83"
+              ],
               "start_ms": 10684000,
               "title": "Lucifer in Starlight, by George Meredith"
             }
@@ -5846,7 +5884,11 @@
           "cover_url": "https://archive.org/download/lartpourlart_1908_librivox/lart_pour_lart_1908.jpg",
           "id": "kilpatrick83",
           "language": "en",
+          "librivox_genres": [
+            "Literary Collections"
+          ],
           "librivox_id": 13633,
+          "librivox_title": "L'Art Pour l'Art",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/lart-pour-lart-by-various/",
@@ -12266,7 +12308,14 @@
           "cover_url": "https://archive.org/download/aventurasdesherlockholmes_2110_librivox/Sherlock_2110.jpg",
           "id": "victor-villarraza",
           "language": "es",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Literary Fiction",
+            "Detective Fiction",
+            "Short Stories"
+          ],
           "librivox_id": 17047,
+          "librivox_title": "Aventuras de Sherlock Holmes",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/aventuras-de-sherlock-holmes-by-sir-arthur-conan-doyle/",

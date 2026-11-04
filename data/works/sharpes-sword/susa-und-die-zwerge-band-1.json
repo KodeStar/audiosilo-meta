@@ -211,7 +211,12 @@
           "cover_url": "https://archive.org/download/librivoxcdcoverart36/susan_2005.jpg",
           "id": "celine-major",
           "language": "en",
+          "librivox_genres": [
+            "Fictional Biographies & Memoirs",
+            "General Fiction"
+          ],
           "librivox_id": 15040,
+          "librivox_title": "Susan",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/susan-by-ernest-oldmeadow/",
@@ -567,7 +572,12 @@
           "cover_url": "https://archive.org/download/susanbanthony_2004_librivox/susanbanthony_2004.jpg",
           "id": "phyllisv",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "History"
+          ],
           "librivox_id": 14887,
+          "librivox_title": "Susan B. Anthony Rebel, Crusader, Humanitarian",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/susan-b-anthony-rebel-crusader-humanitarian-by-alma-lutz/",
@@ -1642,24 +1652,58 @@
             {
               "audio_url": "https://www.archive.org/download/susanna_2505_librivox/susanna_0_handel_64kb.mp3",
               "length_ms": 103000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction and Dramatis Personae"
             },
             {
               "audio_url": "https://www.archive.org/download/susanna_2505_librivox/susanna_1_handel_64kb.mp3",
               "length_ms": 560000,
+              "readers": [
+                "algy-pug",
+                "alan-mapstone",
+                "greg-giordano",
+                "beeswaxcandle",
+                "brian-fullen",
+                "shrimpphish"
+              ],
+              "section_number": 1,
               "start_ms": 103000,
               "title": "Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/susanna_2505_librivox/susanna_2_handel_64kb.mp3",
               "length_ms": 562000,
+              "readers": [
+                "alan-mapstone",
+                "greg-giordano",
+                "beeswaxcandle",
+                "brian-fullen",
+                "agnes-robert-behr",
+                "shrimpphish"
+              ],
+              "section_number": 2,
               "start_ms": 663000,
               "title": "Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/susanna_2505_librivox/susanna_3_handel_64kb.mp3",
               "length_ms": 497000,
+              "readers": [
+                "algy-pug",
+                "alan-mapstone",
+                "greg-giordano",
+                "larry-wilson",
+                "beeswaxcandle",
+                "brian-fullen",
+                "agnes-robert-behr",
+                "shrimpphish",
+                "jon-hunter"
+              ],
+              "section_number": 3,
               "start_ms": 1225000,
               "title": "Part 3"
             }
@@ -1668,7 +1712,11 @@
           "cover_url": "https://archive.org/download/susanna_2505_librivox/susanna_2505.jpg",
           "id": "alan-mapstone",
           "language": "en",
+          "librivox_genres": [
+            "Drama"
+          ],
           "librivox_id": 21534,
+          "librivox_title": "Susanna",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/susanna-by-georg-friedrich-haendel/",
@@ -6229,7 +6277,11 @@
           "cover_url": "https://archive.org/download/suspense_2607_librivox/suspense_2607.jpg",
           "id": "yoganandh-t",
           "language": "en",
+          "librivox_genres": [
+            "Detective Fiction"
+          ],
           "librivox_id": 22643,
+          "librivox_title": "Suspense",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/suspense-by-isabel-ostrander/",
@@ -8647,54 +8699,63 @@
             {
               "audio_url": "https://www.archive.org/download/suspiriadeprofundis_2609_librivox/suspiriadeprofundis_00_dequincey_64kb.mp3",
               "length_ms": 1345000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introductory Note"
             },
             {
               "audio_url": "https://www.archive.org/download/suspiriadeprofundis_2609_librivox/suspiriadeprofundis_01_dequincey_64kb.mp3",
               "length_ms": 2605000,
+              "section_number": 1,
               "start_ms": 1345000,
               "title": "Part I. The Affliction of Childhood"
             },
             {
               "audio_url": "https://www.archive.org/download/suspiriadeprofundis_2609_librivox/suspiriadeprofundis_02_dequincey_64kb.mp3",
               "length_ms": 1954000,
+              "section_number": 2,
               "start_ms": 3950000,
               "title": "The Affliction of Childhood continued"
             },
             {
               "audio_url": "https://www.archive.org/download/suspiriadeprofundis_2609_librivox/suspiriadeprofundis_03_dequincey_64kb.mp3",
               "length_ms": 2889000,
+              "section_number": 3,
               "start_ms": 5904000,
               "title": "The Affliction of Childhood continued"
             },
             {
               "audio_url": "https://www.archive.org/download/suspiriadeprofundis_2609_librivox/suspiriadeprofundis_04_dequincey_64kb.mp3",
               "length_ms": 1287000,
+              "section_number": 4,
               "start_ms": 8793000,
               "title": "The Palimpsest"
             },
             {
               "audio_url": "https://www.archive.org/download/suspiriadeprofundis_2609_librivox/suspiriadeprofundis_05_dequincey_64kb.mp3",
               "length_ms": 1248000,
+              "section_number": 5,
               "start_ms": 10080000,
               "title": "Levana and Our Ladies of Sorrow"
             },
             {
               "audio_url": "https://www.archive.org/download/suspiriadeprofundis_2609_librivox/suspiriadeprofundis_06_dequincey_64kb.mp3",
               "length_ms": 752000,
+              "section_number": 6,
               "start_ms": 11328000,
               "title": "The Apparition of the Brocken"
             },
             {
               "audio_url": "https://www.archive.org/download/suspiriadeprofundis_2609_librivox/suspiriadeprofundis_07_dequincey_64kb.mp3",
               "length_ms": 370000,
+              "section_number": 7,
               "start_ms": 12080000,
               "title": "Finale to Part I - Savannah-La-Mar"
             },
             {
               "audio_url": "https://www.archive.org/download/suspiriadeprofundis_2609_librivox/suspiriadeprofundis_08_dequincey_64kb.mp3",
               "length_ms": 3623000,
+              "section_number": 8,
               "start_ms": 12450000,
               "title": "Part II"
             }
@@ -8703,7 +8764,11 @@
           "cover_url": "https://archive.org/download/suspiriadeprofundis_2609_librivox/suspiriadeprofundis_2609.jpg",
           "id": "ben-tucker",
           "language": "en",
+          "librivox_genres": [
+            "Essays & Short Works"
+          ],
           "librivox_id": 22885,
+          "librivox_title": "Suspiria de Profundis",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/suspiria-de-profundis-by-thomas-de-quincey/",

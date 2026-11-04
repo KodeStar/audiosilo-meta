@@ -5328,54 +5328,81 @@
             {
               "audio_url": "https://www.archive.org/download/paris_pair_1902.poem_librivox/parispair_brown_bk_64kb.mp3",
               "length_ms": 303000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 0,
               "title": "Paris Pair, Their Day's Doings - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/paris_pair_1902.poem_librivox/parispair_brown_drr_64kb.mp3",
               "length_ms": 248000,
+              "readers": [
+                "dean-rogers"
+              ],
               "start_ms": 303000,
               "title": "Paris Pair, Their Day's Doings - Read by DRR"
             },
             {
               "audio_url": "https://www.archive.org/download/paris_pair_1902.poem_librivox/parispair_brown_fh_64kb.mp3",
               "length_ms": 331000,
+              "readers": [
+                "foon"
+              ],
               "start_ms": 551000,
               "title": "Paris Pair, Their Day's Doings - Read by FH"
             },
             {
               "audio_url": "https://www.archive.org/download/paris_pair_1902.poem_librivox/parispair_brown_grs_64kb.mp3",
               "length_ms": 324000,
+              "readers": [
+                "graham-scott"
+              ],
               "start_ms": 882000,
               "title": "Paris Pair, Their Day's Doings - Read by GRS"
             },
             {
               "audio_url": "https://www.archive.org/download/paris_pair_1902.poem_librivox/parispair_brown_jk_64kb.mp3",
               "length_ms": 239000,
+              "readers": [
+                "josh-kibbey"
+              ],
               "start_ms": 1206000,
               "title": "Paris Pair, Their Day's Doings - Read by JK"
             },
             {
               "audio_url": "https://www.archive.org/download/paris_pair_1902.poem_librivox/parispair_brown_lcw_64kb.mp3",
               "length_ms": 270000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 1445000,
               "title": "Paris Pair, Their Day's Doings - Read by LCW"
             },
             {
               "audio_url": "https://www.archive.org/download/paris_pair_1902.poem_librivox/parispair_brown_mfs_64kb.mp3",
               "length_ms": 312000,
+              "readers": [
+                "maria-de-fatima-da-silva"
+              ],
               "start_ms": 1715000,
               "title": "Paris Pair, Their Day's Doings - Read by MFS"
             },
             {
               "audio_url": "https://www.archive.org/download/paris_pair_1902.poem_librivox/parispair_brown_ps_64kb.mp3",
               "length_ms": 286000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 2027000,
               "title": "Paris Pair, Their Day's Doings - Read by PS"
             },
             {
               "audio_url": "https://www.archive.org/download/paris_pair_1902.poem_librivox/parispair_brown_tp_64kb.mp3",
               "length_ms": 301000,
+              "readers": [
+                "tomas-peter"
+              ],
               "start_ms": 2313000,
               "title": "Paris Pair, Their Day's Doings - Read by TP"
             }
@@ -5384,7 +5411,11 @@
           "cover_url": "https://archive.org/download/paris_pair_1902.poem_librivox/paris_pair_1902.jpg",
           "id": "bruce-kachuk",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 13725,
+          "librivox_title": "Paris Pair, Their Day's Doings",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/paris-pair-their-days-doings-by-beatrice-bradshaw-brown/",

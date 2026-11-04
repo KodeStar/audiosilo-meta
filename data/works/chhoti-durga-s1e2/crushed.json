@@ -2786,78 +2786,91 @@
             {
               "audio_url": "https://www.archive.org/download/crux_2304_librivox/crux_00_gilman_64kb.mp3",
               "length_ms": 127000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "0. Prefatory materials"
             },
             {
               "audio_url": "https://www.archive.org/download/crux_2304_librivox/crux_01_gilman_64kb.mp3",
               "length_ms": 1460000,
+              "section_number": 1,
               "start_ms": 127000,
               "title": "I. The Back Way"
             },
             {
               "audio_url": "https://www.archive.org/download/crux_2304_librivox/crux_02_gilman_64kb.mp3",
               "length_ms": 1992000,
+              "section_number": 2,
               "start_ms": 1587000,
               "title": "II. Bainville Effects"
             },
             {
               "audio_url": "https://www.archive.org/download/crux_2304_librivox/crux_03_gilman_64kb.mp3",
               "length_ms": 1500000,
+              "section_number": 3,
               "start_ms": 3579000,
               "title": "III. The Outbreak"
             },
             {
               "audio_url": "https://www.archive.org/download/crux_2304_librivox/crux_04_gilman_64kb.mp3",
               "length_ms": 1383000,
+              "section_number": 4,
               "start_ms": 5079000,
               "title": "IV. Transplanted"
             },
             {
               "audio_url": "https://www.archive.org/download/crux_2304_librivox/crux_05_gilman_64kb.mp3",
               "length_ms": 1666000,
+              "section_number": 5,
               "start_ms": 6462000,
               "title": "V. Contrasts"
             },
             {
               "audio_url": "https://www.archive.org/download/crux_2304_librivox/crux_06_gilman_64kb.mp3",
               "length_ms": 1493000,
+              "section_number": 6,
               "start_ms": 8128000,
               "title": "VI. New Friends and Old"
             },
             {
               "audio_url": "https://www.archive.org/download/crux_2304_librivox/crux_07_gilman_64kb.mp3",
               "length_ms": 1694000,
+              "section_number": 7,
               "start_ms": 9621000,
               "title": "VII. Side Lights"
             },
             {
               "audio_url": "https://www.archive.org/download/crux_2304_librivox/crux_08_gilman_64kb.mp3",
               "length_ms": 2091000,
+              "section_number": 8,
               "start_ms": 11315000,
               "title": "VIII. A Mixture"
             },
             {
               "audio_url": "https://www.archive.org/download/crux_2304_librivox/crux_09_gilman_64kb.mp3",
               "length_ms": 1770000,
+              "section_number": 9,
               "start_ms": 13406000,
               "title": "IX. Consequences"
             },
             {
               "audio_url": "https://www.archive.org/download/crux_2304_librivox/crux_10_gilman_64kb.mp3",
               "length_ms": 1840000,
+              "section_number": 10,
               "start_ms": 15176000,
               "title": "X. Determination"
             },
             {
               "audio_url": "https://www.archive.org/download/crux_2304_librivox/crux_11_gilman_64kb.mp3",
               "length_ms": 1835000,
+              "section_number": 11,
               "start_ms": 17016000,
               "title": "XI. Thereafter"
             },
             {
               "audio_url": "https://www.archive.org/download/crux_2304_librivox/crux_12_gilman_64kb.mp3",
               "length_ms": 2005000,
+              "section_number": 12,
               "start_ms": 18851000,
               "title": "XII. Achievements"
             }
@@ -2866,7 +2879,11 @@
           "cover_url": "https://archive.org/download/crux_2304_librivox/crux_2304.jpg",
           "id": "winnifred-assmann",
           "language": "en",
+          "librivox_genres": [
+            "Published 1900 onward"
+          ],
           "librivox_id": 18438,
+          "librivox_title": "Crux",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-crux-by-charlotte-perkins-gilman/",
@@ -4089,9 +4106,21 @@
           ],
           "copyright_year": 1917,
           "cover_url": "https://archive.org/download/lacruzadadelosninos_2411_librivox/cruzadadelosninos_2411.jpg",
+          "credits": [
+            {
+              "person": "rafael-cabrera",
+              "role": "translator"
+            }
+          ],
           "id": "victor-villarraza",
           "language": "es",
+          "librivox_genres": [
+            "Historical Fiction",
+            "Literary Fiction",
+            "Published 1800 -1900"
+          ],
           "librivox_id": 21011,
+          "librivox_title": "cruzada de los niños",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/la-cruzada-de-los-ninos-by-marcel-schwob/",
@@ -4601,7 +4630,11 @@
           "cover_url": "https://archive.org/download/cryatmidnight_2310_librivox/cry_midnight_2311.jpg",
           "id": "amanda-leung",
           "language": "en",
+          "librivox_genres": [
+            "Detective Fiction"
+          ],
           "librivox_id": 19839,
+          "librivox_title": "Cry at Midnight",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-cry-at-midnight-by-mildred-a-wirt-benson/",
@@ -5856,78 +5889,117 @@
             {
               "audio_url": "https://www.archive.org/download/cry_chaos_2208_librivox/crychaos_01_swain_64kb.mp3",
               "length_ms": 660000,
+              "readers": [
+                "april-mendis"
+              ],
               "start_ms": 0,
               "title": "Chapter I"
             },
             {
               "audio_url": "https://www.archive.org/download/cry_chaos_2208_librivox/crychaos_02_swain_64kb.mp3",
               "length_ms": 1050000,
+              "readers": [
+                "april-mendis"
+              ],
               "start_ms": 660000,
               "title": "Chapter II"
             },
             {
               "audio_url": "https://www.archive.org/download/cry_chaos_2208_librivox/crychaos_03_swain_64kb.mp3",
               "length_ms": 1054000,
+              "readers": [
+                "christine-rottger"
+              ],
               "start_ms": 1710000,
               "title": "Chapter III"
             },
             {
               "audio_url": "https://www.archive.org/download/cry_chaos_2208_librivox/crychaos_04_swain_64kb.mp3",
               "length_ms": 1136000,
+              "readers": [
+                "toddhw"
+              ],
               "start_ms": 2764000,
               "title": "Chapter IV"
             },
             {
               "audio_url": "https://www.archive.org/download/cry_chaos_2208_librivox/crychaos_05_swain_64kb.mp3",
               "length_ms": 774000,
+              "readers": [
+                "christian-bilke"
+              ],
               "start_ms": 3900000,
               "title": "Chapter V"
             },
             {
               "audio_url": "https://www.archive.org/download/cry_chaos_2208_librivox/crychaos_06_swain_64kb.mp3",
               "length_ms": 1153000,
+              "readers": [
+                "rssmith121999"
+              ],
               "start_ms": 4674000,
               "title": "Chapter VI"
             },
             {
               "audio_url": "https://www.archive.org/download/cry_chaos_2208_librivox/crychaos_07_swain_64kb.mp3",
               "length_ms": 700000,
+              "readers": [
+                "matthew-gibbons"
+              ],
               "start_ms": 5827000,
               "title": "Chapter VII"
             },
             {
               "audio_url": "https://www.archive.org/download/cry_chaos_2208_librivox/crychaos_08_swain_64kb.mp3",
               "length_ms": 923000,
+              "readers": [
+                "rssmith121999"
+              ],
               "start_ms": 6527000,
               "title": "Chapter VIII"
             },
             {
               "audio_url": "https://www.archive.org/download/cry_chaos_2208_librivox/crychaos_09_swain_64kb.mp3",
               "length_ms": 783000,
+              "readers": [
+                "rssmith121999"
+              ],
               "start_ms": 7450000,
               "title": "Chapter IX"
             },
             {
               "audio_url": "https://www.archive.org/download/cry_chaos_2208_librivox/crychaos_10_swain_64kb.mp3",
               "length_ms": 907000,
+              "readers": [
+                "christine-rottger"
+              ],
               "start_ms": 8233000,
               "title": "Chapter X"
             },
             {
               "audio_url": "https://www.archive.org/download/cry_chaos_2208_librivox/crychaos_11_swain_64kb.mp3",
               "length_ms": 937000,
+              "readers": [
+                "christine-rottger"
+              ],
               "start_ms": 9140000,
               "title": "Chapter XI"
             },
             {
               "audio_url": "https://www.archive.org/download/cry_chaos_2208_librivox/crychaos_12_swain_64kb.mp3",
               "length_ms": 1296000,
+              "readers": [
+                "christine-rottger"
+              ],
               "start_ms": 10077000,
               "title": "Chapter XII"
             },
             {
               "audio_url": "https://www.archive.org/download/cry_chaos_2208_librivox/crychaos_13_swain_64kb.mp3",
               "length_ms": 1031000,
+              "readers": [
+                "christian-bilke"
+              ],
               "start_ms": 11373000,
               "title": "Chapter XIII"
             }
@@ -5936,7 +6008,11 @@
           "cover_url": "https://archive.org/download/cry_chaos_2208_librivox/cry_chaos_2208.jpg",
           "id": "april-mendis",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 16723,
+          "librivox_title": "Cry Chaos!",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/cry-chaos-by-dwight-v-swain/",
@@ -7067,78 +7143,117 @@
             {
               "audio_url": "https://www.archive.org/download/cry_indianwife_1202_librivox/cryfromanindianwife_johnson_cc_64kb.mp3",
               "length_ms": 217000,
+              "readers": [
+                "chris-caron"
+              ],
               "start_ms": 0,
               "title": "A Cry From an Indian Wife - Read by CC"
             },
             {
               "audio_url": "https://www.archive.org/download/cry_indianwife_1202_librivox/cryfromanindianwife_johnson_dl_64kb.mp3",
               "length_ms": 220000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 217000,
               "title": "A Cry From an Indian Wife - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/cry_indianwife_1202_librivox/cryfromanindianwife_johnson_fs_64kb.mp3",
               "length_ms": 263000,
+              "readers": [
+                "fshort"
+              ],
               "start_ms": 437000,
               "title": "A Cry From an Indian Wife - Read by FS"
             },
             {
               "audio_url": "https://www.archive.org/download/cry_indianwife_1202_librivox/cryfromanindianwife_johnson_jcm_64kb.mp3",
               "length_ms": 212000,
+              "readers": [
+                "jason-mills"
+              ],
               "start_ms": 700000,
               "title": "A Cry From an Indian Wife - Read by JCM"
             },
             {
               "audio_url": "https://www.archive.org/download/cry_indianwife_1202_librivox/cryfromanindianwife_johnson_kg_64kb.mp3",
               "length_ms": 224000,
+              "readers": [
+                "kristin-g"
+              ],
               "start_ms": 912000,
               "title": "A Cry From an Indian Wife - Read by KG"
             },
             {
               "audio_url": "https://www.archive.org/download/cry_indianwife_1202_librivox/cryfromanindianwife_johnson_lah_64kb.mp3",
               "length_ms": 224000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 1136000,
               "title": "A Cry From an Indian Wife - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/cry_indianwife_1202_librivox/cryfromanindianwife_johnson_llw_64kb.mp3",
               "length_ms": 276000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 1360000,
               "title": "A Cry From an Indian Wife - Read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/cry_indianwife_1202_librivox/cryfromanindianwife_johnson_lrs_64kb.mp3",
               "length_ms": 296000,
+              "readers": [
+                "liberty-stump"
+              ],
               "start_ms": 1636000,
               "title": "A Cry From an Indian Wife - Read by LRS"
             },
             {
               "audio_url": "https://www.archive.org/download/cry_indianwife_1202_librivox/cryfromanindianwife_johnson_py_64kb.mp3",
               "length_ms": 257000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 1932000,
               "title": "A Cry From an Indian Wife - Read by PY"
             },
             {
               "audio_url": "https://www.archive.org/download/cry_indianwife_1202_librivox/cryfromanindianwife_johnson_ref_64kb.mp3",
               "length_ms": 282000,
+              "readers": [
+                "rhonda-federman"
+              ],
               "start_ms": 2189000,
               "title": "A Cry From an Indian Wife - Read by REF"
             },
             {
               "audio_url": "https://www.archive.org/download/cry_indianwife_1202_librivox/cryfromanindianwife_johnson_rn_64kb.mp3",
               "length_ms": 271000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 2471000,
               "title": "A Cry From an Indian Wife - Read by RN"
             },
             {
               "audio_url": "https://www.archive.org/download/cry_indianwife_1202_librivox/cryfromanindianwife_johnson_tk_64kb.mp3",
               "length_ms": 267000,
+              "readers": [
+                "tasleem-khan"
+              ],
               "start_ms": 2742000,
               "title": "A Cry From an Indian Wife - Read by TK"
             },
             {
               "audio_url": "https://www.archive.org/download/cry_indianwife_1202_librivox/cryfromanindianwife_johnson_ws_64kb.mp3",
               "length_ms": 184000,
+              "readers": [
+                "kevin-chang"
+              ],
               "start_ms": 3009000,
               "title": "A Cry From an Indian Wife - Read by WS"
             }
@@ -7147,7 +7262,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt30/Cry_Indian_Wife_1303.jpg",
           "id": "chris-caron",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 6315,
+          "librivox_title": "Cry From An Indian Wife",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-cry-from-an-indian-wife-by-e-pauline-johnson/",

@@ -1801,18 +1801,35 @@
             {
               "audio_url": "https://www.archive.org/download/alostgod_2207_librivox/lostgod_1_bourdillon_64kb.mp3",
               "length_ms": 1358000,
+              "readers": [
+                "devorah-allen",
+                "mozartjr",
+                "krista-zaleski"
+              ],
               "start_ms": 0,
               "title": "Part 1: The Vision"
             },
             {
               "audio_url": "https://www.archive.org/download/alostgod_2207_librivox/lostgod_2_bourdillon_64kb.mp3",
               "length_ms": 1385000,
+              "readers": [
+                "larry-wilson",
+                "devorah-allen",
+                "mozartjr"
+              ],
               "start_ms": 1358000,
               "title": "Part 2: The Quest"
             },
             {
               "audio_url": "https://www.archive.org/download/alostgod_2207_librivox/lostgod_3_bourdillon_64kb.mp3",
               "length_ms": 1105000,
+              "readers": [
+                "larry-wilson",
+                "devorah-allen",
+                "mozartjr",
+                "kerry-adams",
+                "krista-zaleski"
+              ],
               "start_ms": 2743000,
               "title": "Part 3: Achievement"
             }
@@ -1821,7 +1838,13 @@
           "cover_url": "https://archive.org/download/alostgod_2207_librivox/lostgod_2207.jpg",
           "id": "devorah-allen",
           "language": "en",
+          "librivox_genres": [
+            "Dramatic Readings",
+            "Narratives",
+            "Christian Fiction"
+          ],
           "librivox_id": 18039,
+          "librivox_title": "Lost God",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-lost-god-by-francis-william-bourdillon/",
@@ -5297,7 +5320,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt24/Lost_House_1211.jpg",
           "id": "crln-yldz-ksr",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Crime & Mystery Fiction",
+            "Romance"
+          ],
           "librivox_id": 6971,
+          "librivox_title": "Lost House",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-lost-house-by-richard-harding-davis/",
@@ -5541,9 +5570,19 @@
           ],
           "copyright_year": 1901,
           "cover_url": "https://archive.org/download/distinguished_provincial_1606_librivox/distinguished_provincial_1606.jpg",
+          "credits": [
+            {
+              "person": "ellen-marriage",
+              "role": "translator"
+            }
+          ],
           "id": "bruce-pirie",
           "language": "en",
+          "librivox_genres": [
+            "Literary Fiction"
+          ],
           "librivox_id": 10797,
+          "librivox_title": "Lost Illusions: A Distinguished Provincial at Paris",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/lost-illusions-a-distinguished-provincial-at-paris-by-honore-de-balzac/",
@@ -5721,9 +5760,20 @@
           ],
           "copyright_year": 1901,
           "cover_url": "https://archive.org/download/eveanddavid_1607_librivox/eve_david_1607.jpg",
+          "credits": [
+            {
+              "person": "ellen-marriage",
+              "role": "translator"
+            }
+          ],
           "id": "bruce-pirie",
           "language": "en",
+          "librivox_genres": [
+            "Literary Fiction",
+            "Published 1800 -1900"
+          ],
           "librivox_id": 11011,
+          "librivox_title": "Lost Illusions: Ève and David",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/lost-illusions-eve-and-david-by-honore-de-balzac/",
@@ -5859,9 +5909,19 @@
           ],
           "copyright_year": 1901,
           "cover_url": "https://archive.org/download/twopoets_1604_librivox/two_poets_1604.jpg",
+          "credits": [
+            {
+              "person": "ellen-marriage",
+              "role": "translator"
+            }
+          ],
           "id": "bruce-pirie",
           "language": "en",
+          "librivox_genres": [
+            "Literary Fiction"
+          ],
           "librivox_id": 10694,
+          "librivox_title": "Lost Illusions: Two Poets",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/lost-illusions-two-poets-by-honore-de-balzac/",

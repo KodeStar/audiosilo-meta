@@ -2560,108 +2560,162 @@
             {
               "audio_url": "https://www.archive.org/download/adamerton_2210_librivox/adamerton_01_finn_64kb.mp3",
               "length_ms": 598000,
+              "readers": [
+                "annieg"
+              ],
               "start_ms": 0,
               "title": "Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/adamerton_2210_librivox/adamerton_02_finn_64kb.mp3",
               "length_ms": 920000,
+              "readers": [
+                "annieg"
+              ],
               "start_ms": 598000,
               "title": "Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/adamerton_2210_librivox/adamerton_03_finn_64kb.mp3",
               "length_ms": 633000,
+              "readers": [
+                "annieg"
+              ],
               "start_ms": 1518000,
               "title": "Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/adamerton_2210_librivox/adamerton_04_finn_64kb.mp3",
               "length_ms": 700000,
+              "readers": [
+                "marie-christian"
+              ],
               "start_ms": 2151000,
               "title": "Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/adamerton_2210_librivox/adamerton_05_finn_64kb.mp3",
               "length_ms": 675000,
+              "readers": [
+                "marie-christian"
+              ],
               "start_ms": 2851000,
               "title": "Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/adamerton_2210_librivox/adamerton_06_finn_64kb.mp3",
               "length_ms": 749000,
+              "readers": [
+                "marie-christian"
+              ],
               "start_ms": 3526000,
               "title": "Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/adamerton_2210_librivox/adamerton_07_finn_64kb.mp3",
               "length_ms": 661000,
+              "readers": [
+                "cjem98"
+              ],
               "start_ms": 4275000,
               "title": "Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/adamerton_2210_librivox/adamerton_08_finn_64kb.mp3",
               "length_ms": 838000,
+              "readers": [
+                "cjem98"
+              ],
               "start_ms": 4936000,
               "title": "Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/adamerton_2210_librivox/adamerton_09_finn_64kb.mp3",
               "length_ms": 715000,
+              "readers": [
+                "cjem98"
+              ],
               "start_ms": 5774000,
               "title": "Chapter 9"
             },
             {
               "audio_url": "https://www.archive.org/download/adamerton_2210_librivox/adamerton_10_finn_64kb.mp3",
               "length_ms": 673000,
+              "readers": [
+                "david-k-ewen-m-ed"
+              ],
               "start_ms": 6489000,
               "title": "Chapter 10"
             },
             {
               "audio_url": "https://www.archive.org/download/adamerton_2210_librivox/adamerton_11_finn_64kb.mp3",
               "length_ms": 752000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 7162000,
               "title": "Chapter 11"
             },
             {
               "audio_url": "https://www.archive.org/download/adamerton_2210_librivox/adamerton_12_finn_64kb.mp3",
               "length_ms": 534000,
+              "readers": [
+                "ronell"
+              ],
               "start_ms": 7914000,
               "title": "Chapter 12"
             },
             {
               "audio_url": "https://www.archive.org/download/adamerton_2210_librivox/adamerton_13_finn_64kb.mp3",
               "length_ms": 635000,
+              "readers": [
+                "jake-kotze"
+              ],
               "start_ms": 8448000,
               "title": "Chapter 13"
             },
             {
               "audio_url": "https://www.archive.org/download/adamerton_2210_librivox/adamerton_14_finn_64kb.mp3",
               "length_ms": 883000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 9083000,
               "title": "Chapter 14"
             },
             {
               "audio_url": "https://www.archive.org/download/adamerton_2210_librivox/adamerton_15_finn_64kb.mp3",
               "length_ms": 817000,
+              "readers": [
+                "j2010"
+              ],
               "start_ms": 9966000,
               "title": "Chapter 15"
             },
             {
               "audio_url": "https://www.archive.org/download/adamerton_2210_librivox/adamerton_16_finn_64kb.mp3",
               "length_ms": 412000,
+              "readers": [
+                "david-k-ewen-m-ed"
+              ],
               "start_ms": 10783000,
               "title": "Chapter 16"
             },
             {
               "audio_url": "https://www.archive.org/download/adamerton_2210_librivox/adamerton_17_finn_64kb.mp3",
               "length_ms": 615000,
+              "readers": [
+                "marie-christian"
+              ],
               "start_ms": 11195000,
               "title": "Chapter 17"
             },
             {
               "audio_url": "https://www.archive.org/download/adamerton_2210_librivox/adamerton_18_finn_64kb.mp3",
               "length_ms": 874000,
+              "readers": [
+                "marie-christian"
+              ],
               "start_ms": 11810000,
               "title": "Chapter 18"
             }
@@ -2670,7 +2724,12 @@
           "cover_url": "https://archive.org/download/adamerton_2210_librivox/adamerton_2210.jpg",
           "id": "annieg",
           "language": "en",
+          "librivox_genres": [
+            "Family",
+            "Religion"
+          ],
           "librivox_id": 17878,
+          "librivox_title": "Ada Merton",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/ada-merton-by-francis-j-finn-sj/",
@@ -7795,90 +7854,135 @@
             {
               "audio_url": "https://www.archive.org/download/adamandeve_1111_librivox/adamandeve_milton_amy_64kb.mp3",
               "length_ms": 63000,
+              "readers": [
+                "amy"
+              ],
               "start_ms": 0,
               "title": "Adam And Eve (From Paradise Lost, Fourth Book) - Read by AMY"
             },
             {
               "audio_url": "https://www.archive.org/download/adamandeve_1111_librivox/adamandeve_milton_bwb_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "b-w-baugh"
+              ],
               "start_ms": 63000,
               "title": "Adam And Eve (From Paradise Lost, Fourth Book) - Read by BWB"
             },
             {
               "audio_url": "https://www.archive.org/download/adamandeve_1111_librivox/adamandeve_milton_dl_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 131000,
               "title": "Adam And Eve (From Paradise Lost, Fourth Book) - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/adamandeve_1111_librivox/adamandeve_milton_elli_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "elli"
+              ],
               "start_ms": 196000,
               "title": "Adam And Eve (From Paradise Lost, Fourth Book) - Read by Elli"
             },
             {
               "audio_url": "https://www.archive.org/download/adamandeve_1111_librivox/adamandeve_milton_fs_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "fshort"
+              ],
               "start_ms": 251000,
               "title": "Adam And Eve (From Paradise Lost, Fourth Book) - Read by FS"
             },
             {
               "audio_url": "https://www.archive.org/download/adamandeve_1111_librivox/adamandeve_milton_gc_64kb.mp3",
               "length_ms": 62000,
+              "readers": [
+                "snapdragon"
+              ],
               "start_ms": 324000,
               "title": "Adam And Eve (From Paradise Lost, Fourth Book) - Read by GC"
             },
             {
               "audio_url": "https://www.archive.org/download/adamandeve_1111_librivox/adamandeve_milton_ghs_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 386000,
               "title": "Adam And Eve (From Paradise Lost, Fourth Book) - Read by GHS"
             },
             {
               "audio_url": "https://www.archive.org/download/adamandeve_1111_librivox/adamandeve_milton_jcm_64kb.mp3",
               "length_ms": 62000,
+              "readers": [
+                "jason-mills"
+              ],
               "start_ms": 452000,
               "title": "Adam And Eve (From Paradise Lost, Fourth Book) - Read by JCM"
             },
             {
               "audio_url": "https://www.archive.org/download/adamandeve_1111_librivox/adamandeve_milton_lah_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 514000,
               "title": "Adam And Eve (From Paradise Lost, Fourth Book) - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/adamandeve_1111_librivox/adamandeve_milton_llb_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "lewis"
+              ],
               "start_ms": 584000,
               "title": "Adam And Eve (From Paradise Lost, Fourth Book) - Read by LLB"
             },
             {
               "audio_url": "https://www.archive.org/download/adamandeve_1111_librivox/adamandeve_milton_mg_64kb.mp3",
               "length_ms": 85000,
+              "readers": [
+                "martin-geeson"
+              ],
               "start_ms": 656000,
               "title": "Adam And Eve (From Paradise Lost, Fourth Book) - Read by MG"
             },
             {
               "audio_url": "https://www.archive.org/download/adamandeve_1111_librivox/adamandeve_milton_pab_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "philip-a-burke"
+              ],
               "start_ms": 741000,
               "title": "Adam And Eve (From Paradise Lost, Fourth Book) - Read by PAB"
             },
             {
               "audio_url": "https://www.archive.org/download/adamandeve_1111_librivox/adamandeve_milton_ref_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "rhonda-federman"
+              ],
               "start_ms": 806000,
               "title": "Adam And Eve (From Paradise Lost, Fourth Book) - Read by REF"
             },
             {
               "audio_url": "https://www.archive.org/download/adamandeve_1111_librivox/adamandeve_milton_rn_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 879000,
               "title": "Adam And Eve (From Paradise Lost, Fourth Book) - Read by RN"
             },
             {
               "audio_url": "https://www.archive.org/download/adamandeve_1111_librivox/adamandeve_milton_tg_64kb.mp3",
               "length_ms": 62000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 959000,
               "title": "Adam And Eve (From Paradise Lost, Fourth Book) - Read by TG"
             }
@@ -7887,7 +7991,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt29/Adam_Eve_1303.jpg",
           "id": "amy",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Epics",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 6015,
+          "librivox_title": "Adam and Eve",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/adam-and-eve-by-john-milton/",
@@ -8121,336 +8231,504 @@
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_01_eliot_64kb.mp3",
               "length_ms": 1225000,
+              "readers": [
+                "anita-roy-dobbs"
+              ],
               "start_ms": 0,
               "title": "Book 1, Chapter 1:The Workshop"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_02_eliot_64kb.mp3",
               "length_ms": 2631000,
+              "readers": [
+                "missie"
+              ],
               "start_ms": 1225000,
               "title": "Book 1, Chapter 2: The Preaching"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_03_eliot_64kb.mp3",
               "length_ms": 1128000,
+              "readers": [
+                "lucy-burgoyne-1950-2014"
+              ],
               "start_ms": 3856000,
               "title": "Book 1, Chapter 3: After the Preaching"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_04_eliot_64kb.mp3",
               "length_ms": 1876000,
+              "readers": [
+                "missie"
+              ],
               "start_ms": 4984000,
               "title": "Book 1, Chapter 4: Home and Its Sorrows"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_05_eliot_64kb.mp3",
               "length_ms": 2202000,
+              "readers": [
+                "iremonger"
+              ],
               "start_ms": 6860000,
               "title": "Book 1, Chapter 5: The Rector"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_06_eliot_64kb.mp3",
               "length_ms": 1868000,
+              "readers": [
+                "amycsj"
+              ],
               "start_ms": 9062000,
               "title": "Book 1, Chapter 6: The Hall Farm"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_07_eliot_64kb.mp3",
               "length_ms": 916000,
+              "readers": [
+                "lucy-burgoyne-1950-2014"
+              ],
               "start_ms": 10930000,
               "title": "Book 1, Chapter 7: The Dairy"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_08_eliot_64kb.mp3",
               "length_ms": 1132000,
+              "readers": [
+                "robin-cotter"
+              ],
               "start_ms": 11846000,
               "title": "Book 1, Chapter 8: A Vocation"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_09_eliot_64kb.mp3",
               "length_ms": 873000,
+              "readers": [
+                "carmina-sansone"
+              ],
               "start_ms": 12978000,
               "title": "Book 1, Chapter 9: Hetty's World"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_10_eliot_64kb.mp3",
               "length_ms": 2208000,
+              "readers": [
+                "lucy-burgoyne-1950-2014"
+              ],
               "start_ms": 13851000,
               "title": "Book 1, Chapter 10: Dinah Visits Lisbeth"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_11_eliot_64kb.mp3",
               "length_ms": 1454000,
+              "readers": [
+                "lucy-burgoyne-1950-2014"
+              ],
               "start_ms": 16059000,
               "title": "Book 1, Chapter 11: In the Cottage"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_12_eliot_64kb.mp3",
               "length_ms": 1456000,
+              "readers": [
+                "missie"
+              ],
               "start_ms": 17513000,
               "title": "Book 1, Chapter 12: In the Wood"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_13_eliot_64kb.mp3",
               "length_ms": 696000,
+              "readers": [
+                "carmina-sansone"
+              ],
               "start_ms": 18969000,
               "title": "Book 1, Chapter 13: Evening in the Wood"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_14_eliot_64kb.mp3",
               "length_ms": 1121000,
+              "readers": [
+                "missie"
+              ],
               "start_ms": 19665000,
               "title": "Book 1, Chapter 14: The Return Home"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_15_eliot_64kb.mp3",
               "length_ms": 1740000,
+              "readers": [
+                "carmina-sansone"
+              ],
               "start_ms": 20786000,
               "title": "Book 1, Chapter 15: The Two Bed-Chambers"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_16_eliot_64kb.mp3",
               "length_ms": 1652000,
+              "readers": [
+                "carmina-sansone"
+              ],
               "start_ms": 22526000,
               "title": "Book 1, Chapter 16: Links"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_17_eliot_64kb.mp3",
               "length_ms": 1217000,
+              "readers": [
+                "carmina-sansone"
+              ],
               "start_ms": 24178000,
               "title": "Book 2, Chapter 17: In Which the Story Pauses a Little"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_18_eliot_64kb.mp3",
               "length_ms": 2907000,
+              "readers": [
+                "missie"
+              ],
               "start_ms": 25395000,
               "title": "Book 2, Chapter 18: Church"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_19_eliot_64kb.mp3",
               "length_ms": 885000,
+              "readers": [
+                "missie"
+              ],
               "start_ms": 28302000,
               "title": "Book 2, Chapter 19: Adam on a Working Day"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_20_eliot_64kb.mp3",
               "length_ms": 2204000,
+              "readers": [
+                "missie"
+              ],
               "start_ms": 29187000,
               "title": "Book 2, Chapter 20: Adam Visits the Hall Farm"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_21_eliot_64kb.mp3",
               "length_ms": 2092000,
+              "readers": [
+                "simon-evers"
+              ],
               "start_ms": 31391000,
               "title": "Book 2, Chapter 21: The Night-School and the Schoolmaster"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_22_eliot_64kb.mp3",
               "length_ms": 1496000,
+              "readers": [
+                "tony-ashworth"
+              ],
               "start_ms": 33483000,
               "title": "Book 3, Chapter 22: Going to the Birthday Feast"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_23_eliot_64kb.mp3",
               "length_ms": 644000,
+              "readers": [
+                "angela-kelley"
+              ],
               "start_ms": 34979000,
               "title": "Book 3, Chapter 23: Dinner-Time"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_24_eliot_64kb.mp3",
               "length_ms": 1037000,
+              "readers": [
+                "angela-kelley"
+              ],
               "start_ms": 35623000,
               "title": "Book 3, Chapter 24: The Health-Drinking"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_25_eliot_64kb.mp3",
               "length_ms": 1244000,
+              "readers": [
+                "fr-richard-zeile-of-detroit"
+              ],
               "start_ms": 36660000,
               "title": "Book 3, Chapter 25: The Games"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_26_eliot_64kb.mp3",
               "length_ms": 1658000,
+              "readers": [
+                "fr-richard-zeile-of-detroit"
+              ],
               "start_ms": 37904000,
               "title": "Book 3, Chapter 26: The Dance"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_27_eliot_64kb.mp3",
               "length_ms": 1333000,
+              "readers": [
+                "carmina-sansone"
+              ],
               "start_ms": 39562000,
               "title": "Book 4, Chapter 27: A crisis"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_28_eliot_64kb.mp3",
               "length_ms": 970000,
+              "readers": [
+                "carmina-sansone"
+              ],
               "start_ms": 40895000,
               "title": "Book 4, Chapter 28: A Dilemma"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_29_eliot_64kb.mp3",
               "length_ms": 1109000,
+              "readers": [
+                "annise"
+              ],
               "start_ms": 41865000,
               "title": "Book 4, Chapter 29: The Next Morning"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_30_eliot_64kb.mp3",
               "length_ms": 1605000,
+              "readers": [
+                "lorie-heinrichs"
+              ],
               "start_ms": 42974000,
               "title": "Book 4, Chapter 30: The Delivery of the Letter (Chapter XXX!)"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_31_eliot_64kb.mp3",
               "length_ms": 1205000,
+              "readers": [
+                "lorie-heinrichs"
+              ],
               "start_ms": 44579000,
               "title": "Book 4, Chapter 31: In Hetty's Bed-Chamber"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_32_eliot_64kb.mp3",
               "length_ms": 1385000,
+              "readers": [
+                "catherine-millward"
+              ],
               "start_ms": 45784000,
               "title": "Book 4, Chapter 32: Mrs. Poyser \"Has Her Say Out\""
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_33_eliot_64kb.mp3",
               "length_ms": 915000,
+              "readers": [
+                "belinda-brown"
+              ],
               "start_ms": 47169000,
               "title": "Book 4, Chapter 33: More Links"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_34_eliot_64kb.mp3",
               "length_ms": 571000,
+              "readers": [
+                "carmina-sansone"
+              ],
               "start_ms": 48084000,
               "title": "Book 4, Chapter 34: The Betrothal"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_35_eliot_64kb.mp3",
               "length_ms": 738000,
+              "readers": [
+                "carmina-sansone"
+              ],
               "start_ms": 48655000,
               "title": "Book 4, Chapter 35: The Hidden Dread"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_36_eliot_64kb.mp3",
               "length_ms": 1207000,
+              "readers": [
+                "tony-ashworth"
+              ],
               "start_ms": 49393000,
               "title": "Book 5, Chapter 36: The Journey of Hope"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_37_eliot_64kb.mp3",
               "length_ms": 1870000,
+              "readers": [
+                "jack-farrell"
+              ],
               "start_ms": 50600000,
               "title": "Book 5, Chapter 37: The Journey in Despair"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_38_eliot_64kb.mp3",
               "length_ms": 2119000,
+              "readers": [
+                "jack-farrell"
+              ],
               "start_ms": 52470000,
               "title": "Book 5, Chapter 38: The Quest"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_39_eliot_64kb.mp3",
               "length_ms": 949000,
+              "readers": [
+                "tony-ashworth"
+              ],
               "start_ms": 54589000,
               "title": "Book 5, Chapter 39: The Tidings"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_40_eliot_64kb.mp3",
               "length_ms": 1206000,
+              "readers": [
+                "tony-ashworth"
+              ],
               "start_ms": 55538000,
               "title": "Book 5, Chapter 40: The Bitter Waters Spread"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_41_eliot_64kb.mp3",
               "length_ms": 813000,
+              "readers": [
+                "catherine-millward"
+              ],
               "start_ms": 56744000,
               "title": "Book 5, Chapter 41: The Eve of the Trial"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_42_eliot_64kb.mp3",
               "length_ms": 644000,
+              "readers": [
+                "tony-ashworth"
+              ],
               "start_ms": 57557000,
               "title": "Book 5, Chapter 42: The Morning of the Trial"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_43_eliot_64kb.mp3",
               "length_ms": 1052000,
+              "readers": [
+                "belinda-brown"
+              ],
               "start_ms": 58201000,
               "title": "Book 5, Chapter 43: The Verdict"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_44_eliot_64kb.mp3",
               "length_ms": 1115000,
+              "readers": [
+                "belinda-brown"
+              ],
               "start_ms": 59253000,
               "title": "Book 5, Chapter 44: Arthur's Return"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_45_eliot_64kb.mp3",
               "length_ms": 1654000,
+              "readers": [
+                "catherine-millward"
+              ],
               "start_ms": 60368000,
               "title": "Book 5, Chapter 45: In the Prison"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_46_eliot_64kb.mp3",
               "length_ms": 927000,
+              "readers": [
+                "catherine-millward"
+              ],
               "start_ms": 62022000,
               "title": "Book 5, Chapter 46: The Hours of Suspense"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_47_eliot_64kb.mp3",
               "length_ms": 181000,
+              "readers": [
+                "catherine-millward"
+              ],
               "start_ms": 62949000,
               "title": "Book 5, Chapter 47: The Last Moment"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_48_eliot_64kb.mp3",
               "length_ms": 1430000,
+              "readers": [
+                "catherine-millward"
+              ],
               "start_ms": 63130000,
               "title": "Book 5, Chapter 48: Another Meeting in the Wood"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_49_eliot_64kb.mp3",
               "length_ms": 1610000,
+              "readers": [
+                "lucy-burgoyne-1950-2014"
+              ],
               "start_ms": 64560000,
               "title": "Book 6, Chapter 49: At the Hall Farm"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_50_eliot_64kb.mp3",
               "length_ms": 1453000,
+              "readers": [
+                "janna"
+              ],
               "start_ms": 66170000,
               "title": "Book 6, Chapter 50: In the Cottage"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_51_eliot_64kb.mp3",
               "length_ms": 1595000,
+              "readers": [
+                "janna"
+              ],
               "start_ms": 67623000,
               "title": "Book 6, Chapter 51: Sunday Morning"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_52_eliot_64kb.mp3",
               "length_ms": 1186000,
+              "readers": [
+                "shirley-ellen"
+              ],
               "start_ms": 69218000,
               "title": "Book 6, Chapter 52: Adam and Dinah"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_53_eliot_64kb.mp3",
               "length_ms": 1847000,
+              "readers": [
+                "shirley-ellen"
+              ],
               "start_ms": 70404000,
               "title": "Book 6, Chapter 53: The Harvest Supper"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_54_eliot_64kb.mp3",
               "length_ms": 882000,
+              "readers": [
+                "belinda-brown"
+              ],
               "start_ms": 72251000,
               "title": "Book 6, Chapter 54: The Meeting on the Hill"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_55_eliot_64kb.mp3",
               "length_ms": 422000,
+              "readers": [
+                "belinda-brown"
+              ],
               "start_ms": 73133000,
               "title": "Book 6, Chapter 55: Marriage Bells"
             },
             {
               "audio_url": "https://www.archive.org/download/adam_bede_0901_librivox/adambede_56_eliot_64kb.mp3",
               "length_ms": 493000,
+              "readers": [
+                "aaron-elliott"
+              ],
               "start_ms": 73555000,
               "title": "Epilogue"
             }
@@ -8459,7 +8737,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt15/Adam_Bede_1202.jpg",
           "id": "anita-roy-dobbs",
           "language": "en",
+          "librivox_genres": [
+            "Romance"
+          ],
           "librivox_id": 1288,
+          "librivox_title": "Adam Bede",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/adam-bede-by-george-eliot/",
@@ -9199,7 +9481,12 @@
           "cover_url": "https://archive.org/download/adam_bede_version_2_2009_librivox/adam_bede2_2009.jpg",
           "id": "tom-denholm",
           "language": "en",
+          "librivox_genres": [
+            "Culture & Heritage Fiction",
+            "Romance"
+          ],
           "librivox_id": 15029,
+          "librivox_title": "Adam Bede (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/adam-bede-version-2-by-george-eliot/",

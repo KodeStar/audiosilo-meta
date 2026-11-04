@@ -240,21 +240,49 @@
             {
               "audio_url": "https://www.archive.org/download/alcestis_1303_librivox/alcestis_1_euripides_64kb.mp3",
               "length_ms": 2337000,
+              "readers": [
+                "elizabeth-klett",
+                "mb",
+                "bruce-pirie",
+                "toddhw",
+                "caprishapage",
+                "engineerdst",
+                "bala"
+              ],
               "start_ms": 0,
               "title": "Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/alcestis_1303_librivox/alcestis_2_euripides_64kb.mp3",
               "length_ms": 2273000,
+              "readers": [
+                "elizabeth-klett",
+                "david-lawrence",
+                "arielle-lipshaw",
+                "caprishapage",
+                "lyn-silva",
+                "libby-gohn"
+              ],
               "start_ms": 2337000,
               "title": "Part 2"
             }
           ],
           "copyright_year": 1915,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt30/Alcestis_1303.jpg",
+          "credits": [
+            {
+              "person": "gilbert-murray",
+              "role": "translator"
+            }
+          ],
           "id": "elizabeth-klett",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Tragedy"
+          ],
           "librivox_id": 7227,
+          "librivox_title": "Alcestis",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/alcestis-by-euripides/",
@@ -3431,30 +3459,55 @@
             {
               "audio_url": "https://www.archive.org/download/alchemist_1207_librivox/alchemist_1_jonson_64kb.mp3",
               "length_ms": 1906000,
+              "readers": [
+                "elizabeth-klett",
+                "thomas-leigh-moore",
+                "kevin-johnson"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/alchemist_1207_librivox/alchemist_2_jonson_64kb.mp3",
               "length_ms": 2743000,
+              "readers": [
+                "algy-pug",
+                "kristin-g",
+                "toddhw"
+              ],
               "start_ms": 1906000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/alchemist_1207_librivox/alchemist_3_jonson_64kb.mp3",
               "length_ms": 1830000,
+              "readers": [
+                "arielle-lipshaw",
+                "martin-geeson",
+                "alan-mapstone"
+              ],
               "start_ms": 4649000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/alchemist_1207_librivox/alchemist_4_jonson_64kb.mp3",
               "length_ms": 2839000,
+              "readers": [
+                "david-nicol",
+                "nathanial-w-c-higgins",
+                "charlotte-duckett"
+              ],
               "start_ms": 6479000,
               "title": "Act 4"
             },
             {
               "audio_url": "https://www.archive.org/download/alchemist_1207_librivox/alchemist_5_jonson_64kb.mp3",
               "length_ms": 1885000,
+              "readers": [
+                "triciag",
+                "amy-gramour",
+                "thomas-leigh-moore"
+              ],
               "start_ms": 9318000,
               "title": "Act 5"
             }
@@ -3463,7 +3516,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt21/Alchemist_The_1207.jpg",
           "id": "elizabeth-klett",
           "language": "en",
+          "librivox_genres": [
+            "Satire"
+          ],
           "librivox_id": 6398,
+          "librivox_title": "Alchemist",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-alchemist-by-ben-jonson/",
@@ -9049,9 +9106,21 @@
           ],
           "copyright_year": 1875,
           "cover_url": "https://archive.org/download/alcibiades1_1212_librivox/alcibiades_1303.jpg",
+          "credits": [
+            {
+              "person": "benjamin-jowett",
+              "role": "translator"
+            }
+          ],
           "id": "kevin-johnson",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "*Non-fiction",
+            "Philosophy"
+          ],
           "librivox_id": 7237,
+          "librivox_title": "Alcibiades I",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/alcibiades-i-by-plato/",
@@ -11429,300 +11498,454 @@
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_01_apollinaire_64kb.mp3",
               "length_ms": 862000,
+              "readers": [
+                "malone-1945-2023"
+              ],
               "start_ms": 0,
               "title": "Zone"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_02_apollinaire_64kb.mp3",
               "length_ms": 113000,
+              "readers": [
+                "malone-1945-2023"
+              ],
               "start_ms": 862000,
               "title": "Le Pont Mirabeau"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_03_apollinaire_64kb.mp3",
               "length_ms": 1060000,
+              "readers": [
+                "malone-1945-2023"
+              ],
               "start_ms": 975000,
               "title": "La Chanson du Mal-Aimé"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_04_apollinaire_64kb.mp3",
               "length_ms": 95000,
+              "readers": [
+                "malone-1945-2023"
+              ],
               "start_ms": 2035000,
               "title": "Les Colchiques"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_05_apollinaire_64kb.mp3",
               "length_ms": 160000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 2130000,
               "title": "Palais"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_06_apollinaire_64kb.mp3",
               "length_ms": 37000,
+              "readers": [
+                "malone-1945-2023"
+              ],
               "start_ms": 2290000,
               "title": "Chantre"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_07_apollinaire_64kb.mp3",
               "length_ms": 98000,
+              "readers": [
+                "malone-1945-2023"
+              ],
               "start_ms": 2327000,
               "title": "Crépuscule"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_08_apollinaire_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "malone-1945-2023"
+              ],
               "start_ms": 2425000,
               "title": "Annie"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_09_apollinaire_64kb.mp3",
               "length_ms": 628000,
+              "readers": [
+                "malone-1945-2023"
+              ],
               "start_ms": 2497000,
               "title": "La Maison des morts"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_10_apollinaire_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "malone-1945-2023"
+              ],
               "start_ms": 3125000,
               "title": "Clotilde"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_11_apollinaire_64kb.mp3",
               "length_ms": 356000,
+              "readers": [
+                "malone-1945-2023"
+              ],
               "start_ms": 3192000,
               "title": "Cortège"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_12_apollinaire_64kb.mp3",
               "length_ms": 87000,
+              "readers": [
+                "malone-1945-2023"
+              ],
               "start_ms": 3548000,
               "title": "Marizibill"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_13_apollinaire_64kb.mp3",
               "length_ms": 286000,
+              "readers": [
+                "malone-1945-2023"
+              ],
               "start_ms": 3635000,
               "title": "Le voyageur"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_14_apollinaire_64kb.mp3",
               "length_ms": 112000,
+              "readers": [
+                "malone-1945-2023"
+              ],
               "start_ms": 3921000,
               "title": "Marie"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_15_apollinaire_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "malone-1945-2023"
+              ],
               "start_ms": 4033000,
               "title": "La blanche neige"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_16_apollinaire_64kb.mp3",
               "length_ms": 280000,
+              "readers": [
+                "malone-1945-2023"
+              ],
               "start_ms": 4102000,
               "title": "Poème lu au mariage d'André Salmon"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_17_apollinaire_64kb.mp3",
               "length_ms": 35000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 4382000,
               "title": "L'Adieu"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_18_apollinaire_64kb.mp3",
               "length_ms": 99000,
+              "readers": [
+                "michael-cadilhac"
+              ],
               "start_ms": 4417000,
               "title": "Salomé"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_19_apollinaire_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 4516000,
               "title": "La porte"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_20_apollinaire_64kb.mp3",
               "length_ms": 259000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 4571000,
               "title": "Merlin et la vieille femme"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_21_apollinaire_64kb.mp3",
               "length_ms": 54000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 4830000,
               "title": "Saltimbanques"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_22_apollinaire_64kb.mp3",
               "length_ms": 474000,
+              "readers": [
+                "ezwa",
+                "beniaminomassimo",
+                "sonia",
+                "laurette",
+                "linda-olsen-fitak"
+              ],
               "start_ms": 4884000,
               "title": "Le larron"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_23_apollinaire_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 5358000,
               "title": "Le vent nocturne"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_24_apollinaire_64kb.mp3",
               "length_ms": 133000,
+              "readers": [
+                "simona-rusu"
+              ],
               "start_ms": 5435000,
               "title": "Lul de Faltenin"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_25_apollinaire_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 5568000,
               "title": "La tzigane"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_26_apollinaire_64kb.mp3",
               "length_ms": 425000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 5625000,
               "title": "L'ermite"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_27_apollinaire_64kb.mp3",
               "length_ms": 54000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 6050000,
               "title": "Automne"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_28_apollinaire_64kb.mp3",
               "length_ms": 187000,
+              "readers": [
+                "simona-rusu"
+              ],
               "start_ms": 6104000,
               "title": "L'Émigrant de Landor Road"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_29_apollinaire_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "linda-olsen-fitak"
+              ],
               "start_ms": 6291000,
               "title": "Rosemonde"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_30_apollinaire_64kb.mp3",
               "length_ms": 264000,
+              "readers": [
+                "michael-cadilhac"
+              ],
               "start_ms": 6365000,
               "title": "Le brasier"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_31_apollinaire_64kb.mp3",
               "length_ms": 132000,
+              "readers": [
+                "linda-olsen-fitak"
+              ],
               "start_ms": 6629000,
               "title": "Nuit rhénane"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_32_apollinaire_64kb.mp3",
               "length_ms": 97000,
+              "readers": [
+                "owen-cook"
+              ],
               "start_ms": 6761000,
               "title": "Mai"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_33_apollinaire_64kb.mp3",
               "length_ms": 139000,
+              "readers": [
+                "linda-olsen-fitak"
+              ],
               "start_ms": 6858000,
               "title": "La synagogue"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_34_apollinaire_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "stephanie-librivox-11743"
+              ],
               "start_ms": 6997000,
               "title": "Les cloches"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_35_apollinaire_64kb.mp3",
               "length_ms": 183000,
+              "readers": [
+                "namousette"
+              ],
               "start_ms": 7073000,
               "title": "La Loreley"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_36_apollinaire_64kb.mp3",
               "length_ms": 107000,
+              "readers": [
+                "namousette"
+              ],
               "start_ms": 7256000,
               "title": "Schinderhannes"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_37_apollinaire_64kb.mp3",
               "length_ms": 174000,
+              "readers": [
+                "namousette"
+              ],
               "start_ms": 7363000,
               "title": "Rhénane d'automne"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_38_apollinaire_64kb.mp3",
               "length_ms": 99000,
+              "readers": [
+                "namousette"
+              ],
               "start_ms": 7537000,
               "title": "Les sapins"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_39_apollinaire_64kb.mp3",
               "length_ms": 175000,
+              "readers": [
+                "michael-cadilhac"
+              ],
               "start_ms": 7636000,
               "title": "Les femmes"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_40_apollinaire_64kb.mp3",
               "length_ms": 54000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 7811000,
               "title": "Signe"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_41_apollinaire_64kb.mp3",
               "length_ms": 87000,
+              "readers": [
+                "laurette"
+              ],
               "start_ms": 7865000,
               "title": "Un soir"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_42_apollinaire_64kb.mp3",
               "length_ms": 43000,
+              "readers": [
+                "emma-charlotte"
+              ],
               "start_ms": 7952000,
               "title": "La dame"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_43_apollinaire_64kb.mp3",
               "length_ms": 431000,
+              "readers": [
+                "michael-cadilhac"
+              ],
               "start_ms": 7995000,
               "title": "Les fiançailles"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_44_apollinaire_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 8426000,
               "title": "Clair de lune"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_45_apollinaire_64kb.mp3",
               "length_ms": 118000,
+              "readers": [
+                "linda-olsen-fitak"
+              ],
               "start_ms": 8491000,
               "title": "1909"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_46_apollinaire_64kb.mp3",
               "length_ms": 161000,
+              "readers": [
+                "simona-rusu"
+              ],
               "start_ms": 8609000,
               "title": "A la Santé"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_47_apollinaire_64kb.mp3",
               "length_ms": 87000,
+              "readers": [
+                "emma-charlotte"
+              ],
               "start_ms": 8770000,
               "title": "Automne malade"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_48_apollinaire_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "linda-olsen-fitak"
+              ],
               "start_ms": 8857000,
               "title": "Hôtels"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_49_apollinaire_64kb.mp3",
               "length_ms": 54000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 8927000,
               "title": "Cors de chasse"
             },
             {
               "audio_url": "https://www.archive.org/download/alcools_1712_librivox/alcools_50_apollinaire_64kb.mp3",
               "length_ms": 599000,
+              "readers": [
+                "simona-rusu"
+              ],
               "start_ms": 8981000,
               "title": "Vendémiaire"
             }
@@ -11731,7 +11954,11 @@
           "cover_url": "https://archive.org/download/alcools_1712_librivox/alcools_1712.jpg",
           "id": "malone-1945-2023",
           "language": "fr",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 7727,
+          "librivox_title": "Alcools",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/alcools-by-guillaume-apollinaire/",

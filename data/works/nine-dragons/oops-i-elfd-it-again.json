@@ -996,7 +996,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt24/walcheren_1211.jpg",
           "id": "marcel-coenders",
           "language": "nl",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Travel & Geography"
+          ],
           "librivox_id": 7192,
+          "librivox_title": "Op Walcheren",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/op-walcheren-by-jacobus-craandijk/",
@@ -3817,7 +3822,11 @@
           "cover_url": "https://archive.org/download/opalserpent_1609_librivox/opal_serpent_1609.jpg",
           "id": "richard-kilmer-1942-2022",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 10914,
+          "librivox_title": "Opal Serpent",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-opal-serpent-by-fergus-hume/",
@@ -4101,7 +4110,11 @@
           "cover_url": "https://archive.org/download/opals_2002_librivox/custanceopals_2002.jpg",
           "id": "nemo",
           "language": "en",
+          "librivox_genres": [
+            "Single author"
+          ],
           "librivox_id": 14807,
+          "librivox_title": "Opals",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/opals-by-olive-custance/",
@@ -6731,36 +6744,54 @@
             {
               "audio_url": "https://www.archive.org/download/open_door_0802_librivox/opendoor_1_oliphant_64kb.mp3",
               "length_ms": 1944000,
+              "readers": [
+                "katie-gibboney"
+              ],
               "start_ms": 0,
               "title": "The Open Door, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/open_door_0802_librivox/opendoor_2_oliphant_64kb.mp3",
               "length_ms": 1817000,
+              "readers": [
+                "katie-gibboney"
+              ],
               "start_ms": 1944000,
               "title": "The Open Door, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/open_door_0802_librivox/opendoor_3_oliphant_64kb.mp3",
               "length_ms": 2602000,
+              "readers": [
+                "katie-gibboney"
+              ],
               "start_ms": 3761000,
               "title": "The Open Door, part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/open_door_0802_librivox/opendoor_4_oliphant_64kb.mp3",
               "length_ms": 1805000,
+              "readers": [
+                "redabrus"
+              ],
               "start_ms": 6363000,
               "title": "The Portrait, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/open_door_0802_librivox/opendoor_5_oliphant_64kb.mp3",
               "length_ms": 2509000,
+              "readers": [
+                "redabrus"
+              ],
               "start_ms": 8168000,
               "title": "The Portrait, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/open_door_0802_librivox/opendoor_6_oliphant_64kb.mp3",
               "length_ms": 2082000,
+              "readers": [
+                "redabrus"
+              ],
               "start_ms": 10677000,
               "title": "The Portrait, part 3"
             }
@@ -6769,7 +6800,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt11/Open_Door_Portrait_1111.jpg",
           "id": "katie-gibboney",
           "language": "en",
+          "librivox_genres": [
+            "Horror & Supernatural Fiction",
+            "Detective Fiction"
+          ],
           "librivox_id": 1688,
+          "librivox_title": "Open Door and The Portrait",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-open-door-by-margaret-oliphant/",
@@ -8773,6 +8809,19 @@
             {
               "audio_url": "https://www.archive.org/download/openlibraryvision/openlibraryvision_64kb.mp3",
               "length_ms": 1047000,
+              "readers": [
+                "gord-mackenzie",
+                "kara-shallenberg-1969-2023",
+                "alex-foster",
+                "hugh-mcguire",
+                "kristen-mcquillin",
+                "chris-goringe",
+                "brad-bush",
+                "mark-bradford",
+                "chris-mitchell",
+                "sarahhadley",
+                "edickey"
+              ],
               "start_ms": 0,
               "title": "The Open Library Vision"
             }
@@ -8781,7 +8830,11 @@
           "cover_url": "https://archive.org/download/openlibraryvision/Open_Library_1108.jpg",
           "id": "gord-mackenzie",
           "language": "en",
+          "librivox_genres": [
+            "Essays & Short Works"
+          ],
           "librivox_id": 358,
+          "librivox_title": "Open Library",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-open-library-by-brewster-kahle/",

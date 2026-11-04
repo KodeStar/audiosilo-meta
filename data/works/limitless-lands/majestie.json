@@ -1446,7 +1446,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt/majoor_frans_1002.jpg",
           "id": "anna-simon",
           "language": "nl",
+          "librivox_genres": [
+            "Literary Fiction"
+          ],
           "librivox_id": 1297,
+          "librivox_title": "Majoor Frans",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/majoor-frans/",
@@ -2092,18 +2096,40 @@
             {
               "audio_url": "https://www.archive.org/download/major_barbara_1204_librivox/majorbarbara_1_shaw_64kb.mp3",
               "length_ms": 2824000,
+              "readers": [
+                "mb",
+                "david-lawrence",
+                "bruce-pirie",
+                "margaret-espaillat",
+                "algy-pug",
+                "toddhw",
+                "grace",
+                "chris-marcellus",
+                "chuck-williamson",
+                "jtesch",
+                "ken-garrett"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/major_barbara_1204_librivox/majorbarbara_2_shaw_64kb.mp3",
               "length_ms": 4386000,
+              "readers": [
+                "elizabeth-klett",
+                "amy-gramour",
+                "toddhw"
+              ],
               "start_ms": 2824000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/major_barbara_1204_librivox/majorbarbara_3_shaw_64kb.mp3",
               "length_ms": 4471000,
+              "readers": [
+                "elizabeth-klett",
+                "arielle-lipshaw"
+              ],
               "start_ms": 7210000,
               "title": "Act 3"
             }
@@ -2112,7 +2138,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt30/major_barbara_1303.jpg",
           "id": "mb",
           "language": "en",
+          "librivox_genres": [
+            "Comedy"
+          ],
           "librivox_id": 6348,
+          "librivox_title": "Major Barbara",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/major-barbara-by-george-bernard-shaw/",
@@ -3757,96 +3787,112 @@
             {
               "audio_url": "https://www.archive.org/download/majorsymptomshysteria_2004_librivox/majorsymptomsofhysteria_00_janet_64kb.mp3",
               "length_ms": 106000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Prefatory note"
             },
             {
               "audio_url": "https://www.archive.org/download/majorsymptomshysteria_2004_librivox/majorsymptomsofhysteria_01_janet_64kb.mp3",
               "length_ms": 1953000,
+              "section_number": 1,
               "start_ms": 106000,
               "title": "Lecture 1: The Problem of Hysteria"
             },
             {
               "audio_url": "https://www.archive.org/download/majorsymptomshysteria_2004_librivox/majorsymptomsofhysteria_02_janet_64kb.mp3",
               "length_ms": 1946000,
+              "section_number": 2,
               "start_ms": 2059000,
               "title": "Lecture 2: Monoideic Somnambulisms"
             },
             {
               "audio_url": "https://www.archive.org/download/majorsymptomshysteria_2004_librivox/majorsymptomsofhysteria_03_janet_64kb.mp3",
               "length_ms": 2021000,
+              "section_number": 3,
               "start_ms": 4005000,
               "title": "Lecture 3: Fugues and Polyideic Somnambulisms"
             },
             {
               "audio_url": "https://www.archive.org/download/majorsymptomshysteria_2004_librivox/majorsymptomsofhysteria_04_janet_64kb.mp3",
               "length_ms": 2155000,
+              "section_number": 4,
               "start_ms": 6026000,
               "title": "Lecture 4: Double Personalities"
             },
             {
               "audio_url": "https://www.archive.org/download/majorsymptomshysteria_2004_librivox/majorsymptomsofhysteria_05_janet_64kb.mp3",
               "length_ms": 2094000,
+              "section_number": 5,
               "start_ms": 8181000,
               "title": "Lecture 5: Convulsive Attacks, Fits of Sleep, Artificial Somnambulisms"
             },
             {
               "audio_url": "https://www.archive.org/download/majorsymptomshysteria_2004_librivox/majorsymptomsofhysteria_06_janet_64kb.mp3",
               "length_ms": 1839000,
+              "section_number": 6,
               "start_ms": 10275000,
               "title": "Lecture 6: Motor Agitations - Contractures"
             },
             {
               "audio_url": "https://www.archive.org/download/majorsymptomshysteria_2004_librivox/majorsymptomsofhysteria_07_janet_64kb.mp3",
               "length_ms": 1822000,
+              "section_number": 7,
               "start_ms": 12114000,
               "title": "Lecture 7: Paralyses - Diagnosis"
             },
             {
               "audio_url": "https://www.archive.org/download/majorsymptomshysteria_2004_librivox/majorsymptomsofhysteria_08_janet_64kb.mp3",
               "length_ms": 2090000,
+              "section_number": 8,
               "start_ms": 13936000,
               "title": "Lecture 8: The Psychological Conception of Paralyses and Anesthesias"
             },
             {
               "audio_url": "https://www.archive.org/download/majorsymptomshysteria_2004_librivox/majorsymptomsofhysteria_09_janet_64kb.mp3",
               "length_ms": 2098000,
+              "section_number": 9,
               "start_ms": 16026000,
               "title": "Lecture 9: The Troubles of Vision"
             },
             {
               "audio_url": "https://www.archive.org/download/majorsymptomshysteria_2004_librivox/majorsymptomsofhysteria_10_janet_64kb.mp3",
               "length_ms": 1702000,
+              "section_number": 10,
               "start_ms": 18124000,
               "title": "Lecture 10: The Troubles of Speech"
             },
             {
               "audio_url": "https://www.archive.org/download/majorsymptomshysteria_2004_librivox/majorsymptomsofhysteria_11_janet_64kb.mp3",
               "length_ms": 1668000,
+              "section_number": 11,
               "start_ms": 19826000,
               "title": "Lecture 11: The Disturbances of Alimentation"
             },
             {
               "audio_url": "https://www.archive.org/download/majorsymptomshysteria_2004_librivox/majorsymptomsofhysteria_12_janet_64kb.mp3",
               "length_ms": 2011000,
+              "section_number": 12,
               "start_ms": 21494000,
               "title": "Lecture 12: The Tics of Respiration and Alimentation"
             },
             {
               "audio_url": "https://www.archive.org/download/majorsymptomshysteria_2004_librivox/majorsymptomsofhysteria_13_janet_64kb.mp3",
               "length_ms": 2084000,
+              "section_number": 13,
               "start_ms": 23505000,
               "title": "Lecture 13: The Hysterical Stigmata - Suggestibility"
             },
             {
               "audio_url": "https://www.archive.org/download/majorsymptomshysteria_2004_librivox/majorsymptomsofhysteria_14_janet_64kb.mp3",
               "length_ms": 1975000,
+              "section_number": 14,
               "start_ms": 25589000,
               "title": "Lecture 14: The Hysterical Stigmata - the Retraction of the Field of Consciousness - the Common Stigmata"
             },
             {
               "audio_url": "https://www.archive.org/download/majorsymptomshysteria_2004_librivox/majorsymptomsofhysteria_15_janet_64kb.mp3",
               "length_ms": 1927000,
+              "section_number": 15,
               "start_ms": 27564000,
               "title": "Lecture 15: General Definitions"
             }
@@ -3855,7 +3901,11 @@
           "cover_url": "https://archive.org/download/majorsymptomshysteria_2004_librivox/major_symptoms_hysteria_2004.jpg",
           "id": "peter-tucker",
           "language": "en",
+          "librivox_genres": [
+            "Psychology"
+          ],
           "librivox_id": 14491,
+          "librivox_title": "Major Symptoms of Hysteria",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-major-symptoms-of-hysteria-by-pierre-janet/",
@@ -7003,7 +7053,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt24/Make-Believe_Man_1211.jpg",
           "id": "crln-yldz-ksr",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Humorous Fiction",
+            "Romance"
+          ],
           "librivox_id": 6780,
+          "librivox_title": "Make-Believe Man",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-make-believe-man-by-richard-harding-davis/",

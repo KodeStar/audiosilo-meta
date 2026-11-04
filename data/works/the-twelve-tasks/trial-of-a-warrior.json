@@ -422,7 +422,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt29/Trial_of_Callista_Blake_1302.jpg",
           "id": "roger-melin",
           "language": "en",
+          "librivox_genres": [
+            "Crime & Mystery Fiction",
+            "Published 1900 onward"
+          ],
           "librivox_id": 6755,
+          "librivox_title": "Trial of Callista Blake",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-trial-of-callista-blake-by-edgar-pangborn/",
@@ -2612,48 +2617,128 @@
             {
               "audio_url": "https://www.archive.org/download/trialofoscarwilde_1601_librivox/trialofoscarwilde_00_anon_64kb.mp3",
               "length_ms": 108000,
+              "readers": [
+                "rob-marland"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Dramatis personae"
             },
             {
               "audio_url": "https://www.archive.org/download/trialofoscarwilde_1601_librivox/trialofoscarwilde_01_anon_64kb.mp3",
               "length_ms": 1462000,
+              "readers": [
+                "rob-marland",
+                "edward-kirkby",
+                "david-bushhouse"
+              ],
+              "section_number": 1,
               "start_ms": 108000,
               "title": "Section 1"
             },
             {
               "audio_url": "https://www.archive.org/download/trialofoscarwilde_1601_librivox/trialofoscarwilde_02_anon_64kb.mp3",
               "length_ms": 3142000,
+              "readers": [
+                "herman-roskams",
+                "kristin-g",
+                "mark-chulsky",
+                "rob-marland",
+                "edward-kirkby",
+                "richard-shipp",
+                "hannoria",
+                "david-bushhouse",
+                "apneia"
+              ],
+              "section_number": 2,
               "start_ms": 1570000,
               "title": "Section 2"
             },
             {
               "audio_url": "https://www.archive.org/download/trialofoscarwilde_1601_librivox/trialofoscarwilde_03_anon_64kb.mp3",
               "length_ms": 2824000,
+              "readers": [
+                "ted-delorme",
+                "beth-thomas-1974-2020",
+                "kristin-g",
+                "eden-rea-hedrick",
+                "oxenhandler",
+                "rob-marland",
+                "michele-fry",
+                "edward-kirkby",
+                "jessie-yun",
+                "cathar-maiden",
+                "rotgold"
+              ],
+              "section_number": 3,
               "start_ms": 4712000,
               "title": "Section 3"
             },
             {
               "audio_url": "https://www.archive.org/download/trialofoscarwilde_1601_librivox/trialofoscarwilde_04_anon_64kb.mp3",
               "length_ms": 946000,
+              "readers": [
+                "ted-delorme",
+                "anna-simon",
+                "beth-thomas-1974-2020",
+                "kristin-g",
+                "eden-rea-hedrick",
+                "rob-marland",
+                "michele-fry",
+                "edward-kirkby",
+                "richard-shipp",
+                "newgatenovelist"
+              ],
+              "section_number": 4,
               "start_ms": 7536000,
               "title": "Section 4"
             },
             {
               "audio_url": "https://www.archive.org/download/trialofoscarwilde_1601_librivox/trialofoscarwilde_05_anon_64kb.mp3",
               "length_ms": 2509000,
+              "readers": [
+                "ted-delorme",
+                "david-olson",
+                "beth-thomas-1974-2020",
+                "kristin-g",
+                "rob-marland",
+                "michele-fry",
+                "edward-kirkby",
+                "richard-shipp",
+                "joseph-tabler"
+              ],
+              "section_number": 5,
               "start_ms": 8482000,
               "title": "Section 5"
             },
             {
               "audio_url": "https://www.archive.org/download/trialofoscarwilde_1601_librivox/trialofoscarwilde_06_anon_64kb.mp3",
               "length_ms": 608000,
+              "readers": [
+                "ted-delorme",
+                "elizabeth-klett",
+                "rob-marland",
+                "michele-fry",
+                "richard-shipp"
+              ],
+              "section_number": 6,
               "start_ms": 10991000,
               "title": "Section 6"
             },
             {
               "audio_url": "https://www.archive.org/download/trialofoscarwilde_1601_librivox/trialofoscarwilde_07_anon_64kb.mp3",
               "length_ms": 1157000,
+              "readers": [
+                "elizabeth-klett",
+                "david-olson",
+                "kristin-g",
+                "rob-marland",
+                "edward-kirkby",
+                "newgatenovelist",
+                "zames-curran",
+                "cathar-maiden"
+              ],
+              "section_number": 7,
               "start_ms": 11599000,
               "title": "Section 7"
             }
@@ -2662,7 +2747,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt13/trialofoscarwilde_1601.jpg",
           "id": "rob-marland",
           "language": "en",
+          "librivox_genres": [
+            "Dramatic Readings",
+            "Law"
+          ],
           "librivox_id": 9717,
+          "librivox_title": "Trial of Oscar Wilde (Dramatic Reading)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-trial-of-oscar-wilde-dramatic-reading-by-anonymous/",
@@ -3264,7 +3354,11 @@
           "cover_url": "https://archive.org/download/trial_susan_b_anthony_mk_1407_librivox/trial_of_susan_b_anthony_1407.jpg",
           "id": "maria-kasper",
           "language": "en",
+          "librivox_genres": [
+            "Modern (19th C)"
+          ],
           "librivox_id": 8930,
+          "librivox_title": "Trial of Susan B. Anthony",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/trial-of-susan-b-anthony-by-anonymous/",
@@ -3883,276 +3977,460 @@
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_00_imt_64kb.mp3",
               "length_ms": 245000,
+              "readers": [
+                "availle"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Trial Title, Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_01_imt_64kb.mp3",
               "length_ms": 720000,
+              "readers": [
+                "availle"
+              ],
+              "section_number": 1,
               "start_ms": 245000,
               "title": "Members and alternate members of the Tribunal - Officials of the General Secretariat - Prosecution Counsel - Defendants and Defense Counsel"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_02_imt_64kb.mp3",
               "length_ms": 1504000,
+              "readers": [
+                "edmund-bloxam"
+              ],
+              "section_number": 2,
               "start_ms": 965000,
               "title": "Establishment of the Tribunal"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_03_imt_64kb.mp3",
               "length_ms": 1331000,
+              "readers": [
+                "maria-kasper"
+              ],
+              "section_number": 3,
               "start_ms": 2469000,
               "title": "Rules of Procedure - Minutes of the opening session of the Tribunal"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_04_imt_64kb.mp3",
               "length_ms": 1629000,
+              "readers": [
+                "maria-kasper"
+              ],
+              "section_number": 4,
               "start_ms": 3800000,
               "title": "Indictment, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_05_imt_64kb.mp3",
               "length_ms": 1460000,
+              "readers": [
+                "vfkabt"
+              ],
+              "section_number": 5,
               "start_ms": 5429000,
               "title": "Indictment, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_06_imt_64kb.mp3",
               "length_ms": 2082000,
+              "readers": [
+                "vfkabt"
+              ],
+              "section_number": 6,
               "start_ms": 6889000,
               "title": "Indictment, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_07_imt_64kb.mp3",
               "length_ms": 1963000,
+              "readers": [
+                "vfkabt"
+              ],
+              "section_number": 7,
               "start_ms": 8971000,
               "title": "Indictment, Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_08_imt_64kb.mp3",
               "length_ms": 942000,
+              "readers": [
+                "maria-kasper"
+              ],
+              "section_number": 8,
               "start_ms": 10934000,
               "title": "Indictment, Part 5"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_09_imt_64kb.mp3",
               "length_ms": 556000,
+              "readers": [
+                "maria-kasper"
+              ],
+              "section_number": 9,
               "start_ms": 11876000,
               "title": "Indictment, Part 6"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_10_imt_64kb.mp3",
               "length_ms": 2017000,
+              "readers": [
+                "maria-kasper"
+              ],
+              "section_number": 10,
               "start_ms": 12432000,
               "title": "Indictment, Part 7"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_11_imt_64kb.mp3",
               "length_ms": 1808000,
+              "readers": [
+                "kalynda"
+              ],
+              "section_number": 11,
               "start_ms": 14449000,
               "title": "Indictment, Part 8"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_12_imt_64kb.mp3",
               "length_ms": 366000,
+              "readers": [
+                "greg-giordano"
+              ],
+              "section_number": 12,
               "start_ms": 16257000,
               "title": "Indictment, Part 9"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_13_imt_64kb.mp3",
               "length_ms": 974000,
+              "readers": [
+                "availle"
+              ],
+              "section_number": 13,
               "start_ms": 16623000,
               "title": "Notice"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_14_imt_64kb.mp3",
               "length_ms": 1561000,
+              "readers": [
+                "availle"
+              ],
+              "section_number": 14,
               "start_ms": 17597000,
               "title": "Service, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_15_imt_64kb.mp3",
               "length_ms": 1178000,
+              "readers": [
+                "availle"
+              ],
+              "section_number": 15,
               "start_ms": 19158000,
               "title": "Service, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_16_imt_64kb.mp3",
               "length_ms": 1556000,
+              "readers": [
+                "pamela-nagami"
+              ],
+              "section_number": 16,
               "start_ms": 20336000,
               "title": "Motion on Behalf of Defendant Gustav Krupp von Bohlen, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_17_imt_64kb.mp3",
               "length_ms": 1721000,
+              "readers": [
+                "edmund-bloxam"
+              ],
+              "section_number": 17,
               "start_ms": 21892000,
               "title": "Motion on Behalf of Defendant Gustav Krupp von Bohlen, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_18_imt_64kb.mp3",
               "length_ms": 823000,
+              "readers": [
+                "greg-giordano"
+              ],
+              "section_number": 18,
               "start_ms": 23613000,
               "title": "Motion on Behalf of Defendant Streicher"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_19_imt_64kb.mp3",
               "length_ms": 1553000,
+              "readers": [
+                "edmund-bloxam"
+              ],
+              "section_number": 19,
               "start_ms": 24436000,
               "title": "Medical Examination of Defendent Hess"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_20_imt_64kb.mp3",
               "length_ms": 515000,
+              "readers": [
+                "greg-giordano"
+              ],
+              "section_number": 20,
               "start_ms": 25989000,
               "title": "Motion Adopted by All Defense Counsel"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_21_imt_64kb.mp3",
               "length_ms": 1372000,
+              "readers": [
+                "realisticspeakers"
+              ],
+              "section_number": 21,
               "start_ms": 26504000,
               "title": "Judgment, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_22_imt_64kb.mp3",
               "length_ms": 1455000,
+              "readers": [
+                "realisticspeakers"
+              ],
+              "section_number": 22,
               "start_ms": 27876000,
               "title": "Judgment, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_23_imt_64kb.mp3",
               "length_ms": 1611000,
+              "readers": [
+                "availle"
+              ],
+              "section_number": 23,
               "start_ms": 29331000,
               "title": "Judgment, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_24_imt_64kb.mp3",
               "length_ms": 1757000,
+              "readers": [
+                "maryann"
+              ],
+              "section_number": 24,
               "start_ms": 30942000,
               "title": "Judgment, Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_25_imt_64kb.mp3",
               "length_ms": 1502000,
+              "readers": [
+                "maryann"
+              ],
+              "section_number": 25,
               "start_ms": 32699000,
               "title": "Judgment, Part 5"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_26_imt_64kb.mp3",
               "length_ms": 1023000,
+              "readers": [
+                "ann-boulais"
+              ],
+              "section_number": 26,
               "start_ms": 34201000,
               "title": "Judgment, Part 6"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_27_imt_64kb.mp3",
               "length_ms": 1639000,
+              "readers": [
+                "morganscorpion"
+              ],
+              "section_number": 27,
               "start_ms": 35224000,
               "title": "Judgment, Part 7"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_28_imt_64kb.mp3",
               "length_ms": 1197000,
+              "readers": [
+                "vfkabt"
+              ],
+              "section_number": 28,
               "start_ms": 36863000,
               "title": "Judgment, Part 8"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_29_imt_64kb.mp3",
               "length_ms": 1912000,
+              "readers": [
+                "jill-engle"
+              ],
+              "section_number": 29,
               "start_ms": 38060000,
               "title": "Judgment, Part 9"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_30_imt_64kb.mp3",
               "length_ms": 2053000,
+              "readers": [
+                "maryann"
+              ],
+              "section_number": 30,
               "start_ms": 39972000,
               "title": "Judgment, Part 10"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_31_imt_64kb.mp3",
               "length_ms": 1218000,
+              "readers": [
+                "maryann"
+              ],
+              "section_number": 31,
               "start_ms": 42025000,
               "title": "Judgment, Part 11"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_32_imt_64kb.mp3",
               "length_ms": 1146000,
+              "readers": [
+                "maryann"
+              ],
+              "section_number": 32,
               "start_ms": 43243000,
               "title": "Judgment, Part 12"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_33_imt_64kb.mp3",
               "length_ms": 1311000,
+              "readers": [
+                "maryann"
+              ],
+              "section_number": 33,
               "start_ms": 44389000,
               "title": "Judgment, Part 13"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_34_imt_64kb.mp3",
               "length_ms": 1242000,
+              "readers": [
+                "sharon-handy"
+              ],
+              "section_number": 34,
               "start_ms": 45700000,
               "title": "Judgment, Part 14"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_35_imt_64kb.mp3",
               "length_ms": 1773000,
+              "readers": [
+                "greg-giordano"
+              ],
+              "section_number": 35,
               "start_ms": 46942000,
               "title": "Judgment, Part 15"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_36_imt_64kb.mp3",
               "length_ms": 1346000,
+              "readers": [
+                "sharon-handy"
+              ],
+              "section_number": 36,
               "start_ms": 48715000,
               "title": "Judgment, Part 16"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_37_imt_64kb.mp3",
               "length_ms": 1623000,
+              "readers": [
+                "greg-giordano"
+              ],
+              "section_number": 37,
               "start_ms": 50061000,
               "title": "Judgment, Part 17"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_38_imt_64kb.mp3",
               "length_ms": 1649000,
+              "readers": [
+                "maria-kasper"
+              ],
+              "section_number": 38,
               "start_ms": 51684000,
               "title": "Judgment, Part 18"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_39_imt_64kb.mp3",
               "length_ms": 1395000,
+              "readers": [
+                "maria-kasper"
+              ],
+              "section_number": 39,
               "start_ms": 53333000,
               "title": "Judgment, Part 19"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_40_imt_64kb.mp3",
               "length_ms": 1646000,
+              "readers": [
+                "maria-kasper"
+              ],
+              "section_number": 40,
               "start_ms": 54728000,
               "title": "Judgment, Part 20"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_41_imt_64kb.mp3",
               "length_ms": 1172000,
+              "readers": [
+                "ann-boulais"
+              ],
+              "section_number": 41,
               "start_ms": 56374000,
               "title": "Judgment, Part 21"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_42_imt_64kb.mp3",
               "length_ms": 981000,
+              "readers": [
+                "ann-boulais"
+              ],
+              "section_number": 42,
               "start_ms": 57546000,
               "title": "Judgment, Part 22"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_43_imt_64kb.mp3",
               "length_ms": 2440000,
+              "readers": [
+                "ann-boulais"
+              ],
+              "section_number": 43,
               "start_ms": 58527000,
               "title": "Dissenting Opinion, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_44_imt_64kb.mp3",
               "length_ms": 2139000,
+              "readers": [
+                "ann-boulais"
+              ],
+              "section_number": 44,
               "start_ms": 60967000,
               "title": "Dissenting Opinion, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/nurembergtrial1_1607_librivox/nurembergtrial_45_imt_64kb.mp3",
               "length_ms": 482000,
+              "readers": [
+                "ann-boulais"
+              ],
+              "section_number": 45,
               "start_ms": 63106000,
               "title": "Sentences"
             }
@@ -4161,7 +4439,14 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt13/trial_nuremberg_1607.jpg",
           "id": "availle",
           "language": "en",
+          "librivox_genres": [
+            "War & Military",
+            "Law",
+            "True Crime",
+            "Modern (20th C)"
+          ],
           "librivox_id": 7006,
+          "librivox_title": "Trial of the Major War Criminals Before the International Military Tribunal, Nuremberg, 14 November 1945-1 October 1946: Vol. I",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/nuremberg-trial-vol-i-by-international-military-tribunal/",
@@ -7452,7 +7737,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt/Trials_and_Confessions_of_a_Housekeeper.jpg",
           "id": "nathalie-j",
           "language": "en",
+          "librivox_genres": [
+            "Family Life",
+            "General Fiction"
+          ],
           "librivox_id": 1904,
+          "librivox_title": "Trials and Confessions of a Housekeeper",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/trials-and-confessions-of-a-housekeeper-by-t-s-arthur/",

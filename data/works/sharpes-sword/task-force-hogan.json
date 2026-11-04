@@ -468,7 +468,11 @@
           "cover_url": "https://archive.org/download/taskerjevons_1602_librivox/Tasker_Jevons_1602.jpg",
           "id": "expatriate",
           "language": "en",
+          "librivox_genres": [
+            "Literary Fiction"
+          ],
           "librivox_id": 10570,
+          "librivox_title": "Tasker Jevons:  The Real Story",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/tasker-jevons-the-real-story-by-may-sinclair/",
@@ -5152,48 +5156,72 @@
             {
               "audio_url": "https://www.archive.org/download/new_mexico_kitchens_2204_librivox/newmexicokitchens_01_anonymous_64kb.mp3",
               "length_ms": 114000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/new_mexico_kitchens_2204_librivox/newmexicokitchens_02_anonymous_64kb.mp3",
               "length_ms": 1126000,
+              "readers": [
+                "mleigh"
+              ],
               "start_ms": 114000,
               "title": "Main Courses Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/new_mexico_kitchens_2204_librivox/newmexicokitchens_03_anonymous_64kb.mp3",
               "length_ms": 514000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 1240000,
               "title": "Main Courses Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/new_mexico_kitchens_2204_librivox/newmexicokitchens_04_anonymous_64kb.mp3",
               "length_ms": 704000,
+              "readers": [
+                "jenn-broda"
+              ],
               "start_ms": 1754000,
               "title": "Chile"
             },
             {
               "audio_url": "https://www.archive.org/download/new_mexico_kitchens_2204_librivox/newmexicokitchens_05_anonymous_64kb.mp3",
               "length_ms": 388000,
+              "readers": [
+                "kerry-adams"
+              ],
               "start_ms": 2458000,
               "title": "Favorite Foods"
             },
             {
               "audio_url": "https://www.archive.org/download/new_mexico_kitchens_2204_librivox/newmexicokitchens_06_anonymous_64kb.mp3",
               "length_ms": 465000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 2846000,
               "title": "Breads"
             },
             {
               "audio_url": "https://www.archive.org/download/new_mexico_kitchens_2204_librivox/newmexicokitchens_07_anonymous_64kb.mp3",
               "length_ms": 468000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 3311000,
               "title": "Desserts"
             },
             {
               "audio_url": "https://www.archive.org/download/new_mexico_kitchens_2204_librivox/newmexicokitchens_08_anonymous_64kb.mp3",
               "length_ms": 187000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 3779000,
               "title": "Drinks & Glossary"
             }
@@ -5202,7 +5230,11 @@
           "cover_url": "https://archive.org/download/new_mexico_kitchens_2204_librivox/taste_new_mexico_kitchens_anon_2204.jpg",
           "id": "larry-wilson",
           "language": "en",
+          "librivox_genres": [
+            "Cooking"
+          ],
           "librivox_id": 17677,
+          "librivox_title": "Taste of New Mexico Kitchens",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-taste-of-new-mexico-kitchens-by-anonymous/",
@@ -9668,9 +9700,20 @@
           ],
           "copyright_year": 1910,
           "cover_url": "https://archive.org/download/taten_des_grossen_alexander_2205_librivox/tatendesgrossenalexander_kusmin_2205.jpg",
+          "credits": [
+            {
+              "person": "ludwig-rubiner",
+              "role": "translator"
+            }
+          ],
           "id": "friedrich",
           "language": "de",
+          "librivox_genres": [
+            "Fictional Biographies & Memoirs",
+            "Historical Fiction"
+          ],
           "librivox_id": 17932,
+          "librivox_title": "Taten des Großen Alexander",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/taten-des-grossen-alexander-by-michail-alexejewitsch-kusmin/",

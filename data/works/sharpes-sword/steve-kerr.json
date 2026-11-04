@@ -2715,39 +2715,82 @@
             {
               "audio_url": "https://www.archive.org/download/stichus_2112_librivox/stichus_1_plautus_64kb.mp3",
               "length_ms": 1025000,
+              "readers": [
+                "toddhw",
+                "larry-wilson",
+                "jenn-broda",
+                "nissy"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/stichus_2112_librivox/stichus_2_plautus_64kb.mp3",
               "length_ms": 1418000,
+              "readers": [
+                "greg-giordano",
+                "larry-wilson",
+                "sonia",
+                "jenn-broda",
+                "ethan-hurst"
+              ],
               "start_ms": 1025000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/stichus_2112_librivox/stichus_3_plautus_64kb.mp3",
               "length_ms": 564000,
+              "readers": [
+                "alan-mapstone",
+                "greg-giordano",
+                "larry-wilson",
+                "jim-locke"
+              ],
               "start_ms": 2443000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/stichus_2112_librivox/stichus_4_plautus_64kb.mp3",
               "length_ms": 1084000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "greg-giordano",
+                "larry-wilson",
+                "jim-locke"
+              ],
               "start_ms": 3007000,
               "title": "Act 4"
             },
             {
               "audio_url": "https://www.archive.org/download/stichus_2112_librivox/stichus_5_plautus_64kb.mp3",
               "length_ms": 1010000,
+              "readers": [
+                "alan-mapstone",
+                "larry-wilson",
+                "julie-burks",
+                "wendykatzhiller"
+              ],
               "start_ms": 4091000,
               "title": "Act 5"
             }
           ],
           "copyright_year": 1894,
           "cover_url": "https://archive.org/download/stichus_2112_librivox/stichus_2112.jpg",
+          "credits": [
+            {
+              "person": "henry-thomas-riley",
+              "role": "translator"
+            }
+          ],
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Comedy"
+          ],
           "librivox_id": 16905,
+          "librivox_title": "Stichus; or, The Parasite Rebuffed",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/stichus-or-the-parasite-rebuffed-by-titus-maccius-plautus/",
@@ -5947,7 +5990,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt14/Stickeen_1201.jpg",
           "id": "sue-anderson",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Animals"
+          ],
           "librivox_id": 2508,
+          "librivox_title": "Stickeen",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/stickeen-by-john-muir/",

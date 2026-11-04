@@ -2535,7 +2535,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt26/Hall_Grove_1212.jpg",
           "id": "triciag",
           "language": "en",
+          "librivox_genres": [
+            "Christian Fiction"
+          ],
           "librivox_id": 6614,
+          "librivox_title": "Hall in the Grove",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-hall-in-the-grove-by-pansy/",
@@ -3959,36 +3963,54 @@
             {
               "audio_url": "https://www.archive.org/download/tanakh_jps_14_hallel_0712_librivox/thehallel_db_64kb.mp3",
               "length_ms": 644000,
+              "readers": [
+                "delibab"
+              ],
               "start_ms": 0,
               "title": "Version 1"
             },
             {
               "audio_url": "https://www.archive.org/download/tanakh_jps_14_hallel_0712_librivox/thehallel_dew_64kb.mp3",
               "length_ms": 598000,
+              "readers": [
+                "d-e-wittkower"
+              ],
               "start_ms": 644000,
               "title": "Version 2"
             },
             {
               "audio_url": "https://www.archive.org/download/tanakh_jps_14_hallel_0712_librivox/thehallel_jcg_64kb.mp3",
               "length_ms": 621000,
+              "readers": [
+                "jc-guan"
+              ],
               "start_ms": 1242000,
               "title": "Version 3"
             },
             {
               "audio_url": "https://www.archive.org/download/tanakh_jps_14_hallel_0712_librivox/thehallel_kg_64kb.mp3",
               "length_ms": 508000,
+              "readers": [
+                "katie-gibboney"
+              ],
               "start_ms": 1863000,
               "title": "Version 4"
             },
             {
               "audio_url": "https://www.archive.org/download/tanakh_jps_14_hallel_0712_librivox/thehallel_lkm_64kb.mp3",
               "length_ms": 553000,
+              "readers": [
+                "leon-mire"
+              ],
               "start_ms": 2371000,
               "title": "Version 5"
             },
             {
               "audio_url": "https://www.archive.org/download/tanakh_jps_14_hallel_0712_librivox/thehallel_sds_64kb.mp3",
               "length_ms": 469000,
+              "readers": [
+                "scott-sherris"
+              ],
               "start_ms": 2924000,
               "title": "Version 6"
             }
@@ -3997,7 +4019,13 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt11/Hallel_1111.jpg",
           "id": "delibab",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "*Non-fiction",
+            "Religion"
+          ],
           "librivox_id": 1697,
+          "librivox_title": "Hallel (Psalms 113-118) (JPSA)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-hallel-psalms-113-118-translated-by-the-jewish-publication-society/",

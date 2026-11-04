@@ -998,7 +998,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt21/Cinco_Minutos_1208.jpg",
           "id": "vicente-costa-filho",
           "language": "pt",
+          "librivox_genres": [
+            "General Fiction",
+            "Romance"
+          ],
           "librivox_id": 3799,
+          "librivox_title": "Cinco Minutos",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/cinco-minutos-by-jose-de-alencar/",
@@ -2685,7 +2690,13 @@
           "cover_url": "https://archive.org/download/cincuenta_textos_escogidos_2102_librivox/cincuenta_escogidos_2102.jpg",
           "id": "epachuko",
           "language": "es",
+          "librivox_genres": [
+            "Satire",
+            "Single author",
+            "Humor"
+          ],
           "librivox_id": 15845,
+          "librivox_title": "Cincuenta textos escogidos de Quevedo",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/cincuenta-textos-escogidos-de-francisco-de-quevedo/",
@@ -5286,7 +5297,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt24/cinder_pond_1212.jpg",
           "id": "betsie-bush",
           "language": "en",
+          "librivox_genres": [
+            "Family"
+          ],
           "librivox_id": 4381,
+          "librivox_title": "Cinder Pond",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-cinder-pond-by-carroll-watson-rankin/",
@@ -8923,24 +8938,85 @@
             {
               "audio_url": "https://www.archive.org/download/cinderella_1512_librivox/cinderella_0_calderon_64kb.mp3",
               "length_ms": 86000,
+              "readers": [
+                "david-barnes",
+                "ezwa",
+                "laurie-anne-walden",
+                "mb",
+                "icyjumbo-1964-2010",
+                "xe-sands",
+                "ruth-golding",
+                "david-lawrence",
+                "robert-steiner",
+                "triciag",
+                "lucy-perry",
+                "ian-king",
+                "maria-kasper",
+                "helen-taylor",
+                "zames-curran"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Dramatis Personae"
             },
             {
               "audio_url": "https://www.archive.org/download/cinderella_1512_librivox/cinderella_1_calderon_64kb.mp3",
               "length_ms": 2309000,
+              "readers": [
+                "david-barnes",
+                "mb",
+                "icyjumbo-1964-2010",
+                "xe-sands",
+                "ruth-golding",
+                "david-lawrence",
+                "triciag",
+                "lucy-perry",
+                "maria-kasper",
+                "helen-taylor"
+              ],
+              "section_number": 1,
               "start_ms": 86000,
               "title": "Act I"
             },
             {
               "audio_url": "https://www.archive.org/download/cinderella_1512_librivox/cinderella_2_calderon_64kb.mp3",
               "length_ms": 1882000,
+              "readers": [
+                "david-barnes",
+                "ezwa",
+                "laurie-anne-walden",
+                "mb",
+                "icyjumbo-1964-2010",
+                "xe-sands",
+                "ruth-golding",
+                "david-lawrence",
+                "robert-steiner",
+                "triciag",
+                "clara-snyder",
+                "lucy-perry",
+                "maria-kasper",
+                "helen-taylor",
+                "zames-curran"
+              ],
+              "section_number": 2,
               "start_ms": 2395000,
               "title": "Act II"
             },
             {
               "audio_url": "https://www.archive.org/download/cinderella_1512_librivox/cinderella_3_calderon_64kb.mp3",
               "length_ms": 1370000,
+              "readers": [
+                "mb",
+                "icyjumbo-1964-2010",
+                "xe-sands",
+                "ruth-golding",
+                "david-lawrence",
+                "triciag",
+                "lucy-perry",
+                "ian-king",
+                "helen-taylor"
+              ],
+              "section_number": 3,
               "start_ms": 4277000,
               "title": "Act III"
             }
@@ -8949,7 +9025,13 @@
           "cover_url": "https://archive.org/download/cinderella_1512_librivox/cinderella_1512.jpg",
           "id": "david-barnes",
           "language": "en",
+          "librivox_genres": [
+            "Humorous Fiction",
+            "Plays",
+            "Satire"
+          ],
           "librivox_id": 2758,
+          "librivox_title": "Cinderella",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/cinderella-by-george-calderon/",

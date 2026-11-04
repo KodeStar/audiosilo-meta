@@ -1330,102 +1330,153 @@
             {
               "audio_url": "https://www.archive.org/download/odi_barbare_2011_librivox/odibarbare_01_carducci_64kb.mp3",
               "length_ms": 107000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 0,
               "title": "Preludio"
             },
             {
               "audio_url": "https://www.archive.org/download/odi_barbare_2011_librivox/odibarbare_02_carducci_64kb.mp3",
               "length_ms": 159000,
+              "readers": [
+                "liber"
+              ],
               "start_ms": 107000,
               "title": "Ideale"
             },
             {
               "audio_url": "https://www.archive.org/download/odi_barbare_2011_librivox/odibarbare_03_carducci_64kb.mp3",
               "length_ms": 121000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 266000,
               "title": "Fantasia"
             },
             {
               "audio_url": "https://www.archive.org/download/odi_barbare_2011_librivox/odibarbare_04_carducci_64kb.mp3",
               "length_ms": 342000,
+              "readers": [
+                "liber"
+              ],
               "start_ms": 387000,
               "title": "In una chiesa gotica"
             },
             {
               "audio_url": "https://www.archive.org/download/odi_barbare_2011_librivox/odibarbare_05_carducci_64kb.mp3",
               "length_ms": 136000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 729000,
               "title": "Nella piazza di san Petronio in una sera di inverno"
             },
             {
               "audio_url": "https://www.archive.org/download/odi_barbare_2011_librivox/odibarbare_06_carducci_64kb.mp3",
               "length_ms": 209000,
+              "readers": [
+                "simona-perego"
+              ],
               "start_ms": 865000,
               "title": "Su l'Adda"
             },
             {
               "audio_url": "https://www.archive.org/download/odi_barbare_2011_librivox/odibarbare_07_carducci_64kb.mp3",
               "length_ms": 277000,
+              "readers": [
+                "liber"
+              ],
               "start_ms": 1074000,
               "title": "Alla stazione in una mattina d'autunno"
             },
             {
               "audio_url": "https://www.archive.org/download/odi_barbare_2011_librivox/odibarbare_08_carducci_64kb.mp3",
               "length_ms": 172000,
+              "readers": [
+                "liber"
+              ],
               "start_ms": 1351000,
               "title": "Ruit hora"
             },
             {
               "audio_url": "https://www.archive.org/download/odi_barbare_2011_librivox/odibarbare_09_carducci_64kb.mp3",
               "length_ms": 166000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 1523000,
               "title": "Mors (nell'epidemia difteritica)"
             },
             {
               "audio_url": "https://www.archive.org/download/odi_barbare_2011_librivox/odibarbare_10_carducci_64kb.mp3",
               "length_ms": 106000,
+              "readers": [
+                "monika-m-c"
+              ],
               "start_ms": 1689000,
               "title": "La torre di Nerone"
             },
             {
               "audio_url": "https://www.archive.org/download/odi_barbare_2011_librivox/odibarbare_11_carducci_64kb.mp3",
               "length_ms": 440000,
+              "readers": [
+                "francesco-carzedda"
+              ],
               "start_ms": 1795000,
               "title": "Alle fonti del Clitumno"
             },
             {
               "audio_url": "https://www.archive.org/download/odi_barbare_2011_librivox/odibarbare_12_carducci_64kb.mp3",
               "length_ms": 194000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 2235000,
               "title": "Alla Vittoria (tra le rovine del tempio di Vespasiano in Brescia)"
             },
             {
               "audio_url": "https://www.archive.org/download/odi_barbare_2011_librivox/odibarbare_13_carducci_64kb.mp3",
               "length_ms": 136000,
+              "readers": [
+                "simona-perego"
+              ],
               "start_ms": 2429000,
               "title": "Dinanzi alle terme di Caracalla"
             },
             {
               "audio_url": "https://www.archive.org/download/odi_barbare_2011_librivox/odibarbare_14_carducci_64kb.mp3",
               "length_ms": 157000,
+              "readers": [
+                "simona-perego"
+              ],
               "start_ms": 2565000,
               "title": "Nel XXI d'Aprile dell'anno MMDCXXX dalla fondazione di Roma"
             },
             {
               "audio_url": "https://www.archive.org/download/odi_barbare_2011_librivox/odibarbare_15_carducci_64kb.mp3",
               "length_ms": 232000,
+              "readers": [
+                "liber"
+              ],
               "start_ms": 2722000,
               "title": "Appendice - Dai Carmina di Ludovico Ariosto"
             },
             {
               "audio_url": "https://www.archive.org/download/odi_barbare_2011_librivox/odibarbare_16_carducci_64kb.mp3",
               "length_ms": 146000,
+              "readers": [
+                "simona-perego"
+              ],
               "start_ms": 2954000,
               "title": "Congedo - Alla rima"
             },
             {
               "audio_url": "https://www.archive.org/download/odi_barbare_2011_librivox/odibarbare_17_carducci_64kb.mp3",
               "length_ms": 493000,
+              "readers": [
+                "pier"
+              ],
               "start_ms": 3100000,
               "title": "Nota di Giosuè Carducci"
             }
@@ -1434,7 +1485,11 @@
           "cover_url": "https://archive.org/download/odi_barbare_2011_librivox/odi_barbare_2011.jpg",
           "id": "sonia",
           "language": "it",
+          "librivox_genres": [
+            "Single author"
+          ],
           "librivox_id": 15677,
+          "librivox_title": "Odi Barbare",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/odi-barbare-by-giosue-carducci/",
@@ -10009,9 +10064,19 @@
           ],
           "copyright_year": 1910,
           "cover_url": "https://archive.org/download/la_odisea_1501_librivox/odisea_1501.jpg",
+          "credits": [
+            {
+              "person": "luis-segala-y-estalella",
+              "role": "translator"
+            }
+          ],
           "id": "victor-villarraza",
           "language": "es",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)"
+          ],
           "librivox_id": 8667,
+          "librivox_title": "Odisea",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/la-odisea-by-homero/",

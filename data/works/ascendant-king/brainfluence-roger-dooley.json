@@ -6163,24 +6163,28 @@
             {
               "audio_url": "https://www.archive.org/download/branchedelilas_1907_librivox/branchedelilas_00_ouida_64kb.mp3",
               "length_ms": 258000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/branchedelilas_1907_librivox/branchedelilas_01_ouida_64kb.mp3",
               "length_ms": 685000,
+              "section_number": 1,
               "start_ms": 258000,
               "title": "partie 01"
             },
             {
               "audio_url": "https://www.archive.org/download/branchedelilas_1907_librivox/branchedelilas_02_ouida_64kb.mp3",
               "length_ms": 2312000,
+              "section_number": 2,
               "start_ms": 943000,
               "title": "partie 02"
             },
             {
               "audio_url": "https://www.archive.org/download/branchedelilas_1907_librivox/branchedelilas_03_ouida_64kb.mp3",
               "length_ms": 2224000,
+              "section_number": 3,
               "start_ms": 3255000,
               "title": "partie 03"
             }
@@ -6189,7 +6193,11 @@
           "cover_url": "https://archive.org/download/branchedelilas_1907_librivox/branchedelilas_1907.jpg",
           "id": "christiane-jehanne",
           "language": "fr",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 14082,
+          "librivox_title": "branche de lilas",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/la-branche-de-lilas-by-ouida/",
@@ -6357,75 +6365,96 @@
             {
               "audio_url": "https://www.archive.org/download/brand_1602_librivox/brand_00_ibsen_64kb.mp3",
               "length_ms": 1255000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/brand_1602_librivox/brand_01_ibsen_64kb.mp3",
               "length_ms": 2283000,
+              "section_number": 1,
               "start_ms": 1255000,
               "title": "Act I"
             },
             {
               "audio_url": "https://www.archive.org/download/brand_1602_librivox/brand_02_ibsen_64kb.mp3",
               "length_ms": 1243000,
+              "section_number": 2,
               "start_ms": 3538000,
               "title": "Act II, Pt. 1"
             },
             {
               "audio_url": "https://www.archive.org/download/brand_1602_librivox/brand_03_ibsen_64kb.mp3",
               "length_ms": 1334000,
+              "section_number": 3,
               "start_ms": 4781000,
               "title": "Act II, Pt. 2"
             },
             {
               "audio_url": "https://www.archive.org/download/brand_1602_librivox/brand_04_ibsen_64kb.mp3",
               "length_ms": 1385000,
+              "section_number": 4,
               "start_ms": 6115000,
               "title": "Act III, Pt. 1"
             },
             {
               "audio_url": "https://www.archive.org/download/brand_1602_librivox/brand_05_ibsen_64kb.mp3",
               "length_ms": 1520000,
+              "section_number": 5,
               "start_ms": 7500000,
               "title": "Act III, Pt. 2"
             },
             {
               "audio_url": "https://www.archive.org/download/brand_1602_librivox/brand_06_ibsen_64kb.mp3",
               "length_ms": 1960000,
+              "section_number": 6,
               "start_ms": 9020000,
               "title": "Act IV, Pt. 1"
             },
             {
               "audio_url": "https://www.archive.org/download/brand_1602_librivox/brand_07_ibsen_64kb.mp3",
               "length_ms": 1655000,
+              "section_number": 7,
               "start_ms": 10980000,
               "title": "Act IV, Pt. 2"
             },
             {
               "audio_url": "https://www.archive.org/download/brand_1602_librivox/brand_08_ibsen_64kb.mp3",
               "length_ms": 1865000,
+              "section_number": 8,
               "start_ms": 12635000,
               "title": "Act V, Pt. 1"
             },
             {
               "audio_url": "https://www.archive.org/download/brand_1602_librivox/brand_09_ibsen_64kb.mp3",
               "length_ms": 1698000,
+              "section_number": 9,
               "start_ms": 14500000,
               "title": "Act V, Pt. 2"
             },
             {
               "audio_url": "https://www.archive.org/download/brand_1602_librivox/brand_10_ibsen_64kb.mp3",
               "length_ms": 1678000,
+              "section_number": 10,
               "start_ms": 16198000,
               "title": "Act V, Pt. 3"
             }
           ],
           "copyright_year": 1912,
           "cover_url": "https://archive.org/download/brand_1602_librivox/brand_1602_librivox.jpg",
+          "credits": [
+            {
+              "person": "charles-harold-herford",
+              "role": "translator"
+            }
+          ],
           "id": "expatriate",
           "language": "en",
+          "librivox_genres": [
+            "Tragedy"
+          ],
           "librivox_id": 10592,
+          "librivox_title": "Brand",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/brand-by-henrik-ibsen/",
@@ -7521,7 +7550,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCovers3/Brand_of_Silence_1008.jpg",
           "id": "roger-melin",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction",
+            "Detective Fiction"
+          ],
           "librivox_id": 3517,
+          "librivox_title": "Brand of Silence",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-brand-of-silence-a-detective-story-by-harrington-strong/",

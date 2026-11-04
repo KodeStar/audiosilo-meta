@@ -1429,9 +1429,19 @@
             }
           ],
           "cover_url": "https://archive.org/download/houseofgentlefolk_1804_librivox/gentlefolk_1804.jpg",
+          "credits": [
+            {
+              "person": "constance-garnett",
+              "role": "translator"
+            }
+          ],
           "id": "tovarisch",
           "language": "en",
+          "librivox_genres": [
+            "Published 1800 -1900"
+          ],
           "librivox_id": 12756,
+          "librivox_title": "House of Gentlefolk",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-house-of-gentlefolk-by-ivan-turgenev/",
@@ -4393,84 +4403,126 @@
             {
               "audio_url": "https://www.archive.org/download/house_of_hospitalities_2312.poem_librivox/houseofhospitalities_hardy_alp_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 0,
               "title": "The House of Hospitalities - Read by ALP"
             },
             {
               "audio_url": "https://www.archive.org/download/house_of_hospitalities_2312.poem_librivox/houseofhospitalities_hardy_bk_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 72000,
               "title": "The House of Hospitalities - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/house_of_hospitalities_2312.poem_librivox/houseofhospitalities_hardy_cam_64kb.mp3",
               "length_ms": 60000,
+              "readers": [
+                "cassandra-a-m"
+              ],
               "start_ms": 149000,
               "title": "The House of Hospitalities - Read by CAM"
             },
             {
               "audio_url": "https://www.archive.org/download/house_of_hospitalities_2312.poem_librivox/houseofhospitalities_hardy_cy_64kb.mp3",
               "length_ms": 102000,
+              "readers": [
+                "chocolate-yoddah"
+              ],
               "start_ms": 209000,
               "title": "The House of Hospitalities - Read by CY"
             },
             {
               "audio_url": "https://www.archive.org/download/house_of_hospitalities_2312.poem_librivox/houseofhospitalities_hardy_dl_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 311000,
               "title": "The House of Hospitalities - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/house_of_hospitalities_2312.poem_librivox/houseofhospitalities_hardy_el0_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "newgatenovelist"
+              ],
               "start_ms": 384000,
               "title": "The House of Hospitalities - Read by EL0"
             },
             {
               "audio_url": "https://www.archive.org/download/house_of_hospitalities_2312.poem_librivox/houseofhospitalities_hardy_gln_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "garth-burton"
+              ],
               "start_ms": 466000,
               "title": "The House of Hospitalities - Read by GLN"
             },
             {
               "audio_url": "https://www.archive.org/download/house_of_hospitalities_2312.poem_librivox/houseofhospitalities_hardy_ik_64kb.mp3",
               "length_ms": 79000,
+              "readers": [
+                "ian-king"
+              ],
               "start_ms": 543000,
               "title": "The House of Hospitalities - Read by IK"
             },
             {
               "audio_url": "https://www.archive.org/download/house_of_hospitalities_2312.poem_librivox/houseofhospitalities_hardy_lah_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 622000,
               "title": "The House of Hospitalities - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/house_of_hospitalities_2312.poem_librivox/houseofhospitalities_hardy_lcw_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 692000,
               "title": "The House of Hospitalities - Read by LCW"
             },
             {
               "audio_url": "https://www.archive.org/download/house_of_hospitalities_2312.poem_librivox/houseofhospitalities_hardy_pr_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "patrick-randall"
+              ],
               "start_ms": 764000,
               "title": "The House of Hospitalities - Read by PR"
             },
             {
               "audio_url": "https://www.archive.org/download/house_of_hospitalities_2312.poem_librivox/houseofhospitalities_hardy_rr_64kb.mp3",
               "length_ms": 83000,
+              "readers": [
+                "redrun"
+              ],
               "start_ms": 840000,
               "title": "The House of Hospitalities - Read by RR"
             },
             {
               "audio_url": "https://www.archive.org/download/house_of_hospitalities_2312.poem_librivox/houseofhospitalities_hardy_sws_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "scotty-smith"
+              ],
               "start_ms": 923000,
               "title": "The House of Hospitalities - Read by SWS"
             },
             {
               "audio_url": "https://www.archive.org/download/house_of_hospitalities_2312.poem_librivox/houseofhospitalities_hardy_wja_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "winnifred-assmann"
+              ],
               "start_ms": 999000,
               "title": "The House of Hospitalities - Read by WJA"
             }
@@ -4479,7 +4531,11 @@
           "cover_url": "https://archive.org/download/house_of_hospitalities_2312.poem_librivox/houseofhospitalities_2312.jpg",
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 20010,
+          "librivox_title": "House of Hospitalities",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-house-of-hospitalities-by-thomas-hardy/",
@@ -8581,90 +8637,135 @@
             {
               "audio_url": "https://www.archive.org/download/houseoflove_2208_librivox/houseoflove_01_cheney_64kb.mp3",
               "length_ms": 1430000,
+              "readers": [
+                "j-a-taylor"
+              ],
               "start_ms": 0,
               "title": "Up the Hill"
             },
             {
               "audio_url": "https://www.archive.org/download/houseoflove_2208_librivox/houseoflove_02_cheney_64kb.mp3",
               "length_ms": 1579000,
+              "readers": [
+                "j-a-taylor"
+              ],
               "start_ms": 1430000,
               "title": "The Arrival"
             },
             {
               "audio_url": "https://www.archive.org/download/houseoflove_2208_librivox/houseoflove_03_cheney_64kb.mp3",
               "length_ms": 1214000,
+              "readers": [
+                "julie-johnson"
+              ],
               "start_ms": 3009000,
               "title": "The Stroke of the Lash"
             },
             {
               "audio_url": "https://www.archive.org/download/houseoflove_2208_librivox/houseoflove_04_cheney_64kb.mp3",
               "length_ms": 1069000,
+              "readers": [
+                "julie-johnson"
+              ],
               "start_ms": 4223000,
               "title": "Miss Turner's Method"
             },
             {
               "audio_url": "https://www.archive.org/download/houseoflove_2208_librivox/houseoflove_05_cheney_64kb.mp3",
               "length_ms": 2302000,
+              "readers": [
+                "lestat24"
+              ],
               "start_ms": 5292000,
               "title": "The Conspiracy"
             },
             {
               "audio_url": "https://www.archive.org/download/houseoflove_2208_librivox/houseoflove_06_cheney_64kb.mp3",
               "length_ms": 1668000,
+              "readers": [
+                "lestat24"
+              ],
               "start_ms": 7594000,
               "title": "The First Rehearsal"
             },
             {
               "audio_url": "https://www.archive.org/download/houseoflove_2208_librivox/houseoflove_07_cheney_64kb.mp3",
               "length_ms": 1820000,
+              "readers": [
+                "jennifer-wilson"
+              ],
               "start_ms": 9262000,
               "title": "The Blue Dress"
             },
             {
               "audio_url": "https://www.archive.org/download/houseoflove_2208_librivox/houseoflove_08_cheney_64kb.mp3",
               "length_ms": 2333000,
+              "readers": [
+                "lois-kay"
+              ],
               "start_ms": 11082000,
               "title": "Mrs. Wilde's Discovery"
             },
             {
               "audio_url": "https://www.archive.org/download/houseoflove_2208_librivox/houseoflove_09_cheney_64kb.mp3",
               "length_ms": 2245000,
+              "readers": [
+                "lois-kay"
+              ],
               "start_ms": 13415000,
               "title": "The Turquoise Ring"
             },
             {
               "audio_url": "https://www.archive.org/download/houseoflove_2208_librivox/houseoflove_10_cheney_64kb.mp3",
               "length_ms": 2175000,
+              "readers": [
+                "brittany-wilson"
+              ],
               "start_ms": 15660000,
               "title": "The Thief"
             },
             {
               "audio_url": "https://www.archive.org/download/houseoflove_2208_librivox/houseoflove_11_cheney_64kb.mp3",
               "length_ms": 2050000,
+              "readers": [
+                "julie-johnson"
+              ],
               "start_ms": 17835000,
               "title": "Kelsey's Errand"
             },
             {
               "audio_url": "https://www.archive.org/download/houseoflove_2208_librivox/houseoflove_12_cheney_64kb.mp3",
               "length_ms": 1128000,
+              "readers": [
+                "jennifer-wilson"
+              ],
               "start_ms": 19885000,
               "title": "The Escape"
             },
             {
               "audio_url": "https://www.archive.org/download/houseoflove_2208_librivox/houseoflove_13_cheney_64kb.mp3",
               "length_ms": 1615000,
+              "readers": [
+                "jennifer-wilson"
+              ],
               "start_ms": 21013000,
               "title": "The Tidal Wave"
             },
             {
               "audio_url": "https://www.archive.org/download/houseoflove_2208_librivox/houseoflove_14_cheney_64kb.mp3",
               "length_ms": 1699000,
+              "readers": [
+                "s-reeves"
+              ],
               "start_ms": 22628000,
               "title": "The Violin"
             },
             {
               "audio_url": "https://www.archive.org/download/houseoflove_2208_librivox/houseoflove_15_cheney_64kb.mp3",
               "length_ms": 2145000,
+              "readers": [
+                "wallace-morgan"
+              ],
               "start_ms": 24327000,
               "title": "The \"Ode to Joy\""
             }
@@ -8673,7 +8774,11 @@
           "cover_url": "https://archive.org/download/houseoflove_2208_librivox/HouseOfLove_2208.jpg",
           "id": "j-a-taylor",
           "language": "en",
+          "librivox_genres": [
+            "Religion"
+          ],
           "librivox_id": 17461,
+          "librivox_title": "House of Love",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-house-of-love-by-elizabeth-cheney/",
@@ -10041,7 +10146,11 @@
           "cover_url": "https://archive.org/download/houseofmoonlight_2404_librivox/thehouseofmoonlight_2405.jpg",
           "id": "ben-tucker",
           "language": "en",
+          "librivox_genres": [
+            "Published 1900 onward"
+          ],
           "librivox_id": 20501,
+          "librivox_title": "House of Moonlight",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-house-of-moonlight-by-august-derleth/",
@@ -10466,7 +10575,13 @@
           "cover_url": "https://archive.org/download/house_of_mystery_2102_librivox/house_mystery_2102.jpg",
           "id": "jim-locke",
           "language": "en",
+          "librivox_genres": [
+            "Gothic Fiction",
+            "Literary Fiction",
+            "Romance"
+          ],
           "librivox_id": 15925,
+          "librivox_title": "House of Mystery",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/house-of-mystery-by-richard-marsh/",
@@ -13556,7 +13671,11 @@
           "cover_url": "https://archive.org/download/house_of_orchids_1612_librivox/houseoforchids_1612.jpg",
           "id": "sonia",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 11489,
+          "librivox_title": "House of Orchids and Other Poems",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-house-of-orchids-and-other-poems-by-george-sterling/",
@@ -14447,7 +14566,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt22/house_pomegranate_1209.jpg",
           "id": "alex-lau",
           "language": "en",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 6900,
+          "librivox_title": "House Of Pomegranates",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-house-of-pomegranates/",
@@ -14514,7 +14637,11 @@
           "cover_url": "https://archive.org/download/house_pomegranates_1709_librivox/house_pomegranates_1709.jpg",
           "id": "noelbadrian",
           "language": "en",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 12250,
+          "librivox_title": "House of Pomegranates (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-house-of-pomegranates-by-oscar-wilde/",

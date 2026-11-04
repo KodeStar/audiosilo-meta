@@ -1899,7 +1899,12 @@
           "cover_url": "https://archive.org/download/adventuressherlockholmes_v4_1501_librivox/Sherlock_Holmes_1501.jpg",
           "id": "david-clarke",
           "language": "en",
+          "librivox_genres": [
+            "Crime & Mystery Fiction",
+            "Detective Fiction"
+          ],
           "librivox_id": 9481,
+          "librivox_title": "Adventures of Sherlock Holmes (version 4)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-adventures-of-sherlock-holmes-version-4-by-sir-arthur-conan-doyle/",
@@ -6028,7 +6033,13 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt5/Adventures_of_Sherlock_Holmes_1008.jpg",
           "id": "mark-f-smith",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "General Fiction",
+            "Detective Fiction"
+          ],
           "librivox_id": 4469,
+          "librivox_title": "Adventures of Sherlock Holmes (version 3)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-adventures-of-sherlock-holmes-by-sir-arthur-conan-doyle-2/",
@@ -9818,72 +9829,181 @@
             {
               "audio_url": "https://www.archive.org/download/advofsherlockholmes_2010_librivox/sherlockholmes_01_doyle_64kb.mp3",
               "length_ms": 2827000,
+              "readers": [
+                "peter-yearsley",
+                "beth-thomas-1974-2020",
+                "larry-wilson",
+                "johnnyenglish",
+                "bernd-ungerer",
+                "amelia-chesley",
+                "nemo"
+              ],
               "start_ms": 0,
               "title": "Story 1: A Scandal in Bohemia"
             },
             {
               "audio_url": "https://www.archive.org/download/advofsherlockholmes_2010_librivox/sherlockholmes_02_doyle_64kb.mp3",
               "length_ms": 2834000,
+              "readers": [
+                "peter-yearsley",
+                "algy-pug",
+                "max-korlinge",
+                "larry-wilson",
+                "johnnyenglish",
+                "amelia-chesley",
+                "chuckconvr",
+                "adrian-stephens"
+              ],
               "start_ms": 2827000,
               "title": "Story 2: The Red-Headed League"
             },
             {
               "audio_url": "https://www.archive.org/download/advofsherlockholmes_2010_librivox/sherlockholmes_03_doyle_64kb.mp3",
               "length_ms": 2136000,
+              "readers": [
+                "peter-yearsley",
+                "beth-thomas-1974-2020",
+                "larry-wilson",
+                "johnnyenglish"
+              ],
               "start_ms": 5661000,
               "title": "Story 3: A Case of Identity"
             },
             {
               "audio_url": "https://www.archive.org/download/advofsherlockholmes_2010_librivox/sherlockholmes_04_doyle_64kb.mp3",
               "length_ms": 3193000,
+              "readers": [
+                "peter-yearsley",
+                "max-korlinge",
+                "larry-wilson",
+                "johnnyenglish",
+                "amelia-chesley",
+                "leanne-yau",
+                "rafe-ball",
+                "lola-janie",
+                "chuckconvr"
+              ],
               "start_ms": 7797000,
               "title": "Story 4: The Boscombe Valley Mystery"
             },
             {
               "audio_url": "https://www.archive.org/download/advofsherlockholmes_2010_librivox/sherlockholmes_05_doyle_64kb.mp3",
               "length_ms": 2499000,
+              "readers": [
+                "peter-yearsley",
+                "max-korlinge",
+                "larry-wilson",
+                "johnnyenglish",
+                "amelia-chesley",
+                "chuckconvr"
+              ],
               "start_ms": 10990000,
               "title": "Story 5: The Five Orange Pips"
             },
             {
               "audio_url": "https://www.archive.org/download/advofsherlockholmes_2010_librivox/sherlockholmes_06_doyle_64kb.mp3",
               "length_ms": 3240000,
+              "readers": [
+                "peter-yearsley",
+                "beth-thomas-1974-2020",
+                "larry-wilson",
+                "johnnyenglish",
+                "amelia-chesley",
+                "nemo",
+                "foon",
+                "lola-janie",
+                "adrian-stephens"
+              ],
               "start_ms": 13489000,
               "title": "Story 6: The Man with the Twisted Lip"
             },
             {
               "audio_url": "https://www.archive.org/download/advofsherlockholmes_2010_librivox/sherlockholmes_07_doyle_64kb.mp3",
               "length_ms": 2736000,
+              "readers": [
+                "peter-yearsley",
+                "algy-pug",
+                "beth-thomas-1974-2020",
+                "larry-wilson",
+                "khand",
+                "johnnyenglish",
+                "leanne-yau",
+                "adrian-stephens"
+              ],
               "start_ms": 16729000,
               "title": "Story 7: The Adventure of the Blue Carbuncle"
             },
             {
               "audio_url": "https://www.archive.org/download/advofsherlockholmes_2010_librivox/sherlockholmes_08_doyle_64kb.mp3",
               "length_ms": 3206000,
+              "readers": [
+                "peter-yearsley",
+                "algy-pug",
+                "beth-thomas-1974-2020",
+                "amelia-chesley",
+                "leanne-yau",
+                "tomas-peter"
+              ],
               "start_ms": 19465000,
               "title": "Story 8: The Adventure of the Speckled Band"
             },
             {
               "audio_url": "https://www.archive.org/download/advofsherlockholmes_2010_librivox/sherlockholmes_09_doyle_64kb.mp3",
               "length_ms": 2606000,
+              "readers": [
+                "peter-yearsley",
+                "beth-thomas-1974-2020",
+                "khand",
+                "johnnyenglish",
+                "bernd-ungerer",
+                "foon",
+                "lola-janie",
+                "adrian-stephens"
+              ],
               "start_ms": 22671000,
               "title": "Story 9: The adventure of the Engineer's Thumb"
             },
             {
               "audio_url": "https://www.archive.org/download/advofsherlockholmes_2010_librivox/sherlockholmes_10_doyle_64kb.mp3",
               "length_ms": 2926000,
+              "readers": [
+                "peter-yearsley",
+                "rob-marland",
+                "larry-wilson",
+                "amelia-chesley",
+                "tomas-peter",
+                "tj-burns",
+                "rafe-ball"
+              ],
               "start_ms": 25277000,
               "title": "Story 10: The Adventure of the Noble Bachelor"
             },
             {
               "audio_url": "https://www.archive.org/download/advofsherlockholmes_2010_librivox/sherlockholmes_11_doyle_64kb.mp3",
               "length_ms": 3348000,
+              "readers": [
+                "peter-yearsley",
+                "algy-pug",
+                "beth-thomas-1974-2020",
+                "zames-curran",
+                "tomas-peter"
+              ],
               "start_ms": 28203000,
               "title": "Story 11: The Adventure of the Beryl Coronet"
             },
             {
               "audio_url": "https://www.archive.org/download/advofsherlockholmes_2010_librivox/sherlockholmes_12_doyle_64kb.mp3",
               "length_ms": 3549000,
+              "readers": [
+                "peter-yearsley",
+                "beth-thomas-1974-2020",
+                "thestorygirl",
+                "larry-wilson",
+                "leanne-yau",
+                "tomas-peter",
+                "lola-janie",
+                "adrian-stephens"
+              ],
               "start_ms": 31551000,
               "title": "Story 12: The Adventure of the Copper Beeches"
             }
@@ -9892,7 +10012,13 @@
           "cover_url": "https://archive.org/download/advofsherlockholmes_2010_librivox/adventures_sherlock_holmes_2010.jpg",
           "id": "peter-yearsley",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Dramatic Readings",
+            "Detective Fiction"
+          ],
           "librivox_id": 14369,
+          "librivox_title": "Adventures of Sherlock Holmes (Version 6 dramatic reading)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-adventures-of-sherlock-holmes-version-6-dramatic-reading-by-sir-arthur-conan-doyle/",
@@ -10795,7 +10921,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt19/Adventures_Sherlock_Holmes_V2_1209.jpg",
           "id": "ruth-golding",
           "language": "en",
+          "librivox_genres": [
+            "Detective Fiction",
+            "Published 1800 -1900"
+          ],
           "librivox_id": 4135,
+          "librivox_title": "Adventures of Sherlock Holmes (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-adventures-of-sherlock-holmes-by-sir-arthur-conan-doyle/",
@@ -11867,7 +11998,12 @@
           "cover_url": "https://archive.org/download/the_adventures_of_sherlock_holmes_v5_1904_librivox/adventures_sherlock_holmes_1904.jpg",
           "id": "studiomike",
           "language": "en",
+          "librivox_genres": [
+            "Detective Fiction",
+            "Short Stories"
+          ],
           "librivox_id": 13800,
+          "librivox_title": "Adventures of Sherlock Holmes (version 5)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-adventures-of-sherlock-holmes-version-5-by-sir-arthur-conan-doyle/",
@@ -11896,72 +12032,108 @@
             {
               "audio_url": "https://www.archive.org/download/adventures_holmes/adventureholmes_01_doyle_64kb.mp3",
               "length_ms": 3906000,
+              "readers": [
+                "tbol3"
+              ],
               "start_ms": 0,
               "title": "A Scandal in Bohemia"
             },
             {
               "audio_url": "https://www.archive.org/download/adventures_holmes/adventureholmes_02_doyle_64kb.mp3",
               "length_ms": 3546000,
+              "readers": [
+                "kara-shallenberg-1969-2023"
+              ],
               "start_ms": 3906000,
               "title": "The Red-Headed League"
             },
             {
               "audio_url": "https://www.archive.org/download/adventures_holmes/adventureholmes_03_doyle_64kb.mp3",
               "length_ms": 2719000,
+              "readers": [
+                "robin-cotter"
+              ],
               "start_ms": 7452000,
               "title": "A Case of Identity"
             },
             {
               "audio_url": "https://www.archive.org/download/adventures_holmes/adventureholmes_04_doyle_64kb.mp3",
               "length_ms": 3180000,
+              "readers": [
+                "zachary-brewster-geisz"
+              ],
               "start_ms": 10171000,
               "title": "The Boscombe Valley Mystery"
             },
             {
               "audio_url": "https://www.archive.org/download/adventures_holmes/adventureholmes_05_doyle_64kb.mp3",
               "length_ms": 2479000,
+              "readers": [
+                "kirsten-ferreri"
+              ],
               "start_ms": 13351000,
               "title": "The Five Orange Pips"
             },
             {
               "audio_url": "https://www.archive.org/download/adventures_holmes/adventureholmes_06_doyle_64kb.mp3",
               "length_ms": 3095000,
+              "readers": [
+                "julian-jamison"
+              ],
               "start_ms": 15830000,
               "title": "The Man with the Twisted Lip"
             },
             {
               "audio_url": "https://www.archive.org/download/adventures_holmes/adventureholmes_07_doyle_64kb.mp3",
               "length_ms": 2493000,
+              "readers": [
+                "j-a-carter"
+              ],
               "start_ms": 18925000,
               "title": "The Adventure of the Blue Carbuncle"
             },
             {
               "audio_url": "https://www.archive.org/download/adventures_holmes/adventureholmes_08_doyle_64kb.mp3",
               "length_ms": 3257000,
+              "readers": [
+                "kirsten-ferreri"
+              ],
               "start_ms": 21418000,
               "title": "The Adventure of the Speckled Band"
             },
             {
               "audio_url": "https://www.archive.org/download/adventures_holmes/adventureholmes_09_doyle_64kb.mp3",
               "length_ms": 2523000,
+              "readers": [
+                "kevin-mcash"
+              ],
               "start_ms": 24675000,
               "title": "The Adventure of the Engineer's Thumb"
             },
             {
               "audio_url": "https://www.archive.org/download/adventures_holmes/adventureholmes_10_doyle_64kb.mp3",
               "length_ms": 2692000,
+              "readers": [
+                "j-m-smallheer"
+              ],
               "start_ms": 27198000,
               "title": "The Adventure of the Noble Bachelor"
             },
             {
               "audio_url": "https://www.archive.org/download/adventures_holmes/adventureholmes_11_doyle_64kb.mp3",
               "length_ms": 3625000,
+              "readers": [
+                "gesine"
+              ],
               "start_ms": 29890000,
               "title": "The Adventure of the Beryl Coronet"
             },
             {
               "audio_url": "https://www.archive.org/download/adventures_holmes/adventureholmes_12_doyle_64kb.mp3",
               "length_ms": 3564000,
+              "readers": [
+                "laurie-anne-walden"
+              ],
               "start_ms": 33515000,
               "title": "The Adventure of the Copper Beeches"
             }
@@ -11970,7 +12142,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt4/Adventures_of_Sherlock_Holmes_1003.jpg",
           "id": "tbol3",
           "language": "en",
+          "librivox_genres": [
+            "Detective Fiction"
+          ],
           "librivox_id": 314,
+          "librivox_title": "Adventures of Sherlock Holmes",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-adventures-of-sherlock-holmes/",

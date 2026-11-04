@@ -805,7 +805,14 @@
           "cover_url": "https://archive.org/download/fortunesfool_2507_librivox/fortune_2508.jpg",
           "id": "kiwireader24",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Historical Fiction",
+            "Humorous Fiction",
+            "Romance"
+          ],
           "librivox_id": 21662,
+          "librivox_title": "Fortune's Fool",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/fortunes-fool-by-rafael-sabatini/",
@@ -1157,330 +1164,550 @@
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_00_lever_64kb.mp3",
               "length_ms": 308000,
+              "readers": [
+                "clay-beauchamp"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_01_lever_64kb.mp3",
               "length_ms": 1431000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 1,
               "start_ms": 308000,
               "title": "A Lonely Landscape"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_02_lever_64kb.mp3",
               "length_ms": 730000,
+              "readers": [
+                "karlhenning"
+              ],
+              "section_number": 2,
               "start_ms": 1739000,
               "title": "Glencore Castle"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_03_lever_64kb.mp3",
               "length_ms": 946000,
+              "readers": [
+                "karlhenning"
+              ],
+              "section_number": 3,
               "start_ms": 2469000,
               "title": "Billy Traynor-Poet, Pedlar and Physician"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_04_lever_64kb.mp3",
               "length_ms": 1255000,
+              "readers": [
+                "karlhenning"
+              ],
+              "section_number": 4,
               "start_ms": 3415000,
               "title": "A Visitor"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_05_lever_64kb.mp3",
               "length_ms": 749000,
+              "readers": [
+                "linda-fredericks"
+              ],
+              "section_number": 5,
               "start_ms": 4670000,
               "title": "Colonel Harcourt's Letter"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_06_lever_64kb.mp3",
               "length_ms": 916000,
+              "readers": [
+                "linda-fredericks"
+              ],
+              "section_number": 6,
               "start_ms": 5419000,
               "title": "Queer Companionship"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_07_lever_64kb.mp3",
               "length_ms": 833000,
+              "readers": [
+                "jessi"
+              ],
+              "section_number": 7,
               "start_ms": 6335000,
               "title": "A Great Diplomatist"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_08_lever_64kb.mp3",
               "length_ms": 1201000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 8,
               "start_ms": 7168000,
               "title": "The Great Man's Arrival"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_09_lever_64kb.mp3",
               "length_ms": 959000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 9,
               "start_ms": 8369000,
               "title": "A Medical Visit"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_10_lever_64kb.mp3",
               "length_ms": 1349000,
+              "readers": [
+                "grumpy-old-squid"
+              ],
+              "section_number": 10,
               "start_ms": 9328000,
               "title": "A Disclosure"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_11_lever_64kb.mp3",
               "length_ms": 2247000,
+              "readers": [
+                "grumpy-old-squid"
+              ],
+              "section_number": 11,
               "start_ms": 10677000,
               "title": "Some Lights And Shadows Of Diplomatic Life"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_12_lever_64kb.mp3",
               "length_ms": 1140000,
+              "readers": [
+                "grumpy-old-squid"
+              ],
+              "section_number": 12,
               "start_ms": 12924000,
               "title": "A Night At Sea"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_13_lever_64kb.mp3",
               "length_ms": 1054000,
+              "readers": [
+                "grumpy-old-squid"
+              ],
+              "section_number": 13,
               "start_ms": 14064000,
               "title": "A Vow Accomplished"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_14_lever_64kb.mp3",
               "length_ms": 709000,
+              "readers": [
+                "linda-fredericks"
+              ],
+              "section_number": 14,
               "start_ms": 15118000,
               "title": "Billy Traynor And The Colonel"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_15_lever_64kb.mp3",
               "length_ms": 407000,
+              "readers": [
+                "imagine"
+              ],
+              "section_number": 15,
               "start_ms": 15827000,
               "title": "A Sick Bed"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_16_lever_64kb.mp3",
               "length_ms": 1220000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 16,
               "start_ms": 16234000,
               "title": "The Project"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_17_lever_64kb.mp3",
               "length_ms": 627000,
+              "readers": [
+                "arlene-joyce"
+              ],
+              "section_number": 17,
               "start_ms": 17454000,
               "title": "A Tete-A-Tete"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_18_lever_64kb.mp3",
               "length_ms": 915000,
+              "readers": [
+                "arlene-joyce"
+              ],
+              "section_number": 18,
               "start_ms": 18081000,
               "title": "Billy Traynor As Orator"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_19_lever_64kb.mp3",
               "length_ms": 1152000,
+              "readers": [
+                "arlene-joyce"
+              ],
+              "section_number": 19,
               "start_ms": 18996000,
               "title": "The Cascine At Florence"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_20_lever_64kb.mp3",
               "length_ms": 978000,
+              "readers": [
+                "arlene-joyce"
+              ],
+              "section_number": 20,
               "start_ms": 20148000,
               "title": "The Villa Fossombroni"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_21_lever_64kb.mp3",
               "length_ms": 770000,
+              "readers": [
+                "arlene-joyce"
+              ],
+              "section_number": 21,
               "start_ms": 21126000,
               "title": "Some Traits Of Life"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_22_lever_64kb.mp3",
               "length_ms": 690000,
+              "readers": [
+                "arlene-joyce"
+              ],
+              "section_number": 22,
               "start_ms": 21896000,
               "title": "An Uptonian Despatch"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_23_lever_64kb.mp3",
               "length_ms": 832000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 23,
               "start_ms": 22586000,
               "title": "The Tutor And His Pupil"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_24_lever_64kb.mp3",
               "length_ms": 1352000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 24,
               "start_ms": 23418000,
               "title": "How A Reception Comes To Its Close"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_25_lever_64kb.mp3",
               "length_ms": 1427000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 25,
               "start_ms": 24770000,
               "title": "A Duke And His Minister"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_26_lever_64kb.mp3",
               "length_ms": 1001000,
+              "readers": [
+                "linda-andrus"
+              ],
+              "section_number": 26,
               "start_ms": 26197000,
               "title": "Italian Troubles"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_27_lever_64kb.mp3",
               "length_ms": 963000,
+              "readers": [
+                "linda-andrus"
+              ],
+              "section_number": 27,
               "start_ms": 27198000,
               "title": "Carrara"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_28_lever_64kb.mp3",
               "length_ms": 901000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 28,
               "start_ms": 28161000,
               "title": "A Night Scene"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_29_lever_64kb.mp3",
               "length_ms": 749000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 29,
               "start_ms": 29062000,
               "title": "A Council Of State"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_30_lever_64kb.mp3",
               "length_ms": 937000,
+              "readers": [
+                "linda-andrus"
+              ],
+              "section_number": 30,
               "start_ms": 29811000,
               "title": "The Life They Led At Massa"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_31_lever_64kb.mp3",
               "length_ms": 1103000,
+              "readers": [
+                "linda-andrus"
+              ],
+              "section_number": 31,
               "start_ms": 30748000,
               "title": "At Massa"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_32_lever_64kb.mp3",
               "length_ms": 845000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 32,
               "start_ms": 31851000,
               "title": "The Pavillion In The Garden"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_33_lever_64kb.mp3",
               "length_ms": 972000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 33,
               "start_ms": 32696000,
               "title": "Night Thoughts"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_34_lever_64kb.mp3",
               "length_ms": 1062000,
+              "readers": [
+                "steve-c"
+              ],
+              "section_number": 34,
               "start_ms": 33668000,
               "title": "A Minister's Letter"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_35_lever_64kb.mp3",
               "length_ms": 1911000,
+              "readers": [
+                "linda-andrus"
+              ],
+              "section_number": 35,
               "start_ms": 34730000,
               "title": "Harcourt's Lodgings"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_36_lever_64kb.mp3",
               "length_ms": 1234000,
+              "readers": [
+                "linda-andrus"
+              ],
+              "section_number": 36,
               "start_ms": 36641000,
               "title": "A Fevered Mind"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_37_lever_64kb.mp3",
               "length_ms": 1619000,
+              "readers": [
+                "linda-andrus"
+              ],
+              "section_number": 37,
               "start_ms": 37875000,
               "title": "The Villa At Sorrento"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_38_lever_64kb.mp3",
               "length_ms": 1786000,
+              "readers": [
+                "linda-andrus"
+              ],
+              "section_number": 38,
               "start_ms": 39494000,
               "title": "A Diplomatist's Dinner"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_39_lever_64kb.mp3",
               "length_ms": 1733000,
+              "readers": [
+                "linda-andrus"
+              ],
+              "section_number": 39,
               "start_ms": 41280000,
               "title": "A Very Broken Narrative"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_40_lever_64kb.mp3",
               "length_ms": 1204000,
+              "readers": [
+                "linda-andrus"
+              ],
+              "section_number": 40,
               "start_ms": 43013000,
               "title": "Uptonism"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_41_lever_64kb.mp3",
               "length_ms": 1542000,
+              "readers": [
+                "rosie"
+              ],
+              "section_number": 41,
               "start_ms": 44217000,
               "title": "An Evening In Florence"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_42_lever_64kb.mp3",
               "length_ms": 1225000,
+              "readers": [
+                "peter-john-keeble"
+              ],
+              "section_number": 42,
               "start_ms": 45759000,
               "title": "Madame De Sabbloukoff In The Morning"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_43_lever_64kb.mp3",
               "length_ms": 1085000,
+              "readers": [
+                "peter-john-keeble"
+              ],
+              "section_number": 43,
               "start_ms": 46984000,
               "title": "Doings In Downing Street"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_44_lever_64kb.mp3",
               "length_ms": 2047000,
+              "readers": [
+                "linda-andrus"
+              ],
+              "section_number": 44,
               "start_ms": 48069000,
               "title": "The Subtleties Of Statecraft"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_45_lever_64kb.mp3",
               "length_ms": 1698000,
+              "readers": [
+                "linda-andrus"
+              ],
+              "section_number": 45,
               "start_ms": 50116000,
               "title": "Some Sad Reveries"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_46_lever_64kb.mp3",
               "length_ms": 1604000,
+              "readers": [
+                "linda-andrus"
+              ],
+              "section_number": 46,
               "start_ms": 51814000,
               "title": "The Flood In The Magra"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_47_lever_64kb.mp3",
               "length_ms": 1031000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 47,
               "start_ms": 53418000,
               "title": "A Fragment Of A Letter"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_48_lever_64kb.mp3",
               "length_ms": 853000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 48,
               "start_ms": 54449000,
               "title": "How A Sovereign Treats With His Minister"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_49_lever_64kb.mp3",
               "length_ms": 1120000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 49,
               "start_ms": 55302000,
               "title": "Social Diplomacies"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_50_lever_64kb.mp3",
               "length_ms": 647000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 50,
               "start_ms": 56422000,
               "title": "Ante-Dinner Reflections"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_51_lever_64kb.mp3",
               "length_ms": 1309000,
+              "readers": [
+                "linda-fredericks"
+              ],
+              "section_number": 51,
               "start_ms": 57069000,
               "title": "Conflicting Thoughts"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_52_lever_64kb.mp3",
               "length_ms": 1047000,
+              "readers": [
+                "linda-fredericks"
+              ],
+              "section_number": 52,
               "start_ms": 58378000,
               "title": "Major Scaresby's Visit"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_53_lever_64kb.mp3",
               "length_ms": 2043000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 53,
               "start_ms": 59425000,
               "title": "A Mask In Carnival Time"
             },
             {
               "audio_url": "https://www.archive.org/download/fortunes_of_glencore_1312_librivox/fortunesofglencore_54_lever_64kb.mp3",
               "length_ms": 484000,
+              "readers": [
+                "kimberly-krause"
+              ],
+              "section_number": 54,
               "start_ms": 61468000,
               "title": "The End"
             }
@@ -1489,7 +1716,13 @@
           "cover_url": "https://archive.org/download/fortunes_of_glencore_1312_librivox/fortunes_glencore_1312.jpg",
           "id": "clay-beauchamp",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction",
+            "Humorous Fiction",
+            "Romance"
+          ],
           "librivox_id": 6545,
+          "librivox_title": "Fortunes of Glencore",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-fortunes-of-glencore-by-charles-james-lever/",
@@ -1790,7 +2023,14 @@
           "cover_url": "https://archive.org/download/the_fortunes_of_nigel_2108_librivox/fortunes_nigel_2108.jpg",
           "id": "jim-locke",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Culture & Heritage Fiction",
+            "Literary Fiction",
+            "Romance"
+          ],
           "librivox_id": 16631,
+          "librivox_title": "Fortunes of Nigel",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-fortunes-of-nigel-by-sir-walter-scott/",
@@ -2197,7 +2437,11 @@
           "cover_url": "https://archive.org/download/fortunesofperkinwarbeck_2510_librivox/fortunesofperkinwarbeck_2510.jpg",
           "id": "lauren-huff",
           "language": "en",
+          "librivox_genres": [
+            "Historical Fiction"
+          ],
           "librivox_id": 18523,
+          "librivox_title": "Fortunes of Perkin Warbeck",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-fortunes-of-perkin-warbeck-by-mary-wollstonecraft-shelley/",
@@ -2319,7 +2563,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt13/Fortunes_of_Philippa_1211.jpg",
           "id": "arielle-lipshaw",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 4591,
+          "librivox_title": "Fortunes of Philippa",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-fortunes-of-philippa-by-angela-brazil/",
@@ -5505,7 +5753,14 @@
           "cover_url": "https://archive.org/download/fortyfiveguardsmen_1608_librivox/fortyfive_guardsmen_1608.jpg",
           "id": "john-van-stan",
           "language": "en",
+          "librivox_genres": [
+            "Fictional Biographies & Memoirs",
+            "Historical Fiction",
+            "Literary Fiction",
+            "War & Military Fiction"
+          ],
           "librivox_id": 10512,
+          "librivox_title": "Forty-Five Guardsmen",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-forty-five-guardsmen-by-alexandre-dumas/",
@@ -6911,7 +7166,11 @@
           "cover_url": "https://archive.org/download/fortyoneletters_2305_librivox/fortyonelettersonreligioussubjects_2305.jpg",
           "id": "inthedesert",
           "language": "en",
+          "librivox_genres": [
+            "Christianity - Other"
+          ],
           "librivox_id": 19088,
+          "librivox_title": "Forty-One Letters on Religious Subjects",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/forty-one-letters-on-religious-subjects-by-john-newton/",
@@ -7582,132 +7841,154 @@
             {
               "audio_url": "https://www.archive.org/download/forty_seasons_cricket_1604_librivox/fortyseasons_00_barlow_64kb.mp3",
               "length_ms": 205000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/forty_seasons_cricket_1604_librivox/fortyseasons_01_barlow_64kb.mp3",
               "length_ms": 1128000,
+              "section_number": 1,
               "start_ms": 205000,
               "title": "My Autobiography"
             },
             {
               "audio_url": "https://www.archive.org/download/forty_seasons_cricket_1604_librivox/fortyseasons_02_barlow_64kb.mp3",
               "length_ms": 2192000,
+              "section_number": 2,
               "start_ms": 1333000,
               "title": "My Autobiography continued"
             },
             {
               "audio_url": "https://www.archive.org/download/forty_seasons_cricket_1604_librivox/fortyseasons_03_barlow_64kb.mp3",
               "length_ms": 1387000,
+              "section_number": 3,
               "start_ms": 3525000,
               "title": "My Autobiography continued"
             },
             {
               "audio_url": "https://www.archive.org/download/forty_seasons_cricket_1604_librivox/fortyseasons_04_barlow_64kb.mp3",
               "length_ms": 2081000,
+              "section_number": 4,
               "start_ms": 4912000,
               "title": "My Autobiography continued"
             },
             {
               "audio_url": "https://www.archive.org/download/forty_seasons_cricket_1604_librivox/fortyseasons_05_barlow_64kb.mp3",
               "length_ms": 1182000,
+              "section_number": 5,
               "start_ms": 6993000,
               "title": "My Autobiography concluded"
             },
             {
               "audio_url": "https://www.archive.org/download/forty_seasons_cricket_1604_librivox/fortyseasons_06_barlow_64kb.mp3",
               "length_ms": 652000,
+              "section_number": 6,
               "start_ms": 8175000,
               "title": "Umpiring Stories"
             },
             {
               "audio_url": "https://www.archive.org/download/forty_seasons_cricket_1604_librivox/fortyseasons_07_barlow_64kb.mp3",
               "length_ms": 2255000,
+              "section_number": 7,
               "start_ms": 8827000,
               "title": "Personal Anecdotes"
             },
             {
               "audio_url": "https://www.archive.org/download/forty_seasons_cricket_1604_librivox/fortyseasons_08_barlow_64kb.mp3",
               "length_ms": 341000,
+              "section_number": 8,
               "start_ms": 11082000,
               "title": "Some Cricketing Curiosities"
             },
             {
               "audio_url": "https://www.archive.org/download/forty_seasons_cricket_1604_librivox/fortyseasons_09_barlow_64kb.mp3",
               "length_ms": 1174000,
+              "section_number": 9,
               "start_ms": 11423000,
               "title": "The Author's Opinions on some Cricketers he has Met during the Last 40 Years"
             },
             {
               "audio_url": "https://www.archive.org/download/forty_seasons_cricket_1604_librivox/fortyseasons_10_barlow_64kb.mp3",
               "length_ms": 1354000,
+              "section_number": 10,
               "start_ms": 12597000,
               "title": "The Author's Opinions on some Cricketers he has Met during the Last 40 Years continued"
             },
             {
               "audio_url": "https://www.archive.org/download/forty_seasons_cricket_1604_librivox/fortyseasons_11_barlow_64kb.mp3",
               "length_ms": 1724000,
+              "section_number": 11,
               "start_ms": 13951000,
               "title": "Miscellaneous Opinions and Incidents"
             },
             {
               "audio_url": "https://www.archive.org/download/forty_seasons_cricket_1604_librivox/fortyseasons_12_barlow_64kb.mp3",
               "length_ms": 2003000,
+              "section_number": 12,
               "start_ms": 15675000,
               "title": "Miscellaneous Opinions and Incidents continued"
             },
             {
               "audio_url": "https://www.archive.org/download/forty_seasons_cricket_1604_librivox/fortyseasons_13_barlow_64kb.mp3",
               "length_ms": 1420000,
+              "section_number": 13,
               "start_ms": 17678000,
               "title": "My Three Australian Cricket Tours"
             },
             {
               "audio_url": "https://www.archive.org/download/forty_seasons_cricket_1604_librivox/fortyseasons_14_barlow_64kb.mp3",
               "length_ms": 1634000,
+              "section_number": 14,
               "start_ms": 19098000,
               "title": "Second Tour"
             },
             {
               "audio_url": "https://www.archive.org/download/forty_seasons_cricket_1604_librivox/fortyseasons_15_barlow_64kb.mp3",
               "length_ms": 1879000,
+              "section_number": 15,
               "start_ms": 20732000,
               "title": "Third Tour"
             },
             {
               "audio_url": "https://www.archive.org/download/forty_seasons_cricket_1604_librivox/fortyseasons_16_barlow_64kb.mp3",
               "length_ms": 620000,
+              "section_number": 16,
               "start_ms": 22611000,
               "title": "Hints to Umpires"
             },
             {
               "audio_url": "https://www.archive.org/download/forty_seasons_cricket_1604_librivox/fortyseasons_17_barlow_64kb.mp3",
               "length_ms": 299000,
+              "section_number": 17,
               "start_ms": 23231000,
               "title": "Captainship"
             },
             {
               "audio_url": "https://www.archive.org/download/forty_seasons_cricket_1604_librivox/fortyseasons_18_barlow_64kb.mp3",
               "length_ms": 1606000,
+              "section_number": 18,
               "start_ms": 23530000,
               "title": "Hints to Young Cricketers"
             },
             {
               "audio_url": "https://www.archive.org/download/forty_seasons_cricket_1604_librivox/fortyseasons_19_barlow_64kb.mp3",
               "length_ms": 122000,
+              "section_number": 19,
               "start_ms": 25136000,
               "title": "Conclusion"
             },
             {
               "audio_url": "https://www.archive.org/download/forty_seasons_cricket_1604_librivox/fortyseasons_20_barlow_64kb.mp3",
               "length_ms": 284000,
+              "section_number": 20,
               "start_ms": 25258000,
               "title": "Cricket Miscellany"
             },
             {
               "audio_url": "https://www.archive.org/download/forty_seasons_cricket_1604_librivox/fortyseasons_21_barlow_64kb.mp3",
               "length_ms": 67000,
+              "section_number": 21,
               "start_ms": 25542000,
               "title": "At Lords by Francis Thompson"
             }
@@ -7716,7 +7997,12 @@
           "cover_url": "https://archive.org/download/forty_seasons_cricket_1604_librivox/forty_seasons_1604.jpg",
           "id": "phil-benson",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "Sports & Recreation"
+          ],
           "librivox_id": 10375,
+          "librivox_title": "Forty Seasons of First-Class Cricket",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/forty-seasons-of-first-class-cricket-by-richard-gorton-barlow/",
@@ -8357,258 +8643,387 @@
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_01_vincent_64kb.mp3",
               "length_ms": 362000,
+              "readers": [
+                "j-m-smallheer"
+              ],
               "start_ms": 0,
               "title": "Chapter I. Across the Atlantic"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_02_vincent_64kb.mp3",
               "length_ms": 1925000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 362000,
               "title": "Chapter II. New York, Hudson River and Niagara Falls"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_03_vincent_64kb.mp3",
               "length_ms": 1489000,
+              "readers": [
+                "shirantha"
+              ],
               "start_ms": 2287000,
               "title": "Chapter III. The Dominion of Canada"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_04_vincent_64kb.mp3",
               "length_ms": 1447000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 3776000,
               "title": "Chapter IV. The American Lakes, and the Centres of Learning, Fashion and Government, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_05_vincent_64kb.mp3",
               "length_ms": 1074000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 5223000,
               "title": "Chapter IV. The American Lakes, and the Centres of Learning, Fashion and Government, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_06_vincent_64kb.mp3",
               "length_ms": 1291000,
+              "readers": [
+                "wayne-cooke"
+              ],
               "start_ms": 6297000,
               "title": "Chapter V. To the Far West, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_07_vincent_64kb.mp3",
               "length_ms": 1368000,
+              "readers": [
+                "wayne-cooke"
+              ],
               "start_ms": 7588000,
               "title": "Chapter V. To the Far West, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_08_vincent_64kb.mp3",
               "length_ms": 1310000,
+              "readers": [
+                "wayne-cooke"
+              ],
               "start_ms": 8956000,
               "title": "Chapter V. To the Far West, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_09_vincent_64kb.mp3",
               "length_ms": 1593000,
+              "readers": [
+                "jsws"
+              ],
               "start_ms": 10266000,
               "title": "Chapter VI. San Francisco and the Yosemite Valley, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_10_vincent_64kb.mp3",
               "length_ms": 1851000,
+              "readers": [
+                "rosemary-mcdonald-1938-2025"
+              ],
               "start_ms": 11859000,
               "title": "Chapter VI. San Francisco and the Yosemite Valley, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_11_vincent_64kb.mp3",
               "length_ms": 1237000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 13710000,
               "title": "Chapter VII. Across the Pacific, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_12_vincent_64kb.mp3",
               "length_ms": 974000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 14947000,
               "title": "Chapter VII. Across the Pacific, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_13_vincent_64kb.mp3",
               "length_ms": 1833000,
+              "readers": [
+                "allegro200hz"
+              ],
               "start_ms": 15921000,
               "title": "Chapter VIII. Coaching Through the North Island of New Zealand; Its Hot Lakes and Geysers, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_14_vincent_64kb.mp3",
               "length_ms": 1689000,
+              "readers": [
+                "allegro200hz"
+              ],
               "start_ms": 17754000,
               "title": "Chapter VIII. Coaching Through the North Island of New Zealand; Its Hot Lakes and Geysers, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_15_vincent_64kb.mp3",
               "length_ms": 1976000,
+              "readers": [
+                "allegro200hz"
+              ],
               "start_ms": 19443000,
               "title": "Chapter VIII. Coaching Through the North Island of New Zealand; Its Hot Lakes and Geysers, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_16_vincent_64kb.mp3",
               "length_ms": 1512000,
+              "readers": [
+                "allegro200hz"
+              ],
               "start_ms": 21419000,
               "title": "Chapter VIII. Coaching Through the North Island of New Zealand; Its Hot Lakes and Geysers, Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_17_vincent_64kb.mp3",
               "length_ms": 1209000,
+              "readers": [
+                "allegro200hz"
+              ],
               "start_ms": 22931000,
               "title": "Chapter IX. The South Island of New Zealand: Its Alps and Mountain Lakes, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_18_vincent_64kb.mp3",
               "length_ms": 1265000,
+              "readers": [
+                "allegro200hz"
+              ],
               "start_ms": 24140000,
               "title": "Chapter IX. The South Island of New Zealand: Its Alps and Mountain Lakes, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_19_vincent_64kb.mp3",
               "length_ms": 1527000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 25405000,
               "title": "Chapter X. Australia -Tasmania and Victoria, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_20_vincent_64kb.mp3",
               "length_ms": 1573000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 26932000,
               "title": "Chapter X. Australia -Tasmania and Victoria, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_21_vincent_64kb.mp3",
               "length_ms": 1530000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 28505000,
               "title": "Chapter XI. Australia - New South Wales and Queensland, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_22_vincent_64kb.mp3",
               "length_ms": 1494000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 30035000,
               "title": "Chapter XI. Australia - New South Wales and Queensland, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_23_vincent_64kb.mp3",
               "length_ms": 1942000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 31529000,
               "title": "Chapter XII. Within the Barrier Reef, Through Torres Straits to Batavia"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_24_vincent_64kb.mp3",
               "length_ms": 1431000,
+              "readers": [
+                "rosemary-mcdonald-1938-2025"
+              ],
               "start_ms": 33471000,
               "title": "Chapter XIII. Netherlands India, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_25_vincent_64kb.mp3",
               "length_ms": 1457000,
+              "readers": [
+                "rosemary-mcdonald-1938-2025"
+              ],
               "start_ms": 34902000,
               "title": "Chapter XIII. Netherlands India, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_26_vincent_64kb.mp3",
               "length_ms": 1196000,
+              "readers": [
+                "rosemary-mcdonald-1938-2025"
+              ],
               "start_ms": 36359000,
               "title": "Chapter XIII. Netherlands India, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_27_vincent_64kb.mp3",
               "length_ms": 1350000,
+              "readers": [
+                "rosemary-mcdonald-1938-2025"
+              ],
               "start_ms": 37555000,
               "title": "Chapter XIV. The Straits Settlements, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_28_vincent_64kb.mp3",
               "length_ms": 1326000,
+              "readers": [
+                "rosemary-mcdonald-1938-2025"
+              ],
               "start_ms": 38905000,
               "title": "Chapter XIV. The Straits Settlements, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_29_vincent_64kb.mp3",
               "length_ms": 1632000,
+              "readers": [
+                "rosemary-mcdonald-1938-2025"
+              ],
               "start_ms": 40231000,
               "title": "Chapter XV. The Metropolis of India and its Himalayan Sanatorium, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_30_vincent_64kb.mp3",
               "length_ms": 1511000,
+              "readers": [
+                "rosemary-mcdonald-1938-2025"
+              ],
               "start_ms": 41863000,
               "title": "Chapter XV. The Metropolis of India and its Himalayan Sanatorium, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_31_vincent_64kb.mp3",
               "length_ms": 1128000,
+              "readers": [
+                "rosemary-mcdonald-1938-2025"
+              ],
               "start_ms": 43374000,
               "title": "Chapter XV. The Metropolis of India and its Himalayan Sanatorium, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_32_vincent_64kb.mp3",
               "length_ms": 1111000,
+              "readers": [
+                "christoph-stangenberg"
+              ],
               "start_ms": 44502000,
               "title": "Chapter XVI. The Shrines of the Hindu Faith, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_33_vincent_64kb.mp3",
               "length_ms": 1113000,
+              "readers": [
+                "christoph-stangenberg"
+              ],
               "start_ms": 45613000,
               "title": "Chapter XVI. The Shrines of the Hindu Faith, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_34_vincent_64kb.mp3",
               "length_ms": 1629000,
+              "readers": [
+                "rosemary-mcdonald-1938-2025"
+              ],
               "start_ms": 46726000,
               "title": "Chapter XVII. The Scenes of the Indian Mutiny, Part I"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_35_vincent_64kb.mp3",
               "length_ms": 1463000,
+              "readers": [
+                "rosemary-mcdonald-1938-2025"
+              ],
               "start_ms": 48355000,
               "title": "Chapter XVII. The Scenes of the Indian Mutiny, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_36_vincent_64kb.mp3",
               "length_ms": 1093000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 49818000,
               "title": "Chapter XVIII. The Cities of the Great Mogul, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_37_vincent_64kb.mp3",
               "length_ms": 1605000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 50911000,
               "title": "Chapter XVIII. The Cities of the Great Mogul, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_38_vincent_64kb.mp3",
               "length_ms": 2077000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 52516000,
               "title": "Chapter XVIII. The Cities of the Great Mogul, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_39_vincent_64kb.mp3",
               "length_ms": 1488000,
+              "readers": [
+                "allegro200hz"
+              ],
               "start_ms": 54593000,
               "title": "Chapter XIX. Gwalior and Rajputana, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_40_vincent_64kb.mp3",
               "length_ms": 1929000,
+              "readers": [
+                "allegro200hz"
+              ],
               "start_ms": 56081000,
               "title": "Chapter XIX. Gwalior and Rajputana, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_41_vincent_64kb.mp3",
               "length_ms": 1842000,
+              "readers": [
+                "prajak"
+              ],
               "start_ms": 58010000,
               "title": "Chapter XX. The Home of the Parsees"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_42_vincent_64kb.mp3",
               "length_ms": 1872000,
+              "readers": [
+                "allegro200hz"
+              ],
               "start_ms": 59852000,
               "title": "Chapter XXI. Through Egypt - Homewards, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_43_vincent_64kb.mp3",
               "length_ms": 1601000,
+              "readers": [
+                "allegro200hz"
+              ],
               "start_ms": 61724000,
               "title": "Chapter XXI. Through Egypt - Homewards, Part 2"
             }
@@ -8617,7 +9032,11 @@
           "cover_url": "https://archive.org/download/fortythousandmiles_2111_librivox/fortythousandmiles_2111.jpg",
           "id": "j-m-smallheer",
           "language": "en",
+          "librivox_genres": [
+            "Travel & Geography"
+          ],
           "librivox_id": 16978,
+          "librivox_title": "Forty Thousand Miles Over Land and Water",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/forty-thousand-miles-over-land-and-water-by-ethel-gwendoline-vincent/",

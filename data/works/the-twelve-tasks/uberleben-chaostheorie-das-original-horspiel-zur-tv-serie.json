@@ -5669,72 +5669,108 @@
             {
               "audio_url": "https://www.archive.org/download/danish_fairytales_0805_librivox/danishfairytales001_01_denlillepige_64kb.mp3",
               "length_ms": 433000,
+              "readers": [
+                "hedvig"
+              ],
               "start_ms": 0,
               "title": "Lille pige med svovlstikkerne, Den"
             },
             {
               "audio_url": "https://www.archive.org/download/danish_fairytales_0805_librivox/danishfairytales001_02_kejserensnye_64kb.mp3",
               "length_ms": 701000,
+              "readers": [
+                "hedvig"
+              ],
               "start_ms": 433000,
               "title": "Kejserens nye klæder"
             },
             {
               "audio_url": "https://www.archive.org/download/danish_fairytales_0805_librivox/danishfairytales001_03_fyrtoejet_64kb.mp3",
               "length_ms": 999000,
+              "readers": [
+                "kristoffer-hunsdahl"
+              ],
               "start_ms": 1134000,
               "title": "Fyrtøjet"
             },
             {
               "audio_url": "https://www.archive.org/download/danish_fairytales_0805_librivox/danishfairytales001_04_paradiset_64kb.mp3",
               "length_ms": 1902000,
+              "readers": [
+                "kristoffer-hunsdahl"
+              ],
               "start_ms": 2133000,
               "title": "Paradisets have"
             },
             {
               "audio_url": "https://www.archive.org/download/danish_fairytales_0805_librivox/danishfairytales001_05_hvadfatter_64kb.mp3",
               "length_ms": 647000,
+              "readers": [
+                "kristoffer-hunsdahl"
+              ],
               "start_ms": 4035000,
               "title": "Hvad fatter gør, det er altid det rigtige"
             },
             {
               "audio_url": "https://www.archive.org/download/danish_fairytales_0805_librivox/danishfairytales001_06_lilleclaus_64kb.mp3",
               "length_ms": 1491000,
+              "readers": [
+                "kristoffer-hunsdahl"
+              ],
               "start_ms": 4682000,
               "title": "Lille Claus og store Claus"
             },
             {
               "audio_url": "https://www.archive.org/download/danish_fairytales_0805_librivox/danishfairytales001_07_denondefyrste_64kb.mp3",
               "length_ms": 354000,
+              "readers": [
+                "kristoffer-hunsdahl"
+              ],
               "start_ms": 6173000,
               "title": "Onde Fyrste, Den"
             },
             {
               "audio_url": "https://www.archive.org/download/danish_fairytales_0805_librivox/danishfairytales001_08_skyggen_64kb.mp3",
               "length_ms": 1761000,
+              "readers": [
+                "kristoffer-hunsdahl"
+              ],
               "start_ms": 6527000,
               "title": "Skyggen"
             },
             {
               "audio_url": "https://www.archive.org/download/danish_fairytales_0805_librivox/danishfairytales001_09_denflyvende_64kb.mp3",
               "length_ms": 756000,
+              "readers": [
+                "kristoffer-hunsdahl"
+              ],
               "start_ms": 8288000,
               "title": "Flyvende kuffert, Den"
             },
             {
               "audio_url": "https://www.archive.org/download/danish_fairytales_0805_librivox/danishfairytales001_10_ganskevist_64kb.mp3",
               "length_ms": 334000,
+              "readers": [
+                "kristoffer-hunsdahl"
+              ],
               "start_ms": 9044000,
               "title": "Det er ganske vist"
             },
             {
               "audio_url": "https://www.archive.org/download/danish_fairytales_0805_librivox/danishfairytales001_11_aartusinder_64kb.mp3",
               "length_ms": 308000,
+              "readers": [
+                "kristoffer-hunsdahl"
+              ],
               "start_ms": 9378000,
               "title": "Om Årtusinder"
             },
             {
               "audio_url": "https://www.archive.org/download/danish_fairytales_0805_librivox/danishfairytales001_12_aelling_64kb.mp3",
               "length_ms": 1361000,
+              "readers": [
+                "kristoffer-hunsdahl"
+              ],
               "start_ms": 9686000,
               "title": "Grimme Ælling, Den"
             }
@@ -5742,7 +5778,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt13/Udvalgte_Danske_Eventyr_001_1112.jpg",
           "id": "hedvig",
           "language": "da",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 1205,
+          "librivox_title": "Udvalgte Danske Eventyr 001",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/udvalgte-danske-eventyr-001/",
@@ -6373,7 +6413,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt22/buergersgedichte_1209.jpg",
           "id": "redaer",
           "language": "de",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 7013,
+          "librivox_title": "Ueber Buergers Gedichte",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/ueber-buergers-gedichte-by-friedrich-schiller/",
@@ -10027,7 +10071,12 @@
           "cover_url": "https://archive.org/download/uganda_2312_librivox/uganda_2312.jpg",
           "id": "bettyb",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Social Science (Culture & Anthropology)"
+          ],
           "librivox_id": 19611,
+          "librivox_title": "Uganda to the Cape",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/uganda-to-the-cape-by-frank-g-carpenter/",
@@ -10079,84 +10128,140 @@
             {
               "audio_url": "https://www.archive.org/download/ugandasmanofwork_1607_librivox/ugandasmanwork_00_fahs_64kb.mp3",
               "length_ms": 467000,
+              "readers": [
+                "khand"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction and Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/ugandasmanofwork_1607_librivox/ugandasmanwork_01_fahs_64kb.mp3",
               "length_ms": 1359000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 1,
               "start_ms": 467000,
               "title": "A Newspaper Man's Interview with a Black King"
             },
             {
               "audio_url": "https://www.archive.org/download/ugandasmanofwork_1607_librivox/ugandasmanwork_02_fahs_64kb.mp3",
               "length_ms": 1475000,
+              "readers": [
+                "khand"
+              ],
+              "section_number": 2,
               "start_ms": 1826000,
               "title": "What Happened After the News was Read"
             },
             {
               "audio_url": "https://www.archive.org/download/ugandasmanofwork_1607_librivox/ugandasmanwork_03_fahs_64kb.mp3",
               "length_ms": 1139000,
+              "readers": [
+                "khand"
+              ],
+              "section_number": 3,
               "start_ms": 3301000,
               "title": "Jungle Roads, Ox-carts, and Fly Bites"
             },
             {
               "audio_url": "https://www.archive.org/download/ugandasmanofwork_1607_librivox/ugandasmanwork_04_fahs_64kb.mp3",
               "length_ms": 1148000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 4,
               "start_ms": 4440000,
               "title": "Two Receptions at the Royal Palace"
             },
             {
               "audio_url": "https://www.archive.org/download/ugandasmanofwork_1607_librivox/ugandasmanwork_05_fahs_64kb.mp3",
               "length_ms": 1409000,
+              "readers": [
+                "bethesda-lily"
+              ],
+              "section_number": 5,
               "start_ms": 5588000,
               "title": "White Men and Black Men Become Acquainted"
             },
             {
               "audio_url": "https://www.archive.org/download/ugandasmanofwork_1607_librivox/ugandasmanwork_06_fahs_64kb.mp3",
               "length_ms": 1273000,
+              "readers": [
+                "teresa-bauman"
+              ],
+              "section_number": 6,
               "start_ms": 6997000,
               "title": "The King and the Wizard"
             },
             {
               "audio_url": "https://www.archive.org/download/ugandasmanofwork_1607_librivox/ugandasmanwork_07_fahs_64kb.mp3",
               "length_ms": 1121000,
+              "readers": [
+                "maryann"
+              ],
+              "section_number": 7,
               "start_ms": 8270000,
               "title": "The Two-Faced Mutesa and the Mohammedans"
             },
             {
               "audio_url": "https://www.archive.org/download/ugandasmanofwork_1607_librivox/ugandasmanwork_08_fahs_64kb.mp3",
               "length_ms": 915000,
+              "readers": [
+                "maryann"
+              ],
+              "section_number": 8,
               "start_ms": 9391000,
               "title": "The New Teaching Makes New Men"
             },
             {
               "audio_url": "https://www.archive.org/download/ugandasmanofwork_1607_librivox/ugandasmanwork_09_fahs_64kb.mp3",
               "length_ms": 1404000,
+              "readers": [
+                "maryann"
+              ],
+              "section_number": 9,
               "start_ms": 10306000,
               "title": "Mackay's Queer New Name"
             },
             {
               "audio_url": "https://www.archive.org/download/ugandasmanofwork_1607_librivox/ugandasmanwork_10_fahs_64kb.mp3",
               "length_ms": 1352000,
+              "readers": [
+                "kalynda"
+              ],
+              "section_number": 10,
               "start_ms": 11710000,
               "title": "Three Boy Heroes and One Boy Tyrant"
             },
             {
               "audio_url": "https://www.archive.org/download/ugandasmanofwork_1607_librivox/ugandasmanwork_11_fahs_64kb.mp3",
               "length_ms": 1718000,
+              "readers": [
+                "maryann"
+              ],
+              "section_number": 11,
               "start_ms": 13062000,
               "title": "Sturdy Black Christians with Nerve"
             },
             {
               "audio_url": "https://www.archive.org/download/ugandasmanofwork_1607_librivox/ugandasmanwork_12_fahs_64kb.mp3",
               "length_ms": 1173000,
+              "readers": [
+                "maryann"
+              ],
+              "section_number": 12,
               "start_ms": 14780000,
               "title": "The White Man of Work Lays Down His Tools"
             },
             {
               "audio_url": "https://www.archive.org/download/ugandasmanofwork_1607_librivox/ugandasmanwork_13_fahs_64kb.mp3",
               "length_ms": 544000,
+              "readers": [
+                "maryann"
+              ],
+              "section_number": 13,
               "start_ms": 15953000,
               "title": "Postlude: Did it Pay?"
             }
@@ -10165,7 +10270,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt12/ugandaswhitemanofwork_1607.jpg",
           "id": "khand",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "Christianity - Biographies"
+          ],
           "librivox_id": 9879,
+          "librivox_title": "Uganda's White Man of Work: A Story of Alexander M. Mackay",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/ugandas-white-man-of-work-a-story-of-alexander-m-mackay-by-sophia-lyon-fahs/",

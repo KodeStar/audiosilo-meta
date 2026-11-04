@@ -3075,36 +3075,54 @@
             {
               "audio_url": "https://www.archive.org/download/rhodora_librivox/rhodora_emerson_apc_64kb.mp3",
               "length_ms": 92000,
+              "readers": [
+                "annie-coleman-rothenberg"
+              ],
               "start_ms": 0,
               "title": "Version 1"
             },
             {
               "audio_url": "https://www.archive.org/download/rhodora_librivox/rhodora_emerson_chip_64kb.mp3",
               "length_ms": 86000,
+              "readers": [
+                "chip"
+              ],
               "start_ms": 92000,
               "title": "Version 2"
             },
             {
               "audio_url": "https://www.archive.org/download/rhodora_librivox/rhodora_emerson_gw_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "graham-williams"
+              ],
               "start_ms": 178000,
               "title": "Version 3"
             },
             {
               "audio_url": "https://www.archive.org/download/rhodora_librivox/rhodora_emerson_lf_64kb.mp3",
               "length_ms": 90000,
+              "readers": [
+                "fox-in-the-stars"
+              ],
               "start_ms": 269000,
               "title": "Version 4"
             },
             {
               "audio_url": "https://www.archive.org/download/rhodora_librivox/rhodora_emerson_rg_64kb.mp3",
               "length_ms": 88000,
+              "readers": [
+                "robert-garrison"
+              ],
               "start_ms": 359000,
               "title": "Version 5"
             },
             {
               "audio_url": "https://www.archive.org/download/rhodora_librivox/rhodora_emerson_sdw_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "westwinds12"
+              ],
               "start_ms": 447000,
               "title": "Version 6"
             }
@@ -3113,7 +3131,11 @@
           "cover_url": "https://archive.org/download/rhodora_librivox/Rhodora_1108.jpg",
           "id": "annie-coleman-rothenberg",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 399,
+          "librivox_title": "Rhodora",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-rhodora-by-ralph-waldo-emerson/",
@@ -3169,30 +3191,45 @@
             {
               "audio_url": "https://www.archive.org/download/rhomboidal_dirge_1604.poem_librivox/dirge_wither_bsd_64kb.mp3",
               "length_ms": 301000,
+              "readers": [
+                "brian-darby"
+              ],
               "start_ms": 0,
               "title": "Rhomboidal Dirge - Read by BSD"
             },
             {
               "audio_url": "https://www.archive.org/download/rhomboidal_dirge_1604.poem_librivox/dirge_wither_gg_64kb.mp3",
               "length_ms": 315000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 301000,
               "title": "Rhomboidal Dirge - Read by GG"
             },
             {
               "audio_url": "https://www.archive.org/download/rhomboidal_dirge_1604.poem_librivox/dirge_wither_jdl_64kb.mp3",
               "length_ms": 288000,
+              "readers": [
+                "james-lapine"
+              ],
               "start_ms": 616000,
               "title": "Rhomboidal Dirge - Read by JDL"
             },
             {
               "audio_url": "https://www.archive.org/download/rhomboidal_dirge_1604.poem_librivox/dirge_wither_llw_64kb.mp3",
               "length_ms": 343000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 904000,
               "title": "Rhomboidal Dirge - Read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/rhomboidal_dirge_1604.poem_librivox/dirge_wither_mk_64kb.mp3",
               "length_ms": 296000,
+              "readers": [
+                "maria-kasper"
+              ],
               "start_ms": 1247000,
               "title": "Rhomboidal Dirge - Read by MK"
             }
@@ -3201,7 +3238,11 @@
           "cover_url": "https://archive.org/download/rhomboidal_dirge_1604.poem_librivox/rhomboid_dirge_1604.jpg",
           "id": "brian-darby",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 10738,
+          "librivox_title": "Rhomboidal Dirge",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/rhomboidal-dirge-by-george-wither/",
@@ -4447,108 +4488,162 @@
             {
               "audio_url": "https://www.archive.org/download/a_rhyme_about_an_electrical_advertising_sign_2302.poem_librivox/sign_lindsay_ab_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "amy-brummett"
+              ],
               "start_ms": 0,
               "title": "A Rhyme about an Electrical Advertising Sign - Read by AB"
             },
             {
               "audio_url": "https://www.archive.org/download/a_rhyme_about_an_electrical_advertising_sign_2302.poem_librivox/sign_lindsay_ah_64kb.mp3",
               "length_ms": 131000,
+              "readers": [
+                "anita-hibbard"
+              ],
               "start_ms": 94000,
               "title": "A Rhyme about an Electrical Advertising Sign - Read by AH"
             },
             {
               "audio_url": "https://www.archive.org/download/a_rhyme_about_an_electrical_advertising_sign_2302.poem_librivox/sign_lindsay_aps_64kb.mp3",
               "length_ms": 138000,
+              "readers": [
+                "adrian-stephens"
+              ],
               "start_ms": 225000,
               "title": "A Rhyme about an Electrical Advertising Sign - Read by APS"
             },
             {
               "audio_url": "https://www.archive.org/download/a_rhyme_about_an_electrical_advertising_sign_2302.poem_librivox/sign_lindsay_bc_64kb.mp3",
               "length_ms": 96000,
+              "readers": [
+                "brize-c"
+              ],
               "start_ms": 363000,
               "title": "A Rhyme about an Electrical Advertising Sign - Read by BC"
             },
             {
               "audio_url": "https://www.archive.org/download/a_rhyme_about_an_electrical_advertising_sign_2302.poem_librivox/sign_lindsay_bk_64kb.mp3",
               "length_ms": 124000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 459000,
               "title": "A Rhyme about an Electrical Advertising Sign - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/a_rhyme_about_an_electrical_advertising_sign_2302.poem_librivox/sign_lindsay_dbg_64kb.mp3",
               "length_ms": 111000,
+              "readers": [
+                "owlivia"
+              ],
               "start_ms": 583000,
               "title": "A Rhyme about an Electrical Advertising Sign - Read by DBG"
             },
             {
               "audio_url": "https://www.archive.org/download/a_rhyme_about_an_electrical_advertising_sign_2302.poem_librivox/sign_lindsay_en3_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "elizabeth-nilsson"
+              ],
               "start_ms": 694000,
               "title": "A Rhyme about an Electrical Advertising Sign - Read by EN3"
             },
             {
               "audio_url": "https://www.archive.org/download/a_rhyme_about_an_electrical_advertising_sign_2302.poem_librivox/sign_lindsay_gn_64kb.mp3",
               "length_ms": 126000,
+              "readers": [
+                "georgenash"
+              ],
               "start_ms": 803000,
               "title": "A Rhyme about an Electrical Advertising Sign - Read by GN"
             },
             {
               "audio_url": "https://www.archive.org/download/a_rhyme_about_an_electrical_advertising_sign_2302.poem_librivox/sign_lindsay_ik_64kb.mp3",
               "length_ms": 120000,
+              "readers": [
+                "ian-king"
+              ],
               "start_ms": 929000,
               "title": "A Rhyme about an Electrical Advertising Sign - Read by IK"
             },
             {
               "audio_url": "https://www.archive.org/download/a_rhyme_about_an_electrical_advertising_sign_2302.poem_librivox/sign_lindsay_ikl_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "inkell"
+              ],
               "start_ms": 1049000,
               "title": "A Rhyme about an Electrical Advertising Sign - Read by IKL"
             },
             {
               "audio_url": "https://www.archive.org/download/a_rhyme_about_an_electrical_advertising_sign_2302.poem_librivox/sign_lindsay_ks_64kb.mp3",
               "length_ms": 108000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 1131000,
               "title": "A Rhyme about an Electrical Advertising Sign - Read by KS"
             },
             {
               "audio_url": "https://www.archive.org/download/a_rhyme_about_an_electrical_advertising_sign_2302.poem_librivox/sign_lindsay_lc_64kb.mp3",
               "length_ms": 132000,
+              "readers": [
+                "lightcrystal"
+              ],
               "start_ms": 1239000,
               "title": "A Rhyme about an Electrical Advertising Sign - Read by LC"
             },
             {
               "audio_url": "https://www.archive.org/download/a_rhyme_about_an_electrical_advertising_sign_2302.poem_librivox/sign_lindsay_lah_64kb.mp3",
               "length_ms": 111000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 1371000,
               "title": "A Rhyme about an Electrical Advertising Sign - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/a_rhyme_about_an_electrical_advertising_sign_2302.poem_librivox/sign_lindsay_lcw_64kb.mp3",
               "length_ms": 98000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 1482000,
               "title": "A Rhyme about an Electrical Advertising Sign - Read by LCW"
             },
             {
               "audio_url": "https://www.archive.org/download/a_rhyme_about_an_electrical_advertising_sign_2302.poem_librivox/sign_lindsay_ls_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "leesalter"
+              ],
               "start_ms": 1580000,
               "title": "A Rhyme about an Electrical Advertising Sign - Read by LS"
             },
             {
               "audio_url": "https://www.archive.org/download/a_rhyme_about_an_electrical_advertising_sign_2302.poem_librivox/sign_lindsay_rr_64kb.mp3",
               "length_ms": 122000,
+              "readers": [
+                "redrun"
+              ],
               "start_ms": 1689000,
               "title": "A Rhyme about an Electrical Advertising Sign - Read by RR"
             },
             {
               "audio_url": "https://www.archive.org/download/a_rhyme_about_an_electrical_advertising_sign_2302.poem_librivox/sign_lindsay_smc_64kb.mp3",
               "length_ms": 104000,
+              "readers": [
+                "steve-cullen"
+              ],
               "start_ms": 1811000,
               "title": "A Rhyme about an Electrical Advertising Sign - Read by SMC"
             },
             {
               "audio_url": "https://www.archive.org/download/a_rhyme_about_an_electrical_advertising_sign_2302.poem_librivox/sign_lindsay_wa_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "winnifred-assmann"
+              ],
               "start_ms": 1915000,
               "title": "A Rhyme about an Electrical Advertising Sign - Read by WA"
             }
@@ -4557,7 +4652,11 @@
           "cover_url": "https://archive.org/download/a_rhyme_about_an_electrical_advertising_sign_2302.poem_librivox/rhymeelectricalsign_2302.jpg",
           "id": "amy-brummett",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 18975,
+          "librivox_title": "Rhyme about an Electrical Advertising Sign",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-rhyme-about-an-electrical-advertising-sign-by-vachel-lindsay/",
@@ -4625,186 +4724,279 @@
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_01_carroll_64kb.mp3",
               "length_ms": 108000,
+              "readers": [
+                "anusha-iyer"
+              ],
               "start_ms": 0,
               "title": "Dedication"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_02_carroll_64kb.mp3",
               "length_ms": 258000,
+              "readers": [
+                "sanober-h-syed"
+              ],
               "start_ms": 108000,
               "title": "Phantasmagoria, in Seven Cantos - I. The Trystyng"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_03_carroll_64kb.mp3",
               "length_ms": 205000,
+              "readers": [
+                "sanober-h-syed"
+              ],
               "start_ms": 366000,
               "title": "Phantasmagoria, in Seven Cantos - II. Hys Fyve Rules"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_04_carroll_64kb.mp3",
               "length_ms": 253000,
+              "readers": [
+                "sanober-h-syed"
+              ],
               "start_ms": 571000,
               "title": "Phantasmagoria, in Seven Cantos - III. Scarmoges"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_05_carroll_64kb.mp3",
               "length_ms": 262000,
+              "readers": [
+                "sanober-h-syed"
+              ],
               "start_ms": 824000,
               "title": "Phantasmagoria, in Seven Cantos - IV. Hys Nouryture"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_06_carroll_64kb.mp3",
               "length_ms": 257000,
+              "readers": [
+                "sanober-h-syed"
+              ],
               "start_ms": 1086000,
               "title": "Phantasmagoria, in Seven Cantos - V. Byckerment"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_07_carroll_64kb.mp3",
               "length_ms": 251000,
+              "readers": [
+                "sanober-h-syed"
+              ],
               "start_ms": 1343000,
               "title": "Phantasmagoria, in Seven Cantos - VI. Dyscomfyture"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_08_carroll_64kb.mp3",
               "length_ms": 120000,
+              "readers": [
+                "sanober-h-syed"
+              ],
               "start_ms": 1594000,
               "title": "Phantasmagoria, in Seven Cantos - VII. Sad Souvenaunce"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_09_carroll_64kb.mp3",
               "length_ms": 63000,
+              "readers": [
+                "anusha-iyer"
+              ],
               "start_ms": 1714000,
               "title": "Echoes"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_10_carroll_64kb.mp3",
               "length_ms": 181000,
+              "readers": [
+                "jftocanada"
+              ],
               "start_ms": 1777000,
               "title": "A Sea Dirge"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_11_carroll_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "noelbadrian"
+              ],
               "start_ms": 1958000,
               "title": "Ye Carpette Knyghte"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_12_carroll_64kb.mp3",
               "length_ms": 415000,
+              "readers": [
+                "noelbadrian"
+              ],
               "start_ms": 2040000,
               "title": "Hiawatha’s Photographing"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_13_carroll_64kb.mp3",
               "length_ms": 188000,
+              "readers": [
+                "chase-capener"
+              ],
               "start_ms": 2455000,
               "title": "Melancholetta"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_14_carroll_64kb.mp3",
               "length_ms": 118000,
+              "readers": [
+                "royce-roeswood"
+              ],
               "start_ms": 2643000,
               "title": "A Valentine"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_15_carroll_64kb.mp3",
               "length_ms": 1270000,
+              "readers": [
+                "mary-escano"
+              ],
               "start_ms": 2761000,
               "title": "The Three Voices"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_16_carroll_64kb.mp3",
               "length_ms": 161000,
+              "readers": [
+                "noelbadrian"
+              ],
               "start_ms": 4031000,
               "title": "Tèma Con Variazióni"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_17_carroll_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "diane-alailima"
+              ],
               "start_ms": 4192000,
               "title": "A Game of Fives"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_18_carroll_64kb.mp3",
               "length_ms": 267000,
+              "readers": [
+                "tovarisch"
+              ],
               "start_ms": 4286000,
               "title": "Poeta fit, non nascitur"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_19_carroll_64kb.mp3",
               "length_ms": 539000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 4553000,
               "title": "The Hunting of the Snark, an Agony in Eight Fits - I. The Landing"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_20_carroll_64kb.mp3",
               "length_ms": 295000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 5092000,
               "title": "The Hunting of the Snark, an Agony in Eight Fits - II. The Bellman’s Speech"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_21_carroll_64kb.mp3",
               "length_ms": 214000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 5387000,
               "title": "The Hunting of the Snark, an Agony in Eight Fits - III. The Baker’s Tale"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_22_carroll_64kb.mp3",
               "length_ms": 233000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 5601000,
               "title": "The Hunting of the Snark, an Agony in Eight Fits - IV. The Hunting"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_23_carroll_64kb.mp3",
               "length_ms": 383000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 5834000,
               "title": "The Hunting of the Snark, an Agony in Eight Fits - V. The Beaver’s Lesson"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_24_carroll_64kb.mp3",
               "length_ms": 248000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 6217000,
               "title": "The Hunting of the Snark, an Agony in Eight Fits - VI. The Barrister’s Dream"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_25_carroll_64kb.mp3",
               "length_ms": 139000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 6465000,
               "title": "The Hunting of the Snark, an Agony in Eight Fits - VII. The Banker’s Fate"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_26_carroll_64kb.mp3",
               "length_ms": 140000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 6604000,
               "title": "The Hunting of the Snark, an Agony in Eight Fits - VIII. The Vanishing"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_27_carroll_64kb.mp3",
               "length_ms": 151000,
+              "readers": [
+                "tovarisch"
+              ],
               "start_ms": 6744000,
               "title": "Size and Tears"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_28_carroll_64kb.mp3",
               "length_ms": 135000,
+              "readers": [
+                "ian-king"
+              ],
               "start_ms": 6895000,
               "title": "Atalanta in Camden Town"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_29_carroll_64kb.mp3",
               "length_ms": 393000,
+              "readers": [
+                "caro-davy"
+              ],
               "start_ms": 7030000,
               "title": "The Lang Coortin’"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_30_carroll_64kb.mp3",
               "length_ms": 501000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 7423000,
               "title": "Four Riddles"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_31_carroll_64kb.mp3",
               "length_ms": 171000,
+              "readers": [
+                "anusha-iyer"
+              ],
               "start_ms": 7924000,
               "title": "Fame’s Penny-Trumpet"
             }
@@ -4813,7 +5005,11 @@
           "cover_url": "https://archive.org/download/rhyme_and_reason_1610_librivox/rhymeandreason_1610.jpg",
           "id": "anusha-iyer",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 11172,
+          "librivox_title": "Rhyme? And Reason?",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/rhyme-and-reason-by-lewis-carroll/",
@@ -4854,114 +5050,133 @@
             {
               "audio_url": "https://www.archive.org/download/rhyme_reason__1912_librivox/rhymeandreason_00_carroll_64kb.mp3",
               "length_ms": 94000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "[Dedication]: Inscribed to a Dear Child"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_reason__1912_librivox/rhymeandreason_01_carroll_64kb.mp3",
               "length_ms": 2213000,
+              "section_number": 1,
               "start_ms": 94000,
               "title": "Phantasmagoria, in Seven Cantos"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_reason__1912_librivox/rhymeandreason_02_carroll_64kb.mp3",
               "length_ms": 61000,
+              "section_number": 2,
               "start_ms": 2307000,
               "title": "Echoes"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_reason__1912_librivox/rhymeandreason_03_carroll_64kb.mp3",
               "length_ms": 171000,
+              "section_number": 3,
               "start_ms": 2368000,
               "title": "A Sea Dirge"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_reason__1912_librivox/rhymeandreason_04_carroll_64kb.mp3",
               "length_ms": 68000,
+              "section_number": 4,
               "start_ms": 2539000,
               "title": "Ye Carpette Knyghte"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_reason__1912_librivox/rhymeandreason_05_carroll_64kb.mp3",
               "length_ms": 422000,
+              "section_number": 5,
               "start_ms": 2607000,
               "title": "Hiawatha's Photographing"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_reason__1912_librivox/rhymeandreason_06_carroll_64kb.mp3",
               "length_ms": 250000,
+              "section_number": 6,
               "start_ms": 3029000,
               "title": "Melancholetta"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_reason__1912_librivox/rhymeandreason_07_carroll_64kb.mp3",
               "length_ms": 149000,
+              "section_number": 7,
               "start_ms": 3279000,
               "title": "A Valentine"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_reason__1912_librivox/rhymeandreason_08_carroll_64kb.mp3",
               "length_ms": 1121000,
+              "section_number": 8,
               "start_ms": 3428000,
               "title": "The Three Voices"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_reason__1912_librivox/rhymeandreason_09_carroll_64kb.mp3",
               "length_ms": 165000,
+              "section_number": 9,
               "start_ms": 4549000,
               "title": "Tèma Con Veriazióni"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_reason__1912_librivox/rhymeandreason_10_carroll_64kb.mp3",
               "length_ms": 110000,
+              "section_number": 10,
               "start_ms": 4714000,
               "title": "A Game of Fives"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_reason__1912_librivox/rhymeandreason_11_carroll_64kb.mp3",
               "length_ms": 318000,
+              "section_number": 11,
               "start_ms": 4824000,
               "title": "Poeta Fit, Non Nascitur"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_reason__1912_librivox/rhymeandreason_12_carroll_64kb.mp3",
               "length_ms": 311000,
+              "section_number": 12,
               "start_ms": 5142000,
               "title": "Preface to The Hunting of the Snark"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_reason__1912_librivox/rhymeandreason_13_carroll_64kb.mp3",
               "length_ms": 2184000,
+              "section_number": 13,
               "start_ms": 5453000,
               "title": "The Hunting of the Snark, an Agony in Eight Fits"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_reason__1912_librivox/rhymeandreason_14_carroll_64kb.mp3",
               "length_ms": 156000,
+              "section_number": 14,
               "start_ms": 7637000,
               "title": "Size and Tears"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_reason__1912_librivox/rhymeandreason_15_carroll_64kb.mp3",
               "length_ms": 150000,
+              "section_number": 15,
               "start_ms": 7793000,
               "title": "Atalanta in Camden Town"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_reason__1912_librivox/rhymeandreason_16_carroll_64kb.mp3",
               "length_ms": 449000,
+              "section_number": 16,
               "start_ms": 7943000,
               "title": "The Lang Coortin'"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_reason__1912_librivox/rhymeandreason_17_carroll_64kb.mp3",
               "length_ms": 532000,
+              "section_number": 17,
               "start_ms": 8392000,
               "title": "Four Riddles"
             },
             {
               "audio_url": "https://www.archive.org/download/rhyme_reason__1912_librivox/rhymeandreason_18_carroll_64kb.mp3",
               "length_ms": 189000,
+              "section_number": 18,
               "start_ms": 8924000,
               "title": "Fame's Penny Trumpet"
             }
@@ -4970,7 +5185,11 @@
           "cover_url": "https://archive.org/download/rhyme_reason__1912_librivox/rhymeandreason_1912.jpg",
           "id": "michaelmaggs",
           "language": "en",
+          "librivox_genres": [
+            "Single author"
+          ],
           "librivox_id": 13534,
+          "librivox_title": "Rhyme? And Reason? (Version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/rhyme-and-reason-version-2-by-lewis-carroll/",
@@ -5586,7 +5805,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt10/Rhymed_Receipts_1108.jpg",
           "id": "betsie-bush",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Cooking"
+          ],
           "librivox_id": 5589,
+          "librivox_title": "Rhymed Receipts for Any Occasion",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/rhymed-receipts-for-any-occasion-by-imogen-clark/",
@@ -6224,120 +6448,180 @@
             {
               "audio_url": "https://www.archive.org/download/rhymes_and_rhythms_iv_2304.poem_librivox/rhymesandrhythmsiv_henley_aam_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "alan-mapstone"
+              ],
               "start_ms": 0,
               "title": "Rhymes And Rhythms IV - Read by AAM"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_and_rhythms_iv_2304.poem_librivox/rhymesandrhythmsiv_henley_amb_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "ambsweet13"
+              ],
               "start_ms": 70000,
               "title": "Rhymes And Rhythms IV - Read by AMB"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_and_rhythms_iv_2304.poem_librivox/rhymesandrhythmsiv_henley_bk_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 138000,
               "title": "Rhymes And Rhythms IV - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_and_rhythms_iv_2304.poem_librivox/rhymesandrhythmsiv_henley_clp_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "chris-pyle"
+              ],
               "start_ms": 207000,
               "title": "Rhymes And Rhythms IV - Read by CLP"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_and_rhythms_iv_2304.poem_librivox/rhymesandrhythmsiv_henley_dl_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 264000,
               "title": "Rhymes And Rhythms IV - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_and_rhythms_iv_2304.poem_librivox/rhymesandrhythmsiv_henley_dn_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "darrell-nobles"
+              ],
               "start_ms": 332000,
               "title": "Rhymes And Rhythms IV - Read by DN"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_and_rhythms_iv_2304.poem_librivox/rhymesandrhythmsiv_henley_ek_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "eric-kim"
+              ],
               "start_ms": 401000,
               "title": "Rhymes And Rhythms IV - Read by EK"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_and_rhythms_iv_2304.poem_librivox/rhymesandrhythmsiv_henley_ekz_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "emmi-kranz"
+              ],
               "start_ms": 471000,
               "title": "Rhymes And Rhythms IV - Read by EKZ"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_and_rhythms_iv_2304.poem_librivox/rhymesandrhythmsiv_henley_ik_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "ian-king"
+              ],
               "start_ms": 536000,
               "title": "Rhymes And Rhythms IV - Read by IK"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_and_rhythms_iv_2304.poem_librivox/rhymesandrhythmsiv_henley_ikl_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "inkell"
+              ],
               "start_ms": 606000,
               "title": "Rhymes And Rhythms IV - Read by IKL"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_and_rhythms_iv_2304.poem_librivox/rhymesandrhythmsiv_henley_jbw_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 663000,
               "title": "Rhymes And Rhythms IV - Read by JBW"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_and_rhythms_iv_2304.poem_librivox/rhymesandrhythmsiv_henley_ks_64kb.mp3",
               "length_ms": 63000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 728000,
               "title": "Rhymes And Rhythms IV - Read by KS"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_and_rhythms_iv_2304.poem_librivox/rhymesandrhythmsiv_henley_lah_64kb.mp3",
               "length_ms": 63000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 791000,
               "title": "Rhymes And Rhythms IV - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_and_rhythms_iv_2304.poem_librivox/rhymesandrhythmsiv_henley_lcw_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 854000,
               "title": "Rhymes And Rhythms IV - Read by LCW"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_and_rhythms_iv_2304.poem_librivox/rhymesandrhythmsiv_henley_ls_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "leesalter"
+              ],
               "start_ms": 921000,
               "title": "Rhymes And Rhythms IV - Read by LS"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_and_rhythms_iv_2304.poem_librivox/rhymesandrhythmsiv_henley_nr_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "nero"
+              ],
               "start_ms": 993000,
               "title": "Rhymes And Rhythms IV - Read by NR"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_and_rhythms_iv_2304.poem_librivox/rhymesandrhythmsiv_henley_pr_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "patrick-randall"
+              ],
               "start_ms": 1061000,
               "title": "Rhymes And Rhythms IV - Read by PR"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_and_rhythms_iv_2304.poem_librivox/rhymesandrhythmsiv_henley_rr_64kb.mp3",
               "length_ms": 79000,
+              "readers": [
+                "redrun"
+              ],
               "start_ms": 1135000,
               "title": "Rhymes And Rhythms IV - Read by RR"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_and_rhythms_iv_2304.poem_librivox/rhymesandrhythmsiv_henley_sws_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "scotty-smith"
+              ],
               "start_ms": 1214000,
               "title": "Rhymes And Rhythms IV - Read by SWS"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_and_rhythms_iv_2304.poem_librivox/rhymesandrhythmsiv_henley_tl_64kb.mp3",
               "length_ms": 54000,
+              "readers": [
+                "twinleaf"
+              ],
               "start_ms": 1289000,
               "title": "Rhymes And Rhythms IV - Read by TL"
             }
@@ -6346,7 +6630,11 @@
           "cover_url": "https://archive.org/download/rhymes_and_rhythms_iv_2304.poem_librivox/rhymesrthythms_2304.jpg",
           "id": "alan-mapstone",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 19173,
+          "librivox_title": "Rhymes And Rhythms - IV",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/rhymes-and-rhythms-iv-by-william-ernest-henley/",
@@ -6417,60 +6705,70 @@
             {
               "audio_url": "https://www.archive.org/download/rhymes_nursery_1611_librivox/rhymes_nursery_00_taylor_64kb.mp3",
               "length_ms": 82000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_nursery_1611_librivox/rhymes_nursery_01_taylor_64kb.mp3",
               "length_ms": 471000,
+              "section_number": 1,
               "start_ms": 82000,
               "title": "Poems 1-9"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_nursery_1611_librivox/rhymes_nursery_02_taylor_64kb.mp3",
               "length_ms": 564000,
+              "section_number": 2,
               "start_ms": 553000,
               "title": "Poems 10-18"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_nursery_1611_librivox/rhymes_nursery_03_taylor_64kb.mp3",
               "length_ms": 428000,
+              "section_number": 3,
               "start_ms": 1117000,
               "title": "Poems 19-27"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_nursery_1611_librivox/rhymes_nursery_04_taylor_64kb.mp3",
               "length_ms": 529000,
+              "section_number": 4,
               "start_ms": 1545000,
               "title": "Poems 28-36"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_nursery_1611_librivox/rhymes_nursery_05_taylor_64kb.mp3",
               "length_ms": 593000,
+              "section_number": 5,
               "start_ms": 2074000,
               "title": "Poems 37-45"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_nursery_1611_librivox/rhymes_nursery_06_taylor_64kb.mp3",
               "length_ms": 569000,
+              "section_number": 6,
               "start_ms": 2667000,
               "title": "Poems 46-54"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_nursery_1611_librivox/rhymes_nursery_07_taylor_64kb.mp3",
               "length_ms": 597000,
+              "section_number": 7,
               "start_ms": 3236000,
               "title": "Poems 55-63"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_nursery_1611_librivox/rhymes_nursery_08_taylor_64kb.mp3",
               "length_ms": 604000,
+              "section_number": 8,
               "start_ms": 3833000,
               "title": "Poems 64-72"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_nursery_1611_librivox/rhymes_nursery_09_taylor_64kb.mp3",
               "length_ms": 608000,
+              "section_number": 9,
               "start_ms": 4437000,
               "title": "Poems 73-81"
             }
@@ -6479,7 +6777,11 @@
           "cover_url": "https://archive.org/download/rhymes_nursery_1611_librivox/rhymes_nursery_a_taylor_j_taylor_1611.jpg",
           "id": "jordan-watts",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 11305,
+          "librivox_title": "Rhymes for the Nursery",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/rhymes-for-the-nursery-by-ann-taylor/",
@@ -6530,180 +6832,270 @@
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_01_allingham_64kb.mp3",
               "length_ms": 160000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
               "start_ms": 0,
               "title": "The Fairies"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_02_allingham_64kb.mp3",
               "length_ms": 93000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
               "start_ms": 160000,
               "title": "The Elf Singing"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_03_allingham_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
               "start_ms": 253000,
               "title": "The Fairy King"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_04_allingham_64kb.mp3",
               "length_ms": 79000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
               "start_ms": 334000,
               "title": "Chorus Of Fairies"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_05_allingham_64kb.mp3",
               "length_ms": 120000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
               "start_ms": 413000,
               "title": "Robin Redbreast"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_06_allingham_64kb.mp3",
               "length_ms": 61000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
               "start_ms": 533000,
               "title": "Amy Margaret"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_07_allingham_64kb.mp3",
               "length_ms": 59000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
               "start_ms": 594000,
               "title": "Jingle Jangle"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_08_allingham_64kb.mp3",
               "length_ms": 92000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
               "start_ms": 653000,
               "title": "Dreaming"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_09_allingham_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "heeheekitty"
+              ],
               "start_ms": 745000,
               "title": "I Love You, Dear"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_10_allingham_64kb.mp3",
               "length_ms": 90000,
+              "readers": [
+                "fiddlesticks"
+              ],
               "start_ms": 816000,
               "title": "Seasons"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_11_allingham_64kb.mp3",
               "length_ms": 117000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
               "start_ms": 906000,
               "title": "The Cat And The Dog"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_12_allingham_64kb.mp3",
               "length_ms": 226000,
+              "readers": [
+                "jill-engle"
+              ],
               "start_ms": 1023000,
               "title": "Here And There"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_13_allingham_64kb.mp3",
               "length_ms": 100000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 1249000,
               "title": "The Bird"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_14_allingham_64kb.mp3",
               "length_ms": 90000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 1349000,
               "title": "Wishing"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_15_allingham_64kb.mp3",
               "length_ms": 56000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
               "start_ms": 1439000,
               "title": "I Saw A Little Birdie Fly"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_16_allingham_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "heeheekitty"
+              ],
               "start_ms": 1495000,
               "title": "A Mountain Round"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_17_allingham_64kb.mp3",
               "length_ms": 192000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
               "start_ms": 1564000,
               "title": "The Lepracaun, Or Fairy Shoemaker"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_18_allingham_64kb.mp3",
               "length_ms": 53000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
               "start_ms": 1756000,
               "title": "Yes Or No?"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_19_allingham_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "julia-layne"
+              ],
               "start_ms": 1809000,
               "title": "Sleeping"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_20_allingham_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "rachel"
+              ],
               "start_ms": 1878000,
               "title": "A Swing Song"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_21_allingham_64kb.mp3",
               "length_ms": 125000,
+              "readers": [
+                "julia-layne"
+              ],
               "start_ms": 1969000,
               "title": "Birds' Names"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_22_allingham_64kb.mp3",
               "length_ms": 113000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
               "start_ms": 2094000,
               "title": "Down On The Shore"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_23_allingham_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
               "start_ms": 2207000,
               "title": "The Bubble"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_24_allingham_64kb.mp3",
               "length_ms": 38000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
               "start_ms": 2276000,
               "title": "Nick Spence"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_25_allingham_64kb.mp3",
               "length_ms": 87000,
+              "readers": [
+                "julia-layne"
+              ],
               "start_ms": 2314000,
               "title": "Ambition"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_26_allingham_64kb.mp3",
               "length_ms": 64000,
+              "readers": [
+                "jp4kjv"
+              ],
               "start_ms": 2401000,
               "title": "The Ball"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_27_allingham_64kb.mp3",
               "length_ms": 111000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
               "start_ms": 2465000,
               "title": "Riding"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_28_allingham_64kb.mp3",
               "length_ms": 133000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
               "start_ms": 2576000,
               "title": "Tom Cricket"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_29_allingham_64kb.mp3",
               "length_ms": 60000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
               "start_ms": 2709000,
               "title": "The Year Of Hardships"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymesfortheyoungfolk_30_allingham_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "jp4kjv"
+              ],
               "start_ms": 2769000,
               "title": "A Riddle"
             }
@@ -6712,7 +7104,11 @@
           "cover_url": "https://archive.org/download/rhymesfortheyoungfolk_1412_librivox/rhymes_youngfolk_1412.jpg",
           "id": "rosslyn-carlyle",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 9181,
+          "librivox_title": "Rhymes For The Young Folk",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/rhymes-for-the-young-folk-by-william-allingham/",
@@ -6767,318 +7163,477 @@
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_01_service_64kb.mp3",
               "length_ms": 246000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 0,
               "title": "Dedication & Foreword"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_02_service_64kb.mp3",
               "length_ms": 146000,
+              "readers": [
+                "joshua-cabana"
+              ],
               "start_ms": 246000,
               "title": "The Fool"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_03_service_64kb.mp3",
               "length_ms": 141000,
+              "readers": [
+                "joshua-cabana"
+              ],
               "start_ms": 392000,
               "title": "The Volunteer"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_04_service_64kb.mp3",
               "length_ms": 105000,
+              "readers": [
+                "joshua-cabana"
+              ],
               "start_ms": 533000,
               "title": "The Convalescent"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_05_service_64kb.mp3",
               "length_ms": 279000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 638000,
               "title": "The Man from Athabaska"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_06_service_64kb.mp3",
               "length_ms": 241000,
+              "readers": [
+                "nigel-fisher"
+              ],
               "start_ms": 917000,
               "title": "The Red Retreat"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_07_service_64kb.mp3",
               "length_ms": 469000,
+              "readers": [
+                "skip-corris"
+              ],
               "start_ms": 1158000,
               "title": "The Haggis of Private McPhee"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_08_service_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "joshua-cabana"
+              ],
               "start_ms": 1627000,
               "title": "The Lark"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_09_service_64kb.mp3",
               "length_ms": 309000,
+              "readers": [
+                "nigel-fisher"
+              ],
               "start_ms": 1703000,
               "title": "The Odyssey of 'Erbert 'Iggins"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_10_service_64kb.mp3",
               "length_ms": 99000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 2012000,
               "title": "A Song of Winter Weather"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_11_service_64kb.mp3",
               "length_ms": 154000,
+              "readers": [
+                "nigel-fisher"
+              ],
               "start_ms": 2111000,
               "title": "Tipperary Days"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_12_service_64kb.mp3",
               "length_ms": 307000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 2265000,
               "title": "Fleurette"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_13_service_64kb.mp3",
               "length_ms": 96000,
+              "readers": [
+                "nigel-fisher"
+              ],
               "start_ms": 2572000,
               "title": "Funk"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_14_service_64kb.mp3",
               "length_ms": 131000,
+              "readers": [
+                "joseph-tabler"
+              ],
               "start_ms": 2668000,
               "title": "Our Hero"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_15_service_64kb.mp3",
               "length_ms": 164000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 2799000,
               "title": "My Mate"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_16_service_64kb.mp3",
               "length_ms": 203000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 2963000,
               "title": "Milking Time"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_17_service_64kb.mp3",
               "length_ms": 177000,
+              "readers": [
+                "maria-de-fatima-da-silva"
+              ],
               "start_ms": 3166000,
               "title": "Young Fellow My Lad"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_18_service_64kb.mp3",
               "length_ms": 223000,
+              "readers": [
+                "skip-corris"
+              ],
               "start_ms": 3343000,
               "title": "A Song of the Sandbags"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_19_service_64kb.mp3",
               "length_ms": 246000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 3566000,
               "title": "On the Wire"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_20_service_64kb.mp3",
               "length_ms": 185000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 3812000,
               "title": "Bill's Grave"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_21_service_64kb.mp3",
               "length_ms": 472000,
+              "readers": [
+                "maria-de-fatima-da-silva"
+              ],
               "start_ms": 3997000,
               "title": "Jean Desprez"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_22_service_64kb.mp3",
               "length_ms": 107000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 4469000,
               "title": "Going Home"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_23_service_64kb.mp3",
               "length_ms": 278000,
+              "readers": [
+                "erin-grassie"
+              ],
               "start_ms": 4576000,
               "title": "Cocotte"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_24_service_64kb.mp3",
               "length_ms": 147000,
+              "readers": [
+                "maria-de-fatima-da-silva"
+              ],
               "start_ms": 4854000,
               "title": "My Bay'nit"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_25_service_64kb.mp3",
               "length_ms": 153000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 5001000,
               "title": "Carry On!"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_26_service_64kb.mp3",
               "length_ms": 315000,
+              "readers": [
+                "skip-corris"
+              ],
               "start_ms": 5154000,
               "title": "Over the Parapet"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_27_service_64kb.mp3",
               "length_ms": 298000,
+              "readers": [
+                "skip-corris"
+              ],
               "start_ms": 5469000,
               "title": "The Ballad of Soulful Sam"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_28_service_64kb.mp3",
               "length_ms": 289000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 5767000,
               "title": "Only a Boche"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_29_service_64kb.mp3",
               "length_ms": 145000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 6056000,
               "title": "Pilgrims"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_30_service_64kb.mp3",
               "length_ms": 194000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 6201000,
               "title": "My Prisoner"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_31_service_64kb.mp3",
               "length_ms": 130000,
+              "readers": [
+                "maria-de-fatima-da-silva"
+              ],
               "start_ms": 6395000,
               "title": "Tri-colour"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_32_service_64kb.mp3",
               "length_ms": 154000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 6525000,
               "title": "A Pot of Tea"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_33_service_64kb.mp3",
               "length_ms": 252000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 6679000,
               "title": "The Revelation"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_34_service_64kb.mp3",
               "length_ms": 64000,
+              "readers": [
+                "joshua-cabana"
+              ],
               "start_ms": 6931000,
               "title": "Grand-père"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_35_service_64kb.mp3",
               "length_ms": 188000,
+              "readers": [
+                "maria-de-fatima-da-silva"
+              ],
               "start_ms": 6995000,
               "title": "Son"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_36_service_64kb.mp3",
               "length_ms": 290000,
+              "readers": [
+                "skip-corris"
+              ],
               "start_ms": 7183000,
               "title": "The Black Dudeen"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_37_service_64kb.mp3",
               "length_ms": 176000,
+              "readers": [
+                "maria-de-fatima-da-silva"
+              ],
               "start_ms": 7473000,
               "title": "The Little Piou-piou"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_38_service_64kb.mp3",
               "length_ms": 355000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 7649000,
               "title": "Bill the Bomber"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_39_service_64kb.mp3",
               "length_ms": 365000,
+              "readers": [
+                "skip-corris"
+              ],
               "start_ms": 8004000,
               "title": "The Whistle of Sandy McGraw"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_40_service_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "martinw"
+              ],
               "start_ms": 8369000,
               "title": "The Stretcher-Bearer"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_41_service_64kb.mp3",
               "length_ms": 430000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 8450000,
               "title": "Wounded"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_42_service_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "joshua-cabana"
+              ],
               "start_ms": 8880000,
               "title": "Faith"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_43_service_64kb.mp3",
               "length_ms": 219000,
+              "readers": [
+                "chadh94"
+              ],
               "start_ms": 8937000,
               "title": "The Coward"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_44_service_64kb.mp3",
               "length_ms": 166000,
+              "readers": [
+                "maria-de-fatima-da-silva"
+              ],
               "start_ms": 9156000,
               "title": "Missis Moriarty's Boy"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_45_service_64kb.mp3",
               "length_ms": 304000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 9322000,
               "title": "My Foe"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_46_service_64kb.mp3",
               "length_ms": 115000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 9626000,
               "title": "My Job"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_47_service_64kb.mp3",
               "length_ms": 145000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 9741000,
               "title": "The Song of the Pacifist"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_48_service_64kb.mp3",
               "length_ms": 61000,
+              "readers": [
+                "joshua-cabana"
+              ],
               "start_ms": 9886000,
               "title": "The Twins"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_49_service_64kb.mp3",
               "length_ms": 184000,
+              "readers": [
+                "maria-de-fatima-da-silva"
+              ],
               "start_ms": 9947000,
               "title": "The Song of the Soldier-born"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_50_service_64kb.mp3",
               "length_ms": 388000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 10131000,
               "title": "Afternoon Tea"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_51_service_64kb.mp3",
               "length_ms": 128000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 10519000,
               "title": "The Mourners"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_52_service_64kb.mp3",
               "length_ms": 171000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 10647000,
               "title": "L'Envoi"
             },
             {
               "audio_url": "https://www.archive.org/download/red_cross_man_1811_librivox/redcrossman_53_service_64kb.mp3",
               "length_ms": 132000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 10818000,
               "title": "About the Author"
             }
@@ -7087,7 +7642,11 @@
           "cover_url": "https://archive.org/download/red_cross_man_1811_librivox/red_cross_man_1811.jpg",
           "id": "larry-wilson",
           "language": "en",
+          "librivox_genres": [
+            "Single author"
+          ],
           "librivox_id": 13336,
+          "librivox_title": "Rhymes of a Red Cross Man",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/rhymes-of-a-red-cross-man-by-robert-w-service/",
@@ -7149,690 +7708,1035 @@
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_001_guest_64kb.mp3",
               "length_ms": 130000,
+              "readers": [
+                "tomas-dorrington-hardin"
+              ],
               "start_ms": 0,
               "title": "How the Baby Learned to Smile"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_002_guest_64kb.mp3",
               "length_ms": 142000,
+              "readers": [
+                "tomas-dorrington-hardin"
+              ],
               "start_ms": 130000,
               "title": "Grandma"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_003_guest_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "tomas-dorrington-hardin"
+              ],
               "start_ms": 272000,
               "title": "Habits"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_004_guest_64kb.mp3",
               "length_ms": 110000,
+              "readers": [
+                "ed-humpal"
+              ],
               "start_ms": 381000,
               "title": "The Path o’ Little Children"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_005_guest_64kb.mp3",
               "length_ms": 88000,
+              "readers": [
+                "sonrisa-jones"
+              ],
               "start_ms": 491000,
               "title": "Just a Boy"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_006_guest_64kb.mp3",
               "length_ms": 90000,
+              "readers": [
+                "sonrisa-jones"
+              ],
               "start_ms": 579000,
               "title": "The New Little Gimmie"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_007_guest_64kb.mp3",
               "length_ms": 96000,
+              "readers": [
+                "sonrisa-jones"
+              ],
               "start_ms": 669000,
               "title": "The Woe of an Unwilling Orator"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_008_guest_64kb.mp3",
               "length_ms": 117000,
+              "readers": [
+                "tomas-dorrington-hardin"
+              ],
               "start_ms": 765000,
               "title": "A Christmas Story"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_009_guest_64kb.mp3",
               "length_ms": 102000,
+              "readers": [
+                "thoughtfulwilderness"
+              ],
               "start_ms": 882000,
               "title": "Weaning the Baby"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_010_guest_64kb.mp3",
               "length_ms": 86000,
+              "readers": [
+                "thoughtfulwilderness"
+              ],
               "start_ms": 984000,
               "title": "The First Step"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_011_guest_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "sonrisa-jones"
+              ],
               "start_ms": 1070000,
               "title": "Wishing"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_012_guest_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "sonrisa-jones"
+              ],
               "start_ms": 1142000,
               "title": "Where the Children Meet"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_013_guest_64kb.mp3",
               "length_ms": 122000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 1251000,
               "title": "When We Were Kids"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_014_guest_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "jenn-broda"
+              ],
               "start_ms": 1373000,
               "title": "A Baby in the House"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_015_guest_64kb.mp3",
               "length_ms": 89000,
+              "readers": [
+                "fernando-borrego"
+              ],
               "start_ms": 1464000,
               "title": "Our Son"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_016_guest_64kb.mp3",
               "length_ms": 153000,
+              "readers": [
+                "fernando-borrego"
+              ],
               "start_ms": 1553000,
               "title": "Come Back, You Little Feller"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_017_guest_64kb.mp3",
               "length_ms": 121000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 1706000,
               "title": "Sticky Fingers"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_018_guest_64kb.mp3",
               "length_ms": 103000,
+              "readers": [
+                "trax"
+              ],
               "start_ms": 1827000,
               "title": "Janet’s Morning Bath"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_019_guest_64kb.mp3",
               "length_ms": 99000,
+              "readers": [
+                "trax"
+              ],
               "start_ms": 1930000,
               "title": "The Family Disgrace"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_020_guest_64kb.mp3",
               "length_ms": 122000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 2029000,
               "title": "The Lanes of Boyhood"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_021_guest_64kb.mp3",
               "length_ms": 104000,
+              "readers": [
+                "fernando-borrego"
+              ],
               "start_ms": 2151000,
               "title": "Fractions"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_022_guest_64kb.mp3",
               "length_ms": 87000,
+              "readers": [
+                "wayne-perry"
+              ],
               "start_ms": 2255000,
               "title": "The Human Stage Coach"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_023_guest_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 2342000,
               "title": "The Rough Little Rascal"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_024_guest_64kb.mp3",
               "length_ms": 105000,
+              "readers": [
+                "diya-khurana"
+              ],
               "start_ms": 2424000,
               "title": "At Sixteen Months"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_025_guest_64kb.mp3",
               "length_ms": 106000,
+              "readers": [
+                "diya-khurana"
+              ],
               "start_ms": 2529000,
               "title": "Baby Feet"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_026_guest_64kb.mp3",
               "length_ms": 131000,
+              "readers": [
+                "jenn-broda"
+              ],
               "start_ms": 2635000,
               "title": "A Fairy Story"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_027_guest_64kb.mp3",
               "length_ms": 86000,
+              "readers": [
+                "diya-khurana"
+              ],
               "start_ms": 2766000,
               "title": "“Where’s Mamma?”"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_028_guest_64kb.mp3",
               "length_ms": 115000,
+              "readers": [
+                "diya-khurana"
+              ],
               "start_ms": 2852000,
               "title": "The Boy and the Flag"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_029_guest_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "francesco-dembinski"
+              ],
               "start_ms": 2967000,
               "title": "When a Little Baby Dies"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_030_guest_64kb.mp3",
               "length_ms": 98000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 3058000,
               "title": "A Boy and His Stomach"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_031_guest_64kb.mp3",
               "length_ms": 104000,
+              "readers": [
+                "jenn-broda"
+              ],
               "start_ms": 3156000,
               "title": "Lullaby"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_032_guest_64kb.mp3",
               "length_ms": 140000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 3260000,
               "title": "The Man to Be"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_033_guest_64kb.mp3",
               "length_ms": 87000,
+              "readers": [
+                "francesco-dembinski"
+              ],
               "start_ms": 3400000,
               "title": "The Summer Children"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_034_guest_64kb.mp3",
               "length_ms": 108000,
+              "readers": [
+                "willj"
+              ],
               "start_ms": 3487000,
               "title": "The Old Wooden Tub"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_035_guest_64kb.mp3",
               "length_ms": 156000,
+              "readers": [
+                "tomas-dorrington-hardin"
+              ],
               "start_ms": 3595000,
               "title": "Dr. Johnson’s Picture Cow"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_036_guest_64kb.mp3",
               "length_ms": 140000,
+              "readers": [
+                "tomas-dorrington-hardin"
+              ],
               "start_ms": 3751000,
               "title": "The Approach of Christmas"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_037_guest_64kb.mp3",
               "length_ms": 83000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 3891000,
               "title": "A Boy and His Dog"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_038_guest_64kb.mp3",
               "length_ms": 130000,
+              "readers": [
+                "jenn-broda"
+              ],
               "start_ms": 3974000,
               "title": "Boy or Girl?"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_039_guest_64kb.mp3",
               "length_ms": 115000,
+              "readers": [
+                "fernando-borrego"
+              ],
               "start_ms": 4104000,
               "title": "“Wait Till Your Pa Comes Home”"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_040_guest_64kb.mp3",
               "length_ms": 138000,
+              "readers": [
+                "wayne-cooke"
+              ],
               "start_ms": 4219000,
               "title": "Nothing to Laugh At"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_041_guest_64kb.mp3",
               "length_ms": 88000,
+              "readers": [
+                "wayne-cooke"
+              ],
               "start_ms": 4357000,
               "title": "Teach Them of the Flag"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_042_guest_64kb.mp3",
               "length_ms": 90000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 4445000,
               "title": "Daddies"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_043_guest_64kb.mp3",
               "length_ms": 119000,
+              "readers": [
+                "jenn-broda"
+              ],
               "start_ms": 4535000,
               "title": "The Toy-Strewn Home"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_044_guest_64kb.mp3",
               "length_ms": 86000,
+              "readers": [
+                "greg-dietz"
+              ],
               "start_ms": 4654000,
               "title": "Last Night the Baby Cried"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_045_guest_64kb.mp3",
               "length_ms": 110000,
+              "readers": [
+                "sarah-brown"
+              ],
               "start_ms": 4740000,
               "title": "Little Fishermen"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_046_guest_64kb.mp3",
               "length_ms": 121000,
+              "readers": [
+                "wayne-cooke"
+              ],
               "start_ms": 4850000,
               "title": "The Cookie-Lady"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_047_guest_64kb.mp3",
               "length_ms": 156000,
+              "readers": [
+                "meetali10"
+              ],
               "start_ms": 4971000,
               "title": "Being Brave at Night"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_048_guest_64kb.mp3",
               "length_ms": 97000,
+              "readers": [
+                "garfield-dsouza"
+              ],
               "start_ms": 5127000,
               "title": "Pleasure's Signs"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_049_guest_64kb.mp3",
               "length_ms": 147000,
+              "readers": [
+                "trax"
+              ],
               "start_ms": 5224000,
               "title": "Little Girls"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_050_guest_64kb.mp3",
               "length_ms": 92000,
+              "readers": [
+                "wayne-perry"
+              ],
               "start_ms": 5371000,
               "title": "Dinner-Time"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_051_guest_64kb.mp3",
               "length_ms": 108000,
+              "readers": [
+                "wayne-perry"
+              ],
               "start_ms": 5463000,
               "title": "Castor Oil"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_052_guest_64kb.mp3",
               "length_ms": 117000,
+              "readers": [
+                "fernando-borrego"
+              ],
               "start_ms": 5571000,
               "title": "At Dawn"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_053_guest_64kb.mp3",
               "length_ms": 164000,
+              "readers": [
+                "trax"
+              ],
               "start_ms": 5688000,
               "title": "Bud Discusses Cleanliness"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_054_guest_64kb.mp3",
               "length_ms": 115000,
+              "readers": [
+                "wayne-cooke"
+              ],
               "start_ms": 5852000,
               "title": "The Children"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_055_guest_64kb.mp3",
               "length_ms": 103000,
+              "readers": [
+                "jenn-broda"
+              ],
               "start_ms": 5967000,
               "title": "His Example"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_056_guest_64kb.mp3",
               "length_ms": 102000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 6070000,
               "title": "The Fun of Forgiving"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_057_guest_64kb.mp3",
               "length_ms": 130000,
+              "readers": [
+                "wayne-cooke"
+              ],
               "start_ms": 6172000,
               "title": "The Right Family"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_058_guest_64kb.mp3",
               "length_ms": 128000,
+              "readers": [
+                "diya-khurana"
+              ],
               "start_ms": 6302000,
               "title": "Tonsils"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_059_guest_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "wayne-cooke"
+              ],
               "start_ms": 6430000,
               "title": "As It Goes"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_060_guest_64kb.mp3",
               "length_ms": 125000,
+              "readers": [
+                "diya-khurana"
+              ],
               "start_ms": 6539000,
               "title": "When the Soap Gets in Your Eye"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_061_guest_64kb.mp3",
               "length_ms": 119000,
+              "readers": [
+                "renelle"
+              ],
               "start_ms": 6664000,
               "title": "I Don't Want to Go to Bed"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_062_guest_64kb.mp3",
               "length_ms": 107000,
+              "readers": [
+                "eric-lee"
+              ],
               "start_ms": 6783000,
               "title": "Morning Brigands"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_063_guest_64kb.mp3",
               "length_ms": 114000,
+              "readers": [
+                "garfield-dsouza"
+              ],
               "start_ms": 6890000,
               "title": "Aunty"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_064_guest_64kb.mp3",
               "length_ms": 125000,
+              "readers": [
+                "garfield-dsouza"
+              ],
               "start_ms": 7004000,
               "title": "Different"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_065_guest_64kb.mp3",
               "length_ms": 87000,
+              "readers": [
+                "eric-lee"
+              ],
               "start_ms": 7129000,
               "title": "A Fine Sight"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_066_guest_64kb.mp3",
               "length_ms": 142000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 7216000,
               "title": "A Boy at Christmas"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_067_guest_64kb.mp3",
               "length_ms": 102000,
+              "readers": [
+                "garfield-dsouza"
+              ],
               "start_ms": 7358000,
               "title": "The Cut-Down Trousers"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_068_guest_64kb.mp3",
               "length_ms": 88000,
+              "readers": [
+                "laurel-emerson"
+              ],
               "start_ms": 7460000,
               "title": "The Little Hurts"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_069_guest_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "laurel-emerson"
+              ],
               "start_ms": 7548000,
               "title": "Grown Up"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_070_guest_64kb.mp3",
               "length_ms": 125000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 7639000,
               "title": "Grandpa"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_071_guest_64kb.mp3",
               "length_ms": 103000,
+              "readers": [
+                "garfield-dsouza"
+              ],
               "start_ms": 7764000,
               "title": "Pa Did It"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_072_guest_64kb.mp3",
               "length_ms": 101000,
+              "readers": [
+                "eric-lee"
+              ],
               "start_ms": 7867000,
               "title": "The Doctor"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_073_guest_64kb.mp3",
               "length_ms": 145000,
+              "readers": [
+                "eric-lee"
+              ],
               "start_ms": 7968000,
               "title": "The Little Velvet Suit"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_074_guest_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "eric-lee"
+              ],
               "start_ms": 8113000,
               "title": "Spoiling Them"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_075_guest_64kb.mp3",
               "length_ms": 134000,
+              "readers": [
+                "wayne-cooke"
+              ],
               "start_ms": 8222000,
               "title": "Story Time"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_076_guest_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "josie3144"
+              ],
               "start_ms": 8356000,
               "title": "Another Mouth to Feed"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_077_guest_64kb.mp3",
               "length_ms": 105000,
+              "readers": [
+                "ed-humpal"
+              ],
               "start_ms": 8450000,
               "title": "The Lure That Failed"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_078_guest_64kb.mp3",
               "length_ms": 152000,
+              "readers": [
+                "eric-lee"
+              ],
               "start_ms": 8555000,
               "title": "The Little Army"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_079_guest_64kb.mp3",
               "length_ms": 111000,
+              "readers": [
+                "eric-lee"
+              ],
               "start_ms": 8707000,
               "title": "The Broken Drum"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_080_guest_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 8818000,
               "title": "The Boy Soldier"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_081_guest_64kb.mp3",
               "length_ms": 144000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 8900000,
               "title": "A Bear Story"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_082_guest_64kb.mp3",
               "length_ms": 141000,
+              "readers": [
+                "hannahwishbone"
+              ],
               "start_ms": 9044000,
               "title": "When Pa Comes Home"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_083_guest_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 9185000,
               "title": "The Joy of a Dog"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_084_guest_64kb.mp3",
               "length_ms": 85000,
+              "readers": [
+                "eric-lee"
+              ],
               "start_ms": 9265000,
               "title": "Up to the Ceiling"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_085_guest_64kb.mp3",
               "length_ms": 134000,
+              "readers": [
+                "wayne-cooke"
+              ],
               "start_ms": 9350000,
               "title": "Answering Him"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_086_guest_64kb.mp3",
               "length_ms": 84000,
+              "readers": [
+                "eric-lee"
+              ],
               "start_ms": 9484000,
               "title": "The Bumps and Bruises Doctor"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_087_guest_64kb.mp3",
               "length_ms": 114000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 9568000,
               "title": "Real Swimming"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_088_guest_64kb.mp3",
               "length_ms": 108000,
+              "readers": [
+                "wayne-cooke"
+              ],
               "start_ms": 9682000,
               "title": "Always Saying “Don’t!”"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_089_guest_64kb.mp3",
               "length_ms": 146000,
+              "readers": [
+                "wayne-cooke"
+              ],
               "start_ms": 9790000,
               "title": "No Children!"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_090_guest_64kb.mp3",
               "length_ms": 152000,
+              "readers": [
+                "wayne-cooke"
+              ],
               "start_ms": 9936000,
               "title": "To a Little Girl"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_091_guest_64kb.mp3",
               "length_ms": 106000,
+              "readers": [
+                "ed-humpal"
+              ],
               "start_ms": 10088000,
               "title": "A Feller's Hat"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_092_guest_64kb.mp3",
               "length_ms": 147000,
+              "readers": [
+                "renelle"
+              ],
               "start_ms": 10194000,
               "title": "Practicing Time"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_093_guest_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "grace-buchanan"
+              ],
               "start_ms": 10341000,
               "title": "When There's Company for Tea"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_094_guest_64kb.mp3",
               "length_ms": 106000,
+              "readers": [
+                "grace-buchanan"
+              ],
               "start_ms": 10450000,
               "title": "The Good Little Boy"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_095_guest_64kb.mp3",
               "length_ms": 129000,
+              "readers": [
+                "grace-buchanan"
+              ],
               "start_ms": 10556000,
               "title": "The Finest Age"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_096_guest_64kb.mp3",
               "length_ms": 140000,
+              "readers": [
+                "ed-humpal"
+              ],
               "start_ms": 10685000,
               "title": "Out-of-Doors"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_097_guest_64kb.mp3",
               "length_ms": 116000,
+              "readers": [
+                "wayne-cooke"
+              ],
               "start_ms": 10825000,
               "title": "My Paw Said So"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_098_guest_64kb.mp3",
               "length_ms": 113000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 10941000,
               "title": "A Boy and His Dad"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_099_guest_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "wayne-perry"
+              ],
               "start_ms": 11054000,
               "title": "A Boy's Hope for the Future"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_100_guest_64kb.mp3",
               "length_ms": 104000,
+              "readers": [
+                "fernando-borrego"
+              ],
               "start_ms": 11148000,
               "title": "Couldn't Live Without You"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_101_guest_64kb.mp3",
               "length_ms": 112000,
+              "readers": [
+                "eric-lee"
+              ],
               "start_ms": 11252000,
               "title": "Leader of the Gang"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_102_guest_64kb.mp3",
               "length_ms": 121000,
+              "readers": [
+                "theoden-humphrey"
+              ],
               "start_ms": 11364000,
               "title": "Little Girls Are Best"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_103_guest_64kb.mp3",
               "length_ms": 132000,
+              "readers": [
+                "theoden-humphrey"
+              ],
               "start_ms": 11485000,
               "title": "What Home's Intended For"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_104_guest_64kb.mp3",
               "length_ms": 87000,
+              "readers": [
+                "eric-lee"
+              ],
               "start_ms": 11617000,
               "title": "Aw Gee Whiz!"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_105_guest_64kb.mp3",
               "length_ms": 85000,
+              "readers": [
+                "sarah-brown"
+              ],
               "start_ms": 11704000,
               "title": "The Living Beauties"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_106_guest_64kb.mp3",
               "length_ms": 133000,
+              "readers": [
+                "fernando-borrego"
+              ],
               "start_ms": 11789000,
               "title": "Story Telling"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_107_guest_64kb.mp3",
               "length_ms": 97000,
+              "readers": [
+                "april6090"
+              ],
               "start_ms": 11922000,
               "title": "The World and Bud"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_108_guest_64kb.mp3",
               "length_ms": 105000,
+              "readers": [
+                "garfield-dsouza"
+              ],
               "start_ms": 12019000,
               "title": "The Choir Boy"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_109_guest_64kb.mp3",
               "length_ms": 117000,
+              "readers": [
+                "wayne-perry"
+              ],
               "start_ms": 12124000,
               "title": "To the Little Baby"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_110_guest_64kb.mp3",
               "length_ms": 146000,
+              "readers": [
+                "theoden-humphrey"
+              ],
               "start_ms": 12241000,
               "title": "Pretending Not to See"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_111_guest_64kb.mp3",
               "length_ms": 127000,
+              "readers": [
+                "ed-humpal"
+              ],
               "start_ms": 12387000,
               "title": "The Fairy and the Robin"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_112_guest_64kb.mp3",
               "length_ms": 110000,
+              "readers": [
+                "tomas-dorrington-hardin"
+              ],
               "start_ms": 12514000,
               "title": "The Spoiler"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_113_guest_64kb.mp3",
               "length_ms": 166000,
+              "readers": [
+                "tomas-dorrington-hardin"
+              ],
               "start_ms": 12624000,
               "title": "High Chair Days"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_114_guest_64kb.mp3",
               "length_ms": 96000,
+              "readers": [
+                "tomas-dorrington-hardin"
+              ],
               "start_ms": 12790000,
               "title": "Rich"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymesofchildhood_2006_librivox/rhymesofchildhood_115_guest_64kb.mp3",
               "length_ms": 129000,
+              "readers": [
+                "ed-humpal"
+              ],
               "start_ms": 12886000,
               "title": "Dirty Hands"
             }
@@ -7841,7 +8745,12 @@
           "cover_url": "https://archive.org/download/librivoxcdcoverart36/rhymesofchildhood_2006.jpg",
           "id": "tomas-dorrington-hardin",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Single author"
+          ],
           "librivox_id": 15092,
+          "librivox_title": "Rhymes of Childhood",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/rhymes-of-childhood-by-edgar-a-guest/",
@@ -7915,192 +8824,320 @@
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_00_whilt_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_01_whilt_64kb.mp3",
               "length_ms": 139000,
+              "readers": [
+                "allison-smith"
+              ],
+              "section_number": 1,
               "start_ms": 109000,
               "title": "The Trapper's Trail"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_02_whilt_64kb.mp3",
               "length_ms": 117000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 2,
               "start_ms": 248000,
               "title": "My Garden"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_03_whilt_64kb.mp3",
               "length_ms": 93000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 3,
               "start_ms": 365000,
               "title": "Adventurer's Luck"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_04_whilt_64kb.mp3",
               "length_ms": 88000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 4,
               "start_ms": 458000,
               "title": "The Lark Song"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_05_whilt_64kb.mp3",
               "length_ms": 128000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 5,
               "start_ms": 546000,
               "title": "The Trapper's Story"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_06_whilt_64kb.mp3",
               "length_ms": 83000,
+              "readers": [
+                "jason-in-panama"
+              ],
+              "section_number": 6,
               "start_ms": 674000,
               "title": "To the Robin"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_07_whilt_64kb.mp3",
               "length_ms": 104000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 7,
               "start_ms": 757000,
               "title": "The Place Where I Was Born"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_08_whilt_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 8,
               "start_ms": 861000,
               "title": "My Jewels"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_09_whilt_64kb.mp3",
               "length_ms": 98000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 9,
               "start_ms": 955000,
               "title": "The Rainstorm"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_10_whilt_64kb.mp3",
               "length_ms": 99000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 10,
               "start_ms": 1053000,
               "title": "My Blanket-roll"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_11_whilt_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 11,
               "start_ms": 1152000,
               "title": "The Chinook Wind"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_12_whilt_64kb.mp3",
               "length_ms": 105000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 12,
               "start_ms": 1228000,
               "title": "The Pale Horse"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_13_whilt_64kb.mp3",
               "length_ms": 101000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 13,
               "start_ms": 1333000,
               "title": "The Snowstorm"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_14_whilt_64kb.mp3",
               "length_ms": 106000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 14,
               "start_ms": 1434000,
               "title": "Silent Voices Of The Night"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_15_whilt_64kb.mp3",
               "length_ms": 151000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 15,
               "start_ms": 1540000,
               "title": "The Pack Train"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_16_whilt_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 16,
               "start_ms": 1691000,
               "title": "Moonlight"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_17_whilt_64kb.mp3",
               "length_ms": 96000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 17,
               "start_ms": 1785000,
               "title": "My Dream"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_18_whilt_64kb.mp3",
               "length_ms": 111000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 18,
               "start_ms": 1881000,
               "title": "The Old Frying Pan"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_19_whilt_64kb.mp3",
               "length_ms": 107000,
+              "readers": [
+                "jason-in-panama"
+              ],
+              "section_number": 19,
               "start_ms": 1992000,
               "title": "The Rainy Day"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_20_whilt_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 20,
               "start_ms": 2099000,
               "title": "The Streamlet"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_21_whilt_64kb.mp3",
               "length_ms": 181000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 21,
               "start_ms": 2168000,
               "title": "Ed Enders' Grave"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_22_whilt_64kb.mp3",
               "length_ms": 103000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 22,
               "start_ms": 2349000,
               "title": "Springtime"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_23_whilt_64kb.mp3",
               "length_ms": 107000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 23,
               "start_ms": 2452000,
               "title": "The Call of Nature"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_24_whilt_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 24,
               "start_ms": 2559000,
               "title": "My Request"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_25_whilt_64kb.mp3",
               "length_ms": 93000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 25,
               "start_ms": 2616000,
               "title": "Indian Trails"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_26_whilt_64kb.mp3",
               "length_ms": 108000,
+              "readers": [
+                "jason-in-panama"
+              ],
+              "section_number": 26,
               "start_ms": 2709000,
               "title": "Memory's Camp-fire"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_27_whilt_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 27,
               "start_ms": 2817000,
               "title": "Winter"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_28_whilt_64kb.mp3",
               "length_ms": 147000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 28,
               "start_ms": 2893000,
               "title": "Passing of the Range"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_29_whilt_64kb.mp3",
               "length_ms": 95000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 29,
               "start_ms": 3040000,
               "title": "The Cabin of Mystery"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_30_whilt_64kb.mp3",
               "length_ms": 136000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 30,
               "start_ms": 3135000,
               "title": "When the Leaves Commence to Fall"
             },
             {
               "audio_url": "https://www.archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesrockies_31_whilt_64kb.mp3",
               "length_ms": 96000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 31,
               "start_ms": 3271000,
               "title": "Au Revoir"
             }
@@ -8109,7 +9146,11 @@
           "cover_url": "https://archive.org/download/rhymes_of_the_rockies_1701_librivox/rhymesofrockies_1701.jpg",
           "id": "larry-wilson",
           "language": "en",
+          "librivox_genres": [
+            "Single author"
+          ],
           "librivox_id": 11290,
+          "librivox_title": "Rhymes of the Rockies",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/rhymes-of-the-rockies-by-james-w-whilt/",
@@ -8972,7 +10013,11 @@
           "cover_url": "https://archive.org/download/librivoxcdcoverart36/rhythmoflife_2005.jpg",
           "id": "valentina-vocelli",
           "language": "en",
+          "librivox_genres": [
+            "Essays & Short Works"
+          ],
           "librivox_id": 15068,
+          "librivox_title": "Rhythm of Life and Other Essays",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-rhythm-of-life-and-other-essays-by-alice-meynell/",

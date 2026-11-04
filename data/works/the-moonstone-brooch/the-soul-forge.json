@@ -5416,42 +5416,49 @@
             {
               "audio_url": "https://www.archive.org/download/soul_indian_1011_librivox/souloftheindian_0_eastman_64kb.mp3",
               "length_ms": 271000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 - Forward"
             },
             {
               "audio_url": "https://www.archive.org/download/soul_indian_1011_librivox/souloftheindian_1_eastman_64kb.mp3",
               "length_ms": 798000,
+              "section_number": 1,
               "start_ms": 271000,
               "title": "01 - Ch 01 - The Great Mystery"
             },
             {
               "audio_url": "https://www.archive.org/download/soul_indian_1011_librivox/souloftheindian_2_eastman_64kb.mp3",
               "length_ms": 866000,
+              "section_number": 2,
               "start_ms": 1069000,
               "title": "02 - Ch 02 - The Family Altar"
             },
             {
               "audio_url": "https://www.archive.org/download/soul_indian_1011_librivox/souloftheindian_3_eastman_64kb.mp3",
               "length_ms": 1141000,
+              "section_number": 3,
               "start_ms": 1935000,
               "title": "03 - Ch 03 - Ceremonial and Symbolic Worship"
             },
             {
               "audio_url": "https://www.archive.org/download/soul_indian_1011_librivox/souloftheindian_4_eastman_64kb.mp3",
               "length_ms": 1029000,
+              "section_number": 4,
               "start_ms": 3076000,
               "title": "04 - Ch 04 - Barbarism and the Moral Code"
             },
             {
               "audio_url": "https://www.archive.org/download/soul_indian_1011_librivox/souloftheindian_5_eastman_64kb.mp3",
               "length_ms": 925000,
+              "section_number": 5,
               "start_ms": 4105000,
               "title": "05 - Ch 05 - The  Unwritten Scriptures"
             },
             {
               "audio_url": "https://www.archive.org/download/soul_indian_1011_librivox/souloftheindian_6_eastman_64kb.mp3",
               "length_ms": 770000,
+              "section_number": 6,
               "start_ms": 5030000,
               "title": "06 - Ch 06 - On the Border-Land of Spirits"
             }
@@ -5460,7 +5467,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt11/soulofindian_1111.jpg",
           "id": "david-mix",
           "language": "en",
+          "librivox_genres": [
+            "History",
+            "Other religions"
+          ],
           "librivox_id": 4618,
+          "librivox_title": "Soul of the Indian",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-soul-of-the-indian-by-charles-alexander-eastman-ohiyesa/",

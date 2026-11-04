@@ -2857,78 +2857,117 @@
             {
               "audio_url": "https://www.archive.org/download/chaos_0812_librivox/chaos_trenite_add_64kb.mp3",
               "length_ms": 373000,
+              "readers": [
+                "alan-davis-drake-1945-2010"
+              ],
               "start_ms": 0,
               "title": "Version 1"
             },
             {
               "audio_url": "https://www.archive.org/download/chaos_0812_librivox/chaos_trenite_arr_64kb.mp3",
               "length_ms": 343000,
+              "readers": [
+                "anna-roberts"
+              ],
               "start_ms": 373000,
               "title": "Version 2"
             },
             {
               "audio_url": "https://www.archive.org/download/chaos_0812_librivox/chaos_trenite_csm_64kb.mp3",
               "length_ms": 405000,
+              "readers": [
+                "carol-stripling"
+              ],
               "start_ms": 716000,
               "title": "Version 3"
             },
             {
               "audio_url": "https://www.archive.org/download/chaos_0812_librivox/chaos_trenite_dl_64kb.mp3",
               "length_ms": 382000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 1121000,
               "title": "Version 4"
             },
             {
               "audio_url": "https://www.archive.org/download/chaos_0812_librivox/chaos_trenite_hjd_64kb.mp3",
               "length_ms": 417000,
+              "readers": [
+                "hannah-dowell"
+              ],
               "start_ms": 1503000,
               "title": "Version 5"
             },
             {
               "audio_url": "https://www.archive.org/download/chaos_0812_librivox/chaos_trenite_jcg_64kb.mp3",
               "length_ms": 393000,
+              "readers": [
+                "jc-guan"
+              ],
               "start_ms": 1920000,
               "title": "Version 6"
             },
             {
               "audio_url": "https://www.archive.org/download/chaos_0812_librivox/chaos_trenite_lr_64kb.mp3",
               "length_ms": 415000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 2313000,
               "title": "Version 7"
             },
             {
               "audio_url": "https://www.archive.org/download/chaos_0812_librivox/chaos_trenite_mfs_64kb.mp3",
               "length_ms": 400000,
+              "readers": [
+                "mark-f-smith"
+              ],
               "start_ms": 2728000,
               "title": "Version 8"
             },
             {
               "audio_url": "https://www.archive.org/download/chaos_0812_librivox/chaos_trenite_mjb_64kb.mp3",
               "length_ms": 252000,
+              "readers": [
+                "mjbrichant"
+              ],
               "start_ms": 3128000,
               "title": "Version 9"
             },
             {
               "audio_url": "https://www.archive.org/download/chaos_0812_librivox/chaos_trenite_pb_64kb.mp3",
               "length_ms": 468000,
+              "readers": [
+                "pepsiboo"
+              ],
               "start_ms": 3380000,
               "title": "Version 10"
             },
             {
               "audio_url": "https://www.archive.org/download/chaos_0812_librivox/chaos_trenite_ref_64kb.mp3",
               "length_ms": 422000,
+              "readers": [
+                "rhonda-federman"
+              ],
               "start_ms": 3848000,
               "title": "Version 11"
             },
             {
               "audio_url": "https://www.archive.org/download/chaos_0812_librivox/chaos_trenite_sb_64kb.mp3",
               "length_ms": 373000,
+              "readers": [
+                "sergio-baldelli"
+              ],
               "start_ms": 4270000,
               "title": "Version 12"
             },
             {
               "audio_url": "https://www.archive.org/download/chaos_0812_librivox/chaos_trenite_tg_64kb.mp3",
               "length_ms": 364000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 4643000,
               "title": "Version 13"
             }
@@ -2937,7 +2976,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt15/Chaos_1202.jpg",
           "id": "alan-davis-drake-1945-2010",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)",
+            "Language learning"
+          ],
           "librivox_id": 2585,
+          "librivox_title": "Chaos",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-chaos-by-gerard-nolst-trenite/",

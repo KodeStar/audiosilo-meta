@@ -356,66 +356,99 @@
             {
               "audio_url": "https://www.archive.org/download/the_death-bed_1504.poem_librivox/deathbed_hood_alp_64kb.mp3",
               "length_ms": 62000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 0,
               "title": "The Death-bed - Read by ALP"
             },
             {
               "audio_url": "https://www.archive.org/download/the_death-bed_1504.poem_librivox/deathbed_hood_bk_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 62000,
               "title": "The Death-bed - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/the_death-bed_1504.poem_librivox/deathbed_hood_el_64kb.mp3",
               "length_ms": 48000,
+              "readers": [
+                "newgatenovelist"
+              ],
               "start_ms": 132000,
               "title": "The Death-bed - Read by EL"
             },
             {
               "audio_url": "https://www.archive.org/download/the_death-bed_1504.poem_librivox/deathbed_hood_gb_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "garth-burton"
+              ],
               "start_ms": 180000,
               "title": "The Death-bed - Read by GB"
             },
             {
               "audio_url": "https://www.archive.org/download/the_death-bed_1504.poem_librivox/deathbed_hood_ik_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "ian-king"
+              ],
               "start_ms": 249000,
               "title": "The Death-bed - Read by IK"
             },
             {
               "audio_url": "https://www.archive.org/download/the_death-bed_1504.poem_librivox/deathbed_hood_jm_64kb.mp3",
               "length_ms": 58000,
+              "readers": [
+                "j-mcdougall"
+              ],
               "start_ms": 317000,
               "title": "The Death-bed - Read by JM"
             },
             {
               "audio_url": "https://www.archive.org/download/the_death-bed_1504.poem_librivox/deathbed_hood_jn_64kb.mp3",
               "length_ms": 79000,
+              "readers": [
+                "julia-niedermaier"
+              ],
               "start_ms": 375000,
               "title": "The Death-bed - Read by JN"
             },
             {
               "audio_url": "https://www.archive.org/download/the_death-bed_1504.poem_librivox/deathbed_hood_lah_64kb.mp3",
               "length_ms": 59000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 454000,
               "title": "The Death-bed - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/the_death-bed_1504.poem_librivox/deathbed_hood_nb_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "noelbadrian"
+              ],
               "start_ms": 513000,
               "title": "The Death-bed - Read by NB"
             },
             {
               "audio_url": "https://www.archive.org/download/the_death-bed_1504.poem_librivox/deathbed_hood_py_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 579000,
               "title": "The Death-bed - Read by PY"
             },
             {
               "audio_url": "https://www.archive.org/download/the_death-bed_1504.poem_librivox/deathbed_hood_rc_64kb.mp3",
               "length_ms": 62000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
               "start_ms": 651000,
               "title": "The Death-bed - Read by RC"
             }
@@ -424,7 +457,11 @@
           "cover_url": "https://archive.org/download/the_death-bed_1504.poem_librivox/death_bed_1505.jpg",
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 9829,
+          "librivox_title": "Death-bed",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-death-bed-by-thomas-hood/",
@@ -526,7 +563,11 @@
           "cover_url": "https://archive.org/download/death-bed_visions_2302_librivox/death_bed_visions_2302.jpg",
           "id": "anonymous",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction"
+          ],
           "librivox_id": 18684,
+          "librivox_title": "Death-bed Visions",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/death-bed-visions-by-william-fletcher-barrett/",
@@ -1373,7 +1414,11 @@
           "cover_url": "https://archive.org/download/deathbelowdam_2411_librivox/deathebelowthedam_2411.jpg",
           "id": "mark-nelson",
           "language": "en",
+          "librivox_genres": [
+            "Detective Fiction"
+          ],
           "librivox_id": 21032,
+          "librivox_title": "Death Below the Dam",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/death-below-the-dam-by-esther-haven-fonseca/",

@@ -482,12 +482,21 @@
             {
               "audio_url": "https://www.archive.org/download/dueesempi_2502_librivox/contrastoecompianto_1_alcamoetodi_64kb.mp3",
               "length_ms": 735000,
+              "readers": [
+                "pier",
+                "marilena"
+              ],
               "start_ms": 0,
               "title": "Il Contrasto"
             },
             {
               "audio_url": "https://www.archive.org/download/dueesempi_2502_librivox/contrastoecompianto_2_alcamoetodi_64kb.mp3",
               "length_ms": 443000,
+              "readers": [
+                "pier",
+                "sabina",
+                "marilena"
+              ],
               "start_ms": 735000,
               "title": "Il compianto della Vergine"
             }
@@ -495,7 +504,11 @@
           "cover_url": "https://archive.org/download/dueesempi_2502_librivox/dueesempi_2502.jpg",
           "id": "pier",
           "language": "it",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 21207,
+          "librivox_title": "Due esempi di poesia drammatica (uno profano e uno religioso) della letteratura italiana del XIII secolo",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/due-esempi-di-poesia-drammatica",
@@ -1947,9 +1960,19 @@
           ],
           "copyright_year": 1916,
           "cover_url": "https://archive.org/download/theduel_1411_librivox/duel_1411.jpg",
+          "credits": [
+            {
+              "person": "constance-garnett",
+              "role": "translator"
+            }
+          ],
           "id": "expatriate",
           "language": "en",
+          "librivox_genres": [
+            "Literary Fiction"
+          ],
           "librivox_id": 9309,
+          "librivox_title": "Duel (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-duel-by-anton-chekhov-2/",
@@ -2104,9 +2127,19 @@
           ],
           "copyright_year": 1916,
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt5/duel_1007.jpg",
+          "credits": [
+            {
+              "person": "constance-garnett",
+              "role": "translator"
+            }
+          ],
           "id": "phil-griffiths",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 4409,
+          "librivox_title": "Duel",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-duel-by-anton-chekhov/",
@@ -5049,7 +5082,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt22/Dueling_Machine_1209.jpg",
           "id": "gregg-margarite-1957-2012",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 4088,
+          "librivox_title": "Dueling Machine",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-dueling-machine-by-ben-bova/",

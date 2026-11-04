@@ -6727,27 +6727,69 @@
             {
               "audio_url": "https://www.archive.org/download/dollshouse_2610_librivox/dollshouse_1_ibsen_64kb.mp3",
               "length_ms": 4112000,
+              "readers": [
+                "alan-mapstone",
+                "lynette-caulkins",
+                "barryhaworth",
+                "stacey-malcolm",
+                "inkell",
+                "shrimpphish",
+                "glys",
+                "patty-h",
+                "betsy-stern",
+                "justin-clevenger",
+                "asha-lenox"
+              ],
               "start_ms": 0,
               "title": "ACT  1"
             },
             {
               "audio_url": "https://www.archive.org/download/dollshouse_2610_librivox/dollshouse_2_ibsen_64kb.mp3",
               "length_ms": 3313000,
+              "readers": [
+                "alan-mapstone",
+                "barryhaworth",
+                "stacey-malcolm",
+                "shrimpphish",
+                "glys",
+                "patty-h",
+                "justin-clevenger",
+                "asha-lenox"
+              ],
               "start_ms": 4112000,
               "title": "ACT 2"
             },
             {
               "audio_url": "https://www.archive.org/download/dollshouse_2610_librivox/dollshouse_3_ibsen_64kb.mp3",
               "length_ms": 3384000,
+              "readers": [
+                "alan-mapstone",
+                "barryhaworth",
+                "shrimpphish",
+                "glys",
+                "patty-h",
+                "justin-clevenger",
+                "asha-lenox"
+              ],
               "start_ms": 7425000,
               "title": "ACT 3"
             }
           ],
           "copyright_year": 1910,
           "cover_url": "https://archive.org/download/dollshouse_2610_librivox/adollshouse_2610.jpg",
+          "credits": [
+            {
+              "person": "r-farquharson-sharp",
+              "role": "translator"
+            }
+          ],
           "id": "alan-mapstone",
           "language": "en",
+          "librivox_genres": [
+            "Drama"
+          ],
           "librivox_id": 22703,
+          "librivox_title": "Doll's House (Version 3)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-dolls-house-by-henrik-ibsen-3/",
@@ -6855,18 +6897,48 @@
             {
               "audio_url": "https://www.archive.org/download/dolls_house_0812_librivox/dollhouse_01_ibsen_64kb.mp3",
               "length_ms": 3544000,
+              "readers": [
+                "elizabeth-klett",
+                "mb",
+                "miranda-stinson",
+                "jordan-schneider",
+                "anna-simon",
+                "david-muncaster",
+                "andy",
+                "alana-jordan",
+                "aleithia"
+              ],
               "start_ms": 0,
               "title": "ACT I"
             },
             {
               "audio_url": "https://www.archive.org/download/dolls_house_0812_librivox/dollhouse_02_ibsen_64kb.mp3",
               "length_ms": 2704000,
+              "readers": [
+                "elizabeth-klett",
+                "miranda-stinson",
+                "jordan-schneider",
+                "anna-simon",
+                "david-muncaster",
+                "andy",
+                "alana-jordan",
+                "aleithia"
+              ],
               "start_ms": 3544000,
               "title": "ACT II"
             },
             {
               "audio_url": "https://www.archive.org/download/dolls_house_0812_librivox/dollhouse_03_ibsen_64kb.mp3",
               "length_ms": 2823000,
+              "readers": [
+                "elizabeth-klett",
+                "miranda-stinson",
+                "jordan-schneider",
+                "anna-simon",
+                "david-muncaster",
+                "andy",
+                "aleithia"
+              ],
               "start_ms": 6248000,
               "title": "ACT III"
             }
@@ -6875,7 +6947,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt15/Dolls_House_1202.jpg",
           "id": "elizabeth-klett",
           "language": "en",
+          "librivox_genres": [
+            "Drama"
+          ],
           "librivox_id": 1984,
+          "librivox_title": "Doll's House",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-dolls-house-by-henrik-ibsen/",
@@ -6931,7 +7007,11 @@
           "cover_url": "https://archive.org/download/a_dolls_house_2104_librivox/doll_house_2104.jpg",
           "id": "phil-chenevert",
           "language": "en",
+          "librivox_genres": [
+            "Tragedy"
+          ],
           "librivox_id": 16467,
+          "librivox_title": "Doll's House (Version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-dolls-house-by-henrik-ibsen-2/",
@@ -9782,7 +9862,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt23/double_barreled_detective_1210.jpg",
           "id": "john-greenman",
           "language": "en",
+          "librivox_genres": [
+            "Detective Fiction"
+          ],
           "librivox_id": 3929,
+          "librivox_title": "Double Barreled Detective Story",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-double-barreled-detective-story-by-mark-twain/",

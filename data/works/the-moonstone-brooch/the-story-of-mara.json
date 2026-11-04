@@ -3822,7 +3822,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt28/Story_Life_V2_1212.jpg",
           "id": "george-cooney",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Biography & Autobiography"
+          ],
           "librivox_id": 3960,
+          "librivox_title": "Story of My Life (Version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-story-of-my-life-by-helen-keller-2/",
@@ -3991,7 +3996,11 @@
           "cover_url": "https://archive.org/download/story_keller_librivox/Story_My_Life_1107.jpg",
           "id": "maria",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography"
+          ],
           "librivox_id": 884,
+          "librivox_title": "Story of My Life",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-story-of-my-life-by-helen-keller/",
@@ -4547,7 +4556,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt22/Story_of_Peter_Pan_1209.jpg",
           "id": "phil-chenevert",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure",
+            "Fantasy Fiction"
+          ],
           "librivox_id": 6693,
+          "librivox_title": "Story of Peter Pan",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-story-of-peter-pan-by-j-m-barrie/",
@@ -8402,7 +8416,11 @@
           "cover_url": "https://archive.org/download/storyofamulet_1410_librivox/story_amulet_1410.jpg",
           "id": "helen-taylor",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction"
+          ],
           "librivox_id": 9232,
+          "librivox_title": "Story of the Amulet",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-story-of-the-amulet-by-e-nesbit/",
@@ -8517,7 +8535,12 @@
           "cover_url": "https://archive.org/download/story_amulet_2_1610_librivox/story_amulet_1610.jpg",
           "id": "padraig-ohiceadha",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction",
+            "General Fiction"
+          ],
           "librivox_id": 2195,
+          "librivox_title": "Story of the Amulet (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-story-of-the-amulet-version-2-by-e-nesbit/",
@@ -8546,90 +8569,325 @@
             {
               "audio_url": "https://www.archive.org/download/story_amulet_3_1809_librivox/amulet3_00_nesbit_64kb.mp3",
               "length_ms": 194000,
+              "readers": [
+                "peter-yearsley",
+                "beth-thomas-1974-2020",
+                "rachel",
+                "rob-marland",
+                "monika-m-c",
+                "khand",
+                "son-of-the-exiles",
+                "april-walters",
+                "tenorboy",
+                "evie-maria",
+                "zoe-trang",
+                "sonia",
+                "tomas-peter",
+                "devorah-allen",
+                "jennaeleni",
+                "nemo",
+                "starling-reader",
+                "linda-olsen-fitak",
+                "tj-burns",
+                "gillian-hendrie",
+                "graceahlin",
+                "rajvo",
+                "tyler-hulegaard",
+                "jasmin-salma",
+                "robert-robinson",
+                "lee-meredith",
+                "michael-jarvis",
+                "foon"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Dedication and Cast List"
             },
             {
               "audio_url": "https://www.archive.org/download/story_amulet_3_1809_librivox/amulet3_01_nesbit_64kb.mp3",
               "length_ms": 1958000,
+              "readers": [
+                "peter-yearsley",
+                "beth-thomas-1974-2020",
+                "rachel",
+                "rob-marland",
+                "tenorboy",
+                "evie-maria",
+                "devorah-allen",
+                "jennaeleni",
+                "linda-olsen-fitak",
+                "tyler-hulegaard"
+              ],
+              "section_number": 1,
               "start_ms": 194000,
               "title": "Chapter 1: The Psammead"
             },
             {
               "audio_url": "https://www.archive.org/download/story_amulet_3_1809_librivox/amulet3_02_nesbit_64kb.mp3",
               "length_ms": 1602000,
+              "readers": [
+                "peter-yearsley",
+                "beth-thomas-1974-2020",
+                "rachel",
+                "rob-marland",
+                "tenorboy",
+                "devorah-allen"
+              ],
+              "section_number": 2,
               "start_ms": 2152000,
               "title": "Chapter 2: The Half Amulet"
             },
             {
               "audio_url": "https://www.archive.org/download/story_amulet_3_1809_librivox/amulet3_03_nesbit_64kb.mp3",
               "length_ms": 1342000,
+              "readers": [
+                "peter-yearsley",
+                "beth-thomas-1974-2020",
+                "rachel",
+                "rob-marland",
+                "april-walters",
+                "tenorboy",
+                "tomas-peter",
+                "devorah-allen"
+              ],
+              "section_number": 3,
               "start_ms": 3754000,
               "title": "Chapter 3: The Past"
             },
             {
               "audio_url": "https://www.archive.org/download/story_amulet_3_1809_librivox/amulet3_04_nesbit_64kb.mp3",
               "length_ms": 1691000,
+              "readers": [
+                "peter-yearsley",
+                "beth-thomas-1974-2020",
+                "rachel",
+                "rob-marland",
+                "khand",
+                "tenorboy",
+                "tomas-peter",
+                "devorah-allen",
+                "graceahlin",
+                "rajvo"
+              ],
+              "section_number": 4,
               "start_ms": 5096000,
               "title": "Chapter 4: Eight Thousand Years Ago"
             },
             {
               "audio_url": "https://www.archive.org/download/story_amulet_3_1809_librivox/amulet3_05_nesbit_64kb.mp3",
               "length_ms": 1504000,
+              "readers": [
+                "peter-yearsley",
+                "beth-thomas-1974-2020",
+                "rachel",
+                "rob-marland",
+                "khand",
+                "tenorboy",
+                "tomas-peter",
+                "devorah-allen",
+                "tj-burns",
+                "graceahlin",
+                "rajvo",
+                "lee-meredith"
+              ],
+              "section_number": 5,
               "start_ms": 6787000,
               "title": "Chapter 5: The Fight in the Village"
             },
             {
               "audio_url": "https://www.archive.org/download/story_amulet_3_1809_librivox/amulet3_06_nesbit_64kb.mp3",
               "length_ms": 1895000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "rachel",
+                "rob-marland",
+                "tenorboy",
+                "sonia",
+                "tomas-peter",
+                "devorah-allen",
+                "starling-reader",
+                "rajvo",
+                "tyler-hulegaard"
+              ],
+              "section_number": 6,
               "start_ms": 8291000,
               "title": "Chapter 6: The Way to Babylon"
             },
             {
               "audio_url": "https://www.archive.org/download/story_amulet_3_1809_librivox/amulet3_07_nesbit_64kb.mp3",
               "length_ms": 2275000,
+              "readers": [
+                "peter-yearsley",
+                "beth-thomas-1974-2020",
+                "rachel",
+                "rob-marland",
+                "tenorboy",
+                "sonia",
+                "devorah-allen",
+                "starling-reader",
+                "tj-burns",
+                "gillian-hendrie",
+                "rajvo",
+                "tyler-hulegaard",
+                "jasmin-salma",
+                "michael-jarvis"
+              ],
+              "section_number": 7,
               "start_ms": 10186000,
               "title": "Chapter 7: The Deepest Dungeon Below the Castle Moat"
             },
             {
               "audio_url": "https://www.archive.org/download/story_amulet_3_1809_librivox/amulet3_08_nesbit_64kb.mp3",
               "length_ms": 2492000,
+              "readers": [
+                "peter-yearsley",
+                "beth-thomas-1974-2020",
+                "rachel",
+                "rob-marland",
+                "khand",
+                "son-of-the-exiles",
+                "tenorboy",
+                "sonia",
+                "tomas-peter",
+                "devorah-allen",
+                "nemo",
+                "tj-burns",
+                "gillian-hendrie",
+                "rajvo",
+                "tyler-hulegaard",
+                "jasmin-salma",
+                "lee-meredith",
+                "michael-jarvis"
+              ],
+              "section_number": 8,
               "start_ms": 12461000,
               "title": "Chapter 8: The Queen in London"
             },
             {
               "audio_url": "https://www.archive.org/download/story_amulet_3_1809_librivox/amulet3_09_nesbit_64kb.mp3",
               "length_ms": 2069000,
+              "readers": [
+                "peter-yearsley",
+                "beth-thomas-1974-2020",
+                "rachel",
+                "rob-marland",
+                "son-of-the-exiles",
+                "tenorboy",
+                "tomas-peter",
+                "devorah-allen",
+                "rajvo",
+                "robert-robinson",
+                "michael-jarvis",
+                "foon"
+              ],
+              "section_number": 9,
               "start_ms": 14953000,
               "title": "Chapter 9: Atlantis"
             },
             {
               "audio_url": "https://www.archive.org/download/story_amulet_3_1809_librivox/amulet3_10_nesbit_64kb.mp3",
               "length_ms": 1893000,
+              "readers": [
+                "peter-yearsley",
+                "beth-thomas-1974-2020",
+                "rachel",
+                "rob-marland",
+                "monika-m-c",
+                "tenorboy",
+                "zoe-trang",
+                "tomas-peter",
+                "devorah-allen",
+                "nemo",
+                "starling-reader"
+              ],
+              "section_number": 10,
               "start_ms": 17022000,
               "title": "Chapter 10: The Little Black Girl and Julius Caesar"
             },
             {
               "audio_url": "https://www.archive.org/download/story_amulet_3_1809_librivox/amulet3_11_nesbit_64kb.mp3",
               "length_ms": 2533000,
+              "readers": [
+                "peter-yearsley",
+                "beth-thomas-1974-2020",
+                "rachel",
+                "rob-marland",
+                "monika-m-c",
+                "son-of-the-exiles",
+                "tenorboy",
+                "devorah-allen",
+                "nemo",
+                "tj-burns",
+                "rajvo",
+                "jasmin-salma",
+                "lee-meredith",
+                "michael-jarvis"
+              ],
+              "section_number": 11,
               "start_ms": 18915000,
               "title": "Chapter 11: Before Pharaoh"
             },
             {
               "audio_url": "https://www.archive.org/download/story_amulet_3_1809_librivox/amulet3_12_nesbit_64kb.mp3",
               "length_ms": 2340000,
+              "readers": [
+                "peter-yearsley",
+                "beth-thomas-1974-2020",
+                "rachel",
+                "rob-marland",
+                "khand",
+                "tenorboy",
+                "tomas-peter",
+                "devorah-allen",
+                "linda-olsen-fitak",
+                "rajvo",
+                "jasmin-salma"
+              ],
+              "section_number": 12,
               "start_ms": 21448000,
               "title": "Chapter 12: The Sorry-Present and the Expelled Little Boy"
             },
             {
               "audio_url": "https://www.archive.org/download/story_amulet_3_1809_librivox/amulet3_13_nesbit_64kb.mp3",
               "length_ms": 2035000,
+              "readers": [
+                "peter-yearsley",
+                "beth-thomas-1974-2020",
+                "rachel",
+                "rob-marland",
+                "son-of-the-exiles",
+                "tenorboy",
+                "devorah-allen",
+                "starling-reader",
+                "tj-burns",
+                "rajvo",
+                "michael-jarvis",
+                "foon"
+              ],
+              "section_number": 13,
               "start_ms": 23788000,
               "title": "Chapter 13: The Shipwreck on the Tin Islands"
             },
             {
               "audio_url": "https://www.archive.org/download/story_amulet_3_1809_librivox/amulet3_14_nesbit_64kb.mp3",
               "length_ms": 2486000,
+              "readers": [
+                "peter-yearsley",
+                "beth-thomas-1974-2020",
+                "rachel",
+                "rob-marland",
+                "khand",
+                "april-walters",
+                "tenorboy",
+                "tomas-peter",
+                "devorah-allen",
+                "tj-burns",
+                "rajvo",
+                "jasmin-salma",
+                "lee-meredith",
+                "michael-jarvis"
+              ],
+              "section_number": 14,
               "start_ms": 25823000,
               "title": "Chapter 14: The Heart’s Desire"
             }
@@ -8638,7 +8896,12 @@
           "cover_url": "https://archive.org/download/story_amulet_3_1809_librivox/story_amulet3_1809.jpg",
           "id": "peter-yearsley",
           "language": "en",
+          "librivox_genres": [
+            "Dramatic Readings",
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 12557,
+          "librivox_title": "Story of the Amulet (version 3 dramatic reading)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/story-amulet-3-by-e-nesbit/",
@@ -13534,7 +13797,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt11/otherwiseman_1111.jpg",
           "id": "david-leeson",
           "language": "en",
+          "librivox_genres": [
+            "Christian Fiction"
+          ],
           "librivox_id": 2578,
+          "librivox_title": "Story of the Other Wise Man",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-story-of-the-other-wise-man-by-henry-van-dyke/",

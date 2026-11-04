@@ -3419,72 +3419,84 @@
             {
               "audio_url": "https://www.archive.org/download/magiclantern_2506_librivox/magiclantern_00_hepworth_64kb.mp3",
               "length_ms": 128000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/magiclantern_2506_librivox/magiclantern_01_hepworth_64kb.mp3",
               "length_ms": 989000,
+              "section_number": 1,
               "start_ms": 128000,
               "title": "The History of the Magic Lantern"
             },
             {
               "audio_url": "https://www.archive.org/download/magiclantern_2506_librivox/magiclantern_02_hepworth_64kb.mp3",
               "length_ms": 415000,
+              "section_number": 2,
               "start_ms": 1117000,
               "title": "The Lime Light"
             },
             {
               "audio_url": "https://www.archive.org/download/magiclantern_2506_librivox/magiclantern_03_hepworth_64kb.mp3",
               "length_ms": 527000,
+              "section_number": 3,
               "start_ms": 1532000,
               "title": "Dissolving Views"
             },
             {
               "audio_url": "https://www.archive.org/download/magiclantern_2506_librivox/magiclantern_04_hepworth_64kb.mp3",
               "length_ms": 922000,
+              "section_number": 4,
               "start_ms": 2059000,
               "title": "Making Oxygen Gas"
             },
             {
               "audio_url": "https://www.archive.org/download/magiclantern_2506_librivox/magiclantern_05_hepworth_64kb.mp3",
               "length_ms": 337000,
+              "section_number": 5,
               "start_ms": 2981000,
               "title": "The Screen or Sheet"
             },
             {
               "audio_url": "https://www.archive.org/download/magiclantern_2506_librivox/magiclantern_06_hepworth_64kb.mp3",
               "length_ms": 485000,
+              "section_number": 6,
               "start_ms": 3318000,
               "title": "Pictures for the Lantern"
             },
             {
               "audio_url": "https://www.archive.org/download/magiclantern_2506_librivox/magiclantern_07_hepworth_64kb.mp3",
               "length_ms": 1142000,
+              "section_number": 7,
               "start_ms": 3803000,
               "title": "On The Colouring of Photographic Transparencies"
             },
             {
               "audio_url": "https://www.archive.org/download/magiclantern_2506_librivox/magiclantern_08_hepworth_64kb.mp3",
               "length_ms": 488000,
+              "section_number": 8,
               "start_ms": 4945000,
               "title": "Showing Solid & Opaque Objects on the Lantern Screen"
             },
             {
               "audio_url": "https://www.archive.org/download/magiclantern_2506_librivox/magiclantern_09_hepworth_64kb.mp3",
               "length_ms": 412000,
+              "section_number": 9,
               "start_ms": 5433000,
               "title": "The Lantern Microscope"
             },
             {
               "audio_url": "https://www.archive.org/download/magiclantern_2506_librivox/magiclantern_10_hepworth_64kb.mp3",
               "length_ms": 298000,
+              "section_number": 10,
               "start_ms": 5845000,
               "title": "Mechanical or Moving-Pictures"
             },
             {
               "audio_url": "https://www.archive.org/download/magiclantern_2506_librivox/magiclantern_11_hepworth_64kb.mp3",
               "length_ms": 512000,
+              "section_number": 11,
               "start_ms": 6143000,
               "title": "Concluding Remarks"
             }
@@ -3493,7 +3505,12 @@
           "cover_url": "https://archive.org/download/magiclantern_2506_librivox/magiclantern_2506.jpg",
           "id": "james-r-hedrick",
           "language": "en",
+          "librivox_genres": [
+            "Art, Design & Architecture",
+            "Technology & Engineering"
+          ],
           "librivox_id": 21639,
+          "librivox_title": "Magic Lantern and its Management",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-magic-lantern-and-its-management-by-t-c-hepworth/",
@@ -8520,7 +8537,11 @@
           "cover_url": "https://archive.org/download/themagicnuts_2406_librivox/magicnuts_2406.jpg",
           "id": "anne-fletcher",
           "language": "en",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 20485,
+          "librivox_title": "Magic Nuts",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-magic-nuts-by-mary-louisa-molesworth/",
@@ -10694,108 +10715,180 @@
             {
               "audio_url": "https://www.archive.org/download/magichorseshoe_2211_librivox/horseshoe_00_lawrence_64kb.mp3",
               "length_ms": 141000,
+              "readers": [
+                "toddhw"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/magichorseshoe_2211_librivox/horseshoe_01_lawrence_64kb.mp3",
               "length_ms": 1344000,
+              "readers": [
+                "toddhw"
+              ],
+              "section_number": 1,
               "start_ms": 141000,
               "title": "The Magic of the Horseshoe Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/magichorseshoe_2211_librivox/horseshoe_02_lawrence_64kb.mp3",
               "length_ms": 1778000,
+              "readers": [
+                "doreen-marcotte"
+              ],
+              "section_number": 2,
               "start_ms": 1485000,
               "title": "The Magic of the Horseshoe -Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/magichorseshoe_2211_librivox/horseshoe_03_lawrence_64kb.mp3",
               "length_ms": 1844000,
+              "readers": [
+                "jczekaj"
+              ],
+              "section_number": 3,
               "start_ms": 3263000,
               "title": "The Magic of the Horseshoe -Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/magichorseshoe_2211_librivox/horseshoe_04_lawrence_64kb.mp3",
               "length_ms": 2443000,
+              "readers": [
+                "docdlmartin"
+              ],
+              "section_number": 4,
               "start_ms": 5107000,
               "title": "The Magic of the Horseshoe -Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/magichorseshoe_2211_librivox/horseshoe_05_lawrence_64kb.mp3",
               "length_ms": 2417000,
+              "readers": [
+                "mlcui"
+              ],
+              "section_number": 5,
               "start_ms": 7550000,
               "title": "The Magic of the Horseshoe -Part 5"
             },
             {
               "audio_url": "https://www.archive.org/download/magichorseshoe_2211_librivox/horseshoe_06_lawrence_64kb.mp3",
               "length_ms": 2043000,
+              "readers": [
+                "docdlmartin"
+              ],
+              "section_number": 6,
               "start_ms": 9967000,
               "title": "The Magic of the Horseshoe -Part 6"
             },
             {
               "audio_url": "https://www.archive.org/download/magichorseshoe_2211_librivox/horseshoe_07_lawrence_64kb.mp3",
               "length_ms": 1300000,
+              "readers": [
+                "christine-rottger"
+              ],
+              "section_number": 7,
               "start_ms": 12010000,
               "title": "Fortune and Luck"
             },
             {
               "audio_url": "https://www.archive.org/download/magichorseshoe_2211_librivox/horseshoe_08_lawrence_64kb.mp3",
               "length_ms": 2060000,
+              "readers": [
+                "czandra"
+              ],
+              "section_number": 8,
               "start_ms": 13310000,
               "title": "The Folk-Lore of Common Salt  -Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/magichorseshoe_2211_librivox/horseshoe_09_lawrence_64kb.mp3",
               "length_ms": 2493000,
+              "readers": [
+                "czandra"
+              ],
+              "section_number": 9,
               "start_ms": 15370000,
               "title": "The Folk-Lore of Common Salt  -Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/magichorseshoe_2211_librivox/horseshoe_10_lawrence_64kb.mp3",
               "length_ms": 1112000,
+              "readers": [
+                "shrubdryad"
+              ],
+              "section_number": 10,
               "start_ms": 17863000,
               "title": "The Omens of Sneezing -Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/magichorseshoe_2211_librivox/horseshoe_11_lawrence_64kb.mp3",
               "length_ms": 1310000,
+              "readers": [
+                "shrubdryad"
+              ],
+              "section_number": 11,
               "start_ms": 18975000,
               "title": "The Omens of Sneezing -Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/magichorseshoe_2211_librivox/horseshoe_12_lawrence_64kb.mp3",
               "length_ms": 1859000,
+              "readers": [
+                "docdlmartin"
+              ],
+              "section_number": 12,
               "start_ms": 20285000,
               "title": "Days of Good and Evil Omen –Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/magichorseshoe_2211_librivox/horseshoe_13_lawrence_64kb.mp3",
               "length_ms": 1947000,
+              "readers": [
+                "docdlmartin"
+              ],
+              "section_number": 13,
               "start_ms": 22144000,
               "title": "Days of Good and Evil Omen –Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/magichorseshoe_2211_librivox/horseshoe_14_lawrence_64kb.mp3",
               "length_ms": 1550000,
+              "readers": [
+                "katina-papadakis"
+              ],
+              "section_number": 14,
               "start_ms": 24091000,
               "title": "Superstitious Dealings with Animals -Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/magichorseshoe_2211_librivox/horseshoe_15_lawrence_64kb.mp3",
               "length_ms": 1378000,
+              "readers": [
+                "docdlmartin"
+              ],
+              "section_number": 15,
               "start_ms": 25641000,
               "title": "Superstitious Dealings with Animals -Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/magichorseshoe_2211_librivox/horseshoe_16_lawrence_64kb.mp3",
               "length_ms": 1535000,
+              "readers": [
+                "lee-vogler"
+              ],
+              "section_number": 16,
               "start_ms": 27019000,
               "title": "The Luck of Odd Numbers –Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/magichorseshoe_2211_librivox/horseshoe_17_lawrence_64kb.mp3",
               "length_ms": 1276000,
+              "readers": [
+                "mlcui"
+              ],
+              "section_number": 17,
               "start_ms": 28554000,
               "title": "The Luck of Odd Numbers –Part 2"
             }
@@ -10804,7 +10897,11 @@
           "cover_url": "https://archive.org/download/magichorseshoe_2211_librivox/horse_shoe_2211.jpg",
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Early Modern"
+          ],
           "librivox_id": 17482,
+          "librivox_title": "Magic of the Horse-Shoe",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-magic-of-the-horse-shoe-by-robert-means-lawrence/",

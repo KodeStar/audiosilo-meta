@@ -759,7 +759,12 @@
           "cover_url": "https://archive.org/download/theimpossibles_2211_librivox/impossibles_2211.jpg",
           "id": "paul-hampton",
           "language": "en",
+          "librivox_genres": [
+            "Crime & Mystery Fiction",
+            "Science Fiction"
+          ],
           "librivox_id": 18367,
+          "librivox_title": "Impossibles",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-impossibles-by-laurence-m-janifer/",
@@ -3574,27 +3579,68 @@
             {
               "audio_url": "https://www.archive.org/download/imposturesofscapin_1807_librivox/imposturesofscapin_01_moliere_64kb.mp3",
               "length_ms": 1858000,
+              "readers": [
+                "toddhw",
+                "larry-wilson",
+                "cathar-maiden",
+                "sonia",
+                "leanne-yau",
+                "tomas-peter"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/imposturesofscapin_1807_librivox/imposturesofscapin_02_moliere_64kb.mp3",
               "length_ms": 2541000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "tovarisch",
+                "larry-wilson",
+                "cathar-maiden",
+                "tenorboy",
+                "sonia",
+                "tomas-peter"
+              ],
               "start_ms": 1858000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/imposturesofscapin_1807_librivox/imposturesofscapin_03_moliere_64kb.mp3",
               "length_ms": 2184000,
+              "readers": [
+                "availle",
+                "toddhw",
+                "alan-mapstone",
+                "tovarisch",
+                "larry-wilson",
+                "cathar-maiden",
+                "tenorboy",
+                "sonia",
+                "leanne-yau",
+                "tomas-peter",
+                "tj-burns"
+              ],
               "start_ms": 4399000,
               "title": "Act 3"
             }
           ],
           "copyright_year": 1671,
           "cover_url": "https://archive.org/download/imposturesofscapin_1807_librivox/impostures_scapin_1807.jpg",
+          "credits": [
+            {
+              "person": "charles-heron-wall",
+              "role": "translator"
+            }
+          ],
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Plays"
+          ],
           "librivox_id": 12914,
+          "librivox_title": "Impostures of Scapin",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-impostures-of-scapin-by-moliere/",
@@ -4456,7 +4502,12 @@
           "cover_url": "https://archive.org/download/impresiones_1903_librivox/impresiones_poesias_j_campos_arana_1903.jpg",
           "id": "kendalrigans",
           "language": "es",
+          "librivox_genres": [
+            "Single author",
+            "Sonnets"
+          ],
           "librivox_id": 13498,
+          "librivox_title": "Impresiones, Poesías.",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/impresiones-poesias-by-jose-campo-arana/",
@@ -4797,7 +4848,12 @@
           "cover_url": "https://archive.org/download/impresiones_y_paisajes_1910_librivox/impresiones_paisajes_f_garcia_lorca_1910.jpg",
           "id": "epachuko",
           "language": "es",
+          "librivox_genres": [
+            "Narratives",
+            "Exploration"
+          ],
           "librivox_id": 14214,
+          "librivox_title": "Impresiones y paisajes",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/impresiones-y-paisajes-by-federico-garcia-lorca/",
@@ -5022,7 +5078,11 @@
           "cover_url": "https://archive.org/download/impressions_of_theophrastus_such_1709_librivox/theophrastus_1709.jpg",
           "id": "josh-mitteldorf",
           "language": "en",
+          "librivox_genres": [
+            "Published 1800 -1900"
+          ],
           "librivox_id": 11851,
+          "librivox_title": "Impressions of Theophrastus Such",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/impressions-of-theophrastus-such-by-george-eliot/",
@@ -5161,7 +5221,12 @@
           "cover_url": "https://archive.org/download/impressions_of_theophrastus_such_2312_librivox/theophrastussuch_2312.jpg",
           "id": "mark-leder",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction",
+            "Published 1800 -1900"
+          ],
           "librivox_id": 19749,
+          "librivox_title": "Impressions of Theophrastus Such (Version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/impressions-of-theophrastus-such-by-george-eliot-2/",
@@ -5262,7 +5327,11 @@
           "cover_url": "https://archive.org/download/impressions_of_ukiyo-ye_2302_librivox/impressions_ukiyoye d_amsden_2302.jpg",
           "id": "bryn-roberts",
           "language": "en",
+          "librivox_genres": [
+            "Art, Design & Architecture"
+          ],
           "librivox_id": 14571,
+          "librivox_title": "Impressions of Ukiyo-ye, the School of the Japanese Colour-print Artists",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/impressions-of-ukiyo-ye-by-dora-amsden/",
@@ -9076,120 +9145,180 @@
             {
               "audio_url": "https://www.archive.org/download/impromptu_2309.poem_librivox/impromptu_clare_aam_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "alan-mapstone"
+              ],
               "start_ms": 0,
               "title": "Impromtu - read by AAM"
             },
             {
               "audio_url": "https://www.archive.org/download/impromptu_2309.poem_librivox/impromptu_clare_aw_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "alicia-wellman"
+              ],
               "start_ms": 71000,
               "title": "Impromtu - read by AW"
             },
             {
               "audio_url": "https://www.archive.org/download/impromptu_2309.poem_librivox/impromptu_clare_bk_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 144000,
               "title": "Impromtu - read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/impromptu_2309.poem_librivox/impromptu_clare_bwc_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "beeswaxcandle"
+              ],
               "start_ms": 209000,
               "title": "Impromtu - read by BWC"
             },
             {
               "audio_url": "https://www.archive.org/download/impromptu_2309.poem_librivox/impromptu_clare_cam_64kb.mp3",
               "length_ms": 58000,
+              "readers": [
+                "cassandra-a-m"
+              ],
               "start_ms": 266000,
               "title": "Impromtu - read by CAM"
             },
             {
               "audio_url": "https://www.archive.org/download/impromptu_2309.poem_librivox/impromptu_clare_cmd_64kb.mp3",
               "length_ms": 58000,
+              "readers": [
+                "cbteddy"
+              ],
               "start_ms": 324000,
               "title": "Impromtu - read by CMD"
             },
             {
               "audio_url": "https://www.archive.org/download/impromptu_2309.poem_librivox/impromptu_clare_fs_64kb.mp3",
               "length_ms": 62000,
+              "readers": [
+                "fshort"
+              ],
               "start_ms": 382000,
               "title": "Impromtu - read by FS"
             },
             {
               "audio_url": "https://www.archive.org/download/impromptu_2309.poem_librivox/impromptu_clare_gln_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "garth-burton"
+              ],
               "start_ms": 444000,
               "title": "Impromtu - read by GLN"
             },
             {
               "audio_url": "https://www.archive.org/download/impromptu_2309.poem_librivox/impromptu_clare_ik_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "ian-king"
+              ],
               "start_ms": 516000,
               "title": "Impromtu - read by IK"
             },
             {
               "audio_url": "https://www.archive.org/download/impromptu_2309.poem_librivox/impromptu_clare_ikl_64kb.mp3",
               "length_ms": 56000,
+              "readers": [
+                "inkell"
+              ],
               "start_ms": 587000,
               "title": "Impromtu - read by IKL"
             },
             {
               "audio_url": "https://www.archive.org/download/impromptu_2309.poem_librivox/impromptu_clare_lah_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 643000,
               "title": "Impromtu - read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/impromptu_2309.poem_librivox/impromptu_clare_lcw_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 708000,
               "title": "Impromtu - read by LCW"
             },
             {
               "audio_url": "https://www.archive.org/download/impromptu_2309.poem_librivox/impromptu_clare_ls_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "leesalter"
+              ],
               "start_ms": 774000,
               "title": "Impromtu - read by LS"
             },
             {
               "audio_url": "https://www.archive.org/download/impromptu_2309.poem_librivox/impromptu_clare_mjh_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "meghan-horton"
+              ],
               "start_ms": 841000,
               "title": "Impromtu - read by MJH"
             },
             {
               "audio_url": "https://www.archive.org/download/impromptu_2309.poem_librivox/impromptu_clare_mlm_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "mleigh"
+              ],
               "start_ms": 906000,
               "title": "Impromtu - read by MLM"
             },
             {
               "audio_url": "https://www.archive.org/download/impromptu_2309.poem_librivox/impromptu_clare_n_64kb.mp3",
               "length_ms": 64000,
+              "readers": [
+                "noreen"
+              ],
               "start_ms": 975000,
               "title": "Impromtu - read by N"
             },
             {
               "audio_url": "https://www.archive.org/download/impromptu_2309.poem_librivox/impromptu_clare_rr_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "redrun"
+              ],
               "start_ms": 1039000,
               "title": "Impromtu - read by RR"
             },
             {
               "audio_url": "https://www.archive.org/download/impromptu_2309.poem_librivox/impromptu_clare_sws_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "scotty-smith"
+              ],
               "start_ms": 1110000,
               "title": "Impromtu - read by SWS"
             },
             {
               "audio_url": "https://www.archive.org/download/impromptu_2309.poem_librivox/impromptu_clare_tm_64kb.mp3",
               "length_ms": 79000,
+              "readers": [
+                "tom-merritt"
+              ],
               "start_ms": 1183000,
               "title": "Impromtu - read by TM"
             },
             {
               "audio_url": "https://www.archive.org/download/impromptu_2309.poem_librivox/impromptu_clare_wja_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "winnifred-assmann"
+              ],
               "start_ms": 1262000,
               "title": "Impromtu - read by WJA"
             }
@@ -9198,7 +9327,11 @@
           "cover_url": "https://archive.org/download/impromptu_2309.poem_librivox/impromptu_2309.jpg",
           "id": "alan-mapstone",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 17044,
+          "librivox_title": "Impromptu",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/impromptu-by-john-clare/",
@@ -9554,15 +9687,42 @@
             {
               "audio_url": "https://www.archive.org/download/impromptuofversailles_1707_librivox/impromptuofversailles_1_moliere_64kb.mp3",
               "length_ms": 3089000,
+              "readers": [
+                "availle",
+                "thomas-a-copeland",
+                "beth-thomas-1974-2020",
+                "toddhw",
+                "chuck-williamson",
+                "alan-mapstone",
+                "zames-curran",
+                "cathar-maiden",
+                "sonia",
+                "leanne-yau",
+                "tomas-peter",
+                "eva-davis-d-2025",
+                "nemo"
+              ],
               "start_ms": 0,
               "title": "Impromptu of Versailles"
             }
           ],
           "copyright_year": 1878,
           "cover_url": "https://archive.org/download/impromptuofversailles_1707_librivox/impromptu_1707.jpg",
+          "credits": [
+            {
+              "person": "henri-van-laun",
+              "role": "translator"
+            }
+          ],
           "id": "availle",
           "language": "en",
+          "librivox_genres": [
+            "Humorous Fiction",
+            "Plays",
+            "Satire"
+          ],
           "librivox_id": 12022,
+          "librivox_title": "Impromptu of Versailles",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-impromptu-of-versailles-by-moliere/",
@@ -12273,9 +12433,19 @@
           ],
           "copyright_year": 1708,
           "cover_url": "https://archive.org/download/improvement_human_reason_2308_librivox/improvement_human_reason_2309.jpg",
+          "credits": [
+            {
+              "person": "simon-ockley",
+              "role": "translator"
+            }
+          ],
           "id": "peter-tucker",
           "language": "en",
+          "librivox_genres": [
+            "Culture & Heritage Fiction"
+          ],
           "librivox_id": 19374,
+          "librivox_title": "Improvement of Human Reason",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/improvement-of-human-reason-by-ibn-tufail/",
@@ -12327,126 +12497,210 @@
             {
               "audio_url": "https://www.archive.org/download/improvement_of_the_mind_2207_librivox/improvementmind_00_watts_64kb.mp3",
               "length_ms": 203000,
+              "readers": [
+                "inthedesert"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/improvement_of_the_mind_2207_librivox/improvementmind_01_watts_64kb.mp3",
               "length_ms": 2187000,
+              "readers": [
+                "ron-altman"
+              ],
+              "section_number": 1,
               "start_ms": 203000,
               "title": "General Rules for the Improvement of Knowledge"
             },
             {
               "audio_url": "https://www.archive.org/download/improvement_of_the_mind_2207_librivox/improvementmind_02_watts_64kb.mp3",
               "length_ms": 1870000,
+              "readers": [
+                "sreeramc"
+              ],
+              "section_number": 2,
               "start_ms": 2390000,
               "title": "Five Eminent Methods of Gaining Knowledge"
             },
             {
               "audio_url": "https://www.archive.org/download/improvement_of_the_mind_2207_librivox/improvementmind_03_watts_64kb.mp3",
               "length_ms": 615000,
+              "readers": [
+                "leigh-briar"
+              ],
+              "section_number": 3,
               "start_ms": 4260000,
               "title": "Rules Relating to Observation"
             },
             {
               "audio_url": "https://www.archive.org/download/improvement_of_the_mind_2207_librivox/improvementmind_04_watts_64kb.mp3",
               "length_ms": 1595000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 4,
               "start_ms": 4875000,
               "title": "Of Books and Reading"
             },
             {
               "audio_url": "https://www.archive.org/download/improvement_of_the_mind_2207_librivox/improvementmind_05_watts_64kb.mp3",
               "length_ms": 1330000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 5,
               "start_ms": 6470000,
               "title": "Judgement of Books"
             },
             {
               "audio_url": "https://www.archive.org/download/improvement_of_the_mind_2207_librivox/improvementmind_06_watts_64kb.mp3",
               "length_ms": 575000,
+              "readers": [
+                "sreeramc"
+              ],
+              "section_number": 6,
               "start_ms": 7800000,
               "title": "Of Living Instructors and Lectures, of Teachers and Learners"
             },
             {
               "audio_url": "https://www.archive.org/download/improvement_of_the_mind_2207_librivox/improvementmind_07_watts_64kb.mp3",
               "length_ms": 428000,
+              "readers": [
+                "inthedesert"
+              ],
+              "section_number": 7,
               "start_ms": 8375000,
               "title": "Of Inquiring into the Sense and Meaning of any Writer or Speaker, and especially the Sense of the Sacred Writings"
             },
             {
               "audio_url": "https://www.archive.org/download/improvement_of_the_mind_2207_librivox/improvementmind_08_watts_64kb.mp3",
               "length_ms": 1710000,
+              "readers": [
+                "khand"
+              ],
+              "section_number": 8,
               "start_ms": 8803000,
               "title": "Rules of Improvement by Conversation"
             },
             {
               "audio_url": "https://www.archive.org/download/improvement_of_the_mind_2207_librivox/improvementmind_09_watts_64kb.mp3",
               "length_ms": 857000,
+              "readers": [
+                "owlivia"
+              ],
+              "section_number": 9,
               "start_ms": 10513000,
               "title": "Of Disputes and Debates"
             },
             {
               "audio_url": "https://www.archive.org/download/improvement_of_the_mind_2207_librivox/improvementmind_10_watts_64kb.mp3",
               "length_ms": 1108000,
+              "readers": [
+                "kassandra"
+              ],
+              "section_number": 10,
               "start_ms": 11370000,
               "title": "Of Study, or Meditation"
             },
             {
               "audio_url": "https://www.archive.org/download/improvement_of_the_mind_2207_librivox/improvementmind_11_watts_64kb.mp3",
               "length_ms": 558000,
+              "readers": [
+                "sreeramc"
+              ],
+              "section_number": 11,
               "start_ms": 12478000,
               "title": "Of Fixing the Attention"
             },
             {
               "audio_url": "https://www.archive.org/download/improvement_of_the_mind_2207_librivox/improvementmind_12_watts_64kb.mp3",
               "length_ms": 1313000,
+              "readers": [
+                "leigh-briar"
+              ],
+              "section_number": 12,
               "start_ms": 13036000,
               "title": "On Enlarging the Capacity of the Mind"
             },
             {
               "audio_url": "https://www.archive.org/download/improvement_of_the_mind_2207_librivox/improvementmind_13_watts_64kb.mp3",
               "length_ms": 3440000,
+              "readers": [
+                "isen7"
+              ],
+              "section_number": 13,
               "start_ms": 14349000,
               "title": "Of Improving the Memory"
             },
             {
               "audio_url": "https://www.archive.org/download/improvement_of_the_mind_2207_librivox/improvementmind_14_watts_64kb.mp3",
               "length_ms": 2134000,
+              "readers": [
+                "leigh-briar"
+              ],
+              "section_number": 14,
               "start_ms": 17789000,
               "title": "Of Determining a Question"
             },
             {
               "audio_url": "https://www.archive.org/download/improvement_of_the_mind_2207_librivox/improvementmind_15_watts_64kb.mp3",
               "length_ms": 658000,
+              "readers": [
+                "kerry-adams"
+              ],
+              "section_number": 15,
               "start_ms": 19923000,
               "title": "Of Inquiring into Causes and Effects"
             },
             {
               "audio_url": "https://www.archive.org/download/improvement_of_the_mind_2207_librivox/improvementmind_16_watts_64kb.mp3",
               "length_ms": 1162000,
+              "readers": [
+                "sreeramc"
+              ],
+              "section_number": 16,
               "start_ms": 20581000,
               "title": "Methods of Teaching and Reading Lectures"
             },
             {
               "audio_url": "https://www.archive.org/download/improvement_of_the_mind_2207_librivox/improvementmind_17_watts_64kb.mp3",
               "length_ms": 730000,
+              "readers": [
+                "kerry-adams"
+              ],
+              "section_number": 17,
               "start_ms": 21743000,
               "title": "Of an Instructive Style"
             },
             {
               "audio_url": "https://www.archive.org/download/improvement_of_the_mind_2207_librivox/improvementmind_18_watts_64kb.mp3",
               "length_ms": 957000,
+              "readers": [
+                "leigh-briar"
+              ],
+              "section_number": 18,
               "start_ms": 22473000,
               "title": "Of Convincing Other Persons of any Truth, or Delivering them from Errors and Mistakes"
             },
             {
               "audio_url": "https://www.archive.org/download/improvement_of_the_mind_2207_librivox/improvementmind_19_watts_64kb.mp3",
               "length_ms": 902000,
+              "readers": [
+                "leigh-briar"
+              ],
+              "section_number": 19,
               "start_ms": 23430000,
               "title": "Of Authority. Of the Abuse of it: and of its Real and Proper Use and Service"
             },
             {
               "audio_url": "https://www.archive.org/download/improvement_of_the_mind_2207_librivox/improvementmind_20_watts_64kb.mp3",
               "length_ms": 637000,
+              "readers": [
+                "inthedesert"
+              ],
+              "section_number": 20,
               "start_ms": 24332000,
               "title": "Of Treating and Managing the Prejudices of Men"
             }
@@ -12455,7 +12709,11 @@
           "cover_url": "https://archive.org/download/improvement_of_the_mind_2207_librivox/improvement_mind_2207.jpg",
           "id": "inthedesert",
           "language": "en",
+          "librivox_genres": [
+            "Self-Help"
+          ],
           "librivox_id": 17889,
+          "librivox_title": "Improvement of the Mind",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/improvement-of-the-mind-by-isaac-watts/",

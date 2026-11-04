@@ -5212,15 +5212,30 @@
             {
               "audio_url": "https://www.archive.org/download/kriton_0911_librivox/kriton_1_platon_64kb.mp3",
               "length_ms": 3239000,
+              "readers": [
+                "redaer",
+                "christian-al-kadi"
+              ],
               "start_ms": 0,
               "title": "Kriton"
             }
           ],
           "copyright_year": 1818,
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt5/kriton_1006.jpg",
+          "credits": [
+            {
+              "person": "friedrich-daniel-ernst-schleiermacher",
+              "role": "translator"
+            }
+          ],
           "id": "redaer",
           "language": "de",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Ancient"
+          ],
           "librivox_id": 3742,
+          "librivox_title": "Kriton",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/kriton-by-plato-platon/",

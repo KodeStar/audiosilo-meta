@@ -3386,42 +3386,63 @@
             {
               "audio_url": "https://www.archive.org/download/schwuele_tage_1608_librivox/schwueletage_1_vonkeyserling_64kb.mp3",
               "length_ms": 1259000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 0,
               "title": "Erstes Kapitel"
             },
             {
               "audio_url": "https://www.archive.org/download/schwuele_tage_1608_librivox/schwueletage_2_vonkeyserling_64kb.mp3",
               "length_ms": 1234000,
+              "readers": [
+                "ragnar"
+              ],
               "start_ms": 1259000,
               "title": "Zweites Kapitel"
             },
             {
               "audio_url": "https://www.archive.org/download/schwuele_tage_1608_librivox/schwueletage_3_vonkeyserling_64kb.mp3",
               "length_ms": 996000,
+              "readers": [
+                "ragnar"
+              ],
               "start_ms": 2493000,
               "title": "Drittes Kapitel"
             },
             {
               "audio_url": "https://www.archive.org/download/schwuele_tage_1608_librivox/schwueletage_4_vonkeyserling_64kb.mp3",
               "length_ms": 1107000,
+              "readers": [
+                "ragnar"
+              ],
               "start_ms": 3489000,
               "title": "Viertes Kapitel"
             },
             {
               "audio_url": "https://www.archive.org/download/schwuele_tage_1608_librivox/schwueletage_5_vonkeyserling_64kb.mp3",
               "length_ms": 1107000,
+              "readers": [
+                "ragnar"
+              ],
               "start_ms": 4596000,
               "title": "Fünftes Kapitel"
             },
             {
               "audio_url": "https://www.archive.org/download/schwuele_tage_1608_librivox/schwueletage_6_vonkeyserling_64kb.mp3",
               "length_ms": 1195000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 5703000,
               "title": "Sechstes Kapitel"
             },
             {
               "audio_url": "https://www.archive.org/download/schwuele_tage_1608_librivox/schwueletage_7_vonkeyserling_64kb.mp3",
               "length_ms": 1201000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 6898000,
               "title": "Siebentes Kapitel"
             }
@@ -3430,7 +3451,11 @@
           "cover_url": "https://archive.org/download/librivoxcCDCoverArt35/schwueletage_1608.jpg",
           "id": "karlsson",
           "language": "de",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 6888,
+          "librivox_title": "Schwüle Tage",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/schwuele-tage-by-eduard-von-keyserling/",
@@ -7419,90 +7444,135 @@
             {
               "audio_url": "https://www.archive.org/download/science_and_hypothesis_librivox/scienceandhypothesis_01_poincare_64kb.mp3",
               "length_ms": 815000,
+              "readers": [
+                "carl-manchester"
+              ],
               "start_ms": 0,
               "title": "Introduction by Judd Larmor"
             },
             {
               "audio_url": "https://www.archive.org/download/science_and_hypothesis_librivox/scienceandhypothesis_02_poincare_64kb.mp3",
               "length_ms": 654000,
+              "readers": [
+                "peter-eastman"
+              ],
               "start_ms": 815000,
               "title": "Author’s Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/science_and_hypothesis_librivox/scienceandhypothesis_03_poincare_64kb.mp3",
               "length_ms": 1829000,
+              "readers": [
+                "ashwin-jain"
+              ],
               "start_ms": 1469000,
               "title": "On the Nature of Mathematical Reasoning"
             },
             {
               "audio_url": "https://www.archive.org/download/science_and_hypothesis_librivox/scienceandhypothesis_04_poincare_64kb.mp3",
               "length_ms": 1630000,
+              "readers": [
+                "anna-simon"
+              ],
               "start_ms": 3298000,
               "title": "Mathematical Magnitude and Experiment"
             },
             {
               "audio_url": "https://www.archive.org/download/science_and_hypothesis_librivox/scienceandhypothesis_05_poincare_64kb.mp3",
               "length_ms": 1672000,
+              "readers": [
+                "leon-mire"
+              ],
               "start_ms": 4928000,
               "title": "Non-Euclidean Geometries"
             },
             {
               "audio_url": "https://www.archive.org/download/science_and_hypothesis_librivox/scienceandhypothesis_06_poincare_64kb.mp3",
               "length_ms": 1922000,
+              "readers": [
+                "ajacoby"
+              ],
               "start_ms": 6600000,
               "title": "Space and Geometry"
             },
             {
               "audio_url": "https://www.archive.org/download/science_and_hypothesis_librivox/scienceandhypothesis_07_poincare_64kb.mp3",
               "length_ms": 1615000,
+              "readers": [
+                "ajacoby"
+              ],
               "start_ms": 8522000,
               "title": "Experiment and Geometry"
             },
             {
               "audio_url": "https://www.archive.org/download/science_and_hypothesis_librivox/scienceandhypothesis_08_poincare_64kb.mp3",
               "length_ms": 1833000,
+              "readers": [
+                "connor-riley"
+              ],
               "start_ms": 10137000,
               "title": "Classical Mechanics"
             },
             {
               "audio_url": "https://www.archive.org/download/science_and_hypothesis_librivox/scienceandhypothesis_09_poincare_64kb.mp3",
               "length_ms": 1192000,
+              "readers": [
+                "mark-f-smith"
+              ],
               "start_ms": 11970000,
               "title": "Relative and Absolute Motion"
             },
             {
               "audio_url": "https://www.archive.org/download/science_and_hypothesis_librivox/scienceandhypothesis_10_poincare_64kb.mp3",
               "length_ms": 1444000,
+              "readers": [
+                "j-m-smallheer"
+              ],
               "start_ms": 13162000,
               "title": "Energy and Thermo-dynamics"
             },
             {
               "audio_url": "https://www.archive.org/download/science_and_hypothesis_librivox/scienceandhypothesis_11_poincare_64kb.mp3",
               "length_ms": 1743000,
+              "readers": [
+                "anna-simon"
+              ],
               "start_ms": 14606000,
               "title": "Hypotheses in Physics"
             },
             {
               "audio_url": "https://www.archive.org/download/science_and_hypothesis_librivox/scienceandhypothesis_12_poincare_64kb.mp3",
               "length_ms": 1990000,
+              "readers": [
+                "j-m-smallheer"
+              ],
               "start_ms": 16349000,
               "title": "The Theories of Modern Physics"
             },
             {
               "audio_url": "https://www.archive.org/download/science_and_hypothesis_librivox/scienceandhypothesis_13_poincare_64kb.mp3",
               "length_ms": 3039000,
+              "readers": [
+                "mark-f-smith"
+              ],
               "start_ms": 18339000,
               "title": "The Calculus of Probability"
             },
             {
               "audio_url": "https://www.archive.org/download/science_and_hypothesis_librivox/scienceandhypothesis_14_poincare_64kb.mp3",
               "length_ms": 1365000,
+              "readers": [
+                "esther"
+              ],
               "start_ms": 21378000,
               "title": "Optics and Electricity"
             },
             {
               "audio_url": "https://www.archive.org/download/science_and_hypothesis_librivox/scienceandhypothesis_15_poincare_64kb.mp3",
               "length_ms": 2578000,
+              "readers": [
+                "ashwin-jain"
+              ],
               "start_ms": 22743000,
               "title": "Electro-Dynamics"
             }
@@ -7511,7 +7581,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt7/Science_and_Hypothesis_1102.jpg",
           "id": "carl-manchester",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Science"
+          ],
           "librivox_id": 1823,
+          "librivox_title": "Science and Hypothesis",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/science-and-hypothesis-by-henri-poincare/",
@@ -8225,102 +8300,170 @@
             {
               "audio_url": "https://www.archive.org/download/scienceandthecriminal_2607_librivox/scienceancriminal_00_mitchell_64kb.mp3",
               "length_ms": 191000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthecriminal_2607_librivox/scienceancriminal_01_mitchell_64kb.mp3",
               "length_ms": 1723000,
+              "readers": [
+                "steve670"
+              ],
+              "section_number": 1,
               "start_ms": 191000,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthecriminal_2607_librivox/scienceancriminal_02_mitchell_64kb.mp3",
               "length_ms": 1076000,
+              "readers": [
+                "coffeelover"
+              ],
+              "section_number": 2,
               "start_ms": 1914000,
               "title": "Detection and Capture of the Criminal"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthecriminal_2607_librivox/scienceancriminal_03_mitchell_64kb.mp3",
               "length_ms": 1140000,
+              "readers": [
+                "christopher-boswell"
+              ],
+              "section_number": 3,
               "start_ms": 2990000,
               "title": "Personal Identification"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthecriminal_2607_librivox/scienceancriminal_04_mitchell_64kb.mp3",
               "length_ms": 2182000,
+              "readers": [
+                "jt-gardelle"
+              ],
+              "section_number": 4,
               "start_ms": 4130000,
               "title": "Systems of Identification"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthecriminal_2607_librivox/scienceancriminal_05_mitchell_64kb.mp3",
               "length_ms": 846000,
+              "readers": [
+                "coffeelover"
+              ],
+              "section_number": 5,
               "start_ms": 6312000,
               "title": "Identification and Handwriting"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthecriminal_2607_librivox/scienceancriminal_06_mitchell_64kb.mp3",
               "length_ms": 679000,
+              "readers": [
+                "coffeelover"
+              ],
+              "section_number": 6,
               "start_ms": 7158000,
               "title": "Evidence as to Handwriting"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthecriminal_2607_librivox/scienceancriminal_07_mitchell_64kb.mp3",
               "length_ms": 1172000,
+              "readers": [
+                "jersey-city-frankie"
+              ],
+              "section_number": 7,
               "start_ms": 7837000,
               "title": "Forged Documents"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthecriminal_2607_librivox/scienceancriminal_08_mitchell_64kb.mp3",
               "length_ms": 1056000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 8,
               "start_ms": 9009000,
               "title": "Distinguishing Inks in Handwriting"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthecriminal_2607_librivox/scienceancriminal_09_mitchell_64kb.mp3",
               "length_ms": 1268000,
+              "readers": [
+                "verla-viera"
+              ],
+              "section_number": 9,
               "start_ms": 10065000,
               "title": "Two Notable Trials"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthecriminal_2607_librivox/scienceancriminal_10_mitchell_64kb.mp3",
               "length_ms": 447000,
+              "readers": [
+                "coffeelover"
+              ],
+              "section_number": 10,
               "start_ms": 11333000,
               "title": "Sympathetic Inks"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthecriminal_2607_librivox/scienceancriminal_11_mitchell_64kb.mp3",
               "length_ms": 1952000,
+              "readers": [
+                "dc-dixon"
+              ],
+              "section_number": 11,
               "start_ms": 11780000,
               "title": "Remarkable Forgery Trials"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthecriminal_2607_librivox/scienceancriminal_12_mitchell_64kb.mp3",
               "length_ms": 1877000,
+              "readers": [
+                "ikantungkil"
+              ],
+              "section_number": 12,
               "start_ms": 13732000,
               "title": "Identification of Human Blood and Human Hair"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthecriminal_2607_librivox/scienceancriminal_13_mitchell_64kb.mp3",
               "length_ms": 1720000,
+              "readers": [
+                "rms349"
+              ],
+              "section_number": 13,
               "start_ms": 15609000,
               "title": "Early Poisoning Trials"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthecriminal_2607_librivox/scienceancriminal_14_mitchell_64kb.mp3",
               "length_ms": 1284000,
+              "readers": [
+                "rms349"
+              ],
+              "section_number": 14,
               "start_ms": 17329000,
               "title": "Notable Poisoning Trials"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthecriminal_2607_librivox/scienceancriminal_15_mitchell_64kb.mp3",
               "length_ms": 1306000,
+              "readers": [
+                "louise-j-belle"
+              ],
+              "section_number": 15,
               "start_ms": 18613000,
               "title": "The Maybrick Case"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthecriminal_2607_librivox/scienceancriminal_16_mitchell_64kb.mp3",
               "length_ms": 2468000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 16,
               "start_ms": 19919000,
               "title": "Adulteration of Food"
             }
@@ -8329,7 +8472,13 @@
           "cover_url": "https://archive.org/download/scienceandthecriminal_2607_librivox/science_criminal_2607.jpg",
           "id": "larry-wilson",
           "language": "en",
+          "librivox_genres": [
+            "Law",
+            "True Crime",
+            "Chemistry"
+          ],
           "librivox_id": 22524,
+          "librivox_title": "Science and the Criminal",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/science-and-the-criminal-by-c-ainsworth-mitchell/",
@@ -8392,84 +8541,98 @@
             {
               "audio_url": "https://www.archive.org/download/scienceandthemodernworld_2411_librivox/scienceandthemodernworld_00_whitehead_64kb.mp3",
               "length_ms": 294000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthemodernworld_2411_librivox/scienceandthemodernworld_01_whitehead_64kb.mp3",
               "length_ms": 2515000,
+              "section_number": 1,
               "start_ms": 294000,
               "title": "The Origins of Modern Science"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthemodernworld_2411_librivox/scienceandthemodernworld_02_whitehead_64kb.mp3",
               "length_ms": 2422000,
+              "section_number": 2,
               "start_ms": 2809000,
               "title": "Mathematics as an Element in the History of Thought"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthemodernworld_2411_librivox/scienceandthemodernworld_03_whitehead_64kb.mp3",
               "length_ms": 2319000,
+              "section_number": 3,
               "start_ms": 5231000,
               "title": "The Century of Genius"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthemodernworld_2411_librivox/scienceandthemodernworld_04_whitehead_64kb.mp3",
               "length_ms": 2427000,
+              "section_number": 4,
               "start_ms": 7550000,
               "title": "The Eighteenth Century"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthemodernworld_2411_librivox/scienceandthemodernworld_05_whitehead_64kb.mp3",
               "length_ms": 2650000,
+              "section_number": 5,
               "start_ms": 9977000,
               "title": "The Romantic Reaction"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthemodernworld_2411_librivox/scienceandthemodernworld_06_whitehead_64kb.mp3",
               "length_ms": 2358000,
+              "section_number": 6,
               "start_ms": 12627000,
               "title": "The Nineteenth Century"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthemodernworld_2411_librivox/scienceandthemodernworld_07_whitehead_64kb.mp3",
               "length_ms": 2021000,
+              "section_number": 7,
               "start_ms": 14985000,
               "title": "Relativity"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthemodernworld_2411_librivox/scienceandthemodernworld_08_whitehead_64kb.mp3",
               "length_ms": 1094000,
+              "section_number": 8,
               "start_ms": 17006000,
               "title": "The Quantum Theory"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthemodernworld_2411_librivox/scienceandthemodernworld_09_whitehead_64kb.mp3",
               "length_ms": 2419000,
+              "section_number": 9,
               "start_ms": 18100000,
               "title": "Science and Philosophy"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthemodernworld_2411_librivox/scienceandthemodernworld_10_whitehead_64kb.mp3",
               "length_ms": 2219000,
+              "section_number": 10,
               "start_ms": 20519000,
               "title": "Abstraction"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthemodernworld_2411_librivox/scienceandthemodernworld_11_whitehead_64kb.mp3",
               "length_ms": 901000,
+              "section_number": 11,
               "start_ms": 22738000,
               "title": "God"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthemodernworld_2411_librivox/scienceandthemodernworld_12_whitehead_64kb.mp3",
               "length_ms": 1575000,
+              "section_number": 12,
               "start_ms": 23639000,
               "title": "Religion and Science"
             },
             {
               "audio_url": "https://www.archive.org/download/scienceandthemodernworld_2411_librivox/scienceandthemodernworld_13_whitehead_64kb.mp3",
               "length_ms": 2146000,
+              "section_number": 13,
               "start_ms": 25214000,
               "title": "Requisites for Social Progress"
             }
@@ -8478,7 +8641,12 @@
           "cover_url": "https://archive.org/download/scienceandthemodernworld_2411_librivox/sciencemodernworld_2412.jpg",
           "id": "peter-tucker",
           "language": "en",
+          "librivox_genres": [
+            "Science",
+            "Modern"
+          ],
           "librivox_id": 20815,
+          "librivox_title": "Science and the Modern World",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/science-and-the-modern-world-by-alfred-north-whitehead/",
@@ -9159,7 +9327,11 @@
           "cover_url": "https://archive.org/download/scienceetamour_2012_librivox/scienceamour_2101.jpg",
           "id": "pauline-latournerie",
           "language": "fr",
+          "librivox_genres": [
+            "Literary Fiction"
+          ],
           "librivox_id": 14095,
+          "librivox_title": "science et l'amour",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/la-science-et-lamour-by-leontine-zanta/",

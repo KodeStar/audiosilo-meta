@@ -2727,18 +2727,52 @@
             {
               "audio_url": "https://www.archive.org/download/engaged_2007_librivox/engaged_1_gilbert_64kb.mp3",
               "length_ms": 2719000,
+              "readers": [
+                "matthew-reece",
+                "toddhw",
+                "alan-mapstone",
+                "khand",
+                "sonia",
+                "craig-franklin",
+                "michaelmaggs",
+                "skypigeon",
+                "emmi-kranz"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/engaged_2007_librivox/engaged_2_gilbert_64kb.mp3",
               "length_ms": 2606000,
+              "readers": [
+                "matthew-reece",
+                "toddhw",
+                "alan-mapstone",
+                "khand",
+                "lydia",
+                "sonia",
+                "michaelmaggs",
+                "jenn-broda",
+                "skypigeon",
+                "emmi-kranz"
+              ],
               "start_ms": 2719000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/engaged_2007_librivox/engaged_3_gilbert_64kb.mp3",
               "length_ms": 2189000,
+              "readers": [
+                "matthew-reece",
+                "toddhw",
+                "alan-mapstone",
+                "khand",
+                "sonia",
+                "michaelmaggs",
+                "jenn-broda",
+                "skypigeon",
+                "emmi-kranz"
+              ],
               "start_ms": 5325000,
               "title": "Act 3"
             }
@@ -2747,7 +2781,11 @@
           "cover_url": "https://archive.org/download/engaged_2007_librivox/Engaged_2007.jpg",
           "id": "matthew-reece",
           "language": "en",
+          "librivox_genres": [
+            "Comedy"
+          ],
           "librivox_id": 15004,
+          "librivox_title": "Engaged",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/engaged-by-w-s-gilbert/",

@@ -3518,30 +3518,47 @@
             {
               "audio_url": "https://www.archive.org/download/biterbit_2205_librivox/biterbit_01_collins_64kb.mp3",
               "length_ms": 447000,
+              "readers": [
+                "louise-j-belle",
+                "bletheringape"
+              ],
               "start_ms": 0,
               "title": "July 4-5"
             },
             {
               "audio_url": "https://www.archive.org/download/biterbit_2205_librivox/biterbit_02_collins_64kb.mp3",
               "length_ms": 742000,
+              "readers": [
+                "bletheringape"
+              ],
               "start_ms": 447000,
               "title": "July 6"
             },
             {
               "audio_url": "https://www.archive.org/download/biterbit_2205_librivox/biterbit_03_collins_64kb.mp3",
               "length_ms": 767000,
+              "readers": [
+                "bletheringape"
+              ],
               "start_ms": 1189000,
               "title": "July 7"
             },
             {
               "audio_url": "https://www.archive.org/download/biterbit_2205_librivox/biterbit_04_collins_64kb.mp3",
               "length_ms": 948000,
+              "readers": [
+                "bletheringape"
+              ],
               "start_ms": 1956000,
               "title": "July 8"
             },
             {
               "audio_url": "https://www.archive.org/download/biterbit_2205_librivox/biterbit_05_collins_64kb.mp3",
               "length_ms": 982000,
+              "readers": [
+                "louise-j-belle",
+                "bletheringape"
+              ],
               "start_ms": 2904000,
               "title": "July 9-10-12"
             }
@@ -3550,7 +3567,11 @@
           "cover_url": "https://archive.org/download/biterbit_2205_librivox/biterbit_2205.jpg",
           "id": "louise-j-belle",
           "language": "en",
+          "librivox_genres": [
+            "Epistolary Fiction"
+          ],
           "librivox_id": 17760,
+          "librivox_title": "Biter Bit",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-biter-bit-by-wilkie-collins/",
@@ -4729,7 +4750,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt29/bits_about_home_matters_1302.jpg",
           "id": "ashleighjane",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Family & Relationships",
+            "House & Home"
+          ],
           "librivox_id": 7009,
+          "librivox_title": "Bits About Home Matters",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/bits-about-home-matters-by-helen-hunt-jackson/",

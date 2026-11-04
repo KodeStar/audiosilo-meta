@@ -4307,7 +4307,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt21/Mattinate_Napoletane_1208.jpg",
           "id": "davide-lequile",
           "language": "it",
+          "librivox_genres": [
+            "Short Stories"
+          ],
           "librivox_id": 3594,
+          "librivox_title": "Mattinate Napoletane",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/mattinate-napoletane-by-salvatore-di-giacomo/",
@@ -5614,7 +5618,11 @@
           "cover_url": "https://archive.org/download/librivoxcdcoverart36/maud_2007.jpg",
           "id": "michaelmaggs",
           "language": "en",
+          "librivox_genres": [
+            "Single author"
+          ],
           "librivox_id": 15250,
+          "librivox_title": "Maud, and Other Poems (Version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/maud-and-other-poems-by-alfred-tennyson/",
@@ -5643,78 +5651,118 @@
             {
               "audio_url": "https://www.archive.org/download/maud_1806_librivox/maud_01_tennyson_64kb.mp3",
               "length_ms": 930000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 0,
               "title": "Maud Part I, I-IV"
             },
             {
               "audio_url": "https://www.archive.org/download/maud_1806_librivox/maud_02_tennyson_64kb.mp3",
               "length_ms": 908000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 930000,
               "title": "Maud Part I, V-XII"
             },
             {
               "audio_url": "https://www.archive.org/download/maud_1806_librivox/maud_03_tennyson_64kb.mp3",
               "length_ms": 885000,
+              "readers": [
+                "eva-davis-d-2025"
+              ],
               "start_ms": 1838000,
               "title": "Maud Part I, XIII-XVIII"
             },
             {
               "audio_url": "https://www.archive.org/download/maud_1806_librivox/maud_04_tennyson_64kb.mp3",
               "length_ms": 771000,
+              "readers": [
+                "eva-davis-d-2025"
+              ],
               "start_ms": 2723000,
               "title": "Maud Part I, XIX-XXII"
             },
             {
               "audio_url": "https://www.archive.org/download/maud_1806_librivox/maud_05_tennyson_64kb.mp3",
               "length_ms": 632000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 3494000,
               "title": "Maud Part II, I-IV"
             },
             {
               "audio_url": "https://www.archive.org/download/maud_1806_librivox/maud_06_tennyson_64kb.mp3",
               "length_ms": 565000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 4126000,
               "title": "Maud Part II, V-VI"
             },
             {
               "audio_url": "https://www.archive.org/download/maud_1806_librivox/maud_07_tennyson_64kb.mp3",
               "length_ms": 771000,
+              "readers": [
+                "eva-davis-d-2025",
+                "nemo"
+              ],
               "start_ms": 4691000,
               "title": "The Brook"
             },
             {
               "audio_url": "https://www.archive.org/download/maud_1806_librivox/maud_08_tennyson_64kb.mp3",
               "length_ms": 190000,
+              "readers": [
+                "eva-davis-d-2025"
+              ],
               "start_ms": 5462000,
               "title": "The Letters"
             },
             {
               "audio_url": "https://www.archive.org/download/maud_1806_librivox/maud_09_tennyson_64kb.mp3",
               "length_ms": 794000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 5652000,
               "title": "Ode on the Death of the Duke of Wellington"
             },
             {
               "audio_url": "https://www.archive.org/download/maud_1806_librivox/maud_10_tennyson_64kb.mp3",
               "length_ms": 303000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 6446000,
               "title": "The Daisy"
             },
             {
               "audio_url": "https://www.archive.org/download/maud_1806_librivox/maud_11_tennyson_64kb.mp3",
               "length_ms": 154000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 6749000,
               "title": "To the Rev. F. D. Maurice"
             },
             {
               "audio_url": "https://www.archive.org/download/maud_1806_librivox/maud_12_tennyson_64kb.mp3",
               "length_ms": 88000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 6903000,
               "title": "Will"
             },
             {
               "audio_url": "https://www.archive.org/download/maud_1806_librivox/maud_13_tennyson_64kb.mp3",
               "length_ms": 153000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 6991000,
               "title": "The Charge of the Light Brigade"
             }
@@ -5723,7 +5771,11 @@
           "cover_url": "https://archive.org/download/maud_1806_librivox/MaudTennyson_1706.jpg",
           "id": "nemo",
           "language": "en",
+          "librivox_genres": [
+            "Single author"
+          ],
           "librivox_id": 9010,
+          "librivox_title": "Maud, and Other Poems",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/maud-and-other-poems-by-alfred-lord-tennyson/",
@@ -6277,7 +6329,14 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/Maude_1312.jpg",
           "id": "elizabeth-klett",
           "language": "en",
+          "librivox_genres": [
+            "Literary Fiction",
+            "Poetry",
+            "Religious Fiction",
+            "Religion"
+          ],
           "librivox_id": 8404,
+          "librivox_title": "Maude",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/maude-by-christina-rossetti/",
@@ -8104,267 +8163,449 @@
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_00_sand_64kb.mp3",
               "length_ms": 1035000,
+              "readers": [
+                "lucy-kempton"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "George Sand by Pearl Mary-Teresa Craigie"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_01_sand_64kb.mp3",
               "length_ms": 630000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 1,
               "start_ms": 1035000,
               "title": "Life of George Sand by E.G."
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_02_sand_64kb.mp3",
               "length_ms": 165000,
+              "readers": [
+                "scarbo"
+              ],
+              "section_number": 2,
               "start_ms": 1665000,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_03_sand_64kb.mp3",
               "length_ms": 1597000,
+              "readers": [
+                "lucy-kempton"
+              ],
+              "section_number": 3,
               "start_ms": 1830000,
               "title": "Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_04_sand_64kb.mp3",
               "length_ms": 790000,
+              "readers": [
+                "joe-selah"
+              ],
+              "section_number": 4,
               "start_ms": 3427000,
               "title": "Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_05_sand_64kb.mp3",
               "length_ms": 974000,
+              "readers": [
+                "gini-rosario"
+              ],
+              "section_number": 5,
               "start_ms": 4217000,
               "title": "Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_06_sand_64kb.mp3",
               "length_ms": 940000,
+              "readers": [
+                "gini-rosario"
+              ],
+              "section_number": 6,
               "start_ms": 5191000,
               "title": "Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_07_sand_64kb.mp3",
               "length_ms": 759000,
+              "readers": [
+                "justforfun123"
+              ],
+              "section_number": 7,
               "start_ms": 6131000,
               "title": "Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_08_sand_64kb.mp3",
               "length_ms": 479000,
+              "readers": [
+                "gini-rosario"
+              ],
+              "section_number": 8,
               "start_ms": 6890000,
               "title": "Chapter 6, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_09_sand_64kb.mp3",
               "length_ms": 1281000,
+              "readers": [
+                "gini-rosario"
+              ],
+              "section_number": 9,
               "start_ms": 7369000,
               "title": "Chapter 6, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_10_sand_64kb.mp3",
               "length_ms": 1427000,
+              "readers": [
+                "gini-rosario"
+              ],
+              "section_number": 10,
               "start_ms": 8650000,
               "title": "Chapter 6, part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_11_sand_64kb.mp3",
               "length_ms": 786000,
+              "readers": [
+                "joe-selah"
+              ],
+              "section_number": 11,
               "start_ms": 10077000,
               "title": "Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_12_sand_64kb.mp3",
               "length_ms": 1406000,
+              "readers": [
+                "danielle-wolff"
+              ],
+              "section_number": 12,
               "start_ms": 10863000,
               "title": "Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_13_sand_64kb.mp3",
               "length_ms": 817000,
+              "readers": [
+                "gini-rosario"
+              ],
+              "section_number": 13,
               "start_ms": 12269000,
               "title": "Chapter 9, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_14_sand_64kb.mp3",
               "length_ms": 1113000,
+              "readers": [
+                "gini-rosario"
+              ],
+              "section_number": 14,
               "start_ms": 13086000,
               "title": "Chapter 9, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_15_sand_64kb.mp3",
               "length_ms": 950000,
+              "readers": [
+                "jessica-hendra"
+              ],
+              "section_number": 15,
               "start_ms": 14199000,
               "title": "Chapter 10, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_16_sand_64kb.mp3",
               "length_ms": 1200000,
+              "readers": [
+                "gini-rosario"
+              ],
+              "section_number": 16,
               "start_ms": 15149000,
               "title": "Chapter 10, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_17_sand_64kb.mp3",
               "length_ms": 1045000,
+              "readers": [
+                "gini-rosario"
+              ],
+              "section_number": 17,
               "start_ms": 16349000,
               "title": "Chapter 10, part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_18_sand_64kb.mp3",
               "length_ms": 501000,
+              "readers": [
+                "jade-leah-pilling"
+              ],
+              "section_number": 18,
               "start_ms": 17394000,
               "title": "Chapter 11, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_19_sand_64kb.mp3",
               "length_ms": 1471000,
+              "readers": [
+                "christine-rottger"
+              ],
+              "section_number": 19,
               "start_ms": 17895000,
               "title": "Chapter 11, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_20_sand_64kb.mp3",
               "length_ms": 1128000,
+              "readers": [
+                "christine-rottger"
+              ],
+              "section_number": 20,
               "start_ms": 19366000,
               "title": "Chapter 11, part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_21_sand_64kb.mp3",
               "length_ms": 1311000,
+              "readers": [
+                "christine-rottger"
+              ],
+              "section_number": 21,
               "start_ms": 20494000,
               "title": "Chapter 11, part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_22_sand_64kb.mp3",
               "length_ms": 1215000,
+              "readers": [
+                "gini-rosario"
+              ],
+              "section_number": 22,
               "start_ms": 21805000,
               "title": "Chapter 12"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_23_sand_64kb.mp3",
               "length_ms": 1337000,
+              "readers": [
+                "gini-rosario"
+              ],
+              "section_number": 23,
               "start_ms": 23020000,
               "title": "Chapter 13"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_24_sand_64kb.mp3",
               "length_ms": 1087000,
+              "readers": [
+                "gini-rosario"
+              ],
+              "section_number": 24,
               "start_ms": 24357000,
               "title": "Chapter 14, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_25_sand_64kb.mp3",
               "length_ms": 839000,
+              "readers": [
+                "gini-rosario"
+              ],
+              "section_number": 25,
               "start_ms": 25444000,
               "title": "Chapter 14, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_26_sand_64kb.mp3",
               "length_ms": 1427000,
+              "readers": [
+                "joannah"
+              ],
+              "section_number": 26,
               "start_ms": 26283000,
               "title": "Chapter 15"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_27_sand_64kb.mp3",
               "length_ms": 1606000,
+              "readers": [
+                "gini-rosario"
+              ],
+              "section_number": 27,
               "start_ms": 27710000,
               "title": "Chapter 16"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_28_sand_64kb.mp3",
               "length_ms": 1107000,
+              "readers": [
+                "rosemary-mcdonald-1938-2025"
+              ],
+              "section_number": 28,
               "start_ms": 29316000,
               "title": "Chapter 17, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_29_sand_64kb.mp3",
               "length_ms": 1262000,
+              "readers": [
+                "rosemary-mcdonald-1938-2025"
+              ],
+              "section_number": 29,
               "start_ms": 30423000,
               "title": "Chapter 17, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_30_sand_64kb.mp3",
               "length_ms": 1718000,
+              "readers": [
+                "rosemary-mcdonald-1938-2025"
+              ],
+              "section_number": 30,
               "start_ms": 31685000,
               "title": "Chapter 18"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_31_sand_64kb.mp3",
               "length_ms": 1095000,
+              "readers": [
+                "rosemary-mcdonald-1938-2025"
+              ],
+              "section_number": 31,
               "start_ms": 33403000,
               "title": "Chapter 19"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_32_sand_64kb.mp3",
               "length_ms": 1221000,
+              "readers": [
+                "rosemary-mcdonald-1938-2025"
+              ],
+              "section_number": 32,
               "start_ms": 34498000,
               "title": "Chapter 20"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_33_sand_64kb.mp3",
               "length_ms": 1426000,
+              "readers": [
+                "rosemary-mcdonald-1938-2025"
+              ],
+              "section_number": 33,
               "start_ms": 35719000,
               "title": "Chapter 21"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_34_sand_64kb.mp3",
               "length_ms": 1235000,
+              "readers": [
+                "rosemary-mcdonald-1938-2025"
+              ],
+              "section_number": 34,
               "start_ms": 37145000,
               "title": "Chapter 22"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_35_sand_64kb.mp3",
               "length_ms": 1123000,
+              "readers": [
+                "christine-rottger"
+              ],
+              "section_number": 35,
               "start_ms": 38380000,
               "title": "Chapter 23"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_36_sand_64kb.mp3",
               "length_ms": 1014000,
+              "readers": [
+                "christine-rottger"
+              ],
+              "section_number": 36,
               "start_ms": 39503000,
               "title": "Chapter 24"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_37_sand_64kb.mp3",
               "length_ms": 1666000,
+              "readers": [
+                "christine-rottger"
+              ],
+              "section_number": 37,
               "start_ms": 40517000,
               "title": "Chapter 25"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_38_sand_64kb.mp3",
               "length_ms": 1262000,
+              "readers": [
+                "christine-rottger"
+              ],
+              "section_number": 38,
               "start_ms": 42183000,
               "title": "Chapter 26"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_39_sand_64kb.mp3",
               "length_ms": 1855000,
+              "readers": [
+                "christine-rottger"
+              ],
+              "section_number": 39,
               "start_ms": 43445000,
               "title": "Chapter 27"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_40_sand_64kb.mp3",
               "length_ms": 1647000,
+              "readers": [
+                "christine-rottger"
+              ],
+              "section_number": 40,
               "start_ms": 45300000,
               "title": "Chapter 28"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_41_sand_64kb.mp3",
               "length_ms": 986000,
+              "readers": [
+                "christine-rottger"
+              ],
+              "section_number": 41,
               "start_ms": 46947000,
               "title": "Chapter 29"
             },
             {
               "audio_url": "https://www.archive.org/download/mauprat_2110_librivox/mauprat_42_sand_64kb.mp3",
               "length_ms": 645000,
+              "readers": [
+                "scarbo"
+              ],
+              "section_number": 42,
               "start_ms": 47933000,
               "title": "Chapter 30"
             }
           ],
           "copyright_year": 1902,
           "cover_url": "https://archive.org/download/mauprat_2110_librivox/mauprat_2110.jpg",
+          "credits": [
+            {
+              "person": "stanley-young",
+              "role": "translator"
+            }
+          ],
           "id": "lucy-kempton",
           "language": "en",
+          "librivox_genres": [
+            "Published 1800 -1900"
+          ],
           "librivox_id": 16590,
+          "librivox_title": "Mauprat",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/mauprat-by-george-sand/",
@@ -9867,558 +10108,837 @@
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_001_wilcox_64kb.mp3",
               "length_ms": 144000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 0,
               "title": "Proem"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_002_wilcox_64kb.mp3",
               "length_ms": 1075000,
+              "readers": [
+                "maryann"
+              ],
               "start_ms": 144000,
               "title": "Maurine, Part I"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_003_wilcox_64kb.mp3",
               "length_ms": 1144000,
+              "readers": [
+                "maryann"
+              ],
               "start_ms": 1219000,
               "title": "Maurine, Part II"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_004_wilcox_64kb.mp3",
               "length_ms": 1748000,
+              "readers": [
+                "maryann"
+              ],
               "start_ms": 2363000,
               "title": "Maurine, Part III"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_005_wilcox_64kb.mp3",
               "length_ms": 1788000,
+              "readers": [
+                "maryann"
+              ],
               "start_ms": 4111000,
               "title": "Maurine, Part IV"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_006_wilcox_64kb.mp3",
               "length_ms": 1647000,
+              "readers": [
+                "maryann"
+              ],
               "start_ms": 5899000,
               "title": "Maurine, Part V"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_007_wilcox_64kb.mp3",
               "length_ms": 1332000,
+              "readers": [
+                "maryann"
+              ],
               "start_ms": 7546000,
               "title": "Maurine, Part VI"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_008_wilcox_64kb.mp3",
               "length_ms": 1672000,
+              "readers": [
+                "maryann"
+              ],
               "start_ms": 8878000,
               "title": "Maurine, Part VII"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_009_wilcox_64kb.mp3",
               "length_ms": 231000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 10550000,
               "title": "Two Sunsets"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_010_wilcox_64kb.mp3",
               "length_ms": 120000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 10781000,
               "title": "Unrest"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_011_wilcox_64kb.mp3",
               "length_ms": 116000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 10901000,
               "title": "'Artist's Life'"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_012_wilcox_64kb.mp3",
               "length_ms": 200000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 11017000,
               "title": "Nothing but Stones"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_013_wilcox_64kb.mp3",
               "length_ms": 95000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 11217000,
               "title": "The Cocquette"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_014_wilcox_64kb.mp3",
               "length_ms": 86000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 11312000,
               "title": "Inevitable"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_015_wilcox_64kb.mp3",
               "length_ms": 169000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 11398000,
               "title": "The Ocean of Song"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_016_wilcox_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 11567000,
               "title": "'It Might Have Been'"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_017_wilcox_64kb.mp3",
               "length_ms": 98000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 11643000,
               "title": "If"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_018_wilcox_64kb.mp3",
               "length_ms": 114000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 11741000,
               "title": "Gethsemane"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_019_wilcox_64kb.mp3",
               "length_ms": 90000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 11855000,
               "title": "Dust-Sealed"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_020_wilcox_64kb.mp3",
               "length_ms": 105000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 11945000,
               "title": "'Advice'"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_021_wilcox_64kb.mp3",
               "length_ms": 123000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 12050000,
               "title": "Over the Banisters"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_022_wilcox_64kb.mp3",
               "length_ms": 114000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 12173000,
               "title": "Momus, God of Laughter"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_023_wilcox_64kb.mp3",
               "length_ms": 162000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 12287000,
               "title": "I Dream"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_024_wilcox_64kb.mp3",
               "length_ms": 62000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 12449000,
               "title": "The Past"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_025_wilcox_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 12511000,
               "title": "The Sonnet"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_026_wilcox_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 12579000,
               "title": "Secrets"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_027_wilcox_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 12645000,
               "title": "A Dream"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_028_wilcox_64kb.mp3",
               "length_ms": 85000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 12726000,
               "title": "Uselessness"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_029_wilcox_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 12811000,
               "title": "Will"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_030_wilcox_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 12877000,
               "title": "Winter Rain"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_031_wilcox_64kb.mp3",
               "length_ms": 79000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 12957000,
               "title": "Applause"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_032_wilcox_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 13036000,
               "title": "Life"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_033_wilcox_64kb.mp3",
               "length_ms": 89000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 13117000,
               "title": "Burdened"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_034_wilcox_64kb.mp3",
               "length_ms": 111000,
+              "readers": [
+                "ezwa"
+              ],
               "start_ms": 13206000,
               "title": "The Story"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_035_wilcox_64kb.mp3",
               "length_ms": 102000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 13317000,
               "title": "Let Them Go"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_036_wilcox_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 13419000,
               "title": "The Engine"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_037_wilcox_64kb.mp3",
               "length_ms": 101000,
+              "readers": [
+                "ezwa"
+              ],
               "start_ms": 13528000,
               "title": "Nothing New"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_038_wilcox_64kb.mp3",
               "length_ms": 185000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 13629000,
               "title": "Dreams"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_039_wilcox_64kb.mp3",
               "length_ms": 152000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 13814000,
               "title": "Helena"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_040_wilcox_64kb.mp3",
               "length_ms": 143000,
+              "readers": [
+                "tovarisch"
+              ],
               "start_ms": 13966000,
               "title": "Nothing Remains"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_041_wilcox_64kb.mp3",
               "length_ms": 127000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 14109000,
               "title": "Lean Down"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_042_wilcox_64kb.mp3",
               "length_ms": 95000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 14236000,
               "title": "Comrades"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_043_wilcox_64kb.mp3",
               "length_ms": 144000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 14331000,
               "title": "What Gain?"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_044_wilcox_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 14475000,
               "title": "Life"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_045_wilcox_64kb.mp3",
               "length_ms": 111000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 14547000,
               "title": "To the West"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_046_wilcox_64kb.mp3",
               "length_ms": 118000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 14658000,
               "title": "The Land of Content"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_047_wilcox_64kb.mp3",
               "length_ms": 122000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 14776000,
               "title": "A Song of Life"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_048_wilcox_64kb.mp3",
               "length_ms": 32000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 14898000,
               "title": "Warning"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_049_wilcox_64kb.mp3",
               "length_ms": 232000,
+              "readers": [
+                "ezwa"
+              ],
               "start_ms": 14930000,
               "title": "The Christian's New Year Prayer"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_050_wilcox_64kb.mp3",
               "length_ms": 101000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 15162000,
               "title": "In the Night"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_051_wilcox_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 15263000,
               "title": "God's Measure"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_052_wilcox_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 15330000,
               "title": "A March Snow"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_053_wilcox_64kb.mp3",
               "length_ms": 419000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 15398000,
               "title": "After the Battles are Over"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_054_wilcox_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 15817000,
               "title": "Noblesse Oblige"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_055_wilcox_64kb.mp3",
               "length_ms": 130000,
+              "readers": [
+                "ezwa"
+              ],
               "start_ms": 15888000,
               "title": "And They are Dumb"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_056_wilcox_64kb.mp3",
               "length_ms": 135000,
+              "readers": [
+                "tovarisch"
+              ],
               "start_ms": 16018000,
               "title": "Night"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_057_wilcox_64kb.mp3",
               "length_ms": 136000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 16153000,
               "title": "All for Me"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_058_wilcox_64kb.mp3",
               "length_ms": 44000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 16289000,
               "title": "Philosophy"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_059_wilcox_64kb.mp3",
               "length_ms": 186000,
+              "readers": [
+                "tovarisch"
+              ],
               "start_ms": 16333000,
               "title": "'Carlos'"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_060_wilcox_64kb.mp3",
               "length_ms": 178000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 16519000,
               "title": "The Two Glasses"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_061_wilcox_64kb.mp3",
               "length_ms": 128000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 16697000,
               "title": "Through Tears"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_062_wilcox_64kb.mp3",
               "length_ms": 120000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 16825000,
               "title": "Into Space"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_063_wilcox_64kb.mp3",
               "length_ms": 105000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 16945000,
               "title": "Through Dim Eyes"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_064_wilcox_64kb.mp3",
               "length_ms": 115000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 17050000,
               "title": "La Mort d'Amour"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_065_wilcox_64kb.mp3",
               "length_ms": 61000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 17165000,
               "title": "The Punished"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_066_wilcox_64kb.mp3",
               "length_ms": 97000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 17226000,
               "title": "Half Fledged"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_067_wilcox_64kb.mp3",
               "length_ms": 98000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 17323000,
               "title": "Love's Sleep"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_068_wilcox_64kb.mp3",
               "length_ms": 51000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 17421000,
               "title": "True Culture"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_069_wilcox_64kb.mp3",
               "length_ms": 129000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 17472000,
               "title": "The Voluptuary"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_070_wilcox_64kb.mp3",
               "length_ms": 56000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 17601000,
               "title": "The Year"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_071_wilcox_64kb.mp3",
               "length_ms": 119000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 17657000,
               "title": "The Unattained"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_072_wilcox_64kb.mp3",
               "length_ms": 129000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 17776000,
               "title": "In the Crowd"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_073_wilcox_64kb.mp3",
               "length_ms": 95000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 17905000,
               "title": "Life and I"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_074_wilcox_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 18000000,
               "title": "Guerdon"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_075_wilcox_64kb.mp3",
               "length_ms": 162000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 18073000,
               "title": "Snowed Under"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_076_wilcox_64kb.mp3",
               "length_ms": 123000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 18235000,
               "title": "Platonic"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_077_wilcox_64kb.mp3",
               "length_ms": 128000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 18358000,
               "title": "What We Needed"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_078_wilcox_64kb.mp3",
               "length_ms": 174000,
+              "readers": [
+                "tovarisch"
+              ],
               "start_ms": 18486000,
               "title": "'Leudemann's-on-the-River'"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_079_wilcox_64kb.mp3",
               "length_ms": 105000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 18660000,
               "title": "In the Long Run"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_080_wilcox_64kb.mp3",
               "length_ms": 167000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 18765000,
               "title": "Plea to Science"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_081_wilcox_64kb.mp3",
               "length_ms": 85000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 18932000,
               "title": "Love's Burial"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_082_wilcox_64kb.mp3",
               "length_ms": 136000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 19017000,
               "title": "Little Blue Hood"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_083_wilcox_64kb.mp3",
               "length_ms": 144000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 19153000,
               "title": "No Spring"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_084_wilcox_64kb.mp3",
               "length_ms": 117000,
+              "readers": [
+                "tovarisch"
+              ],
               "start_ms": 19297000,
               "title": "Lippo"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_085_wilcox_64kb.mp3",
               "length_ms": 134000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 19414000,
               "title": "Midsummer"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_086_wilcox_64kb.mp3",
               "length_ms": 143000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 19548000,
               "title": "A Reminiscence"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_087_wilcox_64kb.mp3",
               "length_ms": 86000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 19691000,
               "title": "Respite"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_088_wilcox_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 19777000,
               "title": "A Gir'l's Faith"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_089_wilcox_64kb.mp3",
               "length_ms": 103000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 19886000,
               "title": "Two"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_090_wilcox_64kb.mp3",
               "length_ms": 128000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 19989000,
               "title": "Slipping Away"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_091_wilcox_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 20117000,
               "title": "Is It Done?"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_092_wilcox_64kb.mp3",
               "length_ms": 120000,
+              "readers": [
+                "ezwa"
+              ],
               "start_ms": 20226000,
               "title": "A Leaf"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_093_wilcox_64kb.mp3",
               "length_ms": 115000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 20346000,
               "title": "Aesthetic"
             },
@@ -10431,54 +10951,81 @@
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_095_wilcox_64kb.mp3",
               "length_ms": 92000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 20610000,
               "title": "Ghosts"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_096_wilcox_64kb.mp3",
               "length_ms": 97000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 20702000,
               "title": "Fleeing Away"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_097_wilcox_64kb.mp3",
               "length_ms": 100000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 20799000,
               "title": "All Mad"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_098_wilcox_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 20899000,
               "title": "Hidden Gems"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_099_wilcox_64kb.mp3",
               "length_ms": 140000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 20970000,
               "title": "By-and-By"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_100_wilcox_64kb.mp3",
               "length_ms": 177000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 21110000,
               "title": "Over the May Hill"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_101_wilcox_64kb.mp3",
               "length_ms": 115000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 21287000,
               "title": "A Song"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_102_wilcox_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 21402000,
               "title": "Foes"
             },
             {
               "audio_url": "https://www.archive.org/download/maurine_1611_librivox/maurine_103_wilcox_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 21484000,
               "title": "Friendship"
             }
@@ -10487,7 +11034,11 @@
           "cover_url": "https://archive.org/download/maurine_1611_librivox/maurine_1611.jpg",
           "id": "greg-giordano",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 11276,
+          "librivox_title": "Maurine and Other Poems",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/maurine-and-other-poems-by-ella-wheeler-wilcox/",

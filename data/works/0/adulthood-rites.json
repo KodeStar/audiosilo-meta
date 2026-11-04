@@ -2169,7 +2169,11 @@
           "cover_url": "https://archive.org/download/advance_agent_2304_librivox/advance_agent_2304.jpg",
           "id": "paul-hampton",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 18993,
+          "librivox_title": "Advance Agent",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/advance-agent-by-christopher-anvil/",
@@ -2371,7 +2375,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt10/Advance_Science_Last_Half-Century_1108.jpg",
           "id": "j-m-smallheer",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Science"
+          ],
           "librivox_id": 1021,
+          "librivox_title": "Advance of Science in the Last Half-Century",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-advance-of-science-in-the-last-half-century-by-t-h-huxley/",
@@ -9663,120 +9672,180 @@
             {
               "audio_url": "https://www.archive.org/download/advent_days_1607_librivox/adventdays_01_maclean_64kb.mp3",
               "length_ms": 122000,
+              "readers": [
+                "noelbadrian"
+              ],
               "start_ms": 0,
               "title": "Advent Days"
             },
             {
               "audio_url": "https://www.archive.org/download/advent_days_1607_librivox/adventdays_02_maclean_64kb.mp3",
               "length_ms": 83000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 122000,
               "title": "The First Snow-Fall"
             },
             {
               "audio_url": "https://www.archive.org/download/advent_days_1607_librivox/adventdays_03_maclean_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 205000,
               "title": "The Building of the Ice-Bridge"
             },
             {
               "audio_url": "https://www.archive.org/download/advent_days_1607_librivox/adventdays_04_maclean_64kb.mp3",
               "length_ms": 114000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 314000,
               "title": "Premonitions"
             },
             {
               "audio_url": "https://www.archive.org/download/advent_days_1607_librivox/adventdays_05_maclean_64kb.mp3",
               "length_ms": 87000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 428000,
               "title": "June Roses"
             },
             {
               "audio_url": "https://www.archive.org/download/advent_days_1607_librivox/adventdays_06_maclean_64kb.mp3",
               "length_ms": 88000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 515000,
               "title": "Invocation"
             },
             {
               "audio_url": "https://www.archive.org/download/advent_days_1607_librivox/adventdays_07_maclean_64kb.mp3",
               "length_ms": 117000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 603000,
               "title": "The Old Gardener"
             },
             {
               "audio_url": "https://www.archive.org/download/advent_days_1607_librivox/adventdays_08_maclean_64kb.mp3",
               "length_ms": 145000,
+              "readers": [
+                "noelbadrian"
+              ],
               "start_ms": 720000,
               "title": "Sleep"
             },
             {
               "audio_url": "https://www.archive.org/download/advent_days_1607_librivox/adventdays_09_maclean_64kb.mp3",
               "length_ms": 126000,
+              "readers": [
+                "john-burlinson-1950-2024"
+              ],
               "start_ms": 865000,
               "title": "Thanksgiving"
             },
             {
               "audio_url": "https://www.archive.org/download/advent_days_1607_librivox/adventdays_10_maclean_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 991000,
               "title": "Sunrise in the Hills"
             },
             {
               "audio_url": "https://www.archive.org/download/advent_days_1607_librivox/adventdays_11_maclean_64kb.mp3",
               "length_ms": 182000,
+              "readers": [
+                "john-burlinson-1950-2024"
+              ],
               "start_ms": 1100000,
               "title": "The Solitary"
             },
             {
               "audio_url": "https://www.archive.org/download/advent_days_1607_librivox/adventdays_12_maclean_64kb.mp3",
               "length_ms": 89000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 1282000,
               "title": "A Lighted Window"
             },
             {
               "audio_url": "https://www.archive.org/download/advent_days_1607_librivox/adventdays_13_maclean_64kb.mp3",
               "length_ms": 79000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 1371000,
               "title": "The Lion of Lucerne"
             },
             {
               "audio_url": "https://www.archive.org/download/advent_days_1607_librivox/adventdays_14_maclean_64kb.mp3",
               "length_ms": 107000,
+              "readers": [
+                "skyalbatross"
+              ],
               "start_ms": 1450000,
               "title": "In a Sick Room"
             },
             {
               "audio_url": "https://www.archive.org/download/advent_days_1607_librivox/adventdays_15_maclean_64kb.mp3",
               "length_ms": 115000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 1557000,
               "title": "The Old Homestead"
             },
             {
               "audio_url": "https://www.archive.org/download/advent_days_1607_librivox/adventdays_16_maclean_64kb.mp3",
               "length_ms": 134000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 1672000,
               "title": "Rosemary and Rue"
             },
             {
               "audio_url": "https://www.archive.org/download/advent_days_1607_librivox/adventdays_17_maclean_64kb.mp3",
               "length_ms": 97000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 1806000,
               "title": "Suspiria"
             },
             {
               "audio_url": "https://www.archive.org/download/advent_days_1607_librivox/adventdays_18_maclean_64kb.mp3",
               "length_ms": 146000,
+              "readers": [
+                "cj-baars"
+              ],
               "start_ms": 1903000,
               "title": "Consolation"
             },
             {
               "audio_url": "https://www.archive.org/download/advent_days_1607_librivox/adventdays_19_maclean_64kb.mp3",
               "length_ms": 127000,
+              "readers": [
+                "cj-baars"
+              ],
               "start_ms": 2049000,
               "title": "The Chamber of Peace"
             },
             {
               "audio_url": "https://www.archive.org/download/advent_days_1607_librivox/adventdays_20_maclean_64kb.mp3",
               "length_ms": 120000,
+              "readers": [
+                "cj-baars"
+              ],
               "start_ms": 2176000,
               "title": "Even-Song"
             }
@@ -9785,7 +9854,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt13/adventdays_1607.jpg",
           "id": "noelbadrian",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 10895,
+          "librivox_title": "Advent Days and Poems of Remembrance",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/advent-days-and-poems-of-remembrance-by-kate-seymour-maclean/",

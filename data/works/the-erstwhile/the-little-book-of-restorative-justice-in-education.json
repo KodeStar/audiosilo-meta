@@ -4823,78 +4823,117 @@
             {
               "audio_url": "https://www.archive.org/download/littleduke_0803_librivox/littleduke_01_yonge_64kb.mp3",
               "length_ms": 1181000,
+              "readers": [
+                "cori-samuel"
+              ],
               "start_ms": 0,
               "title": "Chapter I"
             },
             {
               "audio_url": "https://www.archive.org/download/littleduke_0803_librivox/littleduke_02_yonge_64kb.mp3",
               "length_ms": 1412000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 1181000,
               "title": "Chapter II"
             },
             {
               "audio_url": "https://www.archive.org/download/littleduke_0803_librivox/littleduke_03_yonge_64kb.mp3",
               "length_ms": 1040000,
+              "readers": [
+                "robin-cotter"
+              ],
               "start_ms": 2593000,
               "title": "Chapter III"
             },
             {
               "audio_url": "https://www.archive.org/download/littleduke_0803_librivox/littleduke_04_yonge_64kb.mp3",
               "length_ms": 1054000,
+              "readers": [
+                "laura-caldwell"
+              ],
               "start_ms": 3633000,
               "title": "Chapter IV"
             },
             {
               "audio_url": "https://www.archive.org/download/littleduke_0803_librivox/littleduke_05_yonge_64kb.mp3",
               "length_ms": 1961000,
+              "readers": [
+                "lilianavale"
+              ],
               "start_ms": 4687000,
               "title": "Chapter V"
             },
             {
               "audio_url": "https://www.archive.org/download/littleduke_0803_librivox/littleduke_06_yonge_64kb.mp3",
               "length_ms": 1223000,
+              "readers": [
+                "laura-caldwell"
+              ],
               "start_ms": 6648000,
               "title": "Chapter VI"
             },
             {
               "audio_url": "https://www.archive.org/download/littleduke_0803_librivox/littleduke_07_yonge_64kb.mp3",
               "length_ms": 1383000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 7871000,
               "title": "Chapter VII"
             },
             {
               "audio_url": "https://www.archive.org/download/littleduke_0803_librivox/littleduke_08_yonge_64kb.mp3",
               "length_ms": 1661000,
+              "readers": [
+                "sarah-jennings"
+              ],
               "start_ms": 9254000,
               "title": "Chapter VIII"
             },
             {
               "audio_url": "https://www.archive.org/download/littleduke_0803_librivox/littleduke_09_yonge_64kb.mp3",
               "length_ms": 965000,
+              "readers": [
+                "raju-venkateswaran"
+              ],
               "start_ms": 10915000,
               "title": "Chapter IX"
             },
             {
               "audio_url": "https://www.archive.org/download/littleduke_0803_librivox/littleduke_10_yonge_64kb.mp3",
               "length_ms": 775000,
+              "readers": [
+                "raju-venkateswaran"
+              ],
               "start_ms": 11880000,
               "title": "Chapter X"
             },
             {
               "audio_url": "https://www.archive.org/download/littleduke_0803_librivox/littleduke_11_yonge_64kb.mp3",
               "length_ms": 572000,
+              "readers": [
+                "raju-venkateswaran"
+              ],
               "start_ms": 12655000,
               "title": "Chapter XI"
             },
             {
               "audio_url": "https://www.archive.org/download/littleduke_0803_librivox/littleduke_12_yonge_64kb.mp3",
               "length_ms": 590000,
+              "readers": [
+                "raju-venkateswaran"
+              ],
               "start_ms": 13227000,
               "title": "Chapter XII"
             },
             {
               "audio_url": "https://www.archive.org/download/littleduke_0803_librivox/littleduke_13_yonge_64kb.mp3",
               "length_ms": 356000,
+              "readers": [
+                "laura-caldwell"
+              ],
               "start_ms": 13817000,
               "title": "Conslusion"
             }
@@ -4903,7 +4942,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt11/Little_Duke_1111.jpg",
           "id": "cori-samuel",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction",
+            "Historical"
+          ],
           "librivox_id": 1551,
+          "librivox_title": "Little Duke",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-little-duke-by-charlotte-m-yonge/",
@@ -9652,7 +9696,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/littlemermaid_1311.jpg",
           "id": "phil-chenevert",
           "language": "en",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 8320,
+          "librivox_title": "Little Mermaid",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-little-mermaid-by-hans-christian-andersen/",

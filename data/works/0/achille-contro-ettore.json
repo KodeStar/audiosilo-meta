@@ -104,9 +104,19 @@
           ],
           "copyright_year": 1928,
           "cover_url": "https://archive.org/download/librivoxcdcoverart36/achilleid_2001.jpg",
+          "credits": [
+            {
+              "person": "john-henry-mozley",
+              "role": "translator"
+            }
+          ],
           "id": "leni",
           "language": "en",
+          "librivox_genres": [
+            "Epics"
+          ],
           "librivox_id": 14645,
+          "librivox_title": "Achilleid",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/achilleid-by-publius-papinius-statius/",
@@ -183,7 +193,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt5/achilleis_1006.jpg",
           "id": "redaer",
           "language": "de",
+          "librivox_genres": [
+            "Epics"
+          ],
           "librivox_id": 3727,
+          "librivox_title": "Achilleis",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/achilleis-by-johann-wolfgang-von-goethe/",
@@ -1114,7 +1128,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/biwasee_1403.jpg",
           "id": "hokuspokus",
           "language": "de",
+          "librivox_genres": [
+            "Erotica",
+            "Romance"
+          ],
           "librivox_id": 8289,
+          "librivox_title": "acht Gesichter am Biwasee",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/die-acht-gesichter-am-biwasee-by-max-dauthendey/",
@@ -13968,7 +13987,12 @@
           "cover_url": "https://archive.org/download/acres_of_diamonds_1507_librivox/acresofdiamonds_1507.jpg",
           "id": "phil-chenevert",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Self-Help"
+          ],
           "librivox_id": 10124,
+          "librivox_title": "Acres of Diamonds (Version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/acres-of-diamonds-version-2-by-russell-conwell/",
@@ -13997,78 +14021,117 @@
             {
               "audio_url": "https://www.archive.org/download/acres_of_diamonds_1008_librivox/acresofdiamonds_01_conwell_64kb.mp3",
               "length_ms": 1312000,
+              "readers": [
+                "scott-dahlem"
+              ],
               "start_ms": 0,
               "title": "01 - Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/acres_of_diamonds_1008_librivox/acresofdiamonds_02_conwell_64kb.mp3",
               "length_ms": 1322000,
+              "readers": [
+                "scott-dahlem"
+              ],
               "start_ms": 1312000,
               "title": "02 - Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/acres_of_diamonds_1008_librivox/acresofdiamonds_03_conwell_64kb.mp3",
               "length_ms": 1341000,
+              "readers": [
+                "scott-dahlem"
+              ],
               "start_ms": 2634000,
               "title": "03 - Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/acres_of_diamonds_1008_librivox/acresofdiamonds_04_conwell_64kb.mp3",
               "length_ms": 1681000,
+              "readers": [
+                "max-lindberg"
+              ],
               "start_ms": 3975000,
               "title": "04 - Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/acres_of_diamonds_1008_librivox/acresofdiamonds_05_conwell_64kb.mp3",
               "length_ms": 1153000,
+              "readers": [
+                "scott-dahlem"
+              ],
               "start_ms": 5656000,
               "title": "05 - Part 5"
             },
             {
               "audio_url": "https://www.archive.org/download/acres_of_diamonds_1008_librivox/acresofdiamonds_06_conwell_64kb.mp3",
               "length_ms": 1571000,
+              "readers": [
+                "scott-dahlem"
+              ],
               "start_ms": 6809000,
               "title": "06 - Part 6"
             },
             {
               "audio_url": "https://www.archive.org/download/acres_of_diamonds_1008_librivox/acresofdiamonds_07_conwell_64kb.mp3",
               "length_ms": 995000,
+              "readers": [
+                "scott-dahlem"
+              ],
               "start_ms": 8380000,
               "title": "07 - Part 7"
             },
             {
               "audio_url": "https://www.archive.org/download/acres_of_diamonds_1008_librivox/acresofdiamonds_08_conwell_64kb.mp3",
               "length_ms": 1078000,
+              "readers": [
+                "scott-dahlem"
+              ],
               "start_ms": 9375000,
               "title": "08 - Part 8"
             },
             {
               "audio_url": "https://www.archive.org/download/acres_of_diamonds_1008_librivox/acresofdiamonds_09_conwell_64kb.mp3",
               "length_ms": 1401000,
+              "readers": [
+                "scott-dahlem"
+              ],
               "start_ms": 10453000,
               "title": "09 - Part 9"
             },
             {
               "audio_url": "https://www.archive.org/download/acres_of_diamonds_1008_librivox/acresofdiamonds_10_conwell_64kb.mp3",
               "length_ms": 1429000,
+              "readers": [
+                "scott-dahlem"
+              ],
               "start_ms": 11854000,
               "title": "10 - Part 10"
             },
             {
               "audio_url": "https://www.archive.org/download/acres_of_diamonds_1008_librivox/acresofdiamonds_11_conwell_64kb.mp3",
               "length_ms": 1095000,
+              "readers": [
+                "scott-dahlem"
+              ],
               "start_ms": 13283000,
               "title": "11 - Part 11"
             },
             {
               "audio_url": "https://www.archive.org/download/acres_of_diamonds_1008_librivox/acresofdiamonds_12_conwell_64kb.mp3",
               "length_ms": 935000,
+              "readers": [
+                "scott-dahlem"
+              ],
               "start_ms": 14378000,
               "title": "12 - Part 12"
             },
             {
               "audio_url": "https://www.archive.org/download/acres_of_diamonds_1008_librivox/acresofdiamonds_13_conwell_64kb.mp3",
               "length_ms": 875000,
+              "readers": [
+                "scott-dahlem"
+              ],
               "start_ms": 15313000,
               "title": "13 - Part 13"
             }
@@ -14077,7 +14140,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt24/Acres_Diamonds_1211.jpg",
           "id": "scott-dahlem",
           "language": "en",
+          "librivox_genres": [
+            "Self-Help",
+            "Christianity - Commentary",
+            "Christianity - Biographies"
+          ],
           "librivox_id": 3700,
+          "librivox_title": "Acres of Diamonds",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/acres-of-diamonds-by-russell-conwell/",
@@ -15841,84 +15910,140 @@
             {
               "audio_url": "https://www.archive.org/download/across_asia_bicycle_1608_librivox/acrossasiabicycle_00_allen_64kb.mp3",
               "length_ms": 211000,
+              "readers": [
+                "pyfeman43"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/across_asia_bicycle_1608_librivox/acrossasiabicycle_01_allen_64kb.mp3",
               "length_ms": 2226000,
+              "readers": [
+                "djrickyv"
+              ],
+              "section_number": 1,
               "start_ms": 211000,
               "title": "Beyond the Bosporus"
             },
             {
               "audio_url": "https://www.archive.org/download/across_asia_bicycle_1608_librivox/acrossasiabicycle_02_allen_64kb.mp3",
               "length_ms": 1588000,
+              "readers": [
+                "lewis-james-mordieu"
+              ],
+              "section_number": 2,
               "start_ms": 2437000,
               "title": "Beyond the Bosporus Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/across_asia_bicycle_1608_librivox/acrossasiabicycle_03_allen_64kb.mp3",
               "length_ms": 1444000,
+              "readers": [
+                "jim-price"
+              ],
+              "section_number": 3,
               "start_ms": 4025000,
               "title": "The Ascent of Mt. Ararat"
             },
             {
               "audio_url": "https://www.archive.org/download/across_asia_bicycle_1608_librivox/acrossasiabicycle_04_allen_64kb.mp3",
               "length_ms": 1690000,
+              "readers": [
+                "jim-price"
+              ],
+              "section_number": 4,
               "start_ms": 5469000,
               "title": "The Ascent of Mt. Ararat Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/across_asia_bicycle_1608_librivox/acrossasiabicycle_05_allen_64kb.mp3",
               "length_ms": 1877000,
+              "readers": [
+                "mark-chulsky"
+              ],
+              "section_number": 5,
               "start_ms": 7159000,
               "title": "Through Persia to Samarkand"
             },
             {
               "audio_url": "https://www.archive.org/download/across_asia_bicycle_1608_librivox/acrossasiabicycle_06_allen_64kb.mp3",
               "length_ms": 1412000,
+              "readers": [
+                "mark-chulsky"
+              ],
+              "section_number": 6,
               "start_ms": 9036000,
               "title": "Through Persia to Samarkand Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/across_asia_bicycle_1608_librivox/acrossasiabicycle_07_allen_64kb.mp3",
               "length_ms": 1529000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 7,
               "start_ms": 10448000,
               "title": "The Journey from Samarkand to Kuldia"
             },
             {
               "audio_url": "https://www.archive.org/download/across_asia_bicycle_1608_librivox/acrossasiabicycle_08_allen_64kb.mp3",
               "length_ms": 1343000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 8,
               "start_ms": 11977000,
               "title": "The Journey from Samarkand to Kuldia Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/across_asia_bicycle_1608_librivox/acrossasiabicycle_09_allen_64kb.mp3",
               "length_ms": 1493000,
+              "readers": [
+                "tony-oliva"
+              ],
+              "section_number": 9,
               "start_ms": 13320000,
               "title": "Over the Gobi Desert"
             },
             {
               "audio_url": "https://www.archive.org/download/across_asia_bicycle_1608_librivox/acrossasiabicycle_10_allen_64kb.mp3",
               "length_ms": 1543000,
+              "readers": [
+                "richard-shipp"
+              ],
+              "section_number": 10,
               "start_ms": 14813000,
               "title": "Over the Gobi Desert Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/across_asia_bicycle_1608_librivox/acrossasiabicycle_11_allen_64kb.mp3",
               "length_ms": 1552000,
+              "readers": [
+                "richard-shipp"
+              ],
+              "section_number": 11,
               "start_ms": 16356000,
               "title": "Over theGobi Desert Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/across_asia_bicycle_1608_librivox/acrossasiabicycle_12_allen_64kb.mp3",
               "length_ms": 1206000,
+              "readers": [
+                "availle"
+              ],
+              "section_number": 12,
               "start_ms": 17908000,
               "title": "An Interview with the Prime Minister of China"
             },
             {
               "audio_url": "https://www.archive.org/download/across_asia_bicycle_1608_librivox/acrossasiabicycle_13_allen_64kb.mp3",
               "length_ms": 1297000,
+              "readers": [
+                "availle"
+              ],
+              "section_number": 13,
               "start_ms": 19114000,
               "title": "An  Interview with the Prime Minister of China Part 2"
             }
@@ -15927,7 +16052,11 @@
           "cover_url": "https://archive.org/download/across_asia_bicycle_1608_librivox/across_asia_1608.jpg",
           "id": "pyfeman43",
           "language": "en",
+          "librivox_genres": [
+            "Travel & Geography"
+          ],
           "librivox_id": 9328,
+          "librivox_title": "Across Asia on a Bicycle",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/across-asia-on-a-bicycle-by-thomas-gaskell-allen/",
@@ -17537,120 +17666,200 @@
             {
               "audio_url": "https://www.archive.org/download/acrossmongolianplains_2103_librivox/acrossmongolianplains_00_andrews_64kb.mp3",
               "length_ms": 472000,
+              "readers": [
+                "matthew-m-benzing"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/acrossmongolianplains_2103_librivox/acrossmongolianplains_01_andrews_64kb.mp3",
               "length_ms": 1178000,
+              "readers": [
+                "matthew-m-benzing"
+              ],
+              "section_number": 1,
               "start_ms": 472000,
               "title": "Entering the Land of Mystery"
             },
             {
               "audio_url": "https://www.archive.org/download/acrossmongolianplains_2103_librivox/acrossmongolianplains_02_andrews_64kb.mp3",
               "length_ms": 1249000,
+              "readers": [
+                "matthew-m-benzing"
+              ],
+              "section_number": 2,
               "start_ms": 1650000,
               "title": "Speed Marvels of the Gobi Desert"
             },
             {
               "audio_url": "https://www.archive.org/download/acrossmongolianplains_2103_librivox/acrossmongolianplains_03_andrews_64kb.mp3",
               "length_ms": 977000,
+              "readers": [
+                "matthew-m-benzing"
+              ],
+              "section_number": 3,
               "start_ms": 2899000,
               "title": "A Chapter of Accidents"
             },
             {
               "audio_url": "https://www.archive.org/download/acrossmongolianplains_2103_librivox/acrossmongolianplains_04_andrews_64kb.mp3",
               "length_ms": 1040000,
+              "readers": [
+                "matthew-m-benzing"
+              ],
+              "section_number": 4,
               "start_ms": 3876000,
               "title": "New Travels on an Old Trail"
             },
             {
               "audio_url": "https://www.archive.org/download/acrossmongolianplains_2103_librivox/acrossmongolianplains_05_andrews_64kb.mp3",
               "length_ms": 1312000,
+              "readers": [
+                "david-olson"
+              ],
+              "section_number": 5,
               "start_ms": 4916000,
               "title": "Antelope Movie Stars"
             },
             {
               "audio_url": "https://www.archive.org/download/acrossmongolianplains_2103_librivox/acrossmongolianplains_06_andrews_64kb.mp3",
               "length_ms": 2930000,
+              "readers": [
+                "majorhistory"
+              ],
+              "section_number": 6,
               "start_ms": 6228000,
               "title": "The Sacred City of the Living Buddha"
             },
             {
               "audio_url": "https://www.archive.org/download/acrossmongolianplains_2103_librivox/acrossmongolianplains_07_andrews_64kb.mp3",
               "length_ms": 1958000,
+              "readers": [
+                "majorhistory"
+              ],
+              "section_number": 7,
               "start_ms": 9158000,
               "title": "The Long Trail to Sain Noin Khan"
             },
             {
               "audio_url": "https://www.archive.org/download/acrossmongolianplains_2103_librivox/acrossmongolianplains_08_andrews_64kb.mp3",
               "length_ms": 2250000,
+              "readers": [
+                "majorhistory"
+              ],
+              "section_number": 8,
               "start_ms": 11116000,
               "title": "The Lure of the Plains"
             },
             {
               "audio_url": "https://www.archive.org/download/acrossmongolianplains_2103_librivox/acrossmongolianplains_09_andrews_64kb.mp3",
               "length_ms": 1648000,
+              "readers": [
+                "marya-james"
+              ],
+              "section_number": 9,
               "start_ms": 13366000,
               "title": "Hunting on the Turin Plains"
             },
             {
               "audio_url": "https://www.archive.org/download/acrossmongolianplains_2103_librivox/acrossmongolianplains_10_andrews_64kb.mp3",
               "length_ms": 942000,
+              "readers": [
+                "marya-james"
+              ],
+              "section_number": 10,
               "start_ms": 15014000,
               "title": "An Adventure in the Lama City"
             },
             {
               "audio_url": "https://www.archive.org/download/acrossmongolianplains_2103_librivox/acrossmongolianplains_11_andrews_64kb.mp3",
               "length_ms": 1597000,
+              "readers": [
+                "mark-ernest"
+              ],
+              "section_number": 11,
               "start_ms": 15956000,
               "title": "Mongols at Home"
             },
             {
               "audio_url": "https://www.archive.org/download/acrossmongolianplains_2103_librivox/acrossmongolianplains_12_andrews_64kb.mp3",
               "length_ms": 1324000,
+              "readers": [
+                "jeff-mattison"
+              ],
+              "section_number": 12,
               "start_ms": 17553000,
               "title": "Nomads of the Forest"
             },
             {
               "audio_url": "https://www.archive.org/download/acrossmongolianplains_2103_librivox/acrossmongolianplains_13_andrews_64kb.mp3",
               "length_ms": 879000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 13,
               "start_ms": 18877000,
               "title": "The Passing of Mongolian Mystery"
             },
             {
               "audio_url": "https://www.archive.org/download/acrossmongolianplains_2103_librivox/acrossmongolianplains_14_andrews_64kb.mp3",
               "length_ms": 2031000,
+              "readers": [
+                "marya-james"
+              ],
+              "section_number": 14,
               "start_ms": 19756000,
               "title": "The Great Ram of the Shansi Mountains"
             },
             {
               "audio_url": "https://www.archive.org/download/acrossmongolianplains_2103_librivox/acrossmongolianplains_15_andrews_64kb.mp3",
               "length_ms": 1404000,
+              "readers": [
+                "phil-schempf"
+              ],
+              "section_number": 15,
               "start_ms": 21787000,
               "title": "Mongolian \"Argali\""
             },
             {
               "audio_url": "https://www.archive.org/download/acrossmongolianplains_2103_librivox/acrossmongolianplains_16_andrews_64kb.mp3",
               "length_ms": 1058000,
+              "readers": [
+                "wayne-cooke"
+              ],
+              "section_number": 16,
               "start_ms": 23191000,
               "title": "The Horse-Deer of Shansi"
             },
             {
               "audio_url": "https://www.archive.org/download/acrossmongolianplains_2103_librivox/acrossmongolianplains_17_andrews_64kb.mp3",
               "length_ms": 1061000,
+              "readers": [
+                "wayne-cooke"
+              ],
+              "section_number": 17,
               "start_ms": 24249000,
               "title": "Wapiti, Roebuck and Goral"
             },
             {
               "audio_url": "https://www.archive.org/download/acrossmongolianplains_2103_librivox/acrossmongolianplains_18_andrews_64kb.mp3",
               "length_ms": 1607000,
+              "readers": [
+                "laura-kumanova"
+              ],
+              "section_number": 18,
               "start_ms": 25310000,
               "title": "Wild Pigs - Animal and Human"
             },
             {
               "audio_url": "https://www.archive.org/download/acrossmongolianplains_2103_librivox/acrossmongolianplains_19_andrews_64kb.mp3",
               "length_ms": 1495000,
+              "readers": [
+                "kevins"
+              ],
+              "section_number": 19,
               "start_ms": 26917000,
               "title": "The Hunting Park of the Eastern Tombs"
             }
@@ -17659,7 +17868,13 @@
           "cover_url": "https://archive.org/download/acrossmongolianplains_2103_librivox/acrossmongolian_2103.jpg",
           "id": "matthew-m-benzing",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Travel & Geography",
+            "Memoirs"
+          ],
           "librivox_id": 13256,
+          "librivox_title": "Across Mongolian Plains: A Naturalist's Account of China's 'Great Northwest'",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/across-mongolian-plains-by-roy-chapman-andrews/",

@@ -6119,42 +6119,63 @@
             {
               "audio_url": "https://www.archive.org/download/nightingales_0809_librivox/nightingales_bridges_dgf_64kb.mp3",
               "length_ms": 95000,
+              "readers": [
+                "david-federman"
+              ],
               "start_ms": 0,
               "title": "Nightingales - Read by DGF"
             },
             {
               "audio_url": "https://www.archive.org/download/nightingales_0809_librivox/nightingales_bridges_jcg_64kb.mp3",
               "length_ms": 89000,
+              "readers": [
+                "jc-guan"
+              ],
               "start_ms": 95000,
               "title": "Nightingales - Read by JCG"
             },
             {
               "audio_url": "https://www.archive.org/download/nightingales_0809_librivox/nightingales_bridges_jgs_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "jane-greensmith"
+              ],
               "start_ms": 184000,
               "title": "Nightingales - Read by JGS"
             },
             {
               "audio_url": "https://www.archive.org/download/nightingales_0809_librivox/nightingales_bridges_klh_64kb.mp3",
               "length_ms": 83000,
+              "readers": [
+                "kristin-hughes-1974-2021"
+              ],
               "start_ms": 259000,
               "title": "Nightingales - Read by KLH"
             },
             {
               "audio_url": "https://www.archive.org/download/nightingales_0809_librivox/nightingales_bridges_lah_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 342000,
               "title": "Nightingales - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/nightingales_0809_librivox/nightingales_bridges_lom_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "logan-mccamon"
+              ],
               "start_ms": 417000,
               "title": "Nightingales - Read by LOM"
             },
             {
               "audio_url": "https://www.archive.org/download/nightingales_0809_librivox/nightingales_bridges_ly_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "breathe"
+              ],
               "start_ms": 488000,
               "title": "Nightingales - Read by LY"
             }
@@ -6163,7 +6184,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt14/Nightingales_1201.jpg",
           "id": "david-federman",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 2519,
+          "librivox_title": "Nightingales",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/nightingales-by-robert-bridges/",
@@ -8477,7 +8503,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt5/Nightmare_Abbey_1005.jpg",
           "id": "mark-f-smith",
           "language": "en",
+          "librivox_genres": [
+            "Satire"
+          ],
           "librivox_id": 3438,
+          "librivox_title": "Nightmare Abbey",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/nightmare-abbey-by-thomas-love-peacock/",
@@ -9785,7 +9815,11 @@
           "cover_url": "https://archive.org/download/nightmare_2309_librivox/nightmare_2310.jpg",
           "id": "ben-tucker",
           "language": "en",
+          "librivox_genres": [
+            "Crime & Mystery Fiction"
+          ],
           "librivox_id": 19753,
+          "librivox_title": "Nightmare",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/nightmare-by-cornell-woolrich/",

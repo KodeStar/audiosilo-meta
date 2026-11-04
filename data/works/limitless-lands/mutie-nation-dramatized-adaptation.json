@@ -1676,7 +1676,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt31/Mutiny_of_the_Bounty_1305.jpg",
           "id": "john-greenman",
           "language": "en",
+          "librivox_genres": [
+            "Memoirs"
+          ],
           "librivox_id": 7732,
+          "librivox_title": "Mutiny of the Bounty and Other Narratives",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-mutiny-of-the-bounty-and-other-narratives-by-william-bligh/",
@@ -2030,7 +2034,13 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt10/Mutiny_of_the_Elsinore_1108.jpg",
           "id": "tom-crawford",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Nautical & Marine Fiction",
+            "Romance"
+          ],
           "librivox_id": 4907,
+          "librivox_title": "Mutiny of the Elsinore",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-mutiny-of-the-elsinore-by-jack-london/",
@@ -6381,72 +6391,84 @@
             {
               "audio_url": "https://www.archive.org/download/mutual_aid_0808_librivox/mutualaid_00_kropotkin_64kb.mp3",
               "length_ms": 1427000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/mutual_aid_0808_librivox/mutualaid_01_kropotkin_64kb.mp3",
               "length_ms": 3500000,
+              "section_number": 1,
               "start_ms": 1427000,
               "title": "Mutual aid among animals"
             },
             {
               "audio_url": "https://www.archive.org/download/mutual_aid_0808_librivox/mutualaid_02_kropotkin_64kb.mp3",
               "length_ms": 2461000,
+              "section_number": 2,
               "start_ms": 4927000,
               "title": "Mutual aid among animals (continued) Chapter 2, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/mutual_aid_0808_librivox/mutualaid_03_kropotkin_64kb.mp3",
               "length_ms": 2413000,
+              "section_number": 3,
               "start_ms": 7388000,
               "title": "Mutual aid among animals (continued) Chapter 2, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/mutual_aid_0808_librivox/mutualaid_04_kropotkin_64kb.mp3",
               "length_ms": 2221000,
+              "section_number": 4,
               "start_ms": 9801000,
               "title": "Mutual aid among savages Chapter 3, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/mutual_aid_0808_librivox/mutualaid_05_kropotkin_64kb.mp3",
               "length_ms": 2269000,
+              "section_number": 5,
               "start_ms": 12022000,
               "title": "Mutual aid among savages Chapter 3, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/mutual_aid_0808_librivox/mutualaid_06_kropotkin_64kb.mp3",
               "length_ms": 4068000,
+              "section_number": 6,
               "start_ms": 14291000,
               "title": "Mutual aid among the barbarians"
             },
             {
               "audio_url": "https://www.archive.org/download/mutual_aid_0808_librivox/mutualaid_07_kropotkin_64kb.mp3",
               "length_ms": 3733000,
+              "section_number": 7,
               "start_ms": 18359000,
               "title": "Mutual aid in the mediaeval city"
             },
             {
               "audio_url": "https://www.archive.org/download/mutual_aid_0808_librivox/mutualaid_08_kropotkin_64kb.mp3",
               "length_ms": 3792000,
+              "section_number": 8,
               "start_ms": 22092000,
               "title": "Mutual aid in the mediaeval city (continued)"
             },
             {
               "audio_url": "https://www.archive.org/download/mutual_aid_0808_librivox/mutualaid_09_kropotkin_64kb.mp3",
               "length_ms": 4193000,
+              "section_number": 9,
               "start_ms": 25884000,
               "title": "Mutual aid amongst ourselves"
             },
             {
               "audio_url": "https://www.archive.org/download/mutual_aid_0808_librivox/mutualaid_10_kropotkin_64kb.mp3",
               "length_ms": 3255000,
+              "section_number": 10,
               "start_ms": 30077000,
               "title": "Mutual aid amongst ourselves (continued)"
             },
             {
               "audio_url": "https://www.archive.org/download/mutual_aid_0808_librivox/mutualaid_11_kropotkin_64kb.mp3",
               "length_ms": 764000,
+              "section_number": 11,
               "start_ms": 33332000,
               "title": "Conclusion"
             }
@@ -6455,7 +6477,13 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt14/Mutual_Aid_1201.jpg",
           "id": "enko",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Science",
+            "Social Science (Culture & Anthropology)"
+          ],
           "librivox_id": 2350,
+          "librivox_title": "Mutual Aid: A Factor of Evolution",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/mutual-aid-a-factor-of-evolution-by-peter-kropotkin/",
@@ -9123,120 +9151,200 @@
             {
               "audio_url": "https://www.archive.org/download/my_actor_husband_2101_librivox/myactorhusband_00_anonymous_64kb.mp3",
               "length_ms": 274000,
+              "readers": [
+                "arielle-lipshaw"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Foreword"
             },
             {
               "audio_url": "https://www.archive.org/download/my_actor_husband_2101_librivox/myactorhusband_01_anonymous_64kb.mp3",
               "length_ms": 819000,
+              "readers": [
+                "arielle-lipshaw"
+              ],
+              "section_number": 1,
               "start_ms": 274000,
               "title": "Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/my_actor_husband_2101_librivox/myactorhusband_02_anonymous_64kb.mp3",
               "length_ms": 2003000,
+              "readers": [
+                "arielle-lipshaw"
+              ],
+              "section_number": 2,
               "start_ms": 1093000,
               "title": "Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/my_actor_husband_2101_librivox/myactorhusband_03_anonymous_64kb.mp3",
               "length_ms": 844000,
+              "readers": [
+                "arielle-lipshaw"
+              ],
+              "section_number": 3,
               "start_ms": 3096000,
               "title": "Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/my_actor_husband_2101_librivox/myactorhusband_04_anonymous_64kb.mp3",
               "length_ms": 554000,
+              "readers": [
+                "arielle-lipshaw"
+              ],
+              "section_number": 4,
               "start_ms": 3940000,
               "title": "Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/my_actor_husband_2101_librivox/myactorhusband_05_anonymous_64kb.mp3",
               "length_ms": 1007000,
+              "readers": [
+                "arielle-lipshaw"
+              ],
+              "section_number": 5,
               "start_ms": 4494000,
               "title": "Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/my_actor_husband_2101_librivox/myactorhusband_06_anonymous_64kb.mp3",
               "length_ms": 1395000,
+              "readers": [
+                "arielle-lipshaw"
+              ],
+              "section_number": 6,
               "start_ms": 5501000,
               "title": "Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/my_actor_husband_2101_librivox/myactorhusband_07_anonymous_64kb.mp3",
               "length_ms": 1583000,
+              "readers": [
+                "arielle-lipshaw"
+              ],
+              "section_number": 7,
               "start_ms": 6896000,
               "title": "Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/my_actor_husband_2101_librivox/myactorhusband_08_anonymous_64kb.mp3",
               "length_ms": 2008000,
+              "readers": [
+                "arielle-lipshaw"
+              ],
+              "section_number": 8,
               "start_ms": 8479000,
               "title": "Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/my_actor_husband_2101_librivox/myactorhusband_09_anonymous_64kb.mp3",
               "length_ms": 784000,
+              "readers": [
+                "arielle-lipshaw"
+              ],
+              "section_number": 9,
               "start_ms": 10487000,
               "title": "Chapter 9"
             },
             {
               "audio_url": "https://www.archive.org/download/my_actor_husband_2101_librivox/myactorhusband_10_anonymous_64kb.mp3",
               "length_ms": 1521000,
+              "readers": [
+                "arielle-lipshaw"
+              ],
+              "section_number": 10,
               "start_ms": 11271000,
               "title": "Chapter 10"
             },
             {
               "audio_url": "https://www.archive.org/download/my_actor_husband_2101_librivox/myactorhusband_11_anonymous_64kb.mp3",
               "length_ms": 1073000,
+              "readers": [
+                "jane-bennett"
+              ],
+              "section_number": 11,
               "start_ms": 12792000,
               "title": "Chapter 11"
             },
             {
               "audio_url": "https://www.archive.org/download/my_actor_husband_2101_librivox/myactorhusband_12_anonymous_64kb.mp3",
               "length_ms": 1569000,
+              "readers": [
+                "jane-bennett"
+              ],
+              "section_number": 12,
               "start_ms": 13865000,
               "title": "Chapter 12"
             },
             {
               "audio_url": "https://www.archive.org/download/my_actor_husband_2101_librivox/myactorhusband_13_anonymous_64kb.mp3",
               "length_ms": 1853000,
+              "readers": [
+                "katie-bond"
+              ],
+              "section_number": 13,
               "start_ms": 15434000,
               "title": "Chapter 13"
             },
             {
               "audio_url": "https://www.archive.org/download/my_actor_husband_2101_librivox/myactorhusband_14_anonymous_64kb.mp3",
               "length_ms": 823000,
+              "readers": [
+                "ashleighjane"
+              ],
+              "section_number": 14,
               "start_ms": 17287000,
               "title": "Chapter 14"
             },
             {
               "audio_url": "https://www.archive.org/download/my_actor_husband_2101_librivox/myactorhusband_15_anonymous_64kb.mp3",
               "length_ms": 554000,
+              "readers": [
+                "ashleighjane"
+              ],
+              "section_number": 15,
               "start_ms": 18110000,
               "title": "Chapter 15"
             },
             {
               "audio_url": "https://www.archive.org/download/my_actor_husband_2101_librivox/myactorhusband_16_anonymous_64kb.mp3",
               "length_ms": 2307000,
+              "readers": [
+                "ashleighjane"
+              ],
+              "section_number": 16,
               "start_ms": 18664000,
               "title": "Chapter 16"
             },
             {
               "audio_url": "https://www.archive.org/download/my_actor_husband_2101_librivox/myactorhusband_17_anonymous_64kb.mp3",
               "length_ms": 814000,
+              "readers": [
+                "emily-maynard"
+              ],
+              "section_number": 17,
               "start_ms": 20971000,
               "title": "Chapter 17"
             },
             {
               "audio_url": "https://www.archive.org/download/my_actor_husband_2101_librivox/myactorhusband_18_anonymous_64kb.mp3",
               "length_ms": 877000,
+              "readers": [
+                "emily-maynard"
+              ],
+              "section_number": 18,
               "start_ms": 21785000,
               "title": "Chapter 18"
             },
             {
               "audio_url": "https://www.archive.org/download/my_actor_husband_2101_librivox/myactorhusband_19_anonymous_64kb.mp3",
               "length_ms": 1000000,
+              "readers": [
+                "emily-maynard"
+              ],
+              "section_number": 19,
               "start_ms": 22662000,
               "title": "Chapter 19"
             }
@@ -9245,7 +9353,12 @@
           "cover_url": "https://archive.org/download/my_actor_husband_2101_librivox/my_actor_husband_2101.jpg",
           "id": "arielle-lipshaw",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "Performing Arts"
+          ],
           "librivox_id": 7281,
+          "librivox_title": "My Actor-Husband",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/my-actor-husband-by-anonymous/",
@@ -9707,156 +9820,182 @@
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_00_santosdumont_64kb.mp3",
               "length_ms": 787000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introductory Fable: The Reasoning of Children"
             },
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_01_santosdumont_64kb.mp3",
               "length_ms": 1025000,
+              "section_number": 1,
               "start_ms": 787000,
               "title": "The Coffee Plantation"
             },
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_02_santosdumont_64kb.mp3",
               "length_ms": 703000,
+              "section_number": 2,
               "start_ms": 1812000,
               "title": "Paris - Professional Balloonists - Automobiles"
             },
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_03_santosdumont_64kb.mp3",
               "length_ms": 916000,
+              "section_number": 3,
               "start_ms": 2515000,
               "title": "My First Balloon Ascent"
             },
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_04_santosdumont_64kb.mp3",
               "length_ms": 718000,
+              "section_number": 4,
               "start_ms": 3431000,
               "title": "My 'Brazil'"
             },
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_05_santosdumont_64kb.mp3",
               "length_ms": 1041000,
+              "section_number": 5,
               "start_ms": 4149000,
               "title": "The Real and Imaginary Dangers of Ballooning"
             },
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_06_santosdumont_64kb.mp3",
               "length_ms": 1087000,
+              "section_number": 6,
               "start_ms": 5190000,
               "title": "I Yield to the Steerable Balloon Idea"
             },
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_07_santosdumont_64kb.mp3",
               "length_ms": 597000,
+              "section_number": 7,
               "start_ms": 6277000,
               "title": "My First Air-Ship Cruises"
             },
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_08_santosdumont_64kb.mp3",
               "length_ms": 987000,
+              "section_number": 8,
               "start_ms": 6874000,
               "title": "How it Feels to Navigate the Air"
             },
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_09_santosdumont_64kb.mp3",
               "length_ms": 986000,
+              "section_number": 9,
               "start_ms": 7861000,
               "title": "Explosive Engines and Inflammable Gases"
             },
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_10_santosdumont_64kb.mp3",
               "length_ms": 855000,
+              "section_number": 10,
               "start_ms": 8847000,
               "title": "I Go in for Airship Building"
             },
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_11_santosdumont_64kb.mp3",
               "length_ms": 924000,
+              "section_number": 11,
               "start_ms": 9702000,
               "title": "The Exposition Summer"
             },
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_12_santosdumont_64kb.mp3",
               "length_ms": 671000,
+              "section_number": 12,
               "start_ms": 10626000,
               "title": "The Deutsch Prize and its Problems"
             },
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_13_santosdumont_64kb.mp3",
               "length_ms": 1038000,
+              "section_number": 13,
               "start_ms": 11297000,
               "title": "A Fall Before a Rise"
             },
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_14_santosdumont_64kb.mp3",
               "length_ms": 574000,
+              "section_number": 14,
               "start_ms": 12335000,
               "title": "The Building of My 'No. 6'"
             },
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_15_santosdumont_64kb.mp3",
               "length_ms": 652000,
+              "section_number": 15,
               "start_ms": 12909000,
               "title": "Wining the Deutsche Prize"
             },
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_16_santosdumont_64kb.mp3",
               "length_ms": 578000,
+              "section_number": 16,
               "start_ms": 13561000,
               "title": "A Glance Backward and Forward"
             },
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_17_santosdumont_64kb.mp3",
               "length_ms": 1069000,
+              "section_number": 17,
               "start_ms": 14139000,
               "title": "Monaco and the Maritime Guide Rope"
             },
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_18_santosdumont_64kb.mp3",
               "length_ms": 910000,
+              "section_number": 18,
               "start_ms": 15208000,
               "title": "Flights in Mediterranean Winds"
             },
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_19_santosdumont_64kb.mp3",
               "length_ms": 1203000,
+              "section_number": 19,
               "start_ms": 16118000,
               "title": "Speed"
             },
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_20_santosdumont_64kb.mp3",
               "length_ms": 581000,
+              "section_number": 20,
               "start_ms": 17321000,
               "title": "An Accident and its Lessons"
             },
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_21_santosdumont_64kb.mp3",
               "length_ms": 995000,
+              "section_number": 21,
               "start_ms": 17902000,
               "title": "The First of the World's Air-Ship Stations"
             },
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_22_santosdumont_64kb.mp3",
               "length_ms": 1147000,
+              "section_number": 22,
               "start_ms": 18897000,
               "title": "My 'No. 9,' the Little Runabout"
             },
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_23_santosdumont_64kb.mp3",
               "length_ms": 1101000,
+              "section_number": 23,
               "start_ms": 20044000,
               "title": "The Air-Ship in War"
             },
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_24_santosdumont_64kb.mp3",
               "length_ms": 768000,
+              "section_number": 24,
               "start_ms": 21145000,
               "title": "Paris as a Centre of Air-Ship Experiments"
             },
             {
               "audio_url": "https://www.archive.org/download/myairships_1701_librivox/myairships_25_santosdumont_64kb.mp3",
               "length_ms": 225000,
+              "section_number": 25,
               "start_ms": 21913000,
               "title": "CONCLUDING FABLE: More Reasoning of Children"
             }
@@ -9865,7 +10004,11 @@
           "cover_url": "https://archive.org/download/myairships_1701_librivox/my_airships_1701.jpg",
           "id": "scott-danneker",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography"
+          ],
           "librivox_id": 11212,
+          "librivox_title": "My Airships: The Story of My Life",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/my-airships-the-story-of-my-life-by-alberto-santos-dumont/",

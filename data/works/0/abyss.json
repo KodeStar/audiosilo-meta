@@ -7339,60 +7339,90 @@
             {
               "audio_url": "https://www.archive.org/download/academische_gedichte_1912_librivox/academischegedichte_01_withof_64kb.mp3",
               "length_ms": 381000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 0,
               "title": "Abschied von der Dichtkunst"
             },
             {
               "audio_url": "https://www.archive.org/download/academische_gedichte_1912_librivox/academischegedichte_02_withof_64kb.mp3",
               "length_ms": 1432000,
+              "readers": [
+                "lorda"
+              ],
               "start_ms": 381000,
               "title": "Die Jagd"
             },
             {
               "audio_url": "https://www.archive.org/download/academische_gedichte_1912_librivox/academischegedichte_03_withof_64kb.mp3",
               "length_ms": 529000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 1813000,
               "title": "Die Entschließung"
             },
             {
               "audio_url": "https://www.archive.org/download/academische_gedichte_1912_librivox/academischegedichte_04_withof_64kb.mp3",
               "length_ms": 536000,
+              "readers": [
+                "lorda"
+              ],
               "start_ms": 2342000,
               "title": "Die Freundschaft"
             },
             {
               "audio_url": "https://www.archive.org/download/academische_gedichte_1912_librivox/academischegedichte_05_withof_64kb.mp3",
               "length_ms": 1069000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 2878000,
               "title": "Frühlingsphantasien"
             },
             {
               "audio_url": "https://www.archive.org/download/academische_gedichte_1912_librivox/academischegedichte_06_withof_64kb.mp3",
               "length_ms": 478000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 3947000,
               "title": "Der Gedanke"
             },
             {
               "audio_url": "https://www.archive.org/download/academische_gedichte_1912_librivox/academischegedichte_07_withof_64kb.mp3",
               "length_ms": 1375000,
+              "readers": [
+                "lorda"
+              ],
               "start_ms": 4425000,
               "title": "Der große Königliche Friede zu Hubertusburg"
             },
             {
               "audio_url": "https://www.archive.org/download/academische_gedichte_1912_librivox/academischegedichte_08_withof_64kb.mp3",
               "length_ms": 393000,
+              "readers": [
+                "lorda"
+              ],
               "start_ms": 5800000,
               "title": "Der Charfreitag"
             },
             {
               "audio_url": "https://www.archive.org/download/academische_gedichte_1912_librivox/academischegedichte_09_withof_64kb.mp3",
               "length_ms": 2424000,
+              "readers": [
+                "schrm"
+              ],
               "start_ms": 6193000,
               "title": "Der medicinische Patriot"
             },
             {
               "audio_url": "https://www.archive.org/download/academische_gedichte_1912_librivox/academischegedichte_10_withof_64kb.mp3",
               "length_ms": 801000,
+              "readers": [
+                "schrm"
+              ],
               "start_ms": 8617000,
               "title": "Socrates oder von der Schönheit"
             }
@@ -7401,7 +7431,11 @@
           "cover_url": "https://archive.org/download/academische_gedichte_1912_librivox/withof_1912.jpg",
           "id": "sonia",
           "language": "de",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 13034,
+          "librivox_title": "Academische Gedichte",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/academische-gedichte-by-johann-philipp-lorenz-withof/",

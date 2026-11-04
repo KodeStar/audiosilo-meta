@@ -1739,7 +1739,12 @@
           "cover_url": "https://archive.org/download/manifestkommunistischen_librivox/manifest_1010.jpg",
           "id": "rainer",
           "language": "de",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Political Science"
+          ],
           "librivox_id": 537,
+          "librivox_title": "Manifest der Kommunistischen Partei",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/manifest-der-kommunistischen-partei-von-karl-marx-und-friedrich-engels/",
@@ -2323,39 +2328,54 @@
             {
               "audio_url": "https://www.archive.org/download/manifestkomunistyczny_2012_librivox/manifestkomunistyczny_00_marx_64kb.mp3",
               "length_ms": 95000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Wstęp"
             },
             {
               "audio_url": "https://www.archive.org/download/manifestkomunistyczny_2012_librivox/manifestkomunistyczny_01_marx_64kb.mp3",
               "length_ms": 1523000,
+              "section_number": 1,
               "start_ms": 95000,
               "title": "Burżuazya a Proletaryat"
             },
             {
               "audio_url": "https://www.archive.org/download/manifestkomunistyczny_2012_librivox/manifestkomunistyczny_02_marx_64kb.mp3",
               "length_ms": 1203000,
+              "section_number": 2,
               "start_ms": 1618000,
               "title": "Proletaryat i Komuniści"
             },
             {
               "audio_url": "https://www.archive.org/download/manifestkomunistyczny_2012_librivox/manifestkomunistyczny_03_marx_64kb.mp3",
               "length_ms": 1287000,
+              "section_number": 3,
               "start_ms": 2821000,
               "title": "Literatura Socyalistyczna i Komunistyczna"
             },
             {
               "audio_url": "https://www.archive.org/download/manifestkomunistyczny_2012_librivox/manifestkomunistyczny_04_marx_64kb.mp3",
               "length_ms": 224000,
+              "section_number": 4,
               "start_ms": 4108000,
               "title": "Stanowisko komunistów wobec rozmaitych partyi opozycyjnych"
             }
           ],
           "copyright_year": 1907,
           "cover_url": "https://archive.org/download/manifestkomunistyczny_2012_librivox/manifest_2101.jpg",
+          "credits": [
+            {
+              "person": "witold-piekarski",
+              "role": "translator"
+            }
+          ],
           "id": "blazeiro",
           "language": "pl",
+          "librivox_genres": [
+            "Political Science"
+          ],
           "librivox_id": 15757,
+          "librivox_title": "Manifest Komunistyczny",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/manifest-komunistyczny-by-marx-and-engels/",

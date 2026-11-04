@@ -8380,48 +8380,72 @@
             {
               "audio_url": "https://www.archive.org/download/last_buccaneer_0910_librivox/lastbuccaneer_macaulay_bc_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "barbara-clements"
+              ],
               "start_ms": 0,
               "title": "Version 1"
             },
             {
               "audio_url": "https://www.archive.org/download/last_buccaneer_0910_librivox/lastbuccaneer_macaulay_dl_64kb.mp3",
               "length_ms": 103000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 94000,
               "title": "Version 2"
             },
             {
               "audio_url": "https://www.archive.org/download/last_buccaneer_0910_librivox/lastbuccaneer_macaulay_hc_64kb.mp3",
               "length_ms": 127000,
+              "readers": [
+                "harry-caufield"
+              ],
               "start_ms": 197000,
               "title": "Version 3"
             },
             {
               "audio_url": "https://www.archive.org/download/last_buccaneer_0910_librivox/lastbuccaneer_macaulay_kts_64kb.mp3",
               "length_ms": 123000,
+              "readers": [
+                "kim-stich"
+              ],
               "start_ms": 324000,
               "title": "Version 4"
             },
             {
               "audio_url": "https://www.archive.org/download/last_buccaneer_0910_librivox/lastbuccaneer_macaulay_mfs_64kb.mp3",
               "length_ms": 126000,
+              "readers": [
+                "mark-f-smith"
+              ],
               "start_ms": 447000,
               "title": "Version 5"
             },
             {
               "audio_url": "https://www.archive.org/download/last_buccaneer_0910_librivox/lastbuccaneer_macaulay_rn_64kb.mp3",
               "length_ms": 129000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 573000,
               "title": "Version 6"
             },
             {
               "audio_url": "https://www.archive.org/download/last_buccaneer_0910_librivox/lastbuccaneer_macaulay_smh_64kb.mp3",
               "length_ms": 104000,
+              "readers": [
+                "sean-michael-hogan"
+              ],
               "start_ms": 702000,
               "title": "Version 7"
             },
             {
               "audio_url": "https://www.archive.org/download/last_buccaneer_0910_librivox/lastbuccaneer_macaulay_tg_64kb.mp3",
               "length_ms": 100000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 806000,
               "title": "Version 8"
             }
@@ -8429,7 +8453,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt20/Last_Buccaneer_1206.jpg",
           "id": "barbara-clements",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Narratives",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 3602,
+          "librivox_title": "Last Buccaneer",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-last-buccaneer-by-thomas-babbington-macaulay/",
