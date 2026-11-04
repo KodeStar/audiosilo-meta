@@ -839,12 +839,23 @@ func newLibrivoxState() librivoxState {
 	}
 }
 
-// loadLibrivoxPerson indexes a catalogued person's LibriVox ids.
+// loadLibrivoxPerson indexes a catalogued person's LibriVox ids: their own and
+// the further ids an evidenced decision recorded on them
+// (librivox_reader_aliases, librivox_author_aliases: only that decision writes
+// them). An alias resolves as the record's own id does, so a second id of one
+// person cannot mint a twin; readerOf and authorOf stay the record's own, and a
+// person of two author ids is asked through answersToAuthorID.
 func (p *planner) loadLibrivoxPerson(person *model.Person) {
 	for _, k := range []librivoxKey{{librivoxReader, person.LibrivoxReaderID}, {librivoxAuthor, person.LibrivoxAuthorID}} {
 		if k.id != 0 {
 			p.lv.people[k] = person.ID
 		}
+	}
+	for _, id := range person.LibrivoxReaderAliases {
+		p.lv.people[librivoxKey{librivoxReader, id}] = person.ID
+	}
+	for _, id := range person.LibrivoxAuthorAliases {
+		p.lv.people[librivoxKey{librivoxAuthor, id}] = person.ID
 	}
 	if person.LibrivoxReaderID != 0 {
 		p.lv.readerOf[person.ID] = person.LibrivoxReaderID

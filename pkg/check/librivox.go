@@ -17,6 +17,11 @@ import (
 //     unique across the dataset for the same reason (the import keys people on
 //     them). The two are different LibriVox namespaces, so reader 94 and author
 //     94 are not a collision;
+//   - a person's librivox_reader_aliases and librivox_author_aliases are sorted,
+//     and each is unique against every id and every other alias of its namespace,
+//     the record's own included: an alias is an id the import resolves to this
+//     record, so it answers one question exactly as the record's own id does (the
+//     schema requires that own id beside it);
 //   - a chapter's audio_url requires the recording's librivox_id: the field
 //     exists for a recording published one file per section, which today only a
 //     LibriVox project is, and a chapter URL on any other recording is a field
@@ -119,6 +124,28 @@ func checkLibrivox(cat *model.Catalog, recs []recordWithPath, idx *pathIndex, ad
 			} else {
 				authorSeen[id] = rel
 			}
+		}
+	}
+	// A second pass, so an alias meets every record's own id whichever record
+	// the load reached first.
+	for _, p := range cat.People {
+		rel := idx.person[p]
+		checkAliases(rel, "librivox_reader_aliases", "reader", p.LibrivoxReaderAliases, readerSeen, add)
+		checkAliases(rel, "librivox_author_aliases", "author", p.LibrivoxAuthorAliases, authorSeen, add)
+	}
+}
+
+// checkAliases is one record's alias list (field) against the ids of its
+// namespace seen so far, which it joins.
+func checkAliases(rel, field, namespace string, aliases []int, seen map[int]string, add addFunc) {
+	if !slices.IsSorted(aliases) {
+		add(rel, "%s is not sorted ascending: %v", field, aliases)
+	}
+	for _, id := range aliases {
+		if prev, ok := seen[id]; ok {
+			add(rel, "%s names %d, already a LibriVox %s id in %s", field, id, namespace, prev)
+		} else {
+			seen[id] = rel
 		}
 	}
 }
