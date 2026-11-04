@@ -2,6 +2,7 @@ package importer
 
 import (
 	"fmt"
+	"slices"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -449,12 +450,48 @@ func (p *planner) enrichISBNs(raw map[string]any, isbns []string, warn func(stri
 // addRowISBNs writes a row's ISBNs onto a record the row has nothing else to say
 // about, stamping the run's source only when one was actually added, so a row
 // restating what the record holds changes nothing.
+//
+// A row with no ASIN has no ref of its own (setSource), and a stamp without one
+// names nothing to retract and folds onto any earlier ref-less stamp of the run's
+// type (appendSourceUnique), so its stamp names the value it added.
 func (p *planner) addRowISBNs(ref RecRef, entry, raw map[string]any, isbns []string, warn func(string, ...any)) {
-	if !p.enrichISBNs(raw, isbns, warn) {
+	fresh := p.claimISBNsFor(raw, isbns, warn)
+	if len(fresh) == 0 {
 		return
 	}
+	appendISBNs(raw, fresh)
+	row := p.curSource
+	if row.Ref == "" {
+		p.curSource.Ref = "isbn:" + fresh[0]
+	}
 	p.commitRecording(ref, entry, raw)
-	p.summary.ISBNRecordings++
+	p.curSource = row
+	if !p.isbnGained[ref] {
+		p.isbnGained[ref] = true
+		p.summary.ISBNRecordings++
+	}
+}
+
+// addSiblingRowISBNs is attestExisting for an ASIN this run landed itself: the
+// record carries the run's own provenance, so there is nothing to attest, but the
+// row's ISBNs are still appended as they are on a record from disk. Otherwise the
+// first run drops one a sibling row of the same ASIN states and the next run, which
+// finds that ASIN on disk, adds it. A row contradicting the record adds nothing, the
+// answer the next run would give, and is not counted: the disagreement is within
+// one export and the record is not yet anyone else's.
+func (p *planner) addSiblingRowISBNs(b sourceBook, asin string) {
+	ref, landed := p.runASINLoc[asin]
+	if !landed || len(b.isbns) == 0 {
+		return
+	}
+	entry, raw := p.recordingRaw(ref.Work, ref.Rec)
+	if raw == nil {
+		return
+	}
+	if _, contradicts := rowContradiction(b, rawKnownRuntime(raw), coerceStr(raw["release_date"]), scopeAttestExact); contradicts {
+		return
+	}
+	p.addRowISBNs(ref, entry, raw, b.isbns, p.bookWarn(b))
 }
 
 // attachRowISBNs is what an ASIN-LESS row may add to the same-narrator recording
@@ -480,9 +517,11 @@ func (p *planner) addRowISBNs(ref RecRef, entry, raw map[string]any, isbns []str
 //   - the recording is NOT bulk-mirror-only. The source stamp below would end that
 //     status on a match that identifies nothing, leaving the mirror's facts frozen
 //     in place and a later user's unreachable: the defect scopeAttestMerged's comment
-//     names. Asked last among the record's tests, so Summary.ISBNsMirrorOnly counts
-//     the rows this rule alone held back. A later row with the ASIN attests the
-//     record and carries the ISBN then;
+//     names. Asked last among the record's tests, and only of a row stating a value
+//     the claim would take, so Summary.ISBNsMirrorOnly counts the rows this rule
+//     alone held back: a value the record already holds or the claim refuses reaches
+//     the claim, which adds nothing and so stamps nothing. A later row with the ASIN
+//     attests the record and carries the ISBN then;
 //   - and the value survives the claim: no recording holds it and no work holds it
 //     as a print ISBN (claimISBNs).
 //
@@ -526,7 +565,7 @@ func (p *planner) attachRowISBNs(ws *workState, matches []recCandidate, b source
 			YearOf(rowDate), m.slug, YearOf(recDate))
 		return
 	}
-	if model.BulkMirrorOnly(rawSources(raw)) {
+	if model.BulkMirrorOnly(rawSources(raw)) && slices.ContainsFunc(b.isbns, p.isbnClaimable) {
 		p.summary.ISBNsMirrorOnly++
 		warn("isbn-not-attached: mirror-only: recording %q is bulk-mirror-only and this row names no ASIN; a row with the ASIN carries the ISBN", m.slug)
 		return

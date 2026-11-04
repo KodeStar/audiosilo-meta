@@ -100,7 +100,7 @@ func TestAddWorkPrintISBN(t *testing.T) {
 		b := addWorkBody("Whatever Title", "Some Author", "en", "Some Narrator", "", "web", true)
 		return setField(t, setField(t, b, fRecISBNs, recISBN), fWorkISBN, workISBN)
 	}
-	process := func(t *testing.T, recording, recISBN, workISBN string) Result {
+	submit := func(t *testing.T, recording, recISBN, workISBN string) Result {
 		t.Helper()
 		dir := t.TempDir()
 		files := seedFiles()
@@ -122,7 +122,7 @@ func TestAddWorkPrintISBN(t *testing.T) {
 		{"a recording in the catalogue holds the other spelling", printISBN10, freeISBN, printISBN13, StatusDuplicate},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			res := process(t, tc.recording, tc.recISBN, tc.workISBN)
+			res := submit(t, tc.recording, tc.recISBN, tc.workISBN)
 			if res.Status != tc.want {
 				t.Fatalf("status = %q, want %q; messages = %v", res.Status, tc.want, res.Messages)
 			}

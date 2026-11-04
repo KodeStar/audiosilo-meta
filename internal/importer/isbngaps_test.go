@@ -93,9 +93,9 @@ func gapPrintWork() map[string]string {
 // is stamped so the ISBN can be retracted with it, and the same export again writes
 // nothing.
 func TestRowAddsISBNToAttestedRecording(t *testing.T) {
-	for _, tc := range []struct{ name, env string }{
-		{"no ASIN", gapRow(gapNarrator, "", gapISBN, `"runtime_min":605,"release_date":"2021-03-04","publisher":"Other Imprint"`)},
-		{"exact ASIN", gapRow(gapNarrator, "B0LIBEX001", gapISBN, `"runtime_min":600,"publisher":"Somebody Else"`)},
+	for _, tc := range []struct{ name, env, wantRef string }{
+		{"no ASIN", gapRow(gapNarrator, "", gapISBN, `"runtime_min":605,"release_date":"2021-03-04","publisher":"Other Imprint"`), "isbn:" + gapISBN},
+		{"exact ASIN", gapRow(gapNarrator, "B0LIBEX001", gapISBN, `"runtime_min":600,"publisher":"Somebody Else"`), "B0LIBEX001"},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			dataDir := gapAttested(t, nil)
@@ -116,8 +116,8 @@ func TestRowAddsISBNToAttestedRecording(t *testing.T) {
 			if rec.RuntimeMin != before.RuntimeMin || rec.Publisher != before.Publisher || rec.ReleaseDate != before.ReleaseDate || rec.CoverURL != before.CoverURL {
 				t.Errorf("a recorded fact moved: %+v", rec)
 			}
-			if last := rec.Sources[len(rec.Sources)-1]; last.Type != model.SourceAudiosiloBooksImport {
-				t.Errorf("sources = %+v, want the run's stamp appended", rec.Sources)
+			if last := rec.Sources[len(rec.Sources)-1]; last.Type != model.SourceAudiosiloBooksImport || last.Ref != tc.wantRef {
+				t.Errorf("sources = %+v, want the run's stamp appended with ref %q", rec.Sources, tc.wantRef)
 			}
 			if res := check.Load(dataDir); !res.OK() {
 				t.Fatalf("tree failed validation:\n%v", res.Problems)
@@ -215,6 +215,92 @@ func TestAsinlessRowISBNMirrorOnlyCountsOnlyWhatItAloneRefused(t *testing.T) {
 	if sum := runGapRow(t, dataDir, gapRow(gapNarrator, "", gapISBN, `"runtime_min":400`)); sum.ISBNsMirrorOnly != 0 {
 		t.Errorf("ISBNsMirrorOnly = %d, want 0: the runtime refused this row first", sum.ISBNsMirrorOnly)
 	}
+}
+
+// A row with nothing the claim would take has lost nothing to the mirror-only rule:
+// it is not counted, and reaching the claim stamps nothing on the mirror's record.
+func TestAsinlessRowISBNMirrorOnlyCountsOnlyAValueTheClaimWouldTake(t *testing.T) {
+	holding := strings.Replace(tierRecording, `"id":`, fmt.Sprintf(`"isbn":[%q],"id":`, gapISBN), 1)
+	for _, tc := range []struct {
+		name  string
+		seed  map[string]string
+		isbn  string
+		warns string
+	}{
+		{name: "a value the record already holds", seed: map[string]string{tierRecRel: holding}, isbn: gapISBN},
+		{name: "a work's print ISBN", seed: gapPrintWork(), isbn: gapPrint13, warns: "print ISBN"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			dataDir := seedTierTree(t, tc.seed)
+			before := snapshotTree(t, dataDir)
+			sum := runGapRow(t, dataDir, gapRow(gapNarrator, "", tc.isbn, `"runtime_min":600`))
+			if sum.ISBNsMirrorOnly != 0 || hasWarning(sum.Warnings, "isbn-not-attached") {
+				t.Errorf("ISBNsMirrorOnly = %d, warnings = %v, want the row not reported as mirror-only", sum.ISBNsMirrorOnly, sum.Warnings)
+			}
+			if tc.warns != "" && !hasWarning(sum.Warnings, tc.warns) {
+				t.Errorf("warnings = %v, want one saying %q", sum.Warnings, tc.warns)
+			}
+			assertTreeUnchanged(t, dataDir, before)
+		})
+	}
+}
+
+// gapEnvelope is an audiosilo-books export of rows, each the JSON members of a book.
+func gapEnvelope(rows ...string) string {
+	return `{"format":"audiosilo-books","version":1,"books":[{` + strings.Join(rows, `},{`) + `}]}`
+}
+
+// Summary.ISBNRecordings counts recordings: two rows adding to one count once.
+func TestISBNRecordingsCountsARecordingOnce(t *testing.T) {
+	dataDir := gapAttested(t, nil)
+	const book = `"title":"The Lost Cartographer","authors":["Ada Mapmaker"],"narrators":["Bea Reader"],"language":"en","runtime_min":600`
+	sum := runGapRow(t, dataDir, gapEnvelope(book+`,"isbn":"`+gapISBN+`"`, book+`,"isbn":"`+gapOtherISBN+`"`))
+	if sum.ISBNRecordings != 1 {
+		t.Errorf("ISBNRecordings = %d, want 1", sum.ISBNRecordings)
+	}
+	if got := gapRecording(t, dataDir).ISBN; !slices.Equal(got, []string{gapISBN, gapOtherISBN}) {
+		t.Errorf("isbn = %v, want both", got)
+	}
+}
+
+// A sibling row of an ASIN this run landed adds its ISBN in this run, so the next run
+// over the same export writes nothing. One contradicting the record adds nothing, the
+// answer that next run would give. Neither is a conflict: the run wrote the record.
+func TestSiblingRowOfALandedASINAddsItsISBN(t *testing.T) {
+	const book = `"title":"Foo","authors":["Ada Mapmaker"],"narrators":["Bea Reader"],"language":"en","asin":"B0SIBLING1"`
+	const rel = "works/fo/foo/recordings/bea-reader.json"
+	recISBN := func(t *testing.T, dataDir string) []string {
+		t.Helper()
+		var rec recordingFile
+		readEntity(t, dataDir, rel, &rec)
+		return rec.ISBN
+	}
+	t.Run("agreeing", func(t *testing.T) {
+		dataDir := t.TempDir()
+		env := gapEnvelope(book+`,"runtime_min":600`, book+`,"runtime_min":600,"isbn":"`+gapISBN+`"`)
+		sum := runGapRow(t, dataDir, env)
+		if sum.NewRecordings != 1 || sum.Conflicts != 0 {
+			t.Errorf("NewRecordings/Conflicts = %d/%d, want 1/0", sum.NewRecordings, sum.Conflicts)
+		}
+		if got := recISBN(t, dataDir); !slices.Equal(got, []string{gapISBN}) {
+			t.Errorf("isbn = %v, want [%s]", got, gapISBN)
+		}
+		before := snapshotTree(t, dataDir)
+		if again := runGapRow(t, dataDir, env); again.ISBNRecordings != 0 {
+			t.Errorf("re-run ISBNRecordings = %d, want 0", again.ISBNRecordings)
+		}
+		assertTreeUnchanged(t, dataDir, before)
+	})
+	t.Run("contradicting", func(t *testing.T) {
+		dataDir := t.TempDir()
+		sum := runGapRow(t, dataDir, gapEnvelope(book+`,"runtime_min":600`, book+`,"runtime_min":300,"isbn":"`+gapISBN+`"`))
+		if sum.ISBNRecordings != 0 || sum.Conflicts != 0 {
+			t.Errorf("ISBNRecordings/Conflicts = %d/%d, want 0/0", sum.ISBNRecordings, sum.Conflicts)
+		}
+		if got := recISBN(t, dataDir); len(got) != 0 {
+			t.Errorf("isbn = %v, want none", got)
+		}
+	})
 }
 
 // A year just before the recording's is an audio listing's own date, which rows

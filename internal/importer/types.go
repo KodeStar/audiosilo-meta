@@ -605,15 +605,17 @@ type Summary struct {
 	// importer credits the shared catch-all person (unrecorded.go, meta#2778).
 	// A row the --attach-editions rule attaches reports its credits here too.
 	UnrecordedCredits []UnrecordedCredit
-	// ISBNRecordings counts the recordings that gained an ISBN from a row with
-	// nothing else to write there: an exact-ASIN row meeting an already-attested
-	// recording, or an ASIN-less row passing attachRowISBNs. An ISBN that rides a
-	// merge, a fill or an attestation is counted by that outcome instead.
+	// ISBNRecordings counts the recordings, each once, that gained an ISBN from a
+	// row with nothing else to write there: an exact-ASIN row meeting an
+	// already-attested recording or one this run landed that ASIN on, or an
+	// ASIN-less row passing attachRowISBNs. An ISBN that rides a merge, a fill or an
+	// attestation is counted by that outcome instead.
 	ISBNRecordings int
 	// ISBNsMirrorOnly counts the ASIN-less rows that passed every other test of
-	// attachRowISBNs and were refused because the recording is bulk-mirror-only
-	// (isbn-not-attached: mirror-only). The match identifies nothing, so it may not
-	// end that status. Not in Produced: nothing was written.
+	// attachRowISBNs, state a value the claim would take, and were refused because
+	// the recording is bulk-mirror-only (isbn-not-attached: mirror-only). The match
+	// identifies nothing, so it may not end that status. Not in Produced: nothing
+	// was written.
 	ISBNsMirrorOnly int
 	// Notes are aggregated lines about what a run DID, where the doing is a
 	// decision a reader should see rather than something that went wrong -

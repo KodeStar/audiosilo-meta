@@ -60,13 +60,15 @@ import (
 // A row whose ASIN is known but has no location was claimed by THIS run (the
 // planner registers created ASINs in p.asins, but p.asinLoc is seeded only from
 // what was on disk), so the record it would attest is one this run just wrote
-// with its own provenance - nothing to do.
+// with its own provenance. Only the row's ISBNs are left to add
+// (addSiblingRowISBNs).
 func (p *planner) attestExisting(b sourceBook, asin string) {
 	if !p.userTier {
 		return
 	}
 	ref, located := p.asinLoc[asin]
 	if !located {
+		p.addSiblingRowISBNs(b, asin)
 		return
 	}
 	warn := p.bookWarn(b)

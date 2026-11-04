@@ -321,6 +321,13 @@ type planner struct {
 	// refuses it, as checkUniqueness would fail the tree. It is apart from isbns
 	// because it is a different refusal with a different message.
 	printISBNs map[string]bool
+	// runASINLoc is where each ASIN this run landed sits (registerASIN), which
+	// asinLoc, seeded from disk, does not say. Kept for a user-library run only,
+	// the one kind addSiblingRowISBNs serves.
+	runASINLoc map[string]RecRef
+	// isbnGained is the recordings Summary.ISBNRecordings has counted, so one that
+	// gains ISBNs from two rows counts once.
+	isbnGained map[RecRef]bool
 	// store is the run's write layer: every record lands as a pack entry through
 	// it, and its queued-write-first reads are what let several rows compose one
 	// record within a run (see write.go).
@@ -874,6 +881,8 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 		asins:              map[string]bool{},
 		isbns:              map[string]bool{},
 		printISBNs:         map[string]bool{},
+		runASINLoc:         map[string]RecRef{},
+		isbnGained:         map[RecRef]bool{},
 		store:              store,
 		genres:             audibleGenreTable().withRunMemo(),
 		unmappedGenres:     map[string]bool{},
@@ -3321,7 +3330,7 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 		}
 		for _, m := range matches {
 			if m.info.asins[asin] {
-				p.asins[asin] = true
+				p.registerASIN(asin, RecRef{Work: ws.slug, Rec: m.slug})
 				p.landedRec = m.slug
 				return recAlready // idempotent: this ASIN is already recorded
 			}
@@ -3381,7 +3390,7 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 				if !p.mergeRecordingASIN(m.info, b, RecRef{Work: ws.slug, Rec: m.slug}, region, asin, warn) {
 					return recNone
 				}
-				p.asins[asin] = true
+				p.registerASIN(asin, RecRef{Work: ws.slug, Rec: m.slug})
 				p.landedRec = m.slug
 				return recMerged
 			}
@@ -3408,7 +3417,7 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 	if asin != "" {
 		if region, ok := p.resolveASINRegion(b, warn); ok {
 			rec.ASIN = []OutASIN{{Region: region, ASIN: asin}}
-			p.asins[asin] = true
+			p.registerASIN(asin, RecRef{Work: ws.slug, Rec: slug})
 		}
 	}
 	rec.ISBN = p.claimISBNs(b.isbns, warn)
@@ -3433,6 +3442,16 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 	p.summary.NewRecordings++
 	p.landedRec = slug
 	return recNew
+}
+
+// registerASIN is addRecording's one write to the global ASIN registry: asin is on
+// ref now, so a later row naming it is a dedup skip (and, on a user-library run, may
+// still append its ISBNs: addSiblingRowISBNs).
+func (p *planner) registerASIN(asin string, ref RecRef) {
+	p.asins[asin] = true
+	if p.userTier {
+		p.runASINLoc[asin] = ref
+	}
 }
 
 // recOutcome is what addRecording did with a row. The recording it landed on is
@@ -3484,6 +3503,13 @@ func (p *planner) claimISBNs(isbns []string, warn func(string, ...any)) []string
 		out = append(out, isbn)
 	}
 	return out
+}
+
+// isbnClaimable reports whether claimISBNs would take isbn, without claiming it. A
+// record's own ISBN is in p.isbns too, so it answers false for one.
+func (p *planner) isbnClaimable(isbn string) bool {
+	key := strings.ToUpper(isbn)
+	return !p.printISBNs[key] && !p.isbns[key]
 }
 
 // claimISBNsFor is claimISBNs against an EXISTING record: it drops the ISBNs raw
