@@ -953,6 +953,7 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	p.reportDuplicateIdentities()
 	p.finishLibrivoxHolds()
 	p.reportLibrivoxVariants()
+	p.reportLibrivoxReviewed()
 	p.reportLibrivoxAuthorVariants()
 	p.settleUnrecordedCredits()
 	p.reportTombstoneRides()
@@ -1598,7 +1599,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		authorCredits = p.moveLibrivoxAuthors(b, authorCredits, route.moves)
 	}
 	ident := p.rowIdentityOf(b, workTitle)
-	if route.walk == nil &&
+	if route.walk == nil && !route.ownWork &&
 		p.refuseDuplicateIdentity(b, ident, workTitle, b.str("title"), posSuffix, lang, authorCredits, claim) {
 		p.noteLostSeriesClaims(b, -1, nil)
 		return

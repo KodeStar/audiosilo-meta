@@ -491,7 +491,17 @@ recording stating another volume total), `same-name-author` (below) and `fallbac
 re-importing the project's id lands it. `--worklist <path>` appends the
 worklist to a file as well, one NDJSON row per project (`librivox_id`, `title`,
 `authors`, `reason`, `candidates`), on a `--dry-run` too, as `--conflicts`
-does. `--conflicts` rows for these projects
+does. The answer to a row is a **reviewed decision** in
+`internal/importer/librivoxreviewed.json`, one entry per project with its reason:
+`attach` lands the recording on the named work whatever the title and author
+rules say (with `moves`, row person to work person, to carry a loose spelling's
+LibriVox id onto the catalogued person), and `own-work` makes it a book of its
+own (a separately named translation, a volume of a set, a stated edition, another
+author's book of the name), minted on its own title chain past the
+duplicate-identity guard. It is an input of the importer, not a hand edit, so
+rebuilding the mirror reaches the same work; an attach naming no live work warns
+and goes back to the worklist. A `same-name-author` hold is settled on the person
+instead: put the `librivox_author_id` on the right record. `--conflicts` rows for these projects
 carry `librivox_id`, since they have no ASIN, and so do the `--skipped` lines
 (one `{"librivox_id","reason"}` NDJSON line per project refused under a
 refusal code: an unknown language, no narrator, author or title, or the

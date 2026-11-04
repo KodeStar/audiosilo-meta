@@ -286,6 +286,7 @@ func RunLibrivox(snapshotDir string, ids LibrivoxIDs, opts Options) (Summary, er
 	sum, err := runBooks(books, sourceLibrivox, opts, nil, func(p *planner) {
 		p.genres = librivoxGenreTable()
 		p.lv.inProgress = inProgress
+		p.lv.reviewed = opts.LibrivoxReviewed
 	})
 	sum.LibrivoxProjects = len(projects)
 	sum.LibrivoxRetired = retired
@@ -711,6 +712,8 @@ type librivoxFacts struct {
 // librivoxState is a LibriVox run's planner state. The zero value is every
 // other run's, and nothing in it is read unless a row carries librivoxFacts.
 type librivoxState struct {
+	// reviewed is Options.LibrivoxReviewed; nil is the embedded file (reviews).
+	reviewed map[int]LibrivoxReview
 	// ids is the project ids the catalogue holds, plus those this run landed.
 	ids map[int]bool
 	// held is where the catalogue holds each project's recording.

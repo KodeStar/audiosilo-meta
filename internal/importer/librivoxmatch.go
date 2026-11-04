@@ -464,6 +464,11 @@ type librivoxRoute struct {
 	// authorVariant is a librivoxauthors.go rule 1 attach's example, counted
 	// the same way (Summary.LibrivoxAuthorVariants).
 	authorVariant string
+	// ownWork is a reviewed own-work decision (librivoxreviewed.go): the ordinary
+	// walk places the row, the duplicate-identity guard standing down.
+	ownWork bool
+	// reviewed says a reviewed decision placed the row (Summary.LibrivoxReviewedPlaced).
+	reviewed bool
 }
 
 // noteLibrivoxLanded counts a routed row that landed: a rule 2 attach
@@ -488,19 +493,26 @@ func (p *planner) noteLibrivoxLanded(b sourceBook, route librivoxRoute) {
 	if route.authorVariant != "" {
 		p.noteLibrivoxAuthorVariant(route.authorVariant)
 	}
+	if route.reviewed {
+		p.summary.LibrivoxReviewedPlaced++
+	}
 }
 
 // routeLibrivox applies the rules in this file's header to one LibriVox row. It
 // only reads (the authors are resolved read-only), so a skipped row leaves no
 // person behind. The zero route for every other row.
 //
-// The spelling-variant index is probed FIRST: a title whose key names no work
+// A reviewed decision answers first (librivoxreviewed.go). The spelling-variant
+// index is probed next: a title whose key names no work
 // leaves rules 1-3 nothing to decide (the ordinary path, or rule 4), so the row's
 // credits are resolved and its chain walked only when the key holds a work - the
 // duplicate-identity guard's own gate, for the same reason.
 func (p *planner) routeLibrivox(b sourceBook, workTitle, fullTitle, posSuffix, lang string, credits []credit, claim *seriesClaim) librivoxRoute {
 	if b.lv == nil {
 		return librivoxRoute{}
+	}
+	if route, ok := p.routeLibrivoxReviewed(b, workTitle); ok {
+		return route
 	}
 	slugs, held, nonLatin := p.librivoxTitleWorks(workTitle)
 	if len(slugs)+len(held) == 0 {
