@@ -1214,6 +1214,36 @@ func TestImportReportsWithheldCredits(t *testing.T) {
 	}
 }
 
+// TestImportReportsUnsluggableCredits: a library book crediting an author and a
+// narrator whose names slug to nothing lands with both left off - never on the
+// shared catch-all person (meta#2778) - and the verdict names each, reason
+// unsluggable.
+func TestImportReportsUnsluggableCredits(t *testing.T) {
+	dir := seedTree(t)
+	export := `[{"asin":"B0IMPORTUN","title_short":"A Cyrillic Book","author":"Jane Doe, Йордан Йовков",` +
+		`"narrated_by":"Nell Reader, 김영하","language":"English","region":"US","seconds":24000}]`
+	res := Process(Options{DataDir: dir, Template: "import", Body: importBody("OpenAudible (books.json)", export)})
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
+	}
+	if recordExists(t, dir, "people/pe/person.json") {
+		t.Error("the catch-all person was created")
+	}
+	msgs := strings.Join(res.Messages, "\n")
+	for _, want := range []string{
+		"import note: 2 credit(s) were not recorded",
+		`credit not recorded: B0IMPORTUN "Йордан Йовков" (author) -> a-cyrillic-book, unsluggable`,
+		`credit not recorded: B0IMPORTUN "김영하" (narrator) -> a-cyrillic-book, unsluggable`,
+	} {
+		if !strings.Contains(msgs, want) {
+			t.Errorf("no %q in:\n%s", want, msgs)
+		}
+	}
+	if strings.Contains(msgs, "empty slug") {
+		t.Errorf("a credit reached the catch-all:\n%s", msgs)
+	}
+}
+
 // TestUnrecordedCreditNotesAreCapped: the per-credit lines stop at
 // maxUnrecordedNotes, and the count line and the remainder line say how many
 // there were.

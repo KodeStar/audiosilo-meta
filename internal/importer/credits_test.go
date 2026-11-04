@@ -672,10 +672,12 @@ func enrichSeed(extra string) map[string]string {
 //
 // An unidentifiable person is not credited at all, and the drop is reported.
 //
-// The row runs through a USER-LIBRARY importer (OpenAudible), which is now the
-// only way to reach this guard: libex refuses such a row outright at its parse
-// layer (firstUnnamedCredit), and that exclusion is deliberately libex-only. The
-// guard therefore still protects exactly the paths the exclusion does not cover.
+// The row runs through a USER-LIBRARY importer (OpenAudible): libex refuses such
+// a row outright at its parse layer (firstUnnamedCredit). Since meta#2778 the
+// library importers leave every such credit off before the work is decided
+// (dropUnsluggableCredits) - the authors list included, which used to carry the
+// catch-all - and report each as a credit not recorded, so workCredits' own
+// fellBack guard is belt and braces behind that drop.
 func TestCreditsNeverNameTheCatchAllPerson(t *testing.T) {
 	export := `[{
 		"asin":"B0CRED0010","title_short":"A Korean Translation","region":"US","language":"english","seconds":18000,
@@ -696,25 +698,18 @@ func TestCreditsNeverNameTheCatchAllPerson(t *testing.T) {
 	if sum.Credits != 0 {
 		t.Errorf("Summary.Credits = %d, want 0", sum.Credits)
 	}
-	// The pre-existing conflation on the AUTHORS side is deliberately unchanged:
-	// this branch fixes the false ROLE claim, not Slugify (see the PR notes).
-	if !slices.Contains(work.Authors, "person") {
-		t.Errorf("authors = %v, want the pre-existing catch-all author entry", work.Authors)
+	if !reflect.DeepEqual(work.Authors, []string{"original-author"}) {
+		t.Errorf("authors = %v, want [original-author]: the catch-all is never an author", work.Authors)
 	}
 
-	// The drop is visible, once, with the count and an example - not silent, and
-	// not one line per occurrence.
-	var lines []string
-	for _, w := range sum.Warnings {
-		if strings.Contains(w, "credits dropped") {
-			lines = append(lines, w)
-		}
+	// The drop is visible: each credit is a credit not recorded, reason
+	// unsluggable.
+	want := []UnrecordedCredit{
+		{ASIN: "B0CRED0010", Name: "김영하", Roles: []string{model.RoleTranslator}, Work: "a-korean-translation", Reason: unsluggableReason},
+		{ASIN: "B0CRED0010", Name: "Александр Пушкин", Roles: []string{model.RoleEditor}, Work: "a-korean-translation", Reason: unsluggableReason},
 	}
-	if len(lines) != 1 {
-		t.Fatalf("want exactly one aggregated drop warning, got %v", lines)
-	}
-	if !strings.Contains(lines[0], "2 role-qualified credits dropped") || !strings.Contains(lines[0], "김영하") {
-		t.Errorf("warning does not report the count and an example: %q", lines[0])
+	if !reflect.DeepEqual(sum.UnrecordedCredits, want) {
+		t.Errorf("unrecorded = %+v\nwant %+v", sum.UnrecordedCredits, want)
 	}
 
 	if res := check.Load(dataDir); !res.OK() {

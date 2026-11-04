@@ -993,9 +993,10 @@ func (p *planner) commit(opts Options) error {
 // two rules that happen to agree today.
 //
 // Only the AI vocabulary crosses over. The unidentifiable-name rule stays
-// libex-only for the reason documented above firstUnnamedCredit (a user's own
-// library keeps the visible catch-all conflation rather than losing them their
-// book), and the junk/list/placeholder rules are shapes of a bulk scrape.
+// libex-only as a whole-row refusal for the reason documented above
+// firstUnnamedCredit (a user's own library keeps the book, with the credit left
+// off and reported: unrecorded.go), and the junk/list/placeholder rules are
+// shapes of a bulk scrape.
 
 // aiRefusals is what a run refused for crediting an AI: every one is counted,
 // and the first few are formatted for the aggregated warning. Building the
@@ -1455,7 +1456,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		return
 	}
 
-	lang, narratorNames, ok := p.admitRecordingFacts(b, warn)
+	lang, narratorNames, unslugNarrators, ok := p.admitRecordingFacts(b, warn)
 	if !ok {
 		p.noteLostSeriesClaims(b, -1, nil)
 		return
@@ -1467,14 +1468,20 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		p.noteLostSeriesClaims(b, -1, nil)
 		return
 	}
-	// A LibriVox credit whose name slugs to nothing is credited nowhere, never
-	// on the shared catch-all person; a row it leaves with no individual author
-	// is a worklist row (librivoxauthors.go rule 2).
-	var unsluggable []credit
-	if b.lv != nil {
-		var noAuthor bool
-		authorCredits, unsluggable, noAuthor = p.dropUnsluggableLibrivoxCredits(authorCredits)
-		if noAuthor && workTitle != "" {
+	// A credit whose name slugs to nothing is credited nowhere, never on the
+	// shared catch-all person (unrecorded.go); a row it leaves with no
+	// individual author is a LibriVox worklist row (librivoxauthors.go rule 2)
+	// or, from any other source, a skip.
+	authorCredits, unslugAuthors, noAuthor := p.dropUnsluggableCredits(authorCredits)
+	if noAuthor {
+		if b.lv == nil {
+			warn("no individual author is left once the credits whose names slug to nothing (%s) are left off; a work requires an author; skipped",
+				quotedNames(creditNamesOf(unslugAuthors)))
+			p.noteSkip(b, reasonMissingAuthor)
+			p.noteLostSeriesClaims(b, -1, nil)
+			return
+		}
+		if workTitle != "" {
 			p.noteLibrivoxWorklist(b, workTitle, LibrivoxAuthorUnsluggable, candidatesOf(nil))
 			p.noteLostSeriesClaims(b, -1, nil)
 			return
@@ -1497,6 +1504,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// the row's other claims are noted as lost.
 	if ws, occupant := p.attachTarget(b, workTitle); ws != nil {
 		p.attachRow(ws, b, workTitle, asin, lang, authorCredits, narratorNames, warn)
+		p.reportUnsluggable(b, asin, ws.slug, unslugAuthors, unslugNarrators)
 		_, at := completionClaim(b)
 		p.noteLostSeriesClaims(b, at, ws)
 		return
@@ -1598,9 +1606,8 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	}
 	p.addRecording(ws, b, resolvedTitle, asin, lang, narratorSlugs, warn)
 	if p.landedRec != "" {
-		// unsluggable is only ever set for a LibriVox row.
 		p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, unrecorded...)
-		p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, p.unsluggableLibrivoxCredits(b, ws.slug, unsluggable)...)
+		p.reportUnsluggable(b, asin, ws.slug, unslugAuthors, unslugNarrators)
 	}
 	// A row of this run landing on a work the run created adds what it states
 	// (credits, genres - the recording vote reads the recording it landed on);
@@ -1674,27 +1681,38 @@ func (p *planner) dedupeByASIN(asin string) bool {
 
 // admitRecordingFacts validates the two things a RECORDING cannot be built
 // without - a language the schema knows and at least one narrator - and returns
-// them. ok=false means the row was warned about and must be dropped.
+// them, with the narrator names left off because they slug to nothing
+// (unsluggable, reported once the row lands: reportUnsluggable). ok=false means
+// the row was warned about and must be dropped.
 //
 // It is shared by the create and recordings-only planners so the two can never
 // drift on what a usable row is, or on how a rejected one is worded. They differ
 // only in WHEN they call it: the create path validates before it resolves a
 // work, while recordings-only resolves the work FIRST, so a row for a book the
 // catalogue does not hold is never warned about at all.
-func (p *planner) admitRecordingFacts(b sourceBook, warn func(string, ...any)) (lang string, narratorNames []string, ok bool) {
+func (p *planner) admitRecordingFacts(b sourceBook, warn func(string, ...any)) (lang string, narratorNames, unsluggable []string, ok bool) {
 	lang, ok = b.language()
 	if !ok {
 		warn("unknown language %q; skipped", b.str("language"))
 		p.noteSkip(b, reasonLanguage)
-		return "", nil, false
+		return "", nil, nil, false
 	}
 	narratorNames = p.rowNarratorNames(b)
 	if len(narratorNames) == 0 {
 		warn("no narrator; a recording requires narrators; skipped")
 		p.noteSkip(b, reasonMissingNarrator)
-		return "", nil, false
+		return "", nil, nil, false
 	}
-	return lang, narratorNames, true
+	// A narrator whose name slugs to nothing is left off the recording, never
+	// credited to the shared catch-all person (unrecorded.go).
+	narratorNames, unsluggable = p.dropUnsluggableNarrators(b, narratorNames)
+	if len(narratorNames) == 0 {
+		warn("no narrator is left once those whose names slug to nothing (%s) are left off; a recording requires narrators; skipped",
+			quotedNames(unsluggable))
+		p.noteSkip(b, reasonMissingNarrator)
+		return "", nil, nil, false
+	}
+	return lang, narratorNames, unsluggable, true
 }
 
 // rowAuthorCredits is a row's cleaned AUTHOR-side credit list, each entry
@@ -2070,13 +2088,13 @@ func sourceNames(typed []string, joined string) []string {
 // A name that slugs away to nothing is dropped too, and that one is a FACTS
 // rule rather than a referential one. personSlug substitutes the shared
 // catch-all "person" record for a name written entirely in a script Slugify
-// folds (Korean, Cyrillic, CJK); on the authors list that fallback is a known,
-// visible conflation, but a credit is an explicit claim about who did what, so
-// writing {person: "person", role: "translator"} would assert that one shared
-// record translated every such book - metacheck-green and false. An
-// unidentifiable person cannot be credited. The drop is reported in aggregate
-// (reportUnnamedCredits) rather than silently, because the fix is upstream in
-// Slugify, not in the row.
+// folds (Korean, Cyrillic, CJK), and writing {person: "person", role:
+// "translator"} would assert that one shared record translated every such book.
+// An unidentifiable person cannot be credited. The create path never hands
+// workCredits such a credit (addBook drops it first and reports it as a credit
+// not recorded, unrecorded.go), so this is the guard for every other caller:
+// the drop is reported in aggregate (reportUnnamedCredits) rather than
+// silently, because the fix is upstream in Slugify, not in the row.
 //
 // The person keeps their ordinary membership in authors: a credit ADDS the role
 // the source stated, it never replaces the credit list the identity model is

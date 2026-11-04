@@ -579,8 +579,9 @@ type Summary struct {
 	// person such a credit would have created is not created (an orphan
 	// record, meta#2760), so these are kept for recording-level credits
 	// (meta#2752) to pick up. A credit whose name slugs to nothing carries
-	// Reason "unsluggable": any source's on an attach, and a LibriVox one
-	// whether the row attached or created its work (librivoxauthors.go rule 2).
+	// Reason "unsluggable", whether the row attached or created its work, and
+	// so does a narrator whose name slugs to nothing (Roles ["narrator"]): no
+	// importer credits the shared catch-all person (unrecorded.go, meta#2778).
 	// A row the --attach-editions rule attaches reports its credits here too.
 	UnrecordedCredits []UnrecordedCredit
 	// Notes are aggregated lines about what a run DID, where the doing is a

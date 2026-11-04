@@ -302,8 +302,8 @@ func TestLibrivoxUnrecordedUnsluggableTranslatorsKeepTheirOwnIDs(t *testing.T) {
 	pr.Translators = []LibrivoxPerson{{ID: 5001, FirstName: "Иван", LastName: "Петров"}, {ID: 5002, FirstName: "Пётр", LastName: "Иванов"}}
 	sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
 	want := []UnrecordedCredit{
-		{Project: 527, AuthorID: 5001, Name: "Иван Петров", Roles: []string{model.RoleTranslator}, Work: "metamorphosis", Reason: librivoxUnsluggable},
-		{Project: 527, AuthorID: 5002, Name: "Пётр Иванов", Roles: []string{model.RoleTranslator}, Work: "metamorphosis", Reason: librivoxUnsluggable},
+		{Project: 527, AuthorID: 5001, Name: "Иван Петров", Roles: []string{model.RoleTranslator}, Work: "metamorphosis", Reason: unsluggableReason},
+		{Project: 527, AuthorID: 5002, Name: "Пётр Иванов", Roles: []string{model.RoleTranslator}, Work: "metamorphosis", Reason: unsluggableReason},
 	}
 	if !reflect.DeepEqual(sum.UnrecordedCredits, want) {
 		t.Errorf("unrecorded = %+v, want %+v", sum.UnrecordedCredits, want)

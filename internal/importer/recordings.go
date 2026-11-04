@@ -100,13 +100,14 @@ func (p *planner) addRecordingToExistingWork(b sourceBook, asin string) {
 	}
 
 	warn := p.bookWarn(b)
-	lang, narratorNames, ok := p.admitRecordingFacts(b, warn)
+	lang, narratorNames, unslugNarrators, ok := p.admitRecordingFacts(b, warn)
 	if !ok {
 		return
 	}
 	narratorSlugs := p.rowNarratorSlugs(b, narratorNames, warn)
 	// addRecording registers the ASIN itself, only once it landed on a recording.
 	p.addRecording(ws, b, firstNonEmpty(b.str("title_short"), b.str("title")), asin, lang, narratorSlugs, warn)
+	p.reportUnsluggable(b, asin, ws.slug, nil, unslugNarrators)
 }
 
 // resolveExistingWork returns the catalogued work a row belongs to, or nil. The
