@@ -17,7 +17,8 @@ import (
 // PLUS this batch, and never the other way round.
 //
 // The three guards are honorific.go's three, and they matter for the same
-// reasons:
+// reasons - and so does its fourth, the REVIEW: a pair a merge-people rejection
+// keeps apart is never folded (creditCensus.foldCredential asks keptApart):
 //
 // FIRST, the de-credentialed name must ALREADY be a credit somewhere - the
 // credit census. Measured over the full 1.13M-book dump, 3,703 credit names end

@@ -1713,9 +1713,23 @@ type creditContext struct {
 }
 
 // creditContextOf takes a batch's credit decisions.
+//
+// A fold is refused for a reviewed pair judged by the records the two spellings
+// LAND on (creditLanding), not only the slugs they spell: "Dr. AB Kovacs" spells
+// `dr-ab-kovacs` but lands, by the initials merge, on the committed
+// `dr-a-b-kovacs`, and the bare "AB Kovacs" on `a-b-kovacs`. The check reads the
+// initials decisions once they exist and, before then (the pre-pass cleans the
+// names it decides over), the committed record of a spelling's initials group,
+// which is what the decision names whenever one is committed - so the pre-pass and
+// the import refuse the same folds.
 func (p *planner) creditContextOf(books []sourceBook) creditContext {
 	author, narrator := p.creditCensusesOf(books)
-	return creditContext{author: author, narrator: narrator, initials: p.decideInitialsOf(books, author, narrator)}
+	census := p.catalogueInitials()
+	var decided initialsSurvivors
+	apart := func(a, b string) bool { return p.landingsKeptApart(decided, census, a, b) }
+	author.keptApart, narrator.keptApart = apart, apart
+	decided = p.decideInitialsOf(census, books, author, narrator)
+	return creditContext{author: author, narrator: narrator, initials: decided}
 }
 
 // creditCensusOf builds this run's credit census: the set of slugs a name must
@@ -1808,7 +1822,7 @@ func (p *planner) creditCensusesOf(books []sourceBook) (author, narrator creditC
 			foldSyntheticVoice: foldSynthetic,
 			onHonorific:        p.noteHonorific,
 			onCredential:       p.noteCredential,
-			keptApart:          p.peopleKeptApart,
+			keptApart:          p.peopleKeptApart, // creditContextOf judges the landings
 		}
 	}
 	// The AI-narration fold is the NARRATOR side of a USER-LIBRARY run and
@@ -1824,15 +1838,48 @@ func (p *planner) creditCensusesOf(books []sourceBook) (author, narrator creditC
 
 // peopleKeptApart reports whether a reviewed merge-people rejection
 // (Options.Distinct) recorded the persons credit names a and b spell as two
-// people, so that no honorific fold may resolve one onto the other: "Dr. Alex
-// George" is not `alex-george`, the novelist. Each name is asked as its person
-// slug, a retired one as its survivor (the decisions were resolved the same
-// way) - not through the initials merge, which the census predates; a name that
-// slugs away to nothing is no record a review named.
+// people, so that no fold may resolve one onto the other: "Dr. Alex George" is
+// not `alex-george`, the novelist. Each name is asked as its person slug, a
+// retired one as its survivor (the decisions were resolved the same way); the
+// records the two land on through the initials merge are landingsKeptApart's
+// half. A name that slugs away to nothing is no record a review named.
 func (p *planner) peopleKeptApart(a, b string) bool {
 	sa, fa := personSlug(a)
 	sb, fb := personSlug(b)
 	return !fa && !fb && p.personSlugsKeptApart(sa, sb)
+}
+
+// landingsKeptApart is the reviewed-pair check the credit folds ask
+// (creditCensus.keptApart): a and b are kept apart when the slugs they spell are
+// (peopleKeptApart) or the records they land on are (creditLanding).
+func (p *planner) landingsKeptApart(decided initialsSurvivors, census *initialsCensus, a, b string) bool {
+	if p.apart == nil {
+		return false
+	}
+	if p.peopleKeptApart(a, b) {
+		return true
+	}
+	la, oka := p.creditLanding(decided, census, a)
+	lb, okb := p.creditLanding(decided, census, b)
+	return oka && okb && p.apart.Has(la, lb)
+}
+
+// creditLanding is the person record a credit name lands on: the live record its
+// slug (or that slug's survivor) names, else the initials merge's decision
+// (resolvePersonIn), else - before the batch is decided - the committed record
+// of its initials group (initialsCensus.catalogueSurvivor), else its own slug,
+// to be created. ok is false for a name that slugs away to nothing.
+func (p *planner) creditLanding(decided initialsSurvivors, census *initialsCensus, name string) (string, bool) {
+	r := p.resolvePersonIn(creditContext{initials: decided}, name)
+	if r.fellBack {
+		return "", false
+	}
+	if r.create && census != nil {
+		if s, ok := census.catalogueSurvivor(name); ok {
+			return s, true
+		}
+	}
+	return r.slug, true
 }
 
 // personSlugsKeptApart is peopleKeptApart for two person slugs.
@@ -1894,11 +1941,9 @@ func mergeLines(set map[string]string) []string {
 // narrator's spelling, not the concatenation's. That is also why this cannot be
 // folded into the census loop: the census has to be complete before a name can
 // be cleaned through it.
-func (p *planner) decideInitialsOf(books []sourceBook, authorCensus, narratorCensus creditCensus) initialsSurvivors {
-	c := newInitialsCensus()
-	for slug, name := range p.people {
-		c.addCatalogue(slug, name)
-	}
+//
+// c is the census catalogueInitials seeded, which this adds the batch to.
+func (p *planner) decideInitialsOf(c *initialsCensus, books []sourceBook, authorCensus, narratorCensus creditCensus) initialsSurvivors {
 	for _, b := range books {
 		// Each side is cleaned through ITS OWN census, exactly as the import
 		// itself will clean it: the honorific rule is side-scoped, so a pre-pass
@@ -1914,6 +1959,15 @@ func (p *planner) decideInitialsOf(books []sourceBook, authorCensus, narratorCen
 		}
 	}
 	return c.decide()
+}
+
+// catalogueInitials is the initials census seeded with every committed person.
+func (p *planner) catalogueInitials() *initialsCensus {
+	c := newInitialsCensus()
+	for slug, name := range p.people {
+		c.addCatalogue(slug, name)
+	}
+	return c
 }
 
 // seriesRef is a book's claim to a position in a named series. name is always

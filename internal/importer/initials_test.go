@@ -242,6 +242,29 @@ func TestInitialsSingleSpellingIsNotDecided(t *testing.T) {
 	}
 }
 
+// TestInitialsCatalogueSurvivor pins the read-only probe the reviewed-pair check
+// asks before the batch is decided: a spelling's group answers its lowest
+// committed record, exactly as decide would, and the probe adds nothing.
+func TestInitialsCatalogueSurvivor(t *testing.T) {
+	c := newInitialsCensus()
+	c.addCatalogue("ab-kovacs", "AB Kovacs")
+	c.addCatalogue("a-b-kovacs", "A.B. Kovacs")
+	c.addBatch("A. B. Kovacs")
+	for name, want := range map[string]string{"A.B. Kovacs": "a-b-kovacs", "A B Kovacs": "a-b-kovacs", "AB Kovacs": "a-b-kovacs"} {
+		if got, ok := c.catalogueSurvivor(name); !ok || got != want {
+			t.Errorf("catalogueSurvivor(%q) = %q, %v; want %q", name, got, ok, want)
+		}
+	}
+	for _, name := range []string{"Em Brown", "E.M. Brown", "Ada Mapmaker"} {
+		if got, ok := c.catalogueSurvivor(name); ok {
+			t.Errorf("catalogueSurvivor(%q) = %q, want none (no committed record, or no initials)", name, got)
+		}
+	}
+	if decided := c.decide(); decided["a-b-kovacs"].slug != "a-b-kovacs" || len(c.groups) != 1 {
+		t.Errorf("the probe changed the census: %v, %d groups", decided, len(c.groups))
+	}
+}
+
 // probePlanner is the smallest planner getOrCreatePerson needs: an identity map,
 // a write layer over an empty tree, and the batch pre-pass's decision over the
 // names the test is about to import. Nothing is flushed - what the probe test

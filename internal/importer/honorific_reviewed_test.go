@@ -149,3 +149,64 @@ func TestLibrivoxTitledTwinHonoursAReviewedRejection(t *testing.T) {
 		})
 	}
 }
+
+// The check judges the record a credit LANDS on, not only the slug it spells: by
+// the initials merge "Dr. AB Kovacs" is the committed `dr-a-b-kovacs` and "AB
+// Kovacs" the committed `a-b-kovacs`, so a review of THAT pair keeps the titled
+// credit off the bare record even though neither spelled slug is one the review
+// names. The titled credit then lands on its own committed record, as the
+// initials merge would put it.
+func TestHonorificFoldJudgesTheLandingRecord(t *testing.T) {
+	for name, tc := range reviewedCases([]string{"a-b-kovacs", "dr-a-b-kovacs"}, "a-b-kovacs", "dr-a-b-kovacs") {
+		t.Run(name, func(t *testing.T) {
+			dataDir := seedTombstoneTree(t, map[string]string{
+				personAddr("a-b-kovacs"):    testpack.PersonJSON(t, "a-b-kovacs", "A.B. Kovacs"),
+				personAddr("dr-a-b-kovacs"): testpack.PersonJSON(t, "dr-a-b-kovacs", "Dr. A.B. Kovacs"),
+				workAddr("the-novel"):       testpack.WorkJSON(t, "the-novel", "The Novel", testpack.WithAuthors("a-b-kovacs")),
+				recAddr("the-novel", "r1"):  testpack.RecJSON(t, "r1", "the-novel", testpack.WithNarrators("bea-reader")),
+				workAddr("the-clinic"):      testpack.WorkJSON(t, "the-clinic", "The Clinic", testpack.WithAuthors("dr-a-b-kovacs")),
+				recAddr("the-clinic", "r1"): testpack.RecJSON(t, "r1", "the-clinic", testpack.WithNarrators("bea-reader")),
+			}, nil)
+			sum := runLibexWith(t, dataDir, Options{Distinct: tc.distinct},
+				tombRow("B0KOVACS01", "Healthy Habits", "Dr. AB Kovacs", "Bea Reader", 300, "", ""),
+				tombRow("B0KOVACS02", "The Sequel", "AB Kovacs", "Bea Reader", 300, "", ""))
+			if got := workAuthorsOf(t, dataDir, "healthy-habits"); !reflect.DeepEqual(got, []string{tc.want}) {
+				t.Errorf("Healthy Habits authors = %v, want [%s]\nmerges: %v", got, tc.want, sum.HonorificMerges)
+			}
+			if got := workAuthorsOf(t, dataDir, "the-sequel"); !reflect.DeepEqual(got, []string{"a-b-kovacs"}) {
+				t.Errorf("the bare credit no longer meets its record: The Sequel authors = %v", got)
+			}
+			mustValidate(t, dataDir)
+		})
+	}
+}
+
+// The credential fold honours the same review: "Michael Salla PhD" folds onto
+// the bare `michael-salla` the census holds - unless a review recorded the two
+// records as two people, when the credit stays on its own committed record. Both
+// spellings of the credential are covered: in the name, and as a ", PhD" list
+// piece put back on it (peelSuffixChunk).
+func TestCredentialFoldHonoursAReviewedRejection(t *testing.T) {
+	for name, tc := range reviewedCases([]string{"michael-salla", "michael-salla-phd"}, "michael-salla", "michael-salla-phd") {
+		t.Run(name, func(t *testing.T) {
+			dataDir := seedTombstoneTree(t, map[string]string{
+				personAddr("michael-salla"):     testpack.PersonJSON(t, "michael-salla", "Michael Salla"),
+				personAddr("michael-salla-phd"): testpack.PersonJSON(t, "michael-salla-phd", "Michael Salla PhD"),
+				workAddr("the-novel"):           testpack.WorkJSON(t, "the-novel", "The Novel", testpack.WithAuthors("michael-salla")),
+				recAddr("the-novel", "r1"):      testpack.RecJSON(t, "r1", "the-novel", testpack.WithNarrators("bea-reader")),
+			}, nil)
+			sum := runLibexWith(t, dataDir, Options{Distinct: tc.distinct},
+				tombRow("B0SALLA001", "Exopolitics", "Michael Salla PhD", "Bea Reader", 300, "", ""),
+				tombRow("B0SALLA002", "Galactic Diplomacy", "Michael Salla, PhD", "Bea Reader", 300, "", ""))
+			for _, w := range []string{"exopolitics", "galactic-diplomacy"} {
+				if got := workAuthorsOf(t, dataDir, w); !reflect.DeepEqual(got, []string{tc.want}) {
+					t.Errorf("%s authors = %v, want [%s]\nmerges: %v", w, got, tc.want, sum.CredentialMerges)
+				}
+			}
+			if folded := len(sum.CredentialMerges) > 0; folded != (tc.want == "michael-salla") {
+				t.Errorf("CredentialMerges = %v, want a fold reported only when one happened", sum.CredentialMerges)
+			}
+			mustValidate(t, dataDir)
+		})
+	}
+}

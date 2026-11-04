@@ -179,7 +179,9 @@ never noticed (ai-verify read only the metadiff summary). Two halves:
   it would let the next import re-fold the pair, and it reads `unresolved` instead, a
   status SUMMARY.md lists so a typo still surfaces. The importer's
   honorific fold honours the same rejections: a pair a merge-people rejection names
-  is never folded, titled onto bare or (LibriVox rule 1c) bare onto titled, so an
+  is never folded, titled onto bare or (LibriVox rule 1c) bare onto titled, nor by the
+  credential fold ("X PhD"), each judged by the records the two spellings LAND on
+  through the initials merge as well as the slugs they spell, so an
   import cannot re-merge a pair a maintainer separated (`importer.Options.Distinct`,
   filled from `audit.ReviewedDistinct()` by cmd/metaimport and internal/issueform,
   resolved through redirects.json by `check.ResolveDistinct`), and so does the series

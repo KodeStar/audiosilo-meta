@@ -1,6 +1,7 @@
 package importer
 
 import (
+	"maps"
 	"slices"
 	"strings"
 	"unicode"
@@ -370,6 +371,24 @@ func (c *initialsCensus) addCatalogue(slug, name string) {
 		return
 	}
 	g.catalogue[slug] = name
+}
+
+// catalogueSurvivor is the committed record name's initials group resolves to
+// when any is committed: the lowest committed slug, which is exactly what decide
+// names for a group holding one (catalogue first), so it can be asked before the
+// batch is decided - by the reviewed-pair check (planner.creditLanding), which
+// must judge the record a spelling lands on while the pre-pass is still
+// cleaning the names decide will read. It never adds to the census.
+func (c *initialsCensus) catalogueSurvivor(name string) (string, bool) {
+	tokens := parseNameTokens(name)
+	if _, ok := probeableGroups(tokens); !ok {
+		return "", false
+	}
+	g := c.groups[markedKeyOf(tokens)]
+	if g == nil || len(g.catalogue) == 0 {
+		return "", false
+	}
+	return slices.Min(slices.Collect(maps.Keys(g.catalogue))), true
 }
 
 // addBatch records one credit name the run is about to import, in the form

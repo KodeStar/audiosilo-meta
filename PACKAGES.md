@@ -1335,14 +1335,20 @@ Options literal in the module sets it or says why not,
 `TestEveryOptionsLiteralCarriesDistinct` - the ids
 resolved through redirects.json by `check.ResolveDistinct`, the census's own
 resolution - so an import cannot re-merge Dr. Alex George onto `alex-george`
-the novelist: `creditCensus.keptApart`, `planner.peopleKeptApart`), the
+the novelist: `creditCensus.keptApart`, judged by the records the two spellings
+LAND on as well as the slugs they spell - `planner.landingsKeptApart`: the live
+record, else the initials merge's decision, else, before the batch is decided,
+the committed record of the spelling's initials group
+(`initialsCensus.catalogueSurvivor`), so "Dr. AB Kovacs" cannot fold onto
+`a-b-kovacs` past a review of `a-b-kovacs` / `dr-a-b-kovacs`), the
 SEPARATOR-LESS spelling
 of a role qualifier ("Andrew Lang Editor", `barerole.go`, its own narrow
 vocabulary because "Public Play Editora" and "Augustin Eugène Scribe" end in
 role words too), a trailing CREDENTIAL folded onto the bare twin
 ("Philip Zimbardo Ph.D.", "Deb Dana LCSW", `credential.go` - the honorific
 rule's mirror image, same same-side census and two-word floor, doctorate and
-licensure spellings, never a generational or legal-entity suffix), and a
+licensure spellings, never a generational or legal-entity suffix; never a
+reviewed pair either, by the same `keptApart` check - `creditCensus.foldCredential`), and a
 DANGLING
 leading conjunction ("and Melanie Mendez", `conjunction.go`), each of which
 otherwise minted a second identity for somebody already in the catalogue) - and
