@@ -169,6 +169,26 @@ func TestLibrivoxReaderAliasResolvesToTheRecord(t *testing.T) {
 	}
 }
 
+func TestLibrivoxRetiredIDFormResolvesThroughTheAlias(t *testing.T) {
+	// A retired librivox-reader-<id> slot points at the record answering to the id
+	// (pkg/check holds that), so the reader lands there rather than being refused
+	// for a slot they cannot take.
+	dataDir := seedTombstoneTree(t, map[string]string{
+		personAddr("ada-mapmaker"): personFiles(t, "ada-mapmaker", "Ada Mapmaker", map[string]any{"librivox_reader_id": 5, "librivox_reader_aliases": []int{11294}}),
+	}, model.Redirects{model.RedirectPeople: {"librivox-reader-11294": "ada-mapmaker"}})
+	snap := writeSnapshot(t, greekRow(t, 91001, 11294, "Ἑλένη Κεμικτσή"))
+	sum := runLibrivox(t, snap, dataDir, allLibrivox)
+	if len(sum.Skips) != 0 {
+		t.Fatalf("skips = %+v\nwarnings: %v", sum.Skips, sum.Warnings)
+	}
+	_, _, f := lvRecordingOf(t, dataDir, 91001)
+	if !reflect.DeepEqual(f.Narrators, []string{"ada-mapmaker"}) {
+		t.Errorf("narrators = %v", f.Narrators)
+	}
+	mustValidate(t, dataDir)
+	rerunIsANoOp(t, snap, dataDir)
+}
+
 func TestLibrivoxHeldRowKeepsAReaderCreditedUnderAnAlias(t *testing.T) {
 	// A held project read by the person under an alias AND by a third reader id
 	// of the same name: the third is split off, and the narrator credit stays
