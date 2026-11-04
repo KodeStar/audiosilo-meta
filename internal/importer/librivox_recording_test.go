@@ -735,3 +735,25 @@ func TestLibrivoxHeldWorklistSpellsDecidedTranslators(t *testing.T) {
 		t.Errorf("worklist = %+v, want 527 naming Jane Roe (1800-1870) (Translator)", w)
 	}
 }
+
+func TestLibrivoxHeldTranslatorCannotTakeAPlannedIDsPerson(t *testing.T) {
+	// The held 527 (the LOWER project) names translator 1019 Ian Johnston
+	// (1850-1920); the planned 9100 is by author 3030 Ian Johnston, undated.
+	// Every planned id is decided first, so 3030 keeps `ian-johnston` whatever
+	// the project order, and 1019 is judged against it: other years, so it is
+	// credited at its dated name.
+	dataDir := heldKafkaTree(t, map[string]string{})
+	held := fixtureProject(t, 527)
+	held.Translators = []LibrivoxPerson{{ID: 1019, FirstName: "Ian", LastName: "Johnston", DOB: "1850", DOD: "1920"}}
+	planned := byAuthor(t, 9100, "A Brand New Essay", "English", LibrivoxPerson{ID: 3030, FirstName: "Ian", LastName: "Johnston"})
+	runLibrivox(t, writeSnapshot(t, held, planned), dataDir, allLibrivox)
+	if p := personOf(t, dataDir, "ian-johnston"); p.AuthorID != 3030 {
+		t.Errorf("ian-johnston = %+v, want the planned author id 3030", p)
+	}
+	if f := lvFidelityOf(t, dataDir, "metamorphosis", "se"); !reflect.DeepEqual(f.Credits, []model.Credit{{Person: "ian-johnston-1850-1920", Role: model.RoleTranslator}}) {
+		t.Errorf("credits = %v, want ian-johnston-1850-1920", f.Credits)
+	}
+	if p := personOf(t, dataDir, "ian-johnston-1850-1920"); p.AuthorID != 1019 || p.BirthYear != 1850 {
+		t.Errorf("ian-johnston-1850-1920 = %+v, want author id 1019, born 1850", p)
+	}
+}
