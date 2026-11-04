@@ -645,6 +645,13 @@ func printSummary(s importer.Summary, dryRun bool, mode importer.Mode) {
 	if s.GenreWorks > 0 {
 		fmt.Printf("  added genres to %d already-attested works\n", s.GenreWorks)
 	}
+	if s.ISBNRecordings > 0 {
+		fmt.Printf("  added ISBNs to %d recordings from rows with nothing else to write there\n", s.ISBNRecordings)
+	}
+	if s.ISBNsMirrorOnly > 0 {
+		fmt.Printf("  isbn-not-attached: mirror-only: %d %s without an ASIN met a bulk-mirror-only recording\n",
+			s.ISBNsMirrorOnly, plural(s.ISBNsMirrorOnly, "row", "rows"))
+	}
 	// Printed only when a run refused one (--attach-editions), and on a
 	// line of its own: the create summary line's shape is parsed by the sync bot.
 	if s.SkippedOccupied > 0 {

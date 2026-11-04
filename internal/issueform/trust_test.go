@@ -53,6 +53,39 @@ func setField(t *testing.T, body, label, value string) string {
 	return body[:i] + field(label, value) + rest[j+2:]
 }
 
+// An export whose only news was an ISBN refused on a mirror seed says so, whether or
+// not its other books deduped: not the export-type question, and not a bare duplicate.
+func TestImportReportsISBNsHeldBackByAMirrorSeed(t *testing.T) {
+	const held = `{"title":"Existing Work","authors":["Jane Doe"],"narrators":["John Smith"],"language":"en","runtime_min":400,"isbn":"9781473647633"}`
+	const deduped = `{"asin":"B000000002","title":"Existing Work","authors":["Jane Doe"],"narrators":["Amy Voice"],"language":"en"}`
+	for name, books := range map[string]string{"alone": held, "beside a deduped book": held + "," + deduped} {
+		t.Run(name, func(t *testing.T) {
+			dir := t.TempDir()
+			files := seedFiles()
+			files[recRel] = libexOnlyRecording
+			files["people/am/amy-voice.json"] = `{"id": "amy-voice", "license": "CC0-1.0", "name": "Amy Voice", "sources": [{"type": "user", "imported_at": "2026-07-01"}]}`
+			files["works/ex/existing-work/recordings/amy-voice-2021.json"] = `{
+  "asin": [{"asin": "B000000002", "region": "us"}],
+  "id": "amy-voice-2021",
+  "language": "en",
+  "license": "CC0-1.0",
+  "narrators": ["amy-voice"],
+  "sources": [{"type": "user", "imported_at": "2026-07-01"}],
+  "work": "existing-work"
+}`
+			testpack.Seed(t, dir, files)
+			export := `{"format":"audiosilo-books","version":1,"books":[` + books + `]}`
+			res := Process(Options{DataDir: dir, Template: "import", Body: importBody("OpenAudible (books.json)", export)})
+			if res.Status != StatusDuplicate {
+				t.Fatalf("status = %q, want duplicate; messages = %v", res.Status, res.Messages)
+			}
+			if !anyContains(res.Messages, "isbn-not-attached: mirror-only: 1 book(s)") {
+				t.Errorf("the refusal is not reported: %v", res.Messages)
+			}
+		})
+	}
+}
+
 // TestAddWorkASINOfLibexOnlyRecordTakesItOver is the intake side of the
 // user-overwrite rule: the submitter names, BY ASIN, a recording only the
 // mirror has ever stated, so their stated facts replace the mirror's and their

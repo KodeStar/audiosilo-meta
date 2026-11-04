@@ -2460,19 +2460,6 @@
         }
       ]
     },
-    "voplanet": {
-      "id": "voplanet",
-      "kind": "publisher",
-      "license": "CC0-1.0",
-      "name": "VOplanet",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B073QZMPJZ",
-          "type": "libex-import"
-        }
-      ]
-    },
     "voplanet-studios": {
       "id": "voplanet-studios",
       "kind": "publisher",
@@ -2482,6 +2469,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B00KDJCQZ0",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B073QZMPJZ",
           "type": "libex-import"
         }
       ]

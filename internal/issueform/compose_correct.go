@@ -511,6 +511,10 @@ func (c *composer) correctISBN(addr entryAddr, record map[string]any, corrected 
 		c.failDuplicateUnhinted(other, "ISBN "+stated.ISBN, "ISBN %s is already recorded on %s", stated.ISBN, c.recLocation(other))
 		return "", false
 	}
+	if work, held := c.printISBN[key]; held {
+		c.fail(StatusDuplicate, "%s", printISBNRefusal(stated.ISBN, work))
+		return "", false
+	}
 
 	// Symmetric with readRegionPublishers: a value that is not the array the
 	// schema requires is escalated, never appended to. `arr, _ := ...([]any)`

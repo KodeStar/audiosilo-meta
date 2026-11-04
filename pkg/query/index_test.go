@@ -247,6 +247,7 @@ func TestBatchLookupsAreIndexed(t *testing.T) {
 		{"members of the matched series", seriesIDs, seriesMembersByIDSQL, []any{matchCandidatesMax}},
 		{"match: titles", ids, matchWorksSQL, nil},
 		{"match: recording runtimes", ids, matchRuntimesSQL, nil},
+		{"match: recording narrators", ids, matchNarratorsSQL, nil},
 		// The LibriVox layer: the boosts' source filter and the feed page's five
 		// batches, each over up to a page (500) of works.
 		{"works with a source", ids, func(ph string) string { return worksAdmittedSQL(ph, workHasSourceArm("works.id")) }, []any{model.SourceLibrivox}},
