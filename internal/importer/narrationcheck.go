@@ -52,8 +52,9 @@ type NarrationSuspect struct {
 // recording of them, suspect or not - a reviewer naming a work wants it checked.
 func SelectNarrationSuspects(cat *model.Catalog, works map[string]bool) []NarrationSuspect {
 	// Only individuals are compared: a group, publisher or synthetic credit (a
-	// full cast, Audible Studios) is spelled a dozen ways by retailers.
-	notIndividual := map[string]bool{}
+	// full cast, Audible Studios) is spelled a dozen ways by retailers, and the
+	// unslug catch-all stands for many people (pkg/check's narration profile's rule).
+	notIndividual := map[string]bool{model.UnslugPersonID: true}
 	for _, p := range cat.People {
 		if p.Kind != "" && p.Kind != model.KindEntityPerson {
 			notIndividual[p.ID] = true
@@ -247,9 +248,13 @@ func (c *LibexClient) CheckNarrations(ctx context.Context, suspects []NarrationS
 				continue
 			}
 			l := lookedASIN{asin: asin, row: libexFillRow(rec)}
+			// Split before dropping a cast credit, so "Jim Dale and Full Cast" keeps
+			// Jim Dale.
 			for _, n := range libexNames(rec["narrators"]) {
-				if !castCredit(n) {
-					l.narrators = append(l.narrators, splitCredit(n)...)
+				for _, part := range splitCredit(n) {
+					if !castCredit(part) {
+						l.narrators = append(l.narrators, part)
+					}
 				}
 			}
 			if m, ok := coerceInt(rec["lengthMinutes"]); ok {

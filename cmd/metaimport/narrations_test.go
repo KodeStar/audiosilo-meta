@@ -44,7 +44,7 @@ func TestNarrationsWritesTheWorklistAndTouchesNoData(t *testing.T) {
 			t.Errorf("exit code = %d, want 0", code)
 		}
 	})
-	if !strings.Contains(out, "1 recording checked, 2 ASIN lookups") || !strings.Contains(out, "1 finding") {
+	if !strings.Contains(out, "1 recording checked, 2 ASIN lookups = 2 answered + 0 not in libex + 0 failed") || !strings.Contains(out, "1 finding") {
 		t.Errorf("output = %q", out)
 	}
 	got, err := os.ReadFile(worklist)

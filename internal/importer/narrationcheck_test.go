@@ -186,6 +186,21 @@ func TestJudgeNarrationFoldsSpellingsOfOneCredit(t *testing.T) {
 	}
 }
 
+// A credit naming a narrator beside a cast keeps the narrator.
+func TestCheckNarrationsKeepsTheNarratorOfAMixedCastCredit(t *testing.T) {
+	f := narrationServer(t)
+	f.records["BJOHN0001"] = `{"asin":"BJOHN0001","narrators":[{"name":"John Roe and Full Cast"}]}`
+	f.records["BJOHN0002"] = `{"asin":"BJOHN0002","narrators":[{"name":"Ann Other"}]}`
+	c := fillClient(t, libexFillServer(t, f))
+	findings, _, err := c.CheckNarrations(context.Background(), SelectNarrationSuspects(narrationCatalog(), map[string]bool{"plain": true}), nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(findings) != 1 || findings[0].Kind != NarrationTwoProductions || strings.Join(findings[0].Groups[0].Narrators, ",") != "John Roe" {
+		t.Fatalf("findings = %+v, want John Roe's ASIN apart from Ann Other's", findings)
+	}
+}
+
 func TestSplitCreditSplitsOnlyTwoFullNames(t *testing.T) {
 	for in, want := range map[string]string{
 		"Kate Reading and Michael Kramer": "Kate Reading|Michael Kramer",
@@ -196,5 +211,18 @@ func TestSplitCreditSplitsOnlyTwoFullNames(t *testing.T) {
 		if got := strings.Join(splitCredit(in), "|"); got != want {
 			t.Errorf("splitCredit(%q) = %q, want %q", in, got, want)
 		}
+	}
+}
+
+// The unslug catch-all person stands for many people, so a recording crediting it
+// names no individual to compare (pkg/check's NewNarrationProfile reads it alike).
+func TestSelectNarrationSuspectsSkipsTheUnslugPerson(t *testing.T) {
+	cat := &model.Catalog{Works: []*model.Work{{ID: "w", Recordings: []*model.Recording{{
+		ID: "r", Narrators: []string{model.UnslugPersonID, "jane-doe"},
+		ASIN: []model.ASIN{{ASIN: "B1", Region: "us"}, {ASIN: "B2", Region: "us"}},
+	}}}}}
+	got := SelectNarrationSuspects(cat, nil)
+	if len(got) != 1 || len(got[0].Narrators) != 1 || got[0].Narrators[0] != "jane-doe" {
+		t.Fatalf("suspects = %+v, want one with narrators [jane-doe]", got)
 	}
 }

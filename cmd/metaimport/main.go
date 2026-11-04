@@ -935,8 +935,13 @@ func runNarrations(args []string) int {
 	}
 	client := importer.NewLibexClient()
 	client.BaseURL = *base
+	// The rows are buffered only when --rows asked for them.
 	var rows bytes.Buffer
-	findings, rep, err := client.CheckNarrations(context.Background(), suspects, &rows)
+	var rowsOut io.Writer
+	if rowsLog != nil {
+		rowsOut = &rows
+	}
+	findings, rep, err := client.CheckNarrations(context.Background(), suspects, rowsOut)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "metaimport: libex: %v\n", err)
 		return 1
@@ -949,8 +954,9 @@ func runNarrations(args []string) int {
 		fmt.Fprintln(os.Stderr, "metaimport: worklists:", err)
 		return 1
 	}
-	fmt.Printf("narrations: %d %s checked, %d ASIN lookups = %d not in libex + %d failed; %d %s\n",
-		rep.Recordings, plural(rep.Recordings, "recording", "recordings"), rep.Lookups, rep.NotFound, rep.Failed,
+	fmt.Printf("narrations: %d %s checked, %d ASIN lookups = %d answered + %d not in libex + %d failed; %d %s\n",
+		rep.Recordings, plural(rep.Recordings, "recording", "recordings"), rep.Lookups,
+		rep.Lookups-rep.NotFound-rep.Failed, rep.NotFound, rep.Failed,
 		rep.Findings, plural(rep.Findings, "finding", "findings"))
 	for _, e := range rep.Errors {
 		fmt.Fprintf(os.Stderr, "  warning: %s\n", e)

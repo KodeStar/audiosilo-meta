@@ -84,6 +84,8 @@ func TestAdvisorySeriesDesignationStaysQuiet(t *testing.T) {
 		{"a real subtitle", "Hollow Crown: The Fitzgerald Translation", "en", 600},
 		// A bare number word is the title's own word.
 		{"a number word with no volume word", "Hollow Crown: Take One", "en", 600},
+		// So is a one-letter numeral after no listed name.
+		{"a one-letter numeral with no volume word", "Hollow Crown: Me and I", "en", 600},
 		// A bare "and" joins two books.
 		{"two books joined by and", "Series One and Hollow Crown", "en", 600},
 		// A translation is another work.
@@ -128,16 +130,44 @@ func TestAdvisorySeriesDesignationSkipsTwoListedVolumes(t *testing.T) {
 	}
 }
 
-// A reviewed rejection withholds the pair and is counted as suppressed.
-func TestAdvisorySeriesDesignationHonoursAReviewedRejection(t *testing.T) {
+// A collection word in the series' own name is no box set: the unplaced twin is
+// read against the series its designation names.
+func TestAdvisorySeriesDesignationReadsASeriesCollectionWordAsTheName(t *testing.T) {
 	files := sdBase()
-	sdTwin(files, "zz-decorated", "Hollow Crown: Series One, Book 1", "en", 600)
-	res := reviewedLoad(t, files, distinctWorks("book-one", "zz-decorated"))
-	if got := advisoryMatching(problemLines(res.Warnings), seriesDesignationMarker); len(got) != 0 {
-		t.Errorf("a reviewed pair was reported: %v", got)
+	files["series/se/series-one.json"] = seriesBody("series-one", "The Crown Trilogy", "", "book-one@1")
+	sdTwin(files, "zz-decorated", "Hollow Crown: The Crown Trilogy, Book 1", "en", 600)
+	got := sdAdvisories(t, files)
+	if len(got) != 1 || !strings.Contains(got[0], "("+sdKindSeriesPosition+")") {
+		t.Errorf("advisories = %v, want the pair at its listed position", got)
 	}
-	if res.Suppressed != 1 {
-		t.Errorf("suppressed = %d, want 1", res.Suppressed)
+}
+
+// A title that is a series' whole name is that series' book: the name's tail is
+// not a book's title beside it.
+func TestAdvisorySeriesDesignationSkipsATitleThatIsASeriesName(t *testing.T) {
+	files := sdBase()
+	sdTwin(files, "zz-decorated", "Lost Kingdom Hollow Crown", "en", 600)
+	files["series/lo/lost-kingdom-hollow-crown.json"] = seriesBody("lost-kingdom-hollow-crown", "Lost Kingdom Hollow Crown", "", "zz-decorated@1")
+	if got := sdAdvisories(t, files); len(got) != 0 {
+		t.Errorf("advisories = %v, want none", got)
+	}
+}
+
+// A reviewed rejection withholds the pair and is counted as suppressed - once,
+// however many readings of the title reach the pair.
+func TestAdvisorySeriesDesignationHonoursAReviewedRejection(t *testing.T) {
+	for _, title := range []string{"Hollow Crown: Series One, Book 1", "Series One and the Hollow Crown"} {
+		t.Run(title, func(t *testing.T) {
+			files := sdBase()
+			sdTwin(files, "zz-decorated", title, "en", 600)
+			res := reviewedLoad(t, files, distinctWorks("book-one", "zz-decorated"))
+			if got := advisoryMatching(problemLines(res.Warnings), seriesDesignationMarker); len(got) != 0 {
+				t.Errorf("a reviewed pair was reported: %v", got)
+			}
+			if res.Suppressed != 1 {
+				t.Errorf("suppressed = %d, want 1", res.Suppressed)
+			}
+		})
 	}
 }
 

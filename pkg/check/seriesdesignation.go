@@ -79,11 +79,10 @@ type sdWork struct {
 	members []sdMembership
 	// runtimes are the recordings' stated runtimes, minutes.
 	runtimes []int
-	// slug and coll are asked only of the few works a candidate pair reaches, so
-	// they are memoized on first use rather than derived for every work.
+	// slug is asked only of the few works a candidate pair reaches, so it is
+	// memoized on first use rather than derived for every work.
 	slug      string
 	slugKnown bool
-	coll      collectionMemo
 }
 
 func (s *sdWork) titleSlug() string {
@@ -91,14 +90,6 @@ func (s *sdWork) titleSlug() string {
 		s.slug, s.slugKnown = model.SlugifyWhole(s.w.Title), true
 	}
 	return s.slug
-}
-
-// collection is titlerule.IsCollection of the title, asked once.
-func (s *sdWork) collection() bool {
-	if !s.coll.known {
-		s.coll.value, s.coll.known = titlerule.IsCollection(s.w.Title), true
-	}
-	return s.coll.value
 }
 
 type sdMembership struct {
@@ -169,6 +160,7 @@ type seriesDesignationPair struct {
 func seriesDesignationPairs(cat *model.Catalog, ix *WorkIdentity, reviewed *reviewedPairs) []seriesDesignationPair {
 	members := map[string][]sdMembership{}
 	prefixes := map[string]bool{} // every series name's leading word runs, folded
+	names := map[string]bool{}    // every series' whole name, folded
 	for _, s := range cat.Series {
 		name := dropArticle(sdTokens(s.Name))
 		if len(name) == 0 {
@@ -177,6 +169,7 @@ func seriesDesignationPairs(cat *model.Catalog, ix *WorkIdentity, reviewed *revi
 		for k := 1; k <= len(name); k++ {
 			prefixes[strings.Join(name[:k], "-")] = true
 		}
+		names[strings.Join(name, "-")] = true
 		for _, sw := range s.Works {
 			members[sw.Work] = append(members[sw.Work], sdMembership{series: s.ID, name: name, position: sw.Position})
 		}
@@ -204,10 +197,16 @@ func seriesDesignationPairs(cat *model.Catalog, ix *WorkIdentity, reviewed *revi
 			return
 		}
 		kind, ok := designationKind(plain, dec, extra)
-		if !ok || !sdPairQualifies(plain, dec, ix) || reviewed.withheld(model.RedirectWorks, plain.w.ID, dec.w.ID) {
+		if !ok || !sdPairQualifies(plain, dec, ix) {
 			return
 		}
+		// Settled once it qualifies, withheld or not: a pair several readings reach
+		// ("Percy Jackson and" / "Percy Jackson and the") is one suppression, not one
+		// per reading.
 		seen[key] = true
+		if reviewed.withheld(model.RedirectWorks, plain.w.ID, dec.w.ID) {
+			return
+		}
 		out = append(out, seriesDesignationPair{plain: plain.w, decorated: dec.w, designation: joinDesignation(extra), kind: kind})
 	}
 	for _, dec := range works {
@@ -240,6 +239,12 @@ func seriesDesignationPairs(cat *model.Catalog, ix *WorkIdentity, reviewed *revi
 		// "Robert Ludlum's The Bourne Sanction"), the remainder standing alone or
 		// followed by the title's other segments as designations.
 		seg0 := dec.segs[0]
+		// A first segment that IS a series' whole name ("A Street Cat Named Bob", "My
+		// Daughter's Boyfriend") is that series' own book: a lead cutting inside the
+		// name leaves only its tail ("Bob", "Boyfriend"), which is no book's title.
+		// The title's other segments may still be one ("The Adventures of Sherlock
+		// Holmes: The Boscombe Valley Mystery").
+		seriesTitled := names[sdFold(seg0)]
 		for k := 1; k < len(seg0); k++ {
 			lead := seg0[:k]
 			// "Percy Jackson and the Lightning Thief" joins a series name to its
@@ -252,11 +257,13 @@ func seriesDesignationPairs(cat *model.Catalog, ix *WorkIdentity, reviewed *revi
 				continue
 			}
 			rest := seg0[k:]
-			whole := slices.Concat(append([][]string{rest}, dec.segs[1:]...)...)
-			for _, plain := range byFold[sdFold(whole)] {
-				consider(plain, dec, [][]string{lead})
+			if !seriesTitled || n > 1 {
+				whole := slices.Concat(append([][]string{rest}, dec.segs[1:]...)...)
+				for _, plain := range byFold[sdFold(whole)] {
+					consider(plain, dec, [][]string{lead})
+				}
 			}
-			if n > 1 {
+			if n > 1 && !seriesTitled {
 				extra := append([][]string{lead}, dec.segs[1:]...)
 				for _, plain := range byFold[sdFold(rest)] {
 					consider(plain, dec, extra)
@@ -373,11 +380,11 @@ func segmentDesignation(seg []string, plain, dec *sdWork) (string, bool) {
 	if possessiveOfAuthor(seg, dec.w) || possessiveOfAuthor(seg, plain.w) {
 		return sdKindPossessive, true
 	}
-	name := seg
-	num, hasNum := sdNumber(seg[len(seg)-1])
+	name, last := seg, seg[len(seg)-1]
+	num, hasNum := sdNumber(last)
+	worded := false
 	if hasNum {
 		name = seg[:len(seg)-1]
-		worded := false
 		for len(name) > 0 && sdVolumeWords[name[len(name)-1]] {
 			// "series" names what follows it in "Corps Justice Series, Book 9", but
 			// it is no volume word before a number word ("Series One").
@@ -386,7 +393,7 @@ func segmentDesignation(seg []string, plain, dec *sdWork) (string, bool) {
 		}
 		// A number WORD is a volume only after a volume word ("Book Two"): bare,
 		// it is a name's own word ("Take Two", "Series One").
-		if sdNumberWords[seg[len(seg)-1]] > 0 && !worded {
+		if sdNumberWords[last] > 0 && !worded {
 			name, hasNum = seg, false
 		}
 	}
@@ -404,11 +411,14 @@ func segmentDesignation(seg []string, plain, dec *sdWork) (string, bool) {
 		}
 		return "", false // a listed series at another position: another volume
 	case hasNum:
-		// No listed series by that name (or none named): the number must be the
-		// position one of the works holds, and no position either holds may
-		// contradict it.
-		// The PLAIN work's: the decorated one restating its own position says
-		// nothing about the other ("The Directors: Take Two" at The Directors 2).
+		// No listed series by that name (or none named). A one-letter numeral bare
+		// there is a word ("Me and I", "Malcolm X"), as a bare number word is.
+		if _, roman := sdRoman[last]; roman && len(last) == 1 && !worded {
+			return "", false
+		}
+		// Otherwise the number must be a position the PLAIN work holds: the
+		// decorated one restating its own position says nothing about the other
+		// ("The Directors: Take Two" at The Directors 2).
 		for _, m := range plain.members {
 			if positionIs(m.position, num) {
 				return sdKindPosition, true
@@ -457,7 +467,19 @@ func sdPairQualifies(plain, dec *sdWork, ix *WorkIdentity) bool {
 	if !languagesCompatible(a.Language, b.Language) || translationLinked(a, b) {
 		return false
 	}
-	if oneBookReason(a, b) == "" || differentVolumes(a, b) || plain.collection() != dec.collection() {
+	if oneBookReason(a, b) == "" || differentVolumes(a, b) {
+		return false
+	}
+	// A collection beside a single book, by the one collection rule
+	// (titlerule.SameCollectionStatus): each title read against its series, and an
+	// unplaced twin against the plain work's, the series its designation names - so
+	// the collection word of a series' own name ("Out of the Silent Planet: Ransom
+	// Trilogy, Book 1") is not read as a box set.
+	aSeries, bSeries := ix.SeriesNameOf(a.ID), ix.SeriesNameOf(b.ID)
+	if bSeries == "" {
+		bSeries = aSeries
+	}
+	if !titlerule.SameCollectionStatus(a.Title, aSeries, b.Title, bSeries) {
 		return false
 	}
 	// Two volumes of one series.

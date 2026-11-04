@@ -170,7 +170,8 @@ never noticed (ai-verify read only the metadiff summary). Two halves:
   resolved through `data/redirects.json`) records every PAIR of its ids as distinct,
   and metacheck neither prints nor counts that pair under identity-equal-works,
   normalized-duplicate-works (a group drops the pair, a member left pairing with
-  nobody drops out), duplicate-series or honorific-person-pair. The census line ends "(N reviewed and
+  nobody drops out), series-designation-duplicate-works, duplicate-series or
+  honorific-person-pair. The census line ends "(N reviewed and
   suppressed)", so the suppression is visible rather than silent. pkg/check cannot
   import the audit (the audit imports check), so the decisions arrive as data:
   `audit.ReviewedDistinct()` -> `check.LoadOptions.Distinct` -> `LoadProfileWith`,
