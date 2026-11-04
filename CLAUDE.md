@@ -614,12 +614,23 @@ it, `pkg/check` and every writer now refuse it loudly.
   a guess. The contributor path is the correct-data issue form, whose allowlist
   takes `kind` and validates it against the enum (built from
   `model.PersonKinds`, so the form and the schema cannot drift), so classifying
-  a record never needs a raw pack-file PR. Classifying the existing corporate
-  records is deliberately left to a later, human pass. `synthetic` is the ONE
-  kind a writer sets by itself, and only on one record: `virtual-voice`, the
+  a record never needs a raw pack-file PR. The records already in the tree were
+  classified in maintainer batches (#1326, then the 2026-11 pass over the whole
+  family): `publisher` for a company, imprint, production house or brand of
+  record, `group` for a cast, band, pair, institution, government body or a
+  franchise stated as an author. A LibriVox reader handle, a real person whose
+  surname reads as a company noun (Carey Corp, Katherine Press), a self-publisher
+  named as their own publisher and a person-plus-house concatenation all stay
+  unset, so absence still never asserts anything. `synthetic` is the ONE
+  kind an importer sets by itself, and only on one record: `virtual-voice`, the
   canonical every AI-narration credit folds onto
   (`internal/importer/synthetic.go`) - its kind is not somebody's
-  classification, it is what the credit said.
+  classification, it is what the credit said. The only other synthetic record is
+  `eleven-labs`, a TTS vendor credited by name, set by that same 2026-11 pass.
+  The kind does NOT reach the artifact: `metabuild` writes no column for it, so
+  metaserve, the site and audiosilo-server cannot show it; its readers are
+  evidence filters only (pkg/check's narration profile, internal/audit's language
+  mix, `metaimport`'s narration check), which skip any record whose kind is set.
   A person's id is the slug of their name (`model.PersonSlug`, pkg/check's
   person-slug rule) with the LibriVox exceptions: a reader whose name another
   reader id already holds is `<name slug>-librivox-<reader id>`
