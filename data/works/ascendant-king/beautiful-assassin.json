@@ -3209,72 +3209,108 @@
             {
               "audio_url": "https://www.archive.org/download/beautiful_birds_1907_librivox/beautifulbirds_01_selous_64kb.mp3",
               "length_ms": 1870000,
+              "readers": [
+                "scotty-smith"
+              ],
               "start_ms": 0,
               "title": "Why Beautiful Birds are Killed"
             },
             {
               "audio_url": "https://www.archive.org/download/beautiful_birds_1907_librivox/beautifulbirds_02_selous_64kb.mp3",
               "length_ms": 1521000,
+              "readers": [
+                "natalia-cichy"
+              ],
               "start_ms": 1870000,
               "title": "Birds of Paradise"
             },
             {
               "audio_url": "https://www.archive.org/download/beautiful_birds_1907_librivox/beautifulbirds_03_selous_64kb.mp3",
               "length_ms": 1929000,
+              "readers": [
+                "scotty-smith"
+              ],
               "start_ms": 3391000,
               "title": "The Great Bird of Paradise"
             },
             {
               "audio_url": "https://www.archive.org/download/beautiful_birds_1907_librivox/beautifulbirds_04_selous_64kb.mp3",
               "length_ms": 1215000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 5320000,
               "title": "The Red Bird of Paradise"
             },
             {
               "audio_url": "https://www.archive.org/download/beautiful_birds_1907_librivox/beautifulbirds_05_selous_64kb.mp3",
               "length_ms": 2022000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 6535000,
               "title": "The Lesser, Black, Blue, and Golden Birds of Paradise"
             },
             {
               "audio_url": "https://www.archive.org/download/beautiful_birds_1907_librivox/beautifulbirds_06_selous_64kb.mp3",
               "length_ms": 1373000,
+              "readers": [
+                "lectora5"
+              ],
               "start_ms": 8557000,
               "title": "About all Birds of Paradise, and some Explanations"
             },
             {
               "audio_url": "https://www.archive.org/download/beautiful_birds_1907_librivox/beautifulbirds_07_selous_64kb.mp3",
               "length_ms": 1439000,
+              "readers": [
+                "lectora5"
+              ],
               "start_ms": 9930000,
               "title": "About Humming-Birds, and some more Explanations"
             },
             {
               "audio_url": "https://www.archive.org/download/beautiful_birds_1907_librivox/beautifulbirds_08_selous_64kb.mp3",
               "length_ms": 2088000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 11369000,
               "title": "Some very Bright Humming-Birds"
             },
             {
               "audio_url": "https://www.archive.org/download/beautiful_birds_1907_librivox/beautifulbirds_09_selous_64kb.mp3",
               "length_ms": 1135000,
+              "readers": [
+                "rpbrevard"
+              ],
               "start_ms": 13457000,
               "title": "Hermit Humming-Birds and Two Other Ones"
             },
             {
               "audio_url": "https://www.archive.org/download/beautiful_birds_1907_librivox/beautifulbirds_10_selous_64kb.mp3",
               "length_ms": 1535000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 14592000,
               "title": "The Cock-of-the-Rock and the Lyre-Bird"
             },
             {
               "audio_url": "https://www.archive.org/download/beautiful_birds_1907_librivox/beautifulbirds_11_selous_64kb.mp3",
               "length_ms": 1537000,
+              "readers": [
+                "elsie-selwyn"
+              ],
               "start_ms": 16127000,
               "title": "The Resplendent Trogon and the Argus Pheasant"
             },
             {
               "audio_url": "https://www.archive.org/download/beautiful_birds_1907_librivox/beautifulbirds_12_selous_64kb.mp3",
               "length_ms": 1516000,
+              "readers": [
+                "elsie-selwyn"
+              ],
               "start_ms": 17664000,
               "title": "White Egrets, 'Ospreys', and Ostrich-Feathers"
             }
@@ -3283,7 +3319,11 @@
           "cover_url": "https://archive.org/download/beautiful_birds_1907_librivox/birds_1907.jpg",
           "id": "scotty-smith",
           "language": "en",
+          "librivox_genres": [
+            "Children's Non-fiction"
+          ],
           "librivox_id": 13847,
+          "librivox_title": "Beautiful Birds",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/beautiful-birds-by-edmund-selous/",

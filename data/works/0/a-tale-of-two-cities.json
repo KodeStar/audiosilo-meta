@@ -1028,7 +1028,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/Tale_of_Two_Cities_1405.jpg",
           "id": "bob-neufeld",
           "language": "en",
+          "librivox_genres": [
+            "Historical Fiction",
+            "Literary Fiction"
+          ],
           "librivox_id": 6992,
+          "librivox_title": "Tale of Two Cities (version 3)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/tale-of-two-cities-by-charles-dickens-3/",
@@ -5366,7 +5371,11 @@
           "cover_url": "https://archive.org/download/tale_of_two_cities_version_4_1506_librivox/taleoftwocities4_1506.jpg",
           "id": "hamlet",
           "language": "en",
+          "librivox_genres": [
+            "Historical Fiction"
+          ],
           "librivox_id": 9749,
+          "librivox_title": "Tale of Two Cities (version 4)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-tale-of-two-cities-version-4-by-charles-dickens/",
@@ -7200,270 +7209,405 @@
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_01_dickens_64kb.mp3",
               "length_ms": 409000,
+              "readers": [
+                "michael-sirois"
+              ],
               "start_ms": 0,
               "title": "I.I: The Period"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_02_dickens_64kb.mp3",
               "length_ms": 893000,
+              "readers": [
+                "kara-shallenberg-1969-2023"
+              ],
               "start_ms": 409000,
               "title": "I.II: The Mail"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_03_dickens_64kb.mp3",
               "length_ms": 727000,
+              "readers": [
+                "chip"
+              ],
               "start_ms": 1302000,
               "title": "I.III: The Night Shadows"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_04_dickens_64kb.mp3",
               "length_ms": 1797000,
+              "readers": [
+                "chip"
+              ],
               "start_ms": 2029000,
               "title": "I.IV: The Preparation"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_05_dickens_64kb.mp3",
               "length_ms": 1583000,
+              "readers": [
+                "andy-minter-1934-2017"
+              ],
               "start_ms": 3826000,
               "title": "I.V: The Wineshop"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_06_dickens_64kb.mp3",
               "length_ms": 1422000,
+              "readers": [
+                "jamey-osborne"
+              ],
               "start_ms": 5409000,
               "title": "I.VI: The Shoemaker"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_07_dickens_64kb.mp3",
               "length_ms": 859000,
+              "readers": [
+                "zale-schafer-rose-may-chamberlin-memorial-foundat"
+              ],
               "start_ms": 6831000,
               "title": "II.I: Five Years Later"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_08_dickens_64kb.mp3",
               "length_ms": 1075000,
+              "readers": [
+                "chip"
+              ],
               "start_ms": 7690000,
               "title": "II.II: A Sight"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_09_dickens_64kb.mp3",
               "length_ms": 2174000,
+              "readers": [
+                "chip"
+              ],
               "start_ms": 8765000,
               "title": "II.III: A Disappointment"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_10_dickens_64kb.mp3",
               "length_ms": 1053000,
+              "readers": [
+                "kara-shallenberg-1969-2023"
+              ],
               "start_ms": 10939000,
               "title": "II.IV: Congratulatory"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_11_dickens_64kb.mp3",
               "length_ms": 870000,
+              "readers": [
+                "chip"
+              ],
               "start_ms": 11992000,
               "title": "II.V: The Jackal"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_12_dickens_64kb.mp3",
               "length_ms": 1580000,
+              "readers": [
+                "tora"
+              ],
               "start_ms": 12862000,
               "title": "II.VI: Hundreds of People"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_13_dickens_64kb.mp3",
               "length_ms": 1360000,
+              "readers": [
+                "kristin-lemoine"
+              ],
               "start_ms": 14442000,
               "title": "II.VII: Monseigneur in Town"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_14_dickens_64kb.mp3",
               "length_ms": 817000,
+              "readers": [
+                "chip"
+              ],
               "start_ms": 15802000,
               "title": "II.VIII: Monseigneur in the Country"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_15_dickens_64kb.mp3",
               "length_ms": 1664000,
+              "readers": [
+                "nocturna"
+              ],
               "start_ms": 16619000,
               "title": "II.IX: The Gorgon's Head"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_16_dickens_64kb.mp3",
               "length_ms": 1267000,
+              "readers": [
+                "susan-denney"
+              ],
               "start_ms": 18283000,
               "title": "II.X: Two Promises"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_17_dickens_64kb.mp3",
               "length_ms": 473000,
+              "readers": [
+                "kevin-mcash"
+              ],
               "start_ms": 19550000,
               "title": "II.XI: A Companion Picture"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_18_dickens_64kb.mp3",
               "length_ms": 886000,
+              "readers": [
+                "kevin-mcash"
+              ],
               "start_ms": 20023000,
               "title": "II.XII: The Fellow of Delicacy"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_19_dickens_64kb.mp3",
               "length_ms": 1098000,
+              "readers": [
+                "denny-sayers-d-2015"
+              ],
               "start_ms": 20909000,
               "title": "II.XIII: The Fellow of no Delicacy"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_20_dickens_64kb.mp3",
               "length_ms": 1496000,
+              "readers": [
+                "andy-minter-1934-2017"
+              ],
               "start_ms": 22007000,
               "title": "II.XIV: The Honest Tradesman"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_21_dickens_64kb.mp3",
               "length_ms": 1576000,
+              "readers": [
+                "betsie-bush"
+              ],
               "start_ms": 23503000,
               "title": "II.XV: Knitting"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_22_dickens_64kb.mp3",
               "length_ms": 1834000,
+              "readers": [
+                "kara-shallenberg-1969-2023"
+              ],
               "start_ms": 25079000,
               "title": "II.XVI: Still Knitting"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_23_dickens_64kb.mp3",
               "length_ms": 713000,
+              "readers": [
+                "patrick"
+              ],
               "start_ms": 26913000,
               "title": "II.XVII: One Night"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_24_dickens_64kb.mp3",
               "length_ms": 1017000,
+              "readers": [
+                "andy-minter-1934-2017"
+              ],
               "start_ms": 27626000,
               "title": "II.XVIII: Nine Days"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_25_dickens_64kb.mp3",
               "length_ms": 1269000,
+              "readers": [
+                "chip"
+              ],
               "start_ms": 28643000,
               "title": "II.XIX: An Opinion"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_26_dickens_64kb.mp3",
               "length_ms": 445000,
+              "readers": [
+                "kentf"
+              ],
               "start_ms": 29912000,
               "title": "II.XX: A Plea"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_27_dickens_64kb.mp3",
               "length_ms": 1578000,
+              "readers": [
+                "zale-schafer-rose-may-chamberlin-memorial-foundat"
+              ],
               "start_ms": 30357000,
               "title": "II.XXI: Echoing Footsteps"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_28_dickens_64kb.mp3",
               "length_ms": 781000,
+              "readers": [
+                "zale-schafer-rose-may-chamberlin-memorial-foundat"
+              ],
               "start_ms": 31935000,
               "title": "II.XXII: The Sea Still Rises"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_29_dickens_64kb.mp3",
               "length_ms": 1191000,
+              "readers": [
+                "peter-eastman"
+              ],
               "start_ms": 32716000,
               "title": "II.XXIII: Fire Rises"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_30_dickens_64kb.mp3",
               "length_ms": 1800000,
+              "readers": [
+                "andy-minter-1934-2017"
+              ],
               "start_ms": 33907000,
               "title": "II.XXIV: Drawn to the Loadstone Rock"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_31_dickens_64kb.mp3",
               "length_ms": 1591000,
+              "readers": [
+                "marian-brown"
+              ],
               "start_ms": 35707000,
               "title": "III.I: In Secret"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_32_dickens_64kb.mp3",
               "length_ms": 884000,
+              "readers": [
+                "tora"
+              ],
               "start_ms": 37298000,
               "title": "III.II: The Grindstone"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_33_dickens_64kb.mp3",
               "length_ms": 764000,
+              "readers": [
+                "patrick"
+              ],
               "start_ms": 38182000,
               "title": "III.III: The Shadow"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_34_dickens_64kb.mp3",
               "length_ms": 902000,
+              "readers": [
+                "andy-minter-1934-2017"
+              ],
               "start_ms": 38946000,
               "title": "III.IV: Calm in Storm"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_35_dickens_64kb.mp3",
               "length_ms": 1003000,
+              "readers": [
+                "andy-minter-1934-2017"
+              ],
               "start_ms": 39848000,
               "title": "III.V: The Woodsawyer"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_36_dickens_64kb.mp3",
               "length_ms": 1049000,
+              "readers": [
+                "nocturna"
+              ],
               "start_ms": 40851000,
               "title": "III.VI: Triumph"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_37_dickens_64kb.mp3",
               "length_ms": 705000,
+              "readers": [
+                "tora"
+              ],
               "start_ms": 41900000,
               "title": "III.VII: A Knock at the Door"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_38_dickens_64kb.mp3",
               "length_ms": 1826000,
+              "readers": [
+                "andy-minter-1934-2017"
+              ],
               "start_ms": 42605000,
               "title": "III.VIII: A Hand at Cards"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_39_dickens_64kb.mp3",
               "length_ms": 1665000,
+              "readers": [
+                "tora"
+              ],
               "start_ms": 44431000,
               "title": "III.IX: The Game Made"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_40_dickens_64kb.mp3",
               "length_ms": 2149000,
+              "readers": [
+                "michael-sirois"
+              ],
               "start_ms": 46096000,
               "title": "III.X: The Substance of the Shadow"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_41_dickens_64kb.mp3",
               "length_ms": 555000,
+              "readers": [
+                "deborah-clark"
+              ],
               "start_ms": 48245000,
               "title": "III.XI: Dusk"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_42_dickens_64kb.mp3",
               "length_ms": 1170000,
+              "readers": [
+                "deborah-clark"
+              ],
               "start_ms": 48800000,
               "title": "III.XII: Darkness"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_43_dickens_64kb.mp3",
               "length_ms": 1432000,
+              "readers": [
+                "caroline-morse"
+              ],
               "start_ms": 49970000,
               "title": "III.XIII: Fiftytwo"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_44_dickens_64kb.mp3",
               "length_ms": 1696000,
+              "readers": [
+                "moira-fogarty"
+              ],
               "start_ms": 51402000,
               "title": "III.XIV: The Knitting Done"
             },
             {
               "audio_url": "https://www.archive.org/download/tale_two_cities_librivox/tale_of_two_cities_45_dickens_64kb.mp3",
               "length_ms": 877000,
+              "readers": [
+                "michael-sirois"
+              ],
               "start_ms": 53098000,
               "title": "III.XV: The Footsteps Die Out For Ever"
             }
@@ -7472,7 +7616,11 @@
           "cover_url": "https://archive.org/download/tale_two_cities_librivox/Tale_Two_Cities_1106.jpg",
           "id": "michael-sirois",
           "language": "en",
+          "librivox_genres": [
+            "Historical Fiction"
+          ],
           "librivox_id": 510,
+          "librivox_title": "Tale of Two Cities",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-tale-of-two-cities-by-charles-dickens/",
@@ -8130,7 +8278,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt7/Tale_of_Two_Cities_1012.jpg",
           "id": "paul-adams",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction",
+            "Historical Fiction"
+          ],
           "librivox_id": 4934,
+          "librivox_title": "Tale of Two Cities (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-tale-of-two-cities-by-charles-dickens-2/",
@@ -9998,7 +10151,11 @@
           "cover_url": "https://archive.org/download/taleoftwocities_2104_librivox/tale_cities_2104.jpg",
           "id": "richard-reiman",
           "language": "en",
+          "librivox_genres": [
+            "Historical Fiction"
+          ],
           "librivox_id": 15669,
+          "librivox_title": "Tale of Two Cities (Version 5)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-tale-of-two-cities-by-charles-dickens-5/",

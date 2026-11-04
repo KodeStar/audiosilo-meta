@@ -2725,30 +2725,55 @@
             {
               "audio_url": "https://www.archive.org/download/amazons_1108_librivox/amazons_0_pinero_64kb.mp3",
               "length_ms": 229000,
+              "readers": [
+                "malane"
+              ],
               "start_ms": 0,
               "title": "Introductory Note"
             },
             {
               "audio_url": "https://www.archive.org/download/amazons_1108_librivox/amazons_1_pinero_64kb.mp3",
               "length_ms": 130000,
+              "readers": [
+                "elizabeth-klett",
+                "john-fricker",
+                "malane"
+              ],
               "start_ms": 229000,
               "title": "Persons of the Play"
             },
             {
               "audio_url": "https://www.archive.org/download/amazons_1108_librivox/amazons_2_pinero_64kb.mp3",
               "length_ms": 3165000,
+              "readers": [
+                "lars-rolander-1942-2016",
+                "arielle-lipshaw",
+                "algy-pug",
+                "levi-throckmorton",
+                "malane"
+              ],
               "start_ms": 359000,
               "title": "Act One"
             },
             {
               "audio_url": "https://www.archive.org/download/amazons_1108_librivox/amazons_3_pinero_64kb.mp3",
               "length_ms": 3647000,
+              "readers": [
+                "amy-gramour",
+                "levi-throckmorton",
+                "bish"
+              ],
               "start_ms": 3524000,
               "title": "Act Two"
             },
             {
               "audio_url": "https://www.archive.org/download/amazons_1108_librivox/amazons_4_pinero_64kb.mp3",
               "length_ms": 2436000,
+              "readers": [
+                "lars-rolander-1942-2016",
+                "levi-throckmorton",
+                "liberty-stump"
+              ],
               "start_ms": 7171000,
               "title": "Act Three"
             }
@@ -2757,7 +2782,12 @@
           "cover_url": "https://archive.org/download/amazons_1108_librivox/amazons_1206.jpg",
           "id": "malane",
           "language": "en",
+          "librivox_genres": [
+            "Humorous Fiction",
+            "Comedy"
+          ],
           "librivox_id": 5314,
+          "librivox_title": "Amazons: A Farcical Romance",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-amazons-a-farcical-romance-by-arthur-wing-pinero/",
@@ -5479,7 +5509,13 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt11/ambassador_morgenthau_1112.jpg",
           "id": "margaret-espaillat",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Political Science",
+            "Memoirs"
+          ],
           "librivox_id": 5697,
+          "librivox_title": "Ambassador Morgenthau's Story",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/ambassador-morgenthaus-story-by-henry-morgenthau/",

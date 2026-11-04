@@ -4698,18 +4698,54 @@
             {
               "audio_url": "https://www.archive.org/download/thecatandthecanary_2508_librivox/catandthecanary_1_willard_64kb.mp3",
               "length_ms": 3956000,
+              "readers": [
+                "toddhw",
+                "larry-wilson",
+                "tomas-peter",
+                "cavaet",
+                "james-r-hedrick",
+                "redrun",
+                "shrimpphish",
+                "winterberry",
+                "lia-lallo",
+                "gabriella-sasscer"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/thecatandthecanary_2508_librivox/catandthecanary_2_willard_64kb.mp3",
               "length_ms": 2863000,
+              "readers": [
+                "toddhw",
+                "larry-wilson",
+                "tomas-peter",
+                "cavaet",
+                "redrun",
+                "shrimpphish",
+                "winterberry",
+                "lia-lallo",
+                "gabriella-sasscer"
+              ],
               "start_ms": 3956000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/thecatandthecanary_2508_librivox/catandthecanary_3_willard_64kb.mp3",
               "length_ms": 3168000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "larry-wilson",
+                "tomas-peter",
+                "cavaet",
+                "james-r-hedrick",
+                "redrun",
+                "shrimpphish",
+                "winterberry",
+                "lia-lallo",
+                "gabriella-sasscer"
+              ],
               "start_ms": 6819000,
               "title": "Act 3"
             }
@@ -4718,7 +4754,11 @@
           "cover_url": "https://archive.org/download/thecatandthecanary_2508_librivox/cat_canary_2508.jpg",
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Comedy"
+          ],
           "librivox_id": 21597,
+          "librivox_title": "Cat and the Canary",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-cat-and-the-canary-by-john-willard/",

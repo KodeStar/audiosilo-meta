@@ -1348,30 +1348,78 @@
             {
               "audio_url": "https://www.archive.org/download/janeshore_2109_librivox/janeshore_01_rowe_64kb.mp3",
               "length_ms": 1138000,
+              "readers": [
+                "toddhw",
+                "michele-eaton",
+                "alan-mapstone",
+                "larry-wilson",
+                "tomas-peter",
+                "wayne-cooke",
+                "adrian-stephens",
+                "tchaikovsky",
+                "wendykatzhiller",
+                "adrienne-prevost"
+              ],
               "start_ms": 0,
               "title": "ACT 1"
             },
             {
               "audio_url": "https://www.archive.org/download/janeshore_2109_librivox/janeshore_02_rowe_64kb.mp3",
               "length_ms": 1116000,
+              "readers": [
+                "michele-eaton",
+                "larry-wilson",
+                "tomas-peter",
+                "tchaikovsky",
+                "wendykatzhiller",
+                "adrienne-prevost"
+              ],
               "start_ms": 1138000,
               "title": "ACT 2"
             },
             {
               "audio_url": "https://www.archive.org/download/janeshore_2109_librivox/janeshore_03_rowe_64kb.mp3",
               "length_ms": 827000,
+              "readers": [
+                "toddhw",
+                "michele-eaton",
+                "alan-mapstone",
+                "wayne-cooke",
+                "tchaikovsky",
+                "wendykatzhiller",
+                "adrienne-prevost"
+              ],
               "start_ms": 2254000,
               "title": "ACT 3"
             },
             {
               "audio_url": "https://www.archive.org/download/janeshore_2109_librivox/janeshore_04_rowe_64kb.mp3",
               "length_ms": 1388000,
+              "readers": [
+                "toddhw",
+                "michele-eaton",
+                "alan-mapstone",
+                "wayne-cooke",
+                "tchaikovsky",
+                "wendykatzhiller",
+                "joanna-michal-hoyt",
+                "adrienne-prevost"
+              ],
               "start_ms": 3081000,
               "title": "ACT 4"
             },
             {
               "audio_url": "https://www.archive.org/download/janeshore_2109_librivox/janeshore_05_rowe_64kb.mp3",
               "length_ms": 1338000,
+              "readers": [
+                "michele-eaton",
+                "alan-mapstone",
+                "tomas-peter",
+                "adrian-stephens",
+                "wendykatzhiller",
+                "adrienne-prevost",
+                "arkansasreader44"
+              ],
               "start_ms": 4469000,
               "title": "ACT 5"
             }
@@ -1379,7 +1427,11 @@
           "cover_url": "https://archive.org/download/janeshore_2109_librivox/jane_shore_2109.jpg",
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Drama"
+          ],
           "librivox_id": 16493,
+          "librivox_title": "Jane Shore: A Tragedy",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/jane-shore-by-nicholas-rowe/",
@@ -2819,7 +2871,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt7/janet_of_the_dunes_1012.jpg",
           "id": "roger-melin",
           "language": "en",
+          "librivox_genres": [
+            "Nautical & Marine Fiction"
+          ],
           "librivox_id": 4103,
+          "librivox_title": "Janet of the Dunes",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/janet-of-the-dunes-by-harriet-t-comstock/",
@@ -6102,7 +6158,11 @@
           "cover_url": "https://archive.org/download/janitors_boy_ab_2010_librivox/janitorsboyandotherpoems_2010.jpg",
           "id": "annalisa-bodtker",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 15435,
+          "librivox_title": "Janitor's Boy and Other Poems",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-janitors-boy-and-other-poems-by-nathalia-crane/",
@@ -7180,7 +7240,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt11/JanosVitez_1112.jpg",
           "id": "diana-majlinger",
           "language": "hu",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 3567,
+          "librivox_title": "János vitéz",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/janos-vitez-by-sandor-petofi/",
@@ -7611,48 +7675,72 @@
             {
               "audio_url": "https://www.archive.org/download/january_1301_librivox/january_jackson_alp_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 0,
               "title": "January - Read by ALP"
             },
             {
               "audio_url": "https://www.archive.org/download/january_1301_librivox/january_jackson_cmp_64kb.mp3",
               "length_ms": 84000,
+              "readers": [
+                "caprishapage"
+              ],
               "start_ms": 77000,
               "title": "January - Read by CMP"
             },
             {
               "audio_url": "https://www.archive.org/download/january_1301_librivox/january_jackson_dl_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 161000,
               "title": "January - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/january_1301_librivox/january_jackson_jcm_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "jason-mills"
+              ],
               "start_ms": 230000,
               "title": "January - Read by JCM"
             },
             {
               "audio_url": "https://www.archive.org/download/january_1301_librivox/january_jackson_jm2_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "jannie-meisberger"
+              ],
               "start_ms": 297000,
               "title": "January - Read by JM"
             },
             {
               "audio_url": "https://www.archive.org/download/january_1301_librivox/january_jackson_lah_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 365000,
               "title": "January - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/january_1301_librivox/january_jackson_mc_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "mlcui"
+              ],
               "start_ms": 436000,
               "title": "January - Read by MC"
             },
             {
               "audio_url": "https://www.archive.org/download/january_1301_librivox/january_jackson_rn_64kb.mp3",
               "length_ms": 79000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 511000,
               "title": "January - Read by RN"
             }
@@ -7660,7 +7748,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt31/January_1306.jpg",
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 7408,
+          "librivox_title": "January",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/january-by-helen-hunt-jackson/",
@@ -9098,7 +9191,14 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt17/japaninterpretation_1501.jpg",
           "id": "julia-niedermaier",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "History",
+            "Religion",
+            "Social Science (Culture & Anthropology)"
+          ],
           "librivox_id": 8719,
+          "librivox_title": "Japan: An Attempt at Interpretation",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/japan-attempt-interpretation-by-lafcadio-hearn/",
@@ -9313,7 +9413,12 @@
           "cover_url": "https://archive.org/download/japanandkorea_2308_librivox/japankorea_2308.jpg",
           "id": "bettyb",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Travel & Geography"
+          ],
           "librivox_id": 19011,
+          "librivox_title": "Japan and Korea",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/japan-and-korea-by-frank-g-carpenter/",

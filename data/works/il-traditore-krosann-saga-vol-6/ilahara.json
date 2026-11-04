@@ -2665,7 +2665,13 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt/Iliad_for_Boys_and_Girls_1003.jpg",
           "id": "lizzie-driver",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction",
+            "Myths, Legends & Fairy Tales",
+            "Historical"
+          ],
           "librivox_id": 846,
+          "librivox_title": "Iliad for Boys and Girls",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-iliad-for-boys-and-girls-by-alfred-j-church/",
@@ -2868,9 +2874,20 @@
           ],
           "copyright_year": 1873,
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt6/Iliad_of_Homer_1110.jpg",
+          "credits": [
+            {
+              "person": "theodore-alois-buckley",
+              "role": "translator"
+            }
+          ],
           "id": "stephenc",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Epics"
+          ],
           "librivox_id": 3965,
+          "librivox_title": "Iliad of Homer",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-iliad-of-homer-by-homer/",
@@ -2929,207 +2946,251 @@
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_00_homer_64kb.mp3",
               "length_ms": 613000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_01_homer_64kb.mp3",
               "length_ms": 3756000,
+              "section_number": 1,
               "start_ms": 613000,
               "title": "Book 1"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_02_homer_64kb.mp3",
               "length_ms": 2795000,
+              "section_number": 2,
               "start_ms": 4369000,
               "title": "Book 2 Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_03_homer_64kb.mp3",
               "length_ms": 2124000,
+              "section_number": 3,
               "start_ms": 7164000,
               "title": "Book 2 Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_04_homer_64kb.mp3",
               "length_ms": 2744000,
+              "section_number": 4,
               "start_ms": 9288000,
               "title": "Book 3"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_05_homer_64kb.mp3",
               "length_ms": 3026000,
+              "section_number": 5,
               "start_ms": 12032000,
               "title": "Book 4"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_06_homer_64kb.mp3",
               "length_ms": 2534000,
+              "section_number": 6,
               "start_ms": 15058000,
               "title": "Book 5 Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_07_homer_64kb.mp3",
               "length_ms": 2504000,
+              "section_number": 7,
               "start_ms": 17592000,
               "title": "Book 5 Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_08_homer_64kb.mp3",
               "length_ms": 2912000,
+              "section_number": 8,
               "start_ms": 20096000,
               "title": "Book 6"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_09_homer_64kb.mp3",
               "length_ms": 2799000,
+              "section_number": 9,
               "start_ms": 23008000,
               "title": "Book 7"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_10_homer_64kb.mp3",
               "length_ms": 3200000,
+              "section_number": 10,
               "start_ms": 25807000,
               "title": "Book 8"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_11_homer_64kb.mp3",
               "length_ms": 3990000,
+              "section_number": 11,
               "start_ms": 29007000,
               "title": "Book 9"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_12_homer_64kb.mp3",
               "length_ms": 3171000,
+              "section_number": 12,
               "start_ms": 32997000,
               "title": "Book 10"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_13_homer_64kb.mp3",
               "length_ms": 2714000,
+              "section_number": 13,
               "start_ms": 36168000,
               "title": "Book 11 Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_14_homer_64kb.mp3",
               "length_ms": 2245000,
+              "section_number": 14,
               "start_ms": 38882000,
               "title": "Book 11 Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_15_homer_64kb.mp3",
               "length_ms": 2501000,
+              "section_number": 15,
               "start_ms": 41127000,
               "title": "Book 12"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_16_homer_64kb.mp3",
               "length_ms": 2849000,
+              "section_number": 16,
               "start_ms": 43628000,
               "title": "Book 13 Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_17_homer_64kb.mp3",
               "length_ms": 1975000,
+              "section_number": 17,
               "start_ms": 46477000,
               "title": "Book 13 Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_18_homer_64kb.mp3",
               "length_ms": 2991000,
+              "section_number": 18,
               "start_ms": 48452000,
               "title": "Book 14"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_19_homer_64kb.mp3",
               "length_ms": 2508000,
+              "section_number": 19,
               "start_ms": 51443000,
               "title": "Book 15 Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_20_homer_64kb.mp3",
               "length_ms": 1891000,
+              "section_number": 20,
               "start_ms": 53951000,
               "title": "Book 15 Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_21_homer_64kb.mp3",
               "length_ms": 2672000,
+              "section_number": 21,
               "start_ms": 55842000,
               "title": "Book 16 Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_22_homer_64kb.mp3",
               "length_ms": 2334000,
+              "section_number": 22,
               "start_ms": 58514000,
               "title": "Book 16 Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_23_homer_64kb.mp3",
               "length_ms": 4164000,
+              "section_number": 23,
               "start_ms": 60848000,
               "title": "Book 17"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_24_homer_64kb.mp3",
               "length_ms": 3475000,
+              "section_number": 24,
               "start_ms": 65012000,
               "title": "Book 18"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_25_homer_64kb.mp3",
               "length_ms": 2428000,
+              "section_number": 25,
               "start_ms": 68487000,
               "title": "Book 19"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_26_homer_64kb.mp3",
               "length_ms": 2886000,
+              "section_number": 26,
               "start_ms": 70915000,
               "title": "Book 20"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_27_homer_64kb.mp3",
               "length_ms": 3596000,
+              "section_number": 27,
               "start_ms": 73801000,
               "title": "Book 21"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_28_homer_64kb.mp3",
               "length_ms": 3086000,
+              "section_number": 28,
               "start_ms": 77397000,
               "title": "Book 22"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_29_homer_64kb.mp3",
               "length_ms": 2665000,
+              "section_number": 29,
               "start_ms": 80483000,
               "title": "Book 23 Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_30_homer_64kb.mp3",
               "length_ms": 2612000,
+              "section_number": 30,
               "start_ms": 83148000,
               "title": "Book 23 Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_31_homer_64kb.mp3",
               "length_ms": 3230000,
+              "section_number": 31,
               "start_ms": 85760000,
               "title": "Book 24 Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/iliad_1403_librivox/iliad_32_homer_64kb.mp3",
               "length_ms": 1705000,
+              "section_number": 32,
               "start_ms": 88990000,
               "title": "Book 24 Part 2"
             }
           ],
           "copyright_year": 1885,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/iliad_1403.jpg",
+          "credits": [
+            {
+              "person": "edward-smith-stanley-earl-of-derby",
+              "role": "translator"
+            }
+          ],
           "id": "michael-armenta",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Free Verse"
+          ],
           "librivox_id": 6782,
+          "librivox_title": "Iliad of Homer, Rendered into English Blank Verse",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-iliad-of-homer-rendered-into-english-blank-verse-by-homer/",
@@ -3332,9 +3393,20 @@
           ],
           "copyright_year": 1910,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt17/iliada_1505.jpg",
+          "credits": [
+            {
+              "person": "luis-segala-y-estalella",
+              "role": "translator"
+            }
+          ],
           "id": "tux",
           "language": "es",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Epics"
+          ],
           "librivox_id": 9282,
+          "librivox_title": "Ilíada",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/la-iliada-por-homero/",
@@ -3507,9 +3579,19 @@
           ],
           "copyright_year": 1927,
           "cover_url": "https://archive.org/download/iliada_2504_librivox/iliada_2504.jpg",
+          "credits": [
+            {
+              "person": "luis-segala-y-estalella",
+              "role": "translator"
+            }
+          ],
           "id": "victor-villarraza",
           "language": "es",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)"
+          ],
           "librivox_id": 21098,
+          "librivox_title": "Ilíada (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/la-iliada2-por-homero/",
@@ -5336,9 +5418,19 @@
             }
           ],
           "cover_url": "https://archive.org/download/iliadsofhomer_2510_librivox/iliadsofhomer_2510.jpg",
+          "credits": [
+            {
+              "person": "george-chapman",
+              "role": "translator"
+            }
+          ],
           "id": "phil-schempf",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)"
+          ],
           "librivox_id": 21423,
+          "librivox_title": "Iliads of Homer",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-iliads-of-homer-by-homer/",
@@ -9477,9 +9569,20 @@
           ],
           "copyright_year": 1793,
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt/ilias.jpg",
+          "credits": [
+            {
+              "person": "johann-heinrich-voss",
+              "role": "translator"
+            }
+          ],
           "id": "redaer",
           "language": "de",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 2430,
+          "librivox_title": "Ilias",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/ilias-by-homer/",

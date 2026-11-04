@@ -3940,7 +3940,14 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt8/Gamekeeper_at_Home_1103.jpg",
           "id": "andy-minter-1934-2017",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Animals",
+            "Biography & Autobiography",
+            "Nature"
+          ],
           "librivox_id": 4515,
+          "librivox_title": "Gamekeeper at Home",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-gamekeeper-at-home-by-richard-jefferies/",
@@ -6858,7 +6865,13 @@
           "cover_url": "https://archive.org/download/games_for_halloween_1809_librivox/games_halloween_1809.jpg",
           "id": "nan-dodge",
           "language": "en",
+          "librivox_genres": [
+            "Children's Non-fiction",
+            "Crafts & Hobbies",
+            "Games"
+          ],
           "librivox_id": 13289,
+          "librivox_title": "Games for Hallow-e'en",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/games-for-hallow-een-by-mary-e-blain/",
@@ -12159,30 +12172,85 @@
             {
               "audio_url": "https://www.archive.org/download/the_gamester_1802_librivox/gamester_01_moore_64kb.mp3",
               "length_ms": 1931000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "rob-marland",
+                "joseph-tabler",
+                "sonia",
+                "tomas-peter",
+                "eva-davis-d-2025",
+                "linda-olsen-fitak",
+                "tj-burns"
+              ],
               "start_ms": 0,
               "title": "Act I"
             },
             {
               "audio_url": "https://www.archive.org/download/the_gamester_1802_librivox/gamester_02_moore_64kb.mp3",
               "length_ms": 1536000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "rob-marland",
+                "joseph-tabler",
+                "sonia",
+                "tomas-peter",
+                "eva-davis-d-2025",
+                "nemo",
+                "linda-olsen-fitak",
+                "tj-burns"
+              ],
               "start_ms": 1931000,
               "title": "Act II"
             },
             {
               "audio_url": "https://www.archive.org/download/the_gamester_1802_librivox/gamester_03_moore_64kb.mp3",
               "length_ms": 2075000,
+              "readers": [
+                "toddhw",
+                "rob-marland",
+                "joseph-tabler",
+                "sonia",
+                "tomas-peter",
+                "eva-davis-d-2025",
+                "linda-olsen-fitak",
+                "tj-burns"
+              ],
               "start_ms": 3467000,
               "title": "Act III"
             },
             {
               "audio_url": "https://www.archive.org/download/the_gamester_1802_librivox/gamester_04_moore_64kb.mp3",
               "length_ms": 1637000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "rob-marland",
+                "son-of-the-exiles",
+                "joseph-tabler",
+                "tomas-peter",
+                "eva-davis-d-2025",
+                "linda-olsen-fitak",
+                "tj-burns"
+              ],
               "start_ms": 5542000,
               "title": "Act IV"
             },
             {
               "audio_url": "https://www.archive.org/download/the_gamester_1802_librivox/gamester_05_moore_64kb.mp3",
               "length_ms": 2359000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "rob-marland",
+                "son-of-the-exiles",
+                "joseph-tabler",
+                "tomas-peter",
+                "eva-davis-d-2025",
+                "linda-olsen-fitak",
+                "tj-burns"
+              ],
               "start_ms": 7179000,
               "title": "Act V"
             }
@@ -12191,7 +12259,11 @@
           "cover_url": "https://archive.org/download/the_gamester_1802_librivox/gamester_1802.jpg",
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Tragedy"
+          ],
           "librivox_id": 12476,
+          "librivox_title": "Gamester",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-gamester-by-edward-moore/",
@@ -12252,30 +12324,104 @@
             {
               "audio_url": "https://www.archive.org/download/gamester_2312_librivox/gamester_1_centlivre_64kb.mp3",
               "length_ms": 1831000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "elijah-fisher",
+                "tomas-peter",
+                "scotty-smith",
+                "wendykatzhiller",
+                "beeswaxcandle",
+                "inkell"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/gamester_2312_librivox/gamester_2_centlivre_64kb.mp3",
               "length_ms": 1812000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "greg-giordano",
+                "elijah-fisher",
+                "sonia",
+                "david-purdy",
+                "tomas-peter",
+                "scotty-smith",
+                "jenn-broda",
+                "beeswaxcandle",
+                "inkell",
+                "redrun",
+                "valroth"
+              ],
               "start_ms": 1831000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/gamester_2312_librivox/gamester_3_centlivre_64kb.mp3",
               "length_ms": 1717000,
+              "readers": [
+                "toddhw",
+                "greg-giordano",
+                "elijah-fisher",
+                "sonia",
+                "tomas-peter",
+                "scotty-smith",
+                "jenn-broda",
+                "inkell",
+                "valroth",
+                "agnes-robert-behr",
+                "theresa-fisher",
+                "iamshawn"
+              ],
               "start_ms": 3643000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/gamester_2312_librivox/gamester_4_centlivre_64kb.mp3",
               "length_ms": 1678000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "greg-giordano",
+                "larry-wilson",
+                "elijah-fisher",
+                "sonia",
+                "david-purdy",
+                "tomas-peter",
+                "jim-locke",
+                "scotty-smith",
+                "mark-ricci",
+                "christine-rottger",
+                "beeswaxcandle",
+                "inkell",
+                "redrun",
+                "valroth",
+                "theresa-fisher",
+                "iamshawn"
+              ],
               "start_ms": 5360000,
               "title": "Act 4"
             },
             {
               "audio_url": "https://www.archive.org/download/gamester_2312_librivox/gamester_5_centlivre_64kb.mp3",
               "length_ms": 1973000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "greg-giordano",
+                "elijah-fisher",
+                "sonia",
+                "tomas-peter",
+                "scotty-smith",
+                "jenn-broda",
+                "wendykatzhiller",
+                "beeswaxcandle",
+                "inkell",
+                "valroth",
+                "theresa-fisher"
+              ],
               "start_ms": 7038000,
               "title": "Act 5"
             }
@@ -12284,7 +12430,11 @@
           "cover_url": "https://archive.org/download/gamester_2312_librivox/gamester_2312.jpg",
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Comedy"
+          ],
           "librivox_id": 19316,
+          "librivox_title": "Gamester",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-gamester-by-susanna-centlivre/",
@@ -13561,7 +13711,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/gan_1311.jpg",
           "id": "ekzemplaro",
           "language": "ja",
+          "librivox_genres": [
+            "Literary Fiction"
+          ],
           "librivox_id": 8303,
+          "librivox_title": "雁 (Gan)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/gan-by-ogai-mori/",

@@ -2478,7 +2478,12 @@
           "cover_url": "https://archive.org/download/normandyinvasion_2201_librivox/normandy_2201.jpg",
           "id": "wayne-cooke",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Historical Fiction"
+          ],
           "librivox_id": 17230,
+          "librivox_title": "We Were There at the Normandy Invasion",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/we-were-there-at-the-normandy-invasion-by-clayton-knight/",
@@ -10040,18 +10045,58 @@
             {
               "audio_url": "https://www.archive.org/download/weakersex_2012_librivox/weakersex_1_pinero_64kb.mp3",
               "length_ms": 3096000,
+              "readers": [
+                "ashleighjane",
+                "thestorygirl",
+                "toddhw",
+                "sonia",
+                "michaelmaggs",
+                "jenn-broda",
+                "adrian-stephens",
+                "matea-bracic",
+                "davydave"
+              ],
               "start_ms": 0,
               "title": "Act 1 - Rights and Wrongs"
             },
             {
               "audio_url": "https://www.archive.org/download/weakersex_2012_librivox/weakersex_2_pinero_64kb.mp3",
               "length_ms": 2591000,
+              "readers": [
+                "availle",
+                "ashleighjane",
+                "thestorygirl",
+                "toddhw",
+                "alan-mapstone",
+                "greg-giordano",
+                "sonia",
+                "david-purdy",
+                "tomas-peter",
+                "linda-olsen-fitak",
+                "michaelmaggs",
+                "jenn-broda",
+                "adrian-stephens",
+                "matea-bracic",
+                "kelly-s-taylor",
+                "andrew-gaunce"
+              ],
               "start_ms": 3096000,
               "title": "Act 2 - The Love that Lives"
             },
             {
               "audio_url": "https://www.archive.org/download/weakersex_2012_librivox/weakersex_3_pinero_64kb.mp3",
               "length_ms": 1783000,
+              "readers": [
+                "ashleighjane",
+                "thestorygirl",
+                "toddhw",
+                "sonia",
+                "tomas-peter",
+                "michaelmaggs",
+                "jenn-broda",
+                "adrian-stephens",
+                "matea-bracic"
+              ],
               "start_ms": 5687000,
               "title": "Act 3 - Mother and Daughter"
             }
@@ -10060,7 +10105,11 @@
           "cover_url": "https://archive.org/download/weakersex_2012_librivox/weaker_sex_2012.jpg",
           "id": "ashleighjane",
           "language": "en",
+          "librivox_genres": [
+            "Satire"
+          ],
           "librivox_id": 15535,
+          "librivox_title": "Weaker Sex",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-weaker-sex-by-arthur-wing-pinero/",

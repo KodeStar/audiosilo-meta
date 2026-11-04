@@ -1091,30 +1091,35 @@
             {
               "audio_url": "https://www.archive.org/download/frailocraciafilipina_2311_librivox/frailocraciafilipina_00_pilarygatmaitan_64kb.mp3",
               "length_ms": 422000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introducción"
             },
             {
               "audio_url": "https://www.archive.org/download/frailocraciafilipina_2311_librivox/frailocraciafilipina_01_pilarygatmaitan_64kb.mp3",
               "length_ms": 2322000,
+              "section_number": 1,
               "start_ms": 422000,
               "title": "Artículos 1 y 2"
             },
             {
               "audio_url": "https://www.archive.org/download/frailocraciafilipina_2311_librivox/frailocraciafilipina_02_pilarygatmaitan_64kb.mp3",
               "length_ms": 1292000,
+              "section_number": 2,
               "start_ms": 2744000,
               "title": "Artículo 3"
             },
             {
               "audio_url": "https://www.archive.org/download/frailocraciafilipina_2311_librivox/frailocraciafilipina_03_pilarygatmaitan_64kb.mp3",
               "length_ms": 1313000,
+              "section_number": 3,
               "start_ms": 4036000,
               "title": "Artículos 4 y 5"
             },
             {
               "audio_url": "https://www.archive.org/download/frailocraciafilipina_2311_librivox/frailocraciafilipina_04_pilarygatmaitan_64kb.mp3",
               "length_ms": 1919000,
+              "section_number": 4,
               "start_ms": 5349000,
               "title": "Apéndice"
             }
@@ -1123,7 +1128,12 @@
           "cover_url": "https://archive.org/download/frailocraciafilipina_2311_librivox/lafrailocraciafilipino_2311.jpg",
           "id": "claudia-caldi",
           "language": "es",
+          "librivox_genres": [
+            "Religion",
+            "Modern (19th C)"
+          ],
           "librivox_id": 19863,
+          "librivox_title": "frailocracia filipina",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/la-frailocracia-filipina-by-marcelo-h-del-pilar/",
@@ -1585,39 +1595,99 @@
             {
               "audio_url": "https://www.archive.org/download/frailtyandhypocrisyfigarotrilogy3_2510_librivox/frailty_1_beaumarchais_64kb.mp3",
               "length_ms": 1925000,
+              "readers": [
+                "toddhw",
+                "larry-wilson",
+                "wayne-cooke",
+                "jenn-broda",
+                "beeswaxcandle",
+                "jon-hunter"
+              ],
               "start_ms": 0,
               "title": "Act I"
             },
             {
               "audio_url": "https://www.archive.org/download/frailtyandhypocrisyfigarotrilogy3_2510_librivox/frailty_2_beaumarchais_64kb.mp3",
               "length_ms": 2153000,
+              "readers": [
+                "toddhw",
+                "larry-wilson",
+                "wayne-cooke",
+                "jenn-broda",
+                "wendykatzhiller",
+                "beeswaxcandle",
+                "inkell",
+                "shrimpphish",
+                "jon-hunter"
+              ],
               "start_ms": 1925000,
               "title": "Act II"
             },
             {
               "audio_url": "https://www.archive.org/download/frailtyandhypocrisyfigarotrilogy3_2510_librivox/frailty_3_beaumarchais_64kb.mp3",
               "length_ms": 1541000,
+              "readers": [
+                "toddhw",
+                "larry-wilson",
+                "wayne-cooke",
+                "jenn-broda",
+                "wendykatzhiller",
+                "beeswaxcandle"
+              ],
               "start_ms": 4078000,
               "title": "Act III"
             },
             {
               "audio_url": "https://www.archive.org/download/frailtyandhypocrisyfigarotrilogy3_2510_librivox/frailty_4_beaumarchais_64kb.mp3",
               "length_ms": 1290000,
+              "readers": [
+                "toddhw",
+                "larry-wilson",
+                "jenn-broda",
+                "scott-caulkins",
+                "wendykatzhiller",
+                "james-r-hedrick",
+                "beeswaxcandle",
+                "shrimpphish",
+                "jon-hunter"
+              ],
               "start_ms": 5619000,
               "title": "Act IV"
             },
             {
               "audio_url": "https://www.archive.org/download/frailtyandhypocrisyfigarotrilogy3_2510_librivox/frailty_5_beaumarchais_64kb.mp3",
               "length_ms": 2291000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "larry-wilson",
+                "wayne-cooke",
+                "jenn-broda",
+                "wendykatzhiller",
+                "beeswaxcandle",
+                "shrimpphish",
+                "jon-hunter"
+              ],
               "start_ms": 6909000,
               "title": "Act V"
             }
           ],
           "copyright_year": 1804,
           "cover_url": "https://archive.org/download/frailtyandhypocrisyfigarotrilogy3_2510_librivox/fraility_hypocrisy_2510.jpg",
+          "credits": [
+            {
+              "person": "james-wild",
+              "role": "translator"
+            }
+          ],
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Comedy",
+            "Satire"
+          ],
           "librivox_id": 20831,
+          "librivox_title": "Frailty and Hypocrisy (Figaro Trilogy #3)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/frailty-and-hypocrisy-figaro-trilogy-3-by-pierre-beaumarchais/",
@@ -5370,288 +5440,432 @@
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_01_trollope_64kb.mp3",
               "length_ms": 1427000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 0,
               "title": "01 - 'Omnes Omnia Bona Dicere'"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_02_trollope_64kb.mp3",
               "length_ms": 1740000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 1427000,
               "title": "02 - The Framley Set, and the Chaldicotes Set"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_03_trollope_64kb.mp3",
               "length_ms": 1731000,
+              "readers": [
+                "simon-evers"
+              ],
               "start_ms": 3167000,
               "title": "03 - Chaldicotes"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_04_trollope_64kb.mp3",
               "length_ms": 1303000,
+              "readers": [
+                "simon-evers"
+              ],
               "start_ms": 4898000,
               "title": "04 - A Matter of Conscience"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_05_trollope_64kb.mp3",
               "length_ms": 1950000,
+              "readers": [
+                "simon-evers"
+              ],
               "start_ms": 6201000,
               "title": "05 - Amantium Iræ Amoris Integratio"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_06_trollope_64kb.mp3",
               "length_ms": 1490000,
+              "readers": [
+                "simon-evers"
+              ],
               "start_ms": 8151000,
               "title": "06 - Mr. Harold Smith's Lecture"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_07_trollope_64kb.mp3",
               "length_ms": 1131000,
+              "readers": [
+                "simon-evers"
+              ],
               "start_ms": 9641000,
               "title": "07 - Sunday Morning"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_08_trollope_64kb.mp3",
               "length_ms": 2295000,
+              "readers": [
+                "simon-evers"
+              ],
               "start_ms": 10772000,
               "title": "08 - Gatherum Castle"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_09_trollope_64kb.mp3",
               "length_ms": 1166000,
+              "readers": [
+                "simon-evers"
+              ],
               "start_ms": 13067000,
               "title": "09 - The Vicar's Return"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_10_trollope_64kb.mp3",
               "length_ms": 1722000,
+              "readers": [
+                "mimi-wang"
+              ],
               "start_ms": 14233000,
               "title": "10 - Lucy Robarts"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_11_trollope_64kb.mp3",
               "length_ms": 2088000,
+              "readers": [
+                "mimi-wang"
+              ],
               "start_ms": 15955000,
               "title": "11 - Griselda Grantly"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_12_trollope_64kb.mp3",
               "length_ms": 1145000,
+              "readers": [
+                "nicholas-clifford-1930-2019"
+              ],
               "start_ms": 18043000,
               "title": "12 - The Little Bill"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_13_trollope_64kb.mp3",
               "length_ms": 1572000,
+              "readers": [
+                "adsum-iam"
+              ],
               "start_ms": 19188000,
               "title": "13 - Delicate Hints"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_14_trollope_64kb.mp3",
               "length_ms": 1792000,
+              "readers": [
+                "adsum-iam"
+              ],
               "start_ms": 20760000,
               "title": "14 - Mr. Crawley of Hogglestock"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_15_trollope_64kb.mp3",
               "length_ms": 1376000,
+              "readers": [
+                "nicholas-clifford-1930-2019"
+              ],
               "start_ms": 22552000,
               "title": "15 - Lady Lufton's Ambassador"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_16_trollope_64kb.mp3",
               "length_ms": 1703000,
+              "readers": [
+                "simon-evers"
+              ],
               "start_ms": 23928000,
               "title": "16 - Mrs. Podgens' Baby"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_17_trollope_64kb.mp3",
               "length_ms": 1642000,
+              "readers": [
+                "nicholas-clifford-1930-2019"
+              ],
               "start_ms": 25631000,
               "title": "17 - Mrs. Proudie's Conversazione"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_18_trollope_64kb.mp3",
               "length_ms": 1258000,
+              "readers": [
+                "simon-evers"
+              ],
               "start_ms": 27273000,
               "title": "18 - The New Minister's Patronage"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_19_trollope_64kb.mp3",
               "length_ms": 1735000,
+              "readers": [
+                "simon-evers"
+              ],
               "start_ms": 28531000,
               "title": "19 - Money Dealings"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_20_trollope_64kb.mp3",
               "length_ms": 1382000,
+              "readers": [
+                "simon-evers"
+              ],
               "start_ms": 30266000,
               "title": "20 - Harold Smith in the Cabinet"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_21_trollope_64kb.mp3",
               "length_ms": 1262000,
+              "readers": [
+                "glm"
+              ],
               "start_ms": 31648000,
               "title": "21 - Why Puck, the Pony, Was Beaten"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_22_trollope_64kb.mp3",
               "length_ms": 913000,
+              "readers": [
+                "glm"
+              ],
               "start_ms": 32910000,
               "title": "22 - Hogglestock Parsonage"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_23_trollope_64kb.mp3",
               "length_ms": 1484000,
+              "readers": [
+                "glm"
+              ],
               "start_ms": 33823000,
               "title": "23 - The Triumph of the Giants"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_24_trollope_64kb.mp3",
               "length_ms": 1619000,
+              "readers": [
+                "glm"
+              ],
               "start_ms": 35307000,
               "title": "24 - Magna Est Veritas"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_25_trollope_64kb.mp3",
               "length_ms": 1460000,
+              "readers": [
+                "nicholas-clifford-1930-2019"
+              ],
               "start_ms": 36926000,
               "title": "25 - Non-Impulsive"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_26_trollope_64kb.mp3",
               "length_ms": 1902000,
+              "readers": [
+                "mimi-wang"
+              ],
               "start_ms": 38386000,
               "title": "26 - Impulsive"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_27_trollope_64kb.mp3",
               "length_ms": 1250000,
+              "readers": [
+                "simon-evers"
+              ],
               "start_ms": 40288000,
               "title": "27 - South Audley Street"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_28_trollope_64kb.mp3",
               "length_ms": 1125000,
+              "readers": [
+                "simon-evers"
+              ],
               "start_ms": 41538000,
               "title": "28 - Dr. Thorne"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_29_trollope_64kb.mp3",
               "length_ms": 2745000,
+              "readers": [
+                "nicholas-clifford-1930-2019"
+              ],
               "start_ms": 42663000,
               "title": "29 - Miss Dunstable at Home"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_30_trollope_64kb.mp3",
               "length_ms": 753000,
+              "readers": [
+                "nicholas-clifford-1930-2019"
+              ],
               "start_ms": 45408000,
               "title": "30 - The Grantly Triumph"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_31_trollope_64kb.mp3",
               "length_ms": 2317000,
+              "readers": [
+                "nicholas-clifford-1930-2019"
+              ],
               "start_ms": 46161000,
               "title": "31 - Salmon Fishing in Norway"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_32_trollope_64kb.mp3",
               "length_ms": 1180000,
+              "readers": [
+                "nicholas-clifford-1930-2019"
+              ],
               "start_ms": 48478000,
               "title": "32 - The Goat and Compasses"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_33_trollope_64kb.mp3",
               "length_ms": 1168000,
+              "readers": [
+                "nicholas-clifford-1930-2019"
+              ],
               "start_ms": 49658000,
               "title": "33 - Consolation"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_34_trollope_64kb.mp3",
               "length_ms": 1504000,
+              "readers": [
+                "nicholas-clifford-1930-2019"
+              ],
               "start_ms": 50826000,
               "title": "34 - Lady Lufton Is Taken by Surprise"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_35_trollope_64kb.mp3",
               "length_ms": 1511000,
+              "readers": [
+                "simon-evers"
+              ],
               "start_ms": 52330000,
               "title": "35 - The Story of King Cophetua"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_36_trollope_64kb.mp3",
               "length_ms": 1425000,
+              "readers": [
+                "simon-evers"
+              ],
               "start_ms": 53841000,
               "title": "36 - Kidnapping at Hogglestock"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_37_trollope_64kb.mp3",
               "length_ms": 1482000,
+              "readers": [
+                "nicholas-clifford-1930-2019"
+              ],
               "start_ms": 55266000,
               "title": "37 - Mr. Sowerby without Company"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_38_trollope_64kb.mp3",
               "length_ms": 1573000,
+              "readers": [
+                "nicholas-clifford-1930-2019"
+              ],
               "start_ms": 56748000,
               "title": "38 - Is There Cause or Just Impediment?"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_39_trollope_64kb.mp3",
               "length_ms": 1449000,
+              "readers": [
+                "rosie"
+              ],
               "start_ms": 58321000,
               "title": "39 - How to Write a Love Letter"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_40_trollope_64kb.mp3",
               "length_ms": 1679000,
+              "readers": [
+                "nicholas-clifford-1930-2019"
+              ],
               "start_ms": 59770000,
               "title": "40 - Internecine"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_41_trollope_64kb.mp3",
               "length_ms": 1593000,
+              "readers": [
+                "nicholas-clifford-1930-2019"
+              ],
               "start_ms": 61449000,
               "title": "41 - Don Quixote"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_42_trollope_64kb.mp3",
               "length_ms": 1411000,
+              "readers": [
+                "simon-evers"
+              ],
               "start_ms": 63042000,
               "title": "42 - Touching Pitch"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_43_trollope_64kb.mp3",
               "length_ms": 1565000,
+              "readers": [
+                "simon-evers"
+              ],
               "start_ms": 64453000,
               "title": "43 - Is She Not Insignificant?"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_44_trollope_64kb.mp3",
               "length_ms": 2064000,
+              "readers": [
+                "brendan-stallard"
+              ],
               "start_ms": 66018000,
               "title": "44 - The Philistines at the Parsonage"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_45_trollope_64kb.mp3",
               "length_ms": 1275000,
+              "readers": [
+                "simon-evers"
+              ],
               "start_ms": 68082000,
               "title": "45 - Palace Blessings"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_46_trollope_64kb.mp3",
               "length_ms": 1789000,
+              "readers": [
+                "simon-evers"
+              ],
               "start_ms": 69357000,
               "title": "46 - Lady Lufton's Request"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_47_trollope_64kb.mp3",
               "length_ms": 1242000,
+              "readers": [
+                "simon-evers"
+              ],
               "start_ms": 71146000,
               "title": "47 - Nemesis"
             },
             {
               "audio_url": "https://www.archive.org/download/framley_parsonage_1010_librivox/framleyparsonage_48_trollope_64kb.mp3",
               "length_ms": 1565000,
+              "readers": [
+                "simon-evers"
+              ],
               "start_ms": 72388000,
               "title": "48 - How They Were All Married, Had Two Children,  - and Lived Happy Ever After"
             }
@@ -5660,7 +5874,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt14/framleyparsonage_1202.jpg",
           "id": "leonard-wilson-1930-2024",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 4471,
+          "librivox_title": "Framley Parsonage",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/framley-parsonage-by-anthony-trollope/",
@@ -5985,7 +6203,11 @@
           "cover_url": "https://archive.org/download/framleyparsonage_2103_librivox/framley_parsonage2_2103.jpg",
           "id": "nick-whitley",
           "language": "en",
+          "librivox_genres": [
+            "Historical Fiction"
+          ],
           "librivox_id": 14034,
+          "librivox_title": "Framley Parsonage (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/framley-parsonage-by-anthony-trollope-2/",
@@ -6818,7 +7040,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt12/Fran_barnaar_till_silfverhar_1110.jpg",
           "id": "mans-broo",
           "language": "sv",
+          "librivox_genres": [
+            "Biography & Autobiography"
+          ],
           "librivox_id": 1270,
+          "librivox_title": "Från barnaår till silfverhår. Första afdelningen",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/fran-barnaar-till-silfverhar-forsta-afdelningen-by-anders-ramsay/",
@@ -6931,42 +7157,49 @@
             {
               "audio_url": "https://www.archive.org/download/franceatwar_1507_librivox/franceatwar_00_kipling_64kb.mp3",
               "length_ms": 307000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "France (Introductory Poem)"
             },
             {
               "audio_url": "https://www.archive.org/download/franceatwar_1507_librivox/franceatwar_01_kipling_64kb.mp3",
               "length_ms": 1083000,
+              "section_number": 1,
               "start_ms": 307000,
               "title": "On the Frontier of Civilization"
             },
             {
               "audio_url": "https://www.archive.org/download/franceatwar_1507_librivox/franceatwar_02_kipling_64kb.mp3",
               "length_ms": 944000,
+              "section_number": 2,
               "start_ms": 1390000,
               "title": "The Nation's Spirit and a New Inheritance"
             },
             {
               "audio_url": "https://www.archive.org/download/franceatwar_1507_librivox/franceatwar_03_kipling_64kb.mp3",
               "length_ms": 1019000,
+              "section_number": 3,
               "start_ms": 2334000,
               "title": "Battle Spectacle and a Review"
             },
             {
               "audio_url": "https://www.archive.org/download/franceatwar_1507_librivox/franceatwar_04_kipling_64kb.mp3",
               "length_ms": 887000,
+              "section_number": 4,
               "start_ms": 3353000,
               "title": "The Spirit of the People"
             },
             {
               "audio_url": "https://www.archive.org/download/franceatwar_1507_librivox/franceatwar_05_kipling_64kb.mp3",
               "length_ms": 922000,
+              "section_number": 5,
               "start_ms": 4240000,
               "title": "Life in the Trenches on the Mountainside"
             },
             {
               "audio_url": "https://www.archive.org/download/franceatwar_1507_librivox/franceatwar_06_kipling_64kb.mp3",
               "length_ms": 980000,
+              "section_number": 6,
               "start_ms": 5162000,
               "title": "The Common Task of a Great People"
             }
@@ -6975,7 +7208,12 @@
           "cover_url": "https://archive.org/download/franceatwar_1507_librivox/france_war_1507.jpg",
           "id": "tim-bulkeley-1948-2019",
           "language": "en",
+          "librivox_genres": [
+            "War & Military",
+            "Essays & Short Works"
+          ],
           "librivox_id": 9935,
+          "librivox_title": "France At War: On the Frontier of Civilization",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/france-at-war-on-the-frontier-of-civilization-by-rudyard-kipling/",
@@ -7399,7 +7637,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt29/France_in_the_Nineteenth_Century_1302.jpg",
           "id": "cate-barratt",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "History"
+          ],
           "librivox_id": 6270,
+          "librivox_title": "France in the Nineteenth Century",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/france-in-the-nineteenth-century-by-elizabeth-wormeley-latimer/",
@@ -7504,66 +7747,77 @@
             {
               "audio_url": "https://www.archive.org/download/francespainandtherifpart1_2304_librivox/francespainandtherifpart1_00_harris_64kb.mp3",
               "length_ms": 186000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/francespainandtherifpart1_2304_librivox/francespainandtherifpart1_01_harris_64kb.mp3",
               "length_ms": 2141000,
+              "section_number": 1,
               "start_ms": 186000,
               "title": "Chapter 1 The Status of France and Spain in Morocco"
             },
             {
               "audio_url": "https://www.archive.org/download/francespainandtherifpart1_2304_librivox/francespainandtherifpart1_02_harris_64kb.mp3",
               "length_ms": 1911000,
+              "section_number": 2,
               "start_ms": 2327000,
               "title": "Chapter 2a The Rif"
             },
             {
               "audio_url": "https://www.archive.org/download/francespainandtherifpart1_2304_librivox/francespainandtherifpart1_03_harris_64kb.mp3",
               "length_ms": 1383000,
+              "section_number": 3,
               "start_ms": 4238000,
               "title": "Chapter 2b The Rif"
             },
             {
               "audio_url": "https://www.archive.org/download/francespainandtherifpart1_2304_librivox/francespainandtherifpart1_04_harris_64kb.mp3",
               "length_ms": 1945000,
+              "section_number": 4,
               "start_ms": 5621000,
               "title": "Chapter 3a Spain in the Rif"
             },
             {
               "audio_url": "https://www.archive.org/download/francespainandtherifpart1_2304_librivox/francespainandtherifpart1_05_harris_64kb.mp3",
               "length_ms": 1887000,
+              "section_number": 5,
               "start_ms": 7566000,
               "title": "Chapter 3b Spain in the Rif"
             },
             {
               "audio_url": "https://www.archive.org/download/francespainandtherifpart1_2304_librivox/francespainandtherifpart1_06_harris_64kb.mp3",
               "length_ms": 1744000,
+              "section_number": 6,
               "start_ms": 9453000,
               "title": "Chapter 4a Spaniards and Jibala"
             },
             {
               "audio_url": "https://www.archive.org/download/francespainandtherifpart1_2304_librivox/francespainandtherifpart1_07_harris_64kb.mp3",
               "length_ms": 1816000,
+              "section_number": 7,
               "start_ms": 11197000,
               "title": "Chapter 4b Spaniards and Jibala"
             },
             {
               "audio_url": "https://www.archive.org/download/francespainandtherifpart1_2304_librivox/francespainandtherifpart1_08_harris_64kb.mp3",
               "length_ms": 1286000,
+              "section_number": 8,
               "start_ms": 13013000,
               "title": "Chapter 5a The Relief of Sheshaun"
             },
             {
               "audio_url": "https://www.archive.org/download/francespainandtherifpart1_2304_librivox/francespainandtherifpart1_09_harris_64kb.mp3",
               "length_ms": 1681000,
+              "section_number": 9,
               "start_ms": 14299000,
               "title": "Chapter 5b The Relief of Sheshaun"
             },
             {
               "audio_url": "https://www.archive.org/download/francespainandtherifpart1_2304_librivox/francespainandtherifpart1_10_harris_64kb.mp3",
               "length_ms": 1880000,
+              "section_number": 10,
               "start_ms": 15980000,
               "title": "Chapter 6 Evacuation of Sheshaun"
             }
@@ -7572,7 +7826,12 @@
           "cover_url": "https://archive.org/download/francespainandtherifpart1_2304_librivox/francespainandtherifpart1_2304.jpg",
           "id": "alister",
           "language": "en",
+          "librivox_genres": [
+            "War & Military",
+            "Modern (20th C)"
+          ],
           "librivox_id": 19045,
+          "librivox_title": "France, Spain and the Rif, Part 1",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/france-spain-and-the-rif-part-1-by-walter-burton-harris/",
@@ -7679,7 +7938,12 @@
           "cover_url": "https://archive.org/download/francespainandtherifpart2_2312_librivox/francespainandtherifpart2_2312.jpg",
           "id": "alister",
           "language": "en",
+          "librivox_genres": [
+            "War & Military",
+            "Modern (20th C)"
+          ],
           "librivox_id": 19816,
+          "librivox_title": "France, Spain and the Rif, Part 2",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/france-spain-and-the-rif-part-2-by-walter-burton-harris/",
@@ -8787,9 +9051,19 @@
           ],
           "copyright_year": 1804,
           "cover_url": "https://archive.org/download/francesco_petrarca_-_sonette_2308_librivox/sonette_2309.jpg",
+          "credits": [
+            {
+              "person": "carl-streckfuss",
+              "role": "translator"
+            }
+          ],
           "id": "seito",
           "language": "de",
+          "librivox_genres": [
+            "Sonnets"
+          ],
           "librivox_id": 19176,
+          "librivox_title": "Francesco Petrarca - Sonette - übersetzt und ausgewählt von Carl Streckfuss",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/francesco-petrarca-sonette-uebersetzt-und-ausgewaehlt-von-carl-streckfuss-by-francesco-petrarca/",
@@ -9942,7 +10216,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/pizarro_conquest_of_peru_1403.jpg",
           "id": "patrick-eaton",
           "language": "en",
+          "librivox_genres": [
+            "Early Modern",
+            "Exploration"
+          ],
           "librivox_id": 8358,
+          "librivox_title": "Francisco Pizarro and the Conquest of Peru",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/francisco-pizarro-and-the-conquest-of-peru-by-frederick-a-ober/",
@@ -14330,7 +14609,11 @@
           "cover_url": "https://archive.org/download/frank_merriwell_at_yale_2104_librivox/frank_merriwells_yale_2104.jpg",
           "id": "kevins",
           "language": "en",
+          "librivox_genres": [
+            "Published 1900 onward"
+          ],
           "librivox_id": 14490,
+          "librivox_title": "Frank Merriwell at Yale; Or, Freshman Against Freshman",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/frank-merriwell-at-yale-by-burt-l-standish/",
@@ -14381,156 +14664,343 @@
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_01_standish_64kb.mp3",
               "length_ms": 1171000,
+              "readers": [
+                "michele-eaton",
+                "wayne-cooke",
+                "adrian-stephens",
+                "julian-pratley",
+                "andrew-gaunce"
+              ],
               "start_ms": 0,
               "title": "Chapter 01"
             },
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_02_standish_64kb.mp3",
               "length_ms": 1362000,
+              "readers": [
+                "michele-eaton",
+                "jim-locke",
+                "wayne-cooke",
+                "kevins",
+                "adrian-stephens",
+                "julian-pratley",
+                "andrew-gaunce",
+                "john-payton",
+                "james-r-hedrick"
+              ],
               "start_ms": 1171000,
               "title": "Chapter 02"
             },
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_03_standish_64kb.mp3",
               "length_ms": 1046000,
+              "readers": [
+                "michele-eaton",
+                "jim-locke",
+                "wayne-cooke",
+                "adrian-stephens",
+                "julian-pratley",
+                "andrew-gaunce",
+                "john-payton",
+                "james-r-hedrick"
+              ],
               "start_ms": 2533000,
               "title": "Chapter 03"
             },
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_04_standish_64kb.mp3",
               "length_ms": 2169000,
+              "readers": [
+                "michele-eaton",
+                "adrian-stephens",
+                "julian-pratley",
+                "andrew-gaunce"
+              ],
               "start_ms": 3579000,
               "title": "Chapter 04"
             },
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_05_standish_64kb.mp3",
               "length_ms": 709000,
+              "readers": [
+                "michele-eaton",
+                "wayne-cooke",
+                "adrian-stephens",
+                "julian-pratley",
+                "james-r-hedrick"
+              ],
               "start_ms": 5748000,
               "title": "Chapter 05"
             },
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_06_standish_64kb.mp3",
               "length_ms": 565000,
+              "readers": [
+                "michele-eaton",
+                "jim-locke",
+                "adrian-stephens",
+                "lynette-caulkins",
+                "julian-pratley",
+                "john-payton",
+                "james-r-hedrick"
+              ],
               "start_ms": 6457000,
               "title": "Chapter 06"
             },
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_07_standish_64kb.mp3",
               "length_ms": 1044000,
+              "readers": [
+                "michele-eaton",
+                "jenn-broda",
+                "adrian-stephens",
+                "julian-pratley",
+                "jake-malizia"
+              ],
               "start_ms": 7022000,
               "title": "Chapter 07"
             },
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_08_standish_64kb.mp3",
               "length_ms": 1153000,
+              "readers": [
+                "michele-eaton",
+                "adrian-stephens",
+                "lily",
+                "james-r-hedrick",
+                "jake-malizia"
+              ],
               "start_ms": 8066000,
               "title": "Chapter 08"
             },
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_09_standish_64kb.mp3",
               "length_ms": 1231000,
+              "readers": [
+                "michele-eaton",
+                "jenn-broda",
+                "adrian-stephens"
+              ],
               "start_ms": 9219000,
               "title": "Chapter 09"
             },
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_10_standish_64kb.mp3",
               "length_ms": 892000,
+              "readers": [
+                "michele-eaton",
+                "jenn-broda",
+                "adrian-stephens"
+              ],
               "start_ms": 10450000,
               "title": "Chapter 10"
             },
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_11_standish_64kb.mp3",
               "length_ms": 994000,
+              "readers": [
+                "michele-eaton",
+                "jenn-broda",
+                "adrian-stephens",
+                "james-r-hedrick"
+              ],
               "start_ms": 11342000,
               "title": "Chapter 11"
             },
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_12_standish_64kb.mp3",
               "length_ms": 870000,
+              "readers": [
+                "michele-eaton",
+                "jenn-broda",
+                "adrian-stephens",
+                "lily",
+                "james-r-hedrick",
+                "jake-malizia"
+              ],
               "start_ms": 12336000,
               "title": "Chapter 12"
             },
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_13_standish_64kb.mp3",
               "length_ms": 416000,
+              "readers": [
+                "michele-eaton",
+                "wayne-cooke",
+                "jenn-broda",
+                "adrian-stephens",
+                "julian-pratley",
+                "jake-malizia"
+              ],
               "start_ms": 13206000,
               "title": "Chapter 13"
             },
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_14_standish_64kb.mp3",
               "length_ms": 1381000,
+              "readers": [
+                "michele-eaton",
+                "larry-wilson",
+                "adrian-stephens",
+                "james-r-hedrick"
+              ],
               "start_ms": 13622000,
               "title": "Chapter 14"
             },
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_15_standish_64kb.mp3",
               "length_ms": 859000,
+              "readers": [
+                "michele-eaton",
+                "larry-wilson",
+                "adrian-stephens",
+                "julian-pratley"
+              ],
               "start_ms": 15003000,
               "title": "Chapter 15"
             },
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_16_standish_64kb.mp3",
               "length_ms": 652000,
+              "readers": [
+                "michele-eaton",
+                "larry-wilson",
+                "adrian-stephens",
+                "julian-pratley"
+              ],
               "start_ms": 15862000,
               "title": "Chapter 16"
             },
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_17_standish_64kb.mp3",
               "length_ms": 791000,
+              "readers": [
+                "michele-eaton",
+                "larry-wilson",
+                "twinkle",
+                "jim-locke",
+                "mike-manolakes",
+                "adrian-stephens"
+              ],
               "start_ms": 16514000,
               "title": "Chapter 17"
             },
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_18_standish_64kb.mp3",
               "length_ms": 1617000,
+              "readers": [
+                "rapunzelina",
+                "michele-eaton",
+                "larry-wilson",
+                "mike-manolakes",
+                "adrian-stephens",
+                "julian-pratley"
+              ],
               "start_ms": 17305000,
               "title": "Chapter 18"
             },
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_19_standish_64kb.mp3",
               "length_ms": 1041000,
+              "readers": [
+                "michele-eaton",
+                "larry-wilson",
+                "twinkle",
+                "mike-manolakes",
+                "adrian-stephens",
+                "julian-pratley",
+                "lily"
+              ],
               "start_ms": 18922000,
               "title": "Chapter 19"
             },
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_20_standish_64kb.mp3",
               "length_ms": 1527000,
+              "readers": [
+                "michele-eaton",
+                "larry-wilson",
+                "adrian-stephens"
+              ],
               "start_ms": 19963000,
               "title": "Chapter 20"
             },
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_21_standish_64kb.mp3",
               "length_ms": 1295000,
+              "readers": [
+                "michele-eaton",
+                "larry-wilson",
+                "twinkle",
+                "mike-manolakes",
+                "wayne-cooke",
+                "adrian-stephens",
+                "julian-pratley"
+              ],
               "start_ms": 21490000,
               "title": "Chapter 21"
             },
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_22_standish_64kb.mp3",
               "length_ms": 1243000,
+              "readers": [
+                "michele-eaton",
+                "twinkle",
+                "wayne-cooke",
+                "adrian-stephens",
+                "patrick-sawyer"
+              ],
               "start_ms": 22785000,
               "title": "Chapter 22"
             },
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_23_standish_64kb.mp3",
               "length_ms": 1052000,
+              "readers": [
+                "michele-eaton",
+                "lauren-emma-blake",
+                "mike-manolakes",
+                "adrian-stephens",
+                "james-r-hedrick",
+                "patrick-sawyer"
+              ],
               "start_ms": 24028000,
               "title": "Chapter 23"
             },
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_24_standish_64kb.mp3",
               "length_ms": 716000,
+              "readers": [
+                "michele-eaton",
+                "mike-manolakes",
+                "patrick-sawyer"
+              ],
               "start_ms": 25080000,
               "title": "Chapter 24"
             },
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_25_standish_64kb.mp3",
               "length_ms": 582000,
+              "readers": [
+                "michele-eaton",
+                "twinkle",
+                "adrian-stephens",
+                "james-r-hedrick",
+                "patrick-sawyer"
+              ],
               "start_ms": 25796000,
               "title": "Chapter 25"
             },
             {
               "audio_url": "https://www.archive.org/download/frankmerriwellstrust_2112_librivox/frankmerriwellstrust_26_standish_64kb.mp3",
               "length_ms": 523000,
+              "readers": [
+                "michele-eaton",
+                "twinkle",
+                "mike-manolakes",
+                "adrian-stephens",
+                "patrick-sawyer"
+              ],
               "start_ms": 26378000,
               "title": "Chapter 26"
             }
@@ -14539,7 +15009,12 @@
           "cover_url": "https://archive.org/download/frankmerriwellstrust_2112_librivox/frank_merrill_trust_2112.jpg",
           "id": "michele-eaton",
           "language": "en",
+          "librivox_genres": [
+            "Dramatic Readings",
+            "Action & Adventure"
+          ],
           "librivox_id": 15430,
+          "librivox_title": "Frank Merriwell’s Trust (Dramatic Reading)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/frank-merriwells-trust-by-burt-l-standish/",

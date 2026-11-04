@@ -5206,60 +5206,70 @@
             {
               "audio_url": "https://www.archive.org/download/ascentofdenali_1605_librivox/ascentofdenali_00_stuck_64kb.mp3",
               "length_ms": 583000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/ascentofdenali_1605_librivox/ascentofdenali_01_stuck_64kb.mp3",
               "length_ms": 1806000,
+              "section_number": 1,
               "start_ms": 583000,
               "title": "Preparation and Approach"
             },
             {
               "audio_url": "https://www.archive.org/download/ascentofdenali_1605_librivox/ascentofdenali_02_stuck_64kb.mp3",
               "length_ms": 2286000,
+              "section_number": 2,
               "start_ms": 2389000,
               "title": "The Muldrow Glacier"
             },
             {
               "audio_url": "https://www.archive.org/download/ascentofdenali_1605_librivox/ascentofdenali_03_stuck_64kb.mp3",
               "length_ms": 2208000,
+              "section_number": 3,
               "start_ms": 4675000,
               "title": "The Northeast Ridge"
             },
             {
               "audio_url": "https://www.archive.org/download/ascentofdenali_1605_librivox/ascentofdenali_04_stuck_64kb.mp3",
               "length_ms": 1021000,
+              "section_number": 4,
               "start_ms": 6883000,
               "title": "The Grand Basin"
             },
             {
               "audio_url": "https://www.archive.org/download/ascentofdenali_1605_librivox/ascentofdenali_05_stuck_64kb.mp3",
               "length_ms": 2060000,
+              "section_number": 5,
               "start_ms": 7904000,
               "title": "The Ultimate Height"
             },
             {
               "audio_url": "https://www.archive.org/download/ascentofdenali_1605_librivox/ascentofdenali_06_stuck_64kb.mp3",
               "length_ms": 1980000,
+              "section_number": 6,
               "start_ms": 9964000,
               "title": "The Return"
             },
             {
               "audio_url": "https://www.archive.org/download/ascentofdenali_1605_librivox/ascentofdenali_07_stuck_64kb.mp3",
               "length_ms": 1623000,
+              "section_number": 7,
               "start_ms": 11944000,
               "title": "The Height of Denali, with a Discussion               of the Readings on the Summit               and During the Ascent"
             },
             {
               "audio_url": "https://www.archive.org/download/ascentofdenali_1605_librivox/ascentofdenali_08_stuck_64kb.mp3",
               "length_ms": 1803000,
+              "section_number": 8,
               "start_ms": 13567000,
               "title": "Explorations of the Denali Region               and Previous Attempts at its Ascent"
             },
             {
               "audio_url": "https://www.archive.org/download/ascentofdenali_1605_librivox/ascentofdenali_09_stuck_64kb.mp3",
               "length_ms": 680000,
+              "section_number": 9,
               "start_ms": 15370000,
               "title": "The Names Placed upon the Mountain by the Author"
             }
@@ -5268,7 +5278,13 @@
           "cover_url": "https://archive.org/download/ascentofdenali_1605_librivox/ascent_denali_stuck_1605.jpg",
           "id": "phil-schempf",
           "language": "en",
+          "librivox_genres": [
+            "Sports & Recreation",
+            "Modern (20th C)",
+            "Exploration"
+          ],
           "librivox_id": 10763,
+          "librivox_title": "Ascent of Denali",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-ascent-of-denali-by-hudson-stuck/",
@@ -5884,9 +5900,19 @@
           ],
           "copyright_year": 1864,
           "cover_url": "https://archive.org/download/ascent_of_mount_carmel_eh_1612_librivox/ascent_of_mount_carmel_1612.jpg",
+          "credits": [
+            {
+              "person": "david-lewis-1814-1895",
+              "role": "translator"
+            }
+          ],
           "id": "ed-humpal",
           "language": "en",
+          "librivox_genres": [
+            "Christianity - Other"
+          ],
           "librivox_id": 9135,
+          "librivox_title": "Ascent of Mount Carmel",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-ascent-of-mount-carmel-by-saint-john-of-the-cross/",
@@ -5944,75 +5970,96 @@
             {
               "audio_url": "https://www.archive.org/download/ascent_mount_st_elias_1406_librivox/ascentmountstelias_00_defilippi_64kb.mp3",
               "length_ms": 825000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/ascent_mount_st_elias_1406_librivox/ascentmountstelias_01_defilippi_64kb.mp3",
               "length_ms": 1154000,
+              "section_number": 1,
               "start_ms": 825000,
               "title": "From Turin to Seattle"
             },
             {
               "audio_url": "https://www.archive.org/download/ascent_mount_st_elias_1406_librivox/ascentmountstelias_02_defilippi_64kb.mp3",
               "length_ms": 1154000,
+              "section_number": 2,
               "start_ms": 1979000,
               "title": "From Seattle to Juneau — The Alexander Archipelago and Alaska"
             },
             {
               "audio_url": "https://www.archive.org/download/ascent_mount_st_elias_1406_librivox/ascentmountstelias_03_defilippi_64kb.mp3",
               "length_ms": 1346000,
+              "section_number": 3,
               "start_ms": 3133000,
               "title": "From Juneau to Yakutat — The Muir Glacier, Sitka, and the Coast Range"
             },
             {
               "audio_url": "https://www.archive.org/download/ascent_mount_st_elias_1406_librivox/ascentmountstelias_04_defilippi_64kb.mp3",
               "length_ms": 2320000,
+              "section_number": 4,
               "start_ms": 4479000,
               "title": "The History of Mount St. Elias"
             },
             {
               "audio_url": "https://www.archive.org/download/ascent_mount_st_elias_1406_librivox/ascentmountstelias_05_defilippi_64kb.mp3",
               "length_ms": 2900000,
+              "section_number": 5,
               "start_ms": 6799000,
               "title": "The Malaspina Glacier"
             },
             {
               "audio_url": "https://www.archive.org/download/ascent_mount_st_elias_1406_librivox/ascentmountstelias_06_defilippi_64kb.mp3",
               "length_ms": 2316000,
+              "section_number": 6,
               "start_ms": 9699000,
               "title": "Seward Glacier, Dome Pass, and Agassiz Glacier"
             },
             {
               "audio_url": "https://www.archive.org/download/ascent_mount_st_elias_1406_librivox/ascentmountstelias_07_defilippi_64kb.mp3",
               "length_ms": 1910000,
+              "section_number": 7,
               "start_ms": 12015000,
               "title": "Newton Glacier"
             },
             {
               "audio_url": "https://www.archive.org/download/ascent_mount_st_elias_1406_librivox/ascentmountstelias_08_defilippi_64kb.mp3",
               "length_ms": 1710000,
+              "section_number": 8,
               "start_ms": 13925000,
               "title": "The Ascent of Mount St. Elias"
             },
             {
               "audio_url": "https://www.archive.org/download/ascent_mount_st_elias_1406_librivox/ascentmountstelias_09_defilippi_64kb.mp3",
               "length_ms": 1520000,
+              "section_number": 9,
               "start_ms": 15635000,
               "title": "Return from Mount St. Elias to Yakutat"
             },
             {
               "audio_url": "https://www.archive.org/download/ascent_mount_st_elias_1406_librivox/ascentmountstelias_10_defilippi_64kb.mp3",
               "length_ms": 638000,
+              "section_number": 10,
               "start_ms": 17155000,
               "title": "Back to Europe — From Yakutat to London"
             }
           ],
           "copyright_year": 1900,
           "cover_url": "https://archive.org/download/ascent_mount_st_elias_1406_librivox/ascent_1406.jpg",
+          "credits": [
+            {
+              "person": "linda-white-mazini-villari",
+              "role": "translator"
+            }
+          ],
           "id": "phil-schempf",
           "language": "en",
+          "librivox_genres": [
+            "Travel & Geography"
+          ],
           "librivox_id": 8863,
+          "librivox_title": "Ascent of Mount St. Elias, Alaska",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-ascent-of-mount-st-elias-alaska-by-filippo-de-filippi/",
@@ -15191,7 +15238,12 @@
           "cover_url": "https://archive.org/download/asgardstories_2110_librivox/asgard_2110.jpg",
           "id": "julie-yu",
           "language": "en",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales",
+            "Action & Adventure"
+          ],
           "librivox_id": 17028,
+          "librivox_title": "Asgard Stories: Tales from Norse Mythology",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/asgard-stories-tales-from-norse-mythology-by-mary-h-foster/",

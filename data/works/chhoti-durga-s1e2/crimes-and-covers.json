@@ -1108,7 +1108,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt15/Crimes_England_1203.jpg",
           "id": "ray-clare",
           "language": "en",
+          "librivox_genres": [
+            "Essays & Short Works",
+            "History"
+          ],
           "librivox_id": 2966,
+          "librivox_title": "Crimes of England",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/crimes-of-england-by-chesterton/",
@@ -4746,9 +4751,19 @@
           ],
           "copyright_year": 1844,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt22/thecriminal_1509.jpg",
+          "credits": [
+            {
+              "person": "john-oxenford",
+              "role": "translator"
+            }
+          ],
           "id": "crln-yldz-ksr",
           "language": "en",
+          "librivox_genres": [
+            "Crime & Mystery Fiction"
+          ],
           "librivox_id": 10172,
+          "librivox_title": "Criminal from Lost Honour",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-criminal-from-lost-honour-by-friedrich-schiller/",
@@ -5488,273 +5503,421 @@
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_01_gross_64kb.mp3",
               "length_ms": 800000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_02_gross_64kb.mp3",
               "length_ms": 1486000,
+              "readers": [
+                "ruth-golding"
+              ],
               "start_ms": 800000,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_03_gross_64kb.mp3",
               "length_ms": 710000,
+              "readers": [
+                "joseph-tabler"
+              ],
               "start_ms": 2286000,
               "title": "The Investigating Officer i-ii"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_04_gross_64kb.mp3",
               "length_ms": 1940000,
+              "readers": [
+                "joseph-tabler"
+              ],
               "start_ms": 2996000,
               "title": "The Investigating Officer iii"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_05_gross_64kb.mp3",
               "length_ms": 1123000,
+              "readers": [
+                "joseph-tabler"
+              ],
               "start_ms": 4936000,
               "title": "The Investigating Officer iv"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_06_gross_64kb.mp3",
               "length_ms": 1734000,
+              "readers": [
+                "joseph-tabler"
+              ],
               "start_ms": 6059000,
               "title": "The Investigating Officer v"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_07_gross_64kb.mp3",
               "length_ms": 902000,
+              "readers": [
+                "joseph-tabler"
+              ],
               "start_ms": 7793000,
               "title": "The Investigating Officer vi"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_08_gross_64kb.mp3",
               "length_ms": 1431000,
+              "readers": [
+                "joseph-tabler"
+              ],
               "start_ms": 8695000,
               "title": "The Investigating Officer vii"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_09_gross_64kb.mp3",
               "length_ms": 1114000,
+              "readers": [
+                "joseph-tabler"
+              ],
               "start_ms": 10126000,
               "title": "The Investigating Officer viii-ix"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_10_gross_64kb.mp3",
               "length_ms": 632000,
+              "readers": [
+                "joseph-tabler"
+              ],
               "start_ms": 11240000,
               "title": "The Investigating Officer x"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_11_gross_64kb.mp3",
               "length_ms": 1212000,
+              "readers": [
+                "csheeler"
+              ],
               "start_ms": 11872000,
               "title": "Examination of Witnesses and Accused i-ii"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_12_gross_64kb.mp3",
               "length_ms": 1414000,
+              "readers": [
+                "explodreamer"
+              ],
               "start_ms": 13084000,
               "title": "Examination of Witnesses and Accused ii.A.1.a, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_13_gross_64kb.mp3",
               "length_ms": 1230000,
+              "readers": [
+                "arianne-stein"
+              ],
               "start_ms": 14498000,
               "title": "Examination of Witnesses and Accused ii.A.1.a, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_14_gross_64kb.mp3",
               "length_ms": 979000,
+              "readers": [
+                "arianne-stein"
+              ],
               "start_ms": 15728000,
               "title": "Examination of Witnesses and Accused ii.A.1.b"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_15_gross_64kb.mp3",
               "length_ms": 1696000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 16707000,
               "title": "Examination of Witnesses and Accused ii.A.2.a-b"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_16_gross_64kb.mp3",
               "length_ms": 1849000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 18403000,
               "title": "Examination of Witnesses and Accused ii.A.2.c"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_17_gross_64kb.mp3",
               "length_ms": 1954000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 20252000,
               "title": "Examination of Witnesses and Accused ii.B"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_18_gross_64kb.mp3",
               "length_ms": 302000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 22206000,
               "title": "Examination of Witnesses and Accused ii.C"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_19_gross_64kb.mp3",
               "length_ms": 1090000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 22508000,
               "title": "Examination of Witnesses and Accused iii, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_20_gross_64kb.mp3",
               "length_ms": 1472000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 23598000,
               "title": "Examination of Witnesses and Accused iii, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_21_gross_64kb.mp3",
               "length_ms": 1337000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 25070000,
               "title": "Inspection of Localities i-ii"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_22_gross_64kb.mp3",
               "length_ms": 1514000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 26407000,
               "title": "Inspection of Localities iii"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_23_gross_64kb.mp3",
               "length_ms": 894000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 27921000,
               "title": "Inspection of Localities iv"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_24_gross_64kb.mp3",
               "length_ms": 865000,
+              "readers": [
+                "michelle-torres"
+              ],
               "start_ms": 28815000,
               "title": "Equipment of the Investigating Officer"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_25_gross_64kb.mp3",
               "length_ms": 1133000,
+              "readers": [
+                "anna-simon"
+              ],
               "start_ms": 29680000,
               "title": "The Expert and How to Make Use of Him i"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_26_gross_64kb.mp3",
               "length_ms": 1846000,
+              "readers": [
+                "anna-simon"
+              ],
               "start_ms": 30813000,
               "title": "The Expert and How to Make Use of Him ii.A-C"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_27_gross_64kb.mp3",
               "length_ms": 1678000,
+              "readers": [
+                "michele-fry"
+              ],
               "start_ms": 32659000,
               "title": "The Expert and How to Make Use of Him ii.D"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_28_gross_64kb.mp3",
               "length_ms": 2031000,
+              "readers": [
+                "michele-fry"
+              ],
               "start_ms": 34337000,
               "title": "The Expert and How to Make Use of Him ii.E-G"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_29_gross_64kb.mp3",
               "length_ms": 1349000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 36368000,
               "title": "The Expert and How to Make Use of Him iii-iii.B"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_30_gross_64kb.mp3",
               "length_ms": 1791000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 37717000,
               "title": "The Expert and How to Make Use of Him iii.C"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_31_gross_64kb.mp3",
               "length_ms": 1015000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 39508000,
               "title": "The Expert and How to Make Use of Him iii.D-F"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_32_gross_64kb.mp3",
               "length_ms": 1563000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 40523000,
               "title": "The Expert and How to Make Use of Him iii.G"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_33_gross_64kb.mp3",
               "length_ms": 1422000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 42086000,
               "title": "The Expert and How to Make Use of Him iv-v"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_34_gross_64kb.mp3",
               "length_ms": 1143000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 43508000,
               "title": "The Expert and How to Make Use of Him vi-vii"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_35_gross_64kb.mp3",
               "length_ms": 1535000,
+              "readers": [
+                "andrea-rovny"
+              ],
               "start_ms": 44651000,
               "title": "The Expert and How to Make Use of Him viii, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_36_gross_64kb.mp3",
               "length_ms": 1540000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 46186000,
               "title": "The Expert and How to Make Use of Him viii, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_37_gross_64kb.mp3",
               "length_ms": 706000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 47726000,
               "title": "The Expert and How to Make Use of Him ix.A"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_38_gross_64kb.mp3",
               "length_ms": 1238000,
+              "readers": [
+                "jennifer-dallman"
+              ],
               "start_ms": 48432000,
               "title": "The Expert and How to Make Use of Him ix.B, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_39_gross_64kb.mp3",
               "length_ms": 1360000,
+              "readers": [
+                "jennifer-dallman"
+              ],
               "start_ms": 49670000,
               "title": "The Expert and How to Make Use of Him ix.B, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_40_gross_64kb.mp3",
               "length_ms": 1443000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 51030000,
               "title": "The Expert and How to Make Use of Him ix.C"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_41_gross_64kb.mp3",
               "length_ms": 810000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 52473000,
               "title": "The Expert and How to Make Use of Him x"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_42_gross_64kb.mp3",
               "length_ms": 1880000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 53283000,
               "title": "The Expert and How to Make Use of Him xi.A-B"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_43_gross_64kb.mp3",
               "length_ms": 407000,
+              "readers": [
+                "mark-chulsky"
+              ],
               "start_ms": 55163000,
               "title": "The Expert and How to Make Use of Him xi.C-xii"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation1_1509_librivox/criminalinvestigation1_44_gross_64kb.mp3",
               "length_ms": 1088000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 55570000,
               "title": "Legitimate Sphere of the Public Press"
             }
           ],
           "copyright_year": 1906,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt17/criminalinvestigation1_1509.jpg",
+          "credits": [
+            {
+              "person": "john-collyer-adam",
+              "role": "translator"
+            },
+            {
+              "person": "john-adam",
+              "role": "translator"
+            }
+          ],
           "id": "availle",
           "language": "en",
+          "librivox_genres": [
+            "Education",
+            "Psychology",
+            "Science"
+          ],
           "librivox_id": 9300,
+          "librivox_title": "Criminal Investigation: a Practical Handbook for Magistrates, Police Officers and Lawyers, Volume 1",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/criminal-investigation-volume-1-by-hans-gross/",
@@ -5831,243 +5994,375 @@
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_01_gross_64kb.mp3",
               "length_ms": 934000,
+              "readers": [
+                "steve"
+              ],
               "start_ms": 0,
               "title": "Practices of Criminals i"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_02_gross_64kb.mp3",
               "length_ms": 1560000,
+              "readers": [
+                "steve"
+              ],
               "start_ms": 934000,
               "title": "Practices of Criminals ii"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_03_gross_64kb.mp3",
               "length_ms": 1779000,
+              "readers": [
+                "steve"
+              ],
               "start_ms": 2494000,
               "title": "Practices of Criminals iii"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_04_gross_64kb.mp3",
               "length_ms": 1431000,
+              "readers": [
+                "steve"
+              ],
               "start_ms": 4273000,
               "title": "Practices of Criminals iv.A"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_05_gross_64kb.mp3",
               "length_ms": 1274000,
+              "readers": [
+                "steve"
+              ],
               "start_ms": 5704000,
               "title": "Practices of Criminals iv.B-C"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_06_gross_64kb.mp3",
               "length_ms": 956000,
+              "readers": [
+                "ken-dolinger"
+              ],
               "start_ms": 6978000,
               "title": "Practices of Criminals iv.D"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_07_gross_64kb.mp3",
               "length_ms": 571000,
+              "readers": [
+                "joseph-tabler"
+              ],
               "start_ms": 7934000,
               "title": "The Slang of Criminals"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_08_gross_64kb.mp3",
               "length_ms": 1307000,
+              "readers": [
+                "khand"
+              ],
               "start_ms": 8505000,
               "title": "Wandering Tribes i"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_09_gross_64kb.mp3",
               "length_ms": 1754000,
+              "readers": [
+                "linda-andrus"
+              ],
               "start_ms": 9812000,
               "title": "Wandering Tribes ii-iv"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_10_gross_64kb.mp3",
               "length_ms": 1394000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 11566000,
               "title": "Wandering Tribes v-viii"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_11_gross_64kb.mp3",
               "length_ms": 1296000,
+              "readers": [
+                "katherine-edman"
+              ],
               "start_ms": 12960000,
               "title": "Superstition i"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_12_gross_64kb.mp3",
               "length_ms": 2346000,
+              "readers": [
+                "katherine-edman"
+              ],
               "start_ms": 14256000,
               "title": "Superstition ii-iii"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_13_gross_64kb.mp3",
               "length_ms": 1888000,
+              "readers": [
+                "j-p-gillman"
+              ],
               "start_ms": 16602000,
               "title": "Superstition iv-v"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_14_gross_64kb.mp3",
               "length_ms": 869000,
+              "readers": [
+                "bev-j-stevens"
+              ],
               "start_ms": 18490000,
               "title": "Construction and Use of Weapons i.A"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_15_gross_64kb.mp3",
               "length_ms": 1943000,
+              "readers": [
+                "bev-j-stevens"
+              ],
               "start_ms": 19359000,
               "title": "Construction and Use of Weapons i.B.1.a"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_16_gross_64kb.mp3",
               "length_ms": 1701000,
+              "readers": [
+                "bev-j-stevens"
+              ],
               "start_ms": 21302000,
               "title": "Construction and Use of Weapons i.B.1.b"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_17_gross_64kb.mp3",
               "length_ms": 1535000,
+              "readers": [
+                "bev-j-stevens"
+              ],
               "start_ms": 23003000,
               "title": "Construction and Use of Weapons i.B.2-i.D"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_18_gross_64kb.mp3",
               "length_ms": 995000,
+              "readers": [
+                "bev-j-stevens"
+              ],
               "start_ms": 24538000,
               "title": "Construction and Use of Weapons ii"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_19_gross_64kb.mp3",
               "length_ms": 904000,
+              "readers": [
+                "charles-lewis"
+              ],
               "start_ms": 25533000,
               "title": "Drawing and Allied Arts i-ii"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_20_gross_64kb.mp3",
               "length_ms": 855000,
+              "readers": [
+                "maryann"
+              ],
               "start_ms": 26437000,
               "title": "Drawing and Allied Arts ii.A-B"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_21_gross_64kb.mp3",
               "length_ms": 866000,
+              "readers": [
+                "maryann"
+              ],
               "start_ms": 27292000,
               "title": "Drawing and Allied Arts ii.C-D"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_22_gross_64kb.mp3",
               "length_ms": 1097000,
+              "readers": [
+                "maryann"
+              ],
               "start_ms": 28158000,
               "title": "Drawing and Allied Arts iii-v"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_23_gross_64kb.mp3",
               "length_ms": 1114000,
+              "readers": [
+                "maryann"
+              ],
               "start_ms": 29255000,
               "title": "Drawing and Allied Arts vi-viii"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_24_gross_64kb.mp3",
               "length_ms": 1927000,
+              "readers": [
+                "lian-pang"
+              ],
               "start_ms": 30369000,
               "title": "Footprints and other Impressions i-i.B.1"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_25_gross_64kb.mp3",
               "length_ms": 1548000,
+              "readers": [
+                "mike-jones"
+              ],
               "start_ms": 32296000,
               "title": "Footprints and other Impressions i.B.2"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_26_gross_64kb.mp3",
               "length_ms": 1504000,
+              "readers": [
+                "celine-oon"
+              ],
               "start_ms": 33844000,
               "title": "Footprints and other Impressions i.C.1.a"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_27_gross_64kb.mp3",
               "length_ms": 608000,
+              "readers": [
+                "celine-oon"
+              ],
               "start_ms": 35348000,
               "title": "Footprints and other Impressions i.C.1.b"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_28_gross_64kb.mp3",
               "length_ms": 1855000,
+              "readers": [
+                "dillon-siedentopf"
+              ],
               "start_ms": 35956000,
               "title": "Footprints and other Impressions i.C.2.a"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_29_gross_64kb.mp3",
               "length_ms": 646000,
+              "readers": [
+                "dillon-siedentopf"
+              ],
               "start_ms": 37811000,
               "title": "Footprints and other Impressions i.C.2.b"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_30_gross_64kb.mp3",
               "length_ms": 1207000,
+              "readers": [
+                "dillon-siedentopf"
+              ],
               "start_ms": 38457000,
               "title": "Footprints and other Impressions i.D"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_31_gross_64kb.mp3",
               "length_ms": 1771000,
+              "readers": [
+                "dillon-siedentopf"
+              ],
               "start_ms": 39664000,
               "title": "Footprints and other Impressions i.E"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_32_gross_64kb.mp3",
               "length_ms": 422000,
+              "readers": [
+                "jennifer-fournier"
+              ],
               "start_ms": 41435000,
               "title": "Footprints and other Impressions ii"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_33_gross_64kb.mp3",
               "length_ms": 1722000,
+              "readers": [
+                "robin-mackenzie"
+              ],
               "start_ms": 41857000,
               "title": "Traces of Blood i"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_34_gross_64kb.mp3",
               "length_ms": 1625000,
+              "readers": [
+                "jael-baldwin"
+              ],
               "start_ms": 43579000,
               "title": "Traces of Blood ii-iii"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_35_gross_64kb.mp3",
               "length_ms": 964000,
+              "readers": [
+                "jennifer-fournier"
+              ],
               "start_ms": 45204000,
               "title": "Traces of Blood iv"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_36_gross_64kb.mp3",
               "length_ms": 1699000,
+              "readers": [
+                "celine-oon"
+              ],
               "start_ms": 46168000,
               "title": "Traces of Blood v-vi"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_37_gross_64kb.mp3",
               "length_ms": 1004000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 47867000,
               "title": "Ciphers and Other Secret Writings i"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_38_gross_64kb.mp3",
               "length_ms": 1282000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 48871000,
               "title": "Ciphers and Other Secret Writings ii.A-B"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation2_1607_librivox/criminalinvestigation2_39_gross_64kb.mp3",
               "length_ms": 1406000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 50153000,
               "title": "Ciphers and Other Secret Writings ii.C-iii"
             }
           ],
           "copyright_year": 1906,
           "cover_url": "https://archive.org/download/librivoxcCDCoverArt35/criminalinvestigation2_1607.jpg",
+          "credits": [
+            {
+              "person": "john-adam",
+              "role": "translator"
+            },
+            {
+              "person": "john-collyer-adam",
+              "role": "translator"
+            }
+          ],
           "id": "steve",
           "language": "en",
+          "librivox_genres": [
+            "Psychology",
+            "Science"
+          ],
           "librivox_id": 10179,
+          "librivox_title": "Criminal Investigation: a Practical Handbook for Magistrates, Police Officers and Lawyers, Volume 2",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/criminal-investigation-volume-2-by-hans-gross/",
@@ -6149,207 +6444,321 @@
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_01_gross_64kb.mp3",
               "length_ms": 2164000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 0,
               "title": "Bodily Injuries and Poisoning i-iii"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_02_gross_64kb.mp3",
               "length_ms": 1545000,
+              "readers": [
+                "bev-j-stevens"
+              ],
               "start_ms": 2164000,
               "title": "Bodily Injuries and Poisoning iv, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_03_gross_64kb.mp3",
               "length_ms": 1602000,
+              "readers": [
+                "bev-j-stevens"
+              ],
               "start_ms": 3709000,
               "title": "Bodily Injuries and Poisoning iv, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_04_gross_64kb.mp3",
               "length_ms": 965000,
+              "readers": [
+                "liz-trollinger"
+              ],
               "start_ms": 5311000,
               "title": "Bodily Injuries and Poisoning v"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_05_gross_64kb.mp3",
               "length_ms": 1157000,
+              "readers": [
+                "mbm0rxi"
+              ],
               "start_ms": 6276000,
               "title": "Bodily Injuries and Poisoning vi-vii"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_06_gross_64kb.mp3",
               "length_ms": 1892000,
+              "readers": [
+                "mbm0rxi"
+              ],
               "start_ms": 7433000,
               "title": "Bodily Injuries and Poisoning viii"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_07_gross_64kb.mp3",
               "length_ms": 588000,
+              "readers": [
+                "mbm0rxi"
+              ],
               "start_ms": 9325000,
               "title": "Bodily Injuries and Poisoning ix"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_08_gross_64kb.mp3",
               "length_ms": 1536000,
+              "readers": [
+                "mbm0rxi"
+              ],
               "start_ms": 9913000,
               "title": "Theft i-ii"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_09_gross_64kb.mp3",
               "length_ms": 826000,
+              "readers": [
+                "filip-hofman"
+              ],
               "start_ms": 11449000,
               "title": "Theft iii-iv"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_10_gross_64kb.mp3",
               "length_ms": 1743000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 12275000,
               "title": "Theft v, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_11_gross_64kb.mp3",
               "length_ms": 2198000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 14018000,
               "title": "Theft v, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_12_gross_64kb.mp3",
               "length_ms": 1177000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 16216000,
               "title": "Theft vi"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_13_gross_64kb.mp3",
               "length_ms": 2082000,
+              "readers": [
+                "linda-johnson"
+              ],
               "start_ms": 17393000,
               "title": "Theft vi.A.1"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_14_gross_64kb.mp3",
               "length_ms": 1204000,
+              "readers": [
+                "linda-johnson"
+              ],
               "start_ms": 19475000,
               "title": "Theft vi.A.2"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_15_gross_64kb.mp3",
               "length_ms": 1356000,
+              "readers": [
+                "linda-johnson"
+              ],
               "start_ms": 20679000,
               "title": "Theft vi.A.3.a"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_16_gross_64kb.mp3",
               "length_ms": 1688000,
+              "readers": [
+                "linda-johnson"
+              ],
               "start_ms": 22035000,
               "title": "Theft vi.A.3.b-A.4"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_17_gross_64kb.mp3",
               "length_ms": 1071000,
+              "readers": [
+                "mbm0rxi"
+              ],
               "start_ms": 23723000,
               "title": "Theft vi.B-D"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_18_gross_64kb.mp3",
               "length_ms": 734000,
+              "readers": [
+                "sashelliott"
+              ],
               "start_ms": 24794000,
               "title": "Theft vi.E-F"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_19_gross_64kb.mp3",
               "length_ms": 1702000,
+              "readers": [
+                "sherlholmesmd"
+              ],
               "start_ms": 25528000,
               "title": "Theft vii"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_20_gross_64kb.mp3",
               "length_ms": 1115000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 27230000,
               "title": "Cheating and Fraud i-ii.A"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_21_gross_64kb.mp3",
               "length_ms": 1516000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 28345000,
               "title": "Cheating and Fraud ii.B"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_22_gross_64kb.mp3",
               "length_ms": 1768000,
+              "readers": [
+                "sherlholmesmd"
+              ],
               "start_ms": 29861000,
               "title": "Cheating and Fraud iii.A"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_23_gross_64kb.mp3",
               "length_ms": 661000,
+              "readers": [
+                "mbm0rxi"
+              ],
               "start_ms": 31629000,
               "title": "Cheating and Fraud iii.B"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_24_gross_64kb.mp3",
               "length_ms": 1432000,
+              "readers": [
+                "eevans"
+              ],
               "start_ms": 32290000,
               "title": "Cheating and Fraud iv.A.1"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_25_gross_64kb.mp3",
               "length_ms": 843000,
+              "readers": [
+                "eevans"
+              ],
               "start_ms": 33722000,
               "title": "Cheating and Fraud iv.A.2-3"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_26_gross_64kb.mp3",
               "length_ms": 1364000,
+              "readers": [
+                "filip-hofman"
+              ],
               "start_ms": 34565000,
               "title": "Cheating and Fraud iv.A.4"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_27_gross_64kb.mp3",
               "length_ms": 975000,
+              "readers": [
+                "toddhw"
+              ],
               "start_ms": 35929000,
               "title": "Cheating and Fraud iv.A.5-6"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_28_gross_64kb.mp3",
               "length_ms": 1855000,
+              "readers": [
+                "joseph-tabler"
+              ],
               "start_ms": 36904000,
               "title": "Cheating and Fraud v"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_29_gross_64kb.mp3",
               "length_ms": 1352000,
+              "readers": [
+                "timothy-ferguson"
+              ],
               "start_ms": 38759000,
               "title": "Cheating and Fraud vi.A-F"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_30_gross_64kb.mp3",
               "length_ms": 1167000,
+              "readers": [
+                "sashelliott"
+              ],
               "start_ms": 40111000,
               "title": "Cheating and Fraud vi.G-N"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_31_gross_64kb.mp3",
               "length_ms": 837000,
+              "readers": [
+                "mbm0rxi"
+              ],
               "start_ms": 41278000,
               "title": "Cheating and Fraud vii"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_32_gross_64kb.mp3",
               "length_ms": 1311000,
+              "readers": [
+                "mbm0rxi"
+              ],
               "start_ms": 42115000,
               "title": "Arson"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalinvestigation3_1710_librivox/criminalinvestigation3_33_gross_64kb.mp3",
               "length_ms": 1801000,
+              "readers": [
+                "kieren-metts"
+              ],
               "start_ms": 43426000,
               "title": "Serious Accidents and Boiler Explosions"
             }
           ],
           "copyright_year": 1906,
           "cover_url": "https://archive.org/download/librivoxcCDCoverArt35/criminalinvestigation3_1711.jpg",
+          "credits": [
+            {
+              "person": "john-adam",
+              "role": "translator"
+            },
+            {
+              "person": "john-collyer-adam",
+              "role": "translator"
+            }
+          ],
           "id": "availle",
           "language": "en",
+          "librivox_genres": [
+            "Psychology",
+            "Science"
+          ],
           "librivox_id": 10854,
+          "librivox_title": "Criminal Investigation: a Practical Handbook for Magistrates, Police Officers and Lawyers, Volume 3",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/criminal-investigation-volume-3-by-hans-gross/",
@@ -6555,66 +6964,77 @@
             {
               "audio_url": "https://www.archive.org/download/criminalman_2501_librivox/criminalman_00_lombroso_64kb.mp3",
               "length_ms": 839000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalman_2501_librivox/criminalman_01_lombroso_64kb.mp3",
               "length_ms": 3854000,
+              "section_number": 1,
               "start_ms": 839000,
               "title": "I. The Born Criminal"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalman_2501_librivox/criminalman_02_lombroso_64kb.mp3",
               "length_ms": 1739000,
+              "section_number": 2,
               "start_ms": 4693000,
               "title": "II. The Born Criminal and his Relation to Moral Insanity and Epilepsy"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalman_2501_librivox/criminalman_03_lombroso_64kb.mp3",
               "length_ms": 2058000,
+              "section_number": 3,
               "start_ms": 6432000,
               "title": "III. The Insane Criminal"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalman_2501_librivox/criminalman_04_lombroso_64kb.mp3",
               "length_ms": 1752000,
+              "section_number": 4,
               "start_ms": 8490000,
               "title": "IV. Criminaloids"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalman_2501_librivox/criminalman_05_lombroso_64kb.mp3",
               "length_ms": 2365000,
+              "section_number": 5,
               "start_ms": 10242000,
               "title": "PART II. CRIME, ITS ORIGIN, CAUSE, AND CURE. I. Origin and Causes of Crime"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalman_2501_librivox/criminalman_06_lombroso_64kb.mp3",
               "length_ms": 1685000,
+              "section_number": 6,
               "start_ms": 12607000,
               "title": "II. The Prevention of Crime"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalman_2501_librivox/criminalman_07_lombroso_64kb.mp3",
               "length_ms": 3275000,
+              "section_number": 7,
               "start_ms": 14292000,
               "title": "III. Methods for the Cure and Repression of Crime"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalman_2501_librivox/criminalman_08_lombroso_64kb.mp3",
               "length_ms": 2796000,
+              "section_number": 8,
               "start_ms": 17567000,
               "title": "PART III. CHARACTERS AND TYPES OF CRIMINALS. I. Examination of Criminals"
             },
             {
               "audio_url": "https://www.archive.org/download/criminalman_2501_librivox/criminalman_09_lombroso_64kb.mp3",
               "length_ms": 1714000,
+              "section_number": 9,
               "start_ms": 20363000,
               "title": "II. Summary of Chief Forms of Criminality to aid in Distinguishing Between Criminals and Lunatics an in Detecting Simulation of Insanity."
             },
             {
               "audio_url": "https://www.archive.org/download/criminalman_2501_librivox/criminalman_10_lombroso_64kb.mp3",
               "length_ms": 3083000,
+              "section_number": 10,
               "start_ms": 22077000,
               "title": "APPENDIX. Works of Cesare Lombroso (Summarised)"
             }
@@ -6623,7 +7043,12 @@
           "cover_url": "https://archive.org/download/criminalman_2501_librivox/criminal_man_2501.jpg",
           "id": "leon-harvey",
           "language": "en",
+          "librivox_genres": [
+            "Social Science (Culture & Anthropology)",
+            "True Crime"
+          ],
           "librivox_id": 20765,
+          "librivox_title": "Criminal man: according to the classification of Cesare Lombroso",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/criminal-man-according-to-the-classification-of-cesare-lombroso-by-gina-lombroso/",
@@ -6736,7 +7161,11 @@
           "cover_url": "https://archive.org/download/criminal_manchester_1408_librivox/criminal_manchester_1408.jpg",
           "id": "phil-benson",
           "language": "en",
+          "librivox_genres": [
+            "True Crime"
+          ],
           "librivox_id": 9111,
+          "librivox_title": "Criminal Manchester: Experiences of a Special Correspondent",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/criminal-manchester-experiences-of-a-special-correspondent-by-unknown/",

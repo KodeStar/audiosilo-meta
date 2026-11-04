@@ -306,7 +306,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt20/Poetry_Miscellany_01_1207.jpg",
           "id": "alan-davis-drake-1945-2010",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Anthologies"
+          ],
           "librivox_id": 1811,
+          "librivox_title": "Poetry Miscellany 01",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/poetry-miscellany-01/",
@@ -477,7 +482,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt20/Poetry_Miscellany_02_1207.jpg",
           "id": "alan-davis-drake-1945-2010",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Anthologies"
+          ],
           "librivox_id": 2288,
+          "librivox_title": "Poetry Miscellany 02",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/poetry-miscellany-02/",
@@ -564,9 +574,19 @@
           ],
           "copyright_year": 1901,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt17/poetrysadi_1507.jpg",
+          "credits": [
+            {
+              "person": "nathan-haskell-dole",
+              "role": "translator"
+            }
+          ],
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 9864,
+          "librivox_title": "Poetry of Sa'di - A Selection",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-poetry-of-sadi-a-selection-by-saadi/",
@@ -614,708 +634,1183 @@
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_000_wilmot_64kb.mp3",
               "length_ms": 310000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_001_wilmot_64kb.mp3",
               "length_ms": 249000,
+              "readers": [
+                "jael-baldwin"
+              ],
+              "section_number": 1,
               "start_ms": 310000,
               "title": "The Emigrants."
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_002_wilmot_64kb.mp3",
               "length_ms": 374000,
+              "readers": [
+                "jael-baldwin"
+              ],
+              "section_number": 2,
               "start_ms": 559000,
               "title": "The Bechuana Boy"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_003_wilmot_64kb.mp3",
               "length_ms": 414000,
+              "readers": [
+                "jayson-paul"
+              ],
+              "section_number": 3,
               "start_ms": 933000,
               "title": "Afar in the Desert."
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_004_wilmot_64kb.mp3",
               "length_ms": 518000,
+              "readers": [
+                "robert-schwartz"
+              ],
+              "section_number": 4,
               "start_ms": 1347000,
               "title": "Evening Rambles"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_005_wilmot_64kb.mp3",
               "length_ms": 231000,
+              "readers": [
+                "jayson-paul"
+              ],
+              "section_number": 5,
               "start_ms": 1865000,
               "title": "The Lion Hunt"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_006_wilmot_64kb.mp3",
               "length_ms": 139000,
+              "readers": [
+                "nemo"
+              ],
+              "section_number": 6,
               "start_ms": 2096000,
               "title": "The Lion and the Giraffe"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_007_wilmot_64kb.mp3",
               "length_ms": 291000,
+              "readers": [
+                "mark-crowle-groves"
+              ],
+              "section_number": 7,
               "start_ms": 2235000,
               "title": "The Desolate Valley"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_008_wilmot_64kb.mp3",
               "length_ms": 88000,
+              "readers": [
+                "garyday"
+              ],
+              "section_number": 8,
               "start_ms": 2526000,
               "title": "The Coranna"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_009_wilmot_64kb.mp3",
               "length_ms": 107000,
+              "readers": [
+                "nemo"
+              ],
+              "section_number": 9,
               "start_ms": 2614000,
               "title": "Song of the Wild Bushman"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_010_wilmot_64kb.mp3",
               "length_ms": 262000,
+              "readers": [
+                "garyday"
+              ],
+              "section_number": 10,
               "start_ms": 2721000,
               "title": "The Captive of Camal"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_011_wilmot_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "garyday"
+              ],
+              "section_number": 11,
               "start_ms": 2983000,
               "title": "The Brown Hunter's Song"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_012_wilmot_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "nemo"
+              ],
+              "section_number": 12,
               "start_ms": 3056000,
               "title": "The Bushman"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_013_wilmot_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "garyday"
+              ],
+              "section_number": 13,
               "start_ms": 3123000,
               "title": "The Cape of Storms"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_014_wilmot_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "garyday"
+              ],
+              "section_number": 14,
               "start_ms": 3193000,
               "title": "The Hottentot"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_015_wilmot_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "garyday"
+              ],
+              "section_number": 15,
               "start_ms": 3271000,
               "title": "The Caffer"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_016_wilmot_64kb.mp3",
               "length_ms": 199000,
+              "readers": [
+                "kirby-wheatland"
+              ],
+              "section_number": 16,
               "start_ms": 3338000,
               "title": "The Ghona Widow's Lullaby"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_017_wilmot_64kb.mp3",
               "length_ms": 171000,
+              "readers": [
+                "nemo"
+              ],
+              "section_number": 17,
               "start_ms": 3537000,
               "title": "The Kosa"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_018_wilmot_64kb.mp3",
               "length_ms": 147000,
+              "readers": [
+                "nemo"
+              ],
+              "section_number": 18,
               "start_ms": 3708000,
               "title": "Makanna's Gathering"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_019_wilmot_64kb.mp3",
               "length_ms": 147000,
+              "readers": [
+                "nemo"
+              ],
+              "section_number": 19,
               "start_ms": 3855000,
               "title": "The Incantation"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_020_wilmot_64kb.mp3",
               "length_ms": 113000,
+              "readers": [
+                "garyday"
+              ],
+              "section_number": 20,
               "start_ms": 4002000,
               "title": "The Caffer Commando"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_021_wilmot_64kb.mp3",
               "length_ms": 154000,
+              "readers": [
+                "garyday"
+              ],
+              "section_number": 21,
               "start_ms": 4115000,
               "title": "The Rock of Reconcilement"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_022_wilmot_64kb.mp3",
               "length_ms": 325000,
+              "readers": [
+                "algy-pug"
+              ],
+              "section_number": 22,
               "start_ms": 4269000,
               "title": "The Forester of the Neutral Ground"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_023_wilmot_64kb.mp3",
               "length_ms": 596000,
+              "readers": [
+                "algy-pug",
+                "peter-tucker",
+                "newgatenovelist"
+              ],
+              "section_number": 23,
               "start_ms": 4594000,
               "title": "The Emigrant's Cabin at the Cape"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_024_wilmot_64kb.mp3",
               "length_ms": 190000,
+              "readers": [
+                "trudibvoice"
+              ],
+              "section_number": 24,
               "start_ms": 5190000,
               "title": "The Volunteers of England"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_025_wilmot_64kb.mp3",
               "length_ms": 288000,
+              "readers": [
+                "algy-pug"
+              ],
+              "section_number": 25,
               "start_ms": 5380000,
               "title": "The Dear Old Land"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_026_wilmot_64kb.mp3",
               "length_ms": 853000,
+              "readers": [
+                "dchen"
+              ],
+              "section_number": 26,
               "start_ms": 5668000,
               "title": "The Funeral in the Abbey"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_027_wilmot_64kb.mp3",
               "length_ms": 115000,
+              "readers": [
+                "dchen"
+              ],
+              "section_number": 27,
               "start_ms": 6521000,
               "title": "A Farewell to English Friends"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_028_wilmot_64kb.mp3",
               "length_ms": 643000,
+              "readers": [
+                "dchen"
+              ],
+              "section_number": 28,
               "start_ms": 6636000,
               "title": "A Missionary's Last Farewell to England"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_029_wilmot_64kb.mp3",
               "length_ms": 287000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 29,
               "start_ms": 7279000,
               "title": "A Reminiscence of 1820"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_030_wilmot_64kb.mp3",
               "length_ms": 175000,
+              "readers": [
+                "dru-conway"
+              ],
+              "section_number": 30,
               "start_ms": 7566000,
               "title": "Past and Present"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_031_wilmot_64kb.mp3",
               "length_ms": 203000,
+              "readers": [
+                "nemo"
+              ],
+              "section_number": 31,
               "start_ms": 7741000,
               "title": "A South African Wilderness"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_032_wilmot_64kb.mp3",
               "length_ms": 131000,
+              "readers": [
+                "jael-baldwin"
+              ],
+              "section_number": 32,
               "start_ms": 7944000,
               "title": "A Sunrise Thought at \"Cove Rock\""
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_033_wilmot_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "kirby-wheatland"
+              ],
+              "section_number": 33,
               "start_ms": 8075000,
               "title": "An Ocean Sunset"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_034_wilmot_64kb.mp3",
               "length_ms": 50000,
+              "readers": [
+                "jael-baldwin"
+              ],
+              "section_number": 34,
               "start_ms": 8184000,
               "title": "A Sight from the Shore"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_035_wilmot_64kb.mp3",
               "length_ms": 251000,
+              "readers": [
+                "sandy-dacombe-ferrar"
+              ],
+              "section_number": 35,
               "start_ms": 8234000,
               "title": "The Thunderstorm at Bathurst"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_036_wilmot_64kb.mp3",
               "length_ms": 136000,
+              "readers": [
+                "kirby-wheatland"
+              ],
+              "section_number": 36,
               "start_ms": 8485000,
               "title": "A Morning Wish for a Friend"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_037_wilmot_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "nemo"
+              ],
+              "section_number": 37,
               "start_ms": 8621000,
               "title": "A Night Thought"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_038_wilmot_64kb.mp3",
               "length_ms": 162000,
+              "readers": [
+                "fiskr"
+              ],
+              "section_number": 38,
               "start_ms": 8691000,
               "title": "The Little Shell at Cove Rock"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_039_wilmot_64kb.mp3",
               "length_ms": 173000,
+              "readers": [
+                "sonia"
+              ],
+              "section_number": 39,
               "start_ms": 8853000,
               "title": "A Tribute of Sympathy to the Defenders of Glen Lynden"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_040_wilmot_64kb.mp3",
               "length_ms": 460000,
+              "readers": [
+                "sonia"
+              ],
+              "section_number": 40,
               "start_ms": 9026000,
               "title": "The Colours of the First 24th"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_041_wilmot_64kb.mp3",
               "length_ms": 166000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 41,
               "start_ms": 9486000,
               "title": "Our Boys"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_042_wilmot_64kb.mp3",
               "length_ms": 169000,
+              "readers": [
+                "trudibvoice"
+              ],
+              "section_number": 42,
               "start_ms": 9652000,
               "title": "In the Drought Lands of South Africa"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_043_wilmot_64kb.mp3",
               "length_ms": 718000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 43,
               "start_ms": 9821000,
               "title": "The Landing of the British Settlers of 1820"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_044_wilmot_64kb.mp3",
               "length_ms": 96000,
+              "readers": [
+                "nemo"
+              ],
+              "section_number": 44,
               "start_ms": 10539000,
               "title": "In The Country of Mankoraan"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_045_wilmot_64kb.mp3",
               "length_ms": 258000,
+              "readers": [
+                "larry-wilson",
+                "naduplants"
+              ],
+              "section_number": 45,
               "start_ms": 10635000,
               "title": "Drink"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_046_wilmot_64kb.mp3",
               "length_ms": 140000,
+              "readers": [
+                "trudibvoice"
+              ],
+              "section_number": 46,
               "start_ms": 10893000,
               "title": "South Africa Rediviva"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_047_wilmot_64kb.mp3",
               "length_ms": 125000,
+              "readers": [
+                "trudibvoice"
+              ],
+              "section_number": 47,
               "start_ms": 11033000,
               "title": "The Beautful Island of Dreams"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_048_wilmot_64kb.mp3",
               "length_ms": 187000,
+              "readers": [
+                "trudibvoice"
+              ],
+              "section_number": 48,
               "start_ms": 11158000,
               "title": "Cape of Good Hope"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_049_wilmot_64kb.mp3",
               "length_ms": 118000,
+              "readers": [
+                "melanie-t"
+              ],
+              "section_number": 49,
               "start_ms": 11345000,
               "title": "Good Hope"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_050_wilmot_64kb.mp3",
               "length_ms": 136000,
+              "readers": [
+                "ryan-librivox-11848"
+              ],
+              "section_number": 50,
               "start_ms": 11463000,
               "title": "Ode"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_051_wilmot_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "nemo"
+              ],
+              "section_number": 51,
               "start_ms": 11599000,
               "title": "After a Storm"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_052_wilmot_64kb.mp3",
               "length_ms": 181000,
+              "readers": [
+                "dini-steyn"
+              ],
+              "section_number": 52,
               "start_ms": 11668000,
               "title": "Ammap and Griet"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_053_wilmot_64kb.mp3",
               "length_ms": 143000,
+              "readers": [
+                "trudibvoice"
+              ],
+              "section_number": 53,
               "start_ms": 11849000,
               "title": "Sonnets of the Cape"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_054_wilmot_64kb.mp3",
               "length_ms": 219000,
+              "readers": [
+                "trudibvoice"
+              ],
+              "section_number": 54,
               "start_ms": 11992000,
               "title": "The Faded Photograph"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_055_wilmot_64kb.mp3",
               "length_ms": 140000,
+              "readers": [
+                "trudibvoice"
+              ],
+              "section_number": 55,
               "start_ms": 12211000,
               "title": "Eveleen"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_056_wilmot_64kb.mp3",
               "length_ms": 197000,
+              "readers": [
+                "nemo"
+              ],
+              "section_number": 56,
               "start_ms": 12351000,
               "title": "Farewell to Madeira"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_057_wilmot_64kb.mp3",
               "length_ms": 289000,
+              "readers": [
+                "sonia"
+              ],
+              "section_number": 57,
               "start_ms": 12548000,
               "title": "Farewell to Fifty-five"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_058_wilmot_64kb.mp3",
               "length_ms": 133000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 58,
               "start_ms": 12837000,
               "title": "Lead, Kindly Light"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_059_wilmot_64kb.mp3",
               "length_ms": 163000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 59,
               "start_ms": 12970000,
               "title": "Should It Be According to Thy Mind"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_060_wilmot_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "sandy-dacombe-ferrar"
+              ],
+              "section_number": 60,
               "start_ms": 13133000,
               "title": "To Graaff Reinet"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_061_wilmot_64kb.mp3",
               "length_ms": 98000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 61,
               "start_ms": 13215000,
               "title": "Hymn"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_062_wilmot_64kb.mp3",
               "length_ms": 137000,
+              "readers": [
+                "jael-baldwin"
+              ],
+              "section_number": 62,
               "start_ms": 13313000,
               "title": "The Lament"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_063_wilmot_64kb.mp3",
               "length_ms": 90000,
+              "readers": [
+                "melanie-t"
+              ],
+              "section_number": 63,
               "start_ms": 13450000,
               "title": "My \"Salted\" Steed"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_064_wilmot_64kb.mp3",
               "length_ms": 200000,
+              "readers": [
+                "shana-burns"
+              ],
+              "section_number": 64,
               "start_ms": 13540000,
               "title": "A Romance from the Fields"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_065_wilmot_64kb.mp3",
               "length_ms": 686000,
+              "readers": [
+                "cathar-maiden"
+              ],
+              "section_number": 65,
               "start_ms": 13740000,
               "title": "The Flight of the Amakosa"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_066_wilmot_64kb.mp3",
               "length_ms": 1008000,
+              "readers": [
+                "cathar-maiden"
+              ],
+              "section_number": 66,
               "start_ms": 14426000,
               "title": "An Idyl of a Prince"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_067_wilmot_64kb.mp3",
               "length_ms": 590000,
+              "readers": [
+                "nemo"
+              ],
+              "section_number": 67,
               "start_ms": 15434000,
               "title": "A Christmas Apparition"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_068_wilmot_64kb.mp3",
               "length_ms": 181000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 68,
               "start_ms": 16024000,
               "title": "Freedom's Home"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_069_wilmot_64kb.mp3",
               "length_ms": 162000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 69,
               "start_ms": 16205000,
               "title": "The Gallant \"Teuton\""
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_070_wilmot_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "jael-baldwin"
+              ],
+              "section_number": 70,
               "start_ms": 16367000,
               "title": "The Sunny Hills of Africa"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_071_wilmot_64kb.mp3",
               "length_ms": 151000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 71,
               "start_ms": 16448000,
               "title": "The Southern Cross"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_072_wilmot_64kb.mp3",
               "length_ms": 258000,
+              "readers": [
+                "sonia"
+              ],
+              "section_number": 72,
               "start_ms": 16599000,
               "title": "Hon. William Porter, C.M.G"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_073_wilmot_64kb.mp3",
               "length_ms": 435000,
+              "readers": [
+                "sonia"
+              ],
+              "section_number": 73,
               "start_ms": 16857000,
               "title": "Ode on the British Settlers' Year of Jubilee"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_074_wilmot_64kb.mp3",
               "length_ms": 120000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 74,
               "start_ms": 17292000,
               "title": "Dives Redivivus"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_075_wilmot_64kb.mp3",
               "length_ms": 160000,
+              "readers": [
+                "sarah-librivox-12086"
+              ],
+              "section_number": 75,
               "start_ms": 17412000,
               "title": "The Burghers' Gathering"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_076_wilmot_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 76,
               "start_ms": 17572000,
               "title": "Storm in Tugela Valley, Natal"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_077_wilmot_64kb.mp3",
               "length_ms": 153000,
+              "readers": [
+                "sonia"
+              ],
+              "section_number": 77,
               "start_ms": 17646000,
               "title": "The Natal Gold Diggings"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_078_wilmot_64kb.mp3",
               "length_ms": 1088000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 78,
               "start_ms": 17799000,
               "title": "Nature"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_079_wilmot_64kb.mp3",
               "length_ms": 131000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 79,
               "start_ms": 18887000,
               "title": "Contentment"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_080_wilmot_64kb.mp3",
               "length_ms": 89000,
+              "readers": [
+                "dru-conway"
+              ],
+              "section_number": 80,
               "start_ms": 19018000,
               "title": "Not Here"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_081_wilmot_64kb.mp3",
               "length_ms": 148000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 81,
               "start_ms": 19107000,
               "title": "Revelation XXII"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_082_wilmot_64kb.mp3",
               "length_ms": 117000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 82,
               "start_ms": 19255000,
               "title": "Ezekiel XLVII. 1-12"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_083_wilmot_64kb.mp3",
               "length_ms": 130000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 83,
               "start_ms": 19372000,
               "title": "Change"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_084_wilmot_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 84,
               "start_ms": 19502000,
               "title": "Heavenly Friendship"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_085_wilmot_64kb.mp3",
               "length_ms": 96000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 85,
               "start_ms": 19572000,
               "title": "Lines Written in an Album"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_086_wilmot_64kb.mp3",
               "length_ms": 697000,
+              "readers": [
+                "chris-pyle"
+              ],
+              "section_number": 86,
               "start_ms": 19668000,
               "title": "The Defence of Rorke's Drift"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_087_wilmot_64kb.mp3",
               "length_ms": 220000,
+              "readers": [
+                "aravagarwal"
+              ],
+              "section_number": 87,
               "start_ms": 20365000,
               "title": "Rorke's Drift"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_088_wilmot_64kb.mp3",
               "length_ms": 110000,
+              "readers": [
+                "aravagarwal"
+              ],
+              "section_number": 88,
               "start_ms": 20585000,
               "title": "Before Ulundi"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_089_wilmot_64kb.mp3",
               "length_ms": 129000,
+              "readers": [
+                "sonia"
+              ],
+              "section_number": 89,
               "start_ms": 20695000,
               "title": "The Baron's Adventure"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_090_wilmot_64kb.mp3",
               "length_ms": 271000,
+              "readers": [
+                "lyn-stanley"
+              ],
+              "section_number": 90,
               "start_ms": 20824000,
               "title": "South African Courtship"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_091_wilmot_64kb.mp3",
               "length_ms": 142000,
+              "readers": [
+                "dini-steyn"
+              ],
+              "section_number": 91,
               "start_ms": 21095000,
               "title": "The Better Land"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_092_wilmot_64kb.mp3",
               "length_ms": 138000,
+              "readers": [
+                "dini-steyn"
+              ],
+              "section_number": 92,
               "start_ms": 21237000,
               "title": "Dolly"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_093_wilmot_64kb.mp3",
               "length_ms": 127000,
+              "readers": [
+                "dini-steyn"
+              ],
+              "section_number": 93,
               "start_ms": 21375000,
               "title": "Going Home"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_094_wilmot_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "jael-baldwin"
+              ],
+              "section_number": 94,
               "start_ms": 21502000,
               "title": "The Oxford Bible"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_095_wilmot_64kb.mp3",
               "length_ms": 79000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 95,
               "start_ms": 21596000,
               "title": "The Last Mission of the Sails"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_096_wilmot_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 96,
               "start_ms": 21675000,
               "title": "The Worn-out Sails"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_097_wilmot_64kb.mp3",
               "length_ms": 120000,
+              "readers": [
+                "kalynda"
+              ],
+              "section_number": 97,
               "start_ms": 21784000,
               "title": "In Memoriam"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_098_wilmot_64kb.mp3",
               "length_ms": 49000,
+              "readers": [
+                "kalynda"
+              ],
+              "section_number": 98,
               "start_ms": 21904000,
               "title": "Epitaph on a Diamond Digger"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_099_wilmot_64kb.mp3",
               "length_ms": 147000,
+              "readers": [
+                "sonia"
+              ],
+              "section_number": 99,
               "start_ms": 21953000,
               "title": "Afric's Greeting"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_100_wilmot_64kb.mp3",
               "length_ms": 117000,
+              "readers": [
+                "sonia"
+              ],
+              "section_number": 100,
               "start_ms": 22100000,
               "title": "Robert Godlinton"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_101_wilmot_64kb.mp3",
               "length_ms": 195000,
+              "readers": [
+                "nemo"
+              ],
+              "section_number": 101,
               "start_ms": 22217000,
               "title": "The Diamond Digger"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_102_wilmot_64kb.mp3",
               "length_ms": 179000,
+              "readers": [
+                "nemo"
+              ],
+              "section_number": 102,
               "start_ms": 22412000,
               "title": "The Last of the Bowkers"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_103_wilmot_64kb.mp3",
               "length_ms": 320000,
+              "readers": [
+                "nemo"
+              ],
+              "section_number": 103,
               "start_ms": 22591000,
               "title": "The Drunkard's Child"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_104_wilmot_64kb.mp3",
               "length_ms": 344000,
+              "readers": [
+                "cathar-maiden"
+              ],
+              "section_number": 104,
               "start_ms": 22911000,
               "title": "The Angel's Message"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_105_wilmot_64kb.mp3",
               "length_ms": 339000,
+              "readers": [
+                "cathar-maiden"
+              ],
+              "section_number": 105,
               "start_ms": 23255000,
               "title": "The \"Churl\" of the Period; and Another"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_106_wilmot_64kb.mp3",
               "length_ms": 158000,
+              "readers": [
+                "sonia"
+              ],
+              "section_number": 106,
               "start_ms": 23594000,
               "title": "Welcome"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_107_wilmot_64kb.mp3",
               "length_ms": 213000,
+              "readers": [
+                "sonia"
+              ],
+              "section_number": 107,
               "start_ms": 23752000,
               "title": "Precepts for Young and Old"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_108_wilmot_64kb.mp3",
               "length_ms": 108000,
+              "readers": [
+                "dru-conway"
+              ],
+              "section_number": 108,
               "start_ms": 23965000,
               "title": "Be Kind to One Another"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_109_wilmot_64kb.mp3",
               "length_ms": 116000,
+              "readers": [
+                "sonia"
+              ],
+              "section_number": 109,
               "start_ms": 24073000,
               "title": "Paddy's Love Symptoms"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_110_wilmot_64kb.mp3",
               "length_ms": 236000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 110,
               "start_ms": 24189000,
               "title": "Proverbial Philosophy of Humbug"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_111_wilmot_64kb.mp3",
               "length_ms": 102000,
+              "readers": [
+                "sonia"
+              ],
+              "section_number": 111,
               "start_ms": 24425000,
               "title": "Platteklip Cascade"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_112_wilmot_64kb.mp3",
               "length_ms": 291000,
+              "readers": [
+                "sonia"
+              ],
+              "section_number": 112,
               "start_ms": 24527000,
               "title": "The Port Elizabeth Pyramid"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_113_wilmot_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "sonia"
+              ],
+              "section_number": 113,
               "start_ms": 24818000,
               "title": "In Memoriam"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_114_wilmot_64kb.mp3",
               "length_ms": 105000,
+              "readers": [
+                "sonia"
+              ],
+              "section_number": 114,
               "start_ms": 24899000,
               "title": "Lord! What Is Man That Thou Art Mindful of Him!"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_115_wilmot_64kb.mp3",
               "length_ms": 238000,
+              "readers": [
+                "sonia"
+              ],
+              "section_number": 115,
               "start_ms": 25004000,
               "title": "The Rhyme of the Ox-wagon"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_116_wilmot_64kb.mp3",
               "length_ms": 121000,
+              "readers": [
+                "sonia"
+              ],
+              "section_number": 116,
               "start_ms": 25242000,
               "title": "The Cape of Good Hope"
             },
             {
               "audio_url": "https://www.archive.org/download/poetrysouthafrica_1807_librivox/poetryofsouthafrica_117_wilmot_64kb.mp3",
               "length_ms": 223000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 117,
               "start_ms": 25363000,
               "title": "The Erythrina Tree'"
             }
@@ -1324,7 +1819,11 @@
           "cover_url": "https://archive.org/download/poetrysouthafrica_1807_librivox/southafrica_1807.jpg",
           "id": "larry-wilson",
           "language": "en",
+          "librivox_genres": [
+            "Anthologies"
+          ],
           "librivox_id": 11538,
+          "librivox_title": "Poetry of South Africa",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-poetry-of-south-africa-by-alexander-wilmot/",
@@ -1502,9 +2001,19 @@
           ],
           "copyright_year": 1919,
           "cover_url": "https://archive.org/download/poetry_st_john_of_the_cross_1408_librivox/poetry_of_st_john_of_the_cross_1408_.jpg",
+          "credits": [
+            {
+              "person": "david-lewis-1814-1895",
+              "role": "translator"
+            }
+          ],
           "id": "ed-humpal",
           "language": "en",
+          "librivox_genres": [
+            "Single author"
+          ],
           "librivox_id": 9078,
+          "librivox_title": "Poetry of St John of the Cross",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/poetry-of-st-john-of-the-cross-by-saint-john-of-the-cross/",
@@ -1770,7 +2279,11 @@
           "cover_url": "https://archive.org/download/poetry_st_teresa_of_avila_amb_1503_librivox/poetry_teresa_1504.jpg",
           "id": "ann-boulais",
           "language": "en",
+          "librivox_genres": [
+            "Single author"
+          ],
           "librivox_id": 8943,
+          "librivox_title": "Poetry of St Teresa of Avila",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-poetry-of-st-teresa-of-avila-by-saint-teresa-of-avila/",
@@ -1818,702 +2331,1053 @@
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_001_various_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 0,
               "title": "Wild Geese Over The Desert, By Glenn Ward Dresbach (1889-1968)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_002_various_64kb.mp3",
               "length_ms": 51000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 71000,
               "title": "Song, By Arthur Symons (1865-1945)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_003_various_64kb.mp3",
               "length_ms": 88000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 122000,
               "title": "The Challenge, By Mary Brent Whiteside (1876-1962)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_004_various_64kb.mp3",
               "length_ms": 50000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 210000,
               "title": "Vestments, By Edward Sapir (1884-1939)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_005_various_64kb.mp3",
               "length_ms": 105000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 260000,
               "title": "Trees In Paris: 1890, By Arthur Symons (1865-1945)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_006_various_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 365000,
               "title": "Sonnet To My Wife, By Maxwell Bodenheim (1892-1954)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_007_various_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 440000,
               "title": "Wedding Gifts, By Paul Eldridge (1888-1982)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_008_various_64kb.mp3",
               "length_ms": 54000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 506000,
               "title": "Love Is Such A Mischief, By John McClure (1893-1956)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_009_various_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 560000,
               "title": "Presences, By Oscar Williams [Kaplan] (1900-1964)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_010_various_64kb.mp3",
               "length_ms": 114000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 627000,
               "title": "Ballad Inventory, By Dominic D'armes-pseud of Basil Thompson (1892-1924)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_011_various_64kb.mp3",
               "length_ms": 139000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 741000,
               "title": "Two Poems, By Maxwell Bodenheim (1892-1954)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_012_various_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 880000,
               "title": "The Last Night, By James Feibleman (1904-1987)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_013_various_64kb.mp3",
               "length_ms": 60000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 962000,
               "title": "At Broad Bar, By Martha Webster (unk)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_014_various_64kb.mp3",
               "length_ms": 30000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 1022000,
               "title": "In The Patio, By Louis Gilmore (1891-1972)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_015_various_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 1052000,
               "title": "Since You Love Beauty, O My Soul, By Paul Eldridge (1888-1982)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_016_various_64kb.mp3",
               "length_ms": 96000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 1128000,
               "title": "The Garret Of Dreams, By William Griffith (1878-1936)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_017_various_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 1224000,
               "title": "Painted Girls, By Oscar Williams (1900-1964)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_018_various_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 1297000,
               "title": "Words, By Ivan T. Dowell (unk)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_019_various_64kb.mp3",
               "length_ms": 157000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 1367000,
               "title": "Anthology Of The Lowly (Continued), By Paul Eldridge (1888-1982)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_020_various_64kb.mp3",
               "length_ms": 53000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 1524000,
               "title": "Morituri Agonisti, By Jesse Hugo Feldman (d. post-1955)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_021_various_64kb.mp3",
               "length_ms": 40000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 1577000,
               "title": "While I Talked, By Oscar Williams (1900-1964)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_022_various_64kb.mp3",
               "length_ms": 63000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 1617000,
               "title": "Grist, By Ivan T. Dowell (unk)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_023_various_64kb.mp3",
               "length_ms": 87000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 1680000,
               "title": "Underworld Note, By Maxwell Bodenheim (1892-1954)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_024_various_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 1767000,
               "title": "Off!, By Marx G. Sabel (1894-1935)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_025_various_64kb.mp3",
               "length_ms": 42000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 1841000,
               "title": "At St. Roch's Chapel, By Edna Adelaide Straus (1875-1944?)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_026_various_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 1883000,
               "title": "Ruins, By Paul Eldridge (1888-1982)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_027_various_64kb.mp3",
               "length_ms": 46000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 1952000,
               "title": "Art, By Cale Young Rice (1872-1943)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_028_various_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 1998000,
               "title": "Sarah Threeneedles (Boston, 1698.), By Katherine Lee Bates (1859-1929)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_029_various_64kb.mp3",
               "length_ms": 114000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 2092000,
               "title": "Five Inconsequential Charms, By Elizabeth J. Coatsworth (1893-1986)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_030_various_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 2206000,
               "title": "Babblers, By Martha Banning Thomas (active-1950's)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_031_various_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 2263000,
               "title": "Garbage-Heap, By Maxwell Bodenheim (1892-1954)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_032_various_64kb.mp3",
               "length_ms": 39000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 2341000,
               "title": "Nocturne, by Louis Gilmore (1891-1972)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_033_various_64kb.mp3",
               "length_ms": 49000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 2380000,
               "title": "Earth's Fingers, by Don Pops (unk)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_034_various_64kb.mp3",
               "length_ms": 144000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 2429000,
               "title": "Stigma, by Emmy Veronica Sanders (d. 1950)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_035_various_64kb.mp3",
               "length_ms": 64000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 2573000,
               "title": "Song, by Glenn Ward Dresbach (1889-1968)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_036_various_64kb.mp3",
               "length_ms": 141000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 2637000,
               "title": "Quintillian: A Ballad, by Edmund Wilson, Jr. (1895-1972)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_037_various_64kb.mp3",
               "length_ms": 126000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 2778000,
               "title": "The Centaurs, by Elizabeth J. Coatsworth (1893-1986)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_038_various_64kb.mp3",
               "length_ms": 145000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 2904000,
               "title": "Locutions Des Pierrots, trans of Jules Laforgue (1860-1887), by Hart Crane (d. 1936)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_039_various_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 3049000,
               "title": "Euthanasia, by Allen Tate (1899-1979)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_040_various_64kb.mp3",
               "length_ms": 60000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 3127000,
               "title": "Beth Marie, by William Alexander Percy (1885-1942)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_041_various_64kb.mp3",
               "length_ms": 64000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 3187000,
               "title": "An Old Man Dreams, by Walter McClellan (unk)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_042_various_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 3251000,
               "title": "She Sews, by Harold Vinal (1891-1965)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_043_various_64kb.mp3",
               "length_ms": 107000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 3332000,
               "title": "Selene, by Joseph Campbell (1879-1944)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_044_various_64kb.mp3",
               "length_ms": 95000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 3439000,
               "title": "Fruits of Circumstance, Chang Chiu-ling 張九齡 (T. 子壽). (A.D. 673-740), trans by Witter Bynner (1881-1968) & Kian Kang-Hu (d. 1954)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_045_various_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 3534000,
               "title": "Crescent Moon, by Vincent Starrett (d. 1974)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_046_various_64kb.mp3",
               "length_ms": 125000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 3591000,
               "title": "A Masque of Shadows, By Arthur Symons (1865-1945)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_047_various_64kb.mp3",
               "length_ms": 42000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 3716000,
               "title": "Effort, by Hortense Flexner (d. 1973)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_048_various_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 3758000,
               "title": "The Flight of Asmodaeus, by Katherine Lee Bates (1859-1929)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_049_various_64kb.mp3",
               "length_ms": 41000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 3840000,
               "title": "Caesura, by Hazel Collister Hutchison (d. 1977)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_050_various_64kb.mp3",
               "length_ms": 120000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 3881000,
               "title": "Portrait, by William Faulkner (d. 1962)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_051_various_64kb.mp3",
               "length_ms": 38000,
+              "readers": [
+                "winston-tharp"
+              ],
               "start_ms": 4001000,
               "title": "Ultimately, by Ernest Hemingway (d. 1961)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_052_various_64kb.mp3",
               "length_ms": 124000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 4039000,
               "title": "Nightingale, by Richard Aldington (d. 1962)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_053_various_64kb.mp3",
               "length_ms": 42000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 4163000,
               "title": "Jane Horner, by Richard Kirk (unk)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_054_various_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 4205000,
               "title": "Not To A Temple Dancer, by Glenn W. Dresbach (1889-1968)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_055_various_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 4260000,
               "title": "Mardi Gras Night - Panama, by Glenn W. Dresbach (1889-1968)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_056_various_64kb.mp3",
               "length_ms": 49000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 4341000,
               "title": "San Cristobal, by Muna Lee (d. 1965)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_057_various_64kb.mp3",
               "length_ms": 108000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 4390000,
               "title": "William Blake, by Allen Tate (1899-1979)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_058_various_64kb.mp3",
               "length_ms": 41000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 4498000,
               "title": "Appreciation, by Richard Kirk (unk)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_059_various_64kb.mp3",
               "length_ms": 177000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 4539000,
               "title": "Songs of the Seasons, by Mary Austin (d. 1934)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_060_various_64kb.mp3",
               "length_ms": 85000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 4716000,
               "title": "Truck Drivers, By Maxwell Bodenheim (1892-1954)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_061_various_64kb.mp3",
               "length_ms": 427000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 4801000,
               "title": "The Rubies of Cleopatria, by Victor O. Freeburg (d. 1953)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_062_various_64kb.mp3",
               "length_ms": 112000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 5228000,
               "title": "Parthenia, by Allen Tate (1899-1979)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_063_various_64kb.mp3",
               "length_ms": 117000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 5340000,
               "title": "Greetings from Confucious, by Paul Eldridge (1888-1982)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_064_various_64kb.mp3",
               "length_ms": 53000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 5457000,
               "title": "Mercutio, by Harry Alan Potamkin (d. 1933)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_065_various_64kb.mp3",
               "length_ms": 123000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 5510000,
               "title": "San Antonio, by John Gould Fletcher (d. 1950)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_066_various_64kb.mp3",
               "length_ms": 61000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 5633000,
               "title": "Emperor T'ang, Skeptic, by Paul Eldridge (1888-1982)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_067_various_64kb.mp3",
               "length_ms": 472000,
+              "readers": [
+                "drandall"
+              ],
               "start_ms": 5694000,
               "title": "Solitaire, by Emmy V. Sanders (d. 1950)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_068_various_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 6166000,
               "title": "Dixie, by John G. Fletcher (d. 1950)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_069_various_64kb.mp3",
               "length_ms": 60000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 6246000,
               "title": "Albert Perkins, by Benjamin Thom (unk)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_070_various_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 6306000,
               "title": "The Mouse Hunt, by Freeman Pinckney Smith"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_071_various_64kb.mp3",
               "length_ms": 50000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 6387000,
               "title": "Reflected, by Hortense Flexner (d. 1973)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_072_various_64kb.mp3",
               "length_ms": 59000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 6437000,
               "title": "Walking in An Inland City, by George O'Neil (d. 1940)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_073_various_64kb.mp3",
               "length_ms": 31000,
+              "readers": [
+                "drandall"
+              ],
               "start_ms": 6496000,
               "title": "Hour Glass, by Hortense Flexner (d. 1973)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_074_various_64kb.mp3",
               "length_ms": 31000,
+              "readers": [
+                "drandall"
+              ],
               "start_ms": 6527000,
               "title": "Things For Granted, by Richard Kirk (unk)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_075_various_64kb.mp3",
               "length_ms": 175000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 6558000,
               "title": "Stucco and Stone, by Edmund Wilson, Jr. (1895-1972)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_076_various_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 6733000,
               "title": "To A Road Runner, by Glenn W. Dresbach (1889-1968)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_077_various_64kb.mp3",
               "length_ms": 32000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 6799000,
               "title": "Optimist, by Edward Sapir (1884-1939)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_078_various_64kb.mp3",
               "length_ms": 30000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 6831000,
               "title": "Tragedy, by Paul S. Nickerson"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_079_various_64kb.mp3",
               "length_ms": 45000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 6861000,
               "title": "Nora, by Jean Toomer (d. 1967)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_080_various_64kb.mp3",
               "length_ms": 39000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 6906000,
               "title": "Resurrection, by Paul Eldridge (1888-1982)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_081_various_64kb.mp3",
               "length_ms": 64000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 6945000,
               "title": "The Cynic, by Helen Underwood Hoyt (d. 1930)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_082_various_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 7009000,
               "title": "The Voice of Death, by Oscar Williams (1900-1964)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_083_various_64kb.mp3",
               "length_ms": 42000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 7085000,
               "title": "Storm Ending, by Jean Toomer (d. 1967)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_084_various_64kb.mp3",
               "length_ms": 54000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 7127000,
               "title": "Revisitants, by Margaret Widdemer (d. 1978)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_085_various_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 7181000,
               "title": "The Incurable Mystic Answers Western Ambitions, By Maxwell Bodenheim (1892-1954)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_086_various_64kb.mp3",
               "length_ms": 39000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 7290000,
               "title": "Conscience, by Edgar Boutwell (unk)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_087_various_64kb.mp3",
               "length_ms": 83000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 7329000,
               "title": "Apparitions, by Maurice Lesemann (d. 1981)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_088_various_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 7412000,
               "title": "Tomb of a Ming Poet, by Arthur Davison Ficke (d. 1945)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_089_various_64kb.mp3",
               "length_ms": 50000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 7484000,
               "title": "The End, by Oscar Williams (1900-1964)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_090_various_64kb.mp3",
               "length_ms": 136000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 7534000,
               "title": "Corymba, by Donald Davidson (d. 1968)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_091_various_64kb.mp3",
               "length_ms": 86000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 7670000,
               "title": "Dryad, by Donald Davidson (d. 1968)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_092_various_64kb.mp3",
               "length_ms": 115000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 7756000,
               "title": "Arrestment, by Leslie Nelson Jennings (d.1972)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_093_various_64kb.mp3",
               "length_ms": 186000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 7871000,
               "title": "The Sword Converses With A Philosophor, by Maxwell Bodenheim (1892-1954)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_094_various_64kb.mp3",
               "length_ms": 30000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 8057000,
               "title": "Dalliance, by Paul S. Nickerson"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_095_various_64kb.mp3",
               "length_ms": 50000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 8087000,
               "title": "A Rainbow Over the Desert, by Glenn W. Dresbach (1889-1968)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_096_various_64kb.mp3",
               "length_ms": 56000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 8137000,
               "title": "Chansons D'Or, by Ann Hamilton (unk)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_097_various_64kb.mp3",
               "length_ms": 148000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 8193000,
               "title": "Naiad, by Donald Davidson (d. 1968)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_098_various_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 8341000,
               "title": "An Old Man's Walk, by Hazel Hall (d. 1924)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_099_various_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 8411000,
               "title": "Three Slender Things, by Adaline Katz (post-1963)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_100_various_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 8476000,
               "title": "Research, by George O'Neil (d. 1940)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_101_various_64kb.mp3",
               "length_ms": 101000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 8550000,
               "title": "Stranger, by Allen Tate (1899-1979)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_102_various_64kb.mp3",
               "length_ms": 145000,
+              "readers": [
+                "kevin-stewart"
+              ],
               "start_ms": 8651000,
               "title": "On the Road to Wockensutter, by John Crowe Ransom (d. 1974)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_103_various_64kb.mp3",
               "length_ms": 42000,
+              "readers": [
+                "drandall"
+              ],
               "start_ms": 8796000,
               "title": "Garret, by Marian Nevin Funk (unk)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_104_various_64kb.mp3",
               "length_ms": 58000,
+              "readers": [
+                "drandall"
+              ],
               "start_ms": 8838000,
               "title": "Into the Sunset, by Elizabeth J. Coatsworth (1893-1986)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_105_various_64kb.mp3",
               "length_ms": 40000,
+              "readers": [
+                "chris-pyle"
+              ],
               "start_ms": 8896000,
               "title": "Hamlet, by Richard Kirk (unk)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_106_various_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 8936000,
               "title": "Lunatic, by Marjorie Allen Seiffert (d. 1970)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_107_various_64kb.mp3",
               "length_ms": 52000,
+              "readers": [
+                "skip-corris"
+              ],
               "start_ms": 9011000,
               "title": "Work, by Edgar Boutwell (unk)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_108_various_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "skip-corris"
+              ],
               "start_ms": 9063000,
               "title": "Pensee, by Vincent Starrett (d. 1974)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_109_various_64kb.mp3",
               "length_ms": 188000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 9137000,
               "title": "Harvest Song, by Jean Toomer (d. 1967)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_110_various_64kb.mp3",
               "length_ms": 167000,
+              "readers": [
+                "kevin-stewart"
+              ],
               "start_ms": 9325000,
               "title": "Men Women and Words, by Ben Ray Redman (d. 1961)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_111_various_64kb.mp3",
               "length_ms": 105000,
+              "readers": [
+                "drandall"
+              ],
               "start_ms": 9492000,
               "title": "Hitch Your Wagon to a Star, by Allen Tate (1899-1979)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_112_various_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 9597000,
               "title": "Paris, by Hazel C. Hutchison (d. 1977)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_113_various_64kb.mp3",
               "length_ms": 32000,
+              "readers": [
+                "drandall"
+              ],
               "start_ms": 9691000,
               "title": "Fellow Creature, by Richard Kirk (unk)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_114_various_64kb.mp3",
               "length_ms": 53000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 9723000,
               "title": "Madman, by Marian N. Funk (unk)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_115_various_64kb.mp3",
               "length_ms": 61000,
+              "readers": [
+                "drandall"
+              ],
               "start_ms": 9776000,
               "title": "Gayoso Girls Are Golden, by Walter McClellan (unk)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_116_various_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "kevin-stewart"
+              ],
               "start_ms": 9837000,
               "title": "Poem, by Ivan T. Dowell (unk)"
             },
             {
               "audio_url": "https://www.archive.org/download/double_dealer_january-december_1922_1804_librivox/poetryofthedoubledealer1922_117_various_64kb.mp3",
               "length_ms": 47000,
+              "readers": [
+                "kevin-stewart"
+              ],
               "start_ms": 9902000,
               "title": "Dagmar, by Yvonne Juvenal (unk)"
             }
@@ -2522,7 +3386,11 @@
           "cover_url": "https://archive.org/download/double_dealer_january-december_1922_1804_librivox/double_dealer22_1804.jpg",
           "id": "nemo",
           "language": "en",
+          "librivox_genres": [
+            "Anthologies"
+          ],
           "librivox_id": 12732,
+          "librivox_title": "Poetry Of 'The Double Dealer', January-December 1922",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/poetry-of-the-double-dealer-january-december-1922-by-various/",
@@ -2580,144 +3448,168 @@
             {
               "audio_url": "https://www.archive.org/download/poetry_thomas_moore_1708_librivox/poetrythomasmoore_00_moore_64kb.mp3",
               "length_ms": 1887000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/poetry_thomas_moore_1708_librivox/poetrythomasmoore_01_moore_64kb.mp3",
               "length_ms": 849000,
+              "section_number": 1,
               "start_ms": 1887000,
               "title": "Irish Melodies - Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/poetry_thomas_moore_1708_librivox/poetrythomasmoore_02_moore_64kb.mp3",
               "length_ms": 895000,
+              "section_number": 2,
               "start_ms": 2736000,
               "title": "Irish Melodies - Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/poetry_thomas_moore_1708_librivox/poetrythomasmoore_03_moore_64kb.mp3",
               "length_ms": 893000,
+              "section_number": 3,
               "start_ms": 3631000,
               "title": "Irish Melodies - Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/poetry_thomas_moore_1708_librivox/poetrythomasmoore_04_moore_64kb.mp3",
               "length_ms": 867000,
+              "section_number": 4,
               "start_ms": 4524000,
               "title": "Irish Melodies - Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/poetry_thomas_moore_1708_librivox/poetrythomasmoore_05_moore_64kb.mp3",
               "length_ms": 443000,
+              "section_number": 5,
               "start_ms": 5391000,
               "title": "National Airs"
             },
             {
               "audio_url": "https://www.archive.org/download/poetry_thomas_moore_1708_librivox/poetrythomasmoore_06_moore_64kb.mp3",
               "length_ms": 367000,
+              "section_number": 6,
               "start_ms": 5834000,
               "title": "Sacred Songs"
             },
             {
               "audio_url": "https://www.archive.org/download/poetry_thomas_moore_1708_librivox/poetrythomasmoore_07_moore_64kb.mp3",
               "length_ms": 787000,
+              "section_number": 7,
               "start_ms": 6201000,
               "title": "Early Poems, Ballads and Songs - Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/poetry_thomas_moore_1708_librivox/poetrythomasmoore_08_moore_64kb.mp3",
               "length_ms": 856000,
+              "section_number": 8,
               "start_ms": 6988000,
               "title": "Early Poems, Ballads and Songs - Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/poetry_thomas_moore_1708_librivox/poetrythomasmoore_09_moore_64kb.mp3",
               "length_ms": 835000,
+              "section_number": 9,
               "start_ms": 7844000,
               "title": "Early Poems, Ballads and Songs - Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/poetry_thomas_moore_1708_librivox/poetrythomasmoore_10_moore_64kb.mp3",
               "length_ms": 834000,
+              "section_number": 10,
               "start_ms": 8679000,
               "title": "Poems Relating to America"
             },
             {
               "audio_url": "https://www.archive.org/download/poetry_thomas_moore_1708_librivox/poetrythomasmoore_11_moore_64kb.mp3",
               "length_ms": 1578000,
+              "section_number": 11,
               "start_ms": 9513000,
               "title": "Lalla Rookh: The Veiled Prophet of Khorassan"
             },
             {
               "audio_url": "https://www.archive.org/download/poetry_thomas_moore_1708_librivox/poetrythomasmoore_12_moore_64kb.mp3",
               "length_ms": 489000,
+              "section_number": 12,
               "start_ms": 11091000,
               "title": "Lalla Rookh: Paradise and the Peri"
             },
             {
               "audio_url": "https://www.archive.org/download/poetry_thomas_moore_1708_librivox/poetrythomasmoore_13_moore_64kb.mp3",
               "length_ms": 1297000,
+              "section_number": 13,
               "start_ms": 11580000,
               "title": "Lalla Rookh: The Fire-Worshipers"
             },
             {
               "audio_url": "https://www.archive.org/download/poetry_thomas_moore_1708_librivox/poetrythomasmoore_14_moore_64kb.mp3",
               "length_ms": 585000,
+              "section_number": 14,
               "start_ms": 12877000,
               "title": "Lalla Rookh: The Light of the Harem"
             },
             {
               "audio_url": "https://www.archive.org/download/poetry_thomas_moore_1708_librivox/poetrythomasmoore_15_moore_64kb.mp3",
               "length_ms": 663000,
+              "section_number": 15,
               "start_ms": 13462000,
               "title": "The Loves of the Angels"
             },
             {
               "audio_url": "https://www.archive.org/download/poetry_thomas_moore_1708_librivox/poetrythomasmoore_16_moore_64kb.mp3",
               "length_ms": 786000,
+              "section_number": 16,
               "start_ms": 14125000,
               "title": "Satirical And Humorous Poems - Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/poetry_thomas_moore_1708_librivox/poetrythomasmoore_17_moore_64kb.mp3",
               "length_ms": 947000,
+              "section_number": 17,
               "start_ms": 14911000,
               "title": "Satirical And Humorous Poems - Part 2: The Fudge Family in Paris"
             },
             {
               "audio_url": "https://www.archive.org/download/poetry_thomas_moore_1708_librivox/poetrythomasmoore_18_moore_64kb.mp3",
               "length_ms": 364000,
+              "section_number": 18,
               "start_ms": 15858000,
               "title": "Satirical And Humorous Poems - Part 3: Fables for the Holy Alliance"
             },
             {
               "audio_url": "https://www.archive.org/download/poetry_thomas_moore_1708_librivox/poetrythomasmoore_19_moore_64kb.mp3",
               "length_ms": 1282000,
+              "section_number": 19,
               "start_ms": 16222000,
               "title": "Satirical And Humorous Poems - Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/poetry_thomas_moore_1708_librivox/poetrythomasmoore_20_moore_64kb.mp3",
               "length_ms": 1351000,
+              "section_number": 20,
               "start_ms": 17504000,
               "title": "Satirical And Humorous Poems - Part 5"
             },
             {
               "audio_url": "https://www.archive.org/download/poetry_thomas_moore_1708_librivox/poetrythomasmoore_21_moore_64kb.mp3",
               "length_ms": 992000,
+              "section_number": 21,
               "start_ms": 18855000,
               "title": "Miscellaneous Poems"
             },
             {
               "audio_url": "https://www.archive.org/download/poetry_thomas_moore_1708_librivox/poetrythomasmoore_22_moore_64kb.mp3",
               "length_ms": 600000,
+              "section_number": 22,
               "start_ms": 19847000,
               "title": "Odes of Anacreon"
             },
             {
               "audio_url": "https://www.archive.org/download/poetry_thomas_moore_1708_librivox/poetrythomasmoore_23_moore_64kb.mp3",
               "length_ms": 81000,
+              "section_number": 23,
               "start_ms": 20447000,
               "title": "Epigram - Around the Tomb, O Bard Divine"
             }
@@ -2726,7 +3618,11 @@
           "cover_url": "https://archive.org/download/poetry_thomas_moore_1708_librivox/poetry_thomas_moore_1708.jpg",
           "id": "noelbadrian",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 11859,
+          "librivox_title": "Poetry of Thomas Moore",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/poetry-of-thomas-moore-by-thomas-moore/",
@@ -3387,30 +4283,45 @@
             {
               "audio_url": "https://www.archive.org/download/poets_2310.poem_librivox/poets_ryan_bk_64kb.mp3",
               "length_ms": 187000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 0,
               "title": "Poets - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/poets_2310.poem_librivox/poets_ryan_ikl_64kb.mp3",
               "length_ms": 152000,
+              "readers": [
+                "inkell"
+              ],
               "start_ms": 187000,
               "title": "Poets - Read by IKL"
             },
             {
               "audio_url": "https://www.archive.org/download/poets_2310.poem_librivox/poets_ryan_ls_64kb.mp3",
               "length_ms": 173000,
+              "readers": [
+                "leesalter"
+              ],
               "start_ms": 339000,
               "title": "Poets - Read by LS"
             },
             {
               "audio_url": "https://www.archive.org/download/poets_2310.poem_librivox/poets_ryan_mtw_64kb.mp3",
               "length_ms": 163000,
+              "readers": [
+                "maryt"
+              ],
               "start_ms": 512000,
               "title": "Poets - Read by MTW"
             },
             {
               "audio_url": "https://www.archive.org/download/poets_2310.poem_librivox/poets_ryan_rr_64kb.mp3",
               "length_ms": 194000,
+              "readers": [
+                "redrun"
+              ],
               "start_ms": 675000,
               "title": "Poets - Read by RR"
             }
@@ -3419,7 +4330,11 @@
           "cover_url": "https://archive.org/download/poets_2310.poem_librivox/poets_2310.jpg",
           "id": "bruce-kachuk",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 19782,
+          "librivox_title": "Poets",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/poets-by-abram-joseph-ryan/",
@@ -3601,78 +4516,117 @@
             {
               "audio_url": "https://www.archive.org/download/poetsforge_1112_librivox/poetsforge_jackson_amb_64kb.mp3",
               "length_ms": 104000,
+              "readers": [
+                "ann-boulais"
+              ],
               "start_ms": 0,
               "title": "The Poet's Forge - Read by AMB"
             },
             {
               "audio_url": "https://www.archive.org/download/poetsforge_1112_librivox/poetsforge_jackson_cc_64kb.mp3",
               "length_ms": 84000,
+              "readers": [
+                "chris-caron"
+              ],
               "start_ms": 104000,
               "title": "The Poet's Forge - Read by CC"
             },
             {
               "audio_url": "https://www.archive.org/download/poetsforge_1112_librivox/poetsforge_jackson_dl_64kb.mp3",
               "length_ms": 118000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 188000,
               "title": "The Poet's Forge - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/poetsforge_1112_librivox/poetsforge_jackson_fs_64kb.mp3",
               "length_ms": 143000,
+              "readers": [
+                "fshort"
+              ],
               "start_ms": 306000,
               "title": "The Poet's Forge - Read by FS"
             },
             {
               "audio_url": "https://www.archive.org/download/poetsforge_1112_librivox/poetsforge_jackson_gc_64kb.mp3",
               "length_ms": 105000,
+              "readers": [
+                "snapdragon"
+              ],
               "start_ms": 449000,
               "title": "The Poet's Forge - Read by GC"
             },
             {
               "audio_url": "https://www.archive.org/download/poetsforge_1112_librivox/poetsforge_jackson_ghs_64kb.mp3",
               "length_ms": 116000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 554000,
               "title": "The Poet's Forge - Read by GHS"
             },
             {
               "audio_url": "https://www.archive.org/download/poetsforge_1112_librivox/poetsforge_jackson_jcm_64kb.mp3",
               "length_ms": 110000,
+              "readers": [
+                "jason-mills"
+              ],
               "start_ms": 670000,
               "title": "The Poet's Forge - Read by JCM"
             },
             {
               "audio_url": "https://www.archive.org/download/poetsforge_1112_librivox/poetsforge_jackson_lah_64kb.mp3",
               "length_ms": 133000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 780000,
               "title": "The Poet's Forge - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/poetsforge_1112_librivox/poetsforge_jackson_lkp_64kb.mp3",
               "length_ms": 101000,
+              "readers": [
+                "lucy-perry"
+              ],
               "start_ms": 913000,
               "title": "The Poet's Forge - Read by LKP"
             },
             {
               "audio_url": "https://www.archive.org/download/poetsforge_1112_librivox/poetsforge_jackson_llb_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "lewis"
+              ],
               "start_ms": 1014000,
               "title": "The Poet's Forge - Read by LLB"
             },
             {
               "audio_url": "https://www.archive.org/download/poetsforge_1112_librivox/poetsforge_jackson_llw_64kb.mp3",
               "length_ms": 122000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 1123000,
               "title": "The Poet's Forge - Read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/poetsforge_1112_librivox/poetsforge_jackson_ref_64kb.mp3",
               "length_ms": 118000,
+              "readers": [
+                "rhonda-federman"
+              ],
               "start_ms": 1245000,
               "title": "The Poet's Forge - Read by REF"
             },
             {
               "audio_url": "https://www.archive.org/download/poetsforge_1112_librivox/poetsforge_jackson_rn_64kb.mp3",
               "length_ms": 143000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 1363000,
               "title": "The Poet's Forge - Read by RN"
             }
@@ -3681,7 +4635,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt30/Poets_Forge_1303.jpg",
           "id": "ann-boulais",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 6101,
+          "librivox_title": "Poet's Forge",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-poets-forge-by-helen-hunt-jackson/",
@@ -3744,114 +4702,171 @@
             {
               "audio_url": "https://www.archive.org/download/the_poets_hat_1810.poem_librivox/poetshat_murray_alp_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 0,
               "title": "The Poet's Hat - Read by ALP"
             },
             {
               "audio_url": "https://www.archive.org/download/the_poets_hat_1810.poem_librivox/poetshat_murray_bk_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 67000,
               "title": "The Poet's Hat - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/the_poets_hat_1810.poem_librivox/poetshat_murray_dh_64kb.mp3",
               "length_ms": 64000,
+              "readers": [
+                "dan-h"
+              ],
               "start_ms": 141000,
               "title": "The Poet's Hat - Read by DH"
             },
             {
               "audio_url": "https://www.archive.org/download/the_poets_hat_1810.poem_librivox/poetshat_murray_dl_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 205000,
               "title": "The Poet's Hat - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/the_poets_hat_1810.poem_librivox/poetshat_murray_el_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "newgatenovelist"
+              ],
               "start_ms": 272000,
               "title": "The Poet's Hat - Read by EL"
             },
             {
               "audio_url": "https://www.archive.org/download/the_poets_hat_1810.poem_librivox/poetshat_murray_fh_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "foon"
+              ],
               "start_ms": 346000,
               "title": "The Poet's Hat - Read by FH"
             },
             {
               "audio_url": "https://www.archive.org/download/the_poets_hat_1810.poem_librivox/poetshat_murray_fs_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "fshort"
+              ],
               "start_ms": 419000,
               "title": "The Poet's Hat - Read by FS"
             },
             {
               "audio_url": "https://www.archive.org/download/the_poets_hat_1810.poem_librivox/poetshat_murray_gb_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "garth-burton"
+              ],
               "start_ms": 494000,
               "title": "The Poet's Hat - Read by GB"
             },
             {
               "audio_url": "https://www.archive.org/download/the_poets_hat_1810.poem_librivox/poetshat_murray_grs_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "graham-scott"
+              ],
               "start_ms": 569000,
               "title": "The Poet's Hat - Read by GRS"
             },
             {
               "audio_url": "https://www.archive.org/download/the_poets_hat_1810.poem_librivox/poetshat_murray_lah_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 637000,
               "title": "The Poet's Hat - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/the_poets_hat_1810.poem_librivox/poetshat_murray_lcw_64kb.mp3",
               "length_ms": 63000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 706000,
               "title": "The Poet's Hat - Read by LCW"
             },
             {
               "audio_url": "https://www.archive.org/download/the_poets_hat_1810.poem_librivox/poetshat_murray_nd_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "nan-dodge"
+              ],
               "start_ms": 769000,
               "title": "The Poet's Hat - Read by ND"
             },
             {
               "audio_url": "https://www.archive.org/download/the_poets_hat_1810.poem_librivox/poetshat_murray_npd_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "zloot"
+              ],
               "start_ms": 834000,
               "title": "The Poet's Hat - Read by NPD"
             },
             {
               "audio_url": "https://www.archive.org/download/the_poets_hat_1810.poem_librivox/poetshat_murray_nr_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 900000,
               "title": "The Poet's Hat - Read by NR"
             },
             {
               "audio_url": "https://www.archive.org/download/the_poets_hat_1810.poem_librivox/poetshat_murray_ps_64kb.mp3",
               "length_ms": 64000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 970000,
               "title": "The Poet's Hat - Read by PS"
             },
             {
               "audio_url": "https://www.archive.org/download/the_poets_hat_1810.poem_librivox/poetshat_murray_raj_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "rajvo"
+              ],
               "start_ms": 1034000,
               "title": "The Poet's Hat - Read by RAJ"
             },
             {
               "audio_url": "https://www.archive.org/download/the_poets_hat_1810.poem_librivox/poetshat_murray_tan_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "tanmay007"
+              ],
               "start_ms": 1101000,
               "title": "The Poet's Hat - Read by TAN"
             },
             {
               "audio_url": "https://www.archive.org/download/the_poets_hat_1810.poem_librivox/poetshat_murray_tp_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "tomas-peter"
+              ],
               "start_ms": 1175000,
               "title": "The Poet's Hat - Read by TP"
             },
             {
               "audio_url": "https://www.archive.org/download/the_poets_hat_1810.poem_librivox/poetshat_murray_vb_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "tovarisch"
+              ],
               "start_ms": 1248000,
               "title": "The Poet's Hat - Read by VB"
             }
@@ -3860,7 +4875,11 @@
           "cover_url": "https://archive.org/download/the_poets_hat_1810.poem_librivox/poet_hat_1810.jpg",
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 13445,
+          "librivox_title": "Poet's Hat",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-poets-hat-by-robert-f-murray/",
@@ -4231,7 +5250,12 @@
           "cover_url": "https://archive.org/download/librivoxcdcoverart36/poetsofourdays_2006.jpg",
           "id": "mark-chulsky",
           "language": "ru",
+          "librivox_genres": [
+            "Poetry",
+            "Anthologies"
+          ],
           "librivox_id": 14954,
+          "librivox_title": "Поэты наших дней: Антология / Poets of Our Days, Anthology",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/poets-of-our-days-anthology-by-various/",
@@ -4302,7 +5326,12 @@
           "cover_url": "https://archive.org/download/Poezdka_Polesye_librivox/Poezdka_v_Polesye_1104.jpg",
           "id": "yakovlev-valery",
           "language": "ru",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Biography & Autobiography"
+          ],
           "librivox_id": 251,
+          "librivox_title": "Poezdka v Polesye",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/poezdka-v-polesye-by-ivan-turgenev/",
@@ -4350,1506 +5379,1757 @@
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_000_eminescu_64kb.mp3",
               "length_ms": 172000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "LA MORMANTUL LUI ARON PUMNUL"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_001_eminescu_64kb.mp3",
               "length_ms": 99000,
+              "section_number": 1,
               "start_ms": 172000,
               "title": "DE-AS AVEA…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_002_eminescu_64kb.mp3",
               "length_ms": 291000,
+              "section_number": 2,
               "start_ms": 271000,
               "title": "O CALARIRE IN ZORI"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_003_eminescu_64kb.mp3",
               "length_ms": 206000,
+              "section_number": 3,
               "start_ms": 562000,
               "title": "DIN STRAINATATE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_004_eminescu_64kb.mp3",
               "length_ms": 167000,
+              "section_number": 4,
               "start_ms": 768000,
               "title": "LA BUCOVINA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_005_eminescu_64kb.mp3",
               "length_ms": 195000,
+              "section_number": 5,
               "start_ms": 935000,
               "title": "SPERANTA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_006_eminescu_64kb.mp3",
               "length_ms": 181000,
+              "section_number": 6,
               "start_ms": 1130000,
               "title": "ASTA VREU, DRAGUL MEU!"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_007_eminescu_64kb.mp3",
               "length_ms": 137000,
+              "section_number": 7,
               "start_ms": 1311000,
               "title": "MISTERELE NOPTII"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_008_eminescu_64kb.mp3",
               "length_ms": 169000,
+              "section_number": 8,
               "start_ms": 1448000,
               "title": "CE-TI DORESC EU TIE, DULCE ROMANIE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_009_eminescu_64kb.mp3",
               "length_ms": 136000,
+              "section_number": 9,
               "start_ms": 1617000,
               "title": "LA HELIADE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_010_eminescu_64kb.mp3",
               "length_ms": 133000,
+              "section_number": 10,
               "start_ms": 1753000,
               "title": "LA O ARTISTA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_011_eminescu_64kb.mp3",
               "length_ms": 195000,
+              "section_number": 11,
               "start_ms": 1886000,
               "title": "AMORUL UNEI MARMURE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_012_eminescu_64kb.mp3",
               "length_ms": 381000,
+              "section_number": 12,
               "start_ms": 2081000,
               "title": "JUNII CORUPTI"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_013_eminescu_64kb.mp3",
               "length_ms": 230000,
+              "section_number": 13,
               "start_ms": 2462000,
               "title": "AMICULUI F. I."
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_014_eminescu_64kb.mp3",
               "length_ms": 141000,
+              "section_number": 14,
               "start_ms": 2692000,
               "title": "LA MOARTEA PRINCIPELUI STIRBEY"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_015_eminescu_64kb.mp3",
               "length_ms": 306000,
+              "section_number": 15,
               "start_ms": 2833000,
               "title": "VENERE SI MADONA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_016_eminescu_64kb.mp3",
               "length_ms": 612000,
+              "section_number": 16,
               "start_ms": 3139000,
               "title": "EPIGONII"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_017_eminescu_64kb.mp3",
               "length_ms": 329000,
+              "section_number": 17,
               "start_ms": 3751000,
               "title": "MORTUA EST!"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_018_eminescu_64kb.mp3",
               "length_ms": 86000,
+              "section_number": 18,
               "start_ms": 4080000,
               "title": "INGER DE PAZA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_019_eminescu_64kb.mp3",
               "length_ms": 151000,
+              "section_number": 19,
               "start_ms": 4166000,
               "title": "NOAPTEA…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_020_eminescu_64kb.mp3",
               "length_ms": 572000,
+              "section_number": 20,
               "start_ms": 4317000,
               "title": "EGIPETUL"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_021_eminescu_64kb.mp3",
               "length_ms": 444000,
+              "section_number": 21,
               "start_ms": 4889000,
               "title": "CUGETARILE SARMANULUI DIONIS"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_022_eminescu_64kb.mp3",
               "length_ms": 675000,
+              "section_number": 22,
               "start_ms": 5333000,
               "title": "INGER SI DEMON"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_023_eminescu_64kb.mp3",
               "length_ms": 171000,
+              "section_number": 23,
               "start_ms": 6008000,
               "title": "FLOARE ALBASTRA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_024_eminescu_64kb.mp3",
               "length_ms": 938000,
+              "section_number": 24,
               "start_ms": 6179000,
               "title": "IMPARAT SI PROLETAR"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_025_eminescu_64kb.mp3",
               "length_ms": 252000,
+              "section_number": 25,
               "start_ms": 7117000,
               "title": "FAT-FRUMOS DIN TEI"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_026_eminescu_64kb.mp3",
               "length_ms": 230000,
+              "section_number": 26,
               "start_ms": 7369000,
               "title": "MELANCOLIE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_027_eminescu_64kb.mp3",
               "length_ms": 100000,
+              "section_number": 27,
               "start_ms": 7599000,
               "title": "CRAIASA DIN POVESTI"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_028_eminescu_64kb.mp3",
               "length_ms": 89000,
+              "section_number": 28,
               "start_ms": 7699000,
               "title": "LACUL"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_029_eminescu_64kb.mp3",
               "length_ms": 94000,
+              "section_number": 29,
               "start_ms": 7788000,
               "title": "DORINTA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_030_eminescu_64kb.mp3",
               "length_ms": 1449000,
+              "section_number": 30,
               "start_ms": 7882000,
               "title": "CALIN (file din poveste)"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_031_eminescu_64kb.mp3",
               "length_ms": 1376000,
+              "section_number": 31,
               "start_ms": 9331000,
               "title": "STRIGOII"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_032_eminescu_64kb.mp3",
               "length_ms": 165000,
+              "section_number": 32,
               "start_ms": 10707000,
               "title": "POVESTEA CODRULUI"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_033_eminescu_64kb.mp3",
               "length_ms": 247000,
+              "section_number": 33,
               "start_ms": 10872000,
               "title": "POVESTEA TEIULUI"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_034_eminescu_64kb.mp3",
               "length_ms": 137000,
+              "section_number": 34,
               "start_ms": 11119000,
               "title": "SINGURATATE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_035_eminescu_64kb.mp3",
               "length_ms": 133000,
+              "section_number": 35,
               "start_ms": 11256000,
               "title": "DEPARTE SUNT DE TINE…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_036_eminescu_64kb.mp3",
               "length_ms": 124000,
+              "section_number": 36,
               "start_ms": 11389000,
               "title": "PAJUL CUPIDON"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_037_eminescu_64kb.mp3",
               "length_ms": 117000,
+              "section_number": 37,
               "start_ms": 11513000,
               "title": "O, RAMAI"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_038_eminescu_64kb.mp3",
               "length_ms": 113000,
+              "section_number": 38,
               "start_ms": 11630000,
               "title": "PE ACEEASI ULICIOARA…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_039_eminescu_64kb.mp3",
               "length_ms": 230000,
+              "section_number": 39,
               "start_ms": 11743000,
               "title": "RUGACIUNEA UNUI DAC"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_040_eminescu_64kb.mp3",
               "length_ms": 171000,
+              "section_number": 40,
               "start_ms": 11973000,
               "title": "ATAT DE FRAGEDA…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_041_eminescu_64kb.mp3",
               "length_ms": 199000,
+              "section_number": 41,
               "start_ms": 12144000,
               "title": "SONETE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_042_eminescu_64kb.mp3",
               "length_ms": 109000,
+              "section_number": 42,
               "start_ms": 12343000,
               "title": "DE CATE ORI, IUBITO…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_043_eminescu_64kb.mp3",
               "length_ms": 161000,
+              "section_number": 43,
               "start_ms": 12452000,
               "title": "FREAMAT DE CODRU"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_044_eminescu_64kb.mp3",
               "length_ms": 234000,
+              "section_number": 44,
               "start_ms": 12613000,
               "title": "DESPARTIRE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_045_eminescu_64kb.mp3",
               "length_ms": 130000,
+              "section_number": 45,
               "start_ms": 12847000,
               "title": "O, MAMA…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_046_eminescu_64kb.mp3",
               "length_ms": 930000,
+              "section_number": 46,
               "start_ms": 12977000,
               "title": "SCRISOAREA I"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_047_eminescu_64kb.mp3",
               "length_ms": 192000,
+              "section_number": 47,
               "start_ms": 13907000,
               "title": "REVEDERE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_048_eminescu_64kb.mp3",
               "length_ms": 408000,
+              "section_number": 48,
               "start_ms": 14099000,
               "title": "SCRISOAREA II"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_049_eminescu_64kb.mp3",
               "length_ms": 1503000,
+              "section_number": 49,
               "start_ms": 14507000,
               "title": "SCRISOAREA III"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_050_eminescu_64kb.mp3",
               "length_ms": 853000,
+              "section_number": 50,
               "start_ms": 16010000,
               "title": "SCRISOAREA IV"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_051_eminescu_64kb.mp3",
               "length_ms": 733000,
+              "section_number": 51,
               "start_ms": 16863000,
               "title": "SCRISOAREA V"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_052_eminescu_64kb.mp3",
               "length_ms": 1445000,
+              "section_number": 52,
               "start_ms": 17596000,
               "title": "LUCEAFARUL"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_053_eminescu_64kb.mp3",
               "length_ms": 185000,
+              "section_number": 53,
               "start_ms": 19041000,
               "title": "DOINA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_054_eminescu_64kb.mp3",
               "length_ms": 149000,
+              "section_number": 54,
               "start_ms": 19226000,
               "title": "PE LANGA PLOPII FARA SOT…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_055_eminescu_64kb.mp3",
               "length_ms": 321000,
+              "section_number": 55,
               "start_ms": 19375000,
               "title": "GLOSSA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_056_eminescu_64kb.mp3",
               "length_ms": 145000,
+              "section_number": 56,
               "start_ms": 19696000,
               "title": "CU MANE ZILELE-TI ADAOGI…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_057_eminescu_64kb.mp3",
               "length_ms": 163000,
+              "section_number": 57,
               "start_ms": 19841000,
               "title": "S-A DUS AMORUL…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_058_eminescu_64kb.mp3",
               "length_ms": 90000,
+              "section_number": 58,
               "start_ms": 20004000,
               "title": "CAND AMINTIRILE…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_059_eminescu_64kb.mp3",
               "length_ms": 145000,
+              "section_number": 59,
               "start_ms": 20094000,
               "title": "ADIO"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_060_eminescu_64kb.mp3",
               "length_ms": 123000,
+              "section_number": 60,
               "start_ms": 20239000,
               "title": "CE E AMORUL?"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_061_eminescu_64kb.mp3",
               "length_ms": 123000,
+              "section_number": 61,
               "start_ms": 20362000,
               "title": "DIN VALURILE VREMII…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_062_eminescu_64kb.mp3",
               "length_ms": 61000,
+              "section_number": 62,
               "start_ms": 20485000,
               "title": "SI DACA…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_063_eminescu_64kb.mp3",
               "length_ms": 118000,
+              "section_number": 63,
               "start_ms": 20546000,
               "title": "CE TE LEGENI…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_064_eminescu_64kb.mp3",
               "length_ms": 125000,
+              "section_number": 64,
               "start_ms": 20664000,
               "title": "ODA  (in metru antic)"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_065_eminescu_64kb.mp3",
               "length_ms": 87000,
+              "section_number": 65,
               "start_ms": 20789000,
               "title": "IUBIND IN TAINA…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_066_eminescu_64kb.mp3",
               "length_ms": 97000,
+              "section_number": 66,
               "start_ms": 20876000,
               "title": "TRECUT-AU ANII…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_067_eminescu_64kb.mp3",
               "length_ms": 88000,
+              "section_number": 67,
               "start_ms": 20973000,
               "title": "VENETIA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_068_eminescu_64kb.mp3",
               "length_ms": 137000,
+              "section_number": 68,
               "start_ms": 21061000,
               "title": "MAI AM UN SINGUR DOR"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_069_eminescu_64kb.mp3",
               "length_ms": 93000,
+              "section_number": 69,
               "start_ms": 21198000,
               "title": "SOMNOROASE PASARELE…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_070_eminescu_64kb.mp3",
               "length_ms": 206000,
+              "section_number": 70,
               "start_ms": 21291000,
               "title": "LASA-TI LUMEA…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_071_eminescu_64kb.mp3",
               "length_ms": 192000,
+              "section_number": 71,
               "start_ms": 21497000,
               "title": "TE DUCI…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_072_eminescu_64kb.mp3",
               "length_ms": 107000,
+              "section_number": 72,
               "start_ms": 21689000,
               "title": "DE-OI ADORMI…  (varianta)"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_073_eminescu_64kb.mp3",
               "length_ms": 104000,
+              "section_number": 73,
               "start_ms": 21796000,
               "title": "NU VOI MORMANT BOGAT   (varianta)"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_074_eminescu_64kb.mp3",
               "length_ms": 151000,
+              "section_number": 74,
               "start_ms": 21900000,
               "title": "IAR CAND VOI FI PAMANT   (varianta)"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_075_eminescu_64kb.mp3",
               "length_ms": 96000,
+              "section_number": 75,
               "start_ms": 22051000,
               "title": "CRITICILOR MEI"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_076_eminescu_64kb.mp3",
               "length_ms": 108000,
+              "section_number": 76,
               "start_ms": 22147000,
               "title": "DIANA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_077_eminescu_64kb.mp3",
               "length_ms": 158000,
+              "section_number": 77,
               "start_ms": 22255000,
               "title": "SARA PE DEAL"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_078_eminescu_64kb.mp3",
               "length_ms": 150000,
+              "section_number": 78,
               "start_ms": 22413000,
               "title": "NU MA INTELEGI"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_079_eminescu_64kb.mp3",
               "length_ms": 78000,
+              "section_number": 79,
               "start_ms": 22563000,
               "title": "LA STEAUA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_080_eminescu_64kb.mp3",
               "length_ms": 118000,
+              "section_number": 80,
               "start_ms": 22641000,
               "title": "DE CE NU-MI VII"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_081_eminescu_64kb.mp3",
               "length_ms": 101000,
+              "section_number": 81,
               "start_ms": 22759000,
               "title": "KAMADEVA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_082_eminescu_64kb.mp3",
               "length_ms": 119000,
+              "section_number": 82,
               "start_ms": 22860000,
               "title": "FRUMOASA-I…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_083_eminescu_64kb.mp3",
               "length_ms": 641000,
+              "section_number": 83,
               "start_ms": 22979000,
               "title": "ONDINA  (Fantasie)"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_084_eminescu_64kb.mp3",
               "length_ms": 150000,
+              "section_number": 84,
               "start_ms": 23620000,
               "title": "HORIA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_085_eminescu_64kb.mp3",
               "length_ms": 246000,
+              "section_number": 85,
               "start_ms": 23770000,
               "title": "CARE-O FI IN LUME…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_086_eminescu_64kb.mp3",
               "length_ms": 134000,
+              "section_number": 86,
               "start_ms": 24016000,
               "title": "PHYLOSOPHIA COPILEI"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_087_eminescu_64kb.mp3",
               "length_ms": 153000,
+              "section_number": 87,
               "start_ms": 24150000,
               "title": "CINE-I?  (din drama \"Steaua marii\")"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_088_eminescu_64kb.mp3",
               "length_ms": 115000,
+              "section_number": 88,
               "start_ms": 24303000,
               "title": "CAND…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_089_eminescu_64kb.mp3",
               "length_ms": 113000,
+              "section_number": 89,
               "start_ms": 24418000,
               "title": "CAND MAREA…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_090_eminescu_64kb.mp3",
               "length_ms": 150000,
+              "section_number": 90,
               "start_ms": 24531000,
               "title": "LA O ARTISTA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_091_eminescu_64kb.mp3",
               "length_ms": 195000,
+              "section_number": 91,
               "start_ms": 24681000,
               "title": "DE CE SA MORI TU?"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_092_eminescu_64kb.mp3",
               "length_ms": 202000,
+              "section_number": 92,
               "start_ms": 24876000,
               "title": "DE-AS MURI ORI DE-AI MURI"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_093_eminescu_64kb.mp3",
               "length_ms": 191000,
+              "section_number": 93,
               "start_ms": 25078000,
               "title": "LOCUL ARIPELOR"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_094_eminescu_64kb.mp3",
               "length_ms": 135000,
+              "section_number": 94,
               "start_ms": 25269000,
               "title": "POETUL"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_095_eminescu_64kb.mp3",
               "length_ms": 192000,
+              "section_number": 95,
               "start_ms": 25404000,
               "title": "LA MOARTEA LUI NEAMTU"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_096_eminescu_64kb.mp3",
               "length_ms": 118000,
+              "section_number": 96,
               "start_ms": 25596000,
               "title": "SUS IN CURTEA CEA DOMNEASCA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_097_eminescu_64kb.mp3",
               "length_ms": 272000,
+              "section_number": 97,
               "start_ms": 25714000,
               "title": "BASMUL CE I L-AS SPUNE EI"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_098_eminescu_64kb.mp3",
               "length_ms": 81000,
+              "section_number": 98,
               "start_ms": 25986000,
               "title": "FRUMOASA SI JUNA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_099_eminescu_64kb.mp3",
               "length_ms": 246000,
+              "section_number": 99,
               "start_ms": 26067000,
               "title": "IUBITA DULCE, O, MA LASA…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_100_eminescu_64kb.mp3",
               "length_ms": 320000,
+              "section_number": 100,
               "start_ms": 26313000,
               "title": "IUBITEI"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_101_eminescu_64kb.mp3",
               "length_ms": 122000,
+              "section_number": 101,
               "start_ms": 26633000,
               "title": "CANTECUL LAUTARULUI"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_102_eminescu_64kb.mp3",
               "length_ms": 278000,
+              "section_number": 102,
               "start_ms": 26755000,
               "title": "COPII ERAM NOI AMANDOI…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_103_eminescu_64kb.mp3",
               "length_ms": 355000,
+              "section_number": 103,
               "start_ms": 27033000,
               "title": "AVEAM O MUZA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_104_eminescu_64kb.mp3",
               "length_ms": 555000,
+              "section_number": 104,
               "start_ms": 27388000,
               "title": "CAND CRIVATUL CU IARNA…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_105_eminescu_64kb.mp3",
               "length_ms": 192000,
+              "section_number": 105,
               "start_ms": 27943000,
               "title": "O, TE-NSENINA, INTUNERIC RECE…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_106_eminescu_64kb.mp3",
               "length_ms": 702000,
+              "section_number": 106,
               "start_ms": 28135000,
               "title": "DEMONISM"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_107_eminescu_64kb.mp3",
               "length_ms": 520000,
+              "section_number": 107,
               "start_ms": 28837000,
               "title": "MIRADONIZ"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_108_eminescu_64kb.mp3",
               "length_ms": 794000,
+              "section_number": 108,
               "start_ms": 29357000,
               "title": "ECO"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_109_eminescu_64kb.mp3",
               "length_ms": 1008000,
+              "section_number": 109,
               "start_ms": 30151000,
               "title": "ODIN SI POETUL"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_110_eminescu_64kb.mp3",
               "length_ms": 58000,
+              "section_number": 110,
               "start_ms": 31159000,
               "title": "PRIN NOPTI TACUTE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_111_eminescu_64kb.mp3",
               "length_ms": 3789000,
+              "section_number": 111,
               "start_ms": 31217000,
               "title": "POVESTEA MAGULUI CALATOR IN STELE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_112_eminescu_64kb.mp3",
               "length_ms": 142000,
+              "section_number": 112,
               "start_ms": 35006000,
               "title": "O, DE AI STI CUM SOAPTA TA DIVINA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_113_eminescu_64kb.mp3",
               "length_ms": 104000,
+              "section_number": 113,
               "start_ms": 35148000,
               "title": "PALIDA MADONA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_114_eminescu_64kb.mp3",
               "length_ms": 111000,
+              "section_number": 114,
               "start_ms": 35252000,
               "title": "CUM UNIVERSU-N STELE…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_115_eminescu_64kb.mp3",
               "length_ms": 125000,
+              "section_number": 115,
               "start_ms": 35363000,
               "title": "AM PUS SOFA LA FEREASTA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_116_eminescu_64kb.mp3",
               "length_ms": 154000,
+              "section_number": 116,
               "start_ms": 35488000,
               "title": "CERETI CANTURI DE IUBIRE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_117_eminescu_64kb.mp3",
               "length_ms": 238000,
+              "section_number": 117,
               "start_ms": 35642000,
               "title": "DACA TRECI RAUL SELENEI…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_118_eminescu_64kb.mp3",
               "length_ms": 188000,
+              "section_number": 118,
               "start_ms": 35880000,
               "title": "AH, MIEREA BUZEI TALE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_119_eminescu_64kb.mp3",
               "length_ms": 228000,
+              "section_number": 119,
               "start_ms": 36068000,
               "title": "GHAZEL"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_120_eminescu_64kb.mp3",
               "length_ms": 140000,
+              "section_number": 120,
               "start_ms": 36296000,
               "title": "O ARFA PE-UN MORMANT"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_121_eminescu_64kb.mp3",
               "length_ms": 198000,
+              "section_number": 121,
               "start_ms": 36436000,
               "title": "CARE-I AMORUL MEU IN ASTA LUME"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_122_eminescu_64kb.mp3",
               "length_ms": 342000,
+              "section_number": 122,
               "start_ms": 36634000,
               "title": "DUMNEZEU SI OM"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_123_eminescu_64kb.mp3",
               "length_ms": 148000,
+              "section_number": 123,
               "start_ms": 36976000,
               "title": "PRIVESC ORASUL - FURNICAR"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_124_eminescu_64kb.mp3",
               "length_ms": 131000,
+              "section_number": 124,
               "start_ms": 37124000,
               "title": "MURMURA GLASUL MARII"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_125_eminescu_64kb.mp3",
               "length_ms": 483000,
+              "section_number": 125,
               "start_ms": 37255000,
               "title": "MITOLOGICALE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_126_eminescu_64kb.mp3",
               "length_ms": 101000,
+              "section_number": 126,
               "start_ms": 37738000,
               "title": "DIN BERLIN LA POTSDAM"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_127_eminescu_64kb.mp3",
               "length_ms": 279000,
+              "section_number": 127,
               "start_ms": 37839000,
               "title": "IMBATRANIT E SUFLETUL DIN MINE…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_128_eminescu_64kb.mp3",
               "length_ms": 116000,
+              "section_number": 128,
               "start_ms": 38118000,
               "title": "DE CE N-AFLAM IN IMPLINIREA…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_129_eminescu_64kb.mp3",
               "length_ms": 136000,
+              "section_number": 129,
               "start_ms": 38234000,
               "title": "BISMARQUEURI DE FALSA MARCA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_130_eminescu_64kb.mp3",
               "length_ms": 267000,
+              "section_number": 130,
               "start_ms": 38370000,
               "title": "PUSTNICUL"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_131_eminescu_64kb.mp3",
               "length_ms": 91000,
+              "section_number": 131,
               "start_ms": 38637000,
               "title": "M NEGUSTORII DIN CONSTANTINOPOL"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_132_eminescu_64kb.mp3",
               "length_ms": 616000,
+              "section_number": 132,
               "start_ms": 38728000,
               "title": "IN CAUTAREA SEHERAZADEI"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_133_eminescu_64kb.mp3",
               "length_ms": 201000,
+              "section_number": 133,
               "start_ms": 39344000,
               "title": "PREOT SI FILOSOF"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_134_eminescu_64kb.mp3",
               "length_ms": 257000,
+              "section_number": 134,
               "start_ms": 39545000,
               "title": "O, ADEVAR SUBLIME…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_135_eminescu_64kb.mp3",
               "length_ms": 147000,
+              "section_number": 135,
               "start_ms": 39802000,
               "title": "ADUCAND CANTARI MULTIME"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_136_eminescu_64kb.mp3",
               "length_ms": 311000,
+              "section_number": 136,
               "start_ms": 39949000,
               "title": "CONFESIUNE  (Aratand un cran)"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_137_eminescu_64kb.mp3",
               "length_ms": 188000,
+              "section_number": 137,
               "start_ms": 40260000,
               "title": "CAND SE JUCA ELISA MULLER…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_138_eminescu_64kb.mp3",
               "length_ms": 101000,
+              "section_number": 138,
               "start_ms": 40448000,
               "title": "SCRISORI DIN CORDUN"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_139_eminescu_64kb.mp3",
               "length_ms": 118000,
+              "section_number": 139,
               "start_ms": 40549000,
               "title": "LUNA IESE DINTRE CODRI"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_140_eminescu_64kb.mp3",
               "length_ms": 1382000,
+              "section_number": 140,
               "start_ms": 40667000,
               "title": "ANTROPOMORFISM"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_141_eminescu_64kb.mp3",
               "length_ms": 216000,
+              "section_number": 141,
               "start_ms": 42049000,
               "title": "CALIN NEBUNUL (Fragment)"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_142_eminescu_64kb.mp3",
               "length_ms": 1857000,
+              "section_number": 142,
               "start_ms": 42265000,
               "title": "FATA-N GRADINA DE AUR"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_143_eminescu_64kb.mp3",
               "length_ms": 1403000,
+              "section_number": 143,
               "start_ms": 44122000,
               "title": "MIRON SI FRUMOASA FARA CORP"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_144_eminescu_64kb.mp3",
               "length_ms": 703000,
+              "section_number": 144,
               "start_ms": 45525000,
               "title": "RIME ALEGORICE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_145_eminescu_64kb.mp3",
               "length_ms": 117000,
+              "section_number": 145,
               "start_ms": 46228000,
               "title": "EA-SI URMA CARAREA-N CODRU"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_146_eminescu_64kb.mp3",
               "length_ms": 131000,
+              "section_number": 146,
               "start_ms": 46345000,
               "title": "CARTILE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_147_eminescu_64kb.mp3",
               "length_ms": 127000,
+              "section_number": 147,
               "start_ms": 46476000,
               "title": "DORMI!"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_148_eminescu_64kb.mp3",
               "length_ms": 174000,
+              "section_number": 148,
               "start_ms": 46603000,
               "title": "E IMPARTITA OMENIREA…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_149_eminescu_64kb.mp3",
               "length_ms": 81000,
+              "section_number": 149,
               "start_ms": 46777000,
               "title": "AI NOSTRI TINERI…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_150_eminescu_64kb.mp3",
               "length_ms": 107000,
+              "section_number": 150,
               "start_ms": 46858000,
               "title": "IN LIRA-MI GEME SI SUSPIN-UN CANT"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_151_eminescu_64kb.mp3",
               "length_ms": 85000,
+              "section_number": 151,
               "start_ms": 46965000,
               "title": "AZI E ZI INTAI DE MAI"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_152_eminescu_64kb.mp3",
               "length_ms": 99000,
+              "section_number": 152,
               "start_ms": 47050000,
               "title": "CE SOPTESTI ATAT DE TAINIC…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_153_eminescu_64kb.mp3",
               "length_ms": 432000,
+              "section_number": 153,
               "start_ms": 47149000,
               "title": "FEMEIA?… MAR DE CEARTA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_154_eminescu_64kb.mp3",
               "length_ms": 214000,
+              "section_number": 154,
               "start_ms": 47581000,
               "title": "CAND TE-AM VAZUT, VERENA…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_155_eminescu_64kb.mp3",
               "length_ms": 308000,
+              "section_number": 155,
               "start_ms": 47795000,
               "title": "M-AI CHINUIT ATATA CU VORBE DE IUBIRE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_156_eminescu_64kb.mp3",
               "length_ms": 697000,
+              "section_number": 156,
               "start_ms": 48103000,
               "title": "PIERDUTA PENTRU MINE, ZAMBIND PRIN LUME TRECI!"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_157_eminescu_64kb.mp3",
               "length_ms": 147000,
+              "section_number": 157,
               "start_ms": 48800000,
               "title": "O, DULCE INGER BLAND…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_158_eminescu_64kb.mp3",
               "length_ms": 92000,
+              "section_number": 158,
               "start_ms": 48947000,
               "title": "IAR FATA TA E STRAVEZIE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_159_eminescu_64kb.mp3",
               "length_ms": 111000,
+              "section_number": 159,
               "start_ms": 49039000,
               "title": "O STRADA PREA INGUSTA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_160_eminescu_64kb.mp3",
               "length_ms": 107000,
+              "section_number": 160,
               "start_ms": 49150000,
               "title": "TERTINE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_161_eminescu_64kb.mp3",
               "length_ms": 199000,
+              "section_number": 161,
               "start_ms": 49257000,
               "title": "TU MA PRIVESTI CU MARII OCHI…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_162_eminescu_64kb.mp3",
               "length_ms": 887000,
+              "section_number": 162,
               "start_ms": 49456000,
               "title": "ICOANA SI PRIVAZ"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_163_eminescu_64kb.mp3",
               "length_ms": 113000,
+              "section_number": 163,
               "start_ms": 50343000,
               "title": "CU GANDIRI SI CU IMAGINI"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_164_eminescu_64kb.mp3",
               "length_ms": 143000,
+              "section_number": 164,
               "start_ms": 50456000,
               "title": "VIS"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_165_eminescu_64kb.mp3",
               "length_ms": 134000,
+              "section_number": 165,
               "start_ms": 50599000,
               "title": "LUMEA IMI PAREA O CIFRA…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_166_eminescu_64kb.mp3",
               "length_ms": 67000,
+              "section_number": 166,
               "start_ms": 50733000,
               "title": "LECTURA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_167_eminescu_64kb.mp3",
               "length_ms": 768000,
+              "section_number": 167,
               "start_ms": 50800000,
               "title": "CODRU SI SALON"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_168_eminescu_64kb.mp3",
               "length_ms": 976000,
+              "section_number": 168,
               "start_ms": 51568000,
               "title": "DIAMANTUL NORDULUI   (Capriccio)"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_169_eminescu_64kb.mp3",
               "length_ms": 111000,
+              "section_number": 169,
               "start_ms": 52544000,
               "title": "AUZI PRIN FRUNZI USCATE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_170_eminescu_64kb.mp3",
               "length_ms": 79000,
+              "section_number": 170,
               "start_ms": 52655000,
               "title": "ORICARE CAP INGUST"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_171_eminescu_64kb.mp3",
               "length_ms": 110000,
+              "section_number": 171,
               "start_ms": 52734000,
               "title": "CE S-ALEGEA DE NOI, A MEA NEBUNA…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_172_eminescu_64kb.mp3",
               "length_ms": 165000,
+              "section_number": 172,
               "start_ms": 52844000,
               "title": "CE S-ALEGEA DE DOI NEBUNI, IUBITO…   (varianta)"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_173_eminescu_64kb.mp3",
               "length_ms": 90000,
+              "section_number": 173,
               "start_ms": 53009000,
               "title": "ATAT DE DULCE…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_174_eminescu_64kb.mp3",
               "length_ms": 424000,
+              "section_number": 174,
               "start_ms": 53099000,
               "title": "UMBRA LUI ISTRATE DABIJA-VOIEVOD"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_175_eminescu_64kb.mp3",
               "length_ms": 164000,
+              "section_number": 175,
               "start_ms": 53523000,
               "title": "FIIND BAIET PADURI CUTREIERAM"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_176_eminescu_64kb.mp3",
               "length_ms": 84000,
+              "section_number": 176,
               "start_ms": 53687000,
               "title": "IAMBUL"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_177_eminescu_64kb.mp3",
               "length_ms": 66000,
+              "section_number": 177,
               "start_ms": 53771000,
               "title": "COLINDE, COLINDE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_178_eminescu_64kb.mp3",
               "length_ms": 181000,
+              "section_number": 178,
               "start_ms": 53837000,
               "title": "INVIEREA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_179_eminescu_64kb.mp3",
               "length_ms": 83000,
+              "section_number": 179,
               "start_ms": 54018000,
               "title": "RUGACIUNE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_180_eminescu_64kb.mp3",
               "length_ms": 65000,
+              "section_number": 180,
               "start_ms": 54101000,
               "title": "VRE O ZGATIE DE FATA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_181_eminescu_64kb.mp3",
               "length_ms": 112000,
+              "section_number": 181,
               "start_ms": 54166000,
               "title": "DRAGOSTE ADEVARATA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_182_eminescu_64kb.mp3",
               "length_ms": 1376000,
+              "section_number": 182,
               "start_ms": 54278000,
               "title": "MINTE SI INIMA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_183_eminescu_64kb.mp3",
               "length_ms": 283000,
+              "section_number": 183,
               "start_ms": 55654000,
               "title": "STRIGATURI"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_184_eminescu_64kb.mp3",
               "length_ms": 298000,
+              "section_number": 184,
               "start_ms": 55937000,
               "title": "TA TWAM ASI"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_185_eminescu_64kb.mp3",
               "length_ms": 177000,
+              "section_number": 185,
               "start_ms": 56235000,
               "title": "IN VAN CATA-VETI…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_186_eminescu_64kb.mp3",
               "length_ms": 139000,
+              "section_number": 186,
               "start_ms": 56412000,
               "title": "NOI AMANDOI AVEM ACELASI DASCAL"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_187_eminescu_64kb.mp3",
               "length_ms": 257000,
+              "section_number": 187,
               "start_ms": 56551000,
               "title": "O,-NTELEPCIUNE, AI ARIPI DE CEARA!"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_188_eminescu_64kb.mp3",
               "length_ms": 97000,
+              "section_number": 188,
               "start_ms": 56808000,
               "title": "STELELE-N CER"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_189_eminescu_64kb.mp3",
               "length_ms": 92000,
+              "section_number": 189,
               "start_ms": 56905000,
               "title": "STAU IN CERDACUL TAU…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_190_eminescu_64kb.mp3",
               "length_ms": 75000,
+              "section_number": 190,
               "start_ms": 56997000,
               "title": "DE PE OCHI RIDICI…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_191_eminescu_64kb.mp3",
               "length_ms": 90000,
+              "section_number": 191,
               "start_ms": 57072000,
               "title": "ZBOAR-AL NOPTII NEGRU FLUTUR"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_192_eminescu_64kb.mp3",
               "length_ms": 482000,
+              "section_number": 192,
               "start_ms": 57162000,
               "title": "CA O FACLIE…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_193_eminescu_64kb.mp3",
               "length_ms": 317000,
+              "section_number": 193,
               "start_ms": 57644000,
               "title": "O, STINGA-SE A VIETII…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_194_eminescu_64kb.mp3",
               "length_ms": 443000,
+              "section_number": 194,
               "start_ms": 57961000,
               "title": "URAT SI SARACIE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_195_eminescu_64kb.mp3",
               "length_ms": 867000,
+              "section_number": 195,
               "start_ms": 58404000,
               "title": "POVESTEA DOCHIEI SI URSITORILE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_196_eminescu_64kb.mp3",
               "length_ms": 653000,
+              "section_number": 196,
               "start_ms": 59271000,
               "title": "URSITORILE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_197_eminescu_64kb.mp3",
               "length_ms": 821000,
+              "section_number": 197,
               "start_ms": 59924000,
               "title": "MUSATIN SI CODRUL"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_198_eminescu_64kb.mp3",
               "length_ms": 285000,
+              "section_number": 198,
               "start_ms": 60745000,
               "title": "DRAGOS-VODA CEL BATRIN"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_199_eminescu_64kb.mp3",
               "length_ms": 117000,
+              "section_number": 199,
               "start_ms": 61030000,
               "title": "CU PANZELE-ATARNATE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_200_eminescu_64kb.mp3",
               "length_ms": 133000,
+              "section_number": 200,
               "start_ms": 61147000,
               "title": "DIN CERURILE-ALBASTRE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_201_eminescu_64kb.mp3",
               "length_ms": 504000,
+              "section_number": 201,
               "start_ms": 61280000,
               "title": "SARMIS"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_202_eminescu_64kb.mp3",
               "length_ms": 1459000,
+              "section_number": 202,
               "start_ms": 61784000,
               "title": "GEMENII"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_203_eminescu_64kb.mp3",
               "length_ms": 326000,
+              "section_number": 203,
               "start_ms": 63243000,
               "title": "GELOZIE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_204_eminescu_64kb.mp3",
               "length_ms": 200000,
+              "section_number": 204,
               "start_ms": 63569000,
               "title": "DIN CAND IN CAND"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_205_eminescu_64kb.mp3",
               "length_ms": 225000,
+              "section_number": 205,
               "start_ms": 63769000,
               "title": "DONA SOL"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_206_eminescu_64kb.mp3",
               "length_ms": 355000,
+              "section_number": 206,
               "start_ms": 63994000,
               "title": "APARI SA DAI LUMINA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_207_eminescu_64kb.mp3",
               "length_ms": 236000,
+              "section_number": 207,
               "start_ms": 64349000,
               "title": "RENUNTARE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_208_eminescu_64kb.mp3",
               "length_ms": 202000,
+              "section_number": 208,
               "start_ms": 64585000,
               "title": "NU MA-NTELEGI"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_209_eminescu_64kb.mp3",
               "length_ms": 125000,
+              "section_number": 209,
               "start_ms": 64787000,
               "title": "OCHIUL TAU IUBIT"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_210_eminescu_64kb.mp3",
               "length_ms": 99000,
+              "section_number": 210,
               "start_ms": 64912000,
               "title": "OCHIUL TAU IUBIT  (varianta)"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_211_eminescu_64kb.mp3",
               "length_ms": 124000,
+              "section_number": 211,
               "start_ms": 65011000,
               "title": "DACA IUBESTI FARA SA SPERI"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_212_eminescu_64kb.mp3",
               "length_ms": 145000,
+              "section_number": 212,
               "start_ms": 65135000,
               "title": "SI OARE TOT N-ATI INTELES…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_213_eminescu_64kb.mp3",
               "length_ms": 147000,
+              "section_number": 213,
               "start_ms": 65280000,
               "title": "SI OARE TOT N-ATI INTELES…   (varianta)"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_214_eminescu_64kb.mp3",
               "length_ms": 91000,
+              "section_number": 214,
               "start_ms": 65427000,
               "title": "SA FIE SARA-N ASFINTIT"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_215_eminescu_64kb.mp3",
               "length_ms": 119000,
+              "section_number": 215,
               "start_ms": 65518000,
               "title": "UN FARMEC TRIST SI NENTELES"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_216_eminescu_64kb.mp3",
               "length_ms": 387000,
+              "section_number": 216,
               "start_ms": 65637000,
               "title": "MUSAT SI URSITORILE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_217_eminescu_64kb.mp3",
               "length_ms": 616000,
+              "section_number": 217,
               "start_ms": 66024000,
               "title": "PESTE CODRI STA CETATEA…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_218_eminescu_64kb.mp3",
               "length_ms": 318000,
+              "section_number": 218,
               "start_ms": 66640000,
               "title": "MII DE STELE… DULCE SARA…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_219_eminescu_64kb.mp3",
               "length_ms": 219000,
+              "section_number": 219,
               "start_ms": 66958000,
               "title": "INTRE NOURI SI-NTRE MARE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_220_eminescu_64kb.mp3",
               "length_ms": 149000,
+              "section_number": 220,
               "start_ms": 67177000,
               "title": "STEFAN CEL MARE  Schite de imn"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_221_eminescu_64kb.mp3",
               "length_ms": 74000,
+              "section_number": 221,
               "start_ms": 67326000,
               "title": "STEAUA VIETII"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_222_eminescu_64kb.mp3",
               "length_ms": 262000,
+              "section_number": 222,
               "start_ms": 67400000,
               "title": "CANTEC DE NUNTA   (de Goethe)"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_223_eminescu_64kb.mp3",
               "length_ms": 167000,
+              "section_number": 223,
               "start_ms": 67662000,
               "title": "A FOST ODAT-UN CANTARET   (Poveste indica)"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_224_eminescu_64kb.mp3",
               "length_ms": 403000,
+              "section_number": 224,
               "start_ms": 67829000,
               "title": "PENTRU PAZIREA AUZULUI  (dupa Nicodim Monahul)"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_225_eminescu_64kb.mp3",
               "length_ms": 112000,
+              "section_number": 225,
               "start_ms": 68232000,
               "title": "FOAIA VESTEDA  (dupa N. Lenau)"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_226_eminescu_64kb.mp3",
               "length_ms": 87000,
+              "section_number": 226,
               "start_ms": 68344000,
               "title": "SATUL DE LUCRU…  (dupa Shakespeare, Sonete, XXVII)"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_227_eminescu_64kb.mp3",
               "length_ms": 204000,
+              "section_number": 227,
               "start_ms": 68431000,
               "title": "CALUL TROIAN  (dupa Vergiliu, Eneida)"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_228_eminescu_64kb.mp3",
               "length_ms": 219000,
+              "section_number": 228,
               "start_ms": 68635000,
               "title": "CATRE MERCUR (Horatiu, Ode, III, 11)"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_229_eminescu_64kb.mp3",
               "length_ms": 197000,
+              "section_number": 229,
               "start_ms": 68854000,
               "title": "CATRE BULLATIUS  (Horatiu, Epistole, I, 11)"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_230_eminescu_64kb.mp3",
               "length_ms": 89000,
+              "section_number": 230,
               "start_ms": 69051000,
               "title": "DE-OR TRECE ANII…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_231_eminescu_64kb.mp3",
               "length_ms": 337000,
+              "section_number": 231,
               "start_ms": 69140000,
               "title": "DIN HALIMA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_232_eminescu_64kb.mp3",
               "length_ms": 210000,
+              "section_number": 232,
               "start_ms": 69477000,
               "title": "MANUSA  (dupa Fr. Schiller)"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_233_eminescu_64kb.mp3",
               "length_ms": 99000,
+              "section_number": 233,
               "start_ms": 69687000,
               "title": "SERENADA  (Victor Hugo)"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_234_eminescu_64kb.mp3",
               "length_ms": 61000,
+              "section_number": 234,
               "start_ms": 69786000,
               "title": "LA MIJLOC DE CODRU…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_235_eminescu_64kb.mp3",
               "length_ms": 62000,
+              "section_number": 235,
               "start_ms": 69847000,
               "title": "NU E STELUTA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_236_eminescu_64kb.mp3",
               "length_ms": 70000,
+              "section_number": 236,
               "start_ms": 69909000,
               "title": "DIN LYRA SPARTA…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_237_eminescu_64kb.mp3",
               "length_ms": 78000,
+              "section_number": 237,
               "start_ms": 69979000,
               "title": "SE BATE MIEZUL NOPTII…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_238_eminescu_64kb.mp3",
               "length_ms": 73000,
+              "section_number": 238,
               "start_ms": 70057000,
               "title": "PESTE VARFURI"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_239_eminescu_64kb.mp3",
               "length_ms": 62000,
+              "section_number": 239,
               "start_ms": 70130000,
               "title": "NUMAI POETUL"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_240_eminescu_64kb.mp3",
               "length_ms": 97000,
+              "section_number": 240,
               "start_ms": 70192000,
               "title": "VIATA MEA FU ZIUA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_241_eminescu_64kb.mp3",
               "length_ms": 99000,
+              "section_number": 241,
               "start_ms": 70289000,
               "title": "CAND PRIVESTI OGLINDA MAREI"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_242_eminescu_64kb.mp3",
               "length_ms": 66000,
+              "section_number": 242,
               "start_ms": 70388000,
               "title": "UNDA SPUMA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_243_eminescu_64kb.mp3",
               "length_ms": 88000,
+              "section_number": 243,
               "start_ms": 70454000,
               "title": "FABULE  (Pfeffel)"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_244_eminescu_64kb.mp3",
               "length_ms": 54000,
+              "section_number": 244,
               "start_ms": 70542000,
               "title": "LEBADA"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_245_eminescu_64kb.mp3",
               "length_ms": 3554000,
+              "section_number": 245,
               "start_ms": 70596000,
               "title": "MEMENTO MORI  (Panorama desertaciunilor-Fragment)"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_246_eminescu_64kb.mp3",
               "length_ms": 202000,
+              "section_number": 246,
               "start_ms": 74150000,
               "title": "INTUNERICUL SI POETUL"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_247_eminescu_64kb.mp3",
               "length_ms": 63000,
+              "section_number": 247,
               "start_ms": 74352000,
               "title": "ORICAT DE MULT AM SUFERIT"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_248_eminescu_64kb.mp3",
               "length_ms": 63000,
+              "section_number": 248,
               "start_ms": 74415000,
               "title": "INGERE PALID…"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_249_eminescu_64kb.mp3",
               "length_ms": 68000,
+              "section_number": 249,
               "start_ms": 74478000,
               "title": "DE-AR FI MIJLOACE"
             },
             {
               "audio_url": "https://www.archive.org/download/poezii_2010_librivox/poezii_250_eminescu_64kb.mp3",
               "length_ms": 60000,
+              "section_number": 250,
               "start_ms": 74546000,
               "title": "LA UN NOU-NASCUT  (Proverb arab)"
             }
@@ -5857,7 +7137,11 @@
           "cover_url": "https://archive.org/download/poezii_2010_librivox/poesii_2010.jpg",
           "id": "cornel-nemes",
           "language": "ro",
+          "librivox_genres": [
+            "Single author"
+          ],
           "librivox_id": 14017,
+          "librivox_title": "Poezii",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/poezii-by-mihai-eminescu/",

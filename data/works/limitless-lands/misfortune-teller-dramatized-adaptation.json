@@ -5327,7 +5327,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt28/misplaced_battleship_1301.jpg",
           "id": "phil-chenevert",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 6558,
+          "librivox_title": "Misplaced Battleship",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-misplaced-battleship-by-harry-harrison/",
@@ -7378,90 +7382,135 @@
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_men_1612_librivox/misrepresentativemen_01_graham_64kb.mp3",
               "length_ms": 106000,
+              "readers": [
+                "heather-james"
+              ],
               "start_ms": 0,
               "title": "Dedication"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_men_1612_librivox/misrepresentativemen_02_graham_64kb.mp3",
               "length_ms": 150000,
+              "readers": [
+                "diana-schmidt"
+              ],
               "start_ms": 106000,
               "title": "Foreword"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_men_1612_librivox/misrepresentativemen_03_graham_64kb.mp3",
               "length_ms": 282000,
+              "readers": [
+                "heather-james"
+              ],
               "start_ms": 256000,
               "title": "Theodore Roosevelt"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_men_1612_librivox/misrepresentativemen_04_graham_64kb.mp3",
               "length_ms": 182000,
+              "readers": [
+                "romano"
+              ],
               "start_ms": 538000,
               "title": "Bacon"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_men_1612_librivox/misrepresentativemen_05_graham_64kb.mp3",
               "length_ms": 134000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 720000,
               "title": "Adam"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_men_1612_librivox/misrepresentativemen_06_graham_64kb.mp3",
               "length_ms": 150000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 854000,
               "title": "Joan of Arc"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_men_1612_librivox/misrepresentativemen_07_graham_64kb.mp3",
               "length_ms": 198000,
+              "readers": [
+                "heather-james"
+              ],
               "start_ms": 1004000,
               "title": "Paderewski"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_men_1612_librivox/misrepresentativemen_08_graham_64kb.mp3",
               "length_ms": 185000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 1202000,
               "title": "William Tell"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_men_1612_librivox/misrepresentativemen_09_graham_64kb.mp3",
               "length_ms": 157000,
+              "readers": [
+                "heather-james"
+              ],
               "start_ms": 1387000,
               "title": "Diogenes"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_men_1612_librivox/misrepresentativemen_10_graham_64kb.mp3",
               "length_ms": 210000,
+              "readers": [
+                "heather-james"
+              ],
               "start_ms": 1544000,
               "title": "Sir Thomas Lipton"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_men_1612_librivox/misrepresentativemen_11_graham_64kb.mp3",
               "length_ms": 149000,
+              "readers": [
+                "heather-james"
+              ],
               "start_ms": 1754000,
               "title": "Marat"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_men_1612_librivox/misrepresentativemen_12_graham_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "heather-james"
+              ],
               "start_ms": 1903000,
               "title": "Ananias"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_men_1612_librivox/misrepresentativemen_13_graham_64kb.mp3",
               "length_ms": 194000,
+              "readers": [
+                "romano"
+              ],
               "start_ms": 1975000,
               "title": "Nero"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_men_1612_librivox/misrepresentativemen_14_graham_64kb.mp3",
               "length_ms": 97000,
+              "readers": [
+                "heather-james"
+              ],
               "start_ms": 2169000,
               "title": "Aftword"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_men_1612_librivox/misrepresentativemen_15_graham_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "heather-james"
+              ],
               "start_ms": 2266000,
               "title": "Postlude"
             }
@@ -7470,7 +7519,11 @@
           "cover_url": "https://archive.org/download/misrepresentative_men_1612_librivox/misrepresentativemen_1612.jpg",
           "id": "heather-james",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 11337,
+          "librivox_title": "Misrepresentative Men",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/misrepresentative-men-by-harry-graham/",
@@ -7524,102 +7577,153 @@
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_women_1705_librivox/misrepresentativewomen_01_graham_64kb.mp3",
               "length_ms": 131000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 0,
               "title": "Publishers' Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_women_1705_librivox/misrepresentativewomen_02_graham_64kb.mp3",
               "length_ms": 204000,
+              "readers": [
+                "debbie-r-baker-robinson"
+              ],
               "start_ms": 131000,
               "title": "Eve"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_women_1705_librivox/misrepresentativewomen_03_graham_64kb.mp3",
               "length_ms": 227000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 335000,
               "title": "Lady Godiva"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_women_1705_librivox/misrepresentativewomen_04_graham_64kb.mp3",
               "length_ms": 270000,
+              "readers": [
+                "crln-yldz-ksr"
+              ],
               "start_ms": 562000,
               "title": "Miss Marie Corelli"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_women_1705_librivox/misrepresentativewomen_05_graham_64kb.mp3",
               "length_ms": 138000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 832000,
               "title": "Mrs. Mary Baker Eddy"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_women_1705_librivox/misrepresentativewomen_06_graham_64kb.mp3",
               "length_ms": 201000,
+              "readers": [
+                "patrick-wallace"
+              ],
               "start_ms": 970000,
               "title": "Mrs. Grundy"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_women_1705_librivox/misrepresentativewomen_07_graham_64kb.mp3",
               "length_ms": 214000,
+              "readers": [
+                "diana-schmidt"
+              ],
               "start_ms": 1171000,
               "title": "Mrs. Christopher Columbus"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_women_1705_librivox/misrepresentativewomen_08_graham_64kb.mp3",
               "length_ms": 197000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 1385000,
               "title": "Dame Rumor"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_women_1705_librivox/misrepresentativewomen_09_graham_64kb.mp3",
               "length_ms": 185000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 1582000,
               "title": "The Cry of the Children"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_women_1705_librivox/misrepresentativewomen_10_graham_64kb.mp3",
               "length_ms": 195000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 1767000,
               "title": "The Cry of the Elders"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_women_1705_librivox/misrepresentativewomen_11_graham_64kb.mp3",
               "length_ms": 223000,
+              "readers": [
+                "crln-yldz-ksr"
+              ],
               "start_ms": 1962000,
               "title": "An Epithalamium"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_women_1705_librivox/misrepresentativewomen_12_graham_64kb.mp3",
               "length_ms": 132000,
+              "readers": [
+                "scotty-smith"
+              ],
               "start_ms": 2185000,
               "title": "The Self-Made Father to His Ready-Made Son"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_women_1705_librivox/misrepresentativewomen_13_graham_64kb.mp3",
               "length_ms": 228000,
+              "readers": [
+                "crln-yldz-ksr"
+              ],
               "start_ms": 2317000,
               "title": "The Author to His Hostess"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_women_1705_librivox/misrepresentativewomen_14_graham_64kb.mp3",
               "length_ms": 154000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 2545000,
               "title": "On the Decline of Gentility Among the Young"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_women_1705_librivox/misrepresentativewomen_15_graham_64kb.mp3",
               "length_ms": 181000,
+              "readers": [
+                "scotty-smith"
+              ],
               "start_ms": 2699000,
               "title": "'Lochinvar'"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_women_1705_librivox/misrepresentativewomen_16_graham_64kb.mp3",
               "length_ms": 137000,
+              "readers": [
+                "jason-in-panama"
+              ],
               "start_ms": 2880000,
               "title": "Abbreviation's Artful Aid"
             },
             {
               "audio_url": "https://www.archive.org/download/misrepresentative_women_1705_librivox/misrepresentativewomen_17_graham_64kb.mp3",
               "length_ms": 125000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 3017000,
               "title": "Author's Aftword"
             }
@@ -7628,7 +7732,11 @@
           "cover_url": "https://archive.org/download/misrepresentative_women_1705_librivox/misrepresentativewomen_1705.jpg",
           "id": "larry-wilson",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 11549,
+          "librivox_title": "Misrepresentative Women",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/misrepresentative-women-by-harry-graham/",
@@ -8889,7 +8997,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt14/Miss_Ashtons_New_Pupil_1201.jpg",
           "id": "abigail-rasmussen",
           "language": "en",
+          "librivox_genres": [
+            "School"
+          ],
           "librivox_id": 6201,
+          "librivox_title": "Miss Ashton's New Pupil",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/miss-ashtons-new-pupil-by-sarah-stuart-robbins/",

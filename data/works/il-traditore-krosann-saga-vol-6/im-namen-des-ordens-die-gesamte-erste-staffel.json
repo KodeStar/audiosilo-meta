@@ -3726,102 +3726,153 @@
             {
               "audio_url": "https://www.archive.org/download/im_nobody_librivox/im_nobody_dickinson1_add_64kb.mp3",
               "length_ms": 45000,
+              "readers": [
+                "alan-davis-drake-1945-2010"
+              ],
               "start_ms": 0,
               "title": "I’m Nobody read by Alan Davis-Drake"
             },
             {
               "audio_url": "https://www.archive.org/download/im_nobody_librivox/im_nobody_dickinson2_add_64kb.mp3",
               "length_ms": 51000,
+              "readers": [
+                "alan-davis-drake-1945-2010"
+              ],
               "start_ms": 45000,
               "title": "I’m Nobody read by Alan Davis-Drake"
             },
             {
               "audio_url": "https://www.archive.org/download/im_nobody_librivox/im_nobody_dickinson_am_64kb.mp3",
               "length_ms": 30000,
+              "readers": [
+                "abby-moore"
+              ],
               "start_ms": 96000,
               "title": "I’m Nobody read by Abby Moore"
             },
             {
               "audio_url": "https://www.archive.org/download/im_nobody_librivox/im_nobody_dickinson_anc_64kb.mp3",
               "length_ms": 38000,
+              "readers": [
+                "ancilla"
+              ],
               "start_ms": 126000,
               "title": "I’m Nobody read by Ancilla"
             },
             {
               "audio_url": "https://www.archive.org/download/im_nobody_librivox/im_nobody_dickinson_ap_64kb.mp3",
               "length_ms": 34000,
+              "readers": [
+                "atalanta-pendragonne"
+              ],
               "start_ms": 164000,
               "title": "I’m Nobody read by Atalanta Pendragonne"
             },
             {
               "audio_url": "https://www.archive.org/download/im_nobody_librivox/im_nobody_dickinson_blb_64kb.mp3",
               "length_ms": 35000,
+              "readers": [
+                "betsie-bush"
+              ],
               "start_ms": 198000,
               "title": "I’m Nobody read by Betsie Bush"
             },
             {
               "audio_url": "https://www.archive.org/download/im_nobody_librivox/im_nobody_dickinson_en_64kb.mp3",
               "length_ms": 40000,
+              "readers": [
+                "englishnomad"
+              ],
               "start_ms": 233000,
               "title": "I’m Nobody read by EnglishNomad"
             },
             {
               "audio_url": "https://www.archive.org/download/im_nobody_librivox/im_nobody_dickinson_hfd_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "howard-dratch"
+              ],
               "start_ms": 273000,
               "title": "I’m Nobody read by Howard Dratch"
             },
             {
               "audio_url": "https://www.archive.org/download/im_nobody_librivox/im_nobody_dickinson_jcj_64kb.mp3",
               "length_ms": 42000,
+              "readers": [
+                "julian-jamison"
+              ],
               "start_ms": 328000,
               "title": "I’m Nobody read by Julian Jamison"
             },
             {
               "audio_url": "https://www.archive.org/download/im_nobody_librivox/im_nobody_dickinson_jeb_64kb.mp3",
               "length_ms": 42000,
+              "readers": [
+                "justin-brett"
+              ],
               "start_ms": 370000,
               "title": "I’m Nobody read by Justin Brett"
             },
             {
               "audio_url": "https://www.archive.org/download/im_nobody_librivox/im_nobody_dickinson_js_64kb.mp3",
               "length_ms": 38000,
+              "readers": [
+                "jennette-selig"
+              ],
               "start_ms": 412000,
               "title": "I’m Nobody read by Jennette Selig"
             },
             {
               "audio_url": "https://www.archive.org/download/im_nobody_librivox/im_nobody_dickinson_krs_64kb.mp3",
               "length_ms": 28000,
+              "readers": [
+                "karen-savage"
+              ],
               "start_ms": 450000,
               "title": "I’m Nobody read by Karen Savage"
             },
             {
               "audio_url": "https://www.archive.org/download/im_nobody_librivox/im_nobody_dickinson_lb_64kb.mp3",
               "length_ms": 45000,
+              "readers": [
+                "lucy-burgoyne-1950-2014"
+              ],
               "start_ms": 478000,
               "title": "I’m Nobody read by Lucy Burgoyne"
             },
             {
               "audio_url": "https://www.archive.org/download/im_nobody_librivox/im_nobody_dickinson_mmv_64kb.mp3",
               "length_ms": 48000,
+              "readers": [
+                "mmv-hamilton"
+              ],
               "start_ms": 523000,
               "title": "I’m Nobody read by MMV Hamilton"
             },
             {
               "audio_url": "https://www.archive.org/download/im_nobody_librivox/im_nobody_dickinson_mt_64kb.mp3",
               "length_ms": 44000,
+              "readers": [
+                "lady-maria"
+              ],
               "start_ms": 571000,
               "title": "I’m Nobody read by Lady Maria"
             },
             {
               "audio_url": "https://www.archive.org/download/im_nobody_librivox/im_nobody_dickinson_tjm_64kb.mp3",
               "length_ms": 35000,
+              "readers": [
+                "tim-makarios"
+              ],
               "start_ms": 615000,
               "title": "I’m Nobody read by Tim McKenzie"
             },
             {
               "audio_url": "https://www.archive.org/download/im_nobody_librivox/im_nobody_dickinson_zhss_64kb.mp3",
               "length_ms": 27000,
+              "readers": [
+                "shurtagal"
+              ],
               "start_ms": 650000,
               "title": "I’m Nobody read by Shurtagal"
             }
@@ -3830,7 +3881,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt9/Im_Nobody_1107.jpg",
           "id": "alan-davis-drake-1945-2010",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 982,
+          "librivox_title": "I'm Nobody",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/im-nobody-by-emily-dickinson/",

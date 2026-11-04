@@ -6456,78 +6456,117 @@
             {
               "audio_url": "https://www.archive.org/download/near_far_1103_librivox/nearandfar_coates_cd_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "calmdragon"
+              ],
               "start_ms": 0,
               "title": "Near and Far - Read by CD"
             },
             {
               "audio_url": "https://www.archive.org/download/near_far_1103_librivox/nearandfar_coates_ghs_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 91000,
               "title": "Near and Far - Read by GHS"
             },
             {
               "audio_url": "https://www.archive.org/download/near_far_1103_librivox/nearandfar_coates_jcm_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "jason-mills"
+              ],
               "start_ms": 173000,
               "title": "Near and Far - Read by JCM"
             },
             {
               "audio_url": "https://www.archive.org/download/near_far_1103_librivox/nearandfar_coates_jm_64kb.mp3",
               "length_ms": 100000,
+              "readers": [
+                "jannie-meisberger"
+              ],
               "start_ms": 250000,
               "title": "Near and Far - Read by JM"
             },
             {
               "audio_url": "https://www.archive.org/download/near_far_1103_librivox/nearandfar_coates_joc_64kb.mp3",
               "length_ms": 97000,
+              "readers": [
+                "jimocr"
+              ],
               "start_ms": 350000,
               "title": "Near and Far - Read by JOC"
             },
             {
               "audio_url": "https://www.archive.org/download/near_far_1103_librivox/nearandfar_coates_lah_64kb.mp3",
               "length_ms": 85000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 447000,
               "title": "Near and Far - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/near_far_1103_librivox/nearandfar_coates_llw_64kb.mp3",
               "length_ms": 95000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 532000,
               "title": "Near and Far - Read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/near_far_1103_librivox/nearandfar_coates_lrs_64kb.mp3",
               "length_ms": 87000,
+              "readers": [
+                "liberty-stump"
+              ],
               "start_ms": 627000,
               "title": "Near and Far - Read by LRS"
             },
             {
               "audio_url": "https://www.archive.org/download/near_far_1103_librivox/nearandfar_coates_pdg_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "penelope-greenwell"
+              ],
               "start_ms": 714000,
               "title": "Near and Far - Read by PDG"
             },
             {
               "audio_url": "https://www.archive.org/download/near_far_1103_librivox/nearandfar_coates_pk_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "paksenarrion"
+              ],
               "start_ms": 791000,
               "title": "Near and Far - Read by PK"
             },
             {
               "audio_url": "https://www.archive.org/download/near_far_1103_librivox/nearandfar_coates_rn_64kb.mp3",
               "length_ms": 92000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 869000,
               "title": "Near and Far - Read by RN"
             },
             {
               "audio_url": "https://www.archive.org/download/near_far_1103_librivox/nearandfar_coates_tg_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 961000,
               "title": "Near and Far - Read by TG"
             },
             {
               "audio_url": "https://www.archive.org/download/near_far_1103_librivox/nearandfar_coates_wt_64kb.mp3",
               "length_ms": 87000,
+              "readers": [
+                "winston-tharp"
+              ],
               "start_ms": 1042000,
               "title": "Near and Far - Read by WT"
             }
@@ -6536,7 +6575,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt23/Near_Far_1210.jpg",
           "id": "calmdragon",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 5330,
+          "librivox_title": "Near and Far",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/near-and-far-by-florence-earle-coates/",

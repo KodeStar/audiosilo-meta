@@ -1113,7 +1113,12 @@
           "cover_url": "https://archive.org/download/librivoxcdcoverart36/barraca_v_blasco_ibanez_2002.jpg",
           "id": "mongope",
           "language": "es",
+          "librivox_genres": [
+            "Family Life",
+            "Literary Fiction"
+          ],
           "librivox_id": 14572,
+          "librivox_title": "Barraca",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/la-barraca-by-vicente-blasco-ibanez/",
@@ -1161,234 +1166,390 @@
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_00_kipling_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Dedication"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_01_kipling_64kb.mp3",
               "length_ms": 180000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 1,
               "start_ms": 71000,
               "title": "Danny Deever"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_02_kipling_64kb.mp3",
               "length_ms": 214000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 2,
               "start_ms": 251000,
               "title": "Tommy"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_03_kipling_64kb.mp3",
               "length_ms": 178000,
+              "readers": [
+                "peter-yearsley"
+              ],
+              "section_number": 3,
               "start_ms": 465000,
               "title": "Fuzzy-Wuzzy"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_04_kipling_64kb.mp3",
               "length_ms": 164000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 4,
               "start_ms": 643000,
               "title": "Soldier, Soldier"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_05_kipling_64kb.mp3",
               "length_ms": 279000,
+              "readers": [
+                "khand"
+              ],
+              "section_number": 5,
               "start_ms": 807000,
               "title": "Screw-Guns"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_06_kipling_64kb.mp3",
               "length_ms": 139000,
+              "readers": [
+                "khand"
+              ],
+              "section_number": 6,
               "start_ms": 1086000,
               "title": "Cells"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_07_kipling_64kb.mp3",
               "length_ms": 255000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 7,
               "start_ms": 1225000,
               "title": "Gunga Din"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_08_kipling_64kb.mp3",
               "length_ms": 201000,
+              "readers": [
+                "dc"
+              ],
+              "section_number": 8,
               "start_ms": 1480000,
               "title": "Oonts"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_09_kipling_64kb.mp3",
               "length_ms": 353000,
+              "readers": [
+                "adrian-stephens"
+              ],
+              "section_number": 9,
               "start_ms": 1681000,
               "title": "Loot"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_10_kipling_64kb.mp3",
               "length_ms": 189000,
+              "readers": [
+                "czandra"
+              ],
+              "section_number": 10,
               "start_ms": 2034000,
               "title": "'Snarleyow'"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_11_kipling_64kb.mp3",
               "length_ms": 156000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 11,
               "start_ms": 2223000,
               "title": "The Widow at Windsor"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_12_kipling_64kb.mp3",
               "length_ms": 218000,
+              "readers": [
+                "dc"
+              ],
+              "section_number": 12,
               "start_ms": 2379000,
               "title": "Belts"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_13_kipling_64kb.mp3",
               "length_ms": 398000,
+              "readers": [
+                "sheridan-alistair"
+              ],
+              "section_number": 13,
               "start_ms": 2597000,
               "title": "The Young British Soldier"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_14_kipling_64kb.mp3",
               "length_ms": 239000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 14,
               "start_ms": 2995000,
               "title": "Mandalay"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_15_kipling_64kb.mp3",
               "length_ms": 160000,
+              "readers": [
+                "adrian-stephens"
+              ],
+              "section_number": 15,
               "start_ms": 3234000,
               "title": "Troopin'"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_16_kipling_64kb.mp3",
               "length_ms": 167000,
+              "readers": [
+                "adrian-stephens"
+              ],
+              "section_number": 16,
               "start_ms": 3394000,
               "title": "The Widow's Party"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_17_kipling_64kb.mp3",
               "length_ms": 173000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 17,
               "start_ms": 3561000,
               "title": "Ford o' Kabul River"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_18_kipling_64kb.mp3",
               "length_ms": 227000,
+              "readers": [
+                "adrian-stephens"
+              ],
+              "section_number": 18,
               "start_ms": 3734000,
               "title": "Gentlemen Rankers"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_19_kipling_64kb.mp3",
               "length_ms": 284000,
+              "readers": [
+                "adrian-stephens"
+              ],
+              "section_number": 19,
               "start_ms": 3961000,
               "title": "Route Marchin'"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_20_kipling_64kb.mp3",
               "length_ms": 88000,
+              "readers": [
+                "dc"
+              ],
+              "section_number": 20,
               "start_ms": 4245000,
               "title": "Shillin' a Day"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_21_kipling_64kb.mp3",
               "length_ms": 194000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 21,
               "start_ms": 4333000,
               "title": "'Bobs'"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_22_kipling_64kb.mp3",
               "length_ms": 217000,
+              "readers": [
+                "richa-jain"
+              ],
+              "section_number": 22,
               "start_ms": 4527000,
               "title": "'Back to the Army Again'"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_23_kipling_64kb.mp3",
               "length_ms": 156000,
+              "readers": [
+                "lee-vogler"
+              ],
+              "section_number": 23,
               "start_ms": 4744000,
               "title": "'Birds of Prey' March"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_24_kipling_64kb.mp3",
               "length_ms": 235000,
+              "readers": [
+                "dc"
+              ],
+              "section_number": 24,
               "start_ms": 4900000,
               "title": "'Soldier an' Salor Too'"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_25_kipling_64kb.mp3",
               "length_ms": 301000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 25,
               "start_ms": 5135000,
               "title": "Sappers"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_26_kipling_64kb.mp3",
               "length_ms": 158000,
+              "readers": [
+                "richa-jain"
+              ],
+              "section_number": 26,
               "start_ms": 5436000,
               "title": "That Day"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_27_kipling_64kb.mp3",
               "length_ms": 198000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 27,
               "start_ms": 5594000,
               "title": "'The Men that fought at Minden'"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_28_kipling_64kb.mp3",
               "length_ms": 233000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 28,
               "start_ms": 5792000,
               "title": "Cholera Camp"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_29_kipling_64kb.mp3",
               "length_ms": 217000,
+              "readers": [
+                "pclaffey"
+              ],
+              "section_number": 29,
               "start_ms": 6025000,
               "title": "The Ladies"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_30_kipling_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "bruce-kachuk"
+              ],
+              "section_number": 30,
               "start_ms": 6242000,
               "title": "Bill 'Awkins"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_31_kipling_64kb.mp3",
               "length_ms": 169000,
+              "readers": [
+                "peter-yearsley"
+              ],
+              "section_number": 31,
               "start_ms": 6333000,
               "title": "The Mother-Lodge"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_32_kipling_64kb.mp3",
               "length_ms": 143000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 32,
               "start_ms": 6502000,
               "title": "'Follow Me 'Ome'"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_33_kipling_64kb.mp3",
               "length_ms": 150000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 33,
               "start_ms": 6645000,
               "title": "The Sergeant's Weddin'"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_34_kipling_64kb.mp3",
               "length_ms": 269000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 34,
               "start_ms": 6795000,
               "title": "The Jacket"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_35_kipling_64kb.mp3",
               "length_ms": 309000,
+              "readers": [
+                "dc"
+              ],
+              "section_number": 35,
               "start_ms": 7064000,
               "title": "The 'Eathen"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_36_kipling_64kb.mp3",
               "length_ms": 252000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 36,
               "start_ms": 7373000,
               "title": "The Shut-Eye Sentry"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_37_kipling_64kb.mp3",
               "length_ms": 157000,
+              "readers": [
+                "czandra"
+              ],
+              "section_number": 37,
               "start_ms": 7625000,
               "title": "'Mary, Pity Women!'"
             },
             {
               "audio_url": "https://www.archive.org/download/barrack-room_ballads_2201_librivox/barrackroomballads_38_kipling_64kb.mp3",
               "length_ms": 196000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 38,
               "start_ms": 7782000,
               "title": "For to Admire"
             }
@@ -1397,7 +1558,11 @@
           "cover_url": "https://archive.org/download/barrack-room_ballads_2201_librivox/barrackroom_ballads_2201.jpg",
           "id": "alan-mapstone",
           "language": "en",
+          "librivox_genres": [
+            "Single author"
+          ],
           "librivox_id": 17306,
+          "librivox_title": "Barrack-Room Ballads",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/barrack-room-ballads-by-rudyard-kipling/",
@@ -3430,7 +3595,12 @@
           "cover_url": "https://archive.org/download/barrierboundary_2604_librivox/barrierboundary_2604.jpg",
           "id": "leon-harvey",
           "language": "en",
+          "librivox_genres": [
+            "History",
+            "Antiquity"
+          ],
           "librivox_id": 22478,
+          "librivox_title": "Barrier boundary of the Mediterranean basin and its northern breaches as factors in history",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/barrier-boundary-by-ellen-churchill-semple/",
@@ -4953,7 +5123,11 @@
           "cover_url": "https://archive.org/download/barryblakeoftheflyingfortress_1501_librivox/barry_blake_flying_fortress_1501.jpg",
           "id": "david-wales",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure"
+          ],
           "librivox_id": 9475,
+          "librivox_title": "Barry Blake Of The Flying Fortress",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/barry-blake-of-the-flying-fortress-by-gaylord-dubois/",
@@ -5875,186 +6049,217 @@
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_00_chaplin_64kb.mp3",
               "length_ms": 1352000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_01_chaplin_64kb.mp3",
               "length_ms": 67000,
+              "section_number": 1,
               "start_ms": 1352000,
               "title": "Mourn Not the Dead"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_02_chaplin_64kb.mp3",
               "length_ms": 90000,
+              "section_number": 2,
               "start_ms": 1419000,
               "title": "Taps"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_03_chaplin_64kb.mp3",
               "length_ms": 83000,
+              "section_number": 3,
               "start_ms": 1509000,
               "title": "Night in the Cell House"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_04_chaplin_64kb.mp3",
               "length_ms": 88000,
+              "section_number": 4,
               "start_ms": 1592000,
               "title": "Prison Shadows"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_05_chaplin_64kb.mp3",
               "length_ms": 88000,
+              "section_number": 5,
               "start_ms": 1680000,
               "title": "Prison Reveille"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_06_chaplin_64kb.mp3",
               "length_ms": 83000,
+              "section_number": 6,
               "start_ms": 1768000,
               "title": "Prison Nocturne"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_07_chaplin_64kb.mp3",
               "length_ms": 128000,
+              "section_number": 7,
               "start_ms": 1851000,
               "title": "The Warrior Wind"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_08_chaplin_64kb.mp3",
               "length_ms": 78000,
+              "section_number": 8,
               "start_ms": 1979000,
               "title": "To Freedom"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_09_chaplin_64kb.mp3",
               "length_ms": 88000,
+              "section_number": 9,
               "start_ms": 2057000,
               "title": "The Vision Maker"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_10_chaplin_64kb.mp3",
               "length_ms": 79000,
+              "section_number": 10,
               "start_ms": 2145000,
               "title": "Distances"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_11_chaplin_64kb.mp3",
               "length_ms": 59000,
+              "section_number": 11,
               "start_ms": 2224000,
               "title": "Phantoms"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_12_chaplin_64kb.mp3",
               "length_ms": 57000,
+              "section_number": 12,
               "start_ms": 2283000,
               "title": "Seven Little Sparrows"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_13_chaplin_64kb.mp3",
               "length_ms": 246000,
+              "section_number": 13,
               "start_ms": 2340000,
               "title": "Salaam!"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_14_chaplin_64kb.mp3",
               "length_ms": 91000,
+              "section_number": 14,
               "start_ms": 2586000,
               "title": "The West is Dead"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_15_chaplin_64kb.mp3",
               "length_ms": 119000,
+              "section_number": 15,
               "start_ms": 2677000,
               "title": "Up From Your Knees"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_16_chaplin_64kb.mp3",
               "length_ms": 148000,
+              "section_number": 16,
               "start_ms": 2796000,
               "title": "The Eunuch"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_17_chaplin_64kb.mp3",
               "length_ms": 115000,
+              "section_number": 17,
               "start_ms": 2944000,
               "title": "I.W.W. Prison Song"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_18_chaplin_64kb.mp3",
               "length_ms": 90000,
+              "section_number": 18,
               "start_ms": 3059000,
               "title": "To France"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_19_chaplin_64kb.mp3",
               "length_ms": 112000,
+              "section_number": 19,
               "start_ms": 3149000,
               "title": "Villanelle"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_20_chaplin_64kb.mp3",
               "length_ms": 94000,
+              "section_number": 20,
               "start_ms": 3261000,
               "title": "Wesley Everest"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_21_chaplin_64kb.mp3",
               "length_ms": 77000,
+              "section_number": 21,
               "start_ms": 3355000,
               "title": "The Industrial Heretics"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_22_chaplin_64kb.mp3",
               "length_ms": 147000,
+              "section_number": 22,
               "start_ms": 3432000,
               "title": "Blood and Wine"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_23_chaplin_64kb.mp3",
               "length_ms": 75000,
+              "section_number": 23,
               "start_ms": 3579000,
               "title": "The Red Guard"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_24_chaplin_64kb.mp3",
               "length_ms": 179000,
+              "section_number": 24,
               "start_ms": 3654000,
               "title": "The Red Feast"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_25_chaplin_64kb.mp3",
               "length_ms": 83000,
+              "section_number": 25,
               "start_ms": 3833000,
               "title": "The Girls Who Sang for Us"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_26_chaplin_64kb.mp3",
               "length_ms": 70000,
+              "section_number": 26,
               "start_ms": 3916000,
               "title": "To Edith"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_27_chaplin_64kb.mp3",
               "length_ms": 73000,
+              "section_number": 27,
               "start_ms": 3986000,
               "title": "Song of Separation"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_28_chaplin_64kb.mp3",
               "length_ms": 80000,
+              "section_number": 28,
               "start_ms": 4059000,
               "title": "To My Little Son"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_29_chaplin_64kb.mp3",
               "length_ms": 87000,
+              "section_number": 29,
               "start_ms": 4139000,
               "title": "Escaped!"
             },
             {
               "audio_url": "https://www.archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_30_chaplin_64kb.mp3",
               "length_ms": 116000,
+              "section_number": 30,
               "start_ms": 4226000,
               "title": "Retrospect"
             }
@@ -6063,7 +6268,12 @@
           "cover_url": "https://archive.org/download/barsshadowsprisonpoems_1506_librivox/barsandshadows_1506.jpg",
           "id": "ben-adams",
           "language": "en",
+          "librivox_genres": [
+            "Single author",
+            "Ballads"
+          ],
           "librivox_id": 9980,
+          "librivox_title": "Bars and Shadows: The Prison Poems of Ralph Chaplin",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/bars-and-shadows-the-prison-poems-of-ralph-chaplin-by-ralph-chaplin/",
@@ -8281,7 +8491,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt28/bartleby_scrivener_1301.jpg",
           "id": "bob-neufeld",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 5888,
+          "librivox_title": "Bartleby, the Scrivener (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/bartleby-the-scrivener-by-herman-melville-2/",
@@ -8462,7 +8676,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt/Bartleby_the_Scrivener_1002.jpg",
           "id": "bob-tassinari",
           "language": "en",
+          "librivox_genres": [
+            "Published 1800 -1900"
+          ],
           "librivox_id": 1222,
+          "librivox_title": "Bartleby the Scrivener, A Story of Wall Street.",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/bartleby-the-scrivener-by-herman-melville/",
@@ -8822,7 +9040,12 @@
           "cover_url": "https://archive.org/download/the_bartlett_mystery_2112_librivox/bartlett_2112.jpg",
           "id": "kirsten-wever",
           "language": "en",
+          "librivox_genres": [
+            "Crime & Mystery Fiction",
+            "Romance"
+          ],
           "librivox_id": 17385,
+          "librivox_title": "Bartlett Mystery",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-bartlett-mystery-by-louis-tracy/",
@@ -9752,96 +9975,160 @@
             {
               "audio_url": "https://www.archive.org/download/baseball_2009_librivox/baseballhowtobecomeaplayer_00_ward_64kb.mp3",
               "length_ms": 92000,
+              "readers": [
+                "cavaet"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_2009_librivox/baseballhowtobecomeaplayer_01_ward_64kb.mp3",
               "length_ms": 2245000,
+              "readers": [
+                "cavaet"
+              ],
+              "section_number": 1,
               "start_ms": 92000,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_2009_librivox/baseballhowtobecomeaplayer_02_ward_64kb.mp3",
               "length_ms": 590000,
+              "readers": [
+                "elisedee"
+              ],
+              "section_number": 2,
               "start_ms": 2337000,
               "title": "Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_2009_librivox/baseballhowtobecomeaplayer_03_ward_64kb.mp3",
               "length_ms": 450000,
+              "readers": [
+                "cavaet"
+              ],
+              "section_number": 3,
               "start_ms": 2927000,
               "title": "Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_2009_librivox/baseballhowtobecomeaplayer_04_ward_64kb.mp3",
               "length_ms": 1708000,
+              "readers": [
+                "cavaet"
+              ],
+              "section_number": 4,
               "start_ms": 3377000,
               "title": "Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_2009_librivox/baseballhowtobecomeaplayer_05_ward_64kb.mp3",
               "length_ms": 1146000,
+              "readers": [
+                "elisedee"
+              ],
+              "section_number": 5,
               "start_ms": 5085000,
               "title": "Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_2009_librivox/baseballhowtobecomeaplayer_06_ward_64kb.mp3",
               "length_ms": 468000,
+              "readers": [
+                "cavaet"
+              ],
+              "section_number": 6,
               "start_ms": 6231000,
               "title": "Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_2009_librivox/baseballhowtobecomeaplayer_07_ward_64kb.mp3",
               "length_ms": 735000,
+              "readers": [
+                "elisedee"
+              ],
+              "section_number": 7,
               "start_ms": 6699000,
               "title": "Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_2009_librivox/baseballhowtobecomeaplayer_08_ward_64kb.mp3",
               "length_ms": 387000,
+              "readers": [
+                "cavaet"
+              ],
+              "section_number": 8,
               "start_ms": 7434000,
               "title": "Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_2009_librivox/baseballhowtobecomeaplayer_09_ward_64kb.mp3",
               "length_ms": 1001000,
+              "readers": [
+                "elisedee"
+              ],
+              "section_number": 9,
               "start_ms": 7821000,
               "title": "Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_2009_librivox/baseballhowtobecomeaplayer_10_ward_64kb.mp3",
               "length_ms": 371000,
+              "readers": [
+                "cavaet"
+              ],
+              "section_number": 10,
               "start_ms": 8822000,
               "title": "Chapter 9"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_2009_librivox/baseballhowtobecomeaplayer_11_ward_64kb.mp3",
               "length_ms": 301000,
+              "readers": [
+                "elisedee"
+              ],
+              "section_number": 11,
               "start_ms": 9193000,
               "title": "Chapter 10"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_2009_librivox/baseballhowtobecomeaplayer_12_ward_64kb.mp3",
               "length_ms": 248000,
+              "readers": [
+                "cavaet"
+              ],
+              "section_number": 12,
               "start_ms": 9494000,
               "title": "Chapter 11"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_2009_librivox/baseballhowtobecomeaplayer_13_ward_64kb.mp3",
               "length_ms": 850000,
+              "readers": [
+                "elisedee"
+              ],
+              "section_number": 13,
               "start_ms": 9742000,
               "title": "Chapter 12"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_2009_librivox/baseballhowtobecomeaplayer_14_ward_64kb.mp3",
               "length_ms": 1431000,
+              "readers": [
+                "elisedee"
+              ],
+              "section_number": 14,
               "start_ms": 10592000,
               "title": "Chapter 13"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_2009_librivox/baseballhowtobecomeaplayer_15_ward_64kb.mp3",
               "length_ms": 411000,
+              "readers": [
+                "cavaet"
+              ],
+              "section_number": 15,
               "start_ms": 12023000,
               "title": "Chapter 14"
             }
@@ -9850,7 +10137,12 @@
           "cover_url": "https://archive.org/download/baseball_2009_librivox/baseballhowtobecomeaplayer_2009.jpg",
           "id": "cavaet",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Sports & Recreation"
+          ],
           "librivox_id": 15583,
+          "librivox_title": "Base-Ball: How to Become a Player",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/base-ball-how-to-become-a-player-by-john-montgomery-ward/",
@@ -11166,348 +11458,522 @@
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_01_rice_64kb.mp3",
               "length_ms": 51000,
+              "readers": [
+                "elisedee"
+              ],
               "start_ms": 0,
               "title": "Dedicated to the Fan"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_02_rice_64kb.mp3",
               "length_ms": 84000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 51000,
               "title": "Play Ball"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_03_rice_64kb.mp3",
               "length_ms": 139000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 135000,
               "title": "When the Bug is on the Bawl"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_04_rice_64kb.mp3",
               "length_ms": 295000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 274000,
               "title": "Casey's Revenge"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_05_rice_64kb.mp3",
               "length_ms": 139000,
+              "readers": [
+                "elisedee"
+              ],
               "start_ms": 569000,
               "title": "The Bug's View-Point"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_06_rice_64kb.mp3",
               "length_ms": 142000,
+              "readers": [
+                "elisedee"
+              ],
               "start_ms": 708000,
               "title": "The Courtship of a Son of Swat"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_07_rice_64kb.mp3",
               "length_ms": 141000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 850000,
               "title": "The Bush Leaguer's Dream"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_08_rice_64kb.mp3",
               "length_ms": 89000,
+              "readers": [
+                "elisedee"
+              ],
               "start_ms": 991000,
               "title": "Springtime in the History Room"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_09_rice_64kb.mp3",
               "length_ms": 106000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 1080000,
               "title": "The Hold-Out League"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_10_rice_64kb.mp3",
               "length_ms": 99000,
+              "readers": [
+                "elisedee"
+              ],
               "start_ms": 1186000,
               "title": "The Song of the Base Hit"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_11_rice_64kb.mp3",
               "length_ms": 178000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 1285000,
               "title": "On the Road to Rooters' Row"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_12_rice_64kb.mp3",
               "length_ms": 135000,
+              "readers": [
+                "elisedee"
+              ],
               "start_ms": 1463000,
               "title": "\"'Til the Last Man Is Out\""
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_13_rice_64kb.mp3",
               "length_ms": 87000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 1598000,
               "title": "The Bushers"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_14_rice_64kb.mp3",
               "length_ms": 119000,
+              "readers": [
+                "elisedee"
+              ],
               "start_ms": 1685000,
               "title": "The Climax of Fan Joy"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_15_rice_64kb.mp3",
               "length_ms": 118000,
+              "readers": [
+                "elisedee"
+              ],
               "start_ms": 1804000,
               "title": "Songs of Swat -- \"You Uster Bat .300\""
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_16_rice_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 1922000,
               "title": "The Test"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_17_rice_64kb.mp3",
               "length_ms": 137000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 1999000,
               "title": "The Laugh on Nero"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_18_rice_64kb.mp3",
               "length_ms": 213000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 2136000,
               "title": "Curfewed"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_19_rice_64kb.mp3",
               "length_ms": 156000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 2349000,
               "title": "The Fan and His Way"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_20_rice_64kb.mp3",
               "length_ms": 137000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 2505000,
               "title": "Over the Plate"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_21_rice_64kb.mp3",
               "length_ms": 102000,
+              "readers": [
+                "elisedee"
+              ],
               "start_ms": 2642000,
               "title": "Knocking Slang"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_22_rice_64kb.mp3",
               "length_ms": 96000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 2744000,
               "title": "The Real Springtime"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_23_rice_64kb.mp3",
               "length_ms": 135000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 2840000,
               "title": "The Raven Up-to-Date"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_24_rice_64kb.mp3",
               "length_ms": 141000,
+              "readers": [
+                "alan-mapstone"
+              ],
               "start_ms": 2975000,
               "title": "A Day in the Bleachers"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_25_rice_64kb.mp3",
               "length_ms": 105000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 3116000,
               "title": "A Warning"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_26_rice_64kb.mp3",
               "length_ms": 101000,
+              "readers": [
+                "larry-gieseke"
+              ],
               "start_ms": 3221000,
               "title": "Out on the Lines"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_27_rice_64kb.mp3",
               "length_ms": 107000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 3322000,
               "title": "On Memory's Wall"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_28_rice_64kb.mp3",
               "length_ms": 100000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 3429000,
               "title": "The Game"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_29_rice_64kb.mp3",
               "length_ms": 190000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 3529000,
               "title": "Mudville's Fate"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_30_rice_64kb.mp3",
               "length_ms": 120000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 3719000,
               "title": "A Toast Worth the While"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_31_rice_64kb.mp3",
               "length_ms": 174000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 3839000,
               "title": "The Champs of the Alley League"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_32_rice_64kb.mp3",
               "length_ms": 317000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 4013000,
               "title": "The Man Who Played with Anson on the Old Chicago Team"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_33_rice_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 4330000,
               "title": "The Record"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_34_rice_64kb.mp3",
               "length_ms": 135000,
+              "readers": [
+                "marcus-shera"
+              ],
               "start_ms": 4396000,
               "title": "\"The Major Leaguer's Daugher; Or, The Turning of the Tide\""
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_35_rice_64kb.mp3",
               "length_ms": 102000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 4531000,
               "title": "Pen Snapshot of the British Fan"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_36_rice_64kb.mp3",
               "length_ms": 119000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 4633000,
               "title": "On the Coaching Line"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_37_rice_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 4752000,
               "title": "The Goods"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_38_rice_64kb.mp3",
               "length_ms": 126000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 4824000,
               "title": "The Winter League Wonder"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_39_rice_64kb.mp3",
               "length_ms": 104000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 4950000,
               "title": "A Tip to the Fan Flock"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_40_rice_64kb.mp3",
               "length_ms": 117000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 5054000,
               "title": "As the Game \"Breaks\""
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_41_rice_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 5171000,
               "title": "The Grand Old Winter League"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_42_rice_64kb.mp3",
               "length_ms": 180000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 5262000,
               "title": "The Slide of Paul Revere"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_43_rice_64kb.mp3",
               "length_ms": 121000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 5442000,
               "title": "The Annual Return"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_44_rice_64kb.mp3",
               "length_ms": 123000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 5563000,
               "title": "In the Good Old Winter Time"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_45_rice_64kb.mp3",
               "length_ms": 96000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 5686000,
               "title": "After the Game"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_46_rice_64kb.mp3",
               "length_ms": 145000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 5782000,
               "title": "On Rooters' Row"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_47_rice_64kb.mp3",
               "length_ms": 344000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 5927000,
               "title": "The Love Sonnets of a Son of Swat"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_48_rice_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 6271000,
               "title": "At the End of the Game"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_49_rice_64kb.mp3",
               "length_ms": 131000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 6340000,
               "title": "The Mogul's Dream"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_50_rice_64kb.mp3",
               "length_ms": 111000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 6471000,
               "title": "Hard-Luck Adam"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_51_rice_64kb.mp3",
               "length_ms": 231000,
+              "readers": [
+                "briaholmes"
+              ],
               "start_ms": 6582000,
               "title": "Denton (Cy) Young"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_52_rice_64kb.mp3",
               "length_ms": 106000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 6813000,
               "title": "The Ump's Midwinter Dream"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_53_rice_64kb.mp3",
               "length_ms": 178000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 6919000,
               "title": "A Real Job for Teddy"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_54_rice_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 7097000,
               "title": "The Shock"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_55_rice_64kb.mp3",
               "length_ms": 150000,
+              "readers": [
+                "elisedee"
+              ],
               "start_ms": 7174000,
               "title": "When \"Wifey\" Reads Dope"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_56_rice_64kb.mp3",
               "length_ms": 151000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 7324000,
               "title": "A Hard-Luck Yarn"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_57_rice_64kb.mp3",
               "length_ms": 214000,
+              "readers": [
+                "cavaet"
+              ],
               "start_ms": 7475000,
               "title": "A Fan's Diary"
             },
             {
               "audio_url": "https://www.archive.org/download/baseball_ballads_2304_librivox/baseballballads_58_rice_64kb.mp3",
               "length_ms": 113000,
+              "readers": [
+                "alan-mapstone"
+              ],
               "start_ms": 7689000,
               "title": "Game Called"
             }
@@ -11516,7 +11982,12 @@
           "cover_url": "https://archive.org/download/baseball_ballads_2304_librivox/baseball_ballads_2304.jpg",
           "id": "elisedee",
           "language": "en",
+          "librivox_genres": [
+            "Single author",
+            "Games"
+          ],
           "librivox_id": 18362,
+          "librivox_title": "Baseball Ballads",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/baseball-ballads-by-grantland-rice/",

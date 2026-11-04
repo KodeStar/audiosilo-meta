@@ -7087,24 +7087,66 @@
             {
               "audio_url": "https://www.archive.org/download/aliasmisssherlock_2008_librivox/aliasmisssherlock_1_tubbs_64kb.mp3",
               "length_ms": 3415000,
+              "readers": [
+                "availle",
+                "alan-mapstone",
+                "david-purdy",
+                "devorah-allen",
+                "tj-burns",
+                "michaelmaggs",
+                "jenn-broda",
+                "skypigeon"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/aliasmisssherlock_2008_librivox/aliasmisssherlock_2_tubbs_64kb.mp3",
               "length_ms": 2155000,
+              "readers": [
+                "availle",
+                "matthew-reece",
+                "david-purdy",
+                "tj-burns",
+                "michaelmaggs",
+                "jenn-broda",
+                "adrian-stephens",
+                "skypigeon"
+              ],
               "start_ms": 3415000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/aliasmisssherlock_2008_librivox/aliasmisssherlock_3_tubbs_64kb.mp3",
               "length_ms": 2449000,
+              "readers": [
+                "availle",
+                "toddhw",
+                "david-purdy",
+                "michaelmaggs",
+                "wayne-cooke",
+                "skypigeon",
+                "jgreenvo"
+              ],
               "start_ms": 5570000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/aliasmisssherlock_2008_librivox/aliasmisssherlock_4_tubbs_64kb.mp3",
               "length_ms": 3072000,
+              "readers": [
+                "availle",
+                "matthew-reece",
+                "toddhw",
+                "alan-mapstone",
+                "devorah-allen",
+                "tj-burns",
+                "michaelmaggs",
+                "jenn-broda",
+                "adrian-stephens",
+                "skypigeon",
+                "jgreenvo"
+              ],
               "start_ms": 8019000,
               "title": "Act 4"
             }
@@ -7113,7 +7155,13 @@
           "cover_url": "https://archive.org/download/aliasmisssherlock_2008_librivox/alias_miss_sherlock_2008.jpg",
           "id": "availle",
           "language": "en",
+          "librivox_genres": [
+            "Detective Fiction",
+            "Plays",
+            "Romance"
+          ],
           "librivox_id": 15346,
+          "librivox_title": "Alias Miss Sherlock",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/alias-miss-sherlock-by-arthur-lewis-tubbs/",
@@ -11509,7 +11557,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCovers3/Alice_Adams_1008.jpg",
           "id": "jeannie",
           "language": "en",
+          "librivox_genres": [
+            "Published 1900 onward"
+          ],
           "librivox_id": 2896,
+          "librivox_title": "Alice Adams",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/alice-adams-by-booth-tarkington/",

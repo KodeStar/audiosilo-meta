@@ -2620,7 +2620,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt18/Os_Lusiadas_1205.jpg",
           "id": "zaaf",
           "language": "pt",
+          "librivox_genres": [
+            "Epics"
+          ],
           "librivox_id": 3313,
+          "librivox_title": "Lusíadas",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/os-lusiadas-by-luis-vaz-de-camoes/",
@@ -2679,81 +2683,104 @@
             {
               "audio_url": "https://www.archive.org/download/lusiads_1002_librivox/thelusiads_00_camoes_64kb.mp3",
               "length_ms": 1173000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Dedication and Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/lusiads_1002_librivox/thelusiads_01_camoes_64kb.mp3",
               "length_ms": 2842000,
+              "section_number": 1,
               "start_ms": 1173000,
               "title": "Canto I"
             },
             {
               "audio_url": "https://www.archive.org/download/lusiads_1002_librivox/thelusiads_02_camoes_64kb.mp3",
               "length_ms": 2863000,
+              "section_number": 2,
               "start_ms": 4015000,
               "title": "Canto II"
             },
             {
               "audio_url": "https://www.archive.org/download/lusiads_1002_librivox/thelusiads_03_camoes_64kb.mp3",
               "length_ms": 3869000,
+              "section_number": 3,
               "start_ms": 6878000,
               "title": "Canto III"
             },
             {
               "audio_url": "https://www.archive.org/download/lusiads_1002_librivox/thelusiads_04_camoes_64kb.mp3",
               "length_ms": 2868000,
+              "section_number": 4,
               "start_ms": 10747000,
               "title": "Canto IV"
             },
             {
               "audio_url": "https://www.archive.org/download/lusiads_1002_librivox/thelusiads_05_camoes_64kb.mp3",
               "length_ms": 2815000,
+              "section_number": 5,
               "start_ms": 13615000,
               "title": "Canto V"
             },
             {
               "audio_url": "https://www.archive.org/download/lusiads_1002_librivox/thelusiads_06_camoes_64kb.mp3",
               "length_ms": 2751000,
+              "section_number": 6,
               "start_ms": 16430000,
               "title": "Canto VI"
             },
             {
               "audio_url": "https://www.archive.org/download/lusiads_1002_librivox/thelusiads_07_camoes_64kb.mp3",
               "length_ms": 2424000,
+              "section_number": 7,
               "start_ms": 19181000,
               "title": "Canto VII"
             },
             {
               "audio_url": "https://www.archive.org/download/lusiads_1002_librivox/thelusiads_08_camoes_64kb.mp3",
               "length_ms": 2675000,
+              "section_number": 8,
               "start_ms": 21605000,
               "title": "Canto VIII"
             },
             {
               "audio_url": "https://www.archive.org/download/lusiads_1002_librivox/thelusiads_09_camoes_64kb.mp3",
               "length_ms": 2604000,
+              "section_number": 9,
               "start_ms": 24280000,
               "title": "Canto IX"
             },
             {
               "audio_url": "https://www.archive.org/download/lusiads_1002_librivox/thelusiads_10_camoes_64kb.mp3",
               "length_ms": 4295000,
+              "section_number": 10,
               "start_ms": 26884000,
               "title": "Canto X"
             },
             {
               "audio_url": "https://www.archive.org/download/lusiads_1002_librivox/thelusiads_11_camoes_64kb.mp3",
               "length_ms": 4008000,
+              "section_number": 11,
               "start_ms": 31179000,
               "title": "Rejected Stanzas"
             }
           ],
           "copyright_year": 1880,
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt14/Lusiads_1201.jpg",
+          "credits": [
+            {
+              "person": "richard-francis-burton",
+              "role": "translator"
+            }
+          ],
           "id": "leni",
           "language": "en",
+          "librivox_genres": [
+            "Historical Fiction",
+            "Epics"
+          ],
           "librivox_id": 3400,
+          "librivox_title": "Lusiads",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-lusiads-by-luis-vaz-de-camoes/",
@@ -7329,78 +7356,91 @@
             {
               "audio_url": "https://www.archive.org/download/the_lust_of_hate_1811_librivox/lustofhate_00_boothby_64kb.mp3",
               "length_ms": 3081000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "My Chance in Life"
             },
             {
               "audio_url": "https://www.archive.org/download/the_lust_of_hate_1811_librivox/lustofhate_01_boothby_64kb.mp3",
               "length_ms": 3194000,
+              "section_number": 1,
               "start_ms": 3081000,
               "title": "England Once More"
             },
             {
               "audio_url": "https://www.archive.org/download/the_lust_of_hate_1811_librivox/lustofhate_02_boothby_64kb.mp3",
               "length_ms": 2201000,
+              "section_number": 2,
               "start_ms": 6275000,
               "title": "A Gruesome Tale"
             },
             {
               "audio_url": "https://www.archive.org/download/the_lust_of_hate_1811_librivox/lustofhate_03_boothby_64kb.mp3",
               "length_ms": 2290000,
+              "section_number": 3,
               "start_ms": 8476000,
               "title": "The Lust of Hate"
             },
             {
               "audio_url": "https://www.archive.org/download/the_lust_of_hate_1811_librivox/lustofhate_04_boothby_64kb.mp3",
               "length_ms": 1940000,
+              "section_number": 4,
               "start_ms": 10766000,
               "title": "A Strange Coincidence"
             },
             {
               "audio_url": "https://www.archive.org/download/the_lust_of_hate_1811_librivox/lustofhate_05_boothby_64kb.mp3",
               "length_ms": 1690000,
+              "section_number": 5,
               "start_ms": 12706000,
               "title": "The Wreck of the Fiji Princess"
             },
             {
               "audio_url": "https://www.archive.org/download/the_lust_of_hate_1811_librivox/lustofhate_06_boothby_64kb.mp3",
               "length_ms": 1996000,
+              "section_number": 6,
               "start_ms": 14396000,
               "title": "The Salvages"
             },
             {
               "audio_url": "https://www.archive.org/download/the_lust_of_hate_1811_librivox/lustofhate_07_boothby_64kb.mp3",
               "length_ms": 1829000,
+              "section_number": 7,
               "start_ms": 16392000,
               "title": "A Bitter Disappointment"
             },
             {
               "audio_url": "https://www.archive.org/download/the_lust_of_hate_1811_librivox/lustofhate_08_boothby_64kb.mp3",
               "length_ms": 2167000,
+              "section_number": 8,
               "start_ms": 18221000,
               "title": "We Are Saved"
             },
             {
               "audio_url": "https://www.archive.org/download/the_lust_of_hate_1811_librivox/lustofhate_09_boothby_64kb.mp3",
               "length_ms": 1281000,
+              "section_number": 9,
               "start_ms": 20388000,
               "title": "South Africa"
             },
             {
               "audio_url": "https://www.archive.org/download/the_lust_of_hate_1811_librivox/lustofhate_10_boothby_64kb.mp3",
               "length_ms": 1601000,
+              "section_number": 10,
               "start_ms": 21669000,
               "title": "I Tell My Story"
             },
             {
               "audio_url": "https://www.archive.org/download/the_lust_of_hate_1811_librivox/lustofhate_11_boothby_64kb.mp3",
               "length_ms": 1544000,
+              "section_number": 11,
               "start_ms": 23270000,
               "title": "A Terrible Surprise"
             },
             {
               "audio_url": "https://www.archive.org/download/the_lust_of_hate_1811_librivox/lustofhate_12_boothby_64kb.mp3",
               "length_ms": 1482000,
+              "section_number": 12,
               "start_ms": 24814000,
               "title": "The End"
             }
@@ -7409,7 +7449,11 @@
           "cover_url": "https://archive.org/download/the_lust_of_hate_1811_librivox/lust_hate_1811.jpg",
           "id": "peter-john-keeble",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction"
+          ],
           "librivox_id": 13036,
+          "librivox_title": "Lust of Hate",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-lust-of-hate-by-guy-boothby/",
@@ -9928,159 +9972,253 @@
             {
               "audio_url": "https://www.archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_01_chekhov_64kb.mp3",
               "length_ms": 1397000,
+              "readers": [
+                "rogthey"
+              ],
               "start_ms": 0,
               "title": "Eine schreckliche Nacht"
             },
             {
               "audio_url": "https://www.archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_02_chekhov_64kb.mp3",
               "length_ms": 636000,
+              "readers": [
+                "eva-k"
+              ],
               "start_ms": 1397000,
               "title": "Der Redner"
             },
             {
               "audio_url": "https://www.archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_03_chekhov_64kb.mp3",
               "length_ms": 844000,
+              "readers": [
+                "friedrich"
+              ],
               "start_ms": 2033000,
               "title": "Die Nacht vor der Verhandlung"
             },
             {
               "audio_url": "https://www.archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_04_chekhov_64kb.mp3",
               "length_ms": 623000,
+              "readers": [
+                "rogthey"
+              ],
               "start_ms": 2877000,
               "title": "Verwirrung der Geister"
             },
             {
               "audio_url": "https://www.archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_05_chekhov_64kb.mp3",
               "length_ms": 799000,
+              "readers": [
+                "rogthey"
+              ],
               "start_ms": 3500000,
               "title": "Der Rächer seiner Ehre"
             },
             {
               "audio_url": "https://www.archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_06_chekhov_64kb.mp3",
               "length_ms": 760000,
+              "readers": [
+                "franziska-paul"
+              ],
               "start_ms": 4299000,
               "title": "Ein Glücklicher"
             },
             {
               "audio_url": "https://www.archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_07_chekhov_64kb.mp3",
               "length_ms": 446000,
+              "readers": [
+                "friedrich"
+              ],
               "start_ms": 5059000,
               "title": "Der teure Hund"
             },
             {
               "audio_url": "https://www.archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_08_chekhov_64kb.mp3",
               "length_ms": 301000,
+              "readers": [
+                "fabian-grant"
+              ],
               "start_ms": 5505000,
               "title": "Der Dramatiker"
             },
             {
               "audio_url": "https://www.archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_09_chekhov_64kb.mp3",
               "length_ms": 676000,
+              "readers": [
+                "rogthey"
+              ],
               "start_ms": 5806000,
               "title": "Der Gast"
             },
             {
               "audio_url": "https://www.archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_10_chekhov_64kb.mp3",
               "length_ms": 570000,
+              "readers": [
+                "boris"
+              ],
               "start_ms": 6482000,
               "title": "Der Kater"
             },
             {
               "audio_url": "https://www.archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_11_chekhov_64kb.mp3",
               "length_ms": 678000,
+              "readers": [
+                "rogthey"
+              ],
               "start_ms": 7052000,
               "title": "Ein Unikum"
             },
             {
               "audio_url": "https://www.archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_12_chekhov_64kb.mp3",
               "length_ms": 675000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 7730000,
               "title": "Die Rache"
             },
             {
               "audio_url": "https://www.archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_13_chekhov_64kb.mp3",
               "length_ms": 262000,
+              "readers": [
+                "fabian-grant"
+              ],
               "start_ms": 8405000,
               "title": "Die Freude!"
             },
             {
               "audio_url": "https://www.archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_14_chekhov_64kb.mp3",
               "length_ms": 723000,
+              "readers": [
+                "boris"
+              ],
               "start_ms": 8667000,
               "title": "Ein wehrloses Geschöpf"
             },
             {
               "audio_url": "https://www.archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_15_chekhov_64kb.mp3",
               "length_ms": 635000,
+              "readers": [
+                "boris"
+              ],
               "start_ms": 9390000,
               "title": "Eine Tochter Albions"
             },
             {
               "audio_url": "https://www.archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_16_chekhov_64kb.mp3",
               "length_ms": 849000,
+              "readers": [
+                "boris"
+              ],
               "start_ms": 10025000,
               "title": "Das Drama"
             },
             {
               "audio_url": "https://www.archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_17_chekhov_64kb.mp3",
               "length_ms": 722000,
+              "readers": [
+                "klaus-neubauer"
+              ],
               "start_ms": 10874000,
               "title": "Das Kunstwerk"
             },
             {
               "audio_url": "https://www.archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_18_chekhov_64kb.mp3",
               "length_ms": 514000,
+              "readers": [
+                "rogthey"
+              ],
               "start_ms": 11596000,
               "title": "Mnemotechnik"
             },
             {
               "audio_url": "https://www.archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_19_chekhov_64kb.mp3",
               "length_ms": 488000,
+              "readers": [
+                "eva-k"
+              ],
               "start_ms": 12110000,
               "title": "Der Tod des Beamten"
             },
             {
               "audio_url": "https://www.archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_20_chekhov_64kb.mp3",
               "length_ms": 707000,
+              "readers": [
+                "klaus-neubauer"
+              ],
               "start_ms": 12598000,
               "title": "Ja, das Publikum!"
             },
             {
               "audio_url": "https://www.archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_21_chekhov_64kb.mp3",
               "length_ms": 655000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 13305000,
               "title": "Starker Tobak"
             },
             {
               "audio_url": "https://www.archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_22_chekhov_64kb.mp3",
               "length_ms": 518000,
+              "readers": [
+                "boris"
+              ],
               "start_ms": 13960000,
               "title": "Ein Chamäleon"
             },
             {
               "audio_url": "https://www.archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_23_chekhov_64kb.mp3",
               "length_ms": 977000,
+              "readers": [
+                "boris"
+              ],
               "start_ms": 14478000,
               "title": "Aus dem Regen in die Traufe"
             },
             {
               "audio_url": "https://www.archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_24_chekhov_64kb.mp3",
               "length_ms": 1089000,
+              "readers": [
+                "rogthey"
+              ],
               "start_ms": 15455000,
               "title": "Teure Stunden"
             },
             {
               "audio_url": "https://www.archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_25_chekhov_64kb.mp3",
               "length_ms": 896000,
+              "readers": [
+                "eva-k"
+              ],
               "start_ms": 16544000,
               "title": "Das Gewinnlos"
             }
           ],
           "copyright_year": 1920,
           "cover_url": "https://archive.org/download/lustige_geschichten_1709_librivox/lustigegeschichten_1709.jpg",
+          "credits": [
+            {
+              "person": "wladimir-czumikov",
+              "role": "translator"
+            },
+            {
+              "person": "alexander-eliasberg",
+              "role": "translator"
+            },
+            {
+              "person": "korfiz-holm",
+              "role": "translator"
+            }
+          ],
           "id": "rogthey",
           "language": "de",
+          "librivox_genres": [
+            "Humorous Fiction",
+            "Single Author Collections"
+          ],
           "librivox_id": 11457,
+          "librivox_title": "Lustige Geschichten",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/lustige-geschichten-by-anton-chekhov/",

@@ -2208,7 +2208,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt22/Eu_Outras_Poesias_1210.jpg",
           "id": "leni",
           "language": "pt",
+          "librivox_genres": [
+            "Poetry",
+            "Single author"
+          ],
           "librivox_id": 4629,
+          "librivox_title": "Eu e Outras Poesias",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/eu-e-outras-poesias-by-augusto-dos-anjos/",
@@ -2844,9 +2849,20 @@
           ],
           "copyright_year": 1915,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt32/eudemian_ethics_1307.jpg",
+          "credits": [
+            {
+              "person": "j-solomon",
+              "role": "translator"
+            }
+          ],
           "id": "geoffrey-edwards",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Ancient"
+          ],
           "librivox_id": 7854,
+          "librivox_title": "Eudemian Ethics",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/eudemian-ethics-by-aristotle/",
@@ -3335,9 +3351,21 @@
           ],
           "copyright_year": 1881,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt21/eugene_oneguine_1208.jpg",
+          "credits": [
+            {
+              "person": "henry-spalding",
+              "role": "translator"
+            }
+          ],
           "id": "maryann",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction",
+            "Poetry",
+            "Romance"
+          ],
           "librivox_id": 6602,
+          "librivox_title": "Eugene Onéguine",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/eugene-oneguine-by-alexander-pushkin/",
@@ -4100,7 +4128,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt14/Eugenics_Other_Evils_1201.jpg",
           "id": "ray-clare",
           "language": "en",
+          "librivox_genres": [
+            "Essays & Short Works"
+          ],
           "librivox_id": 2514,
+          "librivox_title": "Eugenics and Other Evils",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/eugenics-by-chesterton/",
@@ -4317,9 +4349,19 @@
           ],
           "copyright_year": 1886,
           "cover_url": "https://archive.org/download/eugenie_grandet_1504_librivox/Eugenie_Grandet_1505.jpg",
+          "credits": [
+            {
+              "person": "katherine-prescott-wormeley",
+              "role": "translator"
+            }
+          ],
           "id": "bruce-pirie",
           "language": "en",
+          "librivox_genres": [
+            "Literary Fiction"
+          ],
           "librivox_id": 9747,
+          "librivox_title": "Eugénie Grandet",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/eugenie-grandet-by-honore-de-balzac/",
@@ -5195,132 +5237,220 @@
             {
               "audio_url": "https://www.archive.org/download/eulogies_1607_librivox/eulogies_00_rgingersoll_64kb.mp3",
               "length_ms": 200000,
+              "readers": [
+                "michele-fry"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "00. Publisher's Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/eulogies_1607_librivox/eulogies_01_rgingersoll_64kb.mp3",
               "length_ms": 644000,
+              "readers": [
+                "edward-kirkby"
+              ],
+              "section_number": 1,
               "start_ms": 200000,
               "title": "01. A Tribute To George Jacob Holyoake"
             },
             {
               "audio_url": "https://www.archive.org/download/eulogies_1607_librivox/eulogies_02_rgingersoll_64kb.mp3",
               "length_ms": 139000,
+              "readers": [
+                "tom-penn"
+              ],
+              "section_number": 2,
               "start_ms": 844000,
               "title": "02. At The Grave Of Benjamin W. Parker"
             },
             {
               "audio_url": "https://www.archive.org/download/eulogies_1607_librivox/eulogies_03_rgingersoll_64kb.mp3",
               "length_ms": 561000,
+              "readers": [
+                "scott-danneker"
+              ],
+              "section_number": 3,
               "start_ms": 983000,
               "title": "03. A Tribute To Ebon C. Ingersoll"
             },
             {
               "audio_url": "https://www.archive.org/download/eulogies_1607_librivox/eulogies_04_rgingersoll_64kb.mp3",
               "length_ms": 266000,
+              "readers": [
+                "tom-penn"
+              ],
+              "section_number": 4,
               "start_ms": 1544000,
               "title": "04. A Tribute To The Rev. Alexander Clark"
             },
             {
               "audio_url": "https://www.archive.org/download/eulogies_1607_librivox/eulogies_05_rgingersoll_64kb.mp3",
               "length_ms": 218000,
+              "readers": [
+                "kathleen-moore"
+              ],
+              "section_number": 5,
               "start_ms": 1810000,
               "title": "05. At A Child's Grave"
             },
             {
               "audio_url": "https://www.archive.org/download/eulogies_1607_librivox/eulogies_06_rgingersoll_64kb.mp3",
               "length_ms": 324000,
+              "readers": [
+                "kathleen-moore"
+              ],
+              "section_number": 6,
               "start_ms": 2028000,
               "title": "06. A Tribute To John G. Mills"
             },
             {
               "audio_url": "https://www.archive.org/download/eulogies_1607_librivox/eulogies_07_rgingersoll_64kb.mp3",
               "length_ms": 569000,
+              "readers": [
+                "kathleen-moore"
+              ],
+              "section_number": 7,
               "start_ms": 2352000,
               "title": "07. A Tribute To Elizur Wright"
             },
             {
               "audio_url": "https://www.archive.org/download/eulogies_1607_librivox/eulogies_08_rgingersoll_64kb.mp3",
               "length_ms": 161000,
+              "readers": [
+                "kathleen-moore"
+              ],
+              "section_number": 8,
               "start_ms": 2921000,
               "title": "08. A Tribute To Mrs. Ida Whiting Knowles"
             },
             {
               "audio_url": "https://www.archive.org/download/eulogies_1607_librivox/eulogies_09_rgingersoll_64kb.mp3",
               "length_ms": 840000,
+              "readers": [
+                "michele-fry"
+              ],
+              "section_number": 9,
               "start_ms": 3082000,
               "title": "09. A Tribute To Henry Ward Beecher"
             },
             {
               "audio_url": "https://www.archive.org/download/eulogies_1607_librivox/eulogies_10_rgingersoll_64kb.mp3",
               "length_ms": 1680000,
+              "readers": [
+                "tom-penn"
+              ],
+              "section_number": 10,
               "start_ms": 3922000,
               "title": "10. A Tribute To Roscoe Conkling"
             },
             {
               "audio_url": "https://www.archive.org/download/eulogies_1607_librivox/eulogies_11_rgingersoll_64kb.mp3",
               "length_ms": 215000,
+              "readers": [
+                "3dad"
+              ],
+              "section_number": 11,
               "start_ms": 5602000,
               "title": "11. A Tribute To Richard H. Whiting"
             },
             {
               "audio_url": "https://www.archive.org/download/eulogies_1607_librivox/eulogies_12_rgingersoll_64kb.mp3",
               "length_ms": 897000,
+              "readers": [
+                "william-allan-jones"
+              ],
+              "section_number": 12,
               "start_ms": 5817000,
               "title": "12. A Tribute To Courtlandt Palmer"
             },
             {
               "audio_url": "https://www.archive.org/download/eulogies_1607_librivox/eulogies_13_rgingersoll_64kb.mp3",
               "length_ms": 377000,
+              "readers": [
+                "edward-kirkby"
+              ],
+              "section_number": 13,
               "start_ms": 6714000,
               "title": "13. A Tribute To Mrs. Mary H. Fiske"
             },
             {
               "audio_url": "https://www.archive.org/download/eulogies_1607_librivox/eulogies_14_rgingersoll_64kb.mp3",
               "length_ms": 989000,
+              "readers": [
+                "realisticspeakers"
+              ],
+              "section_number": 14,
               "start_ms": 7091000,
               "title": "14. A Tribute To Horace Seaver"
             },
             {
               "audio_url": "https://www.archive.org/download/eulogies_1607_librivox/eulogies_15_rgingersoll_64kb.mp3",
               "length_ms": 358000,
+              "readers": [
+                "scott-danneker"
+              ],
+              "section_number": 15,
               "start_ms": 8080000,
               "title": "15. A Tribute To Lawrence Barrett"
             },
             {
               "audio_url": "https://www.archive.org/download/eulogies_1607_librivox/eulogies_16_rgingersoll_64kb.mp3",
               "length_ms": 805000,
+              "readers": [
+                "michele-fry"
+              ],
+              "section_number": 16,
               "start_ms": 8438000,
               "title": "16. A Tribute To Walt Whitman"
             },
             {
               "audio_url": "https://www.archive.org/download/eulogies_1607_librivox/eulogies_17_rgingersoll_64kb.mp3",
               "length_ms": 646000,
+              "readers": [
+                "scott-danneker"
+              ],
+              "section_number": 17,
               "start_ms": 9243000,
               "title": "17. A Tribute To Philo D. Beckwith"
             },
             {
               "audio_url": "https://www.archive.org/download/eulogies_1607_librivox/eulogies_18_rgingersoll_64kb.mp3",
               "length_ms": 281000,
+              "readers": [
+                "scott-danneker"
+              ],
+              "section_number": 18,
               "start_ms": 9889000,
               "title": "18. A Tribute To Anton Seidl"
             },
             {
               "audio_url": "https://www.archive.org/download/eulogies_1607_librivox/eulogies_19_rgingersoll_64kb.mp3",
               "length_ms": 261000,
+              "readers": [
+                "realisticspeakers"
+              ],
+              "section_number": 19,
               "start_ms": 10170000,
               "title": "19. A Tribute To Dr. Thomas Seton Robertson"
             },
             {
               "audio_url": "https://www.archive.org/download/eulogies_1607_librivox/eulogies_20_rgingersoll_64kb.mp3",
               "length_ms": 165000,
+              "readers": [
+                "3dad"
+              ],
+              "section_number": 20,
               "start_ms": 10431000,
               "title": "20. A Tribute To Thomas Corwin"
             },
             {
               "audio_url": "https://www.archive.org/download/eulogies_1607_librivox/eulogies_21_rgingersoll_64kb.mp3",
               "length_ms": 661000,
+              "readers": [
+                "tom-penn"
+              ],
+              "section_number": 21,
               "start_ms": 10596000,
               "title": "21. A Tribute To Isaac H. Bailey"
             }
@@ -5329,7 +5459,11 @@
           "cover_url": "https://archive.org/download/eulogies_1607_librivox/eulogies_1607.jpg",
           "id": "michele-fry",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction"
+          ],
           "librivox_id": 10983,
+          "librivox_title": "Eulogies",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/eulogies-by-robert-g-ingersoll/",
@@ -5998,39 +6132,99 @@
             {
               "audio_url": "https://www.archive.org/download/eunuchus_1912_librivox/eunuchus_1_terence_64kb.mp3",
               "length_ms": 1189000,
+              "readers": [
+                "larry-wilson",
+                "khand",
+                "foon",
+                "aaron-white"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/eunuchus_1912_librivox/eunuchus_2_terence_64kb.mp3",
               "length_ms": 1228000,
+              "readers": [
+                "toddhw",
+                "larry-wilson",
+                "khand",
+                "tomas-peter",
+                "aaron-white"
+              ],
               "start_ms": 1189000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/eunuchus_1912_librivox/eunuchus_3_terence_64kb.mp3",
               "length_ms": 1374000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "larry-wilson",
+                "khand",
+                "sonia",
+                "tomas-peter",
+                "owen-cook",
+                "foon",
+                "campbell-schelp"
+              ],
               "start_ms": 2417000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/eunuchus_1912_librivox/eunuchus_4_terence_64kb.mp3",
               "length_ms": 1462000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "larry-wilson",
+                "cathar-maiden",
+                "sonia",
+                "leanne-yau",
+                "owen-cook",
+                "foon",
+                "aaron-white",
+                "frederic-surget"
+              ],
               "start_ms": 3791000,
               "title": "Act 4"
             },
             {
               "audio_url": "https://www.archive.org/download/eunuchus_1912_librivox/eunuchus_5_terence_64kb.mp3",
               "length_ms": 1805000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "larry-wilson",
+                "khand",
+                "sonia",
+                "leanne-yau",
+                "tomas-peter",
+                "jim-locke",
+                "owen-cook",
+                "foon",
+                "aaron-white"
+              ],
               "start_ms": 5253000,
               "title": "Act 5"
             }
           ],
           "copyright_year": 1896,
           "cover_url": "https://archive.org/download/librivoxcdcoverart36/Eunuchus_1912.jpg",
+          "credits": [
+            {
+              "person": "henry-thomas-riley",
+              "role": "translator"
+            }
+          ],
           "id": "larry-wilson",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Plays"
+          ],
           "librivox_id": 14070,
+          "librivox_title": "Eunuchus: The Eunuch",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/eunuchus-the-eunuch-by-terence/",
@@ -7115,7 +7309,11 @@
           "cover_url": "https://archive.org/download/eureka_ss_1807_librivox/eureka_1807.jpg",
           "id": "scotty-smith",
           "language": "en",
+          "librivox_genres": [
+            "Essays"
+          ],
           "librivox_id": 13110,
+          "librivox_title": "Eureka: A Prose Poem",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/eureka-a-prose-poem-by-edgar-allan-poe/",
@@ -10016,228 +10214,266 @@
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_00_twain_64kb.mp3",
               "length_ms": 3135000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "AN APPRECIATION BY BRANDER MATTHEWS  & INTRODUCTION BY ALBERT BIGELOW PAINE"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_01_twain_64kb.mp3",
               "length_ms": 1738000,
+              "section_number": 1,
               "start_ms": 3135000,
               "title": "CHAP. 1 - A MEMORABLE MIDNIGHT EXPERIENCE"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_02_twain_64kb.mp3",
               "length_ms": 1417000,
+              "section_number": 2,
               "start_ms": 4873000,
               "title": "CHAP. 2 - TWO MARK TWAIN EDITORIALS"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_03_twain_64kb.mp3",
               "length_ms": 1074000,
+              "section_number": 3,
               "start_ms": 6290000,
               "title": "CHAP. 3 - THE TEMPERANCE CRUSADE AND WOMEN'S RIGHTS"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_04_twain_64kb.mp3",
               "length_ms": 3721000,
+              "section_number": 4,
               "start_ms": 7364000,
               "title": "CHAP. 4 - O'SHAH - PART ONE"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_05_twain_64kb.mp3",
               "length_ms": 3908000,
+              "section_number": 5,
               "start_ms": 11085000,
               "title": "CHAP. 4 - O'SHAH - PART TWO"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_06_twain_64kb.mp3",
               "length_ms": 861000,
+              "section_number": 6,
               "start_ms": 14993000,
               "title": "CHAP. 5 - A WONDERFUL PAIR OF SLIPPERS"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_07_twain_64kb.mp3",
               "length_ms": 2731000,
+              "section_number": 7,
               "start_ms": 15854000,
               "title": "CHAP. 6 - AIX, THE PARADISE OF THE RHEUMATICS"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_08_twain_64kb.mp3",
               "length_ms": 2258000,
+              "section_number": 8,
               "start_ms": 18585000,
               "title": "CHAP. 7 - MARIENBAD-A HEALTH FACTORY"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_09_twain_64kb.mp3",
               "length_ms": 2896000,
+              "section_number": 9,
               "start_ms": 20843000,
               "title": "CHAP. 8 - DOWN THE RHÔNE - PART ONE"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_10_twain_64kb.mp3",
               "length_ms": 2672000,
+              "section_number": 10,
               "start_ms": 23739000,
               "title": "CHAP. 8 - DOWN THE RHÔNE - PART TWO"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_11_twain_64kb.mp3",
               "length_ms": 814000,
+              "section_number": 11,
               "start_ms": 26411000,
               "title": "CHAP. 9 - THE LOST NAPOLEON"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_12_twain_64kb.mp3",
               "length_ms": 1625000,
+              "section_number": 12,
               "start_ms": 27225000,
               "title": "CHAP. 10 - SOME NATIONAL STUPIDITIES"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_13_twain_64kb.mp3",
               "length_ms": 1023000,
+              "section_number": 13,
               "start_ms": 28850000,
               "title": "CHAP. 11 - THE CHOLERA EPIDEMIC IN HAMBURG"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_14_twain_64kb.mp3",
               "length_ms": 2574000,
+              "section_number": 14,
               "start_ms": 29873000,
               "title": "CHAP. 12 - QUEEN VICTORIA'S JUBILEE"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_15_twain_64kb.mp3",
               "length_ms": 1460000,
+              "section_number": 15,
               "start_ms": 32447000,
               "title": "CHAP. 13 - LETTERS TO SATAN"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_16_twain_64kb.mp3",
               "length_ms": 563000,
+              "section_number": 16,
               "start_ms": 33907000,
               "title": "CHAP. 14 - A WORD OF ENCOURAGEMENT FOR OUR BLUSHING  EXILES"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_17_twain_64kb.mp3",
               "length_ms": 1166000,
+              "section_number": 17,
               "start_ms": 34470000,
               "title": "CHAP. 15 - DUELING"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_18_twain_64kb.mp3",
               "length_ms": 755000,
+              "section_number": 18,
               "start_ms": 35636000,
               "title": "CHAP. 16 - SKELETON PLAN OF A PROPOSED CASTING VOTE  PARTY"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_19_twain_64kb.mp3",
               "length_ms": 1744000,
+              "section_number": 19,
               "start_ms": 36391000,
               "title": "CHAP. 17 - THE UNITED STATES OF LYNCHERDOM"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_20_twain_64kb.mp3",
               "length_ms": 2900000,
+              "section_number": 20,
               "start_ms": 38135000,
               "title": "CHAP. 18 - TO THE PERSON SITTING IN DARKNESS"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_21_twain_64kb.mp3",
               "length_ms": 2813000,
+              "section_number": 21,
               "start_ms": 41035000,
               "title": "CHAP. 19 - TO MY MISSIONARY CRITICS"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_22_twain_64kb.mp3",
               "length_ms": 281000,
+              "section_number": 22,
               "start_ms": 43848000,
               "title": "CHAP. 20 - THOMAS BRACKETT REED"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_23_twain_64kb.mp3",
               "length_ms": 170000,
+              "section_number": 23,
               "start_ms": 44129000,
               "title": "CHAP. 21 - THE FINISHED BOOK"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_24_twain_64kb.mp3",
               "length_ms": 404000,
+              "section_number": 24,
               "start_ms": 44299000,
               "title": "CHAP. 22 - AS REGARDS PATRIOTISM"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_25_twain_64kb.mp3",
               "length_ms": 817000,
+              "section_number": 25,
               "start_ms": 44703000,
               "title": "CHAP. 23 - DR. LOEB'S INCREDIBLE DISCOVERY"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_26_twain_64kb.mp3",
               "length_ms": 487000,
+              "section_number": 26,
               "start_ms": 45520000,
               "title": "CHAP. 24 - THE DERVISH AND THE OFFENSIVE STRANGER"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_27_twain_64kb.mp3",
               "length_ms": 939000,
+              "section_number": 27,
               "start_ms": 46007000,
               "title": "CHAP. 25 - INSTRUCTIONS IN ART"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_28_twain_64kb.mp3",
               "length_ms": 1736000,
+              "section_number": 28,
               "start_ms": 46946000,
               "title": "CHAP. 26 - SOLD TO SATAN"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_29_twain_64kb.mp3",
               "length_ms": 812000,
+              "section_number": 29,
               "start_ms": 48682000,
               "title": "CHAP. 27 - THAT DAY IN EDEN"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_30_twain_64kb.mp3",
               "length_ms": 446000,
+              "section_number": 30,
               "start_ms": 49494000,
               "title": "CHAP. 28 - EVE SPEAKS"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_31_twain_64kb.mp3",
               "length_ms": 545000,
+              "section_number": 31,
               "start_ms": 49940000,
               "title": "CHAP. 29 - SAMUEL ERASMUS MOFFETT"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_32_twain_64kb.mp3",
               "length_ms": 316000,
+              "section_number": 32,
               "start_ms": 50485000,
               "title": "CHAP. 30 - THE NEW PLANET"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_33_twain_64kb.mp3",
               "length_ms": 2723000,
+              "section_number": 33,
               "start_ms": 50801000,
               "title": "CHAP. 31 - MARJORIE FLEMING, THE WONDER CHILD"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_34_twain_64kb.mp3",
               "length_ms": 997000,
+              "section_number": 34,
               "start_ms": 53524000,
               "title": "CHAP. 32 - ADAM'S SOLILOQUY"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_35_twain_64kb.mp3",
               "length_ms": 952000,
+              "section_number": 35,
               "start_ms": 54521000,
               "title": "CHAP. 33 - BIBLE TEACHING AND RELIGIOUS PRACTICE"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_36_twain_64kb.mp3",
               "length_ms": 567000,
+              "section_number": 36,
               "start_ms": 55473000,
               "title": "CHAP. 34 - THE WAR PRAYER"
             },
             {
               "audio_url": "https://www.archive.org/download/europeandelsewhere_2006_librivox/europeandelsewhere_37_twain_64kb.mp3",
               "length_ms": 1050000,
+              "section_number": 37,
               "start_ms": 56040000,
               "title": "CHAP. 35 - CORN-PONE OPINIONS"
             }
@@ -10246,7 +10482,18 @@
           "cover_url": "https://archive.org/download/europeandelsewhere_2006_librivox/europe_elsewhere_m_twain_2007.jpg",
           "id": "john-greenman",
           "language": "en",
+          "librivox_genres": [
+            "Humorous Fiction",
+            "Single Author Collections",
+            "Essays & Short Works",
+            "Humor",
+            "Writing & Linguistics",
+            "Modern (19th C)",
+            "Modern (20th C)",
+            "Short non-fiction"
+          ],
           "librivox_id": 15135,
+          "librivox_title": "Europe and Elsewhere",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/europe-and-elsewhere-by-mark-twain/",
@@ -10528,7 +10775,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt21/Europe_Faith_1208.jpg",
           "id": "ray-clare",
           "language": "en",
+          "librivox_genres": [
+            "History",
+            "Christianity - Other"
+          ],
           "librivox_id": 3800,
+          "librivox_title": "Europe and the Faith",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/europe-and-the-faith-by-hilaire-belloc/",
@@ -11440,7 +11692,11 @@
           "cover_url": "https://archive.org/download/europe_renaissance_and_reformation_2202_librivox/europe_2202.jpg",
           "id": "pamela-nagami",
           "language": "en",
+          "librivox_genres": [
+            "Early Modern"
+          ],
           "librivox_id": 17175,
+          "librivox_title": "Europe in Renaissance and Reformation 1453-1660",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/europe-in-renaissance-and-reformation-mary-hollings/",
@@ -11836,7 +12092,11 @@
           "cover_url": "https://archive.org/download/europe_middle_ages_1910_librivox/europe_middle_ages_1910.jpg",
           "id": "steven-seitel",
           "language": "en",
+          "librivox_genres": [
+            "Middle Ages/Middle History"
+          ],
           "librivox_id": 14320,
+          "librivox_title": "Europe In The Middle Ages",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/europe-in-the-middle-ages-by-ierne-lifford-plunket/",
@@ -12405,7 +12665,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt12/Europe_Revised_1110.jpg",
           "id": "sibella-denton",
           "language": "en",
+          "librivox_genres": [
+            "Humor",
+            "Travel & Geography"
+          ],
           "librivox_id": 1406,
+          "librivox_title": "Europe Revised",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/europe-revised-by-irvin-s-cobb/",

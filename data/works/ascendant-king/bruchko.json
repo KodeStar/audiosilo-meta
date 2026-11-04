@@ -5396,96 +5396,112 @@
             {
               "audio_url": "https://www.archive.org/download/bruges-la-morte_ez_0908_librivox/brugeslamorte_00_rodenbach_64kb.mp3",
               "length_ms": 108000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Avertissement"
             },
             {
               "audio_url": "https://www.archive.org/download/bruges-la-morte_ez_0908_librivox/brugeslamorte_01_rodenbach_64kb.mp3",
               "length_ms": 517000,
+              "section_number": 1,
               "start_ms": 108000,
               "title": "Chapitre 1"
             },
             {
               "audio_url": "https://www.archive.org/download/bruges-la-morte_ez_0908_librivox/brugeslamorte_02_rodenbach_64kb.mp3",
               "length_ms": 676000,
+              "section_number": 2,
               "start_ms": 625000,
               "title": "Chapitre 2"
             },
             {
               "audio_url": "https://www.archive.org/download/bruges-la-morte_ez_0908_librivox/brugeslamorte_03_rodenbach_64kb.mp3",
               "length_ms": 836000,
+              "section_number": 3,
               "start_ms": 1301000,
               "title": "Chapitre 3"
             },
             {
               "audio_url": "https://www.archive.org/download/bruges-la-morte_ez_0908_librivox/brugeslamorte_04_rodenbach_64kb.mp3",
               "length_ms": 383000,
+              "section_number": 4,
               "start_ms": 2137000,
               "title": "Chapitre 4"
             },
             {
               "audio_url": "https://www.archive.org/download/bruges-la-morte_ez_0908_librivox/brugeslamorte_05_rodenbach_64kb.mp3",
               "length_ms": 551000,
+              "section_number": 5,
               "start_ms": 2520000,
               "title": "Chapitre 5"
             },
             {
               "audio_url": "https://www.archive.org/download/bruges-la-morte_ez_0908_librivox/brugeslamorte_06_rodenbach_64kb.mp3",
               "length_ms": 327000,
+              "section_number": 6,
               "start_ms": 3071000,
               "title": "Chapitre 6"
             },
             {
               "audio_url": "https://www.archive.org/download/bruges-la-morte_ez_0908_librivox/brugeslamorte_07_rodenbach_64kb.mp3",
               "length_ms": 700000,
+              "section_number": 7,
               "start_ms": 3398000,
               "title": "Chapitre 7"
             },
             {
               "audio_url": "https://www.archive.org/download/bruges-la-morte_ez_0908_librivox/brugeslamorte_08_rodenbach_64kb.mp3",
               "length_ms": 1049000,
+              "section_number": 8,
               "start_ms": 4098000,
               "title": "Chapitre 8"
             },
             {
               "audio_url": "https://www.archive.org/download/bruges-la-morte_ez_0908_librivox/brugeslamorte_09_rodenbach_64kb.mp3",
               "length_ms": 396000,
+              "section_number": 9,
               "start_ms": 5147000,
               "title": "Chapitre 9"
             },
             {
               "audio_url": "https://www.archive.org/download/bruges-la-morte_ez_0908_librivox/brugeslamorte_10_rodenbach_64kb.mp3",
               "length_ms": 351000,
+              "section_number": 10,
               "start_ms": 5543000,
               "title": "Chapitre 10"
             },
             {
               "audio_url": "https://www.archive.org/download/bruges-la-morte_ez_0908_librivox/brugeslamorte_11_rodenbach_64kb.mp3",
               "length_ms": 812000,
+              "section_number": 11,
               "start_ms": 5894000,
               "title": "Chapitre 11"
             },
             {
               "audio_url": "https://www.archive.org/download/bruges-la-morte_ez_0908_librivox/brugeslamorte_12_rodenbach_64kb.mp3",
               "length_ms": 843000,
+              "section_number": 12,
               "start_ms": 6706000,
               "title": "Chapitre 12"
             },
             {
               "audio_url": "https://www.archive.org/download/bruges-la-morte_ez_0908_librivox/brugeslamorte_13_rodenbach_64kb.mp3",
               "length_ms": 212000,
+              "section_number": 13,
               "start_ms": 7549000,
               "title": "Chapitre 13"
             },
             {
               "audio_url": "https://www.archive.org/download/bruges-la-morte_ez_0908_librivox/brugeslamorte_14_rodenbach_64kb.mp3",
               "length_ms": 612000,
+              "section_number": 14,
               "start_ms": 7761000,
               "title": "Chapitre 14"
             },
             {
               "audio_url": "https://www.archive.org/download/bruges-la-morte_ez_0908_librivox/brugeslamorte_15_rodenbach_64kb.mp3",
               "length_ms": 977000,
+              "section_number": 15,
               "start_ms": 8373000,
               "title": "Chapitre 15"
             }
@@ -5494,7 +5510,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt5/Bruges_la_Morte_1006.jpg",
           "id": "ezwa",
           "language": "fr",
+          "librivox_genres": [
+            "Literary Fiction",
+            "Published 1800 -1900"
+          ],
           "librivox_id": 3368,
+          "librivox_title": "Bruges-la-Morte",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/bruges-la-morte-by-georges-rodenbach-0908/",
@@ -8110,9 +8131,19 @@
           ],
           "copyright_year": 1912,
           "cover_url": "https://archive.org/download/la_bruja_el_viyi_2106_librivox/bruja_viyi_gogol_2106.jpg",
+          "credits": [
+            {
+              "person": "julian-juderias",
+              "role": "translator"
+            }
+          ],
           "id": "epachuko",
           "language": "es",
+          "librivox_genres": [
+            "Horror & Supernatural Fiction"
+          ],
           "librivox_id": 16394,
+          "librivox_title": "bruja - El viyi",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/la-bruja-el-viyi-by-nikolai-vasilievich-gogol/",

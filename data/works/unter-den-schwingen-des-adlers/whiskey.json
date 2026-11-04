@@ -10512,30 +10512,45 @@
             {
               "audio_url": "https://www.archive.org/download/whisperindark_2304_librivox/whisperinthedark_1_alcott_64kb.mp3",
               "length_ms": 1382000,
+              "readers": [
+                "christine-rottger"
+              ],
               "start_ms": 0,
               "title": "Section 1"
             },
             {
               "audio_url": "https://www.archive.org/download/whisperindark_2304_librivox/whisperinthedark_2_alcott_64kb.mp3",
               "length_ms": 1171000,
+              "readers": [
+                "martha-h-weller"
+              ],
               "start_ms": 1382000,
               "title": "Section 2"
             },
             {
               "audio_url": "https://www.archive.org/download/whisperindark_2304_librivox/whisperinthedark_3_alcott_64kb.mp3",
               "length_ms": 1664000,
+              "readers": [
+                "martha-h-weller"
+              ],
               "start_ms": 2553000,
               "title": "Section 3"
             },
             {
               "audio_url": "https://www.archive.org/download/whisperindark_2304_librivox/whisperinthedark_4_alcott_64kb.mp3",
               "length_ms": 1261000,
+              "readers": [
+                "timbray-shafer"
+              ],
               "start_ms": 4217000,
               "title": "Section 4"
             },
             {
               "audio_url": "https://www.archive.org/download/whisperindark_2304_librivox/whisperinthedark_5_alcott_64kb.mp3",
               "length_ms": 1164000,
+              "readers": [
+                "timbray-shafer"
+              ],
               "start_ms": 5478000,
               "title": "Section 5"
             }
@@ -10544,7 +10559,11 @@
           "cover_url": "https://archive.org/download/whisperindark_2304_librivox/awhisperinthedark_2304.jpg",
           "id": "christine-rottger",
           "language": "en",
+          "librivox_genres": [
+            "Published 1800 -1900"
+          ],
           "librivox_id": 19047,
+          "librivox_title": "Whisper in the Dark",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-whisper-in-the-dark-by-louisa-may-alcott/",

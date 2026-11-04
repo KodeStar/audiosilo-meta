@@ -4566,7 +4566,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt5/Voyage_Out_1007.jpg",
           "id": "grant-hurlock",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction",
+            "Satire"
+          ],
           "librivox_id": 1993,
+          "librivox_title": "Voyage Out",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-voyage-out-by-virginia-woolf/",
@@ -4933,7 +4938,11 @@
           "cover_url": "https://archive.org/download/voyage_out_1910_librivox/the_voyage_out_v_woolf_1910.jpg",
           "id": "lynne-t",
           "language": "en",
+          "librivox_genres": [
+            "Travel Fiction"
+          ],
           "librivox_id": 13933,
+          "librivox_title": "Voyage Out (Version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-voyage-out-by-virginia-woolf-2/",
@@ -5640,120 +5649,329 @@
             {
               "audio_url": "https://www.archive.org/download/voyagesofdoctordolittle_1911_librivox/voyagesdrdolittle_00_lofting_64kb.mp3",
               "length_ms": 269000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "larry-wilson",
+                "devorah-allen"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Prologue and cast list"
             },
             {
               "audio_url": "https://www.archive.org/download/voyagesofdoctordolittle_1911_librivox/voyagesdrdolittle_01_lofting_64kb.mp3",
               "length_ms": 1487000,
+              "readers": [
+                "larry-wilson",
+                "devorah-allen",
+                "nemo",
+                "drpgould",
+                "mark-phillips",
+                "michael-jarvis"
+              ],
+              "section_number": 1,
               "start_ms": 269000,
               "title": "Part 1 Chapters 1-3"
             },
             {
               "audio_url": "https://www.archive.org/download/voyagesofdoctordolittle_1911_librivox/voyagesdrdolittle_02_lofting_64kb.mp3",
               "length_ms": 1577000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "larry-wilson",
+                "leanne-yau",
+                "devorah-allen",
+                "gillian-hendrie",
+                "mark-phillips"
+              ],
+              "section_number": 2,
               "start_ms": 1756000,
               "title": "Part 1 Chapters 4-6"
             },
             {
               "audio_url": "https://www.archive.org/download/voyagesofdoctordolittle_1911_librivox/voyagesdrdolittle_03_lofting_64kb.mp3",
               "length_ms": 1318000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "larry-wilson",
+                "devorah-allen",
+                "mark-phillips"
+              ],
+              "section_number": 3,
               "start_ms": 3333000,
               "title": "Part 1 Chapters 7-10"
             },
             {
               "audio_url": "https://www.archive.org/download/voyagesofdoctordolittle_1911_librivox/voyagesdrdolittle_04_lofting_64kb.mp3",
               "length_ms": 1564000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "larry-wilson",
+                "leanne-yau",
+                "devorah-allen",
+                "gillian-hendrie",
+                "jasmin-salma",
+                "mark-phillips",
+                "likemanywaters"
+              ],
+              "section_number": 4,
               "start_ms": 4651000,
               "title": "Part 1 Chapters 11-15"
             },
             {
               "audio_url": "https://www.archive.org/download/voyagesofdoctordolittle_1911_librivox/voyagesdrdolittle_05_lofting_64kb.mp3",
               "length_ms": 1163000,
+              "readers": [
+                "larry-wilson",
+                "khand",
+                "devorah-allen",
+                "rich-brown",
+                "eva-davis-d-2025",
+                "drpgould",
+                "mark-phillips",
+                "michael-jarvis",
+                "susan-ferman",
+                "likemanywaters"
+              ],
+              "section_number": 5,
               "start_ms": 6215000,
               "title": "Part 2 Chapters 1-4"
             },
             {
               "audio_url": "https://www.archive.org/download/voyagesofdoctordolittle_1911_librivox/voyagesdrdolittle_06_lofting_64kb.mp3",
               "length_ms": 1409000,
+              "readers": [
+                "triciag",
+                "larry-wilson",
+                "khand",
+                "devorah-allen",
+                "eva-davis-d-2025",
+                "pseudonymous-nerd",
+                "mark-phillips",
+                "michael-jarvis",
+                "foon",
+                "susan-ferman"
+              ],
+              "section_number": 6,
               "start_ms": 7378000,
               "title": "Part 2 Chapters 5-8"
             },
             {
               "audio_url": "https://www.archive.org/download/voyagesofdoctordolittle_1911_librivox/voyagesdrdolittle_07_lofting_64kb.mp3",
               "length_ms": 1259000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "larry-wilson",
+                "sonia",
+                "devorah-allen",
+                "eva-davis-d-2025",
+                "mark-phillips",
+                "likemanywaters"
+              ],
+              "section_number": 7,
               "start_ms": 8787000,
               "title": "Part 2 Chapters 9-12"
             },
             {
               "audio_url": "https://www.archive.org/download/voyagesofdoctordolittle_1911_librivox/voyagesdrdolittle_08_lofting_64kb.mp3",
               "length_ms": 1153000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "larry-wilson",
+                "son-of-the-exiles",
+                "devorah-allen",
+                "nemo",
+                "tj-burns",
+                "mark-phillips"
+              ],
+              "section_number": 8,
               "start_ms": 10046000,
               "title": "Part 3 Chapters 1-3"
             },
             {
               "audio_url": "https://www.archive.org/download/voyagesofdoctordolittle_1911_librivox/voyagesdrdolittle_09_lofting_64kb.mp3",
               "length_ms": 1152000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "larry-wilson",
+                "son-of-the-exiles",
+                "devorah-allen",
+                "rich-brown",
+                "tj-burns",
+                "mark-phillips"
+              ],
+              "section_number": 9,
               "start_ms": 11199000,
               "title": "Part 3 Chapters 4-6"
             },
             {
               "audio_url": "https://www.archive.org/download/voyagesofdoctordolittle_1911_librivox/voyagesdrdolittle_10_lofting_64kb.mp3",
               "length_ms": 1613000,
+              "readers": [
+                "bill-mosley",
+                "beth-thomas-1974-2020",
+                "larry-wilson",
+                "khand",
+                "devorah-allen",
+                "drpgould",
+                "tj-burns",
+                "pseudonymous-nerd",
+                "mark-phillips"
+              ],
+              "section_number": 10,
               "start_ms": 12351000,
               "title": "Part 3 Chapters 7-9"
             },
             {
               "audio_url": "https://www.archive.org/download/voyagesofdoctordolittle_1911_librivox/voyagesdrdolittle_11_lofting_64kb.mp3",
               "length_ms": 1798000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "larry-wilson",
+                "leanne-yau",
+                "devorah-allen",
+                "mark-phillips"
+              ],
+              "section_number": 11,
               "start_ms": 13964000,
               "title": "Part 4 Chapters 1-2"
             },
             {
               "audio_url": "https://www.archive.org/download/voyagesofdoctordolittle_1911_librivox/voyagesdrdolittle_12_lofting_64kb.mp3",
               "length_ms": 1325000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "larry-wilson",
+                "sonia",
+                "devorah-allen",
+                "tj-burns",
+                "mark-phillips"
+              ],
+              "section_number": 12,
               "start_ms": 15762000,
               "title": "Part 4 Chapters 3-5"
             },
             {
               "audio_url": "https://www.archive.org/download/voyagesofdoctordolittle_1911_librivox/voyagesdrdolittle_13_lofting_64kb.mp3",
               "length_ms": 1163000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "larry-wilson",
+                "devorah-allen",
+                "rich-brown",
+                "tj-burns",
+                "jasmin-salma",
+                "mark-phillips"
+              ],
+              "section_number": 13,
               "start_ms": 17087000,
               "title": "Part 4 Chapters 6-7"
             },
             {
               "audio_url": "https://www.archive.org/download/voyagesofdoctordolittle_1911_librivox/voyagesdrdolittle_14_lofting_64kb.mp3",
               "length_ms": 1570000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "larry-wilson",
+                "evie-maria",
+                "zoe-trang",
+                "rich-brown",
+                "tj-burns",
+                "gillian-hendrie",
+                "mark-phillips"
+              ],
+              "section_number": 14,
               "start_ms": 18250000,
               "title": "Part 5 Chapters 1-4"
             },
             {
               "audio_url": "https://www.archive.org/download/voyagesofdoctordolittle_1911_librivox/voyagesdrdolittle_15_lofting_64kb.mp3",
               "length_ms": 1115000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "larry-wilson",
+                "khand",
+                "rich-brown",
+                "gillian-hendrie",
+                "mark-phillips",
+                "foon",
+                "susan-ferman"
+              ],
+              "section_number": 15,
               "start_ms": 19820000,
               "title": "Part 5 Chapters 5-7"
             },
             {
               "audio_url": "https://www.archive.org/download/voyagesofdoctordolittle_1911_librivox/voyagesdrdolittle_16_lofting_64kb.mp3",
               "length_ms": 1679000,
+              "readers": [
+                "bill-mosley",
+                "beth-thomas-1974-2020",
+                "larry-wilson",
+                "khand",
+                "devorah-allen",
+                "tj-burns",
+                "gillian-hendrie",
+                "mark-phillips",
+                "susan-ferman"
+              ],
+              "section_number": 16,
               "start_ms": 20935000,
               "title": "Part 5 Chapters 8-10"
             },
             {
               "audio_url": "https://www.archive.org/download/voyagesofdoctordolittle_1911_librivox/voyagesdrdolittle_17_lofting_64kb.mp3",
               "length_ms": 1347000,
+              "readers": [
+                "bill-mosley",
+                "beth-thomas-1974-2020",
+                "larry-wilson",
+                "khand",
+                "devorah-allen",
+                "rich-brown",
+                "tj-burns",
+                "gillian-hendrie",
+                "mark-phillips",
+                "susan-ferman"
+              ],
+              "section_number": 17,
               "start_ms": 22614000,
               "title": "Part 6 Chapters 1-3"
             },
             {
               "audio_url": "https://www.archive.org/download/voyagesofdoctordolittle_1911_librivox/voyagesdrdolittle_18_lofting_64kb.mp3",
               "length_ms": 1321000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "larry-wilson",
+                "evie-maria",
+                "zoe-trang",
+                "devorah-allen",
+                "rich-brown",
+                "tj-burns",
+                "jasmin-salma",
+                "mark-phillips"
+              ],
+              "section_number": 18,
               "start_ms": 23961000,
               "title": "Part 6 Chapters 4-6"
             },
             {
               "audio_url": "https://www.archive.org/download/voyagesofdoctordolittle_1911_librivox/voyagesdrdolittle_19_lofting_64kb.mp3",
               "length_ms": 1170000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "larry-wilson",
+                "evie-maria",
+                "zoe-trang",
+                "devorah-allen",
+                "rich-brown",
+                "tj-burns",
+                "gillian-hendrie",
+                "jasmin-salma",
+                "mark-phillips"
+              ],
+              "section_number": 19,
               "start_ms": 25282000,
               "title": "Part 6 Chapter 7"
             }
@@ -5762,7 +5980,13 @@
           "cover_url": "https://archive.org/download/voyagesofdoctordolittle_1911_librivox/voyages_1911.jpg",
           "id": "beth-thomas-1974-2020",
           "language": "en",
+          "librivox_genres": [
+            "Dramatic Readings",
+            "Action & Adventure",
+            "Animals & Nature"
+          ],
           "librivox_id": 12874,
+          "librivox_title": "Voyages of Doctor Dolittle (version 3 Dramatic Reading)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-voyages-of-doctor-dolittle-dramatic-reading-by-hugh-lofting/",
@@ -6512,366 +6736,610 @@
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_00_lofting_64kb.mp3",
               "length_ms": 113000,
+              "readers": [
+                "james-smith"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Prologue"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_01_lofting_64kb.mp3",
               "length_ms": 409000,
+              "readers": [
+                "lucy-burgoyne-1950-2014"
+              ],
+              "section_number": 1,
               "start_ms": 113000,
               "title": "Part 1 Ch. 1 The Cobbler's Son"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_02_lofting_64kb.mp3",
               "length_ms": 723000,
+              "readers": [
+                "denny-sayers-d-2015"
+              ],
+              "section_number": 2,
               "start_ms": 522000,
               "title": "Part 1 Ch. 2 I Hear of the Great Naturalist"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_03_lofting_64kb.mp3",
               "length_ms": 778000,
+              "readers": [
+                "denny-sayers-d-2015"
+              ],
+              "section_number": 3,
               "start_ms": 1245000,
               "title": "Part 1 Ch. 3 The Doctor's Home"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_04_lofting_64kb.mp3",
               "length_ms": 655000,
+              "readers": [
+                "nichole-karl"
+              ],
+              "section_number": 4,
               "start_ms": 2023000,
               "title": "Part 1 Ch. 4 The Wiff-Waff"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_05_lofting_64kb.mp3",
               "length_ms": 752000,
+              "readers": [
+                "mary-anderson"
+              ],
+              "section_number": 5,
               "start_ms": 2678000,
               "title": "Part 1 Ch. 5 Polynesia"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_06_lofting_64kb.mp3",
               "length_ms": 340000,
+              "readers": [
+                "betsie-bush"
+              ],
+              "section_number": 6,
               "start_ms": 3430000,
               "title": "Part 1 Ch. 6 The Wounded Squirrel"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_07_lofting_64kb.mp3",
               "length_ms": 413000,
+              "readers": [
+                "betsie-bush"
+              ],
+              "section_number": 7,
               "start_ms": 3770000,
               "title": "Part 1 Ch. 7 Shellfish Talk"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_08_lofting_64kb.mp3",
               "length_ms": 371000,
+              "readers": [
+                "lucy-burgoyne-1950-2014"
+              ],
+              "section_number": 8,
               "start_ms": 4183000,
               "title": "Part 1 Ch. 8 Are you a Good Noticer?"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_09_lofting_64kb.mp3",
               "length_ms": 411000,
+              "readers": [
+                "lucy-burgoyne-1950-2014"
+              ],
+              "section_number": 9,
               "start_ms": 4554000,
               "title": "Part 1 Ch. 9 The Garden of Dreams"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_10_lofting_64kb.mp3",
               "length_ms": 398000,
+              "readers": [
+                "farida"
+              ],
+              "section_number": 10,
               "start_ms": 4965000,
               "title": "Part 1 Ch. 10 The Private Zoo"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_11_lofting_64kb.mp3",
               "length_ms": 384000,
+              "readers": [
+                "farida"
+              ],
+              "section_number": 11,
               "start_ms": 5363000,
               "title": "Part 1 Ch. 11 My Schoolmaster, Polynesia"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_12_lofting_64kb.mp3",
               "length_ms": 412000,
+              "readers": [
+                "stefan-schmelz"
+              ],
+              "section_number": 12,
               "start_ms": 5747000,
               "title": "Part 1 Ch. 12 My Great Idea"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_13_lofting_64kb.mp3",
               "length_ms": 319000,
+              "readers": [
+                "stefan-schmelz"
+              ],
+              "section_number": 13,
               "start_ms": 6159000,
               "title": "Part 1 Ch. 13 A Traveler Arrives"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_14_lofting_64kb.mp3",
               "length_ms": 245000,
+              "readers": [
+                "fracture"
+              ],
+              "section_number": 14,
               "start_ms": 6478000,
               "title": "Part 1 Ch. 14 Chee-Chee's Voyage"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_15_lofting_64kb.mp3",
               "length_ms": 314000,
+              "readers": [
+                "fracture"
+              ],
+              "section_number": 15,
               "start_ms": 6723000,
               "title": "Part 1 Ch. 15 I Become A Doctor's Assistant"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_16_lofting_64kb.mp3",
               "length_ms": 225000,
+              "readers": [
+                "nichole-karl"
+              ],
+              "section_number": 16,
               "start_ms": 7037000,
               "title": "Part 2 Ch. 1 The Crew of \"The Curlew\""
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_17_lofting_64kb.mp3",
               "length_ms": 311000,
+              "readers": [
+                "nichole-karl"
+              ],
+              "section_number": 17,
               "start_ms": 7262000,
               "title": "Part 2 Ch. 2 Luke the Hermit"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_18_lofting_64kb.mp3",
               "length_ms": 274000,
+              "readers": [
+                "fracture"
+              ],
+              "section_number": 18,
               "start_ms": 7573000,
               "title": "Part 2 Ch. 3  Jip and the Secret"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_19_lofting_64kb.mp3",
               "length_ms": 364000,
+              "readers": [
+                "fracture"
+              ],
+              "section_number": 19,
               "start_ms": 7847000,
               "title": "Part 2 Ch. 4 Bob"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_20_lofting_64kb.mp3",
               "length_ms": 487000,
+              "readers": [
+                "lucy-burgoyne-1950-2014"
+              ],
+              "section_number": 20,
               "start_ms": 8211000,
               "title": "Part 2 Ch. 5 Mendoza"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_21_lofting_64kb.mp3",
               "length_ms": 353000,
+              "readers": [
+                "lucy-burgoyne-1950-2014"
+              ],
+              "section_number": 21,
               "start_ms": 8698000,
               "title": "Part 2 Ch. 6 The Judge's Dog"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_22_lofting_64kb.mp3",
               "length_ms": 335000,
+              "readers": [
+                "fracture"
+              ],
+              "section_number": 22,
               "start_ms": 9051000,
               "title": "Part 2 Ch. 7 The End of the Mystery"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_23_lofting_64kb.mp3",
               "length_ms": 327000,
+              "readers": [
+                "danielle-buttrey"
+              ],
+              "section_number": 23,
               "start_ms": 9386000,
               "title": "Part 2 Ch. 8 Three Cheers"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_24_lofting_64kb.mp3",
               "length_ms": 267000,
+              "readers": [
+                "danielle-buttrey"
+              ],
+              "section_number": 24,
               "start_ms": 9713000,
               "title": "Part 2 Ch. 9 The Purple BIrd-of-Paradise"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_25_lofting_64kb.mp3",
               "length_ms": 348000,
+              "readers": [
+                "danielle-buttrey"
+              ],
+              "section_number": 25,
               "start_ms": 9980000,
               "title": "Part 2 Ch. 10 Long Arrow, The Son of Golden Arrow"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_26_lofting_64kb.mp3",
               "length_ms": 365000,
+              "readers": [
+                "ada-kerman"
+              ],
+              "section_number": 26,
               "start_ms": 10328000,
               "title": "Part 2 Ch. 11 Blind Travel"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_27_lofting_64kb.mp3",
               "length_ms": 245000,
+              "readers": [
+                "ada-kerman"
+              ],
+              "section_number": 27,
               "start_ms": 10693000,
               "title": "Part 2 Ch. 12 Destiny and Destination"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_28_lofting_64kb.mp3",
               "length_ms": 411000,
+              "readers": [
+                "ada-kerman"
+              ],
+              "section_number": 28,
               "start_ms": 10938000,
               "title": "Part 3 Ch. 1 The Third Man"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_29_lofting_64kb.mp3",
               "length_ms": 237000,
+              "readers": [
+                "ada-kerman"
+              ],
+              "section_number": 29,
               "start_ms": 11349000,
               "title": "Part 3 Ch. 2 Good-Bye!"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_30_lofting_64kb.mp3",
               "length_ms": 438000,
+              "readers": [
+                "daryl-s"
+              ],
+              "section_number": 30,
               "start_ms": 11586000,
               "title": "Part 3 Ch. 3 Our Troubles Begin"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_31_lofting_64kb.mp3",
               "length_ms": 549000,
+              "readers": [
+                "daryl-s"
+              ],
+              "section_number": 31,
               "start_ms": 12024000,
               "title": "Part 3 Ch. 4 Our Troubles Continue"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_32_lofting_64kb.mp3",
               "length_ms": 385000,
+              "readers": [
+                "tim-makarios"
+              ],
+              "section_number": 32,
               "start_ms": 12573000,
               "title": "Part 3 Ch. 5 Polynesia Has a Plan"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_33_lofting_64kb.mp3",
               "length_ms": 290000,
+              "readers": [
+                "tim-makarios"
+              ],
+              "section_number": 33,
               "start_ms": 12958000,
               "title": "Part 3 Ch. 6 The Bed-maker of Monteverde"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_34_lofting_64kb.mp3",
               "length_ms": 540000,
+              "readers": [
+                "tim-makarios"
+              ],
+              "section_number": 34,
               "start_ms": 13248000,
               "title": "Part 3 Ch. 7 The Doctor's Wager"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_35_lofting_64kb.mp3",
               "length_ms": 711000,
+              "readers": [
+                "tim-makarios"
+              ],
+              "section_number": 35,
               "start_ms": 13788000,
               "title": "Part 3 Ch. 8 The Great Bullfight"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_36_lofting_64kb.mp3",
               "length_ms": 390000,
+              "readers": [
+                "sandra"
+              ],
+              "section_number": 36,
               "start_ms": 14499000,
               "title": "Part 3 Ch. 9 We Depart in a Hurry"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_37_lofting_64kb.mp3",
               "length_ms": 420000,
+              "readers": [
+                "chris-goringe"
+              ],
+              "section_number": 37,
               "start_ms": 14889000,
               "title": "Part 4 Ch. 1 Shellfish Languages Again"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_38_lofting_64kb.mp3",
               "length_ms": 1153000,
+              "readers": [
+                "chris-goringe"
+              ],
+              "section_number": 38,
               "start_ms": 15309000,
               "title": "Part 4 Ch. 2 The Fidgit's Story"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_39_lofting_64kb.mp3",
               "length_ms": 322000,
+              "readers": [
+                "chris-goringe"
+              ],
+              "section_number": 39,
               "start_ms": 16462000,
               "title": "Part 4 Ch. 3 Bad Weather"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_40_lofting_64kb.mp3",
               "length_ms": 632000,
+              "readers": [
+                "lucy-burgoyne-1950-2014"
+              ],
+              "section_number": 40,
               "start_ms": 16784000,
               "title": "Part 4 Ch. 4 Wrecked!"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_41_lofting_64kb.mp3",
               "length_ms": 481000,
+              "readers": [
+                "lucy-burgoyne-1950-2014"
+              ],
+              "section_number": 41,
               "start_ms": 17416000,
               "title": "Part 4 Ch. 5 Land!"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_42_lofting_64kb.mp3",
               "length_ms": 496000,
+              "readers": [
+                "sandra"
+              ],
+              "section_number": 42,
               "start_ms": 17897000,
               "title": "Part 4 Ch. 6 The Jabizri"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_43_lofting_64kb.mp3",
               "length_ms": 657000,
+              "readers": [
+                "sandra"
+              ],
+              "section_number": 43,
               "start_ms": 18393000,
               "title": "Part 4 Ch. 7 Hawk's-head Mountain"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_44_lofting_64kb.mp3",
               "length_ms": 585000,
+              "readers": [
+                "sandra"
+              ],
+              "section_number": 44,
               "start_ms": 19050000,
               "title": "Part 5 Ch. 1 A Great Moment"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_45_lofting_64kb.mp3",
               "length_ms": 320000,
+              "readers": [
+                "sandra"
+              ],
+              "section_number": 45,
               "start_ms": 19635000,
               "title": "Part 5 Ch. 2 \"The Men of the Moving, Land\""
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_46_lofting_64kb.mp3",
               "length_ms": 399000,
+              "readers": [
+                "mark-f-smith"
+              ],
+              "section_number": 46,
               "start_ms": 19955000,
               "title": "Part 5 Ch. 3 Fire"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_47_lofting_64kb.mp3",
               "length_ms": 376000,
+              "readers": [
+                "mark-f-smith"
+              ],
+              "section_number": 47,
               "start_ms": 20354000,
               "title": "Part 5 Ch. 4 What Makes an Island Float"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_48_lofting_64kb.mp3",
               "length_ms": 505000,
+              "readers": [
+                "mark-f-smith"
+              ],
+              "section_number": 48,
               "start_ms": 20730000,
               "title": "Part 5 Ch. 5 War!"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_49_lofting_64kb.mp3",
               "length_ms": 417000,
+              "readers": [
+                "mark-f-smith"
+              ],
+              "section_number": 49,
               "start_ms": 21235000,
               "title": "Part 5 Ch. 6 General Polynesia"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_50_lofting_64kb.mp3",
               "length_ms": 310000,
+              "readers": [
+                "pat-elder"
+              ],
+              "section_number": 50,
               "start_ms": 21652000,
               "title": "Part 5 Ch. 7 The Peace of the Parrots"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_51_lofting_64kb.mp3",
               "length_ms": 523000,
+              "readers": [
+                "pat-elder"
+              ],
+              "section_number": 51,
               "start_ms": 21962000,
               "title": "Part 5 Ch. 8 The Hanging Stone"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_52_lofting_64kb.mp3",
               "length_ms": 663000,
+              "readers": [
+                "kristine-bekere"
+              ],
+              "section_number": 52,
               "start_ms": 22485000,
               "title": "Part 5 Ch. 9 The Election"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_53_lofting_64kb.mp3",
               "length_ms": 539000,
+              "readers": [
+                "wina-hathaway"
+              ],
+              "section_number": 53,
               "start_ms": 23148000,
               "title": "Part 5 Ch. 10 The Coronation of King Jong"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_54_lofting_64kb.mp3",
               "length_ms": 544000,
+              "readers": [
+                "pat-elder"
+              ],
+              "section_number": 54,
               "start_ms": 23687000,
               "title": "Part 6 Ch. 1 New Popsipetel"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_55_lofting_64kb.mp3",
               "length_ms": 480000,
+              "readers": [
+                "pat-elder"
+              ],
+              "section_number": 55,
               "start_ms": 24231000,
               "title": "Part 6 Ch. 2 Thoughts of Home"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_56_lofting_64kb.mp3",
               "length_ms": 350000,
+              "readers": [
+                "pat-elder"
+              ],
+              "section_number": 56,
               "start_ms": 24711000,
               "title": "Part 6 Ch. 3 The Red Man's Science"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_57_lofting_64kb.mp3",
               "length_ms": 660000,
+              "readers": [
+                "pat-elder"
+              ],
+              "section_number": 57,
               "start_ms": 25061000,
               "title": "Part 6 Ch. 4 The Sea-Serpent"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_58_lofting_64kb.mp3",
               "length_ms": 527000,
+              "readers": [
+                "pat-elder"
+              ],
+              "section_number": 58,
               "start_ms": 25721000,
               "title": "Part 6 Ch. 5 The Shellfish Riddle Solved at Last"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_59_lofting_64kb.mp3",
               "length_ms": 300000,
+              "readers": [
+                "pat-elder"
+              ],
+              "section_number": 59,
               "start_ms": 26248000,
               "title": "Part 6 Ch. 6 The Last Cabinet Meeting"
             },
             {
               "audio_url": "https://www.archive.org/download/dolittle_0707_librivox/voyagesdolittle_60_lofting_64kb.mp3",
               "length_ms": 1184000,
+              "readers": [
+                "pat-elder"
+              ],
+              "section_number": 60,
               "start_ms": 26548000,
               "title": "Part 6 Ch. 7 The Doctor's Decision"
             }
@@ -6880,7 +7348,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt8/Voyages_of_Dr_Dolittle_1104.jpg",
           "id": "james-smith",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction",
+            "Action & Adventure"
+          ],
           "librivox_id": 624,
+          "librivox_title": "Voyages of Doctor Dolittle",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-voyages-of-doctor-dolittle-by-hugh-lofting/",
@@ -7266,366 +7739,427 @@
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_00_lofting_64kb.mp3",
               "length_ms": 109000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Prologue"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_01_lofting_64kb.mp3",
               "length_ms": 316000,
+              "section_number": 1,
               "start_ms": 109000,
               "title": "The Cobbler's Son"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_02_lofting_64kb.mp3",
               "length_ms": 495000,
+              "section_number": 2,
               "start_ms": 425000,
               "title": "I Hear Of The Great Naturalist"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_03_lofting_64kb.mp3",
               "length_ms": 579000,
+              "section_number": 3,
               "start_ms": 920000,
               "title": "The Doctor's Home"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_04_lofting_64kb.mp3",
               "length_ms": 557000,
+              "section_number": 4,
               "start_ms": 1499000,
               "title": "The Wiff-Waff"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_05_lofting_64kb.mp3",
               "length_ms": 605000,
+              "section_number": 5,
               "start_ms": 2056000,
               "title": "Polynesia"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_06_lofting_64kb.mp3",
               "length_ms": 260000,
+              "section_number": 6,
               "start_ms": 2661000,
               "title": "The Wounded Squirrel"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_07_lofting_64kb.mp3",
               "length_ms": 335000,
+              "section_number": 7,
               "start_ms": 2921000,
               "title": "Shellfish Talk"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_08_lofting_64kb.mp3",
               "length_ms": 273000,
+              "section_number": 8,
               "start_ms": 3256000,
               "title": "Are You A Good Noticer?"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_09_lofting_64kb.mp3",
               "length_ms": 329000,
+              "section_number": 9,
               "start_ms": 3529000,
               "title": "The Garden Of Dreams"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_10_lofting_64kb.mp3",
               "length_ms": 328000,
+              "section_number": 10,
               "start_ms": 3858000,
               "title": "The Private Zoo"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_11_lofting_64kb.mp3",
               "length_ms": 339000,
+              "section_number": 11,
               "start_ms": 4186000,
               "title": "My Schoolmaster, Polynesia"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_12_lofting_64kb.mp3",
               "length_ms": 296000,
+              "section_number": 12,
               "start_ms": 4525000,
               "title": "My Great Idea"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_13_lofting_64kb.mp3",
               "length_ms": 249000,
+              "section_number": 13,
               "start_ms": 4821000,
               "title": "A Traveler Arrives"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_14_lofting_64kb.mp3",
               "length_ms": 255000,
+              "section_number": 14,
               "start_ms": 5070000,
               "title": "Chee-Chee's Voyage"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_15_lofting_64kb.mp3",
               "length_ms": 281000,
+              "section_number": 15,
               "start_ms": 5325000,
               "title": "I Become A Doctor's Assistant"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_16_lofting_64kb.mp3",
               "length_ms": 204000,
+              "section_number": 16,
               "start_ms": 5606000,
               "title": "The Crew Of \"The Curlew\""
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_17_lofting_64kb.mp3",
               "length_ms": 271000,
+              "section_number": 17,
               "start_ms": 5810000,
               "title": "Luke The Hermit"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_18_lofting_64kb.mp3",
               "length_ms": 249000,
+              "section_number": 18,
               "start_ms": 6081000,
               "title": "Jip And The Secret"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_19_lofting_64kb.mp3",
               "length_ms": 348000,
+              "section_number": 19,
               "start_ms": 6330000,
               "title": "Bob"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_20_lofting_64kb.mp3",
               "length_ms": 387000,
+              "section_number": 20,
               "start_ms": 6678000,
               "title": "Mendoza"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_21_lofting_64kb.mp3",
               "length_ms": 290000,
+              "section_number": 21,
               "start_ms": 7065000,
               "title": "The Judge's Dog"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_22_lofting_64kb.mp3",
               "length_ms": 329000,
+              "section_number": 22,
               "start_ms": 7355000,
               "title": "The End of the Mystery"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_23_lofting_64kb.mp3",
               "length_ms": 291000,
+              "section_number": 23,
               "start_ms": 7684000,
               "title": "Three Cheers"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_24_lofting_64kb.mp3",
               "length_ms": 224000,
+              "section_number": 24,
               "start_ms": 7975000,
               "title": "The Purple Bird-Of-Paradise"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_25_lofting_64kb.mp3",
               "length_ms": 313000,
+              "section_number": 25,
               "start_ms": 8199000,
               "title": "Long Arrow, The Son Of Golden Arrow"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_26_lofting_64kb.mp3",
               "length_ms": 361000,
+              "section_number": 26,
               "start_ms": 8512000,
               "title": "Blind Travel"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_27_lofting_64kb.mp3",
               "length_ms": 244000,
+              "section_number": 27,
               "start_ms": 8873000,
               "title": "Destiny And Destination"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_28_lofting_64kb.mp3",
               "length_ms": 435000,
+              "section_number": 28,
               "start_ms": 9117000,
               "title": "The Third Man"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_29_lofting_64kb.mp3",
               "length_ms": 254000,
+              "section_number": 29,
               "start_ms": 9552000,
               "title": "Good-Bye!"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_30_lofting_64kb.mp3",
               "length_ms": 375000,
+              "section_number": 30,
               "start_ms": 9806000,
               "title": "Our Troubles Begin"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_31_lofting_64kb.mp3",
               "length_ms": 483000,
+              "section_number": 31,
               "start_ms": 10181000,
               "title": "Our Troubles Continue"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_32_lofting_64kb.mp3",
               "length_ms": 337000,
+              "section_number": 32,
               "start_ms": 10664000,
               "title": "Polynesia Has A Plan"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_33_lofting_64kb.mp3",
               "length_ms": 241000,
+              "section_number": 33,
               "start_ms": 11001000,
               "title": "The Bed-Maker Of Monteverde"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_34_lofting_64kb.mp3",
               "length_ms": 467000,
+              "section_number": 34,
               "start_ms": 11242000,
               "title": "The Doctor's Wager"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_35_lofting_64kb.mp3",
               "length_ms": 610000,
+              "section_number": 35,
               "start_ms": 11709000,
               "title": "The Great Bullfight"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_36_lofting_64kb.mp3",
               "length_ms": 367000,
+              "section_number": 36,
               "start_ms": 12319000,
               "title": "We Depart In A Hurry"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_37_lofting_64kb.mp3",
               "length_ms": 430000,
+              "section_number": 37,
               "start_ms": 12686000,
               "title": "Shellfish Languages Again"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_38_lofting_64kb.mp3",
               "length_ms": 1193000,
+              "section_number": 38,
               "start_ms": 13116000,
               "title": "The Fidgit's Story"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_39_lofting_64kb.mp3",
               "length_ms": 319000,
+              "section_number": 39,
               "start_ms": 14309000,
               "title": "Bad Weather"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_40_lofting_64kb.mp3",
               "length_ms": 523000,
+              "section_number": 40,
               "start_ms": 14628000,
               "title": "Wrecked!"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_41_lofting_64kb.mp3",
               "length_ms": 386000,
+              "section_number": 41,
               "start_ms": 15151000,
               "title": "Land!"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_42_lofting_64kb.mp3",
               "length_ms": 462000,
+              "section_number": 42,
               "start_ms": 15537000,
               "title": "The Jabizri"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_43_lofting_64kb.mp3",
               "length_ms": 585000,
+              "section_number": 43,
               "start_ms": 15999000,
               "title": "Hawk's-Head Mountain"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_44_lofting_64kb.mp3",
               "length_ms": 544000,
+              "section_number": 44,
               "start_ms": 16584000,
               "title": "A Great Moment"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_45_lofting_64kb.mp3",
               "length_ms": 286000,
+              "section_number": 45,
               "start_ms": 17128000,
               "title": "The Men Of The Moving, Land"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_46_lofting_64kb.mp3",
               "length_ms": 326000,
+              "section_number": 46,
               "start_ms": 17414000,
               "title": "Fire"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_47_lofting_64kb.mp3",
               "length_ms": 296000,
+              "section_number": 47,
               "start_ms": 17740000,
               "title": "What Makes An Island Float"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_48_lofting_64kb.mp3",
               "length_ms": 419000,
+              "section_number": 48,
               "start_ms": 18036000,
               "title": "War!"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_49_lofting_64kb.mp3",
               "length_ms": 345000,
+              "section_number": 49,
               "start_ms": 18455000,
               "title": "General Polynesia"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_50_lofting_64kb.mp3",
               "length_ms": 268000,
+              "section_number": 50,
               "start_ms": 18800000,
               "title": "The Peace Of The Parrots"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_51_lofting_64kb.mp3",
               "length_ms": 450000,
+              "section_number": 51,
               "start_ms": 19068000,
               "title": "The Hanging Stone"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_52_lofting_64kb.mp3",
               "length_ms": 604000,
+              "section_number": 52,
               "start_ms": 19518000,
               "title": "The Election"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_53_lofting_64kb.mp3",
               "length_ms": 473000,
+              "section_number": 53,
               "start_ms": 20122000,
               "title": "The Coronation Of King Jong"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_54_lofting_64kb.mp3",
               "length_ms": 487000,
+              "section_number": 54,
               "start_ms": 20595000,
               "title": "New Popsipetel"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_55_lofting_64kb.mp3",
               "length_ms": 397000,
+              "section_number": 55,
               "start_ms": 21082000,
               "title": "Thoughts Of Home"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_56_lofting_64kb.mp3",
               "length_ms": 308000,
+              "section_number": 56,
               "start_ms": 21479000,
               "title": "The Red Man's Science"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_57_lofting_64kb.mp3",
               "length_ms": 572000,
+              "section_number": 57,
               "start_ms": 21787000,
               "title": "The Sea-Serpent"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_58_lofting_64kb.mp3",
               "length_ms": 434000,
+              "section_number": 58,
               "start_ms": 22359000,
               "title": "The Shellfish Riddle Solved At Last"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_59_lofting_64kb.mp3",
               "length_ms": 230000,
+              "section_number": 59,
               "start_ms": 22793000,
               "title": "The Last Cabinet Meeting"
             },
             {
               "audio_url": "https://www.archive.org/download/voyages_dolittle_1310_librivox/voyagesdolittle_60_lofting_64kb.mp3",
               "length_ms": 1062000,
+              "section_number": 60,
               "start_ms": 23023000,
               "title": "The Doctor's Decision"
             }
@@ -7634,7 +8168,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/Voyages_of_Doctor_Dolittle_1310.jpg",
           "id": "karen-savage",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure",
+            "Animals & Nature"
+          ],
           "librivox_id": 8140,
+          "librivox_title": "Voyages of Doctor Dolittle (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-voyages-of-doctor-dolittle-by-hugh-lofting-2/",

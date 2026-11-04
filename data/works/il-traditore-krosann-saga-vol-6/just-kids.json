@@ -5940,84 +5940,98 @@
             {
               "audio_url": "https://www.archive.org/download/justme_1207_librivox/justme_00_white_64kb.mp3",
               "length_ms": 221000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Inscription"
             },
             {
               "audio_url": "https://www.archive.org/download/justme_1207_librivox/justme_01_white_64kb.mp3",
               "length_ms": 1022000,
+              "section_number": 1,
               "start_ms": 221000,
               "title": "Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/justme_1207_librivox/justme_02_white_64kb.mp3",
               "length_ms": 984000,
+              "section_number": 2,
               "start_ms": 1243000,
               "title": "Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/justme_1207_librivox/justme_03_white_64kb.mp3",
               "length_ms": 1036000,
+              "section_number": 3,
               "start_ms": 2227000,
               "title": "Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/justme_1207_librivox/justme_04_white_64kb.mp3",
               "length_ms": 1084000,
+              "section_number": 4,
               "start_ms": 3263000,
               "title": "Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/justme_1207_librivox/justme_05_white_64kb.mp3",
               "length_ms": 1013000,
+              "section_number": 5,
               "start_ms": 4347000,
               "title": "Part 5"
             },
             {
               "audio_url": "https://www.archive.org/download/justme_1207_librivox/justme_06_white_64kb.mp3",
               "length_ms": 926000,
+              "section_number": 6,
               "start_ms": 5360000,
               "title": "Part 6"
             },
             {
               "audio_url": "https://www.archive.org/download/justme_1207_librivox/justme_07_white_64kb.mp3",
               "length_ms": 965000,
+              "section_number": 7,
               "start_ms": 6286000,
               "title": "Part 7"
             },
             {
               "audio_url": "https://www.archive.org/download/justme_1207_librivox/justme_08_white_64kb.mp3",
               "length_ms": 1089000,
+              "section_number": 8,
               "start_ms": 7251000,
               "title": "Part 8"
             },
             {
               "audio_url": "https://www.archive.org/download/justme_1207_librivox/justme_09_white_64kb.mp3",
               "length_ms": 1002000,
+              "section_number": 9,
               "start_ms": 8340000,
               "title": "Part 9"
             },
             {
               "audio_url": "https://www.archive.org/download/justme_1207_librivox/justme_10_white_64kb.mp3",
               "length_ms": 1025000,
+              "section_number": 10,
               "start_ms": 9342000,
               "title": "Part 10"
             },
             {
               "audio_url": "https://www.archive.org/download/justme_1207_librivox/justme_11_white_64kb.mp3",
               "length_ms": 943000,
+              "section_number": 11,
               "start_ms": 10367000,
               "title": "Part 11"
             },
             {
               "audio_url": "https://www.archive.org/download/justme_1207_librivox/justme_12_white_64kb.mp3",
               "length_ms": 691000,
+              "section_number": 12,
               "start_ms": 11310000,
               "title": "Part 12"
             },
             {
               "audio_url": "https://www.archive.org/download/justme_1207_librivox/justme_13_white_64kb.mp3",
               "length_ms": 735000,
+              "section_number": 13,
               "start_ms": 12001000,
               "title": "Part 13"
             }
@@ -6026,7 +6040,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt20/Just_Me_1207.jpg",
           "id": "pamela-krantz",
           "language": "en",
+          "librivox_genres": [
+            "Performing Arts",
+            "Memoirs"
+          ],
           "librivox_id": 6721,
+          "librivox_title": "Just Me",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/just-me-by-pearl-white/",
@@ -6324,7 +6343,11 @@
           "cover_url": "https://archive.org/download/justmenofcordova_2510_librivox/justmenofcordova_2510.jpeg",
           "id": "andy-sames",
           "language": "en",
+          "librivox_genres": [
+            "Detective Fiction"
+          ],
           "librivox_id": 21881,
+          "librivox_title": "Just Men of Cordova (Version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-just-men-of-cordova-by-edgar-wallace-2/",
@@ -6457,7 +6480,11 @@
           "cover_url": "https://archive.org/download/justmenofcordova_2409_librivox/justmenofcordova_2409.jpg",
           "id": "atul-sharma",
           "language": "en",
+          "librivox_genres": [
+            "Detective Fiction"
+          ],
           "librivox_id": 20782,
+          "librivox_title": "Just Men of Cordova",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-just-men-of-cordova-by-edgar-wallace/",

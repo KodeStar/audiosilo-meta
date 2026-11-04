@@ -651,7 +651,11 @@
           "cover_url": "https://archive.org/download/babylonian_2205_librivox/babylonianstorydeluge_2206.jpg",
           "id": "kazbek",
           "language": "en",
+          "librivox_genres": [
+            "Antiquity"
+          ],
           "librivox_id": 17877,
+          "librivox_title": "Babylonian Story of the Deluge and the Epic of Gilgamesh: with an Account of the Royal Libraries of Nineveh",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/epic-of-gilgamesh-by-e-a-wallis-budge/",
@@ -3358,7 +3362,11 @@
           "cover_url": "https://archive.org/download/thebabysopera_2103_librivox/babysopera_2103.jpg",
           "id": "jenn-broda",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 15712,
+          "librivox_title": "Baby's Opera",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-babys-opera-by-walter-crane/",
@@ -3447,7 +3455,11 @@
           "cover_url": "https://archive.org/download/babys_own_aesop_librivox/Babys_Own_Aesop_1106.jpg",
           "id": "denny-sayers-d-2015",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 591,
+          "librivox_title": "Baby's Own Aesop",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/babys-own-aesop-by-walter-crane/",
@@ -3513,7 +3525,11 @@
           "cover_url": "https://archive.org/download/babysownaesop_2106_librivox/babys_own_aesop2_2106.jpg",
           "id": "littlepeanut",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 16666,
+          "librivox_title": "Baby's Own Aesop (Version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-babys-own-aesop-by-walter-crane/",
@@ -3651,7 +3667,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt19/Babys_Songbook_1209.jpg",
           "id": "carol-stripling",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "General"
+          ],
           "librivox_id": 3360,
+          "librivox_title": "Baby's Songbook",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-babys-songbook-by-walter-crane/",
@@ -7226,21 +7247,46 @@
             {
               "audio_url": "https://www.archive.org/download/thebacchae_1011_librivox/thebacchae_1_euripides_64kb.mp3",
               "length_ms": 2637000,
+              "readers": [
+                "elizabeth-klett",
+                "mb",
+                "algy-pug",
+                "matthew-reece",
+                "dale-burgess",
+                "john-fricker"
+              ],
               "start_ms": 0,
               "title": "Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/thebacchae_1011_librivox/thebacchae_2_euripides_64kb.mp3",
               "length_ms": 3082000,
+              "readers": [
+                "elizabeth-klett",
+                "bruce-pirie",
+                "roseanne-schmidt",
+                "dale-burgess"
+              ],
               "start_ms": 2637000,
               "title": "Part 2"
             }
           ],
           "copyright_year": 1911,
           "cover_url": "https://www.archive.org/download/LibrivoxCdCovers3/Bacchae_1110.jpg",
+          "credits": [
+            {
+              "person": "gilbert-murray",
+              "role": "translator"
+            }
+          ],
           "id": "elizabeth-klett",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Tragedy"
+          ],
           "librivox_id": 4724,
+          "librivox_title": "Bacchae",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-bacchae-by-euripides/",
@@ -7588,21 +7634,49 @@
             {
               "audio_url": "https://www.archive.org/download/bacchanals_2302_librivox/bacchanals_1_euripides_64kb.mp3",
               "length_ms": 3058000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "greg-giordano",
+                "david-purdy",
+                "anna-maria",
+                "jonathan-jones",
+                "paul-librivox-18077"
+              ],
               "start_ms": 0,
               "title": "Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/bacchanals_2302_librivox/bacchanals_2_euripides_64kb.mp3",
               "length_ms": 2529000,
+              "readers": [
+                "alan-mapstone",
+                "greg-giordano",
+                "jenn-broda",
+                "anna-maria",
+                "jonathan-jones",
+                "paul-librivox-18077"
+              ],
               "start_ms": 3058000,
               "title": "Part 2"
             }
           ],
           "copyright_year": 1865,
           "cover_url": "https://archive.org/download/bacchanals_2302_librivox/bacchanals_2302.jpg",
+          "credits": [
+            {
+              "person": "henry-hart-milman",
+              "role": "translator"
+            }
+          ],
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Dramatic Readings"
+          ],
           "librivox_id": 18671,
+          "librivox_title": "Bacchanals",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-bacchanals-by-euripides/",
@@ -7668,39 +7742,90 @@
             {
               "audio_url": "https://www.archive.org/download/bacchides_2106_librivox/bacchides_1_plautus_64kb.mp3",
               "length_ms": 1496000,
+              "readers": [
+                "availle",
+                "toddhw",
+                "alan-mapstone",
+                "rob-marland",
+                "sonia",
+                "mike-manolakes",
+                "vocalpenguin",
+                "tchaikovsky"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/bacchides_2106_librivox/bacchides_2_plautus_64kb.mp3",
               "length_ms": 960000,
+              "readers": [
+                "jim-locke",
+                "mike-manolakes",
+                "adrian-stephens",
+                "tchaikovsky"
+              ],
               "start_ms": 1496000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/bacchides_2106_librivox/bacchides_3_plautus_64kb.mp3",
               "length_ms": 1262000,
+              "readers": [
+                "alan-mapstone",
+                "greg-giordano",
+                "mike-manolakes",
+                "vocalpenguin",
+                "tchaikovsky"
+              ],
               "start_ms": 2456000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/bacchides_2106_librivox/bacchides_4_plautus_64kb.mp3",
               "length_ms": 2938000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "greg-giordano",
+                "rob-marland",
+                "jim-locke",
+                "mike-manolakes",
+                "adrian-stephens",
+                "tchaikovsky"
+              ],
               "start_ms": 3718000,
               "title": "Act 4"
             },
             {
               "audio_url": "https://www.archive.org/download/bacchides_2106_librivox/bacchides_5_plautus_64kb.mp3",
               "length_ms": 1055000,
+              "readers": [
+                "availle",
+                "alan-mapstone",
+                "sonia",
+                "adrian-stephens",
+                "tchaikovsky"
+              ],
               "start_ms": 6656000,
               "title": "Act 5"
             }
           ],
           "copyright_year": 1894,
           "cover_url": "https://archive.org/download/bacchides_2106_librivox/bacchides_2106.jpg",
+          "credits": [
+            {
+              "person": "henry-thomas-riley",
+              "role": "translator"
+            }
+          ],
           "id": "availle",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Comedy"
+          ],
           "librivox_id": 16331,
+          "librivox_title": "Bacchides: or, The Twin Sisters",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/bacchides-or-the-twin-sisters-by-titus-maccius-plautus/",
@@ -8944,7 +9069,12 @@
           "cover_url": "https://archive.org/download/bachelorgirlinburma_2110_librivox/bachelorgirlburma_2111.jpg",
           "id": "mary-ann-hadley",
           "language": "en",
+          "librivox_genres": [
+            "Travel & Geography",
+            "Memoirs"
+          ],
           "librivox_id": 16924,
+          "librivox_title": "Bachelor Girl in Burma",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-bachelor-girl-in-burma-by-geraldine-edith-mitton/",
@@ -9216,54 +9346,81 @@
             {
               "audio_url": "https://www.archive.org/download/bachelor_1803.poem_librivox/bachelor_wilcox_alp_64kb.mp3",
               "length_ms": 202000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 0,
               "title": "A Bachelor to a Married Flirt - Read by ALP"
             },
             {
               "audio_url": "https://www.archive.org/download/bachelor_1803.poem_librivox/bachelor_wilcox_bk_64kb.mp3",
               "length_ms": 273000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 202000,
               "title": "A Bachelor to a Married Flirt - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/bachelor_1803.poem_librivox/bachelor_wilcox_gg_64kb.mp3",
               "length_ms": 256000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 475000,
               "title": "A Bachelor to a Married Flirt - Read by GG"
             },
             {
               "audio_url": "https://www.archive.org/download/bachelor_1803.poem_librivox/bachelor_wilcox_llw_64kb.mp3",
               "length_ms": 248000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 731000,
               "title": "A Bachelor to a Married Flirt - Read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/bachelor_1803.poem_librivox/bachelor_wilcox_raj_64kb.mp3",
               "length_ms": 224000,
+              "readers": [
+                "rajvo"
+              ],
               "start_ms": 979000,
               "title": "A Bachelor to a Married Flirt - Read by RAJ"
             },
             {
               "audio_url": "https://www.archive.org/download/bachelor_1803.poem_librivox/bachelor_wilcox_rlr_64kb.mp3",
               "length_ms": 185000,
+              "readers": [
+                "robert-robinson"
+              ],
               "start_ms": 1203000,
               "title": "A Bachelor to a Married Flirt - Read by RLR"
             },
             {
               "audio_url": "https://www.archive.org/download/bachelor_1803.poem_librivox/bachelor_wilcox_tp_64kb.mp3",
               "length_ms": 219000,
+              "readers": [
+                "tomas-peter"
+              ],
               "start_ms": 1388000,
               "title": "A Bachelor to a Married Flirt - Read by TP"
             },
             {
               "audio_url": "https://www.archive.org/download/bachelor_1803.poem_librivox/bachelor_wilcox_vb_64kb.mp3",
               "length_ms": 253000,
+              "readers": [
+                "tovarisch"
+              ],
               "start_ms": 1607000,
               "title": "A Bachelor to a Married Flirt - Read by VB"
             },
             {
               "audio_url": "https://www.archive.org/download/bachelor_1803.poem_librivox/bachelor_wilcox_vc_64kb.mp3",
               "length_ms": 240000,
+              "readers": [
+                "velmacariss"
+              ],
               "start_ms": 1860000,
               "title": "A Bachelor to a Married Flirt - Read by VC"
             }
@@ -9272,7 +9429,11 @@
           "cover_url": "https://archive.org/download/bachelor_1803.poem_librivox/bachelor_married_flirt_1803.jpg",
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 12780,
+          "librivox_title": "Bachelor to a Married Flirt",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-bachelor-to-a-married-flirt-by-ella-wheeler-wilcox/",
@@ -10802,7 +10963,12 @@
           "cover_url": "https://archive.org/download/bachelorsclub_2008_librivox/bachelorsclub_2009.jpg",
           "id": "keith-salis",
           "language": "en",
+          "librivox_genres": [
+            "Humorous Fiction",
+            "Published 1800 -1900"
+          ],
           "librivox_id": 15448,
+          "librivox_title": "Bachelors' Club",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-bachelors-club-by-israel-zangwill/",
@@ -10903,7 +11069,12 @@
           "cover_url": "https://archive.org/download/a_bachelors_dream_1908_librivox/abachelorsdream_1908.jpeg",
           "id": "lynda-marie-neilson",
           "language": "en",
+          "librivox_genres": [
+            "Historical Fiction",
+            "Romance"
+          ],
           "librivox_id": 13825,
+          "librivox_title": "Bachelor's Dream",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-bachelors-dream-by-mrs-hungerford/",

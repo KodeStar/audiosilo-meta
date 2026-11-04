@@ -116,66 +116,77 @@
             {
               "audio_url": "https://www.archive.org/download/elements_of_style_1004_librivox/elementsofstyle_00_strunk_64kb.mp3",
               "length_ms": 297000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 – I. Introductory"
             },
             {
               "audio_url": "https://www.archive.org/download/elements_of_style_1004_librivox/elementsofstyle_01_strunk_64kb.mp3",
               "length_ms": 736000,
+              "section_number": 1,
               "start_ms": 297000,
               "title": "01 – II. Elementary Rules of Usage: Rules 1 – 4"
             },
             {
               "audio_url": "https://www.archive.org/download/elements_of_style_1004_librivox/elementsofstyle_02_strunk_64kb.mp3",
               "length_ms": 616000,
+              "section_number": 2,
               "start_ms": 1033000,
               "title": "02 – II. Elementary Rules of Usage: Rules 5 – 8"
             },
             {
               "audio_url": "https://www.archive.org/download/elements_of_style_1004_librivox/elementsofstyle_03_strunk_64kb.mp3",
               "length_ms": 858000,
+              "section_number": 3,
               "start_ms": 1649000,
               "title": "03 – III. Elementary Principles of Composition: Rules 9 – 10"
             },
             {
               "audio_url": "https://www.archive.org/download/elements_of_style_1004_librivox/elementsofstyle_04_strunk_64kb.mp3",
               "length_ms": 698000,
+              "section_number": 4,
               "start_ms": 2507000,
               "title": "04 – III. Elementary Principles of Composition: Rules 11 – 13"
             },
             {
               "audio_url": "https://www.archive.org/download/elements_of_style_1004_librivox/elementsofstyle_05_strunk_64kb.mp3",
               "length_ms": 765000,
+              "section_number": 5,
               "start_ms": 3205000,
               "title": "05 – III. Elementary Principles of Composition: Rules 14 – 16"
             },
             {
               "audio_url": "https://www.archive.org/download/elements_of_style_1004_librivox/elementsofstyle_06_strunk_64kb.mp3",
               "length_ms": 459000,
+              "section_number": 6,
               "start_ms": 3970000,
               "title": "06 – III. Elementary Principles of Composition: Rules 17 – 18"
             },
             {
               "audio_url": "https://www.archive.org/download/elements_of_style_1004_librivox/elementsofstyle_07_strunk_64kb.mp3",
               "length_ms": 408000,
+              "section_number": 7,
               "start_ms": 4429000,
               "title": "07 – IV. A Few Matters of Form"
             },
             {
               "audio_url": "https://www.archive.org/download/elements_of_style_1004_librivox/elementsofstyle_08_strunk_64kb.mp3",
               "length_ms": 784000,
+              "section_number": 8,
               "start_ms": 4837000,
               "title": "08 – V. Words and Expressions Commonly Misused: all right to most"
             },
             {
               "audio_url": "https://www.archive.org/download/elements_of_style_1004_librivox/elementsofstyle_09_strunk_64kb.mp3",
               "length_ms": 635000,
+              "section_number": 9,
               "start_ms": 5621000,
               "title": "09 – V. Words and Expressions Commonly Misused: nature to would"
             },
             {
               "audio_url": "https://www.archive.org/download/elements_of_style_1004_librivox/elementsofstyle_10_strunk_64kb.mp3",
               "length_ms": 409000,
+              "section_number": 10,
               "start_ms": 6256000,
               "title": "10 – VI. Spelling"
             }
@@ -184,7 +195,13 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt5/The_Elements_of_Style_1005.jpg",
           "id": "nicholas-james-bridgewater",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Education",
+            "Language learning"
+          ],
           "librivox_id": 4215,
+          "librivox_title": "Elements of Style",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-elements-of-style-by-william-strunk-jr/",
@@ -607,9 +624,20 @@
           ],
           "copyright_year": 1816,
           "cover_url": "https://archive.org/download/elements_of_theology_1905_librivox/elementsoftheology_1905.jpg",
+          "credits": [
+            {
+              "person": "thomas-taylor-1758-1835",
+              "role": "translator"
+            }
+          ],
           "id": "geoffrey-edwards",
           "language": "en",
+          "librivox_genres": [
+            "Religion",
+            "Ancient"
+          ],
           "librivox_id": 13684,
+          "librivox_title": "Elements of Theology",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/elements-of-theology-by-proclus/",

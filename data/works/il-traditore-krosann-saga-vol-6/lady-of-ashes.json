@@ -1441,7 +1441,12 @@
           "cover_url": "https://archive.org/download/ladyofblossholme_2408_librivox/theladyofblossholme_2408.jpg",
           "id": "luellamargaret",
           "language": "en",
+          "librivox_genres": [
+            "Historical Fiction",
+            "Romance"
+          ],
           "librivox_id": 20636,
+          "librivox_title": "Lady of Blossholme",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-lady-of-blossholme-by-h-rider-haggard/",
@@ -5758,30 +5763,85 @@
             {
               "audio_url": "https://www.archive.org/download/ladyoflyons_2105_librivox/ladyoflyons_01_bulwerlytton_64kb.mp3",
               "length_ms": 1713000,
+              "readers": [
+                "toddhw",
+                "greg-giordano",
+                "mike-manolakes",
+                "wayne-cooke",
+                "jenn-broda",
+                "matea-bracic",
+                "kelly-s-taylor",
+                "a-d-latheron",
+                "tchaikovsky",
+                "wendykatzhiller",
+                "annie-mars"
+              ],
               "start_ms": 0,
               "title": "ACT I"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyoflyons_2105_librivox/ladyoflyons_02_bulwerlytton_64kb.mp3",
               "length_ms": 1450000,
+              "readers": [
+                "alan-mapstone",
+                "greg-giordano",
+                "mike-manolakes",
+                "wayne-cooke",
+                "matea-bracic",
+                "kelly-s-taylor",
+                "a-d-latheron",
+                "wendykatzhiller"
+              ],
               "start_ms": 1713000,
               "title": "ACT II"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyoflyons_2105_librivox/ladyoflyons_03_bulwerlytton_64kb.mp3",
               "length_ms": 1128000,
+              "readers": [
+                "availle",
+                "toddhw",
+                "greg-giordano",
+                "wayne-cooke",
+                "matea-bracic",
+                "kelly-s-taylor",
+                "a-d-latheron",
+                "annie-mars"
+              ],
               "start_ms": 3163000,
               "title": "ACT III"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyoflyons_2105_librivox/ladyoflyons_04_bulwerlytton_64kb.mp3",
               "length_ms": 1230000,
+              "readers": [
+                "alan-mapstone",
+                "mike-manolakes",
+                "wayne-cooke",
+                "matea-bracic",
+                "kelly-s-taylor",
+                "a-d-latheron",
+                "wendykatzhiller",
+                "annie-mars"
+              ],
               "start_ms": 4291000,
               "title": "ACT IV"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyoflyons_2105_librivox/ladyoflyons_05_bulwerlytton_64kb.mp3",
               "length_ms": 1657000,
+              "readers": [
+                "alan-mapstone",
+                "greg-giordano",
+                "mike-manolakes",
+                "wayne-cooke",
+                "matea-bracic",
+                "kelly-s-taylor",
+                "andrew-gaunce",
+                "a-d-latheron",
+                "tchaikovsky",
+                "wendykatzhiller"
+              ],
               "start_ms": 5521000,
               "title": "ACT V"
             }
@@ -5790,7 +5850,11 @@
           "cover_url": "https://archive.org/download/ladyoflyons_2105_librivox/ladyoflyons_2105.jpg",
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Romance"
+          ],
           "librivox_id": 16097,
+          "librivox_title": "Lady of Lyons",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/lady-of-lyons-by-edward-bulwer-lytton/",
@@ -7110,150 +7174,175 @@
             {
               "audio_url": "https://www.archive.org/download/lady_of_quality_1206_librivox/ladyofquality_00_burnett_64kb.mp3",
               "length_ms": 61000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 - Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/lady_of_quality_1206_librivox/ladyofquality_01_burnett_64kb.mp3",
               "length_ms": 1036000,
+              "section_number": 1,
               "start_ms": 61000,
               "title": "01 - Chapter I -- The twenty-fourth day of November 1690"
             },
             {
               "audio_url": "https://www.archive.org/download/lady_of_quality_1206_librivox/ladyofquality_02_burnett_64kb.mp3",
               "length_ms": 1356000,
+              "section_number": 2,
               "start_ms": 1097000,
               "title": "02 - Chapter II -- In which Sir Jeoffry encounters his offspring"
             },
             {
               "audio_url": "https://www.archive.org/download/lady_of_quality_1206_librivox/ladyofquality_03_burnett_64kb.mp3",
               "length_ms": 1174000,
+              "section_number": 3,
               "start_ms": 2453000,
               "title": "03 - Chapter III -- Wherein Sir Jeoffry's boon companions drink a toast"
             },
             {
               "audio_url": "https://www.archive.org/download/lady_of_quality_1206_librivox/ladyofquality_04_burnett_64kb.mp3",
               "length_ms": 1604000,
+              "section_number": 4,
               "start_ms": 3627000,
               "title": "04 - Chapter IV -- Lord Twemlow's chaplain visits his patron's kinsman, and Mistress Clorinda shines on her birthday night"
             },
             {
               "audio_url": "https://www.archive.org/download/lady_of_quality_1206_librivox/ladyofquality_05_burnett_64kb.mp3",
               "length_ms": 1372000,
+              "section_number": 5,
               "start_ms": 5231000,
               "title": "05 - Chapter V -- 'Not I,' said she.  'There thou mayst trust me.  I would not be found out.'"
             },
             {
               "audio_url": "https://www.archive.org/download/lady_of_quality_1206_librivox/ladyofquality_06_burnett_64kb.mp3",
               "length_ms": 1561000,
+              "section_number": 6,
               "start_ms": 6603000,
               "title": "06 - ChapterVI -- Relating how Mistress Anne discovered a miniature"
             },
             {
               "audio_url": "https://www.archive.org/download/lady_of_quality_1206_librivox/ladyofquality_07_burnett_64kb.mp3",
               "length_ms": 1250000,
+              "section_number": 7,
               "start_ms": 8164000,
               "title": "07 - Chapter VII -- 'Twas the face of Sir John Oxon the moon shone upon"
             },
             {
               "audio_url": "https://www.archive.org/download/lady_of_quality_1206_librivox/ladyofquality_08_burnett_64kb.mp3",
               "length_ms": 2046000,
+              "section_number": 8,
               "start_ms": 9414000,
               "title": "08 - Chapter VIII -- Two meet in the deserted rose garden, and the old Earl of Dunstanwolde is made a happy man"
             },
             {
               "audio_url": "https://www.archive.org/download/lady_of_quality_1206_librivox/ladyofquality_09_burnett_64kb.mp3",
               "length_ms": 925000,
+              "section_number": 9,
               "start_ms": 11460000,
               "title": "09   -Chapter IX -- 'I give to him the thing he craves with all his soul -- myself'"
             },
             {
               "audio_url": "https://www.archive.org/download/lady_of_quality_1206_librivox/ladyofquality_10_burnett_64kb.mp3",
               "length_ms": 1111000,
+              "section_number": 10,
               "start_ms": 12385000,
               "title": "10 - Chapter X -- 'Yes -- I have marked him'"
             },
             {
               "audio_url": "https://www.archive.org/download/lady_of_quality_1206_librivox/ladyofquality_11_burnett_64kb.mp3",
               "length_ms": 1938000,
+              "section_number": 11,
               "start_ms": 13496000,
               "title": "11 - Chapter XI -- Wherein a noble life comes to an end"
             },
             {
               "audio_url": "https://www.archive.org/download/lady_of_quality_1206_librivox/ladyofquality_12_burnett_64kb.mp3",
               "length_ms": 941000,
+              "section_number": 12,
               "start_ms": 15434000,
               "title": "12 - Chapter XII -- Which treats of the obsequies of my Lord of Dunstanwolde, of his lady's widowhood, and of her return to town"
             },
             {
               "audio_url": "https://www.archive.org/download/lady_of_quality_1206_librivox/ladyofquality_13_burnett_64kb.mp3",
               "length_ms": 1740000,
+              "section_number": 13,
               "start_ms": 16375000,
               "title": "13 - Chapter XIII -- Wherein a deadly war begins"
             },
             {
               "audio_url": "https://www.archive.org/download/lady_of_quality_1206_librivox/ladyofquality_14_burnett_64kb.mp3",
               "length_ms": 2027000,
+              "section_number": 14,
               "start_ms": 18115000,
               "title": "14 - Chapter XIV -- Containing the history of the breaking of the horse Devil, and relates the returning of his Grace of Osmonde from France"
             },
             {
               "audio_url": "https://www.archive.org/download/lady_of_quality_1206_librivox/ladyofquality_15_burnett_64kb.mp3",
               "length_ms": 1683000,
+              "section_number": 15,
               "start_ms": 20142000,
               "title": "15 - Chapter XV -- In which Sir John Oxon finds again a trophy he had lost"
             },
             {
               "audio_url": "https://www.archive.org/download/lady_of_quality_1206_librivox/ladyofquality_16_burnett_64kb.mp3",
               "length_ms": 1823000,
+              "section_number": 16,
               "start_ms": 21825000,
               "title": "16 - Chapter XVI -- Dealing with that which was done in the Panelled Parlour"
             },
             {
               "audio_url": "https://www.archive.org/download/lady_of_quality_1206_librivox/ladyofquality_17_burnett_64kb.mp3",
               "length_ms": 1799000,
+              "section_number": 17,
               "start_ms": 23648000,
               "title": "17 - Chapter XVII -- Wherein his Grace of Osmonde's courier arrives from France"
             },
             {
               "audio_url": "https://www.archive.org/download/lady_of_quality_1206_librivox/ladyofquality_18_burnett_64kb.mp3",
               "length_ms": 769000,
+              "section_number": 18,
               "start_ms": 25447000,
               "title": "18 - Chapter XVIII -- My Lady Dunstanwolde sits late alone and writes"
             },
             {
               "audio_url": "https://www.archive.org/download/lady_of_quality_1206_librivox/ladyofquality_19_burnett_64kb.mp3",
               "length_ms": 1649000,
+              "section_number": 19,
               "start_ms": 26216000,
               "title": "19 - Chapter XIX -- A piteous story is told, and the old cellars walled in"
             },
             {
               "audio_url": "https://www.archive.org/download/lady_of_quality_1206_librivox/ladyofquality_20_burnett_64kb.mp3",
               "length_ms": 1128000,
+              "section_number": 20,
               "start_ms": 27865000,
               "title": "20 - Chapter XX -- A noble marriage"
             },
             {
               "audio_url": "https://www.archive.org/download/lady_of_quality_1206_librivox/ladyofquality_21_burnett_64kb.mp3",
               "length_ms": 1666000,
+              "section_number": 21,
               "start_ms": 28993000,
               "title": "21 - Chapter XXI -- An heir is born"
             },
             {
               "audio_url": "https://www.archive.org/download/lady_of_quality_1206_librivox/ladyofquality_22_burnett_64kb.mp3",
               "length_ms": 697000,
+              "section_number": 22,
               "start_ms": 30659000,
               "title": "22 - Chapter XXII -- Mother Anne"
             },
             {
               "audio_url": "https://www.archive.org/download/lady_of_quality_1206_librivox/ladyofquality_23_burnett_64kb.mp3",
               "length_ms": 1247000,
+              "section_number": 23,
               "start_ms": 31356000,
               "title": "23 - Chapter XXIII -- 'In One who will do justice, and demands that it shall be done to each thing He has made, by each who bears His image'"
             },
             {
               "audio_url": "https://www.archive.org/download/lady_of_quality_1206_librivox/ladyofquality_24_burnett_64kb.mp3",
               "length_ms": 1912000,
+              "section_number": 24,
               "start_ms": 32603000,
               "title": "24 - Chapter XXIV -- The doves sate upon the window-ledge and lowly cooed and cooed"
             }
@@ -7262,7 +7351,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt19/lady_quality_1206.jpg",
           "id": "linda-andrus",
           "language": "en",
+          "librivox_genres": [
+            "Historical Fiction",
+            "Romance"
+          ],
           "librivox_id": 6492,
+          "librivox_title": "Lady of Quality",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-lady-of-quality-by-frances-hodgson-burnett/",
@@ -10220,162 +10314,243 @@
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_01_howells_64kb.mp3",
               "length_ms": 866000,
+              "readers": [
+                "shrimpphish"
+              ],
               "start_ms": 0,
               "title": "I"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_02_howells_64kb.mp3",
               "length_ms": 1609000,
+              "readers": [
+                "leswillang"
+              ],
               "start_ms": 866000,
               "title": "II"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_03_howells_64kb.mp3",
               "length_ms": 942000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 2475000,
               "title": "III"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_04_howells_64kb.mp3",
               "length_ms": 428000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 3417000,
               "title": "IV"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_05_howells_64kb.mp3",
               "length_ms": 735000,
+              "readers": [
+                "shrimpphish"
+              ],
               "start_ms": 3845000,
               "title": "V"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_06_howells_64kb.mp3",
               "length_ms": 1019000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 4580000,
               "title": "VI"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_07_howells_64kb.mp3",
               "length_ms": 844000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 5599000,
               "title": "VII"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_08_howells_64kb.mp3",
               "length_ms": 1224000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 6443000,
               "title": "VIII"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_09_howells_64kb.mp3",
               "length_ms": 1642000,
+              "readers": [
+                "cbteddy"
+              ],
               "start_ms": 7667000,
               "title": "IX"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_10_howells_64kb.mp3",
               "length_ms": 957000,
+              "readers": [
+                "belinda-mcreynolds"
+              ],
               "start_ms": 9309000,
               "title": "X"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_11_howells_64kb.mp3",
               "length_ms": 923000,
+              "readers": [
+                "robert-h-cherny"
+              ],
               "start_ms": 10266000,
               "title": "XI"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_12_howells_64kb.mp3",
               "length_ms": 1049000,
+              "readers": [
+                "robert-h-cherny"
+              ],
               "start_ms": 11189000,
               "title": "XII"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_13_howells_64kb.mp3",
               "length_ms": 794000,
+              "readers": [
+                "shrimpphish"
+              ],
               "start_ms": 12238000,
               "title": "XIII"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_14_howells_64kb.mp3",
               "length_ms": 1482000,
+              "readers": [
+                "robert-h-cherny"
+              ],
               "start_ms": 13032000,
               "title": "XIV"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_15_howells_64kb.mp3",
               "length_ms": 786000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 14514000,
               "title": "XV"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_16_howells_64kb.mp3",
               "length_ms": 1077000,
+              "readers": [
+                "robert-h-cherny"
+              ],
               "start_ms": 15300000,
               "title": "XVI"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_17_howells_64kb.mp3",
               "length_ms": 1079000,
+              "readers": [
+                "robert-h-cherny"
+              ],
               "start_ms": 16377000,
               "title": "XVII"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_18_howells_64kb.mp3",
               "length_ms": 1221000,
+              "readers": [
+                "robert-h-cherny"
+              ],
               "start_ms": 17456000,
               "title": "XVIII"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_19_howells_64kb.mp3",
               "length_ms": 920000,
+              "readers": [
+                "robert-h-cherny"
+              ],
               "start_ms": 18677000,
               "title": "XIX"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_20_howells_64kb.mp3",
               "length_ms": 332000,
+              "readers": [
+                "stacey-malcolm"
+              ],
               "start_ms": 19597000,
               "title": "XX"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_21_howells_64kb.mp3",
               "length_ms": 649000,
+              "readers": [
+                "shrimpphish"
+              ],
               "start_ms": 19929000,
               "title": "XXI"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_22_howells_64kb.mp3",
               "length_ms": 728000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 20578000,
               "title": "XXII"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_23_howells_64kb.mp3",
               "length_ms": 2215000,
+              "readers": [
+                "robert-h-cherny"
+              ],
               "start_ms": 21306000,
               "title": "XXIII"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_24_howells_64kb.mp3",
               "length_ms": 1323000,
+              "readers": [
+                "robert-h-cherny"
+              ],
               "start_ms": 23521000,
               "title": "XXIV"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_25_howells_64kb.mp3",
               "length_ms": 968000,
+              "readers": [
+                "shrimpphish"
+              ],
               "start_ms": 24844000,
               "title": "XXV"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_26_howells_64kb.mp3",
               "length_ms": 1412000,
+              "readers": [
+                "shrimpphish"
+              ],
               "start_ms": 25812000,
               "title": "XXVI"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthearoostook_2507_librivox/ladyofthearoostook_27_howells_64kb.mp3",
               "length_ms": 1018000,
+              "readers": [
+                "shrimpphish"
+              ],
               "start_ms": 27224000,
               "title": "XXVII"
             }
@@ -10384,7 +10559,11 @@
           "cover_url": "https://archive.org/download/ladyofthearoostook_2507_librivox/lady_aroostook_2507.jpg",
           "id": "shrimpphish",
           "language": "en",
+          "librivox_genres": [
+            "Literary Fiction"
+          ],
           "librivox_id": 20849,
+          "librivox_title": "Lady of the Aroostook",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-lady-of-the-aroostook-by-william-dean-howells/",
@@ -10443,72 +10622,108 @@
             {
               "audio_url": "https://www.archive.org/download/ladyofthebarge_2310_librivox/ladyofthebarge_01_jacobs_64kb.mp3",
               "length_ms": 1349000,
+              "readers": [
+                "inkell"
+              ],
               "start_ms": 0,
               "title": "The Lady of the Barge"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthebarge_2310_librivox/ladyofthebarge_02_jacobs_64kb.mp3",
               "length_ms": 1412000,
+              "readers": [
+                "ben-tucker"
+              ],
               "start_ms": 1349000,
               "title": "The Monkey's Paw"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthebarge_2310_librivox/ladyofthebarge_03_jacobs_64kb.mp3",
               "length_ms": 1760000,
+              "readers": [
+                "brian-fullen"
+              ],
               "start_ms": 2761000,
               "title": "Bill's Paper Chase"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthebarge_2310_librivox/ladyofthebarge_04_jacobs_64kb.mp3",
               "length_ms": 1504000,
+              "readers": [
+                "ben-tucker"
+              ],
               "start_ms": 4521000,
               "title": "The Well"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthebarge_2310_librivox/ladyofthebarge_05_jacobs_64kb.mp3",
               "length_ms": 1404000,
+              "readers": [
+                "leswillang"
+              ],
               "start_ms": 6025000,
               "title": "Cupboard Love"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthebarge_2310_librivox/ladyofthebarge_06_jacobs_64kb.mp3",
               "length_ms": 1342000,
+              "readers": [
+                "leswillang"
+              ],
               "start_ms": 7429000,
               "title": "In the Library"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthebarge_2310_librivox/ladyofthebarge_07_jacobs_64kb.mp3",
               "length_ms": 1712000,
+              "readers": [
+                "christine-rottger"
+              ],
               "start_ms": 8771000,
               "title": "Captain Rogers"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthebarge_2310_librivox/ladyofthebarge_08_jacobs_64kb.mp3",
               "length_ms": 1601000,
+              "readers": [
+                "melissamarie"
+              ],
               "start_ms": 10483000,
               "title": "A Tiger's Skin"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthebarge_2310_librivox/ladyofthebarge_09_jacobs_64kb.mp3",
               "length_ms": 1468000,
+              "readers": [
+                "liz-sanders"
+              ],
               "start_ms": 12084000,
               "title": "A Mixed Proposal"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthebarge_2310_librivox/ladyofthebarge_10_jacobs_64kb.mp3",
               "length_ms": 1495000,
+              "readers": [
+                "liz-sanders"
+              ],
               "start_ms": 13552000,
               "title": "An Adulteration Act"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthebarge_2310_librivox/ladyofthebarge_11_jacobs_64kb.mp3",
               "length_ms": 1422000,
+              "readers": [
+                "melissamarie"
+              ],
               "start_ms": 15047000,
               "title": "A Golden Venture"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthebarge_2310_librivox/ladyofthebarge_12_jacobs_64kb.mp3",
               "length_ms": 890000,
+              "readers": [
+                "ben-tucker"
+              ],
               "start_ms": 16469000,
               "title": "Three at Table"
             }
@@ -10517,7 +10732,13 @@
           "cover_url": "https://archive.org/download/ladyofthebarge_2310_librivox/lady_barge_2310.jpg",
           "id": "inkell",
           "language": "en",
+          "librivox_genres": [
+            "Horror & Supernatural Fiction",
+            "Humorous Fiction",
+            "Single Author Collections"
+          ],
           "librivox_id": 19359,
+          "librivox_title": "Lady of the Barge",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-lady-of-the-barge-by-w-w-jacobs/",
@@ -10729,7 +10950,12 @@
           "cover_url": "https://archive.org/download/ladyofthebasementflat_1704_librivox/lady_basement_flat_1704.jpg",
           "id": "judi-mason",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction",
+            "Published 1900 onward"
+          ],
           "librivox_id": 11473,
+          "librivox_title": "Lady of the Basement Flat",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-lady-of-the-basement-flat-by-mrs-george-de-horne-vaizey/",
@@ -12343,18 +12569,53 @@
             {
               "audio_url": "https://www.archive.org/download/ladyofthelake_1503_librivox/ladyofthelake_1_eyre_64kb.mp3",
               "length_ms": 1560000,
+              "readers": [
+                "elizabeth-klett",
+                "maryann",
+                "ron-altman",
+                "kristin-g",
+                "toddhw",
+                "alan-mapstone",
+                "woolly-bee",
+                "lydia",
+                "sarah-terry",
+                "joseph-tabler"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthelake_1503_librivox/ladyofthelake_2_eyre_64kb.mp3",
               "length_ms": 1439000,
+              "readers": [
+                "triciag",
+                "maryann",
+                "kristin-g",
+                "toddhw",
+                "rapunzelina",
+                "alan-mapstone",
+                "libby-gohn",
+                "lydia",
+                "sarah-terry"
+              ],
               "start_ms": 1560000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthelake_1503_librivox/ladyofthelake_3_eyre_64kb.mp3",
               "length_ms": 1543000,
+              "readers": [
+                "elizabeth-klett",
+                "triciag",
+                "maryann",
+                "ron-altman",
+                "kristin-g",
+                "toddhw",
+                "alan-mapstone",
+                "lydia",
+                "sarah-terry",
+                "joseph-tabler"
+              ],
               "start_ms": 2999000,
               "title": "Act 3"
             }
@@ -12363,7 +12624,12 @@
           "cover_url": "https://archive.org/download/ladyofthelake_1503_librivox/Lady_1503.jpg",
           "id": "elizabeth-klett",
           "language": "en",
+          "librivox_genres": [
+            "Plays",
+            "Romance"
+          ],
           "librivox_id": 8687,
+          "librivox_title": "Lady of the Lake",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-lady-of-the-lake-by-edmund-john-eyre/",
@@ -12821,7 +13087,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt22/lady_lake_1209.jpg",
           "id": "cynthia-moyer",
           "language": "en",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales",
+            "Poetry"
+          ],
           "librivox_id": 7021,
+          "librivox_title": "Lady of the Lake",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-lady-of-the-lake-by-sir-walter-scott/",
@@ -12872,78 +13143,117 @@
             {
               "audio_url": "https://www.archive.org/download/ladyofthelastcentury_2604_librivox/ladyofthelastcentury_01_doran_64kb.mp3",
               "length_ms": 2444000,
+              "readers": [
+                "valroth"
+              ],
               "start_ms": 0,
               "title": "I"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthelastcentury_2604_librivox/ladyofthelastcentury_02_doran_64kb.mp3",
               "length_ms": 2284000,
+              "readers": [
+                "leswillang"
+              ],
               "start_ms": 2444000,
               "title": "II"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthelastcentury_2604_librivox/ladyofthelastcentury_03_doran_64kb.mp3",
               "length_ms": 1937000,
+              "readers": [
+                "cbteddy"
+              ],
               "start_ms": 4728000,
               "title": "III"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthelastcentury_2604_librivox/ladyofthelastcentury_04_doran_64kb.mp3",
               "length_ms": 2063000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 6665000,
               "title": "IV"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthelastcentury_2604_librivox/ladyofthelastcentury_05_doran_64kb.mp3",
               "length_ms": 2486000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 8728000,
               "title": "V"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthelastcentury_2604_librivox/ladyofthelastcentury_06_doran_64kb.mp3",
               "length_ms": 1781000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 11214000,
               "title": "VI"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthelastcentury_2604_librivox/ladyofthelastcentury_07_doran_64kb.mp3",
               "length_ms": 1744000,
+              "readers": [
+                "christine-rottger"
+              ],
               "start_ms": 12995000,
               "title": "VII"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthelastcentury_2604_librivox/ladyofthelastcentury_08_doran_64kb.mp3",
               "length_ms": 2557000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 14739000,
               "title": "VIII"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthelastcentury_2604_librivox/ladyofthelastcentury_09_doran_64kb.mp3",
               "length_ms": 1348000,
+              "readers": [
+                "shrimpphish"
+              ],
               "start_ms": 17296000,
               "title": "IX"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthelastcentury_2604_librivox/ladyofthelastcentury_10_doran_64kb.mp3",
               "length_ms": 1609000,
+              "readers": [
+                "debra-bridgford"
+              ],
               "start_ms": 18644000,
               "title": "X"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthelastcentury_2604_librivox/ladyofthelastcentury_11_doran_64kb.mp3",
               "length_ms": 2969000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 20253000,
               "title": "XI The Bluestockings"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthelastcentury_2604_librivox/ladyofthelastcentury_12_doran_64kb.mp3",
               "length_ms": 1448000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 23222000,
               "title": "XII"
             },
             {
               "audio_url": "https://www.archive.org/download/ladyofthelastcentury_2604_librivox/ladyofthelastcentury_13_doran_64kb.mp3",
               "length_ms": 2700000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 24670000,
               "title": "XIII"
             }
@@ -12952,7 +13262,11 @@
           "cover_url": "https://archive.org/download/ladyofthelastcentury_2604_librivox/ladylastcentury_2604.jpg",
           "id": "valroth",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography"
+          ],
           "librivox_id": 20894,
+          "librivox_title": "Lady of the Last Century",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-lady-of-the-last-century-by-john-doran/",
@@ -13950,7 +14264,11 @@
           "cover_url": "https://archive.org/download/ladyofthenorthstar_1710_librivox/northstar_1710.jpg",
           "id": "richard-kilmer-1942-2022",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction"
+          ],
           "librivox_id": 12315,
+          "librivox_title": "Lady of the North Star",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-lady-of-the-north-star-by-ottwell-binns/",
@@ -14372,7 +14690,14 @@
           "cover_url": "https://archive.org/download/ladyoftheshroud_2007_librivox/ladyoftheshroud_2007.jpg",
           "id": "thomas-a-copeland",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Epistolary Fiction",
+            "Gothic Fiction",
+            "Romance"
+          ],
           "librivox_id": 15239,
+          "librivox_title": "Lady of the Shroud",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-lady-of-the-shroud-by-bram-stoker/",

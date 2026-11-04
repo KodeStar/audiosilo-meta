@@ -2018,102 +2018,119 @@
             {
               "audio_url": "https://www.archive.org/download/facts_and_fancies_ln_1902_librivox/factsandfancies_00_everts_64kb.mp3",
               "length_ms": 135000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Prefatory"
             },
             {
               "audio_url": "https://www.archive.org/download/facts_and_fancies_ln_1902_librivox/factsandfancies_01_everts_64kb.mp3",
               "length_ms": 332000,
+              "section_number": 1,
               "start_ms": 135000,
               "title": "I"
             },
             {
               "audio_url": "https://www.archive.org/download/facts_and_fancies_ln_1902_librivox/factsandfancies_02_everts_64kb.mp3",
               "length_ms": 437000,
+              "section_number": 2,
               "start_ms": 467000,
               "title": "II"
             },
             {
               "audio_url": "https://www.archive.org/download/facts_and_fancies_ln_1902_librivox/factsandfancies_03_everts_64kb.mp3",
               "length_ms": 371000,
+              "section_number": 3,
               "start_ms": 904000,
               "title": "III"
             },
             {
               "audio_url": "https://www.archive.org/download/facts_and_fancies_ln_1902_librivox/factsandfancies_04_everts_64kb.mp3",
               "length_ms": 418000,
+              "section_number": 4,
               "start_ms": 1275000,
               "title": "IV"
             },
             {
               "audio_url": "https://www.archive.org/download/facts_and_fancies_ln_1902_librivox/factsandfancies_05_everts_64kb.mp3",
               "length_ms": 108000,
+              "section_number": 5,
               "start_ms": 1693000,
               "title": "V"
             },
             {
               "audio_url": "https://www.archive.org/download/facts_and_fancies_ln_1902_librivox/factsandfancies_06_everts_64kb.mp3",
               "length_ms": 551000,
+              "section_number": 6,
               "start_ms": 1801000,
               "title": "VI"
             },
             {
               "audio_url": "https://www.archive.org/download/facts_and_fancies_ln_1902_librivox/factsandfancies_07_everts_64kb.mp3",
               "length_ms": 430000,
+              "section_number": 7,
               "start_ms": 2352000,
               "title": "V \"B\""
             },
             {
               "audio_url": "https://www.archive.org/download/facts_and_fancies_ln_1902_librivox/factsandfancies_08_everts_64kb.mp3",
               "length_ms": 281000,
+              "section_number": 8,
               "start_ms": 2782000,
               "title": "VI \"B\""
             },
             {
               "audio_url": "https://www.archive.org/download/facts_and_fancies_ln_1902_librivox/factsandfancies_09_everts_64kb.mp3",
               "length_ms": 703000,
+              "section_number": 9,
               "start_ms": 3063000,
               "title": "VII"
             },
             {
               "audio_url": "https://www.archive.org/download/facts_and_fancies_ln_1902_librivox/factsandfancies_10_everts_64kb.mp3",
               "length_ms": 207000,
+              "section_number": 10,
               "start_ms": 3766000,
               "title": "VIII"
             },
             {
               "audio_url": "https://www.archive.org/download/facts_and_fancies_ln_1902_librivox/factsandfancies_11_everts_64kb.mp3",
               "length_ms": 198000,
+              "section_number": 11,
               "start_ms": 3973000,
               "title": "IX"
             },
             {
               "audio_url": "https://www.archive.org/download/facts_and_fancies_ln_1902_librivox/factsandfancies_12_everts_64kb.mp3",
               "length_ms": 494000,
+              "section_number": 12,
               "start_ms": 4171000,
               "title": "X"
             },
             {
               "audio_url": "https://www.archive.org/download/facts_and_fancies_ln_1902_librivox/factsandfancies_13_everts_64kb.mp3",
               "length_ms": 498000,
+              "section_number": 13,
               "start_ms": 4665000,
               "title": "XI"
             },
             {
               "audio_url": "https://www.archive.org/download/facts_and_fancies_ln_1902_librivox/factsandfancies_14_everts_64kb.mp3",
               "length_ms": 1326000,
+              "section_number": 14,
               "start_ms": 5163000,
               "title": "XII"
             },
             {
               "audio_url": "https://www.archive.org/download/facts_and_fancies_ln_1902_librivox/factsandfancies_15_everts_64kb.mp3",
               "length_ms": 2371000,
+              "section_number": 15,
               "start_ms": 6489000,
               "title": "XIII"
             },
             {
               "audio_url": "https://www.archive.org/download/facts_and_fancies_ln_1902_librivox/factsandfancies_16_everts_64kb.mp3",
               "length_ms": 790000,
+              "section_number": 16,
               "start_ms": 8860000,
               "title": "XIV"
             }
@@ -2122,7 +2139,11 @@
           "cover_url": "https://archive.org/download/facts_and_fancies_ln_1902_librivox/factsandfancies_1902.jpg",
           "id": "lynda-marie-neilson",
           "language": "en",
+          "librivox_genres": [
+            "Single author"
+          ],
           "librivox_id": 13503,
+          "librivox_title": "Facts and Fancies",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/facts-and-fancies-by-orpheus-everts/",
@@ -2856,7 +2877,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt28/Facts_Reconstruction_1301.jpg",
           "id": "guero",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "History",
+            "Political Science"
+          ],
           "librivox_id": 4593,
+          "librivox_title": "Facts of Reconstruction",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-facts-of-reconstruction-by-john-r-lynch/",
@@ -2907,102 +2934,170 @@
             {
               "audio_url": "https://www.archive.org/download/factsyoushouldknowaboutclassics_2605_librivox/factsaboutclassics_00_mccabe_64kb.mp3",
               "length_ms": 121000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/factsyoushouldknowaboutclassics_2605_librivox/factsaboutclassics_01_mccabe_64kb.mp3",
               "length_ms": 279000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 1,
               "start_ms": 121000,
               "title": "Classics of the Ancient World"
             },
             {
               "audio_url": "https://www.archive.org/download/factsyoushouldknowaboutclassics_2605_librivox/factsaboutclassics_02_mccabe_64kb.mp3",
               "length_ms": 908000,
+              "readers": [
+                "owlivia"
+              ],
+              "section_number": 2,
               "start_ms": 400000,
               "title": "Greek Literature"
             },
             {
               "audio_url": "https://www.archive.org/download/factsyoushouldknowaboutclassics_2605_librivox/factsaboutclassics_03_mccabe_64kb.mp3",
               "length_ms": 802000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 3,
               "start_ms": 1308000,
               "title": "Roman Literature"
             },
             {
               "audio_url": "https://www.archive.org/download/factsyoushouldknowaboutclassics_2605_librivox/factsaboutclassics_04_mccabe_64kb.mp3",
               "length_ms": 216000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 4,
               "start_ms": 2110000,
               "title": "Early Christian Classics"
             },
             {
               "audio_url": "https://www.archive.org/download/factsyoushouldknowaboutclassics_2605_librivox/factsaboutclassics_05_mccabe_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "stacey-malcolm"
+              ],
+              "section_number": 5,
               "start_ms": 2326000,
               "title": "Classics of the Middle Ages"
             },
             {
               "audio_url": "https://www.archive.org/download/factsyoushouldknowaboutclassics_2605_librivox/factsaboutclassics_06_mccabe_64kb.mp3",
               "length_ms": 138000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 6,
               "start_ms": 2397000,
               "title": "Arab and Persian Writers"
             },
             {
               "audio_url": "https://www.archive.org/download/factsyoushouldknowaboutclassics_2605_librivox/factsaboutclassics_07_mccabe_64kb.mp3",
               "length_ms": 260000,
+              "readers": [
+                "nick-autorina"
+              ],
+              "section_number": 7,
               "start_ms": 2535000,
               "title": "Dante and the Middle Ages"
             },
             {
               "audio_url": "https://www.archive.org/download/factsyoushouldknowaboutclassics_2605_librivox/factsaboutclassics_08_mccabe_64kb.mp3",
               "length_ms": 170000,
+              "readers": [
+                "nick-autorina"
+              ],
+              "section_number": 8,
               "start_ms": 2795000,
               "title": "Heralds of the Renaissance"
             },
             {
               "audio_url": "https://www.archive.org/download/factsyoushouldknowaboutclassics_2605_librivox/factsaboutclassics_09_mccabe_64kb.mp3",
               "length_ms": 612000,
+              "readers": [
+                "marisad6"
+              ],
+              "section_number": 9,
               "start_ms": 2965000,
               "title": "The New Age in Italy and France"
             },
             {
               "audio_url": "https://www.archive.org/download/factsyoushouldknowaboutclassics_2605_librivox/factsaboutclassics_10_mccabe_64kb.mp3",
               "length_ms": 143000,
+              "readers": [
+                "earlyryeser"
+              ],
+              "section_number": 10,
               "start_ms": 3577000,
               "title": "Cervantes and the New Spain"
             },
             {
               "audio_url": "https://www.archive.org/download/factsyoushouldknowaboutclassics_2605_librivox/factsaboutclassics_11_mccabe_64kb.mp3",
               "length_ms": 851000,
+              "readers": [
+                "steve-c"
+              ],
+              "section_number": 11,
               "start_ms": 3720000,
               "title": "Shakespeare and the English Rebirth"
             },
             {
               "audio_url": "https://www.archive.org/download/factsyoushouldknowaboutclassics_2605_librivox/factsaboutclassics_12_mccabe_64kb.mp3",
               "length_ms": 121000,
+              "readers": [
+                "tom-shoesmith"
+              ],
+              "section_number": 12,
               "start_ms": 4571000,
               "title": "Classics of the Modern Period"
             },
             {
               "audio_url": "https://www.archive.org/download/factsyoushouldknowaboutclassics_2605_librivox/factsaboutclassics_13_mccabe_64kb.mp3",
               "length_ms": 467000,
+              "readers": [
+                "tom-shoesmith"
+              ],
+              "section_number": 13,
               "start_ms": 4692000,
               "title": "Voltaire and French Classics"
             },
             {
               "audio_url": "https://www.archive.org/download/factsyoushouldknowaboutclassics_2605_librivox/factsaboutclassics_14_mccabe_64kb.mp3",
               "length_ms": 474000,
+              "readers": [
+                "rita-boutros"
+              ],
+              "section_number": 14,
               "start_ms": 5159000,
               "title": "Germany, Russia and Scandinavia"
             },
             {
               "audio_url": "https://www.archive.org/download/factsyoushouldknowaboutclassics_2605_librivox/factsaboutclassics_15_mccabe_64kb.mp3",
               "length_ms": 603000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 15,
               "start_ms": 5633000,
               "title": "Modern English Writers"
             },
             {
               "audio_url": "https://www.archive.org/download/factsyoushouldknowaboutclassics_2605_librivox/factsaboutclassics_16_mccabe_64kb.mp3",
               "length_ms": 454000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 16,
               "start_ms": 6236000,
               "title": "American Classics"
             }
@@ -3011,7 +3106,11 @@
           "cover_url": "https://archive.org/download/factsyoushouldknowaboutclassics_2605_librivox/facts_classics_2605.jpg",
           "id": "larry-wilson",
           "language": "en",
+          "librivox_genres": [
+            "Literary Criticism"
+          ],
           "librivox_id": 22465,
+          "librivox_title": "Facts You Should Know about the Classics",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/facts-you-should-know-about-the-classics-by-joseph-martin-mccabe/",
@@ -7834,84 +7933,126 @@
             {
               "audio_url": "https://www.archive.org/download/thefadedflower_2605.poem_librivox/fadedflower_coleridge_alp_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 0,
               "title": "The Faded Flower - read by ALP"
             },
             {
               "audio_url": "https://www.archive.org/download/thefadedflower_2605.poem_librivox/fadedflower_coleridge_bk_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 71000,
               "title": "The Faded Flower - read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/thefadedflower_2605.poem_librivox/fadedflower_coleridge_bwc_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "beeswaxcandle"
+              ],
               "start_ms": 152000,
               "title": "The Faded Flower - read by BWC"
             },
             {
               "audio_url": "https://www.archive.org/download/thefadedflower_2605.poem_librivox/fadedflower_coleridge_dc_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "dc"
+              ],
               "start_ms": 220000,
               "title": "The Faded Flower - read by DC"
             },
             {
               "audio_url": "https://www.archive.org/download/thefadedflower_2605.poem_librivox/fadedflower_coleridge_dl_64kb.mp3",
               "length_ms": 85000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 285000,
               "title": "The Faded Flower - read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/thefadedflower_2605.poem_librivox/fadedflower_coleridge_dls_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "leesalter"
+              ],
               "start_ms": 370000,
               "title": "The Faded Flower - read by DLS"
             },
             {
               "audio_url": "https://www.archive.org/download/thefadedflower_2605.poem_librivox/fadedflower_coldridge_fhe_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "ihaepmexz"
+              ],
               "start_ms": 446000,
               "title": "The Faded Flower - read by FHE"
             },
             {
               "audio_url": "https://www.archive.org/download/thefadedflower_2605.poem_librivox/fadedflower_coleridge_jbw_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 511000,
               "title": "The Faded Flower - read by JBW"
             },
             {
               "audio_url": "https://www.archive.org/download/thefadedflower_2605.poem_librivox/fadedflower_coleridge_lah_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 585000,
               "title": "The Faded Flower - read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/thefadedflower_2605.poem_librivox/fadedflower_coleridge_lcw_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 663000,
               "title": "The Faded Flower - read by LCW"
             },
             {
               "audio_url": "https://www.archive.org/download/thefadedflower_2605.poem_librivox/fadedflower_coleridge_msb_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "msbeezy"
+              ],
               "start_ms": 741000,
               "title": "The Faded Flower - read by MSB"
             },
             {
               "audio_url": "https://www.archive.org/download/thefadedflower_2605.poem_librivox/fadedflower_coleridge_slm_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "stacey-malcolm"
+              ],
               "start_ms": 807000,
               "title": "The Faded Flower - read by SLM"
             },
             {
               "audio_url": "https://www.archive.org/download/thefadedflower_2605.poem_librivox/fadedflower_coleridge_sp_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "shrimpphish"
+              ],
               "start_ms": 872000,
               "title": "The Faded Flower - read by SP"
             },
             {
               "audio_url": "https://www.archive.org/download/thefadedflower_2605.poem_librivox/fadedflower_coleridge_wja_64kb.mp3",
               "length_ms": 86000,
+              "readers": [
+                "winnifred-assmann"
+              ],
               "start_ms": 946000,
               "title": "The Faded Flower - read by WJA"
             }
@@ -7920,7 +8061,11 @@
           "cover_url": "https://archive.org/download/thefadedflower_2605.poem_librivox/fadedflower_2605.jpg",
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 22572,
+          "librivox_title": "Faded Flower",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-faded-flower-by-samuel-taylor-coleridge/",
@@ -8709,108 +8854,162 @@
             {
               "audio_url": "https://www.archive.org/download/faded_pictures_1209_librivox/fadedpictures_moody_ag_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "april-gonzales"
+              ],
               "start_ms": 0,
               "title": "Faded Pictures - Read by AG"
             },
             {
               "audio_url": "https://www.archive.org/download/faded_pictures_1209_librivox/fadedpictures_moody_alp_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 82000,
               "title": "Faded Pictures - Read by ALP"
             },
             {
               "audio_url": "https://www.archive.org/download/faded_pictures_1209_librivox/fadedpictures_moody_bdd_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "bryan-davis"
+              ],
               "start_ms": 163000,
               "title": "Faded Pictures - Ready by BDD"
             },
             {
               "audio_url": "https://www.archive.org/download/faded_pictures_1209_librivox/fadedpictures_moody_cam_64kb.mp3",
               "length_ms": 90000,
+              "readers": [
+                "cynthia-moyer"
+              ],
               "start_ms": 243000,
               "title": "Faded Pictures - Read by CAM"
             },
             {
               "audio_url": "https://www.archive.org/download/faded_pictures_1209_librivox/fadedpictures_moody_cmp_64kb.mp3",
               "length_ms": 95000,
+              "readers": [
+                "caprishapage"
+              ],
               "start_ms": 333000,
               "title": "Faded Pictures - Read by CMP"
             },
             {
               "audio_url": "https://www.archive.org/download/faded_pictures_1209_librivox/fadedpictures_moody_cs_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "carmen-stewart"
+              ],
               "start_ms": 428000,
               "title": "Faded Pictures - Read by CS"
             },
             {
               "audio_url": "https://www.archive.org/download/faded_pictures_1209_librivox/fadedpictures_moody_dl_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 499000,
               "title": "Faded Pictures - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/faded_pictures_1209_librivox/fadedpictures_moody_elli_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "elli"
+              ],
               "start_ms": 572000,
               "title": "Faded Pictures - Read by Elli"
             },
             {
               "audio_url": "https://www.archive.org/download/faded_pictures_1209_librivox/fadedpictures_moody_fs_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "fshort"
+              ],
               "start_ms": 638000,
               "title": "Faded Pictures - Read by FS"
             },
             {
               "audio_url": "https://www.archive.org/download/faded_pictures_1209_librivox/fadedpictures_moody_jcm_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "jason-mills"
+              ],
               "start_ms": 720000,
               "title": "Faded Pictures - Read by JCM"
             },
             {
               "audio_url": "https://www.archive.org/download/faded_pictures_1209_librivox/fadedpictures_moody_jm2_64kb.mp3",
               "length_ms": 85000,
+              "readers": [
+                "jannie-meisberger"
+              ],
               "start_ms": 795000,
               "title": "Faded Pictures - Read by JM2"
             },
             {
               "audio_url": "https://www.archive.org/download/faded_pictures_1209_librivox/fadedpictures_moody_jn_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "julia-niedermaier"
+              ],
               "start_ms": 880000,
               "title": "Faded Pictures - Read by JN"
             },
             {
               "audio_url": "https://www.archive.org/download/faded_pictures_1209_librivox/fadedpictures_moody_lab_64kb.mp3",
               "length_ms": 89000,
+              "readers": [
+                "lucretia-b"
+              ],
               "start_ms": 951000,
               "title": "Faded Pictures - Read by LB"
             },
             {
               "audio_url": "https://www.archive.org/download/faded_pictures_1209_librivox/fadedpictures_moody_lah_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 1040000,
               "title": "Faded Pictures - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/faded_pictures_1209_librivox/fadedpictures_moody_llw_64kb.mp3",
               "length_ms": 89000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 1117000,
               "title": "Faded Pictures - Read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/faded_pictures_1209_librivox/fadedpictures_moody_rds_64kb.mp3",
               "length_ms": 90000,
+              "readers": [
+                "ratandeep-singh"
+              ],
               "start_ms": 1206000,
               "title": "Faded Pictures - Read by RDS"
             },
             {
               "audio_url": "https://www.archive.org/download/faded_pictures_1209_librivox/fadedpictures_moody_rn_64kb.mp3",
               "length_ms": 99000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 1296000,
               "title": "Faded Pictures - Read by RN"
             },
             {
               "audio_url": "https://www.archive.org/download/faded_pictures_1209_librivox/fadedpictures_moody_tjh_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "tyler-harms"
+              ],
               "start_ms": 1395000,
               "title": "Faded Pictures - Read by TJH"
             }
@@ -8818,7 +9017,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt31/Faded_Pictures_1305.jpg",
           "id": "april-gonzales",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 7023,
+          "librivox_title": "Faded Pictures",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/faded-pictures-by-william-vaughn-moody/",

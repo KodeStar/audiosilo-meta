@@ -2246,60 +2246,70 @@
             {
               "audio_url": "https://www.archive.org/download/ethanfrome_bn_librivox/ethanfrome_00_wharton_64kb.mp3",
               "length_ms": 1918000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 - Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/ethanfrome_bn_librivox/ethanfrome_01_wharton_64kb.mp3",
               "length_ms": 1255000,
+              "section_number": 1,
               "start_ms": 1918000,
               "title": "01 - Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/ethanfrome_bn_librivox/ethanfrome_02_wharton_64kb.mp3",
               "length_ms": 1256000,
+              "section_number": 2,
               "start_ms": 3173000,
               "title": "02 - Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/ethanfrome_bn_librivox/ethanfrome_03_wharton_64kb.mp3",
               "length_ms": 826000,
+              "section_number": 3,
               "start_ms": 4429000,
               "title": "03 - Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/ethanfrome_bn_librivox/ethanfrome_04_wharton_64kb.mp3",
               "length_ms": 1745000,
+              "section_number": 4,
               "start_ms": 5255000,
               "title": "04 - Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/ethanfrome_bn_librivox/ethanfrome_05_wharton_64kb.mp3",
               "length_ms": 822000,
+              "section_number": 5,
               "start_ms": 7000000,
               "title": "05 - Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/ethanfrome_bn_librivox/ethanfrome_06_wharton_64kb.mp3",
               "length_ms": 668000,
+              "section_number": 6,
               "start_ms": 7822000,
               "title": "06 - Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/ethanfrome_bn_librivox/ethanfrome_07_wharton_64kb.mp3",
               "length_ms": 1739000,
+              "section_number": 7,
               "start_ms": 8490000,
               "title": "07 - Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/ethanfrome_bn_librivox/ethanfrome_08_wharton_64kb.mp3",
               "length_ms": 1199000,
+              "section_number": 8,
               "start_ms": 10229000,
               "title": "08 - Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/ethanfrome_bn_librivox/ethanfrome_09_wharton_64kb.mp3",
               "length_ms": 2967000,
+              "section_number": 9,
               "start_ms": 11428000,
               "title": "09 - Chapter 9"
             }
@@ -2308,7 +2318,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt13/Ethan_Frome_1211.jpg",
           "id": "bob-neufeld",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 5885,
+          "librivox_title": "Ethan Frome (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/ethan-frome-version-2-by-edith-wharton/",
@@ -2597,7 +2611,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt5/Ethan_Frome_1006.jpg",
           "id": "elizabeth-klett",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction",
+            "Romance"
+          ],
           "librivox_id": 1826,
+          "librivox_title": "Ethan Frome",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/ethan-frome-by-edith-wharton/",
@@ -4452,132 +4471,198 @@
             {
               "audio_url": "https://www.archive.org/download/ethelredpreston_2205_librivox/ethelred_01_finn_64kb.mp3",
               "length_ms": 804000,
+              "readers": [
+                "tim-quinn"
+              ],
               "start_ms": 0,
               "title": "A Letter from Ethelred's Mamma"
             },
             {
               "audio_url": "https://www.archive.org/download/ethelredpreston_2205_librivox/ethelred_02_finn_64kb.mp3",
               "length_ms": 605000,
+              "readers": [
+                "james-brinson"
+              ],
               "start_ms": 804000,
               "title": "In Which Things Begin to Go Badly with Earl Meriwether"
             },
             {
               "audio_url": "https://www.archive.org/download/ethelredpreston_2205_librivox/ethelred_03_finn_64kb.mp3",
               "length_ms": 757000,
+              "readers": [
+                "james-brinson"
+              ],
               "start_ms": 1409000,
               "title": "The Story of Earl"
             },
             {
               "audio_url": "https://www.archive.org/download/ethelredpreston_2205_librivox/ethelred_04_finn_64kb.mp3",
               "length_ms": 450000,
+              "readers": [
+                "james-brinson"
+              ],
               "start_ms": 2166000,
               "title": "Master Ethelred Preston"
             },
             {
               "audio_url": "https://www.archive.org/download/ethelredpreston_2205_librivox/ethelred_05_finn_64kb.mp3",
               "length_ms": 1083000,
+              "readers": [
+                "james-brinson"
+              ],
               "start_ms": 2616000,
               "title": "In Which Ethelred Proposes to Run Away"
             },
             {
               "audio_url": "https://www.archive.org/download/ethelredpreston_2205_librivox/ethelred_06_finn_64kb.mp3",
               "length_ms": 580000,
+              "readers": [
+                "james-brinson"
+              ],
               "start_ms": 3699000,
               "title": "Ethelred Puts On the Boxing Gloves"
             },
             {
               "audio_url": "https://www.archive.org/download/ethelredpreston_2205_librivox/ethelred_07_finn_64kb.mp3",
               "length_ms": 803000,
+              "readers": [
+                "khand"
+              ],
               "start_ms": 4279000,
               "title": "Ethelred in the Frying Pan"
             },
             {
               "audio_url": "https://www.archive.org/download/ethelredpreston_2205_librivox/ethelred_08_finn_64kb.mp3",
               "length_ms": 825000,
+              "readers": [
+                "khand"
+              ],
               "start_ms": 5082000,
               "title": "In Which Ed Devereux Proposes to Help Ethelred to Run Away"
             },
             {
               "audio_url": "https://www.archive.org/download/ethelredpreston_2205_librivox/ethelred_09_finn_64kb.mp3",
               "length_ms": 952000,
+              "readers": [
+                "tim-quinn"
+              ],
               "start_ms": 5907000,
               "title": "In Which Ethelred Finds it Hard to Sleep Undisturbed"
             },
             {
               "audio_url": "https://www.archive.org/download/ethelredpreston_2205_librivox/ethelred_10_finn_64kb.mp3",
               "length_ms": 971000,
+              "readers": [
+                "tim-quinn"
+              ],
               "start_ms": 6859000,
               "title": "In Which Earl Meriwether Receives Another Public Abmonition"
             },
             {
               "audio_url": "https://www.archive.org/download/ethelredpreston_2205_librivox/ethelred_11_finn_64kb.mp3",
               "length_ms": 449000,
+              "readers": [
+                "annieg"
+              ],
               "start_ms": 7830000,
               "title": "In Which Ethelred Takes More Rope than Devereux Had Counted Upon"
             },
             {
               "audio_url": "https://www.archive.org/download/ethelredpreston_2205_librivox/ethelred_12_finn_64kb.mp3",
               "length_ms": 843000,
+              "readers": [
+                "annieg"
+              ],
               "start_ms": 8279000,
               "title": "In Which Ethelred \"Gets Religion\" and Turns Over a New Leaf"
             },
             {
               "audio_url": "https://www.archive.org/download/ethelredpreston_2205_librivox/ethelred_13_finn_64kb.mp3",
               "length_ms": 775000,
+              "readers": [
+                "annieg"
+              ],
               "start_ms": 9122000,
               "title": "In Which Ethelred Becomes More Mysterious and Earl More Heroic"
             },
             {
               "audio_url": "https://www.archive.org/download/ethelredpreston_2205_librivox/ethelred_14_finn_64kb.mp3",
               "length_ms": 927000,
+              "readers": [
+                "annieg"
+              ],
               "start_ms": 9897000,
               "title": "In Which Earl Has a Momentous Invterview with Father Noland"
             },
             {
               "audio_url": "https://www.archive.org/download/ethelredpreston_2205_librivox/ethelred_15_finn_64kb.mp3",
               "length_ms": 1623000,
+              "readers": [
+                "annieg"
+              ],
               "start_ms": 10824000,
               "title": "In Which the Darling Goes into Business and the Midgets into Bankruptcy"
             },
             {
               "audio_url": "https://www.archive.org/download/ethelredpreston_2205_librivox/ethelred_16_finn_64kb.mp3",
               "length_ms": 455000,
+              "readers": [
+                "annieg"
+              ],
               "start_ms": 12447000,
               "title": "In Which Eddie Devereux Becomes a Godfather"
             },
             {
               "audio_url": "https://www.archive.org/download/ethelredpreston_2205_librivox/ethelred_17_finn_64kb.mp3",
               "length_ms": 846000,
+              "readers": [
+                "tim-quinn"
+              ],
               "start_ms": 12902000,
               "title": "In Which Darling Runs Away in Good Earnest"
             },
             {
               "audio_url": "https://www.archive.org/download/ethelredpreston_2205_librivox/ethelred_18_finn_64kb.mp3",
               "length_ms": 630000,
+              "readers": [
+                "samson-cayce"
+              ],
               "start_ms": 13748000,
               "title": "A Memorable Morning"
             },
             {
               "audio_url": "https://www.archive.org/download/ethelredpreston_2205_librivox/ethelred_19_finn_64kb.mp3",
               "length_ms": 373000,
+              "readers": [
+                "tim-quinn"
+              ],
               "start_ms": 14378000,
               "title": "Ethelred Preston, Brighton, Albany Villa"
             },
             {
               "audio_url": "https://www.archive.org/download/ethelredpreston_2205_librivox/ethelred_20_finn_64kb.mp3",
               "length_ms": 2157000,
+              "readers": [
+                "tim-quinn"
+              ],
               "start_ms": 14751000,
               "title": "Why Ethelred Failed to Reach Henryton in Due Time"
             },
             {
               "audio_url": "https://www.archive.org/download/ethelredpreston_2205_librivox/ethelred_21_finn_64kb.mp3",
               "length_ms": 388000,
+              "readers": [
+                "james-r-hedrick"
+              ],
               "start_ms": 16908000,
               "title": "In Which Ethelred Finds the Best of Mothers"
             },
             {
               "audio_url": "https://www.archive.org/download/ethelredpreston_2205_librivox/ethelred_22_finn_64kb.mp3",
               "length_ms": 461000,
+              "readers": [
+                "lucretia-b"
+              ],
               "start_ms": 17296000,
               "title": "Chapter the Last"
             }
@@ -4586,7 +4671,11 @@
           "cover_url": "https://archive.org/download/ethelredpreston_2205_librivox/ethelred_preston_2205.jpg",
           "id": "tim-quinn",
           "language": "en",
+          "librivox_genres": [
+            "Religion"
+          ],
           "librivox_id": 17304,
+          "librivox_title": "Ethelred Preston; or, The Adventures of a Newcomer",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/ethelred-preston-by-francis-j-finn-sj/",

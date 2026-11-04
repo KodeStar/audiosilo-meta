@@ -2965,66 +2965,99 @@
             {
               "audio_url": "https://www.archive.org/download/clover_version_2_1807_librivox/clover_01_coolidge_64kb.mp3",
               "length_ms": 1484000,
+              "readers": [
+                "diana-schmidt"
+              ],
               "start_ms": 0,
               "title": "A Talk on the Doorsteps"
             },
             {
               "audio_url": "https://www.archive.org/download/clover_version_2_1807_librivox/clover_02_coolidge_64kb.mp3",
               "length_ms": 1475000,
+              "readers": [
+                "hannah-mary"
+              ],
               "start_ms": 1484000,
               "title": "The Day of Happy Letters"
             },
             {
               "audio_url": "https://www.archive.org/download/clover_version_2_1807_librivox/clover_03_coolidge_64kb.mp3",
               "length_ms": 1915000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 2959000,
               "title": "The First Wedding in the Family"
             },
             {
               "audio_url": "https://www.archive.org/download/clover_version_2_1807_librivox/clover_04_coolidge_64kb.mp3",
               "length_ms": 1298000,
+              "readers": [
+                "hannah-mary"
+              ],
               "start_ms": 4874000,
               "title": "Two Long Years in One Short Chapter"
             },
             {
               "audio_url": "https://www.archive.org/download/clover_version_2_1807_librivox/clover_05_coolidge_64kb.mp3",
               "length_ms": 1817000,
+              "readers": [
+                "hannah-mary"
+              ],
               "start_ms": 6172000,
               "title": "Car Forty-Seven"
             },
             {
               "audio_url": "https://www.archive.org/download/clover_version_2_1807_librivox/clover_06_coolidge_64kb.mp3",
               "length_ms": 1545000,
+              "readers": [
+                "annike-lindhout"
+              ],
               "start_ms": 7989000,
               "title": "St. Helen's"
             },
             {
               "audio_url": "https://www.archive.org/download/clover_version_2_1807_librivox/clover_07_coolidge_64kb.mp3",
               "length_ms": 2013000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 9534000,
               "title": "Making Acquaintance"
             },
             {
               "audio_url": "https://www.archive.org/download/clover_version_2_1807_librivox/clover_08_coolidge_64kb.mp3",
               "length_ms": 2055000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 11547000,
               "title": "High Valley"
             },
             {
               "audio_url": "https://www.archive.org/download/clover_version_2_1807_librivox/clover_09_coolidge_64kb.mp3",
               "length_ms": 2070000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 13602000,
               "title": "Over a Pass"
             },
             {
               "audio_url": "https://www.archive.org/download/clover_version_2_1807_librivox/clover_10_coolidge_64kb.mp3",
               "length_ms": 2141000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 15672000,
               "title": "No. 13 Piute Street"
             },
             {
               "audio_url": "https://www.archive.org/download/clover_version_2_1807_librivox/clover_11_coolidge_64kb.mp3",
               "length_ms": 1744000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 17813000,
               "title": "The Last of the Clover-leaves"
             }
@@ -3033,7 +3066,11 @@
           "cover_url": "https://archive.org/download/clover_version_2_1807_librivox/clover2_1807.jpg",
           "id": "diana-schmidt",
           "language": "en",
+          "librivox_genres": [
+            "General"
+          ],
           "librivox_id": 12766,
+          "librivox_title": "Clover (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/clover-version-2-by-susan-coolidge/",
@@ -3134,7 +3171,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt8/clover_1103.jpg",
           "id": "elli",
           "language": "en",
+          "librivox_genres": [
+            "Romance",
+            "General"
+          ],
           "librivox_id": 3244,
+          "librivox_title": "Clover",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/clover-by-susan-coolidge/",
@@ -4303,9 +4345,19 @@
           ],
           "copyright_year": 1917,
           "cover_url": "https://archive.org/download/clown_the_circus_dog_2302_librivox/clownthecircusdog_2302.jpg",
+          "credits": [
+            {
+              "person": "nora-hills",
+              "role": "translator"
+            }
+          ],
           "id": "tr-love",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction"
+          ],
           "librivox_id": 18913,
+          "librivox_title": "Clown, The Circus Dog",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/clown-the-circus-dog-by-auguste-vimar/",
@@ -5706,98 +5758,154 @@
             {
               "audio_url": "https://www.archive.org/download/club_ma_lingua_1111_librivox/umclubdamalingua_01_dostoievski_64kb.mp3",
               "length_ms": 787000,
+              "readers": [
+                "vicente-costa-filho"
+              ],
               "start_ms": 0,
               "title": "01 - Capítulo 01"
             },
             {
               "audio_url": "https://www.archive.org/download/club_ma_lingua_1111_librivox/umclubdamalingua_02_dostoievski_64kb.mp3",
               "length_ms": 629000,
+              "readers": [
+                "vicente-costa-filho"
+              ],
               "start_ms": 787000,
               "title": "02 - Capítulo 02"
             },
             {
               "audio_url": "https://www.archive.org/download/club_ma_lingua_1111_librivox/umclubdamalingua_03_dostoievski_64kb.mp3",
               "length_ms": 1439000,
+              "readers": [
+                "vicente-costa-filho"
+              ],
               "start_ms": 1416000,
               "title": "03 - Capítulo 03"
             },
             {
               "audio_url": "https://www.archive.org/download/club_ma_lingua_1111_librivox/umclubdamalingua_04_dostoievski_64kb.mp3",
               "length_ms": 1922000,
+              "readers": [
+                "vicente-costa-filho"
+              ],
               "start_ms": 2855000,
               "title": "04 - Capítulo 04"
             },
             {
               "audio_url": "https://www.archive.org/download/club_ma_lingua_1111_librivox/umclubdamalingua_05_dostoievski_64kb.mp3",
               "length_ms": 2013000,
+              "readers": [
+                "vicente-costa-filho"
+              ],
               "start_ms": 4777000,
               "title": "05 - Capítulo 05"
             },
             {
               "audio_url": "https://www.archive.org/download/club_ma_lingua_1111_librivox/umclubdamalingua_06_dostoievski_64kb.mp3",
               "length_ms": 1253000,
+              "readers": [
+                "vicente-costa-filho"
+              ],
               "start_ms": 6790000,
               "title": "06 - Capítulo 06"
             },
             {
               "audio_url": "https://www.archive.org/download/club_ma_lingua_1111_librivox/umclubdamalingua_07_dostoievski_64kb.mp3",
               "length_ms": 1054000,
+              "readers": [
+                "miramontes"
+              ],
               "start_ms": 8043000,
               "title": "07 - Capítulo 07"
             },
             {
               "audio_url": "https://www.archive.org/download/club_ma_lingua_1111_librivox/umclubdamalingua_08_dostoievski_64kb.mp3",
               "length_ms": 1438000,
+              "readers": [
+                "vicente-costa-filho"
+              ],
               "start_ms": 9097000,
               "title": "08 - Capítulo 08"
             },
             {
               "audio_url": "https://www.archive.org/download/club_ma_lingua_1111_librivox/umclubdamalingua_09_dostoievski_64kb.mp3",
               "length_ms": 1942000,
+              "readers": [
+                "miramontes"
+              ],
               "start_ms": 10535000,
               "title": "09 - Capítulo 09"
             },
             {
               "audio_url": "https://www.archive.org/download/club_ma_lingua_1111_librivox/umclubdamalingua_10_dostoievski_64kb.mp3",
               "length_ms": 1131000,
+              "readers": [
+                "sandra-luna"
+              ],
               "start_ms": 12477000,
               "title": "10 - Capítulo 10"
             },
             {
               "audio_url": "https://www.archive.org/download/club_ma_lingua_1111_librivox/umclubdamalingua_11_dostoievski_64kb.mp3",
               "length_ms": 1429000,
+              "readers": [
+                "vicente-costa-filho"
+              ],
               "start_ms": 13608000,
               "title": "11 - Capítulo 11"
             },
             {
               "audio_url": "https://www.archive.org/download/club_ma_lingua_1111_librivox/umclubdamalingua_12_dostoievski_64kb.mp3",
               "length_ms": 1239000,
+              "readers": [
+                "leni"
+              ],
               "start_ms": 15037000,
               "title": "12 - Capítulo 12"
             },
             {
               "audio_url": "https://www.archive.org/download/club_ma_lingua_1111_librivox/umclubdamalingua_13_dostoievski_64kb.mp3",
               "length_ms": 1850000,
+              "readers": [
+                "leni"
+              ],
               "start_ms": 16276000,
               "title": "13 - Capítulo 13"
             },
             {
               "audio_url": "https://www.archive.org/download/club_ma_lingua_1111_librivox/umclubdamalingua_14_dostoievski_64kb.mp3",
               "length_ms": 954000,
+              "readers": [
+                "leni"
+              ],
               "start_ms": 18126000,
               "title": "14 - Capítulo 14"
             },
             {
               "audio_url": "https://www.archive.org/download/club_ma_lingua_1111_librivox/umclubdamalingua_15_dostoievski_64kb.mp3",
               "length_ms": 1795000,
+              "readers": [
+                "leni"
+              ],
               "start_ms": 19080000,
               "title": "15 - Capítulo 15"
             }
           ],
           "copyright_year": 1908,
+          "credits": [
+            {
+              "person": "joaquim-manuel-de-macedo",
+              "role": "translator"
+            }
+          ],
           "id": "vicente-costa-filho",
           "language": "pt",
+          "librivox_genres": [
+            "General Fiction",
+            "Satire"
+          ],
           "librivox_id": 4272,
+          "librivox_title": "Club da Má Língua",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/um-club-da-ma-lingua-by-fyodor-dostoyevsky/",
@@ -7286,120 +7394,180 @@
             {
               "audio_url": "https://www.archive.org/download/clubofmasks_2306_librivox/clubofmasks_01_upward_64kb.mp3",
               "length_ms": 1251000,
+              "readers": [
+                "toddhw"
+              ],
               "start_ms": 0,
               "title": "On His Majesty’s Service"
             },
             {
               "audio_url": "https://www.archive.org/download/clubofmasks_2306_librivox/clubofmasks_02_upward_64kb.mp3",
               "length_ms": 1707000,
+              "readers": [
+                "jess-gauchel"
+              ],
               "start_ms": 1251000,
               "title": "The Evidence Of Madame Bonnell"
             },
             {
               "audio_url": "https://www.archive.org/download/clubofmasks_2306_librivox/clubofmasks_03_upward_64kb.mp3",
               "length_ms": 1265000,
+              "readers": [
+                "howard-skyman"
+              ],
               "start_ms": 2958000,
               "title": "The Evidence Of The Dead"
             },
             {
               "audio_url": "https://www.archive.org/download/clubofmasks_2306_librivox/clubofmasks_04_upward_64kb.mp3",
               "length_ms": 1292000,
+              "readers": [
+                "howard-skyman"
+              ],
               "start_ms": 4223000,
               "title": "The Opened Safe"
             },
             {
               "audio_url": "https://www.archive.org/download/clubofmasks_2306_librivox/clubofmasks_05_upward_64kb.mp3",
               "length_ms": 1103000,
+              "readers": [
+                "allyson"
+              ],
               "start_ms": 5515000,
               "title": "Dr. Weathered’s Patients"
             },
             {
               "audio_url": "https://www.archive.org/download/clubofmasks_2306_librivox/clubofmasks_06_upward_64kb.mp3",
               "length_ms": 1204000,
+              "readers": [
+                "howard-skyman"
+              ],
               "start_ms": 6618000,
               "title": "The Books Of The Domino Club"
             },
             {
               "audio_url": "https://www.archive.org/download/clubofmasks_2306_librivox/clubofmasks_07_upward_64kb.mp3",
               "length_ms": 1480000,
+              "readers": [
+                "chuck-williamson"
+              ],
               "start_ms": 7822000,
               "title": "The Cause Of Death"
             },
             {
               "audio_url": "https://www.archive.org/download/clubofmasks_2306_librivox/clubofmasks_08_upward_64kb.mp3",
               "length_ms": 923000,
+              "readers": [
+                "allyson"
+              ],
               "start_ms": 9302000,
               "title": "The Leopard’s Claws"
             },
             {
               "audio_url": "https://www.archive.org/download/clubofmasks_2306_librivox/clubofmasks_09_upward_64kb.mp3",
               "length_ms": 1208000,
+              "readers": [
+                "howard-skyman"
+              ],
               "start_ms": 10225000,
               "title": "Sarah Neobard Speaks Out"
             },
             {
               "audio_url": "https://www.archive.org/download/clubofmasks_2306_librivox/clubofmasks_10_upward_64kb.mp3",
               "length_ms": 1123000,
+              "readers": [
+                "howard-skyman"
+              ],
               "start_ms": 11433000,
               "title": "The Case Against Lady Violet"
             },
             {
               "audio_url": "https://www.archive.org/download/clubofmasks_2306_librivox/clubofmasks_11_upward_64kb.mp3",
               "length_ms": 1305000,
+              "readers": [
+                "howard-skyman"
+              ],
               "start_ms": 12556000,
               "title": "What The Cipher Meant"
             },
             {
               "audio_url": "https://www.archive.org/download/clubofmasks_2306_librivox/clubofmasks_12_upward_64kb.mp3",
               "length_ms": 1134000,
+              "readers": [
+                "inkell"
+              ],
               "start_ms": 13861000,
               "title": "Psycho-Analysis"
             },
             {
               "audio_url": "https://www.archive.org/download/clubofmasks_2306_librivox/clubofmasks_13_upward_64kb.mp3",
               "length_ms": 1077000,
+              "readers": [
+                "allyson"
+              ],
               "start_ms": 14995000,
               "title": "The Earl Of Ledbury Intervenes"
             },
             {
               "audio_url": "https://www.archive.org/download/clubofmasks_2306_librivox/clubofmasks_14_upward_64kb.mp3",
               "length_ms": 1311000,
+              "readers": [
+                "james-r-hedrick"
+              ],
               "start_ms": 16072000,
               "title": "The Unknown Poison"
             },
             {
               "audio_url": "https://www.archive.org/download/clubofmasks_2306_librivox/clubofmasks_15_upward_64kb.mp3",
               "length_ms": 1208000,
+              "readers": [
+                "allyson"
+              ],
               "start_ms": 17383000,
               "title": "The Lady Of The Leopard Skin"
             },
             {
               "audio_url": "https://www.archive.org/download/clubofmasks_2306_librivox/clubofmasks_16_upward_64kb.mp3",
               "length_ms": 963000,
+              "readers": [
+                "allyson"
+              ],
               "start_ms": 18591000,
               "title": "The Red Light"
             },
             {
               "audio_url": "https://www.archive.org/download/clubofmasks_2306_librivox/clubofmasks_17_upward_64kb.mp3",
               "length_ms": 1337000,
+              "readers": [
+                "howard-skyman"
+              ],
               "start_ms": 19554000,
               "title": "A Singular Dismissal"
             },
             {
               "audio_url": "https://www.archive.org/download/clubofmasks_2306_librivox/clubofmasks_18_upward_64kb.mp3",
               "length_ms": 1246000,
+              "readers": [
+                "howard-skyman"
+              ],
               "start_ms": 20891000,
               "title": "Mother And Daughter"
             },
             {
               "audio_url": "https://www.archive.org/download/clubofmasks_2306_librivox/clubofmasks_19_upward_64kb.mp3",
               "length_ms": 1137000,
+              "readers": [
+                "allyson"
+              ],
               "start_ms": 22137000,
               "title": "The Means To Do Ill Deeds"
             },
             {
               "audio_url": "https://www.archive.org/download/clubofmasks_2306_librivox/clubofmasks_20_upward_64kb.mp3",
               "length_ms": 1452000,
+              "readers": [
+                "toddhw"
+              ],
               "start_ms": 23274000,
               "title": "The Finger-Print"
             }
@@ -7408,7 +7576,11 @@
           "cover_url": "https://archive.org/download/clubofmasks_2306_librivox/clubofmasks_2307.jpg",
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Detective Fiction"
+          ],
           "librivox_id": 19040,
+          "librivox_title": "Club of Masks",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-club-of-masks-by-allen-upward/",
@@ -7504,7 +7676,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt7/the_club_of_queer_trades_1102.jpg",
           "id": "david-barnes",
           "language": "en",
+          "librivox_genres": [
+            "Humorous Fiction",
+            "Detective Fiction"
+          ],
           "librivox_id": 1431,
+          "librivox_title": "Club of Queer Trades",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-club-of-queer-trades-by-g-k-chesterton/",
@@ -8444,126 +8621,147 @@
             {
               "audio_url": "https://www.archive.org/download/clubfoot_avenger_ms_2204_librivox/clubfoottheavenger_00_williams_64kb.mp3",
               "length_ms": 317000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/clubfoot_avenger_ms_2204_librivox/clubfoottheavenger_01_williams_64kb.mp3",
               "length_ms": 763000,
+              "section_number": 1,
               "start_ms": 317000,
               "title": "Chapter 1 - The Purple Cabriolet"
             },
             {
               "audio_url": "https://www.archive.org/download/clubfoot_avenger_ms_2204_librivox/clubfoottheavenger_02_williams_64kb.mp3",
               "length_ms": 1336000,
+              "section_number": 2,
               "start_ms": 1080000,
               "title": "Chapter 2 - Enter Miss Vera Slade"
             },
             {
               "audio_url": "https://www.archive.org/download/clubfoot_avenger_ms_2204_librivox/clubfoottheavenger_03_williams_64kb.mp3",
               "length_ms": 824000,
+              "section_number": 3,
               "start_ms": 2416000,
               "title": "Chapter 3 - The Man with the Clubfoot"
             },
             {
               "audio_url": "https://www.archive.org/download/clubfoot_avenger_ms_2204_librivox/clubfoottheavenger_04_williams_64kb.mp3",
               "length_ms": 988000,
+              "section_number": 4,
               "start_ms": 3240000,
               "title": "Chapter 4 - The Strange Experience of Miss Patricia Maxwell"
             },
             {
               "audio_url": "https://www.archive.org/download/clubfoot_avenger_ms_2204_librivox/clubfoottheavenger_05_williams_64kb.mp3",
               "length_ms": 924000,
+              "section_number": 5,
               "start_ms": 4228000,
               "title": "Chapter 5 - The Ikon of Smolensk"
             },
             {
               "audio_url": "https://www.archive.org/download/clubfoot_avenger_ms_2204_librivox/clubfoottheavenger_06_williams_64kb.mp3",
               "length_ms": 1033000,
+              "section_number": 6,
               "start_ms": 5152000,
               "title": "Chapter 6 - The Secret of the Ikon"
             },
             {
               "audio_url": "https://www.archive.org/download/clubfoot_avenger_ms_2204_librivox/clubfoottheavenger_07_williams_64kb.mp3",
               "length_ms": 688000,
+              "section_number": 7,
               "start_ms": 6185000,
               "title": "Chapter 7 - The Unseen Menace"
             },
             {
               "audio_url": "https://www.archive.org/download/clubfoot_avenger_ms_2204_librivox/clubfoottheavenger_08_williams_64kb.mp3",
               "length_ms": 1502000,
+              "section_number": 8,
               "start_ms": 6873000,
               "title": "Chapter 8 - The Top Flat"
             },
             {
               "audio_url": "https://www.archive.org/download/clubfoot_avenger_ms_2204_librivox/clubfoottheavenger_09_williams_64kb.mp3",
               "length_ms": 1025000,
+              "section_number": 9,
               "start_ms": 8375000,
               "title": "Chapter 9 - The Footstep in the Dark"
             },
             {
               "audio_url": "https://www.archive.org/download/clubfoot_avenger_ms_2204_librivox/clubfoottheavenger_10_williams_64kb.mp3",
               "length_ms": 917000,
+              "section_number": 10,
               "start_ms": 9400000,
               "title": "Chapter 10 - In Which Desmond Oakwood Finds Clubfoot in Strange Company"
             },
             {
               "audio_url": "https://www.archive.org/download/clubfoot_avenger_ms_2204_librivox/clubfoottheavenger_11_williams_64kb.mp3",
               "length_ms": 764000,
+              "section_number": 11,
               "start_ms": 10317000,
               "title": "Chapter 11 - The Constantinople Courier"
             },
             {
               "audio_url": "https://www.archive.org/download/clubfoot_avenger_ms_2204_librivox/clubfoottheavenger_12_williams_64kb.mp3",
               "length_ms": 822000,
+              "section_number": 12,
               "start_ms": 11081000,
               "title": "Chapter 12 - Xenia"
             },
             {
               "audio_url": "https://www.archive.org/download/clubfoot_avenger_ms_2204_librivox/clubfoottheavenger_13_williams_64kb.mp3",
               "length_ms": 609000,
+              "section_number": 13,
               "start_ms": 11903000,
               "title": "Chapter 13 - In Which Check Proves to be Checkmate"
             },
             {
               "audio_url": "https://www.archive.org/download/clubfoot_avenger_ms_2204_librivox/clubfoottheavenger_14_williams_64kb.mp3",
               "length_ms": 890000,
+              "section_number": 14,
               "start_ms": 12512000,
               "title": "Chapter 14 - The Girl at the Hexagon"
             },
             {
               "audio_url": "https://www.archive.org/download/clubfoot_avenger_ms_2204_librivox/clubfoottheavenger_15_williams_64kb.mp3",
               "length_ms": 868000,
+              "section_number": 15,
               "start_ms": 13402000,
               "title": "Chapter 15 - The Decoy"
             },
             {
               "audio_url": "https://www.archive.org/download/clubfoot_avenger_ms_2204_librivox/clubfoottheavenger_16_williams_64kb.mp3",
               "length_ms": 1454000,
+              "section_number": 16,
               "start_ms": 14270000,
               "title": "Chapter 16 - The House in Pimlico"
             },
             {
               "audio_url": "https://www.archive.org/download/clubfoot_avenger_ms_2204_librivox/clubfoottheavenger_17_williams_64kb.mp3",
               "length_ms": 1160000,
+              "section_number": 17,
               "start_ms": 15724000,
               "title": "Chapter 17 - The Meeting"
             },
             {
               "audio_url": "https://www.archive.org/download/clubfoot_avenger_ms_2204_librivox/clubfoottheavenger_18_williams_64kb.mp3",
               "length_ms": 923000,
+              "section_number": 18,
               "start_ms": 16884000,
               "title": "Chapter 18 - The Chamois Leather Packet"
             },
             {
               "audio_url": "https://www.archive.org/download/clubfoot_avenger_ms_2204_librivox/clubfoottheavenger_19_williams_64kb.mp3",
               "length_ms": 698000,
+              "section_number": 19,
               "start_ms": 17807000,
               "title": "Chapter 19 - A Flight and What Came of It"
             },
             {
               "audio_url": "https://www.archive.org/download/clubfoot_avenger_ms_2204_librivox/clubfoottheavenger_20_williams_64kb.mp3",
               "length_ms": 698000,
+              "section_number": 20,
               "start_ms": 18505000,
               "title": "Chapter 20 - In Which Miss Mary Brewster Speaks Her Mind"
             }
@@ -8572,7 +8770,12 @@
           "cover_url": "https://archive.org/download/clubfoot_avenger_ms_2204_librivox/clubfoottheavenger_2204.jpg",
           "id": "mark-nelson",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Suspense, Espionage, Political & Thrillers"
+          ],
           "librivox_id": 17814,
+          "librivox_title": "Clubfoot the Avenger",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/clubfoot-the-avenger-by-valentine-williams/",
@@ -8903,7 +9106,11 @@
           "cover_url": "https://archive.org/download/theclue_1711_librivox/clue_1711.jpg",
           "id": "roger-melin",
           "language": "en",
+          "librivox_genres": [
+            "Detective Fiction"
+          ],
           "librivox_id": 12268,
+          "librivox_title": "Clue",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-clue-by-carolyn-wells/",

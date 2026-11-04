@@ -1738,60 +1738,90 @@
             {
               "audio_url": "https://www.archive.org/download/erie_waters_1608.poem_librivox/eriewaters_johnson_am_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "annanneass"
+              ],
               "start_ms": 0,
               "title": "Erie Waters - Read by AM"
             },
             {
               "audio_url": "https://www.archive.org/download/erie_waters_1608.poem_librivox/eriewaters_johnson_bk_64kb.mp3",
               "length_ms": 86000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 78000,
               "title": "Erie Waters - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/erie_waters_1608.poem_librivox/eriewaters_johnson_dl_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 164000,
               "title": "Erie Waters - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/erie_waters_1608.poem_librivox/eriewaters_johnson_fs_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "fshort"
+              ],
               "start_ms": 242000,
               "title": "Erie Waters - Read by FS"
             },
             {
               "audio_url": "https://www.archive.org/download/erie_waters_1608.poem_librivox/eriewaters_johnson_ik_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "ian-king"
+              ],
               "start_ms": 317000,
               "title": "Erie Waters - Read by IK"
             },
             {
               "audio_url": "https://www.archive.org/download/erie_waters_1608.poem_librivox/eriewaters_johnson_lah_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 408000,
               "title": "Erie Waters - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/erie_waters_1608.poem_librivox/eriewaters_johnson_mh_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "oxygen"
+              ],
               "start_ms": 488000,
               "title": "Erie Waters - Read by MH"
             },
             {
               "audio_url": "https://www.archive.org/download/erie_waters_1608.poem_librivox/eriewaters_johnson_mk_64kb.mp3",
               "length_ms": 87000,
+              "readers": [
+                "maria-kasper"
+              ],
               "start_ms": 559000,
               "title": "Erie Waters - Read by MK"
             },
             {
               "audio_url": "https://www.archive.org/download/erie_waters_1608.poem_librivox/eriewaters_johnson_msd_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "matthew-datcher"
+              ],
               "start_ms": 646000,
               "title": "Erie Waters - Read by MSD"
             },
             {
               "audio_url": "https://www.archive.org/download/erie_waters_1608.poem_librivox/eriewaters_johnson_tp_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "tomas-peter"
+              ],
               "start_ms": 719000,
               "title": "Erie Waters - Read by TP"
             }
@@ -1800,7 +1830,13 @@
           "cover_url": "https://archive.org/download/erie_waters_1608.poem_librivox/eriewaters_1608.jpg",
           "id": "annanneass",
           "language": "en",
+          "librivox_genres": [
+            "Nature & Animal Fiction",
+            "Nautical & Marine Fiction",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 11231,
+          "librivox_title": "Erie Waters",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/erie-waters-by-e-pauline-johnson/",

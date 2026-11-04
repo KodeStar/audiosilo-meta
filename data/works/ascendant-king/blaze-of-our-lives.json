@@ -1359,7 +1359,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt22/blazed_trail_1209.jpg",
           "id": "tom-weiss",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Historical Fiction",
+            "Romance"
+          ],
           "librivox_id": 6298,
+          "librivox_title": "Blazed Trail",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-blazed-trail-by-stewart-edward-white/",
@@ -1491,7 +1497,13 @@
           "cover_url": "https://archive.org/download/blazedtrailstoriesandstoriesofthewildlife_1404_librivox/blazed_trail_stories_1404.jpg",
           "id": "david-wales",
           "language": "en",
+          "librivox_genres": [
+            "Short Stories",
+            "Westerns",
+            "Published 1900 onward"
+          ],
           "librivox_id": 8797,
+          "librivox_title": "Blazed Trail Stories and Stories Of The Wild Life",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/blazed-trail-stories-and-stories-of-the-wild-life-by-stewart-edward-white/",
@@ -5083,60 +5095,70 @@
             {
               "audio_url": "https://www.archive.org/download/blazingworld_1406_librivox/blazingworld_00_cavendish_64kb.mp3",
               "length_ms": 217000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/blazingworld_1406_librivox/blazingworld_01_cavendish_64kb.mp3",
               "length_ms": 1857000,
+              "section_number": 1,
               "start_ms": 217000,
               "title": "Part 1, section 1"
             },
             {
               "audio_url": "https://www.archive.org/download/blazingworld_1406_librivox/blazingworld_02_cavendish_64kb.mp3",
               "length_ms": 1768000,
+              "section_number": 2,
               "start_ms": 2074000,
               "title": "Part 1, section 2"
             },
             {
               "audio_url": "https://www.archive.org/download/blazingworld_1406_librivox/blazingworld_03_cavendish_64kb.mp3",
               "length_ms": 1894000,
+              "section_number": 3,
               "start_ms": 3842000,
               "title": "Part 1, section 3"
             },
             {
               "audio_url": "https://www.archive.org/download/blazingworld_1406_librivox/blazingworld_04_cavendish_64kb.mp3",
               "length_ms": 1994000,
+              "section_number": 4,
               "start_ms": 5736000,
               "title": "Part 1, section 4"
             },
             {
               "audio_url": "https://www.archive.org/download/blazingworld_1406_librivox/blazingworld_05_cavendish_64kb.mp3",
               "length_ms": 1751000,
+              "section_number": 5,
               "start_ms": 7730000,
               "title": "Part 1, section 5"
             },
             {
               "audio_url": "https://www.archive.org/download/blazingworld_1406_librivox/blazingworld_06_cavendish_64kb.mp3",
               "length_ms": 2021000,
+              "section_number": 6,
               "start_ms": 9481000,
               "title": "Part 1, section 6"
             },
             {
               "audio_url": "https://www.archive.org/download/blazingworld_1406_librivox/blazingworld_07_cavendish_64kb.mp3",
               "length_ms": 1439000,
+              "section_number": 7,
               "start_ms": 11502000,
               "title": "Part 2, section 1"
             },
             {
               "audio_url": "https://www.archive.org/download/blazingworld_1406_librivox/blazingworld_08_cavendish_64kb.mp3",
               "length_ms": 1434000,
+              "section_number": 8,
               "start_ms": 12941000,
               "title": "Part 2, section 2"
             },
             {
               "audio_url": "https://www.archive.org/download/blazingworld_1406_librivox/blazingworld_09_cavendish_64kb.mp3",
               "length_ms": 196000,
+              "section_number": 9,
               "start_ms": 14375000,
               "title": "Epilogue"
             }
@@ -5145,7 +5167,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/Blazing_World_1406.jpg",
           "id": "sarah-terry",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction",
+            "Published before 1800"
+          ],
           "librivox_id": 8675,
+          "librivox_title": "Blazing World",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-blazing-world-by-margaret-cavendish-duchess-of-newcastle/",
@@ -5240,7 +5267,11 @@
           "cover_url": "https://archive.org/download/lebleenherbe_2503_librivox/lebleenherbe_2503.jpg",
           "id": "bidou",
           "language": "fr",
+          "librivox_genres": [
+            "Romance"
+          ],
           "librivox_id": 21276,
+          "librivox_title": "blé en herbe",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/le-ble-en-herbe-by-colette/",
@@ -7101,7 +7132,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt/Bleak_House_1003.jpg",
           "id": "cynthia-lyons-1946-2011",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 53,
+          "librivox_title": "Bleak House",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/bleak-house-by-charles-dickens/",
@@ -8386,408 +8421,476 @@
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_00_dickens_64kb.mp3",
               "length_ms": 340000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_01_dickens_64kb.mp3",
               "length_ms": 1030000,
+              "section_number": 1,
               "start_ms": 340000,
               "title": "Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_02_dickens_64kb.mp3",
               "length_ms": 1102000,
+              "section_number": 2,
               "start_ms": 1370000,
               "title": "Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_03_dickens_64kb.mp3",
               "length_ms": 3123000,
+              "section_number": 3,
               "start_ms": 2472000,
               "title": "Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_04_dickens_64kb.mp3",
               "length_ms": 1842000,
+              "section_number": 4,
               "start_ms": 5595000,
               "title": "Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_05_dickens_64kb.mp3",
               "length_ms": 2287000,
+              "section_number": 5,
               "start_ms": 7437000,
               "title": "Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_06_dickens_64kb.mp3",
               "length_ms": 3519000,
+              "section_number": 6,
               "start_ms": 9724000,
               "title": "Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_07_dickens_64kb.mp3",
               "length_ms": 1658000,
+              "section_number": 7,
               "start_ms": 13243000,
               "title": "Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_08_dickens_64kb.mp3",
               "length_ms": 3110000,
+              "section_number": 8,
               "start_ms": 14901000,
               "title": "Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_09_dickens_64kb.mp3",
               "length_ms": 2432000,
+              "section_number": 9,
               "start_ms": 18011000,
               "title": "Chapter 9"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_10_dickens_64kb.mp3",
               "length_ms": 1688000,
+              "section_number": 10,
               "start_ms": 20443000,
               "title": "Chapter 10"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_11_dickens_64kb.mp3",
               "length_ms": 2303000,
+              "section_number": 11,
               "start_ms": 22131000,
               "title": "Chapter 11"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_12_dickens_64kb.mp3",
               "length_ms": 2234000,
+              "section_number": 12,
               "start_ms": 24434000,
               "title": "Chapter 12"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_13_dickens_64kb.mp3",
               "length_ms": 2510000,
+              "section_number": 13,
               "start_ms": 26668000,
               "title": "Chapter 13"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_14_dickens_64kb.mp3",
               "length_ms": 3391000,
+              "section_number": 14,
               "start_ms": 29178000,
               "title": "Chapter 14"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_15_dickens_64kb.mp3",
               "length_ms": 2641000,
+              "section_number": 15,
               "start_ms": 32569000,
               "title": "Chapter 15"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_16_dickens_64kb.mp3",
               "length_ms": 1353000,
+              "section_number": 16,
               "start_ms": 35210000,
               "title": "Chapter 16"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_17_dickens_64kb.mp3",
               "length_ms": 2293000,
+              "section_number": 17,
               "start_ms": 36563000,
               "title": "Chapter 17"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_18_dickens_64kb.mp3",
               "length_ms": 2898000,
+              "section_number": 18,
               "start_ms": 38856000,
               "title": "Chapter 18"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_19_dickens_64kb.mp3",
               "length_ms": 2286000,
+              "section_number": 19,
               "start_ms": 41754000,
               "title": "Chapter 19"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_20_dickens_64kb.mp3",
               "length_ms": 2190000,
+              "section_number": 20,
               "start_ms": 44040000,
               "title": "Chapter 20"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_21_dickens_64kb.mp3",
               "length_ms": 2771000,
+              "section_number": 21,
               "start_ms": 46230000,
               "title": "Chapter 21"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_22_dickens_64kb.mp3",
               "length_ms": 2117000,
+              "section_number": 22,
               "start_ms": 49001000,
               "title": "Chapter 22"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_23_dickens_64kb.mp3",
               "length_ms": 2894000,
+              "section_number": 23,
               "start_ms": 51118000,
               "title": "Chapter 23"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_24_dickens_64kb.mp3",
               "length_ms": 2867000,
+              "section_number": 24,
               "start_ms": 54012000,
               "title": "Chapter 24"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_25_dickens_64kb.mp3",
               "length_ms": 1455000,
+              "section_number": 25,
               "start_ms": 56879000,
               "title": "Chapter 25"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_26_dickens_64kb.mp3",
               "length_ms": 2097000,
+              "section_number": 26,
               "start_ms": 58334000,
               "title": "Chapter 26"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_27_dickens_64kb.mp3",
               "length_ms": 1882000,
+              "section_number": 27,
               "start_ms": 60431000,
               "title": "Chapter 27"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_28_dickens_64kb.mp3",
               "length_ms": 1795000,
+              "section_number": 28,
               "start_ms": 62313000,
               "title": "Chapter 28"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_29_dickens_64kb.mp3",
               "length_ms": 1493000,
+              "section_number": 29,
               "start_ms": 64108000,
               "title": "Chapter 29"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_30_dickens_64kb.mp3",
               "length_ms": 2439000,
+              "section_number": 30,
               "start_ms": 65601000,
               "title": "Chapter 30"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_31_dickens_64kb.mp3",
               "length_ms": 2540000,
+              "section_number": 31,
               "start_ms": 68040000,
               "title": "Chapter 31"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_32_dickens_64kb.mp3",
               "length_ms": 2015000,
+              "section_number": 32,
               "start_ms": 70580000,
               "title": "Chapter 32"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_33_dickens_64kb.mp3",
               "length_ms": 2249000,
+              "section_number": 33,
               "start_ms": 72595000,
               "title": "Chapter 33"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_34_dickens_64kb.mp3",
               "length_ms": 2458000,
+              "section_number": 34,
               "start_ms": 74844000,
               "title": "Chapter 34"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_35_dickens_64kb.mp3",
               "length_ms": 2567000,
+              "section_number": 35,
               "start_ms": 77302000,
               "title": "Chapter 35"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_36_dickens_64kb.mp3",
               "length_ms": 2549000,
+              "section_number": 36,
               "start_ms": 79869000,
               "title": "Chapter 36"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_37_dickens_64kb.mp3",
               "length_ms": 3043000,
+              "section_number": 37,
               "start_ms": 82418000,
               "title": "Chapter 37"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_38_dickens_64kb.mp3",
               "length_ms": 1672000,
+              "section_number": 38,
               "start_ms": 85461000,
               "title": "Chapter 38"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_39_dickens_64kb.mp3",
               "length_ms": 2518000,
+              "section_number": 39,
               "start_ms": 87133000,
               "title": "Chapter 39"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_40_dickens_64kb.mp3",
               "length_ms": 1940000,
+              "section_number": 40,
               "start_ms": 89651000,
               "title": "Chapter 40"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_41_dickens_64kb.mp3",
               "length_ms": 1368000,
+              "section_number": 41,
               "start_ms": 91591000,
               "title": "Chapter 41"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_42_dickens_64kb.mp3",
               "length_ms": 1197000,
+              "section_number": 42,
               "start_ms": 92959000,
               "title": "Chapter 42"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_43_dickens_64kb.mp3",
               "length_ms": 2668000,
+              "section_number": 43,
               "start_ms": 94156000,
               "title": "Chapter 43"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_44_dickens_64kb.mp3",
               "length_ms": 1210000,
+              "section_number": 44,
               "start_ms": 96824000,
               "title": "Chapter 44"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_45_dickens_64kb.mp3",
               "length_ms": 1957000,
+              "section_number": 45,
               "start_ms": 98034000,
               "title": "Chapter 45"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_46_dickens_64kb.mp3",
               "length_ms": 1466000,
+              "section_number": 46,
               "start_ms": 99991000,
               "title": "Chapter 46"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_47_dickens_64kb.mp3",
               "length_ms": 2531000,
+              "section_number": 47,
               "start_ms": 101457000,
               "title": "Chapter 47"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_48_dickens_64kb.mp3",
               "length_ms": 2497000,
+              "section_number": 48,
               "start_ms": 103988000,
               "title": "Chapter 48"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_49_dickens_64kb.mp3",
               "length_ms": 2155000,
+              "section_number": 49,
               "start_ms": 106485000,
               "title": "Chapter 49"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_50_dickens_64kb.mp3",
               "length_ms": 1549000,
+              "section_number": 50,
               "start_ms": 108640000,
               "title": "Chapter 50"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_51_dickens_64kb.mp3",
               "length_ms": 1880000,
+              "section_number": 51,
               "start_ms": 110189000,
               "title": "Chapter 51"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_52_dickens_64kb.mp3",
               "length_ms": 1740000,
+              "section_number": 52,
               "start_ms": 112069000,
               "title": "Chapter 52"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_53_dickens_64kb.mp3",
               "length_ms": 1827000,
+              "section_number": 53,
               "start_ms": 113809000,
               "title": "Chapter 53"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_54_dickens_64kb.mp3",
               "length_ms": 3533000,
+              "section_number": 54,
               "start_ms": 115636000,
               "title": "Chapter 54"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_55_dickens_64kb.mp3",
               "length_ms": 2501000,
+              "section_number": 55,
               "start_ms": 119169000,
               "title": "Chapter 55"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_56_dickens_64kb.mp3",
               "length_ms": 1218000,
+              "section_number": 56,
               "start_ms": 121670000,
               "title": "Chapter 56"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_57_dickens_64kb.mp3",
               "length_ms": 2804000,
+              "section_number": 57,
               "start_ms": 122888000,
               "title": "Chapter 57"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_58_dickens_64kb.mp3",
               "length_ms": 2693000,
+              "section_number": 58,
               "start_ms": 125692000,
               "title": "Chapter 58"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_59_dickens_64kb.mp3",
               "length_ms": 2154000,
+              "section_number": 59,
               "start_ms": 128385000,
               "title": "Chapter 59"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_60_dickens_64kb.mp3",
               "length_ms": 1993000,
+              "section_number": 60,
               "start_ms": 130539000,
               "title": "Chapter 60"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_61_dickens_64kb.mp3",
               "length_ms": 1794000,
+              "section_number": 61,
               "start_ms": 132532000,
               "title": "Chapter 61"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_62_dickens_64kb.mp3",
               "length_ms": 1551000,
+              "section_number": 62,
               "start_ms": 134326000,
               "title": "Chapter 62"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_63_dickens_64kb.mp3",
               "length_ms": 1310000,
+              "section_number": 63,
               "start_ms": 135877000,
               "title": "Chapter 63"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_64_dickens_64kb.mp3",
               "length_ms": 1867000,
+              "section_number": 64,
               "start_ms": 137187000,
               "title": "Chapter 64"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_65_dickens_64kb.mp3",
               "length_ms": 1426000,
+              "section_number": 65,
               "start_ms": 139054000,
               "title": "Chapter 65"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_66_dickens_64kb.mp3",
               "length_ms": 704000,
+              "section_number": 66,
               "start_ms": 140480000,
               "title": "Chapter 66"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1203_librivox/bleakhouse_67_dickens_64kb.mp3",
               "length_ms": 706000,
+              "section_number": 67,
               "start_ms": 141184000,
               "title": "Chapter 67"
             }
@@ -8796,7 +8899,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt24/Bleak_House_V3_1211.jpg",
           "id": "mil-nicholson",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 6082,
+          "librivox_title": "Bleak House (version 3)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/bleak-house-by-charles-dickens-2/",
@@ -9598,408 +9705,476 @@
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_00_dickens_64kb.mp3",
               "length_ms": 347000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_01_dickens_64kb.mp3",
               "length_ms": 1015000,
+              "section_number": 1,
               "start_ms": 347000,
               "title": "In Chancery"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_02_dickens_64kb.mp3",
               "length_ms": 1089000,
+              "section_number": 2,
               "start_ms": 1362000,
               "title": "In Fashion"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_03_dickens_64kb.mp3",
               "length_ms": 2673000,
+              "section_number": 3,
               "start_ms": 2451000,
               "title": "A Progress"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_04_dickens_64kb.mp3",
               "length_ms": 1680000,
+              "section_number": 4,
               "start_ms": 5124000,
               "title": "Telescopic Philanthropy"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_05_dickens_64kb.mp3",
               "length_ms": 1939000,
+              "section_number": 5,
               "start_ms": 6804000,
               "title": "A Morning Adventure"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_06_dickens_64kb.mp3",
               "length_ms": 2996000,
+              "section_number": 6,
               "start_ms": 8743000,
               "title": "Quite at Home"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_07_dickens_64kb.mp3",
               "length_ms": 1499000,
+              "section_number": 7,
               "start_ms": 11739000,
               "title": "The Ghost's Walk"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_08_dickens_64kb.mp3",
               "length_ms": 2808000,
+              "section_number": 8,
               "start_ms": 13238000,
               "title": "Covering a Multitude of Sins"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_09_dickens_64kb.mp3",
               "length_ms": 2065000,
+              "section_number": 9,
               "start_ms": 16046000,
               "title": "Signs and Tokens"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_10_dickens_64kb.mp3",
               "length_ms": 1582000,
+              "section_number": 10,
               "start_ms": 18111000,
               "title": "The Law-Writer"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_11_dickens_64kb.mp3",
               "length_ms": 2054000,
+              "section_number": 11,
               "start_ms": 19693000,
               "title": "Our Dear Brother"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_12_dickens_64kb.mp3",
               "length_ms": 2055000,
+              "section_number": 12,
               "start_ms": 21747000,
               "title": "On the Watch"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_13_dickens_64kb.mp3",
               "length_ms": 2069000,
+              "section_number": 13,
               "start_ms": 23802000,
               "title": "Esther's Narrative"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_14_dickens_64kb.mp3",
               "length_ms": 2871000,
+              "section_number": 14,
               "start_ms": 25871000,
               "title": "Deportment"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_15_dickens_64kb.mp3",
               "length_ms": 2027000,
+              "section_number": 15,
               "start_ms": 28742000,
               "title": "Bell Yard"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_16_dickens_64kb.mp3",
               "length_ms": 1270000,
+              "section_number": 16,
               "start_ms": 30769000,
               "title": "Tom-all-Alone's"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_17_dickens_64kb.mp3",
               "length_ms": 1922000,
+              "section_number": 17,
               "start_ms": 32039000,
               "title": "Esthers Narrative"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_18_dickens_64kb.mp3",
               "length_ms": 2346000,
+              "section_number": 18,
               "start_ms": 33961000,
               "title": "Lady Dedlock"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_19_dickens_64kb.mp3",
               "length_ms": 1936000,
+              "section_number": 19,
               "start_ms": 36307000,
               "title": "Moving On"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_20_dickens_64kb.mp3",
               "length_ms": 2011000,
+              "section_number": 20,
               "start_ms": 38243000,
               "title": "A New Lodger"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_21_dickens_64kb.mp3",
               "length_ms": 2419000,
+              "section_number": 21,
               "start_ms": 40254000,
               "title": "The Smallweed Family"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_22_dickens_64kb.mp3",
               "length_ms": 1806000,
+              "section_number": 22,
               "start_ms": 42673000,
               "title": "Mr Bucket"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_23_dickens_64kb.mp3",
               "length_ms": 2530000,
+              "section_number": 23,
               "start_ms": 44479000,
               "title": "Esther's Narrative"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_24_dickens_64kb.mp3",
               "length_ms": 2434000,
+              "section_number": 24,
               "start_ms": 47009000,
               "title": "An Appeal Case"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_25_dickens_64kb.mp3",
               "length_ms": 1306000,
+              "section_number": 25,
               "start_ms": 49443000,
               "title": "Mrs Snagsby Sees It All"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_26_dickens_64kb.mp3",
               "length_ms": 1780000,
+              "section_number": 26,
               "start_ms": 50749000,
               "title": "Sharpshooters"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_27_dickens_64kb.mp3",
               "length_ms": 1766000,
+              "section_number": 27,
               "start_ms": 52529000,
               "title": "More Old Soldiers Than One"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_28_dickens_64kb.mp3",
               "length_ms": 1656000,
+              "section_number": 28,
               "start_ms": 54295000,
               "title": "The Ironmaster"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_29_dickens_64kb.mp3",
               "length_ms": 1356000,
+              "section_number": 29,
               "start_ms": 55951000,
               "title": "The Young Man"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_30_dickens_64kb.mp3",
               "length_ms": 2236000,
+              "section_number": 30,
               "start_ms": 57307000,
               "title": "Esther's Narrative"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_31_dickens_64kb.mp3",
               "length_ms": 2128000,
+              "section_number": 31,
               "start_ms": 59543000,
               "title": "Nurse and Patient"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_32_dickens_64kb.mp3",
               "length_ms": 1872000,
+              "section_number": 32,
               "start_ms": 61671000,
               "title": "The Appointed Time"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_33_dickens_64kb.mp3",
               "length_ms": 2095000,
+              "section_number": 33,
               "start_ms": 63543000,
               "title": "Interlopers"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_34_dickens_64kb.mp3",
               "length_ms": 2148000,
+              "section_number": 34,
               "start_ms": 65638000,
               "title": "A Turn of the Screw"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_35_dickens_64kb.mp3",
               "length_ms": 2112000,
+              "section_number": 35,
               "start_ms": 67786000,
               "title": "Esther's Narrative"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_36_dickens_64kb.mp3",
               "length_ms": 2268000,
+              "section_number": 36,
               "start_ms": 69898000,
               "title": "Chesney Wold"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_37_dickens_64kb.mp3",
               "length_ms": 2594000,
+              "section_number": 37,
               "start_ms": 72166000,
               "title": "Jarndyce and Jarndyce"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_38_dickens_64kb.mp3",
               "length_ms": 1436000,
+              "section_number": 38,
               "start_ms": 74760000,
               "title": "A Struggle"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_39_dickens_64kb.mp3",
               "length_ms": 2398000,
+              "section_number": 39,
               "start_ms": 76196000,
               "title": "Attorney and Client"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_40_dickens_64kb.mp3",
               "length_ms": 1739000,
+              "section_number": 40,
               "start_ms": 78594000,
               "title": "National and Domestic"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_41_dickens_64kb.mp3",
               "length_ms": 1247000,
+              "section_number": 41,
               "start_ms": 80333000,
               "title": "In Mr. Tulkinghorn's Room"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_42_dickens_64kb.mp3",
               "length_ms": 1046000,
+              "section_number": 42,
               "start_ms": 81580000,
               "title": "In Mr. Tulkinghorn's Chambers"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_43_dickens_64kb.mp3",
               "length_ms": 2176000,
+              "section_number": 43,
               "start_ms": 82626000,
               "title": "Esther's Narrative"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_44_dickens_64kb.mp3",
               "length_ms": 941000,
+              "section_number": 44,
               "start_ms": 84802000,
               "title": "The Letter and the Answer"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_45_dickens_64kb.mp3",
               "length_ms": 1803000,
+              "section_number": 45,
               "start_ms": 85743000,
               "title": "In Trust"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_46_dickens_64kb.mp3",
               "length_ms": 1171000,
+              "section_number": 46,
               "start_ms": 87546000,
               "title": "Stop Him!"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_47_dickens_64kb.mp3",
               "length_ms": 1943000,
+              "section_number": 47,
               "start_ms": 88717000,
               "title": "Jo's Will"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_48_dickens_64kb.mp3",
               "length_ms": 2280000,
+              "section_number": 48,
               "start_ms": 90660000,
               "title": "Closing In"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_49_dickens_64kb.mp3",
               "length_ms": 1915000,
+              "section_number": 49,
               "start_ms": 92940000,
               "title": "Dutiful Friendship"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_50_dickens_64kb.mp3",
               "length_ms": 1364000,
+              "section_number": 50,
               "start_ms": 94855000,
               "title": "Esther's Narrative"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_51_dickens_64kb.mp3",
               "length_ms": 1557000,
+              "section_number": 51,
               "start_ms": 96219000,
               "title": "Enlightened"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_52_dickens_64kb.mp3",
               "length_ms": 1456000,
+              "section_number": 52,
               "start_ms": 97776000,
               "title": "Obstinacy"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_53_dickens_64kb.mp3",
               "length_ms": 1623000,
+              "section_number": 53,
               "start_ms": 99232000,
               "title": "The Track"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_54_dickens_64kb.mp3",
               "length_ms": 2908000,
+              "section_number": 54,
               "start_ms": 100855000,
               "title": "Springing a Mine"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_55_dickens_64kb.mp3",
               "length_ms": 2201000,
+              "section_number": 55,
               "start_ms": 103763000,
               "title": "Flight"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_56_dickens_64kb.mp3",
               "length_ms": 1175000,
+              "section_number": 56,
               "start_ms": 105964000,
               "title": "Pursuit"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_57_dickens_64kb.mp3",
               "length_ms": 2431000,
+              "section_number": 57,
               "start_ms": 107139000,
               "title": "Esther's Narrative"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_58_dickens_64kb.mp3",
               "length_ms": 2026000,
+              "section_number": 58,
               "start_ms": 109570000,
               "title": "A Wintry Day and Night"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_59_dickens_64kb.mp3",
               "length_ms": 1796000,
+              "section_number": 59,
               "start_ms": 111596000,
               "title": "Esther's Narrative"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_60_dickens_64kb.mp3",
               "length_ms": 1761000,
+              "section_number": 60,
               "start_ms": 113392000,
               "title": "Perspective"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_61_dickens_64kb.mp3",
               "length_ms": 1475000,
+              "section_number": 61,
               "start_ms": 115153000,
               "title": "A Discovery"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_62_dickens_64kb.mp3",
               "length_ms": 1217000,
+              "section_number": 62,
               "start_ms": 116628000,
               "title": "Another Discovery"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_63_dickens_64kb.mp3",
               "length_ms": 1067000,
+              "section_number": 63,
               "start_ms": 117845000,
               "title": "Steel and Iron"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_64_dickens_64kb.mp3",
               "length_ms": 1529000,
+              "section_number": 64,
               "start_ms": 118912000,
               "title": "Esther's Narrative"
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_65_dickens_64kb.mp3",
               "length_ms": 968000,
+              "section_number": 65,
               "start_ms": 120441000,
               "title": "Beginning the World LXVI."
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_66_dickens_64kb.mp3",
               "length_ms": 673000,
+              "section_number": 66,
               "start_ms": 121409000,
               "title": "Down in Lincolnshire LXVII."
             },
             {
               "audio_url": "https://www.archive.org/download/bleak_house_1705_librivox/bleakhouse_67_dickens_64kb.mp3",
               "length_ms": 593000,
+              "section_number": 67,
               "start_ms": 122082000,
               "title": "The Close of Esther's Narrative"
             }
@@ -10008,7 +10183,11 @@
           "cover_url": "https://archive.org/download/bleak_house_1705_librivox/bleak_house4_1706.jpg",
           "id": "peter-john-keeble",
           "language": "en",
+          "librivox_genres": [
+            "Literary Fiction"
+          ],
           "librivox_id": 10764,
+          "librivox_title": "Bleak House (version 4)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/bleak-house-by-charles-dickens-version-3/",

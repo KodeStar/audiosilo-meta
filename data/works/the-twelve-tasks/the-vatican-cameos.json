@@ -11786,6 +11786,10 @@
             {
               "audio_url": "https://www.archive.org/download/velveteenduet_librivox/velveteenrabbit_duet_williams_64kb.mp3",
               "length_ms": 1364000,
+              "readers": [
+                "barbara-bear",
+                "mama-bear"
+              ],
               "start_ms": 0,
               "title": "The Velveteen Rabbit Duet"
             }
@@ -11794,7 +11798,11 @@
           "cover_url": "https://archive.org/download/velveteenduet_librivox/Velveteen_Rabbit_Duet_1106.jpg",
           "id": "barbara-bear",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction"
+          ],
           "librivox_id": 433,
+          "librivox_title": "Velveteen Rabbit (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-velveteen-rabbit-duet-by-margery-williams/",
@@ -12576,7 +12584,11 @@
           "cover_url": "https://archive.org/download/velveteen_rabbit_librivox/Velveteen_Rabbit_1104.jpg",
           "id": "marlo-dianne",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction"
+          ],
           "librivox_id": 432,
+          "librivox_title": "Velveteen Rabbit",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-velveteen-rabbit-by-margery-williams/",

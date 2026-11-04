@@ -1242,7 +1242,12 @@
           "cover_url": "https://archive.org/download/librivoxcdcoverart36/alicedugdale_2006.jpg",
           "id": "anthony-ogus-1945-2026",
           "language": "en",
+          "librivox_genres": [
+            "Family Life",
+            "Published 1800 -1900"
+          ],
           "librivox_id": 15007,
+          "librivox_title": "Alice Dugdale",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/alice-dugdale-by-anthony-trollope/",
@@ -6141,7 +6146,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt18/blunderland_1205.jpg",
           "id": "lars-rolander-1942-2016",
           "language": "en",
+          "librivox_genres": [
+            "Humorous Fiction",
+            "Satire",
+            "Fantasy Fiction"
+          ],
           "librivox_id": 3479,
+          "librivox_title": "Alice in Blunderland: an Iridescent Dream (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/alice-in-blunderland-an-iridescent-dream-version-2-by-john-kendrick-bangs/",
@@ -6214,7 +6225,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt15/Alice_Blunderland_1202.jpg",
           "id": "ruth-golding",
           "language": "en",
+          "librivox_genres": [
+            "Humorous Fiction",
+            "Satire"
+          ],
           "librivox_id": 2827,
+          "librivox_title": "Alice in Blunderland: an Iridescent Dream",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/alice-in-blunderland-an-iridescent-dream-by-john-kendrick-bangs/",
@@ -8025,24 +8041,50 @@
             {
               "audio_url": "https://www.archive.org/download/aliceinwonderland_drama_1310_librivox/aliceinwonderland_00_gerstenberg_64kb.mp3",
               "length_ms": 125000,
+              "readers": [
+                "ted-delorme",
+                "elizabeth-klett",
+                "elleykat",
+                "amanda-friday",
+                "toddhw",
+                "eden-rea-hedrick",
+                "charlotte-duckett",
+                "nomorejeffs",
+                "etel-buss",
+                "woolly-bee",
+                "kimberly-krause",
+                "haili",
+                "elliot-gage",
+                "dave-harrell",
+                "gloriousjob",
+                "shauna-kennett",
+                "larry-wilson",
+                "brett-g-hirsch",
+                "anastasiia-solokha",
+                "charlotte-brown"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Credits"
             },
             {
               "audio_url": "https://www.archive.org/download/aliceinwonderland_drama_1310_librivox/aliceinwonderland_01_gerstenberg_64kb.mp3",
               "length_ms": 2289000,
+              "section_number": 1,
               "start_ms": 125000,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/aliceinwonderland_drama_1310_librivox/aliceinwonderland_02_gerstenberg_64kb.mp3",
               "length_ms": 2006000,
+              "section_number": 2,
               "start_ms": 2414000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/aliceinwonderland_drama_1310_librivox/aliceinwonderland_03_gerstenberg_64kb.mp3",
               "length_ms": 1638000,
+              "section_number": 3,
               "start_ms": 4420000,
               "title": "Act 3"
             }
@@ -8051,7 +8093,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/Alice_in_Wonderland_1310.jpg",
           "id": "ted-delorme",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure",
+            "Myths, Legends & Fairy Tales",
+            "Comedy"
+          ],
           "librivox_id": 7904,
+          "librivox_title": "Alice in Wonderland (Drama)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/alice-in-wonderland-by-alice-gerstenberg/",
@@ -8274,72 +8322,108 @@
             {
               "audio_url": "https://www.archive.org/download/aliceinwonderlandinwordsofonesyllable_1604_librivox/aliceinwonderlandinwordsofonesyllable_01_gorham_64kb.mp3",
               "length_ms": 505000,
+              "readers": [
+                "mike-t"
+              ],
               "start_ms": 0,
               "title": "Down The Rabbit Hole"
             },
             {
               "audio_url": "https://www.archive.org/download/aliceinwonderlandinwordsofonesyllable_1604_librivox/aliceinwonderlandinwordsofonesyllable_02_gorham_64kb.mp3",
               "length_ms": 594000,
+              "readers": [
+                "shelby-rae-lyon"
+              ],
               "start_ms": 505000,
               "title": "The Pool of Tears"
             },
             {
               "audio_url": "https://www.archive.org/download/aliceinwonderlandinwordsofonesyllable_1604_librivox/aliceinwonderlandinwordsofonesyllable_03_gorham_64kb.mp3",
               "length_ms": 387000,
+              "readers": [
+                "chris-moland"
+              ],
               "start_ms": 1099000,
               "title": "A Race"
             },
             {
               "audio_url": "https://www.archive.org/download/aliceinwonderlandinwordsofonesyllable_1604_librivox/aliceinwonderlandinwordsofonesyllable_04_gorham_64kb.mp3",
               "length_ms": 809000,
+              "readers": [
+                "mike-t"
+              ],
               "start_ms": 1486000,
               "title": "The Rabbit Sends in a Bill"
             },
             {
               "audio_url": "https://www.archive.org/download/aliceinwonderlandinwordsofonesyllable_1604_librivox/aliceinwonderlandinwordsofonesyllable_05_gorham_64kb.mp3",
               "length_ms": 671000,
+              "readers": [
+                "carol-cotter"
+              ],
               "start_ms": 2295000,
               "title": "A Caterpillar Tells Alice what to Do"
             },
             {
               "audio_url": "https://www.archive.org/download/aliceinwonderlandinwordsofonesyllable_1604_librivox/aliceinwonderlandinwordsofonesyllable_06_gorham_64kb.mp3",
               "length_ms": 722000,
+              "readers": [
+                "judyderby"
+              ],
               "start_ms": 2966000,
               "title": "Pig and Pepper"
             },
             {
               "audio_url": "https://www.archive.org/download/aliceinwonderlandinwordsofonesyllable_1604_librivox/aliceinwonderlandinwordsofonesyllable_07_gorham_64kb.mp3",
               "length_ms": 567000,
+              "readers": [
+                "anna-vince"
+              ],
               "start_ms": 3688000,
               "title": "A Mad Tea Party"
             },
             {
               "audio_url": "https://www.archive.org/download/aliceinwonderlandinwordsofonesyllable_1604_librivox/aliceinwonderlandinwordsofonesyllable_08_gorham_64kb.mp3",
               "length_ms": 784000,
+              "readers": [
+                "roohi"
+              ],
               "start_ms": 4255000,
               "title": "The Queen's Croquet Ground"
             },
             {
               "audio_url": "https://www.archive.org/download/aliceinwonderlandinwordsofonesyllable_1604_librivox/aliceinwonderlandinwordsofonesyllable_09_gorham_64kb.mp3",
               "length_ms": 537000,
+              "readers": [
+                "bruce-durflinger"
+              ],
               "start_ms": 5039000,
               "title": "The Mock Turtle"
             },
             {
               "audio_url": "https://www.archive.org/download/aliceinwonderlandinwordsofonesyllable_1604_librivox/aliceinwonderlandinwordsofonesyllable_10_gorham_64kb.mp3",
               "length_ms": 379000,
+              "readers": [
+                "roohi"
+              ],
               "start_ms": 5576000,
               "title": "The Lobster Dance"
             },
             {
               "audio_url": "https://www.archive.org/download/aliceinwonderlandinwordsofonesyllable_1604_librivox/aliceinwonderlandinwordsofonesyllable_11_gorham_64kb.mp3",
               "length_ms": 616000,
+              "readers": [
+                "chris-moland"
+              ],
               "start_ms": 5955000,
               "title": "Who Stole the Tarts?"
             },
             {
               "audio_url": "https://www.archive.org/download/aliceinwonderlandinwordsofonesyllable_1604_librivox/aliceinwonderlandinwordsofonesyllable_12_gorham_64kb.mp3",
               "length_ms": 467000,
+              "readers": [
+                "roohi"
+              ],
               "start_ms": 6571000,
               "title": "Alice on the Stand"
             }
@@ -8347,7 +8431,11 @@
           "cover_url": "https://archive.org/download/aliceinwonderlandinwordsofonesyllable_1604_librivox/al_ice_1604.jpg",
           "id": "mike-t",
           "language": "en",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 10509,
+          "librivox_title": "Alice in Wonderland, Retold in Words of One Syllable",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/alice-in-wonderland-retold-in-words-of-one-syllable-by-jc-gorham/",
@@ -16057,138 +16145,161 @@
             {
               "audio_url": "https://www.archive.org/download/alice_of_old_vincennes_2009_librivox/aliceofoldvincennes_00_thompson_64kb.mp3",
               "length_ms": 223000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_of_old_vincennes_2009_librivox/aliceofoldvincennes_01_thompson_64kb.mp3",
               "length_ms": 1481000,
+              "section_number": 1,
               "start_ms": 223000,
               "title": "Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_of_old_vincennes_2009_librivox/aliceofoldvincennes_02_thompson_64kb.mp3",
               "length_ms": 1565000,
+              "section_number": 2,
               "start_ms": 1704000,
               "title": "Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_of_old_vincennes_2009_librivox/aliceofoldvincennes_03_thompson_64kb.mp3",
               "length_ms": 1353000,
+              "section_number": 3,
               "start_ms": 3269000,
               "title": "Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_of_old_vincennes_2009_librivox/aliceofoldvincennes_04_thompson_64kb.mp3",
               "length_ms": 1772000,
+              "section_number": 4,
               "start_ms": 4622000,
               "title": "Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_of_old_vincennes_2009_librivox/aliceofoldvincennes_05_thompson_64kb.mp3",
               "length_ms": 1607000,
+              "section_number": 5,
               "start_ms": 6394000,
               "title": "Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_of_old_vincennes_2009_librivox/aliceofoldvincennes_06_thompson_64kb.mp3",
               "length_ms": 1663000,
+              "section_number": 6,
               "start_ms": 8001000,
               "title": "Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_of_old_vincennes_2009_librivox/aliceofoldvincennes_07_thompson_64kb.mp3",
               "length_ms": 1596000,
+              "section_number": 7,
               "start_ms": 9664000,
               "title": "Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_of_old_vincennes_2009_librivox/aliceofoldvincennes_08_thompson_64kb.mp3",
               "length_ms": 1908000,
+              "section_number": 8,
               "start_ms": 11260000,
               "title": "Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_of_old_vincennes_2009_librivox/aliceofoldvincennes_09_thompson_64kb.mp3",
               "length_ms": 1759000,
+              "section_number": 9,
               "start_ms": 13168000,
               "title": "Chapter 9"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_of_old_vincennes_2009_librivox/aliceofoldvincennes_10_thompson_64kb.mp3",
               "length_ms": 1811000,
+              "section_number": 10,
               "start_ms": 14927000,
               "title": "Chapter 10"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_of_old_vincennes_2009_librivox/aliceofoldvincennes_11_thompson_64kb.mp3",
               "length_ms": 1823000,
+              "section_number": 11,
               "start_ms": 16738000,
               "title": "Chapter 11"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_of_old_vincennes_2009_librivox/aliceofoldvincennes_12_thompson_64kb.mp3",
               "length_ms": 1814000,
+              "section_number": 12,
               "start_ms": 18561000,
               "title": "Chapter 12"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_of_old_vincennes_2009_librivox/aliceofoldvincennes_13_thompson_64kb.mp3",
               "length_ms": 1994000,
+              "section_number": 13,
               "start_ms": 20375000,
               "title": "Chapter 13"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_of_old_vincennes_2009_librivox/aliceofoldvincennes_14_thompson_64kb.mp3",
               "length_ms": 1610000,
+              "section_number": 14,
               "start_ms": 22369000,
               "title": "Chapter 14"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_of_old_vincennes_2009_librivox/aliceofoldvincennes_15_thompson_64kb.mp3",
               "length_ms": 1501000,
+              "section_number": 15,
               "start_ms": 23979000,
               "title": "Chapter 15"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_of_old_vincennes_2009_librivox/aliceofoldvincennes_16_thompson_64kb.mp3",
               "length_ms": 1969000,
+              "section_number": 16,
               "start_ms": 25480000,
               "title": "Chapter 16"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_of_old_vincennes_2009_librivox/aliceofoldvincennes_17_thompson_64kb.mp3",
               "length_ms": 1625000,
+              "section_number": 17,
               "start_ms": 27449000,
               "title": "Chapter 17"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_of_old_vincennes_2009_librivox/aliceofoldvincennes_18_thompson_64kb.mp3",
               "length_ms": 1718000,
+              "section_number": 18,
               "start_ms": 29074000,
               "title": "Chapter 18"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_of_old_vincennes_2009_librivox/aliceofoldvincennes_19_thompson_64kb.mp3",
               "length_ms": 1780000,
+              "section_number": 19,
               "start_ms": 30792000,
               "title": "Chapter 19"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_of_old_vincennes_2009_librivox/aliceofoldvincennes_20_thompson_64kb.mp3",
               "length_ms": 1886000,
+              "section_number": 20,
               "start_ms": 32572000,
               "title": "Chapter 20"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_of_old_vincennes_2009_librivox/aliceofoldvincennes_21_thompson_64kb.mp3",
               "length_ms": 2008000,
+              "section_number": 21,
               "start_ms": 34458000,
               "title": "Chapter 21"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_of_old_vincennes_2009_librivox/aliceofoldvincennes_22_thompson_64kb.mp3",
               "length_ms": 1645000,
+              "section_number": 22,
               "start_ms": 36466000,
               "title": "Chapters 22-23"
             }
@@ -16197,7 +16308,11 @@
           "cover_url": "https://archive.org/download/alice_of_old_vincennes_2009_librivox/alice_old_vincennes_2009.jpg",
           "id": "celine-major",
           "language": "en",
+          "librivox_genres": [
+            "Historical Fiction"
+          ],
           "librivox_id": 15543,
+          "librivox_title": "Alice of Old Vincennes",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/alice-of-old-vincennes-by-maurice-thompson/",
@@ -16245,78 +16360,117 @@
             {
               "audio_url": "https://www.archive.org/download/alice_wages_of_sin_1709_librivox/aliceorthewagesofsin_01_pangborn_64kb.mp3",
               "length_ms": 392000,
+              "readers": [
+                "ashley-m"
+              ],
               "start_ms": 0,
               "title": "Given up by the Waters"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_wages_of_sin_1709_librivox/aliceorthewagesofsin_02_pangborn_64kb.mp3",
               "length_ms": 418000,
+              "readers": [
+                "mary-schneider"
+              ],
               "start_ms": 392000,
               "title": "Too Late!"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_wages_of_sin_1709_librivox/aliceorthewagesofsin_03_pangborn_64kb.mp3",
               "length_ms": 614000,
+              "readers": [
+                "mary-schneider"
+              ],
               "start_ms": 810000,
               "title": "The Partners"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_wages_of_sin_1709_librivox/aliceorthewagesofsin_04_pangborn_64kb.mp3",
               "length_ms": 750000,
+              "readers": [
+                "simona-rusu"
+              ],
               "start_ms": 1424000,
               "title": "An Unheeded Omen"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_wages_of_sin_1709_librivox/aliceorthewagesofsin_05_pangborn_64kb.mp3",
               "length_ms": 1029000,
+              "readers": [
+                "shasta"
+              ],
               "start_ms": 2174000,
               "title": "From the Grave"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_wages_of_sin_1709_librivox/aliceorthewagesofsin_06_pangborn_64kb.mp3",
               "length_ms": 1098000,
+              "readers": [
+                "shasta"
+              ],
               "start_ms": 3203000,
               "title": "Mr. Dojere in a Dungeon"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_wages_of_sin_1709_librivox/aliceorthewagesofsin_07_pangborn_64kb.mp3",
               "length_ms": 541000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 4301000,
               "title": "Stolen From the Dead"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_wages_of_sin_1709_librivox/aliceorthewagesofsin_08_pangborn_64kb.mp3",
               "length_ms": 932000,
+              "readers": [
+                "shasta"
+              ],
               "start_ms": 4842000,
               "title": "A Dishonored Father"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_wages_of_sin_1709_librivox/aliceorthewagesofsin_09_pangborn_64kb.mp3",
               "length_ms": 889000,
+              "readers": [
+                "shasta"
+              ],
               "start_ms": 5774000,
               "title": "Saved by a Woman's Tears"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_wages_of_sin_1709_librivox/aliceorthewagesofsin_10_pangborn_64kb.mp3",
               "length_ms": 676000,
+              "readers": [
+                "simona-rusu"
+              ],
               "start_ms": 6663000,
               "title": "Gathering of the Storm-Cloud"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_wages_of_sin_1709_librivox/aliceorthewagesofsin_11_pangborn_64kb.mp3",
               "length_ms": 416000,
+              "readers": [
+                "simona-rusu"
+              ],
               "start_ms": 7339000,
               "title": "The Calm Before the Storm"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_wages_of_sin_1709_librivox/aliceorthewagesofsin_12_pangborn_64kb.mp3",
               "length_ms": 1098000,
+              "readers": [
+                "simona-rusu"
+              ],
               "start_ms": 7755000,
               "title": "The Storm-Cloud Bursts"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_wages_of_sin_1709_librivox/aliceorthewagesofsin_13_pangborn_64kb.mp3",
               "length_ms": 1142000,
+              "readers": [
+                "shasta"
+              ],
               "start_ms": 8853000,
               "title": "The Wages of Sin"
             }
@@ -16325,7 +16479,11 @@
           "cover_url": "https://archive.org/download/alice_wages_of_sin_1709_librivox/alice_1709.jpg",
           "id": "ashley-m",
           "language": "en",
+          "librivox_genres": [
+            "Published 1800 -1900"
+          ],
           "librivox_id": 11790,
+          "librivox_title": "Alice; or The Wages of Sin",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/alice-or-the-wages-of-sin-by-frederic-werden-pangborn/",
@@ -17471,138 +17629,207 @@
             {
               "audio_url": "https://www.archive.org/download/alice_poem_librivox/aliceliddell_carroll_cjrg_64kb.mp3",
               "length_ms": 63000,
+              "readers": [
+                "clarica"
+              ],
               "start_ms": 0,
               "title": "Alice Pleasance Liddell - Read by cjrg"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_poem_librivox/aliceliddell_carroll_cmh_64kb.mp3",
               "length_ms": 88000,
+              "readers": [
+                "christina-maria-haller"
+              ],
               "start_ms": 63000,
               "title": "Alice Pleasance Liddell - Read by cmh"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_poem_librivox/aliceliddell_carroll_cpp_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "c-pannier"
+              ],
               "start_ms": 151000,
               "title": "Alice Pleasance Liddell - Read by cpp"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_poem_librivox/aliceliddell_carroll_ezwa_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "ezwa"
+              ],
               "start_ms": 232000,
               "title": "Alice Pleasance Liddell - Read by ezwa"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_poem_librivox/aliceliddell_carroll_fvc_64kb.mp3",
               "length_ms": 62000,
+              "readers": [
+                "fredrik-vladimir-coulter"
+              ],
               "start_ms": 297000,
               "title": "Alice Pleasance Liddell - Read by fvc"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_poem_librivox/aliceliddell_carroll_jb_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "jemmablythe"
+              ],
               "start_ms": 359000,
               "title": "Alice Pleasance Liddell - Read by jb"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_poem_librivox/aliceliddell_carroll_jcg_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "jc-guan"
+              ],
               "start_ms": 428000,
               "title": "Alice Pleasance Liddell - Read by jcg"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_poem_librivox/aliceliddell_carroll_jsj_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "jon-scott-jones"
+              ],
               "start_ms": 500000,
               "title": "Alice Pleasance Liddell - Read by jsj"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_poem_librivox/aliceliddell_carroll_klh_64kb.mp3",
               "length_ms": 85000,
+              "readers": [
+                "kristin-hughes-1974-2021"
+              ],
               "start_ms": 568000,
               "title": "Alice Pleasance Liddell - Read by klh"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_poem_librivox/aliceliddell_carroll_krs_64kb.mp3",
               "length_ms": 62000,
+              "readers": [
+                "karen-savage"
+              ],
               "start_ms": 653000,
               "title": "Alice Pleasance Liddell - Read by krs"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_poem_librivox/aliceliddell_carroll_lah_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 715000,
               "title": "Alice Pleasance Liddell - Read by lah"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_poem_librivox/aliceliddell_carroll_lb_64kb.mp3",
               "length_ms": 79000,
+              "readers": [
+                "lucy-burgoyne-1950-2014"
+              ],
               "start_ms": 784000,
               "title": "Alice Pleasance Liddell - Read by lb"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_poem_librivox/aliceliddell_carroll_lkm_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "leon-mire"
+              ],
               "start_ms": 863000,
               "title": "Alice Pleasance Liddell - Read by lkm"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_poem_librivox/aliceliddell_carroll_ml_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "mike-love"
+              ],
               "start_ms": 945000,
               "title": "Alice Pleasance Liddell - Read by ml"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_poem_librivox/aliceliddell_carroll_mm_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "mary-mac"
+              ],
               "start_ms": 1015000,
               "title": "Alice Pleasance Liddell - Read by mm"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_poem_librivox/aliceliddell_carroll_pcc_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "brother-patrick"
+              ],
               "start_ms": 1096000,
               "title": "Alice Pleasance Liddell - Read by pcc"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_poem_librivox/aliceliddell_carroll_ps_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "paul-sze"
+              ],
               "start_ms": 1178000,
               "title": "Alice Pleasance Liddell - Read by ps"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_poem_librivox/aliceliddell_carroll_pw_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "philippa-willitts"
+              ],
               "start_ms": 1269000,
               "title": "Alice Pleasance Liddell - Read by pw"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_poem_librivox/aliceliddell_carroll_py_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 1339000,
               "title": "Alice Pleasance Liddell - Read by py"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_poem_librivox/aliceliddell_carroll_rf_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "riccardo-fasol"
+              ],
               "start_ms": 1412000,
               "title": "Alice Pleasance Liddell - Read by rf"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_poem_librivox/aliceliddell_carroll_rs_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "robert-scott"
+              ],
               "start_ms": 1494000,
               "title": "Alice Pleasance Liddell - Read by rs"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_poem_librivox/aliceliddell_carroll_sdm_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "sean-mckinley"
+              ],
               "start_ms": 1575000,
               "title": "Alice Pleasance Liddell - Read by sdm"
             },
             {
               "audio_url": "https://www.archive.org/download/alice_poem_librivox/aliceliddell_carroll_sv_64kb.mp3",
               "length_ms": 95000,
+              "readers": [
+                "squid-varilekova"
+              ],
               "start_ms": 1650000,
               "title": "Alice Pleasance Liddell - Read by sv"
             }
@@ -17611,7 +17838,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt12/Alice_Pleasance_Liddell_1109.jpg",
           "id": "clarica",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 1208,
+          "librivox_title": "Alice Pleasance Liddell",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/of-alice-in-wonderland-by-lewis-carroll/",

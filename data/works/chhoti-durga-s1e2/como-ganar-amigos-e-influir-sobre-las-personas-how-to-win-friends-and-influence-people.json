@@ -7947,78 +7947,91 @@
             {
               "audio_url": "https://www.archive.org/download/companionable_1708_librivox/companionablebooks_00_vandyke_64kb.mp3",
               "length_ms": 126000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/companionable_1708_librivox/companionablebooks_01_vandyke_64kb.mp3",
               "length_ms": 1967000,
+              "section_number": 1,
               "start_ms": 126000,
               "title": "The Book of Books"
             },
             {
               "audio_url": "https://www.archive.org/download/companionable_1708_librivox/companionablebooks_02_vandyke_64kb.mp3",
               "length_ms": 1724000,
+              "section_number": 2,
               "start_ms": 2093000,
               "title": "Poetry in the Psalms"
             },
             {
               "audio_url": "https://www.archive.org/download/companionable_1708_librivox/companionablebooks_03_vandyke_64kb.mp3",
               "length_ms": 2626000,
+              "section_number": 3,
               "start_ms": 3817000,
               "title": "The Good Enchantment of Dickens"
             },
             {
               "audio_url": "https://www.archive.org/download/companionable_1708_librivox/companionablebooks_04_vandyke_64kb.mp3",
               "length_ms": 1666000,
+              "section_number": 4,
               "start_ms": 6443000,
               "title": "Thackeray and Real Men"
             },
             {
               "audio_url": "https://www.archive.org/download/companionable_1708_librivox/companionablebooks_05_vandyke_64kb.mp3",
               "length_ms": 2123000,
+              "section_number": 5,
               "start_ms": 8109000,
               "title": "George Eliot and Real Women"
             },
             {
               "audio_url": "https://www.archive.org/download/companionable_1708_librivox/companionablebooks_06_vandyke_64kb.mp3",
               "length_ms": 1485000,
+              "section_number": 6,
               "start_ms": 10232000,
               "title": "The Poet of Immortal Youth (Keats)"
             },
             {
               "audio_url": "https://www.archive.org/download/companionable_1708_librivox/companionablebooks_07_vandyke_64kb.mp3",
               "length_ms": 2744000,
+              "section_number": 7,
               "start_ms": 11717000,
               "title": "The Recovery of Joy (Wordsworth)"
             },
             {
               "audio_url": "https://www.archive.org/download/companionable_1708_librivox/companionablebooks_08_vandyke_64kb.mp3",
               "length_ms": 3673000,
+              "section_number": 8,
               "start_ms": 14461000,
               "title": "''The Glory of the Imperfect'' (Browning)"
             },
             {
               "audio_url": "https://www.archive.org/download/companionable_1708_librivox/companionablebooks_09_vandyke_64kb.mp3",
               "length_ms": 990000,
+              "section_number": 9,
               "start_ms": 18134000,
               "title": "A Quaint Comrade by Quiet Streams (Walton)"
             },
             {
               "audio_url": "https://www.archive.org/download/companionable_1708_librivox/companionablebooks_10_vandyke_64kb.mp3",
               "length_ms": 1484000,
+              "section_number": 10,
               "start_ms": 19124000,
               "title": "A Sturdy Believer (Samuel Johnson)"
             },
             {
               "audio_url": "https://www.archive.org/download/companionable_1708_librivox/companionablebooks_11_vandyke_64kb.mp3",
               "length_ms": 1407000,
+              "section_number": 11,
               "start_ms": 20608000,
               "title": "A Puritan Plus Poetry (Emerson)"
             },
             {
               "audio_url": "https://www.archive.org/download/companionable_1708_librivox/companionablebooks_12_vandyke_64kb.mp3",
               "length_ms": 2260000,
+              "section_number": 12,
               "start_ms": 22015000,
               "title": "An Adventurer in a Velvet Jacket (Stevenson)"
             }
@@ -8027,7 +8040,11 @@
           "cover_url": "https://archive.org/download/companionable_1708_librivox/companionable_1708.jpg",
           "id": "maryann",
           "language": "en",
+          "librivox_genres": [
+            "Literary Criticism"
+          ],
           "librivox_id": 11768,
+          "librivox_title": "Companionable Books",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/companionable-books-by-henry-van-dyke/",

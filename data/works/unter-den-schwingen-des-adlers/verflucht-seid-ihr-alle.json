@@ -7904,7 +7904,11 @@
           "cover_url": "https://archive.org/download/vergara_1601_librivox/vergara_1601.jpg",
           "id": "tux",
           "language": "es",
+          "librivox_genres": [
+            "Historical Fiction"
+          ],
           "librivox_id": 9643,
+          "librivox_title": "Vergara",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/vergara-by-benito-perez-galdos/",
@@ -7954,18 +7958,46 @@
             {
               "audio_url": "https://www.archive.org/download/the_verge_1312_librivox/verge_01_glaspell_64kb.mp3",
               "length_ms": 4196000,
+              "readers": [
+                "elizabeth-klett",
+                "triciag",
+                "algy-pug",
+                "michele-eaton",
+                "chuck-williamson",
+                "bala",
+                "tovarisch",
+                "victoria-p"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/the_verge_1312_librivox/verge_02_glaspell_64kb.mp3",
               "length_ms": 2724000,
+              "readers": [
+                "triciag",
+                "amanda-friday",
+                "michele-eaton",
+                "chuck-williamson",
+                "bala",
+                "woolly-bee",
+                "tovarisch"
+              ],
               "start_ms": 4196000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/the_verge_1312_librivox/verge_03_glaspell_64kb.mp3",
               "length_ms": 1706000,
+              "readers": [
+                "triciag",
+                "algy-pug",
+                "michele-eaton",
+                "chuck-williamson",
+                "bala",
+                "tovarisch",
+                "victoria-p"
+              ],
               "start_ms": 6920000,
               "title": "Act 3"
             }
@@ -7974,7 +8006,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/Verge_1312.jpg",
           "id": "elizabeth-klett",
           "language": "en",
+          "librivox_genres": [
+            "Drama"
+          ],
           "librivox_id": 7735,
+          "librivox_title": "Verge",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-verge-by-susan-glaspell/",

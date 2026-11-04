@@ -11647,54 +11647,81 @@
             {
               "audio_url": "https://www.archive.org/download/thesmackinschool_2605.poem_librivox/smackinschool_palmer_blc_64kb.mp3",
               "length_ms": 135000,
+              "readers": [
+                "brize-c"
+              ],
               "start_ms": 0,
               "title": "The Smack in School - read by BLC"
             },
             {
               "audio_url": "https://www.archive.org/download/thesmackinschool_2605.poem_librivox/smackinschool_palmer_bwc_64kb.mp3",
               "length_ms": 133000,
+              "readers": [
+                "beeswaxcandle"
+              ],
               "start_ms": 135000,
               "title": "The Smack in School - read by BWC"
             },
             {
               "audio_url": "https://www.archive.org/download/thesmackinschool_2605.poem_librivox/smackinschool_palmer_cal_64kb.mp3",
               "length_ms": 133000,
+              "readers": [
+                "christine-lehman"
+              ],
               "start_ms": 268000,
               "title": "The Smack in School - read by CAL"
             },
             {
               "audio_url": "https://www.archive.org/download/thesmackinschool_2605.poem_librivox/smackinschool_palmer_dc_64kb.mp3",
               "length_ms": 115000,
+              "readers": [
+                "dc"
+              ],
               "start_ms": 401000,
               "title": "The Smack in School - read by DC"
             },
             {
               "audio_url": "https://www.archive.org/download/thesmackinschool_2605.poem_librivox/smackinschool_palmer_dls_64kb.mp3",
               "length_ms": 138000,
+              "readers": [
+                "leesalter"
+              ],
               "start_ms": 516000,
               "title": "The Smack in School - read by DLS"
             },
             {
               "audio_url": "https://www.archive.org/download/thesmackinschool_2605.poem_librivox/smackinschool_palmer_gln_64kb.mp3",
               "length_ms": 143000,
+              "readers": [
+                "garth-burton"
+              ],
               "start_ms": 654000,
               "title": "The Smack in School - read by GLN"
             },
             {
               "audio_url": "https://www.archive.org/download/thesmackinschool_2605.poem_librivox/smackinschool_palmer_sb_64kb.mp3",
               "length_ms": 122000,
+              "readers": [
+                "slatebrick"
+              ],
               "start_ms": 797000,
               "title": "The Smack in School - read by SB"
             },
             {
               "audio_url": "https://www.archive.org/download/thesmackinschool_2605.poem_librivox/smackinschool_palmer_sp_64kb.mp3",
               "length_ms": 132000,
+              "readers": [
+                "shrimpphish"
+              ],
               "start_ms": 919000,
               "title": "The Smack in School - read by SP"
             },
             {
               "audio_url": "https://www.archive.org/download/thesmackinschool_2605.poem_librivox/smackinschool_palmer_wbe_64kb.mp3",
               "length_ms": 123000,
+              "readers": [
+                "wennready"
+              ],
               "start_ms": 1051000,
               "title": "The Smack in School - read by WBE"
             }
@@ -11703,7 +11730,11 @@
           "cover_url": "https://archive.org/download/thesmackinschool_2605.poem_librivox/smackinschool_2605.jpg",
           "id": "brize-c",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 22555,
+          "librivox_title": "Smack in School",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-smack-in-school-by-william-pitt-palmer/",
@@ -11886,33 +11917,51 @@
             {
               "audio_url": "https://www.archive.org/download/smalcald_articles_jl_librivox/smalcaldarticles_0_luther_64kb.mp3",
               "length_ms": 617000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "0 - Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/smalcald_articles_jl_librivox/smalcaldarticles_1_luther_64kb.mp3",
               "length_ms": 1930000,
+              "section_number": 1,
               "start_ms": 617000,
               "title": "1 - Parts I & II"
             },
             {
               "audio_url": "https://www.archive.org/download/smalcald_articles_jl_librivox/smalcaldarticles_2_luther_64kb.mp3",
               "length_ms": 1807000,
+              "section_number": 2,
               "start_ms": 2547000,
               "title": "2 - Part III, i - iii"
             },
             {
               "audio_url": "https://www.archive.org/download/smalcald_articles_jl_librivox/smalcaldarticles_3_luther_64kb.mp3",
               "length_ms": 1459000,
+              "section_number": 3,
               "start_ms": 4354000,
               "title": "3 - Part III, iv-xv"
             }
           ],
           "copyright_year": 1921,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt28/Smalcald_Articles_1301.jpg",
+          "credits": [
+            {
+              "person": "friedrich-bente",
+              "role": "translator"
+            },
+            {
+              "person": "w-h-t-dau",
+              "role": "translator"
+            }
+          ],
           "id": "jonathan-lange",
           "language": "en",
+          "librivox_genres": [
+            "Christianity - Other"
+          ],
           "librivox_id": 5206,
+          "librivox_title": "Smalcald Articles",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-smalcald-articles-by-martin-luther/",
@@ -13226,7 +13275,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt16/Small_Boy_Others_1204.jpg",
           "id": "mb",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography"
+          ],
           "librivox_id": 2854,
+          "librivox_title": "Small Boy and Others",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-small-boy-and-others-by-henry-james/",
@@ -14850,27 +14903,44 @@
             {
               "audio_url": "https://www.archive.org/download/small_catechism_1102_librivox/smallcatechism_0_luther_64kb.mp3",
               "length_ms": 718000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/small_catechism_1102_librivox/smallcatechism_1_luther_64kb.mp3",
               "length_ms": 1453000,
+              "section_number": 1,
               "start_ms": 718000,
               "title": "The Six Chief Parts"
             },
             {
               "audio_url": "https://www.archive.org/download/small_catechism_1102_librivox/smallcatechism_2_luther_64kb.mp3",
               "length_ms": 1102000,
+              "section_number": 2,
               "start_ms": 2171000,
               "title": "Appendices"
             }
           ],
           "copyright_year": 1921,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt28/Small_Catechism_1301.jpg",
+          "credits": [
+            {
+              "person": "friedrich-bente",
+              "role": "translator"
+            },
+            {
+              "person": "w-h-t-dau",
+              "role": "translator"
+            }
+          ],
           "id": "jonathan-lange",
           "language": "en",
+          "librivox_genres": [
+            "Christianity - Other"
+          ],
           "librivox_id": 5230,
+          "librivox_title": "Small Catechism",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-small-catechism-by-martin-luther/",

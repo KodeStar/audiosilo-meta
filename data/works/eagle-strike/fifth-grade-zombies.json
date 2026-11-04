@@ -917,7 +917,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt22/Fifth_Queen_1209.jpg",
           "id": "elizabeth-klett",
           "language": "en",
+          "librivox_genres": [
+            "Historical Fiction"
+          ],
           "librivox_id": 6327,
+          "librivox_title": "Fifth Queen",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-fifth-queen-by-ford-madox-ford/",
@@ -1096,7 +1100,11 @@
           "cover_url": "https://archive.org/download/fifth_queen_crowned_ml_2301_librivox/fifth_queen_crowned_2301.jpg",
           "id": "mark-leder",
           "language": "en",
+          "librivox_genres": [
+            "Historical Fiction"
+          ],
           "librivox_id": 18664,
+          "librivox_title": "Fifth Queen Crowned",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-fifth-queen-crowned-by-ford-madox-ford/",
@@ -1227,7 +1235,11 @@
           "cover_url": "https://archive.org/download/fifth_string_2307_librivox/fifthstring_2308.jpg",
           "id": "beeswaxcandle",
           "language": "en",
+          "librivox_genres": [
+            "Horror & Supernatural Fiction"
+          ],
           "librivox_id": 19461,
+          "librivox_title": "Fifth String",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/fifth-string-by-john-philip-sousa/",
@@ -1553,60 +1565,90 @@
             {
               "audio_url": "https://www.archive.org/download/fifty_cents_1109_librivox/fiftycents_mortimer_dl_64kb.mp3",
               "length_ms": 131000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 0,
               "title": "Fifty Cents - Recorded by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_cents_1109_librivox/fiftycents_mortimer_ezw_64kb.mp3",
               "length_ms": 156000,
+              "readers": [
+                "ezwa"
+              ],
               "start_ms": 131000,
               "title": "Fifty Cents - Recorded by EZW (Sung)"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_cents_1109_librivox/fiftycents_mortimer_ezwa_64kb.mp3",
               "length_ms": 247000,
+              "readers": [
+                "ezwa"
+              ],
               "start_ms": 287000,
               "title": "Fifty Cents - Recorded by EZWA (Sung)"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_cents_1109_librivox/fiftycents_mortimer_lah_64kb.mp3",
               "length_ms": 126000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 534000,
               "title": "Fifty Cents - Recorded by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_cents_1109_librivox/fiftycents_mortimer_llb_64kb.mp3",
               "length_ms": 139000,
+              "readers": [
+                "lewis"
+              ],
               "start_ms": 660000,
               "title": "Fifty Cents - Recorded by LLB"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_cents_1109_librivox/fiftycents_mortimer_llw_64kb.mp3",
               "length_ms": 137000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 799000,
               "title": "Fifty Cents - Recorded by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_cents_1109_librivox/fiftycents_mortimer_lrs_64kb.mp3",
               "length_ms": 186000,
+              "readers": [
+                "liberty-stump"
+              ],
               "start_ms": 936000,
               "title": "Fifty Cents - Recorded by LRS (Sung)"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_cents_1109_librivox/fiftycents_mortimer_ref_64kb.mp3",
               "length_ms": 135000,
+              "readers": [
+                "rhonda-federman"
+              ],
               "start_ms": 1122000,
               "title": "Fifty Cents - Recorded by REF"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_cents_1109_librivox/fiftycents_mortimer_rn_64kb.mp3",
               "length_ms": 148000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 1257000,
               "title": "Fifty Cents - Recorded by RN"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_cents_1109_librivox/fiftycents_mortimer_tg_64kb.mp3",
               "length_ms": 129000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 1405000,
               "title": "Fifty Cents - Recorded by TG"
             }
@@ -1615,7 +1657,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt22/Fifty_Cents_1210.jpg",
           "id": "david-lawrence",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)",
+            "Music"
+          ],
           "librivox_id": 5804,
+          "librivox_title": "Fifty Cents",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/fifty-cents-by-billy-mortimer/",
@@ -2485,306 +2533,510 @@
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_00_baldwin_64kb.mp3",
               "length_ms": 190000,
+              "readers": [
+                "clarica"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Concerning These Stories"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_01_baldwin_64kb.mp3",
               "length_ms": 225000,
+              "readers": [
+                "kristine-bekere"
+              ],
+              "section_number": 1,
               "start_ms": 190000,
               "title": "King Alfred and the Cakes"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_02_baldwin_64kb.mp3",
               "length_ms": 236000,
+              "readers": [
+                "kristine-bekere"
+              ],
+              "section_number": 2,
               "start_ms": 415000,
               "title": "King Alfred and the Beggar"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_03_baldwin_64kb.mp3",
               "length_ms": 170000,
+              "readers": [
+                "annoying-twit"
+              ],
+              "section_number": 3,
               "start_ms": 651000,
               "title": "King Canute on the Seashore"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_04_baldwin_64kb.mp3",
               "length_ms": 365000,
+              "readers": [
+                "ernst-pattynama"
+              ],
+              "section_number": 4,
               "start_ms": 821000,
               "title": "The Sons of William the Conqueror"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_05_baldwin_64kb.mp3",
               "length_ms": 361000,
+              "readers": [
+                "ernst-pattynama"
+              ],
+              "section_number": 5,
               "start_ms": 1186000,
               "title": "The White Ship"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_06_baldwin_64kb.mp3",
               "length_ms": 495000,
+              "readers": [
+                "jennifer-stearns"
+              ],
+              "section_number": 6,
               "start_ms": 1547000,
               "title": "King John and the Abbot"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_07_baldwin_64kb.mp3",
               "length_ms": 334000,
+              "readers": [
+                "annoying-twit"
+              ],
+              "section_number": 7,
               "start_ms": 2042000,
               "title": "A Story of Robin Hood"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_08_baldwin_64kb.mp3",
               "length_ms": 178000,
+              "readers": [
+                "dexter"
+              ],
+              "section_number": 8,
               "start_ms": 2376000,
               "title": "Bruce and the Spider"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_09_baldwin_64kb.mp3",
               "length_ms": 234000,
+              "readers": [
+                "dexter"
+              ],
+              "section_number": 9,
               "start_ms": 2554000,
               "title": "The Black Douglas"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_10_baldwin_64kb.mp3",
               "length_ms": 161000,
+              "readers": [
+                "jennifer-stearns"
+              ],
+              "section_number": 10,
               "start_ms": 2788000,
               "title": "Three Men of Gotham"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_11_baldwin_64kb.mp3",
               "length_ms": 293000,
+              "readers": [
+                "janna"
+              ],
+              "section_number": 11,
               "start_ms": 2949000,
               "title": "Other Wise Men of Gotham"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_12_baldwin_64kb.mp3",
               "length_ms": 175000,
+              "readers": [
+                "petra"
+              ],
+              "section_number": 12,
               "start_ms": 3242000,
               "title": "The Miller of the Dee"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_13_baldwin_64kb.mp3",
               "length_ms": 128000,
+              "readers": [
+                "annoying-twit"
+              ],
+              "section_number": 13,
               "start_ms": 3417000,
               "title": "Sir Philip Sidney"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_14_baldwin_64kb.mp3",
               "length_ms": 124000,
+              "readers": [
+                "janna"
+              ],
+              "section_number": 14,
               "start_ms": 3545000,
               "title": "The Ungrateful Soldier"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_15_baldwin_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "janna"
+              ],
+              "section_number": 15,
               "start_ms": 3669000,
               "title": "Sir Humphrey Gilbert"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_16_baldwin_64kb.mp3",
               "length_ms": 264000,
+              "readers": [
+                "janna"
+              ],
+              "section_number": 16,
               "start_ms": 3778000,
               "title": "Sir Walter Raleigh"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_17_baldwin_64kb.mp3",
               "length_ms": 119000,
+              "readers": [
+                "janna"
+              ],
+              "section_number": 17,
               "start_ms": 4042000,
               "title": "Pocahontas"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_18_baldwin_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "alex-buie"
+              ],
+              "section_number": 18,
               "start_ms": 4161000,
               "title": "George Washington and his Hatchet"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_19_baldwin_64kb.mp3",
               "length_ms": 199000,
+              "readers": [
+                "janna"
+              ],
+              "section_number": 19,
               "start_ms": 4270000,
               "title": "Grace Darling"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_20_baldwin_64kb.mp3",
               "length_ms": 177000,
+              "readers": [
+                "annoying-twit"
+              ],
+              "section_number": 20,
               "start_ms": 4469000,
               "title": "The Story of William Tell"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_21_baldwin_64kb.mp3",
               "length_ms": 183000,
+              "readers": [
+                "janna"
+              ],
+              "section_number": 21,
               "start_ms": 4646000,
               "title": "Arnold Winkelried"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_22_baldwin_64kb.mp3",
               "length_ms": 421000,
+              "readers": [
+                "janna"
+              ],
+              "section_number": 22,
               "start_ms": 4829000,
               "title": "The Bell of Atri"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_23_baldwin_64kb.mp3",
               "length_ms": 107000,
+              "readers": [
+                "joe-pilsbury"
+              ],
+              "section_number": 23,
               "start_ms": 5250000,
               "title": "How Napoleon Crossed the Alps"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_24_baldwin_64kb.mp3",
               "length_ms": 429000,
+              "readers": [
+                "mcrovi"
+              ],
+              "section_number": 24,
               "start_ms": 5357000,
               "title": "The Story of Cincinnatus"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_25_baldwin_64kb.mp3",
               "length_ms": 295000,
+              "readers": [
+                "mcrovi"
+              ],
+              "section_number": 25,
               "start_ms": 5786000,
               "title": "The Story of Regulus"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_26_baldwin_64kb.mp3",
               "length_ms": 267000,
+              "readers": [
+                "rechelle"
+              ],
+              "section_number": 26,
               "start_ms": 6081000,
               "title": "Cornelia's Jewels"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_27_baldwin_64kb.mp3",
               "length_ms": 297000,
+              "readers": [
+                "mcrovi"
+              ],
+              "section_number": 27,
               "start_ms": 6348000,
               "title": "Androclus and the Lion"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_28_baldwin_64kb.mp3",
               "length_ms": 360000,
+              "readers": [
+                "rechelle"
+              ],
+              "section_number": 28,
               "start_ms": 6645000,
               "title": "Horatius at the Bridge"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_29_baldwin_64kb.mp3",
               "length_ms": 147000,
+              "readers": [
+                "janna"
+              ],
+              "section_number": 29,
               "start_ms": 7005000,
               "title": "Julius Cæsar"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_30_baldwin_64kb.mp3",
               "length_ms": 195000,
+              "readers": [
+                "annoying-twit"
+              ],
+              "section_number": 30,
               "start_ms": 7152000,
               "title": "The Sword of Damocles"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_31_baldwin_64kb.mp3",
               "length_ms": 176000,
+              "readers": [
+                "janna"
+              ],
+              "section_number": 31,
               "start_ms": 7347000,
               "title": "Damon and Pythias"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_32_baldwin_64kb.mp3",
               "length_ms": 123000,
+              "readers": [
+                "joe-pilsbury"
+              ],
+              "section_number": 32,
               "start_ms": 7523000,
               "title": "A Laconic Answer"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_33_baldwin_64kb.mp3",
               "length_ms": 136000,
+              "readers": [
+                "david-lawrence"
+              ],
+              "section_number": 33,
               "start_ms": 7646000,
               "title": "The Ungrateful Guest"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_34_baldwin_64kb.mp3",
               "length_ms": 165000,
+              "readers": [
+                "janna"
+              ],
+              "section_number": 34,
               "start_ms": 7782000,
               "title": "Alexander and Bucephalus"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_35_baldwin_64kb.mp3",
               "length_ms": 151000,
+              "readers": [
+                "janna"
+              ],
+              "section_number": 35,
               "start_ms": 7947000,
               "title": "Diogenes the Wise Man"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_36_baldwin_64kb.mp3",
               "length_ms": 162000,
+              "readers": [
+                "joe-pilsbury"
+              ],
+              "section_number": 36,
               "start_ms": 8098000,
               "title": "The Brave Three Hundred"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_37_baldwin_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "annoying-twit"
+              ],
+              "section_number": 37,
               "start_ms": 8260000,
               "title": "Socrates and his House"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_38_baldwin_64kb.mp3",
               "length_ms": 293000,
+              "readers": [
+                "david-lawrence"
+              ],
+              "section_number": 38,
               "start_ms": 8330000,
               "title": "The King and his Hawk"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_39_baldwin_64kb.mp3",
               "length_ms": 128000,
+              "readers": [
+                "annoying-twit"
+              ],
+              "section_number": 39,
               "start_ms": 8623000,
               "title": "Doctor Goldsmith"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_40_baldwin_64kb.mp3",
               "length_ms": 294000,
+              "readers": [
+                "denny-sayers-d-2015"
+              ],
+              "section_number": 40,
               "start_ms": 8751000,
               "title": "The Kingdoms"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_41_baldwin_64kb.mp3",
               "length_ms": 292000,
+              "readers": [
+                "joe-pilsbury"
+              ],
+              "section_number": 41,
               "start_ms": 9045000,
               "title": "The Barmecide Feast"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_42_baldwin_64kb.mp3",
               "length_ms": 272000,
+              "readers": [
+                "clarica"
+              ],
+              "section_number": 42,
               "start_ms": 9337000,
               "title": "The Endless Tale"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_43_baldwin_64kb.mp3",
               "length_ms": 191000,
+              "readers": [
+                "clarica"
+              ],
+              "section_number": 43,
               "start_ms": 9609000,
               "title": "The Blind Men and the Elephant"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_44_baldwin_64kb.mp3",
               "length_ms": 251000,
+              "readers": [
+                "christine-blachford"
+              ],
+              "section_number": 44,
               "start_ms": 9800000,
               "title": "Maximilian and the Goose Boy"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_45_baldwin_64kb.mp3",
               "length_ms": 230000,
+              "readers": [
+                "janna"
+              ],
+              "section_number": 45,
               "start_ms": 10051000,
               "title": "The Inchcape Rock"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_46_baldwin_64kb.mp3",
               "length_ms": 841000,
+              "readers": [
+                "janna"
+              ],
+              "section_number": 46,
               "start_ms": 10281000,
               "title": "Whittington and his Cat"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_47_baldwin_64kb.mp3",
               "length_ms": 217000,
+              "readers": [
+                "varra-unreal"
+              ],
+              "section_number": 47,
               "start_ms": 11122000,
               "title": "Casabianca"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_48_baldwin_64kb.mp3",
               "length_ms": 366000,
+              "readers": [
+                "alexrobinson"
+              ],
+              "section_number": 48,
               "start_ms": 11339000,
               "title": "Antonio Canova"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_49_baldwin_64kb.mp3",
               "length_ms": 440000,
+              "readers": [
+                "rhonda-federman"
+              ],
+              "section_number": 49,
               "start_ms": 11705000,
               "title": "Picciola"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_ver2_0809_librivox/50famousstoriesretold_50_baldwin_64kb.mp3",
               "length_ms": 344000,
+              "readers": [
+                "janna"
+              ],
+              "section_number": 50,
               "start_ms": 12145000,
               "title": "Mignon"
             }
@@ -2793,7 +3045,13 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt14/Fifty_Famous_Stories_Retold_V2_1201.jpg",
           "id": "clarica",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction",
+            "Myths, Legends & Fairy Tales",
+            "Historical"
+          ],
           "librivox_id": 2342,
+          "librivox_title": "Fifty Famous Stories Retold (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/fifty-famous-stories-retold-version-2-by-james-baldwin/",
@@ -3128,306 +3386,357 @@
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_00_baldwin_64kb.mp3",
               "length_ms": 188000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Concerning These Stories"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_01_baldwin_64kb.mp3",
               "length_ms": 215000,
+              "section_number": 1,
               "start_ms": 188000,
               "title": "King Alfred and the Cakes"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_02_baldwin_64kb.mp3",
               "length_ms": 229000,
+              "section_number": 2,
               "start_ms": 403000,
               "title": "King Alfred and the Beggar"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_03_baldwin_64kb.mp3",
               "length_ms": 188000,
+              "section_number": 3,
               "start_ms": 632000,
               "title": "King Canute on the Seashore"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_04_baldwin_64kb.mp3",
               "length_ms": 324000,
+              "section_number": 4,
               "start_ms": 820000,
               "title": "The Sons of William the Conqueror"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_05_baldwin_64kb.mp3",
               "length_ms": 315000,
+              "section_number": 5,
               "start_ms": 1144000,
               "title": "The White Ship"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_06_baldwin_64kb.mp3",
               "length_ms": 444000,
+              "section_number": 6,
               "start_ms": 1459000,
               "title": "King John and the Abbot"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_07_baldwin_64kb.mp3",
               "length_ms": 357000,
+              "section_number": 7,
               "start_ms": 1903000,
               "title": "A Story of Robin Hood"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_08_baldwin_64kb.mp3",
               "length_ms": 156000,
+              "section_number": 8,
               "start_ms": 2260000,
               "title": "Bruce and the Spider"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_09_baldwin_64kb.mp3",
               "length_ms": 239000,
+              "section_number": 9,
               "start_ms": 2416000,
               "title": "The Black Douglas"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_10_baldwin_64kb.mp3",
               "length_ms": 142000,
+              "section_number": 10,
               "start_ms": 2655000,
               "title": "Three Men of Gotham"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_11_baldwin_64kb.mp3",
               "length_ms": 327000,
+              "section_number": 11,
               "start_ms": 2797000,
               "title": "Other Wise Men of Gotham"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_12_baldwin_64kb.mp3",
               "length_ms": 158000,
+              "section_number": 12,
               "start_ms": 3124000,
               "title": "The Miller of the Dee"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_13_baldwin_64kb.mp3",
               "length_ms": 132000,
+              "section_number": 13,
               "start_ms": 3282000,
               "title": "Sir Philip Sidney"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_14_baldwin_64kb.mp3",
               "length_ms": 137000,
+              "section_number": 14,
               "start_ms": 3414000,
               "title": "The Ungrateful Soldier"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_15_baldwin_64kb.mp3",
               "length_ms": 116000,
+              "section_number": 15,
               "start_ms": 3551000,
               "title": "Sir Humphrey Gilbert"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_16_baldwin_64kb.mp3",
               "length_ms": 278000,
+              "section_number": 16,
               "start_ms": 3667000,
               "title": "Sir Walter Raleigh"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_17_baldwin_64kb.mp3",
               "length_ms": 132000,
+              "section_number": 17,
               "start_ms": 3945000,
               "title": "Pocahontas"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_18_baldwin_64kb.mp3",
               "length_ms": 110000,
+              "section_number": 18,
               "start_ms": 4077000,
               "title": "George Washington and His Hatchet"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_19_baldwin_64kb.mp3",
               "length_ms": 219000,
+              "section_number": 19,
               "start_ms": 4187000,
               "title": "Grace Darling"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_20_baldwin_64kb.mp3",
               "length_ms": 183000,
+              "section_number": 20,
               "start_ms": 4406000,
               "title": "The Story of William Tell"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_21_baldwin_64kb.mp3",
               "length_ms": 200000,
+              "section_number": 21,
               "start_ms": 4589000,
               "title": "Arnold Winklereid"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_22_baldwin_64kb.mp3",
               "length_ms": 461000,
+              "section_number": 22,
               "start_ms": 4789000,
               "title": "The Bell of Atri"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_23_baldwin_64kb.mp3",
               "length_ms": 107000,
+              "section_number": 23,
               "start_ms": 5250000,
               "title": "How Napoleon Crossed the Alps"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_24_baldwin_64kb.mp3",
               "length_ms": 358000,
+              "section_number": 24,
               "start_ms": 5357000,
               "title": "The Story of Cincinnatus"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_25_baldwin_64kb.mp3",
               "length_ms": 246000,
+              "section_number": 25,
               "start_ms": 5715000,
               "title": "The Story of Regulus"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_26_baldwin_64kb.mp3",
               "length_ms": 214000,
+              "section_number": 26,
               "start_ms": 5961000,
               "title": "Cornelia's Jewels"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_27_baldwin_64kb.mp3",
               "length_ms": 256000,
+              "section_number": 27,
               "start_ms": 6175000,
               "title": "Androclus and the Lion"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_28_baldwin_64kb.mp3",
               "length_ms": 276000,
+              "section_number": 28,
               "start_ms": 6431000,
               "title": "Horatius at the Bridge"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_29_baldwin_64kb.mp3",
               "length_ms": 151000,
+              "section_number": 29,
               "start_ms": 6707000,
               "title": "Julius Caesar"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_30_baldwin_64kb.mp3",
               "length_ms": 200000,
+              "section_number": 30,
               "start_ms": 6858000,
               "title": "The Sword of Damocles"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_31_baldwin_64kb.mp3",
               "length_ms": 186000,
+              "section_number": 31,
               "start_ms": 7058000,
               "title": "Damon and Pythias"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_32_baldwin_64kb.mp3",
               "length_ms": 118000,
+              "section_number": 32,
               "start_ms": 7244000,
               "title": "A Laconic Answer"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_33_baldwin_64kb.mp3",
               "length_ms": 141000,
+              "section_number": 33,
               "start_ms": 7362000,
               "title": "The Ungrateful Guest"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_34_baldwin_64kb.mp3",
               "length_ms": 166000,
+              "section_number": 34,
               "start_ms": 7503000,
               "title": "Alexander and Bucephalus"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_35_baldwin_64kb.mp3",
               "length_ms": 144000,
+              "section_number": 35,
               "start_ms": 7669000,
               "title": "Diogenes the Wise Man"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_36_baldwin_64kb.mp3",
               "length_ms": 167000,
+              "section_number": 36,
               "start_ms": 7813000,
               "title": "The Brave Three Hundred"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_37_baldwin_64kb.mp3",
               "length_ms": 69000,
+              "section_number": 37,
               "start_ms": 7980000,
               "title": "Socrates and His House"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_38_baldwin_64kb.mp3",
               "length_ms": 308000,
+              "section_number": 38,
               "start_ms": 8049000,
               "title": "The King and His Hawk"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_39_baldwin_64kb.mp3",
               "length_ms": 118000,
+              "section_number": 39,
               "start_ms": 8357000,
               "title": "Doctor Goldsmith"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_40_baldwin_64kb.mp3",
               "length_ms": 208000,
+              "section_number": 40,
               "start_ms": 8475000,
               "title": "The Kingdoms"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_41_baldwin_64kb.mp3",
               "length_ms": 290000,
+              "section_number": 41,
               "start_ms": 8683000,
               "title": "The Barmecide Feast"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_42_baldwin_64kb.mp3",
               "length_ms": 243000,
+              "section_number": 42,
               "start_ms": 8973000,
               "title": "The Endless Tale"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_43_baldwin_64kb.mp3",
               "length_ms": 160000,
+              "section_number": 43,
               "start_ms": 9216000,
               "title": "The Blind Men and the Elephant"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_44_baldwin_64kb.mp3",
               "length_ms": 315000,
+              "section_number": 44,
               "start_ms": 9376000,
               "title": "Maximilian and the Goose Boy"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_45_baldwin_64kb.mp3",
               "length_ms": 245000,
+              "section_number": 45,
               "start_ms": 9691000,
               "title": "The Inchcape Rock"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_46_baldwin_64kb.mp3",
               "length_ms": 898000,
+              "section_number": 46,
               "start_ms": 9936000,
               "title": "Whittington and His Cat"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_47_baldwin_64kb.mp3",
               "length_ms": 218000,
+              "section_number": 47,
               "start_ms": 10834000,
               "title": "Casabianca"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_48_baldwin_64kb.mp3",
               "length_ms": 347000,
+              "section_number": 48,
               "start_ms": 11052000,
               "title": "Antonio Canova"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_49_baldwin_64kb.mp3",
               "length_ms": 367000,
+              "section_number": 49,
               "start_ms": 11399000,
               "title": "Picciola"
             },
             {
               "audio_url": "https://www.archive.org/download/fifty_famous_stories_lc_librivox/fiftyfamous_50_baldwin_64kb.mp3",
               "length_ms": 351000,
+              "section_number": 50,
               "start_ms": 11766000,
               "title": "Mignon"
             }
@@ -3436,7 +3745,13 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt/Fifty_Famous_Stories_Retold_1003.jpg",
           "id": "laura-caldwell",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction",
+            "Historical Fiction",
+            "Short Stories"
+          ],
           "librivox_id": 1603,
+          "librivox_title": "Fifty Famous Stories Retold",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/fifty-famous-stories-retold-by-james-baldwin/",
@@ -5880,294 +6195,441 @@
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_01_rountreesmith_64kb.mp3",
               "length_ms": 205000,
+              "readers": [
+                "nan-dodge"
+              ],
               "start_ms": 0,
               "title": "Funny Fox"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_02_rountreesmith_64kb.mp3",
               "length_ms": 214000,
+              "readers": [
+                "nan-dodge"
+              ],
               "start_ms": 205000,
               "title": "Willful Wolf"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_03_rountreesmith_64kb.mp3",
               "length_ms": 239000,
+              "readers": [
+                "nan-dodge"
+              ],
               "start_ms": 419000,
               "title": "Big Brother Bear"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_04_rountreesmith_64kb.mp3",
               "length_ms": 174000,
+              "readers": [
+                "nan-dodge"
+              ],
               "start_ms": 658000,
               "title": "Careful Cat"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_05_rountreesmith_64kb.mp3",
               "length_ms": 170000,
+              "readers": [
+                "nan-dodge"
+              ],
               "start_ms": 832000,
               "title": "Homeless Hare"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_06_rountreesmith_64kb.mp3",
               "length_ms": 137000,
+              "readers": [
+                "nan-dodge"
+              ],
               "start_ms": 1002000,
               "title": "Cheerful Cock"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_07_rountreesmith_64kb.mp3",
               "length_ms": 173000,
+              "readers": [
+                "littlepeanut"
+              ],
               "start_ms": 1139000,
               "title": "A Friend In Need"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_08_rountreesmith_64kb.mp3",
               "length_ms": 131000,
+              "readers": [
+                "aric-reed"
+              ],
               "start_ms": 1312000,
               "title": "Bold Badger"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_09_rountreesmith_64kb.mp3",
               "length_ms": 130000,
+              "readers": [
+                "aric-reed"
+              ],
               "start_ms": 1443000,
               "title": "Amiable Ape"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_10_rountreesmith_64kb.mp3",
               "length_ms": 140000,
+              "readers": [
+                "aric-reed"
+              ],
               "start_ms": 1573000,
               "title": "The Wolf's Escape"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_11_rountreesmith_64kb.mp3",
               "length_ms": 161000,
+              "readers": [
+                "gini-rosario"
+              ],
               "start_ms": 1713000,
               "title": "Little Hill Men"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_12_rountreesmith_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "gini-rosario"
+              ],
               "start_ms": 1874000,
               "title": "Comical Crow"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_13_rountreesmith_64kb.mp3",
               "length_ms": 130000,
+              "readers": [
+                "gini-rosario"
+              ],
               "start_ms": 1955000,
               "title": "Daring Dog"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_14_rountreesmith_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "maybecordelia"
+              ],
               "start_ms": 2085000,
               "title": "Fairy Gold"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_15_rountreesmith_64kb.mp3",
               "length_ms": 162000,
+              "readers": [
+                "beflamed"
+              ],
               "start_ms": 2166000,
               "title": "Aunty ape"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_16_rountreesmith_64kb.mp3",
               "length_ms": 117000,
+              "readers": [
+                "maybecordelia"
+              ],
               "start_ms": 2328000,
               "title": "Magic Boots"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_17_rountreesmith_64kb.mp3",
               "length_ms": 162000,
+              "readers": [
+                "nighthawks"
+              ],
               "start_ms": 2445000,
               "title": "In the Woods"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_18_rountreesmith_64kb.mp3",
               "length_ms": 96000,
+              "readers": [
+                "heather-eney"
+              ],
               "start_ms": 2607000,
               "title": "Lordly Lion"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_19_rountreesmith_64kb.mp3",
               "length_ms": 140000,
+              "readers": [
+                "heather-eney"
+              ],
               "start_ms": 2703000,
               "title": "The Throne"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_20_rountreesmith_64kb.mp3",
               "length_ms": 127000,
+              "readers": [
+                "nighthawks"
+              ],
               "start_ms": 2843000,
               "title": "The Escape"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_21_rountreesmith_64kb.mp3",
               "length_ms": 176000,
+              "readers": [
+                "nighthawks"
+              ],
               "start_ms": 2970000,
               "title": "Happy Hare"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_22_rountreesmith_64kb.mp3",
               "length_ms": 150000,
+              "readers": [
+                "smilingjade"
+              ],
               "start_ms": 3146000,
               "title": "King and Queen"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_23_rountreesmith_64kb.mp3",
               "length_ms": 167000,
+              "readers": [
+                "smilingjade"
+              ],
               "start_ms": 3296000,
               "title": "The Judge"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_24_rountreesmith_64kb.mp3",
               "length_ms": 139000,
+              "readers": [
+                "smilingjade"
+              ],
               "start_ms": 3463000,
               "title": "A Soft Answer"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_25_rountreesmith_64kb.mp3",
               "length_ms": 211000,
+              "readers": [
+                "smilingjade"
+              ],
               "start_ms": 3602000,
               "title": "The Gold and Jewels"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_26_rountreesmith_64kb.mp3",
               "length_ms": 165000,
+              "readers": [
+                "anglophileabbey"
+              ],
               "start_ms": 3813000,
               "title": "The Magic Comb"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_27_rountreesmith_64kb.mp3",
               "length_ms": 113000,
+              "readers": [
+                "anglophileabbey"
+              ],
               "start_ms": 3978000,
               "title": "The Lessons"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_28_rountreesmith_64kb.mp3",
               "length_ms": 114000,
+              "readers": [
+                "anglophileabbey"
+              ],
               "start_ms": 4091000,
               "title": "The Duel"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_29_rountreesmith_64kb.mp3",
               "length_ms": 115000,
+              "readers": [
+                "val-myers"
+              ],
               "start_ms": 4205000,
               "title": "Magic Horse"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_30_rountreesmith_64kb.mp3",
               "length_ms": 117000,
+              "readers": [
+                "val-myers"
+              ],
               "start_ms": 4320000,
               "title": "The Prince"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_31_rountreesmith_64kb.mp3",
               "length_ms": 132000,
+              "readers": [
+                "theintern356"
+              ],
               "start_ms": 4437000,
               "title": "The Invitations"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_32_rountreesmith_64kb.mp3",
               "length_ms": 110000,
+              "readers": [
+                "theintern356"
+              ],
               "start_ms": 4569000,
               "title": "Comical Crane"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_33_rountreesmith_64kb.mp3",
               "length_ms": 119000,
+              "readers": [
+                "theintern356"
+              ],
               "start_ms": 4679000,
               "title": "Dressing Up"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_34_rountreesmith_64kb.mp3",
               "length_ms": 120000,
+              "readers": [
+                "theintern356"
+              ],
               "start_ms": 4798000,
               "title": "The Joke"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_35_rountreesmith_64kb.mp3",
               "length_ms": 127000,
+              "readers": [
+                "theintern356"
+              ],
               "start_ms": 4918000,
               "title": "Shy Squirrel"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_36_rountreesmith_64kb.mp3",
               "length_ms": 112000,
+              "readers": [
+                "theintern356"
+              ],
               "start_ms": 5045000,
               "title": "Solemn Stork"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_37_rountreesmith_64kb.mp3",
               "length_ms": 123000,
+              "readers": [
+                "theintern356"
+              ],
               "start_ms": 5157000,
               "title": "Lazy Leopard"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_38_rountreesmith_64kb.mp3",
               "length_ms": 122000,
+              "readers": [
+                "theintern356"
+              ],
               "start_ms": 5280000,
               "title": "What They Said"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_39_rountreesmith_64kb.mp3",
               "length_ms": 131000,
+              "readers": [
+                "theintern356"
+              ],
               "start_ms": 5402000,
               "title": "Not For Me"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_40_rountreesmith_64kb.mp3",
               "length_ms": 115000,
+              "readers": [
+                "theintern356"
+              ],
               "start_ms": 5533000,
               "title": "Awaiting the Guests"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_41_rountreesmith_64kb.mp3",
               "length_ms": 136000,
+              "readers": [
+                "theintern356"
+              ],
               "start_ms": 5648000,
               "title": "Be Prompt"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_42_rountreesmith_64kb.mp3",
               "length_ms": 126000,
+              "readers": [
+                "theintern356"
+              ],
               "start_ms": 5784000,
               "title": "Before the Rest"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_43_rountreesmith_64kb.mp3",
               "length_ms": 125000,
+              "readers": [
+                "theintern356"
+              ],
               "start_ms": 5910000,
               "title": "Welcome"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_44_rountreesmith_64kb.mp3",
               "length_ms": 130000,
+              "readers": [
+                "theintern356"
+              ],
               "start_ms": 6035000,
               "title": "Smile Bag"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_45_rountreesmith_64kb.mp3",
               "length_ms": 128000,
+              "readers": [
+                "theintern356"
+              ],
               "start_ms": 6165000,
               "title": "The Merry time"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_46_rountreesmith_64kb.mp3",
               "length_ms": 120000,
+              "readers": [
+                "theintern356"
+              ],
               "start_ms": 6293000,
               "title": "Singing"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_47_rountreesmith_64kb.mp3",
               "length_ms": 107000,
+              "readers": [
+                "theintern356"
+              ],
               "start_ms": 6413000,
               "title": "The Riddle"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_48_rountreesmith_64kb.mp3",
               "length_ms": 103000,
+              "readers": [
+                "heather-eney"
+              ],
               "start_ms": 6520000,
               "title": "Wooden Horse"
             },
             {
               "audio_url": "https://www.archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimaltales_49_rountreesmith_64kb.mp3",
               "length_ms": 208000,
+              "readers": [
+                "heather-eney"
+              ],
               "start_ms": 6623000,
               "title": "The Message"
             }
@@ -6175,7 +6637,11 @@
           "cover_url": "https://archive.org/download/fiftyfunnyanimaltales_2109_librivox/fiftyfunnyanimalstories_2109.jpg",
           "id": "nan-dodge",
           "language": "en",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 16637,
+          "librivox_title": "Fifty Funny Animal Tales",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/fifty-funny-animal-tales-by-laura-rountree-smith/",
@@ -7256,7 +7722,13 @@
           "cover_url": "https://archive.org/download/fiftyonetales_1505_librivox/Dunsany_1505.jpg",
           "id": "rosslyn-carlyle",
           "language": "en",
+          "librivox_genres": [
+            "Gothic Fiction",
+            "Published 1900 onward",
+            "Fantasy Fiction"
+          ],
           "librivox_id": 9887,
+          "librivox_title": "Fifty-one Tales (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/fifty-one-tales-by-lord-dunsany/",
@@ -7299,7 +7771,15 @@
           "cover_url": "https://archive.org/download/fiftyonetales_1210_librivox_tc/Fifty-One_Tales_1212.jpg",
           "id": "thomas-a-copeland",
           "language": "en",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales",
+            "Fantastic Fiction",
+            "General Fiction",
+            "Satire",
+            "Short Stories"
+          ],
           "librivox_id": 7127,
+          "librivox_title": "Fifty-One Tales",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/fifty-one-tales-by-lord-dunsany-edward-j-m-d-plunkett/",
@@ -10114,9 +10594,19 @@
           ],
           "copyright_year": 1921,
           "cover_url": "https://archive.org/download/fifty_spiritual_homiles_st_macarius_1410_librivox/fifty_spiritual_1410.jpg",
+          "credits": [
+            {
+              "person": "arthur-james-mason",
+              "role": "translator"
+            }
+          ],
           "id": "a-librivox-volunteer-librivox-8368",
           "language": "en",
+          "librivox_genres": [
+            "Christianity - Other"
+          ],
           "librivox_id": 8934,
+          "librivox_title": "Fifty Spiritual Homilies of St Macarius the Egyptian",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/fifty-spiritual-homiles-of-st-macarius-the-egyptian-by-macarius/",

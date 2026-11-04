@@ -1743,30 +1743,35 @@
             {
               "audio_url": "https://www.archive.org/download/bridal_triermain_1007_librivox/thebridaloftriermain_00_scott_64kb.mp3",
               "length_ms": 465000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/bridal_triermain_1007_librivox/thebridaloftriermain_01_scott_64kb.mp3",
               "length_ms": 1350000,
+              "section_number": 1,
               "start_ms": 465000,
               "title": "01 Canto First"
             },
             {
               "audio_url": "https://www.archive.org/download/bridal_triermain_1007_librivox/thebridaloftriermain_02_scott_64kb.mp3",
               "length_ms": 2343000,
+              "section_number": 2,
               "start_ms": 1815000,
               "title": "02 Canto Second"
             },
             {
               "audio_url": "https://www.archive.org/download/bridal_triermain_1007_librivox/thebridaloftriermain_03_scott_64kb.mp3",
               "length_ms": 3070000,
+              "section_number": 3,
               "start_ms": 4158000,
               "title": "03 Canto Third"
             },
             {
               "audio_url": "https://www.archive.org/download/bridal_triermain_1007_librivox/thebridaloftriermain_04_scott_64kb.mp3",
               "length_ms": 205000,
+              "section_number": 4,
               "start_ms": 7228000,
               "title": "04 Conclusion"
             }
@@ -1775,7 +1780,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt5/The_Bridal_of_Triermain_1007.jpg",
           "id": "nathan-librivox-3793",
           "language": "en",
+          "librivox_genres": [
+            "Narratives"
+          ],
           "librivox_id": 4438,
+          "librivox_title": "Bridal of Triermain",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-bridal-of-triermain-by-sir-walter-scott/",
@@ -2296,9 +2305,23 @@
           ],
           "copyright_year": 1923,
           "cover_url": "https://archive.org/download/the_bridal_wreath_2308_librivox/bridal_wreath_2308.jpg",
+          "credits": [
+            {
+              "person": "charles-archer",
+              "role": "translator"
+            },
+            {
+              "person": "j-s-scott-fl-1925",
+              "role": "translator"
+            }
+          ],
           "id": "carol-pelster",
           "language": "en",
+          "librivox_genres": [
+            "Historical Fiction"
+          ],
           "librivox_id": 19237,
+          "librivox_title": "Bridal Wreath",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-bridal-wreath-by-sigrid-undset/",
@@ -2569,18 +2592,55 @@
             {
               "audio_url": "https://www.archive.org/download/brideandgroom_2601_librivox/brideandgroom_1_hare_64kb.mp3",
               "length_ms": 3506000,
+              "readers": [
+                "alan-mapstone",
+                "greg-giordano",
+                "larry-wilson",
+                "tomas-peter",
+                "jenn-broda",
+                "mleigh",
+                "stacey-malcolm",
+                "beeswaxcandle",
+                "lindsay-ann-cameron",
+                "agnes-robert-behr"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/brideandgroom_2601_librivox/brideandgroom_2_hare_64kb.mp3",
               "length_ms": 2708000,
+              "readers": [
+                "alan-mapstone",
+                "greg-giordano",
+                "larry-wilson",
+                "tomas-peter",
+                "april6090",
+                "jenn-broda",
+                "mleigh",
+                "stacey-malcolm",
+                "beeswaxcandle",
+                "lindsay-ann-cameron",
+                "agnes-robert-behr"
+              ],
               "start_ms": 3506000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/brideandgroom_2601_librivox/brideandgroom_3_hare_64kb.mp3",
               "length_ms": 1853000,
+              "readers": [
+                "alan-mapstone",
+                "greg-giordano",
+                "larry-wilson",
+                "tomas-peter",
+                "april6090",
+                "jenn-broda",
+                "mleigh",
+                "stacey-malcolm",
+                "beeswaxcandle",
+                "agnes-robert-behr"
+              ],
               "start_ms": 6214000,
               "title": "Act 3"
             }
@@ -2589,7 +2649,11 @@
           "cover_url": "https://archive.org/download/brideandgroom_2601_librivox/brideandgroom_2601.jpg",
           "id": "alan-mapstone",
           "language": "en",
+          "librivox_genres": [
+            "Comedy"
+          ],
           "librivox_id": 20362,
+          "librivox_title": "Bride and Groom",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/bride-and-groom-by-walter-ben-hare/",
@@ -10362,7 +10426,11 @@
           "cover_url": "https://archive.org/download/bridgebuilders_1608_librivox/bridge_builders_1608.jpg",
           "id": "tony-addison",
           "language": "en",
+          "librivox_genres": [
+            "Literary Fiction"
+          ],
           "librivox_id": 11152,
+          "librivox_title": "Bridge Builders",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-bridge-builders-by-rudyard-kipling/",
@@ -12022,156 +12090,260 @@
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_00_cooper_64kb.mp3",
               "length_ms": 193000,
+              "readers": [
+                "tzieger"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 - Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_01_cooper_64kb.mp3",
               "length_ms": 448000,
+              "readers": [
+                "tzieger"
+              ],
+              "section_number": 1,
               "start_ms": 193000,
               "title": "01 - Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_02_cooper_64kb.mp3",
               "length_ms": 189000,
+              "readers": [
+                "tzieger"
+              ],
+              "section_number": 2,
               "start_ms": 641000,
               "title": "02 - I. The Arch of Science"
             },
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_03_cooper_64kb.mp3",
               "length_ms": 185000,
+              "readers": [
+                "tzieger"
+              ],
+              "section_number": 3,
               "start_ms": 830000,
               "title": "03 - II. The Arch of Oliver Cromwell"
             },
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_04_cooper_64kb.mp3",
               "length_ms": 205000,
+              "readers": [
+                "tzieger"
+              ],
+              "section_number": 4,
               "start_ms": 1015000,
               "title": "04 - III. The Arch of the French Revolution"
             },
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_05_cooper_64kb.mp3",
               "length_ms": 507000,
+              "readers": [
+                "tzieger"
+              ],
+              "section_number": 5,
               "start_ms": 1220000,
               "title": "05 - IV. The Arch of Martin Luther"
             },
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_06_cooper_64kb.mp3",
               "length_ms": 201000,
+              "readers": [
+                "tzieger"
+              ],
+              "section_number": 6,
               "start_ms": 1727000,
               "title": "06 - V. The Arch of the Invention of Printing"
             },
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_07_cooper_64kb.mp3",
               "length_ms": 284000,
+              "readers": [
+                "tzieger"
+              ],
+              "section_number": 7,
               "start_ms": 1928000,
               "title": "07 - VI. The Arch of John Wyckliffe"
             },
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_08_cooper_64kb.mp3",
               "length_ms": 510000,
+              "readers": [
+                "tzieger"
+              ],
+              "section_number": 8,
               "start_ms": 2212000,
               "title": "08 - VII. The Arch of Magna Charta"
             },
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_09_cooper_64kb.mp3",
               "length_ms": 297000,
+              "readers": [
+                "tzieger"
+              ],
+              "section_number": 9,
               "start_ms": 2722000,
               "title": "09 - VIII. The Arch of the Crusades"
             },
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_10_cooper_64kb.mp3",
               "length_ms": 347000,
+              "readers": [
+                "tzieger"
+              ],
+              "section_number": 10,
               "start_ms": 3019000,
               "title": "10 - IX. Arch of William the Conqueror"
             },
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_11_cooper_64kb.mp3",
               "length_ms": 441000,
+              "readers": [
+                "tzieger"
+              ],
+              "section_number": 11,
               "start_ms": 3366000,
               "title": "11 - X. The Arch of Darkness"
             },
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_12_cooper_64kb.mp3",
               "length_ms": 307000,
+              "readers": [
+                "tzieger"
+              ],
+              "section_number": 12,
               "start_ms": 3807000,
               "title": "12 - XI. The Arch of King Alfred"
             },
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_13_cooper_64kb.mp3",
               "length_ms": 254000,
+              "readers": [
+                "tzieger"
+              ],
+              "section_number": 13,
               "start_ms": 4114000,
               "title": "13 - XII. The Arch of Charlemagne"
             },
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_14_cooper_64kb.mp3",
               "length_ms": 499000,
+              "readers": [
+                "tzieger"
+              ],
+              "section_number": 14,
               "start_ms": 4368000,
               "title": "14 - XIII. The Arch of Mohammed"
             },
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_15_cooper_64kb.mp3",
               "length_ms": 281000,
+              "readers": [
+                "tzieger"
+              ],
+              "section_number": 15,
               "start_ms": 4867000,
               "title": "15 - XIV. The Arch of Augustine"
             },
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_16_cooper_64kb.mp3",
               "length_ms": 217000,
+              "readers": [
+                "tzieger"
+              ],
+              "section_number": 16,
               "start_ms": 5148000,
               "title": "16 - XV. The Arch of Earthquake"
             },
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_17_cooper_64kb.mp3",
               "length_ms": 713000,
+              "readers": [
+                "tzieger"
+              ],
+              "section_number": 17,
               "start_ms": 5365000,
               "title": "17 - XVI. The Arch of Constantine the Great"
             },
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_18_cooper_64kb.mp3",
               "length_ms": 252000,
+              "readers": [
+                "brett-w-downey"
+              ],
+              "section_number": 18,
               "start_ms": 6078000,
               "title": "18 - XVII. The Arch of Persecution"
             },
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_19_cooper_64kb.mp3",
               "length_ms": 380000,
+              "readers": [
+                "brett-w-downey"
+              ],
+              "section_number": 19,
               "start_ms": 6330000,
               "title": "19 - XVIII. and XIX. The Arch of The Fathers; The Arch of The Apostles"
             },
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_20_cooper_64kb.mp3",
               "length_ms": 1316000,
+              "readers": [
+                "brett-w-downey"
+              ],
+              "section_number": 20,
               "start_ms": 6710000,
               "title": "20 - XX. \"Leben Jesu\": Dr. David Friedrich Strauss"
             },
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_21_cooper_64kb.mp3",
               "length_ms": 529000,
+              "readers": [
+                "brett-w-downey"
+              ],
+              "section_number": 21,
               "start_ms": 8026000,
               "title": "21 - XXI. Matthew's Gospel"
             },
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_22_cooper_64kb.mp3",
               "length_ms": 1806000,
+              "readers": [
+                "brett-w-downey"
+              ],
+              "section_number": 22,
               "start_ms": 8555000,
               "title": "22 - XXII. Mark's Gospel"
             },
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_23_cooper_64kb.mp3",
               "length_ms": 1006000,
+              "readers": [
+                "brett-w-downey"
+              ],
+              "section_number": 23,
               "start_ms": 10361000,
               "title": "23 - XXIII. Luke's Gospel"
             },
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_24_cooper_64kb.mp3",
               "length_ms": 629000,
+              "readers": [
+                "brett-w-downey"
+              ],
+              "section_number": 24,
               "start_ms": 11367000,
               "title": "24 - XXIV. John's Gospel"
             },
             {
               "audio_url": "https://www.archive.org/download/bridge_history_1111_librivox/bridgeofhistory_25_cooper_64kb.mp3",
               "length_ms": 2262000,
+              "readers": [
+                "brett-w-downey"
+              ],
+              "section_number": 25,
               "start_ms": 11996000,
               "title": "25 - XXV. The Concluding Evidences"
             }
@@ -12180,7 +12352,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt24/Bridge_History_Gulf_Time_1211.jpg",
           "id": "tzieger",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "History",
+            "Religion"
+          ],
           "librivox_id": 5090,
+          "librivox_title": "Bridge of History Over the Gulf of Time: A Popular View of the Historical Evidence for the Truth of Christianity",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-bridge-of-history-over-the-gulf-of-time-by-thomas-cooper/",

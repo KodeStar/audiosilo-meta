@@ -253,30 +253,125 @@
             {
               "audio_url": "https://www.archive.org/download/birthofmerlin_2103_librivox/birthofmerlin_1_rowley_64kb.mp3",
               "length_ms": 1523000,
+              "readers": [
+                "algy-pug",
+                "alan-mapstone",
+                "lydia",
+                "david-purdy",
+                "tomas-peter",
+                "jim-locke",
+                "mike-manolakes",
+                "linda-olsen-fitak",
+                "jenn-broda",
+                "adrian-stephens",
+                "grace-buchanan",
+                "andrew-gaunce",
+                "quin-herron",
+                "vocalpenguin"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/birthofmerlin_2103_librivox/birthofmerlin_2_rowley_64kb.mp3",
               "length_ms": 2183000,
+              "readers": [
+                "algy-pug",
+                "toddhw",
+                "hamlet",
+                "cathar-maiden",
+                "sonia",
+                "david-purdy",
+                "tomas-peter",
+                "jim-locke",
+                "mike-manolakes",
+                "jenn-broda",
+                "adrian-stephens",
+                "grace-buchanan",
+                "andrew-gaunce",
+                "quin-herron",
+                "vocalpenguin",
+                "jberkhouse",
+                "scott-mckinley",
+                "tchaikovsky",
+                "derek-trial",
+                "joanna-michal-hoyt",
+                "cassiopeiasparks"
+              ],
               "start_ms": 1523000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/birthofmerlin_2103_librivox/birthofmerlin_3_rowley_64kb.mp3",
               "length_ms": 2814000,
+              "readers": [
+                "availle",
+                "algy-pug",
+                "toddhw",
+                "alan-mapstone",
+                "greg-giordano",
+                "phil-schempf",
+                "lydia",
+                "hamlet",
+                "sonia",
+                "david-purdy",
+                "tomas-peter",
+                "jim-locke",
+                "mike-manolakes",
+                "linda-olsen-fitak",
+                "jenn-broda",
+                "adrian-stephens",
+                "quin-herron",
+                "vocalpenguin",
+                "jberkhouse",
+                "scott-mckinley",
+                "tchaikovsky",
+                "derek-trial",
+                "cassiopeiasparks"
+              ],
               "start_ms": 3706000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/birthofmerlin_2103_librivox/birthofmerlin_4_rowley_64kb.mp3",
               "length_ms": 2067000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "hamlet",
+                "sonia",
+                "david-purdy",
+                "tomas-peter",
+                "devorah-allen",
+                "craig-franklin",
+                "wayne-cooke",
+                "grace-buchanan",
+                "seaquill",
+                "quin-herron",
+                "jberkhouse",
+                "scott-mckinley",
+                "derek-trial"
+              ],
               "start_ms": 6520000,
               "title": "Act 4"
             },
             {
               "audio_url": "https://www.archive.org/download/birthofmerlin_2103_librivox/birthofmerlin_5_rowley_64kb.mp3",
               "length_ms": 955000,
+              "readers": [
+                "algy-pug",
+                "alan-mapstone",
+                "phil-schempf",
+                "hamlet",
+                "sonia",
+                "david-purdy",
+                "tomas-peter",
+                "jim-locke",
+                "jenn-broda",
+                "quin-herron",
+                "vocalpenguin",
+                "jberkhouse"
+              ],
               "start_ms": 8587000,
               "title": "Act 5"
             }
@@ -285,7 +380,11 @@
           "cover_url": "https://archive.org/download/birthofmerlin_2103_librivox/birth_merlin_2103.jpg",
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Drama"
+          ],
           "librivox_id": 15493,
+          "librivox_title": "Birth of Merlin: The Childe Hath Found His Father",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-birth-of-merlin-the-childe-hath-found-his-father-by-william-shakespeare/",
@@ -428,7 +527,11 @@
           "cover_url": "https://archive.org/download/birth_professional_rugby_league_1710_librivox/birth_professional_rugby_1710.jpg",
           "id": "phil-benson",
           "language": "en",
+          "librivox_genres": [
+            "Sports & Recreation"
+          ],
           "librivox_id": 12226,
+          "librivox_title": "Birth of Professional Rugby League in Australia: A selection from the Sydney Morning Herald (1907-08)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/birth-professional-rugby-league-australia-by-sydney-morning-herald/",
@@ -4688,9 +4791,21 @@
           ],
           "copyright_year": 1923,
           "cover_url": "https://archive.org/download/librivoxcdcoverart36/birthoftragedy_2005.jpg",
+          "credits": [
+            {
+              "person": "william-haussmann",
+              "role": "translator"
+            }
+          ],
           "id": "jim-locke",
           "language": "en",
+          "librivox_genres": [
+            "Literary Criticism",
+            "Philosophy",
+            "Early Modern"
+          ],
           "librivox_id": 14761,
+          "librivox_title": "Birth of Tragedy",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/birth-of-tragedy-by-friedrich-nietzsche/",
@@ -4750,183 +4865,224 @@
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_00_nietzsche_64kb.mp3",
               "length_ms": 2680000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction by E. Förster-Nietzsche"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_01_nietzsche_64kb.mp3",
               "length_ms": 2185000,
+              "section_number": 1,
               "start_ms": 2680000,
               "title": "An Attempt At Self-Criticism"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_02_nietzsche_64kb.mp3",
               "length_ms": 195000,
+              "section_number": 2,
               "start_ms": 4865000,
               "title": "Foreword To Richard Wagner"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_03_nietzsche_64kb.mp3",
               "length_ms": 875000,
+              "section_number": 3,
               "start_ms": 5060000,
               "title": "Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_04_nietzsche_64kb.mp3",
               "length_ms": 640000,
+              "section_number": 4,
               "start_ms": 5935000,
               "title": "Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_05_nietzsche_64kb.mp3",
               "length_ms": 645000,
+              "section_number": 5,
               "start_ms": 6575000,
               "title": "Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_06_nietzsche_64kb.mp3",
               "length_ms": 731000,
+              "section_number": 6,
               "start_ms": 7220000,
               "title": "Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_07_nietzsche_64kb.mp3",
               "length_ms": 1100000,
+              "section_number": 7,
               "start_ms": 7951000,
               "title": "Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_08_nietzsche_64kb.mp3",
               "length_ms": 720000,
+              "section_number": 8,
               "start_ms": 9051000,
               "title": "Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_09_nietzsche_64kb.mp3",
               "length_ms": 975000,
+              "section_number": 9,
               "start_ms": 9771000,
               "title": "Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_10_nietzsche_64kb.mp3",
               "length_ms": 1240000,
+              "section_number": 10,
               "start_ms": 10746000,
               "title": "Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_11_nietzsche_64kb.mp3",
               "length_ms": 1105000,
+              "section_number": 11,
               "start_ms": 11986000,
               "title": "Chapter 9"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_12_nietzsche_64kb.mp3",
               "length_ms": 655000,
+              "section_number": 12,
               "start_ms": 13091000,
               "title": "Chapter 10"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_13_nietzsche_64kb.mp3",
               "length_ms": 1025000,
+              "section_number": 13,
               "start_ms": 13746000,
               "title": "Chapter 11"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_14_nietzsche_64kb.mp3",
               "length_ms": 1090000,
+              "section_number": 14,
               "start_ms": 14771000,
               "title": "Chapter 12"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_15_nietzsche_64kb.mp3",
               "length_ms": 625000,
+              "section_number": 15,
               "start_ms": 15861000,
               "title": "Chapter 13"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_16_nietzsche_64kb.mp3",
               "length_ms": 835000,
+              "section_number": 16,
               "start_ms": 16486000,
               "title": "Chapter 14"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_17_nietzsche_64kb.mp3",
               "length_ms": 975000,
+              "section_number": 17,
               "start_ms": 17321000,
               "title": "Chapter 15"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_18_nietzsche_64kb.mp3",
               "length_ms": 1110000,
+              "section_number": 18,
               "start_ms": 18296000,
               "title": "Chapter 16"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_19_nietzsche_64kb.mp3",
               "length_ms": 1065000,
+              "section_number": 19,
               "start_ms": 19406000,
               "title": "Chapter 17"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_20_nietzsche_64kb.mp3",
               "length_ms": 792000,
+              "section_number": 20,
               "start_ms": 20471000,
               "title": "Chapter 18"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_21_nietzsche_64kb.mp3",
               "length_ms": 1470000,
+              "section_number": 21,
               "start_ms": 21263000,
               "title": "Chapter 19"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_22_nietzsche_64kb.mp3",
               "length_ms": 530000,
+              "section_number": 22,
               "start_ms": 22733000,
               "title": "Chapter 20"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_23_nietzsche_64kb.mp3",
               "length_ms": 1285000,
+              "section_number": 23,
               "start_ms": 23263000,
               "title": "Chapter 21"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_24_nietzsche_64kb.mp3",
               "length_ms": 820000,
+              "section_number": 24,
               "start_ms": 24548000,
               "title": "Chapter 22"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_25_nietzsche_64kb.mp3",
               "length_ms": 820000,
+              "section_number": 25,
               "start_ms": 25368000,
               "title": "Chapter 23"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_26_nietzsche_64kb.mp3",
               "length_ms": 835000,
+              "section_number": 26,
               "start_ms": 26188000,
               "title": "Chapter 24"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_27_nietzsche_64kb.mp3",
               "length_ms": 307000,
+              "section_number": 27,
               "start_ms": 27023000,
               "title": "Chapter 25"
             },
             {
               "audio_url": "https://www.archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_28_nietzsche_64kb.mp3",
               "length_ms": 997000,
+              "section_number": 28,
               "start_ms": 27330000,
               "title": "Appendix and Translator's Note"
             }
           ],
           "copyright_year": 1910,
           "cover_url": "https://archive.org/download/birthoftragedy_2102_librivox/birthoftragedy_2102.jpg",
+          "credits": [
+            {
+              "person": "william-haussmann",
+              "role": "translator"
+            }
+          ],
           "id": "john-van-stan",
           "language": "en",
+          "librivox_genres": [
+            "Performing Arts",
+            "Philosophy",
+            "Social Science (Culture & Anthropology)"
+          ],
           "librivox_id": 16088,
+          "librivox_title": "Birth of Tragedy; or, Hellenism and Pessimism (Version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-birth-of-tragedy-or-hellenism-and-pessimism-version-2-by-friedrich-nietzsche/",
@@ -5102,7 +5258,11 @@
           "cover_url": "https://archive.org/download/birthyugoslavia1_2312_librivox/birthyugoslavia1_2312_itemimage.jpg",
           "id": "eastcentralminnesota",
           "language": "en",
+          "librivox_genres": [
+            "Modern (20th C)"
+          ],
           "librivox_id": 18524,
+          "librivox_title": "Birth of Yugoslavia, Volume 1",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-birth-of-yugoslavia-volume-1-by-henry-baerlein/",
@@ -5276,7 +5436,13 @@
           "cover_url": "https://archive.org/download/birthyugoslavia2_2412_librivox/birthyugoslavia2_2412.jpg",
           "id": "eastcentralminnesota",
           "language": "en",
+          "librivox_genres": [
+            "War & Military",
+            "Political Science",
+            "Modern (19th C)"
+          ],
           "librivox_id": 20034,
+          "librivox_title": "Birth of Yugoslavia, Volume 2",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-birth-of-yugoslavia-2-by-henry-baerlein/",
@@ -6129,84 +6295,126 @@
             {
               "audio_url": "https://www.archive.org/download/birthday_1006_librivox/birthday_rossetti_cs_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "cori-samuel"
+              ],
               "start_ms": 0,
               "title": "A Birthday - Read by CS"
             },
             {
               "audio_url": "https://www.archive.org/download/birthday_1006_librivox/birthday_rossetti_djg_64kb.mp3",
               "length_ms": 53000,
+              "readers": [
+                "david-goldfarb"
+              ],
               "start_ms": 65000,
               "title": "A Birthday - Read by DJG"
             },
             {
               "audio_url": "https://www.archive.org/download/birthday_1006_librivox/birthday_rossetti_drewmac_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "drewmac"
+              ],
               "start_ms": 118000,
               "title": "A Birthday - Read by DREWMAC"
             },
             {
               "audio_url": "https://www.archive.org/download/birthday_1006_librivox/birthday_rossetti_eef_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "mr-frerking"
+              ],
               "start_ms": 187000,
               "title": "A Birthday - Read by EEF"
             },
             {
               "audio_url": "https://www.archive.org/download/birthday_1006_librivox/birthday_rossetti_ghs_64kb.mp3",
               "length_ms": 61000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 242000,
               "title": "A Birthday - Read by GHS"
             },
             {
               "audio_url": "https://www.archive.org/download/birthday_1006_librivox/birthday_rossetti_klh_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "kristin-hughes-1974-2021"
+              ],
               "start_ms": 303000,
               "title": "A Birthday - Read by KLH"
             },
             {
               "audio_url": "https://www.archive.org/download/birthday_1006_librivox/birthday_rossetti_lah_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 368000,
               "title": "A Birthday - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/birthday_1006_librivox/birthday_rossetti_lkp_64kb.mp3",
               "length_ms": 61000,
+              "readers": [
+                "lucy-perry"
+              ],
               "start_ms": 434000,
               "title": "A Birthday - Read by LKP"
             },
             {
               "audio_url": "https://www.archive.org/download/birthday_1006_librivox/birthday_rossetti_llw_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 495000,
               "title": "A Birthday - Read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/birthday_1006_librivox/birthday_rossetti_mfs_64kb.mp3",
               "length_ms": 59000,
+              "readers": [
+                "mark-f-smith"
+              ],
               "start_ms": 561000,
               "title": "A Birthday - Read by MFS"
             },
             {
               "audio_url": "https://www.archive.org/download/birthday_1006_librivox/birthday_rossetti_mlb_64kb.mp3",
               "length_ms": 61000,
+              "readers": [
+                "mike-buckley"
+              ],
               "start_ms": 620000,
               "title": "A Birthday - Read by MLB"
             },
             {
               "audio_url": "https://www.archive.org/download/birthday_1006_librivox/birthday_rossetti_rn_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 681000,
               "title": "A Birthday - Read by RN"
             },
             {
               "audio_url": "https://www.archive.org/download/birthday_1006_librivox/birthday_rossetti_rvb_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "sweetlilbirdy"
+              ],
               "start_ms": 753000,
               "title": "A Birthday - Read by RVB"
             },
             {
               "audio_url": "https://www.archive.org/download/birthday_1006_librivox/birthday_rossetti_vg_64kb.mp3",
               "length_ms": 63000,
+              "readers": [
+                "victoria-grace"
+              ],
               "start_ms": 821000,
               "title": "A Birthday - Read by VG"
             }
@@ -6214,7 +6422,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt27/Birthday_1301.jpg",
           "id": "cori-samuel",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 4414,
+          "librivox_title": "Birthday",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-birthday-by-christina-rossetti/",
@@ -7451,7 +7664,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt4/Birthday_Party_Story_Little_Folks_1109.jpg",
           "id": "lucy-burgoyne-1950-2014",
           "language": "en",
+          "librivox_genres": [
+            "Family"
+          ],
           "librivox_id": 1223,
+          "librivox_title": "Birthday Party, A Story for Little Folks",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-birthday-party-a-story-for-little-folks-by-oliver-optic/",
@@ -9226,7 +9443,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt8/Birthplace_1104.jpg",
           "id": "nicholas-clifford-1930-2019",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 5413,
+          "librivox_title": "Birthplace",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-birthplace-by-henry-james/",
