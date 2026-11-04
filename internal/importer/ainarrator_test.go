@@ -138,6 +138,8 @@ func TestIsAINarratorName(t *testing.T) {
 		"Voce Artificiale",
 		"Voz virual",
 		"Digital Voices",
+		"Eleven Labs",
+		"eleven labs",
 		// Diacritics may arrive decomposed (NFD) from a Mac-side exporter.
 		norm.NFD.String("Voz sintética"),
 		// The "AI Voice <persona>" prefix family, including the bare form.
@@ -188,6 +190,8 @@ func TestIsAINarratorName(t *testing.T) {
 		// A name that merely ENDS like the suffix; the word boundary before
 		// "voice replica" is what saves it.
 		"Ivoice Replica", "Replica",
+		// The vendor is matched as a whole name, so a word of it is no match.
+		"Eleven", "Labs", "Eleven Labs Smith",
 		// Ordinary credits, including a corporate one.
 		"Stephen Fry", "Full Cast", "Audible Studios", "",
 	}
@@ -672,6 +676,7 @@ func TestSyntheticNarratorNameFoldsEveryShape(t *testing.T) {
 		"Steve Stewart's Voice Replica",
 		"Santiago (Voz de IA)", "Elise (AI)",
 		"Virtual Voice - narrator",
+		"Eleven Labs", "Eleven Labs - narrator",
 	} {
 		got, folded := SyntheticNarratorName(name)
 		if !folded || got != syntheticVoiceName {

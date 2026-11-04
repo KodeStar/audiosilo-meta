@@ -566,6 +566,28 @@ func TestLoadRuleViolations(t *testing.T) {
 			want: "duplicate ISBN 9780000000001",
 		},
 		{
+			// A recording holding a work's print ISBN would answer lookup?isbn= as
+			// an audiobook edition, under either spelling and on any work.
+			name: "a recording carrying a work's print ISBN",
+			mutate: func(f map[string]string) {
+				const rec = "works/bo/book-one/recordings/rec-one.json"
+				f[rec] = strings.Replace(f[rec], `"id":"rec-one"`, `"id":"rec-one","isbn":["9780870111174"]`, 1)
+				const work = "works/bo/book-one/work.json"
+				f[work] = strings.Replace(f[work], `"id":"book-one"`, `"id":"book-one","xref":{"isbn":["9780870111174"]}`, 1)
+			},
+			want: "ISBN 9780870111174 is a work's print ISBN",
+		},
+		{
+			name: "a recording carrying the other spelling of a work's print ISBN",
+			mutate: func(f map[string]string) {
+				const rec = "works/bo/book-one/recordings/rec-one.json"
+				f[rec] = strings.Replace(f[rec], `"id":"rec-one"`, `"id":"rec-one","isbn":["0870111175"]`, 1)
+				const work = "works/bo/book-one/work.json"
+				f[work] = strings.Replace(f[work], `"id":"book-one"`, `"id":"book-one","xref":{"isbn":["9780870111174"]}`, 1)
+			},
+			want: "ISBN 0870111175 is a work's print ISBN",
+		},
+		{
 			// An ISBN object must state its region: an unstated region already
 			// has a spelling (the bare string), and two spellings for one state
 			// would make canonical form ambiguous.
@@ -1187,4 +1209,18 @@ func TestLoadRefusesANonDirectoryRoot(t *testing.T) {
 			t.Errorf("problems do not say what is wrong:\n%s", joinProblems(res.Problems))
 		}
 	})
+}
+
+// A work's print ISBN beside a recording's own different ISBN is the ordinary shape.
+func TestRecordingWithItsOwnISBNBesidePrintISBNPasses(t *testing.T) {
+	dir := t.TempDir()
+	files := baseValid()
+	const rec = "works/bo/book-one/recordings/rec-one.json"
+	files[rec] = strings.Replace(files[rec], `"id":"rec-one"`, `"id":"rec-one","isbn":["9781473647633"]`, 1)
+	const work = "works/bo/book-one/work.json"
+	files[work] = strings.Replace(files[work], `"id":"book-one"`, `"id":"book-one","xref":{"isbn":["9780870111174"]}`, 1)
+	writeEntities(t, dir, files)
+	if res := Load(dir); !res.OK() {
+		t.Errorf("problems:\n%s", joinProblems(res.Problems))
+	}
 }

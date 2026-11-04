@@ -4303,9 +4303,6 @@
           "added_at": "2026-07-25T17:12:12+01:00",
           "cover_url": "https://books.google.com/books/content?vid=ISBN9780812542257&printsec=frontcover&img=1&zoom=1&source=gbs_api",
           "id": "john-polk-1982",
-          "isbn": [
-            "9780812542257"
-          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -4318,6 +4315,11 @@
               "imported_at": "2026-07-25",
               "ref": "isbn:9780812542257",
               "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-11-04",
+              "ref": "https://www.booktopia.com.au/prod9780812542257.html",
+              "type": "user"
             }
           ],
           "work": "conan-the-invincible"
@@ -4328,9 +4330,19 @@
           "imported_at": "2026-07-25",
           "ref": "isbn:9780812542257",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-11-04",
+          "ref": "https://www.booktopia.com.au/prod9780812542257.html",
+          "type": "user"
         }
       ],
-      "title": "Conan the Invincible"
+      "title": "Conan the Invincible",
+      "xref": {
+        "isbn": [
+          "9780812542257"
+        ]
+      }
     },
     "conan-the-unconquered": {
       "added_at": "2026-07-25T17:12:12+01:00",
@@ -4346,9 +4358,6 @@
           "added_at": "2026-07-25T17:12:12+01:00",
           "cover_url": "https://covers.openlibrary.org/b/isbn/9780523480534-L.jpg?default=false",
           "id": "john-polk-1983",
-          "isbn": [
-            "9780523480534"
-          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -4361,6 +4370,11 @@
               "imported_at": "2026-07-25",
               "ref": "isbn:9780523480534",
               "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-11-04",
+              "ref": "https://fictiondb.com/title/conan-the-unconquered~robert-jordan~116334.htm",
+              "type": "user"
             }
           ],
           "work": "conan-the-unconquered"
@@ -4371,9 +4385,19 @@
           "imported_at": "2026-07-25",
           "ref": "isbn:9780523480534",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-11-04",
+          "ref": "https://fictiondb.com/title/conan-the-unconquered~robert-jordan~116334.htm",
+          "type": "user"
         }
       ],
-      "title": "Conan the Unconquered"
+      "title": "Conan the Unconquered",
+      "xref": {
+        "isbn": [
+          "9780523480534"
+        ]
+      }
     },
     "conceal": {
       "added_at": "2026-07-29",

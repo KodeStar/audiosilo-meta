@@ -797,6 +797,7 @@ var aiNarratorNames = map[string]bool{
 	"virtuelle stimme": true, // 1 - German
 	"voz virual":       true, // 1 - a Spanish typo the dump really carries
 	"digital voices":   true, // 1 - Loudly, an AI audio publisher
+	"eleven labs":      true, // ElevenLabs, a TTS vendor: 2 credits in the catalogue, not the dump
 }
 
 // aiNarratorPrefix is the one prefix family: Audible's "AI Voice <persona>"
@@ -1156,6 +1157,9 @@ var placeholderCreditNames = map[string]bool{
 	"tba":             true, // 10
 	"tbc":             true, // 4
 	"n/a":             true, // 1
+	// A retail export's empty field printed into the credit: three Caedmon
+	// Shakespeare recordings, each with its named lead beside it.
+	"(null) cast": true, // 3, in the catalogue rather than the dump
 }
 
 // placeholderCreditPhrases are the two MULTI-WORD placeholder statements,
