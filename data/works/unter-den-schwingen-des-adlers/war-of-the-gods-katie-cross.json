@@ -9342,132 +9342,253 @@
       ],
       "title": "War of the Worlds (Dramatized)"
     },
-    "war-of-the-worlds-robert-silverberg": {
-      "added_at": "2026-09-24",
+    "war-of-the-worlds-global-dispatches": {
+      "added_at": "2026-11-04",
       "authors": [
-        "robert-silverberg"
+        "kevin-j-anderson"
       ],
-      "id": "war-of-the-worlds-robert-silverberg",
+      "credits": [
+        {
+          "person": "kevin-j-anderson",
+          "role": "editor"
+        }
+      ],
+      "genres": [
+        "science-fiction",
+        "short-stories"
+      ],
+      "id": "war-of-the-worlds-global-dispatches",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
         "macleod-andrews-2013": {
           "abridged": false,
-          "added_at": "2026-09-24",
+          "added_at": "2026-11-04",
           "asin": [
+            {
+              "asin": "1480536407",
+              "region": "jp"
+            },
             {
               "asin": "B00EO89HN0",
               "region": "us"
-            },
-            {
-              "asin": "B00FMUQ0UC",
-              "region": "au"
-            },
-            {
-              "asin": "B0CBMSZRV2",
-              "region": "br"
-            },
-            {
-              "asin": "B072FF7LVN",
-              "region": "ca"
-            },
-            {
-              "asin": "B00EO8C9NA",
-              "region": "de"
-            },
-            {
-              "asin": "B087N77WCW",
-              "region": "es"
             },
             {
               "asin": "B00EO8BLEI",
               "region": "fr"
             },
             {
-              "asin": "1480536407",
-              "region": "jp"
-            },
-            {
               "asin": "B00EO8BTEK",
               "region": "uk"
             },
             {
+              "asin": "B00EO8C9NA",
+              "region": "de"
+            },
+            {
+              "asin": "B00FMUQ0UC",
+              "region": "au"
+            },
+            {
+              "asin": "B072FF7LVN",
+              "region": "ca"
+            },
+            {
               "asin": "B07JG1GC8Y",
               "region": "in"
+            },
+            {
+              "asin": "B087N77WCW",
+              "region": "es"
+            },
+            {
+              "asin": "B0CBMSZRV2",
+              "region": "br"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 170945,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1505071,
+              "start_ms": 170945,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2353110,
+              "start_ms": 1676016,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3609170,
+              "start_ms": 4029126,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1977086,
+              "start_ms": 7638296,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3739156,
+              "start_ms": 9615382,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1735088,
+              "start_ms": 13354538,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2721100,
+              "start_ms": 15089626,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2609133,
+              "start_ms": 17810726,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2608112,
+              "start_ms": 20419859,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2008108,
+              "start_ms": 23027971,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1742100,
+              "start_ms": 25036079,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2146128,
+              "start_ms": 26778179,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 2590093,
+              "start_ms": 28924307,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1425055,
+              "start_ms": 31514400,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 2783097,
+              "start_ms": 32939455,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 2246113,
+              "start_ms": 35722552,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 3580145,
+              "start_ms": 37968665,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1318058,
+              "start_ms": 41548810,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 635019,
+              "start_ms": 42866868,
+              "title": "Chapter 20"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91tQPLT3wRL.jpg",
           "id": "macleod-andrews-2013",
+          "isbn": [
+            "9781480536401"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
             "macleod-andrews"
           ],
           "publisher": "Brilliance Audio",
-          "release_date": "2013",
-          "runtime_min": 725,
+          "release_date": "2013-09-24",
+          "runtime_min": 724,
           "sources": [
             {
-              "imported_at": "2026-09-24",
-              "ref": "B00EO89HN0",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-10-07",
-              "ref": "B00FMUQ0UC",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-07",
-              "ref": "B0CBMSZRV2",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-07",
-              "ref": "B072FF7LVN",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-07",
-              "ref": "B00EO8C9NA",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-07",
-              "ref": "B087N77WCW",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-07",
-              "ref": "B00EO8BLEI",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-07",
+              "imported_at": "2026-11-04",
               "ref": "1480536407",
               "type": "libex-import"
             },
             {
-              "imported_at": "2026-10-07",
+              "imported_at": "2026-11-04",
+              "ref": "B00EO89HN0",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-04",
+              "ref": "B00EO8BLEI",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-04",
               "ref": "B00EO8BTEK",
               "type": "libex-import"
             },
             {
-              "imported_at": "2026-10-27",
+              "imported_at": "2026-11-04",
+              "ref": "B00EO8C9NA",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-04",
+              "ref": "B00FMUQ0UC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-04",
+              "ref": "B072FF7LVN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-04",
               "ref": "B07JG1GC8Y",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-04",
+              "ref": "B087N77WCW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-04",
+              "ref": "B0CBMSZRV2",
               "type": "libex-import"
             }
           ],
-          "work": "war-of-the-worlds-robert-silverberg"
+          "work": "war-of-the-worlds-global-dispatches"
         }
       },
       "sources": [
         {
-          "imported_at": "2026-09-24",
+          "imported_at": "2026-11-04",
+          "ref": "1480536407",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-11-04",
           "ref": "B00EO89HN0",
-          "type": "audiosilo-books-import"
+          "type": "libex-import"
         }
       ],
-      "title": "War of the Worlds"
+      "title": "War of the Worlds: Global Dispatches"
     },
     "war-of-the-worlds-tripod": {
       "added_at": "2026-08-02",

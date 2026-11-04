@@ -944,10 +944,17 @@
             {
               "asin": "B079RZTN43",
               "region": "uk"
+            },
+            {
+              "asin": "B01KOQV6IE",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91kAbeAYumL.jpg",
           "id": "arliss-howard-2014",
+          "isbn": [
+            "9781473653382"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -975,6 +982,11 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B079RZTN43",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-04",
+              "ref": "B01KOQV6IE",
               "type": "libex-import"
             }
           ],
