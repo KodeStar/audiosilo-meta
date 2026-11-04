@@ -30,7 +30,7 @@ import (
 //     become that candidate's evidence; repeated until nothing more anchors, each
 //     round judged against the evidence as it stood when the round began.
 //  2. CLUSTER: the rest are grouped by shared author (personForm.same,
-//     transitively) and the groups taken largest first (ties by their smallest
+//     transitively, never joining a pair a review kept apart) and the groups taken largest first (ties by their smallest
 //     canonical key). A group joins the first catalogued candidate that ADMITS it
 //     (seriesAuthors.admits: open to the group, and not handed to the group's
 //     authors by its arrival), else the first series this batch founded that
@@ -810,38 +810,29 @@ func admitting(cands []*seriesCandidate, lo, hi candidateTier, admits func(*seri
 // authorClusters groups the claims at positions rest (into idx) by shared author,
 // transitively, and orders the groups largest first, ties by their smallest
 // canonical key. A claim with no individual author is a group of its own, and
-// claims of different languages are never grouped.
+// claims of different languages are never grouped. Nor are two people a review kept
+// apart (personGroups), through a co-author of both or a chain of spellings, and a
+// spelling of both is grouped with neither (reviewedBridges): each is judged on its
+// own evidence.
 func authorClusters(claims []nameClaim, idx, rest []int) [][]int {
-	parent := make(map[int]int, len(rest))
-	find := func(x int) int {
-		for parent[x] != x {
-			parent[x] = parent[parent[x]]
-			x = parent[x]
-		}
-		return x
-	}
-	union := func(a, b int) {
-		if ra, rb := find(a), find(b); ra != rb {
-			parent[ra] = rb
-		}
-	}
-	for _, k := range rest {
-		parent[k] = k
-	}
+	groups := newPersonGroups(len(idx))
 	// One representative claim per author slug IN ONE LANGUAGE, then the
 	// spelling rungs across the distinct slugs of that language: a cluster never
 	// spans two languages (languageCloses judges it by its lead claim), so one
 	// author's German and English rows are two clusters.
-	type authorKey struct{ lang, slug string }
 	bySlug := map[authorKey]int{}
 	var keys []authorKey
 	forms := map[authorKey]personForm{}
 	for _, k := range rest {
 		lang := claims[idx[k]].row.language
-		for _, f := range claims[idx[k]].row.individuals() {
+		people := claims[idx[k]].row.individuals()
+		for _, f := range people {
+			groups.hold(k, f) // every author first: a co-author's union must see them all
+		}
+		for _, f := range people {
 			key := authorKey{lang, f.slug}
 			if first, ok := bySlug[key]; ok {
-				union(k, first)
+				groups.union(k, first)
 				continue
 			}
 			bySlug[key] = k
@@ -855,16 +846,20 @@ func authorClusters(claims []nameClaim, idx, rest []int) [][]int {
 		}
 		return keys[a].slug < keys[b].slug
 	})
+	bridges := reviewedBridges(keys, forms)
 	for i := range keys {
+		if bridges[keys[i]] {
+			continue
+		}
 		for j := i + 1; j < len(keys) && keys[j].lang == keys[i].lang; j++ {
-			if forms[keys[i]].same(forms[keys[j]]) {
-				union(bySlug[keys[i]], bySlug[keys[j]])
+			if !bridges[keys[j]] && forms[keys[i]].same(forms[keys[j]]) {
+				groups.union(bySlug[keys[i]], bySlug[keys[j]])
 			}
 		}
 	}
 	grouped := map[int][]int{}
 	for _, k := range rest {
-		r := find(k)
+		r := groups.find(k)
 		grouped[r] = append(grouped[r], k)
 	}
 	out := make([][]int, 0, len(grouped))
@@ -878,6 +873,42 @@ func authorClusters(claims []nameClaim, idx, rest []int) [][]int {
 		}
 		return claims[idx[out[a][0]]].order < claims[idx[out[b][0]]].order
 	})
+	return out
+}
+
+// authorKey is one author slug in one language, as authorClusters groups them.
+type authorKey struct{ lang, slug string }
+
+// reviewedBridges is the keys that are a spelling of BOTH people of a reviewed pair
+// of their language ("A. George", with both Alex George and Dr. Alex George in the
+// claims). Nothing says which of the two such a spelling is, and the slug order the
+// rungs run in is no evidence: `dr-` sorts first, so it would hand "Robert E. Lee" to
+// Mrs. Robert Lee. So it takes no spelling union and its claims are judged as a
+// cluster of their own, after a larger cluster has founded: they then join whichever
+// of the two the series already belongs to, by the evidence. Nil, at the cost of one
+// scan, for a batch naming no reviewed person.
+func reviewedBridges(keys []authorKey, forms map[authorKey]personForm) map[authorKey]bool {
+	var out map[authorKey]bool
+	for i, a := range keys {
+		fa := forms[a]
+		if !fa.apart.names(fa.slug) {
+			continue
+		}
+		for _, b := range keys[i+1:] {
+			if b.lang != a.lang || !fa.apart.Has(fa.slug, b.slug) {
+				continue
+			}
+			for _, k := range keys {
+				f := forms[k]
+				if k.lang == a.lang && k != a && k != b && f.same(fa) && f.same(forms[b]) {
+					if out == nil {
+						out = map[authorKey]bool{}
+					}
+					out[k] = true
+				}
+			}
+		}
+	}
 	return out
 }
 

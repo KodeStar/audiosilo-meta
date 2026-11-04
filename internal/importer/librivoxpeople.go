@@ -40,8 +40,8 @@ package importer
 //     life years disagree, nor when the twin carries another author id and
 //     the credit states years of its own.
 //     d. a pair a reviewed merge-people rejection names (Options.Distinct) is
-//     two people in both directions: 1b reads it as kept apart, 1c does not
-//     resolve onto that twin.
+//     two people in both directions: 1b reads it as kept apart, judged by the
+//     records the two spellings land on, and 1c does not resolve onto that twin.
 //  2. SAME-NAME AUTHORS. An author id no person carries, whose name resolves to
 //     a catalogued person who is someone else, is not credited (and stamped)
 //     there. Someone else means: the person carries ANOTHER librivox_author_id
@@ -824,7 +824,9 @@ func (p *planner) librivoxFoldVerdict(bare string, cl *lvAuthorClaim, bySlug map
 	if fellBack {
 		return "", lvSame
 	}
-	if p.apart.Has(cl.slug, bareSlug) {
+	// The census's own veto, so the rule judges the records the two spellings land
+	// on (planner.landingsKeptApart), as the fold it stands in for does.
+	if p.credits.author.reviewedApart(cl.name, bare) {
 		return "", lvApart // a review recorded two people (Options.Distinct)
 	}
 	if others := bySlug[bareSlug]; len(others) > 0 {

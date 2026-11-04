@@ -1867,10 +1867,16 @@ type creditContext struct {
 // `dr-a-b-kovacs`, and the bare "AB Kovacs" on `a-b-kovacs`. The check reads the
 // initials decisions once they exist and, before then (the pre-pass cleans the
 // names it decides over), the committed record of a spelling's initials group,
-// which is what the decision names whenever one is committed - so the pre-pass and
-// the import refuse the same folds. A run with no reviewed people pair asks no
-// check at all, and one with them keeps only the committed survivors
-// (committedInitials) for it, never the census itself.
+// which is what the decision names whenever one is committed. A group holding no
+// committed spelling is the one place the two states differ, since the decision
+// can move a titled spelling onto a spelling only the batch holds, away from the
+// slug the pre-pass judged it by. So a REFUSAL is kept: a pair refused once stays
+// refused for the batch, and the import never makes a fold the pre-pass refused.
+// The other direction needs nothing kept: a fold the pre-pass allowed and the
+// decision now shows to be a reviewed pair is refused at import, the duplicate a
+// wrong merge is worth. A run with no reviewed people pair asks no check at all,
+// and one with them keeps only the committed survivors (committedInitials) and
+// its refusals for it, never the census itself.
 func (p *planner) creditContextOf(books []sourceBook) creditContext {
 	author, narrator := p.creditCensusesOf(books)
 	census := p.catalogueInitials()
@@ -1881,7 +1887,18 @@ func (p *planner) creditContextOf(books []sourceBook) creditContext {
 	var decided initialsSurvivors
 	if p.apart != nil {
 		committed := census.committed()
-		apart := func(a, b string) bool { return p.landingsKeptApart(decided, committed, a, b) }
+		refused := map[[2]string]bool{}
+		apart := func(a, b string) bool {
+			pair := [2]string{a, b}
+			if refused[pair] {
+				return true
+			}
+			if p.landingsKeptApart(decided, committed, a, b) {
+				refused[pair] = true
+				return true
+			}
+			return false
+		}
 		author.keptApart, narrator.keptApart = apart, apart
 	}
 	decided = p.decideInitialsOf(census, books, author, narrator)
@@ -2012,7 +2029,8 @@ func (p *planner) peopleKeptApart(a, b string) bool {
 }
 
 // landingsKeptApart is the reviewed-pair check the credit folds ask
-// (creditCensus.keptApart): a and b are kept apart when the slugs they spell are
+// (creditCensus.keptApart, through the batch's memory of its refusals,
+// creditContextOf): a and b are kept apart when the slugs they spell are
 // (peopleKeptApart) or the records they land on are (creditLanding).
 func (p *planner) landingsKeptApart(decided initialsSurvivors, committed committedInitials, a, b string) bool {
 	if p.peopleKeptApart(a, b) {

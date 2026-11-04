@@ -199,7 +199,9 @@ never noticed (ai-verify read only the metadiff summary). Two halves:
   resolved through redirects.json by `check.ResolveDistinct`), and so does the series
   same-person rule (`importer.PeopleApart`, read by the series-author fit and the
   intake form's work-slug, takeover and series gates): a reviewed pair is never one
-  author, so the doctor's book cannot join the novelist's series. metabuild's census and metaaudit's LOADER carry-through load
+  author, so the doctor's book cannot join the novelist's series, not even through a
+  third spelling of both ("A. George": the review is a never-join constraint inside
+  the grouping, `importer.personGroups`). metabuild's census and metaaudit's LOADER carry-through load
   without the decisions (neither is the census anyone reads).
 - **New advisories reach the automation.** On a pull request touching data/,
   `.github/scripts/advisory-delta.sh` runs the same metacheck binary over the base and
