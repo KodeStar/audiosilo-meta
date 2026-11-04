@@ -814,13 +814,7 @@ func runLibexFill(args []string) int {
 		targets = importer.SelectFillTargets(cat)
 	}
 	if strings.TrimSpace(*works) != "" {
-		set := map[string]bool{}
-		for _, w := range strings.Split(*works, ",") {
-			if w = strings.TrimSpace(w); w != "" {
-				set[w] = true
-			}
-		}
-		targets = importer.RestrictToWorks(targets, set)
+		targets = importer.RestrictToWorks(targets, parseIDSet(*works))
 	}
 	if *released {
 		fmt.Printf("libex-fill: %d released preorder-era %s to refresh\n", len(targets), plural(len(targets), "recording", "recordings"))
@@ -931,13 +925,7 @@ func runNarrations(args []string) int {
 		fmt.Fprintf(os.Stderr, "metaimport: %v\n", err)
 		return 1
 	}
-	set := map[string]bool{}
-	for _, w := range strings.Split(*works, ",") {
-		if w = strings.TrimSpace(w); w != "" {
-			set[w] = true
-		}
-	}
-	suspects := importer.SelectNarrationSuspects(cat, set)
+	suspects := importer.SelectNarrationSuspects(cat, parseIDSet(*works))
 	if *userLibrary {
 		suspects = importer.UserLibraryNarrations(suspects, cat)
 	}
@@ -968,4 +956,15 @@ func runNarrations(args []string) int {
 		fmt.Fprintf(os.Stderr, "  warning: %s\n", e)
 	}
 	return 0
+}
+
+// parseIDSet reads a comma-separated id list flag into a set, blanks dropped.
+func parseIDSet(list string) map[string]bool {
+	set := map[string]bool{}
+	for _, id := range strings.Split(list, ",") {
+		if id = strings.TrimSpace(id); id != "" {
+			set[id] = true
+		}
+	}
+	return set
 }

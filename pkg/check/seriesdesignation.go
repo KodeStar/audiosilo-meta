@@ -1,6 +1,7 @@
 package check
 
 import (
+	"slices"
 	"sort"
 	"strconv"
 	"strings"
@@ -70,17 +71,34 @@ const seriesDesignationMarker = "a series designation around one book's title"
 // sdWork is one work as the census reads it, every derivation computed once.
 type sdWork struct {
 	w *model.Work
-	// segs are the title's separator-delimited segments as folded tokens; toks is
-	// their concatenation.
+	// segs are the title's separator-delimited segments as folded tokens.
 	segs [][]string
-	toks []string
 	// fold is the whole title's comparison form: its tokens, leading article dropped.
 	fold string
 	// members are the work's series memberships.
 	members []sdMembership
-	coll    bool
 	// runtimes are the recordings' stated runtimes, minutes.
 	runtimes []int
+	// slug and coll are asked only of the few works a candidate pair reaches, so
+	// they are memoized on first use rather than derived for every work.
+	slug      string
+	slugKnown bool
+	coll      collectionMemo
+}
+
+func (s *sdWork) titleSlug() string {
+	if !s.slugKnown {
+		s.slug, s.slugKnown = model.SlugifyWhole(s.w.Title), true
+	}
+	return s.slug
+}
+
+// collection is titlerule.IsCollection of the title, asked once.
+func (s *sdWork) collection() bool {
+	if !s.coll.known {
+		s.coll.value, s.coll.known = titlerule.IsCollection(s.w.Title), true
+	}
+	return s.coll.value
 }
 
 type sdMembership struct {
@@ -115,14 +133,13 @@ func dropArticle(toks []string) []string {
 func sdFold(toks []string) string { return strings.Join(dropArticle(toks), "-") }
 
 func newSDWork(w *model.Work, members []sdMembership) *sdWork {
-	sw := &sdWork{w: w, members: members, coll: titlerule.IsCollection(w.Title)}
+	sw := &sdWork{w: w, members: members}
 	for _, seg := range strings.Split(sdSeparators.Replace(w.Title), "|") {
 		if t := sdTokens(seg); len(t) > 0 {
 			sw.segs = append(sw.segs, t)
-			sw.toks = append(sw.toks, t...)
 		}
 	}
-	sw.fold = sdFold(sw.toks)
+	sw.fold = sdFold(slices.Concat(sw.segs...))
 	for _, r := range w.Recordings {
 		if r.RuntimeMin > 0 {
 			sw.runtimes = append(sw.runtimes, r.RuntimeMin)
@@ -176,7 +193,7 @@ func seriesDesignationPairs(cat *model.Catalog, ix *WorkIdentity, reviewed *revi
 	seen := map[[2]string]bool{}
 	var out []seriesDesignationPair
 	consider := func(plain, dec *sdWork, extra [][]string) {
-		if plain == dec || plain.w.ID == dec.w.ID {
+		if plain.w.ID == dec.w.ID {
 			return
 		}
 		key := [2]string{plain.w.ID, dec.w.ID}
@@ -194,12 +211,13 @@ func seriesDesignationPairs(cat *model.Catalog, ix *WorkIdentity, reviewed *revi
 		out = append(out, seriesDesignationPair{plain: plain.w, decorated: dec.w, designation: joinDesignation(extra), kind: kind})
 	}
 	for _, dec := range works {
-		// The same title spelled two ways ("&" for "and"): no designation at all.
-		if len(dec.toks) == 0 {
+		if len(dec.segs) == 0 {
 			continue
 		}
+		// The same title spelled two ways ("&" for "and"): no designation at all. A
+		// same-slug pair is the identity-equal class's, which sdPairQualifies vetoes.
 		for _, plain := range byFold[dec.fold] {
-			if plain.w.ID < dec.w.ID && model.SlugifyWhole(plain.w.Title) != model.SlugifyWhole(dec.w.Title) {
+			if plain.w.ID < dec.w.ID {
 				consider(plain, dec, nil)
 			}
 		}
@@ -211,12 +229,8 @@ func seriesDesignationPairs(cat *model.Catalog, ix *WorkIdentity, reviewed *revi
 				if i == 0 && j == n-1 {
 					continue
 				}
-				var core []string
-				for _, s := range dec.segs[i : j+1] {
-					core = append(core, s...)
-				}
 				extra := append(append([][]string{}, dec.segs[:i]...), dec.segs[j+1:]...)
-				for _, plain := range byFold[sdFold(core)] {
+				for _, plain := range byFold[sdFold(slices.Concat(dec.segs[i:j+1]...))] {
 					consider(plain, dec, extra)
 				}
 			}
@@ -238,11 +252,7 @@ func seriesDesignationPairs(cat *model.Catalog, ix *WorkIdentity, reviewed *revi
 				continue
 			}
 			rest := seg0[k:]
-			var whole []string
-			whole = append(whole, rest...)
-			for _, s := range dec.segs[1:] {
-				whole = append(whole, s...)
-			}
+			whole := slices.Concat(append([][]string{rest}, dec.segs[1:]...)...)
 			for _, plain := range byFold[sdFold(whole)] {
 				consider(plain, dec, [][]string{lead})
 			}
@@ -291,12 +301,7 @@ func possessiveOfAuthor(toks []string, w *model.Work) bool {
 		return false
 	}
 	want := strings.Join(append(append([]string{}, toks[:len(toks)-1]...), strings.TrimSuffix(last, "s")), "-")
-	for _, a := range w.Authors {
-		if a == want {
-			return true
-		}
-	}
-	return false
+	return slices.Contains(w.Authors, want)
 }
 
 // designationKind reads the leftover segments of a decorated title against the
@@ -429,7 +434,7 @@ func listedSeriesNamed(name []string, works ...*sdWork) []sdMembership {
 			// The whole name, or a word-prefix of at least two words: one word
 			// ("Gothic") prefixes too many series names to name one.
 			if (len(name) == len(m.name) || len(name) >= 2 && len(name) < len(m.name)) &&
-				strings.Join(m.name[:len(name)], "-") == strings.Join(name, "-") {
+				slices.Equal(m.name[:len(name)], name) {
 				out = append(out, m)
 			}
 		}
@@ -445,10 +450,14 @@ func positionIs(pos string, n int) bool {
 // sdPairQualifies is every veto the shape does not already answer.
 func sdPairQualifies(plain, dec *sdWork, ix *WorkIdentity) bool {
 	a, b := plain.w, dec.w
+	// A same-slug pair is the identity-equal class's finding.
+	if plain.titleSlug() == dec.titleSlug() {
+		return false
+	}
 	if !languagesCompatible(a.Language, b.Language) || translationLinked(a, b) {
 		return false
 	}
-	if oneBookReason(a, b) == "" || differentVolumes(a, b) || plain.coll != dec.coll {
+	if oneBookReason(a, b) == "" || differentVolumes(a, b) || plain.collection() != dec.collection() {
 		return false
 	}
 	// Two volumes of one series.
@@ -459,29 +468,15 @@ func sdPairQualifies(plain, dec *sdWork, ix *WorkIdentity) bool {
 			}
 		}
 	}
-	// The neighbours' findings.
-	if model.SlugifyWhole(a.Title) == model.SlugifyWhole(b.Title) {
-		return false
-	}
-	if ka := titlerule.IdentityTitleKey(a.Title, ix.SeriesNameOf(a.ID)); ka != "" &&
-		ka == titlerule.IdentityTitleKey(b.Title, ix.SeriesNameOf(b.ID)) {
+	// The normalized-duplicate class's finding.
+	if ka := ix.Key(a.Title, ix.SeriesNameOf(a.ID)); ka != "" && ka == ix.Key(b.Title, ix.SeriesNameOf(b.ID)) {
 		return false
 	}
 	return runtimesComparable(plain.runtimes, dec.runtimes)
 }
 
 func translationLinked(a, b *model.Work) bool {
-	for _, t := range a.TranslationOf {
-		if t == b.ID {
-			return true
-		}
-	}
-	for _, t := range b.TranslationOf {
-		if t == a.ID {
-			return true
-		}
-	}
-	return false
+	return slices.Contains(a.TranslationOf, b.ID) || slices.Contains(b.TranslationOf, a.ID)
 }
 
 // runtimesComparable reports whether some recording of each comes within a factor

@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"slices"
 	"sort"
 	"strings"
 	"time"
@@ -246,17 +247,13 @@ func (c *LibexClient) CheckNarrations(ctx context.Context, suspects []NarrationS
 				continue
 			}
 			l := lookedASIN{asin: asin, row: libexFillRow(rec)}
-			if list, ok := rec["narrators"].([]any); ok {
-				for _, e := range list {
-					if m, ok := e.(map[string]any); ok {
-						if n, _ := m["name"].(string); strings.TrimSpace(n) != "" && !castCredit(n) {
-							l.narrators = append(l.narrators, splitCredit(strings.TrimSpace(n))...)
-						}
-					}
+			for _, n := range libexNames(rec["narrators"]) {
+				if !castCredit(n) {
+					l.narrators = append(l.narrators, splitCredit(n)...)
 				}
 			}
-			if f, ok := rec["lengthMinutes"].(float64); ok {
-				l.runtime = int(f)
+			if m, ok := coerceInt(rec["lengthMinutes"]); ok {
+				l.runtime = int(m)
 			}
 			got = append(got, l)
 		}
@@ -299,61 +296,43 @@ func judgeNarration(s NarrationSuspect, ls []lookedASIN) (NarrationFinding, bool
 		keys map[string]bool
 		g    NarrationGroup
 	}
+	// Every answered ASIN starts as its own group, in ASIN order.
 	var groups []*group
 	for _, l := range ls {
 		if len(l.narrators) == 0 {
 			continue
 		}
-		keys := map[string]bool{}
+		g := &group{keys: map[string]bool{}, g: NarrationGroup{ASINs: []string{l.asin}, RuntimeMin: []int{l.runtime}}}
 		for _, n := range l.narrators {
-			keys[narratorKey(n)] = true
-		}
-		var into *group
-		for _, g := range groups {
-			for k := range keys {
-				if g.keys[k] {
-					into = g
-					break
-				}
-			}
-			if into != nil {
-				break
+			g.keys[narratorKey(n)] = true
+			if !slices.Contains(g.g.Narrators, n) {
+				g.g.Narrators = append(g.g.Narrators, n)
 			}
 		}
-		if into == nil {
-			into = &group{keys: map[string]bool{}}
-			groups = append(groups, into)
-		}
-		for k := range keys {
-			into.keys[k] = true
-		}
-		into.g.ASINs = append(into.g.ASINs, l.asin)
-		into.g.RuntimeMin = append(into.g.RuntimeMin, l.runtime)
-		for _, n := range l.narrators {
-			if !containsString(into.g.Narrators, n) {
-				into.g.Narrators = append(into.g.Narrators, n)
-			}
-		}
+		groups = append(groups, g)
 	}
-	// A later ASIN can bridge two groups formed before it; fold until stable.
+	// Fold any two groups sharing a narrator into the earlier one until stable, so a
+	// later ASIN bridges two groups formed before it.
 	for merged := true; merged; {
 		merged = false
 		for i := 0; i < len(groups) && !merged; i++ {
 			for j := i + 1; j < len(groups) && !merged; j++ {
-				if sharesKey(groups[i].keys, groups[j].keys) {
-					for k := range groups[j].keys {
-						groups[i].keys[k] = true
-					}
-					groups[i].g.ASINs = append(groups[i].g.ASINs, groups[j].g.ASINs...)
-					groups[i].g.RuntimeMin = append(groups[i].g.RuntimeMin, groups[j].g.RuntimeMin...)
-					for _, n := range groups[j].g.Narrators {
-						if !containsString(groups[i].g.Narrators, n) {
-							groups[i].g.Narrators = append(groups[i].g.Narrators, n)
-						}
-					}
-					groups = append(groups[:j], groups[j+1:]...)
-					merged = true
+				if !sharesKey(groups[i].keys, groups[j].keys) {
+					continue
 				}
+				dst, src := groups[i], groups[j]
+				for k := range src.keys {
+					dst.keys[k] = true
+				}
+				dst.g.ASINs = append(dst.g.ASINs, src.g.ASINs...)
+				dst.g.RuntimeMin = append(dst.g.RuntimeMin, src.g.RuntimeMin...)
+				for _, n := range src.g.Narrators {
+					if !slices.Contains(dst.g.Narrators, n) {
+						dst.g.Narrators = append(dst.g.Narrators, n)
+					}
+				}
+				groups = slices.Delete(groups, j, j+1)
+				merged = true
 			}
 		}
 	}
@@ -390,15 +369,6 @@ func castCredit(s string) bool {
 func sharesKey(a, b map[string]bool) bool {
 	for k := range a {
 		if b[k] {
-			return true
-		}
-	}
-	return false
-}
-
-func containsString(list []string, s string) bool {
-	for _, x := range list {
-		if x == s {
 			return true
 		}
 	}
