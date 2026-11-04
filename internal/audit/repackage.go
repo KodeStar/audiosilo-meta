@@ -19,8 +19,11 @@ const (
 // repackage is the project's own audio, so it is never LONGER than the project beyond
 // rounding (repackLongerMin, or one percent of a long project), and it is usually a
 // little SHORTER: LibriVox opens every section with a spoken preamble and closes it
-// with an end line, which a retailer's edition trims. Up to one minute a section (or
-// repackShorterMin for a project with few sections) is that trim. Calibrated on the
+// with an end line, which a retailer's edition trims. Up to one minute a section is
+// that trim, with a floor for a project of few sections: repackShorterMin minutes, but
+// never more than repackShorterPct percent of the project (a one-minute track is not a
+// six-minute poem's audio), and never under the one minute a rounded runtime can be
+// off by. Calibrated on the
 // real tree (2026-11): 149 of the 158 same-reader pairs fall inside it, shorter by a
 // few minutes a book as trimmed preambles predict; of the nine outside it, eight are
 // LONGER than the project (by 7 to 136 minutes: a re-recording, often beside a second
@@ -29,6 +32,7 @@ const (
 const (
 	repackLongerMin  = 2
 	repackShorterMin = 5
+	repackShorterPct = 20
 )
 
 // repackPublisherMin is how many retail recordings with a RUNTIME-confirmed pair a
@@ -214,7 +218,7 @@ func repackRefuted(rs []reviewedDecision, reds model.Redirects) map[proposalKey]
 // by, in words.
 func repackWindow(cand, lv, sections int) (bool, string) {
 	longer := max(repackLongerMin, (lv+99)/100)
-	shorter := max(repackShorterMin, sections)
+	shorter := max(1, sections, min(repackShorterMin, lv*repackShorterPct/100))
 	d := lv - cand // minutes the candidate is SHORTER by
 	gap := fmt.Sprintf("%d shorter", d)
 	switch {
@@ -325,7 +329,10 @@ func repackLinkStatus(r reviewedDecision, p Proposal, ix *index) (outcomeStatus,
 // sibling of unmetRejection and distinctKind: decisions in force WITHOUT a fresh
 // proposal meeting them. Each gets its status (repackLinkStatus) and, while in force,
 // withdraws the pair's proposal from the queue - an accepted pair is a recorded link, a
-// rejected one a reviewed "not this project's audio", and neither is re-asked. When an
+// rejected one a reviewed "not this project's audio", and neither is re-asked. An
+// accepted link withdraws EVERY pair of its retail recording (one retail recording
+// repackages one project), and a second acceptance naming that recording with another
+// LibriVox recording is REFUSED. When an
 // acceptance and a rejection resolve to one pair, the rejection wins and the acceptance
 // is REFUSED, as for every other op. Nothing is promoted to mechanical and nothing
 // reaches metarepair: no repair applies the op.
@@ -333,34 +340,52 @@ func repackLinkStatus(r reviewedDecision, p Proposal, ix *index) (outcomeStatus,
 // proposal index.
 func applyRepackageReviews(rep *Report, rs []reviewedDecision, resolved []Proposal, statuses []outcomeStatus,
 	whys []string, ix *index) {
-	withdraw := map[proposalKey]outcomeStatus{}
+	suppressed := map[proposalKey]bool{}
 	for j, r := range rs {
 		if !recordOnlyOps[r.Op] {
 			continue
 		}
 		statuses[j], whys[j] = repackLinkStatus(r, resolved[j], ix)
-		if statuses[j] != statusStale {
-			// A converging rejection wins, as it does for every other op.
-			if k := keyOf(resolved[j]); withdraw[k] != statusSuppressed {
-				withdraw[k] = statuses[j]
-			}
+		if statuses[j] == statusSuppressed {
+			suppressed[keyOf(resolved[j])] = true
 		}
 	}
+	// ONE retail recording repackages ONE project: the first acceptance in file order
+	// naming a retail recording of a work records it, and withdraws every pair of that
+	// recording; a later one naming another LibriVox recording is refused. A converging
+	// rejection still wins over an acceptance of the very pair, as for every other op.
+	type retail struct{ work, rec string }
+	linked := map[retail]int{}
 	for j, r := range rs {
-		if recordOnlyOps[r.Op] && statuses[j] == statusLinked && withdraw[keyOf(resolved[j])] == statusSuppressed {
+		if !recordOnlyOps[r.Op] || statuses[j] != statusLinked {
+			continue
+		}
+		p := resolved[j]
+		if suppressed[keyOf(p)] {
 			statuses[j], whys[j] = statusRefused, "a reviewed rejection resolves to the same proposal"
+			continue
+		}
+		k := retail{p.Target, p.From}
+		prev, ok := linked[k]
+		switch {
+		case !ok:
+			linked[k] = j
+		case resolved[prev].To != p.To:
+			statuses[j], whys[j] = statusRefused, fmt.Sprintf("retail recording %s of %s is already recorded as a repackage of "+
+				"LibriVox recording %s: one retail recording repackages one project", p.From, p.Target, resolved[prev].To)
 		}
 	}
-	if len(withdraw) == 0 {
+	if len(suppressed) == 0 && len(linked) == 0 {
 		return
 	}
 	c := rep.class(ClassRepackage)
 	c.rows = slices.DeleteFunc(c.rows, func(fd Finding) bool {
-		switch withdraw[keyOf(fd.Propose)] {
-		case statusLinked:
-			rep.Repackage.Linked++
-		case statusSuppressed:
+		p := fd.Propose
+		switch _, isLinked := linked[retail{p.Target, p.From}]; {
+		case suppressed[keyOf(p)]:
 			rep.Repackage.Suppressed++
+		case isLinked:
+			rep.Repackage.Linked++
 		default:
 			return false
 		}

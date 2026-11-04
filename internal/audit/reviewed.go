@@ -285,6 +285,9 @@ func parseReviewed(raw []byte) ([]reviewedDecision, error) {
 			return nil, fmt.Errorf("entry %d: bad decision %q", i, r.Decision)
 		}
 		if r.Decision == "assert" {
+			// This is where an assertion of a record-only op (link-librivox-repackage) is
+			// refused: it is not in assertClass, and an accept already records a pair no
+			// detector proposes.
 			if err := validAssertion(r); err != nil {
 				return nil, fmt.Errorf("entry %d: %w", i, err)
 			}
@@ -310,7 +313,7 @@ func parseReviewed(raw []byte) ([]reviewedDecision, error) {
 			r.Series != "" || r.Field != "" || r.From != "" || r.To != "" || slices.Contains(r.Others, r.Target)) {
 			return nil, fmt.Errorf("entry %d: a %s decision is a reject naming a target and the distinct others, nothing else", i, OpMergePeople)
 		}
-		if r.Op == OpLinkLibrivoxRepackage && (r.Decision == "assert" || r.Target == "" || !model.ValidSlug(r.From) ||
+		if r.Op == OpLinkLibrivoxRepackage && (r.Target == "" || !model.ValidSlug(r.From) ||
 			!model.ValidSlug(r.To) || r.From == r.To || r.Series != "" || r.Field != "" || len(r.Others) > 0) {
 			return nil, fmt.Errorf("entry %d: a %s decision is an accept (the link recorded) or a reject naming the work "+
 				"(target), the retail recording (from) and the LibriVox recording (to), two different recording ids, nothing else", i,

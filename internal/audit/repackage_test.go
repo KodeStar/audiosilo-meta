@@ -139,6 +139,10 @@ func TestRepackageRuntimeSignal(t *testing.T) {
 		{"past one percent longer on a long project", 1000, 3, 1011, false},
 		{"five shorter is the floor", 154, 3, 149, true},
 		{"six shorter with three sections", 154, 3, 148, false},
+		{"a short project's floor is a fifth of it", 10, 1, 8, true},
+		{"past a fifth of a short project", 10, 1, 7, false},
+		{"a one-minute track is not a six-minute poem", 6, 1, 1, false},
+		{"one minute of rounding on a tiny project", 3, 0, 2, true},
 		{"a minute a section shorter", 300, 10, 290, true},
 		{"past a minute a section shorter", 300, 10, 289, false},
 	} {
@@ -425,5 +429,60 @@ func TestParseReviewedRepackageDecisions(t *testing.T) {
 				t.Fatalf("parsed %s", raw)
 			}
 		})
+	}
+}
+
+// twoProjects is metamorphosis with a second LibriVox project read by the same reader
+// (528, recording david-barnes-v2), so the retail edition pairs with both.
+func twoProjects(t testing.TB) map[string]string {
+	t.Helper()
+	files := metamorphosis(t)
+	files["works/xx/metamorphosis/recordings/david-barnes-v2.json"] = recJSON(t, "david-barnes-v2", "metamorphosis",
+		withNarrators("david-barnes"), withRuntime(153), lvProject(528, 3))
+	return files
+}
+
+// One retail recording repackages one project: an accepted link withdraws every pair
+// of its retail recording, not only the accepted one.
+func TestRepackageAcceptWithdrawsEveryPairOfTheRetailRecording(t *testing.T) {
+	files := twoProjects(t)
+	if got := repackFindings(t, runFixture(t, files)); len(got) != 2 {
+		t.Fatalf("want the retail edition paired with both projects, got %+v", got)
+	}
+	rep := runFixtureRejecting(t, files, linkDecision("accept", "metamorphosis", "david-barnes-2016", "david-barnes"))
+	if got := repackFindings(t, rep); len(got) != 0 {
+		t.Fatalf("a pair of an accepted retail recording is still proposed: %+v", got)
+	}
+	if rep.Repackage.Linked != 2 {
+		t.Errorf("linked = %d, want 2", rep.Repackage.Linked)
+	}
+	if o := rep.Reviewed.All[0]; o.Status != statusLinked {
+		t.Errorf("status = %q (%s), want %q", o.Status, o.Why, statusLinked)
+	}
+}
+
+// A second acceptance naming the same retail recording with another LibriVox
+// recording is refused, naming the link already recorded.
+func TestRepackageSecondAcceptOfOneRetailRecordingIsRefused(t *testing.T) {
+	rep := runFixtureRejecting(t, twoProjects(t),
+		linkDecision("accept", "metamorphosis", "david-barnes-2016", "david-barnes"),
+		linkDecision("accept", "metamorphosis", "david-barnes-2016", "david-barnes-v2"))
+	first, second := rep.Reviewed.All[0], rep.Reviewed.All[1]
+	if first.Status != statusLinked {
+		t.Errorf("first acceptance = %q (%s), want %q", first.Status, first.Why, statusLinked)
+	}
+	if second.Status != statusRefused || !strings.Contains(second.Why,
+		"already recorded as a repackage of LibriVox recording david-barnes: one retail recording repackages one project") {
+		t.Errorf("second acceptance = %q (%s), want refused naming the recorded link", second.Status, second.Why)
+	}
+	if got := repackFindings(t, rep); len(got) != 0 {
+		t.Errorf("pairs still proposed beside a recorded link: %+v", got)
+	}
+	// Two acceptances of the very same pair are one record, not a conflict.
+	rep = runFixtureRejectingWith(t, twoProjects(t), `{"people":{},"series":{},"works":{"metamorphosis-old":"metamorphosis"}}`,
+		linkDecision("accept", "metamorphosis", "david-barnes-2016", "david-barnes"),
+		linkDecision("accept", "metamorphosis-old", "david-barnes-2016", "david-barnes"))
+	if s := rep.Reviewed.All[1].Status; s != statusLinked {
+		t.Errorf("a converging acceptance of the same pair = %q, want %q", s, statusLinked)
 	}
 }
