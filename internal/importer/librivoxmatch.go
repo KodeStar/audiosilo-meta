@@ -182,18 +182,73 @@ func librivoxTitleKeyOf(title string) (key string, nonLatin bool) {
 // "volume" with an optional "of <total>" after it. Bounded by \b rather than
 // by consuming the hyphens around it, so two markers in a row ("vol-1-vol-2")
 // are both found.
-var librivoxVolumeRE = regexp.MustCompile(`\bvol(?:ume)?-(\d+)(?:-of-\d+)?\b`)
+var librivoxVolumeRE = regexp.MustCompile(`\bvol(?:ume)?-(\d+)(?:-of-(\d+))?\b`)
 
 // librivoxVolumeSpelling is a whole-title slug with every volume number
 // spelled one way, "volume-<n>": "Vol. 1 of 3" and "Volume 1" are the same
 // volume (meta#2778: 9711 "World as Will and Idea, Vol. 1 of 3" minted a work
 // beside the catalogued "The World as Will and Idea, Volume 1"). Only the
 // spelling folds - the number never does, so "Vol. 1" and "Vol. 2" stay apart.
+// The total ("of 3") is dropped from the key, but not from the decision: two
+// titles stating DIFFERENT totals for a volume are two volume sets
+// (librivoxVolumeTotalsAgree, asked by every lookup of the key,
+// librivoxTitleWorks).
 func librivoxVolumeSpelling(slug string) string {
 	if !strings.Contains(slug, "vol") {
 		return slug
 	}
 	return librivoxVolumeRE.ReplaceAllString(slug, "volume-${1}")
+}
+
+// librivoxVolumeTotals is the total each volume marker of a Latin title states,
+// in order, 0 for a marker stating none ("Vol. 1 of 3, Vol. 2" is [3 0]); nil
+// for a title with no marker.
+func librivoxVolumeTotals(title string) []int {
+	s := model.SlugifyWhole(dropLibrivoxArticle(strings.TrimSpace(title)))
+	if !strings.Contains(s, "vol") {
+		return nil
+	}
+	var totals []int
+	for _, m := range librivoxVolumeRE.FindAllStringSubmatch(s, -1) {
+		n, _ := strconv.Atoi(m[2])
+		totals = append(totals, n)
+	}
+	return totals
+}
+
+// librivoxVolumeTotalsAgree reports whether two titles of one key state no
+// conflicting volume total: a marker stating a total matches one stating none
+// ("Vol. 1 of 3" and "Volume 1"), never one stating another ("Vol. 1 of 3"
+// and "Vol. 1 of 5": volume 1 of two different divisions of the text, which a
+// match would merge). The key folds the totals away, so the markers line up
+// by position.
+func librivoxVolumeTotalsAgree(a, b string) bool {
+	ta, tb := librivoxVolumeTotals(a), librivoxVolumeTotals(b)
+	for i := range min(len(ta), len(tb)) {
+		if ta[i] != 0 && tb[i] != 0 && ta[i] != tb[i] {
+			return false
+		}
+	}
+	return true
+}
+
+// librivoxTitleWorks is the spelling-variant lookup every rule asks: the works
+// under title's key (librivoxTitleIndex) whose volume totals agree with the
+// title's (librivoxVolumeTotalsAgree), in slug order, with whether the title
+// is non-Latin.
+func (p *planner) librivoxTitleWorks(title string) (slugs []string, nonLatin bool) {
+	key, nonLatin := librivoxTitleKeyOf(title)
+	slugs = p.librivoxTitleIndex()[key]
+	if nonLatin || librivoxVolumeTotals(title) == nil {
+		return slugs, nonLatin
+	}
+	var out []string
+	for _, slug := range slugs {
+		if ws := p.works[slug]; ws != nil && librivoxVolumeTotalsAgree(title, ws.title) {
+			out = append(out, slug)
+		}
+	}
+	return out, nonLatin
 }
 
 // librivoxNonLatinTitle reports whether a title is read in its own script
@@ -354,8 +409,7 @@ func (p *planner) routeLibrivox(b sourceBook, workTitle, fullTitle, posSuffix, l
 	if b.lv == nil {
 		return librivoxRoute{}
 	}
-	key, nonLatin := librivoxTitleKeyOf(workTitle)
-	slugs := p.librivoxTitleIndex()[key]
+	slugs, nonLatin := p.librivoxTitleWorks(workTitle)
 	if len(slugs) == 0 {
 		return p.librivoxUndecided(b, workTitle, fullTitle, posSuffix, lang, credits, claim, nonLatin)
 	}
@@ -411,8 +465,7 @@ func (p *planner) librivoxQualifiedTwin(b sourceBook, workTitle, fullTitle, posS
 			return false
 		}
 		t = stripped
-		key, nonLatin := librivoxTitleKeyOf(t)
-		slugs := p.librivoxTitleIndex()[key]
+		slugs, nonLatin := p.librivoxTitleWorks(t)
 		if nonLatin || len(slugs) == 0 {
 			continue
 		}

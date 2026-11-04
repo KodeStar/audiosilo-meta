@@ -703,3 +703,55 @@ func TestLibrivoxAbridgedVersionLandsAsTheAbridgedRecording(t *testing.T) {
 	}
 	mustValidate(t, dataDir)
 }
+
+func TestLibrivoxVolumeTotalsAgree(t *testing.T) {
+	for _, c := range []struct {
+		a, b string
+		want bool
+	}{
+		{"World as Will and Idea, Vol. 1 of 3", "The World as Will and Idea, Volume 1", true},
+		{"History, Vol. 1 of 3", "History, Vol. 1 of 3", true},
+		{"History, Vol. 1 of 3", "History, Volume 1 of 5", false},
+		{"History, Vol. 1 of 3, Vol. 2", "History, Vol. 1, Vol. 2 of 4", true},
+		{"History, Vol. 1 of 3, Vol. 2 of 4", "History, Vol. 1, Vol. 2 of 5", false},
+		{"History", "History", true},
+	} {
+		if got := librivoxVolumeTotalsAgree(c.a, c.b); got != c.want {
+			t.Errorf("librivoxVolumeTotalsAgree(%q, %q) = %v, want %v", c.a, c.b, got, c.want)
+		}
+	}
+}
+
+func TestLibrivoxVolumeTotalKeepsTwoVolumeSetsApart(t *testing.T) {
+	// "Vol. 1 of 3" and "Vol. 1 of 5" share the title key, but they are volume
+	// 1 of two different divisions of the text: never one work. A title
+	// stating no total still meets the one that does, and with both volume
+	// sets catalogued it is the worklist's, never a guess between them.
+	seed := func() string {
+		dataDir := t.TempDir()
+		seedAuthoredWorks(t, dataDir, map[string][]string{
+			"history-of-england-vol-1-of-3": {"History of England, Vol. 1 of 3", "thomas-macaulay", "Thomas Macaulay"},
+		})
+		return dataDir
+	}
+	macaulay := lvAuthor(6400, "Thomas", "Macaulay")
+	ofFive := byAuthor(t, 99960, "History of England, Vol. 1 of 5", "English", macaulay)
+	noTotal := byAuthor(t, 99961, "History of England, Volume 1", "English", macaulay)
+
+	dataDir := seed()
+	sum := runLibrivox(t, writeSnapshot(t, ofFive), dataDir, allLibrivox)
+	if sum.NewWorks != 1 || !entryExists(t, dataDir, workAddr("history-of-england-vol-1-of-5")) || len(recSlugsOf(t, dataDir, "history-of-england-vol-1-of-3")) != 1 {
+		t.Fatalf("new works = %d, want 99960 its own work\nworklist: %v", sum.NewWorks, sum.LibrivoxWorklist)
+	}
+	mustValidate(t, dataDir)
+	sum = runLibrivox(t, writeSnapshot(t, noTotal), dataDir, allLibrivox)
+	if len(sum.LibrivoxWorklist) != 1 || sum.LibrivoxWorklist[0].Reason != LibrivoxSeveralWorks {
+		t.Errorf("with both volume sets catalogued, worklist = %+v, want several-works", sum.LibrivoxWorklist)
+	}
+
+	dataDir = seed()
+	sum = runLibrivox(t, writeSnapshot(t, noTotal), dataDir, allLibrivox)
+	if got := recSlugsOf(t, dataDir, "history-of-england-vol-1-of-3"); len(got) != 2 || sum.NewWorks != 0 {
+		t.Errorf("a title stating no total: recordings %v, new works %d; want it attached", got, sum.NewWorks)
+	}
+}

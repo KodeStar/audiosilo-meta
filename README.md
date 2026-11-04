@@ -423,7 +423,8 @@ abridged recording as "(abridged)" always is):
 2. otherwise the ONE work by the same authors, in the same language, whose title
    differs only by a leading article or punctuation, case and accents ("The
    Metamorphosis" and "Metamorphosis" by Franz Kafka), or by how a volume is
-   spelled ("Vol. 1 of 3" and "Volume 1"). The articles set aside
+   spelled ("Vol. 1 of 3" and "Volume 1"; two titles stating different totals,
+   "Vol. 1 of 3" and "Vol. 1 of 5", are two volume sets and never match). The articles set aside
    are the English the/a/an, French le/la/les/l', German der/die/das, Spanish
    el/los/las, Italian il/lo and Dutch de/het/een. Failing that, the ONE such
    work by an author the project spells with more or fewer words (the same
