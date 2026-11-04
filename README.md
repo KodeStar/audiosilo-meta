@@ -397,7 +397,7 @@ reading or a numbered version is another recording of the plain-titled work):
    same language. An author or translator whose name slugs to nothing (a
    Cyrillic "Йордан Йовков") is credited nowhere rather than on the one
    catch-all person record every such name would share: the credit is dropped
-   before the work is decided and listed under `librivox credits not recorded`
+   before the work is decided and listed under `credits not recorded`
    (`unsluggable`), and a project left with no individual author (only a
    translator, or only a collective such as Anonymous) goes to the worklist as
    `author-unsluggable`;
@@ -426,8 +426,10 @@ A project that attaches to a work already in the catalogue adds its recording
 an author or translator that work does not name is not recorded there, and no
 person record is created for them (it would be credited nowhere). The import
 report lists each such credit (project id, name, role, `librivox_author_id`,
-work) under `librivox credits not recorded`, for recording-level credits to
-pick up later (meta#2752).
+work) under `credits not recorded`, for recording-level credits to pick up
+later (meta#2752). A row of any other source (OpenAudible, Libation, AudioSilo
+books, libex) that attaches to a catalogued work, or is relocated onto one,
+follows the same rule, its credits listed there by ASIN.
 
 A match the rules cannot settle is never guessed: the project is skipped and
 listed in the import report's **worklist**, one line per project with its id,

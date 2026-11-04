@@ -274,7 +274,7 @@ func (p *planner) routeLibrivoxAuthorVariant(b sourceBook, workTitle string, slu
 // respelling it would move the credit, and with it its LibriVox id, between two
 // records of one surname, which is a person merge for a maintainer to make; it
 // stays an unrecorded credit of the work the row attaches to
-// (librivoxRowAuthors), and its id stays on its own person. The rest are
+// (attachRowAuthors), and its id stays on its own person. The rest are
 // respelled; respell is nil when none is.
 func (p *planner) splitLibrivoxRespelling(rename map[string]string) (respell map[string]string, kept []string) {
 	for from, to := range rename {
@@ -499,17 +499,12 @@ func (p *planner) dropUnsluggableLibrivoxCredits(credits []credit) (kept, droppe
 
 // unsluggableLibrivoxCredits is rule 2's report for a row that landed on work:
 // each dropped credit, with the LibriVox author id its name carries.
-func (p *planner) unsluggableLibrivoxCredits(b sourceBook, work string, dropped []credit) []LibrivoxUnrecordedCredit {
-	out := make([]LibrivoxUnrecordedCredit, 0, len(dropped))
+func (p *planner) unsluggableLibrivoxCredits(b sourceBook, work string, dropped []credit) []UnrecordedCredit {
+	out := make([]UnrecordedCredit, 0, len(dropped))
 	for _, c := range dropped {
-		out = append(out, LibrivoxUnrecordedCredit{
-			Project:  b.lv.id,
-			AuthorID: p.librivoxAuthorIDOf(b, c.name, p.resolvePerson(c.name)),
-			Name:     c.name,
-			Roles:    slices.Clone(c.roles),
-			Work:     work,
-			Reason:   librivoxUnsluggable,
-		})
+		u := p.unrecordedOf(b, "", c, p.resolvePerson(c.name), work)
+		u.Reason = librivoxUnsluggable
+		out = append(out, u)
 	}
 	return out
 }

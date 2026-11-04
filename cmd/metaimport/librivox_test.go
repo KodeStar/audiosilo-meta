@@ -93,7 +93,7 @@ func TestLibrivoxImportPrintsTheWorklist(t *testing.T) {
 	sum := importer.Summary{LibrivoxWorklist: []importer.LibrivoxWorklistEntry{{
 		Project: 527, Title: "The Metamorphosis", Authors: []string{"Franz Kafka"}, Reason: importer.LibrivoxSeveralWorks,
 		Candidates: []importer.LibrivoxCandidate{{Work: "metamorphosis", Title: "Metamorphosis"}, {Work: "metamorphosis-2", Title: "Metamorphosis"}},
-	}}, LibrivoxFallbackSlugs: 2, LibrivoxUnrecordedCredits: []importer.LibrivoxUnrecordedCredit{{
+	}}, LibrivoxFallbackSlugs: 2, UnrecordedCredits: []importer.UnrecordedCredit{{
 		Project: 2027, AuthorID: 9876, Name: "Amy Coulter", Roles: []string{"translator"}, Work: "siddhartha",
 	}, {
 		Project: 2607, AuthorID: 6294, Name: "Йордан Йовков", Work: "staroplaninski-legendi", Reason: "unsluggable",
@@ -109,7 +109,7 @@ func TestLibrivoxImportPrintsTheWorklist(t *testing.T) {
 		"librivox: 2 new works at librivox-<id> (non-Latin or unsluggable title)",
 		"librivox worklist: 1 project skipped for a person to resolve",
 		`  527 "The Metamorphosis" by Franz Kafka [several-works]: metamorphosis "Metamorphosis"; metamorphosis-2 "Metamorphosis"`,
-		"librivox credits not recorded: 2 (",
+		"credits not recorded: 2 (",
 		`  2027 "Amy Coulter" (translator, librivox_author_id 9876) -> siddhartha, person not created`,
 		`  2607 "Йордан Йовков" (author, librivox_author_id 6294) -> staroplaninski-legendi, unsluggable`,
 	} {
