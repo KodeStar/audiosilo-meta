@@ -225,21 +225,29 @@ type workState struct {
 	// work's sources name would depend on which row came first.
 	runAttested bool
 	// volumeTotals is the volume totals (librivoxVolumeTotals) each LibriVox
-	// recording on the work states in its own project title - a catalogued
-	// recording's librivox_title, or the title of a row of this run that
-	// landed here - kept only when one states a total: a work titled
-	// "Volume 1" that holds "Vol. 1 of 3" is volume 1 of a three-volume set,
-	// and the spelling-variant lookup reads it so (librivoxTitleWorks).
-	volumeTotals [][]int
+	// recording on the work states in its own project title, by recording id -
+	// a catalogued recording's librivox_title, replaced by its project's title
+	// when this run's snapshot holds the project (the title the recording pass
+	// restates, so one run reads what the next would), or the title of a row
+	// of this run that landed here - kept only when one states a total: a work
+	// titled "Volume 1" that holds "Vol. 1 of 3" is volume 1 of a three-volume
+	// set, and the spelling-variant lookup reads it so (librivoxTitleWorks).
+	volumeTotals map[string][]int
 }
 
-// noteVolumeTotals records the volume totals a LibriVox recording's own
-// project title states on the work it sits on (workState.volumeTotals); a
-// title stating none records nothing.
-func (ws *workState) noteVolumeTotals(projectTitle string) {
-	if t := librivoxVolumeTotals(projectTitle); librivoxStatesTotal(t) {
-		ws.volumeTotals = append(ws.volumeTotals, t)
+// noteVolumeTotals records the volume totals recording rec's own project
+// title states on the work it sits on (workState.volumeTotals); a title
+// stating none clears the recording's.
+func (ws *workState) noteVolumeTotals(rec, projectTitle string) {
+	t := librivoxVolumeTotals(projectTitle)
+	if !librivoxStatesTotal(t) {
+		delete(ws.volumeTotals, rec)
+		return
 	}
+	if ws.volumeTotals == nil {
+		ws.volumeTotals = map[string][]int{}
+	}
+	ws.volumeTotals[rec] = t
 }
 
 // seriesState tracks a series' membership so works dedupe and positions never
@@ -1146,6 +1154,8 @@ func (p *planner) planCreate(books []sourceBook) {
 	// separating rows whose titles are identical even after the full-title
 	// fallback and which differ only by series position (workidentity.go).
 	suffixes := p.serialPositionSuffixes(books, titles)
+	// A held project's title is its recording's before any row is routed.
+	p.noteHeldLibrivoxTitles(books)
 	// A LibriVox author id that is a catalogued author spelled with more or
 	// fewer words is that person for the whole batch (librivoxauthors.go).
 	p.keyLibrivoxAuthorVariants(books, titles, suffixes)
@@ -1286,7 +1296,7 @@ func (p *planner) loadExisting() {
 			if r.LibrivoxID != 0 {
 				p.lv.ids[r.LibrivoxID] = true
 				p.lv.held[r.LibrivoxID] = RecRef{Work: w.ID, Rec: r.ID}
-				ws.noteVolumeTotals(r.LibrivoxTitle)
+				ws.noteVolumeTotals(r.ID, r.LibrivoxTitle)
 			}
 			ri := &recInfo{
 				narrators: ToSet(r.Narrators),

@@ -1357,9 +1357,30 @@ func (p *planner) applyLibrivoxRecording(rec *outRecording, b sourceBook) {
 	}
 	p.lv.ids[b.lv.id] = true
 	if ws := p.works[rec.Work]; ws != nil {
-		ws.noteVolumeTotals(b.lv.title)
+		ws.noteVolumeTotals(rec.ID, b.lv.title)
 	}
 	p.lv.landed = append(p.lv.landed, librivoxLanding{facts: b.lv, work: rec.Work, rec: rec.ID, narrators: ToSet(rec.Narrators)})
+}
+
+// noteHeldLibrivoxTitles reads, before any row is routed, the project title of
+// every row whose project the catalogue already holds as that recording's
+// volume totals (workState.volumeTotals): the recording pass restates it as
+// librivox_title after planning (restateLibrivoxRecordings), so a catalogue
+// imported before that field existed - or one whose stored title LibriVox has
+// since changed - is read in this run as the next run will read it.
+func (p *planner) noteHeldLibrivoxTitles(books []sourceBook) {
+	for _, b := range books {
+		if b.lv == nil || b.lv.title == "" {
+			continue
+		}
+		ref, ok := p.lv.held[b.lv.id]
+		if !ok {
+			continue
+		}
+		if ws := p.works[ref.Work]; ws != nil && ws.recs[ref.Rec] != nil {
+			ws.noteVolumeTotals(ref.Rec, b.lv.title)
+		}
+	}
 }
 
 // stampLibrivoxPeople writes each landed row's LibriVox ids onto the people its

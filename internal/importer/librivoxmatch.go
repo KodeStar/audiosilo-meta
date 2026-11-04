@@ -93,9 +93,10 @@ const (
 	// record.
 	LibrivoxFallbackTaken = "fallback-slug-taken"
 	// LibrivoxVolumeTotal: a work carries the row's title (rule 2), by its
-	// authors, but a LibriVox recording already on it states another volume
-	// total than the row's title ("Vol. 1 of 3" on a work titled "Volume 1",
-	// the row "Vol. 1 of 5"): the work may be either volume set.
+	// authors (or a spelling of them, or sharing one: rule 1), but a LibriVox
+	// recording already on it states another volume total than the row's
+	// title ("Vol. 1 of 3" on a work titled "Volume 1", the row "Vol. 1 of
+	// 5"): the work may be either volume set.
 	LibrivoxVolumeTotal = "volume-total"
 	// LibrivoxSameNameAuthor: an author id no person carries meets, by name, a
 	// catalogued person who may be someone else, and only recording release
@@ -277,13 +278,62 @@ func (p *planner) librivoxTitleWorks(title string) (slugs, held []string, nonLat
 		if ws == nil || !librivoxTotalsAgree(totals, librivoxVolumeTotals(ws.title)) {
 			continue
 		}
-		if !slices.ContainsFunc(ws.volumeTotals, func(t []int) bool { return !librivoxTotalsAgree(totals, t) }) {
+		if ws.recordingTotalsAgree(totals) {
 			out = append(out, slug)
 		} else {
 			held = append(held, slug)
 		}
 	}
 	return out, held, nonLatin
+}
+
+// recordingTotalsAgree reports whether every LibriVox recording on ws states
+// volume totals agreeing with totals (workState.volumeTotals).
+func (ws *workState) recordingTotalsAgree(totals []int) bool {
+	for _, t := range ws.volumeTotals {
+		if !librivoxTotalsAgree(totals, t) {
+			return false
+		}
+	}
+	return true
+}
+
+// librivoxTitleWorksAll is librivoxTitleWorks with the works a recording's
+// total holds back put back, in slug order: what a rule asks that never
+// attaches (rule 5 only refuses) or asks WHO wrote a text rather than which
+// division of it a work is (the edition-date evidence), for which a volume
+// set held apart by its recordings is the same title as it was before they
+// said so. The author-variant keying (keyLibrivoxAuthorVariants) asks
+// librivoxTitleWorks itself: it proposes only what routeLibrivox decides, and
+// a held work is a worklist row there, never an attach.
+func (p *planner) librivoxTitleWorksAll(title string) (slugs []string, nonLatin bool) {
+	slugs, held, nonLatin := p.librivoxTitleWorks(title)
+	if len(held) == 0 {
+		return slugs, nonLatin
+	}
+	all := slices.Concat(slugs, held)
+	slices.Sort(all)
+	return all, nonLatin
+}
+
+// librivoxHeldCandidates is what rule 1 and rule 2 find among the works a
+// recording's volume total holds back (held, librivoxTitleWorks) for a row
+// that agrees with no other work under its key: the works its authors agree
+// with, else the one its authors are a spelling of or every work rule 1
+// relates it to (soleAuthorVariant), else those sharing a person with it. The
+// row may be either volume set, so routeLibrivox lists them as volume-total -
+// never an attach, and never a work minted beside them.
+func (p *planner) librivoxHeldCandidates(b sourceBook, held []string, lang string, authors workAuthors, credits []credit) []*workState {
+	matched, partial := p.librivoxCandidates(held, lang, authors)
+	if len(matched) > 0 {
+		return matched
+	}
+	if ws, _, _, related, _ := p.soleAuthorVariant(b, held, lang, authors, credits, partial); ws != nil {
+		return []*workState{ws}
+	} else if len(related) > 0 {
+		return related
+	}
+	return partial
 }
 
 // librivoxNonLatinTitle reports whether a title is read in its own script
@@ -453,9 +503,11 @@ func (p *planner) routeLibrivox(b sourceBook, workTitle, fullTitle, posSuffix, l
 		return librivoxRoute{}
 	}
 	matched, partial := p.librivoxCandidates(slugs, lang, authors)
-	if heldMatched, _ := p.librivoxCandidates(held, lang, authors); len(matched) == 0 && len(heldMatched) > 0 {
-		p.noteLibrivoxWorklist(b, workTitle, LibrivoxVolumeTotal, candidatesOf(heldMatched))
-		return librivoxRoute{skip: true}
+	if len(matched) == 0 && len(held) > 0 {
+		if near := p.librivoxHeldCandidates(b, held, lang, authors, credits); len(near) > 0 {
+			p.noteLibrivoxWorklist(b, workTitle, LibrivoxVolumeTotal, candidatesOf(near))
+			return librivoxRoute{skip: true}
+		}
 	}
 	switch {
 	case len(matched) == 1:
@@ -504,7 +556,7 @@ func (p *planner) librivoxQualifiedTwin(b sourceBook, workTitle, fullTitle, posS
 			return false
 		}
 		t = stripped
-		slugs, _, nonLatin := p.librivoxTitleWorks(t)
+		slugs, nonLatin := p.librivoxTitleWorksAll(t)
 		if nonLatin || len(slugs) == 0 {
 			continue
 		}

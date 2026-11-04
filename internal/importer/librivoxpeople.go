@@ -866,7 +866,7 @@ func (p *planner) librivoxReleasesAreEditions(cl *lvAuthorClaim, bound int) bool
 		}
 		// A generic title ("Poems") is no title in common here either: the
 		// same-name person's own "Poems" says nothing about whose text it is.
-		slugs, _, nonLatin := p.librivoxTitleWorks(pr.title)
+		slugs, nonLatin := p.librivoxTitleWorksAll(pr.title)
 		if nonLatin || librivoxGenericWordsOnly(pr.title) {
 			continue
 		}

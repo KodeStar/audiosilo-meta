@@ -792,3 +792,47 @@ func TestLibrivoxVolumeTotalOnARecordingKeepsTheSetApart(t *testing.T) {
 	runLibrivox(t, writeSnapshot(t, ofThree), twoRuns, allLibrivox)
 	held(t, runLibrivox(t, writeSnapshot(t, ofFive), twoRuns, allLibrivox))
 }
+
+func TestLibrivoxHeldProjectTitleKeepsTheSetApartBeforeItIsRestated(t *testing.T) {
+	// A catalogue imported before librivox_title existed: the held "of 3"
+	// recording states no total on disk, but the snapshot holds its project,
+	// whose title the recording pass restates - so "Vol. 1 of 5" in the same
+	// run is held as volume-total, exactly as the run after the backfill
+	// would hold it, never attached to the three-volume set's work.
+	fresh := t.TempDir()
+	seedAuthoredWorks(t, fresh, map[string][]string{
+		"the-world-as-will-and-idea-volume-1": {"The World as Will and Idea, Volume 1", "arthur-schopenhauer", "Arthur Schopenhauer"},
+	})
+	schopenhauer := lvAuthor(6200, "Arthur", "Schopenhauer")
+	ofThree := byAuthor(t, 9711, "World as Will and Idea, Vol. 1 of 3", "English", schopenhauer)
+	ofFive := byAuthor(t, 9799, "World as Will and Idea, Vol. 1 of 5", "English", schopenhauer)
+	runLibrivox(t, writeSnapshot(t, ofThree), fresh, allLibrivox)
+
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, stripFidelity(t, fresh))
+	sum := runLibrivox(t, writeSnapshot(t, ofFive, ofThree), dataDir, allLibrivox)
+	if len(sum.LibrivoxWorklist) != 1 || sum.LibrivoxWorklist[0].Reason != LibrivoxVolumeTotal {
+		t.Errorf("worklist = %+v, want 9799 as volume-total", sum.LibrivoxWorklist)
+	}
+	if got := recSlugsOf(t, dataDir, "the-world-as-will-and-idea-volume-1"); len(got) != 2 || sum.NewWorks != 0 {
+		t.Errorf("recordings %v, new works %d; want the catalogued two alone", got, sum.NewWorks)
+	}
+}
+
+func TestLibrivoxVolumeTotalHoldsARowSharingAnAuthor(t *testing.T) {
+	// A row that shares only one of its authors with the held work is not
+	// minted beside it either: rule 1 would have listed it, and the work may
+	// still be either volume set.
+	dataDir := t.TempDir()
+	seedAuthoredWorks(t, dataDir, map[string][]string{
+		"the-world-as-will-and-idea-volume-1": {"The World as Will and Idea, Volume 1", "arthur-schopenhauer", "Arthur Schopenhauer"},
+	})
+	schopenhauer := lvAuthor(6200, "Arthur", "Schopenhauer")
+	runLibrivox(t, writeSnapshot(t, byAuthor(t, 9711, "World as Will and Idea, Vol. 1 of 3", "English", schopenhauer)), dataDir, allLibrivox)
+	coAuthored := byAuthor(t, 9799, "World as Will and Idea, Vol. 1 of 5", "English", schopenhauer)
+	coAuthored.Authors = append(coAuthored.Authors, lvAuthor(6201, "Richard", "Haldane"))
+	sum := runLibrivox(t, writeSnapshot(t, coAuthored), dataDir, allLibrivox)
+	if len(sum.LibrivoxWorklist) != 1 || sum.LibrivoxWorklist[0].Reason != LibrivoxVolumeTotal || sum.NewWorks != 0 {
+		t.Errorf("worklist = %+v, new works %d; want 9799 as volume-total", sum.LibrivoxWorklist, sum.NewWorks)
+	}
+}
