@@ -1,6 +1,7 @@
 package importer
 
 import (
+	"cmp"
 	"slices"
 	"sort"
 	"strings"
@@ -890,6 +891,7 @@ func clusterEvidence(claims []nameClaim, idx, cluster []int) (*SeriesRow, *serie
 	for _, k := range cluster {
 		cl := claims[idx[k]]
 		r := cl.row
+		row.apart = cmp.Or(row.apart, r.apart) // one run, one review
 		for _, a := range r.authors {
 			if !seen[a.slug] {
 				seen[a.slug] = true
@@ -934,6 +936,9 @@ func (m SeriesMatch) Why() string { return describeStepped(m.stepped) }
 func (ix *SeriesAuthorIndex) Resolve(name string, reds model.Redirects, stored func(slug string) (string, bool), row *SeriesRow) SeriesMatch {
 	if row == nil {
 		row = &SeriesRow{}
+	}
+	if ix != nil {
+		row.keepApart(ix.apart)
 	}
 	clean, raw := CleanSeriesName(name)
 	t := resolveSeriesClaims(ix.catalogue(stored, reds), []nameClaim{{name: clean, raw: raw, row: row, order: claimOrder(row, "")}})[0]

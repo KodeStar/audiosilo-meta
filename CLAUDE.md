@@ -178,7 +178,10 @@ never noticed (ai-verify read only the metadiff summary). Two halves:
   is never folded, titled onto bare or (LibriVox rule 1c) bare onto titled, so an
   import cannot re-merge a pair a maintainer separated (`importer.Options.Distinct`,
   filled from `audit.ReviewedDistinct()` by cmd/metaimport and internal/issueform,
-  resolved through redirects.json by `check.ResolveDistinct`). metabuild's census and metaaudit's LOADER carry-through load
+  resolved through redirects.json by `check.ResolveDistinct`), and so does the series
+  same-person rule (`importer.PeopleApart`, read by the series-author fit and the
+  intake form's work-slug, takeover and series gates): a reviewed pair is never one
+  author, so the doctor's book cannot join the novelist's series. metabuild's census and metaaudit's LOADER carry-through load
   without the decisions (neither is the census anyone reads).
 - **New advisories reach the automation.** On a pull request touching data/,
   `.github/scripts/advisory-delta.sh` runs the same metacheck binary over the base and

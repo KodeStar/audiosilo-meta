@@ -256,7 +256,8 @@ func (c *composer) gateWorkSlug(slug string, authorNames []string) (string, bool
 }
 
 // sameAuthorAs reports whether any of the submitted author names may be one of
-// w's authors, by the importer's same-person rule (importer.SamePerson). A work
+// w's authors, by the importer's same-person rule (importer.PeopleApart's
+// SamePerson, so a pair a review kept apart is two authors). A work
 // or a submission with no author to compare reads as the same author - the
 // conservative answer, which keeps the duplicate verdict.
 func (c *composer) sameAuthorAs(w *model.Work, names []string) bool {
@@ -265,7 +266,7 @@ func (c *composer) sameAuthorAs(w *model.Work, names []string) bool {
 	}
 	for _, id := range w.Authors {
 		for _, n := range names {
-			if slug, _ := c.personSlugOf(n); importer.SamePerson(id, c.nameOf(id), slug, n) {
+			if slug, _ := c.personSlugOf(n); c.peopleApart().SamePerson(id, c.nameOf(id), slug, n) {
 				return true
 			}
 		}
@@ -276,9 +277,14 @@ func (c *composer) sameAuthorAs(w *model.Work, names []string) bool {
 // nearAuthorOf reports whether any submitted author is NEAR one of w's authors
 // without being the same person (importer.NearPerson: the same surname, or one
 // edit apart) - a name the gate cannot tell a misspelling from another author by.
+// A pair a reviewed merge-people rejection kept apart is not near: a maintainer
+// has already told the two apart ("Dr. Alex George" is not Alex George).
 func (c *composer) nearAuthorOf(w *model.Work, names []string) bool {
 	for _, id := range w.Authors {
 		for _, n := range names {
+			if slug, _ := c.personSlugOf(n); c.peopleApart().Has(id, slug) {
+				continue
+			}
 			if importer.NearPerson(c.nameOf(id), n) {
 				return true
 			}

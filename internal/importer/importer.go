@@ -314,11 +314,12 @@ type planner struct {
 	// its survivor rather than minting there (tombstone.go).
 	redirects      model.Redirects
 	tombstoneRides map[string]string
-	// distinct is Options.Distinct as given, and keptApart its resolution
-	// through redirects (loadExisting): the reviewed pairs the honorific fold
-	// may not merge (peopleKeptApart).
-	distinct  []check.ReviewedDistinct
-	keptApart check.DistinctPairs
+	// distinct is Options.Distinct as given, and apart its people half resolved
+	// through redirects (loadExisting): the reviewed pairs no fold may merge
+	// (peopleKeptApart) and the series same-person rule never reads as one
+	// author (PeopleApart).
+	distinct []check.ReviewedDistinct
+	apart    *PeopleApart
 	// seriesNameJoins is every claim this run JOINED to a catalogued series stored
 	// under another name than the claim gave (reportSeriesNameJoins).
 	seriesNameJoins map[SeriesNameJoin]bool
@@ -1186,7 +1187,7 @@ func seriesClaimsAbridged(refs []seriesRef) *bool {
 func (p *planner) loadExisting() {
 	// The reviewed pairs resolve through the tombstone table this load reads,
 	// on every way out of it (an unreadable catalogue still has its batch).
-	defer func() { p.keptApart = check.ResolveDistinct(p.distinct, p.redirects) }()
+	defer func() { p.apart = NewPeopleApart(p.distinct, p.redirects) }()
 	res := check.LoadStore(p.store)
 	p.loadProblems = len(res.Problems)
 	// The create path's duplicate-identity index, off the load that is already
@@ -1835,13 +1836,7 @@ func (p *planner) peopleKeptApart(a, b string) bool {
 }
 
 // personSlugsKeptApart is peopleKeptApart for two person slugs.
-func (p *planner) personSlugsKeptApart(a, b string) bool {
-	if len(p.keptApart[model.RedirectPeople]) == 0 {
-		return false
-	}
-	return p.keptApart.Has(model.RedirectPeople,
-		p.redirects.Live(model.RedirectPeople, a), p.redirects.Live(model.RedirectPeople, b))
-}
+func (p *planner) personSlugsKeptApart(a, b string) bool { return p.apart.Has(a, b) }
 
 // noteHonorific records one honorific merge for the run's report. It is a SET
 // of (credited spelling -> bare twin) pairs rather than a count: the same
@@ -2909,6 +2904,7 @@ func (p *planner) batchClaimsIn(ctx creditContext, books []sourceBook) ([]nameCl
 		lang, _ := b.language()
 		row := SeriesRowFor(creditNamesOf(b.authorCredits), []string{b.str("title"), b.str("title_short")}, b.str("publisher"), lang,
 			func(name string) string { return p.resolvePersonIn(ctx, name).slug })
+		row.apart = p.apart
 		places, work := p.claimPlacesIn(ctx, *b, asin)
 		// A claim with no usable position is placed only if a lookup later fills
 		// one, so claimsOf does not count it on as evidence.
@@ -2923,7 +2919,7 @@ func (p *planner) batchClaimsIn(ctx creditContext, books []sourceBook) ([]nameCl
 // seriesAuthorIndex is the catalogue's series evidence, built on first use.
 func (p *planner) seriesAuthorIndex() *SeriesAuthorIndex {
 	if p.seriesIndex == nil && p.catalog != nil {
-		p.seriesIndex = newSeriesAuthorIndex(p.catalog, p.people)
+		p.seriesIndex = newSeriesAuthorIndex(p.catalog, p.people, p.apart)
 	}
 	return p.seriesIndex
 }

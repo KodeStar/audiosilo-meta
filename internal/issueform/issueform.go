@@ -22,6 +22,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/kodestar/audiosilo-meta/internal/audit"
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -221,7 +222,14 @@ type composer struct {
 	// one series. It is built on the first series lookup (seriesIndex) from
 	// catalog, since most templates never make one; nil admits every series.
 	seriesAuthors *importer.SeriesAuthorIndex
-	catalog       *model.Catalog
+	// apart is the reviewed merge-people rejections (audit.ReviewedDistinct)
+	// resolved through redirects, built on first use (peopleApart): the
+	// same-person rule the work-slug, takeover and series gates decide by never
+	// reads two people a review separated as one author, as the importer's
+	// does not.
+	apart      *importer.PeopleApart
+	apartBuilt bool
+	catalog    *model.Catalog
 	// personName indexes the catalogue's person names by id, built on first use
 	// (nameOf).
 	personName map[string]string
@@ -452,9 +460,18 @@ func (c *composer) loadExisting() {
 // seriesIndex is the catalogue's series author evidence, built on first use.
 func (c *composer) seriesIndex() *importer.SeriesAuthorIndex {
 	if c.seriesAuthors == nil && c.catalog != nil {
-		c.seriesAuthors = importer.NewSeriesAuthorIndex(c.catalog)
+		c.seriesAuthors = importer.NewSeriesAuthorIndex(c.catalog, c.peopleApart())
 	}
 	return c.seriesAuthors
+}
+
+// peopleApart is the reviewed merge-people rejections, resolved through the
+// tree's tombstone table on first use (nil when none names a pair).
+func (c *composer) peopleApart() *importer.PeopleApart {
+	if !c.apartBuilt {
+		c.apart, c.apartBuilt = importer.NewPeopleApart(audit.ReviewedDistinct(), c.redirects), true
+	}
+	return c.apart
 }
 
 // coreFamilies are the CC0 families every template may touch: a work, its

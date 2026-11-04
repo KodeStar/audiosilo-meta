@@ -1,6 +1,7 @@
 package importer
 
 import (
+	"cmp"
 	"maps"
 	"slices"
 	"strings"
@@ -25,7 +26,7 @@ import (
 // So a same-named series is JOINED only when it FITS the row (seriesAuthors.fit):
 //
 //   - SHARED: a row author credits a member work - by slug, or by a spelling of the
-//     same name (personForm.same). When one author DOMINATES the series (credits at
+//     same name (personForm.same; never a pair a review kept apart, PeopleApart). When one author DOMINATES the series (credits at
 //     least three quarters of its members), the shared author must be a dominant
 //     one or have CO-CREDITED a member with one: a minority author who never wrote
 //     beside the series' own author is exactly what an earlier squatter looks like,
@@ -126,6 +127,11 @@ type SeriesRow struct {
 	// resolution (languageCloses) never judges an unknown.
 	language string
 
+	// apart is the reviewed merge-people rejections the row's forms carry
+	// (PeopleApart): the planner sets it, and SeriesAuthorIndex.Resolve stamps
+	// its own onto a row built without one.
+	apart *PeopleApart
+
 	// The comparison forms, computed once per row however many series it is
 	// judged against (prepare).
 	prepared   bool
@@ -156,6 +162,16 @@ func SeriesRowFor(names, titles []string, publisher, language string, slugOf fun
 	return row
 }
 
+// keepApart makes the row's forms carry ap, recomputing them when they were
+// computed without it.
+func (r *SeriesRow) keepApart(ap *PeopleApart) {
+	if r.apart == ap {
+		return
+	}
+	r.apart = ap
+	r.prepared, r.forms, r.titleSlugs, r.pubKeys = false, nil, nil, nil
+}
+
 // prepare computes the row's comparison forms once.
 func (r *SeriesRow) prepare() {
 	if r.prepared {
@@ -164,7 +180,7 @@ func (r *SeriesRow) prepare() {
 	r.prepared = true
 	for _, a := range r.authors {
 		if individualAuthor(a.slug) {
-			r.forms = append(r.forms, formOf(a.slug, a.name))
+			r.forms = append(r.forms, r.apart.form(a.slug, a.name))
 		}
 	}
 	for _, t := range r.titles {
@@ -503,18 +519,22 @@ type SeriesAuthorIndex struct {
 	qualified     qualifiedIndex
 	qualifiedFrom []qualifiedSource
 	qualifiedOnce sync.Once
+	// apart is the reviewed merge-people rejections every form carries
+	// (PeopleApart), so two people a review separated are never one author.
+	apart *PeopleApart
 }
 
-// NewSeriesAuthorIndex builds the index over cat. A nil catalogue is an empty
-// index, under which every series is open.
-func NewSeriesAuthorIndex(cat *model.Catalog) *SeriesAuthorIndex {
-	return newSeriesAuthorIndex(cat, nil)
+// NewSeriesAuthorIndex builds the index over cat, its same-person rule
+// honouring apart (nil: no review). A nil catalogue is an empty index, under
+// which every series is open.
+func NewSeriesAuthorIndex(cat *model.Catalog, apart *PeopleApart) *SeriesAuthorIndex {
+	return newSeriesAuthorIndex(cat, nil, apart)
 }
 
 // newSeriesAuthorIndex builds the index in one pass over the catalogue; names
 // maps a person slug to its record's name (nil reads cat.People).
-func newSeriesAuthorIndex(cat *model.Catalog, names map[string]string) *SeriesAuthorIndex {
-	ix := &SeriesAuthorIndex{series: map[string]*seriesAuthors{}, language: map[string]string{}}
+func newSeriesAuthorIndex(cat *model.Catalog, names map[string]string, apart *PeopleApart) *SeriesAuthorIndex {
+	ix := &SeriesAuthorIndex{series: map[string]*seriesAuthors{}, language: map[string]string{}, apart: apart}
 	if cat == nil {
 		return ix
 	}
@@ -559,7 +579,7 @@ func newSeriesAuthorIndex(cat *model.Catalog, names map[string]string) *SeriesAu
 				}
 				f, ok := forms[a]
 				if !ok {
-					f = formOf(a, names[a])
+					f = apart.form(a, names[a])
 					forms[a] = f
 				}
 				people = append(people, f)
@@ -673,6 +693,9 @@ type personForm struct {
 	slug, marked, fold string
 	words              []string
 	tokens             []nameToken
+	// apart is the review the form was built under (PeopleApart.form); nil
+	// keeps nothing apart.
+	apart *PeopleApart
 }
 
 // formOf computes a name's comparison forms. The words drop a " - role" tail, a
@@ -712,9 +735,17 @@ const MinPersonEditLen = 8
 // "Joseph Campbell", "James Patterson" / "Jennifer Patterson") and a one-word
 // name matching an end of another are deliberately NOT rungs: they admitted
 // strangers.
+//
+// A pair a reviewed merge-people rejection recorded as two people (PeopleApart,
+// carried by either form) is never one person, whatever the rungs say: the
+// review is how "Dr. Alex George" the TV doctor and Alex George the novelist,
+// who strip to one name, are told apart.
 func (a personForm) same(b personForm) bool {
 	if a.slug != "" && a.slug == b.slug {
 		return true
+	}
+	if cmp.Or(a.apart, b.apart).Has(a.slug, b.slug) {
+		return false
 	}
 	if a.fold == "" || b.fold == "" {
 		return false
@@ -731,16 +762,8 @@ func (a personForm) same(b personForm) bool {
 	return MiddleNameVariant(a.words, b.words) || initialExpansion(a.tokens, b.tokens) || initialExpansion(b.tokens, a.tokens)
 }
 
-// SamePerson is personForm.same over two credited names, each with the slug it
-// is recorded or would be minted under: whether the two may be one person. It is
-// exported for internal/issueform's work-slug gate, which must decide as the
-// importer does whether a taken title slug is the submitting author's book or
-// another author's - one rule, so the two doors never split one author's books.
-func SamePerson(slugA, nameA, slugB, nameB string) bool {
-	return formOf(slugA, nameA).same(formOf(slugB, nameB))
-}
-
-// NearPerson reports whether two names that are NOT one person by SamePerson are
+// NearPerson reports whether two names that are NOT one person by
+// PeopleApart.SamePerson are
 // still close enough that a reader cannot tell a misspelling from a different
 // author: the same surname (the last word of the cleaned name), or a single edit
 // apart over the whole folded name or over the surname alone (titlerule.

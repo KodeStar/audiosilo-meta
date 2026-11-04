@@ -61,7 +61,8 @@ import (
 // novelist), and a pair it names is never folded, whatever the census says
 // (creditCensus.keptApart, planner.peopleKeptApart, fed Options.Distinct). The
 // LibriVox rule 1 paths ask the same list, so a review also stops a bare credit
-// being resolved onto its titled twin (rule 1c).
+// being resolved onto its titled twin (rule 1c), and so does the series
+// same-person rule (PeopleApart), which strips the same titles to compare.
 
 // honorificPrefixes are the courtesy titles a credit may carry in front of an
 // otherwise ordinary name. Each is matched case-insensitively at a word
