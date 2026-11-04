@@ -373,6 +373,10 @@ func (p *planner) resolveLibrivoxAuthors(books []sourceBook) {
 	for _, cl := range order {
 		decided = append(decided, p.decideLibrivoxAuthor(cl, bySlug, holder)...)
 	}
+	// Then the translators of the HELD rows, under the same rules but only
+	// once every planned row's ids are decided, so they cannot move a planned
+	// row's decision (resolveHeldLibrivoxTranslators).
+	decided = append(decided, p.resolveHeldLibrivoxTranslators(books, claims, bySlug, holder, quiet, unfolded)...)
 	for i := range books {
 		if b := &books[i]; b.lv != nil {
 			for j, c := range b.lv.credits {
@@ -389,6 +393,69 @@ func (p *planner) resolveLibrivoxAuthors(books []sourceBook) {
 	}
 }
 
+// resolveHeldLibrivoxTranslators decides the translator author ids of the rows
+// whose project the catalogue already holds: rows the run never plans, but
+// whose recording the recording pass restates (librivoxrecording.go), crediting
+// the project's translators on it. A translator of a project that attached to a
+// catalogued work recorded no work credit, so no person carries the id; without
+// a decision the pass would credit nobody. Each such id that no planned row
+// claimed is judged by decideLibrivoxAuthor, the planned ids' own rules 1 and 2
+// - the same years and id checks, the same-name hold, the author-id forms -
+// over evidence from the held rows alone, in the order of the lowest project
+// crediting it, after every planned id is decided (bySlug and holder carry
+// those, so a held id meeting a planned id's name is judged against it, never
+// the other way). An id the rules hold stays without a person: the pass then
+// credits nobody (a hold is not a guess). Its years reach settleLibrivoxPeople
+// (heldLife), so a pre-LibriVox translator's person is an author record a
+// same-name reader is kept off.
+func (p *planner) resolveHeldLibrivoxTranslators(books []sourceBook, planned map[int]*lvAuthorClaim,
+	bySlug map[string][]*lvAuthorClaim, holder map[string]lifeYears, quiet, unfolded creditCensus) []string {
+	var rows []int
+	for i := range books {
+		if b := &books[i]; b.lv != nil && p.lv.ids[b.lv.id] {
+			rows = append(rows, i)
+		}
+	}
+	slices.SortStableFunc(rows, func(a, b int) int { return books[a].lv.id - books[b].lv.id })
+	claims := map[int]*lvAuthorClaim{}
+	var order []*lvAuthorClaim
+	for _, i := range rows {
+		b := &books[i]
+		var people []string
+		for _, c := range b.lv.credits {
+			if c.kind != librivoxAuthor || c.suffix != librivoxTranslatorSuffix || c.id <= 0 || c.index >= len(b.authors) {
+				continue
+			}
+			if _, catalogued := p.lv.people[librivoxKey{librivoxAuthor, c.id}]; catalogued || planned[c.id] != nil {
+				continue // its holder, or a planned row's decision, already speaks for it
+			}
+			cl := claims[c.id]
+			if cl == nil {
+				cl = &lvAuthorClaim{id: c.id, project: b.lv.id, name: CleanCreditName(c.name), life: c.life}
+				cl.folded, _ = creditWithRolesSided(b.authors[c.index], quiet)
+				cl.unfolded, _ = creditWithRolesSided(b.authors[c.index], unfolded)
+				if slug, fellBack := personSlug(cl.name); !fellBack {
+					cl.slug = slug
+					bySlug[slug] = append(bySlug[slug], cl)
+				}
+				claims[c.id] = cl
+				order = append(order, cl)
+			}
+			cl.titles = append(cl.titles, b.str("title"))
+			if people == nil {
+				people = p.librivoxCreditPeople(b, quiet)
+			}
+			cl.projects = append(cl.projects, librivoxClaimProject(b, c, people))
+		}
+	}
+	var decided []string
+	for _, cl := range order {
+		decided = append(decided, p.decideLibrivoxAuthor(cl, bySlug, holder)...)
+		p.lv.heldLife[cl.id] = cl.life
+	}
+	return decided
+}
+
 // settleLibrivoxPeople takes the run's person decisions that read where the
 // author ids finally land, before any row is planned and after
 // keyLibrivoxAuthorVariants (planCreate), which can still move an id onto a
@@ -402,7 +469,7 @@ func (p *planner) resolveLibrivoxAuthors(books []sourceBook) {
 // 2's reader exception), so a reader of that name is that person in either
 // order.
 func (p *planner) settleLibrivoxPeople(books []sourceBook) {
-	life := map[int]lifeYears{}
+	life := maps.Clone(p.lv.heldLife) // the held rows' translator ids decided this run
 	for _, i := range p.librivoxRowsByProject(books) {
 		for _, c := range books[i].lv.credits {
 			if _, seen := life[c.id]; c.kind == librivoxAuthor && c.id > 0 && !seen {

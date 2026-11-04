@@ -677,6 +677,9 @@ type librivoxState struct {
 	// author records for rule 3 whatever order the run meets their rows and a
 	// same-name reader's in (librivoxAuthorRecord).
 	runAuthors map[string]bool
+	// heldLife is the stated years of each held row's translator id the run
+	// decided (resolveHeldLibrivoxTranslators), for runAuthors.
+	heldLife map[int]lifeYears
 	// sameName is the author ids whose rows go to the worklist as
 	// same-name-author (librivoxpeople.go rule 2), and pendingHolds the
 	// worklist rows among them whose candidates are named once the run has
@@ -730,6 +733,7 @@ func newLibrivoxState() librivoxState {
 		life:          map[string]lifeYears{},
 		authorPins:    map[int]*creditPerson{},
 		runAuthors:    map[string]bool{},
+		heldLife:      map[int]lifeYears{},
 		sameName:      map[int]lvHold{},
 		readerMints:   map[int]*lvReaderMint{},
 		readerNames:   map[int]string{},
