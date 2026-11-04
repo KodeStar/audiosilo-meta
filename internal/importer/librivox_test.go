@@ -346,6 +346,55 @@ func TestLibrivoxImportsAnInProgressProjectOnceComplete(t *testing.T) {
 	}
 }
 
+func TestLibrivoxCataloguedProjectIsNotReportedInProgress(t *testing.T) {
+	// meta#2778: the in-progress check ran before the already-catalogued one,
+	// so a landed project that now reads as in progress (its runtime and
+	// archive.org item withdrawn) was listed as skipped in progress. It is a
+	// project the catalogue holds: already present, nothing written.
+	dataDir := t.TempDir()
+	runLibrivox(t, writeSnapshot(t, fixtureProject(t, 527)), dataDir, allLibrivox)
+	before := testpack.Snapshot(t, dataDir)
+	sum := runLibrivox(t, writeSnapshot(t, inProgressProject(t)), dataDir, allLibrivox)
+	if len(sum.LibrivoxInProgress) != 0 || sum.Skipped != 1 || len(sum.Files) != 0 {
+		t.Errorf("in progress = %v, skipped %d, files %d; want 527 already present", sum.LibrivoxInProgress, sum.Skipped, len(sum.Files))
+	}
+	if after := testpack.Snapshot(t, dataDir); !reflect.DeepEqual(before, after) {
+		t.Error("the rerun changed the tree")
+	}
+}
+
+func TestLibrivoxRetiredProjectNumbersAreSetAside(t *testing.T) {
+	// meta#2778: LibriVox's retired and reusable project numbers (8030, 18134,
+	// 22249; 19674 even states a runtime) are no books: neither in progress
+	// nor a "no narrator" skip, only counted. A real project whose title
+	// merely mentions reuse, with an author, is a project.
+	retired := func(id int, title string, secs int) LibrivoxProject {
+		pr := inProgressProject(t)
+		pr.ID, pr.Title, pr.Authors, pr.Translators, pr.TotalTimeSecs = lvInt(id), title, nil, nil, lvInt(secs)
+		return pr
+	}
+	for _, title := range []string{"DO NOT RE-USE PROJECT NUMBER", "REUSE project number - 03 sections", "REUSE Project Number - 45 Sections"} {
+		if !librivoxRetiredNumber(retired(1, title, 0)) {
+			t.Errorf("%q not read as a retired number", title)
+		}
+	}
+	real := fixtureProject(t, 1870)
+	real.Title = "Reuse Project Number Theory"
+	if librivoxRetiredNumber(real) {
+		t.Error("a project with an author was read as a retired number")
+	}
+	dataDir := t.TempDir()
+	sum := runLibrivox(t, writeSnapshot(t,
+		retired(8030, "DO NOT RE-USE PROJECT NUMBER", 0),
+		retired(19674, "DO NOT RE-USE PROJECT NUMBER", 8239),
+		retired(22249, "REUSE project number - 03 sections", 0),
+		fixtureProject(t, 1870),
+	), dataDir, allLibrivox)
+	if !reflect.DeepEqual(sum.LibrivoxRetired, []int{8030, 19674, 22249}) || len(sum.LibrivoxInProgress) != 0 || len(sum.Skips) != 0 || sum.NewRecordings != 1 {
+		t.Errorf("retired %v, in progress %v, skips %v, recordings %d", sum.LibrivoxRetired, sum.LibrivoxInProgress, sum.Skips, sum.NewRecordings)
+	}
+}
+
 // seedKafka is a catalogue already holding Metamorphosis by Franz Kafka (in
 // English, from another source, with another narration).
 func seedKafka(t *testing.T, dataDir, author, authorName string) {
@@ -624,6 +673,28 @@ func TestLibrivoxTitleStripsTheVersionMarker(t *testing.T) {
 		"Nana (Version 2), Book Nine":       "Nana (Version 2), Book Nine",
 		"Phantom of the Opera (version 4?)": "Phantom of the Opera (version 4?)",
 		"Bible, King James Version 1611":    "Bible, King James Version 1611",
+		// meta#2778: a number of three or more digits is a year, not a
+		// version, inside parentheses too.
+		"Bible (Version 1611)":            "Bible (Version 1611)",
+		"Bible (King James Version 1611)": "Bible (King James Version 1611)",
+		// A marker ending a parenthetical that holds something else: only
+		// the marker goes, the edition and the abridgement stay stated.
+		"Spring (Barber version 2)": "Spring (Barber)",
+		// A translation named "... Version" keeps its name: only the number is
+		// the repeat marker.
+		"Bible (King James Version 2)":                                           "Bible (King James Version)",
+		"Psalms (Revised Standard Version 3)":                                    "Psalms (Revised Standard Version)",
+		"Bible (Douay-Rheims Version 2)":                                         "Bible (Douay-Rheims Version)",
+		"Bible (King James Version)":                                             "Bible (King James Version)",
+		"Psalms (Jamesian version 2)":                                            "Psalms (Jamesian)",
+		"Sir Gawain and the Green Knight (Weston Translation Version 2)":         "Sir Gawain and the Green Knight (Weston Translation)",
+		"Gawayne and the Green Knight (Lewis Translation Version 2)":             "Gawayne and the Green Knight (Lewis Translation)",
+		"Alice's Adventures in Wonderland (abridged, version 2)":                 "Alice's Adventures in Wonderland (abridged)",
+		"Coming of Bill (or: Their Mutual Child; or: The White Hope, Version 2)": "Coming of Bill (or: Their Mutual Child; or: The White Hope)",
+		"Emma (Barber version 2) (Dramatic Reading)":                             "Emma (Barber)",
+		"(Barber version 2)":                                                     "(Barber version 2)",
+		"Ulysses (Circe version 2): reader assignments":                          "Ulysses (Circe version 2): reader assignments",
+		"Spring (Barberversion 2)":                                               "Spring (Barberversion 2)",
 	} {
 		if got := librivoxTitle(in); got != want {
 			t.Errorf("librivoxTitle(%q) = %q, want %q", in, got, want)
@@ -661,6 +732,12 @@ func TestLibrivoxTablesStayInVocabulary(t *testing.T) {
 	}
 	if code, ok := librivoxLanguage("German"); !ok || code != "de" {
 		t.Errorf("the shared word table is not consulted: %q %v", code, ok)
+	}
+	// meta#2778: the two names the backfill skipped (8758, 14212).
+	for name, want := range map[string]string{"Maori": "mi", "Cantonese Chinese": "yue"} {
+		if code, ok := librivoxLanguage(name); !ok || code != want {
+			t.Errorf("librivoxLanguage(%q) = %q %v, want %q", name, code, ok, want)
+		}
 	}
 }
 

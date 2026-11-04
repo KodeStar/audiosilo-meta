@@ -1,6 +1,6 @@
 package importer
 
-// librivoxpeople.go is the LibriVox import's three PERSON rules (meta#2778),
+// librivoxpeople.go is the LibriVox import's four PERSON rules (meta#2778),
 // the classes LibriVox tranches 7 to 11 fixed by hand in every tranche, and the
 // one decision they feed (meta#2799): the person every author or translator
 // credit names is decided ONCE for the batch, keyed by its LibriVox author id,
@@ -74,13 +74,13 @@ package importer
 //     translator of Proclus, never lands on the modern novelist). Instead the id is minted at its DATED name
 //     (librivoxDatedName: "James Grant (1822-1887)" -> `james-grant-1822-1887`,
 //     "Richard Wilson (fl. 1916)" -> `richard-wilson-fl-1916`), the form the
-//     tranches minted by hand; when LibriVox states no year, or the dates are
-//     unsure, its rows go to the worklist as `same-name-author` (Ralph Scott,
-//     J. J. Howard fl. 1807 against a modern J.J. Howard), never stamped
-//     silently. Two ids of the batch meeting one person are decided as a later
-//     run would decide them: the first keeps it, a second is the same person
-//     only on the same birth and death years, else dated, or on the worklist
-//     naming the first's works (finishLibrivoxHolds) when it states no year.
+//     tranches minted by hand; when LibriVox states no year it is rule 4's;
+//     when the dates are unsure its rows go to the worklist as
+//     `same-name-author` (J. J. Howard fl. 1807 against a modern J.J. Howard),
+//     never stamped silently. Two ids of the batch meeting one person are
+//     decided as a later run would decide them: the first keeps it, a second
+//     is the same person only on the same birth and death years, else dated,
+//     or rule 4's when it states no year.
 //  3. READERS ON AUTHORS. A reader whose name meets a catalogued person holding
 //     no reader id claims them, unless that person is an AUTHOR record
 //     (librivoxAuthorRecord: a catalogued librivox_author_id, or a life that
@@ -93,6 +93,22 @@ package importer
 //     undated author id of the same run is not an author record to a reader:
 //     the two are one person, whichever row the run meets first. In
 //     librivoxReaderSlug.
+//
+//  4. AUTHOR-ID FORMS. An author id with no year that rule 2 keeps off a
+//     same-name person is a person of its own at
+//     model.LibrivoxAuthorSlug (`ralph-scott-librivox-author-16428`, Ralph
+//     Scott beside a retail narrator; Andy Adams 12675 beside `andy-adams`,
+//     940), and an author or translator whose name slugs to nothing at
+//     model.LibrivoxUnslugAuthorSlug (`librivox-author-17538`, Зинаида
+//     Гиппиус), the record keeping the name as LibriVox spells it and the
+//     stamp writing the id that makes the slug legal (mintLibrivoxAuthor) -
+//     the reader forms' twins. A split beside a same-name person is listed
+//     (Summary.LibrivoxAuthorSplits): LibriVox may list one person under two
+//     ids, and only a person can tell. Never off a collective statement
+//     ("Anonymous" under another id stays a same-name-author row), and never
+//     onto a slot another person or a tombstone holds: the id then falls back
+//     to the worklist (a sluggable name) or to a credit not recorded (one
+//     that slugs to nothing). A later run finds the record by its id.
 //
 // A project the catalogue already holds is never planned (it is skipped before
 // planning; its readers are librivoxReaderSlug's), and decides nothing here but
@@ -184,6 +200,14 @@ type lvPersonWork struct {
 // poets may each publish "Poems". The test is per form, so a generic base
 // with a qualifier that names a work ("Poems (Ballads of a Cheechako)") keeps
 // its full title's key while its bare "Poems" keys nothing.
+//
+// The keys fold a volume total away ("Vol. 1 of 3" and "Vol. 1 of 5" share
+// one) and, unlike the work lookup (librivoxTitleWorks), nothing puts it
+// back, on purpose: the question here is WHO wrote the text, not WHICH
+// division of it a work is. Two volume sets of one text are one author's,
+// so a shared title says the same about the author whatever the totals; the
+// work lookup refuses them because merging two divisions would be a wrong
+// work, which this rule never makes.
 func librivoxTitleKeys(title string) map[string]bool {
 	keys := map[string]bool{}
 	for t := title; t != ""; {
@@ -596,6 +620,18 @@ func (p *planner) librivoxPairAuthor(cl *lvAuthorClaim) LibrivoxPairAuthor {
 func (p *planner) decideLibrivoxAuthor(cl *lvAuthorClaim, bySlug map[string][]*lvAuthorClaim, holder map[string]lifeYears) []string {
 	id, name := cl.id, cl.name
 	if cl.slug == "" {
+		// A name that slugs to nothing is filed by its author id (rule 4),
+		// never on the shared catch-all; when that slot is not free the
+		// credit is dropped as unsluggable, as before.
+		if slug, ok := model.LibrivoxUnslugAuthorSlug(name, id); ok && !p.mintLibrivoxAuthor(cl, slug, "") {
+			// The slot is another person's or a tombstone's: the credit is
+			// not recorded, and says why (librivoxSlotTaken).
+			p.lv.slotTaken[id] = slug
+			p.summary.Warnings = append(p.summary.Warnings, fmt.Sprintf(
+				"librivox author %d (%q) slugs to nothing and %q is another person's id or a retired one; its credits are not recorded (%s)",
+				id, name, slug, librivoxSlotTaken))
+			p.summary.RunLevelWarnings++
+		}
 		return nil
 	}
 	var notes []string
@@ -636,6 +672,14 @@ func (p *planner) decideLibrivoxAuthor(cl *lvAuthorClaim, bySlug map[string][]*l
 	switch v {
 	case lvApart:
 		if to = p.librivoxDatedName(id, name, cl.life); to == "" {
+			// No year to mint a dated name by: a person of their own at
+			// the author-id form (rule 4), held when that slot is not free
+			// or the name is a collective statement's.
+			if slug, ok := model.LibrivoxAuthorSlug(name, id); ok && individualAuthor(against) &&
+				p.mintLibrivoxAuthor(cl, slug, against) {
+				notes = append(notes, fmt.Sprintf("%d %q credited as %s", id, name, slug))
+				return notes
+			}
 			p.holdLibrivoxAuthor(id, against, true)
 			return notes
 		}
@@ -665,6 +709,67 @@ func (p *planner) pinLibrivoxAuthor(cl *lvAuthorClaim, spelling string) *creditP
 	pin := pinOf(r, spelling)
 	p.lv.authorPins[cl.id] = pin
 	return pin
+}
+
+// mintLibrivoxAuthor pins the claim onto a person of its own at slug, a
+// LibriVox author-id form (model.LibrivoxAuthorSlug for a name another person
+// holds, model.LibrivoxUnslugAuthorSlug for one that slugs to nothing), named
+// as LibriVox spells the credit and created when a row of the id lands; the
+// stamp then writes the id that makes the slug legal. false, pinning nothing,
+// when another person or a tombstone holds the slot. A split off a person of
+// the same name (against, "" for an unsluggable name) is listed for a person to
+// merge or confirm (Summary.LibrivoxAuthorSplits): LibriVox may list one person
+// under two ids, which only a person can tell.
+func (p *planner) mintLibrivoxAuthor(cl *lvAuthorClaim, slug, against string) bool {
+	_, taken := p.people[slug]
+	if _, retired := p.redirects.Survivor(model.RedirectPeople, slug); taken || retired {
+		return false
+	}
+	p.lv.authorPins[cl.id] = &creditPerson{slug: slug, name: cl.name, from: slug, spelled: cl.name}
+	if against != "" {
+		p.lv.splits = append(p.lv.splits, lvAuthorSplit{claim: cl, slug: slug, against: against})
+	}
+	return true
+}
+
+// lvAuthorSplit is an author id rule 4 minted a person of its own at slug
+// beside the same-name person against.
+type lvAuthorSplit struct {
+	claim         *lvAuthorClaim
+	slug, against string
+}
+
+// LibrivoxAuthorSplit is an author id of the run filed at its author-id form
+// (model.LibrivoxAuthorSlug) beside a person of the same name it is kept apart
+// from (librivoxpeople.go rule 4): the other person carries another LibriVox
+// author id, or only narrates, and LibriVox states no year to tell the two by.
+// Only a person can tell LibriVox's own duplicate record from a namesake, so
+// the pair is listed for them to merge or confirm.
+type LibrivoxAuthorSplit struct {
+	Author  LibrivoxPairAuthor `json:"author"`
+	Against string             `json:"against"`
+}
+
+// String is the split as the import report prints it, one line:
+//
+//	16428 "Ralph Scott" -> ralph-scott-librivox-author-16428 (project 17170); apart from ralph-scott
+func (s LibrivoxAuthorSplit) String() string {
+	return fmt.Sprintf("%d %q -> %s (project %d); apart from %s", s.Author.AuthorID, s.Author.Name, s.Author.Person, s.Author.Project, s.Against)
+}
+
+// finishLibrivoxSplits lists, once every row is planned and every recording
+// restated, the rule 4 splits whose person the run created - a landed row's,
+// or a held row's translator the recording pass credits
+// (Summary.LibrivoxAuthorSplits). One whose
+// id keyLibrivoxAuthorVariants moved onto a catalogued spelling since is no
+// split, and is not listed.
+func (p *planner) finishLibrivoxSplits() {
+	for _, sp := range p.lv.splits {
+		a := p.librivoxPairAuthor(sp.claim)
+		if _, made := p.people[a.Person]; made && a.Person == sp.slug {
+			p.summary.LibrivoxAuthorSplits = append(p.summary.LibrivoxAuthorSplits, LibrivoxAuthorSplit{Author: a, Against: sp.against})
+		}
+	}
 }
 
 // noteLibrivoxFolds reports the honorific merges the import makes on LibriVox
@@ -891,11 +996,11 @@ func (p *planner) librivoxReleasesAreEditions(cl *lvAuthorClaim, bound int) bool
 		}
 		// A generic title ("Poems") is no title in common here either: the
 		// same-name person's own "Poems" says nothing about whose text it is.
-		key, nonLatin := librivoxTitleKeyOf(pr.title)
-		if nonLatin || key == "" || librivoxGenericWordsOnly(pr.title) {
+		slugs, nonLatin := p.librivoxTitleWorksAll(pr.title)
+		if nonLatin || librivoxGenericWordsOnly(pr.title) {
 			continue
 		}
-		for _, slug := range p.librivoxTitleIndex()[key] {
+		for _, slug := range slugs {
 			w, ok := p.librivoxCatalogueWorks()[slug]
 			if !ok || w.published || w.year <= bound {
 				continue

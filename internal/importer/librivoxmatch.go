@@ -12,7 +12,11 @@ package importer
 //     Spanish, Italian, Dutch: librivoxArticles) and punctuation, case and
 //     diacritics are set aside (librivoxTitleKey) - "The Metamorphosis" and
 //     "Metamorphosis" by Franz Kafka are one book - when that work is by the
-//     same authors (matchWork) in a compatible language. LibriVox's catalogue is
+//     same authors (matchWork) in a compatible language; a volume number is
+//     one key however it is spelled ("Vol. 1 of 3", "Volume 1":
+//     librivoxVolumeSpelling), but two titles stating different totals ("Vol.
+//     1 of 3", "Vol. 1 of 5") are two volume sets, never one work
+//     (librivoxTitleWorks). LibriVox's catalogue is
 //     public-domain texts whose titles differ from a retailer's mostly by exactly
 //     that, so the duplicate-identity guard's "skip, never merge" would keep a
 //     large share of the mirror out for want of an article.
@@ -25,16 +29,19 @@ package importer
 //     read as the same title). Before author-unmatched, a work by an author the
 //     row spells with more or fewer words is attached, and one by an author it
 //     only loosely resembles is listed author-spelling (librivoxauthors.go rule
-//     1). A credit whose name slugs to nothing never reaches this file
-//     (librivoxauthors.go rule 2), so no agreement can rest on the catch-all
-//     person such a name would fall back to.
+//     1). A credit whose name slugs to nothing reaches this file only filed
+//     by its LibriVox id (librivoxauthors.go rule 2), so no agreement can rest
+//     on the catch-all person such a name would fall back to.
 //  4. NON-LATIN TITLES. A title that slugs to nothing (Cyrillic, Greek, CJK...),
 //     or whose letters are mostly in such a script (librivoxNonLatinTitle),
 //     never walks a slug chain: the shared "untitled" one would file every such
 //     title by one author as one work, and a Latin or number fragment's chain
 //     would file it beside an unrelated book. It is matched by rule 2 alone
 //     (its key keeps the letters of its own script), and otherwise creates a
-//     new work at `librivox-<project id>`, titled as LibriVox writes it.
+//     new work at `librivox-<project id>`, titled as LibriVox writes it. A row
+//     of any other source with that title reaches the work by the same key,
+//     as resolveWork's last merge-only step (librivoxScriptWalk), since no slug
+//     chain does.
 //  5. A TRAILING QUALIFIER IS A WORKLIST SKIP. A Latin title about to create a
 //     work, which rule 2 would match once its trailing parenthetical or
 //     bracketed qualifiers are removed ("Frankenstein (1818)", "Black Beauty
@@ -48,6 +55,7 @@ package importer
 
 import (
 	"fmt"
+	"regexp"
 	"slices"
 	"strconv"
 	"strings"
@@ -73,8 +81,13 @@ const (
 	// (librivoxauthors.go rule 1).
 	LibrivoxAuthorSpelling = "author-spelling"
 	// LibrivoxAuthorUnsluggable: every individual author the row credits has a
-	// name that slugs to nothing (librivoxauthors.go rule 2); no candidates.
+	// name that slugs to nothing and no LibriVox author id to be filed by
+	// (librivoxauthors.go rule 2); no candidates.
 	LibrivoxAuthorUnsluggable = "author-unsluggable"
+	// LibrivoxAuthorSlotTaken: as author-unsluggable, but an author's
+	// LibriVox id could have filed them at librivox-author-<id> and another
+	// person or a tombstone holds that slot (librivoxpeople.go rule 4).
+	LibrivoxAuthorSlotTaken = "author-slot-taken"
 	// LibrivoxDifferentlySpelled: the duplicate-identity guard (dupidentity.go)
 	// found the row's book under a title this rule does not read as the same
 	// (a subtitle or a decoration apart).
@@ -83,10 +96,17 @@ const (
 	// and its `librivox-<id>` work slug is already taken (or retired) by another
 	// record.
 	LibrivoxFallbackTaken = "fallback-slug-taken"
+	// LibrivoxVolumeTotal: a work carries the row's title (rule 2), by its
+	// authors (or a spelling of them, or sharing one: rule 1), but a LibriVox
+	// recording already on it states another volume total than the row's
+	// title ("Vol. 1 of 3" on a work titled "Volume 1", the row "Vol. 1 of
+	// 5"): the work may be either volume set.
+	LibrivoxVolumeTotal = "volume-total"
 	// LibrivoxSameNameAuthor: an author id no person carries meets, by name, a
-	// catalogued person who is someone else, and LibriVox states no year to
-	// mint a record of their own by (librivoxpeople.go rule 2); the candidates
-	// are that person's works. On a project the catalogue already holds it is
+	// catalogued person who may be someone else, and only recording release
+	// dates say so (librivoxpeople.go rule 2), or no record of its own can be
+	// minted (a collective's name, a taken slot: rule 4); the candidates are
+	// that person's works. On a project the catalogue already holds it is
 	// a translator id left uncredited on the recording: held so, or found the
 	// same person as a record carrying ANOTHER author id
 	// (worklistHeldLibrivoxTranslators).
@@ -169,9 +189,159 @@ func librivoxTitleKeyOf(title string) (key string, nonLatin bool) {
 		return librivoxScriptKey(t), true
 	}
 	if s := model.SlugifyWhole(t); s != "" {
-		return joinSlugWords(s), false
+		return joinSlugWords(librivoxVolumeSpelling(s)), false
 	}
 	return librivoxScriptKey(t), true
+}
+
+// librivoxVolumeRE is a volume number in a whole-title slug, "vol" or
+// "volume" with an optional "of <total>" after it. Bounded by \b rather than
+// by consuming the hyphens around it, so two markers in a row ("vol-1-vol-2")
+// are both found.
+var librivoxVolumeRE = regexp.MustCompile(`\bvol(?:ume)?-(\d+)(?:-of-(\d+))?\b`)
+
+// librivoxVolumeSpelling is a whole-title slug with every volume number
+// spelled one way, "volume-<n>": "Vol. 1 of 3" and "Volume 1" are the same
+// volume (meta#2778: 9711 "World as Will and Idea, Vol. 1 of 3" minted a work
+// beside the catalogued "The World as Will and Idea, Volume 1"). Only the
+// spelling folds - the number never does, so "Vol. 1" and "Vol. 2" stay apart.
+// The total ("of 3") is dropped from the key, but not from the decision: two
+// titles stating DIFFERENT totals for a volume are two volume sets
+// (librivoxVolumeTotalsAgree, asked by every lookup of the key,
+// librivoxTitleWorks).
+func librivoxVolumeSpelling(slug string) string {
+	if !strings.Contains(slug, "vol") {
+		return slug
+	}
+	return librivoxVolumeRE.ReplaceAllString(slug, "volume-${1}")
+}
+
+// librivoxVolumeTotals is the total each volume marker of a Latin title states,
+// in order, 0 for a marker stating none ("Vol. 1 of 3, Vol. 2" is [3 0]); nil
+// for a title with no marker.
+func librivoxVolumeTotals(title string) []int {
+	s := model.SlugifyWhole(dropLibrivoxArticle(strings.TrimSpace(title)))
+	if !strings.Contains(s, "vol") {
+		return nil
+	}
+	var totals []int
+	for _, m := range librivoxVolumeRE.FindAllStringSubmatch(s, -1) {
+		n, _ := strconv.Atoi(m[2])
+		totals = append(totals, n)
+	}
+	return totals
+}
+
+// librivoxVolumeTotalsAgree reports whether two titles of one key state no
+// conflicting volume total: a marker stating a total matches one stating none
+// ("Vol. 1 of 3" and "Volume 1"), never one stating another ("Vol. 1 of 3"
+// and "Vol. 1 of 5": volume 1 of two different divisions of the text, which a
+// match would merge). The key folds the totals away, so the markers line up
+// by position.
+func librivoxVolumeTotalsAgree(a, b string) bool {
+	return librivoxTotalsAgree(librivoxVolumeTotals(a), librivoxVolumeTotals(b))
+}
+
+// librivoxTotalsAgree is librivoxVolumeTotalsAgree over two titles' totals
+// (librivoxVolumeTotals), so a lookup reads its own title's once.
+func librivoxTotalsAgree(ta, tb []int) bool {
+	for i := range min(len(ta), len(tb)) {
+		if ta[i] != 0 && tb[i] != 0 && ta[i] != tb[i] {
+			return false
+		}
+	}
+	return true
+}
+
+// librivoxStatesTotal reports whether any volume marker states a total.
+func librivoxStatesTotal(totals []int) bool {
+	return slices.ContainsFunc(totals, func(n int) bool { return n != 0 })
+}
+
+// librivoxTitleWorks is the spelling-variant lookup every rule asks: the works
+// under title's key (librivoxTitleIndex) whose volume totals agree with the
+// title's, in slug order, with whether the title is non-Latin. A work's totals
+// are its own title's AND those of the LibriVox recordings already on it
+// (workState.volumeTotals: a catalogued recording's librivox_title, or a row of
+// this run that landed there), so a work titled "Volume 1" that holds "Vol. 1
+// of 3" refuses "Vol. 1 of 5" in one run as in two. held is the works of the
+// key refused ONLY by a recording's total, not by their own title: the row
+// may be either volume set, and routeLibrivox lists it (volume-total) rather
+// than minting a work beside them.
+func (p *planner) librivoxTitleWorks(title string) (slugs, held []string, nonLatin bool) {
+	key, nonLatin := librivoxTitleKeyOf(title)
+	slugs = p.librivoxTitleIndex()[key]
+	if nonLatin {
+		return slugs, nil, nonLatin
+	}
+	// A title stating no total agrees with every work, so only one stating
+	// one filters (and its totals are read once, not per candidate).
+	totals := librivoxVolumeTotals(title)
+	if !librivoxStatesTotal(totals) {
+		return slugs, nil, nonLatin
+	}
+	var out []string
+	for _, slug := range slugs {
+		ws := p.works[slug]
+		if ws == nil || !librivoxTotalsAgree(totals, librivoxVolumeTotals(ws.title)) {
+			continue
+		}
+		if ws.recordingTotalsAgree(totals) {
+			out = append(out, slug)
+		} else {
+			held = append(held, slug)
+		}
+	}
+	return out, held, nonLatin
+}
+
+// recordingTotalsAgree reports whether every LibriVox recording on ws states
+// volume totals agreeing with totals (workState.volumeTotals).
+func (ws *workState) recordingTotalsAgree(totals []int) bool {
+	for _, t := range ws.volumeTotals {
+		if !librivoxTotalsAgree(totals, t) {
+			return false
+		}
+	}
+	return true
+}
+
+// librivoxTitleWorksAll is librivoxTitleWorks with the works a recording's
+// total holds back put back, in slug order: what a rule asks that never
+// attaches (rule 5 only refuses) or asks WHO wrote a text rather than which
+// division of it a work is (the edition-date evidence), for which a volume
+// set held apart by its recordings is the same title as it was before they
+// said so. The author-variant keying (keyLibrivoxAuthorVariants) asks
+// librivoxTitleWorks itself: it proposes only what routeLibrivox decides, and
+// a held work is a worklist row there, never an attach.
+func (p *planner) librivoxTitleWorksAll(title string) (slugs []string, nonLatin bool) {
+	slugs, held, nonLatin := p.librivoxTitleWorks(title)
+	if len(held) == 0 {
+		return slugs, nonLatin
+	}
+	all := slices.Concat(slugs, held)
+	slices.Sort(all)
+	return all, nonLatin
+}
+
+// librivoxHeldCandidates is what rule 1 and rule 2 find among the works a
+// recording's volume total holds back (held, librivoxTitleWorks) for a row
+// that agrees with no other work under its key: the works its authors agree
+// with, else the one its authors are a spelling of or every work rule 1
+// relates it to (soleAuthorVariant), else those sharing a person with it. The
+// row may be either volume set, so routeLibrivox lists them as volume-total -
+// never an attach, and never a work minted beside them.
+func (p *planner) librivoxHeldCandidates(b sourceBook, held []string, lang string, authors workAuthors, credits []credit) []*workState {
+	matched, partial := p.librivoxCandidates(held, lang, authors)
+	if len(matched) > 0 {
+		return matched
+	}
+	if ws, _, _, related, _ := p.soleAuthorVariant(b, held, lang, authors, credits, partial); ws != nil {
+		return []*workState{ws}
+	} else if len(related) > 0 {
+		return related
+	}
+	return partial
 }
 
 // librivoxNonLatinTitle reports whether a title is read in its own script
@@ -285,6 +455,39 @@ type librivoxRoute struct {
 	// the catalogued people it credits, person slug to person slug
 	// (librivoxauthors.go rule 1).
 	moves map[string]string
+	// variant is a rule 2 attach's example for the run's note and fallback a
+	// rule 4 `librivox-<id>` create: both counted only once the row's
+	// recording has landed (noteLibrivoxLanded), so a row the planner still
+	// refuses after routing is not reported as attached or created.
+	variant  string
+	fallback bool
+	// authorVariant is a librivoxauthors.go rule 1 attach's example, counted
+	// the same way (Summary.LibrivoxAuthorVariants).
+	authorVariant string
+}
+
+// noteLibrivoxLanded counts a routed row that landed: a rule 2 attach
+// (Summary.LibrivoxVariantsAttached, with its example), a rule 4 create
+// (Summary.LibrivoxFallbackSlugs) or an author-variant attach, per row or
+// keyed for the batch (Summary.LibrivoxAuthorVariants).
+func (p *planner) noteLibrivoxLanded(b sourceBook, route librivoxRoute) {
+	if b.lv != nil {
+		if ex, keyed := p.lv.keyedVariants[b.lv.id]; keyed {
+			p.noteLibrivoxAuthorVariant(ex)
+		}
+	}
+	if route.variant != "" {
+		p.summary.LibrivoxVariantsAttached++
+		if len(p.lv.variantExamples) < maxWarnExamples {
+			p.lv.variantExamples = append(p.lv.variantExamples, route.variant)
+		}
+	}
+	if route.fallback {
+		p.summary.LibrivoxFallbackSlugs++
+	}
+	if route.authorVariant != "" {
+		p.noteLibrivoxAuthorVariant(route.authorVariant)
+	}
 }
 
 // routeLibrivox applies the rules in this file's header to one LibriVox row. It
@@ -299,9 +502,8 @@ func (p *planner) routeLibrivox(b sourceBook, workTitle, fullTitle, posSuffix, l
 	if b.lv == nil {
 		return librivoxRoute{}
 	}
-	key, nonLatin := librivoxTitleKeyOf(workTitle)
-	slugs := p.librivoxTitleIndex()[key]
-	if len(slugs) == 0 {
+	slugs, held, nonLatin := p.librivoxTitleWorks(workTitle)
+	if len(slugs)+len(held) == 0 {
 		return p.librivoxUndecided(b, workTitle, fullTitle, posSuffix, lang, credits, claim, nonLatin)
 	}
 	authors := p.rowWorkAuthorsRO(credits)
@@ -309,14 +511,16 @@ func (p *planner) routeLibrivox(b sourceBook, workTitle, fullTitle, posSuffix, l
 		return librivoxRoute{}
 	}
 	matched, partial := p.librivoxCandidates(slugs, lang, authors)
+	if len(matched) == 0 && len(held) > 0 {
+		if near := p.librivoxHeldCandidates(b, held, lang, authors, credits); len(near) > 0 {
+			p.noteLibrivoxWorklist(b, workTitle, LibrivoxVolumeTotal, candidatesOf(near))
+			return librivoxRoute{skip: true}
+		}
+	}
 	switch {
 	case len(matched) == 1:
-		p.summary.LibrivoxVariantsAttached++
-		if len(p.lv.variantExamples) < maxWarnExamples {
-			p.lv.variantExamples = append(p.lv.variantExamples,
-				fmt.Sprintf("%d %q -> %q (%q)", b.lv.id, workTitle, matched[0].slug, matched[0].title))
-		}
-		return librivoxRoute{walk: &workWalk{title: workTitle, ws: matched[0]}}
+		return librivoxRoute{walk: &workWalk{title: workTitle, ws: matched[0]},
+			variant: fmt.Sprintf("%d %q -> %q (%q)", b.lv.id, workTitle, matched[0].slug, matched[0].title)}
 	case len(matched) > 1:
 		p.noteLibrivoxWorklist(b, workTitle, LibrivoxSeveralWorks, candidatesOf(matched))
 		return librivoxRoute{skip: true}
@@ -360,8 +564,7 @@ func (p *planner) librivoxQualifiedTwin(b sourceBook, workTitle, fullTitle, posS
 			return false
 		}
 		t = stripped
-		key, nonLatin := librivoxTitleKeyOf(t)
-		slugs := p.librivoxTitleIndex()[key]
+		slugs, nonLatin := p.librivoxTitleWorksAll(t)
 		if nonLatin || len(slugs) == 0 {
 			continue
 		}
@@ -421,8 +624,7 @@ func (p *planner) librivoxFallback(b sourceBook, workTitle string, nonLatin bool
 		p.noteLibrivoxWorklist(b, workTitle, LibrivoxFallbackTaken, held)
 		return librivoxRoute{skip: true}
 	}
-	p.summary.LibrivoxFallbackSlugs++
-	return librivoxRoute{walk: &workWalk{title: workTitle, chain: workChain{base: slug}, free: slug}}
+	return librivoxRoute{walk: &workWalk{title: workTitle, chain: workChain{base: slug}, free: slug}, fallback: true}
 }
 
 // librivoxCandidates sorts the works under one spelling-variant key (slugs, in
@@ -457,36 +659,119 @@ func (p *planner) librivoxCandidates(slugs []string, lang string, authors workAu
 // where a work is created).
 func (p *planner) librivoxTitleIndex() map[string][]string {
 	if p.lv.titles == nil {
-		titles := map[string][]string{}
-		for _, ws := range p.works {
-			if key := librivoxTitleKey(ws.title); key != "" {
-				titles[key] = append(titles[key], ws.slug)
-			}
-		}
-		for _, slugs := range titles {
-			slices.Sort(slugs)
-		}
-		p.lv.titles = titles
+		p.lv.titles = p.buildWorkKeyIndex(librivoxTitleKeyOfWork)
 	}
 	return p.lv.titles
 }
 
-// indexLibrivoxWork adds a work the run created to the spelling-variant index.
-// A no-op before the index is built (the build reads every work then), so a run
-// with no LibriVox row never pays for it.
-func (p *planner) indexLibrivoxWork(ws *workState) {
-	if p.lv.titles == nil {
-		return
-	}
+// librivoxTitleKeyOfWork is a work's spelling-variant index key.
+func librivoxTitleKeyOfWork(ws *workState) (string, bool) {
 	key := librivoxTitleKey(ws.title)
-	if key == "" {
-		return
+	return key, key != ""
+}
+
+// indexLibrivoxWork adds a work the run created to the spelling-variant and
+// own-script indexes. A no-op for an index not built yet (its build reads
+// every work then), so a run with no LibriVox row never pays for it.
+func (p *planner) indexLibrivoxWork(ws *workState) {
+	for _, ix := range []struct {
+		idx   map[string][]string
+		keyOf func(*workState) (string, bool)
+	}{{p.lv.titles, librivoxTitleKeyOfWork}, {p.lv.scriptWorks, librivoxScriptKeyOf}} {
+		if ix.idx == nil {
+			continue
+		}
+		if key, ok := ix.keyOf(ws); ok {
+			insertWorkKey(ix.idx, key, ws.slug)
+		}
 	}
-	slugs := p.lv.titles[key]
-	i, found := slices.BinarySearch(slugs, ws.slug)
-	if !found {
-		p.lv.titles[key] = slices.Insert(slugs, i, ws.slug)
+}
+
+// librivoxScriptWalk is rule 4 seen from every OTHER source (meta#2778),
+// resolveWork's last merge-only step: a non-Latin title
+// (librivoxNonLatinTitle) whose chains hold no match may be a book LibriVox
+// already filed at `librivox-<id>`, which no slug chain reaches - "Ο γάμος της
+// Λίτσας (Litsa's Marriage)" slugs to `litsas-marriage`, a pure Cyrillic title
+// to the shared "untitled" - so a libex or user-library row of that title
+// would mint a duplicate beside it. The row is that work when exactly ONE
+// `librivox-<id>` work carries its own-script key (librivoxTitleKey) by the
+// same authors in a compatible language (librivoxCandidates) that the series
+// claim does not contradict; nothing otherwise (two such works are not guessed
+// between). In resolveWork, so the duplicate-identity guard, the series
+// evidence key and every other caller see the same answer as the create path.
+// A LibriVox row never reaches it with a non-Latin title (routeLibrivox decides
+// those itself).
+func (p *planner) librivoxScriptWalk(title string, authors workAuthors, lang string, claim *seriesClaim) (workWalk, bool) {
+	idx := p.librivoxScriptIndex()
+	if len(idx) == 0 {
+		return workWalk{}, false
 	}
+	key, nonLatin := librivoxTitleKeyOf(title)
+	if !nonLatin || key == "" {
+		return workWalk{}, false
+	}
+	matched, _ := p.librivoxCandidates(idx[key], lang, authors)
+	matched = slices.DeleteFunc(matched, func(ws *workState) bool { return !claim.compatible(ws) })
+	if len(matched) != 1 {
+		return workWalk{}, false
+	}
+	return workWalk{title: title, ws: matched[0]}, true
+}
+
+// librivoxScriptIndex is the own-script key of every work rule 4 created (a
+// `librivox-<id>` slug whose title is non-Latin), key -> slugs, built on first
+// use and kept current as the run creates works (indexLibrivoxWork): the few
+// works librivoxScriptWalk can reach, so an ordinary run never builds the whole
+// spelling-variant index for it.
+func (p *planner) librivoxScriptIndex() map[string][]string {
+	if p.lv.scriptWorks == nil {
+		p.lv.scriptWorks = p.buildWorkKeyIndex(librivoxScriptKeyOf)
+	}
+	return p.lv.scriptWorks
+}
+
+// librivoxScriptKeyOf is a work's librivoxScriptIndex key: its own-script title
+// key when it sits at a `librivox-<id>` slug with a non-Latin title.
+func librivoxScriptKeyOf(ws *workState) (string, bool) {
+	if !librivoxFallbackSlug(ws.slug) {
+		return "", false
+	}
+	key, nonLatin := librivoxTitleKeyOf(ws.title)
+	return key, nonLatin && key != ""
+}
+
+// buildWorkKeyIndex indexes every work the planner holds by keyOf (false: not
+// indexed), key -> slugs in slug order.
+func (p *planner) buildWorkKeyIndex(keyOf func(*workState) (string, bool)) map[string][]string {
+	idx := map[string][]string{}
+	for _, ws := range p.works {
+		if key, ok := keyOf(ws); ok {
+			idx[key] = append(idx[key], ws.slug)
+		}
+	}
+	for _, slugs := range idx {
+		slices.Sort(slugs)
+	}
+	return idx
+}
+
+// insertWorkKey adds slug under key to a built index, keeping slug order.
+func insertWorkKey(idx map[string][]string, key, slug string) {
+	slugs := idx[key]
+	if i, found := slices.BinarySearch(slugs, slug); !found {
+		idx[key] = slices.Insert(slugs, i, slug)
+	}
+}
+
+// librivoxFallbackSlug reports whether slug is rule 4's `librivox-<id>` form
+// (librivoxWorkSlug).
+func librivoxFallbackSlug(slug string) bool {
+	rest, ok := strings.CutPrefix(slug, "librivox-")
+	if !ok {
+		return false
+	}
+	id, err := strconv.Atoi(rest)
+	return err == nil && librivoxWorkSlug(id) == slug
 }
 
 // candidatesOf names works for a worklist entry.

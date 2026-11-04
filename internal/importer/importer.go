@@ -224,6 +224,30 @@ type workState struct {
 	// provenance too even when it changes nothing - otherwise which rows a
 	// work's sources name would depend on which row came first.
 	runAttested bool
+	// volumeTotals is the volume totals (librivoxVolumeTotals) each LibriVox
+	// recording on the work states in its own project title, by recording id -
+	// a catalogued recording's librivox_title, replaced by its project's title
+	// when this run's snapshot holds the project (the title the recording pass
+	// restates, so one run reads what the next would), or the title of a row
+	// of this run that landed here - kept only when one states a total: a work
+	// titled "Volume 1" that holds "Vol. 1 of 3" is volume 1 of a three-volume
+	// set, and the spelling-variant lookup reads it so (librivoxTitleWorks).
+	volumeTotals map[string][]int
+}
+
+// noteVolumeTotals records the volume totals recording rec's own project
+// title states on the work it sits on (workState.volumeTotals); a title
+// stating none clears the recording's.
+func (ws *workState) noteVolumeTotals(rec, projectTitle string) {
+	t := librivoxVolumeTotals(projectTitle)
+	if !librivoxStatesTotal(t) {
+		delete(ws.volumeTotals, rec)
+		return
+	}
+	if ws.volumeTotals == nil {
+		ws.volumeTotals = map[string][]int{}
+	}
+	ws.volumeTotals[rec] = t
 }
 
 // seriesState tracks a series' membership so works dedupe and positions never
@@ -878,6 +902,7 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 		p.setEvidenceRuntime(&books[i])
 	}
 	p.loadExisting()
+	p.settleLibrivoxInProgress()
 	// A LibriVox row's credit names are decoded before any census reads them,
 	// and its author credits are resolved by LibriVox id once the batch's
 	// credit decisions are taken (librivox.go, librivoxpeople.go); no-ops for
@@ -934,6 +959,9 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	p.reportSeriesNameJoins()
 	p.stampLibrivoxPeople()
 	p.restateLibrivoxRecordings()
+	// After the recording pass, which creates a held row's translator split
+	// (librivoxTranslatorSlug), so that split is listed too.
+	p.finishLibrivoxSplits()
 	if p.fatal != nil {
 		return p.fatal
 	}
@@ -1132,6 +1160,8 @@ func (p *planner) planCreate(books []sourceBook) {
 	// separating rows whose titles are identical even after the full-title
 	// fallback and which differ only by series position (workidentity.go).
 	suffixes := p.serialPositionSuffixes(books, titles)
+	// A held project's title is its recording's before any row is routed.
+	p.noteHeldLibrivoxTitles(books)
 	// A LibriVox author id that is a catalogued author spelled with more or
 	// fewer words is that person for the whole batch (librivoxauthors.go).
 	p.keyLibrivoxAuthorVariants(books, titles, suffixes)
@@ -1272,6 +1302,7 @@ func (p *planner) loadExisting() {
 			if r.LibrivoxID != 0 {
 				p.lv.ids[r.LibrivoxID] = true
 				p.lv.held[r.LibrivoxID] = RecRef{Work: w.ID, Rec: r.ID}
+				ws.noteVolumeTotals(r.ID, r.LibrivoxTitle)
 			}
 			ri := &recInfo{
 				narrators: ToSet(r.Narrators),
@@ -1480,7 +1511,11 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		p.noteLostSeriesClaims(b, -1, nil)
 		return
 	case noAuthor && workTitle != "":
-		p.noteLibrivoxWorklist(b, workTitle, LibrivoxAuthorUnsluggable, candidatesOf(nil))
+		reason := LibrivoxAuthorUnsluggable
+		if p.librivoxSlotTakenCredit(b, unslugAuthors) {
+			reason = LibrivoxAuthorSlotTaken
+		}
+		p.noteLibrivoxWorklist(b, workTitle, reason, candidatesOf(nil))
 		p.noteLostSeriesClaims(b, -1, nil)
 		return
 	case !noAuthor && len(authorCredits) == 0:
@@ -1608,6 +1643,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	}
 	p.addRecording(ws, b, resolvedTitle, asin, lang, narratorSlugs, warn)
 	if p.landedRec != "" {
+		p.noteLibrivoxLanded(b, route)
 		p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, unrecorded...)
 		p.reportUnsluggable(b, asin, ws.slug, unslugAuthors, unslugNarrators)
 	}
@@ -1712,6 +1748,11 @@ func (p *planner) admitRecordingFacts(b sourceBook, warn func(string, ...any)) (
 	case len(narratorNames) == 0:
 		warn("no narrator; a recording requires narrators; skipped")
 		p.noteSkip(b, reasonMissingNarrator)
+		return "", nil, nil, false
+	}
+	if name, unfiled := p.librivoxUnfiledReader(b, narratorNames); unfiled {
+		warn("reader %q slugs to nothing and has no librivox-reader-<reader id> record to be filed at (no reader id, or the id is another person's or a retired one); skipped, never credited to the catch-all person", name)
+		p.noteSkip(b, reasonUnnamedCredit)
 		return "", nil, nil, false
 	}
 	return lang, narratorNames, unsluggable, true
@@ -2932,6 +2973,11 @@ func (p *planner) resolveWork(title, fullTitle, qualifiedTitle, posSuffix string
 	}
 	if qw, ok := p.qualifiedCatalogueWalk(title, qualifiedTitle, authors, lang, claim); ok {
 		return qw
+	}
+	// A non-Latin title's LibriVox work at `librivox-<id>`, which no slug
+	// chain reaches (librivoxmatch.go rule 4), as a merge target only.
+	if sw, ok := p.librivoxScriptWalk(title, authors, lang, claim); ok {
+		return sw
 	}
 	return w
 }

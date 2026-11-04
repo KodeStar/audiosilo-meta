@@ -249,6 +249,11 @@ func (p *planner) reportUnsluggable(b sourceBook, asin, work string, authors []c
 	for _, c := range all {
 		u := p.unrecordedOf(b, asin, c, p.resolveCredit(c), work)
 		u.Reason = unsluggableReason
+		if _, taken := p.lv.slotTaken[u.AuthorID]; taken && b.lv != nil && u.AuthorID > 0 {
+			// The author id would have filed them at librivox-author-<id>,
+			// but that slot is another person's (librivoxpeople.go rule 4).
+			u.Reason = librivoxSlotTaken
+		}
 		p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, u)
 	}
 }

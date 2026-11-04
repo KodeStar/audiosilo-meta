@@ -281,16 +281,24 @@ type rowProduction struct {
 	// resolution is only needed on the rare path where the title arm alone decides.
 	narrators map[string]bool
 	names     []string
-	resolve   func(name string) string
+	resolve   func(i int, name string) string
 }
 
 // rowProductionOf is b's production with its narrator names resolved lazily and
-// READ-ONLY, onto the slugs creditSlugs would give them (resolvePerson - the
-// decision getOrCreatePerson acts on, and the one rowWorkAuthorsRO reads authors
-// through).
+// READ-ONLY, onto the slugs rowNarratorSlugs would give them: a LibriVox
+// reader by the decision taken for their reader id (librivoxReaderDecision, so a
+// split reader is their own record here too, meta#2778), every other name by
+// resolvePerson - the decision getOrCreatePerson acts on, and the one
+// rowWorkAuthorsRO reads authors through.
 func (p *planner) rowProductionOf(b sourceBook, narratorNames []string) *rowProduction {
+	byIndex := librivoxReaderCreditsByIndex(b, narratorNames)
 	return &rowProduction{runtime: b.evidence, abridged: b.abridged, names: narratorNames,
-		resolve: func(name string) string {
+		resolve: func(i int, name string) string {
+			if c, ok := byIndex[i]; ok {
+				if slug := p.librivoxReaderDecision(c, name).slug; slug != "" {
+					return slug
+				}
+			}
 			return p.resolvePerson(name).slug
 		}}
 }
@@ -305,8 +313,8 @@ func resolvedRowProduction(b sourceBook, narrators map[string]bool) *rowProducti
 func (rp *rowProduction) narratorSet() map[string]bool {
 	if rp.narrators == nil {
 		rp.narrators = make(map[string]bool, len(rp.names))
-		for _, name := range rp.names {
-			rp.narrators[rp.resolve(name)] = true
+		for i, name := range rp.names {
+			rp.narrators[rp.resolve(i, name)] = true
 		}
 	}
 	return rp.narrators

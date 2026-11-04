@@ -388,11 +388,15 @@ id outside its range reads the snapshot whole. A project whose id is missing or
 unreadable is skipped with a warning naming its page and title (no `--ids`
 could select it).
 
-What an import does: a project LibriVox is still recording (no `totaltimesecs`
+What an import does: a project number LibriVox retired or holds for reuse (no
+author, titled "DO NOT RE-USE PROJECT NUMBER" or "REUSE project number - ...")
+is no book and is only counted (`librivox: set aside N retired or reusable
+project numbers`). A project LibriVox is still recording (no `totaltimesecs`
 and no archive.org item in `url_iarchive`; the feed has no status field) is set
 aside before anything else and writes nothing, listed on one line of the report
 (`librivox: skipped N in-progress projects ...: <ids>`), so re-importing its id
-once LibriVox completes it lands it like any other. A project whose
+once LibriVox completes it lands it like any other; one the catalogue already
+holds is counted as already present instead. A project whose
 `librivox_id` is already catalogued is skipped (identity is the project id,
 never the title), so a rerun changes nothing. Otherwise it becomes a new
 recording - never merged into another recording - under the work these rules find, in order (LibriVox's repeat markers are
@@ -400,19 +404,31 @@ stripped from the title first: a trailing "(version 2)", "(ver 2)", "(ver. 2)"
 or "(Dramatic Reading)", stacked or combined in one parenthetical, or a bare
 "Version 2" ("Walden, Version 2", "Sea Wolf - Version 2"), "version" also as
 Italian "versione", Spanish "versión" or Portuguese "versão", so a dramatic
-reading or a numbered version is another recording of the plain-titled work):
+reading or a numbered version is another recording of the plain-titled work; a
+version number has one or two digits, so "(Version 1611)" is a year and stays;
+and a version marker ending a parenthetical that names something else loses
+only the marker: "Spring (Barber version 2)" is "Spring (Barber)", "Alice's
+Adventures in Wonderland (abridged, version 2)" is "... (abridged)", an
+abridged recording as "(abridged)" always is; a translation named "...
+Version" keeps the word, so "(King James Version 2)" is "(King James
+Version)"):
 
 1. the importer's ordinary identity walk: same title, same identity authors,
    same language. An author or translator whose name slugs to nothing (a
-   Cyrillic "Йордан Йовков") is credited nowhere rather than on the one
-   catch-all person record every such name would share: the credit is dropped
-   before the work is decided and listed under `credits not recorded`
-   (`unsluggable`), and a project left with no individual author (only a
-   translator, or only a collective such as Anonymous) goes to the worklist as
-   `author-unsluggable`;
+   Cyrillic "Йордан Йовков") is never the one catch-all person record every
+   such name would share: with a LibriVox author id it is a person of their own
+   at `librivox-author-<author id>` (`librivox-author-17538`, the name kept as
+   written); with none, the credit is dropped before the work is decided and
+   listed under `credits not recorded` (`unsluggable`), and a project left with
+   no individual author (only a translator, or only a collective such as
+   Anonymous) goes to the worklist as `author-unsluggable`;
 2. otherwise the ONE work by the same authors, in the same language, whose title
    differs only by a leading article or punctuation, case and accents ("The
-   Metamorphosis" and "Metamorphosis" by Franz Kafka). The articles set aside
+   Metamorphosis" and "Metamorphosis" by Franz Kafka), or by how a volume is
+   spelled ("Vol. 1 of 3" and "Volume 1"; two titles stating different totals,
+   "Vol. 1 of 3" and "Vol. 1 of 5", are two volume sets and never match, and a
+   work titled "Volume 1" that already holds a "Vol. 1 of 3" recording is the
+   three-volume set: "Vol. 1 of 5" goes to the worklist as `volume-total`). The articles set aside
    are the English the/a/an, French le/la/les/l', German der/die/das, Spanish
    el/los/las, Italian il/lo and Dutch de/het/een. Failing that, the ONE such
    work by an author the project spells with more or fewer words (the same
@@ -465,10 +481,17 @@ The reasons: `several-works` (two or more works qualify under rule 2),
 `author-spelling` (a work carries the title by an author of the same surname
 whose name only loosely agrees with the project's, or beside other
 candidates), `author-unsluggable` (every individual author's name slugs to
-nothing), `differently-spelled-title` (the duplicate-identity guard holds
+nothing and carries no LibriVox author id), `author-slot-taken` (as
+`author-unsluggable`, but the author's `librivox-author-<id>` slot is another
+person's or a retired one; the run warns, and a co-author's credit is listed
+not recorded as `librivox-author-slot-taken`), `differently-spelled-title` (the duplicate-identity guard holds
 the book under a title rule 2 does not read as the same, such as a subtitle
-apart, or rule 3's trailing qualifier), `same-name-author` (below) and `fallback-slug-taken` (below). Once a person has settled the work,
-re-importing the project's id lands it. `--conflicts` rows for these projects
+apart, or rule 3's trailing qualifier), `volume-total` (rule 2's work holds a
+recording stating another volume total), `same-name-author` (below) and `fallback-slug-taken` (below). Once a person has settled the work,
+re-importing the project's id lands it. `--worklist <path>` appends the
+worklist to a file as well, one NDJSON row per project (`librivox_id`, `title`,
+`authors`, `reason`, `candidates`), on a `--dry-run` too, as `--conflicts`
+does. `--conflicts` rows for these projects
 carry `librivox_id`, since they have no ASIN, and so do the `--skipped` lines
 (one `{"librivox_id","reason"}` NDJSON line per project refused under a
 refusal code: an unknown language, no narrator, author or title, or the
@@ -487,7 +510,10 @@ number fragment ("Сборник стихов 001" as "001"). It is matched by r
 (its key keeps its own letters, so a second project of the same title by the
 same author attaches, and "The Война и мир" meets "Война и мир"), and otherwise
 its new work is created at `librivox-<project id>`, titled as LibriVox writes
-it (`fallback-slug-taken` when that slug is already used). A title exactly half
+it (`fallback-slug-taken` when that slug is already used). A book from any
+other source (libex, a user library) with the same non-Latin title by the same
+authors in a compatible language finds that work by the same key, rather than
+minting a duplicate under its Latin fragment or "untitled". A title exactly half
 Latin ("Anna Karenina (Анна Каренина)") stays on the slug rule.
 
 People are keyed by `librivox_reader_id` / `librivox_author_id`: a known id
@@ -495,9 +521,12 @@ resolves to its catalogued person whatever the feed now calls them. A reader
 whose name slugs to nothing (Greek, Cyrillic, CJK) is a person of their own at
 `librivox-reader-<reader id>` (`librivox-reader-11294`), the name kept as
 written, so two such readers are never one record and a rerun finds them by
-id; an author or translator whose name slugs to nothing stays a credit not
-recorded (above). metacheck refuses the shared catch-all `person`, and any
-work or recording crediting it, whatever the source.
+id; so is an author or translator with a LibriVox author id, at
+`librivox-author-<author id>` (above); one with no id stays a credit not
+recorded. A project whose reader slugs to nothing and cannot be filed there (no
+reader id, or the slot is another person's or a retired one) is skipped with a
+warning, never credited to the catch-all. metacheck refuses the shared
+catch-all `person`, and any work or recording crediting it, whatever the source.
 A reader id is a person of its own even when the name is not: when the slug of
 a reader's name is already held by a person carrying a different reader id
 (LibriVox has several accounts called "Martina"), the reader is created at
@@ -545,7 +574,13 @@ the order the projects are read in.
   Cheechako)" is), the
   author is a person of their own at the name with their years:
   `james-grant-1822-1887` ("James Grant (1822-1887)"), `richard-wilson-fl-1916` ("Richard Wilson (fl. 1916)"). With no
-  year to tell them apart, or when the catalogued person's works are dated only
+  year to tell them apart, the author is a person of their own at
+  `<name>-librivox-author-<author id>` (`ralph-scott-librivox-author-16428`,
+  beside a retail narrator called Ralph Scott), and the import report lists the
+  pair (`librivox worklist: N author ids filed at <name>-librivox-author-<id>`)
+  for a person to merge or confirm, since LibriVox may list one person under two
+  ids; a collective such as "Anonymous" is never split this way. When the
+  catalogued person's works are dated only
   by their recordings' release dates (a modern book and a modern edition of an
   old one look alike there), the project goes to the worklist as
   `same-name-author`, naming that person's works. Settling it means putting the
@@ -561,9 +596,8 @@ the order the projects are read in.
   died ("Narrative of Sojourner Truth", 1850, beside Olive Gilbert's edition of
   2009). Two new author ids
   of one name in a single import are told apart the same way: the second is
-  the first's person only when both state the same birth and death years, and
-  one held as `same-name-author` names the first's works, as a later import
-  would.
+  the first's person only when both state the same birth and death years, else
+  dated or at its author-id form, as a later import would decide it.
 
 ## Audiobookshelf
 

@@ -141,31 +141,77 @@ func TestLibrivoxUnslugReaderSlug(t *testing.T) {
 
 func TestPersonIDMatches(t *testing.T) {
 	cases := []struct {
-		id, name string
-		reader   int
-		want     bool
+		id, name       string
+		reader, author int
+		want           bool
 	}{
-		{"martina", "Martina", 0, true},
-		{"martina", "Martina", 844, true}, // the first holder keeps the plain slug
-		{"martina-librivox-634", "Martina", 634, true},
-		{"search-person", "Search", 0, true},
-		{"search-person-librivox-5", "Search", 5, true},
-		{"person", "김영하", 0, true},
-		{"martina-librivox-634", "Martina", 0, false},   // no reader id to reach it by
-		{"martina-librivox-634", "Martina", 635, false}, // another reader's form
-		{"martina-librivox-634", "Marina", 634, false},  // another name's form
-		{"person-librivox-9", "김영하", 9, false},          // never off the catch-all
-		{"search-librivox-5", "Search", 5, false},       // the bare reserved word is never a base
-		{"librivox-reader-11294", "Ἑλένη Κεμικτσή", 11294, true},
-		{"librivox-reader-11294", "Ἑλένη Κεμικτσή", 14457, false}, // another reader's form
-		{"librivox-reader-11294", "Ἑλένη Κεμικτσή", 0, false},     // no reader id to reach it by
-		{"librivox-reader-634", "Martina", 634, false},            // a sluggable name takes its slug
-		{"person-librivox-11294", "Ἑλένη Κεμικτσή", 11294, false}, // never the held-name form
-		{"madeleine-l-engle", "Madeleine L'Engle", 0, false},
+		{"martina", "Martina", 0, 0, true},
+		{"martina", "Martina", 844, 0, true}, // the first holder keeps the plain slug
+		{"martina-librivox-634", "Martina", 634, 0, true},
+		{"search-person", "Search", 0, 0, true},
+		{"search-person-librivox-5", "Search", 5, 0, true},
+		{"person", "김영하", 0, 0, true},
+		{"martina-librivox-634", "Martina", 0, 0, false},   // no reader id to reach it by
+		{"martina-librivox-634", "Martina", 635, 0, false}, // another reader's form
+		{"martina-librivox-634", "Marina", 634, 0, false},  // another name's form
+		{"martina-librivox-634", "Martina", 0, 634, false}, // an author id never reaches the reader form
+		{"person-librivox-9", "김영하", 9, 0, false},          // never off the catch-all
+		{"search-librivox-5", "Search", 5, 0, false},       // the bare reserved word is never a base
+		{"librivox-reader-11294", "Ἑλένη Κεμικτσή", 11294, 0, true},
+		{"librivox-reader-11294", "Ἑλένη Κεμικτσή", 14457, 0, false}, // another reader's form
+		{"librivox-reader-11294", "Ἑλένη Κεμικτσή", 0, 0, false},     // no reader id to reach it by
+		{"librivox-reader-11294", "Ἑλένη Κεμικτσή", 0, 11294, false}, // nor an author id
+		{"librivox-reader-634", "Martina", 634, 0, false},            // a sluggable name takes its slug
+		{"person-librivox-11294", "Ἑλένη Κεμικτσή", 11294, 0, false}, // never the held-name form
+		{"madeleine-l-engle", "Madeleine L'Engle", 0, 0, false},
+		// The author forms (meta#2778): an undated same-name author, and an
+		// author whose name slugs to nothing.
+		{"ralph-scott-librivox-author-16428", "Ralph Scott", 0, 16428, true},
+		{"ralph-scott-librivox-author-16428", "Ralph Scott", 7, 16428, true}, // an author who also reads
+		{"ralph-scott-librivox-author-16428", "Ralph Scott", 0, 16429, false},
+		{"ralph-scott-librivox-author-16428", "Ralph Scott", 16428, 0, false}, // a reader id never reaches it
+		{"ralph-scott-librivox-author-16428", "Ralph Scot", 0, 16428, false},
+		{"search-person-librivox-author-5", "Search", 0, 5, true},
+		{"person-librivox-author-9", "김영하", 0, 9, false},
+		{"librivox-author-17538", "Зинаида Гиппиус", 0, 17538, true},
+		{"librivox-author-17538", "Зинаида Гиппиус", 3, 17538, true},
+		{"librivox-author-17538", "Зинаида Гиппиус", 17538, 0, false},
+		{"librivox-author-17538", "Зинаида Гиппиус", 0, 17539, false},
+		{"librivox-author-14", "Ralph Scott", 0, 14, false}, // a sluggable name takes its slug
+		{"ralph-scott", "Ralph Scott", 0, 16428, true},      // the plain slug stays legal
 	}
 	for _, c := range cases {
-		if got := PersonIDMatches(c.id, c.name, c.reader); got != c.want {
-			t.Errorf("PersonIDMatches(%q, %q, %d) = %v, want %v", c.id, c.name, c.reader, got, c.want)
+		if got := PersonIDMatches(c.id, c.name, c.reader, c.author); got != c.want {
+			t.Errorf("PersonIDMatches(%q, %q, %d, %d) = %v, want %v", c.id, c.name, c.reader, c.author, got, c.want)
+		}
+	}
+}
+
+func TestLibrivoxAuthorSlugIsBounded(t *testing.T) {
+	name := strings.Repeat("Longname ", 20)
+	slug, ok := LibrivoxAuthorSlug(name, 123456)
+	if !ok || len(slug) > MaxSlugLen || !strings.HasSuffix(slug, "-librivox-author-123456") || !PersonIDMatches(slug, name, 0, 123456) {
+		t.Errorf("LibrivoxAuthorSlug = %q, %v", slug, ok)
+	}
+	if _, ok := LibrivoxAuthorSlug("Ralph Scott", 0); ok {
+		t.Error("an author id of 0 composes nothing")
+	}
+}
+
+func TestWantPersonID(t *testing.T) {
+	for _, c := range []struct {
+		name           string
+		reader, author int
+		want           string
+	}{
+		{"Martina", 634, 0, "martina"},
+		{"Ἑλένη Κεμικτσή", 11294, 0, "librivox-reader-11294"},
+		{"Зинаида Гиппиус", 0, 17538, "librivox-author-17538"},
+		{"Зинаида Гиппиус", 5, 17538, "librivox-reader-5"},
+		{"김영하", 0, 0, UnslugPersonID},
+	} {
+		if got := WantPersonID(c.name, c.reader, c.author); got != c.want {
+			t.Errorf("WantPersonID(%q, %d, %d) = %q, want %q", c.name, c.reader, c.author, got, c.want)
 		}
 	}
 }

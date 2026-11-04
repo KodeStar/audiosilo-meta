@@ -451,19 +451,28 @@ func normISBN(s string) string { return strings.ToUpper(s) }
 // covers the shared catch-all a fully-folding name falls back to (which
 // checkUnslugFallback refuses).
 //
-// The other legal forms, a LibriVox reader's disambiguated id and an unsluggable
-// reader's reader-id slug, are stated on model.PersonIDMatches. The plain slug's
-// holder is deliberately not required to exist: a merge that retires it must not
-// turn every reader disambiguated off it red.
+// The other legal forms, a LibriVox reader's or author's disambiguated id and an
+// unsluggable reader's or author's LibriVox-id slug, are stated on
+// model.PersonIDMatches. The plain slug's holder is deliberately not required
+// to exist: a merge that retires it must not turn every person disambiguated off
+// it red.
+//
+// The hint is model.WantPersonID. A record whose name slugs to nothing and
+// which carries neither LibriVox id has no legal id but the catch-all, which
+// checkUnslugFallback refuses, so the message says what is missing instead of
+// suggesting that.
 func checkPersonSlug(cat *model.Catalog, idx *pathIndex, add addFunc) {
 	for _, p := range cat.People {
-		if !model.PersonIDMatches(p.ID, p.Name, p.LibrivoxReaderID) {
-			want, _ := model.PersonSlug(p.Name)
-			if lv, ok := model.LibrivoxUnslugReaderSlug(p.Name, p.LibrivoxReaderID); ok {
-				want = lv
-			}
-			add(idx.person[p], "person id %q does not match its name %q (want %q); the slug of the name IS the identity", p.ID, p.Name, want)
+		if model.PersonIDMatches(p.ID, p.Name, p.LibrivoxReaderID, p.LibrivoxAuthorID) {
+			continue
 		}
+		want := model.WantPersonID(p.Name, p.LibrivoxReaderID, p.LibrivoxAuthorID)
+		if want == model.UnslugPersonID {
+			add(idx.person[p], "person id %q does not match its name %q, which slugs to nothing; a LibriVox person is filed at "+
+				"librivox-reader-<reader id> or librivox-author-<author id>, so the record must carry that id", p.ID, p.Name)
+			continue
+		}
+		add(idx.person[p], "person id %q does not match its name %q (want %q); the slug of the name IS the identity", p.ID, p.Name, want)
 	}
 }
 
@@ -474,7 +483,8 @@ func checkPersonSlug(cat *model.Catalog, idx *pathIndex, add addFunc) {
 // for every such credit, so committing it makes one person the author or
 // narrator of unrelated books (tranche 6 of the LibriVox backfill would have
 // credited a Greek reader and every later unsluggable reader to the same
-// `person`).
+// `person`). A LibriVox reader takes model.LibrivoxUnslugReaderSlug instead,
+// and a LibriVox author with an author id model.LibrivoxUnslugAuthorSlug.
 //
 // No writer produces it: libex refuses such a row at its parse layer, the
 // intake forms refuse the name, and every other importer (LibriVox, OpenAudible,
@@ -500,7 +510,7 @@ func checkUnslugFallback(cat *model.Catalog, recs []recordWithPath, idx *pathInd
 		if _, fellBack := model.PersonSlug(p.Name); fellBack {
 			add(idx.person[p], "person id %q is the shared catch-all for a name that slugs to nothing (%q); "+
 				"it would credit one record for every such name, so it must not be committed "+
-				"(such a credit is left off and reported; a LibriVox reader belongs at librivox-reader-<reader id>)", p.ID, p.Name)
+				"(such a credit is left off and reported; a LibriVox reader belongs at librivox-reader-<reader id>, an author at librivox-author-<author id>)", p.ID, p.Name)
 		} else {
 			realPerson = true
 		}
