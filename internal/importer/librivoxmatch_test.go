@@ -634,9 +634,14 @@ func TestNonLibrivoxRowFindsALibrivoxScriptWork(t *testing.T) {
 		row("B0SCRIPT01", "Война и мир", "russian", "Leo Tolstoy"),
 		row("B0SCRIPT02", "Ο γάμος της Λίτσας (Litsa's Marriage)", "greek", "Grigorios Xenopoulos"),
 		row("B0SCRIPT03", "Война и мир", "russian", "Ivan Other"),
+		// Another spelling of the Greek title (the same production as
+		// B0SCRIPT02): it reaches the work through resolveWork, which the
+		// duplicate-identity guard asks too, so it is neither refused nor
+		// minted beside it; its ASIN joins B0SCRIPT02's recording.
+		row("B0SCRIPT04", "Ο γάμος της Λίτσας: Litsa's Marriage", "greek", "Grigorios Xenopoulos"),
 	)
-	if sum.NewWorks != 1 || sum.NewRecordings != 3 {
-		t.Fatalf("works/recordings = %d/%d, want 1/3\nwarnings: %v", sum.NewWorks, sum.NewRecordings, sum.Warnings)
+	if sum.NewWorks != 1 || sum.NewRecordings != 3 || sum.MergedASINs != 1 || len(sum.Skips) != 0 {
+		t.Fatalf("works/recordings/merged = %d/%d/%d, want 1/3/1; skips %v\nwarnings: %v", sum.NewWorks, sum.NewRecordings, sum.MergedASINs, sum.Skips, sum.Warnings)
 	}
 	for work, n := range map[string]int{"librivox-99600": 2, "librivox-99604": 2} {
 		if got := recSlugsOf(t, dataDir, work); len(got) != n {

@@ -330,7 +330,12 @@ var librivoxVersionRE = regexp.MustCompile(`(?i)(?:\s*` + librivoxSep + `)?\s*\(
 // librivoxMarker is one of librivoxVersionRE's markers. A version number has
 // one or two digits, as in the bare form (librivoxBareVersionRE), so a year in
 // a parenthetical ("(Version 1611)") is never read as one.
-const librivoxMarker = `(?:(?:` + librivoxVersionWord + `|ver\.?)\s*\d{1,2}|dramatic\s+reading)`
+const librivoxMarker = `(?:(?:` + librivoxVersionWord + `|ver\.?)\s*` + librivoxVersionNumber + `|dramatic\s+reading)`
+
+// librivoxVersionNumber is a repeat marker's version number: one or two
+// digits, in every marker form, so a year ("Version 1611") is never one.
+// Measured over the whole 2026-10-27 snapshot, no version is above 14.
+const librivoxVersionNumber = `\d{1,2}`
 
 // librivoxSharedVersionRE is a version marker that ENDS a parenthetical
 // holding something else: "Spring (Barber version 2)", "Sir Gawain and the
@@ -342,7 +347,7 @@ const librivoxMarker = `(?:(?:` + librivoxVersionWord + `|ver\.?)\s*\d{1,2}|dram
 // shared title rules then read as they read project 1122's). Group 1 is the
 // parenthetical's own content.
 var librivoxSharedVersionRE = regexp.MustCompile(`(?i)\(\s*([^()]*?[^()\s,;:\x{2013}\x{2014}-])\s*(?:` + librivoxSep + `\s*|\s+)` +
-	librivoxVersionWord + `\s*\d{1,2}\s*\)\s*$`)
+	librivoxVersionWord + `\s*` + librivoxVersionNumber + `\s*\)\s*$`)
 
 // librivoxVersionWord is the word "version" as LibriVox's projects spell it:
 // English and French "version", Italian "versione", Spanish "versión",
@@ -361,7 +366,7 @@ const librivoxSep = `[,;:\x{2013}\x{2014}-]`
 // merely ends in a number, or in a year ("... Version 1611"), is never read as
 // a marker. Measured over the whole 2026-10-27 snapshot (22,449 projects, no
 // version above 14) it changes 58 titles, every one a repeat project.
-var librivoxBareVersionRE = regexp.MustCompile(`(?i)(?:\s*` + librivoxSep + `\s*|\s+)` + librivoxVersionWord + `\s*\d{1,2}\s*$`)
+var librivoxBareVersionRE = regexp.MustCompile(`(?i)(?:\s*` + librivoxSep + `\s*|\s+)` + librivoxVersionWord + `\s*` + librivoxVersionNumber + `\s*$`)
 
 // librivoxTitle is a project's work title: LibriVox's own, its trailing
 // markers stripped, and a version marker ending a parenthetical that holds
@@ -665,8 +670,8 @@ type librivoxState struct {
 	// sorted once the catalogue is loaded (settleLibrivoxInProgress).
 	inProgress []int
 	// scriptWorks is rule 4's catalogued `librivox-<id>` works by their
-	// own-script title key, for a non-LibriVox row (librivoxScriptWork),
-	// built on first use.
+	// own-script title key, for resolveWork's merge-only step
+	// (librivoxScriptWalk), built on first use and kept current.
 	scriptWorks map[string][]string
 	// authorVariantExamples names a few rows librivoxauthors.go's rule 1
 	// attached, for the run's note.
@@ -774,14 +779,9 @@ func (p *planner) loadLibrivoxPerson(person *model.Person) {
 // typed list one name to one credit, so names[c.index] IS that credit's name.
 // The length test is the guard on that, not a case that arises.
 func (p *planner) rowNarratorSlugs(b sourceBook, names []string, warn func(string, ...any)) []string {
-	if b.lv == nil || len(names) != len(b.narrators) {
+	byIndex := librivoxReaderCreditsByIndex(b, names)
+	if byIndex == nil {
 		return p.creditSlugs(names, warn)
-	}
-	byIndex := make(map[int]librivoxCredit, len(names))
-	for _, c := range b.lv.credits {
-		if c.kind == librivoxReader {
-			byIndex[c.index] = c
-		}
 	}
 	return dedupeSlugs(names, func(i int, name string) string {
 		if c, ok := byIndex[i]; ok {
@@ -791,6 +791,22 @@ func (p *planner) rowNarratorSlugs(b sourceBook, names []string, warn func(strin
 		}
 		return p.getOrCreatePerson(name, warn)
 	})
+}
+
+// librivoxReaderCreditsByIndex is a LibriVox row's reader credits by their
+// index in its cleaned narrator list (names), nil for every other row and for
+// one whose cleaned list is not one name per reader credit.
+func librivoxReaderCreditsByIndex(b sourceBook, names []string) map[int]librivoxCredit {
+	if b.lv == nil || len(names) != len(b.narrators) {
+		return nil
+	}
+	byIndex := make(map[int]librivoxCredit, len(names))
+	for _, c := range b.lv.credits {
+		if c.kind == librivoxReader {
+			byIndex[c.index] = c
+		}
+	}
+	return byIndex
 }
 
 // setLibrivoxPerson puts pin on the row's j-th LibriVox credit. The row's
@@ -856,16 +872,12 @@ func librivoxAuthorCredits(ctx creditContext, b sourceBook) []credit {
 // planning (librivoxUnfiledReader), since its name would fall back to the
 // catch-all.
 func (p *planner) librivoxReaderSlug(c librivoxCredit, name string, project int, warn func(string, ...any)) string {
-	if c.id <= 0 {
-		return ""
-	}
-	if m, ok := p.lv.readerMints[c.id]; ok {
-		_, taken := p.people[m.slug]
-		if m.blocked || (taken && !m.made) {
-			warn("reader %d (%q): %q is another person's id or a retired one; credited to %q", c.id, name, m.slug, p.resolvePerson(name).slug)
-			return ""
-		}
-		if !m.made {
+	d := p.librivoxReaderDecision(c, name)
+	switch {
+	case d.blocked:
+		warn("reader %d (%q): %q is another person's id or a retired one; credited to %q", c.id, name, p.lv.readerMints[c.id].slug, p.resolvePerson(name).slug)
+	case d.mint != nil:
+		if m := d.mint; !m.made {
 			m.made = true
 			p.createPerson(m.slug, m.name)
 			p.stampLibrivoxID(m.slug, c, project)
@@ -875,19 +887,47 @@ func (p *planner) librivoxReaderSlug(c librivoxCredit, name string, project int,
 				p.summary.LibrivoxReadersSplit++
 			}
 		}
-		return m.slug
-	}
-	if slug, ok := p.lv.readers[c.id]; ok {
-		r := p.resolvePerson(name)
-		if first, ok := p.lv.readerNames[c.id]; ok && r.slug != slug {
+	case d.slug != "":
+		if first, ok := p.lv.readerNames[c.id]; ok {
 			// The id was decided by another project's spelling of the reader,
 			// whose row has not created them - not yet, or not at all (a
 			// worklist row): this row creates the person, under that spelling.
 			p.getOrCreatePerson(first, warn)
 		}
-		return p.librivoxReaderResolved(slug, r)
 	}
-	return ""
+	return d.slug
+}
+
+// lvReaderDecision is what the decision taken for a reader id before planning
+// (decideLibrivoxReader) says of one credit of it: the person it is filed at
+// (slug; "" lets the name decide - no id, no decision, a reader the name
+// resolves to anyway, or blocked), the split record to file it at (mint),
+// and whether that split's slot is another person's or a tombstone's
+// (blocked).
+type lvReaderDecision struct {
+	slug    string
+	mint    *lvReaderMint
+	blocked bool
+}
+
+// librivoxReaderDecision is the reader id's decision for a credit (name its
+// cleaned name) with none of its effects: librivoxReaderSlug acts on it, and
+// the read-only resolvers (rowProductionOf) read it, so the two never
+// disagree.
+func (p *planner) librivoxReaderDecision(c librivoxCredit, name string) lvReaderDecision {
+	if c.id <= 0 {
+		return lvReaderDecision{}
+	}
+	if m, ok := p.lv.readerMints[c.id]; ok {
+		if _, taken := p.people[m.slug]; m.blocked || (taken && !m.made) {
+			return lvReaderDecision{blocked: true}
+		}
+		return lvReaderDecision{slug: m.slug, mint: m}
+	}
+	if slug, ok := p.lv.readers[c.id]; ok {
+		return lvReaderDecision{slug: p.librivoxReaderResolved(slug, p.resolvePerson(name))}
+	}
+	return lvReaderDecision{}
 }
 
 // librivoxUnfiledReader reports the first of a LibriVox row's narrator names
@@ -903,48 +943,19 @@ func (p *planner) librivoxUnfiledReader(b sourceBook, names []string) (string, b
 	if b.lv == nil {
 		return "", false
 	}
-	filed := map[int]bool{}
-	if len(names) == len(b.narrators) {
-		for _, c := range b.lv.credits {
-			if _, ok := p.lv.readers[c.id]; ok && c.kind == librivoxReader && c.id > 0 {
-				filed[c.index] = true
-			}
-		}
-	}
+	byIndex := librivoxReaderCreditsByIndex(b, names)
 	for i, name := range names {
-		if _, fellBack := personSlug(name); fellBack && !filed[i] {
-			return name, true
-		}
-	}
-	return "", false
-}
-
-// librivoxReaderSlugRO is librivoxReaderSlug's answer with none of its effects,
-// for a read-only resolver (rowProductionOf): the person the i-th of a
-// LibriVox row's narrator names (names, its cleaned list) is filed at by the
-// decision taken for its reader id, or "" when the name decides - every other
-// row, a credit with no id, a blocked split, or a reader the name resolves to
-// anyway.
-func (p *planner) librivoxReaderSlugRO(b sourceBook, names []string, i int) string {
-	if b.lv == nil || len(names) != len(b.narrators) {
-		return ""
-	}
-	for _, c := range b.lv.credits {
-		if c.kind != librivoxReader || c.index != i || c.id <= 0 {
+		if _, fellBack := personSlug(name); !fellBack {
 			continue
 		}
-		if m, ok := p.lv.readerMints[c.id]; ok {
-			if _, taken := p.people[m.slug]; m.blocked || (taken && !m.made) {
-				return ""
+		if c, ok := byIndex[i]; ok && c.id > 0 {
+			if _, filed := p.lv.readers[c.id]; filed {
+				continue
 			}
-			return m.slug
 		}
-		if slug, ok := p.lv.readers[c.id]; ok {
-			return p.librivoxReaderResolved(slug, p.resolvePerson(names[i]))
-		}
-		return ""
+		return name, true
 	}
-	return ""
+	return "", false
 }
 
 // lvReaderMint is a reader decideLibrivoxReader made a person of their own: the

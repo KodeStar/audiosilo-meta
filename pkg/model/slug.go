@@ -268,14 +268,22 @@ const librivoxReaderTail = "-librivox-"
 // (pkg/check's checkPersonSlug) accepts it through - the same one-function rule
 // PersonSlug follows.
 func LibrivoxReaderSlug(name string, readerID int) (slug string, ok bool) {
-	if readerID < 1 {
+	return librivoxTailSlug(name, librivoxReaderTail, readerID)
+}
+
+// librivoxTailSlug is PersonSlug(name) plus tail and a LibriVox id, the name's
+// part bounded (BoundedSlugTail): the composition LibrivoxReaderSlug and
+// LibrivoxAuthorSlug share. ok is false for an id below 1 and for a name
+// PersonSlug falls back on.
+func librivoxTailSlug(name, tail string, id int) (slug string, ok bool) {
+	if id < 1 {
 		return "", false
 	}
 	base, fellBack := PersonSlug(name)
 	if fellBack {
 		return "", false
 	}
-	return BoundedSlugTail(base, librivoxReaderTail+strconv.Itoa(readerID)), true
+	return BoundedSlugTail(base, tail+strconv.Itoa(id)), true
 }
 
 // librivoxUnslugReaderPrefix is the fixed head of the id a LibriVox reader whose
@@ -297,13 +305,21 @@ const librivoxUnslugReaderPrefix = "librivox-reader-"
 // that, LibrivoxReaderSlug. It is the one composition the importer mints the id
 // with and PersonIDMatches accepts it through.
 func LibrivoxUnslugReaderSlug(name string, readerID int) (slug string, ok bool) {
-	if readerID < 1 {
+	return librivoxPrefixSlug(name, librivoxUnslugReaderPrefix, readerID)
+}
+
+// librivoxPrefixSlug is prefix plus a LibriVox id, for a name that slugs to
+// nothing: the composition LibrivoxUnslugReaderSlug and
+// LibrivoxUnslugAuthorSlug share. ok is false for an id below 1 and for a name
+// that slugs to something.
+func librivoxPrefixSlug(name, prefix string, id int) (slug string, ok bool) {
+	if id < 1 {
 		return "", false
 	}
 	if _, fellBack := PersonSlug(name); !fellBack {
 		return "", false
 	}
-	return librivoxUnslugReaderPrefix + strconv.Itoa(readerID), true
+	return prefix + strconv.Itoa(id), true
 }
 
 // librivoxAuthorTail is the fixed segment a disambiguated LibriVox author's id
@@ -325,14 +341,7 @@ const librivoxAuthorTail = "-librivox-author-"
 // name keeps its canonical variant as the base. It is the one composition the
 // importer mints the id with and PersonIDMatches accepts it through.
 func LibrivoxAuthorSlug(name string, authorID int) (slug string, ok bool) {
-	if authorID < 1 {
-		return "", false
-	}
-	base, fellBack := PersonSlug(name)
-	if fellBack {
-		return "", false
-	}
-	return BoundedSlugTail(base, librivoxAuthorTail+strconv.Itoa(authorID)), true
+	return librivoxTailSlug(name, librivoxAuthorTail, authorID)
 }
 
 // librivoxUnslugAuthorPrefix is the fixed head of the id a LibriVox author whose
@@ -347,13 +356,7 @@ const librivoxUnslugAuthorPrefix = "librivox-author-"
 // all. ok is false for an author id below 1 and for a name that slugs to
 // something.
 func LibrivoxUnslugAuthorSlug(name string, authorID int) (slug string, ok bool) {
-	if authorID < 1 {
-		return "", false
-	}
-	if _, fellBack := PersonSlug(name); !fellBack {
-		return "", false
-	}
-	return librivoxUnslugAuthorPrefix + strconv.Itoa(authorID), true
+	return librivoxPrefixSlug(name, librivoxUnslugAuthorPrefix, authorID)
 }
 
 // PersonIDMatches reports whether id is a legal id for a person named name who

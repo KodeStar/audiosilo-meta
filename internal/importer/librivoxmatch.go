@@ -37,8 +37,9 @@ package importer
 //     would file it beside an unrelated book. It is matched by rule 2 alone
 //     (its key keeps the letters of its own script), and otherwise creates a
 //     new work at `librivox-<project id>`, titled as LibriVox writes it. A row
-//     of any other source with that title reaches the work by the same key
-//     (librivoxScriptWork), since no slug chain does.
+//     of any other source with that title reaches the work by the same key,
+//     as resolveWork's last merge-only step (librivoxScriptWalk), since no slug
+//     chain does.
 //  5. A TRAILING QUALIFIER IS A WORKLIST SKIP. A Latin title about to create a
 //     work, which rule 2 would match once its trailing parenthetical or
 //     bracketed qualifiers are removed ("Frankenstein (1818)", "Black Beauty
@@ -499,106 +500,119 @@ func (p *planner) librivoxCandidates(slugs []string, lang string, authors workAu
 // where a work is created).
 func (p *planner) librivoxTitleIndex() map[string][]string {
 	if p.lv.titles == nil {
-		titles := map[string][]string{}
-		for _, ws := range p.works {
-			if key := librivoxTitleKey(ws.title); key != "" {
-				titles[key] = append(titles[key], ws.slug)
-			}
-		}
-		for _, slugs := range titles {
-			slices.Sort(slugs)
-		}
-		p.lv.titles = titles
+		p.lv.titles = p.buildWorkKeyIndex(librivoxTitleKeyOfWork)
 	}
 	return p.lv.titles
 }
 
-// indexLibrivoxWork adds a work the run created to the spelling-variant index.
-// A no-op before the index is built (the build reads every work then), so a run
-// with no LibriVox row never pays for it.
-func (p *planner) indexLibrivoxWork(ws *workState) {
-	if p.lv.titles == nil {
-		return
-	}
+// librivoxTitleKeyOfWork is a work's spelling-variant index key.
+func librivoxTitleKeyOfWork(ws *workState) (string, bool) {
 	key := librivoxTitleKey(ws.title)
-	if key == "" {
-		return
-	}
-	slugs := p.lv.titles[key]
-	i, found := slices.BinarySearch(slugs, ws.slug)
-	if !found {
-		p.lv.titles[key] = slices.Insert(slugs, i, ws.slug)
-	}
+	return key, key != ""
 }
 
-// librivoxScriptWork is rule 4 seen from every OTHER source (meta#2778): a
-// row whose title is non-Latin (librivoxNonLatinTitle) and that the ordinary
-// walk would create a work for may be a book LibriVox already filed at
-// `librivox-<id>`, which no slug chain reaches - "Ο γάμος της Λίτσας (Litsa's
-// Marriage)" slugs to `litsas-marriage`, a pure Cyrillic title to the shared
-// "untitled" - so an Audible, libex or user-library row of that title would
-// mint a duplicate beside it. Such a row is that work when exactly ONE
-// `librivox-<id>` work carries its own-script key (librivoxTitleKey) by the
-// same authors (matchWork) in a compatible language; nil otherwise, leaving
-// the ordinary path (two such works are not guessed between). A LibriVox row
-// is routeLibrivox's.
-func (p *planner) librivoxScriptWork(b sourceBook, workTitle, lang string, authors workAuthors) *workState {
-	if b.lv != nil {
-		return nil
-	}
-	key, nonLatin := librivoxTitleKeyOf(workTitle)
-	if !nonLatin || key == "" {
-		return nil
-	}
-	var found *workState
-	for _, slug := range p.librivoxScriptIndex()[key] {
-		ws := p.works[slug]
-		if ws == nil || !langCompatible(ws.lang, lang) || matchWork(ws, authors) == matchNone {
+// indexLibrivoxWork adds a work the run created to the spelling-variant and
+// own-script indexes. A no-op for an index not built yet (its build reads
+// every work then), so a run with no LibriVox row never pays for it.
+func (p *planner) indexLibrivoxWork(ws *workState) {
+	for _, ix := range []struct {
+		idx   map[string][]string
+		keyOf func(*workState) (string, bool)
+	}{{p.lv.titles, librivoxTitleKeyOfWork}, {p.lv.scriptWorks, librivoxScriptKeyOf}} {
+		if ix.idx == nil {
 			continue
 		}
-		if found != nil {
-			return nil
+		if key, ok := ix.keyOf(ws); ok {
+			insertWorkKey(ix.idx, key, ws.slug)
 		}
-		found = ws
 	}
-	return found
 }
 
-// librivoxScriptIndex is the own-script key of every catalogued work rule 4
-// created (a `librivox-<id>` slug whose title is non-Latin), key -> slugs,
-// built on first use: the few works librivoxScriptWork can reach, so an
-// ordinary run never builds the whole spelling-variant index for it.
+// librivoxScriptWalk is rule 4 seen from every OTHER source (meta#2778),
+// resolveWork's last merge-only step: a non-Latin title
+// (librivoxNonLatinTitle) whose chains hold no match may be a book LibriVox
+// already filed at `librivox-<id>`, which no slug chain reaches - "Ο γάμος της
+// Λίτσας (Litsa's Marriage)" slugs to `litsas-marriage`, a pure Cyrillic title
+// to the shared "untitled" - so a libex or user-library row of that title
+// would mint a duplicate beside it. The row is that work when exactly ONE
+// `librivox-<id>` work carries its own-script key (librivoxTitleKey) by the
+// same authors in a compatible language (librivoxCandidates) that the series
+// claim does not contradict; nothing otherwise (two such works are not guessed
+// between). In resolveWork, so the duplicate-identity guard, the series
+// evidence key and every other caller see the same answer as the create path.
+// A LibriVox row never reaches it with a non-Latin title (routeLibrivox decides
+// those itself).
+func (p *planner) librivoxScriptWalk(title string, authors workAuthors, lang string, claim *seriesClaim) (workWalk, bool) {
+	idx := p.librivoxScriptIndex()
+	if len(idx) == 0 {
+		return workWalk{}, false
+	}
+	key, nonLatin := librivoxTitleKeyOf(title)
+	if !nonLatin || key == "" {
+		return workWalk{}, false
+	}
+	matched, _ := p.librivoxCandidates(idx[key], lang, authors)
+	matched = slices.DeleteFunc(matched, func(ws *workState) bool { return !claim.compatible(ws) })
+	if len(matched) != 1 {
+		return workWalk{}, false
+	}
+	return workWalk{title: title, ws: matched[0]}, true
+}
+
+// librivoxScriptIndex is the own-script key of every work rule 4 created (a
+// `librivox-<id>` slug whose title is non-Latin), key -> slugs, built on first
+// use and kept current as the run creates works (indexLibrivoxWork): the few
+// works librivoxScriptWalk can reach, so an ordinary run never builds the whole
+// spelling-variant index for it.
 func (p *planner) librivoxScriptIndex() map[string][]string {
 	if p.lv.scriptWorks == nil {
-		p.lv.scriptWorks = map[string][]string{}
-		for slug, ws := range p.works {
-			if !librivoxFallbackSlug(slug) {
-				continue
-			}
-			if key, nonLatin := librivoxTitleKeyOf(ws.title); nonLatin && key != "" {
-				p.lv.scriptWorks[key] = append(p.lv.scriptWorks[key], slug)
-			}
-		}
-		for _, slugs := range p.lv.scriptWorks {
-			slices.Sort(slugs)
-		}
+		p.lv.scriptWorks = p.buildWorkKeyIndex(librivoxScriptKeyOf)
 	}
 	return p.lv.scriptWorks
+}
+
+// librivoxScriptKeyOf is a work's librivoxScriptIndex key: its own-script title
+// key when it sits at a `librivox-<id>` slug with a non-Latin title.
+func librivoxScriptKeyOf(ws *workState) (string, bool) {
+	if !librivoxFallbackSlug(ws.slug) {
+		return "", false
+	}
+	key, nonLatin := librivoxTitleKeyOf(ws.title)
+	return key, nonLatin && key != ""
+}
+
+// buildWorkKeyIndex indexes every work the planner holds by keyOf (false: not
+// indexed), key -> slugs in slug order.
+func (p *planner) buildWorkKeyIndex(keyOf func(*workState) (string, bool)) map[string][]string {
+	idx := map[string][]string{}
+	for _, ws := range p.works {
+		if key, ok := keyOf(ws); ok {
+			idx[key] = append(idx[key], ws.slug)
+		}
+	}
+	for _, slugs := range idx {
+		slices.Sort(slugs)
+	}
+	return idx
+}
+
+// insertWorkKey adds slug under key to a built index, keeping slug order.
+func insertWorkKey(idx map[string][]string, key, slug string) {
+	slugs := idx[key]
+	if i, found := slices.BinarySearch(slugs, slug); !found {
+		idx[key] = slices.Insert(slugs, i, slug)
+	}
 }
 
 // librivoxFallbackSlug reports whether slug is rule 4's `librivox-<id>` form
 // (librivoxWorkSlug).
 func librivoxFallbackSlug(slug string) bool {
-	id, ok := strings.CutPrefix(slug, "librivox-")
-	if !ok || id == "" {
+	rest, ok := strings.CutPrefix(slug, "librivox-")
+	if !ok {
 		return false
 	}
-	for i := 0; i < len(id); i++ {
-		if !isASCIIDigit(id[i]) {
-			return false
-		}
-	}
-	return true
+	id, err := strconv.Atoi(rest)
+	return err == nil && librivoxWorkSlug(id) == slug
 }
 
 // candidatesOf names works for a worklist entry.

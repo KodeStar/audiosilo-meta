@@ -1542,16 +1542,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	if route.walk != nil {
 		walk = *route.walk
 	} else {
-		authors := p.rowWorkAuthorsRO(authorCredits)
-		walk = p.resolveWork(workTitle, b.str("title"), b.qualifiedTitle, posSuffix, authors, lang, claim)
-		// A non-Latin title the walk would create a work for may be a
-		// LibriVox work at `librivox-<id>`, which no slug chain reaches
-		// (librivoxScriptWork, librivoxmatch.go rule 4).
-		if walk.ws == nil {
-			if ws := p.librivoxScriptWork(b, workTitle, lang, authors); ws != nil {
-				walk = workWalk{title: workTitle, ws: ws}
-			}
-		}
+		walk = p.resolveWork(workTitle, b.str("title"), b.qualifiedTitle, posSuffix, p.rowWorkAuthorsRO(authorCredits), lang, claim)
 	}
 
 	// The book's genre claims are mapped from the source's own strings onto this
@@ -2798,6 +2789,11 @@ func (p *planner) resolveWork(title, fullTitle, qualifiedTitle, posSuffix string
 	}
 	if qw, ok := p.qualifiedCatalogueWalk(title, qualifiedTitle, authors, lang, claim); ok {
 		return qw
+	}
+	// A non-Latin title's LibriVox work at `librivox-<id>`, which no slug
+	// chain reaches (librivoxmatch.go rule 4), as a merge target only.
+	if sw, ok := p.librivoxScriptWalk(title, authors, lang, claim); ok {
+		return sw
 	}
 	return w
 }

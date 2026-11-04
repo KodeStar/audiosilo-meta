@@ -286,15 +286,18 @@ type rowProduction struct {
 
 // rowProductionOf is b's production with its narrator names resolved lazily and
 // READ-ONLY, onto the slugs rowNarratorSlugs would give them: a LibriVox
-// reader by the decision taken for their reader id (librivoxReaderSlugRO, so a
+// reader by the decision taken for their reader id (librivoxReaderDecision, so a
 // split reader is their own record here too, meta#2778), every other name by
 // resolvePerson - the decision getOrCreatePerson acts on, and the one
 // rowWorkAuthorsRO reads authors through.
 func (p *planner) rowProductionOf(b sourceBook, narratorNames []string) *rowProduction {
+	byIndex := librivoxReaderCreditsByIndex(b, narratorNames)
 	return &rowProduction{runtime: b.evidence, abridged: b.abridged, names: narratorNames,
 		resolve: func(i int, name string) string {
-			if slug := p.librivoxReaderSlugRO(b, narratorNames, i); slug != "" {
-				return slug
+			if c, ok := byIndex[i]; ok {
+				if slug := p.librivoxReaderDecision(c, name).slug; slug != "" {
+					return slug
+				}
 			}
 			return p.resolvePerson(name).slug
 		}}

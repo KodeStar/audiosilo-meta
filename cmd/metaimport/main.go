@@ -293,7 +293,7 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		return 2
 	}
 
-	conflictLog, closeLog, err := openConflictLog(*conflicts)
+	conflictLog, closeLog, err := openAppendLog("--conflicts", *conflicts)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "metaimport:", err)
 		return 2
@@ -368,7 +368,8 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	return 0
 }
 
-// openConflictLog opens the --conflicts worklist for APPEND, returning the sink
+// openAppendLog opens a worklist flag's file (--conflicts, librivox import's
+// --worklist) for APPEND, returning the sink
 // to hand the importer and the close to defer. An empty path is the no-flag
 // case: a nil io.Writer, which is what makes the run byte-for-byte what it was.
 //
@@ -380,13 +381,13 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 // The nil is returned as an untyped io.Writer rather than a nil *os.File, which
 // would be a non-nil interface holding a nil pointer - the importer's "was I
 // given a worklist" check reads the interface.
-func openConflictLog(path string) (io.Writer, func(), error) {
+func openAppendLog(flag, path string) (io.Writer, func(), error) {
 	if path == "" {
 		return nil, func() {}, nil
 	}
 	f, err := os.OpenFile(path, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0o644)
 	if err != nil {
-		return nil, func() {}, fmt.Errorf("--conflicts: %w", err)
+		return nil, func() {}, fmt.Errorf("%s: %w", flag, err)
 	}
 	return f, func() { _ = f.Close() }, nil
 }

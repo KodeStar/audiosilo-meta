@@ -85,7 +85,6 @@ func runLibrivoxFetch(args []string, f *importer.LibrivoxFetcher) int {
 // runLibrivoxImport parses the import flags and runs the importer over the
 // snapshot.
 func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, importer.Options) (importer.Summary, error)) int {
-	var worklistLog io.Writer
 	fs := flag.NewFlagSet("librivox import", flag.ContinueOnError)
 	from := fs.String("from", "", "the snapshot directory `metaimport librivox fetch` wrote")
 	idsFlag := fs.String("ids", "", "the project ids to import: 527, 1-2000, 5000- or a comma-separated union (required)")
@@ -111,7 +110,7 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 	if !ok {
 		return 2
 	}
-	conflictLog, closeLog, err := openConflictLog(*conflicts)
+	conflictLog, closeLog, err := openAppendLog("--conflicts", *conflicts)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "metaimport librivox import:", err)
 		return 2
@@ -126,17 +125,14 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 		return 2
 	}
 	defer skippedLog.Discard() // a no-op once committed
-	if *worklist != "" {
-		// Opened before the run, so a path that cannot be written is refused
-		// before anything is planned, as --conflicts is.
-		f, err := os.OpenFile(*worklist, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0o644)
-		if err != nil {
-			fmt.Fprintln(os.Stderr, "metaimport librivox import: --worklist:", err)
-			return 2
-		}
-		defer func() { _ = f.Close() }()
-		worklistLog = f
+	// Opened before the run, so a path that cannot be written is refused before
+	// anything is planned, as --conflicts is.
+	worklistLog, closeWorklist, err := openAppendLog("--worklist", *worklist)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "metaimport librivox import:", err)
+		return 2
 	}
+	defer closeWorklist()
 	sum, err := run(*from, ids, importer.Options{
 		DataDir: *data, ImportDate: stamp, DryRun: *dryRun, Conflicts: conflictLog, Distinct: audit.ReviewedDistinct(),
 	})
