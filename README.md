@@ -530,7 +530,8 @@ the order the projects are read in.
   record); re-importing the id then finds that person by id. A work is dated by
   its text: its first publication, or the copyright year a LibriVox recording of
   it states. And release dates stop counting against the author when a
-  project they wrote (not one they translated) shows they are editions: the
+  project they wrote (not one they translated, nor an anthology of more than two
+  authors) shows they are editions: the
   catalogue holds that text, under its full title (never a generic one such as
   "Poems"), by a co-author the project also
   credits (that very person, not merely a shared surname), dated only by a release long after the author

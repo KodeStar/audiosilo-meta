@@ -1279,3 +1279,45 @@ func TestLibrivoxEditionCoAuthorIsThePersonNotANamesake(t *testing.T) {
 		})
 	}
 }
+
+func TestLibrivoxAnthologyEditionReleasesNoOtherContributor(t *testing.T) {
+	// "The Book of Humorous Verse" (text 1920) credits Carolyn Wells and two
+	// poets. Its catalogued release-only edition credits Carolyn Wells, but an
+	// anthology's edition speaks for no other contributor: the undated
+	// catalogued oliver-herford, dated only by a 2020 release, still holds
+	// Oliver Herford (1860-1935). The same edition of a two-author book
+	// releases the hold (Sojourner Truth's shape).
+	seed := func(t *testing.T) string {
+		dataDir := t.TempDir()
+		files := map[string]string{}
+		files[personAddr("carolyn-wells")] = personFiles(t, "carolyn-wells", "Carolyn Wells", nil)
+		files[personAddr("oliver-herford")] = personFiles(t, "oliver-herford", "Oliver Herford", nil)
+		retailWork(t, files, "the-book-of-humorous-verse", "The Book of Humorous Verse", "carolyn-wells", "")
+		retailWork(t, files, "a-modern-cat-book", "A Modern Cat Book", "oliver-herford", "")
+		seedTree(t, dataDir, files)
+		return dataDir
+	}
+	held := func(sum Summary, id int) bool {
+		for _, e := range sum.LibrivoxWorklist {
+			if e.Project == id && e.Reason == LibrivoxSameNameAuthor {
+				return true
+			}
+		}
+		return false
+	}
+	anthology := byAuthors(t, 99170, "The Book of Humorous Verse",
+		lvDated(5601, "Carolyn", "Wells", "1862", "1942"), lvDated(5602, "Oliver", "Herford", "1860", "1935"),
+		lvDated(5603, "Edward", "Lear", "1812", "1888"))
+	anthology.CopyrightYear = "1920"
+	sum := runLibrivox(t, writeSnapshot(t, anthology), seed(t), allLibrivox)
+	if !held(sum, 99170) {
+		t.Errorf("worklist = %v, want 99170 held as same-name-author", sum.LibrivoxWorklist)
+	}
+
+	pair := byAuthors(t, 99171, "The Book of Humorous Verse",
+		lvDated(5601, "Carolyn", "Wells", "1862", "1942"), lvDated(5602, "Oliver", "Herford", "1860", "1935"))
+	pair.CopyrightYear = "1920"
+	if sum := runLibrivox(t, writeSnapshot(t, pair), seed(t), allLibrivox); held(sum, 99171) {
+		t.Errorf("worklist = %v, want the two-author book released", sum.LibrivoxWorklist)
+	}
+}

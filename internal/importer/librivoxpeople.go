@@ -64,7 +64,8 @@ package importer
 //     recordings say; a work with no date at all is no evidence against the
 //     match. A release date dates a modern book and a modern edition of an old
 //     one alike, so works dated only by releases leave the id unsure - unless
-//     a project the id authors shows they are editions (librivoxReleasesAreEditions:
+//     a project the id authors, alone or with one other author, shows they
+//     are editions (librivoxReleasesAreEditions:
 //     the catalogue holds that very text under its full title, dated only by a
 //     release past the bound, credited to a catalogued co-author of the
 //     project (the same person, by slug, not merely a surname) - the
@@ -758,10 +759,12 @@ func librivoxBound(life lifeYears) int {
 // `olive-gilbert`, never just a shared surname, which the id's own name is
 // enough to supply - Mary Webb's "Garden Verses" says nothing beside a modern
 // Precious Webb's). A same-name person dated only by such releases is then no
-// evidence against the match.
+// evidence against the match. Only a project of at most librivoxEditionAuthors
+// authors shows it: in an anthology (Carolyn Wells and a hundred poets) an
+// edition credited to one contributor says nothing of every other's text.
 func (p *planner) librivoxReleasesAreEditions(cl *lvAuthorClaim, bound int) bool {
 	for _, pr := range cl.projects {
-		if !pr.own || pr.textYear == 0 || pr.textYear > bound {
+		if !pr.own || pr.authors > librivoxEditionAuthors || pr.textYear == 0 || pr.textYear > bound {
 			continue
 		}
 		// A generic title ("Poems") is no title in common here either: the
@@ -785,14 +788,23 @@ func (p *planner) librivoxReleasesAreEditions(cl *lvAuthorClaim, bound int) bool
 	return false
 }
 
+// librivoxEditionAuthors is the most authors a project may credit for an
+// edition of it to speak for the id (librivoxReleasesAreEditions): a book of
+// one or two writers ("Narrative of Sojourner Truth": Truth and Olive
+// Gilbert), never an anthology, where one contributor's edition would clear
+// the evidence against every other.
+const librivoxEditionAuthors = 2
+
 // lvClaimProject is one project of a claim, as librivoxReleasesAreEditions
 // reads it: its title, the year LibriVox dates its text by (0 = none), the
-// catalogued people its OTHER author credits are (coAuthors), and whether the
-// claim authors it (own) rather than translating it.
+// catalogued people its OTHER author credits are (coAuthors), how many authors
+// it credits (translators aside), and whether the claim authors it (own)
+// rather than translating it.
 type lvClaimProject struct {
 	title     string
 	textYear  int
 	coAuthors map[string]bool
+	authors   int
 	own       bool
 }
 
@@ -955,7 +967,13 @@ func (p *planner) librivoxAuthorRecord(slug string) bool {
 func librivoxClaimProject(b *sourceBook, claim librivoxCredit, people []string) lvClaimProject {
 	pr := lvClaimProject{title: b.str("title"), textYear: b.lv.copyrightYear, coAuthors: map[string]bool{}, own: claim.suffix == ""}
 	for j, c := range b.lv.credits {
-		if c.kind == librivoxAuthor && c.index != claim.index && c.id != claim.id && people[j] != "" {
+		if c.kind != librivoxAuthor {
+			continue
+		}
+		if c.suffix == "" {
+			pr.authors++
+		}
+		if c.index != claim.index && c.id != claim.id && people[j] != "" {
 			pr.coAuthors[people[j]] = true
 		}
 	}
