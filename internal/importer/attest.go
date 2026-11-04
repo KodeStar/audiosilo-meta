@@ -60,13 +60,15 @@ import (
 // A row whose ASIN is known but has no location was claimed by THIS run (the
 // planner registers created ASINs in p.asins, but p.asinLoc is seeded only from
 // what was on disk), so the record it would attest is one this run just wrote
-// with its own provenance - nothing to do.
+// with its own provenance. Only the row's ISBNs are left to add
+// (addSiblingRowISBNs).
 func (p *planner) attestExisting(b sourceBook, asin string) {
 	if !p.userTier {
 		return
 	}
 	ref, located := p.asinLoc[asin]
 	if !located {
+		p.addSiblingRowISBNs(b, asin)
 		return
 	}
 	warn := p.bookWarn(b)
@@ -116,8 +118,9 @@ type Attestation struct {
 // at its ASIN-dedup skip (attestExisting), so the two doors cannot disagree about
 // what a takeover is. Against a bulk-mirror-only record the stated facts replace
 // the recorded ones (an ISBN is appended when no recording claims it) and Source
-// is appended (Summary.Attested*); against an attested record nothing is
-// written, first writer wins. Either way a runtime more than 10% apart, or a
+// is appended (Summary.Attested*); against an attested record no fact is
+// replaced, first writer wins, and only an unclaimed ISBN is appended
+// (Summary.ISBNRecordings). Either way a runtime more than 10% apart, or a
 // release date that is not the same date at another precision, refuses the row
 // whole and is counted in Summary.Conflicts, with the warning naming both values
 // - the disagreement a maintainer adjudicates.
@@ -128,13 +131,17 @@ type Attestation struct {
 // door decodes a field once as it reads it (issueform's sections.get), so a run's
 // decodeText here would decode a submitted "&amp;amp;" twice. It loads no
 // catalogue, which is sound because attestExisting's call graph reads exactly
-// three pieces of planner state beyond the store and the run's own fields, and
-// this seeds each of them from what the caller already knows:
+// four pieces of planner state beyond the store and the run's own fields, and
+// this seeds or answers each of them from what the caller already knows:
 //
 //   - asinLoc, for the one ASIN: where the record it attests sits;
 //   - isbns, for the submitted ISBNs already taken: the global-uniqueness set
 //     claimISBNs refuses a duplicate identifier against (claimISBNsFor drops the
 //     record's OWN ISBNs first, so seeding one of those changes nothing);
+//   - printISBNs, left EMPTY and the CALLER'S DUTY: a submitted ISBN a work holds
+//     as its print ISBN must be refused before this is called, as applyTakeover
+//     does. One that is not fails the post-write validation (checkUniqueness), so
+//     it is an error here rather than the whole load's dropped value;
 //   - works, left EMPTY: applyToWork reads a work's run state (runGenresOwned,
 //     runAttested), which is zero for every record on disk, and builds that zero
 //     state itself when the map has none.
