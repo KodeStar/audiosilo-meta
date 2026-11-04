@@ -1157,6 +1157,9 @@ var placeholderCreditNames = map[string]bool{
 	"tba":             true, // 10
 	"tbc":             true, // 4
 	"n/a":             true, // 1
+	// A retail export's empty field printed into the credit: three Caedmon
+	// Shakespeare recordings, each with its named lead beside it.
+	"(null) cast": true, // 3, in the catalogue rather than the dump
 }
 
 // placeholderCreditPhrases are the two MULTI-WORD placeholder statements,

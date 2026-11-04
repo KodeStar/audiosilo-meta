@@ -203,7 +203,7 @@ WHERE b.is_vvab IS NOT TRUE
     SELECT 1 FROM book_narrator bn
     WHERE bn.book_asin = b.asin
       AND (lower(btrim(bn.narrator_name)) IN (
-             'to be announced', 'to be confirmed', 'tbd', 'tba', 'tbc', 'n/a')
+             'to be announced', 'to be confirmed', 'tbd', 'tba', 'tbc', 'n/a', '(null) cast')
         OR lower(btrim(bn.narrator_name)) ~
              '(^|[^[:alnum:]])to be (announced|confirmed)([^[:alnum:]]|$)')
   )
@@ -211,7 +211,7 @@ WHERE b.is_vvab IS NOT TRUE
     SELECT 1 FROM author_book ab JOIN authors a ON a.id = ab.author_id
     WHERE ab.book_asin = b.asin
       AND (lower(btrim(a.name)) IN (
-             'to be announced', 'to be confirmed', 'tbd', 'tba', 'tbc', 'n/a')
+             'to be announced', 'to be confirmed', 'tbd', 'tba', 'tbc', 'n/a', '(null) cast')
         OR lower(btrim(a.name)) ~
              '(^|[^[:alnum:]])to be (announced|confirmed)([^[:alnum:]]|$)')
   )
