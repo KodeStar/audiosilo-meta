@@ -101,7 +101,8 @@ WHERE b.is_vvab IS NOT TRUE
           'voce artificiale', -- 2, Italian "artificial voice"
           'virtuelle stimme', -- 1, German
           'voz virual',       -- 1, a typo the dump really carries
-          'digital voices')   -- 1, Loudly (an AI audio publisher)
+          'digital voices',   -- 1, Loudly (an AI audio publisher)
+          'eleven labs')      -- ElevenLabs, a TTS vendor (2 in the catalogue)
         -- 2. Audible's "AI Voice <persona>" family (236 names, 1,139 credits),
         --    matched as a WORD prefix so a real "Ai Voicu" would not match.
         OR bn.narrator_name ~* '^ai voice($|[^[:alnum:]])'
@@ -202,7 +203,7 @@ WHERE b.is_vvab IS NOT TRUE
     SELECT 1 FROM book_narrator bn
     WHERE bn.book_asin = b.asin
       AND (lower(btrim(bn.narrator_name)) IN (
-             'to be announced', 'to be confirmed', 'tbd', 'tba', 'tbc', 'n/a')
+             'to be announced', 'to be confirmed', 'tbd', 'tba', 'tbc', 'n/a', '(null) cast')
         OR lower(btrim(bn.narrator_name)) ~
              '(^|[^[:alnum:]])to be (announced|confirmed)([^[:alnum:]]|$)')
   )
@@ -210,7 +211,7 @@ WHERE b.is_vvab IS NOT TRUE
     SELECT 1 FROM author_book ab JOIN authors a ON a.id = ab.author_id
     WHERE ab.book_asin = b.asin
       AND (lower(btrim(a.name)) IN (
-             'to be announced', 'to be confirmed', 'tbd', 'tba', 'tbc', 'n/a')
+             'to be announced', 'to be confirmed', 'tbd', 'tba', 'tbc', 'n/a', '(null) cast')
         OR lower(btrim(a.name)) ~
              '(^|[^[:alnum:]])to be (announced|confirmed)([^[:alnum:]]|$)')
   )

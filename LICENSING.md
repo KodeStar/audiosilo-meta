@@ -287,7 +287,8 @@ The rule, applied at **record** granularity (not per field):
    recorded value wins and a row that contradicts the record is refused whole.
    On the **create path** an already-catalogued book is a skip, and a skip stays
    a skip - a later user import does not backfill an attested record, even where
-   a fact is absent from it. Only **enrichment** (`metaimport ... --enrich`)
+   a fact is absent from it, except that an unclaimed ISBN its row states is
+   appended, since ISBNs are only ever added. Only **enrichment** (`metaimport ... --enrich`)
    fills what is absent. Where two users disagree on a fact the import rules
    *check* - a runtime more than 10% apart, or a release date that is not the
    same date at another precision - the **first writer's value stands** and the
@@ -307,7 +308,16 @@ The rule, applied at **record** granularity (not per field):
    from a different production, still decides whether the merge happens at all.
    A recorded date is only ever replaced by one that *extends* it (a full date
    over the year it starts with): a year-only export leaves a recorded full date
-   alone, and another edition's date never moves it. Identity
+   alone, and another edition's date never moves it. A user row with **no ASIN**
+   that meets a recording of the same work and narrators applies none of its facts,
+   because nothing identifies the match. It adds its ISBN only to an already-attested
+   recording, when that recording is the only candidate, the runtimes agree and the
+   row's year does not predate the recording's by more than a year. It **never**
+   adds one to a bulk-mirror-only recording: the source stamp would end that status
+   on a match that identifies nothing, so the row is refused and reported
+   (`isbn-not-attached: mirror-only`), and a later row with the ASIN attests the
+   record and carries the ISBN then. No recording takes an ISBN a work holds as its
+   print ISBN (`xref.isbn`), in either its ISBN-10 or ISBN-13 spelling. Identity
    is never rewritten by an import - a work's title and authors, a recording's
    narrators, and the ASIN/ISBN identifier sets are corrections (the "Correct
    data" form), not imports. `added_at` is a creation stamp, never a fact from

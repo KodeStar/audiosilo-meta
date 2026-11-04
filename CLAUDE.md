@@ -598,7 +598,9 @@ it, `pkg/check` and every writer now refuse it loudly.
   (`internal/importer` `marketplaces`, `internal/issueform` `regionAliases`).
   NOTE the WORK's print ISBNs (`xref.isbn`) are deliberately untouched: they stay
   a flat string list (`$defs/isbn_list`); the recording's `isbn[]` is defined
-  inline in `recording.schema.json`, beside its `asin[]` neighbour.
+  inline in `recording.schema.json`, beside its `asin[]` neighbour. A recording may
+  not carry a work's print ISBN, in either spelling (`model.Work.PrintISBNKeys`):
+  metacheck fails the tree, and the importer and the issue forms refuse the value.
   Retailer availability is deliberately NOT a catalogue field. Work-detail API
   responses derive `purchase_links[]` from the durable identifiers already in
   the artifact: a region-scoped ASIN becomes an Audible marketplace URL and a
@@ -626,7 +628,8 @@ it, `pkg/check` and every writer now refuse it loudly.
   canonical every AI-narration credit folds onto
   (`internal/importer/synthetic.go`) - its kind is not somebody's
   classification, it is what the credit said. The only other synthetic record is
-  `eleven-labs`, a TTS vendor credited by name, set by that same 2026-11 pass.
+  `eleven-labs`, a TTS vendor credited by name, set by that same 2026-11 pass; a
+  NEW "Eleven Labs" narrator credit folds onto `virtual-voice` (`aiNarratorNames`).
   The kind does NOT reach the artifact: `metabuild` writes no column for it, so
   metaserve, the site and audiosilo-server cannot show it; its readers are
   evidence filters only (pkg/check's narration profile, internal/audit's language
