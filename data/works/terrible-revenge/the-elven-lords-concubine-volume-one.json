@@ -2594,6 +2594,7 @@
         "brothers-grimm"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
         "classics",
         "fairy-tales-folklore"
@@ -2797,12 +2798,61 @@
             }
           ],
           "work": "the-elves-and-the-shoemaker"
+        },
+        "tamsin-greig-2012": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B009HC4N7S",
+              "region": "us"
+            },
+            {
+              "asin": "B009HC4UL2",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 529601,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51BDuaDyz1L.jpg",
+          "id": "tamsin-greig-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tamsin-greig"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2012-10-04",
+          "runtime_min": 8,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B009HC4N7S",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B009HC4UL2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-elves-and-the-shoemaker"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B0DZ6YR19Q",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B009HC4N7S",
           "type": "libex-import"
         }
       ],
@@ -3168,75 +3218,6 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B00IX2BKE2",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Elves and the Shoemaker"
-    },
-    "the-elves-and-the-shoemaker-the-brothers-grimm": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "the-brothers-grimm"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "fairy-tales-folklore"
-      ],
-      "id": "the-elves-and-the-shoemaker-the-brothers-grimm",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "tamsin-greig-2012": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B009HC4N7S",
-              "region": "us"
-            },
-            {
-              "asin": "B009HC4UL2",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 529601,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51BDuaDyz1L.jpg",
-          "id": "tamsin-greig-2012",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "tamsin-greig"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2012-10-04",
-          "runtime_min": 8,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B009HC4N7S",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B009HC4UL2",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-elves-and-the-shoemaker-the-brothers-grimm"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B009HC4N7S",
           "type": "libex-import"
         }
       ],
