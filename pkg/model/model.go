@@ -89,8 +89,8 @@ type Person struct {
 	// under two records, and a person is one record. An import resolves an alias
 	// to this record as it does the record's own id, so a second id cannot mint
 	// a twin. THE RULE, stated here and pointed at from everywhere else: only an
-	// evidenced decision writes these lists, never an importer (two ids never
-	// fold automatically). LibrivoxReaderID and LibrivoxAuthorID stay the
+	// evidenced decision writes these lists, never an importer (no run records a
+	// second id on a person). LibrivoxReaderID and LibrivoxAuthorID stay the
 	// record's own ids, the ones its slug (PersonIDMatches) and the LibriVox-shaped
 	// feed state. Sorted ascending, each unique across every id and alias of its
 	// namespace (pkg/check).

@@ -600,8 +600,10 @@ the order the projects are read in.
   dated or at its author-id form, as a later import would decide it.
 - **One person under two LibriVox ids.** LibriVox lists some people twice: two
   author records (F. P. Walter 6492 and 6858), or two reader accounts (Branko
-  Collin 778 and 1775). An import never folds them: the second id is filed
-  beside the first, on the report's "filed beside a same-name person" list. Once
+  Collin 778 and 1775). An import never records the second id: a reader's is
+  filed beside the first, an author's is told apart by the rules above (the same
+  years land the credit on the first's record, the id stays unrecorded; no year
+  files it beside them, on the report's "beside a same-name person" list). Once
   the evidence says one person (the same text, the same years, the same site on
   both reader pages), the fold moves the credits, retires the twin's slug in
   `data/redirects.json` and records the second id in `librivox_author_aliases`

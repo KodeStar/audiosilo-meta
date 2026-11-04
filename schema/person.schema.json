@@ -60,7 +60,7 @@
       "$ref": "common.schema.json#/$defs/librivox_id"
     },
     "librivox_author_aliases": {
-      "description": "Further LibriVox author ids this person answers to, for the person LibriVox lists under more than one author record. A LibriVox import resolves each to this record, so the second id never mints a twin. Written only by a decision with evidence, never by an importer (two ids never fold automatically). Sorted ascending; each is unique against every librivox_author_id and every other alias across the dataset (pkg/check). It REQUIRES librivox_author_id (see dependentRequired): an alias is a further id, and librivox_author_id stays the record's own, the one its slug and the LibriVox-shaped feed state.",
+      "description": "Further LibriVox author ids this person answers to, for the person LibriVox lists under more than one author record. A LibriVox import resolves each to this record, so the second id never mints a twin. Written only by a decision with evidence, never by an importer (no import records a second id on a person). Sorted ascending; each is unique against every librivox_author_id and every other alias across the dataset (pkg/check). It REQUIRES librivox_author_id (see dependentRequired): an alias is a further id, and librivox_author_id stays the record's own, the one its slug and the LibriVox-shaped feed state.",
       "$ref": "common.schema.json#/$defs/librivox_id_set"
     },
     "birth_year": {

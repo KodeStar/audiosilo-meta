@@ -97,7 +97,7 @@ func (p *planner) restateLibrivoxRecordings() {
 	if p.fatal != nil || (len(p.lv.landed) == 0 && len(p.lv.heldRows) == 0) {
 		return
 	}
-	lifeSeen := map[string]bool{}
+	lifeSeen := map[int]bool{}
 	for _, l := range p.lv.landed {
 		p.restateLibrivoxRecording(RecRef{Work: l.work, Rec: l.rec}, l.facts, lifeSeen)
 	}
@@ -112,7 +112,7 @@ func (p *planner) restateLibrivoxRecordings() {
 }
 
 // restateLibrivoxRecording restates one project's facts on its recording.
-func (p *planner) restateLibrivoxRecording(ref RecRef, f *librivoxFacts, lifeSeen map[string]bool) {
+func (p *planner) restateLibrivoxRecording(ref RecRef, f *librivoxFacts, lifeSeen map[int]bool) {
 	if p.fatal != nil {
 		return
 	}
@@ -417,9 +417,11 @@ func (p *planner) keepNarratingReaders(chs []any, narrators map[string]bool, set
 }
 
 // refreshLibrivoxLifeYears fills the stated life years of every author and
-// translator of the row whose author id a person carries, once per person per
-// run (an author credited on many projects states the same years on each).
-func (p *planner) refreshLibrivoxLifeYears(f *librivoxFacts, seen map[string]bool) {
+// translator of the row whose author id a person carries, once per id per run:
+// an id credited on many projects states the same years on each, but a person's
+// two ids (model.Person.LibrivoxAuthorAliases) need not, and whichever row came
+// first must not keep the other's years from being read.
+func (p *planner) refreshLibrivoxLifeYears(f *librivoxFacts, seen map[int]bool) {
 	for _, c := range f.credits {
 		if c.kind != librivoxAuthor || c.id <= 0 || (c.life.birth == 0 && c.life.death == 0) {
 			continue
@@ -429,10 +431,10 @@ func (p *planner) refreshLibrivoxLifeYears(f *librivoxFacts, seen map[string]boo
 			continue
 		}
 		slug, ok := p.livePerson(owner)
-		if !ok || seen[slug] {
+		if !ok || seen[c.id] {
 			continue
 		}
-		seen[slug] = true
+		seen[c.id] = true
 		p.refreshLifeYears(slug, c, f.id)
 		if p.fatal != nil {
 			return

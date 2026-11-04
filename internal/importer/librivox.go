@@ -1227,9 +1227,10 @@ func (p *planner) dedupeByLibrivox(b sourceBook, warn func(string, ...any)) bool
 // catalogued on someone else: a person carrying no reader id is otherwise left
 // as it is (nothing says it is not this reader). A reader the recording already
 // credits under their own person moves nothing (what else it credits is not a
-// fold this can prove). When the row also credits the holder under the same name
-// (two readers called "Martina" on one project) the holder's credit stays and
-// this reader's is added after it. Every decision reads the recording as the
+// fold this can prove). When the row also credits the holder (two readers called
+// "Martina" on one project, or the holder's id under any spelling:
+// rowCreditsHolder) the holder's credit stays and this reader's is added after
+// it. Every decision reads the recording as the
 // catalogue holds it, so two readers folded onto one person (neither of them the
 // holder) are both moved, in row order, by ONE rewrite.
 func (p *planner) splitHeldLibrivoxReaders(b sourceBook, warn func(string, ...any)) {
@@ -1313,11 +1314,16 @@ type heldMove struct {
 }
 
 // rowCreditsHolder reports whether the row also credits, under another reader
-// credit, the reader id that holds slug - the holder's own credit on this
-// recording, which a move must keep.
+// credit, the person holding slug - the holder's own credit on this recording,
+// which a move must keep. A credit carrying an id they answer to is theirs
+// whatever it spells (the id, not the name, is the person); with no id on
+// either side, only the name can say so.
 func (p *planner) rowCreditsHolder(b sourceBook, names []string, moved librivoxCredit, slug string) bool {
 	for _, c := range b.lv.credits {
-		if c.kind == librivoxReader && c.index != moved.index && p.answersTo(librivoxReader, slug, c.id) && p.resolvePerson(names[c.index]).slug == slug {
+		if c.kind != librivoxReader || c.index == moved.index || !p.answersTo(librivoxReader, slug, c.id) {
+			continue
+		}
+		if c.id > 0 || p.resolvePerson(names[c.index]).slug == slug {
 			return true
 		}
 	}

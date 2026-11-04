@@ -364,7 +364,8 @@ func LibrivoxUnslugAuthorSlug(name string, authorID int) (slug string, ok bool) 
 // librivoxIDSlug matches the id forms a person slug composes from a LibriVox id:
 // the reader's and the author's, tail and prefix alike. Groups: the reader id,
 // else the author id.
-var librivoxIDSlug = regexp.MustCompile(`(?:^librivox-reader-|.-librivox-)(\d+)$|(?:^librivox-author-|.-librivox-author-)(\d+)$`)
+var librivoxIDSlug = regexp.MustCompile(`(?:^` + librivoxUnslugReaderPrefix + `|.` + librivoxReaderTail + `)(\d+)$` +
+	`|(?:^` + librivoxUnslugAuthorPrefix + `|.` + librivoxAuthorTail + `)(\d+)$`)
 
 // LibrivoxIDOfSlug is the LibriVox id a person slug composes, 0 and 0 for a slug
 // of no LibriVox form: the reader id of LibrivoxReaderSlug and
