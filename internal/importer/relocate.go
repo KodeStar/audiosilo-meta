@@ -37,14 +37,14 @@ type relocationPlan struct {
 
 // All rows are evidence, even ones the ordinary libex parser refuses. Otherwise
 // a bad-region copy could disappear before its contradictory language is read.
-func relocationSetup(entries []rawBook, skips []RowSkip) func(*planner) {
+// evidence is every row's (ASIN, language) in the canonical row order
+// (parseLibexRelocation).
+func relocationSetup(evidence []relocationEvidence, skips []RowSkip) func(*planner) {
 	return func(p *planner) {
 		p.existingSeriesOnly = true
 		p.relocation = &relocationPlan{evidence: map[string][]string{}, unusable: map[string]bool{}, newWorks: map[string]bool{}}
-		for _, e := range entries {
-			asin := NormalizeASIN(e.str("asin"))
-			lang, _ := mapLanguage(e.str("language"))
-			p.relocation.evidence[asin] = append(p.relocation.evidence[asin], lang)
+		for _, ev := range evidence {
+			p.relocation.evidence[ev.asin] = append(p.relocation.evidence[ev.asin], ev.lang)
 		}
 		for _, s := range skips {
 			p.relocation.unusable[s.ASIN] = true
@@ -238,11 +238,12 @@ func (p *planner) relocateRecording(rec *model.Recording, asins map[string]bool,
 		}
 		target = slug
 	}
+	var withheld []UnrecordedCredit // the rows' unrecorded credits, reported once the move lands
 	for _, i := range indices {
 		b := books[i]
-		p.setSource(NormalizeASIN(b.str("asin")), b)
+		asin := NormalizeASIN(b.str("asin"))
+		p.setSource(asin, b)
 		credits := p.rowAuthorCredits(b)
-		authors := p.rowWorkAuthors(credits, p.bookWarn(b))
 		lang, _ := mapLanguage(b.str("language"))
 		claim := p.rowSeriesClaim(b, titles[i], p.rowNarratorNames(b))
 		walk := workWalk{ws: p.works[identityHomes[i]]}
@@ -254,17 +255,21 @@ func (p *planner) relocateRecording(rec *model.Recording, asins map[string]bool,
 			walk = workWalk{ws: p.works[target]}
 		}
 		if walk.ws == nil {
-			walk = p.resolveWork(titles[i], b.str("title"), b.qualifiedTitle, suffixes[i], authors, lang, claim)
+			walk = p.resolveWork(titles[i], b.str("title"), b.qualifiedTitle, suffixes[i], p.rowWorkAuthorsRO(credits), lang, claim)
 		}
 		if walk.ws == nil {
 			p.relocation.newWorks[target] = true
 		}
+		// The row's people are created inside getOrCreateWork, once the
+		// destination is decided: a destination that already exists credits
+		// none of the row's people it does not name (meta#2760).
 		facts := &workFacts{genres: b.genres, credits: credits}
-		ws := p.getOrCreateWork(walk, authors, lang, facts, p.bookWarn(b))
+		ws, unrecorded := p.getOrCreateWork(walk, b, asin, lang, facts, p.bookWarn(b))
 		if ws == nil || ws.slug != target {
 			p.fatal = fmt.Errorf("relocation destination changed while planning %s", recLabel(rec.Work, rec.ID))
 			return
 		}
+		withheld = append(withheld, unrecorded...)
 		// A row joining a destination this run minted adds its credits and
 		// genres (a no-op for the row that minted it, and for a catalogued work).
 		p.mergeCreatedWorkFacts(ws, "", facts)
@@ -275,6 +280,9 @@ func (p *planner) relocateRecording(rec *model.Recording, asins map[string]bool,
 	if p.fatal != nil {
 		return
 	}
+	// Reported once the recording has moved, as addBook reports a row's only
+	// once its recording landed.
+	p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, withheld...)
 	for _, i := range indices {
 		b := books[i]
 		for _, r := range b.series {
@@ -462,24 +470,6 @@ func (p *planner) repointMembership(r seriesRef, old, target, lang string) bool 
 	ss.dirty = true
 	p.summary.MembershipsRepointed++
 	return true
-}
-
-// Sorting the source objects before parsing makes titles, credits, notes and
-// source stamps independent of the order of duplicate and regional rows.
-func sortedRelocationRows(entries []rawBook) {
-	type keyedRow struct {
-		row rawBook
-		key string
-	}
-	rows := make([]keyedRow, len(entries))
-	for i, row := range entries {
-		key, _ := json.Marshal(row) // decoded JSON values are always marshalable
-		rows[i] = keyedRow{row: row, key: string(key)}
-	}
-	sort.SliceStable(rows, func(i, j int) bool { return rows[i].key < rows[j].key })
-	for i, row := range rows {
-		entries[i] = row.row
-	}
 }
 
 // Keep relocation's raw-value note format, including fields repair deliberately

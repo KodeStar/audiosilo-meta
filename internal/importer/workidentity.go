@@ -243,9 +243,10 @@ func (p *planner) rowWorkAuthors(credits []credit, warn func(string, ...any)) wo
 
 // rowWorkAuthorsRO is rowWorkAuthors' read-only twin: it resolves through the
 // SAME decision (resolvePerson, which getOrCreatePerson acts on) but creates
-// nothing, for the duplicate-identity guard, the batch pre-passes and the
-// recordings-only work matcher - every one of them a prediction of the author set
-// the create path will build.
+// nothing, for the create path's own work walk (addBook, relocation), the
+// duplicate-identity guard, the batch pre-passes and the recordings-only work
+// matcher - every one of them a prediction of the author set the create path
+// will build.
 func (p *planner) rowWorkAuthorsRO(credits []credit) workAuthors {
 	return p.rowWorkAuthorsROIn(p.credits, credits)
 }

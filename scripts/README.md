@@ -269,9 +269,8 @@ was stored at 81 minutes while the dump and the recording's own chapter table
 both said 492. Sort by the gap, check a handful against the source, and fix the
 records through the ordinary correction path.
 
-The file is APPENDED to, so a dump split into chunks with `split -l`
-accumulates one worklist across every chunk's run, and a run killed part-way
-keeps every conflict it had already found.
+The file is APPENDED to, so several runs accumulate one worklist, and a run
+killed part-way keeps every conflict it had already found.
 
 ### 7. Pick up the alternate narrations
 
@@ -322,15 +321,17 @@ its diff as its own reviewable PR: the recordings it adds are mostly high-profil
 alternate narrations, which is exactly the diff a reviewer can sanity-check by
 eye.
 
-**Memory.** This pass shares the libex parse layer, which slurps the whole file
-into memory before planning discards the rows that do not apply - roughly 6GB of
-live heap for the full 1.06M-row dump, the same caveat step 6 carries. Unlike
-step 6 there is no pre-filter that helps: an alternate narration is by
-definition a row `libex-select` excluded, so the natural input here IS the
-unfiltered dump. On a machine that cannot hold it, split `full.ndjson` into
-chunks with `split -l` and run the pass over each. A **streaming row iterator**
-for the parse layer (the shape `libex-select` already uses) is the known
-follow-up that would remove the caveat for all three libex passes.
+**Memory.** The libex parse layer streams the file: each row is decoded,
+parsed and dropped, so what the parse holds is the compact record of each
+accepted row (about 1.4GB for the 915k-row dump, against 7.4GB when it held the
+file and every decoded row). The rest of the peak is planning's - the loaded
+catalogue plus the batch censuses, which read EVERY accepted row by design so no
+row's credits or series depend on which rows came with it - and measured over
+the full dump against the current catalogue a `--recordings-only` dry run peaks
+at about 10GB RSS (a create dry run about 15.5GB). Run the full dump on a machine
+with that headroom. Do not split the input to save memory: the catalogue's share
+does not shrink with the chunk, and each chunk would be judged against a smaller
+batch census than the whole dump gives it.
 
 ### 8. Clean up
 

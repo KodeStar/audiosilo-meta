@@ -439,7 +439,7 @@ func TestRegenerateGenresFailsOnAnUnreadableWork(t *testing.T) {
 		t.Fatal(err)
 	}
 	p.loadExisting()
-	entries, err := decodeLibexEntries([]byte(regenRow("B0GONE0001", "Mystery") + "\n"))
+	parsed, err := parseLibex([]byte(regenRow("B0GONE0001", "Mystery") + "\n"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -452,7 +452,7 @@ func TestRegenerateGenresFailsOnAnUnreadableWork(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	p.planRegenerateGenres(parseLibexEntries(entries).books)
+	p.planRegenerateGenres(parsed.books)
 	if p.fatal == nil || len(p.summary.GenreChanges) != 0 {
 		t.Errorf("fatal = %v, changes = %+v; want a fatal error and no change", p.fatal, p.summary.GenreChanges)
 	}

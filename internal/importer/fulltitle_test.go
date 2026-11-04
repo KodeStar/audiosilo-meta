@@ -24,11 +24,7 @@ const (
 // (seeded) data dir - runImport always starts from an empty tree.
 func runOpenAudibleInto(t *testing.T, dataDir, booksJSON string) Summary {
 	t.Helper()
-	sum, err := Run(writeBooks(t, booksJSON), Options{DataDir: dataDir, ImportDate: testImportDate})
-	if err != nil {
-		t.Fatalf("openaudible run: %v", err)
-	}
-	return sum
+	return runInto(t, Run, dataDir, booksJSON)
 }
 
 // seedNightfall imports the bulk mirror's record of the book under its FULL title,

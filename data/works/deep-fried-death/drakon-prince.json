@@ -3231,7 +3231,9 @@
         "rachel-renee-russell"
       ],
       "genres": [
-        "childrens"
+        "childrens",
+        "comedy-humor",
+        "coming-of-age"
       ],
       "id": "drama-queen",
       "language": "en",
@@ -3247,6 +3249,14 @@
             },
             {
               "asin": "B01609D0BA",
+              "region": "uk"
+            },
+            {
+              "asin": "B00XI0TMQM",
+              "region": "us"
+            },
+            {
+              "asin": "B00XI113PE",
               "region": "uk"
             }
           ],
@@ -3417,6 +3427,16 @@
               "imported_at": "2026-10-09",
               "ref": "B01609D0BA",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00XI0TMQM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B00XI113PE",
+              "type": "libex-import"
             }
           ],
           "work": "drama-queen"
@@ -3426,6 +3446,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B01609IFVA",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00XI0TMQM",
           "type": "libex-import"
         }
       ],

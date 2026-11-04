@@ -213,11 +213,11 @@ func TestAnUnlandedRowStillVotes(t *testing.T) {
 // handle), and runs the create path over them.
 func runParsedLibex(t *testing.T, dataDir string, edit func([]sourceBook), rows ...string) {
 	t.Helper()
-	entries, err := decodeLibexEntries([]byte(strings.Join(rows, "\n") + "\n"))
+	parsed, err := parseLibex([]byte(strings.Join(rows, "\n") + "\n"))
 	if err != nil {
 		t.Fatal(err)
 	}
-	books := parseLibexEntries(entries).books
+	books := parsed.books
 	edit(books)
 	if _, err := runBooks(books, sourceLibex, Options{DataDir: dataDir, ImportDate: testImportDate}, nil); err != nil {
 		t.Fatalf("import run: %v", err)

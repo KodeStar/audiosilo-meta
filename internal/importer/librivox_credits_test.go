@@ -28,8 +28,8 @@ func orphanPeople(t *testing.T, dataDir string) []string {
 
 // ianJohnston is fixture 527's translator credit as the run reports it when the
 // project attaches to a catalogued Metamorphosis that does not name him.
-func ianJohnston(work string, created bool) LibrivoxUnrecordedCredit {
-	return LibrivoxUnrecordedCredit{Project: 527, AuthorID: 1019, Name: "Ian Johnston",
+func ianJohnston(work string, created bool) UnrecordedCredit {
+	return UnrecordedCredit{Project: 527, AuthorID: 1019, Name: "Ian Johnston",
 		Roles: []string{model.RoleTranslator}, Work: work, PersonExists: created}
 }
 
@@ -44,14 +44,9 @@ func TestLibrivoxAttachCreatesNoUncreditedTranslator(t *testing.T) {
 		t.Fatalf("works/recordings/people = %d/%d/%d, want 0/1/1 (the reader only)\nwarnings: %v",
 			sum.NewWorks, sum.NewRecordings, sum.NewPeople, sum.Warnings)
 	}
-	if entryExists(t, dataDir, personAddr("ian-johnston")) {
-		t.Error("the uncredited translator was created")
-	}
-	if want := []LibrivoxUnrecordedCredit{ianJohnston("metamorphosis", false)}; !reflect.DeepEqual(sum.LibrivoxUnrecordedCredits, want) {
-		t.Errorf("unrecorded = %+v, want %+v", sum.LibrivoxUnrecordedCredits, want)
-	}
-	if got := orphanPeople(t, dataDir); len(got) != 0 {
-		t.Errorf("orphans: %v", got)
+	requireTranslatorWithheld(t, dataDir)
+	if want := []UnrecordedCredit{ianJohnston("metamorphosis", false)}; !reflect.DeepEqual(sum.UnrecordedCredits, want) {
+		t.Errorf("unrecorded = %+v, want %+v", sum.UnrecordedCredits, want)
 	}
 }
 
@@ -64,10 +59,10 @@ func TestLibrivoxSpellingVariantAttachCreatesNoUncreditedTranslator(t *testing.T
 		t.Fatalf("attached = %d, ian-johnston created = %v", sum.LibrivoxVariantsAttached,
 			entryExists(t, dataDir, personAddr("ian-johnston")))
 	}
-	if len(sum.LibrivoxUnrecordedCredits) != 1 {
-		t.Fatalf("unrecorded = %+v", sum.LibrivoxUnrecordedCredits)
+	if len(sum.UnrecordedCredits) != 1 {
+		t.Fatalf("unrecorded = %+v", sum.UnrecordedCredits)
 	}
-	if got, want := sum.LibrivoxUnrecordedCredits[0].String(),
+	if got, want := sum.UnrecordedCredits[0].String(),
 		`527 "Ian Johnston" (translator, librivox_author_id 1019) -> kafkas-book, person not created`; got != want {
 		t.Errorf("line = %q, want %q", got, want)
 	}
@@ -87,8 +82,8 @@ func TestLibrivoxAttachKeepsACataloguedTranslatorUnstamped(t *testing.T) {
 	if sum.NewPeople != 1 {
 		t.Errorf("NewPeople = %d, want the reader only", sum.NewPeople)
 	}
-	if want := []LibrivoxUnrecordedCredit{ianJohnston("metamorphosis", true)}; !reflect.DeepEqual(sum.LibrivoxUnrecordedCredits, want) {
-		t.Errorf("unrecorded = %+v, want %+v", sum.LibrivoxUnrecordedCredits, want)
+	if want := []UnrecordedCredit{ianJohnston("metamorphosis", true)}; !reflect.DeepEqual(sum.UnrecordedCredits, want) {
+		t.Errorf("unrecorded = %+v, want %+v", sum.UnrecordedCredits, want)
 	}
 	var p lvPerson
 	readEntity(t, dataDir, personAddr("ian-johnston"), &p)
@@ -103,9 +98,9 @@ func TestLibrivoxAttachToAWorkNamingTheTranslator(t *testing.T) {
 	dataDir := t.TempDir()
 	seedWorks(t, dataDir, map[string][]string{"metamorphosis": {"Metamorphosis", "franz-kafka", "ian-johnston"}})
 	sum := runLibrivox(t, writeSnapshot(t, fixtureProject(t, 527)), dataDir, allLibrivox)
-	if sum.NewWorks != 0 || sum.NewRecordings != 1 || len(sum.LibrivoxUnrecordedCredits) != 0 {
+	if sum.NewWorks != 0 || sum.NewRecordings != 1 || len(sum.UnrecordedCredits) != 0 {
 		t.Fatalf("works/recordings/unrecorded = %d/%d/%+v\nwarnings: %v",
-			sum.NewWorks, sum.NewRecordings, sum.LibrivoxUnrecordedCredits, sum.Warnings)
+			sum.NewWorks, sum.NewRecordings, sum.UnrecordedCredits, sum.Warnings)
 	}
 	var p lvPerson
 	readEntity(t, dataDir, personAddr("ian-johnston"), &p)
@@ -119,8 +114,8 @@ func TestLibrivoxNewWorkStillCreatesItsTranslator(t *testing.T) {
 	// are created, credited and keyed, and nothing is reported unrecorded.
 	dataDir := t.TempDir()
 	sum := runLibrivox(t, librivoxFixture, dataDir, mustLibrivoxIDs("527"))
-	if sum.NewWorks != 1 || sum.NewPeople != 3 || len(sum.LibrivoxUnrecordedCredits) != 0 {
-		t.Fatalf("works/people/unrecorded = %d/%d/%+v", sum.NewWorks, sum.NewPeople, sum.LibrivoxUnrecordedCredits)
+	if sum.NewWorks != 1 || sum.NewPeople != 3 || len(sum.UnrecordedCredits) != 0 {
+		t.Fatalf("works/people/unrecorded = %d/%d/%+v", sum.NewWorks, sum.NewPeople, sum.UnrecordedCredits)
 	}
 	var w lvWork
 	readEntity(t, dataDir, workAddr("metamorphosis"), &w)
@@ -141,8 +136,8 @@ func TestLibrivoxSecondTranslationInOneRunIsNotUnrecorded(t *testing.T) {
 	second.Translators = []LibrivoxPerson{{ID: 2000, FirstName: "Willa", LastName: "Muir"}}
 	dataDir := t.TempDir()
 	sum := runLibrivox(t, writeSnapshot(t, first, second), dataDir, allLibrivox)
-	if len(sum.LibrivoxUnrecordedCredits) != 0 || !entryExists(t, dataDir, personAddr("willa-muir")) {
-		t.Fatalf("unrecorded = %+v, willa-muir created = %v", sum.LibrivoxUnrecordedCredits,
+	if len(sum.UnrecordedCredits) != 0 || !entryExists(t, dataDir, personAddr("willa-muir")) {
+		t.Fatalf("unrecorded = %+v, willa-muir created = %v", sum.UnrecordedCredits,
 			entryExists(t, dataDir, personAddr("willa-muir")))
 	}
 	if got := orphanPeople(t, dataDir); len(got) != 0 {
@@ -156,9 +151,9 @@ func TestLibrivoxRerunAfterAnAttachIsANoOp(t *testing.T) {
 	seedKafka(t, dataDir, "franz-kafka", "Franz Kafka")
 	runLibrivox(t, librivoxFixture, dataDir, mustLibrivoxIDs("527"))
 	sum := runLibrivox(t, librivoxFixture, dataDir, mustLibrivoxIDs("527"))
-	if sum.NewPeople != 0 || sum.NewRecordings != 0 || len(sum.LibrivoxUnrecordedCredits) != 0 || len(sum.Files) != 0 {
+	if sum.NewPeople != 0 || sum.NewRecordings != 0 || len(sum.UnrecordedCredits) != 0 || len(sum.Files) != 0 {
 		t.Errorf("rerun people/recordings/unrecorded/files = %d/%d/%+v/%d",
-			sum.NewPeople, sum.NewRecordings, sum.LibrivoxUnrecordedCredits, len(sum.Files))
+			sum.NewPeople, sum.NewRecordings, sum.UnrecordedCredits, len(sum.Files))
 	}
 }
 
@@ -262,9 +257,9 @@ func TestLibrivoxAttachToAWorkCreditingTheTranslator(t *testing.T) {
 			"credits", []model.Credit{{Person: "ian-johnston", Role: model.RoleTranslator}}),
 	})
 	sum := runLibrivox(t, librivoxFixture, dataDir, mustLibrivoxIDs("527"))
-	if sum.NewWorks != 0 || sum.NewRecordings != 1 || len(sum.LibrivoxUnrecordedCredits) != 0 {
+	if sum.NewWorks != 0 || sum.NewRecordings != 1 || len(sum.UnrecordedCredits) != 0 {
 		t.Fatalf("works/recordings/unrecorded = %d/%d/%+v\nwarnings: %v",
-			sum.NewWorks, sum.NewRecordings, sum.LibrivoxUnrecordedCredits, sum.Warnings)
+			sum.NewWorks, sum.NewRecordings, sum.UnrecordedCredits, sum.Warnings)
 	}
 	var p lvPerson
 	readEntity(t, dataDir, personAddr("ian-johnston"), &p)
@@ -282,12 +277,12 @@ func TestLibrivoxUnrecordedUnsluggableTranslatorsKeepTheirOwnIDs(t *testing.T) {
 	pr := fixtureProject(t, 527)
 	pr.Translators = []LibrivoxPerson{{ID: 5001, FirstName: "Иван", LastName: "Петров"}, {ID: 5002, FirstName: "Пётр", LastName: "Иванов"}}
 	sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
-	want := []LibrivoxUnrecordedCredit{
+	want := []UnrecordedCredit{
 		{Project: 527, AuthorID: 5001, Name: "Иван Петров", Roles: []string{model.RoleTranslator}, Work: "metamorphosis", Reason: librivoxUnsluggable},
 		{Project: 527, AuthorID: 5002, Name: "Пётр Иванов", Roles: []string{model.RoleTranslator}, Work: "metamorphosis", Reason: librivoxUnsluggable},
 	}
-	if !reflect.DeepEqual(sum.LibrivoxUnrecordedCredits, want) {
-		t.Errorf("unrecorded = %+v, want %+v", sum.LibrivoxUnrecordedCredits, want)
+	if !reflect.DeepEqual(sum.UnrecordedCredits, want) {
+		t.Errorf("unrecorded = %+v, want %+v", sum.UnrecordedCredits, want)
 	}
 }
 
@@ -304,7 +299,7 @@ func TestLibrivoxUnrecordedTranslatorWhoReadsExists(t *testing.T) {
 	if !entryExists(t, dataDir, personAddr("ian-johnston")) {
 		t.Fatal("the reader was not created")
 	}
-	if want := []LibrivoxUnrecordedCredit{ianJohnston("metamorphosis", true)}; !reflect.DeepEqual(sum.LibrivoxUnrecordedCredits, want) {
-		t.Errorf("unrecorded = %+v, want %+v", sum.LibrivoxUnrecordedCredits, want)
+	if want := []UnrecordedCredit{ianJohnston("metamorphosis", true)}; !reflect.DeepEqual(sum.UnrecordedCredits, want) {
+		t.Errorf("unrecorded = %+v, want %+v", sum.UnrecordedCredits, want)
 	}
 }

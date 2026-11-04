@@ -90,12 +90,12 @@
 // already here: a row whose ASIN the catalogue does not hold is counted and
 // ignored, and a matched row only fills facts the existing work/recording does
 // not have. Nothing is ever created, so the run is bounded by this catalogue
-// rather than by the source's. What it READS is not bounded, though - the parser
-// slurps the whole file before the ASIN match discards the rows that do not
-// apply (roughly 6GB of live heap for libex's 1.06M-row dump), so the
-// recommended input is still a pre-filtered row set: the libex-select output, or
-// rows filtered to catalogued ASINs at export time. Feeding the raw dump needs a
-// machine sized for it. The one replacement it makes is the POST-RELEASE
+// rather than by the source's. What it READS is not bounded, though: the parser
+// streams the file, but planning holds every accepted row at once (the batch
+// censuses read them all), so the raw dump still needs a machine sized for it
+// (scripts/README.md step 7 has the figures) and the recommended input is a
+// pre-filtered row set: the libex-select output, or rows filtered to catalogued
+// ASINs at export time. The one replacement it makes is the POST-RELEASE
 // REFRESH: a recording catalogued from a preorder listing, met by a released row
 // of its own ASIN, takes that row's runtime, cover, chapters and release date
 // (internal/importer/refresh.go).
@@ -352,6 +352,7 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	// worklist after it: the tree is written, and the summary is the record of
 	// what was.
 	printSummary(sum, *dryRun, mode)
+	printUnrecordedCredits(sum.UnrecordedCredits)
 	for _, rows := range [][]importer.RowSkip{sum.Skips, sum.RelocationSkips} {
 		for _, s := range rows {
 			skippedLog.Encode(s)
@@ -374,8 +375,7 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 // The returned writer is the *os.File itself, deliberately unbuffered: the
 // importer writes one row per conflict, so a wave killed after six hours keeps
 // every conflict it had already found. Append (rather than truncate) is what
-// lets a dump split into chunks with `split -l` accumulate ONE worklist across
-// every chunk's run.
+// lets several runs accumulate ONE worklist.
 //
 // The nil is returned as an untyped io.Writer rather than a nil *os.File, which
 // would be a non-nil interface holding a nil pointer - the importer's "was I
@@ -527,6 +527,23 @@ func parsePositional(fs *flag.FlagSet, args []string, label string) (string, err
 		return "", fmt.Errorf("expected one %s path, got %d: %s", label, len(positional), strings.Join(positional, " "))
 	}
 	return positional[0], nil
+}
+
+// printUnrecordedCredits prints the author, translator and other role credits
+// of landed rows that their work does not record (importer.UnrecordedCredit):
+// the row attached to a work that does not name them, so no person record was
+// made for them; kept for recording-level credits (meta#2752). A LibriVox
+// credit whose name slugs to nothing is listed too (reason unsluggable).
+// Nothing when there are none, so every other run's report reads as before.
+func printUnrecordedCredits(credits []importer.UnrecordedCredit) {
+	if len(credits) == 0 {
+		return
+	}
+	fmt.Printf("credits not recorded: %d (the row attached to a work that does not name them, or the name slugs to nothing; for recording-level credits, meta#2752):\n",
+		len(credits))
+	for _, c := range credits {
+		fmt.Println("  " + c.String())
+	}
 }
 
 // printSummary renders the run's outcome for the selected mode. Each mode

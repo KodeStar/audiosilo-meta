@@ -301,7 +301,7 @@
         "tags": ["Works"],
         "operationId": "latestWorks",
         "summary": "Recently added works",
-        "description": "Work cards ordered by when they entered the database, newest first, with at most two works from any one series so a bulk import cannot fill the whole page with one series' volumes. Two reading orders of one franchise (a series and a chronological or recommended variant of it) count as one series for that cap. Works with no recorded date sort last.\n\n`lang` lists only works in the named languages, and the series cap is taken over those.",
+        "description": "Work cards ordered by when they entered the database, newest first, with at most two works from any one series so a bulk import cannot fill the whole page with one series' volumes. Two reading orders of one franchise (a series and a chronological or recommended variant of it) count as one series for that cap. Works with no recorded date sort last.\n\n`lang` lists only works in the named languages, and the series cap is taken over those.\n\n`source` lists only works with a recording from that source and orders them by their newest such recording rather than by the work (the work's own date when none of those recordings has one), so a new LibriVox reading of a long-catalogued classic is listed as new.",
         "parameters": [
           {
             "name": "limit",

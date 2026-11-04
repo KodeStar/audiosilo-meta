@@ -433,7 +433,7 @@ func librivoxBook(pr LibrivoxProject) sourceBook {
 	sort.SliceStable(sections, func(i, j int) bool { return sections[i].SectionNumber < sections[j].SectionNumber })
 	seenReader := map[string]bool{}
 	var start int64
-	chapters := make([]rawChapter, 0, len(sections))
+	chapters := make([]sourceChapter, 0, len(sections))
 	for _, s := range sections {
 		for _, r := range s.Readers {
 			name := strings.TrimSpace(r.DisplayName)
@@ -446,11 +446,7 @@ func librivoxBook(pr LibrivoxProject) sourceBook {
 			b.narrators = append(b.narrators, name)
 		}
 		length := int64(s.Playtime) * 1000
-		ch := rawChapter{
-			"title":           strings.TrimSpace(s.Title),
-			"start_offset_ms": json.Number(strconv.FormatInt(start, 10)),
-			"length_ms":       json.Number(strconv.FormatInt(length, 10)),
-		}
+		ch := sourceChapter{title: strings.TrimSpace(s.Title), startMS: start, lengthMS: length, hasStart: true, hasLength: true}
 		facts.audioURLs = append(facts.audioURLs, httpsOrEmpty(s.ListenURL))
 		chapters = append(chapters, ch)
 		start += length
@@ -1104,97 +1100,6 @@ func (p *planner) stampLibrivoxPeople() {
 				return
 			}
 		}
-	}
-}
-
-// LibrivoxUnrecordedCredit is one author or translator credit a landed LibriVox
-// row stated that its work does not record (Summary.LibrivoxUnrecordedCredits).
-type LibrivoxUnrecordedCredit struct {
-	Project int `json:"librivox_id"`
-	// AuthorID is the person's librivox_author_id, 0 when the row states none.
-	AuthorID int      `json:"librivox_author_id,omitempty"`
-	Name     string   `json:"name"`
-	Roles    []string `json:"roles,omitempty"`
-	// Work is the work the row's recording landed on.
-	Work string `json:"work"`
-	// PersonExists says the person record exists (the catalogue or the run
-	// already held it); false means the run withheld it rather than mint an
-	// orphan.
-	PersonExists bool `json:"person_exists"`
-	// Reason is "unsluggable" for a name that slugs to nothing, which no record
-	// can hold (librivoxauthors.go rule 2); "" for a credit the attached work
-	// does not name.
-	Reason string `json:"reason,omitempty"`
-}
-
-// String is the credit as the import report prints it, one line:
-//
-//	2027 "Amy Coulter" (translator, librivox_author_id 9876) -> siddhartha, person not created
-//	2607 "Йордан Йовков" (author, librivox_author_id 6294) -> staroplaninski-legendi, unsluggable
-func (c LibrivoxUnrecordedCredit) String() string {
-	var b strings.Builder
-	fmt.Fprintf(&b, "%d %q (", c.Project, c.Name)
-	if len(c.Roles) > 0 {
-		b.WriteString(strings.Join(c.Roles, ", "))
-	} else {
-		b.WriteString("author")
-	}
-	if c.AuthorID > 0 {
-		fmt.Fprintf(&b, ", librivox_author_id %d", c.AuthorID)
-	}
-	fmt.Fprintf(&b, ") -> %s", c.Work)
-	switch {
-	case c.Reason != "":
-		b.WriteString(", " + c.Reason)
-	case !c.PersonExists:
-		b.WriteString(", person not created")
-	}
-	return b.String()
-}
-
-// librivoxRowAuthors creates the people of a LibriVox row that ATTACHES to ws
-// (a work the walk found) - but only those the run will credit there: a person
-// ws already names (in its authors or its stored credits), or a role-credited
-// person (a translator) when ws is a work THIS run created, onto which
-// mergeCreatedWorkFacts adds the row's role credits. Anyone else would be a
-// record credited nowhere: a create run never edits a catalogued work's credit
-// list, and the row's recording credits only its readers. Each such credit is
-// returned for the run's report (and its person, when it would be new, is not
-// created; PersonExists is settled once the run has planned every row,
-// settleLibrivoxUnrecorded). Identity authors always qualify (matchWork admits
-// only a work whose credit list holds them); the per-person test covers every
-// attach route alike - the ordinary walk, a spelling variant and a work created
-// earlier in the run.
-func (p *planner) librivoxRowAuthors(b sourceBook, ws *workState, credits []credit, warn func(string, ...any)) []LibrivoxUnrecordedCredit {
-	_, runCreated := p.runCredits[ws.slug]
-	var out []LibrivoxUnrecordedCredit
-	for _, c := range credits {
-		r := p.resolvePerson(c.name)
-		if ws.names(r.slug) || (runCreated && len(c.roles) > 0 && !r.fellBack) {
-			p.getOrCreatePerson(c.name, warn)
-			continue
-		}
-		out = append(out, LibrivoxUnrecordedCredit{
-			Project:  b.lv.id,
-			AuthorID: p.librivoxAuthorIDOf(b, c.name, r),
-			Name:     c.name,
-			Roles:    slices.Clone(c.roles),
-			Work:     ws.slug,
-		})
-	}
-	return out
-}
-
-// settleLibrivoxUnrecorded sets each unrecorded credit's PersonExists from the
-// planner as the run left it: the row's own reader, or a later row's new work,
-// can create the person after the credit was withheld. A name that slugs away
-// to nothing is never found by its name (the catch-all is not them, and an
-// unsluggable reader's own record is reached by reader id only).
-func (p *planner) settleLibrivoxUnrecorded() {
-	for i := range p.summary.LibrivoxUnrecordedCredits {
-		c := &p.summary.LibrivoxUnrecordedCredits[i]
-		r := p.resolvePerson(c.Name)
-		c.PersonExists = !r.create && !r.fellBack
 	}
 }
 
