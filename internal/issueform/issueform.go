@@ -651,8 +651,9 @@ func (c *composer) dedupIdentifiers(asins []outASIN, isbns []model.ISBNRef, asin
 		first := matched[keys[0]]
 		for _, k := range keys[1:] {
 			if other := matched[k]; other != first {
-				c.fail(StatusNeedsHuman, "your ASINs name two different recordings, both seeded from the libex mirror: "+
+				c.fail(StatusNeedsHuman, "your ASINs name two different recordings, both seeded from %s: "+
 					"%s is recorded at %s and %s at %s - a maintainer checks which edition this submission is",
+					seededFrom(slices.Concat(c.recordingSources(first), c.recordingSources(other))),
 					keys[0], c.recLocation(first), k, c.recLocation(other))
 				return nil, true
 			}
@@ -706,7 +707,7 @@ func (c *composer) failDuplicateUnhinted(ref recRef, how, format string, args ..
 // failDuplicateOf is the one body of both: asins is the advice to name, or "".
 func (c *composer) failDuplicateOf(ref recRef, how, asins, format string, args ...any) {
 	if c.bulkMirrorOnly(ref) {
-		c.failMirrorSeed(c.recLocation(ref), how, asins)
+		c.failMirrorSeed(c.recordingSeedLead(ref), how, asins)
 		return
 	}
 	c.fail(StatusDuplicate, format, args...)
@@ -742,28 +743,75 @@ func (c *composer) failNoop(format string, args ...any) {
 // not-overwritable, the same safe answer bulkMirrorOnly gives.
 func (c *composer) failDuplicateWork(workSlug, how, format string, args ...any) {
 	if w := c.works[workSlug]; w != nil && model.BulkMirrorOnly(w.Sources) {
-		c.failMirrorSeed(c.entryLocation(pack.FamilyWorks, workSlug, ""), how, workASINs(w))
+		c.failMirrorSeed(mirrorSeedLead(c.entryLocation(pack.FamilyWorks, workSlug, ""), w.Sources), how, workASINs(w))
 		return
 	}
 	c.fail(StatusDuplicate, format, args...)
 }
 
-// mirrorSeedLead is the sentence every mirror-seed verdict opens with.
-func mirrorSeedLead(location string) string {
-	return location + " was seeded from the libex mirror and no user has attested it yet"
+// mirrorSeedLead is the sentence every mirror-seed verdict opens with: the
+// record at location, whose sources are sources, names the mirror(s) that
+// seeded it (seededFrom), so a LibriVox record is never said to come from
+// libex.
+func mirrorSeedLead(location string, sources []model.Source) string {
+	return location + " was seeded from " + seededFrom(sources) + " and no user has attested it yet"
+}
+
+// recordingSeedLead is mirrorSeedLead for the catalogued recording at ref.
+func (c *composer) recordingSeedLead(ref recRef) string {
+	return mirrorSeedLead(c.recLocation(ref), c.recordingSources(ref))
+}
+
+// recordingSources is the catalogued recording at ref's sources, nil when the
+// loaded catalogue does not hold it.
+func (c *composer) recordingSources(ref recRef) []model.Source {
+	if r := c.recordingAt(ref); r != nil {
+		return r.Sources
+	}
+	return nil
+}
+
+// mirrorNames is the name a verdict gives each bulk-mirror source type.
+var mirrorNames = map[string]string{
+	model.SourceLibexImport: "libex",
+	model.SourceLibrivox:    "LibriVox",
+}
+
+// seededFrom names the bulk mirror(s) among sources as a verdict states them:
+// "the libex mirror", "the LibriVox mirror", or "the libex and LibriVox
+// mirrors" for a record both seeded. Every bulk-mirror source type has a name
+// (TestMirrorNamesCoverTheBulkMirrorTier). Sources naming no mirror read "a
+// bulk mirror": the import note, whose summary counts attestations without
+// their sources, asks for exactly that.
+func seededFrom(sources []model.Source) string {
+	var names []string
+	for _, s := range sources {
+		name, ok := mirrorNames[s.Type]
+		if ok && !slices.Contains(names, name) {
+			names = append(names, name)
+		}
+	}
+	slices.SortFunc(names, func(a, b string) int { return strings.Compare(strings.ToLower(a), strings.ToLower(b)) })
+	switch len(names) {
+	case 0:
+		return "a bulk mirror"
+	case 1:
+		return "the " + names[0] + " mirror"
+	}
+	return "the " + strings.Join(names[:len(names)-1], ", ") + " and " + names[len(names)-1] + " mirrors"
 }
 
 // failMirrorSeed is the verdict for a submission that meets a record which is
-// still nothing but a bulk-mirror seed, but meets it by something other than an
-// ASIN it carries (how). The submitter's data is wanted, and the message says so
+// still nothing but a bulk-mirror seed (lead, its mirrorSeedLead), but meets it
+// by something other than an ASIN it carries (how). The submitter's data is wanted, and the message says so
 // rather than calling it a duplicate - but the user-overwrite rule takes a record
 // over on an ASIN match and on nothing weaker (LICENSING.md, rule 2): a title,
 // an ISBN or a narrator set can meet a record that is not this edition at all.
 // asins are the record's own ASINs, named so a submitter holding the same
 // edition can add the one that turns this into a takeover the bot applies; ""
 // leaves that advice out.
-func (c *composer) failMirrorSeed(location, how, asins string) {
-	msg := mirrorSeedLead(location) + ", but your submission matched it by " + how + ", not by an ASIN it " +
+func (c *composer) failMirrorSeed(lead, how, asins string) {
+	msg := lead + ", but your submission matched it by " + how + ", not by an ASIN it " +
 		"carries - the intake bot applies a submission over a mirror seed only when the submission names one of " +
 		"that record's ASINs (LICENSING.md, \"Trust tiers and the user-overwrite rule\"), so a maintainer decides this one"
 	if asins != "" {

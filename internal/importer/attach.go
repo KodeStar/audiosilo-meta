@@ -257,6 +257,6 @@ func (p *planner) attachRow(ws *workState, b sourceBook, workTitle, asin, lang s
 		p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, p.attachRowAuthors(b, asin, ws, credits, warn)...)
 		p.mergeCreatedWorkFacts(ws, p.landedRec, &workFacts{credits: credits})
 	case recNone:
-		p.summary.Skips = appendSkip(p.summary.Skips, asin, reasonPositionTaken)
+		p.noteSkip(b, reasonPositionTaken)
 	}
 }

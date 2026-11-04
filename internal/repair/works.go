@@ -56,7 +56,9 @@ import (
 // left naming a retired slug.
 //
 // A recording-key collision refuses NOTHING: two colliding recordings either merge
-// (same narrators, no contradicting runtime) or the mover is re-keyed through the
+// (same narrators, no contradicting runtime, and the same LibriVox project if either
+// is one - a librivox_id is identity, so two projects never fuse) or the mover is
+// re-keyed through the
 // project's own numbered-slug chain and moved intact. Both outcomes keep every
 // recording.
 //

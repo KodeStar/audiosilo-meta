@@ -19,7 +19,7 @@ import (
 // public-domain exception; internal/importer/librivox.go and librivoxfetch.go).
 //
 //	metaimport librivox fetch  --out <snapshot> [--max-pages N]
-//	metaimport librivox import --from <snapshot> --ids <range> [--data data] [--dry-run] [--date YYYY-MM-DD] [--conflicts <path>]
+//	metaimport librivox import --from <snapshot> --ids <range> [--data data] [--dry-run] [--date YYYY-MM-DD] [--conflicts <path>] [--skipped <path>]
 //	metaimport librivox import --from <snapshot> --ids <range> --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>] [--data data] [--dry-run]
 //
 // fetch is the ONLY command in this repository that calls LibriVox, and it does
@@ -101,6 +101,7 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 	regenerate := fs.Bool("regenerate-genres", false, "re-derive the genres of the works holding the selected projects under today's LibriVox genre table (the recording vote; a trim only where every recording met a row); touches nothing else")
 	rowsAsOf := fs.String("rows-as-of", "", "with --regenerate-genres (REQUIRED there): the YYYY-MM-DD LAST day a tranche was imported from this snapshot (a LibriVox record is stamped with its import day, not the fetch day); a work whose newest provenance is later is not judged")
 	genreChanges := fs.String("genre-changes", "", "with --regenerate-genres: write one NDJSON line per changed work ({\"work\",\"removed\",\"added\",\"mode\"}) to this file")
+	skipped := fs.String("skipped", "", "write one NDJSON line per project the run refused for a reason with a refusal code ({\"librivox_id\",\"reason\"}) to this file")
 	if err := fs.Parse(args); err != nil {
 		return 2
 	}
@@ -117,7 +118,10 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 	if *regenerate {
 		mode = importer.ModeRegenerateGenres
 	}
-	if refuseFlags("metaimport librivox import", fs, mode, "librivox", regenFlagRules) {
+	// --skipped lists a create run's refused projects; the regeneration refuses
+	// none, so the flag would write an empty worklist there.
+	rules := append([]flagRule{{"--skipped", false, notRegen, inertInRegen}}, regenFlagRules...)
+	if refuseFlags("metaimport librivox import", fs, mode, "librivox", rules) {
 		return 2
 	}
 	if err := importer.ValidateRowsAsOf(mode, *rowsAsOf, time.Now().UTC()); err != nil {
@@ -142,6 +146,15 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 		return 2
 	}
 	defer changesLog.Discard() // a no-op once committed
+	// Staged before the run, so a path that cannot be written fails before the
+	// import touches the tree, and renamed into place only once it completed
+	// (the libex --skipped writer, one RowSkip per line).
+	skippedLog, err := atomicfile.StageIf(*skipped)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "metaimport librivox import: --skipped:", err)
+		return 2
+	}
+	defer skippedLog.Discard() // a no-op once committed
 	sum, err := run(*from, ids, importer.Options{
 		DataDir: *data, ImportDate: stamp, DryRun: *dryRun, Mode: mode, RowsAsOf: *rowsAsOf,
 		Conflicts: conflictLog, Distinct: audit.ReviewedDistinct(),
@@ -188,6 +201,13 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 	printLibrivoxWorklist(sum.LibrivoxWorklist)
 	printLibrivoxAuthorPairs(sum.LibrivoxAuthorPairs)
 	printUnrecordedCredits(sum.UnrecordedCredits)
+	for _, s := range sum.Skips {
+		skippedLog.Encode(s)
+	}
+	if err := atomicfile.CommitInOrder(skippedLog); err != nil {
+		fmt.Fprintln(os.Stderr, "metaimport librivox import: --skipped:", err)
+		return 1
+	}
 	return 0
 }
 

@@ -55,10 +55,17 @@ const (
 	librivoxMaxRetries  = 6
 	librivoxBackoffBase = 30 * time.Second
 	librivoxMaxBackoff  = 10 * time.Minute
-	// librivoxMaxBody bounds one response read: a 100-project extended page is
-	// well under a megabyte, so anything near this is not a feed page.
+	// librivoxMaxBody bounds one response read (MaxBody's default): a
+	// 100-project extended page is well under a megabyte, so anything near this
+	// is not a feed page.
 	librivoxMaxBody = 64 << 20
 )
+
+// errBodyTooLarge is a response body longer than MaxBody, which fails the
+// fetch rather than being cut off. It is never retried: the same request
+// answers the same body, and a truncated page would fail the decode with an
+// error naming the JSON rather than the size.
+var errBodyTooLarge = errors.New("response body too large to be a feed page")
 
 // librivoxQuery is the fixed part of every page request; limit and offset are
 // added per page. It is recorded in the manifest so a resume can refuse a
@@ -76,6 +83,9 @@ type LibrivoxFetcher struct {
 	MaxRetries  int
 	BackoffBase time.Duration
 	MaxBackoff  time.Duration
+	// MaxBody is the longest response body read, in bytes; a longer one fails
+	// the fetch (errBodyTooLarge).
+	MaxBody int
 	// Sleep waits d or until ctx ends; Now is the clock. Both are injectable so
 	// a test runs offline at full speed and can see every wait asked for.
 	Sleep func(ctx context.Context, d time.Duration) error
@@ -97,6 +107,7 @@ func NewLibrivoxFetcher() *LibrivoxFetcher {
 		MaxRetries:  librivoxMaxRetries,
 		BackoffBase: librivoxBackoffBase,
 		MaxBackoff:  librivoxMaxBackoff,
+		MaxBody:     librivoxMaxBody,
 		Sleep:       sleepCtx,
 		Now:         time.Now,
 	}
@@ -128,6 +139,11 @@ type librivoxManifest struct {
 	Complete   bool   `json:"complete"`
 	StartedAt  string `json:"started_at"`
 	UpdatedAt  string `json:"updated_at"`
+	// PageIDs is each page's range of project ids and body size, by page file
+	// name, so a tranche import skips the pages that cannot hold its ids
+	// (librivoxsnapshot.go). A page it does not name (a manifest from before it
+	// was recorded, a page holding no readable id) is always decoded.
+	PageIDs map[string]librivoxPageIDs `json:"page_ids,omitempty"`
 }
 
 // LibrivoxFetchResult is what one Fetch call did.
@@ -148,6 +164,11 @@ func (f *LibrivoxFetcher) Fetch(ctx context.Context, dir string, maxPages int) (
 	if f.Limit < 1 || f.Limit > 500 {
 		return LibrivoxFetchResult{}, fmt.Errorf("librivox fetch: limit %d is outside 1-500 (the feed's cap)", f.Limit)
 	}
+	// A zero MaxBody (a fetcher built without NewLibrivoxFetcher) would refuse
+	// every page as too large rather than fetch anything.
+	if f.MaxBody < 1 {
+		return LibrivoxFetchResult{}, fmt.Errorf("librivox fetch: max body %d is not a positive byte count", f.MaxBody)
+	}
 	m, err := f.openManifest(dir)
 	if err != nil {
 		return LibrivoxFetchResult{}, err
@@ -159,17 +180,24 @@ func (f *LibrivoxFetcher) Fetch(ctx context.Context, dir string, maxPages int) (
 		if err != nil {
 			return res, err
 		}
-		n := 0
+		var books []LibrivoxProject
 		if body != nil {
-			books, err := parseLibrivoxPage(body)
-			if err != nil {
+			if books, err = parseLibrivoxPage(body); err != nil {
 				return res, fmt.Errorf("librivox fetch: offset %d: %w", m.NextOffset, err)
 			}
-			n = len(books)
 		}
+		n := len(books)
 		if n > 0 {
-			if err := writeAtomic(filepath.Join(dir, librivoxPagesDir, fmt.Sprintf("offset-%07d.json", m.NextOffset)), body); err != nil {
+			name := librivoxPageName(m.NextOffset)
+			if err := writeAtomic(filepath.Join(dir, librivoxPagesDir, name), body); err != nil {
 				return res, err
+			}
+			if r, ok := pageIDRange(books); ok {
+				r.Bytes = int64(len(body))
+				if m.PageIDs == nil {
+					m.PageIDs = map[string]librivoxPageIDs{}
+				}
+				m.PageIDs[name] = r
 			}
 			m.Pages++
 			m.Projects += n
@@ -230,6 +258,8 @@ func (f *LibrivoxFetcher) page(ctx context.Context, offset int) (body []byte, en
 		requests++
 		status, retryAfter, b, rerr := f.get(ctx, u)
 		switch {
+		case errors.Is(rerr, errBodyTooLarge):
+			return nil, false, requests, fmt.Errorf("librivox fetch: %s: HTTP %d: %w", u, status, rerr)
 		case rerr == nil && status == http.StatusOK:
 			return b, false, requests, nil
 		case rerr == nil && status == http.StatusNotFound && librivoxNoResults(b):
@@ -270,7 +300,7 @@ func (f *LibrivoxFetcher) waitTurn(ctx context.Context) error {
 }
 
 // get makes one request. retryAfter is the server's Retry-After, 0 when absent
-// or unreadable.
+// or unreadable. A body over MaxBody is errBodyTooLarge, with the status.
 func (f *LibrivoxFetcher) get(ctx context.Context, u string) (status int, retryAfter time.Duration, body []byte, err error) {
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, u, nil)
 	if err != nil {
@@ -283,9 +313,12 @@ func (f *LibrivoxFetcher) get(ctx context.Context, u string) (status int, retryA
 		return 0, 0, nil, err
 	}
 	defer func() { _ = resp.Body.Close() }()
-	body, err = io.ReadAll(io.LimitReader(resp.Body, librivoxMaxBody))
+	body, err = io.ReadAll(io.LimitReader(resp.Body, int64(f.MaxBody)+1))
 	if err != nil {
 		return 0, 0, nil, err
+	}
+	if len(body) > f.MaxBody {
+		return resp.StatusCode, 0, nil, fmt.Errorf("%w: over %d bytes", errBodyTooLarge, f.MaxBody)
 	}
 	return resp.StatusCode, parseRetryAfter(resp.Header.Get("Retry-After"), f.Now()), body, nil
 }

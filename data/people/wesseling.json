@@ -2314,7 +2314,6 @@
     },
     "will": {
       "id": "will",
-      "librivox_reader_id": 19966,
       "license": "CC0-1.0",
       "name": "Will",
       "sources": [
@@ -2322,11 +2321,6 @@
           "imported_at": "2026-07-29",
           "ref": "B002V08DQ0",
           "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-10-29",
-          "ref": "19926",
-          "type": "librivox"
         }
       ]
     },
@@ -3163,10 +3157,7 @@
       ]
     },
     "will-irwin": {
-      "birth_year": 1873,
-      "death_year": 1948,
       "id": "will-irwin",
-      "librivox_author_id": 13365,
       "license": "CC0-1.0",
       "name": "Will Irwin",
       "sources": [
@@ -3174,7 +3165,17 @@
           "imported_at": "2026-07-29",
           "ref": "B002V8M98U",
           "type": "libex-import"
-        },
+        }
+      ]
+    },
+    "will-irwin-1873-1948": {
+      "birth_year": 1873,
+      "death_year": 1948,
+      "id": "will-irwin-1873-1948",
+      "librivox_author_id": 13365,
+      "license": "CC0-1.0",
+      "name": "Will Irwin (1873-1948)",
+      "sources": [
         {
           "imported_at": "2026-10-29",
           "ref": "12916",
@@ -3345,6 +3346,19 @@
         {
           "imported_at": "2026-10-29",
           "ref": "9529",
+          "type": "librivox"
+        }
+      ]
+    },
+    "will-librivox-19966": {
+      "id": "will-librivox-19966",
+      "librivox_reader_id": 19966,
+      "license": "CC0-1.0",
+      "name": "Will",
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "19926",
           "type": "librivox"
         }
       ]
@@ -3865,7 +3879,6 @@
     },
     "will-smith": {
       "id": "will-smith",
-      "librivox_author_id": 10077,
       "license": "CC0-1.0",
       "name": "Will Smith",
       "sources": [
@@ -3873,7 +3886,15 @@
           "imported_at": "2026-08-02",
           "ref": "B078XKM6HY",
           "type": "libex-import"
-        },
+        }
+      ]
+    },
+    "will-smith-fl-1930": {
+      "id": "will-smith-fl-1930",
+      "librivox_author_id": 10077,
+      "license": "CC0-1.0",
+      "name": "Will Smith (fl. 1930)",
+      "sources": [
         {
           "imported_at": "2026-10-28",
           "ref": "7897",
@@ -5327,10 +5348,7 @@
       ]
     },
     "william-atherton": {
-      "birth_year": 1793,
-      "death_year": 1863,
       "id": "william-atherton",
-      "librivox_author_id": 9795,
       "license": "CC0-1.0",
       "name": "William Atherton",
       "sources": [
@@ -5338,7 +5356,17 @@
           "imported_at": "2026-07-29",
           "ref": "B002V0M816",
           "type": "libex-import"
-        },
+        }
+      ]
+    },
+    "william-atherton-1793-1863": {
+      "birth_year": 1793,
+      "death_year": 1863,
+      "id": "william-atherton-1793-1863",
+      "librivox_author_id": 9795,
+      "license": "CC0-1.0",
+      "name": "William Atherton (1793-1863)",
+      "sources": [
         {
           "imported_at": "2026-10-28",
           "ref": "7753",
