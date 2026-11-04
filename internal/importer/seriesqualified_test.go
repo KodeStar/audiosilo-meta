@@ -250,7 +250,7 @@ func resolveIn(cat *model.Catalog, name, lang string) SeriesMatch {
 	}
 	stored := func(slug string) (string, bool) { n, ok := names[slug]; return n, ok }
 	row := SeriesRowFor([]string{"David Gemmell"}, []string{"A New Book"}, "", lang, nil)
-	return NewSeriesAuthorIndex(cat).Resolve(name, nil, stored, row)
+	return NewSeriesAuthorIndex(cat, nil).Resolve(name, nil, stored, row)
 }
 
 // gemmell is a catalogue of English works by David Gemmell, and series over them.
@@ -341,7 +341,7 @@ func TestOrderingReachesAPrimaryByItsOwnOrdering(t *testing.T) {
 func TestATiedSeriesIsNotIndexed(t *testing.T) {
 	cat := gemmell(&model.Series{ID: "drenai-saga-2", Name: "Drenai Saga", Works: members()})
 	cat.Works[1].Language = "de" // one en, one de: a tie
-	ix := NewSeriesAuthorIndex(cat)
+	ix := NewSeriesAuthorIndex(cat, nil)
 	if got := ix.qualifiedIndex(); len(got) != 0 {
 		t.Errorf("a tied series is indexed: %v", got)
 	}
@@ -374,7 +374,7 @@ func TestLibexSelectReachesAQualifiedSeries(t *testing.T) {
 // The index is built lazily: an index nothing asks never builds it, and a lookup
 // builds it once.
 func TestQualifiedIndexIsBuiltOnFirstUse(t *testing.T) {
-	ix := NewSeriesAuthorIndex(gemmell(&model.Series{ID: "drenai", Name: "Drenai", Works: members()}))
+	ix := NewSeriesAuthorIndex(gemmell(&model.Series{ID: "drenai", Name: "Drenai", Works: members()}), nil)
 	if ix.qualified != nil || ix.qualifiedFrom == nil {
 		t.Fatal("the qualifier index was built before anything asked for it")
 	}
@@ -532,7 +532,7 @@ func TestASpellingAloneResolvesAsInsideAUnit(t *testing.T) {
 	for _, s := range cat.Series {
 		names[s.ID] = s.Name
 	}
-	view := NewSeriesAuthorIndex(cat).catalogue(func(slug string) (string, bool) { n, ok := names[slug]; return n, ok }, nil)
+	view := NewSeriesAuthorIndex(cat, nil).catalogue(func(slug string) (string, bool) { n, ok := names[slug]; return n, ok }, nil)
 	claim := func(name, lang, order string) nameClaim {
 		row := SeriesRowFor([]string{"David Gemmell"}, []string{"Book " + order}, "", lang, nil)
 		return nameClaim{name: name, row: row, order: order, work: "row:" + order, evidence: true}
@@ -612,7 +612,7 @@ func TestARecheckSplitsAUnitItsDroppedClaimJoined(t *testing.T) {
 	for _, s := range cat.Series {
 		names[s.ID] = s.Name
 	}
-	view := NewSeriesAuthorIndex(cat).catalogue(func(slug string) (string, bool) { n, ok := names[slug]; return n, ok }, nil)
+	view := NewSeriesAuthorIndex(cat, nil).catalogue(func(slug string) (string, bool) { n, ok := names[slug]; return n, ok }, nil)
 	claim := func(name, lang, order string) nameClaim {
 		row := SeriesRowFor([]string{"David Gemmell"}, []string{"Book " + order}, "", lang, nil)
 		return nameClaim{name: name, row: row, order: order, work: "row:" + order, evidence: true}

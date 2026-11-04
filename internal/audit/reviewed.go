@@ -155,13 +155,24 @@ func distinctOf(rs []reviewedDecision) []check.ReviewedDistinct {
 	return out
 }
 
-// namesAPair reports whether a resolved merge rejection still names two different
-// LIVE records - what pkg/check's census needs of a decision to withhold anything.
-// Its records merged onto one survivor, or deleted without a redirect, leave a pair
-// the census never sees. A nil index (a unit test's report with no catalogue)
-// counts every id as live.
-func namesAPair(p Proposal, kind model.RedirectKind, ix *index) bool {
-	live := func(id string) bool {
+// unmetRejection is the status of a resolved merge rejection that met no fresh
+// proposal, and why:
+//
+//   - census-only while it names two different LIVE records - what pkg/check's
+//     census needs of a decision to withhold anything;
+//   - for merge-people alone, unresolved while it names two different records of
+//     which only ONE is live: internal/importer honours a people rejection whatever
+//     is live (importer.PeopleApart - a credit landing on the missing slug is still
+//     kept apart from the live one, which is what stops the next import re-folding
+//     a pair whose titled record was deleted or is not yet created), so pruning it
+//     would let the pair merge again. It is listed rather than silent because the
+//     missing id may as well be a mistyped one, which keeps nothing apart;
+//   - STALE otherwise: its records merged onto one survivor (no pair anywhere), or
+//     a work or series pair with a record deleted, which no reader can still see.
+//
+// A nil index (a unit test's report with no catalogue) counts every id as live.
+func unmetRejection(p Proposal, kind model.RedirectKind, ix *index) (outcomeStatus, string) {
+	isLive := func(id string) bool {
 		if ix == nil {
 			return true
 		}
@@ -173,13 +184,22 @@ func namesAPair(p Proposal, kind model.RedirectKind, ix *index) bool {
 		}
 		return ix.workByID[id] != nil
 	}
-	seen := map[string]bool{}
-	for _, id := range append([]string{p.Target}, p.Others...) {
-		if live(id) {
-			seen[id] = true
+	var live, gone []string
+	for _, id := range sortedUnique(append([]string{p.Target}, p.Others...)) {
+		if isLive(id) {
+			live = append(live, id)
+		} else {
+			gone = append(gone, id)
 		}
 	}
-	return len(seen) >= 2
+	switch {
+	case len(live) >= 2:
+		return statusCensus, ""
+	case kind == model.RedirectPeople && len(live) == 1 && len(gone) > 0:
+		return statusUnresolved, "no live person record at " + strings.Join(gone, ", ") + ": kept, since the importer " +
+			"still keeps a credit landing there apart from " + live[0] + "; correct the slug if it is a typo"
+	}
+	return statusStale, "fewer than two of the records it names are live once resolved (target " + p.Target + "): merged onto one survivor, or deleted"
 }
 
 // distinctKind is the namespace a REJECTION of op records "not one record" in, for
@@ -556,8 +576,14 @@ const (
 	// whatever the detectors propose (ReviewedDistinct), so pruning it would bring a
 	// reviewed pair back into the census. One whose records resolve to fewer than
 	// two live records (merged onto one survivor, or deleted) withholds nothing
-	// there, and is STALE.
+	// there, and is STALE - except a merge-people one still naming a live record
+	// beside a missing one (statusUnresolved). See unmetRejection.
 	statusCensus outcomeStatus = "census-only"
+	// statusUnresolved is a merge-people REJECTION matching no fresh proposal that
+	// names one live record and one that is not (deleted, not yet created, or
+	// mistyped). The importer still honours it, so it is never stale; it is listed
+	// so a typo surfaces.
+	statusUnresolved outcomeStatus = "unresolved"
 	// statusWithholds is a rejection whose only match is an assertion of the same
 	// proposal: it is what keeps the assertion out, so it is never stale.
 	statusWithholds outcomeStatus = "rejected-an-assertion"
@@ -566,7 +592,7 @@ const (
 // listed reports whether SUMMARY.md names the decision one by one: the outcomes a
 // reviewer has to act on (STALE ones are listed in their own section).
 func (s outcomeStatus) listed() bool {
-	return slices.Contains([]outcomeStatus{statusNoOp, statusRefused, statusRedundant, statusWithholds}, s)
+	return slices.Contains([]outcomeStatus{statusNoOp, statusRefused, statusRedundant, statusWithholds, statusUnresolved}, s)
 }
 
 type decisionOutcome struct {
@@ -581,8 +607,8 @@ type decisionOutcome struct {
 type reviewedTally struct{ All []decisionOutcome }
 
 // Outcomes are every decision that is not STALE - those that met a fresh proposal,
-// plus the census-only merge rejections, which met none but are still in force;
-// Stale the rest.
+// plus the census-only and unresolved merge rejections, which met none but are
+// still in force; Stale the rest.
 func (t reviewedTally) Outcomes() []decisionOutcome { return t.filter(false) }
 func (t reviewedTally) Stale() []decisionOutcome    { return t.filter(true) }
 func (t reviewedTally) Entries() int                { return len(t.All) }
@@ -837,15 +863,9 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 		if statuses[j] == "" {
 			statuses[j] = statusStale
 			if r.Decision == "reject" && distinctKind(r.Op) != "" {
-				// Census-only while it still names two live records; one whose records
-				// now resolve to one survivor (merged since, despite the rejection) or
-				// are gone names a pair the census cannot see, so it is STALE and
-				// listed for review.
-				if namesAPair(resolved[j], distinctKind(r.Op), ix) {
-					statuses[j] = statusCensus
-				} else {
-					whys[j] = "fewer than two of the records it names are live once resolved (target " + resolved[j].Target + "): merged onto one survivor, or deleted"
-				}
+				// Still in force while a reader can see its pair (unmetRejection);
+				// otherwise STALE and listed for review.
+				statuses[j], whys[j] = unmetRejection(resolved[j], distinctKind(r.Op), ix)
 			}
 		}
 		t.All = append(t.All, decisionOutcome{r, statuses[j], whys[j]})

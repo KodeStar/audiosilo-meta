@@ -85,9 +85,10 @@ jobs:
   # never reaches it. The test shards, metacheck, metafmt and the advisory base
   # read data/ and check out the whole tree.
   #
-  # Each gated step tees its output to a log that is uploaded when the job fails,
-  # and `check` prints those logs last (.github/scripts/check-verdict.sh says why:
-  # the sync bot reads the tail of the failed `check` log as its evidence).
+  # When a job fails, `check` fetches that job's log from the API, for the
+  # current run attempt only, and prints it last (.github/scripts/
+  # failed-job-logs.sh and check-verdict.sh say why: the sync bot reads the tail
+  # of the failed `check` log as its evidence). No job tees or uploads its own.
   build:
     runs-on: ubuntu-latest
     needs: changes
@@ -118,33 +119,22 @@ jobs:
       # Go steps only: a data-and-prose diff skips them (see the changes job).
       - name: Build and vet
         if: needs.changes.outputs.go == 'true'
-        run: |
-          set -o pipefail
-          { go build ./... && go vet ./...; } 2>&1 | tee "$RUNNER_TEMP/build.log"
-
-      # failure() || cancelled(): a job that hit its timeout is cancelled, and its
-      # log is the only evidence of where it hung.
-      - name: Keep the log for the verdict
-        if: failure() || cancelled()
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: check-log-build
-          path: ${{ runner.temp }}/build.log
-          retention-days: 3
-          if-no-files-found: ignore
+        run: go build ./... && go vet ./...
 
   # `go test -race ./...`, in three shards. .github/scripts/go-test-shard.sh
   # partitions `go list ./...` so every package runs in exactly one shard
   # (scripts/gotestshard_test.go pins that, and that this matrix names shards 1
   # to N and passes N as strategy.job-total), balanced on measured per-package
   # times. -race, as the documented gate
-  # is. Every real-data test skips under the detector (race_{on,off}_test.go in
-  # pkg/check, pkg/canonical, internal/importer and internal/repair) - the
+  # is. Every real-data test skips under the detector (a build-tagged race flag
+  # asked in pkg/check, pkg/canonical, internal/importer and internal/repair) - the
   # fixture suites cover the concurrent code and the real tree is data coverage,
   # validated by metacheck/metafmt below - so the suite stays inside a few
   # minutes. The real-data tests themselves run without -race in real-data.yml.
   # The checkout is the whole tree at depth 2: internal/recorddiff's
-  # TestAgainstTheRealCheckout reads HEAD~1..HEAD of data/ through git.
+  # TestAgainstTheRealCheckout reads HEAD~1..HEAD of data/ through git, under
+  # -race a bounded sample of it (raceMaxPaths), so its time no longer follows
+  # the size of the last merge.
   test:
     runs-on: ubuntu-latest
     needs: changes
@@ -164,7 +154,26 @@ jobs:
           persist-credentials: false
           fetch-depth: 2
 
+      # A RACE build cache beside setup-go's. setup-go keys its cache on the
+      # runner, the Go version and go.sum alone, so all seven Go jobs share ONE
+      # key, and the first to finish saves it - nearly always `build`, a minute
+      # in and without -race - after which every other job hits that key and
+      # saves nothing. -race compiles every package (the standard library
+      # included) a second time with instrumentation, so the shards restored a
+      # cache holding none of what they build and rebuilt it on every run. So
+      # setup-go's cache stays as it is (the module cache, ~/go/pkg/mod, comes
+      # from it) and the shards restore ~/.cache/go-build from a race key on top
+      # of it. ONE key for all three shards: the standard library and nearly
+      # every third-party package (69 of 78, modernc's SQLite among them) are
+      # common to all three, and the repo's own packages change too often to
+      # hit anyway. The key is setup-go's inputs - the resolved patch (its
+      # `go-version` output, so check-latest moving to a new patch starts cold)
+      # and go.sum - plus `race`. It is SAVED only on a push to main: a pull
+      # request's cache is scoped to refs/pull/<n>/merge and no run outside that
+      # pull request can read it, so saving there only spends the repository's
+      # cache quota.
       - name: Set up Go
+        id: go
         if: needs.changes.outputs.go == 'true'
         uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
@@ -174,31 +183,50 @@ jobs:
           go-version-file: .go-version
           check-latest: true
 
+      - name: Restore the race build cache
+        id: race-cache
+        if: needs.changes.outputs.go == 'true'
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ~/.cache/go-build
+          key: go-race-${{ runner.os }}-${{ runner.arch }}-go-${{ steps.go.outputs.go-version }}-${{ hashFiles('go.sum') }}
+          # A go.sum change keeps the compiled standard library and unchanged
+          # modules; a new Go patch is a different compiler and starts cold, so
+          # the version stays in the prefix.
+          restore-keys: go-race-${{ runner.os }}-${{ runner.arch }}-go-${{ steps.go.outputs.go-version }}-
+
       # The count is the matrix's own size, so the list above is its one source.
+      # The shard's selection is in the log too: a `go list` or partition failure
+      # is as much this shard's evidence as a failing test.
       - name: Test (shard ${{ matrix.shard }} of ${{ strategy.job-total }})
         if: needs.changes.outputs.go == 'true'
         env:
           SHARD: ${{ matrix.shard }}
           SHARDS: ${{ strategy.job-total }}
-        # The shard's selection is in the log too: a `go list` or partition
-        # failure is as much this shard's evidence as a failing test. The file is
-        # named per shard because `check` merges every log into one directory.
+        # The default shell is `bash -e` WITHOUT pipefail, so a failing `go list`
+        # would hand the partition an empty listing and be masked by it.
+        # -count=1: the restored race cache is a GOCACHE, and a GOCACHE holds TEST
+        # RESULTS as well as builds. go test keys a result on the test binary, the
+        # env it read and the files it opened itself - not on what a subprocess
+        # read - so an unchanged package would print `(cached)` from whichever
+        # run saved the cache, and internal/recorddiff's TestAgainstTheRealCheckout
+        # (which reads HEAD~1..HEAD through git) would stop testing the commit in
+        # front of it. The cache is for compiling; every test runs.
         run: |
           set -o pipefail
-          {
-            go list ./... | bash .github/scripts/go-test-shard.sh "$SHARD" "$SHARDS" > "$RUNNER_TEMP/packages.txt" &&
-              echo "shard $SHARD of $SHARDS: $(wc -l < "$RUNNER_TEMP/packages.txt") packages" &&
-              xargs go test -race < "$RUNNER_TEMP/packages.txt"
-          } 2>&1 | tee "$RUNNER_TEMP/test-$SHARD.log"
+          go list ./... | bash .github/scripts/go-test-shard.sh "$SHARD" "$SHARDS" > "$RUNNER_TEMP/packages.txt"
+          echo "shard $SHARD of $SHARDS: $(wc -l < "$RUNNER_TEMP/packages.txt") packages"
+          xargs go test -race -count=1 < "$RUNNER_TEMP/packages.txt"
 
-      - name: Keep the log for the verdict
-        if: failure() || cancelled()
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+      # On main only (see the restore above), after a green shard, and only
+      # when the key was not already there: a key is never overwritten, and the
+      # shards race to save one, so the first wins and the others warn.
+      - name: Save the race build cache
+        if: github.event_name == 'push' && needs.changes.outputs.go == 'true' && steps.race-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
-          name: check-log-test-${{ matrix.shard }}
-          path: ${{ runner.temp }}/test-${{ matrix.shard }}.log
-          retention-days: 3
-          if-no-files-found: ignore
+          path: ~/.cache/go-build
+          key: ${{ steps.race-cache.outputs.cache-primary-key }}
 
   # --profile core is what this repository's data root now IS: works, people,
   # series and redirects.json, with the CC BY-SA layer living in
@@ -234,9 +262,8 @@ jobs:
 
       - name: Validate data (metacheck)
         run: |
-          set -o pipefail
           mkdir -p "$RUNNER_TEMP/advisories"
-          go run ./cmd/metacheck --profile core --advisory-keys "$RUNNER_TEMP/advisories/head.txt" 2>&1 | tee "$RUNNER_TEMP/metacheck.log"
+          go run ./cmd/metacheck --profile core --advisory-keys "$RUNNER_TEMP/advisories/head.txt"
 
       # The head half of the advisory delta, for `check`. Written whatever the
       # tree's problems (metacheck's contract), and never a failure.
@@ -247,15 +274,6 @@ jobs:
         with:
           name: advisories-head
           path: ${{ runner.temp }}/advisories/head.txt
-          retention-days: 3
-          if-no-files-found: ignore
-
-      - name: Keep the log for the verdict
-        if: failure() || cancelled()
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: check-log-metacheck
-          path: ${{ runner.temp }}/metacheck.log
           retention-days: 3
           if-no-files-found: ignore
 
@@ -282,18 +300,7 @@ jobs:
           check-latest: true
 
       - name: Check canonical formatting (metafmt)
-        run: |
-          set -o pipefail
-          go run ./cmd/metafmt --check --profile core 2>&1 | tee "$RUNNER_TEMP/metafmt.log"
-
-      - name: Keep the log for the verdict
-        if: failure() || cancelled()
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: check-log-metafmt
-          path: ${{ runner.temp }}/metafmt.log
-          retention-days: 3
-          if-no-files-found: ignore
+        run: go run ./cmd/metafmt --check --profile core
 
   # THE ADVISORIES THIS PULL REQUEST INTRODUCES, the base half: the same
   # metacheck over the BASE (the merge commit's first parent), whose keys `check`
@@ -391,7 +398,14 @@ jobs:
     runs-on: ubuntu-latest
     needs: [changes, build, test, metacheck, metafmt, advisories]
     if: ${{ always() }}
-    # Two downloads and a comparison; observed well under a minute.
+    # `actions: read` is the failing jobs' logs (below); job-level permissions
+    # replace the workflow's, so `contents: read` is restated for the checkout.
+    # A fork's pull request gets both read-only, as it gets everything.
+    permissions:
+      contents: read
+      actions: read
+    # An artifact download, a comparison and, on a failure, one job listing plus
+    # one log per failing job; observed well under a minute.
     timeout-minutes: 10
     steps:
       # The checkout and the verdict carry `always()` as well, so no reading of
@@ -411,8 +425,7 @@ jobs:
       # own <name>/ directory ONLY when more than one matches, and a lone match
       # is extracted flat - so the layout would depend on how many jobs had
       # uploaded. The file names are unique across the artifacts (head.txt,
-      # base.txt, no-data-change; <job>.log, test-<shard>.log), so none
-      # overwrites another.
+      # base.txt, no-data-change), so none overwrites another.
       - name: Fetch the advisory keys
         if: github.event_name == 'pull_request'
         continue-on-error: true
@@ -439,13 +452,34 @@ jobs:
           bash .github/scripts/advisory-delta.sh summary "$RUNNER_TEMP/advisories-new.txt" >> "$GITHUB_STEP_SUMMARY"
           cat "$RUNNER_TEMP/advisories-new.txt"
 
+      # The output of every job this verdict waits on that did not pass, from
+      # the API and for THIS run attempt only (.github/scripts/
+      # failed-job-logs.sh says why: artifacts outlive their attempt, so a
+      # re-run's download printed a shard's stale failure beside the one failing
+      # now). Asked only when a job did not pass, and never the verdict itself:
+      # a log that cannot be fetched is a missing paragraph, not a pass.
       - name: Fetch the failed jobs' logs
+        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
         continue-on-error: true
-        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
-        with:
-          pattern: check-log-*
-          merge-multiple: true
-          path: ${{ runner.temp }}/logs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          NEEDS: ${{ toJSON(needs) }}
+        run: |
+          set -euo pipefail
+          # The verdict's own failing set: every need but the advisory one
+          # whose result is not success (the Verdict step names the same job).
+          mapfile -t jobs < <(jq -r 'to_entries[] | select(.key != "advisories" and .value.result != "success") | .key' <<<"$NEEDS")
+          # Only `advisories` did not pass (a job-level timeout): the verdict
+          # passes, so there is nothing to fetch, and the script would refuse
+          # an empty job list as a usage error.
+          if [ "${#jobs[@]}" -eq 0 ]; then
+            echo "every job the verdict counts passed; no log to fetch"
+            exit 0
+          fi
+          bash .github/scripts/failed-job-logs.sh "$RUNNER_TEMP/logs" "${jobs[@]}"
 
       - name: Verdict
         if: always()
