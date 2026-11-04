@@ -10272,6 +10272,7 @@
         "psychology",
         "romance",
         "self-help",
+        "thriller-suspense",
         "young-adult"
       ],
       "id": "vengeance",
@@ -10325,6 +10326,18 @@
             {
               "asin": "B0H1HPKVR2",
               "region": "jp"
+            },
+            {
+              "asin": "B0H1H6VTXK",
+              "region": "us"
+            },
+            {
+              "asin": "B0H1GZ9R6C",
+              "region": "uk"
+            },
+            {
+              "asin": "B0H1HPMTY2",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -10519,6 +10532,21 @@
               "imported_at": "2026-10-27",
               "ref": "B0H1HPKVR2",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0H1H6VTXK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0H1GZ9R6C",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0H1HPMTY2",
+              "type": "libex-import"
             }
           ],
           "work": "vengeance"
@@ -10682,6 +10710,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B00I0EO770",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0H1H6VTXK",
           "type": "libex-import"
         }
       ],
@@ -15691,204 +15724,6 @@
         }
       ],
       "title": "Vengeance: Empire XII"
-    },
-    "vengeance-fracture-book-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "megan-miranda"
-      ],
-      "genres": [
-        "psychology",
-        "self-help",
-        "thriller-suspense",
-        "young-adult"
-      ],
-      "id": "vengeance-fracture-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "hunter-johns-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0H1H6VTXK",
-              "region": "us"
-            },
-            {
-              "asin": "B0H1GZ9R6C",
-              "region": "uk"
-            },
-            {
-              "asin": "B0H1HPMTY2",
-              "region": "de"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 10843,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 76672,
-              "start_ms": 10843,
-              "title": "Prologue"
-            },
-            {
-              "length_ms": 1520326,
-              "start_ms": 87515,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1958324,
-              "start_ms": 1607841,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3023284,
-              "start_ms": 3566165,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1887968,
-              "start_ms": 6589449,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1495086,
-              "start_ms": 8477417,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 2113712,
-              "start_ms": 9972503,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 2666695,
-              "start_ms": 12086215,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1338746,
-              "start_ms": 14752910,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1923587,
-              "start_ms": 16091656,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1785939,
-              "start_ms": 18015243,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1964454,
-              "start_ms": 19801182,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1742820,
-              "start_ms": 21765636,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1726612,
-              "start_ms": 23508456,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1810204,
-              "start_ms": 25235068,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1519304,
-              "start_ms": 27045272,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1503933,
-              "start_ms": 28564576,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1860638,
-              "start_ms": 30068509,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1786589,
-              "start_ms": 31929147,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1291911,
-              "start_ms": 33715736,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1491696,
-              "start_ms": 35007647,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1507996,
-              "start_ms": 36499343,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 677906,
-              "start_ms": 38007339,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 58119,
-              "start_ms": 38685245,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81CySi-W-6L.jpg",
-          "id": "hunter-johns-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "hunter-johns"
-          ],
-          "publisher": "Bloomsbury Children's Books",
-          "release_date": "2026-05-28",
-          "runtime_min": 645,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0H1H6VTXK",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0H1GZ9R6C",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-27",
-              "ref": "B0H1HPMTY2",
-              "type": "libex-import"
-            }
-          ],
-          "work": "vengeance-fracture-book-2"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0H1H6VTXK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Vengeance: Fracture, Book 2"
     },
     "vengeance-gail-z-martin": {
       "added_at": "2026-08-02",

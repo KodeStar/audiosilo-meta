@@ -698,7 +698,10 @@
       "genres": [
         "action-adventure",
         "childrens",
-        "fantasy"
+        "fairy-tales-folklore",
+        "fantasy",
+        "mystery",
+        "young-adult"
       ],
       "id": "the-silver-mask",
       "language": "en",
@@ -714,6 +717,18 @@
             },
             {
               "asin": "B079FKDX5H",
+              "region": "uk"
+            },
+            {
+              "asin": "B075LYRK7N",
+              "region": "us"
+            },
+            {
+              "asin": "B075LXMCSB",
+              "region": "de"
+            },
+            {
+              "asin": "B075LWPRCG",
               "region": "uk"
             }
           ],
@@ -814,6 +829,21 @@
               "imported_at": "2026-10-09",
               "ref": "B079FKDX5H",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B075LYRK7N",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B075LXMCSB",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B075LWPRCG",
+              "type": "libex-import"
             }
           ],
           "work": "the-silver-mask"
@@ -823,6 +853,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0742H2TGL",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B075LYRK7N",
           "type": "libex-import"
         }
       ],

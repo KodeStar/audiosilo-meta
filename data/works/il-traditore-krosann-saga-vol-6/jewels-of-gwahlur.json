@@ -8,6 +8,7 @@
       "genres": [
         "epic-fantasy",
         "fantasy",
+        "science-fiction",
         "short-stories",
         "sword-sorcery"
       ],
@@ -267,6 +268,65 @@
           ],
           "work": "jewels-of-gwahlur"
         },
+        "phil-chenevert-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00LBDDBXI",
+              "region": "us"
+            },
+            {
+              "asin": "B079NNRH6H",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2032489,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1433832,
+              "start_ms": 2032489,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1536836,
+              "start_ms": 3466321,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2533204,
+              "start_ms": 5003157,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91+Kp1M41YL.jpg",
+          "id": "phil-chenevert-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "phil-chenevert"
+          ],
+          "publisher": "Spoken Realms",
+          "release_date": "2014-06-30",
+          "runtime_min": 125,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00LBDDBXI",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B079NNRH6H",
+              "type": "libex-import"
+            }
+          ],
+          "work": "jewels-of-gwahlur"
+        },
         "saethon-williams-2025": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -341,6 +401,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0DF9JX2P9",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00LBDDBXI",
           "type": "libex-import"
         }
       ],

@@ -8109,6 +8109,7 @@
         "brandon-varnell"
       ],
       "genres": [
+        "action-adventure",
         "romance",
         "science-fiction"
       ],
@@ -8213,30 +8214,7 @@
             }
           ],
           "work": "a-most-unlikely-hero-vol-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B07WD5XHKR",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Most Unlikely Hero, Vol. 1"
-    },
-    "a-most-unlikely-hero-vol-1-a-sci-fi-light-novel": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "brandon-varnell"
-      ],
-      "genres": [
-        "action-adventure",
-        "science-fiction"
-      ],
-      "id": "a-most-unlikely-hero-vol-1-a-sci-fi-light-novel",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "amber-lee-connors-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8333,17 +8311,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "a-most-unlikely-hero-vol-1-a-sci-fi-light-novel"
+          "work": "a-most-unlikely-hero-vol-1"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B07WD5XHKR",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DQVP9F7S",
           "type": "libex-import"
         }
       ],
-      "title": "A Most Unlikely Hero, Vol. 1: A Sci-Fi Light Novel"
+      "title": "A Most Unlikely Hero, Vol. 1"
     },
     "a-most-unlikely-hero-vol-2-a-sci-fi-light-novel": {
       "added_at": "2026-08-02",

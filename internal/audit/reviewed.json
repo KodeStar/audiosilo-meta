@@ -4819,6 +4819,15 @@
     "target": "a-death-valley-christmas"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "a-desolation-called-peace-a-texicalaan-novel-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; a-desolation-called-peace-a-texicalaan-novel-2 spells its title with the series position the plain work holds (\"a texicalaan novel 2\") and is read by amy-landon at 1052 minutes against 1052",
+    "target": "a-desolation-called-peace"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -4889,6 +4898,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "a-high-sierra-christmas"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "a-house-of-fangs-deceit"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; a-house-of-fangs-deceit spells its title with an ampersand for \"and\" and is read by eva-caine, zane-daniels at 665 minutes against 665",
+    "target": "a-house-of-fangs-and-deceit"
   },
   {
     "decision": "assert",
@@ -4972,6 +4990,15 @@
     "target": "a-man-called-trent"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "a-memory-called-empire-a-texicalaan-novel-1"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; a-memory-called-empire-a-texicalaan-novel-1 spells its title with the series position the plain work holds (\"a texicalaan novel 1\") and is read by amy-landon at 937 minutes against 942",
+    "target": "a-memory-called-empire"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -5020,6 +5047,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "a-most-unlikely-hero-vol-1-a-sci-fi-light-novel"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; a-most-unlikely-hero-vol-1-a-sci-fi-light-novel spells its title with a retailer genre tag (\"a sci fi light novel\") and is read by amber-lee-connors at 349 minutes against 349",
+    "target": "a-most-unlikely-hero-vol-1"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "a-most-unlikely-hero-vol-3"
     ],
     "reason": "the same volume 3 read by the same narrator at nearly the same length (377 vs 386 minutes); the Royal Guard record is a 2025 reissue of the 2020 Kitsune release",
@@ -5042,6 +5078,15 @@
     ],
     "reason": "the same novel; AmazonClassics Edition names the production, which is a property of the recording, not of the work",
     "target": "a-passage-to-india"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "a-princess-of-mars-edgar-rice-burroughs-authorized-library-barsoom-saga-volume-1"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; a-princess-of-mars-edgar-rice-burroughs-authorized-library-barsoom-saga-volume-1 spells its title with the series position the plain work holds (\"edgar rice burroughs authorized library barsoom saga volume 1\") and is read by john-mclain at 632 minutes against 632",
+    "target": "a-princess-of-mars"
   },
   {
     "decision": "assert",
@@ -5564,6 +5609,15 @@
     "target": "all-the-skills-2-a-deck-building-litrpg"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "allies-assassins"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; allies-assassins spells its title with an ampersand for \"and\" and is read by jack-hawkins at 619 minutes against 617",
+    "target": "allies-and-assassins"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -5600,6 +5654,24 @@
     ],
     "reason": "different volumes: positions 1, 2 and 3 of alone-once-more, and the titles state Book 2 and Book 3",
     "target": "alone-once-more"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "alphas-prize-a-werewolf-romance"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; alphas-prize-a-werewolf-romance spells its title with a retailer genre tag (\"a werewolf romance\") and is read by benjamin-sands at 411 minutes against 411",
+    "target": "alphas-prize"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "alphas-temptation-a-billionaire-werewolf-romance"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; alphas-temptation-a-billionaire-werewolf-romance spells its title with a retailer genre tag (\"a billionaire werewolf romance\") and is read by benjamin-sands at 364 minutes against 364",
+    "target": "alphas-temptation"
   },
   {
     "decision": "reject",
@@ -5831,6 +5903,24 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "antimatter-blues-a-mickey7-novel"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; antimatter-blues-a-mickey7-novel spells its title with a retailer genre tag (\"a mickey7 novel\") and is read by john-pirhalla, katharine-chin at 566 minutes against 584",
+    "target": "antimatter-blues"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "any-way-the-wind-blows-a-simon-snow-novel-3"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; any-way-the-wind-blows-a-simon-snow-novel-3 spells its title with the series position the plain work holds (\"a simon snow novel 3\") and is read by euan-morton at 903 minutes against 903",
+    "target": "any-way-the-wind-blows"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "apocalypse-cultivator-book-1"
     ],
     "reason": "the same book 1 read by the same narrators at an identical 401 minutes; the Book 1 record is the 2025 reissue alongside the later volumes",
@@ -6008,6 +6098,15 @@
     "target": "arena"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "aries-red-sky-a-vergassy-universe-novel"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; aries-red-sky-a-vergassy-universe-novel spells its title with a retailer genre tag (\"a vergassy universe novel\") and is read by jennifer-jill-araya at 983 minutes against 951",
+    "target": "aries-red-sky"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -6080,6 +6179,15 @@
     ],
     "reason": "the same book by James Allen at the usual runtime (51 min); Charles Conrad is the narrator of that recording, not a co-author",
     "target": "as-a-man-thinketh"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "agatha-raisin-as-the-pig-turns"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; agatha-raisin-as-the-pig-turns spells its title with the name of the series the book is listed in (\"agatha raisin\") and is read by penelope-keith at 392 minutes against 392",
+    "target": "as-the-pig-turns"
   },
   {
     "decision": "assert",
@@ -6161,6 +6269,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "assault-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "astral-messiah-mission-6"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; astral-messiah-mission-6 spells its title with the series position the plain work holds (\"mission 6\") and is read by mikael-naramore at 296 minutes against 296",
+    "target": "astral-messiah"
   },
   {
     "decision": "assert",
@@ -6288,6 +6405,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "back-in-society-a-regency-romance"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; back-in-society-a-regency-romance spells its title with a retailer genre tag (\"a regency romance\") and is read by davina-porter at 290 minutes against 290",
+    "target": "back-in-society"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "backfire-an-fbi-thriller-book-16"
     ],
     "reason": "the same book by the same author: \"Backfire: An FBI Thriller, Book 16\" only adds a retailer series decoration to \"Backfire\", and both sit at the same position of two spellings of one series",
@@ -6301,6 +6427,15 @@
     ],
     "reason": "the same book by the same author: \"Bad Blood: a Virgil Flowers novel\" only adds a retailer series decoration to \"Bad Blood\", and both sit at the same position of two spellings of one series",
     "target": "bad-blood-john-sandford"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "katie-kazoo-switcheroo-16-bad-rap"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; katie-kazoo-switcheroo-16-bad-rap spells its title with the series position the plain work holds (\"katie kazoo switcheroo 16\") and is read by anne-bobby at 62 minutes against 62",
+    "target": "bad-rap"
   },
   {
     "decision": "assert",
@@ -6397,6 +6532,15 @@
     "target": "beast-shifter-the-primal-talisman"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "agatha-raisin-beating-about-the-bush"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; agatha-raisin-beating-about-the-bush spells its title with the name of the series the book is listed in (\"agatha raisin\") and is read by penelope-keith at 397 minutes against 398",
+    "target": "beating-about-the-bush"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -6460,6 +6604,15 @@
     ],
     "reason": "different omnibuses: books 1-3 of Behind Blue Eyes and levels 1-3 of Cyber Squad, two separate series",
     "target": "behind-blue-eyes-1-3-drei-bucher-in-einem-german-edition"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "bella-poldark-a-poldark-novel-12"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; bella-poldark-a-poldark-novel-12 spells its title with the series position the plain work holds (\"a poldark novel 12\") and is read by oliver-j-hembrough at 1218 minutes against 1218",
+    "target": "bella-poldark"
   },
   {
     "decision": "assert",
@@ -6744,6 +6897,15 @@
     "target": "blind-mans-bluff"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "ruby-redfort-blink-and-you-die"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; ruby-redfort-blink-and-you-die spells its title with the name of the series the book is listed in (\"ruby redfort\") and is read by rachael-stirling at 599 minutes against 599",
+    "target": "blink-and-you-die"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -6782,6 +6944,15 @@
     ],
     "reason": "the same book: the title only adds a retailer series decoration, and both hold the same narrator at the same runtime (135 min) released two days apart through two distributors",
     "target": "blood-of-the-hunters"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "blood-of-the-mantis-shadows-of-the-apt-3"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; blood-of-the-mantis-shadows-of-the-apt-3 spells its title with the series and volume the plain work is listed at (\"shadows of the apt 3\") and is read by ben-allen at 962 minutes against 962",
+    "target": "blood-of-the-mantis"
   },
   {
     "decision": "assert",
@@ -6842,6 +7013,24 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "blowback-enzo-macleod-book-5"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; blowback-enzo-macleod-book-5 spells its title with the series position the plain work holds (\"enzo macleod book 5\") and is read by peter-forbes at 553 minutes against 552",
+    "target": "blowback-peter-may"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "blue-lightning-the-shetland-series-4"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; blue-lightning-the-shetland-series-4 spells its title with the series and volume the plain work is listed at (\"the shetland series 4\") and is read by kenny-blyth at 620 minutes against 621",
+    "target": "blue-lightning"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "blutmale-tess-gerritsen"
     ],
     "reason": "the same book: \"Blutmale\" and \"Blutmale\" differ only by retailer decoration; both sit at 6 of maura-isles-jane-rizzoli-gekurzt and its canonical series, by the same author",
@@ -6891,6 +7080,15 @@
     ],
     "reason": "the same book, merged the other way: the-book-of-the-damned keeps its full title and three recordings (asserted)",
     "target": "book-of-the-damned"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "arcadia-falls-books-and-bewitchment"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; arcadia-falls-books-and-bewitchment spells its title with the name of the series the book is listed in (\"arcadia falls\") and is read by therese-plummer at 628 minutes against 628",
+    "target": "books-bewitchment"
   },
   {
     "decision": "reject",
@@ -7071,6 +7269,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "brothersong-green-creek-book-4"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; brothersong-green-creek-book-4 spells its title with the series and volume the plain work is listed at (\"green creek book 4\") and is read by kirt-graves at 1172 minutes against 1173",
+    "target": "brothersong"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "bruderschaft-des-satans-john-sinclair-tonstudio-braun-klassiker-73"
     ],
     "reason": "the same Jason Dark novel (Gespenster-Krimi 98): both Hoerspiel productions credit only the author, so the Classics 21 and the Tonstudio Braun Klassiker 73 releases are recordings of one work",
@@ -7147,6 +7354,24 @@
     ],
     "reason": "the same book by the same author: \"Bullets Don't Argue [Dramatized Adaptation]\" only adds an edition, production or narrator note to \"Bullets Don’t Argue\", which is a property of the recording",
     "target": "bullets-dont-argue"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "bully-fall-away-book-1"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; bully-fall-away-book-1 spells its title with the series and volume the plain work is listed at (\"fall away book 1\") and is read by abby-craden at 570 minutes against 570",
+    "target": "bully"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "agatha-raisin-and-the-busy-body"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; agatha-raisin-and-the-busy-body spells its title with the name of the series the book is listed in (\"agatha raisin and\") and is read by penelope-keith at 375 minutes against 375",
+    "target": "busy-body"
   },
   {
     "decision": "assert",
@@ -7294,6 +7519,33 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "casual-farming-2-a-slow-living-litrpg"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; casual-farming-2-a-slow-living-litrpg spells its title with a retailer genre tag (\"a slow living litrpg\") and is read by ashlinn-romagnoli at 637 minutes against 638",
+    "target": "casual-farming-2"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "cat-mouse"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; cat-mouse spells its title with an ampersand for \"and\" and is read by jeff-harding, raj-ghatak at 637 minutes against 637",
+    "target": "cat-and-mouse-james-patterson"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "ruby-redfort-catch-your-death"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; ruby-redfort-catch-your-death spells its title with the name of the series the book is listed in (\"ruby redfort\") and is read by rachael-stirling at 522 minutes against 521",
+    "target": "catch-your-death"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "cathedral-of-the-sky-pact-arcanum"
     ],
     "reason": "the same book: Cathedral of the Sky, the fifth Pact Arcanum novel, recorded twice by different narrators; the title only adds the series name",
@@ -7311,6 +7563,15 @@
     ],
     "reason": "different books: Publisher's Pack bundles of six different series by two authors, different narrators and runtimes; only the generic suffix matches",
     "target": "centauri-bliss-publishers-pack"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "chain-of-command-corps-justice-series-book-9"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; chain-of-command-corps-justice-series-book-9 spells its title with the series and volume the plain work is listed at (\"corps justice series book 9\") and is read by david-colacci at 401 minutes against 401",
+    "target": "chain-of-command"
   },
   {
     "decision": "reject",
@@ -7410,6 +7671,33 @@
     ],
     "reason": "the same book at the same runtime (639 vs 633 min); Amy Newmark is the compiler credited on the full record and Deborah Norville wrote the foreword, neither changes the work",
     "target": "chicken-soup-for-the-soul-think-positive"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "children-of-anguish-and-anarchy-legacy-of-orisha-book-3"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; children-of-anguish-and-anarchy-legacy-of-orisha-book-3 spells its title with the series and volume the plain work is listed at (\"legacy of orisha book 3\") and is read by cynthia-erivo at 601 minutes against 602",
+    "target": "children-of-anguish-and-anarchy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "children-of-blood-and-bone-legacy-of-orisha-book-1"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; children-of-blood-and-bone-legacy-of-orisha-book-1 spells its title with the series and volume the plain work is listed at (\"legacy of orisha book 1\") and is read by bahni-turpin at 1064 minutes against 1076",
+    "target": "children-of-blood-and-bone"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "children-of-virtue-and-vengeance-legacy-of-orisha-book-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; children-of-virtue-and-vengeance-legacy-of-orisha-book-2 spells its title with the series and volume the plain work is listed at (\"legacy of orisha book 2\") and is read by bahni-turpin at 807 minutes against 807",
+    "target": "children-of-virtue-and-vengeance"
   },
   {
     "decision": "assert",
@@ -7527,6 +7815,33 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "code-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "cold-blood-dirty-blood-book-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; cold-blood-dirty-blood-book-2 spells its title with the series and volume the plain work is listed at (\"dirty blood book 2\") and is read by kelly-pruner at 935 minutes against 935",
+    "target": "cold-blood"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "cold-earth-the-shetland-series-7"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; cold-earth-the-shetland-series-7 spells its title with the series and volume the plain work is listed at (\"the shetland series 7\") and is read by kenny-blyth at 611 minutes against 612",
+    "target": "cold-earth"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "cold-iron-masters-and-mages-book-one"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; cold-iron-masters-and-mages-book-one spells its title with the series and volume the plain work is listed at (\"masters and mages book one\") and is read by mark-meadows at 1169 minutes against 1169",
+    "target": "cold-iron"
   },
   {
     "decision": "assert",
@@ -7664,6 +7979,15 @@
     "target": "corpies"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "corrupted-tides-a-dark-oceanpunk-fantasy"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; corrupted-tides-a-dark-oceanpunk-fantasy spells its title with a retailer genre tag (\"a dark oceanpunk fantasy\") and is read by hel at 559 minutes against 558",
+    "target": "corrupted-tides"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -7744,6 +8068,15 @@
     ],
     "reason": "the same novel (Michael Bennett 16): same narrators, runtimes within 1%, US and UK publisher releases",
     "target": "crosshairs"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "crown-of-war-and-shadow-kingdoms-of-the-compass"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; crown-of-war-and-shadow-kingdoms-of-the-compass spells its title with the name of the series the book is listed in (\"kingdoms of the compass\") and is read by stina-nielsen at 1185 minutes against 1185",
+    "target": "crown-of-war-shadow"
   },
   {
     "decision": "assert",
@@ -7895,6 +8228,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "curtsies-conspiracies"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; curtsies-conspiracies spells its title with an ampersand for \"and\" and is read by moira-quirk at 571 minutes against 571",
+    "target": "curtsies-and-conspiracies"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "cutthroats-dramatized-adaptation"
     ],
     "reason": "the same novel; [Dramatized Adaptation] names the full-cast production, a property of the recording",
@@ -7956,6 +8298,33 @@
     "target": "damona-dienerin-des-satans"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "damsels-of-jormia-2-a-light-novel"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; damsels-of-jormia-2-a-light-novel spells its title with a retailer genre tag (\"a light novel\") and is read by erin-bateman, robert-west at 443 minutes against 443",
+    "target": "damsels-of-jormia-2"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "damsels-of-jormia-3-the-final-a-light-novel"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; damsels-of-jormia-3-the-final-a-light-novel spells its title with a retailer genre tag (\"a light novel\") and is read by christian-j-gilliland, erin-bateman at 361 minutes against 361",
+    "target": "damsels-of-jormia-3-the-final"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "damsels-of-jormia-omnibus-books-1-3-an-isekai-adventure"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; damsels-of-jormia-omnibus-books-1-3-an-isekai-adventure spells its title with a retailer genre tag (\"an isekai adventure\") and is read by christian-j-gilliland, erin-bateman at 1251 minutes against 1251",
+    "target": "damsels-of-jormia-omnibus-books-1-3"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -7983,6 +8352,24 @@
     "target": "dark-days-of-the-after"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dark-horse-a-demons-guide-to-the-afterlife-book-1"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; dark-horse-a-demons-guide-to-the-afterlife-book-1 spells its title with the series and volume the plain work is listed at (\"a demons guide to the afterlife book 1\") and is read by adam-gold, savannah-gilmore at 525 minutes against 525",
+    "target": "dark-horse-kel-carpenter"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dark-intelligence-transformation-book-1"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; dark-intelligence-transformation-book-1 spells its title with the series and volume the plain work is listed at (\"transformation book 1\") and is read by peter-noble at 944 minutes against 944",
+    "target": "dark-intelligence"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -7992,6 +8379,24 @@
     ],
     "reason": "different volumes: positions 1-4 of dark-lord-of-the-farmstead, the titles state Part 2, 3 and 4",
     "target": "dark-lord-of-the-farmstead"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dark-obsession-a-vampire-romance"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; dark-obsession-a-vampire-romance spells its title with a retailer genre tag (\"a vampire romance\") and is read by mackenzie-cartwright, shane-east at 543 minutes against 543",
+    "target": "dark-obsession"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dark-seduction-a-vampire-romance"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; dark-seduction-a-vampire-romance spells its title with a retailer genre tag (\"a vampire romance\") and is read by mackenzie-cartwright, shane-east at 556 minutes against 556",
+    "target": "dark-seduction"
   },
   {
     "decision": "reject",
@@ -8010,6 +8415,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "dark-war"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "darkest-before-dawn-a-muse-urban-fantasy-the-veil-series-book-3"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; darkest-before-dawn-a-muse-urban-fantasy-the-veil-series-book-3 spells its title with the series and volume the plain work is listed at (\"a muse urban fantasy / the veil series book 3\") and is read by hollie-jackson at 577 minutes against 577",
+    "target": "darkest-before-dawn"
   },
   {
     "decision": "assert",
@@ -8232,6 +8646,24 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "dead-inside-a-space-team-universe-novel"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; dead-inside-a-space-team-universe-novel spells its title with a retailer genre tag (\"a space team universe novel\") and is read by phil-thron at 502 minutes against 502",
+    "target": "dead-inside"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "agatha-raisin-dead-on-target"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; agatha-raisin-dead-on-target spells its title with the name of the series the book is listed in (\"agatha raisin\") and is read by penelope-keith at 424 minutes against 423",
+    "target": "dead-on-target"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "dead-shot-dramatized-adaptation"
     ],
     "reason": "the same Johnstone novel: the decorated title names the GraphicAudio dramatized full-cast production, which is a property of the recording, not of the work",
@@ -8254,6 +8686,24 @@
     ],
     "reason": "the same Blackmoore novel: the decorated title names the GraphicAudio dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "dead-things-stephen-blackmoore"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dead-water-the-shetland-series-5"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; dead-water-the-shetland-series-5 spells its title with the series and volume the plain work is listed at (\"the shetland series 5\") and is read by kenny-blyth at 605 minutes against 605",
+    "target": "dead-water"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dead-waters-a-post-apocalyptic-plague-thriller-afterworld-apocalypse-book-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; dead-waters-a-post-apocalyptic-plague-thriller-afterworld-apocalypse-book-2 spells its title with the series and volume the plain work is listed at (\"a post apocalyptic plague thriller / afterworld apocalypse book 2\") and is read by molly-secours at 347 minutes against 347",
+    "target": "dead-waters"
   },
   {
     "decision": "assert",
@@ -8335,6 +8785,15 @@
     ],
     "reason": "different volumes: positions 1 and 10 of defiance-of-the-fall",
     "target": "defiance-of-the-fall"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "demelza-a-poldark-novel-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; demelza-a-poldark-novel-2 spells its title with the series position the plain work holds (\"a poldark novel 2\") and is read by clare-corbett at 868 minutes against 867",
+    "target": "demelza"
   },
   {
     "decision": "reject",
@@ -8434,6 +8893,15 @@
     "target": "demonic-devourer"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "vampirates-demons-of-the-ocean"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; vampirates-demons-of-the-ocean spells its title with the name of the series the book is listed in (\"vampirates\") and is read by daniel-philpott at 424 minutes against 425",
+    "target": "demons-of-the-ocean"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -8530,6 +8998,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "die-schule-der-magischen-tiere-ermittelt-neuausgabe-4-der-flotenschreck"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; die-schule-der-magischen-tiere-ermittelt-neuausgabe-4-der-flotenschreck spells its title with the series and volume the plain work is listed at (\"die schule der magischen tiere ermittelt neuausgabe 4\") and is read by laura-maire at 35 minutes against 35",
+    "target": "der-flotenschreck"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "der-gentleman-mit-der-feuerhand-derek-landy"
     ],
     "reason": "the same German translation of Skulduggery Pleasant 1, read by Rainer Strecker unabridged and abridged; Ulla Hofker is the translator, not a co-author",
@@ -8561,6 +9038,15 @@
     ],
     "reason": "an adaptation vs the book: the Karussell radio play is Jurgen Nola's dramatization, while the other is Andreas Steinhofel's reading",
     "target": "der-kleine-wassermann"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "die-schule-der-magischen-tiere-ermittelt-neuausgabe-3-der-kokosnuss-klau"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; die-schule-der-magischen-tiere-ermittelt-neuausgabe-3-der-kokosnuss-klau spells its title with the series and volume the plain work is listed at (\"die schule der magischen tiere ermittelt neuausgabe 3\") and is read by daniel-welbat, josephine-martz, katja-brugger, laura-maire, stefan-bronneke, tim-kreuer, verena-herkewitz at 32 minutes against 32",
+    "target": "der-kokosnuss-klau"
   },
   {
     "decision": "reject",
@@ -8746,6 +9232,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "devil-may-care-a-muse-urban-fantasy-the-veil-series-book-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; devil-may-care-a-muse-urban-fantasy-the-veil-series-book-2 spells its title with the series and volume the plain work is listed at (\"a muse urban fantasy / the veil series book 2\") and is read by hollie-jackson at 640 minutes against 640",
+    "target": "devil-may-care-pippa-dacosta"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "devils-and-details-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -8755,10 +9250,28 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "agatha-raisin-devils-delight"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; agatha-raisin-devils-delight spells its title with the name of the series the book is listed in (\"agatha raisin\") and is read by penelope-keith at 436 minutes against 436",
+    "target": "devils-delight"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-devils-legion-dramatized-adaptation"
     ],
     "reason": "one book: libex's Last Gunfighter listing (https://libexdb.com/series/B009UYOW6A/books) holds The Devil's Legion at 14 as George Guidall's unabridged reading (B002V5CVEU, 466 min) and the GraphicAudio dramatization (1648794866, 287 min), a recording of the same novel",
     "target": "devils-legion"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dial-d-for-deadman-a-space-team-universe-novel"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; dial-d-for-deadman-a-space-team-universe-novel spells its title with a retailer genre tag (\"a space team universe novel\") and is read by phil-thron at 488 minutes against 488",
+    "target": "dial-d-for-deadman"
   },
   {
     "decision": "assert",
@@ -9177,6 +9690,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "dirty-wolf-a-curvy-girl-and-wolf-shifter-romance"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; dirty-wolf-a-curvy-girl-and-wolf-shifter-romance spells its title with a retailer genre tag (\"a curvy girl and wolf shifter romance\") and is read by curt-bonnem, stephanie-rose at 385 minutes against 385",
+    "target": "dirty-wolf"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "disney-descendants-school-of-secrets-books-4-5-jessica-brody"
     ],
     "reason": "the same Books 4 & 5 bind-up by Jessica Brody read by Kyla Garcia at 431 and 429 minutes; the Listening Library 2025 release is another recording of it, and both titles state the same volumes",
@@ -9418,6 +9940,15 @@
     "target": "dragon-brides-volume-three-intergalactic-dating-agency"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dragon-called-a-slow-burn-sexy-paranormal-romance"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; dragon-called-a-slow-burn-sexy-paranormal-romance spells its title with a retailer genre tag (\"a slow burn sexy paranormal romance\") and is read by victoria-mei at 381 minutes against 381",
+    "target": "dragon-called-kara-lockharte"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -9426,6 +9957,24 @@
     ],
     "reason": "different parts: Episodes 1-4 and 5-8 collections (504 and 508 min) and a single 135-minute episode at position 12 of dragon-chameleon",
     "target": "dragon-chameleon"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dragon-city-dragon-realm-book-3"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; dragon-city-dragon-realm-book-3 spells its title with the series and volume the plain work is listed at (\"dragon realm book 3\") and is read by kevin-shen at 334 minutes against 334",
+    "target": "dragon-city-katie-tsang"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dragon-destined-a-slow-burn-sexy-paranormal-romance"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; dragon-destined-a-slow-burn-sexy-paranormal-romance spells its title with a retailer genre tag (\"a slow burn sexy paranormal romance\") and is read by victoria-mei at 477 minutes against 476",
+    "target": "dragon-destined"
   },
   {
     "decision": "reject",
@@ -9457,6 +10006,15 @@
     "target": "dragon-oracle-omnibus"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dragons-end-a-4x-strategy-litrpg-series"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; dragons-end-a-4x-strategy-litrpg-series spells its title with the name of the series the book is listed in (\"a 4x strategy litrpg series\") and is read by pavi-proczko at 1856 minutes against 1856",
+    "target": "dragons-end"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -9464,6 +10022,24 @@
     ],
     "reason": "different volumes: positions 1 and 2 of dragons-justice, and the title states Book 2",
     "target": "dragons-justice"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dragons-knight-a-4x-strategy-litrpg-series"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; dragons-knight-a-4x-strategy-litrpg-series spells its title with the name of the series the book is listed in (\"a 4x strategy litrpg series\") and is read by pavi-proczko at 1385 minutes against 1385",
+    "target": "dragons-knight"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dragons-pursuit-a-red-slaves-novella"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; dragons-pursuit-a-red-slaves-novella spells its title with a retailer genre tag (\"a red slaves novella\") and is read by ashley-holt at 206 minutes against 206",
+    "target": "dragons-pursuit"
   },
   {
     "decision": "assert",
@@ -9598,6 +10174,15 @@
     "target": "dwellers-of-darkness"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "earth-bound-sea-haven-book-4"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; earth-bound-sea-haven-book-4 spells its title with the series and volume the plain work is listed at (\"sea haven book 4\") and is read by mike-chamberlain at 902 minutes against 902",
+    "target": "earth-bound"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -9614,6 +10199,15 @@
     ],
     "reason": "different box sets: positions 1-3 and 4-6 of echo-canyon-brides, and the title states Books 4-6",
     "target": "echo-canyon-brides-box-set"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "echo-breakthrough-book-6"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; echo-breakthrough-book-6 spells its title with the series and volume the plain work is listed at (\"breakthrough book 6\") and is read by scott-brick at 626 minutes against 636",
+    "target": "echo-michael-c-grumley"
   },
   {
     "decision": "assert",
@@ -10112,6 +10706,15 @@
     "target": "enchanter-3-a-magical-academy-slice-of-life-adventure"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "endless-violet-eden-book-4"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; endless-violet-eden-book-4 spells its title with the series and volume the plain work is listed at (\"violet eden book 4\") and is read by rebecca-macauley at 768 minutes against 768",
+    "target": "endless-jessica-shirvington"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -10210,6 +10813,15 @@
     ],
     "reason": "different volumes: positions 1 and 6 of the-ethic-series, and the title states Book 6",
     "target": "ethic"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "etiquette-espionage"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; etiquette-espionage spells its title with an ampersand for \"and\" and is read by moira-quirk at 535 minutes against 535",
+    "target": "etiquette-and-espionage"
   },
   {
     "decision": "assert",
@@ -10412,6 +11024,15 @@
     "target": "fear-the-stars"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "ruby-redfort-feel-the-fear"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; ruby-redfort-feel-the-fear spells its title with the name of the series the book is listed in (\"ruby redfort\") and is read by rachael-stirling at 534 minutes against 533",
+    "target": "feel-the-fear"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -10461,10 +11082,46 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "finlay-a-highlander-romance"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; finlay-a-highlander-romance spells its title with a retailer genre tag (\"a highlander romance\") and is read by andrew-mcdermott, jenn-mcguirk at 285 minutes against 285",
+    "target": "finlay"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "fire-bound-sea-haven-book-5"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; fire-bound-sea-haven-book-5 spells its title with the series and volume the plain work is listed at (\"sea haven book 5\") and is read by carol-monda at 805 minutes against 806",
+    "target": "fire-bound"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "fire-in-the-darkness-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "fire-in-the-darkness"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "fireborn-seraphim-book-two"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; fireborn-seraphim-book-two spells its title with the series position the plain work holds (\"seraphim book two\") and is read by joe-knezevich at 821 minutes against 821",
+    "target": "fireborn-david-dalglish"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "firebrand-a-steeplejack-novel"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; firebrand-a-steeplejack-novel spells its title with a retailer genre tag (\"a steeplejack novel\") and is read by noma-dumezweni at 725 minutes against 725",
+    "target": "firebrand-a-j-hartley"
   },
   {
     "decision": "assert",
@@ -10533,6 +11190,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "flashpoint-troubleshooters-series-book-7"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; flashpoint-troubleshooters-series-book-7 spells its title with the series and volume the plain work is listed at (\"troubleshooters series book 7\") and is read by melanie-ewbank at 806 minutes against 807",
+    "target": "flashpoint-suzanne-brockmann"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "flatland-a-romance-of-many-dimensions-amazonclassics-edition"
     ],
     "reason": "the same book: AmazonClassics Edition names the publisher's edition of the recording, not a different work",
@@ -10583,6 +11249,15 @@
     ],
     "reason": "different volumes: positions 1 and 2 of special-forces-and-the-zombie-apocalypse, released three months apart at 294 and 235 minutes by the same narrator",
     "target": "forces-of-destiny"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "star-wars-forces-of-destiny-daring-adventures-volumes-1-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; star-wars-forces-of-destiny-daring-adventures-volumes-1-2 spells its title with the name of the series the book is listed in (\"star wars\") and is read by january-lavoy at 122 minutes against 121",
+    "target": "forces-of-destiny-daring-adventures-volumes-1-2"
   },
   {
     "decision": "assert",
@@ -10666,6 +11341,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "fourth-wing"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "fracture-fracture-book-1"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; fracture-fracture-book-1 spells its title with the series and volume the plain work is listed at (\"fracture book 1\") and is read by ivana-rakic at 438 minutes against 438",
+    "target": "fracture-megan-miranda"
   },
   {
     "decision": "assert",
@@ -10758,6 +11442,15 @@
     "target": "future-boy"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "gabby-duran-the-unsittables-alien-babysitting-adventures"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; gabby-duran-the-unsittables-alien-babysitting-adventures spells its title with an ampersand for \"and\" and is read by katie-schorr at 132 minutes against 132",
+    "target": "gabby-duran-and-the-unsittables-alien-babysitting-adventures"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -10794,6 +11487,15 @@
     ],
     "reason": "different collections: Garro: Collection (555 minutes) and the Books 4-6 collection (431 minutes) gather different volumes",
     "target": "garro-collection"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "gates-of-hell-arkane-book-6"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; gates-of-hell-arkane-book-6 spells its title with the series and volume the plain work is listed at (\"arkane book 6\") and is read by veronica-giguere at 356 minutes against 362",
+    "target": "gates-of-hell"
   },
   {
     "decision": "reject",
@@ -10870,6 +11572,15 @@
     ],
     "reason": "different volumes: positions 1, 2 and 3 of dein-haus-der-fantasie, with the numbers in the titles",
     "target": "geschichten-zum-entspannen-einschlafen-und-traumen-dein-haus-der-fantasie-1"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "middle-school-get-me-out-of-here"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; middle-school-get-me-out-of-here spells its title with the name of the series the book is listed in (\"middle school\") and is read by bryan-kennedy at 206 minutes against 207",
+    "target": "get-me-out-of-here"
   },
   {
     "decision": "reject",
@@ -11051,6 +11762,15 @@
     ],
     "reason": "the same book: \"Grabkammer: Maura Isles / Jane Rizzoli 7\" and \"Grabkammer: Maura Isles /Jane Rizzoli 7\" differ only by retailer decoration; both sit at 7 of maura-isles-jane-rizzoli-gekurzt and its canonical series, by the same author",
     "target": "grabkammer-maura-isles-jane-rizzoli-7-tess-gerritsen"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "grand-tour-the-brass-queen-ii"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; grand-tour-the-brass-queen-ii spells its title with the series and volume the plain work is listed at (\"the brass queen ii\") and is read by erin-bennett at 779 minutes against 779",
+    "target": "grand-tour"
   },
   {
     "decision": "assert",
@@ -11461,6 +12181,24 @@
     "target": "harry-potter-y-la-piedra-filosofal"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "haunted-bishop-special-crimes-unit-book-15"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; haunted-bishop-special-crimes-unit-book-15 spells its title with the series and volume the plain work is listed at (\"bishop special crimes unit book 15\") and is read by joyce-bean at 506 minutes against 504",
+    "target": "haunted-kay-hooper"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "have-me-a-stark-ever-after-novella"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; have-me-a-stark-ever-after-novella spells its title with a retailer genre tag (\"a stark ever after novella\") and is read by sofia-willingham at 222 minutes against 221",
+    "target": "have-me"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -11468,6 +12206,15 @@
     ],
     "reason": "different volumes: positions 1 and 2 of healers-journey, and the title states Book 2",
     "target": "healers-journey-annabelle-hawthorne"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "heartsong-green-creek-book-3"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; heartsong-green-creek-book-3 spells its title with the series and volume the plain work is listed at (\"green creek book 3\") and is read by kirt-graves at 1069 minutes against 1070",
+    "target": "heartsong"
   },
   {
     "decision": "assert",
@@ -11625,6 +12372,15 @@
     "target": "hideaway"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "highlanders-protector-a-runaway-bride-highlander-romance"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; highlanders-protector-a-runaway-bride-highlander-romance spells its title with a retailer genre tag (\"a runaway bride highlander romance\") and is read by aaron-shedlock, marian-hussey at 444 minutes against 444",
+    "target": "highlanders-protector"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -11650,6 +12406,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the BBC radio full-cast dramatisation, which is a property of the recording, not of the work",
     "target": "his-dark-materials-the-subtle-knife-book-2"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "sherlock-holmes-his-last-bow"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; sherlock-holmes-his-last-bow spells its title with the name of the series the book is listed in (\"sherlock holmes\") and is read by derek-jacobi at 481 minutes against 481",
+    "target": "his-last-bow"
   },
   {
     "decision": "assert",
@@ -11788,6 +12553,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "agatha-raisin-hot-to-trot"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; agatha-raisin-hot-to-trot spells its title with the name of the series the book is listed in (\"agatha raisin\") and is read by penelope-keith at 401 minutes against 401",
+    "target": "hot-to-trot"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "house-ted-dekker"
     ],
     "reason": "the same novel by the same two authors: the 305-minute recording is the flagged abridgement of the 575-minute one",
@@ -11876,6 +12650,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "how-we-found-you-a-cyberpunk-kidnapping-thriller"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; how-we-found-you-a-cyberpunk-kidnapping-thriller spells its title with a retailer genre tag (\"a cyberpunk kidnapping thriller\") and is read by roshina-ratnam at 560 minutes against 537",
+    "target": "how-we-found-you"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "howards-end-e-m-forster"
     ],
     "reason": "the same novel; the Emma Thompson recording is the flagged abridgement, and Regina Marler and Benjamin DeMott are introducers, not co-authors",
@@ -11907,6 +12690,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "hungry-ghosts"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dune-hunters-of-dune"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; dune-hunters-of-dune spells its title with the name of the series the book is listed in (\"dune\") and is read by scott-brick at 1215 minutes against 1222",
+    "target": "hunters-of-dune"
   },
   {
     "decision": "reject",
@@ -11987,6 +12779,15 @@
     ],
     "reason": "different volumes: Buch 1 and Buch 2 of ich-und-meine-damonen",
     "target": "ich-und-meine-damonen-buch-1"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "identical-a-kindle-county-legal-thriller-book-9"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; identical-a-kindle-county-legal-thriller-book-9 spells its title with the series position the plain work holds (\"a kindle county legal thriller book 9\") and is read by robert-g-slade at 723 minutes against 723",
+    "target": "identical"
   },
   {
     "decision": "reject",
@@ -12175,6 +12976,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "in-times-like-these-a-time-travel-adventure"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; in-times-like-these-a-time-travel-adventure spells its title with a retailer genre tag (\"a time travel adventure\") and is read by neil-hellegers at 826 minutes against 827",
+    "target": "in-times-like-these"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "incidents-in-the-life-of-a-slave-girl-written-by-herself-harriet-jacobs"
     ],
     "reason": "one book: LibriVox project 1706 (Incidents in the Life of a Slave Girl) created this work before the LibriVox author-spelling rule (meta#2777) because it spells the author Harriet Jacobs, the catalogue Harriet Ann Jacobs; the same memoir by the same writer",
@@ -12236,6 +13046,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "infinity-engine-transformation-book-3"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; infinity-engine-transformation-book-3 spells its title with the series and volume the plain work is listed at (\"transformation book 3\") and is read by peter-noble at 1123 minutes against 1122",
+    "target": "infinity-engine"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "inherit-the-flame-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -12249,6 +13068,15 @@
     ],
     "reason": "the same book: Gerard Doyle's unabridged Inheritance at 1889 and 1878 min; Inheritance Cycle 04 is a retailer series decoration on the plain title",
     "target": "inheritance"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "innocent-a-kindle-county-legal-thriller-book-8"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; innocent-a-kindle-county-legal-thriller-book-8 spells its title with the series position the plain work holds (\"a kindle county legal thriller book 8\") and is read by edward-hermann at 852 minutes against 853",
+    "target": "innocent-scott-turow"
   },
   {
     "decision": "reject",
@@ -12494,6 +13322,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "conan-and-the-jewels-of-gwahlur"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; conan-and-the-jewels-of-gwahlur spells its title with the name of the series the book is listed in (\"conan and\") and is read by phil-chenevert at 125 minutes against 126",
+    "target": "jewels-of-gwahlur"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "junie-b-jones-25-jingle-bells-batman-smells-p-s-so-does-may"
     ],
     "reason": "the same book: Junie B. Jones #25 is a retailer series decoration on the plain title, and the title itself states number 25",
@@ -12717,6 +13554,15 @@
     "target": "killing-season-faye-kellerman"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "agatha-raisin-killing-time"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; agatha-raisin-killing-time spells its title with the name of the series the book is listed in (\"agatha raisin\") and is read by penelope-keith at 426 minutes against 425",
+    "target": "killing-time"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -12789,6 +13635,33 @@
     "target": "kratzig-bitte-nicht-offnen-8"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "kushiels-avatar-kushiels-legacy-book-3"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; kushiels-avatar-kushiels-legacy-book-3 spells its title with the series position the plain work holds (\"kushiels legacy book 3\") and is read by jessica-whittaker at 1884 minutes against 1884",
+    "target": "kushiels-avatar"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "kushiels-chosen-kushiels-legacy-book-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; kushiels-chosen-kushiels-legacy-book-2 spells its title with the series position the plain work holds (\"kushiels legacy book 2\") and is read by jessica-whittaker at 1711 minutes against 1711",
+    "target": "kushiels-chosen"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "kushiels-dart-kushiels-legacy-book-1"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; kushiels-dart-kushiels-legacy-book-1 spells its title with the series position the plain work holds (\"kushiels legacy book 1\") and is read by jessica-whittaker at 1886 minutes against 1886",
+    "target": "kushiels-dart"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -12805,6 +13678,15 @@
     ],
     "reason": "the same book: Jordi Boixaderas's 1538 min reading released the same day; the bracketed English title is a marketplace note and the two series are two spellings of Los pilares de la Tierra",
     "target": "la-armadura-de-la-luz-saga-los-pilares-de-la-tierra-4"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-book-of-dust-la-belle-sauvage"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-book-of-dust-la-belle-sauvage spells its title with the name of the series the book is listed in (\"the book of dust\") and is read by michael-sheen at 788 minutes against 789",
+    "target": "la-belle-sauvage"
   },
   {
     "decision": "reject",
@@ -12918,6 +13800,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "la-legion-des-flammes-dragon-blood-tome-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; la-legion-des-flammes-dragon-blood-tome-2 spells its title with the series and volume the plain work is listed at (\"dragon blood tome 2\") and is read by jeremy-bardeau at 1591 minutes against 1591",
+    "target": "la-legion-des-flammes"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "la-letra-escarlata-the-scarlet-letter-nathaniel-hawthorne"
     ],
     "reason": "the same novel in Spanish in unabridged and abridged (176 min, flagged) readings; Pilar Serrano and Jose Donoso are translators, not co-authors",
@@ -13012,6 +13903,15 @@
     ],
     "reason": "the same book by the same author: \"Lady Chatterley's Lover - Unabridged\" only adds an edition, production or narrator note to \"Lady Chatterley's Lover\", which is a property of the recording",
     "target": "lady-chatterleys-lover"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "lady-midnight-a-shadowhunter-novel"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; lady-midnight-a-shadowhunter-novel spells its title with a retailer genre tag (\"a shadowhunter novel\") and is read by morena-baccarin at 1184 minutes against 1184",
+    "target": "lady-midnight"
   },
   {
     "decision": "assert",
@@ -13165,6 +14065,15 @@
     ],
     "reason": "the same novel by LaHaye and Jenkins: the two records split the Books in Motion and Tyndale recordings, and both sit at slot 1 of Left Behind and its abridged spelling",
     "target": "left-behind"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "maauro-seachanges-legacies"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; maauro-seachanges-legacies spells its title with the name of the series the book is listed in (\"maauro seachanges\") and is read by brian-kozak, charlie-k-james at 747 minutes against 747",
+    "target": "legacies-edward-mckeown"
   },
   {
     "decision": "assert",
@@ -13332,6 +14241,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "life-goes-on"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "life-the-universe-and-everything-hitchhikers-guide-to-the-galaxy-book-3"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; life-the-universe-and-everything-hitchhikers-guide-to-the-galaxy-book-3 spells its title with the series and volume the plain work is listed at (\"hitchhikers guide to the galaxy book 3\") and is read by martin-freeman at 344 minutes against 349",
+    "target": "life-the-universe-and-everything"
   },
   {
     "decision": "assert",
@@ -13550,10 +14468,28 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "katie-kazoo-switcheroo-15-love-stinks"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; katie-kazoo-switcheroo-15-love-stinks spells its title with the series position the plain work holds (\"katie kazoo switcheroo 15\") and is read by anne-bobby at 65 minutes against 65",
+    "target": "love-stinks"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "love-will-tear-us-apart-german-edition"
     ],
     "reason": "the same book: \"Love Will Tear Us Apart (German edition)\" and \"Love Will Tear Us Apart - Nach dem Tod fängt das Leben erst richtig an? The Stranger Times ermittelt.\" differ only by retailer decoration; both sit at 3 of the-stranger-times-gekurzt and its canonical series, by the same author",
     "target": "love-will-tear-us-apart-nach-dem-tod-fangt-das-leben-erst-richtig-an-the-stranger-times-ermittelt"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "lucky-stiff-mattie-winston-mysteries-book-4"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; lucky-stiff-mattie-winston-mysteries-book-4 spells its title with the series position the plain work holds (\"mattie winston mysteries book 4\") and is read by jorjeana-marie at 580 minutes against 581",
+    "target": "lucky-stiff"
   },
   {
     "decision": "assert",
@@ -13749,6 +14685,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "manners-mutiny"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; manners-mutiny spells its title with an ampersand for \"and\" and is read by moira-quirk at 593 minutes against 593",
+    "target": "manners-and-mutiny"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "mansfield-park-amazonclassics-edition",
       "mansfield-park-naxos-edition"
     ],
@@ -13791,6 +14736,15 @@
     ],
     "reason": "one book: LibriVox project 1553 (Mary Barton) created this work before the LibriVox author-spelling rule (meta#2777) because it spells the author Elizabeth Cleghorn Gaskell, the catalogue Elizabeth Gaskell; the same novel by the same writer",
     "target": "mary-barton"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "master-apprentice-star-wars"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; master-apprentice-star-wars spells its title with an ampersand for \"and\" and is read by jonathan-davis at 702 minutes against 702",
+    "target": "master-and-apprentice-star-wars"
   },
   {
     "decision": "reject",
@@ -13875,6 +14829,15 @@
     ],
     "reason": "different volumes: the titles state Vol. 2 and Vol. 3 against the unnumbered first volume, released months apart with different runtimes",
     "target": "mediums-psychics-and-channelers"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "medusas-destiny-a-whychoose-romance"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; medusas-destiny-a-whychoose-romance spells its title with a retailer genre tag (\"a whychoose romance\") and is read by marie-smith at 326 minutes against 326",
+    "target": "medusas-destiny"
   },
   {
     "decision": "assert",
@@ -13998,6 +14961,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "mikhail-a-royal-dragon-romance"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; mikhail-a-royal-dragon-romance spells its title with a retailer genre tag (\"a royal dragon romance\") and is read by lucy-rivers at 450 minutes against 450",
+    "target": "mikhail"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "mindstar-rising-the-mandel-files-1"
     ],
     "reason": "the same novel and the same Peter Kenny reading at 816 minutes; The Mandel Files 1 is a retailer series decoration",
@@ -14038,6 +15010,15 @@
     ],
     "reason": "different volumes: positions 1 and 5 of the French Miss Peregrine series, released three years apart",
     "target": "miss-peregrine-et-les-enfants-particuliers"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "mission-of-honor-honor-harrington-book-12"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; mission-of-honor-honor-harrington-book-12 spells its title with the series and volume the plain work is listed at (\"honor harrington book 12\") and is read by allyson-johnson at 1453 minutes against 1453",
+    "target": "mission-of-honor"
   },
   {
     "decision": "assert",
@@ -14118,10 +15099,37 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "mostly-harmless-hitchhikers-guide-to-the-galaxy-book-5"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; mostly-harmless-hitchhikers-guide-to-the-galaxy-book-5 spells its title with the series and volume the plain work is listed at (\"hitchhikers guide to the galaxy book 5\") and is read by martin-freeman at 392 minutes against 393",
+    "target": "mostly-harmless"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "haunted-mother-death"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; haunted-mother-death spells its title with the name of the series the book is listed in (\"haunted\") and is read by hannibal-hills at 463 minutes against 463",
+    "target": "mother-death"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "mount-fitz-roy-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "mount-fitz-roy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "otherland-3-mountain-of-black-glass"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; otherland-3-mountain-of-black-glass spells its title with the series and volume the plain work is listed at (\"otherland 3\") and is read by george-newbern at 1637 minutes against 1637",
+    "target": "mountain-of-black-glass"
   },
   {
     "decision": "reject",
@@ -14499,6 +15507,15 @@
     "target": "nightshade-revenge"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "nightwalker-stormwalker-book-4"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; nightwalker-stormwalker-book-4 spells its title with the series position the plain work holds (\"stormwalker book 4\") and is read by hillary-huber at 614 minutes against 608",
+    "target": "nightwalker"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -14532,6 +15549,15 @@
     ],
     "reason": "the same novel by George Orwell, both English: Nineteen Eighty-Four is the title as published (Peter Capaldi's 742-minute Penguin Modern Classics reading, 0141989963) and 1984 its common spelling; the published title survives, keeping the community layer's nineteen-eighty-four sidecars (#2735)",
     "target": "nineteen-eighty-four"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "no-mans-land-a-john-puller-novel-4"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; no-mans-land-a-john-puller-novel-4 spells its title with the series position the plain work holds (\"a john puller novel 4\") and is read by kyf-brewer, orlagh-cassidy at 696 minutes against 696",
+    "target": "no-mans-land-david-baldacci"
   },
   {
     "decision": "assert",
@@ -14694,6 +15720,15 @@
     ],
     "reason": "the same novel by Ivan Goncharov in English; C. J. Hogarth is the translator of the shorter (abridged) 1915 translation, not a co-author",
     "target": "oblomov"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "ocean-prey-a-lucas-davenport-virgil-flowers-novel"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; ocean-prey-a-lucas-davenport-virgil-flowers-novel spells its title with a retailer genre tag (\"a lucas davenport and virgil flowers novel\") and is read by richard-ferrone at 755 minutes against 755",
+    "target": "ocean-prey"
   },
   {
     "decision": "accept",
@@ -14907,6 +15942,24 @@
     "target": "onyx-storm"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "oracle-a-diana-hawthorne-psychic-mystery"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; oracle-a-diana-hawthorne-psychic-mystery spells its title with a retailer genre tag (\"a diana hawthorne psychic mystery\") and is read by carissa-andrews at 371 minutes against 371",
+    "target": "oracle-carissa-andrews"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "orbus-spatterjay-3"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; orbus-spatterjay-3 spells its title with the series and volume the plain work is listed at (\"spatterjay 3\") and is read by william-gaminara at 886 minutes against 886",
+    "target": "orbus"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -14992,6 +16045,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "our-lady-of-mysterious-ailments-edinburgh-nights-book-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; our-lady-of-mysterious-ailments-edinburgh-nights-book-2 spells its title with the series and volume the plain work is listed at (\"edinburgh nights book 2\") and is read by kimberly-mandindo at 551 minutes against 541",
+    "target": "our-lady-of-mysterious-ailments"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "our-mutual-friend-womans-hour-drama"
     ],
     "reason": "the same novel by Charles Dickens: the decorated title names the BBC Woman's Hour dramatization, which is a property of the recording, not of the work",
@@ -15050,6 +16112,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "paid-in-blood"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "paper-blood"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; paper-blood spells its title with an ampersand for \"and\" and is read by luke-daniels at 606 minutes against 606",
+    "target": "paper-and-blood"
   },
   {
     "decision": "assert",
@@ -15147,6 +16218,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "pepped-up-ready"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; pepped-up-ready spells its title with an ampersand for \"and\" and is read by stacey-glemboski at 387 minutes against 387",
+    "target": "pepped-up-and-ready"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "perhaps-the-stars-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -15199,6 +16279,15 @@
     ],
     "reason": "different episodes: phoenix-heart sits at position 4 of Phoenix Heart: Season Two and the other is Episode 5 of season one, with different runtimes and release dates",
     "target": "phoenix-heart"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "ruby-redfort-pick-your-poison"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; ruby-redfort-pick-your-poison spells its title with the name of the series the book is listed in (\"ruby redfort\") and is read by rachael-stirling at 609 minutes against 609",
+    "target": "pick-your-poison"
   },
   {
     "decision": "assert",
@@ -15459,6 +16548,16 @@
     "target": "preachers-rage"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "pretending-fading-book-3",
+      "pretending-the-fading-series-book-3"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; pretending-fading-book-3 spells its title with the series and volume the plain work is listed at (\"fading book 3\") and is read by emilea-wilson at 429 minutes against 429; pretending-the-fading-series-book-3 spells its title with the series and volume the plain work is listed at (\"the fading series book 3\") and is read by emilea-wilson at 429 minutes against 429",
+    "target": "pretending"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -15581,6 +16680,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "project-74-anniversary-edition-red-rain"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; project-74-anniversary-edition-red-rain spells its title with the name of the series the book is listed in (\"red rain\") and is read by pj-freebourn at 105 minutes against 105",
+    "target": "project-74-anniversary-edition"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "prometheus-bound-aeschylus"
     ],
     "reason": "the same play; E. H. Plumptre is the translator of the English text, not a co-author",
@@ -15631,6 +16739,15 @@
     ],
     "reason": "different volumes: positions 3 and 4 of psionic-elite, numbered in the titles",
     "target": "psionic-elite-3-a-psi-fantasy-adventure"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "psychic-dreams-a-paranormal-womens-fiction-novel"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; psychic-dreams-a-paranormal-womens-fiction-novel spells its title with a retailer genre tag (\"a paranormal womens fiction novel\") and is read by ava-lucas at 457 minutes against 457",
+    "target": "psychic-dreams"
   },
   {
     "decision": "reject",
@@ -15730,6 +16847,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "queen-bitch"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "conan-and-the-queen-of-the-black-coast"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; conan-and-the-queen-of-the-black-coast spells its title with the name of the series the book is listed in (\"conan and\") and is read by phil-chenevert at 87 minutes against 88",
+    "target": "queen-of-the-black-coast"
   },
   {
     "decision": "reject",
@@ -15869,6 +16995,24 @@
     "target": "raven-astray"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "raven-black-the-shetland-series-1"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; raven-black-the-shetland-series-1 spells its title with the series and volume the plain work is listed at (\"the shetland series 1\") and is read by kenny-blyth at 616 minutes against 617",
+    "target": "raven-black"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "ravensong-green-creek-book-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; ravensong-green-creek-book-2 spells its title with the series and volume the plain work is listed at (\"green creek book 2\") and is read by kirt-graves at 1217 minutes against 1218",
+    "target": "ravensong-tj-klune"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -15958,6 +17102,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "red-bones-the-shetland-series-3"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; red-bones-the-shetland-series-3 spells its title with the series and volume the plain work is listed at (\"the shetland series 3\") and is read by kenny-blyth at 682 minutes against 682",
+    "target": "red-bones"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "red-hope-book-1"
     ],
     "reason": "the same novel: the 2021 recording is the Fifth Anniversary Edition of Red Hope Book 1, re-recorded by the same narrator, and the 2016 product points to it as the new edition",
@@ -15990,6 +17143,15 @@
     ],
     "reason": "one book: the HarperAudio edition of Red Queen (B00RDB35II), Amanda Dolan, 763 minutes, filed under a track title",
     "target": "red-queen"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "reincarnation-a-wuxia-xianxia-cultivation-novel-path-of-lazy-immortal-book-1"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; reincarnation-a-wuxia-xianxia-cultivation-novel-path-of-lazy-immortal-book-1 spells its title with the series and volume the plain work is listed at (\"a wuxia xianxia cultivation novel / path of lazy immortal book 1\") and is read by steve-corona at 603 minutes against 603",
+    "target": "reincarnation-a-p-gore"
   },
   {
     "decision": "assert",
@@ -16146,6 +17308,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "revealed-in-fire"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "revelation-a-shardlake-novel-4"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; revelation-a-shardlake-novel-4 spells its title with the series position the plain work holds (\"a shardlake novel 4\") and is read by steven-crossley at 1262 minutes against 1262",
+    "target": "revelation"
   },
   {
     "decision": "assert",
@@ -16434,6 +17605,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "ross-poldark-a-poldark-novel-1"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; ross-poldark-a-poldark-novel-1 spells its title with the series position the plain work holds (\"a poldark novel 1\") and is read by oliver-j-hembrough at 868 minutes against 868",
+    "target": "ross-poldark"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "rostig-bitte-nicht-offnen-horspiele-6"
     ],
     "reason": "the same book by the same author: the Horspiele record is the full-cast radio-play production of volume 6, which is a property of the recording, not of the work",
@@ -16467,6 +17647,15 @@
     ],
     "reason": "different volumes: positions 1 to 4 of run-from-the-dead, numbered in the titles",
     "target": "run-from-the-dead"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "rurik-a-royal-dragon-romance"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; rurik-a-royal-dragon-romance spells its title with a retailer genre tag (\"a royal dragon romance\") and is read by lucy-rivers at 487 minutes against 487",
+    "target": "rurik"
   },
   {
     "decision": "assert",
@@ -16664,6 +17853,24 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "scorpion-mountain-brotherband-book-5"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; scorpion-mountain-brotherband-book-5 spells its title with the series position the plain work holds (\"brotherband book 5\") and is read by john-keating at 775 minutes against 775",
+    "target": "scorpion-mountain"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-seal-of-the-worm-shadows-of-the-apt-10"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-seal-of-the-worm-shadows-of-the-apt-10 spells its title with the series and volume the plain work is listed at (\"shadows of the apt 10\") and is read by ben-allen at 1393 minutes against 1393",
+    "target": "seal-of-the-worm"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "season-of-storms-booktrack-edition"
     ],
     "reason": "the same book; the decorated title names the Booktrack soundtrack edition, a property of the recording; its duplicate series slot was dropped first",
@@ -16677,6 +17884,15 @@
     ],
     "reason": "different volumes: Band 1 and Band 2 of toyfriend with different runtimes and release dates",
     "target": "secondhand-toyfriend-german-edition"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-vanquishers-secret-of-the-reaping"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-vanquishers-secret-of-the-reaping spells its title with the name of the series the book is listed in (\"the vanquishers\") and is read by ecstasia-sanders at 349 minutes against 349",
+    "target": "secret-of-the-reaping"
   },
   {
     "decision": "reject",
@@ -16695,6 +17911,15 @@
     ],
     "reason": "the same book by the same author, both read by Zig Ziglar: the Simon & Schuster recording is the flagged abridgement and the missing article is a title variant",
     "target": "secrets-of-closing-the-sale"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "secrets-of-the-first-school-edinburgh-nights-book-5"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; secrets-of-the-first-school-edinburgh-nights-book-5 spells its title with the series and volume the plain work is listed at (\"edinburgh nights book 5\") and is read by kimberly-mandindo at 736 minutes against 737",
+    "target": "secrets-of-the-first-school"
   },
   {
     "decision": "reject",
@@ -16740,6 +17965,15 @@
     ],
     "reason": "Mitch Horowitz's Condensed Classics Self-Reliance is a condensation he rewrote, a different text from Emerson's essay, so it stays a separate work",
     "target": "self-reliance"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "semi-psychic-life-a-paranormal-womens-fiction-novel"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; semi-psychic-life-a-paranormal-womens-fiction-novel spells its title with a retailer genre tag (\"a paranormal womens fiction novel\") and is read by ava-lucas at 419 minutes against 419",
+    "target": "semi-psychic-life"
   },
   {
     "decision": "reject",
@@ -16859,6 +18093,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "shadow-princess"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "shadowborn-seraphim-book-3"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; shadowborn-seraphim-book-3 spells its title with the series position the plain work holds (\"seraphim book 3\") and is read by joe-knezevich at 847 minutes against 847",
+    "target": "shadowborn"
   },
   {
     "decision": "assert",
@@ -17084,6 +18327,15 @@
     "target": "silver-moon"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "bloodlines-silver-shadows-book-5"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; bloodlines-silver-shadows-book-5 spells its title with the series position the plain work holds (\"bloodlines / book 5\") and is read by alden-ford, emily-shaffer at 641 minutes against 641",
+    "target": "silver-shadows"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -17100,6 +18352,15 @@
     ],
     "reason": "the same novel by the same author: the title only adds the retailer series decoration Shiver, Book 4",
     "target": "sinner"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "sinner-a-paradise-novel"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; sinner-a-paradise-novel spells its title with a retailer genre tag (\"a paradise novel\") and is read by adam-verner at 663 minutes against 663",
+    "target": "sinner-ted-dekker"
   },
   {
     "decision": "accept",
@@ -17191,6 +18452,15 @@
     ],
     "reason": "different volumes: positions 1 and 2, and the second title states Sky Jumpers Book 2: The Forbidden Flats",
     "target": "sky-jumpers"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "skye-the-dragon-kings-book-4"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; skye-the-dragon-kings-book-4 spells its title with the series and volume the plain work is listed at (\"the dragon kings book 4\") and is read by angela-rysk at 327 minutes against 326",
+    "target": "skye"
   },
   {
     "decision": "assert",
@@ -17321,6 +18591,15 @@
     "target": "smoke-jensen-the-beginning"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "so-long-and-thanks-for-all-the-fish-hitchhikers-guide-to-the-galaxy-book-4"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; so-long-and-thanks-for-all-the-fish-hitchhikers-guide-to-the-galaxy-book-4 spells its title with the series and volume the plain work is listed at (\"hitchhikers guide to the galaxy book 4\") and is read by martin-freeman at 279 minutes against 279",
+    "target": "so-long-and-thanks-for-all-the-fish"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -17351,10 +18630,37 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "die-frauen-vom-lowenhof-solveigs-versprechen"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; die-frauen-vom-lowenhof-solveigs-versprechen spells its title with the name of the series the book is listed in (\"die frauen vom lowenhof\") and is read by marie-isabel-walke at 784 minutes against 784",
+    "target": "solveigs-versprechen"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "someone-to-love-westcott-book-1"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; someone-to-love-westcott-book-1 spells its title with the series and volume the plain work is listed at (\"westcott book 1\") and is read by rosalyn-landor at 691 minutes against 691",
+    "target": "someone-to-love"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "something-blue-a-novel"
     ],
     "reason": "the same book: \"Something Blue: A Novel\" and \"Something Blue\" differ only by retailer decoration; both sit at 2 of something-borrowed-something-blue-abridged and its canonical series, by the same author",
     "target": "something-blue-emily-giffin"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "agatha-raisin-something-borrowed-someone-dead"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; agatha-raisin-something-borrowed-someone-dead spells its title with the name of the series the book is listed in (\"agatha raisin\") and is read by penelope-keith at 379 minutes against 379",
+    "target": "something-borrowed-someone-dead"
   },
   {
     "decision": "assert",
@@ -17373,6 +18679,15 @@
     ],
     "reason": "different volumes: the 65-minute prequel at position 0 and the 647-minute Book 1",
     "target": "song-for-a-lost-kingdom-book-1"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "songbird-of-the-sorrows-an-epic-romantic-fantasy-myths-of-the-empyrieos-book-1"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; songbird-of-the-sorrows-an-epic-romantic-fantasy-myths-of-the-empyrieos-book-1 spells its title with the series and volume the plain work is listed at (\"an epic romantic fantasy / myths of the empyrieos book 1\") and is read by imani-jade-powers at 958 minutes against 959",
+    "target": "songbird-of-the-sorrows"
   },
   {
     "decision": "assert",
@@ -17439,6 +18754,24 @@
     "target": "south"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "southern-gentleman-an-accidental-pregnancy-romance"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; southern-gentleman-an-accidental-pregnancy-romance spells its title with a retailer genre tag (\"an accidental pregnancy romance\") and is read by emma-wilder, joe-arden at 568 minutes against 568",
+    "target": "southern-gentleman"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "sovereign-a-matthew-shardlake-mystery"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; sovereign-a-matthew-shardlake-mystery spells its title with a retailer genre tag (\"a matthew shardlake mystery\") and is read by steven-crossley at 1259 minutes against 1259",
+    "target": "sovereign-c-j-sansom"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -17467,6 +18800,15 @@
     ],
     "reason": "split parts: Buch 2.1 and 2.2 are separate audio parts at positions 2.1 and 2.2, released a month apart",
     "target": "spandau-phoenix-world-war-2-series-buch-2-1"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "sparks-landmarks"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; sparks-landmarks spells its title with an ampersand for \"and\" and is read by coleen-marlo at 289 minutes against 295",
+    "target": "sparks-and-landmarks"
   },
   {
     "decision": "assert",
@@ -17523,6 +18865,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "spirit-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "spoils-of-war-excalibur-knights-book-3"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; spoils-of-war-excalibur-knights-book-3 spells its title with the series and volume the plain work is listed at (\"excalibur knights book 3\") and is read by gary-tiedemann at 963 minutes against 963",
+    "target": "spoils-of-war-luke-mitchell"
   },
   {
     "decision": "assert",
@@ -17716,6 +19067,15 @@
     "target": "starsea-collection"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "starshine-amaranthe-1"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; starshine-amaranthe-1 spells its title with the series and volume the plain work is listed at (\"amaranthe 1\") and is read by pyper-down at 1038 minutes against 1038",
+    "target": "starshine"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -17750,6 +19110,15 @@
     ],
     "reason": "a two-book bundle versus one novel: the 700-minute record with two narrators adds Jill Kemerer, a Harlequin two-in-one containing Still the One plus a Kemerer novel",
     "target": "still-the-one-susan-mallery"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "stone-cold-the-camel-club-book-3"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; stone-cold-the-camel-club-book-3 spells its title with the series and volume the plain work is listed at (\"the camel club book 3\") and is read by ron-mclarty at 639 minutes against 639",
+    "target": "stone-cold-david-baldacci"
   },
   {
     "decision": "assert",
@@ -17895,10 +19264,28 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "suddenly-psychic-a-paranormal-womens-fiction-novel"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; suddenly-psychic-a-paranormal-womens-fiction-novel spells its title with a retailer genre tag (\"a paranormal womens fiction novel\") and is read by ava-lucas at 484 minutes against 484",
+    "target": "suddenly-psychic"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "sued-for-peace-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "sued-for-peace"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "agatha-raisin-sugar-and-spite"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; agatha-raisin-sugar-and-spite spells its title with the name of the series the book is listed in (\"agatha raisin\") and is read by penelope-keith at 421 minutes against 421",
+    "target": "sugar-and-spite"
   },
   {
     "decision": "reject",
@@ -17969,6 +19356,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "sweet-little-lies-an-la-candy-novel"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; sweet-little-lies-an-la-candy-novel spells its title with a retailer genre tag (\"an la candy novel\") and is read by jenna-lamia at 434 minutes against 434",
+    "target": "sweet-little-lies"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "sweet-talk-a-novel"
     ],
     "reason": "the same novel read by Angela Dawe, released the same day in unabridged and abridged form; the subtitle A Novel is a retailer decoration",
@@ -18010,6 +19406,15 @@
     ],
     "reason": "different volumes: Sympathy for the Devil tome 1 and vol. 2",
     "target": "sympathy-for-the-devil-sympathy-for-the-devil-tome-1"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-ghost-network-system-failure"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-ghost-network-system-failure spells its title with the name of the series the book is listed in (\"the ghost network\") and is read by andrew-eiden at 252 minutes against 252",
+    "target": "system-failure"
   },
   {
     "decision": "reject",
@@ -18122,6 +19527,33 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "tainted-seas-a-dark-ocean-punk-fantasy"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; tainted-seas-a-dark-ocean-punk-fantasy spells its title with a retailer genre tag (\"a dark ocean punk fantasy\") and is read by hel at 647 minutes against 647",
+    "target": "tainted-seas"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "take-me-a-stark-ever-after-novella"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; take-me-a-stark-ever-after-novella spells its title with a retailer genre tag (\"a stark ever after novella\") and is read by sofia-willingham at 204 minutes against 204",
+    "target": "take-me-j-kenner"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "ruby-redfort-take-your-last-breath"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; ruby-redfort-take-your-last-breath spells its title with the name of the series the book is listed in (\"ruby redfort\") and is read by rachael-stirling at 469 minutes against 468",
+    "target": "take-your-last-breath"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "dork-diaries-4"
     ],
     "reason": "Dork Diaries 4 in two releases: Jenni Barber's 218-minute Simon & Schuster reading (B0087E241E, subtitled Tales from a Not-So-Graceful Ice Princess) and her 220-minute Recorded Books release (B0085XE636), both at Dork Diaries 4 on Audible",
@@ -18195,6 +19627,15 @@
     "target": "tarzan-of-the-apes"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "tashi-the-ghosts-and-other-stories"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; tashi-the-ghosts-and-other-stories spells its title with an ampersand for \"and\" and is read by stig-wemyss at 52 minutes against 52",
+    "target": "tashi-and-the-ghosts-and-other-stories"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -18266,6 +19707,15 @@
     ],
     "reason": "the same novel by the same author: AmazonClassics Edition and Naxos name the publisher's edition of the recording, not a different work",
     "target": "tess-of-the-durbervilles"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "star-darlings-tessas-lost-and-found"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; star-darlings-tessas-lost-and-found spells its title with the name of the series the book is listed in (\"star darlings\") and is read by kyla-garcia at 182 minutes against 189",
+    "target": "tessas-lost-and-found"
   },
   {
     "decision": "assert",
@@ -18542,6 +19992,15 @@
     "target": "the-angel-of-rome"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-angry-tide-a-poldark-novel-7"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-angry-tide-a-poldark-novel-7 spells its title with the series position the plain work holds (\"a poldark novel 7\") and is read by oliver-j-hembrough at 1148 minutes against 1148",
+    "target": "the-angry-tide"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -18622,6 +20081,15 @@
     ],
     "reason": "Oakleaf Bearers is the Australian title of Ranger's Apprentice book 4, The Battle for Skandia: same book, two narrations",
     "target": "the-battle-for-skandia"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "percy-jackson-and-the-battle-of-the-labyrinth"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; percy-jackson-and-the-battle-of-the-labyrinth spells its title with the name of the series the book is listed in (\"percy jackson and\") and is read by jesse-bernstein at 632 minutes against 633",
+    "target": "the-battle-of-the-labyrinth"
   },
   {
     "decision": "assert",
@@ -18728,6 +20196,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-black-moon-a-poldark-novel-5"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-black-moon-a-poldark-novel-5 spells its title with the series position the plain work holds (\"a poldark novel 5\") and is read by oliver-j-hembrough at 1026 minutes against 1026",
+    "target": "the-black-moon"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "blue-nowhere"
     ],
     "reason": "the same novel: an unabridged (768 min) and an abridged (360 min, flagged abridged) reading; the survivor carries the full title The Blue Nowhere",
@@ -18805,6 +20282,33 @@
     ],
     "reason": "the same Fox and O'Hare novel and the same 474-minute Scott Brick reading; one record merely omits co-author Steve Hamilton",
     "target": "the-bounty-steve-hamilton"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "robert-ludlums-the-bourne-ascendancy"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; robert-ludlums-the-bourne-ascendancy spells its title with the author's name as a possessive (\"robert ludlums\") and is read by holter-graham at 893 minutes against 891",
+    "target": "the-bourne-ascendancy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "robert-ludlums-the-bourne-dominion"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; robert-ludlums-the-bourne-dominion spells its title with the author's name as a possessive (\"robert ludlums\") and is read by jeremy-davidson at 824 minutes against 823",
+    "target": "the-bourne-dominion"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "robert-ludlums-the-bourne-objective"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; robert-ludlums-the-bourne-objective spells its title with the author's name as a possessive (\"robert ludlums\") and is read by scott-sowers at 863 minutes against 865",
+    "target": "the-bourne-objective"
   },
   {
     "decision": "assert",
@@ -18897,6 +20401,15 @@
     ],
     "reason": "different collections: Novels 1-3, 7-9 and 10-12 of Brie's Submission",
     "target": "the-brie-collection-novels-1-3"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "magisterium-the-bronze-key"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; magisterium-the-bronze-key spells its title with the name of the series the book is listed in (\"magisterium\") and is read by paul-boehmer at 510 minutes against 511",
+    "target": "the-bronze-key"
   },
   {
     "decision": "assert",
@@ -18996,6 +20509,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-burden-of-proof-a-kindle-county-legal-thriller-book-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-burden-of-proof-a-kindle-county-legal-thriller-book-2 spells its title with the series position the plain work holds (\"a kindle county legal thriller book 2\") and is read by robert-g-slade at 1239 minutes against 1239",
+    "target": "the-burden-of-proof"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-burning-kingdoms-the-smoke-thieves-book-3"
     ],
     "reason": "the same novel with the same full cast at 766 and 767 minutes: the title only adds the retailer series decoration The Smoke Thieves Book 3",
@@ -19083,6 +20605,15 @@
     ],
     "reason": "the same Michael Prichard narration of The Cardinal of the Kremlin under a series-decorated title",
     "target": "the-cardinal-of-the-kremlin"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-cascade-preppers-a-post-apocalyptic-virus-pandemic-survival-thriller"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-cascade-preppers-a-post-apocalyptic-virus-pandemic-survival-thriller spells its title with a retailer genre tag (\"a post apocalyptic virus pandemic survival thriller\") and is read by darriel-driml at 440 minutes against 440",
+    "target": "the-cascade-preppers"
   },
   {
     "decision": "assert",
@@ -19185,6 +20716,15 @@
     "target": "the-code-of-the-woosters"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-collectors-the-camel-club-book-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-collectors-the-camel-club-book-2 spells its title with the series and volume the plain work is listed at (\"the camel club book 2\") and is read by aimee-jolson, l-j-ganser at 762 minutes against 762",
+    "target": "the-collectors-david-baldacci"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -19239,10 +20779,28 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "magisterium-the-copper-gauntlet"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; magisterium-the-copper-gauntlet spells its title with the name of the series the book is listed in (\"magisterium\") and is read by paul-boehmer at 501 minutes against 501",
+    "target": "the-copper-gauntlet"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "covenant-beverly-lewis"
     ],
     "reason": "the same novel by Beverly Lewis (Abram's Daughters 1); the shorter christianaudio recording is flagged abridged, which explains the runtime",
     "target": "the-covenant-beverly-lewis"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "jane-doe-and-the-cradle-of-all-worlds"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; jane-doe-and-the-cradle-of-all-worlds spells its title with the name of the series the book is listed in (\"jane doe and\") and is read by wendy-bos at 569 minutes against 569",
+    "target": "the-cradle-of-all-worlds"
   },
   {
     "decision": "reject",
@@ -19452,6 +21010,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "conan-the-devil-in-iron"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; conan-the-devil-in-iron spells its title with the name of the series the book is listed in (\"conan\") and is read by phil-chenevert at 93 minutes against 95",
+    "target": "the-devil-in-iron"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "devils-badland-dramatized-adaptation"
     ],
     "reason": "Loner 2, The Devil's Badland: the GraphicAudio dramatization (1648801757, Loner Book 2) and Brian Hutchison's Recorded Books reading (B00563ID3M, Loner 2) tell the same story of Conrad Browning at his wife's grave in New Mexico; a dramatization is a recording of the novel",
@@ -19501,6 +21068,15 @@
     ],
     "reason": "different volumes: positions 1 and 3 of the-doctor-from-nowhere, one title states Book 1, released six months apart",
     "target": "the-doctor-from-nowhere"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-dog-snatcher-a-childrens-fantasy-adventure"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-dog-snatcher-a-childrens-fantasy-adventure spells its title with a retailer genre tag (\"a childrens fantasy adventure\") and is read by keith-a-robinson at 117 minutes against 117",
+    "target": "the-dog-snatcher"
   },
   {
     "decision": "reject",
@@ -19638,6 +21214,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-fallen-king-the-fallen-king-chronicles-book-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-fallen-king-the-fallen-king-chronicles-book-2 spells its title with the series position the plain work holds (\"the fallen king chronicles book 2\") and is read by andrew-mcdermott at 386 minutes against 386",
+    "target": "the-fallen-king"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-family-jensen-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -19679,6 +21264,15 @@
     ],
     "reason": "different volumes: The Arrangement 10 and 11 and The Proposition 2 are separate Ferro Family installments",
     "target": "the-ferro-family-the-arrangement-10"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "bloodlines-the-fiery-heart-book-4"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; bloodlines-the-fiery-heart-book-4 spells its title with the series position the plain work holds (\"bloodlines / book 4\") and is read by alden-ford, emily-shaffer at 724 minutes against 724",
+    "target": "the-fiery-heart"
   },
   {
     "decision": "assert",
@@ -19754,6 +21348,15 @@
     "target": "the-four-agreements"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-four-swans-a-poldark-novel-6"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-four-swans-a-poldark-novel-6 spells its title with the series position the plain work holds (\"a poldark novel 6\") and is read by oliver-j-hembrough at 1089 minutes against 1089",
+    "target": "the-four-swans"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -19815,6 +21418,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-ghost-brigades-old-mans-war-book-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-ghost-brigades-old-mans-war-book-2 spells its title with the series and volume the plain work is listed at (\"old mans war book 2\") and is read by william-dufris at 626 minutes against 625",
+    "target": "the-ghost-brigades"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "ghost-network-the-complete-series"
     ],
     "reason": "the same omnibus catalogued twice: identical narrator, publisher and 878-minute runtime, re-released in 2023, and the title only drops the article",
@@ -19833,10 +21445,37 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-gods-of-mars-edgar-rice-burroughs-authorized-library-barsoom-saga-book-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-gods-of-mars-edgar-rice-burroughs-authorized-library-barsoom-saga-book-2 spells its title with the series position the plain work holds (\"edgar rice burroughs authorized library barsoom saga book 2\") and is read by john-mclain at 637 minutes against 637",
+    "target": "the-gods-of-mars"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "golden-fool"
     ],
     "reason": "the same novel: Tawny Man book 2 is Realms of the Elderlings book 8, unabridged readings at 1507 and 1586 minutes, and the title only drops the article",
     "target": "the-golden-fool"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "bloodlines-the-golden-lily-book-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; bloodlines-the-golden-lily-book-2 spells its title with the series position the plain work holds (\"bloodlines / book 2\") and is read by emily-shaffer at 729 minutes against 730",
+    "target": "the-golden-lily"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "magisterium-the-golden-tower"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; magisterium-the-golden-tower spells its title with the name of the series the book is listed in (\"magisterium\") and is read by paul-boehmer at 438 minutes against 439",
+    "target": "the-golden-tower-holly-black"
   },
   {
     "decision": "assert",
@@ -19963,6 +21602,33 @@
     ],
     "reason": "the same book by the same author: the decorated title names a dramatized production, which is a property of the recording, not of the work",
     "target": "the-halloween-tree"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "magnus-chase-and-the-hammer-of-thor-book-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; magnus-chase-and-the-hammer-of-thor-book-2 spells its title with the series position the plain work holds (\"magnus chase and / book 2\") and is read by kieran-culkin at 630 minutes against 634",
+    "target": "the-hammer-of-thor"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "warp-book-2-the-hangmans-revolution"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; warp-book-2-the-hangmans-revolution spells its title with the series and volume the plain work is listed at (\"warp book 2\") and is read by maxwell-caulfield at 652 minutes against 653",
+    "target": "the-hangmans-revolution"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-herons-cry-two-rivers-book-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-herons-cry-two-rivers-book-2 spells its title with the series position the plain work holds (\"two rivers book 2\") and is read by jack-holden at 601 minutes against 616",
+    "target": "the-herons-cry"
   },
   {
     "decision": "assert",
@@ -20182,6 +21848,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "bloodlines-the-indigo-spell-book-3"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; bloodlines-the-indigo-spell-book-3 spells its title with the series position the plain work holds (\"bloodlines / book 3\") and is read by emily-shaffer at 711 minutes against 712",
+    "target": "the-indigo-spell"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-indwelling-tim-lahaye"
     ],
     "reason": "the same novel by LaHaye and Jenkins: the author-suffixed record holds the Tyndale recordings, and both sit at slot 7 of Left Behind and its abridged spelling",
@@ -20214,6 +21889,15 @@
     ],
     "reason": "the same novel by the same author: AmazonClassics Edition names a retailer edition, and the 288-minute reading matches the plain readings",
     "target": "the-invisible-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "magisterium-the-iron-trial"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; magisterium-the-iron-trial spells its title with the name of the series the book is listed in (\"magisterium\") and is read by paul-boehmer at 637 minutes against 638",
+    "target": "the-iron-trial"
   },
   {
     "decision": "reject",
@@ -20322,6 +22006,33 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-king-endgame-book-4"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-king-endgame-book-4 spells its title with the series and volume the plain work is listed at (\"endgame book 4\") and is read by kylie-stewart at 309 minutes against 309",
+    "target": "the-king-skye-warren"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "witch-wizard-the-kiss"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; witch-wizard-the-kiss spells its title with the name of the series the book is listed in (\"witch and wizard\") and is read by cassandra-morris, justin-long, spencer-locke at 453 minutes against 455",
+    "target": "the-kiss-james-patterson"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-knight-endgame-book-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-knight-endgame-book-2 spells its title with the series and volume the plain work is listed at (\"endgame book 2\") and is read by kylie-stewart at 355 minutes against 355",
+    "target": "the-knight"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "kraken-wakes-the-classic-radio-sci-fi"
     ],
     "reason": "the same book by the same author: Classic Radio Sci-Fi names the BBC full-cast radio production, which is a property of the recording, not of the work, and no other writer is credited",
@@ -20396,6 +22107,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-last-colony-old-mans-war-book-3"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-last-colony-old-mans-war-book-3 spells its title with the series and volume the plain work is listed at (\"old mans war book 3\") and is read by william-dufris at 591 minutes against 591",
+    "target": "the-last-colony"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-last-full-measure-a-novel-of-the-civil-war"
     ],
     "reason": "the same Jeff Shaara novel: the subtitle is the cover tagline, and both records sit at slot 3 of the Civil War Trilogy and its abridged spelling",
@@ -20409,6 +22129,24 @@
     ],
     "reason": "different volumes: positions 1 and 2 of the-last-gods, one title states Vol. 2, released seven months apart",
     "target": "the-last-gods"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "artemis-fowl-8-the-last-guardian"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; artemis-fowl-8-the-last-guardian spells its title with the series and volume the plain work is listed at (\"artemis fowl 8\") and is read by nathaniel-parker at 459 minutes against 460",
+    "target": "the-last-guardian"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-last-hero-the-first-sister-book-3"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-last-hero-the-first-sister-book-3 spells its title with the series and volume the plain work is listed at (\"the first sister book 3\") and is read by ali-andre-ali, andrew-kishino, emily-woo-zeller, farah-naz-rishi, gary-tiedemann, jennifer-aquino, neo-cihi at 1415 minutes against 1415",
+    "target": "the-last-hero-linden-a-lewis"
   },
   {
     "decision": "assert",
@@ -20437,6 +22175,15 @@
     ],
     "reason": "the same novel by the same author: AmazonClassics and Classic Tales name editions, which are properties of the recording, not of the work",
     "target": "the-last-of-the-mohicans"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "percy-jackson-and-the-last-olympian"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; percy-jackson-and-the-last-olympian spells its title with the name of the series the book is listed in (\"percy jackson and\") and is read by jesse-bernstein at 660 minutes against 661",
+    "target": "the-last-olympian"
   },
   {
     "decision": "reject",
@@ -20497,6 +22244,24 @@
     "target": "the-law-of-success"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-laws-of-our-fathers-a-kindle-county-legal-thriller-book-4"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-laws-of-our-fathers-a-kindle-county-legal-thriller-book-4 spells its title with the series position the plain work holds (\"a kindle county legal thriller book 4\") and is read by robert-g-slade at 1502 minutes against 1502",
+    "target": "the-laws-of-our-fathers"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-legacy-of-arniston-house-edinburgh-nights-book-4"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-legacy-of-arniston-house-edinburgh-nights-book-4 spells its title with the series and volume the plain work is listed at (\"edinburgh nights book 4\") and is read by kimberly-mandindo at 709 minutes against 710",
+    "target": "the-legacy-of-arniston-house"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -20536,6 +22301,15 @@
     "target": "the-legend-of-sleepy-hollow"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "star-wars-forces-of-destiny-the-leia-chronicles-the-rey-chronicles"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; star-wars-forces-of-destiny-the-leia-chronicles-the-rey-chronicles spells its title with the name of the series the book is listed in (\"star wars forces of destiny\") and is read by january-lavoy at 108 minutes against 108",
+    "target": "the-leia-chronicles-the-rey-chronicles"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -20566,6 +22340,15 @@
     "target": "the-librarians-vampire-assistant"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-library-of-the-dead-edinburgh-nights-book-1"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-library-of-the-dead-edinburgh-nights-book-1 spells its title with the series and volume the plain work is listed at (\"edinburgh nights book 1\") and is read by tinashe-warikandwa at 488 minutes against 489",
+    "target": "the-library-of-the-dead"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -20573,6 +22356,15 @@
     ],
     "reason": "different parts of Immortal Destiny Book 5, which was released in volumes: the Volume 1 record (84 min, October 2014) and the plain record, whose description opens In Volume 2 (101 min, November 2014)",
     "target": "the-light-seekers"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "percy-jackson-and-the-lightning-thief"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; percy-jackson-and-the-lightning-thief spells its title with the name of the series the book is listed in (\"percy jackson and\") and is read by jesse-bernstein at 613 minutes against 602",
+    "target": "the-lightning-thief"
   },
   {
     "decision": "accept",
@@ -20650,6 +22442,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-long-call-two-rivers-book-1"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-long-call-two-rivers-book-1 spells its title with the series position the plain work holds (\"two rivers book 1\") and is read by ben-aldridge at 697 minutes against 696",
+    "target": "the-long-call"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-long-goodbye-raymond-chandler"
     ],
     "reason": "the same novel: Good-Bye and Goodbye are two spellings of one title, and the Scott Brick reading appears on both",
@@ -20663,6 +22464,15 @@
     ],
     "reason": "the same novel by the same author: Richard Bachman is Stephen King's pen name, not a co-author, and Kirby Heyborne reads both at 646 and 644 minutes",
     "target": "the-long-walk"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-lost-city-a-rick-brant-electronic-adventure-book-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-lost-city-a-rick-brant-electronic-adventure-book-2 spells its title with the series position the plain work holds (\"a rick brant electronic adventure book 2\") and is read by j-j-campanella at 293 minutes against 293",
+    "target": "the-lost-city"
   },
   {
     "decision": "assert",
@@ -20691,6 +22501,15 @@
     ],
     "reason": "the same Michael Crichton novel: A Novel is a generic subtitle and the Anthony Heald recording is the abridged reading of the book Scott Brick reads unabridged",
     "target": "the-lost-world-michael-crichton"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-loving-cup-a-poldark-novel-10"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-loving-cup-a-poldark-novel-10 spells its title with the series position the plain work holds (\"a poldark novel 10\") and is read by oliver-j-hembrough at 998 minutes against 998",
+    "target": "the-loving-cup"
   },
   {
     "decision": "assert",
@@ -20876,6 +22695,15 @@
     "target": "the-mill-on-the-floss"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-millers-dance-a-poldark-novel-9"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-millers-dance-a-poldark-novel-9 spells its title with the series position the plain work holds (\"a poldark novel 9\") and is read by oliver-j-hembrough at 849 minutes against 849",
+    "target": "the-millers-dance"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -20883,6 +22711,24 @@
     ],
     "reason": "different volumes: positions 1 and 2 of the-minstrels-tale, the title states Book 2, and the same narrator reads them at 552 and 652 minutes",
     "target": "the-minstrels-tale"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-mirror-the-light"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-mirror-the-light spells its title with an ampersand for \"and\" and is read by ben-miles at 2292 minutes against 2291",
+    "target": "the-mirror-and-the-light"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-mirror-the-light-an-adaptation-in-30-minute-episodes"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-mirror-the-light-an-adaptation-in-30-minute-episodes spells its title with an ampersand for \"and\" and is read by joseph-kloska at 698 minutes against 698",
+    "target": "the-mirror-and-the-light-an-adaptation-in-30-minute-episodes"
   },
   {
     "decision": "assert",
@@ -20910,6 +22756,15 @@
     ],
     "reason": "the same book by the same authors: robert-m-edsel and robert-edsel are one person, and the second record is the abridged reading by the same narrator from the same publisher",
     "target": "the-monuments-men"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-moon-blessed-king-a-tale-of-two-crowns-book-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-moon-blessed-king-a-tale-of-two-crowns-book-2 spells its title with the series and volume the plain work is listed at (\"a tale of two crowns book 2\") and is read by joe-jameson at 930 minutes against 930",
+    "target": "the-moon-blessed-king"
   },
   {
     "decision": "assert",
@@ -20983,6 +22838,15 @@
     ],
     "reason": "the same novel; William Henry Giles Kingston is the translator of the English text, not a co-author, and AmazonClassics Edition names a recording edition; captain-nemo and voyages-extraordinaires are two valid series for one book",
     "target": "the-mysterious-island"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-mystery-at-dunvegan-castle-edinburgh-nights-book-3"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-mystery-at-dunvegan-castle-edinburgh-nights-book-3 spells its title with the series and volume the plain work is listed at (\"edinburgh nights book 3\") and is read by kimberly-mandindo at 632 minutes against 632",
+    "target": "the-mystery-at-dunvegan-castle"
   },
   {
     "decision": "assert",
@@ -21136,6 +23000,15 @@
     ],
     "reason": "different volumes: positions 1 and 2 of the-organ-harvesters, the title states Book 2, and the same narrator reads them at 530 and 430 minutes",
     "target": "the-organ-harvesters"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-outliers-the-outliers-book-1"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-outliers-the-outliers-book-1 spells its title with the series and volume the plain work is listed at (\"the outliers book 1\") and is read by phoebe-strole at 597 minutes against 597",
+    "target": "the-outliers"
   },
   {
     "decision": "assert",
@@ -21298,6 +23171,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-prodigal-daughter-kane-and-abel-book-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-prodigal-daughter-kane-and-abel-book-2 spells its title with the series and volume the plain work is listed at (\"kane and abel book 2\") and is read by lorelei-king at 875 minutes against 875",
+    "target": "the-prodigal-daughter"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-promise-an-elvis-cole-and-joe-pike-novel-book-16"
     ],
     "reason": "the same book: \"The Promise: An Elvis Cole and Joe Pike Novel, Book 16\" and \"The Promise\" differ only by retailer decoration; both sit at 2 of scott-james-abridged and its canonical series, by the same author",
@@ -21322,6 +23204,15 @@
     "target": "the-queen-of-crows"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-queen-endgame-book-5"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-queen-endgame-book-5 spells its title with the series and volume the plain work is listed at (\"endgame book 5\") and is read by kylie-stewart at 279 minutes against 279",
+    "target": "the-queen-skye-warren"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -21330,6 +23221,15 @@
     ],
     "reason": "different volumes: positions 1, 2 and 3 of the-quest-giver, the titles state 2 and 3, released months apart",
     "target": "the-quest-giver-2-an-npc-litrpg-adventure"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-raging-storm-two-rivers-book-3"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-raging-storm-two-rivers-book-3 spells its title with the series position the plain work holds (\"two rivers book 3\") and is read by jack-holden at 607 minutes against 587",
+    "target": "the-raging-storm"
   },
   {
     "decision": "assert",
@@ -21417,10 +23317,28 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "series-of-unfortunate-events-2-the-reptile-room"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; series-of-unfortunate-events-2-the-reptile-room spells its title with the series and volume the plain work is listed at (\"series of unfortunate events 2\") and is read by tim-curry at 191 minutes against 191",
+    "target": "the-reptile-room"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-republic-amazonclassics-edition"
     ],
     "reason": "the same dialogue by the same author: Raymond Larson and Benjamin Jowett are translators, not co-authors, and the longer AmazonClassics runtime is Jowett's introduction and analysis around the same text",
     "target": "the-republic"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-restaurant-at-the-end-of-the-universe-hitchhikers-guide-to-the-galaxy-book-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-restaurant-at-the-end-of-the-universe-hitchhikers-guide-to-the-galaxy-book-2 spells its title with the series and volume the plain work is listed at (\"hitchhikers guide to the galaxy book 2\") and is read by martin-freeman at 347 minutes against 347",
+    "target": "the-restaurant-at-the-end-of-the-universe"
   },
   {
     "decision": "accept",
@@ -21484,6 +23402,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-ring-of-solomon-a-bartimaeus-novel"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-ring-of-solomon-a-bartimaeus-novel spells its title with a retailer genre tag (\"a bartimaeus novel\") and is read by simon-jones at 757 minutes against 759",
+    "target": "the-ring-of-solomon"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-rising-left-behind-series-book-13"
     ],
     "reason": "the same book: \"The Rising: Left Behind Series, Book 13\" and \"The Rising: Before They Were Left Behind\" differ only by retailer decoration; both sit at 1 of before-they-were-left-behind-abridged and its canonical series, by the same author",
@@ -21497,6 +23424,15 @@
     ],
     "reason": "the same novel by the same authors: Before They Were Left Behind is the retailer series decoration on the plain title",
     "target": "the-rising-tim-lahaye"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-book-of-dust-the-rose-field-book-of-dust-volume-3"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-book-of-dust-the-rose-field-book-of-dust-volume-3 spells its title with the series and volume the plain work is listed at (\"the book of dust / book of dust volume 3\") and is read by michael-sheen at 1355 minutes against 1357",
+    "target": "the-rose-field"
   },
   {
     "decision": "reject",
@@ -21557,6 +23493,15 @@
     ],
     "reason": "different collections: Volumes 1-7 of The Sam Reilly Collection bundle different ranges of the series",
     "target": "the-sam-reilly-collection"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-sandman-a-snarky-paranormal-detective-mystery"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-sandman-a-snarky-paranormal-detective-mystery spells its title with a retailer genre tag (\"a snarky paranormal detective mystery\") and is read by charles-robert-fox at 399 minutes against 399",
+    "target": "the-sandman-steve-higgs"
   },
   {
     "decision": "assert",
@@ -21627,11 +23572,29 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "percy-jackson-and-the-sea-of-monsters"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; percy-jackson-and-the-sea-of-monsters spells its title with the name of the series the book is listed in (\"percy jackson and\") and is read by jesse-bernstein at 475 minutes against 476",
+    "target": "the-sea-of-monsters"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-secret-adversary-amazonclassics-edition",
       "the-secret-adversary-classic-tales-edition"
     ],
     "reason": "the same novel by the same author: AmazonClassics Edition and Classic Tales Edition name recording editions, read at 529 and 486 minutes in line with the others",
     "target": "the-secret-adversary"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-book-of-dust-the-secret-commonwealth"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-book-of-dust-the-secret-commonwealth spells its title with the name of the series the book is listed in (\"the book of dust\") and is read by michael-sheen at 1184 minutes against 1184",
+    "target": "the-secret-commonwealth"
   },
   {
     "decision": "assert",
@@ -21690,6 +23653,24 @@
     "target": "the-secret-of-the-ages-robert-collier-2"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-selection-stories-the-prince-the-guard"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-selection-stories-the-prince-the-guard spells its title with an ampersand for \"and\" and is read by amy-rubinate, nick-podehl, tristan-morris at 275 minutes against 275",
+    "target": "the-selection-stories-the-prince-and-the-guard"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-serpent-and-the-wolf-a-thrilling-romantasy-debut-combining-high-stakes-political-intrigue-and-a"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-serpent-and-the-wolf-a-thrilling-romantasy-debut-combining-high-stakes-political-intrigue-and-a spells its title with a retailer genre tag (\"a thrilling romantasy debut combining high stakes political intrigue and a steamy slow burn enemies to lovers romance\") and is read by jesse-vilinsky at 805 minutes against 823",
+    "target": "the-serpent-and-the-wolf-rebecca-robinson"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -21706,6 +23687,15 @@
     ],
     "reason": "the same novel by the same author: Shark Mutiny is the abridged David McCallum reading of The Shark Mutiny, and abridgement is a property of the recording, not of the work",
     "target": "the-shark-mutiny"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "magnus-chase-and-the-ship-of-the-dead-book-3"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; magnus-chase-and-the-ship-of-the-dead-book-3 spells its title with the series position the plain work holds (\"magnus chase and / book 3\") and is read by michael-crouch at 778 minutes against 779",
+    "target": "the-ship-of-the-dead"
   },
   {
     "decision": "assert",
@@ -21752,6 +23742,15 @@
     ],
     "reason": "a 42-minute product and a 1060-minute Volume 1 released a year apart with different narrators are not the same book",
     "target": "the-silver-city-cin-entertainment"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "magisterium-the-silver-mask"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; magisterium-the-silver-mask spells its title with the name of the series the book is listed in (\"magisterium\") and is read by paul-boehmer at 434 minutes against 434",
+    "target": "the-silver-mask"
   },
   {
     "decision": "reject",
@@ -21929,6 +23928,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-stranger-from-the-sea-a-poldark-novel-8"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-stranger-from-the-sea-a-poldark-novel-8 spells its title with the series position the plain work holds (\"a poldark novel 8\") and is read by oliver-j-hembrough at 883 minutes against 884",
+    "target": "the-stranger-from-the-sea"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-stranger-times-german-edition"
     ],
     "reason": "the same book: \"The Stranger Times (German edition)\" and \"The Stranger Times - Was, wenn die seltsamsten News die wirklich wahren wären\" differ only by retailer decoration; both sit at 1 of the-stranger-times-gekurzt and its canonical series, by the same author",
@@ -21999,6 +24007,24 @@
     "target": "the-sword-of-shannara-the-shannara-series-book-1"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "magnus-chase-and-the-sword-of-summer-book-1"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; magnus-chase-and-the-sword-of-summer-book-1 spells its title with the series position the plain work holds (\"magnus chase and / book 1\") and is read by christopher-guetig at 920 minutes against 921",
+    "target": "the-sword-of-summer"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-technician-polity-4"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-technician-polity-4 spells its title with the series and volume the plain work is listed at (\"polity 4\") and is read by peter-noble at 995 minutes against 995",
+    "target": "the-technician"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -22006,6 +24032,15 @@
     ],
     "reason": "different volumes: positions 4 and 1 of the-temporal-travel-agency, the title states Book 1, different narrators",
     "target": "the-temporal-travel-agency"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-thief-isaac-bell-5"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-thief-isaac-bell-5 spells its title with the series and volume the plain work is listed at (\"isaac bell 5\") and is read by scott-brick at 589 minutes against 590",
+    "target": "the-thief-clive-cussler"
   },
   {
     "decision": "assert",
@@ -22121,6 +24156,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "percy-jackson-and-the-titans-curse"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; percy-jackson-and-the-titans-curse spells its title with the name of the series the book is listed in (\"percy jackson and\") and is read by jesse-bernstein at 528 minutes against 529",
+    "target": "the-titans-curse"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-tome-of-bill-series-books-1-4-an-urban-fantasy-horror-comedy-collection"
     ],
     "reason": "the same collection: Books 1-4 by the same narrator and publisher at 2015 and 1965 minutes; the subtitle is a retailer genre tag",
@@ -22135,6 +24179,15 @@
     ],
     "reason": "different volumes: positions 3, 4 and 5 of toren, the titles state Book 4 and Book 5, released weeks apart",
     "target": "the-toren"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-tower-of-the-swallow-a-witcher-novel"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-tower-of-the-swallow-a-witcher-novel spells its title with a retailer genre tag (\"a witcher novel\") and is read by peter-kenny at 1006 minutes against 1006",
+    "target": "the-tower-of-the-swallow"
   },
   {
     "decision": "assert",
@@ -22218,6 +24271,24 @@
     ],
     "reason": "the same book: \"Wingman #5\" and \"The Twisted Cross\" differ only by retailer decoration; both sit at 5 of wingman-abridged and its canonical series, by the same author",
     "target": "the-twisted-cross"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-twisted-sword-a-poldark-novel-11"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-twisted-sword-a-poldark-novel-11 spells its title with the series position the plain work holds (\"a poldark novel 11\") and is read by oliver-j-hembrough at 1148 minutes against 1148",
+    "target": "the-twisted-sword"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-underworld-saga-books-4-6-a-greek-mythology-romance"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-underworld-saga-books-4-6-a-greek-mythology-romance spells its title with a retailer genre tag (\"a greek mythology romance\") and is read by debbie-andreen at 1221 minutes against 1222",
+    "target": "the-underworld-saga-books-4-6"
   },
   {
     "decision": "reject",
@@ -22345,6 +24416,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-voyage-of-the-sable-keech-spatterjay-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-voyage-of-the-sable-keech-spatterjay-2 spells its title with the series and volume the plain work is listed at (\"spatterjay 2\") and is read by william-gaminara at 1007 minutes against 1007",
+    "target": "the-voyage-of-the-sable-keech"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "war-of-the-worlds"
     ],
     "reason": "the same novel by the same author: the title without The is a variant of the same book",
@@ -22376,6 +24456,15 @@
     ],
     "reason": "the same Trollope novel: \"Timothy West Version\" names a narrator, which is a property of the recording",
     "target": "the-warden"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-warship-the-rise-of-jain-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-warship-the-rise-of-jain-2 spells its title with the series position the plain work holds (\"the rise of jain 2\") and is read by peter-noble at 1031 minutes against 1031",
+    "target": "the-warship"
   },
   {
     "decision": "assert",
@@ -22542,6 +24631,33 @@
     "target": "the-world-is-flat"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-world-of-ice-fire"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-world-of-ice-fire spells its title with an ampersand for \"and\" and is read by nicholas-guy-smith, roy-dotrice at 1282 minutes against 1282",
+    "target": "the-world-of-ice-and-fire"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "space-team-the-wrath-of-vajazzle"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; space-team-the-wrath-of-vajazzle spells its title with the name of the series the book is listed in (\"space team\") and is read by phil-thron at 501 minutes against 501",
+    "target": "the-wrath-of-vajazzle"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "vainqueur-the-dragon-ii-the-year-of-the-rogues"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; vainqueur-the-dragon-ii-the-year-of-the-rogues spells its title with the series and volume the plain work is listed at (\"vainqueur the dragon ii\") and is read by jack-voraces at 804 minutes against 804",
+    "target": "the-year-of-the-rogues"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -22581,6 +24697,15 @@
     "target": "the-zombie-chronicles-apocalypse-infection-unleashed-series-1"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "agatha-raisin-there-goes-the-bride"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; agatha-raisin-there-goes-the-bride spells its title with the name of the series the book is listed in (\"agatha raisin\") and is read by penelope-keith at 378 minutes against 378",
+    "target": "there-goes-the-bride"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -22608,6 +24733,15 @@
     ],
     "reason": "different volumes: positions 1, 2 and 3 of thick-as-thieves, and the titles state Book 2 and Book 3",
     "target": "thick-as-thieves-alexa-lee"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "thin-air-the-shetland-series-6"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; thin-air-the-shetland-series-6 spells its title with the series and volume the plain work is listed at (\"the shetland series 6\") and is read by kenny-blyth at 599 minutes against 600",
+    "target": "thin-air-ann-cleeves"
   },
   {
     "decision": "assert",
@@ -22673,6 +24807,15 @@
     "target": "this-day"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "this-gilded-abyss-the-titans-wrath-book-1"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; this-gilded-abyss-the-titans-wrath-book-1 spells its title with the series and volume the plain work is listed at (\"the titans wrath book 1\") and is read by natalie-naudus at 651 minutes against 652",
+    "target": "this-gilded-abyss"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -22716,6 +24859,15 @@
     ],
     "reason": "different volumes: positions 1 and 2 of those-who-survived, and the title states Book 2",
     "target": "those-who-survived"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "star-wars-thrawn-treason-book-3"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; star-wars-thrawn-treason-book-3 spells its title with the series position the plain work holds (\"star wars / book 3\") and is read by marc-thompson at 793 minutes against 793",
+    "target": "thrawn-treason"
   },
   {
     "decision": "reject",
@@ -22898,10 +25050,28 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "tombland-a-shardlake-novel-7"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; tombland-a-shardlake-novel-7 spells its title with the series position the plain work holds (\"a shardlake novel 7\") and is read by steven-crossley at 2261 minutes against 2261",
+    "target": "tombland"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "too-soon-to-die-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "too-soon-to-die"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "top-tier-privateer-a-light-novel"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; top-tier-privateer-a-light-novel spells its title with a retailer genre tag (\"a light novel\") and is read by jessica-threet at 773 minutes against 773",
+    "target": "top-tier-privateer"
   },
   {
     "decision": "assert",
@@ -22938,6 +25108,15 @@
     ],
     "reason": "the same book: \"Totengrund: Maura Isles / Jane Rizzoli 8\" and \"Totengrund\" differ only by retailer decoration; both sit at 8 of maura-isles-jane-rizzoli-gekurzt and its canonical series, by the same author",
     "target": "totengrund"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "champion-2-tournament"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; champion-2-tournament spells its title with the series and volume the plain work is listed at (\"champion 2\") and is read by christian-j-gilliland, jessica-threet at 389 minutes against 389",
+    "target": "tournament"
   },
   {
     "decision": "reject",
@@ -23206,6 +25385,15 @@
     "target": "tribulation-force"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-fabled-stables-trouble-with-tattle-tails"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-fabled-stables-trouble-with-tattle-tails spells its title with the name of the series the book is listed in (\"the fabled stables\") and is read by gary-furlong, gildart-jackson, katherine-littrell, matthew-brenher, nano-nagle at 33 minutes against 33",
+    "target": "trouble-with-tattle-tails"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -23277,6 +25465,15 @@
     ],
     "reason": "the same novel by Jules Verne at 702 minutes, within the range of the other unabridged recordings; Lewis Page Mercier is the translator, not a co-author, and AmazonClassics names the edition",
     "target": "twenty-thousand-leagues-under-the-sea"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "twilight-twilight-series-book-1"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; twilight-twilight-series-book-1 spells its title with the series position the plain work holds (\"twilight series book 1\") and is read by ilyana-kadushin at 771 minutes against 771",
+    "target": "twilight"
   },
   {
     "decision": "assert",
@@ -23409,6 +25606,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "underworld-abandon-book-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; underworld-abandon-book-2 spells its title with the series and volume the plain work is listed at (\"abandon book 2\") and is read by natalia-payne at 626 minutes against 627",
+    "target": "underworld-meg-cabot"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "unicorn-academy-treasure-hunt-1-lyra-and-misty"
     ],
     "reason": "the same book in UK and US editions: UK Unicorn Academy 17 is published in the US as Treasure Hunt #1, at 93 and 82 minutes; the series numbering is a marketplace property",
@@ -23442,6 +25648,15 @@
     "target": "unlucky-13"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "unnatural-death-a-lord-peter-wimsey-mystery-book-3"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; unnatural-death-a-lord-peter-wimsey-mystery-book-3 spells its title with the series position the plain work holds (\"a lord peter wimsey mystery book 3\") and is read by ian-carmichael at 468 minutes against 468",
+    "target": "unnatural-death"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -23453,6 +25668,15 @@
     ],
     "reason": "different volumes: positions 1 to 7 of unsafe, and the titles state Book 2 to Book 7",
     "target": "unsafe"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "unseen-a-will-trent-thriller"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; unseen-a-will-trent-thriller spells its title with a retailer genre tag (\"a will trent thriller\") and is read by kathleen-early at 777 minutes against 792",
+    "target": "unseen-karin-slaughter"
   },
   {
     "decision": "assert",
@@ -23486,6 +25710,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "valis-valis-book-1"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; valis-valis-book-1 spells its title with the series position the plain work holds (\"valis book 1\") and is read by phil-gigante at 539 minutes against 539",
+    "target": "valis"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "vanity-fair-amazonclassics-edition",
       "vanity-fair-tantor"
     ],
@@ -23509,6 +25742,15 @@
     ],
     "reason": "the 69-minute Author's Republic product runs 7 percent of the 931 to 1006 minute readings, carries a 1946 copyright and is read by a narrator of children's tales, so it is a condensed retelling, not a plain abridgement of Verne's text",
     "target": "veinte-mil-leguas-de-viaje-submarino"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "vengeance-fracture-book-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; vengeance-fracture-book-2 spells its title with the series and volume the plain work is listed at (\"fracture book 2\") and is read by hunter-johns at 645 minutes against 645",
+    "target": "vengeance"
   },
   {
     "decision": "assert",
@@ -23634,6 +25876,24 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "waistcoats-weaponry"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; waistcoats-weaponry spells its title with an ampersand for \"and\" and is read by moira-quirk at 533 minutes against 533",
+    "target": "waistcoats-and-weaponry"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "wake-watersong-1"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; wake-watersong-1 spells its title with the series and volume the plain work is listed at (\"watersong 1\") and is read by nicola-barber at 469 minutes against 469",
+    "target": "wake-amanda-hocking"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "walden-henry-david-thoreau"
     ],
     "reason": "the same book read by Daniel Adam Day at 674 minutes, within the range of the target's unabridged readings; american-renaissance-books is the publisher, not a co-author",
@@ -23656,6 +25916,24 @@
     ],
     "reason": "war-and-peace-part-2 is the second half of Edward Petherbridge's split abridged release (143 minutes), a part record that stays apart from the whole",
     "target": "war-and-peace"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "war-factory-transformation-book-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; war-factory-transformation-book-2 spells its title with the series and volume the plain work is listed at (\"transformation book 2\") and is read by peter-noble at 1129 minutes against 1128",
+    "target": "war-factory"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "war-masters-gate-shadows-of-the-apt-9"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; war-masters-gate-shadows-of-the-apt-9 spells its title with the series and volume the plain work is listed at (\"shadows of the apt 9\") and is read by ben-allen at 1658 minutes against 1658",
+    "target": "war-masters-gate"
   },
   {
     "decision": "assert",
@@ -23723,6 +26001,15 @@
     "target": "warbreaker-tenth-anniversary-edition-part-1-of-2-dramatized-adaptation"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "warleggan-a-poldark-novel-4"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; warleggan-a-poldark-novel-4 spells its title with the series position the plain work holds (\"a poldark novel 4\") and is read by oliver-j-hembrough at 855 minutes against 855",
+    "target": "warleggan"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -23739,6 +26026,15 @@
     ],
     "reason": "the same book: \"The Sign of Nine [Dramatized Adaptation]\" and \"Warlock Holmes: The Sign of Nine\" differ only by retailer decoration; both sit at 4 of warlock-holmes-dramatized and its canonical series, by the same author",
     "target": "warlock-holmes-the-sign-of-nine"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "warlord-of-mars-mars-series-book-3"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; warlord-of-mars-mars-series-book-3 spells its title with the series position the plain work holds (\"mars series book 3\") and is read by william-dufris at 400 minutes against 400",
+    "target": "warlord-of-mars"
   },
   {
     "decision": "assert",
@@ -23793,6 +26089,15 @@
     ],
     "reason": "different volumes: positions 1 and 2 of waylon-duet-ruthless-mc, the title states Book 2, and they run 230 and 319 minutes",
     "target": "waylon-angel-and-the-ruthless-reaper"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "wayward-wayward-pines-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; wayward-wayward-pines-2 spells its title with the series position the plain work holds (\"wayward pines / 2\") and is read by max-meyers at 564 minutes against 564",
+    "target": "wayward-blake-crouch"
   },
   {
     "decision": "assert",
@@ -23887,6 +26192,15 @@
     "target": "when-the-shooting-starts"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "whispers-in-the-rigging-a-snarky-paranormal-detective-mystery-blue-moon-investigations-book-9"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; whispers-in-the-rigging-a-snarky-paranormal-detective-mystery-blue-moon-investigations-book-9 spells its title with the series and volume the plain work is listed at (\"a snarky paranormal detective mystery / blue moon investigations book 9\") and is read by charles-robert-fox at 455 minutes against 455",
+    "target": "whispers-in-the-rigging"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -23924,6 +26238,15 @@
     "target": "wie-ich-ein-magisches-imperium-errichtete-buch-2"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "wild-fire-a-shetland-island-mystery"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; wild-fire-a-shetland-island-mystery spells its title with a retailer genre tag (\"a shetland island mystery\") and is read by kenny-blyth at 644 minutes against 644",
+    "target": "wild-fire-ann-cleeves"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -23931,6 +26254,15 @@
     ],
     "reason": "different volumes: positions 1 and 2 of wilder-boys-series, the title states Book 2, and the same narrator reads them at 304 and 259 minutes",
     "target": "wilder-boys"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "wildest-dreams-an-enemies-to-lovers-romance-forbidden-love-book-2"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; wildest-dreams-an-enemies-to-lovers-romance-forbidden-love-book-2 spells its title with the series and volume the plain work is listed at (\"an enemies to lovers romance / forbidden love book 2\") and is read by savannah-peachwood, teddy-hamilton at 756 minutes against 756",
+    "target": "wildest-dreams-l-j-shen"
   },
   {
     "decision": "reject",
@@ -24042,6 +26374,15 @@
     "target": "within-a-budding-grove"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "without-a-trace-the-ohurleys-book-4"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; without-a-trace-the-ohurleys-book-4 spells its title with the series position the plain work holds (\"the ohurleys book 4\") and is read by marie-caliendo at 425 minutes against 425",
+    "target": "without-a-trace-nora-roberts"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -24076,6 +26417,15 @@
     ],
     "reason": "a young readers' edition is a distinct work with a different text (89 vs 70 minutes)",
     "target": "wolfpack-abby-wambach"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "wolfsong-green-creek-book-1"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; wolfsong-green-creek-book-1 spells its title with the series and volume the plain work is listed at (\"green creek book 1\") and is read by kirt-graves at 1120 minutes against 1120",
+    "target": "wolfsong"
   },
   {
     "decision": "reject",
@@ -24187,6 +26537,15 @@
     ],
     "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
     "target": "yo-antes-de-ti"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "you-me-and-the-land-of-lost-things"
+    ],
+    "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; you-me-and-the-land-of-lost-things spells its title with an ampersand for \"and\" and is read by andy-griffiths at 99 minutes against 100",
+    "target": "you-and-me-and-the-land-of-lost-things"
   },
   {
     "decision": "assert",

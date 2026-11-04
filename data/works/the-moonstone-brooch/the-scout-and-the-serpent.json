@@ -13454,6 +13454,7 @@
         "fairy-tales-folklore",
         "fantasy",
         "history",
+        "horror",
         "mythology"
       ],
       "id": "the-sea-of-monsters",
@@ -13622,6 +13623,164 @@
             }
           ],
           "work": "the-sea-of-monsters"
+        },
+        "jesse-bernstein-2010": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036ILH32",
+              "region": "us"
+            },
+            {
+              "asin": "B004RB5OPO",
+              "region": "de"
+            },
+            {
+              "asin": "B004EWV9DC",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 23707,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 731823,
+              "start_ms": 23707,
+              "title": "Chapter One: My Best Friend Shops for a Wedding Dress"
+            },
+            {
+              "length_ms": 1767479,
+              "start_ms": 755530,
+              "title": "Chapter Two: I Play Dodgeball with Cannibals"
+            },
+            {
+              "length_ms": 1294860,
+              "start_ms": 2523009,
+              "title": "Chapter Three: We Hail the Taxi of Eternal Torment"
+            },
+            {
+              "length_ms": 1035517,
+              "start_ms": 3817869,
+              "title": "Chapter Four: Tyson Plays with Fire"
+            },
+            {
+              "length_ms": 1890011,
+              "start_ms": 4853386,
+              "title": "Chapter Five: I Get a New Cabin Mate"
+            },
+            {
+              "length_ms": 1933061,
+              "start_ms": 6743397,
+              "title": "Chapter Six: Demon Pigeons Attack"
+            },
+            {
+              "length_ms": 2287490,
+              "start_ms": 8676458,
+              "title": "Chapter Seven: I Accept Gifts from a Stranger"
+            },
+            {
+              "length_ms": 1475581,
+              "start_ms": 10963948,
+              "title": "Chapter Eight: We Board the Princess Andromeda"
+            },
+            {
+              "length_ms": 1328645,
+              "start_ms": 12439529,
+              "title": "Chapter Nine: I Have the Worst Family Reunion Ever"
+            },
+            {
+              "length_ms": 1408359,
+              "start_ms": 13768174,
+              "title": "Chapter Ten: We Hitch a Ride with Dead Confederates"
+            },
+            {
+              "length_ms": 1773424,
+              "start_ms": 15176533,
+              "title": "Chapter Eleven: Clarisse Blows Up Everything"
+            },
+            {
+              "length_ms": 2170415,
+              "start_ms": 16949957,
+              "title": "Chapter Twelve: We Check in to CC's Spa and Resort"
+            },
+            {
+              "length_ms": 1657138,
+              "start_ms": 19120372,
+              "title": "Chapter Thirteen: Annabeth Tries to Swim Home"
+            },
+            {
+              "length_ms": 1340255,
+              "start_ms": 20777510,
+              "title": "Chapter Fourteen: We Meet the Sheep of Doom"
+            },
+            {
+              "length_ms": 1009441,
+              "start_ms": 22117765,
+              "title": "Chapter Fifteen: Nobody Gets the Fleece"
+            },
+            {
+              "length_ms": 671149,
+              "start_ms": 23127206,
+              "title": "Chapter Sixteen: I Go Down with the Ship"
+            },
+            {
+              "length_ms": 980810,
+              "start_ms": 23798355,
+              "title": "Chapter Seventeen: We Get a Surprise on Miami Beach"
+            },
+            {
+              "length_ms": 1220115,
+              "start_ms": 24779165,
+              "title": "Chapter Eighteen: The Party Ponies Invade"
+            },
+            {
+              "length_ms": 1522091,
+              "start_ms": 25999280,
+              "title": "Chapter Nineteen: The Chariot Race Ends with a Bang"
+            },
+            {
+              "length_ms": 982204,
+              "start_ms": 27521371,
+              "title": "Chapter Twenty: The Fleece Works Its Magic Too Well"
+            },
+            {
+              "length_ms": 31764,
+              "start_ms": 28503575,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81CrODM8RiL.jpg",
+          "id": "jesse-bernstein-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jesse-bernstein"
+          ],
+          "publisher": "Puffin",
+          "release_date": "2010-01-15",
+          "runtime_min": 475,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036ILH32",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004RB5OPO",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EWV9DC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-sea-of-monsters"
         }
       },
       "sources": [
@@ -13633,6 +13792,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B002V0Q70E",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0036ILH32",
           "type": "libex-import"
         }
       ],

@@ -2027,8 +2027,10 @@
         "action-adventure",
         "epic-fantasy",
         "fantasy",
+        "literary-fiction",
         "magical-realism",
-        "occult"
+        "occult",
+        "young-adult"
       ],
       "id": "the-rose-field",
       "language": "en",
@@ -2049,223 +2051,236 @@
             {
               "asin": "B0F66XSJKH",
               "region": "uk"
+            },
+            {
+              "asin": "B0F452D4QT",
+              "region": "us"
+            },
+            {
+              "asin": "B0F44W8SYR",
+              "region": "uk"
             }
           ],
           "chapters": [
             {
-              "length_ms": 27375,
+              "length_ms": 19550,
               "start_ms": 0,
-              "title": "Opening Titles"
+              "title": "Opening Credits"
             },
             {
-              "length_ms": 135581,
-              "start_ms": 27375,
-              "title": "Prologue"
+              "length_ms": 40356,
+              "start_ms": 19550,
+              "title": "Epigraph"
             },
             {
-              "length_ms": 5000,
-              "start_ms": 162956,
+              "length_ms": 93715,
+              "start_ms": 59906,
+              "title": "At the end of the previous book..."
+            },
+            {
+              "length_ms": 2945,
+              "start_ms": 153621,
               "title": "Part One"
             },
             {
-              "length_ms": 1850901,
-              "start_ms": 167956,
-              "title": "One: Beings of Another Kind"
+              "length_ms": 1851586,
+              "start_ms": 156566,
+              "title": "Chapter 1: Beings of Another Kind"
             },
             {
-              "length_ms": 3748861,
-              "start_ms": 2018857,
-              "title": "Two: The Infirmary"
+              "length_ms": 3748072,
+              "start_ms": 2008152,
+              "title": "Chapter 2: The Infirmary"
             },
             {
-              "length_ms": 3076017,
-              "start_ms": 5767718,
-              "title": "Three: Towards Aleppo"
+              "length_ms": 3075134,
+              "start_ms": 5756224,
+              "title": "Chapter 3: Towards Aleppo"
             },
             {
-              "length_ms": 2914011,
-              "start_ms": 8843735,
-              "title": "Four: At Marletto’s Café"
+              "length_ms": 2912803,
+              "start_ms": 8831358,
+              "title": "Chapter 4: At Marletto’s Café"
             },
             {
-              "length_ms": 1651867,
-              "start_ms": 11757746,
-              "title": "Five: Number Theory"
+              "length_ms": 1651054,
+              "start_ms": 11744161,
+              "title": "Chapter 5: Number Theory"
             },
             {
-              "length_ms": 2218504,
-              "start_ms": 13409613,
-              "title": "Six: Eagle Works Terrier 1500"
+              "length_ms": 2217482,
+              "start_ms": 13395215,
+              "title": "Chapter 6: Eagle Works Terrier 1500"
             },
             {
-              "length_ms": 1579258,
-              "start_ms": 15628117,
-              "title": "Seven: The Orange Tree"
+              "length_ms": 1578562,
+              "start_ms": 15612697,
+              "title": "Chapter 7: The Orange Tree"
             },
             {
-              "length_ms": 964649,
-              "start_ms": 17207375,
-              "title": "Eight: The Powers of the Air"
+              "length_ms": 963860,
+              "start_ms": 17191259,
+              "title": "Chapter 8: The Powers of the Air"
             },
             {
-              "length_ms": 5000,
-              "start_ms": 18172024,
+              "length_ms": 2865,
+              "start_ms": 18155119,
               "title": "Part Two"
             },
             {
-              "length_ms": 2621734,
-              "start_ms": 18177024,
-              "title": "Nine: Gold, and Gold"
+              "length_ms": 2622986,
+              "start_ms": 18157984,
+              "title": "Chapter 9: Gold, and Gold"
             },
             {
-              "length_ms": 751328,
-              "start_ms": 20798758,
-              "title": "Ten: Always Leila"
+              "length_ms": 750445,
+              "start_ms": 20780970,
+              "title": "Chapter 10: Always Leila"
             },
             {
-              "length_ms": 2375331,
-              "start_ms": 21550086,
-              "title": "Eleven: Mount Damāvand"
+              "length_ms": 2374588,
+              "start_ms": 21531415,
+              "title": "Chapter 11: Mount Damāvand"
             },
             {
-              "length_ms": 2112690,
-              "start_ms": 23925417,
-              "title": "Twelve: Resonating Lodestone"
+              "length_ms": 2111994,
+              "start_ms": 23906003,
+              "title": "Chapter 12: Resonating Lodestone"
             },
             {
-              "length_ms": 1638748,
-              "start_ms": 26038107,
-              "title": "Thirteen: A Spy in the House of God"
+              "length_ms": 1637889,
+              "start_ms": 26017997,
+              "title": "Chapter 13: A Spy in the House of God"
             },
             {
-              "length_ms": 940129,
-              "start_ms": 27676855,
-              "title": "Fourteen: Dynamic Illustration"
+              "length_ms": 939502,
+              "start_ms": 27655886,
+              "title": "Chapter 14: Dynamic Illustration"
             },
             {
-              "length_ms": 2362212,
-              "start_ms": 28616984,
-              "title": "Fifteen: An Island in the Flood"
+              "length_ms": 2361353,
+              "start_ms": 28595388,
+              "title": "Chapter 15: An Island in the Flood"
             },
             {
-              "length_ms": 2187900,
-              "start_ms": 30979196,
-              "title": "Sixteen: Out of Bounds"
+              "length_ms": 2187180,
+              "start_ms": 30956741,
+              "title": "Chapter 16: Out of Bounds"
             },
             {
-              "length_ms": 1791303,
-              "start_ms": 33167096,
-              "title": "Seventeen: The French Teacher"
+              "length_ms": 1790513,
+              "start_ms": 33143921,
+              "title": "Chapter 17: The French Teacher"
             },
             {
-              "length_ms": 2377769,
-              "start_ms": 34958399,
-              "title": "Eighteen: Noli Me Tangere"
+              "length_ms": 2376840,
+              "start_ms": 34934434,
+              "title": "Chapter 18: Noli Me Tangere"
             },
             {
-              "length_ms": 2392212,
-              "start_ms": 37336168,
-              "title": "Nineteen: Arctic Healing"
+              "length_ms": 2391353,
+              "start_ms": 37311274,
+              "title": "Chapter 19: Arctic Healing"
             },
             {
-              "length_ms": 2798886,
-              "start_ms": 39728380,
-              "title": "Twenty: The Sermon"
+              "length_ms": 2797702,
+              "start_ms": 39702627,
+              "title": "Chapter 20: The Sermon"
             },
             {
-              "length_ms": 1750807,
-              "start_ms": 42527266,
-              "title": "Twenty-One: The Clean Wind of God"
+              "length_ms": 1749925,
+              "start_ms": 42500329,
+              "title": "Chapter 21: The Clean Wind of God"
             },
             {
-              "length_ms": 2135748,
-              "start_ms": 44278073,
-              "title": "Twenty-Two: Coruscating"
+              "length_ms": 2134726,
+              "start_ms": 44250254,
+              "title": "Chapter 22: Coruscating"
             },
             {
-              "length_ms": 5000,
-              "start_ms": 46413821,
+              "length_ms": 3028,
+              "start_ms": 46384980,
               "title": "Part Three"
             },
             {
-              "length_ms": 1546046,
-              "start_ms": 46418821,
-              "title": "Twenty-Three: No, Impossible"
+              "length_ms": 1547182,
+              "start_ms": 46388008,
+              "title": "Chapter 23: No, Impossible"
             },
             {
-              "length_ms": 2717733,
-              "start_ms": 47964867,
-              "title": "Twenty-Four: The Death of Sorush"
+              "length_ms": 2716966,
+              "start_ms": 47935190,
+              "title": "Chapter 24: The Death of Sorush"
             },
             {
-              "length_ms": 1900344,
-              "start_ms": 50682600,
-              "title": "Twenty-Five: High Mountain Cradle"
+              "length_ms": 1899578,
+              "start_ms": 50652156,
+              "title": "Chapter 25: High Mountain Cradle"
             },
             {
-              "length_ms": 1914345,
-              "start_ms": 52582944,
-              "title": "Twenty-Six: The Hard Problem"
+              "length_ms": 1913719,
+              "start_ms": 52551734,
+              "title": "Chapter 26: The Hard Problem"
             },
             {
-              "length_ms": 1929346,
-              "start_ms": 54497289,
-              "title": "Twenty-Seven: The Bijou of Atlas"
+              "length_ms": 1928417,
+              "start_ms": 54465453,
+              "title": "Chapter 27: The Bijou of Atlas"
             },
             {
-              "length_ms": 2216367,
-              "start_ms": 56426635,
-              "title": "Twenty-Eight: Double Thunder"
+              "length_ms": 2215415,
+              "start_ms": 56393870,
+              "title": "Chapter 28: Double Thunder"
             },
             {
-              "length_ms": 1854252,
-              "start_ms": 58643002,
-              "title": "Twenty-Nine: Kilkenny Aflame"
+              "length_ms": 1853532,
+              "start_ms": 58609285,
+              "title": "Chapter 29: Kilkenny Aflame"
             },
             {
-              "length_ms": 2709025,
-              "start_ms": 60497254,
-              "title": "Thirty: He Is Younger Than You Are"
+              "length_ms": 2708073,
+              "start_ms": 60462817,
+              "title": "Chapter 30: He Is Younger Than You Are"
             },
             {
-              "length_ms": 2552848,
-              "start_ms": 63206279,
-              "title": "Thirty-One: Merchant People"
+              "length_ms": 2551873,
+              "start_ms": 63170890,
+              "title": "Chapter 31: Merchant People"
             },
             {
-              "length_ms": 2595967,
-              "start_ms": 65759127,
-              "title": "Thirty-Two: The Pieces Gather on the Board"
+              "length_ms": 2594992,
+              "start_ms": 65722763,
+              "title": "Chapter 32: The Pieces Gather on the Board"
             },
             {
-              "length_ms": 4098530,
-              "start_ms": 68355094,
-              "title": "Thirty-Three: Into the Red Building"
+              "length_ms": 4097602,
+              "start_ms": 68317755,
+              "title": "Chapter 33: Into the Red Building"
             },
             {
-              "length_ms": 1204535,
-              "start_ms": 72453624,
-              "title": "Thirty-Four: The Alkahest at Work"
+              "length_ms": 1203745,
+              "start_ms": 72415357,
+              "title": "Chapter 34: The Alkahest at Work"
             },
             {
-              "length_ms": 1056577,
-              "start_ms": 73658159,
-              "title": "Thirty-Five: Dust and Roses"
+              "length_ms": 1055973,
+              "start_ms": 73619102,
+              "title": "Chapter 35: Dust and Roses"
             },
             {
-              "length_ms": 2465262,
-              "start_ms": 74714736,
-              "title": "Thirty-Six: An Incident by the Lake at the Moon Festival"
+              "length_ms": 2464449,
+              "start_ms": 74675075,
+              "title": "Chapter 36: An Incident by the Lake at the Moon Festival"
             },
             {
-              "length_ms": 4139862,
-              "start_ms": 77179998,
-              "title": "Interview between Philip Pullman and Michael Sheen"
+              "length_ms": 4143856,
+              "start_ms": 77139524,
+              "title": "Bonus: Interview with Philip Pullman"
             },
             {
-              "length_ms": 63831,
-              "start_ms": 81319860,
-              "title": "Closing Credits"
+              "length_ms": 38288,
+              "start_ms": 81283380,
+              "title": "Credits"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/61HyfnT2pQL._SL500_.jpg",
@@ -2303,6 +2318,16 @@
               "imported_at": "2026-10-09",
               "ref": "B0F66XSJKH",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F452D4QT",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0F44W8SYR",
+              "type": "libex-import"
             }
           ],
           "work": "the-rose-field"
@@ -2317,6 +2342,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0F66XZJC2",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0F452D4QT",
           "type": "libex-import"
         }
       ],

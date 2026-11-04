@@ -5718,6 +5718,8 @@
       ],
       "genres": [
         "fantasy",
+        "paranormal",
+        "romance",
         "science-fiction",
         "steampunk",
         "young-adult"
@@ -5740,6 +5742,14 @@
             },
             {
               "asin": "B00B861ROI",
+              "region": "uk"
+            },
+            {
+              "asin": "B00B2T29IE",
+              "region": "us"
+            },
+            {
+              "asin": "B079V2NJ52",
               "region": "uk"
             }
           ],
@@ -5855,148 +5865,7 @@
               "imported_at": "2026-10-09",
               "ref": "B00B861ROI",
               "type": "libex-import"
-            }
-          ],
-          "work": "etiquette-and-espionage"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00B85YCRI",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Etiquette and Espionage"
-    },
-    "etiquette-espionage": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "gail-carriger"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "romance",
-        "science-fiction",
-        "steampunk",
-        "young-adult"
-      ],
-      "id": "etiquette-espionage",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "moira-quirk-2013": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00B2T29IE",
-              "region": "us"
             },
-            {
-              "asin": "B079V2NJ52",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1856064,
-              "start_ms": 0,
-              "title": "Lesson 1"
-            },
-            {
-              "length_ms": 1586573,
-              "start_ms": 1856064,
-              "title": "Lesson 2"
-            },
-            {
-              "length_ms": 1247097,
-              "start_ms": 3442637,
-              "title": "Lesson 3"
-            },
-            {
-              "length_ms": 2390401,
-              "start_ms": 4689734,
-              "title": "Lesson 4"
-            },
-            {
-              "length_ms": 1817426,
-              "start_ms": 7080135,
-              "title": "Lesson 5"
-            },
-            {
-              "length_ms": 2089424,
-              "start_ms": 8897561,
-              "title": "Lesson 6"
-            },
-            {
-              "length_ms": 1949872,
-              "start_ms": 10986985,
-              "title": "Lesson 7"
-            },
-            {
-              "length_ms": 1793974,
-              "start_ms": 12936857,
-              "title": "Lesson 8"
-            },
-            {
-              "length_ms": 1654840,
-              "start_ms": 14730831,
-              "title": "Lesson 9"
-            },
-            {
-              "length_ms": 1654979,
-              "start_ms": 16385671,
-              "title": "Lesson 10"
-            },
-            {
-              "length_ms": 1680753,
-              "start_ms": 18040650,
-              "title": "Lesson 11"
-            },
-            {
-              "length_ms": 1916714,
-              "start_ms": 19721403,
-              "title": "Lesson 12"
-            },
-            {
-              "length_ms": 1487285,
-              "start_ms": 21638117,
-              "title": "Lesson 13"
-            },
-            {
-              "length_ms": 2236035,
-              "start_ms": 23125402,
-              "title": "Lesson 14"
-            },
-            {
-              "length_ms": 1675923,
-              "start_ms": 25361437,
-              "title": "Lesson 15"
-            },
-            {
-              "length_ms": 2056824,
-              "start_ms": 27037360,
-              "title": "Lesson 16"
-            },
-            {
-              "length_ms": 3056396,
-              "start_ms": 29094184,
-              "title": "Lesson 17"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71LNDC7+H0L.jpg",
-          "id": "moira-quirk-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "moira-quirk"
-          ],
-          "publisher": "Little, Brown Young Readers",
-          "release_date": "2013-02-05",
-          "runtime_min": 535,
-          "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B00B2T29IE",
@@ -6008,17 +5877,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "etiquette-espionage"
+          "work": "etiquette-and-espionage"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00B85YCRI",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00B2T29IE",
           "type": "libex-import"
         }
       ],
-      "title": "Etiquette & Espionage"
+      "title": "Etiquette and Espionage"
     },
     "etiquette-espionage-booktrack-edition": {
       "added_at": "2026-08-02",

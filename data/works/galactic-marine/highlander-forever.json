@@ -12739,6 +12739,7 @@
       "genres": [
         "historical-fiction",
         "historical-romance",
+        "history",
         "romance"
       ],
       "id": "highlanders-protector",
@@ -12973,32 +12974,7 @@
             }
           ],
           "work": "highlanders-protector"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B0BSP5N1CS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Highlander's Protector"
-    },
-    "highlanders-protector-a-runaway-bride-highlander-romance": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "mariah-stone"
-      ],
-      "genres": [
-        "historical-fiction",
-        "historical-romance",
-        "history",
-        "romance"
-      ],
-      "id": "highlanders-protector-a-runaway-bride-highlander-romance",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "aaron-shedlock-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -13226,17 +13202,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "highlanders-protector-a-runaway-bride-highlander-romance"
+          "work": "highlanders-protector"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0BSP5N1CS",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FQ5P28YF",
           "type": "libex-import"
         }
       ],
-      "title": "Highlander's Protector - A Runaway Bride Highlander Romance"
+      "title": "Highlander's Protector"
     },
     "highlanders-ransom": {
       "added_at": "2026-07-29",

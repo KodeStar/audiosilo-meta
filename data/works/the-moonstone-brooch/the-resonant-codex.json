@@ -4125,6 +4125,7 @@
         "action-adventure",
         "comedy-humor",
         "fantasy",
+        "literary-fiction",
         "science-fiction"
       ],
       "id": "the-restaurant-at-the-end-of-the-universe",
@@ -4371,37 +4372,7 @@
             }
           ],
           "work": "the-restaurant-at-the-end-of-the-universe"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B002V5D5ZE",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B002V5D5ZE",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Restaurant at the End of the Universe"
-    },
-    "the-restaurant-at-the-end-of-the-universe-hitchhikers-guide-to-the-galaxy-book-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "douglas-adams"
-      ],
-      "genres": [
-        "action-adventure",
-        "comedy-humor",
-        "literary-fiction",
-        "science-fiction"
-      ],
-      "id": "the-restaurant-at-the-end-of-the-universe-hitchhikers-guide-to-the-galaxy-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "martin-freeman-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -4619,17 +4590,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-restaurant-at-the-end-of-the-universe-hitchhikers-guide-to-the-galaxy-book-2"
+          "work": "the-restaurant-at-the-end-of-the-universe"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B002V5D5ZE",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B002V5D5ZE",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DLBPMLRY",
           "type": "libex-import"
         }
       ],
-      "title": "The Restaurant at the End of the Universe: Hitchhiker's Guide to the Galaxy Book 2"
+      "title": "The Restaurant at the End of the Universe"
     },
     "the-restaurant-critics-wife": {
       "added_at": "2026-07-29",

@@ -10385,13 +10385,15 @@
     "war-masters-gate": {
       "added_at": "2026-08-02",
       "authors": [
-        "adrian-tchaikovsky"
+        "adrian-tchaikovsky",
+        "marion-billet"
       ],
       "genres": [
         "action-adventure",
         "epic-fantasy",
         "fantasy",
         "nature",
+        "science-fiction",
         "urban-fantasy"
       ],
       "id": "war-masters-gate",
@@ -10677,33 +10679,7 @@
             }
           ],
           "work": "war-masters-gate"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "152905043X",
-          "type": "libex-import"
-        }
-      ],
-      "title": "War Master's Gate"
-    },
-    "war-masters-gate-shadows-of-the-apt-9": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "adrian-tchaikovsky",
-        "marion-billet"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "science-fiction"
-      ],
-      "id": "war-masters-gate-shadows-of-the-apt-9",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "ben-allen-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10977,17 +10953,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "war-masters-gate-shadows-of-the-apt-9"
+          "work": "war-masters-gate"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "152905043X",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DMNZRVHG",
           "type": "libex-import"
         }
       ],
-      "title": "War Master's Gate: Shadows of the Apt 9"
+      "title": "War Master's Gate"
     },
     "war-memories-of-an-army-chaplain": {
       "added_at": "2026-10-29",

@@ -7844,6 +7844,7 @@
       ],
       "genres": [
         "action-adventure",
+        "classics",
         "dark-fantasy",
         "fantasy",
         "paranormal",
@@ -8047,30 +8048,7 @@
             }
           ],
           "work": "lady-midnight"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B017KWLVKS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Lady Midnight"
-    },
-    "lady-midnight-a-shadowhunter-novel": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "cassandra-clare"
-      ],
-      "genres": [
-        "classics",
-        "fantasy"
-      ],
-      "id": "lady-midnight-a-shadowhunter-novel",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "morena-baccarin-2017": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8258,17 +8236,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "lady-midnight-a-shadowhunter-novel"
+          "work": "lady-midnight"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B017KWLVKS",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B01MUCWVKM",
           "type": "libex-import"
         }
       ],
-      "title": "Lady Midnight: A Shadowhunter Novel"
+      "title": "Lady Midnight"
     },
     "lady-midnight-die-dunklen-machte-1": {
       "added_at": "2026-08-02",

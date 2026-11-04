@@ -702,6 +702,8 @@
         "m-a-larkin"
       ],
       "genres": [
+        "action-adventure",
+        "fantasy",
         "science-fiction",
         "space-opera"
       ],
@@ -812,33 +814,7 @@
             }
           ],
           "work": "astral-messiah"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B07VCB192S",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Astral Messiah"
-    },
-    "astral-messiah-mission-6": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "j-s-morin",
-        "m-a-larkin"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "astral-messiah-mission-6",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "mikael-naramore-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -941,17 +917,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "astral-messiah-mission-6"
+          "work": "astral-messiah"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B07VCB192S",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0D87R1P2T",
           "type": "libex-import"
         }
       ],
-      "title": "Astral Messiah: Mission 6"
+      "title": "Astral Messiah"
     },
     "astral-odyssey": {
       "added_at": "2026-08-02",

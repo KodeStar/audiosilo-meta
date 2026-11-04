@@ -3260,6 +3260,43 @@
             }
           ],
           "work": "blue-lightning"
+        },
+        "kenny-blyth-2025": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0DQWQF3Z1",
+              "region": "us"
+            },
+            {
+              "asin": "B0DQXQ5D5L",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Tj--0Q3SL.jpg",
+          "id": "kenny-blyth-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kenny-blyth"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2025-03-11",
+          "runtime_min": 620,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DQWQF3Z1",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0DQXQ5D5L",
+              "type": "libex-import"
+            }
+          ],
+          "work": "blue-lightning"
         }
       },
       "sources": [
@@ -3271,6 +3308,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B00UJXN8PC",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0DQWQF3Z1",
           "type": "libex-import"
         }
       ],
@@ -3545,67 +3587,6 @@
         }
       ],
       "title": "Blue Lightning: Carnival of Mysteries"
-    },
-    "blue-lightning-the-shetland-series-4": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "ann-cleeves"
-      ],
-      "genres": [
-        "mystery",
-        "police-procedural",
-        "thriller-suspense"
-      ],
-      "id": "blue-lightning-the-shetland-series-4",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "kenny-blyth-2025": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0DQWQF3Z1",
-              "region": "us"
-            },
-            {
-              "asin": "B0DQXQ5D5L",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Tj--0Q3SL.jpg",
-          "id": "kenny-blyth-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "kenny-blyth"
-          ],
-          "publisher": "Macmillan Digital Audio",
-          "release_date": "2025-03-11",
-          "runtime_min": 620,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0DQWQF3Z1",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0DQXQ5D5L",
-              "type": "libex-import"
-            }
-          ],
-          "work": "blue-lightning-the-shetland-series-4"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0DQWQF3Z1",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Blue Lightning: The Shetland Series 4"
     },
     "blue-lights-hot-work-in-the-soudan": {
       "added_at": "2026-10-30",

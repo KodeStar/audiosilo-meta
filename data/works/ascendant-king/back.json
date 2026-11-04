@@ -3411,6 +3411,90 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "davina-porter-2012": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B008DJEFCE",
+              "region": "us"
+            },
+            {
+              "asin": "B07B65JWVY",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2003000,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1773726,
+              "start_ms": 2003000,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1873804,
+              "start_ms": 3776726,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2180447,
+              "start_ms": 5650530,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2446176,
+              "start_ms": 7830977,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1900182,
+              "start_ms": 10277153,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2311825,
+              "start_ms": 12177335,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1905290,
+              "start_ms": 14489160,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1020749,
+              "start_ms": 16394450,
+              "title": "Chapter 9"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81jtjXB6aFL.jpg",
+          "id": "davina-porter-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "davina-porter"
+          ],
+          "publisher": "Blackstone Audio, Inc.",
+          "release_date": "2012-07-01",
+          "runtime_min": 290,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B008DJEFCE",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07B65JWVY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "back-in-society"
+        },
         "davina-porter-2016": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -3501,117 +3585,14 @@
           "imported_at": "2026-07-29",
           "ref": "B01M59R6G9",
           "type": "libex-import"
-        }
-      ],
-      "title": "Back in Society"
-    },
-    "back-in-society-a-regency-romance": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "m-c-beaton"
-      ],
-      "genres": [
-        "historical-fiction",
-        "historical-romance",
-        "romance"
-      ],
-      "id": "back-in-society-a-regency-romance",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "davina-porter-2012": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B008DJEFCE",
-              "region": "us"
-            },
-            {
-              "asin": "B07B65JWVY",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2003000,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1773726,
-              "start_ms": 2003000,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1873804,
-              "start_ms": 3776726,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2180447,
-              "start_ms": 5650530,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2446176,
-              "start_ms": 7830977,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1900182,
-              "start_ms": 10277153,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 2311825,
-              "start_ms": 12177335,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1905290,
-              "start_ms": 14489160,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1020749,
-              "start_ms": 16394450,
-              "title": "Chapter 9"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81jtjXB6aFL.jpg",
-          "id": "davina-porter-2012",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "davina-porter"
-          ],
-          "publisher": "Blackstone Audio, Inc.",
-          "release_date": "2012-07-01",
-          "runtime_min": 290,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B008DJEFCE",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B07B65JWVY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "back-in-society-a-regency-romance"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B008DJEFCE",
           "type": "libex-import"
         }
       ],
-      "title": "Back in Society: A Regency Romance"
+      "title": "Back in Society"
     },
     "back-in-the-burbs": {
       "added_at": "2026-07-29",

@@ -802,11 +802,14 @@
     "der-kokosnuss-klau": {
       "added_at": "2026-08-02",
       "authors": [
-        "margit-auer"
+        "margit-auer",
+        "matthias-kloppe",
+        "judith-ruyters"
       ],
       "genres": [
         "childrens",
         "comedy-humor",
+        "law",
         "mystery",
         "nature"
       ],
@@ -908,12 +911,189 @@
             }
           ],
           "work": "der-kokosnuss-klau"
+        },
+        "daniel-welbat-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GY9S5ZVX",
+              "region": "us"
+            },
+            {
+              "asin": "B0GY9LX63P",
+              "region": "de"
+            },
+            {
+              "asin": "B0GY9MH24T",
+              "region": "uk"
+            },
+            {
+              "asin": "B0GY9T8M5K",
+              "region": "au"
+            },
+            {
+              "asin": "B0GY9H27C1",
+              "region": "br"
+            },
+            {
+              "asin": "B0GY9F3LMX",
+              "region": "ca"
+            },
+            {
+              "asin": "B0GY9K8JQM",
+              "region": "es"
+            },
+            {
+              "asin": "B0GY9WG8YK",
+              "region": "fr"
+            },
+            {
+              "asin": "B0GY9TMKBV",
+              "region": "it"
+            },
+            {
+              "asin": "B0GY9T1H66",
+              "region": "jp"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 183994,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 133375,
+              "start_ms": 183994,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 130078,
+              "start_ms": 317369,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 198600,
+              "start_ms": 447447,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 204544,
+              "start_ms": 646047,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 271487,
+              "start_ms": 850591,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 215829,
+              "start_ms": 1122078,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 199366,
+              "start_ms": 1337907,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 150604,
+              "start_ms": 1537273,
+              "title": "Kapitel 9"
+            },
+            {
+              "length_ms": 240558,
+              "start_ms": 1687877,
+              "title": "Kapitel 10"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81S-4jSPgmL.jpg",
+          "id": "daniel-welbat-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "daniel-welbat",
+            "josephine-martz",
+            "katja-brugger",
+            "laura-maire",
+            "stefan-bronneke",
+            "tim-kreuer",
+            "verena-herkewitz"
+          ],
+          "publisher": "Silberfisch",
+          "release_date": "2026-09-25",
+          "runtime_min": 32,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GY9S5ZVX",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0GY9LX63P",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0GY9MH24T",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0GY9S5ZVX",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0GY9T8M5K",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0GY9H27C1",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0GY9F3LMX",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0GY9K8JQM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0GY9WG8YK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0GY9TMKBV",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0GY9T1H66",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-kokosnuss-klau"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "3844926984",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GY9S5ZVX",
           "type": "libex-import"
         }
       ],

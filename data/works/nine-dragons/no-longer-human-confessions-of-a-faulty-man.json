@@ -3137,68 +3137,6 @@
       ],
       "title": "No Man's Land: A fast-paced thriller with a killer twist"
     },
-    "no-mans-land-a-john-puller-novel-4": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "david-baldacci"
-      ],
-      "genres": [
-        "espionage",
-        "thriller-suspense",
-        "war-military-fiction"
-      ],
-      "id": "no-mans-land-a-john-puller-novel-4",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "kyf-brewer-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0DLBKWZQL",
-              "region": "us"
-            },
-            {
-              "asin": "B0DLBNDMT6",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91H-SAJU1JL.jpg",
-          "id": "kyf-brewer-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "kyf-brewer",
-            "orlagh-cassidy"
-          ],
-          "publisher": "Macmillan Digital Audio",
-          "release_date": "2024-10-29",
-          "runtime_min": 696,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0DLBKWZQL",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0DLBNDMT6",
-              "type": "libex-import"
-            }
-          ],
-          "work": "no-mans-land-a-john-puller-novel-4"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0DLBKWZQL",
-          "type": "libex-import"
-        }
-      ],
-      "title": "No Man's Land: A John Puller Novel 4"
-    },
     "no-mans-land-an-f-b-i-k-9-novel-book-4": {
       "added_at": "2026-07-29",
       "authors": [
@@ -3438,6 +3376,7 @@
         "david-baldacci"
       ],
       "genres": [
+        "espionage",
         "mystery",
         "thriller-suspense",
         "war-military-fiction"
@@ -3963,12 +3902,55 @@
             }
           ],
           "work": "no-mans-land-david-baldacci"
+        },
+        "kyf-brewer-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0DLBKWZQL",
+              "region": "us"
+            },
+            {
+              "asin": "B0DLBNDMT6",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91H-SAJU1JL.jpg",
+          "id": "kyf-brewer-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kyf-brewer",
+            "orlagh-cassidy"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2024-10-29",
+          "runtime_min": 696,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DLBKWZQL",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0DLBNDMT6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "no-mans-land-david-baldacci"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B01KDCWFVQ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0DLBKWZQL",
           "type": "libex-import"
         }
       ],

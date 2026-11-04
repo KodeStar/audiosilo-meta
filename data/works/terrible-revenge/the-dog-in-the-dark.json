@@ -1029,7 +1029,9 @@
         "phyllis-wheeler"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
+        "fantasy",
         "nature",
         "religious-fiction",
         "science-fiction",
@@ -1039,6 +1041,145 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "keith-a-robinson-2023": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B0CJN754X1",
+              "region": "us"
+            },
+            {
+              "asin": "B0CJMV9QFF",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 14814,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 204080,
+              "start_ms": 14814,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 267122,
+              "start_ms": 218894,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 436163,
+              "start_ms": 486016,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 366689,
+              "start_ms": 922179,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 386983,
+              "start_ms": 1288868,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 522774,
+              "start_ms": 1675851,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 396898,
+              "start_ms": 2198625,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 320830,
+              "start_ms": 2595523,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 407812,
+              "start_ms": 2916353,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 252331,
+              "start_ms": 3324165,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 443617,
+              "start_ms": 3576496,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 429824,
+              "start_ms": 4020113,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 514879,
+              "start_ms": 4449937,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 255883,
+              "start_ms": 4964816,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 329235,
+              "start_ms": 5220699,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 492866,
+              "start_ms": 5549934,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 691606,
+              "start_ms": 6042800,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 322641,
+              "start_ms": 6734406,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 30881,
+              "start_ms": 7057047,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81ZZwJVCYFL.jpg",
+          "id": "keith-a-robinson-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "keith-a-robinson"
+          ],
+          "publisher": "Motherboard Books",
+          "release_date": "2023-09-22",
+          "runtime_min": 117,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B0CJN754X1",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0CJMV9QFF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-dog-snatcher"
+        },
         "keith-a-robinson-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1184,173 +1325,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0DLHP6RQ2",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Dog Snatcher"
-    },
-    "the-dog-snatcher-a-childrens-fantasy-adventure": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "phyllis-wheeler"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy",
-        "nature"
-      ],
-      "id": "the-dog-snatcher-a-childrens-fantasy-adventure",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "keith-a-robinson-2023": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B0CJN754X1",
-              "region": "us"
-            },
-            {
-              "asin": "B0CJMV9QFF",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 14814,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 204080,
-              "start_ms": 14814,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 267122,
-              "start_ms": 218894,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 436163,
-              "start_ms": 486016,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 366689,
-              "start_ms": 922179,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 386983,
-              "start_ms": 1288868,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 522774,
-              "start_ms": 1675851,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 396898,
-              "start_ms": 2198625,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 320830,
-              "start_ms": 2595523,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 407812,
-              "start_ms": 2916353,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 252331,
-              "start_ms": 3324165,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 443617,
-              "start_ms": 3576496,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 429824,
-              "start_ms": 4020113,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 514879,
-              "start_ms": 4449937,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 255883,
-              "start_ms": 4964816,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 329235,
-              "start_ms": 5220699,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 492866,
-              "start_ms": 5549934,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 691606,
-              "start_ms": 6042800,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 322641,
-              "start_ms": 6734406,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 30881,
-              "start_ms": 7057047,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81ZZwJVCYFL.jpg",
-          "id": "keith-a-robinson-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "keith-a-robinson"
-          ],
-          "publisher": "Motherboard Books",
-          "release_date": "2023-09-22",
-          "runtime_min": 117,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B0CJN754X1",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0CJMV9QFF",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-dog-snatcher-a-childrens-fantasy-adventure"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B0CJN754X1",
           "type": "libex-import"
         }
       ],
-      "title": "The Dog Snatcher: A Children's Fantasy Adventure"
+      "title": "The Dog Snatcher"
     },
     "the-dog-stars-movie-tie-in-edition": {
       "added_at": "2026-07-29",

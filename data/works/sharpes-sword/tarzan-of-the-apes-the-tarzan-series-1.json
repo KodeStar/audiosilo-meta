@@ -8229,6 +8229,65 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "stig-wemyss-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00BFV6ZIO",
+              "region": "us"
+            },
+            {
+              "asin": "B00BFVKE9K",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 865965,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 542000,
+              "start_ms": 865965,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1000037,
+              "start_ms": 1407965,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 742992,
+              "start_ms": 2408002,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61vwXD+m5WL.jpg",
+          "id": "stig-wemyss-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stig-wemyss"
+          ],
+          "publisher": "Bolinda Publishing Pty Ltd",
+          "release_date": "2013-02-17",
+          "runtime_min": 52,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00BFV6ZIO",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B00BFVKE9K",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tashi-and-the-ghosts-and-other-stories"
+        },
         "stig-wemyss-2022": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8293,6 +8352,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B09W375RB7",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00BFV6ZIO",
           "type": "libex-import"
         }
       ],
@@ -8539,88 +8603,6 @@
         }
       ],
       "title": "Tashi Lost in the City"
-    },
-    "tashi-the-ghosts-and-other-stories": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "barbara-fienberg",
-        "anna-fienberg"
-      ],
-      "genres": [
-        "childrens"
-      ],
-      "id": "tashi-the-ghosts-and-other-stories",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "stig-wemyss-2013": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00BFV6ZIO",
-              "region": "us"
-            },
-            {
-              "asin": "B00BFVKE9K",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 865965,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 542000,
-              "start_ms": 865965,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1000037,
-              "start_ms": 1407965,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 742992,
-              "start_ms": 2408002,
-              "title": "Chapter 4"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/61vwXD+m5WL.jpg",
-          "id": "stig-wemyss-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "stig-wemyss"
-          ],
-          "publisher": "Bolinda Publishing Pty Ltd",
-          "release_date": "2013-02-17",
-          "runtime_min": 52,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00BFV6ZIO",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B00BFVKE9K",
-              "type": "libex-import"
-            }
-          ],
-          "work": "tashi-the-ghosts-and-other-stories"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00BFV6ZIO",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Tashi & the Ghosts and Other Stories"
     },
     "task-force-88-gods-of-justice": {
       "added_at": "2026-08-02",

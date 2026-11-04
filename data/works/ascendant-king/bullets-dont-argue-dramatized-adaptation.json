@@ -3148,12 +3148,63 @@
             }
           ],
           "work": "bully"
+        },
+        "abby-craden-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B09LDFPTCV",
+              "region": "us"
+            },
+            {
+              "asin": "B09LDF6TGD",
+              "region": "de"
+            },
+            {
+              "asin": "B09LDFMBH9",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1LIRKhAGXL.jpg",
+          "id": "abby-craden-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "abby-craden"
+          ],
+          "publisher": "Little, Brown Audio",
+          "release_date": "2021-11-25",
+          "runtime_min": 570,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09LDFPTCV",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B09LDF6TGD",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B09LDFMBH9",
+              "type": "libex-import"
+            }
+          ],
+          "work": "bully"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B00KDPJU8K",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09LDFPTCV",
           "type": "libex-import"
         }
       ],
@@ -3688,75 +3739,6 @@
         }
       ],
       "title": "Bully & Exit"
-    },
-    "bully-fall-away-book-1": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "penelope-douglas"
-      ],
-      "genres": [
-        "contemporary-romance",
-        "romance"
-      ],
-      "id": "bully-fall-away-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "abby-craden-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09LDFPTCV",
-              "region": "us"
-            },
-            {
-              "asin": "B09LDF6TGD",
-              "region": "de"
-            },
-            {
-              "asin": "B09LDFMBH9",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A1LIRKhAGXL.jpg",
-          "id": "abby-craden-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "abby-craden"
-          ],
-          "publisher": "Little, Brown Audio",
-          "release_date": "2021-11-25",
-          "runtime_min": 570,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09LDFPTCV",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B09LDF6TGD",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B09LDFMBH9",
-              "type": "libex-import"
-            }
-          ],
-          "work": "bully-fall-away-book-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09LDFPTCV",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Bully: Fall Away, Book 1"
     },
     "bully-king": {
       "added_at": "2026-07-29",

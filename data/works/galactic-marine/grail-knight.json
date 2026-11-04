@@ -8241,6 +8241,7 @@
       "genres": [
         "action-adventure",
         "fantasy",
+        "romance",
         "steampunk"
       ],
       "id": "grand-tour",
@@ -8450,31 +8451,7 @@
             }
           ],
           "work": "grand-tour"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0CQDGVG2F",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Grand Tour"
-    },
-    "grand-tour-the-brass-queen-ii": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "elizabeth-chatsworth"
-      ],
-      "genres": [
-        "fantasy",
-        "romance",
-        "steampunk"
-      ],
-      "id": "grand-tour-the-brass-queen-ii",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "erin-bennett-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8677,17 +8654,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "grand-tour-the-brass-queen-ii"
+          "work": "grand-tour"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CQDGVG2F",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FBHQHC5M",
           "type": "libex-import"
         }
       ],
-      "title": "Grand Tour: The Brass Queen II"
+      "title": "Grand Tour"
     },
     "grand-transitions": {
       "added_at": "2026-07-29",

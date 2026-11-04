@@ -2245,8 +2245,10 @@
       "genres": [
         "dystopian",
         "medicine",
+        "post-apocalyptic",
         "science-fiction",
-        "thriller-suspense"
+        "thriller-suspense",
+        "war-military-fiction"
       ],
       "id": "the-cascade-preppers",
       "language": "en",
@@ -2520,32 +2522,7 @@
             }
           ],
           "work": "the-cascade-preppers"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B00T3DBYL4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Cascade Preppers"
-    },
-    "the-cascade-preppers-a-post-apocalyptic-virus-pandemic-survival-thriller": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "a-r-shaw"
-      ],
-      "genres": [
-        "dystopian",
-        "post-apocalyptic",
-        "science-fiction",
-        "war-military-fiction"
-      ],
-      "id": "the-cascade-preppers-a-post-apocalyptic-virus-pandemic-survival-thriller",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "darriel-driml-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2813,17 +2790,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-cascade-preppers-a-post-apocalyptic-virus-pandemic-survival-thriller"
+          "work": "the-cascade-preppers"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B00T3DBYL4",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0GR1PG3HT",
           "type": "libex-import"
         }
       ],
-      "title": "The Cascade Preppers: A Post-Apocalyptic Virus Pandemic Survival Thriller"
+      "title": "The Cascade Preppers"
     },
     "the-case-against-barack-obama": {
       "added_at": "2026-07-29",

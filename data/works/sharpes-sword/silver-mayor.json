@@ -5083,6 +5083,7 @@
         "richelle-mead"
       ],
       "genres": [
+        "childrens",
         "fantasy",
         "paranormal",
         "romance",
@@ -5251,6 +5252,165 @@
             }
           ],
           "work": "silver-shadows"
+        },
+        "alden-ford-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B076XFXQ8X",
+              "region": "us"
+            },
+            {
+              "asin": "B076XPXZ1T",
+              "region": "de"
+            },
+            {
+              "asin": "B076XDG9M3",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1245146,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1776140,
+              "start_ms": 1245146,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2083549,
+              "start_ms": 3021286,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1544521,
+              "start_ms": 5104835,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1906102,
+              "start_ms": 6649356,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1839949,
+              "start_ms": 8555458,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1730443,
+              "start_ms": 10395407,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1548422,
+              "start_ms": 12125850,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1529242,
+              "start_ms": 13674272,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1574429,
+              "start_ms": 15203514,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1619568,
+              "start_ms": 16777943,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1968146,
+              "start_ms": 18397511,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1754151,
+              "start_ms": 20365657,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1681542,
+              "start_ms": 22119808,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1951172,
+              "start_ms": 23801350,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1995128,
+              "start_ms": 25752522,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1571085,
+              "start_ms": 27747650,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1751968,
+              "start_ms": 29318735,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 2057148,
+              "start_ms": 31070703,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1476487,
+              "start_ms": 33127851,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1930135,
+              "start_ms": 34604338,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1981637,
+              "start_ms": 36534473,
+              "title": "Chapter 22"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91XSltal3lL.jpg",
+          "id": "alden-ford-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alden-ford",
+            "emily-shaffer"
+          ],
+          "publisher": "Penguin",
+          "release_date": "2017-11-16",
+          "runtime_min": 641,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B076XFXQ8X",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B076XPXZ1T",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B076XDG9M3",
+              "type": "libex-import"
+            }
+          ],
+          "work": "silver-shadows"
         }
       },
       "sources": [
@@ -5262,6 +5422,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B00K8CYO16",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B076XFXQ8X",
           "type": "libex-import"
         }
       ],

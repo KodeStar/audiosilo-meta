@@ -5654,12 +5654,112 @@
       "genres": [
         "contemporary-romance",
         "erotica",
-        "romance"
+        "romance",
+        "womens-fiction"
       ],
       "id": "have-me",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "sofia-willingham-2014": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00P2YGO3Q",
+              "region": "us"
+            },
+            {
+              "asin": "B079VRQ4WY",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1268877,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1951590,
+              "start_ms": 1268877,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 490428,
+              "start_ms": 3220467,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 934951,
+              "start_ms": 3710895,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1887550,
+              "start_ms": 4645846,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 696203,
+              "start_ms": 6533396,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 504476,
+              "start_ms": 7229599,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1221810,
+              "start_ms": 7734075,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1456401,
+              "start_ms": 8955885,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 771575,
+              "start_ms": 10412286,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1716744,
+              "start_ms": 11183861,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 431472,
+              "start_ms": 12900605,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91S+zlvNpQL.jpg",
+          "id": "sofia-willingham-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sofia-willingham"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2014-11-11",
+          "runtime_min": 222,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00P2YGO3Q",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B079VRQ4WY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "have-me"
+        },
         "sofia-willingham-2015": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -5765,133 +5865,14 @@
           "imported_at": "2026-07-29",
           "ref": "B00UNF6UII",
           "type": "libex-import"
-        }
-      ],
-      "title": "Have Me"
-    },
-    "have-me-a-stark-ever-after-novella": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "j-kenner"
-      ],
-      "genres": [
-        "contemporary-romance",
-        "erotica",
-        "romance",
-        "womens-fiction"
-      ],
-      "id": "have-me-a-stark-ever-after-novella",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "sofia-willingham-2014": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B00P2YGO3Q",
-              "region": "us"
-            },
-            {
-              "asin": "B079VRQ4WY",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1268877,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1951590,
-              "start_ms": 1268877,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 490428,
-              "start_ms": 3220467,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 934951,
-              "start_ms": 3710895,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1887550,
-              "start_ms": 4645846,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 696203,
-              "start_ms": 6533396,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 504476,
-              "start_ms": 7229599,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1221810,
-              "start_ms": 7734075,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1456401,
-              "start_ms": 8955885,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 771575,
-              "start_ms": 10412286,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1716744,
-              "start_ms": 11183861,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 431472,
-              "start_ms": 12900605,
-              "title": "Chapter 12"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91S+zlvNpQL.jpg",
-          "id": "sofia-willingham-2014",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "sofia-willingham"
-          ],
-          "publisher": "Random House Audio",
-          "release_date": "2014-11-11",
-          "runtime_min": 222,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B00P2YGO3Q",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B079VRQ4WY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "have-me-a-stark-ever-after-novella"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00P2YGO3Q",
           "type": "libex-import"
         }
       ],
-      "title": "Have Me: A Stark Ever After Novella"
+      "title": "Have Me"
     },
     "have-mercy": {
       "added_at": "2026-07-29",

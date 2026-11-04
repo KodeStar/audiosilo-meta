@@ -3868,7 +3868,9 @@
       ],
       "genres": [
         "fantasy",
-        "romance"
+        "paranormal",
+        "romance",
+        "young-adult"
       ],
       "id": "skye",
       "language": "en",
@@ -4042,12 +4044,186 @@
             }
           ],
           "work": "skye"
+        },
+        "angela-rysk-2024": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B0CV2GD8VX",
+              "region": "us"
+            },
+            {
+              "asin": "B0CV33TZ3G",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 16369,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 130728,
+              "start_ms": 16369,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 304715,
+              "start_ms": 147097,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 120743,
+              "start_ms": 451812,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 993721,
+              "start_ms": 572555,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1234210,
+              "start_ms": 1566276,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 334971,
+              "start_ms": 2800486,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1161020,
+              "start_ms": 3135457,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1044712,
+              "start_ms": 4296477,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 452069,
+              "start_ms": 5341189,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 196858,
+              "start_ms": 5793258,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1029688,
+              "start_ms": 5990116,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 944773,
+              "start_ms": 7019804,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1447833,
+              "start_ms": 7964577,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1035726,
+              "start_ms": 9412410,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 821730,
+              "start_ms": 10448136,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 522402,
+              "start_ms": 11269866,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1322887,
+              "start_ms": 11792268,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1135641,
+              "start_ms": 13115155,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1009557,
+              "start_ms": 14250796,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 848875,
+              "start_ms": 15260353,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1591635,
+              "start_ms": 16109228,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 842605,
+              "start_ms": 17700863,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 175798,
+              "start_ms": 18543468,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 931538,
+              "start_ms": 18719266,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 26725,
+              "start_ms": 19650804,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ShuVHHNsL.jpg",
+          "id": "angela-rysk-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "angela-rysk"
+          ],
+          "publisher": "Sugar Creek Press",
+          "release_date": "2024-02-06",
+          "runtime_min": 327,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B0CV2GD8VX",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0CV33TZ3G",
+              "type": "libex-import"
+            }
+          ],
+          "work": "skye"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-01",
           "ref": "B0753K8P2P",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0CV2GD8VX",
           "type": "libex-import"
         }
       ],
@@ -5010,199 +5186,6 @@
         }
       ],
       "title": "Skye O'Malley"
-    },
-    "skye-the-dragon-kings-book-4": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "kimberly-loth"
-      ],
-      "genres": [
-        "paranormal",
-        "romance",
-        "young-adult"
-      ],
-      "id": "skye-the-dragon-kings-book-4",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "angela-rysk-2024": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B0CV2GD8VX",
-              "region": "us"
-            },
-            {
-              "asin": "B0CV33TZ3G",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 16369,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 130728,
-              "start_ms": 16369,
-              "title": "Prologue"
-            },
-            {
-              "length_ms": 304715,
-              "start_ms": 147097,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 120743,
-              "start_ms": 451812,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 993721,
-              "start_ms": 572555,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1234210,
-              "start_ms": 1566276,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 334971,
-              "start_ms": 2800486,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1161020,
-              "start_ms": 3135457,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1044712,
-              "start_ms": 4296477,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 452069,
-              "start_ms": 5341189,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 196858,
-              "start_ms": 5793258,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1029688,
-              "start_ms": 5990116,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 944773,
-              "start_ms": 7019804,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1447833,
-              "start_ms": 7964577,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1035726,
-              "start_ms": 9412410,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 821730,
-              "start_ms": 10448136,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 522402,
-              "start_ms": 11269866,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1322887,
-              "start_ms": 11792268,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1135641,
-              "start_ms": 13115155,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1009557,
-              "start_ms": 14250796,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 848875,
-              "start_ms": 15260353,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1591635,
-              "start_ms": 16109228,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 842605,
-              "start_ms": 17700863,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 175798,
-              "start_ms": 18543468,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 931538,
-              "start_ms": 18719266,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 26725,
-              "start_ms": 19650804,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91ShuVHHNsL.jpg",
-          "id": "angela-rysk-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "angela-rysk"
-          ],
-          "publisher": "Sugar Creek Press",
-          "release_date": "2024-02-06",
-          "runtime_min": 327,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B0CV2GD8VX",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0CV33TZ3G",
-              "type": "libex-import"
-            }
-          ],
-          "work": "skye-the-dragon-kings-book-4"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B0CV2GD8VX",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Skye: The Dragon Kings, Book 4"
     },
     "skyfall-the-saga-of-the-skolian-empire-book-9": {
       "added_at": "2026-08-02",

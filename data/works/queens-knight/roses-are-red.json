@@ -9870,6 +9870,7 @@
       "genres": [
         "historical-fiction",
         "historical-romance",
+        "mystery",
         "parenting-relationships",
         "romance"
       ],
@@ -10453,32 +10454,7 @@
             }
           ],
           "work": "ross-poldark"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B00VQO2NX6",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Ross Poldark"
-    },
-    "ross-poldark-a-poldark-novel-1": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "winston-graham"
-      ],
-      "genres": [
-        "historical-fiction",
-        "historical-romance",
-        "mystery",
-        "romance"
-      ],
-      "id": "ross-poldark-a-poldark-novel-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "oliver-j-hembrough-2024": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -10514,17 +10490,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "ross-poldark-a-poldark-novel-1"
+          "work": "ross-poldark"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B00VQO2NX6",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0DNNCB6YW",
           "type": "libex-import"
         }
       ],
-      "title": "Ross Poldark: A Poldark Novel 1"
+      "title": "Ross Poldark"
     },
     "rossen-to-the-rescue": {
       "added_at": "2026-07-29",
