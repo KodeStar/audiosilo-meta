@@ -67,6 +67,10 @@ type LibrivoxRestated struct {
 	// project's sections one to one (none stored, or another count), so no
 	// section number or reader was written on them.
 	Chapterless int
+	// StaleReadersDropped counts the chapter readers dropped from a recording
+	// whose row lists no sections because they are no longer narrators (the
+	// rest of its chapter facts are kept).
+	StaleReadersDropped int
 	// ReadersUnresolved counts the recordings left without chapter readers
 	// because a section's reader resolved to none of its narrators.
 	ReadersUnresolved int
@@ -235,12 +239,25 @@ func (p *planner) librivoxReaderOn(c librivoxCredit, narrators map[string]bool) 
 // or an edit since) carry no section's number or readers: any this pass wrote
 // earlier is cleared, so a reader who has since stopped being a narrator can
 // never be left on a chapter (which pkg/check would refuse, failing the run).
+// A row that lists NO sections at all says nothing about them (a thinner
+// fetch), so it clears nothing it cannot contradict: the section numbers stay,
+// and so does every chapter reader still one of the narrators
+// (keepNarratingReaders).
 func (p *planner) restateLibrivoxChapters(rec map[string]any, f *librivoxFacts, set func(map[string]any, string, any)) {
 	chs, _ := rec["chapters"].([]any)
-	if len(chs) == 0 || len(chs) != len(f.sections) {
-		if len(f.sections) > 0 {
-			p.summary.LibrivoxRestated.Chapterless++
+	narrators := map[string]bool{}
+	list, _ := rec["narrators"].([]any)
+	for _, n := range list {
+		if s, ok := n.(string); ok {
+			narrators[s] = true
 		}
+	}
+	if len(f.sections) == 0 {
+		p.keepNarratingReaders(chs, narrators, set)
+		return
+	}
+	if len(chs) != len(f.sections) {
+		p.summary.LibrivoxRestated.Chapterless++
 		for _, v := range chs {
 			if ch, ok := v.(map[string]any); ok {
 				set(ch, "readers", nil)
@@ -248,13 +265,6 @@ func (p *planner) restateLibrivoxChapters(rec map[string]any, f *librivoxFacts, 
 			}
 		}
 		return
-	}
-	narrators := map[string]bool{}
-	list, _ := rec["narrators"].([]any)
-	for _, n := range list {
-		if s, ok := n.(string); ok {
-			narrators[s] = true
-		}
 	}
 	readers := make([][]string, len(f.sections))
 	resolved, solo := true, len(narrators) == 1
@@ -296,6 +306,44 @@ func (p *planner) restateLibrivoxChapters(rec map[string]any, f *librivoxFacts, 
 			rd = listOrNil(readers[i])
 		}
 		set(ch, "readers", rd)
+	}
+}
+
+// keepNarratingReaders is restateLibrivoxChapters for a row listing no
+// sections: each chapter keeps the readers still among the narrators and drops
+// the rest (counted, LibrivoxRestated.StaleReadersDropped). Should one narrator
+// then be left listed on every chapter, the lists go entirely - that is the
+// spelling pkg/check refuses, and absence already says it.
+func (p *planner) keepNarratingReaders(chs []any, narrators map[string]bool, set func(map[string]any, string, any)) {
+	kept := make([][]any, len(chs))
+	every, dropped := len(chs) > 0, 0
+	for i, v := range chs {
+		ch, _ := v.(map[string]any)
+		rs, _ := ch["readers"].([]any)
+		for _, r := range rs {
+			if s, ok := r.(string); ok && narrators[s] {
+				kept[i] = append(kept[i], r)
+			} else {
+				dropped++
+			}
+		}
+		every = every && len(kept[i]) > 0
+	}
+	if dropped == 0 {
+		return
+	}
+	p.summary.LibrivoxRestated.StaleReadersDropped += dropped
+	solo := every && len(narrators) == 1
+	for i, v := range chs {
+		ch, ok := v.(map[string]any)
+		if !ok {
+			continue
+		}
+		if solo {
+			set(ch, "readers", nil)
+		} else {
+			set(ch, "readers", listOrNil(kept[i]))
+		}
 	}
 }
 

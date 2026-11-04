@@ -471,3 +471,37 @@ func TestLibrivoxStaleChapterReadersAreCleared(t *testing.T) {
 		t.Fatalf("tree failed validation:\n%v", res.Problems)
 	}
 }
+
+func TestLibrivoxSectionlessRowKeepsTheChapterFacts(t *testing.T) {
+	// The row lists no sections (a thinner fetch): it contradicts nothing, so
+	// the stored section number and every reader still narrating stay; only the
+	// reader who is no longer a narrator is dropped (counted), so the run's
+	// validation passes.
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, map[string]string{
+		personAddr("someone-else"): testpack.PersonJSON(t, "someone-else", "Someone Else"),
+		personAddr("other-reader"): testpack.PersonJSON(t, "other-reader", "Other Reader"),
+		personAddr("gone-reader"):  testpack.PersonJSON(t, "gone-reader", "Gone Reader"),
+		personAddr("franz-kafka"):  testpack.PersonJSON(t, "franz-kafka", "Franz Kafka"),
+		workAddr("metamorphosis"):  testpack.WorkJSON(t, "metamorphosis", "Metamorphosis", testpack.WithAuthors("franz-kafka")),
+		recAddr("metamorphosis", "se"): testpack.WithFields(t, testpack.RecJSON(t, "se", "metamorphosis",
+			testpack.WithNarrators("someone-else", "other-reader")), map[string]any{"librivox_id": 527, "chapters": []map[string]any{
+			{"title": "I", "start_ms": 0, "length_ms": 1000, "readers": []string{"someone-else"}, "section_number": 0},
+			{"title": "II", "start_ms": 1000, "length_ms": 1000, "readers": []string{"gone-reader", "other-reader"}},
+		}}),
+	})
+	pr := fixtureProject(t, 527)
+	pr.Sections = nil
+	sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
+	if sum.LibrivoxRestated.StaleReadersDropped != 1 || sum.LibrivoxRestated.Chapterless != 0 {
+		t.Errorf("restated = %+v, want one stale reader dropped and nothing chapterless", sum.LibrivoxRestated)
+	}
+	chs := lvFidelityOf(t, dataDir, "metamorphosis", "se").Chapters
+	if len(chs) != 2 || !reflect.DeepEqual(chs[0].Readers, []string{"someone-else"}) || chs[0].SectionNumber == nil || *chs[0].SectionNumber != 0 ||
+		!reflect.DeepEqual(chs[1].Readers, []string{"other-reader"}) {
+		t.Errorf("chapters = %+v, want the narrating readers and the section number kept", chs)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("tree failed validation:\n%v", res.Problems)
+	}
+}

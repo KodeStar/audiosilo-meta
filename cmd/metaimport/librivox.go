@@ -134,6 +134,10 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 			r.Recordings, plural(r.Recordings, "recording", "recordings"), r.Chapterless, r.ReadersUnresolved,
 			r.TranslatorsCreated, plural(r.TranslatorsCreated, "translator", "translators"),
 			r.TranslatorsUnresolved, plural(r.TranslatorsUnresolved, "credit", "credits"))
+		if r.StaleReadersDropped > 0 {
+			fmt.Printf("librivox: %d chapter %s dropped from recordings whose row lists no sections (no longer narrators)\n",
+				r.StaleReadersDropped, plural(r.StaleReadersDropped, "reader", "readers"))
+		}
 		fmt.Printf("librivox: life years filled on %d %s; %d %s a year LibriVox contradicts (kept, warned)\n",
 			r.LifeYearsFilled, plural(r.LifeYearsFilled, "person", "people"),
 			r.LifeYearConflicts, plural(r.LifeYearConflicts, "person states", "people state"))
