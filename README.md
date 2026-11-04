@@ -446,7 +446,9 @@ Libation, AudioSilo books) keeps the book and leaves that author, contributor
 or narrator off it, listing each under `credits not recorded` by ASIN with the
 reason `unsluggable` (also in a library-import issue's intake notes). A book
 left with no individual author is skipped as `missing-author`, and one left
-with no narrator as `missing-narrator`, each with a warning naming the names.
+with no narrator as `missing-narrator`, each with a warning naming the names;
+the library-import intake verdict says how many books were skipped this way
+(they need a maintainer) rather than suggesting the file is the wrong format.
 
 A match the rules cannot settle is never guessed: the project is skipped and
 listed in the import report's **worklist**, one line per project with its id,

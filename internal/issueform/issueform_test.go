@@ -1244,6 +1244,41 @@ func TestImportReportsUnsluggableCredits(t *testing.T) {
 	}
 }
 
+// TestImportExplainsBooksSkippedForUnsluggableNames: a library whose books
+// credit only names that slug to nothing (a Korean listener's OpenAudible
+// export) imports nothing, and the verdict says why in plain words - never the
+// wrong-format headline, which would send the submitter after a file that is
+// fine. A run that imported other books says it too.
+func TestImportExplainsBooksSkippedForUnsluggableNames(t *testing.T) {
+	korean := `{"asin":"B0IMPORTK1","title_short":"A Korean Book","author":"김영하",` +
+		`"narrated_by":"Nell Reader","language":"English","region":"US","seconds":24000},` +
+		`{"asin":"B0IMPORTK2","title_short":"Another Korean Book","author":"Jane Doe",` +
+		`"narrated_by":"김영하","language":"English","region":"US","seconds":24000}`
+	dir := seedTree(t)
+	res := Process(Options{DataDir: dir, Template: "import", Body: importBody("OpenAudible (books.json)", "["+korean+"]")})
+	if res.Status != StatusNeedsHuman {
+		t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
+	}
+	msgs := strings.Join(res.Messages, "\n")
+	if !strings.Contains(msgs, "2 book(s) were skipped: their author or narrator names could not be turned into ids") {
+		t.Errorf("the verdict does not say why the books were skipped:\n%s", msgs)
+	}
+	if strings.Contains(msgs, "may not match the selected export type") {
+		t.Errorf("the verdict blames the file format:\n%s", msgs)
+	}
+
+	dir = seedTree(t)
+	clean := `{"asin":"B0IMPORTK3","title_short":"A Latin Book","author":"Jane Doe",` +
+		`"narrated_by":"Nell Reader","language":"English","region":"US","seconds":24000}`
+	res = Process(Options{DataDir: dir, Template: "import", Body: importBody("OpenAudible (books.json)", "["+korean+","+clean+"]")})
+	if res.Status != StatusOK {
+		t.Fatalf("mixed export: status = %q, messages = %v", res.Status, res.Messages)
+	}
+	if msgs := strings.Join(res.Messages, "\n"); !strings.Contains(msgs, "2 book(s) were skipped: their author or narrator names") {
+		t.Errorf("mixed export: no note of the skipped books:\n%s", msgs)
+	}
+}
+
 // TestUnrecordedCreditNotesAreCapped: the per-credit lines stop at
 // maxUnrecordedNotes, and the count line and the remainder line say how many
 // there were.

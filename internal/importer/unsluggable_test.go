@@ -132,6 +132,9 @@ func TestLibraryImportSkipsARowWithNoSluggableAuthor(t *testing.T) {
 				if want := []RowSkip{{ASIN: "B0UNSLUG02", Reason: RefusalMissingAuthor}}; !reflect.DeepEqual(sum.Skips, want) {
 					t.Errorf("skips = %+v, want %+v", sum.Skips, want)
 				}
+				if sum.SkippedUnsluggable != 1 {
+					t.Errorf("SkippedUnsluggable = %d, want 1", sum.SkippedUnsluggable)
+				}
 				if !slices.ContainsFunc(sum.Warnings, func(w string) bool {
 					return strings.Contains(w, "no individual author is left") && strings.Contains(w, `"Йордан Йовков"`)
 				}) {
@@ -160,6 +163,9 @@ func TestLibraryImportSkipsARowWithNoSluggableNarrator(t *testing.T) {
 			}
 			if want := []RowSkip{{ASIN: "B0UNSLUG03", Reason: RefusalMissingNarrator}}; !reflect.DeepEqual(sum.Skips, want) {
 				t.Errorf("skips = %+v, want %+v", sum.Skips, want)
+			}
+			if sum.SkippedUnsluggable != 1 {
+				t.Errorf("SkippedUnsluggable = %d, want 1", sum.SkippedUnsluggable)
 			}
 			if !slices.ContainsFunc(sum.Warnings, func(w string) bool {
 				return strings.Contains(w, "no narrator is left") && strings.Contains(w, `"김영하"`)

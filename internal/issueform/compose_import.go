@@ -1,6 +1,7 @@
 package issueform
 
 import (
+	"fmt"
 	"os"
 	"strings"
 
@@ -114,6 +115,16 @@ func (c *composer) importLibrary(s sections) {
 			c.noteImportWarnings(sum)
 			return
 		}
+		// Books skipped because their names cannot become ids are the same kind
+		// of answer: the file is fine (claiming a type mismatch would be false),
+		// the books are not duplicates, and only a maintainer can place them.
+		// Checked before the Skipped branch, which would otherwise call a run that
+		// deduped some books and skipped the rest "already in the catalog".
+		if sum.SkippedUnsluggable > 0 {
+			c.fail(StatusNeedsHuman, "nothing new to import: %s", unsluggableSkips(sum.SkippedUnsluggable))
+			c.noteImportWarnings(sum)
+			return
+		}
 		if sum.Skipped > 0 {
 			// Genuinely nothing new: every book deduped against the catalog.
 			c.fail(StatusDuplicate, "nothing new to import: every book in the export is already in the catalog (%d skipped)", sum.Skipped)
@@ -147,6 +158,9 @@ func (c *composer) importLibrary(s sections) {
 		c.note("%d book(s) were not imported because the catalog already holds them under differently-spelled titles - "+
 			"see the warnings below; a maintainer resolves those pairs", sum.SkippedDuplicateIdentity)
 	}
+	if sum.SkippedUnsluggable > 0 {
+		c.note("%s - see the warnings below", unsluggableSkips(sum.SkippedUnsluggable))
+	}
 	if sum.AttestedWorks+sum.AttestedRecordings > 0 {
 		// The summary counts the attested records without their sources, so the
 		// note names the tier rather than a mirror it cannot see.
@@ -161,6 +175,13 @@ func (c *composer) importLibrary(s sections) {
 	// The importer wrote and validated the tree itself, so the file list is the
 	// one ITS flush reports, in the field the compose path's own flush fills.
 	c.wrote = sum.Files
+}
+
+// unsluggableSkips is the verdict's plain account of the books skipped because
+// every author or narrator name slugs to nothing (Summary.SkippedUnsluggable).
+func unsluggableSkips(n int) string {
+	return fmt.Sprintf("%d book(s) were skipped: their author or narrator names could not be turned into ids "+
+		"(written in a non-Latin script, which the catalogue cannot address yet); those books need a maintainer", n)
 }
 
 // falloutExamples is the evidence behind "the file may not match the selected

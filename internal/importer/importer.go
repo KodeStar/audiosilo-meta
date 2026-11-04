@@ -1475,6 +1475,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		warn("no individual author is left once the credits whose names slug to nothing (%s) are left off; a work requires an author; skipped",
 			quotedNames(creditNamesOf(unslugAuthors)))
 		p.noteSkip(b, reasonMissingAuthor)
+		p.summary.SkippedUnsluggable++
 		p.noteLostSeriesClaims(b, -1, nil)
 		return
 	case noAuthor && workTitle != "":
@@ -1705,6 +1706,7 @@ func (p *planner) admitRecordingFacts(b sourceBook, warn func(string, ...any)) (
 		warn("no narrator is left once those whose names slug to nothing (%s) are left off; a recording requires narrators; skipped",
 			quotedNames(unsluggable))
 		p.noteSkip(b, reasonMissingNarrator)
+		p.summary.SkippedUnsluggable++
 		return "", nil, nil, false
 	case len(narratorNames) == 0:
 		warn("no narrator; a recording requires narrators; skipped")
