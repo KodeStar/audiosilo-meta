@@ -426,7 +426,7 @@ func loadSlugCatalogue(t *testing.T) *slugCatalogue {
 	cat := res.Catalog
 	c := &slugCatalogue{
 		cat:    cat,
-		ix:     NewSeriesAuthorIndex(cat),
+		ix:     NewSeriesAuthorIndex(cat, nil),
 		works:  make(map[string]*model.Work, len(cat.Works)),
 		series: make(map[string]*model.Series, len(cat.Series)),
 		names:  make(map[string]string, len(cat.People)),

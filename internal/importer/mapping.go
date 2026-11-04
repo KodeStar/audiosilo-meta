@@ -761,10 +761,14 @@ type creditCensus struct {
 	onHonorific  func(from, to string)
 	onCredential func(from, to string)
 	// keptApart, when set, reports whether a reviewed merge-people rejection
-	// recorded the two credit names as two people (planner.peopleKeptApart):
-	// the honorific fold then leaves the titled name as it is. nil keeps every
-	// fold.
+	// recorded the two credit names as two people - judged by the records they
+	// land on (planner.landingsKeptApart): the honorific and credential folds
+	// then leave the name as it is. nil keeps every fold.
 	keptApart func(titled, bare string) bool
+	// noHonorific turns the honorific fold off (unfolded) and nothing else: the
+	// credential fold still runs, so a LibriVox credit's folded and unfolded
+	// spellings differ by the courtesy title alone (noteLibrivoxFolds).
+	noHonorific bool
 }
 
 // quiet is the census with no merge reported: for a reading of a name that is
@@ -779,7 +783,7 @@ func (c creditCensus) quiet() creditCensus {
 // cleaning spells it when no courtesy title is folded away.
 func (c creditCensus) unfolded() creditCensus {
 	c = c.quiet()
-	c.keptApart = func(string, string) bool { return true }
+	c.noHonorific = true
 	return c
 }
 
@@ -787,6 +791,9 @@ func (c creditCensus) unfolded() creditCensus {
 // a pair a review kept apart (keptApart) stays titled. A merge it does make is
 // reported (onHonorific).
 func (c creditCensus) foldHonorific(name string) string {
+	if c.noHonorific {
+		return name
+	}
 	bare := stripHonorific(name, c.sameSide)
 	if bare == name || (c.keptApart != nil && c.keptApart(name, bare)) {
 		return name
@@ -797,14 +804,18 @@ func (c creditCensus) foldHonorific(name string) string {
 	return bare
 }
 
-// reportedFold applies one census-backed fold and tells the planner about the
-// merge it made, so a run can report the list. The two report streams stay
-// separate fields on the census (see creditCensus - separate decisions,
-// separately audited); what is shared is only the apply-and-notify shape.
-func reportedFold(name string, seen creditSeenFunc, fold func(string, creditSeenFunc) string, note func(from, to string)) string {
-	bare := fold(name, seen)
-	if bare != name && note != nil {
-		note(name, bare)
+// foldCredential is the credential fold (credential.go) under the same review
+// as foldHonorific: "Jane Doe PhD" stays as it is when a review kept it apart
+// from the bare record it would fold onto. A merge it does make is reported
+// (onCredential) - a separate stream from onHonorific, since the two are
+// separate decisions about a name, separately audited.
+func (c creditCensus) foldCredential(name string) string {
+	bare := stripCredential(name, c.sameSide)
+	if bare == name || (c.keptApart != nil && c.keptApart(name, bare)) {
+		return name
+	}
+	if c.onCredential != nil {
+		c.onCredential(name, bare)
 	}
 	return bare
 }
@@ -836,7 +847,7 @@ func creditWithRolesSided(name string, c creditCensus) (cleaned string, roles []
 		stripped, bareRoles := stripBareRoleTail(stripped, c.anySide)
 		stripped = stripLeadingConjunction(collapseDoubledName(stripped), c.sameSide)
 		stripped = c.foldHonorific(stripped)
-		stripped = reportedFold(stripped, c.sameSide, stripCredential, c.onCredential)
+		stripped = c.foldCredential(stripped)
 		next, tailRoles := stripStudioConcat(stripped, c.anySide)
 		if next == cleaned {
 			break
@@ -855,7 +866,7 @@ func creditWithRolesSided(name string, c creditCensus) (cleaned string, roles []
 		// would become its identity - "Иван Петров PhD" slugs to `phd`, one
 		// record shared by every such credit, and escapes both the libex
 		// unidentifiable-credit refusal and workCredits' catch-all guard.
-		cleaned = reportedFold(cleaned+" "+suffix, c.sameSide, stripCredential, c.onCredential)
+		cleaned = c.foldCredential(cleaned + " " + suffix)
 	}
 	// The collective/placeholder fold is the LAST step, outside the loop and
 	// after every cleaning rule has run: it answers "which record does this

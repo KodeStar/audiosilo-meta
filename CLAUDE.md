@@ -176,12 +176,21 @@ never noticed (ai-verify read only the metadiff summary). Two halves:
   rejection matching no fresh proposal is reported `census-only` in SUMMARY.md, not
   STALE, because the census honours it whatever the detectors propose and pruning
   it would bring the pair back - unless fewer than two of its records are still
-  live (merged onto one survivor, or deleted), which withholds nothing and is STALE. The importer's
+  live (merged onto one survivor, or deleted), which withholds nothing and is STALE - except
+  a `merge-people` rejection naming ONE live record beside one that is not (deleted, not
+  yet created, or mistyped): the importer below honours it whatever is live, so pruning
+  it would let the next import re-fold the pair, and it reads `unresolved` instead, a
+  status SUMMARY.md lists so a typo still surfaces. The importer's
   honorific fold honours the same rejections: a pair a merge-people rejection names
-  is never folded, titled onto bare or (LibriVox rule 1c) bare onto titled, so an
+  is never folded, titled onto bare or (LibriVox rule 1c) bare onto titled, nor by the
+  credential fold ("X PhD"), each judged by the records the two spellings LAND on
+  through the initials merge as well as the slugs they spell, so an
   import cannot re-merge a pair a maintainer separated (`importer.Options.Distinct`,
   filled from `audit.ReviewedDistinct()` by cmd/metaimport and internal/issueform,
-  resolved through redirects.json by `check.ResolveDistinct`). metabuild's census and metaaudit's LOADER carry-through load
+  resolved through redirects.json by `check.ResolveDistinct`), and so does the series
+  same-person rule (`importer.PeopleApart`, read by the series-author fit and the
+  intake form's work-slug, takeover and series gates): a reviewed pair is never one
+  author, so the doctor's book cannot join the novelist's series. metabuild's census and metaaudit's LOADER carry-through load
   without the decisions (neither is the census anyone reads).
 - **New advisories reach the automation.** On a pull request touching data/,
   `.github/scripts/advisory-delta.sh` runs the same metacheck binary over the base and
@@ -248,8 +257,15 @@ never a failure), `lint` (`golangci-lint run`), `vuln` (`govulncheck ./...`),
 `site`, and **`check`, the VERDICT**: it needs build, test, metacheck, metafmt and
 advisories, passes only when every one but advisories concluded `success`
 (`.github/scripts/check-verdict.sh`), prints the advisories a data pull request
-introduces in its job summary, and ends its log with the failing jobs' captured
-output. The NAME `check` is load-bearing - branch protection requires it, and
+introduces in its job summary, and ends its log with the failing jobs' own
+output - fetched from the API (`actions: read`) for the CURRENT run attempt only
+(`.github/scripts/failed-job-logs.sh`, cut after the failing step's last error), so no job
+tees or uploads a log and a re-run no longer prints a shard's stale failure from
+an earlier attempt. The test shards also restore a race build cache (one actions/cache
+key shared by the shards, saved only on a push to main), since setup-go's single
+shared key is saved by the non-race `build` job - and run `go test -race -count=1`,
+since a GOCACHE also holds test results and a cached one would skip recorddiff's
+real-checkout test. The NAME `check` is load-bearing - branch protection requires it, and
 audiosilo-meta-sync's merge gate waits for `check`, `compose`, `site` and `verify`
 and hands the tail of a failed check's log to its resolver - which is why the
 split kept one job of that name instead of renaming the work. It was one
@@ -849,8 +865,15 @@ keep this index in step (one line per topic).
   AudioSilo GitHub App (no labels survive an API create by a non-collaborator)
   with GITHUB_TOKEN - which fires no `labeled` run - and calls intake in the same
   run; a called run is admitted only for the issue that started its caller, and
-  routes on the `template` input. route.yml's caps and denylist are in
-  GOVERNANCE.md.
+  routes on the `template` input. The routing itself is ONE reusable workflow,
+  `route-reusable.yml` (`workflow_call`, inputs `routes` - the title-prefix
+  allowlist as `<tag> <label>` lines - and `cap`; outputs `decision` and
+  `label`): route.yml calls it by local path and audiosilo-meta-community's
+  route.yml at a pinned commit sha (bumped by hand, like its CORE_REF), and each
+  caller then calls its OWN intake.yml (a `./` path inside a reusable workflow
+  names this repository's file). A re-run of a decided issue is a no-op; the
+  guard's conditions are stated once, in route-reusable.yml's header.
+  route.yml's caps and denylist are in GOVERNANCE.md.
 - **Deterministic builds**: metabuild inserts in sorted id order so identical
   data produces identical artifacts.
 - **Governance**: merge policy and trust tiers live in

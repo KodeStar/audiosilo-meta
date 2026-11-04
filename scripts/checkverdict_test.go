@@ -92,8 +92,8 @@ func TestCheckVerdictFails(t *testing.T) {
 	}
 }
 
-// writeLogs writes the logs the verdict's merged download holds: one flat
-// directory, a file per job (check.yml's download-artifact merge-multiple).
+// writeLogs writes the logs the verdict reads: one flat directory, a file per
+// job (what failed-job-logs.sh writes).
 func writeLogs(t *testing.T, logs map[string]string) string {
 	t.Helper()
 	dir := t.TempDir()
@@ -135,29 +135,62 @@ func TestCheckVerdictEndsWithTheFailedLogs(t *testing.T) {
 	}
 }
 
-// Artifacts outlive the attempt that uploaded them, so after a re-run of the
-// failed jobs the download still holds the log of a job that has passed since.
-// Only the jobs failing NOW are evidence: a stale log printed last would be the
-// tail the sync bot hands its resolver.
-func TestCheckVerdictSkipsThePassedJobsLogs(t *testing.T) {
+// The log directory holds exactly the failing jobs' logs (failed-job-logs.sh
+// fetches only the verdict's failing set, from the current attempt), so the
+// verdict prints every one of them - and leaves an empty one out, since it
+// says nothing.
+func TestCheckVerdictPrintsEveryNonEmptyLog(t *testing.T) {
 	t.Parallel()
 	logs := writeLogs(t, map[string]string{
 		"metacheck.log": "error: works/0/a.json: entry a: the real problem\n",
-		"metafmt.log":   "works/0/b.json is not canonical (attempt 1, since fixed)\n",
-		"test-3.log":    "--- FAIL: TestFlaky (attempt 1)\n",
+		"test-3.log":    "--- FAIL: TestShard3\n",
 		"build.log":     "",
 	})
-	out, code := verdict(t, needsOf(gate(map[string]string{"metacheck": "failure", "build": "failure"})), logs, "advisories")
+	out, code := verdict(t, needsOf(gate(map[string]string{"metacheck": "failure", "test": "failure", "build": "failure"})), logs, "advisories")
 	if code != 1 {
 		t.Fatalf("exit %d, want 1:\n%s", code, out)
 	}
-	if !strings.Contains(out, "the real problem") {
-		t.Errorf("the failing job's log is missing:\n%s", out)
-	}
-	for _, stale := range []string{"since fixed", "TestFlaky", "===== build.log"} {
-		if strings.Contains(out, stale) {
-			t.Errorf("printed %q, from a job that passed or a log that is empty:\n%s", stale, out)
+	for _, want := range []string{"the real problem", "--- FAIL: TestShard3"} {
+		if !strings.Contains(out, want) {
+			t.Errorf("the verdict did not print %q:\n%s", want, out)
 		}
+	}
+	if strings.Contains(out, "===== build.log") {
+		t.Errorf("an empty log was printed:\n%s", out)
+	}
+}
+
+// The printed logs are other jobs' output as the API serves it, runner markers
+// included, and this job's runner would act on them (a second annotation per
+// failing job, a group folding the evidence away), so they print between a
+// stop-commands and its resume token - on a line of its own even when the last
+// log does not end in a newline, and a token none of them holds.
+func TestCheckVerdictStopsCommandsAroundTheLogs(t *testing.T) {
+	t.Parallel()
+	logs := writeLogs(t, map[string]string{
+		"build.log": "##[group]Run go build ./...\n##[endgroup]\nx.go:1:1: undefined: y\n##[error]Process completed with exit code 1.",
+	})
+	out, code := verdict(t, needsOf(gate(map[string]string{"build": "failure"})), logs, "advisories")
+	if code != 1 {
+		t.Fatalf("exit %d, want 1:\n%s", code, out)
+	}
+	m := regexp.MustCompile(`(?m)^::stop-commands::(\S+)$`).FindStringSubmatch(out)
+	if m == nil {
+		t.Fatalf("the logs are printed with workflow commands live:\n%s", out)
+	}
+	stop := strings.Index(out, m[0])
+	resume := strings.Index(out, "\n::"+m[1]+"::\n")
+	evidence := strings.Index(out, "##[error]Process completed")
+	if resume < 0 || stop > evidence || evidence > resume {
+		t.Errorf("the logs are not between the stop and the resume (stop %d, log %d, resume %d):\n%s", stop, evidence, resume, out)
+	}
+	if n := strings.Count(out, m[1]); n != 2 {
+		t.Errorf("the resume token appears %d times, want 2:\n%s", n, out)
+	}
+
+	out, _ = verdict(t, needsOf(gate(nil)), logs, "advisories")
+	if strings.Contains(out, "::stop-commands::") {
+		t.Errorf("a passing verdict stopped commands:\n%s", out)
 	}
 }
 
@@ -185,10 +218,12 @@ func TestCheckVerdictSharesTheTailBudget(t *testing.T) {
 	}
 }
 
-// check.yml's verdict job: it waits for every job that uploads a log for it,
-// names only `advisories` as advisory, and runs under always() - a cancelled
-// run under !cancelled() would SKIP it, and a skipped required check reads as
-// a pass to branch protection and to audiosilo-meta-sync.
+// check.yml's verdict job: it waits for every job of the gate, names only
+// `advisories` as advisory, runs under always() - a cancelled run under
+// !cancelled() would SKIP it, and a skipped required check reads as a pass to
+// branch protection and to audiosilo-meta-sync - and reads the failing jobs'
+// logs from the API (actions: read) rather than from artifacts, which outlive
+// the attempt that uploaded them.
 func TestCheckWorkflowVerdictWiring(t *testing.T) {
 	t.Parallel()
 	raw, err := os.ReadFile(filepath.Join("..", ".github", "workflows", "check.yml"))
@@ -208,13 +243,9 @@ func TestCheckWorkflowVerdictWiring(t *testing.T) {
 	for _, n := range strings.Split(m[1], ",") {
 		needs[strings.TrimSpace(n)] = true
 	}
-	uploaders := regexp.MustCompile(`(?m)^          name: check-log-([a-z]+)`).FindAllStringSubmatch(string(raw), -1)
-	if len(uploaders) == 0 {
-		t.Fatal("found no `check-log-*` artifact in check.yml")
-	}
-	for _, u := range append(uploaders, []string{"", "changes"}, []string{"", "advisories"}) {
-		if !needs[u[1]] {
-			t.Errorf("the check job does not need %q, so the verdict cannot see it fail", u[1])
+	for _, j := range verdictJobs {
+		if !needs[j] {
+			t.Errorf("the check job does not need %q, so the verdict cannot see it fail", j)
 		}
 	}
 	if !strings.Contains(body, "    if: ${{ always() }}\n") {
@@ -222,6 +253,21 @@ func TestCheckWorkflowVerdictWiring(t *testing.T) {
 	}
 	if !strings.Contains(body, `check-verdict.sh "$RUNNER_TEMP/logs" advisories`+"\n") {
 		t.Error("the verdict must name `advisories`, and only it, as advisory")
+	}
+	if !strings.Contains(body, "    permissions:\n      contents: read\n      actions: read\n") {
+		t.Error("the check job must read the jobs' logs with `actions: read` (and keep `contents: read`)")
+	}
+	if !strings.Contains(body, `select(.key != "advisories" and .value.result != "success")`) {
+		t.Error("the fetch must be handed the verdict's own failing set (every need but advisories that did not succeed)")
+	}
+	if !strings.Contains(body, `failed-job-logs.sh "$RUNNER_TEMP/logs"`) ||
+		!strings.Contains(body, "RUN_ATTEMPT: ${{ github.run_attempt }}") {
+		t.Error("the check job must fetch the failing jobs' logs of the current attempt (failed-job-logs.sh)")
+	}
+	// No job uploads a log for the verdict any more: an artifact is the run's,
+	// not the attempt's, and is what printed stale logs.
+	if regexp.MustCompile(`name: check-log-`).Match(raw) {
+		t.Error("a job still uploads a check-log-* artifact; the verdict reads logs from the API")
 	}
 }
 
