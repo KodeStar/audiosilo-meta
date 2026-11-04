@@ -79,14 +79,16 @@ func TestGoTestShardCoversEveryPackageOnce(t *testing.T) {
 	}
 }
 
-// The two long packages never share a shard once there are two, or the slowest
-// shard is their sum and the split buys nothing.
+// The two longest packages never share a shard once there are two, or the
+// slowest shard is their sum and the split buys nothing. They are importer and
+// serve now; recorddiff was the other one until its real-checkout test was
+// bounded under -race, which made it a few seconds whatever merged last.
 func TestGoTestShardSeparatesTheLongPackages(t *testing.T) {
 	t.Parallel()
 	for count := 2; count <= 4; count++ {
 		for i := 1; i <= count; i++ {
 			got, _ := shard(t, fakePackages(), fmt.Sprint(i), fmt.Sprint(count))
-			if slices.Contains(got, modulePath+"/internal/importer") && slices.Contains(got, modulePath+"/internal/recorddiff") {
+			if slices.Contains(got, modulePath+"/internal/importer") && slices.Contains(got, modulePath+"/internal/serve") {
 				t.Errorf("shard %d of %d holds both long packages: %v", i, count, got)
 			}
 		}
@@ -160,5 +162,12 @@ func TestCheckWorkflowRunsEveryShard(t *testing.T) {
 	}
 	if !strings.Contains(string(raw), "SHARDS: ${{ strategy.job-total }}") {
 		t.Error("check.yml's test step does not take SHARDS from strategy.job-total")
+	}
+	// The shards restore a race GOCACHE, which holds test RESULTS too; without
+	// -count=1 an unchanged package prints `(cached)`, and a test that reads the
+	// checkout through a subprocess (recorddiff's real-checkout test, through
+	// git) would stop testing the commit in front of it.
+	if !strings.Contains(string(raw), "xargs go test -race -count=1 <") {
+		t.Error("check.yml's test step must run `go test -race -count=1`, so the restored cache never answers a test")
 	}
 }
