@@ -420,7 +420,15 @@ func (p *planner) collectLibrivoxClaims(books []sourceBook, set lvRowSet, claims
 			} else if !mine[c.id] {
 				continue
 			}
-			cl.titles = append(cl.titles, b.str("title"))
+			// Only a project the id AUTHORS is title evidence of who they are
+			// (librivoxCreditEvidence's title in common): a translation is
+			// another author's book, so a same-name person's own book of that
+			// title - a novelist's 2015 "Metamorphosis" beside Kafka's - says
+			// nothing about its translator (librivoxReleasesAreEditions reads
+			// a translation the same way).
+			if c.suffix == "" {
+				cl.titles = append(cl.titles, b.str("title"))
+			}
 			if people == nil {
 				people = p.librivoxCreditPeople(b, quiet)
 			}
@@ -789,8 +797,9 @@ func (p *planner) librivoxYearsVerdict(slug string, life lifeYears) (v lvVerdict
 }
 
 // librivoxCreditEvidence is rule 2's test for a catalogued person with no
-// LibriVox author id and no years. A title in common with the id's projects
-// (librivoxTitleKeys) makes them the same person. Otherwise they are apart
+// LibriVox author id and no years. A title in common with the projects the id
+// AUTHORS (librivoxTitleKeys; a project it only translates is no evidence,
+// collectLibrivoxClaims) makes them the same person. Otherwise they are apart
 // when credited only as a narrator, or only on works first published (a
 // stated first_published) more than librivoxLateMargin years after the claim's
 // death or flourished year, and unsure when some of those works are dated only

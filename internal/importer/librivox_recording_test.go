@@ -757,3 +757,65 @@ func TestLibrivoxHeldTranslatorCannotTakeAPlannedIDsPerson(t *testing.T) {
 		t.Errorf("ian-johnston-1850-1920 = %+v, want author id 1019, born 1850", p)
 	}
 }
+
+// novelistIanJohnston is a catalogued, undated Ian Johnston whose own book is
+// a 2015 "Metamorphosis" - the title of the book LibriVox's Ian Johnston (1019,
+// 1850-1920) only TRANSLATED. A translation's title is no evidence of who
+// translated it, so the two stay apart.
+func novelistIanJohnston(t *testing.T) map[string]string {
+	t.Helper()
+	files := map[string]string{personAddr("ian-johnston"): testpack.PersonJSON(t, "ian-johnston", "Ian Johnston")}
+	retailWork(t, files, "metamorphosis-ian-johnston", "Metamorphosis", "ian-johnston", "2015")
+	return files
+}
+
+// datedTranslator is fixture 527 with its translator dated 1850-1920.
+func datedTranslator(t *testing.T) LibrivoxProject {
+	t.Helper()
+	pr := fixtureProject(t, 527)
+	pr.Translators = []LibrivoxPerson{{ID: 1019, FirstName: "Ian", LastName: "Johnston", DOB: "1850", DOD: "1920"}}
+	return pr
+}
+
+// requireNotTheNovelist checks the recording's translator is a person of their
+// own, carrying 1019, and the novelist is untouched.
+func requireNotTheNovelist(t *testing.T, dataDir string, f lvFidelity) {
+	t.Helper()
+	if len(f.Credits) != 1 || f.Credits[0].Person == "ian-johnston" {
+		t.Fatalf("credits = %v, want one translator who is not the novelist", f.Credits)
+	}
+	if p := personOf(t, dataDir, f.Credits[0].Person); p.AuthorID != 1019 || p.BirthYear != 1850 || p.DeathYear != 1920 {
+		t.Errorf("%s = %+v, want author id 1019, 1850-1920", f.Credits[0].Person, p)
+	}
+	if p := personOf(t, dataDir, "ian-johnston"); p.AuthorID != 0 || p.BirthYear != 0 {
+		t.Errorf("the novelist was stamped: %+v", p)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("tree failed validation:\n%v", res.Problems)
+	}
+}
+
+func TestLibrivoxHeldTranslationTitleIsNoEvidence(t *testing.T) {
+	dataDir := heldKafkaTree(t, novelistIanJohnston(t))
+	runLibrivox(t, writeSnapshot(t, datedTranslator(t)), dataDir, allLibrivox)
+	requireNotTheNovelist(t, dataDir, lvFidelityOf(t, dataDir, "metamorphosis", "se"))
+}
+
+func TestLibrivoxPlannedTranslationTitleIsNoEvidence(t *testing.T) {
+	// The same, for a row the run plans: it attaches to Kafka's Metamorphosis.
+	files := novelistIanJohnston(t)
+	files[personAddr("franz-kafka")] = testpack.PersonJSON(t, "franz-kafka", "Franz Kafka")
+	files[workAddr("metamorphosis")] = testpack.WorkJSON(t, "metamorphosis", "Metamorphosis", testpack.WithAuthors("franz-kafka"))
+	files[recAddr("metamorphosis", "se")] = testpack.RecJSON(t, "se", "metamorphosis", testpack.WithNarrators("someone-else"))
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, files)
+	sum := runLibrivox(t, writeSnapshot(t, datedTranslator(t)), dataDir, allLibrivox)
+	if sum.NewRecordings != 1 {
+		t.Fatalf("new recordings = %d, want the planned row landed (worklist %+v)", sum.NewRecordings, sum.LibrivoxWorklist)
+	}
+	work, _, f := lvRecordingOf(t, dataDir, 527)
+	if work != "metamorphosis" {
+		t.Errorf("527 landed on %q, want Kafka's Metamorphosis", work)
+	}
+	requireNotTheNovelist(t, dataDir, f)
+}
