@@ -113,7 +113,7 @@ func TestPrefetchLeavesBrokenFilesToRead(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	r.prefetch([]string{"people/0.json", "people/bb.json", "people/zz.json", "people/gone.json"})
+	r.prefetch([]string{"people/0.json", "people/bb.json", "people/zz.json", "people/gone.json"}, nil)
 
 	if f, ok := r.Cached("people/0.json"); !ok || f != held {
 		t.Error("prefetch replaced a pack the reader already held")

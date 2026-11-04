@@ -238,6 +238,7 @@ func (p *planner) relocateRecording(rec *model.Recording, asins map[string]bool,
 		}
 		target = slug
 	}
+	var withheld []UnrecordedCredit // the rows' unrecorded credits, reported once the move lands
 	for _, i := range indices {
 		b := books[i]
 		asin := NormalizeASIN(b.str("asin"))
@@ -268,7 +269,7 @@ func (p *planner) relocateRecording(rec *model.Recording, asins map[string]bool,
 			p.fatal = fmt.Errorf("relocation destination changed while planning %s", recLabel(rec.Work, rec.ID))
 			return
 		}
-		p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, unrecorded...)
+		withheld = append(withheld, unrecorded...)
 		// A row joining a destination this run minted adds its credits and
 		// genres (a no-op for the row that minted it, and for a catalogued work).
 		p.mergeCreatedWorkFacts(ws, "", facts)
@@ -279,6 +280,9 @@ func (p *planner) relocateRecording(rec *model.Recording, asins map[string]bool,
 	if p.fatal != nil {
 		return
 	}
+	// Reported once the recording has moved, as addBook reports a row's only
+	// once its recording landed.
+	p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, withheld...)
 	for _, i := range indices {
 		b := books[i]
 		for _, r := range b.series {

@@ -54,8 +54,9 @@ verification, so the large main context is never what reviews or edits code.
 cd ~/dev/audiosilo/audiosilo-meta
 go build ./... && go vet ./... && go test -race ./... && golangci-lint run
 # ~45s wall for the -race suite; no -timeout flag needed. Every REAL-DATA test
-# skips under -race (raceEnabled, race_{on,off}_test.go in pkg/check,
-# pkg/canonical, internal/importer and internal/repair) - the fixture suites
+# skips under -race (`raceflag.Enabled`, internal/raceflag's build-tagged
+# constant, asked in pkg/check, pkg/canonical, internal/importer and
+# internal/repair) - the fixture suites
 # cover the concurrent code and the real tree is data coverage, still read by
 # the non-race run and by metacheck/metafmt below. Unskipped, pkg/canonical's
 # tree walk alone was ~400s and internal/importer's slug walk ~220s (403s wall).
@@ -63,6 +64,11 @@ go build ./... && go vet ./... && go test -race ./... && golangci-lint run
 # suite without -race daily, on dispatch and on Go-touching pushes to main (see
 # its header), and a red run opens or comments on the one open `ci-real-data`
 # issue, which the next green run closes (.github/scripts/real-data-report.sh).
+# The one real-checkout test that DOES run under -race is internal/recorddiff's
+# TestAgainstTheRealCheckout (git objects of HEAD~1..HEAD, not the tree walk):
+# under the detector it diffs a bounded, family-preserving sample of the
+# commit's changed packs (raceMaxPaths), since the whole of a ~1,500-pack data
+# merge outran the 10-minute test timeout; without -race it diffs them all.
 # Locally: `go test -count=1 ./...`.
 go run ./cmd/metacheck --profile core       # validate the data tree (~40s over 302k works)
 go run ./cmd/metafmt --check --profile core # canonical formatting (--write to fix)
@@ -744,6 +750,7 @@ keep this index in step (one line per topic).
   - `internal/ghhost`
   - `internal/unionfind`
   - `internal/parallel`
+  - `internal/raceflag`
   - `internal/atomicfile`
   - `internal/reportdir`
   - `internal/remediate`

@@ -210,10 +210,15 @@ func worksAdmittedSQL(ph, pred string) string {
 	return `SELECT id FROM works WHERE id IN (` + ph + `) AND ` + pred
 }
 
-// workHasSourceArm is a source filter (librivox.go) over a handful of works read
-// by primary key: one probe of idx_recording_sources_type per id, where
-// worksWithSourceArm, which drives a list, would read the source's whole range.
-const workHasSourceArm = `EXISTS (SELECT 1 FROM recording_sources rs WHERE rs.type = ? AND rs.work_id = works.id)`
+// workHasSourceArm is a source filter (librivox.go) over a few rows naming a
+// work by idCol (works.id in worksAdmitted, search_fts.id in the exact-title
+// window): one probe of idx_recording_sources_type per row, where
+// worksWithSourceArm, which drives a list, reads the source's whole range up
+// front - about 21k rows for librivox, and most of the catalogue for a source
+// like libex-import.
+func workHasSourceArm(idCol string) string {
+	return `EXISTS (SELECT 1 FROM recording_sources rs WHERE rs.type = ? AND rs.work_id = ` + idCol + `)`
+}
 
 // worksAdmitted filters ids to the works f (already live) and the source filter
 // src ("" for none) admit, preserving their order. It costs one primary-key read
@@ -232,7 +237,7 @@ func (s *DB) worksAdmitted(ctx context.Context, ids []string, f langFilter, src 
 		preds, predArgs = append(preds, pred), append(predArgs, args...)
 	}
 	if src != "" {
-		preds, predArgs = append(preds, workHasSourceArm), append(predArgs, src)
+		preds, predArgs = append(preds, workHasSourceArm("works.id")), append(predArgs, src)
 	}
 	query := func(ph string) string { return worksAdmittedSQL(ph, strings.Join(preds, " AND ")) }
 	keep := map[string]bool{}

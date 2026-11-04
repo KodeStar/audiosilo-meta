@@ -235,23 +235,27 @@ func (p *planner) attachTarget(b sourceBook, workTitle string) (ws *workState, o
 // attachRow writes an attached row onto its work: a new recording, or its ASIN
 // merged onto the same-narrator recording (addRecording decides, with every
 // guard it applies to any recording - the same-production runtime and abridged
-// tests, the serial guard, the region and ISBN rules). Nothing else is written:
-// no work fact, no series placement.
+// tests, the serial guard, the region and ISBN rules). Nothing else is written
+// onto the catalogued occupant: no work fact, no series placement.
 //
 // Summary.Attached counts the row only when addRecording wrote something; a row
 // one of its guards turned away is a position-claimed skip instead, so the sync
 // bot memoizes it rather than the selector keeping it every cycle.
 //
 // The row's author-side credits (credits) are judged as on any attach
-// (attachRowAuthors, meta#2760): the occupant is a catalogued work, so no one it
-// does not name is created, and each credit it does not name is reported
-// (Summary.UnrecordedCredits) once the row is attached.
+// (attachRowAuthors, meta#2760), and only once the row is attached, so a row a
+// guard turns away creates no author-side person at all. The occupant is a
+// catalogued work (attachFor reads the series as loaded, so a work this run
+// created is never one), so no one it does not name is created and each credit
+// it does not name is reported (Summary.UnrecordedCredits). mergeCreatedWorkFacts
+// is that guarantee made structural: a no-op for a catalogued work, it would
+// credit the role people attachRowAuthors mints onto a work this run created.
 func (p *planner) attachRow(ws *workState, b sourceBook, workTitle, asin, lang string, credits []credit, narratorNames []string, warn func(string, ...any)) {
-	unrecorded := p.attachRowAuthors(b, asin, ws, credits, warn)
 	switch p.addRecording(ws, b, workTitle, asin, lang, p.rowNarratorSlugs(b, narratorNames, warn), warn) {
 	case recMerged, recNew:
 		p.summary.Attached++
-		p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, unrecorded...)
+		p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, p.attachRowAuthors(b, asin, ws, credits, warn)...)
+		p.mergeCreatedWorkFacts(ws, p.landedRec, &workFacts{credits: credits})
 	case recNone:
 		p.noteSkip(b, reasonPositionTaken)
 	}

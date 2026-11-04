@@ -213,3 +213,130 @@ func TestAttachEditionsReportsAnUncreditedTranslator(t *testing.T) {
 		t.Errorf("orphans: %v", got)
 	}
 }
+
+func TestAttachEditionsOntoARunCreatedVolumeCreditsTheTranslator(t *testing.T) {
+	// Under --attach-editions, a second edition of a volume an EARLIER row of the
+	// same run created, stating a translator: the position was free in the
+	// catalogue, so the row is not an attachment (attachFor reads the series as
+	// loaded) and joins the run's own work through the create path, which mints
+	// the translator AND credits him there - never an orphan.
+	dataDir := seedAttachCatalogue(t)
+	translated := `{"asin":"B0ATTACH21","title":"Volume Two","region":"gb","language":"english",` +
+		`"authors":[{"name":"Ada Mapmaker"},{"name":"Tina Translator - Translator"}],"narrators":[{"name":"Cal Voice"}],` +
+		`"series":[{"name":"` + seriesName + `","position":"2"}]}`
+	sum := runLibexWith(t, dataDir, Options{ExistingSeriesOnly: true, AttachEditions: true},
+		attachExportRow("B0ATTACH20", "Volume Two", "us", "english", "Ada Mapmaker", "Bea Reader", "2"), translated)
+	if sum.NewWorks != 1 || sum.NewRecordings != 2 || sum.Attached != 0 || len(sum.UnrecordedCredits) != 0 {
+		t.Fatalf("works/recordings/attached = %d/%d/%d, unrecorded %+v; want 1/2/0 and none\nwarnings: %v",
+			sum.NewWorks, sum.NewRecordings, sum.Attached, sum.UnrecordedCredits, sum.Warnings)
+	}
+	var work struct {
+		Credits []model.Credit `json:"credits"`
+	}
+	readEntity(t, dataDir, workAddr("volume-two"), &work)
+	if want := []model.Credit{{Person: "tina-translator", Role: model.RoleTranslator}}; !reflect.DeepEqual(work.Credits, want) {
+		t.Errorf("credits = %+v, want %+v", work.Credits, want)
+	}
+	if !entryExists(t, dataDir, personAddr("tina-translator")) {
+		t.Error("the translator was not created")
+	}
+	if got := orphanPeople(t, dataDir); len(got) != 0 {
+		t.Errorf("orphans: %v", got)
+	}
+}
+
+// runAttachParsed runs one libex row through the create path under
+// --attach-editions over seedAttachCatalogue, letting edit change the parsed row
+// first (a region the libex parse layer would refuse, so the row reaches the
+// planner's own recording guard) and setup prime the planner before it plans.
+func runAttachParsed(t *testing.T, row string, edit func(*sourceBook), setup ...func(*planner)) (Summary, string) {
+	t.Helper()
+	dataDir := seedAttachCatalogue(t)
+	parsed, err := parseLibex([]byte(row + "\n"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	books := parsed.books
+	if len(books) != 1 {
+		t.Fatalf("parsed %d rows, want 1", len(books))
+	}
+	if edit != nil {
+		edit(&books[0])
+	}
+	opts := Options{DataDir: dataDir, ImportDate: testImportDate, ExistingSeriesOnly: true, AttachEditions: true}
+	sum, err := runBooks(books, sourceLibex, opts, nil, setup...)
+	if err != nil {
+		t.Fatalf("import run: %v", err)
+	}
+	return sum, dataDir
+}
+
+// attachTranslatedRow is an --attach-editions row for the seeded occupant at
+// position 1, crediting a translator the occupant does not name.
+func attachTranslatedRow(asin, narrator string) string {
+	return `{"asin":"` + asin + `","title":"The Lost Coast","region":"us","language":"english",` +
+		`"authors":[{"name":"Ada Mapmaker"},{"name":"Tina Translator - Translator"}],"narrators":[{"name":"` + narrator + `"}],` +
+		`"series":[{"name":"` + seriesName + `","position":"1"}]}`
+}
+
+// unmarketedRegion moves a parsed row to a region that is no marketplace: the
+// libex parse layer skips such a row, so it is set after the parse to reach
+// addRecording's region guard (its recNone on the occupant's own production).
+func unmarketedRegion(b *sourceBook) { b.raw["region"] = "xx" }
+
+func TestAttachEditionsRowAGuardRefusesCreatesNoAuthor(t *testing.T) {
+	// An attach-editions row the recording guards turn away (the occupant's own
+	// production, in a region that is no marketplace, so its ASIN cannot be
+	// recorded: addRecording's recNone) attaches nothing, so none of its
+	// author-side people is created and nothing is reported.
+	sum, dataDir := runAttachParsed(t, attachTranslatedRow("B0ATTACH22", "Bea Reader"), unmarketedRegion)
+	if sum.Attached != 0 || sum.NewPeople != 0 || len(sum.UnrecordedCredits) != 0 {
+		t.Fatalf("attached/people = %d/%d, unrecorded %+v; want 0/0 and none\nwarnings: %v",
+			sum.Attached, sum.NewPeople, sum.UnrecordedCredits, sum.Warnings)
+	}
+	if countWarnings(sum.Warnings, "ASIN not recorded") != 1 {
+		t.Errorf("the row did not reach the recording guard: %v", sum.Warnings)
+	}
+	if entryExists(t, dataDir, personAddr("tina-translator")) {
+		t.Error("a refused row created its translator")
+	}
+}
+
+func TestAttachRowOntoARunOwnedOccupant(t *testing.T) {
+	// attachFor only ever names a catalogued occupant, so the run-created branch
+	// of attachRow is unreachable through a run; these drive it by marking the
+	// seeded occupant as a work this run created (runCredits) before planning.
+	// That is the state in which attachRowAuthors MINTS a role-credited person,
+	// so it is the one that tells the ordering apart: a row a recording guard
+	// refuses must mint nobody, and a row that lands must credit whom it minted
+	// (mergeCreatedWorkFacts) rather than leave an orphan.
+	runOwned := func(p *planner) { p.runCredits["the-lost-coast"] = map[model.Credit]bool{} }
+	t.Run("landed", func(t *testing.T) {
+		sum, dataDir := runAttachParsed(t, attachTranslatedRow("B0ATTACH23", "Cal Voice"), nil, runOwned)
+		if sum.Attached != 1 || len(sum.UnrecordedCredits) != 0 {
+			t.Fatalf("attached = %d, unrecorded %+v; want 1 and none\nwarnings: %v", sum.Attached, sum.UnrecordedCredits, sum.Warnings)
+		}
+		var work struct {
+			Credits []model.Credit `json:"credits"`
+		}
+		readEntity(t, dataDir, workAddr("the-lost-coast"), &work)
+		if want := []model.Credit{{Person: "tina-translator", Role: model.RoleTranslator}}; !reflect.DeepEqual(work.Credits, want) {
+			t.Errorf("credits = %+v, want %+v", work.Credits, want)
+		}
+		if got := orphanPeople(t, dataDir); len(got) != 0 {
+			t.Errorf("orphans: %v", got)
+		}
+	})
+	t.Run("refused", func(t *testing.T) {
+		sum, dataDir := runAttachParsed(t, attachTranslatedRow("B0ATTACH24", "Bea Reader"), unmarketedRegion, runOwned)
+		if sum.Attached != 0 || sum.NewPeople != 0 {
+			t.Fatalf("attached/people = %d/%d, want 0/0\nwarnings: %v", sum.Attached, sum.NewPeople, sum.Warnings)
+		}
+		if countWarnings(sum.Warnings, "ASIN not recorded") != 1 {
+			t.Errorf("the row did not reach the recording guard: %v", sum.Warnings)
+		}
+		if entryExists(t, dataDir, personAddr("tina-translator")) {
+			t.Error("a refused row created its translator")
+		}
+	})
+}
