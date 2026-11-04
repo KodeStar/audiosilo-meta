@@ -1,6 +1,7 @@
 package query
 
 import (
+	"maps"
 	"math"
 	"net/url"
 	"testing"
@@ -69,9 +70,7 @@ func TestMatchPositionConflictScalesASibling(t *testing.T) {
 	base := url.Values{"title": {"I Became the Strongest"}, "author": {"Kaoru Shinozaki"}, "series": {"Failure Frame"}}
 
 	stated := url.Values{"position": {"1"}}
-	for k, v := range base {
-		stated[k] = v
-	}
+	maps.Copy(stated, base)
 	res := matchJSON(t, ts.URL, stated)
 	if len(res) == 0 || res[0]["id"] != "strongest-1" {
 		t.Fatalf("top = %v, want strongest-1", matchIDs(res))
@@ -203,6 +202,11 @@ func TestMatchLanguage(t *testing.T) {
 		"fr": "fr", "fra": "fr", "Français": "fr", "es-419": "es", "Español": "es",
 		"ja": "ja", "jpn": "ja", "nb": "no", "nn": "no", "no": "no", "Norwegian": "no",
 		"pt-br": "pt", "sv": "sv",
+		// LibriVox's name table, and its 639-2-only tags kept as stored.
+		"Catalan": "ca", "Ancient Greek": "grc", "grc": "grc", "ang": "ang", "Multilingual": "",
+		// A 639-2 code no table maps is unknown, never a language of its own
+		// beside the work's two-letter tag ("kor" is not judged against "ko").
+		"kor": "", "ko": "ko",
 		"": "", "und": "", "mul": "", "zxx": "", "Klingon": "", "en,de": "", "12": "", "English; German": "",
 	} {
 		if got := matchLanguage(in); got != want {
@@ -282,9 +286,7 @@ func TestMatchNarratorPicksTheRecording(t *testing.T) {
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			q := url.Values{"title": {"Dune"}, "author": {"Frank Herbert"}}
-			for k, v := range tc.params {
-				q[k] = v
-			}
+			maps.Copy(q, tc.params)
 			res := matchJSON(t, ts.URL, q)
 			top := wantScore(t, res, "dune", tc.score)
 			if got, _ := top["recording_id"].(string); got != tc.recording {

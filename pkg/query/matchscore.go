@@ -1,6 +1,7 @@
 package query
 
 import (
+	"maps"
 	"math"
 	"regexp"
 	"slices"
@@ -879,14 +880,15 @@ func (s seriesAgreement) value() float64 {
 // ---- language ----------------------------------------------------------------------
 
 // matchLanguageWords maps the spellings a file's language tag takes to the
-// catalogue's ISO 639-1 primary subtag: the ISO 639-2 codes (bibliographic and
-// terminology) and a few own-language names of the languages model's word
-// table holds, beside that table's English names (read through
-// model.LanguageWords). A spelling missing here reads as unknown, which judges
-// nothing, so a gap costs a factor, never a wrong one.
+// catalogue's language tag: model's two English-name tables
+// (model.LanguageWords, model.LibrivoxLanguages), then the ISO 639-2 codes
+// (bibliographic and terminology) and a few own-language names of the
+// languages the first one holds. The four codes that state no single language
+// (undetermined, multiple, no linguistic content, uncoded) map to "", unknown.
 var matchLanguageWords = func() map[string]string {
 	m := model.LanguageWords()
-	for code, lang := range map[string]string{
+	maps.Copy(m, model.LibrivoxLanguages())
+	maps.Copy(m, map[string]string{
 		"eng": "en", "tur": "tr", "ger": "de", "deu": "de", "fre": "fr", "fra": "fr",
 		"spa": "es", "ita": "it", "jpn": "ja", "por": "pt", "dut": "nl", "nld": "nl",
 		"pol": "pl", "rus": "ru", "chi": "zh", "zho": "zh", "dan": "da", "swe": "sv",
@@ -898,27 +900,35 @@ var matchLanguageWords = func() map[string]string {
 		"deutsch": "de", "francais": "fr", "espanol": "es", "castellano": "es",
 		"italiano": "it", "nederlands": "nl", "portugues": "pt", "polski": "pl",
 		"svenska": "sv", "dansk": "da", "norsk": "no", "suomi": "fi",
-	} {
-		m[code] = lang
-	}
+		"und": "", "mul": "", "multilingual": "", "zxx": "", "mis": "",
+	})
 	return m
 }()
 
-// unknownLanguages are the tags that state no single language: undetermined,
-// multiple, no linguistic content, uncoded.
-var unknownLanguages = map[string]bool{"und": true, "mul": true, "zxx": true, "mis": true}
+// matchLanguageCodes are the three-letter tags the catalogue stores as they
+// are (Ancient Greek's "grc", Old English's "ang": languages with no 639-1
+// code), the values of matchLanguageWords. Any other three-letter code is a
+// 639-2 spelling the table does not map, read as unknown: passed through it
+// would never equal the work's two-letter tag and so judge a language the
+// same as its own "other".
+var matchLanguageCodes = func() map[string]bool {
+	out := map[string]bool{}
+	for _, lang := range matchLanguageWords {
+		if len(lang) == 3 {
+			out[lang] = true
+		}
+	}
+	return out
+}()
 
 // matchLanguage reads a language as works/match compares it: a BCP-47 tag's
 // primary subtag ("en-US", "en_GB" -> "en"), a 639-2 code ("eng") or a
-// language's name ("English", "Deutsch") mapped to its 639-1 code, and "" for
-// anything else - an unknown language, which is never judged. A work's stored
-// tag goes through the same reading, so "nb" and "no" are one language.
+// language's name ("English", "Deutsch") mapped to the catalogue's tag, and ""
+// for anything else - an unknown language, which is never judged, so a gap in
+// the tables costs a factor, never a wrong one. A work's stored tag goes
+// through the same reading, so "nb" and "no" are one language.
 func matchLanguage(raw string) string {
-	s := strings.ToLower(strings.TrimSpace(stripMarks(raw)))
-	s = strings.ReplaceAll(s, "_", "-")
-	if s == "" {
-		return ""
-	}
+	s := strings.ReplaceAll(strings.ToLower(strings.TrimSpace(stripMarks(raw))), "_", "-")
 	if lang, ok := matchLanguageWords[s]; ok {
 		return lang
 	}
@@ -929,22 +939,13 @@ func matchLanguage(raw string) string {
 	if lang, ok := matchLanguageWords[p]; ok {
 		return lang
 	}
-	if unknownLanguages[p] {
+	if len(p) == 3 && !matchLanguageCodes[p] {
 		return ""
 	}
 	return p
 }
 
 // ---- runtime -----------------------------------------------------------------------
-
-// positionCovers reports whether a stored RANGE position (an omnibus, "1-3")
-// covers a stated one ("2", or "2-3"): an omnibus holding the stated volume is
-// not a sibling at another position, so positionConflictFactor spares it.
-func positionCovers(stored, stated string) bool {
-	slo, shi, sok := parsePositionRange(stored)
-	alo, ahi, aok := parsePositionRange(stated)
-	return sok && aok && slo < shi && slo <= alo && ahi <= shi
-}
 
 // runtimeFit scores a recording runtime (minutes) against the book's length
 // (seconds): 1 within runtimeSame, runtimeNearValue within runtimeNear, else 0,

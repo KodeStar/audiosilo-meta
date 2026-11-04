@@ -835,7 +835,7 @@ func matchRuntimesSQL(ph string) string {
 // request naming narrators.
 func matchNarratorsSQL(ph string) string {
 	return `SELECT rn.work_id, rn.recording_id, p.id, p.name FROM recording_narrators rn JOIN people p ON p.id = rn.person_id ` +
-		`WHERE rn.work_id IN (` + ph + `) ORDER BY rn.work_id, rn.recording_id, rn.ord`
+		`WHERE rn.work_id IN (` + ph + `) ORDER BY rn.work_id, rn.recording_id`
 }
 
 // factMemo folds each person and series name once per request: the author and
@@ -945,8 +945,11 @@ func (s *DB) candidateFacts(ctx context.Context, pool *candidatePool, narrators 
 			c := byID[workID]
 			c.runtimes = append(c.runtimes, recordingRuntime{id: rid, minute: minutes})
 			return nil
-		}); err != nil || !narrators {
+		}); err != nil {
 			return err
+		}
+		if !narrators {
+			return nil
 		}
 		return queryEach(ctx, s.db, matchNarratorsSQL(ph), args, func(rows *sql.Rows) error {
 			var workID, rid, personID, name string
@@ -1074,12 +1077,8 @@ func (f *matchFacts) narratorVerdict(c *candidate) (authorAgreement, string) {
 			continue
 		}
 		diff := math.Inf(1)
-		if f.runtime > 0 {
-			for _, rt := range c.runtimes {
-				if rt.id == r.id {
-					_, diff = runtimeFit(rt.minute, f.runtime)
-				}
-			}
+		if i := slices.IndexFunc(c.runtimes, func(rt recordingRuntime) bool { return rt.id == r.id }); i >= 0 && f.runtime > 0 {
+			_, diff = runtimeFit(c.runtimes[i].minute, f.runtime)
 		}
 		if a.value() > best.value() || diff < ridDiff {
 			best, rid, ridDiff = a, r.id, diff
@@ -1196,7 +1195,7 @@ func (f *matchFacts) seriesVerdict(c *candidate, t, named float64) (seriesAgreem
 	agreement, covered := seriesNone, false
 	for _, m := range c.series {
 		fits := slices.ContainsFunc(f.series, func(h termForm) bool { return seriesNameFits(&h, m.name, f.edit) })
-		if fits && f.position != "" && positionCovers(m.position, f.position) {
+		if fits && !covered && f.position != "" && positionCovers(m.position, f.position) {
 			covered = true
 		}
 		switch {
