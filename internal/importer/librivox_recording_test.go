@@ -819,3 +819,40 @@ func TestLibrivoxPlannedTranslationTitleIsNoEvidence(t *testing.T) {
 	}
 	requireNotTheNovelist(t, dataDir, f)
 }
+
+func TestLibrivoxHeldTranslatorDeferredHoldNamesThePlannedWork(t *testing.T) {
+	// A planned row's translator, author id 3001 Ian Johnston (1938), creates
+	// ian-johnston in this run. The held project 527's translator, ANOTHER id
+	// (2001) of that name stating no years, meets that run-made person: the
+	// rules call them apart against a person who does not exist yet, so the
+	// hold is DEFERRED and its worklist row can name that person's works only
+	// once the run has planned them (pendingHolds, finishLibrivoxHolds). The
+	// held row's entry must be the one filled in - the pending index points
+	// into the worklist the held rows and the planned rows share.
+	dataDir := heldKafkaTree(t, map[string]string{})
+	held := fixtureProject(t, 527)
+	held.Translators = []LibrivoxPerson{{ID: 2001, FirstName: "Ian", LastName: "Johnston"}}
+	planned := fixtureProject(t, 1870)
+	planned.ID, planned.Title = 91010, "Zadig"
+	planned.Translators = []LibrivoxPerson{{ID: 3001, FirstName: "Ian", LastName: "Johnston", DOB: "1938"}}
+	sum := runLibrivox(t, writeSnapshot(t, held, planned), dataDir, allLibrivox)
+	if p := personOf(t, dataDir, "ian-johnston"); p.AuthorID != 3001 {
+		t.Fatalf("ian-johnston = %+v, want the planned row's translator, id 3001", p)
+	}
+	if f := lvFidelityOf(t, dataDir, "metamorphosis", "se"); f.Credits != nil {
+		t.Errorf("held 527 credits = %v, want none (the id is held)", f.Credits)
+	}
+	var entry *LibrivoxWorklistEntry
+	for i := range sum.LibrivoxWorklist {
+		if sum.LibrivoxWorklist[i].Project == 527 {
+			entry = &sum.LibrivoxWorklist[i]
+		}
+	}
+	if entry == nil || entry.Reason != LibrivoxSameNameAuthor {
+		t.Fatalf("worklist = %+v, want 527 as same-name-author", sum.LibrivoxWorklist)
+	}
+	work, _, _ := lvRecordingOf(t, dataDir, 91010)
+	if len(entry.Candidates) != 1 || entry.Candidates[0].Work != work {
+		t.Errorf("527's candidates = %+v, want the planned work %q (filled after planning)", entry.Candidates, work)
+	}
+}

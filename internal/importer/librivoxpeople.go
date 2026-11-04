@@ -420,13 +420,16 @@ func (p *planner) collectLibrivoxClaims(books []sourceBook, set lvRowSet, claims
 			} else if !mine[c.id] {
 				continue
 			}
-			// Only a project the id AUTHORS is title evidence of who they are
-			// (librivoxCreditEvidence's title in common): a translation is
-			// another author's book, so a same-name person's own book of that
-			// title - a novelist's 2015 "Metamorphosis" beside Kafka's - says
-			// nothing about its translator (librivoxReleasesAreEditions reads
-			// a translation the same way).
-			if c.suffix == "" {
+			// A project the id only TRANSLATES is no title evidence of who
+			// they are (librivoxCreditEvidence's title in common): a
+			// translation is another author's book, so a same-name person's
+			// own book of that title - a novelist's 2015 "Metamorphosis"
+			// beside Kafka's - says nothing about its translator
+			// (librivoxReleasesAreEditions reads a translation the same way).
+			// The translator is the one role LibriVox states besides the
+			// author, so this is every project the id does not author; a role
+			// added later keeps the evidence until it is reasoned about.
+			if c.suffix != librivoxTranslatorSuffix {
 				cl.titles = append(cl.titles, b.str("title"))
 			}
 			if people == nil {
