@@ -68,6 +68,8 @@ import (
 // It is READ-ONLY over the catalogue it was built from and holds pointers into it,
 // so it must not outlive the load that produced it.
 type WorkIdentity struct {
+	// apart is SetApart's works, nil for most uses.
+	apart map[string]bool
 	byKey map[string][]*model.Work
 	// seriesOf is the series name each work's title was read against, by work id,
 	// so a caller that has a work in hand pays nothing to ask.
@@ -342,8 +344,24 @@ func (ix *WorkIdentity) MatchKey(key, title, series, lang string, all, identity 
 		}
 		out = append(out, IdentityMatch{Work: w, Series: ix.seriesOf[w.ID]})
 	}
+	if slices.ContainsFunc(out, func(m IdentityMatch) bool { return !ix.apart[m.Work.ID] }) {
+		out = slices.DeleteFunc(out, func(m IdentityMatch) bool { return ix.apart[m.Work.ID] })
+	}
 	sort.Slice(out, func(i, j int) bool { return out[i].Work.ID < out[j].Work.ID })
 	return out
+}
+
+// SetApart names works a review ruled to be books of their own though they key with
+// another (a separately named translation beside its title's plain work): MatchKey
+// leaves them out of any answer that names something else, so one of them standing
+// beside its twin does not turn the writers' one-candidate rule into "ambiguous" and let
+// a later row mint a third record. A key naming only such works still names them.
+// The census builds its index without it: it reads the same pairs through
+// LoadOptions.Distinct. nil-safe, for a run the index was not built for.
+func (ix *WorkIdentity) SetApart(ids map[string]bool) {
+	if ix != nil {
+		ix.apart = ids
+	}
 }
 
 // matches is THE pairwise predicate: given a candidate work already keyed the same,

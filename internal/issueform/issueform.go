@@ -425,6 +425,9 @@ func (c *composer) loadExisting() {
 	// of cleaning every catalogued title a second time - see identityIndex, which
 	// substitutes an empty index when a load produced none.
 	c.identity = res.Identity
+	if res.Catalog != nil {
+		c.identity.SetApart(importer.LibrivoxOwnWorkHomes(res.Catalog.Works))
+	}
 	cat := res.Catalog
 	if cat == nil {
 		return

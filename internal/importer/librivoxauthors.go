@@ -369,6 +369,9 @@ func (p *planner) keyLibrivoxAuthorVariants(books []sourceBook, titles, suffixes
 		if _, held := p.librivoxSameNameOf(*b); held {
 			continue // a same-name-author worklist skip (librivoxpeople.go rule 2)
 		}
+		if _, decided := p.lv.reviewed[b.lv.id]; decided {
+			continue // the decision places it, not rule 1 (librivoxreviewed.go)
+		}
 		lang, ok := b.language()
 		if !ok || len(p.rowNarratorNames(*b)) == 0 {
 			continue

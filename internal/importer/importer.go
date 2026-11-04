@@ -879,7 +879,7 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 		regenRecs:          regenRecsFor(opts.Mode),
 		rowsAsOf:           opts.RowsAsOf,
 		distinct:           opts.Distinct,
-		lv:                 newLibrivoxState(),
+		lv:                 newLibrivoxState(reviewedTable(opts)),
 	}
 }
 
@@ -1169,7 +1169,8 @@ func (p *planner) planCreate(books []sourceBook) {
 	// Only now does every author id land where it will: the readers, and the
 	// rest that reads the authors' people, are decided against that.
 	p.settleLibrivoxPeople(books)
-	for i, b := range books {
+	for _, i := range p.librivoxPlanOrder(books) {
+		b := books[i]
 		asin := NormalizeASIN(b.str("asin"))
 		p.setSource(asin, b)
 		p.addBook(b, asin, titles[i], suffixes[i])
@@ -1276,6 +1277,8 @@ func (p *planner) loadExisting() {
 		p.people[person.ID] = person.Name
 		p.loadLibrivoxPerson(person)
 	}
+	p.lv.ownWorks = librivoxOwnWorkHomes(cat.Works, p.lv.reviewed)
+	p.identity.SetApart(p.lv.ownWorks)
 	for _, w := range cat.Works {
 		ws := &workState{
 			slug:     w.ID,
@@ -1599,7 +1602,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		authorCredits = p.moveLibrivoxAuthors(b, authorCredits, route.moves)
 	}
 	ident := p.rowIdentityOf(b, workTitle)
-	if route.walk == nil && !route.ownWork &&
+	if route.walk == nil && !route.reviewed &&
 		p.refuseDuplicateIdentity(b, ident, workTitle, b.str("title"), posSuffix, lang, authorCredits, claim) {
 		p.noteLostSeriesClaims(b, -1, nil)
 		return
@@ -1626,7 +1629,17 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// raw for the same reason too - resolving them is wasted work on every row
 	// that merges.
 	facts := &workFacts{genres: b.genres, credits: authorCredits}
+	// An own-work ruled apart from what the catalogue holds should mint, or meet the
+	// home an earlier project of its text founded. Anything else means the walk has
+	// reached a work the decision may have rejected: said, and left to the reviewer.
+	ownWork := route.reviewed && walk.ws == nil
+	if route.reviewed && route.walk == nil && walk.ws != nil && !p.lv.ownWorks[walk.ws.slug] {
+		warn("the reviewed own-work decision walked onto the existing work %q", walk.ws.slug)
+	}
 	ws, unrecorded := p.getOrCreateWork(walk, b, asin, lang, facts, warn)
+	if ownWork && ws != nil {
+		p.lv.ownWorks[ws.slug] = true
+	}
 	narratorSlugs := p.rowNarratorSlugs(b, narratorNames, warn)
 	// The title the row was RESOLVED by - its own, or its full title when the
 	// work was found or created on the full title's chain - is the one the

@@ -111,6 +111,12 @@ const (
 	// same person as a record carrying ANOTHER author id
 	// (worklistHeldLibrivoxTranslators).
 	LibrivoxSameNameAuthor = "same-name-author"
+	// LibrivoxReviewedWorkGone: a reviewed attach names a work that is no longer
+	// live, nor retired onto one (librivoxreviewed.go).
+	LibrivoxReviewedWorkGone = "reviewed-work-gone"
+	// LibrivoxReviewedTitleChanged: a reviewed decision states another title than the
+	// project now has: LibriVox reuses project numbers (librivoxreviewed.go).
+	LibrivoxReviewedTitleChanged = "reviewed-title-changed"
 )
 
 // LibrivoxWorklistEntry is one LibriVox project a run skipped for a person to
@@ -464,10 +470,9 @@ type librivoxRoute struct {
 	// authorVariant is a librivoxauthors.go rule 1 attach's example, counted
 	// the same way (Summary.LibrivoxAuthorVariants).
 	authorVariant string
-	// ownWork is a reviewed own-work decision (librivoxreviewed.go): the ordinary
-	// walk places the row, the duplicate-identity guard standing down.
-	ownWork bool
-	// reviewed says a reviewed decision placed the row (Summary.LibrivoxReviewedPlaced).
+	// reviewed says a reviewed decision placed the row (Summary.LibrivoxReviewedPlaced;
+	// librivoxreviewed.go). With no walk it is an own-work: the ordinary walk places the
+	// row, the duplicate-identity guard standing down.
 	reviewed bool
 }
 
@@ -797,6 +802,11 @@ func candidatesOf(works []*workState) []LibrivoxCandidate {
 
 // noteLibrivoxWorklist puts a skipped LibriVox row on the run's worklist.
 func (p *planner) noteLibrivoxWorklist(b sourceBook, title, reason string, candidates []LibrivoxCandidate) {
+	if _, decided := p.lv.reviewed[b.lv.id]; decided && !p.lv.ids[b.lv.id] &&
+		reason != LibrivoxReviewedTitleChanged && reason != LibrivoxReviewedWorkGone {
+		p.summary.Warnings = append(p.summary.Warnings, fmt.Sprintf(
+			"librivox %d: a reviewed decision names it, but it is refused before routing as %s; the decision does not apply", b.lv.id, reason))
+	}
 	p.summary.LibrivoxWorklist = append(p.summary.LibrivoxWorklist, LibrivoxWorklistEntry{
 		Project:    b.lv.id,
 		Title:      title,

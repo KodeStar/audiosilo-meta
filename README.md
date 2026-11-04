@@ -498,10 +498,18 @@ rules say (with `moves`, row person to work person, to carry a loose spelling's
 LibriVox id onto the catalogued person), and `own-work` makes it a book of its
 own (a separately named translation, a volume of a set, a stated edition, another
 author's book of the name), minted on its own title chain past the
-duplicate-identity guard. It is an input of the importer, not a hand edit, so
-rebuilding the mirror reaches the same work; an attach naming no live work warns
-and goes back to the worklist. A `same-name-author` hold is settled on the person
-instead: put the `librivox_author_id` on the right record. `--conflicts` rows for these projects
+duplicate-identity guard. Each states the project's `title`, since LibriVox reuses
+project numbers. It is an input of the importer, not a hand edit, so rebuilding the
+mirror reaches the same work (attach rows are planned after every other row, so an
+attach can name a work a later project creates). A decision that cannot apply never
+falls through to the rules: an attach naming no live work is the worklist's
+`reviewed-work-gone`, and a project whose title's key has changed is
+`reviewed-title-changed`. A row refused before routing (`same-name-author`,
+`author-unsluggable`, `author-slot-taken`) keeps that refusal and the run warns that
+it shadows the decision; a `same-name-author` hold is settled on the person: put the
+`librivox_author_id` on the right record. An own-work beside its twin does not make
+their key ambiguous: the duplicate-identity guard of every source, and the intake
+gate, still answer the twin (`check.WorkIdentity.SetApart`). `--conflicts` rows for these projects
 carry `librivox_id`, since they have no ASIN, and so do the `--skipped` lines
 (one `{"librivox_id","reason"}` NDJSON line per project refused under a
 refusal code: an unknown language, no narrator, author or title, or the

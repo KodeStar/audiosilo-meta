@@ -298,7 +298,7 @@ func parseReviewed(raw []byte) ([]reviewedDecision, error) {
 		if r.Decision == "accept" && !AcceptableOp(r.Op) && !recordOnlyOps[r.Op] {
 			return nil, fmt.Errorf("entry %d: no repair applies a %q proposal, so it cannot be accepted", i, r.Op)
 		}
-		if !oneLineTrimmed(r.Reason) || strings.ContainsAny(r.Reason, "\u2013\u2014") {
+		if !importer.ValidReviewReason(r.Reason) {
 			return nil, fmt.Errorf("entry %d: the reason must be a one-line, trimmed reason in hyphens", i)
 		}
 		if !slices.Equal(r.Others, sortedUnique(r.Others)) {

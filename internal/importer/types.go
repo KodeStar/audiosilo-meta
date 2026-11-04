@@ -582,10 +582,10 @@ type Summary struct {
 	// of its is left uncredited (same-name-author): re-importing it once the
 	// person is settled credits them. All zero for other sources.
 	LibrivoxVariantsAttached int
+	LibrivoxFallbackSlugs    int
 	// LibrivoxReviewedPlaced counts the LibriVox rows a reviewed decision placed
 	// (librivoxreviewed.go): attached to the work it names, or minted on their own.
 	LibrivoxReviewedPlaced int
-	LibrivoxFallbackSlugs  int
 	// LibrivoxAuthorVariants counts the LibriVox rows attached to a work of
 	// their title whose author LibriVox spells with more or fewer words
 	// (librivoxauthors.go rule 1). 0 for other sources.

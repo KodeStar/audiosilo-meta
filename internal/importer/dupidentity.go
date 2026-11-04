@@ -2,6 +2,7 @@ package importer
 
 import (
 	"fmt"
+	"slices"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
@@ -282,6 +283,11 @@ func (p *planner) identityMatches(ident rowIdentity, workTitle, lang string, aut
 		// index cannot hold it, so a hit here is always a catalogued record - and
 		// cannot be a repeat of one the run half already named.
 		found = append(found, duplicateIdentityMatch{work: m.Work.ID, title: m.Work.Title, series: m.Series})
+	}
+	// An own-work is set apart from the rest of its key (librivoxreviewed.go), run half
+	// and disk half alike: only a key naming nothing else still names it.
+	if slices.ContainsFunc(found, func(m duplicateIdentityMatch) bool { return !p.lv.ownWorks[m.work] }) {
+		found = slices.DeleteFunc(found, func(m duplicateIdentityMatch) bool { return p.lv.ownWorks[m.work] })
 	}
 	return found
 }

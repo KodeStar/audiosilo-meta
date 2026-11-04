@@ -1,6 +1,7 @@
 package check
 
 import (
+	"slices"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
@@ -188,4 +189,38 @@ func TestSeriesNameInPicksTheLongestMatchedSpelling(t *testing.T) {
 	if got, want := titlerule.FormWeight("Night – Watch"), len("Night: Watch"); got != want {
 		t.Errorf("FormWeight = %d, want %d", got, want)
 	}
+}
+
+// A work a review set apart leaves an answer that names something else, so it cannot turn
+// a writer's one-candidate rule into "ambiguous", and still answers a key naming only it.
+func TestWorkIdentitySetApart(t *testing.T) {
+	work := func(id, title string) *model.Work {
+		return &model.Work{ID: id, Title: title, Language: "en", Authors: []string{"jane-doe"}}
+	}
+	ix := NewWorkIdentity(&model.Catalog{Works: []*model.Work{
+		work("iliad", "The Iliad"),
+		work("iliad-pope", "The Iliad (Pope Translation)"),
+		work("odyssey-pope", "The Odyssey (Pope Translation)"),
+	}})
+	authors := map[string]bool{"jane-doe": true}
+	ids := func(title string) []string {
+		var out []string
+		for _, m := range ix.Match(title, "", "en", authors, authors) {
+			out = append(out, m.Work.ID)
+		}
+		return out
+	}
+	const later = "The Iliad [Classic Edition]"
+	if got := ids(later); !slices.Equal(got, []string{"iliad", "iliad-pope"}) {
+		t.Fatalf("before: %v", got)
+	}
+	ix.SetApart(map[string]bool{"iliad-pope": true, "odyssey-pope": true})
+	if got := ids(later); !slices.Equal(got, []string{"iliad"}) {
+		t.Errorf("set apart beside another work: %v", got)
+	}
+	if got := ids("The Odyssey [Classic Edition]"); !slices.Equal(got, []string{"odyssey-pope"}) {
+		t.Errorf("set apart and alone under its key: %v", got)
+	}
+	var none *WorkIdentity
+	none.SetApart(map[string]bool{"iliad": true}) // an index not built for this run
 }

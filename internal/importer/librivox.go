@@ -286,7 +286,6 @@ func RunLibrivox(snapshotDir string, ids LibrivoxIDs, opts Options) (Summary, er
 	sum, err := runBooks(books, sourceLibrivox, opts, nil, func(p *planner) {
 		p.genres = librivoxGenreTable()
 		p.lv.inProgress = inProgress
-		p.lv.reviewed = opts.LibrivoxReviewed
 	})
 	sum.LibrivoxProjects = len(projects)
 	sum.LibrivoxRetired = retired
@@ -712,8 +711,11 @@ type librivoxFacts struct {
 // librivoxState is a LibriVox run's planner state. The zero value is every
 // other run's, and nothing in it is read unless a row carries librivoxFacts.
 type librivoxState struct {
-	// reviewed is Options.LibrivoxReviewed; nil is the embedded file (reviews).
+	// reviewed is the run's reviewed decisions (reviewedTable).
 	reviewed map[int]LibrivoxReview
+	// ownWorks are the works holding an own-work project, catalogued or created by
+	// this run: what the duplicate-identity probe sets apart (librivoxreviewed.go).
+	ownWorks map[string]bool
 	// ids is the project ids the catalogue holds, plus those this run landed.
 	ids map[int]bool
 	// held is where the catalogue holds each project's recording.
@@ -822,9 +824,12 @@ type librivoxLanding struct {
 	narrators map[string]bool
 }
 
-// newLibrivoxState is the empty LibriVox planner state every run starts with.
-func newLibrivoxState() librivoxState {
+// newLibrivoxState is the empty LibriVox planner state every run starts with. The
+// decisions are every source's: its duplicate guard asks where they put a work.
+func newLibrivoxState(reviewed map[int]LibrivoxReview) librivoxState {
 	return librivoxState{
+		reviewed:      reviewed,
+		ownWorks:      map[string]bool{},
 		ids:           map[int]bool{},
 		held:          map[int]RecRef{},
 		people:        map[librivoxKey]string{},
