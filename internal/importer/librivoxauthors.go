@@ -34,7 +34,8 @@ package importer
 //     credit in a script the slug rule folds away entirely ("Йордан Йовков")
 //     would land on the one catch-all person record (model.UnslugPersonID),
 //     which every such name shares. It is dropped from the row before the work
-//     is decided and reported as a credit not recorded (reason unsluggable).
+//     is decided and reported as a credit not recorded (reason unsluggable) -
+//     the rule every source but libex follows (unrecorded.go).
 //     A row left with no individual identity author (only a translator, or only
 //     a collective such as Anonymous) is a worklist row (author-unsluggable):
 //     a work credited to nobody, or to "Anonymous" alone, would merge two
@@ -346,7 +347,8 @@ func (p *planner) keyLibrivoxAuthorVariants(books []sourceBook, titles, suffixes
 		if !ok || len(p.rowNarratorNames(*b)) == 0 {
 			continue
 		}
-		credits, _, noAuthor := p.dropUnsluggableLibrivoxCredits(p.rowAuthorCredits(*b))
+		credits, dropped := rowAuthorCreditSplitIn(p.credits, *b)
+		noAuthor := p.unsluggableLeftNoAuthor(credits, dropped)
 		key, nonLatin := librivoxTitleKeyOf(titles[i])
 		slugs := p.librivoxTitleIndex()[key]
 		if noAuthor || len(credits) == 0 || len(slugs) == 0 {
@@ -513,53 +515,4 @@ func (p *planner) reportLibrivoxAuthorVariants() {
 			fmt.Sprintf("%d LibriVox project(s) credit an author LibriVox spells with more or fewer words than the author of a same-titled work (same surname), or share that author's LibriVox id; credited to that person instead, unless LibriVox's spelling is a person record of its own (kept)", n),
 			p.lv.authorVariantExamples))
 	}
-}
-
-// librivoxUnsluggable is the reason a credit not recorded carries when its
-// name slugs to nothing (rule 2).
-const librivoxUnsluggable = "unsluggable"
-
-// dropUnsluggableLibrivoxCredits is rule 2: the row's author credits without
-// those whose name slugs to nothing, and those dropped. noAuthor reports that a
-// credit was dropped and no individual identity author is left, so the row
-// must not land.
-func (p *planner) dropUnsluggableLibrivoxCredits(credits []credit) (kept, dropped []credit, noAuthor bool) {
-	for _, c := range credits {
-		if p.resolveCredit(c).fellBack {
-			dropped = append(dropped, c)
-		} else {
-			kept = append(kept, c)
-		}
-	}
-	if len(dropped) == 0 {
-		return credits, nil, false
-	}
-	// identityAuthors falls back to the whole list when every credit is
-	// role-qualified, so a translator alone would read as the identity: only a
-	// person some kept credit names WITHOUT a role counts (an author who also
-	// translated the book still does).
-	bare := map[string]bool{}
-	for _, c := range kept {
-		if len(c.roles) == 0 {
-			bare[p.resolveCredit(c).slug] = true
-		}
-	}
-	for _, a := range p.rowWorkAuthorsRO(kept).identity {
-		if bare[a] && individualAuthor(a) {
-			return kept, dropped, false
-		}
-	}
-	return kept, dropped, true
-}
-
-// unsluggableLibrivoxCredits is rule 2's report for a row that landed on work:
-// each dropped credit, with the LibriVox author id its name carries.
-func (p *planner) unsluggableLibrivoxCredits(b sourceBook, work string, dropped []credit) []UnrecordedCredit {
-	out := make([]UnrecordedCredit, 0, len(dropped))
-	for _, c := range dropped {
-		u := p.unrecordedOf(b, "", c, p.resolveCredit(c), work)
-		u.Reason = librivoxUnsluggable
-		out = append(out, u)
-	}
-	return out
 }

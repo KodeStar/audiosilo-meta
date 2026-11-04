@@ -687,12 +687,14 @@ func refuseLibexCredits(authors, narrators []string) (creditRefusal, bool) {
 // a book while silently dropping one of its narrators would record a production
 // that never existed.
 //
-// DELIBERATELY LIBEX-ONLY. The other importers (openaudible.go, libation.go,
-// audiosilobooks.go) read a USER's own library, where the catch-all conflation
-// keeps today's behaviour: a user who owns a Korean audiobook wants it in their
-// catalogue, the conflation is visible to them, and refusing their book to keep a
-// shared database tidy would be the wrong trade. What to do for user libraries is
-// a separate open decision; this rule takes no position on it.
+// The WHOLE-ROW refusal is DELIBERATELY LIBEX-ONLY. The other importers
+// (openaudible.go, libation.go, audiosilobooks.go) read a USER's own library: a
+// user who owns a Korean audiobook wants it in their catalogue, and refusing
+// their book to keep a shared database tidy would be the wrong trade. They
+// never credit the catch-all either (meta#2778): the book is imported with the
+// credit left off and the credit reported as not recorded, reason unsluggable,
+// and a book left with no individual author or no narrator is skipped
+// (internal/importer/unrecorded.go).
 //
 // There is no SQL twin of this rule in scripts/libex-export-rows.sql, unlike the
 // AI-narration vocabulary. Slugify's behaviour is Unicode folding in Go, not a

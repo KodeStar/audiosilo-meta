@@ -207,11 +207,11 @@ func SlugifyWhole(s string) string {
 }
 
 // UnslugPersonID is the shared catch-all person id PersonSlug substitutes for a
-// name that slugs away to nothing. It is one record standing in for every such
-// credit, which is a known, visible conflation rather than a defect for the
-// user-library imports - see PersonSlug. LibriVox never lands there: a reader
-// takes LibrivoxUnslugReaderSlug, and pkg/check refuses a catch-all LibriVox
-// states.
+// name that slugs away to nothing. It would be one record standing in for every
+// such credit, so no writer credits it: libex and the intake forms refuse the
+// name, every other importer leaves the credit off and reports it (a LibriVox
+// reader takes LibrivoxUnslugReaderSlug), and pkg/check refuses the catch-all
+// wherever it appears.
 const UnslugPersonID = "person"
 
 // PersonSlug derives a credit name's person identity, substituting the shared

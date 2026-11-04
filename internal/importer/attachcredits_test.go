@@ -172,7 +172,7 @@ func TestAttachReportsAnUnsluggableTranslator(t *testing.T) {
 			seedKafka(t, dataDir, "franz-kafka", "Franz Kafka")
 			sum := runSourceInto(t, src, dataDir, strings.Replace(src.row("B0ORPHAN05"), "Ian Johnston", "Иван Петров", 1))
 			want := []UnrecordedCredit{{ASIN: "B0ORPHAN05", Name: "Иван Петров",
-				Roles: []string{model.RoleTranslator}, Work: "metamorphosis", Reason: librivoxUnsluggable}}
+				Roles: []string{model.RoleTranslator}, Work: "metamorphosis", Reason: unsluggableReason}}
 			if !reflect.DeepEqual(sum.UnrecordedCredits, want) {
 				t.Fatalf("unrecorded = %+v, want %+v\nwarnings: %v", sum.UnrecordedCredits, want, sum.Warnings)
 			}
