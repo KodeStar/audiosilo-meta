@@ -2613,6 +2613,15 @@
     "decision": "reject",
     "op": "merge-people",
     "others": [
+      "oliver-wendell-holmes-sr"
+    ],
+    "reason": "father and son: the jurist (1841-1935, The Common Law) and the physician and poet (1809-1894)",
+    "target": "oliver-wendell-holmes-jr"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
       "dr-patrick-jones"
     ],
     "reason": "two people: Dr. Patrick Jones wrote and reads the Olympus Kids and Storyforge titles; Patrick Jones is the YA novelist",
@@ -12655,6 +12664,15 @@
     "target": "five-children-and-it"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "five-children-and-it-e-nesbit"
+    ],
+    "reason": "same book, title and author, apart only by the two records of E. Nesbit now folded: PG778 and PG17314 readings beside retail ones",
+    "target": "five-children-and-it"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -17159,6 +17177,15 @@
     ],
     "reason": "different volumes: positions 1, 2 and 3 of new-augsburg-trilogy and the titles state Book 2 and Book 3",
     "target": "new-augsburg"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "new-treasure-seekers-e-nesbit"
+    ],
+    "reason": "same book, title and author, apart only by the two records of E. Nesbit now folded: LibriVox project 1271 beside retail ones",
+    "target": "new-treasure-seekers"
   },
   {
     "decision": "reject",
@@ -22157,6 +22184,15 @@
     "target": "the-book-of-azrael"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-book-of-dragons-e-nesbit"
+    ],
+    "reason": "same book, title and author, apart only by the two records of E. Nesbit now folded: PG23661 reading beside retail ones",
+    "target": "the-book-of-dragons"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -23112,6 +23148,15 @@
     "target": "the-empress-and-the-archer"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-enchanted-castle-e-nesbit"
+    ],
+    "reason": "same book, title and author, apart only by the two records of E. Nesbit now folded: PG3536 and PG34219 readings beside Blackstone's",
+    "target": "the-enchanted-castle-edith-nesbit"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -23667,6 +23712,15 @@
     ],
     "reason": "the same book: the 143-minute full-cast Hodder recording is the same production already on the target via Listening Library, and the title only drops the article",
     "target": "the-house-at-pooh-corner"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-house-of-arden-edith-nesbit"
+    ],
+    "reason": "same book, title and author, apart only by the two records of E. Nesbit now folded: Red Door's reading beside Spoken Realms's and project 3825",
+    "target": "the-house-of-arden"
   },
   {
     "decision": "assert",
@@ -24978,6 +25032,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "phoenix-and-the-carpet"
+    ],
+    "reason": "same book, title and author, apart only by the two records of E. Nesbit now folded: PG836 readings beside retail ones, LibriVox dropping the article",
+    "target": "the-phoenix-and-the-carpet"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-pickwick-papers"
     ],
     "reason": "the same novel; Neil Gaiman is the introducer of the Audible edition (he reads the introduction), not a co-author, and the runtime matches the other unabridged readings",
@@ -25842,6 +25905,24 @@
     ],
     "reason": "the 898-minute three-voice AmazonClassics record is the full 1903 volume with Keller's letters and Sullivan's supplementary account, a larger book than the 255-minute autobiography alone",
     "target": "the-story-of-my-life"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-story-of-the-amulet-e-nesbit"
+    ],
+    "reason": "same book, title and author, apart only by the two records of E. Nesbit now folded: PG837 readings beside retail ones",
+    "target": "the-story-of-the-amulet"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "story-of-the-treasure-seekers"
+    ],
+    "reason": "same book, title and author, apart only by the two records of E. Nesbit now folded: PG770 readings beside retail ones, LibriVox dropping the article",
+    "target": "the-story-of-the-treasure-seekers"
   },
   {
     "decision": "reject",
