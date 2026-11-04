@@ -532,8 +532,8 @@ the order the projects are read in.
   it states. And release dates stop counting against the author when a
   project they wrote (not one they translated) shows they are editions: the
   catalogue holds that text, under its full title (never a generic one such as
-  "Poems"), by someone the project also
-  credits (the same surname), dated only by a release long after the author
+  "Poems"), by a co-author the project also
+  credits (that very person, not merely a shared surname), dated only by a release long after the author
   died ("Narrative of Sojourner Truth", 1850, beside Olive Gilbert's edition of
   2009). Two new author ids
   of one name in a single import are told apart the same way: the second is

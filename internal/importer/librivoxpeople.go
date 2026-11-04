@@ -66,7 +66,8 @@ package importer
 //     one alike, so works dated only by releases leave the id unsure - unless
 //     a project the id authors shows they are editions (librivoxReleasesAreEditions:
 //     the catalogue holds that very text under its full title, dated only by a
-//     release past the bound, credited to a surname the project names - the
+//     release past the bound, credited to a catalogued co-author of the
+//     project (the same person, by slug, not merely a surname) - the
 //     Sojourner Truth hold of #2798; a translator's project shows nothing of
 //     the kind, so Margaret Hunt stays a worklist row and Thomas Taylor, the
 //     translator of Proclus, never lands on the modern novelist). Instead the id is minted at its DATED name
@@ -359,7 +360,7 @@ func (p *planner) resolveLibrivoxAuthors(books []sourceBook) {
 				order = append(order, cl)
 			}
 			cl.titles = append(cl.titles, b.str("title"))
-			cl.projects = append(cl.projects, librivoxClaimProject(b, c.suffix == ""))
+			cl.projects = append(cl.projects, p.librivoxClaimProject(b, c, quiet))
 		}
 	}
 	holder := map[string]lifeYears{}
@@ -737,9 +738,12 @@ func librivoxBound(life lifeYears) int {
 // under the same full title (librivoxTitleKey, a qualifier and all:
 // "Metamorphoses (Howard Version)" names one translation, not Ovid's book; a
 // generic title, librivoxGenericWordsOnly, names none) as
-// a work dated only by a release past the bound (2009), credited to someone
-// the project names too (the same surname: Olive Gilbert). A same-name person
-// dated only by such releases is then no evidence against the match.
+// a work dated only by a release past the bound (2009), credited to a
+// catalogued person the project credits beside the id (coAuthors, by slug:
+// `olive-gilbert`, never just a shared surname, which the id's own name is
+// enough to supply - Mary Webb's "Garden Verses" says nothing beside a modern
+// Precious Webb's). A same-name person dated only by such releases is then no
+// evidence against the match.
 func (p *planner) librivoxReleasesAreEditions(cl *lvAuthorClaim, bound int) bool {
 	for _, pr := range cl.projects {
 		if !pr.own || pr.textYear == 0 || pr.textYear > bound {
@@ -757,7 +761,7 @@ func (p *planner) librivoxReleasesAreEditions(cl *lvAuthorClaim, bound int) bool
 				continue
 			}
 			for _, person := range w.people {
-				if surname := librivoxSurname(p.people[person]); surname != "" && pr.surnames[surname] {
+				if pr.coAuthors[person] {
 					return true
 				}
 			}
@@ -766,24 +770,15 @@ func (p *planner) librivoxReleasesAreEditions(cl *lvAuthorClaim, bound int) bool
 	return false
 }
 
-// librivoxSurname is the last word of a name as the slug rule folds it, its
-// generational suffix set aside (librivoxNameWords); "" for none.
-func librivoxSurname(name string) string {
-	if words, _ := librivoxNameWords(name); len(words) > 0 {
-		return words[len(words)-1]
-	}
-	return ""
-}
-
 // lvClaimProject is one project of a claim, as librivoxReleasesAreEditions
 // reads it: its title, the year LibriVox dates its text by (0 = none), the
-// surnames of the people it credits, and whether the claim authors it (own)
-// rather than translating it.
+// catalogued people its OTHER author credits are (coAuthors), and whether the
+// claim authors it (own) rather than translating it.
 type lvClaimProject struct {
-	title    string
-	textYear int
-	surnames map[string]bool
-	own      bool
+	title     string
+	textYear  int
+	coAuthors map[string]bool
+	own       bool
 }
 
 // librivoxTitledTwin is rule 1c: the catalogued name of the ONE person whose
@@ -939,14 +934,26 @@ func (p *planner) librivoxAuthorRecord(slug string) bool {
 	return end != 0 && end < librivoxFounded
 }
 
-// librivoxClaimProject is a planned row as a claim's project.
-func librivoxClaimProject(b *sourceBook, own bool) lvClaimProject {
-	pr := lvClaimProject{title: b.str("title"), textYear: b.lv.copyrightYear, surnames: map[string]bool{}, own: own}
+// librivoxClaimProject is a planned row as a claim's project (claim the
+// claim's credit on it): its other author credits' catalogued people
+// - a catalogued id's holder, else the live person the census-cleaned name
+// resolves to - read without any of the run's decisions, so a claim is judged
+// alike whichever co-author the run decides first.
+func (p *planner) librivoxClaimProject(b *sourceBook, claim librivoxCredit, quiet creditCensus) lvClaimProject {
+	pr := lvClaimProject{title: b.str("title"), textYear: b.lv.copyrightYear, coAuthors: map[string]bool{}, own: claim.suffix == ""}
 	for _, c := range b.lv.credits {
-		if c.kind == librivoxAuthor {
-			if surname := librivoxSurname(c.name); surname != "" {
-				pr.surnames[surname] = true
+		if c.kind != librivoxAuthor || c.index == claim.index || c.index >= len(b.authors) {
+			continue
+		}
+		if owner, held := p.lv.people[librivoxKey{librivoxAuthor, c.id}]; held && c.id > 0 {
+			if live, ok := p.livePerson(owner); ok {
+				pr.coAuthors[live] = true
 			}
+			continue
+		}
+		name, _ := creditWithRolesSided(b.authors[c.index], quiet)
+		if r := p.resolvePerson(name); !r.create && !r.fellBack {
+			pr.coAuthors[r.slug] = true
 		}
 	}
 	return pr

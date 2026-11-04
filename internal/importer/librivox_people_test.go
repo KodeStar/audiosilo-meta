@@ -1215,3 +1215,27 @@ func TestLibrivoxReaderSpelledTwoWaysIsOnePerson(t *testing.T) {
 	}
 	mustValidate(t, dataDir)
 }
+
+func TestLibrivoxEditionByAnotherWriterOfTheSurnameIsNoEvidence(t *testing.T) {
+	// Mary Webb (1881-1927) wrote "Garden Verses" alone. The catalogue holds a
+	// release-only "Garden Verses" by Precious Webb, a modern writer the project
+	// does not credit, and an undated modern mary-webb with a 2020 release: a
+	// shared surname is no edition of Mary Webb's text, so the id is held, never
+	// stamped on the modern writer.
+	dataDir := t.TempDir()
+	files := map[string]string{}
+	files[personAddr("precious-webb")] = personFiles(t, "precious-webb", "Precious Webb", nil)
+	files[personAddr("mary-webb")] = personFiles(t, "mary-webb", "Mary Webb", nil)
+	retailWork(t, files, "garden-verses", "Garden Verses", "precious-webb", "")
+	retailWork(t, files, "a-modern-romance", "A Modern Romance", "mary-webb", "")
+	seedTree(t, dataDir, files)
+	pr := byAuthors(t, 99160, "Garden Verses", lvDated(5501, "Mary", "Webb", "1881", "1927"))
+	pr.CopyrightYear = "1910"
+	sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
+	if len(sum.LibrivoxWorklist) != 1 || sum.LibrivoxWorklist[0].Reason != LibrivoxSameNameAuthor {
+		t.Fatalf("worklist = %v, want 99160 held as same-name-author", sum.LibrivoxWorklist)
+	}
+	if p := personOf(t, dataDir, "mary-webb"); p.AuthorID != 0 {
+		t.Errorf("mary-webb = %+v, want the modern writer untouched", p)
+	}
+}
