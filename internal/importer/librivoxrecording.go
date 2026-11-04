@@ -174,28 +174,43 @@ func (p *planner) librivoxRecordingCredits(f *librivoxFacts) any {
 	return listOrNil(out)
 }
 
-// librivoxTranslatorSlug is the person a translator credit of project names:
-// the one carrying its author id, else its name's person when that carries no
-// other author id, else - the name resolving to no record at all - a person
-// created there for them, carrying the id. ok=false otherwise.
+// librivoxTranslatorSlug is the person a translator credit of project names,
+// as the run decided it FOR ITS AUTHOR ID (resolveLibrivoxAuthors), never
+// re-derived from the name:
+//
+//   - the person carrying the id (catalogued, or stamped by this run);
+//   - else the credit's decided person (librivoxCredit.person: rule 1's
+//     catalogued spelling, or rule 2's dated name for a same-name author who is
+//     someone else) - created there, carrying the id and its years, when the
+//     run has not made that record (an attach records no work credit, so
+//     nothing else would);
+//   - a credit with no decided person (no id, a name that slugs to nothing, or
+//     one the person rules held) is credited only to a record its name already
+//     is, never created and never stamped.
+//
+// A record carrying ANOTHER LibriVox author id is never credited: the id, not
+// the name, is the person.
 func (p *planner) librivoxTranslatorSlug(c librivoxCredit, project int) (string, bool) {
 	if c.id > 0 {
 		if owner, ok := p.lv.people[librivoxKey{librivoxAuthor, c.id}]; ok {
 			return p.livePerson(owner)
 		}
 	}
-	if slug, ok := p.librivoxCreditSlug(c); ok {
-		if held := p.lv.authorOf[slug]; held != 0 && held != c.id {
+	if c.person == nil || c.id <= 0 {
+		slug, ok := p.librivoxCreditSlug(c)
+		if !ok || (p.lv.authorOf[slug] != 0 && p.lv.authorOf[slug] != c.id) {
 			return "", false
 		}
 		return slug, true
 	}
-	name := p.soleCreditName(c)
-	if name == "" || c.id <= 0 {
-		return "", false
+	r := p.resolveCredit(credit{person: c.person})
+	if !r.create {
+		if held := p.lv.authorOf[r.slug]; held != 0 && held != c.id {
+			return "", false
+		}
+		return r.slug, true
 	}
-	r := p.resolvePerson(name)
-	if !r.create || r.fellBack {
+	if _, retired := p.redirects.Survivor(model.RedirectPeople, r.slug); retired {
 		return "", false
 	}
 	p.curSource = OutSource{Type: p.sourceType, Ref: strconv.Itoa(project), ImportedAt: p.importDate}
