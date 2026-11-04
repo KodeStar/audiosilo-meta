@@ -4784,6 +4784,34 @@
             {
               "asin": "B079BPJX1R",
               "region": "uk"
+            },
+            {
+              "asin": "B0711BV4KH",
+              "region": "ca"
+            },
+            {
+              "asin": "B0BT512GR6",
+              "region": "br"
+            },
+            {
+              "asin": "0062284827",
+              "region": "es"
+            },
+            {
+              "asin": "B00CYPX72C",
+              "region": "fr"
+            },
+            {
+              "asin": "B079BFSG5R",
+              "region": "in"
+            },
+            {
+              "asin": "B079B95MQC",
+              "region": "it"
+            },
+            {
+              "asin": "B07F32526R",
+              "region": "jp"
             }
           ],
           "chapters": [
@@ -4948,6 +4976,41 @@
               "imported_at": "2026-10-04",
               "ref": "B079BPJX1R",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-04",
+              "ref": "B0711BV4KH",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-04",
+              "ref": "B0BT512GR6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-04",
+              "ref": "0062284827",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-04",
+              "ref": "B00CYPX72C",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-04",
+              "ref": "B079BFSG5R",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-04",
+              "ref": "B079B95MQC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-04",
+              "ref": "B07F32526R",
+              "type": "libex-import"
             }
           ],
           "work": "sacred-clowns"
@@ -4990,6 +5053,40 @@
             {
               "imported_at": "2026-10-04",
               "ref": "B07BB65VTV",
+              "type": "libex-import"
+            }
+          ],
+          "work": "sacred-clowns"
+        },
+        "gil-silverbird-1999-2": {
+          "abridged": true,
+          "added_at": "2026-11-04",
+          "asin": [
+            {
+              "asin": "B071NW3BGW",
+              "region": "ca"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 10404813,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "id": "gil-silverbird-1999-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gil-silverbird"
+          ],
+          "publisher": "HarperAudio",
+          "release_date": "1999-12-16",
+          "runtime_min": 173,
+          "sources": [
+            {
+              "imported_at": "2026-11-04",
+              "ref": "B071NW3BGW",
               "type": "libex-import"
             }
           ],
