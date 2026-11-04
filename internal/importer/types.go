@@ -88,6 +88,9 @@ type outChapter struct {
 	// AudioURL is the section's own audio file (a LibriVox archive.org MP3);
 	// only a LibriVox recording states one (pkg/check requires librivox_id).
 	AudioURL string `json:"audio_url,omitempty"`
+	// A LibriVox section's readers and number (model.Chapter's) are never on a
+	// planned chapter: the LibriVox recording pass writes them onto the stored
+	// recording after planning (librivoxrecording.go).
 }
 
 type outRecording struct {
@@ -180,9 +183,11 @@ func (m Mode) locatesASINs() bool {
 }
 
 // plansRows reports whether the mode plans rows as BOOKS - credits, people,
-// series - and so needs the batch's credit decisions and series resolution.
-// The genre regeneration reads a row's ASIN and genres alone, and both
-// whole-batch passes over a row set the size of the catalogue would be waste.
+// series - and so needs the batch's credit decisions (a LibriVox batch's id
+// keying among them) and series resolution. The genre regeneration reads a
+// row's identifier (an ASIN, or a LibriVox project id), runtime and genres
+// alone, and the whole-batch passes over a row set the size of the catalogue
+// would be waste.
 func (m Mode) plansRows() bool {
 	return m != ModeRegenerateGenres
 }
@@ -545,6 +550,10 @@ type Summary struct {
 	// imported before readers were keyed apart). Both 0 for every other source.
 	LibrivoxReadersSplit int
 	LibrivoxReadersMoved int
+	// LibrivoxRestated is what the recording pass restated on the run's
+	// LibriVox recordings, landed and held (librivoxrecording.go). Zero for
+	// every other source.
+	LibrivoxRestated LibrivoxRestated
 	// LibrivoxReadersUnslugged counts the readers minted at
 	// model.LibrivoxUnslugReaderSlug (`librivox-reader-<reader id>`) because
 	// their name slugs to nothing. 0 for every other source.

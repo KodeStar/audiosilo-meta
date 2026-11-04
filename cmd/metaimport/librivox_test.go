@@ -57,6 +57,48 @@ func TestLibrivoxImportEndToEnd(t *testing.T) {
 	}
 }
 
+// TestLibrivoxImportRegenerateGenresFlags: the regeneration needs its rows'
+// date, refuses the create-only flags it would ignore, and its own flags are
+// refused without it.
+func TestLibrivoxImportRegenerateGenresFlags(t *testing.T) {
+	refuse := func(string, importer.LibrivoxIDs, importer.Options) (importer.Summary, error) {
+		t.Fatal("the importer ran despite a refused invocation")
+		return importer.Summary{}, nil
+	}
+	base := []string{"--from", librivoxFixture, "--ids", "1-"}
+	for _, extra := range [][]string{
+		{"--regenerate-genres"}, // no --rows-as-of
+		{"--regenerate-genres", "--rows-as-of", "yesterday"},
+		{"--regenerate-genres", "--rows-as-of", "2026-10-27", "--date", "2026-10-27"},
+		{"--regenerate-genres", "--rows-as-of", "2026-10-27", "--skipped", filepath.Join(t.TempDir(), "s.ndjson")},
+		{"--regenerate-genres", "--rows-as-of", "2026-10-27", "--worklist", filepath.Join(t.TempDir(), "w.ndjson")},
+		{"--regenerate-genres", "--rows-as-of", "2026-10-27", "--conflicts", filepath.Join(t.TempDir(), "c.ndjson")},
+		{"--rows-as-of", "2026-10-27"},
+		{"--genre-changes", filepath.Join(t.TempDir(), "g.ndjson")},
+	} {
+		if code := runLibrivoxImport(append(append([]string{}, base...), extra...), refuse); code != 2 {
+			t.Errorf("%v exit = %d, want 2", extra, code)
+		}
+	}
+	var got importer.Options
+	run := func(_ string, _ importer.LibrivoxIDs, o importer.Options) (importer.Summary, error) {
+		got = o
+		return importer.Summary{}, nil
+	}
+	out := captureStdout(t, func() {
+		args := append(append([]string{}, base...), "--regenerate-genres", "--rows-as-of", "2026-10-27", "--dry-run")
+		if code := runLibrivoxImport(args, run); code != 0 {
+			t.Errorf("exit = %d", code)
+		}
+	})
+	if got.Mode != importer.ModeRegenerateGenres || got.RowsAsOf != "2026-10-27" {
+		t.Errorf("options = %+v", got)
+	}
+	if !strings.Contains(out, "genre regeneration plan (dry run") {
+		t.Errorf("summary:\n%s", out)
+	}
+}
+
 func TestLibrivoxFetchRequiresOut(t *testing.T) {
 	if code := runLibrivoxFetch(nil, importer.NewLibrivoxFetcher()); code != 2 {
 		t.Errorf("exit = %d, want 2", code)

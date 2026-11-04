@@ -315,6 +315,10 @@ func StatementOf(title, series string, p VolumePolicy) VolumeStatement {
 	return VolumeStatement{Volume: v, States: ok, Divisions: divisionSequenceOf(residual)}
 }
 
+// Silent reports whether a statement states nothing at all: no volume and no
+// division. A silent title agrees with every statement (Agrees).
+func (a VolumeStatement) Silent() bool { return !a.States && len(a.Divisions) == 0 }
+
 // Agrees reports whether two statements are of the same volume - or, either way, do
 // not contradict each other. A statement of nothing is not a disagreement: "Hammered"
 // beside "Hammered: The Iron Druid Chronicles, Book 3" is the duplicate the gates
@@ -667,11 +671,22 @@ func SameStatedVolume(titleA, seriesA, titleB, seriesB string, p VolumePolicy) b
 }
 
 // divisionMarker matches any keyword that names WHICH PART of a product a title is,
-// with its number - markerSeq's vocabulary (pluralized) plus the division words. It is
-// the union on purpose: a title can nest two of them, and which family each keyword
-// belongs to says nothing about whether the pair agrees.
-var divisionMarker = regexp.MustCompile(`(?i)\b(?:books?|bks?|vols?|volumes?|parts?|pts?|episodes?|eps?|#|` + divisionWords + `)` +
+// with its number - markerSeq's vocabulary (pluralized) plus the division words, plus
+// "chapter". It is the union on purpose: a title can nest two of them, and which
+// family each keyword belongs to says nothing about whether the pair agrees.
+//
+// "Chapter" is a sequence word only, never a volume: LibriVox records a long history
+// one project per chapter ("History of England, from the Accession of James II -
+// (Volume 1, Chapter 02)"), and those titles agree on their volume and differ only in
+// the chapter nested under it, so without it the sequence read [1] for every chapter
+// of a volume and the census paired them all as one book.
+var divisionMarker = regexp.MustCompile(`(?i)\b(?:books?|bks?|vols?|volumes?|parts?|pts?|episodes?|eps?|chapters?|#|` + divisionWords + `)` +
 	divisionNumberArms)
+
+// chapterMarker reports whether a divisionMarker match is a CHAPTER marker.
+func chapterMarker(match string) bool {
+	return len(match) >= 7 && strings.EqualFold(match[:7], "chapter")
+}
 
 // divisionSequence is every division number a title states, in the order it states
 // them, with the series name removed first (so a digit in the series' own name is not
@@ -682,7 +697,10 @@ func divisionSequence(title, series string) []float64 {
 
 // divisionSequenceOf is divisionSequence over an already-stripped residual. A marker
 // it cannot read (a composite word number) makes it state nothing rather than half a
-// sequence.
+// sequence - except a CHAPTER marker, which is skipped: chapter joined the
+// vocabulary after the rest, and an unreadable "Chapter One Hundred and One" must not
+// erase the divisions it used to read ("Foo, Book 2, Chapter One Hundred and One" is
+// still [2]), or two distinct products would agree.
 func divisionSequenceOf(residual string) []float64 {
 	ms := divisionMarker.FindAllStringSubmatchIndex(residual, -1)
 	if len(ms) == 0 {
@@ -691,10 +709,15 @@ func divisionSequenceOf(residual string) []float64 {
 	out := make([]float64, 0, len(ms))
 	for _, m := range ms {
 		v, ok := readDivisionNumber(residual, m)
-		if !ok {
+		switch {
+		case ok:
+			out = append(out, v)
+		case !chapterMarker(residual[m[0]:m[1]]):
 			return nil
 		}
-		out = append(out, v)
+	}
+	if len(out) == 0 {
+		return nil
 	}
 	return out
 }

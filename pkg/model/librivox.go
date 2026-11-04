@@ -98,35 +98,79 @@ var librivoxLanguages = map[string]string{
 // librivoxGenres maps LibriVox's genre names (lowercased, as internal/importer's
 // genre table keys them) onto this project's genre vocabulary - LICENSING.md's "never a
 // retailer's taxonomy verbatim", which holds for a public-domain catalogue's
-// taxonomy too. Only a genre with an evident vocabulary counterpart is mapped;
-// a sub-genre maps where its own name has one (a poetry form to poetry, a Bible
-// translation to religion-spirituality, a science branch to science).
+// taxonomy too. Only a genre with an evident vocabulary counterpart is mapped,
+// and no vocabulary term exists for LibriVox's sake (issue #2761: clear fits
+// onto existing terms, nothing new). The rules, each read off what the genre
+// holds in the 22,449-project snapshot rather than off its name alone:
+//
+//   - a sub-genre maps where its own name has one (a poetry form to poetry, a
+//     Bible translation to religion-spirituality, a science branch to science,
+//     Mathematics to science as the Audible table files it);
+//   - the PLAY genres Comedy, Drama and Tragedy are all drama-plays: LibriVox
+//     files plays under them (Twelfth Night, Uncle Vanya and Pirates of Penzance
+//     are its Comedy; only 13 of its 226 Comedy projects also carry Plays), so a
+//     comic play is a play, never comedy-humor, which is the humour shelf;
+//   - a name that exists ONLY in LibriVox's two children's branches (genre ids
+//     37-51 under Children's Fiction and Children's Non-fiction) and names no
+//     vocabulary entry of its own - Animals & Nature, Family, General,
+//     Historical, School, Short works - is childrens: Wind in the Willows is
+//     Animals & Nature, the Bobbsey Twins are Family, Tom Brown's School Days is
+//     School, Struwwelpeter is Short works. Animals & Nature is NOT nature,
+//     whose vocabulary entry is non-fiction (the Audible table's genre kinds).
+//     A children's name with an entry of its own keeps it (Action & Adventure,
+//     Arts, Biography, Language learning), and a name a children's branch
+//     SHARES with another branch (Religion, Poetry, Science, Reference, "Myths,
+//     Legends & Fairy Tales") maps by name, since the table cannot tell the two
+//     ids apart;
+//   - the non-fiction sub-genres with a precedent in the Audible table
+//     (audiblegenres.json by_name) map as it does: Literary Criticism to
+//     writing-publishing (its "Literary History & Criticism"; criticism is a
+//     subject, essays a form LibriVox states separately), Atheism & Agnosticism
+//     to religion-spirituality (its "Atheism" and "Agnosticism"; 4 of 31 carry
+//     Religion, 1 Philosophy), Crafts & Hobbies to home-garden, Animals to
+//     nature; and Exploration, a sub-genre of Travel & Geography holding the
+//     expedition narratives (Farthest North, South!, Lewis and Clark's
+//     journals), to travel as its parent does.
+//
 // Left out on purpose, and reported once per run as unmapped:
 //
 //   - LibriVox's PERIOD genres ("Published before 1800", "Published 1800 -1900",
 //     "Published 1900 onward") and the period sub-genres of its History and
 //     Poetry branches ("Antiquity", "Ancient", "Asian Antiquity", "Medieval",
 //     "Middle Ages/Middle History", "Early Modern", "Modern", "Modern (19th C)",
-//     "Modern (20th C)", "Contemporary", "Historical"): a period is not a genre;
-//   - its umbrella and format genres ("General Fiction", "General", "*Non-fiction",
+//     "Modern (20th C)", "Contemporary"): a period is not a genre;
+//   - its umbrella and format genres ("General Fiction", "*Non-fiction",
 //     "Fantastic Fiction", "Dramatic Readings", "Anthologies", "Single Author
-//     Collections", "Single author", "Short works", "Short non-fiction",
-//     "Literary Collections", "Periodicals & Magazines", "Narratives", "Letters",
+//     Collections", "Single author", "Short non-fiction", "Literary
+//     Collections", "Periodicals & Magazines", "Narratives", "Letters",
 //     "Epistolary Fiction", "Reference"), which name no single vocabulary entry;
-//   - a genre whose nearest vocabulary entry would be a guess ("Nautical & Marine
-//     Fiction", "Culture & Heritage Fiction", "Literary Criticism", "Atheism &
-//     Agnosticism", "Exploration"...): a candidate for a new vocabulary term,
-//     not a mapping;
+//   - a genre whose nearest vocabulary entry would be a guess. A FICTION genre
+//     whose nearest entry is non-fiction ("Nature & Animal Fiction" -> nature,
+//     "Travel Fiction" -> travel, "Family Life" -> parenting-relationships), and
+//     one whose projects split across entries ("Writing & Linguistics" is
+//     punctuation guides, novel-writing manuals and literary histories;
+//     "Transportation" is flying handbooks beside the Pony Express; "Games" is
+//     euchre rules, riddles and Baseball Ballads; "Sagas" is the Forsyte Saga
+//     beside the Nibelungenlied; "Fictional Biographies & Memoirs" is fictional
+//     autobiography - David Copperfield's kind - not historical-fiction's
+//     biographical novel), plus "Culture & Heritage Fiction" and "Nautical &
+//     Marine Fiction";
 //   - anything not listed here, which a backfill tranche's unmapped line
 //     surfaces and a later change adds deliberately.
+//
+// A change here reaches the works already imported through
+// `metaimport librivox import --regenerate-genres` (internal/importer's
+// regenerate.go), not by itself.
 var librivoxGenres = map[string]string{
 	"action & adventure":                 "action-adventure",
 	"action & adventure fiction":         "action-adventure",
 	"american standard version":          "religion-spirituality",
-	"animals & nature":                   "nature",
+	"animals":                            "nature",
+	"animals & nature":                   "childrens",
 	"art, design & architecture":         "arts-entertainment",
 	"arts":                               "arts-entertainment",
 	"astronomy, physics & mechanics":     "science",
+	"atheism & agnosticism":              "religion-spirituality",
 	"ballads":                            "poetry",
 	"bibles":                             "religion-spirituality",
 	"biography":                          "biography-memoir",
@@ -140,8 +184,9 @@ var librivoxGenres = map[string]string{
 	"christianity - commentary":          "religion-spirituality",
 	"christianity - other":               "religion-spirituality",
 	"classics (greek & latin antiquity)": "classics",
-	"comedy":                             "comedy-humor",
+	"comedy":                             "drama-plays",
 	"cooking":                            "food-cooking",
+	"crafts & hobbies":                   "home-garden",
 	"crime & mystery fiction":            "mystery",
 	"detective fiction":                  "mystery",
 	"douay-rheims version":               "religion-spirituality",
@@ -152,16 +197,20 @@ var librivoxGenres = map[string]string{
 	"elegies & odes":                     "poetry",
 	"epics":                              "poetry",
 	"erotica":                            "erotica",
-	"essays & short works":               "essays",
 	"essays":                             "essays",
+	"essays & short works":               "essays",
+	"exploration":                        "travel",
 	"fairy tales":                        "fairy-tales-folklore",
+	"family":                             "childrens",
 	"family & relationships":             "parenting-relationships",
 	"fantasy fiction":                    "fantasy",
 	"free verse":                         "poetry",
 	"gardening":                          "home-garden",
+	"general":                            "childrens",
 	"ghost stories":                      "ghost-stories",
 	"gothic fiction":                     "gothic",
 	"health & fitness":                   "health-wellness",
+	"historical":                         "childrens",
 	"historical fiction":                 "historical-fiction",
 	"history":                            "history",
 	"horror & supernatural fiction":      "horror",
@@ -172,6 +221,7 @@ var librivoxGenres = map[string]string{
 	"language learning":                  "language",
 	"law":                                "law",
 	"life sciences":                      "science",
+	"literary criticism":                 "writing-publishing",
 	"literary fiction":                   "literary-fiction",
 	"lyric":                              "poetry",
 	"mathematics":                        "science",
@@ -192,10 +242,12 @@ var librivoxGenres = map[string]string{
 	"religious fiction":            "religious-fiction",
 	"romance":                      "romance",
 	"satire":                       "comedy-humor",
+	"school":                       "childrens",
 	"science":                      "science",
 	"science fiction":              "science-fiction",
 	"self-help":                    "self-help",
 	"short stories":                "short-stories",
+	"short works":                  "childrens",
 	"social science (culture & anthropology)": "social-sciences",
 	"sonnets":             "poetry",
 	"sports & recreation": "sports",

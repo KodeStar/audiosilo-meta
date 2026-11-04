@@ -245,13 +245,22 @@ func TestLibrivoxRerunLeavesAnUnkeyedNarrator(t *testing.T) {
 		workAddr("metamorphosis"):           testpack.WorkJSON(t, "metamorphosis", "Metamorphosis", testpack.WithAuthors("franz-kafka")),
 		recAddr("metamorphosis", "martina"): testpack.WithField(t, testpack.RecJSON(t, "martina", "metamorphosis", testpack.WithNarrators("martina")), "librivox_id", 91002),
 	})
+	snap := writeSnapshot(t, martinaRow(t, 91002, 634))
+	sum := runLibrivox(t, snap, dataDir, allLibrivox)
+	if sum.LibrivoxReadersMoved != 0 {
+		t.Errorf("moved %d; want nothing", sum.LibrivoxReadersMoved)
+	}
+	if got := lvNarrators(t, dataDir, "metamorphosis", "martina"); !reflect.DeepEqual(got, []string{"martina"}) {
+		t.Errorf("narrators = %v, want them as they were", got)
+	}
+	// The recording pass restated the project's own facts (its title); a second
+	// rerun has nothing left to write.
 	before := testpack.Snapshot(t, dataDir)
-	sum := runLibrivox(t, writeSnapshot(t, martinaRow(t, 91002, 634)), dataDir, allLibrivox)
-	if sum.LibrivoxReadersMoved != 0 || len(sum.Files) != 0 {
-		t.Errorf("moved %d, wrote %v; want nothing", sum.LibrivoxReadersMoved, sum.Files)
+	if again := runLibrivox(t, snap, dataDir, allLibrivox); len(again.Files) != 0 {
+		t.Errorf("second rerun wrote %v; want a no-op", again.Files)
 	}
 	if after := testpack.Snapshot(t, dataDir); !reflect.DeepEqual(before, after) {
-		t.Error("the tree changed")
+		t.Error("second rerun changed the tree")
 	}
 }
 
@@ -294,13 +303,22 @@ func TestLibrivoxRerunLeavesARecordingAlreadyCreditingTheReader(t *testing.T) {
 		workAddr("metamorphosis"):           testpack.WorkJSON(t, "metamorphosis", "Metamorphosis", testpack.WithAuthors("franz-kafka")),
 		recAddr("metamorphosis", "martina"): testpack.WithField(t, testpack.RecJSON(t, "martina", "metamorphosis", testpack.WithNarrators("martina", "martina-librivox-634")), "librivox_id", 91002),
 	})
+	snap := writeSnapshot(t, martinaRow(t, 91002, 634))
+	sum := runLibrivox(t, snap, dataDir, allLibrivox)
+	if sum.LibrivoxReadersMoved != 0 {
+		t.Errorf("moved %d; want nothing", sum.LibrivoxReadersMoved)
+	}
+	if got := lvNarrators(t, dataDir, "metamorphosis", "martina"); !reflect.DeepEqual(got, []string{"martina", "martina-librivox-634"}) {
+		t.Errorf("narrators = %v, want them as they were", got)
+	}
+	// The recording pass restated the project's own facts (its title); a second
+	// rerun has nothing left to write.
 	before := testpack.Snapshot(t, dataDir)
-	sum := runLibrivox(t, writeSnapshot(t, martinaRow(t, 91002, 634)), dataDir, allLibrivox)
-	if sum.LibrivoxReadersMoved != 0 || len(sum.Files) != 0 {
-		t.Errorf("moved %d, wrote %v; want nothing", sum.LibrivoxReadersMoved, sum.Files)
+	if again := runLibrivox(t, snap, dataDir, allLibrivox); len(again.Files) != 0 {
+		t.Errorf("second rerun wrote %v; want a no-op", again.Files)
 	}
 	if after := testpack.Snapshot(t, dataDir); !reflect.DeepEqual(before, after) {
-		t.Error("the tree changed")
+		t.Error("second rerun changed the tree")
 	}
 }
 
