@@ -134,7 +134,7 @@ var classDoc = map[string]string{
 	ClassRepackage: "retail recordings that are a LibriVox project's own audio, repackaged under an imprint: a recording with no " +
 		"librivox_id read by exactly the readers of a LibriVox recording of the SAME work, in the same language, and either inside " +
 		"the runtime window (never longer than the project beyond rounding, at most a minute a section shorter: the LibriVox " +
-		"preamble a repackage trims) or, with a runtime unstated, sold by a publisher carrying several runtime-confirmed proposals. " +
+		"preamble a repackage trims) or, with a runtime unstated, sold by a publisher carrying several runtime-confirmed recordings. " +
 		"ADVISORY throughout: a link for a person to review, never a merge, and nothing applies it - an accept or a reject in " +
 		"reviewed.json is the record, and withdraws the pair from this queue.",
 	ClassLangMix: "series whose members state two or more languages, read against ONE keeper language (the derived one, or for a tie the " +

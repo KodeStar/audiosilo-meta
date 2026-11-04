@@ -197,7 +197,7 @@ func analyzeWith(res check.Result, decisions []reviewedDecision) *Report {
 	serDup := detectSeriesDup(ix, skeys, clustersOf)
 	detectOrderingTwins(ix, skeys, serDup)
 	mix, mixTally := detectLanguageMix(ix, newMixLocks(dup, noSeries, integrity, serDup))
-	repack, repackTally := detectRepackage(ix)
+	repack, repackTally := detectRepackage(ix, repackRefuted(decisions, cat.Redirects))
 
 	rep := &Report{
 		Stats:          stats,

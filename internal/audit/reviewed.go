@@ -636,8 +636,8 @@ type decisionOutcome struct {
 type reviewedTally struct{ All []decisionOutcome }
 
 // Outcomes are every decision that is not STALE - those that met a fresh proposal,
-// plus the census-only and unresolved merge rejections, which met none but are
-// still in force; Stale the rest.
+// plus the census-only and unresolved merge rejections and the linked or suppressed
+// record-only decisions, which met none but are still in force; Stale the rest.
 func (t reviewedTally) Outcomes() []decisionOutcome { return t.filter(false) }
 func (t reviewedTally) Stale() []decisionOutcome    { return t.filter(true) }
 func (t reviewedTally) Entries() int                { return len(t.All) }

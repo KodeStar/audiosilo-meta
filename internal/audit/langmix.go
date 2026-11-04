@@ -1205,9 +1205,4 @@ func evidenceText(ev check.NarrationEvidence) string {
 	return strings.Join(parts, ", ")
 }
 
-func orDash(s string) string {
-	if s == "" {
-		return "-"
-	}
-	return s
-}
+func orDash(s string) string { return orPlaceholder(s, "-") }

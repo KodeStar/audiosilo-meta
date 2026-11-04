@@ -187,6 +187,31 @@ func TestRepackagePublisherSignal(t *testing.T) {
 			t.Errorf("no-runtime-no-publisher = %d, want 1", rep.Repackage.NoRuntimeNoPublisher)
 		}
 	})
+	t.Run("one recording matching two projects counts once", func(t *testing.T) {
+		files := tree(repackPublisherMin - 1)
+		// confirmed-0's retail edition also sits inside the window of a second project
+		// by the same reader: still one Paperless edition, so still too few.
+		files["works/xx/confirmed-0/recordings/david-barnes-v2.json"] = recJSON(t, "david-barnes-v2", "confirmed-0",
+			withNarrators("david-barnes"), withRuntime(153), lvProject(800, 3))
+		rep := runFixture(t, files)
+		if got := subclassOf(t, rep, ClassRepackage, repackPublisher); len(got) != 0 {
+			t.Fatalf("one edition counted twice toward its publisher: %+v", got)
+		}
+		if got := len(subclassOf(t, rep, ClassRepackage, repackRuntime)); got != repackPublisherMin {
+			t.Errorf("runtime proposals = %d, want %d (both projects of confirmed-0 still proposed)", got, repackPublisherMin)
+		}
+	})
+	t.Run("a reviewed rejection is no evidence for its publisher", func(t *testing.T) {
+		reject := linkDecision("reject", "confirmed-0", "david-barnes-2016", "david-barnes")
+		rep := runFixtureRejecting(t, tree(repackPublisherMin), reject)
+		if got := subclassOf(t, rep, ClassRepackage, repackPublisher); len(got) != 0 {
+			t.Fatalf("a refuted pair stood in for an unstated runtime: %+v", got)
+		}
+		if rep.Repackage.NoRuntimeNoPublisher != 1 || rep.Repackage.Suppressed != 1 {
+			t.Errorf("no-runtime-no-publisher %d, suppressed %d, want 1 and 1",
+				rep.Repackage.NoRuntimeNoPublisher, rep.Repackage.Suppressed)
+		}
+	})
 	t.Run("a stated runtime outside the window is refused whatever the publisher", func(t *testing.T) {
 		files := tree(repackPublisherMin)
 		repackWork(t, files, "rerecorded", 700, 154, 3, withRuntime(200))
@@ -210,6 +235,29 @@ func TestRepackageLanguageSignal(t *testing.T) {
 	}
 	if got := repackFindings(t, runFixture(t, metamorphosis(t, testpack.WithRecLanguage("en-gb")))); len(got) != 1 {
 		t.Errorf("a regional tag of one language was refused: %+v", got)
+	}
+}
+
+// The sibling note names only the other projects the candidate is PROPOSED against: a
+// pair left out (here, a runtime unstated on a one-off imprint) has nothing to accept.
+func TestRepackageSiblingNoteNamesProposedPairsOnly(t *testing.T) {
+	files := metamorphosis(t)
+	files["works/xx/metamorphosis/recordings/david-barnes-v2.json"] = recJSON(t, "david-barnes-v2", "metamorphosis",
+		withNarrators("david-barnes"), lvProject(528, 3), testpack.WithoutRuntime())
+	rep := runFixture(t, files)
+	got := repackFindings(t, rep)
+	if len(got) != 1 || got[0].Propose.To != "david-barnes" {
+		t.Fatalf("want the one runtime-confirmed pair, got %+v", got)
+	}
+	if notes := strings.Join(got[0].Notes, "\n"); strings.Contains(notes, "david-barnes-v2") {
+		t.Errorf("the note names a pair that is not proposed: %q", notes)
+	}
+	files["works/xx/metamorphosis/recordings/david-barnes-v2.json"] = recJSON(t, "david-barnes-v2", "metamorphosis",
+		withNarrators("david-barnes"), lvProject(528, 3), withRuntime(153))
+	for _, fd := range repackFindings(t, runFixture(t, files)) {
+		if !strings.Contains(strings.Join(fd.Notes, "\n"), "also read LibriVox recording") {
+			t.Errorf("two proposed pairs of one candidate, and %s's note does not name the other: %q", fd.Propose.To, fd.Notes)
+		}
 	}
 }
 
@@ -279,6 +327,27 @@ func TestRepackageReviewedRejectSuppresses(t *testing.T) {
 	}
 	if rep.Repackage.Suppressed != 1 {
 		t.Errorf("suppressed = %d, want 1", rep.Repackage.Suppressed)
+	}
+}
+
+// An acceptance and a rejection resolving to one pair: the rejection wins and the
+// acceptance is refused, as for every other op.
+func TestRepackageConvergingDecisionsRefuseTheAcceptance(t *testing.T) {
+	accept := linkDecision("accept", "metamorphosis-old", "david-barnes-2016", "david-barnes")
+	reject := linkDecision("reject", "metamorphosis", "david-barnes-2016", "david-barnes")
+	rep := runFixtureRejectingWith(t, metamorphosis(t),
+		`{"people":{},"series":{},"works":{"metamorphosis-old":"metamorphosis"}}`, reject, accept)
+	if got := repackFindings(t, rep); len(got) != 0 {
+		t.Fatalf("a rejected pair is still proposed: %+v", got)
+	}
+	want := map[string]outcomeStatus{"reject": statusSuppressed, "accept": statusRefused}
+	for _, o := range rep.Reviewed.All {
+		if o.Status != want[o.Entry.Decision] {
+			t.Errorf("%s reads %q (%s), want %q", o.Entry.Decision, o.Status, o.Why, want[o.Entry.Decision])
+		}
+	}
+	if rep.Repackage.Suppressed != 1 || rep.Repackage.Linked != 0 {
+		t.Errorf("suppressed %d linked %d, want 1 and 0", rep.Repackage.Suppressed, rep.Repackage.Linked)
 	}
 }
 
