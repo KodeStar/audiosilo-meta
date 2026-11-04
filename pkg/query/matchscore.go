@@ -34,7 +34,10 @@ import (
 //     Herbert and "sharpe 8" is volume 8 of the Sharpe novels.
 //
 // Within a set the score is a weighted average over the facts that were
-// actually judged: title 60, author 20, series 10, runtime 10. A fact the
+// actually judged: title 60, author 20, series 10, runtime 10 (and narrator
+// 10, judged only when the request and a recording both name narrators), then
+// scaled by the mismatch factors below for the facts that say it is another
+// book or another edition. A fact the
 // request does not state is left out of the denominator rather than counted as
 // a mismatch, so a book with no author tag is not penalized for it - with one
 // exception: a structured request whose titles say nothing (no hypothesis, or
@@ -84,6 +87,44 @@ const genericTitleValue = 0.85
 // authorMismatchFactor scales a structured score when the request named
 // authors and none of them wrote the candidate.
 const authorMismatchFactor = 0.75
+
+// positionConflictFactor scales a structured score when the request states a
+// position and the candidate sits in the named series at ANOTHER one (or its
+// generic title names another volume), and no membership's range covers the
+// stated position. The series weight alone left such a sibling 10 points behind
+// the stated volume when both titles agree ("Failure Frame, Vol. 4" against a
+// request for volume 1: 90 to 100), close enough to hold a confident match for
+// review; scaled, it sits near 72. A start value, tuned on the LibraForge
+// benchmark harness in audiosilo-server.
+const positionConflictFactor = 0.8
+
+// languageMismatchFactor scales a candidate's score when the request states a
+// language (works/match `language`) and the work's KNOWN language is another
+// one. Foreign editions are their own works in the catalogue
+// (der-da-vinci-code beside the-da-vinci-code), and their titles often fold to
+// nearly the same words, so without it a translation ran within a few points of
+// the original. An unknown language on either side is never judged
+// (model.SameLanguage's rule). A start value, tuned on the benchmark harness.
+const languageMismatchFactor = 0.8
+
+// runtimeFar and runtimeMismatchFactor: a candidate whose closest recording is
+// more than runtimeFar off the requested runtime is another edition or an
+// abridgement, far beyond the 10% a client treats as plausible, and its score
+// is scaled by runtimeMismatchFactor (on top of the runtime weight's zero). A
+// French tome at 48% of the file's length still scored 87 on its title and
+// series alone. Start values, tuned on the benchmark harness.
+const (
+	runtimeFar            = 0.25
+	runtimeMismatchFactor = 0.85
+)
+
+// weightNarrator is the weight narrator agreement carries when the request
+// names narrators (works/match `narrator`) AND the candidate has recordings
+// crediting any: judged like the authors (agreeAuthors), the best recording
+// deciding. A request naming none, or a work whose recordings credit none,
+// leaves it out of the denominator, so every older request scores as before. A
+// start value, tuned on the benchmark harness.
+const weightNarrator = 10.0
 
 // seriesTrust is the band in which a title DISAGREES with a candidate strongly
 // enough that a series-number agreement must not be believed. A title that
@@ -835,7 +876,75 @@ func (s seriesAgreement) value() float64 {
 	return 0
 }
 
+// ---- language ----------------------------------------------------------------------
+
+// matchLanguageWords maps the spellings a file's language tag takes to the
+// catalogue's ISO 639-1 primary subtag: the ISO 639-2 codes (bibliographic and
+// terminology) and a few own-language names of the languages model's word
+// table holds, beside that table's English names (read through
+// model.LanguageWords). A spelling missing here reads as unknown, which judges
+// nothing, so a gap costs a factor, never a wrong one.
+var matchLanguageWords = func() map[string]string {
+	m := model.LanguageWords()
+	for code, lang := range map[string]string{
+		"eng": "en", "tur": "tr", "ger": "de", "deu": "de", "fre": "fr", "fra": "fr",
+		"spa": "es", "ita": "it", "jpn": "ja", "por": "pt", "dut": "nl", "nld": "nl",
+		"pol": "pl", "rus": "ru", "chi": "zh", "zho": "zh", "dan": "da", "swe": "sv",
+		"ara": "ar", "hin": "hi", "heb": "he", "cze": "cs", "ces": "cs", "hun": "hu",
+		"fin": "fi", "nor": "no", "nob": "no", "nno": "no", "gre": "el", "ell": "el",
+		"mar": "mr", "rum": "ro", "ron": "ro", "mal": "ml",
+		// Norwegian's two written standards share the catalogue's "no".
+		"nb": "no", "nn": "no",
+		"deutsch": "de", "francais": "fr", "espanol": "es", "castellano": "es",
+		"italiano": "it", "nederlands": "nl", "portugues": "pt", "polski": "pl",
+		"svenska": "sv", "dansk": "da", "norsk": "no", "suomi": "fi",
+	} {
+		m[code] = lang
+	}
+	return m
+}()
+
+// unknownLanguages are the tags that state no single language: undetermined,
+// multiple, no linguistic content, uncoded.
+var unknownLanguages = map[string]bool{"und": true, "mul": true, "zxx": true, "mis": true}
+
+// matchLanguage reads a language as works/match compares it: a BCP-47 tag's
+// primary subtag ("en-US", "en_GB" -> "en"), a 639-2 code ("eng") or a
+// language's name ("English", "Deutsch") mapped to its 639-1 code, and "" for
+// anything else - an unknown language, which is never judged. A work's stored
+// tag goes through the same reading, so "nb" and "no" are one language.
+func matchLanguage(raw string) string {
+	s := strings.ToLower(strings.TrimSpace(stripMarks(raw)))
+	s = strings.ReplaceAll(s, "_", "-")
+	if s == "" {
+		return ""
+	}
+	if lang, ok := matchLanguageWords[s]; ok {
+		return lang
+	}
+	if !model.ValidLanguageTag(s) {
+		return ""
+	}
+	p := model.PrimarySubtag(s)
+	if lang, ok := matchLanguageWords[p]; ok {
+		return lang
+	}
+	if unknownLanguages[p] {
+		return ""
+	}
+	return p
+}
+
 // ---- runtime -----------------------------------------------------------------------
+
+// positionCovers reports whether a stored RANGE position (an omnibus, "1-3")
+// covers a stated one ("2", or "2-3"): an omnibus holding the stated volume is
+// not a sibling at another position, so positionConflictFactor spares it.
+func positionCovers(stored, stated string) bool {
+	slo, shi, sok := parsePositionRange(stored)
+	alo, ahi, aok := parsePositionRange(stated)
+	return sok && aok && slo < shi && slo <= alo && ahi <= shi
+}
 
 // runtimeFit scores a recording runtime (minutes) against the book's length
 // (seconds): 1 within runtimeSame, runtimeNearValue within runtimeNear, else 0,
