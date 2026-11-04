@@ -152,3 +152,49 @@ func TestJudgeNarrationBridgesGroups(t *testing.T) {
 		t.Error("a bridging ASIN must fold the two groups into one production")
 	}
 }
+
+// A middle initial stated or omitted, and two narrators credited in one name, are
+// one production: no finding.
+func TestJudgeNarrationFoldsSpellingsOfOneCredit(t *testing.T) {
+	cases := []struct {
+		name   string
+		stored []string
+		ls     []lookedASIN
+	}{
+		{"a middle initial", []string{"richard-m-davidson"}, []lookedASIN{
+			{asin: "A", narrators: []string{"Richard Davidson"}},
+			{asin: "B", narrators: []string{"Richard M Davidson"}},
+		}},
+		{"two names in one credit", []string{"kate-reading", "michael-kramer"}, []lookedASIN{
+			{asin: "A", narrators: []string{"Kate Reading", "Michael Kramer"}},
+			{asin: "B", narrators: splitCredit("Kate Reading and Michael Kramer")},
+		}},
+	}
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			if f, ok := judgeNarration(NarrationSuspect{Work: "w", Recording: "r", Narrators: c.stored}, c.ls); ok {
+				t.Errorf("finding = %+v, want none", f)
+			}
+		})
+	}
+	// Different people stay apart, initials or not.
+	if _, ok := judgeNarration(NarrationSuspect{Work: "w", Recording: "r", Narrators: []string{"ann-lee"}}, []lookedASIN{
+		{asin: "A", narrators: []string{"Ann Lee"}},
+		{asin: "B", narrators: []string{"Ann B Lean"}},
+	}); !ok {
+		t.Error("two different narrators must still be a finding")
+	}
+}
+
+func TestSplitCreditSplitsOnlyTwoFullNames(t *testing.T) {
+	for in, want := range map[string]string{
+		"Kate Reading and Michael Kramer": "Kate Reading|Michael Kramer",
+		"Kate Reading & Michael Kramer":   "Kate Reading|Michael Kramer",
+		"Simon and Garfunkel":             "Simon and Garfunkel",
+		"Wil Wheaton":                     "Wil Wheaton",
+	} {
+		if got := strings.Join(splitCredit(in), "|"); got != want {
+			t.Errorf("splitCredit(%q) = %q, want %q", in, got, want)
+		}
+	}
+}

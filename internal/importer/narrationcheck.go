@@ -174,11 +174,35 @@ type NarrationReport struct {
 }
 
 // narratorKey folds a narrator credit (a libex name or a stored person id) so the
-// two spellings meet: the person slug with its separators dropped, which also folds
-// an initials spelling ("R.C. Bray" / r-c-bray).
+// two spellings meet: the person slug with its separators and its middle initials
+// dropped, which folds an initials spelling ("R.C. Bray" / r-c-bray) and a stated
+// or omitted middle initial ("Richard M Davidson" / richard-davidson).
 func narratorKey(s string) string {
 	slug, _ := model.PersonSlug(s)
-	return strings.ReplaceAll(slug, "-", "")
+	words := strings.Split(slug, "-")
+	kept := words[:0:0]
+	for i, w := range words {
+		if len(w) == 1 && i > 0 && i < len(words)-1 {
+			continue
+		}
+		kept = append(kept, w)
+	}
+	return strings.Join(kept, "")
+}
+
+// splitCredit splits one libex credit naming two people ("Kate Reading and Michael
+// Kramer") into its names. Only a join of two names of two words or more is split,
+// so a single name holding "and" stays whole.
+func splitCredit(s string) []string {
+	for _, sep := range []string{" and ", " & "} {
+		if a, b, ok := strings.Cut(s, sep); ok {
+			a, b = strings.TrimSpace(a), strings.TrimSpace(b)
+			if len(strings.Fields(a)) >= 2 && len(strings.Fields(b)) >= 2 {
+				return []string{a, b}
+			}
+		}
+	}
+	return []string{s}
 }
 
 // CheckNarrations looks every suspect's ASINs up on libex and returns the
@@ -226,7 +250,7 @@ func (c *LibexClient) CheckNarrations(ctx context.Context, suspects []NarrationS
 				for _, e := range list {
 					if m, ok := e.(map[string]any); ok {
 						if n, _ := m["name"].(string); strings.TrimSpace(n) != "" && !castCredit(n) {
-							l.narrators = append(l.narrators, strings.TrimSpace(n))
+							l.narrators = append(l.narrators, splitCredit(strings.TrimSpace(n))...)
 						}
 					}
 				}
