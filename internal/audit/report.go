@@ -392,6 +392,7 @@ func writeReviewedSummary(b *strings.Builder, t reviewedTally) {
 		{Label: "... acceptances or assertions refused", N: counts[statusRefused]},
 		{Label: "... rejections withholding an assertion", N: counts[statusWithholds]},
 		{Label: "... merge rejections matching no proposal, honoured by metacheck's census", N: counts[statusCensus]},
+		{Label: "... people rejections naming one live record, honoured by the importer (unresolved)", N: counts[statusUnresolved]},
 		{Label: "... matching no proposal (STALE)", N: counts[statusStale]},
 	})
 	b.WriteString("\n")

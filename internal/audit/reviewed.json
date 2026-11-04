@@ -4504,15 +4504,6 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
-      "nineteen-eighty-four"
-    ],
-    "reason": "the same novel by George Orwell, both English: Nineteen Eighty-Four is the title as published (Peter Capaldi's 742-minute Penguin Modern Classics reading, 0141989963) and 1984 its common spelling; held back until the community layer keeps one of the two works' sidecars",
-    "target": "1984"
-  },
-  {
-    "decision": "assert",
-    "op": "merge-works",
-    "others": [
       "20-000-leagues-under-the-sea-classic-tales-edition",
       "20-000-leagues-under-the-sea-dramatized"
     ],
@@ -14537,6 +14528,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "1984"
+    ],
+    "reason": "the same novel by George Orwell, both English: Nineteen Eighty-Four is the title as published (Peter Capaldi's 742-minute Penguin Modern Classics reading, 0141989963) and 1984 its common spelling; the published title survives, keeping the community layer's nineteen-eighty-four sidecars (#2735)",
+    "target": "nineteen-eighty-four"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "crimson-shadow-noir"
     ],
     "reason": "the same novel, book 1 of Nathan Squiers's Crimson Shadow from the same publisher: the 2020 Skyler Morgan recording is the relaunched edition of the 2016 one, and the series prefix in the other title is a retailer decoration",
@@ -24085,6 +24085,15 @@
     ],
     "reason": "a single 236-minute volume versus the 826-minute Saga Edition collecting books 1-3",
     "target": "working-class-superheroes"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "the-world-crisis-vol-1"
+    ],
+    "reason": "one book: both are Volume 1 (1911-1914) of Churchill's The World Crisis, the same 21 chapters in the same order (The Vials of Wrath to Turkey and the Balkans); the 1261-minute Blackstone reading adds the appendices, the 1407-minute LibriVox reading (1923 text) splits chapters into parts",
+    "target": "world-crisis-volume-1"
   },
   {
     "decision": "reject",

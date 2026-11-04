@@ -3,8 +3,8 @@ name: real-data
 # Run the REAL-DATA tests, which nothing else runs.
 #
 # Every test that reads the real data/ tree skips under -race
-# (race_{on,off}_test.go in pkg/check, pkg/canonical, internal/importer and
-# internal/repair - the fixture suites cover the concurrent code, and the walks
+# (a build-tagged race flag asked by the tests in pkg/check, pkg/canonical,
+# internal/importer and internal/repair - the fixture suites cover the concurrent code, and the walks
 # cost minutes under the detector), and check.yml's gate is `go test -race
 # ./...`. So TestRealDataTree, TestRealDataCanonical, TestData* and
 # TestRealTreeDryRunComposesAPlan ran nowhere but a maintainer's machine, and a

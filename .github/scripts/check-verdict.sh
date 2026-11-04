@@ -6,9 +6,9 @@
 #       Read the `needs` context of the aggregate job (every job it waits on,
 #       each with its `result`) from $NEEDS. Exit 0 when every job not named as
 #       an advisory one concluded `success`; otherwise name each one that did
-#       not, print the tail of each FAILING job's log found under <log-dir> (the
-#       captured output, downloaded as artifacts, one file per job named
-#       <job>.log or, for a matrix job, <job>-<n>.log), and exit 1. An absent,
+#       not, print the tail of every non-empty *.log under <log-dir> (the
+#       failing jobs' output, as failed-job-logs.sh fetched it from the API for
+#       exactly the jobs this verdict fails on), and exit 1. An absent,
 #       empty or unreadable $NEEDS is a failure: a verdict nobody could read is
 #       never a pass.
 #
@@ -28,16 +28,16 @@
 # WHY THE LOGS. When a required check fails twice, the sync bot hands the
 # resolver the last lines of THAT check run's log (its evidence.CheckFlag). A
 # verdict job whose log only said "metacheck: failure" would hand it nothing to
-# fix, so each gated job tees its output to a file, uploads it when it fails, and
-# this script prints those files last - where the bot's tail reads them - just
-# as the single job's own log used to end with the failing step's output.
+# fix, so the verdict job fetches each failing job's log from the API
+# (failed-job-logs.sh, which cuts it off after the failing step) and this
+# script prints those files last - where the bot's tail reads them - just as the
+# single job's own log used to end with the failing step's output.
 #
-# ONLY THE FAILING JOBS' LOGS. Artifacts belong to the workflow RUN, not to an
-# attempt: after a "re-run failed jobs" (which the sync bot always asks for once
-# before believing a failure) the download still holds the log every job
-# uploaded in an EARLIER attempt, including one that has passed since. Printed,
-# a stale log could be the last thing in this one and become the bot's evidence
-# for a failure it is not, so a log whose job concluded `success` is skipped.
+# ONLY THE FAILING JOBS' LOGS, decided once, upstream: check.yml hands
+# failed-job-logs.sh the non-advisory jobs whose result is not `success`, and it
+# fetches those of them that failed in the CURRENT attempt - so <log-dir> holds
+# nothing else, and this script prints what it finds rather than filtering it a
+# second time.
 #
 # RESULTS. `success` is the only pass. `failure`, `cancelled` and `skipped` are
 # not: the gated jobs never skip at the job level (their STEPS are gated, so a
@@ -65,7 +65,6 @@ if ! rows="$(jq -r 'to_entries[] | "\(.key)\t\(.value.result)"' <<<"$NEEDS" 2>/d
 fi
 
 bad=0
-failing=" "
 while IFS=$'\t' read -r job result; do
   if [[ "$advisory" == *" $job "* ]]; then
     echo "$job: $result (advisory, never the verdict)"
@@ -74,7 +73,6 @@ while IFS=$'\t' read -r job result; do
   echo "$job: $result"
   if [ "$result" != "success" ]; then
     bad=1
-    failing+="$job "
   fi
 done <<<"$rows"
 
@@ -84,32 +82,34 @@ if [ "$bad" -eq 0 ]; then
 fi
 
 # The failing jobs' own output, last, so a reader of this log's tail sees it.
-# A log names its job by its file name (<job>.log, <job>-<n>.log for a matrix
-# job); one whose job passed is an earlier attempt's, and an empty one says
-# nothing.
+# An empty log says nothing and is left out.
 logs=()
 if [ -d "$logdir" ]; then
   while IFS= read -r log; do
-    stem="$(basename "$log" .log)"
-    job="$stem"
-    if [[ "$stem" =~ ^(.+)-[0-9]+$ ]]; then
-      job="${BASH_REMATCH[1]}"
-    fi
-    if [[ "$failing" == *" $job "* || "$failing" == *" $stem "* ]] && [ -s "$log" ]; then
-      logs+=("$log")
-    fi
-  done < <(find "$logdir" -type f -name '*.log' | LC_ALL=C sort)
+    logs+=("$log")
+  done < <(find "$logdir" -type f -name '*.log' -size +0 | LC_ALL=C sort)
 fi
 if [ "${#logs[@]}" -gt 0 ]; then
   per=$((TAIL_LINES / ${#logs[@]}))
   if [ "$per" -lt 40 ]; then
     per=40
   fi
+  # The logs are other jobs' output as the API serves it, the runner's own
+  # markers included (##[group], ##[error], setup-go's ##[add-matcher]), and the
+  # runner of THIS job acts on such a line wherever it appears: every failing
+  # job's error would become a second annotation on `check`, and a group opened
+  # in the tail would fold the evidence away in the UI. So command processing is
+  # stopped while they print and resumed by a token made up for this run (on a
+  # line of its own: the last log may not end in a newline).
+  resume="check-verdict-logs-$$-$RANDOM$RANDOM"
+  echo "::stop-commands::$resume"
   for log in "${logs[@]}"; do
     echo
     echo "===== $(basename "$log"), last ${per} lines ====="
     tail -n "$per" "$log"
   done
+  echo
+  echo "::$resume::"
 fi
 echo
 echo "check-verdict: a required job did not pass (see above)" >&2

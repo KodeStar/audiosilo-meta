@@ -263,7 +263,7 @@ func TestResolveReadsTheSeriesLanguage(t *testing.T) {
 		Series: []*model.Series{{ID: "orphan-x", Name: "Orphan X", Works: []model.SeriesWork{
 			{Work: "orphan-x-der-auftrag", Position: "1"}, {Work: "der-unbekannte", Position: "2"}}}},
 	}
-	ix := NewSeriesAuthorIndex(cat)
+	ix := NewSeriesAuthorIndex(cat, nil)
 	stored := func(slug string) (string, bool) {
 		if slug == "orphan-x" {
 			return "Orphan X", true
