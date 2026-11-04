@@ -99,7 +99,7 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 	date := fs.String("date", "", "imported_at stamp (YYYY-MM-DD); defaults to today (UTC)")
 	conflicts := fs.String("conflicts", "", "append one NDJSON row per refused contradiction to this file")
 	regenerate := fs.Bool("regenerate-genres", false, "re-derive the genres of the works holding the selected projects under today's LibriVox genre table (the recording vote; a trim only where every recording met a row); touches nothing else")
-	rowsAsOf := fs.String("rows-as-of", "", "with --regenerate-genres (REQUIRED there): the YYYY-MM-DD day of the snapshot's rows; a work whose newest provenance is later is not judged")
+	rowsAsOf := fs.String("rows-as-of", "", "with --regenerate-genres (REQUIRED there): the YYYY-MM-DD LAST day a tranche was imported from this snapshot (a LibriVox record is stamped with its import day, not the fetch day); a work whose newest provenance is later is not judged")
 	genreChanges := fs.String("genre-changes", "", "with --regenerate-genres: write one NDJSON line per changed work ({\"work\",\"removed\",\"added\",\"mode\"}) to this file")
 	if err := fs.Parse(args); err != nil {
 		return 2
@@ -152,6 +152,9 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 	}
 	if mode == importer.ModeRegenerateGenres {
 		fmt.Printf("librivox: %d projects selected by --ids %s\n", sum.LibrivoxProjects, strings.TrimSpace(*idsFlag))
+		// Set aside before planning, so they are in neither count of the rows
+		// read; a held one leaves its work add-only (its recording met no row).
+		printLibrivoxInProgress(sum.LibrivoxInProgress)
 		printSummary(sum, *dryRun, mode)
 		if !*dryRun {
 			fmt.Printf("  %d pack files written\n", len(sum.Files))

@@ -131,15 +131,26 @@ type recInfo struct {
 	abridged *bool
 	// librivox says a recording loaded from disk carries a LibriVox project id:
 	// beside its ASINs, the other identifier a row can reach it by
-	// (rowAddressable).
+	// (regenCovered).
 	librivox bool
 }
 
-// rowAddressable reports whether a source row can reach the recording by an
-// identifier - an ASIN, or a LibriVox project id - which is what makes the rows
-// forEachMatchedRow matches an account of it: a recording that carries one and
-// met no row is evidence the run did not see (regenerate.go's completeness test).
-func (ri *recInfo) rowAddressable() bool { return len(ri.asins) > 0 || ri.librivox }
+// regenCovered is the genre regeneration's completeness test for one
+// recording (regenerate.go): whether a run whose rows address recordings by
+// LibriVox project id (lvRun) or else by ASIN holds the recording's whole
+// account. A row can reach a recording by either identifier
+// (forEachMatchedRow), so one carrying the identifier this run's rows address
+// is covered only when a row met it (seen), and one carrying the OTHER kind -
+// an ASIN in a LibriVox run, a project id in a libex one - never is, even when
+// a row of this run's kind met it: the other source's rows, which this run did
+// not read, are an account of it too. A recording carrying neither is evidence
+// no row can give, so it never blocks a trim.
+func (ri *recInfo) regenCovered(seen, lvRun bool) bool {
+	if lvRun && len(ri.asins) > 0 || !lvRun && ri.librivox {
+		return false
+	}
+	return seen || (len(ri.asins) == 0 && !ri.librivox)
+}
 
 // workState tracks a work's identity (slug + author set) and its recordings.
 //
@@ -860,10 +871,13 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 		p.setEvidenceRuntime(&books[i])
 	}
 	p.loadExisting()
-	// A LibriVox row's credits are keyed by LibriVox id before any census reads
-	// their names (librivox.go); a no-op for every other source.
-	p.keyLibrivoxCredits(books)
 	if p.mode.plansRows() {
+		// A LibriVox row's credits are keyed by LibriVox id before any census
+		// reads their names (librivox.go); a no-op for every other source. The
+		// genre regeneration reads no credit, so it neither keys them nor runs
+		// the author rules (decideLibrivoxAuthors) over the unheld projects of
+		// its selection, whose note would describe a create run it is not.
+		p.keyLibrivoxCredits(books)
 		p.credits = p.creditContextOf(books)
 	}
 	if p.mode == ModeRelocate {

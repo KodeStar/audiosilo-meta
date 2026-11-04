@@ -5,6 +5,7 @@ import (
 	"reflect"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 )
 
@@ -98,6 +99,75 @@ func TestRegenerateGenresLibrivoxProjectMakesALibexRunIncomplete(t *testing.T) {
 	}
 	if len(sum.GenreChanges) != 1 || sum.GenreChanges[0].Mode != GenreChangeAddOnly {
 		t.Errorf("changes = %+v, want one add-only", sum.GenreChanges)
+	}
+}
+
+// TestRegenerateGenresRecordingWithBothIdentifiersIsAddOnly: one recording
+// carrying an ASIN AND a LibriVox project id is two sources' account of it, so a
+// run reading either source's rows alone has seen only part of it - even though
+// a row of its own kind met the recording - and may only add, whichever run it
+// is (recInfo.regenCovered).
+func TestRegenerateGenresRecordingWithBothIdentifiersIsAddOnly(t *testing.T) {
+	seed := func() string {
+		return seedRegen(t, map[string]string{
+			"works/bo/both/work.json": regenWorkJSON("both", []string{"comedy-humor", "romance"}, "librivox", "libex-import"),
+			"works/bo/both/recordings/rec.json": `{"asin":[{"asin":"B0BOTH0001","region":"us"}],"id":"rec","language":"en","librivox_id":99805,` +
+				`"license":"CC0-1.0","narrators":["bea-reader"],"sources":[{"type":"libex-import"},{"type":"librivox","ref":"99805"}],"work":"both"}`,
+		})
+	}
+	for name, tc := range map[string]struct {
+		run  func(dataDir string) Summary
+		want []string
+	}{
+		"librivox run": {func(d string) Summary { return runLibrivoxRegen(t, d, lvRegenProject(t, 99805, "Comedy")) },
+			[]string{"comedy-humor", "drama-plays", "romance"}},
+		"libex run": {func(d string) Summary { return runRegen(t, d, regenRow("B0BOTH0001", "Classics")) },
+			[]string{"classics", "comedy-humor", "romance"}},
+	} {
+		t.Run(name, func(t *testing.T) {
+			dataDir := seed()
+			sum := tc.run(dataDir)
+			if sum.Matched != 1 {
+				t.Fatalf("matched = %d, want 1", sum.Matched)
+			}
+			if got := regenGenres(t, dataDir, "both"); !reflect.DeepEqual(got, tc.want) {
+				t.Errorf("genres = %v, want the stored set only added to %v", got, tc.want)
+			}
+			if len(sum.GenreChanges) != 1 || sum.GenreChanges[0].Mode != GenreChangeAddOnly {
+				t.Errorf("changes = %+v, want one add-only", sum.GenreChanges)
+			}
+		})
+	}
+}
+
+// TestRegenerateGenresLibrivoxRunsNoAuthorRules: the regeneration reads no
+// credit, so an unheld project of its selection meets none of the create run's
+// LibriVox author rules - the create run respells this one (John Tyndall
+// (1820-1893), kept off the catalogued narrator of that name), the regeneration
+// notes nothing about it and writes nothing.
+func TestRegenerateGenresLibrivoxRunsNoAuthorRules(t *testing.T) {
+	files := map[string]string{}
+	files[personAddr("john-tyndall")] = personFiles(t, "john-tyndall", "John Tyndall", nil)
+	narratedWork(t, files, "grow-indoors", "How to Grow Indoors", "john-tyndall")
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, files)
+	snap := writeSnapshot(t, byAuthor(t, 99810, "Heat a Mode of Motion", "English", lvDated(16171, "John", "Tyndall", "1820", "1893")))
+	const ruleNote = "LibriVox author id(s) kept off"
+
+	create := runLibrivoxWith(t, snap, dataDir, allLibrivox, Options{DryRun: true})
+	if !hasNote(create.Notes, ruleNote) {
+		t.Fatalf("the create run took no author decision, so this pins nothing: notes %v", create.Notes)
+	}
+	before := testpack.Snapshot(t, dataDir)
+	regen := runLibrivoxWith(t, snap, dataDir, allLibrivox, Options{Mode: ModeRegenerateGenres, RowsAsOf: "2026-10-06"})
+	if hasNote(regen.Notes, ruleNote) {
+		t.Errorf("the regeneration ran the author rules: notes %v", regen.Notes)
+	}
+	if regen.NotInCatalog != 1 || len(regen.GenreChanges) != 0 {
+		t.Errorf("not in catalogue/changes = %d/%+v, want 1/none", regen.NotInCatalog, regen.GenreChanges)
+	}
+	if after := testpack.Snapshot(t, dataDir); !reflect.DeepEqual(before, after) {
+		t.Error("the regeneration changed the tree")
 	}
 }
 

@@ -321,7 +321,8 @@ The rule, applied at **record** granularity (not per field):
    re-derives for an existing work - and the regeneration may only
    TRIM a set no user-library source contributed to (a user-library source on
    the work or on any of its recordings counts), and only when every
-   recording carrying an ASIN or a LibriVox project id was in the evidence. A set any user-library
+   recording carrying an ASIN or a LibriVox project id was in the evidence
+   (one carrying both is wholly in it for neither run alone). A set any user-library
    source contributed to is only ever added to, by the vote as by a user row.
    The regeneration appends no source: the genres are derived from rows the
    work already cites.

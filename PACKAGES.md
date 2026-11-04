@@ -1748,7 +1748,12 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   `model.LibrivoxGenres`, and the completeness test counts a recording carrying
   a LibriVox id (`recInfo.librivox`) as owing a row just as an ASIN-carrying one
   does - in BOTH runs, so a LibriVox run over a work that also holds a libex
-  recording, and a libex run over one holding a LibriVox project, may only add.
+  recording, and a libex run over one holding a LibriVox project, may only add;
+  a recording carrying BOTH identifiers is never covered by either run alone
+  (`recInfo.regenCovered`). The LibriVox run keys no credits and runs none of
+  the author rules (`keyLibrivoxCredits` is a `plansRows` pass), and its
+  `--rows-as-of` is the LAST day a tranche was imported from the snapshot,
+  since a LibriVox record is stamped with its import day.
   `--genre-changes <path>` is the review worklist (one `{"work","removed",
   "added","mode"}` line per changed work, `trim` or `add-only`, through
   internal/atomicfile); the summary line counts works set / added to / unchanged /

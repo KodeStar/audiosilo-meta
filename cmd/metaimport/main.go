@@ -371,9 +371,11 @@ const inertInRegen = "does nothing under --regenerate-genres, which writes genre
 // regenFlagRules are the genre regeneration's flag rules, shared by the libex
 // command and `librivox import` (both run the regeneration): its own two flags,
 // valid in that mode only, and the two create flags it would silently ignore.
+// None is libexOnly: the mode test alone scopes them, since only those two
+// commands can select the mode (selectMode refuses it for every other source).
 var regenFlagRules = []flagRule{
-	{"--genre-changes", true, regenOnly, "is the --regenerate-genres worklist; it is valid in that mode only"},
-	{"--rows-as-of", true, regenOnly, "is the --regenerate-genres rows' snapshot date; it is valid in that mode only"},
+	{"--genre-changes", false, regenOnly, "is the --regenerate-genres worklist; it is valid in that mode only"},
+	{"--rows-as-of", false, regenOnly, "is the --regenerate-genres rows' snapshot date; it is valid in that mode only"},
 	{"--date", false, notRegen, inertInRegen},
 	{"--conflicts", false, notRegen, inertInRegen},
 }
@@ -381,8 +383,7 @@ var regenFlagRules = []flagRule{
 // refuseFlags validates the flags fs was given explicitly against rules, for a
 // run of source in mode, printing the first refusal under the command's prefix:
 // a flag that would be silently inert is a refusal instead. A libexOnly flag is
-// refused for every source but the catalogue-bounded ones (boundedSource, and
-// librivox, whose import runs the genre regeneration too).
+// refused for every source but the catalogue-bounded one (boundedSource).
 func refuseFlags(prefix string, fs *flag.FlagSet, mode importer.Mode, source string, rules []flagRule) bool {
 	explicit := map[string]bool{}
 	fs.Visit(func(f *flag.Flag) { explicit["--"+f.Name] = true })
@@ -392,7 +393,7 @@ func refuseFlags(prefix string, fs *flag.FlagSet, mode importer.Mode, source str
 		case f.valid != nil && !f.valid(mode):
 			fmt.Fprintf(os.Stderr, "%s: %s %s\n", prefix, f.name, f.what)
 			return true
-		case f.libexOnly && source != boundedSource && source != "librivox":
+		case f.libexOnly && source != boundedSource:
 			fmt.Fprintf(os.Stderr, "%s: %s is only supported for the %s source, not %q\n", prefix, f.name, boundedSource, source)
 			return true
 		}
