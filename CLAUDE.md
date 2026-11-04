@@ -854,8 +854,15 @@ keep this index in step (one line per topic).
   AudioSilo GitHub App (no labels survive an API create by a non-collaborator)
   with GITHUB_TOKEN - which fires no `labeled` run - and calls intake in the same
   run; a called run is admitted only for the issue that started its caller, and
-  routes on the `template` input. route.yml's caps and denylist are in
-  GOVERNANCE.md.
+  routes on the `template` input. The routing itself is ONE reusable workflow,
+  `route-reusable.yml` (`workflow_call`, inputs `routes` - the title-prefix
+  allowlist as `<tag> <label>` lines - and `cap`; outputs `decision` and
+  `label`): route.yml calls it by local path and audiosilo-meta-community's
+  route.yml at a pinned commit sha (bumped by hand, like its CORE_REF), and each
+  caller then calls its OWN intake.yml (a `./` path inside a reusable workflow
+  names this repository's file). A re-run of a decided issue is a no-op; the
+  guard's conditions are stated once, in route-reusable.yml's header.
+  route.yml's caps and denylist are in GOVERNANCE.md.
 - **Deterministic builds**: metabuild inserts in sorted id order so identical
   data produces identical artifacts.
 - **Governance**: merge policy and trust tiers live in
