@@ -17,8 +17,17 @@
 
 # data/redirects.json is NOT a pack (it is the slug tombstone table, one small
 # map of retired slug -> live slug), so the pack driver above must not be handed
-# it. The driver refuses any file with no top-level "entries" object, so being
-# handed it would leave the conflict unresolved - where git's own line merge
-# resolves the common case and stops loudly on the rest. Unsetting the attribute
-# restores that default for this one path.
-/data/redirects.json !merge
+# it - the driver refuses any file with no top-level "entries" object. It has a
+# driver of its own instead, cmd/metaredirectmerge: a three-way merge of each
+# namespace's map plus pkg/redirects.Add's chain collapse, rendered exactly as
+# pkg/redirects.Write renders the file. git's line merge never corrupts this file,
+# but two pull requests that each record one tombstone touch adjacent sorted lines
+# and conflict, which would stall the intake sweep. The sweep configures it; a
+# contributor can with
+#
+#   git config merge.redirectsjson.name "three-way merge of the slug tombstone table"
+#   git config merge.redirectsjson.driver "go run ./cmd/metaredirectmerge %O %A %B %P"
+#
+# and, unconfigured, git's own line merge applies here as before. This line comes
+# after the pack pattern on purpose: the last matching line wins.
+/data/redirects.json merge=redirectsjson

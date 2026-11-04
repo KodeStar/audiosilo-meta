@@ -75,7 +75,10 @@ and `pkg/check` validates it. The pack merge driver is kept off it by a
 `.gitattributes` line, since a union of pack ENTRIES is not what a conflict there
 needs - and the driver itself refuses any file with no top-level `entries` object,
 because reading a missing one as empty turned that file into `{"entries":{}}` and
-reported success.
+reported success. That line routes it to a driver of its own instead,
+`cmd/metaredirectmerge` (`pkg/redirects.Merge`): a three-way merge of each
+namespace's map, with chains the two sides make together collapsed the way
+`redirects.Add` collapses them.
 
 The accounting is over JSON files only, so the tree's one non-JSON file,
 `data/go.mod`, is invisible to every family and to every reader and writer that

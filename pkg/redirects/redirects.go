@@ -10,9 +10,11 @@
 // here validates against the catalogue: this package knows the file, not the
 // database.
 //
-// ITS FIRST CALLER is internal/repair, the duplicate-merge pass this mechanism was
-// built ahead of: retiring a slug without a tombstone is what had to be made
-// impossible before any such pass ran, and every slug a merge retires is recorded
+// ITS FIRST EDITOR is internal/repair, the duplicate-merge pass this mechanism
+// was built ahead of (internal/issueform also writes aliases, the merge driver
+// below only combines two such edits, and pkg/check and internal/recorddiff only
+// read): retiring a slug without a tombstone is what had to be made impossible
+// before any such pass ran, and every slug a merge retires is recorded
 // here in the same change. The same pass also records a retitle's ALIAS here (see
 // model.Redirects), and so does internal/issueform, for an intake title
 // correction. The chain collapse is what the repair pass actually needs - waves
@@ -21,14 +23,15 @@
 // not retrofitted - it is a documented one-off that has done its work, so
 // rewriting it would change nothing on disk.
 //
-// ONE GAP IS KNOWN AND DELIBERATELY LEFT OPEN, recorded here so it is not
-// rediscovered as a surprise: the file has NO merge driver of its own. git's line
-// merge is sound-or-loud on it (unlike on a pack file, where it can duplicate a
-// key - see scripts/pack-union-merge.sh, which refuses this file), but it
-// conflicts on a large share of realistic two-PR append combinations, so the
-// intake rebase sweep can stall on it once redirects are being added regularly. A
-// union driver for this shape - a map of maps, no deletions to reason about - is
-// the fix when that starts happening.
+// It also owns the file's MERGE (Merge, merge.go), which cmd/metaredirectmerge
+// runs as the git merge driver .gitattributes names for this one path. The pack
+// driver (scripts/pack-union-merge.sh) refuses the file - it is no pack - and git's
+// line merge, while sound-or-loud on it, conflicts on most realistic pairs of
+// pull requests that each record one tombstone (two adjacent sorted lines), which
+// stalled the intake rebase sweep once intake title corrections recorded aliases.
+// Merge is a three-way merge of each namespace's map followed by Add's chain
+// collapse, so the merged table is one Add-built table, never a second notion of
+// what the file may hold.
 //
 // Minters follow the table: see internal/importer/tombstone.go.
 //
@@ -94,19 +97,7 @@ func Parse(raw []byte) (model.Redirects, error) {
 // so the file's shape is the same before and after a namespace gains its first
 // entry and a diff only ever shows the entry.
 func Write(dataDir string, r model.Redirects) error {
-	full, err := normalize(r)
-	if err != nil {
-		return err
-	}
-	raw, err := json.Marshal(full)
-	if err != nil {
-		return err
-	}
-	// The one definition of canonical form, as for every other file in the tree:
-	// sorted keys (so the namespaces and every entry are in slug order), 2-space
-	// indent, one trailing newline. metafmt --check judges this file by the same
-	// rule, so anything else here would be reported as non-canonical.
-	out, err := canonical.Format(raw)
+	out, err := Render(r)
 	if err != nil {
 		return err
 	}
@@ -114,6 +105,25 @@ func Write(dataDir string, r model.Redirects) error {
 		return err
 	}
 	return os.WriteFile(Path(dataDir), out, 0o644)
+}
+
+// Render returns the exact bytes Write stores for r, for a caller that writes the
+// file somewhere other than a data root (the merge driver hands git its result in
+// a temporary file).
+func Render(r model.Redirects) ([]byte, error) {
+	full, err := normalize(r)
+	if err != nil {
+		return nil, err
+	}
+	raw, err := json.Marshal(full)
+	if err != nil {
+		return nil, err
+	}
+	// The one definition of canonical form, as for every other file in the tree:
+	// sorted keys (so the namespaces and every entry are in slug order), 2-space
+	// indent, one trailing newline. metafmt --check judges this file by the same
+	// rule, so anything else here would be reported as non-canonical.
+	return canonical.Format(raw)
 }
 
 // normalize returns r with every namespace present and none that is not one of
