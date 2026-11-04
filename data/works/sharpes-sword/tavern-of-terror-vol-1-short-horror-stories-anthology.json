@@ -2166,102 +2166,153 @@
             {
               "audio_url": "https://www.archive.org/download/the_taxi_1310.poem_librivox/taxi_lowell_alp_64kb.mp3",
               "length_ms": 46000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 0,
               "title": "The Taxi - Read by ALP"
             },
             {
               "audio_url": "https://www.archive.org/download/the_taxi_1310.poem_librivox/taxi_lowell_ccs_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "claudia-salto"
+              ],
               "start_ms": 46000,
               "title": "The Taxi - Read by CCS"
             },
             {
               "audio_url": "https://www.archive.org/download/the_taxi_1310.poem_librivox/taxi_lowell_cmp_64kb.mp3",
               "length_ms": 50000,
+              "readers": [
+                "caprishapage"
+              ],
               "start_ms": 101000,
               "title": "The Taxi - Read by CMP"
             },
             {
               "audio_url": "https://www.archive.org/download/the_taxi_1310.poem_librivox/taxi_lowell_dii_64kb.mp3",
               "length_ms": 46000,
+              "readers": [
+                "diana-majlinger"
+              ],
               "start_ms": 151000,
               "title": "The Taxi - Read by DII"
             },
             {
               "audio_url": "https://www.archive.org/download/the_taxi_1310.poem_librivox/taxi_lowell_dl_64kb.mp3",
               "length_ms": 47000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 197000,
               "title": "The Taxi - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/the_taxi_1310.poem_librivox/taxi_lowell_gsf_64kb.mp3",
               "length_ms": 51000,
+              "readers": [
+                "garrett-fitzgerald"
+              ],
               "start_ms": 244000,
               "title": "The Taxi - Read by GSF"
             },
             {
               "audio_url": "https://www.archive.org/download/the_taxi_1310.poem_librivox/taxi_lowell_jcm_64kb.mp3",
               "length_ms": 46000,
+              "readers": [
+                "jason-mills"
+              ],
               "start_ms": 295000,
               "title": "The Taxi - Read by JCM"
             },
             {
               "audio_url": "https://www.archive.org/download/the_taxi_1310.poem_librivox/taxi_lowell_jm_64kb.mp3",
               "length_ms": 49000,
+              "readers": [
+                "jannie-meisberger"
+              ],
               "start_ms": 341000,
               "title": "The Taxi - Read by JM"
             },
             {
               "audio_url": "https://www.archive.org/download/the_taxi_1310.poem_librivox/taxi_lowell_js_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "john-sercel"
+              ],
               "start_ms": 390000,
               "title": "The Taxi - Read by JS"
             },
             {
               "audio_url": "https://www.archive.org/download/the_taxi_1310.poem_librivox/taxi_lowell_ks_64kb.mp3",
               "length_ms": 48000,
+              "readers": [
+                "kyle-stadelhofer"
+              ],
               "start_ms": 455000,
               "title": "The Taxi - Read by KS"
             },
             {
               "audio_url": "https://www.archive.org/download/the_taxi_1310.poem_librivox/taxi_lowell_lah_64kb.mp3",
               "length_ms": 48000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 503000,
               "title": "The Taxi - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/the_taxi_1310.poem_librivox/taxi_lowell_mc_64kb.mp3",
               "length_ms": 45000,
+              "readers": [
+                "mlcui"
+              ],
               "start_ms": 551000,
               "title": "The Taxi - Read by MC"
             },
             {
               "audio_url": "https://www.archive.org/download/the_taxi_1310.poem_librivox/taxi_lowell_nta_64kb.mp3",
               "length_ms": 49000,
+              "readers": [
+                "neil-aitken"
+              ],
               "start_ms": 596000,
               "title": "The Taxi - Read by NTA"
             },
             {
               "audio_url": "https://www.archive.org/download/the_taxi_1310.poem_librivox/taxi_lowell_rn_64kb.mp3",
               "length_ms": 56000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 645000,
               "title": "The Taxi - Read by RN"
             },
             {
               "audio_url": "https://www.archive.org/download/the_taxi_1310.poem_librivox/taxi_lowell_sap_64kb.mp3",
               "length_ms": 58000,
+              "readers": [
+                "anastasiia-solokha"
+              ],
               "start_ms": 701000,
               "title": "The Taxi - Read by SAP"
             },
             {
               "audio_url": "https://www.archive.org/download/the_taxi_1310.poem_librivox/taxi_lowell_sl_64kb.mp3",
               "length_ms": 41000,
+              "readers": [
+                "steve-lawrence"
+              ],
               "start_ms": 759000,
               "title": "The Taxi - Read by SL"
             },
             {
               "audio_url": "https://www.archive.org/download/the_taxi_1310.poem_librivox/taxi_lowell_wt_64kb.mp3",
               "length_ms": 49000,
+              "readers": [
+                "winston-tharp"
+              ],
               "start_ms": 800000,
               "title": "The Taxi - Read by WT"
             }
@@ -2270,7 +2321,11 @@
           "cover_url": "https://archive.org/download/the_taxi_1310.poem_librivox/taxi_1311.jpg",
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 8277,
+          "librivox_title": "Taxi",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-taxi-by-amy-lowell/",

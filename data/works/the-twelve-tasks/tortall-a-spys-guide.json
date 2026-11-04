@@ -975,36 +975,54 @@
             {
               "audio_url": "https://www.archive.org/download/tortoises_1904_librivox/tortoises_01_lawrence_64kb.mp3",
               "length_ms": 256000,
+              "readers": [
+                "amy-gramour"
+              ],
               "start_ms": 0,
               "title": "BABY TORTOISE"
             },
             {
               "audio_url": "https://www.archive.org/download/tortoises_1904_librivox/tortoises_02_lawrence_64kb.mp3",
               "length_ms": 175000,
+              "readers": [
+                "amy-gramour"
+              ],
               "start_ms": 256000,
               "title": "TORTOISE-SHELL"
             },
             {
               "audio_url": "https://www.archive.org/download/tortoises_1904_librivox/tortoises_03_lawrence_64kb.mp3",
               "length_ms": 246000,
+              "readers": [
+                "eva-davis-d-2025"
+              ],
               "start_ms": 431000,
               "title": "TORTOISE FAMILY CONNECTIONS"
             },
             {
               "audio_url": "https://www.archive.org/download/tortoises_1904_librivox/tortoises_04_lawrence_64kb.mp3",
               "length_ms": 430000,
+              "readers": [
+                "eva-davis-d-2025"
+              ],
               "start_ms": 677000,
               "title": "LUI ET ELLE"
             },
             {
               "audio_url": "https://www.archive.org/download/tortoises_1904_librivox/tortoises_05_lawrence_64kb.mp3",
               "length_ms": 165000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 1107000,
               "title": "TORTOISE GALLANTRY"
             },
             {
               "audio_url": "https://www.archive.org/download/tortoises_1904_librivox/tortoises_06_lawrence_64kb.mp3",
               "length_ms": 407000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 1272000,
               "title": "TORTOISE SHOUT"
             }
@@ -1013,7 +1031,11 @@
           "cover_url": "https://archive.org/download/tortoises_1904_librivox/tortoises_1904.jpg",
           "id": "amy-gramour",
           "language": "en",
+          "librivox_genres": [
+            "Single author"
+          ],
           "librivox_id": 13803,
+          "librivox_title": "Tortoises",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/tortoises-by-d-h-lawrence/",
@@ -4125,45 +4147,63 @@
             {
               "audio_url": "https://www.archive.org/download/tosa_diary_ava_librivox/tosadiary_0_tsurayuki_64kb.mp3",
               "length_ms": 555000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/tosa_diary_ava_librivox/tosadiary_1_tsurayuki_64kb.mp3",
               "length_ms": 974000,
+              "section_number": 1,
               "start_ms": 555000,
               "title": "January 18 - February 7"
             },
             {
               "audio_url": "https://www.archive.org/download/tosa_diary_ava_librivox/tosadiary_2_tsurayuki_64kb.mp3",
               "length_ms": 1012000,
+              "section_number": 2,
               "start_ms": 1529000,
               "title": "February 8 - February 18"
             },
             {
               "audio_url": "https://www.archive.org/download/tosa_diary_ava_librivox/tosadiary_3_tsurayuki_64kb.mp3",
               "length_ms": 882000,
+              "section_number": 3,
               "start_ms": 2541000,
               "title": "February 19 - March 1"
             },
             {
               "audio_url": "https://www.archive.org/download/tosa_diary_ava_librivox/tosadiary_4_tsurayuki_64kb.mp3",
               "length_ms": 1114000,
+              "section_number": 4,
               "start_ms": 3423000,
               "title": "March 2 - March 12"
             },
             {
               "audio_url": "https://www.archive.org/download/tosa_diary_ava_librivox/tosadiary_5_tsurayuki_64kb.mp3",
               "length_ms": 855000,
+              "section_number": 5,
               "start_ms": 4537000,
               "title": "March 13 - March 23"
             }
           ],
           "copyright_year": 1912,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt21/tosadiary_1207.jpg",
+          "credits": [
+            {
+              "person": "william-n-porter",
+              "role": "translator"
+            }
+          ],
           "id": "availle",
           "language": "en",
+          "librivox_genres": [
+            "Memoirs",
+            "Middle Ages/Middle History",
+            "Asian Antiquity"
+          ],
           "librivox_id": 6769,
+          "librivox_title": "Tosa Diary",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-tosa-diary-by-ki-no-tsurayuki/",
@@ -4495,7 +4535,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt21/Toshisyun_1209.jpg",
           "id": "ekzemplaro",
           "language": "ja",
+          "librivox_genres": [
+            "Children's Fiction"
+          ],
           "librivox_id": 6770,
+          "librivox_title": "杜子春 (Toshisyun)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/toshisyun-by-ryunosuke-akutagawa/",

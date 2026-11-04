@@ -1965,7 +1965,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt29/in_brief_authority_1303.jpg",
           "id": "anna-simon",
           "language": "en",
+          "librivox_genres": [
+            "Humorous Fiction",
+            "Satire",
+            "Fantasy Fiction"
+          ],
           "librivox_id": 6687,
+          "librivox_title": "In Brief Authority",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/in-brief-authority-by-f-anstey/",
@@ -3531,18 +3537,54 @@
             {
               "audio_url": "https://www.archive.org/download/inchancery_1911_librivox/inchancery_1_pinero_64kb.mp3",
               "length_ms": 2537000,
+              "readers": [
+                "toddhw",
+                "larry-wilson",
+                "son-of-the-exiles",
+                "michaelmaggs",
+                "foon",
+                "steven-fellows",
+                "adrian-stephens"
+              ],
               "start_ms": 0,
               "title": "Act 1 - Drawing a Blank"
             },
             {
               "audio_url": "https://www.archive.org/download/inchancery_1911_librivox/inchancery_2_pinero_64kb.mp3",
               "length_ms": 3285000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "larry-wilson",
+                "son-of-the-exiles",
+                "sonia",
+                "leanne-yau",
+                "tomas-peter",
+                "devorah-allen",
+                "michaelmaggs",
+                "foon",
+                "steven-fellows",
+                "adrian-stephens"
+              ],
               "start_ms": 2537000,
               "title": "Act 2 - Artificial Memory"
             },
             {
               "audio_url": "https://www.archive.org/download/inchancery_1911_librivox/inchancery_3_pinero_64kb.mp3",
               "length_ms": 2312000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "larry-wilson",
+                "sonia",
+                "tomas-peter",
+                "devorah-allen",
+                "eva-davis-d-2025",
+                "tj-burns",
+                "michaelmaggs",
+                "foon",
+                "steven-fellows"
+              ],
               "start_ms": 5822000,
               "title": "Act 3 - Home, Sweet Home"
             }
@@ -3551,7 +3593,11 @@
           "cover_url": "https://archive.org/download/inchancery_1911_librivox/in_chancery_1911.jpg",
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Comedy"
+          ],
           "librivox_id": 14385,
+          "librivox_title": "In Chancery",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/in-chancery-by-arthur-wing-pinero/",
@@ -3615,276 +3661,414 @@
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_01_galsworthy_64kb.mp3",
               "length_ms": 3144000,
+              "readers": [
+                "eva-librivox-705"
+              ],
               "start_ms": 0,
               "title": "0:1 Indian Summer of a Forsyte 1"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_02_galsworthy_64kb.mp3",
               "length_ms": 1177000,
+              "readers": [
+                "eva-librivox-705"
+              ],
               "start_ms": 3144000,
               "title": "0:2 Indian Summer of a Forsyte 2"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_03_galsworthy_64kb.mp3",
               "length_ms": 1476000,
+              "readers": [
+                "eva-librivox-705"
+              ],
               "start_ms": 4321000,
               "title": "0:3 Indian Summer of a Forsyte 3"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_04_galsworthy_64kb.mp3",
               "length_ms": 3306000,
+              "readers": [
+                "eva-librivox-705"
+              ],
               "start_ms": 5797000,
               "title": "0:4 Indian Summer of a Forsyte 4"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_05_galsworthy_64kb.mp3",
               "length_ms": 1322000,
+              "readers": [
+                "andy-minter-1934-2017"
+              ],
               "start_ms": 9103000,
               "title": "1:1 At Timothy's"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_06_galsworthy_64kb.mp3",
               "length_ms": 1679000,
+              "readers": [
+                "andy-minter-1934-2017"
+              ],
               "start_ms": 10425000,
               "title": "1:2 Exit A Man Of The World"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_07_galsworthy_64kb.mp3",
               "length_ms": 781000,
+              "readers": [
+                "andy-minter-1934-2017"
+              ],
               "start_ms": 12104000,
               "title": "1:3 Soames Prepares To Take Steps"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_08_galsworthy_64kb.mp3",
               "length_ms": 956000,
+              "readers": [
+                "andy-minter-1934-2017"
+              ],
               "start_ms": 12885000,
               "title": "1:4 Soho"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_09_galsworthy_64kb.mp3",
               "length_ms": 855000,
+              "readers": [
+                "andy-minter-1934-2017"
+              ],
               "start_ms": 13841000,
               "title": "1:5 James Sees Visitors"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_10_galsworthy_64kb.mp3",
               "length_ms": 1245000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 14696000,
               "title": "1:6 No Longer Young Jolyon At Home"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_11_galsworthy_64kb.mp3",
               "length_ms": 894000,
+              "readers": [
+                "eva-librivox-705"
+              ],
               "start_ms": 15941000,
               "title": "1:7 The Colt And The Filly"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_12_galsworthy_64kb.mp3",
               "length_ms": 933000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 16835000,
               "title": "1:8 Jolyon Prosecutes The Trusteeship"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_13_galsworthy_64kb.mp3",
               "length_ms": 1124000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 17768000,
               "title": "1:9 Val Hears The News"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_14_galsworthy_64kb.mp3",
               "length_ms": 790000,
+              "readers": [
+                "eva-librivox-705"
+              ],
               "start_ms": 18892000,
               "title": "1:10 Soames Entertains The Future"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_15_galsworthy_64kb.mp3",
               "length_ms": 788000,
+              "readers": [
+                "andy-minter-1934-2017"
+              ],
               "start_ms": 19682000,
               "title": "1:11 And Visits The Past"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_16_galsworthy_64kb.mp3",
               "length_ms": 1549000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 20470000,
               "title": "1:12 On Forsyte 'Change"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_17_galsworthy_64kb.mp3",
               "length_ms": 726000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 22019000,
               "title": "1:13 Jolyon Finds Out Where He Is"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_18_galsworthy_64kb.mp3",
               "length_ms": 454000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 22745000,
               "title": "1:14 Soames Discovers What He Wants"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_19_galsworthy_64kb.mp3",
               "length_ms": 1235000,
+              "readers": [
+                "andy-minter-1934-2017"
+              ],
               "start_ms": 23199000,
               "title": "2: 1 The Third Generation"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_20_galsworthy_64kb.mp3",
               "length_ms": 1258000,
+              "readers": [
+                "andy-minter-1934-2017"
+              ],
               "start_ms": 24434000,
               "title": "2:2 Soames Puts It To The Touch"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_21_galsworthy_64kb.mp3",
               "length_ms": 805000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 25692000,
               "title": "2:3 Visit To Irene"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_22_galsworthy_64kb.mp3",
               "length_ms": 1006000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 26497000,
               "title": "2:4 Where Forsytes Fear To Tread"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_23_galsworthy_64kb.mp3",
               "length_ms": 1121000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 27503000,
               "title": "2:5 Jolly Sits In Judgement"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_24_galsworthy_64kb.mp3",
               "length_ms": 627000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 28624000,
               "title": "2:6 Jolyon In Two Minds"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_25_galsworthy_64kb.mp3",
               "length_ms": 1413000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 29251000,
               "title": "2:7 Dartie Versus Dartie"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_26_galsworthy_64kb.mp3",
               "length_ms": 930000,
+              "readers": [
+                "eva-librivox-705"
+              ],
               "start_ms": 30664000,
               "title": "2:8 The Challenge"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_27_galsworthy_64kb.mp3",
               "length_ms": 1097000,
+              "readers": [
+                "eva-librivox-705"
+              ],
               "start_ms": 31594000,
               "title": "2:9 Dinner At James’s"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_28_galsworthy_64kb.mp3",
               "length_ms": 780000,
+              "readers": [
+                "eva-librivox-705"
+              ],
               "start_ms": 32691000,
               "title": "2:10 Death Of The Dog Balthazar"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_29_galsworthy_64kb.mp3",
               "length_ms": 894000,
+              "readers": [
+                "andy-minter-1934-2017"
+              ],
               "start_ms": 33471000,
               "title": "2:11 Timothy Stays The Rot"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_30_galsworthy_64kb.mp3",
               "length_ms": 829000,
+              "readers": [
+                "andy-minter-1934-2017"
+              ],
               "start_ms": 34365000,
               "title": "2:12 Progress Of The Chase"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_31_galsworthy_64kb.mp3",
               "length_ms": 1354000,
+              "readers": [
+                "andy-minter-1934-2017"
+              ],
               "start_ms": 35194000,
               "title": "2:13 Here We Are Again"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_32_galsworthy_64kb.mp3",
               "length_ms": 398000,
+              "readers": [
+                "andy-minter-1934-2017"
+              ],
               "start_ms": 36548000,
               "title": "2:14 Outlandish Night"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_33_galsworthy_64kb.mp3",
               "length_ms": 940000,
+              "readers": [
+                "andy-minter-1934-2017"
+              ],
               "start_ms": 36946000,
               "title": "3:1 Soames In Paris"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_34_galsworthy_64kb.mp3",
               "length_ms": 654000,
+              "readers": [
+                "eva-librivox-705"
+              ],
               "start_ms": 37886000,
               "title": "3: 2 In The Web"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_35_galsworthy_64kb.mp3",
               "length_ms": 1218000,
+              "readers": [
+                "eva-librivox-705"
+              ],
               "start_ms": 38540000,
               "title": "3:3 Richmond Park"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_36_galsworthy_64kb.mp3",
               "length_ms": 268000,
+              "readers": [
+                "andy-minter-1934-2017"
+              ],
               "start_ms": 39758000,
               "title": "3:4 Over The River"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_37_galsworthy_64kb.mp3",
               "length_ms": 564000,
+              "readers": [
+                "eva-librivox-705"
+              ],
               "start_ms": 40026000,
               "title": "3:5 Soames Acts"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_38_galsworthy_64kb.mp3",
               "length_ms": 985000,
+              "readers": [
+                "simon-evers"
+              ],
               "start_ms": 40590000,
               "title": "3:6 A Summer Day"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_39_galsworthy_64kb.mp3",
               "length_ms": 513000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 41575000,
               "title": "3:7 A Summer Night"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_40_galsworthy_64kb.mp3",
               "length_ms": 493000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 42088000,
               "title": "3:8 James In Waiting"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_41_galsworthy_64kb.mp3",
               "length_ms": 1279000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 42581000,
               "title": "3:9 Out Of The Web"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_42_galsworthy_64kb.mp3",
               "length_ms": 1440000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 43860000,
               "title": "3:10 Passing Of An Era"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_43_galsworthy_64kb.mp3",
               "length_ms": 943000,
+              "readers": [
+                "andy-minter-1934-2017"
+              ],
               "start_ms": 45300000,
               "title": "3:11 Suspended Animation"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_44_galsworthy_64kb.mp3",
               "length_ms": 1134000,
+              "readers": [
+                "eva-librivox-705"
+              ],
               "start_ms": 46243000,
               "title": "3:12 Birth Of A Forsyte"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_45_galsworthy_64kb.mp3",
               "length_ms": 904000,
+              "readers": [
+                "eva-librivox-705"
+              ],
               "start_ms": 47377000,
               "title": "3:13 James Is Told"
             },
             {
               "audio_url": "https://www.archive.org/download/in_chancery_0709_librivox/inchancery_46_galsworthy_64kb.mp3",
               "length_ms": 581000,
+              "readers": [
+                "andy-minter-1934-2017"
+              ],
               "start_ms": 48281000,
               "title": "3:14 His"
             }
@@ -3893,7 +4077,13 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt12/In_Chancery_1110.jpg",
           "id": "eva",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction",
+            "Romance",
+            "Sagas"
+          ],
           "librivox_id": 1140,
+          "librivox_title": "In Chancery (Forsyte Saga Vol. 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/in-chancery-by-john-galsworthy/",
@@ -6748,7 +6938,11 @@
           "cover_url": "https://archive.org/download/in_colonial_days_2107_librivox/incolonialdays_2108.jpg",
           "id": "edmund-bloxam",
           "language": "en",
+          "librivox_genres": [
+            "Historical Fiction"
+          ],
           "librivox_id": 16532,
+          "librivox_title": "In Colonial Days",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/in-colonial-days-by-nathaniel-hawthorne/",
@@ -8164,144 +8358,216 @@
             {
               "audio_url": "https://www.archive.org/download/in_darkest_africa_2011.poem_librivox/africa_herford_aet_64kb.mp3",
               "length_ms": 64000,
+              "readers": [
+                "atrent11"
+              ],
               "start_ms": 0,
               "title": "In Darkest Africa - Read by AET"
             },
             {
               "audio_url": "https://www.archive.org/download/in_darkest_africa_2011.poem_librivox/africa_herford_alp_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 64000,
               "title": "In Darkest Africa - Read by ALP"
             },
             {
               "audio_url": "https://www.archive.org/download/in_darkest_africa_2011.poem_librivox/africa_herford_bc_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "brize-c"
+              ],
               "start_ms": 139000,
               "title": "In Darkest Africa - Read by BC"
             },
             {
               "audio_url": "https://www.archive.org/download/in_darkest_africa_2011.poem_librivox/africa_herford_bk_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 214000,
               "title": "In Darkest Africa - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/in_darkest_africa_2011.poem_librivox/africa_herford_cjph_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "chadh94"
+              ],
               "start_ms": 305000,
               "title": "In Darkest Africa - Read by CJPH"
             },
             {
               "audio_url": "https://www.archive.org/download/in_darkest_africa_2011.poem_librivox/africa_herford_dl_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 382000,
               "title": "In Darkest Africa - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/in_darkest_africa_2011.poem_librivox/africa_herford_el0_64kb.mp3",
               "length_ms": 93000,
+              "readers": [
+                "newgatenovelist"
+              ],
               "start_ms": 464000,
               "title": "In Darkest Africa - Read by EL0"
             },
             {
               "audio_url": "https://www.archive.org/download/in_darkest_africa_2011.poem_librivox/africa_herford_gln_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "garth-burton"
+              ],
               "start_ms": 557000,
               "title": "In Darkest Africa - Read by GLN"
             },
             {
               "audio_url": "https://www.archive.org/download/in_darkest_africa_2011.poem_librivox/africa_herford_grs_64kb.mp3",
               "length_ms": 84000,
+              "readers": [
+                "graham-scott"
+              ],
               "start_ms": 648000,
               "title": "In Darkest Africa - Read by GRS"
             },
             {
               "audio_url": "https://www.archive.org/download/in_darkest_africa_2011.poem_librivox/africa_herford_hlj_64kb.mp3",
               "length_ms": 98000,
+              "readers": [
+                "heidi-l-johnson"
+              ],
               "start_ms": 732000,
               "title": "In Darkest Africa - Read by HLJ"
             },
             {
               "audio_url": "https://www.archive.org/download/in_darkest_africa_2011.poem_librivox/africa_herford_kmw_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "katie-walker"
+              ],
               "start_ms": 830000,
               "title": "In Darkest Africa - Read by KMW"
             },
             {
               "audio_url": "https://www.archive.org/download/in_darkest_africa_2011.poem_librivox/africa_herford_ks_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 905000,
               "title": "In Darkest Africa - Read by KS"
             },
             {
               "audio_url": "https://www.archive.org/download/in_darkest_africa_2011.poem_librivox/africa_herford_lah_64kb.mp3",
               "length_ms": 84000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 973000,
               "title": "In Darkest Africa - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/in_darkest_africa_2011.poem_librivox/africa_herford_lcw_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 1057000,
               "title": "In Darkest Africa - Read by LCW"
             },
             {
               "audio_url": "https://www.archive.org/download/in_darkest_africa_2011.poem_librivox/africa_herford_mf_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "michael-fury"
+              ],
               "start_ms": 1126000,
               "title": "In Darkest Africa - Read by MF"
             },
             {
               "audio_url": "https://www.archive.org/download/in_darkest_africa_2011.poem_librivox/africa_herford_mk_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "millennial"
+              ],
               "start_ms": 1207000,
               "title": "In Darkest Africa - Read by MK"
             },
             {
               "audio_url": "https://www.archive.org/download/in_darkest_africa_2011.poem_librivox/africa_herford_mlm_64kb.mp3",
               "length_ms": 88000,
+              "readers": [
+                "mleigh"
+              ],
               "start_ms": 1277000,
               "title": "In Darkest Africa - Read by MLM"
             },
             {
               "audio_url": "https://www.archive.org/download/in_darkest_africa_2011.poem_librivox/africa_herford_mr_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "megan-roehl"
+              ],
               "start_ms": 1365000,
               "title": "In Darkest Africa - Read by MR"
             },
             {
               "audio_url": "https://www.archive.org/download/in_darkest_africa_2011.poem_librivox/africa_herford_pr_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "pianoroll262"
+              ],
               "start_ms": 1436000,
               "title": "In Darkest Africa - Read by PR"
             },
             {
               "audio_url": "https://www.archive.org/download/in_darkest_africa_2011.poem_librivox/africa_herford_ps_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 1514000,
               "title": "In Darkest Africa - Read by PS"
             },
             {
               "audio_url": "https://www.archive.org/download/in_darkest_africa_2011.poem_librivox/africa_herford_rs_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "romasingh"
+              ],
               "start_ms": 1590000,
               "title": "In Darkest Africa - Read by RS"
             },
             {
               "audio_url": "https://www.archive.org/download/in_darkest_africa_2011.poem_librivox/africa_herford_sm_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "smccaroni"
+              ],
               "start_ms": 1658000,
               "title": "In Darkest Africa - Read by SM"
             },
             {
               "audio_url": "https://www.archive.org/download/in_darkest_africa_2011.poem_librivox/africa_herford_sn_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "samjn"
+              ],
               "start_ms": 1728000,
               "title": "In Darkest Africa - Read by SN"
             },
             {
               "audio_url": "https://www.archive.org/download/in_darkest_africa_2011.poem_librivox/africa_herford_wb_64kb.mp3",
               "length_ms": 87000,
+              "readers": [
+                "waterbaron"
+              ],
               "start_ms": 1798000,
               "title": "In Darkest Africa - Read by WB"
             }
@@ -8310,7 +8576,11 @@
           "cover_url": "https://archive.org/download/in_darkest_africa_2011.poem_librivox/indarkestafrica_2011.jpg",
           "id": "atrent11",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 15857,
+          "librivox_title": "In Darkest Africa",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/in-darkest-africa-by-charles-harold-herford/",
@@ -8384,282 +8654,329 @@
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_00_booth_64kb.mp3",
               "length_ms": 745000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_01_booth_64kb.mp3",
               "length_ms": 1653000,
+              "section_number": 1,
               "start_ms": 745000,
               "title": "Why Darkest England"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_02_booth_64kb.mp3",
               "length_ms": 1283000,
+              "section_number": 2,
               "start_ms": 2398000,
               "title": "The Submerged Tenth"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_03_booth_64kb.mp3",
               "length_ms": 1639000,
+              "section_number": 3,
               "start_ms": 3681000,
               "title": "The Homeless"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_04_booth_64kb.mp3",
               "length_ms": 1455000,
+              "section_number": 4,
               "start_ms": 5320000,
               "title": "The Out-of-Works"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_05_booth_64kb.mp3",
               "length_ms": 1132000,
+              "section_number": 5,
               "start_ms": 6775000,
               "title": "On The Verge of the Abyss"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_06_booth_64kb.mp3",
               "length_ms": 2013000,
+              "section_number": 6,
               "start_ms": 7907000,
               "title": "The Vicious"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_07_booth_64kb.mp3",
               "length_ms": 955000,
+              "section_number": 7,
               "start_ms": 9920000,
               "title": "The Criminals"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_08_booth_64kb.mp3",
               "length_ms": 881000,
+              "section_number": 8,
               "start_ms": 10875000,
               "title": "The Children of the Lost"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_09_booth_64kb.mp3",
               "length_ms": 1455000,
+              "section_number": 9,
               "start_ms": 11756000,
               "title": "Is There No Help? - Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_10_booth_64kb.mp3",
               "length_ms": 1400000,
+              "section_number": 10,
               "start_ms": 13211000,
               "title": "Is There No Help?  - Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_11_booth_64kb.mp3",
               "length_ms": 1504000,
+              "section_number": 11,
               "start_ms": 14611000,
               "title": "Deliverance - Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_12_booth_64kb.mp3",
               "length_ms": 304000,
+              "section_number": 12,
               "start_ms": 16115000,
               "title": "Deliverance - Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_13_booth_64kb.mp3",
               "length_ms": 1244000,
+              "section_number": 13,
               "start_ms": 16419000,
               "title": "To the Rescue! - The City Colony - Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_14_booth_64kb.mp3",
               "length_ms": 1042000,
+              "section_number": 14,
               "start_ms": 17663000,
               "title": "To the Rescue! - The City Colony - Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_15_booth_64kb.mp3",
               "length_ms": 1123000,
+              "section_number": 15,
               "start_ms": 18705000,
               "title": "Work for the Out-of-Works - The Factory"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_16_booth_64kb.mp3",
               "length_ms": 496000,
+              "section_number": 16,
               "start_ms": 19828000,
               "title": "The Regimentation of the Unemployed"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_17_booth_64kb.mp3",
               "length_ms": 1754000,
+              "section_number": 17,
               "start_ms": 20324000,
               "title": "The Household Salvage Brigade"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_18_booth_64kb.mp3",
               "length_ms": 1977000,
+              "section_number": 18,
               "start_ms": 22078000,
               "title": "To the Country! The Farm Colony"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_19_booth_64kb.mp3",
               "length_ms": 873000,
+              "section_number": 19,
               "start_ms": 24055000,
               "title": "The Industrial Village"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_20_booth_64kb.mp3",
               "length_ms": 288000,
+              "section_number": 20,
               "start_ms": 24928000,
               "title": "Agricultural Villages"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_21_booth_64kb.mp3",
               "length_ms": 1131000,
+              "section_number": 21,
               "start_ms": 25216000,
               "title": "New Britain - The Colony Over-Sea"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_22_booth_64kb.mp3",
               "length_ms": 773000,
+              "section_number": 22,
               "start_ms": 26347000,
               "title": "Universal Emigration"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_23_booth_64kb.mp3",
               "length_ms": 1310000,
+              "section_number": 23,
               "start_ms": 27120000,
               "title": "More Crusades - Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_24_booth_64kb.mp3",
               "length_ms": 1309000,
+              "section_number": 24,
               "start_ms": 28430000,
               "title": "More Crusades - Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_25_booth_64kb.mp3",
               "length_ms": 1845000,
+              "section_number": 25,
               "start_ms": 29739000,
               "title": "The Traveling Hospital"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_26_booth_64kb.mp3",
               "length_ms": 1644000,
+              "section_number": 26,
               "start_ms": 31584000,
               "title": "Effectual Deliverance for the Drunkard"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_27_booth_64kb.mp3",
               "length_ms": 787000,
+              "section_number": 27,
               "start_ms": 33228000,
               "title": "The New Way of Escape for Lost Women"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_28_booth_64kb.mp3",
               "length_ms": 1603000,
+              "section_number": 28,
               "start_ms": 34015000,
               "title": "A Preventive Home for Unfallen Girls When in Danger"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_29_booth_64kb.mp3",
               "length_ms": 870000,
+              "section_number": 29,
               "start_ms": 35618000,
               "title": "Refuges for the Children of the Streets"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_30_booth_64kb.mp3",
               "length_ms": 866000,
+              "section_number": 30,
               "start_ms": 36488000,
               "title": "Assistance in General"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_31_booth_64kb.mp3",
               "length_ms": 977000,
+              "section_number": 31,
               "start_ms": 37354000,
               "title": "The Poor Man's Bank"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_32_booth_64kb.mp3",
               "length_ms": 1782000,
+              "section_number": 32,
               "start_ms": 38331000,
               "title": "The Poor Man's Lawyer"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_33_booth_64kb.mp3",
               "length_ms": 1119000,
+              "section_number": 33,
               "start_ms": 40113000,
               "title": "Our Intelligence Department"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_34_booth_64kb.mp3",
               "length_ms": 1256000,
+              "section_number": 34,
               "start_ms": 41232000,
               "title": "A Matrimonial Bureau"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_35_booth_64kb.mp3",
               "length_ms": 893000,
+              "section_number": 35,
               "start_ms": 42488000,
               "title": "Can It Be Done, and How?"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_36_booth_64kb.mp3",
               "length_ms": 1131000,
+              "section_number": 36,
               "start_ms": 43381000,
               "title": "How Much Will It Cost?"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_37_booth_64kb.mp3",
               "length_ms": 1120000,
+              "section_number": 37,
               "start_ms": 44512000,
               "title": "Some Advantages Stated"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_38_booth_64kb.mp3",
               "length_ms": 2249000,
+              "section_number": 38,
               "start_ms": 45632000,
               "title": "Some Objections Met"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_39_booth_64kb.mp3",
               "length_ms": 1310000,
+              "section_number": 39,
               "start_ms": 47881000,
               "title": "Recapitulation"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_40_booth_64kb.mp3",
               "length_ms": 1668000,
+              "section_number": 40,
               "start_ms": 49191000,
               "title": "A Practical Conclusion"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_41_booth_64kb.mp3",
               "length_ms": 606000,
+              "section_number": 41,
               "start_ms": 50859000,
               "title": "Appendix - Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_42_booth_64kb.mp3",
               "length_ms": 1079000,
+              "section_number": 42,
               "start_ms": 51465000,
               "title": "Appendix - Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_43_booth_64kb.mp3",
               "length_ms": 752000,
+              "section_number": 43,
               "start_ms": 52544000,
               "title": "Appendix - Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_44_booth_64kb.mp3",
               "length_ms": 889000,
+              "section_number": 44,
               "start_ms": 53296000,
               "title": "Appendix - Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_45_booth_64kb.mp3",
               "length_ms": 1492000,
+              "section_number": 45,
               "start_ms": 54185000,
               "title": "Appendix - Part 5"
             },
             {
               "audio_url": "https://www.archive.org/download/darkest_england_1912_librivox/darkestengland_46_booth_64kb.mp3",
               "length_ms": 284000,
+              "section_number": 46,
               "start_ms": 55677000,
               "title": "Appendix - Part 6"
             }
@@ -8668,7 +8985,11 @@
           "cover_url": "https://archive.org/download/librivoxcdcoverart36/darkest_england_1912.jpg",
           "id": "tom-hirsch-1947-2022",
           "language": "en",
+          "librivox_genres": [
+            "Social Science (Culture & Anthropology)"
+          ],
           "librivox_id": 14443,
+          "librivox_title": "In Darkest England and the Way Out",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/in-darkest-england-and-the-way-out-by-william-booth/",
@@ -10291,7 +10612,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/indegraafschap_1402.jpg",
           "id": "marcel-coenders",
           "language": "nl",
+          "librivox_genres": [
+            "Travel & Geography"
+          ],
           "librivox_id": 8624,
+          "librivox_title": "In de Graafschap",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/in-de-graafschap-by-jacobus-craandijk/",

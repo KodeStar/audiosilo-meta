@@ -1538,7 +1538,13 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt4/Europeans_the_1004.jpg",
           "id": "lee-ann-howlett",
           "language": "en",
+          "librivox_genres": [
+            "Travel Fiction",
+            "General Fiction",
+            "Humorous Fiction"
+          ],
           "librivox_id": 3193,
+          "librivox_title": "Europeans",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-europeans-by-henry-james/",
@@ -2874,9 +2880,21 @@
           ],
           "copyright_year": 1890,
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt/eusebius_church_history_1003.jpg",
+          "credits": [
+            {
+              "person": "arthur-cushman-mcgiffert",
+              "role": "translator"
+            }
+          ],
           "id": "david-leeson",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "History",
+            "Religion"
+          ],
           "librivox_id": 2460,
+          "librivox_title": "Eusebius History of the Christian Church",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/eusebius-history-of-the-christian-church-tr-by-mcgiffert/",
@@ -2946,9 +2964,20 @@
           ],
           "copyright_year": 1914,
           "cover_url": "https://archive.org/download/euthydemus_ge_1403_librivox/euthydemus_1403.jpg",
+          "credits": [
+            {
+              "person": "benjamin-jowett",
+              "role": "translator"
+            }
+          ],
           "id": "geoffrey-edwards",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Ancient"
+          ],
           "librivox_id": 8685,
+          "librivox_title": "Euthydemus",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/euthydemus-by-plato/",
@@ -3006,15 +3035,30 @@
             {
               "audio_url": "https://www.archive.org/download/euthyphro_librivox/euthyphro_plato_64kb.mp3",
               "length_ms": 2419000,
+              "readers": [
+                "andrew-miller",
+                "david-miller"
+              ],
               "start_ms": 0,
               "title": "Full Dialog"
             }
           ],
           "copyright_year": 1891,
           "cover_url": "https://archive.org/download/euthyphro_librivox/euthyphro_1101.jpg",
+          "credits": [
+            {
+              "person": "benjamin-jowett",
+              "role": "translator"
+            }
+          ],
           "id": "andrew-miller",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Ancient"
+          ],
           "librivox_id": 275,
+          "librivox_title": "Euthyphro",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/euthyphro-by-plato/",
@@ -3070,15 +3114,29 @@
             {
               "audio_url": "https://www.archive.org/download/eutifron_2004_librivox/eutifron_1_plato_64kb.mp3",
               "length_ms": 2469000,
+              "readers": [
+                "tux",
+                "epachuko"
+              ],
               "start_ms": 0,
               "title": "Eutifron de Platon"
             }
           ],
           "copyright_year": 1871,
           "cover_url": "https://archive.org/download/eutifron_2004_librivox/eutifron.jpg",
+          "credits": [
+            {
+              "person": "patricio-de-azcarate-corral",
+              "role": "translator"
+            }
+          ],
           "id": "tux",
           "language": "es",
+          "librivox_genres": [
+            "Ancient"
+          ],
           "librivox_id": 14230,
+          "librivox_title": "Eutifrón",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/eutifron-by-plato/",
@@ -3734,7 +3792,11 @@
           "cover_url": "https://archive.org/download/eva_lilith_2207_librivox/eva_lilith_2207.jpg",
           "id": "lorda",
           "language": "de",
+          "librivox_genres": [
+            "Lyric"
+          ],
           "librivox_id": 18125,
+          "librivox_title": "Eva – Lilith",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/eva-lilith-by-bruno-ertler/",
@@ -5355,7 +5417,11 @@
           "cover_url": "https://archive.org/download/evacuation_england_jm_2112_librivox/theevacuationofengland_2112.jpg",
           "id": "judi-mason",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 16908,
+          "librivox_title": "Evacuation of England: The Twist in the Gulf Stream",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-evacuation-of-england-the-twist-in-the-gulf-stream-by-louis-pope-gratacap/",
@@ -7896,90 +7962,135 @@
             {
               "audio_url": "https://www.archive.org/download/evanescence_1107_librivox/evanescence_spofford_ajm_64kb.mp3",
               "length_ms": 49000,
+              "readers": [
+                "filmmefatale"
+              ],
               "start_ms": 0,
               "title": "Evanescence - Read by AJM"
             },
             {
               "audio_url": "https://www.archive.org/download/evanescence_1107_librivox/evanescence_spofford_alg_64kb.mp3",
               "length_ms": 50000,
+              "readers": [
+                "amy-gramour"
+              ],
               "start_ms": 49000,
               "title": "Evanescence - Read by ALG"
             },
             {
               "audio_url": "https://www.archive.org/download/evanescence_1107_librivox/evanescence_spofford_bdd_64kb.mp3",
               "length_ms": 46000,
+              "readers": [
+                "bryan-davis"
+              ],
               "start_ms": 99000,
               "title": "Evanescence - Read by BDD"
             },
             {
               "audio_url": "https://www.archive.org/download/evanescence_1107_librivox/evanescence_spofford_dl_64kb.mp3",
               "length_ms": 53000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 145000,
               "title": "Evanescence - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/evanescence_1107_librivox/evanescence_spofford_ghs_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 198000,
               "title": "Evanescence - Read by GHS"
             },
             {
               "audio_url": "https://www.archive.org/download/evanescence_1107_librivox/evanescence_spofford_jcm_64kb.mp3",
               "length_ms": 52000,
+              "readers": [
+                "jason-mills"
+              ],
               "start_ms": 253000,
               "title": "Evanescence - Read by JCM"
             },
             {
               "audio_url": "https://www.archive.org/download/evanescence_1107_librivox/evanescence_spofford_kja_64kb.mp3",
               "length_ms": 43000,
+              "readers": [
+                "callousjack"
+              ],
               "start_ms": 305000,
               "title": "Evanescence - Read by KJA"
             },
             {
               "audio_url": "https://www.archive.org/download/evanescence_1107_librivox/evanescence_spofford_klk_64kb.mp3",
               "length_ms": 53000,
+              "readers": [
+                "starsandsky"
+              ],
               "start_ms": 348000,
               "title": "Evanescence - Read by KLK"
             },
             {
               "audio_url": "https://www.archive.org/download/evanescence_1107_librivox/evanescence_spofford_lah_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 401000,
               "title": "Evanescence - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/evanescence_1107_librivox/evanescence_spofford_ll_64kb.mp3",
               "length_ms": 48000,
+              "readers": [
+                "sopranoharmony"
+              ],
               "start_ms": 456000,
               "title": "Evanescence - Read by LL"
             },
             {
               "audio_url": "https://www.archive.org/download/evanescence_1107_librivox/evanescence_spofford_llw_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 504000,
               "title": "Evanescence - Read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/evanescence_1107_librivox/evanescence_spofford_mel_64kb.mp3",
               "length_ms": 62000,
+              "readers": [
+                "mair"
+              ],
               "start_ms": 559000,
               "title": "Evanescence - Read by MEL"
             },
             {
               "audio_url": "https://www.archive.org/download/evanescence_1107_librivox/evanescence_spofford_ref_64kb.mp3",
               "length_ms": 52000,
+              "readers": [
+                "rhonda-federman"
+              ],
               "start_ms": 621000,
               "title": "Evanescence - Read by REF"
             },
             {
               "audio_url": "https://www.archive.org/download/evanescence_1107_librivox/evanescence_spofford_rn_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 673000,
               "title": "Evanescence - Read by RN"
             },
             {
               "audio_url": "https://www.archive.org/download/evanescence_1107_librivox/evanescence_spofford_tg_64kb.mp3",
               "length_ms": 49000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 740000,
               "title": "Evanescence - Read by TG"
             }
@@ -7988,7 +8099,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt29/Evanescence_1302.jpg",
           "id": "filmmefatale",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 5722,
+          "librivox_title": "Evanescence",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/evanescence-by-harriet-prescott-spofford/",
@@ -8488,7 +8604,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt28/Evangeline_1301.jpg",
           "id": "leonard-wilson-1930-2024",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Narratives"
+          ],
           "librivox_id": 5159,
+          "librivox_title": "Evangeline",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/evangeline-by-henry-wadsworth-longfellow/",

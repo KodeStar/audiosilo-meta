@@ -2921,7 +2921,13 @@
           "cover_url": "https://archive.org/download/texasmatchmaker_1804_librivox/texas_matchmaker_1804.jpg",
           "id": "richard-kilmer-1942-2022",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Romance",
+            "Westerns"
+          ],
           "librivox_id": 12362,
+          "librivox_title": "Texas Matchmaker",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-texas-matchmaker-by-andy-adams/",
@@ -3722,36 +3728,54 @@
             {
               "audio_url": "https://www.archive.org/download/txpecanrecipes_2210_librivox/txpecanrecipes_01_txdeptofagriculture_64kb.mp3",
               "length_ms": 204000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/txpecanrecipes_2210_librivox/txpecanrecipes_02_txdeptofagriculture_64kb.mp3",
               "length_ms": 469000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 204000,
               "title": "Appetizers & Salads"
             },
             {
               "audio_url": "https://www.archive.org/download/txpecanrecipes_2210_librivox/txpecanrecipes_03_txdeptofagriculture_64kb.mp3",
               "length_ms": 449000,
+              "readers": [
+                "laurie-banza"
+              ],
               "start_ms": 673000,
               "title": "Meat Dishes & Stuffing"
             },
             {
               "audio_url": "https://www.archive.org/download/txpecanrecipes_2210_librivox/txpecanrecipes_04_txdeptofagriculture_64kb.mp3",
               "length_ms": 488000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 1122000,
               "title": "Cakes & Pies"
             },
             {
               "audio_url": "https://www.archive.org/download/txpecanrecipes_2210_librivox/txpecanrecipes_05_txdeptofagriculture_64kb.mp3",
               "length_ms": 640000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 1610000,
               "title": "Cookies"
             },
             {
               "audio_url": "https://www.archive.org/download/txpecanrecipes_2210_librivox/txpecanrecipes_06_txdeptofagriculture_64kb.mp3",
               "length_ms": 307000,
+              "readers": [
+                "mleigh"
+              ],
               "start_ms": 2250000,
               "title": "Candies"
             }
@@ -3759,7 +3783,11 @@
           "cover_url": "https://archive.org/download/txpecanrecipes_2210_librivox/pecan_2211.jpg",
           "id": "larry-wilson",
           "language": "en",
+          "librivox_genres": [
+            "Cooking"
+          ],
           "librivox_id": 18491,
+          "librivox_title": "Texas Pecan Recipes (Revised)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/tx-pecan-recipes-by-tx-dept-of-agriculture/",
@@ -10779,7 +10807,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt13/Text-book_Assaying_1603.jpg",
           "id": "peter-yearsley",
           "language": "en",
+          "librivox_genres": [
+            "Earth Sciences"
+          ],
           "librivox_id": 5563,
+          "librivox_title": "Text-book of Assaying",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-text-book-of-assaying-by-cornelius-beringer/",

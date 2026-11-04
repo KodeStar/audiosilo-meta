@@ -5135,96 +5135,160 @@
             {
               "audio_url": "https://www.archive.org/download/enormousroom_1808_librivox/enormousroom_00_cummings_64kb.mp3",
               "length_ms": 972000,
+              "readers": [
+                "nemo"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/enormousroom_1808_librivox/enormousroom_01_cummings_64kb.mp3",
               "length_ms": 2543000,
+              "readers": [
+                "nemo"
+              ],
+              "section_number": 1,
               "start_ms": 972000,
               "title": "I Begin a Pilgrimage"
             },
             {
               "audio_url": "https://www.archive.org/download/enormousroom_1808_librivox/enormousroom_02_cummings_64kb.mp3",
               "length_ms": 1678000,
+              "readers": [
+                "david-eakle"
+              ],
+              "section_number": 2,
               "start_ms": 3515000,
               "title": "En Route"
             },
             {
               "audio_url": "https://www.archive.org/download/enormousroom_1808_librivox/enormousroom_03_cummings_64kb.mp3",
               "length_ms": 2944000,
+              "readers": [
+                "david-eakle"
+              ],
+              "section_number": 3,
               "start_ms": 5193000,
               "title": "A Pilgrim's Progress"
             },
             {
               "audio_url": "https://www.archive.org/download/enormousroom_1808_librivox/enormousroom_04_cummings_64kb.mp3",
               "length_ms": 2729000,
+              "readers": [
+                "davida-george"
+              ],
+              "section_number": 4,
               "start_ms": 8137000,
               "title": "Le Nouveau, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/enormousroom_1808_librivox/enormousroom_05_cummings_64kb.mp3",
               "length_ms": 2991000,
+              "readers": [
+                "david-eakle"
+              ],
+              "section_number": 5,
               "start_ms": 10866000,
               "title": "Le Nouveau, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/enormousroom_1808_librivox/enormousroom_06_cummings_64kb.mp3",
               "length_ms": 3113000,
+              "readers": [
+                "farnood"
+              ],
+              "section_number": 6,
               "start_ms": 13857000,
               "title": "A Group of Portraits"
             },
             {
               "audio_url": "https://www.archive.org/download/enormousroom_1808_librivox/enormousroom_07_cummings_64kb.mp3",
               "length_ms": 3439000,
+              "readers": [
+                "farnood"
+              ],
+              "section_number": 7,
               "start_ms": 16970000,
               "title": "Apollyon"
             },
             {
               "audio_url": "https://www.archive.org/download/enormousroom_1808_librivox/enormousroom_08_cummings_64kb.mp3",
               "length_ms": 2544000,
+              "readers": [
+                "jacquerie"
+              ],
+              "section_number": 8,
               "start_ms": 20409000,
               "title": "An Approach to the Delectable Mountains, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/enormousroom_1808_librivox/enormousroom_09_cummings_64kb.mp3",
               "length_ms": 2021000,
+              "readers": [
+                "jacquerie"
+              ],
+              "section_number": 9,
               "start_ms": 22953000,
               "title": "An Approach to the Delectable Mountains, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/enormousroom_1808_librivox/enormousroom_10_cummings_64kb.mp3",
               "length_ms": 1733000,
+              "readers": [
+                "david-eakle"
+              ],
+              "section_number": 10,
               "start_ms": 24974000,
               "title": "The Wanderer"
             },
             {
               "audio_url": "https://www.archive.org/download/enormousroom_1808_librivox/enormousroom_11_cummings_64kb.mp3",
               "length_ms": 2493000,
+              "readers": [
+                "david-eakle"
+              ],
+              "section_number": 11,
               "start_ms": 26707000,
               "title": "Zoo-Loo"
             },
             {
               "audio_url": "https://www.archive.org/download/enormousroom_1808_librivox/enormousroom_12_cummings_64kb.mp3",
               "length_ms": 1851000,
+              "readers": [
+                "david-eakle"
+              ],
+              "section_number": 12,
               "start_ms": 29200000,
               "title": "Surplice"
             },
             {
               "audio_url": "https://www.archive.org/download/enormousroom_1808_librivox/enormousroom_13_cummings_64kb.mp3",
               "length_ms": 2982000,
+              "readers": [
+                "david-eakle"
+              ],
+              "section_number": 13,
               "start_ms": 31051000,
               "title": "Jean le Nègre"
             },
             {
               "audio_url": "https://www.archive.org/download/enormousroom_1808_librivox/enormousroom_14_cummings_64kb.mp3",
               "length_ms": 2360000,
+              "readers": [
+                "jacquerie"
+              ],
+              "section_number": 14,
               "start_ms": 34033000,
               "title": "Three Wise Men"
             },
             {
               "audio_url": "https://www.archive.org/download/enormousroom_1808_librivox/enormousroom_15_cummings_64kb.mp3",
               "length_ms": 2379000,
+              "readers": [
+                "jacquerie"
+              ],
+              "section_number": 15,
               "start_ms": 36393000,
               "title": "I Say Good-Bye to La Misère"
             }
@@ -5233,7 +5297,11 @@
           "cover_url": "https://archive.org/download/enormousroom_1808_librivox/enormous_room_1808.jpg",
           "id": "nemo",
           "language": "en",
+          "librivox_genres": [
+            "Memoirs"
+          ],
           "librivox_id": 11180,
+          "librivox_title": "Enormous Room",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-enormous-room-by-e-e-cummings/",

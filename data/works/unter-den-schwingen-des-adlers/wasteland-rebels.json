@@ -3142,18 +3142,54 @@
             {
               "audio_url": "https://www.archive.org/download/wasters_1906_librivox/wasters_1_adams_64kb.mp3",
               "length_ms": 2414000,
+              "readers": [
+                "toddhw",
+                "sonia",
+                "leanne-yau",
+                "tomas-peter",
+                "aaron-white",
+                "josh-kibbey",
+                "campbell-schelp"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/wasters_1906_librivox/wasters_2_adams_64kb.mp3",
               "length_ms": 3365000,
+              "readers": [
+                "toddhw",
+                "son-of-the-exiles",
+                "ulrike-denis",
+                "sonia",
+                "leanne-yau",
+                "tomas-peter",
+                "devorah-allen",
+                "tj-burns",
+                "foon",
+                "pauline-latournerie",
+                "aaron-white",
+                "josh-kibbey",
+                "campbell-schelp",
+                "betsy-walker"
+              ],
               "start_ms": 2414000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/wasters_1906_librivox/wasters_3_adams_64kb.mp3",
               "length_ms": 2787000,
+              "readers": [
+                "toddhw",
+                "son-of-the-exiles",
+                "sonia",
+                "leanne-yau",
+                "tomas-peter",
+                "devorah-allen",
+                "foon",
+                "aaron-white",
+                "josh-kibbey"
+              ],
               "start_ms": 5779000,
               "title": "Act 3"
             }
@@ -3162,7 +3198,11 @@
           "cover_url": "https://archive.org/download/wasters_1906_librivox/wasters_1906.jpg",
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Plays"
+          ],
           "librivox_id": 13936,
+          "librivox_title": "Wasters",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-wasters-by-arthur-adams/",
@@ -3800,7 +3840,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt15/wasuregusaniyosu_1203.jpg",
           "id": "ekzemplaro",
           "language": "ja",
+          "librivox_genres": [
+            "Poetry",
+            "Single author"
+          ],
           "librivox_id": 6465,
+          "librivox_title": "萱草に寄す (Wasuregusaniyosu)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/wasuregusaniyosu-by-michizou-tachihara/",
@@ -4159,7 +4204,13 @@
           "cover_url": "https://archive.org/download/watchandwait_1706_librivox/watch_wait_1707.jpg",
           "id": "scarlett-martin",
           "language": "en",
+          "librivox_genres": [
+            "Historical Fiction",
+            "Family",
+            "Religion"
+          ],
           "librivox_id": 11608,
+          "librivox_title": "Watch and Wait; The Young Fugitives",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/watch-and-wait-the-young-fugitives-by-william-taylor-adams/",

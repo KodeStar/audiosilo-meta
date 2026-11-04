@@ -6657,6 +6657,14 @@
             {
               "audio_url": "https://www.archive.org/download/comtesse_escarbagnas_0809_librivox/comtesse_escarbagnas_moliere_64kb.mp3",
               "length_ms": 2198000,
+              "readers": [
+                "karen-savage",
+                "ezwa",
+                "jc-guan",
+                "jean-lambert",
+                "aldor",
+                "christian"
+              ],
               "start_ms": 0,
               "title": "Chapter 1"
             }
@@ -6665,7 +6673,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt14/Comtesse_dEscarbagnas_1201.jpg",
           "id": "karen-savage",
           "language": "fr",
+          "librivox_genres": [
+            "Comedy"
+          ],
           "librivox_id": 2074,
+          "librivox_title": "Comtesse d'Escarbagnas",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/la-comtesse-descarbagnas/",

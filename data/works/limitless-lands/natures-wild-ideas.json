@@ -71,24 +71,62 @@
             {
               "audio_url": "https://www.archive.org/download/naturewoman_1508_librivox/naturewoman_01_sinclair_64kb.mp3",
               "length_ms": 2057000,
+              "readers": [
+                "denny-sayers-d-2015",
+                "elizabeth-klett",
+                "david-olson",
+                "toddhw",
+                "larry-wilson",
+                "mary-kay",
+                "cj-plogue",
+                "joseph-tabler",
+                "april-walters"
+              ],
               "start_ms": 0,
               "title": "Act I"
             },
             {
               "audio_url": "https://www.archive.org/download/naturewoman_1508_librivox/naturewoman_02_sinclair_64kb.mp3",
               "length_ms": 1563000,
+              "readers": [
+                "denny-sayers-d-2015",
+                "elizabeth-klett",
+                "toddhw",
+                "larry-wilson",
+                "mary-kay",
+                "cj-plogue",
+                "joseph-tabler",
+                "april-walters"
+              ],
               "start_ms": 2057000,
               "title": "Act II"
             },
             {
               "audio_url": "https://www.archive.org/download/naturewoman_1508_librivox/naturewoman_03_sinclair_64kb.mp3",
               "length_ms": 1326000,
+              "readers": [
+                "denny-sayers-d-2015",
+                "elizabeth-klett",
+                "toddhw",
+                "larry-wilson",
+                "mary-kay",
+                "cj-plogue",
+                "joseph-tabler",
+                "april-walters"
+              ],
               "start_ms": 3620000,
               "title": "Act III"
             },
             {
               "audio_url": "https://www.archive.org/download/naturewoman_1508_librivox/naturewoman_04_sinclair_64kb.mp3",
               "length_ms": 1698000,
+              "readers": [
+                "denny-sayers-d-2015",
+                "elizabeth-klett",
+                "larry-wilson",
+                "mary-kay",
+                "april-walters"
+              ],
               "start_ms": 4946000,
               "title": "Act IV"
             }
@@ -97,7 +135,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt31/naturewoman_1508.jpg",
           "id": "denny-sayers-d-2015",
           "language": "en",
+          "librivox_genres": [
+            "Comedy"
+          ],
           "librivox_id": 9237,
+          "librivox_title": "Naturewoman",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-naturewoman-by-upton-sinclair/",
@@ -215,108 +257,180 @@
             {
               "audio_url": "https://www.archive.org/download/natuurlijke_historie_1010_librivox/historie_00_schoolmeester_64kb.mp3",
               "length_ms": 144000,
+              "readers": [
+                "anna-simon"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 - Inleiding"
             },
             {
               "audio_url": "https://www.archive.org/download/natuurlijke_historie_1010_librivox/historie_01_schoolmeester_64kb.mp3",
               "length_ms": 108000,
+              "readers": [
+                "bart-de-leeuw"
+              ],
+              "section_number": 1,
               "start_ms": 144000,
               "title": "01 - De Leeuw"
             },
             {
               "audio_url": "https://www.archive.org/download/natuurlijke_historie_1010_librivox/historie_02_schoolmeester_64kb.mp3",
               "length_ms": 368000,
+              "readers": [
+                "bianca-kramer"
+              ],
+              "section_number": 2,
               "start_ms": 252000,
               "title": "02 - De Olifant"
             },
             {
               "audio_url": "https://www.archive.org/download/natuurlijke_historie_1010_librivox/historie_03_schoolmeester_64kb.mp3",
               "length_ms": 567000,
+              "readers": [
+                "marcel-coenders"
+              ],
+              "section_number": 3,
               "start_ms": 620000,
               "title": "03 - Het Paard"
             },
             {
               "audio_url": "https://www.archive.org/download/natuurlijke_historie_1010_librivox/historie_04_schoolmeester_64kb.mp3",
               "length_ms": 45000,
+              "readers": [
+                "pauline-coenders"
+              ],
+              "section_number": 4,
               "start_ms": 1187000,
               "title": "04 - De Ezel"
             },
             {
               "audio_url": "https://www.archive.org/download/natuurlijke_historie_1010_librivox/historie_05_schoolmeester_64kb.mp3",
               "length_ms": 48000,
+              "readers": [
+                "pauline-coenders"
+              ],
+              "section_number": 5,
               "start_ms": 1232000,
               "title": "05 - De Ruiter"
             },
             {
               "audio_url": "https://www.archive.org/download/natuurlijke_historie_1010_librivox/historie_06_schoolmeester_64kb.mp3",
               "length_ms": 290000,
+              "readers": [
+                "marcel-coenders"
+              ],
+              "section_number": 6,
               "start_ms": 1280000,
               "title": "06 - De Koei"
             },
             {
               "audio_url": "https://www.archive.org/download/natuurlijke_historie_1010_librivox/historie_07_schoolmeester_64kb.mp3",
               "length_ms": 102000,
+              "readers": [
+                "bianca-kramer"
+              ],
+              "section_number": 7,
               "start_ms": 1570000,
               "title": "07 - Het Kalf"
             },
             {
               "audio_url": "https://www.archive.org/download/natuurlijke_historie_1010_librivox/historie_08_schoolmeester_64kb.mp3",
               "length_ms": 101000,
+              "readers": [
+                "bart-de-leeuw"
+              ],
+              "section_number": 8,
               "start_ms": 1672000,
               "title": "08 - Het Speenvarken"
             },
             {
               "audio_url": "https://www.archive.org/download/natuurlijke_historie_1010_librivox/historie_09_schoolmeester_64kb.mp3",
               "length_ms": 138000,
+              "readers": [
+                "peter-zinn"
+              ],
+              "section_number": 9,
               "start_ms": 1773000,
               "title": "09 - De Hond"
             },
             {
               "audio_url": "https://www.archive.org/download/natuurlijke_historie_1010_librivox/historie_10_schoolmeester_64kb.mp3",
               "length_ms": 530000,
+              "readers": [
+                "peter-zinn"
+              ],
+              "section_number": 10,
               "start_ms": 1911000,
               "title": "10 - De Kat"
             },
             {
               "audio_url": "https://www.archive.org/download/natuurlijke_historie_1010_librivox/historie_11_schoolmeester_64kb.mp3",
               "length_ms": 121000,
+              "readers": [
+                "marcel-coenders"
+              ],
+              "section_number": 11,
               "start_ms": 2441000,
               "title": "11 - De Aap"
             },
             {
               "audio_url": "https://www.archive.org/download/natuurlijke_historie_1010_librivox/historie_12_schoolmeester_64kb.mp3",
               "length_ms": 104000,
+              "readers": [
+                "peter-zinn"
+              ],
+              "section_number": 12,
               "start_ms": 2562000,
               "title": "12 - De Vogels"
             },
             {
               "audio_url": "https://www.archive.org/download/natuurlijke_historie_1010_librivox/historie_13_schoolmeester_64kb.mp3",
               "length_ms": 236000,
+              "readers": [
+                "bart-de-leeuw"
+              ],
+              "section_number": 13,
               "start_ms": 2666000,
               "title": "13 - De Haan"
             },
             {
               "audio_url": "https://www.archive.org/download/natuurlijke_historie_1010_librivox/historie_14_schoolmeester_64kb.mp3",
               "length_ms": 487000,
+              "readers": [
+                "marcel-coenders"
+              ],
+              "section_number": 14,
               "start_ms": 2902000,
               "title": "14 - De Nachtegaal"
             },
             {
               "audio_url": "https://www.archive.org/download/natuurlijke_historie_1010_librivox/historie_15_schoolmeester_64kb.mp3",
               "length_ms": 576000,
+              "readers": [
+                "bianca-kramer"
+              ],
+              "section_number": 15,
               "start_ms": 3389000,
               "title": "15 - De Visch"
             },
             {
               "audio_url": "https://www.archive.org/download/natuurlijke_historie_1010_librivox/historie_16_schoolmeester_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "anna-simon"
+              ],
+              "section_number": 16,
               "start_ms": 3965000,
               "title": "16 - De Slang"
             },
             {
               "audio_url": "https://www.archive.org/download/natuurlijke_historie_1010_librivox/historie_17_schoolmeester_64kb.mp3",
               "length_ms": 44000,
+              "readers": [
+                "availle"
+              ],
+              "section_number": 17,
               "start_ms": 4032000,
               "title": "17 - Eieren"
             }
@@ -325,7 +439,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCovers3/schoolmeester_1009.jpg",
           "id": "anna-simon",
           "language": "nl",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 4727,
+          "librivox_title": "Natuurlijke Historie voor de Jeugd",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/natuurlijke-historie-voor-de-jeugd-by-de-schoolmeester/",
@@ -414,7 +532,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt25/Naudsonce_1211.jpg",
           "id": "phil-chenevert",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 7235,
+          "librivox_title": "Naudsonce",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/naudsonce-by-h-beam-piper/",
@@ -462,234 +584,273 @@
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_00_cabezadevaca_64kb.mp3",
               "length_ms": 240000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Proemio de Naufragios"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_01_cabezadevaca_64kb.mp3",
               "length_ms": 497000,
+              "section_number": 1,
               "start_ms": 240000,
               "title": "I En que cuenta cuándo partió la armada, y los oficiales y gente que en ella iba"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_02_cabezadevaca_64kb.mp3",
               "length_ms": 135000,
+              "section_number": 2,
               "start_ms": 737000,
               "title": "II Cómo el gobernador vino al puerto de Xagua y trajo consigo a un piloto"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_03_cabezadevaca_64kb.mp3",
               "length_ms": 136000,
+              "section_number": 3,
               "start_ms": 872000,
               "title": "III Cómo llegamos a la Florida"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_04_cabezadevaca_64kb.mp3",
               "length_ms": 512000,
+              "section_number": 4,
               "start_ms": 1008000,
               "title": "IV Cómo entramos por la tierra"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_05_cabezadevaca_64kb.mp3",
               "length_ms": 485000,
+              "section_number": 5,
               "start_ms": 1520000,
               "title": "V Cómo dejó los navíos el gobernador"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_06_cabezadevaca_64kb.mp3",
               "length_ms": 100000,
+              "section_number": 6,
               "start_ms": 2005000,
               "title": "VI Cómo llegamos a Apalache"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_07_cabezadevaca_64kb.mp3",
               "length_ms": 616000,
+              "section_number": 7,
               "start_ms": 2105000,
               "title": "VII De la manera que es la tierra"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_08_cabezadevaca_64kb.mp3",
               "length_ms": 446000,
+              "section_number": 8,
               "start_ms": 2721000,
               "title": "VIII Cómo partimos de Aute"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_09_cabezadevaca_64kb.mp3",
               "length_ms": 475000,
+              "section_number": 9,
               "start_ms": 3167000,
               "title": "IX Cómo partimos de bahía de Caballos"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_10_cabezadevaca_64kb.mp3",
               "length_ms": 509000,
+              "section_number": 10,
               "start_ms": 3642000,
               "title": "X De la refriega que nos dieron los indios"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_11_cabezadevaca_64kb.mp3",
               "length_ms": 158000,
+              "section_number": 11,
               "start_ms": 4151000,
               "title": "XI De lo que acaeció a Lope de Oviedo con unos indios"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_12_cabezadevaca_64kb.mp3",
               "length_ms": 378000,
+              "section_number": 12,
               "start_ms": 4309000,
               "title": "XII Cómo los indios nos trajeron de comer"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_13_cabezadevaca_64kb.mp3",
               "length_ms": 178000,
+              "section_number": 13,
               "start_ms": 4687000,
               "title": "XIII Cómo supimos de otros cristianos"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_14_cabezadevaca_64kb.mp3",
               "length_ms": 415000,
+              "section_number": 14,
               "start_ms": 4865000,
               "title": "XIV Cómo se partieron los cuatro cristianos"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_15_cabezadevaca_64kb.mp3",
               "length_ms": 262000,
+              "section_number": 15,
               "start_ms": 5280000,
               "title": "XV De lo que nos acaeció en la isla de Mal Hado"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_16_cabezadevaca_64kb.mp3",
               "length_ms": 482000,
+              "section_number": 16,
               "start_ms": 5542000,
               "title": "XVI Cómo se partieron los cristianos de la isla de Mal Hado"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_17_cabezadevaca_64kb.mp3",
               "length_ms": 516000,
+              "section_number": 17,
               "start_ms": 6024000,
               "title": "XVII Cómo vinieron los indios y trajeron a Andrés Dorantes y a Castillo y a Estebanico"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_18_cabezadevaca_64kb.mp3",
               "length_ms": 648000,
+              "section_number": 18,
               "start_ms": 6540000,
               "title": "XVIII De la relación que dio Esquivel"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_19_cabezadevaca_64kb.mp3",
               "length_ms": 275000,
+              "section_number": 19,
               "start_ms": 7188000,
               "title": "XIX De cómo nos apartaron los indios"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_20_cabezadevaca_64kb.mp3",
               "length_ms": 153000,
+              "section_number": 20,
               "start_ms": 7463000,
               "title": "XX De cómo nos huimos"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_21_cabezadevaca_64kb.mp3",
               "length_ms": 293000,
+              "section_number": 21,
               "start_ms": 7616000,
               "title": "XXI De cómo curamos aquí unos dolientes"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_22_cabezadevaca_64kb.mp3",
               "length_ms": 802000,
+              "section_number": 22,
               "start_ms": 7909000,
               "title": "XXII Cómo otro día nos trajeron otros enfermos"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_23_cabezadevaca_64kb.mp3",
               "length_ms": 168000,
+              "section_number": 23,
               "start_ms": 8711000,
               "title": "XXIII Cómo nos partimos después de haber comido los perros"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_24_cabezadevaca_64kb.mp3",
               "length_ms": 315000,
+              "section_number": 24,
               "start_ms": 8879000,
               "title": "XXIV De las costumbres de los indios de aquella tierra"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_25_cabezadevaca_64kb.mp3",
               "length_ms": 190000,
+              "section_number": 25,
               "start_ms": 9194000,
               "title": "XXV Cómo los indios son prestos a un arma"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_26_cabezadevaca_64kb.mp3",
               "length_ms": 259000,
+              "section_number": 26,
               "start_ms": 9384000,
               "title": "XXVI De las naciones y lenguas"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_27_cabezadevaca_64kb.mp3",
               "length_ms": 354000,
+              "section_number": 27,
               "start_ms": 9643000,
               "title": "XXVII De cómo nos mudamos y fuimos bien recibidos"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_28_cabezadevaca_64kb.mp3",
               "length_ms": 420000,
+              "section_number": 28,
               "start_ms": 9997000,
               "title": "XXVIII De otra nueva costumbre"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_29_cabezadevaca_64kb.mp3",
               "length_ms": 491000,
+              "section_number": 29,
               "start_ms": 10417000,
               "title": "XXIX De cómo se robaban los unos a los otros"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_30_cabezadevaca_64kb.mp3",
               "length_ms": 766000,
+              "section_number": 30,
               "start_ms": 10908000,
               "title": "XXX De cómo se mudó la costumbre de recibirnos"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_31_cabezadevaca_64kb.mp3",
               "length_ms": 382000,
+              "section_number": 31,
               "start_ms": 11674000,
               "title": "XXXI De cómo seguimos el camino del maíz"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_32_cabezadevaca_64kb.mp3",
               "length_ms": 536000,
+              "section_number": 32,
               "start_ms": 12056000,
               "title": "XXXII De cómo nos dieron los corazones de los venados"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_33_cabezadevaca_64kb.mp3",
               "length_ms": 154000,
+              "section_number": 33,
               "start_ms": 12592000,
               "title": "XXXIII Cómo vimos rastro de cristianos"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_34_cabezadevaca_64kb.mp3",
               "length_ms": 393000,
+              "section_number": 34,
               "start_ms": 12746000,
               "title": "XXXIV De cómo envié por los cristianos"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_35_cabezadevaca_64kb.mp3",
               "length_ms": 380000,
+              "section_number": 35,
               "start_ms": 13139000,
               "title": "XXXV De cómo el alcalde mayor nos recibió bien la noche que llegamos"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_36_cabezadevaca_64kb.mp3",
               "length_ms": 274000,
+              "section_number": 36,
               "start_ms": 13519000,
               "title": "XXXVI De cómo hicimos hacer iglesias en aquella tierra"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_37_cabezadevaca_64kb.mp3",
               "length_ms": 378000,
+              "section_number": 37,
               "start_ms": 13793000,
               "title": "XXXVII De lo que aconteció cuando me quise venir"
             },
             {
               "audio_url": "https://www.archive.org/download/naufragios_1308_librivox/naufragios_38_cabezadevaca_64kb.mp3",
               "length_ms": 341000,
+              "section_number": 38,
               "start_ms": 14171000,
               "title": "XXXVIII De lo que sucedió a los demás que entraron en las Indias"
             }
@@ -698,7 +859,11 @@
           "cover_url": "https://archive.org/download/naufragios_1308_librivox/Naufragios_1309.jpg",
           "id": "tux",
           "language": "es",
+          "librivox_genres": [
+            "Early Modern"
+          ],
           "librivox_id": 8075,
+          "librivox_title": "Naufragios",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/naufragios-by-alvar-nunez-cabeza-de-vaca/",
@@ -6122,90 +6287,135 @@
             {
               "audio_url": "https://www.archive.org/download/anaughtylittlecomet_2506.poem_librivox/comet_wilcox_bk_64kb.mp3",
               "length_ms": 143000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 0,
               "title": "A Naughty Little Comet - read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/anaughtylittlecomet_2506.poem_librivox/comet_wilcox_blc_64kb.mp3",
               "length_ms": 130000,
+              "readers": [
+                "brize-c"
+              ],
               "start_ms": 143000,
               "title": "A Naughty Little Comet - read by BLC"
             },
             {
               "audio_url": "https://www.archive.org/download/anaughtylittlecomet_2506.poem_librivox/comet_wilcox_bwc_64kb.mp3",
               "length_ms": 131000,
+              "readers": [
+                "beeswaxcandle"
+              ],
               "start_ms": 273000,
               "title": "A Naughty Little Comet - read by BWC"
             },
             {
               "audio_url": "https://www.archive.org/download/anaughtylittlecomet_2506.poem_librivox/comet_wilcox_dbg_64kb.mp3",
               "length_ms": 132000,
+              "readers": [
+                "owlivia"
+              ],
               "start_ms": 404000,
               "title": "A Naughty Little Comet - read by DBG"
             },
             {
               "audio_url": "https://www.archive.org/download/anaughtylittlecomet_2506.poem_librivox/comet_wilcox_dl_64kb.mp3",
               "length_ms": 144000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 536000,
               "title": "A Naughty Little Comet - read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/anaughtylittlecomet_2506.poem_librivox/comet_wilcox_dls_64kb.mp3",
               "length_ms": 141000,
+              "readers": [
+                "leesalter"
+              ],
               "start_ms": 680000,
               "title": "A Naughty Little Comet - read by DLS"
             },
             {
               "audio_url": "https://www.archive.org/download/anaughtylittlecomet_2506.poem_librivox/comet_wilcox_gln_64kb.mp3",
               "length_ms": 146000,
+              "readers": [
+                "garth-burton"
+              ],
               "start_ms": 821000,
               "title": "A Naughty Little Comet - read by GLN"
             },
             {
               "audio_url": "https://www.archive.org/download/anaughtylittlecomet_2506.poem_librivox/comet_wilcox_lcw_64kb.mp3",
               "length_ms": 132000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 967000,
               "title": "A Naughty Little Comet - read by LCW"
             },
             {
               "audio_url": "https://www.archive.org/download/anaughtylittlecomet_2506.poem_librivox/comet_wilcox_mf_64kb.mp3",
               "length_ms": 120000,
+              "readers": [
+                "marinareads"
+              ],
               "start_ms": 1099000,
               "title": "A Naughty Little Comet - read by MF"
             },
             {
               "audio_url": "https://www.archive.org/download/anaughtylittlecomet_2506.poem_librivox/comet_wilcox_pac_64kb.mp3",
               "length_ms": 128000,
+              "readers": [
+                "paulclayton"
+              ],
               "start_ms": 1219000,
               "title": "A Naughty Little Comet - read by PAC"
             },
             {
               "audio_url": "https://www.archive.org/download/anaughtylittlecomet_2506.poem_librivox/comet_wilcox_pfs_64kb.mp3",
               "length_ms": 147000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 1347000,
               "title": "A Naughty Little Comet - read by PFS"
             },
             {
               "audio_url": "https://www.archive.org/download/anaughtylittlecomet_2506.poem_librivox/comet_wilcox_slm_64kb.mp3",
               "length_ms": 128000,
+              "readers": [
+                "stacey-malcolm"
+              ],
               "start_ms": 1494000,
               "title": "A Naughty Little Comet - read by SLM"
             },
             {
               "audio_url": "https://www.archive.org/download/anaughtylittlecomet_2506.poem_librivox/comet_wilcox_sp_64kb.mp3",
               "length_ms": 117000,
+              "readers": [
+                "shrimpphish"
+              ],
               "start_ms": 1622000,
               "title": "A Naughty Little Comet - read by SP"
             },
             {
               "audio_url": "https://www.archive.org/download/anaughtylittlecomet_2506.poem_librivox/comet_wilcox_td_64kb.mp3",
               "length_ms": 154000,
+              "readers": [
+                "theo-douglas"
+              ],
               "start_ms": 1739000,
               "title": "A Naughty Little Comet - read by TD"
             },
             {
               "audio_url": "https://www.archive.org/download/anaughtylittlecomet_2506.poem_librivox/comet_wilcox_tm_64kb.mp3",
               "length_ms": 138000,
+              "readers": [
+                "tom-merritt"
+              ],
               "start_ms": 1893000,
               "title": "A Naughty Little Comet - read by TM"
             }
@@ -6214,7 +6424,11 @@
           "cover_url": "https://archive.org/download/anaughtylittlecomet_2506.poem_librivox/naughtylittlecomet_2506.jpg",
           "id": "bruce-kachuk",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 21687,
+          "librivox_title": "Naughty Little Comet",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-naughty-little-comet-by-ella-wheeler-wilcox/",
@@ -8573,126 +8787,189 @@
             {
               "audio_url": "https://www.archive.org/download/nautical_ballad_librivox/nauticalballad_carryl_acc_64kb.mp3",
               "length_ms": 152000,
+              "readers": [
+                "alan-clare"
+              ],
               "start_ms": 0,
               "title": "A Nautical Ballad  - Read by ACC"
             },
             {
               "audio_url": "https://www.archive.org/download/nautical_ballad_librivox/nauticalballad_carryl_add_64kb.mp3",
               "length_ms": 197000,
+              "readers": [
+                "alan-davis-drake-1945-2010"
+              ],
               "start_ms": 152000,
               "title": "A Nautical Ballad  - Read by ADD"
             },
             {
               "audio_url": "https://www.archive.org/download/nautical_ballad_librivox/nauticalballad_carryl_cal_64kb.mp3",
               "length_ms": 138000,
+              "readers": [
+                "caliban"
+              ],
               "start_ms": 349000,
               "title": "A Nautical Ballad  - Read by CAL"
             },
             {
               "audio_url": "https://www.archive.org/download/nautical_ballad_librivox/nauticalballad_carryl_cjl_64kb.mp3",
               "length_ms": 111000,
+              "readers": [
+                "cody-logan"
+              ],
               "start_ms": 487000,
               "title": "A Nautical Ballad  - Read by CJL"
             },
             {
               "audio_url": "https://www.archive.org/download/nautical_ballad_librivox/nauticalballad_carryl_cjrg_64kb.mp3",
               "length_ms": 139000,
+              "readers": [
+                "clarica"
+              ],
               "start_ms": 598000,
               "title": "A Nautical Ballad  - Read by CJRG"
             },
             {
               "audio_url": "https://www.archive.org/download/nautical_ballad_librivox/nauticalballad_carryl_cs_64kb.mp3",
               "length_ms": 129000,
+              "readers": [
+                "cori-samuel"
+              ],
               "start_ms": 737000,
               "title": "A Nautical Ballad  - Read by CS"
             },
             {
               "audio_url": "https://www.archive.org/download/nautical_ballad_librivox/nauticalballad_carryl_db_64kb.mp3",
               "length_ms": 157000,
+              "readers": [
+                "delibab"
+              ],
               "start_ms": 866000,
               "title": "A Nautical Ballad  - Read by DB"
             },
             {
               "audio_url": "https://www.archive.org/download/nautical_ballad_librivox/nauticalballad_carryl_eb_64kb.mp3",
               "length_ms": 112000,
+              "readers": [
+                "david-best"
+              ],
               "start_ms": 1023000,
               "title": "A Nautical Ballad  - Read by EB"
             },
             {
               "audio_url": "https://www.archive.org/download/nautical_ballad_librivox/nauticalballad_carryl_ehl_64kb.mp3",
               "length_ms": 133000,
+              "readers": [
+                "esther"
+              ],
               "start_ms": 1135000,
               "title": "A Nautical Ballad  - Read by EHL"
             },
             {
               "audio_url": "https://www.archive.org/download/nautical_ballad_librivox/nauticalballad_carryl_gab_64kb.mp3",
               "length_ms": 166000,
+              "readers": [
+                "giles-baker"
+              ],
               "start_ms": 1268000,
               "title": "A Nautical Ballad  - Read by GAB"
             },
             {
               "audio_url": "https://www.archive.org/download/nautical_ballad_librivox/nauticalballad_carryl_ge_64kb.mp3",
               "length_ms": 165000,
+              "readers": [
+                "gesine"
+              ],
               "start_ms": 1434000,
               "title": "A Nautical Ballad  - Read by GE"
             },
             {
               "audio_url": "https://www.archive.org/download/nautical_ballad_librivox/nauticalballad_carryl_iwm_64kb.mp3",
               "length_ms": 122000,
+              "readers": [
+                "arouet"
+              ],
               "start_ms": 1599000,
               "title": "A Nautical Ballad  - Read by IWM"
             },
             {
               "audio_url": "https://www.archive.org/download/nautical_ballad_librivox/nauticalballad_carryl_jl_64kb.mp3",
               "length_ms": 125000,
+              "readers": [
+                "jl"
+              ],
               "start_ms": 1721000,
               "title": "A Nautical Ballad  - Read by JL"
             },
             {
               "audio_url": "https://www.archive.org/download/nautical_ballad_librivox/nauticalballad_carryl_kara_64kb.mp3",
               "length_ms": 129000,
+              "readers": [
+                "kara-shallenberg-1969-2023"
+              ],
               "start_ms": 1846000,
               "title": "A Nautical Ballad  - Read by KS"
             },
             {
               "audio_url": "https://www.archive.org/download/nautical_ballad_librivox/nauticalballad_carryl_klh_64kb.mp3",
               "length_ms": 139000,
+              "readers": [
+                "kristin-hughes-1974-2021"
+              ],
               "start_ms": 1975000,
               "title": "A Nautical Ballad  - Read by KLH"
             },
             {
               "audio_url": "https://www.archive.org/download/nautical_ballad_librivox/nauticalballad_carryl_lc_64kb.mp3",
               "length_ms": 142000,
+              "readers": [
+                "laura-caldwell"
+              ],
               "start_ms": 2114000,
               "title": "A Nautical Ballad  - Read by LC"
             },
             {
               "audio_url": "https://www.archive.org/download/nautical_ballad_librivox/nauticalballad_carryl_mlb_64kb.mp3",
               "length_ms": 122000,
+              "readers": [
+                "mike-buckley"
+              ],
               "start_ms": 2256000,
               "title": "A Nautical Ballad  - Read by MLB"
             },
             {
               "audio_url": "https://www.archive.org/download/nautical_ballad_librivox/nauticalballad_carryl_mm_64kb.mp3",
               "length_ms": 130000,
+              "readers": [
+                "mary-mac"
+              ],
               "start_ms": 2378000,
               "title": "A Nautical Ballad  - Read by MM"
             },
             {
               "audio_url": "https://www.archive.org/download/nautical_ballad_librivox/nauticalballad_carryl_ms_64kb.mp3",
               "length_ms": 148000,
+              "readers": [
+                "mark-f-smith"
+              ],
               "start_ms": 2508000,
               "title": "A Nautical Ballad  - Read by MS"
             },
             {
               "audio_url": "https://www.archive.org/download/nautical_ballad_librivox/nauticalballad_carryl_py_64kb.mp3",
               "length_ms": 136000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 2656000,
               "title": "A Nautical Ballad  - Read by PY"
             },
             {
               "audio_url": "https://www.archive.org/download/nautical_ballad_librivox/nauticalballad_carryl_smm_64kb.mp3",
               "length_ms": 142000,
+              "readers": [
+                "sean-mcgaughey"
+              ],
               "start_ms": 2792000,
               "title": "A Nautical Ballad  - Read by SMM"
             }
@@ -8700,7 +8977,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt12/Nautical_Ballad_1110.jpg",
           "id": "alan-clare",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 1455,
+          "librivox_title": "Nautical Ballad",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-nautical-ballad-by-charles-edward-carryl/",

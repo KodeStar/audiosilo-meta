@@ -2485,7 +2485,11 @@
           "cover_url": "https://archive.org/download/peccavi_1901_librivox/peccavi_1901.jpg",
           "id": "nicholas-clifford-1930-2019",
           "language": "en",
+          "librivox_genres": [
+            "Literary Fiction"
+          ],
           "librivox_id": 13347,
+          "librivox_title": "Peccavi",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/peccavi-by-e-w-hornung/",
@@ -4003,7 +4007,11 @@
           "cover_url": "https://archive.org/download/pedagogue_naime_pas_les_enfants_1812_librivox/pedagogueinfants_1901.jpg",
           "id": "pauline-latournerie",
           "language": "fr",
+          "librivox_genres": [
+            "Essays & Short Works"
+          ],
           "librivox_id": 13528,
+          "librivox_title": "pédagogue n'aime pas les enfants",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/le-pedagogue-naime-pas-les-enfants-by-henri-roorda/",
@@ -4603,9 +4611,22 @@
           ],
           "copyright_year": 1929,
           "cover_url": "https://archive.org/download/pedervictorious_2608_librivox/peder_victorious_2608.jpg",
+          "credits": [
+            {
+              "person": "nora-solum",
+              "role": "translator"
+            }
+          ],
           "id": "tom-shoesmith",
           "language": "en",
+          "librivox_genres": [
+            "Family Life",
+            "General Fiction",
+            "Historical Fiction",
+            "Published 1900 onward"
+          ],
           "librivox_id": 22743,
+          "librivox_title": "Peder Victorious",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/peder-victorious-by-o-e-rolvaag/",
@@ -4891,132 +4912,198 @@
             {
               "audio_url": "https://www.archive.org/download/pedlars_song_2310.poem_librivox/pedlarssong_newbolt_aam_64kb.mp3",
               "length_ms": 95000,
+              "readers": [
+                "alan-mapstone"
+              ],
               "start_ms": 0,
               "title": "The Pedlar's Song - Read by AAM"
             },
             {
               "audio_url": "https://www.archive.org/download/pedlars_song_2310.poem_librivox/pedlarssong_newbolt_alp_64kb.mp3",
               "length_ms": 87000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 95000,
               "title": "The Pedlar's Song - Read by ALP"
             },
             {
               "audio_url": "https://www.archive.org/download/pedlars_song_2310.poem_librivox/pedlarssong_newbolt_arb_64kb.mp3",
               "length_ms": 83000,
+              "readers": [
+                "agnes-robert-behr"
+              ],
               "start_ms": 182000,
               "title": "The Pedlar's Song - Read by ARB"
             },
             {
               "audio_url": "https://www.archive.org/download/pedlars_song_2310.poem_librivox/pedlarssong_newbolt_bc_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "brize-c"
+              ],
               "start_ms": 265000,
               "title": "The Pedlar's Song - Read by BC"
             },
             {
               "audio_url": "https://www.archive.org/download/pedlars_song_2310.poem_librivox/pedlarssong_newbolt_bew_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "brian-wilson"
+              ],
               "start_ms": 343000,
               "title": "The Pedlar's Song - Read by BEW"
             },
             {
               "audio_url": "https://www.archive.org/download/pedlars_song_2310.poem_librivox/pedlarssong_newbolt_bk_64kb.mp3",
               "length_ms": 92000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 413000,
               "title": "The Pedlar's Song - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/pedlars_song_2310.poem_librivox/pedlarssong_newbolt_bwc_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "beeswaxcandle"
+              ],
               "start_ms": 505000,
               "title": "The Pedlar's Song - Read by BWC"
             },
             {
               "audio_url": "https://www.archive.org/download/pedlars_song_2310.poem_librivox/pedlarssong_newbolt_clp_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "chris-pyle"
+              ],
               "start_ms": 576000,
               "title": "The Pedlar's Song - Read by CLP"
             },
             {
               "audio_url": "https://www.archive.org/download/pedlars_song_2310.poem_librivox/pedlarssong_newbolt_dc_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "dc"
+              ],
               "start_ms": 644000,
               "title": "The Pedlar's Song - Read by DC"
             },
             {
               "audio_url": "https://www.archive.org/download/pedlars_song_2310.poem_librivox/pedlarssong_newbolt_dl_64kb.mp3",
               "length_ms": 83000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 725000,
               "title": "The Pedlar's Song - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/pedlars_song_2310.poem_librivox/pedlarssong_newbolt_el0_64kb.mp3",
               "length_ms": 90000,
+              "readers": [
+                "newgatenovelist"
+              ],
               "start_ms": 808000,
               "title": "The Pedlar's Song - Read by EL0"
             },
             {
               "audio_url": "https://www.archive.org/download/pedlars_song_2310.poem_librivox/pedlarssong_newbolt_gln_64kb.mp3",
               "length_ms": 90000,
+              "readers": [
+                "garth-burton"
+              ],
               "start_ms": 898000,
               "title": "The Pedlar's Song - Read by GLN"
             },
             {
               "audio_url": "https://www.archive.org/download/pedlars_song_2310.poem_librivox/pedlarssong_newbolt_ik_64kb.mp3",
               "length_ms": 89000,
+              "readers": [
+                "ian-king"
+              ],
               "start_ms": 988000,
               "title": "The Pedlar's Song - Read by IK"
             },
             {
               "audio_url": "https://www.archive.org/download/pedlars_song_2310.poem_librivox/pedlarssong_newbolt_jbw_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 1077000,
               "title": "The Pedlar's Song - Read by JBW"
             },
             {
               "audio_url": "https://www.archive.org/download/pedlars_song_2310.poem_librivox/pedlarssong_newbolt_lah_64kb.mp3",
               "length_ms": 84000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 1152000,
               "title": "The Pedlar's Song - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/pedlars_song_2310.poem_librivox/pedlarssong_newbolt_lcw_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 1236000,
               "title": "The Pedlar's Song - Read by LCW"
             },
             {
               "audio_url": "https://www.archive.org/download/pedlars_song_2310.poem_librivox/pedlarssong_newbolt_ls_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "leesalter"
+              ],
               "start_ms": 1316000,
               "title": "The Pedlar's Song - Read by LS"
             },
             {
               "audio_url": "https://www.archive.org/download/pedlars_song_2310.poem_librivox/pedlarssong_newbolt_mjh_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "meghan-horton"
+              ],
               "start_ms": 1397000,
               "title": "The Pedlar's Song - Read by MJH"
             },
             {
               "audio_url": "https://www.archive.org/download/pedlars_song_2310.poem_librivox/pedlarssong_newbolt_mlm_64kb.mp3",
               "length_ms": 93000,
+              "readers": [
+                "mleigh"
+              ],
               "start_ms": 1477000,
               "title": "The Pedlar's Song - Read by MLM"
             },
             {
               "audio_url": "https://www.archive.org/download/pedlars_song_2310.poem_librivox/pedlarssong_newbolt_ms_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "mark-shellhammer"
+              ],
               "start_ms": 1570000,
               "title": "The Pedlar's Song - Read by MS"
             },
             {
               "audio_url": "https://www.archive.org/download/pedlars_song_2310.poem_librivox/pedlarssong_newbolt_pr_64kb.mp3",
               "length_ms": 99000,
+              "readers": [
+                "patrick-randall"
+              ],
               "start_ms": 1651000,
               "title": "The Pedlar's Song - Read by PR"
             },
             {
               "audio_url": "https://www.archive.org/download/pedlars_song_2310.poem_librivox/pedlarssong_newbolt_sws_64kb.mp3",
               "length_ms": 103000,
+              "readers": [
+                "scotty-smith"
+              ],
               "start_ms": 1750000,
               "title": "The Pedlar's Song - Read by SWS"
             }
@@ -5025,7 +5112,11 @@
           "cover_url": "https://archive.org/download/pedlars_song_2310.poem_librivox/pedlars_song_2311.jpg",
           "id": "alan-mapstone",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 19847,
+          "librivox_title": "Pedlar's Song",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-pedlars-song-by-sir-henry-newbolt/",
@@ -5855,216 +5946,360 @@
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_00_fitzhugh_64kb.mp3",
               "length_ms": 238000,
+              "readers": [
+                "elsie-selwyn"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Foreword"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_01_fitzhugh_64kb.mp3",
               "length_ms": 470000,
+              "readers": [
+                "elsie-selwyn"
+              ],
+              "section_number": 1,
               "start_ms": 238000,
               "title": "The Battle of the Banana"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_02_fitzhugh_64kb.mp3",
               "length_ms": 201000,
+              "readers": [
+                "elsie-selwyn"
+              ],
+              "section_number": 2,
               "start_ms": 708000,
               "title": "A Tragic Predicament"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_03_fitzhugh_64kb.mp3",
               "length_ms": 295000,
+              "readers": [
+                "elsie-selwyn"
+              ],
+              "section_number": 3,
               "start_ms": 909000,
               "title": "An Invitation"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_04_fitzhugh_64kb.mp3",
               "length_ms": 320000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 4,
               "start_ms": 1204000,
               "title": "He Goes to Conquer"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_05_fitzhugh_64kb.mp3",
               "length_ms": 495000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 5,
               "start_ms": 1524000,
               "title": "Enter Pepsy"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_06_fitzhugh_64kb.mp3",
               "length_ms": 418000,
+              "readers": [
+                "john"
+              ],
+              "section_number": 6,
               "start_ms": 2019000,
               "title": "The Way of the Scout"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_07_fitzhugh_64kb.mp3",
               "length_ms": 476000,
+              "readers": [
+                "keith-salis"
+              ],
+              "section_number": 7,
               "start_ms": 2437000,
               "title": "A Big Idea"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_08_fitzhugh_64kb.mp3",
               "length_ms": 244000,
+              "readers": [
+                "john"
+              ],
+              "section_number": 8,
               "start_ms": 2913000,
               "title": "Making Plans"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_09_fitzhugh_64kb.mp3",
               "length_ms": 292000,
+              "readers": [
+                "kathleen-moore"
+              ],
+              "section_number": 9,
               "start_ms": 3157000,
               "title": "It Pays to Advertise"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_10_fitzhugh_64kb.mp3",
               "length_ms": 501000,
+              "readers": [
+                "kathleen-moore"
+              ],
+              "section_number": 10,
               "start_ms": 3449000,
               "title": "Deadwood Gamely Talks Business"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_11_fitzhugh_64kb.mp3",
               "length_ms": 337000,
+              "readers": [
+                "kathleen-moore"
+              ],
+              "section_number": 11,
               "start_ms": 3950000,
               "title": "Two is a Company -- Three is Bad Luck"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_12_fitzhugh_64kb.mp3",
               "length_ms": 588000,
+              "readers": [
+                "kathleen-moore"
+              ],
+              "section_number": 12,
               "start_ms": 4287000,
               "title": "The Advertising Department"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_13_fitzhugh_64kb.mp3",
               "length_ms": 274000,
+              "readers": [
+                "john"
+              ],
+              "section_number": 13,
               "start_ms": 4875000,
               "title": "Pepsy's Secret"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_14_fitzhugh_64kb.mp3",
               "length_ms": 348000,
+              "readers": [
+                "john"
+              ],
+              "section_number": 14,
               "start_ms": 5149000,
               "title": "Suspense"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_15_fitzhugh_64kb.mp3",
               "length_ms": 282000,
+              "readers": [
+                "john"
+              ],
+              "section_number": 15,
               "start_ms": 5497000,
               "title": "Six Merry Maidens"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_16_fitzhugh_64kb.mp3",
               "length_ms": 405000,
+              "readers": [
+                "keith-salis"
+              ],
+              "section_number": 16,
               "start_ms": 5779000,
               "title": "A Revelation"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_17_fitzhugh_64kb.mp3",
               "length_ms": 216000,
+              "readers": [
+                "john"
+              ],
+              "section_number": 17,
               "start_ms": 6184000,
               "title": "Hard Times"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_18_fitzhugh_64kb.mp3",
               "length_ms": 330000,
+              "readers": [
+                "john"
+              ],
+              "section_number": 18,
               "start_ms": 6400000,
               "title": "The Voice of the Tail-Light"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_19_fitzhugh_64kb.mp3",
               "length_ms": 260000,
+              "readers": [
+                "john"
+              ],
+              "section_number": 19,
               "start_ms": 6730000,
               "title": "The Other Voice"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_20_fitzhugh_64kb.mp3",
               "length_ms": 390000,
+              "readers": [
+                "keith-salis"
+              ],
+              "section_number": 20,
               "start_ms": 6990000,
               "title": "An Official Rebuke"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_21_fitzhugh_64kb.mp3",
               "length_ms": 664000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 21,
               "start_ms": 7380000,
               "title": "Scout Harris Fixes It"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_22_fitzhugh_64kb.mp3",
               "length_ms": 336000,
+              "readers": [
+                "john"
+              ],
+              "section_number": 22,
               "start_ms": 8044000,
               "title": "Fate is Just"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_23_fitzhugh_64kb.mp3",
               "length_ms": 422000,
+              "readers": [
+                "john"
+              ],
+              "section_number": 23,
               "start_ms": 8380000,
               "title": "Where There's a Will There's a Way"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_24_fitzhugh_64kb.mp3",
               "length_ms": 221000,
+              "readers": [
+                "keith-salis"
+              ],
+              "section_number": 24,
               "start_ms": 8802000,
               "title": "Pepsy's Enterprise"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_25_fitzhugh_64kb.mp3",
               "length_ms": 416000,
+              "readers": [
+                "keith-salis"
+              ],
+              "section_number": 25,
               "start_ms": 9023000,
               "title": "An Accident"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_26_fitzhugh_64kb.mp3",
               "length_ms": 460000,
+              "readers": [
+                "keith-salis"
+              ],
+              "section_number": 26,
               "start_ms": 9439000,
               "title": "Pepsy's Investment"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_27_fitzhugh_64kb.mp3",
               "length_ms": 587000,
+              "readers": [
+                "john"
+              ],
+              "section_number": 27,
               "start_ms": 9899000,
               "title": "Seen in the Dark"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_28_fitzhugh_64kb.mp3",
               "length_ms": 402000,
+              "readers": [
+                "john"
+              ],
+              "section_number": 28,
               "start_ms": 10486000,
               "title": "Stock on Hand"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_29_fitzhugh_64kb.mp3",
               "length_ms": 463000,
+              "readers": [
+                "kevins"
+              ],
+              "section_number": 29,
               "start_ms": 10888000,
               "title": "Industrial Conditions"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_30_fitzhugh_64kb.mp3",
               "length_ms": 317000,
+              "readers": [
+                "john"
+              ],
+              "section_number": 30,
               "start_ms": 11351000,
               "title": "Paid in Full"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_31_fitzhugh_64kb.mp3",
               "length_ms": 702000,
+              "readers": [
+                "keith-salis"
+              ],
+              "section_number": 31,
               "start_ms": 11668000,
               "title": "Circumstantial Evidence"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_32_fitzhugh_64kb.mp3",
               "length_ms": 600000,
+              "readers": [
+                "keith-salis"
+              ],
+              "section_number": 32,
               "start_ms": 12370000,
               "title": "The Clew"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_33_fitzhugh_64kb.mp3",
               "length_ms": 269000,
+              "readers": [
+                "john"
+              ],
+              "section_number": 33,
               "start_ms": 12970000,
               "title": "The Trampled Trail"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_34_fitzhugh_64kb.mp3",
               "length_ms": 307000,
+              "readers": [
+                "john"
+              ],
+              "section_number": 34,
               "start_ms": 13239000,
               "title": "The Trail's End"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_1909_librivox/peeweeharris_35_fitzhugh_64kb.mp3",
               "length_ms": 271000,
+              "readers": [
+                "john"
+              ],
+              "section_number": 35,
               "start_ms": 13546000,
               "title": "Exit"
             }
@@ -6073,7 +6308,11 @@
           "cover_url": "https://archive.org/download/pee-wee_harris_1909_librivox/pee-wee_1909_itemimage.jpg",
           "id": "elsie-selwyn",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure"
+          ],
           "librivox_id": 14128,
+          "librivox_title": "Pee-Wee Harris (Version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/pee-wee-harris-by-percy-keese-fitzhugh-2/",
@@ -6151,7 +6390,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt/Pee_Wee_Harris_1003.jpg",
           "id": "tom-weiss",
           "language": "en",
+          "librivox_genres": [
+            "General"
+          ],
           "librivox_id": 4098,
+          "librivox_title": "Pee-Wee Harris",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/pee-wee-harris-by-percy-keese-fitzhugh/",
@@ -6202,204 +6445,306 @@
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_01_fitzhugh_64kb.mp3",
               "length_ms": 350000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 0,
               "title": "Alone"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_02_fitzhugh_64kb.mp3",
               "length_ms": 567000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 350000,
               "title": "Saturday Morning"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_03_fitzhugh_64kb.mp3",
               "length_ms": 433000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 917000,
               "title": "Castles in the Air"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_04_fitzhugh_64kb.mp3",
               "length_ms": 325000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 1350000,
               "title": "Keekie Joe"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_05_fitzhugh_64kb.mp3",
               "length_ms": 685000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 1675000,
               "title": "A Question of Duty"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_06_fitzhugh_64kb.mp3",
               "length_ms": 300000,
+              "readers": [
+                "valentina-vocelli"
+              ],
               "start_ms": 2360000,
               "title": "The Missionary"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_07_fitzhugh_64kb.mp3",
               "length_ms": 465000,
+              "readers": [
+                "valentina-vocelli"
+              ],
               "start_ms": 2660000,
               "title": "Apple Blossom Time"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_08_fitzhugh_64kb.mp3",
               "length_ms": 465000,
+              "readers": [
+                "valentina-vocelli"
+              ],
               "start_ms": 3125000,
               "title": "Pee-Wee Explores the Island"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_09_fitzhugh_64kb.mp3",
               "length_ms": 277000,
+              "readers": [
+                "valentina-vocelli"
+              ],
               "start_ms": 3590000,
               "title": "The Lookout Sees a Sail"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_10_fitzhugh_64kb.mp3",
               "length_ms": 287000,
+              "readers": [
+                "valentina-vocelli"
+              ],
               "start_ms": 3867000,
               "title": "The Others Arrive"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_11_fitzhugh_64kb.mp3",
               "length_ms": 378000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 4154000,
               "title": "Plans"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_12_fitzhugh_64kb.mp3",
               "length_ms": 624000,
+              "readers": [
+                "aydrogekistky"
+              ],
               "start_ms": 4532000,
               "title": "The Discoverer Returns"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_13_fitzhugh_64kb.mp3",
               "length_ms": 497000,
+              "readers": [
+                "fishmiles"
+              ],
               "start_ms": 5156000,
               "title": "Stop!"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_14_fitzhugh_64kb.mp3",
               "length_ms": 570000,
+              "readers": [
+                "aydrogekistky"
+              ],
               "start_ms": 5653000,
               "title": "Go!"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_15_fitzhugh_64kb.mp3",
               "length_ms": 302000,
+              "readers": [
+                "aydrogekistky"
+              ],
               "start_ms": 6223000,
               "title": "Life on the Unknown Shore"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_16_fitzhugh_64kb.mp3",
               "length_ms": 340000,
+              "readers": [
+                "ralph-james"
+              ],
               "start_ms": 6525000,
               "title": "Before the Party"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_17_fitzhugh_64kb.mp3",
               "length_ms": 324000,
+              "readers": [
+                "ralph-james"
+              ],
               "start_ms": 6865000,
               "title": "The Scene is Set"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_18_fitzhugh_64kb.mp3",
               "length_ms": 422000,
+              "readers": [
+                "fishmiles"
+              ],
               "start_ms": 7189000,
               "title": "Every Which Way"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_19_fitzhugh_64kb.mp3",
               "length_ms": 530000,
+              "readers": [
+                "fishmiles"
+              ],
               "start_ms": 7611000,
               "title": "The Earthly Paradise"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_20_fitzhugh_64kb.mp3",
               "length_ms": 379000,
+              "readers": [
+                "aydrogekistky"
+              ],
               "start_ms": 8141000,
               "title": "Gone"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_21_fitzhugh_64kb.mp3",
               "length_ms": 459000,
+              "readers": [
+                "aydrogekistky"
+              ],
               "start_ms": 8520000,
               "title": "Foiled"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_22_fitzhugh_64kb.mp3",
               "length_ms": 440000,
+              "readers": [
+                "aydrogekistky"
+              ],
               "start_ms": 8979000,
               "title": "In the Glare of the Search-Light"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_23_fitzhugh_64kb.mp3",
               "length_ms": 422000,
+              "readers": [
+                "fishmiles"
+              ],
               "start_ms": 9419000,
               "title": "The Dream of Keekie Joe"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_24_fitzhugh_64kb.mp3",
               "length_ms": 475000,
+              "readers": [
+                "fishmiles"
+              ],
               "start_ms": 9841000,
               "title": "The Missionary Lands on Foreign Shores"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_25_fitzhugh_64kb.mp3",
               "length_ms": 367000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 10316000,
               "title": "Return of the Hero"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_26_fitzhugh_64kb.mp3",
               "length_ms": 281000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 10683000,
               "title": "Short and to the Point"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_27_fitzhugh_64kb.mp3",
               "length_ms": 625000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 10964000,
               "title": "Settled at Last"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_28_fitzhugh_64kb.mp3",
               "length_ms": 432000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 11589000,
               "title": "It Pays to Advertise"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_29_fitzhugh_64kb.mp3",
               "length_ms": 524000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 12021000,
               "title": "The Race"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_30_fitzhugh_64kb.mp3",
               "length_ms": 607000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 12545000,
               "title": "Absence Makes the Island Quiet"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_31_fitzhugh_64kb.mp3",
               "length_ms": 487000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 13152000,
               "title": "A Promise"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_32_fitzhugh_64kb.mp3",
               "length_ms": 190000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 13639000,
               "title": "Vengeance"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_33_fitzhugh_64kb.mp3",
               "length_ms": 329000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 13829000,
               "title": "Keekie Joe, Scout"
             },
             {
               "audio_url": "https://www.archive.org/download/peewee_adrift_2007_librivox/peeweeharrisadrift_34_fitzhugh_64kb.mp3",
               "length_ms": 215000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 14158000,
               "title": "The Story Closes and School Opens"
             }
@@ -6408,7 +6753,11 @@
           "cover_url": "https://archive.org/download/peewee_adrift_2007_librivox/pee_wee_harris_adrift_2007.jpg",
           "id": "john",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure"
+          ],
           "librivox_id": 15081,
+          "librivox_title": "Pee-Wee Harris Adrift",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/pee-wee-harris-adrift-by-percy-keese-fitzhugh/",
@@ -6464,204 +6813,306 @@
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_01_fitzhugh_64kb.mp3",
               "length_ms": 305000,
+              "readers": [
+                "gerberock"
+              ],
               "start_ms": 0,
               "title": "The Only Original"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_02_fitzhugh_64kb.mp3",
               "length_ms": 335000,
+              "readers": [
+                "julian-pratley"
+              ],
               "start_ms": 305000,
               "title": "The Fateful Gum-Drop"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_03_fitzhugh_64kb.mp3",
               "length_ms": 350000,
+              "readers": [
+                "gerberock"
+              ],
               "start_ms": 640000,
               "title": "Another Inspiration"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_04_fitzhugh_64kb.mp3",
               "length_ms": 501000,
+              "readers": [
+                "julian-pratley"
+              ],
               "start_ms": 990000,
               "title": "The Carlson-Bates Memorial"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_05_fitzhugh_64kb.mp3",
               "length_ms": 495000,
+              "readers": [
+                "gerberock"
+              ],
               "start_ms": 1491000,
               "title": "Chaos and Confusion"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_06_fitzhugh_64kb.mp3",
               "length_ms": 234000,
+              "readers": [
+                "julian-pratley"
+              ],
               "start_ms": 1986000,
               "title": "Northward Bound"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_07_fitzhugh_64kb.mp3",
               "length_ms": 653000,
+              "readers": [
+                "gerberock"
+              ],
               "start_ms": 2220000,
               "title": "Said Pee-Wee---"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_08_fitzhugh_64kb.mp3",
               "length_ms": 291000,
+              "readers": [
+                "julian-pratley"
+              ],
               "start_ms": 2873000,
               "title": "Enter Lizzie"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_09_fitzhugh_64kb.mp3",
               "length_ms": 283000,
+              "readers": [
+                "mleigh"
+              ],
               "start_ms": 3164000,
               "title": "Adventures with a Flivver"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_10_fitzhugh_64kb.mp3",
               "length_ms": 307000,
+              "readers": [
+                "mleigh"
+              ],
               "start_ms": 3447000,
               "title": "Adventures with a Flivver--Continued"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_11_fitzhugh_64kb.mp3",
               "length_ms": 517000,
+              "readers": [
+                "gerberock"
+              ],
               "start_ms": 3754000,
               "title": "The Endless Chain"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_12_fitzhugh_64kb.mp3",
               "length_ms": 274000,
+              "readers": [
+                "gerberock"
+              ],
               "start_ms": 4271000,
               "title": "In Camp"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_13_fitzhugh_64kb.mp3",
               "length_ms": 403000,
+              "readers": [
+                "gerberock"
+              ],
               "start_ms": 4545000,
               "title": "A Scout is Polite"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_14_fitzhugh_64kb.mp3",
               "length_ms": 564000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 4948000,
               "title": "Up in the Air"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_15_fitzhugh_64kb.mp3",
               "length_ms": 424000,
+              "readers": [
+                "gerberock"
+              ],
               "start_ms": 5512000,
               "title": "Discover and Exploration--and War"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_16_fitzhugh_64kb.mp3",
               "length_ms": 591000,
+              "readers": [
+                "gerberock"
+              ],
               "start_ms": 5936000,
               "title": "First Aid"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_17_fitzhugh_64kb.mp3",
               "length_ms": 516000,
+              "readers": [
+                "gerberock"
+              ],
               "start_ms": 6527000,
               "title": "Gone"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_18_fitzhugh_64kb.mp3",
               "length_ms": 305000,
+              "readers": [
+                "mleigh"
+              ],
               "start_ms": 7043000,
               "title": "Pee-Wee Doesn't Watch his Step"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_19_fitzhugh_64kb.mp3",
               "length_ms": 227000,
+              "readers": [
+                "mleigh"
+              ],
               "start_ms": 7348000,
               "title": "The Panic"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_20_fitzhugh_64kb.mp3",
               "length_ms": 259000,
+              "readers": [
+                "mleigh"
+              ],
               "start_ms": 7575000,
               "title": "The Scout"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_21_fitzhugh_64kb.mp3",
               "length_ms": 408000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 7834000,
               "title": "Suspense"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_22_fitzhugh_64kb.mp3",
               "length_ms": 475000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 8242000,
               "title": "Pee-WeeLays Down the Law to the Judge"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_23_fitzhugh_64kb.mp3",
               "length_ms": 266000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 8717000,
               "title": "Where Ignorance is Bliss"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_24_fitzhugh_64kb.mp3",
               "length_ms": 458000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 8983000,
               "title": "Pee-Wee Fixes It"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_25_fitzhugh_64kb.mp3",
               "length_ms": 508000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 9441000,
               "title": "He Goes to Conquer"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_26_fitzhugh_64kb.mp3",
               "length_ms": 307000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 9949000,
               "title": "Business is Pleasure"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_27_fitzhugh_64kb.mp3",
               "length_ms": 297000,
+              "readers": [
+                "mleigh"
+              ],
               "start_ms": 10256000,
               "title": "Townsend and his Flivver"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_28_fitzhugh_64kb.mp3",
               "length_ms": 338000,
+              "readers": [
+                "mleigh"
+              ],
               "start_ms": 10553000,
               "title": "Adventures with a Flivver--Continued"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_29_fitzhugh_64kb.mp3",
               "length_ms": 308000,
+              "readers": [
+                "mleigh"
+              ],
               "start_ms": 10891000,
               "title": "Resources"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_30_fitzhugh_64kb.mp3",
               "length_ms": 401000,
+              "readers": [
+                "mleigh"
+              ],
               "start_ms": 11199000,
               "title": "A Surprise"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_31_fitzhugh_64kb.mp3",
               "length_ms": 264000,
+              "readers": [
+                "mleigh"
+              ],
               "start_ms": 11600000,
               "title": "Townsend's Middle Name"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_32_fitzhugh_64kb.mp3",
               "length_ms": 381000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 11864000,
               "title": "Three's a Company"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_33_fitzhugh_64kb.mp3",
               "length_ms": 464000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 12245000,
               "title": "The Solemn Vow"
             },
             {
               "audio_url": "https://www.archive.org/download/fob_bridgeboro_2009_librivox/peeweebridgeboro_34_fitzhugh_64kb.mp3",
               "length_ms": 737000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 12709000,
               "title": "End of the Relay Race"
             }
@@ -6670,7 +7121,11 @@
           "cover_url": "https://archive.org/download/fob_bridgeboro_2009_librivox/pee_wee_harris_bridgeboro_2009.jpg",
           "id": "gerberock",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure"
+          ],
           "librivox_id": 15432,
+          "librivox_title": "Pee-wee Harris F. O. B. Bridgeboro",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/pee-wee-harris-f-o-b-bridgeboro-by-percy-keese-fitzhugh/",
@@ -6725,216 +7180,324 @@
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_01_fitzhugh_64kb.mp3",
               "length_ms": 265000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 0,
               "title": "He Appears"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_02_fitzhugh_64kb.mp3",
               "length_ms": 313000,
+              "readers": [
+                "julian-pratley"
+              ],
               "start_ms": 265000,
               "title": "Mug"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_03_fitzhugh_64kb.mp3",
               "length_ms": 650000,
+              "readers": [
+                "binduvegg1"
+              ],
               "start_ms": 578000,
               "title": "The Solemn Vow"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_04_fitzhugh_64kb.mp3",
               "length_ms": 276000,
+              "readers": [
+                "julian-pratley"
+              ],
               "start_ms": 1228000,
               "title": "The Noon Hour"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_05_fitzhugh_64kb.mp3",
               "length_ms": 620000,
+              "readers": [
+                "kristin-micalizio"
+              ],
               "start_ms": 1504000,
               "title": "Queen Tut"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_06_fitzhugh_64kb.mp3",
               "length_ms": 542000,
+              "readers": [
+                "kristin-micalizio"
+              ],
               "start_ms": 2124000,
               "title": "The Safety Patrol"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_07_fitzhugh_64kb.mp3",
               "length_ms": 412000,
+              "readers": [
+                "kristin-micalizio"
+              ],
               "start_ms": 2666000,
               "title": "I am the Law"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_08_fitzhugh_64kb.mp3",
               "length_ms": 316000,
+              "readers": [
+                "kristin-micalizio"
+              ],
               "start_ms": 3078000,
               "title": "The Protector"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_09_fitzhugh_64kb.mp3",
               "length_ms": 511000,
+              "readers": [
+                "kristin-micalizio"
+              ],
               "start_ms": 3394000,
               "title": "The Parade"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_10_fitzhugh_64kb.mp3",
               "length_ms": 451000,
+              "readers": [
+                "kristin-micalizio"
+              ],
               "start_ms": 3905000,
               "title": "The Fixer"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_11_fitzhugh_64kb.mp3",
               "length_ms": 541000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 4356000,
               "title": "Pee-Wee's Promise"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_12_fitzhugh_64kb.mp3",
               "length_ms": 489000,
+              "readers": [
+                "kristin-micalizio"
+              ],
               "start_ms": 4897000,
               "title": "Culture Triumphant"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_13_fitzhugh_64kb.mp3",
               "length_ms": 248000,
+              "readers": [
+                "kristin-micalizio"
+              ],
               "start_ms": 5386000,
               "title": "Missionary Work"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_14_fitzhugh_64kb.mp3",
               "length_ms": 310000,
+              "readers": [
+                "kristin-micalizio"
+              ],
               "start_ms": 5634000,
               "title": "Seeing New York"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_15_fitzhugh_64kb.mp3",
               "length_ms": 467000,
+              "readers": [
+                "vivianlyu"
+              ],
               "start_ms": 5944000,
               "title": "In for It"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_16_fitzhugh_64kb.mp3",
               "length_ms": 417000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 6411000,
               "title": "The Real Emerson"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_17_fitzhugh_64kb.mp3",
               "length_ms": 683000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 6828000,
               "title": "Alone"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_18_fitzhugh_64kb.mp3",
               "length_ms": 438000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 7511000,
               "title": "Deduction"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_19_fitzhugh_64kb.mp3",
               "length_ms": 324000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 7949000,
               "title": "In the Dead of Night"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_20_fitzhugh_64kb.mp3",
               "length_ms": 289000,
+              "readers": [
+                "gerberock"
+              ],
               "start_ms": 8273000,
               "title": "The Depths"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_21_fitzhugh_64kb.mp3",
               "length_ms": 233000,
+              "readers": [
+                "gerberock"
+              ],
               "start_ms": 8562000,
               "title": "Darkness"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_22_fitzhugh_64kb.mp3",
               "length_ms": 365000,
+              "readers": [
+                "gerberock"
+              ],
               "start_ms": 8795000,
               "title": "Arabella"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_23_fitzhugh_64kb.mp3",
               "length_ms": 350000,
+              "readers": [
+                "valentina-vocelli"
+              ],
               "start_ms": 9160000,
               "title": "In the Woods"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_24_fitzhugh_64kb.mp3",
               "length_ms": 409000,
+              "readers": [
+                "valentina-vocelli"
+              ],
               "start_ms": 9510000,
               "title": "Robin Hood"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_25_fitzhugh_64kb.mp3",
               "length_ms": 287000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 9919000,
               "title": "A New Member"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_26_fitzhugh_64kb.mp3",
               "length_ms": 428000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 10206000,
               "title": "A Fresh Start"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_27_fitzhugh_64kb.mp3",
               "length_ms": 338000,
+              "readers": [
+                "gerberock"
+              ],
               "start_ms": 10634000,
               "title": "Action"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_28_fitzhugh_64kb.mp3",
               "length_ms": 500000,
+              "readers": [
+                "gerberock"
+              ],
               "start_ms": 10972000,
               "title": "Not a Scout"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_29_fitzhugh_64kb.mp3",
               "length_ms": 291000,
+              "readers": [
+                "gerberock"
+              ],
               "start_ms": 11472000,
               "title": "Voices"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_30_fitzhugh_64kb.mp3",
               "length_ms": 335000,
+              "readers": [
+                "margaret"
+              ],
               "start_ms": 11763000,
               "title": "When Greek Meets Greek"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_31_fitzhugh_64kb.mp3",
               "length_ms": 276000,
+              "readers": [
+                "margaret"
+              ],
               "start_ms": 12098000,
               "title": "Bob, Scoutmaker"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_32_fitzhugh_64kb.mp3",
               "length_ms": 352000,
+              "readers": [
+                "margaret"
+              ],
               "start_ms": 12374000,
               "title": "The New Scout"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_33_fitzhugh_64kb.mp3",
               "length_ms": 313000,
+              "readers": [
+                "gerberock"
+              ],
               "start_ms": 12726000,
               "title": "Over the Radio"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_34_fitzhugh_64kb.mp3",
               "length_ms": 262000,
+              "readers": [
+                "gerberock"
+              ],
               "start_ms": 13039000,
               "title": "The Short Cut"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_35_fitzhugh_64kb.mp3",
               "length_ms": 385000,
+              "readers": [
+                "gerberock"
+              ],
               "start_ms": 13301000,
               "title": "'Danger'"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_fixer_2009_librivox/peewee_fixer_36_fitzhugh_64kb.mp3",
               "length_ms": 520000,
+              "readers": [
+                "gerberock"
+              ],
               "start_ms": 13686000,
               "title": "Pee-Wee Triumphant"
             }
@@ -6943,7 +7506,11 @@
           "cover_url": "https://archive.org/download/pee-wee_fixer_2009_librivox/peeweeharrisfixer_2009.jpg",
           "id": "lynne-t",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure"
+          ],
           "librivox_id": 15258,
+          "librivox_title": "Pee-Wee Harris: Fixer",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/pee-wee-harris-fixer-by-percy-keese-fitzhugh/",
@@ -7002,216 +7569,324 @@
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_01_fitzhugh_64kb.mp3",
               "length_ms": 389000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 0,
               "title": "The Art of Choosing"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_02_fitzhugh_64kb.mp3",
               "length_ms": 215000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 389000,
               "title": "'They're Off'"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_03_fitzhugh_64kb.mp3",
               "length_ms": 395000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 604000,
               "title": "Some Doings"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_04_fitzhugh_64kb.mp3",
               "length_ms": 494000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 999000,
               "title": "Action"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_05_fitzhugh_64kb.mp3",
               "length_ms": 525000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 1493000,
               "title": "Pals"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_06_fitzhugh_64kb.mp3",
               "length_ms": 207000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 2018000,
               "title": "The Woods Trail"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_07_fitzhugh_64kb.mp3",
               "length_ms": 286000,
+              "readers": [
+                "zoinkmeister-patrick"
+              ],
               "start_ms": 2225000,
               "title": "The Hero"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_08_fitzhugh_64kb.mp3",
               "length_ms": 419000,
+              "readers": [
+                "zoinkmeister-patrick"
+              ],
               "start_ms": 2511000,
               "title": "Pee-Wee Goes To It"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_09_fitzhugh_64kb.mp3",
               "length_ms": 356000,
+              "readers": [
+                "zoinkmeister-patrick"
+              ],
               "start_ms": 2930000,
               "title": "A Vision of Splendor"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_10_fitzhugh_64kb.mp3",
               "length_ms": 559000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 3286000,
               "title": "Another Vision of Splendor"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_11_fitzhugh_64kb.mp3",
               "length_ms": 442000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 3845000,
               "title": "Hope Triumphant"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_12_fitzhugh_64kb.mp3",
               "length_ms": 299000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 4287000,
               "title": "Deserted"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_13_fitzhugh_64kb.mp3",
               "length_ms": 280000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 4586000,
               "title": "Hope Advances Against Snailsdale"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_14_fitzhugh_64kb.mp3",
               "length_ms": 437000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 4866000,
               "title": "Forward, March!"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_15_fitzhugh_64kb.mp3",
               "length_ms": 496000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 5303000,
               "title": "Handling the Crowd"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_16_fitzhugh_64kb.mp3",
               "length_ms": 512000,
+              "readers": [
+                "sophia-r"
+              ],
               "start_ms": 5799000,
               "title": "The Milky Way Falls Down"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_17_fitzhugh_64kb.mp3",
               "length_ms": 438000,
+              "readers": [
+                "daniel-chao"
+              ],
               "start_ms": 6311000,
               "title": "The Last Sally"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_18_fitzhugh_64kb.mp3",
               "length_ms": 303000,
+              "readers": [
+                "daniel-chao"
+              ],
               "start_ms": 6749000,
               "title": "Chaos and Confusion"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_19_fitzhugh_64kb.mp3",
               "length_ms": 433000,
+              "readers": [
+                "daniel-chao"
+              ],
               "start_ms": 7052000,
               "title": "Going Down"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_20_fitzhugh_64kb.mp3",
               "length_ms": 332000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 7485000,
               "title": "In the Fog"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_21_fitzhugh_64kb.mp3",
               "length_ms": 361000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 7817000,
               "title": "Every Which Way"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_22_fitzhugh_64kb.mp3",
               "length_ms": 241000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 8178000,
               "title": "At the Cross-Road"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_23_fitzhugh_64kb.mp3",
               "length_ms": 531000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 8419000,
               "title": "En-Route"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_24_fitzhugh_64kb.mp3",
               "length_ms": 464000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 8950000,
               "title": "Side-Tracked"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_25_fitzhugh_64kb.mp3",
               "length_ms": 284000,
+              "readers": [
+                "valentina-vocelli"
+              ],
               "start_ms": 9414000,
               "title": "Pee-Wee's Luck"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_26_fitzhugh_64kb.mp3",
               "length_ms": 467000,
+              "readers": [
+                "valentina-vocelli"
+              ],
               "start_ms": 9698000,
               "title": "The Two Perfectly Lovely Fellows"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_27_fitzhugh_64kb.mp3",
               "length_ms": 233000,
+              "readers": [
+                "valentina-vocelli"
+              ],
               "start_ms": 10165000,
               "title": "The Last Laugh"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_28_fitzhugh_64kb.mp3",
               "length_ms": 442000,
+              "readers": [
+                "valentina-vocelli"
+              ],
               "start_ms": 10398000,
               "title": "The Outsider"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_29_fitzhugh_64kb.mp3",
               "length_ms": 315000,
+              "readers": [
+                "valentina-vocelli"
+              ],
               "start_ms": 10840000,
               "title": "Three of a Kind"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_30_fitzhugh_64kb.mp3",
               "length_ms": 585000,
+              "readers": [
+                "claire-schreuder"
+              ],
               "start_ms": 11155000,
               "title": "As Luck Would Have It"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_31_fitzhugh_64kb.mp3",
               "length_ms": 528000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 11740000,
               "title": "The Third House"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_32_fitzhugh_64kb.mp3",
               "length_ms": 379000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 12268000,
               "title": "Marooned"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_33_fitzhugh_64kb.mp3",
               "length_ms": 319000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 12647000,
               "title": "In the Dead of Night"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_34_fitzhugh_64kb.mp3",
               "length_ms": 316000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 12966000,
               "title": "The Clue"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_35_fitzhugh_64kb.mp3",
               "length_ms": 308000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 13282000,
               "title": "Pee-Wee, Scout"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_in_luck_2006_librivox/peeweeharrisinluck_36_fitzhugh_64kb.mp3",
               "length_ms": 384000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 13590000,
               "title": "The Last Destination"
             }
@@ -7220,7 +7895,11 @@
           "cover_url": "https://archive.org/download/pee-wee_harris_in_luck_2006_librivox/pee_wee_luck_2006.jpg",
           "id": "kevins",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure"
+          ],
           "librivox_id": 14946,
+          "librivox_title": "Pee-Wee Harris in Luck",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/pee-wee-harris-in-luck-by-percy-keese-fitzhugh/",
@@ -7278,240 +7957,360 @@
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_01_fitzhugh_64kb.mp3",
               "length_ms": 228000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 0,
               "title": "The Lone Figure"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_02_fitzhugh_64kb.mp3",
               "length_ms": 219000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 228000,
               "title": "A Pathetic Sight"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_03_fitzhugh_64kb.mp3",
               "length_ms": 357000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 447000,
               "title": "Three Good Turns"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_04_fitzhugh_64kb.mp3",
               "length_ms": 252000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 804000,
               "title": "The Five Reeler"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_05_fitzhugh_64kb.mp3",
               "length_ms": 299000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 1056000,
               "title": "R-R-R-Robbers!"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_06_fitzhugh_64kb.mp3",
               "length_ms": 237000,
+              "readers": [
+                "kathryn-phipps"
+              ],
               "start_ms": 1355000,
               "title": "A Message in the Dark"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_07_fitzhugh_64kb.mp3",
               "length_ms": 248000,
+              "readers": [
+                "kathryn-phipps"
+              ],
               "start_ms": 1592000,
               "title": "Locked Doors"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_08_fitzhugh_64kb.mp3",
               "length_ms": 235000,
+              "readers": [
+                "kathryn-phipps"
+              ],
               "start_ms": 1840000,
               "title": "A Discovery"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_09_fitzhugh_64kb.mp3",
               "length_ms": 311000,
+              "readers": [
+                "kathryn-phipps"
+              ],
               "start_ms": 2075000,
               "title": "The Tenth Case"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_10_fitzhugh_64kb.mp3",
               "length_ms": 283000,
+              "readers": [
+                "kathryn-phipps"
+              ],
               "start_ms": 2386000,
               "title": "A Race with Death"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_11_fitzhugh_64kb.mp3",
               "length_ms": 227000,
+              "readers": [
+                "steven-winterburn"
+              ],
               "start_ms": 2669000,
               "title": "A Rural Paradise"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_12_fitzhugh_64kb.mp3",
               "length_ms": 585000,
+              "readers": [
+                "steven-winterburn"
+              ],
               "start_ms": 2896000,
               "title": "Enter the Genuine Article"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_13_fitzhugh_64kb.mp3",
               "length_ms": 317000,
+              "readers": [
+                "steven-winterburn"
+              ],
               "start_ms": 3481000,
               "title": "A Friend in Need"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_14_fitzhugh_64kb.mp3",
               "length_ms": 280000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 3798000,
               "title": "Saved!"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_15_fitzhugh_64kb.mp3",
               "length_ms": 596000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 4078000,
               "title": "In Camp"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_16_fitzhugh_64kb.mp3",
               "length_ms": 411000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 4674000,
               "title": "Footprints"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_17_fitzhugh_64kb.mp3",
               "length_ms": 326000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 5085000,
               "title": "Action"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_18_fitzhugh_64kb.mp3",
               "length_ms": 265000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 5411000,
               "title": "The Message"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_19_fitzhugh_64kb.mp3",
               "length_ms": 325000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 5676000,
               "title": "Page Two Hundred and Eight-Four"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_20_fitzhugh_64kb.mp3",
               "length_ms": 398000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 6001000,
               "title": "Stop!"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_21_fitzhugh_64kb.mp3",
               "length_ms": 570000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 6399000,
               "title": "Seein' Things"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_22_fitzhugh_64kb.mp3",
               "length_ms": 414000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 6969000,
               "title": "Hark! The Conquering Hero Comes"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_23_fitzhugh_64kb.mp3",
               "length_ms": 372000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 7383000,
               "title": "Peter Finds a Way"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_24_fitzhugh_64kb.mp3",
               "length_ms": 587000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 7755000,
               "title": "Deserted"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_25_fitzhugh_64kb.mp3",
               "length_ms": 515000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 8342000,
               "title": "Bedlam"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_26_fitzhugh_64kb.mp3",
               "length_ms": 536000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 8857000,
               "title": "The Culprit at the Bar"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_27_fitzhugh_64kb.mp3",
               "length_ms": 281000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 9393000,
               "title": "Some Noise"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_28_fitzhugh_64kb.mp3",
               "length_ms": 296000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 9674000,
               "title": "On the Trail"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_29_fitzhugh_64kb.mp3",
               "length_ms": 364000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 9970000,
               "title": "Voices"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_30_fitzhugh_64kb.mp3",
               "length_ms": 440000,
+              "readers": [
+                "zoinkmeister-patrick"
+              ],
               "start_ms": 10334000,
               "title": "Face to Face"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_31_fitzhugh_64kb.mp3",
               "length_ms": 311000,
+              "readers": [
+                "zoinkmeister-patrick"
+              ],
               "start_ms": 10774000,
               "title": "Alone"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_32_fitzhugh_64kb.mp3",
               "length_ms": 291000,
+              "readers": [
+                "zoinkmeister-patrick"
+              ],
               "start_ms": 11085000,
               "title": "On to Bridgeboro"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_33_fitzhugh_64kb.mp3",
               "length_ms": 323000,
+              "readers": [
+                "bill-mosley"
+              ],
               "start_ms": 11376000,
               "title": "Hark! The Conquering Hero Comes Back"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_34_fitzhugh_64kb.mp3",
               "length_ms": 356000,
+              "readers": [
+                "bill-mosley"
+              ],
               "start_ms": 11699000,
               "title": "Pee-Wee Holds Forth"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_35_fitzhugh_64kb.mp3",
               "length_ms": 460000,
+              "readers": [
+                "bill-mosley"
+              ],
               "start_ms": 12055000,
               "title": "Scoutmaster Ned Doesn't See"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_36_fitzhugh_64kb.mp3",
               "length_ms": 279000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 12515000,
               "title": "More Handling"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_37_fitzhugh_64kb.mp3",
               "length_ms": 447000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 12794000,
               "title": "Hints"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_38_fitzhugh_64kb.mp3",
               "length_ms": 256000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 13241000,
               "title": "The Fixer"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_39_fitzhugh_64kb.mp3",
               "length_ms": 536000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 13497000,
               "title": "Betrayed!"
             },
             {
               "audio_url": "https://www.archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/peewee_harris_trail_40_fitzhugh_64kb.mp3",
               "length_ms": 401000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 14033000,
               "title": "Guess Again"
             }
@@ -7520,7 +8319,11 @@
           "cover_url": "https://archive.org/download/pee-wee_harris_on_the_trail_2003_librivox/pee_wee_trail_2003.jpg",
           "id": "kevins",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure"
+          ],
           "librivox_id": 14725,
+          "librivox_title": "Pee-Wee Harris on the Trail",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/pee-wee-harris-on-the-trail-by-percy-keese-fitzhugh/",
@@ -8325,7 +9128,13 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt15/peep_scenes_1203.jpg",
           "id": "abigail-rasmussen",
           "language": "en",
+          "librivox_genres": [
+            "Family",
+            "Religion",
+            "Christian Fiction"
+          ],
           "librivox_id": 6323,
+          "librivox_title": "Peep Behind the Scenes",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-peep-behind-the-scenes-by-mrs-o-f-walton/",
@@ -8354,138 +9163,207 @@
             {
               "audio_url": "https://www.archive.org/download/peepbehindthescenes_version2_1607_librivox/apeepbehindthescenes_01_walton_64kb.mp3",
               "length_ms": 705000,
+              "readers": [
+                "leda"
+              ],
               "start_ms": 0,
               "title": "Rosalie"
             },
             {
               "audio_url": "https://www.archive.org/download/peepbehindthescenes_version2_1607_librivox/apeepbehindthescenes_02_walton_64kb.mp3",
               "length_ms": 522000,
+              "readers": [
+                "leda"
+              ],
               "start_ms": 705000,
               "title": "The Little Theatre"
             },
             {
               "audio_url": "https://www.archive.org/download/peepbehindthescenes_version2_1607_librivox/apeepbehindthescenes_03_walton_64kb.mp3",
               "length_ms": 1120000,
+              "readers": [
+                "leda"
+              ],
               "start_ms": 1227000,
               "title": "The Day After the Fair"
             },
             {
               "audio_url": "https://www.archive.org/download/peepbehindthescenes_version2_1607_librivox/apeepbehindthescenes_04_walton_64kb.mp3",
               "length_ms": 910000,
+              "readers": [
+                "leda"
+              ],
               "start_ms": 2347000,
               "title": "The Actress's Story"
             },
             {
               "audio_url": "https://www.archive.org/download/peepbehindthescenes_version2_1607_librivox/apeepbehindthescenes_05_walton_64kb.mp3",
               "length_ms": 878000,
+              "readers": [
+                "leda"
+              ],
               "start_ms": 3257000,
               "title": "Rosalie's First Sermon"
             },
             {
               "audio_url": "https://www.archive.org/download/peepbehindthescenes_version2_1607_librivox/apeepbehindthescenes_06_walton_64kb.mp3",
               "length_ms": 1067000,
+              "readers": [
+                "leda"
+              ],
               "start_ms": 4135000,
               "title": "A Family Secret"
             },
             {
               "audio_url": "https://www.archive.org/download/peepbehindthescenes_version2_1607_librivox/apeepbehindthescenes_07_walton_64kb.mp3",
               "length_ms": 1128000,
+              "readers": [
+                "leda"
+              ],
               "start_ms": 5202000,
               "title": "The Circus Procession"
             },
             {
               "audio_url": "https://www.archive.org/download/peepbehindthescenes_version2_1607_librivox/apeepbehindthescenes_08_walton_64kb.mp3",
               "length_ms": 1375000,
+              "readers": [
+                "leda"
+              ],
               "start_ms": 6330000,
               "title": "Little Mother Manikin"
             },
             {
               "audio_url": "https://www.archive.org/download/peepbehindthescenes_version2_1607_librivox/apeepbehindthescenes_09_walton_64kb.mp3",
               "length_ms": 1094000,
+              "readers": [
+                "leda"
+              ],
               "start_ms": 7705000,
               "title": "The Doctor's Visit"
             },
             {
               "audio_url": "https://www.archive.org/download/peepbehindthescenes_version2_1607_librivox/apeepbehindthescenes_10_walton_64kb.mp3",
               "length_ms": 1324000,
+              "readers": [
+                "leda"
+              ],
               "start_ms": 8799000,
               "title": "Britannia"
             },
             {
               "audio_url": "https://www.archive.org/download/peepbehindthescenes_version2_1607_librivox/apeepbehindthescenes_11_walton_64kb.mp3",
               "length_ms": 1266000,
+              "readers": [
+                "leda"
+              ],
               "start_ms": 10123000,
               "title": "Her Mother's Dream"
             },
             {
               "audio_url": "https://www.archive.org/download/peepbehindthescenes_version2_1607_librivox/apeepbehindthescenes_12_walton_64kb.mp3",
               "length_ms": 1003000,
+              "readers": [
+                "leda"
+              ],
               "start_ms": 11389000,
               "title": "A Lone Lamb"
             },
             {
               "audio_url": "https://www.archive.org/download/peepbehindthescenes_version2_1607_librivox/apeepbehindthescenes_13_walton_64kb.mp3",
               "length_ms": 1621000,
+              "readers": [
+                "betsie-bush"
+              ],
               "start_ms": 12392000,
               "title": "Vanity Fair"
             },
             {
               "audio_url": "https://www.archive.org/download/peepbehindthescenes_version2_1607_librivox/apeepbehindthescenes_14_walton_64kb.mp3",
               "length_ms": 1354000,
+              "readers": [
+                "fiddlesticks"
+              ],
               "start_ms": 14013000,
               "title": "Betsey Ann"
             },
             {
               "audio_url": "https://www.archive.org/download/peepbehindthescenes_version2_1607_librivox/apeepbehindthescenes_15_walton_64kb.mp3",
               "length_ms": 831000,
+              "readers": [
+                "fiddlesticks"
+              ],
               "start_ms": 15367000,
               "title": "Life in the Lodging-House"
             },
             {
               "audio_url": "https://www.archive.org/download/peepbehindthescenes_version2_1607_librivox/apeepbehindthescenes_16_walton_64kb.mp3",
               "length_ms": 948000,
+              "readers": [
+                "fiddlesticks"
+              ],
               "start_ms": 16198000,
               "title": "A Dark Time"
             },
             {
               "audio_url": "https://www.archive.org/download/peepbehindthescenes_version2_1607_librivox/apeepbehindthescenes_17_walton_64kb.mp3",
               "length_ms": 737000,
+              "readers": [
+                "fiddlesticks"
+              ],
               "start_ms": 17146000,
               "title": "Alone in the World"
             },
             {
               "audio_url": "https://www.archive.org/download/peepbehindthescenes_version2_1607_librivox/apeepbehindthescenes_18_walton_64kb.mp3",
               "length_ms": 641000,
+              "readers": [
+                "adele-de-pignerolles"
+              ],
               "start_ms": 17883000,
               "title": "The Little Pitcher"
             },
             {
               "audio_url": "https://www.archive.org/download/peepbehindthescenes_version2_1607_librivox/apeepbehindthescenes_19_walton_64kb.mp3",
               "length_ms": 874000,
+              "readers": [
+                "adele-de-pignerolles"
+              ],
               "start_ms": 18524000,
               "title": "Skirrywinks"
             },
             {
               "audio_url": "https://www.archive.org/download/peepbehindthescenes_version2_1607_librivox/apeepbehindthescenes_20_walton_64kb.mp3",
               "length_ms": 1034000,
+              "readers": [
+                "lily-marie"
+              ],
               "start_ms": 19398000,
               "title": "Mother Manikin's Chairs"
             },
             {
               "audio_url": "https://www.archive.org/download/peepbehindthescenes_version2_1607_librivox/apeepbehindthescenes_21_walton_64kb.mp3",
               "length_ms": 808000,
+              "readers": [
+                "lily-marie"
+              ],
               "start_ms": 20432000,
               "title": "In Sight of Home"
             },
             {
               "audio_url": "https://www.archive.org/download/peepbehindthescenes_version2_1607_librivox/apeepbehindthescenes_22_walton_64kb.mp3",
               "length_ms": 963000,
+              "readers": [
+                "rachel"
+              ],
               "start_ms": 21240000,
               "title": "The Lost Lamb Found"
             },
             {
               "audio_url": "https://www.archive.org/download/peepbehindthescenes_version2_1607_librivox/apeepbehindthescenes_23_walton_64kb.mp3",
               "length_ms": 661000,
+              "readers": [
+                "rachel"
+              ],
               "start_ms": 22203000,
               "title": "The Green Pasture"
             }
@@ -8494,7 +9372,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt13/peepbehindscenes_1607.jpg",
           "id": "leda",
           "language": "en",
+          "librivox_genres": [
+            "Religion"
+          ],
           "librivox_id": 5520,
+          "librivox_title": "Peep Behind the Scenes (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-peep-behind-the-scenes-version-2-by-mrs-o-f-walton/",
@@ -8934,7 +9816,13 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt14/Peeps_Many_Lands_Ancient_Egypt_1201.jpg",
           "id": "sibella-denton",
           "language": "en",
+          "librivox_genres": [
+            "General",
+            "History",
+            "Travel & Geography"
+          ],
           "librivox_id": 2416,
+          "librivox_title": "Peeps at Many Lands: Ancient Egypt",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/peeps-at-many-lands-ancient-egypt-by-james-baikie/",
@@ -9047,7 +9935,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt12/Peeps_Many_Lands_Egypt_1110.jpg",
           "id": "sibella-denton",
           "language": "en",
+          "librivox_genres": [
+            "Travel & Geography"
+          ],
           "librivox_id": 1493,
+          "librivox_title": "Peeps at Many Lands: Egypt",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/peeps-at-many-lands-egypt-by-r-talbot-kelly/",
@@ -9099,72 +9991,132 @@
             {
               "audio_url": "https://www.archive.org/download/peeps_at_people_dramatic_reading_1902_librivox/peepsatpeople_01_bangs_64kb.mp3",
               "length_ms": 723000,
+              "readers": [
+                "chuck-williamson",
+                "khand",
+                "nemo",
+                "foon"
+              ],
               "start_ms": 0,
               "title": "Nansen"
             },
             {
               "audio_url": "https://www.archive.org/download/peeps_at_people_dramatic_reading_1902_librivox/peepsatpeople_02_bangs_64kb.mp3",
               "length_ms": 843000,
+              "readers": [
+                "chuck-williamson",
+                "khand",
+                "nemo"
+              ],
               "start_ms": 723000,
               "title": "Mr Hall Caine"
             },
             {
               "audio_url": "https://www.archive.org/download/peeps_at_people_dramatic_reading_1902_librivox/peepsatpeople_03_bangs_64kb.mp3",
               "length_ms": 596000,
+              "readers": [
+                "spoken4",
+                "khand",
+                "foon"
+              ],
               "start_ms": 1566000,
               "title": "Emperor William"
             },
             {
               "audio_url": "https://www.archive.org/download/peeps_at_people_dramatic_reading_1902_librivox/peepsatpeople_04_bangs_64kb.mp3",
               "length_ms": 672000,
+              "readers": [
+                "khand",
+                "nemo"
+              ],
               "start_ms": 2162000,
               "title": "Alfred Austin"
             },
             {
               "audio_url": "https://www.archive.org/download/peeps_at_people_dramatic_reading_1902_librivox/peepsatpeople_05_bangs_64kb.mp3",
               "length_ms": 695000,
+              "readers": [
+                "khand",
+                "foon"
+              ],
               "start_ms": 2834000,
               "title": "Andrew Lang"
             },
             {
               "audio_url": "https://www.archive.org/download/peeps_at_people_dramatic_reading_1902_librivox/peepsatpeople_06_bangs_64kb.mp3",
               "length_ms": 732000,
+              "readers": [
+                "khand",
+                "nemo",
+                "foon"
+              ],
               "start_ms": 3529000,
               "title": "Zola"
             },
             {
               "audio_url": "https://www.archive.org/download/peeps_at_people_dramatic_reading_1902_librivox/peepsatpeople_07_bangs_64kb.mp3",
               "length_ms": 983000,
+              "readers": [
+                "khand",
+                "foon",
+                "ellies"
+              ],
               "start_ms": 4261000,
               "title": "Sir Henry Irving"
             },
             {
               "audio_url": "https://www.archive.org/download/peeps_at_people_dramatic_reading_1902_librivox/peepsatpeople_08_bangs_64kb.mp3",
               "length_ms": 804000,
+              "readers": [
+                "khand",
+                "leanne-yau",
+                "ellies"
+              ],
               "start_ms": 5244000,
               "title": "Ian McLaren"
             },
             {
               "audio_url": "https://www.archive.org/download/peeps_at_people_dramatic_reading_1902_librivox/peepsatpeople_09_bangs_64kb.mp3",
               "length_ms": 825000,
+              "readers": [
+                "khand",
+                "bhavya"
+              ],
               "start_ms": 6048000,
               "title": "Rudyard Kipling"
             },
             {
               "audio_url": "https://www.archive.org/download/peeps_at_people_dramatic_reading_1902_librivox/peepsatpeople_10_bangs_64kb.mp3",
               "length_ms": 790000,
+              "readers": [
+                "khand",
+                "foon",
+                "pmstrahm",
+                "jim-gallagher"
+              ],
               "start_ms": 6873000,
               "title": "The De Reszkes"
             },
             {
               "audio_url": "https://www.archive.org/download/peeps_at_people_dramatic_reading_1902_librivox/peepsatpeople_11_bangs_64kb.mp3",
               "length_ms": 882000,
+              "readers": [
+                "khand",
+                "leanne-yau",
+                "ellies",
+                "pmstrahm",
+                "jim-gallagher"
+              ],
               "start_ms": 7663000,
               "title": "Henryk Sienkiewicz"
             },
             {
               "audio_url": "https://www.archive.org/download/peeps_at_people_dramatic_reading_1902_librivox/peepsatpeople_12_bangs_64kb.mp3",
               "length_ms": 954000,
+              "readers": [
+                "khand",
+                "drpgould"
+              ],
               "start_ms": 8545000,
               "title": "General Weyler"
             }
@@ -9173,7 +10125,13 @@
           "cover_url": "https://archive.org/download/peeps_at_people_dramatic_reading_1902_librivox/peeps_people_1902.jpg",
           "id": "chuck-williamson",
           "language": "en",
+          "librivox_genres": [
+            "Dramatic Readings",
+            "Family Life",
+            "Historical Fiction"
+          ],
           "librivox_id": 11909,
+          "librivox_title": "Peeps at People - Being Certain Papers from the Writings of Anne Warrington Witherup (Dramatic Reading)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/peeps-at-people-being-certain-papers-from-the-writings-of-anne-warrington-witherup-dramatic-reading-by-john-kendrick-bangs/",
@@ -9212,72 +10170,108 @@
             {
               "audio_url": "https://www.archive.org/download/peepsatpeople_1804_librivox/peepsatpeople_01_bangs_64kb.mp3",
               "length_ms": 683000,
+              "readers": [
+                "tom-penn"
+              ],
               "start_ms": 0,
               "title": "Nansen"
             },
             {
               "audio_url": "https://www.archive.org/download/peepsatpeople_1804_librivox/peepsatpeople_02_bangs_64kb.mp3",
               "length_ms": 751000,
+              "readers": [
+                "taylor-davison"
+              ],
               "start_ms": 683000,
               "title": "Mr. Hall Caine"
             },
             {
               "audio_url": "https://www.archive.org/download/peepsatpeople_1804_librivox/peepsatpeople_03_bangs_64kb.mp3",
               "length_ms": 559000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 1434000,
               "title": "Emperor William"
             },
             {
               "audio_url": "https://www.archive.org/download/peepsatpeople_1804_librivox/peepsatpeople_04_bangs_64kb.mp3",
               "length_ms": 647000,
+              "readers": [
+                "eva-davis-d-2025"
+              ],
               "start_ms": 1993000,
               "title": "Mr. Alfred Austin"
             },
             {
               "audio_url": "https://www.archive.org/download/peepsatpeople_1804_librivox/peepsatpeople_05_bangs_64kb.mp3",
               "length_ms": 831000,
+              "readers": [
+                "diana-schmidt"
+              ],
               "start_ms": 2640000,
               "title": "Andrew Lang"
             },
             {
               "audio_url": "https://www.archive.org/download/peepsatpeople_1804_librivox/peepsatpeople_06_bangs_64kb.mp3",
               "length_ms": 808000,
+              "readers": [
+                "eva-davis-d-2025"
+              ],
               "start_ms": 3471000,
               "title": "Zola"
             },
             {
               "audio_url": "https://www.archive.org/download/peepsatpeople_1804_librivox/peepsatpeople_07_bangs_64kb.mp3",
               "length_ms": 908000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 4279000,
               "title": "Sir Henry Irving"
             },
             {
               "audio_url": "https://www.archive.org/download/peepsatpeople_1804_librivox/peepsatpeople_08_bangs_64kb.mp3",
               "length_ms": 731000,
+              "readers": [
+                "tom-penn"
+              ],
               "start_ms": 5187000,
               "title": "Ian McLaren"
             },
             {
               "audio_url": "https://www.archive.org/download/peepsatpeople_1804_librivox/peepsatpeople_09_bangs_64kb.mp3",
               "length_ms": 751000,
+              "readers": [
+                "jenni-clements"
+              ],
               "start_ms": 5918000,
               "title": "Rudyard Kipling"
             },
             {
               "audio_url": "https://www.archive.org/download/peepsatpeople_1804_librivox/peepsatpeople_10_bangs_64kb.mp3",
               "length_ms": 733000,
+              "readers": [
+                "april-walters"
+              ],
               "start_ms": 6669000,
               "title": "The De Reszkes"
             },
             {
               "audio_url": "https://www.archive.org/download/peepsatpeople_1804_librivox/peepsatpeople_11_bangs_64kb.mp3",
               "length_ms": 892000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 7402000,
               "title": "Henryk Sienkiewicz"
             },
             {
               "audio_url": "https://www.archive.org/download/peepsatpeople_1804_librivox/peepsatpeople_12_bangs_64kb.mp3",
               "length_ms": 825000,
+              "readers": [
+                "jenni-clements"
+              ],
               "start_ms": 8294000,
               "title": "General Weyler"
             }
@@ -9286,7 +10280,11 @@
           "cover_url": "https://archive.org/download/peepsatpeople_1804_librivox/peeps_people_1804.jpg",
           "id": "tom-penn",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography"
+          ],
           "librivox_id": 11644,
+          "librivox_title": "Peeps at People - Being Certain Papers from the Writings of Anne Warrington Witherup",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/peeps-at-people-being-certain-papers-from-the-writings-of-anne-warrington-witherup-by-john-kendrick-bangs/",
@@ -9350,42 +10348,99 @@
             {
               "audio_url": "https://www.archive.org/download/peer_gynt_1307_librivox/peergynt_1_ibsen_64kb.mp3",
               "length_ms": 2646000,
+              "readers": [
+                "arielle-lipshaw",
+                "nadine-eckert-boulet",
+                "availle",
+                "karlsson",
+                "kristin-g",
+                "pitface",
+                "cliff-thompson",
+                "cynthia-moyer"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/peer_gynt_1307_librivox/peergynt_2_ibsen_64kb.mp3",
               "length_ms": 2550000,
+              "readers": [
+                "denny-sayers-d-2015",
+                "frank-booker",
+                "phil-benson",
+                "liberty-stump",
+                "max-korlinge",
+                "patrick-wallace",
+                "jeannie-tirado"
+              ],
               "start_ms": 2646000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/peer_gynt_1307_librivox/peergynt_3_ibsen_64kb.mp3",
               "length_ms": 1908000,
+              "readers": [
+                "lars-rolander-1942-2016",
+                "algy-pug",
+                "paul-c-newman",
+                "tiffany-halla-colonna",
+                "lewis",
+                "grace",
+                "nathanial-w-c-higgins"
+              ],
               "start_ms": 5196000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/peer_gynt_1307_librivox/peergynt_4_ibsen_64kb.mp3",
               "length_ms": 3009000,
+              "readers": [
+                "rhonda-federman",
+                "david-lawrence",
+                "lucy-perry",
+                "bev-j-stevens",
+                "amy-gramour",
+                "cate-barratt",
+                "bob-gonzalez"
+              ],
               "start_ms": 7104000,
               "title": "Act 4 Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/peer_gynt_1307_librivox/peergynt_5_ibsen_64kb.mp3",
               "length_ms": 3222000,
+              "readers": [
+                "elizabeth-klett",
+                "patti-cunningham",
+                "chyanne-donnell",
+                "helen-falconer",
+                "blake-curran"
+              ],
               "start_ms": 10113000,
               "title": "Act 4 Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/peer_gynt_1307_librivox/peergynt_6_ibsen_64kb.mp3",
               "length_ms": 3160000,
+              "readers": [
+                "marty-kris",
+                "ron-altman",
+                "dublingothic",
+                "alan-mapstone",
+                "wupperhippo"
+              ],
               "start_ms": 13335000,
               "title": "Act 5 Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/peer_gynt_1307_librivox/peergynt_7_ibsen_64kb.mp3",
               "length_ms": 2616000,
+              "readers": [
+                "david-olson",
+                "liberty-stump",
+                "carol-box",
+                "charlotte-duckett"
+              ],
               "start_ms": 16495000,
               "title": "Act 5 Part 2"
             }
@@ -9394,7 +10449,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt32/peer_gynt_1306.jpg",
           "id": "arielle-lipshaw",
           "language": "en",
+          "librivox_genres": [
+            "Dramatic Readings",
+            "Plays",
+            "Epics"
+          ],
           "librivox_id": 5977,
+          "librivox_title": "Peer Gynt",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/peer-gynt-by-henrik-ibsen/",
@@ -9671,30 +10732,86 @@
             {
               "audio_url": "https://www.archive.org/download/pegomyheart_2110_librivox/pegomyheart_01_manners_64kb.mp3",
               "length_ms": 2997000,
+              "readers": [
+                "alan-mapstone",
+                "son-of-the-exiles",
+                "david-purdy",
+                "wayne-cooke",
+                "jenn-broda",
+                "kelly-s-taylor",
+                "ambsweet13",
+                "andrew-james",
+                "melissa-buell",
+                "jason-gemenetzis"
+              ],
               "start_ms": 0,
               "title": "Act 1 Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/pegomyheart_2110_librivox/pegomyheart_02_manners_64kb.mp3",
               "length_ms": 2909000,
+              "readers": [
+                "alan-mapstone",
+                "son-of-the-exiles",
+                "david-purdy",
+                "wayne-cooke",
+                "jenn-broda",
+                "kelly-s-taylor",
+                "ambsweet13",
+                "andrew-james",
+                "melissa-buell",
+                "jason-gemenetzis"
+              ],
               "start_ms": 2997000,
               "title": "Act 1 Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/pegomyheart_2110_librivox/pegomyheart_03_manners_64kb.mp3",
               "length_ms": 3193000,
+              "readers": [
+                "son-of-the-exiles",
+                "david-purdy",
+                "wayne-cooke",
+                "jenn-broda",
+                "kelly-s-taylor",
+                "ambsweet13",
+                "andrew-james",
+                "melissa-buell",
+                "jason-gemenetzis"
+              ],
               "start_ms": 5906000,
               "title": "Act 2 Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/pegomyheart_2110_librivox/pegomyheart_04_manners_64kb.mp3",
               "length_ms": 1161000,
+              "readers": [
+                "son-of-the-exiles",
+                "david-purdy",
+                "wayne-cooke",
+                "jenn-broda",
+                "kelly-s-taylor",
+                "ambsweet13",
+                "andrew-james",
+                "melissa-buell",
+                "jason-gemenetzis"
+              ],
               "start_ms": 9099000,
               "title": "Act 2 Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/pegomyheart_2110_librivox/pegomyheart_05_manners_64kb.mp3",
               "length_ms": 2350000,
+              "readers": [
+                "alan-mapstone",
+                "son-of-the-exiles",
+                "david-purdy",
+                "wayne-cooke",
+                "jenn-broda",
+                "kelly-s-taylor",
+                "andrew-james",
+                "melissa-buell"
+              ],
               "start_ms": 10260000,
               "title": "Act 3"
             }
@@ -9703,7 +10820,12 @@
           "cover_url": "https://archive.org/download/pegomyheart_2110_librivox/peg_omy_heart_2110.jpg",
           "id": "alan-mapstone",
           "language": "en",
+          "librivox_genres": [
+            "Romance",
+            "Satire"
+          ],
           "librivox_id": 15456,
+          "librivox_title": "Peg O' My Heart",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/peg-o-my-heart-by-john-hartley-manners/",

@@ -228,72 +228,108 @@
             {
               "audio_url": "https://www.archive.org/download/strange_visitation_1802_librivox/strangevisitation_01_corelli_64kb.mp3",
               "length_ms": 1009000,
+              "readers": [
+                "john-van-stan"
+              ],
               "start_ms": 0,
               "title": "Section 1"
             },
             {
               "audio_url": "https://www.archive.org/download/strange_visitation_1802_librivox/strangevisitation_02_corelli_64kb.mp3",
               "length_ms": 892000,
+              "readers": [
+                "john-van-stan"
+              ],
               "start_ms": 1009000,
               "title": "Section 2"
             },
             {
               "audio_url": "https://www.archive.org/download/strange_visitation_1802_librivox/strangevisitation_03_corelli_64kb.mp3",
               "length_ms": 1339000,
+              "readers": [
+                "john-van-stan"
+              ],
               "start_ms": 1901000,
               "title": "Section 3"
             },
             {
               "audio_url": "https://www.archive.org/download/strange_visitation_1802_librivox/strangevisitation_04_corelli_64kb.mp3",
               "length_ms": 1015000,
+              "readers": [
+                "john-van-stan"
+              ],
               "start_ms": 3240000,
               "title": "Section 4"
             },
             {
               "audio_url": "https://www.archive.org/download/strange_visitation_1802_librivox/strangevisitation_05_corelli_64kb.mp3",
               "length_ms": 971000,
+              "readers": [
+                "john-van-stan"
+              ],
               "start_ms": 4255000,
               "title": "Section 5"
             },
             {
               "audio_url": "https://www.archive.org/download/strange_visitation_1802_librivox/strangevisitation_06_corelli_64kb.mp3",
               "length_ms": 1408000,
+              "readers": [
+                "john-van-stan"
+              ],
               "start_ms": 5226000,
               "title": "Section 6"
             },
             {
               "audio_url": "https://www.archive.org/download/strange_visitation_1802_librivox/strangevisitation_07_corelli_64kb.mp3",
               "length_ms": 477000,
+              "readers": [
+                "eliseblack"
+              ],
               "start_ms": 6634000,
               "title": "Section 7"
             },
             {
               "audio_url": "https://www.archive.org/download/strange_visitation_1802_librivox/strangevisitation_08_corelli_64kb.mp3",
               "length_ms": 994000,
+              "readers": [
+                "eliseblack"
+              ],
               "start_ms": 7111000,
               "title": "Section 8"
             },
             {
               "audio_url": "https://www.archive.org/download/strange_visitation_1802_librivox/strangevisitation_09_corelli_64kb.mp3",
               "length_ms": 1185000,
+              "readers": [
+                "eliseblack"
+              ],
               "start_ms": 8105000,
               "title": "Section 9"
             },
             {
               "audio_url": "https://www.archive.org/download/strange_visitation_1802_librivox/strangevisitation_10_corelli_64kb.mp3",
               "length_ms": 860000,
+              "readers": [
+                "ed-fenton"
+              ],
               "start_ms": 9290000,
               "title": "Section 10"
             },
             {
               "audio_url": "https://www.archive.org/download/strange_visitation_1802_librivox/strangevisitation_11_corelli_64kb.mp3",
               "length_ms": 1013000,
+              "readers": [
+                "ed-fenton"
+              ],
               "start_ms": 10150000,
               "title": "Section 11"
             },
             {
               "audio_url": "https://www.archive.org/download/strange_visitation_1802_librivox/strangevisitation_12_corelli_64kb.mp3",
               "length_ms": 814000,
+              "readers": [
+                "john-van-stan"
+              ],
               "start_ms": 11163000,
               "title": "Section 12"
             }
@@ -302,7 +338,12 @@
           "cover_url": "https://archive.org/download/strange_visitation_1802_librivox/strange_visitation_1802.jpg",
           "id": "john-van-stan",
           "language": "en",
+          "librivox_genres": [
+            "Horror & Supernatural Fiction",
+            "Published 1900 onward"
+          ],
           "librivox_id": 12545,
+          "librivox_title": "Strange Visitation",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-strange-visitation-by-marie-corelli/",
@@ -393,7 +434,12 @@
           "cover_url": "https://archive.org/download/strangevoyageandadventures_2407_librivox/man_moone_2407.jpg",
           "id": "verla-viera",
           "language": "en",
+          "librivox_genres": [
+            "Fantastic Fiction",
+            "Science Fiction"
+          ],
           "librivox_id": 20616,
+          "librivox_title": "Strange Voyage and Adventures of Domingo Gonsales to the World in the Moon",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/strange-voyage-and-adventures-francis-godwin/",
@@ -1173,7 +1219,11 @@
           "cover_url": "https://archive.org/download/strangeworld_2101_librivox/strange_world_2101.jpg",
           "id": "celine-major",
           "language": "en",
+          "librivox_genres": [
+            "Published 1800 -1900"
+          ],
           "librivox_id": 15885,
+          "librivox_title": "Strange World",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-strange-world-by-mary-elizabeth-braddon/",
@@ -3194,30 +3244,83 @@
             {
               "audio_url": "https://www.archive.org/download/thestranger_2311_librivox/stranger_1_kotzebue_64kb.mp3",
               "length_ms": 1699000,
+              "readers": [
+                "michelle-r-wood",
+                "alan-mapstone",
+                "greg-giordano",
+                "larry-wilson",
+                "oogiesragdoll",
+                "wendykatzhiller",
+                "hellocentral",
+                "beeswaxcandle",
+                "inkell"
+              ],
               "start_ms": 0,
               "title": "ACT I"
             },
             {
               "audio_url": "https://www.archive.org/download/thestranger_2311_librivox/stranger_2_kotzebue_64kb.mp3",
               "length_ms": 1658000,
+              "readers": [
+                "algy-pug",
+                "alan-mapstone",
+                "larry-wilson",
+                "tomas-peter",
+                "oogiesragdoll",
+                "kelly-s-taylor",
+                "wendykatzhiller",
+                "beeswaxcandle",
+                "tami-johnson"
+              ],
               "start_ms": 1699000,
               "title": "ACT II"
             },
             {
               "audio_url": "https://www.archive.org/download/thestranger_2311_librivox/stranger_3_kotzebue_64kb.mp3",
               "length_ms": 1426000,
+              "readers": [
+                "algy-pug",
+                "greg-giordano",
+                "tomas-peter",
+                "oogiesragdoll",
+                "kelly-s-taylor",
+                "wendykatzhiller",
+                "hellocentral",
+                "tami-johnson"
+              ],
               "start_ms": 3357000,
               "title": "ACT III"
             },
             {
               "audio_url": "https://www.archive.org/download/thestranger_2311_librivox/stranger_4_kotzebue_64kb.mp3",
               "length_ms": 1501000,
+              "readers": [
+                "algy-pug",
+                "greg-giordano",
+                "tomas-peter",
+                "oogiesragdoll",
+                "jenn-broda",
+                "kelly-s-taylor",
+                "wendykatzhiller",
+                "hellocentral",
+                "beeswaxcandle",
+                "tami-johnson"
+              ],
               "start_ms": 4783000,
               "title": "ACT IV"
             },
             {
               "audio_url": "https://www.archive.org/download/thestranger_2311_librivox/stranger_5_kotzebue_64kb.mp3",
               "length_ms": 1312000,
+              "readers": [
+                "greg-giordano",
+                "tomas-peter",
+                "oogiesragdoll",
+                "kelly-s-taylor",
+                "wendykatzhiller",
+                "hellocentral",
+                "inkell"
+              ],
               "start_ms": 6284000,
               "title": "ACT V"
             }
@@ -3226,7 +3329,11 @@
           "cover_url": "https://archive.org/download/thestranger_2311_librivox/stranger_2311.jpg",
           "id": "michelle-r-wood",
           "language": "en",
+          "librivox_genres": [
+            "Romance"
+          ],
           "librivox_id": 19428,
+          "librivox_title": "Stranger",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-stranger-by-august-von-kotzebue/",

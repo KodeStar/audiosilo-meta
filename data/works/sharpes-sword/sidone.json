@@ -12258,51 +12258,82 @@
             {
               "audio_url": "https://www.archive.org/download/sieben_gedichte_1607_librivox/gedichte_01_poe_64kb.mp3",
               "length_ms": 495000,
+              "readers": [
+                "gaby"
+              ],
               "start_ms": 0,
               "title": "Der Rabe"
             },
             {
               "audio_url": "https://www.archive.org/download/sieben_gedichte_1607_librivox/gedichte_02_poe_64kb.mp3",
               "length_ms": 133000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 495000,
               "title": "Annabel Lee"
             },
             {
               "audio_url": "https://www.archive.org/download/sieben_gedichte_1607_librivox/gedichte_03_poe_64kb.mp3",
               "length_ms": 256000,
+              "readers": [
+                "gabriel-librivox-10819"
+              ],
               "start_ms": 628000,
               "title": "Ulalume"
             },
             {
               "audio_url": "https://www.archive.org/download/sieben_gedichte_1607_librivox/gedichte_04_poe_64kb.mp3",
               "length_ms": 297000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 884000,
               "title": "Die Glocken"
             },
             {
               "audio_url": "https://www.archive.org/download/sieben_gedichte_1607_librivox/gedichte_05_poe_64kb.mp3",
               "length_ms": 752000,
+              "readers": [
+                "gaby"
+              ],
               "start_ms": 1181000,
               "title": "Tamerlan"
             },
             {
               "audio_url": "https://www.archive.org/download/sieben_gedichte_1607_librivox/gedichte_06_poe_64kb.mp3",
               "length_ms": 185000,
+              "readers": [
+                "ralf"
+              ],
               "start_ms": 1933000,
               "title": "Das Kolosseum"
             },
             {
               "audio_url": "https://www.archive.org/download/sieben_gedichte_1607_librivox/gedichte_07_poe_64kb.mp3",
               "length_ms": 178000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 2118000,
               "title": "Die Stadt im Meer"
             }
           ],
           "copyright_year": 1920,
           "cover_url": "https://archive.org/download/sieben_gedichte_1607_librivox/sieben_gedichte_poe_1607.jpg",
+          "credits": [
+            {
+              "person": "theodor-etzel",
+              "role": "translator"
+            }
+          ],
           "id": "gaby",
           "language": "de",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 10824,
+          "librivox_title": "Sieben Gedichte",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/sieben-gedichte-by-edgar-allan-poe/",
@@ -15725,7 +15756,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt23/siedem_wybranych_opiadan_1210.jpg",
           "id": "nina-brown",
           "language": "pl",
+          "librivox_genres": [
+            "Single Author Collections"
+          ],
           "librivox_id": 6288,
+          "librivox_title": "Siedem wybranych opowiadań",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/siedem-wybranych-opowiadan-by-wladyslaw-orkan/",

@@ -1486,30 +1486,50 @@
             {
               "audio_url": "https://www.archive.org/download/royale_maison_de_savoie_1911_librivox/royalemaisondesavoie_00_hudrymenos_64kb.mp3",
               "length_ms": 356000,
+              "readers": [
+                "beniaminomassimo"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/royale_maison_de_savoie_1911_librivox/royalemaisondesavoie_01_hudrymenos_64kb.mp3",
               "length_ms": 1426000,
+              "readers": [
+                "beniaminomassimo"
+              ],
+              "section_number": 1,
               "start_ms": 356000,
               "title": "Chapitre 1"
             },
             {
               "audio_url": "https://www.archive.org/download/royale_maison_de_savoie_1911_librivox/royalemaisondesavoie_02_hudrymenos_64kb.mp3",
               "length_ms": 1441000,
+              "readers": [
+                "beniaminomassimo"
+              ],
+              "section_number": 2,
               "start_ms": 1782000,
               "title": "Chapitre 2"
             },
             {
               "audio_url": "https://www.archive.org/download/royale_maison_de_savoie_1911_librivox/royalemaisondesavoie_03_hudrymenos_64kb.mp3",
               "length_ms": 1786000,
+              "readers": [
+                "christiane-jehanne"
+              ],
+              "section_number": 3,
               "start_ms": 3223000,
               "title": "Chapitre 3"
             },
             {
               "audio_url": "https://www.archive.org/download/royale_maison_de_savoie_1911_librivox/royalemaisondesavoie_04_hudrymenos_64kb.mp3",
               "length_ms": 2357000,
+              "readers": [
+                "martine"
+              ],
+              "section_number": 4,
               "start_ms": 5009000,
               "title": "Chapitre 4"
             }
@@ -1518,7 +1538,15 @@
           "cover_url": "https://archive.org/download/royale_maison_de_savoie_1911_librivox/royale_maison_1911.jpg",
           "id": "beniaminomassimo",
           "language": "fr",
+          "librivox_genres": [
+            "*Non-fiction",
+            "History",
+            "Middle Ages/Middle History",
+            "Early Modern",
+            "Modern (19th C)"
+          ],
           "librivox_id": 9321,
+          "librivox_title": "Royale Maison de Savoie",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/la-royale-maison-de-savoie-by-gregoire-hudry-menos/",
@@ -16853,9 +16881,31 @@
           ],
           "copyright_year": 1909,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/rubaiyatmiscellany_1312.jpg",
+          "credits": [
+            {
+              "person": "edward-fitzgerald",
+              "role": "translator"
+            },
+            {
+              "person": "arthur-guiterman",
+              "role": "translator"
+            },
+            {
+              "person": "richard-le-gallienne",
+              "role": "translator"
+            },
+            {
+              "person": "ruel-william-whitney",
+              "role": "translator"
+            }
+          ],
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 8416,
+          "librivox_title": "Rubaiyat Miscellany",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-rubaiyat-miscellany-by-omar-khayyam/",
@@ -16912,63 +16962,109 @@
             {
               "audio_url": "https://www.archive.org/download/rubaiyatofomarkhayyam_2103_librivox/rubaiyat_00_johnson_64kb.mp3",
               "length_ms": 207000,
+              "readers": [
+                "algy-pug"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/rubaiyatofomarkhayyam_2103_librivox/rubaiyat_01_johnson_64kb.mp3",
               "length_ms": 1538000,
+              "readers": [
+                "smcelhiney"
+              ],
+              "section_number": 1,
               "start_ms": 207000,
               "title": "Quatrains 1 - 100"
             },
             {
               "audio_url": "https://www.archive.org/download/rubaiyatofomarkhayyam_2103_librivox/rubaiyat_02_johnson_64kb.mp3",
               "length_ms": 1419000,
+              "readers": [
+                "smcelhiney"
+              ],
+              "section_number": 2,
               "start_ms": 1745000,
               "title": "Quatrains 101 - 200"
             },
             {
               "audio_url": "https://www.archive.org/download/rubaiyatofomarkhayyam_2103_librivox/rubaiyat_03_johnson_64kb.mp3",
               "length_ms": 1534000,
+              "readers": [
+                "algy-pug"
+              ],
+              "section_number": 3,
               "start_ms": 3164000,
               "title": "Quatrains 201 - 300"
             },
             {
               "audio_url": "https://www.archive.org/download/rubaiyatofomarkhayyam_2103_librivox/rubaiyat_04_johnson_64kb.mp3",
               "length_ms": 1426000,
+              "readers": [
+                "arden"
+              ],
+              "section_number": 4,
               "start_ms": 4698000,
               "title": "Quatrains 301 - 400"
             },
             {
               "audio_url": "https://www.archive.org/download/rubaiyatofomarkhayyam_2103_librivox/rubaiyat_05_johnson_64kb.mp3",
               "length_ms": 1422000,
+              "readers": [
+                "arden"
+              ],
+              "section_number": 5,
               "start_ms": 6124000,
               "title": "Quatrains 401 - 500"
             },
             {
               "audio_url": "https://www.archive.org/download/rubaiyatofomarkhayyam_2103_librivox/rubaiyat_06_johnson_64kb.mp3",
               "length_ms": 2071000,
+              "readers": [
+                "djrickyv"
+              ],
+              "section_number": 6,
               "start_ms": 7546000,
               "title": "Quatrains 501 - 600"
             },
             {
               "audio_url": "https://www.archive.org/download/rubaiyatofomarkhayyam_2103_librivox/rubaiyat_07_johnson_64kb.mp3",
               "length_ms": 2047000,
+              "readers": [
+                "djrickyv"
+              ],
+              "section_number": 7,
               "start_ms": 9617000,
               "title": "Quatrains 601 - 700"
             },
             {
               "audio_url": "https://www.archive.org/download/rubaiyatofomarkhayyam_2103_librivox/rubaiyat_08_johnson_64kb.mp3",
               "length_ms": 996000,
+              "readers": [
+                "algy-pug"
+              ],
+              "section_number": 8,
               "start_ms": 11664000,
               "title": "Quatrains 701 - 762"
             }
           ],
           "copyright_year": 1913,
           "cover_url": "https://archive.org/download/rubaiyatofomarkhayyam_2103_librivox/rubaiyat_omar_2103.jpg",
+          "credits": [
+            {
+              "person": "e-a-johnson",
+              "role": "translator"
+            }
+          ],
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 15512,
+          "librivox_title": "Rubaiyat of Omar Khayyam",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-rubaiyat-of-omar-khayyam-by-omar-khayyam-4/",
@@ -17039,33 +17135,55 @@
             {
               "audio_url": "https://www.archive.org/download/rubaiyat_khayyam2_1107_librivox/rubaiyat_0_khayyam_garnett_64kb.mp3",
               "length_ms": 1720000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Rubáiyát of Omar Khayyám, Preface to the Cadell translation with intro by Richard Garnett"
             },
             {
               "audio_url": "https://www.archive.org/download/rubaiyat_khayyam2_1107_librivox/rubaiyat_1_khayyam_cadell_64kb.mp3",
               "length_ms": 2203000,
+              "section_number": 1,
               "start_ms": 1720000,
               "title": "Cadell Translation:The Ruba'yat of Omar Khayyám"
             },
             {
               "audio_url": "https://www.archive.org/download/rubaiyat_khayyam2_1107_librivox/rubaiyat_2_khayyam_rittenhouse_64kb.mp3",
               "length_ms": 1068000,
+              "section_number": 2,
               "start_ms": 3923000,
               "title": "Rittenhouse Translation: The Lover's Rubáiyát by Omar Khayyám"
             },
             {
               "audio_url": "https://www.archive.org/download/rubaiyat_khayyam2_1107_librivox/rubaiyat_3_khayyam_curtis_64kb.mp3",
               "length_ms": 1605000,
+              "section_number": 3,
               "start_ms": 4991000,
               "title": "Curtis Translation: One Hundred Quatrains from the Rubáiyát of Omar Khayyám"
             }
           ],
           "copyright_year": 1904,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt29/Rubaiyat_Omar_Khayyam_V2_1302.jpg",
+          "credits": [
+            {
+              "person": "jessie-cadell",
+              "role": "translator"
+            },
+            {
+              "person": "elizabeth-alden-curtis",
+              "role": "translator"
+            },
+            {
+              "person": "jessica-rittenhouse",
+              "role": "translator"
+            }
+          ],
           "id": "amy-gramour",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 5505,
+          "librivox_title": "Rubáiyát of Omar Khayyám, Collected Translations",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-rubaiyat-of-omar-khayyam-collected-translations/",
@@ -17128,9 +17246,19 @@
           ],
           "copyright_year": 1889,
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt12/Rubaiyat_Omar_Khayyam_1109.jpg",
+          "credits": [
+            {
+              "person": "edward-fitzgerald",
+              "role": "translator"
+            }
+          ],
           "id": "alaaious",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 1294,
+          "librivox_title": "Rubáiyát of Omar Khayyám (Fitzgerald)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-rubaiyat-of-omar-khayyam-by-omar-khayyam/",
@@ -17188,24 +17316,28 @@
             {
               "audio_url": "https://www.archive.org/download/rubaiyat_1206_librivox/rubaiyatofomarkhayyam_legallienne_0_khayyam_64kb.mp3",
               "length_ms": 513000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/rubaiyat_1206_librivox/rubaiyatofomarkhayyam_legallienne_1_khayyam_64kb.mp3",
               "length_ms": 1358000,
+              "section_number": 1,
               "start_ms": 513000,
               "title": "Quatrains 1 - 90"
             },
             {
               "audio_url": "https://www.archive.org/download/rubaiyat_1206_librivox/rubaiyatofomarkhayyam_legallienne_2_khayyam_64kb.mp3",
               "length_ms": 1358000,
+              "section_number": 2,
               "start_ms": 1871000,
               "title": "Quatrains 91 - 180"
             },
             {
               "audio_url": "https://www.archive.org/download/rubaiyat_1206_librivox/rubaiyatofomarkhayyam_legallienne_3_khayyam_64kb.mp3",
               "length_ms": 1231000,
+              "section_number": 3,
               "start_ms": 3229000,
               "title": "Quatrains 181 - 261"
             }
@@ -17214,7 +17346,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt20/Rubaiyat_of_Omar_Khayyam_1206.jpg",
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Philosophy"
+          ],
           "librivox_id": 6736,
+          "librivox_title": "Rubáiyát of Omar Khayyám (Le Gallienne)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/rubaiyat-of-omar-khayyam-le-gallienne-version/",
@@ -17243,27 +17380,41 @@
             {
               "audio_url": "https://www.archive.org/download/rubaiyat_legallienne_1301_librivox/rubaiyat_0_khayyam_64kb.mp3",
               "length_ms": 664000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Section 0 - Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/rubaiyat_legallienne_1301_librivox/rubaiyat_1_khayyam_64kb.mp3",
               "length_ms": 2268000,
+              "section_number": 1,
               "start_ms": 664000,
               "title": "Section 1"
             },
             {
               "audio_url": "https://www.archive.org/download/rubaiyat_legallienne_1301_librivox/rubaiyat_2_khayyam_64kb.mp3",
               "length_ms": 2301000,
+              "section_number": 2,
               "start_ms": 2932000,
               "title": "Section 2"
             }
           ],
           "copyright_year": 1902,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt29/rubaiyat_of_omar_khayyam_version_2_1302.jpg",
+          "credits": [
+            {
+              "person": "richard-le-gallienne",
+              "role": "translator"
+            }
+          ],
           "id": "michael-armenta",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Ancient"
+          ],
           "librivox_id": 7393,
+          "librivox_title": "Rubáiyát of Omar Khayyám (Le Gallienne) - Version 2",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/rubaiyat-of-omar-khayyam-by-omar-khayyam/",
@@ -17361,9 +17512,23 @@
           ],
           "copyright_year": 1903,
           "cover_url": "https://archive.org/download/rubaiyatofumarkhaiyam_1709_librivox/rubaiyatofumarkhaiyam_rolfe_1707.jpg",
+          "credits": [
+            {
+              "person": "jean-baptiste-nicolas",
+              "role": "translator"
+            },
+            {
+              "person": "frederick-baron-corvo-rolfe",
+              "role": "translator"
+            }
+          ],
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 12185,
+          "librivox_title": "Rubaiyat of Umar Khaiyam",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-rubaiyat-of-umar-khaiyam-rolfe-translation/",

@@ -1465,84 +1465,140 @@
             {
               "audio_url": "https://www.archive.org/download/monksofvagabondia_1704_librivox/mymonksofvagabondia_00_floyd_64kb.mp3",
               "length_ms": 205000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introductory"
             },
             {
               "audio_url": "https://www.archive.org/download/monksofvagabondia_1704_librivox/mymonksofvagabondia_01_floyd_64kb.mp3",
               "length_ms": 362000,
+              "readers": [
+                "phil-chenevert"
+              ],
+              "section_number": 1,
               "start_ms": 205000,
               "title": "Journey to our Monastery"
             },
             {
               "audio_url": "https://www.archive.org/download/monksofvagabondia_1704_librivox/mymonksofvagabondia_02_floyd_64kb.mp3",
               "length_ms": 440000,
+              "readers": [
+                "debk"
+              ],
+              "section_number": 2,
               "start_ms": 567000,
               "title": "Mary and the Baby"
             },
             {
               "audio_url": "https://www.archive.org/download/monksofvagabondia_1704_librivox/mymonksofvagabondia_03_floyd_64kb.mp3",
               "length_ms": 784000,
+              "readers": [
+                "debk"
+              ],
+              "section_number": 3,
               "start_ms": 1007000,
               "title": "My Problems with Slippery Jim"
             },
             {
               "audio_url": "https://www.archive.org/download/monksofvagabondia_1704_librivox/mymonksofvagabondia_04_floyd_64kb.mp3",
               "length_ms": 521000,
+              "readers": [
+                "debk"
+              ],
+              "section_number": 4,
               "start_ms": 1791000,
               "title": "Our Friend, the Anarchist"
             },
             {
               "audio_url": "https://www.archive.org/download/monksofvagabondia_1704_librivox/mymonksofvagabondia_05_floyd_64kb.mp3",
               "length_ms": 292000,
+              "readers": [
+                "phil-chenevert"
+              ],
+              "section_number": 5,
               "start_ms": 2312000,
               "title": "A Bashful Beggar"
             },
             {
               "audio_url": "https://www.archive.org/download/monksofvagabondia_1704_librivox/mymonksofvagabondia_06_floyd_64kb.mp3",
               "length_ms": 564000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 6,
               "start_ms": 2604000,
               "title": "Fritz and his Sun Dial"
             },
             {
               "audio_url": "https://www.archive.org/download/monksofvagabondia_1704_librivox/mymonksofvagabondia_07_floyd_64kb.mp3",
               "length_ms": 397000,
+              "readers": [
+                "joseph-mcwombie"
+              ],
+              "section_number": 7,
               "start_ms": 3168000,
               "title": "The Waiter who did not Wait"
             },
             {
               "audio_url": "https://www.archive.org/download/monksofvagabondia_1704_librivox/mymonksofvagabondia_08_floyd_64kb.mp3",
               "length_ms": 460000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 8,
               "start_ms": 3565000,
               "title": "Compounding a Felony"
             },
             {
               "audio_url": "https://www.archive.org/download/monksofvagabondia_1704_librivox/mymonksofvagabondia_09_floyd_64kb.mp3",
               "length_ms": 445000,
+              "readers": [
+                "joseph-mcwombie"
+              ],
+              "section_number": 9,
               "start_ms": 4025000,
               "title": "The Passing of Sullivan"
             },
             {
               "audio_url": "https://www.archive.org/download/monksofvagabondia_1704_librivox/mymonksofvagabondia_10_floyd_64kb.mp3",
               "length_ms": 546000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 10,
               "start_ms": 4470000,
               "title": "When Sister Called"
             },
             {
               "audio_url": "https://www.archive.org/download/monksofvagabondia_1704_librivox/mymonksofvagabondia_11_floyd_64kb.mp3",
               "length_ms": 401000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 11,
               "start_ms": 5016000,
               "title": "Edison's Evening Star"
             },
             {
               "audio_url": "https://www.archive.org/download/monksofvagabondia_1704_librivox/mymonksofvagabondia_12_floyd_64kb.mp3",
               "length_ms": 207000,
+              "readers": [
+                "joseph-mcwombie"
+              ],
+              "section_number": 12,
               "start_ms": 5417000,
               "title": "In the World of Wanderlust"
             },
             {
               "audio_url": "https://www.archive.org/download/monksofvagabondia_1704_librivox/mymonksofvagabondia_13_floyd_64kb.mp3",
               "length_ms": 547000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 13,
               "start_ms": 5624000,
               "title": "The Two Jeans"
             }
@@ -1551,7 +1607,11 @@
           "cover_url": "https://archive.org/download/monksofvagabondia_1704_librivox/monksofvagabondia_1704.jpg",
           "id": "lynne-t",
           "language": "en",
+          "librivox_genres": [
+            "Social Science (Culture & Anthropology)"
+          ],
           "librivox_id": 11509,
+          "librivox_title": "My Monks of Vagabondia",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/my-monks-of-vagabondia-by-andress-small-floyd/",
@@ -2676,7 +2736,11 @@
           "cover_url": "https://archive.org/download/mymortalenemy_2202_librivox/mymortalenemy_2202.jpg",
           "id": "amy-dunkleberger",
           "language": "en",
+          "librivox_genres": [
+            "Published 1900 onward"
+          ],
           "librivox_id": 17524,
+          "librivox_title": "My Mortal Enemy",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/my-mortal-enemy-by-willa-sibert-cather/",
@@ -3101,7 +3165,11 @@
           "cover_url": "https://archive.org/download/mymotherandi_1503_librivox/mymotherandi_1503.jpg",
           "id": "sue-anderson",
           "language": "en",
+          "librivox_genres": [
+            "Memoirs"
+          ],
           "librivox_id": 9468,
+          "librivox_title": "My Mother and I",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/my-mother-and-i-by-elizabeth-gertrude-stern/",
@@ -4885,168 +4953,252 @@
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_01_damrosch_64kb.mp3",
               "length_ms": 1278000,
+              "readers": [
+                "michael-matthews"
+              ],
               "start_ms": 0,
               "title": "I. Childhood - 1866-1875"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_02_damrosch_64kb.mp3",
               "length_ms": 1001000,
+              "readers": [
+                "leswillang"
+              ],
               "start_ms": 1278000,
               "title": "II. Bayreuth in 1876. My Doll's Theatre"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_03_damrosch_64kb.mp3",
               "length_ms": 653000,
+              "readers": [
+                "warren-bergmann"
+              ],
               "start_ms": 2279000,
               "title": "III. Founding of the Symphony and Oratorio Societies of New York"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_04_damrosch_64kb.mp3",
               "length_ms": 1067000,
+              "readers": [
+                "janicwedge"
+              ],
               "start_ms": 2932000,
               "title": "IV. August Wilhelmj - Teresa Carreno"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_05_damrosch_64kb.mp3",
               "length_ms": 1836000,
+              "readers": [
+                "warren-bergmann"
+              ],
               "start_ms": 3999000,
               "title": "V. Liszt and Wagner"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_06_damrosch_64kb.mp3",
               "length_ms": 1600000,
+              "readers": [
+                "janicwedge"
+              ],
               "start_ms": 5835000,
               "title": "VI. The Founding of German Opera at the Metropolitan - Death of my Father"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_07_damrosch_64kb.mp3",
               "length_ms": 1458000,
+              "readers": [
+                "jonathan-miller"
+              ],
               "start_ms": 7435000,
               "title": "VII. Lilli Lehmann"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_08_damrosch_64kb.mp3",
               "length_ms": 1709000,
+              "readers": [
+                "valroth"
+              ],
               "start_ms": 8893000,
               "title": "VIII. Hans von Bülow"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_09_damrosch_64kb.mp3",
               "length_ms": 1241000,
+              "readers": [
+                "cbteddy"
+              ],
               "start_ms": 10602000,
               "title": "IX. Andrew Carnegie and the Blaine Family"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_10_damrosch_64kb.mp3",
               "length_ms": 1636000,
+              "readers": [
+                "mkirkpat"
+              ],
               "start_ms": 11843000,
               "title": "X. The Damrosch Opera Company, 1895-1899. Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_11_damrosch_64kb.mp3",
               "length_ms": 1612000,
+              "readers": [
+                "mkirkpat"
+              ],
               "start_ms": 13479000,
               "title": "X. The Damrosch Opera Company, 1895-1899. Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_12_damrosch_64kb.mp3",
               "length_ms": 2111000,
+              "readers": [
+                "jonathan-miller"
+              ],
               "start_ms": 15091000,
               "title": "XI. Artists. Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_13_damrosch_64kb.mp3",
               "length_ms": 1643000,
+              "readers": [
+                "mkirkpat"
+              ],
               "start_ms": 17202000,
               "title": "XI. Artists. Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_14_damrosch_64kb.mp3",
               "length_ms": 509000,
+              "readers": [
+                "valroth"
+              ],
               "start_ms": 18845000,
               "title": "XII. Romance"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_15_damrosch_64kb.mp3",
               "length_ms": 1871000,
+              "readers": [
+                "mkirkpat"
+              ],
               "start_ms": 19354000,
               "title": "XIII. The Oratorio Society of New York"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_16_damrosch_64kb.mp3",
               "length_ms": 1883000,
+              "readers": [
+                "mkirkpat"
+              ],
               "start_ms": 21225000,
               "title": "XIV. The New York Symphony Orchestra. Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_17_damrosch_64kb.mp3",
               "length_ms": 1814000,
+              "readers": [
+                "mkirkpat"
+              ],
               "start_ms": 23108000,
               "title": "XIV. The New York Symphony Orchestra. Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_18_damrosch_64kb.mp3",
               "length_ms": 1915000,
+              "readers": [
+                "mkirkpat"
+              ],
               "start_ms": 24922000,
               "title": "XV. The Great War. Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_19_damrosch_64kb.mp3",
               "length_ms": 1821000,
+              "readers": [
+                "mkirkpat"
+              ],
               "start_ms": 26837000,
               "title": "XV. The Great War. Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_20_damrosch_64kb.mp3",
               "length_ms": 1887000,
+              "readers": [
+                "mkirkpat"
+              ],
               "start_ms": 28658000,
               "title": "XV. The Great War. Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_21_damrosch_64kb.mp3",
               "length_ms": 1649000,
+              "readers": [
+                "mkirkpat"
+              ],
               "start_ms": 30545000,
               "title": "XVI. The European Tour. Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_22_damrosch_64kb.mp3",
               "length_ms": 1981000,
+              "readers": [
+                "mkirkpat"
+              ],
               "start_ms": 32194000,
               "title": "XVI. The European Tour. Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_23_damrosch_64kb.mp3",
               "length_ms": 1904000,
+              "readers": [
+                "mkirkpat"
+              ],
               "start_ms": 34175000,
               "title": "XVI. The European Tour. Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_24_damrosch_64kb.mp3",
               "length_ms": 1038000,
+              "readers": [
+                "mkirkpat"
+              ],
               "start_ms": 36079000,
               "title": "XVII. Women in Musical Affairs"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_25_damrosch_64kb.mp3",
               "length_ms": 1201000,
+              "readers": [
+                "mkirkpat"
+              ],
               "start_ms": 37117000,
               "title": "XVIII. Boston"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_26_damrosch_64kb.mp3",
               "length_ms": 692000,
+              "readers": [
+                "michael-matthews"
+              ],
               "start_ms": 38318000,
               "title": "XIX. Margaret Anglin and the Greek Plays"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_27_damrosch_64kb.mp3",
               "length_ms": 1722000,
+              "readers": [
+                "mkirkpat"
+              ],
               "start_ms": 39010000,
               "title": "XX. Dead Composers"
             },
             {
               "audio_url": "https://www.archive.org/download/mymusicallife_2405_librivox/mymusicallife_28_damrosch_64kb.mp3",
               "length_ms": 146000,
+              "readers": [
+                "mkirkpat"
+              ],
               "start_ms": 40732000,
               "title": "XXI. Postlude"
             }
@@ -5055,7 +5207,13 @@
           "cover_url": "https://archive.org/download/mymusicallife_2405_librivox/mymusicallife_2405.jpg",
           "id": "michael-matthews",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "Music",
+            "Performing Arts"
+          ],
           "librivox_id": 20104,
+          "librivox_title": "My Musical Life",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/my-musical-life-by-walter-damrosch/",

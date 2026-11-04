@@ -12248,78 +12248,130 @@
             {
               "audio_url": "https://www.archive.org/download/raleigh_1607_librivox/raleigh_00_gosse_64kb.mp3",
               "length_ms": 235000,
+              "readers": [
+                "musil"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/raleigh_1607_librivox/raleigh_01_gosse_64kb.mp3",
               "length_ms": 1926000,
+              "readers": [
+                "musil"
+              ],
+              "section_number": 1,
               "start_ms": 235000,
               "title": "I: Youth"
             },
             {
               "audio_url": "https://www.archive.org/download/raleigh_1607_librivox/raleigh_02_gosse_64kb.mp3",
               "length_ms": 3086000,
+              "readers": [
+                "barbara-baker"
+              ],
+              "section_number": 2,
               "start_ms": 2161000,
               "title": "II: At Court"
             },
             {
               "audio_url": "https://www.archive.org/download/raleigh_1607_librivox/raleigh_03_gosse_64kb.mp3",
               "length_ms": 2804000,
+              "readers": [
+                "availle"
+              ],
+              "section_number": 3,
               "start_ms": 5247000,
               "title": "III: In Disgrace"
             },
             {
               "audio_url": "https://www.archive.org/download/raleigh_1607_librivox/raleigh_04_gosse_64kb.mp3",
               "length_ms": 2416000,
+              "readers": [
+                "maryann"
+              ],
+              "section_number": 4,
               "start_ms": 8051000,
               "title": "IV: Guiana"
             },
             {
               "audio_url": "https://www.archive.org/download/raleigh_1607_librivox/raleigh_05_gosse_64kb.mp3",
               "length_ms": 2579000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 5,
               "start_ms": 10467000,
               "title": "V: Cadiz"
             },
             {
               "audio_url": "https://www.archive.org/download/raleigh_1607_librivox/raleigh_06_gosse_64kb.mp3",
               "length_ms": 2902000,
+              "readers": [
+                "tony-oliva"
+              ],
+              "section_number": 6,
               "start_ms": 13046000,
               "title": "VI: Last Days of Elizabeth"
             },
             {
               "audio_url": "https://www.archive.org/download/raleigh_1607_librivox/raleigh_07_gosse_64kb.mp3",
               "length_ms": 1979000,
+              "readers": [
+                "tony-oliva"
+              ],
+              "section_number": 7,
               "start_ms": 15948000,
               "title": "VII: The Trial at Winchester, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/raleigh_1607_librivox/raleigh_08_gosse_64kb.mp3",
               "length_ms": 2187000,
+              "readers": [
+                "tony-oliva"
+              ],
+              "section_number": 8,
               "start_ms": 17927000,
               "title": "VII: The Trial at Winchester, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/raleigh_1607_librivox/raleigh_09_gosse_64kb.mp3",
               "length_ms": 1901000,
+              "readers": [
+                "mark-chulsky"
+              ],
+              "section_number": 9,
               "start_ms": 20114000,
               "title": "VIII: In the Tower, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/raleigh_1607_librivox/raleigh_10_gosse_64kb.mp3",
               "length_ms": 1981000,
+              "readers": [
+                "mark-chulsky"
+              ],
+              "section_number": 10,
               "start_ms": 22015000,
               "title": "VIII: In the Tower, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/raleigh_1607_librivox/raleigh_11_gosse_64kb.mp3",
               "length_ms": 1678000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 11,
               "start_ms": 23996000,
               "title": "IX: The Second Voyage to Guiana"
             },
             {
               "audio_url": "https://www.archive.org/download/raleigh_1607_librivox/raleigh_12_gosse_64kb.mp3",
               "length_ms": 2124000,
+              "readers": [
+                "justin-brett"
+              ],
+              "section_number": 12,
               "start_ms": 25674000,
               "title": "X: The End"
             }
@@ -12328,7 +12380,11 @@
           "cover_url": "https://archive.org/download/raleigh_1607_librivox/raleigh_1607.jpg",
           "id": "musil",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography"
+          ],
           "librivox_id": 4258,
+          "librivox_title": "Raleigh",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/raleigh-by-edmund-gosse/",
@@ -12595,7 +12651,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/ralestoneluck_1311.jpg",
           "id": "gabriel-glenn",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Detective Fiction"
+          ],
           "librivox_id": 5011,
+          "librivox_title": "Ralestone Luck",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/ralestone-luck-by-andre-norton/",

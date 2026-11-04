@@ -1053,7 +1053,11 @@
           "cover_url": "https://archive.org/download/apologia_2204_librivox/apo_2205.jpg",
           "id": "inthedesert",
           "language": "en",
+          "librivox_genres": [
+            "Christianity - Other"
+          ],
           "librivox_id": 17846,
+          "librivox_title": "Apologia",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/apologia-by-john-newton/",
@@ -1172,27 +1176,40 @@
             {
               "audio_url": "https://www.archive.org/download/apologiadesocrates_2511_librivox/apologiadesocrates_00_platon_64kb.mp3",
               "length_ms": 779000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Argumento."
             },
             {
               "audio_url": "https://www.archive.org/download/apologiadesocrates_2511_librivox/apologiadesocrates_01_platon_64kb.mp3",
               "length_ms": 2761000,
+              "section_number": 1,
               "start_ms": 779000,
               "title": "Apología de Sócrates, 1ª parte."
             },
             {
               "audio_url": "https://www.archive.org/download/apologiadesocrates_2511_librivox/apologiadesocrates_02_platon_64kb.mp3",
               "length_ms": 2903000,
+              "section_number": 2,
               "start_ms": 3540000,
               "title": "Apología de Sócrates, 2ª parte."
             }
           ],
           "copyright_year": 1871,
           "cover_url": "https://archive.org/download/apologiadesocrates_2511_librivox/apologiadesocrates_2511.jpg",
+          "credits": [
+            {
+              "person": "patricio-de-azcarate-corral",
+              "role": "translator"
+            }
+          ],
           "id": "ficcionnarrada",
           "language": "es",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)"
+          ],
           "librivox_id": 22100,
+          "librivox_title": "Apología de Sócrates",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/apologia-de-socrates-by-platon/",
@@ -1492,7 +1509,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt6/apologia_provitasua_1101.jpg",
           "id": "billmac",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "Christianity - Other"
+          ],
           "librivox_id": 4525,
+          "librivox_title": "Apologia Pro Vita Sua",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/apologia-pro-vita-sua-by-john-henry-newman/",
@@ -1803,9 +1825,20 @@
           ],
           "copyright_year": 1846,
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt13/Lapologie_Socrate_1112.jpg",
+          "credits": [
+            {
+              "person": "victor-cousin",
+              "role": "translator"
+            }
+          ],
           "id": "leyla",
           "language": "fr",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Ancient"
+          ],
           "librivox_id": 1943,
+          "librivox_title": "Apologie de Socrate",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/lapologie-de-socrate-par-platon/",
@@ -1856,168 +1889,252 @@
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_add_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "alan-davis-drake-1945-2010"
+              ],
               "start_ms": 0,
               "title": "The Apology - Read by ADD"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_am_64kb.mp3",
               "length_ms": 64000,
+              "readers": [
+                "amalor-myrnnyx"
+              ],
               "start_ms": 78000,
               "title": "The Apology - Read by AM"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_c_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "cricket"
+              ],
               "start_ms": 142000,
               "title": "The Apology - Read by C"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_cjrg_64kb.mp3",
               "length_ms": 63000,
+              "readers": [
+                "clarica"
+              ],
               "start_ms": 208000,
               "title": "The Apology - Read by CJRG"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_db_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "delibab"
+              ],
               "start_ms": 271000,
               "title": "The Apology - Read by DB"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_dw_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "doug-wetzel"
+              ],
               "start_ms": 337000,
               "title": "The Apology - Read by DW"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_eb_64kb.mp3",
               "length_ms": 54000,
+              "readers": [
+                "david-best"
+              ],
               "start_ms": 413000,
               "title": "The Apology - Read by EB"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_ehl_64kb.mp3",
               "length_ms": 58000,
+              "readers": [
+                "esther"
+              ],
               "start_ms": 467000,
               "title": "The Apology - Read by EHL"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_ezwa_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "ezwa"
+              ],
               "start_ms": 525000,
               "title": "The Apology - Read by EZWA"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_hd_64kb.mp3",
               "length_ms": 62000,
+              "readers": [
+                "hans-dekker"
+              ],
               "start_ms": 580000,
               "title": "The Apology - Read by HD"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_jag_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "john-gonzalez"
+              ],
               "start_ms": 642000,
               "title": "The Apology - Read by JAG"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_jb1_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "jan-baxter"
+              ],
               "start_ms": 736000,
               "title": "The Apology - Read by JB1"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_jb2_64kb.mp3",
               "length_ms": 63000,
+              "readers": [
+                "jemmablythe"
+              ],
               "start_ms": 802000,
               "title": "The Apology - Read by JB"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_jfg_64kb.mp3",
               "length_ms": 79000,
+              "readers": [
+                "james-gladwin"
+              ],
               "start_ms": 865000,
               "title": "The Apology - Read by JFG"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_jms_64kb.mp3",
               "length_ms": 64000,
+              "readers": [
+                "j-m-smallheer"
+              ],
               "start_ms": 944000,
               "title": "The Apology - Read by JMS"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_jsb1_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "justin-s-barrett"
+              ],
               "start_ms": 1008000,
               "title": "The Apology - Read by JSB"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_jsb2_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "justin-s-barrett"
+              ],
               "start_ms": 1075000,
               "title": "The Apology - Read by JSB"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_kara_64kb.mp3",
               "length_ms": 59000,
+              "readers": [
+                "kara-shallenberg-1969-2023"
+              ],
               "start_ms": 1153000,
               "title": "The Apology - Read by KS"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_kg_64kb.mp3",
               "length_ms": 59000,
+              "readers": [
+                "katie-gibboney"
+              ],
               "start_ms": 1212000,
               "title": "The Apology - Read by KG"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_klh_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "kristin-hughes-1974-2021"
+              ],
               "start_ms": 1271000,
               "title": "The Apology - Read by KLH"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_lah_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 1338000,
               "title": "The Apology - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_ls_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "linsun"
+              ],
               "start_ms": 1406000,
               "title": "The Apology - Read by LS"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_mm_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "mary-mac"
+              ],
               "start_ms": 1463000,
               "title": "The Apology - Read by MM"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_pls_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "paul-santagada"
+              ],
               "start_ms": 1538000,
               "title": "The Apology - Read by PLS"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_pw_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "philippa-willitts"
+              ],
               "start_ms": 1613000,
               "title": "The Apology - Read by PW"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_rs_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "robert-scott"
+              ],
               "start_ms": 1683000,
               "title": "The Apology - Read by RS"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_th_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "tamara-hamilton"
+              ],
               "start_ms": 1774000,
               "title": "The Apology - Read by TH"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_librivox/theapology_emerson_tm_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "teresa-montgomery"
+              ],
               "start_ms": 1840000,
               "title": "The Apology - Read by TM"
             }
@@ -2026,7 +2143,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt12/Apology_1110.jpg",
           "id": "alan-davis-drake-1945-2010",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 1419,
+          "librivox_title": "Apology",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-apology-by-ralph-waldo-emerson/",
@@ -2154,48 +2276,72 @@
             {
               "audio_url": "https://www.archive.org/download/theapology_1406.poem_librivox/apololgy_finch_av_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "amanda-vickery"
+              ],
               "start_ms": 0,
               "title": "The Apology - Read by AV"
             },
             {
               "audio_url": "https://www.archive.org/download/theapology_1406.poem_librivox/apology_finch_dl_64kb.mp3",
               "length_ms": 83000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 73000,
               "title": "The Apology - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/theapology_1406.poem_librivox/apology_finch_jbs_64kb.mp3",
               "length_ms": 86000,
+              "readers": [
+                "jemmablythe"
+              ],
               "start_ms": 156000,
               "title": "The Apology - Read by JBS"
             },
             {
               "audio_url": "https://www.archive.org/download/theapology_1406.poem_librivox/apology_finch_lah_64kb.mp3",
               "length_ms": 88000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 242000,
               "title": "The Apology - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/theapology_1406.poem_librivox/apology_finch_llw_64kb.mp3",
               "length_ms": 102000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 330000,
               "title": "The Apology - Read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/theapology_1406.poem_librivox/apology_finch_mf_64kb.mp3",
               "length_ms": 92000,
+              "readers": [
+                "malcolm-fisher"
+              ],
               "start_ms": 432000,
               "title": "The Apology - Read by MF"
             },
             {
               "audio_url": "https://www.archive.org/download/theapology_1406.poem_librivox/apology_finch_rn_64kb.mp3",
               "length_ms": 103000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 524000,
               "title": "The Apology - Read by RN"
             },
             {
               "audio_url": "https://www.archive.org/download/theapology_1406.poem_librivox/apology_finch_sec_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "sandra-cullum"
+              ],
               "start_ms": 627000,
               "title": "The Apology - Read by SEC"
             }
@@ -2203,7 +2349,11 @@
           "cover_url": "https://archive.org/download/theapology_1406.poem_librivox/apology_finch_1406.jpg",
           "id": "amanda-vickery",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 8935,
+          "librivox_title": "Apology",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-apology-by-anne-kingsmill-finch/",
@@ -2343,60 +2493,90 @@
             {
               "audio_url": "https://www.archive.org/download/apology_forsadness_1103_librivox/apologyforsadness_botta_bm_64kb.mp3",
               "length_ms": 63000,
+              "readers": [
+                "brian-morgan"
+              ],
               "start_ms": 0,
               "title": "An Apology for Sadness - Read by BM"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_forsadness_1103_librivox/apologyforsadness_botta_cd_64kb.mp3",
               "length_ms": 56000,
+              "readers": [
+                "calmdragon"
+              ],
               "start_ms": 63000,
               "title": "An Apology for Sadness - Read by CD"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_forsadness_1103_librivox/apologyforsadness_botta_cnh_64kb.mp3",
               "length_ms": 52000,
+              "readers": [
+                "charlotte-nathalie"
+              ],
               "start_ms": 119000,
               "title": "An Apology for Sadness - Read by CNH"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_forsadness_1103_librivox/apologyforsadness_botta_ghs_64kb.mp3",
               "length_ms": 48000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 171000,
               "title": "An Apology for Sadness - Read by GHS"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_forsadness_1103_librivox/apologyforsadness_botta_jcm_64kb.mp3",
               "length_ms": 48000,
+              "readers": [
+                "jason-mills"
+              ],
               "start_ms": 219000,
               "title": "An Apology for Sadness - Read by JCM"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_forsadness_1103_librivox/apologyforsadness_botta_jm_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "jannie-meisberger"
+              ],
               "start_ms": 267000,
               "title": "An Apology for Sadness - Read by JM"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_forsadness_1103_librivox/apologyforsadness_botta_llw_64kb.mp3",
               "length_ms": 54000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 324000,
               "title": "An Apology for Sadness - Read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_forsadness_1103_librivox/apologyforsadness_botta_lrs_64kb.mp3",
               "length_ms": 58000,
+              "readers": [
+                "liberty-stump"
+              ],
               "start_ms": 378000,
               "title": "An Apology for Sadness - Read by LRS"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_forsadness_1103_librivox/apologyforsadness_botta_nt_64kb.mp3",
               "length_ms": 41000,
+              "readers": [
+                "nichole-thompson"
+              ],
               "start_ms": 436000,
               "title": "An Apology for Sadness - Read by NT"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_forsadness_1103_librivox/apologyforsadness_botta_rn_64kb.mp3",
               "length_ms": 59000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 477000,
               "title": "An Apology for Sadness - Read by RN"
             }
@@ -2404,7 +2584,12 @@
           "copyright_year": 1848,
           "id": "brian-morgan",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 5311,
+          "librivox_title": "Apology for Sadness",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/an-apology-for-sadness-by-anne-lynch-botta/",
@@ -2464,168 +2649,252 @@
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_aps_64kb.mp3",
               "length_ms": 128000,
+              "readers": [
+                "adrian-stephens"
+              ],
               "start_ms": 0,
               "title": "An Apology for the Bottle Volcanic - Read by APS"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_bc_64kb.mp3",
               "length_ms": 107000,
+              "readers": [
+                "brize-c"
+              ],
               "start_ms": 128000,
               "title": "An Apology for the Bottle Volcanic - Read by BC"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_bk_64kb.mp3",
               "length_ms": 134000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 235000,
               "title": "An Apology for the Bottle Volcanic - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_br_64kb.mp3",
               "length_ms": 118000,
+              "readers": [
+                "bryn-roberts"
+              ],
               "start_ms": 369000,
               "title": "An Apology for the Bottle Volcanic - Read by BR"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_clp_64kb.mp3",
               "length_ms": 103000,
+              "readers": [
+                "chris-pyle"
+              ],
               "start_ms": 487000,
               "title": "An Apology for the Bottle Volcanic - Read by CLP"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_dkl_64kb.mp3",
               "length_ms": 122000,
+              "readers": [
+                "de-anna-lee"
+              ],
               "start_ms": 590000,
               "title": "An Apology for the Bottle Volcanic - Read by DKL"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_ik_64kb.mp3",
               "length_ms": 121000,
+              "readers": [
+                "ian-king"
+              ],
               "start_ms": 712000,
               "title": "An Apology for the Bottle Volcanic - Read by IK"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_ikl_64kb.mp3",
               "length_ms": 89000,
+              "readers": [
+                "inkell"
+              ],
               "start_ms": 833000,
               "title": "An Apology for the Bottle Volcanic - Read by IKL"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_khs_64kb.mp3",
               "length_ms": 121000,
+              "readers": [
+                "kimberly-shotwell"
+              ],
               "start_ms": 922000,
               "title": "An Apology for the Bottle Volcanic - Read by KHS"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_ks_64kb.mp3",
               "length_ms": 113000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 1043000,
               "title": "An Apology for the Bottle Volcanic - Read by KS"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_lah_64kb.mp3",
               "length_ms": 112000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 1156000,
               "title": "An Apology for the Bottle Volcanic - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_lcw_64kb.mp3",
               "length_ms": 114000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 1268000,
               "title": "An Apology for the Bottle Volcanic - Read by LCW"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_ls_64kb.mp3",
               "length_ms": 121000,
+              "readers": [
+                "leesalter"
+              ],
               "start_ms": 1382000,
               "title": "An Apology for the Bottle Volcanic - Read by LS"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_mlm_64kb.mp3",
               "length_ms": 134000,
+              "readers": [
+                "mleigh"
+              ],
               "start_ms": 1503000,
               "title": "An Apology for the Bottle Volcanic - Read by MLM"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_ng_64kb.mp3",
               "length_ms": 146000,
+              "readers": [
+                "patrick-randall"
+              ],
               "start_ms": 1637000,
               "title": "An Apology for the Bottle Volcanic - Read by NG"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_njl_64kb.mp3",
               "length_ms": 119000,
+              "readers": [
+                "nicole-j-leboeuf"
+              ],
               "start_ms": 1783000,
               "title": "An Apology for the Bottle Volcanic - Read by NJL"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_plm_64kb.mp3",
               "length_ms": 128000,
+              "readers": [
+                "paula-messina"
+              ],
               "start_ms": 1902000,
               "title": "An Apology for the Bottle Volcanic - Read by PLM"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_qtn_64kb.mp3",
               "length_ms": 108000,
+              "readers": [
+                "quartertone"
+              ],
               "start_ms": 2030000,
               "title": "An Apology for the Bottle Volcanic - Read by QTN"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_reb_64kb.mp3",
               "length_ms": 118000,
+              "readers": [
+                "rob-e-brown"
+              ],
               "start_ms": 2138000,
               "title": "An Apology for the Bottle Volcanic - Read by RED"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_rr_64kb.mp3",
               "length_ms": 129000,
+              "readers": [
+                "redrun"
+              ],
               "start_ms": 2256000,
               "title": "An Apology for the Bottle Volcanic - Read by RR"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_sds_64kb.mp3",
               "length_ms": 102000,
+              "readers": [
+                "stepheather"
+              ],
               "start_ms": 2385000,
               "title": "An Apology for the Bottle Volcanic - Read by SDS"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_sm_64kb.mp3",
               "length_ms": 112000,
+              "readers": [
+                "sarah-mathew"
+              ],
               "start_ms": 2487000,
               "title": "An Apology for the Bottle Volcanic - Read by SM"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_sr_64kb.mp3",
               "length_ms": 104000,
+              "readers": [
+                "s-reeves"
+              ],
               "start_ms": 2599000,
               "title": "An Apology for the Bottle Volcanic - Read by SR"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_ss_64kb.mp3",
               "length_ms": 127000,
+              "readers": [
+                "sunny-swearsky"
+              ],
               "start_ms": 2703000,
               "title": "An Apology for the Bottle Volcanic - Read by SS"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_sw_64kb.mp3",
               "length_ms": 101000,
+              "readers": [
+                "seraphina"
+              ],
               "start_ms": 2830000,
               "title": "An Apology for the Bottle Volcanic - Read by SW"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_tm_64kb.mp3",
               "length_ms": 126000,
+              "readers": [
+                "tom-merritt"
+              ],
               "start_ms": 2931000,
               "title": "An Apology for the Bottle Volcanic - Read by TM"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_twl_64kb.mp3",
               "length_ms": 117000,
+              "readers": [
+                "tiffany-wilson-lillard"
+              ],
               "start_ms": 3057000,
               "title": "An Apology for the Bottle Volcanic - Read by TWL"
             },
             {
               "audio_url": "https://www.archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apology_lindsay_wa_64kb.mp3",
               "length_ms": 114000,
+              "readers": [
+                "winnifred-assmann"
+              ],
               "start_ms": 3174000,
               "title": "An Apology for the Bottle Volcanic - Read by WA"
             }
@@ -2634,7 +2903,11 @@
           "cover_url": "https://archive.org/download/apology_for_the_bottle_volcanic_2302.poem_librivox/apologybottle_2302.jpg",
           "id": "adrian-stephens",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 18887,
+          "librivox_title": "Apology for the Bottle Volcanic",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/an-apology-for-the-bottle-volcanic-by-vachel-lindsay/",
@@ -2713,12 +2986,36 @@
             {
               "audio_url": "https://www.archive.org/download/shamela_1207_librivox/shamela_1_fielding_64kb.mp3",
               "length_ms": 2775000,
+              "readers": [
+                "martin-geeson",
+                "margaret-espaillat",
+                "patti-cunningham",
+                "algy-pug",
+                "herman-roskams",
+                "bob-gonzalez",
+                "kristin-g",
+                "noelbadrian",
+                "chuck-williamson",
+                "april-gonzales"
+              ],
               "start_ms": 0,
               "title": "Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/shamela_1207_librivox/shamela_2_fielding_64kb.mp3",
               "length_ms": 3133000,
+              "readers": [
+                "martin-geeson",
+                "margaret-espaillat",
+                "patti-cunningham",
+                "algy-pug",
+                "herman-roskams",
+                "bob-gonzalez",
+                "kristin-g",
+                "noelbadrian",
+                "chuck-williamson",
+                "april-gonzales"
+              ],
               "start_ms": 2775000,
               "title": "Part 2"
             }
@@ -2727,7 +3024,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt26/Apology_Life_Shamela_Andrews_1212.jpg",
           "id": "martin-geeson",
           "language": "en",
+          "librivox_genres": [
+            "Dramatic Readings",
+            "Humorous Fiction",
+            "Romance"
+          ],
           "librivox_id": 6418,
+          "librivox_title": "Apology for the Life of Mrs. Shamela Andrews (Dramatic Reading)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/an-apology-for-the-life-of-mrs-shamela-andrews-by-henry-fielding/",
@@ -2806,9 +3109,20 @@
           ],
           "copyright_year": 1903,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt29/Apology_1302.jpg",
+          "credits": [
+            {
+              "person": "benjamin-jowett",
+              "role": "translator"
+            }
+          ],
           "id": "bob-neufeld",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Ancient"
+          ],
           "librivox_id": 6055,
+          "librivox_title": "Apology of Socrates",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/apology-by-plato/",
@@ -2861,9 +3175,20 @@
           ],
           "copyright_year": 1909,
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt7/apology_of_socrates_1101.jpg",
+          "credits": [
+            {
+              "person": "benjamin-jowett",
+              "role": "translator"
+            }
+          ],
           "id": "fr-richard-zeile-of-detroit",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Ancient"
+          ],
           "librivox_id": 1268,
+          "librivox_title": "Apology of Socrates (version 3)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-apology-of-socrates-by-plato/",
@@ -2903,9 +3228,20 @@
             }
           ],
           "cover_url": "https://archive.org/download/apologyversion2_1412_librivox/Apology_1501.jpg",
+          "credits": [
+            {
+              "person": "benjamin-jowett",
+              "role": "translator"
+            }
+          ],
           "id": "phil-chenevert",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Ancient"
+          ],
           "librivox_id": 9448,
+          "librivox_title": "Apology of Socrates (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/apology-version-2-by-plato/",
@@ -3023,9 +3359,19 @@
           ],
           "copyright_year": 1842,
           "cover_url": "https://archive.org/download/apology_2012_librivox/apology_2012.jpg",
+          "credits": [
+            {
+              "person": "charles-dodgson",
+              "role": "translator"
+            }
+          ],
           "id": "david-ronald",
           "language": "en",
+          "librivox_genres": [
+            "Christianity - Other"
+          ],
           "librivox_id": 15897,
+          "librivox_title": "Apology",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/apology-by-tertullian/",
@@ -3768,258 +4114,301 @@
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_00_arctander_64kb.mp3",
               "length_ms": 318000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_01_arctander_64kb.mp3",
               "length_ms": 373000,
+              "section_number": 1,
               "start_ms": 318000,
               "title": "The Call Of the Lord"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_02_arctander_64kb.mp3",
               "length_ms": 781000,
+              "section_number": 2,
               "start_ms": 691000,
               "title": "The Boy the Father of the Man"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_03_arctander_64kb.mp3",
               "length_ms": 424000,
+              "section_number": 3,
               "start_ms": 1472000,
               "title": "\"Speak Lord, Thy Servant Heareth\""
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_04_arctander_64kb.mp3",
               "length_ms": 687000,
+              "section_number": 4,
               "start_ms": 1896000,
               "title": "A New Mission Field"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_05_arctander_64kb.mp3",
               "length_ms": 322000,
+              "section_number": 5,
               "start_ms": 2583000,
               "title": "Aboard the Man-of-War"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_06_arctander_64kb.mp3",
               "length_ms": 836000,
+              "section_number": 6,
               "start_ms": 2905000,
               "title": "The Inside Passage"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_07_arctander_64kb.mp3",
               "length_ms": 1041000,
+              "section_number": 7,
               "start_ms": 3741000,
               "title": "At the Fort"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_08_arctander_64kb.mp3",
               "length_ms": 516000,
+              "section_number": 8,
               "start_ms": 4782000,
               "title": "The Tsimsheans"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_09_arctander_64kb.mp3",
               "length_ms": 654000,
+              "section_number": 9,
               "start_ms": 5298000,
               "title": "Mode of Living"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_10_arctander_64kb.mp3",
               "length_ms": 1294000,
+              "section_number": 10,
               "start_ms": 5952000,
               "title": "Peculiar Customs"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_11_arctander_64kb.mp3",
               "length_ms": 1044000,
+              "section_number": 11,
               "start_ms": 7246000,
               "title": "The Totems and Clubs"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_12_arctander_64kb.mp3",
               "length_ms": 962000,
+              "section_number": 12,
               "start_ms": 8290000,
               "title": "The Medicine-Men"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_13_arctander_64kb.mp3",
               "length_ms": 706000,
+              "section_number": 13,
               "start_ms": 9252000,
               "title": "The Religion of the Tsimsheans"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_14_arctander_64kb.mp3",
               "length_ms": 857000,
+              "section_number": 14,
               "start_ms": 9958000,
               "title": "The Son of the Heavenly Chief"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_15_arctander_64kb.mp3",
               "length_ms": 176000,
+              "section_number": 15,
               "start_ms": 10815000,
               "title": "Traimshum, the Tsimshean Devil"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_16_arctander_64kb.mp3",
               "length_ms": 358000,
+              "section_number": 16,
               "start_ms": 10991000,
               "title": "Behind the Walls"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_17_arctander_64kb.mp3",
               "length_ms": 850000,
+              "section_number": 17,
               "start_ms": 11349000,
               "title": "The First Message"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_18_arctander_64kb.mp3",
               "length_ms": 716000,
+              "section_number": 18,
               "start_ms": 12199000,
               "title": "The Devil Abroad"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_19_arctander_64kb.mp3",
               "length_ms": 1418000,
+              "section_number": 19,
               "start_ms": 12915000,
               "title": "First Fruits"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_20_arctander_64kb.mp3",
               "length_ms": 687000,
+              "section_number": 20,
               "start_ms": 14333000,
               "title": "A Christian Village"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_21_arctander_64kb.mp3",
               "length_ms": 764000,
+              "section_number": 21,
               "start_ms": 15020000,
               "title": "Legaic"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_22_arctander_64kb.mp3",
               "length_ms": 1167000,
+              "section_number": 22,
               "start_ms": 15784000,
               "title": "Onward and Upward"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_23_arctander_64kb.mp3",
               "length_ms": 1075000,
+              "section_number": 23,
               "start_ms": 16951000,
               "title": "Temporal Advancement"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_24_arctander_64kb.mp3",
               "length_ms": 1230000,
+              "section_number": 24,
               "start_ms": 18026000,
               "title": "Interesting Incidents"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_25_arctander_64kb.mp3",
               "length_ms": 464000,
+              "section_number": 25,
               "start_ms": 19256000,
               "title": "How Mr. Duncan Became a Judge"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_26_arctander_64kb.mp3",
               "length_ms": 1423000,
+              "section_number": 26,
               "start_ms": 19720000,
               "title": "From Judge Duncan's Docket"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_27_arctander_64kb.mp3",
               "length_ms": 1077000,
+              "section_number": 27,
               "start_ms": 21143000,
               "title": "Back in Old England"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_28_arctander_64kb.mp3",
               "length_ms": 967000,
+              "section_number": 28,
               "start_ms": 22220000,
               "title": "Home Again"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_29_arctander_64kb.mp3",
               "length_ms": 1543000,
+              "section_number": 29,
               "start_ms": 23187000,
               "title": "Notable Visitors"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_30_arctander_64kb.mp3",
               "length_ms": 1161000,
+              "section_number": 30,
               "start_ms": 24730000,
               "title": "Trouble Brewing"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_31_arctander_64kb.mp3",
               "length_ms": 679000,
+              "section_number": 31,
               "start_ms": 25891000,
               "title": "The Rupture"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_32_arctander_64kb.mp3",
               "length_ms": 1185000,
+              "section_number": 32,
               "start_ms": 26570000,
               "title": "The Serpent"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_33_arctander_64kb.mp3",
               "length_ms": 782000,
+              "section_number": 33,
               "start_ms": 27755000,
               "title": "The Last Blow"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_34_arctander_64kb.mp3",
               "length_ms": 1155000,
+              "section_number": 34,
               "start_ms": 28537000,
               "title": "The New Home"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_35_arctander_64kb.mp3",
               "length_ms": 707000,
+              "section_number": 35,
               "start_ms": 29692000,
               "title": "The Pioneers"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_36_arctander_64kb.mp3",
               "length_ms": 704000,
+              "section_number": 36,
               "start_ms": 30399000,
               "title": "A Day at Metlakahtla"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_37_arctander_64kb.mp3",
               "length_ms": 703000,
+              "section_number": 37,
               "start_ms": 31103000,
               "title": "Leaves from Mr. Duncan's Diary"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_38_arctander_64kb.mp3",
               "length_ms": 2091000,
+              "section_number": 38,
               "start_ms": 31806000,
               "title": "Some Metlakahtla History"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_39_arctander_64kb.mp3",
               "length_ms": 1766000,
+              "section_number": 39,
               "start_ms": 33897000,
               "title": "Flotsam and Jetsam"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_40_arctander_64kb.mp3",
               "length_ms": 917000,
+              "section_number": 40,
               "start_ms": 35663000,
               "title": "The Metlakahtla Industries"
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_41_arctander_64kb.mp3",
               "length_ms": 1237000,
+              "section_number": 41,
               "start_ms": 36580000,
               "title": "The \"Christian Church\""
             },
             {
               "audio_url": "https://www.archive.org/download/apostle_of_alaska_ps_1810_librivox/apostleofalaska_42_arctander_64kb.mp3",
               "length_ms": 751000,
+              "section_number": 42,
               "start_ms": 37817000,
               "title": "The Grand Old Man"
             }
@@ -4028,7 +4417,12 @@
           "cover_url": "https://archive.org/download/apostle_of_alaska_ps_1810_librivox/apostle_alaska_1811.jpg",
           "id": "phil-schempf",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Biography & Autobiography"
+          ],
           "librivox_id": 12953,
+          "librivox_title": "Apostle of Alaska: The Story of William Duncan of Metlakahtla",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-apostle-of-alaska-the-story-of-william-duncan-of-metlakahtla-by-john-w-arctander/",
@@ -9695,144 +10089,216 @@
             {
               "audio_url": "https://www.archive.org/download/appeal_1202_librivox/appeal_bronte_cc_64kb.mp3",
               "length_ms": 44000,
+              "readers": [
+                "chris-caron"
+              ],
               "start_ms": 0,
               "title": "Appeal - Read by CC"
             },
             {
               "audio_url": "https://www.archive.org/download/appeal_1202_librivox/appeal_bronte_ch_64kb.mp3",
               "length_ms": 41000,
+              "readers": [
+                "carmen-h"
+              ],
               "start_ms": 44000,
               "title": "Appeal - Read by CH"
             },
             {
               "audio_url": "https://www.archive.org/download/appeal_1202_librivox/appeal_bronte_dl_64kb.mp3",
               "length_ms": 47000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 85000,
               "title": "Appeal - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/appeal_1202_librivox/appeal_bronte_er_64kb.mp3",
               "length_ms": 42000,
+              "readers": [
+                "elise-randall"
+              ],
               "start_ms": 132000,
               "title": "Appeal - Read by ER"
             },
             {
               "audio_url": "https://www.archive.org/download/appeal_1202_librivox/appeal_bronte_fs_64kb.mp3",
               "length_ms": 49000,
+              "readers": [
+                "fshort"
+              ],
               "start_ms": 174000,
               "title": "Appeal - Read by FS"
             },
             {
               "audio_url": "https://www.archive.org/download/appeal_1202_librivox/appeal_bronte_gc_64kb.mp3",
               "length_ms": 47000,
+              "readers": [
+                "snapdragon"
+              ],
               "start_ms": 223000,
               "title": "Appeal - Read by GC"
             },
             {
               "audio_url": "https://www.archive.org/download/appeal_1202_librivox/appeal_bronte_gg_64kb.mp3",
               "length_ms": 41000,
+              "readers": [
+                "threegmgs"
+              ],
               "start_ms": 270000,
               "title": "Appeal - Read by GG"
             },
             {
               "audio_url": "https://www.archive.org/download/appeal_1202_librivox/appeal_bronte_ghs_64kb.mp3",
               "length_ms": 48000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 311000,
               "title": "Appeal - Read by GHS"
             },
             {
               "audio_url": "https://www.archive.org/download/appeal_1202_librivox/appeal_bronte_hs_64kb.mp3",
               "length_ms": 56000,
+              "readers": [
+                "harvey-spurr"
+              ],
               "start_ms": 359000,
               "title": "Appeal - Read by HS"
             },
             {
               "audio_url": "https://www.archive.org/download/appeal_1202_librivox/appeal_bronte_jfs_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "john-schuurman"
+              ],
               "start_ms": 415000,
               "title": "Appeal - Read by JFS"
             },
             {
               "audio_url": "https://www.archive.org/download/appeal_1202_librivox/appeal_bronte_kg_64kb.mp3",
               "length_ms": 48000,
+              "readers": [
+                "kristin-g"
+              ],
               "start_ms": 470000,
               "title": "Appeal - Read by KG"
             },
             {
               "audio_url": "https://www.archive.org/download/appeal_1202_librivox/appeal_bronte_lah_64kb.mp3",
               "length_ms": 49000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 518000,
               "title": "Appeal - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/appeal_1202_librivox/appeal_bronte_lkp_64kb.mp3",
               "length_ms": 61000,
+              "readers": [
+                "lucy-perry"
+              ],
               "start_ms": 567000,
               "title": "Appeal - Read by LKP"
             },
             {
               "audio_url": "https://www.archive.org/download/appeal_1202_librivox/appeal_bronte_mg_64kb.mp3",
               "length_ms": 60000,
+              "readers": [
+                "martin-geeson"
+              ],
               "start_ms": 628000,
               "title": "Appeal - Read by MG"
             },
             {
               "audio_url": "https://www.archive.org/download/appeal_1202_librivox/appeal_bronte_mtd_64kb.mp3",
               "length_ms": 42000,
+              "readers": [
+                "michael-dalling"
+              ],
               "start_ms": 688000,
               "title": "Appeal - Read by MTD"
             },
             {
               "audio_url": "https://www.archive.org/download/appeal_1202_librivox/appeal_bronte_nb_64kb.mp3",
               "length_ms": 60000,
+              "readers": [
+                "nbvoices"
+              ],
               "start_ms": 730000,
               "title": "Appeal - Read by NB"
             },
             {
               "audio_url": "https://www.archive.org/download/appeal_1202_librivox/appeal_bronte_nlb_64kb.mp3",
               "length_ms": 50000,
+              "readers": [
+                "noelbadrian"
+              ],
               "start_ms": 790000,
               "title": "Appeal - Read by NLB"
             },
             {
               "audio_url": "https://www.archive.org/download/appeal_1202_librivox/appeal_bronte_ref_64kb.mp3",
               "length_ms": 52000,
+              "readers": [
+                "rhonda-federman"
+              ],
               "start_ms": 840000,
               "title": "Appeal - Read by REF"
             },
             {
               "audio_url": "https://www.archive.org/download/appeal_1202_librivox/appeal_bronte_rg_64kb.mp3",
               "length_ms": 52000,
+              "readers": [
+                "ruth-golding"
+              ],
               "start_ms": 892000,
               "title": "Appeal - Read by RG"
             },
             {
               "audio_url": "https://www.archive.org/download/appeal_1202_librivox/appeal_bronte_rn_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 944000,
               "title": "Appeal - Read by RN"
             },
             {
               "audio_url": "https://www.archive.org/download/appeal_1202_librivox/appeal_bronte_um_64kb.mp3",
               "length_ms": 43000,
+              "readers": [
+                "ekzemplaro"
+              ],
               "start_ms": 1001000,
               "title": "Appeal - Read by UM"
             },
             {
               "audio_url": "https://www.archive.org/download/appeal_1202_librivox/appeal_bronte_vk_64kb.mp3",
               "length_ms": 34000,
+              "readers": [
+                "verity-kendall"
+              ],
               "start_ms": 1044000,
               "title": "Appeal - Read by VK"
             },
             {
               "audio_url": "https://www.archive.org/download/appeal_1202_librivox/appeal_bronte_ws_64kb.mp3",
               "length_ms": 37000,
+              "readers": [
+                "kevin-chang"
+              ],
               "start_ms": 1078000,
               "title": "Appeal - Read by WS"
             },
             {
               "audio_url": "https://www.archive.org/download/appeal_1202_librivox/appeal_bronte_xyb_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "pascal-ramseier"
+              ],
               "start_ms": 1115000,
               "title": "Appeal - Read by PR"
             }
@@ -9841,7 +10307,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt22/Appeal_1210.jpg",
           "id": "chris-caron",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 6343,
+          "librivox_title": "Appeal",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/appeal-by-anne-bronte/",
@@ -9912,30 +10383,45 @@
             {
               "audio_url": "https://www.archive.org/download/anappealtothereligionjusticeandhumanity_2510_librivox/appealtoreligionjusticeandhumanity_01_wilberforce_64kb.mp3",
               "length_ms": 1302000,
+              "readers": [
+                "josephterry2033"
+              ],
               "start_ms": 0,
               "title": "Section 1"
             },
             {
               "audio_url": "https://www.archive.org/download/anappealtothereligionjusticeandhumanity_2510_librivox/appealtoreligionjusticeandhumanity_02_wilberforce_64kb.mp3",
               "length_ms": 1514000,
+              "readers": [
+                "jessie-percival"
+              ],
               "start_ms": 1302000,
               "title": "Section 2"
             },
             {
               "audio_url": "https://www.archive.org/download/anappealtothereligionjusticeandhumanity_2510_librivox/appealtoreligionjusticeandhumanity_03_wilberforce_64kb.mp3",
               "length_ms": 1802000,
+              "readers": [
+                "robert-h-cherny"
+              ],
               "start_ms": 2816000,
               "title": "Section 3"
             },
             {
               "audio_url": "https://www.archive.org/download/anappealtothereligionjusticeandhumanity_2510_librivox/appealtoreligionjusticeandhumanity_04_wilberforce_64kb.mp3",
               "length_ms": 1930000,
+              "readers": [
+                "robert-h-cherny"
+              ],
               "start_ms": 4618000,
               "title": "Section 4"
             },
             {
               "audio_url": "https://www.archive.org/download/anappealtothereligionjusticeandhumanity_2510_librivox/appealtoreligionjusticeandhumanity_05_wilberforce_64kb.mp3",
               "length_ms": 1647000,
+              "readers": [
+                "robert-h-cherny"
+              ],
               "start_ms": 6548000,
               "title": "Section 5"
             }
@@ -9944,7 +10430,11 @@
           "cover_url": "https://archive.org/download/anappealtothereligionjusticeandhumanity_2510_librivox/appeal_religion_2510.jpg",
           "id": "josephterry2033",
           "language": "en",
+          "librivox_genres": [
+            "Modern (19th C)"
+          ],
           "librivox_id": 21744,
+          "librivox_title": "Appeal to the Religion, Justice, and Humanity of the Inhabitants of the British Empire, in behalf of the Negro Slaves in the West Indies",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/an-appeal-to-the-religion-justice-and-humanity-of-the-inhabitants-of-the-british-empire/",

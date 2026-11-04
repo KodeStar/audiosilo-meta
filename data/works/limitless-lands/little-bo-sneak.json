@@ -950,7 +950,12 @@
           "cover_url": "https://archive.org/download/littlebookforalittlecook_1505_librivox/little_book_for_a_little_cook_1505.jpg",
           "id": "rosslyn-carlyle",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction",
+            "General"
+          ],
           "librivox_id": 9905,
+          "librivox_title": "Little Book for a Little Cook",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-little-book-for-a-little-cook-by-l-p-hubbard/",
@@ -1033,7 +1038,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt18/little_1205.jpg",
           "id": "david-wales",
           "language": "en",
+          "librivox_genres": [
+            "Short works"
+          ],
           "librivox_id": 6616,
+          "librivox_title": "Little Book of Christmas",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-little-book-of-christmas-by-john-kendrick-bangs/",
@@ -1084,132 +1093,220 @@
             {
               "audio_url": "https://www.archive.org/download/profitable_tales_1701_librivox/profitabletales_00_field_64kb.mp3",
               "length_ms": 128000,
+              "readers": [
+                "kangaroo"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/profitable_tales_1701_librivox/profitabletales_01_field_64kb.mp3",
               "length_ms": 713000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 1,
               "start_ms": 128000,
               "title": "The First Christmas Tree"
             },
             {
               "audio_url": "https://www.archive.org/download/profitable_tales_1701_librivox/profitabletales_02_field_64kb.mp3",
               "length_ms": 1089000,
+              "readers": [
+                "diana-schmidt"
+              ],
+              "section_number": 2,
               "start_ms": 841000,
               "title": "The Symbol and the Saint"
             },
             {
               "audio_url": "https://www.archive.org/download/profitable_tales_1701_librivox/profitabletales_03_field_64kb.mp3",
               "length_ms": 1162000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 3,
               "start_ms": 1930000,
               "title": "The Coming of the Prince"
             },
             {
               "audio_url": "https://www.archive.org/download/profitable_tales_1701_librivox/profitabletales_04_field_64kb.mp3",
               "length_ms": 2164000,
+              "readers": [
+                "thestorygirl"
+              ],
+              "section_number": 4,
               "start_ms": 3092000,
               "title": "The Mouse and the Moonbeam"
             },
             {
               "audio_url": "https://www.archive.org/download/profitable_tales_1701_librivox/profitabletales_05_field_64kb.mp3",
               "length_ms": 585000,
+              "readers": [
+                "debk"
+              ],
+              "section_number": 5,
               "start_ms": 5256000,
               "title": "The Divell's Chrystmass"
             },
             {
               "audio_url": "https://www.archive.org/download/profitable_tales_1701_librivox/profitabletales_06_field_64kb.mp3",
               "length_ms": 470000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 6,
               "start_ms": 5841000,
               "title": "The Mountain and the Sea"
             },
             {
               "audio_url": "https://www.archive.org/download/profitable_tales_1701_librivox/profitabletales_07_field_64kb.mp3",
               "length_ms": 649000,
+              "readers": [
+                "thestorygirl"
+              ],
+              "section_number": 7,
               "start_ms": 6311000,
               "title": "The Robin and the Violet"
             },
             {
               "audio_url": "https://www.archive.org/download/profitable_tales_1701_librivox/profitabletales_08_field_64kb.mp3",
               "length_ms": 424000,
+              "readers": [
+                "debk"
+              ],
+              "section_number": 8,
               "start_ms": 6960000,
               "title": "The Oak-Tree and the Ivy"
             },
             {
               "audio_url": "https://www.archive.org/download/profitable_tales_1701_librivox/profitabletales_09_field_64kb.mp3",
               "length_ms": 1278000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 9,
               "start_ms": 7384000,
               "title": "Margaret: a Pearl"
             },
             {
               "audio_url": "https://www.archive.org/download/profitable_tales_1701_librivox/profitabletales_10_field_64kb.mp3",
               "length_ms": 570000,
+              "readers": [
+                "markman"
+              ],
+              "section_number": 10,
               "start_ms": 8662000,
               "title": "The Springtime"
             },
             {
               "audio_url": "https://www.archive.org/download/profitable_tales_1701_librivox/profitabletales_11_field_64kb.mp3",
               "length_ms": 478000,
+              "readers": [
+                "hri"
+              ],
+              "section_number": 11,
               "start_ms": 9232000,
               "title": "Rodolph and his King"
             },
             {
               "audio_url": "https://www.archive.org/download/profitable_tales_1701_librivox/profitabletales_12_field_64kb.mp3",
               "length_ms": 667000,
+              "readers": [
+                "jennifer-fournier"
+              ],
+              "section_number": 12,
               "start_ms": 9710000,
               "title": "The Hampshire Hills"
             },
             {
               "audio_url": "https://www.archive.org/download/profitable_tales_1701_librivox/profitabletales_13_field_64kb.mp3",
               "length_ms": 1198000,
+              "readers": [
+                "tom-penn"
+              ],
+              "section_number": 13,
               "start_ms": 10377000,
               "title": "Ezra's Thanksgivin' Out West"
             },
             {
               "audio_url": "https://www.archive.org/download/profitable_tales_1701_librivox/profitabletales_14_field_64kb.mp3",
               "length_ms": 542000,
+              "readers": [
+                "deon-gines"
+              ],
+              "section_number": 14,
               "start_ms": 11575000,
               "title": "Ludwig and Eloise"
             },
             {
               "audio_url": "https://www.archive.org/download/profitable_tales_1701_librivox/profitabletales_15_field_64kb.mp3",
               "length_ms": 1243000,
+              "readers": [
+                "kate-follis"
+              ],
+              "section_number": 15,
               "start_ms": 12117000,
               "title": "Fido's Little Friend"
             },
             {
               "audio_url": "https://www.archive.org/download/profitable_tales_1701_librivox/profitabletales_16_field_64kb.mp3",
               "length_ms": 479000,
+              "readers": [
+                "tom-penn"
+              ],
+              "section_number": 16,
               "start_ms": 13360000,
               "title": "The Old Man"
             },
             {
               "audio_url": "https://www.archive.org/download/profitable_tales_1701_librivox/profitabletales_17_field_64kb.mp3",
               "length_ms": 600000,
+              "readers": [
+                "deon-gines"
+              ],
+              "section_number": 17,
               "start_ms": 13839000,
               "title": "Bill, the Lokil Editor"
             },
             {
               "audio_url": "https://www.archive.org/download/profitable_tales_1701_librivox/profitabletales_18_field_64kb.mp3",
               "length_ms": 682000,
+              "readers": [
+                "deon-gines"
+              ],
+              "section_number": 18,
               "start_ms": 14439000,
               "title": "The Little Yaller baby"
             },
             {
               "audio_url": "https://www.archive.org/download/profitable_tales_1701_librivox/profitabletales_19_field_64kb.mp3",
               "length_ms": 743000,
+              "readers": [
+                "tom-penn"
+              ],
+              "section_number": 19,
               "start_ms": 15121000,
               "title": "The Cyclopeedy"
             },
             {
               "audio_url": "https://www.archive.org/download/profitable_tales_1701_librivox/profitabletales_20_field_64kb.mp3",
               "length_ms": 686000,
+              "readers": [
+                "phil-schempf"
+              ],
+              "section_number": 20,
               "start_ms": 15864000,
               "title": "Dock Stebbins"
             },
             {
               "audio_url": "https://www.archive.org/download/profitable_tales_1701_librivox/profitabletales_21_field_64kb.mp3",
               "length_ms": 1144000,
+              "readers": [
+                "diana-schmidt"
+              ],
+              "section_number": 21,
               "start_ms": 16550000,
               "title": "The Fairies of Pesth"
             }
@@ -1218,7 +1315,11 @@
           "cover_url": "https://archive.org/download/profitable_tales_1701_librivox/little_book_profitable_tales_1701.jpg",
           "id": "kangaroo",
           "language": "en",
+          "librivox_genres": [
+            "Short works"
+          ],
           "librivox_id": 11317,
+          "librivox_title": "Little Book of Profitable Tales",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-little-book-of-profitable-tales/",
@@ -1281,90 +1382,135 @@
             {
               "audio_url": "https://www.archive.org/download/stfrancishisbrethren_1912_librivox/littlebookstfrancis_01_wilmotbuxton_64kb.mp3",
               "length_ms": 405000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 0,
               "title": "The Story of St. Francis Himself"
             },
             {
               "audio_url": "https://www.archive.org/download/stfrancishisbrethren_1912_librivox/littlebookstfrancis_02_wilmotbuxton_64kb.mp3",
               "length_ms": 762000,
+              "readers": [
+                "susan-morin"
+              ],
               "start_ms": 405000,
               "title": "The Story of How St. Francis Became Poor for the Love of Christ"
             },
             {
               "audio_url": "https://www.archive.org/download/stfrancishisbrethren_1912_librivox/littlebookstfrancis_03_wilmotbuxton_64kb.mp3",
               "length_ms": 302000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 1167000,
               "title": "The Story of How St. Francis Began His Building"
             },
             {
               "audio_url": "https://www.archive.org/download/stfrancishisbrethren_1912_librivox/littlebookstfrancis_04_wilmotbuxton_64kb.mp3",
               "length_ms": 457000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 1469000,
               "title": "The Story of Brother Bernard and His Sack of Money"
             },
             {
               "audio_url": "https://www.archive.org/download/stfrancishisbrethren_1912_librivox/littlebookstfrancis_05_wilmotbuxton_64kb.mp3",
               "length_ms": 455000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 1926000,
               "title": "The Story of the Pride of Brother Elias"
             },
             {
               "audio_url": "https://www.archive.org/download/stfrancishisbrethren_1912_librivox/littlebookstfrancis_06_wilmotbuxton_64kb.mp3",
               "length_ms": 459000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 2381000,
               "title": "The Story of How St. Francis Converted the Wolf of Gubbio"
             },
             {
               "audio_url": "https://www.archive.org/download/stfrancishisbrethren_1912_librivox/littlebookstfrancis_07_wilmotbuxton_64kb.mp3",
               "length_ms": 177000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 2840000,
               "title": "The Story of the Wild Turtle-Doves"
             },
             {
               "audio_url": "https://www.archive.org/download/stfrancishisbrethren_1912_librivox/littlebookstfrancis_08_wilmotbuxton_64kb.mp3",
               "length_ms": 403000,
+              "readers": [
+                "susan-morin"
+              ],
               "start_ms": 3017000,
               "title": "How St. Francis Taught Brother Leo the Secret of Perfect Joy"
             },
             {
               "audio_url": "https://www.archive.org/download/stfrancishisbrethren_1912_librivox/littlebookstfrancis_09_wilmotbuxton_64kb.mp3",
               "length_ms": 307000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 3420000,
               "title": "The Story of How St. Francis Preached to the Birds"
             },
             {
               "audio_url": "https://www.archive.org/download/stfrancishisbrethren_1912_librivox/littlebookstfrancis_10_wilmotbuxton_64kb.mp3",
               "length_ms": 446000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 3727000,
               "title": "The Story of the Vineyard of Rietl"
             },
             {
               "audio_url": "https://www.archive.org/download/stfrancishisbrethren_1912_librivox/littlebookstfrancis_11_wilmotbuxton_64kb.mp3",
               "length_ms": 444000,
+              "readers": [
+                "susan-morin"
+              ],
               "start_ms": 4173000,
               "title": "The Story of How St. Anthony Preached to the Fishes"
             },
             {
               "audio_url": "https://www.archive.org/download/stfrancishisbrethren_1912_librivox/littlebookstfrancis_12_wilmotbuxton_64kb.mp3",
               "length_ms": 480000,
+              "readers": [
+                "susan-morin"
+              ],
               "start_ms": 4617000,
               "title": "The Story of St. Francis and the Sultan"
             },
             {
               "audio_url": "https://www.archive.org/download/stfrancishisbrethren_1912_librivox/littlebookstfrancis_13_wilmotbuxton_64kb.mp3",
               "length_ms": 368000,
+              "readers": [
+                "kristine-bekere"
+              ],
               "start_ms": 5097000,
               "title": "The Story of How the Birds Welcomed St. Francis"
             },
             {
               "audio_url": "https://www.archive.org/download/stfrancishisbrethren_1912_librivox/littlebookstfrancis_14_wilmotbuxton_64kb.mp3",
               "length_ms": 450000,
+              "readers": [
+                "kristine-bekere"
+              ],
               "start_ms": 5465000,
               "title": "The Story of How St. Francis Received the Holy Marks"
             },
             {
               "audio_url": "https://www.archive.org/download/stfrancishisbrethren_1912_librivox/littlebookstfrancis_15_wilmotbuxton_64kb.mp3",
               "length_ms": 188000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 5915000,
               "title": "The Story of the Passing of St. Francis"
             }
@@ -1373,7 +1519,11 @@
           "cover_url": "https://archive.org/download/stfrancishisbrethren_1912_librivox/stfrancis_1912.jpg",
           "id": "larry-wilson",
           "language": "en",
+          "librivox_genres": [
+            "Christianity - Biographies"
+          ],
           "librivox_id": 14532,
+          "librivox_title": "Little Book of St. Francis & His Brethren",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-little-book-of-st-francis-his-brethren-by-e-m-wilmot-buxton/",
@@ -2168,90 +2318,135 @@
             {
               "audio_url": "https://www.archive.org/download/littleboyblue_2511.poem_librivox/littleboyblue_field_bk_64kb.mp3",
               "length_ms": 104000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 0,
               "title": "Little Boy Blue - read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/littleboyblue_2511.poem_librivox/littleboyblue_field_bwc_64kb.mp3",
               "length_ms": 84000,
+              "readers": [
+                "beeswaxcandle"
+              ],
               "start_ms": 104000,
               "title": "Little Boy Blue - read by BWC"
             },
             {
               "audio_url": "https://www.archive.org/download/littleboyblue_2511.poem_librivox/littleboyblue_field_dl_64kb.mp3",
               "length_ms": 103000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 188000,
               "title": "Little Boy Blue - read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/littleboyblue_2511.poem_librivox/littleboyblue_field_dls_64kb.mp3",
               "length_ms": 97000,
+              "readers": [
+                "leesalter"
+              ],
               "start_ms": 291000,
               "title": "Little Boy Blue - read by DLS"
             },
             {
               "audio_url": "https://www.archive.org/download/littleboyblue_2511.poem_librivox/littleboyblue_field_gln_64kb.mp3",
               "length_ms": 105000,
+              "readers": [
+                "garth-burton"
+              ],
               "start_ms": 388000,
               "title": "Little Boy Blue - read by GLN"
             },
             {
               "audio_url": "https://www.archive.org/download/littleboyblue_2511.poem_librivox/littleboyblue_field_jmj_64kb.mp3",
               "length_ms": 98000,
+              "readers": [
+                "tucker-mj"
+              ],
               "start_ms": 493000,
               "title": "Little Boy Blue - read by JMJ"
             },
             {
               "audio_url": "https://www.archive.org/download/littleboyblue_2511.poem_librivox/littleboyblue_field_lah_64kb.mp3",
               "length_ms": 85000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 591000,
               "title": "Little Boy Blue - read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/littleboyblue_2511.poem_librivox/littleboyblue_field_lcw_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 676000,
               "title": "Little Boy Blue - read by LCW"
             },
             {
               "audio_url": "https://www.archive.org/download/littleboyblue_2511.poem_librivox/littleboyblue_field_pfs_64kb.mp3",
               "length_ms": 89000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 767000,
               "title": "Little Boy Blue - read by PFS"
             },
             {
               "audio_url": "https://www.archive.org/download/littleboyblue_2511.poem_librivox/littleboyblue_field_pg_64kb.mp3",
               "length_ms": 88000,
+              "readers": [
+                "preet"
+              ],
               "start_ms": 856000,
               "title": "Little Boy Blue - read by PG"
             },
             {
               "audio_url": "https://www.archive.org/download/littleboyblue_2511.poem_librivox/littleboyblue_field_slm_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "stacey-malcolm"
+              ],
               "start_ms": 944000,
               "title": "Little Boy Blue - read by SLM"
             },
             {
               "audio_url": "https://www.archive.org/download/littleboyblue_2511.poem_librivox/littleboyblue_field_sp_64kb.mp3",
               "length_ms": 87000,
+              "readers": [
+                "shrimpphish"
+              ],
               "start_ms": 1024000,
               "title": "Little Boy Blue - read by SP"
             },
             {
               "audio_url": "https://www.archive.org/download/littleboyblue_2511.poem_librivox/littleboyblue_field_vls_64kb.mp3",
               "length_ms": 88000,
+              "readers": [
+                "v-l-sky"
+              ],
               "start_ms": 1111000,
               "title": "Little Boy Blue - read by VLS"
             },
             {
               "audio_url": "https://www.archive.org/download/littleboyblue_2511.poem_librivox/littleboyblue_field_vod_64kb.mp3",
               "length_ms": 89000,
+              "readers": [
+                "dave-campbell"
+              ],
               "start_ms": 1199000,
               "title": "Little Boy Blue - read by VOD"
             },
             {
               "audio_url": "https://www.archive.org/download/littleboyblue_2511.poem_librivox/littleboyblue_field_wja_64kb.mp3",
               "length_ms": 96000,
+              "readers": [
+                "winnifred-assmann"
+              ],
               "start_ms": 1288000,
               "title": "Little Boy Blue - read by WJA"
             }
@@ -2260,7 +2455,11 @@
           "cover_url": "https://archive.org/download/littleboyblue_2511.poem_librivox/little_boy_blue_2512.jpg",
           "id": "bruce-kachuk",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 22126,
+          "librivox_title": "Little Boy Blue",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/little-boy-blue-by-eugene-field/",
@@ -3305,96 +3504,112 @@
             {
               "audio_url": "https://www.archive.org/download/littlebrothertothebear_1602_librivox/littlebrother_00_long_64kb.mp3",
               "length_ms": 156000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebrothertothebear_1602_librivox/littlebrother_01_long_64kb.mp3",
               "length_ms": 600000,
+              "section_number": 1,
               "start_ms": 156000,
               "title": "THE POINT OF VIEW"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebrothertothebear_1602_librivox/littlebrother_02_long_64kb.mp3",
               "length_ms": 1387000,
+              "section_number": 2,
               "start_ms": 756000,
               "title": "A LITTLE BROTHER TO THE BEAR Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebrothertothebear_1602_librivox/littlebrother_03_long_64kb.mp3",
               "length_ms": 1103000,
+              "section_number": 3,
               "start_ms": 2143000,
               "title": "A LITTLE BROTHER TO THE BEAR Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebrothertothebear_1602_librivox/littlebrother_04_long_64kb.mp3",
               "length_ms": 1347000,
+              "section_number": 4,
               "start_ms": 3246000,
               "title": "WHITOOWEEK THE HERMIT Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebrothertothebear_1602_librivox/littlebrother_05_long_64kb.mp3",
               "length_ms": 1387000,
+              "section_number": 5,
               "start_ms": 4593000,
               "title": "WHITOOWEEK THE HERMIT Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebrothertothebear_1602_librivox/littlebrother_06_long_64kb.mp3",
               "length_ms": 307000,
+              "section_number": 6,
               "start_ms": 5980000,
               "title": "A WOODCOCK GENIUS"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebrothertothebear_1602_librivox/littlebrother_07_long_64kb.mp3",
               "length_ms": 989000,
+              "section_number": 7,
               "start_ms": 6287000,
               "title": "WHEN UPWEEKIS GOES HUNTING"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebrothertothebear_1602_librivox/littlebrother_08_long_64kb.mp3",
               "length_ms": 1130000,
+              "section_number": 8,
               "start_ms": 7276000,
               "title": "K'DUNK THE FAT ONE Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebrothertothebear_1602_librivox/littlebrother_09_long_64kb.mp3",
               "length_ms": 1079000,
+              "section_number": 9,
               "start_ms": 8406000,
               "title": "K'DUNK THE FAT ONE Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebrothertothebear_1602_librivox/littlebrother_10_long_64kb.mp3",
               "length_ms": 646000,
+              "section_number": 10,
               "start_ms": 9485000,
               "title": "MOOWEEN'S DEN"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebrothertothebear_1602_librivox/littlebrother_11_long_64kb.mp3",
               "length_ms": 695000,
+              "section_number": 11,
               "start_ms": 10131000,
               "title": "KINGFISHER'S KINDERGARTEN"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebrothertothebear_1602_librivox/littlebrother_12_long_64kb.mp3",
               "length_ms": 1449000,
+              "section_number": 12,
               "start_ms": 10826000,
               "title": "PEKOMPF'S CUNNING"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebrothertothebear_1602_librivox/littlebrother_13_long_64kb.mp3",
               "length_ms": 1215000,
+              "section_number": 13,
               "start_ms": 12275000,
               "title": "ANIMAL SURGERY"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebrothertothebear_1602_librivox/littlebrother_14_long_64kb.mp3",
               "length_ms": 1143000,
+              "section_number": 14,
               "start_ms": 13490000,
               "title": "HUNTING WITHOUT A GUN Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebrothertothebear_1602_librivox/littlebrother_15_long_64kb.mp3",
               "length_ms": 961000,
+              "section_number": 15,
               "start_ms": 14633000,
               "title": "HUNTING WITHOUT A GUN Part 2"
             }
@@ -3403,7 +3618,11 @@
           "cover_url": "https://archive.org/download/littlebrothertothebear_1602_librivox/little_brother_1602.jpg",
           "id": "maggie-travers",
           "language": "en",
+          "librivox_genres": [
+            "Animals & Nature"
+          ],
           "librivox_id": 10294,
+          "librivox_title": "Little Brother to the Bear",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-little-brother-to-the-bear-by-william-j-long/",
@@ -3579,7 +3798,11 @@
           "cover_url": "https://archive.org/download/littlebrownjugkildare_2401_librivox/little_brown_jug_2401.jpg",
           "id": "geoff-blanchard",
           "language": "en",
+          "librivox_genres": [
+            "Published 1900 onward"
+          ],
           "librivox_id": 18521,
+          "librivox_title": "Little Brown Jug at Kildare",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-little-brown-jug-at-kildare-by-meredith-nicholson/",
@@ -3740,7 +3963,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt18/littlebushmaid_1205.jpg",
           "id": "bellona-times",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction"
+          ],
           "librivox_id": 4279,
+          "librivox_title": "Little Bush Maid",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-little-bush-maid-by-mary-grant-bruce/",
@@ -3792,102 +4019,170 @@
             {
               "audio_url": "https://www.archive.org/download/littlebusybodies_1707_librivox/littlebusybodies_00_marks_64kb.mp3",
               "length_ms": 419000,
+              "readers": [
+                "linette-geisel"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "A Word to the Children and the Wise"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebusybodies_1707_librivox/littlebusybodies_01_marks_64kb.mp3",
               "length_ms": 580000,
+              "readers": [
+                "kathrine-engan"
+              ],
+              "section_number": 1,
               "start_ms": 419000,
               "title": "The Journey"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebusybodies_1707_librivox/littlebusybodies_02_marks_64kb.mp3",
               "length_ms": 611000,
+              "readers": [
+                "sarocha-t"
+              ],
+              "section_number": 2,
               "start_ms": 999000,
               "title": "Rangeley Village"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebusybodies_1707_librivox/littlebusybodies_03_marks_64kb.mp3",
               "length_ms": 864000,
+              "readers": [
+                "sarocha-t"
+              ],
+              "section_number": 3,
               "start_ms": 1610000,
               "title": "The Little Army (Locusts and Grasshoppers)"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebusybodies_1707_librivox/littlebusybodies_04_marks_64kb.mp3",
               "length_ms": 595000,
+              "readers": [
+                "sarocha-t"
+              ],
+              "section_number": 4,
               "start_ms": 2474000,
               "title": "Fiddlers (Crickets)"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebusybodies_1707_librivox/littlebusybodies_05_marks_64kb.mp3",
               "length_ms": 439000,
+              "readers": [
+                "sarocha-t"
+              ],
+              "section_number": 5,
               "start_ms": 3069000,
               "title": "How Katy Did (Katydids)"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebusybodies_1707_librivox/littlebusybodies_06_marks_64kb.mp3",
               "length_ms": 704000,
+              "readers": [
+                "kathrine-engan"
+              ],
+              "section_number": 6,
               "start_ms": 3508000,
               "title": "Fishing (Dragon-flies)"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebusybodies_1707_librivox/littlebusybodies_07_marks_64kb.mp3",
               "length_ms": 360000,
+              "readers": [
+                "kathrine-engan"
+              ],
+              "section_number": 7,
               "start_ms": 4212000,
               "title": "The Swimming-Pool (The May-fly)"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebusybodies_1707_librivox/littlebusybodies_08_marks_64kb.mp3",
               "length_ms": 581000,
+              "readers": [
+                "sashelliott"
+              ],
+              "section_number": 8,
               "start_ms": 4572000,
               "title": "The Rainy Day (Leaf and Tree Hoppers)"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebusybodies_1707_librivox/littlebusybodies_09_marks_64kb.mp3",
               "length_ms": 823000,
+              "readers": [
+                "christi-lupher"
+              ],
+              "section_number": 9,
               "start_ms": 5153000,
               "title": "The Prize (Lace-Wing, Ant-Lion, and Caddis-Worm)"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebusybodies_1707_librivox/littlebusybodies_10_marks_64kb.mp3",
               "length_ms": 826000,
+              "readers": [
+                "le"
+              ],
+              "section_number": 10,
               "start_ms": 5976000,
               "title": "A Nagging Family (Flies and Mosquitoes)"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebusybodies_1707_librivox/littlebusybodies_11_marks_64kb.mp3",
               "length_ms": 745000,
+              "readers": [
+                "sashelliott"
+              ],
+              "section_number": 11,
               "start_ms": 6802000,
               "title": "Camping Out (Butterflies and Moths)"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebusybodies_1707_librivox/littlebusybodies_12_marks_64kb.mp3",
               "length_ms": 489000,
+              "readers": [
+                "sashelliott"
+              ],
+              "section_number": 12,
               "start_ms": 7547000,
               "title": "Camp-In-The-Clouds (Butterflies and Moths, continued)"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebusybodies_1707_librivox/littlebusybodies_13_marks_64kb.mp3",
               "length_ms": 890000,
+              "readers": [
+                "michele-fry"
+              ],
+              "section_number": 13,
               "start_ms": 8036000,
               "title": "Storm-Bound (Beetles)"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebusybodies_1707_librivox/littlebusybodies_14_marks_64kb.mp3",
               "length_ms": 1260000,
+              "readers": [
+                "sarocha-t"
+              ],
+              "section_number": 14,
               "start_ms": 8926000,
               "title": "A Day's Hunting (Bees)"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebusybodies_1707_librivox/littlebusybodies_15_marks_64kb.mp3",
               "length_ms": 1083000,
+              "readers": [
+                "brett-phillips"
+              ],
+              "section_number": 15,
               "start_ms": 10186000,
               "title": "Leaving Camp (Wasps)"
             },
             {
               "audio_url": "https://www.archive.org/download/littlebusybodies_1707_librivox/littlebusybodies_16_marks_64kb.mp3",
               "length_ms": 1231000,
+              "readers": [
+                "brett-phillips"
+              ],
+              "section_number": 16,
               "start_ms": 11269000,
               "title": "Eyes And No Eyes (Ants)"
             }
@@ -3895,7 +4190,11 @@
           "cover_url": "https://archive.org/download/littlebusybodies_1707_librivox/little_busybodies_1708.jpg",
           "id": "linette-geisel",
           "language": "en",
+          "librivox_genres": [
+            "Science"
+          ],
           "librivox_id": 11432,
+          "librivox_title": "Little Busybodies: The Life of Crickets, Ants, Bees, and Others",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/little-busybodies-the-life-of-crickets-ants-bees-and-others-by-jeannette-augustus-marks/",
@@ -3997,7 +4296,11 @@
           "cover_url": "https://archive.org/download/littlecaesar_2604_librivox/littlecaesar_2604.jpg",
           "id": "mark-harrington",
           "language": "en",
+          "librivox_genres": [
+            "Crime & Mystery Fiction"
+          ],
           "librivox_id": 22482,
+          "librivox_title": "Little Caesar",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/little-caesar-by-w-r-burnett/",
@@ -4048,84 +4351,140 @@
             {
               "audio_url": "https://www.archive.org/download/littlecandybook_1412_librivox/littlecandybook_00_waterman_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "mary-kay"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecandybook_1412_librivox/littlecandybook_01_waterman_64kb.mp3",
               "length_ms": 2214000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
+              "section_number": 1,
               "start_ms": 78000,
               "title": "Cool Weather Candies"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecandybook_1412_librivox/littlecandybook_02_waterman_64kb.mp3",
               "length_ms": 764000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
+              "section_number": 2,
               "start_ms": 2292000,
               "title": "Popcorn Goodies"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecandybook_1412_librivox/littlecandybook_03_waterman_64kb.mp3",
               "length_ms": 881000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
+              "section_number": 3,
               "start_ms": 3056000,
               "title": "Fudge, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecandybook_1412_librivox/littlecandybook_04_waterman_64kb.mp3",
               "length_ms": 950000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
+              "section_number": 4,
               "start_ms": 3937000,
               "title": "Fudge, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecandybook_1412_librivox/littlecandybook_05_waterman_64kb.mp3",
               "length_ms": 617000,
+              "readers": [
+                "rachel"
+              ],
+              "section_number": 5,
               "start_ms": 4887000,
               "title": "Fudge, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecandybook_1412_librivox/littlecandybook_06_waterman_64kb.mp3",
               "length_ms": 286000,
+              "readers": [
+                "mary-kay"
+              ],
+              "section_number": 6,
               "start_ms": 5504000,
               "title": "Fudge, Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecandybook_1412_librivox/littlecandybook_07_waterman_64kb.mp3",
               "length_ms": 428000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
+              "section_number": 7,
               "start_ms": 5790000,
               "title": "Caramels"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecandybook_1412_librivox/littlecandybook_08_waterman_64kb.mp3",
               "length_ms": 459000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
+              "section_number": 8,
               "start_ms": 6218000,
               "title": "Cream Candies - Uncooked"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecandybook_1412_librivox/littlecandybook_09_waterman_64kb.mp3",
               "length_ms": 465000,
+              "readers": [
+                "jennifer-dorr"
+              ],
+              "section_number": 9,
               "start_ms": 6677000,
               "title": "Stuffed Dainties"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecandybook_1412_librivox/littlecandybook_10_waterman_64kb.mp3",
               "length_ms": 1160000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
+              "section_number": 10,
               "start_ms": 7142000,
               "title": "Cream Candies - Cooked"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecandybook_1412_librivox/littlecandybook_11_waterman_64kb.mp3",
               "length_ms": 314000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
+              "section_number": 11,
               "start_ms": 8302000,
               "title": "Salted Nuts"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecandybook_1412_librivox/littlecandybook_12_waterman_64kb.mp3",
               "length_ms": 168000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
+              "section_number": 12,
               "start_ms": 8616000,
               "title": "Betsey's Party"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecandybook_1412_librivox/littlecandybook_13_waterman_64kb.mp3",
               "length_ms": 624000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
+              "section_number": 13,
               "start_ms": 8784000,
               "title": "Appendix"
             }
@@ -4134,7 +4493,12 @@
           "cover_url": "https://archive.org/download/littlecandybook_1412_librivox/little_candy_book_1412.jpg",
           "id": "mary-kay",
           "language": "en",
+          "librivox_genres": [
+            "General",
+            "Reference"
+          ],
           "librivox_id": 8649,
+          "librivox_title": "Little Candy Book for a Little Girl",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-little-candy-book-for-a-little-girl-by-amy-lane-waterman/",
@@ -5437,7 +5801,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCovers3/little_colonel_1009.jpg",
           "id": "maria-therese",
           "language": "en",
+          "librivox_genres": [
+            "Family"
+          ],
           "librivox_id": 4191,
+          "librivox_title": "Little Colonel",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-little-colonel-by-annie-fellows-johnston/",
@@ -5488,96 +5856,144 @@
             {
               "audio_url": "https://www.archive.org/download/littlecolonelboardingschool_1206_librivox/littlecolonelboarding_01_johnston_64kb.mp3",
               "length_ms": 1409000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 0,
               "title": "01 - Off to Boarding-School"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelboardingschool_1206_librivox/littlecolonelboarding_02_johnston_64kb.mp3",
               "length_ms": 1849000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 1409000,
               "title": "02 - A New Friend"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelboardingschool_1206_librivox/littlecolonelboarding_03_johnston_64kb.mp3",
               "length_ms": 1839000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 3258000,
               "title": "03 - Ida's Secret"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelboardingschool_1206_librivox/littlecolonelboarding_04_johnston_64kb.mp3",
               "length_ms": 1715000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 5097000,
               "title": "04 - The Shadow Club"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelboardingschool_1206_librivox/littlecolonelboarding_05_johnston_64kb.mp3",
               "length_ms": 1092000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 6812000,
               "title": "05 - At the Beeches"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelboardingschool_1206_librivox/littlecolonelboarding_06_johnston_64kb.mp3",
               "length_ms": 1955000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 7904000,
               "title": "06 - Uninvited Guests"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelboardingschool_1206_librivox/littlecolonelboarding_07_johnston_64kb.mp3",
               "length_ms": 1393000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 9859000,
               "title": "07 - The Halloween Masquerade"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelboardingschool_1206_librivox/littlecolonelboarding_08_johnston_64kb.mp3",
               "length_ms": 1696000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 11252000,
               "title": "08 - The Princess of the Pendulum"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelboardingschool_1206_librivox/littlecolonelboarding_09_johnston_64kb.mp3",
               "length_ms": 1352000,
+              "readers": [
+                "linda-fredericks"
+              ],
               "start_ms": 12948000,
               "title": "09 - One Rainy Afternoon"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelboardingschool_1206_librivox/littlecolonelboarding_10_johnston_64kb.mp3",
               "length_ms": 1095000,
+              "readers": [
+                "linda-fredericks"
+              ],
               "start_ms": 14300000,
               "title": "10 - A Plot"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelboardingschool_1206_librivox/littlecolonelboarding_11_johnston_64kb.mp3",
               "length_ms": 1764000,
+              "readers": [
+                "linda-fredericks"
+              ],
               "start_ms": 15395000,
               "title": "11 - A Wolf in Sheep's Clothing"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelboardingschool_1206_librivox/littlecolonelboarding_12_johnston_64kb.mp3",
               "length_ms": 1401000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 17159000,
               "title": "12 - Ghost or Girl"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelboardingschool_1206_librivox/littlecolonelboarding_13_johnston_64kb.mp3",
               "length_ms": 1309000,
+              "readers": [
+                "linda-fredericks"
+              ],
               "start_ms": 18560000,
               "title": "13 - The Shadow Club in Disgrace"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelboardingschool_1206_librivox/littlecolonelboarding_14_johnston_64kb.mp3",
               "length_ms": 2287000,
+              "readers": [
+                "linda-fredericks"
+              ],
               "start_ms": 19869000,
               "title": "14 - The Three Weavers"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelboardingschool_1206_librivox/littlecolonelboarding_15_johnston_64kb.mp3",
               "length_ms": 937000,
+              "readers": [
+                "linda-fredericks"
+              ],
               "start_ms": 22156000,
               "title": "15 - Thanksgiving Day"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelboardingschool_1206_librivox/littlecolonelboarding_16_johnston_64kb.mp3",
               "length_ms": 1754000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 23093000,
               "title": "16 - Christmas Greens and Watch-Night Embers"
             }
@@ -5586,7 +6002,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt20/little_colonel_boarding_1206.jpg",
           "id": "lars-rolander-1942-2016",
           "language": "en",
+          "librivox_genres": [
+            "Family",
+            "School"
+          ],
           "librivox_id": 6285,
+          "librivox_title": "Little Colonel at Boarding-School",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-little-colonel-at-boarding-school-by-annie-fellows-johnston/",
@@ -5736,7 +6157,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt28/little_colonel_arizona_1301.jpg",
           "id": "lars-rolander-1942-2016",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction",
+            "Family"
+          ],
           "librivox_id": 6768,
+          "librivox_title": "Little Colonel in Arizona",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-little-colonel-in-arizona-by-annie-fellows-johnston/",
@@ -5787,96 +6213,144 @@
             {
               "audio_url": "https://www.archive.org/download/littlecolonelmaidofhonor_1607_librivox/littlecolonelmaid_01_johnston_64kb.mp3",
               "length_ms": 1458000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 0,
               "title": "At Warwick  Hall"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelmaidofhonor_1607_librivox/littlecolonelmaid_02_johnston_64kb.mp3",
               "length_ms": 940000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 1458000,
               "title": "At Ware's Wigwam"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelmaidofhonor_1607_librivox/littlecolonelmaid_03_johnston_64kb.mp3",
               "length_ms": 1034000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 2398000,
               "title": "In Beauty's Quest"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelmaidofhonor_1607_librivox/littlecolonelmaid_04_johnston_64kb.mp3",
               "length_ms": 1220000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 3432000,
               "title": "Mary's 'Promised Land'"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelmaidofhonor_1607_librivox/littlecolonelmaid_05_johnston_64kb.mp3",
               "length_ms": 1020000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 4652000,
               "title": "At 'The Locusts'"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelmaidofhonor_1607_librivox/littlecolonelmaid_06_johnston_64kb.mp3",
               "length_ms": 1597000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 5672000,
               "title": "The Fox and the Stork"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelmaidofhonor_1607_librivox/littlecolonelmaid_07_johnston_64kb.mp3",
               "length_ms": 2040000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 7269000,
               "title": "The Coming of the Bride"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelmaidofhonor_1607_librivox/littlecolonelmaid_08_johnston_64kb.mp3",
               "length_ms": 1900000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 9309000,
               "title": "At the Beeches"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelmaidofhonor_1607_librivox/littlecolonelmaid_09_johnston_64kb.mp3",
               "length_ms": 1765000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 11209000,
               "title": "'Something Blue'"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelmaidofhonor_1607_librivox/littlecolonelmaid_10_johnston_64kb.mp3",
               "length_ms": 1600000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 12974000,
               "title": "'A Coon Hunt'"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelmaidofhonor_1607_librivox/littlecolonelmaid_11_johnston_64kb.mp3",
               "length_ms": 1696000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 14574000,
               "title": "The Four-Leaved Clover"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelmaidofhonor_1607_librivox/littlecolonelmaid_12_johnston_64kb.mp3",
               "length_ms": 1530000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 16270000,
               "title": "The Wedding"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelmaidofhonor_1607_librivox/littlecolonelmaid_13_johnston_64kb.mp3",
               "length_ms": 2090000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 17800000,
               "title": "Dreams and Warnings"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelmaidofhonor_1607_librivox/littlecolonelmaid_14_johnston_64kb.mp3",
               "length_ms": 1517000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 19890000,
               "title": "A Second Maid of Honor"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelmaidofhonor_1607_librivox/littlecolonelmaid_15_johnston_64kb.mp3",
               "length_ms": 1286000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 21407000,
               "title": "The End of the House-Party"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelmaidofhonor_1607_librivox/littlecolonelmaid_16_johnston_64kb.mp3",
               "length_ms": 1666000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 22693000,
               "title": "The Golden Leaf of Honor"
             }
@@ -5885,7 +6359,12 @@
           "cover_url": "https://archive.org/download/littlecolonelmaidofhonor_1607_librivox/littlecolonelmaid_1607.jpg",
           "id": "lars-rolander-1942-2016",
           "language": "en",
+          "librivox_genres": [
+            "Family",
+            "General"
+          ],
           "librivox_id": 8173,
+          "librivox_title": "Little Colonel: Maid of Honor",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-little-colonel-maid-of-honor-by-annie-fellows-johnston/",
@@ -6035,7 +6514,12 @@
           "cover_url": "https://archive.org/download/littlecolonelschristmas_1309_librivox/little_colonel_christmas_1309.jpg",
           "id": "lars-rolander-1942-2016",
           "language": "en",
+          "librivox_genres": [
+            "Family",
+            "School"
+          ],
           "librivox_id": 7303,
+          "librivox_title": "Little Colonel's Christmas Vacation",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-little-colonels-christmas-vacation-by-annie-fellows-johnston/",
@@ -6086,96 +6570,160 @@
             {
               "audio_url": "https://www.archive.org/download/maryware_2003_librivox/littlecolonelschum_00_johnston_64kb.mp3",
               "length_ms": 127000,
+              "readers": [
+                "ruth-logrono"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/maryware_2003_librivox/littlecolonelschum_01_johnston_64kb.mp3",
               "length_ms": 1142000,
+              "readers": [
+                "ruth-logrono"
+              ],
+              "section_number": 1,
               "start_ms": 127000,
               "title": "Mary Enters Warwick"
             },
             {
               "audio_url": "https://www.archive.org/download/maryware_2003_librivox/littlecolonelschum_02_johnston_64kb.mp3",
               "length_ms": 1305000,
+              "readers": [
+                "ruth-logrono"
+              ],
+              "section_number": 2,
               "start_ms": 1269000,
               "title": "'The King's Call'"
             },
             {
               "audio_url": "https://www.archive.org/download/maryware_2003_librivox/littlecolonelschum_03_johnston_64kb.mp3",
               "length_ms": 1115000,
+              "readers": [
+                "elsie-selwyn"
+              ],
+              "section_number": 3,
               "start_ms": 2574000,
               "title": "Room-Mates"
             },
             {
               "audio_url": "https://www.archive.org/download/maryware_2003_librivox/littlecolonelschum_04_johnston_64kb.mp3",
               "length_ms": 2200000,
+              "readers": [
+                "mickey-lee-rich"
+              ],
+              "section_number": 4,
               "start_ms": 3689000,
               "title": "'Aye, There's the Rub!'"
             },
             {
               "audio_url": "https://www.archive.org/download/maryware_2003_librivox/littlecolonelschum_05_johnston_64kb.mp3",
               "length_ms": 2523000,
+              "readers": [
+                "shasta"
+              ],
+              "section_number": 5,
               "start_ms": 5889000,
               "title": "A Fad and a Christmas Fund"
             },
             {
               "audio_url": "https://www.archive.org/download/maryware_2003_librivox/littlecolonelschum_06_johnston_64kb.mp3",
               "length_ms": 1419000,
+              "readers": [
+                "aloslovecraft"
+              ],
+              "section_number": 6,
               "start_ms": 8412000,
               "title": "Jack's Watch Fob"
             },
             {
               "audio_url": "https://www.archive.org/download/maryware_2003_librivox/littlecolonelschum_07_johnston_64kb.mp3",
               "length_ms": 1045000,
+              "readers": [
+                "aloslovecraft"
+              ],
+              "section_number": 7,
               "start_ms": 9831000,
               "title": "In Joyce's Studio"
             },
             {
               "audio_url": "https://www.archive.org/download/maryware_2003_librivox/littlecolonelschum_08_johnston_64kb.mp3",
               "length_ms": 1468000,
+              "readers": [
+                "christina-maria-wendt"
+              ],
+              "section_number": 8,
               "start_ms": 10876000,
               "title": "Christmas Day at Eugenia's"
             },
             {
               "audio_url": "https://www.archive.org/download/maryware_2003_librivox/littlecolonelschum_09_johnston_64kb.mp3",
               "length_ms": 3001000,
+              "readers": [
+                "shasta"
+              ],
+              "section_number": 9,
               "start_ms": 12344000,
               "title": "The Bride-Cake Shilling Comes to Light"
             },
             {
               "audio_url": "https://www.archive.org/download/maryware_2003_librivox/littlecolonelschum_10_johnston_64kb.mp3",
               "length_ms": 1661000,
+              "readers": [
+                "shasta"
+              ],
+              "section_number": 10,
               "start_ms": 15345000,
               "title": "Her Seventeenth Birthday"
             },
             {
               "audio_url": "https://www.archive.org/download/maryware_2003_librivox/littlecolonelschum_11_johnston_64kb.mp3",
               "length_ms": 1375000,
+              "readers": [
+                "kathleen-moore"
+              ],
+              "section_number": 11,
               "start_ms": 17006000,
               "title": "Trouble for Everybody"
             },
             {
               "audio_url": "https://www.archive.org/download/maryware_2003_librivox/littlecolonelschum_12_johnston_64kb.mp3",
               "length_ms": 1142000,
+              "readers": [
+                "kathleen-moore"
+              ],
+              "section_number": 12,
               "start_ms": 18381000,
               "title": "The Good-Bye Gate"
             },
             {
               "audio_url": "https://www.archive.org/download/maryware_2003_librivox/littlecolonelschum_13_johnston_64kb.mp3",
               "length_ms": 2130000,
+              "readers": [
+                "mickey-lee-rich"
+              ],
+              "section_number": 13,
               "start_ms": 19523000,
               "title": "The Jester's Sword"
             },
             {
               "audio_url": "https://www.archive.org/download/maryware_2003_librivox/littlecolonelschum_14_johnston_64kb.mp3",
               "length_ms": 2027000,
+              "readers": [
+                "diana-schmidt"
+              ],
+              "section_number": 14,
               "start_ms": 21653000,
               "title": "Back at Lone-Rock"
             },
             {
               "audio_url": "https://www.archive.org/download/maryware_2003_librivox/littlecolonelschum_15_johnston_64kb.mp3",
               "length_ms": 1815000,
+              "readers": [
+                "ellies"
+              ],
+              "section_number": 15,
               "start_ms": 23680000,
               "title": "Keeping Tryst"
             }
@@ -6184,7 +6732,11 @@
           "cover_url": "https://archive.org/download/maryware_2003_librivox/mary_ware_2004.jpg",
           "id": "ruth-logrono",
           "language": "en",
+          "librivox_genres": [
+            "Historical"
+          ],
           "librivox_id": 13616,
+          "librivox_title": "Little Colonel's Chum: Mary Ware",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-little-colonels-chum-mary-ware-by-annie-fellows-johnston/",
@@ -6243,96 +6795,157 @@
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshero_1201_librivox/littlecolonelshero_01_johnston_64kb.mp3",
               "length_ms": 1227000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 0,
               "title": "Her Twelfth Birthday"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshero_1201_librivox/littlecolonelshero_02_johnston_64kb.mp3",
               "length_ms": 1344000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 1227000,
               "title": "The Wonder-Ball Begins to Unwind"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshero_1201_librivox/littlecolonelshero_03_johnston_64kb.mp3",
               "length_ms": 1243000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 2571000,
               "title": "Lloyd Meets Hero"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshero_1201_librivox/littlecolonelshero_04_johnston_64kb.mp3",
               "length_ms": 1084000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 3814000,
               "title": "Hero's Story"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshero_1201_librivox/littlecolonelshero_05_johnston_64kb.mp3",
               "length_ms": 1020000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 4898000,
               "title": "The Red Cross of Geneva"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshero_1201_librivox/littlecolonelshero_06_johnston_64kb.mp3",
               "length_ms": 2015000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 5918000,
               "title": "The Wonder-Ball's Best Gift"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshero_1201_librivox/littlecolonelshero_07_johnston_64kb.mp3",
               "length_ms": 1599000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 7933000,
               "title": "In Tours"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshero_1201_librivox/littlecolonelshero_08_johnston_64kb.mp3",
               "length_ms": 1315000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 9532000,
               "title": "With Betty and Eugenia"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshero_1201_librivox/littlecolonelshero_09_johnston_64kb.mp3",
               "length_ms": 1060000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 10847000,
               "title": "At the Gate of the Giant Scissors"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshero_1201_librivox/littlecolonelshero_10_johnston_64kb.mp3",
               "length_ms": 1281000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 11907000,
               "title": "On the Wing"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshero_1201_librivox/littlecolonelshero_11_johnston_64kb.mp3",
               "length_ms": 1156000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 13188000,
               "title": "Homeward Bound"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshero_1201_librivox/littlecolonelshero_12_johnston_64kb.mp3",
               "length_ms": 1613000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 14344000,
               "title": "Home Again"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshero_1201_librivox/littlecolonelshero_13_johnston_64kb.mp3",
               "length_ms": 2943000,
+              "readers": [
+                "esther",
+                "elizabeth-klett",
+                "lars-rolander-1942-2016",
+                "lucy-perry",
+                "bev-j-stevens",
+                "elli",
+                "availle",
+                "maria-therese",
+                "algy-pug",
+                "susanna",
+                "liberty-stump",
+                "max-korlinge",
+                "kristin-g",
+                "toddhw"
+              ],
               "start_ms": 15957000,
               "title": "'The Rescue of the Princess Winsome'"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshero_1201_librivox/littlecolonelshero_14_johnston_64kb.mp3",
               "length_ms": 1025000,
+              "readers": [
+                "snapdragon"
+              ],
               "start_ms": 18900000,
               "title": "In Camp"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshero_1201_librivox/littlecolonelshero_15_johnston_64kb.mp3",
               "length_ms": 870000,
+              "readers": [
+                "snapdragon"
+              ],
               "start_ms": 19925000,
               "title": "The Sentry's Mistake"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshero_1201_librivox/littlecolonelshero_16_johnston_64kb.mp3",
               "length_ms": 897000,
+              "readers": [
+                "snapdragon"
+              ],
               "start_ms": 20795000,
               "title": "\"Taps\""
             }
@@ -6341,7 +6954,13 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt14/littlecolonelshero_1201.jpg",
           "id": "lars-rolander-1942-2016",
           "language": "en",
+          "librivox_genres": [
+            "Animals & Nature",
+            "Family",
+            "General"
+          ],
           "librivox_id": 5984,
+          "librivox_title": "Little Colonel's Hero",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-little-colonels-hero-by-annie-fellows-johnston/",
@@ -6407,96 +7026,144 @@
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsholidays_1110_librivox/littlecolonelsholidays_01_johnston_64kb.mp3",
               "length_ms": 357000,
+              "readers": [
+                "amanda-friday"
+              ],
               "start_ms": 0,
               "title": "01 - The Magic Kettle"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsholidays_1110_librivox/littlecolonelsholidays_02_johnston_64kb.mp3",
               "length_ms": 889000,
+              "readers": [
+                "amanda-friday"
+              ],
               "start_ms": 357000,
               "title": "02 - The End of Summer"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsholidays_1110_librivox/littlecolonelsholidays_03_johnston_64kb.mp3",
               "length_ms": 1132000,
+              "readers": [
+                "kristen-schaugaard-green"
+              ],
               "start_ms": 1246000,
               "title": "03 - Back to the Cuckoo's Nest"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsholidays_1110_librivox/littlecolonelsholidays_04_johnston_64kb.mp3",
               "length_ms": 1189000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 2378000,
               "title": "04 - \"To Barley-Bright\""
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsholidays_1110_librivox/littlecolonelsholidays_05_johnston_64kb.mp3",
               "length_ms": 1303000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 3567000,
               "title": "05 - A Time for Patience"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsholidays_1110_librivox/littlecolonelsholidays_06_johnston_64kb.mp3",
               "length_ms": 1529000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 4870000,
               "title": "06 - Molly's Story"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsholidays_1110_librivox/littlecolonelsholidays_07_johnston_64kb.mp3",
               "length_ms": 1338000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 6399000,
               "title": "07 - A Feast of Sails"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsholidays_1110_librivox/littlecolonelsholidays_08_johnston_64kb.mp3",
               "length_ms": 952000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 7737000,
               "title": "08 - Eugenia Joins the Search"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsholidays_1110_librivox/littlecolonelsholidays_09_johnston_64kb.mp3",
               "length_ms": 1127000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 8689000,
               "title": "09 - Left Behind"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsholidays_1110_librivox/littlecolonelsholidays_10_johnston_64kb.mp3",
               "length_ms": 1381000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 9816000,
               "title": "10 - Home-Lessons and Jack-O'-Lanterns"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsholidays_1110_librivox/littlecolonelsholidays_11_johnston_64kb.mp3",
               "length_ms": 1558000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 11197000,
               "title": "11 - A Halloween Party"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsholidays_1110_librivox/littlecolonelsholidays_12_johnston_64kb.mp3",
               "length_ms": 1318000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 12755000,
               "title": "12 - The Home of a Hero"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsholidays_1110_librivox/littlecolonelsholidays_13_johnston_64kb.mp3",
               "length_ms": 1743000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 14073000,
               "title": "13 - The Day After Thanksgiving"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsholidays_1110_librivox/littlecolonelsholidays_14_johnston_64kb.mp3",
               "length_ms": 1423000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 15816000,
               "title": "14 - Lloyd Makes a Discovery"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsholidays_1110_librivox/littlecolonelsholidays_15_johnston_64kb.mp3",
               "length_ms": 1363000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 17239000,
               "title": "15 - A Happy Christmas"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsholidays_1110_librivox/littlecolonelsholidays_16_johnston_64kb.mp3",
               "length_ms": 183000,
+              "readers": [
+                "lars-rolander-1942-2016"
+              ],
               "start_ms": 18602000,
               "title": "16 - A Peep Into the Future"
             }
@@ -6505,7 +7172,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt12/littlecolonelsholidays_1110.jpg",
           "id": "amanda-friday",
           "language": "en",
+          "librivox_genres": [
+            "Family",
+            "General"
+          ],
           "librivox_id": 5703,
+          "librivox_title": "Little Colonel's Holidays",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-little-colonels-holidays-by-annie-fellows-johnston/",
@@ -6558,96 +7230,144 @@
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshouseparty_1107_librivox/littlecolonelshouseparty_01_johnston_64kb.mp3",
               "length_ms": 1120000,
+              "readers": [
+                "lois-c-johnson"
+              ],
               "start_ms": 0,
               "title": "01 - The Invitations Are Sent"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshouseparty_1107_librivox/littlecolonelshouseparty_02_johnston_64kb.mp3",
               "length_ms": 1135000,
+              "readers": [
+                "lois-c-johnson"
+              ],
               "start_ms": 1120000,
               "title": "02 - \"One Flew Into the Cuckoo's Nest\""
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshouseparty_1107_librivox/littlecolonelshouseparty_03_johnston_64kb.mp3",
               "length_ms": 738000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 2255000,
               "title": "03 - \"One Flew East\""
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshouseparty_1107_librivox/littlecolonelshouseparty_04_johnston_64kb.mp3",
               "length_ms": 861000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 2993000,
               "title": "04 - \"One Flew West\""
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshouseparty_1107_librivox/littlecolonelshouseparty_05_johnston_64kb.mp3",
               "length_ms": 1373000,
+              "readers": [
+                "kymm-zuckert"
+              ],
               "start_ms": 3854000,
               "title": "05 - Betty Reaches the \"House Beautiful\""
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshouseparty_1107_librivox/littlecolonelshouseparty_06_johnston_64kb.mp3",
               "length_ms": 1001000,
+              "readers": [
+                "kymm-zuckert"
+              ],
               "start_ms": 5227000,
               "title": "06 - The Enchanted Necklace"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshouseparty_1107_librivox/littlecolonelshouseparty_07_johnston_64kb.mp3",
               "length_ms": 1223000,
+              "readers": [
+                "dawn-larsen"
+              ],
               "start_ms": 6228000,
               "title": "07 - Bits From Betty's Diary"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshouseparty_1107_librivox/littlecolonelshouseparty_08_johnston_64kb.mp3",
               "length_ms": 1397000,
+              "readers": [
+                "elimariehk"
+              ],
               "start_ms": 7451000,
               "title": "08 - The Gypsy Fortune Teller"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshouseparty_1107_librivox/littlecolonelshouseparty_09_johnston_64kb.mp3",
               "length_ms": 1564000,
+              "readers": [
+                "feyaza"
+              ],
               "start_ms": 8848000,
               "title": "09 - Her Sacred Promise"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshouseparty_1107_librivox/littlecolonelshouseparty_10_johnston_64kb.mp3",
               "length_ms": 1499000,
+              "readers": [
+                "kymm-zuckert"
+              ],
               "start_ms": 10412000,
               "title": "10 - Found Out"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshouseparty_1107_librivox/littlecolonelshouseparty_11_johnston_64kb.mp3",
               "length_ms": 1156000,
+              "readers": [
+                "kymm-zuckert"
+              ],
               "start_ms": 11911000,
               "title": "11 - Some Stories and a Poem"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshouseparty_1107_librivox/littlecolonelshouseparty_12_johnston_64kb.mp3",
               "length_ms": 1353000,
+              "readers": [
+                "dawn-larsen"
+              ],
               "start_ms": 13067000,
               "title": "12 - A Pillow-Case Party"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshouseparty_1107_librivox/littlecolonelshouseparty_13_johnston_64kb.mp3",
               "length_ms": 1272000,
+              "readers": [
+                "ted-nugent"
+              ],
               "start_ms": 14420000,
               "title": "13 - More Measles"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshouseparty_1107_librivox/littlecolonelshouseparty_14_johnston_64kb.mp3",
               "length_ms": 1421000,
+              "readers": [
+                "dawn-larsen"
+              ],
               "start_ms": 15692000,
               "title": "14 - A Long Night"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshouseparty_1107_librivox/littlecolonelshouseparty_15_johnston_64kb.mp3",
               "length_ms": 1108000,
+              "readers": [
+                "bridget-gaige"
+              ],
               "start_ms": 17113000,
               "title": "15 - \"The Road of the Loving Heart\""
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelshouseparty_1107_librivox/littlecolonelshouseparty_16_johnston_64kb.mp3",
               "length_ms": 1252000,
+              "readers": [
+                "jennifer-wiginton"
+              ],
               "start_ms": 18221000,
               "title": "16 - A Feast of Lanterns"
             }
@@ -6656,7 +7376,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt12/littlecolonelshouseparty_1110.jpg",
           "id": "lois-c-johnson",
           "language": "en",
+          "librivox_genres": [
+            "Family"
+          ],
           "librivox_id": 5232,
+          "librivox_title": "Little Colonel's House Party",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-little-colonels-house-party-by-annie-fellows-johnston/",
@@ -6715,90 +7439,135 @@
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsknight_1812_librivox/littlecolonelsknightcomesriding_01_johnston_64kb.mp3",
               "length_ms": 1936000,
+              "readers": [
+                "avocado"
+              ],
               "start_ms": 0,
               "title": "The Hanging of the Mirror"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsknight_1812_librivox/littlecolonelsknightcomesriding_02_johnston_64kb.mp3",
               "length_ms": 1418000,
+              "readers": [
+                "avocado"
+              ],
               "start_ms": 1936000,
               "title": "Bed-Time Confidences"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsknight_1812_librivox/littlecolonelsknightcomesriding_03_johnston_64kb.mp3",
               "length_ms": 1464000,
+              "readers": [
+                "devorah-allen"
+              ],
               "start_ms": 3354000,
               "title": "A Knight Comes Riding"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsknight_1812_librivox/littlecolonelsknightcomesriding_04_johnston_64kb.mp3",
               "length_ms": 1960000,
+              "readers": [
+                "devorah-allen"
+              ],
               "start_ms": 4818000,
               "title": "Betty's Novel"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsknight_1812_librivox/littlecolonelsknightcomesriding_05_johnston_64kb.mp3",
               "length_ms": 1376000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 6778000,
               "title": "A Camera Helps"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsknight_1812_librivox/littlecolonelsknightcomesriding_06_johnston_64kb.mp3",
               "length_ms": 1285000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 8154000,
               "title": "'Garden Fancies'"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsknight_1812_librivox/littlecolonelsknightcomesriding_07_johnston_64kb.mp3",
               "length_ms": 2117000,
+              "readers": [
+                "kayla-s"
+              ],
               "start_ms": 9439000,
               "title": "Spanish Lessons"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsknight_1812_librivox/littlecolonelsknightcomesriding_08_johnston_64kb.mp3",
               "length_ms": 1440000,
+              "readers": [
+                "maryann"
+              ],
               "start_ms": 11556000,
               "title": "'Shadows of the World Appear'"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsknight_1812_librivox/littlecolonelsknightcomesriding_09_johnston_64kb.mp3",
               "length_ms": 1495000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 12996000,
               "title": "More Shadows"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsknight_1812_librivox/littlecolonelsknightcomesriding_10_johnston_64kb.mp3",
               "length_ms": 1896000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 14491000,
               "title": "By the Silver Yard-Stick"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsknight_1812_librivox/littlecolonelsknightcomesriding_11_johnston_64kb.mp3",
               "length_ms": 1256000,
+              "readers": [
+                "joseph-denoia"
+              ],
               "start_ms": 16387000,
               "title": "The End of Several Things"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsknight_1812_librivox/littlecolonelsknightcomesriding_12_johnston_64kb.mp3",
               "length_ms": 1347000,
+              "readers": [
+                "joseph-denoia"
+              ],
               "start_ms": 17643000,
               "title": "Six Months Later"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsknight_1812_librivox/littlecolonelsknightcomesriding_13_johnston_64kb.mp3",
               "length_ms": 1304000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 18990000,
               "title": "The Miracle of Blossoming"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsknight_1812_librivox/littlecolonelsknightcomesriding_14_johnston_64kb.mp3",
               "length_ms": 1407000,
+              "readers": [
+                "joseph-denoia"
+              ],
               "start_ms": 20294000,
               "title": "The Royal Mantle"
             },
             {
               "audio_url": "https://www.archive.org/download/littlecolonelsknight_1812_librivox/littlecolonelsknightcomesriding_15_johnston_64kb.mp3",
               "length_ms": 950000,
+              "readers": [
+                "diana-schmidt"
+              ],
               "start_ms": 21701000,
               "title": "'As it was Written in the Stars' and Betty's Diary"
             }
@@ -6807,7 +7576,11 @@
           "cover_url": "https://archive.org/download/littlecolonelsknight_1812_librivox/little_colonels_knight_1812.jpg",
           "id": "avocado",
           "language": "en",
+          "librivox_genres": [
+            "Family"
+          ],
           "librivox_id": 11225,
+          "librivox_title": "Little Colonel's Knight Comes Riding",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-little-colonels-knight-comes-riding-by-annie-fellows-johnston/",
@@ -7071,156 +7844,260 @@
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_00_benton_64kb.mp3",
               "length_ms": 257000,
+              "readers": [
+                "ashleighjane"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_01_benton_64kb.mp3",
               "length_ms": 486000,
+              "readers": [
+                "ashleighjane"
+              ],
+              "section_number": 1,
               "start_ms": 257000,
               "title": "Part I: Cereals"
             },
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_02_benton_64kb.mp3",
               "length_ms": 761000,
+              "readers": [
+                "rachel"
+              ],
+              "section_number": 2,
               "start_ms": 743000,
               "title": "Part I: Breakfast Eggs"
             },
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_03_benton_64kb.mp3",
               "length_ms": 303000,
+              "readers": [
+                "jp4kjv"
+              ],
+              "section_number": 3,
               "start_ms": 1504000,
               "title": "Part I: Fish"
             },
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_04_benton_64kb.mp3",
               "length_ms": 525000,
+              "readers": [
+                "jp4kjv"
+              ],
+              "section_number": 4,
               "start_ms": 1807000,
               "title": "Part I: Meats"
             },
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_05_benton_64kb.mp3",
               "length_ms": 219000,
+              "readers": [
+                "rachel"
+              ],
+              "section_number": 5,
               "start_ms": 2332000,
               "title": "Part I: Potatoes"
             },
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_06_benton_64kb.mp3",
               "length_ms": 624000,
+              "readers": [
+                "jill-engle"
+              ],
+              "section_number": 6,
               "start_ms": 2551000,
               "title": "Part I: Breads"
             },
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_07_benton_64kb.mp3",
               "length_ms": 135000,
+              "readers": [
+                "yz"
+              ],
+              "section_number": 7,
               "start_ms": 3175000,
               "title": "Part I: Coffee"
             },
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_08_benton_64kb.mp3",
               "length_ms": 435000,
+              "readers": [
+                "2xron"
+              ],
+              "section_number": 8,
               "start_ms": 3310000,
               "title": "Part II: Recipes with White Sauce"
             },
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_09_benton_64kb.mp3",
               "length_ms": 241000,
+              "readers": [
+                "rachel"
+              ],
+              "section_number": 9,
               "start_ms": 3745000,
               "title": "Part II: Lunch Eggs"
             },
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_10_benton_64kb.mp3",
               "length_ms": 688000,
+              "readers": [
+                "rachel"
+              ],
+              "section_number": 10,
               "start_ms": 3986000,
               "title": "Part II: Other Lunch Recipes"
             },
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_11_benton_64kb.mp3",
               "length_ms": 558000,
+              "readers": [
+                "rachel"
+              ],
+              "section_number": 11,
               "start_ms": 4674000,
               "title": "Part II: Salads"
             },
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_12_benton_64kb.mp3",
               "length_ms": 258000,
+              "readers": [
+                "jill-engle"
+              ],
+              "section_number": 12,
               "start_ms": 5232000,
               "title": "Part II: Sweet Treats"
             },
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_13_benton_64kb.mp3",
               "length_ms": 239000,
+              "readers": [
+                "jill-engle"
+              ],
+              "section_number": 13,
               "start_ms": 5490000,
               "title": "Part II: Drinks"
             },
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_14_benton_64kb.mp3",
               "length_ms": 781000,
+              "readers": [
+                "rachel"
+              ],
+              "section_number": 14,
               "start_ms": 5729000,
               "title": "Part III: Soups"
             },
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_15_benton_64kb.mp3",
               "length_ms": 515000,
+              "readers": [
+                "rachel"
+              ],
+              "section_number": 15,
               "start_ms": 6510000,
               "title": "Part III: Vegetables"
             },
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_16_benton_64kb.mp3",
               "length_ms": 740000,
+              "readers": [
+                "jill-engle"
+              ],
+              "section_number": 16,
               "start_ms": 7025000,
               "title": "Part III: Desserts"
             },
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_17_benton_64kb.mp3",
               "length_ms": 160000,
+              "readers": [
+                "ashley"
+              ],
+              "section_number": 17,
               "start_ms": 7765000,
               "title": "Part III: Shortcakes"
             },
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_18_benton_64kb.mp3",
               "length_ms": 293000,
+              "readers": [
+                "cecilia-hobbs"
+              ],
+              "section_number": 18,
               "start_ms": 7925000,
               "title": "Part III: Gelatins"
             },
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_19_benton_128.mp3_64kb.mp3",
               "length_ms": 207000,
+              "readers": [
+                "cecilia-hobbs"
+              ],
+              "section_number": 19,
               "start_ms": 8218000,
               "title": "Part III: Pudding Sauces"
             },
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_20_benton_64kb.mp3",
               "length_ms": 485000,
+              "readers": [
+                "rachel"
+              ],
+              "section_number": 20,
               "start_ms": 8425000,
               "title": "Part III: Ice-creams and Ices"
             },
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_21_benton_64kb.mp3",
               "length_ms": 524000,
+              "readers": [
+                "robin-cotter"
+              ],
+              "section_number": 21,
               "start_ms": 8910000,
               "title": "Part III: Cakes and Fillings"
             },
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_22_benton_64kb.mp3",
               "length_ms": 229000,
+              "readers": [
+                "robin-cotter"
+              ],
+              "section_number": 22,
               "start_ms": 9434000,
               "title": "Part III: Additional Desserts"
             },
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_23_benton_64kb.mp3",
               "length_ms": 389000,
+              "readers": [
+                "robin-cotter"
+              ],
+              "section_number": 23,
               "start_ms": 9663000,
               "title": "Part III: Pies"
             },
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_24_benton_64kb.mp3",
               "length_ms": 555000,
+              "readers": [
+                "brielle-hepburn"
+              ],
+              "section_number": 24,
               "start_ms": 10052000,
               "title": "Part III: Candy"
             },
             {
               "audio_url": "https://www.archive.org/download/little_cook_book_little_girl_1502_librivox/littlecookbook_25_benton_64kb.mp3",
               "length_ms": 307000,
+              "readers": [
+                "jp4kjv"
+              ],
+              "section_number": 25,
               "start_ms": 10607000,
               "title": "Part III: Margaret's School Luncheons"
             }
@@ -7229,7 +8106,12 @@
           "cover_url": "https://archive.org/download/little_cook_book_little_girl_1502_librivox/a_little_cook_book_for_a_little_girl_1502.jpg",
           "id": "ashleighjane",
           "language": "en",
+          "librivox_genres": [
+            "General",
+            "Cooking"
+          ],
           "librivox_id": 9117,
+          "librivox_title": "Little Cook Book for a Little Girl",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-little-cook-book-for-a-little-girl-by-caroline-french-benton/",
@@ -7354,7 +8236,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt32/little_country_girl_1305.jpg",
           "id": "lynne-t",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 7734,
+          "librivox_title": "Little Country Girl",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-little-country-girl-by-susan-coolidge/",

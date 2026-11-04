@@ -2361,30 +2361,45 @@
             {
               "audio_url": "https://www.archive.org/download/coffinforjacob_2204_librivox/coffinforjacob_1_ludwig_64kb.mp3",
               "length_ms": 1088000,
+              "readers": [
+                "paul-harvey-librivox-15288"
+              ],
               "start_ms": 0,
               "title": "Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/coffinforjacob_2204_librivox/coffinforjacob_2_ludwig_64kb.mp3",
               "length_ms": 917000,
+              "readers": [
+                "james-r-hedrick"
+              ],
               "start_ms": 1088000,
               "title": "Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/coffinforjacob_2204_librivox/coffinforjacob_3_ludwig_64kb.mp3",
               "length_ms": 875000,
+              "readers": [
+                "james-r-hedrick"
+              ],
               "start_ms": 2005000,
               "title": "Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/coffinforjacob_2204_librivox/coffinforjacob_4_ludwig_64kb.mp3",
               "length_ms": 852000,
+              "readers": [
+                "james-r-hedrick"
+              ],
               "start_ms": 2880000,
               "title": "Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/coffinforjacob_2204_librivox/coffinforjacob_5_ludwig_64kb.mp3",
               "length_ms": 900000,
+              "readers": [
+                "james-r-hedrick"
+              ],
               "start_ms": 3732000,
               "title": "Part 5"
             }
@@ -2393,7 +2408,11 @@
           "cover_url": "https://archive.org/download/coffinforjacob_2204_librivox/coffinforjacob_2204.jpg",
           "id": "paul-harvey-librivox-15288",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 16242,
+          "librivox_title": "Coffin for Jacob",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/coffin-for-jacob-by-edward-w-ludwig/",

@@ -2968,7 +2968,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt30/rangy_pete_1304.jpg",
           "id": "grant-hurlock",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "General Fiction",
+            "Westerns"
+          ],
           "librivox_id": 7277,
+          "librivox_title": "Rangy Pete",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/rangy-pete-by-guy-morton/",
@@ -9114,36 +9120,42 @@
             {
               "audio_url": "https://www.archive.org/download/rape_lock_rf_librivox/rapeofthelock_0_pope_64kb.mp3",
               "length_ms": 239000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "0 - Epistle Dedicatory"
             },
             {
               "audio_url": "https://www.archive.org/download/rape_lock_rf_librivox/rapeofthelock_1_pope_64kb.mp3",
               "length_ms": 616000,
+              "section_number": 1,
               "start_ms": 239000,
               "title": "1 - Canto I"
             },
             {
               "audio_url": "https://www.archive.org/download/rape_lock_rf_librivox/rapeofthelock_2_pope_64kb.mp3",
               "length_ms": 584000,
+              "section_number": 2,
               "start_ms": 855000,
               "title": "2 - Canto II"
             },
             {
               "audio_url": "https://www.archive.org/download/rape_lock_rf_librivox/rapeofthelock_3_pope_64kb.mp3",
               "length_ms": 731000,
+              "section_number": 3,
               "start_ms": 1439000,
               "title": "3 - Canto III"
             },
             {
               "audio_url": "https://www.archive.org/download/rape_lock_rf_librivox/rapeofthelock_4_pope_64kb.mp3",
               "length_ms": 725000,
+              "section_number": 4,
               "start_ms": 2170000,
               "title": "4 - Canto IV"
             },
             {
               "audio_url": "https://www.archive.org/download/rape_lock_rf_librivox/rapeofthelock_5_pope_64kb.mp3",
               "length_ms": 640000,
+              "section_number": 5,
               "start_ms": 2895000,
               "title": "5 - Canto V"
             }
@@ -9152,7 +9164,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt19/Rape_of_the_Lock_1209.jpg",
           "id": "rhonda-federman",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Satire",
+            "Narratives"
+          ],
           "librivox_id": 6067,
+          "librivox_title": "Rape of the Lock",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-rape-of-the-lock-by-alexander-pope/",
@@ -14975,18 +14993,28 @@
             {
               "audio_url": "https://www.archive.org/download/rappaccinis_daughter_1002_librivox/rappaccinisdaughter_1_hawthorne_64kb.mp3",
               "length_ms": 1460000,
+              "readers": [
+                "brett-w-downey"
+              ],
               "start_ms": 0,
               "title": "Part 01"
             },
             {
               "audio_url": "https://www.archive.org/download/rappaccinis_daughter_1002_librivox/rappaccinisdaughter_2_hawthorne_64kb.mp3",
               "length_ms": 1861000,
+              "readers": [
+                "brett-w-downey"
+              ],
               "start_ms": 1460000,
               "title": "Part 02"
             },
             {
               "audio_url": "https://www.archive.org/download/rappaccinis_daughter_1002_librivox/rappaccinisdaughter_3_hawthorne_64kb.mp3",
               "length_ms": 1055000,
+              "readers": [
+                "brett-w-downey",
+                "theresa-l-downey"
+              ],
               "start_ms": 3321000,
               "title": "Part 03"
             }
@@ -14995,7 +15023,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt26/Rappaccinis_Daughter_1212.jpg",
           "id": "brett-w-downey",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction",
+            "Romance"
+          ],
           "librivox_id": 4046,
+          "librivox_title": "Rappaccini's Daughter",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/rappaccinis-daughter-by-nathaniel-hawthorne/",

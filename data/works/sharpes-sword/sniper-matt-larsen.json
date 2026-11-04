@@ -4258,7 +4258,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt19/snowblind_1206.jpg",
           "id": "roger-melin",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 5284,
+          "librivox_title": "Snow-Blind",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/snow-blind-by-katharine-newlin-burt/",
@@ -4737,18 +4741,21 @@
             {
               "audio_url": "https://www.archive.org/download/snowbound_pht_librivox/snowbound_00_whittier_64kb.mp3",
               "length_ms": 394000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/snowbound_pht_librivox/snowbound_01_whittier_64kb.mp3",
               "length_ms": 1495000,
+              "section_number": 1,
               "start_ms": 394000,
               "title": "Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/snowbound_pht_librivox/snowbound_02_whittier_64kb.mp3",
               "length_ms": 1534000,
+              "section_number": 2,
               "start_ms": 1889000,
               "title": "Part 2"
             }
@@ -4757,7 +4764,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt5/snow_bound_1006.jpg",
           "id": "paul-henry-tremblay",
           "language": "en",
+          "librivox_genres": [
+            "Elegies & Odes"
+          ],
           "librivox_id": 1977,
+          "librivox_title": "Snow-Bound: A Winter Idyl",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/snow-bound-a-winter-idyl-by-john-greenleaf-whittier/",
@@ -5724,7 +5735,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt29/Snow-Burner_1302.jpg",
           "id": "roger-melin",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction"
+          ],
           "librivox_id": 5514,
+          "librivox_title": "Snow-Burner",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-snow-burner-by-henry-oyen/",
@@ -8375,126 +8390,189 @@
             {
               "audio_url": "https://www.archive.org/download/snow-flakes_0912_librivox/snowflakes_longfellow_add_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "alan-davis-drake-1945-2010"
+              ],
               "start_ms": 0,
               "title": "Snow-Flakes - Read by ADD"
             },
             {
               "audio_url": "https://www.archive.org/download/snow-flakes_0912_librivox/snowflakes_longfellow_arr_64kb.mp3",
               "length_ms": 56000,
+              "readers": [
+                "anna-roberts"
+              ],
               "start_ms": 74000,
               "title": "Snow-Flakes - Read by ARR"
             },
             {
               "audio_url": "https://www.archive.org/download/snow-flakes_0912_librivox/snowflakes_longfellow_cal_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "caliban"
+              ],
               "start_ms": 130000,
               "title": "Snow-Flakes - Read by CAL"
             },
             {
               "audio_url": "https://www.archive.org/download/snow-flakes_0912_librivox/snowflakes_longfellow_cmc_64kb.mp3",
               "length_ms": 79000,
+              "readers": [
+                "chris-caron"
+              ],
               "start_ms": 199000,
               "title": "Snow-Flakes - Read by CMC"
             },
             {
               "audio_url": "https://www.archive.org/download/snow-flakes_0912_librivox/snowflakes_longfellow_dii_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "diana-majlinger"
+              ],
               "start_ms": 278000,
               "title": "Snow-Flakes - Read by DII"
             },
             {
               "audio_url": "https://www.archive.org/download/snow-flakes_0912_librivox/snowflakes_longfellow_dl_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 347000,
               "title": "Snow-Flakes - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/snow-flakes_0912_librivox/snowflakes_longfellow_dmw_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "daniel-watkins"
+              ],
               "start_ms": 417000,
               "title": "Snow-Flakes - Read by DMW"
             },
             {
               "audio_url": "https://www.archive.org/download/snow-flakes_0912_librivox/snowflakes_longfellow_eep_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "ernst-pattynama"
+              ],
               "start_ms": 472000,
               "title": "Snow-Flakes - Read by EEP"
             },
             {
               "audio_url": "https://www.archive.org/download/snow-flakes_0912_librivox/snowflakes_longfellow_ewl_64kb.mp3",
               "length_ms": 58000,
+              "readers": [
+                "edward-w-labonte"
+              ],
               "start_ms": 553000,
               "title": "Snow-Flakes - Read by EWL"
             },
             {
               "audio_url": "https://www.archive.org/download/snow-flakes_0912_librivox/snowflakes_longfellow_ezwa_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "ezwa"
+              ],
               "start_ms": 611000,
               "title": "Snow-Flakes - Read by EZWA"
             },
             {
               "audio_url": "https://www.archive.org/download/snow-flakes_0912_librivox/snowflakes_longfellow_jhl_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "josh-linton"
+              ],
               "start_ms": 691000,
               "title": "Snow-Flakes - Read by JHL"
             },
             {
               "audio_url": "https://www.archive.org/download/snow-flakes_0912_librivox/snowflakes_longfellow_joc_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "jimocr"
+              ],
               "start_ms": 759000,
               "title": "Snow-Flakes - Read by JOC"
             },
             {
               "audio_url": "https://www.archive.org/download/snow-flakes_0912_librivox/snowflakes_longfellow_lah_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 836000,
               "title": "Snow-Flakes - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/snow-flakes_0912_librivox/snowflakes_longfellow_llp_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "linda-lee-paquet"
+              ],
               "start_ms": 907000,
               "title": "Snow-Flakes - Read by LLP"
             },
             {
               "audio_url": "https://www.archive.org/download/snow-flakes_0912_librivox/snowflakes_longfellow_mb_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "matthew-b"
+              ],
               "start_ms": 979000,
               "title": "Snow-Flakes - Read by MB"
             },
             {
               "audio_url": "https://www.archive.org/download/snow-flakes_0912_librivox/snowflakes_longfellow_mfs_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "mark-f-smith"
+              ],
               "start_ms": 1059000,
               "title": "Snowflakes - Read by MFS"
             },
             {
               "audio_url": "https://www.archive.org/download/snow-flakes_0912_librivox/snowflakes_longfellow_ni_64kb.mp3",
               "length_ms": 60000,
+              "readers": [
+                "neeru-iyer"
+              ],
               "start_ms": 1136000,
               "title": "Snow-Flakes - Read by NI"
             },
             {
               "audio_url": "https://www.archive.org/download/snow-flakes_0912_librivox/snowflakes_longfellow_rg_64kb.mp3",
               "length_ms": 84000,
+              "readers": [
+                "ruth-golding"
+              ],
               "start_ms": 1196000,
               "title": "Snow-Flakes - Read by RG"
             },
             {
               "audio_url": "https://www.archive.org/download/snow-flakes_0912_librivox/snowflakes_longfellow_rn_64kb.mp3",
               "length_ms": 83000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 1280000,
               "title": "Snow-Flakes - Read by RN"
             },
             {
               "audio_url": "https://www.archive.org/download/snow-flakes_0912_librivox/snowflakes_longfellow_sjm_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "rose-264"
+              ],
               "start_ms": 1363000,
               "title": "Snow-Flakes - Read by SJM"
             },
             {
               "audio_url": "https://www.archive.org/download/snow-flakes_0912_librivox/snowflakes_longfellow_smm_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "sean-mcgaughey"
+              ],
               "start_ms": 1428000,
               "title": "Snow-Flakes - Read by SMM"
             }
@@ -8503,7 +8581,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt21/Snow-Flakes_1208.jpg",
           "id": "alan-davis-drake-1945-2010",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)",
+            "Nature"
+          ],
           "librivox_id": 3851,
+          "librivox_title": "Snow-Flakes",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/snow-flakes-by-henry-wadsworth-longfellow/",
@@ -11823,234 +11907,390 @@
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_00_sand_64kb.mp3",
               "length_ms": 584000,
+              "readers": [
+                "christine-rottger"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_01_sand_64kb.mp3",
               "length_ms": 1374000,
+              "readers": [
+                "cbteddy"
+              ],
+              "section_number": 1,
               "start_ms": 584000,
               "title": "Chapter 1, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_02_sand_64kb.mp3",
               "length_ms": 1577000,
+              "readers": [
+                "cbteddy"
+              ],
+              "section_number": 2,
               "start_ms": 1958000,
               "title": "Chapter 1, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_03_sand_64kb.mp3",
               "length_ms": 1758000,
+              "readers": [
+                "simstoic"
+              ],
+              "section_number": 3,
               "start_ms": 3535000,
               "title": "Chapter 2, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_04_sand_64kb.mp3",
               "length_ms": 1315000,
+              "readers": [
+                "cbteddy"
+              ],
+              "section_number": 4,
               "start_ms": 5293000,
               "title": "Chapter 2, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_05_sand_64kb.mp3",
               "length_ms": 1612000,
+              "readers": [
+                "cbteddy"
+              ],
+              "section_number": 5,
               "start_ms": 6608000,
               "title": "Chapter 3, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_06_sand_64kb.mp3",
               "length_ms": 1560000,
+              "readers": [
+                "cbteddy"
+              ],
+              "section_number": 6,
               "start_ms": 8220000,
               "title": "Chapter 3, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_07_sand_64kb.mp3",
               "length_ms": 1695000,
+              "readers": [
+                "david-curtiss"
+              ],
+              "section_number": 7,
               "start_ms": 9780000,
               "title": "Chapter 4, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_08_sand_64kb.mp3",
               "length_ms": 1832000,
+              "readers": [
+                "david-curtiss"
+              ],
+              "section_number": 8,
               "start_ms": 11475000,
               "title": "Chapter 4 , Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_09_sand_64kb.mp3",
               "length_ms": 2286000,
+              "readers": [
+                "simstoic"
+              ],
+              "section_number": 9,
               "start_ms": 13307000,
               "title": "Chapter 5, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_10_sand_64kb.mp3",
               "length_ms": 1806000,
+              "readers": [
+                "cbteddy"
+              ],
+              "section_number": 10,
               "start_ms": 15593000,
               "title": "Chapter 5, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_11_sand_64kb.mp3",
               "length_ms": 2012000,
+              "readers": [
+                "jessica-hendra"
+              ],
+              "section_number": 11,
               "start_ms": 17399000,
               "title": "Chapter 5, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_12_sand_64kb.mp3",
               "length_ms": 2404000,
+              "readers": [
+                "toddhw"
+              ],
+              "section_number": 12,
               "start_ms": 19411000,
               "title": "Chapter 5, Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_13_sand_64kb.mp3",
               "length_ms": 1688000,
+              "readers": [
+                "cbteddy"
+              ],
+              "section_number": 13,
               "start_ms": 21815000,
               "title": "Chapter 6, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_14_sand_64kb.mp3",
               "length_ms": 1715000,
+              "readers": [
+                "cbteddy"
+              ],
+              "section_number": 14,
               "start_ms": 23503000,
               "title": "Chapter 6, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_15_sand_64kb.mp3",
               "length_ms": 711000,
+              "readers": [
+                "tim-rowe"
+              ],
+              "section_number": 15,
               "start_ms": 25218000,
               "title": "Chapter 7, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_16_sand_64kb.mp3",
               "length_ms": 1700000,
+              "readers": [
+                "yobumlee"
+              ],
+              "section_number": 16,
               "start_ms": 25929000,
               "title": "Chapter 7,Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_17_sand_64kb.mp3",
               "length_ms": 1734000,
+              "readers": [
+                "yobumlee"
+              ],
+              "section_number": 17,
               "start_ms": 27629000,
               "title": "Chapter 7, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_18_sand_64kb.mp3",
               "length_ms": 1956000,
+              "readers": [
+                "cbteddy"
+              ],
+              "section_number": 18,
               "start_ms": 29363000,
               "title": "Chapter 8, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_19_sand_64kb.mp3",
               "length_ms": 1773000,
+              "readers": [
+                "cbteddy"
+              ],
+              "section_number": 19,
               "start_ms": 31319000,
               "title": "Chapter 8, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_20_sand_64kb.mp3",
               "length_ms": 1828000,
+              "readers": [
+                "tim-rowe"
+              ],
+              "section_number": 20,
               "start_ms": 33092000,
               "title": "Chapter 9, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_21_sand_64kb.mp3",
               "length_ms": 1594000,
+              "readers": [
+                "maryann"
+              ],
+              "section_number": 21,
               "start_ms": 34920000,
               "title": "Chapter 9, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_22_sand_64kb.mp3",
               "length_ms": 2006000,
+              "readers": [
+                "maryann"
+              ],
+              "section_number": 22,
               "start_ms": 36514000,
               "title": "Chapter 10, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_23_sand_64kb.mp3",
               "length_ms": 2014000,
+              "readers": [
+                "maryann"
+              ],
+              "section_number": 23,
               "start_ms": 38520000,
               "title": "Chapter 10, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_24_sand_64kb.mp3",
               "length_ms": 1121000,
+              "readers": [
+                "maryann"
+              ],
+              "section_number": 24,
               "start_ms": 40534000,
               "title": "Chapter 11, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_25_sand_64kb.mp3",
               "length_ms": 918000,
+              "readers": [
+                "maryann"
+              ],
+              "section_number": 25,
               "start_ms": 41655000,
               "title": "Chatper 11, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_26_sand_64kb.mp3",
               "length_ms": 2205000,
+              "readers": [
+                "belinda-mcreynolds"
+              ],
+              "section_number": 26,
               "start_ms": 42573000,
               "title": "Chapter 12, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_27_sand_64kb.mp3",
               "length_ms": 1920000,
+              "readers": [
+                "cbteddy"
+              ],
+              "section_number": 27,
               "start_ms": 44778000,
               "title": "Chapter 12, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_28_sand_64kb.mp3",
               "length_ms": 2289000,
+              "readers": [
+                "cbteddy"
+              ],
+              "section_number": 28,
               "start_ms": 46698000,
               "title": "Chapter 13"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_29_sand_64kb.mp3",
               "length_ms": 1721000,
+              "readers": [
+                "cbteddy"
+              ],
+              "section_number": 29,
               "start_ms": 48987000,
               "title": "Chapter 14"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_30_sand_64kb.mp3",
               "length_ms": 1248000,
+              "readers": [
+                "cbteddy"
+              ],
+              "section_number": 30,
               "start_ms": 50708000,
               "title": "Chapter 15"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_31_sand_64kb.mp3",
               "length_ms": 1431000,
+              "readers": [
+                "toddhw"
+              ],
+              "section_number": 31,
               "start_ms": 51956000,
               "title": "Chapter 16, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_32_sand_64kb.mp3",
               "length_ms": 1318000,
+              "readers": [
+                "toddhw"
+              ],
+              "section_number": 32,
               "start_ms": 53387000,
               "title": "Chapter 16, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_33_sand_64kb.mp3",
               "length_ms": 1989000,
+              "readers": [
+                "cbteddy"
+              ],
+              "section_number": 33,
               "start_ms": 54705000,
               "title": "Chapter 17"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_34_sand_64kb.mp3",
               "length_ms": 2127000,
+              "readers": [
+                "navya"
+              ],
+              "section_number": 34,
               "start_ms": 56694000,
               "title": "Chapter 18"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_35_sand_64kb.mp3",
               "length_ms": 1677000,
+              "readers": [
+                "navya"
+              ],
+              "section_number": 35,
               "start_ms": 58821000,
               "title": "Chapter 19"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_36_sand_64kb.mp3",
               "length_ms": 1415000,
+              "readers": [
+                "christine-rottger"
+              ],
+              "section_number": 36,
               "start_ms": 60498000,
               "title": "Chapter 20, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_37_sand_64kb.mp3",
               "length_ms": 1617000,
+              "readers": [
+                "christine-rottger"
+              ],
+              "section_number": 37,
               "start_ms": 61913000,
               "title": "Chapter 20, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnowman_2503_librivox/snowman_38_sand_64kb.mp3",
               "length_ms": 2524000,
+              "readers": [
+                "christine-rottger"
+              ],
+              "section_number": 38,
               "start_ms": 63530000,
               "title": "Conclusion"
             }
@@ -12059,7 +12299,11 @@
           "cover_url": "https://archive.org/download/thesnowman_2503_librivox/thesnowman_2504.jpg",
           "id": "christine-rottger",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 19734,
+          "librivox_title": "Snow Man",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-snow-man-by-george-sand/",
@@ -13673,66 +13917,99 @@
             {
               "audio_url": "https://www.archive.org/download/snow_song_0712_librivox/snowsong_teasdale_add_64kb.mp3",
               "length_ms": 56000,
+              "readers": [
+                "alan-davis-drake-1945-2010"
+              ],
               "start_ms": 0,
               "title": "Snow Song - Read by ADD"
             },
             {
               "audio_url": "https://www.archive.org/download/snow_song_0712_librivox/snowsong_teasdale_cc_64kb.mp3",
               "length_ms": 48000,
+              "readers": [
+                "caitlin-teresa"
+              ],
               "start_ms": 56000,
               "title": "Snow Song - Read by CC"
             },
             {
               "audio_url": "https://www.archive.org/download/snow_song_0712_librivox/snowsong_teasdale_cjrg_64kb.mp3",
               "length_ms": 48000,
+              "readers": [
+                "clarica"
+              ],
               "start_ms": 104000,
               "title": "Snow Song - Read by CJRG"
             },
             {
               "audio_url": "https://www.archive.org/download/snow_song_0712_librivox/snowsong_teasdale_edp_64kb.mp3",
               "length_ms": 44000,
+              "readers": [
+                "elizabeth-palmer"
+              ],
               "start_ms": 152000,
               "title": "Snow Song - Read by EDP"
             },
             {
               "audio_url": "https://www.archive.org/download/snow_song_0712_librivox/snowsong_teasdale_jcg_64kb.mp3",
               "length_ms": 46000,
+              "readers": [
+                "jc-guan"
+              ],
               "start_ms": 196000,
               "title": "Snow Song - Read by JCG"
             },
             {
               "audio_url": "https://www.archive.org/download/snow_song_0712_librivox/snowsong_teasdale_klh_64kb.mp3",
               "length_ms": 47000,
+              "readers": [
+                "kristin-hughes-1974-2021"
+              ],
               "start_ms": 242000,
               "title": "Snow Song - Read by KLH"
             },
             {
               "audio_url": "https://www.archive.org/download/snow_song_0712_librivox/snowsong_teasdale_lah_64kb.mp3",
               "length_ms": 44000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 289000,
               "title": "Snow Song - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/snow_song_0712_librivox/snowsong_teasdale_mfs_64kb.mp3",
               "length_ms": 51000,
+              "readers": [
+                "mark-f-smith"
+              ],
               "start_ms": 333000,
               "title": "Snow Song - Read by MFS"
             },
             {
               "audio_url": "https://www.archive.org/download/snow_song_0712_librivox/snowsong_teasdale_mw_64kb.mp3",
               "length_ms": 64000,
+              "readers": [
+                "michelle-white"
+              ],
               "start_ms": 384000,
               "title": "Snow Song - Read by MW"
             },
             {
               "audio_url": "https://www.archive.org/download/snow_song_0712_librivox/snowsong_teasdale_smm_64kb.mp3",
               "length_ms": 48000,
+              "readers": [
+                "sean-mcgaughey"
+              ],
               "start_ms": 448000,
               "title": "Snow Song - Read by SMM"
             },
             {
               "audio_url": "https://www.archive.org/download/snow_song_0712_librivox/snowsong_teasdale_smm2_64kb.mp3",
               "length_ms": 56000,
+              "readers": [
+                "sean-mcgaughey"
+              ],
               "start_ms": 496000,
               "title": "Snow Song - Sung by SMM"
             }
@@ -13741,7 +14018,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt11/Snow_Song_1111.jpg",
           "id": "alan-davis-drake-1945-2010",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 1689,
+          "librivox_title": "Snow Song",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/snow-song-by-sara-teasdale/",
@@ -14353,96 +14635,144 @@
             {
               "audio_url": "https://www.archive.org/download/thesnow-storm_2502.poem_librivox/snowstorm_emerson_aps_64kb.mp3",
               "length_ms": 123000,
+              "readers": [
+                "adrian-stephens"
+              ],
               "start_ms": 0,
               "title": "The Snow-Storm - Read by APS"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnow-storm_2502.poem_librivox/snowstorm_emerson_bk_64kb.mp3",
               "length_ms": 128000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 123000,
               "title": "The Snow-Storm - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnow-storm_2502.poem_librivox/snowstorm_emerson_bwc_64kb.mp3",
               "length_ms": 106000,
+              "readers": [
+                "beeswaxcandle"
+              ],
               "start_ms": 251000,
               "title": "The Snow-Storm - Read by BWC"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnow-storm_2502.poem_librivox/snowstorm_emerson_ch_64kb.mp3",
               "length_ms": 102000,
+              "readers": [
+                "chrish"
+              ],
               "start_ms": 357000,
               "title": "The Snow-Storm - Read by CH"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnow-storm_2502.poem_librivox/snowstorm_emerson_dl_64kb.mp3",
               "length_ms": 132000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 459000,
               "title": "The Snow-Storm - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnow-storm_2502.poem_librivox/snowstorm_emerson_gll_64kb.mp3",
               "length_ms": 143000,
+              "readers": [
+                "gloria-loughry"
+              ],
               "start_ms": 591000,
               "title": "The Snow-Storm - Read by GLL"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnow-storm_2502.poem_librivox/snowstorm_emerson_ikl_64kb.mp3",
               "length_ms": 102000,
+              "readers": [
+                "inkell"
+              ],
               "start_ms": 734000,
               "title": "The Snow-Storm - Read by IKL"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnow-storm_2502.poem_librivox/snowstorm_emerson_js_64kb.mp3",
               "length_ms": 162000,
+              "readers": [
+                "joao-senna"
+              ],
               "start_ms": 836000,
               "title": "The Snow-Storm - Read by JS"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnow-storm_2502.poem_librivox/snowstorm_emerson_lcw_64kb.mp3",
               "length_ms": 110000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 998000,
               "title": "The Snow-Storm - Read by LCW"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnow-storm_2502.poem_librivox/snowstorm_emerson_ls_64kb.mp3",
               "length_ms": 128000,
+              "readers": [
+                "leesalter"
+              ],
               "start_ms": 1108000,
               "title": "The Snow-Storm - Read by LS"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnow-storm_2502.poem_librivox/snowstorm_emerson_maf_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "michael-fassio"
+              ],
               "start_ms": 1236000,
               "title": "The Snow-Storm - Read by MAF"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnow-storm_2502.poem_librivox/snowstorm_emerson_map_64kb.mp3",
               "length_ms": 107000,
+              "readers": [
+                "moses-peterson"
+              ],
               "start_ms": 1345000,
               "title": "The Snow-Storm - Read by MAP"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnow-storm_2502.poem_librivox/snowstorm_emerson_mm_64kb.mp3",
               "length_ms": 136000,
+              "readers": [
+                "missy-morgan"
+              ],
               "start_ms": 1452000,
               "title": "The Snow-Storm - Read by MM"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnow-storm_2502.poem_librivox/snowstorm_emerson_pfs_64kb.mp3",
               "length_ms": 112000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 1588000,
               "title": "The Snow-Storm - Read by PFS"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnow-storm_2502.poem_librivox/snowstorm_emerson_rr_64kb.mp3",
               "length_ms": 129000,
+              "readers": [
+                "redrun"
+              ],
               "start_ms": 1700000,
               "title": "The Snow-Storm - Read by RR"
             },
             {
               "audio_url": "https://www.archive.org/download/thesnow-storm_2502.poem_librivox/snowstorm_emerson_sp_64kb.mp3",
               "length_ms": 115000,
+              "readers": [
+                "shrimpphish"
+              ],
               "start_ms": 1829000,
               "title": "The Snow-Storm - Read by SP"
             }
@@ -14451,7 +14781,11 @@
           "cover_url": "https://archive.org/download/thesnow-storm_2502.poem_librivox/snowstorm_2502.jpg",
           "id": "adrian-stephens",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 21351,
+          "librivox_title": "Snow-Storm",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-snow-storm-by-ralph-waldo-emerson/",
@@ -14517,90 +14851,135 @@
             {
               "audio_url": "https://www.archive.org/download/snow_storm_1901.poem_librivox/snowstorm_young_bk_64kb.mp3",
               "length_ms": 154000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 0,
               "title": "A Snow Storm - Read by  BK"
             },
             {
               "audio_url": "https://www.archive.org/download/snow_storm_1901.poem_librivox/snowstorm_young_dl_64kb.mp3",
               "length_ms": 137000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 154000,
               "title": "A Snow Storm - Read by  DL"
             },
             {
               "audio_url": "https://www.archive.org/download/snow_storm_1901.poem_librivox/snowstorm_young_fh_64kb.mp3",
               "length_ms": 141000,
+              "readers": [
+                "foon"
+              ],
               "start_ms": 291000,
               "title": "A Snow Storm - Read by  FH"
             },
             {
               "audio_url": "https://www.archive.org/download/snow_storm_1901.poem_librivox/snowstorm_young_gb_64kb.mp3",
               "length_ms": 152000,
+              "readers": [
+                "garth-burton"
+              ],
               "start_ms": 432000,
               "title": "A Snow Storm - Read by  GB"
             },
             {
               "audio_url": "https://www.archive.org/download/snow_storm_1901.poem_librivox/snowstorm_young_gg_64kb.mp3",
               "length_ms": 147000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 584000,
               "title": "A Snow Storm - Read by  GG"
             },
             {
               "audio_url": "https://www.archive.org/download/snow_storm_1901.poem_librivox/snowstorm_young_ik_64kb.mp3",
               "length_ms": 138000,
+              "readers": [
+                "ian-king"
+              ],
               "start_ms": 731000,
               "title": "A Snow Storm - Read by  IK"
             },
             {
               "audio_url": "https://www.archive.org/download/snow_storm_1901.poem_librivox/snowstorm_young_jfg_64kb.mp3",
               "length_ms": 121000,
+              "readers": [
+                "jim-gallagher"
+              ],
               "start_ms": 869000,
               "title": "A Snow Storm - Read by  JFG"
             },
             {
               "audio_url": "https://www.archive.org/download/snow_storm_1901.poem_librivox/snowstorm_young_jk_64kb.mp3",
               "length_ms": 119000,
+              "readers": [
+                "josh-kibbey"
+              ],
               "start_ms": 990000,
               "title": "A Snow Storm - Read by  JK"
             },
             {
               "audio_url": "https://www.archive.org/download/snow_storm_1901.poem_librivox/snowstorm_young_lcw_64kb.mp3",
               "length_ms": 121000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 1109000,
               "title": "A Snow Storm - Read by  LCW"
             },
             {
               "audio_url": "https://www.archive.org/download/snow_storm_1901.poem_librivox/snowstorm_young_nr_64kb.mp3",
               "length_ms": 140000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 1230000,
               "title": "A Snow Storm - Read by NR"
             },
             {
               "audio_url": "https://www.archive.org/download/snow_storm_1901.poem_librivox/snowstorm_young_ps_64kb.mp3",
               "length_ms": 122000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 1370000,
               "title": "A Snow Storm - Read by  PS"
             },
             {
               "audio_url": "https://www.archive.org/download/snow_storm_1901.poem_librivox/snowstorm_young_sh_64kb.mp3",
               "length_ms": 126000,
+              "readers": [
+                "sweethome"
+              ],
               "start_ms": 1492000,
               "title": "A Snow Storm - Read by  SH"
             },
             {
               "audio_url": "https://www.archive.org/download/snow_storm_1901.poem_librivox/snowstorm_young_srb_64kb.mp3",
               "length_ms": 131000,
+              "readers": [
+                "sarah-brown"
+              ],
               "start_ms": 1618000,
               "title": "A Snow Storm - Read by  SRB"
             },
             {
               "audio_url": "https://www.archive.org/download/snow_storm_1901.poem_librivox/snowstorm_young_tp_64kb.mp3",
               "length_ms": 132000,
+              "readers": [
+                "tomas-peter"
+              ],
               "start_ms": 1749000,
               "title": "A Snow Storm - Read by  TP"
             },
             {
               "audio_url": "https://www.archive.org/download/snow_storm_1901.poem_librivox/snowstorm_young_vb_64kb.mp3",
               "length_ms": 160000,
+              "readers": [
+                "tovarisch"
+              ],
               "start_ms": 1881000,
               "title": "A Snow Storm - Read by  VB"
             }
@@ -14609,7 +14988,11 @@
           "cover_url": "https://archive.org/download/snow_storm_1901.poem_librivox/snowstorm_1901.jpg",
           "id": "bruce-kachuk",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 13669,
+          "librivox_title": "Snow Storm",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-snow-storm-by-thomas-frederick-young/",

@@ -2745,12 +2745,31 @@
             {
               "audio_url": "https://www.archive.org/download/whosthedupe_2305_librivox/whosthedupe_1_cowley_64kb.mp3",
               "length_ms": 1818000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "greg-giordano",
+                "sonia",
+                "tomas-peter",
+                "jenn-broda",
+                "inkell",
+                "kendra"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/whosthedupe_2305_librivox/whosthedupe_2_cowley_64kb.mp3",
               "length_ms": 1902000,
+              "readers": [
+                "alan-mapstone",
+                "greg-giordano",
+                "sonia",
+                "tomas-peter",
+                "jenn-broda",
+                "inkell",
+                "kendra"
+              ],
               "start_ms": 1818000,
               "title": "Act 2"
             }
@@ -2759,7 +2778,11 @@
           "cover_url": "https://archive.org/download/whosthedupe_2305_librivox/who_dupe_2305.jpg",
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Comedy"
+          ],
           "librivox_id": 18947,
+          "librivox_title": "Who's the Dupe?",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/whos-the-dupe-by-hannah-cowley/",
@@ -5317,78 +5340,91 @@
             {
               "audio_url": "https://www.archive.org/download/whose_body_1105_librivox/whosebody_01_sayers_64kb.mp3",
               "length_ms": 1600000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "01 - Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/whose_body_1105_librivox/whosebody_02_sayers_64kb.mp3",
               "length_ms": 2013000,
+              "section_number": 1,
               "start_ms": 1600000,
               "title": "02 - Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/whose_body_1105_librivox/whosebody_03_sayers_64kb.mp3",
               "length_ms": 1522000,
+              "section_number": 2,
               "start_ms": 3613000,
               "title": "03 - Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/whose_body_1105_librivox/whosebody_04_sayers_64kb.mp3",
               "length_ms": 2654000,
+              "section_number": 3,
               "start_ms": 5135000,
               "title": "04 - Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/whose_body_1105_librivox/whosebody_05_sayers_64kb.mp3",
               "length_ms": 2838000,
+              "section_number": 4,
               "start_ms": 7789000,
               "title": "05 - Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/whose_body_1105_librivox/whosebody_06_sayers_64kb.mp3",
               "length_ms": 3333000,
+              "section_number": 5,
               "start_ms": 10627000,
               "title": "06 - Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/whose_body_1105_librivox/whosebody_07_sayers_64kb.mp3",
               "length_ms": 1991000,
+              "section_number": 6,
               "start_ms": 13960000,
               "title": "07 - Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/whose_body_1105_librivox/whosebody_08_sayers_64kb.mp3",
               "length_ms": 1029000,
+              "section_number": 7,
               "start_ms": 15951000,
               "title": "08 - Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/whose_body_1105_librivox/whosebody_09_sayers_64kb.mp3",
               "length_ms": 1504000,
+              "section_number": 8,
               "start_ms": 16980000,
               "title": "09 - Chapter 9"
             },
             {
               "audio_url": "https://www.archive.org/download/whose_body_1105_librivox/whosebody_10_sayers_64kb.mp3",
               "length_ms": 2196000,
+              "section_number": 9,
               "start_ms": 18484000,
               "title": "10 -Chapter 10"
             },
             {
               "audio_url": "https://www.archive.org/download/whose_body_1105_librivox/whosebody_11_sayers_64kb.mp3",
               "length_ms": 1193000,
+              "section_number": 10,
               "start_ms": 20680000,
               "title": "11 - Chapter 11"
             },
             {
               "audio_url": "https://www.archive.org/download/whose_body_1105_librivox/whosebody_12_sayers_64kb.mp3",
               "length_ms": 841000,
+              "section_number": 11,
               "start_ms": 21873000,
               "title": "12 - Chapter 12"
             },
             {
               "audio_url": "https://www.archive.org/download/whose_body_1105_librivox/whosebody_13_sayers_64kb.mp3",
               "length_ms": 2364000,
+              "section_number": 12,
               "start_ms": 22714000,
               "title": "13 - Chapter 13"
             }
@@ -5397,7 +5433,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt26/whosebody_1301.jpg",
           "id": "kirsten-wever",
           "language": "en",
+          "librivox_genres": [
+            "Detective Fiction"
+          ],
           "librivox_id": 5465,
+          "librivox_title": "Whose Body? (Version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/whose-body-version-2-by-dorothy-l-sayers/",
@@ -5540,78 +5580,117 @@
             {
               "audio_url": "https://www.archive.org/download/whose_body_librivox/whosebody_01_sayers_64kb.mp3",
               "length_ms": 1395000,
+              "readers": [
+                "kristin-hughes-1974-2021"
+              ],
               "start_ms": 0,
               "title": "Chapter 01"
             },
             {
               "audio_url": "https://www.archive.org/download/whose_body_librivox/whosebody_02_sayers_64kb.mp3",
               "length_ms": 1903000,
+              "readers": [
+                "kara-shallenberg-1969-2023"
+              ],
               "start_ms": 1395000,
               "title": "Chapter 02"
             },
             {
               "audio_url": "https://www.archive.org/download/whose_body_librivox/whosebody_03_sayers_64kb.mp3",
               "length_ms": 1436000,
+              "readers": [
+                "kristin-hughes-1974-2021"
+              ],
               "start_ms": 3298000,
               "title": "Chapter 03"
             },
             {
               "audio_url": "https://www.archive.org/download/whose_body_librivox/whosebody_04_sayers_64kb.mp3",
               "length_ms": 2440000,
+              "readers": [
+                "kara-shallenberg-1969-2023"
+              ],
               "start_ms": 4734000,
               "title": "Chapter 04"
             },
             {
               "audio_url": "https://www.archive.org/download/whose_body_librivox/whosebody_05_sayers_64kb.mp3",
               "length_ms": 2613000,
+              "readers": [
+                "kristin-hughes-1974-2021"
+              ],
               "start_ms": 7174000,
               "title": "Chapter 05"
             },
             {
               "audio_url": "https://www.archive.org/download/whose_body_librivox/whosebody_06_sayers_64kb.mp3",
               "length_ms": 3073000,
+              "readers": [
+                "kara-shallenberg-1969-2023"
+              ],
               "start_ms": 9787000,
               "title": "Chapter 06"
             },
             {
               "audio_url": "https://www.archive.org/download/whose_body_librivox/whosebody_07_sayers_64kb.mp3",
               "length_ms": 1825000,
+              "readers": [
+                "kristin-hughes-1974-2021"
+              ],
               "start_ms": 12860000,
               "title": "Chapter 07"
             },
             {
               "audio_url": "https://www.archive.org/download/whose_body_librivox/whosebody_08_sayers_64kb.mp3",
               "length_ms": 1019000,
+              "readers": [
+                "kara-shallenberg-1969-2023"
+              ],
               "start_ms": 14685000,
               "title": "Chapter 08"
             },
             {
               "audio_url": "https://www.archive.org/download/whose_body_librivox/whosebody_09_sayers_64kb.mp3",
               "length_ms": 1460000,
+              "readers": [
+                "kristin-hughes-1974-2021"
+              ],
               "start_ms": 15704000,
               "title": "Chapter 09"
             },
             {
               "audio_url": "https://www.archive.org/download/whose_body_librivox/whosebody_10_sayers_64kb.mp3",
               "length_ms": 2197000,
+              "readers": [
+                "kara-shallenberg-1969-2023"
+              ],
               "start_ms": 17164000,
               "title": "Chapter 10"
             },
             {
               "audio_url": "https://www.archive.org/download/whose_body_librivox/whosebody_11_sayers_64kb.mp3",
               "length_ms": 1151000,
+              "readers": [
+                "kristin-hughes-1974-2021"
+              ],
               "start_ms": 19361000,
               "title": "Chapter 11"
             },
             {
               "audio_url": "https://www.archive.org/download/whose_body_librivox/whosebody_12_sayers_64kb.mp3",
               "length_ms": 878000,
+              "readers": [
+                "kara-shallenberg-1969-2023"
+              ],
               "start_ms": 20512000,
               "title": "Chapter 12"
             },
             {
               "audio_url": "https://www.archive.org/download/whose_body_librivox/whosebody_13_sayers_64kb.mp3",
               "length_ms": 2058000,
+              "readers": [
+                "kristin-hughes-1974-2021"
+              ],
               "start_ms": 21390000,
               "title": "Chapter 13"
             }
@@ -5620,7 +5699,11 @@
           "cover_url": "https://archive.org/download/whose_body_librivox/Whose_Body_1107.jpg",
           "id": "kristin-hughes-1974-2021",
           "language": "en",
+          "librivox_genres": [
+            "Detective Fiction"
+          ],
           "librivox_id": 850,
+          "librivox_title": "Whose Body?",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/whose-body-by-dorothy-l-sayers/",
@@ -6359,84 +6442,222 @@
             {
               "audio_url": "https://www.archive.org/download/whosebody_ver2_dramaticreading_2306_librivox/whosebody_00_sayers_64kb.mp3",
               "length_ms": 190000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Dramatis Personae"
             },
             {
               "audio_url": "https://www.archive.org/download/whosebody_ver2_dramaticreading_2306_librivox/whosebody_01_sayers_64kb.mp3",
               "length_ms": 1468000,
+              "readers": [
+                "thomas-a-copeland",
+                "toddhw",
+                "deon-gines",
+                "ciufi-galeazzi",
+                "lynette-caulkins",
+                "james-r-hedrick",
+                "nighmare"
+              ],
+              "section_number": 1,
               "start_ms": 190000,
               "title": "Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/whosebody_ver2_dramaticreading_2306_librivox/whosebody_02_sayers_64kb.mp3",
               "length_ms": 1988000,
+              "readers": [
+                "thomas-a-copeland",
+                "david-purdy",
+                "ciufi-galeazzi",
+                "james-r-hedrick"
+              ],
+              "section_number": 2,
               "start_ms": 1658000,
               "title": "Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/whosebody_ver2_dramaticreading_2306_librivox/whosebody_03_sayers_64kb.mp3",
               "length_ms": 1523000,
+              "readers": [
+                "thomas-a-copeland",
+                "greg-giordano",
+                "david-purdy",
+                "ciufi-galeazzi",
+                "wayne-cooke",
+                "jenn-broda",
+                "lynette-caulkins",
+                "james-r-hedrick",
+                "redrun"
+              ],
+              "section_number": 3,
               "start_ms": 3646000,
               "title": "Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/whosebody_ver2_dramaticreading_2306_librivox/whosebody_04_sayers_64kb.mp3",
               "length_ms": 2630000,
+              "readers": [
+                "bethany-baldwin",
+                "thomas-a-copeland",
+                "david-purdy",
+                "ciufi-galeazzi",
+                "james-r-hedrick",
+                "j-schumacher",
+                "krista-zaleski",
+                "nighmare",
+                "rssmith121999",
+                "ted-perkins"
+              ],
+              "section_number": 4,
               "start_ms": 5169000,
               "title": "Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/whosebody_ver2_dramaticreading_2306_librivox/whosebody_05_sayers_64kb.mp3",
               "length_ms": 2798000,
+              "readers": [
+                "thomas-a-copeland",
+                "david-purdy",
+                "ciufi-galeazzi",
+                "cavaet",
+                "anthony-joseph",
+                "james-r-hedrick",
+                "krista-zaleski",
+                "nighmare"
+              ],
+              "section_number": 5,
               "start_ms": 7799000,
               "title": "Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/whosebody_ver2_dramaticreading_2306_librivox/whosebody_06_sayers_64kb.mp3",
               "length_ms": 3112000,
+              "readers": [
+                "toddhw",
+                "deon-gines",
+                "david-purdy",
+                "ciufi-galeazzi",
+                "wayne-cooke",
+                "lynette-caulkins",
+                "scott-caulkins",
+                "joanna-michal-hoyt",
+                "james-r-hedrick",
+                "carol-sutton"
+              ],
+              "section_number": 6,
               "start_ms": 10597000,
               "title": "Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/whosebody_ver2_dramaticreading_2306_librivox/whosebody_07_sayers_64kb.mp3",
               "length_ms": 1919000,
+              "readers": [
+                "thomas-a-copeland",
+                "david-purdy",
+                "devorah-allen",
+                "ciufi-galeazzi",
+                "lynette-caulkins",
+                "james-r-hedrick",
+                "marissa-siobhan",
+                "rochelle-berenyi",
+                "nighmare"
+              ],
+              "section_number": 7,
               "start_ms": 13709000,
               "title": "Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/whosebody_ver2_dramaticreading_2306_librivox/whosebody_08_sayers_64kb.mp3",
               "length_ms": 949000,
+              "readers": [
+                "thomas-a-copeland",
+                "greg-giordano",
+                "ciufi-galeazzi",
+                "jenn-broda",
+                "lynette-caulkins",
+                "scott-caulkins",
+                "james-r-hedrick"
+              ],
+              "section_number": 8,
               "start_ms": 15628000,
               "title": "Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/whosebody_ver2_dramaticreading_2306_librivox/whosebody_09_sayers_64kb.mp3",
               "length_ms": 1553000,
+              "readers": [
+                "thomas-a-copeland",
+                "greg-giordano",
+                "david-purdy",
+                "ciufi-galeazzi",
+                "lynette-caulkins",
+                "james-r-hedrick",
+                "yoganandh-t"
+              ],
+              "section_number": 9,
               "start_ms": 16577000,
               "title": "Chapter 9"
             },
             {
               "audio_url": "https://www.archive.org/download/whosebody_ver2_dramaticreading_2306_librivox/whosebody_10_sayers_64kb.mp3",
               "length_ms": 2116000,
+              "readers": [
+                "thomas-a-copeland",
+                "david-purdy",
+                "ciufi-galeazzi",
+                "scott-caulkins",
+                "arbycoors"
+              ],
+              "section_number": 10,
               "start_ms": 18130000,
               "title": "Chapter 10"
             },
             {
               "audio_url": "https://www.archive.org/download/whosebody_ver2_dramaticreading_2306_librivox/whosebody_11_sayers_64kb.mp3",
               "length_ms": 1140000,
+              "readers": [
+                "thomas-a-copeland",
+                "david-purdy",
+                "ciufi-galeazzi",
+                "scott-caulkins",
+                "dawn-sutton",
+                "redrun"
+              ],
+              "section_number": 11,
               "start_ms": 20246000,
               "title": "Chapter 11"
             },
             {
               "audio_url": "https://www.archive.org/download/whosebody_ver2_dramaticreading_2306_librivox/whosebody_12_sayers_64kb.mp3",
               "length_ms": 909000,
+              "readers": [
+                "thomas-a-copeland",
+                "greg-giordano",
+                "david-purdy",
+                "ciufi-galeazzi",
+                "wayne-cooke",
+                "lynette-caulkins",
+                "zach-hoyt",
+                "wendykatzhiller",
+                "laurie-banza"
+              ],
+              "section_number": 12,
               "start_ms": 21386000,
               "title": "Chapter 12"
             },
             {
               "audio_url": "https://www.archive.org/download/whosebody_ver2_dramaticreading_2306_librivox/whosebody_13_sayers_64kb.mp3",
               "length_ms": 1995000,
+              "readers": [
+                "thomas-a-copeland",
+                "david-purdy",
+                "ciufi-galeazzi",
+                "wayne-cooke",
+                "scott-caulkins",
+                "james-r-hedrick",
+                "arbycoors"
+              ],
+              "section_number": 13,
               "start_ms": 22295000,
               "title": "Chapter 13"
             }
@@ -6445,7 +6666,13 @@
           "cover_url": "https://archive.org/download/whosebody_ver2_dramaticreading_2306_librivox/whose_body_2306.jpg",
           "id": "thomas-a-copeland",
           "language": "en",
+          "librivox_genres": [
+            "Dramatic Readings",
+            "Literary Fiction",
+            "Published 1900 onward"
+          ],
           "librivox_id": 17367,
+          "librivox_title": "Whose Body? (Version 3 - dramatic reading)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/whose-body-by-dorothy-l-sayers-2/",
@@ -9984,180 +10211,210 @@
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_00_queen_64kb.mp3",
               "length_ms": 247000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Dedication; Preface Note; Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_01_queen_64kb.mp3",
               "length_ms": 610000,
+              "section_number": 1,
               "start_ms": 247000,
               "title": "Chapter 1: The Case Opened"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_02_queen_64kb.mp3",
               "length_ms": 788000,
+              "section_number": 2,
               "start_ms": 857000,
               "title": "Chapter 2: Weighed in the Balances"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_03_queen_64kb.mp3",
               "length_ms": 934000,
+              "section_number": 3,
               "start_ms": 1645000,
               "title": "Chapter 3: The Money Power"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_04_queen_64kb.mp3",
               "length_ms": 667000,
+              "section_number": 4,
               "start_ms": 2579000,
               "title": "Chapter 4: Business Competition"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_05_queen_64kb.mp3",
               "length_ms": 799000,
+              "section_number": 5,
               "start_ms": 3246000,
               "title": "Chapter 5; Negotiorum Contentio"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_06_queen_64kb.mp3",
               "length_ms": 740000,
+              "section_number": 6,
               "start_ms": 4045000,
               "title": "Chapter 6: Womanhood"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_07_queen_64kb.mp3",
               "length_ms": 736000,
+              "section_number": 7,
               "start_ms": 4785000,
               "title": "Chapter 7: Woman criticised"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_08_queen_64kb.mp3",
               "length_ms": 600000,
+              "section_number": 8,
               "start_ms": 5521000,
               "title": "Chapter 8: Woman defended"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_09_queen_64kb.mp3",
               "length_ms": 858000,
+              "section_number": 9,
               "start_ms": 6121000,
               "title": "Chapter 9: Intemperance"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_10_queen_64kb.mp3",
               "length_ms": 482000,
+              "section_number": 10,
               "start_ms": 6979000,
               "title": "Chapter 10: The Ministry"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_11_queen_64kb.mp3",
               "length_ms": 599000,
+              "section_number": 11,
               "start_ms": 7461000,
               "title": "Chapter 11: The Ministry - Concluded"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_12_queen_64kb.mp3",
               "length_ms": 792000,
+              "section_number": 12,
               "start_ms": 8060000,
               "title": "Chapter 12: Some of the Professions"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_13_queen_64kb.mp3",
               "length_ms": 609000,
+              "section_number": 13,
               "start_ms": 8852000,
               "title": "Chapter 13: Young Men"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_14_queen_64kb.mp3",
               "length_ms": 663000,
+              "section_number": 14,
               "start_ms": 9461000,
               "title": "Chapter 14: The Boys"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_15_queen_64kb.mp3",
               "length_ms": 683000,
+              "section_number": 15,
               "start_ms": 10124000,
               "title": "Chapter 15: The Church"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_16_queen_64kb.mp3",
               "length_ms": 760000,
+              "section_number": 16,
               "start_ms": 10807000,
               "title": "Chapter 16: Secret Societies"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_17_queen_64kb.mp3",
               "length_ms": 699000,
+              "section_number": 17,
               "start_ms": 11567000,
               "title": "Chapter 17: Laboring Men and the Church"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_18_queen_64kb.mp3",
               "length_ms": 769000,
+              "section_number": 18,
               "start_ms": 12266000,
               "title": "Chapter 18: The Church and Labor Men"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_19_queen_64kb.mp3",
               "length_ms": 786000,
+              "section_number": 19,
               "start_ms": 13035000,
               "title": "Chapter 19: Desecrating the Sabbath"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_20_queen_64kb.mp3",
               "length_ms": 653000,
+              "section_number": 20,
               "start_ms": 13821000,
               "title": "Chapter 20: Inconsistency"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_21_queen_64kb.mp3",
               "length_ms": 520000,
+              "section_number": 21,
               "start_ms": 14474000,
               "title": "Chapter 21: Aprons of Fig Leaves"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_22_queen_64kb.mp3",
               "length_ms": 603000,
+              "section_number": 22,
               "start_ms": 14994000,
               "title": "Chapter 22: Some Remedies"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_23_queen_64kb.mp3",
               "length_ms": 580000,
+              "section_number": 23,
               "start_ms": 15597000,
               "title": "Chapter 23: Other Remedies"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_24_queen_64kb.mp3",
               "length_ms": 571000,
+              "section_number": 24,
               "start_ms": 16177000,
               "title": "Chapter 24: Additional Remedies"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_25_queen_64kb.mp3",
               "length_ms": 616000,
+              "section_number": 25,
               "start_ms": 16748000,
               "title": "Chapter 25: Four More Remedies"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_26_queen_64kb.mp3",
               "length_ms": 664000,
+              "section_number": 26,
               "start_ms": 17364000,
               "title": "Chapter 26: Young Men's Sunday Evening Club"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_27_queen_64kb.mp3",
               "length_ms": 733000,
+              "section_number": 27,
               "start_ms": 18028000,
               "title": "Chapter 27: Dietetic and Consecrative Remedies."
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_28_queen_64kb.mp3",
               "length_ms": 773000,
+              "section_number": 28,
               "start_ms": 18761000,
               "title": "Chapter 28: Hortative Remedies"
             },
             {
               "audio_url": "https://www.archive.org/download/so_few_men_2507_librivox/fewmeninthechurches_29_queen_64kb.mp3",
               "length_ms": 656000,
+              "section_number": 29,
               "start_ms": 19534000,
               "title": "Chapter 29: Regenerative Remedy"
             }
@@ -10166,7 +10423,13 @@
           "cover_url": "https://archive.org/download/so_few_men_2507_librivox/sofewmen_2507.jpg",
           "id": "gillian-hendrie",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Social Science (Culture & Anthropology)",
+            "Christianity - Other"
+          ],
           "librivox_id": 21001,
+          "librivox_title": "Why Are So Few Men in the Churches? And Remedies",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/why-are-so-few-men-in-the-churches-and-remedies-by-charles-n-queen/",
@@ -10762,7 +11025,11 @@
           "cover_url": "https://archive.org/download/why_armenia_should_be_free_2203_librivox/why_armenia_2203.jpg",
           "id": "kevins",
           "language": "en",
+          "librivox_genres": [
+            "Political Science"
+          ],
           "librivox_id": 17738,
+          "librivox_title": "Why Armenia Should Be Free: Armenia's Role in the Present War",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/why-armenia-should-be-free-armenias-role-in-the-present-war-by-armen-garo/",
@@ -12553,78 +12820,91 @@
             {
               "audio_url": "https://www.archive.org/download/crime_does_not_pay_amb_1607_librivox/crimedoesnotpay_00_lyons_64kb.mp3",
               "length_ms": 319000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/crime_does_not_pay_amb_1607_librivox/crimedoesnotpay_01_lyons_64kb.mp3",
               "length_ms": 2325000,
+              "section_number": 1,
               "start_ms": 319000,
               "title": "Chapter I"
             },
             {
               "audio_url": "https://www.archive.org/download/crime_does_not_pay_amb_1607_librivox/crimedoesnotpay_02_lyons_64kb.mp3",
               "length_ms": 2130000,
+              "section_number": 2,
               "start_ms": 2644000,
               "title": "Chapter II"
             },
             {
               "audio_url": "https://www.archive.org/download/crime_does_not_pay_amb_1607_librivox/crimedoesnotpay_03_lyons_64kb.mp3",
               "length_ms": 2389000,
+              "section_number": 3,
               "start_ms": 4774000,
               "title": "Chapter III"
             },
             {
               "audio_url": "https://www.archive.org/download/crime_does_not_pay_amb_1607_librivox/crimedoesnotpay_04_lyons_64kb.mp3",
               "length_ms": 2669000,
+              "section_number": 4,
               "start_ms": 7163000,
               "title": "Chapter IV"
             },
             {
               "audio_url": "https://www.archive.org/download/crime_does_not_pay_amb_1607_librivox/crimedoesnotpay_05_lyons_64kb.mp3",
               "length_ms": 2468000,
+              "section_number": 5,
               "start_ms": 9832000,
               "title": "Chapter V"
             },
             {
               "audio_url": "https://www.archive.org/download/crime_does_not_pay_amb_1607_librivox/crimedoesnotpay_06_lyons_64kb.mp3",
               "length_ms": 2464000,
+              "section_number": 6,
               "start_ms": 12300000,
               "title": "Chapter VI"
             },
             {
               "audio_url": "https://www.archive.org/download/crime_does_not_pay_amb_1607_librivox/crimedoesnotpay_07_lyons_64kb.mp3",
               "length_ms": 1105000,
+              "section_number": 7,
               "start_ms": 14764000,
               "title": "Chapter VII"
             },
             {
               "audio_url": "https://www.archive.org/download/crime_does_not_pay_amb_1607_librivox/crimedoesnotpay_08_lyons_64kb.mp3",
               "length_ms": 2286000,
+              "section_number": 8,
               "start_ms": 15869000,
               "title": "Chapter VIII"
             },
             {
               "audio_url": "https://www.archive.org/download/crime_does_not_pay_amb_1607_librivox/crimedoesnotpay_09_lyons_64kb.mp3",
               "length_ms": 1103000,
+              "section_number": 9,
               "start_ms": 18155000,
               "title": "Chapter IX"
             },
             {
               "audio_url": "https://www.archive.org/download/crime_does_not_pay_amb_1607_librivox/crimedoesnotpay_10_lyons_64kb.mp3",
               "length_ms": 1131000,
+              "section_number": 10,
               "start_ms": 19258000,
               "title": "Chapter X"
             },
             {
               "audio_url": "https://www.archive.org/download/crime_does_not_pay_amb_1607_librivox/crimedoesnotpay_11_lyons_64kb.mp3",
               "length_ms": 991000,
+              "section_number": 11,
               "start_ms": 20389000,
               "title": "Chapter XI"
             },
             {
               "audio_url": "https://www.archive.org/download/crime_does_not_pay_amb_1607_librivox/crimedoesnotpay_12_lyons_64kb.mp3",
               "length_ms": 1183000,
+              "section_number": 12,
               "start_ms": 21380000,
               "title": "Chapter XII"
             }
@@ -12633,7 +12913,11 @@
           "cover_url": "https://archive.org/download/librivoxcCDCoverArt35/crimedoesnotpay_1607.jpg",
           "id": "ann-boulais",
           "language": "en",
+          "librivox_genres": [
+            "Memoirs"
+          ],
           "librivox_id": 7549,
+          "librivox_title": "Why Crime Does Not Pay",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/why-crime-does-not-pay-by-sophie-lyons/",

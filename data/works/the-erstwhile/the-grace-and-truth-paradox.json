@@ -10595,6 +10595,12 @@
             {
               "audio_url": "https://www.archive.org/download/grand_inquisitor_1202_librivox/grandinquisitor_1_dostoyevsky_64kb.mp3",
               "length_ms": 1083000,
+              "readers": [
+                "denny-sayers-d-2015",
+                "ruth-golding",
+                "martin-geeson",
+                "om123"
+              ],
               "start_ms": 0,
               "title": "Part 1"
             },
@@ -10613,9 +10619,20 @@
           ],
           "copyright_year": 1880,
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt14/Grand_Inquisitor_1202.jpg",
+          "credits": [
+            {
+              "person": "helena-petrovna-blavatsky",
+              "role": "translator"
+            }
+          ],
           "id": "denny-sayers-d-2015",
           "language": "en",
+          "librivox_genres": [
+            "Dramatic Readings",
+            "General Fiction"
+          ],
           "librivox_id": 4465,
+          "librivox_title": "Grand Inquisitor (dramatic reading)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-grand-inquisitor-dramatic-reading-by-fyodor-dostoyevsky/",

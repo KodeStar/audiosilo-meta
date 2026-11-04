@@ -8749,42 +8749,63 @@
             {
               "audio_url": "https://www.archive.org/download/claude_gueux_1902_librivox/claudegueux_1_hugo_64kb.mp3",
               "length_ms": 351000,
+              "readers": [
+                "zeckou"
+              ],
               "start_ms": 0,
               "title": "Claude Gueux, première partie"
             },
             {
               "audio_url": "https://www.archive.org/download/claude_gueux_1902_librivox/claudegueux_2_hugo_64kb.mp3",
               "length_ms": 822000,
+              "readers": [
+                "martine"
+              ],
               "start_ms": 351000,
               "title": "Claude Gueux, deuxième partie"
             },
             {
               "audio_url": "https://www.archive.org/download/claude_gueux_1902_librivox/claudegueux_3_hugo_64kb.mp3",
               "length_ms": 754000,
+              "readers": [
+                "laurette"
+              ],
               "start_ms": 1173000,
               "title": "Claude Gueux, troisième partie"
             },
             {
               "audio_url": "https://www.archive.org/download/claude_gueux_1902_librivox/claudegueux_4_hugo_64kb.mp3",
               "length_ms": 913000,
+              "readers": [
+                "margot"
+              ],
               "start_ms": 1927000,
               "title": "Claude Gueux, quatrième partie"
             },
             {
               "audio_url": "https://www.archive.org/download/claude_gueux_1902_librivox/claudegueux_5_hugo_64kb.mp3",
               "length_ms": 824000,
+              "readers": [
+                "margot"
+              ],
               "start_ms": 2840000,
               "title": "Claude Gueux, cinquième partie"
             },
             {
               "audio_url": "https://www.archive.org/download/claude_gueux_1902_librivox/claudegueux_6_hugo_64kb.mp3",
               "length_ms": 238000,
+              "readers": [
+                "christiane-jehanne"
+              ],
               "start_ms": 3664000,
               "title": "Le manuscrit de Claude Gueux"
             },
             {
               "audio_url": "https://www.archive.org/download/claude_gueux_1902_librivox/claudegueux_7_hugo_64kb.mp3",
               "length_ms": 576000,
+              "readers": [
+                "martine"
+              ],
               "start_ms": 3902000,
               "title": "Historique de Claude Gueux"
             }
@@ -8793,7 +8814,11 @@
           "cover_url": "https://archive.org/download/claude_gueux_1902_librivox/claude_gueux_1902.jpg",
           "id": "zeckou",
           "language": "fr",
+          "librivox_genres": [
+            "Short Stories"
+          ],
           "librivox_id": 9961,
+          "librivox_title": "Claude Gueux",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/claude-gueux-by-victor-hugo/",
@@ -8994,7 +9019,12 @@
           "cover_url": "https://archive.org/download/librivoxcdcoverart36/claudelightfoot_2006.jpg",
           "id": "carol-pelster",
           "language": "en",
+          "librivox_genres": [
+            "Religion",
+            "School"
+          ],
           "librivox_id": 15188,
+          "librivox_title": "Claude Lightfoot, or How the Problem Was Solved",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/claude-lightfoot-by-francis-j-finn/",

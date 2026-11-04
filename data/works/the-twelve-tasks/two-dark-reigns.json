@@ -572,36 +572,42 @@
             {
               "audio_url": "https://www.archive.org/download/two_diaries_1608_librivox/twodiaries_00_jervey_64kb.mp3",
               "length_ms": 142000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/two_diaries_1608_librivox/twodiaries_01_jervey_64kb.mp3",
               "length_ms": 3317000,
+              "section_number": 1,
               "start_ms": 142000,
               "title": "Journal of Miss Susan R. Jervey"
             },
             {
               "audio_url": "https://www.archive.org/download/two_diaries_1608_librivox/twodiaries_02_jervey_64kb.mp3",
               "length_ms": 2554000,
+              "section_number": 2,
               "start_ms": 3459000,
               "title": "Journal of Miss Charlotte St. John Ravenel"
             },
             {
               "audio_url": "https://www.archive.org/download/two_diaries_1608_librivox/twodiaries_03_jervey_64kb.mp3",
               "length_ms": 765000,
+              "section_number": 3,
               "start_ms": 6013000,
               "title": "Reminiscences by Mrs. (Waring) Henagan"
             },
             {
               "audio_url": "https://www.archive.org/download/two_diaries_1608_librivox/twodiaries_04_jervey_64kb.mp3",
               "length_ms": 376000,
+              "section_number": 4,
               "start_ms": 6778000,
               "title": "Report of Brevet Brigadier General Alfred S. Hartwell, 55 Massachusetts Infantry, April 5-15, 1865"
             },
             {
               "audio_url": "https://www.archive.org/download/two_diaries_1608_librivox/twodiaries_05_jervey_64kb.mp3",
               "length_ms": 308000,
+              "section_number": 5,
               "start_ms": 7154000,
               "title": "Extracts From The Diary Of Colonel Charles B. Fox, 55th Massachusettes"
             }
@@ -610,7 +616,14 @@
           "cover_url": "https://archive.org/download/two_diaries_1608_librivox/twodiaries_1608.jpg",
           "id": "david-wales",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "War & Military",
+            "Biography & Autobiography",
+            "Memoirs"
+          ],
           "librivox_id": 11208,
+          "librivox_title": "Two Diaries From Middle St. John's, Berkeley, South Carolina, February - May, 1865",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/two-diaries-from-middle-st-johns-berkeley-south-carolina-february-may-1865-by-susan-r-jervey/",
@@ -1758,7 +1771,11 @@
           "cover_url": "https://archive.org/download/two_essays_on_military_history_2111_librivox/twoessaysmilitary_2111.jpg",
           "id": "david-wales",
           "language": "en",
+          "librivox_genres": [
+            "War & Military"
+          ],
           "librivox_id": 17243,
+          "librivox_title": "Two Essays On Military History, Strategy, and Tactics: Mountain Warfare (1909) And Naval Strategy (1917)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/two-essays-on-military-history/",
@@ -2425,7 +2442,12 @@
           "cover_url": "https://archive.org/download/twoflightsup_2606_librivox/flightsup_2606.jpg",
           "id": "zach-hoyt",
           "language": "en",
+          "librivox_genres": [
+            "Crime & Mystery Fiction",
+            "Humorous Fiction"
+          ],
           "librivox_id": 22388,
+          "librivox_title": "Two Flights Up",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/two-flights-up-by-mary-roberts-rinehart/",
@@ -5137,9 +5159,19 @@
           ],
           "copyright_year": 1584,
           "cover_url": "https://archive.org/download/twogodlysermons_2107_librivox/twogodlysermons_2108.jpg",
+          "credits": [
+            {
+              "person": "robert-horne",
+              "role": "translator"
+            }
+          ],
           "id": "inthedesert",
           "language": "en",
+          "librivox_genres": [
+            "Christianity - Other"
+          ],
           "librivox_id": 16833,
+          "librivox_title": "Two Godly and Learned Sermons",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/two-godly-and-learned-sermons-by-john-calvin/",
@@ -6746,7 +6778,12 @@
           "cover_url": "https://archive.org/download/the_two-gun_man_1808_librivox/two_gun_man_1808.jpg",
           "id": "tom-penn",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Westerns"
+          ],
           "librivox_id": 12920,
+          "librivox_title": "Two-Gun Man",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-two-gun-man-by-charles-alden-seltzer/",
@@ -7907,7 +7944,11 @@
           "cover_url": "https://archive.org/download/twoheroines_1403_librivox/two_heroines_plumpington_1403.jpg",
           "id": "arnold",
           "language": "en",
+          "librivox_genres": [
+            "Published 1800 -1900"
+          ],
           "librivox_id": 8702,
+          "librivox_title": "Two Heroines of Plumplington",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-two-heroines-of-plumpington-by-anthony-trollope/",

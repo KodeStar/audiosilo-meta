@@ -1063,90 +1063,105 @@
             {
               "audio_url": "https://www.archive.org/download/a_soldier_of_the_legion_1702_librivox/soldierlegion_00_manington_64kb.mp3",
               "length_ms": 316000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Dedication, Preface, Editors' Note"
             },
             {
               "audio_url": "https://www.archive.org/download/a_soldier_of_the_legion_1702_librivox/soldierlegion_01_manington_64kb.mp3",
               "length_ms": 3049000,
+              "section_number": 1,
               "start_ms": 316000,
               "title": "Chapter 1  Ministere de la Guerre, The Recruiting Office, etc"
             },
             {
               "audio_url": "https://www.archive.org/download/a_soldier_of_the_legion_1702_librivox/soldierlegion_02_manington_64kb.mp3",
               "length_ms": 1923000,
+              "section_number": 2,
               "start_ms": 3365000,
               "title": "Chapter 2 General Inspection, The Band Of The Legion, etc"
             },
             {
               "audio_url": "https://www.archive.org/download/a_soldier_of_the_legion_1702_librivox/soldierlegion_03_manington_64kb.mp3",
               "length_ms": 2561000,
+              "section_number": 3,
               "start_ms": 5288000,
               "title": "Chapter 3 Part 1  Some Information Concerning Tonquin, Haiphong, etc"
             },
             {
               "audio_url": "https://www.archive.org/download/a_soldier_of_the_legion_1702_librivox/soldierlegion_04_manington_64kb.mp3",
               "length_ms": 2495000,
+              "section_number": 4,
               "start_ms": 7849000,
               "title": "Chapter 3 Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/a_soldier_of_the_legion_1702_librivox/soldierlegion_05_manington_64kb.mp3",
               "length_ms": 2171000,
+              "section_number": 5,
               "start_ms": 10344000,
               "title": "Chapter 4 Part 1 The Difficulties Of Obtaining Military Intelligence, Native spies, etc"
             },
             {
               "audio_url": "https://www.archive.org/download/a_soldier_of_the_legion_1702_librivox/soldierlegion_06_manington_64kb.mp3",
               "length_ms": 2374000,
+              "section_number": 6,
               "start_ms": 12515000,
               "title": "Chapter 4 Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/a_soldier_of_the_legion_1702_librivox/soldierlegion_07_manington_64kb.mp3",
               "length_ms": 1860000,
+              "section_number": 7,
               "start_ms": 14889000,
               "title": "Chapter 5 Part 1 An execution, A Rebel Chieftan, etc"
             },
             {
               "audio_url": "https://www.archive.org/download/a_soldier_of_the_legion_1702_librivox/soldierlegion_08_manington_64kb.mp3",
               "length_ms": 1835000,
+              "section_number": 8,
               "start_ms": 16749000,
               "title": "Chapter 5 Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/a_soldier_of_the_legion_1702_librivox/soldierlegion_09_manington_64kb.mp3",
               "length_ms": 2108000,
+              "section_number": 9,
               "start_ms": 18584000,
               "title": "Chapter 6 Part 1 La Soeur Agnes, Exeat, etc"
             },
             {
               "audio_url": "https://www.archive.org/download/a_soldier_of_the_legion_1702_librivox/soldierlegion_10__manington_64kb.mp3",
               "length_ms": 2007000,
+              "section_number": 10,
               "start_ms": 20692000,
               "title": "Chapter 6 Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/a_soldier_of_the_legion_1702_librivox/soldierlegion_11_manington_64kb.mp3",
               "length_ms": 1611000,
+              "section_number": 11,
               "start_ms": 22699000,
               "title": "Chapter 7 Part 1 The Last Struggles Of A Rebellion, Departure Of Captain Plessier, etc"
             },
             {
               "audio_url": "https://www.archive.org/download/a_soldier_of_the_legion_1702_librivox/soldierlegion_12_maningon_64kb.mp3",
               "length_ms": 1306000,
+              "section_number": 12,
               "start_ms": 24310000,
               "title": "Chapter 7 Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/a_soldier_of_the_legion_1702_librivox/soldierlegion_13_manington_64kb.mp3",
               "length_ms": 1673000,
+              "section_number": 13,
               "start_ms": 25616000,
               "title": "Chapter 8 Part 1 General Voyron, Organisation Of The Brigade, etc"
             },
             {
               "audio_url": "https://www.archive.org/download/a_soldier_of_the_legion_1702_librivox/soldierlegion_14_manington_64kb.mp3",
               "length_ms": 1318000,
+              "section_number": 14,
               "start_ms": 27289000,
               "title": "Chapter 8 Part 2"
             }
@@ -1155,7 +1170,12 @@
           "cover_url": "https://archive.org/download/a_soldier_of_the_legion_1702_librivox/soldierlegion_1702.jpg",
           "id": "david-wales",
           "language": "en",
+          "librivox_genres": [
+            "War & Military",
+            "Travel & Geography"
+          ],
           "librivox_id": 11591,
+          "librivox_title": "Soldier Of The Legion; An Englishman's Adventures Under The French Flag in Algeria And Tonquin",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-soldier-of-the-legion-an-englishmans-adventures-under-the-french-flag-in-algeria-and-tonquin-by-george-manington/",
@@ -1854,120 +1874,180 @@
             {
               "audio_url": "https://www.archive.org/download/soldier_0911_librivox/soldier_brooke_add_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "alan-davis-drake-1945-2010"
+              ],
               "start_ms": 0,
               "title": "The Soldier – Read by ADD"
             },
             {
               "audio_url": "https://www.archive.org/download/soldier_0911_librivox/soldier_brooke_atg_64kb.mp3",
               "length_ms": 89000,
+              "readers": [
+                "antoinette-t-griffin"
+              ],
               "start_ms": 78000,
               "title": "The Soldier – Read by ATG"
             },
             {
               "audio_url": "https://www.archive.org/download/soldier_0911_librivox/soldier_brooke_bs_64kb.mp3",
               "length_ms": 85000,
+              "readers": [
+                "bob-sherman"
+              ],
               "start_ms": 167000,
               "title": "The Soldier – Read by BS"
             },
             {
               "audio_url": "https://www.archive.org/download/soldier_0911_librivox/soldier_brooke_ccs_64kb.mp3",
               "length_ms": 105000,
+              "readers": [
+                "christian-storms"
+              ],
               "start_ms": 252000,
               "title": "The Soldier – Read by CCS"
             },
             {
               "audio_url": "https://www.archive.org/download/soldier_0911_librivox/soldier_brooke_cjmb_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "icyjumbo-1964-2010"
+              ],
               "start_ms": 357000,
               "title": "The Soldier – Read by CJMB"
             },
             {
               "audio_url": "https://www.archive.org/download/soldier_0911_librivox/soldier_brooke_cs_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "cori-samuel"
+              ],
               "start_ms": 434000,
               "title": "The Soldier – Read by CS"
             },
             {
               "audio_url": "https://www.archive.org/download/soldier_0911_librivox/soldier_brooke_dii_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "diana-majlinger"
+              ],
               "start_ms": 507000,
               "title": "The Soldier – Read by DII"
             },
             {
               "audio_url": "https://www.archive.org/download/soldier_0911_librivox/soldier_brooke_dl_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 585000,
               "title": "The Soldier – Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/soldier_0911_librivox/soldier_brooke_drb_64kb.mp3",
               "length_ms": 85000,
+              "readers": [
+                "david-barnes"
+              ],
               "start_ms": 660000,
               "title": "The Soldier – Read by DRB"
             },
             {
               "audio_url": "https://www.archive.org/download/soldier_0911_librivox/soldier_brooke_eep_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "ernst-pattynama"
+              ],
               "start_ms": 745000,
               "title": "The Soldier – Read by EEP"
             },
             {
               "audio_url": "https://www.archive.org/download/soldier_0911_librivox/soldier_brooke_est_64kb.mp3",
               "length_ms": 58000,
+              "readers": [
+                "elli"
+              ],
               "start_ms": 823000,
               "title": "The Soldier – Read by EST"
             },
             {
               "audio_url": "https://www.archive.org/download/soldier_0911_librivox/soldier_brooke_kth_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "katharine"
+              ],
               "start_ms": 881000,
               "title": "The Soldier – Read by KTH"
             },
             {
               "audio_url": "https://www.archive.org/download/soldier_0911_librivox/soldier_brooke_kts_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "kim-stich"
+              ],
               "start_ms": 951000,
               "title": "The Soldier – Read by KTS"
             },
             {
               "audio_url": "https://www.archive.org/download/soldier_0911_librivox/soldier_brooke_lah_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 1026000,
               "title": "The Soldier – Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/soldier_0911_librivox/soldier_brooke_lkp_64kb.mp3",
               "length_ms": 63000,
+              "readers": [
+                "lucy-perry"
+              ],
               "start_ms": 1107000,
               "title": "The Soldier – Read by LKP"
             },
             {
               "audio_url": "https://www.archive.org/download/soldier_0911_librivox/soldier_brooke_pg_64kb.mp3",
               "length_ms": 93000,
+              "readers": [
+                "phil-griffiths"
+              ],
               "start_ms": 1170000,
               "title": "The Soldier – Read by PG"
             },
             {
               "audio_url": "https://www.archive.org/download/soldier_0911_librivox/soldier_brooke_py_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 1263000,
               "title": "The Soldier – Read by PY"
             },
             {
               "audio_url": "https://www.archive.org/download/soldier_0911_librivox/soldier_brooke_rg_64kb.mp3",
               "length_ms": 88000,
+              "readers": [
+                "ruth-golding"
+              ],
               "start_ms": 1335000,
               "title": "The Soldier – Read by RG"
             },
             {
               "audio_url": "https://www.archive.org/download/soldier_0911_librivox/soldier_brooke_rn_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 1423000,
               "title": "The Soldier – Read by RN"
             },
             {
               "audio_url": "https://www.archive.org/download/soldier_0911_librivox/soldier_brooke_tg_64kb.mp3",
               "length_ms": 64000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 1503000,
               "title": "The Soldier – Read by TG"
             }
@@ -1976,7 +2056,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt20/Soldier_1207.jpg",
           "id": "alan-davis-drake-1945-2010",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 3710,
+          "librivox_title": "Soldier",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-soldier-by-rupert-brooke/",
@@ -3466,42 +3551,49 @@
             {
               "audio_url": "https://www.archive.org/download/a_soldiers_diary_2110_librivox/soldiersdiary_00_scott_64kb.mp3",
               "length_ms": 253000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface and Kipling Verse"
             },
             {
               "audio_url": "https://www.archive.org/download/a_soldiers_diary_2110_librivox/soldiersdiary_01_scott_64kb.mp3",
               "length_ms": 1533000,
+              "section_number": 1,
               "start_ms": 253000,
               "title": "Part 1 1918 April 23 - June 11"
             },
             {
               "audio_url": "https://www.archive.org/download/a_soldiers_diary_2110_librivox/soldiersdiary_02_scott_64kb.mp3",
               "length_ms": 1693000,
+              "section_number": 2,
               "start_ms": 1786000,
               "title": "Part 2  1918 June 12 - July 14"
             },
             {
               "audio_url": "https://www.archive.org/download/a_soldiers_diary_2110_librivox/soldiersdiary_03_scott_64kb.mp3",
               "length_ms": 1663000,
+              "section_number": 3,
               "start_ms": 3479000,
               "title": "Part 3  1918 July 15 - August 12"
             },
             {
               "audio_url": "https://www.archive.org/download/a_soldiers_diary_2110_librivox/soldiersdiary_04_scott_64kb.mp3",
               "length_ms": 1675000,
+              "section_number": 4,
               "start_ms": 5142000,
               "title": "Part 4  1918 August 13 - September 15"
             },
             {
               "audio_url": "https://www.archive.org/download/a_soldiers_diary_2110_librivox/soldiersdiary_05_scott_64kb.mp3",
               "length_ms": 1863000,
+              "section_number": 5,
               "start_ms": 6817000,
               "title": "Part 5  1918 September 16 - October 13"
             },
             {
               "audio_url": "https://www.archive.org/download/a_soldiers_diary_2110_librivox/soldiersdiary_06_scott_64kb.mp3",
               "length_ms": 2410000,
+              "section_number": 6,
               "start_ms": 8680000,
               "title": "Part 6  1918 October 14 - November 11; Afterword"
             }
@@ -3510,7 +3602,12 @@
           "cover_url": "https://archive.org/download/a_soldiers_diary_2110_librivox/soldiersdiary_2110.jpg",
           "id": "david-wales",
           "language": "en",
+          "librivox_genres": [
+            "War & Military",
+            "Memoirs"
+          ],
           "librivox_id": 17170,
+          "librivox_title": "Soldier's Diary",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-soldiers-diary-by-ralph-scott/",
@@ -3926,174 +4023,290 @@
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_00_polley_64kb.mp3",
               "length_ms": 534000,
+              "readers": [
+                "dale-latham"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_01_polley_64kb.mp3",
               "length_ms": 777000,
+              "readers": [
+                "dale-latham"
+              ],
+              "section_number": 1,
               "start_ms": 534000,
               "title": "Early Experiences in Camp"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_02_polley_64kb.mp3",
               "length_ms": 1056000,
+              "readers": [
+                "dale-latham"
+              ],
+              "section_number": 2,
               "start_ms": 1311000,
               "title": "Humorous Incidents"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_03_polley_64kb.mp3",
               "length_ms": 1184000,
+              "readers": [
+                "asterix"
+              ],
+              "section_number": 3,
               "start_ms": 2367000,
               "title": "Around Yorktown"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_04_polley_64kb.mp3",
               "length_ms": 820000,
+              "readers": [
+                "asterix"
+              ],
+              "section_number": 4,
               "start_ms": 3551000,
               "title": "Battle of Seven Pines"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_05_polley_64kb.mp3",
               "length_ms": 871000,
+              "readers": [
+                "asterix"
+              ],
+              "section_number": 5,
               "start_ms": 4371000,
               "title": "Gaines' Mill"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_06_polley_64kb.mp3",
               "length_ms": 921000,
+              "readers": [
+                "asterix"
+              ],
+              "section_number": 6,
               "start_ms": 5242000,
               "title": "Battle of Second Manassas"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_07_polley_64kb.mp3",
               "length_ms": 1087000,
+              "readers": [
+                "asterix"
+              ],
+              "section_number": 7,
               "start_ms": 6163000,
               "title": "Second Manassas, Continued"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_08_polley_64kb.mp3",
               "length_ms": 872000,
+              "readers": [
+                "asterix"
+              ],
+              "section_number": 8,
               "start_ms": 7250000,
               "title": "Crossing Over Into Maryland"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_09_polley_64kb.mp3",
               "length_ms": 1100000,
+              "readers": [
+                "dale-latham"
+              ],
+              "section_number": 9,
               "start_ms": 8122000,
               "title": "Incidents at Fredericksburg"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_10_polley_64kb.mp3",
               "length_ms": 1520000,
+              "readers": [
+                "dale-latham"
+              ],
+              "section_number": 10,
               "start_ms": 9222000,
               "title": "In and Around Richmond"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_11_polley_64kb.mp3",
               "length_ms": 889000,
+              "readers": [
+                "dale-latham"
+              ],
+              "section_number": 11,
               "start_ms": 10742000,
               "title": "After Chancellorsville"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_12_polley_64kb.mp3",
               "length_ms": 879000,
+              "readers": [
+                "denise-nordell"
+              ],
+              "section_number": 12,
               "start_ms": 11631000,
               "title": "Hood's Texans in Pennsylvania"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_13_polley_64kb.mp3",
               "length_ms": 781000,
+              "readers": [
+                "denise-nordell"
+              ],
+              "section_number": 13,
               "start_ms": 12510000,
               "title": "Gettysburg"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_14_polley_64kb.mp3",
               "length_ms": 737000,
+              "readers": [
+                "denise-nordell"
+              ],
+              "section_number": 14,
               "start_ms": 13291000,
               "title": "Reminiscences of Chickamauga"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_15_polley_64kb.mp3",
               "length_ms": 1413000,
+              "readers": [
+                "asterix"
+              ],
+              "section_number": 15,
               "start_ms": 14028000,
               "title": "Forage for Hog Meat"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_16_polley_64kb.mp3",
               "length_ms": 1095000,
+              "readers": [
+                "asterix"
+              ],
+              "section_number": 16,
               "start_ms": 15441000,
               "title": "A Battle 'Above the Clouds'"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_17_polley_64kb.mp3",
               "length_ms": 968000,
+              "readers": [
+                "asterix"
+              ],
+              "section_number": 17,
               "start_ms": 16536000,
               "title": "Strenuous Times in Tennessee"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_18_polley_64kb.mp3",
               "length_ms": 999000,
+              "readers": [
+                "asterix"
+              ],
+              "section_number": 18,
               "start_ms": 17504000,
               "title": "The Power of the Fiddle and the Bow"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_19_polley_64kb.mp3",
               "length_ms": 1415000,
+              "readers": [
+                "asterix"
+              ],
+              "section_number": 19,
               "start_ms": 18503000,
               "title": "Some 'Escape' Stories"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_20_polley_64kb.mp3",
               "length_ms": 1131000,
+              "readers": [
+                "dale-latham"
+              ],
+              "section_number": 20,
               "start_ms": 19918000,
               "title": "A Flight to Arms"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_21_polley_64kb.mp3",
               "length_ms": 1066000,
+              "readers": [
+                "dale-latham"
+              ],
+              "section_number": 21,
               "start_ms": 21049000,
               "title": "A Thirty Day Furlough"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_22_polley_64kb.mp3",
               "length_ms": 1041000,
+              "readers": [
+                "dale-latham"
+              ],
+              "section_number": 22,
               "start_ms": 22115000,
               "title": "Texas in the Battle of the Wilderness"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_23_polley_64kb.mp3",
               "length_ms": 982000,
+              "readers": [
+                "asterix"
+              ],
+              "section_number": 23,
               "start_ms": 23156000,
               "title": "Fun in the Trenches"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_24_polley_64kb.mp3",
               "length_ms": 934000,
+              "readers": [
+                "asterix"
+              ],
+              "section_number": 24,
               "start_ms": 24138000,
               "title": "Texans in Virginia"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_25_polley_64kb.mp3",
               "length_ms": 1198000,
+              "readers": [
+                "asterix"
+              ],
+              "section_number": 25,
               "start_ms": 25072000,
               "title": "Hot Skirmishing - Wounded"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_26_polley_64kb.mp3",
               "length_ms": 1044000,
+              "readers": [
+                "asterix"
+              ],
+              "section_number": 26,
               "start_ms": 26270000,
               "title": "Luxuriating in Feasts and Feather Beds"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_27_polley_64kb.mp3",
               "length_ms": 1271000,
+              "readers": [
+                "asterix"
+              ],
+              "section_number": 27,
               "start_ms": 27314000,
               "title": "Adventures En Route to Texas"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_letters_charming_nellie_1407_librivox/soldiersletters_28_polley_64kb.mp3",
               "length_ms": 2461000,
+              "readers": [
+                "asterix"
+              ],
+              "section_number": 28,
               "start_ms": 28585000,
               "title": "Fourth Texas at Gaines' Mill"
             }
@@ -4102,7 +4315,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt32/A_Soldiers_Letters_1407.jpg",
           "id": "dale-latham",
           "language": "en",
+          "librivox_genres": [
+            "Memoirs",
+            "Letters"
+          ],
           "librivox_id": 7543,
+          "librivox_title": "Soldier's Letters to Charming Nellie",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-soldiers-letters-to-charming-nellie-by-joseph-benjamin-polley/",
@@ -7685,7 +7903,11 @@
           "cover_url": "https://archive.org/download/soldiers_pay_2202_librivox/soldierspay_2202.jpg",
           "id": "czandra",
           "language": "en",
+          "librivox_genres": [
+            "War & Military Fiction"
+          ],
           "librivox_id": 17442,
+          "librivox_title": "Soldiers' Pay",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/soldiers-pay-by-william-faulkner/",
@@ -7737,66 +7959,99 @@
             {
               "audio_url": "https://www.archive.org/download/soldiers_recessional_1711.poem_librivox/recessional_finley_alp_64kb.mp3",
               "length_ms": 126000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 0,
               "title": "The Soldiers' Recessional - Read by ALP"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_recessional_1711.poem_librivox/recessional_finley_bk_64kb.mp3",
               "length_ms": 157000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 126000,
               "title": "The Soldiers' Recessional - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_recessional_1711.poem_librivox/recessional_finley_dl_64kb.mp3",
               "length_ms": 130000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 283000,
               "title": "The Soldiers' Recessional - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_recessional_1711.poem_librivox/recessional_finley_el_64kb.mp3",
               "length_ms": 150000,
+              "readers": [
+                "newgatenovelist"
+              ],
               "start_ms": 413000,
               "title": "The Soldiers' Recessional - Read by EL"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_recessional_1711.poem_librivox/recessional_finley_em_64kb.mp3",
               "length_ms": 116000,
+              "readers": [
+                "elizabeth-martinson"
+              ],
               "start_ms": 563000,
               "title": "The Soldiers' Recessional - Read by EM"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_recessional_1711.poem_librivox/recessional_finley_msd_64kb.mp3",
               "length_ms": 122000,
+              "readers": [
+                "matthew-datcher"
+              ],
               "start_ms": 679000,
               "title": "The Soldiers' Recessional - Read by MSD"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_recessional_1711.poem_librivox/recessional_finley_nr_64kb.mp3",
               "length_ms": 138000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 801000,
               "title": "The Soldiers' Recessional - Read by NR"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_recessional_1711.poem_librivox/recessional_finley_ps_64kb.mp3",
               "length_ms": 122000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 939000,
               "title": "The Soldiers' Recessional - Read by PS"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_recessional_1711.poem_librivox/recessional_finley_rc_64kb.mp3",
               "length_ms": 133000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
               "start_ms": 1061000,
               "title": "The Soldiers' Recessional - Read by RC"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_recessional_1711.poem_librivox/recessional_finley_tp_64kb.mp3",
               "length_ms": 144000,
+              "readers": [
+                "tomas-peter"
+              ],
               "start_ms": 1194000,
               "title": "The Soldiers' Recessional - Read by TP"
             },
             {
               "audio_url": "https://www.archive.org/download/soldiers_recessional_1711.poem_librivox/recessional_finley_wt_64kb.mp3",
               "length_ms": 115000,
+              "readers": [
+                "winston-tharp"
+              ],
               "start_ms": 1338000,
               "title": "The Soldiers' Recessional - Read by WT"
             }
@@ -7805,7 +8060,12 @@
           "cover_url": "https://archive.org/download/soldiers_recessional_1711.poem_librivox/soldiers_recessional_1711.jpg",
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)",
+            "War & Military"
+          ],
           "librivox_id": 12473,
+          "librivox_title": "Soldiers' Recessional",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-soldiers-recessional-by-john-huston-finley/",

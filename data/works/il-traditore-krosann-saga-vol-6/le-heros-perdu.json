@@ -668,7 +668,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt23/lehorla_1210.jpg",
           "id": "naf",
           "language": "fr",
+          "librivox_genres": [
+            "Fantastic Fiction"
+          ],
           "librivox_id": 2798,
+          "librivox_title": "Horla",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/le-horla-by-guy-de-maupassant-1203/",
@@ -7102,39 +7106,64 @@
             {
               "audio_url": "https://www.archive.org/download/limni_2506_librivox/limni_01_lamartine_64kb.mp3",
               "length_ms": 258000,
+              "readers": [
+                "christiane-jehanne"
+              ],
               "start_ms": 0,
               "title": "Le Lac par Lamartine"
             },
             {
               "audio_url": "https://www.archive.org/download/limni_2506_librivox/limni_02_lamartine_64kb.mp3",
               "length_ms": 272000,
+              "readers": [
+                "rapunzelina"
+              ],
               "start_ms": 258000,
               "title": "Μετάφρασις Αγγέλου Βλαχου (1864)"
             },
             {
               "audio_url": "https://www.archive.org/download/limni_2506_librivox/limni_03_lamartine_64kb.mp3",
               "length_ms": 265000,
+              "readers": [
+                "rapunzelina"
+              ],
               "start_ms": 530000,
               "title": "Μετάφρασις Σπυρίδωνος Ν. Βασιλειάδη (1870)"
             },
             {
               "audio_url": "https://www.archive.org/download/limni_2506_librivox/limni_04_lamartine_64kb.mp3",
               "length_ms": 242000,
+              "readers": [
+                "rapunzelina"
+              ],
               "start_ms": 795000,
               "title": "Μετάφρασις Ιωάννου Καρασούσα (1872)"
             },
             {
               "audio_url": "https://www.archive.org/download/limni_2506_librivox/limni_05_lamartine_64kb.mp3",
               "length_ms": 262000,
+              "readers": [
+                "rapunzelina"
+              ],
               "start_ms": 1037000,
               "title": "Παράφρασις Αριστοτέλους Βαλαωρίτου (1878)"
             }
           ],
           "copyright_year": 1878,
           "cover_url": "https://archive.org/download/limni_2506_librivox/limni_2505.jpg",
+          "credits": [
+            {
+              "person": "various",
+              "role": "translator"
+            }
+          ],
           "id": "christiane-jehanne",
           "language": "el",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 20759,
+          "librivox_title": "Λίμνη (Le Lac)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/le-lac-by-alphonse-de-lamartine/",

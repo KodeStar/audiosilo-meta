@@ -2584,30 +2584,94 @@
             {
               "audio_url": "https://www.archive.org/download/crossings_1912_librivox/crossingsafairyplay_1_mare_64kb.mp3",
               "length_ms": 1791000,
+              "readers": [
+                "toddhw",
+                "larry-wilson",
+                "tomas-peter",
+                "tj-burns",
+                "carol-pelster",
+                "emmahatton",
+                "campbell-schelp",
+                "elsie-selwyn"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/crossings_1912_librivox/crossingsafairyplay_2_mare_64kb.mp3",
               "length_ms": 1825000,
+              "readers": [
+                "toddhw",
+                "tomas-peter",
+                "scotty-smith",
+                "tj-burns",
+                "emmahatton",
+                "campbell-schelp"
+              ],
               "start_ms": 1791000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/crossings_1912_librivox/crossingsafairyplay_3_mare_64kb.mp3",
               "length_ms": 2237000,
+              "readers": [
+                "toddhw",
+                "chuck-williamson",
+                "tomas-peter",
+                "nemo",
+                "tj-burns",
+                "nichalia-schwartz",
+                "emmahatton",
+                "campbell-schelp",
+                "elsie-selwyn",
+                "lynette-caulkins"
+              ],
               "start_ms": 3616000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/crossings_1912_librivox/crossingsafairyplay_4_mare_64kb.mp3",
               "length_ms": 1901000,
+              "readers": [
+                "availle",
+                "toddhw",
+                "chuck-williamson",
+                "tomas-peter",
+                "devorah-allen",
+                "eva-davis-d-2025",
+                "linda-olsen-fitak",
+                "tj-burns",
+                "nichalia-schwartz",
+                "emmahatton",
+                "campbell-schelp",
+                "elsie-selwyn",
+                "anita-sloma-martinez"
+              ],
               "start_ms": 5853000,
               "title": "Act 4"
             },
             {
               "audio_url": "https://www.archive.org/download/crossings_1912_librivox/crossingsafairyplay_5_mare_64kb.mp3",
               "length_ms": 2097000,
+              "readers": [
+                "triciag",
+                "thestorygirl",
+                "toddhw",
+                "chuck-williamson",
+                "larry-wilson",
+                "tomas-peter",
+                "devorah-allen",
+                "scotty-smith",
+                "eva-davis-d-2025",
+                "nemo",
+                "linda-olsen-fitak",
+                "tj-burns",
+                "nichalia-schwartz",
+                "carol-pelster",
+                "emmahatton",
+                "campbell-schelp",
+                "lynette-caulkins"
+              ],
               "start_ms": 7754000,
               "title": "Act 5"
             }
@@ -2616,7 +2680,12 @@
           "cover_url": "https://archive.org/download/librivoxcdcoverart36/crossings_1912.jpg",
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Fantastic Fiction",
+            "Plays"
+          ],
           "librivox_id": 13719,
+          "librivox_title": "Crossings: A Fairy Play",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/crossings-a-fairy-play-by-walter-de-la-mare/",
@@ -11539,7 +11608,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt31/Crossways_1305.jpg",
           "id": "kasper",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 6311,
+          "librivox_title": "Crossways",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/crossways-by-w-b-yeats/",

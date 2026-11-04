@@ -6400,7 +6400,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt28/lent_van_vaerzen_1301.jpg",
           "id": "marcel-coenders",
           "language": "nl",
+          "librivox_genres": [
+            "Single author"
+          ],
           "librivox_id": 7420,
+          "librivox_title": "Lent van vaerzen",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/een-lent-van-vaerzen-van-louis-couperus/",
@@ -7465,7 +7469,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt16/lenz_1204.jpg",
           "id": "hans-hafen",
           "language": "de",
+          "librivox_genres": [
+            "Biography & Autobiography"
+          ],
           "librivox_id": 4204,
+          "librivox_title": "Lenz (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/lenz-by-georg-buechner-2/",
@@ -7571,7 +7579,11 @@
           "cover_url": "https://www.archive.org/download/librivox_cd_covers/lenz.jpg",
           "id": "rolf-kaiser",
           "language": "de",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 2993,
+          "librivox_title": "Lenz",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/lenz-by-georg-buchner/",
@@ -10738,24 +10750,36 @@
             {
               "audio_url": "https://www.archive.org/download/leotolstoy_2011_librivox/leotolstoy_01_various_64kb.mp3",
               "length_ms": 632000,
+              "readers": [
+                "sonson"
+              ],
               "start_ms": 0,
               "title": "Tolstoy by G. K. Chesterton"
             },
             {
               "audio_url": "https://www.archive.org/download/leotolstoy_2011_librivox/leotolstoy_02_various_64kb.mp3",
               "length_ms": 1082000,
+              "readers": [
+                "sonson"
+              ],
               "start_ms": 632000,
               "title": "Leo Tolstoy as Writer by G. H. Perris"
             },
             {
               "audio_url": "https://www.archive.org/download/leotolstoy_2011_librivox/leotolstoy_03_various_64kb.mp3",
               "length_ms": 911000,
+              "readers": [
+                "issamel"
+              ],
               "start_ms": 1714000,
               "title": "Tolstoy's Place in European Literature by Edward Garnett"
             },
             {
               "audio_url": "https://www.archive.org/download/leotolstoy_2011_librivox/leotolstoy_04_various_64kb.mp3",
               "length_ms": 1269000,
+              "readers": [
+                "rita-boutros"
+              ],
               "start_ms": 2625000,
               "title": "Biographical Note"
             }
@@ -10764,7 +10788,11 @@
           "cover_url": "https://archive.org/download/leotolstoy_2011_librivox/tolstoy_2011.jpg",
           "id": "sonson",
           "language": "en",
+          "librivox_genres": [
+            "Essays & Short Works"
+          ],
           "librivox_id": 15889,
+          "librivox_title": "Leo Tolstoy",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/leo-tolstoy-by-various/",

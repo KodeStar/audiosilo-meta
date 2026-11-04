@@ -819,54 +819,81 @@
             {
               "audio_url": "https://www.archive.org/download/troy_2306.poem_librivox/troy_williams_aam_64kb.mp3",
               "length_ms": 289000,
+              "readers": [
+                "alan-mapstone"
+              ],
               "start_ms": 0,
               "title": "Troy - Read by AAM"
             },
             {
               "audio_url": "https://www.archive.org/download/troy_2306.poem_librivox/troy_williams_ajw_64kb.mp3",
               "length_ms": 191000,
+              "readers": [
+                "amie-willingham"
+              ],
               "start_ms": 289000,
               "title": "Troy - Read by AJW"
             },
             {
               "audio_url": "https://www.archive.org/download/troy_2306.poem_librivox/troy_williams_alp_64kb.mp3",
               "length_ms": 256000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 480000,
               "title": "Troy - Read by ALP"
             },
             {
               "audio_url": "https://www.archive.org/download/troy_2306.poem_librivox/troy_williams_bk_64kb.mp3",
               "length_ms": 259000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 736000,
               "title": "Troy - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/troy_2306.poem_librivox/troy_williams_dc_64kb.mp3",
               "length_ms": 233000,
+              "readers": [
+                "dc"
+              ],
               "start_ms": 995000,
               "title": "Troy - Read by DC"
             },
             {
               "audio_url": "https://www.archive.org/download/troy_2306.poem_librivox/troy_williams_el0_64kb.mp3",
               "length_ms": 273000,
+              "readers": [
+                "newgatenovelist"
+              ],
               "start_ms": 1228000,
               "title": "Troy - Read by EL0"
             },
             {
               "audio_url": "https://www.archive.org/download/troy_2306.poem_librivox/troy_williams_ikl_64kb.mp3",
               "length_ms": 206000,
+              "readers": [
+                "inkell"
+              ],
               "start_ms": 1501000,
               "title": "Troy - Read by IKL"
             },
             {
               "audio_url": "https://www.archive.org/download/troy_2306.poem_librivox/troy_williams_mc_64kb.mp3",
               "length_ms": 238000,
+              "readers": [
+                "mlcui"
+              ],
               "start_ms": 1707000,
               "title": "Troy - Read by MC"
             },
             {
               "audio_url": "https://www.archive.org/download/troy_2306.poem_librivox/troy_williams_rr_64kb.mp3",
               "length_ms": 265000,
+              "readers": [
+                "redrun"
+              ],
               "start_ms": 1945000,
               "title": "Troy - Read by RR"
             }
@@ -874,7 +901,12 @@
           "cover_url": "https://archive.org/download/troy_2306.poem_librivox/troy_2306.jpg",
           "id": "alan-mapstone",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 19388,
+          "librivox_title": "Troy",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/troy-by-charles-williams/",
@@ -3911,39 +3943,85 @@
             {
               "audio_url": "https://www.archive.org/download/truculentusthechurl_2502_librivox/truculentus_1_plautus_64kb.mp3",
               "length_ms": 2481000,
+              "readers": [
+                "toddhw",
+                "larry-wilson",
+                "adrian-stephens",
+                "beeswaxcandle",
+                "agnes-robert-behr",
+                "priamedes"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/truculentusthechurl_2502_librivox/truculentus_2_plautus_64kb.mp3",
               "length_ms": 1416000,
+              "readers": [
+                "alan-mapstone",
+                "larry-wilson",
+                "beeswaxcandle",
+                "agnes-robert-behr",
+                "jon-hunter"
+              ],
               "start_ms": 2481000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/truculentusthechurl_2502_librivox/truculentus_3_plautus_64kb.mp3",
               "length_ms": 325000,
+              "readers": [
+                "toddhw",
+                "larry-wilson",
+                "beeswaxcandle",
+                "inkell"
+              ],
               "start_ms": 3897000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/truculentusthechurl_2502_librivox/truculentus_4_plautus_64kb.mp3",
               "length_ms": 1316000,
+              "readers": [
+                "larry-wilson",
+                "sonia",
+                "beeswaxcandle",
+                "agnes-robert-behr",
+                "priamedes",
+                "shrimpphish"
+              ],
               "start_ms": 4222000,
               "title": "Act 4"
             },
             {
               "audio_url": "https://www.archive.org/download/truculentusthechurl_2502_librivox/truculentus_5_plautus_64kb.mp3",
               "length_ms": 597000,
+              "readers": [
+                "larry-wilson",
+                "beeswaxcandle",
+                "inkell",
+                "agnes-robert-behr",
+                "jon-hunter"
+              ],
               "start_ms": 5538000,
               "title": "Act 5"
             }
           ],
           "copyright_year": 1913,
           "cover_url": "https://archive.org/download/truculentusthechurl_2502_librivox/truculentusthechurl_2502.jpg",
+          "credits": [
+            {
+              "person": "henry-thomas-riley",
+              "role": "translator"
+            }
+          ],
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Comedy"
+          ],
           "librivox_id": 20716,
+          "librivox_title": "Truculentus; The Churl",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/truculentus-the-churl-by-titus-maccius-plautus/",
@@ -5128,96 +5206,160 @@
             {
               "audio_url": "https://www.archive.org/download/truebearstories_1505_librivox/truebearstories_00_miller_64kb.mp3",
               "length_ms": 873000,
+              "readers": [
+                "greg-giordano"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface and Introductory Notes"
             },
             {
               "audio_url": "https://www.archive.org/download/truebearstories_1505_librivox/truebearstories_01_miller_64kb.mp3",
               "length_ms": 1014000,
+              "readers": [
+                "ares-krstic"
+              ],
+              "section_number": 1,
               "start_ms": 873000,
               "title": "A Bear on Fire"
             },
             {
               "audio_url": "https://www.archive.org/download/truebearstories_1505_librivox/truebearstories_02_miller_64kb.mp3",
               "length_ms": 1190000,
+              "readers": [
+                "djrickyv"
+              ],
+              "section_number": 2,
               "start_ms": 1887000,
               "title": "Music-Loving Bears; My First Grizzly"
             },
             {
               "audio_url": "https://www.archive.org/download/truebearstories_1505_librivox/truebearstories_03_miller_64kb.mp3",
               "length_ms": 729000,
+              "readers": [
+                "geza-hrazdina"
+              ],
+              "section_number": 3,
               "start_ms": 3077000,
               "title": "Twin Babies"
             },
             {
               "audio_url": "https://www.archive.org/download/truebearstories_1505_librivox/truebearstories_04_miller_64kb.mp3",
               "length_ms": 949000,
+              "readers": [
+                "greg-giordano"
+              ],
+              "section_number": 4,
               "start_ms": 3806000,
               "title": "In Swimming With a Bear"
             },
             {
               "audio_url": "https://www.archive.org/download/truebearstories_1505_librivox/truebearstories_05_miller_64kb.mp3",
               "length_ms": 1276000,
+              "readers": [
+                "djrickyv"
+              ],
+              "section_number": 5,
               "start_ms": 4755000,
               "title": "A Fat Little Editor and Three Little Browns; Treeing a Bear"
             },
             {
               "audio_url": "https://www.archive.org/download/truebearstories_1505_librivox/truebearstories_06_miller_64kb.mp3",
               "length_ms": 1405000,
+              "readers": [
+                "djrickyv"
+              ],
+              "section_number": 6,
               "start_ms": 6031000,
               "title": "Bill Cross and His Pet Bear; The Great Grizzly Bear"
             },
             {
               "audio_url": "https://www.archive.org/download/truebearstories_1505_librivox/truebearstories_07_miller_64kb.mp3",
               "length_ms": 505000,
+              "readers": [
+                "chris-a-hawkins"
+              ],
+              "section_number": 7,
               "start_ms": 7436000,
               "title": "As a Humorist; A Grizzly's Sly Little Joke; The Grizzly as Fremont Found Him"
             },
             {
               "audio_url": "https://www.archive.org/download/truebearstories_1505_librivox/truebearstories_08_miller_64kb.mp3",
               "length_ms": 775000,
+              "readers": [
+                "leara-morris-clark"
+              ],
+              "section_number": 8,
               "start_ms": 7941000,
               "title": "The Bear With Spectacles"
             },
             {
               "audio_url": "https://www.archive.org/download/truebearstories_1505_librivox/truebearstories_09_miller_64kb.mp3",
               "length_ms": 1040000,
+              "readers": [
+                "joseph-tabler"
+              ],
+              "section_number": 9,
               "start_ms": 8716000,
               "title": "The Bear Slayer of San Diego"
             },
             {
               "audio_url": "https://www.archive.org/download/truebearstories_1505_librivox/truebearstories_10_miller_64kb.mp3",
               "length_ms": 759000,
+              "readers": [
+                "greg-giordano"
+              ],
+              "section_number": 10,
               "start_ms": 9756000,
               "title": "The Alaskan and Polar Bear"
             },
             {
               "audio_url": "https://www.archive.org/download/truebearstories_1505_librivox/truebearstories_11_miller_64kb.mp3",
               "length_ms": 581000,
+              "readers": [
+                "rlc"
+              ],
+              "section_number": 11,
               "start_ms": 10515000,
               "title": "Monnehan, the Great Bear Hunter of Oregon"
             },
             {
               "audio_url": "https://www.archive.org/download/truebearstories_1505_librivox/truebearstories_12_miller_64kb.mp3",
               "length_ms": 1124000,
+              "readers": [
+                "geza-hrazdina"
+              ],
+              "section_number": 12,
               "start_ms": 11096000,
               "title": "The Bear 'Monarch.' Part A"
             },
             {
               "audio_url": "https://www.archive.org/download/truebearstories_1505_librivox/truebearstories_13_miller_64kb.mp3",
               "length_ms": 1192000,
+              "readers": [
+                "geza-hrazdina"
+              ],
+              "section_number": 13,
               "start_ms": 12220000,
               "title": "The Bear 'Monarch.' Part B"
             },
             {
               "audio_url": "https://www.archive.org/download/truebearstories_1505_librivox/truebearstories_14_miller_64kb.mp3",
               "length_ms": 828000,
+              "readers": [
+                "brookpundt"
+              ],
+              "section_number": 14,
               "start_ms": 13412000,
               "title": "The Bear 'Monarch.' Part C"
             },
             {
               "audio_url": "https://www.archive.org/download/truebearstories_1505_librivox/truebearstories_15_miller_64kb.mp3",
               "length_ms": 1635000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 15,
               "start_ms": 14240000,
               "title": "Scientific Classification of Bears"
             }
@@ -5226,7 +5368,12 @@
           "cover_url": "https://archive.org/download/truebearstories_1505_librivox/true_bear_stories_1505.jpg",
           "id": "greg-giordano",
           "language": "en",
+          "librivox_genres": [
+            "Children's Non-fiction",
+            "Animals"
+          ],
           "librivox_id": 9349,
+          "librivox_title": "True Bear Stories",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/true-bear-stories-by-joaquin-miller/",
@@ -9971,96 +10118,144 @@
             {
               "audio_url": "https://www.archive.org/download/true_christmas_2312.poem_librivox/truechristmas_vaughan_alp_64kb.mp3",
               "length_ms": 101000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 0,
               "title": "The True Christmas - Read by ALP"
             },
             {
               "audio_url": "https://www.archive.org/download/true_christmas_2312.poem_librivox/truechristmas_vaughan_bk_64kb.mp3",
               "length_ms": 114000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 101000,
               "title": "The True Christmas - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/true_christmas_2312.poem_librivox/truechristmas_vaughan_cf_64kb.mp3",
               "length_ms": 103000,
+              "readers": [
+                "craig-franklin"
+              ],
               "start_ms": 215000,
               "title": "The True Christmas - Read by CF"
             },
             {
               "audio_url": "https://www.archive.org/download/true_christmas_2312.poem_librivox/truechristmas_vaughan_clp_64kb.mp3",
               "length_ms": 83000,
+              "readers": [
+                "chris-pyle"
+              ],
               "start_ms": 318000,
               "title": "The True Christmas - Read by CLP"
             },
             {
               "audio_url": "https://www.archive.org/download/true_christmas_2312.poem_librivox/truechristmas_vaughan_dcl_64kb.mp3",
               "length_ms": 100000,
+              "readers": [
+                "dave-lantz"
+              ],
               "start_ms": 401000,
               "title": "The True Christmas - Read by DCL"
             },
             {
               "audio_url": "https://www.archive.org/download/true_christmas_2312.poem_librivox/truechristmas_vaughan_dl_64kb.mp3",
               "length_ms": 103000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 501000,
               "title": "The True Christmas - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/true_christmas_2312.poem_librivox/truechristmas_vaughan_el0_64kb.mp3",
               "length_ms": 110000,
+              "readers": [
+                "newgatenovelist"
+              ],
               "start_ms": 604000,
               "title": "The True Christmas - Read by EL0"
             },
             {
               "audio_url": "https://www.archive.org/download/true_christmas_2312.poem_librivox/truechristmas_vaughan_gln_64kb.mp3",
               "length_ms": 111000,
+              "readers": [
+                "garth-burton"
+              ],
               "start_ms": 714000,
               "title": "The True Christmas - Read by GLN"
             },
             {
               "audio_url": "https://www.archive.org/download/true_christmas_2312.poem_librivox/truechristmas_vaughan_ik_64kb.mp3",
               "length_ms": 107000,
+              "readers": [
+                "ian-king"
+              ],
               "start_ms": 825000,
               "title": "The True Christmas - Read by IK"
             },
             {
               "audio_url": "https://www.archive.org/download/true_christmas_2312.poem_librivox/truechristmas_vaughan_lcw_64kb.mp3",
               "length_ms": 90000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 932000,
               "title": "The True Christmas - Read by LCW"
             },
             {
               "audio_url": "https://www.archive.org/download/true_christmas_2312.poem_librivox/truechristmas_vaughan_ls_64kb.mp3",
               "length_ms": 107000,
+              "readers": [
+                "leesalter"
+              ],
               "start_ms": 1022000,
               "title": "The True Christmas - Read by LS"
             },
             {
               "audio_url": "https://www.archive.org/download/true_christmas_2312.poem_librivox/truechristmas_vaughan_plm_64kb.mp3",
               "length_ms": 95000,
+              "readers": [
+                "paula-messina"
+              ],
               "start_ms": 1129000,
               "title": "The True Christmas - Read by PLM"
             },
             {
               "audio_url": "https://www.archive.org/download/true_christmas_2312.poem_librivox/truechristmas_vaughan_pr_64kb.mp3",
               "length_ms": 116000,
+              "readers": [
+                "patrick-randall"
+              ],
               "start_ms": 1224000,
               "title": "The True Christmas - Read by PR"
             },
             {
               "audio_url": "https://www.archive.org/download/true_christmas_2312.poem_librivox/truechristmas_vaughan_rr_64kb.mp3",
               "length_ms": 115000,
+              "readers": [
+                "redrun"
+              ],
               "start_ms": 1340000,
               "title": "The True Christmas - Read by RR"
             },
             {
               "audio_url": "https://www.archive.org/download/true_christmas_2312.poem_librivox/truechristmas_vaughan_sws_64kb.mp3",
               "length_ms": 122000,
+              "readers": [
+                "scotty-smith"
+              ],
               "start_ms": 1455000,
               "title": "The True Christmas - Read by SWS"
             },
             {
               "audio_url": "https://www.archive.org/download/true_christmas_2312.poem_librivox/truechristmas_vaughan_vv_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "verla-viera"
+              ],
               "start_ms": 1577000,
               "title": "The True Christmas - Read by VV"
             }
@@ -10069,7 +10264,11 @@
           "cover_url": "https://archive.org/download/true_christmas_2312.poem_librivox/true_christmas_2312.jpg",
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 20029,
+          "librivox_title": "True Christmas",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-true-christmas-by-henry-vaughan/",

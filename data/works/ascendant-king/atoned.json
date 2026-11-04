@@ -4750,48 +4750,56 @@
             {
               "audio_url": "https://www.archive.org/download/atrocities_pirates_1203_librivox/atrocities_00_smith_64kb.mp3",
               "length_ms": 432000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/atrocities_pirates_1203_librivox/atrocities_01_smith_64kb.mp3",
               "length_ms": 2099000,
+              "section_number": 1,
               "start_ms": 432000,
               "title": "(Part 1) A Narrative, etc., etc."
             },
             {
               "audio_url": "https://www.archive.org/download/atrocities_pirates_1203_librivox/atrocities_02_smith_64kb.mp3",
               "length_ms": 1648000,
+              "section_number": 2,
               "start_ms": 2531000,
               "title": "(Part 2) A Narrative, etc., etc."
             },
             {
               "audio_url": "https://www.archive.org/download/atrocities_pirates_1203_librivox/atrocities_03_smith_64kb.mp3",
               "length_ms": 1977000,
+              "section_number": 3,
               "start_ms": 4179000,
               "title": "(Part 3) A Narrative, etc., etc."
             },
             {
               "audio_url": "https://www.archive.org/download/atrocities_pirates_1203_librivox/atrocities_04_smith_64kb.mp3",
               "length_ms": 1739000,
+              "section_number": 4,
               "start_ms": 6156000,
               "title": "(Part 4) A Narrative, etc., etc."
             },
             {
               "audio_url": "https://www.archive.org/download/atrocities_pirates_1203_librivox/atrocities_05_smith_64kb.mp3",
               "length_ms": 1667000,
+              "section_number": 5,
               "start_ms": 7895000,
               "title": "(Part 5) A Narrative, etc., etc."
             },
             {
               "audio_url": "https://www.archive.org/download/atrocities_pirates_1203_librivox/atrocities_06_smith_64kb.mp3",
               "length_ms": 2015000,
+              "section_number": 6,
               "start_ms": 9562000,
               "title": "(Part 6) A Narrative, etc., etc."
             },
             {
               "audio_url": "https://www.archive.org/download/atrocities_pirates_1203_librivox/atrocities_07_smith_64kb.mp3",
               "length_ms": 1473000,
+              "section_number": 7,
               "start_ms": 11577000,
               "title": "(Part 7) A Narrative, etc., etc."
             }
@@ -4800,7 +4808,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt21/Atrocities_of_the_Pirates_1207.jpg",
           "id": "james-k-white",
           "language": "en",
+          "librivox_genres": [
+            "True Crime",
+            "Memoirs"
+          ],
           "librivox_id": 6455,
+          "librivox_title": "Atrocities of the Pirates",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-atrocities-of-the-pirates-by-aaron-smith/",

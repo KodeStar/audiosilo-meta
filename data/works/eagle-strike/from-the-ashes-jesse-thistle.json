@@ -4089,7 +4089,11 @@
           "cover_url": "https://archive.org/download/strugglesforfreedom_1310_librivox/from_darkness_1310.jpg",
           "id": "james-k-white",
           "language": "en",
+          "librivox_genres": [
+            "Memoirs"
+          ],
           "librivox_id": 8254,
+          "librivox_title": "From the Darkness Cometh the Light, or Struggles for Freedom",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/from-the-darkness-cometh-the-light-or-struggles-for-freedom-by-lucy-ann-delaney/",
@@ -4650,78 +4654,91 @@
             {
               "audio_url": "https://www.archive.org/download/deepwoodstocivilization_1502_librivox/deepwoodstocivilization_00_eastman_64kb.mp3",
               "length_ms": 129000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Forward"
             },
             {
               "audio_url": "https://www.archive.org/download/deepwoodstocivilization_1502_librivox/deepwoodstocivilization_01_eastman_64kb.mp3",
               "length_ms": 897000,
+              "section_number": 1,
               "start_ms": 129000,
               "title": "The Way Opens"
             },
             {
               "audio_url": "https://www.archive.org/download/deepwoodstocivilization_1502_librivox/deepwoodstocivilization_02_eastman_64kb.mp3",
               "length_ms": 1132000,
+              "section_number": 2,
               "start_ms": 1026000,
               "title": "My First School Days"
             },
             {
               "audio_url": "https://www.archive.org/download/deepwoodstocivilization_1502_librivox/deepwoodstocivilization_03_eastman_64kb.mp3",
               "length_ms": 1404000,
+              "section_number": 3,
               "start_ms": 2158000,
               "title": "On the White Man's Trail"
             },
             {
               "audio_url": "https://www.archive.org/download/deepwoodstocivilization_1502_librivox/deepwoodstocivilization_04_eastman_64kb.mp3",
               "length_ms": 678000,
+              "section_number": 4,
               "start_ms": 3562000,
               "title": "College Life in the West"
             },
             {
               "audio_url": "https://www.archive.org/download/deepwoodstocivilization_1502_librivox/deepwoodstocivilization_05_eastman_64kb.mp3",
               "length_ms": 1046000,
+              "section_number": 5,
               "start_ms": 4240000,
               "title": "College Life in the East"
             },
             {
               "audio_url": "https://www.archive.org/download/deepwoodstocivilization_1502_librivox/deepwoodstocivilization_06_eastman_64kb.mp3",
               "length_ms": 1079000,
+              "section_number": 6,
               "start_ms": 5286000,
               "title": "A Doctor Among the Indians"
             },
             {
               "audio_url": "https://www.archive.org/download/deepwoodstocivilization_1502_librivox/deepwoodstocivilization_07_eastman_64kb.mp3",
               "length_ms": 1657000,
+              "section_number": 7,
               "start_ms": 6365000,
               "title": "The Ghost Dance War"
             },
             {
               "audio_url": "https://www.archive.org/download/deepwoodstocivilization_1502_librivox/deepwoodstocivilization_08_eastman_64kb.mp3",
               "length_ms": 1424000,
+              "section_number": 8,
               "start_ms": 8022000,
               "title": "War with the Politicians"
             },
             {
               "audio_url": "https://www.archive.org/download/deepwoodstocivilization_1502_librivox/deepwoodstocivilization_09_eastman_64kb.mp3",
               "length_ms": 1025000,
+              "section_number": 9,
               "start_ms": 9446000,
               "title": "Civilization as Preached and Practised"
             },
             {
               "audio_url": "https://www.archive.org/download/deepwoodstocivilization_1502_librivox/deepwoodstocivilization_10_eastman_64kb.mp3",
               "length_ms": 1034000,
+              "section_number": 10,
               "start_ms": 10471000,
               "title": "At the Nation's Capital"
             },
             {
               "audio_url": "https://www.archive.org/download/deepwoodstocivilization_1502_librivox/deepwoodstocivilization_11_eastman_64kb.mp3",
               "length_ms": 1109000,
+              "section_number": 11,
               "start_ms": 11505000,
               "title": "Back to the Woods"
             },
             {
               "audio_url": "https://www.archive.org/download/deepwoodstocivilization_1502_librivox/deepwoodstocivilization_12_eastman_64kb.mp3",
               "length_ms": 1025000,
+              "section_number": 12,
               "start_ms": 12614000,
               "title": "The Soul of the White Man"
             }
@@ -4730,7 +4747,11 @@
           "cover_url": "https://archive.org/download/deepwoodstocivilization_1502_librivox/fromdeepwoodstocivilization_1502.jpg",
           "id": "laura-victoria",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography"
+          ],
           "librivox_id": 9432,
+          "librivox_title": "From the Deep Woods to Civilization: Chapters in the Autobiography of an Indian",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/from-the-deep-woods-to-civilization-chapters-in-the-autobiography-of-an-indian-by-charles-alexander-eastman/",
@@ -5802,162 +5823,243 @@
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_01_verne_64kb.mp3",
               "length_ms": 738000,
+              "readers": [
+                "alex-patterson"
+              ],
               "start_ms": 0,
               "title": "The Gun Club"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_02_verne_64kb.mp3",
               "length_ms": 829000,
+              "readers": [
+                "alex-patterson"
+              ],
               "start_ms": 738000,
               "title": "President Barbicane's Communication"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_03_verne_64kb.mp3",
               "length_ms": 377000,
+              "readers": [
+                "alex-patterson"
+              ],
               "start_ms": 1567000,
               "title": "Effect of the President's Communication"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_04_verne_64kb.mp3",
               "length_ms": 603000,
+              "readers": [
+                "alex-patterson"
+              ],
               "start_ms": 1944000,
               "title": "Reply From the Observatory of Cambridge"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_05_verne_64kb.mp3",
               "length_ms": 513000,
+              "readers": [
+                "alex-patterson"
+              ],
               "start_ms": 2547000,
               "title": "The Romance of the Moon"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_06_verne_64kb.mp3",
               "length_ms": 511000,
+              "readers": [
+                "alex-patterson"
+              ],
               "start_ms": 3060000,
               "title": "The Permissive Limits of Ignorance and Belief in the United States"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_07_verne_64kb.mp3",
               "length_ms": 662000,
+              "readers": [
+                "alex-patterson"
+              ],
               "start_ms": 3571000,
               "title": "The Hymn of the Cannon-Ball"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_08_verne_64kb.mp3",
               "length_ms": 445000,
+              "readers": [
+                "alex-patterson"
+              ],
               "start_ms": 4233000,
               "title": "History of the Cannon"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_09_verne_64kb.mp3",
               "length_ms": 558000,
+              "readers": [
+                "alex-patterson"
+              ],
               "start_ms": 4678000,
               "title": "The Question of the Powders"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_10_verne_64kb.mp3",
               "length_ms": 542000,
+              "readers": [
+                "alex-patterson"
+              ],
               "start_ms": 5236000,
               "title": "One Enemy V. Twenty-Five Millions of Friends"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_11_verne_64kb.mp3",
               "length_ms": 533000,
+              "readers": [
+                "nielsbohred"
+              ],
               "start_ms": 5778000,
               "title": "Florida and Texas"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_12_verne_64kb.mp3",
               "length_ms": 773000,
+              "readers": [
+                "esther"
+              ],
               "start_ms": 6311000,
               "title": "Urbi et Orbi"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_13_verne_64kb.mp3",
               "length_ms": 615000,
+              "readers": [
+                "esther"
+              ],
               "start_ms": 7084000,
               "title": "Stones Hill"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_14_verne_64kb.mp3",
               "length_ms": 597000,
+              "readers": [
+                "chris-langston"
+              ],
               "start_ms": 7699000,
               "title": "Pickaxe and Trowel"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_15_verne_64kb.mp3",
               "length_ms": 617000,
+              "readers": [
+                "chris-langston"
+              ],
               "start_ms": 8296000,
               "title": "The Fete of the Casting"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_16-17_verne_64kb.mp3",
               "length_ms": 670000,
+              "readers": [
+                "laurie-anne-walden"
+              ],
               "start_ms": 8913000,
               "title": "Ch. 16 The Columbiad and Ch. 17 A Telegraphic Dispatch"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_18_verne_64kb.mp3",
               "length_ms": 755000,
+              "readers": [
+                "lizzie-driver"
+              ],
               "start_ms": 9583000,
               "title": "Ch. 18 The Passenger of the Atlanta"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_19_verne_64kb.mp3",
               "length_ms": 899000,
+              "readers": [
+                "esther"
+              ],
               "start_ms": 10338000,
               "title": "Ch. 19 A Monster Meeting"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_20_verne_64kb.mp3",
               "length_ms": 1011000,
+              "readers": [
+                "meredith-hughes"
+              ],
               "start_ms": 11237000,
               "title": "Ch. 20 Attack and Riposte"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_21_verne_64kb.mp3",
               "length_ms": 924000,
+              "readers": [
+                "laurie-anne-walden"
+              ],
               "start_ms": 12248000,
               "title": "Ch. 21 How A Frenchman Manages An Affair"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_22_verne_64kb.mp3",
               "length_ms": 570000,
+              "readers": [
+                "esther"
+              ],
               "start_ms": 13172000,
               "title": "Ch. 22 The New Citizen of the United States"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_23_verne_64kb.mp3",
               "length_ms": 436000,
+              "readers": [
+                "esther"
+              ],
               "start_ms": 13742000,
               "title": "Ch. 23 The Projectile-Vehicle"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_24_verne_64kb.mp3",
               "length_ms": 442000,
+              "readers": [
+                "esther"
+              ],
               "start_ms": 14178000,
               "title": "Ch. 24 The Telescope of the Rocky Mountains"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_25_verne_64kb.mp3",
               "length_ms": 772000,
+              "readers": [
+                "leonie-rose"
+              ],
               "start_ms": 14620000,
               "title": "Ch. 25 Final Details"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_26_verne_64kb.mp3",
               "length_ms": 634000,
+              "readers": [
+                "esther"
+              ],
               "start_ms": 15392000,
               "title": "Ch. 26 Fire!"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_27_verne_64kb.mp3",
               "length_ms": 411000,
+              "readers": [
+                "leonie-rose"
+              ],
               "start_ms": 16026000,
               "title": "Ch. 27 Foul Weather"
             },
             {
               "audio_url": "https://www.archive.org/download/earth_to_moon_librivox/earth_to_moon_28_verne_64kb.mp3",
               "length_ms": 276000,
+              "readers": [
+                "esther"
+              ],
               "start_ms": 16437000,
               "title": "Ch. 28 A New Star"
             }
@@ -5966,7 +6068,11 @@
           "cover_url": "https://www.archive.org/download/librivox_cd_covers/from_the_earth_to_the_moon.jpg",
           "id": "alex-patterson",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 594,
+          "librivox_title": "From the Earth to the Moon",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/from-the-earth-to-the-moon-by-jules-verne/",
@@ -6523,7 +6629,13 @@
           "cover_url": "https://archive.org/download/earth_to_moon_version_2_mfs_2012_librivox/fromearthtomoon_2012.jpg",
           "id": "mark-f-smith",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Travel Fiction",
+            "Science Fiction"
+          ],
           "librivox_id": 15884,
+          "librivox_title": "From the Earth to the Moon, Version 2",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/from-the-earth-to-the-moon-version-2-by-jules-verne/",
@@ -7806,7 +7918,11 @@
           "cover_url": "https://archive.org/download/from_the_easy_chair_1_1710_librivox/easy_chair1_1710.jpg",
           "id": "matthew-squaire",
           "language": "en",
+          "librivox_genres": [
+            "Essays & Short Works"
+          ],
           "librivox_id": 11667,
+          "librivox_title": "From the Easy Chair Vol. 1",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/from-the-easy-chair-vol-1-by-george-william-curtis/",
@@ -7868,180 +7984,270 @@
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_01_curtis_64kb.mp3",
               "length_ms": 603000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 0,
               "title": "The New Year"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_02_curtis_64kb.mp3",
               "length_ms": 361000,
+              "readers": [
+                "drpgould"
+              ],
               "start_ms": 603000,
               "title": "The Public Scold"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_03_curtis_64kb.mp3",
               "length_ms": 425000,
+              "readers": [
+                "drpgould"
+              ],
               "start_ms": 964000,
               "title": "National Nominating Convention"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_04_curtis_64kb.mp3",
               "length_ms": 564000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 1389000,
               "title": "Bryant's Country"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_05_curtis_64kb.mp3",
               "length_ms": 574000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 1953000,
               "title": "The Game of Newport"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_06_curtis_64kb.mp3",
               "length_ms": 483000,
+              "readers": [
+                "drpgould"
+              ],
               "start_ms": 2527000,
               "title": "The Lecture Lyceum"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_07_curtis_64kb.mp3",
               "length_ms": 1013000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 3010000,
               "title": "Tweed"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_08_curtis_64kb.mp3",
               "length_ms": 706000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 4023000,
               "title": "Commencement"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_09_curtis_64kb.mp3",
               "length_ms": 500000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 4729000,
               "title": "The Streets of New York"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_10_curtis_64kb.mp3",
               "length_ms": 311000,
+              "readers": [
+                "drpgould"
+              ],
               "start_ms": 5229000,
               "title": "The Morality of Dancing"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_11_curtis_64kb.mp3",
               "length_ms": 527000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 5540000,
               "title": "The Hog Family"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_12_curtis_64kb.mp3",
               "length_ms": 387000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 6067000,
               "title": "The Enlightened Observer"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_13_curtis_64kb.mp3",
               "length_ms": 1022000,
+              "readers": [
+                "drpgould"
+              ],
               "start_ms": 6454000,
               "title": "Ralph Waldo Emerson"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_14_curtis_64kb.mp3",
               "length_ms": 607000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 7476000,
               "title": "Henry Ward Beecher"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_15_curtis_64kb.mp3",
               "length_ms": 499000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 8083000,
               "title": "The Golden Age"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_16_curtis_64kb.mp3",
               "length_ms": 352000,
+              "readers": [
+                "brianna"
+              ],
               "start_ms": 8582000,
               "title": "Spring Pictures"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_17_curtis_64kb.mp3",
               "length_ms": 431000,
+              "readers": [
+                "drpgould"
+              ],
               "start_ms": 8934000,
               "title": "Proper and Improper"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_18_curtis_64kb.mp3",
               "length_ms": 372000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 9365000,
               "title": "Belinda and the Vulgar"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_19_curtis_64kb.mp3",
               "length_ms": 594000,
+              "readers": [
+                "brianna"
+              ],
               "start_ms": 9737000,
               "title": "Decayed Gentility"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_20_curtis_64kb.mp3",
               "length_ms": 532000,
+              "readers": [
+                "brianna"
+              ],
               "start_ms": 10331000,
               "title": "The Pharisee"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_21_curtis_64kb.mp3",
               "length_ms": 452000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 10863000,
               "title": "Lady Mavourneen and her Travels"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_22_curtis_64kb.mp3",
               "length_ms": 351000,
+              "readers": [
+                "brianna"
+              ],
               "start_ms": 11315000,
               "title": "General Sherman"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_23_curtis_64kb.mp3",
               "length_ms": 643000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 11666000,
               "title": "The American Girl"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_24_curtis_64kb.mp3",
               "length_ms": 743000,
+              "readers": [
+                "drpgould"
+              ],
               "start_ms": 12309000,
               "title": "Annus Mirabilis"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_25_curtis_64kb.mp3",
               "length_ms": 516000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 13052000,
               "title": "Stautues in Central Park"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_26_curtis_64kb.mp3",
               "length_ms": 659000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 13568000,
               "title": "The Grand Tour"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_27_curtis_64kb.mp3",
               "length_ms": 340000,
+              "readers": [
+                "drpgould"
+              ],
               "start_ms": 14227000,
               "title": "'Easy Does It, Guvner'"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_28_curtis_64kb.mp3",
               "length_ms": 719000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 14567000,
               "title": "Siste, Viator"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_29_curtis_64kb.mp3",
               "length_ms": 487000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 15286000,
               "title": "Christendom vs Christianity"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_easy_chair_2_1711_librivox/fromtheeasychairvol2_30_curtis_64kb.mp3",
               "length_ms": 649000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 15773000,
               "title": "Francis George Shaw"
             }
@@ -8050,7 +8256,11 @@
           "cover_url": "https://archive.org/download/from_the_easy_chair_2_1711_librivox/easy_chair2_1711.jpg",
           "id": "lynne-t",
           "language": "en",
+          "librivox_genres": [
+            "Essays & Short Works"
+          ],
           "librivox_id": 12390,
+          "librivox_title": "From the Easy Chair Vol. 2",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/from-the-easy-chair-vol-2-by-george-william-curtis/",
@@ -8107,156 +8317,234 @@
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_01_curtis_64kb.mp3",
               "length_ms": 1339000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 0,
               "title": "Hawthorne and Brook Farm"
             },
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_02_curtis_64kb.mp3",
               "length_ms": 519000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 1339000,
               "title": "Beecher in his Pulpit After the Death of Lincoln"
             },
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_03_curtis_64kb.mp3",
               "length_ms": 777000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 1858000,
               "title": "Killing Deer"
             },
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_04_curtis_64kb.mp3",
               "length_ms": 540000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 2635000,
               "title": "Autumn Days"
             },
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_05_curtis_64kb.mp3",
               "length_ms": 883000,
+              "readers": [
+                "cleon-cumberbatch"
+              ],
               "start_ms": 3175000,
               "title": "From Como to Milan During the War of 1848"
             },
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_06_curtis_64kb.mp3",
               "length_ms": 544000,
+              "readers": [
+                "cleon-cumberbatch"
+              ],
               "start_ms": 4058000,
               "title": "Herbert Spencer on the Yankee"
             },
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_07_curtis_64kb.mp3",
               "length_ms": 434000,
+              "readers": [
+                "drpgould"
+              ],
               "start_ms": 4602000,
               "title": "Honor"
             },
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_08_curtis_64kb.mp3",
               "length_ms": 364000,
+              "readers": [
+                "dl-archer"
+              ],
               "start_ms": 5036000,
               "title": "Joseph Wesley Harper"
             },
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_09_curtis_64kb.mp3",
               "length_ms": 600000,
+              "readers": [
+                "drpgould"
+              ],
               "start_ms": 5400000,
               "title": "Review of Union Troops, 1865"
             },
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_10_curtis_64kb.mp3",
               "length_ms": 423000,
+              "readers": [
+                "ed-fenton"
+              ],
               "start_ms": 6000000,
               "title": "April 1865"
             },
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_11_curtis_64kb.mp3",
               "length_ms": 552000,
+              "readers": [
+                "dl-archer"
+              ],
               "start_ms": 6423000,
               "title": "Washington in 1867"
             },
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_12_curtis_64kb.mp3",
               "length_ms": 688000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 6975000,
               "title": "Reception to the Japanese Ambassadors at the White House"
             },
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_13_curtis_64kb.mp3",
               "length_ms": 460000,
+              "readers": [
+                "drpgould"
+              ],
               "start_ms": 7663000,
               "title": "The Maid and the Wit"
             },
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_14_curtis_64kb.mp3",
               "length_ms": 436000,
+              "readers": [
+                "drpgould"
+              ],
               "start_ms": 8123000,
               "title": "The Departure of the Great Eastern"
             },
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_15_curtis_64kb.mp3",
               "length_ms": 840000,
+              "readers": [
+                "drpgould"
+              ],
               "start_ms": 8559000,
               "title": "Church Street"
             },
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_16_curtis_64kb.mp3",
               "length_ms": 763000,
+              "readers": [
+                "dl-archer"
+              ],
               "start_ms": 9399000,
               "title": "Historic Buildings"
             },
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_17_curtis_64kb.mp3",
               "length_ms": 728000,
+              "readers": [
+                "drpgould"
+              ],
               "start_ms": 10162000,
               "title": "The Boston Music Hall"
             },
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_18_curtis_64kb.mp3",
               "length_ms": 439000,
+              "readers": [
+                "drpgould"
+              ],
               "start_ms": 10890000,
               "title": "Public Benefactors"
             },
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_19_curtis_64kb.mp3",
               "length_ms": 554000,
+              "readers": [
+                "drpgould"
+              ],
               "start_ms": 11329000,
               "title": "Mr. Tibbins's New-Year Call"
             },
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_20_curtis_64kb.mp3",
               "length_ms": 466000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 11883000,
               "title": "The New England Sabbath"
             },
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_21_curtis_64kb.mp3",
               "length_ms": 492000,
+              "readers": [
+                "dl-archer"
+              ],
               "start_ms": 12349000,
               "title": "The Reunion of Anti-Slavery Veterans, 1884"
             },
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_22_curtis_64kb.mp3",
               "length_ms": 709000,
+              "readers": [
+                "drpgould"
+              ],
               "start_ms": 12841000,
               "title": "Reform Charity"
             },
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_23_curtis_64kb.mp3",
               "length_ms": 423000,
+              "readers": [
+                "aniroo"
+              ],
               "start_ms": 13550000,
               "title": "Bicycle Riding for Children"
             },
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_24_curtis_64kb.mp3",
               "length_ms": 395000,
+              "readers": [
+                "brianna"
+              ],
               "start_ms": 13973000,
               "title": "The Dead Bird Upon Cyrilla's Hat an Encouragement of 'Slarter'"
             },
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_25_curtis_64kb.mp3",
               "length_ms": 432000,
+              "readers": [
+                "drpgould"
+              ],
               "start_ms": 14368000,
               "title": "Cheapening his Name"
             },
             {
               "audio_url": "https://www.archive.org/download/easy_chair_3_1804_librivox/easychair3_26_curtis_64kb.mp3",
               "length_ms": 891000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 14800000,
               "title": "Clergymen's Salaries"
             }
@@ -8265,7 +8553,11 @@
           "cover_url": "https://archive.org/download/easy_chair_3_1804_librivox/easy_chair3_1804.jpg",
           "id": "larry-wilson",
           "language": "en",
+          "librivox_genres": [
+            "Essays & Short Works"
+          ],
           "librivox_id": 12493,
+          "librivox_title": "From the Easy Chair Vol. 3",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/from-the-easy-chair-vol-3-by-george-william-curtis/",
@@ -10582,108 +10874,162 @@
             {
               "audio_url": "https://www.archive.org/download/from_the_forests_2004.poem_librivox/forests_kendall_alp_64kb.mp3",
               "length_ms": 140000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 0,
               "title": "From the Forests - Read by ALP"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_forests_2004.poem_librivox/forests_kendall_bk_64kb.mp3",
               "length_ms": 173000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 140000,
               "title": "From the Forests - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_forests_2004.poem_librivox/forests_kendall_cjph_64kb.mp3",
               "length_ms": 130000,
+              "readers": [
+                "chadh94"
+              ],
               "start_ms": 313000,
               "title": "From the Forests - Read by CJPH"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_forests_2004.poem_librivox/forests_kendall_clp_64kb.mp3",
               "length_ms": 119000,
+              "readers": [
+                "chris-pyle"
+              ],
               "start_ms": 443000,
               "title": "From the Forests - Read by CLP"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_forests_2004.poem_librivox/forests_kendall_dl_64kb.mp3",
               "length_ms": 146000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 562000,
               "title": "From the Forests - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_forests_2004.poem_librivox/forests_kendall_el_64kb.mp3",
               "length_ms": 184000,
+              "readers": [
+                "newgatenovelist"
+              ],
               "start_ms": 708000,
               "title": "From the Forests - Read by EL"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_forests_2004.poem_librivox/forests_kendall_ft_64kb.mp3",
               "length_ms": 132000,
+              "readers": [
+                "frank249942"
+              ],
               "start_ms": 892000,
               "title": "From the Forests - Read by FT"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_forests_2004.poem_librivox/forests_kendall_grs_64kb.mp3",
               "length_ms": 162000,
+              "readers": [
+                "graham-scott"
+              ],
               "start_ms": 1024000,
               "title": "From the Forests - Read by GRS"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_forests_2004.poem_librivox/forests_kendall_jdg_64kb.mp3",
               "length_ms": 138000,
+              "readers": [
+                "jd-gibson"
+              ],
               "start_ms": 1186000,
               "title": "From the Forests - Read by JDG"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_forests_2004.poem_librivox/forests_kendall_jjh_64kb.mp3",
               "length_ms": 165000,
+              "readers": [
+                "jennifer-henry"
+              ],
               "start_ms": 1324000,
               "title": "From the Forests - Read by JJH"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_forests_2004.poem_librivox/forests_kendall_lcw_64kb.mp3",
               "length_ms": 126000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 1489000,
               "title": "From the Forests - Read by LCW"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_forests_2004.poem_librivox/forests_kendall_nm_64kb.mp3",
               "length_ms": 145000,
+              "readers": [
+                "npsilvera"
+              ],
               "start_ms": 1615000,
               "title": "From the Forests - Read by NM"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_forests_2004.poem_librivox/forests_kendall_ps_64kb.mp3",
               "length_ms": 134000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 1760000,
               "title": "From the Forests - Read by PS"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_forests_2004.poem_librivox/forests_kendall_sek_64kb.mp3",
               "length_ms": 113000,
+              "readers": [
+                "skendall48"
+              ],
               "start_ms": 1894000,
               "title": "From the Forests - Read by SEK"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_forests_2004.poem_librivox/forests_kendall_sq_64kb.mp3",
               "length_ms": 148000,
+              "readers": [
+                "seaquill"
+              ],
               "start_ms": 2007000,
               "title": "From the Forests - Read by SQ"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_forests_2004.poem_librivox/forests_kendall_ten_64kb.mp3",
               "length_ms": 144000,
+              "readers": [
+                "thomas-ermon"
+              ],
               "start_ms": 2155000,
               "title": "From the Forests - Read by TEN"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_forests_2004.poem_librivox/forests_kendall_tlk_64kb.mp3",
               "length_ms": 116000,
+              "readers": [
+                "thomas-l-koehnlein"
+              ],
               "start_ms": 2299000,
               "title": "From the Forests - Read by TLK"
             },
             {
               "audio_url": "https://www.archive.org/download/from_the_forests_2004.poem_librivox/forests_kendall_ws_64kb.mp3",
               "length_ms": 138000,
+              "readers": [
+                "wyn-stewart"
+              ],
               "start_ms": 2415000,
               "title": "From the Forests - Read by WS"
             }
@@ -10692,7 +11038,11 @@
           "cover_url": "https://archive.org/download/librivoxcdcoverart36/fromtheforests_2004.jpg",
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 14970,
+          "librivox_title": "From the Forests",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/from-the-forests-by-henry-kendall/",
@@ -10767,129 +11117,220 @@
             {
               "audio_url": "https://www.archive.org/download/foundation_city_vol1_1001_librivox/foundationofcity01_00_livy_64kb.mp3",
               "length_ms": 408000,
+              "readers": [
+                "leni"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Book 01 Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/foundation_city_vol1_1001_librivox/foundationofcity01_01_livy_64kb.mp3",
               "length_ms": 1503000,
+              "readers": [
+                "leni"
+              ],
+              "section_number": 1,
               "start_ms": 408000,
               "title": "Book 01 pt 01"
             },
             {
               "audio_url": "https://www.archive.org/download/foundation_city_vol1_1001_librivox/foundationofcity01_02_livy_64kb.mp3",
               "length_ms": 1522000,
+              "readers": [
+                "mark-harrington"
+              ],
+              "section_number": 2,
               "start_ms": 1911000,
               "title": "Book 01 pt 02"
             },
             {
               "audio_url": "https://www.archive.org/download/foundation_city_vol1_1001_librivox/foundationofcity01_03_livy_64kb.mp3",
               "length_ms": 1347000,
+              "readers": [
+                "mark-harrington"
+              ],
+              "section_number": 3,
               "start_ms": 3433000,
               "title": "Book 01 pt 03"
             },
             {
               "audio_url": "https://www.archive.org/download/foundation_city_vol1_1001_librivox/foundationofcity01_04_livy_64kb.mp3",
               "length_ms": 1601000,
+              "readers": [
+                "mark-harrington"
+              ],
+              "section_number": 4,
               "start_ms": 4780000,
               "title": "Book 01 pt 04"
             },
             {
               "audio_url": "https://www.archive.org/download/foundation_city_vol1_1001_librivox/foundationofcity01_05_livy_64kb.mp3",
               "length_ms": 1403000,
+              "readers": [
+                "mark-harrington"
+              ],
+              "section_number": 5,
               "start_ms": 6381000,
               "title": "Book 01 pt 05"
             },
             {
               "audio_url": "https://www.archive.org/download/foundation_city_vol1_1001_librivox/foundationofcity01_06_livy_64kb.mp3",
               "length_ms": 1347000,
+              "readers": [
+                "mark-harrington"
+              ],
+              "section_number": 6,
               "start_ms": 7784000,
               "title": "Book 01 pt 06"
             },
             {
               "audio_url": "https://www.archive.org/download/foundation_city_vol1_1001_librivox/foundationofcity01_07_livy_64kb.mp3",
               "length_ms": 1449000,
+              "readers": [
+                "ann-boulais"
+              ],
+              "section_number": 7,
               "start_ms": 9131000,
               "title": "Book 01 pt 07"
             },
             {
               "audio_url": "https://www.archive.org/download/foundation_city_vol1_1001_librivox/foundationofcity01_08_livy_64kb.mp3",
               "length_ms": 1375000,
+              "readers": [
+                "ann-boulais"
+              ],
+              "section_number": 8,
               "start_ms": 10580000,
               "title": "Book 01 pt 08"
             },
             {
               "audio_url": "https://www.archive.org/download/foundation_city_vol1_1001_librivox/foundationofcity01_09_livy_64kb.mp3",
               "length_ms": 1311000,
+              "readers": [
+                "leni"
+              ],
+              "section_number": 9,
               "start_ms": 11955000,
               "title": "Book 01 pt 09"
             },
             {
               "audio_url": "https://www.archive.org/download/foundation_city_vol1_1001_librivox/foundationofcity01_10_livy_64kb.mp3",
               "length_ms": 1280000,
+              "readers": [
+                "ontheroad"
+              ],
+              "section_number": 10,
               "start_ms": 13266000,
               "title": "Book 02 pt 01"
             },
             {
               "audio_url": "https://www.archive.org/download/foundation_city_vol1_1001_librivox/foundationofcity01_11_livy_64kb.mp3",
               "length_ms": 1331000,
+              "readers": [
+                "ontheroad"
+              ],
+              "section_number": 11,
               "start_ms": 14546000,
               "title": "Book 02 pt 02"
             },
             {
               "audio_url": "https://www.archive.org/download/foundation_city_vol1_1001_librivox/foundationofcity01_12_livy_64kb.mp3",
               "length_ms": 1215000,
+              "readers": [
+                "ontheroad"
+              ],
+              "section_number": 12,
               "start_ms": 15877000,
               "title": "Book 02 pt 03"
             },
             {
               "audio_url": "https://www.archive.org/download/foundation_city_vol1_1001_librivox/foundationofcity01_13_livy_64kb.mp3",
               "length_ms": 1218000,
+              "readers": [
+                "ontheroad"
+              ],
+              "section_number": 13,
               "start_ms": 17092000,
               "title": "Book 02 pt 04"
             },
             {
               "audio_url": "https://www.archive.org/download/foundation_city_vol1_1001_librivox/foundationofcity01_14_livy_64kb.mp3",
               "length_ms": 1114000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 14,
               "start_ms": 18310000,
               "title": "Book 02 pt 05"
             },
             {
               "audio_url": "https://www.archive.org/download/foundation_city_vol1_1001_librivox/foundationofcity01_15_livy_64kb.mp3",
               "length_ms": 1129000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 15,
               "start_ms": 19424000,
               "title": "Book 02 pt 06"
             },
             {
               "audio_url": "https://www.archive.org/download/foundation_city_vol1_1001_librivox/foundationofcity01_16_livy_64kb.mp3",
               "length_ms": 1242000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 16,
               "start_ms": 20553000,
               "title": "Book 02 pt 07"
             },
             {
               "audio_url": "https://www.archive.org/download/foundation_city_vol1_1001_librivox/foundationofcity01_17_livy_64kb.mp3",
               "length_ms": 1381000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 17,
               "start_ms": 21795000,
               "title": "Book 02 pt 08"
             },
             {
               "audio_url": "https://www.archive.org/download/foundation_city_vol1_1001_librivox/foundationofcity01_18_livy_64kb.mp3",
               "length_ms": 1430000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 18,
               "start_ms": 23176000,
               "title": "Book 02 pt 09"
             },
             {
               "audio_url": "https://www.archive.org/download/foundation_city_vol1_1001_librivox/foundationofcity01_19_livy_64kb.mp3",
               "length_ms": 1279000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 19,
               "start_ms": 24606000,
               "title": "Book 02 pt 10"
             }
           ],
           "copyright_year": 1823,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt28/from_foundation_city_1212.jpg",
+          "credits": [
+            {
+              "person": "george-a-baker-jr",
+              "role": "translator"
+            }
+          ],
           "id": "leni",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Antiquity"
+          ],
           "librivox_id": 3496,
+          "librivox_title": "From the Foundation of the City Vol. 01",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/from-the-foundation-of-the-city-by-titus-livius/",
@@ -11818,7 +12259,11 @@
           "cover_url": "https://archive.org/download/fromgreenhelmet_2508_librivox/green_helmets_2508.jpg",
           "id": "kazbek",
           "language": "en",
+          "librivox_genres": [
+            "Single author"
+          ],
           "librivox_id": 21798,
+          "librivox_title": "From The Green Helmet and Other Poems",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/from-the-green-helmet-by-william-butler-yeats/",
@@ -13363,9 +13808,20 @@
           ],
           "copyright_year": 1914,
           "cover_url": "https://archive.org/download/fromthelifeofagood-for-nothing_2406_librivox/lifegoodfornothing_2406.jpg",
+          "credits": [
+            {
+              "person": "annis-lee-wister",
+              "role": "translator"
+            }
+          ],
           "id": "christoph-stangenberg",
           "language": "en",
+          "librivox_genres": [
+            "Historical Fiction",
+            "Literary Fiction"
+          ],
           "librivox_id": 20547,
+          "librivox_title": "From the Life of a Good-For-Nothing",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/from-the-life-of-a-good-for-nothing-by-joseph-von-eichendorff/",

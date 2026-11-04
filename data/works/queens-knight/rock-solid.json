@@ -6265,18 +6265,50 @@
             {
               "audio_url": "https://www.archive.org/download/therocket_2004_librivox/rocket_1_pinero_64kb.mp3",
               "length_ms": 2766000,
+              "readers": [
+                "availle",
+                "toddhw",
+                "alan-mapstone",
+                "rob-marland",
+                "tomas-peter",
+                "michaelmaggs",
+                "jenn-broda",
+                "adrian-stephens"
+              ],
               "start_ms": 0,
               "title": "Act 1 - Rising"
             },
             {
               "audio_url": "https://www.archive.org/download/therocket_2004_librivox/rocket_2_pinero_64kb.mp3",
               "length_ms": 3726000,
+              "readers": [
+                "toddhw",
+                "rob-marland",
+                "sonia",
+                "tomas-peter",
+                "tj-burns",
+                "michaelmaggs",
+                "jenn-broda",
+                "adrian-stephens",
+                "adam-bielka"
+              ],
               "start_ms": 2766000,
               "title": "Act 2 - Mid-Air"
             },
             {
               "audio_url": "https://www.archive.org/download/therocket_2004_librivox/rocket_3_pinero_64kb.mp3",
               "length_ms": 2709000,
+              "readers": [
+                "toddhw",
+                "rob-marland",
+                "son-of-the-exiles",
+                "sonia",
+                "tomas-peter",
+                "tj-burns",
+                "michaelmaggs",
+                "jenn-broda",
+                "adrian-stephens"
+              ],
               "start_ms": 6492000,
               "title": "Act 3 - Coming Down Like a Stick"
             }
@@ -6285,7 +6317,11 @@
           "cover_url": "https://archive.org/download/therocket_2004_librivox/rocket_2004.jpg",
           "id": "availle",
           "language": "en",
+          "librivox_genres": [
+            "Comedy"
+          ],
           "librivox_id": 14662,
+          "librivox_title": "Rocket",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-rocket-by-arthur-wing-pinero/",
@@ -6407,7 +6443,11 @@
           "cover_url": "https://archive.org/download/rocket_book_librivox/Rocket_Book_1104.jpg",
           "id": "denny-sayers-d-2015",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 404,
+          "librivox_title": "Rocket Book",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-rocket-book-by-peter-newell/",
@@ -11687,90 +11727,105 @@
             {
               "audio_url": "https://www.archive.org/download/rocksandtheirorigins_1111_libirvox/rocks_00_cole_64kb.mp3",
               "length_ms": 143000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 - Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/rocksandtheirorigins_1111_libirvox/rocks_01_cole_64kb.mp3",
               "length_ms": 632000,
+              "section_number": 1,
               "start_ms": 143000,
               "title": "01 - On Rocks in General"
             },
             {
               "audio_url": "https://www.archive.org/download/rocksandtheirorigins_1111_libirvox/rocks_02_cole_64kb.mp3",
               "length_ms": 1407000,
+              "section_number": 2,
               "start_ms": 775000,
               "title": "02 - The Limestones, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/rocksandtheirorigins_1111_libirvox/rocks_03_cole_64kb.mp3",
               "length_ms": 1194000,
+              "section_number": 3,
               "start_ms": 2182000,
               "title": "03 - The Limestones, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/rocksandtheirorigins_1111_libirvox/rocks_04_cole_64kb.mp3",
               "length_ms": 911000,
+              "section_number": 4,
               "start_ms": 3376000,
               "title": "04 - The Limestones, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/rocksandtheirorigins_1111_libirvox/rocks_05_cole_64kb.mp3",
               "length_ms": 778000,
+              "section_number": 5,
               "start_ms": 4287000,
               "title": "05 - The Sandstones, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/rocksandtheirorigins_1111_libirvox/rocks_06_cole_64kb.mp3",
               "length_ms": 920000,
+              "section_number": 6,
               "start_ms": 5065000,
               "title": "06 - The Sandstones, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/rocksandtheirorigins_1111_libirvox/rocks_07_cole_64kb.mp3",
               "length_ms": 809000,
+              "section_number": 7,
               "start_ms": 5985000,
               "title": "07 - Clays, Shales and Slates, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/rocksandtheirorigins_1111_libirvox/rocks_08_cole_64kb.mp3",
               "length_ms": 907000,
+              "section_number": 8,
               "start_ms": 6794000,
               "title": "08 - Clays, Shales and Slates, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/rocksandtheirorigins_1111_libirvox/rocks_09_cole_64kb.mp3",
               "length_ms": 1486000,
+              "section_number": 9,
               "start_ms": 7701000,
               "title": "09 - Igneous Rocks, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/rocksandtheirorigins_1111_libirvox/rocks_10_cole_64kb.mp3",
               "length_ms": 868000,
+              "section_number": 10,
               "start_ms": 9187000,
               "title": "10 - Igneous Rocks, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/rocksandtheirorigins_1111_libirvox/rocks_11_cole_64kb.mp3",
               "length_ms": 729000,
+              "section_number": 11,
               "start_ms": 10055000,
               "title": "11 - Igneous Rocks, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/rocksandtheirorigins_1111_libirvox/rocks_12_cole_64kb.mp3",
               "length_ms": 758000,
+              "section_number": 12,
               "start_ms": 10784000,
               "title": "12 - Metamorphic Rocks, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/rocksandtheirorigins_1111_libirvox/rocks_13_cole_64kb.mp3",
               "length_ms": 727000,
+              "section_number": 13,
               "start_ms": 11542000,
               "title": "13 - Metamorphic Rocks, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/rocksandtheirorigins_1111_libirvox/rocks_14_cole_64kb.mp3",
               "length_ms": 674000,
+              "section_number": 14,
               "start_ms": 12269000,
               "title": "14 - List of the Common Minerals that form Rocks"
             }
@@ -11779,7 +11834,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt20/rocks_origins_1206.jpg",
           "id": "j-m-smallheer",
           "language": "en",
+          "librivox_genres": [
+            "Science",
+            "Earth Sciences"
+          ],
           "librivox_id": 5404,
+          "librivox_title": "Rocks and Their Origins",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/rocks-and-their-origins-by-grenville-a-j-cole/",

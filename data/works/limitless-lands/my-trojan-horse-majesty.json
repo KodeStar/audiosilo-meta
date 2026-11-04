@@ -222,78 +222,117 @@
             {
               "audio_url": "https://www.archive.org/download/my_true_love_0905_librivox/mytruelove_sidney_af_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "audio-andrea"
+              ],
               "start_ms": 0,
               "title": "My True Love – Read by AF"
             },
             {
               "audio_url": "https://www.archive.org/download/my_true_love_0905_librivox/mytruelove_sidney_bm_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "bookman"
+              ],
               "start_ms": 75000,
               "title": "My True Love – Read by BM"
             },
             {
               "audio_url": "https://www.archive.org/download/my_true_love_0905_librivox/mytruelove_sidney_dns_64kb.mp3",
               "length_ms": 84000,
+              "readers": [
+                "donna-stewart"
+              ],
               "start_ms": 157000,
               "title": "My True Love – Read by DNS"
             },
             {
               "audio_url": "https://www.archive.org/download/my_true_love_0905_librivox/mytruelove_sidney_eep_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "ernst-pattynama"
+              ],
               "start_ms": 241000,
               "title": "My True Love – Read by EEP"
             },
             {
               "audio_url": "https://www.archive.org/download/my_true_love_0905_librivox/mytruelove_sidney_est_64kb.mp3",
               "length_ms": 58000,
+              "readers": [
+                "elli"
+              ],
               "start_ms": 323000,
               "title": "My True Love – Read by EST"
             },
             {
               "audio_url": "https://www.archive.org/download/my_true_love_0905_librivox/mytruelove_sidney_ezwa_64kb.mp3",
               "length_ms": 86000,
+              "readers": [
+                "ezwa"
+              ],
               "start_ms": 381000,
               "title": "My True Love – Read by EZWA"
             },
             {
               "audio_url": "https://www.archive.org/download/my_true_love_0905_librivox/mytruelove_sidney_lah_64kb.mp3",
               "length_ms": 83000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 467000,
               "title": "My True Love – Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/my_true_love_0905_librivox/mytruelove_sidney_lkp_64kb.mp3",
               "length_ms": 59000,
+              "readers": [
+                "lucy-perry"
+              ],
               "start_ms": 550000,
               "title": "My True Love – Read by LKP"
             },
             {
               "audio_url": "https://www.archive.org/download/my_true_love_0905_librivox/mytruelove_sidney_mch_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "marianne-coleman-hipkins"
+              ],
               "start_ms": 609000,
               "title": "My True Love – Read by MCH"
             },
             {
               "audio_url": "https://www.archive.org/download/my_true_love_0905_librivox/mytruelove_sidney_mrs_64kb.mp3",
               "length_ms": 86000,
+              "readers": [
+                "millie-sunbear"
+              ],
               "start_ms": 687000,
               "title": "My True Love – Read by MRS"
             },
             {
               "audio_url": "https://www.archive.org/download/my_true_love_0905_librivox/mytruelove_sidney_rg_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "ruth-golding"
+              ],
               "start_ms": 773000,
               "title": "My True Love – Read by RG"
             },
             {
               "audio_url": "https://www.archive.org/download/my_true_love_0905_librivox/mytruelove_sidney_rn_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 855000,
               "title": "My True Love – Read by RN"
             },
             {
               "audio_url": "https://www.archive.org/download/my_true_love_0905_librivox/mytruelove_sidney_sac_64kb.mp3",
               "length_ms": 88000,
+              "readers": [
+                "sally-ann-cook"
+              ],
               "start_ms": 927000,
               "title": "My True Love – Read by SAC"
             }
@@ -302,7 +341,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt16/My_True_Love_1204.jpg",
           "id": "audio-andrea",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 3186,
+          "librivox_title": "My True Love",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/my-true-love-by-sir-philip-sidney/",
@@ -3152,6 +3196,10 @@
             {
               "audio_url": "https://www.archive.org/download/first_little_german_book_1011_librivox/first_little_german_book_64kb.mp3",
               "length_ms": 1543000,
+              "readers": [
+                "kara-shallenberg-1969-2023",
+                "elli"
+              ],
               "start_ms": 0,
               "title": "My Very First Little German Book"
             }
@@ -3159,7 +3207,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt8/germanbook_1103.jpg",
           "id": "kara-shallenberg-1969-2023",
           "language": "en",
+          "librivox_genres": [
+            "Reference",
+            "Language learning"
+          ],
           "librivox_id": 4959,
+          "librivox_title": "My Very First Little German Book",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/my-very-first-little-german-book-by-anonymous/",
@@ -3211,72 +3264,108 @@
             {
               "audio_url": "https://www.archive.org/download/my_very_own_fairy_stories_2308_librivox/myveryownfairystories_01_gruelle_64kb.mp3",
               "length_ms": 295000,
+              "readers": [
+                "presley-ellison"
+              ],
               "start_ms": 0,
               "title": "The Cheery Cricket"
             },
             {
               "audio_url": "https://www.archive.org/download/my_very_own_fairy_stories_2308_librivox/myveryownfairystories_02_gruelle_64kb.mp3",
               "length_ms": 225000,
+              "readers": [
+                "presley-ellison"
+              ],
               "start_ms": 295000,
               "title": "The Kind Hearted Ginger Bread Man"
             },
             {
               "audio_url": "https://www.archive.org/download/my_very_own_fairy_stories_2308_librivox/myveryownfairystories_03_gruelle_64kb.mp3",
               "length_ms": 622000,
+              "readers": [
+                "christine-rottger"
+              ],
               "start_ms": 520000,
               "title": "The Ugly Caterpillar"
             },
             {
               "audio_url": "https://www.archive.org/download/my_very_own_fairy_stories_2308_librivox/myveryownfairystories_04_gruelle_64kb.mp3",
               "length_ms": 345000,
+              "readers": [
+                "dc"
+              ],
               "start_ms": 1142000,
               "title": "Jimmy Crow and the Owls"
             },
             {
               "audio_url": "https://www.archive.org/download/my_very_own_fairy_stories_2308_librivox/myveryownfairystories_05_gruelle_64kb.mp3",
               "length_ms": 536000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 1487000,
               "title": "The Good Finger Fairies"
             },
             {
               "audio_url": "https://www.archive.org/download/my_very_own_fairy_stories_2308_librivox/myveryownfairystories_06_gruelle_64kb.mp3",
               "length_ms": 314000,
+              "readers": [
+                "noreen"
+              ],
               "start_ms": 2023000,
               "title": "Granny Hawkins"
             },
             {
               "audio_url": "https://www.archive.org/download/my_very_own_fairy_stories_2308_librivox/myveryownfairystories_07_gruelle_64kb.mp3",
               "length_ms": 774000,
+              "readers": [
+                "jonathan-pruett"
+              ],
               "start_ms": 2337000,
               "title": "The Rubbery Dubbery Smiles"
             },
             {
               "audio_url": "https://www.archive.org/download/my_very_own_fairy_stories_2308_librivox/myveryownfairystories_08_gruelle_64kb.mp3",
               "length_ms": 438000,
+              "readers": [
+                "jonathan-pruett"
+              ],
               "start_ms": 3111000,
               "title": "Uncle Clem"
             },
             {
               "audio_url": "https://www.archive.org/download/my_very_own_fairy_stories_2308_librivox/myveryownfairystories_09_gruelle_64kb.mp3",
               "length_ms": 273000,
+              "readers": [
+                "chris-buchanan"
+              ],
               "start_ms": 3549000,
               "title": "The Happy Story"
             },
             {
               "audio_url": "https://www.archive.org/download/my_very_own_fairy_stories_2308_librivox/myveryownfairystories_10_gruelle_64kb.mp3",
               "length_ms": 245000,
+              "readers": [
+                "chris-buchanan"
+              ],
               "start_ms": 3822000,
               "title": "The Quarrel of the Winds"
             },
             {
               "audio_url": "https://www.archive.org/download/my_very_own_fairy_stories_2308_librivox/myveryownfairystories_11_gruelle_64kb.mp3",
               "length_ms": 515000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 4067000,
               "title": "The Mole Hill at Menemshia Creek"
             },
             {
               "audio_url": "https://www.archive.org/download/my_very_own_fairy_stories_2308_librivox/myveryownfairystories_12_gruelle_64kb.mp3",
               "length_ms": 616000,
+              "readers": [
+                "april6090"
+              ],
               "start_ms": 4582000,
               "title": "The Discontented King"
             }
@@ -3285,7 +3374,11 @@
           "cover_url": "https://archive.org/download/my_very_own_fairy_stories_2308_librivox/my_very_own_2308.jpg",
           "id": "presley-ellison",
           "language": "en",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 17842,
+          "librivox_title": "My Very Own Fairy Stories",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/my-very-own-fairy-stories-by-johnny-gruelle/",
@@ -4066,84 +4159,98 @@
             {
               "audio_url": "https://www.archive.org/download/mywarexperiences_2408_librivox/mywarexperiencesintwocontinents_00_macnaughtan_64kb.mp3",
               "length_ms": 328000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/mywarexperiences_2408_librivox/mywarexperiencesintwocontinents_01_macnaughtan_64kb.mp3",
               "length_ms": 2198000,
+              "section_number": 1,
               "start_ms": 328000,
               "title": "Part I - Belgium - Antwerp"
             },
             {
               "audio_url": "https://www.archive.org/download/mywarexperiences_2408_librivox/mywarexperiencesintwocontinents_02_macnaughtan_64kb.mp3",
               "length_ms": 3402000,
+              "section_number": 2,
               "start_ms": 2526000,
               "title": "With Dr. Hector Munro's Flying Ambulance Corps"
             },
             {
               "audio_url": "https://www.archive.org/download/mywarexperiences_2408_librivox/mywarexperiencesintwocontinents_03_macnaughtan_64kb.mp3",
               "length_ms": 2375000,
+              "section_number": 3,
               "start_ms": 5928000,
               "title": "At Furnes Railway-Station"
             },
             {
               "audio_url": "https://www.archive.org/download/mywarexperiences_2408_librivox/mywarexperiencesintwocontinents_04_macnaughtan_64kb.mp3",
               "length_ms": 2473000,
+              "section_number": 4,
               "start_ms": 8303000,
               "title": "Working Under Difficulties"
             },
             {
               "audio_url": "https://www.archive.org/download/mywarexperiences_2408_librivox/mywarexperiencesintwocontinents_05_macnaughtan_64kb.mp3",
               "length_ms": 2333000,
+              "section_number": 5,
               "start_ms": 10776000,
               "title": "The Spring Offensive"
             },
             {
               "audio_url": "https://www.archive.org/download/mywarexperiences_2408_librivox/mywarexperiencesintwocontinents_06_macnaughtan_64kb.mp3",
               "length_ms": 2382000,
+              "section_number": 6,
               "start_ms": 13109000,
               "title": "Last Days in Flanders"
             },
             {
               "audio_url": "https://www.archive.org/download/mywarexperiences_2408_librivox/mywarexperiencesintwocontinents_07_macnaughtan_64kb.mp3",
               "length_ms": 2007000,
+              "section_number": 7,
               "start_ms": 15491000,
               "title": "Part II - At Home - How the Message was Delivered"
             },
             {
               "audio_url": "https://www.archive.org/download/mywarexperiences_2408_librivox/mywarexperiencesintwocontinents_08_macnaughtan_64kb.mp3",
               "length_ms": 2478000,
+              "section_number": 8,
               "start_ms": 17498000,
               "title": "Part III - Russia and the Persian Front - Petrograd"
             },
             {
               "audio_url": "https://www.archive.org/download/mywarexperiences_2408_librivox/mywarexperiencesintwocontinents_09_macnaughtan_64kb.mp3",
               "length_ms": 1397000,
+              "section_number": 9,
               "start_ms": 19976000,
               "title": "Waiting for Work"
             },
             {
               "audio_url": "https://www.archive.org/download/mywarexperiences_2408_librivox/mywarexperiencesintwocontinents_10_macnaughtan_64kb.mp3",
               "length_ms": 1803000,
+              "section_number": 10,
               "start_ms": 21373000,
               "title": "Some Impressions of Tiflis and Armenia"
             },
             {
               "audio_url": "https://www.archive.org/download/mywarexperiences_2408_librivox/mywarexperiencesintwocontinents_11_macnaughtan_64kb.mp3",
               "length_ms": 2054000,
+              "section_number": 11,
               "start_ms": 23176000,
               "title": "On the Persian Front"
             },
             {
               "audio_url": "https://www.archive.org/download/mywarexperiences_2408_librivox/mywarexperiencesintwocontinents_12_macnaughtan_64kb.mp3",
               "length_ms": 1230000,
+              "section_number": 12,
               "start_ms": 25230000,
               "title": "The Last Journey"
             },
             {
               "audio_url": "https://www.archive.org/download/mywarexperiences_2408_librivox/mywarexperiencesintwocontinents_13_macnaughtan_64kb.mp3",
               "length_ms": 851000,
+              "section_number": 13,
               "start_ms": 26460000,
               "title": "Conclusion"
             }
@@ -4152,7 +4259,13 @@
           "cover_url": "https://archive.org/download/mywarexperiences_2408_librivox/my_war_experiences_2408.jpg",
           "id": "ted-lienhart",
           "language": "en",
+          "librivox_genres": [
+            "War & Military",
+            "Memoirs",
+            "Modern (20th C)"
+          ],
           "librivox_id": 20786,
+          "librivox_title": "My War Experiences in Two Continents",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/my-war-experiences-in-two-continents-by-sarah-broom-macnaughtan/",

@@ -959,42 +959,63 @@
             {
               "audio_url": "https://www.archive.org/download/college_freshman_dont_book_1305_librivox/collegefreshmansdontbook_1_evans_64kb.mp3",
               "length_ms": 153000,
+              "readers": [
+                "kevin-w-davidson"
+              ],
               "start_ms": 0,
               "title": "As to the Place"
             },
             {
               "audio_url": "https://www.archive.org/download/college_freshman_dont_book_1305_librivox/collegefreshmansdontbook_2_evans_64kb.mp3",
               "length_ms": 354000,
+              "readers": [
+                "k-zdepski"
+              ],
               "start_ms": 153000,
               "title": "As to Settling Down"
             },
             {
               "audio_url": "https://www.archive.org/download/college_freshman_dont_book_1305_librivox/collegefreshmansdontbook_3_evans_64kb.mp3",
               "length_ms": 212000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 507000,
               "title": "As to Dress"
             },
             {
               "audio_url": "https://www.archive.org/download/college_freshman_dont_book_1305_librivox/collegefreshmansdontbook_4_evans_64kb.mp3",
               "length_ms": 163000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 719000,
               "title": "As to Dining"
             },
             {
               "audio_url": "https://www.archive.org/download/college_freshman_dont_book_1305_librivox/collegefreshmansdontbook_5_evans_64kb.mp3",
               "length_ms": 430000,
+              "readers": [
+                "ann-boulais"
+              ],
               "start_ms": 882000,
               "title": "As to Lectures and Studies"
             },
             {
               "audio_url": "https://www.archive.org/download/college_freshman_dont_book_1305_librivox/collegefreshmansdontbook_6_evans_64kb.mp3",
               "length_ms": 310000,
+              "readers": [
+                "lee-smalley"
+              ],
               "start_ms": 1312000,
               "title": "As to College Organizations and Friends"
             },
             {
               "audio_url": "https://www.archive.org/download/college_freshman_dont_book_1305_librivox/collegefreshmansdontbook_7_evans_64kb.mp3",
               "length_ms": 593000,
+              "readers": [
+                "lee-smalley"
+              ],
               "start_ms": 1622000,
               "title": "As to Things in General"
             }
@@ -1003,7 +1024,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt31/collegefreshmansdontbook_1305.jpg",
           "id": "kevin-w-davidson",
           "language": "en",
+          "librivox_genres": [
+            "Humor",
+            "Self-Help"
+          ],
           "librivox_id": 7763,
+          "librivox_title": "College Freshman's Don't Book",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-college-freshmans-dont-book-by-george-fullerton-evans/",

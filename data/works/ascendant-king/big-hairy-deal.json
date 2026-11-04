@@ -2791,12 +2791,38 @@
             {
               "audio_url": "https://www.archive.org/download/biglake_2506_librivox/biglake_1_riggs_64kb.mp3",
               "length_ms": 3219000,
+              "readers": [
+                "toddhw",
+                "greg-giordano",
+                "jacqueline-tyler",
+                "inkell",
+                "brian-fullen",
+                "josephs",
+                "shrimpphish",
+                "jon-hunter"
+              ],
               "start_ms": 0,
               "title": "Part One - The Woods"
             },
             {
               "audio_url": "https://www.archive.org/download/biglake_2506_librivox/biglake_2_riggs_64kb.mp3",
               "length_ms": 1801000,
+              "readers": [
+                "toddhw",
+                "rapunzelina",
+                "greg-giordano",
+                "jessie-percival",
+                "jacqueline-tyler",
+                "inkell",
+                "brian-fullen",
+                "agnes-robert-behr",
+                "josephs",
+                "shrimpphish",
+                "jon-hunter",
+                "penny-carrington",
+                "winterberry",
+                "lia-lallo"
+              ],
               "start_ms": 3219000,
               "title": "Part Two - The Lake"
             }
@@ -2805,7 +2831,11 @@
           "cover_url": "https://archive.org/download/biglake_2506_librivox/big_lake_2506.jpg",
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Tragedy"
+          ],
           "librivox_id": 21346,
+          "librivox_title": "Big Lake, A Tragedy in Two Parts",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/big-lake-a-tragedy-in-two-parts/",
@@ -7415,7 +7445,11 @@
           "cover_url": "https://archive.org/download/bigmidgetmurders_2507_librivox/big_midget_2507.jpg",
           "id": "ben-tucker",
           "language": "en",
+          "librivox_genres": [
+            "Crime & Mystery Fiction"
+          ],
           "librivox_id": 21750,
+          "librivox_title": "Big Midget Murders",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-big-midget-murders-by-craig-rice/",

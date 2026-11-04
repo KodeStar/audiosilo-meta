@@ -303,7 +303,11 @@
           "cover_url": "https://archive.org/download/uit_de_schooljaren_van_hans_doncker_2202_librivox/schooljaren_doncker.jpg",
           "id": "bart-de-leeuw",
           "language": "nl",
+          "librivox_genres": [
+            "Family"
+          ],
           "librivox_id": 17478,
+          "librivox_title": "Uit de schooljaren van Hans Doncker",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/uit-de-schooljaren-van-hans-doncker-by-fred-berens/",
@@ -464,7 +468,11 @@
           "cover_url": "https://www.archive.org/download/librivox_cd_covers/dik_trom.jpg",
           "id": "bart-de-leeuw",
           "language": "nl",
+          "librivox_genres": [
+            "General"
+          ],
           "librivox_id": 3098,
+          "librivox_title": "Uit het leven van Dik Trom",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/uit-het-leven-van-dik-trom-door-cornelis-johannes-kieviet/",
@@ -1431,48 +1439,72 @@
             {
               "audio_url": "https://www.archive.org/download/ukraina_2209_librivox/ukrainapeaceconf_01_dnistriansky_64kb.mp3",
               "length_ms": 1440000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 0,
               "title": "The Right of Self-Determination of Peoples"
             },
             {
               "audio_url": "https://www.archive.org/download/ukraina_2209_librivox/ukrainapeaceconf_02_dnistriansky_64kb.mp3",
               "length_ms": 1104000,
+              "readers": [
+                "luke-hamilton"
+              ],
               "start_ms": 1440000,
               "title": "The Ukrainian Nation. Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/ukraina_2209_librivox/ukrainapeaceconf_03_dnistriansky_64kb.mp3",
               "length_ms": 1399000,
+              "readers": [
+                "luke-hamilton"
+              ],
               "start_ms": 2544000,
               "title": "The Ukrainian Nation. Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/ukraina_2209_librivox/ukrainapeaceconf_04_dnistriansky_64kb.mp3",
               "length_ms": 2160000,
+              "readers": [
+                "rosemary-mcdonald-1938-2025"
+              ],
               "start_ms": 3943000,
               "title": "The Ukrainian History. Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/ukraina_2209_librivox/ukrainapeaceconf_05_dnistriansky_64kb.mp3",
               "length_ms": 2058000,
+              "readers": [
+                "rosemary-mcdonald-1938-2025"
+              ],
               "start_ms": 6103000,
               "title": "The Ukrainian History. Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/ukraina_2209_librivox/ukrainapeaceconf_06_dnistriansky_64kb.mp3",
               "length_ms": 1782000,
+              "readers": [
+                "inkell"
+              ],
               "start_ms": 8161000,
               "title": "The Ukrainian Territory. Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/ukraina_2209_librivox/ukrainapeaceconf_07_dnistriansky_64kb.mp3",
               "length_ms": 1514000,
+              "readers": [
+                "inkell"
+              ],
               "start_ms": 9943000,
               "title": "The Ukrainian Territory. Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/ukraina_2209_librivox/ukrainapeaceconf_08_dnistriansky_64kb.mp3",
               "length_ms": 1040000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 11457000,
               "title": "The Ukrainian National Wealth"
             }
@@ -1481,7 +1513,13 @@
           "cover_url": "https://archive.org/download/ukraina_2209_librivox/ukraina_peace_conference_2209.jpg",
           "id": "kevins",
           "language": "en",
+          "librivox_genres": [
+            "Essays & Short Works",
+            "Political Science",
+            "Modern (20th C)"
+          ],
           "librivox_id": 18198,
+          "librivox_title": "Ukraina and the Peace-conference",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/ukraina-by-stanislav-dnistriansky/",
@@ -1644,60 +1682,100 @@
             {
               "audio_url": "https://www.archive.org/download/ukraine_2208_librivox/ukraine_00_raffalovich_64kb.mp3",
               "length_ms": 789000,
+              "readers": [
+                "kerry-adams"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/ukraine_2208_librivox/ukraine_01_raffalovich_64kb.mp3",
               "length_ms": 312000,
+              "readers": [
+                "alister"
+              ],
+              "section_number": 1,
               "start_ms": 789000,
               "title": "The Place of the Ukrainians among the Slav Races"
             },
             {
               "audio_url": "https://www.archive.org/download/ukraine_2208_librivox/ukraine_02_raffalovich_64kb.mp3",
               "length_ms": 833000,
+              "readers": [
+                "alister"
+              ],
+              "section_number": 2,
               "start_ms": 1101000,
               "title": "The Ukrainian Nation"
             },
             {
               "audio_url": "https://www.archive.org/download/ukraine_2208_librivox/ukraine_03_raffalovich_64kb.mp3",
               "length_ms": 860000,
+              "readers": [
+                "luke-hamilton"
+              ],
+              "section_number": 3,
               "start_ms": 1934000,
               "title": "A Review of Ukrainian History. Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/ukraine_2208_librivox/ukraine_04_raffalovich_64kb.mp3",
               "length_ms": 1021000,
+              "readers": [
+                "luke-hamilton"
+              ],
+              "section_number": 4,
               "start_ms": 2794000,
               "title": "A Review of Ukrainian History. Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/ukraine_2208_librivox/ukraine_05_raffalovich_64kb.mp3",
               "length_ms": 868000,
+              "readers": [
+                "kristin-g"
+              ],
+              "section_number": 5,
               "start_ms": 3815000,
               "title": "Ukrainian Literature"
             },
             {
               "audio_url": "https://www.archive.org/download/ukraine_2208_librivox/ukraine_06_raffalovich_64kb.mp3",
               "length_ms": 1152000,
+              "readers": [
+                "availle"
+              ],
+              "section_number": 6,
               "start_ms": 4683000,
               "title": "The Austrian Ukraine"
             },
             {
               "audio_url": "https://www.archive.org/download/ukraine_2208_librivox/ukraine_07_raffalovich_64kb.mp3",
               "length_ms": 1109000,
+              "readers": [
+                "luke-hamilton"
+              ],
+              "section_number": 7,
               "start_ms": 5835000,
               "title": "Uniat and Orthodox Churches"
             },
             {
               "audio_url": "https://www.archive.org/download/ukraine_2208_librivox/ukraine_08_raffalovich_64kb.mp3",
               "length_ms": 374000,
+              "readers": [
+                "alister"
+              ],
+              "section_number": 8,
               "start_ms": 6944000,
               "title": "Russian Activity in Galicia"
             },
             {
               "audio_url": "https://www.archive.org/download/ukraine_2208_librivox/ukraine_09_raffalovich_64kb.mp3",
               "length_ms": 408000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 9,
               "start_ms": 7318000,
               "title": "Conclusion"
             }
@@ -1706,7 +1784,13 @@
           "cover_url": "https://archive.org/download/ukraine_2208_librivox/ukraine_2208.jpg",
           "id": "kerry-adams",
           "language": "en",
+          "librivox_genres": [
+            "Essays & Short Works",
+            "History",
+            "Political Science"
+          ],
           "librivox_id": 18062,
+          "librivox_title": "Ukraine",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-ukraine-by-george-raffalovich/",
@@ -1972,60 +2056,90 @@
             {
               "audio_url": "https://www.archive.org/download/ukrainiansandeurowar_2302_librivox/ukrainiansandeurowar_01_various_64kb.mp3",
               "length_ms": 657000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 0,
               "title": "Anonymous - The Forgotten Nation of the Eastern Europe (the Ruthenian Question)"
             },
             {
               "audio_url": "https://www.archive.org/download/ukrainiansandeurowar_2302_librivox/ukrainiansandeurowar_02_various_64kb.mp3",
               "length_ms": 697000,
+              "readers": [
+                "pratibhanair"
+              ],
               "start_ms": 657000,
               "title": "George Raffalovich - The Conquest of Galicia"
             },
             {
               "audio_url": "https://www.archive.org/download/ukrainiansandeurowar_2302_librivox/ukrainiansandeurowar_03_various_64kb.mp3",
               "length_ms": 522000,
+              "readers": [
+                "pratibhanair"
+              ],
               "start_ms": 1354000,
               "title": "Alexander von Nuber - The Menace of the Great Bear"
             },
             {
               "audio_url": "https://www.archive.org/download/ukrainiansandeurowar_2302_librivox/ukrainiansandeurowar_04_various_64kb.mp3",
               "length_ms": 443000,
+              "readers": [
+                "grey-pickett"
+              ],
               "start_ms": 1876000,
               "title": "George Raffalovich - The war in Galicia"
             },
             {
               "audio_url": "https://www.archive.org/download/ukrainiansandeurowar_2302_librivox/ukrainiansandeurowar_05_various_64kb.mp3",
               "length_ms": 351000,
+              "readers": [
+                "grey-pickett"
+              ],
               "start_ms": 2319000,
               "title": "Various - Protest of the Ukrainians"
             },
             {
               "audio_url": "https://www.archive.org/download/ukrainiansandeurowar_2302_librivox/ukrainiansandeurowar_06_various_64kb.mp3",
               "length_ms": 480000,
+              "readers": [
+                "maurice-almay"
+              ],
               "start_ms": 2670000,
               "title": "George Raffalovich - The Ukraine and the Small Nations"
             },
             {
               "audio_url": "https://www.archive.org/download/ukrainiansandeurowar_2302_librivox/ukrainiansandeurowar_07_various_64kb.mp3",
               "length_ms": 671000,
+              "readers": [
+                "mpinedag"
+              ],
               "start_ms": 3150000,
               "title": "Dr. Samuel Max Melamed - Hopes of the Little Peoples of Russia. Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/ukrainiansandeurowar_2302_librivox/ukrainiansandeurowar_08_various_64kb.mp3",
               "length_ms": 653000,
+              "readers": [
+                "mpinedag"
+              ],
               "start_ms": 3821000,
               "title": "Dr. Samuel Max Melamed - Hopes of the Little Peoples of Russia. Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/ukrainiansandeurowar_2302_librivox/ukrainiansandeurowar_09_various_64kb.mp3",
               "length_ms": 382000,
+              "readers": [
+                "maurice-almay"
+              ],
               "start_ms": 4474000,
               "title": "Anonymous - Protests Russian rule in Galicia"
             },
             {
               "audio_url": "https://www.archive.org/download/ukrainiansandeurowar_2302_librivox/ukrainiansandeurowar_10_various_64kb.mp3",
               "length_ms": 615000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 4856000,
               "title": "Anonymous - Woman Bears Sword in Army of Austia"
             }
@@ -2034,7 +2148,14 @@
           "cover_url": "https://archive.org/download/ukrainiansandeurowar_2302_librivox/ukrainianseuropeanwar_2302.jpg",
           "id": "czandra",
           "language": "en",
+          "librivox_genres": [
+            "War & Military",
+            "Essays & Short Works",
+            "Political Science",
+            "Modern (20th C)"
+          ],
           "librivox_id": 18372,
+          "librivox_title": "Ukrainians and the European War",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-ukrainians-and-the-european-war/",
@@ -2179,60 +2300,90 @@
             {
               "audio_url": "https://www.archive.org/download/ukridge_2107_librivox/ukridge_01_wodehouse_64kb.mp3",
               "length_ms": 3480000,
+              "readers": [
+                "shasta"
+              ],
               "start_ms": 0,
               "title": "Ukridge’s Dog College"
             },
             {
               "audio_url": "https://www.archive.org/download/ukridge_2107_librivox/ukridge_02_wodehouse_64kb.mp3",
               "length_ms": 1954000,
+              "readers": [
+                "zach-hoyt"
+              ],
               "start_ms": 3480000,
               "title": "Ukridge’s Accident Syndicate"
             },
             {
               "audio_url": "https://www.archive.org/download/ukridge_2107_librivox/ukridge_03_wodehouse_64kb.mp3",
               "length_ms": 4389000,
+              "readers": [
+                "shasta"
+              ],
               "start_ms": 5434000,
               "title": "The Début of Battling Billson"
             },
             {
               "audio_url": "https://www.archive.org/download/ukridge_2107_librivox/ukridge_04_wodehouse_64kb.mp3",
               "length_ms": 2873000,
+              "readers": [
+                "mark-nelson"
+              ],
               "start_ms": 9823000,
               "title": "First Aid for Dora"
             },
             {
               "audio_url": "https://www.archive.org/download/ukridge_2107_librivox/ukridge_05_wodehouse_64kb.mp3",
               "length_ms": 4490000,
+              "readers": [
+                "shasta"
+              ],
               "start_ms": 12696000,
               "title": "The Return of Battling Billson"
             },
             {
               "audio_url": "https://www.archive.org/download/ukridge_2107_librivox/ukridge_06_wodehouse_64kb.mp3",
               "length_ms": 2647000,
+              "readers": [
+                "paul-hampton"
+              ],
               "start_ms": 17186000,
               "title": "Ukridge Sees Her Through"
             },
             {
               "audio_url": "https://www.archive.org/download/ukridge_2107_librivox/ukridge_07_wodehouse_64kb.mp3",
               "length_ms": 3223000,
+              "readers": [
+                "paul-hampton"
+              ],
               "start_ms": 19833000,
               "title": "No Wedding Bells for Him"
             },
             {
               "audio_url": "https://www.archive.org/download/ukridge_2107_librivox/ukridge_08_wodehouse_64kb.mp3",
               "length_ms": 3133000,
+              "readers": [
+                "paul-hampton"
+              ],
               "start_ms": 23056000,
               "title": "The Long Arm of Looney Coote"
             },
             {
               "audio_url": "https://www.archive.org/download/ukridge_2107_librivox/ukridge_09_wodehouse_64kb.mp3",
               "length_ms": 2731000,
+              "readers": [
+                "alexs"
+              ],
               "start_ms": 26189000,
               "title": "The Exit of Battling Billson"
             },
             {
               "audio_url": "https://www.archive.org/download/ukridge_2107_librivox/ukridge_10_wodehouse_64kb.mp3",
               "length_ms": 3016000,
+              "readers": [
+                "alexs"
+              ],
               "start_ms": 28920000,
               "title": "Ukridge Rounds a Nasty Corner"
             }
@@ -2241,7 +2392,11 @@
           "cover_url": "https://archive.org/download/ukridge_2107_librivox/ukridge_2107.jpg",
           "id": "shasta",
           "language": "en",
+          "librivox_genres": [
+            "Humorous Fiction"
+          ],
           "librivox_id": 16439,
+          "librivox_title": "Ukridge",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/ukridge-by-p-g-wodehouse/",
@@ -2894,7 +3049,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt16/uliknecht_1205.jpg",
           "id": "hans-hafen",
           "language": "de",
+          "librivox_genres": [
+            "Published 1800 -1900"
+          ],
           "librivox_id": 5581,
+          "librivox_title": "Uli der Knecht",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/uli-der-knecht-by-jeremias-gotthelf/",
@@ -3118,7 +3277,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt17/ulipaechter_1408.jpg",
           "id": "hans-hafen",
           "language": "de",
+          "librivox_genres": [
+            "Published 1800 -1900"
+          ],
           "librivox_id": 8904,
+          "librivox_title": "Uli der Pächter",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/uli-der-paechter-by-jeremias-gotthelf/",
@@ -4115,96 +4278,160 @@
             {
               "audio_url": "https://www.archive.org/download/uller_uprising_0812_librivox/ulleruprising_00_piper_64kb.mp3",
               "length_ms": 2461000,
+              "readers": [
+                "ralph-snelson"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 - Introductions and Prologue"
             },
             {
               "audio_url": "https://www.archive.org/download/uller_uprising_0812_librivox/ulleruprising_01_piper_64kb.mp3",
               "length_ms": 1820000,
+              "readers": [
+                "ralph-snelson"
+              ],
+              "section_number": 1,
               "start_ms": 2461000,
               "title": "01 - Commander-in-Chief Front and Center"
             },
             {
               "audio_url": "https://www.archive.org/download/uller_uprising_0812_librivox/ulleruprising_02_piper_64kb.mp3",
               "length_ms": 779000,
+              "readers": [
+                "morgan-saletta"
+              ],
+              "section_number": 2,
               "start_ms": 4281000,
               "title": "02 - Rakkeed, Stalin, and the Rev. Keeluk"
             },
             {
               "audio_url": "https://www.archive.org/download/uller_uprising_0812_librivox/ulleruprising_03_piper_64kb.mp3",
               "length_ms": 710000,
+              "readers": [
+                "morgan-saletta"
+              ],
+              "section_number": 3,
               "start_ms": 5060000,
               "title": "03 - Four-and-Twenty Geek Heads"
             },
             {
               "audio_url": "https://www.archive.org/download/uller_uprising_0812_librivox/ulleruprising_04_piper_64kb.mp3",
               "length_ms": 868000,
+              "readers": [
+                "acacia-wood"
+              ],
+              "section_number": 4,
               "start_ms": 5770000,
               "title": "04 - If You Read It in Stanley-Browne"
             },
             {
               "audio_url": "https://www.archive.org/download/uller_uprising_0812_librivox/ulleruprising_05_piper_64kb.mp3",
               "length_ms": 1019000,
+              "readers": [
+                "acacia-wood"
+              ],
+              "section_number": 5,
               "start_ms": 6638000,
               "title": "05 - You Can Depend on It It's Wrong"
             },
             {
               "audio_url": "https://www.archive.org/download/uller_uprising_0812_librivox/ulleruprising_06_piper_64kb.mp3",
               "length_ms": 720000,
+              "readers": [
+                "sean-ohara"
+              ],
+              "section_number": 6,
               "start_ms": 7657000,
               "title": "06 - The Bad News Came After the Coffee"
             },
             {
               "audio_url": "https://www.archive.org/download/uller_uprising_0812_librivox/ulleruprising_07_piper_64kb.mp3",
               "length_ms": 1025000,
+              "readers": [
+                "acacia-wood"
+              ],
+              "section_number": 7,
               "start_ms": 8377000,
               "title": "07 - Bismillah! How Dumb Can We Get?"
             },
             {
               "audio_url": "https://www.archive.org/download/uller_uprising_0812_librivox/ulleruprising_08_piper_64kb.mp3",
               "length_ms": 1365000,
+              "readers": [
+                "acacia-wood"
+              ],
+              "section_number": 8,
               "start_ms": 9402000,
               "title": "08 - Authority of Governor-General von Schlichten"
             },
             {
               "audio_url": "https://www.archive.org/download/uller_uprising_0812_librivox/ulleruprising_09_piper_64kb.mp3",
               "length_ms": 1010000,
+              "readers": [
+                "acacia-wood"
+              ],
+              "section_number": 9,
               "start_ms": 10767000,
               "title": "09 - Don't Push Them Anywhere Put Them Back in the Bottle"
             },
             {
               "audio_url": "https://www.archive.org/download/uller_uprising_0812_librivox/ulleruprising_10_piper_64kb.mp3",
               "length_ms": 881000,
+              "readers": [
+                "acacia-wood"
+              ],
+              "section_number": 10,
               "start_ms": 11777000,
               "title": "10 - The Geek Luftwaffe and the Kragan Airlift"
             },
             {
               "audio_url": "https://www.archive.org/download/uller_uprising_0812_librivox/ulleruprising_11_piper_64kb.mp3",
               "length_ms": 1029000,
+              "readers": [
+                "acacia-wood"
+              ],
+              "section_number": 11,
               "start_ms": 12658000,
               "title": "11 - Of Princedoms Which Have Been Won by Conquest"
             },
             {
               "audio_url": "https://www.archive.org/download/uller_uprising_0812_librivox/ulleruprising_12_piper_64kb.mp3",
               "length_ms": 1125000,
+              "readers": [
+                "acacia-wood"
+              ],
+              "section_number": 12,
               "start_ms": 13687000,
               "title": "12 - The Shadow of Niflheim"
             },
             {
               "audio_url": "https://www.archive.org/download/uller_uprising_0812_librivox/ulleruprising_13_piper_64kb.mp3",
               "length_ms": 1283000,
+              "readers": [
+                "anthony-wilson"
+              ],
+              "section_number": 13,
               "start_ms": 14812000,
               "title": "13 - A Bag of Tricks We Don't Have"
             },
             {
               "audio_url": "https://www.archive.org/download/uller_uprising_0812_librivox/ulleruprising_14_piper_64kb.mp3",
               "length_ms": 1456000,
+              "readers": [
+                "acacia-wood"
+              ],
+              "section_number": 14,
               "start_ms": 16095000,
               "title": "14 - The Reviewers Panned Hell Out of It"
             },
             {
               "audio_url": "https://www.archive.org/download/uller_uprising_0812_librivox/ulleruprising_15_piper_64kb.mp3",
               "length_ms": 901000,
+              "readers": [
+                "acacia-wood"
+              ],
+              "section_number": 15,
               "start_ms": 17551000,
               "title": "15 - A Place in my Heart for Hildegarde"
             }
@@ -4213,7 +4440,11 @@
           "cover_url": "https://www.archive.org/download/librivox_cd_covers/uller_uprising.jpg",
           "id": "ralph-snelson",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 2529,
+          "librivox_title": "Uller Uprising",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/uller-uprising-by-h-beam-piper/",
@@ -6681,7 +6912,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt7/ultima_thule_1012.jpg",
           "id": "karen-savage",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 3735,
+          "librivox_title": "Ultima Thule",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/ultima-thule-by-mack-reynolds/",
@@ -9088,96 +9323,160 @@
             {
               "audio_url": "https://www.archive.org/download/ultimatefoundationofeconomicscience_2408_librivox/ultimatefoundationofeconomicscience_00_mises_64kb.mp3",
               "length_ms": 490000,
+              "readers": [
+                "owlivia"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/ultimatefoundationofeconomicscience_2408_librivox/ultimatefoundationofeconomicscience_01_mises_64kb.mp3",
               "length_ms": 1303000,
+              "readers": [
+                "owlivia"
+              ],
+              "section_number": 1,
               "start_ms": 490000,
               "title": "Some Preliminary Observations Concerning Praxeology"
             },
             {
               "audio_url": "https://www.archive.org/download/ultimatefoundationofeconomicscience_2408_librivox/ultimatefoundationofeconomicscience_02_mises_64kb.mp3",
               "length_ms": 923000,
+              "readers": [
+                "tatiana-chichilla"
+              ],
+              "section_number": 2,
               "start_ms": 1793000,
               "title": "Ch. 1, 1: The Human Mind"
             },
             {
               "audio_url": "https://www.archive.org/download/ultimatefoundationofeconomicscience_2408_librivox/ultimatefoundationofeconomicscience_03_mises_64kb.mp3",
               "length_ms": 1000000,
+              "readers": [
+                "tatiana-chichilla"
+              ],
+              "section_number": 3,
               "start_ms": 2716000,
               "title": "Ch. 1, 2: :The Human Mind"
             },
             {
               "audio_url": "https://www.archive.org/download/ultimatefoundationofeconomicscience_2408_librivox/ultimatefoundationofeconomicscience_04_mises_64kb.mp3",
               "length_ms": 1015000,
+              "readers": [
+                "tatiana-chichilla"
+              ],
+              "section_number": 4,
               "start_ms": 3716000,
               "title": "Ch. 1, 3: :The Human Mind"
             },
             {
               "audio_url": "https://www.archive.org/download/ultimatefoundationofeconomicscience_2408_librivox/ultimatefoundationofeconomicscience_05_mises_64kb.mp3",
               "length_ms": 1730000,
+              "readers": [
+                "paul-hampton"
+              ],
+              "section_number": 5,
               "start_ms": 4731000,
               "title": "Ch. 2, 1: The Activistic Basis of Knowledge"
             },
             {
               "audio_url": "https://www.archive.org/download/ultimatefoundationofeconomicscience_2408_librivox/ultimatefoundationofeconomicscience_06_mises_64kb.mp3",
               "length_ms": 1231000,
+              "readers": [
+                "paul-hampton"
+              ],
+              "section_number": 6,
               "start_ms": 6461000,
               "title": "Ch. 2, 2: :The Activistic Basis of Knowledge"
             },
             {
               "audio_url": "https://www.archive.org/download/ultimatefoundationofeconomicscience_2408_librivox/ultimatefoundationofeconomicscience_07_mises_64kb.mp3",
               "length_ms": 1528000,
+              "readers": [
+                "michele-fry"
+              ],
+              "section_number": 7,
               "start_ms": 7692000,
               "title": "Ch. 3: Necessity and Volition"
             },
             {
               "audio_url": "https://www.archive.org/download/ultimatefoundationofeconomicscience_2408_librivox/ultimatefoundationofeconomicscience_08_mises_64kb.mp3",
               "length_ms": 1652000,
+              "readers": [
+                "owlivia"
+              ],
+              "section_number": 8,
               "start_ms": 9220000,
               "title": "Ch. 4: Certainty and Uncertainty"
             },
             {
               "audio_url": "https://www.archive.org/download/ultimatefoundationofeconomicscience_2408_librivox/ultimatefoundationofeconomicscience_09_mises_64kb.mp3",
               "length_ms": 1243000,
+              "readers": [
+                "owlivia"
+              ],
+              "section_number": 9,
               "start_ms": 10872000,
               "title": "Ch. 5.1: On Some Popular Errors Concerning the Scope and Method of Economics"
             },
             {
               "audio_url": "https://www.archive.org/download/ultimatefoundationofeconomicscience_2408_librivox/ultimatefoundationofeconomicscience_10_mises_64kb.mp3",
               "length_ms": 1235000,
+              "readers": [
+                "owlivia"
+              ],
+              "section_number": 10,
               "start_ms": 12115000,
               "title": "Ch. 5, 2: On Some Popular Errors Concerning the Scope and Method of Economics"
             },
             {
               "audio_url": "https://www.archive.org/download/ultimatefoundationofeconomicscience_2408_librivox/ultimatefoundationofeconomicscience_11_mises_64kb.mp3",
               "length_ms": 1234000,
+              "readers": [
+                "owlivia"
+              ],
+              "section_number": 11,
               "start_ms": 13350000,
               "title": "Ch. 5, 3:  On Some Popular Errors Concerning the Scope and Method of Economics"
             },
             {
               "audio_url": "https://www.archive.org/download/ultimatefoundationofeconomicscience_2408_librivox/ultimatefoundationofeconomicscience_12_mises_64kb.mp3",
               "length_ms": 1352000,
+              "readers": [
+                "ehsan-ahmed-mehedi"
+              ],
+              "section_number": 12,
               "start_ms": 14584000,
               "title": "Ch. 5, 4:  On Some Popular Errors Concerning the Scope and Method of Economics"
             },
             {
               "audio_url": "https://www.archive.org/download/ultimatefoundationofeconomicscience_2408_librivox/ultimatefoundationofeconomicscience_13_mises_64kb.mp3",
               "length_ms": 1652000,
+              "readers": [
+                "owlivia"
+              ],
+              "section_number": 13,
               "start_ms": 15936000,
               "title": "Ch. 6: Further Implications of the Neglect of Economic Thinking"
             },
             {
               "audio_url": "https://www.archive.org/download/ultimatefoundationofeconomicscience_2408_librivox/ultimatefoundationofeconomicscience_14_mises_64kb.mp3",
               "length_ms": 1497000,
+              "readers": [
+                "owlivia"
+              ],
+              "section_number": 14,
               "start_ms": 17588000,
               "title": "Ch. 7: The Epistemological Roots of Monism"
             },
             {
               "audio_url": "https://www.archive.org/download/ultimatefoundationofeconomicscience_2408_librivox/ultimatefoundationofeconomicscience_15_mises_64kb.mp3",
               "length_ms": 1344000,
+              "readers": [
+                "owlivia"
+              ],
+              "section_number": 15,
               "start_ms": 19085000,
               "title": "Ch. 8: Positivism and the Crisis of Western Civilization"
             }
@@ -9186,7 +9485,12 @@
           "cover_url": "https://archive.org/download/ultimatefoundationofeconomicscience_2408_librivox/ultimatefoundationeconomicscience_2409.jpg",
           "id": "owlivia",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Mathematics"
+          ],
           "librivox_id": 20436,
+          "librivox_title": "Ultimate Foundation of Economic Science",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-ultimate-foundation-of-economic-science-by-ludwig-von-mises/",

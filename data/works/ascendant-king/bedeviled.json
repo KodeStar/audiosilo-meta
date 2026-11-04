@@ -6621,66 +6621,99 @@
             {
               "audio_url": "https://www.archive.org/download/bedtime_1703.poem_librivox/bedtime_macdonald_bk_64kb.mp3",
               "length_ms": 84000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 0,
               "title": "Bedtime - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/bedtime_1703.poem_librivox/bedtime_macdonald_cf_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "craig-franklin"
+              ],
               "start_ms": 84000,
               "title": "Bedtime - Read by CF"
             },
             {
               "audio_url": "https://www.archive.org/download/bedtime_1703.poem_librivox/bedtime_macdonald_dl_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 156000,
               "title": "Bedtime - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/bedtime_1703.poem_librivox/bedtime_macdonald_fs_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "fshort"
+              ],
               "start_ms": 227000,
               "title": "Bedtime - Read by FS"
             },
             {
               "audio_url": "https://www.archive.org/download/bedtime_1703.poem_librivox/bedtime_macdonald_gb_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "garth-burton"
+              ],
               "start_ms": 295000,
               "title": "Bedtime - Read by GB"
             },
             {
               "audio_url": "https://www.archive.org/download/bedtime_1703.poem_librivox/bedtime_macdonald_gg_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 370000,
               "title": "Bedtime - Read by GG"
             },
             {
               "audio_url": "https://www.archive.org/download/bedtime_1703.poem_librivox/bedtime_macdonald_jh_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "jude"
+              ],
               "start_ms": 448000,
               "title": "Bedtime - Read by JH"
             },
             {
               "audio_url": "https://www.archive.org/download/bedtime_1703.poem_librivox/bedtime_macdonald_lah_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 525000,
               "title": "Bedtime - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/bedtime_1703.poem_librivox/bedtime_macdonald_sh_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "sarahale"
+              ],
               "start_ms": 603000,
               "title": "Bedtime - Read by SH"
             },
             {
               "audio_url": "https://www.archive.org/download/bedtime_1703.poem_librivox/bedtime_macdonald_tp_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "tomas-peter"
+              ],
               "start_ms": 669000,
               "title": "Bedtime - Read by TP"
             },
             {
               "audio_url": "https://www.archive.org/download/bedtime_1703.poem_librivox/bedtime_macdonald_vb_64kb.mp3",
               "length_ms": 79000,
+              "readers": [
+                "tovarisch"
+              ],
               "start_ms": 746000,
               "title": "Bedtime - Read by VB"
             }
@@ -6689,7 +6722,11 @@
           "cover_url": "https://archive.org/download/bedtime_1703.poem_librivox/bedtime_1703.jpg",
           "id": "bruce-kachuk",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 11795,
+          "librivox_title": "Bedtime",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/bedtime-by-george-macdonald/",

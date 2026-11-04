@@ -2581,90 +2581,105 @@
             {
               "audio_url": "https://www.archive.org/download/james_watt_bb_librivox/jameswatt_00_carnegie_64kb.mp3",
               "length_ms": 99000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 -- Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/james_watt_bb_librivox/jameswatt_01_carnegie_64kb.mp3",
               "length_ms": 1692000,
+              "section_number": 1,
               "start_ms": 99000,
               "title": "01 -- Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/james_watt_bb_librivox/jameswatt_02_carnegie_64kb.mp3",
               "length_ms": 1867000,
+              "section_number": 2,
               "start_ms": 1791000,
               "title": "02 -- Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/james_watt_bb_librivox/jameswatt_03_carnegie_64kb.mp3",
               "length_ms": 1935000,
+              "section_number": 3,
               "start_ms": 3658000,
               "title": "03 -- Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/james_watt_bb_librivox/jameswatt_04_carnegie_64kb.mp3",
               "length_ms": 1542000,
+              "section_number": 4,
               "start_ms": 5593000,
               "title": "04 -- Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/james_watt_bb_librivox/jameswatt_05_carnegie_64kb.mp3",
               "length_ms": 1231000,
+              "section_number": 5,
               "start_ms": 7135000,
               "title": "05 -- Chapter 5, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/james_watt_bb_librivox/jameswatt_06_carnegie_64kb.mp3",
               "length_ms": 1651000,
+              "section_number": 6,
               "start_ms": 8366000,
               "title": "06 -- Chapter 5, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/james_watt_bb_librivox/jameswatt_07_carnegie_64kb.mp3",
               "length_ms": 1757000,
+              "section_number": 7,
               "start_ms": 10017000,
               "title": "07 -- Chapter 6, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/james_watt_bb_librivox/jameswatt_08_carnegie_64kb.mp3",
               "length_ms": 1529000,
+              "section_number": 8,
               "start_ms": 11774000,
               "title": "08 -- Chapter 6, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/james_watt_bb_librivox/jameswatt_09_carnegie_64kb.mp3",
               "length_ms": 1834000,
+              "section_number": 9,
               "start_ms": 13303000,
               "title": "09 -- Chapter 7, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/james_watt_bb_librivox/jameswatt_10_carnegie_64kb.mp3",
               "length_ms": 1787000,
+              "section_number": 10,
               "start_ms": 15137000,
               "title": "10 -- Chapter 7, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/james_watt_bb_librivox/jameswatt_11_carnegie_64kb.mp3",
               "length_ms": 1429000,
+              "section_number": 11,
               "start_ms": 16924000,
               "title": "11 -- Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/james_watt_bb_librivox/jameswatt_12_carnegie_64kb.mp3",
               "length_ms": 743000,
+              "section_number": 12,
               "start_ms": 18353000,
               "title": "12 -- Chapter 9"
             },
             {
               "audio_url": "https://www.archive.org/download/james_watt_bb_librivox/jameswatt_13_carnegie_64kb.mp3",
               "length_ms": 921000,
+              "section_number": 13,
               "start_ms": 19096000,
               "title": "13 -- Chapter 10"
             },
             {
               "audio_url": "https://www.archive.org/download/james_watt_bb_librivox/jameswatt_14_carnegie_64kb.mp3",
               "length_ms": 1063000,
+              "section_number": 14,
               "start_ms": 20017000,
               "title": "14 -- Chapter 11"
             }
@@ -2673,7 +2688,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt19/jameswatt_1206.jpg",
           "id": "bill-boerst",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Biography & Autobiography"
+          ],
           "librivox_id": 5877,
+          "librivox_title": "James Watt",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/james-watt-by-andrew-carnegie/",
@@ -2791,72 +2811,108 @@
             {
               "audio_url": "https://www.archive.org/download/james_whitcomb_riley_2205.poem_librivox/riley_dunbar_bc_64kb.mp3",
               "length_ms": 98000,
+              "readers": [
+                "brize-c"
+              ],
               "start_ms": 0,
               "title": "James Whitcomb Riley - Read by BC"
             },
             {
               "audio_url": "https://www.archive.org/download/james_whitcomb_riley_2205.poem_librivox/riley_dunbar_bk_64kb.mp3",
               "length_ms": 128000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 98000,
               "title": "James Whitcomb Riley - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/james_whitcomb_riley_2205.poem_librivox/riley_dunbar_jt_64kb.mp3",
               "length_ms": 134000,
+              "readers": [
+                "jacqueline-tyler"
+              ],
               "start_ms": 226000,
               "title": "James Whitcomb Riley - Read by JT"
             },
             {
               "audio_url": "https://www.archive.org/download/james_whitcomb_riley_2205.poem_librivox/riley_dunbar_kla_64kb.mp3",
               "length_ms": 141000,
+              "readers": [
+                "kerry-adams"
+              ],
               "start_ms": 360000,
               "title": "James Whitcomb Riley - Read by KLA"
             },
             {
               "audio_url": "https://www.archive.org/download/james_whitcomb_riley_2205.poem_librivox/riley_dunbar_ks_64kb.mp3",
               "length_ms": 103000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 501000,
               "title": "James Whitcomb Riley - Read by KS"
             },
             {
               "audio_url": "https://www.archive.org/download/james_whitcomb_riley_2205.poem_librivox/riley_dunbar_lah_64kb.mp3",
               "length_ms": 113000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 604000,
               "title": "James Whitcomb Riley - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/james_whitcomb_riley_2205.poem_librivox/riley_dunbar_lcw_64kb.mp3",
               "length_ms": 117000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 717000,
               "title": "James Whitcomb Riley - Read by LCW"
             },
             {
               "audio_url": "https://www.archive.org/download/james_whitcomb_riley_2205.poem_librivox/riley_dunbar_lrr_64kb.mp3",
               "length_ms": 106000,
+              "readers": [
+                "linda-rymniak"
+              ],
               "start_ms": 834000,
               "title": "James Whitcomb Riley - Read by LRR"
             },
             {
               "audio_url": "https://www.archive.org/download/james_whitcomb_riley_2205.poem_librivox/riley_dunbar_ls_64kb.mp3",
               "length_ms": 113000,
+              "readers": [
+                "leesalter"
+              ],
               "start_ms": 940000,
               "title": "James Whitcomb Riley - Read by LS"
             },
             {
               "audio_url": "https://www.archive.org/download/james_whitcomb_riley_2205.poem_librivox/riley_dunbar_lv_64kb.mp3",
               "length_ms": 113000,
+              "readers": [
+                "laurie-banza"
+              ],
               "start_ms": 1053000,
               "title": "James Whitcomb Riley - Read by LV"
             },
             {
               "audio_url": "https://www.archive.org/download/james_whitcomb_riley_2205.poem_librivox/riley_dunbar_mlm_64kb.mp3",
               "length_ms": 116000,
+              "readers": [
+                "mleigh"
+              ],
               "start_ms": 1166000,
               "title": "James Whitcomb Riley - Read by MLM"
             },
             {
               "audio_url": "https://www.archive.org/download/james_whitcomb_riley_2205.poem_librivox/riley_dunbar_raj_64kb.mp3",
               "length_ms": 123000,
+              "readers": [
+                "rajvo"
+              ],
               "start_ms": 1282000,
               "title": "James Whitcomb Riley - Read by RAJ"
             }
@@ -2865,7 +2921,11 @@
           "cover_url": "https://archive.org/download/james_whitcomb_riley_2205.poem_librivox/riley_2205.jpg",
           "id": "brize-c",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 17945,
+          "librivox_title": "James Whitcomb Riley",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/james-whitcomb-riley-by-paul-laurence-dunbar/",
@@ -3635,96 +3695,112 @@
             {
               "audio_url": "https://www.archive.org/download/jamestownandherneighbors_2502_librivox/jamestownandneighbors_00_davis_64kb.mp3",
               "length_ms": 171000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Foreward"
             },
             {
               "audio_url": "https://www.archive.org/download/jamestownandherneighbors_2502_librivox/jamestownandneighbors_01_davis_64kb.mp3",
               "length_ms": 799000,
+              "section_number": 1,
               "start_ms": 171000,
               "title": "The Kecoughtan Indians"
             },
             {
               "audio_url": "https://www.archive.org/download/jamestownandherneighbors_2502_librivox/jamestownandneighbors_02_davis_64kb.mp3",
               "length_ms": 541000,
+              "section_number": 2,
               "start_ms": 970000,
               "title": "The Jamestown Colony"
             },
             {
               "audio_url": "https://www.archive.org/download/jamestownandherneighbors_2502_librivox/jamestownandneighbors_03_davis_64kb.mp3",
               "length_ms": 836000,
+              "section_number": 3,
               "start_ms": 1511000,
               "title": "Today on Jamestown Island"
             },
             {
               "audio_url": "https://www.archive.org/download/jamestownandherneighbors_2502_librivox/jamestownandneighbors_04_davis_64kb.mp3",
               "length_ms": 624000,
+              "section_number": 4,
               "start_ms": 2347000,
               "title": "The Peninsula in the Seventeenth Century"
             },
             {
               "audio_url": "https://www.archive.org/download/jamestownandherneighbors_2502_librivox/jamestownandneighbors_05_davis_64kb.mp3",
               "length_ms": 613000,
+              "section_number": 5,
               "start_ms": 2971000,
               "title": "Pirates of the Virginia Capes"
             },
             {
               "audio_url": "https://www.archive.org/download/jamestownandherneighbors_2502_librivox/jamestownandneighbors_06_davis_64kb.mp3",
               "length_ms": 865000,
+              "section_number": 6,
               "start_ms": 3584000,
               "title": "Old Williamsburg"
             },
             {
               "audio_url": "https://www.archive.org/download/jamestownandherneighbors_2502_librivox/jamestownandneighbors_07_davis_64kb.mp3",
               "length_ms": 668000,
+              "section_number": 7,
               "start_ms": 4449000,
               "title": "Present-Day Williamsburg"
             },
             {
               "audio_url": "https://www.archive.org/download/jamestownandherneighbors_2502_librivox/jamestownandneighbors_08_davis_64kb.mp3",
               "length_ms": 405000,
+              "section_number": 8,
               "start_ms": 5117000,
               "title": "The Peninsula in the Eighteenth Century"
             },
             {
               "audio_url": "https://www.archive.org/download/jamestownandherneighbors_2502_librivox/jamestownandneighbors_09_davis_64kb.mp3",
               "length_ms": 895000,
+              "section_number": 9,
               "start_ms": 5522000,
               "title": "The Vikings of Virginia"
             },
             {
               "audio_url": "https://www.archive.org/download/jamestownandherneighbors_2502_librivox/jamestownandneighbors_10_davis_64kb.mp3",
               "length_ms": 716000,
+              "section_number": 10,
               "start_ms": 6417000,
               "title": "Yorktown: The Waterloo of the Revolution"
             },
             {
               "audio_url": "https://www.archive.org/download/jamestownandherneighbors_2502_librivox/jamestownandneighbors_11_davis_64kb.mp3",
               "length_ms": 662000,
+              "section_number": 11,
               "start_ms": 7133000,
               "title": "Old Point Comfort and Fort Monroe"
             },
             {
               "audio_url": "https://www.archive.org/download/jamestownandherneighbors_2502_librivox/jamestownandneighbors_12_davis_64kb.mp3",
               "length_ms": 692000,
+              "section_number": 12,
               "start_ms": 7795000,
               "title": "Round About Hampton Roads"
             },
             {
               "audio_url": "https://www.archive.org/download/jamestownandherneighbors_2502_librivox/jamestownandneighbors_13_davis_64kb.mp3",
               "length_ms": 866000,
+              "section_number": 13,
               "start_ms": 8487000,
               "title": "Hampton : America's Oldest English Town"
             },
             {
               "audio_url": "https://www.archive.org/download/jamestownandherneighbors_2502_librivox/jamestownandneighbors_14_davis_64kb.mp3",
               "length_ms": 924000,
+              "section_number": 14,
               "start_ms": 9353000,
               "title": "Richmond and the James River Plantations"
             },
             {
               "audio_url": "https://www.archive.org/download/jamestownandherneighbors_2502_librivox/jamestownandneighbors_15_davis_64kb.mp3",
               "length_ms": 787000,
+              "section_number": 15,
               "start_ms": 10277000,
               "title": "The Peninsula's Appeal to the Tourist"
             }
@@ -3733,7 +3809,11 @@
           "cover_url": "https://archive.org/download/jamestownandherneighbors_2502_librivox/jamestown_2502.jpg",
           "id": "james-r-hedrick",
           "language": "en",
+          "librivox_genres": [
+            "Early Modern"
+          ],
           "librivox_id": 21371,
+          "librivox_title": "Jamestown and Her Neighbors on Virginia's Historic Peninsula",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/jamestown-and-her-neighbors-on-virginias-historic-peninsula-by-jane-e-davis/",
@@ -7445,7 +7525,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt/jan_jannetje_1002.jpg",
           "id": "anna-simon",
           "language": "nl",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 2183,
+          "librivox_title": "Jan, Jannetje en hun jongste kind",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/jan-jannetje-en-hun-jongste-kind-door-ej-potgieter/",
@@ -7679,246 +7763,369 @@
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_01_ewing_64kb.mp3",
               "length_ms": 1265000,
+              "readers": [
+                "devorah-allen"
+              ],
               "start_ms": 0,
               "title": "Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_02_ewing_64kb.mp3",
               "length_ms": 642000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 1265000,
               "title": "Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_03_ewing_64kb.mp3",
               "length_ms": 724000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 1907000,
               "title": "Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_04_ewing_64kb.mp3",
               "length_ms": 585000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 2631000,
               "title": "Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_05_ewing_64kb.mp3",
               "length_ms": 480000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 3216000,
               "title": "Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_06_ewing_64kb.mp3",
               "length_ms": 1272000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 3696000,
               "title": "Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_07_ewing_64kb.mp3",
               "length_ms": 466000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 4968000,
               "title": "chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_08_ewing_64kb.mp3",
               "length_ms": 856000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 5434000,
               "title": "Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_09_ewing_64kb.mp3",
               "length_ms": 355000,
+              "readers": [
+                "fshort"
+              ],
               "start_ms": 6290000,
               "title": "Chapter 9"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_10_ewing_64kb.mp3",
               "length_ms": 1292000,
+              "readers": [
+                "fshort"
+              ],
               "start_ms": 6645000,
               "title": "Chapter 10"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_11_ewing_64kb.mp3",
               "length_ms": 898000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 7937000,
               "title": "Chapter 11"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_12_ewing_64kb.mp3",
               "length_ms": 868000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 8835000,
               "title": "Chapter 12"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_13_ewing_64kb.mp3",
               "length_ms": 666000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 9703000,
               "title": "Chapter 13"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_14_ewing_64kb.mp3",
               "length_ms": 528000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 10369000,
               "title": "Chapter 14"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_15_ewing_64kb.mp3",
               "length_ms": 1258000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 10897000,
               "title": "Chapter 15"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_16_ewing_64kb.mp3",
               "length_ms": 951000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 12155000,
               "title": "Chapter 16"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_17_ewing_64kb.mp3",
               "length_ms": 1054000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 13106000,
               "title": "Chapter 17"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_18_ewing_64kb.mp3",
               "length_ms": 679000,
+              "readers": [
+                "fshort"
+              ],
               "start_ms": 14160000,
               "title": "Chapter 18"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_19_ewing_64kb.mp3",
               "length_ms": 1205000,
+              "readers": [
+                "fshort"
+              ],
               "start_ms": 14839000,
               "title": "Chapter 19"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_20_ewing_64kb.mp3",
               "length_ms": 781000,
+              "readers": [
+                "fshort"
+              ],
               "start_ms": 16044000,
               "title": "Chapter 20"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_21_ewing_64kb.mp3",
               "length_ms": 729000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 16825000,
               "title": "Chapter 21"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_22_ewing_64kb.mp3",
               "length_ms": 1113000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 17554000,
               "title": "Chapter 22"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_23_ewing_64kb.mp3",
               "length_ms": 907000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 18667000,
               "title": "Chapter 23"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_24_ewing_64kb.mp3",
               "length_ms": 699000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 19574000,
               "title": "Chapter 24"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_25_ewing_64kb.mp3",
               "length_ms": 936000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 20273000,
               "title": "Chapter 25"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_26_ewing_64kb.mp3",
               "length_ms": 690000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 21209000,
               "title": "Chapter 26"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_27_ewing_64kb.mp3",
               "length_ms": 747000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 21899000,
               "title": "Chapter 27"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_28_ewing_64kb.mp3",
               "length_ms": 1584000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 22646000,
               "title": "Chapter 28"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_29_ewing_64kb.mp3",
               "length_ms": 915000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 24230000,
               "title": "Chapter 29"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_30_ewing_64kb.mp3",
               "length_ms": 814000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 25145000,
               "title": "Chapter 30"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_31_ewing_64kb.mp3",
               "length_ms": 737000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 25959000,
               "title": "Chapter 31"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_32_ewing_64kb.mp3",
               "length_ms": 897000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 26696000,
               "title": "Chapter 32"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_33_ewing_64kb.mp3",
               "length_ms": 419000,
+              "readers": [
+                "fshort"
+              ],
               "start_ms": 27593000,
               "title": "Chapter 33"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_34_ewing_64kb.mp3",
               "length_ms": 448000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 28012000,
               "title": "Chapter 34"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_35_ewing_64kb.mp3",
               "length_ms": 806000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 28460000,
               "title": "Chapter 35"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_36_ewing_64kb.mp3",
               "length_ms": 472000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 29266000,
               "title": "Chapter 36"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_37_ewing_64kb.mp3",
               "length_ms": 413000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 29738000,
               "title": "Chapter 37"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_38_ewing_64kb.mp3",
               "length_ms": 932000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 30151000,
               "title": "Chapter 38"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_39_ewing_64kb.mp3",
               "length_ms": 734000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 31083000,
               "title": "Chapter 39"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_40_ewing_64kb.mp3",
               "length_ms": 391000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 31817000,
               "title": "Chapter 40"
             },
             {
               "audio_url": "https://www.archive.org/download/janofthewindmill_1811_librivox/janofthewindmill_41_ewing_64kb.mp3",
               "length_ms": 849000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 32208000,
               "title": "Chapters 41 and 42"
             }
@@ -7927,7 +8134,11 @@
           "cover_url": "https://archive.org/download/janofthewindmill_1811_librivox/jan_windmill_1811.jpg",
           "id": "devorah-allen",
           "language": "en",
+          "librivox_genres": [
+            "Family"
+          ],
           "librivox_id": 13077,
+          "librivox_title": "Jan Of The Windmill",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/jan-of-the-windmill-by-juliana-horatia-gatty-ewing/",
@@ -11320,42 +11531,63 @@
             {
               "audio_url": "https://www.archive.org/download/janeausten_1708_librivox/janeausten_01_helm_64kb.mp3",
               "length_ms": 2736000,
+              "readers": [
+                "deon-gines"
+              ],
               "start_ms": 0,
               "title": "Chapter I - Dominant Qualities"
             },
             {
               "audio_url": "https://www.archive.org/download/janeausten_1708_librivox/janeausten_02_helm_64kb.mp3",
               "length_ms": 3277000,
+              "readers": [
+                "beth-thomas-1974-2020"
+              ],
               "start_ms": 2736000,
               "title": "Chapter II - Equipment and Method"
             },
             {
               "audio_url": "https://www.archive.org/download/janeausten_1708_librivox/janeausten_03_helm_64kb.mp3",
               "length_ms": 2655000,
+              "readers": [
+                "ciufi-galeazzi"
+              ],
               "start_ms": 6013000,
               "title": "Chapter III - Contact with Life"
             },
             {
               "audio_url": "https://www.archive.org/download/janeausten_1708_librivox/janeausten_04_helm_64kb.mp3",
               "length_ms": 2540000,
+              "readers": [
+                "ciufi-galeazzi"
+              ],
               "start_ms": 8668000,
               "title": "Chapter IV - Ethics and Optimism"
             },
             {
               "audio_url": "https://www.archive.org/download/janeausten_1708_librivox/janeausten_05_helm_64kb.mp3",
               "length_ms": 2450000,
+              "readers": [
+                "ciufi-galeazzi"
+              ],
               "start_ms": 11208000,
               "title": "Chapter V - The Impartial Satirist"
             },
             {
               "audio_url": "https://www.archive.org/download/janeausten_1708_librivox/janeausten_06_helm_64kb.mp3",
               "length_ms": 3474000,
+              "readers": [
+                "margaretd"
+              ],
               "start_ms": 13658000,
               "title": "Chapter VI - Personal and Topographical"
             },
             {
               "audio_url": "https://www.archive.org/download/janeausten_1708_librivox/janeausten_07_helm_64kb.mp3",
               "length_ms": 298000,
+              "readers": [
+                "beth-thomas-1974-2020"
+              ],
               "start_ms": 17132000,
               "title": "Chapter VII - Influence in Literature"
             }
@@ -11364,7 +11596,11 @@
           "cover_url": "https://archive.org/download/janeausten_1708_librivox/jane_austen_country_house_1708.jpg",
           "id": "deon-gines",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography"
+          ],
           "librivox_id": 11932,
+          "librivox_title": "Jane Austen and her Country-House Comedy",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/jane-austen-and-her-country-house-comedy-by-william-henry-helm/",
@@ -11418,114 +11654,171 @@
             {
               "audio_url": "https://www.archive.org/download/janeaustenandhertimes_1702_librivox/janeaustenandhertimes_01_mitton_64kb.mp3",
               "length_ms": 2702000,
+              "readers": [
+                "twinkle"
+              ],
               "start_ms": 0,
               "title": "Chapter I. Preliminary and Discursive"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenandhertimes_1702_librivox/janeaustenandhertimes_02_mitton_64kb.mp3",
               "length_ms": 1362000,
+              "readers": [
+                "deon-gines"
+              ],
               "start_ms": 2702000,
               "title": "Chapter II. Childhood"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenandhertimes_1702_librivox/janeaustenandhertimes_03_mitton_64kb.mp3",
               "length_ms": 1617000,
+              "readers": [
+                "beth-thomas-1974-2020"
+              ],
               "start_ms": 4064000,
               "title": "Chapter III. The Position of the Clergy"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenandhertimes_1702_librivox/janeaustenandhertimes_04_mitton_64kb.mp3",
               "length_ms": 4440000,
+              "readers": [
+                "twinkle"
+              ],
               "start_ms": 5681000,
               "title": "Chapter IV. Home Life at Steventon"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenandhertimes_1702_librivox/janeaustenandhertimes_05_mitton_64kb.mp3",
               "length_ms": 2603000,
+              "readers": [
+                "beth-thomas-1974-2020"
+              ],
               "start_ms": 10121000,
               "title": "Chapter V. The Novels"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenandhertimes_1702_librivox/janeaustenandhertimes_06_mitton_64kb.mp3",
               "length_ms": 1253000,
+              "readers": [
+                "paula-priebe"
+              ],
               "start_ms": 12724000,
               "title": "Chapter VI. Letters and Post"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenandhertimes_1702_librivox/janeaustenandhertimes_07_mitton_64kb.mp3",
               "length_ms": 3569000,
+              "readers": [
+                "kara-shallenberg-1969-2023"
+              ],
               "start_ms": 13977000,
               "title": "Chapter VII. Society and Love-making"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenandhertimes_1702_librivox/janeaustenandhertimes_08_mitton_64kb.mp3",
               "length_ms": 1528000,
+              "readers": [
+                "deon-gines"
+              ],
               "start_ms": 17546000,
               "title": "Chapter VIII. Visits and Traveling"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenandhertimes_1702_librivox/janeaustenandhertimes_09_mitton_64kb.mp3",
               "length_ms": 1492000,
+              "readers": [
+                "tomas-peter"
+              ],
               "start_ms": 19074000,
               "title": "Chapter IX. Contemporary Writers"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenandhertimes_1702_librivox/janeaustenandhertimes_10_mitton_64kb.mp3",
               "length_ms": 2523000,
+              "readers": [
+                "twinkle"
+              ],
               "start_ms": 20566000,
               "title": "Chapter X. A Trio of Novels"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenandhertimes_1702_librivox/janeaustenandhertimes_11_mitton_64kb.mp3",
               "length_ms": 1563000,
+              "readers": [
+                "tomas-peter"
+              ],
               "start_ms": 23089000,
               "title": "Chapter XI. The Navy"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenandhertimes_1702_librivox/janeaustenandhertimes_12_mitton_64kb.mp3",
               "length_ms": 1501000,
+              "readers": [
+                "paula-priebe"
+              ],
               "start_ms": 24652000,
               "title": "Chapter XII. Bath"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenandhertimes_1702_librivox/janeaustenandhertimes_13_mitton_64kb.mp3",
               "length_ms": 2462000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 26153000,
               "title": "Chapter XIII. Dress and Fashions"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenandhertimes_1702_librivox/janeaustenandhertimes_14_mitten_64kb.mp3",
               "length_ms": 2157000,
+              "readers": [
+                "rosalind-walsh"
+              ],
               "start_ms": 28615000,
               "title": "Chapter XIV. At Southampton"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenandhertimes_1702_librivox/janeaustenandhertimes_15_mitton_64kb.mp3",
               "length_ms": 1193000,
+              "readers": [
+                "tomas-peter"
+              ],
               "start_ms": 30772000,
               "title": "Chapter XV. Chawton"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenandhertimes_1702_librivox/janeaustenandhertimes_16_mitton_64kb.mp3",
               "length_ms": 2089000,
+              "readers": [
+                "sawasawaya"
+              ],
               "start_ms": 31965000,
               "title": "Chapter XVI. In London"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenandhertimes_1702_librivox/janeaustenandhertimes_17_mitton_64kb.mp3",
               "length_ms": 664000,
+              "readers": [
+                "paula-priebe"
+              ],
               "start_ms": 34054000,
               "title": "Chapter XVII. Fanny and Anna"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenandhertimes_1702_librivox/janeaustenandhertimes_18_mitton_64kb.mp3",
               "length_ms": 857000,
+              "readers": [
+                "paula-priebe"
+              ],
               "start_ms": 34718000,
               "title": "Chapter XVIII. The Prince Regent and 'Emma'"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenandhertimes_1702_librivox/janeaustenandhertimes_19_mitton_64kb.mp3",
               "length_ms": 1124000,
+              "readers": [
+                "paula-priebe"
+              ],
               "start_ms": 35575000,
               "title": "Chapter XIX. Last Days"
             }
@@ -11534,7 +11827,11 @@
           "cover_url": "https://archive.org/download/janeaustenandhertimes_1702_librivox/jane_austen_times_1701.jpg",
           "id": "twinkle",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography"
+          ],
           "librivox_id": 11177,
+          "librivox_title": "Jane Austen and Her Times",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/jane-austen-and-her-times-by-geraldine-edith-mitton/",
@@ -12743,108 +13040,162 @@
             {
               "audio_url": "https://www.archive.org/download/janeaustenjuvenilia_1101_librivox/janeaustenjuvenilia_01_austen_64kb.mp3",
               "length_ms": 1454000,
+              "readers": [
+                "claudia-wilson"
+              ],
               "start_ms": 0,
               "title": "Love and Freindship, Part 1 (Letters 1-9)"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenjuvenilia_1101_librivox/janeaustenjuvenilia_02_austen_64kb.mp3",
               "length_ms": 1625000,
+              "readers": [
+                "claudia-wilson"
+              ],
               "start_ms": 1454000,
               "title": "Love and Freindship, Part 2 (Letters 10-13)"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenjuvenilia_1101_librivox/janeaustenjuvenilia_03_austen_64kb.mp3",
               "length_ms": 1136000,
+              "readers": [
+                "claudia-wilson"
+              ],
               "start_ms": 3079000,
               "title": "Love and Freindship, Part 3 (Letters 14-15)"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenjuvenilia_1101_librivox/janeaustenjuvenilia_04_austen_64kb.mp3",
               "length_ms": 1254000,
+              "readers": [
+                "bryan-peterson"
+              ],
               "start_ms": 4215000,
               "title": "Lesley Castle, Part 1 (Introduction and Letters 1-3)"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenjuvenilia_1101_librivox/janeaustenjuvenilia_05_austen_64kb.mp3",
               "length_ms": 1154000,
+              "readers": [
+                "ric-f"
+              ],
               "start_ms": 5469000,
               "title": "Lesley Castle, Part 2 (Letters 4-6)"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenjuvenilia_1101_librivox/janeaustenjuvenilia_06_austen_64kb.mp3",
               "length_ms": 1330000,
+              "readers": [
+                "ric-f"
+              ],
               "start_ms": 6623000,
               "title": "Lesley Castle, Part 3 (Letters 7-10)"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenjuvenilia_1101_librivox/janeaustenjuvenilia_07_austen_64kb.mp3",
               "length_ms": 1132000,
+              "readers": [
+                "elizabeth-klett"
+              ],
               "start_ms": 7953000,
               "title": "The History of England"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenjuvenilia_1101_librivox/janeaustenjuvenilia_08_austen_64kb.mp3",
               "length_ms": 766000,
+              "readers": [
+                "maria-therese"
+              ],
               "start_ms": 9085000,
               "title": "A Collection of Letters, Part 1 (To Miss Cooper, Letter the First and Letter the Second)"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenjuvenilia_1101_librivox/janeaustenjuvenilia_09_austen_64kb.mp3",
               "length_ms": 821000,
+              "readers": [
+                "elizabeth-klett"
+              ],
               "start_ms": 9851000,
               "title": "A Collection of Letters, Part 2 (Letter the Third and Letter the Fourth)"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenjuvenilia_1101_librivox/janeaustenjuvenilia_10_austen_64kb.mp3",
               "length_ms": 1085000,
+              "readers": [
+                "mimi-wang"
+              ],
               "start_ms": 10672000,
               "title": "A Collection of Letters, Part 3 (Letter the Fifth and Scraps)"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenjuvenilia_1101_librivox/janeaustenjuvenilia_11_austen_64kb.mp3",
               "length_ms": 468000,
+              "readers": [
+                "kara-shallenberg-1969-2023"
+              ],
               "start_ms": 11757000,
               "title": "The Female Philosopher and The First Act of a Comedy"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenjuvenilia_1101_librivox/janeaustenjuvenilia_12_austen_64kb.mp3",
               "length_ms": 398000,
+              "readers": [
+                "elizabeth-klett"
+              ],
               "start_ms": 12225000,
               "title": "A Letter From a Young Lady, A Tour Through Wales, and A Tale"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenjuvenilia_1101_librivox/janeaustenjuvenilia_13_austen_64kb.mp3",
               "length_ms": 1342000,
+              "readers": [
+                "elizabeth-klett"
+              ],
               "start_ms": 12623000,
               "title": "Lady Susan, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenjuvenilia_1101_librivox/janeaustenjuvenilia_14_austen_64kb.mp3",
               "length_ms": 1360000,
+              "readers": [
+                "elizabeth-klett"
+              ],
               "start_ms": 13965000,
               "title": "Lady Susan, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenjuvenilia_1101_librivox/janeaustenjuvenilia_15_austen_64kb.mp3",
               "length_ms": 1600000,
+              "readers": [
+                "elizabeth-klett"
+              ],
               "start_ms": 15325000,
               "title": "Lady Susan, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenjuvenilia_1101_librivox/janeaustenjuvenilia_16_austen_64kb.mp3",
               "length_ms": 2003000,
+              "readers": [
+                "elizabeth-klett"
+              ],
               "start_ms": 16925000,
               "title": "Lady Susan, Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenjuvenilia_1101_librivox/janeaustenjuvenilia_17_austen_64kb.mp3",
               "length_ms": 891000,
+              "readers": [
+                "elizabeth-klett"
+              ],
               "start_ms": 18928000,
               "title": "Lady Susan, Part 5"
             },
             {
               "audio_url": "https://www.archive.org/download/janeaustenjuvenilia_1101_librivox/janeaustenjuvenilia_18_austen_64kb.mp3",
               "length_ms": 1018000,
+              "readers": [
+                "elizabeth-klett"
+              ],
               "start_ms": 19819000,
               "title": "Lady Susan, Part 6"
             }
@@ -12853,7 +13204,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt23/Jane_Austens_Juvenilia_1210.jpg",
           "id": "claudia-wilson",
           "language": "en",
+          "librivox_genres": [
+            "Epistolary Fiction",
+            "General Fiction",
+            "Short Stories"
+          ],
           "librivox_id": 4549,
+          "librivox_title": "Jane Austen's Juvenilia",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/jane-austens-juvenilia-by-jane-austen/",
@@ -13273,114 +13630,133 @@
             {
               "audio_url": "https://www.archive.org/download/austenssailorbrothers_2304_librivox/sailorbrothers_00_hubback_64kb.mp3",
               "length_ms": 224000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/austenssailorbrothers_2304_librivox/sailorbrothers_01_hubback_64kb.mp3",
               "length_ms": 1199000,
+              "section_number": 1,
               "start_ms": 224000,
               "title": "Brothers & Sisters"
             },
             {
               "audio_url": "https://www.archive.org/download/austenssailorbrothers_2304_librivox/sailorbrothers_02_hubback_64kb.mp3",
               "length_ms": 1117000,
+              "section_number": 2,
               "start_ms": 1423000,
               "title": "Two Midshipmen"
             },
             {
               "audio_url": "https://www.archive.org/download/austenssailorbrothers_2304_librivox/sailorbrothers_03_hubback_64kb.mp3",
               "length_ms": 1131000,
+              "section_number": 3,
               "start_ms": 2540000,
               "title": "Changes and chances in the navy"
             },
             {
               "audio_url": "https://www.archive.org/download/austenssailorbrothers_2304_librivox/sailorbrothers_04_hubback_64kb.mp3",
               "length_ms": 1278000,
+              "section_number": 4,
               "start_ms": 3671000,
               "title": "Promotions"
             },
             {
               "audio_url": "https://www.archive.org/download/austenssailorbrothers_2304_librivox/sailorbrothers_05_hubback_64kb.mp3",
               "length_ms": 1950000,
+              "section_number": 5,
               "start_ms": 4949000,
               "title": "The 'Peterel' Sloop"
             },
             {
               "audio_url": "https://www.archive.org/download/austenssailorbrothers_2304_librivox/sailorbrothers_06_hubback_64kb.mp3",
               "length_ms": 1579000,
+              "section_number": 6,
               "start_ms": 6899000,
               "title": "The Patrol of the Mediterranean"
             },
             {
               "audio_url": "https://www.archive.org/download/austenssailorbrothers_2304_librivox/sailorbrothers_07_hubback_64kb.mp3",
               "length_ms": 1450000,
+              "section_number": 7,
               "start_ms": 8478000,
               "title": "At Home and Abroad"
             },
             {
               "audio_url": "https://www.archive.org/download/austenssailorbrothers_2304_librivox/sailorbrothers_08_hubback_64kb.mp3",
               "length_ms": 1730000,
+              "section_number": 8,
               "start_ms": 9928000,
               "title": "Blockading Boulogne"
             },
             {
               "audio_url": "https://www.archive.org/download/austenssailorbrothers_2304_librivox/sailorbrothers_09_hubback_64kb.mp3",
               "length_ms": 1596000,
+              "section_number": 9,
               "start_ms": 11658000,
               "title": "The Pursuit of Villeneuve"
             },
             {
               "audio_url": "https://www.archive.org/download/austenssailorbrothers_2304_librivox/sailorbrothers_10_hubback_64kb.mp3",
               "length_ms": 1565000,
+              "section_number": 10,
               "start_ms": 13254000,
               "title": "'A Melancholy Situation'"
             },
             {
               "audio_url": "https://www.archive.org/download/austenssailorbrothers_2304_librivox/sailorbrothers_11_hubback_64kb.mp3",
               "length_ms": 1587000,
+              "section_number": 11,
               "start_ms": 14819000,
               "title": "St. Domingo"
             },
             {
               "audio_url": "https://www.archive.org/download/austenssailorbrothers_2304_librivox/sailorbrothers_12_hubback_64kb.mp3",
               "length_ms": 1496000,
+              "section_number": 12,
               "start_ms": 16406000,
               "title": "The Cape & St Helena"
             },
             {
               "audio_url": "https://www.archive.org/download/austenssailorbrothers_2304_librivox/sailorbrothers_13_hubback_64kb.mp3",
               "length_ms": 1481000,
+              "section_number": 13,
               "start_ms": 17902000,
               "title": "Stars & Stripes"
             },
             {
               "audio_url": "https://www.archive.org/download/austenssailorbrothers_2304_librivox/sailorbrothers_14_hubback_64kb.mp3",
               "length_ms": 1323000,
+              "section_number": 14,
               "start_ms": 19383000,
               "title": "Chinese Mandarins"
             },
             {
               "audio_url": "https://www.archive.org/download/austenssailorbrothers_2304_librivox/sailorbrothers_15_hubback_64kb.mp3",
               "length_ms": 1444000,
+              "section_number": 15,
               "start_ms": 20706000,
               "title": "A Letter from Jane"
             },
             {
               "audio_url": "https://www.archive.org/download/austenssailorbrothers_2304_librivox/sailorbrothers_16_hubback_64kb.mp3",
               "length_ms": 1451000,
+              "section_number": 16,
               "start_ms": 22150000,
               "title": "Another Letter from Jane"
             },
             {
               "audio_url": "https://www.archive.org/download/austenssailorbrothers_2304_librivox/sailorbrothers_17_hubback_64kb.mp3",
               "length_ms": 1336000,
+              "section_number": 17,
               "start_ms": 23601000,
               "title": "The End of the War"
             },
             {
               "audio_url": "https://www.archive.org/download/austenssailorbrothers_2304_librivox/sailorbrothers_18_hubback_64kb.mp3",
               "length_ms": 1274000,
+              "section_number": 18,
               "start_ms": 24937000,
               "title": "Two Admirals"
             }
@@ -13389,7 +13765,12 @@
           "cover_url": "https://archive.org/download/austenssailorbrothers_2304_librivox/austenssailorbrothers_2305.jpg",
           "id": "bryn-roberts",
           "language": "en",
+          "librivox_genres": [
+            "War & Military",
+            "Biography & Autobiography"
+          ],
           "librivox_id": 18960,
+          "librivox_title": "Jane Austen's Sailor Brothers",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/jane-austens-sailor-brothers-by-edith-hubback-brown/",

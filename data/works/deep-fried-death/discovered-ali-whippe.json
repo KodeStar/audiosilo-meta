@@ -1086,102 +1086,119 @@
             {
               "audio_url": "https://www.archive.org/download/discoverers_and_explorers_0901_librivox/discoverersandexplorers_00_shaw_64kb.mp3",
               "length_ms": 246000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/discoverers_and_explorers_0901_librivox/discoverersandexplorers_01_shaw_64kb.mp3",
               "length_ms": 423000,
+              "section_number": 1,
               "start_ms": 246000,
               "title": "Beliefs as to the World Four Hundred Years Ago"
             },
             {
               "audio_url": "https://www.archive.org/download/discoverers_and_explorers_0901_librivox/discoverersandexplorers_02_shaw_64kb.mp3",
               "length_ms": 561000,
+              "section_number": 2,
               "start_ms": 669000,
               "title": "Marco Polo"
             },
             {
               "audio_url": "https://www.archive.org/download/discoverers_and_explorers_0901_librivox/discoverersandexplorers_03_shaw_64kb.mp3",
               "length_ms": 1021000,
+              "section_number": 3,
               "start_ms": 1230000,
               "title": "Columbus"
             },
             {
               "audio_url": "https://www.archive.org/download/discoverers_and_explorers_0901_librivox/discoverersandexplorers_04_shaw_64kb.mp3",
               "length_ms": 262000,
+              "section_number": 4,
               "start_ms": 2251000,
               "title": "Vasco Da Gama"
             },
             {
               "audio_url": "https://www.archive.org/download/discoverers_and_explorers_0901_librivox/discoverersandexplorers_05_shaw_64kb.mp3",
               "length_ms": 291000,
+              "section_number": 5,
               "start_ms": 2513000,
               "title": "John and Sebastian Cabot's Voyages"
             },
             {
               "audio_url": "https://www.archive.org/download/discoverers_and_explorers_0901_librivox/discoverersandexplorers_06_shaw_64kb.mp3",
               "length_ms": 444000,
+              "section_number": 6,
               "start_ms": 2804000,
               "title": "Amerigo Vespucci"
             },
             {
               "audio_url": "https://www.archive.org/download/discoverers_and_explorers_0901_librivox/discoverersandexplorers_07_shaw_64kb.mp3",
               "length_ms": 158000,
+              "section_number": 7,
               "start_ms": 3248000,
               "title": "Ponce De Leon"
             },
             {
               "audio_url": "https://www.archive.org/download/discoverers_and_explorers_0901_librivox/discoverersandexplorers_08_shaw_64kb.mp3",
               "length_ms": 306000,
+              "section_number": 8,
               "start_ms": 3406000,
               "title": "Balboa"
             },
             {
               "audio_url": "https://www.archive.org/download/discoverers_and_explorers_0901_librivox/discoverersandexplorers_09_shaw_64kb.mp3",
               "length_ms": 398000,
+              "section_number": 9,
               "start_ms": 3712000,
               "title": "Magellan"
             },
             {
               "audio_url": "https://www.archive.org/download/discoverers_and_explorers_0901_librivox/discoverersandexplorers_10_shaw_64kb.mp3",
               "length_ms": 654000,
+              "section_number": 10,
               "start_ms": 4110000,
               "title": "Hernando Cortes"
             },
             {
               "audio_url": "https://www.archive.org/download/discoverers_and_explorers_0901_librivox/discoverersandexplorers_11_shaw_64kb.mp3",
               "length_ms": 406000,
+              "section_number": 11,
               "start_ms": 4764000,
               "title": "Francisco Pizarro"
             },
             {
               "audio_url": "https://www.archive.org/download/discoverers_and_explorers_0901_librivox/discoverersandexplorers_12_shaw_64kb.mp3",
               "length_ms": 560000,
+              "section_number": 12,
               "start_ms": 5170000,
               "title": "Ferdinand De Soto"
             },
             {
               "audio_url": "https://www.archive.org/download/discoverers_and_explorers_0901_librivox/discoverersandexplorers_13_shaw_64kb.mp3",
               "length_ms": 812000,
+              "section_number": 13,
               "start_ms": 5730000,
               "title": "The Great River Amazon, and El Dorado"
             },
             {
               "audio_url": "https://www.archive.org/download/discoverers_and_explorers_0901_librivox/discoverersandexplorers_14_shaw_64kb.mp3",
               "length_ms": 476000,
+              "section_number": 14,
               "start_ms": 6542000,
               "title": "Verrazzano"
             },
             {
               "audio_url": "https://www.archive.org/download/discoverers_and_explorers_0901_librivox/discoverersandexplorers_15_shaw_64kb.mp3",
               "length_ms": 481000,
+              "section_number": 15,
               "start_ms": 7018000,
               "title": "The Famous Voyage of Sir Francis Drake - 1577"
             },
             {
               "audio_url": "https://www.archive.org/download/discoverers_and_explorers_0901_librivox/discoverersandexplorers_16_shaw_64kb.mp3",
               "length_ms": 495000,
+              "section_number": 16,
               "start_ms": 7499000,
               "title": "Henry Hudson"
             }
@@ -1190,7 +1207,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt5/Discoverers_and_Explorers_1006.jpg",
           "id": "laura-caldwell",
           "language": "en",
+          "librivox_genres": [
+            "History",
+            "Biography"
+          ],
           "librivox_id": 2802,
+          "librivox_title": "Discoverers and Explorers",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/discoverers-and-explorers-by-edward-r-shaw/",
@@ -1242,216 +1264,360 @@
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_00_layard_64kb.mp3",
               "length_ms": 328000,
+              "readers": [
+                "elijah-fisher"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Prefatory note & Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_01_layard_64kb.mp3",
               "length_ms": 1594000,
+              "readers": [
+                "evan-f"
+              ],
+              "section_number": 1,
               "start_ms": 328000,
               "title": "Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_02_layard_64kb.mp3",
               "length_ms": 1180000,
+              "readers": [
+                "tyrel-sorensen"
+              ],
+              "section_number": 2,
               "start_ms": 1922000,
               "title": "Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_03_layard_64kb.mp3",
               "length_ms": 1657000,
+              "readers": [
+                "tyrel-sorensen"
+              ],
+              "section_number": 3,
               "start_ms": 3102000,
               "title": "Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_04_layard_64kb.mp3",
               "length_ms": 2729000,
+              "readers": [
+                "sim"
+              ],
+              "section_number": 4,
               "start_ms": 4759000,
               "title": "Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_05_layard_64kb.mp3",
               "length_ms": 2802000,
+              "readers": [
+                "jane-bennett"
+              ],
+              "section_number": 5,
               "start_ms": 7488000,
               "title": "Chapter 5 part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_06_layard_64kb.mp3",
               "length_ms": 1990000,
+              "readers": [
+                "jane-bennett"
+              ],
+              "section_number": 6,
               "start_ms": 10290000,
               "title": "Chapter 5 part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_07_layard_64kb.mp3",
               "length_ms": 3012000,
+              "readers": [
+                "jane-bennett"
+              ],
+              "section_number": 7,
               "start_ms": 12280000,
               "title": "Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_08_layard_64kb.mp3",
               "length_ms": 1569000,
+              "readers": [
+                "jane-bennett"
+              ],
+              "section_number": 8,
               "start_ms": 15292000,
               "title": "Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_09_layard_64kb.mp3",
               "length_ms": 1678000,
+              "readers": [
+                "toddhw"
+              ],
+              "section_number": 9,
               "start_ms": 16861000,
               "title": "Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_10_layard_64kb.mp3",
               "length_ms": 1988000,
+              "readers": [
+                "jane-bennett"
+              ],
+              "section_number": 10,
               "start_ms": 18539000,
               "title": "Chapter 9"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_11_layard_64kb.mp3",
               "length_ms": 1874000,
+              "readers": [
+                "jane-bennett"
+              ],
+              "section_number": 11,
               "start_ms": 20527000,
               "title": "Chapter 10"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_12_layard_64kb.mp3",
               "length_ms": 1477000,
+              "readers": [
+                "jane-bennett"
+              ],
+              "section_number": 12,
               "start_ms": 22401000,
               "title": "Chapter 11 part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_13_layard_64kb.mp3",
               "length_ms": 2255000,
+              "readers": [
+                "mary-ann-hadley"
+              ],
+              "section_number": 13,
               "start_ms": 23878000,
               "title": "Chapter 11 part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_14_layard_64kb.mp3",
               "length_ms": 1430000,
+              "readers": [
+                "tasha-hobbs-peterson"
+              ],
+              "section_number": 14,
               "start_ms": 26133000,
               "title": "Chapter 12"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_15_layard_64kb.mp3",
               "length_ms": 1882000,
+              "readers": [
+                "michele-eaton"
+              ],
+              "section_number": 15,
               "start_ms": 27563000,
               "title": "Chapter 13"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_16_layard_64kb.mp3",
               "length_ms": 1960000,
+              "readers": [
+                "florence-librivox-13647"
+              ],
+              "section_number": 16,
               "start_ms": 29445000,
               "title": "Chapter 14"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_17_layard_64kb.mp3",
               "length_ms": 1179000,
+              "readers": [
+                "zeprina-jaz-ainsworth"
+              ],
+              "section_number": 17,
               "start_ms": 31405000,
               "title": "Chapter 15"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_18_layard_64kb.mp3",
               "length_ms": 2136000,
+              "readers": [
+                "zeprina-jaz-ainsworth"
+              ],
+              "section_number": 18,
               "start_ms": 32584000,
               "title": "Chapter 16"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_19_layard_64kb.mp3",
               "length_ms": 2102000,
+              "readers": [
+                "zeprina-jaz-ainsworth"
+              ],
+              "section_number": 19,
               "start_ms": 34720000,
               "title": "Chapter 17"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_20_layard_64kb.mp3",
               "length_ms": 1820000,
+              "readers": [
+                "zeprina-jaz-ainsworth"
+              ],
+              "section_number": 20,
               "start_ms": 36822000,
               "title": "Chapter 18"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_21_layard_64kb.mp3",
               "length_ms": 2088000,
+              "readers": [
+                "zeprina-jaz-ainsworth"
+              ],
+              "section_number": 21,
               "start_ms": 38642000,
               "title": "Chapter 19"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_22_layard_64kb.mp3",
               "length_ms": 2028000,
+              "readers": [
+                "michele-eaton"
+              ],
+              "section_number": 22,
               "start_ms": 40730000,
               "title": "Chapter 20"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_23_layard_64kb.mp3",
               "length_ms": 1685000,
+              "readers": [
+                "zeprina-jaz-ainsworth"
+              ],
+              "section_number": 23,
               "start_ms": 42758000,
               "title": "Chapter 20 (alternate reading)"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_24_layard_64kb.mp3",
               "length_ms": 2278000,
+              "readers": [
+                "sarah-irene-rosenberg"
+              ],
+              "section_number": 24,
               "start_ms": 44443000,
               "title": "Chapter 21"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_25_layard_64kb.mp3",
               "length_ms": 1824000,
+              "readers": [
+                "kristine-bekere"
+              ],
+              "section_number": 25,
               "start_ms": 46721000,
               "title": "Chapter 22 part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_26_layard_64kb.mp3",
               "length_ms": 1441000,
+              "readers": [
+                "kristine-bekere"
+              ],
+              "section_number": 26,
               "start_ms": 48545000,
               "title": "Chapter 22 part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_27_layard_64kb.mp3",
               "length_ms": 1796000,
+              "readers": [
+                "chadh94"
+              ],
+              "section_number": 27,
               "start_ms": 49986000,
               "title": "Chapter 23"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_28_layard_64kb.mp3",
               "length_ms": 1685000,
+              "readers": [
+                "william-allan-jones"
+              ],
+              "section_number": 28,
               "start_ms": 51782000,
               "title": "Chapter 24 part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_29_layard_64kb.mp3",
               "length_ms": 1639000,
+              "readers": [
+                "peter-dann"
+              ],
+              "section_number": 29,
               "start_ms": 53467000,
               "title": "Chapter 24 part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_30_layard_64kb.mp3",
               "length_ms": 1820000,
+              "readers": [
+                "wilma-magastino"
+              ],
+              "section_number": 30,
               "start_ms": 55106000,
               "title": "Chapter 25 part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_31_layard_64kb.mp3",
               "length_ms": 1542000,
+              "readers": [
+                "wilma-magastino"
+              ],
+              "section_number": 31,
               "start_ms": 56926000,
               "title": "Chapter 25 part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_32_layard_64kb.mp3",
               "length_ms": 2370000,
+              "readers": [
+                "wilma-magastino"
+              ],
+              "section_number": 32,
               "start_ms": 58468000,
               "title": "Chapter 26 part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_33_layard_64kb.mp3",
               "length_ms": 1748000,
+              "readers": [
+                "wilma-magastino"
+              ],
+              "section_number": 33,
               "start_ms": 60838000,
               "title": "Chapter 26 part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_34_layard_64kb.mp3",
               "length_ms": 1428000,
+              "readers": [
+                "gini-pug"
+              ],
+              "section_number": 34,
               "start_ms": 62586000,
               "title": "Chapter 26 part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/ruinsof_nineveh_babylon_2103_librivox/discoveriesnineveh_35_layard_64kb.mp3",
               "length_ms": 363000,
+              "readers": [
+                "kevins"
+              ],
+              "section_number": 35,
               "start_ms": 64014000,
               "title": "Conclusion"
             }
@@ -1460,7 +1626,13 @@
           "cover_url": "https://archive.org/download/ruinsof_nineveh_babylon_2103_librivox/ninevehbabylon_2103.jpg",
           "id": "elijah-fisher",
           "language": "en",
+          "librivox_genres": [
+            "Art, Design & Architecture",
+            "Memoirs",
+            "Antiquity"
+          ],
           "librivox_id": 14145,
+          "librivox_title": "Discoveries Among the Ruins of Nineveh and Babylon",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/discoveries-among-the-ruins-of-nineveh-and-babylon-by-austen-layard/",
@@ -1609,7 +1781,12 @@
           "cover_url": "https://archive.org/download/discoveries_essays_2306_librivox/discoveries_2306.jpg",
           "id": "jim-locke",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Literary Criticism"
+          ],
           "librivox_id": 19300,
+          "librivox_title": "Discoveries: Essays in Literary Criticism",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/discoveries-by-john-middleton-murry/",
@@ -5588,162 +5765,270 @@
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_00_shea_64kb.mp3",
               "length_ms": 121000,
+              "readers": [
+                "laurencetrask"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_01_shea_64kb.mp3",
               "length_ms": 1290000,
+              "readers": [
+                "laurencetrask"
+              ],
+              "section_number": 1,
               "start_ms": 121000,
               "title": "Pt 1 History of the Discovery of the Mississippi River"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_02_shea_64kb.mp3",
               "length_ms": 1512000,
+              "readers": [
+                "john-dennison"
+              ],
+              "section_number": 2,
               "start_ms": 1411000,
               "title": "Pt 2 History of the Discovery of the Mississippi River"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_03_shea_64kb.mp3",
               "length_ms": 1355000,
+              "readers": [
+                "john-dennison"
+              ],
+              "section_number": 3,
               "start_ms": 2923000,
               "title": "Pt 3 History of the Discovery of the Mississippi River"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_04_shea_64kb.mp3",
               "length_ms": 1527000,
+              "readers": [
+                "thbosc"
+              ],
+              "section_number": 4,
               "start_ms": 4278000,
               "title": "Pt 1 Life of Father James Marquette"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_05_shea_64kb.mp3",
               "length_ms": 1380000,
+              "readers": [
+                "thbosc"
+              ],
+              "section_number": 5,
               "start_ms": 5805000,
               "title": "Pt 2 Life of Father James Marquette"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_06_shea_64kb.mp3",
               "length_ms": 1487000,
+              "readers": [
+                "thbosc"
+              ],
+              "section_number": 6,
               "start_ms": 7185000,
               "title": "Pt 3 Life of Father James Marquette"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_07_shea_64kb.mp3",
               "length_ms": 240000,
+              "readers": [
+                "kangaroo"
+              ],
+              "section_number": 7,
               "start_ms": 8672000,
               "title": "Notice on the Sieur Jolliet"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_08_shea_64kb.mp3",
               "length_ms": 1706000,
+              "readers": [
+                "kurt"
+              ],
+              "section_number": 8,
               "start_ms": 8912000,
               "title": "Notice on Father Dablon, Pt 1 Voyages and Discoveries of Father James Marquette"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_09_shea_64kb.mp3",
               "length_ms": 3203000,
+              "readers": [
+                "kurt"
+              ],
+              "section_number": 9,
               "start_ms": 10618000,
               "title": "Pt 2 Voyages and Discoveries of Father James Marquette"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_10_shea_64kb.mp3",
               "length_ms": 1523000,
+              "readers": [
+                "triciag"
+              ],
+              "section_number": 10,
               "start_ms": 13821000,
               "title": "Footnote on the Character of the Illinois"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_11_shea_64kb.mp3",
               "length_ms": 1730000,
+              "readers": [
+                "kurt"
+              ],
+              "section_number": 11,
               "start_ms": 15344000,
               "title": "Pt 3 Voyages and Discoveries of Father James Marquette"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_12_shea_64kb.mp3",
               "length_ms": 1837000,
+              "readers": [
+                "kurt"
+              ],
+              "section_number": 12,
               "start_ms": 17074000,
               "title": "Pt 4 Voyages and Discoveries of Father James Marquette"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_13_shea_64kb.mp3",
               "length_ms": 1685000,
+              "readers": [
+                "triciag"
+              ],
+              "section_number": 13,
               "start_ms": 18911000,
               "title": "Narrative of a Voyage Made to the Illinois by Father Claude Allouez"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_14_shea_64kb.mp3",
               "length_ms": 1099000,
+              "readers": [
+                "triciag"
+              ],
+              "section_number": 14,
               "start_ms": 20596000,
               "title": "Bibliographical Notice of the 'Etablissement de la Foi' of Father Christian le Clercq"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_15_shea_64kb.mp3",
               "length_ms": 1122000,
+              "readers": [
+                "davida-george"
+              ],
+              "section_number": 15,
               "start_ms": 21695000,
               "title": "Pt 1 Narrative of the First Attempt by M. Cavelier de la Salle to Explore the Mississippi"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_16_shea_64kb.mp3",
               "length_ms": 908000,
+              "readers": [
+                "davida-george"
+              ],
+              "section_number": 16,
               "start_ms": 22817000,
               "title": "Pt 2 Narrative of the First Attempt by M. Cavelier de la Salle to Explore the Mississippi"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_17_shea_64kb.mp3",
               "length_ms": 2254000,
+              "readers": [
+                "patrick-mchaffie"
+              ],
+              "section_number": 17,
               "start_ms": 23725000,
               "title": "Biographical Notice of the Works of Father Louis Hennepin"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_18_shea_64kb.mp3",
               "length_ms": 2309000,
+              "readers": [
+                "patrick-mchaffie"
+              ],
+              "section_number": 18,
               "start_ms": 25979000,
               "title": "Pt 1 Narrative of a Voyage to the Upper Mississippi, by Father Louis Hennepin"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_19_shea_64kb.mp3",
               "length_ms": 1955000,
+              "readers": [
+                "patrick-mchaffie"
+              ],
+              "section_number": 19,
               "start_ms": 28288000,
               "title": "Pt 2 Narrative of a Voyage to the Upper Mississippi, by Father Louis Hennepin"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_20_shea_64kb.mp3",
               "length_ms": 1667000,
+              "readers": [
+                "patrick-mchaffie"
+              ],
+              "section_number": 20,
               "start_ms": 30243000,
               "title": "Pt 3 Narrative of a Voyage to the Upper Mississippi, by Father Louis Hennepin"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_21_shea_64kb.mp3",
               "length_ms": 2532000,
+              "readers": [
+                "triciag"
+              ],
+              "section_number": 21,
               "start_ms": 31910000,
               "title": "Narrative of the Adventures of La Salle's Party"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_22_shea_64kb.mp3",
               "length_ms": 2697000,
+              "readers": [
+                "triciag"
+              ],
+              "section_number": 22,
               "start_ms": 34442000,
               "title": "Narrative of La Salle's Voyage Down the Mississippi"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_23_shea_64kb.mp3",
               "length_ms": 1279000,
+              "readers": [
+                "kalynda"
+              ],
+              "section_number": 23,
               "start_ms": 37139000,
               "title": "Account of La Salle's Attempt to Reach the Mississippi by Sea"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_24_shea_64kb.mp3",
               "length_ms": 1299000,
+              "readers": [
+                "triciag"
+              ],
+              "section_number": 24,
               "start_ms": 38418000,
               "title": "Pt 1 Narrative of La Salle's Attempt to Ascend the Mississippi in 1687"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_25_shea_64kb.mp3",
               "length_ms": 1629000,
+              "readers": [
+                "triciag"
+              ],
+              "section_number": 25,
               "start_ms": 39717000,
               "title": "Pt 2 Narrative of La Salle's Attempt to Ascend the Mississippi in 1687"
             },
             {
               "audio_url": "https://www.archive.org/download/mississippivalley_1806_librivox/mississippivalley_26_shea_64kb.mp3",
               "length_ms": 1818000,
+              "readers": [
+                "triciag"
+              ],
+              "section_number": 26,
               "start_ms": 41346000,
               "title": "Pt 3 Narrative of La Salle's Attempt to Ascend the Mississippi in 1687"
             }
@@ -5752,7 +6037,13 @@
           "cover_url": "https://archive.org/download/mississippivalley_1806_librivox/discovery_mississippi_1806.jpg",
           "id": "laurencetrask",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "Early Modern",
+            "Exploration"
+          ],
           "librivox_id": 10467,
+          "librivox_title": "Discovery and Exploration of the Mississippi Valley",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/discovery-and-exploration-of-the-mississippi-valley-by-john-gilmary-shea/",
@@ -7152,7 +7443,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt16/Discovery_New_Worlds_1203.jpg",
           "id": "laura-caldwell",
           "language": "en",
+          "librivox_genres": [
+            "History"
+          ],
           "librivox_id": 2849,
+          "librivox_title": "Discovery of New Worlds",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-discovery-of-new-worlds-by-m-b-synge/",
@@ -7220,7 +7515,11 @@
           "cover_url": "https://archive.org/download/discovery_future_dw_1404_librivox/the_discovery_of_the_future_1405.jpg",
           "id": "david-wales",
           "language": "en",
+          "librivox_genres": [
+            "Modern"
+          ],
           "librivox_id": 8837,
+          "librivox_title": "Discovery Of The Future",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-discovery-of-the-future-by-h-g-wells/",

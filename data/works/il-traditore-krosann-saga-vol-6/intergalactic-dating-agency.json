@@ -5402,36 +5402,42 @@
             {
               "audio_url": "https://www.archive.org/download/intermediatesex_2101_librivox/intermediatesex_00_carpenter_64kb.mp3",
               "length_ms": 171000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Prefatory Note"
             },
             {
               "audio_url": "https://www.archive.org/download/intermediatesex_2101_librivox/intermediatesex_01_carpenter_64kb.mp3",
               "length_ms": 710000,
+              "section_number": 1,
               "start_ms": 171000,
               "title": "I. Introductory"
             },
             {
               "audio_url": "https://www.archive.org/download/intermediatesex_2101_librivox/intermediatesex_02_carpenter_64kb.mp3",
               "length_ms": 2406000,
+              "section_number": 2,
               "start_ms": 881000,
               "title": "II. The Intermediate Sex"
             },
             {
               "audio_url": "https://www.archive.org/download/intermediatesex_2101_librivox/intermediatesex_03_carpenter_64kb.mp3",
               "length_ms": 4354000,
+              "section_number": 3,
               "start_ms": 3287000,
               "title": "III. The Homogenic Attachment"
             },
             {
               "audio_url": "https://www.archive.org/download/intermediatesex_2101_librivox/intermediatesex_04_carpenter_64kb.mp3",
               "length_ms": 2293000,
+              "section_number": 4,
               "start_ms": 7641000,
               "title": "IV. Affection in Education"
             },
             {
               "audio_url": "https://www.archive.org/download/intermediatesex_2101_librivox/intermediatesex_05_carpenter_64kb.mp3",
               "length_ms": 2254000,
+              "section_number": 5,
               "start_ms": 9934000,
               "title": "V. The Place of the Uranian in Society"
             }
@@ -5440,7 +5446,11 @@
           "cover_url": "https://archive.org/download/intermediatesex_2101_librivox/intermediate_sex_2101.jpg",
           "id": "chuck-williamson",
           "language": "en",
+          "librivox_genres": [
+            "Modern"
+          ],
           "librivox_id": 14086,
+          "librivox_title": "Intermediate Sex: A Study of Some Transitional Types of Men and Women",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-intermediate-sex-by-edward-carpenter/",
@@ -11041,36 +11051,54 @@
             {
               "audio_url": "https://www.archive.org/download/international_episode/internationalepisode_1_james_64kb.mp3",
               "length_ms": 1320000,
+              "readers": [
+                "alex-foster"
+              ],
               "start_ms": 0,
               "title": "Section 1"
             },
             {
               "audio_url": "https://www.archive.org/download/international_episode/internationalepisode_2_james_64kb.mp3",
               "length_ms": 2847000,
+              "readers": [
+                "gord-mackenzie"
+              ],
               "start_ms": 1320000,
               "title": "Section 2"
             },
             {
               "audio_url": "https://archive.org/download/international_episode/internationalepisode_3_james_64kb.mp3",
               "length_ms": 943000,
+              "readers": [
+                "paula-berinstein"
+              ],
               "start_ms": 4167000,
               "title": "Section 3"
             },
             {
               "audio_url": "https://archive.org/download/international_episode/internationalepisode_4_james_64kb.mp3",
               "length_ms": 2299000,
+              "readers": [
+                "kara-shallenberg-1969-2023"
+              ],
               "start_ms": 5110000,
               "title": "Section 4"
             },
             {
               "audio_url": "https://archive.org/download/international_episode/internationalepisode_5_james_64kb.mp3",
               "length_ms": 1357000,
+              "readers": [
+                "neal-foley"
+              ],
               "start_ms": 7409000,
               "title": "Section 5"
             },
             {
               "audio_url": "https://archive.org/download/international_episode/internationalepisode_6_james_64kb.mp3",
               "length_ms": 2090000,
+              "readers": [
+                "chris-goringe"
+              ],
               "start_ms": 8766000,
               "title": "Section 6"
             }
@@ -11079,7 +11107,11 @@
           "cover_url": "https://archive.org/download/international_episode/International_Episode_1108.jpg",
           "id": "alex-foster",
           "language": "en",
+          "librivox_genres": [
+            "Humorous Fiction"
+          ],
           "librivox_id": 143,
+          "librivox_title": "International Episode",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/an-international-episode-by-henry-james/",
@@ -11450,60 +11482,100 @@
             {
               "audio_url": "https://www.archive.org/download/refrigeratorrecipes_2110_librivox/refrigeratorrecipes_00_harding_64kb.mp3",
               "length_ms": 113000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/refrigeratorrecipes_2110_librivox/refrigeratorrecipes_01_harding_64kb.mp3",
               "length_ms": 368000,
+              "readers": [
+                "gini-rosario"
+              ],
+              "section_number": 1,
               "start_ms": 113000,
               "title": "Frosty Beverages"
             },
             {
               "audio_url": "https://www.archive.org/download/refrigeratorrecipes_2110_librivox/refrigeratorrecipes_02_harding_64kb.mp3",
               "length_ms": 540000,
+              "readers": [
+                "drempels"
+              ],
+              "section_number": 2,
               "start_ms": 481000,
               "title": "Frozen Desserts Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/refrigeratorrecipes_2110_librivox/refrigeratorrecipes_03_harding_64kb.mp3",
               "length_ms": 518000,
+              "readers": [
+                "drempels"
+              ],
+              "section_number": 3,
               "start_ms": 1021000,
               "title": "Frozen Desserts Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/refrigeratorrecipes_2110_librivox/refrigeratorrecipes_04_harding_64kb.mp3",
               "length_ms": 640000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 4,
               "start_ms": 1539000,
               "title": "Chilled Desserts"
             },
             {
               "audio_url": "https://www.archive.org/download/refrigeratorrecipes_2110_librivox/refrigeratorrecipes_05_harding_64kb.mp3",
               "length_ms": 577000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 5,
               "start_ms": 2179000,
               "title": "Pies"
             },
             {
               "audio_url": "https://www.archive.org/download/refrigeratorrecipes_2110_librivox/refrigeratorrecipes_06_harding_64kb.mp3",
               "length_ms": 631000,
+              "readers": [
+                "gini-rosario"
+              ],
+              "section_number": 6,
               "start_ms": 2756000,
               "title": "Salads Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/refrigeratorrecipes_2110_librivox/refrigeratorrecipes_07_harding_64kb.mp3",
               "length_ms": 659000,
+              "readers": [
+                "gini-rosario"
+              ],
+              "section_number": 7,
               "start_ms": 3387000,
               "title": "Salads Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/refrigeratorrecipes_2110_librivox/refrigeratorrecipes_08_harding_64kb.mp3",
               "length_ms": 436000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 8,
               "start_ms": 4046000,
               "title": "Refrigerator Cookies and Rolls"
             },
             {
               "audio_url": "https://www.archive.org/download/refrigeratorrecipes_2110_librivox/refrigeratorrecipes_09_harding_64kb.mp3",
               "length_ms": 371000,
+              "readers": [
+                "matthew-mcnaughton"
+              ],
+              "section_number": 9,
               "start_ms": 4482000,
               "title": "Casserole Dishes and Other Uses"
             }
@@ -11512,7 +11584,11 @@
           "cover_url": "https://archive.org/download/refrigeratorrecipes_2110_librivox/ihrefrigerator_2110.jpg",
           "id": "larry-wilson",
           "language": "en",
+          "librivox_genres": [
+            "Cooking"
+          ],
           "librivox_id": 17173,
+          "librivox_title": "International Harvester Refrigerator Recipes",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/international-harvester-refrigerator-recipes-by-irma-harding/",

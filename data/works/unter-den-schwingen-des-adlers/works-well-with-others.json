@@ -72,30 +72,45 @@
             {
               "audio_url": "https://www.archive.org/download/world_0908_librivox/world_vaughan_elh_64kb.mp3",
               "length_ms": 240000,
+              "readers": [
+                "ehehl"
+              ],
               "start_ms": 0,
               "title": "Version 1"
             },
             {
               "audio_url": "https://www.archive.org/download/world_0908_librivox/world_vaughan_gh_64kb.mp3",
               "length_ms": 188000,
+              "readers": [
+                "grant-hurlock"
+              ],
               "start_ms": 240000,
               "title": "Version 2"
             },
             {
               "audio_url": "https://www.archive.org/download/world_0908_librivox/world_vaughan_kr_64kb.mp3",
               "length_ms": 153000,
+              "readers": [
+                "wedschild"
+              ],
               "start_ms": 428000,
               "title": "Version 3"
             },
             {
               "audio_url": "https://www.archive.org/download/world_0908_librivox/world_vaughan_mg_64kb.mp3",
               "length_ms": 246000,
+              "readers": [
+                "martin-geeson"
+              ],
               "start_ms": 581000,
               "title": "Version 4"
             },
             {
               "audio_url": "https://www.archive.org/download/world_0908_librivox/world_vaughan_smh_64kb.mp3",
               "length_ms": 185000,
+              "readers": [
+                "sean-michael-hogan"
+              ],
               "start_ms": 827000,
               "title": "Version 5"
             }
@@ -103,7 +118,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt19/World_1206.jpg",
           "id": "ehehl",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 3383,
+          "librivox_title": "World",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-world-by-henry-vaughan/",
@@ -3932,9 +3952,24 @@
           ],
           "copyright_year": 1909,
           "cover_url": "https://archive.org/download/worldaswillandidea_v1_1505_librivox/world_will_way2_1_1505.jpg",
+          "credits": [
+            {
+              "person": "r-b-haldane",
+              "role": "translator"
+            },
+            {
+              "person": "john-kemp",
+              "role": "translator"
+            }
+          ],
           "id": "expatriate",
           "language": "en",
+          "librivox_genres": [
+            "Philosophy",
+            "Modern"
+          ],
           "librivox_id": 9711,
+          "librivox_title": "World As Will and Idea, Vol. 1 of 3",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-world-as-will-and-idea-v1-by-arthur-schopenhauer/",
@@ -4387,9 +4422,24 @@
           ],
           "copyright_year": 1909,
           "cover_url": "https://archive.org/download/world_will_idea_v2_1507_librivox/world_will_way2_2_1507.jpg",
+          "credits": [
+            {
+              "person": "r-b-haldane",
+              "role": "translator"
+            },
+            {
+              "person": "john-kemp",
+              "role": "translator"
+            }
+          ],
           "id": "expatriate",
           "language": "en",
+          "librivox_genres": [
+            "Philosophy",
+            "Modern"
+          ],
           "librivox_id": 9926,
+          "librivox_title": "World as Will and Idea, Vol. 2 of 3",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-world-as-will-and-idea-vol-2-of-3-by-arthur-schopenhauer/",
@@ -4768,9 +4818,19 @@
           ],
           "copyright_year": 1909,
           "cover_url": "https://archive.org/download/world_will_idea_v3_1511_librivox/world_will_idea2_3_1511.jpg",
+          "credits": [
+            {
+              "person": "r-b-haldane",
+              "role": "translator"
+            }
+          ],
           "id": "expatriate",
           "language": "en",
+          "librivox_genres": [
+            "Modern"
+          ],
           "librivox_id": 10106,
+          "librivox_title": "World as Will and Idea, Vol. 3 of 3",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-world-as-will-and-idea-vol-3-of-3-by-arthur-schopenhauer/",
@@ -5767,7 +5827,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt24/World_Beyond_1211.jpg",
           "id": "richard-kilmer-1942-2022",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Science Fiction"
+          ],
           "librivox_id": 6372,
+          "librivox_title": "World Beyond",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-world-beyond-by-ray-cummings/",
@@ -8598,240 +8663,280 @@
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_00_churchill_64kb.mp3",
               "length_ms": 540000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_01_churchill_64kb.mp3",
               "length_ms": 2294000,
+              "section_number": 1,
               "start_ms": 540000,
               "title": "The Vials of Wrath 1870-1904"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_02_churchill_64kb.mp3",
               "length_ms": 2439000,
+              "section_number": 2,
               "start_ms": 2834000,
               "title": "Milestones to Armageddon 1905-1910"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_03_churchill_64kb.mp3",
               "length_ms": 1986000,
+              "section_number": 3,
               "start_ms": 5273000,
               "title": "Crisis of Agadir 1911"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_04_churchill_64kb.mp3",
               "length_ms": 2168000,
+              "section_number": 4,
               "start_ms": 7259000,
               "title": "Crisis of Agadir 1911"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_05_churchill_64kb.mp3",
               "length_ms": 1853000,
+              "section_number": 5,
               "start_ms": 9427000,
               "title": "Admirals All"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_06_churchill_64kb.mp3",
               "length_ms": 1883000,
+              "section_number": 6,
               "start_ms": 11280000,
               "title": "Admirals All"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_07_churchill_64kb.mp3",
               "length_ms": 2560000,
+              "section_number": 7,
               "start_ms": 13163000,
               "title": "The German Navy Law 1912"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_08_churchill_64kb.mp3",
               "length_ms": 2248000,
+              "section_number": 8,
               "start_ms": 15723000,
               "title": "The German Navy Law 1912"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_09_churchill_64kb.mp3",
               "length_ms": 1967000,
+              "section_number": 9,
               "start_ms": 17971000,
               "title": "The Romance of Design"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_10_churchill_64kb.mp3",
               "length_ms": 1825000,
+              "section_number": 10,
               "start_ms": 19938000,
               "title": "The Romance of Design"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_11_churchill_64kb.mp3",
               "length_ms": 2575000,
+              "section_number": 11,
               "start_ms": 21763000,
               "title": "The North Sea Front"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_12_churchill_64kb.mp3",
               "length_ms": 2442000,
+              "section_number": 12,
               "start_ms": 24338000,
               "title": "The North Sea Front"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_13_churchill_64kb.mp3",
               "length_ms": 1737000,
+              "section_number": 13,
               "start_ms": 26780000,
               "title": "Ireland and the European Balance"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_14_churchill_64kb.mp3",
               "length_ms": 2156000,
+              "section_number": 14,
               "start_ms": 28517000,
               "title": "Ireland and the European Balance"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_15_churchill_64kb.mp3",
               "length_ms": 2005000,
+              "section_number": 15,
               "start_ms": 30673000,
               "title": "The Crisis July 24-July 30"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_16_churchill_64kb.mp3",
               "length_ms": 1758000,
+              "section_number": 16,
               "start_ms": 32678000,
               "title": "The Crisis July 24-July 30"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_17_churchill_64kb.mp3",
               "length_ms": 2821000,
+              "section_number": 17,
               "start_ms": 34436000,
               "title": "The Mobilisation of the Navy July 31-August 4"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_18_churchill_64kb.mp3",
               "length_ms": 2897000,
+              "section_number": 18,
               "start_ms": 37257000,
               "title": "War: The Passage of the Army August 4-August 22 1914"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_19_churchill_64kb.mp3",
               "length_ms": 2336000,
+              "section_number": 19,
               "start_ms": 40154000,
               "title": "War: The Passage of the Army August 4-August 22 1914"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_20_churchill_64kb.mp3",
               "length_ms": 1907000,
+              "section_number": 20,
               "start_ms": 42490000,
               "title": "The Battle in France August 20-September 6. 1914"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_21_churchill_64kb.mp3",
               "length_ms": 1853000,
+              "section_number": 21,
               "start_ms": 44397000,
               "title": "The Battle in France August 20-September 6. 1914"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_22_churchill_64kb.mp3",
               "length_ms": 2121000,
+              "section_number": 22,
               "start_ms": 46250000,
               "title": "On the Oceans"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_23_churchill_64kb.mp3",
               "length_ms": 1833000,
+              "section_number": 23,
               "start_ms": 48371000,
               "title": "On the Oceans"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_24_churchill_64kb.mp3",
               "length_ms": 2006000,
+              "section_number": 24,
               "start_ms": 50204000,
               "title": "In the Narrow Seas"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_25_churchill_64kb.mp3",
               "length_ms": 1804000,
+              "section_number": 25,
               "start_ms": 52210000,
               "title": "In the Narrow Seas"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_26_churchill_64kb.mp3",
               "length_ms": 2666000,
+              "section_number": 26,
               "start_ms": 54014000,
               "title": "Antwerp"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_27_churchill_64kb.mp3",
               "length_ms": 2951000,
+              "section_number": 27,
               "start_ms": 56680000,
               "title": "Antwerp"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_28_churchill_64kb.mp3",
               "length_ms": 1914000,
+              "section_number": 28,
               "start_ms": 59631000,
               "title": "The Channel Ports"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_29_churchill_64kb.mp3",
               "length_ms": 1440000,
+              "section_number": 29,
               "start_ms": 61545000,
               "title": "The Channel Ports"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_30_churchill_64kb.mp3",
               "length_ms": 2185000,
+              "section_number": 30,
               "start_ms": 62985000,
               "title": "The Grand Fleet and the Submarine Alarm October and November, 1914"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_31_churchill_64kb.mp3",
               "length_ms": 2282000,
+              "section_number": 31,
               "start_ms": 65170000,
               "title": "The Grand Fleet and the Submarine Alarm October and November, 1914"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_32_churchill_64kb.mp3",
               "length_ms": 2380000,
+              "section_number": 32,
               "start_ms": 67452000,
               "title": "The Grand Fleet and the Submarine Alarm October and November, 1914"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_33_churchill_64kb.mp3",
               "length_ms": 2005000,
+              "section_number": 33,
               "start_ms": 69832000,
               "title": "Coronel and the Falklands October, November and December, 1914"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_34_churchill_64kb.mp3",
               "length_ms": 1507000,
+              "section_number": 34,
               "start_ms": 71837000,
               "title": "Coronel and the Falklands October, November and December, 1914"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_35_churchill_64kb.mp3",
               "length_ms": 1941000,
+              "section_number": 35,
               "start_ms": 73344000,
               "title": "With Fisher at the Admiralty November and December, 1914"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_36_churchill_64kb.mp3",
               "length_ms": 1683000,
+              "section_number": 36,
               "start_ms": 75285000,
               "title": "With Fisher at the Admiralty November and December, 1914"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_37_churchill_64kb.mp3",
               "length_ms": 2978000,
+              "section_number": 37,
               "start_ms": 76968000,
               "title": "The Bombardment of Scarborough and Hartlepool December 16, 1914"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_38_churchill_64kb.mp3",
               "length_ms": 2276000,
+              "section_number": 38,
               "start_ms": 79946000,
               "title": "Turkey and the Balkins"
             },
             {
               "audio_url": "https://www.archive.org/download/worldcrisisvol1_2503_librivox/worldcrisis1_39_churchill_64kb.mp3",
               "length_ms": 2190000,
+              "section_number": 39,
               "start_ms": 82222000,
               "title": "Turkey and the Balkans"
             }
@@ -8840,7 +8945,13 @@
           "cover_url": "https://archive.org/download/worldcrisisvol1_2503_librivox/world_crisis1_2504.jpg",
           "id": "ty-lasky",
           "language": "en",
+          "librivox_genres": [
+            "War & Military",
+            "Political Science",
+            "Modern (20th C)"
+          ],
           "librivox_id": 20874,
+          "librivox_title": "World Crisis, Volume 1",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-world-crisis-volume-1-by-winston-s-churchill/",

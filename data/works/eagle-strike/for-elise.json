@@ -1605,78 +1605,130 @@
             {
               "audio_url": "https://www.archive.org/download/musiclover_1302_librivox/foreverymusiclover_00_moore_64kb.mp3",
               "length_ms": 198000,
+              "readers": [
+                "patrick-wells"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 - Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/musiclover_1302_librivox/foreverymusiclover_01_moore_64kb.mp3",
               "length_ms": 1537000,
+              "readers": [
+                "edmund-bloxam"
+              ],
+              "section_number": 1,
               "start_ms": 198000,
               "title": "01 - The Origin and Function of Music"
             },
             {
               "audio_url": "https://www.archive.org/download/musiclover_1302_librivox/foreverymusiclover_02_moore_64kb.mp3",
               "length_ms": 1153000,
+              "readers": [
+                "edmund-bloxam"
+              ],
+              "section_number": 2,
               "start_ms": 1735000,
               "title": "02 - Blunders in Music Study"
             },
             {
               "audio_url": "https://www.archive.org/download/musiclover_1302_librivox/foreverymusiclover_03_moore_64kb.mp3",
               "length_ms": 735000,
+              "readers": [
+                "amywack"
+              ],
+              "section_number": 3,
               "start_ms": 2888000,
               "title": "03 - The Musical Education That Educates"
             },
             {
               "audio_url": "https://www.archive.org/download/musiclover_1302_librivox/foreverymusiclover_04_moore_64kb.mp3",
               "length_ms": 1179000,
+              "readers": [
+                "pamela-krantz"
+              ],
+              "section_number": 4,
               "start_ms": 3623000,
               "title": "04 - How to Interpret Music"
             },
             {
               "audio_url": "https://www.archive.org/download/musiclover_1302_librivox/foreverymusiclover_05_moore_64kb.mp3",
               "length_ms": 1148000,
+              "readers": [
+                "pamela-krantz"
+              ],
+              "section_number": 5,
               "start_ms": 4802000,
               "title": "05 - How to Listen to Music"
             },
             {
               "audio_url": "https://www.archive.org/download/musiclover_1302_librivox/foreverymusiclover_06_moore_64kb.mp3",
               "length_ms": 2287000,
+              "readers": [
+                "dasbury"
+              ],
+              "section_number": 6,
               "start_ms": 5950000,
               "title": "06 - The Piano and Piano Players"
             },
             {
               "audio_url": "https://www.archive.org/download/musiclover_1302_librivox/foreverymusiclover_07_moore_64kb.mp3",
               "length_ms": 1165000,
+              "readers": [
+                "dasbury"
+              ],
+              "section_number": 7,
               "start_ms": 8237000,
               "title": "07 - The Poetry and Leadership of Chopin"
             },
             {
               "audio_url": "https://www.archive.org/download/musiclover_1302_librivox/foreverymusiclover_08_moore_64kb.mp3",
               "length_ms": 2376000,
+              "readers": [
+                "anna-simon"
+              ],
+              "section_number": 8,
               "start_ms": 9402000,
               "title": "08 - Violins and Violinists—Fact and Fable"
             },
             {
               "audio_url": "https://www.archive.org/download/musiclover_1302_librivox/foreverymusiclover_09_moore_64kb.mp3",
               "length_ms": 2018000,
+              "readers": [
+                "debolee"
+              ],
+              "section_number": 9,
               "start_ms": 11778000,
               "title": "09 - Queens of Song"
             },
             {
               "audio_url": "https://www.archive.org/download/musiclover_1302_librivox/foreverymusiclover_10_moore_64kb.mp3",
               "length_ms": 1429000,
+              "readers": [
+                "debolee"
+              ],
+              "section_number": 10,
               "start_ms": 13796000,
               "title": "10 - The Opera and Its Reformers"
             },
             {
               "audio_url": "https://www.archive.org/download/musiclover_1302_librivox/foreverymusiclover_11_moore_64kb.mp3",
               "length_ms": 978000,
+              "readers": [
+                "charlotte-duckett"
+              ],
+              "section_number": 11,
               "start_ms": 15225000,
               "title": "11 - Certain Famous Oratorios"
             },
             {
               "audio_url": "https://www.archive.org/download/musiclover_1302_librivox/foreverymusiclover_12_moore_64kb.mp3",
               "length_ms": 956000,
+              "readers": [
+                "kristel-tretter"
+              ],
+              "section_number": 12,
               "start_ms": 16203000,
               "title": "12 - Symphony and Symphonic Poem"
             }
@@ -1685,7 +1737,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt29/for_every_musiclover_1302.jpg",
           "id": "patrick-wells",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Essays & Short Works",
+            "Music"
+          ],
           "librivox_id": 6448,
+          "librivox_title": "For Every Music Lover",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/for-every-music-lover-by-aubertine-woodward-moore/",
@@ -2428,9 +2486,20 @@
           ],
           "copyright_year": 1888,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt22/For_Fifteen_Years_1209.jpg",
+          "credits": [
+            {
+              "person": "elizabeth-wormeley-latimer",
+              "role": "translator"
+            }
+          ],
           "id": "deanna-bovee",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction",
+            "Detective Fiction"
+          ],
           "librivox_id": 6648,
+          "librivox_title": "For Fifteen Years",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/for-fifteen-years-by-louis-ulbach/",
@@ -3419,168 +3488,252 @@
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_01_corbett_64kb.mp3",
               "length_ms": 1270000,
+              "readers": [
+                "shreya-sethi"
+              ],
               "start_ms": 0,
               "title": "Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_02_corbett_64kb.mp3",
               "length_ms": 1516000,
+              "readers": [
+                "shreya-sethi"
+              ],
               "start_ms": 1270000,
               "title": "Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_03_corbett_64kb.mp3",
               "length_ms": 2578000,
+              "readers": [
+                "ares-sancho"
+              ],
               "start_ms": 2786000,
               "title": "Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_04_corbett_64kb.mp3",
               "length_ms": 1838000,
+              "readers": [
+                "shreya-sethi"
+              ],
               "start_ms": 5364000,
               "title": "Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_05_corbett_64kb.mp3",
               "length_ms": 1073000,
+              "readers": [
+                "shreya-sethi"
+              ],
               "start_ms": 7202000,
               "title": "Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_06_corbett_64kb.mp3",
               "length_ms": 1480000,
+              "readers": [
+                "shreya-sethi"
+              ],
               "start_ms": 8275000,
               "title": "Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_07_corbett_64kb.mp3",
               "length_ms": 1916000,
+              "readers": [
+                "ares-sancho"
+              ],
               "start_ms": 9755000,
               "title": "Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_08_corbett_64kb.mp3",
               "length_ms": 1558000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 11671000,
               "title": "Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_09_corbett_64kb.mp3",
               "length_ms": 3077000,
+              "readers": [
+                "ares-sancho"
+              ],
               "start_ms": 13229000,
               "title": "Chapter 9"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_10_corbett_64kb.mp3",
               "length_ms": 1528000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 16306000,
               "title": "Chapter 10"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_11_corbett_64kb.mp3",
               "length_ms": 2241000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 17834000,
               "title": "Chapter 11"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_12_corbett_64kb.mp3",
               "length_ms": 1094000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 20075000,
               "title": "Chapter 12"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_13_corbett_64kb.mp3",
               "length_ms": 1031000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 21169000,
               "title": "Chapter 13"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_14_corbett_64kb.mp3",
               "length_ms": 1766000,
+              "readers": [
+                "ares-sancho"
+              ],
               "start_ms": 22200000,
               "title": "Chapter 14"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_15_corbett_64kb.mp3",
               "length_ms": 1060000,
+              "readers": [
+                "williamdavis"
+              ],
               "start_ms": 23966000,
               "title": "Chapter 15"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_16_corbett_64kb.mp3",
               "length_ms": 1254000,
+              "readers": [
+                "williamdavis"
+              ],
               "start_ms": 25026000,
               "title": "Chapter 16"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_17_corbett_64kb.mp3",
               "length_ms": 1551000,
+              "readers": [
+                "desiree-u-angeles"
+              ],
               "start_ms": 26280000,
               "title": "Chapter 17"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_18_corbett_64kb.mp3",
               "length_ms": 2218000,
+              "readers": [
+                "michele-eaton"
+              ],
               "start_ms": 27831000,
               "title": "Chapter 18"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_19_corbett_64kb.mp3",
               "length_ms": 1618000,
+              "readers": [
+                "nathan-fry"
+              ],
               "start_ms": 30049000,
               "title": "Chapter 19"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_20_corbett_64kb.mp3",
               "length_ms": 2984000,
+              "readers": [
+                "ares-sancho"
+              ],
               "start_ms": 31667000,
               "title": "Chapter 20"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_21_corbett_64kb.mp3",
               "length_ms": 2422000,
+              "readers": [
+                "ares-sancho"
+              ],
               "start_ms": 34651000,
               "title": "Chapter 21"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_22_corbett_64kb.mp3",
               "length_ms": 1989000,
+              "readers": [
+                "ares-sancho"
+              ],
               "start_ms": 37073000,
               "title": "Chapter 22"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_23_corbett_64kb.mp3",
               "length_ms": 2048000,
+              "readers": [
+                "ares-sancho"
+              ],
               "start_ms": 39062000,
               "title": "Chapter 23"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_24_corbett_64kb.mp3",
               "length_ms": 2180000,
+              "readers": [
+                "ares-sancho"
+              ],
               "start_ms": 41110000,
               "title": "Chapter 24"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_25_corbett_64kb.mp3",
               "length_ms": 1297000,
+              "readers": [
+                "aditya-p"
+              ],
               "start_ms": 43290000,
               "title": "Chapter 25"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_26_corbett_64kb.mp3",
               "length_ms": 1368000,
+              "readers": [
+                "ares-sancho"
+              ],
               "start_ms": 44587000,
               "title": "Chapter 26"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_27_corbett_64kb.mp3",
               "length_ms": 1774000,
+              "readers": [
+                "ares-sancho"
+              ],
               "start_ms": 45955000,
               "title": "Chapter 27"
             },
             {
               "audio_url": "https://www.archive.org/download/forgodandgold_2103_librivox/forgodandgold_28_corbett_64kb.mp3",
               "length_ms": 1899000,
+              "readers": [
+                "ares-sancho"
+              ],
               "start_ms": 47729000,
               "title": "Chapter 28"
             }
@@ -3589,7 +3742,11 @@
           "cover_url": "https://archive.org/download/forgodandgold_2103_librivox/god_gold_2103.jpg",
           "id": "shreya-sethi",
           "language": "en",
+          "librivox_genres": [
+            "Historical Fiction"
+          ],
           "librivox_id": 15267,
+          "librivox_title": "For God And Gold",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/for-god-and-gold-by-julian-corbett/",
@@ -3855,96 +4012,112 @@
             {
               "audio_url": "https://www.archive.org/download/forgreaterthingsthestoryofsaintstanislauskostka_1311_librivox/for_greater_things_the_story_of_saint_stanislaus_kostka_00_kane_64kb.mp3",
               "length_ms": 675000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "PREFACE"
             },
             {
               "audio_url": "https://www.archive.org/download/forgreaterthingsthestoryofsaintstanislauskostka_1311_librivox/for_greater_things_the_story_of_saint_stanislaus_kostka_01_kane_64kb.mp3",
               "length_ms": 604000,
+              "section_number": 1,
               "start_ms": 675000,
               "title": "CHAPTER I ON THE ROAD"
             },
             {
               "audio_url": "https://www.archive.org/download/forgreaterthingsthestoryofsaintstanislauskostka_1311_librivox/for_greater_things_the_story_of_saint_stanislaus_kostka_02_kane_64kb.mp3",
               "length_ms": 585000,
+              "section_number": 2,
               "start_ms": 1279000,
               "title": "CHAPTER II  THE PURSUIT"
             },
             {
               "audio_url": "https://www.archive.org/download/forgreaterthingsthestoryofsaintstanislauskostka_1311_librivox/for_greater_things_the_story_of_saint_stanislaus_kostka_03_kane_64kb.mp3",
               "length_ms": 564000,
+              "section_number": 3,
               "start_ms": 1864000,
               "title": "CHAPTER III  EARLY DAYS"
             },
             {
               "audio_url": "https://www.archive.org/download/forgreaterthingsthestoryofsaintstanislauskostka_1311_librivox/for_greater_things_the_story_of_saint_stanislaus_kostka_04_kane_64kb.mp3",
               "length_ms": 416000,
+              "section_number": 4,
               "start_ms": 2428000,
               "title": "CHAPTER IV  OFF TO VIENNA"
             },
             {
               "audio_url": "https://www.archive.org/download/forgreaterthingsthestoryofsaintstanislauskostka_1311_librivox/for_greater_things_the_story_of_saint_stanislaus_kostka_05_kane_64kb.mp3",
               "length_ms": 573000,
+              "section_number": 5,
               "start_ms": 2844000,
               "title": "CHAPTER V  SCHOOL DAYS"
             },
             {
               "audio_url": "https://www.archive.org/download/forgreaterthingsthestoryofsaintstanislauskostka_1311_librivox/for_greater_things_the_story_of_saint_stanislaus_kostka_06_kane_64kb.mp3",
               "length_ms": 506000,
+              "section_number": 6,
               "start_ms": 3417000,
               "title": "CHAPTER VI  IN THE HOUSE OF KIMBERKER"
             },
             {
               "audio_url": "https://www.archive.org/download/forgreaterthingsthestoryofsaintstanislauskostka_1311_librivox/for_greater_things_the_story_of_saint_stanislaus_kostka_07_kane_64kb.mp3",
               "length_ms": 606000,
+              "section_number": 7,
               "start_ms": 3923000,
               "title": "CHAPTER VII  THE TEST OF COURAGE"
             },
             {
               "audio_url": "https://www.archive.org/download/forgreaterthingsthestoryofsaintstanislauskostka_1311_librivox/for_greater_things_the_story_of_saint_stanislaus_kostka_08_kane_64kb.mp3",
               "length_ms": 618000,
+              "section_number": 8,
               "start_ms": 4529000,
               "title": "CHAPTER VIII  IN DANGER OF DEATH"
             },
             {
               "audio_url": "https://www.archive.org/download/forgreaterthingsthestoryofsaintstanislauskostka_1311_librivox/for_greater_things_the_story_of_saint_stanislaus_kostka_09_kane_64kb.mp3",
               "length_ms": 491000,
+              "section_number": 9,
               "start_ms": 5147000,
               "title": "CHAPTER IX  VOCATION"
             },
             {
               "audio_url": "https://www.archive.org/download/forgreaterthingsthestoryofsaintstanislauskostka_1311_librivox/for_greater_things_the_story_of_saint_stanislaus_kostka_10_kane_64kb.mp3",
               "length_ms": 454000,
+              "section_number": 10,
               "start_ms": 5638000,
               "title": "CHAPTER X  THE RUNAWAY"
             },
             {
               "audio_url": "https://www.archive.org/download/forgreaterthingsthestoryofsaintstanislauskostka_1311_librivox/for_greater_things_the_story_of_saint_stanislaus_kostka_11_kane_64kb.mp3",
               "length_ms": 577000,
+              "section_number": 11,
               "start_ms": 6092000,
               "title": "CHAPTER XI  AT DILLINGEN"
             },
             {
               "audio_url": "https://www.archive.org/download/forgreaterthingsthestoryofsaintstanislauskostka_1311_librivox/for_greater_things_the_story_of_saint_stanislaus_kostka_12_kane_64kb.mp3",
               "length_ms": 499000,
+              "section_number": 12,
               "start_ms": 6669000,
               "title": "CHAPTER XII  THE ROAD TO ROME"
             },
             {
               "audio_url": "https://www.archive.org/download/forgreaterthingsthestoryofsaintstanislauskostka_1311_librivox/for_greater_things_the_story_of_saint_stanislaus_kostka_13_kane_64kb.mp3",
               "length_ms": 602000,
+              "section_number": 13,
               "start_ms": 7168000,
               "title": "CHAPTER XIII  THE NOVICESHIP"
             },
             {
               "audio_url": "https://www.archive.org/download/forgreaterthingsthestoryofsaintstanislauskostka_1311_librivox/for_greater_things_the_story_of_saint_stanislaus_kostka_14_kane_64kb.mp3",
               "length_ms": 552000,
+              "section_number": 14,
               "start_ms": 7770000,
               "title": "CHAPTER XIV  GOING HOME"
             },
             {
               "audio_url": "https://www.archive.org/download/forgreaterthingsthestoryofsaintstanislauskostka_1311_librivox/for_greater_things_the_story_of_saint_stanislaus_kostka_15_kane_64kb.mp3",
               "length_ms": 629000,
+              "section_number": 15,
               "start_ms": 8322000,
               "title": "CHAPTER XV  AFTERMATH"
             }
@@ -3953,7 +4126,12 @@
           "cover_url": "https://archive.org/download/forgreaterthingsthestoryofsaintstanislauskostka_1311_librivox/for_greater_things_1311.jpg",
           "id": "maria-kasper",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "Christianity - Biographies"
+          ],
           "librivox_id": 8218,
+          "librivox_title": "For Greater Things: The Story of Saint Stanislaus Kostka",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/for-greater-things-the-story-of-saint-stanislaus-kostka-by-william-t-kane/",
@@ -4245,210 +4423,245 @@
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_00_brennan_64kb.mp3",
               "length_ms": 118000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 - Why This Book?"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_01_brennan_64kb.mp3",
               "length_ms": 347000,
+              "section_number": 1,
               "start_ms": 118000,
               "title": "01 - God' Secret"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_02_brennan_64kb.mp3",
               "length_ms": 261000,
+              "section_number": 2,
               "start_ms": 465000,
               "title": "02 - The Voice at the Window"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_03_brennan_64kb.mp3",
               "length_ms": 356000,
+              "section_number": 3,
               "start_ms": 726000,
               "title": "03 - The Three Frogs"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_04_brennan_64kb.mp3",
               "length_ms": 289000,
+              "section_number": 4,
               "start_ms": 1082000,
               "title": "04 - \"A Little Child Shall Lead...\""
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_05_brennan_64kb.mp3",
               "length_ms": 294000,
+              "section_number": 5,
               "start_ms": 1371000,
               "title": "05 - The Devil With the Long Tail"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_06_brennan_64kb.mp3",
               "length_ms": 253000,
+              "section_number": 6,
               "start_ms": 1665000,
               "title": "06 - The Last Flight"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_07_brennan_64kb.mp3",
               "length_ms": 242000,
+              "section_number": 7,
               "start_ms": 1918000,
               "title": "07 - The World's Best Flag"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_08_brennan_64kb.mp3",
               "length_ms": 355000,
+              "section_number": 8,
               "start_ms": 2160000,
               "title": "08 - Peter, the Soldier"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_09_brennan_64kb.mp3",
               "length_ms": 231000,
+              "section_number": 9,
               "start_ms": 2515000,
               "title": "09 - The Soldier's Greeting"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_10_brennan_64kb.mp3",
               "length_ms": 343000,
+              "section_number": 10,
               "start_ms": 2746000,
               "title": "10 - The Most Beautiful Picture in the World"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_11_brennan_64kb.mp3",
               "length_ms": 240000,
+              "section_number": 11,
               "start_ms": 3089000,
               "title": "11 - Five Precious Diamonds"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_12_brennan_64kb.mp3",
               "length_ms": 347000,
+              "section_number": 12,
               "start_ms": 3329000,
               "title": "12 - White Cloud"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_13_brennan_64kb.mp3",
               "length_ms": 266000,
+              "section_number": 13,
               "start_ms": 3676000,
               "title": "13 - A Boy's Letter"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_14_brennan_64kb.mp3",
               "length_ms": 303000,
+              "section_number": 14,
               "start_ms": 3942000,
               "title": "14 - Saint Peter Goes Shopping"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_15_brennan_64kb.mp3",
               "length_ms": 361000,
+              "section_number": 15,
               "start_ms": 4245000,
               "title": "15 - The Open Door"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_16_brennan_64kb.mp3",
               "length_ms": 271000,
+              "section_number": 16,
               "start_ms": 4606000,
               "title": "16 - Joseph and Nicodemus"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_17_brennan_64kb.mp3",
               "length_ms": 307000,
+              "section_number": 17,
               "start_ms": 4877000,
               "title": "17 - The Golden Key"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_18_brennan_64kb.mp3",
               "length_ms": 288000,
+              "section_number": 18,
               "start_ms": 5184000,
               "title": "18 - The Friendly King"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_19_brennan_64kb.mp3",
               "length_ms": 242000,
+              "section_number": 19,
               "start_ms": 5472000,
               "title": "19 - Jesus' Workshop"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_20_brennan_64kb.mp3",
               "length_ms": 299000,
+              "section_number": 20,
               "start_ms": 5714000,
               "title": "20 - The Priest of Times Square"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_21_brennan_64kb.mp3",
               "length_ms": 320000,
+              "section_number": 21,
               "start_ms": 6013000,
               "title": "21 - The First Flower"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_22_brennan_64kb.mp3",
               "length_ms": 242000,
+              "section_number": 22,
               "start_ms": 6333000,
               "title": "22 - Aberdeen Angus"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_23_brennan_64kb.mp3",
               "length_ms": 255000,
+              "section_number": 23,
               "start_ms": 6575000,
               "title": "23 - The Chicken and the Sparrow"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_24_brennan_64kb.mp3",
               "length_ms": 194000,
+              "section_number": 24,
               "start_ms": 6830000,
               "title": "24 - God's Answer"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_25_brennan_64kb.mp3",
               "length_ms": 274000,
+              "section_number": 25,
               "start_ms": 7024000,
               "title": "25 - The Two Tears"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_26_brennan_64kb.mp3",
               "length_ms": 273000,
+              "section_number": 26,
               "start_ms": 7298000,
               "title": "26 - Sparky and Rex"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_27_brennan_64kb.mp3",
               "length_ms": 301000,
+              "section_number": 27,
               "start_ms": 7571000,
               "title": "27 - Double or Nothing"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_28_brennan_64kb.mp3",
               "length_ms": 246000,
+              "section_number": 28,
               "start_ms": 7872000,
               "title": "28 - The King With the Black Heart"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_29_brennan_64kb.mp3",
               "length_ms": 334000,
+              "section_number": 29,
               "start_ms": 8118000,
               "title": "29 - The Best and the Worst"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_30_brennan_64kb.mp3",
               "length_ms": 218000,
+              "section_number": 30,
               "start_ms": 8452000,
               "title": "30 - The Steaming Kettle"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_31_brennan_64kb.mp3",
               "length_ms": 296000,
+              "section_number": 31,
               "start_ms": 8670000,
               "title": "31 - The King and His Box of Gold"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_32_brennan_64kb.mp3",
               "length_ms": 354000,
+              "section_number": 32,
               "start_ms": 8966000,
               "title": "32 - Gabriel and the Cripples"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_33_brennan_64kb.mp3",
               "length_ms": 281000,
+              "section_number": 33,
               "start_ms": 9320000,
               "title": "33 - The Angel With the Horn"
             },
             {
               "audio_url": "https://www.archive.org/download/forheavenssake_mt_librivox/forheavenssake_34_brennan_64kb.mp3",
               "length_ms": 287000,
+              "section_number": 34,
               "start_ms": 9601000,
               "title": "34 - The Grave Stops Perot"
             }
@@ -4457,7 +4670,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt15/heavens_sake_1203.jpg",
           "id": "maria-therese",
           "language": "en",
+          "librivox_genres": [
+            "Religion"
+          ],
           "librivox_id": 5644,
+          "librivox_title": "For Heaven's Sake: Little Talks to Little Folks",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/for-heavens-sake-little-talks-to-little-folks-by-rev-gerald-t-brennan/",
@@ -9384,132 +9601,198 @@
             {
               "audio_url": "https://www.archive.org/download/love_and_life_1_2201_librivox/loveandlife1_01_oliphant_64kb.mp3",
               "length_ms": 1327000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 0,
               "title": "On the Shores of Loch Arroch"
             },
             {
               "audio_url": "https://www.archive.org/download/love_and_life_1_2201_librivox/loveandlife1_02_oliphant_64kb.mp3",
               "length_ms": 1491000,
+              "readers": [
+                "matea-bracic"
+              ],
               "start_ms": 1327000,
               "title": "Edgar"
             },
             {
               "audio_url": "https://www.archive.org/download/love_and_life_1_2201_librivox/loveandlife1_03_oliphant_64kb.mp3",
               "length_ms": 1365000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 2818000,
               "title": "Jeanie"
             },
             {
               "audio_url": "https://www.archive.org/download/love_and_life_1_2201_librivox/loveandlife1_04_oliphant_64kb.mp3",
               "length_ms": 1260000,
+              "readers": [
+                "tr-love"
+              ],
               "start_ms": 4183000,
               "title": "A Family Consultation"
             },
             {
               "audio_url": "https://www.archive.org/download/love_and_life_1_2201_librivox/loveandlife1_05_oliphant_64kb.mp3",
               "length_ms": 1605000,
+              "readers": [
+                "justin-hew"
+              ],
               "start_ms": 5443000,
               "title": "The Family Martyr"
             },
             {
               "audio_url": "https://www.archive.org/download/love_and_life_1_2201_librivox/loveandlife1_06_oliphant_64kb.mp3",
               "length_ms": 1359000,
+              "readers": [
+                "ryan-williams"
+              ],
               "start_ms": 7048000,
               "title": "A Party in a Parlour"
             },
             {
               "audio_url": "https://www.archive.org/download/love_and_life_1_2201_librivox/loveandlife1_07_oliphant_64kb.mp3",
               "length_ms": 1150000,
+              "readers": [
+                "madcappe"
+              ],
               "start_ms": 8407000,
               "title": "Gentility"
             },
             {
               "audio_url": "https://www.archive.org/download/love_and_life_1_2201_librivox/loveandlife1_08_oliphant_64kb.mp3",
               "length_ms": 1394000,
+              "readers": [
+                "davidholmesvoice"
+              ],
               "start_ms": 9557000,
               "title": "A Railway Journey: The Scotch Express"
             },
             {
               "audio_url": "https://www.archive.org/download/love_and_life_1_2201_librivox/loveandlife1_09_oliphant_64kb.mp3",
               "length_ms": 1305000,
+              "readers": [
+                "torre435"
+              ],
               "start_ms": 10951000,
               "title": "Alone"
             },
             {
               "audio_url": "https://www.archive.org/download/love_and_life_1_2201_librivox/loveandlife1_10_oliphant_64kb.mp3",
               "length_ms": 1221000,
+              "readers": [
+                "madcappe"
+              ],
               "start_ms": 12256000,
               "title": "A Noble Patron"
             },
             {
               "audio_url": "https://www.archive.org/download/love_and_life_1_2201_librivox/loveandlife1_11_oliphant_64kb.mp3",
               "length_ms": 1164000,
+              "readers": [
+                "madcappe"
+              ],
               "start_ms": 13477000,
               "title": "Waiting for a Situation"
             },
             {
               "audio_url": "https://www.archive.org/download/love_and_life_1_2201_librivox/loveandlife1_12_oliphant_64kb.mp3",
               "length_ms": 1085000,
+              "readers": [
+                "madcappe"
+              ],
               "start_ms": 14641000,
               "title": "Disappointment"
             },
             {
               "audio_url": "https://www.archive.org/download/love_and_life_1_2201_librivox/loveandlife1_13_oliphant_64kb.mp3",
               "length_ms": 1304000,
+              "readers": [
+                "madcappe"
+              ],
               "start_ms": 15726000,
               "title": "A new Friend"
             },
             {
               "audio_url": "https://www.archive.org/download/love_and_life_1_2201_librivox/loveandlife1_14_oliphant_64kb.mp3",
               "length_ms": 1182000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 17030000,
               "title": "The Enchanted Palace"
             },
             {
               "audio_url": "https://www.archive.org/download/love_and_life_1_2201_librivox/loveandlife1_15_oliphant_64kb.mp3",
               "length_ms": 1743000,
+              "readers": [
+                "davidholmesvoice"
+              ],
               "start_ms": 18212000,
               "title": "Reality"
             },
             {
               "audio_url": "https://www.archive.org/download/love_and_life_1_2201_librivox/loveandlife1_16_oliphant_64kb.mp3",
               "length_ms": 1228000,
+              "readers": [
+                "davidholmesvoice"
+              ],
               "start_ms": 19955000,
               "title": "A Pair of Philanthropists"
             },
             {
               "audio_url": "https://www.archive.org/download/love_and_life_1_2201_librivox/loveandlife1_17_oliphant_64kb.mp3",
               "length_ms": 1420000,
+              "readers": [
+                "littlemissclumsy"
+              ],
               "start_ms": 21183000,
               "title": "The Shop"
             },
             {
               "audio_url": "https://www.archive.org/download/love_and_life_1_2201_librivox/loveandlife1_18_oliphant_64kb.mp3",
               "length_ms": 1562000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 22603000,
               "title": "Two Culprits on their Trial"
             },
             {
               "audio_url": "https://www.archive.org/download/love_and_life_1_2201_librivox/loveandlife1_19_oliphant_64kb.mp3",
               "length_ms": 1277000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 24165000,
               "title": "Schemes and Speculations"
             },
             {
               "audio_url": "https://www.archive.org/download/love_and_life_1_2201_librivox/loveandlife1_20_oliphant_64kb.mp3",
               "length_ms": 1124000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 25442000,
               "title": "The Village"
             },
             {
               "audio_url": "https://www.archive.org/download/love_and_life_1_2201_librivox/loveandlife1_21_oliphant_64kb.mp3",
               "length_ms": 1369000,
+              "readers": [
+                "davidholmesvoice"
+              ],
               "start_ms": 26566000,
               "title": "Wisdom and Foolishness"
             },
             {
               "audio_url": "https://www.archive.org/download/love_and_life_1_2201_librivox/loveandlife1_22_oliphant_64kb.mp3",
               "length_ms": 1650000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 27935000,
               "title": "The Opposite Camp"
             }
@@ -9518,7 +9801,11 @@
           "cover_url": "https://archive.org/download/love_and_life_1_2201_librivox/love_life_2201.jpg",
           "id": "jim-locke",
           "language": "en",
+          "librivox_genres": [
+            "Published 1800 -1900"
+          ],
           "librivox_id": 16987,
+          "librivox_title": "For Love and Life Vol. 1",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/for-love-and-life-vol-1-by-margaret-o-oliphant/",
@@ -9577,138 +9864,207 @@
             {
               "audio_url": "https://www.archive.org/download/for_love_and_life_ii_2211_librivox/forloveandlife2_01_oliphant_64kb.mp3",
               "length_ms": 1529000,
+              "readers": [
+                "davidholmesvoice"
+              ],
               "start_ms": 0,
               "title": "Intoxication"
             },
             {
               "audio_url": "https://www.archive.org/download/for_love_and_life_ii_2211_librivox/forloveandlife2_02_oliphant_64kb.mp3",
               "length_ms": 1229000,
+              "readers": [
+                "christine-rottger"
+              ],
               "start_ms": 1529000,
               "title": "A youthful Solomon"
             },
             {
               "audio_url": "https://www.archive.org/download/for_love_and_life_ii_2211_librivox/forloveandlife2_03_oliphant_64kb.mp3",
               "length_ms": 1102000,
+              "readers": [
+                "allyson"
+              ],
               "start_ms": 2758000,
               "title": "Harry"
             },
             {
               "audio_url": "https://www.archive.org/download/for_love_and_life_ii_2211_librivox/forloveandlife2_04_oliphant_64kb.mp3",
               "length_ms": 1308000,
+              "readers": [
+                "winnifred-assmann"
+              ],
               "start_ms": 3860000,
               "title": "The Education of Women"
             },
             {
               "audio_url": "https://www.archive.org/download/for_love_and_life_ii_2211_librivox/forloveandlife2_05_oliphant_64kb.mp3",
               "length_ms": 1041000,
+              "readers": [
+                "allyson"
+              ],
               "start_ms": 5168000,
               "title": "Mrs. Smith"
             },
             {
               "audio_url": "https://www.archive.org/download/for_love_and_life_ii_2211_librivox/forloveandlife2_06_oliphant_64kb.mp3",
               "length_ms": 1273000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 6209000,
               "title": "In Love"
             },
             {
               "audio_url": "https://www.archive.org/download/for_love_and_life_ii_2211_librivox/forloveandlife2_07_oliphant_64kb.mp3",
               "length_ms": 1121000,
+              "readers": [
+                "yoganandh-t"
+              ],
               "start_ms": 7482000,
               "title": "No Encouragement"
             },
             {
               "audio_url": "https://www.archive.org/download/for_love_and_life_ii_2211_librivox/forloveandlife2_08_oliphant_64kb.mp3",
               "length_ms": 1174000,
+              "readers": [
+                "yoganandh-t"
+              ],
               "start_ms": 8603000,
               "title": "The Entertainment at the Shop"
             },
             {
               "audio_url": "https://www.archive.org/download/for_love_and_life_ii_2211_librivox/forloveandlife2_09_oliphant_64kb.mp3",
               "length_ms": 1782000,
+              "readers": [
+                "dawn-sutton"
+              ],
               "start_ms": 9777000,
               "title": "Miss Lockwood’s Story"
             },
             {
               "audio_url": "https://www.archive.org/download/for_love_and_life_ii_2211_librivox/forloveandlife2_10_oliphant_64kb.mp3",
               "length_ms": 1154000,
+              "readers": [
+                "allyson"
+              ],
               "start_ms": 11559000,
               "title": "A Plunge into the Maze"
             },
             {
               "audio_url": "https://www.archive.org/download/for_love_and_life_ii_2211_librivox/forloveandlife2_11_oliphant_64kb.mp3",
               "length_ms": 993000,
+              "readers": [
+                "allyson"
+              ],
               "start_ms": 12713000,
               "title": "In the Depths"
             },
             {
               "audio_url": "https://www.archive.org/download/for_love_and_life_ii_2211_librivox/forloveandlife2_12_oliphant_64kb.mp3",
               "length_ms": 1001000,
+              "readers": [
+                "allyson"
+              ],
               "start_ms": 13706000,
               "title": "A New Event"
             },
             {
               "audio_url": "https://www.archive.org/download/for_love_and_life_ii_2211_librivox/forloveandlife2_13_oliphant_64kb.mp3",
               "length_ms": 1013000,
+              "readers": [
+                "allyson"
+              ],
               "start_ms": 14707000,
               "title": "Berkeley Square"
             },
             {
               "audio_url": "https://www.archive.org/download/for_love_and_life_ii_2211_librivox/forloveandlife2_14_oliphant_64kb.mp3",
               "length_ms": 1176000,
+              "readers": [
+                "kimberlyb"
+              ],
               "start_ms": 15720000,
               "title": "A Suggestion"
             },
             {
               "audio_url": "https://www.archive.org/download/for_love_and_life_ii_2211_librivox/forloveandlife2_15_oliphant_64kb.mp3",
               "length_ms": 1111000,
+              "readers": [
+                "allyson"
+              ],
               "start_ms": 16896000,
               "title": "The Ardens"
             },
             {
               "audio_url": "https://www.archive.org/download/for_love_and_life_ii_2211_librivox/forloveandlife2_16_oliphant_64kb.mp3",
               "length_ms": 1204000,
+              "readers": [
+                "kimberlyb"
+              ],
               "start_ms": 18007000,
               "title": "The Old Home"
             },
             {
               "audio_url": "https://www.archive.org/download/for_love_and_life_ii_2211_librivox/forloveandlife2_17_oliphant_64kb.mp3",
               "length_ms": 1211000,
+              "readers": [
+                "allyson"
+              ],
               "start_ms": 19211000,
               "title": "Harry’s Turn"
             },
             {
               "audio_url": "https://www.archive.org/download/for_love_and_life_ii_2211_librivox/forloveandlife2_18_oliphant_64kb.mp3",
               "length_ms": 1264000,
+              "readers": [
+                "nancy-gorgen"
+              ],
               "start_ms": 20422000,
               "title": "Other People’s Affairs"
             },
             {
               "audio_url": "https://www.archive.org/download/for_love_and_life_ii_2211_librivox/forloveandlife2_19_oliphant_64kb.mp3",
               "length_ms": 1256000,
+              "readers": [
+                "nancy-gorgen"
+              ],
               "start_ms": 21686000,
               "title": "Margaret"
             },
             {
               "audio_url": "https://www.archive.org/download/for_love_and_life_ii_2211_librivox/forloveandlife2_20_oliphant_64kb.mp3",
               "length_ms": 1076000,
+              "readers": [
+                "allyson"
+              ],
               "start_ms": 22942000,
               "title": "Loch Arroch once more"
             },
             {
               "audio_url": "https://www.archive.org/download/for_love_and_life_ii_2211_librivox/forloveandlife2_21_oliphant_64kb.mp3",
               "length_ms": 1259000,
+              "readers": [
+                "kimberlyb"
+              ],
               "start_ms": 24018000,
               "title": "The End of a Drama"
             },
             {
               "audio_url": "https://www.archive.org/download/for_love_and_life_ii_2211_librivox/forloveandlife2_22_oliphant_64kb.mp3",
               "length_ms": 992000,
+              "readers": [
+                "allyson"
+              ],
               "start_ms": 25277000,
               "title": "Another Winding-up"
             },
             {
               "audio_url": "https://www.archive.org/download/for_love_and_life_ii_2211_librivox/forloveandlife2_23_oliphant_64kb.mp3",
               "length_ms": 861000,
+              "readers": [
+                "allyson"
+              ],
               "start_ms": 26269000,
               "title": "H.B.M.’s Consul.—Conclusion"
             }
@@ -9717,7 +10073,11 @@
           "cover_url": "https://archive.org/download/for_love_and_life_ii_2211_librivox/love_life2_2211.jpg",
           "id": "davidholmesvoice",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction"
+          ],
           "librivox_id": 17487,
+          "librivox_title": "For Love and Life Vol. II",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/for-love-and-life-vol-ii-by-margaret-o-oliphant/",

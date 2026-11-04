@@ -516,7 +516,12 @@
           "cover_url": "https://archive.org/download/dan_the_newsboy_2212_librivox/danthenewsboy_2212.jpg",
           "id": "dalebarkley",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Action & Adventure"
+          ],
           "librivox_id": 18283,
+          "librivox_title": "Dan, the Newsboy",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/dan-the-newsboy-by-horatio-alger-jr/",
@@ -4500,33 +4505,58 @@
             {
               "audio_url": "https://www.archive.org/download/danceofdeath_1307_librivox/danceofdeath_1_strindberg_64kb.mp3",
               "length_ms": 3558000,
+              "readers": [
+                "elizabeth-klett",
+                "mb",
+                "arielle-lipshaw",
+                "bruce-pirie",
+                "bev-j-stevens",
+                "bob-neufeld",
+                "availle",
+                "victoria-p",
+                "sdaeley17"
+              ],
+              "section_number": 10,
               "start_ms": 0,
               "title": "Part 1, Scene 1"
             },
             {
               "audio_url": "https://www.archive.org/download/danceofdeath_1307_librivox/danceofdeath_2_strindberg_64kb.mp3",
               "length_ms": 3582000,
+              "section_number": 11,
               "start_ms": 3558000,
               "title": "Part 1, Scenes 2-4"
             },
             {
               "audio_url": "https://www.archive.org/download/danceofdeath_1307_librivox/danceofdeath_3_strindberg_64kb.mp3",
               "length_ms": 1923000,
+              "section_number": 12,
               "start_ms": 7140000,
               "title": "Part 2, Scene 1"
             },
             {
               "audio_url": "https://www.archive.org/download/danceofdeath_1307_librivox/danceofdeath_4_strindberg_64kb.mp3",
               "length_ms": 2719000,
+              "section_number": 13,
               "start_ms": 9063000,
               "title": "Part 2, Scenes 2 & 3"
             }
           ],
           "copyright_year": 1900,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt32/Dance_of_Death_1307.jpg",
+          "credits": [
+            {
+              "person": "edwin-bjorkman",
+              "role": "translator"
+            }
+          ],
           "id": "elizabeth-klett",
           "language": "en",
+          "librivox_genres": [
+            "Plays"
+          ],
           "librivox_id": 7936,
+          "librivox_title": "Dance of Death",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-dance-of-death-by-august-strindberg/",

@@ -7566,7 +7566,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt16/Tramp_Abroad_1205.jpg",
           "id": "john-greenman",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Humorous Fiction"
+          ],
           "librivox_id": 2871,
+          "librivox_title": "Tramp Abroad",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-tramp-abroad-by-mark-twain/",
@@ -7617,36 +7622,54 @@
             {
               "audio_url": "https://www.archive.org/download/tramp_and_fish_1508.poem_librivox/trampandfish_mcintyre_dl_64kb.mp3",
               "length_ms": 85000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 0,
               "title": "Tramp and Fish - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/tramp_and_fish_1508.poem_librivox/trampandfish_mcintyre_el_64kb.mp3",
               "length_ms": 88000,
+              "readers": [
+                "newgatenovelist"
+              ],
               "start_ms": 85000,
               "title": "Tramp and Fish - Read by EL"
             },
             {
               "audio_url": "https://www.archive.org/download/tramp_and_fish_1508.poem_librivox/trampandfish_mcintyre_gg_64kb.mp3",
               "length_ms": 104000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 173000,
               "title": "Tramp and Fish - Read by GG"
             },
             {
               "audio_url": "https://www.archive.org/download/tramp_and_fish_1508.poem_librivox/trampandfish_mcintyre_jm_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "j-mcdougall"
+              ],
               "start_ms": 277000,
               "title": "Tramp and Fish - Read by JM"
             },
             {
               "audio_url": "https://www.archive.org/download/tramp_and_fish_1508.poem_librivox/trampandfish_mcintyre_lah_64kb.mp3",
               "length_ms": 92000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 359000,
               "title": "Tramp and Fish - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/tramp_and_fish_1508.poem_librivox/trampandfish_mcintyre_lcw_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 451000,
               "title": "Tramp and Fish - Read by LCW"
             }
@@ -7654,7 +7677,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt24/Tramp_Fish_1508.jpg",
           "id": "david-lawrence",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 10185,
+          "librivox_title": "Tramp and Fish",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/tramp-and-fish-by-james-mcintyre/",

@@ -6737,90 +6737,135 @@
             {
               "audio_url": "https://www.archive.org/download/kashmiri_song_1508.poem_librivox/kashmirisong_hope_ak_64kb.mp3",
               "length_ms": 59000,
+              "readers": [
+                "ashley"
+              ],
               "start_ms": 0,
               "title": "Kashmiri Song - Read by AK"
             },
             {
               "audio_url": "https://www.archive.org/download/kashmiri_song_1508.poem_librivox/kashmirisong_hope_bk_64kb.mp3",
               "length_ms": 83000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 59000,
               "title": "Kashmiri Song - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/kashmiri_song_1508.poem_librivox/kashmirisong_hope_dl_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 142000,
               "title": "Kashmiri Song - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/kashmiri_song_1508.poem_librivox/kashmirisong_hope_el_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "newgatenovelist"
+              ],
               "start_ms": 208000,
               "title": "Kashmiri Song - Read by EL"
             },
             {
               "audio_url": "https://www.archive.org/download/kashmiri_song_1508.poem_librivox/kashmirisong_hope_ezwa_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "ezwa"
+              ],
               "start_ms": 283000,
               "title": "Kashmiri Song - Read by EZWA"
             },
             {
               "audio_url": "https://www.archive.org/download/kashmiri_song_1508.poem_librivox/kashmirisong_hope_gg_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 354000,
               "title": "Kashmiri Song - Read by GG"
             },
             {
               "audio_url": "https://www.archive.org/download/kashmiri_song_1508.poem_librivox/kashmirisong_hope_ik_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "ian-king"
+              ],
               "start_ms": 434000,
               "title": "Kashmiri Song - Read by IK"
             },
             {
               "audio_url": "https://www.archive.org/download/kashmiri_song_1508.poem_librivox/kashmirisong_hope_lah_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 500000,
               "title": "Kashmiri Song - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/kashmiri_song_1508.poem_librivox/kashmirisong_hope_llw_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 566000,
               "title": "Kashmiri Song - Read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/kashmiri_song_1508.poem_librivox/kashmirisong_hope_mk_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "maria-kasper"
+              ],
               "start_ms": 643000,
               "title": "Kashmiri Song - Read by MK"
             },
             {
               "audio_url": "https://www.archive.org/download/kashmiri_song_1508.poem_librivox/kashmirisong_hope_nb_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "noelbadrian"
+              ],
               "start_ms": 721000,
               "title": "Kashmiri Song - Read by NB"
             },
             {
               "audio_url": "https://www.archive.org/download/kashmiri_song_1508.poem_librivox/kashmirisong_hope_nt_64kb.mp3",
               "length_ms": 61000,
+              "readers": [
+                "nickt"
+              ],
               "start_ms": 791000,
               "title": "Kashmiri Song - Read by NT"
             },
             {
               "audio_url": "https://www.archive.org/download/kashmiri_song_1508.poem_librivox/kashmirisong_hope_py_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 852000,
               "title": "Kashmiri Song - Read by PY"
             },
             {
               "audio_url": "https://www.archive.org/download/kashmiri_song_1508.poem_librivox/kashmirisong_hope_rc_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
               "start_ms": 926000,
               "title": "Kashmiri Song - Read by RC"
             },
             {
               "audio_url": "https://www.archive.org/download/kashmiri_song_1508.poem_librivox/kashmirisong_hope_sabt_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "skyalbatross"
+              ],
               "start_ms": 1000000,
               "title": "Kashmiri Song - Read by SABT"
             }
@@ -6829,7 +6874,11 @@
           "cover_url": "https://archive.org/download/kashmiri_song_1508.poem_librivox/kashmirisong_1508.jpg",
           "id": "ashley",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 10122,
+          "librivox_title": "Kashmiri Song",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/kashmiri-song-by-laurence-hope/",
@@ -6920,9 +6969,21 @@
           ],
           "copyright_year": 1887,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt32/kashtanka_1306.jpg",
+          "credits": [
+            {
+              "person": "constance-garnett",
+              "role": "translator"
+            }
+          ],
           "id": "grant-hurlock",
           "language": "en",
+          "librivox_genres": [
+            "Humorous Fiction",
+            "Nature & Animal Fiction",
+            "Short Stories"
+          ],
           "librivox_id": 7774,
+          "librivox_title": "Kashtanka",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/kashtanka-by-anton-chekhov/",
@@ -7384,48 +7445,72 @@
             {
               "audio_url": "https://www.archive.org/download/kaspar_hauser_2004_librivox/kasparhauser_01_feuerbach_64kb.mp3",
               "length_ms": 135000,
+              "readers": [
+                "schrm"
+              ],
               "start_ms": 0,
               "title": "Vorwort und Kapitel I"
             },
             {
               "audio_url": "https://www.archive.org/download/kaspar_hauser_2004_librivox/kasparhauser_02_feuerbach_64kb.mp3",
               "length_ms": 853000,
+              "readers": [
+                "schrm"
+              ],
               "start_ms": 135000,
               "title": "Kapitel II"
             },
             {
               "audio_url": "https://www.archive.org/download/kaspar_hauser_2004_librivox/kasparhauser_03_feuerbach_64kb.mp3",
               "length_ms": 1394000,
+              "readers": [
+                "eva-k"
+              ],
               "start_ms": 988000,
               "title": "Kapitel III"
             },
             {
               "audio_url": "https://www.archive.org/download/kaspar_hauser_2004_librivox/kasparhauser_04_feuerbach_64kb.mp3",
               "length_ms": 2827000,
+              "readers": [
+                "schrm"
+              ],
               "start_ms": 2382000,
               "title": "Kapitel IV"
             },
             {
               "audio_url": "https://www.archive.org/download/kaspar_hauser_2004_librivox/kasparhauser_05_feuerbach_64kb.mp3",
               "length_ms": 2043000,
+              "readers": [
+                "marham63"
+              ],
               "start_ms": 5209000,
               "title": "Kapitel V"
             },
             {
               "audio_url": "https://www.archive.org/download/kaspar_hauser_2004_librivox/kasparhauser_06_feuerbach_64kb.mp3",
               "length_ms": 2965000,
+              "readers": [
+                "eva-k"
+              ],
               "start_ms": 7252000,
               "title": "Kapitel VI"
             },
             {
               "audio_url": "https://www.archive.org/download/kaspar_hauser_2004_librivox/kasparhauser_07_feuerbach_64kb.mp3",
               "length_ms": 1367000,
+              "readers": [
+                "lissy-schneider"
+              ],
               "start_ms": 10217000,
               "title": "Kapitel VII"
             },
             {
               "audio_url": "https://www.archive.org/download/kaspar_hauser_2004_librivox/kasparhauser_08_feuerbach_64kb.mp3",
               "length_ms": 1086000,
+              "readers": [
+                "ricarda"
+              ],
               "start_ms": 11584000,
               "title": "Kapitel VIII"
             }
@@ -7434,7 +7519,12 @@
           "cover_url": "https://archive.org/download/librivoxcCDCoverArt35/kasparhauser_2004.jpg",
           "id": "schrm",
           "language": "de",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "Modern (19th C)"
+          ],
           "librivox_id": 12960,
+          "librivox_title": "Kaspar Hauser - Beispiel eines Verbrechens am Seelenleben des Menschen",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/kaspar-hauser-by-paul-johann-anselm-ritter-von-feuerbach/",
@@ -7490,12 +7580,27 @@
             {
               "audio_url": "https://www.archive.org/download/kasperl_tuerkei_1102_librivox/kasperlindertuerkei_01_pocci_64kb.mp3",
               "length_ms": 661000,
+              "readers": [
+                "kalynda",
+                "dirk-weber",
+                "christian-al-kadi",
+                "elli",
+                "algy-pug",
+                "karlsson",
+                "christa"
+              ],
               "start_ms": 0,
               "title": "Erster Akt"
             },
             {
               "audio_url": "https://www.archive.org/download/kasperl_tuerkei_1102_librivox/kasperlindertuerkei_02_pocci_64kb.mp3",
               "length_ms": 558000,
+              "readers": [
+                "kalynda",
+                "christian-al-kadi",
+                "elli",
+                "algy-pug"
+              ],
               "start_ms": 661000,
               "title": "Zweiter Akt, Dramatis Personae"
             }
@@ -7504,7 +7609,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt16/kasperltuerkei_1204.jpg",
           "id": "kalynda",
           "language": "de",
+          "librivox_genres": [
+            "Children's Fiction",
+            "Plays"
+          ],
           "librivox_id": 4024,
+          "librivox_title": "Kasperl in der Türkei",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/kasperl-in-der-turkei-by-franz-graf-von-pocci/",
@@ -7654,7 +7764,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt23/kasperlereisen_siebe_1210.jpg",
           "id": "bettine",
           "language": "de",
+          "librivox_genres": [
+            "Children's Fiction",
+            "Action & Adventure"
+          ],
           "librivox_id": 6849,
+          "librivox_title": "Kasperle auf Reisen",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/kasperle-auf-reisen-by-josephine-siebe/",
@@ -8748,7 +8863,12 @@
           "cover_url": "https://archive.org/download/kastlekrags_1603_librivox/Kastle_Krags_1603.jpg",
           "id": "vfkabt",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Detective Fiction"
+          ],
           "librivox_id": 10698,
+          "librivox_title": "Kastle Krags: A Story of Mystery",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/kastle-krags-a-story-of-mystery-by-absalom-martin/",
@@ -10721,240 +10841,360 @@
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_01_stockton_64kb.mp3",
               "length_ms": 873000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 0,
               "title": "Two Young People, A Ship and A Fish"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_02_stockton_64kb.mp3",
               "length_ms": 1273000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 873000,
               "title": "A Fruit-Basket and A Friend"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_03_stockton_64kb.mp3",
               "length_ms": 931000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 2146000,
               "title": "The Two Clocks"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_04_stockton_64kb.mp3",
               "length_ms": 1157000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 3077000,
               "title": "On The Quarter-Deck"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_05_stockton_64kb.mp3",
               "length_ms": 1095000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 4234000,
               "title": "An Unsuccessful Errand"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_06_stockton_64kb.mp3",
               "length_ms": 827000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 5329000,
               "title": "A Pair of Shoes and Stockings"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_07_stockton_64kb.mp3",
               "length_ms": 706000,
+              "readers": [
+                "vivianweaver"
+              ],
               "start_ms": 6156000,
               "title": "Kate Plans"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_08_stockton_64kb.mp3",
               "length_ms": 1794000,
+              "readers": [
+                "vivianweaver"
+              ],
               "start_ms": 6862000,
               "title": "Ben Greenway is Convinced Bonnet is a Pirate"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_09_stockton_64kb.mp3",
               "length_ms": 1072000,
+              "readers": [
+                "vivianweaver"
+              ],
               "start_ms": 8656000,
               "title": "Dickory Sets Forth"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_10_stockton_64kb.mp3",
               "length_ms": 1227000,
+              "readers": [
+                "vivianweaver"
+              ],
               "start_ms": 9728000,
               "title": "Captain Christopher Vince"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_11_stockton_64kb.mp3",
               "length_ms": 439000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 10955000,
               "title": "Bad Weather"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_12_stockton_64kb.mp3",
               "length_ms": 646000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 11394000,
               "title": "Face to Face"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_13_stockton_64kb.mp3",
               "length_ms": 1413000,
+              "readers": [
+                "gloria-begemann"
+              ],
               "start_ms": 12040000,
               "title": "Captain Bonnet Goes to Church"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_14_stockton_64kb.mp3",
               "length_ms": 320000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 13453000,
               "title": "A Girl to the Front"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_15_stockton_64kb.mp3",
               "length_ms": 787000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 13773000,
               "title": "The Governor of Jamaica"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_16_stockton_64kb.mp3",
               "length_ms": 1319000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 14560000,
               "title": "A Question of Etiquette"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_17_stockton_64kb.mp3",
               "length_ms": 692000,
+              "readers": [
+                "gloria-begemann"
+              ],
               "start_ms": 15879000,
               "title": "An Ornamented Beard"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_18_stockton_64kb.mp3",
               "length_ms": 901000,
+              "readers": [
+                "gloria-begemann"
+              ],
               "start_ms": 16571000,
               "title": "I Have No Right; I am a Pirate"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_19_stockton_64kb.mp3",
               "length_ms": 1441000,
+              "readers": [
+                "gloria-begemann"
+              ],
               "start_ms": 17472000,
               "title": "The First New Lieutenant"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_20_stockton_64kb.mp3",
               "length_ms": 639000,
+              "readers": [
+                "gloria-begemann"
+              ],
               "start_ms": 18913000,
               "title": "One North, One South"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_21_stockton_64kb.mp3",
               "length_ms": 765000,
+              "readers": [
+                "gloria-begemann"
+              ],
               "start_ms": 19552000,
               "title": "A Projected Marriage"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_22_stockton_64kb.mp3",
               "length_ms": 1502000,
+              "readers": [
+                "meg-turecek"
+              ],
               "start_ms": 20317000,
               "title": "Blade to Blade"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_23_stockton_64kb.mp3",
               "length_ms": 622000,
+              "readers": [
+                "meg-turecek"
+              ],
               "start_ms": 21819000,
               "title": "The Address of the Letter"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_24_stockton_64kb.mp3",
               "length_ms": 1244000,
+              "readers": [
+                "meg-turecek"
+              ],
               "start_ms": 22441000,
               "title": "Belize"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_25_stockton_64kb.mp3",
               "length_ms": 1399000,
+              "readers": [
+                "meg-turecek"
+              ],
               "start_ms": 23685000,
               "title": "Wise Mr. Delaplaine"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_26_stockton_64kb.mp3",
               "length_ms": 412000,
+              "readers": [
+                "meg-turecek"
+              ],
               "start_ms": 25084000,
               "title": "Dickory Stretches His Legs"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_27_stockton_64kb.mp3",
               "length_ms": 1548000,
+              "readers": [
+                "meg-turecek"
+              ],
               "start_ms": 25496000,
               "title": "A Girl Who Laughed"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_28_stockton_64kb.mp3",
               "length_ms": 1201000,
+              "readers": [
+                "meg-turecek"
+              ],
               "start_ms": 27044000,
               "title": "Lucilla's Ship"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_29_stockton_64kb.mp3",
               "length_ms": 1210000,
+              "readers": [
+                "meg-turecek"
+              ],
               "start_ms": 28245000,
               "title": "Captain Ichabod"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_30_stockton_64kb.mp3",
               "length_ms": 1044000,
+              "readers": [
+                "meg-turecek"
+              ],
               "start_ms": 29455000,
               "title": "Dame Charter Makes a Friend"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_31_stockton_64kb.mp3",
               "length_ms": 1097000,
+              "readers": [
+                "meg-turecek"
+              ],
               "start_ms": 30499000,
               "title": "Mr. Delaplaine Leads a Boarding Party"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_32_stockton_64kb.mp3",
               "length_ms": 1680000,
+              "readers": [
+                "meg-turecek"
+              ],
               "start_ms": 31596000,
               "title": "The Delivery of the Letter"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_33_stockton_64kb.mp3",
               "length_ms": 640000,
+              "readers": [
+                "meg-turecek"
+              ],
               "start_ms": 33276000,
               "title": "Blackbeard Gives Greenway Some Difficult Work"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_34_stockton_64kb.mp3",
               "length_ms": 791000,
+              "readers": [
+                "meg-turecek"
+              ],
               "start_ms": 33916000,
               "title": "Captain Thomas of the Royal James"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_35_stockton_64kb.mp3",
               "length_ms": 699000,
+              "readers": [
+                "meg-turecek"
+              ],
               "start_ms": 34707000,
               "title": "A Chapter of Happenings"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_36_stockton_64kb.mp3",
               "length_ms": 1105000,
+              "readers": [
+                "meg-turecek"
+              ],
               "start_ms": 35406000,
               "title": "The Tide Decides"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_37_stockton_64kb.mp3",
               "length_ms": 536000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 36511000,
               "title": "Bonnet and Greenway Part Company"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_38_stockton_64kb.mp3",
               "length_ms": 322000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 37047000,
               "title": "Again Dickory Was There"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_39_stockton_64kb.mp3",
               "length_ms": 299000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 37369000,
               "title": "The Blessings Which Come From the Death of the Wicked"
             },
             {
               "audio_url": "https://www.archive.org/download/kate_bonnet_1710_librivox/katebonnet_40_stockton_64kb.mp3",
               "length_ms": 953000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 37668000,
               "title": "Captain Ichabod Puts the Case"
             }
@@ -10963,7 +11203,11 @@
           "cover_url": "https://archive.org/download/kate_bonnet_1710_librivox/kate_bonnet_frank_stockton_1710.jpg",
           "id": "jenno",
           "language": "en",
+          "librivox_genres": [
+            "Romance"
+          ],
           "librivox_id": 11787,
+          "librivox_title": "Kate Bonnet",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/kate-bonnet-by-frank-r-stockton/",

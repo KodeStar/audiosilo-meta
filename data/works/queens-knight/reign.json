@@ -8637,78 +8637,91 @@
             {
               "audio_url": "https://www.archive.org/download/georgevi_1804_librivox/georgevi_00_madden_64kb.mp3",
               "length_ms": 1931000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Editor's Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/georgevi_1804_librivox/georgevi_01_madden_64kb.mp3",
               "length_ms": 479000,
+              "section_number": 1,
               "start_ms": 1931000,
               "title": "Author's Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/georgevi_1804_librivox/georgevi_02_madden_64kb.mp3",
               "length_ms": 344000,
+              "section_number": 2,
               "start_ms": 2410000,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/georgevi_1804_librivox/georgevi_03_madden_64kb.mp3",
               "length_ms": 749000,
+              "section_number": 3,
               "start_ms": 2754000,
               "title": "Chapter 1:  A.D. 1900"
             },
             {
               "audio_url": "https://www.archive.org/download/georgevi_1804_librivox/georgevi_04_madden_64kb.mp3",
               "length_ms": 1160000,
+              "section_number": 4,
               "start_ms": 3503000,
               "title": "Chapter 2:  1900-1901"
             },
             {
               "audio_url": "https://www.archive.org/download/georgevi_1804_librivox/georgevi_05_madden_64kb.mp3",
               "length_ms": 635000,
+              "section_number": 5,
               "start_ms": 4663000,
               "title": "Chapter 3: 1901-1902"
             },
             {
               "audio_url": "https://www.archive.org/download/georgevi_1804_librivox/georgevi_06_madden_64kb.mp3",
               "length_ms": 1220000,
+              "section_number": 6,
               "start_ms": 5298000,
               "title": "Chapter 4: 1902-1916"
             },
             {
               "audio_url": "https://www.archive.org/download/georgevi_1804_librivox/georgevi_07_madden_64kb.mp3",
               "length_ms": 757000,
+              "section_number": 7,
               "start_ms": 6518000,
               "title": "Chapter 5: 1917-1918"
             },
             {
               "audio_url": "https://www.archive.org/download/georgevi_1804_librivox/georgevi_08_madden_64kb.mp3",
               "length_ms": 995000,
+              "section_number": 8,
               "start_ms": 7275000,
               "title": "Chapter 6: 1919-1920"
             },
             {
               "audio_url": "https://www.archive.org/download/georgevi_1804_librivox/georgevi_09_madden_64kb.mp3",
               "length_ms": 808000,
+              "section_number": 9,
               "start_ms": 8270000,
               "title": "Chapter 7: 1919-1920"
             },
             {
               "audio_url": "https://www.archive.org/download/georgevi_1804_librivox/georgevi_10_madden_64kb.mp3",
               "length_ms": 1975000,
+              "section_number": 10,
               "start_ms": 9078000,
               "title": "Chapter 8:  1920"
             },
             {
               "audio_url": "https://www.archive.org/download/georgevi_1804_librivox/georgevi_11_madden_64kb.mp3",
               "length_ms": 1069000,
+              "section_number": 11,
               "start_ms": 11053000,
               "title": "Chapter 9:  1921-1922"
             },
             {
               "audio_url": "https://www.archive.org/download/georgevi_1804_librivox/georgevi_12_madden_64kb.mp3",
               "length_ms": 555000,
+              "section_number": 12,
               "start_ms": 12122000,
               "title": "Chapter 10:  1922-1923"
             }
@@ -8717,7 +8730,12 @@
           "cover_url": "https://archive.org/download/georgevi_1804_librivox/reignofgeorgevi19001925_0418.jpg",
           "id": "drpgould",
           "language": "en",
+          "librivox_genres": [
+            "Historical Fiction",
+            "War & Military Fiction"
+          ],
           "librivox_id": 12854,
+          "librivox_title": "Reign of George VI, 1900-1925: A Forecast Written in the Year 1763",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/reign-of-george-vi-a-forecast",
@@ -9943,30 +9961,67 @@
             {
               "audio_url": "https://www.archive.org/download/reign_edwardiii_librivox/edwardiii_shakespeare_1_64kb.mp3",
               "length_ms": 1430000,
+              "readers": [
+                "mb",
+                "david-nicol",
+                "cate-barratt",
+                "ron-altman",
+                "kristin-g",
+                "tiffany-halla-colonna",
+                "caprishapage",
+                "charlotte-duckett",
+                "wupperhippo"
+              ],
               "start_ms": 0,
               "title": "Dramatis Personae & Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/reign_edwardiii_librivox/edwardiii_shakespeare_2_64kb.mp3",
               "length_ms": 2430000,
+              "readers": [
+                "elizabeth-klett",
+                "rhonda-federman",
+                "algy-pug",
+                "david-goldfarb",
+                "readalot",
+                "grace",
+                "alan-mapstone"
+              ],
               "start_ms": 1430000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/reign_edwardiii_librivox/edwardiii_shakespeare_3_64kb.mp3",
               "length_ms": 2233000,
+              "readers": [
+                "martin-geeson",
+                "noelbadrian",
+                "marcyt"
+              ],
               "start_ms": 3860000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/reign_edwardiii_librivox/edwardiii_shakespeare_4_64kb.mp3",
               "length_ms": 2374000,
+              "readers": [
+                "anna-simon",
+                "jason-mills",
+                "bruce-pirie",
+                "chuck-williamson"
+              ],
               "start_ms": 6093000,
               "title": "Act 4"
             },
             {
               "audio_url": "https://www.archive.org/download/reign_edwardiii_librivox/edwardiii_shakespeare_5_64kb.mp3",
               "length_ms": 949000,
+              "readers": [
+                "amy-gramour",
+                "aidan-brack",
+                "robert-hoffman",
+                "david-evans"
+              ],
               "start_ms": 8467000,
               "title": "Act 5"
             }
@@ -9975,7 +10030,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt26/edward3_1212.jpg",
           "id": "mb",
           "language": "en",
+          "librivox_genres": [
+            "Plays"
+          ],
           "librivox_id": 6466,
+          "librivox_title": "Reign of King Edward the Third",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-reign-of-king-edward-the-third-by-william-shakespeare/",
@@ -10300,7 +10359,12 @@
           "cover_url": "https://archive.org/download/reignofkingoberon_2503_librivox/reign_king_oberon_2503.jpg",
           "id": "bryn-roberts",
           "language": "en",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales",
+            "Single Author Collections"
+          ],
           "librivox_id": 20870,
+          "librivox_title": "Reign of King Oberon",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-reign-of-king-oberon-by-walter-jerrold/",
@@ -12035,7 +12099,11 @@
           "cover_url": "https://archive.org/download/reign_queen_anne_1_pn_1610_librivox/reignofqueenanne1_1610.jpg",
           "id": "pamela-nagami",
           "language": "en",
+          "librivox_genres": [
+            "Early Modern"
+          ],
           "librivox_id": 11090,
+          "librivox_title": "Reign of Queen Anne, Volume I",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-reign-of-queen-anne-volume-i-by-justin-mccarthy/",
@@ -12205,7 +12273,11 @@
           "cover_url": "https://archive.org/download/reign_queen_anne_volume_2_pn_1701_librivox/reignofqueenanne2_1701.jpg",
           "id": "pamela-nagami",
           "language": "en",
+          "librivox_genres": [
+            "Early Modern"
+          ],
           "librivox_id": 11379,
+          "librivox_title": "Reign of Queen Anne, Volume II",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-reign-of-queen-anne-volume-ii-by-justin-mccarthy/",

@@ -1101,7 +1101,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt4/exploits_gerard_1004.jpg",
           "id": "phil-griffiths",
           "language": "en",
+          "librivox_genres": [
+            "Historical Fiction"
+          ],
           "librivox_id": 4074,
+          "librivox_title": "Exploits of Brigadier Gerard",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-exploits-of-brigadier-gerard-by-sir-arthur-conan-doyle/",
@@ -13652,7 +13656,12 @@
           "cover_url": "https://archive.org/download/adventures_arsene_lupin_gentleman-burglar_cb_1507_librivox/extraordinary_adventures_1507.jpg",
           "id": "cate-barratt",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Crime & Mystery Fiction"
+          ],
           "librivox_id": 9518,
+          "librivox_title": "Extraordinary Adventures of Arsène Lupin, Gentleman-Burglar (version 3)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-extraordinary-adventures-of-arsene-lupin-gentleman-burglar-by-maurice-leblanc/",
@@ -13774,63 +13783,100 @@
             {
               "audio_url": "https://www.archive.org/download/extraordinary_lupin/extra_lupin_1_leblanc_64kb.mp3",
               "length_ms": 1419000,
+              "readers": [
+                "karen-savage"
+              ],
               "start_ms": 0,
               "title": "The Arrest of Arsene Lupin"
             },
             {
               "audio_url": "https://www.archive.org/download/extraordinary_lupin/extra_lupin_2_leblanc_64kb.mp3",
               "length_ms": 2852000,
+              "readers": [
+                "gesine"
+              ],
               "start_ms": 1419000,
               "title": "Arsene Lupin in Prison"
             },
             {
               "audio_url": "https://www.archive.org/download/extraordinary_lupin/extra_lupin_3_leblanc_64kb.mp3",
               "length_ms": 2724000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 4271000,
               "title": "The Escape of Arsene Lupin"
             },
             {
               "audio_url": "https://www.archive.org/download/extraordinary_lupin/extra_lupin_4_leblanc_64kb.mp3",
               "length_ms": 2143000,
+              "readers": [
+                "gesine"
+              ],
               "start_ms": 6995000,
               "title": "The Mysterious Traveller"
             },
             {
               "audio_url": "https://www.archive.org/download/extraordinary_lupin/extra_lupin_5_leblanc_64kb.mp3",
               "length_ms": 2001000,
+              "readers": [
+                "julian-jamison"
+              ],
               "start_ms": 9138000,
               "title": "The Queen's Necklace"
             },
             {
               "audio_url": "https://www.archive.org/download/extraordinary_lupin/extra_lupin_6_leblanc_64kb.mp3",
               "length_ms": 3917000,
+              "readers": [
+                "tim-bulkeley-1948-2019"
+              ],
               "start_ms": 11139000,
               "title": "The Seven of Hearts"
             },
             {
               "audio_url": "https://www.archive.org/download/extraordinary_lupin/extra_lupin_7_leblanc_64kb.mp3",
               "length_ms": 1231000,
+              "readers": [
+                "alex-patterson"
+              ],
               "start_ms": 15056000,
               "title": "Madame Imbert's Safe"
             },
             {
               "audio_url": "https://www.archive.org/download/extraordinary_lupin/extra_lupin_8_leblanc_64kb.mp3",
               "length_ms": 1923000,
+              "readers": [
+                "gesine"
+              ],
               "start_ms": 16287000,
               "title": "The Black Pearl"
             },
             {
               "audio_url": "https://www.archive.org/download/extraordinary_lupin/extra_lupin_9_leblanc_64kb.mp3",
               "length_ms": 3077000,
+              "readers": [
+                "tim-bulkeley-1948-2019"
+              ],
               "start_ms": 18210000,
               "title": "Sherlock Holmes Arrives Too Late"
             }
           ],
           "copyright_year": 1907,
           "cover_url": "https://archive.org/download/extraordinary_lupin/Extraordinary_Adventures_of_Arsene_Lupin_1105.jpg",
+          "credits": [
+            {
+              "person": "unknown",
+              "role": "translator"
+            }
+          ],
           "id": "karen-savage",
           "language": "en",
+          "librivox_genres": [
+            "Detective Fiction"
+          ],
           "librivox_id": 608,
+          "librivox_title": "Extraordinary Adventures of Arsène Lupin, Gentleman-Burglar",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-extraordinary-adventures-of-arsene-lupin-gentleman-burglar",
@@ -13926,7 +13972,12 @@
           "cover_url": "https://archive.org/download/adventures_of_arsene_lupin_1401_librivox/extraordinary_adventures2_1401.jpg",
           "id": "leni",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Crime & Mystery Fiction"
+          ],
           "librivox_id": 8565,
+          "librivox_title": "Extraordinary Adventures of Arsène Lupin, Gentleman-Burglar (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-extraordinary-adventures-of-arsene-lupin-gentleman-burglar-version-2-by-maurice-leblanc/",
