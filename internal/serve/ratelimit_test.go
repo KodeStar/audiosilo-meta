@@ -6,6 +6,8 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"net/netip"
+	"os"
+	"regexp"
 	"strconv"
 	"strings"
 	"testing"
@@ -276,6 +278,14 @@ func TestNoRateLimitWhenOff(t *testing.T) {
 // console Series page's few hundred lookups, then runs a bulk match at its fast
 // case (2 workers x 4 requests per 90 ms, about 89 a second) for ten minutes,
 // is never refused. A client at twice that rate is, so the limit still binds.
+//
+// The numbers are COPIES of audiosilo-server's, which this repository cannot
+// import, so a change there is not caught here - re-derive them when it moves:
+// workers is internal/matchrun/runner.go's `workers` (2); perBook is one
+// works/match, its `bulkCandidates` (2) work reads and their series facts, the
+// reads sharing internal/meta/service.go's `maxConcurrentWorkFetches` (4)
+// bound; the Series page's lookups are bounded by its `maxConcurrentLookups` (4). CROSS-REPO.md records the
+// coupling from the server's side.
 func TestDefaultsHoldAnAudioSiloBulkMatch(t *testing.T) {
 	clock := &fakeClock{t: time.Date(2026, 10, 27, 12, 0, 0, 0, time.UTC)}
 	l := newRateLimiter(DefaultRateLimit, DefaultRateBurst, nil, clock.now)
@@ -339,6 +349,62 @@ func TestRateLimitConfigIsExplicit(t *testing.T) {
 		cfg.Logger = artifacttest.QuietLogger()
 		if _, err := New(cfg); err == nil || !strings.Contains(err.Error(), "rate") {
 			t.Errorf("New(rate %g, burst %d) = %v, want a rate-limit error", cfg.RateLimit, cfg.RateBurst, err)
+		}
+	}
+}
+
+// TestComposeTrustsOnlyTheProxyNetwork pins the shipped docker-compose.yml's
+// trusted-proxy default to the loopback and the compose network's own pinned
+// subnet - the one place a host proxy's connection can come from - and reads it
+// through ParseTrustedProxies, as metaserve does. Trusting the private ranges
+// wholesale let a LAN client of the host proxy pass as a trusted hop and choose
+// its own bucket through X-Forwarded-For (issue #2752), so a re-widening fails
+// here. The subnet the list trusts must be the one the network is pinned to.
+func TestComposeTrustsOnlyTheProxyNetwork(t *testing.T) {
+	raw, err := os.ReadFile("../../docker-compose.yml")
+	if err != nil {
+		t.Fatal(err)
+	}
+	trustedRe := regexp.MustCompile(`(?m)^\s+METASERVE_TRUSTED_PROXIES: "([^"]*)"\s*$`)
+	subnetRe := regexp.MustCompile(`(?m)^\s+- subnet: (\S+)\s*$`)
+	defaultRe := regexp.MustCompile(`\$\{METASERVE_SUBNET:-([^}]+)\}`)
+	tm, sm := trustedRe.FindSubmatch(raw), subnetRe.FindSubmatch(raw)
+	if tm == nil || sm == nil {
+		t.Fatalf("docker-compose.yml: no METASERVE_TRUSTED_PROXIES line (%v) or no pinned subnet (%v)", tm != nil, sm != nil)
+	}
+	subnet := defaultRe.FindStringSubmatch(string(sm[1]))
+	if subnet == nil {
+		t.Fatalf("pinned subnet %q is not ${METASERVE_SUBNET:-<default>}", sm[1])
+	}
+	resolve := func(s string) string { return defaultRe.ReplaceAllString(s, subnet[1]) }
+	if !strings.Contains(string(tm[1]), "${METASERVE_SUBNET:-"+subnet[1]+"}") {
+		t.Errorf("trusted proxies %q do not name the pinned subnet's variable and default %s", tm[1], subnet[1])
+	}
+	proxies, err := ParseTrustedProxies(resolve(string(tm[1])))
+	if err != nil {
+		t.Fatal(err)
+	}
+	pinned, err := netip.ParsePrefix(subnet[1])
+	if err != nil {
+		t.Fatalf("pinned subnet default %q: %v", subnet[1], err)
+	}
+	gateway := pinned.Masked().Addr().Next()
+	l := newRateLimiter(1, 1, proxies, nil)
+	for _, tc := range []struct {
+		addr    netip.Addr
+		trusted bool
+	}{
+		{netip.MustParseAddr("127.0.0.1"), true},
+		{netip.MustParseAddr("::1"), true},
+		{gateway, true},
+		// LAN and other Docker networks' addresses: clients, never proxies.
+		{netip.MustParseAddr("192.168.1.20"), false},
+		{netip.MustParseAddr("10.0.0.5"), false},
+		{netip.MustParseAddr("172.17.0.1"), false},
+		{netip.MustParseAddr("fd00::1"), false},
+	} {
+		if got := l.isTrusted(tc.addr); got != tc.trusted {
+			t.Errorf("compose default trusts %s = %v, want %v (list %q)", tc.addr, got, tc.trusted, resolve(string(tm[1])))
 		}
 	}
 }

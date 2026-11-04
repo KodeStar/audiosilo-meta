@@ -2110,24 +2110,31 @@ func dedupeSlugs(names []string, resolve func(i int, name string) string) []stri
 // Otherwise the surviving name would be whichever row arrived first, which is
 // the order dependence the pre-pass exists to remove.
 func (p *planner) getOrCreatePerson(name string, warn func(string, ...any)) string {
-	return p.applyPerson(name, p.resolvePerson(name), warn)
+	r, _ := p.getOrCreatePersonIf(name, warn, func(personResolution) bool { return true })
+	return r.slug
 }
 
-// applyPerson acts on resolvePerson's answer r for name: it creates the record
-// r names, or notes the tombstone r rode, and returns the slug. r must be FRESH
-// (resolved with nothing created since), which is what lets a caller that has
-// already asked resolvePerson skip asking again.
-func (p *planner) applyPerson(name string, r personResolution, warn func(string, ...any)) string {
+// getOrCreatePersonIf resolves name and, only when keep accepts the resolution,
+// acts on it as getOrCreatePerson does: it creates the record the resolution
+// names, or notes the tombstone it rode. The resolution and the act are one
+// call, so the act can never run on a stale answer (one resolved before
+// another credit created the person), and a caller that has to look at who a
+// credit names before deciding (attachRowAuthors) resolves it once. It returns
+// the resolution and whether keep accepted it.
+func (p *planner) getOrCreatePersonIf(name string, warn func(string, ...any), keep func(personResolution) bool) (personResolution, bool) {
+	r := p.resolvePerson(name)
+	if !keep(r) {
+		return r, false
+	}
 	if r.fellBack {
 		warn("name %q produced an empty slug; using %q", name, r.slug)
 	}
 	if r.create {
-		return p.createPerson(r.slug, r.name)
-	}
-	if r.from != r.slug {
+		p.createPerson(r.slug, r.name)
+	} else if r.from != r.slug {
 		p.noteTombstone(model.RedirectPeople, r.from, r.slug)
 	}
-	return r.slug
+	return r, true
 }
 
 // personResolution is resolvePerson's answer: the slug a credit lands on, and

@@ -154,7 +154,7 @@ func TestExactTitleBoostIsDeterministic(t *testing.T) {
 	snap := openTestDB(t, artifacttest.Build(t, exactTitleCatalog()))
 	want := []string{"spare-parts", "spare-parts-andy-weir"}
 	for i := 0; i < 5; i++ {
-		hits, err := snap.exactTitleHits(t.Context(), "Spare Parts", nil)
+		hits, err := snap.exactTitleHits(t.Context(), "Spare Parts", nil, "")
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -176,7 +176,7 @@ func TestExactTitleMisses(t *testing.T) {
 		"martian",           // ditto, the other way round
 		"nobody wrote this", // nothing at all
 	} {
-		hits, err := snap.exactTitleHits(t.Context(), q, nil)
+		hits, err := snap.exactTitleHits(t.Context(), q, nil, "")
 		if err != nil {
 			t.Fatalf("exactTitleHits(%q): %v", q, err)
 		}
@@ -207,7 +207,7 @@ func TestExactTitleMisses(t *testing.T) {
 func TestExactTitleBoostsOnlyWorks(t *testing.T) {
 	snap := openTestDB(t, artifacttest.Build(t, exactTitleCatalog()))
 
-	hits, err := snap.exactTitleHits(t.Context(), "Spare", nil)
+	hits, err := snap.exactTitleHits(t.Context(), "Spare", nil, "")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -236,7 +236,7 @@ func TestExactTitleBoostsOnlyWorks(t *testing.T) {
 func TestExactTitleSkipsJunkQueries(t *testing.T) {
 	snap := openTestDB(t, artifacttest.Build(t, exactTitleCatalog()))
 	for _, q := range []string{"the", "The", "a", "s", "S", "the a of", "  ", ""} {
-		hits, err := snap.exactTitleHits(t.Context(), q, nil)
+		hits, err := snap.exactTitleHits(t.Context(), q, nil, "")
 		if err != nil {
 			t.Fatalf("exactTitleHits(%q): %v", q, err)
 		}
@@ -304,7 +304,7 @@ func TestTitleMatchFiltersEveryPhrase(t *testing.T) {
 		}
 	}
 
-	cands, err := snap.titleCandidates(t.Context(), "spare harry", nil)
+	cands, err := snap.titleCandidates(t.Context(), "spare harry", nil, "")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -322,7 +322,7 @@ func TestExactTitleLeadsTheSeriesPositionBoost(t *testing.T) {
 	snap := openTestDB(t, artifacttest.Build(t, exactTitleCatalog()))
 
 	// Both probes really do fire for this query.
-	title, err := snap.exactTitleHits(t.Context(), "halo 2", nil)
+	title, err := snap.exactTitleHits(t.Context(), "halo 2", nil, "")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -338,7 +338,7 @@ func TestExactTitleLeadsTheSeriesPositionBoost(t *testing.T) {
 	}
 
 	want := []string{"halo-2", "halo-fall-of-reach"}
-	if got := snap.boostedWorks(t.Context(), "halo 2", nil); !reflect.DeepEqual(got, want) {
+	if got := snap.boostedWorks(t.Context(), "halo 2", nil, ""); !reflect.DeepEqual(got, want) {
 		t.Errorf("boostedWorks('halo 2') = %v, want %v", got, want)
 	}
 	ids := scopedIDs(t, snap, kindWork, "halo 2")
@@ -356,7 +356,7 @@ func TestBoostProbeErrorDegrades(t *testing.T) {
 	snap.log = log.New(&logged, "", 0)
 	_ = snap.Close()
 
-	if got := snap.boostedWorks(t.Context(), "halo 2", nil); got != nil {
+	if got := snap.boostedWorks(t.Context(), "halo 2", nil, ""); got != nil {
 		t.Errorf("boostedWorks on a closed handle = %v, want nil", got)
 	}
 	for _, want := range []string{"exact-title probe", "series-position probe"} {
@@ -393,7 +393,7 @@ func TestBoostProbeErrorDegradesWithoutALogger(t *testing.T) {
 	t.Cleanup(func() { log.SetOutput(prev); log.SetFlags(prevFlags) })
 
 	_ = snap.Close()
-	if got := snap.boostedWorks(t.Context(), "halo 2", nil); got != nil {
+	if got := snap.boostedWorks(t.Context(), "halo 2", nil, ""); got != nil {
 		t.Errorf("boostedWorks on a closed handle = %v, want nil", got)
 	}
 	for _, want := range []string{"exact-title probe", "series-position probe"} {

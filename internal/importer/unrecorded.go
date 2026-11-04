@@ -89,9 +89,10 @@ func (p *planner) attachRowAuthors(b sourceBook, asin string, ws *workState, cre
 	_, runCreated := p.runCredits[ws.slug]
 	var out []UnrecordedCredit
 	for _, c := range credits {
-		r := p.resolvePerson(c.name)
-		if ws.names(r.slug) || (runCreated && len(c.roles) > 0 && !r.fellBack) {
-			p.applyPerson(c.name, r, warn)
+		r, kept := p.getOrCreatePersonIf(c.name, warn, func(r personResolution) bool {
+			return ws.names(r.slug) || (runCreated && len(c.roles) > 0 && !r.fellBack)
+		})
+		if kept {
 			continue
 		}
 		u := p.unrecordedOf(b, asin, c, r, ws.slug)

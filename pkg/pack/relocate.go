@@ -235,12 +235,39 @@ func (p Pending) LinesUnder(prefix string) []string {
 // Pending reports family f's outstanding structural work without queueing or
 // writing anything. It reads every file under the family root, so unlike Flush
 // it also sees violations in packs no writer touched.
-func (s *Store) Pending(f Family) (Pending, error) {
+func (s *Store) Pending(f Family) (Pending, error) { return s.pending(f, nil) }
+
+// PendingCanonical is Pending plus the canonical-form verdict of every file of
+// the family the survey parsed: data-relative path -> whether its bytes on disk
+// are already pkg/canonical's form. A path absent from the map was not judged -
+// it would not read or parse, its render failed, or this store had read it
+// before - and a caller wanting its verdict asks pkg/canonical itself.
+//
+// It is metafmt --check's survey. That command asks two questions of every pack
+// - is it canonical, and is it structurally sound - and used to parse the whole
+// tree once for each; the survey already parses every pack and renders the
+// authoritative ones for their size, and the render IS the file's canonical form,
+// so the first answer is one comparison away. Each render is released as soon as
+// it is judged (only its size is kept for the cap check), so the family resident
+// afterwards is its entries alone rather than its entries plus a second copy of
+// the tree.
+func (s *Store) PendingCanonical(f Family) (Pending, map[string]bool, error) {
+	canon := map[string]bool{}
+	p, err := s.pending(f, canon)
+	if err != nil {
+		return Pending{}, nil, err
+	}
+	return p, canon, nil
+}
+
+// pending is Pending and PendingCanonical: one survey of family f, judging
+// canonical form into canon when it is not nil (Reader.prefetch).
+func (s *Store) pending(f Family, canon map[string]bool) (Pending, error) {
 	def, err := s.def(f)
 	if err != nil {
 		return Pending{}, err
 	}
-	fs, err := s.survey(def)
+	fs, err := s.survey(def, canon)
 	if err != nil {
 		return Pending{}, err
 	}
@@ -280,7 +307,9 @@ func (s *Store) pendingFrom(fs *familySurvey) (Pending, error) {
 	// half of a survey's cost; the renders are independent (one *File per path,
 	// each memoizing its own bytes), so they are warmed on the worker pool and
 	// the loop finds them done. An error is not kept here: the loop's own Size
-	// call meets it again and returns it in pack order.
+	// call meets it again and returns it in pack order. A survey that judged
+	// canonical form (PendingCanonical) already rendered every pack it parsed and
+	// kept only the size, so there this warms nothing.
 	packs := t.Packs()
 	parallel.Do(len(packs), func(i int) {
 		_, _ = fs.files[packs[i].Path()].Size()
@@ -469,7 +498,7 @@ func (s *Store) HealPending(f Family) (Pending, error) {
 	if err != nil {
 		return Pending{}, err
 	}
-	fs, err := s.survey(def)
+	fs, err := s.survey(def, nil)
 	if err != nil {
 		return Pending{}, err
 	}
