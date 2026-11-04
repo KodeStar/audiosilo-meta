@@ -847,11 +847,14 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 		p.setEvidenceRuntime(&books[i])
 	}
 	p.loadExisting()
-	// A LibriVox row's credits are keyed by LibriVox id before any census reads
-	// their names (librivox.go); a no-op for every other source.
-	p.keyLibrivoxCredits(books)
+	// A LibriVox row's credit names are decoded before any census reads them,
+	// and its author credits are resolved by LibriVox id once the batch's
+	// credit decisions are taken (librivox.go, librivoxpeople.go); no-ops for
+	// every other source.
+	p.decodeLibrivoxCredits(books)
 	if p.mode.plansRows() {
 		p.credits = p.creditContextOf(books)
+		p.resolveLibrivoxAuthors(books)
 	}
 	if p.mode == ModeRelocate {
 		p.prepareRelocation()
@@ -889,9 +892,10 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	p.reportEstimates()
 	p.reportRefreshes()
 	p.reportDuplicateIdentities()
+	p.finishLibrivoxHolds()
 	p.reportLibrivoxVariants()
 	p.reportLibrivoxAuthorVariants()
-	p.settleLibrivoxUnrecorded()
+	p.settleUnrecordedCredits()
 	p.reportTombstoneRides()
 	p.reportSeriesNameJoins()
 	p.stampLibrivoxPeople()
@@ -1095,6 +1099,9 @@ func (p *planner) planCreate(books []sourceBook) {
 	// A LibriVox author id that is a catalogued author spelled with more or
 	// fewer words is that person for the whole batch (librivoxauthors.go).
 	p.keyLibrivoxAuthorVariants(books, titles, suffixes)
+	// Only now does every author id land where it will: the readers, and the
+	// rest that reads the authors' people, are decided against that.
+	p.settleLibrivoxPeople(books)
 	for i, b := range books {
 		asin := NormalizeASIN(b.str("asin"))
 		p.setSource(asin, b)
@@ -1456,7 +1463,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// COMPLETION claim lost nothing (the position is the incumbent's), so only
 	// the row's other claims are noted as lost.
 	if ws, occupant := p.attachTarget(b, workTitle); ws != nil {
-		p.attachRow(ws, b, workTitle, asin, lang, narratorNames, warn)
+		p.attachRow(ws, b, workTitle, asin, lang, authorCredits, narratorNames, warn)
 		_, at := completionClaim(b)
 		p.noteLostSeriesClaims(b, at, ws)
 		return
@@ -1509,8 +1516,8 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		p.noteLostSeriesClaims(b, -1, nil)
 		return
 	}
-	if route.renames != nil {
-		authorCredits = p.respellLibrivoxAuthors(b, authorCredits, route.renames)
+	if route.moves != nil {
+		authorCredits = p.moveLibrivoxAuthors(b, authorCredits, route.moves)
 	}
 	ident := p.rowIdentityOf(b, workTitle)
 	if route.walk == nil &&
@@ -1520,37 +1527,15 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		return
 	}
 
-	// The row's author slugs, split into the list the record stores and the
-	// subset work identity is matched on (workidentity.go). Resolving them with
-	// rowWorkAuthors is what creates their person records, exactly as
-	// creditSlugs did.
-	//
-	// A LibriVox row decides its work FIRST, on the read-only author set (the
-	// same slugs the create path mints), because an attach to a catalogued work
-	// records none of the row's credits: a translator the work does not name
-	// would otherwise be created and credited nowhere (librivoxRowAuthors). A
-	// LibriVox row that creates its work then mints them like any other.
-	var authors workAuthors
-	if b.lv != nil {
-		authors = p.rowWorkAuthorsRO(authorCredits)
-	} else {
-		authors = p.rowWorkAuthors(authorCredits, warn)
-	}
+	// The work is decided on the row's READ-ONLY author set (the same slugs the
+	// create path mints, workidentity.go): its people are created only by
+	// getOrCreateWork, once the work is decided (meta#2760).
 	var walk workWalk
 	if route.walk != nil {
 		walk = *route.walk
 	} else {
-		walk = p.resolveWork(workTitle, b.str("title"), b.qualifiedTitle, posSuffix, authors, lang, claim)
+		walk = p.resolveWork(workTitle, b.str("title"), b.qualifiedTitle, posSuffix, p.rowWorkAuthorsRO(authorCredits), lang, claim)
 	}
-	var unrecorded []LibrivoxUnrecordedCredit
-	if b.lv != nil {
-		if walk.ws == nil {
-			authors = p.rowWorkAuthors(authorCredits, warn)
-		} else {
-			unrecorded = p.librivoxRowAuthors(b, walk.ws, authorCredits, warn)
-		}
-	}
-	narratorSlugs := p.rowNarratorSlugs(b, narratorNames, warn)
 
 	// The book's genre claims are mapped from the source's own strings onto this
 	// project's vocabulary (LICENSING.md: never a retailer's taxonomy verbatim)
@@ -1563,7 +1548,8 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// raw for the same reason too - resolving them is wasted work on every row
 	// that merges.
 	facts := &workFacts{genres: b.genres, credits: authorCredits}
-	ws := p.getOrCreateWork(walk, authors, lang, facts, warn)
+	ws, unrecorded := p.getOrCreateWork(walk, b, asin, lang, facts, warn)
+	narratorSlugs := p.rowNarratorSlugs(b, narratorNames, warn)
 	// The title the row was RESOLVED by - its own, or its full title when the
 	// work was found or created on the full title's chain - is the one the
 	// recording's serial guard and the series placement read a stated volume
@@ -1579,9 +1565,10 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		p.rememberIdentity(ident, ws.slug, workTitle)
 	}
 	p.addRecording(ws, b, resolvedTitle, asin, lang, narratorSlugs, warn)
-	if p.landedRec != "" && b.lv != nil {
-		p.summary.LibrivoxUnrecordedCredits = append(p.summary.LibrivoxUnrecordedCredits, unrecorded...)
-		p.summary.LibrivoxUnrecordedCredits = append(p.summary.LibrivoxUnrecordedCredits, p.unsluggableLibrivoxCredits(b, ws.slug, unsluggable)...)
+	if p.landedRec != "" {
+		// unsluggable is only ever set for a LibriVox row.
+		p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, unrecorded...)
+		p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, p.unsluggableLibrivoxCredits(b, ws.slug, unsluggable)...)
 	}
 	// A row of this run landing on a work the run created adds what it states
 	// (credits, genres - the recording vote reads the recording it landed on);
@@ -1697,6 +1684,9 @@ func (p *planner) rowAuthorCredits(b sourceBook) []credit { return rowAuthorCred
 func rowAuthorCreditsIn(ctx creditContext, b sourceBook) []credit {
 	if b.creditsCached {
 		return b.authorCredits
+	}
+	if b.lv != nil {
+		return librivoxAuthorCredits(ctx, b)
 	}
 	return sourceCredits(b.authors, b.str("author"), ctx.author)
 }
@@ -1837,8 +1827,15 @@ func (p *planner) creditCensusesOf(books []sourceBook) (author, narrator creditC
 	// all resolve a synthetic credit to the canonical, so a persona spelling
 	// never becomes evidence of its own name.
 	author = notify(seenIn(authorSide), false)
-	author.keepHonorific = p.lv.keepTitled
-	return author, notify(seenIn(narratorSide), p.userTier)
+	narrator = notify(seenIn(narratorSide), p.userTier)
+	if p.sourceType == sourceLibrivox {
+		// A LibriVox credit's person is decided by its LibriVox id (an author's
+		// by resolveLibrivoxAuthors, a known reader's by librivoxReaderSlug),
+		// so whether a fold the cleaning makes is a merge the import performs
+		// is known only there: noteLibrivoxFolds reports them.
+		author.onHonorific, narrator.onHonorific = nil, nil
+	}
+	return author, narrator
 }
 
 // peopleKeptApart reports whether a reviewed merge-people rejection
@@ -2059,12 +2056,12 @@ func (p *planner) workCredits(credits []credit) []model.Credit {
 		if len(c.roles) == 0 {
 			continue
 		}
-		// resolvePerson, not personSlug: the person may have been created under
+		// resolveCredit, not personSlug: the person may have been created under
 		// another spelling of their initials, which is a record this credit must
 		// NAME rather than miss - resolving "A.B. Kovacs" straight through
 		// personSlug lands on a slug nothing created, and the role credit was
 		// silently dropped.
-		r := p.resolvePerson(c.name)
+		r := p.resolveCredit(c)
 		if r.fellBack {
 			p.noteUnnamedCredit(c.name)
 			continue
@@ -2130,17 +2127,39 @@ func dedupeSlugs(names []string, resolve func(i int, name string) string) []stri
 // Otherwise the surviving name would be whichever row arrived first, which is
 // the order dependence the pre-pass exists to remove.
 func (p *planner) getOrCreatePerson(name string, warn func(string, ...any)) string {
-	r := p.resolvePerson(name)
+	r, _ := p.getOrCreatePersonIf(name, warn, func(personResolution) bool { return true })
+	return r.slug
+}
+
+// getOrCreatePersonIf resolves name and, only when keep accepts the resolution,
+// acts on it as getOrCreatePerson does: it creates the record the resolution
+// names, or notes the tombstone it rode. The resolution and the act are one
+// call, so the act can never run on a stale answer (one resolved before
+// another credit created the person), and a caller that has to look at who a
+// credit names before deciding (attachRowAuthors) resolves it once. It returns
+// the resolution and whether keep accepted it.
+func (p *planner) getOrCreatePersonIf(name string, warn func(string, ...any), keep func(personResolution) bool) (personResolution, bool) {
+	return p.getOrCreateCreditIf(credit{name: name}, warn, keep)
+}
+
+// getOrCreateCreditIf is getOrCreatePersonIf for one author-side credit: the
+// resolution is the credit's (resolveCredit: its decided person when it
+// carries one, a LibriVox author id's, else its name's), and a record it
+// creates is created under the name that resolution gives.
+func (p *planner) getOrCreateCreditIf(c credit, warn func(string, ...any), keep func(personResolution) bool) (personResolution, bool) {
+	r := p.resolveCredit(c)
+	if !keep(r) {
+		return r, false
+	}
 	if r.fellBack {
-		warn("name %q produced an empty slug; using %q", name, r.slug)
+		warn("name %q produced an empty slug; using %q", c.name, r.slug)
 	}
 	if r.create {
-		return p.createPerson(r.slug, r.name)
-	}
-	if r.from != r.slug {
+		p.createPerson(r.slug, r.name)
+	} else if r.from != r.slug {
 		p.noteTombstone(model.RedirectPeople, r.from, r.slug)
 	}
-	return r.slug
+	return r, true
 }
 
 // personResolution is resolvePerson's answer: the slug a credit lands on, and
@@ -2166,6 +2185,25 @@ type personResolution struct {
 // create).
 func (p *planner) resolvePerson(name string) personResolution {
 	return p.resolvePersonIn(p.credits, name)
+}
+
+// resolveCredit is resolvePerson for one author-side credit: the person decided
+// for it before planning when there is one (credit.person, a LibriVox author
+// credit), resolved as resolvePerson resolves a name (live, or to be created
+// under the decided name), else its name's resolution.
+func (p *planner) resolveCredit(c credit) personResolution {
+	return p.resolveCreditIn(p.credits, c)
+}
+
+// resolveCreditIn is resolveCredit under an explicit batch context.
+func (p *planner) resolveCreditIn(ctx creditContext, c credit) personResolution {
+	if c.person == nil {
+		return p.resolvePersonIn(ctx, c.name)
+	}
+	if live, ok := p.livePerson(c.person.slug); ok {
+		return personResolution{slug: live, from: c.person.from}
+	}
+	return personResolution{slug: c.person.slug, create: true, name: c.person.name}
 }
 
 // resolvePersonIn is resolvePerson under an explicit batch context (its initials
@@ -2394,14 +2432,30 @@ func (f *workFacts) workCredits(p *planner) []model.Credit {
 // chain. facts are the creation-only facts (genres, credits); they are stored only
 // on the branch that creates a work, which is the only place they can be stored.
 // WHICH work a row belongs to, and why, is resolveWork's to say.
-func (p *planner) getOrCreateWork(walk workWalk, authors workAuthors, lang string, facts *workFacts, warn func(string, ...any)) *workState {
+//
+// It is also the ONE place a row's author-side people are created, which is why
+// the caller hands it the row's raw credits (facts.credits) and never a resolved
+// author set: a row creating its work mints every author (rowWorkAuthors), and
+// a row merging into the work the walk found creates only the people that work
+// credits, returning the rest as unrecorded credits (attachRowAuthors). A person
+// created before the decision would be an orphan whenever the row merges into a
+// work that does not name them (meta#2760). asin keys those credits for a
+// non-LibriVox row.
+func (p *planner) getOrCreateWork(walk workWalk, b sourceBook, asin, lang string, facts *workFacts, warn func(string, ...any)) (*workState, []UnrecordedCredit) {
+	var authors workAuthors
+	var unrecorded []UnrecordedCredit
+	if walk.ws != nil {
+		unrecorded = p.attachRowAuthors(b, asin, walk.ws, facts.credits, warn)
+	} else {
+		authors = p.rowWorkAuthors(facts.credits, warn)
+	}
 	ws := p.mergeOrCreate(walk, authors, lang, facts, warn)
 	// Said after the decision so it names the slug the row actually landed on,
 	// not the fallback base the chain composed for the unslugifiable title.
 	if ws != nil && walk.untitled != "" {
 		warn("title %q produced an empty slug; using %q", walk.untitled, ws.slug)
 	}
-	return ws
+	return ws, unrecorded
 }
 
 func (p *planner) mergeOrCreate(walk workWalk, authors workAuthors, lang string, facts *workFacts, warn func(string, ...any)) *workState {
@@ -2677,12 +2731,11 @@ func (p *planner) walkWorkChain(title string, chain workChain, authors workAutho
 // function (the guard to learn whether the row would create a work, addBook to
 // act), and both hand it the row's authors resolved the same way (resolvePerson,
 // which getOrCreatePerson acts on and rowWorkAuthorsRO reads). addBook does not
-// reuse the guard's walk: it resolves again with the author set the create path
-// actually minted, so an in-row difference between the read-only and the created
-// resolution can never make the create path act on an answer it did not reach.
-// The one exception is a LibriVox row, which walks on the read-only set and mints
-// only afterwards (an attach creates only the people its work credits): that
-// rests on resolvePerson's own guarantee that the two resolutions name one slug.
+// reuse the guard's walk: it resolves again, on the same read-only author set,
+// and every row of every source mints its people only afterwards, inside
+// getOrCreateWork (an attach creates only the people its work credits,
+// meta#2760). That rests on resolvePerson's own guarantee that the read-only and
+// the created resolution name one slug.
 //
 // The row's resolved title is walked first; that is where the overwhelming
 // majority of works are. When it holds no match, the FULL title's chain is walked

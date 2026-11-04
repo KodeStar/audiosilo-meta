@@ -352,6 +352,7 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	// worklist after it: the tree is written, and the summary is the record of
 	// what was.
 	printSummary(sum, *dryRun, mode)
+	printUnrecordedCredits(sum.UnrecordedCredits)
 	for _, rows := range [][]importer.RowSkip{sum.Skips, sum.RelocationSkips} {
 		for _, s := range rows {
 			skippedLog.Encode(s)
@@ -526,6 +527,23 @@ func parsePositional(fs *flag.FlagSet, args []string, label string) (string, err
 		return "", fmt.Errorf("expected one %s path, got %d: %s", label, len(positional), strings.Join(positional, " "))
 	}
 	return positional[0], nil
+}
+
+// printUnrecordedCredits prints the author, translator and other role credits
+// of landed rows that their work does not record (importer.UnrecordedCredit):
+// the row attached to a work that does not name them, so no person record was
+// made for them; kept for recording-level credits (meta#2752). A LibriVox
+// credit whose name slugs to nothing is listed too (reason unsluggable).
+// Nothing when there are none, so every other run's report reads as before.
+func printUnrecordedCredits(credits []importer.UnrecordedCredit) {
+	if len(credits) == 0 {
+		return
+	}
+	fmt.Printf("credits not recorded: %d (the row attached to a work that does not name them, or the name slugs to nothing; for recording-level credits, meta#2752):\n",
+		len(credits))
+	for _, c := range credits {
+		fmt.Println("  " + c.String())
+	}
 }
 
 // printSummary renders the run's outcome for the selected mode. Each mode

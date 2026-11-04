@@ -556,15 +556,22 @@ type Summary struct {
 	// (librivoxauthors.go rule 1). 0 for other sources.
 	LibrivoxAuthorVariants int
 	LibrivoxWorklist       []LibrivoxWorklistEntry
-	// LibrivoxUnrecordedCredits is every author or translator credit a landed
-	// LibriVox row states that the run did not record, in row order: the row
-	// attached to a work that does not name the person, and a create run never
-	// edits a catalogued work's credits. A person such a credit would have
-	// created is not created (an orphan record), so these are kept for
-	// recording-level credits (meta#2752) to pick up. A credit whose name slugs
-	// to nothing is listed here too, with Reason "unsluggable", whether the row
-	// attached or created its work (librivoxauthors.go rule 2).
-	LibrivoxUnrecordedCredits []LibrivoxUnrecordedCredit
+	// LibrivoxAuthorPairs is the worklist's people half: two author ids of
+	// the run one courtesy title apart, kept as people of their own (or held
+	// by rule 2, LibrivoxPairAuthor.Person ""), for a person to merge or
+	// confirm (librivoxpeople.go rule 1b).
+	LibrivoxAuthorPairs []LibrivoxAuthorPair
+	// UnrecordedCredits is every author, translator or other role credit a
+	// landed row of ANY source states that the run did not record, in row
+	// order: the row attached to a work that does not name the person, and a
+	// create run never edits a catalogued work's credits (attachRowAuthors). A
+	// person such a credit would have created is not created (an orphan
+	// record, meta#2760), so these are kept for recording-level credits
+	// (meta#2752) to pick up. A credit whose name slugs to nothing carries
+	// Reason "unsluggable": any source's on an attach, and a LibriVox one
+	// whether the row attached or created its work (librivoxauthors.go rule 2).
+	// A row the --attach-editions rule attaches reports its credits here too.
+	UnrecordedCredits []UnrecordedCredit
 	// Notes are aggregated lines about what a run DID, where the doing is a
 	// decision a reader should see rather than something that went wrong -
 	// today, the AI-narration fold (synthetic.go). They are kept apart from

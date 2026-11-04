@@ -138,8 +138,23 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 		fmt.Printf("  %d pack files written\n", len(sum.Files))
 	}
 	printLibrivoxWorklist(sum.LibrivoxWorklist)
-	printLibrivoxUnrecorded(sum.LibrivoxUnrecordedCredits)
+	printLibrivoxAuthorPairs(sum.LibrivoxAuthorPairs)
+	printUnrecordedCredits(sum.UnrecordedCredits)
 	return 0
+}
+
+// printLibrivoxAuthorPairs prints the author id pairs the run kept as two
+// people for a person to merge or confirm, one line each
+// (importer.LibrivoxAuthorPair.String). Nothing when there are none.
+func printLibrivoxAuthorPairs(pairs []importer.LibrivoxAuthorPair) {
+	if len(pairs) == 0 {
+		return
+	}
+	fmt.Printf("librivox worklist: %d author id %s one courtesy title apart, kept as two people for a person to merge or confirm:\n",
+		len(pairs), plural(len(pairs), "pair", "pairs"))
+	for _, pr := range pairs {
+		fmt.Println("  " + pr.String())
+	}
 }
 
 // printLibrivoxInProgress prints the projects the run set aside as still in
@@ -155,21 +170,6 @@ func printLibrivoxInProgress(ids []int) {
 	}
 	fmt.Printf("librivox: skipped %d in-progress %s (no runtime and no archive.org item; nothing written, re-import once complete): %s\n",
 		len(ids), plural(len(ids), "project", "projects"), strings.Join(s, ", "))
-}
-
-// printLibrivoxUnrecorded prints the author and translator credits of landed
-// projects that their work does not record (importer.LibrivoxUnrecordedCredit):
-// kept for recording-level credits (meta#2752), and those whose name slugs to
-// nothing (reason unsluggable). Nothing when there are none.
-func printLibrivoxUnrecorded(credits []importer.LibrivoxUnrecordedCredit) {
-	if len(credits) == 0 {
-		return
-	}
-	fmt.Printf("librivox credits not recorded: %d (the project attached to a work that does not name them, or the name slugs to nothing; for recording-level credits, meta#2752):\n",
-		len(credits))
-	for _, c := range credits {
-		fmt.Println("  " + c.String())
-	}
 }
 
 // printLibrivoxWorklist prints the projects the run skipped for a person to

@@ -595,3 +595,27 @@ func TestRelocateMergeKeepsRicherChaptersAndFillsAbsent(t *testing.T) {
 		})
 	}
 }
+
+// TestRelocateCreatesNoUncreditedTranslator: a recording relocated onto a work
+// the catalogue already holds records only the move, so a translator its row
+// states and that work does not name gets no person record (an orphan,
+// meta#2760) and is reported; relocated onto a work the run creates, the
+// translator is minted and credited (TestRelocateRowOrderAndNewWorkFacts).
+func TestRelocateCreatesNoUncreditedTranslator(t *testing.T) {
+	row := strings.Replace(relocateRow, `"Anne Author"`, `"Anne Author"},{"name":"Tina Translator - translator"`, 1)
+	dir := relocationFixture(t, true)
+	sum := runRelocationTest(t, dir, row)
+	if sum.RelocatedToExisting != 1 || sum.NewPeople != 0 {
+		t.Fatalf("relocated to existing = %d, new people = %d; want 1 and 0\n%+v", sum.RelocatedToExisting, sum.NewPeople, sum)
+	}
+	if entryExists(t, dir, personAddr("tina-translator")) {
+		t.Error("the uncredited translator was created")
+	}
+	want := []UnrecordedCredit{{ASIN: "B000000001", Name: "Tina Translator", Roles: []string{model.RoleTranslator}, Work: "das-buch"}}
+	if !reflect.DeepEqual(sum.UnrecordedCredits, want) {
+		t.Errorf("unrecorded = %+v, want %+v", sum.UnrecordedCredits, want)
+	}
+	if got := orphanPeople(t, dir); len(got) != 0 {
+		t.Errorf("orphans: %v", got)
+	}
+}
