@@ -1537,7 +1537,13 @@
           "cover_url": "https://archive.org/download/notes_campfollower_western_front_1704_librivox/notesofcampfolloweronwesternfront_1704.jpg",
           "id": "clive-catterall",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "War & Military",
+            "Memoirs"
+          ],
           "librivox_id": 11416,
+          "librivox_title": "Notes of a Camp Follower on the Western Front",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/notes-of-a-camp-follower-on-the-western-front-by-e-w-hornung/",
@@ -2131,66 +2137,99 @@
             {
               "audio_url": "https://www.archive.org/download/notes_war_correspondent_1005_librivox/notesofwarcorrespondent_01_davis_64kb.mp3",
               "length_ms": 892000,
+              "readers": [
+                "barry-eads"
+              ],
               "start_ms": 0,
               "title": "01 - The Cuban-Spanish War: The Death of Rodriguez"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_war_correspondent_1005_librivox/notesofwarcorrespondent_02_davis_64kb.mp3",
               "length_ms": 2226000,
+              "readers": [
+                "julie-vw"
+              ],
               "start_ms": 892000,
               "title": "02 - The Greek-Turkish War: The Battle of Velestinos"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_war_correspondent_1005_librivox/notesofwarcorrespondent_03_davis_64kb.mp3",
               "length_ms": 2976000,
+              "readers": [
+                "bradley-smith"
+              ],
               "start_ms": 3118000,
               "title": "03 - The Spanish-American War: The Rough Riders at Guasimas"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_war_correspondent_1005_librivox/notesofwarcorrespondent_04_davis_64kb.mp3",
               "length_ms": 2515000,
+              "readers": [
+                "robert-parker"
+              ],
               "start_ms": 6094000,
               "title": "04 - The Spanish-American War: The Battle of San Juan Hill"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_war_correspondent_1005_librivox/notesofwarcorrespondent_05_davis_64kb.mp3",
               "length_ms": 866000,
+              "readers": [
+                "matt-judd"
+              ],
               "start_ms": 8609000,
               "title": "05 - The Spanish-American War: The Taking of Coamo"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_war_correspondent_1005_librivox/notesofwarcorrespondent_06_davis_64kb.mp3",
               "length_ms": 1502000,
+              "readers": [
+                "matt-judd"
+              ],
               "start_ms": 9475000,
               "title": "06 - The Spanish-American War: The Passing of San Juan Hill"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_war_correspondent_1005_librivox/notesofwarcorrespondent_07_davis_64kb.mp3",
               "length_ms": 1574000,
+              "readers": [
+                "jeanne-luft"
+              ],
               "start_ms": 10977000,
               "title": "07 - The South African War: With Buller’s Column"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_war_correspondent_1005_librivox/notesofwarcorrespondent_08_davis_64kb.mp3",
               "length_ms": 1958000,
+              "readers": [
+                "richard-kilmer-1942-2022"
+              ],
               "start_ms": 12551000,
               "title": "08 - The South African War: The Relief of Ladysmith"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_war_correspondent_1005_librivox/notesofwarcorrespondent_09_davis_64kb.mp3",
               "length_ms": 2097000,
+              "readers": [
+                "richard-kilmer-1942-2022"
+              ],
               "start_ms": 14509000,
               "title": "09 - The South African War: The Night Before the Battle"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_war_correspondent_1005_librivox/notesofwarcorrespondent_10_davis_64kb.mp3",
               "length_ms": 1666000,
+              "readers": [
+                "k-a-ference"
+              ],
               "start_ms": 16606000,
               "title": "10 - The Japanese-Russian War: Battles I did not see"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_war_correspondent_1005_librivox/notesofwarcorrespondent_11_davis_64kb.mp3",
               "length_ms": 2342000,
+              "readers": [
+                "richard-kilmer-1942-2022"
+              ],
               "start_ms": 18272000,
               "title": "11 - A War Correspondent’s Kit"
             }
@@ -2199,7 +2238,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt21/notes_war_correspondent_1209.jpg",
           "id": "barry-eads",
           "language": "en",
+          "librivox_genres": [
+            "War & Military",
+            "History",
+            "Memoirs"
+          ],
           "librivox_id": 3985,
+          "librivox_title": "Notes of a War Correspondent",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/notes-of-a-war-correspondent-by-richard-harding-davis/",
@@ -2259,96 +2304,112 @@
             {
               "audio_url": "https://www.archive.org/download/noteseastcoastnaturalist_2005_librivox/noteseastcoastnaturalist_00_patterson_64kb.mp3",
               "length_ms": 241000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Prefatory Note"
             },
             {
               "audio_url": "https://www.archive.org/download/noteseastcoastnaturalist_2005_librivox/noteseastcoastnaturalist_01_patterson_64kb.mp3",
               "length_ms": 1828000,
+              "section_number": 1,
               "start_ms": 241000,
               "title": "Bird Notes Part 1 - From: Swallows' Nesting Sites"
             },
             {
               "audio_url": "https://www.archive.org/download/noteseastcoastnaturalist_2005_librivox/noteseastcoastnaturalist_02_patterson_64kb.mp3",
               "length_ms": 2090000,
+              "section_number": 2,
               "start_ms": 2069000,
               "title": "Bird Notes Part 2 - From: Woodcock Mishaps"
             },
             {
               "audio_url": "https://www.archive.org/download/noteseastcoastnaturalist_2005_librivox/noteseastcoastnaturalist_03_patterson_64kb.mp3",
               "length_ms": 1920000,
+              "section_number": 3,
               "start_ms": 4159000,
               "title": "Bird Notes Part 3 - From: Night in the Reeds"
             },
             {
               "audio_url": "https://www.archive.org/download/noteseastcoastnaturalist_2005_librivox/noteseastcoastnaturalist_04_patterson_64kb.mp3",
               "length_ms": 1804000,
+              "section_number": 4,
               "start_ms": 6079000,
               "title": "Bird Notes Part 4 - From: The Common Scoter"
             },
             {
               "audio_url": "https://www.archive.org/download/noteseastcoastnaturalist_2005_librivox/noteseastcoastnaturalist_05_patterson_64kb.mp3",
               "length_ms": 1894000,
+              "section_number": 5,
               "start_ms": 7883000,
               "title": "Bird Notes Part 5 - From: The Cormorant"
             },
             {
               "audio_url": "https://www.archive.org/download/noteseastcoastnaturalist_2005_librivox/noteseastcoastnaturalist_06_patterson_64kb.mp3",
               "length_ms": 2069000,
+              "section_number": 6,
               "start_ms": 9777000,
               "title": "Bird Notes Part 6 - From: Watching Wild Ducks"
             },
             {
               "audio_url": "https://www.archive.org/download/noteseastcoastnaturalist_2005_librivox/noteseastcoastnaturalist_07_patterson_64kb.mp3",
               "length_ms": 2065000,
+              "section_number": 7,
               "start_ms": 11846000,
               "title": "Bird Notes Part 7 - From: Flights of Wood-Pigeons"
             },
             {
               "audio_url": "https://www.archive.org/download/noteseastcoastnaturalist_2005_librivox/noteseastcoastnaturalist_08_patterson_64kb.mp3",
               "length_ms": 2043000,
+              "section_number": 8,
               "start_ms": 13911000,
               "title": "Bird Notes Part 8 - From: The Land Dotterel"
             },
             {
               "audio_url": "https://www.archive.org/download/noteseastcoastnaturalist_2005_librivox/noteseastcoastnaturalist_09_patterson_64kb.mp3",
               "length_ms": 2370000,
+              "section_number": 9,
               "start_ms": 15954000,
               "title": "Bird Notes Part 9 - From: The Curlew"
             },
             {
               "audio_url": "https://www.archive.org/download/noteseastcoastnaturalist_2005_librivox/noteseastcoastnaturalist_10_patterson_64kb.mp3",
               "length_ms": 2371000,
+              "section_number": 10,
               "start_ms": 18324000,
               "title": "Bird Notes Part 10 - From: A Corvine Immigration"
             },
             {
               "audio_url": "https://www.archive.org/download/noteseastcoastnaturalist_2005_librivox/noteseastcoastnaturalist_11_patterson_64kb.mp3",
               "length_ms": 2037000,
+              "section_number": 11,
               "start_ms": 20695000,
               "title": "Fish Notes Part 1 - From: Grey Mullet"
             },
             {
               "audio_url": "https://www.archive.org/download/noteseastcoastnaturalist_2005_librivox/noteseastcoastnaturalist_12_patterson_64kb.mp3",
               "length_ms": 2232000,
+              "section_number": 12,
               "start_ms": 22732000,
               "title": "Fish Notes Part 2 - From: Deformed Codfishes"
             },
             {
               "audio_url": "https://www.archive.org/download/noteseastcoastnaturalist_2005_librivox/noteseastcoastnaturalist_13_patterson_64kb.mp3",
               "length_ms": 2246000,
+              "section_number": 13,
               "start_ms": 24964000,
               "title": "Fish Notes Part 3 - From: Some Eel Notes"
             },
             {
               "audio_url": "https://www.archive.org/download/noteseastcoastnaturalist_2005_librivox/noteseastcoastnaturalist_14_patterson_64kb.mp3",
               "length_ms": 2613000,
+              "section_number": 14,
               "start_ms": 27210000,
               "title": "Miscellaneous Notes Part 1 - From: On Dogs"
             },
             {
               "audio_url": "https://www.archive.org/download/noteseastcoastnaturalist_2005_librivox/noteseastcoastnaturalist_15_patterson_64kb.mp3",
               "length_ms": 1865000,
+              "section_number": 15,
               "start_ms": 29823000,
               "title": "Miscellaneous Notes Part 2 - From: Toad Notes"
             }
@@ -2357,7 +2418,13 @@
           "cover_url": "https://archive.org/download/noteseastcoastnaturalist_2005_librivox/noteseastcoastnaturalist_2005_librivox.jpg",
           "id": "tnd",
           "language": "en",
+          "librivox_genres": [
+            "Nature",
+            "Travel & Geography",
+            "Life Sciences"
+          ],
           "librivox_id": 15058,
+          "librivox_title": "Notes of An East Coast Naturalist",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/notes-of-an-east-coast-naturalist-by-arthur-henry-patterson/",
@@ -3946,7 +4013,12 @@
           "cover_url": "https://archive.org/download/notesondemocracy_2211_librivox/notes_democracy_2211.jpg",
           "id": "lisa-reichert",
           "language": "en",
+          "librivox_genres": [
+            "Political Science",
+            "Social Science (Culture & Anthropology)"
+          ],
           "librivox_id": 17879,
+          "librivox_title": "Notes On Democracy",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/notes-on-democracy-by-h-l-mencken/",
@@ -4377,7 +4449,11 @@
           "cover_url": "https://archive.org/download/notes_on_life_and_letters_2304_librivox/notesonlifeandletters_2304.jpg",
           "id": "peter-dann",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction"
+          ],
           "librivox_id": 19071,
+          "librivox_title": "Notes on Life and Letters",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/notes-on-life-and-letters-by-joseph-conrad/",
@@ -4431,90 +4507,105 @@
             {
               "audio_url": "https://www.archive.org/download/notes_on_nursing_1005_librivox/notesonnursing_00_nightingale_64kb.mp3",
               "length_ms": 646000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 - Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_nursing_1005_librivox/notesonnursing_01_nightingale_64kb.mp3",
               "length_ms": 1154000,
+              "section_number": 1,
               "start_ms": 646000,
               "title": "01 - Ventilation and Warming"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_nursing_1005_librivox/notesonnursing_02_nightingale_64kb.mp3",
               "length_ms": 1105000,
+              "section_number": 2,
               "start_ms": 1800000,
               "title": "02 - Health of Houses"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_nursing_1005_librivox/notesonnursing_03_nightingale_64kb.mp3",
               "length_ms": 773000,
+              "section_number": 3,
               "start_ms": 2905000,
               "title": "03 - Petty Management"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_nursing_1005_librivox/notesonnursing_04_nightingale_64kb.mp3",
               "length_ms": 1539000,
+              "section_number": 4,
               "start_ms": 3678000,
               "title": "04 - Noise"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_nursing_1005_librivox/notesonnursing_05_nightingale_64kb.mp3",
               "length_ms": 546000,
+              "section_number": 5,
               "start_ms": 5217000,
               "title": "05 - Variety"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_nursing_1005_librivox/notesonnursing_06_nightingale_64kb.mp3",
               "length_ms": 708000,
+              "section_number": 6,
               "start_ms": 5763000,
               "title": "06 - Taking Food"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_nursing_1005_librivox/notesonnursing_07_nightingale_64kb.mp3",
               "length_ms": 1017000,
+              "section_number": 7,
               "start_ms": 6471000,
               "title": "07 - What Food?"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_nursing_1005_librivox/notesonnursing_08_nightingale_64kb.mp3",
               "length_ms": 620000,
+              "section_number": 8,
               "start_ms": 7488000,
               "title": "08 - Bed and Bedding"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_nursing_1005_librivox/notesonnursing_09_nightingale_64kb.mp3",
               "length_ms": 403000,
+              "section_number": 9,
               "start_ms": 8108000,
               "title": "09 - Light"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_nursing_1005_librivox/notesonnursing_10_nightingale_64kb.mp3",
               "length_ms": 608000,
+              "section_number": 10,
               "start_ms": 8511000,
               "title": "10 - Cleanliness of Rooms and Walls"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_nursing_1005_librivox/notesonnursing_11_nightingale_64kb.mp3",
               "length_ms": 332000,
+              "section_number": 11,
               "start_ms": 9119000,
               "title": "11 - Personal Cleanliness"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_nursing_1005_librivox/notesonnursing_12_nightingale_64kb.mp3",
               "length_ms": 1063000,
+              "section_number": 12,
               "start_ms": 9451000,
               "title": "12 - Chattering Hopes and Advices"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_nursing_1005_librivox/notesonnursing_13_nightingale_64kb.mp3",
               "length_ms": 2051000,
+              "section_number": 13,
               "start_ms": 10514000,
               "title": "13 - Observation of the Sick"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_nursing_1005_librivox/notesonnursing_14_nightingale_64kb.mp3",
               "length_ms": 1049000,
+              "section_number": 14,
               "start_ms": 12565000,
               "title": "14 - Conclusion"
             }
@@ -4523,7 +4614,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt16/notes_nursing_1204.jpg",
           "id": "cori-samuel",
           "language": "en",
+          "librivox_genres": [
+            "Medical"
+          ],
           "librivox_id": 4247,
+          "librivox_title": "Notes on Nursing",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/notes-on-nursing-by-florence-nightingale/",
@@ -4797,186 +4892,217 @@
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_00_mackintosh_64kb.mp3",
               "length_ms": 772000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_01_mackintosh_64kb.mp3",
               "length_ms": 1901000,
+              "section_number": 1,
               "start_ms": 772000,
               "title": "Chapter 01"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_02_mackintosh_64kb.mp3",
               "length_ms": 1351000,
+              "section_number": 2,
               "start_ms": 2673000,
               "title": "Chapter 02"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_03_mackintosh_64kb.mp3",
               "length_ms": 2508000,
+              "section_number": 3,
               "start_ms": 4024000,
               "title": "Chapter 03"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_04_mackintosh_64kb.mp3",
               "length_ms": 3002000,
+              "section_number": 4,
               "start_ms": 6532000,
               "title": "Chapter 04-05"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_05_mackintosh_64kb.mp3",
               "length_ms": 2726000,
+              "section_number": 5,
               "start_ms": 9534000,
               "title": "Chapter 06-09"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_06_mackintosh_64kb.mp3",
               "length_ms": 365000,
+              "section_number": 6,
               "start_ms": 12260000,
               "title": "Chapter 10"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_07_mackintosh_64kb.mp3",
               "length_ms": 622000,
+              "section_number": 7,
               "start_ms": 12625000,
               "title": "Chapter 11"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_08_mackintosh_64kb.mp3",
               "length_ms": 1890000,
+              "section_number": 8,
               "start_ms": 13247000,
               "title": "Chapter 12"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_09_mackintosh_64kb.mp3",
               "length_ms": 1373000,
+              "section_number": 9,
               "start_ms": 15137000,
               "title": "Chapter 13"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_10_mackintosh_64kb.mp3",
               "length_ms": 730000,
+              "section_number": 10,
               "start_ms": 16510000,
               "title": "Chapter 14"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_11_mackintosh_64kb.mp3",
               "length_ms": 1529000,
+              "section_number": 11,
               "start_ms": 17240000,
               "title": "Chapter 15"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_12_mackintosh_64kb.mp3",
               "length_ms": 1135000,
+              "section_number": 12,
               "start_ms": 18769000,
               "title": "Chapter 16"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_13_mackintosh_64kb.mp3",
               "length_ms": 652000,
+              "section_number": 13,
               "start_ms": 19904000,
               "title": "Chapter 17"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_14_mackintosh_64kb.mp3",
               "length_ms": 912000,
+              "section_number": 14,
               "start_ms": 20556000,
               "title": "Chapter 18"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_15_mackintosh_64kb.mp3",
               "length_ms": 899000,
+              "section_number": 15,
               "start_ms": 21468000,
               "title": "Chapter 19"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_16_mackintosh_64kb.mp3",
               "length_ms": 542000,
+              "section_number": 16,
               "start_ms": 22367000,
               "title": "Chapter 20"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_17_mackintosh_64kb.mp3",
               "length_ms": 872000,
+              "section_number": 17,
               "start_ms": 22909000,
               "title": "Chapter 21"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_18_mackintosh_64kb.mp3",
               "length_ms": 1516000,
+              "section_number": 18,
               "start_ms": 23781000,
               "title": "Chapter 22"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_19_mackintosh_64kb.mp3",
               "length_ms": 534000,
+              "section_number": 19,
               "start_ms": 25297000,
               "title": "Chapter 23"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_20_mackintosh_64kb.mp3",
               "length_ms": 1661000,
+              "section_number": 20,
               "start_ms": 25831000,
               "title": "Chapter 24"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_21_mackintosh_64kb.mp3",
               "length_ms": 305000,
+              "section_number": 21,
               "start_ms": 27492000,
               "title": "Chapter 25"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_22_mackintosh_64kb.mp3",
               "length_ms": 638000,
+              "section_number": 22,
               "start_ms": 27797000,
               "title": "Chapter 26"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_23_mackintosh_64kb.mp3",
               "length_ms": 1311000,
+              "section_number": 23,
               "start_ms": 28435000,
               "title": "Chapter 27-35"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_24_mackintosh_64kb.mp3",
               "length_ms": 898000,
+              "section_number": 24,
               "start_ms": 29746000,
               "title": "Chapter 28"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_25_mackintosh_64kb.mp3",
               "length_ms": 731000,
+              "section_number": 25,
               "start_ms": 30644000,
               "title": "Chapter 29-31"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_26_mackintosh_64kb.mp3",
               "length_ms": 901000,
+              "section_number": 26,
               "start_ms": 31375000,
               "title": "Chapter 32"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_27_mackintosh_64kb.mp3",
               "length_ms": 562000,
+              "section_number": 27,
               "start_ms": 32276000,
               "title": "Chapter 33-34"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_28_mackintosh_64kb.mp3",
               "length_ms": 459000,
+              "section_number": 28,
               "start_ms": 32838000,
               "title": "Chapter 35"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_29_mackintosh_64kb.mp3",
               "length_ms": 483000,
+              "section_number": 29,
               "start_ms": 33297000,
               "title": "Chapter 36-50"
             },
             {
               "audio_url": "https://www.archive.org/download/note_genesis_1207/notesonthebookofgenesis_30_mackintosh_64kb.mp3",
               "length_ms": 1432000,
+              "section_number": 30,
               "start_ms": 33780000,
               "title": "Chapter 38-45"
             }
@@ -4985,7 +5111,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt30/notes_genesis_1303.jpg",
           "id": "christopher-smith",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Christianity - Commentary"
+          ],
           "librivox_id": 6740,
+          "librivox_title": "Notes on the Book of Genesis",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/notes-on-the-book-of-genesis-by-charles-h-mackintosh/",
@@ -5036,102 +5167,119 @@
             {
               "audio_url": "https://www.archive.org/download/notes_on_the_broads_and_rivers_of_norfolk_and_suffolk_1_librivox/notesbroadsandrivers_00_brittain_64kb.mp3",
               "length_ms": 184000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_the_broads_and_rivers_of_norfolk_and_suffolk_1_librivox/notesbroadsandrivers_01_brittain_64kb.mp3",
               "length_ms": 697000,
+              "section_number": 1,
               "start_ms": 184000,
               "title": "Introductory"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_the_broads_and_rivers_of_norfolk_and_suffolk_1_librivox/notesbroadsandrivers_02_brittain_64kb.mp3",
               "length_ms": 1743000,
+              "section_number": 2,
               "start_ms": 881000,
               "title": "Norwich to Lowestoft"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_the_broads_and_rivers_of_norfolk_and_suffolk_1_librivox/notesbroadsandrivers_03_brittain_64kb.mp3",
               "length_ms": 1377000,
+              "section_number": 3,
               "start_ms": 2624000,
               "title": "Digressional and Otherwise"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_the_broads_and_rivers_of_norfolk_and_suffolk_1_librivox/notesbroadsandrivers_04_brittain_64kb.mp3",
               "length_ms": 1217000,
+              "section_number": 4,
               "start_ms": 4001000,
               "title": "Lowestoft to Beccles"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_the_broads_and_rivers_of_norfolk_and_suffolk_1_librivox/notesbroadsandrivers_05_brittain_64kb.mp3",
               "length_ms": 1162000,
+              "section_number": 5,
               "start_ms": 5218000,
               "title": "Beccles to St Olaves"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_the_broads_and_rivers_of_norfolk_and_suffolk_1_librivox/notesbroadsandrivers_06_brittain_64kb.mp3",
               "length_ms": 1791000,
+              "section_number": 6,
               "start_ms": 6380000,
               "title": "St Olaves to Yarmouth and Acle"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_the_broads_and_rivers_of_norfolk_and_suffolk_1_librivox/notesbroadsandrivers_07_brittain_64kb.mp3",
               "length_ms": 425000,
+              "section_number": 7,
               "start_ms": 8171000,
               "title": "Acle to Wroxham"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_the_broads_and_rivers_of_norfolk_and_suffolk_1_librivox/notesbroadsandrivers_08_brittain_64kb.mp3",
               "length_ms": 702000,
+              "section_number": 8,
               "start_ms": 8596000,
               "title": "Wroxham Broad to Little Switzerland and Horning"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_the_broads_and_rivers_of_norfolk_and_suffolk_1_librivox/notesbroadsandrivers_09_brittain_64kb.mp3",
               "length_ms": 1075000,
+              "section_number": 9,
               "start_ms": 9298000,
               "title": "Horning to Potter Heigham and Waxham"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_the_broads_and_rivers_of_norfolk_and_suffolk_1_librivox/notesbroadsandrivers_10_brittain_64kb.mp3",
               "length_ms": 868000,
+              "section_number": 10,
               "start_ms": 10373000,
               "title": "Waxham to Palling"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_the_broads_and_rivers_of_norfolk_and_suffolk_1_librivox/notesbroadsandrivers_11_brittain_64kb.mp3",
               "length_ms": 1324000,
+              "section_number": 11,
               "start_ms": 11241000,
               "title": "Palling to Hickling and Martham"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_the_broads_and_rivers_of_norfolk_and_suffolk_1_librivox/notesbroadsandrivers_12_brittain_64kb.mp3",
               "length_ms": 1457000,
+              "section_number": 12,
               "start_ms": 12565000,
               "title": "Potter Heigham to Acle"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_the_broads_and_rivers_of_norfolk_and_suffolk_1_librivox/notesbroadsandrivers_13_brittain_64kb.mp3",
               "length_ms": 1137000,
+              "section_number": 13,
               "start_ms": 14022000,
               "title": "Acle to Wroxham Bridge"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_the_broads_and_rivers_of_norfolk_and_suffolk_1_librivox/notesbroadsandrivers_14_brittain_64kb.mp3",
               "length_ms": 1813000,
+              "section_number": 14,
               "start_ms": 15159000,
               "title": "Wroxham to Barton and Acle"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_the_broads_and_rivers_of_norfolk_and_suffolk_1_librivox/notesbroadsandrivers_15_brittain_64kb.mp3",
               "length_ms": 962000,
+              "section_number": 15,
               "start_ms": 16972000,
               "title": "Up the Muck Fleet to Filby, Rollesby and Ormesby"
             },
             {
               "audio_url": "https://www.archive.org/download/notes_on_the_broads_and_rivers_of_norfolk_and_suffolk_1_librivox/notesbroadsandrivers_16_brittain_64kb.mp3",
               "length_ms": 289000,
+              "section_number": 16,
               "start_ms": 17934000,
               "title": "The Fisheries and their Preservation"
             }
@@ -5140,7 +5288,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt13/notesbrsn_1601.jpg",
           "id": "tnd",
           "language": "en",
+          "librivox_genres": [
+            "Travel & Geography"
+          ],
           "librivox_id": 10440,
+          "librivox_title": "Notes on The Broads and Rivers of Norfolk and Suffolk",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/notes-on-the-broads-and-rivers-of-norfolk-and-suffolk-by-harry-brittain/",
@@ -10730,7 +10882,11 @@
           "cover_url": "https://archive.org/download/nothing_but_the_truth_1312_librivox/nothing_but_truth_1312.jpg",
           "id": "lee-smalley",
           "language": "en",
+          "librivox_genres": [
+            "Humorous Fiction"
+          ],
           "librivox_id": 8300,
+          "librivox_title": "Nothing But the Truth",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/nothing-but-the-truth-by-frederic-stewart-isham/",

@@ -2534,90 +2534,135 @@
             {
               "audio_url": "https://www.archive.org/download/smokealtar_1301_librivox/smokeuponyouraltardies_kipling_alp_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 0,
               "title": "The Smoke Upon Your Altar Dies - Read by ALP"
             },
             {
               "audio_url": "https://www.archive.org/download/smokealtar_1301_librivox/smokeuponyouraltardies_kipling_cc_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "chiquito-crasto"
+              ],
               "start_ms": 65000,
               "title": "The Smoke Upon Your Altar Dies - Read by CC"
             },
             {
               "audio_url": "https://www.archive.org/download/smokealtar_1301_librivox/smokeuponyouraltardies_kipling_cmp_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "caprishapage"
+              ],
               "start_ms": 136000,
               "title": "The Smoke Upon Your Altar Dies - Read by CMP"
             },
             {
               "audio_url": "https://www.archive.org/download/smokealtar_1301_librivox/smokeuponyouraltardies_kipling_dl_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 208000,
               "title": "The Smoke Upon Your Altar Dies - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/smokealtar_1301_librivox/smokeuponyouraltardies_kipling_elli_64kb.mp3",
               "length_ms": 56000,
+              "readers": [
+                "elli"
+              ],
               "start_ms": 273000,
               "title": "The Smoke Upon Your Altar Dies - Read by Elli"
             },
             {
               "audio_url": "https://www.archive.org/download/smokealtar_1301_librivox/smokeuponyouraltardies_kipling_fs_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "fshort"
+              ],
               "start_ms": 329000,
               "title": "The Smoke Upon Your Altar Dies - Read by FS"
             },
             {
               "audio_url": "https://www.archive.org/download/smokealtar_1301_librivox/smokeuponyouraltardies_kipling_gc_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "snapdragon"
+              ],
               "start_ms": 402000,
               "title": "The Smoke Upon Your Altar Dies - Read by GC"
             },
             {
               "audio_url": "https://www.archive.org/download/smokealtar_1301_librivox/smokeuponyouraltardies_kipling_haa_64kb.mp3",
               "length_ms": 59000,
+              "readers": [
+                "heidi-alford"
+              ],
               "start_ms": 472000,
               "title": "The Smoke Upon Your Altar Dies - Read by HAA"
             },
             {
               "audio_url": "https://www.archive.org/download/smokealtar_1301_librivox/smokeuponyouraltardies_kipling_ik_64kb.mp3",
               "length_ms": 86000,
+              "readers": [
+                "ian-king"
+              ],
               "start_ms": 531000,
               "title": "The Smoke Upon Your Altar Dies - Read by IK"
             },
             {
               "audio_url": "https://www.archive.org/download/smokealtar_1301_librivox/smokeuponyouraltardies_kipling_jcm_64kb.mp3",
               "length_ms": 56000,
+              "readers": [
+                "jason-mills"
+              ],
               "start_ms": 617000,
               "title": "The Smoke Upon Your Altar Dies - Read by JCM"
             },
             {
               "audio_url": "https://www.archive.org/download/smokealtar_1301_librivox/smokeuponyouraltardies_kipling_jm2_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "jannie-meisberger"
+              ],
               "start_ms": 673000,
               "title": "The Smoke Upon Your Altar Dies - Read by JM2"
             },
             {
               "audio_url": "https://www.archive.org/download/smokealtar_1301_librivox/smokeuponyouraltardies_kipling_lah_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 741000,
               "title": "The Smoke Upon Your Altar Dies - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/smokealtar_1301_librivox/smokeuponyouraltardies_kipling_mc_64kb.mp3",
               "length_ms": 64000,
+              "readers": [
+                "mlcui"
+              ],
               "start_ms": 806000,
               "title": "The Smoke Upon Your Altar Dies - Read by MC"
             },
             {
               "audio_url": "https://www.archive.org/download/smokealtar_1301_librivox/smokeuponyouraltardies_kipling_rn_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 870000,
               "title": "The Smoke Upon Your Altar Dies - Read by RN"
             },
             {
               "audio_url": "https://www.archive.org/download/smokealtar_1301_librivox/smokeuponyouraltardies_kipling_s4t_64kb.mp3",
               "length_ms": 43000,
+              "readers": [
+                "socks4tay"
+              ],
               "start_ms": 946000,
               "title": "The Smoke Upon Your Altar Dies - Read by S4T"
             }
@@ -2625,7 +2670,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt31/Smoke_Altar_Dies_1306.jpg",
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Fantastic Fiction",
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 7386,
+          "librivox_title": "Smoke Upon Your Altar Dies",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-smoke-upon-your-altar-dies-by-rudyard-kipling/",
@@ -7135,7 +7186,11 @@
           "cover_url": "https://archive.org/download/smoking_leg_and_other_stories_2305_librivox/smoking_leg_2305.jpg",
           "id": "ben-tucker",
           "language": "en",
+          "librivox_genres": [
+            "Horror & Supernatural Fiction"
+          ],
           "librivox_id": 19232,
+          "librivox_title": "Smoking Leg and Other Stories",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-smoking-leg-and-other-stories-by-john-metcalfe/",
@@ -7617,7 +7672,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt30/smoky_god_1304.jpg",
           "id": "jaysands",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Fantastic Fiction",
+            "Science Fiction"
+          ],
           "librivox_id": 7417,
+          "librivox_title": "Smoky God or a Voyage to the Inner World",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-smoky-god-or-a-voyage-journey-to-the-inner-earth-by-willis-george-emerson/",
@@ -8211,90 +8272,105 @@
             {
               "audio_url": "https://www.archive.org/download/smoky_the_cowhorse_2301_librivox/smokythecowhorse_00_james_64kb.mp3",
               "length_ms": 227000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/smoky_the_cowhorse_2301_librivox/smokythecowhorse_01_james_64kb.mp3",
               "length_ms": 1999000,
+              "section_number": 1,
               "start_ms": 227000,
               "title": "Chapter I. A range colt"
             },
             {
               "audio_url": "https://www.archive.org/download/smoky_the_cowhorse_2301_librivox/smokythecowhorse_02_james_64kb.mp3",
               "length_ms": 1791000,
+              "section_number": 2,
               "start_ms": 2226000,
               "title": "Chapter II. Smoky meets the human"
             },
             {
               "audio_url": "https://www.archive.org/download/smoky_the_cowhorse_2301_librivox/smokythecowhorse_03_james_64kb.mp3",
               "length_ms": 1968000,
+              "section_number": 3,
               "start_ms": 4017000,
               "title": "Chapter III. Where The Trails Fork"
             },
             {
               "audio_url": "https://www.archive.org/download/smoky_the_cowhorse_2301_librivox/smokythecowhorse_04_james_64kb.mp3",
               "length_ms": 2107000,
+              "section_number": 4,
               "start_ms": 5985000,
               "title": "Chapter IV. The End Of A Rope"
             },
             {
               "audio_url": "https://www.archive.org/download/smoky_the_cowhorse_2301_librivox/smokythecowhorse_05_james_64kb.mp3",
               "length_ms": 2141000,
+              "section_number": 5,
               "start_ms": 8092000,
               "title": "Chapter V. The Bronc Twister Steps Up"
             },
             {
               "audio_url": "https://www.archive.org/download/smoky_the_cowhorse_2301_librivox/smokythecowhorse_06_james_64kb.mp3",
               "length_ms": 2061000,
+              "section_number": 6,
               "start_ms": 10233000,
               "title": "Chapter VI. ''The Squeak Of Leather''"
             },
             {
               "audio_url": "https://www.archive.org/download/smoky_the_cowhorse_2301_librivox/smokythecowhorse_07_james_64kb.mp3",
               "length_ms": 1731000,
+              "section_number": 7,
               "start_ms": 12294000,
               "title": "Chapter VII. Smoky Shows His Feelings"
             },
             {
               "audio_url": "https://www.archive.org/download/smoky_the_cowhorse_2301_librivox/smokythecowhorse_08_james_64kb.mp3",
               "length_ms": 2257000,
+              "section_number": 8,
               "start_ms": 14025000,
               "title": "Chapter VIII. Smoky Starts Out"
             },
             {
               "audio_url": "https://www.archive.org/download/smoky_the_cowhorse_2301_librivox/smokythecowhorse_09_james_64kb.mp3",
               "length_ms": 2301000,
+              "section_number": 9,
               "start_ms": 16282000,
               "title": "Chapter IX. Fights For Rights"
             },
             {
               "audio_url": "https://www.archive.org/download/smoky_the_cowhorse_2301_librivox/smokythecowhorse_10_james_64kb.mp3",
               "length_ms": 2166000,
+              "section_number": 10,
               "start_ms": 18583000,
               "title": "Chapter X. ''Amongst The Missing''"
             },
             {
               "audio_url": "https://www.archive.org/download/smoky_the_cowhorse_2301_librivox/smokythecowhorse_11_james_64kb.mp3",
               "length_ms": 2188000,
+              "section_number": 11,
               "start_ms": 20749000,
               "title": "Chapter XI. ''The Feel Of A Strange Hand''"
             },
             {
               "audio_url": "https://www.archive.org/download/smoky_the_cowhorse_2301_librivox/smokythecowhorse_12_james_64kb.mp3",
               "length_ms": 2268000,
+              "section_number": 12,
               "start_ms": 22937000,
               "title": "Chapter XII. ''When The Good Leaves''"
             },
             {
               "audio_url": "https://www.archive.org/download/smoky_the_cowhorse_2301_librivox/smokythecowhorse_13_james_64kb.mp3",
               "length_ms": 2103000,
+              "section_number": 13,
               "start_ms": 25205000,
               "title": "Chapter XIII. ''The Many-Men Horse''"
             },
             {
               "audio_url": "https://www.archive.org/download/smoky_the_cowhorse_2301_librivox/smokythecowhorse_14_james_64kb.mp3",
               "length_ms": 2163000,
+              "section_number": 14,
               "start_ms": 27308000,
               "title": "Chapter XIV. ''Dark Clouds, Then Tall Grass''"
             }
@@ -8303,7 +8379,11 @@
           "cover_url": "https://archive.org/download/smoky_the_cowhorse_2301_librivox/smoky_2301.jpg",
           "id": "javaat",
           "language": "en",
+          "librivox_genres": [
+            "Nature & Animal Fiction"
+          ],
           "librivox_id": 18380,
+          "librivox_title": "Smoky The Cowhorse",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/smoky-the-cowhorse-by-will-james/",

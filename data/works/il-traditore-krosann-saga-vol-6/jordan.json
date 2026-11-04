@@ -1656,7 +1656,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt25/jordens_inre_1211.jpg",
           "id": "petra",
           "language": "sv",
+          "librivox_genres": [
+            "General Fiction",
+            "Science Fiction"
+          ],
           "librivox_id": 6719,
+          "librivox_title": "Jordens Inre",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/jordens-inre-by-otto-witt/",
@@ -3672,138 +3677,424 @@
             {
               "audio_url": "https://www.archive.org/download/josboys_1804_librivox/josboys_00_alcott_64kb.mp3",
               "length_ms": 238000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Dramatis Personae"
             },
             {
               "audio_url": "https://www.archive.org/download/josboys_1804_librivox/josboys_01_alcott_64kb.mp3",
               "length_ms": 1958000,
+              "readers": [
+                "maryann",
+                "beth-thomas-1974-2020",
+                "toddhw",
+                "rachel",
+                "adele-de-pignerolles",
+                "twinkle",
+                "christine-lehman",
+                "abfries",
+                "mckinnie-lee-sizemore"
+              ],
+              "section_number": 1,
               "start_ms": 238000,
               "title": "Chapter 1: Ten Years Later"
             },
             {
               "audio_url": "https://www.archive.org/download/josboys_1804_librivox/josboys_02_alcott_64kb.mp3",
               "length_ms": 2159000,
+              "readers": [
+                "maryann",
+                "beth-thomas-1974-2020",
+                "delmar-h-dolbier",
+                "paul-simonin",
+                "esther-ben-simonides",
+                "zames-curran",
+                "jael-baldwin",
+                "george-allen",
+                "hannah-mary",
+                "twinkle",
+                "christine-lehman",
+                "romano",
+                "abfries",
+                "rachel-lundstrom"
+              ],
+              "section_number": 2,
               "start_ms": 2196000,
               "title": "Chapter 2: Parnassus"
             },
             {
               "audio_url": "https://www.archive.org/download/josboys_1804_librivox/josboys_03_alcott_64kb.mp3",
               "length_ms": 2379000,
+              "readers": [
+                "maryann",
+                "paul-simonin",
+                "kangaroo",
+                "zames-curran",
+                "jael-baldwin",
+                "leanne-yau",
+                "twinkle",
+                "christine-lehman",
+                "tomas-peter",
+                "devorah-allen",
+                "abfries",
+                "brenda-davidson",
+                "rachel-lundstrom",
+                "barbara-anne-scott",
+                "laura-riley",
+                "starling-reader"
+              ],
+              "section_number": 3,
               "start_ms": 4355000,
               "title": "Chapter 3: Jo's Last Scrape"
             },
             {
               "audio_url": "https://www.archive.org/download/josboys_1804_librivox/josboys_04_alcott_64kb.mp3",
               "length_ms": 2084000,
+              "readers": [
+                "maryann",
+                "delmar-h-dolbier",
+                "toddhw",
+                "rachel",
+                "esther-ben-simonides",
+                "adele-de-pignerolles",
+                "george-allen",
+                "twinkle",
+                "christine-lehman",
+                "tomas-peter",
+                "devorah-allen",
+                "romano",
+                "abfries",
+                "mckinnie-lee-sizemore"
+              ],
+              "section_number": 4,
               "start_ms": 6734000,
               "title": "Chapter 4: Dan"
             },
             {
               "audio_url": "https://www.archive.org/download/josboys_1804_librivox/josboys_05_alcott_64kb.mp3",
               "length_ms": 2847000,
+              "readers": [
+                "maryann",
+                "beth-thomas-1974-2020",
+                "toddhw",
+                "rachel",
+                "paul-simonin",
+                "esther-ben-simonides",
+                "adele-de-pignerolles",
+                "kangaroo",
+                "zames-curran",
+                "jael-baldwin",
+                "george-allen",
+                "leanne-yau",
+                "twinkle",
+                "christine-lehman",
+                "tomas-peter",
+                "devorah-allen",
+                "romano",
+                "abfries",
+                "rachel-lundstrom",
+                "margaretd",
+                "alex-inigo",
+                "will-the-ninja",
+                "mckinnie-lee-sizemore"
+              ],
+              "section_number": 5,
               "start_ms": 8818000,
               "title": "Chapter 5: Vacation"
             },
             {
               "audio_url": "https://www.archive.org/download/josboys_1804_librivox/josboys_06_alcott_64kb.mp3",
               "length_ms": 2172000,
+              "readers": [
+                "maryann",
+                "beth-thomas-1974-2020",
+                "zames-curran",
+                "george-allen",
+                "christine-lehman",
+                "tomas-peter"
+              ],
+              "section_number": 6,
               "start_ms": 11665000,
               "title": "Chapter 6: Last Words"
             },
             {
               "audio_url": "https://www.archive.org/download/josboys_1804_librivox/josboys_07_alcott_64kb.mp3",
               "length_ms": 1988000,
+              "readers": [
+                "maryann",
+                "delmar-h-dolbier",
+                "paul-simonin",
+                "adele-de-pignerolles",
+                "kangaroo",
+                "christine-lehman",
+                "abfries",
+                "recordingperson"
+              ],
+              "section_number": 7,
               "start_ms": 13837000,
               "title": "Chapter 7: The Lion and the Lamb"
             },
             {
               "audio_url": "https://www.archive.org/download/josboys_1804_librivox/josboys_08_alcott_64kb.mp3",
               "length_ms": 1891000,
+              "readers": [
+                "twinkle",
+                "christine-lehman",
+                "romano",
+                "michelle-kane"
+              ],
+              "section_number": 8,
               "start_ms": 15825000,
               "title": "Chapter 8: Josie Plays Mermaid"
             },
             {
               "audio_url": "https://www.archive.org/download/josboys_1804_librivox/josboys_09_alcott_64kb.mp3",
               "length_ms": 1733000,
+              "readers": [
+                "maryann",
+                "toddhw",
+                "adele-de-pignerolles",
+                "christine-lehman",
+                "abfries",
+                "mckinnie-lee-sizemore"
+              ],
+              "section_number": 9,
               "start_ms": 17716000,
               "title": "Chapter 9: The Worm Turns"
             },
             {
               "audio_url": "https://www.archive.org/download/josboys_1804_librivox/josboys_10_alcott_64kb.mp3",
               "length_ms": 1315000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "twinkle",
+                "christine-lehman",
+                "mckinnie-lee-sizemore"
+              ],
+              "section_number": 10,
               "start_ms": 19449000,
               "title": "Chapter 10: Demi Settles"
             },
             {
               "audio_url": "https://www.archive.org/download/josboys_1804_librivox/josboys_11_alcott_64kb.mp3",
               "length_ms": 1087000,
+              "readers": [
+                "delmar-h-dolbier",
+                "george-allen",
+                "christine-lehman",
+                "stacy-simon",
+                "sherlholmesmd",
+                "m-licciardello"
+              ],
+              "section_number": 11,
               "start_ms": 20764000,
               "title": "Chapter 11: Emil's Thanksgiving"
             },
             {
               "audio_url": "https://www.archive.org/download/josboys_1804_librivox/josboys_12_alcott_64kb.mp3",
               "length_ms": 1415000,
+              "readers": [
+                "drew-johnson",
+                "leanne-yau",
+                "christine-lehman",
+                "tomas-peter",
+                "chee-sing-lee",
+                "m-licciardello",
+                "alex-inigo"
+              ],
+              "section_number": 12,
               "start_ms": 21851000,
               "title": "Chapter 12: Dan's Christmas"
             },
             {
               "audio_url": "https://www.archive.org/download/josboys_1804_librivox/josboys_13_alcott_64kb.mp3",
               "length_ms": 1654000,
+              "readers": [
+                "kalynda",
+                "maryann",
+                "david-olson",
+                "paul-simonin",
+                "kangaroo",
+                "zames-curran",
+                "sonia",
+                "christine-lehman",
+                "romano",
+                "eva-davis-d-2025",
+                "abfries"
+              ],
+              "section_number": 13,
               "start_ms": 23266000,
               "title": "Chapter 13: Nat's New Year"
             },
             {
               "audio_url": "https://www.archive.org/download/josboys_1804_librivox/josboys_14_alcott_64kb.mp3",
               "length_ms": 2126000,
+              "readers": [
+                "maryann",
+                "beth-thomas-1974-2020",
+                "toddhw",
+                "esther-ben-simonides",
+                "adele-de-pignerolles",
+                "jael-baldwin",
+                "leanne-yau",
+                "twinkle",
+                "christine-lehman",
+                "romano",
+                "michelle-kane",
+                "trudibvoice",
+                "rachel-lundstrom",
+                "barbara-anne-scott",
+                "mckinnie-lee-sizemore"
+              ],
+              "section_number": 14,
               "start_ms": 24920000,
               "title": "Chapter 14: Plays at Plumfield"
             },
             {
               "audio_url": "https://www.archive.org/download/josboys_1804_librivox/josboys_15_alcott_64kb.mp3",
               "length_ms": 1056000,
+              "readers": [
+                "maryann",
+                "beth-thomas-1974-2020",
+                "paul-simonin",
+                "kangaroo",
+                "tenorboy",
+                "christine-lehman",
+                "tomas-peter",
+                "abfries",
+                "shasta"
+              ],
+              "section_number": 15,
               "start_ms": 27046000,
               "title": "Chapter 15: Waiting"
             },
             {
               "audio_url": "https://www.archive.org/download/josboys_1804_librivox/josboys_16_alcott_64kb.mp3",
               "length_ms": 1742000,
+              "readers": [
+                "maryann",
+                "esther-ben-simonides",
+                "twinkle",
+                "christine-lehman",
+                "alex-inigo",
+                "will-the-ninja"
+              ],
+              "section_number": 16,
               "start_ms": 28102000,
               "title": "Chapter 16: In the Tennis-Court"
             },
             {
               "audio_url": "https://www.archive.org/download/josboys_1804_librivox/josboys_17_alcott_64kb.mp3",
               "length_ms": 1568000,
+              "readers": [
+                "maryann",
+                "beth-thomas-1974-2020",
+                "esther-ben-simonides",
+                "jael-baldwin",
+                "leanne-yau",
+                "twinkle",
+                "christine-lehman",
+                "devorah-allen",
+                "diane-alailima",
+                "brenda-davidson",
+                "rachel-lundstrom",
+                "barbara-anne-scott",
+                "laura-riley",
+                "julie-barkley"
+              ],
+              "section_number": 17,
               "start_ms": 29844000,
               "title": "Chapter 17: Among the Maids"
             },
             {
               "audio_url": "https://www.archive.org/download/josboys_1804_librivox/josboys_18_alcott_64kb.mp3",
               "length_ms": 1575000,
+              "readers": [
+                "maryann",
+                "rachel",
+                "paul-simonin",
+                "debbie-frim",
+                "kangaroo",
+                "george-allen",
+                "leanne-yau",
+                "twinkle",
+                "christine-lehman",
+                "abfries",
+                "sherlholmesmd"
+              ],
+              "section_number": 18,
               "start_ms": 31412000,
               "title": "Chapter 18: Class Day"
             },
             {
               "audio_url": "https://www.archive.org/download/josboys_1804_librivox/josboys_19_alcott_64kb.mp3",
               "length_ms": 1551000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "toddhw",
+                "rachel",
+                "leanne-yau",
+                "twinkle",
+                "christine-lehman",
+                "rachel-lundstrom",
+                "alex-inigo",
+                "will-the-ninja",
+                "mckinnie-lee-sizemore"
+              ],
+              "section_number": 19,
               "start_ms": 32987000,
               "title": "Chapter 19: White Roses"
             },
             {
               "audio_url": "https://www.archive.org/download/josboys_1804_librivox/josboys_20_alcott_64kb.mp3",
               "length_ms": 1864000,
+              "readers": [
+                "maryann",
+                "toddhw",
+                "kangaroo",
+                "christine-lehman",
+                "tomas-peter",
+                "romano",
+                "abfries"
+              ],
+              "section_number": 20,
               "start_ms": 34538000,
               "title": "Chapter 20: Life for Life"
             },
             {
               "audio_url": "https://www.archive.org/download/josboys_1804_librivox/josboys_21_alcott_64kb.mp3",
               "length_ms": 1702000,
+              "readers": [
+                "maryann",
+                "esther-ben-simonides",
+                "christine-lehman",
+                "tomas-peter"
+              ],
+              "section_number": 21,
               "start_ms": 36402000,
               "title": "Chapter 21: Aslauga's Knight"
             },
             {
               "audio_url": "https://www.archive.org/download/josboys_1804_librivox/josboys_22_alcott_64kb.mp3",
               "length_ms": 1223000,
+              "readers": [
+                "maryann",
+                "beth-thomas-1974-2020",
+                "delmar-h-dolbier",
+                "rachel",
+                "paul-simonin",
+                "esther-ben-simonides",
+                "kangaroo",
+                "zames-curran",
+                "hannah-mary",
+                "twinkle",
+                "christine-lehman",
+                "tomas-peter",
+                "romano",
+                "abfries",
+                "mckinnie-lee-sizemore"
+              ],
+              "section_number": 22,
               "start_ms": 38104000,
               "title": "Chapter 22: Positively Last Appearance"
             }
@@ -3811,7 +4102,13 @@
           "cover_url": "https://archive.org/download/josboys_1804_librivox/jos_boys2_1804.jpg",
           "id": "maryann",
           "language": "en",
+          "librivox_genres": [
+            "Dramatic Readings",
+            "Romance",
+            "Family"
+          ],
           "librivox_id": 11804,
+          "librivox_title": "Jo's Boys (version 2 Dramatic Reading)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/jos-boys-by-louisa-may-alcott-2/",
@@ -3885,132 +4182,198 @@
             {
               "audio_url": "https://www.archive.org/download/jos_boys_0810_librivox/josboys_01_alcott_64kb.mp3",
               "length_ms": 1587000,
+              "readers": [
+                "megan-kunkel"
+              ],
               "start_ms": 0,
               "title": "Ten Years Later"
             },
             {
               "audio_url": "https://www.archive.org/download/jos_boys_0810_librivox/josboys_02_alcott_64kb.mp3",
               "length_ms": 1935000,
+              "readers": [
+                "martina-librivox-2089"
+              ],
               "start_ms": 1587000,
               "title": "Parnassus"
             },
             {
               "audio_url": "https://www.archive.org/download/jos_boys_0810_librivox/josboys_03_alcott_64kb.mp3",
               "length_ms": 2138000,
+              "readers": [
+                "martina-librivox-2089"
+              ],
               "start_ms": 3522000,
               "title": "Jo's Last Scrape"
             },
             {
               "audio_url": "https://www.archive.org/download/jos_boys_0810_librivox/josboys_04_alcott_64kb.mp3",
               "length_ms": 2015000,
+              "readers": [
+                "martina-librivox-2089"
+              ],
               "start_ms": 5660000,
               "title": "Dan"
             },
             {
               "audio_url": "https://www.archive.org/download/jos_boys_0810_librivox/josboys_05_alcott_64kb.mp3",
               "length_ms": 2571000,
+              "readers": [
+                "martina-librivox-2089"
+              ],
               "start_ms": 7675000,
               "title": "Vacation"
             },
             {
               "audio_url": "https://www.archive.org/download/jos_boys_0810_librivox/josboys_06_alcott_64kb.mp3",
               "length_ms": 1940000,
+              "readers": [
+                "martina-librivox-2089"
+              ],
               "start_ms": 10246000,
               "title": "Last Words"
             },
             {
               "audio_url": "https://www.archive.org/download/jos_boys_0810_librivox/josboys_07_alcott_64kb.mp3",
               "length_ms": 1607000,
+              "readers": [
+                "melissa"
+              ],
               "start_ms": 12186000,
               "title": "The Lion and the Lamb"
             },
             {
               "audio_url": "https://www.archive.org/download/jos_boys_0810_librivox/josboys_08_alcott_64kb.mp3",
               "length_ms": 1565000,
+              "readers": [
+                "melissa"
+              ],
               "start_ms": 13793000,
               "title": "Josie Plays Mermaid"
             },
             {
               "audio_url": "https://www.archive.org/download/jos_boys_0810_librivox/josboys_09_alcott_64kb.mp3",
               "length_ms": 1389000,
+              "readers": [
+                "melissa"
+              ],
               "start_ms": 15358000,
               "title": "The Worm Turns"
             },
             {
               "audio_url": "https://www.archive.org/download/jos_boys_0810_librivox/josboys_10_alcott_64kb.mp3",
               "length_ms": 1316000,
+              "readers": [
+                "susie-g"
+              ],
               "start_ms": 16747000,
               "title": "Demi Settles"
             },
             {
               "audio_url": "https://www.archive.org/download/jos_boys_0810_librivox/josboys_11_alcott_64kb.mp3",
               "length_ms": 1018000,
+              "readers": [
+                "susie-g"
+              ],
               "start_ms": 18063000,
               "title": "Emil's Thanksgiving"
             },
             {
               "audio_url": "https://www.archive.org/download/jos_boys_0810_librivox/josboys_12_alcott_64kb.mp3",
               "length_ms": 1330000,
+              "readers": [
+                "susie-g"
+              ],
               "start_ms": 19081000,
               "title": "Dan's Christmas"
             },
             {
               "audio_url": "https://www.archive.org/download/jos_boys_0810_librivox/josboys_13_alcott_64kb.mp3",
               "length_ms": 1279000,
+              "readers": [
+                "megan-kunkel"
+              ],
               "start_ms": 20411000,
               "title": "Nat's New Year"
             },
             {
               "audio_url": "https://www.archive.org/download/jos_boys_0810_librivox/josboys_14_alcott_64kb.mp3",
               "length_ms": 2179000,
+              "readers": [
+                "susie-g"
+              ],
               "start_ms": 21690000,
               "title": "Plays at Plumfield"
             },
             {
               "audio_url": "https://www.archive.org/download/jos_boys_0810_librivox/josboys_15_alcott_64kb.mp3",
               "length_ms": 833000,
+              "readers": [
+                "erin-hastings"
+              ],
               "start_ms": 23869000,
               "title": "Waiting"
             },
             {
               "audio_url": "https://www.archive.org/download/jos_boys_0810_librivox/josboys_16_alcott_64kb.mp3",
               "length_ms": 1555000,
+              "readers": [
+                "tracy-yonemoto"
+              ],
               "start_ms": 24702000,
               "title": "In the Tennis-Court"
             },
             {
               "audio_url": "https://www.archive.org/download/jos_boys_0810_librivox/josboys_17_alcott_64kb.mp3",
               "length_ms": 1493000,
+              "readers": [
+                "julie-vw"
+              ],
               "start_ms": 26257000,
               "title": "Among the Maids"
             },
             {
               "audio_url": "https://www.archive.org/download/jos_boys_0810_librivox/josboys_18_alcott_64kb.mp3",
               "length_ms": 1344000,
+              "readers": [
+                "martina-librivox-2089"
+              ],
               "start_ms": 27750000,
               "title": "Class Day"
             },
             {
               "audio_url": "https://www.archive.org/download/jos_boys_0810_librivox/josboys_19_alcott_64kb.mp3",
               "length_ms": 1421000,
+              "readers": [
+                "stephanie-land"
+              ],
               "start_ms": 29094000,
               "title": "White Roses"
             },
             {
               "audio_url": "https://www.archive.org/download/jos_boys_0810_librivox/josboys_20_alcott_64kb.mp3",
               "length_ms": 1519000,
+              "readers": [
+                "megan-kunkel"
+              ],
               "start_ms": 30515000,
               "title": "Life for Life"
             },
             {
               "audio_url": "https://www.archive.org/download/jos_boys_0810_librivox/josboys_21_alcott_64kb.mp3",
               "length_ms": 1478000,
+              "readers": [
+                "martina-librivox-2089"
+              ],
               "start_ms": 32034000,
               "title": "Aslauga's Knight"
             },
             {
               "audio_url": "https://www.archive.org/download/jos_boys_0810_librivox/josboys_22_alcott_64kb.mp3",
               "length_ms": 1074000,
+              "readers": [
+                "martina-librivox-2089"
+              ],
               "start_ms": 33512000,
               "title": "Positively Last Appearance"
             }
@@ -4019,7 +4382,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt14/Jos_Boys_1201.jpg",
           "id": "megan-kunkel",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction",
+            "Romance"
+          ],
           "librivox_id": 1628,
+          "librivox_title": "Jo's Boys",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/jos-boys-by-louisa-may-alcott/",
@@ -4476,54 +4844,81 @@
             {
               "audio_url": "https://www.archive.org/download/josafat_2209_librivox/josafat_1_bertrana_64kb.mp3",
               "length_ms": 1393000,
+              "readers": [
+                "cristina-cobos"
+              ],
               "start_ms": 0,
               "title": "Capítol 1"
             },
             {
               "audio_url": "https://www.archive.org/download/josafat_2209_librivox/josafat_2_bertrana_64kb.mp3",
               "length_ms": 214000,
+              "readers": [
+                "elisenda-estanyol"
+              ],
               "start_ms": 1393000,
               "title": "Capítol 2"
             },
             {
               "audio_url": "https://www.archive.org/download/josafat_2209_librivox/josafat_3_bertrana_64kb.mp3",
               "length_ms": 857000,
+              "readers": [
+                "albert-casals"
+              ],
               "start_ms": 1607000,
               "title": "Capítol 3"
             },
             {
               "audio_url": "https://www.archive.org/download/josafat_2209_librivox/josafat_4_bertrana_64kb.mp3",
               "length_ms": 1061000,
+              "readers": [
+                "albert-manya"
+              ],
               "start_ms": 2464000,
               "title": "Capítol 4"
             },
             {
               "audio_url": "https://www.archive.org/download/josafat_2209_librivox/josafat_5_bertrana_64kb.mp3",
               "length_ms": 945000,
+              "readers": [
+                "ricardsoler"
+              ],
               "start_ms": 3525000,
               "title": "Capítol 5"
             },
             {
               "audio_url": "https://www.archive.org/download/josafat_2209_librivox/josafat_6_bertrana_64kb.mp3",
               "length_ms": 1691000,
+              "readers": [
+                "ricardsoler"
+              ],
               "start_ms": 4470000,
               "title": "Capítol 6"
             },
             {
               "audio_url": "https://www.archive.org/download/josafat_2209_librivox/josafat_7_bertrana_64kb.mp3",
               "length_ms": 643000,
+              "readers": [
+                "llibertat-vilella"
+              ],
               "start_ms": 6161000,
               "title": "Capítol 7"
             },
             {
               "audio_url": "https://www.archive.org/download/josafat_2209_librivox/josafat_8_bertrana_64kb.mp3",
               "length_ms": 736000,
+              "readers": [
+                "pep-vila-medinya"
+              ],
               "start_ms": 6804000,
               "title": "Capítol 8"
             },
             {
               "audio_url": "https://www.archive.org/download/josafat_2209_librivox/josafat_9_bertrana_64kb.mp3",
               "length_ms": 1245000,
+              "readers": [
+                "pep-juanhuix"
+              ],
               "start_ms": 7540000,
               "title": "Capítol 9"
             }
@@ -4532,7 +4927,11 @@
           "cover_url": "https://archive.org/download/josafat_2209_librivox/josafat_2210.jpg",
           "id": "cristina-cobos",
           "language": "ca",
+          "librivox_genres": [
+            "Literary Fiction"
+          ],
           "librivox_id": 17994,
+          "librivox_title": "Josafat",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/josafat-by-prudenci-bertrana/",
@@ -5018,66 +5417,99 @@
             {
               "audio_url": "https://www.archive.org/download/josephandhisbrethren_2203_librivox/josephandhisbrethren_01_tweedie_64kb.mp3",
               "length_ms": 452000,
+              "readers": [
+                "ryan-williams"
+              ],
               "start_ms": 0,
               "title": "Preface & JOSEPH CAST INTO THE PIT,"
             },
             {
               "audio_url": "https://www.archive.org/download/josephandhisbrethren_2203_librivox/josephandhisbrethren_02_tweedie_64kb.mp3",
               "length_ms": 400000,
+              "readers": [
+                "ryan-williams"
+              ],
               "start_ms": 452000,
               "title": "JOSEPH SOLD TO THE ISHMAELITES,"
             },
             {
               "audio_url": "https://www.archive.org/download/josephandhisbrethren_2203_librivox/josephandhisbrethren_03_tweedie_64kb.mp3",
               "length_ms": 591000,
+              "readers": [
+                "owlivia"
+              ],
               "start_ms": 852000,
               "title": "JOSEPH IN PRISON,"
             },
             {
               "audio_url": "https://www.archive.org/download/josephandhisbrethren_2203_librivox/josephandhisbrethren_04_tweedie_64kb.mp3",
               "length_ms": 803000,
+              "readers": [
+                "mleigh"
+              ],
               "start_ms": 1443000,
               "title": "JOSEPH INTERPRETING PHARAOH’S DREAMS,"
             },
             {
               "audio_url": "https://www.archive.org/download/josephandhisbrethren_2203_librivox/josephandhisbrethren_05_tweedie_64kb.mp3",
               "length_ms": 418000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 2246000,
               "title": "JOSEPH’S ADVANCEMENT,"
             },
             {
               "audio_url": "https://www.archive.org/download/josephandhisbrethren_2203_librivox/josephandhisbrethren_06_tweedie_64kb.mp3",
               "length_ms": 516000,
+              "readers": [
+                "ryan-williams"
+              ],
               "start_ms": 2664000,
               "title": "“YE ARE SPIES,”"
             },
             {
               "audio_url": "https://www.archive.org/download/josephandhisbrethren_2203_librivox/josephandhisbrethren_07_tweedie_64kb.mp3",
               "length_ms": 425000,
+              "readers": [
+                "ulrike-denis"
+              ],
               "start_ms": 3180000,
               "title": "THE CUP IN BENJAMIN’S SACK,"
             },
             {
               "audio_url": "https://www.archive.org/download/josephandhisbrethren_2203_librivox/josephandhisbrethren_08_tweedie_64kb.mp3",
               "length_ms": 424000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 3605000,
               "title": "THE MEETING OF JOSEPH AND BENJAMIN,"
             },
             {
               "audio_url": "https://www.archive.org/download/josephandhisbrethren_2203_librivox/josephandhisbrethren_09_tweedie_64kb.mp3",
               "length_ms": 367000,
+              "readers": [
+                "docdlmartin"
+              ],
               "start_ms": 4029000,
               "title": "THE MEETING OF JACOB AND JOSEPH,"
             },
             {
               "audio_url": "https://www.archive.org/download/josephandhisbrethren_2203_librivox/josephandhisbrethren_10_tweedie_64kb.mp3",
               "length_ms": 405000,
+              "readers": [
+                "ryan-williams"
+              ],
               "start_ms": 4396000,
               "title": "JACOB IN THE PRESENCE OF PHARAOH,"
             },
             {
               "audio_url": "https://www.archive.org/download/josephandhisbrethren_2203_librivox/josephandhisbrethren_11_tweedie_64kb.mp3",
               "length_ms": 197000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 4801000,
               "title": "THE DEATH OF JACOB,"
             }
@@ -5086,7 +5518,13 @@
           "cover_url": "https://archive.org/download/josephandhisbrethren_2203_librivox/joseph_2203.jpg",
           "id": "ryan-williams",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Religion",
+            "Christianity - Other"
+          ],
           "librivox_id": 17380,
+          "librivox_title": "Joseph and his Brethren",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/joseph-and-his-brethren-by-w-k-tweedie/",
@@ -5211,7 +5649,14 @@
           "cover_url": "https://archive.org/download/josephandhisfriend_2603_librivox/josephandhisfriend_2603.jpg",
           "id": "thomas-a-copeland",
           "language": "en",
+          "librivox_genres": [
+            "Culture & Heritage Fiction",
+            "Family Life",
+            "Romance",
+            "Published 1800 -1900"
+          ],
           "librivox_id": 22392,
+          "librivox_title": "Joseph and His Friend: A Story of Pennsylvania",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/joseph-and-his-friend-by-bayard-taylor/",
@@ -5880,198 +6325,231 @@
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_00_fielding_64kb.mp3",
               "length_ms": 1168000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 - Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_01_fielding_64kb.mp3",
               "length_ms": 820000,
+              "section_number": 1,
               "start_ms": 1168000,
               "title": "01 - Book I, Chapters 1 & 2"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_02_fielding_64kb.mp3",
               "length_ms": 1022000,
+              "section_number": 2,
               "start_ms": 1988000,
               "title": "02 - Book I, Chapters 3 & 4"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_03_fielding_64kb.mp3",
               "length_ms": 1281000,
+              "section_number": 3,
               "start_ms": 3010000,
               "title": "03 - Book I, Chapters 5 & 6"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_04_fielding_64kb.mp3",
               "length_ms": 1609000,
+              "section_number": 4,
               "start_ms": 4291000,
               "title": "04 - Book I, Chapters 7 & 8"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_05_fielding_64kb.mp3",
               "length_ms": 1088000,
+              "section_number": 5,
               "start_ms": 5900000,
               "title": "05 - Book I, Chapters 9 & 10"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_06_fielding_64kb.mp3",
               "length_ms": 1705000,
+              "section_number": 6,
               "start_ms": 6988000,
               "title": "06 - Book I, Chapters 11 & 12"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_07_fielding_64kb.mp3",
               "length_ms": 1752000,
+              "section_number": 7,
               "start_ms": 8693000,
               "title": "07 - Book I, Chapters 13 & 14"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_08_fielding_64kb.mp3",
               "length_ms": 2474000,
+              "section_number": 8,
               "start_ms": 10445000,
               "title": "08 - Book I, Chapters 15 & 16"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_09_fielding_64kb.mp3",
               "length_ms": 1651000,
+              "section_number": 9,
               "start_ms": 12919000,
               "title": "09 - Book I, Chapters 17 & 18"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_10_fielding_64kb.mp3",
               "length_ms": 2653000,
+              "section_number": 10,
               "start_ms": 14570000,
               "title": "10 - Book II, Chapters 1, 2 & 3"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_11_fielding_64kb.mp3",
               "length_ms": 3066000,
+              "section_number": 11,
               "start_ms": 17223000,
               "title": "11 - Book II, Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_12_fielding_64kb.mp3",
               "length_ms": 2376000,
+              "section_number": 12,
               "start_ms": 20289000,
               "title": "12 - Book II, Chapters 5 & 6"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_13_fielding_64kb.mp3",
               "length_ms": 1059000,
+              "section_number": 13,
               "start_ms": 22665000,
               "title": "13 - Book II, Chapters 7 & 8"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_14_fielding_64kb.mp3",
               "length_ms": 1773000,
+              "section_number": 14,
               "start_ms": 23724000,
               "title": "14 - Book II, Chapters 9 & 10"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_15_fielding_64kb.mp3",
               "length_ms": 1946000,
+              "section_number": 15,
               "start_ms": 25497000,
               "title": "15 - Book II, Chapters 11 & 12"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_16_fielding_64kb.mp3",
               "length_ms": 2871000,
+              "section_number": 16,
               "start_ms": 27443000,
               "title": "16 - Book II, Chapters 13, 14 & 15"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_17_fielding_64kb.mp3",
               "length_ms": 2660000,
+              "section_number": 17,
               "start_ms": 30314000,
               "title": "17 - Book II, Chapters 16 & 17"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_18_fielding_64kb.mp3",
               "length_ms": 2764000,
+              "section_number": 18,
               "start_ms": 32974000,
               "title": "18 - Book III, Chapters 1 & 2"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_19_fielding_64kb.mp3",
               "length_ms": 2371000,
+              "section_number": 19,
               "start_ms": 35738000,
               "title": "19 - Book III, Chapter 3, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_20_fielding_64kb.mp3",
               "length_ms": 2431000,
+              "section_number": 20,
               "start_ms": 38109000,
               "title": "20 - Book III, Chapter 3, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_21_fielding_64kb.mp3",
               "length_ms": 1597000,
+              "section_number": 21,
               "start_ms": 40540000,
               "title": "21 - Book III, Chapters 4 & 5"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_22_fielding_64kb.mp3",
               "length_ms": 1815000,
+              "section_number": 22,
               "start_ms": 42137000,
               "title": "22 - Book III, Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_23_fielding_64kb.mp3",
               "length_ms": 2261000,
+              "section_number": 23,
               "start_ms": 43952000,
               "title": "23 - Book III, Chapters 7 & 8"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_24_fielding_64kb.mp3",
               "length_ms": 1554000,
+              "section_number": 24,
               "start_ms": 46213000,
               "title": "24 - Book III, Chapters 9 & 10"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_25_fielding_64kb.mp3",
               "length_ms": 2379000,
+              "section_number": 25,
               "start_ms": 47767000,
               "title": "25 - Book III, Chapters 11, 12 & 13"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_26_fielding_64kb.mp3",
               "length_ms": 2248000,
+              "section_number": 26,
               "start_ms": 50146000,
               "title": "26 - Book IV, Chapters 1, 2, 3 & 4"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_27_fielding_64kb.mp3",
               "length_ms": 2121000,
+              "section_number": 27,
               "start_ms": 52394000,
               "title": "27 - Book IV, Chapters 5 & 6"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_28_fielding_64kb.mp3",
               "length_ms": 2526000,
+              "section_number": 28,
               "start_ms": 54515000,
               "title": "28 - Book IV, Chapters 7 & 8"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_29_fielding_64kb.mp3",
               "length_ms": 1774000,
+              "section_number": 29,
               "start_ms": 57041000,
               "title": "29 - Book IV, Chapters 9 & 10"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_30_fielding_64kb.mp3",
               "length_ms": 1051000,
+              "section_number": 30,
               "start_ms": 58815000,
               "title": "30 - Book IV, Chapters 11 & 12"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_31_fielding_64kb.mp3",
               "length_ms": 1943000,
+              "section_number": 31,
               "start_ms": 59866000,
               "title": "31 - Book IV, Chapters 13 & 14"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_andrews_10_07_librivox/josephandrews_32_fielding_64kb.mp3",
               "length_ms": 1763000,
+              "section_number": 32,
               "start_ms": 61809000,
               "title": "32 - Book IV, Chapters 15 & 16"
             }
@@ -6080,7 +6558,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt5/Joseph_Andrews_1007.jpg",
           "id": "denny-sayers-d-2015",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 3542,
+          "librivox_title": "Joseph Andrews",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/joseph-andrews-by-henry-fielding/",
@@ -7141,7 +7623,11 @@
           "cover_url": "https://archive.org/download/joseph_1602_librivox/joseph_1602.jpg",
           "id": "maryann",
           "language": "en",
+          "librivox_genres": [
+            "Christianity - Commentary"
+          ],
           "librivox_id": 10497,
+          "librivox_title": "Joseph: Beloved, Hated, Exalted",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/joseph-beloved-hated-exalted-by-frederick-brotherton-meyer/",
@@ -7219,7 +7705,12 @@
           "cover_url": "https://archive.org/download/josephconrad_1508_librivox/Conrad_1508.jpg",
           "id": "david-wales",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "Literary Criticism"
+          ],
           "librivox_id": 10163,
+          "librivox_title": "Joseph Conrad",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/joseph-conrad-by-hugh-walpole/",
@@ -7270,84 +7761,98 @@
             {
               "audio_url": "https://www.archive.org/download/joseph_conrad_a_personal_remembrance_2006_librivox/josephconradremembrance_00_ford_64kb.mp3",
               "length_ms": 388000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface and Letter From Joseph Conrad To The Author"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_conrad_a_personal_remembrance_2006_librivox/josephconradremembrance_01_ford_64kb.mp3",
               "length_ms": 2855000,
+              "section_number": 1,
               "start_ms": 388000,
               "title": "Part 1  C'est Toi Qui Dors Dans L'Ombre Section 1"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_conrad_a_personal_remembrance_2006_librivox/josephconradremembrance_02_ford_64kb.mp3",
               "length_ms": 372000,
+              "section_number": 2,
               "start_ms": 3243000,
               "title": "Part 1  C'est Toi Qui Dors Dans L'Ombre Section 2"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_conrad_a_personal_remembrance_2006_librivox/josephconradremembrance_03_ford_64kb.mp3",
               "length_ms": 990000,
+              "section_number": 3,
               "start_ms": 3615000,
               "title": "Part 1  C'est Toi Qui Dors Dans L'Ombre Section 3"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_conrad_a_personal_remembrance_2006_librivox/josephconradremembrance_04_ford_64kb.mp3",
               "length_ms": 1859000,
+              "section_number": 4,
               "start_ms": 4605000,
               "title": "Part 1  C'est Toi Qui Dors Dans L'Ombre Section 4"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_conrad_a_personal_remembrance_2006_librivox/josephconradremembrance_05_ford_64kb.mp3",
               "length_ms": 1703000,
+              "section_number": 5,
               "start_ms": 6464000,
               "title": "Part 1  C'est Toi Qui Dors Dans L'Ombre Section 5"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_conrad_a_personal_remembrance_2006_librivox/josephconradremembrance_06_ford_64kb.mp3",
               "length_ms": 2582000,
+              "section_number": 6,
               "start_ms": 8167000,
               "title": "Part 1  C'est Toi Qui Dors Dans L'Ombre Section 6"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_conrad_a_personal_remembrance_2006_librivox/josephconradremembrance_07_ford_64kb.mp3",
               "length_ms": 1716000,
+              "section_number": 7,
               "start_ms": 10749000,
               "title": "Part 2  Excellency? A Few Goats....  Section 1"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_conrad_a_personal_remembrance_2006_librivox/josephconradremembrance_08_ford_64kb.mp3",
               "length_ms": 1395000,
+              "section_number": 8,
               "start_ms": 12465000,
               "title": "Part 2  Excellency? A Few Goats....  Section 2"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_conrad_a_personal_remembrance_2006_librivox/josephconradremembrance_09_ford_64kb.mp3",
               "length_ms": 1388000,
+              "section_number": 9,
               "start_ms": 13860000,
               "title": "Part 2  Excellency? A Few Goats....  Section 3"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_conrad_a_personal_remembrance_2006_librivox/josephconradremembrance_10_ford_64kb.mp3",
               "length_ms": 1141000,
+              "section_number": 10,
               "start_ms": 15248000,
               "title": "Part 3  It Is Above All To Make You See....  Section 1"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_conrad_a_personal_remembrance_2006_librivox/josephconradremembrance_11_ford_64kb.mp3",
               "length_ms": 3426000,
+              "section_number": 11,
               "start_ms": 16389000,
               "title": "Part 3  It Is Above All To Make You See....  Section 2"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_conrad_a_personal_remembrance_2006_librivox/josephconradremembrance_12_ford_64kb.mp3",
               "length_ms": 1500000,
+              "section_number": 12,
               "start_ms": 19815000,
               "title": "Part 4  That, Too, Is Romance....  Section 1"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_conrad_a_personal_remembrance_2006_librivox/josephconradremembrance_13_ford_64kb.mp3",
               "length_ms": 1348000,
+              "section_number": 13,
               "start_ms": 21315000,
               "title": "Part 4  That, Too, Is Romance....  Section 2"
             }
@@ -7356,7 +7861,11 @@
           "cover_url": "https://archive.org/download/joseph_conrad_a_personal_remembrance_2006_librivox/josephconradremembrance_2006.jpg",
           "id": "david-wales",
           "language": "en",
+          "librivox_genres": [
+            "Memoirs"
+          ],
           "librivox_id": 15187,
+          "librivox_title": "Joseph Conrad: A Personal Remembrance",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/joseph-conrad-personal-remembrance-by-ford-madox-ford/",
@@ -8226,30 +8735,35 @@
             {
               "audio_url": "https://www.archive.org/download/joseph_haydn_servant_and_master_1607_librivox/josephhaydn_00_peyser_64kb.mp3",
               "length_ms": 159000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Foreword"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_haydn_servant_and_master_1607_librivox/josephhaydn_01_peyser_64kb.mp3",
               "length_ms": 1775000,
+              "section_number": 1,
               "start_ms": 159000,
               "title": "Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_haydn_servant_and_master_1607_librivox/josephhaydn_02_peyser_64kb.mp3",
               "length_ms": 1849000,
+              "section_number": 2,
               "start_ms": 1934000,
               "title": "Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_haydn_servant_and_master_1607_librivox/josephhaydn_03_peyser_64kb.mp3",
               "length_ms": 1878000,
+              "section_number": 3,
               "start_ms": 3783000,
               "title": "Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_haydn_servant_and_master_1607_librivox/josephhaydn_04_peyser_64kb.mp3",
               "length_ms": 1640000,
+              "section_number": 4,
               "start_ms": 5661000,
               "title": "Part 4"
             }
@@ -8258,7 +8772,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt24/josephhaydn_1607.jpg",
           "id": "david-wales",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "Music"
+          ],
           "librivox_id": 11091,
+          "librivox_title": "Joseph Haydn; Servant And Master",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/joseph-haydn-servant-and-master-by-herbert-francis-peyser/",
@@ -8316,135 +8835,229 @@
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_vol1_2212_librivox/josephinthesnowi_00_auerbach_64kb.mp3",
               "length_ms": 90000,
+              "readers": [
+                "rita-boutros"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "\"EPITAPH\""
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_vol1_2212_librivox/josephinthesnowi_01_auerbach_64kb.mp3",
               "length_ms": 1038000,
+              "readers": [
+                "rita-boutros"
+              ],
+              "section_number": 1,
               "start_ms": 90000,
               "title": "Chapter I, \"IS IT NOT YET MORNING?\""
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_vol1_2212_librivox/josephinthesnowi_02_auerbach_64kb.mp3",
               "length_ms": 768000,
+              "readers": [
+                "rita-boutros"
+              ],
+              "section_number": 2,
               "start_ms": 1128000,
               "title": "Chapter II, \"A DUET INTERRUPTED, AND RESUMED\""
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_vol1_2212_librivox/josephinthesnowi_03_auerbach_64kb.mp3",
               "length_ms": 994000,
+              "readers": [
+                "rita-boutros"
+              ],
+              "section_number": 3,
               "start_ms": 1896000,
               "title": "Chapter III, \"THE FIERCE RÖTTMÄNNER\""
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_vol1_2212_librivox/josephinthesnowi_04_auerbach_64kb.mp3",
               "length_ms": 1019000,
+              "readers": [
+                "rita-boutros"
+              ],
+              "section_number": 4,
               "start_ms": 2890000,
               "title": "Chapter IV, \"MARTINA'S RETURN HOME\""
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_vol1_2212_librivox/josephinthesnowi_05_auerbach_64kb.mp3",
               "length_ms": 649000,
+              "readers": [
+                "rita-boutros"
+              ],
+              "section_number": 5,
               "start_ms": 3909000,
               "title": "Chapter V, \"A DAY OF TROUBLE\""
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_vol1_2212_librivox/josephinthesnowi_06_auerbach_64kb.mp3",
               "length_ms": 1107000,
+              "readers": [
+                "theadoro"
+              ],
+              "section_number": 6,
               "start_ms": 4558000,
               "title": "Chapter VI, \"HOW A VILLAGE PASTOR WAS SUMMONED TO COURT\""
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_vol1_2212_librivox/josephinthesnowi_07_auerbach_64kb.mp3",
               "length_ms": 757000,
+              "readers": [
+                "doreen-marcotte"
+              ],
+              "section_number": 7,
               "start_ms": 5665000,
               "title": "Chapter VII, \"THE HOME OF SCHILDER-DAVID\""
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_vol1_2212_librivox/josephinthesnowi_08_auerbach_64kb.mp3",
               "length_ms": 750000,
+              "readers": [
+                "doreen-marcotte"
+              ],
+              "section_number": 8,
               "start_ms": 6422000,
               "title": "Chapter VIII, \"WARM AND SNUG IN THE PARSONAGE\""
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_vol1_2212_librivox/josephinthesnowi_09_auerbach_64kb.mp3",
               "length_ms": 967000,
+              "readers": [
+                "tjfria"
+              ],
+              "section_number": 9,
               "start_ms": 7172000,
               "title": "Chapter IX, \"BETROTHAL AND PLIGHT\""
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_vol1_2212_librivox/josephinthesnowi_10_auerbach_64kb.mp3",
               "length_ms": 719000,
+              "readers": [
+                "tjfria"
+              ],
+              "section_number": 10,
               "start_ms": 8139000,
               "title": "Chapter X, \"A FATHER IN SEARCH OF HIS SON\""
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_vol1_2212_librivox/josephinthesnowi_11_auerbach_64kb.mp3",
               "length_ms": 573000,
+              "readers": [
+                "tjfria"
+              ],
+              "section_number": 11,
               "start_ms": 8858000,
               "title": "Chapter XI, \"THE VILLAGE CHURCH DESERTED\""
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_vol1_2212_librivox/josephinthesnowi_12_auerbach_64kb.mp3",
               "length_ms": 1448000,
+              "readers": [
+                "tjfria"
+              ],
+              "section_number": 12,
               "start_ms": 9431000,
               "title": "Chapter XII, \"WHERE IS JOSEPH?\""
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_vol1_2212_librivox/josephinthesnowi_13_auerbach_64kb.mp3",
               "length_ms": 1361000,
+              "readers": [
+                "tjfria"
+              ],
+              "section_number": 13,
               "start_ms": 10879000,
               "title": "Chapter XIII, \"A TROOP OF HOBGOBLINS\""
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_vol1_2212_librivox/josephinthesnowi_14_auerbach_64kb.mp3",
               "length_ms": 1766000,
+              "readers": [
+                "brian-fullen"
+              ],
+              "section_number": 14,
               "start_ms": 12240000,
               "title": "Chapter XIV, \"LOST IN THE FOREST\""
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_vol1_2212_librivox/josephinthesnowi_15_auerbach_64kb.mp3",
               "length_ms": 1361000,
+              "readers": [
+                "tjfria"
+              ],
+              "section_number": 15,
               "start_ms": 14006000,
               "title": "Chapter XV, \"A CHILD SEEKING HIS FATHER\""
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_vol1_2212_librivox/josephinthesnowi_16_auerbach_64kb.mp3",
               "length_ms": 909000,
+              "readers": [
+                "tjfria"
+              ],
+              "section_number": 16,
               "start_ms": 15367000,
               "title": "Chapter XVI, \"ASLEEP AND AWAKE AGAIN IN THE FOREST MILL\""
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_vol1_2212_librivox/josephinthesnowi_17_auerbach_64kb.mp3",
               "length_ms": 699000,
+              "readers": [
+                "tjfria"
+              ],
+              "section_number": 17,
               "start_ms": 16276000,
               "title": "Chapter XVII, \"A GREAT EVENT IN A SMALL HOUSE\""
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_vol1_2212_librivox/josephinthesnowi_18_auerbach_64kb.mp3",
               "length_ms": 770000,
+              "readers": [
+                "casey-roddy"
+              ],
+              "section_number": 18,
               "start_ms": 16975000,
               "title": "Chapter XVIII, \"FOR THE SAKE OF THE CHILD\""
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_vol1_2212_librivox/josephinthesnowi_19_auerbach_64kb.mp3",
               "length_ms": 290000,
+              "readers": [
+                "casey-roddy"
+              ],
+              "section_number": 19,
               "start_ms": 17745000,
               "title": "Chapter XIX, \"A VOICE AT MIDNIGHT\""
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_vol1_2212_librivox/josephinthesnowi_20_auerbach_64kb.mp3",
               "length_ms": 1272000,
+              "readers": [
+                "casey-roddy"
+              ],
+              "section_number": 20,
               "start_ms": 18035000,
               "title": "Chapter XX, \"DAYLIGHT\""
             }
           ],
           "copyright_year": 1861,
           "cover_url": "https://archive.org/download/joseph_in_the_snow_vol1_2212_librivox/joseph_snow_2212.jpg",
+          "credits": [
+            {
+              "person": "grace-jane-wallace",
+              "role": "translator"
+            }
+          ],
           "id": "rita-boutros",
           "language": "en",
+          "librivox_genres": [
+            "Literary Fiction"
+          ],
           "librivox_id": 18479,
+          "librivox_title": "Joseph in the Snow, and The Clockmaker. Vol. I",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/joseph-in-the-snow-and-the-clockmaker-voli-by-berthold-auerbach/",
@@ -8507,147 +9120,249 @@
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_2_2302_librivox/clockmaker_00_auerbach_64kb.mp3",
               "length_ms": 211000,
+              "readers": [
+                "rita-boutros"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "“THE CLOCKMAKER OF THE BLACK FOREST”"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_2_2302_librivox/clockmaker_01_auerbach_64kb.mp3",
               "length_ms": 878000,
+              "readers": [
+                "rita-boutros"
+              ],
+              "section_number": 1,
               "start_ms": 211000,
               "title": "CHAPTER I, “A GOOD NAME”"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_2_2302_librivox/clockmaker_02_auerbach_64kb.mp3",
               "length_ms": 615000,
+              "readers": [
+                "rita-boutros"
+              ],
+              "section_number": 2,
               "start_ms": 1089000,
               "title": "CHAPTER II, “THE MOURNER AND HIS COMPANION”"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_2_2302_librivox/clockmaker_03_auerbach_64kb.mp3",
               "length_ms": 891000,
+              "readers": [
+                "rita-boutros"
+              ],
+              "section_number": 3,
               "start_ms": 1704000,
               "title": "CHAPTER III, “WORK AND GOOD DEEDS”"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_2_2302_librivox/clockmaker_04_auerbach_64kb.mp3",
               "length_ms": 776000,
+              "readers": [
+                "rita-boutros"
+              ],
+              "section_number": 4,
               "start_ms": 2595000,
               "title": "CHAPTER IV, “EACH ONE FOR HIMSELF”"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_2_2302_librivox/clockmaker_05_auerbach_64kb.mp3",
               "length_ms": 735000,
+              "readers": [
+                "bonnibel-foster"
+              ],
+              "section_number": 5,
               "start_ms": 3371000,
               "title": "CHAPTER V, “PILGRIM'S ADVENTURES”"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_2_2302_librivox/clockmaker_06_auerbach_64kb.mp3",
               "length_ms": 942000,
+              "readers": [
+                "rita-boutros"
+              ],
+              "section_number": 6,
               "start_ms": 4106000,
               "title": "CHAPTER VI, “THE WORLD STEPS IN”"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_2_2302_librivox/clockmaker_07_auerbach_64kb.mp3",
               "length_ms": 736000,
+              "readers": [
+                "rita-boutros"
+              ],
+              "section_number": 7,
               "start_ms": 5048000,
               "title": "CHAPTER VII, “THE CIVILITIES OF A LANDLORD'S PRETTY DAUGHTER”"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_2_2302_librivox/clockmaker_08_auerbach_64kb.mp3",
               "length_ms": 868000,
+              "readers": [
+                "rita-boutros"
+              ],
+              "section_number": 8,
               "start_ms": 5784000,
               "title": "CHAPTER VIII, “HAPPINESS DAWNS, AND A NEW MOTHER SPEAKS”"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_2_2302_librivox/clockmaker_09_auerbach_64kb.mp3",
               "length_ms": 846000,
+              "readers": [
+                "sagar-patke"
+              ],
+              "section_number": 9,
               "start_ms": 6652000,
               "title": "CHAPTER IX, “A PARLEY WITH FRIENDS”"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_2_2302_librivox/clockmaker_10_auerbach_64kb.mp3",
               "length_ms": 574000,
+              "readers": [
+                "sagar-patke"
+              ],
+              "section_number": 10,
               "start_ms": 7498000,
               "title": "CHAPTER X, “A DINNER WITH PETROWITSCH”"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_2_2302_librivox/clockmaker_11_auerbach_64kb.mp3",
               "length_ms": 1561000,
+              "readers": [
+                "sagar-patke"
+              ],
+              "section_number": 11,
               "start_ms": 8072000,
               "title": "CHAPTER XI, “THE GREAT CLOCK PLAYS ITS MELODIES, AND FRESH ONES ARE ADDED”"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_2_2302_librivox/clockmaker_12_auerbach_64kb.mp3",
               "length_ms": 938000,
+              "readers": [
+                "sagar-patke"
+              ],
+              "section_number": 12,
               "start_ms": 9633000,
               "title": "CHAPTER XII, “A GOOD ESCORT, AND THOUGHTS OF THE FUTURE”"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_2_2302_librivox/clockmaker_13_auerbach_64kb.mp3",
               "length_ms": 989000,
+              "readers": [
+                "unclecorico"
+              ],
+              "section_number": 13,
               "start_ms": 10571000,
               "title": "CHAPTER XIII, “LION, FOX, AND MAGPIE”"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_2_2302_librivox/clockmaker_14_auerbach_64kb.mp3",
               "length_ms": 894000,
+              "readers": [
+                "unclecorico"
+              ],
+              "section_number": 14,
               "start_ms": 11560000,
               "title": "CHAPTER XIV, “PRESSES AND EYES ARE OPENED”"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_2_2302_librivox/clockmaker_15_auerbach_64kb.mp3",
               "length_ms": 530000,
+              "readers": [
+                "unclecorico"
+              ],
+              "section_number": 15,
               "start_ms": 12454000,
               "title": "CHAPTER XV, “YOUNG HEARTS - A BETROTHAL”"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_2_2302_librivox/clockmaker_16_auerbach_64kb.mp3",
               "length_ms": 998000,
+              "readers": [
+                "tjfria"
+              ],
+              "section_number": 16,
               "start_ms": 12984000,
               "title": "CHAPTER XVI, “A HEART IS WON”"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_2_2302_librivox/clockmaker_17_auerbach_64kb.mp3",
               "length_ms": 956000,
+              "readers": [
+                "tjfria"
+              ],
+              "section_number": 17,
               "start_ms": 13982000,
               "title": "CHAPTER XVII, “A FRIEND'S OPINION”"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_2_2302_librivox/clockmaker_18_auerbach_64kb.mp3",
               "length_ms": 1321000,
+              "readers": [
+                "tjfria"
+              ],
+              "section_number": 18,
               "start_ms": 14938000,
               "title": "CHAPTER XVIII, “A REBUFF AND A BETROTHAL”"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_2_2302_librivox/clockmaker_19_auerbach_64kb.mp3",
               "length_ms": 1329000,
+              "readers": [
+                "tjfria"
+              ],
+              "section_number": 19,
               "start_ms": 16259000,
               "title": "CHAPTER XIX, “FIRST VISIT TO A NEW HOUSE”"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_2_2302_librivox/clockmaker_20_auerbach_64kb.mp3",
               "length_ms": 814000,
+              "readers": [
+                "tjfria"
+              ],
+              "section_number": 20,
               "start_ms": 17588000,
               "title": "CHAPTER XX, “A FIRST DRIVE”"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_2_2302_librivox/clockmaker_21_auerbach_64kb.mp3",
               "length_ms": 1326000,
+              "readers": [
+                "tjfria"
+              ],
+              "section_number": 21,
               "start_ms": 18402000,
               "title": "CHAPTER XXI, “A GAY WEDDING, AND A HARD NUT TO CRACK”"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_the_snow_2_2302_librivox/clockmaker_22_auerbach_64kb.mp3",
               "length_ms": 1258000,
+              "readers": [
+                "tjfria"
+              ],
+              "section_number": 22,
               "start_ms": 19728000,
               "title": "CHAPTER XXII, “A MORNING GIFT”"
             }
           ],
           "copyright_year": 1861,
           "cover_url": "https://archive.org/download/joseph_in_the_snow_2_2302_librivox/joseph_snow2_2302.jpg",
+          "credits": [
+            {
+              "person": "grace-jane-wallace",
+              "role": "translator"
+            }
+          ],
           "id": "rita-boutros",
           "language": "en",
+          "librivox_genres": [
+            "Literary Fiction"
+          ],
           "librivox_id": 18585,
+          "librivox_title": "Joseph in the Snow, and The Clockmaker. Vol. II",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/joseph-in-the-snow-and-the-clockmaker-volii-by-berthold-auerbach/",
@@ -8709,117 +9424,181 @@
             {
               "audio_url": "https://www.archive.org/download/joseph_in_snow_and_clockmaker_voliii_2305_librivox/clockmaker2_01_auerbach_64kb.mp3",
               "length_ms": 795000,
+              "readers": [
+                "valroth"
+              ],
               "start_ms": 0,
               "title": "CHAPTER XXIII, THE FIRST NAIL KNOCKED IN, PEACE IN THE HOUSE, AND THE FIRST SUNDAY GUEST"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_snow_and_clockmaker_voliii_2305_librivox/clockmaker2_02_auerbach_64kb.mp3",
               "length_ms": 1109000,
+              "readers": [
+                "valroth"
+              ],
               "start_ms": 795000,
               "title": "CHAPTER XXIV, ANCIENT HEIRLOOMS ARE DISMISSED, AND A NEW TONE PREVAILS IN THE MORGENHALDE"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_snow_and_clockmaker_voliii_2305_librivox/clockmaker2_03_auerbach_64kb.mp3",
               "length_ms": 1714000,
+              "readers": [
+                "valroth"
+              ],
               "start_ms": 1904000,
               "title": "CHAPTER XXV, THE PENDULUMS SWING TOGETHER, BUT THE STRESS ON THE MAINSPRING IS SEVERE"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_snow_and_clockmaker_voliii_2305_librivox/clockmaker2_04_auerbach_64kb.mp3",
               "length_ms": 1897000,
+              "readers": [
+                "valroth"
+              ],
               "start_ms": 3618000,
               "title": "CHAPTER XXVI, THE AXE IS PUT TO THE ROOT OF LIFE, AND TEARS ARE SHED"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_snow_and_clockmaker_voliii_2305_librivox/clockmaker2_05_auerbach_64kb.mp3",
               "length_ms": 960000,
+              "readers": [
+                "leanne-cvetan"
+              ],
               "start_ms": 5515000,
               "title": "CHAPTER XXVII, EVERYTHING GONE"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_snow_and_clockmaker_voliii_2305_librivox/clockmaker2_06_auerbach_64kb.mp3",
               "length_ms": 1507000,
+              "readers": [
+                "leanne-cvetan"
+              ],
               "start_ms": 6475000,
               "title": "CHAPTER XXVIII, A BEGGAR, AND MONEY SAVED"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_snow_and_clockmaker_voliii_2305_librivox/clockmaker2_07_auerbach_64kb.mp3",
               "length_ms": 715000,
+              "readers": [
+                "leanne-cvetan"
+              ],
               "start_ms": 7982000,
               "title": "CHAPTER XXIX, ANOTHER WORLD"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_snow_and_clockmaker_voliii_2305_librivox/clockmaker2_08_auerbach_64kb.mp3",
               "length_ms": 1346000,
+              "readers": [
+                "leanne-cvetan"
+              ],
               "start_ms": 8697000,
               "title": "CHAPTER XXX, THE THAW EXTENDS EVEN TO PETROWITSCH, BUT HE FREEZES AGAIN"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_snow_and_clockmaker_voliii_2305_librivox/clockmaker2_09_auerbach_64kb.mp3",
               "length_ms": 1002000,
+              "readers": [
+                "leanne-cvetan"
+              ],
               "start_ms": 10043000,
               "title": "CHAPTER XXXI, ANNELE THAWS ALSO, BUT FREEZES AGAIN"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_snow_and_clockmaker_voliii_2305_librivox/clockmaker2_10_auerbach_64kb.mp3",
               "length_ms": 1261000,
+              "readers": [
+                "leanne-cvetan"
+              ],
               "start_ms": 11045000,
               "title": "CHAPTER XXXII, A STORMY NIGHT"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_snow_and_clockmaker_voliii_2305_librivox/clockmaker2_11_auerbach_64kb.mp3",
               "length_ms": 873000,
+              "readers": [
+                "leanne-cvetan"
+              ],
               "start_ms": 12306000,
               "title": "CHAPTER XXXIII, A FRIEND IN NEED"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_snow_and_clockmaker_voliii_2305_librivox/clockmaker2_12_auerbach_64kb.mp3",
               "length_ms": 870000,
+              "readers": [
+                "leanne-cvetan"
+              ],
               "start_ms": 13179000,
               "title": "CHAPTER XXXIV, BURIED ALIVE"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_snow_and_clockmaker_voliii_2305_librivox/clockmaker2_13_auerbach_64kb.mp3",
               "length_ms": 848000,
+              "readers": [
+                "leanne-cvetan"
+              ],
               "start_ms": 14049000,
               "title": "CHAPTER XXXV, A HEART TOUCHED"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_snow_and_clockmaker_voliii_2305_librivox/clockmaker2_14_auerbach_64kb.mp3",
               "length_ms": 691000,
+              "readers": [
+                "leanne-cvetan"
+              ],
               "start_ms": 14897000,
               "title": "CHAPTER XXXVI, VOICES FROM THE DEAD"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_snow_and_clockmaker_voliii_2305_librivox/clockmaker2_15_auerbach_64kb.mp3",
               "length_ms": 570000,
+              "readers": [
+                "leanne-cvetan"
+              ],
               "start_ms": 15588000,
               "title": "CHAPTER XXXVII, A PHALANX"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_snow_and_clockmaker_voliii_2305_librivox/clockmaker2_16_auerbach_64kb.mp3",
               "length_ms": 847000,
+              "readers": [
+                "leanne-cvetan"
+              ],
               "start_ms": 16158000,
               "title": "CHAPTER XXXVIII, A PLANT GROWS UNDER THE SNOW"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_snow_and_clockmaker_voliii_2305_librivox/clockmaker2_17_auerbach_64kb.mp3",
               "length_ms": 297000,
+              "readers": [
+                "leanne-cvetan"
+              ],
               "start_ms": 17005000,
               "title": "CHAPTER XXXIX, SAVED"
             },
             {
               "audio_url": "https://www.archive.org/download/joseph_in_snow_and_clockmaker_voliii_2305_librivox/clockmaker2_18_auerbach_64kb.mp3",
               "length_ms": 1761000,
+              "readers": [
+                "leanne-cvetan"
+              ],
               "start_ms": 17302000,
               "title": "CHAPTER XL, ALL'S WELL"
             }
           ],
           "copyright_year": 1861,
           "cover_url": "https://archive.org/download/joseph_in_snow_and_clockmaker_voliii_2305_librivox/joseph_snow3_2305.jpg",
+          "credits": [
+            {
+              "person": "grace-jane-wallace",
+              "role": "translator"
+            }
+          ],
           "id": "valroth",
           "language": "en",
+          "librivox_genres": [
+            "Literary Fiction"
+          ],
           "librivox_id": 18924,
+          "librivox_title": "Joseph in the Snow, and The Clockmaker. Vol. III",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/joseph-in-the-snow-and-the-clockmaker-vol-iii-by-berthold-auerbach/",
@@ -15998,180 +16777,210 @@
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_00_ebers_64kb.mp3",
               "length_ms": 485000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 - Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_01_ebers_64kb.mp3",
               "length_ms": 1056000,
+              "section_number": 1,
               "start_ms": 485000,
               "title": "01 - Chapter I"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_02_ebers_64kb.mp3",
               "length_ms": 746000,
+              "section_number": 2,
               "start_ms": 1541000,
               "title": "02 - Chapter II"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_03_ebers_64kb.mp3",
               "length_ms": 836000,
+              "section_number": 3,
               "start_ms": 2287000,
               "title": "03 - Chapter III"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_04_ebers_64kb.mp3",
               "length_ms": 906000,
+              "section_number": 4,
               "start_ms": 3123000,
               "title": "04 - Chapter IV"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_05_ebers_64kb.mp3",
               "length_ms": 1524000,
+              "section_number": 5,
               "start_ms": 4029000,
               "title": "05 - Chapter V"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_06_ebers_64kb.mp3",
               "length_ms": 1131000,
+              "section_number": 6,
               "start_ms": 5553000,
               "title": "06 - Chapter VI"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_07_ebers_64kb.mp3",
               "length_ms": 611000,
+              "section_number": 7,
               "start_ms": 6684000,
               "title": "07 - Chapter VII"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_08_ebers_64kb.mp3",
               "length_ms": 578000,
+              "section_number": 8,
               "start_ms": 7295000,
               "title": "08 - Chapter VIII"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_09_ebers_64kb.mp3",
               "length_ms": 1493000,
+              "section_number": 9,
               "start_ms": 7873000,
               "title": "09 - Chapter IX"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_10_ebers_64kb.mp3",
               "length_ms": 1170000,
+              "section_number": 10,
               "start_ms": 9366000,
               "title": "10 - Chapter X"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_11_ebers_64kb.mp3",
               "length_ms": 1050000,
+              "section_number": 11,
               "start_ms": 10536000,
               "title": "11 - Chapter XI"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_12_ebers_64kb.mp3",
               "length_ms": 1638000,
+              "section_number": 12,
               "start_ms": 11586000,
               "title": "12 - Chapter XII"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_13_ebers_64kb.mp3",
               "length_ms": 1250000,
+              "section_number": 13,
               "start_ms": 13224000,
               "title": "13 - Chapter XIII"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_14_ebers_64kb.mp3",
               "length_ms": 871000,
+              "section_number": 14,
               "start_ms": 14474000,
               "title": "14 - Chapter XIV"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_15_ebers_64kb.mp3",
               "length_ms": 1593000,
+              "section_number": 15,
               "start_ms": 15345000,
               "title": "15 - Chapter XV"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_16_ebers_64kb.mp3",
               "length_ms": 1262000,
+              "section_number": 16,
               "start_ms": 16938000,
               "title": "16 - Chapter XVI"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_17_ebers_64kb.mp3",
               "length_ms": 1331000,
+              "section_number": 17,
               "start_ms": 18200000,
               "title": "17 - Chapter XVII"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_18_ebers_64kb.mp3",
               "length_ms": 1598000,
+              "section_number": 18,
               "start_ms": 19531000,
               "title": "18 - Chapter XVIII"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_19_ebers_64kb.mp3",
               "length_ms": 1361000,
+              "section_number": 19,
               "start_ms": 21129000,
               "title": "19 - Chapter XIX"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_20_ebers_64kb.mp3",
               "length_ms": 1519000,
+              "section_number": 20,
               "start_ms": 22490000,
               "title": "20 - Chapter XX"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_21_ebers_64kb.mp3",
               "length_ms": 2169000,
+              "section_number": 21,
               "start_ms": 24009000,
               "title": "21 - Chapter XXI"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_22_ebers_64kb.mp3",
               "length_ms": 2036000,
+              "section_number": 22,
               "start_ms": 26178000,
               "title": "22 - Chapter XXII"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_23_ebers_64kb.mp3",
               "length_ms": 1786000,
+              "section_number": 23,
               "start_ms": 28214000,
               "title": "23 - Chapter XXIII"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_24_ebers_64kb.mp3",
               "length_ms": 2202000,
+              "section_number": 24,
               "start_ms": 30000000,
               "title": "24 - Chapter XXIV"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_25_ebers_64kb.mp3",
               "length_ms": 2034000,
+              "section_number": 25,
               "start_ms": 32202000,
               "title": "25 - Chapter XXV"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_26_ebers_64kb.mp3",
               "length_ms": 1495000,
+              "section_number": 26,
               "start_ms": 34236000,
               "title": "26 - Chapter XXVI"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_27_ebers_64kb.mp3",
               "length_ms": 1622000,
+              "section_number": 27,
               "start_ms": 35731000,
               "title": "27 - Chapter XXVII"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_28_ebers_64kb.mp3",
               "length_ms": 594000,
+              "section_number": 28,
               "start_ms": 37353000,
               "title": "28 - Chapter XXVIII"
             },
             {
               "audio_url": "https://www.archive.org/download/joshua_amb_librivox/joshua_29_ebers_64kb.mp3",
               "length_ms": 1083000,
+              "section_number": 29,
               "start_ms": 37947000,
               "title": "29 - Conclusion"
             }
@@ -16180,7 +16989,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt32/joshua_1306.jpg",
           "id": "ann-boulais",
           "language": "en",
+          "librivox_genres": [
+            "Historical Fiction",
+            "Christian Fiction"
+          ],
           "librivox_id": 7546,
+          "librivox_title": "Joshua",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/joshua-by-georg-ebers/",

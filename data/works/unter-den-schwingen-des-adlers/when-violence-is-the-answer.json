@@ -2223,27 +2223,50 @@
             {
               "audio_url": "https://www.archive.org/download/whenwedeadawaken_1301_librivox/whenwedeadawaken_1_ibsen_64kb.mp3",
               "length_ms": 2663000,
+              "readers": [
+                "arielle-lipshaw",
+                "bala",
+                "nicholas-anema"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/whenwedeadawaken_1301_librivox/whenwedeadawaken_2_ibsen_64kb.mp3",
               "length_ms": 2668000,
+              "readers": [
+                "elizabeth-klett",
+                "libby-gohn"
+              ],
               "start_ms": 2663000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/whenwedeadawaken_1301_librivox/whenwedeadawaken_3_ibsen_64kb.mp3",
               "length_ms": 1069000,
+              "readers": [
+                "ernst-pattynama",
+                "charlotte-duckett"
+              ],
               "start_ms": 5331000,
               "title": "Act 3"
             }
           ],
           "copyright_year": 1899,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt31/When_We_Dead_Awaken_1305.jpg",
+          "credits": [
+            {
+              "person": "william-archer",
+              "role": "translator"
+            }
+          ],
           "id": "arielle-lipshaw",
           "language": "en",
+          "librivox_genres": [
+            "Tragedy"
+          ],
           "librivox_id": 7337,
+          "librivox_title": "When We Dead Awaken",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/when-we-dead-awaken-by-henrik-ibsen/",
@@ -4940,54 +4963,81 @@
             {
               "audio_url": "https://www.archive.org/download/when_we_two_parted_librivox/when_we_two_parted_byron_cjs_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "clayton-j-smith"
+              ],
               "start_ms": 0,
               "title": "When We Two Parted - Read by CJS"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_two_parted_librivox/when_we_two_parted_byron_eks_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "erin-k-sullivan"
+              ],
               "start_ms": 74000,
               "title": "When We Two Parted - Read by EKS"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_two_parted_librivox/when_we_two_parted_byron_ezwa_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "ezwa"
+              ],
               "start_ms": 145000,
               "title": "When We Two Parted - Read by EZWA"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_two_parted_librivox/when_we_two_parted_byron_jb_64kb.mp3",
               "length_ms": 85000,
+              "readers": [
+                "jemmablythe"
+              ],
               "start_ms": 221000,
               "title": "When We Two Parted - Read by JB"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_two_parted_librivox/when_we_two_parted_byron_jsb_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "justin-s-barrett"
+              ],
               "start_ms": 306000,
               "title": "When We Two Parted - Read by JSB"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_two_parted_librivox/when_we_two_parted_byron_klh_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "kristin-hughes-1974-2021"
+              ],
               "start_ms": 386000,
               "title": "When We Two Parted - Read by KLH"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_two_parted_librivox/when_we_two_parted_byron_mc_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "michael-corley"
+              ],
               "start_ms": 480000,
               "title": "When We Two Parted - Read by MC"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_two_parted_librivox/when_we_two_parted_byron_mfs_64kb.mp3",
               "length_ms": 88000,
+              "readers": [
+                "mark-f-smith"
+              ],
               "start_ms": 574000,
               "title": "When We Two Parted - Read by MFS"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_two_parted_librivox/when_we_two_parted_byron_mw_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "matthew-walton"
+              ],
               "start_ms": 662000,
               "title": "When We Two Parted - Read by MW"
             }
@@ -4996,7 +5046,12 @@
           "cover_url": "https://archive.org/download/when_we_two_parted_librivox/When_We_Two_Parted_1107.jpg",
           "id": "clayton-j-smith",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 603,
+          "librivox_title": "When We Two Parted",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/when-we-two-parted-by-george-gordon-lord-byron/",
@@ -9427,270 +9482,315 @@
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_00_milne_64kb.mp3",
               "length_ms": 261000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Just Before We Begin"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_01_milne_64kb.mp3",
               "length_ms": 63000,
+              "section_number": 1,
               "start_ms": 261000,
               "title": "Corner-Of-The-Street"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_02_milne_64kb.mp3",
               "length_ms": 101000,
+              "section_number": 2,
               "start_ms": 324000,
               "title": "Buckingham Palace"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_03_milne_64kb.mp3",
               "length_ms": 34000,
+              "section_number": 3,
               "start_ms": 425000,
               "title": "Happiness"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_04_milne_64kb.mp3",
               "length_ms": 56000,
+              "section_number": 4,
               "start_ms": 459000,
               "title": "The Christening"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_05_milne_64kb.mp3",
               "length_ms": 115000,
+              "section_number": 5,
               "start_ms": 515000,
               "title": "Puppy and I"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_06_milne_64kb.mp3",
               "length_ms": 39000,
+              "section_number": 6,
               "start_ms": 630000,
               "title": "Twinkletoes"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_07_milne_64kb.mp3",
               "length_ms": 98000,
+              "section_number": 7,
               "start_ms": 669000,
               "title": "The Four Friends"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_08_milne_64kb.mp3",
               "length_ms": 78000,
+              "section_number": 8,
               "start_ms": 767000,
               "title": "Lines and Squares"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_09_milne_64kb.mp3",
               "length_ms": 51000,
+              "section_number": 9,
               "start_ms": 845000,
               "title": "Brownie"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_10_milne_64kb.mp3",
               "length_ms": 46000,
+              "section_number": 10,
               "start_ms": 896000,
               "title": "Independence"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_11_milne_64kb.mp3",
               "length_ms": 134000,
+              "section_number": 11,
               "start_ms": 942000,
               "title": "Nursery Chairs"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_12_milne_64kb.mp3",
               "length_ms": 144000,
+              "section_number": 12,
               "start_ms": 1076000,
               "title": "Market Square"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_13_milne_64kb.mp3",
               "length_ms": 39000,
+              "section_number": 13,
               "start_ms": 1220000,
               "title": "Daffodowndilly"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_14_milne_64kb.mp3",
               "length_ms": 73000,
+              "section_number": 14,
               "start_ms": 1259000,
               "title": "Water-Lilies"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_15_milne_64kb.mp3",
               "length_ms": 149000,
+              "section_number": 15,
               "start_ms": 1332000,
               "title": "Disobedience"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_16_milne_64kb.mp3",
               "length_ms": 105000,
+              "section_number": 16,
               "start_ms": 1481000,
               "title": "Spring Morning"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_17_milne_64kb.mp3",
               "length_ms": 112000,
+              "section_number": 17,
               "start_ms": 1586000,
               "title": "The Island"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_18_milne_64kb.mp3",
               "length_ms": 102000,
+              "section_number": 18,
               "start_ms": 1698000,
               "title": "The Three Foxes"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_19_milne_64kb.mp3",
               "length_ms": 47000,
+              "section_number": 19,
               "start_ms": 1800000,
               "title": "Politeness"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_20_milne_64kb.mp3",
               "length_ms": 62000,
+              "section_number": 20,
               "start_ms": 1847000,
               "title": "Jonathan Jo"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_21_milne_64kb.mp3",
               "length_ms": 87000,
+              "section_number": 21,
               "start_ms": 1909000,
               "title": "At the Zoo"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_22_milne_64kb.mp3",
               "length_ms": 92000,
+              "section_number": 22,
               "start_ms": 1996000,
               "title": "Rice Pudding"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_23_milne_64kb.mp3",
               "length_ms": 78000,
+              "section_number": 23,
               "start_ms": 2088000,
               "title": "Missing"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_24_milne_64kb.mp3",
               "length_ms": 162000,
+              "section_number": 24,
               "start_ms": 2166000,
               "title": "The King's Breakfast"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_25_milne_64kb.mp3",
               "length_ms": 44000,
+              "section_number": 25,
               "start_ms": 2328000,
               "title": "Hoppity"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_26_milne_64kb.mp3",
               "length_ms": 52000,
+              "section_number": 26,
               "start_ms": 2372000,
               "title": "At Home"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_27_milne_64kb.mp3",
               "length_ms": 83000,
+              "section_number": 27,
               "start_ms": 2424000,
               "title": "The Wrong House"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_28_milne_64kb.mp3",
               "length_ms": 52000,
+              "section_number": 28,
               "start_ms": 2507000,
               "title": "Summer Afternoon"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_29_milne_64kb.mp3",
               "length_ms": 255000,
+              "section_number": 29,
               "start_ms": 2559000,
               "title": "The Dormouse and the Doctor"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_30_milne_64kb.mp3",
               "length_ms": 78000,
+              "section_number": 30,
               "start_ms": 2814000,
               "title": "Shoes and Stockings"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_31_milne_64kb.mp3",
               "length_ms": 103000,
+              "section_number": 31,
               "start_ms": 2892000,
               "title": "Sand-Between-The-Toes"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_32_milne_64kb.mp3",
               "length_ms": 81000,
+              "section_number": 32,
               "start_ms": 2995000,
               "title": "Little Bo-Peep and Little Boy-Blue"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_33_milne_64kb.mp3",
               "length_ms": 140000,
+              "section_number": 33,
               "start_ms": 3076000,
               "title": "Knights and Ladies"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_34_milne_64kb.mp3",
               "length_ms": 54000,
+              "section_number": 34,
               "start_ms": 3216000,
               "title": "The Mirror"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_35_milne_64kb.mp3",
               "length_ms": 56000,
+              "section_number": 35,
               "start_ms": 3270000,
               "title": "Halfway Down"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_36_milne_64kb.mp3",
               "length_ms": 93000,
+              "section_number": 36,
               "start_ms": 3326000,
               "title": "The Invaders"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_37_milne_64kb.mp3",
               "length_ms": 72000,
+              "section_number": 37,
               "start_ms": 3419000,
               "title": "Before Tea"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_38_milne_64kb.mp3",
               "length_ms": 348000,
+              "section_number": 38,
               "start_ms": 3491000,
               "title": "Teddy Bear"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_39_milne_64kb.mp3",
               "length_ms": 199000,
+              "section_number": 39,
               "start_ms": 3839000,
               "title": "Bad Sir Brian Botany"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_40_milne_64kb.mp3",
               "length_ms": 70000,
+              "section_number": 40,
               "start_ms": 4038000,
               "title": "In the Fashion"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_41_milne_64kb.mp3",
               "length_ms": 92000,
+              "section_number": 41,
               "start_ms": 4108000,
               "title": "The Alchemist"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_42_milne_64kb.mp3",
               "length_ms": 61000,
+              "section_number": 42,
               "start_ms": 4200000,
               "title": "Growing Up"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_43_milne_64kb.mp3",
               "length_ms": 73000,
+              "section_number": 43,
               "start_ms": 4261000,
               "title": "If I Were King"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_44_milne_64kb.mp3",
               "length_ms": 120000,
+              "section_number": 44,
               "start_ms": 4334000,
               "title": "Vespers"
             }
@@ -9699,7 +9799,11 @@
           "cover_url": "https://archive.org/download/when_we_were_very_young_version_2_2005_librivox/whenwewereveryyoung_2005.jpg",
           "id": "annalisa-bodtker",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 14770,
+          "librivox_title": "When We Were Very Young (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/when-we-were-very-young-version-2-by-a-a-milne/",
@@ -10114,7 +10218,11 @@
           "cover_url": "https://archive.org/download/when_we_were_very_young_2002_librivox/whenwewereveryyoung_2002.jpg",
           "id": "mark-f-smith",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 14785,
+          "librivox_title": "When We Were Very Young",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/when-we-were-very-young-version-by-a-a-milne/",
@@ -10143,30 +10251,35 @@
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_2202_librivox/veryyoung_00_milne_64kb.mp3",
               "length_ms": 201000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Dedication and Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_2202_librivox/veryyoung_01_milne_64kb.mp3",
               "length_ms": 502000,
+              "section_number": 1,
               "start_ms": 201000,
               "title": "Poems 1 - 11"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_2202_librivox/veryyoung_02_milne_64kb.mp3",
               "length_ms": 651000,
+              "section_number": 2,
               "start_ms": 703000,
               "title": "Poems 12 - 22"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_2202_librivox/veryyoung_03_milne_64kb.mp3",
               "length_ms": 707000,
+              "section_number": 3,
               "start_ms": 1354000,
               "title": "Poems 23 - 33"
             },
             {
               "audio_url": "https://www.archive.org/download/when_we_were_very_young_2202_librivox/veryyoung_04_milne_64kb.mp3",
               "length_ms": 788000,
+              "section_number": 4,
               "start_ms": 2061000,
               "title": "Poems 34 - 44"
             }
@@ -10175,7 +10288,12 @@
           "cover_url": "https://archive.org/download/when_we_were_very_young_2202_librivox/when_we_were_very_young3_2202.jpg",
           "id": "matthew-soanes",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction",
+            "Poetry"
+          ],
           "librivox_id": 17558,
+          "librivox_title": "When We Were Very Young (Version 3)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/when-we-were-very-young-version-3-by-a-a-milne/",
@@ -10316,60 +10434,115 @@
             {
               "audio_url": "https://www.archive.org/download/whenwewereveryyoung4_2402_librivox/veryyoung4_00_milne_64kb.mp3",
               "length_ms": 233000,
+              "readers": [
+                "sweethome"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface: Just Before we Begin"
             },
             {
               "audio_url": "https://www.archive.org/download/whenwewereveryyoung4_2402_librivox/veryyoung4_01_milne_64kb.mp3",
               "length_ms": 237000,
+              "readers": [
+                "littlepeanut",
+                "forgetmenot"
+              ],
+              "section_number": 1,
               "start_ms": 233000,
               "title": "Corner-of-the-Street, Buckingham Palace, Happiness, The Christening, Puppy and I"
             },
             {
               "audio_url": "https://www.archive.org/download/whenwewereveryyoung4_2402_librivox/veryyoung4_02_milne_64kb.mp3",
               "length_ms": 228000,
+              "readers": [
+                "sweethome",
+                "littlepeanut",
+                "forgetmenot"
+              ],
+              "section_number": 2,
               "start_ms": 470000,
               "title": "Twinkletoes, The Four Friends, Lines and Squares, Brownie, Independence"
             },
             {
               "audio_url": "https://www.archive.org/download/whenwewereveryyoung4_2402_librivox/veryyoung4_03_milne_64kb.mp3",
               "length_ms": 444000,
+              "readers": [
+                "sweethome",
+                "littlepeanut",
+                "forgetmenot"
+              ],
+              "section_number": 3,
               "start_ms": 698000,
               "title": "Nursery Chairs, Market Square, Daffodowndilly, Water-Lilies, Disobedience"
             },
             {
               "audio_url": "https://www.archive.org/download/whenwewereveryyoung4_2402_librivox/veryyoung4_04_milne_64kb.mp3",
               "length_ms": 333000,
+              "readers": [
+                "sweethome",
+                "littlepeanut",
+                "forgetmenot"
+              ],
+              "section_number": 4,
               "start_ms": 1142000,
               "title": "Spring Morning, The Island, The Three Foxes, Politeness, Jonathan Jo"
             },
             {
               "audio_url": "https://www.archive.org/download/whenwewereveryyoung4_2402_librivox/veryyoung4_05_milne_64kb.mp3",
               "length_ms": 355000,
+              "readers": [
+                "littlepeanut",
+                "forgetmenot"
+              ],
+              "section_number": 5,
               "start_ms": 1475000,
               "title": "At the Zoo, Rice Pudding, The Wrong House, Missing, The King’s Breakfast"
             },
             {
               "audio_url": "https://www.archive.org/download/whenwewereveryyoung4_2402_librivox/veryyoung4_06_milne_64kb.mp3",
               "length_ms": 390000,
+              "readers": [
+                "sweethome",
+                "littlepeanut",
+                "forgetmenot"
+              ],
+              "section_number": 6,
               "start_ms": 1830000,
               "title": "Hoppity, At Home, Summer Afternoon, The Dormouse and the Doctor, Shoes and Stockings"
             },
             {
               "audio_url": "https://www.archive.org/download/whenwewereveryyoung4_2402_librivox/veryyoung4_07_milne_64kb.mp3",
               "length_ms": 334000,
+              "readers": [
+                "sweethome",
+                "littlepeanut",
+                "forgetmenot"
+              ],
+              "section_number": 7,
               "start_ms": 2220000,
               "title": "Sand-Between-the-Toes, Knights and Ladies, Little Bo-Peep and the Little Boy Blue, The Mirror, Halfway Down"
             },
             {
               "audio_url": "https://www.archive.org/download/whenwewereveryyoung4_2402_librivox/veryyoung4_08_milne_64kb.mp3",
               "length_ms": 552000,
+              "readers": [
+                "littlepeanut",
+                "forgetmenot"
+              ],
+              "section_number": 8,
               "start_ms": 2554000,
               "title": "The Invaders, Before Tea, Teddy Bear, Bad Sir Brian Botany, In the Fashion"
             },
             {
               "audio_url": "https://www.archive.org/download/whenwewereveryyoung4_2402_librivox/veryyoung4_09_milne_64kb.mp3",
               "length_ms": 229000,
+              "readers": [
+                "sweethome",
+                "littlepeanut",
+                "forgetmenot"
+              ],
+              "section_number": 9,
               "start_ms": 3106000,
               "title": "The Alchemist, Growing Up, If I were King, Vespers"
             }
@@ -10378,7 +10551,11 @@
           "cover_url": "https://archive.org/download/whenwewereveryyoung4_2402_librivox/very_young4_2402.jpg",
           "id": "sweethome",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 19661,
+          "librivox_title": "When We Were Very Young (Version 4)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/when-we-were-very-young-version-4-by-a-a-milne/",
@@ -12531,7 +12708,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt8/When_William_Came_1103.jpg",
           "id": "andy-minter-1934-2017",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction",
+            "War & Military Fiction"
+          ],
           "librivox_id": 1746,
+          "librivox_title": "When William Came",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/when-william-came-by-saki/",

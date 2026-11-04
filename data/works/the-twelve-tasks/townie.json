@@ -6999,72 +6999,84 @@
             {
               "audio_url": "https://www.archive.org/download/toxophilus_2305_librivox/toxophilus_00_ascham_64kb.mp3",
               "length_ms": 991000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Dedication and Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/toxophilus_2305_librivox/toxophilus_01_ascham_64kb.mp3",
               "length_ms": 1638000,
+              "section_number": 1,
               "start_ms": 991000,
               "title": "Book 1 - Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/toxophilus_2305_librivox/toxophilus_02_ascham_64kb.mp3",
               "length_ms": 1541000,
+              "section_number": 2,
               "start_ms": 2629000,
               "title": "Book 1 - Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/toxophilus_2305_librivox/toxophilus_03_ascham_64kb.mp3",
               "length_ms": 1612000,
+              "section_number": 3,
               "start_ms": 4170000,
               "title": "Book 1 - Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/toxophilus_2305_librivox/toxophilus_04_ascham_64kb.mp3",
               "length_ms": 1844000,
+              "section_number": 4,
               "start_ms": 5782000,
               "title": "Book 1 - Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/toxophilus_2305_librivox/toxophilus_05_ascham_64kb.mp3",
               "length_ms": 1924000,
+              "section_number": 5,
               "start_ms": 7626000,
               "title": "Book 1 - Part 5"
             },
             {
               "audio_url": "https://www.archive.org/download/toxophilus_2305_librivox/toxophilus_06_ascham_64kb.mp3",
               "length_ms": 1656000,
+              "section_number": 6,
               "start_ms": 9550000,
               "title": "Book 1 - Part 6"
             },
             {
               "audio_url": "https://www.archive.org/download/toxophilus_2305_librivox/toxophilus_07_ascham_64kb.mp3",
               "length_ms": 1525000,
+              "section_number": 7,
               "start_ms": 11206000,
               "title": "Book 2 - Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/toxophilus_2305_librivox/toxophilus_08_ascham_64kb.mp3",
               "length_ms": 1406000,
+              "section_number": 8,
               "start_ms": 12731000,
               "title": "Book 2 - Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/toxophilus_2305_librivox/toxophilus_09_ascham_64kb.mp3",
               "length_ms": 1887000,
+              "section_number": 9,
               "start_ms": 14137000,
               "title": "Book 2 - Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/toxophilus_2305_librivox/toxophilus_10_ascham_64kb.mp3",
               "length_ms": 1583000,
+              "section_number": 10,
               "start_ms": 16024000,
               "title": "Book 2 - Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/toxophilus_2305_librivox/toxophilus_11_ascham_64kb.mp3",
               "length_ms": 1243000,
+              "section_number": 11,
               "start_ms": 17607000,
               "title": "Book 2 - Part 5"
             }
@@ -7073,7 +7085,13 @@
           "cover_url": "https://archive.org/download/toxophilus_2305_librivox/toxophilus_2305.jpg",
           "id": "clive-catterall",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "War & Military",
+            "Sports & Recreation"
+          ],
           "librivox_id": 17434,
+          "librivox_title": "Toxophilus",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/toxophilus-by-roger-ascham/",
@@ -10590,78 +10608,117 @@
             {
               "audio_url": "https://www.archive.org/download/toys_1005_librivox/toys_patmore_cd_64kb.mp3",
               "length_ms": 103000,
+              "readers": [
+                "crowndaisy"
+              ],
               "start_ms": 0,
               "title": "Version 1"
             },
             {
               "audio_url": "https://www.archive.org/download/toys_1005_librivox/toys_patmore_clwy_64kb.mp3",
               "length_ms": 121000,
+              "readers": [
+                "claire-leong"
+              ],
               "start_ms": 103000,
               "title": "Version 2"
             },
             {
               "audio_url": "https://www.archive.org/download/toys_1005_librivox/toys_patmore_db_64kb.mp3",
               "length_ms": 118000,
+              "readers": [
+                "delibab"
+              ],
               "start_ms": 224000,
               "title": "Version 3"
             },
             {
               "audio_url": "https://www.archive.org/download/toys_1005_librivox/toys_patmore_djg_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "david-goldfarb"
+              ],
               "start_ms": 342000,
               "title": "Version 4"
             },
             {
               "audio_url": "https://www.archive.org/download/toys_1005_librivox/toys_patmore_dl_64kb.mp3",
               "length_ms": 117000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 436000,
               "title": "Version 5"
             },
             {
               "audio_url": "https://www.archive.org/download/toys_1005_librivox/toys_patmore_dm_64kb.mp3",
               "length_ms": 119000,
+              "readers": [
+                "drewmac"
+              ],
               "start_ms": 553000,
               "title": "Version 6"
             },
             {
               "audio_url": "https://www.archive.org/download/toys_1005_librivox/toys_patmore_eep_64kb.mp3",
               "length_ms": 129000,
+              "readers": [
+                "ernst-pattynama"
+              ],
               "start_ms": 672000,
               "title": "Version 7"
             },
             {
               "audio_url": "https://www.archive.org/download/toys_1005_librivox/toys_patmore_jcs_64kb.mp3",
               "length_ms": 112000,
+              "readers": [
+                "christopher-sargent"
+              ],
               "start_ms": 801000,
               "title": "Version 8"
             },
             {
               "audio_url": "https://www.archive.org/download/toys_1005_librivox/toys_patmore_llw_64kb.mp3",
               "length_ms": 125000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 913000,
               "title": "Version 9"
             },
             {
               "audio_url": "https://www.archive.org/download/toys_1005_librivox/toys_patmore_ln_64kb.mp3",
               "length_ms": 121000,
+              "readers": [
+                "liam-neely"
+              ],
               "start_ms": 1038000,
               "title": "Version 10"
             },
             {
               "audio_url": "https://www.archive.org/download/toys_1005_librivox/toys_patmore_mlb_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "mike-buckley"
+              ],
               "start_ms": 1159000,
               "title": "Version 11"
             },
             {
               "audio_url": "https://www.archive.org/download/toys_1005_librivox/toys_patmore_rg_64kb.mp3",
               "length_ms": 134000,
+              "readers": [
+                "ruth-golding"
+              ],
               "start_ms": 1253000,
               "title": "Version 12"
             },
             {
               "audio_url": "https://www.archive.org/download/toys_1005_librivox/toys_patmore_rn_64kb.mp3",
               "length_ms": 131000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 1387000,
               "title": "Version 13"
             }
@@ -10669,7 +10726,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt27/Toys_1301.jpg",
           "id": "crowndaisy",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 4264,
+          "librivox_title": "Toys",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-toys-by-coventry-patmore/",
@@ -10808,198 +10870,297 @@
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_01_saki_64kb.mp3",
               "length_ms": 874000,
+              "readers": [
+                "graham-redman"
+              ],
               "start_ms": 0,
               "title": "The Toys of Peace"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_02_saki_64kb.mp3",
               "length_ms": 621000,
+              "readers": [
+                "graham-redman"
+              ],
               "start_ms": 874000,
               "title": "Louise"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_03_saki_64kb.mp3",
               "length_ms": 734000,
+              "readers": [
+                "graham-redman"
+              ],
               "start_ms": 1495000,
               "title": "Tea"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_04_saki_64kb.mp3",
               "length_ms": 801000,
+              "readers": [
+                "graham-redman"
+              ],
               "start_ms": 2229000,
               "title": "The Disappearance of Crispina Umberleigh"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_05_saki_64kb.mp3",
               "length_ms": 746000,
+              "readers": [
+                "graham-redman"
+              ],
               "start_ms": 3030000,
               "title": "The Wolves of Cernogratz"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_06_saki_64kb.mp3",
               "length_ms": 756000,
+              "readers": [
+                "graham-redman"
+              ],
               "start_ms": 3776000,
               "title": "Louis"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_07_saki_64kb.mp3",
               "length_ms": 629000,
+              "readers": [
+                "graham-redman"
+              ],
               "start_ms": 4532000,
               "title": "The Guests"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_08_saki_64kb.mp3",
               "length_ms": 996000,
+              "readers": [
+                "graham-redman"
+              ],
               "start_ms": 5161000,
               "title": "The Penance"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_09_saki_64kb.mp3",
               "length_ms": 668000,
+              "readers": [
+                "graham-redman"
+              ],
               "start_ms": 6157000,
               "title": "The Phantom Luncheon"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_10_saki_64kb.mp3",
               "length_ms": 776000,
+              "readers": [
+                "ruth-golding"
+              ],
               "start_ms": 6825000,
               "title": "A Bread and Butter Miss"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_11_saki_64kb.mp3",
               "length_ms": 952000,
+              "readers": [
+                "bill-mosley"
+              ],
               "start_ms": 7601000,
               "title": "Bertie's Christmas Eve"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_12_saki_64kb.mp3",
               "length_ms": 1036000,
+              "readers": [
+                "voicebynatalie"
+              ],
               "start_ms": 8553000,
               "title": "Forewarned"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_13_saki_64kb.mp3",
               "length_ms": 799000,
+              "readers": [
+                "debra"
+              ],
               "start_ms": 9589000,
               "title": "The Interlopers"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_14_saki_64kb.mp3",
               "length_ms": 1006000,
+              "readers": [
+                "roeg11"
+              ],
               "start_ms": 10388000,
               "title": "Quail Seed"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_15_saki_64kb.mp3",
               "length_ms": 619000,
+              "readers": [
+                "jennycbnyn"
+              ],
               "start_ms": 11394000,
               "title": "Canossa"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_16_saki_64kb.mp3",
               "length_ms": 730000,
+              "readers": [
+                "roeg11"
+              ],
               "start_ms": 12013000,
               "title": "The Threat"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_17_saki_64kb.mp3",
               "length_ms": 959000,
+              "readers": [
+                "martin-geeson"
+              ],
               "start_ms": 12743000,
               "title": "Excepting Mrs. Pentherby"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_18_saki_64kb.mp3",
               "length_ms": 742000,
+              "readers": [
+                "chuck-williamson"
+              ],
               "start_ms": 13702000,
               "title": "Mark"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_19_saki_64kb.mp3",
               "length_ms": 905000,
+              "readers": [
+                "ruth-golding"
+              ],
               "start_ms": 14444000,
               "title": "The Hedgehog"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_20_saki_64kb.mp3",
               "length_ms": 736000,
+              "readers": [
+                "martin-geeson"
+              ],
               "start_ms": 15349000,
               "title": "The Mappined Life"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_21_saki_64kb.mp3",
               "length_ms": 828000,
+              "readers": [
+                "bill-mosley"
+              ],
               "start_ms": 16085000,
               "title": "Fate"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_22_saki_64kb.mp3",
               "length_ms": 774000,
+              "readers": [
+                "bill-mosley"
+              ],
               "start_ms": 16913000,
               "title": "The Bull"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_23_saki_64kb.mp3",
               "length_ms": 663000,
+              "readers": [
+                "asterix"
+              ],
               "start_ms": 17687000,
               "title": "Morlvera"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_24_saki_64kb.mp3",
               "length_ms": 742000,
+              "readers": [
+                "david-richardson"
+              ],
               "start_ms": 18350000,
               "title": "Shock Tactics"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_25_saki_64kb.mp3",
               "length_ms": 837000,
+              "readers": [
+                "jennycbnyn"
+              ],
               "start_ms": 19092000,
               "title": "The Seven Cream Jugs"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_26_saki_64kb.mp3",
               "length_ms": 603000,
+              "readers": [
+                "amy-gramour"
+              ],
               "start_ms": 19929000,
               "title": "The Occasional Garden"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_27_saki_64kb.mp3",
               "length_ms": 861000,
+              "readers": [
+                "noelbadrian"
+              ],
               "start_ms": 20532000,
               "title": "The Sheep"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_28_saki_64kb.mp3",
               "length_ms": 763000,
+              "readers": [
+                "chuck-williamson"
+              ],
               "start_ms": 21393000,
               "title": "The Oversight"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_29_saki_64kb.mp3",
               "length_ms": 767000,
+              "readers": [
+                "andee"
+              ],
               "start_ms": 22156000,
               "title": "Hyacinth"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_30_saki_64kb.mp3",
               "length_ms": 385000,
+              "readers": [
+                "noelbadrian"
+              ],
               "start_ms": 22923000,
               "title": "The Image of the Lost Soul"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_31_saki_64kb.mp3",
               "length_ms": 525000,
+              "readers": [
+                "maggie-smallwood"
+              ],
               "start_ms": 23308000,
               "title": "The Purple of the Balkan Kings"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_32_saki_64kb.mp3",
               "length_ms": 567000,
+              "readers": [
+                "kristin-g"
+              ],
               "start_ms": 23833000,
               "title": "The Cupboard of the Yesterdays"
             },
             {
               "audio_url": "https://www.archive.org/download/toysofpeace_1204_librivox/toysofpeace_33_saki_64kb.mp3",
               "length_ms": 762000,
+              "readers": [
+                "noelbadrian"
+              ],
               "start_ms": 24400000,
               "title": "For the Duration of the War"
             }
@@ -11008,7 +11169,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt29/toys_peace_1302.jpg",
           "id": "graham-redman",
           "language": "en",
+          "librivox_genres": [
+            "Humorous Fiction",
+            "Short Stories"
+          ],
           "librivox_id": 1894,
+          "librivox_title": "Toys of Peace",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-toys-of-peace-by-saki/",
@@ -11791,486 +11957,567 @@
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_00_cervantes_64kb.mp3",
               "length_ms": 695000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Persiles y Sigismunda - Advertencia, Dedicatoria, Prólogo"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_01_cervantes_64kb.mp3",
               "length_ms": 520000,
+              "section_number": 1,
               "start_ms": 695000,
               "title": "Persiles y Sigismunda - Capítulo I del libro primero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_02_cervantes_64kb.mp3",
               "length_ms": 882000,
+              "section_number": 2,
               "start_ms": 1215000,
               "title": "Persiles y Sigismunda - Capítulo II del libro primero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_03_cervantes_64kb.mp3",
               "length_ms": 375000,
+              "section_number": 3,
               "start_ms": 2097000,
               "title": "Persiles y Sigismunda - Capítulo III del libro primero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_04_cervantes_64kb.mp3",
               "length_ms": 956000,
+              "section_number": 4,
               "start_ms": 2472000,
               "title": "Persiles y Sigismunda - Capítulo IV del libro primero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_05_cervantes_64kb.mp3",
               "length_ms": 906000,
+              "section_number": 5,
               "start_ms": 3428000,
               "title": "Persiles y Sigismunda - Capítulo V del libro primero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_06_cervantes_64kb.mp3",
               "length_ms": 1063000,
+              "section_number": 6,
               "start_ms": 4334000,
               "title": "Persiles y Sigismunda - Capítulo VI del libro primero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_07_cervantes_64kb.mp3",
               "length_ms": 329000,
+              "section_number": 7,
               "start_ms": 5397000,
               "title": "Persiles y Sigismunda - Capítulo VII del libro primero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_08_cervantes_64kb.mp3",
               "length_ms": 671000,
+              "section_number": 8,
               "start_ms": 5726000,
               "title": "Persiles y Sigismunda - Capítulo VIII del libro primero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_09_cervantes_64kb.mp3",
               "length_ms": 557000,
+              "section_number": 9,
               "start_ms": 6397000,
               "title": "Persiles y Sigismunda - Capítulo IX del libro primero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_10_cervantes_64kb.mp3",
               "length_ms": 695000,
+              "section_number": 10,
               "start_ms": 6954000,
               "title": "Persiles y Sigismunda - Capítulo X del libro primero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_11_cervantes_64kb.mp3",
               "length_ms": 470000,
+              "section_number": 11,
               "start_ms": 7649000,
               "title": "Persiles y Sigismunda - Capítulo XI del libro primero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_12_cervantes_64kb.mp3",
               "length_ms": 653000,
+              "section_number": 12,
               "start_ms": 8119000,
               "title": "Persiles y Sigismunda - Capítulo XII del libro primero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_13_cervantes_64kb.mp3",
               "length_ms": 456000,
+              "section_number": 13,
               "start_ms": 8772000,
               "title": "Persiles y Sigismunda - Capítulo XIII del libro primero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_14_cervantes_64kb.mp3",
               "length_ms": 593000,
+              "section_number": 14,
               "start_ms": 9228000,
               "title": "Persiles y Sigismunda - Capítulo XIV del libro primero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_15_cervantes_64kb.mp3",
               "length_ms": 301000,
+              "section_number": 15,
               "start_ms": 9821000,
               "title": "Persiles y Sigismunda - Capítulo XV del libro primero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_16_cervantes_64kb.mp3",
               "length_ms": 489000,
+              "section_number": 16,
               "start_ms": 10122000,
               "title": "Persiles y Sigismunda - Capítulo XVI del libro primero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_17_cervantes_64kb.mp3",
               "length_ms": 266000,
+              "section_number": 17,
               "start_ms": 10611000,
               "title": "Persiles y Sigismunda - Capítulo XVII del libro primero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_18_cervantes_64kb.mp3",
               "length_ms": 1124000,
+              "section_number": 18,
               "start_ms": 10877000,
               "title": "Persiles y Sigismunda - Capítulo XVIII del libro primero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_19_cervantes_64kb.mp3",
               "length_ms": 682000,
+              "section_number": 19,
               "start_ms": 12001000,
               "title": "Persiles y Sigismunda - Capítulo XIX del libro primero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_20_cervantes_64kb.mp3",
               "length_ms": 573000,
+              "section_number": 20,
               "start_ms": 12683000,
               "title": "Persiles y Sigismunda - Capítulo XX del libro primero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_21_cervantes_64kb.mp3",
               "length_ms": 278000,
+              "section_number": 21,
               "start_ms": 13256000,
               "title": "Persiles y Sigismunda - Capítulo XXI del libro primero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_22_cervantes_64kb.mp3",
               "length_ms": 740000,
+              "section_number": 22,
               "start_ms": 13534000,
               "title": "Persiles y Sigismunda - Capítulo XXII del libro primero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_23_cervantes_64kb.mp3",
               "length_ms": 575000,
+              "section_number": 23,
               "start_ms": 14274000,
               "title": "Persiles y Sigismunda - Capítulo XXIII del libro primero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_24_cervantes_64kb.mp3",
               "length_ms": 369000,
+              "section_number": 24,
               "start_ms": 14849000,
               "title": "Persiles y Sigismunda - Capítulo I del libro segundo"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_25_cervantes_64kb.mp3",
               "length_ms": 905000,
+              "section_number": 25,
               "start_ms": 15218000,
               "title": "Persiles y Sigismunda - Capítulo II del libro segundo"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_26_cervantes_64kb.mp3",
               "length_ms": 684000,
+              "section_number": 26,
               "start_ms": 16123000,
               "title": "Persiles y Sigismunda - Capítulo III del libro segundo"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_27_cervantes_64kb.mp3",
               "length_ms": 539000,
+              "section_number": 27,
               "start_ms": 16807000,
               "title": "Persiles y Sigismunda - Capítulo IV del libro segundo"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_28_cervantes_64kb.mp3",
               "length_ms": 944000,
+              "section_number": 28,
               "start_ms": 17346000,
               "title": "Persiles y Sigismunda - Capítulo V del libro segundo"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_29_cervantes_64kb.mp3",
               "length_ms": 547000,
+              "section_number": 29,
               "start_ms": 18290000,
               "title": "Persiles y Sigismunda - Capítulo VI del libro segundo"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_30_cervantes_64kb.mp3",
               "length_ms": 704000,
+              "section_number": 30,
               "start_ms": 18837000,
               "title": "Persiles y Sigismunda - Capítulo VII del libro segundo"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_31_cervantes_64kb.mp3",
               "length_ms": 752000,
+              "section_number": 31,
               "start_ms": 19541000,
               "title": "Persiles y Sigismunda - Capítulo VIII del libro segundo"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_32_cervantes_64kb.mp3",
               "length_ms": 652000,
+              "section_number": 32,
               "start_ms": 20293000,
               "title": "Persiles y Sigismunda - Capítulo IX del libro segundo"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_33_cervantes_64kb.mp3",
               "length_ms": 457000,
+              "section_number": 33,
               "start_ms": 20945000,
               "title": "Persiles y Sigismunda - Capítulo X del libro segundo"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_34_cervantes_64kb.mp3",
               "length_ms": 1240000,
+              "section_number": 34,
               "start_ms": 21402000,
               "title": "Persiles y Sigismunda - Capítulo XI del libro segundo"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_35_cervantes_64kb.mp3",
               "length_ms": 501000,
+              "section_number": 35,
               "start_ms": 22642000,
               "title": "Persiles y Sigismunda - Capítulo XII del libro segundo"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_36_cervantes_64kb.mp3",
               "length_ms": 872000,
+              "section_number": 36,
               "start_ms": 23143000,
               "title": "Persiles y Sigismunda - Capítulo XIII del libro segundo"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_37_cervantes_64kb.mp3",
               "length_ms": 906000,
+              "section_number": 37,
               "start_ms": 24015000,
               "title": "Persiles y Sigismunda - Capítulo XIV del libro segundo"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_38_cervantes_64kb.mp3",
               "length_ms": 829000,
+              "section_number": 38,
               "start_ms": 24921000,
               "title": "Persiles y Sigismunda - Capítulo XV del libro segundo"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_39_cervantes_64kb.mp3",
               "length_ms": 693000,
+              "section_number": 39,
               "start_ms": 25750000,
               "title": "Persiles y Sigismunda - Capítulo XVI del libro segundo"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_40_cervantes_64kb.mp3",
               "length_ms": 515000,
+              "section_number": 40,
               "start_ms": 26443000,
               "title": "Persiles y Sigismunda - Capítulo XVII del libro segundo"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_41_cervantes_64kb.mp3",
               "length_ms": 783000,
+              "section_number": 41,
               "start_ms": 26958000,
               "title": "Persiles y Sigismunda - Capítulo XVIII del libro segundo"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_42_cervantes_64kb.mp3",
               "length_ms": 931000,
+              "section_number": 42,
               "start_ms": 27741000,
               "title": "Persiles y Sigismunda - Capítulo XIX del libro segundo"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_43_cervantes_64kb.mp3",
               "length_ms": 711000,
+              "section_number": 43,
               "start_ms": 28672000,
               "title": "Persiles y Sigismunda - Capítulo XX del libro segundo"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_44_cervantes_64kb.mp3",
               "length_ms": 564000,
+              "section_number": 44,
               "start_ms": 29383000,
               "title": "Persiles y Sigismunda - Capítulo XXI del libro segundo"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_45_cervantes_64kb.mp3",
               "length_ms": 659000,
+              "section_number": 45,
               "start_ms": 29947000,
               "title": "Persiles y Sigismunda - Capítulo XXII del libro segundo"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_46_cervantes_64kb.mp3",
               "length_ms": 1001000,
+              "section_number": 46,
               "start_ms": 30606000,
               "title": "Persiles y Sigismunda - Capítulo I del libro tercero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_47_cervantes_64kb.mp3",
               "length_ms": 1021000,
+              "section_number": 47,
               "start_ms": 31607000,
               "title": "Persiles y Sigismunda - Capítulo II del libro tercero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_48_cervantes_64kb.mp3",
               "length_ms": 720000,
+              "section_number": 48,
               "start_ms": 32628000,
               "title": "Persiles y Sigismunda - Capítulo III del libro tercero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_49_cervantes_64kb.mp3",
               "length_ms": 1232000,
+              "section_number": 49,
               "start_ms": 33348000,
               "title": "Persiles y Sigismunda - Capítulo IV del libro tercero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_50_cervantes_64kb.mp3",
               "length_ms": 926000,
+              "section_number": 50,
               "start_ms": 34580000,
               "title": "Persiles y Sigismunda - Capítulo V del libro tercero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_51_cervantes_64kb.mp3",
               "length_ms": 1331000,
+              "section_number": 51,
               "start_ms": 35506000,
               "title": "Persiles y Sigismunda - Capítulo VI del libro tercero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_52_cervantes_64kb.mp3",
               "length_ms": 578000,
+              "section_number": 52,
               "start_ms": 36837000,
               "title": "Persiles y Sigismunda - Capítulo VII del libro tercero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_53_cervantes_64kb.mp3",
               "length_ms": 697000,
+              "section_number": 53,
               "start_ms": 37415000,
               "title": "Persiles y Sigismunda - Capítulo VIII del libro tercero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_54_cervantes_64kb.mp3",
               "length_ms": 1358000,
+              "section_number": 54,
               "start_ms": 38112000,
               "title": "Persiles y Sigismunda - Capítulo IX del libro tercero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_55_cervantes_64kb.mp3",
               "length_ms": 971000,
+              "section_number": 55,
               "start_ms": 39470000,
               "title": "Persiles y Sigismunda - Capítulo X del libro tercero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_56_cervantes_64kb.mp3",
               "length_ms": 1151000,
+              "section_number": 56,
               "start_ms": 40441000,
               "title": "Persiles y Sigismunda - Capítulo XI del libro tercero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_57_cervantes_64kb.mp3",
               "length_ms": 977000,
+              "section_number": 57,
               "start_ms": 41592000,
               "title": "Persiles y Sigismunda - Capítulo XII del libro tercero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_58_cervantes_64kb.mp3",
               "length_ms": 638000,
+              "section_number": 58,
               "start_ms": 42569000,
               "title": "Persiles y Sigismunda - Capítulo XIII del libro tercero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_59_cervantes_64kb.mp3",
               "length_ms": 811000,
+              "section_number": 59,
               "start_ms": 43207000,
               "title": "Persiles y Sigismunda - Capítulo XIV del libro tercero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_60_cervantes_64kb.mp3",
               "length_ms": 563000,
+              "section_number": 60,
               "start_ms": 44018000,
               "title": "Persiles y Sigismunda - Capítulo XV del libro tercero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_61_cervantes_64kb.mp3",
               "length_ms": 725000,
+              "section_number": 61,
               "start_ms": 44581000,
               "title": "Persiles y Sigismunda - Capítulo XVI del libro tercero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_62_cervantes_64kb.mp3",
               "length_ms": 844000,
+              "section_number": 62,
               "start_ms": 45306000,
               "title": "Persiles y Sigismunda - Capítulo XVII del libro tercero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_63_cervantes_64kb.mp3",
               "length_ms": 658000,
+              "section_number": 63,
               "start_ms": 46150000,
               "title": "Persiles y Sigismunda - Capítulo XVIII del libro tercero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_64_cervantes_64kb.mp3",
               "length_ms": 635000,
+              "section_number": 64,
               "start_ms": 46808000,
               "title": "Persiles y Sigismunda - Capítulo XIX del libro tercero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_65_cervantes_64kb.mp3",
               "length_ms": 738000,
+              "section_number": 65,
               "start_ms": 47443000,
               "title": "Persiles y Sigismunda - Capítulo XX del libro tercero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_66_cervantes_64kb.mp3",
               "length_ms": 613000,
+              "section_number": 66,
               "start_ms": 48181000,
               "title": "Persiles y Sigismunda - Capítulo XXI del libro tercero"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_67_cervantes_64kb.mp3",
               "length_ms": 752000,
+              "section_number": 67,
               "start_ms": 48794000,
               "title": "Persiles y Sigismunda - Capítulo I del libro cuarto"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_68_cervantes_64kb.mp3",
               "length_ms": 637000,
+              "section_number": 68,
               "start_ms": 49546000,
               "title": "Persiles y Sigismunda - Capítulo II del libro cuarto"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_69_cervantes_64kb.mp3",
               "length_ms": 662000,
+              "section_number": 69,
               "start_ms": 50183000,
               "title": "Persiles y Sigismunda - Capítulo III del libro cuarto"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_70_cervantes_64kb.mp3",
               "length_ms": 384000,
+              "section_number": 70,
               "start_ms": 50845000,
               "title": "Persiles y Sigismunda - Capítulo IV del libro cuarto"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_71_cervantes_64kb.mp3",
               "length_ms": 710000,
+              "section_number": 71,
               "start_ms": 51229000,
               "title": "Persiles y Sigismunda - Capítulo V del libro cuarto"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_72_cervantes_64kb.mp3",
               "length_ms": 774000,
+              "section_number": 72,
               "start_ms": 51939000,
               "title": "Persiles y Sigismunda - Capítulo VI del libro cuarto"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_73_cervantes_64kb.mp3",
               "length_ms": 828000,
+              "section_number": 73,
               "start_ms": 52713000,
               "title": "Persiles y Sigismunda - Capítulo VII del libro cuarto"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_74_cervantes_64kb.mp3",
               "length_ms": 595000,
+              "section_number": 74,
               "start_ms": 53541000,
               "title": "Persiles y Sigismunda - Capítulo VIII del libro cuarto"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_75_cervantes_64kb.mp3",
               "length_ms": 384000,
+              "section_number": 75,
               "start_ms": 54136000,
               "title": "Persiles y Sigismunda - Capítulo IX del libro cuarto"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_76_cervantes_64kb.mp3",
               "length_ms": 555000,
+              "section_number": 76,
               "start_ms": 54520000,
               "title": "Persiles y Sigismunda - Capítulo X del libro cuarto"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_77_cervantes_64kb.mp3",
               "length_ms": 510000,
+              "section_number": 77,
               "start_ms": 55075000,
               "title": "Persiles y Sigismunda - Capítulo XI del libro cuarto"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_78_cervantes_64kb.mp3",
               "length_ms": 629000,
+              "section_number": 78,
               "start_ms": 55585000,
               "title": "Persiles y Sigismunda - Capítulo XII del libro cuarto"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_79_cervantes_64kb.mp3",
               "length_ms": 522000,
+              "section_number": 79,
               "start_ms": 56214000,
               "title": "Persiles y Sigismunda - Capítulo XIII del libro cuarto"
             },
             {
               "audio_url": "https://www.archive.org/download/trabajospersilesysigismunda_1512_librivox/persiles_80_cervantes_64kb.mp3",
               "length_ms": 445000,
+              "section_number": 80,
               "start_ms": 56736000,
               "title": "Persiles y Sigismunda - Capítulo XIV del libro cuarto"
             }
@@ -12279,7 +12526,11 @@
           "cover_url": "https://archive.org/download/trabajospersilesysigismunda_1512_librivox/Persiles_1512.jpg",
           "id": "tux",
           "language": "es",
+          "librivox_genres": [
+            "Literary Fiction"
+          ],
           "librivox_id": 10158,
+          "librivox_title": "Trabajos de Persiles y Sigismunda",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/los-trabajos-de-persiles-y-sigismunda-by-miguel-de-cervantes-saavedra/",

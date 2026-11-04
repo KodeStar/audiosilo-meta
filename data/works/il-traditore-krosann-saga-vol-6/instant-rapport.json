@@ -5182,9 +5182,24 @@
           ],
           "copyright_year": 1799,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt28/Instituciones_Oratoriasviii_1301.jpg",
+          "credits": [
+            {
+              "person": "ignacio-rodriguez",
+              "role": "translator"
+            },
+            {
+              "person": "pedro-sandier",
+              "role": "translator"
+            }
+          ],
           "id": "tux",
           "language": "es",
+          "librivox_genres": [
+            "Education",
+            "Performing Arts"
+          ],
           "librivox_id": 5435,
+          "librivox_title": "Instituciones Oratorias VIII",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/instituciones-oratorias-viii-by-marcus-fabius-quintilianus/",
@@ -6096,183 +6111,280 @@
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_01_calvin_64kb.mp3",
               "length_ms": 638000,
+              "readers": [
+                "wagenfuhr"
+              ],
               "start_ms": 0,
               "title": "01 - Prefatory Material and Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_02_calvin_64kb.mp3",
               "length_ms": 937000,
+              "readers": [
+                "rymd80"
+              ],
               "start_ms": 638000,
               "title": "02 - Printer's Note, Original Translator's Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_03_calvin_64kb.mp3",
               "length_ms": 3156000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 1575000,
               "title": "03 - Prefatory Address"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_04_calvin_64kb.mp3",
               "length_ms": 466000,
+              "readers": [
+                "rymd80"
+              ],
               "start_ms": 4731000,
               "title": "04 - Epistle to Reader and Subject of Present Work"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_05_calvin_64kb.mp3",
               "length_ms": 1067000,
+              "readers": [
+                "rymd80"
+              ],
               "start_ms": 5197000,
               "title": "05 - Epistle to Reader and Method and Arrangement"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_06_calvin_64kb.mp3",
               "length_ms": 230000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 6264000,
               "title": "06 - Book First: Argument"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_07_calvin_64kb.mp3",
               "length_ms": 532000,
+              "readers": [
+                "laura-wright"
+              ],
               "start_ms": 6494000,
               "title": "07 - Knowledge of God and of Ourselves Mutually Connected"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_08_calvin_64kb.mp3",
               "length_ms": 572000,
+              "readers": [
+                "laura-wright"
+              ],
               "start_ms": 7026000,
               "title": "08 - What It Is to Know God"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_09_calvin_64kb.mp3",
               "length_ms": 592000,
+              "readers": [
+                "hearhis"
+              ],
               "start_ms": 7598000,
               "title": "09 - Knowledge of God Naturally Implanted in the Human Mind"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_10_calvin_64kb.mp3",
               "length_ms": 750000,
+              "readers": [
+                "thepreacher"
+              ],
               "start_ms": 8190000,
               "title": "10 - Knowledge of God Stifled or Corrupted"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_11_calvin_64kb.mp3",
               "length_ms": 2784000,
+              "readers": [
+                "thepreacher"
+              ],
               "start_ms": 8940000,
               "title": "11 - Knowledge of God Conspicuous in Creation"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_12_calvin_64kb.mp3",
               "length_ms": 852000,
+              "readers": [
+                "thepreacher"
+              ],
               "start_ms": 11724000,
               "title": "12 - Need of Scripture as a Guide and Teacher"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_13_calvin_64kb.mp3",
               "length_ms": 1212000,
+              "readers": [
+                "thepreacher"
+              ],
               "start_ms": 12576000,
               "title": "13 - Testimony of the Spirit Necessary"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_14_calvin_64kb.mp3",
               "length_ms": 1786000,
+              "readers": [
+                "spt-r1"
+              ],
               "start_ms": 13788000,
               "title": "14 - Credibility of Scripture Sufficiently Proved"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_15_calvin_64kb.mp3",
               "length_ms": 649000,
+              "readers": [
+                "sean-f-sawyers"
+              ],
               "start_ms": 15574000,
               "title": "15 - All the Principles of Piety Subverted by Fanatics"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_16_calvin_64kb.mp3",
               "length_ms": 581000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 16223000,
               "title": "16 - In Scripture, the True God Opposed, Exclusively"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_17_calvin_64kb.mp3",
               "length_ms": 1532000,
+              "readers": [
+                "sean-f-sawyers"
+              ],
               "start_ms": 16804000,
               "title": "17 - Impiety of Attributing a Visible Form to God, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_18_calvin_64kb.mp3",
               "length_ms": 1402000,
+              "readers": [
+                "m-white"
+              ],
               "start_ms": 18336000,
               "title": "18 - Impiety of Attributing a Visible Form to God, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_19_calvin_64kb.mp3",
               "length_ms": 738000,
+              "readers": [
+                "wagenfuhr"
+              ],
               "start_ms": 19738000,
               "title": "19 - God Distinguished from Idols"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_20_calvin_64kb.mp3",
               "length_ms": 2452000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 20476000,
               "title": "20 - Unity of the Divine Essence in Three Persons, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_21_calvin_64kb.mp3",
               "length_ms": 2114000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 22928000,
               "title": "21 - Unity of the Divine Essence in Three Persons, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_22_calvin_64kb.mp3",
               "length_ms": 2056000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 25042000,
               "title": "22 - Unity of the Divine Essence in Three Persons, pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_23_calvin_64kb.mp3",
               "length_ms": 1686000,
+              "readers": [
+                "spt-r1"
+              ],
               "start_ms": 27098000,
               "title": "23 - In the Creation of the World, and All Things in It, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_24_calvin_64kb.mp3",
               "length_ms": 1926000,
+              "readers": [
+                "franklin"
+              ],
               "start_ms": 28784000,
               "title": "24 - In the Creation of the World, and All Things in It, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_25_calvin_64kb.mp3",
               "length_ms": 2291000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 30710000,
               "title": "25 - State in which Man Was Created"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_26_calvin_64kb.mp3",
               "length_ms": 2314000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 33001000,
               "title": "26 - The World, Created by God, Still Cherished and Protected"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_27_calvin_64kb.mp3",
               "length_ms": 1641000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 35315000,
               "title": "27 - Use to Be Made of the Doctrine of Providence, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_28_calvin_64kb.mp3",
               "length_ms": 1610000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 36956000,
               "title": "28 - Use to Be Made of the Doctrine of Providence, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion1_0909_librivox/institutesofchristianreligion1_29_calvin_64kb.mp3",
               "length_ms": 1785000,
+              "readers": [
+                "wagenfuhr"
+              ],
               "start_ms": 38566000,
               "title": "29 - The Instrumentality of the Wicked Employed by God"
             }
           ],
           "copyright_year": 1599,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt20/institutes1_1206.jpg",
+          "credits": [
+            {
+              "person": "henry-beveridge",
+              "role": "translator"
+            }
+          ],
           "id": "wagenfuhr",
           "language": "en",
+          "librivox_genres": [
+            "Christianity - Other"
+          ],
           "librivox_id": 3051,
+          "librivox_title": "Institutes of the Christian Religion, Book 1",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/institutes-of-the-christian-religion-book-1-by-john-calvin/",
@@ -6340,183 +6452,281 @@
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_01_calvin_64kb.mp3",
               "length_ms": 191000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 0,
               "title": "01 - Argument"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_02_calvin_64kb.mp3",
               "length_ms": 2249000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 191000,
               "title": "02 - Through the Fall and Revolt of Adam"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_03_calvin_64kb.mp3",
               "length_ms": 1879000,
+              "readers": [
+                "rymd80"
+              ],
               "start_ms": 2440000,
               "title": "03 - Man Now Deprived of Freedom of Will, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_04_calvin_64kb.mp3",
               "length_ms": 1937000,
+              "readers": [
+                "rymd80"
+              ],
               "start_ms": 4319000,
               "title": "04 - Man Now Deprived of Freedom of Will, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_05_calvin_64kb.mp3",
               "length_ms": 1826000,
+              "readers": [
+                "adam-oellermann"
+              ],
               "start_ms": 6256000,
               "title": "05 - Man Now Deprived of Freedom of Will, pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_06_calvin_64kb.mp3",
               "length_ms": 1971000,
+              "readers": [
+                "sienna"
+              ],
               "start_ms": 8082000,
               "title": "06 - Every Thing Proceeding from the Corrupt Nature, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_07_calvin_64kb.mp3",
               "length_ms": 1728000,
+              "readers": [
+                "sienna"
+              ],
               "start_ms": 10053000,
               "title": "07 - Every Thing Proceeding from the Corrupt Nature, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_08_calvin_64kb.mp3",
               "length_ms": 1322000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 11781000,
               "title": "08 - How God Works in the Hearts of Men"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_09_calvin_64kb.mp3",
               "length_ms": 2338000,
+              "readers": [
+                "brendan-tannam"
+              ],
               "start_ms": 13103000,
               "title": "09 - Arguments Usually Alleged in Support of Free Will, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_10_calvin_64kb.mp3",
               "length_ms": 2149000,
+              "readers": [
+                "sienna"
+              ],
               "start_ms": 15441000,
               "title": "10 - Arguments Usually Alleged in Support of Free Will, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_11_calvin_64kb.mp3",
               "length_ms": 1343000,
+              "readers": [
+                "c-g-brock"
+              ],
               "start_ms": 17590000,
               "title": "11 - Redemption for Man Lost to Be Sought in Christ"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_12_calvin_64kb.mp3",
               "length_ms": 1749000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 18933000,
               "title": "12 - The Law Given, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_13_calvin_64kb.mp3",
               "length_ms": 1571000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 20682000,
               "title": "13 - The Law Given, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_14_calvin_64kb.mp3",
               "length_ms": 2242000,
+              "readers": [
+                "von"
+              ],
               "start_ms": 22253000,
               "title": "14 - Exposition of the Moral Law, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_15_calvin_64kb.mp3",
               "length_ms": 1988000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 24495000,
               "title": "15 - Exposition of the Moral Law, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_16_calvin_64kb.mp3",
               "length_ms": 2117000,
+              "readers": [
+                "rymd80"
+              ],
               "start_ms": 26483000,
               "title": "16 - Exposition of the Moral Law, pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_17_calvin_64kb.mp3",
               "length_ms": 1670000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 28600000,
               "title": "17 - Exposition of the Moral Law, pt 4"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_18_calvin_64kb.mp3",
               "length_ms": 1968000,
+              "readers": [
+                "sienna"
+              ],
               "start_ms": 30270000,
               "title": "18 - Exposition of the Moral Law, pt 5"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_19_calvin_64kb.mp3",
               "length_ms": 1049000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 32238000,
               "title": "19 - Christ, Though Known to the Jews Under the Law"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_20_calvin_64kb.mp3",
               "length_ms": 2009000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 33287000,
               "title": "20 - Resemblance Between the Old Testament and the New, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_21_calvin_64kb.mp3",
               "length_ms": 1979000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 35296000,
               "title": "21 - Resemblance Between the Old Testament and the New, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_22_calvin_64kb.mp3",
               "length_ms": 2559000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 37275000,
               "title": "22 - The Difference Between the Two Testaments"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_23_calvin_64kb.mp3",
               "length_ms": 1861000,
+              "readers": [
+                "k-a-brock"
+              ],
               "start_ms": 39834000,
               "title": "23 - Christ, to Perform the Office of Mediator"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_24_calvin_64kb.mp3",
               "length_ms": 1208000,
+              "readers": [
+                "dana-allen"
+              ],
               "start_ms": 41695000,
               "title": "24 - Christ Clothed with the True Substance of Human Nature"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_25_calvin_64kb.mp3",
               "length_ms": 1967000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 42903000,
               "title": "25 - How Two Natures Constitute the Person of the Mediator"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_26_calvin_64kb.mp3",
               "length_ms": 1719000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 44870000,
               "title": "26 - Three Things Briefly to Be Regarded in Christ"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_27_calvin_64kb.mp3",
               "length_ms": 2159000,
+              "readers": [
+                "sean-f-sawyers"
+              ],
               "start_ms": 46589000,
               "title": "27 - How Christ Performed the Office of Redeemer, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_28_calvin_64kb.mp3",
               "length_ms": 2187000,
+              "readers": [
+                "sean-f-sawyers"
+              ],
               "start_ms": 48748000,
               "title": "28 - How Christ Performed the Office of Redeemer, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion2_1003_librivox/institutesofchristianreligion2_29_calvin_64kb.mp3",
               "length_ms": 1298000,
+              "readers": [
+                "sean-f-sawyers"
+              ],
               "start_ms": 50935000,
               "title": "29 - Christ Rightly and Properly Said to Have Merited"
             }
           ],
           "copyright_year": 1599,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt20/institutes2_1206.jpg",
+          "credits": [
+            {
+              "person": "henry-beveridge",
+              "role": "translator"
+            }
+          ],
           "id": "david-lawrence",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Religion"
+          ],
           "librivox_id": 3301,
+          "librivox_title": "Institutes of the Christian Religion, Book 2",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/institutes-of-the-christian-religion-book-two-by-john-calvin/",
@@ -6584,291 +6794,443 @@
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_01_calvin_64kb.mp3",
               "length_ms": 215000,
+              "readers": [
+                "diana-majlinger"
+              ],
               "start_ms": 0,
               "title": "01 - Argument"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_02_calvin_64kb.mp3",
               "length_ms": 1107000,
+              "readers": [
+                "bigstory"
+              ],
               "start_ms": 215000,
               "title": "02 - The Benefits of Christ Made Available to Us"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_03_calvin_64kb.mp3",
               "length_ms": 2093000,
+              "readers": [
+                "sienna"
+              ],
               "start_ms": 1322000,
               "title": "03 - Of Faith, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_04_calvin_64kb.mp3",
               "length_ms": 2280000,
+              "readers": [
+                "nicole-kay"
+              ],
               "start_ms": 3415000,
               "title": "04 - Of Faith, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_05_calvin_64kb.mp3",
               "length_ms": 2074000,
+              "readers": [
+                "nicole-kay"
+              ],
               "start_ms": 5695000,
               "title": "05 - Of Faith, pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_06_calvin_64kb.mp3",
               "length_ms": 1565000,
+              "readers": [
+                "nicole-kay"
+              ],
               "start_ms": 7769000,
               "title": "06 - Of Faith, pt 4"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_07_calvin_64kb.mp3",
               "length_ms": 1405000,
+              "readers": [
+                "andrew-bowles"
+              ],
               "start_ms": 9334000,
               "title": "07 - Of Faith, pt 5"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_08_calvin_64kb.mp3",
               "length_ms": 2570000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 10739000,
               "title": "08 - Regeneration by Faith; Of Repentance, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_09_calvin_64kb.mp3",
               "length_ms": 2655000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 13309000,
               "title": "09 - Regeneration by Faith; Of Repentance, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_10_calvin_64kb.mp3",
               "length_ms": 2178000,
+              "readers": [
+                "sienna"
+              ],
               "start_ms": 15964000,
               "title": "10 - Penitence Widely Different from Purity, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_11_calvin_64kb.mp3",
               "length_ms": 2330000,
+              "readers": [
+                "edbucks"
+              ],
               "start_ms": 18142000,
               "title": "11 - Penitence Widely Different from Purity, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_12_calvin_64kb.mp3",
               "length_ms": 1749000,
+              "readers": [
+                "nicole-kay"
+              ],
               "start_ms": 20472000,
               "title": "12 - Penitence Widely Different from Purity, pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_13_calvin_64kb.mp3",
               "length_ms": 2411000,
+              "readers": [
+                "curtislmattson"
+              ],
               "start_ms": 22221000,
               "title": "13 - Penitence Widely Different from Purity, pt 4"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_14_calvin_64kb.mp3",
               "length_ms": 3030000,
+              "readers": [
+                "curtislmattson"
+              ],
               "start_ms": 24632000,
               "title": "14 - Of the Modes of Supplementing Satisfaction"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_15_calvin_64kb.mp3",
               "length_ms": 1331000,
+              "readers": [
+                "graeme-dunlop"
+              ],
               "start_ms": 27662000,
               "title": "15 - The Life of a Christian Man"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_16_calvin_64kb.mp3",
               "length_ms": 2842000,
+              "readers": [
+                "graeme-dunlop"
+              ],
               "start_ms": 28993000,
               "title": "16 - A Summary of the Christian Life"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_17_calvin_64kb.mp3",
               "length_ms": 1973000,
+              "readers": [
+                "andrew-bowles"
+              ],
               "start_ms": 31835000,
               "title": "17 - Of Bearing the Cross"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_18_calvin_64kb.mp3",
               "length_ms": 1224000,
+              "readers": [
+                "andrew-bowles"
+              ],
               "start_ms": 33808000,
               "title": "18 - Of Meditating on the Future Life"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_19_calvin_64kb.mp3",
               "length_ms": 960000,
+              "readers": [
+                "andrew-bowles"
+              ],
               "start_ms": 35032000,
               "title": "19 - How to Use the Present Life"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_20_calvin_64kb.mp3",
               "length_ms": 2371000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 35992000,
               "title": "20 - Of Justification by Faith, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_21_calvin_64kb.mp3",
               "length_ms": 2792000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 38363000,
               "title": "21 - Of Justification by Faith, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_22_calvin_64kb.mp3",
               "length_ms": 1504000,
+              "readers": [
+                "ricky-st-claire"
+              ],
               "start_ms": 41155000,
               "title": "22 - Necessity of Contemplating the Judgment Seat"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_23_calvin_64kb.mp3",
               "length_ms": 988000,
+              "readers": [
+                "michael-lipschultz"
+              ],
               "start_ms": 42659000,
               "title": "23 - Two Things to Be Observed in Gratuitous Justification"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_24_calvin_64kb.mp3",
               "length_ms": 2514000,
+              "readers": [
+                "bill-mosley"
+              ],
               "start_ms": 43647000,
               "title": "24 - The Beginning of Justification, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_25_calvin_64kb.mp3",
               "length_ms": 2347000,
+              "readers": [
+                "bill-mosley"
+              ],
               "start_ms": 46161000,
               "title": "25 - The Beginning of Justification, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_26_calvin_64kb.mp3",
               "length_ms": 1923000,
+              "readers": [
+                "curtislmattson"
+              ],
               "start_ms": 48508000,
               "title": "26 - The Boasted Merit of Works Subversive"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_27_calvin_64kb.mp3",
               "length_ms": 829000,
+              "readers": [
+                "michael-lipschultz"
+              ],
               "start_ms": 50431000,
               "title": "27 - Refutation of the Calumnies"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_28_calvin_64kb.mp3",
               "length_ms": 1648000,
+              "readers": [
+                "ricky-st-claire"
+              ],
               "start_ms": 51260000,
               "title": "28 - The Promises of the Law and the Gospel Reconciled, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_29_calvin_64kb.mp3",
               "length_ms": 1592000,
+              "readers": [
+                "ricky-st-claire"
+              ],
               "start_ms": 52908000,
               "title": "29 - The Promises of the Law and the Gospel Reconciled, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_30_calvin_64kb.mp3",
               "length_ms": 2341000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 54500000,
               "title": "30 - The Righteousness of Works Improperly Inferred from Rewards"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_31_calvin_64kb.mp3",
               "length_ms": 1510000,
+              "readers": [
+                "sienna"
+              ],
               "start_ms": 56841000,
               "title": "31 - Of Christian Liberty, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_32_calvin_64kb.mp3",
               "length_ms": 1302000,
+              "readers": [
+                "sienna"
+              ],
               "start_ms": 58351000,
               "title": "32 - Of Christian Liberty, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_33_calvin_64kb.mp3",
               "length_ms": 2268000,
+              "readers": [
+                "adam-oellermann"
+              ],
               "start_ms": 59653000,
               "title": "33 - Of Prayer, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_34_calvin_64kb.mp3",
               "length_ms": 2597000,
+              "readers": [
+                "nicole-kay"
+              ],
               "start_ms": 61921000,
               "title": "34 - Of Prayer, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_35_calvin_64kb.mp3",
               "length_ms": 2300000,
+              "readers": [
+                "nicole-kay"
+              ],
               "start_ms": 64518000,
               "title": "35 - Of Prayer, pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_36_calvin_64kb.mp3",
               "length_ms": 2086000,
+              "readers": [
+                "guero"
+              ],
               "start_ms": 66818000,
               "title": "36 - Of Prayer, pt 4"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_37_calvin_64kb.mp3",
               "length_ms": 1879000,
+              "readers": [
+                "guero"
+              ],
               "start_ms": 68904000,
               "title": "37 - Of Prayer, pt 5"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_38_calvin_64kb.mp3",
               "length_ms": 1688000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 70783000,
               "title": "38 - Of Prayer, pt 6"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_39_calvin_64kb.mp3",
               "length_ms": 2234000,
+              "readers": [
+                "dave-whitman"
+              ],
               "start_ms": 72471000,
               "title": "39 - Of the Eternal Election"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_40_calvin_64kb.mp3",
               "length_ms": 1370000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 74705000,
               "title": "40 - This Doctrine Confirmed by Proofs from Scripture pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_41_calvin_64kb.mp3",
               "length_ms": 1126000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 76075000,
               "title": "41 - This Doctrine Confirmed by Proofs from Scripture pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_42_calvin_64kb.mp3",
               "length_ms": 1603000,
+              "readers": [
+                "rom-maczka"
+              ],
               "start_ms": 77201000,
               "title": "42 - Refutation of the Calumnies, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_43_calvin_64kb.mp3",
               "length_ms": 1694000,
+              "readers": [
+                "rom-maczka"
+              ],
               "start_ms": 78804000,
               "title": "43 - Refutation of the Calumnies, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_44_calvin_64kb.mp3",
               "length_ms": 1956000,
+              "readers": [
+                "j-r-omahen"
+              ],
               "start_ms": 80498000,
               "title": "44 - Election Confirmed by the Calling of God pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_45_calvin_64kb.mp3",
               "length_ms": 2240000,
+              "readers": [
+                "nicole-kay"
+              ],
               "start_ms": 82454000,
               "title": "45 - Election Confirmed by the Calling of God pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_46_calvin_64kb.mp3",
               "length_ms": 2103000,
+              "readers": [
+                "guero"
+              ],
               "start_ms": 84694000,
               "title": "46 - Of the Last Resurrection, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion_1010_librivox/institutesofchristianreligion3_47_calvin_64kb.mp3",
               "length_ms": 2090000,
+              "readers": [
+                "guero"
+              ],
               "start_ms": 86797000,
               "title": "47 - Of the Last Resurrection, pt 2"
             }
           ],
           "copyright_year": 1599,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt20/institutes3_1206.jpg",
+          "credits": [
+            {
+              "person": "henry-beveridge",
+              "role": "translator"
+            }
+          ],
           "id": "diana-majlinger",
           "language": "en",
+          "librivox_genres": [
+            "Religion",
+            "Christianity - Other"
+          ],
           "librivox_id": 3988,
+          "librivox_title": "Institutes of the Christian Religion, Book 3",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/institutes-of-the-christian-religion-book-3-by-john-calvin/",
@@ -6943,285 +7305,435 @@
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_01_calvin_64kb.mp3",
               "length_ms": 167000,
+              "readers": [
+                "ricky-st-claire"
+              ],
               "start_ms": 0,
               "title": "01 - Argument"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_02_calvin_64kb.mp3",
               "length_ms": 2183000,
+              "readers": [
+                "brian-dole"
+              ],
               "start_ms": 167000,
               "title": "02 - Of the True Church, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_03_calvin_64kb.mp3",
               "length_ms": 1771000,
+              "readers": [
+                "brian-dole"
+              ],
               "start_ms": 2350000,
               "title": "03 - Of the True Church, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_04_calvin_64kb.mp3",
               "length_ms": 2212000,
+              "readers": [
+                "brian-dole"
+              ],
               "start_ms": 4121000,
               "title": "04 - Of the True Church, pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_05_calvin_64kb.mp3",
               "length_ms": 2440000,
+              "readers": [
+                "brian-dole"
+              ],
               "start_ms": 6333000,
               "title": "05 - Comparison Between the False Church and the True"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_06_calvin_64kb.mp3",
               "length_ms": 2645000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 8773000,
               "title": "06 - Of the Teachers and Ministers of the Church"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_07_calvin_64kb.mp3",
               "length_ms": 2230000,
+              "readers": [
+                "maryann"
+              ],
               "start_ms": 11418000,
               "title": "07 - Of the State of the Primitive Church...Before Papacy"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_08_calvin_64kb.mp3",
               "length_ms": 1930000,
+              "readers": [
+                "bill-mosley"
+              ],
               "start_ms": 13648000,
               "title": "08 - The Ancient Form of Govt Utterly Corrupted, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_09_calvin_64kb.mp3",
               "length_ms": 1849000,
+              "readers": [
+                "bill-mosley"
+              ],
               "start_ms": 15578000,
               "title": "09 - The Ancient Form of Govt Utterly Corrupted, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_10_calvin_64kb.mp3",
               "length_ms": 3183000,
+              "readers": [
+                "bill-mosley"
+              ],
               "start_ms": 17427000,
               "title": "10 - Of the Primacy of the Romish See"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_11_calvin_64kb.mp3",
               "length_ms": 1620000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 20610000,
               "title": "11 - Of the Beginning and Rise of the Romish Papacy, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_12_calvin_64kb.mp3",
               "length_ms": 1613000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 22230000,
               "title": "12 - Of the Beginning and Rise of the Romish Papacy, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_13_calvin_64kb.mp3",
               "length_ms": 1799000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 23843000,
               "title": "13 - Of the Beginning and Rise of the Romish Papacy, pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_14_calvin_64kb.mp3",
               "length_ms": 1382000,
+              "readers": [
+                "parrot17"
+              ],
               "start_ms": 25642000,
               "title": "14 - Of the Powers of the Church in Articles of Faith, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_15_calvin_64kb.mp3",
               "length_ms": 1633000,
+              "readers": [
+                "brian-dole"
+              ],
               "start_ms": 27024000,
               "title": "15 - Of the Powers of the Church in Articles of Faith, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_16_calvin_64kb.mp3",
               "length_ms": 2202000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 28657000,
               "title": "16 - Of Councils and Their Authority"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_17_calvin_64kb.mp3",
               "length_ms": 2116000,
+              "readers": [
+                "brian-dole"
+              ],
               "start_ms": 30859000,
               "title": "17 - Of the Power of Making Laws, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_18_calvin_64kb.mp3",
               "length_ms": 2006000,
+              "readers": [
+                "brian-dole"
+              ],
               "start_ms": 32975000,
               "title": "18 - Of the Power of Making Laws, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_19_calvin_64kb.mp3",
               "length_ms": 2088000,
+              "readers": [
+                "brian-dole"
+              ],
               "start_ms": 34981000,
               "title": "19 - Of the Power of Making Laws, pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_20_calvin_64kb.mp3",
               "length_ms": 1796000,
+              "readers": [
+                "curtislmattson"
+              ],
               "start_ms": 37069000,
               "title": "20 - Of the Jurisdiction of the Church, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_21_calvin_64kb.mp3",
               "length_ms": 1873000,
+              "readers": [
+                "curtislmattson"
+              ],
               "start_ms": 38865000,
               "title": "21 - Of the Jurisdiction of the Church, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_22_calvin_64kb.mp3",
               "length_ms": 2332000,
+              "readers": [
+                "drbeccaanne"
+              ],
               "start_ms": 40738000,
               "title": "22 - Of the Discipline of the Church, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_23_calvin_64kb.mp3",
               "length_ms": 2174000,
+              "readers": [
+                "drbeccaanne"
+              ],
               "start_ms": 43070000,
               "title": "23 - Of the Discipline of the Church, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_24_calvin_64kb.mp3",
               "length_ms": 1893000,
+              "readers": [
+                "j-s-kenney"
+              ],
               "start_ms": 45244000,
               "title": "24 - Of Vows, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_25_calvin_64kb.mp3",
               "length_ms": 1984000,
+              "readers": [
+                "j-s-kenney"
+              ],
               "start_ms": 47137000,
               "title": "25 - Of Vows, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_26_calvin_64kb.mp3",
               "length_ms": 2838000,
+              "readers": [
+                "brian-dole"
+              ],
               "start_ms": 49121000,
               "title": "26 - Of the Sacraments, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_27_calvin_64kb.mp3",
               "length_ms": 2828000,
+              "readers": [
+                "brian-dole"
+              ],
               "start_ms": 51959000,
               "title": "27 - Of the Sacraments, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_28_calvin_64kb.mp3",
               "length_ms": 2028000,
+              "readers": [
+                "guero"
+              ],
               "start_ms": 54787000,
               "title": "28 - Of Baptism, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_29_calvin_64kb.mp3",
               "length_ms": 1513000,
+              "readers": [
+                "guero"
+              ],
               "start_ms": 56815000,
               "title": "29 - Of Baptism, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_30_calvin_64kb.mp3",
               "length_ms": 2203000,
+              "readers": [
+                "curtislmattson"
+              ],
               "start_ms": 58328000,
               "title": "30 - Of Paedobaptism, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_31_calvin_64kb.mp3",
               "length_ms": 2052000,
+              "readers": [
+                "brian-dole"
+              ],
               "start_ms": 60531000,
               "title": "31 - Of Paedobaptism, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_32_calvin_64kb.mp3",
               "length_ms": 2300000,
+              "readers": [
+                "brian-dole"
+              ],
               "start_ms": 62583000,
               "title": "32 - Of Paedobaptism, pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_33_calvin_64kb.mp3",
               "length_ms": 1798000,
+              "readers": [
+                "j-l-raimundo"
+              ],
               "start_ms": 64883000,
               "title": "33 - Of the Lord's Supper, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_34_calvin_64kb.mp3",
               "length_ms": 1790000,
+              "readers": [
+                "andrew-bowles"
+              ],
               "start_ms": 66681000,
               "title": "34 - Of the Lord's Supper, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_35_calvin_64kb.mp3",
               "length_ms": 1939000,
+              "readers": [
+                "parrot17"
+              ],
               "start_ms": 68471000,
               "title": "35 - Of the Lord's Supper, pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_36_calvin_64kb.mp3",
               "length_ms": 2353000,
+              "readers": [
+                "michael-packard"
+              ],
               "start_ms": 70410000,
               "title": "36 - Of the Lord's Supper, pt 4"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_37_calvin_64kb.mp3",
               "length_ms": 1971000,
+              "readers": [
+                "brian-dole"
+              ],
               "start_ms": 72763000,
               "title": "37 - Of the Lord's Supper, pt 5"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_38_calvin_64kb.mp3",
               "length_ms": 1768000,
+              "readers": [
+                "brian-dole"
+              ],
               "start_ms": 74734000,
               "title": "38 - Of the Lord's Supper, pt 6"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_39_calvin_64kb.mp3",
               "length_ms": 2218000,
+              "readers": [
+                "bill-mosley"
+              ],
               "start_ms": 76502000,
               "title": "39 - Of the Popish Mass, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_40_calvin_64kb.mp3",
               "length_ms": 2116000,
+              "readers": [
+                "bill-mosley"
+              ],
               "start_ms": 78720000,
               "title": "40 - Of the Popish Mass, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_41_calvin_64kb.mp3",
               "length_ms": 2077000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 80836000,
               "title": "41 - Of the Five Sacraments, Falsely So Called, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_42_calvin_64kb.mp3",
               "length_ms": 1920000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 82913000,
               "title": "42 - Of the Five Sacraments, Falsely So Called, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_43_calvin_64kb.mp3",
               "length_ms": 1766000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 84833000,
               "title": "43 - Of the Five Sacraments, Falsely So Called, pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_44_calvin_64kb.mp3",
               "length_ms": 2492000,
+              "readers": [
+                "brian-dole"
+              ],
               "start_ms": 86599000,
               "title": "44 - Of Civil Government, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_45_calvin_64kb.mp3",
               "length_ms": 2110000,
+              "readers": [
+                "brian-dole"
+              ],
               "start_ms": 89091000,
               "title": "45 - Of Civil Government, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutes_christian_religion4_1107_librivox/institutesofchristianreligion4_46_calvin_64kb.mp3",
               "length_ms": 2027000,
+              "readers": [
+                "brian-dole"
+              ],
               "start_ms": 91201000,
               "title": "46 - Of Civil Government, pt 3"
             }
           ],
           "copyright_year": 1599,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt20/institutes4_1206.jpg",
+          "credits": [
+            {
+              "person": "henry-beveridge",
+              "role": "translator"
+            }
+          ],
           "id": "ricky-st-claire",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Religion",
+            "Christianity - Other"
+          ],
           "librivox_id": 4775,
+          "librivox_title": "Institutes of the Christian Religion, Book 4",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/institutes-of-the-christian-religion-book-4-by-john-calvin",
@@ -7584,9 +8096,19 @@
             }
           ],
           "cover_url": "https://archive.org/download/institutes_of_christian_religion_1-4_allen_2207_librivox/institutes_calvin_1-4_2207.jpg",
+          "credits": [
+            {
+              "person": "john-allen",
+              "role": "translator"
+            }
+          ],
           "id": "inthedesert",
           "language": "en",
+          "librivox_genres": [
+            "Christianity - Other"
+          ],
           "librivox_id": 17753,
+          "librivox_title": "Institutes of the Christian Religion, Books 1-4 (Allen Translation)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/institutes-of-the-christian-religion-bks-1-4-allen-trans-by-john-calvin/",
@@ -7646,171 +8168,210 @@
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_00_quintilian_64kb.mp3",
               "length_ms": 301000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 - Translator's Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_01_quintilian_64kb.mp3",
               "length_ms": 1069000,
+              "section_number": 1,
               "start_ms": 301000,
               "title": "01 - Book 1, Letter and Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_02_quintilian_64kb.mp3",
               "length_ms": 1306000,
+              "section_number": 2,
               "start_ms": 1370000,
               "title": "02 - Book 1, Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_03_quintilian_64kb.mp3",
               "length_ms": 1054000,
+              "section_number": 3,
               "start_ms": 2676000,
               "title": "03 - Book 1, Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_04_quintilian_64kb.mp3",
               "length_ms": 509000,
+              "section_number": 4,
               "start_ms": 3730000,
               "title": "04 - Book 1, Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_05_quintilian_64kb.mp3",
               "length_ms": 1120000,
+              "section_number": 5,
               "start_ms": 4239000,
               "title": "05 - Book 1, Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_06_quintilian_64kb.mp3",
               "length_ms": 2368000,
+              "section_number": 6,
               "start_ms": 5359000,
               "title": "06 - Book 1, Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_07_quintilian_64kb.mp3",
               "length_ms": 1590000,
+              "section_number": 7,
               "start_ms": 7727000,
               "title": "07 - Book 1, Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_08_quintilian_64kb.mp3",
               "length_ms": 1539000,
+              "section_number": 8,
               "start_ms": 9317000,
               "title": "08 - Book 1, Chapters 7 to 9"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_09_quintilian_64kb.mp3",
               "length_ms": 1438000,
+              "section_number": 9,
               "start_ms": 10856000,
               "title": "09 - Book 1, Chapter 10"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_10_quintilian_64kb.mp3",
               "length_ms": 1041000,
+              "section_number": 10,
               "start_ms": 12294000,
               "title": "10 - Book 1, Chapters 11 and 12"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_11_quintilian_64kb.mp3",
               "length_ms": 1192000,
+              "section_number": 11,
               "start_ms": 13335000,
               "title": "11 - Book 2, Chapters 1 to 3"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_12_quintilian_64kb.mp3",
               "length_ms": 1464000,
+              "section_number": 12,
               "start_ms": 14527000,
               "title": "12 - Book 2, Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_13_quintilian_64kb.mp3",
               "length_ms": 1108000,
+              "section_number": 13,
               "start_ms": 15991000,
               "title": "13 - Book 2, Chapters 5 to 7"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_14_quintilian_64kb.mp3",
               "length_ms": 1182000,
+              "section_number": 14,
               "start_ms": 17099000,
               "title": "14 - Book 2, Chapters 8 to 11"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_15_quintilian_64kb.mp3",
               "length_ms": 910000,
+              "section_number": 15,
               "start_ms": 18281000,
               "title": "15 - Book 2, Chapters 12 and 13"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_16_quintilian_64kb.mp3",
               "length_ms": 1289000,
+              "section_number": 16,
               "start_ms": 19191000,
               "title": "16 - Book 2, Chapters 14 and 15"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_17_quintilian_64kb.mp3",
               "length_ms": 511000,
+              "section_number": 17,
               "start_ms": 20480000,
               "title": "17 - Book 2, Chapter 16"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_18_quintilian_64kb.mp3",
               "length_ms": 1339000,
+              "section_number": 18,
               "start_ms": 20991000,
               "title": "18 - Book 2, Chapter 17"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_19_quintilian_64kb.mp3",
               "length_ms": 1374000,
+              "section_number": 19,
               "start_ms": 22330000,
               "title": "19 - Book 2, Chapters 18 to 21"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_20_quintilian_64kb.mp3",
               "length_ms": 1320000,
+              "section_number": 20,
               "start_ms": 23704000,
               "title": "20 - Book 3, Chapters 1 to 3"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_21_quintilian_64kb.mp3",
               "length_ms": 1137000,
+              "section_number": 21,
               "start_ms": 25024000,
               "title": "21 - Book 3, Chapters 4 and 5"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_22_quintilian_64kb.mp3",
               "length_ms": 1937000,
+              "section_number": 22,
               "start_ms": 26161000,
               "title": "22 - Book 3, Chapter 6, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_23_quintilian_64kb.mp3",
               "length_ms": 1855000,
+              "section_number": 23,
               "start_ms": 28098000,
               "title": "23 - Book 3, Chapter 6, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_24_quintilian_64kb.mp3",
               "length_ms": 917000,
+              "section_number": 24,
               "start_ms": 29953000,
               "title": "24 - Book 3, Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_25_quintilian_64kb.mp3",
               "length_ms": 2162000,
+              "section_number": 25,
               "start_ms": 30870000,
               "title": "25 - Book 3, Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/institutio_oratoria_lr_librivox/institutio_26_quintilian_64kb.mp3",
               "length_ms": 1387000,
+              "section_number": 26,
               "start_ms": 33032000,
               "title": "26 - Book 3, Chapters 9 to 11"
             }
           ],
           "copyright_year": 1920,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt20/institutio-oratoria-vol1_1206.jpg",
+          "credits": [
+            {
+              "person": "h-e-butler",
+              "role": "translator"
+            }
+          ],
           "id": "leni",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Education",
+            "Performing Arts"
+          ],
           "librivox_id": 4206,
+          "librivox_title": "Institutio Oratoria (On the Education of an Orator), volume 1",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/institutio-oratoria-volume-1-by-marcus-fabius-quintilianus/",
@@ -7989,9 +8550,20 @@
           ],
           "copyright_year": 1922,
           "cover_url": "https://archive.org/download/librivoxcdcoverart36/intstitutio2_2004.jpg",
+          "credits": [
+            {
+              "person": "h-e-butler",
+              "role": "translator"
+            }
+          ],
           "id": "leni",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Education"
+          ],
           "librivox_id": 14728,
+          "librivox_title": "Institutio Oratoria (On the Education of an Orator), volume 2",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/institutio-oratoria-volume-2-by-marcus-fabius-quintilianus/",
@@ -8980,7 +9552,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/instructionslightkeepers_1404.jpg",
           "id": "maria-kasper",
           "language": "en",
+          "librivox_genres": [
+            "Reference",
+            "Technology & Engineering"
+          ],
           "librivox_id": 8324,
+          "librivox_title": "Instructions to Light Keepers",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/instructions-to-light-keepers-by-uslb/",

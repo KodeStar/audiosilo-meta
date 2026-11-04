@@ -600,66 +600,99 @@
             {
               "audio_url": "https://www.archive.org/download/kraken_0711_librivox/kraken_tennyson_cjrg_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "clarica"
+              ],
               "start_ms": 0,
               "title": "The Kraken - Read by CJRG"
             },
             {
               "audio_url": "https://www.archive.org/download/kraken_0711_librivox/kraken_tennyson_db_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "hit-picker"
+              ],
               "start_ms": 76000,
               "title": "The Kraken - Read by DB"
             },
             {
               "audio_url": "https://www.archive.org/download/kraken_0711_librivox/kraken_tennyson_jb_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "jemmablythe"
+              ],
               "start_ms": 158000,
               "title": "The Kraken - Read by JB"
             },
             {
               "audio_url": "https://www.archive.org/download/kraken_0711_librivox/kraken_tennyson_jcg_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "jc-guan"
+              ],
               "start_ms": 228000,
               "title": "The Kraken - Read by JCG"
             },
             {
               "audio_url": "https://www.archive.org/download/kraken_0711_librivox/kraken_tennyson_klh_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "kristin-hughes-1974-2021"
+              ],
               "start_ms": 308000,
               "title": "The Kraken - Read by KLH"
             },
             {
               "audio_url": "https://www.archive.org/download/kraken_0711_librivox/kraken_tennyson_krs_64kb.mp3",
               "length_ms": 61000,
+              "readers": [
+                "karen-savage"
+              ],
               "start_ms": 385000,
               "title": "The Kraken - Read by KRS"
             },
             {
               "audio_url": "https://www.archive.org/download/kraken_0711_librivox/kraken_tennyson_lah_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 446000,
               "title": "The Kraken - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/kraken_0711_librivox/kraken_tennyson_ms_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "mark-f-smith"
+              ],
               "start_ms": 515000,
               "title": "The Kraken - Read by MFS"
             },
             {
               "audio_url": "https://www.archive.org/download/kraken_0711_librivox/kraken_tennyson_mw_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "michelle-white"
+              ],
               "start_ms": 592000,
               "title": "The Kraken - Read by MW"
             },
             {
               "audio_url": "https://www.archive.org/download/kraken_0711_librivox/kraken_tennyson_ps_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "paul-sze"
+              ],
               "start_ms": 683000,
               "title": "The Kraken - Read by PS"
             },
             {
               "audio_url": "https://www.archive.org/download/kraken_0711_librivox/kraken_tennyson_ssb_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "sharon-bautista"
+              ],
               "start_ms": 774000,
               "title": "The Kraken - Read by SSB"
             }
@@ -668,7 +701,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt12/Kraken_1110.jpg",
           "id": "clarica",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 1585,
+          "librivox_title": "Kraken",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-kraken-by-alfred-lord-tennyson/",
@@ -7290,7 +7328,11 @@
           "cover_url": "https://archive.org/download/krasavitse-librivox/Krasavitse_1108.jpg",
           "id": "yakovlev-valery",
           "language": "ru",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 546,
+          "librivox_title": "Krasavitse",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/krasavitse-by-alexander-pushkin/",
@@ -7581,7 +7623,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt32/krates_1412.jpg",
           "id": "marcel-coenders",
           "language": "nl",
+          "librivox_genres": [
+            "Romance"
+          ],
           "librivox_id": 9433,
+          "librivox_title": "Krates",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/krates-by-justus-van-maurik/",
@@ -9645,7 +9691,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt6/kreativityforkats_1604.jpg",
           "id": "phil-chenevert",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 10817,
+          "librivox_title": "Kreativity for Kats & Other Stories",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/kreativity-for-kats-other-stories-by-fritz-leiber/",

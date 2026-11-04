@@ -2380,36 +2380,54 @@
             {
               "audio_url": "https://www.archive.org/download/foragrotto_2603.poem_librivox/foragrotto_akenside_alp_64kb.mp3",
               "length_ms": 85000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 0,
               "title": "For A Grotto - read by ALP"
             },
             {
               "audio_url": "https://www.archive.org/download/foragrotto_2603.poem_librivox/foragrotto_akenside_bk_64kb.mp3",
               "length_ms": 97000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 85000,
               "title": "For A Grotto - read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/foragrotto_2603.poem_librivox/foragrotto_akenside_dl_64kb.mp3",
               "length_ms": 90000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 182000,
               "title": "For A Grotto - read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/foragrotto_2603.poem_librivox/foragrotto_arkenside_pac_64kb.mp3",
               "length_ms": 88000,
+              "readers": [
+                "paulclayton"
+              ],
               "start_ms": 272000,
               "title": "For A Grotto - read by PAC"
             },
             {
               "audio_url": "https://www.archive.org/download/foragrotto_2603.poem_librivox/foragrotto_akenside_pfs_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 360000,
               "title": "For A Grotto - read by PFS"
             },
             {
               "audio_url": "https://www.archive.org/download/foragrotto_2603.poem_librivox/foragrotto_akenside_sp_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "shrimpphish"
+              ],
               "start_ms": 442000,
               "title": "For A Grotto - read by SP"
             }
@@ -2418,7 +2436,11 @@
           "cover_url": "https://archive.org/download/foragrotto_2603.poem_librivox/foragrotto_2603.jpg",
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 22477,
+          "librivox_title": "For A Grotto",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/for-a-grotto-by-mark-akenside/",
@@ -8640,30 +8662,71 @@
             {
               "audio_url": "https://www.archive.org/download/forchristandthechurch_1612_librivox/forchristandthechurch_0_sheldon_64kb.mp3",
               "length_ms": 668000,
+              "readers": [
+                "david-olson",
+                "rachel",
+                "k-adrian-stroet"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Dramatis Personae and Prologue"
             },
             {
               "audio_url": "https://www.archive.org/download/forchristandthechurch_1612_librivox/forchristandthechurch_1_sheldon_64kb.mp3",
               "length_ms": 791000,
+              "readers": [
+                "bill-mosley",
+                "david-olson",
+                "rachel",
+                "esther-ben-simonides",
+                "k-adrian-stroet"
+              ],
+              "section_number": 1,
               "start_ms": 668000,
               "title": "Chapter I"
             },
             {
               "audio_url": "https://www.archive.org/download/forchristandthechurch_1612_librivox/forchristandthechurch_2_sheldon_64kb.mp3",
               "length_ms": 806000,
+              "readers": [
+                "bill-mosley",
+                "rachel",
+                "larry-wilson",
+                "esther-ben-simonides",
+                "teresa-bauman",
+                "adele-de-pignerolles",
+                "joyfull",
+                "toadoftoadhall",
+                "daniel-drake"
+              ],
+              "section_number": 2,
               "start_ms": 1459000,
               "title": "Chapter II"
             },
             {
               "audio_url": "https://www.archive.org/download/forchristandthechurch_1612_librivox/forchristandthechurch_3_sheldon_64kb.mp3",
               "length_ms": 586000,
+              "readers": [
+                "bill-mosley",
+                "rachel",
+                "esther-ben-simonides"
+              ],
+              "section_number": 3,
               "start_ms": 2265000,
               "title": "Chapter III"
             },
             {
               "audio_url": "https://www.archive.org/download/forchristandthechurch_1612_librivox/forchristandthechurch_4_sheldon_64kb.mp3",
               "length_ms": 597000,
+              "readers": [
+                "david-olson",
+                "rachel",
+                "esther-ben-simonides",
+                "teresa-bauman",
+                "toadoftoadhall",
+                "k-adrian-stroet"
+              ],
+              "section_number": 4,
               "start_ms": 2851000,
               "title": "Chapter IV"
             }
@@ -8672,7 +8735,12 @@
           "cover_url": "https://archive.org/download/forchristandthechurch_1612_librivox/christandchurch_1612.jpg",
           "id": "david-olson",
           "language": "en",
+          "librivox_genres": [
+            "Dramatic Readings",
+            "Christian Fiction"
+          ],
           "librivox_id": 10898,
+          "librivox_title": "For Christ and the Church (dramatic reading)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/for-christ-and-the-church-by-charles-monroe-sheldon/",
@@ -9786,96 +9854,144 @@
             {
               "audio_url": "https://www.archive.org/download/fordolly_1304_librivox/dolly_nesbit_aj_64kb.mp3",
               "length_ms": 127000,
+              "readers": [
+                "ashleighjane"
+              ],
               "start_ms": 0,
               "title": "For Dolly, who does not Learn her Lessons - Read by AJ"
             },
             {
               "audio_url": "https://www.archive.org/download/fordolly_1304_librivox/dolly_nesbit_as_64kb.mp3",
               "length_ms": 118000,
+              "readers": [
+                "anita-slusser"
+              ],
               "start_ms": 127000,
               "title": "For Dolly, who does not Learn her Lessons - Read by AS"
             },
             {
               "audio_url": "https://www.archive.org/download/fordolly_1304_librivox/dolly_nesbit_cs_64kb.mp3",
               "length_ms": 150000,
+              "readers": [
+                "claudia-salto"
+              ],
               "start_ms": 245000,
               "title": "For Dolly, who does not Learn her Lessons - Read by CS"
             },
             {
               "audio_url": "https://www.archive.org/download/fordolly_1304_librivox/dolly_nesbit_gb_64kb.mp3",
               "length_ms": 129000,
+              "readers": [
+                "garth-burton"
+              ],
               "start_ms": 395000,
               "title": "For Dolly, who does not Learn her Lessons - Read by GB"
             },
             {
               "audio_url": "https://www.archive.org/download/fordolly_1304_librivox/dolly_nesbit_hk_64kb.mp3",
               "length_ms": 87000,
+              "readers": [
+                "halle-kill"
+              ],
               "start_ms": 524000,
               "title": "For Dolly, who does not Learn her Lessons - Read by HJK"
             },
             {
               "audio_url": "https://www.archive.org/download/fordolly_1304_librivox/dolly_nesbit_jcm_64kb.mp3",
               "length_ms": 135000,
+              "readers": [
+                "jason-mills"
+              ],
               "start_ms": 611000,
               "title": "For Dolly, who does not Learn her Lessons - Read by JCM"
             },
             {
               "audio_url": "https://www.archive.org/download/fordolly_1304_librivox/dolly_nesbit_jm2_64kb.mp3",
               "length_ms": 132000,
+              "readers": [
+                "jannie-meisberger"
+              ],
               "start_ms": 746000,
               "title": "For Dolly, who does not Learn her Lessons - Read by JM"
             },
             {
               "audio_url": "https://www.archive.org/download/fordolly_1304_librivox/dolly_nesbit_kdw_64kb.mp3",
               "length_ms": 125000,
+              "readers": [
+                "kathy-wright"
+              ],
               "start_ms": 878000,
               "title": "For Dolly, who does not Learn her Lessons - Read by KDW"
             },
             {
               "audio_url": "https://www.archive.org/download/fordolly_1304_librivox/dolly_nesbit_lah_64kb.mp3",
               "length_ms": 119000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 1003000,
               "title": "For Dolly, who does not Learn her Lessons - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/fordolly_1304_librivox/dolly_nesbit_lb_64kb.mp3",
               "length_ms": 140000,
+              "readers": [
+                "lucretia-b"
+              ],
               "start_ms": 1122000,
               "title": "For Dolly, who does not Learn her Lessons - Read by LB"
             },
             {
               "audio_url": "https://www.archive.org/download/fordolly_1304_librivox/dolly_nesbit_mc_64kb.mp3",
               "length_ms": 117000,
+              "readers": [
+                "mlcui"
+              ],
               "start_ms": 1262000,
               "title": "For Dolly, who does not Learn her Lessons - Read by MC"
             },
             {
               "audio_url": "https://www.archive.org/download/fordolly_1304_librivox/dolly_nesbit_mmc_64kb.mp3",
               "length_ms": 130000,
+              "readers": [
+                "monika-m-c"
+              ],
               "start_ms": 1379000,
               "title": "For Dolly, who does not Learn her Lessons - Read by MMC"
             },
             {
               "audio_url": "https://www.archive.org/download/fordolly_1304_librivox/dolly_nesbit_py_64kb.mp3",
               "length_ms": 125000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 1509000,
               "title": "For Dolly, who does not Learn her Lessons - Read by PY"
             },
             {
               "audio_url": "https://www.archive.org/download/fordolly_1304_librivox/dolly_nesbit_rg_64kb.mp3",
               "length_ms": 133000,
+              "readers": [
+                "ruth-golding"
+              ],
               "start_ms": 1634000,
               "title": "For Dolly, who does not Learn her Lessons - Read by RG"
             },
             {
               "audio_url": "https://www.archive.org/download/fordolly_1304_librivox/dolly_nesbit_rn_64kb.mp3",
               "length_ms": 144000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 1767000,
               "title": "For Dolly, who does not Learn her Lessons - Read by RN"
             },
             {
               "audio_url": "https://www.archive.org/download/fordolly_1304_librivox/dolly_nesbit_vg_64kb.mp3",
               "length_ms": 121000,
+              "readers": [
+                "vanessa-garcia"
+              ],
               "start_ms": 1911000,
               "title": "For Dolly, who does not Learn her Lessons - Read by VG"
             }
@@ -9884,7 +10000,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt31/dolly_1305.jpg",
           "id": "ashleighjane",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 7788,
+          "librivox_title": "For Dolly, who does not Learn her Lessons",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/for-dolly-who-does-not-learn-her-lessons-by-e-nesbit/",
@@ -10756,7 +10877,11 @@
           "cover_url": "https://archive.org/download/foreagerlovers_2104_librivox/eager_lovers_2104.jpg",
           "id": "newgatenovelist",
           "language": "en",
+          "librivox_genres": [
+            "Single author"
+          ],
           "librivox_id": 16415,
+          "librivox_title": "For Eager Lovers",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/for-eager-lovers-by-genevieve-taggard/",

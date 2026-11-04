@@ -952,96 +952,112 @@
             {
               "audio_url": "https://www.archive.org/download/goblins_pagodas_1710_librivox/goblins_pagodas_00_fletcher_64kb.mp3",
               "length_ms": 1700000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/goblins_pagodas_1710_librivox/goblins_pagodas_01_fletcher_64kb.mp3",
               "length_ms": 121000,
+              "section_number": 1,
               "start_ms": 1700000,
               "title": "The Ghosts of an Old House - Prologue"
             },
             {
               "audio_url": "https://www.archive.org/download/goblins_pagodas_1710_librivox/goblins_pagodas_02_fletcher_64kb.mp3",
               "length_ms": 379000,
+              "section_number": 2,
               "start_ms": 1821000,
               "title": "Part I. The House"
             },
             {
               "audio_url": "https://www.archive.org/download/goblins_pagodas_1710_librivox/goblins_pagodas_03_fletcher_64kb.mp3",
               "length_ms": 368000,
+              "section_number": 3,
               "start_ms": 2200000,
               "title": "Part II. The Attic"
             },
             {
               "audio_url": "https://www.archive.org/download/goblins_pagodas_1710_librivox/goblins_pagodas_04_fletcher_64kb.mp3",
               "length_ms": 318000,
+              "section_number": 4,
               "start_ms": 2568000,
               "title": "Part III. The Lawn"
             },
             {
               "audio_url": "https://www.archive.org/download/goblins_pagodas_1710_librivox/goblins_pagodas_05_fletcher_64kb.mp3",
               "length_ms": 328000,
+              "section_number": 5,
               "start_ms": 2886000,
               "title": "Symphonies - Blue Symphony"
             },
             {
               "audio_url": "https://www.archive.org/download/goblins_pagodas_1710_librivox/goblins_pagodas_06_fletcher_64kb.mp3",
               "length_ms": 570000,
+              "section_number": 6,
               "start_ms": 3214000,
               "title": "Solitude in the City (Symphony in Black and Gold)"
             },
             {
               "audio_url": "https://www.archive.org/download/goblins_pagodas_1710_librivox/goblins_pagodas_07_fletcher_64kb.mp3",
               "length_ms": 407000,
+              "section_number": 7,
               "start_ms": 3784000,
               "title": "Green Symphony"
             },
             {
               "audio_url": "https://www.archive.org/download/goblins_pagodas_1710_librivox/goblins_pagodas_08_fletcher_64kb.mp3",
               "length_ms": 453000,
+              "section_number": 8,
               "start_ms": 4191000,
               "title": "Golden Symphony"
             },
             {
               "audio_url": "https://www.archive.org/download/goblins_pagodas_1710_librivox/goblins_pagodas_09_fletcher_64kb.mp3",
               "length_ms": 600000,
+              "section_number": 9,
               "start_ms": 4644000,
               "title": "White Symphony"
             },
             {
               "audio_url": "https://www.archive.org/download/goblins_pagodas_1710_librivox/goblins_pagodas_10_fletcher_64kb.mp3",
               "length_ms": 300000,
+              "section_number": 10,
               "start_ms": 5244000,
               "title": "Midsummer Dreams (Symphony in White and Blue)"
             },
             {
               "audio_url": "https://www.archive.org/download/goblins_pagodas_1710_librivox/goblins_pagodas_11_fletcher_64kb.mp3",
               "length_ms": 520000,
+              "section_number": 11,
               "start_ms": 5544000,
               "title": "Orange Symphony"
             },
             {
               "audio_url": "https://www.archive.org/download/goblins_pagodas_1710_librivox/goblins_pagodas_12_fletcher_64kb.mp3",
               "length_ms": 502000,
+              "section_number": 12,
               "start_ms": 6064000,
               "title": "Red Symphony"
             },
             {
               "audio_url": "https://www.archive.org/download/goblins_pagodas_1710_librivox/goblins_pagodas_13_fletcher_64kb.mp3",
               "length_ms": 334000,
+              "section_number": 13,
               "start_ms": 6566000,
               "title": "Violet Symphony"
             },
             {
               "audio_url": "https://www.archive.org/download/goblins_pagodas_1710_librivox/goblins_pagodas_14_fletcher_64kb.mp3",
               "length_ms": 337000,
+              "section_number": 14,
               "start_ms": 6900000,
               "title": "Grey Symphony"
             },
             {
               "audio_url": "https://www.archive.org/download/goblins_pagodas_1710_librivox/goblins_pagodas_15_fletcher_64kb.mp3",
               "length_ms": 445000,
+              "section_number": 15,
               "start_ms": 7237000,
               "title": "Poppies of the Red Year (A Symphony In Scarlet)"
             }
@@ -1050,7 +1066,11 @@
           "cover_url": "https://archive.org/download/goblins_pagodas_1710_librivox/goblins_1709.jpg",
           "id": "nemo",
           "language": "en",
+          "librivox_genres": [
+            "Single author"
+          ],
           "librivox_id": 12372,
+          "librivox_title": "Goblins and Pagodas",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/goblins-and-pagodas-by-john-gould-fletcher/",
@@ -2312,9 +2332,19 @@
           ],
           "copyright_year": 1835,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt31/gobseck_1306.jpg",
+          "credits": [
+            {
+              "person": "ellen-marriage",
+              "role": "translator"
+            }
+          ],
           "id": "james-e-carson",
           "language": "en",
+          "librivox_genres": [
+            "Published 1800 -1900"
+          ],
           "librivox_id": 7930,
+          "librivox_title": "Gobseck",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/gobseck-by-honore-de-balzac/",
@@ -4705,186 +4735,279 @@
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_01_blatchford_64kb.mp3",
               "length_ms": 535000,
+              "readers": [
+                "tovarisch"
+              ],
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_02_blatchford_64kb.mp3",
               "length_ms": 348000,
+              "readers": [
+                "tovarisch"
+              ],
               "start_ms": 535000,
               "title": "Forewords"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_03_blatchford_64kb.mp3",
               "length_ms": 800000,
+              "readers": [
+                "tovarisch"
+              ],
               "start_ms": 883000,
               "title": "The Sin of Unbelief"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_04_blatchford_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "tovarisch"
+              ],
               "start_ms": 1683000,
               "title": "One Reason"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_05_blatchford_64kb.mp3",
               "length_ms": 837000,
+              "readers": [
+                "tovarisch"
+              ],
               "start_ms": 1750000,
               "title": "What I Can and Cannot Believe"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_06_blatchford_64kb.mp3",
               "length_ms": 2216000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 2587000,
               "title": "The OT: Is the Bible the Word of God?"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_07_blatchford_64kb.mp3",
               "length_ms": 557000,
+              "readers": [
+                "julia-niedermaier"
+              ],
               "start_ms": 4803000,
               "title": "The OT: The Evolution of the Bible"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_08_blatchford_64kb.mp3",
               "length_ms": 1011000,
+              "readers": [
+                "ismailuser55"
+              ],
               "start_ms": 5360000,
               "title": "The OT: Notes on the Moses Myth"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_09_blatchford_64kb.mp3",
               "length_ms": 1190000,
+              "readers": [
+                "julia-niedermaier"
+              ],
               "start_ms": 6371000,
               "title": "The OT: The Universe According to Ancient Religion and Modern Science"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_10_blatchford_64kb.mp3",
               "length_ms": 1416000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 7561000,
               "title": "The OT: Jehovah the Adopted Heavenly Father of Christianity, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_11_blatchford_64kb.mp3",
               "length_ms": 1598000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 8977000,
               "title": "The OT: Jehovah the Adopted Heavenly Father of Christianity, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_12_blatchford_64kb.mp3",
               "length_ms": 879000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 10575000,
               "title": "The OT: The Book of Books"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_13_blatchford_64kb.mp3",
               "length_ms": 839000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 11454000,
               "title": "The OT: Our Heavenly Father"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_14_blatchford_64kb.mp3",
               "length_ms": 497000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 12293000,
               "title": "The OT: Prayer and Praise"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_15_blatchford_64kb.mp3",
               "length_ms": 665000,
+              "readers": [
+                "jaredxd"
+              ],
               "start_ms": 12790000,
               "title": "The NT: The Resurrection. Value of the Evidence in Law"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_16_blatchford_64kb.mp3",
               "length_ms": 1401000,
+              "readers": [
+                "jaredxd"
+              ],
               "start_ms": 13455000,
               "title": "The NT: The Gospel Witnesses"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_17_blatchford_64kb.mp3",
               "length_ms": 1066000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 14856000,
               "title": "The NT: The Time Spirit in the First Century"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_18_blatchford_64kb.mp3",
               "length_ms": 1293000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 15922000,
               "title": "The NT: Christianity Before Christ"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_19_blatchford_64kb.mp3",
               "length_ms": 428000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 17215000,
               "title": "The NT: Other Evidences of Christ's Divinity"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_20_blatchford_64kb.mp3",
               "length_ms": 965000,
+              "readers": [
+                "julia-niedermaier"
+              ],
               "start_ms": 17643000,
               "title": "The Christian Religion - What is Christianity?"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_21_blatchford_64kb.mp3",
               "length_ms": 2174000,
+              "readers": [
+                "julia-niedermaier"
+              ],
               "start_ms": 18608000,
               "title": "Determinism - Can Man Sin Against God?"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_22_blatchford_64kb.mp3",
               "length_ms": 625000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 20782000,
               "title": "Christian Apologies"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_23_blatchford_64kb.mp3",
               "length_ms": 411000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 21407000,
               "title": "Christian Apologies: Christianity and Civilisation"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_24_blatchford_64kb.mp3",
               "length_ms": 1044000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 21818000,
               "title": "Christian Apologies: Christianity and Ethics"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_25_blatchford_64kb.mp3",
               "length_ms": 419000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 22862000,
               "title": "Christian Apologies: The Success of Christianity"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_26_blatchford_64kb.mp3",
               "length_ms": 158000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 23281000,
               "title": "Christian Apologies: The Prophecies"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_27_blatchford_64kb.mp3",
               "length_ms": 735000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 23439000,
               "title": "Christian Apologies: The Universality of Religious Belief"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_28_blatchford_64kb.mp3",
               "length_ms": 979000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 24174000,
               "title": "Christian Apologies: Spiritual Discernment"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_29_blatchford_64kb.mp3",
               "length_ms": 251000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 25153000,
               "title": "Christian Apologies: Some other Apologies"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_30_blatchford_64kb.mp3",
               "length_ms": 573000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 25404000,
               "title": "Christian Apologies: Counsels of Despair"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_my_neighbour_1512_librivox/godandmyneighbour_31_blatchford_64kb.mp3",
               "length_ms": 1450000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 25977000,
               "title": "Conclusion - The Parting of the Ways"
             }
@@ -4893,7 +5016,11 @@
           "cover_url": "https://archive.org/download/librivoxcCDCoverArt35/godandmyneighbour_1512.jpg",
           "id": "tovarisch",
           "language": "en",
+          "librivox_genres": [
+            "Atheism & Agnosticism"
+          ],
           "librivox_id": 4696,
+          "librivox_title": "God and my Neighbour",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/god-and-my-neighbour-by-robert-blatchford/",
@@ -5989,45 +6116,63 @@
             {
               "audio_url": "https://www.archive.org/download/god_and_the_state_librivox/godandthestate_00_bakunin_64kb.mp3",
               "length_ms": 172000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Chapter 00"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_the_state_librivox/godandthestate_01_bakunin_64kb.mp3",
               "length_ms": 2018000,
+              "section_number": 1,
               "start_ms": 172000,
               "title": "Chapter 01"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_the_state_librivox/godandthestate_02_bakunin_64kb.mp3",
               "length_ms": 2964000,
+              "section_number": 2,
               "start_ms": 2190000,
               "title": "Chapter 02"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_the_state_librivox/godandthestate_03_bakunin_64kb.mp3",
               "length_ms": 2004000,
+              "section_number": 3,
               "start_ms": 5154000,
               "title": "Chapter 03"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_the_state_librivox/godandthestate_04_bakunin_64kb.mp3",
               "length_ms": 2963000,
+              "section_number": 4,
               "start_ms": 7158000,
               "title": "Chapter 04"
             },
             {
               "audio_url": "https://www.archive.org/download/god_and_the_state_librivox/godandthestate_05_bakunin_64kb.mp3",
               "length_ms": 1489000,
+              "section_number": 5,
               "start_ms": 10121000,
               "title": "Chapter 05"
             }
           ],
           "copyright_year": 1916,
           "cover_url": "https://archive.org/download/god_and_the_state_librivox/godandthestate_1011.jpg",
+          "credits": [
+            {
+              "person": "benjamin-r-tucker",
+              "role": "translator"
+            }
+          ],
           "id": "carl-manchester",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Philosophy",
+            "Religion"
+          ],
           "librivox_id": 745,
+          "librivox_title": "God and the State",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/god-and-the-state-by-mikhail-bakunin/",
@@ -7131,72 +7276,108 @@
             {
               "audio_url": "https://www.archive.org/download/god_bless_us_everyone_1512.poem_librivox/godbless_riley_bk_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 0,
               "title": "God Bless Us Everyone - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/god_bless_us_everyone_1512.poem_librivox/godbless_riley_bl_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "brian-lornie"
+              ],
               "start_ms": 72000,
               "title": "God Bless Us Everyone - Read by BL"
             },
             {
               "audio_url": "https://www.archive.org/download/god_bless_us_everyone_1512.poem_librivox/godbless_riley_dl_64kb.mp3",
               "length_ms": 61000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 129000,
               "title": "God Bless Us Everyone - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/god_bless_us_everyone_1512.poem_librivox/godbless_riley_el_64kb.mp3",
               "length_ms": 59000,
+              "readers": [
+                "newgatenovelist"
+              ],
               "start_ms": 190000,
               "title": "God Bless Us Everyone - Read by EL"
             },
             {
               "audio_url": "https://www.archive.org/download/god_bless_us_everyone_1512.poem_librivox/godbless_riley_gb_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "garth-burton"
+              ],
               "start_ms": 249000,
               "title": "God Bless Us Everyone - Read by GB"
             },
             {
               "audio_url": "https://www.archive.org/download/god_bless_us_everyone_1512.poem_librivox/godbless_riley_gg_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 318000,
               "title": "God Bless Us Everyone - Read by GG"
             },
             {
               "audio_url": "https://www.archive.org/download/god_bless_us_everyone_1512.poem_librivox/godbless_riley_ik_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "ian-king"
+              ],
               "start_ms": 395000,
               "title": "God Bless Us Everyone - Read by IK"
             },
             {
               "audio_url": "https://www.archive.org/download/god_bless_us_everyone_1512.poem_librivox/godbless_riley_lah_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 461000,
               "title": "God Bless Us Everyone - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/god_bless_us_everyone_1512.poem_librivox/godbless_riley_llw_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 526000,
               "title": "God Bless Us Everyone - Read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/god_bless_us_everyone_1512.poem_librivox/godbless_riley_mk_64kb.mp3",
               "length_ms": 63000,
+              "readers": [
+                "maria-kasper"
+              ],
               "start_ms": 598000,
               "title": "God Bless Us Everyone - Read by MK"
             },
             {
               "audio_url": "https://www.archive.org/download/god_bless_us_everyone_1512.poem_librivox/godbless_riley_sabt_64kb.mp3",
               "length_ms": 64000,
+              "readers": [
+                "skyalbatross"
+              ],
               "start_ms": 661000,
               "title": "God Bless Us Everyone - Read by SABT"
             },
             {
               "audio_url": "https://www.archive.org/download/god_bless_us_everyone_1512.poem_librivox/godbless_riley_sd_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "simon-donohoe"
+              ],
               "start_ms": 725000,
               "title": "God Bless Us Everyone - Read by SD"
             }
@@ -7205,7 +7386,11 @@
           "cover_url": "https://archive.org/download/god_bless_us_everyone_1512.poem_librivox/godbless_1512.jpg",
           "id": "bruce-kachuk",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 10473,
+          "librivox_title": "God Bless Us Every One",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/god-bless-us-everyone-by-james-whitcomb-riley/",
@@ -8627,7 +8812,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt29/threeoclock_1303.jpg",
           "id": "maria-therese",
           "language": "en",
+          "librivox_genres": [
+            "Religion"
+          ],
           "librivox_id": 7567,
+          "librivox_title": "God Died at Three O'Clock",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/God-died-at-three-oclock-by-rev-gerald-t-brennan/",
@@ -12074,90 +12263,105 @@
             {
               "audio_url": "https://www.archive.org/download/murderersrow_1404_librivox/murderersrow_00_raymond_64kb.mp3",
               "length_ms": 541000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "My Vindication"
             },
             {
               "audio_url": "https://www.archive.org/download/murderersrow_1404_librivox/murderersrow_01_raymond_64kb.mp3",
               "length_ms": 989000,
+              "section_number": 1,
               "start_ms": 541000,
               "title": "Chief Price is Uneasy"
             },
             {
               "audio_url": "https://www.archive.org/download/murderersrow_1404_librivox/murderersrow_02_raymond_64kb.mp3",
               "length_ms": 1523000,
+              "section_number": 2,
               "start_ms": 1530000,
               "title": "God Gathers His Instruments"
             },
             {
               "audio_url": "https://www.archive.org/download/murderersrow_1404_librivox/murderersrow_03_raymond_64kb.mp3",
               "length_ms": 1663000,
+              "section_number": 3,
               "start_ms": 3053000,
               "title": "'Most Likely I'll Burn'"
             },
             {
               "audio_url": "https://www.archive.org/download/murderersrow_1404_librivox/murderersrow_04_raymond_64kb.mp3",
               "length_ms": 1980000,
+              "section_number": 4,
               "start_ms": 4716000,
               "title": "Sentenced to Birth"
             },
             {
               "audio_url": "https://www.archive.org/download/murderersrow_1404_librivox/murderersrow_05_raymond_64kb.mp3",
               "length_ms": 1753000,
+              "section_number": 5,
               "start_ms": 6696000,
               "title": "Solitary Confinement"
             },
             {
               "audio_url": "https://www.archive.org/download/murderersrow_1404_librivox/murderersrow_06_raymond_64kb.mp3",
               "length_ms": 1722000,
+              "section_number": 6,
               "start_ms": 8449000,
               "title": "Birthdays in the Deathhouse"
             },
             {
               "audio_url": "https://www.archive.org/download/murderersrow_1404_librivox/murderersrow_07_raymond_64kb.mp3",
               "length_ms": 2338000,
+              "section_number": 7,
               "start_ms": 10171000,
               "title": "Satan in the Cell Block"
             },
             {
               "audio_url": "https://www.archive.org/download/murderersrow_1404_librivox/murderersrow_08_raymond_64kb.mp3",
               "length_ms": 2208000,
+              "section_number": 8,
               "start_ms": 12509000,
               "title": "God Gives Compensation"
             },
             {
               "audio_url": "https://www.archive.org/download/murderersrow_1404_librivox/murderersrow_09_raymond_64kb.mp3",
               "length_ms": 2750000,
+              "section_number": 9,
               "start_ms": 14717000,
               "title": "Deeper Depths and Broader Horizons"
             },
             {
               "audio_url": "https://www.archive.org/download/murderersrow_1404_librivox/murderersrow_10_raymond_64kb.mp3",
               "length_ms": 1856000,
+              "section_number": 10,
               "start_ms": 17467000,
               "title": "Christmas Gifts"
             },
             {
               "audio_url": "https://www.archive.org/download/murderersrow_1404_librivox/murderersrow_11_raymond_64kb.mp3",
               "length_ms": 2931000,
+              "section_number": 11,
               "start_ms": 19323000,
               "title": "Out of the Devil's Clutches"
             },
             {
               "audio_url": "https://www.archive.org/download/murderersrow_1404_librivox/murderersrow_12_raymond_64kb.mp3",
               "length_ms": 2261000,
+              "section_number": 12,
               "start_ms": 22254000,
               "title": "Into the Hands of God"
             },
             {
               "audio_url": "https://www.archive.org/download/murderersrow_1404_librivox/murderersrow_13_raymond_64kb.mp3",
               "length_ms": 1431000,
+              "section_number": 13,
               "start_ms": 24515000,
               "title": "Last Day on Earth"
             },
             {
               "audio_url": "https://www.archive.org/download/murderersrow_1404_librivox/murderersrow_14_raymond_64kb.mp3",
               "length_ms": 1051000,
+              "section_number": 14,
               "start_ms": 25946000,
               "title": "The Dead Live - and Work"
             }
@@ -12166,7 +12370,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/murderersrow_1404.jpg",
           "id": "maria-therese",
           "language": "en",
+          "librivox_genres": [
+            "True Crime",
+            "Christianity - Biographies"
+          ],
           "librivox_id": 8382,
+          "librivox_title": "God Goes to Murderer's Row",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/god-goes-to-murderers-row-by-rev-m-raymond/",
@@ -13623,66 +13832,99 @@
             {
               "audio_url": "https://www.archive.org/download/god_help_our_men_at_sea_1508.poem_librivox/menatsea_kendall_alp_64kb.mp3",
               "length_ms": 151000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 0,
               "title": "God Help Our Men at Sea - Read by ALP"
             },
             {
               "audio_url": "https://www.archive.org/download/god_help_our_men_at_sea_1508.poem_librivox/menatsea_kendall_bk_64kb.mp3",
               "length_ms": 204000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 151000,
               "title": "God Help Our Men at Sea - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/god_help_our_men_at_sea_1508.poem_librivox/menatsea_kendall_dl_64kb.mp3",
               "length_ms": 154000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 355000,
               "title": "God Help Our Men at Sea - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/god_help_our_men_at_sea_1508.poem_librivox/menatsea_kendall_el_64kb.mp3",
               "length_ms": 139000,
+              "readers": [
+                "newgatenovelist"
+              ],
               "start_ms": 509000,
               "title": "God Help Our Men at Sea - Read by EL"
             },
             {
               "audio_url": "https://www.archive.org/download/god_help_our_men_at_sea_1508.poem_librivox/menatsea_kendall_gg_64kb.mp3",
               "length_ms": 203000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 648000,
               "title": "God Help Our Men at Sea - Read by GG"
             },
             {
               "audio_url": "https://www.archive.org/download/god_help_our_men_at_sea_1508.poem_librivox/menatsea_kendall_jeb_64kb.mp3",
               "length_ms": 142000,
+              "readers": [
+                "voiceofjosh"
+              ],
               "start_ms": 851000,
               "title": "God Help Our Men at Sea - Read by JEB"
             },
             {
               "audio_url": "https://www.archive.org/download/god_help_our_men_at_sea_1508.poem_librivox/menatsea_kendall_lcw_64kb.mp3",
               "length_ms": 161000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 993000,
               "title": "God Help Our Men at Sea - Read by LCW"
             },
             {
               "audio_url": "https://www.archive.org/download/god_help_our_men_at_sea_1508.poem_librivox/menatsea_kendall_llw_64kb.mp3",
               "length_ms": 184000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 1154000,
               "title": "God Help Our Men at Sea - Read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/god_help_our_men_at_sea_1508.poem_librivox/menatsea_kendall_mk_64kb.mp3",
               "length_ms": 184000,
+              "readers": [
+                "maria-kasper"
+              ],
               "start_ms": 1338000,
               "title": "God Help Our Men at Sea - Read by MK"
             },
             {
               "audio_url": "https://www.archive.org/download/god_help_our_men_at_sea_1508.poem_librivox/menatsea_kendall_nb_64kb.mp3",
               "length_ms": 172000,
+              "readers": [
+                "noelbadrian"
+              ],
               "start_ms": 1522000,
               "title": "God Help Our Men at Sea - Read by NB"
             },
             {
               "audio_url": "https://www.archive.org/download/god_help_our_men_at_sea_1508.poem_librivox/menatsea_kendall_rc_64kb.mp3",
               "length_ms": 182000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
               "start_ms": 1694000,
               "title": "God Help Our Men at Sea - Read by RC"
             }
@@ -13690,7 +13932,11 @@
           "cover_url": "https://archive.org/download/god_help_our_men_at_sea_1508.poem_librivox/god_help_men_sea_1508.jpg",
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 10104,
+          "librivox_title": "God Help Our Men at Sea",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/god-help-our-men-at-sea-by-henry-kendall/",

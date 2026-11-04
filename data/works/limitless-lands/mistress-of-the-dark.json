@@ -408,6 +408,15 @@
             {
               "audio_url": "https://www.archive.org/download/mistress_of_the_inn_1409_librivox/mistressoftheinn_1_goldoni_64kb.mp3",
               "length_ms": 2185000,
+              "readers": [
+                "anthony",
+                "amanda-friday",
+                "toddhw",
+                "khand",
+                "peter-tucker",
+                "mary-j",
+                "james-simenc"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
@@ -426,9 +435,19 @@
           ],
           "copyright_year": 1912,
           "cover_url": "https://archive.org/download/mistress_of_the_inn_1409_librivox/Mistress_of_the_Inn_1409.jpg",
+          "credits": [
+            {
+              "person": "merle-pierson",
+              "role": "translator"
+            }
+          ],
           "id": "anthony",
           "language": "en",
+          "librivox_genres": [
+            "Comedy"
+          ],
           "librivox_id": 8771,
+          "librivox_title": "Mistress of the Inn (La locandiera)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-mistress-of-the-inn-la-locandiera-by-carlo-goldoni/",
@@ -4783,7 +4802,11 @@
           "cover_url": "https://archive.org/download/mistsofmars_2109_librivox/mistsofmars_2109.jpg",
           "id": "edmund-bloxam",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 16899,
+          "librivox_title": "Mists of Mars",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/mists-of-mars-by-george-a-whittington/",

@@ -1137,117 +1137,146 @@
             {
               "audio_url": "https://www.archive.org/download/america_2409_librivox/america_00_bremer_64kb.mp3",
               "length_ms": 1246000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/america_2409_librivox/america_01_bremer_64kb.mp3",
               "length_ms": 1828000,
+              "section_number": 1,
               "start_ms": 1246000,
               "title": "New York, October 4, 1849"
             },
             {
               "audio_url": "https://www.archive.org/download/america_2409_librivox/america_02_bremer_64kb.mp3",
               "length_ms": 1812000,
+              "section_number": 2,
               "start_ms": 3074000,
               "title": "Brooklyn, November 5, 1849"
             },
             {
               "audio_url": "https://www.archive.org/download/america_2409_librivox/america_03_bremer_64kb.mp3",
               "length_ms": 1518000,
+              "section_number": 3,
               "start_ms": 4886000,
               "title": "Boston, December 2"
             },
             {
               "audio_url": "https://www.archive.org/download/america_2409_librivox/america_04_bremer_64kb.mp3",
               "length_ms": 1707000,
+              "section_number": 4,
               "start_ms": 6404000,
               "title": "Boston, January 22"
             },
             {
               "audio_url": "https://www.archive.org/download/america_2409_librivox/america_05_bremer_64kb.mp3",
               "length_ms": 1704000,
+              "section_number": 5,
               "start_ms": 8111000,
               "title": "February 15"
             },
             {
               "audio_url": "https://www.archive.org/download/america_2409_librivox/america_06_bremer_64kb.mp3",
               "length_ms": 2367000,
+              "section_number": 6,
               "start_ms": 9815000,
               "title": "April 1"
             },
             {
               "audio_url": "https://www.archive.org/download/america_2409_librivox/america_07_bremer_64kb.mp3",
               "length_ms": 1633000,
+              "section_number": 7,
               "start_ms": 12182000,
               "title": "Macon, May 8"
             },
             {
               "audio_url": "https://www.archive.org/download/america_2409_librivox/america_08_bremer_64kb.mp3",
               "length_ms": 1912000,
+              "section_number": 8,
               "start_ms": 13815000,
               "title": "Charleston, June 10"
             },
             {
               "audio_url": "https://www.archive.org/download/america_2409_librivox/america_09_bremer_64kb.mp3",
               "length_ms": 1728000,
+              "section_number": 9,
               "start_ms": 15727000,
               "title": "June 27"
             },
             {
               "audio_url": "https://www.archive.org/download/america_2409_librivox/america_10_bremer_64kb.mp3",
               "length_ms": 1871000,
+              "section_number": 10,
               "start_ms": 17455000,
               "title": "July 18"
             },
             {
               "audio_url": "https://www.archive.org/download/america_2409_librivox/america_11_bremer_64kb.mp3",
               "length_ms": 1554000,
+              "section_number": 11,
               "start_ms": 19326000,
               "title": "Chicago, September 24"
             },
             {
               "audio_url": "https://www.archive.org/download/america_2409_librivox/america_12_bremer_64kb.mp3",
               "length_ms": 1684000,
+              "section_number": 12,
               "start_ms": 20880000,
               "title": "Blue Mound, October 8"
             },
             {
               "audio_url": "https://www.archive.org/download/america_2409_librivox/america_13_bremer_64kb.mp3",
               "length_ms": 1815000,
+              "section_number": 13,
               "start_ms": 22564000,
               "title": "(To the Rev. P.J. Boklin) Cincinnati, Nov 27"
             },
             {
               "audio_url": "https://www.archive.org/download/america_2409_librivox/america_14_bremer_64kb.mp3",
               "length_ms": 1995000,
+              "section_number": 14,
               "start_ms": 24379000,
               "title": "New Orleans, Louisiana, Jan 1, 1851"
             },
             {
               "audio_url": "https://www.archive.org/download/america_2409_librivox/america_15_bremer_64kb.mp3",
               "length_ms": 1644000,
+              "section_number": 15,
               "start_ms": 26374000,
               "title": "Charleston, South Carolina, May 1"
             },
             {
               "audio_url": "https://www.archive.org/download/america_2409_librivox/america_16_bremer_64kb.mp3",
               "length_ms": 1351000,
+              "section_number": 16,
               "start_ms": 28018000,
               "title": "July 17"
             },
             {
               "audio_url": "https://www.archive.org/download/america_2409_librivox/america_17_bremer_64kb.mp3",
               "length_ms": 1405000,
+              "section_number": 17,
               "start_ms": 29369000,
               "title": "New York, September 4"
             }
           ],
           "copyright_year": 1924,
           "cover_url": "https://archive.org/download/america_2409_librivox/americaofthefifties_2409.jpg",
+          "credits": [
+            {
+              "person": "mary-howitt",
+              "role": "translator"
+            }
+          ],
           "id": "ted-lienhart",
           "language": "en",
+          "librivox_genres": [
+            "Travel & Geography",
+            "Letters"
+          ],
           "librivox_id": 20864,
+          "librivox_title": "America of the Fifties: Letters of Fredrika Bremer",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/america-of-the-fifties-by-fredrika-bremer/",
@@ -4668,30 +4697,45 @@
             {
               "audio_url": "https://www.archive.org/download/america_1007_librivox/america_smith_jcf_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "jonfernquest"
+              ],
               "start_ms": 0,
               "title": "America - Read by JCF"
             },
             {
               "audio_url": "https://www.archive.org/download/america_1007_librivox/america_smith_kts_64kb.mp3",
               "length_ms": 143000,
+              "readers": [
+                "kim-stich"
+              ],
               "start_ms": 82000,
               "title": "America - Read by KTS"
             },
             {
               "audio_url": "https://www.archive.org/download/america_1007_librivox/america_smith_lkp_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "lucy-perry"
+              ],
               "start_ms": 225000,
               "title": "America - Read by LKP"
             },
             {
               "audio_url": "https://www.archive.org/download/america_1007_librivox/america_smith_llw_64kb.mp3",
               "length_ms": 88000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 299000,
               "title": "America - Read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/america_1007_librivox/america_smith_rn_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 387000,
               "title": "America - Read by RN"
             }
@@ -4700,7 +4744,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt27/America_1301.jpg",
           "id": "jonfernquest",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 4464,
+          "librivox_title": "America",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/america-by-samuel-francis-smith/",
@@ -5379,72 +5428,108 @@
             {
               "audio_url": "https://www.archive.org/download/america_the_beautiful_2207.poem_librivox/americathebeautiful_bates_bk_64kb.mp3",
               "length_ms": 117000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 0,
               "title": "America the Beautiful - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/america_the_beautiful_2207.poem_librivox/americathebeautiful_bates_crr_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "curtis-r"
+              ],
               "start_ms": 117000,
               "title": "America the Beautiful - Read by CRR"
             },
             {
               "audio_url": "https://www.archive.org/download/america_the_beautiful_2207.poem_librivox/americathebeautiful_bates_eke_64kb.mp3",
               "length_ms": 118000,
+              "readers": [
+                "keith-emanuel"
+              ],
               "start_ms": 226000,
               "title": "America the Beautiful - Read by EKE"
             },
             {
               "audio_url": "https://www.archive.org/download/america_the_beautiful_2207.poem_librivox/americathebeautiful_bates_kla_64kb.mp3",
               "length_ms": 143000,
+              "readers": [
+                "kerry-adams"
+              ],
               "start_ms": 344000,
               "title": "America the Beautiful - Read by KLA"
             },
             {
               "audio_url": "https://www.archive.org/download/america_the_beautiful_2207.poem_librivox/americathebeautiful_bates_ks_64kb.mp3",
               "length_ms": 97000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 487000,
               "title": "America the Beautiful - Read by KS"
             },
             {
               "audio_url": "https://www.archive.org/download/america_the_beautiful_2207.poem_librivox/americathebeautiful_bates_lah_64kb.mp3",
               "length_ms": 99000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 584000,
               "title": "America the Beautiful - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/america_the_beautiful_2207.poem_librivox/americathebeautiful_bates_lcw_64kb.mp3",
               "length_ms": 93000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 683000,
               "title": "America the Beautiful - Read by LCW"
             },
             {
               "audio_url": "https://www.archive.org/download/america_the_beautiful_2207.poem_librivox/americathebeautiful_bates_ljb_64kb.mp3",
               "length_ms": 122000,
+              "readers": [
+                "laurieb"
+              ],
               "start_ms": 776000,
               "title": "America the Beautiful - Read by LJB"
             },
             {
               "audio_url": "https://www.archive.org/download/america_the_beautiful_2207.poem_librivox/americathebeautiful_bates_ls_64kb.mp3",
               "length_ms": 110000,
+              "readers": [
+                "leesalter"
+              ],
               "start_ms": 898000,
               "title": "America the Beautiful - Read by LS"
             },
             {
               "audio_url": "https://www.archive.org/download/america_the_beautiful_2207.poem_librivox/americathebeautiful_bates_md_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "mark-dykshoorn"
+              ],
               "start_ms": 1008000,
               "title": "America the Beautiful - Read by MD"
             },
             {
               "audio_url": "https://www.archive.org/download/america_the_beautiful_2207.poem_librivox/americathebeautiful_bates_mlm_64kb.mp3",
               "length_ms": 130000,
+              "readers": [
+                "mleigh"
+              ],
               "start_ms": 1090000,
               "title": "America the Beautiful - Read by MLM"
             },
             {
               "audio_url": "https://www.archive.org/download/america_the_beautiful_2207.poem_librivox/americathebeautiful_bates_raj_64kb.mp3",
               "length_ms": 96000,
+              "readers": [
+                "rajvo"
+              ],
               "start_ms": 1220000,
               "title": "America the Beautiful - Read by RAJ"
             }
@@ -5453,7 +5538,11 @@
           "cover_url": "https://archive.org/download/america_the_beautiful_2207.poem_librivox/america_2207.jpg",
           "id": "bruce-kachuk",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 18124,
+          "librivox_title": "America the Beautiful",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/america-the-beautiful-by-katharine-lee-bates/",
@@ -7432,7 +7521,12 @@
           "cover_url": "https://archive.org/download/laamericavindicada_2411_librivox/americavindicada_2501.jpg",
           "id": "mpinedag",
           "language": "es",
+          "librivox_genres": [
+            "Medical",
+            "Early Modern"
+          ],
           "librivox_id": 21067,
+          "librivox_title": "América Vindicada de la Calumnia de Haber Sido Madre del Mal Venéreo",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/la-america-vindicada-de-la-calumnia-de-haber-sido-madre-del-mal-venereo-by-antonio-sanchez-valverde/",

@@ -322,7 +322,11 @@
           "cover_url": "https://archive.org/download/his_last_bow_version_3_1603_librivox/His_Last_Bow_V3_1603.jpg",
           "id": "david-clarke",
           "language": "en",
+          "librivox_genres": [
+            "Detective Fiction"
+          ],
           "librivox_id": 10539,
+          "librivox_title": "His Last Bow (version 3)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/his-last-bow-version-3-by-sir-arthur-conan-doyle/",
@@ -1570,78 +1574,204 @@
             {
               "audio_url": "https://www.archive.org/download/hislastbow_dr_1503_librivox/hislastbow_00_doyle_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "cori-samuel"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_dr_1503_librivox/hislastbow_01_doyle_64kb.mp3",
               "length_ms": 1860000,
+              "readers": [
+                "cori-samuel",
+                "beth-thomas-1974-2020",
+                "piotr-nater",
+                "james-callaghan",
+                "azureblue",
+                "ablestonebridge"
+              ],
+              "section_number": 1,
               "start_ms": 81000,
               "title": "Wisteria Lodge Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_dr_1503_librivox/hislastbow_02_doyle_64kb.mp3",
               "length_ms": 2303000,
+              "readers": [
+                "cori-samuel",
+                "beth-thomas-1974-2020",
+                "piotr-nater",
+                "norman-elfer",
+                "brian-mansi",
+                "teresa-bauman",
+                "ablestonebridge"
+              ],
+              "section_number": 2,
               "start_ms": 1941000,
               "title": "Wisteria Lodge Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_dr_1503_librivox/hislastbow_03_doyle_64kb.mp3",
               "length_ms": 2629000,
+              "readers": [
+                "cori-samuel",
+                "beth-thomas-1974-2020",
+                "piotr-nater",
+                "frances-brown",
+                "norman-elfer",
+                "james-callaghan",
+                "brian-mansi",
+                "shakira-searle",
+                "natalie-paula",
+                "k-cotter"
+              ],
+              "section_number": 3,
               "start_ms": 4244000,
               "title": "Cardboard Box"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_dr_1503_librivox/hislastbow_04_doyle_64kb.mp3",
               "length_ms": 1471000,
+              "readers": [
+                "cori-samuel",
+                "maryann",
+                "beth-thomas-1974-2020",
+                "arnaldo-machado",
+                "piotr-nater"
+              ],
+              "section_number": 4,
               "start_ms": 6873000,
               "title": "Red Circle Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_dr_1503_librivox/hislastbow_05_doyle_64kb.mp3",
               "length_ms": 1375000,
+              "readers": [
+                "cori-samuel",
+                "levi-throckmorton",
+                "beth-thomas-1974-2020",
+                "piotr-nater",
+                "etel-buss",
+                "james-callaghan"
+              ],
+              "section_number": 5,
               "start_ms": 8344000,
               "title": "Red Circle Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_dr_1503_librivox/hislastbow_06_doyle_64kb.mp3",
               "length_ms": 1977000,
+              "readers": [
+                "cori-samuel",
+                "beth-thomas-1974-2020",
+                "toddhw",
+                "eden-rea-hedrick",
+                "frances-brown",
+                "norman-elfer",
+                "brian-mansi",
+                "shakira-searle",
+                "natalie-paula",
+                "adele-de-pignerolles"
+              ],
+              "section_number": 6,
               "start_ms": 9719000,
               "title": "Bruce-Partington Plans Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_dr_1503_librivox/hislastbow_07_doyle_64kb.mp3",
               "length_ms": 1953000,
+              "readers": [
+                "cori-samuel",
+                "beth-thomas-1974-2020",
+                "toddhw",
+                "eden-rea-hedrick",
+                "frances-brown",
+                "natalie-paula",
+                "adele-de-pignerolles"
+              ],
+              "section_number": 7,
               "start_ms": 11696000,
               "title": "Bruce-Partington Plans Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_dr_1503_librivox/hislastbow_08_doyle_64kb.mp3",
               "length_ms": 2263000,
+              "readers": [
+                "cori-samuel",
+                "jeanie",
+                "beth-thomas-1974-2020",
+                "rapunzelina",
+                "norman-elfer",
+                "shakira-searle",
+                "adele-de-pignerolles"
+              ],
+              "section_number": 8,
               "start_ms": 13649000,
               "title": "Dying Detective"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_dr_1503_librivox/hislastbow_09_doyle_64kb.mp3",
               "length_ms": 2772000,
+              "readers": [
+                "cori-samuel",
+                "david-olson",
+                "beth-thomas-1974-2020",
+                "adam-librivox-7326",
+                "frances-brown",
+                "norman-elfer",
+                "james-callaghan",
+                "teresa-bauman",
+                "k-cotter",
+                "adele-de-pignerolles"
+              ],
+              "section_number": 9,
               "start_ms": 15912000,
               "title": "Lady Frances Carfax"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_dr_1503_librivox/hislastbow_10_doyle_64kb.mp3",
               "length_ms": 1733000,
+              "readers": [
+                "cori-samuel",
+                "triciag",
+                "beth-thomas-1974-2020",
+                "norman-elfer",
+                "james-callaghan",
+                "adele-de-pignerolles"
+              ],
+              "section_number": 10,
               "start_ms": 18684000,
               "title": "Devil's Foot Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_dr_1503_librivox/hislastbow_11_doyle_64kb.mp3",
               "length_ms": 1695000,
+              "readers": [
+                "cori-samuel",
+                "triciag",
+                "beth-thomas-1974-2020",
+                "norman-elfer",
+                "adele-de-pignerolles"
+              ],
+              "section_number": 11,
               "start_ms": 20417000,
               "title": "Devil's Foot Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_dr_1503_librivox/hislastbow_12_doyle_64kb.mp3",
               "length_ms": 2432000,
+              "readers": [
+                "cori-samuel",
+                "julia-niedermaier",
+                "beth-thomas-1974-2020",
+                "james-callaghan",
+                "p-j-morgan",
+                "shakira-searle",
+                "adele-de-pignerolles"
+              ],
+              "section_number": 12,
               "start_ms": 22112000,
               "title": "His Last Bow"
             }
@@ -1650,7 +1780,12 @@
           "cover_url": "https://archive.org/download/hislastbow_dr_1503_librivox/his_last_bow_1503.jpg",
           "id": "cori-samuel",
           "language": "en",
+          "librivox_genres": [
+            "Dramatic Readings",
+            "Detective Fiction"
+          ],
           "librivox_id": 8854,
+          "librivox_title": "His Last Bow: Some Reminiscences of Sherlock Holmes (version 2 Dramatic Reading)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/his-last-bow-some-reminiscences-of-sherlock-holmes-dramatic-reading-by-sir-arthur-conan-doyle/",
@@ -1705,96 +1840,144 @@
             {
               "audio_url": "https://www.archive.org/download/hislastbow_0711_librivox/hislastbow_01_doyle_64kb.mp3",
               "length_ms": 1601000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 0,
               "title": "Preface and The Adventure of Wisteria Lodge, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_0711_librivox/hislastbow_02_doyle_64kb.mp3",
               "length_ms": 2130000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 1601000,
               "title": "The Adventure of Wisteria Lodge, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_0711_librivox/hislastbow_03_doyle_64kb.mp3",
               "length_ms": 1428000,
+              "readers": [
+                "gesine"
+              ],
               "start_ms": 3731000,
               "title": "The Adventure of the Red Circle, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_0711_librivox/hislastbow_04_doyle_64kb.mp3",
               "length_ms": 1158000,
+              "readers": [
+                "gesine"
+              ],
               "start_ms": 5159000,
               "title": "The Adventure of the Red Circle, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_0711_librivox/hislastbow_05_doyle_64kb.mp3",
               "length_ms": 1421000,
+              "readers": [
+                "sarah-jennings"
+              ],
               "start_ms": 6317000,
               "title": "The Adventure of the Cardboard Box, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_0711_librivox/hislastbow_06_doyle_64kb.mp3",
               "length_ms": 1283000,
+              "readers": [
+                "sarah-jennings"
+              ],
               "start_ms": 7738000,
               "title": "The Adventure of the Cardboard Box, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_0711_librivox/hislastbow_07_doyle_64kb.mp3",
               "length_ms": 1717000,
+              "readers": [
+                "lizzie-driver"
+              ],
               "start_ms": 9021000,
               "title": "The Adventure of the Bruce-Partington Plans, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_0711_librivox/hislastbow_08_doyle_64kb.mp3",
               "length_ms": 2279000,
+              "readers": [
+                "lizzie-driver"
+              ],
               "start_ms": 10738000,
               "title": "The Adventure of the Bruce-Partington Plans, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_0711_librivox/hislastbow_09_doyle_64kb.mp3",
               "length_ms": 1233000,
+              "readers": [
+                "kristine-bekere"
+              ],
               "start_ms": 13017000,
               "title": "The Adventure of the Dying Detective, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_0711_librivox/hislastbow_10_doyle_64kb.mp3",
               "length_ms": 1109000,
+              "readers": [
+                "kristine-bekere"
+              ],
               "start_ms": 14250000,
               "title": "The Adventure of the Dying Detective, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_0711_librivox/hislastbow_11_doyle_64kb.mp3",
               "length_ms": 1252000,
+              "readers": [
+                "robin-cotter"
+              ],
               "start_ms": 15359000,
               "title": "The Disappearance of Lady Frances Carfax, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_0711_librivox/hislastbow_12_doyle_64kb.mp3",
               "length_ms": 1553000,
+              "readers": [
+                "robin-cotter"
+              ],
               "start_ms": 16611000,
               "title": "The Disappearance of Lady Frances Carfax, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_0711_librivox/hislastbow_13_doyle_64kb.mp3",
               "length_ms": 1464000,
+              "readers": [
+                "laurie-anne-walden"
+              ],
               "start_ms": 18164000,
               "title": "The Adventure of the Devil's Foot, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_0711_librivox/hislastbow_14_doyle_64kb.mp3",
               "length_ms": 2028000,
+              "readers": [
+                "laurie-anne-walden"
+              ],
               "start_ms": 19628000,
               "title": "The Adventure of the Devil's Foot, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_0711_librivox/hislastbow_15_doyle_64kb.mp3",
               "length_ms": 1393000,
+              "readers": [
+                "zachary-brewster-geisz"
+              ],
               "start_ms": 21656000,
               "title": "His Last Bow, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/hislastbow_0711_librivox/hislastbow_16_doyle_64kb.mp3",
               "length_ms": 829000,
+              "readers": [
+                "zachary-brewster-geisz"
+              ],
               "start_ms": 23049000,
               "title": "His Last Bow, part 2"
             }
@@ -1803,7 +1986,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt12/His_Last_Bow_1110.jpg",
           "id": "kalynda",
           "language": "en",
+          "librivox_genres": [
+            "Detective Fiction"
+          ],
           "librivox_id": 1386,
+          "librivox_title": "His Last Bow: Some Reminiscences of Sherlock Holmes",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/his-last-bow-by-sir-arthur-conan-doyle/",
@@ -2465,7 +2652,11 @@
           "cover_url": "https://archive.org/download/hislastsebastian_2609_librivox/hislastsebastion_2609.jpg",
           "id": "brian-fullen",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 22944,
+          "librivox_title": "His Last Sebastian and Other Poems",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/his-last-sebastian-and-other-poems-by-james-laver/",
@@ -6376,165 +6567,201 @@
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_00_zola_64kb.mp3",
               "length_ms": 752000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_01_zola_64kb.mp3",
               "length_ms": 1913000,
+              "section_number": 1,
               "start_ms": 752000,
               "title": "Chapter 1, Part A"
             },
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_02_zola_64kb.mp3",
               "length_ms": 1416000,
+              "section_number": 2,
               "start_ms": 2665000,
               "title": "Chapter 1, Part B"
             },
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_03_zola_64kb.mp3",
               "length_ms": 2703000,
+              "section_number": 3,
               "start_ms": 4081000,
               "title": "Chapter 2, Part A"
             },
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_04_zola_64kb.mp3",
               "length_ms": 1484000,
+              "section_number": 4,
               "start_ms": 6784000,
               "title": "Chapter 2, Part B"
             },
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_05_zola_64kb.mp3",
               "length_ms": 2442000,
+              "section_number": 5,
               "start_ms": 8268000,
               "title": "Chapter 3, Part A"
             },
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_06_zola_64kb.mp3",
               "length_ms": 2710000,
+              "section_number": 6,
               "start_ms": 10710000,
               "title": "Chapter 3, Part B"
             },
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_07_zola_64kb.mp3",
               "length_ms": 1797000,
+              "section_number": 7,
               "start_ms": 13420000,
               "title": "Chapter 4, Part A"
             },
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_08_zola_64kb.mp3",
               "length_ms": 2489000,
+              "section_number": 8,
               "start_ms": 15217000,
               "title": "Chapter 4, Part B"
             },
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_09_zola_64kb.mp3",
               "length_ms": 1466000,
+              "section_number": 9,
               "start_ms": 17706000,
               "title": "Chapter 5, Part A"
             },
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_10_zola_64kb.mp3",
               "length_ms": 2746000,
+              "section_number": 10,
               "start_ms": 19172000,
               "title": "Chapter 5, Part B"
             },
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_11_zola_64kb.mp3",
               "length_ms": 1480000,
+              "section_number": 11,
               "start_ms": 21918000,
               "title": "Chapter 6, Part A"
             },
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_12_zola_64kb.mp3",
               "length_ms": 2582000,
+              "section_number": 12,
               "start_ms": 23398000,
               "title": "Chapter 6, Part B"
             },
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_13_zola_64kb.mp3",
               "length_ms": 2793000,
+              "section_number": 13,
               "start_ms": 25980000,
               "title": "Chapter 7, Part A"
             },
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_14_zola_64kb.mp3",
               "length_ms": 2331000,
+              "section_number": 14,
               "start_ms": 28773000,
               "title": "Chapter 7, Part B"
             },
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_15_zola_64kb.mp3",
               "length_ms": 2149000,
+              "section_number": 15,
               "start_ms": 31104000,
               "title": "Chapter 8, Part A"
             },
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_16_zola_64kb.mp3",
               "length_ms": 2344000,
+              "section_number": 16,
               "start_ms": 33253000,
               "title": "Chapter 8, Part B"
             },
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_17_zola_64kb.mp3",
               "length_ms": 2891000,
+              "section_number": 17,
               "start_ms": 35597000,
               "title": "Chapter 9, Part A"
             },
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_18_zola_64kb.mp3",
               "length_ms": 2481000,
+              "section_number": 18,
               "start_ms": 38488000,
               "title": "Chapter 9, Part B"
             },
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_19_zola_64kb.mp3",
               "length_ms": 2350000,
+              "section_number": 19,
               "start_ms": 40969000,
               "title": "Chapter 10, Part A"
             },
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_20_zola_64kb.mp3",
               "length_ms": 2830000,
+              "section_number": 20,
               "start_ms": 43319000,
               "title": "Chapter 10, Part B"
             },
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_21_zola_64kb.mp3",
               "length_ms": 1658000,
+              "section_number": 21,
               "start_ms": 46149000,
               "title": "Chapter 10, Part C"
             },
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_22_zola_64kb.mp3",
               "length_ms": 2409000,
+              "section_number": 22,
               "start_ms": 47807000,
               "title": "Chapter 11, Part A"
             },
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_23_zola_64kb.mp3",
               "length_ms": 3072000,
+              "section_number": 23,
               "start_ms": 50216000,
               "title": "Chapter 11, Part B"
             },
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_24_zola_64kb.mp3",
               "length_ms": 1203000,
+              "section_number": 24,
               "start_ms": 53288000,
               "title": "Chapter 12, Part A"
             },
             {
               "audio_url": "https://www.archive.org/download/hismasterpiece_1703_librivox/hismasterpiece_25_zola_64kb.mp3",
               "length_ms": 2163000,
+              "section_number": 25,
               "start_ms": 54491000,
               "title": "Chapter 12, Part B"
             }
           ],
           "copyright_year": 1902,
           "cover_url": "https://archive.org/download/hismasterpiece_1703_librivox/His_Masterpiece_1703.jpg",
+          "credits": [
+            {
+              "person": "ernest-alfred-vizetelly",
+              "role": "translator"
+            }
+          ],
           "id": "lisa-reichert",
           "language": "en",
+          "librivox_genres": [
+            "Historical Fiction"
+          ],
           "librivox_id": 11267,
+          "librivox_title": "His Masterpiece",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/his-masterpiece-by-emile-zola/",
@@ -6775,7 +7002,11 @@
           "cover_url": "https://archive.org/download/hismastersvoice_1606_librivox/masters_voice_1606.jpg",
           "id": "phil-chenevert",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 10955,
+          "librivox_title": "His Master's Voice",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/his-masters-voice-by-randall-garrett/",
@@ -6826,126 +7057,189 @@
             {
               "audio_url": "https://www.archive.org/download/his_memory_1905.poem_librivox/hismemory_lardner_alp_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 0,
               "title": "His Memory - Read by ALP"
             },
             {
               "audio_url": "https://www.archive.org/download/his_memory_1905.poem_librivox/hismemory_lardner_bd_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "brian-dirkx"
+              ],
               "start_ms": 71000,
               "title": "His Memory - Read by BD"
             },
             {
               "audio_url": "https://www.archive.org/download/his_memory_1905.poem_librivox/hismemory_lardner_bk_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 149000,
               "title": "His Memory - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/his_memory_1905.poem_librivox/hismemory_lardner_cf_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "craig-franklin"
+              ],
               "start_ms": 224000,
               "title": "His Memory - Read by CF"
             },
             {
               "audio_url": "https://www.archive.org/download/his_memory_1905.poem_librivox/hismemory_lardner_cn_64kb.mp3",
               "length_ms": 100000,
+              "readers": [
+                "cornel-nemes"
+              ],
               "start_ms": 301000,
               "title": "His Memory - Read by CN"
             },
             {
               "audio_url": "https://www.archive.org/download/his_memory_1905.poem_librivox/hismemory_lardner_cs_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "campbell-schelp"
+              ],
               "start_ms": 401000,
               "title": "His Memory - Read by CS"
             },
             {
               "audio_url": "https://www.archive.org/download/his_memory_1905.poem_librivox/hismemory_lardner_dl_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 482000,
               "title": "His Memory - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/his_memory_1905.poem_librivox/hismemory_lardner_fh_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "foon"
+              ],
               "start_ms": 555000,
               "title": "His Memory - Read by FH"
             },
             {
               "audio_url": "https://www.archive.org/download/his_memory_1905.poem_librivox/hismemory_lardner_gjc_64kb.mp3",
               "length_ms": 62000,
+              "readers": [
+                "corbangj"
+              ],
               "start_ms": 633000,
               "title": "His Memory - Read by  GJC"
             },
             {
               "audio_url": "https://www.archive.org/download/his_memory_1905.poem_librivox/hismemory_lardner_grs_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "graham-scott"
+              ],
               "start_ms": 695000,
               "title": "His Memory - Read by GRS"
             },
             {
               "audio_url": "https://www.archive.org/download/his_memory_1905.poem_librivox/hismemory_lardner_gw_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "gail-wamba"
+              ],
               "start_ms": 771000,
               "title": "His Memory - Read by GW"
             },
             {
               "audio_url": "https://www.archive.org/download/his_memory_1905.poem_librivox/hismemory_lardner_jk_64kb.mp3",
               "length_ms": 60000,
+              "readers": [
+                "josh-kibbey"
+              ],
               "start_ms": 839000,
               "title": "His Memory - Read by JK"
             },
             {
               "audio_url": "https://www.archive.org/download/his_memory_1905.poem_librivox/hismemory_lardner_ks_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 899000,
               "title": "His Memory - Read by  KS"
             },
             {
               "audio_url": "https://www.archive.org/download/his_memory_1905.poem_librivox/hismemory_lardner_lah_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 969000,
               "title": "His Memory - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/his_memory_1905.poem_librivox/hismemory_lardner_lcw_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 1041000,
               "title": "His Memory - Read by LCW"
             },
             {
               "audio_url": "https://www.archive.org/download/his_memory_1905.poem_librivox/hismemory_lardner_nj_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "narratorj"
+              ],
               "start_ms": 1108000,
               "title": "His Memory - Read by NJ"
             },
             {
               "audio_url": "https://www.archive.org/download/his_memory_1905.poem_librivox/hismemory_lardner_rp_64kb.mp3",
               "length_ms": 60000,
+              "readers": [
+                "rumpledpoetry"
+              ],
               "start_ms": 1175000,
               "title": "His Memory - Read by RP"
             },
             {
               "audio_url": "https://www.archive.org/download/his_memory_1905.poem_librivox/hismemory_lardner_ten_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "thomas-ermon"
+              ],
               "start_ms": 1235000,
               "title": "His Memory - Read by TEN"
             },
             {
               "audio_url": "https://www.archive.org/download/his_memory_1905.poem_librivox/hismemory_lardner_tp_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "tomas-peter"
+              ],
               "start_ms": 1309000,
               "title": "His Memory - Read by TP"
             },
             {
               "audio_url": "https://www.archive.org/download/his_memory_1905.poem_librivox/hismemory_lardner_vb_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "tovarisch"
+              ],
               "start_ms": 1378000,
               "title": "His Memory - Read by VB"
             },
             {
               "audio_url": "https://www.archive.org/download/his_memory_1905.poem_librivox/hismemory_lardner_wm_64kb.mp3",
               "length_ms": 62000,
+              "readers": [
+                "william-mosqueda"
+              ],
               "start_ms": 1452000,
               "title": "His Memory - Read by WM"
             }
@@ -6954,7 +7248,11 @@
           "cover_url": "https://archive.org/download/his_memory_1905.poem_librivox/hismemory_1905.jpg",
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 14057,
+          "librivox_title": "His Memory",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/his-memory-by-ring-lardner/",
@@ -10161,78 +10459,117 @@
             {
               "audio_url": "https://www.archive.org/download/his_new_brother_1812.poem_librivox/newbrother_lincoln_bk_64kb.mp3",
               "length_ms": 101000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 0,
               "title": "His New Brother - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/his_new_brother_1812.poem_librivox/newbrother_lincoln_dl_64kb.mp3",
               "length_ms": 97000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 101000,
               "title": "His New Brother - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/his_new_brother_1812.poem_librivox/newbrother_lincoln_fh_64kb.mp3",
               "length_ms": 107000,
+              "readers": [
+                "foon"
+              ],
               "start_ms": 198000,
               "title": "His New Brother - Read by FH"
             },
             {
               "audio_url": "https://www.archive.org/download/his_new_brother_1812.poem_librivox/newbrother_lincoln_gb_64kb.mp3",
               "length_ms": 107000,
+              "readers": [
+                "garth-burton"
+              ],
               "start_ms": 305000,
               "title": "His New Brother - Read by GB"
             },
             {
               "audio_url": "https://www.archive.org/download/his_new_brother_1812.poem_librivox/newbrother_lincoln_gg_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 412000,
               "title": "His New Brother - Read by GG"
             },
             {
               "audio_url": "https://www.archive.org/download/his_new_brother_1812.poem_librivox/newbrother_lincoln_grs_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "graham-scott"
+              ],
               "start_ms": 521000,
               "title": "His New Brother - Read by GRS"
             },
             {
               "audio_url": "https://www.archive.org/download/his_new_brother_1812.poem_librivox/newbrother_lincoln_jh_64kb.mp3",
               "length_ms": 112000,
+              "readers": [
+                "jude"
+              ],
               "start_ms": 615000,
               "title": "His New Brother - Read by JH"
             },
             {
               "audio_url": "https://www.archive.org/download/his_new_brother_1812.poem_librivox/newbrother_lincoln_mtf_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "michele-fry"
+              ],
               "start_ms": 727000,
               "title": "His New Brother - Read by MTF"
             },
             {
               "audio_url": "https://www.archive.org/download/his_new_brother_1812.poem_librivox/newbrother_lincoln_ps_64kb.mp3",
               "length_ms": 96000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 818000,
               "title": "His New Brother - Read by PS"
             },
             {
               "audio_url": "https://www.archive.org/download/his_new_brother_1812.poem_librivox/newbrother_lincoln_raj_64kb.mp3",
               "length_ms": 96000,
+              "readers": [
+                "rajvo"
+              ],
               "start_ms": 914000,
               "title": "His New Brother - Read by RAJ"
             },
             {
               "audio_url": "https://www.archive.org/download/his_new_brother_1812.poem_librivox/newbrother_lincoln_rb_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "ryan-bassette"
+              ],
               "start_ms": 1010000,
               "title": "His New Brother - Read by RB"
             },
             {
               "audio_url": "https://www.archive.org/download/his_new_brother_1812.poem_librivox/newbrother_lincoln_tp_64kb.mp3",
               "length_ms": 100000,
+              "readers": [
+                "tomas-peter"
+              ],
               "start_ms": 1087000,
               "title": "His New Brother - Read by TP"
             },
             {
               "audio_url": "https://www.archive.org/download/his_new_brother_1812.poem_librivox/newbrother_lincoln_vb_64kb.mp3",
               "length_ms": 117000,
+              "readers": [
+                "tovarisch"
+              ],
               "start_ms": 1187000,
               "title": "His New Brother - Read by VB"
             }
@@ -10241,7 +10578,11 @@
           "cover_url": "https://archive.org/download/his_new_brother_1812.poem_librivox/hisnewbrother_1812.jpg",
           "id": "bruce-kachuk",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 13526,
+          "librivox_title": "His New Brother",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/his-new-brother-by-joseph-crosby-lincoln/",

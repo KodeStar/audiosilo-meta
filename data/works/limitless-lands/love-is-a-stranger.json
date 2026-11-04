@@ -1017,96 +1017,144 @@
             {
               "audio_url": "https://www.archive.org/download/loveisenough_1302_librivox/loveisenough_morris_cb_64kb.mp3",
               "length_ms": 54000,
+              "readers": [
+                "carol-box"
+              ],
               "start_ms": 0,
               "title": "Love is enough - Read by CB"
             },
             {
               "audio_url": "https://www.archive.org/download/loveisenough_1302_librivox/loveisenough_morris_cmp_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "caprishapage"
+              ],
               "start_ms": 54000,
               "title": "Love is enough - Read by CMP"
             },
             {
               "audio_url": "https://www.archive.org/download/loveisenough_1302_librivox/loveisenough_morris_ctd_64kb.mp3",
               "length_ms": 54000,
+              "readers": [
+                "drakaunus"
+              ],
               "start_ms": 119000,
               "title": "Love is Enough - Read by CTD"
             },
             {
               "audio_url": "https://www.archive.org/download/loveisenough_1302_librivox/loveisenough_morris_dl_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 173000,
               "title": "Love is enough - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/loveisenough_1302_librivox/loveisenough_morris_es_64kb.mp3",
               "length_ms": 44000,
+              "readers": [
+                "mudlark"
+              ],
               "start_ms": 228000,
               "title": "Love is enough - Read by ES"
             },
             {
               "audio_url": "https://www.archive.org/download/loveisenough_1302_librivox/loveisenough_morris_jab_64kb.mp3",
               "length_ms": 52000,
+              "readers": [
+                "jason-bolestridge"
+              ],
               "start_ms": 272000,
               "title": "Love is enough - Read by JAB"
             },
             {
               "audio_url": "https://www.archive.org/download/loveisenough_1302_librivox/loveisenough_morris_jcm_64kb.mp3",
               "length_ms": 50000,
+              "readers": [
+                "jason-mills"
+              ],
               "start_ms": 324000,
               "title": "Love is enough - Read by JCM"
             },
             {
               "audio_url": "https://www.archive.org/download/loveisenough_1302_librivox/loveisenough_morris_jm2_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "jannie-meisberger"
+              ],
               "start_ms": 374000,
               "title": "Love is enough - Read by JM"
             },
             {
               "audio_url": "https://www.archive.org/download/loveisenough_1302_librivox/loveisenough_morris_klh_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "kristin-hughes-1974-2021"
+              ],
               "start_ms": 429000,
               "title": "Love is enough - Read by KLH"
             },
             {
               "audio_url": "https://www.archive.org/download/loveisenough_1302_librivox/loveisenough_morris_lah_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 486000,
               "title": "Love is enough - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/loveisenough_1302_librivox/loveisenough_morris_llw_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 543000,
               "title": "Love is enough - Read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/loveisenough_1302_librivox/loveisenough_morris_mc_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "mlcui"
+              ],
               "start_ms": 608000,
               "title": "Love is enough - Read by MC"
             },
             {
               "audio_url": "https://www.archive.org/download/loveisenough_1302_librivox/loveisenough_morris_mvh_64kb.mp3",
               "length_ms": 53000,
+              "readers": [
+                "mikev"
+              ],
               "start_ms": 663000,
               "title": "Love is enough - Read by MVH"
             },
             {
               "audio_url": "https://www.archive.org/download/loveisenough_1302_librivox/loveisenough_morris_rn_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 716000,
               "title": "Love is enough - Read by RN"
             },
             {
               "audio_url": "https://www.archive.org/download/loveisenough_1302_librivox/loveisenough_morris_tm_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "tom-merritt"
+              ],
               "start_ms": 787000,
               "title": "Love is enough - Read by TM"
             },
             {
               "audio_url": "https://www.archive.org/download/loveisenough_1302_librivox/loveisenough_morris_vg_64kb.mp3",
               "length_ms": 49000,
+              "readers": [
+                "vanessa-garcia"
+              ],
               "start_ms": 844000,
               "title": "Love is enough - Read by VG"
             }
@@ -1114,7 +1162,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt32/Love_enough_1306.jpg",
           "id": "carol-box",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 7550,
+          "librivox_title": "Love is enough",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/love-is-enough-by-william-morris/",
@@ -3422,27 +3474,76 @@
             {
               "audio_url": "https://www.archive.org/download/loveisthebestdoctor_1801_librivox/lovebestdoctor_01_moliere_64kb.mp3",
               "length_ms": 1180000,
+              "readers": [
+                "availle",
+                "toddhw",
+                "rapunzelina",
+                "larry-wilson",
+                "victor-villarraza",
+                "cathar-maiden",
+                "leanne-yau",
+                "sarahale",
+                "craig-franklin",
+                "eva-davis-d-2025",
+                "tj-burns",
+                "jessie-percival"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/loveisthebestdoctor_1801_librivox/lovebestdoctor_02_moliere_64kb.mp3",
               "length_ms": 852000,
+              "readers": [
+                "toddhw",
+                "larry-wilson",
+                "son-of-the-exiles",
+                "cathar-maiden",
+                "sonia",
+                "eva-davis-d-2025",
+                "nemo",
+                "drpgould"
+              ],
               "start_ms": 1180000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/loveisthebestdoctor_1801_librivox/lovebestdoctor_03_moliere_64kb.mp3",
               "length_ms": 1129000,
+              "readers": [
+                "availle",
+                "toddhw",
+                "rapunzelina",
+                "alan-mapstone",
+                "larry-wilson",
+                "zames-curran",
+                "cathar-maiden",
+                "sonia",
+                "tomas-peter",
+                "eva-davis-d-2025",
+                "tj-burns",
+                "jessie-percival"
+              ],
               "start_ms": 2032000,
               "title": "Act 3"
             }
           ],
           "copyright_year": 18,
           "cover_url": "https://archive.org/download/loveisthebestdoctor_1801_librivox/love_best_doctor_1801.jpg",
+          "credits": [
+            {
+              "person": "henri-van-laun",
+              "role": "translator"
+            }
+          ],
           "id": "availle",
           "language": "en",
+          "librivox_genres": [
+            "Plays",
+            "Satire"
+          ],
           "librivox_id": 12395,
+          "librivox_title": "Love is the Best Doctor",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/love-is-the-best-doctor-by-moliere/",
@@ -5144,7 +5245,12 @@
           "cover_url": "https://archive.org/download/lovepoems_2108_librivox/love_historical_shades_2108.jpg",
           "id": "amr-ahmed",
           "language": "en",
+          "librivox_genres": [
+            "Anthologies",
+            "Ballads"
+          ],
           "librivox_id": 16892,
+          "librivox_title": "Love & Its Historical Shades: Poetic Expressions of Love Based on Varying Time Periods",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/love-its-historical-shades-by-various/",
@@ -7587,54 +7693,81 @@
             {
               "audio_url": "https://www.archive.org/download/love_letter_collection_2008_0802_librivox/abigail_adams_to_john_adams_adamsfamilypapers_ref_64kb.mp3",
               "length_ms": 411000,
+              "readers": [
+                "rhonda-federman"
+              ],
               "start_ms": 0,
               "title": "Abigail Adams to John Adams 16 October 1774, Adams Family Papers"
             },
             {
               "audio_url": "https://www.archive.org/download/love_letter_collection_2008_0802_librivox/donfelipe_louise_two_brides_balzac_py_64kb.mp3",
               "length_ms": 352000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 411000,
               "title": "From don Felipe to Louise – in L 15 of Letters of Two Brides"
             },
             {
               "audio_url": "https://www.archive.org/download/love_letter_collection_2008_0802_librivox/dont_tell_the_world_cook_add_64kb.mp3",
               "length_ms": 103000,
+              "readers": [
+                "alan-davis-drake-1945-2010"
+              ],
               "start_ms": 763000,
               "title": "Don't Tell The World That You're Waiting For Me"
             },
             {
               "audio_url": "https://www.archive.org/download/love_letter_collection_2008_0802_librivox/heloise_to_peter_abelard_ref_64kb.mp3",
               "length_ms": 254000,
+              "readers": [
+                "rhonda-federman"
+              ],
               "start_ms": 866000,
               "title": "Heloise to Peter Abelard"
             },
             {
               "audio_url": "https://www.archive.org/download/love_letter_collection_2008_0802_librivox/letitbethisway_ebbrowning_cc_64kb.mp3",
               "length_ms": 257000,
+              "readers": [
+                "caitlin-teresa"
+              ],
               "start_ms": 1120000,
               "title": "Let It Be This Way. Elizabeth Barrett Browning to Robert Browning. From Letters"
             },
             {
               "audio_url": "https://www.archive.org/download/love_letter_collection_2008_0802_librivox/letter_to_her_husband_bradstreet_add_64kb.mp3",
               "length_ms": 272000,
+              "readers": [
+                "alan-davis-drake-1945-2010"
+              ],
               "start_ms": 1377000,
               "title": "A Letter to Her Husband Absent Upon Public Employment"
             },
             {
               "audio_url": "https://www.archive.org/download/love_letter_collection_2008_0802_librivox/love_letter_feb_28_1880_hugo_add_64kb.mp3",
               "length_ms": 250000,
+              "readers": [
+                "alan-davis-drake-1945-2010"
+              ],
               "start_ms": 1649000,
               "title": "Love Letter – Monday, February 28, 1820"
             },
             {
               "audio_url": "https://www.archive.org/download/love_letter_collection_2008_0802_librivox/love_letter_jan_1820_hugo_add_64kb.mp3",
               "length_ms": 372000,
+              "readers": [
+                "alan-davis-drake-1945-2010"
+              ],
               "start_ms": 1899000,
               "title": "Love Letter – Saturday Evening, January, 1820"
             },
             {
               "audio_url": "https://www.archive.org/download/love_letter_collection_2008_0802_librivox/tocountessgiuliettaguicciardi_beethoven_ezwa_64kb.mp3",
               "length_ms": 380000,
+              "readers": [
+                "ezwa"
+              ],
               "start_ms": 2271000,
               "title": "To Countess Giulietta Guicciardi, Section 15 from Beethoven’s Letters 1790-1826, Volume 1"
             }
@@ -7642,7 +7775,13 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt11/Love_Letter_Collection_2008_1111.jpg",
           "id": "rhonda-federman",
           "language": "en",
+          "librivox_genres": [
+            "Epistolary Fiction",
+            "Romance",
+            "Letters"
+          ],
           "librivox_id": 1761,
+          "librivox_title": "Love Letter Collection 2008",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/love-letter-collection-2008-by-various/",
@@ -9966,63 +10105,109 @@
             {
               "audio_url": "https://www.archive.org/download/love_letters_abelard_heloise_0812/loveletters_0_abelardheloise_64kb.mp3",
               "length_ms": 258000,
+              "readers": [
+                "icyjumbo-1964-2010"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/love_letters_abelard_heloise_0812/loveletters_1_abelardheloise_64kb.mp3",
               "length_ms": 2092000,
+              "readers": [
+                "icyjumbo-1964-2010"
+              ],
+              "section_number": 1,
               "start_ms": 258000,
               "title": "01 Letter I. - Abelard to Philintus"
             },
             {
               "audio_url": "https://www.archive.org/download/love_letters_abelard_heloise_0812/loveletters_2_abelardheloise_64kb.mp3",
               "length_ms": 2725000,
+              "readers": [
+                "laura-koskinen"
+              ],
+              "section_number": 2,
               "start_ms": 2350000,
               "title": "02 Letter II. - Heloise to Abelard"
             },
             {
               "audio_url": "https://www.archive.org/download/love_letters_abelard_heloise_0812/loveletters_3_abelardheloise_64kb.mp3",
               "length_ms": 1962000,
+              "readers": [
+                "icyjumbo-1964-2010"
+              ],
+              "section_number": 3,
               "start_ms": 5075000,
               "title": "03 Letter III. - Abelard to Heloise"
             },
             {
               "audio_url": "https://www.archive.org/download/love_letters_abelard_heloise_0812/loveletters_4_abelardheloise_64kb.mp3",
               "length_ms": 1636000,
+              "readers": [
+                "laura-koskinen"
+              ],
+              "section_number": 4,
               "start_ms": 7037000,
               "title": "04 Letter IV. - Heloise to Abelard"
             },
             {
               "audio_url": "https://www.archive.org/download/love_letters_abelard_heloise_0812/loveletters_5_abelardheloise_64kb.mp3",
               "length_ms": 1587000,
+              "readers": [
+                "laura-koskinen"
+              ],
+              "section_number": 5,
               "start_ms": 8673000,
               "title": "05 Letter V. - Heloise to Abelard"
             },
             {
               "audio_url": "https://www.archive.org/download/love_letters_abelard_heloise_0812/loveletters_6_abelardheloise_64kb.mp3",
               "length_ms": 1237000,
+              "readers": [
+                "icyjumbo-1964-2010"
+              ],
+              "section_number": 6,
               "start_ms": 10260000,
               "title": "06 Letter VI. - Abelard to Heloise"
             },
             {
               "audio_url": "https://www.archive.org/download/love_letters_abelard_heloise_0812/loveletters_7_abelardheloise_64kb.mp3",
               "length_ms": 1360000,
+              "readers": [
+                "icyjumbo-1964-2010"
+              ],
+              "section_number": 7,
               "start_ms": 11497000,
               "title": "07 Pope's Epistle. - \"Eloisa to Abelard\""
             },
             {
               "audio_url": "https://www.archive.org/download/love_letters_abelard_heloise_0812/loveletters_8_abelardheloise_64kb.mp3",
               "length_ms": 110000,
+              "readers": [
+                "icyjumbo-1964-2010"
+              ],
+              "section_number": 8,
               "start_ms": 12857000,
               "title": "08 From W. E. Henly's Prologue to Beau Austin"
             }
           ],
           "copyright_year": 1901,
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt/Love_Letters_of_Abelard_and_Heloise_1003.jpg",
+          "credits": [
+            {
+              "person": "anonymous",
+              "role": "translator"
+            }
+          ],
           "id": "icyjumbo-1964-2010",
           "language": "en",
+          "librivox_genres": [
+            "Romance"
+          ],
           "librivox_id": 1107,
+          "librivox_title": "Love Letters of Abelard and Heloise",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-love-letters-of-abelard-and-heloise-by-peter-abelard-and-heloise/",
@@ -10071,96 +10256,144 @@
             {
               "audio_url": "https://www.archive.org/download/osborne_loveletters_0911_librivox/loveletters_01_dorothyosborne_64kb.mp3",
               "length_ms": 1469000,
+              "readers": [
+                "rhonda-federman"
+              ],
               "start_ms": 0,
               "title": "01 - Letters 1-5"
             },
             {
               "audio_url": "https://www.archive.org/download/osborne_loveletters_0911_librivox/loveletters_02_dorothyosborne_64kb.mp3",
               "length_ms": 1251000,
+              "readers": [
+                "landii"
+              ],
               "start_ms": 1469000,
               "title": "02 - Letters 6-10"
             },
             {
               "audio_url": "https://www.archive.org/download/osborne_loveletters_0911_librivox/loveletters_03_dorothyosborne_64kb.mp3",
               "length_ms": 1573000,
+              "readers": [
+                "anna-simon"
+              ],
               "start_ms": 2720000,
               "title": "03 - Letters 11-15"
             },
             {
               "audio_url": "https://www.archive.org/download/osborne_loveletters_0911_librivox/loveletters_04_dorothyosborne_64kb.mp3",
               "length_ms": 1625000,
+              "readers": [
+                "annise"
+              ],
               "start_ms": 4293000,
               "title": "04 - Letters 16-20"
             },
             {
               "audio_url": "https://www.archive.org/download/osborne_loveletters_0911_librivox/loveletters_05_dorothyosborne_64kb.mp3",
               "length_ms": 1643000,
+              "readers": [
+                "breathe"
+              ],
               "start_ms": 5918000,
               "title": "05 - Letters 21-25"
             },
             {
               "audio_url": "https://www.archive.org/download/osborne_loveletters_0911_librivox/loveletters_06_dorothyosborne_64kb.mp3",
               "length_ms": 1467000,
+              "readers": [
+                "neeru-iyer"
+              ],
               "start_ms": 7561000,
               "title": "06 - Letters 26-30"
             },
             {
               "audio_url": "https://www.archive.org/download/osborne_loveletters_0911_librivox/loveletters_07_dorothyosborne_64kb.mp3",
               "length_ms": 1448000,
+              "readers": [
+                "ruth-golding"
+              ],
               "start_ms": 9028000,
               "title": "07 - Letters 31-35"
             },
             {
               "audio_url": "https://www.archive.org/download/osborne_loveletters_0911_librivox/loveletters_08_dorothyosborne_64kb.mp3",
               "length_ms": 2416000,
+              "readers": [
+                "ruth-golding"
+              ],
               "start_ms": 10476000,
               "title": "08 - Letters 36-40"
             },
             {
               "audio_url": "https://www.archive.org/download/osborne_loveletters_0911_librivox/loveletters_09_dorothyosborne_64kb.mp3",
               "length_ms": 1428000,
+              "readers": [
+                "anna-simon"
+              ],
               "start_ms": 12892000,
               "title": "09 - Letters 41-45"
             },
             {
               "audio_url": "https://www.archive.org/download/osborne_loveletters_0911_librivox/loveletters_10_dorothyosborne_64kb.mp3",
               "length_ms": 1891000,
+              "readers": [
+                "rhonda-federman"
+              ],
               "start_ms": 14320000,
               "title": "10 - Letters 46-50"
             },
             {
               "audio_url": "https://www.archive.org/download/osborne_loveletters_0911_librivox/loveletters_11_dorothyosborne_64kb.mp3",
               "length_ms": 2384000,
+              "readers": [
+                "anna-simon"
+              ],
               "start_ms": 16211000,
               "title": "11 - Letters 51-55"
             },
             {
               "audio_url": "https://www.archive.org/download/osborne_loveletters_0911_librivox/loveletters_12_dorothyosborne_64kb.mp3",
               "length_ms": 1168000,
+              "readers": [
+                "anna-simon"
+              ],
               "start_ms": 18595000,
               "title": "12 - Letters 56-60"
             },
             {
               "audio_url": "https://www.archive.org/download/osborne_loveletters_0911_librivox/loveletters_13_dorothyosborne_64kb.mp3",
               "length_ms": 1049000,
+              "readers": [
+                "breathe"
+              ],
               "start_ms": 19763000,
               "title": "13 - Letters 61-65"
             },
             {
               "audio_url": "https://www.archive.org/download/osborne_loveletters_0911_librivox/loveletters_14_dorothyosborne_64kb.mp3",
               "length_ms": 1088000,
+              "readers": [
+                "rhonda-federman"
+              ],
               "start_ms": 20812000,
               "title": "14 - Letters 66-71"
             },
             {
               "audio_url": "https://www.archive.org/download/osborne_loveletters_0911_librivox/loveletters_15_dorothyosborne_64kb.mp3",
               "length_ms": 399000,
+              "readers": [
+                "ezwa"
+              ],
               "start_ms": 21900000,
               "title": "15 - Letters 72-80"
             },
             {
               "audio_url": "https://www.archive.org/download/osborne_loveletters_0911_librivox/loveletters_16_dorothyosborne_64kb.mp3",
               "length_ms": 318000,
+              "readers": [
+                "ruth-golding"
+              ],
               "start_ms": 22299000,
               "title": "16 - Letters 81-83"
             }
@@ -10169,7 +10402,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt/Love_Letters_of_Dorothy_Osborne_1002.jpg",
           "id": "rhonda-federman",
           "language": "en",
+          "librivox_genres": [
+            "Letters"
+          ],
           "librivox_id": 2539,
+          "librivox_title": "Love Letters of Dorothy Osborne",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/love-letters-of-dorothy-osborne-by-dorothy-osborne/",
@@ -10288,48 +10525,56 @@
             {
               "audio_url": "https://www.archive.org/download/love_letters_of_mrs_piozzi_1401_librivox/loveletters_00_piozzi_64kb.mp3",
               "length_ms": 1552000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/love_letters_of_mrs_piozzi_1401_librivox/loveletters_01_piozzi_64kb.mp3",
               "length_ms": 672000,
+              "section_number": 1,
               "start_ms": 1552000,
               "title": "Letter I"
             },
             {
               "audio_url": "https://www.archive.org/download/love_letters_of_mrs_piozzi_1401_librivox/loveletters_02_piozzi_64kb.mp3",
               "length_ms": 534000,
+              "section_number": 2,
               "start_ms": 2224000,
               "title": "Letter II"
             },
             {
               "audio_url": "https://www.archive.org/download/love_letters_of_mrs_piozzi_1401_librivox/loveletters_03_piozzi_64kb.mp3",
               "length_ms": 139000,
+              "section_number": 3,
               "start_ms": 2758000,
               "title": "Letter III"
             },
             {
               "audio_url": "https://www.archive.org/download/love_letters_of_mrs_piozzi_1401_librivox/loveletters_04_piozzi_64kb.mp3",
               "length_ms": 123000,
+              "section_number": 4,
               "start_ms": 2897000,
               "title": "Letter IV"
             },
             {
               "audio_url": "https://www.archive.org/download/love_letters_of_mrs_piozzi_1401_librivox/loveletters_05_piozzi_64kb.mp3",
               "length_ms": 451000,
+              "section_number": 5,
               "start_ms": 3020000,
               "title": "Letter V"
             },
             {
               "audio_url": "https://www.archive.org/download/love_letters_of_mrs_piozzi_1401_librivox/loveletters_06_piozzi_64kb.mp3",
               "length_ms": 402000,
+              "section_number": 6,
               "start_ms": 3471000,
               "title": "Letter VI"
             },
             {
               "audio_url": "https://www.archive.org/download/love_letters_of_mrs_piozzi_1401_librivox/loveletters_07_piozzi_64kb.mp3",
               "length_ms": 208000,
+              "section_number": 7,
               "start_ms": 3873000,
               "title": "Letter VII"
             }
@@ -10338,7 +10583,12 @@
           "cover_url": "https://archive.org/download/love_letters_of_mrs_piozzi_1401_librivox/love_letters_1401.jpg",
           "id": "crln-yldz-ksr",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "Letters"
+          ],
           "librivox_id": 8374,
+          "librivox_title": "Love Letters of Mrs. Piozzi, Written When She Was Eighty",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/love-letters-of-mrs-piozzi-written-when-she-was-eighty-by-hester-lynch-piozzi/",

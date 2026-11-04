@@ -7817,7 +7817,11 @@
           "cover_url": "https://archive.org/download/hebrewmelodies_2501_librivox/hebrew_melodies_byron_2501.jpg",
           "id": "alan-mapstone",
           "language": "en",
+          "librivox_genres": [
+            "Lyric"
+          ],
           "librivox_id": 21183,
+          "librivox_title": "Hebrew Melodies",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/hebrew-melodies-by-george-gordon-lord-byron/",
@@ -11157,7 +11161,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt24/hectorberlioz_1607.jpg",
           "id": "david-wales",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Biography & Autobiography"
+          ],
           "librivox_id": 11093,
+          "librivox_title": "Hector Berlioz; A Romantic Tragedy",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/hector-berlioz-a-romantic-tragedy-by-herbert-francis-peyser/",
@@ -12229,21 +12238,50 @@
             {
               "audio_url": "https://www.archive.org/download/hecuba_1503_librivox/hecuba_1_euripides_64kb.mp3",
               "length_ms": 1790000,
+              "readers": [
+                "elizabeth-klett",
+                "maryann",
+                "kristin-g",
+                "rapunzelina",
+                "alan-mapstone",
+                "rob-marland"
+              ],
               "start_ms": 0,
               "title": "Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/hecuba_1503_librivox/hecuba_2_euripides_64kb.mp3",
               "length_ms": 3120000,
+              "readers": [
+                "elizabeth-klett",
+                "maryann",
+                "kristin-g",
+                "toddhw",
+                "rapunzelina",
+                "larry-wilson",
+                "davidpr",
+                "mary-kay"
+              ],
               "start_ms": 1790000,
               "title": "Part 2"
             }
           ],
           "copyright_year": 1892,
           "cover_url": "https://archive.org/download/hecuba_1503_librivox/hecuba_1503.jpg",
+          "credits": [
+            {
+              "person": "theodore-alois-buckley",
+              "role": "translator"
+            }
+          ],
           "id": "elizabeth-klett",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Tragedy"
+          ],
           "librivox_id": 9583,
+          "librivox_title": "Hecuba",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/hecuba-by-euripides/",
@@ -12311,39 +12349,89 @@
             {
               "audio_url": "https://www.archive.org/download/hecyrathemother-in-law_1903_librivox/hecyra_1_terence_64kb.mp3",
               "length_ms": 941000,
+              "readers": [
+                "availle",
+                "toddhw",
+                "leanne-yau",
+                "devorah-allen",
+                "eva-davis-d-2025"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/hecyrathemother-in-law_1903_librivox/hecyra_2_terence_64kb.mp3",
               "length_ms": 624000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "toddhw",
+                "alan-mapstone",
+                "leanne-yau"
+              ],
               "start_ms": 941000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/hecyrathemother-in-law_1903_librivox/hecyra_3_terence_64kb.mp3",
               "length_ms": 1443000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "toddhw",
+                "alan-mapstone",
+                "leanne-yau",
+                "tomas-peter",
+                "eva-davis-d-2025",
+                "nemo",
+                "tj-burns"
+              ],
               "start_ms": 1565000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/hecyrathemother-in-law_1903_librivox/hecyra_4_terence_64kb.mp3",
               "length_ms": 1914000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "toddhw",
+                "alan-mapstone",
+                "sonia",
+                "leanne-yau",
+                "tomas-peter",
+                "tj-burns"
+              ],
               "start_ms": 3008000,
               "title": "Act 4"
             },
             {
               "audio_url": "https://www.archive.org/download/hecyrathemother-in-law_1903_librivox/hecyra_5_terence_64kb.mp3",
               "length_ms": 542000,
+              "readers": [
+                "toddhw",
+                "sonia",
+                "leanne-yau",
+                "tomas-peter",
+                "eva-davis-d-2025"
+              ],
               "start_ms": 4922000,
               "title": "Act 5"
             }
           ],
           "copyright_year": 1896,
           "cover_url": "https://archive.org/download/hecyrathemother-in-law_1903_librivox/hecyra_1903.jpg",
+          "credits": [
+            {
+              "person": "henry-thomas-riley",
+              "role": "translator"
+            }
+          ],
           "id": "availle",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Plays"
+          ],
           "librivox_id": 13705,
+          "librivox_title": "Hecyra: The Mother-In-Law",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/hecyra-the-mother-in-law-by-terence/",
@@ -12404,78 +12492,117 @@
             {
               "audio_url": "https://www.archive.org/download/nothingbut_1303_librivox/hednothing_dallas_aw_64kb.mp3",
               "length_ms": 64000,
+              "readers": [
+                "alan-weyman"
+              ],
               "start_ms": 0,
               "title": "He'd Nothing but His Violin - Read by AW"
             },
             {
               "audio_url": "https://www.archive.org/download/nothingbut_1303_librivox/hednothing_dallas_dl_64kb.mp3",
               "length_ms": 58000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 64000,
               "title": "He'd Nothing but His Violin - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/nothingbut_1303_librivox/hednothing_dallas_elli_64kb.mp3",
               "length_ms": 52000,
+              "readers": [
+                "elli"
+              ],
               "start_ms": 122000,
               "title": "He'd Nothing but His Violin - Read by Elli"
             },
             {
               "audio_url": "https://www.archive.org/download/nothingbut_1303_librivox/hednothing_dallas_fs_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "fshort"
+              ],
               "start_ms": 174000,
               "title": "He'd Nothing but His Violin - Read by FS"
             },
             {
               "audio_url": "https://www.archive.org/download/nothingbut_1303_librivox/hednothing_dallas_jcm_64kb.mp3",
               "length_ms": 53000,
+              "readers": [
+                "jason-mills"
+              ],
               "start_ms": 231000,
               "title": "He'd Nothing but His Violin - Read by JCM"
             },
             {
               "audio_url": "https://www.archive.org/download/nothingbut_1303_librivox/hednothing_dallas_jcs_64kb.mp3",
               "length_ms": 52000,
+              "readers": [
+                "jcship"
+              ],
               "start_ms": 284000,
               "title": "He'd Nothing But His Violin - Read by JCS"
             },
             {
               "audio_url": "https://www.archive.org/download/nothingbut_1303_librivox/hednothing_dallas_jm2_64kb.mp3",
               "length_ms": 59000,
+              "readers": [
+                "jannie-meisberger"
+              ],
               "start_ms": 336000,
               "title": "He'd Nothing but His Violin - Read by JM"
             },
             {
               "audio_url": "https://www.archive.org/download/nothingbut_1303_librivox/hednothing_dallas_lah_64kb.mp3",
               "length_ms": 60000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 395000,
               "title": "He'd Nothing but His Violin - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/nothingbut_1303_librivox/hednothing_dallas_llw_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 455000,
               "title": "He'd Nothing but His Violin - Read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/nothingbut_1303_librivox/hednothing_dallas_mc_64kb.mp3",
               "length_ms": 54000,
+              "readers": [
+                "mlcui"
+              ],
               "start_ms": 523000,
               "title": "He'd Nothing but His Violin - Read by MC"
             },
             {
               "audio_url": "https://www.archive.org/download/nothingbut_1303_librivox/hednothing_dallas_rn_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 577000,
               "title": "He'd Nothing but His Violin - Read by RN"
             },
             {
               "audio_url": "https://www.archive.org/download/nothingbut_1303_librivox/hednothing_dallas_t_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "tamz"
+              ],
               "start_ms": 648000,
               "title": "He'd Nothing but His Violin - Read by T"
             },
             {
               "audio_url": "https://www.archive.org/download/nothingbut_1303_librivox/hednothing_dallas_vg_64kb.mp3",
               "length_ms": 59000,
+              "readers": [
+                "vanessa-garcia"
+              ],
               "start_ms": 703000,
               "title": "He'd Nothing but His Violin - Read by VG"
             }
@@ -12483,7 +12610,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt31/nothing_violin_1306.jpg",
           "id": "alan-weyman",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 7620,
+          "librivox_title": "He’d Nothing but His Violin",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/hed-nothing-but-his-violin-by-mary-kyle-dallas/",
@@ -12635,24 +12766,40 @@
             {
               "audio_url": "https://www.archive.org/download/hedda_gabler_1002_librivox/heddagabler_act1_64kb.mp3",
               "length_ms": 3234000,
+              "readers": [
+                "elizabeth-klett",
+                "mb"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/hedda_gabler_1002_librivox/heddagabler_act2_64kb.mp3",
               "length_ms": 2926000,
+              "readers": [
+                "kalynda",
+                "bob-sherman"
+              ],
               "start_ms": 3234000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/hedda_gabler_1002_librivox/heddagabler_act3_64kb.mp3",
               "length_ms": 1862000,
+              "readers": [
+                "arielle-lipshaw",
+                "diana-majlinger"
+              ],
               "start_ms": 6160000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/hedda_gabler_1002_librivox/heddagabler_act4_64kb.mp3",
               "length_ms": 1816000,
+              "readers": [
+                "availle",
+                "joe-bly"
+              ],
               "start_ms": 8022000,
               "title": "Act 4"
             }
@@ -12661,7 +12808,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt21/hedda_gabler_1207.jpg",
           "id": "elizabeth-klett",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction",
+            "Humorous Fiction",
+            "Plays"
+          ],
           "librivox_id": 3879,
+          "librivox_title": "Hedda Gabler",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/hedda-gabler-by-henrik-ibsen/",
@@ -12697,39 +12850,58 @@
             {
               "audio_url": "https://www.archive.org/download/hedda_gabler_2_1603_librivox/heddagabler_00_ibsen_64kb.mp3",
               "length_ms": 1424000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Translator's Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/hedda_gabler_2_1603_librivox/heddagabler_01_ibsen_64kb.mp3",
               "length_ms": 3716000,
+              "section_number": 1,
               "start_ms": 1424000,
               "title": "Act I"
             },
             {
               "audio_url": "https://www.archive.org/download/hedda_gabler_2_1603_librivox/heddagabler_02_ibsen_64kb.mp3",
               "length_ms": 3219000,
+              "section_number": 2,
               "start_ms": 5140000,
               "title": "Act II"
             },
             {
               "audio_url": "https://www.archive.org/download/hedda_gabler_2_1603_librivox/heddagabler_03_ibsen_64kb.mp3",
               "length_ms": 2131000,
+              "section_number": 3,
               "start_ms": 8359000,
               "title": "Act III"
             },
             {
               "audio_url": "https://www.archive.org/download/hedda_gabler_2_1603_librivox/heddagabler_04_ibsen_64kb.mp3",
               "length_ms": 1954000,
+              "section_number": 4,
               "start_ms": 10490000,
               "title": "Act IV"
             }
           ],
           "copyright_year": 1907,
           "cover_url": "https://archive.org/download/hedda_gabler_2_1603_librivox/hedda_gabler_1603.jpg",
+          "credits": [
+            {
+              "person": "william-archer",
+              "role": "translator"
+            },
+            {
+              "person": "edmund-gosse",
+              "role": "translator"
+            }
+          ],
           "id": "expatriate",
           "language": "en",
+          "librivox_genres": [
+            "Tragedy"
+          ],
           "librivox_id": 10709,
+          "librivox_title": "Hedda Gabler (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/hedda-gabler-version-2-by-henrik-ibsen/",
@@ -12828,39 +13000,58 @@
             {
               "audio_url": "https://www.archive.org/download/heddagabler_2402_librivox/heddagabler_00_ibsen_64kb.mp3",
               "length_ms": 1523000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/heddagabler_2402_librivox/heddagabler_01_ibsen_64kb.mp3",
               "length_ms": 4391000,
+              "section_number": 1,
               "start_ms": 1523000,
               "title": "Act First"
             },
             {
               "audio_url": "https://www.archive.org/download/heddagabler_2402_librivox/heddagabler_02_ibsen_64kb.mp3",
               "length_ms": 3562000,
+              "section_number": 2,
               "start_ms": 5914000,
               "title": "Act Second"
             },
             {
               "audio_url": "https://www.archive.org/download/heddagabler_2402_librivox/heddagabler_03_ibsen_64kb.mp3",
               "length_ms": 2271000,
+              "section_number": 3,
               "start_ms": 9476000,
               "title": "Act Third"
             },
             {
               "audio_url": "https://www.archive.org/download/heddagabler_2402_librivox/heddagabler_04_ibsen_64kb.mp3",
               "length_ms": 2089000,
+              "section_number": 4,
               "start_ms": 11747000,
               "title": "Act Fourth"
             }
           ],
           "copyright_year": 1890,
           "cover_url": "https://archive.org/download/heddagabler_2402_librivox/heddagabler_2402.jpg",
+          "credits": [
+            {
+              "person": "william-archer",
+              "role": "translator"
+            },
+            {
+              "person": "edmund-gosse",
+              "role": "translator"
+            }
+          ],
           "id": "pintri",
           "language": "en",
+          "librivox_genres": [
+            "Drama"
+          ],
           "librivox_id": 18842,
+          "librivox_title": "Hedda Gabler (version 3)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/hedda-gabler-by-henrik-ibsen-3/",
@@ -13305,7 +13496,12 @@
           "cover_url": "https://archive.org/download/hedgefence_2209_librivox/hedgefence_2209.jpg",
           "id": "triciag",
           "language": "en",
+          "librivox_genres": [
+            "Religion",
+            "Christian Fiction"
+          ],
           "librivox_id": 18363,
+          "librivox_title": "Hedge Fence",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-hedge-fence-by-pansy/",

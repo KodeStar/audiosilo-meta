@@ -2322,7 +2322,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt12/kniga-zitij-svjatyh-na-mesjac-iulij_1110.jpg",
           "id": "euthymius",
           "language": "cu",
+          "librivox_genres": [
+            "Christianity - Biographies"
+          ],
           "librivox_id": 1186,
+          "librivox_title": "Жития Святых, т. 11 - Иулий (Zhitiia Sviatykh, v. 11 - July)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/kniga-zitij-svjatyh-na-mesjac-iulij-by-dimitrij-saint-metropolitan-of-rostov-eu/",
@@ -3072,84 +3076,98 @@
             {
               "audio_url": "https://www.archive.org/download/116thinfrance_2605_librivox/116thinfrance_00_allen_64kb.mp3",
               "length_ms": 460000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface and Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/116thinfrance_2605_librivox/116thinfrance_01_allen_64kb.mp3",
               "length_ms": 521000,
+              "section_number": 1,
               "start_ms": 460000,
               "title": "I. Somewhere in France"
             },
             {
               "audio_url": "https://www.archive.org/download/116thinfrance_2605_librivox/116thinfrance_02_allen_64kb.mp3",
               "length_ms": 666000,
+              "section_number": 2,
               "start_ms": 981000,
               "title": "II. Vimy Ridge"
             },
             {
               "audio_url": "https://www.archive.org/download/116thinfrance_2605_librivox/116thinfrance_03_allen_64kb.mp3",
               "length_ms": 293000,
+              "section_number": 3,
               "start_ms": 1647000,
               "title": "III. Umpty Umps"
             },
             {
               "audio_url": "https://www.archive.org/download/116thinfrance_2605_librivox/116thinfrance_04_allen_64kb.mp3",
               "length_ms": 763000,
+              "section_number": 4,
               "start_ms": 1940000,
               "title": "IV. The Raid"
             },
             {
               "audio_url": "https://www.archive.org/download/116thinfrance_2605_librivox/116thinfrance_05_allen_64kb.mp3",
               "length_ms": 882000,
+              "section_number": 5,
               "start_ms": 2703000,
               "title": "V. Hill Seventy"
             },
             {
               "audio_url": "https://www.archive.org/download/116thinfrance_2605_librivox/116thinfrance_06_allen_64kb.mp3",
               "length_ms": 386000,
+              "section_number": 6,
               "start_ms": 3585000,
               "title": "VI. Passchendaele"
             },
             {
               "audio_url": "https://www.archive.org/download/116thinfrance_2605_librivox/116thinfrance_07_allen_64kb.mp3",
               "length_ms": 773000,
+              "section_number": 7,
               "start_ms": 3971000,
               "title": "VII. Rest Billets"
             },
             {
               "audio_url": "https://www.archive.org/download/116thinfrance_2605_librivox/116thinfrance_08_allen_64kb.mp3",
               "length_ms": 899000,
+              "section_number": 8,
               "start_ms": 4744000,
               "title": "VIII. August 8th"
             },
             {
               "audio_url": "https://www.archive.org/download/116thinfrance_2605_librivox/116thinfrance_09_allen_64kb.mp3",
               "length_ms": 725000,
+              "section_number": 9,
               "start_ms": 5643000,
               "title": "IX. The Boiry Show"
             },
             {
               "audio_url": "https://www.archive.org/download/116thinfrance_2605_librivox/116thinfrance_10_allen_64kb.mp3",
               "length_ms": 578000,
+              "section_number": 10,
               "start_ms": 6368000,
               "title": "X. Cambrai"
             },
             {
               "audio_url": "https://www.archive.org/download/116thinfrance_2605_librivox/116thinfrance_11_allen_64kb.mp3",
               "length_ms": 590000,
+              "section_number": 11,
               "start_ms": 6946000,
               "title": "XI. Mons"
             },
             {
               "audio_url": "https://www.archive.org/download/116thinfrance_2605_librivox/116thinfrance_12_allen_64kb.mp3",
               "length_ms": 2020000,
+              "section_number": 12,
               "start_ms": 7536000,
               "title": "Honor Roll, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/116thinfrance_2605_librivox/116thinfrance_13_allen_64kb.mp3",
               "length_ms": 2061000,
+              "section_number": 13,
               "start_ms": 9556000,
               "title": "Honor Roll, Part 2"
             }
@@ -3158,7 +3176,11 @@
           "cover_url": "https://archive.org/download/116thinfrance_2605_librivox/116battalion_france_2605.jpg",
           "id": "justin-s-barrett",
           "language": "en",
+          "librivox_genres": [
+            "War & Military"
+          ],
           "librivox_id": 19776,
+          "librivox_title": "116th Battalion in France",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-116th-battalion-in-france-by-e-p-s-allen/",
@@ -11829,72 +11851,108 @@
             {
               "audio_url": "https://www.archive.org/download/12_creepytales_1206_librivox/creepytalesbypoe_01_poe_64kb.mp3",
               "length_ms": 829000,
+              "readers": [
+                "ann-boulais"
+              ],
               "start_ms": 0,
               "title": "01 - THE TELL-TALE HEART."
             },
             {
               "audio_url": "https://www.archive.org/download/12_creepytales_1206_librivox/creepytalesbypoe_02_poe_64kb.mp3",
               "length_ms": 1545000,
+              "readers": [
+                "pamela-krantz"
+              ],
               "start_ms": 829000,
               "title": "02 - THE FACTS IN THE CASE OF M. VALDEMAR"
             },
             {
               "audio_url": "https://www.archive.org/download/12_creepytales_1206_librivox/creepytalesbypoe_03_poe_64kb.mp3",
               "length_ms": 1339000,
+              "readers": [
+                "debra"
+              ],
               "start_ms": 2374000,
               "title": "03 - THE BLACK CAT."
             },
             {
               "audio_url": "https://www.archive.org/download/12_creepytales_1206_librivox/creepytalesbypoe_04_poe_64kb.mp3",
               "length_ms": 2661000,
+              "readers": [
+                "eden-rea-hedrick"
+              ],
               "start_ms": 3713000,
               "title": "04 - THE FALL OF THE HOUSE OF USHER"
             },
             {
               "audio_url": "https://www.archive.org/download/12_creepytales_1206_librivox/creepytalesbypoe_05_poe_64kb.mp3",
               "length_ms": 1089000,
+              "readers": [
+                "rhonda-federman"
+              ],
               "start_ms": 6374000,
               "title": "05 - THE MASQUE OF THE RED DEATH."
             },
             {
               "audio_url": "https://www.archive.org/download/12_creepytales_1206_librivox/creepytalesbypoe_06_poe_64kb.mp3",
               "length_ms": 988000,
+              "readers": [
+                "elizabeth-klett"
+              ],
               "start_ms": 7463000,
               "title": "06 - THE CASK OF AMONTILLADO."
             },
             {
               "audio_url": "https://www.archive.org/download/12_creepytales_1206_librivox/creepytalesbypoe_07_poe_64kb.mp3",
               "length_ms": 2397000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 8451000,
               "title": "07 - THE PREMATURE BURIAL"
             },
             {
               "audio_url": "https://www.archive.org/download/12_creepytales_1206_librivox/creepytalesbypoe_08_poe_64kb.mp3",
               "length_ms": 996000,
+              "readers": [
+                "blake-curran"
+              ],
               "start_ms": 10848000,
               "title": "08 - BERENICE"
             },
             {
               "audio_url": "https://www.archive.org/download/12_creepytales_1206_librivox/creepytalesbypoe_09_poe_64kb.mp3",
               "length_ms": 2471000,
+              "readers": [
+                "novella-serena"
+              ],
               "start_ms": 11844000,
               "title": "09 - LIGEIA"
             },
             {
               "audio_url": "https://www.archive.org/download/12_creepytales_1206_librivox/creepytalesbypoe_10_poe_64kb.mp3",
               "length_ms": 1487000,
+              "readers": [
+                "nkneer"
+              ],
               "start_ms": 14315000,
               "title": "10 - HOP-FROG"
             },
             {
               "audio_url": "https://www.archive.org/download/12_creepytales_1206_librivox/creepytalesbypoe_11_poe_64kb.mp3",
               "length_ms": 542000,
+              "readers": [
+                "piotr-nater"
+              ],
               "start_ms": 15802000,
               "title": "11 - THE RAVEN"
             },
             {
               "audio_url": "https://www.archive.org/download/12_creepytales_1206_librivox/creepytalesbypoe_12_poe_64kb.mp3",
               "length_ms": 2186000,
+              "readers": [
+                "eden-rea-hedrick"
+              ],
               "start_ms": 16344000,
               "title": "12 - THE PIT AND THE PENDULUM"
             }
@@ -11903,7 +11961,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt20/12_Creepy_Tales_1206.jpg",
           "id": "ann-boulais",
           "language": "en",
+          "librivox_genres": [
+            "Horror & Supernatural Fiction",
+            "Anthologies"
+          ],
           "librivox_id": 6547,
+          "librivox_title": "12 Creepy Tales",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/12-creepy-tales-by-edgar-allan-poe/",

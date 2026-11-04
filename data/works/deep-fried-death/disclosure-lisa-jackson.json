@@ -2689,60 +2689,90 @@
             {
               "audio_url": "https://www.archive.org/download/discouraging_model_2002.poem_librivox/model_riley_bk_64kb.mp3",
               "length_ms": 99000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 0,
               "title": "A Discouraging Model - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/discouraging_model_2002.poem_librivox/model_riley_cb_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "caitlin-buckley"
+              ],
               "start_ms": 99000,
               "title": "A Discouraging Model - Read by CB"
             },
             {
               "audio_url": "https://www.archive.org/download/discouraging_model_2002.poem_librivox/model_riley_eh_64kb.mp3",
               "length_ms": 79000,
+              "readers": [
+                "ethan-hurst"
+              ],
               "start_ms": 172000,
               "title": "A Discouraging Model - Read by EH"
             },
             {
               "audio_url": "https://www.archive.org/download/discouraging_model_2002.poem_librivox/model_riley_fs_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "fshort"
+              ],
               "start_ms": 251000,
               "title": "A Discouraging Model - Read by FS"
             },
             {
               "audio_url": "https://www.archive.org/download/discouraging_model_2002.poem_librivox/model_riley_gb_64kb.mp3",
               "length_ms": 107000,
+              "readers": [
+                "garth-burton"
+              ],
               "start_ms": 345000,
               "title": "A Discouraging Model - Read by GB"
             },
             {
               "audio_url": "https://www.archive.org/download/discouraging_model_2002.poem_librivox/model_riley_grs_64kb.mp3",
               "length_ms": 102000,
+              "readers": [
+                "graham-scott"
+              ],
               "start_ms": 452000,
               "title": "A Discouraging Model - Read by GRS"
             },
             {
               "audio_url": "https://www.archive.org/download/discouraging_model_2002.poem_librivox/model_riley_idp_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "l0ki"
+              ],
               "start_ms": 554000,
               "title": "A Discouraging Model - Read by IDP"
             },
             {
               "audio_url": "https://www.archive.org/download/discouraging_model_2002.poem_librivox/model_riley_ks_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 645000,
               "title": "A Discouraging Model - Read by KS"
             },
             {
               "audio_url": "https://www.archive.org/download/discouraging_model_2002.poem_librivox/model_riley_lah_64kb.mp3",
               "length_ms": 95000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 727000,
               "title": "A Discouraging Model - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/discouraging_model_2002.poem_librivox/model_riley_lcw_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 822000,
               "title": "A Discouraging Model - Read by LCW"
             }
@@ -2751,7 +2781,11 @@
           "cover_url": "https://archive.org/download/librivoxcdcoverart36/discouraging_model_2002.jpg",
           "id": "bruce-kachuk",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 14760,
+          "librivox_title": "Discouraging Model",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-discouraging-model-by-james-whitcomb-riley/",
@@ -2983,7 +3017,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt15/Discours_sciences_arts_1202.jpg",
           "id": "aldor",
           "language": "fr",
+          "librivox_genres": [
+            "Early Modern"
+          ],
           "librivox_id": 2644,
+          "librivox_title": "Discours sur les sciences et les arts",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/discours-sur-les-sciences-et-les-arts-by-jean-jacques-rousseau-0812/",
@@ -3236,7 +3274,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt14/Discours_lorigine_fondements_inegalite_parmi_hommes_1202.jpg",
           "id": "jc-guan",
           "language": "fr",
+          "librivox_genres": [
+            "Political Science",
+            "Early Modern"
+          ],
           "librivox_id": 2589,
+          "librivox_title": "Discours sur l’origine et les fondements de l’inégalité parmi les hommes",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/discours-sur-lorigine-et-les-fondements-de-linegalite-parmi-les-hommes-par-jean-jacques-rousseau/",
@@ -3307,7 +3350,11 @@
           "cover_url": "https://archive.org/download/supereminenceofchrist_2411_librivox/supereminence_2410.jpg",
           "id": "inthedesert",
           "language": "en",
+          "librivox_genres": [
+            "Christianity - Commentary"
+          ],
           "librivox_id": 21002,
+          "librivox_title": "Discourse of the Supereminence of Christ above Moses",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-discourse-of-the-supereminence-of-christ-above-moses-by-thomas-goodwin/",
@@ -3461,9 +3508,19 @@
           ],
           "copyright_year": 1902,
           "cover_url": "https://archive.org/download/discourse_on_metaphysics_2305_librivox/discourseonmetaphysics_2306.jpg",
+          "credits": [
+            {
+              "person": "george-montgomery",
+              "role": "translator"
+            }
+          ],
           "id": "peter-tucker",
           "language": "en",
+          "librivox_genres": [
+            "Philosophy"
+          ],
           "librivox_id": 19298,
+          "librivox_title": "Discourse on Metaphysics",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/discourse-on-metaphysics-by-gottfried-wilhelm-leibniz/",
@@ -3812,7 +3869,11 @@
           "cover_url": "https://archive.org/download/adiscourseonprayer_2511_librivox/discourse_prayer_2511.jpg",
           "id": "inthedesert",
           "language": "en",
+          "librivox_genres": [
+            "Christianity - Other"
+          ],
           "librivox_id": 22104,
+          "librivox_title": "Discourse on Prayer",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-discourse-on-prayer-by-john-bunyan/",
@@ -3860,36 +3921,54 @@
             {
               "audio_url": "https://www.archive.org/download/discourse_method_librivox/discourse_on_the_method_1_descartes_64kb.mp3",
               "length_ms": 1025000,
+              "readers": [
+                "stefan-schmelz"
+              ],
               "start_ms": 0,
               "title": "Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/discourse_method_librivox/discourse_on_the_method_2_descartes_64kb.mp3",
               "length_ms": 1420000,
+              "readers": [
+                "patrick"
+              ],
               "start_ms": 1025000,
               "title": "Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/discourse_method_librivox/discourse_on_the_method_3_descartes_64kb.mp3",
               "length_ms": 1188000,
+              "readers": [
+                "rainer"
+              ],
               "start_ms": 2445000,
               "title": "Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/discourse_method_librivox/discourse_on_the_method_4_descartes_64kb.mp3",
               "length_ms": 1186000,
+              "readers": [
+                "gesine"
+              ],
               "start_ms": 3633000,
               "title": "Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/discourse_method_librivox/discourse_on_the_method_5_descartes_64kb.mp3",
               "length_ms": 2113000,
+              "readers": [
+                "deadwhitemales"
+              ],
               "start_ms": 4819000,
               "title": "Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/discourse_method_librivox/discourse_on_the_method_6_descartes_64kb.mp3",
               "length_ms": 2060000,
+              "readers": [
+                "richard-grove"
+              ],
               "start_ms": 6932000,
               "title": "Chapter 6"
             }
@@ -3898,7 +3977,11 @@
           "cover_url": "https://archive.org/download/discourse_method_librivox/Discourse_on_Method.jpg",
           "id": "stefan-schmelz",
           "language": "en",
+          "librivox_genres": [
+            "Medieval"
+          ],
           "librivox_id": 269,
+          "librivox_title": "Discourse on the Method of Rightly Conducting One’s Reason and of Seeking Truth",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/discourse-on-the-method-by-rene-descartes/",
@@ -4388,162 +4471,189 @@
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_00_huxley_64kb.mp3",
               "length_ms": 737000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_01_huxley_64kb.mp3",
               "length_ms": 2044000,
+              "section_number": 1,
               "start_ms": 737000,
               "title": "On a Piece of Chalk Pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_02_huxley_64kb.mp3",
               "length_ms": 2087000,
+              "section_number": 2,
               "start_ms": 2781000,
               "title": "On a Piece of Chalk, Pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_03_huxley_64kb.mp3",
               "length_ms": 2010000,
+              "section_number": 3,
               "start_ms": 4868000,
               "title": "The Problems of the Deep Sea Pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_04_huxley_64kb.mp3",
               "length_ms": 1896000,
+              "section_number": 4,
               "start_ms": 6878000,
               "title": "The Problems of the Deep Sea Pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_05_huxley_64kb.mp3",
               "length_ms": 1854000,
+              "section_number": 5,
               "start_ms": 8774000,
               "title": "On Some of the Results of the Expedition of H.M.S. Challenger Pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_06_huxley_64kb.mp3",
               "length_ms": 1693000,
+              "section_number": 6,
               "start_ms": 10628000,
               "title": "On Some of the Results of the Expedition of H.M.S. Challenger Pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_07_huxley_64kb.mp3",
               "length_ms": 2023000,
+              "section_number": 7,
               "start_ms": 12321000,
               "title": "On Some of the Results of the Expedition of H.M.S. Challenger Pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_08_huxley_64kb.mp3",
               "length_ms": 1576000,
+              "section_number": 8,
               "start_ms": 14344000,
               "title": "Yeast Pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_09_huxley_64kb.mp3",
               "length_ms": 1712000,
+              "section_number": 9,
               "start_ms": 15920000,
               "title": "Yeast Pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_10_huxley_64kb.mp3",
               "length_ms": 1107000,
+              "section_number": 10,
               "start_ms": 17632000,
               "title": "On the Formation of Coal Pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_11_huxley_64kb.mp3",
               "length_ms": 1766000,
+              "section_number": 11,
               "start_ms": 18739000,
               "title": "On the Formation of Coal Pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_12_huxley_64kb.mp3",
               "length_ms": 1786000,
+              "section_number": 12,
               "start_ms": 20505000,
               "title": "On the Border Territory Between the Animal and the Vegetable Kingdoms Pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_13_huxley_64kb.mp3",
               "length_ms": 2177000,
+              "section_number": 13,
               "start_ms": 22291000,
               "title": "On the Border Territory Between the Animal and the Vegetable Kingdoms Pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_14_huxley_64kb.mp3",
               "length_ms": 1571000,
+              "section_number": 14,
               "start_ms": 24468000,
               "title": "A Lobster or the Study of Zoology Pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_15_huxley_64kb.mp3",
               "length_ms": 2157000,
+              "section_number": 15,
               "start_ms": 26039000,
               "title": "A Lobster or the Study of Zoology Pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_16_huxley_64kb.mp3",
               "length_ms": 1512000,
+              "section_number": 16,
               "start_ms": 28196000,
               "title": "Biogenesis and Abiogenesis Pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_17_huxley_64kb.mp3",
               "length_ms": 1388000,
+              "section_number": 17,
               "start_ms": 29708000,
               "title": "Biogenesis and Abiogenesis Pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_18_huxley_64kb.mp3",
               "length_ms": 1639000,
+              "section_number": 18,
               "start_ms": 31096000,
               "title": "Biogenesis and Abiogenisis Pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_19_huxley_64kb.mp3",
               "length_ms": 1788000,
+              "section_number": 19,
               "start_ms": 32735000,
               "title": "Geological Contemporaneity and Persistent Types of Life Pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_20_huxley_64kb.mp3",
               "length_ms": 1919000,
+              "section_number": 20,
               "start_ms": 34523000,
               "title": "Geological Contemporaneity and Persistent Types of Life Pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_21_huxley_64kb.mp3",
               "length_ms": 2003000,
+              "section_number": 21,
               "start_ms": 36442000,
               "title": "Geological Reform Pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_22_huxley_64kb.mp3",
               "length_ms": 1805000,
+              "section_number": 22,
               "start_ms": 38445000,
               "title": "Geological Reform Pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_23_huxley_64kb.mp3",
               "length_ms": 1539000,
+              "section_number": 23,
               "start_ms": 40250000,
               "title": "Palaeontology and the Doctrine of Evolution Pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_24_huxley_64kb.mp3",
               "length_ms": 1364000,
+              "section_number": 24,
               "start_ms": 41789000,
               "title": "Palaeontology and the Doctrine of Evolution Pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_25_huxley_64kb.mp3",
               "length_ms": 1097000,
+              "section_number": 25,
               "start_ms": 43153000,
               "title": "Palaeontology and the Doctrine of Evolution Pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_biological_geological_1604_librivox/discoursesbiologicalgeological_26_huxley_64kb.mp3",
               "length_ms": 1530000,
+              "section_number": 26,
               "start_ms": 44250000,
               "title": "Palaentology and the Doctrine of Evolution Pt 4"
             }
@@ -4552,7 +4662,12 @@
           "cover_url": "https://archive.org/download/librivoxcCDCoverArt35/discourses_1605.jpg",
           "id": "barbara-baker",
           "language": "en",
+          "librivox_genres": [
+            "Earth Sciences",
+            "Life Sciences"
+          ],
           "librivox_id": 8161,
+          "librivox_title": "Discourses: Biological and Geological",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/discourses-biological-geological-by-thomas-henry-huxley/",
@@ -4671,585 +4786,692 @@
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_00_epictetus_64kb.mp3",
               "length_ms": 889000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction and Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_01_epictetus_64kb.mp3",
               "length_ms": 530000,
+              "section_number": 1,
               "start_ms": 889000,
               "title": "Book I      I. Of the Things Which Are in Our Power, and Not in Our Power"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_02_epictetus_64kb.mp3",
               "length_ms": 560000,
+              "section_number": 2,
               "start_ms": 1419000,
               "title": "II. How a Man on Every Occasion Can Maintain His Proper Character"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_03_epictetus_64kb.mp3",
               "length_ms": 167000,
+              "section_number": 3,
               "start_ms": 1979000,
               "title": "III. How a Man Should Proceed from the Principles of God Being the Father of All Men to the Rest"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_04_epictetus_64kb.mp3",
               "length_ms": 550000,
+              "section_number": 4,
               "start_ms": 2146000,
               "title": "IV. Of Progress or Improvement"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_05_epictetus_64kb.mp3",
               "length_ms": 181000,
+              "section_number": 5,
               "start_ms": 2696000,
               "title": "V. Against the Academics"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_06_epictetus_64kb.mp3",
               "length_ms": 660000,
+              "section_number": 6,
               "start_ms": 2877000,
               "title": "VI. Of Providence"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_07_epictetus_64kb.mp3",
               "length_ms": 547000,
+              "section_number": 7,
               "start_ms": 3537000,
               "title": "VII. Of the Use of Sophistical Arguments and Hypothetical and the Like"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_08_epictetus_64kb.mp3",
               "length_ms": 259000,
+              "section_number": 8,
               "start_ms": 4084000,
               "title": "VIII. That the Faculties Are Not Safe to the Uninstructed"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_09_epictetus_64kb.mp3",
               "length_ms": 599000,
+              "section_number": 9,
               "start_ms": 4343000,
               "title": "IX. How from the Fact That We Are Akin to God a Man May Proceed to the Consequences"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_10_epictetus_64kb.mp3",
               "length_ms": 249000,
+              "section_number": 10,
               "start_ms": 4942000,
               "title": "X. Against Those Who Eagerly Seek Preferment at Rome"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_11_epictetus_64kb.mp3",
               "length_ms": 658000,
+              "section_number": 11,
               "start_ms": 5191000,
               "title": "XI. Of Natural Affection"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_12_epictetus_64kb.mp3",
               "length_ms": 566000,
+              "section_number": 12,
               "start_ms": 5849000,
               "title": "XII. Of Contentment"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_13_epictetus_64kb.mp3",
               "length_ms": 129000,
+              "section_number": 13,
               "start_ms": 6415000,
               "title": "XIII. How Everything May Be Done Acceptably to the Gods"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_14_epictetus_64kb.mp3",
               "length_ms": 315000,
+              "section_number": 14,
               "start_ms": 6544000,
               "title": "XIV. That the Deity Oversees All Things"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_15_epictetus_64kb.mp3",
               "length_ms": 158000,
+              "section_number": 15,
               "start_ms": 6859000,
               "title": "XV. What Philosophy Promises"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_16_epictetus_64kb.mp3",
               "length_ms": 317000,
+              "section_number": 16,
               "start_ms": 7017000,
               "title": "XVI. Of Providence"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_17_epictetus_64kb.mp3",
               "length_ms": 450000,
+              "section_number": 17,
               "start_ms": 7334000,
               "title": "XVII. That the Logical Art is Necessary"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_18_epictetus_64kb.mp3",
               "length_ms": 439000,
+              "section_number": 18,
               "start_ms": 7784000,
               "title": "XVIII. That We Ought Not to Be Angry with the Errors (Faults) of Others"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_19_epictetus_64kb.mp3",
               "length_ms": 474000,
+              "section_number": 19,
               "start_ms": 8223000,
               "title": "XIX. How We Should Behave to Tyrants"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_20_epictetus_64kb.mp3",
               "length_ms": 306000,
+              "section_number": 20,
               "start_ms": 8697000,
               "title": "XX. About Reason, How I Contemplates Itself"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_21_epictetus_64kb.mp3",
               "length_ms": 80000,
+              "section_number": 21,
               "start_ms": 9003000,
               "title": "XXI. Against Those Who Wish to Be Admired"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_22_epictetus_64kb.mp3",
               "length_ms": 352000,
+              "section_number": 22,
               "start_ms": 9083000,
               "title": "XXII. On Precognition"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_23_epictetus_64kb.mp3",
               "length_ms": 150000,
+              "section_number": 23,
               "start_ms": 9435000,
               "title": "XXIII. Against Epicurus"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_24_epictetus_64kb.mp3",
               "length_ms": 313000,
+              "section_number": 24,
               "start_ms": 9585000,
               "title": "XXIV. How We Should Struggle with Circumstances"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_25_epictetus_64kb.mp3",
               "length_ms": 493000,
+              "section_number": 25,
               "start_ms": 9898000,
               "title": "XXV. On the Same"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_26_epictetus_64kb.mp3",
               "length_ms": 324000,
+              "section_number": 26,
               "start_ms": 10391000,
               "title": "XXVI. What is the Law of Life"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_27_epictetus_64kb.mp3",
               "length_ms": 373000,
+              "section_number": 27,
               "start_ms": 10715000,
               "title": "XXVII.  In How Many Ways Appearances Exist, and What Aids We Should Provide Against Them"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_28_epictetus_64kb.mp3",
               "length_ms": 567000,
+              "section_number": 28,
               "start_ms": 11088000,
               "title": "XXVIII. That We Ought Not to Be Angry with Men; and What are the Small and the Great Things Among Men"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_29_epictetus_64kb.mp3",
               "length_ms": 1086000,
+              "section_number": 29,
               "start_ms": 11655000,
               "title": "XXIX. On Constancy (Or Firmness)"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_30_epictetus_64kb.mp3",
               "length_ms": 143000,
+              "section_number": 30,
               "start_ms": 12741000,
               "title": "XXX. What We Ought to Have Ready in Difficult Circumstances"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_31_epictetus_64kb.mp3",
               "length_ms": 735000,
+              "section_number": 31,
               "start_ms": 12884000,
               "title": "Book II I. That Confidence (Courage) is Not Inconsistent with Caution"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_32_epictetus_64kb.mp3",
               "length_ms": 369000,
+              "section_number": 32,
               "start_ms": 13619000,
               "title": "II. Of Tranquility (Freedom from Perturbation)"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_33_epictetus_64kb.mp3",
               "length_ms": 128000,
+              "section_number": 33,
               "start_ms": 13988000,
               "title": "III. To Those Who Recommend Persons to Philosophers"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_34_epictetus_64kb.mp3",
               "length_ms": 234000,
+              "section_number": 34,
               "start_ms": 14116000,
               "title": "IV. Against a Person Who Had Once Been Detected in Adultery"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_35_epictetus_64kb.mp3",
               "length_ms": 525000,
+              "section_number": 35,
               "start_ms": 14350000,
               "title": "V. How Magnanimity Is Consistent with Care"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_36_epictetus_64kb.mp3",
               "length_ms": 411000,
+              "section_number": 36,
               "start_ms": 14875000,
               "title": "VI. Of Indifference"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_37_epictetus_64kb.mp3",
               "length_ms": 250000,
+              "section_number": 37,
               "start_ms": 15286000,
               "title": "VII. How We Ought to Use Divination"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_38_epictetus_64kb.mp3",
               "length_ms": 546000,
+              "section_number": 38,
               "start_ms": 15536000,
               "title": "VIII. What Is the Nature ('H Ουσία) Of the Good"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_39_epictetus_64kb.mp3",
               "length_ms": 428000,
+              "section_number": 39,
               "start_ms": 16082000,
               "title": "IX. That When We Cannot Fulfil That Which the Character of a Man Promises, We Assume the Character of a Philosopher"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_40_epictetus_64kb.mp3",
               "length_ms": 520000,
+              "section_number": 40,
               "start_ms": 16510000,
               "title": "X. How We May Discover the Duties of Life from Names"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_41_epictetus_64kb.mp3",
               "length_ms": 431000,
+              "section_number": 41,
               "start_ms": 17030000,
               "title": "XI. What the Beginning of Philosophy Is"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_42_epictetus_64kb.mp3",
               "length_ms": 411000,
+              "section_number": 42,
               "start_ms": 17461000,
               "title": "XII. Of Disputation or Discussion"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_43_epictetus_64kb.mp3",
               "length_ms": 502000,
+              "section_number": 43,
               "start_ms": 17872000,
               "title": "XIII. On Anxiety (Solicitude)"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_44_epictetus_64kb.mp3",
               "length_ms": 521000,
+              "section_number": 44,
               "start_ms": 18374000,
               "title": "XIV. To Naso"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_45_epictetus_64kb.mp3",
               "length_ms": 357000,
+              "section_number": 45,
               "start_ms": 18895000,
               "title": "XV. To or Against Those Who Obstinately Persist in What They Have Determined"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_46_epictetus_64kb.mp3",
               "length_ms": 897000,
+              "section_number": 46,
               "start_ms": 19252000,
               "title": "XVI. That We Do Not Strive to Use Our Opinions About Good and Evil"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_47_epictetus_64kb.mp3",
               "length_ms": 724000,
+              "section_number": 47,
               "start_ms": 20149000,
               "title": "XVII. How We Must Adapt Preconceptions to Particular Cases"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_48_epictetus_64kb.mp3",
               "length_ms": 495000,
+              "section_number": 48,
               "start_ms": 20873000,
               "title": "XVIII. How We Should Struggle Against Appearances"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_49_epictetus_64kb.mp3",
               "length_ms": 670000,
+              "section_number": 49,
               "start_ms": 21368000,
               "title": "XIX. Against Those Who Embrace Philosophical Opinions Only in Words"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_50_epictetus_64kb.mp3",
               "length_ms": 751000,
+              "section_number": 50,
               "start_ms": 22038000,
               "title": "XX. Against the Epicureans and the Academics"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_51_epictetus_64kb.mp3",
               "length_ms": 434000,
+              "section_number": 51,
               "start_ms": 22789000,
               "title": "XXI.  Of Inconsistency"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_52_epictetus_64kb.mp3",
               "length_ms": 763000,
+              "section_number": 52,
               "start_ms": 23223000,
               "title": "XXII. On Friendship"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_53_epictetus_64kb.mp3",
               "length_ms": 884000,
+              "section_number": 53,
               "start_ms": 23986000,
               "title": "XXIII. On the Power of Speaking"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_54_epictetus_64kb.mp3",
               "length_ms": 568000,
+              "section_number": 54,
               "start_ms": 24870000,
               "title": "XXIV. To (Or Against) a Person Who Was One of Those Who Were Not Valued (Esteemed by Him)"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_55_epictetus_64kb.mp3",
               "length_ms": 65000,
+              "section_number": 55,
               "start_ms": 25438000,
               "title": "XXV. That Logic is Necessary"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_56_epictetus_64kb.mp3",
               "length_ms": 171000,
+              "section_number": 56,
               "start_ms": 25503000,
               "title": "XXVI. What Is the Property of Error"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_57_epictetus_64kb.mp3",
               "length_ms": 839000,
+              "section_number": 57,
               "start_ms": 25674000,
               "title": "Book III I. Of Finery in Dress"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_58_epictetus_64kb.mp3",
               "length_ms": 391000,
+              "section_number": 58,
               "start_ms": 26513000,
               "title": "II. In What a Man Ought to Be Exercised Who Has Made Proficiency and That We Neglect the Chief Things"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_59_epictetus_64kb.mp3",
               "length_ms": 434000,
+              "section_number": 59,
               "start_ms": 26904000,
               "title": "III. What Is the Matter on Which a Good Man Should be Employed, and in What We Ought Chiefly to Practice Ourselves"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_60_epictetus_64kb.mp3",
               "length_ms": 247000,
+              "section_number": 60,
               "start_ms": 27338000,
               "title": "IV. Against a Person Who Showed His Partisanship in an Unseemly Way in a Theatre"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_61_epictetus_64kb.mp3",
               "length_ms": 330000,
+              "section_number": 61,
               "start_ms": 27585000,
               "title": "V. Against Those Who on Account of Sickness Go Away Home"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_62_epictetus_64kb.mp3",
               "length_ms": 207000,
+              "section_number": 62,
               "start_ms": 27915000,
               "title": "VI. Miscellaneous"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_63_epictetus_64kb.mp3",
               "length_ms": 633000,
+              "section_number": 63,
               "start_ms": 28122000,
               "title": "VII. To the Administrator of the Free Cities Who Was an Epicurean"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_64_epictetus_64kb.mp3",
               "length_ms": 179000,
+              "section_number": 64,
               "start_ms": 28755000,
               "title": "VIII. How We Must Exercise Ourselves Against Appearances (Φαντασίασ)"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_65_epictetus_64kb.mp3",
               "length_ms": 448000,
+              "section_number": 65,
               "start_ms": 28934000,
               "title": "IX. To A Certain Rhetorician Who Was Going Up to Rome on a Suit"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_66_epictetus_64kb.mp3",
               "length_ms": 402000,
+              "section_number": 66,
               "start_ms": 29382000,
               "title": "X. In What Manner We Ought to Bear Sickness"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_67_epictetus_64kb.mp3",
               "length_ms": 99000,
+              "section_number": 67,
               "start_ms": 29784000,
               "title": "XI. Certain Misceallaneous Matters"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_68_epictetus_64kb.mp3",
               "length_ms": 375000,
+              "section_number": 68,
               "start_ms": 29883000,
               "title": "XII. About Exercise"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_69_epictetus_64kb.mp3",
               "length_ms": 483000,
+              "section_number": 69,
               "start_ms": 30258000,
               "title": "XIII. What Solitude Is, and What Kind of Person a Solitary Man Is"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_70_epictetus_64kb.mp3",
               "length_ms": 201000,
+              "section_number": 70,
               "start_ms": 30741000,
               "title": "XIV. Certain Miscellaneous Matters"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_71_epictetus_64kb.mp3",
               "length_ms": 308000,
+              "section_number": 71,
               "start_ms": 30942000,
               "title": "XV. That We Ought to Proceed with Circumspection to Everything"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_72_epictetus_64kb.mp3",
               "length_ms": 274000,
+              "section_number": 72,
               "start_ms": 31250000,
               "title": "XVI. That We Ought with Caution to Enter into Familiar Intercourse with Men"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_73_epictetus_64kb.mp3",
               "length_ms": 156000,
+              "section_number": 73,
               "start_ms": 31524000,
               "title": "XVII. On Providence"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_74_epictetus_64kb.mp3",
               "length_ms": 166000,
+              "section_number": 74,
               "start_ms": 31680000,
               "title": "XVIII. That We Ought Not to Be Disturbed by Any News"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_75_epictetus_64kb.mp3",
               "length_ms": 132000,
+              "section_number": 75,
               "start_ms": 31846000,
               "title": "XIX. What is the Condition of a Common Kind of Man and of a Philosopher"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_76_epictetus_64kb.mp3",
               "length_ms": 338000,
+              "section_number": 76,
               "start_ms": 31978000,
               "title": "XX. That We Can Derive Advantage from All External Things"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_77_epictetus_64kb.mp3",
               "length_ms": 442000,
+              "section_number": 77,
               "start_ms": 32316000,
               "title": "XXI. Against Those Who Readily Come to the Profession of Sophists"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_78_epictetus_64kb.mp3",
               "length_ms": 1974000,
+              "section_number": 78,
               "start_ms": 32758000,
               "title": "XXII. About Cynism"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_79_epictetus_64kb.mp3",
               "length_ms": 787000,
+              "section_number": 79,
               "start_ms": 34732000,
               "title": "XXIII. To Those Who Read and Discuss for the Sake of Ostentation"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_80_epictetus_64kb.mp3",
               "length_ms": 2326000,
+              "section_number": 80,
               "start_ms": 35519000,
               "title": "XXIV. That We Ought Not to Be Moved by a Desire of Those Things Which Are Not in Our Power"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_81_epictetus_64kb.mp3",
               "length_ms": 224000,
+              "section_number": 81,
               "start_ms": 37845000,
               "title": "XXV. To Those Who Fall Off (Desist) from Their Purpose"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_82_epictetus_64kb.mp3",
               "length_ms": 796000,
+              "section_number": 82,
               "start_ms": 38069000,
               "title": "XXVI. To Those Who Fear Want"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_83_epictetus_64kb.mp3",
               "length_ms": 3512000,
+              "section_number": 83,
               "start_ms": 38865000,
               "title": "Book IV I. About Freedom"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_84_epictetus_64kb.mp3",
               "length_ms": 217000,
+              "section_number": 84,
               "start_ms": 42377000,
               "title": "II. On Familiar Intimacy"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_85_epictetus_64kb.mp3",
               "length_ms": 243000,
+              "section_number": 85,
               "start_ms": 42594000,
               "title": "III. What Things We Should Exchange for Other Things"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_86_epictetus_64kb.mp3",
               "length_ms": 1087000,
+              "section_number": 86,
               "start_ms": 42837000,
               "title": "IV. To Those Who Are Desirous of Passing Life in Tranquility"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_87_epictetus_64kb.mp3",
               "length_ms": 796000,
+              "section_number": 87,
               "start_ms": 43924000,
               "title": "V. Against the Quarrelsome and Ferocious"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_88_epictetus_64kb.mp3",
               "length_ms": 842000,
+              "section_number": 88,
               "start_ms": 44720000,
               "title": "VI. Against Those Who Lament Over Being Pitied"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_89_epictetus_64kb.mp3",
               "length_ms": 916000,
+              "section_number": 89,
               "start_ms": 45562000,
               "title": "VII. On Freedom From Fear"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_90_epictetus_64kb.mp3",
               "length_ms": 894000,
+              "section_number": 90,
               "start_ms": 46478000,
               "title": "VIII. Against Those Who Hastily Rush Into the Use of the Philosophic Dress"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_91_epictetus_64kb.mp3",
               "length_ms": 381000,
+              "section_number": 91,
               "start_ms": 47372000,
               "title": "IX. To a Person Who Had Been Changed to a Character of Shamelessness"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_92_epictetus_64kb.mp3",
               "length_ms": 749000,
+              "section_number": 92,
               "start_ms": 47753000,
               "title": "X. What Things We Ought to Despise, and What Things We Ought to Value"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_93_epictetus_64kb.mp3",
               "length_ms": 786000,
+              "section_number": 93,
               "start_ms": 48502000,
               "title": "XI. About Purity (Cleanliness)"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_94_epictetus_64kb.mp3",
               "length_ms": 438000,
+              "section_number": 94,
               "start_ms": 49288000,
               "title": "XII. On Attention"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_of_epictetus_2211_librivox/discourses_95_epictetus_64kb.mp3",
               "length_ms": 502000,
+              "section_number": 95,
               "start_ms": 49726000,
               "title": "XIII. Against or to Those Who Readily Tell Their Own Affairs"
             }
           ],
           "copyright_year": 1877,
           "cover_url": "https://archive.org/download/discourses_of_epictetus_2211_librivox/discoursesepictetus_2211.jpg",
+          "credits": [
+            {
+              "person": "george-long",
+              "role": "translator"
+            }
+          ],
           "id": "christine-rottger",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Ancient"
+          ],
           "librivox_id": 16717,
+          "librivox_title": "Discourses of Epictetus",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/discourses-of-epictetus-by-epictetus/",
@@ -5338,9 +5560,20 @@
           ],
           "copyright_year": 1779,
           "cover_url": "https://archive.org/download/discoursesonasoberandtemperatelife_2506_librivox/discourses_2506.jpg",
+          "credits": [
+            {
+              "person": "unknown",
+              "role": "translator"
+            }
+          ],
           "id": "ted-perkins",
           "language": "en",
+          "librivox_genres": [
+            "Health & Fitness",
+            "Self-Help"
+          ],
           "librivox_id": 20660,
+          "librivox_title": "Discourses on a Sober and Temperate Life",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/discourses-on-a-sober-and-temperate-life-by-luigi-cornaro/",
@@ -5391,54 +5624,63 @@
             {
               "audio_url": "https://www.archive.org/download/christianrevelation_modernastronomy_2210_librivox/revelationastronomy_00_chalmers_64kb.mp3",
               "length_ms": 461000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/christianrevelation_modernastronomy_2210_librivox/revelationastronomy_01_chalmers_64kb.mp3",
               "length_ms": 2330000,
+              "section_number": 1,
               "start_ms": 461000,
               "title": "A Sketch of the Modern Astronomy"
             },
             {
               "audio_url": "https://www.archive.org/download/christianrevelation_modernastronomy_2210_librivox/revelationastronomy_02_chalmers_64kb.mp3",
               "length_ms": 2220000,
+              "section_number": 2,
               "start_ms": 2791000,
               "title": "The Modesty of True Science"
             },
             {
               "audio_url": "https://www.archive.org/download/christianrevelation_modernastronomy_2210_librivox/revelationastronomy_03_chalmers_64kb.mp3",
               "length_ms": 1963000,
+              "section_number": 3,
               "start_ms": 5011000,
               "title": "On the Extent of the Divine Condescension"
             },
             {
               "audio_url": "https://www.archive.org/download/christianrevelation_modernastronomy_2210_librivox/revelationastronomy_04_chalmers_64kb.mp3",
               "length_ms": 2136000,
+              "section_number": 4,
               "start_ms": 6974000,
               "title": "On the Knowledge of Man's Moral History in the Distant Places of Creation"
             },
             {
               "audio_url": "https://www.archive.org/download/christianrevelation_modernastronomy_2210_librivox/revelationastronomy_05_chalmers_64kb.mp3",
               "length_ms": 1844000,
+              "section_number": 5,
               "start_ms": 9110000,
               "title": "On the Sympathy that is felt for Man in the Distant Places of Creation"
             },
             {
               "audio_url": "https://www.archive.org/download/christianrevelation_modernastronomy_2210_librivox/revelationastronomy_06_chalmers_64kb.mp3",
               "length_ms": 1719000,
+              "section_number": 6,
               "start_ms": 10954000,
               "title": "On the Contest for an Ascendancy, amongst the Higher Orders of Intelligence"
             },
             {
               "audio_url": "https://www.archive.org/download/christianrevelation_modernastronomy_2210_librivox/revelationastronomy_07_chalmers_64kb.mp3",
               "length_ms": 2601000,
+              "section_number": 7,
               "start_ms": 12673000,
               "title": "On the Slender Influence of Mere Taste and Sensibility in Matters of Religion"
             },
             {
               "audio_url": "https://www.archive.org/download/christianrevelation_modernastronomy_2210_librivox/revelationastronomy_08_chalmers_64kb.mp3",
               "length_ms": 1781000,
+              "section_number": 8,
               "start_ms": 15274000,
               "title": "Appendix"
             }
@@ -5447,7 +5689,11 @@
           "cover_url": "https://archive.org/download/christianrevelation_modernastronomy_2210_librivox/discoursesastronomy_2218.jpg",
           "id": "inthedesert",
           "language": "en",
+          "librivox_genres": [
+            "Christianity - Other"
+          ],
           "librivox_id": 18325,
+          "librivox_title": "Discourses on the Christian Revelation Viewed in Connection with the Modern Astronomy",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/discourses-on-the-christian-revelation-by-thomas-chalmers/",
@@ -5506,375 +5752,630 @@
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_00_machiavelli_64kb.mp3",
               "length_ms": 512000,
+              "readers": [
+                "pamela-nagami"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_01_machiavelli_64kb.mp3",
               "length_ms": 670000,
+              "readers": [
+                "dave-gillespie"
+              ],
+              "section_number": 1,
               "start_ms": 512000,
               "title": "CHAPTER I.Of the Beginnings of Cities in general, and in particular of that of Rome"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_02_machiavelli_64kb.mp3",
               "length_ms": 1028000,
+              "readers": [
+                "dave-gillespie"
+              ],
+              "section_number": 2,
               "start_ms": 1182000,
               "title": "CHAPTER II. Of the various kinds of Government; and to which of them the Roman Commonwealth belonged."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_03_machiavelli_64kb.mp3",
               "length_ms": 224000,
+              "readers": [
+                "dave-gillespie"
+              ],
+              "section_number": 3,
               "start_ms": 2210000,
               "title": "CHAPTER III. Of the Accidents which led in Rome to the creation of Tribunes of the People; whereby the Republic was made more perfect."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_04_machiavelli_64kb.mp3",
               "length_ms": 352000,
+              "readers": [
+                "dave-gillespie"
+              ],
+              "section_number": 4,
               "start_ms": 2434000,
               "title": "CHAPTER IV. That the Dissensions between the Senate and Commons of Rome, made Rome free and powerful."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_05_machiavelli_64kb.mp3",
               "length_ms": 465000,
+              "readers": [
+                "dave-gillespie"
+              ],
+              "section_number": 5,
               "start_ms": 2786000,
               "title": "CHAPTER V. Whether the Guardianship of public Freedom is safer in the hands of the Commons or of the Nobles; and whether those who seek to acquire Power or they who seek to maintain it are the greater cause of Commotions."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_06_machiavelli_64kb.mp3",
               "length_ms": 885000,
+              "readers": [
+                "dave-gillespie"
+              ],
+              "section_number": 6,
               "start_ms": 3251000,
               "title": "CHAPTER VI. Whether it was possible in Rome to contrive such a Government as would have composed the Differences between the Commons and the Senate."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_07_machiavelli_64kb.mp3",
               "length_ms": 553000,
+              "readers": [
+                "dave-gillespie"
+              ],
+              "section_number": 7,
               "start_ms": 4136000,
               "title": "CHAPTER VII. That to preserve Liberty in a State there must exist the Right to accuse."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_08_machiavelli_64kb.mp3",
               "length_ms": 506000,
+              "readers": [
+                "dave-gillespie"
+              ],
+              "section_number": 8,
               "start_ms": 4689000,
               "title": "CHAPTER VIII. That Calumny is as hurtful in a Commonwealth as the power to accuse is useful."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_09_machiavelli_64kb.mp3",
               "length_ms": 482000,
+              "readers": [
+                "dave-gillespie"
+              ],
+              "section_number": 9,
               "start_ms": 5195000,
               "title": "CHAPTER IX. That to give new Institutions to a Commonwealth, or to reconstruct old Institutions on an entirely new basis, must be the work of one Man."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_10_machiavelli_64kb.mp3",
               "length_ms": 621000,
+              "readers": [
+                "dave-gillespie"
+              ],
+              "section_number": 10,
               "start_ms": 5677000,
               "title": "CHAPTER X. That in proportion as the Founder of a Kingdom or Commonwealth merits Praise, he who founds a Tyranny deserves Blame."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_11_machiavelli_64kb.mp3",
               "length_ms": 430000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 11,
               "start_ms": 6298000,
               "title": "CHAPTER XI. Of the Religion of the Romans."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_12_machiavelli_64kb.mp3",
               "length_ms": 393000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 12,
               "start_ms": 6728000,
               "title": "CHAPTER XII. That it is of much moment to make account of Religion; and that Italy, through the Roman Church, being wanting therein, has been ruined."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_13_machiavelli_64kb.mp3",
               "length_ms": 311000,
+              "readers": [
+                "brad-murphy"
+              ],
+              "section_number": 13,
               "start_ms": 7121000,
               "title": "CHAPTER XIII. Of the use the Romans made of Religion in giving Institutions to their City, in carrying out their Enterprises, and in quelling Tumults."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_14_machiavelli_64kb.mp3",
               "length_ms": 255000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 14,
               "start_ms": 7432000,
               "title": "CHAPTER XIV. That the Romans interpreted the Auspices to meet the occasion; and made a prudent show of observing the Rites of Religion even when forced to disregard them; and any who rashly slighted Religion they punished."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_15_machiavelli_64kb.mp3",
               "length_ms": 244000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 15,
               "start_ms": 7687000,
               "title": "CHAPTER XV. How the Samnites, as a last resource in their broken Fortunes, had recourse to Religion."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_16_machiavelli_64kb.mp3",
               "length_ms": 543000,
+              "readers": [
+                "ciufi-galeazzi"
+              ],
+              "section_number": 16,
               "start_ms": 7931000,
               "title": "CHAPTER XVI. That a People accustomed to live under a Prince, if by any accident it become free, can hardly preserve that Freedom."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_17_machiavelli_64kb.mp3",
               "length_ms": 361000,
+              "readers": [
+                "ciufi-galeazzi"
+              ],
+              "section_number": 17,
               "start_ms": 8474000,
               "title": "CHAPTER XVII. That a corrupt People obtaining Freedom can hardly preserve it."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_18_machiavelli_64kb.mp3",
               "length_ms": 544000,
+              "readers": [
+                "ciufi-galeazzi"
+              ],
+              "section_number": 18,
               "start_ms": 8835000,
               "title": "CHAPTER XVIII. How a Free Government existing in a corrupt City may be preserved, or not existing may be created."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_19_machiavelli_64kb.mp3",
               "length_ms": 293000,
+              "readers": [
+                "eva-staes"
+              ],
+              "section_number": 19,
               "start_ms": 9379000,
               "title": "CHAPTER XIX. After a strong Prince a weak Prince may maintain himself: but after one weak Prince no Kingdom can stand a second."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_20_machiavelli_64kb.mp3",
               "length_ms": 118000,
+              "readers": [
+                "donavan-olsen"
+              ],
+              "section_number": 20,
               "start_ms": 9672000,
               "title": "CHAPTER XX. That the consecutive Reigns of two valiant Princes produce great results: and that well-ordered Commonwealths are assured of a Succession of valiant Rulers by whom their Power and Growth are rapidly extended."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_21_machiavelli_64kb.mp3",
               "length_ms": 216000,
+              "readers": [
+                "donavan-olsen"
+              ],
+              "section_number": 21,
               "start_ms": 9790000,
               "title": "CHAPTER XXI. That it is a great reproach to a Prince or to a Commonwealth to be without a national Army."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_22_machiavelli_64kb.mp3",
               "length_ms": 154000,
+              "readers": [
+                "donavan-olsen"
+              ],
+              "section_number": 22,
               "start_ms": 10006000,
               "title": "CHAPTER XXII. What is to be noted in the combat of the three Roman Horatii and the three Alban Curiatii."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_23_machiavelli_64kb.mp3",
               "length_ms": 326000,
+              "readers": [
+                "donavan-olsen"
+              ],
+              "section_number": 23,
               "start_ms": 10160000,
               "title": "CHAPTER XXIII. That we should never hazard our whole Fortunes where we put not forth our entire Strength; for which reason to guard a Defile is often hurtful."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_24_machiavelli_64kb.mp3",
               "length_ms": 282000,
+              "readers": [
+                "lucretia-b"
+              ],
+              "section_number": 24,
               "start_ms": 10486000,
               "title": "CHAPTER XXIV. That well-ordered States always provide Rewards and Punishments for their Citizens; and never set off Deserts against Misdeeds."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_25_machiavelli_64kb.mp3",
               "length_ms": 218000,
+              "readers": [
+                "lucretia-b"
+              ],
+              "section_number": 25,
               "start_ms": 10768000,
               "title": "CHAPTER XXV. That he who would reform the Institutions of a free State, must retain at least the semblance of old Ways."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_26_machiavelli_64kb.mp3",
               "length_ms": 155000,
+              "readers": [
+                "ciufi-galeazzi"
+              ],
+              "section_number": 26,
               "start_ms": 10986000,
               "title": "CHAPTER XXVI. A new Prince in a City or Province of which he has taken Possession, ought to make Everything new."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_27_machiavelli_64kb.mp3",
               "length_ms": 188000,
+              "readers": [
+                "ciufi-galeazzi"
+              ],
+              "section_number": 27,
               "start_ms": 11141000,
               "title": "CHAPTER XXVII. That Men seldom know how to be wholly good or wholly bad."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_28_machiavelli_64kb.mp3",
               "length_ms": 214000,
+              "readers": [
+                "ciufi-galeazzi"
+              ],
+              "section_number": 28,
               "start_ms": 11329000,
               "title": "CHAPTER XXVIII. Whence it came that the Romans were less ungrateful to their Citizens than were the Athenians."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_29_machiavelli_64kb.mp3",
               "length_ms": 563000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 29,
               "start_ms": 11543000,
               "title": "CHAPTER XXIX. Whether a People or a Prince is the more ungrateful."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_30_machiavelli_64kb.mp3",
               "length_ms": 331000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 30,
               "start_ms": 12106000,
               "title": "CHAPTER XXX. How Princes and Commonwealths may avoid the vice of Ingratitude; and how a Captain or Citizen may escape being undone by it."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_31_machiavelli_64kb.mp3",
               "length_ms": 251000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 31,
               "start_ms": 12437000,
               "title": "CHAPTER XXXI. That the Roman Captains were never punished with extreme severity for Misconduct; and where loss resulted to the Republic merely through their Ignorance or Want of Judgment, were not punished at all."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_32_machiavelli_64kb.mp3",
               "length_ms": 173000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 32,
               "start_ms": 12688000,
               "title": "CHAPTER XXXII. That a Prince or Commonwealth should not delay conferring Benefits until they are themselves in difficulties."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_33_machiavelli_64kb.mp3",
               "length_ms": 388000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 33,
               "start_ms": 12861000,
               "title": "CHAPTER XXXIII. When a Mischief has grown up in, or against a State, it is safer to temporize with than to meet it with Violence."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_34_machiavelli_64kb.mp3",
               "length_ms": 499000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 34,
               "start_ms": 13249000,
               "title": "CHAPTER XXXIV. That the authority of the Dictator did good and not harm to the Roman Republic: and that it is not those Powers which are given by the free suffrages of the People, but those which ambitious Citizens usurp for themselves, that are pernicious to a State."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_35_machiavelli_64kb.mp3",
               "length_ms": 309000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 35,
               "start_ms": 13748000,
               "title": "CHAPTER XXXV. Why the Creation of the Decemvirate in Rome, although brought about by the free and open Suffrage of the Citizens, was hurtful to the Liberties of that Republic"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_36_machiavelli_64kb.mp3",
               "length_ms": 200000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 36,
               "start_ms": 14057000,
               "title": "CHAPTER XXXVI. That Citizens who have held the higher Offices of a Commonwealth should not disdain the lower."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_37_machiavelli_64kb.mp3",
               "length_ms": 601000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 37,
               "start_ms": 14257000,
               "title": "CHAPTER XXXVII. Of the Mischief bred in Rome by the Agrarian Law: and how it is a great source of disorder in a Commonwealth to pass a Law opposed to ancient Usage and with stringent retrospective Effect."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_38_machiavelli_64kb.mp3",
               "length_ms": 408000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 38,
               "start_ms": 14858000,
               "title": "CHAPTER XXXVIII. That weak Republics are irresolute and undecided; and that the course they may take depends more on Necessity than Choice."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_39_machiavelli_64kb.mp3",
               "length_ms": 261000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 39,
               "start_ms": 15266000,
               "title": "CHAPTER XXXIX. That often the same Accidents are seen to befall different Nations."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_40_machiavelli_64kb.mp3",
               "length_ms": 776000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 40,
               "start_ms": 15527000,
               "title": "CHAPTER XL. Of the creation of the Decemvirate in Rome, and what therein is to be noted. Wherein among other Matters is shown how the same Causes may lead to the Safety or to the Ruin of a Commonwealth."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_41_machiavelli_64kb.mp3",
               "length_ms": 132000,
+              "readers": [
+                "ann-boulais"
+              ],
+              "section_number": 41,
               "start_ms": 16303000,
               "title": "CHAPTER XLI. That it is unwise to pass at a bound from leniency to severity, or to a haughty bearing from a humble."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_42_machiavelli_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "eva-staes"
+              ],
+              "section_number": 42,
               "start_ms": 16435000,
               "title": "CHAPTER XLII. How easily Men become corrupted."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_43_machiavelli_64kb.mp3",
               "length_ms": 141000,
+              "readers": [
+                "ann-boulais"
+              ],
+              "section_number": 43,
               "start_ms": 16529000,
               "title": "CHAPTER XLIII. That Men fighting in their own Cause make good and resolute Soldiers."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_44_machiavelli_64kb.mp3",
               "length_ms": 175000,
+              "readers": [
+                "ann-boulais"
+              ],
+              "section_number": 44,
               "start_ms": 16670000,
               "title": "CHAPTER XLIV. That the Multitude is helpless without a Head: and that we should not with the same breath threaten and ask leave."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_45_machiavelli_64kb.mp3",
               "length_ms": 268000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 45,
               "start_ms": 16845000,
               "title": "CHAPTER XLV. That it is of evil example, especially in the Maker of a Law, not to observe the Law when made: and that daily to renew acts of injustice in a City is most hurtful to the Governor."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_46_machiavelli_64kb.mp3",
               "length_ms": 242000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 46,
               "start_ms": 17113000,
               "title": "CHAPTER XLVI. That Men climb from one step of Ambition to another, seeking at first to escape Injury and then to injure others."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_47_machiavelli_64kb.mp3",
               "length_ms": 474000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 47,
               "start_ms": 17355000,
               "title": "CHAPTER XLVII. That though Men deceive themselves in Generalities, in Particulars they judge truly."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_48_machiavelli_64kb.mp3",
               "length_ms": 93000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 48,
               "start_ms": 17829000,
               "title": "CHAPTER XLVIII. He who would not have an Office bestowed on some worthless or wicked Person, should contrive that it be solicited by one who is utterly worthless and wicked, or else by one who is in the highest degree noble and good."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_49_machiavelli_64kb.mp3",
               "length_ms": 350000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 49,
               "start_ms": 17922000,
               "title": "CHAPTER XLIX. That if Cities which, like Rome, had their beginning in Freedom, have had difficulty in framing such Laws as would preserve their Freedom, Cities which at the first have been in Subjection will find this almost impossible."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_50_machiavelli_64kb.mp3",
               "length_ms": 185000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 50,
               "start_ms": 18272000,
               "title": "CHAPTER L. That neither any Council nor any Magistrate should have power to bring the Government of a City to a stay."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_51_machiavelli_64kb.mp3",
               "length_ms": 124000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 51,
               "start_ms": 18457000,
               "title": "CHAPTER LI. What a Prince or Republic does of Necessity, should seem to be done by Choice."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_52_machiavelli_64kb.mp3",
               "length_ms": 328000,
+              "readers": [
+                "hypatia"
+              ],
+              "section_number": 52,
               "start_ms": 18581000,
               "title": "CHAPTER LII. That to check the arrogance of a Citizen who is growing too powerful in a State, there is no safer Method, or less open to objection, than to forestall him in those Ways whereby he seeks to advance himself."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_53_machiavelli_64kb.mp3",
               "length_ms": 529000,
+              "readers": [
+                "hypatia"
+              ],
+              "section_number": 53,
               "start_ms": 18909000,
               "title": "CHAPTER LIII. That the People, deceived by a false show of Advantage, often desire what would be their Ruin; and that large Hopes and brave Promises easily move them."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_54_machiavelli_64kb.mp3",
               "length_ms": 180000,
+              "readers": [
+                "hypatia"
+              ],
+              "section_number": 54,
               "start_ms": 19438000,
               "title": "CHAPTER LIV. Of the boundless Authority which a great Man may use to restrain an excited Multitude."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_55_machiavelli_64kb.mp3",
               "length_ms": 624000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 55,
               "start_ms": 19618000,
               "title": "CHAPTER LV. That Government is easily carried on in a City wherein the body of the People is not corrupted: and that a Princedom is impossible where Equality prevails, and a Republic where it does not."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_56_machiavelli_64kb.mp3",
               "length_ms": 178000,
+              "readers": [
+                "hypatia"
+              ],
+              "section_number": 56,
               "start_ms": 20242000,
               "title": "CHAPTER LVI. That when great Calamities are about to befall a City or Country, Signs are seen to presage, and Seers arise who foretell them."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_57_machiavelli_64kb.mp3",
               "length_ms": 209000,
+              "readers": [
+                "eva-staes"
+              ],
+              "section_number": 57,
               "start_ms": 20420000,
               "title": "CHAPTER LVII. That the People are strong collectively, but individually weak."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_58_machiavelli_64kb.mp3",
               "length_ms": 769000,
+              "readers": [
+                "eva-staes"
+              ],
+              "section_number": 58,
               "start_ms": 20629000,
               "title": "CHAPTER LVIII. That a People is wiser and more constant than a Prince"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_59_machiavelli_64kb.mp3",
               "length_ms": 339000,
+              "readers": [
+                "hypatia"
+              ],
+              "section_number": 59,
               "start_ms": 21398000,
               "title": "CHAPTER LIX. To what Leagues or Alliances we may most trust; whether those we make with Commonwealths or those we make with Princes."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discoursesonlivy1_60_machiavelli_64kb.mp3",
               "length_ms": 223000,
+              "readers": [
+                "hypatia"
+              ],
+              "section_number": 60,
               "start_ms": 21737000,
               "title": "CHAPTER LX. That the Consulship and all the other Magistracies in Rome were given without respect to Age."
             }
           ],
           "copyright_year": 1883,
           "cover_url": "https://archive.org/download/discourses_first_decade_titus_livius_1_1902_librivox/discourses_first_decade_1903.jpg",
+          "credits": [
+            {
+              "person": "ninian-hill-thomson",
+              "role": "translator"
+            }
+          ],
           "id": "pamela-nagami",
           "language": "en",
+          "librivox_genres": [
+            "History",
+            "Political Science"
+          ],
           "librivox_id": 13444,
+          "librivox_title": "Discourses on the First Decade of Titus Livius, Book 1",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/discourses-on-the-first-decade-of-titus-livius-book-1-by-niccolo-machiavelli/",
@@ -5942,213 +6443,360 @@
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_00_machiavelli_64kb.mp3",
               "length_ms": 515000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_01_machiavelli_64kb.mp3",
               "length_ms": 530000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 1,
               "start_ms": 515000,
               "title": "CHAPTER I. Whether the Empire acquired by the Romans was more due to Valour or to Fortune"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_02_machiavelli_64kb.mp3",
               "length_ms": 891000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 2,
               "start_ms": 1045000,
               "title": "CHAPTER II. With what Nations the Romans had to contend, and how stubborn these were in defending their Freedom"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_03_machiavelli_64kb.mp3",
               "length_ms": 269000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 3,
               "start_ms": 1936000,
               "title": "CHAPTER III. That Rome became great by destroying the Cities which lay round about her, and by readily admitting strangers to the rights of Citizenship"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_04_machiavelli_64kb.mp3",
               "length_ms": 699000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 4,
               "start_ms": 2205000,
               "title": "CHAPTER IV. That Commonwealths have followed three Methods for extending their Power"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_05_machiavelli_64kb.mp3",
               "length_ms": 378000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 5,
               "start_ms": 2904000,
               "title": "CHAPTER V. That changes in Sects and Tongues, and the happening of Floods and Pestilences, obliterate the Memory of the Past."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_06_machiavelli_64kb.mp3",
               "length_ms": 388000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 6,
               "start_ms": 3282000,
               "title": "CHAPTER VI. Of the Methods followed by the Romans in making War."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_07_machiavelli_64kb.mp3",
               "length_ms": 138000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 7,
               "start_ms": 3670000,
               "title": "CHAPTER VII. Of the Quantity of Land assigned by the Romans to each Colonist."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_08_machiavelli_64kb.mp3",
               "length_ms": 620000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 8,
               "start_ms": 3808000,
               "title": "CHAPTER VIII. Why certain Nations leave their ancestral Seats and overflow the Countries of others."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_09_machiavelli_64kb.mp3",
               "length_ms": 286000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 9,
               "start_ms": 4428000,
               "title": "CHAPTER IX. Of the Causes which commonly give rise to Wars between States."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_10_machiavelli_64kb.mp3",
               "length_ms": 598000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 10,
               "start_ms": 4714000,
               "title": "CHAPTER X. That contrary to the vulgar opinion, Money is not the Sinews of War."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_11_machiavelli_64kb.mp3",
               "length_ms": 180000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 11,
               "start_ms": 5312000,
               "title": "CHAPTER XI. That it were unwise to ally yourself a Prince who has Reputation rather than Strength."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_12_machiavelli_64kb.mp3",
               "length_ms": 606000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 12,
               "start_ms": 5492000,
               "title": "CHAPTER XII. Whether when Invasion is imminent it is better to anticipate or to await it."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_13_machiavelli_64kb.mp3",
               "length_ms": 297000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 13,
               "start_ms": 6098000,
               "title": "CHAPTER XIII. That Men rise from humble to high Fortunes rather by Fraud than by Force."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_14_machiavelli_64kb.mp3",
               "length_ms": 219000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 14,
               "start_ms": 6395000,
               "title": "CHAPTER XIV. That Men often err in thinking they can subdue Pride by Humility."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_15_machiavelli_64kb.mp3",
               "length_ms": 433000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 15,
               "start_ms": 6614000,
               "title": "CHAPTER XV. That weak States are always dubious in their Resolves; and that tardy Resolves are always hurtful."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_16_machiavelli_64kb.mp3",
               "length_ms": 633000,
+              "readers": [
+                "terriblety27"
+              ],
+              "section_number": 16,
               "start_ms": 7047000,
               "title": "CHAPTER XVI. That the Soldiers of our days depart widely from the methods of ancient Warfare."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_17_machiavelli_64kb.mp3",
               "length_ms": 798000,
+              "readers": [
+                "george-allen"
+              ],
+              "section_number": 17,
               "start_ms": 7680000,
               "title": "CHAPTER XVII. What importance the Armies of the present day should allow to Artillery; and whether the commonly received opinion concerning it be just."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_18_machiavelli_64kb.mp3",
               "length_ms": 777000,
+              "readers": [
+                "rita-boutros"
+              ],
+              "section_number": 18,
               "start_ms": 8478000,
               "title": "CHAPTER XVIII. That the authority of the Romans and the example of ancient Warfare should make us hold Foot Soldiers of more account than Horse."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_19_machiavelli_64kb.mp3",
               "length_ms": 714000,
+              "readers": [
+                "rita-boutros"
+              ],
+              "section_number": 19,
               "start_ms": 9255000,
               "title": "CHAPTER XIX. That Acquisitions made by ill-governed States and such as follow not the valiant methods of the Romans, tend rather to their Ruin than to their Aggrandizement."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_20_machiavelli_64kb.mp3",
               "length_ms": 349000,
+              "readers": [
+                "rita-boutros"
+              ],
+              "section_number": 20,
               "start_ms": 9969000,
               "title": "CHAPTER XX. Of the Dangers incurred by Princes or Republics who resort to Auxiliary or Mercenary Arms."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_21_machiavelli_64kb.mp3",
               "length_ms": 344000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 21,
               "start_ms": 10318000,
               "title": "CHAPTER XXI. That Capua was the first City to which the Romans sent a Prætor; nor there, until four hundred years after they began to make War."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_22_machiavelli_64kb.mp3",
               "length_ms": 407000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 22,
               "start_ms": 10662000,
               "title": "CHAPTER XXII. That in matters of moment Men often judge amiss."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_23_machiavelli_64kb.mp3",
               "length_ms": 598000,
+              "readers": [
+                "merendo07"
+              ],
+              "section_number": 23,
               "start_ms": 11069000,
               "title": "CHAPTER XXIII. That in chastising their Subjects when circumstances required it the Romans always avoided half-measures."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_24_machiavelli_64kb.mp3",
               "length_ms": 1277000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 24,
               "start_ms": 11667000,
               "title": "CHAPTER XXIV. That, commonly, Fortresses do much more Harm than Good"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_25_machiavelli_64kb.mp3",
               "length_ms": 303000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 25,
               "start_ms": 12944000,
               "title": "CHAPTER XXV. That he who attacks a City divided against itself, must not think to get possession of it through its Divisions."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_26_machiavelli_64kb.mp3",
               "length_ms": 322000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 26,
               "start_ms": 13247000,
               "title": "CHAPTER XXVI. That Taunts and Abuse breed Hatred against him who uses them, without yielding him any Advantage."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_27_machiavelli_64kb.mp3",
               "length_ms": 532000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 27,
               "start_ms": 13569000,
               "title": "CHAPTER XXVII.That prudent Princes and Republics should be content to have obtained a Victory; for, commonly, when they are not, theft-Victory turns to Defeat."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_28_machiavelli_64kb.mp3",
               "length_ms": 319000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 28,
               "start_ms": 14101000,
               "title": "CHAPTER XXVIII. That to neglect the redress of Grievances, whether public or private, is dangerous for a Prince or Commonwealth."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_29_machiavelli_64kb.mp3",
               "length_ms": 494000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 29,
               "start_ms": 14420000,
               "title": "CHAPTER XXIX. That Fortune obscures the minds of Men when she would not have them hinder her Designs."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_30_machiavelli_64kb.mp3",
               "length_ms": 650000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 30,
               "start_ms": 14914000,
               "title": "CHAPTER XXX. That really powerful Princes and, Commonwealths do not buy Friendships with Money, but with their Valour and the Fame of their Prowess."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_31_machiavelli_64kb.mp3",
               "length_ms": 261000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 31,
               "start_ms": 15564000,
               "title": "CHAPTER XXXI. Of the Danger of trusting banished Men."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_32_machiavelli_64kb.mp3",
               "length_ms": 610000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 32,
               "start_ms": 15825000,
               "title": "CHAPTER XXXII. In how many Ways the Romans gained Possession of Towns."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_titus_livius_2_1903_librivox/discoursesonlivy2_33_machiavelli_64kb.mp3",
               "length_ms": 323000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 33,
               "start_ms": 16435000,
               "title": "CHAPTER XXXIII. That the Romans intrusted the Captains of their Armies with the fullest Powers."
             }
           ],
           "copyright_year": 1883,
           "cover_url": "https://archive.org/download/discourses_titus_livius_2_1903_librivox/discourses_first_decade2_1903.jpg",
+          "credits": [
+            {
+              "person": "ninian-hill-thomson",
+              "role": "translator"
+            }
+          ],
           "id": "merendo07",
           "language": "en",
+          "librivox_genres": [
+            "Political Science",
+            "Early Modern"
+          ],
           "librivox_id": 13680,
+          "librivox_title": "Discourses on the First Decade of Titus Livius, Book 2",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/discourses-on-the-first-decade-of-titus-livius-book-2-by-niccolo-machiavelli/",
@@ -6210,303 +6858,461 @@
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_01_machiavelli_64kb.mp3",
               "length_ms": 689000,
+              "readers": [
+                "josh-kibbey"
+              ],
               "start_ms": 0,
               "title": "CHAPTER I.—For a Sect or Commonwealth to last long, it must often be brought back to its Beginnings."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_02_machiavelli_64kb.mp3",
               "length_ms": 239000,
+              "readers": [
+                "josh-kibbey"
+              ],
               "start_ms": 689000,
               "title": "CHAPTER II.—That on occasion it is wise to feign Folly."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_03_machiavelli_64kb.mp3",
               "length_ms": 223000,
+              "readers": [
+                "josh-kibbey"
+              ],
               "start_ms": 928000,
               "title": "CHAPTER III.—That to preserve a newly acquired Freedom we must slay the Sons of Brutus."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_04_machiavelli_64kb.mp3",
               "length_ms": 163000,
+              "readers": [
+                "josh-kibbey"
+              ],
               "start_ms": 1151000,
               "title": "CHAPTER IV.—That an Usurper is never safe in his Princedom while those live whom he has deprived of it."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_05_machiavelli_64kb.mp3",
               "length_ms": 233000,
+              "readers": [
+                "josh-kibbey"
+              ],
               "start_ms": 1314000,
               "title": "CHAPTER V.—How an Hereditary King may come to lose his Kingdom."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_06_machiavelli_64kb.mp3",
               "length_ms": 3343000,
+              "readers": [
+                "rita-boutros"
+              ],
               "start_ms": 1547000,
               "title": "CHAPTER VI.—Of Conspiracies."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_07_machiavelli_64kb.mp3",
               "length_ms": 144000,
+              "readers": [
+                "josh-kibbey"
+              ],
               "start_ms": 4890000,
               "title": "CHAPTER VII.—Why it is that changes from Freedom to Servitude, and from Servitude to Freedom, are sometimes made without Bloodshed, but at other times reek with Blood."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_08_machiavelli_64kb.mp3",
               "length_ms": 501000,
+              "readers": [
+                "rita-boutros"
+              ],
               "start_ms": 5034000,
               "title": "CHAPTER VIII.—That he who would effect Changes in a Commonwealth, must give heed to its Character and Condition"
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_09_machiavelli_64kb.mp3",
               "length_ms": 393000,
+              "readers": [
+                "maria-de-fatima-da-silva"
+              ],
               "start_ms": 5535000,
               "title": "CHAPTER IX.—That to enjoy constant good Fortune we must change with the Times."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_10_machiavelli_64kb.mp3",
               "length_ms": 680000,
+              "readers": [
+                "rita-boutros"
+              ],
               "start_ms": 5928000,
               "title": "CHAPTER X.—That a Captain cannot escape Battle when his Enemy forces it on him at all risks."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_11_machiavelli_64kb.mp3",
               "length_ms": 379000,
+              "readers": [
+                "maria-de-fatima-da-silva"
+              ],
               "start_ms": 6608000,
               "title": "CHAPTER XI.—That one who has to contend with many, though he be weaker than they, will prevail if he can withstand their first onset."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_12_machiavelli_64kb.mp3",
               "length_ms": 594000,
+              "readers": [
+                "rita-boutros"
+              ],
               "start_ms": 6987000,
               "title": "CHAPTER XII.—A prudent Captain will do what he can to make it necessary for his own Soldiers to fight, and to relieve his Enemy from that necessity."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_13_machiavelli_64kb.mp3",
               "length_ms": 357000,
+              "readers": [
+                "maria-de-fatima-da-silva"
+              ],
               "start_ms": 7581000,
               "title": "CHAPTER XIII.—Whether we may trust more to a valiant Captain with a weak Army, or to a valiant Army with a weak Captain."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_14_machiavelli_64kb.mp3",
               "length_ms": 469000,
+              "readers": [
+                "linda-johnson"
+              ],
               "start_ms": 7938000,
               "title": "CHAPTER XIV.—Of the effect produced in Battle by strange and unexpected Sights or Sounds."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_15_machiavelli_64kb.mp3",
               "length_ms": 295000,
+              "readers": [
+                "maria-de-fatima-da-silva"
+              ],
               "start_ms": 8407000,
               "title": "CHAPTER XV.—That one and not many should head an Army: and why it is harmful to have more Leaders than one."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_16_machiavelli_64kb.mp3",
               "length_ms": 472000,
+              "readers": [
+                "maria-de-fatima-da-silva"
+              ],
               "start_ms": 8702000,
               "title": "CHAPTER XVI.—That in Times of Difficulty true Worth is sought after; whereas in quiet Times it is not the most deserving, but those who are recommended by Wealth or Connection who are most in favour."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_17_machiavelli_64kb.mp3",
               "length_ms": 210000,
+              "readers": [
+                "maria-de-fatima-da-silva"
+              ],
               "start_ms": 9174000,
               "title": "CHAPTER XVII.—That we are not to offend a Man, and then send him to fill an important Office or Command."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_18_machiavelli_64kb.mp3",
               "length_ms": 449000,
+              "readers": [
+                "rita-boutros"
+              ],
               "start_ms": 9384000,
               "title": "CHAPTER XVIII.—That it is the highest Quality of a Captain to be able to forestall the designs of his Adversary."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_19_machiavelli_64kb.mp3",
               "length_ms": 252000,
+              "readers": [
+                "rita-boutros"
+              ],
               "start_ms": 9833000,
               "title": "CHAPTER XIX.—Whether Indulgence or Severity be more necessary for controlling a Multitude."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_20_machiavelli_64kb.mp3",
               "length_ms": 227000,
+              "readers": [
+                "rita-boutros"
+              ],
               "start_ms": 10085000,
               "title": "CHAPTER XX.—How one humane act availed more with the men of Falerii, than all the might of the Roman Arms."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_21_machiavelli_64kb.mp3",
               "length_ms": 452000,
+              "readers": [
+                "linda-johnson"
+              ],
               "start_ms": 10312000,
               "title": "CHAPTER XXI.—How it happened that Hannibal pursuing a course contrary to that taken by Scipio, wrought the same results in Italy which the other achieved in Spain."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_22_machiavelli_64kb.mp3",
               "length_ms": 908000,
+              "readers": [
+                "linda-johnson"
+              ],
               "start_ms": 10764000,
               "title": "Chapter XXII.—That the severity of Manlius Torquatus and the gentleness of Valerius Corvinus won for both the same Glory."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_23_machiavelli_64kb.mp3",
               "length_ms": 219000,
+              "readers": [
+                "linda-johnson"
+              ],
               "start_ms": 11672000,
               "title": "CHAPTER XXIII.—Why Camillus was banished from Rome."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_24_machiavelli_64kb.mp3",
               "length_ms": 278000,
+              "readers": [
+                "linda-johnson"
+              ],
               "start_ms": 11891000,
               "title": "CHAPTER XXIV.—That prolonged Commands brought Rome to Servitude."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_25_machiavelli_64kb.mp3",
               "length_ms": 363000,
+              "readers": [
+                "linda-johnson"
+              ],
               "start_ms": 12169000,
               "title": "CHAPTER XXV.—_Of the poverty of Cincinnatus and of many other Roman Citizens."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_26_machiavelli_64kb.mp3",
               "length_ms": 238000,
+              "readers": [
+                "mayah"
+              ],
               "start_ms": 12532000,
               "title": "CHAPTER XXVI.—How Women are a cause of the ruin of States."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_27_machiavelli_64kb.mp3",
               "length_ms": 447000,
+              "readers": [
+                "kassie-yang"
+              ],
               "start_ms": 12770000,
               "title": "CHAPTER XXVII.-- How a divided City may be reunited, and how it is a false opinion that to hold Cities in subjection they must be kept divided."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_28_machiavelli_64kb.mp3",
               "length_ms": 299000,
+              "readers": [
+                "kassie-yang"
+              ],
               "start_ms": 13217000,
               "title": "CHAPTER XXVIII.  - That a Republic must keep an eye on what its Citizens are about; since often the seeds of a Tyranny lie hidden under a semblance of generous deeds."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_29_machiavelli_64kb.mp3",
               "length_ms": 252000,
+              "readers": [
+                "maria-de-fatima-da-silva"
+              ],
               "start_ms": 13516000,
               "title": "CHAPTER XXIX.—That the Faults of a People are due to its Prince."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_30_machiavelli_64kb.mp3",
               "length_ms": 561000,
+              "readers": [
+                "rita-boutros"
+              ],
               "start_ms": 13768000,
               "title": "CHAPTER XXX.—That a Citizen who seeks by his personal influence to render signal service to his Country, must first stand clear of Envy. How a City should prepare for its defence on the approach of an Enemy."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_31_machiavelli_64kb.mp3",
               "length_ms": 628000,
+              "readers": [
+                "rita-boutros"
+              ],
               "start_ms": 14329000,
               "title": "CHAPTER XXXI.—That strong Republics and valiant Men preserve through every change the same Spirit and Bearing."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_32_machiavelli_64kb.mp3",
               "length_ms": 273000,
+              "readers": [
+                "shasta"
+              ],
               "start_ms": 14957000,
               "title": "CHAPTER XXXII.—Of the methods which some have used to make Peace impossible."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_33_machiavelli_64kb.mp3",
               "length_ms": 485000,
+              "readers": [
+                "shasta"
+              ],
               "start_ms": 15230000,
               "title": "CHAPTER XXXIII.—That to insure victory in battle you must inspire your Men with confidence in one another and in you."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_34_machiavelli_64kb.mp3",
               "length_ms": 781000,
+              "readers": [
+                "shasta"
+              ],
               "start_ms": 15715000,
               "title": "CHAPTER XXXIV.—By what reports, rumours, or surmises the Citizens of a Republic are led to favour a Fellow-citizen: and-whether the Magistracies are bestowed with better judgment by a People or by a Prince."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_35_machiavelli_64kb.mp3",
               "length_ms": 534000,
+              "readers": [
+                "shasta"
+              ],
               "start_ms": 16496000,
               "title": "CHAPTER XXXV.—Of the Danger incurred in being the first to recommend new Measures; and that the more unusual the Measures the greater the Danger."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_36_machiavelli_64kb.mp3",
               "length_ms": 465000,
+              "readers": [
+                "shasta"
+              ],
               "start_ms": 17030000,
               "title": "CHAPTER XXXVI.—Why it has been and still may be affirmed of the Gauls, that at the beginning of a fray they are more than Men, but afterwards less than Women."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_37_machiavelli_64kb.mp3",
               "length_ms": 512000,
+              "readers": [
+                "maria-de-fatima-da-silva"
+              ],
               "start_ms": 17495000,
               "title": "CHAPTER XXXVII.—Whether a general engagement should be preceded by skirmishes; and how, avoiding these, we may get knowledge of a new Enemy."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_38_machiavelli_64kb.mp3",
               "length_ms": 270000,
+              "readers": [
+                "maria-de-fatima-da-silva"
+              ],
               "start_ms": 18007000,
               "title": "CHAPTER XXXVIII.—Of the Qualities of a Captain in whom his Soldiers can confide."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_39_machiavelli_64kb.mp3",
               "length_ms": 391000,
+              "readers": [
+                "maria-de-fatima-da-silva"
+              ],
               "start_ms": 18277000,
               "title": "CHAPTER XXXIX.—That a Captain should have good knowledge of Places."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_40_machiavelli_64kb.mp3",
               "length_ms": 230000,
+              "readers": [
+                "kristine-bekere"
+              ],
               "start_ms": 18668000,
               "title": "CHAPTER XL.—That Fraud is fair in War."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_41_machiavelli_64kb.mp3",
               "length_ms": 211000,
+              "readers": [
+                "kristine-bekere"
+              ],
               "start_ms": 18898000,
               "title": "CHAPTER XLI.—That our Country is to be defended by Honour or by Dishonour; and in either way is well defended."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_42_machiavelli_64kb.mp3",
               "length_ms": 220000,
+              "readers": [
+                "kristine-bekere"
+              ],
               "start_ms": 19109000,
               "title": "CHAPTER XLII.—That Promises made on Compulsion are not to be observed."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_43_machiavelli_64kb.mp3",
               "length_ms": 333000,
+              "readers": [
+                "kristine-bekere"
+              ],
               "start_ms": 19329000,
               "title": "CHAPTER XLIII.—That Men born in the same Province retain through all Times nearly the same Character."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_44_machiavelli_64kb.mp3",
               "length_ms": 328000,
+              "readers": [
+                "kristine-bekere"
+              ],
               "start_ms": 19662000,
               "title": "CHAPTER XLIV.—That where ordinary methods fail, Hardihood and Daring often succeed."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_45_machiavelli_64kb.mp3",
               "length_ms": 129000,
+              "readers": [
+                "merendo07"
+              ],
               "start_ms": 19990000,
               "title": "CHAPTER XLV.—Whether in battle it is better to await and repel the Enemy's attack, or to anticipate it by an impetuous onset."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_46_machiavelli_64kb.mp3",
               "length_ms": 159000,
+              "readers": [
+                "merendo07"
+              ],
               "start_ms": 20119000,
               "title": "CHAPTER XLVI.—How the Characteristics of Families come to be perpetuated."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_47_machiavelli_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "merendo07"
+              ],
               "start_ms": 20278000,
               "title": "CHAPTER XLVII.—That love of his Country should lead a good Citizen to forget private Wrongs."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_48_machiavelli_64kb.mp3",
               "length_ms": 200000,
+              "readers": [
+                "merendo07"
+              ],
               "start_ms": 20372000,
               "title": "CHAPTER XLVIII.—That on finding an Enemy make what seems a grave blunder, we should suspect some fraud to lurk behind."
             },
             {
               "audio_url": "https://www.archive.org/download/discourses_livius_3_1905_librivox/discoursesonlivy3_49_machiavelli_64kb.mp3",
               "length_ms": 283000,
+              "readers": [
+                "merendo07"
+              ],
               "start_ms": 20572000,
               "title": "CHAPTER XLIX.—That a Commonwealth to preserve its Freedom has constant need of new Ordinances. Of the services in respect of which Quintius Fabius received the surname of Maximus."
             }
           ],
           "copyright_year": 1883,
           "cover_url": "https://archive.org/download/discourses_livius_3_1905_librivox/discourses_first_decade3_1905.jpg",
+          "credits": [
+            {
+              "person": "ninian-hill-thomson",
+              "role": "translator"
+            }
+          ],
           "id": "josh-kibbey",
           "language": "en",
+          "librivox_genres": [
+            "Political Science",
+            "Early Modern"
+          ],
           "librivox_id": 13835,
+          "librivox_title": "Discourses on the First Decade of Titus Livius, Book 3",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/discourses-on-the-first-decade-of-titus-livius-book-3-by-niccolo-machiavelli/",

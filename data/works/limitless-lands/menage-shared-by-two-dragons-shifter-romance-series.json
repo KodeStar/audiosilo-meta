@@ -2504,24 +2504,28 @@
             {
               "audio_url": "https://www.archive.org/download/mendelssohn_1607_librivox/mendelssohnmasterworks_00_peyser_64kb.mp3",
               "length_ms": 109000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Foreword"
             },
             {
               "audio_url": "https://www.archive.org/download/mendelssohn_1607_librivox/mendelssohnmasterworks_01_peyser_64kb.mp3",
               "length_ms": 1685000,
+              "section_number": 1,
               "start_ms": 109000,
               "title": "Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/mendelssohn_1607_librivox/mendelssohnmasterworks_02_peyser_64kb.mp3",
               "length_ms": 1632000,
+              "section_number": 2,
               "start_ms": 1794000,
               "title": "Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/mendelssohn_1607_librivox/mendelssohnmasterworks_03_peyser_64kb.mp3",
               "length_ms": 1939000,
+              "section_number": 3,
               "start_ms": 3426000,
               "title": "Part 3"
             }
@@ -2530,7 +2534,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt24/mendelssohncertainmasterworks_1611.jpg",
           "id": "david-wales",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "Music"
+          ],
           "librivox_id": 11122,
+          "librivox_title": "Mendelssohn And Certain Masterworks",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/mendelssohn-and-certain-masterworks-by-herbert-francis-peyser/",
@@ -4112,7 +4121,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt31/mendizabal_1305.jpg",
           "id": "tux",
           "language": "es",
+          "librivox_genres": [
+            "Historical Fiction",
+            "Romance"
+          ],
           "librivox_id": 7437,
+          "librivox_title": "Mendizábal",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/mendizabal-by-benito-perez-galdos/",
@@ -4772,9 +4786,20 @@
           ],
           "copyright_year": 1892,
           "cover_url": "https://archive.org/download/menexenus_ge_1404_librivox/menexenus_1404.jpg",
+          "credits": [
+            {
+              "person": "benjamin-jowett",
+              "role": "translator"
+            }
+          ],
           "id": "geoffrey-edwards",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Ancient"
+          ],
           "librivox_id": 8760,
+          "librivox_title": "Menexenus",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/menexenus-by-plato/",
@@ -5170,222 +5195,333 @@
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_01_verne_64kb.mp3",
               "length_ms": 827000,
+              "readers": [
+                "christianese"
+              ],
               "start_ms": 0,
               "title": "Bab 1. Peri meriwajatkan Phileas Fogg mengambil Passepartout djadi boedjangnja"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_02_verne_64kb.mp3",
               "length_ms": 709000,
+              "readers": [
+                "christianese"
+              ],
               "start_ms": 827000,
               "title": "Bab 2. Peri meriwajatkan Passepartout merasa telah mendapat barang apa jang soedah lama diangan-angannja"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_03_verne_64kb.mp3",
               "length_ms": 1124000,
+              "readers": [
+                "christianese"
+              ],
               "start_ms": 1536000,
               "title": "Bab 3. Peri meriwajatkan pertjakapan jang boléh mendatangkan keroegian besar kepada Phileas Fogg"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_04_verne_64kb.mp3",
               "length_ms": 513000,
+              "readers": [
+                "christianese"
+              ],
               "start_ms": 2660000,
               "title": "Bab 4. Peri meriwajatkan Phileas Fogg sangat menghérankan boedaknja Passepartout"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_05_verne_64kb.mp3",
               "length_ms": 651000,
+              "readers": [
+                "christianese"
+              ],
               "start_ms": 3173000,
               "title": "Bab 5. Peri meriwajatkan terdjadinja effect matjam baroe didjoeal dalam Beurs di London"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_06_verne_64kb.mp3",
               "length_ms": 826000,
+              "readers": [
+                "elvy-liu"
+              ],
               "start_ms": 3824000,
               "title": "Bab 6. Peri meriwajatkan Fix, mata-mata polisi, ta' sabar dalam segala perboeatannja"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_07_verne_64kb.mp3",
               "length_ms": 514000,
+              "readers": [
+                "elvy-liu"
+              ],
               "start_ms": 4650000,
               "title": "Bab 7. Peri menerangkan bahwa soerat pas itoe ta' berharga sedikit djoeapoen bagi oeroesan polisi"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_08_verne_64kb.mp3",
               "length_ms": 554000,
+              "readers": [
+                "ria"
+              ],
               "start_ms": 5164000,
               "title": "Bab 8. Peri meriwajatkan Passepartout berkata-kata lebih dari pada perloenja"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_09_verne_64kb.mp3",
               "length_ms": 824000,
+              "readers": [
+                "bryan-chew"
+              ],
               "start_ms": 5718000,
               "title": "Bab 9. Peri meriwajatkan Laoet Mérah dan Laoetan Hindia seolah-olah memoedahkan niat Phileas Fogg"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_10_verne_64kb.mp3",
               "length_ms": 771000,
+              "readers": [
+                "hasoinna"
+              ],
               "start_ms": 6542000,
               "title": "Bab 10. Peri meriwajatkan Passepartout bersoekatjita, meski ia kehilangan sepatoenja, iapoen mendapat keselamatan djoega"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_11_verne_64kb.mp3",
               "length_ms": 1436000,
+              "readers": [
+                "christianese"
+              ],
               "start_ms": 7313000,
               "title": "Bab 11. Peri meriwajatkan Phileas Fogg membeli kendaraan jang amat mahal harganja"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_12_verne_64kb.mp3",
               "length_ms": 1268000,
+              "readers": [
+                "sjinta-djoemiati"
+              ],
               "start_ms": 8749000,
               "title": "Bab 12. Peri meriwajatkan Phileas Fogg dengan teman-temannja masoek kedalam rimba, dan apa jang terdjadi kemoedian"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_13_verne_64kb.mp3",
               "length_ms": 1317000,
+              "readers": [
+                "sjinta-djoemiati"
+              ],
               "start_ms": 10017000,
               "title": "Bab 13. Peri meriwajatkan Passepartout memboektikan sekali lagi, bahwa oentoeng itoe bahagian orang jang gagah berani adanja"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_14_verne_64kb.mp3",
               "length_ms": 1080000,
+              "readers": [
+                "christianese"
+              ],
               "start_ms": 11334000,
               "title": "Bab 14. Peri meriwajatkan Phileas Fogg berdjalan sepandjang tanah rendah, kiri kanan soengai Ganges jang amat indah-indah pemandangannja, dengan ta' ada ingatan hendak memeriksaïnja"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_15_verne_64kb.mp3",
               "length_ms": 1166000,
+              "readers": [
+                "sjinta-djoemiati"
+              ],
               "start_ms": 12414000,
               "title": "Bab 15. Peri meriwajatkan kantoeng jang berisi berbagai-bagai wang kertas telah mendjadi koerang beberapa riboe pond sterling banjaknja"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_16_verne_64kb.mp3",
               "length_ms": 985000,
+              "readers": [
+                "christianese"
+              ],
               "start_ms": 13580000,
               "title": "Bab 16. Peri meriwajatkan Fix poera-poera ta' tahoe akan hal orang jang dipertjakapkan dengan dia"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_17_verne_64kb.mp3",
               "length_ms": 952000,
+              "readers": [
+                "hasoinna"
+              ],
               "start_ms": 14565000,
               "title": "Bab 17. Peri meriwajatkan beberapa pertjakapan dalam pelajaran dari Singapoera ke Hongkong"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_18_verne_64kb.mp3",
               "length_ms": 828000,
+              "readers": [
+                "christianese"
+              ],
               "start_ms": 15517000,
               "title": "Bab 18. Peri meriwajatkan Fogg, Passepartout dan Fix melakoekan maksoednja masing-masing"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_19_verne_64kb.mp3",
               "length_ms": 1385000,
+              "readers": [
+                "tarabatubara"
+              ],
               "start_ms": 16345000,
               "title": "Bab 19. Peri meriwajatkan Passepartout sangat beroesaha memelihara toeannja dan betapa kedjadiannja"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_20_verne_64kb.mp3",
               "length_ms": 1050000,
+              "readers": [
+                "tarabatubara"
+              ],
               "start_ms": 17730000,
               "title": "Bab 20. Peri meriwajatkan Fix bermoepakat dengan Fogg tentang soeatoe keperloean"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_21_verne_64kb.mp3",
               "length_ms": 1382000,
+              "readers": [
+                "christianese"
+              ],
               "start_ms": 18780000,
               "title": "Bab 21. Peri meriwajatkan kapitan kapal ''Tankadère'' hampir-hampir tiada mendapat hadiah doea ratoes pond banjaknja"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_22_verne_64kb.mp3",
               "length_ms": 359000,
+              "readers": [
+                "varra-unreal"
+              ],
               "start_ms": 20162000,
               "title": "Bab 22. Peri meriwajatkan Passepartout mengetahoei, bahwa disebelah doenia jang bertentangan tanah Inggeris orang perloe djoega mempoenjaï wang"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_23_verne_64kb.mp3",
               "length_ms": 884000,
+              "readers": [
+                "gtanuel"
+              ],
               "start_ms": 20521000,
               "title": "Bab 23. Peri meriwajatkan hidoeng Passepartout mendjadi lebih pandjang"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_24_verne_64kb.mp3",
               "length_ms": 898000,
+              "readers": [
+                "hasoinna"
+              ],
               "start_ms": 21405000,
               "title": "Bab 24. Peri meriwajatkan pelajaran di Laoetan Tedoeh sebelah selatan"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_25_verne_64kb.mp3",
               "length_ms": 1079000,
+              "readers": [
+                "christianese"
+              ],
               "start_ms": 22303000,
               "title": "Bab 25. Peri meriwajatkan betapa orang mengenal kota San-Francisco waktoe rapat besar"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_26_verne_64kb.mp3",
               "length_ms": 836000,
+              "readers": [
+                "hasoinna"
+              ],
               "start_ms": 23382000,
               "title": "Bab 26. Peri meriwajatkan orang naiik keréta expres sepandjang Stille Zuid-zee-spoorweg (djalan keréta api Laoetan Tedoeh sebelah selatan)"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_27_verne_64kb.mp3",
               "length_ms": 1226000,
+              "readers": [
+                "tarabatubara"
+              ],
               "start_ms": 24218000,
               "title": "Bab 27. Peri meriwajatkan Passepartout mendengarkan tjeritera sedjarah bangsa Mormoon dalam keréta api jang kentjangnja doea poeloeh mijl dalam sedjam"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_28_verne_64kb.mp3",
               "length_ms": 1410000,
+              "readers": [
+                "christianese"
+              ],
               "start_ms": 25444000,
               "title": "Bab 28. Peri meriwajatkan Passepartout mentjari daja oepaja jang baik dilakoekannja, tetapi sia-sia belaka"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_29_verne_64kb.mp3",
               "length_ms": 1174000,
+              "readers": [
+                "sjinta-djoemiati"
+              ],
               "start_ms": 26854000,
               "title": "Bab 29. Peri meriwajatkan berbagai-bagai kesoekaran jang boléh terdapat dalam keréta api ditanah Amérika Serikat"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_30_verne_64kb.mp3",
               "length_ms": 1053000,
+              "readers": [
+                "hasoinna"
+              ],
               "start_ms": 28028000,
               "title": "Bab 30. Peri meriwajatkan betapa Phileas Fogg melakoekan kewadjibannja"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_31_verne_64kb.mp3",
               "length_ms": 1102000,
+              "readers": [
+                "raaddd"
+              ],
               "start_ms": 29081000,
               "title": "Bab 31. Peri meriwajatkan betapa inspecteur Fix sangat mengoesahakan diri bagi keselamatan Phileas Fogg"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_32_verne_64kb.mp3",
               "length_ms": 582000,
+              "readers": [
+                "christianese"
+              ],
               "start_ms": 30183000,
               "title": "Bab 32. Peri meriwajatkan Phileas Fogg dengan kekerasan hati berichtiar mentjari daja oepaja waktoe ia didatangi soeatoe hal dalam maksoednja"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_33_verne_64kb.mp3",
               "length_ms": 1381000,
+              "readers": [
+                "christianese"
+              ],
               "start_ms": 30765000,
               "title": "Bab 33. Peri meriwajatkan Phileas Fogg mengetahoei segala hal"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_34_verne_64kb.mp3",
               "length_ms": 453000,
+              "readers": [
+                "christianese"
+              ],
               "start_ms": 32146000,
               "title": "Bab 34. Peri meriwajatkan Fix beroebah pikirannja tentang Phileas Fogg"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_35_verne_64kb.mp3",
               "length_ms": 949000,
+              "readers": [
+                "tarabatubara"
+              ],
               "start_ms": 32599000,
               "title": "Bab 35. Peri meriwajatkan Passepartout melakoekan perintah toeannja dengan segeranja"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_36_verne_64kb.mp3",
               "length_ms": 633000,
+              "readers": [
+                "christianese"
+              ],
               "start_ms": 33548000,
               "title": "Bab 36. Peri meriwajatkan Phileas Fogg mendapat kemenangan"
             },
             {
               "audio_url": "https://www.archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/80hari_37_verne_64kb.mp3",
               "length_ms": 475000,
+              "readers": [
+                "christianese"
+              ],
               "start_ms": 34181000,
               "title": "Bab 37. Peri meriwajatkan Phileas Fogg tiada mendapat kemenangan sedikitpoen dari pada pertaroehannja, hanjalah ia beroléh oentoeng baik"
             }
@@ -5394,7 +5530,12 @@
           "cover_url": "https://archive.org/download/mengelilingi_doenia_dalam_80_hari_2212_librivox/mengelilingi_2212.jpg",
           "id": "christianese",
           "language": "id",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Travel Fiction"
+          ],
           "librivox_id": 2652,
+          "librivox_title": "Mengelilingi Doenia Dalam 80 Hari",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/mengelilingi-doenia-dalam-80-hari-by-jules-verne/",
@@ -6057,42 +6198,63 @@
             {
               "audio_url": "https://www.archive.org/download/menina_do_narizinho_arrebitado_2203_librivox/meninadonarizinhoarrebitado_01_lobato_64kb.mp3",
               "length_ms": 843000,
+              "readers": [
+                "dyefferson-azevedo"
+              ],
               "start_ms": 0,
               "title": "O somno à beira do rio"
             },
             {
               "audio_url": "https://www.archive.org/download/menina_do_narizinho_arrebitado_2203_librivox/meninadonarizinhoarrebitado_02_lobato_64kb.mp3",
               "length_ms": 214000,
+              "readers": [
+                "cristina-luiz"
+              ],
               "start_ms": 843000,
               "title": "A enfermaria"
             },
             {
               "audio_url": "https://www.archive.org/download/menina_do_narizinho_arrebitado_2203_librivox/meninadonarizinhoarrebitado_03_lobato_64kb.mp3",
               "length_ms": 1115000,
+              "readers": [
+                "monica-hinrichs-mayer"
+              ],
               "start_ms": 1057000,
               "title": "No palácio real"
             },
             {
               "audio_url": "https://www.archive.org/download/menina_do_narizinho_arrebitado_2203_librivox/meninadonarizinhoarrebitado_04_lobato_64kb.mp3",
               "length_ms": 435000,
+              "readers": [
+                "monica-hinrichs-mayer"
+              ],
               "start_ms": 2172000,
               "title": "Depois da festa"
             },
             {
               "audio_url": "https://www.archive.org/download/menina_do_narizinho_arrebitado_2203_librivox/meninadonarizinhoarrebitado_05_lobato_64kb.mp3",
               "length_ms": 165000,
+              "readers": [
+                "monica-hinrichs-mayer"
+              ],
               "start_ms": 2607000,
               "title": "A festa veneziana"
             },
             {
               "audio_url": "https://www.archive.org/download/menina_do_narizinho_arrebitado_2203_librivox/meninadonarizinhoarrebitado_06_lobato_64kb.mp3",
               "length_ms": 207000,
+              "readers": [
+                "monica-hinrichs-mayer"
+              ],
               "start_ms": 2772000,
               "title": "A trama"
             },
             {
               "audio_url": "https://www.archive.org/download/menina_do_narizinho_arrebitado_2203_librivox/meninadonarizinhoarrebitado_07_lobato_64kb.mp3",
               "length_ms": 270000,
+              "readers": [
+                "dyefferson-azevedo"
+              ],
               "start_ms": 2979000,
               "title": "O castigo"
             }
@@ -6101,7 +6263,11 @@
           "cover_url": "https://archive.org/download/menina_do_narizinho_arrebitado_2203_librivox/amenina_2203.jpg",
           "id": "dyefferson-azevedo",
           "language": "pt",
+          "librivox_genres": [
+            "Children's Fiction"
+          ],
           "librivox_id": 17621,
+          "librivox_title": "menina do narizinho arrebitado",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-menina-do-narizinho-arrebitado-by-monteiro-lobato/",
@@ -6799,9 +6965,20 @@
             }
           ],
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt30/meno_1303.jpg",
+          "credits": [
+            {
+              "person": "benjamin-jowett",
+              "role": "translator"
+            }
+          ],
           "id": "chiquito-crasto",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Ancient"
+          ],
           "librivox_id": 5566,
+          "librivox_title": "Meno",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/meno-by-plato-2/",
@@ -10115,7 +10292,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt15/Menschen_Ehe_1203.jpg",
           "id": "ragnar",
           "language": "de",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 3107,
+          "librivox_title": "Menschen der Ehe",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/menschen-der-ehe-by-john-henry-mackay/",

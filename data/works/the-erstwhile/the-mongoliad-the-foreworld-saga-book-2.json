@@ -4053,6 +4053,12 @@
             {
               "audio_url": "https://www.archive.org/download/monkeys_paw_librivox/monkeyspaw_jacobs_64kb.mp3",
               "length_ms": 1529000,
+              "readers": [
+                "jim-mowatt",
+                "cori-samuel",
+                "david-barnes",
+                "peter-yearsley"
+              ],
               "start_ms": 0,
               "title": "The Monkey’s Paw"
             }
@@ -4061,7 +4067,12 @@
           "cover_url": "https://archive.org/download/monkeys_paw_librivox/Monkeys_Paw_1107.jpg",
           "id": "jim-mowatt",
           "language": "en",
+          "librivox_genres": [
+            "Dramatic Readings",
+            "Horror & Supernatural Fiction"
+          ],
           "librivox_id": 933,
+          "librivox_title": "Monkey's Paw",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-monkeys-paw-by-ww-jacobs/",
@@ -11250,7 +11261,11 @@
           "cover_url": "https://archive.org/download/monstermen_1707_librivox/monstermen_1707.jpg",
           "id": "mark-nelson",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 11891,
+          "librivox_title": "Monster Men",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-monster-men-by-edgar-rice-burroughs/",

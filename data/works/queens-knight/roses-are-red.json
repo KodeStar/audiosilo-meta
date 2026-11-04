@@ -7516,42 +7516,49 @@
             {
               "audio_url": "https://www.archive.org/download/rosicrucian_mysteries_1202_librivox/rosicrucianmysteries_0_heindel_64kb.mp3",
               "length_ms": 645000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "0 - Intro (Mt. Ecclesia)"
             },
             {
               "audio_url": "https://www.archive.org/download/rosicrucian_mysteries_1202_librivox/rosicrucianmysteries_1_heindel_64kb.mp3",
               "length_ms": 2871000,
+              "section_number": 1,
               "start_ms": 645000,
               "title": "1 - Chapters 1 & 2"
             },
             {
               "audio_url": "https://www.archive.org/download/rosicrucian_mysteries_1202_librivox/rosicrucianmysteries_2_heindel_64kb.mp3",
               "length_ms": 3603000,
+              "section_number": 2,
               "start_ms": 3516000,
               "title": "2 - Chapter 3 - Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/rosicrucian_mysteries_1202_librivox/rosicrucianmysteries_3_heindel_64kb.mp3",
               "length_ms": 1370000,
+              "section_number": 3,
               "start_ms": 7119000,
               "title": "3 - Chapter 3 - Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/rosicrucian_mysteries_1202_librivox/rosicrucianmysteries_4_heindel_64kb.mp3",
               "length_ms": 1172000,
+              "section_number": 4,
               "start_ms": 8489000,
               "title": "4 - Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/rosicrucian_mysteries_1202_librivox/rosicrucianmysteries_5_heindel_64kb.mp3",
               "length_ms": 2609000,
+              "section_number": 5,
               "start_ms": 9661000,
               "title": "5 - Chapter 5 - Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/rosicrucian_mysteries_1202_librivox/rosicrucianmysteries_6_heindel_64kb.mp3",
               "length_ms": 2152000,
+              "section_number": 6,
               "start_ms": 12270000,
               "title": "6 - Chapter 5 - Part 2"
             }
@@ -7560,7 +7567,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt29/Rosicrucian_Mysteries_1301.jpg",
           "id": "kirksvoice",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Philosophy",
+            "Religion"
+          ],
           "librivox_id": 6283,
+          "librivox_title": "Rosicrucian Mysteries",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-rosicrucian-mysteries-by-max-heindel/",
@@ -9674,24 +9687,60 @@
             {
               "audio_url": "https://www.archive.org/download/rosmersholm_1108_librivox/rosmersholm_1_ibsen_64kb.mp3",
               "length_ms": 2930000,
+              "readers": [
+                "elizabeth-klett",
+                "david-lawrence",
+                "bruce-pirie",
+                "algy-pug",
+                "carol-box",
+                "delmar-h-dolbier",
+                "skylark"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/rosmersholm_1108_librivox/rosmersholm_2_ibsen_64kb.mp3",
               "length_ms": 2710000,
+              "readers": [
+                "elizabeth-klett",
+                "david-lawrence",
+                "bruce-pirie",
+                "algy-pug",
+                "carol-box",
+                "delmar-h-dolbier",
+                "skylark"
+              ],
               "start_ms": 2930000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/rosmersholm_1108_librivox/rosmersholm_3_ibsen_64kb.mp3",
               "length_ms": 2223000,
+              "readers": [
+                "elizabeth-klett",
+                "david-lawrence",
+                "bruce-pirie",
+                "algy-pug",
+                "carol-box",
+                "delmar-h-dolbier",
+                "skylark"
+              ],
               "start_ms": 5640000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/rosmersholm_1108_librivox/rosmersholm_4_ibsen_64kb.mp3",
               "length_ms": 1749000,
+              "readers": [
+                "elizabeth-klett",
+                "david-lawrence",
+                "bruce-pirie",
+                "algy-pug",
+                "carol-box",
+                "delmar-h-dolbier",
+                "skylark"
+              ],
               "start_ms": 7863000,
               "title": "Act 4"
             }
@@ -9700,7 +9749,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt21/rosmersholm_1207.jpg",
           "id": "elizabeth-klett",
           "language": "en",
+          "librivox_genres": [
+            "Plays",
+            "Drama",
+            "Tragedy"
+          ],
           "librivox_id": 5622,
+          "librivox_title": "Rosmersholm",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/rosmersholm-by-henrik-ibsen/",
@@ -10664,36 +10719,42 @@
             {
               "audio_url": "https://www.archive.org/download/rossini_2111_librivox/rossini_00_bevan_64kb.mp3",
               "length_ms": 189000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface and Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/rossini_2111_librivox/rossini_01_bevan_64kb.mp3",
               "length_ms": 922000,
+              "section_number": 1,
               "start_ms": 189000,
               "title": "Early Days"
             },
             {
               "audio_url": "https://www.archive.org/download/rossini_2111_librivox/rossini_02_bevan_64kb.mp3",
               "length_ms": 1124000,
+              "section_number": 2,
               "start_ms": 1111000,
               "title": "\"The Barber of Seville\""
             },
             {
               "audio_url": "https://www.archive.org/download/rossini_2111_librivox/rossini_03_bevan_64kb.mp3",
               "length_ms": 1419000,
+              "section_number": 3,
               "start_ms": 2235000,
               "title": "His Operas"
             },
             {
               "audio_url": "https://www.archive.org/download/rossini_2111_librivox/rossini_04_bevan_64kb.mp3",
               "length_ms": 1364000,
+              "section_number": 4,
               "start_ms": 3654000,
               "title": "Rossini in Vienna, London and Paris"
             },
             {
               "audio_url": "https://www.archive.org/download/rossini_2111_librivox/rossini_05_bevan_64kb.mp3",
               "length_ms": 566000,
+              "section_number": 5,
               "start_ms": 5018000,
               "title": "Rossini as Operatic Reformer"
             }
@@ -10701,7 +10762,11 @@
           "cover_url": "https://archive.org/download/rossini_2111_librivox/rossini_2111.jpg",
           "id": "mozartjr",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography"
+          ],
           "librivox_id": 17181,
+          "librivox_title": "Rossini",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/rossini-by-w-armine-bevan/",
@@ -12684,90 +12749,105 @@
             {
               "audio_url": "https://www.archive.org/download/roswellrpt_caseclosed_2102_librivox/roswellrptcaseclosed_00_mcandrew_64kb.mp3",
               "length_ms": 603000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Forward, Guide for Readers, and Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/roswellrpt_caseclosed_2102_librivox/roswellrptcaseclosed_01_mcandrew_64kb.mp3",
               "length_ms": 1790000,
+              "section_number": 1,
               "start_ms": 603000,
               "title": "Flying Saucer Crashes and Alien Bodies, The \"Crash Sites,\" Scenarios, and Research Methods"
             },
             {
               "audio_url": "https://www.archive.org/download/roswellrpt_caseclosed_2102_librivox/roswellrptcaseclosed_02_mcandrew_64kb.mp3",
               "length_ms": 504000,
+              "section_number": 2,
               "start_ms": 2393000,
               "title": "High Altitude Balloon Dummy Drops"
             },
             {
               "audio_url": "https://www.archive.org/download/roswellrpt_caseclosed_2102_librivox/roswellrptcaseclosed_03_mcandrew_64kb.mp3",
               "length_ms": 1122000,
+              "section_number": 3,
               "start_ms": 2897000,
               "title": "High Altitude Balloon Operations"
             },
             {
               "audio_url": "https://www.archive.org/download/roswellrpt_caseclosed_2102_librivox/roswellrptcaseclosed_04_mcandrew_64kb.mp3",
               "length_ms": 1626000,
+              "section_number": 4,
               "start_ms": 4019000,
               "title": "Comparison of Witnesses Accounts to U.S. Air Force Activities"
             },
             {
               "audio_url": "https://www.archive.org/download/roswellrpt_caseclosed_2102_librivox/roswellrptcaseclosed_05_mcandrew_64kb.mp3",
               "length_ms": 1965000,
+              "section_number": 5,
               "start_ms": 5645000,
               "title": "Reports of Bodies at the Roswell AAF Hospital and The \"Missing\" Nurse and the Pediatrician"
             },
             {
               "audio_url": "https://www.archive.org/download/roswellrpt_caseclosed_2102_librivox/roswellrptcaseclosed_06_mcandrew_64kb.mp3",
               "length_ms": 943000,
+              "section_number": 6,
               "start_ms": 7610000,
               "title": "Aircraft Accidents"
             },
             {
               "audio_url": "https://www.archive.org/download/roswellrpt_caseclosed_2102_librivox/roswellrptcaseclosed_07_mcandrew_64kb.mp3",
               "length_ms": 568000,
+              "section_number": 7,
               "start_ms": 8553000,
               "title": "High Altitude Research Projects"
             },
             {
               "audio_url": "https://www.archive.org/download/roswellrpt_caseclosed_2102_librivox/roswellrptcaseclosed_08_mcandrew_64kb.mp3",
               "length_ms": 1179000,
+              "section_number": 8,
               "start_ms": 9121000,
               "title": "Comparison of the Hospital Account to the Balloon Mishap"
             },
             {
               "audio_url": "https://www.archive.org/download/roswellrpt_caseclosed_2102_librivox/roswellrptcaseclosed_09_mcandrew_64kb.mp3",
               "length_ms": 386000,
+              "section_number": 9,
               "start_ms": 10300000,
               "title": "Conclusion"
             },
             {
               "audio_url": "https://www.archive.org/download/roswellrpt_caseclosed_2102_librivox/roswellrptcaseclosed_10_mcandrew_64kb.mp3",
               "length_ms": 1596000,
+              "section_number": 10,
               "start_ms": 10686000,
               "title": "Appendix B - Witness Statements Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/roswellrpt_caseclosed_2102_librivox/roswellrptcaseclosed_11_mcandrew_64kb.mp3",
               "length_ms": 1959000,
+              "section_number": 11,
               "start_ms": 12282000,
               "title": "Appendix B - Witness Statements Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/roswellrpt_caseclosed_2102_librivox/roswellrptcaseclosed_12_mcandrew_64kb.mp3",
               "length_ms": 1720000,
+              "section_number": 12,
               "start_ms": 14241000,
               "title": "Appendix C - Interviews Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/roswellrpt_caseclosed_2102_librivox/roswellrptcaseclosed_13_mcandrew_64kb.mp3",
               "length_ms": 2328000,
+              "section_number": 13,
               "start_ms": 15961000,
               "title": "Appendix C - Interviews Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/roswellrpt_caseclosed_2102_librivox/roswellrptcaseclosed_14_mcandrew_64kb.mp3",
               "length_ms": 844000,
+              "section_number": 14,
               "start_ms": 18289000,
               "title": "Appendix C - Interviews Part 3"
             }
@@ -12776,7 +12856,11 @@
           "cover_url": "https://archive.org/download/roswellrpt_caseclosed_2102_librivox/roswellreport_2102.jpg",
           "id": "aaron-bennett",
           "language": "en",
+          "librivox_genres": [
+            "War & Military"
+          ],
           "librivox_id": 16008,
+          "librivox_title": "Roswell Report: Case Closed",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-roswell-report-case-closed-by-james-mcandrew/",
@@ -14512,9 +14596,20 @@
           ],
           "copyright_year": 1923,
           "cover_url": "https://archive.org/download/der_rote_stern_2208_librivox/roterstern_bogdanow_2208.jpg",
+          "credits": [
+            {
+              "person": "hermynia-zur-muhlen",
+              "role": "translator"
+            }
+          ],
           "id": "friedrich",
           "language": "de",
+          "librivox_genres": [
+            "General Fiction",
+            "Science Fiction"
+          ],
           "librivox_id": 18114,
+          "librivox_title": "rote Stern",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/der-rote-stern-by-alexander-aleksandrovich-bogdanov/",
@@ -14752,9 +14847,20 @@
           ],
           "copyright_year": 1919,
           "cover_url": "https://archive.org/download/das_rote_zimmer_2305_librivox/rotezimmer_strindberg_2305.jpg",
+          "credits": [
+            {
+              "person": "emil-schering",
+              "role": "translator"
+            }
+          ],
           "id": "friedrich",
           "language": "de",
+          "librivox_genres": [
+            "Satire",
+            "Published 1800 -1900"
+          ],
           "librivox_id": 18541,
+          "librivox_title": "rote Zimmer",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/das-rote-zimmer-by-august-strindberg/",

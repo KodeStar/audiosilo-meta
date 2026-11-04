@@ -487,7 +487,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt18/Madame_Midas_1205.jpg",
           "id": "lucy-burgoyne-1950-2014",
           "language": "en",
+          "librivox_genres": [
+            "Detective Fiction"
+          ],
           "librivox_id": 3195,
+          "librivox_title": "Madame Midas",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/madame-midas-by-fergus-hume/",
@@ -545,27 +549,73 @@
             {
               "audio_url": "https://www.archive.org/download/madamepepita_2010_librivox/madamepepita_1_sierra_64kb.mp3",
               "length_ms": 4153000,
+              "readers": [
+                "availle",
+                "toddhw",
+                "son-of-the-exiles",
+                "sonia",
+                "tomas-peter",
+                "devorah-allen",
+                "michaelmaggs",
+                "jenn-broda",
+                "adrian-stephens",
+                "matea-bracic",
+                "andrew-gaunce"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/madamepepita_2010_librivox/madamepepita_2_sierra_64kb.mp3",
               "length_ms": 3863000,
+              "readers": [
+                "availle",
+                "toddhw",
+                "sonia",
+                "tomas-peter",
+                "devorah-allen",
+                "michaelmaggs",
+                "jenn-broda",
+                "adrian-stephens",
+                "matea-bracic",
+                "andrew-gaunce"
+              ],
               "start_ms": 4153000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/madamepepita_2010_librivox/madamepepita_3_sierra_64kb.mp3",
               "length_ms": 3052000,
+              "readers": [
+                "availle",
+                "toddhw",
+                "david-purdy",
+                "tomas-peter",
+                "michaelmaggs",
+                "jenn-broda",
+                "adrian-stephens",
+                "matea-bracic",
+                "andrew-gaunce"
+              ],
               "start_ms": 8016000,
               "title": "Act 3"
             }
           ],
           "copyright_year": 1922,
           "cover_url": "https://archive.org/download/madamepepita_2010_librivox/madame_pepita_2010.jpg",
+          "credits": [
+            {
+              "person": "john-garrett-underhill",
+              "role": "translator"
+            }
+          ],
           "id": "availle",
           "language": "en",
+          "librivox_genres": [
+            "Plays"
+          ],
           "librivox_id": 15358,
+          "librivox_title": "Madame Pepita",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/madame-pepita-by-gregorio-martinez-sierra/",
@@ -3057,7 +3107,12 @@
           "cover_url": "https://archive.org/download/madcap_1604_librivox/madcap_1605.jpg",
           "id": "tony-oliva",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Humorous Fiction"
+          ],
           "librivox_id": 10743,
+          "librivox_title": "Madcap",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/madcap-by-george-gibbs/",
@@ -3686,9 +3741,19 @@
           ],
           "copyright_year": 1910,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt22/maedchenmoorhof_1209.jpg",
+          "credits": [
+            {
+              "person": "marie-franzos",
+              "role": "translator"
+            }
+          ],
           "id": "karlsson",
           "language": "de",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 6942,
+          "librivox_title": "Mädchen vom Moorhof",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/das-madchen-vom-moorhof-by-selma-lagerlof/",

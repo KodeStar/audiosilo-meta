@@ -7884,6 +7884,12 @@
             {
               "audio_url": "https://www.archive.org/download/der_freimaurer_2309_librivox/freimaurer_1_kotzebue_64kb.mp3",
               "length_ms": 2204000,
+              "readers": [
+                "lorda",
+                "seito",
+                "leanne-cvetan",
+                "jessika-katharina-moller-langmaack"
+              ],
               "start_ms": 0,
               "title": "Der Freimaurer"
             }
@@ -7892,7 +7898,11 @@
           "cover_url": "https://archive.org/download/der_freimaurer_2309_librivox/derfreimaurer_2310.jpg",
           "id": "lorda",
           "language": "de",
+          "librivox_genres": [
+            "Satire"
+          ],
           "librivox_id": 19203,
+          "librivox_title": "Freimaurer",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/der-freimaurer-by-august-von-kotzebue/",
@@ -8062,9 +8072,20 @@
           ],
           "copyright_year": 1872,
           "cover_url": "https://archive.org/download/freira_no_subterraneo_2301_librivox/freiranosubterraneo_2301.jpg",
+          "credits": [
+            {
+              "person": "camilo-castelo-branco",
+              "role": "translator"
+            }
+          ],
           "id": "cristina-luiz",
           "language": "pt",
+          "librivox_genres": [
+            "Historical Fiction",
+            "Romance"
+          ],
           "librivox_id": 17898,
+          "librivox_title": "Freira no Subterrâneo",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-freira-no-subterraneo/",
@@ -8398,7 +8419,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt25/derfreiwerber_1607.jpg",
           "id": "crln-yldz-ksr",
           "language": "de",
+          "librivox_genres": [
+            "Romance"
+          ],
           "librivox_id": 11072,
+          "librivox_title": "Freiwerber",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/der-freiwerber-by-otto-roquette/",

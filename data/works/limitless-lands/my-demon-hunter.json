@@ -3081,78 +3081,91 @@
             {
               "audio_url": "https://www.archive.org/download/discovery_england_tg_librivox/mydiscoveryofengland_00_leacock_64kb.mp3",
               "length_ms": 233000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 - Introduction of Mr. Stephen Leacock Given by Sir Owen Seaman"
             },
             {
               "audio_url": "https://www.archive.org/download/discovery_england_tg_librivox/mydiscoveryofengland_01_leacock_64kb.mp3",
               "length_ms": 954000,
+              "section_number": 1,
               "start_ms": 233000,
               "title": "01 - The Balance of Trade in Impressions"
             },
             {
               "audio_url": "https://www.archive.org/download/discovery_england_tg_librivox/mydiscoveryofengland_02_leacock_64kb.mp3",
               "length_ms": 515000,
+              "section_number": 2,
               "start_ms": 1187000,
               "title": "02 - I Am Interviewed by the Press"
             },
             {
               "audio_url": "https://www.archive.org/download/discovery_england_tg_librivox/mydiscoveryofengland_03_leacock_64kb.mp3",
               "length_ms": 1354000,
+              "section_number": 3,
               "start_ms": 1702000,
               "title": "03 - Impressions of London"
             },
             {
               "audio_url": "https://www.archive.org/download/discovery_england_tg_librivox/mydiscoveryofengland_04_leacock_64kb.mp3",
               "length_ms": 1867000,
+              "section_number": 4,
               "start_ms": 3056000,
               "title": "04 - A Clear View of the Government and Politics of England"
             },
             {
               "audio_url": "https://www.archive.org/download/discovery_england_tg_librivox/mydiscoveryofengland_05_leacock_64kb.mp3",
               "length_ms": 1331000,
+              "section_number": 5,
               "start_ms": 4923000,
               "title": "05 - Oxford as I See It, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/discovery_england_tg_librivox/mydiscoveryofengland_06_leacock_64kb.mp3",
               "length_ms": 1328000,
+              "section_number": 6,
               "start_ms": 6254000,
               "title": "06 - Oxford as I See It, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/discovery_england_tg_librivox/mydiscoveryofengland_07_leacock_64kb.mp3",
               "length_ms": 2150000,
+              "section_number": 7,
               "start_ms": 7582000,
               "title": "07 - The British and the American Press"
             },
             {
               "audio_url": "https://www.archive.org/download/discovery_england_tg_librivox/mydiscoveryofengland_08_leacock_64kb.mp3",
               "length_ms": 900000,
+              "section_number": 8,
               "start_ms": 9732000,
               "title": "08 - Business in England. Wanted - More Profiteers"
             },
             {
               "audio_url": "https://www.archive.org/download/discovery_england_tg_librivox/mydiscoveryofengland_09_leacock_64kb.mp3",
               "length_ms": 1340000,
+              "section_number": 9,
               "start_ms": 10632000,
               "title": "09 - Is Prohibition Coming to England?"
             },
             {
               "audio_url": "https://www.archive.org/download/discovery_england_tg_librivox/mydiscoveryofengland_10_leacock_64kb.mp3",
               "length_ms": 1987000,
+              "section_number": 10,
               "start_ms": 11972000,
               "title": "10 - 'We Have With Us To-night'"
             },
             {
               "audio_url": "https://www.archive.org/download/discovery_england_tg_librivox/mydiscoveryofengland_11_leacock_64kb.mp3",
               "length_ms": 1530000,
+              "section_number": 11,
               "start_ms": 13959000,
               "title": "11 - Have the English any Sense of Humour? Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/discovery_england_tg_librivox/mydiscoveryofengland_12_leacock_64kb.mp3",
               "length_ms": 1495000,
+              "section_number": 12,
               "start_ms": 15489000,
               "title": "12 - Have the English any Sense of Humour? Part 2"
             }
@@ -3161,7 +3174,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt31/My_Discovery_England_1305.jpg",
           "id": "triciag",
           "language": "en",
+          "librivox_genres": [
+            "Essays & Short Works",
+            "Humor"
+          ],
           "librivox_id": 6335,
+          "librivox_title": "My Discovery of England",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/my-discovery-of-england-by-stephen-leacock/",
@@ -3683,7 +3701,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt19/My_Doggie_I_1209.jpg",
           "id": "allyson-hester",
           "language": "en",
+          "librivox_genres": [
+            "Animals & Nature"
+          ],
           "librivox_id": 4589,
+          "librivox_title": "My Doggie and I",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/my-doggie-and-i-by-robert-michael-ballantyne/",
@@ -3813,66 +3835,99 @@
             {
               "audio_url": "https://www.archive.org/download/my_doves_1501.poem_librivox/mydoves_alcott_bjs_64kb.mp3",
               "length_ms": 138000,
+              "readers": [
+                "bev-j-stevens"
+              ],
               "start_ms": 0,
               "title": "My Doves - Read by BJS"
             },
             {
               "audio_url": "https://www.archive.org/download/my_doves_1501.poem_librivox/mydoves_alcott_bk_64kb.mp3",
               "length_ms": 142000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 138000,
               "title": "My Doves - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/my_doves_1501.poem_librivox/mydoves_alcott_clp_64kb.mp3",
               "length_ms": 107000,
+              "readers": [
+                "chris-pyle"
+              ],
               "start_ms": 280000,
               "title": "My Doves - Read by CLP"
             },
             {
               "audio_url": "https://www.archive.org/download/my_doves_1501.poem_librivox/mydoves_alcott_ebs_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "esther-ben-simonides"
+              ],
               "start_ms": 387000,
               "title": "My Doves - Read by EBS"
             },
             {
               "audio_url": "https://www.archive.org/download/my_doves_1501.poem_librivox/mydoves_alcott_gg_64kb.mp3",
               "length_ms": 169000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 478000,
               "title": "My Doves - Read by GG"
             },
             {
               "audio_url": "https://www.archive.org/download/my_doves_1501.poem_librivox/mydoves_alcott_glm_64kb.mp3",
               "length_ms": 133000,
+              "readers": [
+                "gemma-l-myers"
+              ],
               "start_ms": 647000,
               "title": "My Doves - Read by GLM"
             },
             {
               "audio_url": "https://www.archive.org/download/my_doves_1501.poem_librivox/mydoves_alcott_jab_64kb.mp3",
               "length_ms": 129000,
+              "readers": [
+                "joe-brenneman"
+              ],
               "start_ms": 780000,
               "title": "My Doves - Read by JAB"
             },
             {
               "audio_url": "https://www.archive.org/download/my_doves_1501.poem_librivox/mydoves_alcott_jcm_64kb.mp3",
               "length_ms": 125000,
+              "readers": [
+                "jason-mills"
+              ],
               "start_ms": 909000,
               "title": "My Doves - Read by JCM"
             },
             {
               "audio_url": "https://www.archive.org/download/my_doves_1501.poem_librivox/mydoves_alcott_llw_64kb.mp3",
               "length_ms": 141000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 1034000,
               "title": "My Doves - Read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/my_doves_1501.poem_librivox/mydoves_alcott_rc_64kb.mp3",
               "length_ms": 130000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
               "start_ms": 1175000,
               "title": "My Doves - Read by RC"
             },
             {
               "audio_url": "https://www.archive.org/download/my_doves_1501.poem_librivox/mydoves_alcott_sp_64kb.mp3",
               "length_ms": 137000,
+              "readers": [
+                "rachel"
+              ],
               "start_ms": 1305000,
               "title": "My Doves - Read by SP"
             }
@@ -3880,7 +3935,12 @@
           "cover_url": "https://archive.org/download/my_doves_1501.poem_librivox/doves_1501.jpg",
           "id": "bev-j-stevens",
           "language": "en",
+          "librivox_genres": [
+            "Nature & Animal Fiction",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 9463,
+          "librivox_title": "My Doves",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/my-doves-by-louisa-may-alcott/",
@@ -8089,84 +8149,98 @@
             {
               "audio_url": "https://www.archive.org/download/experiences_executioner_1508_librivox/myexperiencesexecutioner_00_berry_64kb.mp3",
               "length_ms": 255000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/experiences_executioner_1508_librivox/myexperiencesexecutioner_01_berry_64kb.mp3",
               "length_ms": 661000,
+              "section_number": 1,
               "start_ms": 255000,
               "title": "The Executioner at Home"
             },
             {
               "audio_url": "https://www.archive.org/download/experiences_executioner_1508_librivox/myexperiencesexecutioner_02_berry_64kb.mp3",
               "length_ms": 671000,
+              "section_number": 2,
               "start_ms": 916000,
               "title": "How I Became an Executioner"
             },
             {
               "audio_url": "https://www.archive.org/download/experiences_executioner_1508_librivox/myexperiencesexecutioner_03_berry_64kb.mp3",
               "length_ms": 994000,
+              "section_number": 3,
               "start_ms": 1587000,
               "title": "My First Execution"
             },
             {
               "audio_url": "https://www.archive.org/download/experiences_executioner_1508_librivox/myexperiencesexecutioner_04_berry_64kb.mp3",
               "length_ms": 1608000,
+              "section_number": 4,
               "start_ms": 2581000,
               "title": "My Method of Execution - Calculations and Apparatus"
             },
             {
               "audio_url": "https://www.archive.org/download/experiences_executioner_1508_librivox/myexperiencesexecutioner_05_berry_64kb.mp3",
               "length_ms": 544000,
+              "section_number": 5,
               "start_ms": 4189000,
               "title": "My Method of Execution - The Proceedings"
             },
             {
               "audio_url": "https://www.archive.org/download/experiences_executioner_1508_librivox/myexperiencesexecutioner_06_berry_64kb.mp3",
               "length_ms": 588000,
+              "section_number": 6,
               "start_ms": 4733000,
               "title": "Other Methods of Execution"
             },
             {
               "audio_url": "https://www.archive.org/download/experiences_executioner_1508_librivox/myexperiencesexecutioner_07_berry_64kb.mp3",
               "length_ms": 973000,
+              "section_number": 7,
               "start_ms": 5321000,
               "title": "Two Terrible Experiences"
             },
             {
               "audio_url": "https://www.archive.org/download/experiences_executioner_1508_librivox/myexperiencesexecutioner_08_berry_64kb.mp3",
               "length_ms": 2859000,
+              "section_number": 8,
               "start_ms": 6294000,
               "title": "How Murderers Die"
             },
             {
               "audio_url": "https://www.archive.org/download/experiences_executioner_1508_librivox/myexperiencesexecutioner_09_berry_64kb.mp3",
               "length_ms": 1211000,
+              "section_number": 9,
               "start_ms": 9153000,
               "title": "From the Murderer's Point of View"
             },
             {
               "audio_url": "https://www.archive.org/download/experiences_executioner_1508_librivox/myexperiencesexecutioner_10_berry_64kb.mp3",
               "length_ms": 1211000,
+              "section_number": 10,
               "start_ms": 10364000,
               "title": "On Capital Punishment"
             },
             {
               "audio_url": "https://www.archive.org/download/experiences_executioner_1508_librivox/myexperiencesexecutioner_11_berry_64kb.mp3",
               "length_ms": 695000,
+              "section_number": 11,
               "start_ms": 11575000,
               "title": "Hanging: From a Business Point of View"
             },
             {
               "audio_url": "https://www.archive.org/download/experiences_executioner_1508_librivox/myexperiencesexecutioner_12_berry_64kb.mp3",
               "length_ms": 894000,
+              "section_number": 12,
               "start_ms": 12270000,
               "title": "The Press and the Public"
             },
             {
               "audio_url": "https://www.archive.org/download/experiences_executioner_1508_librivox/myexperiencesexecutioner_13_berry_64kb.mp3",
               "length_ms": 1542000,
+              "section_number": 13,
               "start_ms": 13164000,
               "title": "Incidents and Anecdotes - Appendix"
             }
@@ -8174,7 +8248,12 @@
           "cover_url": "https://archive.org/download/experiences_executioner_1508_librivox/Executioner_1508.jpg",
           "id": "ashleighjane",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Memoirs"
+          ],
           "librivox_id": 9159,
+          "librivox_title": "My Experiences as an Executioner",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/my-experiences-as-an-executioner-by-james-berry/",
@@ -8225,48 +8304,72 @@
             {
               "audio_url": "https://www.archive.org/download/my_experiences_in_a_lunatic_asylum_1606_librivox/experienceslunaticasylum_01_merivale_64kb.mp3",
               "length_ms": 1193000,
+              "readers": [
+                "carol-cotter"
+              ],
               "start_ms": 0,
               "title": "Chapter I"
             },
             {
               "audio_url": "https://www.archive.org/download/my_experiences_in_a_lunatic_asylum_1606_librivox/experienceslunaticasylum_02_merivale_64kb.mp3",
               "length_ms": 1376000,
+              "readers": [
+                "carol-cotter"
+              ],
               "start_ms": 1193000,
               "title": "Chapter II"
             },
             {
               "audio_url": "https://www.archive.org/download/my_experiences_in_a_lunatic_asylum_1606_librivox/experienceslunaticasylum_03_merivale_64kb.mp3",
               "length_ms": 1430000,
+              "readers": [
+                "carol-cotter"
+              ],
               "start_ms": 2569000,
               "title": "Chapter III"
             },
             {
               "audio_url": "https://www.archive.org/download/my_experiences_in_a_lunatic_asylum_1606_librivox/experienceslunaticasylum_04_merivale_64kb.mp3",
               "length_ms": 1571000,
+              "readers": [
+                "carol-cotter"
+              ],
               "start_ms": 3999000,
               "title": "Chapter IV"
             },
             {
               "audio_url": "https://www.archive.org/download/my_experiences_in_a_lunatic_asylum_1606_librivox/experienceslunaticasylum_05_merivale_64kb.mp3",
               "length_ms": 1608000,
+              "readers": [
+                "lisa-reichert"
+              ],
               "start_ms": 5570000,
               "title": "Chapter V"
             },
             {
               "audio_url": "https://www.archive.org/download/my_experiences_in_a_lunatic_asylum_1606_librivox/experienceslunaticasylum_06_merivale_64kb.mp3",
               "length_ms": 1913000,
+              "readers": [
+                "shevyon4him"
+              ],
               "start_ms": 7178000,
               "title": "Chapter VI"
             },
             {
               "audio_url": "https://www.archive.org/download/my_experiences_in_a_lunatic_asylum_1606_librivox/experienceslunaticasylum_07_merivale_64kb.mp3",
               "length_ms": 1667000,
+              "readers": [
+                "carol-cotter"
+              ],
               "start_ms": 9091000,
               "title": "Chapter VII"
             },
             {
               "audio_url": "https://www.archive.org/download/my_experiences_in_a_lunatic_asylum_1606_librivox/experienceslunaticasylum_08_merivale_64kb.mp3",
               "length_ms": 380000,
+              "readers": [
+                "carol-cotter"
+              ],
               "start_ms": 10758000,
               "title": "‘L’envoi.’"
             }
@@ -8275,7 +8378,11 @@
           "cover_url": "https://archive.org/download/my_experiences_in_a_lunatic_asylum_1606_librivox/experiences_lunatic_asylum_merivale_1606.jpg",
           "id": "carol-cotter",
           "language": "en",
+          "librivox_genres": [
+            "Memoirs"
+          ],
           "librivox_id": 9937,
+          "librivox_title": "My Experiences in a Lunatic Asylum",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/my-experiences-in-a-lunatic-asylum-by-herman-charles-merivale/",

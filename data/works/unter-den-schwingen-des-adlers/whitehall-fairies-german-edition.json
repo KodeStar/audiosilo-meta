@@ -1082,7 +1082,13 @@
           "cover_url": "https://archive.org/download/whiteoaks_2610_librivox/whiteoaks_2609.jpg",
           "id": "atul-sharma",
           "language": "en",
+          "librivox_genres": [
+            "Fictional Biographies & Memoirs",
+            "General Fiction",
+            "Historical Fiction"
+          ],
           "librivox_id": 22890,
+          "librivox_title": "Whiteoaks",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/whiteoaks-by-mazo-de-la-roche/",
@@ -4547,7 +4553,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/whither_1503.jpg",
           "id": "omri-lernau",
           "language": "he",
+          "librivox_genres": [
+            "Literary Fiction"
+          ],
           "librivox_id": 9352,
+          "librivox_title": "?לאן (Whither?)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/whither-by-mordecai-zeev-feierberg/",
@@ -5038,7 +5048,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt32/whither_thou_goest_1306.jpg",
           "id": "tom-weiss",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Crime & Mystery Fiction"
+          ],
           "librivox_id": 7848,
+          "librivox_title": "Whither Thou Goest",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/whither-thou-goest-by-william-le-queux/",
@@ -5182,7 +5197,12 @@
           "cover_url": "https://archive.org/download/whitmananinterpretation_2406_librivox/Whitman_2406.jpg",
           "id": "jim-locke",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Biography & Autobiography"
+          ],
           "librivox_id": 20564,
+          "librivox_title": "Whitman: An Interpretation in Narrative",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/whitman-an-interpretation-emory-holloway/",
@@ -6428,48 +6448,141 @@
             {
               "audio_url": "https://www.archive.org/download/whittington_cat_1312_librivox/whittington_0_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "cori-samuel",
+                "andy-minter-1934-2017",
+                "jc-guan",
+                "mb",
+                "philippa",
+                "anne-cheng",
+                "anna-roberts",
+                "ruth-golding",
+                "david-lawrence",
+                "tom",
+                "triciag",
+                "lkku",
+                "lucy-perry",
+                "kim-stich",
+                "phil-chenevert"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Dramatis Personae"
             },
             {
               "audio_url": "https://www.archive.org/download/whittington_cat_1312_librivox/whittington_1_64kb.mp3",
               "length_ms": 981000,
+              "readers": [
+                "andy-minter-1934-2017",
+                "jc-guan",
+                "philippa",
+                "anne-cheng",
+                "anna-roberts",
+                "ruth-golding",
+                "triciag",
+                "lkku",
+                "lucy-perry",
+                "kim-stich"
+              ],
+              "section_number": 1,
               "start_ms": 67000,
               "title": "Scene I"
             },
             {
               "audio_url": "https://www.archive.org/download/whittington_cat_1312_librivox/whittington_2_64kb.mp3",
               "length_ms": 695000,
+              "readers": [
+                "andy-minter-1934-2017",
+                "jc-guan",
+                "philippa",
+                "ruth-golding",
+                "tom",
+                "kim-stich"
+              ],
+              "section_number": 2,
               "start_ms": 1048000,
               "title": "Scene II"
             },
             {
               "audio_url": "https://www.archive.org/download/whittington_cat_1312_librivox/whittington_3_64kb.mp3",
               "length_ms": 659000,
+              "readers": [
+                "cori-samuel",
+                "andy-minter-1934-2017",
+                "jc-guan",
+                "philippa",
+                "anne-cheng",
+                "ruth-golding",
+                "tom",
+                "kim-stich"
+              ],
+              "section_number": 3,
               "start_ms": 1743000,
               "title": "Scene III"
             },
             {
               "audio_url": "https://www.archive.org/download/whittington_cat_1312_librivox/whittington_4_64kb.mp3",
               "length_ms": 315000,
+              "readers": [
+                "andy-minter-1934-2017",
+                "jc-guan",
+                "philippa",
+                "ruth-golding",
+                "david-lawrence",
+                "tom",
+                "kim-stich"
+              ],
+              "section_number": 4,
               "start_ms": 2402000,
               "title": "Scene IV"
             },
             {
               "audio_url": "https://www.archive.org/download/whittington_cat_1312_librivox/whittington_5_64kb.mp3",
               "length_ms": 475000,
+              "readers": [
+                "cori-samuel",
+                "andy-minter-1934-2017",
+                "jc-guan",
+                "mb",
+                "philippa",
+                "ruth-golding",
+                "david-lawrence",
+                "tom",
+                "kim-stich"
+              ],
+              "section_number": 5,
               "start_ms": 2717000,
               "title": "Scene V"
             },
             {
               "audio_url": "https://www.archive.org/download/whittington_cat_1312_librivox/whittington_6_64kb.mp3",
               "length_ms": 567000,
+              "readers": [
+                "andy-minter-1934-2017",
+                "jc-guan",
+                "philippa",
+                "ruth-golding",
+                "kim-stich",
+                "phil-chenevert"
+              ],
+              "section_number": 6,
               "start_ms": 3192000,
               "title": "Scene VI"
             },
             {
               "audio_url": "https://www.archive.org/download/whittington_cat_1312_librivox/whittington_7_64kb.mp3",
               "length_ms": 454000,
+              "readers": [
+                "cori-samuel",
+                "andy-minter-1934-2017",
+                "jc-guan",
+                "philippa",
+                "ruth-golding",
+                "tom",
+                "kim-stich",
+                "phil-chenevert"
+              ],
+              "section_number": 7,
               "start_ms": 3759000,
               "title": "Scene VII"
             }
@@ -6478,7 +6591,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/whittingtoncat_1312.jpg",
           "id": "cori-samuel",
           "language": "en",
+          "librivox_genres": [
+            "Comedy"
+          ],
           "librivox_id": 2503,
+          "librivox_title": "Whittington and his Cat",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/whittington-and-his-cat-by-e-l-blanchard/",

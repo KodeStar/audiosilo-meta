@@ -1010,7 +1010,12 @@
           "cover_url": "https://archive.org/download/cecils_own_book_1607_librivox/cecils_own_book_1607.jpg",
           "id": "phil-benson",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction",
+            "Single author"
+          ],
           "librivox_id": 11007,
+          "librivox_title": "Cecil's Own Book",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/cecils-own-book-by-ann-hawkshaw/",
@@ -2616,7 +2621,13 @@
           "cover_url": "https://archive.org/download/librivoxcdcoverart36/cedrictheforester_2002.jpg",
           "id": "lynette-caulkins",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Culture & Heritage Fiction",
+            "Historical Fiction"
+          ],
           "librivox_id": 14487,
+          "librivox_title": "Cedric the Forester",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/cedric-the-forester-by-bernard-gay-marshall/",
@@ -5095,9 +5106,19 @@
           ],
           "copyright_year": 1910,
           "cover_url": "https://archive.org/download/celebratedcrimesvol1_version_2_1611_librivox/celebrated_crimes1_1612.jpg",
+          "credits": [
+            {
+              "person": "george-burnham-ives",
+              "role": "translator"
+            }
+          ],
           "id": "john-van-stan",
           "language": "en",
+          "librivox_genres": [
+            "True Crime"
+          ],
           "librivox_id": 11216,
+          "librivox_title": "Celebrated Crimes, Vol. 1: The Borgias and the Cenci (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-crimes-vol-1-the-borgias-and-the-cenci-version-2-by-alexandre-dumas/",
@@ -5126,213 +5147,327 @@
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-01_dumas_64kb.mp3",
               "length_ms": 380000,
+              "readers": [
+                "neeru-iyer"
+              ],
               "start_ms": 0,
               "title": "1-01 - Celebrated Crimes: Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-02_dumas_64kb.mp3",
               "length_ms": 720000,
+              "readers": [
+                "barry-eads"
+              ],
               "start_ms": 380000,
               "title": "1-02 - The Borgias: Prologue"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-03_dumas_64kb.mp3",
               "length_ms": 1530000,
+              "readers": [
+                "dawn-larsen"
+              ],
               "start_ms": 1100000,
               "title": "1-03 - The Borgias: Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-04_dumas_64kb.mp3",
               "length_ms": 1303000,
+              "readers": [
+                "jacquerie"
+              ],
               "start_ms": 2630000,
               "title": "1-04 - The Borgias: Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-05_dumas_64kb.mp3",
               "length_ms": 820000,
+              "readers": [
+                "jacquerie"
+              ],
               "start_ms": 3933000,
               "title": "1-05 - The Borgias: Chapter 3, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-06_dumas_64kb.mp3",
               "length_ms": 1311000,
+              "readers": [
+                "jacquerie"
+              ],
               "start_ms": 4753000,
               "title": "1-06 - The Borgias: Chapter 3, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-07_dumas_64kb.mp3",
               "length_ms": 1187000,
+              "readers": [
+                "jacquerie"
+              ],
               "start_ms": 6064000,
               "title": "1-07 - The Borgias: Chapter 4, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-08_dumas_64kb.mp3",
               "length_ms": 1051000,
+              "readers": [
+                "jacquerie"
+              ],
               "start_ms": 7251000,
               "title": "1-08 - The Borgias: Chapter 4, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-09_dumas_64kb.mp3",
               "length_ms": 1351000,
+              "readers": [
+                "jacquerie"
+              ],
               "start_ms": 8302000,
               "title": "1-09 - The Borgias: Chapter 5, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-10_dumas_64kb.mp3",
               "length_ms": 1349000,
+              "readers": [
+                "jacquerie"
+              ],
               "start_ms": 9653000,
               "title": "1-10 - The Borgias: Chapter 5, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-11_dumas_64kb.mp3",
               "length_ms": 1344000,
+              "readers": [
+                "jacquerie"
+              ],
               "start_ms": 11002000,
               "title": "1-11 - The Borgias: Chapter 5, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-12_dumas_64kb.mp3",
               "length_ms": 893000,
+              "readers": [
+                "morganscorpion"
+              ],
               "start_ms": 12346000,
               "title": "1-12 - The Borgias: Chapter 6, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-13_dumas_64kb.mp3",
               "length_ms": 912000,
+              "readers": [
+                "morganscorpion"
+              ],
               "start_ms": 13239000,
               "title": "1-13 - The Borgias: Chapter 6, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-14_dumas_64kb.mp3",
               "length_ms": 1063000,
+              "readers": [
+                "jacquerie"
+              ],
               "start_ms": 14151000,
               "title": "1-14 - The Borgias: Chapter 7, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-15_dumas_64kb.mp3",
               "length_ms": 984000,
+              "readers": [
+                "jacquerie"
+              ],
               "start_ms": 15214000,
               "title": "1-15 - The Borgias: Chapter 7, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-16_dumas_64kb.mp3",
               "length_ms": 1676000,
+              "readers": [
+                "mpinedag"
+              ],
               "start_ms": 16198000,
               "title": "1-16 - The Borgias: Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-17_dumas_64kb.mp3",
               "length_ms": 1592000,
+              "readers": [
+                "mpinedag"
+              ],
               "start_ms": 17874000,
               "title": "1-17 - The Borgias: Chapter 9"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-18_dumas_64kb.mp3",
               "length_ms": 1115000,
+              "readers": [
+                "julie-vw"
+              ],
               "start_ms": 19466000,
               "title": "1-18 - The Borgias: Chapter 10, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-19_dumas_64kb.mp3",
               "length_ms": 1263000,
+              "readers": [
+                "julie-vw"
+              ],
               "start_ms": 20581000,
               "title": "1-19 - The Borgias: Chapter 10, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-20_dumas_64kb.mp3",
               "length_ms": 1106000,
+              "readers": [
+                "morganscorpion"
+              ],
               "start_ms": 21844000,
               "title": "1-20 - The Borgias: Chapter 11, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-21_dumas_64kb.mp3",
               "length_ms": 1152000,
+              "readers": [
+                "morganscorpion"
+              ],
               "start_ms": 22950000,
               "title": "1-21 - The Borgias: Chapter 11, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-22_dumas_64kb.mp3",
               "length_ms": 1584000,
+              "readers": [
+                "kevin-maxson"
+              ],
               "start_ms": 24102000,
               "title": "1-22 - The Borgias: Chapter 12"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-23_dumas_64kb.mp3",
               "length_ms": 1201000,
+              "readers": [
+                "morganscorpion"
+              ],
               "start_ms": 25686000,
               "title": "1-23 - The Borgias: Chapter 13, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-24_dumas_64kb.mp3",
               "length_ms": 1038000,
+              "readers": [
+                "morganscorpion"
+              ],
               "start_ms": 26887000,
               "title": "1-24 - The Borgias: Chapter 13, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-25_dumas_64kb.mp3",
               "length_ms": 1096000,
+              "readers": [
+                "ann-boulais"
+              ],
               "start_ms": 27925000,
               "title": "1-25 - The Borgias: Chapter 14"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-26_dumas_64kb.mp3",
               "length_ms": 1608000,
+              "readers": [
+                "ann-boulais"
+              ],
               "start_ms": 29021000,
               "title": "1-26 - The Borgias: Chapter 15"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-27_dumas_64kb.mp3",
               "length_ms": 893000,
+              "readers": [
+                "jacquerie"
+              ],
               "start_ms": 30629000,
               "title": "1-27 - The Borgias: Chapter 16"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-28_dumas_64kb.mp3",
               "length_ms": 545000,
+              "readers": [
+                "esther"
+              ],
               "start_ms": 31522000,
               "title": "1-28 - The Borgias: Epilogue"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-29_dumas_64kb.mp3",
               "length_ms": 894000,
+              "readers": [
+                "miriam-esther-goldman-1991-2017"
+              ],
               "start_ms": 32067000,
               "title": "1-29 - The Cenci: Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-30_dumas_64kb.mp3",
               "length_ms": 660000,
+              "readers": [
+                "stephenc"
+              ],
               "start_ms": 32961000,
               "title": "1-30 - The Cenci: Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-31_dumas_64kb.mp3",
               "length_ms": 892000,
+              "readers": [
+                "stephenc"
+              ],
               "start_ms": 33621000,
               "title": "1-31 - The Cenci: Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-32_dumas_64kb.mp3",
               "length_ms": 814000,
+              "readers": [
+                "stephenc"
+              ],
               "start_ms": 34513000,
               "title": "1-32 - The Cenci: Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-33_dumas_64kb.mp3",
               "length_ms": 844000,
+              "readers": [
+                "stephenc"
+              ],
               "start_ms": 35327000,
               "title": "1-33 - The Cenci: Part 5"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_1_1001_librivox/celebratedcrimes_1-34_dumas_64kb.mp3",
               "length_ms": 843000,
+              "readers": [
+                "stephenc"
+              ],
               "start_ms": 36171000,
               "title": "1-34 - The Cenci: Part 6"
             }
           ],
           "copyright_year": 1895,
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt/celebrated_crimes.jpg",
+          "credits": [
+            {
+              "person": "george-burnham-ives",
+              "role": "translator"
+            }
+          ],
           "id": "neeru-iyer",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "True Crime",
+            "Middle Ages/Middle History"
+          ],
           "librivox_id": 3339,
+          "librivox_title": "Celebrated Crimes, Vol. 1:  The Borgias and The Cenci",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-crimes-vol-1-by-alexandre-dumas/",
@@ -5486,7 +5621,12 @@
           "cover_url": "https://archive.org/download/celebrated_crimes_2_1410_librivox/Massacres_1411.jpg",
           "id": "john-van-stan",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "True Crime"
+          ],
           "librivox_id": 9128,
+          "librivox_title": "Celebrated Crimes, Vol. 2: The Massacres of the South",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-crimes-vol-2-the-massacres-of-the-south-by-alexandre-dumas/",
@@ -5537,132 +5677,198 @@
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_mary_stuart_1603_librivox/celebratedcrimes3_01_dumas_64kb.mp3",
               "length_ms": 1021000,
+              "readers": [
+                "clarinetcarrot"
+              ],
               "start_ms": 0,
               "title": "Chapter I, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_mary_stuart_1603_librivox/celebratedcrimes3_02_dumas_64kb.mp3",
               "length_ms": 986000,
+              "readers": [
+                "clarinetcarrot"
+              ],
               "start_ms": 1021000,
               "title": "Chapter I, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_mary_stuart_1603_librivox/celebratedcrimes3_03_dumas_64kb.mp3",
               "length_ms": 1238000,
+              "readers": [
+                "dorothy-godfrey-smith"
+              ],
               "start_ms": 2007000,
               "title": "Chapter II, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_mary_stuart_1603_librivox/celebratedcrimes3_04_dumas_64kb.mp3",
               "length_ms": 1453000,
+              "readers": [
+                "dorothy-godfrey-smith"
+              ],
               "start_ms": 3245000,
               "title": "Chapter II, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_mary_stuart_1603_librivox/celebratedcrimes3_05_dumas_64kb.mp3",
               "length_ms": 1453000,
+              "readers": [
+                "clarinetcarrot"
+              ],
               "start_ms": 4698000,
               "title": "Chapter III, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_mary_stuart_1603_librivox/celebratedcrimes3_06_dumas_64kb.mp3",
               "length_ms": 1385000,
+              "readers": [
+                "clarinetcarrot"
+              ],
               "start_ms": 6151000,
               "title": "Chapter III, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_mary_stuart_1603_librivox/celebratedcrimes3_07_dumas_64kb.mp3",
               "length_ms": 718000,
+              "readers": [
+                "mbm0rxi"
+              ],
               "start_ms": 7536000,
               "title": "Chapter IV"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_mary_stuart_1603_librivox/celebratedcrimes3_08_dumas_64kb.mp3",
               "length_ms": 1082000,
+              "readers": [
+                "mbm0rxi"
+              ],
               "start_ms": 8254000,
               "title": "Chapter V, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_mary_stuart_1603_librivox/celebratedcrimes3_09_dumas_64kb.mp3",
               "length_ms": 1051000,
+              "readers": [
+                "mbm0rxi"
+              ],
               "start_ms": 9336000,
               "title": "Chapter V, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_mary_stuart_1603_librivox/celebratedcrimes3_10_dumas_64kb.mp3",
               "length_ms": 1047000,
+              "readers": [
+                "mbm0rxi"
+              ],
               "start_ms": 10387000,
               "title": "Chapter V, part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_mary_stuart_1603_librivox/celebratedcrimes3_11_dumas_64kb.mp3",
               "length_ms": 1009000,
+              "readers": [
+                "mbm0rxi"
+              ],
               "start_ms": 11434000,
               "title": "Chapter V, part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_mary_stuart_1603_librivox/celebratedcrimes3_12_dumas_64kb.mp3",
               "length_ms": 1271000,
+              "readers": [
+                "dini-steyn"
+              ],
               "start_ms": 12443000,
               "title": "Chapter V, part 5"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_mary_stuart_1603_librivox/celebratedcrimes3_13_dumas_64kb.mp3",
               "length_ms": 1739000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 13714000,
               "title": "Chapter VI"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_mary_stuart_1603_librivox/celebratedcrimes3_14_dumas_64kb.mp3",
               "length_ms": 1617000,
+              "readers": [
+                "jim-lardner"
+              ],
               "start_ms": 15453000,
               "title": "Chapter VII, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_mary_stuart_1603_librivox/celebratedcrimes3_15_dumas_64kb.mp3",
               "length_ms": 2009000,
+              "readers": [
+                "jim-lardner"
+              ],
               "start_ms": 17070000,
               "title": "Chapter VII, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_mary_stuart_1603_librivox/celebratedcrimes3_16_dumas_64kb.mp3",
               "length_ms": 1184000,
+              "readers": [
+                "dini-steyn"
+              ],
               "start_ms": 19079000,
               "title": "Chapter VIII, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_mary_stuart_1603_librivox/celebratedcrimes3_17_dumas_64kb.mp3",
               "length_ms": 1312000,
+              "readers": [
+                "dini-steyn"
+              ],
               "start_ms": 20263000,
               "title": "Chapter VIII, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_mary_stuart_1603_librivox/celebratedcrimes3_18_dumas_64kb.mp3",
               "length_ms": 1135000,
+              "readers": [
+                "dini-steyn"
+              ],
               "start_ms": 21575000,
               "title": "Chapter VIII, part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_mary_stuart_1603_librivox/celebratedcrimes3_19_dumas_64kb.mp3",
               "length_ms": 1400000,
+              "readers": [
+                "dorothy-godfrey-smith"
+              ],
               "start_ms": 22710000,
               "title": "Chapter IX, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_mary_stuart_1603_librivox/celebratedcrimes3_20_dumas_64kb.mp3",
               "length_ms": 1565000,
+              "readers": [
+                "dorothy-godfrey-smith"
+              ],
               "start_ms": 24110000,
               "title": "Chapter IX, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_mary_stuart_1603_librivox/celebratedcrimes3_21_dumas_64kb.mp3",
               "length_ms": 1682000,
+              "readers": [
+                "dorothy-godfrey-smith"
+              ],
               "start_ms": 25675000,
               "title": "Chapter IX, part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_mary_stuart_1603_librivox/celebratedcrimes3_22_dumas_64kb.mp3",
               "length_ms": 1063000,
+              "readers": [
+                "clarinetcarrot"
+              ],
               "start_ms": 27357000,
               "title": "Chapter X"
             }
@@ -5671,7 +5877,11 @@
           "cover_url": "https://archive.org/download/celebrated_crimes_mary_stuart_1603_librivox/celebrated_crimes_1603.jpg",
           "id": "clarinetcarrot",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography"
+          ],
           "librivox_id": 10167,
+          "librivox_title": "Celebrated Crimes, Vol. 3: Mary Stuart",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-crimes-vol-3-mary-stuart-by-alexandre-dumas/",
@@ -5771,9 +5981,19 @@
           ],
           "copyright_year": 1910,
           "cover_url": "https://archive.org/download/celebratedcrimes3_marystuart_1701_librivox/celebratedcrimesvol03marystuart_1701.jpg",
+          "credits": [
+            {
+              "person": "george-burnham-ives",
+              "role": "translator"
+            }
+          ],
           "id": "john-van-stan",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography"
+          ],
           "librivox_id": 11439,
+          "librivox_title": "Celebrated Crimes, Vol. 3: Mary Stuart (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-crimes-vol-3-mary-stuart-by-alexandre-dumas-2/",
@@ -5855,9 +6075,20 @@
           ],
           "copyright_year": 1841,
           "cover_url": "https://archive.org/download/celebratedcrimes4_karl-ludwigsand_1701_librivox/celebrated_crimes4_1701.jpg",
+          "credits": [
+            {
+              "person": "george-burnham-ives",
+              "role": "translator"
+            }
+          ],
           "id": "john-van-stan",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "True Crime"
+          ],
           "librivox_id": 11552,
+          "librivox_title": "Celebrated Crimes, Vol. 4: Karl-Ludwig Sand (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-crimes-vol-4-karl-ludwig-sand-by-alexandre-dumas-2/",
@@ -5886,36 +6117,54 @@
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_4_1604_librivox/karlludwigsand_01_dumas_64kb.mp3",
               "length_ms": 1120000,
+              "readers": [
+                "mbm0rxi"
+              ],
               "start_ms": 0,
               "title": "Section I"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_4_1604_librivox/karlludwigsand_02_dumas_64kb.mp3",
               "length_ms": 1242000,
+              "readers": [
+                "tristan"
+              ],
               "start_ms": 1120000,
               "title": "Section II"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_4_1604_librivox/karlludwigsand_03_dumas_64kb.mp3",
               "length_ms": 1276000,
+              "readers": [
+                "mbm0rxi"
+              ],
               "start_ms": 2362000,
               "title": "Section III"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_4_1604_librivox/karlludwigsand_04_dumas_64kb.mp3",
               "length_ms": 1139000,
+              "readers": [
+                "mbm0rxi"
+              ],
               "start_ms": 3638000,
               "title": "Section IV"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_4_1604_librivox/karlludwigsand_05_dumas_64kb.mp3",
               "length_ms": 1358000,
+              "readers": [
+                "mbm0rxi"
+              ],
               "start_ms": 4777000,
               "title": "Section V"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_4_1604_librivox/karlludwigsand_06_dumas_64kb.mp3",
               "length_ms": 1676000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 6135000,
               "title": "Section VI"
             }
@@ -5924,7 +6173,11 @@
           "cover_url": "https://archive.org/download/celebrated_crimes_vol_4_1604_librivox/celebrated_crimes_4_kls_dumas_1604.jpg",
           "id": "mbm0rxi",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography"
+          ],
           "librivox_id": 10660,
+          "librivox_title": "Celebrated Crimes, Vol. 4: Karl-Ludwig Sand",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-crimes-vol-4-karl-ludwig-sand-by-alexandre-dumas/",
@@ -5990,84 +6243,126 @@
             {
               "audio_url": "https://www.archive.org/download/urbain_grandier_1612_librivox/celebratedcrimes5_01_dumas_64kb.mp3",
               "length_ms": 902000,
+              "readers": [
+                "johannc"
+              ],
               "start_ms": 0,
               "title": "Chapter I, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/urbain_grandier_1612_librivox/celebratedcrimes5_02_dumas_64kb.mp3",
               "length_ms": 1120000,
+              "readers": [
+                "storylines"
+              ],
               "start_ms": 902000,
               "title": "Chapter I, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/urbain_grandier_1612_librivox/celebratedcrimes5_03_dumas_64kb.mp3",
               "length_ms": 577000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 2022000,
               "title": "Chapter II"
             },
             {
               "audio_url": "https://www.archive.org/download/urbain_grandier_1612_librivox/celebratedcrimes5_04_dumas_64kb.mp3",
               "length_ms": 1611000,
+              "readers": [
+                "deon-gines"
+              ],
               "start_ms": 2599000,
               "title": "Chapter III"
             },
             {
               "audio_url": "https://www.archive.org/download/urbain_grandier_1612_librivox/celebratedcrimes5_05_dumas_64kb.mp3",
               "length_ms": 665000,
+              "readers": [
+                "deon-gines"
+              ],
               "start_ms": 4210000,
               "title": "Chapter IV"
             },
             {
               "audio_url": "https://www.archive.org/download/urbain_grandier_1612_librivox/celebratedcrimes5_06_dumas_64kb.mp3",
               "length_ms": 1253000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 4875000,
               "title": "Chapter V"
             },
             {
               "audio_url": "https://www.archive.org/download/urbain_grandier_1612_librivox/celebratedcrimes5_07_dumas_64kb.mp3",
               "length_ms": 792000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 6128000,
               "title": "Chapter VI"
             },
             {
               "audio_url": "https://www.archive.org/download/urbain_grandier_1612_librivox/celebratedcrimes5_08_dumas_64kb.mp3",
               "length_ms": 1338000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 6920000,
               "title": "Chapter VII"
             },
             {
               "audio_url": "https://www.archive.org/download/urbain_grandier_1612_librivox/celebratedcrimes5_09_dumas_64kb.mp3",
               "length_ms": 867000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 8258000,
               "title": "Chapter VIII"
             },
             {
               "audio_url": "https://www.archive.org/download/urbain_grandier_1612_librivox/celebratedcrimes5_10_dumas_64kb.mp3",
               "length_ms": 1440000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 9125000,
               "title": "Chapter IX, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/urbain_grandier_1612_librivox/celebratedcrimes5_11_dumas_64kb.mp3",
               "length_ms": 1509000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 10565000,
               "title": "Chapter IX, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/urbain_grandier_1612_librivox/celebratedcrimes5_12_dumas_64kb.mp3",
               "length_ms": 865000,
+              "readers": [
+                "deon-gines"
+              ],
               "start_ms": 12074000,
               "title": "Chapter X"
             },
             {
               "audio_url": "https://www.archive.org/download/urbain_grandier_1612_librivox/celebratedcrimes5_13_dumas_64kb.mp3",
               "length_ms": 1268000,
+              "readers": [
+                "deon-gines"
+              ],
               "start_ms": 12939000,
               "title": "Chapter XI"
             },
             {
               "audio_url": "https://www.archive.org/download/urbain_grandier_1612_librivox/celebratedcrimes5_14_dumas_64kb.mp3",
               "length_ms": 693000,
+              "readers": [
+                "deon-gines"
+              ],
               "start_ms": 14207000,
               "title": "Chapter XII"
             }
@@ -6076,7 +6371,11 @@
           "cover_url": "https://archive.org/download/urbain_grandier_1612_librivox/celebrated_crimes_5_dumas_1612.jpg",
           "id": "johannc",
           "language": "en",
+          "librivox_genres": [
+            "True Crime"
+          ],
           "librivox_id": 10839,
+          "librivox_title": "Celebrated Crimes, Vol. 4: Part 2: Urbain Grandier",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-crimes-vol-4-urbain-grandier-by-alexandre-dumas/",
@@ -6181,9 +6480,21 @@
           ],
           "copyright_year": 1841,
           "cover_url": "https://archive.org/download/celebratedcrimesvol4_2_urbain_grandier_1703_librivox/celebrated_crimes_urbain_1703.jpg",
+          "credits": [
+            {
+              "person": "george-burnham-ives",
+              "role": "translator"
+            }
+          ],
           "id": "john-van-stan",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "True Crime",
+            "Christianity - Other"
+          ],
           "librivox_id": 11631,
+          "librivox_title": "Celebrated Crimes, Vol. 4: Part 2: Urbain Grandier (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-crimes-vol-4-part-2-urbain-grandier-by-alexandre-dumas/",
@@ -6265,9 +6576,20 @@
           ],
           "copyright_year": 1910,
           "cover_url": "https://archive.org/download/celebrated_crimes_vol_4_part_3_nisida_1705_librivox/celebrated_crimes_nisida_1705.jpg",
+          "credits": [
+            {
+              "person": "george-burnham-ives",
+              "role": "translator"
+            }
+          ],
           "id": "john-van-stan",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "True Crime"
+          ],
           "librivox_id": 11798,
+          "librivox_title": "Celebrated Crimes, Vol. 4: Part 3: Nisida",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-crimes-vol-4-part-3-nisida-by-alexandre-dumas/",
@@ -6296,36 +6618,54 @@
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_3v2_1804_librivox/celebratedcrimesv4p3_nisida_version_2_01_dumas_64kb.mp3",
               "length_ms": 1117000,
+              "readers": [
+                "nadja-fernandes"
+              ],
               "start_ms": 0,
               "title": "Section 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_3v2_1804_librivox/celebratedcrimesv4p3_nisida_version_2_02_dumas_64kb.mp3",
               "length_ms": 1370000,
+              "readers": [
+                "elizabeth-p"
+              ],
               "start_ms": 1117000,
               "title": "Section 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_3v2_1804_librivox/celebratedcrimesv4p3_nisida_version_2_03_dumas_64kb.mp3",
               "length_ms": 885000,
+              "readers": [
+                "nadja-fernandes"
+              ],
               "start_ms": 2487000,
               "title": "Section 3"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_3v2_1804_librivox/celebratedcrimesv4p3_nisida_version_2_04_dumas_64kb.mp3",
               "length_ms": 944000,
+              "readers": [
+                "lillis-joy"
+              ],
               "start_ms": 3372000,
               "title": "Section 4"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_3v2_1804_librivox/celebratedcrimesv4p3_nisida_version_2_05_dumas_64kb.mp3",
               "length_ms": 1060000,
+              "readers": [
+                "michele-eaton"
+              ],
               "start_ms": 4316000,
               "title": "Section 5"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_3v2_1804_librivox/celebratedcrimesv4p3_nisida_version_2_06_dumas_64kb.mp3",
               "length_ms": 1115000,
+              "readers": [
+                "seth-pate"
+              ],
               "start_ms": 5376000,
               "title": "Section 6"
             }
@@ -6334,7 +6674,11 @@
           "cover_url": "https://archive.org/download/celebrated_crimes_3v2_1804_librivox/celebrated_crimes_4_nisida_a_dumas_1804.jpg",
           "id": "nadja-fernandes",
           "language": "en",
+          "librivox_genres": [
+            "True Crime"
+          ],
           "librivox_id": 12029,
+          "librivox_title": "Celebrated Crimes, Vol. 4: Part 3: Nisida (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-crimes-vol-4-part-3-nisida-version-2-by-alexandre-dumas/",
@@ -6389,132 +6733,198 @@
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_5_1809_librivox/celebratedcrimesvol5_01_dumas_64kb.mp3",
               "length_ms": 978000,
+              "readers": [
+                "susanjhudson"
+              ],
               "start_ms": 0,
               "title": "Derues Section 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_5_1809_librivox/celebratedcrimesvol5_02_dumas_64kb.mp3",
               "length_ms": 1065000,
+              "readers": [
+                "susanjhudson"
+              ],
               "start_ms": 978000,
               "title": "Section 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_5_1809_librivox/celebratedcrimesvol5_03_dumas_64kb.mp3",
               "length_ms": 1347000,
+              "readers": [
+                "susanjhudson"
+              ],
               "start_ms": 2043000,
               "title": "Section 3"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_5_1809_librivox/celebratedcrimesvol5_04_dumas_64kb.mp3",
               "length_ms": 1444000,
+              "readers": [
+                "susanjhudson"
+              ],
               "start_ms": 3390000,
               "title": "Section 4"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_5_1809_librivox/celebratedcrimesvol5_05_dumas_64kb.mp3",
               "length_ms": 1255000,
+              "readers": [
+                "russelleric"
+              ],
               "start_ms": 4834000,
               "title": "Section 5"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_5_1809_librivox/celebratedcrimesvol5_06_dumas_64kb.mp3",
               "length_ms": 1231000,
+              "readers": [
+                "russelleric"
+              ],
               "start_ms": 6089000,
               "title": "Section 6"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_5_1809_librivox/celebratedcrimesvol5_07_dumas_64kb.mp3",
               "length_ms": 1181000,
+              "readers": [
+                "russelleric"
+              ],
               "start_ms": 7320000,
               "title": "Section 7"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_5_1809_librivox/celebratedcrimesvol5_08_dumas_64kb.mp3",
               "length_ms": 1778000,
+              "readers": [
+                "tom-denholm"
+              ],
               "start_ms": 8501000,
               "title": "Section 8"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_5_1809_librivox/celebratedcrimesvol5_09_dumas_64kb.mp3",
               "length_ms": 1642000,
+              "readers": [
+                "tom-denholm"
+              ],
               "start_ms": 10279000,
               "title": "Section 9"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_5_1809_librivox/celebratedcrimesvol5_10_dumas_64kb.mp3",
               "length_ms": 1205000,
+              "readers": [
+                "tom-denholm"
+              ],
               "start_ms": 11921000,
               "title": "Section 10"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_5_1809_librivox/celebratedcrimesvol5_11_dumas_64kb.mp3",
               "length_ms": 1836000,
+              "readers": [
+                "tom-denholm"
+              ],
               "start_ms": 13126000,
               "title": "Section 11"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_5_1809_librivox/celebratedcrimesvol5_12_dumas_64kb.mp3",
               "length_ms": 1460000,
+              "readers": [
+                "tom-denholm"
+              ],
               "start_ms": 14962000,
               "title": "Section 12"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_5_1809_librivox/celebratedcrimesvol5_13_dumas_64kb.mp3",
               "length_ms": 1714000,
+              "readers": [
+                "tom-denholm"
+              ],
               "start_ms": 16422000,
               "title": "Section 13"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_5_1809_librivox/celebratedcrimesvol5_14_dumas_64kb.mp3",
               "length_ms": 824000,
+              "readers": [
+                "corey-matlak"
+              ],
               "start_ms": 18136000,
               "title": "La Constantin Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_5_1809_librivox/celebratedcrimesvol5_15_dumas_64kb.mp3",
               "length_ms": 1978000,
+              "readers": [
+                "tom-denholm"
+              ],
               "start_ms": 18960000,
               "title": "Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_5_1809_librivox/celebratedcrimesvol5_16_dumas_64kb.mp3",
               "length_ms": 1127000,
+              "readers": [
+                "tom-denholm"
+              ],
               "start_ms": 20938000,
               "title": "Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_5_1809_librivox/celebratedcrimesvol5_17_dumas_64kb.mp3",
               "length_ms": 1631000,
+              "readers": [
+                "tom-denholm"
+              ],
               "start_ms": 22065000,
               "title": "Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_5_1809_librivox/celebratedcrimesvol5_18_dumas_64kb.mp3",
               "length_ms": 816000,
+              "readers": [
+                "tom-denholm"
+              ],
               "start_ms": 23696000,
               "title": "Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_5_1809_librivox/celebratedcrimesvol5_19_dumas_64kb.mp3",
               "length_ms": 1284000,
+              "readers": [
+                "tom-denholm"
+              ],
               "start_ms": 24512000,
               "title": "Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_5_1809_librivox/celebratedcrimesvol5_20_dumas_64kb.mp3",
               "length_ms": 1518000,
+              "readers": [
+                "tom-denholm"
+              ],
               "start_ms": 25796000,
               "title": "Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_5_1809_librivox/celebratedcrimesvol5_21_dumas_64kb.mp3",
               "length_ms": 1141000,
+              "readers": [
+                "tom-denholm"
+              ],
               "start_ms": 27314000,
               "title": "Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_vol_5_1809_librivox/celebratedcrimesvol5_22_dumas_64kb.mp3",
               "length_ms": 1038000,
+              "readers": [
+                "tom-denholm"
+              ],
               "start_ms": 28455000,
               "title": "Chapter 9"
             }
@@ -6522,7 +6932,11 @@
           "cover_url": "https://archive.org/download/celebrated_crimes_vol_5_1809_librivox/celebratedcrimes5_1809.jpg",
           "id": "susanjhudson",
           "language": "en",
+          "librivox_genres": [
+            "True Crime"
+          ],
           "librivox_id": 12219,
+          "librivox_title": "Celebrated Crimes, Vol. 5: Derues, La Constantin",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-crimes-vol-5-by-alexandre-dumas/",
@@ -6625,9 +7039,19 @@
           ],
           "copyright_year": 1910,
           "cover_url": "https://archive.org/download/celebrated_crimes_vol_5_part_1_desrues_1706_librivox/celebrated_crimes_derues_1706.jpg",
+          "credits": [
+            {
+              "person": "george-burnham-ives",
+              "role": "translator"
+            }
+          ],
           "id": "john-van-stan",
           "language": "en",
+          "librivox_genres": [
+            "True Crime"
+          ],
           "librivox_id": 11874,
+          "librivox_title": "Celebrated Crimes, Vol. 5: Part 1: Desrues",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-crimes-vol-5-part-1-desrues-by-alexandre-dumas/",
@@ -6734,7 +7158,11 @@
           "cover_url": "https://archive.org/download/celebratedcrimes5_part2_laconstantin_1708_librivox/celebrated_crimes_constantin_1708.jpg",
           "id": "john-van-stan",
           "language": "en",
+          "librivox_genres": [
+            "True Crime"
+          ],
           "librivox_id": 12101,
+          "librivox_title": "Celebrated Crimes, Vol. 5: Part 2: La Constantin",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-crimes-vol-5-part-2-la-constantin-by-alexandre-dumas/",
@@ -6840,9 +7268,20 @@
           ],
           "copyright_year": 1910,
           "cover_url": "https://archive.org/download/celebratedcrimes6_part1_joanofnaples_1708_librivox/celebrated_crimes_joan_1708.jpg",
+          "credits": [
+            {
+              "person": "george-burnham-ives",
+              "role": "translator"
+            }
+          ],
           "id": "john-van-stan",
           "language": "en",
+          "librivox_genres": [
+            "True Crime",
+            "Early Modern"
+          ],
           "librivox_id": 12173,
+          "librivox_title": "Celebrated Crimes, Vol. 6: Part 1: Joan of Naples",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-crimes-vol-6-part-1-joan-of-naples-by-alexandre-dumas/",
@@ -6931,9 +7370,20 @@
           ],
           "copyright_year": 1910,
           "cover_url": "https://archive.org/download/celebratedcrimes6_part2_themanintheironmask_1709_librivox/celebrated_crimes_1709.jpg",
+          "credits": [
+            {
+              "person": "george-burnham-ives",
+              "role": "translator"
+            }
+          ],
           "id": "john-van-stan",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "True Crime"
+          ],
           "librivox_id": 12238,
+          "librivox_title": "Celebrated Crimes, Vol. 6: Part 2: The Man in the Iron Mask",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-crimes-vol-6-part-2-the-man-in-the-iron-mask-by-alexandre-dumas/",
@@ -6984,60 +7434,90 @@
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_6_2_1903_librivox/celebratedcrimesvol6part2_01_dumas_64kb.mp3",
               "length_ms": 1147000,
+              "readers": [
+                "russelleric"
+              ],
               "start_ms": 0,
               "title": "The Man in the Iron Mask Chapter 1 Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_6_2_1903_librivox/celebratedcrimesvol6part2_02_dumas_64kb.mp3",
               "length_ms": 1096000,
+              "readers": [
+                "josh-kibbey"
+              ],
               "start_ms": 1147000,
               "title": "Chapter 1 Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_6_2_1903_librivox/celebratedcrimesvol6part2_03_dumas_64kb.mp3",
               "length_ms": 1294000,
+              "readers": [
+                "dave-gillespie"
+              ],
               "start_ms": 2243000,
               "title": "Chapter 1 Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_6_2_1903_librivox/celebratedcrimesvol6part2_04_dumas_64kb.mp3",
               "length_ms": 1538000,
+              "readers": [
+                "dave-gillespie"
+              ],
               "start_ms": 3537000,
               "title": "Chapter 1 Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_6_2_1903_librivox/celebratedcrimesvol6part2_05_dumas_64kb.mp3",
               "length_ms": 2092000,
+              "readers": [
+                "dave-gillespie"
+              ],
               "start_ms": 5075000,
               "title": "Chapter 1 Part 5"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_6_2_1903_librivox/celebratedcrimesvol6part2_06_dumas_64kb.mp3",
               "length_ms": 1087000,
+              "readers": [
+                "bill-boerst"
+              ],
               "start_ms": 7167000,
               "title": "Martin Guerre Chapter 2 Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_6_2_1903_librivox/celebratedcrimesvol6part2_07_dumas_64kb.mp3",
               "length_ms": 1492000,
+              "readers": [
+                "bill-boerst"
+              ],
               "start_ms": 8254000,
               "title": "Chapter 2 Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_6_2_1903_librivox/celebratedcrimesvol6part2_08_dumas_64kb.mp3",
               "length_ms": 1338000,
+              "readers": [
+                "blainej"
+              ],
               "start_ms": 9746000,
               "title": "Chapter 2 Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_6_2_1903_librivox/celebratedcrimesvol6part2_09_dumas_64kb.mp3",
               "length_ms": 1410000,
+              "readers": [
+                "blainej"
+              ],
               "start_ms": 11084000,
               "title": "Chapter 2 Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_crimes_6_2_1903_librivox/celebratedcrimesvol6part2_10_dumas_64kb.mp3",
               "length_ms": 1704000,
+              "readers": [
+                "blainej"
+              ],
               "start_ms": 12494000,
               "title": "Chapter 2 Part 5"
             }
@@ -7046,7 +7526,11 @@
           "cover_url": "https://archive.org/download/celebrated_crimes_6_2_1903_librivox/celebratedcrimesmanintheironmaskmartinguerre_1903.jpg",
           "id": "russelleric",
           "language": "en",
+          "librivox_genres": [
+            "True Crime"
+          ],
           "librivox_id": 12217,
+          "librivox_title": "Celebrated Crimes, Vol. 6: Part 2: The Man in the Iron Mask, Martin Guerre",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-crimes-vol-6-part-2-by-alexandre-dumas/",
@@ -7138,9 +7622,19 @@
           ],
           "copyright_year": 1910,
           "cover_url": "https://archive.org/download/celebratedcrimes6__3_martin_guerre_1709_librivox/celebrated_crimes6-3_1709.jpg",
+          "credits": [
+            {
+              "person": "george-burnham-ives",
+              "role": "translator"
+            }
+          ],
           "id": "john-van-stan",
           "language": "en",
+          "librivox_genres": [
+            "True Crime"
+          ],
           "librivox_id": 12270,
+          "librivox_title": "Celebrated Crimes, Vol. 6: Part 3: Martin Guerre",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-crimes-vol-6-part-3-martin-guerre-by-alexandre-dumas/",
@@ -7265,9 +7759,20 @@
           ],
           "copyright_year": 1910,
           "cover_url": "https://archive.org/download/celebrated_crimes7_p1_ali_pacha_1710_librivox/celebrated_crimes7-1_1710.jpg",
+          "credits": [
+            {
+              "person": "george-burnham-ives",
+              "role": "translator"
+            }
+          ],
           "id": "john-van-stan",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "True Crime"
+          ],
           "librivox_id": 12326,
+          "librivox_title": "Celebrated Crimes, Vol. 7: Part 1: Ali Pacha",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-crimes-vol-7-part-1-ali-pacha-by-alexandre-dumas/",
@@ -7349,9 +7854,19 @@
           ],
           "copyright_year": 1910,
           "cover_url": "https://archive.org/download/celebratedcrimes_vol_7_2_1712_librivox/celebrated_crimes_7_2_1712.jpg",
+          "credits": [
+            {
+              "person": "george-burnham-ives",
+              "role": "translator"
+            }
+          ],
           "id": "john-van-stan",
           "language": "en",
+          "librivox_genres": [
+            "True Crime"
+          ],
           "librivox_id": 12469,
+          "librivox_title": "Celebrated Crimes, Vol. 7: Part 2: Countess de Saint-Geran",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-crimes-vol-7-part-2-countess-de-saint-geran-by-alexandre-dumas/",
@@ -7427,9 +7942,19 @@
           ],
           "copyright_year": 1910,
           "cover_url": "https://archive.org/download/celebrated_crimes7_3_murat_1802_librivox/celebrated_crimes7-3_1802.jpg",
+          "credits": [
+            {
+              "person": "george-burnham-ives",
+              "role": "translator"
+            }
+          ],
           "id": "john-van-stan",
           "language": "en",
+          "librivox_genres": [
+            "True Crime"
+          ],
           "librivox_id": 12554,
+          "librivox_title": "Celebrated Crimes, Vol. 7: Part 3: Murat",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-crimes-vol-7-part-3-murat-by-alexandre-dumas/",
@@ -7517,9 +8042,19 @@
           ],
           "copyright_year": 1910,
           "cover_url": "https://archive.org/download/celebratedcrimes8_1_marquisedebrinvilliers_1803_librivox/celebrated_crimes_8_1_1803.jpg",
+          "credits": [
+            {
+              "person": "george-burnham-ives",
+              "role": "translator"
+            }
+          ],
           "id": "john-van-stan",
           "language": "en",
+          "librivox_genres": [
+            "True Crime"
+          ],
           "librivox_id": 12686,
+          "librivox_title": "Celebrated Crimes, Vol. 8: Part 1: The Marquise de Brinvilliers",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-crimes-vol-8-part-1-the-marquise-de-brinvilliers-by-alexandre-dumas/",
@@ -7602,9 +8137,20 @@
           ],
           "copyright_year": 1910,
           "cover_url": "https://archive.org/download/celebratedcrimes_8_2_vaninka_1804_librivox/celebrated_crimes_8_2_1804.jpg",
+          "credits": [
+            {
+              "person": "george-burnham-ives",
+              "role": "translator"
+            }
+          ],
           "id": "john-van-stan",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "True Crime"
+          ],
           "librivox_id": 12808,
+          "librivox_title": "Celebrated Crimes, Vol. 8: Part 2: Vaninka",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-crimes-vol-8-part-2-vaninka-by-alexandre-dumas/",
@@ -7692,9 +8238,19 @@
           ],
           "copyright_year": 1910,
           "cover_url": "https://archive.org/download/celebratedcrimes8_3_marquisedeganges_1805_librivox/celebrated_crimes8-3_1805.jpg",
+          "credits": [
+            {
+              "person": "george-burnham-ives",
+              "role": "translator"
+            }
+          ],
           "id": "john-van-stan",
           "language": "en",
+          "librivox_genres": [
+            "True Crime"
+          ],
           "librivox_id": 12921,
+          "librivox_title": "Celebrated Crimes, Vol. 8: Part 3: The Marquise de Ganges",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-crimes-vol-8-part-3-the-marquise-de-ganges-by-alexandre-dumas/",
@@ -7752,279 +8308,424 @@
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_01_verne_64kb.mp3",
               "length_ms": 1204000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 0,
               "title": "Preface. First Part, Chapter I, part 1. Celebrated travellers before the Christian era."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_02_verne_64kb.mp3",
               "length_ms": 809000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 1204000,
               "title": "First Part, Chapter I, part 2. Celebrated travellers before the Christian era."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_03_verne_64kb.mp3",
               "length_ms": 1666000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 2013000,
               "title": "First Part, Chapter II. Celebrated travellers from the 1st to the 9th century."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_04_verne_64kb.mp3",
               "length_ms": 1090000,
+              "readers": [
+                "toddhw"
+              ],
               "start_ms": 3679000,
               "title": "First Part, Chapter III, part 1. Celebrated travellers between the 10th and 13th centuries."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_05_verne_64kb.mp3",
               "length_ms": 1136000,
+              "readers": [
+                "toddhw"
+              ],
               "start_ms": 4769000,
               "title": "First Part, Chapter III, part 2. Celebrated travellers between the 10th and 13th centuries."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_06_verne_64kb.mp3",
               "length_ms": 502000,
+              "readers": [
+                "april-gonzales"
+              ],
               "start_ms": 5905000,
               "title": "First Part, Chapter IV, part 1. Marco Polo."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_07_verne_64kb.mp3",
               "length_ms": 2385000,
+              "readers": [
+                "carol"
+              ],
               "start_ms": 6407000,
               "title": "First Part, Chapter IV, part 2. Marco Polo."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_08_verne_64kb.mp3",
               "length_ms": 1498000,
+              "readers": [
+                "carol"
+              ],
               "start_ms": 8792000,
               "title": "First Part, Chapter IV, part 3. Marco Polo."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_09_verne_64kb.mp3",
               "length_ms": 1735000,
+              "readers": [
+                "carol"
+              ],
               "start_ms": 10290000,
               "title": "First Part, Chapter IV, part 4. Marco Polo."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_10_verne_64kb.mp3",
               "length_ms": 1056000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 12025000,
               "title": "First Part, Chapter V. Ibn Batuta."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_11_verne_64kb.mp3",
               "length_ms": 1104000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 13081000,
               "title": "First Part, Chapter VI, part 1. Jean de Béthencourt."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_12_verne_64kb.mp3",
               "length_ms": 1286000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 14185000,
               "title": "First Part, Chapter VI, part 2. Jean de Béthencourt."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_13_verne_64kb.mp3",
               "length_ms": 2011000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 15471000,
               "title": "First Part, Chapter VII, part 1. Christopher Columbus."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_14_verne_64kb.mp3",
               "length_ms": 1406000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 17482000,
               "title": "First Part, Chapter VII, part 2a. Christopher Columbus – First voyage."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_15_verne_64kb.mp3",
               "length_ms": 1259000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 18888000,
               "title": "First Part, Chapter VII, part 2b. Christopher Columbus – First voyage."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_16_verne_64kb.mp3",
               "length_ms": 1847000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 20147000,
               "title": "First Part, Chapter VII, part 3. Christopher Columbus – Second voyage."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_17_verne_64kb.mp3",
               "length_ms": 1032000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 21994000,
               "title": "First Part, Chapter VII, part 4. Christopher Columbus – Third voyage."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_18_verne_64kb.mp3",
               "length_ms": 2033000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 23026000,
               "title": "First Part, Chapter VII, part 5. Christopher Columbus – Fourth voyage."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_19_verne_64kb.mp3",
               "length_ms": 1085000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 25059000,
               "title": "First Part, Chapter VIII, part 1a. The conquest of India, and of the spice countries."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_20_verne_64kb.mp3",
               "length_ms": 1453000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 26144000,
               "title": "First Part, Chapter VIII, part 1b. The conquest of India, and of the spice countries."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_21_verne_64kb.mp3",
               "length_ms": 2086000,
+              "readers": [
+                "mj-franck"
+              ],
               "start_ms": 27597000,
               "title": "First Part, Chapter VIII, part 2a. The conquest of India, and of the spice countries."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_22_verne_64kb.mp3",
               "length_ms": 1803000,
+              "readers": [
+                "ellen-preckel"
+              ],
               "start_ms": 29683000,
               "title": "First Part, Chapter VIII, part 2b. The conquest of India, and of the spice countries."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_23_verne_64kb.mp3",
               "length_ms": 1384000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 31486000,
               "title": "Second Part, Chapter I, part 1a. The conquerors of central America."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_24_verne_64kb.mp3",
               "length_ms": 1526000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 32870000,
               "title": "Second Part, Chapter I, part 1b. The conquerors of central America."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_25_verne_64kb.mp3",
               "length_ms": 1224000,
+              "readers": [
+                "jonathan-drury"
+              ],
               "start_ms": 34396000,
               "title": "Second Part, Chapter I, part 2a. The conquerors of central America."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_26_verne_64kb.mp3",
               "length_ms": 1271000,
+              "readers": [
+                "jonathan-drury"
+              ],
               "start_ms": 35620000,
               "title": "Second Part, Chapter I, part 2b. The conquerors of central America."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_27_verne_64kb.mp3",
               "length_ms": 1143000,
+              "readers": [
+                "jonathan-drury"
+              ],
               "start_ms": 36891000,
               "title": "Second Part, Chapter I, part 2c. The conquerors of central America."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_28_verne_64kb.mp3",
               "length_ms": 1416000,
+              "readers": [
+                "hearhis"
+              ],
               "start_ms": 38034000,
               "title": "Second Part, Chapter I, part 3a. The conquerors of central America."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_29_verne_64kb.mp3",
               "length_ms": 1612000,
+              "readers": [
+                "rookieblue"
+              ],
               "start_ms": 39450000,
               "title": "Second Part, Chapter I, part 3b. The conquerors of central America."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_30_verne_64kb.mp3",
               "length_ms": 1240000,
+              "readers": [
+                "kathrine-engan"
+              ],
               "start_ms": 41062000,
               "title": "Second Part, Chapter I, part 3c. The conquerors of central America."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_31_verne_64kb.mp3",
               "length_ms": 1682000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 42302000,
               "title": "Second Part, Chapter II, part 1. The first voyage round the world."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_32_verne_64kb.mp3",
               "length_ms": 1494000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 43984000,
               "title": "Second Part, Chapter II, part 2. The first voyage round the world."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_33_verne_64kb.mp3",
               "length_ms": 1570000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 45478000,
               "title": "Second Part, Chapter II, part 3. The first voyage round the world."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_34_verne_64kb.mp3",
               "length_ms": 2096000,
+              "readers": [
+                "rookieblue"
+              ],
               "start_ms": 47048000,
               "title": "Second Part, Chapter III, part 1a. The polar expedition and the search for the north-west passage."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_35_verne_64kb.mp3",
               "length_ms": 1723000,
+              "readers": [
+                "toddhw"
+              ],
               "start_ms": 49144000,
               "title": "Second Part, Chapter III, part 1b. The polar expedition and the search for the north-west passage."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_36_verne_64kb.mp3",
               "length_ms": 2259000,
+              "readers": [
+                "steven-reynolds"
+              ],
               "start_ms": 50867000,
               "title": "Second Part, Chapter III, part 2a. The polar expedition and the search for the north-west passage."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_37_verne_64kb.mp3",
               "length_ms": 2286000,
+              "readers": [
+                "steven-reynolds"
+              ],
               "start_ms": 53126000,
               "title": "Second Part, Chapter III, part 2b. The polar expedition and the search for the north-west passage."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_38_verne_64kb.mp3",
               "length_ms": 1492000,
+              "readers": [
+                "steven-reynolds"
+              ],
               "start_ms": 55412000,
               "title": "Second Part, Chapter IV, part 1. Voyages of adventure and privateering warfare."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_39_verne_64kb.mp3",
               "length_ms": 1429000,
+              "readers": [
+                "steven-reynolds"
+              ],
               "start_ms": 56904000,
               "title": "Second Part, Chapter IV, part 2. Voyages of adventure and privateering warfare."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_40_verne_64kb.mp3",
               "length_ms": 864000,
+              "readers": [
+                "anna-simon"
+              ],
               "start_ms": 58333000,
               "title": "Second Part, Chapter V, part 1. Missionaries and settlers. Merchants and tourists."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_41_verne_64kb.mp3",
               "length_ms": 1413000,
+              "readers": [
+                "anna-simon"
+              ],
               "start_ms": 59197000,
               "title": "Second Part, Chapter V, part 2a. Missionaries and settlers. Merchants and tourists."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_42_verne_64kb.mp3",
               "length_ms": 1846000,
+              "readers": [
+                "anna-simon"
+              ],
               "start_ms": 60610000,
               "title": "Second Part, Chapter V, part 2b. Missionaries and settlers. Merchants and tourists."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_43_verne_64kb.mp3",
               "length_ms": 1046000,
+              "readers": [
+                "kristine-bekere"
+              ],
               "start_ms": 62456000,
               "title": "Second Part, Chapter VI, part 1. The great Corsair."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_44_verne_64kb.mp3",
               "length_ms": 1059000,
+              "readers": [
+                "michele-eaton"
+              ],
               "start_ms": 63502000,
               "title": "Second Part, Chapter VI, part 2a. The pole and America."
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers1_1310_librivox/celebratedtravels1_45_verne_64kb.mp3",
               "length_ms": 1638000,
+              "readers": [
+                "michele-eaton"
+              ],
               "start_ms": 64561000,
               "title": "Second Part, Chapter VI, part 2b. The pole and America."
             }
           ],
           "copyright_year": 1882,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/celebratedtravels1_1310.jpg",
+          "credits": [
+            {
+              "person": "n-danvers",
+              "role": "translator"
+            }
+          ],
           "id": "william-tomcho",
           "language": "en",
+          "librivox_genres": [
+            "Exploration"
+          ],
           "librivox_id": 6663,
+          "librivox_title": "Celebrated Travels and Travellers, vol. 1",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-travels-and-travellers-vol1-by-jules-verne/",
@@ -8097,291 +8798,442 @@
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_01_verne_64kb.mp3",
               "length_ms": 1527000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 0,
               "title": "First Part, chapter I, part 1: Astronomers and Cartographers"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_02_verne_64kb.mp3",
               "length_ms": 1540000,
+              "readers": [
+                "piotr-nater"
+              ],
               "start_ms": 1527000,
               "title": "First Part, chapter I, part 2 : Voyages in the eighteenth century"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_03_verne_64kb.mp3",
               "length_ms": 1860000,
+              "readers": [
+                "malone-1945-2023"
+              ],
               "start_ms": 3067000,
               "title": "First part, chapter II, part 1: Captain Cook’s predecessors, 1a"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_04_verne_64kb.mp3",
               "length_ms": 1897000,
+              "readers": [
+                "malone-1945-2023"
+              ],
               "start_ms": 4927000,
               "title": "First part, chapter II, part 1: Captain Cook’s predecessors, 1b"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_05_verne_64kb.mp3",
               "length_ms": 1757000,
+              "readers": [
+                "malone-1945-2023"
+              ],
               "start_ms": 6824000,
               "title": "First part, chapter II, part 2: Captain Cook’s predecessors, 2a"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_06_verne_64kb.mp3",
               "length_ms": 1660000,
+              "readers": [
+                "malone-1945-2023"
+              ],
               "start_ms": 8581000,
               "title": "First part, chapter II, part 2: Captain Cook’s predecessors, 2b"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_07_verne_64kb.mp3",
               "length_ms": 1434000,
+              "readers": [
+                "malone-1945-2023"
+              ],
               "start_ms": 10241000,
               "title": "First part, chapter II, part 2: Captain Cook’s predecessors, 2c"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_08_verne_64kb.mp3",
               "length_ms": 1993000,
+              "readers": [
+                "malone-1945-2023"
+              ],
               "start_ms": 11675000,
               "title": "First part, chapter II, part 3: Captain Cook’s predecessors, 3a"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_09_verne_64kb.mp3",
               "length_ms": 1786000,
+              "readers": [
+                "malone-1945-2023"
+              ],
               "start_ms": 13668000,
               "title": "First part, chapter II, part 3: Captain Cook’s predecessors, 3b"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_10_verne_64kb.mp3",
               "length_ms": 1440000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 15454000,
               "title": "First part, chapter II, part 3: Captain Cook’s predecessors, 3c"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_11_verne_64kb.mp3",
               "length_ms": 1382000,
+              "readers": [
+                "maryann"
+              ],
               "start_ms": 16894000,
               "title": "First part, chapter III, part 1: Captain Cook's first voyage, 1a"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_12_verne_64kb.mp3",
               "length_ms": 1147000,
+              "readers": [
+                "maryann"
+              ],
               "start_ms": 18276000,
               "title": "First part, chapter III, part 1: Captain Cook’s first voyage, 1b"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_13_verne_64kb.mp3",
               "length_ms": 1316000,
+              "readers": [
+                "maryann"
+              ],
               "start_ms": 19423000,
               "title": "First part, chapter III, part 1: Captain Cook’s first voyage, 1c"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_14_verne_64kb.mp3",
               "length_ms": 1466000,
+              "readers": [
+                "maryann"
+              ],
               "start_ms": 20739000,
               "title": "First part, chapter III, part 2: Captain Cook’s first voyage, 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_15_verne_64kb.mp3",
               "length_ms": 1281000,
+              "readers": [
+                "bobrose"
+              ],
               "start_ms": 22205000,
               "title": "First part, chapter IV, part 1: Captain Cook’s second voyage, 1a"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_16_verne_64kb.mp3",
               "length_ms": 1292000,
+              "readers": [
+                "bobrose"
+              ],
               "start_ms": 23486000,
               "title": "First part, chapter IV, part 1: Captain Cook’s second voyage, 1b"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_17_verne_64kb.mp3",
               "length_ms": 1487000,
+              "readers": [
+                "bobrose"
+              ],
               "start_ms": 24778000,
               "title": "First part, chapter IV, part 1: Captain Cook’s second voyage, 1c"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_18_verne_64kb.mp3",
               "length_ms": 1490000,
+              "readers": [
+                "bobrose"
+              ],
               "start_ms": 26265000,
               "title": "First part, chapter IV, part 2: Captain Cook’s second voyage, 2a"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_19_verne_64kb.mp3",
               "length_ms": 1557000,
+              "readers": [
+                "bobrose"
+              ],
               "start_ms": 27755000,
               "title": "First part, chapter IV, part 2:  Captain Cook’s second voyage, 2b"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_20_verne_64kb.mp3",
               "length_ms": 969000,
+              "readers": [
+                "piotr-nater"
+              ],
               "start_ms": 29312000,
               "title": "First part, chapter V, part 1: Captain Cook’s third voyage, 1a"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_21_verne_64kb.mp3",
               "length_ms": 848000,
+              "readers": [
+                "piotr-nater"
+              ],
               "start_ms": 30281000,
               "title": "First part, chapter V, part 1: Captain Cook’s third voyage, 1b"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_22_verne_64kb.mp3",
               "length_ms": 862000,
+              "readers": [
+                "piotr-nater"
+              ],
               "start_ms": 31129000,
               "title": "First part, chapter V, part 2: Captain Cook’s third voyage, 2a"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_23_verne_64kb.mp3",
               "length_ms": 1074000,
+              "readers": [
+                "piotr-nater"
+              ],
               "start_ms": 31991000,
               "title": "First part, chapter V, part 2: Captain Cook’s third voyage, 2b"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_24_verne_64kb.mp3",
               "length_ms": 1307000,
+              "readers": [
+                "piotr-nater"
+              ],
               "start_ms": 33065000,
               "title": "Second part, chapter I, part 1: French Navigators, 1a"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_25_verne_64kb.mp3",
               "length_ms": 1182000,
+              "readers": [
+                "piotr-nater"
+              ],
               "start_ms": 34372000,
               "title": "Second part, chapter I, part 1: French Navigators, 1b"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_26_verne_64kb.mp3",
               "length_ms": 1109000,
+              "readers": [
+                "piotr-nater"
+              ],
               "start_ms": 35554000,
               "title": "Second part, chapter I, part 1: French Navigators, 1c"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_27_verne_64kb.mp3",
               "length_ms": 1173000,
+              "readers": [
+                "piotr-nater"
+              ],
               "start_ms": 36663000,
               "title": "Second part, chapter I, part 1: French Navigators, 1d"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_28_verne_64kb.mp3",
               "length_ms": 1197000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 37836000,
               "title": "Second part, chapter I, part 2: French Navigators, 2a"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_29_verne_64kb.mp3",
               "length_ms": 1464000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 39033000,
               "title": "Second part, chapter I, part 2: French Navigators, 2b"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_30_verne_64kb.mp3",
               "length_ms": 1467000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 40497000,
               "title": "Second part, chapter I, part 2: French Navigators, 2c"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_31_verne_64kb.mp3",
               "length_ms": 1513000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 41964000,
               "title": "Second part, chapter I, part 2: French Navigators, 2d"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_32_verne_64kb.mp3",
               "length_ms": 1336000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 43477000,
               "title": "Second part, chapter I, part 2: French Navigators, 2e"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_33_verne_64kb.mp3",
               "length_ms": 1569000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 44813000,
               "title": "Second part, chapter I, part 2: French Navigators, 2f"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_34_verne_64kb.mp3",
               "length_ms": 1363000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 46382000,
               "title": "Second part, chapter I, part 3: French Navigators, 3a"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_35_verne_64kb.mp3",
               "length_ms": 1493000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 47745000,
               "title": "Second part, chapter I, part 3: French Navigators, 3b"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_36_verne_64kb.mp3",
               "length_ms": 1366000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 49238000,
               "title": "Second part, chapter I, part 3: French Navigators, 3c"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_37_verne_64kb.mp3",
               "length_ms": 1209000,
+              "readers": [
+                "piotr-nater"
+              ],
               "start_ms": 50604000,
               "title": "Second part, chapter II: African Explorers, a"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_38_verne_64kb.mp3",
               "length_ms": 1266000,
+              "readers": [
+                "piotr-nater"
+              ],
               "start_ms": 51813000,
               "title": "Second part, chapter II: African Explorers, b"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_39_verne_64kb.mp3",
               "length_ms": 1201000,
+              "readers": [
+                "piotr-nater"
+              ],
               "start_ms": 53079000,
               "title": "Second part, chapter II: African Explorers, c"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_40_verne_64kb.mp3",
               "length_ms": 1240000,
+              "readers": [
+                "piotr-nater"
+              ],
               "start_ms": 54280000,
               "title": "Second part, chapter II: African Explorers, d"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_41_verne_64kb.mp3",
               "length_ms": 1203000,
+              "readers": [
+                "piotr-nater"
+              ],
               "start_ms": 55520000,
               "title": "Second part, chapter II: African Explorers, e"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_42_verne_64kb.mp3",
               "length_ms": 1636000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 56723000,
               "title": "Second part, chapter III: Asia and its inhabitants, a"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_43_verne_64kb.mp3",
               "length_ms": 1428000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 58359000,
               "title": "Second part, chapter III: Asia and its inhabitants, b"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_44_verne_64kb.mp3",
               "length_ms": 1262000,
+              "readers": [
+                "kyle-strand"
+              ],
               "start_ms": 59787000,
               "title": "Second part, chapter IV: The two Americas, a"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_45_verne_64kb.mp3",
               "length_ms": 1196000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 61049000,
               "title": "Second part, chapter IV: The two Americas, b"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_46_verne_64kb.mp3",
               "length_ms": 1097000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 62245000,
               "title": "Second part, chapter IV: The two Americas, c"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_47_verne_64kb.mp3",
               "length_ms": 1268000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 63342000,
               "title": "Second part, chapter IV: The two Americas, d"
             }
           ],
           "copyright_year": 1880,
           "cover_url": "https://archive.org/download/celebrated_travels_travellers2_1410_librivox/celebratedtravels2_1410.jpg",
+          "credits": [
+            {
+              "person": "n-danvers",
+              "role": "translator"
+            }
+          ],
           "id": "availle",
           "language": "en",
+          "librivox_genres": [
+            "Exploration"
+          ],
           "librivox_id": 8227,
+          "librivox_title": "Celebrated Travels and Travellers, vol. 2",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-travels-and-travellers-vol2-by-jules-verne/",
@@ -8446,261 +9298,397 @@
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_01_verne_64kb.mp3",
               "length_ms": 1742000,
+              "readers": [
+                "ed-villines"
+              ],
               "start_ms": 0,
               "title": "First Part, chapter I: The Dawn of a Century of Discovery, 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_02_verne_64kb.mp3",
               "length_ms": 1213000,
+              "readers": [
+                "ed-villines"
+              ],
               "start_ms": 1742000,
               "title": "First Part, chapter I: The Dawn of a Century of Discovery, 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_03_verne_64kb.mp3",
               "length_ms": 1141000,
+              "readers": [
+                "piotr-nater"
+              ],
               "start_ms": 2955000,
               "title": "First Part, chapter I: The Dawn of a Century of Discovery, 3"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_04_verne_64kb.mp3",
               "length_ms": 834000,
+              "readers": [
+                "piotr-nater"
+              ],
               "start_ms": 4096000,
               "title": "First Part, chapter I: The Dawn of a Century of Discovery, 4"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_05_verne_64kb.mp3",
               "length_ms": 1598000,
+              "readers": [
+                "maryann"
+              ],
               "start_ms": 4930000,
               "title": "First Part, chapter I: The Dawn of a Century of Discovery, 5"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_06_verne_64kb.mp3",
               "length_ms": 2458000,
+              "readers": [
+                "jairus-amar"
+              ],
               "start_ms": 6528000,
               "title": "First Part, chapter I: The Dawn of a Century of Discovery, 6"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_07_verne_64kb.mp3",
               "length_ms": 1994000,
+              "readers": [
+                "jairus-amar"
+              ],
               "start_ms": 8986000,
               "title": "First Part, chapter I: The Dawn of a Century of Discovery, 7"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_08_verne_64kb.mp3",
               "length_ms": 1516000,
+              "readers": [
+                "michele-fry"
+              ],
               "start_ms": 10980000,
               "title": "First Part, chapter II, part I: The Exploration and Colonization of Africa, 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_09_verne_64kb.mp3",
               "length_ms": 1379000,
+              "readers": [
+                "michele-fry"
+              ],
               "start_ms": 12496000,
               "title": "First Part, chapter II, part I: The Exploration and Colonization of Africa, 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_10_verne_64kb.mp3",
               "length_ms": 1531000,
+              "readers": [
+                "michele-fry"
+              ],
               "start_ms": 13875000,
               "title": "First Part, chapter II, part II: The Exploration and Colonization of Africa, 3"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_11_verne_64kb.mp3",
               "length_ms": 1301000,
+              "readers": [
+                "michele-fry"
+              ],
               "start_ms": 15406000,
               "title": "First Part, chapter II, part II: The Exploration and Colonization of Africa, 4"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_12_verne_64kb.mp3",
               "length_ms": 1401000,
+              "readers": [
+                "michele-fry"
+              ],
               "start_ms": 16707000,
               "title": "First Part, chapter II, part II: The Exploration and Colonization of Africa, 5"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_13_verne_64kb.mp3",
               "length_ms": 1389000,
+              "readers": [
+                "michele-fry"
+              ],
               "start_ms": 18108000,
               "title": "First Part, chapter II, part II: The Exploration and Colonization of Africa, 6"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_14_verne_64kb.mp3",
               "length_ms": 1511000,
+              "readers": [
+                "michele-fry"
+              ],
               "start_ms": 19497000,
               "title": "First Part, chapter II, part II: The Exploration and Colonization of Africa, 7"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_15_verne_64kb.mp3",
               "length_ms": 1353000,
+              "readers": [
+                "michele-fry"
+              ],
               "start_ms": 21008000,
               "title": "First Part, chapter II, part II: The Exploration and Colonization of Africa, 8"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_16_verne_64kb.mp3",
               "length_ms": 1645000,
+              "readers": [
+                "michele-fry"
+              ],
               "start_ms": 22361000,
               "title": "First Part, chapter II, part II: The Exploration and Colonization of Africa, 9"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_17_verne_64kb.mp3",
               "length_ms": 1107000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 24006000,
               "title": "First Part, chapter III: The Oriental Scientific Movement and American Discoveries, 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_18_verne_64kb.mp3",
               "length_ms": 964000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 25113000,
               "title": "First Part, chapter III: The Oriental Scientific Movement and American Discoveries, 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_19_verne_64kb.mp3",
               "length_ms": 1658000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 26077000,
               "title": "First Part, chapter III: The Oriental Scientific Movement and American Discoveries, 3"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_20_verne_64kb.mp3",
               "length_ms": 1658000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 27735000,
               "title": "Second Part, chapter I: Voyages Round the World, and Polar Expeditions, 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_21_verne_64kb.mp3",
               "length_ms": 1548000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 29393000,
               "title": "Second Part, chapter I: Voyages Round the World, and Polar Expeditions, 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_22_verne_64kb.mp3",
               "length_ms": 1647000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 30941000,
               "title": "Second Part, chapter I: Voyages Round the World, and Polar Expeditions, 3"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_23_verne_64kb.mp3",
               "length_ms": 1567000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 32588000,
               "title": "Second Part, chapter I: Voyages Round the World, and Polar Expeditions, 4"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_24_verne_64kb.mp3",
               "length_ms": 1619000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 34155000,
               "title": "Second Part, chapter I: Voyages Round the World, and Polar Expeditions, 5"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_25_verne_64kb.mp3",
               "length_ms": 1664000,
+              "readers": [
+                "barbara-baker"
+              ],
               "start_ms": 35774000,
               "title": "Second Part, chapter II, part I: French Circumnavigators, 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_26_verne_64kb.mp3",
               "length_ms": 1612000,
+              "readers": [
+                "barbara-baker"
+              ],
               "start_ms": 37438000,
               "title": "Second Part, chapter II, part I: French Circumnavigators, 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_27_verne_64kb.mp3",
               "length_ms": 1552000,
+              "readers": [
+                "barbara-baker"
+              ],
               "start_ms": 39050000,
               "title": "Second Part, chapter II, part I: French Circumnavigators, 3"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_28_verne_64kb.mp3",
               "length_ms": 1630000,
+              "readers": [
+                "barbara-baker"
+              ],
               "start_ms": 40602000,
               "title": "Second Part, chapter II, part I: French Circumnavigators, 4"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_29_verne_64kb.mp3",
               "length_ms": 1580000,
+              "readers": [
+                "barbara-baker"
+              ],
               "start_ms": 42232000,
               "title": "Second Part, chapter II, part I: French Circumnavigators, 5"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_30_verne_64kb.mp3",
               "length_ms": 1722000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 43812000,
               "title": "Second Part, chapter II, part I: French Circumnavigators, 6"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_31_verne_64kb.mp3",
               "length_ms": 1843000,
+              "readers": [
+                "ismailuser55"
+              ],
               "start_ms": 45534000,
               "title": "Second Part, chapter II, part II: French Circumnavigators, 7"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_32_verne_64kb.mp3",
               "length_ms": 1582000,
+              "readers": [
+                "ismailuser55"
+              ],
               "start_ms": 47377000,
               "title": "Second Part, chapter II, part II: French Circumnavigators, 8"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_33_verne_64kb.mp3",
               "length_ms": 1517000,
+              "readers": [
+                "ismailuser55"
+              ],
               "start_ms": 48959000,
               "title": "Second Part, chapter II, part II: French Circumnavigators, 9"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_34_verne_64kb.mp3",
               "length_ms": 1535000,
+              "readers": [
+                "richard-aroksaar"
+              ],
               "start_ms": 50476000,
               "title": "Second Part, chapter II, part II: French Circumnavigators, 10"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_35_verne_64kb.mp3",
               "length_ms": 1732000,
+              "readers": [
+                "richard-aroksaar"
+              ],
               "start_ms": 52011000,
               "title": "Second Part, chapter II, part II: French Circumnavigators, 11"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_36_verne_64kb.mp3",
               "length_ms": 1732000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 53743000,
               "title": "Second Part, chapter III, part I: Polar Expeditions, 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_37_verne_64kb.mp3",
               "length_ms": 1602000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 55475000,
               "title": "Second Part, chapter III, part I: Polar Expeditions, 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_38_verne_64kb.mp3",
               "length_ms": 1846000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 57077000,
               "title": "Second Part, chapter III, part I: Polar Expeditions, 3"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_39_verne_64kb.mp3",
               "length_ms": 1098000,
+              "readers": [
+                "piotr-nater"
+              ],
               "start_ms": 58923000,
               "title": "Second Part, chapter III, part I: Polar Expeditions, 4"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_40_verne_64kb.mp3",
               "length_ms": 1079000,
+              "readers": [
+                "piotr-nater"
+              ],
               "start_ms": 60021000,
               "title": "Second Part, chapter III, part II: The North Pole, 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_41_verne_64kb.mp3",
               "length_ms": 1251000,
+              "readers": [
+                "piotr-nater"
+              ],
               "start_ms": 61100000,
               "title": "Second Part, chapter III, part II: The North Pole, 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_42_verne_64kb.mp3",
               "length_ms": 958000,
+              "readers": [
+                "piotr-nater"
+              ],
               "start_ms": 62351000,
               "title": "Second Part, chapter III, part II: The North Pole, 3"
             }
           ],
           "copyright_year": 1881,
           "cover_url": "https://archive.org/download/celebrated_travels_travellers3_1508_librivox/celebratedtravels3_1508.jpg",
+          "credits": [
+            {
+              "person": "n-danvers",
+              "role": "translator"
+            }
+          ],
           "id": "ed-villines",
           "language": "en",
+          "librivox_genres": [
+            "Exploration"
+          ],
           "librivox_id": 9316,
+          "librivox_title": "Celebrated Travels and Travellers, vol. 3",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-travels-and-travellers-vol-3-by-jules-verne/",
@@ -8761,144 +9749,216 @@
             {
               "audio_url": "https://www.archive.org/download/celebrated_women_travellers_of_the_nineteenth_century_1_librivox/womentravellers_01_adams_64kb.mp3",
               "length_ms": 3279000,
+              "readers": [
+                "ellies"
+              ],
               "start_ms": 0,
               "title": "Countess Dora D'Istria"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_women_travellers_of_the_nineteenth_century_1_librivox/womentravellers_02_adams_64kb.mp3",
               "length_ms": 1852000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 3279000,
               "title": "The Princess of Belgiojoso"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_women_travellers_of_the_nineteenth_century_1_librivox/womentravellers_03_adams_64kb.mp3",
               "length_ms": 3115000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 5131000,
               "title": "Madame Hommaire de Hell I"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_women_travellers_of_the_nineteenth_century_1_librivox/womentravellers_04_adams_64kb.mp3",
               "length_ms": 2976000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 8246000,
               "title": "Madame Hommaire de Hell II"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_women_travellers_of_the_nineteenth_century_1_librivox/womentravellers_05_adams_64kb.mp3",
               "length_ms": 407000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 11222000,
               "title": "Madame Hommaire de Hell III"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_women_travellers_of_the_nineteenth_century_1_librivox/womentravellers_06_adams_64kb.mp3",
               "length_ms": 796000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 11629000,
               "title": "Madame Léonie D'Aunet"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_women_travellers_of_the_nineteenth_century_1_librivox/womentravellers_07_adams_64kb.mp3",
               "length_ms": 2233000,
+              "readers": [
+                "dovie-cross"
+              ],
               "start_ms": 12425000,
               "title": "Miss Frederika Bremer Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_women_travellers_of_the_nineteenth_century_1_librivox/womentravellers_08_adams_64kb.mp3",
               "length_ms": 2230000,
+              "readers": [
+                "dovie-cross"
+              ],
               "start_ms": 14658000,
               "title": "Miss Frederika Bremer Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_women_travellers_of_the_nineteenth_century_1_librivox/womentravellers_09_adams_64kb.mp3",
               "length_ms": 3042000,
+              "readers": [
+                "michele-fry"
+              ],
               "start_ms": 16888000,
               "title": "Mademoiselle Alexina Tinné"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_women_travellers_of_the_nineteenth_century_1_librivox/womentravellers_10_adams_64kb.mp3",
               "length_ms": 647000,
+              "readers": [
+                "piotr-nater"
+              ],
               "start_ms": 19930000,
               "title": "Madame Ida Pfeiffer I"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_women_travellers_of_the_nineteenth_century_1_librivox/womentravellers_11_adams_64kb.mp3",
               "length_ms": 2563000,
+              "readers": [
+                "piotr-nater"
+              ],
               "start_ms": 20577000,
               "title": "Madame Ida Pfeiffer II Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_women_travellers_of_the_nineteenth_century_1_librivox/womentravellers_12_adams_64kb.mp3",
               "length_ms": 2241000,
+              "readers": [
+                "piotr-nater"
+              ],
               "start_ms": 23140000,
               "title": "Madame Ida Pfeiffer II Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_women_travellers_of_the_nineteenth_century_1_librivox/womentravellers_13_adams_64kb.mp3",
               "length_ms": 3641000,
+              "readers": [
+                "realisticspeakers"
+              ],
               "start_ms": 25381000,
               "title": "Madame de Bourboulon"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_women_travellers_of_the_nineteenth_century_1_librivox/womentravellers_14_adams_64kb.mp3",
               "length_ms": 2155000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 29022000,
               "title": "Lady Hester Stanhope Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_women_travellers_of_the_nineteenth_century_1_librivox/womentravellers_15_adams_64kb.mp3",
               "length_ms": 2037000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 31177000,
               "title": "Lady Hester Stanhope Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_women_travellers_of_the_nineteenth_century_1_librivox/womentravellers_16_adams_64kb.mp3",
               "length_ms": 1889000,
+              "readers": [
+                "dovie-cross"
+              ],
               "start_ms": 33214000,
               "title": "Lady Brassey Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_women_travellers_of_the_nineteenth_century_1_librivox/womentravellers_17_adams_64kb.mp3",
               "length_ms": 1788000,
+              "readers": [
+                "dovie-cross"
+              ],
               "start_ms": 35103000,
               "title": "Lady Brassey Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_women_travellers_of_the_nineteenth_century_1_librivox/womentravellers_18_adams_64kb.mp3",
               "length_ms": 603000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 36891000,
               "title": "Lady Morgan"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_women_travellers_of_the_nineteenth_century_1_librivox/womentravellers_19_adams_64kb.mp3",
               "length_ms": 1965000,
+              "readers": [
+                "ellies"
+              ],
               "start_ms": 37494000,
               "title": "Mrs. Trollope"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_women_travellers_of_the_nineteenth_century_1_librivox/womentravellers_20_adams_64kb.mp3",
               "length_ms": 1265000,
+              "readers": [
+                "adkreader"
+              ],
               "start_ms": 39459000,
               "title": "Miss Harriet Martineau"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_women_travellers_of_the_nineteenth_century_1_librivox/womentravellers_21_adams_64kb.mp3",
               "length_ms": 2084000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 40724000,
               "title": "Miss Isabella Bird"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_women_travellers_of_the_nineteenth_century_1_librivox/womentravellers_22_adams_64kb.mp3",
               "length_ms": 628000,
+              "readers": [
+                "dovie-cross"
+              ],
               "start_ms": 42808000,
               "title": "Lady Florence Dixie"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_women_travellers_of_the_nineteenth_century_1_librivox/womentravellers_23_adams_64kb.mp3",
               "length_ms": 796000,
+              "readers": [
+                "dovie-cross"
+              ],
               "start_ms": 43436000,
               "title": "Miss Gordon Cumming"
             },
             {
               "audio_url": "https://www.archive.org/download/celebrated_women_travellers_of_the_nineteenth_century_1_librivox/womentravellers_24_adams_64kb.mp3",
               "length_ms": 785000,
+              "readers": [
+                "cathar-maiden"
+              ],
               "start_ms": 44232000,
               "title": "Florence and Rosamond Hill, Lady Barker, Magyarland"
             }
@@ -8907,7 +9967,11 @@
           "cover_url": "https://archive.org/download/celebrated_women_travellers_of_the_nineteenth_century_1_librivox/travelling_women_1901.jpg",
           "id": "ellies",
           "language": "en",
+          "librivox_genres": [
+            "Travel & Geography"
+          ],
           "librivox_id": 12802,
+          "librivox_title": "Celebrated Women Travellers of the Nineteenth Century",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebrated-women-travellers-of-the-nineteenth-century-by-w-h-davenport-adams/",
@@ -9520,210 +10584,315 @@
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_01jvw_64kb.mp3",
               "length_ms": 64000,
+              "readers": [
+                "julie-vw"
+              ],
               "start_ms": 0,
               "title": "Flemish accent, slight"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_02poh_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "padraig-ohiceadha"
+              ],
               "start_ms": 64000,
               "title": "Irish accent"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_03arb_64kb.mp3",
               "length_ms": 60000,
+              "readers": [
+                "annise"
+              ],
               "start_ms": 138000,
               "title": "Australian accent"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_04rg_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "ruth-golding"
+              ],
               "start_ms": 198000,
               "title": "English accent, RP ('no regional accent')"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_05elli_64kb.mp3",
               "length_ms": 53000,
+              "readers": [
+                "elli"
+              ],
               "start_ms": 273000,
               "title": "Austrian accent (German)"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_06dii_64kb.mp3",
               "length_ms": 63000,
+              "readers": [
+                "diana-majlinger"
+              ],
               "start_ms": 326000,
               "title": "Hungarian accent"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_07lz_64kb.mp3",
               "length_ms": 60000,
+              "readers": [
+                "anna-simon"
+              ],
               "start_ms": 389000,
               "title": "Dutch accent"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_08bt_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "bellona-times"
+              ],
               "start_ms": 449000,
               "title": "American accent, 'Air Force Brat'"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_09py_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 517000,
               "title": "English accent, South-East London"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_10sn_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "semantic-nuance"
+              ],
               "start_ms": 574000,
               "title": "Chinese accent, Taiwan"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_11djc1_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "david-cole"
+              ],
               "start_ms": 640000,
               "title": "English accent, 'honed-off' Black Country Accent"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_12blg_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "bridget-gaige"
+              ],
               "start_ms": 705000,
               "title": "American accent, Upstate New York"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_13mch_64kb.mp3",
               "length_ms": 63000,
+              "readers": [
+                "marianne-coleman-hipkins"
+              ],
               "start_ms": 760000,
               "title": "New Zealand accent, Central North Island"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_14law_64kb.mp3",
               "length_ms": 54000,
+              "readers": [
+                "laurie-anne-walden"
+              ],
               "start_ms": 823000,
               "title": "American accent, South Carolina"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_15gwd_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "graeme-dunlop"
+              ],
               "start_ms": 877000,
               "title": "Australian accent"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_16eep_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "ernst-pattynama"
+              ],
               "start_ms": 948000,
               "title": "English accent, mother tongue Dutch"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_17kara_64kb.mp3",
               "length_ms": 52000,
+              "readers": [
+                "kara-shallenberg-1969-2023"
+              ],
               "start_ms": 1017000,
               "title": "American accent, Southern California"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_18mz_64kb.mp3",
               "length_ms": 61000,
+              "readers": [
+                "mezzogal"
+              ],
               "start_ms": 1069000,
               "title": "Chinese accent, Singaporean"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_19tg_64kb.mp3",
               "length_ms": 61000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 1130000,
               "title": "American accent, Minnesota"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_20smh_64kb.mp3",
               "length_ms": 54000,
+              "readers": [
+                "sean-michael-hogan"
+              ],
               "start_ms": 1191000,
               "title": "Canadian accent, Newfoundland"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_21jes_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "jessi"
+              ],
               "start_ms": 1245000,
               "title": "German accent"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_22acj_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "alana-jordan"
+              ],
               "start_ms": 1314000,
               "title": "American accent, Midwestern"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_23jja_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "dullstar"
+              ],
               "start_ms": 1382000,
               "title": "American accent, West Central Pennsylvania"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_24tf_64kb.mp3",
               "length_ms": 63000,
+              "readers": [
+                "timothy-ferguson"
+              ],
               "start_ms": 1449000,
               "title": "Australian accent, cultivated"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_25mvc_64kb.mp3",
               "length_ms": 51000,
+              "readers": [
+                "magdalena"
+              ],
               "start_ms": 1512000,
               "title": "Australian accent"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_26sjb_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "stuart-bell"
+              ],
               "start_ms": 1563000,
               "title": "English accent, neutral, southern"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_27jle_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "joy-easton"
+              ],
               "start_ms": 1631000,
               "title": "American accent, Southern Indiana"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_28adf_64kb.mp3",
               "length_ms": 56000,
+              "readers": [
+                "andi"
+              ],
               "start_ms": 1696000,
               "title": "American accent, Texas"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_29rt_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "sonja"
+              ],
               "start_ms": 1752000,
               "title": "German accent"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_30add_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "alan-davis-drake-1945-2010"
+              ],
               "start_ms": 1809000,
               "title": "American accent, New York City"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_31db_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "delibab"
+              ],
               "start_ms": 1881000,
               "title": "Northern Ireland accent"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_32ezwa_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "ezwa"
+              ],
               "start_ms": 1947000,
               "title": "French accent"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_33ml_64kb.mp3",
               "length_ms": 58000,
+              "readers": [
+                "may-low"
+              ],
               "start_ms": 2016000,
               "title": "Australian accent, metropolitan"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_34bg_64kb.mp3",
               "length_ms": 50000,
+              "readers": [
+                "ben-gr"
+              ],
               "start_ms": 2074000,
               "title": "American accent, western"
             },
             {
               "audio_url": "https://www.archive.org/download/dialect_accent_0909_librivox/dialectaccent_vol_01_35lb_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "lucy-burgoyne-1950-2014"
+              ],
               "start_ms": 2124000,
               "title": "Australian accent"
             }
@@ -9731,7 +10900,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt20/Celebration_Dialects_Accents_Vol1_1206.jpg",
           "id": "julie-vw",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Education",
+            "Language learning"
+          ],
           "librivox_id": 3445,
+          "librivox_title": "Celebration of Dialects and Accents, Vol 1 (The North Wind and the Sun)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebration-of-dialects-and-accents-vol-1/",
@@ -9823,128 +10998,198 @@
             {
               "audio_url": "https://www.archive.org/download/celebration_dialects_accents_vol2_1312_librivox/dialectaccent_vol02_bm_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "bill-mosley"
+              ],
               "start_ms": 0,
               "title": "Metropolitan Texas accent"
             },
             {
               "audio_url": "https://www.archive.org/download/celebration_dialects_accents_vol2_1312_librivox/dialectaccent_vol02_cmp_64kb.mp3",
               "length_ms": 83000,
+              "readers": [
+                "caprishapage"
+              ],
               "start_ms": 80000,
               "title": "Midwestern US accent"
             },
             {
               "audio_url": "https://www.archive.org/download/celebration_dialects_accents_vol2_1312_librivox/dialectaccent_vol02_cs_64kb.mp3",
               "length_ms": 85000,
+              "readers": [
+                "claudia-salto"
+              ],
               "start_ms": 163000,
               "title": "German accent"
             },
             {
               "audio_url": "https://www.archive.org/download/celebration_dialects_accents_vol2_1312_librivox/dialectaccent_vol02_dii_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "diana-majlinger"
+              ],
               "start_ms": 248000,
               "title": "Hungarian accent"
             },
             {
               "audio_url": "https://www.archive.org/download/celebration_dialects_accents_vol2_1312_librivox/dialectaccent_vol02_dm_64kb.mp3",
               "length_ms": 85000,
+              "readers": [
+                "malone-1945-2023"
+              ],
               "start_ms": 316000,
               "title": "Midwestern US accent 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebration_dialects_accents_vol2_1312_librivox/dialectaccent_vol02_eep_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "ernst-pattynama"
+              ],
               "start_ms": 401000,
               "title": "Dutch accent"
             },
             {
               "audio_url": "https://www.archive.org/download/celebration_dialects_accents_vol2_1312_librivox/dialectaccent_vol02_gg_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 473000,
               "title": "Southeastern Pennsylvania accent"
             },
             {
               "audio_url": "https://www.archive.org/download/celebration_dialects_accents_vol2_1312_librivox/dialectaccent_vol02_jcm_64kb.mp3",
               "length_ms": 59000,
+              "readers": [
+                "jason-mills"
+              ],
               "start_ms": 551000,
               "title": "Lancashire accent"
             },
             {
               "audio_url": "https://www.archive.org/download/celebration_dialects_accents_vol2_1312_librivox/dialectaccent_vol02_jn_64kb.mp3",
               "length_ms": 62000,
+              "readers": [
+                "julia-niedermaier"
+              ],
               "start_ms": 610000,
               "title": "Austrian accent"
             },
             {
               "audio_url": "https://www.archive.org/download/celebration_dialects_accents_vol2_1312_librivox/dialectaccent_vol02_kem_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "kris-moore"
+              ],
               "start_ms": 672000,
               "title": "Australian accent"
             },
             {
               "audio_url": "https://www.archive.org/download/celebration_dialects_accents_vol2_1312_librivox/dialectaccent_vol02_lj_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "linda-jenner"
+              ],
               "start_ms": 727000,
               "title": "Australian accent 2"
             },
             {
               "audio_url": "https://www.archive.org/download/celebration_dialects_accents_vol2_1312_librivox/dialectaccent_vol02_mk_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "maria-kasper"
+              ],
               "start_ms": 794000,
               "title": "Great Lakes region accent"
             },
             {
               "audio_url": "https://www.archive.org/download/celebration_dialects_accents_vol2_1312_librivox/dialectaccent_vol02_njb_64kb.mp3",
               "length_ms": 102000,
+              "readers": [
+                "nicholas-james-bridgewater"
+              ],
               "start_ms": 867000,
               "title": "Mid-Atlantic British accent"
             },
             {
               "audio_url": "https://www.archive.org/download/celebration_dialects_accents_vol2_1312_librivox/dialectaccent_vol02_psc_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "pam-castille"
+              ],
               "start_ms": 969000,
               "title": "South Louisiana US accent"
             },
             {
               "audio_url": "https://www.archive.org/download/celebration_dialects_accents_vol2_1312_librivox/dialectaccent_vol02_rbp_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "rebecca-braunert-plunkett"
+              ],
               "start_ms": 1050000,
               "title": "German/mixed bag accent"
             },
             {
               "audio_url": "https://www.archive.org/download/celebration_dialects_accents_vol2_1312_librivox/dialectaccent_vol02_rmb_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "ryan-bradburn"
+              ],
               "start_ms": 1124000,
               "title": "Midwest USA/Kansas accent"
             },
             {
               "audio_url": "https://www.archive.org/download/celebration_dialects_accents_vol2_1312_librivox/dialectaccent_vol02_sd_64kb.mp3",
               "length_ms": 64000,
+              "readers": [
+                "sdaeley17"
+              ],
               "start_ms": 1197000,
               "title": "Pacific Northwest accent"
             },
             {
               "audio_url": "https://www.archive.org/download/celebration_dialects_accents_vol2_1312_librivox/dialectaccent_vol02_se_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "simon-evers"
+              ],
               "start_ms": 1261000,
               "title": "English Public School (Received Pronunciation) accent"
             },
             {
               "audio_url": "https://www.archive.org/download/celebration_dialects_accents_vol2_1312_librivox/dialectaccent_vol02_seh_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "sarah-holtz"
+              ],
               "start_ms": 1329000,
               "title": "North Texas US accent"
             },
             {
               "audio_url": "https://www.archive.org/download/celebration_dialects_accents_vol2_1312_librivox/dialectaccent_vol02_sl_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "steve-lawrence"
+              ],
               "start_ms": 1396000,
               "title": "Mid-England British accent"
             }
           ],
           "cover_url": "https://archive.org/download/celebration_dialects_accents_vol2_1312_librivox/celebration_dialects_1401.jpg",
+          "credits": [
+            {
+              "person": "george-fyler-townsend",
+              "role": "translator"
+            }
+          ],
           "id": "bill-mosley",
           "language": "en",
+          "librivox_genres": [
+            "Language learning"
+          ],
           "librivox_id": 8149,
+          "librivox_title": "Celebration of Dialects and Accents, Vol 2.",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/celebration-of-dialects-and-accents-vol-2-by-aesop/",
@@ -10817,7 +12062,12 @@
           "cover_url": "https://archive.org/download/celebrity_1605_librivox/celebrity_1605.jpg",
           "id": "joseph-tabler",
           "language": "en",
+          "librivox_genres": [
+            "Satire",
+            "Published 1800 -1900"
+          ],
           "librivox_id": 9381,
+          "librivox_title": "Celebrity",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-celebrity-by-winston-churchill/",

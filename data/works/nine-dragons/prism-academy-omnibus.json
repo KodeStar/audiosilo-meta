@@ -4579,96 +4579,112 @@
             {
               "audio_url": "https://www.archive.org/download/prison_life_in_andersonville_1805_librivox/prisonlifeinandersonville_00_maile_64kb.mp3",
               "length_ms": 404000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Commendation, Dedication, and Person Forward"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_life_in_andersonville_1805_librivox/prisonlifeinandersonville_01_maile_64kb.mp3",
               "length_ms": 625000,
+              "section_number": 1,
               "start_ms": 404000,
               "title": "Ch.1 - The Writer's Credentials"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_life_in_andersonville_1805_librivox/prisonlifeinandersonville_02_maile_64kb.mp3",
               "length_ms": 618000,
+              "section_number": 2,
               "start_ms": 1029000,
               "title": "Ch.2 - An Inside View of a Confederate Prison"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_life_in_andersonville_1805_librivox/prisonlifeinandersonville_03_maile_64kb.mp3",
               "length_ms": 1436000,
+              "section_number": 3,
               "start_ms": 1647000,
               "title": "Ch.3 - The Prison Commissariat"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_life_in_andersonville_1805_librivox/prisonlifeinandersonville_04_maile_64kb.mp3",
               "length_ms": 673000,
+              "section_number": 4,
               "start_ms": 3083000,
               "title": "Ch.4 - A Dearth of Water"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_life_in_andersonville_1805_librivox/prisonlifeinandersonville_05_maile_64kb.mp3",
               "length_ms": 350000,
+              "section_number": 5,
               "start_ms": 3756000,
               "title": "Ch.5 - A Cry to Heaven"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_life_in_andersonville_1805_librivox/prisonlifeinandersonville_06_maile_64kb.mp3",
               "length_ms": 520000,
+              "section_number": 6,
               "start_ms": 4106000,
               "title": "Ch.6 - Unsealing of the Spring"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_life_in_andersonville_1805_librivox/prisonlifeinandersonville_07_maile_64kb.mp3",
               "length_ms": 1045000,
+              "section_number": 7,
               "start_ms": 4626000,
               "title": "Ch.7 - Was It a Miracle?"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_life_in_andersonville_1805_librivox/prisonlifeinandersonville_08_maile_64kb.mp3",
               "length_ms": 707000,
+              "section_number": 8,
               "start_ms": 5671000,
               "title": "Ch.8 - Deliverance"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_life_in_andersonville_1805_librivox/prisonlifeinandersonville_09_maile_64kb.mp3",
               "length_ms": 699000,
+              "section_number": 9,
               "start_ms": 6378000,
               "title": "Ch.9 - An Incident by the Way"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_life_in_andersonville_1805_librivox/prisonlifeinandersonville_10_maile_64kb.mp3",
               "length_ms": 1001000,
+              "section_number": 10,
               "start_ms": 7077000,
               "title": "Ch.10 - A Sequel"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_life_in_andersonville_1805_librivox/prisonlifeinandersonville_11_maile_64kb.mp3",
               "length_ms": 278000,
+              "section_number": 11,
               "start_ms": 8078000,
               "title": "Appendix A - Contributory Testimony"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_life_in_andersonville_1805_librivox/prisonlifeinandersonville_12_maile_64kb.mp3",
               "length_ms": 369000,
+              "section_number": 12,
               "start_ms": 8356000,
               "title": "Appendix B - Responsibility for Prison Treatment"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_life_in_andersonville_1805_librivox/prisonlifeinandersonville_13_maile_64kb.mp3",
               "length_ms": 926000,
+              "section_number": 13,
               "start_ms": 8725000,
               "title": "Appendix C - Woman's Relief Corps Memorial"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_life_in_andersonville_1805_librivox/prisonlifeinandersonville_14_maile_64kb.mp3",
               "length_ms": 535000,
+              "section_number": 14,
               "start_ms": 9651000,
               "title": "Appendix D - A Memorial Day Meditation"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_life_in_andersonville_1805_librivox/prisonlifeinandersonville_15_maile_64kb.mp3",
               "length_ms": 988000,
+              "section_number": 15,
               "start_ms": 10186000,
               "title": "Appendix E - Shall the Government Confer Permanent Honors on Confederate Heroes?"
             }
@@ -4677,7 +4693,11 @@
           "cover_url": "https://archive.org/download/prison_life_in_andersonville_1805_librivox/prison_life_andersonville_1805.jpg",
           "id": "jeffery",
           "language": "en",
+          "librivox_genres": [
+            "War & Military"
+          ],
           "librivox_id": 12588,
+          "librivox_title": "Prison Life in Andersonville",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/prison-life-in-andersonville-by-john-levi-maile/",
@@ -4728,348 +4748,580 @@
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_00_berkman_64kb.mp3",
               "length_ms": 294000,
+              "readers": [
+                "kwame-genov"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "As Introductory"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_01_berkman_64kb.mp3",
               "length_ms": 2246000,
+              "readers": [
+                "kwame-genov"
+              ],
+              "section_number": 1,
               "start_ms": 294000,
               "title": "The Call of Homestead"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_02_berkman_64kb.mp3",
               "length_ms": 475000,
+              "readers": [
+                "kwame-genov"
+              ],
+              "section_number": 2,
               "start_ms": 2540000,
               "title": "The Seat of War"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_03_berkman_64kb.mp3",
               "length_ms": 470000,
+              "readers": [
+                "kwame-genov"
+              ],
+              "section_number": 3,
               "start_ms": 3015000,
               "title": "The Spirit of Pittsburgh"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_04_berkman_64kb.mp3",
               "length_ms": 266000,
+              "readers": [
+                "kwame-genov"
+              ],
+              "section_number": 4,
               "start_ms": 3485000,
               "title": "The Attentat"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_05_berkman_64kb.mp3",
               "length_ms": 723000,
+              "readers": [
+                "kwame-genov"
+              ],
+              "section_number": 5,
               "start_ms": 3751000,
               "title": "The Third Degree"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_06_berkman_64kb.mp3",
               "length_ms": 579000,
+              "readers": [
+                "kwame-genov"
+              ],
+              "section_number": 6,
               "start_ms": 4474000,
               "title": "The Jail"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_07_berkman_64kb.mp3",
               "length_ms": 380000,
+              "readers": [
+                "kwame-genov"
+              ],
+              "section_number": 7,
               "start_ms": 5053000,
               "title": "The Trial"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_08_berkman_64kb.mp3",
               "length_ms": 2011000,
+              "readers": [
+                "kwame-genov"
+              ],
+              "section_number": 8,
               "start_ms": 5433000,
               "title": "Desperate Thoughts"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_09_berkman_64kb.mp3",
               "length_ms": 366000,
+              "readers": [
+                "kwame-genov"
+              ],
+              "section_number": 9,
               "start_ms": 7444000,
               "title": "The Will to Live"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_10_berkman_64kb.mp3",
               "length_ms": 443000,
+              "readers": [
+                "kwame-genov"
+              ],
+              "section_number": 10,
               "start_ms": 7810000,
               "title": "Spectral Silence"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_11_berkman_64kb.mp3",
               "length_ms": 359000,
+              "readers": [
+                "kwame-genov"
+              ],
+              "section_number": 11,
               "start_ms": 8253000,
               "title": "A Ray of Light"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_12_berkman_64kb.mp3",
               "length_ms": 733000,
+              "readers": [
+                "kwame-genov"
+              ],
+              "section_number": 12,
               "start_ms": 8612000,
               "title": "The Shop"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_13_berkman_64kb.mp3",
               "length_ms": 334000,
+              "readers": [
+                "kwame-genov"
+              ],
+              "section_number": 13,
               "start_ms": 9345000,
               "title": "My First Letter"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_14_berkman_64kb.mp3",
               "length_ms": 794000,
+              "readers": [
+                "kwame-genov"
+              ],
+              "section_number": 14,
               "start_ms": 9679000,
               "title": "Wingie"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_15_berkman_64kb.mp3",
               "length_ms": 479000,
+              "readers": [
+                "kwame-genov"
+              ],
+              "section_number": 15,
               "start_ms": 10473000,
               "title": "To the Girl"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_16_berkman_64kb.mp3",
               "length_ms": 720000,
+              "readers": [
+                "kwame-genov"
+              ],
+              "section_number": 16,
               "start_ms": 10952000,
               "title": "Persecution"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_17_berkman_64kb.mp3",
               "length_ms": 1520000,
+              "readers": [
+                "kwame-genov"
+              ],
+              "section_number": 17,
               "start_ms": 11672000,
               "title": "The Yegg"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_18_berkman_64kb.mp3",
               "length_ms": 254000,
+              "readers": [
+                "kwame-genov"
+              ],
+              "section_number": 18,
               "start_ms": 13192000,
               "title": "The Route Sub Rosa"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_19_berkman_64kb.mp3",
               "length_ms": 954000,
+              "readers": [
+                "onhyattus"
+              ],
+              "section_number": 19,
               "start_ms": 13446000,
               "title": "''Zuchthausbluethen''"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_20_berkman_64kb.mp3",
               "length_ms": 972000,
+              "readers": [
+                "antonygirgis"
+              ],
+              "section_number": 20,
               "start_ms": 14400000,
               "title": "The Judas"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_21_berkman_64kb.mp3",
               "length_ms": 663000,
+              "readers": [
+                "majorhistory"
+              ],
+              "section_number": 21,
               "start_ms": 15372000,
               "title": "The Dip"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_22_berkman_64kb.mp3",
               "length_ms": 1180000,
+              "readers": [
+                "majorhistory"
+              ],
+              "section_number": 22,
               "start_ms": 16035000,
               "title": "The Urge of Sex"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_23_berkman_64kb.mp3",
               "length_ms": 937000,
+              "readers": [
+                "stephen-harvey"
+              ],
+              "section_number": 23,
               "start_ms": 17215000,
               "title": "The Warden's Threat"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_24_berkman_64kb.mp3",
               "length_ms": 241000,
+              "readers": [
+                "chadh94"
+              ],
+              "section_number": 24,
               "start_ms": 18152000,
               "title": "The ''Basket'' Cell"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_25_berkman_64kb.mp3",
               "length_ms": 1225000,
+              "readers": [
+                "stephen-harvey"
+              ],
+              "section_number": 25,
               "start_ms": 18393000,
               "title": "The Solitary"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_26_berkman_64kb.mp3",
               "length_ms": 885000,
+              "readers": [
+                "stephen-harvey"
+              ],
+              "section_number": 26,
               "start_ms": 19618000,
               "title": "Memory-Guests"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_27_berkman_64kb.mp3",
               "length_ms": 2244000,
+              "readers": [
+                "stephen-harvey"
+              ],
+              "section_number": 27,
               "start_ms": 20503000,
               "title": "A Day in the Cell-House"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_28_berkman_64kb.mp3",
               "length_ms": 644000,
+              "readers": [
+                "stephen-harvey"
+              ],
+              "section_number": 28,
               "start_ms": 22747000,
               "title": "The Deeds of the Good to the Evil"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_29_berkman_64kb.mp3",
               "length_ms": 1671000,
+              "readers": [
+                "stephen-harvey"
+              ],
+              "section_number": 29,
               "start_ms": 23391000,
               "title": "The Grist of the Prison-Mill"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_30_berkman_64kb.mp3",
               "length_ms": 880000,
+              "readers": [
+                "stephen-harvey"
+              ],
+              "section_number": 30,
               "start_ms": 25062000,
               "title": "The Scales of Justice"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_31_berkman_64kb.mp3",
               "length_ms": 552000,
+              "readers": [
+                "beau-wood"
+              ],
+              "section_number": 31,
               "start_ms": 25942000,
               "title": "Thoughts that Stole Out of Prison"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_32_berkman_64kb.mp3",
               "length_ms": 1012000,
+              "readers": [
+                "christine-lehman"
+              ],
+              "section_number": 32,
               "start_ms": 26494000,
               "title": "How Shall the Depths Cry?"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_33_berkman_64kb.mp3",
               "length_ms": 880000,
+              "readers": [
+                "chadh94"
+              ],
+              "section_number": 33,
               "start_ms": 27506000,
               "title": "Hiding the Evidence"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_34_berkman_64kb.mp3",
               "length_ms": 1350000,
+              "readers": [
+                "ke126"
+              ],
+              "section_number": 34,
               "start_ms": 28386000,
               "title": "Love's Dungeon Flower"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_35_berkman_64kb.mp3",
               "length_ms": 179000,
+              "readers": [
+                "josh-kibbey"
+              ],
+              "section_number": 35,
               "start_ms": 29736000,
               "title": "For Safety"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_36_berkman_64kb.mp3",
               "length_ms": 858000,
+              "readers": [
+                "cate-mackenzie"
+              ],
+              "section_number": 36,
               "start_ms": 29915000,
               "title": "Dreams of Freedom"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_37_berkman_64kb.mp3",
               "length_ms": 702000,
+              "readers": [
+                "kathleen-moore"
+              ],
+              "section_number": 37,
               "start_ms": 30773000,
               "title": "Whitewashed Again"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_38_berkman_64kb.mp3",
               "length_ms": 1020000,
+              "readers": [
+                "kathleen-moore"
+              ],
+              "section_number": 38,
               "start_ms": 31475000,
               "title": "''And by All Forgot, We Rot and Rot''"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_39_berkman_64kb.mp3",
               "length_ms": 468000,
+              "readers": [
+                "kathleen-moore"
+              ],
+              "section_number": 39,
               "start_ms": 32495000,
               "title": "The Deviousness of Reform Law Applied"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_40_berkman_64kb.mp3",
               "length_ms": 880000,
+              "readers": [
+                "kathleen-moore"
+              ],
+              "section_number": 40,
               "start_ms": 32963000,
               "title": "The Tunnel"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_41_berkman_64kb.mp3",
               "length_ms": 148000,
+              "readers": [
+                "josh-kibbey"
+              ],
+              "section_number": 41,
               "start_ms": 33843000,
               "title": "The Death of Dick"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_42_berkman_64kb.mp3",
               "length_ms": 1087000,
+              "readers": [
+                "stephen-harvey"
+              ],
+              "section_number": 42,
               "start_ms": 33991000,
               "title": "An Alliance With the Birds"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_43_berkman_64kb.mp3",
               "length_ms": 816000,
+              "readers": [
+                "andrew-grant"
+              ],
+              "section_number": 43,
               "start_ms": 35078000,
               "title": "The Underground"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_44_berkman_64kb.mp3",
               "length_ms": 915000,
+              "readers": [
+                "christine-lehman"
+              ],
+              "section_number": 44,
               "start_ms": 35894000,
               "title": "Anxious Days"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_45_berkman_64kb.mp3",
               "length_ms": 649000,
+              "readers": [
+                "chadh94"
+              ],
+              "section_number": 45,
               "start_ms": 36809000,
               "title": "''How Men Their Brothers Maim''"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_46_berkman_64kb.mp3",
               "length_ms": 743000,
+              "readers": [
+                "cate-mackenzie"
+              ],
+              "section_number": 46,
               "start_ms": 37458000,
               "title": "A New Plan of Escape"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_47_berkman_64kb.mp3",
               "length_ms": 1093000,
+              "readers": [
+                "ljarrow"
+              ],
+              "section_number": 47,
               "start_ms": 38201000,
               "title": "Done to Death"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_48_berkman_64kb.mp3",
               "length_ms": 1670000,
+              "readers": [
+                "phyllisv"
+              ],
+              "section_number": 48,
               "start_ms": 39294000,
               "title": "The Shock at Buffalo"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_49_berkman_64kb.mp3",
               "length_ms": 1643000,
+              "readers": [
+                "phyllisv"
+              ],
+              "section_number": 49,
               "start_ms": 40964000,
               "title": "Marred Lives"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_50_berkman_64kb.mp3",
               "length_ms": 1386000,
+              "readers": [
+                "phyllisv"
+              ],
+              "section_number": 50,
               "start_ms": 42607000,
               "title": "''Passing the Love of Woman''"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_51_berkman_64kb.mp3",
               "length_ms": 891000,
+              "readers": [
+                "chuck-williamson"
+              ],
+              "section_number": 51,
               "start_ms": 43993000,
               "title": "Love's Daring"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_52_berkman_64kb.mp3",
               "length_ms": 929000,
+              "readers": [
+                "chuck-williamson"
+              ],
+              "section_number": 52,
               "start_ms": 44884000,
               "title": "The Bloom of ''The Barren Staff''"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_53_berkman_64kb.mp3",
               "length_ms": 535000,
+              "readers": [
+                "john"
+              ],
+              "section_number": 53,
               "start_ms": 45813000,
               "title": "A Child's Heart-Hunger"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_54_berkman_64kb.mp3",
               "length_ms": 924000,
+              "readers": [
+                "john"
+              ],
+              "section_number": 54,
               "start_ms": 46348000,
               "title": "Chum"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_55_berkman_64kb.mp3",
               "length_ms": 725000,
+              "readers": [
+                "john"
+              ],
+              "section_number": 55,
               "start_ms": 47272000,
               "title": "Last Days"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_56_berkman_64kb.mp3",
               "length_ms": 1031000,
+              "readers": [
+                "john"
+              ],
+              "section_number": 56,
               "start_ms": 47997000,
               "title": "The Workhouse"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_memoirs_anarchist_2001_librivox/prisonmemoirsanarchist_57_berkman_64kb.mp3",
               "length_ms": 4824000,
+              "readers": [
+                "chuck-williamson"
+              ],
+              "section_number": 57,
               "start_ms": 49028000,
               "title": "The Resurrection"
             }
@@ -5078,7 +5330,11 @@
           "cover_url": "https://archive.org/download/prison_memoirs_anarchist_2001_librivox/berkman-prisonmem_2001.jpg",
           "id": "kwame-genov",
           "language": "en",
+          "librivox_genres": [
+            "Memoirs"
+          ],
           "librivox_id": 11403,
+          "librivox_title": "Prison Memoirs of an Anarchist",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/prison-memoirs-of-an-anarchist-by-alexander-berkman/",
@@ -6320,486 +6576,810 @@
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_00_mcknight_64kb.mp3",
               "length_ms": 411000,
+              "readers": [
+                "mleigh"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Dedication, Preface, Introduction, and Prelude by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_01_mcknight_64kb.mp3",
               "length_ms": 56000,
+              "readers": [
+                "mleigh"
+              ],
+              "section_number": 1,
               "start_ms": 411000,
               "title": "My Prison Garden, by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_02_mcknight_64kb.mp3",
               "length_ms": 973000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 2,
               "start_ms": 467000,
               "title": "Rhyme and Reason by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_03_mcknight_64kb.mp3",
               "length_ms": 99000,
+              "readers": [
+                "mleigh"
+              ],
+              "section_number": 3,
               "start_ms": 1440000,
               "title": "Freedom by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_04_mcknight_64kb.mp3",
               "length_ms": 46000,
+              "readers": [
+                "april6090"
+              ],
+              "section_number": 4,
               "start_ms": 1539000,
               "title": "God Bless Them by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_05_mcknight_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 5,
               "start_ms": 1585000,
               "title": "Forget? No, Never! by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_06_mcknight_64kb.mp3",
               "length_ms": 88000,
+              "readers": [
+                "jacqueline-tyler"
+              ],
+              "section_number": 6,
               "start_ms": 1658000,
               "title": "Mother by Overstreet"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_07_mcknight_64kb.mp3",
               "length_ms": 133000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 7,
               "start_ms": 1746000,
               "title": "A Prisoner's Thanksgiving by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_08_mcknight_64kb.mp3",
               "length_ms": 92000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 8,
               "start_ms": 1879000,
               "title": "Hope—Eternity by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_09_mcknight_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "april6090"
+              ],
+              "section_number": 9,
               "start_ms": 1971000,
               "title": "The Prisoner's Mother by Mrs. S. E. Wirick"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_10_mcknight_64kb.mp3",
               "length_ms": 83000,
+              "readers": [
+                "czandra"
+              ],
+              "section_number": 10,
               "start_ms": 2042000,
               "title": "How To Be Happy In Prison by No. 22700"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_11_mcknight_64kb.mp3",
               "length_ms": 84000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 11,
               "start_ms": 2125000,
               "title": "In Prison by Harrison"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_12_mcknight_64kb.mp3",
               "length_ms": 1620000,
+              "readers": [
+                "nichole-di-dio"
+              ],
+              "section_number": 12,
               "start_ms": 2209000,
               "title": "Erratic Musings of Unfettered Thought by Geo. W. H. Harrison"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_13_mcknight_64kb.mp3",
               "length_ms": 56000,
+              "readers": [
+                "kerry-adams"
+              ],
+              "section_number": 13,
               "start_ms": 3829000,
               "title": "Influence by Sam Law"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_14_mcknight_64kb.mp3",
               "length_ms": 85000,
+              "readers": [
+                "czandra"
+              ],
+              "section_number": 14,
               "start_ms": 3885000,
               "title": "Perfect Peace by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_15_mcknight_64kb.mp3",
               "length_ms": 60000,
+              "readers": [
+                "rileyh"
+              ],
+              "section_number": 15,
               "start_ms": 3970000,
               "title": "Be Lenient to the Errant One by Geo. W. H. Harrison"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_16_mcknight_64kb.mp3",
               "length_ms": 236000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 16,
               "start_ms": 4030000,
               "title": "Last Night In the Dungeon by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_17_mcknight_64kb.mp3",
               "length_ms": 45000,
+              "readers": [
+                "kerry-adams"
+              ],
+              "section_number": 17,
               "start_ms": 4266000,
               "title": "Hope by Sam Law"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_18_mcknight_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "czandra"
+              ],
+              "section_number": 18,
               "start_ms": 4311000,
               "title": "Would They Know by No. 25700"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_19_mcknight_64kb.mp3",
               "length_ms": 145000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 19,
               "start_ms": 4382000,
               "title": "Guilt's Queries and Truth's Replies by Harrison"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_20_mcknight_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "april6090"
+              ],
+              "section_number": 20,
               "start_ms": 4527000,
               "title": "A Letter From Home by No. 24138"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_21_mcknight_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "kerry-adams"
+              ],
+              "section_number": 21,
               "start_ms": 4607000,
               "title": "The Reformer by Sam Law"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_22_mcknight_64kb.mp3",
               "length_ms": 63000,
+              "readers": [
+                "inkell"
+              ],
+              "section_number": 22,
               "start_ms": 4677000,
               "title": "Reflections by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_23_mcknight_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "inkell"
+              ],
+              "section_number": 23,
               "start_ms": 4740000,
               "title": "The Prisoner Released by Col. H. C. Parsons"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_24_mcknight_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 24,
               "start_ms": 4797000,
               "title": "Prison Pains by Harrison"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_25_mcknight_64kb.mp3",
               "length_ms": 52000,
+              "readers": [
+                "rileyh"
+              ],
+              "section_number": 25,
               "start_ms": 4874000,
               "title": "The Under Dog by Barker"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_26_mcknight_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "stefan-von-blon"
+              ],
+              "section_number": 26,
               "start_ms": 4926000,
               "title": "Kindness by Roth"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_27_mcknight_64kb.mp3",
               "length_ms": 108000,
+              "readers": [
+                "lisa-b"
+              ],
+              "section_number": 27,
               "start_ms": 5002000,
               "title": "There Is No Death by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_28_mcknight_64kb.mp3",
               "length_ms": 79000,
+              "readers": [
+                "rileyh"
+              ],
+              "section_number": 28,
               "start_ms": 5110000,
               "title": "Dreams by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_29_mcknight_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "inkell"
+              ],
+              "section_number": 29,
               "start_ms": 5189000,
               "title": "The Great \"O. P.\" by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_30_mcknight_64kb.mp3",
               "length_ms": 117000,
+              "readers": [
+                "inkell"
+              ],
+              "section_number": 30,
               "start_ms": 5263000,
               "title": "Coming In and Going Out by Carr"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_31_mcknight_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "stefan-von-blon"
+              ],
+              "section_number": 31,
               "start_ms": 5380000,
               "title": "Soul Sculpture by Bishop Doane"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_32_mcknight_64kb.mp3",
               "length_ms": 177000,
+              "readers": [
+                "darkeith-lofton"
+              ],
+              "section_number": 32,
               "start_ms": 5435000,
               "title": "Weight and Immortality of Words by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_33_mcknight_64kb.mp3",
               "length_ms": 421000,
+              "readers": [
+                "soundslikejack"
+              ],
+              "section_number": 33,
               "start_ms": 5612000,
               "title": "Which Loved Her Best by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_34_mcknight_64kb.mp3",
               "length_ms": 38000,
+              "readers": [
+                "april6090"
+              ],
+              "section_number": 34,
               "start_ms": 6033000,
               "title": "The Storms of Life by Sam Law"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_35_mcknight_64kb.mp3",
               "length_ms": 433000,
+              "readers": [
+                "rileyh"
+              ],
+              "section_number": 35,
               "start_ms": 6071000,
               "title": "Love's Victim by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_36_mcknight_64kb.mp3",
               "length_ms": 176000,
+              "readers": [
+                "laurie-banza"
+              ],
+              "section_number": 36,
               "start_ms": 6504000,
               "title": "A Prisoner's Lamentation by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_37_mcknight_64kb.mp3",
               "length_ms": 230000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 37,
               "start_ms": 6680000,
               "title": "Our Board of Managers by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_38_mcknight_64kb.mp3",
               "length_ms": 146000,
+              "readers": [
+                "helen-cole"
+              ],
+              "section_number": 38,
               "start_ms": 6910000,
               "title": "Tribute to Assistant Deputy Warden L. H. Wells by G. W. Van Weighs"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_39_mcknight_64kb.mp3",
               "length_ms": 151000,
+              "readers": [
+                "jacqueline-tyler"
+              ],
+              "section_number": 39,
               "start_ms": 7056000,
               "title": "One and a Few by No. 21069"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_40_mcknight_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "inkell"
+              ],
+              "section_number": 40,
               "start_ms": 7207000,
               "title": "Midnight Musings by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_41_mcknight_64kb.mp3",
               "length_ms": 84000,
+              "readers": [
+                "stefan-von-blon"
+              ],
+              "section_number": 41,
               "start_ms": 7281000,
               "title": "A Query by Morse"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_42_mcknight_64kb.mp3",
               "length_ms": 155000,
+              "readers": [
+                "inkell"
+              ],
+              "section_number": 42,
               "start_ms": 7365000,
               "title": "Stray Thoughts by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_43_mcknight_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "kerry-adams"
+              ],
+              "section_number": 43,
               "start_ms": 7520000,
               "title": "Judge Not Lest Ye Be Judged by Sam Law"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_44_mcknight_64kb.mp3",
               "length_ms": 93000,
+              "readers": [
+                "mleigh"
+              ],
+              "section_number": 44,
               "start_ms": 7595000,
               "title": "The Convict's Prayer by No. 21269"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_45_mcknight_64kb.mp3",
               "length_ms": 231000,
+              "readers": [
+                "laurieb"
+              ],
+              "section_number": 45,
               "start_ms": 7688000,
               "title": "Wine vs. Water by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_46_mckknight_64kb.mp3",
               "length_ms": 889000,
+              "readers": [
+                "laurieb"
+              ],
+              "section_number": 46,
               "start_ms": 7919000,
               "title": "The Fall of Sodom by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_47_mcknight_64kb.mp3",
               "length_ms": 250000,
+              "readers": [
+                "nichole-di-dio"
+              ],
+              "section_number": 47,
               "start_ms": 8808000,
               "title": "Tribute to the Wolfe Sisters by H. P. McKnight'"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_48_mcknight_64kb.mp3",
               "length_ms": 52000,
+              "readers": [
+                "rileyh"
+              ],
+              "section_number": 48,
               "start_ms": 9058000,
               "title": "Prisoners by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_49_mcknight_64kb.mp3",
               "length_ms": 241000,
+              "readers": [
+                "nichole-di-dio"
+              ],
+              "section_number": 49,
               "start_ms": 9110000,
               "title": "Two Letters by Geo W. H. Harrison"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_50_mcknight_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "april-hendry"
+              ],
+              "section_number": 50,
               "start_ms": 9351000,
               "title": "A Prayer For Justice by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_51_mcknight_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "inkell"
+              ],
+              "section_number": 51,
               "start_ms": 9432000,
               "title": "Birthday Musings by G. W. Van Weighs"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_52_mcknight_64kb.mp3",
               "length_ms": 358000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 52,
               "start_ms": 9507000,
               "title": "Tribute to the Wolfe Sisters by Geo. W. H. Harrison"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_53_mcknight_64kb.mp3",
               "length_ms": 172000,
+              "readers": [
+                "nichole-di-dio"
+              ],
+              "section_number": 53,
               "start_ms": 9865000,
               "title": "To A Departed Idol by G. W. Van Weighs"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_54_mcknight_64kb.mp3",
               "length_ms": 260000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 54,
               "start_ms": 10037000,
               "title": "Acrostic to Warden and Mrs. E. G. Coffin by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_55_mcknight_64kb.mp3",
               "length_ms": 1009000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 55,
               "start_ms": 10297000,
               "title": "A Prison Vision by Geo. W. H. Harrison"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_56_mcknight_64kb.mp3",
               "length_ms": 112000,
+              "readers": [
+                "bruce-kachuk"
+              ],
+              "section_number": 56,
               "start_ms": 11306000,
               "title": "Acrostic  Tribute to Capt. Joseph Smith Acheson by Geo. W. H. Harrison"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_57_mcknight_64kb.mp3",
               "length_ms": 123000,
+              "readers": [
+                "maria-thompson"
+              ],
+              "section_number": 57,
               "start_ms": 11418000,
               "title": "My Mother by Carr"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_58_mcknight_64kb.mp3",
               "length_ms": 133000,
+              "readers": [
+                "mleigh"
+              ],
+              "section_number": 58,
               "start_ms": 11541000,
               "title": "A Memorial Ode by G. W. Van Weighs"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_59_mcknight_64kb.mp3",
               "length_ms": 104000,
+              "readers": [
+                "april6090"
+              ],
+              "section_number": 59,
               "start_ms": 11674000,
               "title": "Lines To My Cell by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_60_mcknight_64kb.mp3",
               "length_ms": 106000,
+              "readers": [
+                "henneh-udtuhan"
+              ],
+              "section_number": 60,
               "start_ms": 11778000,
               "title": "Tribute to Dr. G. A. Tharp by G. W. Van Weighs"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_61_mcknight_64kb.mp3",
               "length_ms": 96000,
+              "readers": [
+                "rileyh"
+              ],
+              "section_number": 61,
               "start_ms": 11884000,
               "title": "An Appreciated Friend by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_62_mcknight_64kb.mp3",
               "length_ms": 1904000,
+              "readers": [
+                "nichole-di-dio"
+              ],
+              "section_number": 62,
               "start_ms": 11980000,
               "title": "Salome's Revenge by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_63_mcknight_64kb.mp3",
               "length_ms": 119000,
+              "readers": [
+                "bruce-kachuk"
+              ],
+              "section_number": 63,
               "start_ms": 13884000,
               "title": "A tribute to Capt. George W. Hess by G. W. Van Weighs"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_64_mcknight_64kb.mp3",
               "length_ms": 158000,
+              "readers": [
+                "april6090"
+              ],
+              "section_number": 64,
               "start_ms": 14003000,
               "title": "My Lawyer by George Gilbert"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_65_mcknight_64kb.mp3",
               "length_ms": 140000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 65,
               "start_ms": 14161000,
               "title": "A Sad Warning by Geo. W. H. Harrison"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_66_mcknight_64kb.mp3",
               "length_ms": 88000,
+              "readers": [
+                "laurie-banza"
+              ],
+              "section_number": 66,
               "start_ms": 14301000,
               "title": "Acrostic to J. C. Langenberger, Captain of the O.P Night Watch by G. W. Van Weighs"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_67_mcknight_64kb.mp3",
               "length_ms": 87000,
+              "readers": [
+                "rileyh"
+              ],
+              "section_number": 67,
               "start_ms": 14389000,
               "title": "She Loves Me Yet by Geo. H. W. Harrison"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_68_mcknight_64kb.mp3",
               "length_ms": 64000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 68,
               "start_ms": 14476000,
               "title": "Acrostic Tribute to Harry Smith by G. W. Van Weighs"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_69_mcknight_64kb.mp3",
               "length_ms": 1668000,
+              "readers": [
+                "rags"
+              ],
+              "section_number": 69,
               "start_ms": 14540000,
               "title": "The Phantom Boat by Geo W. H. Harrison"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_70_mcknight_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "inkell"
+              ],
+              "section_number": 70,
               "start_ms": 16208000,
               "title": "An Initial Acrostic by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_71_mcknight_64kb.mp3",
               "length_ms": 111000,
+              "readers": [
+                "bruce-kachuk"
+              ],
+              "section_number": 71,
               "start_ms": 16279000,
               "title": "Acrostic Tribute to Dr. H. R. Parker by Geo. W. H. Harrison"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_72_mcknight_64kb.mp3",
               "length_ms": 100000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 72,
               "start_ms": 16390000,
               "title": "Lines To My Wife by Geo W. H. Harrison"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_73_mcknight_64kb.mp3",
               "length_ms": 112000,
+              "readers": [
+                "cavaet"
+              ],
+              "section_number": 73,
               "start_ms": 16490000,
               "title": "Out of the Depths by Geo. W. H. Harrison"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_74_mcknight_64kb.mp3",
               "length_ms": 612000,
+              "readers": [
+                "nichole-di-dio"
+              ],
+              "section_number": 74,
               "start_ms": 16602000,
               "title": "Ella Ree's Revenge by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_75_mcknight_64kb.mp3",
               "length_ms": 460000,
+              "readers": [
+                "cavaet"
+              ],
+              "section_number": 75,
               "start_ms": 17214000,
               "title": "The Murderer's Dream by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_76_mcknight_64kb.mp3",
               "length_ms": 278000,
+              "readers": [
+                "nichole-di-dio"
+              ],
+              "section_number": 76,
               "start_ms": 17674000,
               "title": "Acrostic Tribute to God's Messengers, Chaplain and Mrs. C. L. Winget by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_77_mcknight_64kb.mp3",
               "length_ms": 424000,
+              "readers": [
+                "inkell"
+              ],
+              "section_number": 77,
               "start_ms": 17952000,
               "title": "The Mind is the Standard of the Man by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_78_mcknight_64kb.mp3",
               "length_ms": 111000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 78,
               "start_ms": 18376000,
               "title": "Cell Thoughts by Geo. W. H. Harrison"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_79_mcknight_64kb.mp3",
               "length_ms": 338000,
+              "readers": [
+                "rags"
+              ],
+              "section_number": 79,
               "start_ms": 18487000,
               "title": "The Author's Farewell by H. P. McKnight"
             },
             {
               "audio_url": "https://www.archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_80_mcknight_64kb.mp3",
               "length_ms": 45000,
+              "readers": [
+                "inkell"
+              ],
+              "section_number": 80,
               "start_ms": 18825000,
               "title": "Conclusion by H. P. McKnight"
             }
@@ -6808,7 +7388,11 @@
           "cover_url": "https://archive.org/download/prisonpoetry_2301_librivox/prisonpoetry_2301.jpg",
           "id": "mleigh",
           "language": "en",
+          "librivox_genres": [
+            "Anthologies"
+          ],
           "librivox_id": 18173,
+          "librivox_title": "Prison Poetry",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/prison-poetry-by-various/",
@@ -7139,102 +7723,119 @@
             {
               "audio_url": "https://www.archive.org/download/prison_prisoners_kh_1701_librivox/prisonprisoners_00_lytton_64kb.mp3",
               "length_ms": 200000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Dedication"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_prisoners_kh_1701_librivox/prisonprisoners_01_lytton_64kb.mp3",
               "length_ms": 771000,
+              "section_number": 1,
               "start_ms": 200000,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_prisoners_kh_1701_librivox/prisonprisoners_02_lytton_64kb.mp3",
               "length_ms": 2019000,
+              "section_number": 2,
               "start_ms": 971000,
               "title": "My Conversion"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_prisoners_kh_1701_librivox/prisonprisoners_03_lytton_64kb.mp3",
               "length_ms": 2206000,
+              "section_number": 3,
               "start_ms": 2990000,
               "title": "A Deputation to the Prime Minister"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_prisoners_kh_1701_librivox/prisonprisoners_04_lytton_64kb.mp3",
               "length_ms": 1242000,
+              "section_number": 4,
               "start_ms": 5196000,
               "title": "Police Court Trial"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_prisoners_kh_1701_librivox/prisonprisoners_05_lytton_64kb.mp3",
               "length_ms": 2154000,
+              "section_number": 5,
               "start_ms": 6438000,
               "title": "Holloway Prison: My First Imprisonment"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_prisoners_kh_1701_librivox/prisonprisoners_06_lytton_64kb.mp3",
               "length_ms": 1953000,
+              "section_number": 6,
               "start_ms": 8592000,
               "title": "The Hospital"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_prisoners_kh_1701_librivox/prisonprisoners_07_lytton_64kb.mp3",
               "length_ms": 2179000,
+              "section_number": 7,
               "start_ms": 10545000,
               "title": "Some Types of Prisoners"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_prisoners_kh_1701_librivox/prisonprisoners_08_lytton_64kb.mp3",
               "length_ms": 3210000,
+              "section_number": 8,
               "start_ms": 12724000,
               "title": "'A Track To The Water's Edge'"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_prisoners_kh_1701_librivox/prisonprisoners_09_lytton_64kb.mp3",
               "length_ms": 2445000,
+              "section_number": 9,
               "start_ms": 15934000,
               "title": "From The Cells"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_prisoners_kh_1701_librivox/prisonprisoners_10_lytton_64kb.mp3",
               "length_ms": 1815000,
+              "section_number": 10,
               "start_ms": 18379000,
               "title": "New Castle: Police Station Cell"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_prisoners_kh_1701_librivox/prisonprisoners_11_lytton_64kb.mp3",
               "length_ms": 1014000,
+              "section_number": 11,
               "start_ms": 20194000,
               "title": "New Castle Prison: My Second Imprisonment"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_prisoners_kh_1701_librivox/prisonprisoners_12_lytton_64kb.mp3",
               "length_ms": 2174000,
+              "section_number": 12,
               "start_ms": 21208000,
               "title": "Jane Wharton"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_prisoners_kh_1701_librivox/prisonprisoners_13_lytton_64kb.mp3",
               "length_ms": 3309000,
+              "section_number": 13,
               "start_ms": 23382000,
               "title": "Walton Gaol, Liverpool: My Third Imprisonment"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_prisoners_kh_1701_librivox/prisonprisoners_14_lytton_64kb.mp3",
               "length_ms": 1236000,
+              "section_number": 14,
               "start_ms": 26691000,
               "title": "The Home Office"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_prisoners_kh_1701_librivox/prisonprisoners_15_lytton_64kb.mp3",
               "length_ms": 762000,
+              "section_number": 15,
               "start_ms": 27927000,
               "title": "The Conciliation Bill"
             },
             {
               "audio_url": "https://www.archive.org/download/prison_prisoners_kh_1701_librivox/prisonprisoners_16_lytton_64kb.mp3",
               "length_ms": 1659000,
+              "section_number": 16,
               "start_ms": 28689000,
               "title": "Holloway Prison Revisited: My Fourth Imprisonment"
             }
@@ -7243,7 +7844,11 @@
           "cover_url": "https://archive.org/download/prison_prisoners_kh_1701_librivox/prison_prisoners_1701_itemimage.jpg",
           "id": "khand",
           "language": "en",
+          "librivox_genres": [
+            "Political Science"
+          ],
           "librivox_id": 11282,
+          "librivox_title": "Prison & Prisoners: Some Personal Experiences",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/prison-prisoners-some-personal-experiences-by-constance-lytton/",
@@ -8332,108 +8937,126 @@
             {
               "audio_url": "https://www.archive.org/download/prisoner_for_blasphemy_1401_librivox/prisonerforblasphemy_00_foote_64kb.mp3",
               "length_ms": 1315000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_for_blasphemy_1401_librivox/prisonerforblasphemy_01_foote_64kb.mp3",
               "length_ms": 1251000,
+              "section_number": 1,
               "start_ms": 1315000,
               "title": "I. The Storm Brewing"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_for_blasphemy_1401_librivox/prisonerforblasphemy_02_foote_64kb.mp3",
               "length_ms": 1071000,
+              "section_number": 2,
               "start_ms": 2566000,
               "title": "II. Our First Summons"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_for_blasphemy_1401_librivox/prisonerforblasphemy_03_foote_64kb.mp3",
               "length_ms": 1205000,
+              "section_number": 3,
               "start_ms": 3637000,
               "title": "III. Mr. Bradlaugh Included"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_for_blasphemy_1401_librivox/prisonerforblasphemy_04_foote_64kb.mp3",
               "length_ms": 1201000,
+              "section_number": 4,
               "start_ms": 4842000,
               "title": "IV. Our Indictment"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_for_blasphemy_1401_librivox/prisonerforblasphemy_05_foote_64kb.mp3",
               "length_ms": 1465000,
+              "section_number": 5,
               "start_ms": 6043000,
               "title": "V. Another Prosecution"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_for_blasphemy_1401_librivox/prisonerforblasphemy_06_foote_64kb.mp3",
               "length_ms": 1345000,
+              "section_number": 6,
               "start_ms": 7508000,
               "title": "VI. Preparing for Trial"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_for_blasphemy_1401_librivox/prisonerforblasphemy_07_foote_64kb.mp3",
               "length_ms": 2562000,
+              "section_number": 7,
               "start_ms": 8853000,
               "title": "VII. At the Old Bailey"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_for_blasphemy_1401_librivox/prisonerforblasphemy_08_foote_64kb.mp3",
               "length_ms": 1824000,
+              "section_number": 8,
               "start_ms": 11415000,
               "title": "VIII. Newgate"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_for_blasphemy_1401_librivox/prisonerforblasphemy_09_foote_64kb.mp3",
               "length_ms": 1410000,
+              "section_number": 9,
               "start_ms": 13239000,
               "title": "IX. The Second Trial"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_for_blasphemy_1401_librivox/prisonerforblasphemy_10_foote_64kb.mp3",
               "length_ms": 1175000,
+              "section_number": 10,
               "start_ms": 14649000,
               "title": "X. \"Black Maria\""
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_for_blasphemy_1401_librivox/prisonerforblasphemy_11_foote_64kb.mp3",
               "length_ms": 1218000,
+              "section_number": 11,
               "start_ms": 15824000,
               "title": "XI. Holloway Gaol"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_for_blasphemy_1401_librivox/prisonerforblasphemy_12_foote_64kb.mp3",
               "length_ms": 2313000,
+              "section_number": 12,
               "start_ms": 17042000,
               "title": "XII. Prison Life"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_for_blasphemy_1401_librivox/prisonerforblasphemy_13_foote_64kb.mp3",
               "length_ms": 1402000,
+              "section_number": 13,
               "start_ms": 19355000,
               "title": "XIII. Parson Plaford"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_for_blasphemy_1401_librivox/prisonerforblasphemy_14_foote_64kb.mp3",
               "length_ms": 1556000,
+              "section_number": 14,
               "start_ms": 20757000,
               "title": "XIV. The Third Trial"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_for_blasphemy_1401_librivox/prisonerforblasphemy_15_foote_64kb.mp3",
               "length_ms": 1060000,
+              "section_number": 15,
               "start_ms": 22313000,
               "title": "XV. Loss and Gain"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_for_blasphemy_1401_librivox/prisonerforblasphemy_16_foote_64kb.mp3",
               "length_ms": 846000,
+              "section_number": 16,
               "start_ms": 23373000,
               "title": "XVI. A Long Night"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_for_blasphemy_1401_librivox/prisonerforblasphemy_17_foote_64kb.mp3",
               "length_ms": 667000,
+              "section_number": 17,
               "start_ms": 24219000,
               "title": "XVII. Daylight"
             }
@@ -8442,7 +9065,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/prisoner_for_blasphemy_1401.jpg",
           "id": "rob-marland",
           "language": "en",
+          "librivox_genres": [
+            "Memoirs",
+            "Atheism & Agnosticism"
+          ],
           "librivox_id": 7674,
+          "librivox_title": "Prisoner for Blasphemy",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/prisoner-for-blasphemy-by-george-william-foote/",
@@ -8493,114 +9121,171 @@
             {
               "audio_url": "https://www.archive.org/download/prisoner_in_a_dungeon_deep_2306.poem_librivox/prisoner_bronte_aft_64kb.mp3",
               "length_ms": 154000,
+              "readers": [
+                "adam-thompson"
+              ],
               "start_ms": 0,
               "title": "A Prisoner In A Dungeon Deep - read by AFT"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_in_a_dungeon_deep_2306.poem_librivox/prisoner_bronte_alp_64kb.mp3",
               "length_ms": 173000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 154000,
               "title": "A Prisoner In A Dungeon Deep - read by ALP"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_in_a_dungeon_deep_2306.poem_librivox/prisoner_bronte_aps_64kb.mp3",
               "length_ms": 170000,
+              "readers": [
+                "adrian-stephens"
+              ],
               "start_ms": 327000,
               "title": "A Prisoner In A Dungeon Deep - read by APS"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_in_a_dungeon_deep_2306.poem_librivox/prisoner_bronte_arb_64kb.mp3",
               "length_ms": 159000,
+              "readers": [
+                "agnes-robert-behr"
+              ],
               "start_ms": 497000,
               "title": "A Prisoner In A Dungeon Deep - read by ARB"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_in_a_dungeon_deep_2306.poem_librivox/prisoner_bronte_as48_64kb.mp3",
               "length_ms": 201000,
+              "readers": [
+                "amazingspace48-tt"
+              ],
               "start_ms": 656000,
               "title": "A Prisoner In A Dungeon Deep - read by AS48"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_in_a_dungeon_deep_2306.poem_librivox/prisoner_bronte_bk_64kb.mp3",
               "length_ms": 193000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 857000,
               "title": "A Prisoner In A Dungeon Deep - read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_in_a_dungeon_deep_2306.poem_librivox/prisoner_bronte_clp_64kb.mp3",
               "length_ms": 135000,
+              "readers": [
+                "chris-pyle"
+              ],
               "start_ms": 1050000,
               "title": "A Prisoner In A Dungeon Deep - read by CLP"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_in_a_dungeon_deep_2306.poem_librivox/prisoner_bronte_dam_64kb.mp3",
               "length_ms": 155000,
+              "readers": [
+                "dariaam"
+              ],
               "start_ms": 1185000,
               "title": "A Prisoner In A Dungeon Deep - read by DAM"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_in_a_dungeon_deep_2306.poem_librivox/prisoner_bronte_dl_64kb.mp3",
               "length_ms": 169000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 1340000,
               "title": "A Prisoner In A Dungeon Deep - read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_in_a_dungeon_deep_2306.poem_librivox/prisoner_bronte_ec_64kb.mp3",
               "length_ms": 155000,
+              "readers": [
+                "elizabeth-copnall"
+              ],
               "start_ms": 1509000,
               "title": "A Prisoner In A Dungeon Deep - read by EC"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_in_a_dungeon_deep_2306.poem_librivox/prisoner_bronte_el0_64kb.mp3",
               "length_ms": 194000,
+              "readers": [
+                "newgatenovelist"
+              ],
               "start_ms": 1664000,
               "title": "A Prisoner In A Dungeon Deep - read by EL0"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_in_a_dungeon_deep_2306.poem_librivox/prisoner_bronte_gln_64kb.mp3",
               "length_ms": 184000,
+              "readers": [
+                "garth-burton"
+              ],
               "start_ms": 1858000,
               "title": "A Prisoner In A Dungeon Deep - read by GLN"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_in_a_dungeon_deep_2306.poem_librivox/prisoner_bronte_ikl_64kb.mp3",
               "length_ms": 139000,
+              "readers": [
+                "inkell"
+              ],
               "start_ms": 2042000,
               "title": "A Prisoner In A Dungeon Deep - read by IKL"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_in_a_dungeon_deep_2306.poem_librivox/prisoner_bronte_jbw_64kb.mp3",
               "length_ms": 162000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 2181000,
               "title": "A Prisoner In A Dungeon Deep - read by JBW"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_in_a_dungeon_deep_2306.poem_librivox/prisoner_bronte_ls_64kb.mp3",
               "length_ms": 163000,
+              "readers": [
+                "leesalter"
+              ],
               "start_ms": 2343000,
               "title": "A Prisoner In A Dungeon Deep - read by LS"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_in_a_dungeon_deep_2306.poem_librivox/prisoner_bronte_rr_64kb.mp3",
               "length_ms": 166000,
+              "readers": [
+                "redrun"
+              ],
               "start_ms": 2506000,
               "title": "A Prisoner In A Dungeon Deep - read by RR"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_in_a_dungeon_deep_2306.poem_librivox/prisoner_bronte_sws_64kb.mp3",
               "length_ms": 203000,
+              "readers": [
+                "scotty-smith"
+              ],
               "start_ms": 2672000,
               "title": "A Prisoner In A Dungeon Deep - read by SWS"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_in_a_dungeon_deep_2306.poem_librivox/prisoner_bronte_wa_64kb.mp3",
               "length_ms": 126000,
+              "readers": [
+                "willanthonyvoice"
+              ],
               "start_ms": 2875000,
               "title": "A Prisoner In A Dungeon Deep - read by WA"
             },
             {
               "audio_url": "https://www.archive.org/download/prisoner_in_a_dungeon_deep_2306.poem_librivox/prisoner_bronte_wja_64kb.mp3",
               "length_ms": 169000,
+              "readers": [
+                "winnifred-assmann"
+              ],
               "start_ms": 3001000,
               "title": "A Prisoner In A Dungeon Deep - read by WJA"
             }
@@ -8608,7 +9293,11 @@
           "cover_url": "https://archive.org/download/prisoner_in_a_dungeon_deep_2306.poem_librivox/prisoner_2306.jpg",
           "id": "adam-thompson",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 19348,
+          "librivox_title": "Prisoner In A Dungeon Deep",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-prisoner-in-a-dungeon-deep-by-anne-bronte/",
@@ -8677,204 +9366,306 @@
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_01_blackwood_64kb.mp3",
               "length_ms": 1155000,
+              "readers": [
+                "michele-fry"
+              ],
               "start_ms": 0,
               "title": "Chapter I"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_02_blackwood_64kb.mp3",
               "length_ms": 1916000,
+              "readers": [
+                "belinda-mcreynolds"
+              ],
               "start_ms": 1155000,
               "title": "Chapter II"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_03_blackwood_64kb.mp3",
               "length_ms": 1024000,
+              "readers": [
+                "abbiek"
+              ],
               "start_ms": 3071000,
               "title": "Chapter III"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_04_blackwood_64kb.mp3",
               "length_ms": 1059000,
+              "readers": [
+                "tim-rowe"
+              ],
               "start_ms": 4095000,
               "title": "Chapter IV"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_05_blackwood_64kb.mp3",
               "length_ms": 2350000,
+              "readers": [
+                "paddy001"
+              ],
               "start_ms": 5154000,
               "title": "Chapter V"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_06_blackwood_64kb.mp3",
               "length_ms": 897000,
+              "readers": [
+                "christine-rottger"
+              ],
               "start_ms": 7504000,
               "title": "Chapter VI"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_07_blackwood_64kb.mp3",
               "length_ms": 1768000,
+              "readers": [
+                "docdlmartin"
+              ],
               "start_ms": 8401000,
               "title": "Chapter VII"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_08_blackwood_64kb.mp3",
               "length_ms": 1229000,
+              "readers": [
+                "docdlmartin"
+              ],
               "start_ms": 10169000,
               "title": "Chapter VIII"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_09_blackwood_64kb.mp3",
               "length_ms": 2303000,
+              "readers": [
+                "docdlmartin"
+              ],
               "start_ms": 11398000,
               "title": "Chapter IX"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_10_blackwood_64kb.mp3",
               "length_ms": 1324000,
+              "readers": [
+                "michele-fry"
+              ],
               "start_ms": 13701000,
               "title": "Chapter X"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_11_blackwood_64kb.mp3",
               "length_ms": 1169000,
+              "readers": [
+                "docdlmartin"
+              ],
               "start_ms": 15025000,
               "title": "Chapter XI"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_12_blackwood_64kb.mp3",
               "length_ms": 832000,
+              "readers": [
+                "marisad6"
+              ],
               "start_ms": 16194000,
               "title": "Chapter XII"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_13_blackwood_64kb.mp3",
               "length_ms": 2718000,
+              "readers": [
+                "michele-fry"
+              ],
               "start_ms": 17026000,
               "title": "Chapter XIII"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_14_blackwood_64kb.mp3",
               "length_ms": 964000,
+              "readers": [
+                "madison-chau"
+              ],
               "start_ms": 19744000,
               "title": "Chapter XIV"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_15_blackwood_64kb.mp3",
               "length_ms": 2040000,
+              "readers": [
+                "winterberry"
+              ],
               "start_ms": 20708000,
               "title": "Chapter XV"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_16_blackwood_64kb.mp3",
               "length_ms": 1510000,
+              "readers": [
+                "madisonholmer1"
+              ],
               "start_ms": 22748000,
               "title": "Chapter XVI"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_17_blackwood_64kb.mp3",
               "length_ms": 1687000,
+              "readers": [
+                "tim-rowe"
+              ],
               "start_ms": 24258000,
               "title": "Chapter XVII"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_18_blackwood_64kb.mp3",
               "length_ms": 1790000,
+              "readers": [
+                "belinda-mcreynolds"
+              ],
               "start_ms": 25945000,
               "title": "Chapter XVIII"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_19_blackwood_64kb.mp3",
               "length_ms": 1662000,
+              "readers": [
+                "aleacia-messiah"
+              ],
               "start_ms": 27735000,
               "title": "Chapter XIX"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_20_blackwood_64kb.mp3",
               "length_ms": 1844000,
+              "readers": [
+                "docdlmartin"
+              ],
               "start_ms": 29397000,
               "title": "Chapter XX"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_21_blackwood_64kb.mp3",
               "length_ms": 459000,
+              "readers": [
+                "ohaiguy"
+              ],
               "start_ms": 31241000,
               "title": "Chapter XXI"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_22_blackwood_64kb.mp3",
               "length_ms": 2140000,
+              "readers": [
+                "winterberry"
+              ],
               "start_ms": 31700000,
               "title": "Chapter XXII"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_23_blackwood_64kb.mp3",
               "length_ms": 3005000,
+              "readers": [
+                "winterberry"
+              ],
               "start_ms": 33840000,
               "title": "Chapter XXIII"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_24_blackwood_64kb.mp3",
               "length_ms": 2336000,
+              "readers": [
+                "igeogeeki"
+              ],
               "start_ms": 36845000,
               "title": "Chapter XXIV"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_25_blackwood_64kb.mp3",
               "length_ms": 1754000,
+              "readers": [
+                "belinda-mcreynolds"
+              ],
               "start_ms": 39181000,
               "title": "Chapter XXV"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_26_blackwood_64kb.mp3",
               "length_ms": 2183000,
+              "readers": [
+                "belinda-mcreynolds"
+              ],
               "start_ms": 40935000,
               "title": "Chapter XXVI"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_27_blackwood_64kb.mp3",
               "length_ms": 1576000,
+              "readers": [
+                "owlivia"
+              ],
               "start_ms": 43118000,
               "title": "Chapter XXVII"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_28_blackwood_64kb.mp3",
               "length_ms": 2060000,
+              "readers": [
+                "owlivia"
+              ],
               "start_ms": 44694000,
               "title": "Chapter XXVIII"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_29_blackwood_64kb.mp3",
               "length_ms": 1845000,
+              "readers": [
+                "marisad6"
+              ],
               "start_ms": 46754000,
               "title": "Chapter XXIX"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_30_blackwood_64kb.mp3",
               "length_ms": 1153000,
+              "readers": [
+                "marisad6"
+              ],
               "start_ms": 48599000,
               "title": "Chapter XXX"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_31_blackwood_64kb.mp3",
               "length_ms": 1806000,
+              "readers": [
+                "leanne-cvetan"
+              ],
               "start_ms": 49752000,
               "title": "Chapter XXXI (includes a German poem)"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_32_blackwood_64kb.mp3",
               "length_ms": 1305000,
+              "readers": [
+                "bolbi"
+              ],
               "start_ms": 51558000,
               "title": "Chapter XXXII"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_33_blackwood_64kb.mp3",
               "length_ms": 1561000,
+              "readers": [
+                "amy-gramour"
+              ],
               "start_ms": 52863000,
               "title": "Chapter XXXIII"
             },
             {
               "audio_url": "https://www.archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_34_blackwood_64kb.mp3",
               "length_ms": 2263000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 54424000,
               "title": "Chapter XXXIV"
             }
@@ -8883,7 +9674,11 @@
           "cover_url": "https://archive.org/download/aprisonerinfairyland_2510_librivox/prisonerinfairyland_2510.jpg",
           "id": "michele-fry",
           "language": "en",
+          "librivox_genres": [
+            "Fantasy Fiction"
+          ],
           "librivox_id": 21057,
+          "librivox_title": "Prisoner In Fairyland (The Book that 'Uncle Paul' Wrote)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-prisoner-in-fairyland/",
@@ -9870,132 +10665,198 @@
             {
               "audio_url": "https://www.archive.org/download/theprisonerofchillon_2406_librivox/prisonerofchillon_01_byron_64kb.mp3",
               "length_ms": 1532000,
+              "readers": [
+                "alan-mapstone"
+              ],
               "start_ms": 0,
               "title": "The Prisoner of Chillon"
             },
             {
               "audio_url": "https://www.archive.org/download/theprisonerofchillon_2406_librivox/prisonerofchillon_02_byron_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "alan-mapstone"
+              ],
               "start_ms": 1532000,
               "title": "Sonnet on Chillon"
             },
             {
               "audio_url": "https://www.archive.org/download/theprisonerofchillon_2406_librivox/prisonerofchillon_03_byron_64kb.mp3",
               "length_ms": 312000,
+              "readers": [
+                "alan-mapstone"
+              ],
               "start_ms": 1626000,
               "title": "Fare Thee Well"
             },
             {
               "audio_url": "https://www.archive.org/download/theprisonerofchillon_2406_librivox/prisonerofchillon_04_byron_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 1938000,
               "title": "She Walks in Beauty"
             },
             {
               "audio_url": "https://www.archive.org/download/theprisonerofchillon_2406_librivox/prisonerofchillon_05_byron_64kb.mp3",
               "length_ms": 111000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 2008000,
               "title": "The Destruction of Sennacherib"
             },
             {
               "audio_url": "https://www.archive.org/download/theprisonerofchillon_2406_librivox/prisonerofchillon_06_byron_64kb.mp3",
               "length_ms": 83000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 2119000,
               "title": "Jephthah's Daughter"
             },
             {
               "audio_url": "https://www.archive.org/download/theprisonerofchillon_2406_librivox/prisonerofchillon_07_byron_64kb.mp3",
               "length_ms": 179000,
+              "readers": [
+                "alan-mapstone"
+              ],
               "start_ms": 2202000,
               "title": "On a Distant View of the Village and School of Harrow on the Hill"
             },
             {
               "audio_url": "https://www.archive.org/download/theprisonerofchillon_2406_librivox/prisonerofchillon_08_byron_64kb.mp3",
               "length_ms": 92000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 2381000,
               "title": "Maid of Athens, ere we part"
             },
             {
               "audio_url": "https://www.archive.org/download/theprisonerofchillon_2406_librivox/prisonerofchillon_09_byron_64kb.mp3",
               "length_ms": 259000,
+              "readers": [
+                "stefan-von-blon"
+              ],
               "start_ms": 2473000,
               "title": "Stanzas to Augusta"
             },
             {
               "audio_url": "https://www.archive.org/download/theprisonerofchillon_2406_librivox/prisonerofchillon_10_byron_64kb.mp3",
               "length_ms": 620000,
+              "readers": [
+                "alan-mapstone"
+              ],
               "start_ms": 2732000,
               "title": "Epistle to Augusta"
             },
             {
               "audio_url": "https://www.archive.org/download/theprisonerofchillon_2406_librivox/prisonerofchillon_11_byron_64kb.mp3",
               "length_ms": 104000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 3352000,
               "title": "When we two parted"
             },
             {
               "audio_url": "https://www.archive.org/download/theprisonerofchillon_2406_librivox/prisonerofchillon_12_byron_64kb.mp3",
               "length_ms": 214000,
+              "readers": [
+                "george-banfield"
+              ],
               "start_ms": 3456000,
               "title": "Stanzas for Music"
             },
             {
               "audio_url": "https://www.archive.org/download/theprisonerofchillon_2406_librivox/prisonerofchillon_13_byron_64kb.mp3",
               "length_ms": 668000,
+              "readers": [
+                "george-banfield"
+              ],
               "start_ms": 3670000,
               "title": "The Dream"
             },
             {
               "audio_url": "https://www.archive.org/download/theprisonerofchillon_2406_librivox/prisonerofchillon_14_byron_64kb.mp3",
               "length_ms": 56000,
+              "readers": [
+                "stacey-malcolm"
+              ],
               "start_ms": 4338000,
               "title": "To Thomas Moore"
             },
             {
               "audio_url": "https://www.archive.org/download/theprisonerofchillon_2406_librivox/prisonerofchillon_15_byron_64kb.mp3",
               "length_ms": 49000,
+              "readers": [
+                "sagarika"
+              ],
               "start_ms": 4394000,
               "title": "So, we'll go no more a-roving"
             },
             {
               "audio_url": "https://www.archive.org/download/theprisonerofchillon_2406_librivox/prisonerofchillon_16_byron_64kb.mp3",
               "length_ms": 43000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 4443000,
               "title": "On the Bust of Helen by Canova"
             },
             {
               "audio_url": "https://www.archive.org/download/theprisonerofchillon_2406_librivox/prisonerofchillon_17_byron_64kb.mp3",
               "length_ms": 437000,
+              "readers": [
+                "alan-mapstone"
+              ],
               "start_ms": 4486000,
               "title": "A very mournful ballad on the Siege and Conquest of Alhama"
             },
             {
               "audio_url": "https://www.archive.org/download/theprisonerofchillon_2406_librivox/prisonerofchillon_18_byron_64kb.mp3",
               "length_ms": 179000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 4923000,
               "title": "Stanzas: \"Could love for ever\""
             },
             {
               "audio_url": "https://www.archive.org/download/theprisonerofchillon_2406_librivox/prisonerofchillon_19_byron_64kb.mp3",
               "length_ms": 420000,
+              "readers": [
+                "sheridan-alistair"
+              ],
               "start_ms": 5102000,
               "title": "Darkness"
             },
             {
               "audio_url": "https://www.archive.org/download/theprisonerofchillon_2406_librivox/prisonerofchillon_20_byron_64kb.mp3",
               "length_ms": 246000,
+              "readers": [
+                "alan-mapstone"
+              ],
               "start_ms": 5522000,
               "title": "Prometheus"
             },
             {
               "audio_url": "https://www.archive.org/download/theprisonerofchillon_2406_librivox/prisonerofchillon_21_byron_64kb.mp3",
               "length_ms": 107000,
+              "readers": [
+                "alan-mapstone"
+              ],
               "start_ms": 5768000,
               "title": "Stanzas written on the road between Florence and Pisa"
             },
             {
               "audio_url": "https://www.archive.org/download/theprisonerofchillon_2406_librivox/prisonerofchillon_22_byron_64kb.mp3",
               "length_ms": 180000,
+              "readers": [
+                "alan-mapstone"
+              ],
               "start_ms": 5875000,
               "title": "On this day I complete my thirty-sixth year"
             }
@@ -10004,7 +10865,11 @@
           "cover_url": "https://archive.org/download/theprisonerofchillon_2406_librivox/prisonerofchillon_2406.jpg",
           "id": "alan-mapstone",
           "language": "en",
+          "librivox_genres": [
+            "Lyric"
+          ],
           "librivox_id": 20519,
+          "librivox_title": "Prisoner of Chillon",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-prisoner-of-chillon-by-george-gordon-lord-byron/",
@@ -10771,7 +11636,14 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCovers3/prisoner_of_morro_1008.jpg",
           "id": "tom-weiss",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Historical Fiction",
+            "Nautical & Marine Fiction",
+            "War & Military Fiction"
+          ],
           "librivox_id": 4514,
+          "librivox_title": "Prisoner of Morro",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-prisoner-of-morro-by-upton-sinclair/",

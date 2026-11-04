@@ -522,7 +522,12 @@
           "cover_url": "https://archive.org/download/reise_um_die_welt_erste_abt_2304_librivox/meinereise1_2304.jpg",
           "id": "katharina21",
           "language": "de",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "Travel & Geography"
+          ],
           "librivox_id": 18424,
+          "librivox_title": "Meine Reise um die Welt. Erste Abteilung",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/meine-reise-um-die-welt-erste-abteilung-by-mark-twain/",
@@ -719,7 +724,11 @@
           "cover_url": "https://archive.org/download/meine_reise_um_die_welt_zweite_abteilung_2310_librivox/reise_welt4_2310.jpg",
           "id": "katharina21",
           "language": "de",
+          "librivox_genres": [
+            "Biography & Autobiography"
+          ],
           "librivox_id": 19205,
+          "librivox_title": "Meine Reise um die Welt Zweite Abteilung",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/meine-reise-um-die-welt-zweite-abteilung-by-mark-twain/",
@@ -9151,57 +9160,76 @@
             {
               "audio_url": "https://www.archive.org/download/meister_eckharts_sermons_1412_librivox/sermons_00_eckhart_64kb.mp3",
               "length_ms": 329000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Title Page and Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/meister_eckharts_sermons_1412_librivox/sermons_01_eckhart_64kb.mp3",
               "length_ms": 848000,
+              "section_number": 1,
               "start_ms": 329000,
               "title": "The Attractive Power of God"
             },
             {
               "audio_url": "https://www.archive.org/download/meister_eckharts_sermons_1412_librivox/sermons_02_eckhart_64kb.mp3",
               "length_ms": 646000,
+              "section_number": 2,
               "start_ms": 1177000,
               "title": "The Nearness of the Kingdom"
             },
             {
               "audio_url": "https://www.archive.org/download/meister_eckharts_sermons_1412_librivox/sermons_03_eckhart_64kb.mp3",
               "length_ms": 463000,
+              "section_number": 3,
               "start_ms": 1823000,
               "title": "The Angel's Greeting"
             },
             {
               "audio_url": "https://www.archive.org/download/meister_eckharts_sermons_1412_librivox/sermons_04_eckhart_64kb.mp3",
               "length_ms": 488000,
+              "section_number": 4,
               "start_ms": 2286000,
               "title": "True Hearing"
             },
             {
               "audio_url": "https://www.archive.org/download/meister_eckharts_sermons_1412_librivox/sermons_05_eckhart_64kb.mp3",
               "length_ms": 672000,
+              "section_number": 5,
               "start_ms": 2774000,
               "title": "The Self-Communication of God"
             },
             {
               "audio_url": "https://www.archive.org/download/meister_eckharts_sermons_1412_librivox/sermons_06_eckhart_64kb.mp3",
               "length_ms": 1220000,
+              "section_number": 6,
               "start_ms": 3446000,
               "title": "Sanctification"
             },
             {
               "audio_url": "https://www.archive.org/download/meister_eckharts_sermons_1412_librivox/sermons_07_eckhart_64kb.mp3",
               "length_ms": 831000,
+              "section_number": 7,
               "start_ms": 4666000,
               "title": "Outward and Inward Morality"
             }
           ],
           "copyright_year": 1909,
           "cover_url": "https://archive.org/download/meister_eckharts_sermons_1412_librivox/meister_eckharts_sermons_1501.jpg",
+          "credits": [
+            {
+              "person": "claud-field",
+              "role": "translator"
+            }
+          ],
           "id": "eric-metzler",
           "language": "en",
+          "librivox_genres": [
+            "Medieval",
+            "Christianity - Other"
+          ],
           "librivox_id": 9168,
+          "librivox_title": "Meister Eckhart's Sermons: First Time Translated into English",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/meister-eckharts-sermons-first-time-translated-into-english-by-meister-eckhart/",
@@ -9338,7 +9366,11 @@
           "cover_url": "https://www.archive.org/download/librivox_cd_covers/meister_floh.jpg",
           "id": "hokuspokus",
           "language": "de",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 2157,
+          "librivox_title": "Meister Floh",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/meister-floh-by-eta-hoffmann/",
@@ -9757,9 +9789,19 @@
           ],
           "copyright_year": 1877,
           "cover_url": "https://www.archive.org/download/librivox_cd_covers/meister_zacharius.jpg",
+          "credits": [
+            {
+              "person": "martha-lion",
+              "role": "translator"
+            }
+          ],
           "id": "hokuspokus",
           "language": "de",
+          "librivox_genres": [
+            "Horror & Supernatural Fiction"
+          ],
           "librivox_id": 3076,
+          "librivox_title": "Meister Zacharius",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/meister-zacharius-by-jules-verne/",
@@ -10509,174 +10551,203 @@
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_00_various_64kb.mp3",
               "length_ms": 972000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Prólogo: Los cuentistas españoles"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_01_various_64kb.mp3",
               "length_ms": 896000,
+              "section_number": 1,
               "start_ms": 972000,
               "title": "Entre copas, por Pérez Galdós"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_02_various_64kb.mp3",
               "length_ms": 942000,
+              "section_number": 2,
               "start_ms": 1868000,
               "title": "La esperanza, por José Echegaray"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_03_various_64kb.mp3",
               "length_ms": 881000,
+              "section_number": 3,
               "start_ms": 2810000,
               "title": "Los consejos de un padre, por José Echegaray"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_04_various_64kb.mp3",
               "length_ms": 508000,
+              "section_number": 4,
               "start_ms": 3691000,
               "title": "El viajero, por Emilia Pardo Bazán"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_05_various_64kb.mp3",
               "length_ms": 674000,
+              "section_number": 5,
               "start_ms": 4199000,
               "title": "La flor de la salud, por Emilia Pardo Bazán"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_06_various_64kb.mp3",
               "length_ms": 634000,
+              "section_number": 6,
               "start_ms": 4873000,
               "title": "El enamorado, por Antonio Cortón"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_07_various_64kb.mp3",
               "length_ms": 933000,
+              "section_number": 7,
               "start_ms": 5507000,
               "title": "Talis vita, por Narciso Oller"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_08_various_64kb.mp3",
               "length_ms": 673000,
+              "section_number": 8,
               "start_ms": 6440000,
               "title": "Un silbido, por Vicente Blasco Ibáñez"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_09_various_64kb.mp3",
               "length_ms": 739000,
+              "section_number": 9,
               "start_ms": 7113000,
               "title": "Rigoletto, por Joaquin Dicenta"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_10_various_64kb.mp3",
               "length_ms": 674000,
+              "section_number": 10,
               "start_ms": 7852000,
               "title": "Un divorcio, por Joaquin Dicenta"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_11_various_64kb.mp3",
               "length_ms": 848000,
+              "section_number": 11,
               "start_ms": 8526000,
               "title": "El crimen de la calle de la Perseguida, por A. Palacio Valdés"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_12_various_64kb.mp3",
               "length_ms": 1221000,
+              "section_number": 12,
               "start_ms": 9374000,
               "title": "La pantomima, por A. Gómez Carrillo"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_13_various_64kb.mp3",
               "length_ms": 592000,
+              "section_number": 13,
               "start_ms": 10595000,
               "title": "El terror de los ministros, por Pedro Novo Colsen"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_14_various_64kb.mp3",
               "length_ms": 306000,
+              "section_number": 14,
               "start_ms": 11187000,
               "title": "El banquete, por Eusebio Blasco"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_15_various_64kb.mp3",
               "length_ms": 562000,
+              "section_number": 15,
               "start_ms": 11493000,
               "title": "Hierba Santa, por R. Del Valle-Inclán"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_16_various_64kb.mp3",
               "length_ms": 926000,
+              "section_number": 16,
               "start_ms": 12055000,
               "title": "Idilio y tragedia, por Salvador Rueda"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_17_various_64kb.mp3",
               "length_ms": 383000,
+              "section_number": 17,
               "start_ms": 12981000,
               "title": "Pescador de caña, por Ernesto García Ladevese"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_18_various_64kb.mp3",
               "length_ms": 547000,
+              "section_number": 18,
               "start_ms": 13364000,
               "title": "Exposición de cabezas, por José Fernández Bremón"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_19_various_64kb.mp3",
               "length_ms": 739000,
+              "section_number": 19,
               "start_ms": 13911000,
               "title": "El cirio pascual, por José Fernández Bremón"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_20_various_64kb.mp3",
               "length_ms": 770000,
+              "section_number": 20,
               "start_ms": 14650000,
               "title": "Los condenados, por Rodrigo Soriano"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_21_various_64kb.mp3",
               "length_ms": 501000,
+              "section_number": 21,
               "start_ms": 15420000,
               "title": "El último tranvía, por José de Roure"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_22_various_64kb.mp3",
               "length_ms": 362000,
+              "section_number": 22,
               "start_ms": 15921000,
               "title": "Asunción, por Tomás Orts Ramos"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_23_various_64kb.mp3",
               "length_ms": 626000,
+              "section_number": 23,
               "start_ms": 16283000,
               "title": "Reconciliación, por Manuel Machado"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_24_various_64kb.mp3",
               "length_ms": 495000,
+              "section_number": 24,
               "start_ms": 16909000,
               "title": "Los de la guardilla, por Alfonso Pérez Nieva"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_25_various_64kb.mp3",
               "length_ms": 481000,
+              "section_number": 25,
               "start_ms": 17404000,
               "title": "La patente 1300, por R. Mainar Lahuerta"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_26_various_64kb.mp3",
               "length_ms": 999000,
+              "section_number": 26,
               "start_ms": 17885000,
               "title": "Las tres cosas del tío Juan, por José Nogales y Nogales"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_27_various_64kb.mp3",
               "length_ms": 410000,
+              "section_number": 27,
               "start_ms": 18884000,
               "title": "Recomendaciones, por A. Palomero"
             },
             {
               "audio_url": "https://www.archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejorescuentosespanoles_28_various_64kb.mp3",
               "length_ms": 539000,
+              "section_number": 28,
               "start_ms": 19294000,
               "title": "La muerte de la muñeca, por el Sastre de Campillo"
             }
@@ -10685,7 +10756,11 @@
           "cover_url": "https://archive.org/download/mejores_cuentos_de_los_mejores_autores_espanoles_1903_librivox/mejores_cuentos_mejores_autores_contemporaneos_1903.jpg",
           "id": "epachuko",
           "language": "es",
+          "librivox_genres": [
+            "Anthologies"
+          ],
           "librivox_id": 13378,
+          "librivox_title": "mejores cuentos de los mejores autores españoles contemporáneos",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/los-mejores-cuentos-de-los-mejores-autores-espanoles-contemporaneos-by-emilia-pardo-bazan/",

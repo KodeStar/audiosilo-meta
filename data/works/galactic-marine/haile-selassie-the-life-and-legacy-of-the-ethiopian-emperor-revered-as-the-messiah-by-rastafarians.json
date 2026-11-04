@@ -5948,66 +5948,77 @@
             {
               "audio_url": "https://www.archive.org/download/haiti_2201_librivox/haiti_00_kuser_64kb.mp3",
               "length_ms": 171000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/haiti_2201_librivox/haiti_01_kuser_64kb.mp3",
               "length_ms": 472000,
+              "section_number": 1,
               "start_ms": 171000,
               "title": "Sargasso and Flying Fish"
             },
             {
               "audio_url": "https://www.archive.org/download/haiti_2201_librivox/haiti_02_kuser_64kb.mp3",
               "length_ms": 968000,
+              "section_number": 2,
               "start_ms": 643000,
               "title": "Cacos"
             },
             {
               "audio_url": "https://www.archive.org/download/haiti_2201_librivox/haiti_03_kuser_64kb.mp3",
               "length_ms": 748000,
+              "section_number": 3,
               "start_ms": 1611000,
               "title": "Every Man's Land A Bit of History"
             },
             {
               "audio_url": "https://www.archive.org/download/haiti_2201_librivox/haiti_04_kuser_64kb.mp3",
               "length_ms": 581000,
+              "section_number": 4,
               "start_ms": 2359000,
               "title": "Vaudoux"
             },
             {
               "audio_url": "https://www.archive.org/download/haiti_2201_librivox/haiti_05_kuser_64kb.mp3",
               "length_ms": 589000,
+              "section_number": 5,
               "start_ms": 2940000,
               "title": "Public Education and Normil Charles"
             },
             {
               "audio_url": "https://www.archive.org/download/haiti_2201_librivox/haiti_06_kuser_64kb.mp3",
               "length_ms": 146000,
+              "section_number": 6,
               "start_ms": 3529000,
               "title": "The President"
             },
             {
               "audio_url": "https://www.archive.org/download/haiti_2201_librivox/haiti_07_kuser_64kb.mp3",
               "length_ms": 547000,
+              "section_number": 7,
               "start_ms": 3675000,
               "title": "A Morning Hunt"
             },
             {
               "audio_url": "https://www.archive.org/download/haiti_2201_librivox/haiti_08_kuser_64kb.mp3",
               "length_ms": 328000,
+              "section_number": 8,
               "start_ms": 4222000,
               "title": "Pine Needles"
             },
             {
               "audio_url": "https://www.archive.org/download/haiti_2201_librivox/haiti_09_kuser_64kb.mp3",
               "length_ms": 422000,
+              "section_number": 9,
               "start_ms": 4550000,
               "title": "Cotton"
             },
             {
               "audio_url": "https://www.archive.org/download/haiti_2201_librivox/haiti_10_kuser_64kb.mp3",
               "length_ms": 451000,
+              "section_number": 10,
               "start_ms": 4972000,
               "title": "Gourdes"
             }
@@ -6016,7 +6027,12 @@
           "cover_url": "https://archive.org/download/haiti_2201_librivox/haiti_2201.jpg",
           "id": "larry-wilson",
           "language": "en",
+          "librivox_genres": [
+            "Travel & Geography",
+            "Modern (20th C)"
+          ],
           "librivox_id": 15480,
+          "librivox_title": "Haiti: Its Dawn of Progress after Years in a Night of Revolution",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/haiti-by-john-dryden-kuser/",

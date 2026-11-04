@@ -926,7 +926,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt9/wonderworkerpadua_1107.jpg",
           "id": "dave7",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Biography & Autobiography"
+          ],
           "librivox_id": 5642,
+          "librivox_title": "Wonder-Worker of Padua",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-wonder-worker-of-padua-by-charles-warren-stoddard/",
@@ -984,27 +989,83 @@
             {
               "audio_url": "https://www.archive.org/download/wonderworkingmagician_2004_librivox/wonderworkingmagician_1_calderon_64kb.mp3",
               "length_ms": 2837000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "larry-wilson",
+                "khand",
+                "sonia",
+                "tomas-peter",
+                "tj-burns",
+                "adrian-stephens",
+                "adam-bielka",
+                "jeanne-viray"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/wonderworkingmagician_2004_librivox/wonderworkingmagician_2_calderon_64kb.mp3",
               "length_ms": 3094000,
+              "readers": [
+                "timothy-ferguson",
+                "algy-pug",
+                "toddhw",
+                "alan-mapstone",
+                "kimberly-krause",
+                "larry-wilson",
+                "khand",
+                "sonia",
+                "tomas-peter",
+                "tj-burns",
+                "adrian-stephens",
+                "adam-bielka",
+                "jeanne-viray"
+              ],
               "start_ms": 2837000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/wonderworkingmagician_2004_librivox/wonderworkingmagician_3_calderon_64kb.mp3",
               "length_ms": 3308000,
+              "readers": [
+                "timothy-ferguson",
+                "algy-pug",
+                "toddhw",
+                "alan-mapstone",
+                "kimberly-krause",
+                "larry-wilson",
+                "khand",
+                "sonia",
+                "leanne-yau",
+                "tomas-peter",
+                "craig-franklin",
+                "eva-davis-d-2025",
+                "nemo",
+                "tj-burns",
+                "adrian-stephens",
+                "adam-bielka",
+                "jeanne-viray"
+              ],
               "start_ms": 5931000,
               "title": "Act 3"
             }
           ],
           "copyright_year": 1873,
           "cover_url": "https://archive.org/download/wonderworkingmagician_2004_librivox/wonder_magician.jpg",
+          "credits": [
+            {
+              "person": "denis-florence-maccarthy",
+              "role": "translator"
+            }
+          ],
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Plays"
+          ],
           "librivox_id": 14526,
+          "librivox_title": "Wonder-Working Magician",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-wonder-working-magician-by-pedro-calderon-de-la-barca/",
@@ -2272,7 +2333,11 @@
           "cover_url": "https://archive.org/download/adventures_mrsseacole_1407_librivox/wonderful_adventures_seacole_1407.jpg",
           "id": "cori-samuel",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography"
+          ],
           "librivox_id": 7967,
+          "librivox_title": "Wonderful Adventures of Mrs. Seacole in Many Lands",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/wonderful-adventures-of-mrs-seacole-in-many-lands-by-mary-seacole/",
@@ -2757,9 +2822,19 @@
           ],
           "copyright_year": 1907,
           "cover_url": "https://archive.org/download/wonderfuladventuresofnils_2103_librivox/wonderful_adventures_nils_2103.jpg",
+          "credits": [
+            {
+              "person": "velma-swanston-howard",
+              "role": "translator"
+            }
+          ],
           "id": "gerald-moe",
           "language": "en",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 16174,
+          "librivox_title": "Wonderful Adventures of Nils (Version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-wonderful-adventures-of-nils-by-selma-lagerloef-2/",
@@ -3058,9 +3133,22 @@
           ],
           "copyright_year": 1906,
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt4/Wonderful_Adventures_of_Nils_1004.jpg",
+          "credits": [
+            {
+              "person": "velma-swanston-howard",
+              "role": "translator"
+            }
+          ],
           "id": "lars-rolander-1942-2016",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction",
+            "Myths, Legends & Fairy Tales",
+            "Fantastic Fiction",
+            "General Fiction"
+          ],
           "librivox_id": 2531,
+          "librivox_title": "Wonderful Adventures of Nils",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-wonderful-adventures-of-nils-by-selma-lagerloef/",
@@ -3111,156 +3199,182 @@
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_00_arnold_64kb.mp3",
               "length_ms": 503000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction by Sir Edwin Arnold"
             },
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_01_arnold_64kb.mp3",
               "length_ms": 228000,
+              "section_number": 1,
               "start_ms": 503000,
               "title": "Prologue"
             },
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_02_arnold_64kb.mp3",
               "length_ms": 1857000,
+              "section_number": 2,
               "start_ms": 731000,
               "title": "Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_03_arnold_64kb.mp3",
               "length_ms": 1737000,
+              "section_number": 3,
               "start_ms": 2588000,
               "title": "Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_04_arnold_64kb.mp3",
               "length_ms": 2578000,
+              "section_number": 4,
               "start_ms": 4325000,
               "title": "Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_05_arnold_64kb.mp3",
               "length_ms": 3807000,
+              "section_number": 5,
               "start_ms": 6903000,
               "title": "Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_06_arnold_64kb.mp3",
               "length_ms": 2904000,
+              "section_number": 6,
               "start_ms": 10710000,
               "title": "Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_07_arnold_64kb.mp3",
               "length_ms": 2014000,
+              "section_number": 7,
               "start_ms": 13614000,
               "title": "Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_08_arnold_64kb.mp3",
               "length_ms": 2170000,
+              "section_number": 8,
               "start_ms": 15628000,
               "title": "Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_09_arnold_64kb.mp3",
               "length_ms": 3012000,
+              "section_number": 9,
               "start_ms": 17798000,
               "title": "Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_10_arnold_64kb.mp3",
               "length_ms": 1427000,
+              "section_number": 10,
               "start_ms": 20810000,
               "title": "Chapter 9"
             },
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_11_arnold_64kb.mp3",
               "length_ms": 2584000,
+              "section_number": 11,
               "start_ms": 22237000,
               "title": "Chapter 10"
             },
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_12_arnold_64kb.mp3",
               "length_ms": 1441000,
+              "section_number": 12,
               "start_ms": 24821000,
               "title": "Chapter 11"
             },
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_13_arnold_64kb.mp3",
               "length_ms": 1571000,
+              "section_number": 13,
               "start_ms": 26262000,
               "title": "Chapter 12"
             },
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_14_arnold_64kb.mp3",
               "length_ms": 1845000,
+              "section_number": 14,
               "start_ms": 27833000,
               "title": "Chapter 13"
             },
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_15_arnold_64kb.mp3",
               "length_ms": 2521000,
+              "section_number": 15,
               "start_ms": 29678000,
               "title": "Chapter 14"
             },
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_16_arnold_64kb.mp3",
               "length_ms": 2872000,
+              "section_number": 16,
               "start_ms": 32199000,
               "title": "Chapter 15"
             },
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_17_arnold_64kb.mp3",
               "length_ms": 3308000,
+              "section_number": 17,
               "start_ms": 35071000,
               "title": "Chapter 16"
             },
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_18_arnold_64kb.mp3",
               "length_ms": 3765000,
+              "section_number": 18,
               "start_ms": 38379000,
               "title": "Chapter 17"
             },
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_19_arnold_64kb.mp3",
               "length_ms": 2452000,
+              "section_number": 19,
               "start_ms": 42144000,
               "title": "Chapter 18"
             },
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_20_arnold_64kb.mp3",
               "length_ms": 1970000,
+              "section_number": 20,
               "start_ms": 44596000,
               "title": "Chapter 19"
             },
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_21_arnold_64kb.mp3",
               "length_ms": 2308000,
+              "section_number": 21,
               "start_ms": 46566000,
               "title": "Chapter 20"
             },
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_22_arnold_64kb.mp3",
               "length_ms": 1829000,
+              "section_number": 22,
               "start_ms": 48874000,
               "title": "Chapter 21"
             },
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_23_arnold_64kb.mp3",
               "length_ms": 2380000,
+              "section_number": 23,
               "start_ms": 50703000,
               "title": "Chapter 22"
             },
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_24_arnold_64kb.mp3",
               "length_ms": 2531000,
+              "section_number": 24,
               "start_ms": 53083000,
               "title": "Chapter 23"
             },
             {
               "audio_url": "https://www.archive.org/download/phra_the_phoenician_1805_librivox/phra_25_arnold_64kb.mp3",
               "length_ms": 1674000,
+              "section_number": 25,
               "start_ms": 55614000,
               "title": "Chapter 24"
             }
@@ -3269,7 +3383,11 @@
           "cover_url": "https://archive.org/download/phra_the_phoenician_1805_librivox/phra_phoenician_1805.jpg",
           "id": "phil-benson",
           "language": "en",
+          "librivox_genres": [
+            "Fantasy Fiction"
+          ],
           "librivox_id": 12214,
+          "librivox_title": "Wonderful Adventures of Phra the Phoenician",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/phra-the-phoenician-by-edwin-lester-arnold/",
@@ -3492,7 +3610,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt10/Wonderful_Bed_1108.jpg",
           "id": "lee-elliott",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction"
+          ],
           "librivox_id": 1090,
+          "librivox_title": "Wonderful Bed",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/wonderful-bed-the-by-gertrude-knevels/",
@@ -3647,7 +3769,11 @@
           "cover_url": "https://archive.org/download/wonderfulchristmaspumpkindelight_2412_librivox/wonderfulchristmaspumpkindelight_2412.jpg",
           "id": "shrimpphish",
           "language": "en",
+          "librivox_genres": [
+            "Family"
+          ],
           "librivox_id": 21114,
+          "librivox_title": "Wonderful Christmas in Pumpkin Delight Lane",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-wonderful-christmas-in-pumpkin-delight-lane-by-sarah-j-prichard/",
@@ -3838,7 +3964,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt18/garden_1205.jpg",
           "id": "ruth-golding",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction",
+            "Fantastic Fiction"
+          ],
           "librivox_id": 4133,
+          "librivox_title": "Wonderful Garden",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-wonderful-garden-or-the-three-c-s-by-e-nesbit/",
@@ -3963,9 +4094,22 @@
           ],
           "copyright_year": 1914,
           "cover_url": "https://archive.org/download/wonderfulhistoryofpeterschlemihl2_2411_librivox/peter_schlemihl_2411.jpg",
+          "credits": [
+            {
+              "person": "frederic-henry-hedge",
+              "role": "translator"
+            }
+          ],
           "id": "christoph-stangenberg",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Gothic Fiction",
+            "Literary Fiction",
+            "Published 1800 -1900"
+          ],
           "librivox_id": 21050,
+          "librivox_title": "Wonderful History of Peter Schlemihl (Version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-wonderful-history-of-peter-schlemihl-version-2-by-adelbert-von-chamisso/",
@@ -4020,81 +4164,139 @@
             {
               "audio_url": "https://www.archive.org/download/peter_schlemihl_1711_librivox/peterschlemihl_00_chamisso_64kb.mp3",
               "length_ms": 566000,
+              "readers": [
+                "mihai-borobocea"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/peter_schlemihl_1711_librivox/peterschlemihl_01_chamisso_64kb.mp3",
               "length_ms": 941000,
+              "readers": [
+                "ashley-m"
+              ],
+              "section_number": 1,
               "start_ms": 566000,
               "title": "Chapter I"
             },
             {
               "audio_url": "https://www.archive.org/download/peter_schlemihl_1711_librivox/peterschlemihl_02_chamisso_64kb.mp3",
               "length_ms": 933000,
+              "readers": [
+                "mihai-borobocea"
+              ],
+              "section_number": 2,
               "start_ms": 1507000,
               "title": "Chapter II"
             },
             {
               "audio_url": "https://www.archive.org/download/peter_schlemihl_1711_librivox/peterschlemihl_03_chamisso_64kb.mp3",
               "length_ms": 591000,
+              "readers": [
+                "ashley-m"
+              ],
+              "section_number": 3,
               "start_ms": 2440000,
               "title": "Chapter III"
             },
             {
               "audio_url": "https://www.archive.org/download/peter_schlemihl_1711_librivox/peterschlemihl_04_chamisso_64kb.mp3",
               "length_ms": 1195000,
+              "readers": [
+                "ashley-m"
+              ],
+              "section_number": 4,
               "start_ms": 3031000,
               "title": "Chapter IV"
             },
             {
               "audio_url": "https://www.archive.org/download/peter_schlemihl_1711_librivox/peterschlemihl_05_chamisso_64kb.mp3",
               "length_ms": 997000,
+              "readers": [
+                "megan-lam"
+              ],
+              "section_number": 5,
               "start_ms": 4226000,
               "title": "Chapter V"
             },
             {
               "audio_url": "https://www.archive.org/download/peter_schlemihl_1711_librivox/peterschlemihl_06_chamisso_64kb.mp3",
               "length_ms": 1049000,
+              "readers": [
+                "megan-lam"
+              ],
+              "section_number": 6,
               "start_ms": 5223000,
               "title": "Chapter VI"
             },
             {
               "audio_url": "https://www.archive.org/download/peter_schlemihl_1711_librivox/peterschlemihl_07_chamisso_64kb.mp3",
               "length_ms": 668000,
+              "readers": [
+                "james-k-white"
+              ],
+              "section_number": 7,
               "start_ms": 6272000,
               "title": "Chapter VII"
             },
             {
               "audio_url": "https://www.archive.org/download/peter_schlemihl_1711_librivox/peterschlemihl_08_chamisso_64kb.mp3",
               "length_ms": 862000,
+              "readers": [
+                "james-k-white"
+              ],
+              "section_number": 8,
               "start_ms": 6940000,
               "title": "Chapter VIII"
             },
             {
               "audio_url": "https://www.archive.org/download/peter_schlemihl_1711_librivox/peterschlemihl_09_chamisso_64kb.mp3",
               "length_ms": 524000,
+              "readers": [
+                "ashley-m"
+              ],
+              "section_number": 9,
               "start_ms": 7802000,
               "title": "Chapter IX"
             },
             {
               "audio_url": "https://www.archive.org/download/peter_schlemihl_1711_librivox/peterschlemihl_10_chamisso_64kb.mp3",
               "length_ms": 437000,
+              "readers": [
+                "ashley-m"
+              ],
+              "section_number": 10,
               "start_ms": 8326000,
               "title": "Chapter X"
             },
             {
               "audio_url": "https://www.archive.org/download/peter_schlemihl_1711_librivox/peterschlemihl_11_chamisso_64kb.mp3",
               "length_ms": 787000,
+              "readers": [
+                "ashley-m"
+              ],
+              "section_number": 11,
               "start_ms": 8763000,
               "title": "Chapter XI"
             }
           ],
           "copyright_year": 1899,
           "cover_url": "https://archive.org/download/peter_schlemihl_1711_librivox/peterschlemihl_1711.jpg",
+          "credits": [
+            {
+              "person": "frederic-henry-hedge",
+              "role": "translator"
+            }
+          ],
           "id": "mihai-borobocea",
           "language": "en",
+          "librivox_genres": [
+            "Fantastic Fiction"
+          ],
           "librivox_id": 11964,
+          "librivox_title": "wonderful History of Peter Schlemihl, the Man who lost his Shadow",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-wonderful-history-of-peter-schlemihl-by-adelbert-von-chamisso/",
@@ -4148,60 +4350,90 @@
             {
               "audio_url": "https://www.archive.org/download/wonderful_land_of_up_2308_librivox/wonderfullandofup_01_barton_64kb.mp3",
               "length_ms": 859000,
+              "readers": [
+                "sandra-cullum"
+              ],
               "start_ms": 0,
               "title": "The Apple Tree Elevator"
             },
             {
               "audio_url": "https://www.archive.org/download/wonderful_land_of_up_2308_librivox/wonderfullandofup_02_barton_64kb.mp3",
               "length_ms": 1238000,
+              "readers": [
+                "kari-burns"
+              ],
               "start_ms": 859000,
               "title": "The Land of Lost Balloons"
             },
             {
               "audio_url": "https://www.archive.org/download/wonderful_land_of_up_2308_librivox/wonderfullandofup_03_barton_64kb.mp3",
               "length_ms": 1152000,
+              "readers": [
+                "penny-coffeen"
+              ],
               "start_ms": 2097000,
               "title": "The Runaway Feathers"
             },
             {
               "audio_url": "https://www.archive.org/download/wonderful_land_of_up_2308_librivox/wonderfullandofup_04_barton_64kb.mp3",
               "length_ms": 1214000,
+              "readers": [
+                "usedtobeyooper"
+              ],
               "start_ms": 3249000,
               "title": "Mist Land"
             },
             {
               "audio_url": "https://www.archive.org/download/wonderful_land_of_up_2308_librivox/wonderfullandofup_05_barton_64kb.mp3",
               "length_ms": 1130000,
+              "readers": [
+                "adam-benckeser"
+              ],
               "start_ms": 4463000,
               "title": "The Land of Everything"
             },
             {
               "audio_url": "https://www.archive.org/download/wonderful_land_of_up_2308_librivox/wonderfullandofup_06_barton_64kb.mp3",
               "length_ms": 891000,
+              "readers": [
+                "esther-librivox-18743"
+              ],
               "start_ms": 5593000,
               "title": "The Land of Good Smells"
             },
             {
               "audio_url": "https://www.archive.org/download/wonderful_land_of_up_2308_librivox/wonderfullandofup_07_barton_64kb.mp3",
               "length_ms": 875000,
+              "readers": [
+                "leswillang"
+              ],
               "start_ms": 6484000,
               "title": "Thistledown Land"
             },
             {
               "audio_url": "https://www.archive.org/download/wonderful_land_of_up_2308_librivox/wonderfullandofup_08_barton_64kb.mp3",
               "length_ms": 913000,
+              "readers": [
+                "leswillang"
+              ],
               "start_ms": 7359000,
               "title": "Soap Bubble Land"
             },
             {
               "audio_url": "https://www.archive.org/download/wonderful_land_of_up_2308_librivox/wonderfullandofup_09_barton_64kb.mp3",
               "length_ms": 1009000,
+              "readers": [
+                "leswillang"
+              ],
               "start_ms": 8272000,
               "title": "The Land of Lost Kites"
             },
             {
               "audio_url": "https://www.archive.org/download/wonderful_land_of_up_2308_librivox/wonderfullandofup_10_barton_64kb.mp3",
               "length_ms": 845000,
+              "readers": [
+                "de-anna-lee"
+              ],
               "start_ms": 9281000,
               "title": "Happy Town"
             }
@@ -4210,7 +4442,11 @@
           "cover_url": "https://archive.org/download/wonderful_land_of_up_2308_librivox/landofup_2308.jpg",
           "id": "sandra-cullum",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction"
+          ],
           "librivox_id": 18226,
+          "librivox_title": "Wonderful Land of Up",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-wonderful-land-of-up-by-olive-roberts-barton/",
@@ -4635,7 +4871,13 @@
           "cover_url": "https://archive.org/download/wonderfullondon_2404_librivox/WonderfulLondon_2404.jpg",
           "id": "peter-yearsley",
           "language": "en",
+          "librivox_genres": [
+            "Essays & Short Works",
+            "Social Science (Culture & Anthropology)",
+            "Modern (19th C)"
+          ],
           "librivox_id": 19626,
+          "librivox_title": "Wonderful London",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/wonderful-london-by-anonymous/",
@@ -4886,7 +5128,11 @@
           "cover_url": "https://archive.org/download/wonderfulstoryofravalette_2409_librivox/ravalette_2409.jpg",
           "id": "kirksvoice",
           "language": "en",
+          "librivox_genres": [
+            "Early Modern"
+          ],
           "librivox_id": 20731,
+          "librivox_title": "Wonderful Story of Ravalette",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-wonderful-story-of-ravalette-by-p-b-randolph-by-p-b-randolph/",
@@ -5431,7 +5677,12 @@
           "cover_url": "https://archive.org/download/wonderful_visit_1502_librivox/wonderful_visit_1502.jpg",
           "id": "mary-bard",
           "language": "en",
+          "librivox_genres": [
+            "Satire",
+            "Science Fiction"
+          ],
           "librivox_id": 9625,
+          "librivox_title": "Wonderful Visit",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-wonderful-visit-by-h-g-wells/",
@@ -5895,7 +6146,12 @@
           "cover_url": "https://archive.org/download/wonderful_year_1912_librivox/wonderfulyear_1912.jpg",
           "id": "simon-evers",
           "language": "en",
+          "librivox_genres": [
+            "Travel Fiction",
+            "Published 1900 onward"
+          ],
           "librivox_id": 14364,
+          "librivox_title": "Wonderful Year",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-wonderful-year-by-william-john-locke/",

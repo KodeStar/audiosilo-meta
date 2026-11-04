@@ -6619,30 +6619,35 @@
             {
               "audio_url": "https://www.archive.org/download/flu_2005_librivox/flu_00_mouritz_64kb.mp3",
               "length_ms": 195000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface and Bibliography"
             },
             {
               "audio_url": "https://www.archive.org/download/flu_2005_librivox/flu_01_mouritz_64kb.mp3",
               "length_ms": 921000,
+              "section_number": 1,
               "start_ms": 195000,
               "title": "Chapter 1 Influenza"
             },
             {
               "audio_url": "https://www.archive.org/download/flu_2005_librivox/flu_02_mouritz_64kb.mp3",
               "length_ms": 1308000,
+              "section_number": 2,
               "start_ms": 1116000,
               "title": "Chapter 2 Influenza Epidemics in U.S.America"
             },
             {
               "audio_url": "https://www.archive.org/download/flu_2005_librivox/flu_03_mouritz_64kb.mp3",
               "length_ms": 841000,
+              "section_number": 3,
               "start_ms": 2424000,
               "title": "Chapter 3 Influenza in Hawaii"
             },
             {
               "audio_url": "https://www.archive.org/download/flu_2005_librivox/flu_04_mouritz_64kb.mp3",
               "length_ms": 2060000,
+              "section_number": 4,
               "start_ms": 3265000,
               "title": "Chapter 4 General Considerations"
             }
@@ -6651,7 +6656,13 @@
           "cover_url": "https://archive.org/download/flu_2005_librivox/flu_2005.jpg",
           "id": "grace-buchanan",
           "language": "en",
+          "librivox_genres": [
+            "History",
+            "Medical",
+            "Science"
+          ],
           "librivox_id": 14933,
+          "librivox_title": "“The Flu”: A Brief History of Influenza in U. S. America, Europe, Hawaii",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-flu-a-brief-history-of-influenza-by-a-mouritz/",
@@ -9306,7 +9317,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt31/flying_saucers_1305.jpg",
           "id": "roger-melin",
           "language": "en",
+          "librivox_genres": [
+            "Astronomy, Physics & Mechanics"
+          ],
           "librivox_id": 7651,
+          "librivox_title": "Flying Saucers are Real",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-flying-saucers-are-real-by-donald-keyhoe/",

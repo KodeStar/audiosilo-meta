@@ -118,7 +118,13 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt11/gullivers_reizen_1111.jpg",
           "id": "bart-de-leeuw",
           "language": "nl",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Humorous Fiction",
+            "Satire"
+          ],
           "librivox_id": 6053,
+          "librivox_title": "Gulliver’s Reizen",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/gullivers-reizen-by-jonathan-swift/",
@@ -268,7 +274,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt17/gulliversrejser_1503.jpg",
           "id": "lulularsen",
           "language": "da",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Satire"
+          ],
           "librivox_id": 7395,
+          "librivox_title": "Gullivers Rejser",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/gullivers-rejser-by-jonathan-swift/",
@@ -937,60 +948,90 @@
             {
               "audio_url": "https://www.archive.org/download/gulliver_children_1109_librivox/gulliverstravels_children_01_lang_64kb.mp3",
               "length_ms": 264000,
+              "readers": [
+                "laurie-anne-walden"
+              ],
               "start_ms": 0,
               "title": "Part I: Voyage to Lilliput.  Ch. 1: Gulliver's Birth and Early Voyages"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_children_1109_librivox/gulliverstravels_children_02_lang_64kb.mp3",
               "length_ms": 783000,
+              "readers": [
+                "bob-gonzalez"
+              ],
               "start_ms": 264000,
               "title": "Part I, Ch. 2: Gulliver Sails for the South Seas"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_children_1109_librivox/gulliverstravels_children_03_lang_64kb.mp3",
               "length_ms": 712000,
+              "readers": [
+                "bob-gonzalez"
+              ],
               "start_ms": 1047000,
               "title": "Part I, Ch. 3: Gulliver is Taken as a Prisoner"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_children_1109_librivox/gulliverstravels_children_04_lang_64kb.mp3",
               "length_ms": 965000,
+              "readers": [
+                "kristin-g"
+              ],
               "start_ms": 1759000,
               "title": "Part I, Ch. 4: Gulliver is Freed"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_children_1109_librivox/gulliverstravels_children_05_lang_64kb.mp3",
               "length_ms": 615000,
+              "readers": [
+                "kristin-g"
+              ],
               "start_ms": 2724000,
               "title": "Part I, Ch. 5: Gulliver's Escape from Lilliput"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_children_1109_librivox/gulliverstravels_children_06_lang_64kb.mp3",
               "length_ms": 848000,
+              "readers": [
+                "dublingothic"
+              ],
               "start_ms": 3339000,
               "title": "Part II: Voyage to Brobdingnag.  Ch.1: Gulliver is Left Ashore"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_children_1109_librivox/gulliverstravels_children_07_lang_64kb.mp3",
               "length_ms": 707000,
+              "readers": [
+                "dublingothic"
+              ],
               "start_ms": 4187000,
               "title": "Part II, Ch. 2: Gulliver is Shown all over the Country"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_children_1109_librivox/gulliverstravels_children_08_lang_64kb.mp3",
               "length_ms": 730000,
+              "readers": [
+                "kristen-schaugaard-green"
+              ],
               "start_ms": 4894000,
               "title": "Part II, Ch. 3: Gulliver's Life at Court"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_children_1109_librivox/gulliverstravels_children_09_lang_64kb.mp3",
               "length_ms": 912000,
+              "readers": [
+                "cheri-gardner"
+              ],
               "start_ms": 5624000,
               "title": "Part II, Ch. 4: Gulliver is Carried Off by a Monkey"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_children_1109_librivox/gulliverstravels_children_10_lang_64kb.mp3",
               "length_ms": 680000,
+              "readers": [
+                "laurie-anne-walden"
+              ],
               "start_ms": 6536000,
               "title": "Part II, Ch. 5: Gulliver's Last Days in Brobdingnag"
             }
@@ -999,7 +1040,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt12/gulliver_children_1109.jpg",
           "id": "laurie-anne-walden",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure",
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 5643,
+          "librivox_title": "Gulliver's Travels in Lilliput and Brobdingnag, Told to the Children",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/gullivers-travels-told-to-the-children-by-john-lang/",
@@ -1343,240 +1389,400 @@
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_00_swift_64kb.mp3",
               "length_ms": 252000,
+              "readers": [
+                "george-banfield"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_01_swift_64kb.mp3",
               "length_ms": 1466000,
+              "readers": [
+                "vinny-lerin"
+              ],
+              "section_number": 1,
               "start_ms": 252000,
               "title": "Part 1, Chapter 1."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_02_swift_64kb.mp3",
               "length_ms": 1276000,
+              "readers": [
+                "brize-c"
+              ],
+              "section_number": 2,
               "start_ms": 1718000,
               "title": "Part 1, Chapter 2."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_03_swift_64kb.mp3",
               "length_ms": 1066000,
+              "readers": [
+                "brize-c"
+              ],
+              "section_number": 3,
               "start_ms": 2994000,
               "title": "Part 1, Chapter 3."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_04_swift_64kb.mp3",
               "length_ms": 714000,
+              "readers": [
+                "brize-c"
+              ],
+              "section_number": 4,
               "start_ms": 4060000,
               "title": "Part 1, Chapter 4."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_05_swift_64kb.mp3",
               "length_ms": 702000,
+              "readers": [
+                "jen-light"
+              ],
+              "section_number": 5,
               "start_ms": 4774000,
               "title": "Part 1, Chapter 5."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_06_swift_64kb.mp3",
               "length_ms": 1416000,
+              "readers": [
+                "vinny-lerin"
+              ],
+              "section_number": 6,
               "start_ms": 5476000,
               "title": "Part 1, Chapter 6."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_07_swift_64kb.mp3",
               "length_ms": 1120000,
+              "readers": [
+                "vinny-lerin"
+              ],
+              "section_number": 7,
               "start_ms": 6892000,
               "title": "Part 1, Chapter 7."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_08_swift_64kb.mp3",
               "length_ms": 937000,
+              "readers": [
+                "gila-labinger-freeberg"
+              ],
+              "section_number": 8,
               "start_ms": 8012000,
               "title": "Part 1, Chapter 8."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_09_swift_64kb.mp3",
               "length_ms": 1906000,
+              "readers": [
+                "britishnickvo"
+              ],
+              "section_number": 9,
               "start_ms": 8949000,
               "title": "Part 2, Chapter 1."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_10_swift_64kb.mp3",
               "length_ms": 782000,
+              "readers": [
+                "george-banfield"
+              ],
+              "section_number": 10,
               "start_ms": 10855000,
               "title": "Part 2, Chapter 2."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_11_swift_64kb.mp3",
               "length_ms": 1423000,
+              "readers": [
+                "brize-c"
+              ],
+              "section_number": 11,
               "start_ms": 11637000,
               "title": "Part 2, Chapter 3."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_12_swift_64kb.mp3",
               "length_ms": 642000,
+              "readers": [
+                "brize-c"
+              ],
+              "section_number": 12,
               "start_ms": 13060000,
               "title": "Part 2, Chapter 4."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_13_swift_64kb.mp3",
               "length_ms": 1091000,
+              "readers": [
+                "brize-c"
+              ],
+              "section_number": 13,
               "start_ms": 13702000,
               "title": "Part 2, Chapter 5."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_14_swift_64kb.mp3",
               "length_ms": 1204000,
+              "readers": [
+                "brentpatrick"
+              ],
+              "section_number": 14,
               "start_ms": 14793000,
               "title": "Part 2, Chapter 6."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_15_swift_64kb.mp3",
               "length_ms": 929000,
+              "readers": [
+                "brentpatrick"
+              ],
+              "section_number": 15,
               "start_ms": 15997000,
               "title": "Part 2, Chapter 7."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_16_swift_64kb.mp3",
               "length_ms": 627000,
+              "readers": [
+                "brentpatrick"
+              ],
+              "section_number": 16,
               "start_ms": 16926000,
               "title": "Part 2, Chapter 8."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_17_swift_64kb.mp3",
               "length_ms": 824000,
+              "readers": [
+                "ehsan-ahmed-mehedi"
+              ],
+              "section_number": 17,
               "start_ms": 17553000,
               "title": "Part 3, Chapter 1."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_18_swift_64kb.mp3",
               "length_ms": 1182000,
+              "readers": [
+                "brize-c"
+              ],
+              "section_number": 18,
               "start_ms": 18377000,
               "title": "Part 3, Chapter 2."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_19_swift_64kb.mp3",
               "length_ms": 773000,
+              "readers": [
+                "vinny-lerin"
+              ],
+              "section_number": 19,
               "start_ms": 19559000,
               "title": "Part 3, Chapter 3."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_20_swift_64kb.mp3",
               "length_ms": 877000,
+              "readers": [
+                "vinny-lerin"
+              ],
+              "section_number": 20,
               "start_ms": 20332000,
               "title": "Part 3, Chapter 4."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_21_swift_64kb.mp3",
               "length_ms": 902000,
+              "readers": [
+                "vinny-lerin"
+              ],
+              "section_number": 21,
               "start_ms": 21209000,
               "title": "Part 3, Chapter 5."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_22_swift_64kb.mp3",
               "length_ms": 797000,
+              "readers": [
+                "vinny-lerin"
+              ],
+              "section_number": 22,
               "start_ms": 22111000,
               "title": "Part 3, Chapter 6."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_23_swift_64kb.mp3",
               "length_ms": 583000,
+              "readers": [
+                "brize-c"
+              ],
+              "section_number": 23,
               "start_ms": 22908000,
               "title": "Part 3, Chapter 7."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_24_swift_64kb.mp3",
               "length_ms": 771000,
+              "readers": [
+                "brize-c"
+              ],
+              "section_number": 24,
               "start_ms": 23491000,
               "title": "Part 3, Chapter 8."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_25_swift_64kb.mp3",
               "length_ms": 539000,
+              "readers": [
+                "brize-c"
+              ],
+              "section_number": 25,
               "start_ms": 24262000,
               "title": "Part 3, Chapter 9."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_26_swift_64kb.mp3",
               "length_ms": 1182000,
+              "readers": [
+                "brize-c"
+              ],
+              "section_number": 26,
               "start_ms": 24801000,
               "title": "Part 3, Chapter 10."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_27_swift_64kb.mp3",
               "length_ms": 502000,
+              "readers": [
+                "brize-c"
+              ],
+              "section_number": 27,
               "start_ms": 25983000,
               "title": "Part 3, Chapter 11."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_28_swift_64kb.mp3",
               "length_ms": 948000,
+              "readers": [
+                "nick-hillier"
+              ],
+              "section_number": 28,
               "start_ms": 26485000,
               "title": "Part 4, Chapter 1."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_29_swift_64kb.mp3",
               "length_ms": 834000,
+              "readers": [
+                "brize-c"
+              ],
+              "section_number": 29,
               "start_ms": 27433000,
               "title": "Part 4, Chapter 2."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_30_swift_64kb.mp3",
               "length_ms": 834000,
+              "readers": [
+                "rita-boutros"
+              ],
+              "section_number": 30,
               "start_ms": 28267000,
               "title": "Part 4, Chapter 3."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_31_swift_64kb.mp3",
               "length_ms": 791000,
+              "readers": [
+                "rita-boutros"
+              ],
+              "section_number": 31,
               "start_ms": 29101000,
               "title": "Part 4, Chapter 4."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_32_swift_64kb.mp3",
               "length_ms": 1241000,
+              "readers": [
+                "rita-boutros"
+              ],
+              "section_number": 32,
               "start_ms": 29892000,
               "title": "Part 4, Chapter 5."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_33_swift_64kb.mp3",
               "length_ms": 996000,
+              "readers": [
+                "rita-boutros"
+              ],
+              "section_number": 33,
               "start_ms": 31133000,
               "title": "Part 4, Chapter 6."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_34_swift_64kb.mp3",
               "length_ms": 872000,
+              "readers": [
+                "nick-hillier"
+              ],
+              "section_number": 34,
               "start_ms": 32129000,
               "title": "Part 4, Chapter 7."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_35_swift_64kb.mp3",
               "length_ms": 700000,
+              "readers": [
+                "nick-hillier"
+              ],
+              "section_number": 35,
               "start_ms": 33001000,
               "title": "Part 4, Chapter 8."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_36_swift_64kb.mp3",
               "length_ms": 749000,
+              "readers": [
+                "nick-hillier"
+              ],
+              "section_number": 36,
               "start_ms": 33701000,
               "title": "Part 4, Chapter 9."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_37_swift_64kb.mp3",
               "length_ms": 1077000,
+              "readers": [
+                "nick-hillier"
+              ],
+              "section_number": 37,
               "start_ms": 34450000,
               "title": "Part 4, Chapter 10."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_38_swift_64kb.mp3",
               "length_ms": 1127000,
+              "readers": [
+                "nick-hillier"
+              ],
+              "section_number": 38,
               "start_ms": 35527000,
               "title": "Part 4, Chapter 11."
             },
             {
               "audio_url": "https://www.archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_39_swift_64kb.mp3",
               "length_ms": 930000,
+              "readers": [
+                "nick-hillier"
+              ],
+              "section_number": 39,
               "start_ms": 36654000,
               "title": "Part 4, Chapter 12."
             }
@@ -1584,7 +1790,12 @@
           "cover_url": "https://archive.org/download/gulliverstravels_v2_2406_librivox/gulliverstravels_2406.jpg",
           "id": "george-banfield",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure",
+            "Fantasy Fiction"
+          ],
           "librivox_id": 19895,
+          "librivox_title": "Gulliver's Travels (Version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/gullivers-travels-version-2-by-jonathan-swift/",
@@ -2224,240 +2435,280 @@
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_00_swift_64kb.mp3",
               "length_ms": 757000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_01_swift_64kb.mp3",
               "length_ms": 1494000,
+              "section_number": 1,
               "start_ms": 757000,
               "title": "Part 1, Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_02_swift_64kb.mp3",
               "length_ms": 1345000,
+              "section_number": 2,
               "start_ms": 2251000,
               "title": "Part 1, Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_03_swift_64kb.mp3",
               "length_ms": 1087000,
+              "section_number": 3,
               "start_ms": 3596000,
               "title": "Part 1, Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_04_swift_64kb.mp3",
               "length_ms": 706000,
+              "section_number": 4,
               "start_ms": 4683000,
               "title": "Part 1, Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_05_swift_64kb.mp3",
               "length_ms": 857000,
+              "section_number": 5,
               "start_ms": 5389000,
               "title": "Part 1, Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_06_swift_64kb.mp3",
               "length_ms": 1306000,
+              "section_number": 6,
               "start_ms": 6246000,
               "title": "Part 1, Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_07_swift_64kb.mp3",
               "length_ms": 1062000,
+              "section_number": 7,
               "start_ms": 7552000,
               "title": "Part 1, Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_08_swift_64kb.mp3",
               "length_ms": 839000,
+              "section_number": 8,
               "start_ms": 8614000,
               "title": "Part 1, Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_09_swift_64kb.mp3",
               "length_ms": 1736000,
+              "section_number": 9,
               "start_ms": 9453000,
               "title": "Part 2, Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_10_swift_64kb.mp3",
               "length_ms": 796000,
+              "section_number": 10,
               "start_ms": 11189000,
               "title": "Part 2, Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_11_swift_64kb.mp3",
               "length_ms": 1422000,
+              "section_number": 11,
               "start_ms": 11985000,
               "title": "Part 2, Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_12_swift_64kb.mp3",
               "length_ms": 759000,
+              "section_number": 12,
               "start_ms": 13407000,
               "title": "Part 2, Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_13_swift_64kb.mp3",
               "length_ms": 1395000,
+              "section_number": 13,
               "start_ms": 14166000,
               "title": "Part 2, Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_14_swift_64kb.mp3",
               "length_ms": 1303000,
+              "section_number": 14,
               "start_ms": 15561000,
               "title": "Part 2, Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_15_swift_64kb.mp3",
               "length_ms": 1050000,
+              "section_number": 15,
               "start_ms": 16864000,
               "title": "Part 2, Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_16_swift_64kb.mp3",
               "length_ms": 1905000,
+              "section_number": 16,
               "start_ms": 17914000,
               "title": "Part 2, Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_17_swift_64kb.mp3",
               "length_ms": 890000,
+              "section_number": 17,
               "start_ms": 19819000,
               "title": "Part 3, Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_18_swift_64kb.mp3",
               "length_ms": 1283000,
+              "section_number": 18,
               "start_ms": 20709000,
               "title": "Part 3, Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_19_swift_64kb.mp3",
               "length_ms": 822000,
+              "section_number": 19,
               "start_ms": 21992000,
               "title": "Part 3, Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_20_swift_64kb.mp3",
               "length_ms": 899000,
+              "section_number": 20,
               "start_ms": 22814000,
               "title": "Part 3, Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_21_swift_64kb.mp3",
               "length_ms": 1067000,
+              "section_number": 21,
               "start_ms": 23713000,
               "title": "Part 3, Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_22_swift_64kb.mp3",
               "length_ms": 845000,
+              "section_number": 22,
               "start_ms": 24780000,
               "title": "Part 3, Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_23_swift_64kb.mp3",
               "length_ms": 609000,
+              "section_number": 23,
               "start_ms": 25625000,
               "title": "Part 3, Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_24_swift_64kb.mp3",
               "length_ms": 846000,
+              "section_number": 24,
               "start_ms": 26234000,
               "title": "Part 3, Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_25_swift_64kb.mp3",
               "length_ms": 560000,
+              "section_number": 25,
               "start_ms": 27080000,
               "title": "Part 3, Chapter 9"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_26_swift_64kb.mp3",
               "length_ms": 1180000,
+              "section_number": 26,
               "start_ms": 27640000,
               "title": "Part 3, Chapter 10"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_27_swift_64kb.mp3",
               "length_ms": 512000,
+              "section_number": 27,
               "start_ms": 28820000,
               "title": "Part 3, Chapter 11"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_28_swift_64kb.mp3",
               "length_ms": 1046000,
+              "section_number": 28,
               "start_ms": 29332000,
               "title": "Part 4, Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_29_swift_64kb.mp3",
               "length_ms": 904000,
+              "section_number": 29,
               "start_ms": 30378000,
               "title": "Part 4, Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_30_swift_64kb.mp3",
               "length_ms": 860000,
+              "section_number": 30,
               "start_ms": 31282000,
               "title": "Part 4, Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_31_swift_64kb.mp3",
               "length_ms": 798000,
+              "section_number": 31,
               "start_ms": 32142000,
               "title": "Part 4, Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_32_swift_64kb.mp3",
               "length_ms": 927000,
+              "section_number": 32,
               "start_ms": 32940000,
               "title": "Part 4, Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_33_swift_64kb.mp3",
               "length_ms": 1027000,
+              "section_number": 33,
               "start_ms": 33867000,
               "title": "Part 4, Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_34_swift_64kb.mp3",
               "length_ms": 1131000,
+              "section_number": 34,
               "start_ms": 34894000,
               "title": "Part 4, Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_35_swift_64kb.mp3",
               "length_ms": 909000,
+              "section_number": 35,
               "start_ms": 36025000,
               "title": "Part 4, Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_36_swift_64kb.mp3",
               "length_ms": 793000,
+              "section_number": 36,
               "start_ms": 36934000,
               "title": "Part 4, Chapter 9"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_37_swift_64kb.mp3",
               "length_ms": 1098000,
+              "section_number": 37,
               "start_ms": 37727000,
               "title": "Part 4, Chapter 10"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_38_swift_64kb.mp3",
               "length_ms": 1222000,
+              "section_number": 38,
               "start_ms": 38825000,
               "title": "Part 4, Chapter 11"
             },
             {
               "audio_url": "https://www.archive.org/download/gulliver_ld_librivox/gulliverstravels_39_swift_64kb.mp3",
               "length_ms": 942000,
+              "section_number": 39,
               "start_ms": 40047000,
               "title": "Part 4, Chapter 12"
             }
@@ -2466,7 +2717,13 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCovers3/Gullivers_Travels_1008.jpg",
           "id": "lizzie-driver",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Fantastic Fiction",
+            "Satire"
+          ],
           "librivox_id": 693,
+          "librivox_title": "Gulliver's Travels",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/gullivers-travels-by-jonathan-swift/",
@@ -3296,7 +3553,12 @@
           "cover_url": "https://archive.org/download/gulliverstravelsvers3_2504_librivox/gulliverstravels_2504.jpg",
           "id": "peter-dann",
           "language": "en",
+          "librivox_genres": [
+            "Satire",
+            "Fantasy Fiction"
+          ],
           "librivox_id": 21437,
+          "librivox_title": "Gulliver's Travels (Version 3)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/gullivers-travels-vers3-by-jonathan-swift/",
@@ -4230,30 +4492,68 @@
             {
               "audio_url": "https://www.archive.org/download/gulzara_2102_librivox/gulzara_1_mowatt_64kb.mp3",
               "length_ms": 1645000,
+              "readers": [
+                "thestorygirl",
+                "larry-wilson",
+                "tj-burns",
+                "jasmin-salma",
+                "wayne-cooke",
+                "kelly-s-taylor",
+                "ej-lavery"
+              ],
               "start_ms": 0,
               "title": "Act I"
             },
             {
               "audio_url": "https://www.archive.org/download/gulzara_2102_librivox/gulzara_2_mowatt_64kb.mp3",
               "length_ms": 535000,
+              "readers": [
+                "tj-burns",
+                "jasmin-salma",
+                "wayne-cooke",
+                "kelly-s-taylor",
+                "ej-lavery"
+              ],
               "start_ms": 1645000,
               "title": "Act II"
             },
             {
               "audio_url": "https://www.archive.org/download/gulzara_2102_librivox/gulzara_3_mowatt_64kb.mp3",
               "length_ms": 787000,
+              "readers": [
+                "thestorygirl",
+                "larry-wilson",
+                "wayne-cooke",
+                "kelly-s-taylor",
+                "ej-lavery"
+              ],
               "start_ms": 2180000,
               "title": "Act III"
             },
             {
               "audio_url": "https://www.archive.org/download/gulzara_2102_librivox/gulzara_4_mowatt_64kb.mp3",
               "length_ms": 1320000,
+              "readers": [
+                "tj-burns",
+                "jasmin-salma",
+                "wayne-cooke",
+                "kelly-s-taylor"
+              ],
               "start_ms": 2967000,
               "title": "Act IV"
             },
             {
               "audio_url": "https://www.archive.org/download/gulzara_2102_librivox/gulzara_5_mowatt_64kb.mp3",
               "length_ms": 1719000,
+              "readers": [
+                "thestorygirl",
+                "larry-wilson",
+                "tj-burns",
+                "jasmin-salma",
+                "wayne-cooke",
+                "kelly-s-taylor",
+                "ej-lavery"
+              ],
               "start_ms": 4287000,
               "title": "Act V"
             }
@@ -4262,7 +4562,11 @@
           "cover_url": "https://archive.org/download/gulzara_2102_librivox/gulzara_2102.jpg",
           "id": "thestorygirl",
           "language": "en",
+          "librivox_genres": [
+            "Romance"
+          ],
           "librivox_id": 15822,
+          "librivox_title": "Gulzara; or The Persian Slave",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/gulzara-or-the-persian-slave-by-anna-cora-mowatt-ritchie/",
@@ -7648,189 +7952,293 @@
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_01_spindler_64kb.mp3",
               "length_ms": 522000,
+              "readers": [
+                "toddhw"
+              ],
               "start_ms": 0,
               "title": "Chapter 1, A CALL FOR VOLUNTEERS"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_02_spindler_64kb.mp3",
               "length_ms": 199000,
+              "readers": [
+                "toddhw"
+              ],
               "start_ms": 522000,
               "title": "Chapter 2, THE MYSTERY SHIP"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_03_spindler_64kb.mp3",
               "length_ms": 336000,
+              "readers": [
+                "toddhw"
+              ],
               "start_ms": 721000,
               "title": "Chapter 3, SIR ROGER CASEMENT AND THE IRISH PLANS"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_04_spindler_64kb.mp3",
               "length_ms": 821000,
+              "readers": [
+                "ian-s-carr"
+              ],
               "start_ms": 1057000,
               "title": "Chapter 4, MYSTERY CARGO AND CAMOUFLAGE EQUIPMENT"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_05_spindler_64kb.mp3",
               "length_ms": 328000,
+              "readers": [
+                "ian-s-carr"
+              ],
               "start_ms": 1878000,
               "title": "Chapter 5, THE LIBAU SAILS--AND BECOMES THE AUD"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_06_spindler_64kb.mp3",
               "length_ms": 410000,
+              "readers": [
+                "fred"
+              ],
               "start_ms": 2206000,
               "title": "Chapter 6, UNDER FALSE COLOURS"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_07_spindler_64kb.mp3",
               "length_ms": 487000,
+              "readers": [
+                "fred"
+              ],
               "start_ms": 2616000,
               "title": "Chapter 7, A DRESS REHEARSAL"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_08_spindler_64kb.mp3",
               "length_ms": 642000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 3103000,
               "title": "Chapter 8, IN ENEMY WATERS"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_09_spindler_64kb.mp3",
               "length_ms": 183000,
+              "readers": [
+                "inkell"
+              ],
               "start_ms": 3745000,
               "title": "Chapter 9, THE FIRST SIGN OF THE ENEMY"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_10_spindler_64kb.mp3",
               "length_ms": 455000,
+              "readers": [
+                "inkell"
+              ],
               "start_ms": 3928000,
               "title": "Chapter 10, SOME EXCITEMENTS"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_11_spindler_64kb.mp3",
               "length_ms": 226000,
+              "readers": [
+                "inkell"
+              ],
               "start_ms": 4383000,
               "title": "Chapter 11, ON THE EDGE OF THE ARCTIC SEA"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_12_spindler_64kb.mp3",
               "length_ms": 1484000,
+              "readers": [
+                "paul-parkinson"
+              ],
               "start_ms": 4609000,
               "title": "Chapter 12, RIGHT THROUGH THE BLOCKADE"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_13_spindler_64kb.mp3",
               "length_ms": 800000,
+              "readers": [
+                "paul-parkinson"
+              ],
               "start_ms": 6093000,
               "title": "Chapter 13, OFF THE ROCKALLS IN A HURRICANE"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_14_spindler_64kb.mp3",
               "length_ms": 416000,
+              "readers": [
+                "elijah-fisher"
+              ],
               "start_ms": 6893000,
               "title": "Chapter 14, AN OLD ACQUAINTANCE"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_15_spindler_64kb.mp3",
               "length_ms": 410000,
+              "readers": [
+                "brian-fullen"
+              ],
               "start_ms": 7309000,
               "title": "Chapter 15, PLANS AND DREAMS"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_16_spindler_64kb.mp3",
               "length_ms": 423000,
+              "readers": [
+                "brian-fullen"
+              ],
               "start_ms": 7719000,
               "title": "Chapter 16, WE REACH OUR GOAL"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_17_spindler_64kb.mp3",
               "length_ms": 1547000,
+              "readers": [
+                "paul-parkinson"
+              ],
               "start_ms": 8142000,
               "title": "Chapter 17, TWENTY-FOUR HOURS IN TRALEE BAY"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_18_spindler_64kb.mp3",
               "length_ms": 1650000,
+              "readers": [
+                "paul-parkinson"
+              ],
               "start_ms": 9689000,
               "title": "Chapter 18, UNWELCOME GUESTS"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_19_spindler_64kb.mp3",
               "length_ms": 838000,
+              "readers": [
+                "werner-hamilton"
+              ],
               "start_ms": 11339000,
               "title": "Chapter 19, A STERN CHASE"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_20_spindler_64kb.mp3",
               "length_ms": 1174000,
+              "readers": [
+                "werner-hamilton"
+              ],
               "start_ms": 12177000,
               "title": "Chapter 20, THE PHANTOM SHIP IN A TRAP"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_21_spindler_64kb.mp3",
               "length_ms": 285000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 13351000,
               "title": "Chapter 21, WE PREPARE TO SINK OUR SHIP"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_22_spindler_64kb.mp3",
               "length_ms": 952000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 13636000,
               "title": "Chapter 22, THE SINKING OF THE LIBAU"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_23_spindler_64kb.mp3",
               "length_ms": 1034000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 14588000,
               "title": "Chapter 23, A SECOND BARALONG?"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_24_spindler_64kb.mp3",
               "length_ms": 1447000,
+              "readers": [
+                "djrickyv"
+              ],
               "start_ms": 15622000,
               "title": "Chapter 24, LAWFUL COMBATANT OR PIRATE?"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_25_spindler_64kb.mp3",
               "length_ms": 1372000,
+              "readers": [
+                "brian-fullen"
+              ],
               "start_ms": 17069000,
               "title": "Chapter 25, UNSUCCESSFUL ATTEMPTS AT ESCAPE"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_26_spindler_64kb.mp3",
               "length_ms": 1207000,
+              "readers": [
+                "brian-fullen"
+              ],
               "start_ms": 18441000,
               "title": "Chapter 26, A BOLDER PLAN"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_27_spindler_64kb.mp3",
               "length_ms": 982000,
+              "readers": [
+                "kayteefoley"
+              ],
               "start_ms": 19648000,
               "title": "Chapter 27, THE ESCAPE"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_28_spindler_64kb.mp3",
               "length_ms": 1192000,
+              "readers": [
+                "brian-fullen"
+              ],
               "start_ms": 20630000,
               "title": "Chapter 28, THE MISSING AERODROME"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_29_spindler_64kb.mp3",
               "length_ms": 769000,
+              "readers": [
+                "inkell"
+              ],
               "start_ms": 21822000,
               "title": "Chapter 29, RECAPTURE"
             },
             {
               "audio_url": "https://www.archive.org/download/gun_running_casement_2305_librivox/gunrunningforcasement_30_spindler_64kb.mp3",
               "length_ms": 643000,
+              "readers": [
+                "ian-s-carr"
+              ],
               "start_ms": 22591000,
               "title": "Chapter 30, THE PRIZE COURT INQUIRY"
             }
           ],
           "copyright_year": 1921,
           "cover_url": "https://archive.org/download/gun_running_casement_2305_librivox/gunrunning_2305.jpg",
+          "credits": [
+            {
+              "person": "e-h-mcgrath",
+              "role": "translator"
+            },
+            {
+              "person": "william-montgomery",
+              "role": "translator"
+            }
+          ],
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "War & Military"
+          ],
           "librivox_id": 18978,
+          "librivox_title": "Gun Running for Casement",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/gun-running-for-casement-by-karl-spindler/",

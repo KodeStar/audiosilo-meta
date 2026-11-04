@@ -3369,7 +3369,11 @@
           "cover_url": "https://archive.org/download/thesyndic_2402_librivox/syndic_2402.jpg",
           "id": "ben-tucker",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 20216,
+          "librivox_title": "Syndic",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-syndic-by-c-m-kornbluth/",
@@ -9881,90 +9885,150 @@
             {
               "audio_url": "https://www.archive.org/download/syriadesertsown_2105_librivox/syriadesertsown_00_bell_64kb.mp3",
               "length_ms": 643000,
+              "readers": [
+                "kazbek"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "PREFACE"
             },
             {
               "audio_url": "https://www.archive.org/download/syriadesertsown_2105_librivox/syriadesertsown_01_bell_64kb.mp3",
               "length_ms": 1906000,
+              "readers": [
+                "marya-james"
+              ],
+              "section_number": 1,
               "start_ms": 643000,
               "title": "CHAPTER I"
             },
             {
               "audio_url": "https://www.archive.org/download/syriadesertsown_2105_librivox/syriadesertsown_02_bell_64kb.mp3",
               "length_ms": 2070000,
+              "readers": [
+                "tad-davis"
+              ],
+              "section_number": 2,
               "start_ms": 2549000,
               "title": "CHAPTER II"
             },
             {
               "audio_url": "https://www.archive.org/download/syriadesertsown_2105_librivox/syriadesertsown_03_bell_64kb.mp3",
               "length_ms": 1925000,
+              "readers": [
+                "jordan-russell"
+              ],
+              "section_number": 3,
               "start_ms": 4619000,
               "title": "CHAPTER III"
             },
             {
               "audio_url": "https://www.archive.org/download/syriadesertsown_2105_librivox/syriadesertsown_04_bell_64kb.mp3",
               "length_ms": 2091000,
+              "readers": [
+                "tad-davis"
+              ],
+              "section_number": 4,
               "start_ms": 6544000,
               "title": "CHAPTER IV"
             },
             {
               "audio_url": "https://www.archive.org/download/syriadesertsown_2105_librivox/syriadesertsown_05_bell_64kb.mp3",
               "length_ms": 1950000,
+              "readers": [
+                "jordan-russell"
+              ],
+              "section_number": 5,
               "start_ms": 8635000,
               "title": "CHAPTER V"
             },
             {
               "audio_url": "https://www.archive.org/download/syriadesertsown_2105_librivox/syriadesertsown_06_bell_64kb.mp3",
               "length_ms": 2272000,
+              "readers": [
+                "tad-davis"
+              ],
+              "section_number": 6,
               "start_ms": 10585000,
               "title": "CHAPTER VI"
             },
             {
               "audio_url": "https://www.archive.org/download/syriadesertsown_2105_librivox/syriadesertsown_07_bell_64kb.mp3",
               "length_ms": 2220000,
+              "readers": [
+                "jordan-russell"
+              ],
+              "section_number": 7,
               "start_ms": 12857000,
               "title": "CHAPTER VII"
             },
             {
               "audio_url": "https://www.archive.org/download/syriadesertsown_2105_librivox/syriadesertsown_08_bell_64kb.mp3",
               "length_ms": 2423000,
+              "readers": [
+                "tad-davis"
+              ],
+              "section_number": 8,
               "start_ms": 15077000,
               "title": "CHAPTER VIII"
             },
             {
               "audio_url": "https://www.archive.org/download/syriadesertsown_2105_librivox/syriadesertsown_09_bell_64kb.mp3",
               "length_ms": 2329000,
+              "readers": [
+                "danielle-wolff"
+              ],
+              "section_number": 9,
               "start_ms": 17500000,
               "title": "CHAPTER IX"
             },
             {
               "audio_url": "https://www.archive.org/download/syriadesertsown_2105_librivox/syriadesertsown_10_bell_64kb.mp3",
               "length_ms": 2818000,
+              "readers": [
+                "melinda-cumming"
+              ],
+              "section_number": 10,
               "start_ms": 19829000,
               "title": "CHAPTER X"
             },
             {
               "audio_url": "https://www.archive.org/download/syriadesertsown_2105_librivox/syriadesertsown_11_bell_64kb.mp3",
               "length_ms": 2073000,
+              "readers": [
+                "jordan-russell"
+              ],
+              "section_number": 11,
               "start_ms": 22647000,
               "title": "CHAPTER XI"
             },
             {
               "audio_url": "https://www.archive.org/download/syriadesertsown_2105_librivox/syriadesertsown_12_bell_64kb.mp3",
               "length_ms": 2671000,
+              "readers": [
+                "tad-davis"
+              ],
+              "section_number": 12,
               "start_ms": 24720000,
               "title": "CHAPTER XII"
             },
             {
               "audio_url": "https://www.archive.org/download/syriadesertsown_2105_librivox/syriadesertsown_13_bell_64kb.mp3",
               "length_ms": 2350000,
+              "readers": [
+                "fshort"
+              ],
+              "section_number": 13,
               "start_ms": 27391000,
               "title": "CHAPTER XIII"
             },
             {
               "audio_url": "https://www.archive.org/download/syriadesertsown_2105_librivox/syriadesertsown_14_bell_64kb.mp3",
               "length_ms": 1909000,
+              "readers": [
+                "tad-davis"
+              ],
+              "section_number": 14,
               "start_ms": 29741000,
               "title": "CHAPTER XIV"
             }
@@ -9973,7 +10037,12 @@
           "cover_url": "https://archive.org/download/syriadesertsown_2105_librivox/syria_2106.jpg",
           "id": "kazbek",
           "language": "en",
+          "librivox_genres": [
+            "Modern (20th C)",
+            "Exploration"
+          ],
           "librivox_id": 15996,
+          "librivox_title": "Syria: the Desert and the Sown",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/syria-the-desert-and-the-sown-by-gertrude-bell/",

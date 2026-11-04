@@ -6658,39 +6658,96 @@
             {
               "audio_url": "https://www.archive.org/download/misanthrope_1707_librivox/misanthrope_1_moliere_64kb.mp3",
               "length_ms": 2049000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "khand",
+                "nemo"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/misanthrope_1707_librivox/misanthrope_2_moliere_64kb.mp3",
               "length_ms": 1398000,
+              "readers": [
+                "roger-melin",
+                "toddhw",
+                "khand",
+                "sonia",
+                "leanne-yau",
+                "tomas-peter",
+                "nemo",
+                "sean-lally",
+                "paulhw"
+              ],
               "start_ms": 2049000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/misanthrope_1707_librivox/misanthrope_3_moliere_64kb.mp3",
               "length_ms": 1375000,
+              "readers": [
+                "toddhw",
+                "khand",
+                "leanne-yau",
+                "tomas-peter",
+                "eva-davis-d-2025",
+                "nemo",
+                "sean-lally",
+                "paulhw"
+              ],
               "start_ms": 3447000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/misanthrope_1707_librivox/misanthrope_4_moliere_64kb.mp3",
               "length_ms": 1428000,
+              "readers": [
+                "toddhw",
+                "khand",
+                "sonia",
+                "leanne-yau",
+                "nemo",
+                "recordingperson"
+              ],
               "start_ms": 4822000,
               "title": "Act 4"
             },
             {
               "audio_url": "https://www.archive.org/download/misanthrope_1707_librivox/misanthrope_5_moliere_64kb.mp3",
               "length_ms": 1607000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "khand",
+                "sonia",
+                "leanne-yau",
+                "tomas-peter",
+                "eva-davis-d-2025",
+                "nemo",
+                "sean-lally"
+              ],
               "start_ms": 6250000,
               "title": "Act 5"
             }
           ],
           "copyright_year": 18,
           "cover_url": "https://archive.org/download/misanthrope_1707_librivox/misanthrope_1707.jpg",
+          "credits": [
+            {
+              "person": "henri-van-laun",
+              "role": "translator"
+            }
+          ],
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Plays",
+            "Satire"
+          ],
           "librivox_id": 12026,
+          "librivox_title": "Misanthrope",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-misanthrope-by-moliere/",

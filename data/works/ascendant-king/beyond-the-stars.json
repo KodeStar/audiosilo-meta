@@ -531,7 +531,11 @@
           "cover_url": "https://archive.org/download/beyondthestars_1712_librivox/beyondstarstowne_1712.jpg",
           "id": "nemo",
           "language": "en",
+          "librivox_genres": [
+            "Single author"
+          ],
           "librivox_id": 12580,
+          "librivox_title": "Beyond the Stars",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/beyond-the-stars-by-charles-hanson-towne/",
@@ -692,7 +696,11 @@
           "cover_url": "https://archive.org/download/beyondthestars_2512_librivox/beyondthestars_2512.jpg",
           "id": "mark-nelson",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 22176,
+          "librivox_title": "Beyond the Stars",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/beyond-the-stars-by-ray-cummings/",
@@ -3966,78 +3974,130 @@
             {
               "audio_url": "https://www.archive.org/download/beyond_vanishing_point_2203_librivox/beyondvanishingpoint_00_cummings_64kb.mp3",
               "length_ms": 142000,
+              "readers": [
+                "christine-rottger"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Summary and Cast of Characters"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_vanishing_point_2203_librivox/beyondvanishingpoint_01_cummings_64kb.mp3",
               "length_ms": 1466000,
+              "readers": [
+                "marns007"
+              ],
+              "section_number": 1,
               "start_ms": 142000,
               "title": "Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_vanishing_point_2203_librivox/beyondvanishingpoint_02_cummings_64kb.mp3",
               "length_ms": 743000,
+              "readers": [
+                "mathemagic"
+              ],
+              "section_number": 2,
               "start_ms": 1608000,
               "title": "Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_vanishing_point_2203_librivox/beyondvanishingpoint_03_cummings_64kb.mp3",
               "length_ms": 1174000,
+              "readers": [
+                "albert-friedman"
+              ],
+              "section_number": 3,
               "start_ms": 2351000,
               "title": "Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_vanishing_point_2203_librivox/beyondvanishingpoint_04_cummings_64kb.mp3",
               "length_ms": 1197000,
+              "readers": [
+                "czandra"
+              ],
+              "section_number": 4,
               "start_ms": 3525000,
               "title": "Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_vanishing_point_2203_librivox/beyondvanishingpoint_05_cummings_64kb.mp3",
               "length_ms": 630000,
+              "readers": [
+                "czandra"
+              ],
+              "section_number": 5,
               "start_ms": 4722000,
               "title": "Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_vanishing_point_2203_librivox/beyondvanishingpoint_06_cummings_64kb.mp3",
               "length_ms": 975000,
+              "readers": [
+                "leonfakks"
+              ],
+              "section_number": 6,
               "start_ms": 5352000,
               "title": "Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_vanishing_point_2203_librivox/beyondvanishingpoint_07_cummings_64kb.mp3",
               "length_ms": 969000,
+              "readers": [
+                "copyhatter"
+              ],
+              "section_number": 7,
               "start_ms": 6327000,
               "title": "Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_vanishing_point_2203_librivox/beyondvanishingpoint_08_cummings_64kb.mp3",
               "length_ms": 817000,
+              "readers": [
+                "christine-rottger"
+              ],
+              "section_number": 8,
               "start_ms": 7296000,
               "title": "Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_vanishing_point_2203_librivox/beyondvanishingpoint_09_cummings_64kb.mp3",
               "length_ms": 858000,
+              "readers": [
+                "andrew-gaunce"
+              ],
+              "section_number": 9,
               "start_ms": 8113000,
               "title": "Chapter 9"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_vanishing_point_2203_librivox/beyondvanishingpoint_10_cummings_64kb.mp3",
               "length_ms": 875000,
+              "readers": [
+                "nancy-gorgen"
+              ],
+              "section_number": 10,
               "start_ms": 8971000,
               "title": "Chapter 10"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_vanishing_point_2203_librivox/beyondvanishingpoint_11_cummings_64kb.mp3",
               "length_ms": 1153000,
+              "readers": [
+                "albert-friedman"
+              ],
+              "section_number": 11,
               "start_ms": 9846000,
               "title": "Chapter 11"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_vanishing_point_2203_librivox/beyondvanishingpoint_12_cummings_64kb.mp3",
               "length_ms": 387000,
+              "readers": [
+                "nancy-gorgen"
+              ],
+              "section_number": 12,
               "start_ms": 10999000,
               "title": "Chapter 12"
             }
@@ -4046,7 +4106,12 @@
           "cover_url": "https://archive.org/download/beyond_vanishing_point_2203_librivox/beyond_vanishing_point_2203.jpg",
           "id": "christine-rottger",
           "language": "en",
+          "librivox_genres": [
+            "Fantastic Fiction",
+            "Science Fiction"
+          ],
           "librivox_id": 17514,
+          "librivox_title": "Beyond the Vanishing Point",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/beyond-the-vanishing-point-by-ray-cummings/",
@@ -8928,216 +8993,324 @@
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_01_braddon_64kb.mp3",
               "length_ms": 2011000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 0,
               "title": "Chapter I"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_02_braddon_64kb.mp3",
               "length_ms": 1455000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 2011000,
               "title": "Chapter II part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_03_braddon_64kb.mp3",
               "length_ms": 2098000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 3466000,
               "title": "Chapter II part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_04_braddon_64kb.mp3",
               "length_ms": 2012000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 5564000,
               "title": "Chapter III part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_05_braddon_64kb.mp3",
               "length_ms": 2322000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 7576000,
               "title": "Chapter III part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_06_braddon_64kb.mp3",
               "length_ms": 2298000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 9898000,
               "title": "Chapter IV"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_07_braddon_64kb.mp3",
               "length_ms": 757000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 12196000,
               "title": "Chapter V"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_08_braddon_64kb.mp3",
               "length_ms": 1065000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 12953000,
               "title": "Chapter VI"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_09_braddon_64kb.mp3",
               "length_ms": 1370000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 14018000,
               "title": "Chapter VII"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_10_braddon_64kb.mp3",
               "length_ms": 1852000,
+              "readers": [
+                "sarah-aggers"
+              ],
               "start_ms": 15388000,
               "title": "Chapter VIII part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_11_braddon_64kb.mp3",
               "length_ms": 1464000,
+              "readers": [
+                "sarah-aggers"
+              ],
               "start_ms": 17240000,
               "title": "Chapter VIII part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_12_braddon_64kb.mp3",
               "length_ms": 986000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 18704000,
               "title": "Chapter IX"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_13_braddon_64kb.mp3",
               "length_ms": 1257000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 19690000,
               "title": "Chapter X"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_14_braddon_64kb.mp3",
               "length_ms": 814000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 20947000,
               "title": "Chapter XI"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_15_braddon_64kb.mp3",
               "length_ms": 586000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 21761000,
               "title": "Chapter XII"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_16_braddon_64kb.mp3",
               "length_ms": 1075000,
+              "readers": [
+                "sarah-aggers"
+              ],
               "start_ms": 22347000,
               "title": "Chapter XIII"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_17_braddon_64kb.mp3",
               "length_ms": 448000,
+              "readers": [
+                "dylan-campbell"
+              ],
               "start_ms": 23422000,
               "title": "Chapter XIV"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_18_braddon_64kb.mp3",
               "length_ms": 1052000,
+              "readers": [
+                "dylan-campbell"
+              ],
               "start_ms": 23870000,
               "title": "Chapter XV"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_19_braddon_64kb.mp3",
               "length_ms": 922000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
               "start_ms": 24922000,
               "title": "Chapter XVI"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_20_braddon_64kb.mp3",
               "length_ms": 902000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
               "start_ms": 25844000,
               "title": "Chapter XVII"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_21_braddon_64kb.mp3",
               "length_ms": 1497000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 26746000,
               "title": "Chapter XVIII"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_22_braddon_64kb.mp3",
               "length_ms": 698000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
               "start_ms": 28243000,
               "title": "Chapter XIX"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_23_braddon_64kb.mp3",
               "length_ms": 606000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
               "start_ms": 28941000,
               "title": "Chapter XX"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_24_braddon_64kb.mp3",
               "length_ms": 1347000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
               "start_ms": 29547000,
               "title": "Chapter XXI"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_25_braddon_64kb.mp3",
               "length_ms": 1437000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
               "start_ms": 30894000,
               "title": "Chapter XXII"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_26_braddon_64kb.mp3",
               "length_ms": 1652000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
               "start_ms": 32331000,
               "title": "Chapter XXIII"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_27_braddon_64kb.mp3",
               "length_ms": 1246000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
               "start_ms": 33983000,
               "title": "Chapter XXIV"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_28_braddon_64kb.mp3",
               "length_ms": 464000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
               "start_ms": 35229000,
               "title": "Chapter XXV"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_29_braddon_64kb.mp3",
               "length_ms": 1278000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 35693000,
               "title": "Chapter XXVI part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_30_braddon_64kb.mp3",
               "length_ms": 2489000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 36971000,
               "title": "Chapter XXVI part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_31_braddon_64kb.mp3",
               "length_ms": 2626000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 39460000,
               "title": "Chapter XXVII"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_32_braddon_64kb.mp3",
               "length_ms": 3000000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 42086000,
               "title": "Chapter XXVIII"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_33_braddon_64kb.mp3",
               "length_ms": 2509000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 45086000,
               "title": "Chapter XXIX"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_34_braddon_64kb.mp3",
               "length_ms": 1534000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 47595000,
               "title": "Chapter XXX"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_35_braddon_64kb.mp3",
               "length_ms": 386000,
+              "readers": [
+                "jhwang"
+              ],
               "start_ms": 49129000,
               "title": "Chapter XXXI"
             },
             {
               "audio_url": "https://www.archive.org/download/beyond_1803_librivox/beyondthesevoices_36_braddon_64kb.mp3",
               "length_ms": 983000,
+              "readers": [
+                "jim-locke"
+              ],
               "start_ms": 49515000,
               "title": "Chapter XXXII"
             }
@@ -9145,7 +9318,11 @@
           "cover_url": "https://archive.org/download/beyond_1803_librivox/beyond_these_voices_1803.jpg",
           "id": "jim-locke",
           "language": "en",
+          "librivox_genres": [
+            "Published 1800 -1900"
+          ],
           "librivox_id": 12570,
+          "librivox_title": "Beyond These Voices",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/beyond-these-voices-by-mary-elizabeth-braddon/",

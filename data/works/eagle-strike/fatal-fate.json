@@ -10022,54 +10022,81 @@
             {
               "audio_url": "https://www.archive.org/download/fatal_message_2112_librivox/fatalmessage_01_carter_64kb.mp3",
               "length_ms": 808000,
+              "readers": [
+                "paul-hampton"
+              ],
               "start_ms": 0,
               "title": "A Suspicious Wire."
             },
             {
               "audio_url": "https://www.archive.org/download/fatal_message_2112_librivox/fatalmessage_02_carter_64kb.mp3",
               "length_ms": 801000,
+              "readers": [
+                "paul-hampton"
+              ],
               "start_ms": 808000,
               "title": "The Intercepted Letter."
             },
             {
               "audio_url": "https://www.archive.org/download/fatal_message_2112_librivox/fatalmessage_03_carter_64kb.mp3",
               "length_ms": 608000,
+              "readers": [
+                "paul-hampton"
+              ],
               "start_ms": 1609000,
               "title": "Nick Carter’s Plans."
             },
             {
               "audio_url": "https://www.archive.org/download/fatal_message_2112_librivox/fatalmessage_04_carter_64kb.mp3",
               "length_ms": 1265000,
+              "readers": [
+                "aabha-jog"
+              ],
               "start_ms": 2217000,
               "title": "The Real Substitute."
             },
             {
               "audio_url": "https://www.archive.org/download/fatal_message_2112_librivox/fatalmessage_05_carter_64kb.mp3",
               "length_ms": 978000,
+              "readers": [
+                "aabha-jog"
+              ],
               "start_ms": 3482000,
               "title": "Night Work."
             },
             {
               "audio_url": "https://www.archive.org/download/fatal_message_2112_librivox/fatalmessage_06_carter_64kb.mp3",
               "length_ms": 1076000,
+              "readers": [
+                "aabha-jog"
+              ],
               "start_ms": 4460000,
               "title": "How Patsy Made Good."
             },
             {
               "audio_url": "https://www.archive.org/download/fatal_message_2112_librivox/fatalmessage_07_carter_64kb.mp3",
               "length_ms": 748000,
+              "readers": [
+                "nancy-gorgen"
+              ],
               "start_ms": 5536000,
               "title": "Chick Carter’s Cunning."
             },
             {
               "audio_url": "https://www.archive.org/download/fatal_message_2112_librivox/fatalmessage_08_carter_64kb.mp3",
               "length_ms": 737000,
+              "readers": [
+                "nancy-gorgen"
+              ],
               "start_ms": 6284000,
               "title": "A Change of Base."
             },
             {
               "audio_url": "https://www.archive.org/download/fatal_message_2112_librivox/fatalmessage_09_carter_64kb.mp3",
               "length_ms": 697000,
+              "readers": [
+                "nancy-gorgen"
+              ],
               "start_ms": 7021000,
               "title": "The Result of the Ruse."
             }
@@ -10078,7 +10105,11 @@
           "cover_url": "https://archive.org/download/fatal_message_2112_librivox/fatal_message_2112.jpg",
           "id": "paul-hampton",
           "language": "en",
+          "librivox_genres": [
+            "Detective Fiction"
+          ],
           "librivox_id": 17281,
+          "librivox_title": "Fatal Message",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-fatal-message-by-nicholas-carter/",

@@ -2648,60 +2648,90 @@
             {
               "audio_url": "https://www.archive.org/download/gate_giant_scissors_1009_librivox/gateofgiantscissors_01_johnston_64kb.mp3",
               "length_ms": 793000,
+              "readers": [
+                "maria-therese"
+              ],
               "start_ms": 0,
               "title": "01 - In the Pear-Tree"
             },
             {
               "audio_url": "https://www.archive.org/download/gate_giant_scissors_1009_librivox/gateofgiantscissors_02_johnston_64kb.mp3",
               "length_ms": 1255000,
+              "readers": [
+                "jessamy-gloor"
+              ],
               "start_ms": 793000,
               "title": "02 - A New Fairy Tale"
             },
             {
               "audio_url": "https://www.archive.org/download/gate_giant_scissors_1009_librivox/gateofgiantscissors_03_johnston_64kb.mp3",
               "length_ms": 1093000,
+              "readers": [
+                "jen-jordan"
+              ],
               "start_ms": 2048000,
               "title": "03 - Behind the Great Gate"
             },
             {
               "audio_url": "https://www.archive.org/download/gate_giant_scissors_1009_librivox/gateofgiantscissors_04_johnston_64kb.mp3",
               "length_ms": 846000,
+              "readers": [
+                "carrie-heyes"
+              ],
               "start_ms": 3141000,
               "title": "04 - A Letter and a Meeting"
             },
             {
               "audio_url": "https://www.archive.org/download/gate_giant_scissors_1009_librivox/gateofgiantscissors_05_johnston_64kb.mp3",
               "length_ms": 1092000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 3987000,
               "title": "05 - A Thanksgiving Barbecue"
             },
             {
               "audio_url": "https://www.archive.org/download/gate_giant_scissors_1009_librivox/gateofgiantscissors_06_johnston_64kb.mp3",
               "length_ms": 1420000,
+              "readers": [
+                "sandra-estenson"
+              ],
               "start_ms": 5079000,
               "title": "06 - Joyce Plays Ghost"
             },
             {
               "audio_url": "https://www.archive.org/download/gate_giant_scissors_1009_librivox/gateofgiantscissors_07_johnston_64kb.mp3",
               "length_ms": 1281000,
+              "readers": [
+                "sandra-estenson"
+              ],
               "start_ms": 6499000,
               "title": "07 - Old \"Number Thirty-One\""
             },
             {
               "audio_url": "https://www.archive.org/download/gate_giant_scissors_1009_librivox/gateofgiantscissors_08_johnston_64kb.mp3",
               "length_ms": 1046000,
+              "readers": [
+                "sandra-estenson"
+              ],
               "start_ms": 7780000,
               "title": "08 - Christmas Plans and An Accident"
             },
             {
               "audio_url": "https://www.archive.org/download/gate_giant_scissors_1009_librivox/gateofgiantscissors_09_johnston_64kb.mp3",
               "length_ms": 1047000,
+              "readers": [
+                "amy-gramour"
+              ],
               "start_ms": 8826000,
               "title": "09 - A Great Discovery"
             },
             {
               "audio_url": "https://www.archive.org/download/gate_giant_scissors_1009_librivox/gateofgiantscissors_10_johnston_64kb.mp3",
               "length_ms": 977000,
+              "readers": [
+                "sandra-estenson"
+              ],
               "start_ms": 9873000,
               "title": "10 - Christmas"
             }
@@ -2710,7 +2740,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCovers3/giant_scissors_1009.jpg",
           "id": "maria-therese",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction",
+            "School"
+          ],
           "librivox_id": 4349,
+          "librivox_title": "Gate of the Giant Scissors",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-gate-of-the-giant-scissors-by-annie-fellows-johnston/",

@@ -490,6 +490,11 @@
             {
               "audio_url": "https://www.archive.org/download/sorrows_showgirl_1208_librivox/sorrowsofashowgirl_mcgaffey_00_64kb.mp3",
               "length_ms": 147000,
+              "readers": [
+                "amanda-friday",
+                "chuck-williamson",
+                "robert-hoffman"
+              ],
               "start_ms": 0,
               "title": "Chapter 0"
             },
@@ -618,7 +623,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt30/Sorrows_of_a_Show_Girl_1303.jpg",
           "id": "amanda-friday",
           "language": "en",
+          "librivox_genres": [
+            "Dramatic Readings",
+            "General Fiction",
+            "Humorous Fiction"
+          ],
           "librivox_id": 6774,
+          "librivox_title": "Sorrows of a Show Girl",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-sorrows-of-a-show-girl-by-kenneth-mcgaffrey/",
@@ -925,7 +936,11 @@
           "cover_url": "https://archive.org/download/thesorrowsofsatan_1704_librivox/sorrows_satan_1704.jpg",
           "id": "lisa-statler",
           "language": "en",
+          "librivox_genres": [
+            "Horror & Supernatural Fiction"
+          ],
           "librivox_id": 11615,
+          "librivox_title": "Sorrows of Satan - Or, the Strange Experience of One Geoffrey Tempest, Millionaire",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-sorrows-of-satan-or-the-strange-experience-of-one-geoffrey-tempest-millionaire-by-marie-corelli/",
@@ -9146,7 +9161,12 @@
           "cover_url": "https://archive.org/download/els_sots_ferestecs_2209_librivox/sotsferestecs_2209.jpg",
           "id": "enric",
           "language": "ca",
+          "librivox_genres": [
+            "Literary Fiction",
+            "Published 1900 onward"
+          ],
           "librivox_id": 17274,
+          "librivox_title": "sots feréstecs",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/els-sots-ferestecs-by-raimon-casellas/",

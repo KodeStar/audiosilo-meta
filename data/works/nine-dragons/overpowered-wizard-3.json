@@ -1872,12 +1872,24 @@
             {
               "audio_url": "https://www.archive.org/download/overruled_2104_librivox/overruled_00_shaw_64kb.mp3",
               "length_ms": 2409000,
+              "readers": [
+                "michaelmaggs"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/overruled_2104_librivox/overruled_01_shaw_64kb.mp3",
               "length_ms": 3361000,
+              "readers": [
+                "michele-eaton",
+                "hamlet",
+                "aiken",
+                "michaelmaggs",
+                "qthemusic123"
+              ],
+              "section_number": 1,
               "start_ms": 2409000,
               "title": "Final Act"
             }
@@ -1886,7 +1898,11 @@
           "cover_url": "https://archive.org/download/overruled_2104_librivox/overruled_2104.jpg",
           "id": "michaelmaggs",
           "language": "en",
+          "librivox_genres": [
+            "Romance"
+          ],
           "librivox_id": 16228,
+          "librivox_title": "Overruled",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/overruled-by-george-bernard-shaw/",
@@ -2371,7 +2387,11 @@
           "cover_url": "https://archive.org/download/overruled_1909_librivox/overruled_1909.jpg",
           "id": "triciag",
           "language": "en",
+          "librivox_genres": [
+            "Christian Fiction"
+          ],
           "librivox_id": 3155,
+          "librivox_title": "Overruled",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/overruled-by-pansy/",

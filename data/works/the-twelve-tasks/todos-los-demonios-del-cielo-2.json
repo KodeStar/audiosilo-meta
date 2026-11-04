@@ -1951,7 +1951,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt16/todteninsel_1204.jpg",
           "id": "ramona-deininger-schnabel",
           "language": "de",
+          "librivox_genres": [
+            "Historical Fiction"
+          ],
           "librivox_id": 5752,
+          "librivox_title": "Todteninsel",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/die-todteninsel-by-richard-vos/",
@@ -2487,7 +2491,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt6/dik_trom3_1011.jpg",
           "id": "bart-de-leeuw",
           "language": "nl",
+          "librivox_genres": [
+            "Children's Fiction"
+          ],
           "librivox_id": 4936,
+          "librivox_title": "Toen Dik Trom een Jongen was",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/toen-dik-trom-een-jongen-was-by-c-joh-kieviet/",
@@ -3877,7 +3885,11 @@
           "cover_url": "https://archive.org/download/toffeehauntsaghost_2508_librivox/toffeehauntsaghost_2508.jpg",
           "id": "ben-tucker",
           "language": "en",
+          "librivox_genres": [
+            "Fantasy Fiction"
+          ],
           "librivox_id": 21846,
+          "librivox_title": "Toffee Haunts a Ghost",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/toffee-haunts-a-ghost-by-henry-farrell/",
@@ -3967,7 +3979,12 @@
           "cover_url": "https://archive.org/download/toffeetakesatrip_2403_librivox/toffee_trip_2403.jpg",
           "id": "ben-tucker",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction",
+            "Fantasy Fiction"
+          ],
           "librivox_id": 20357,
+          "librivox_title": "Toffee Takes A Trip",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/toffee-takes-a-trip-by-henry-farrell/",
@@ -8119,264 +8136,440 @@
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_00_hugo_64kb.mp3",
               "length_ms": 117000,
+              "readers": [
+                "alisson-veldhuis"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 - Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_01_hugo_64kb.mp3",
               "length_ms": 1383000,
+              "readers": [
+                "alisson-veldhuis"
+              ],
+              "section_number": 1,
               "start_ms": 117000,
               "title": "01 - Part I Book I Chapters 1-3"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_02_hugo_64kb.mp3",
               "length_ms": 1847000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 2,
               "start_ms": 1500000,
               "title": "02 - Part I Book I Chapters 4-5"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_03_hugo_64kb.mp3",
               "length_ms": 1647000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 3,
               "start_ms": 3347000,
               "title": "03 - Part I Book I Chapters 6-8"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_04_hugo_64kb.mp3",
               "length_ms": 1157000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 4,
               "start_ms": 4994000,
               "title": "04 - Part I Book II Chapters 1-4"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_05_hugo_64kb.mp3",
               "length_ms": 1387000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 5,
               "start_ms": 6151000,
               "title": "05 - Part I Book III Chapters 1-3"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_06_hugo_64kb.mp3",
               "length_ms": 1290000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 6,
               "start_ms": 7538000,
               "title": "06 - Part I Book III Chapters 4-6"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_07_hugo_64kb.mp3",
               "length_ms": 1021000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 7,
               "start_ms": 8828000,
               "title": "07 - Part I Book III Chapters 7-9"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_08_hugo_64kb.mp3",
               "length_ms": 1524000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 8,
               "start_ms": 9849000,
               "title": "08 - Part I Book III Chapters 10-13"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_09_hugo_64kb.mp3",
               "length_ms": 1135000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 9,
               "start_ms": 11373000,
               "title": "09 - Part I Book IV Chapters 1-4"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_10_hugo_64kb.mp3",
               "length_ms": 878000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 10,
               "start_ms": 12508000,
               "title": "10 - Part I Book IV Chapters 5-7"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_11_hugo_64kb.mp3",
               "length_ms": 1455000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 11,
               "start_ms": 13386000,
               "title": "11 - Part I Book V Chapters 1-2"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_12_hugo_64kb.mp3",
               "length_ms": 1453000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 12,
               "start_ms": 14841000,
               "title": "12 - Part I Book V Chapters 3-4"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_13_hugo_64kb.mp3",
               "length_ms": 1565000,
+              "readers": [
+                "alisson-veldhuis"
+              ],
+              "section_number": 13,
               "start_ms": 16294000,
               "title": "13 - Part I Book V Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_14_hugo_64kb.mp3",
               "length_ms": 1486000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 14,
               "start_ms": 17859000,
               "title": "14 - Part I Book V Chapters 6-7"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_15_hugo_64kb.mp3",
               "length_ms": 1868000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 15,
               "start_ms": 19345000,
               "title": "15 - Part I Book V Chapters 8-9"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_16_hugo_64kb.mp3",
               "length_ms": 980000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 16,
               "start_ms": 21213000,
               "title": "16 - Part I Book VI Chapters 1-2"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_17_hugo_64kb.mp3",
               "length_ms": 1007000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 17,
               "start_ms": 22193000,
               "title": "17 - Part I Book VI Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_18_hugo_64kb.mp3",
               "length_ms": 1302000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 18,
               "start_ms": 23200000,
               "title": "18 - Part I Book VI Chapters 4-5"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_19_hugo_64kb.mp3",
               "length_ms": 1328000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 19,
               "start_ms": 24502000,
               "title": "19 - Part I Book VI Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_20_hugo_64kb.mp3",
               "length_ms": 650000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 20,
               "start_ms": 25830000,
               "title": "20 - Part I Book VI Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_21_hugo_64kb.mp3",
               "length_ms": 1825000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 21,
               "start_ms": 26480000,
               "title": "21 - Part I Book VII Chapters 1-2"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_22_hugo_64kb.mp3",
               "length_ms": 1228000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 22,
               "start_ms": 28305000,
               "title": "22 - Part I Book VII Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_23_hugo_64kb.mp3",
               "length_ms": 1232000,
+              "readers": [
+                "alisson-veldhuis"
+              ],
+              "section_number": 23,
               "start_ms": 29533000,
               "title": "23 - Part II Book I Chapters 1-2"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_24_hugo_64kb.mp3",
               "length_ms": 1261000,
+              "readers": [
+                "alisson-veldhuis"
+              ],
+              "section_number": 24,
               "start_ms": 30765000,
               "title": "24 - Part II Book I Chapters 3-5"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_25_hugo_64kb.mp3",
               "length_ms": 1456000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 25,
               "start_ms": 32026000,
               "title": "25 - Part II Book I Chapters 6-7"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_26_hugo_64kb.mp3",
               "length_ms": 1521000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 26,
               "start_ms": 33482000,
               "title": "26 - Part II Book I Chapters 8-10"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_27_hugo_64kb.mp3",
               "length_ms": 1845000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 27,
               "start_ms": 35003000,
               "title": "27 - Part II Book I Chapters 11-13"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_28_hugo_64kb.mp3",
               "length_ms": 1196000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 28,
               "start_ms": 36848000,
               "title": "28 - Part II Book II Chapters 1-3"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_29_hugo_64kb.mp3",
               "length_ms": 1931000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 29,
               "start_ms": 38044000,
               "title": "29 - Part II Book II Chapters 4-5"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_30_hugo_64kb.mp3",
               "length_ms": 1414000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 30,
               "start_ms": 39975000,
               "title": "30 - Part II Book II Chapters 6-8"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_31_hugo_64kb.mp3",
               "length_ms": 1133000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 31,
               "start_ms": 41389000,
               "title": "31 - Part II Book II Chapter 9-11"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_32_hugo_64kb.mp3",
               "length_ms": 1315000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 32,
               "start_ms": 42522000,
               "title": "32 - Part II Book III Chapters 1-3"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_33_hugo_64kb.mp3",
               "length_ms": 516000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 33,
               "start_ms": 43837000,
               "title": "33 - Part II Book III Chapters 4-5"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_34_hugo_64kb.mp3",
               "length_ms": 3066000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 34,
               "start_ms": 44353000,
               "title": "34 - Part II Book III Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_35_hugo_64kb.mp3",
               "length_ms": 1841000,
+              "readers": [
+                "alisson-veldhuis"
+              ],
+              "section_number": 35,
               "start_ms": 47419000,
               "title": "35 - Part II Book IV Chapters 1-2"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_36_hugo_64kb.mp3",
               "length_ms": 922000,
+              "readers": [
+                "alisson-veldhuis"
+              ],
+              "section_number": 36,
               "start_ms": 49260000,
               "title": "36 - Part II Book IV Chapters 3-4"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_37_hugo_64kb.mp3",
               "length_ms": 1773000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 37,
               "start_ms": 50182000,
               "title": "37 - Part II Book IV Chapters 5-7"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_38_hugo_64kb.mp3",
               "length_ms": 2332000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 38,
               "start_ms": 51955000,
               "title": "38 - Part III Book I Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_39_hugo_64kb.mp3",
               "length_ms": 1235000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 39,
               "start_ms": 54287000,
               "title": "39 - Part III Book I Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_40_hugo_64kb.mp3",
               "length_ms": 1594000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 40,
               "start_ms": 55522000,
               "title": "40 - Part III Book II Chapters 1-2"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_41_hugo_64kb.mp3",
               "length_ms": 1455000,
+              "readers": [
+                "paul-adams"
+              ],
+              "section_number": 41,
               "start_ms": 57116000,
               "title": "41 - Part III Book III Chapters 1-2"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_42_hugo_64kb.mp3",
               "length_ms": 1130000,
+              "readers": [
+                "alisson-veldhuis"
+              ],
+              "section_number": 42,
               "start_ms": 58571000,
               "title": "42 - Part III Book III Chapters 3-4"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_1011_librivox/toilersofthesea_43_hugo_64kb.mp3",
               "length_ms": 1261000,
+              "readers": [
+                "alisson-veldhuis"
+              ],
+              "section_number": 43,
               "start_ms": 59701000,
               "title": "43 - Part III Book III Chapter 5"
             }
@@ -8385,7 +8578,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt6/Toilers_of_the_Sea_1110.jpg",
           "id": "alisson-veldhuis",
           "language": "en",
+          "librivox_genres": [
+            "Nautical & Marine Fiction",
+            "Romance"
+          ],
           "librivox_id": 4622,
+          "librivox_title": "Toilers of the Sea",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/toilers-of-the-sea-by-victor-hugo/",
@@ -8415,591 +8613,701 @@
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_00_hugo_64kb.mp3",
               "length_ms": 137000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Volume I - Dedication & Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_01_hugo_64kb.mp3",
               "length_ms": 290000,
+              "section_number": 1,
               "start_ms": 137000,
               "title": "Book First - What a Bad Reputation is Composed of - Chapter I - A Word Written on a Blank Page"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_02_hugo_64kb.mp3",
               "length_ms": 667000,
+              "section_number": 2,
               "start_ms": 427000,
               "title": "Chaptef II - The Bû de la Rue"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_03_hugo_64kb.mp3",
               "length_ms": 491000,
+              "section_number": 3,
               "start_ms": 1094000,
               "title": "Chapter III - For your Wife when you Marry"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_04_hugo_64kb.mp3",
               "length_ms": 1252000,
+              "section_number": 4,
               "start_ms": 1585000,
               "title": "Chapter IV - Unpopularity"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_05_hugo_64kb.mp3",
               "length_ms": 438000,
+              "section_number": 5,
               "start_ms": 2837000,
               "title": "Chapter V - Other Suspicious Things about Gilliatt"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_06_hugo_64kb.mp3",
               "length_ms": 741000,
+              "section_number": 6,
               "start_ms": 3275000,
               "title": "Chapter VI - The Paunch Boat"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_07_hugo_64kb.mp3",
               "length_ms": 439000,
+              "section_number": 7,
               "start_ms": 4016000,
               "title": "Chapter VII - For a Haunted House, a Visionary Inhabitant"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_08_hugo_64kb.mp3",
               "length_ms": 385000,
+              "section_number": 8,
               "start_ms": 4455000,
               "title": "Chapter VIII - The Chair of Gild-Holm-'Ur"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_09_hugo_64kb.mp3",
               "length_ms": 344000,
+              "section_number": 9,
               "start_ms": 4840000,
               "title": "Book Second - Mess Lethierry - Chapter I - A Restless Life and a Quiet Conscience"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_10_hugo_64kb.mp3",
               "length_ms": 281000,
+              "section_number": 10,
               "start_ms": 5184000,
               "title": "Chapter II - A Taste which he had"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_11_hugo_64kb.mp3",
               "length_ms": 375000,
+              "section_number": 11,
               "start_ms": 5465000,
               "title": "Chapter III - The Ancient Dialect of the Sea"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_12_hugo_64kb.mp3",
               "length_ms": 222000,
+              "section_number": 12,
               "start_ms": 5840000,
               "title": "Chapter IV - One is Vulnerable through what one Loves"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_13_hugo_64kb.mp3",
               "length_ms": 504000,
+              "section_number": 13,
               "start_ms": 6062000,
               "title": "Book Third - Durande and Déruchette - Chapter I - Chatter and Smoke"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_14_hugo_64kb.mp3",
               "length_ms": 305000,
+              "section_number": 14,
               "start_ms": 6566000,
               "title": "Chapter II - The Eternal History of Utopia"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_15_hugo_64kb.mp3",
               "length_ms": 571000,
+              "section_number": 15,
               "start_ms": 6871000,
               "title": "Chapter III - Rantaine"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_16_hugo_64kb.mp3",
               "length_ms": 342000,
+              "section_number": 16,
               "start_ms": 7442000,
               "title": "Chapter IV - Continuation of the History of Utopia"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_17_hugo_64kb.mp3",
               "length_ms": 719000,
+              "section_number": 17,
               "start_ms": 7784000,
               "title": "Chapter V - The Devil-Boat"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_18_hugo_64kb.mp3",
               "length_ms": 317000,
+              "section_number": 18,
               "start_ms": 8503000,
               "title": "Chapter VI - Entrance of Lethierry into Glory"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_19_hugo_64kb.mp3",
               "length_ms": 333000,
+              "section_number": 19,
               "start_ms": 8820000,
               "title": "Chapter VII - The same Godfather and the same Protectress"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_20_hugo_64kb.mp3",
               "length_ms": 505000,
+              "section_number": 20,
               "start_ms": 9153000,
               "title": "Chapter VIII - \"Bonny Dundee\""
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_21_hugo_64kb.mp3",
               "length_ms": 180000,
+              "section_number": 21,
               "start_ms": 9658000,
               "title": "Chapter IX - The Man who had seen through Rantaine"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_22_hugo_64kb.mp3",
               "length_ms": 420000,
+              "section_number": 22,
               "start_ms": 9838000,
               "title": "Chapter X - Tales of Long Voyages"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_23_hugo_64kb.mp3",
               "length_ms": 192000,
+              "section_number": 23,
               "start_ms": 10258000,
               "title": "Chapter XI - A Glance at Possible Husbands"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_24_hugo_64kb.mp3",
               "length_ms": 703000,
+              "section_number": 24,
               "start_ms": 10450000,
               "title": "Chapter XII - An Exception in the Character of Lethierry"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_25_hugo_64kb.mp3",
               "length_ms": 213000,
+              "section_number": 25,
               "start_ms": 11153000,
               "title": "Chapter XIII - Heedlessness adds New Grace to Beauty"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_26_hugo_64kb.mp3",
               "length_ms": 385000,
+              "section_number": 26,
               "start_ms": 11366000,
               "title": "Book Fourth - The Bagpipe - Chaprer I - The First Gleams of Dawn, or a Conflagration"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_27_hugo_64kb.mp3",
               "length_ms": 359000,
+              "section_number": 27,
               "start_ms": 11751000,
               "title": "Chapter II - An Entrance, Step by Step, into the Unknown"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_28_hugo_64kb.mp3",
               "length_ms": 195000,
+              "section_number": 28,
               "start_ms": 12110000,
               "title": "Chapter III - The Air \"Bonny Dundee\" finds an Echo on the Hill"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_29_hugo_64kb.mp3",
               "length_ms": 320000,
+              "section_number": 29,
               "start_ms": 12305000,
               "title": "Chapter IV - A Nocturnal Serenade"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_30_hugo_64kb.mp3",
               "length_ms": 209000,
+              "section_number": 30,
               "start_ms": 12625000,
               "title": "Chapter V - Well-Merited Success is always Hated"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_31_hugo_64kb.mp3",
               "length_ms": 339000,
+              "section_number": 31,
               "start_ms": 12834000,
               "title": "Chapter VI - The Luck of a Shipwrecked Crew in meeting a Sloop"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_32_hugo_64kb.mp3",
               "length_ms": 1107000,
+              "section_number": 32,
               "start_ms": 13173000,
               "title": "Book Fifth - The Revolver - Chapter I - The Conversation at the Jean Tavern"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_33_hugo_64kb.mp3",
               "length_ms": 358000,
+              "section_number": 33,
               "start_ms": 14280000,
               "title": "Chapter II - Clubin perceives some one"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_34_hugo_64kb.mp3",
               "length_ms": 409000,
+              "section_number": 34,
               "start_ms": 14638000,
               "title": "Chapter III - Clubin Carries Away and does not Bring Back"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_35_hugo_64kb.mp3",
               "length_ms": 1087000,
+              "section_number": 35,
               "start_ms": 15047000,
               "title": "Chapter IV - Plainmont"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_36_hugo_64kb.mp3",
               "length_ms": 1327000,
+              "section_number": 36,
               "start_ms": 16134000,
               "title": "Chapter V - The Bird-Nesters"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_37_hugo_64kb.mp3",
               "length_ms": 1037000,
+              "section_number": 37,
               "start_ms": 17461000,
               "title": "Chapter VI - The Jacressarde"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_38_hugo_64kb.mp3",
               "length_ms": 449000,
+              "section_number": 38,
               "start_ms": 18498000,
               "title": "Chapter VII - Nocturnal Purchasers and a Shady Vendor"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_39_hugo_64kb.mp3",
               "length_ms": 1359000,
+              "section_number": 39,
               "start_ms": 18947000,
               "title": "Chapter VIII - The Red Ball and the Black Ball Carom"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_40_hugo_64kb.mp3",
               "length_ms": 611000,
+              "section_number": 40,
               "start_ms": 20306000,
               "title": "Chapter IX - Information Useful to Persons who await or who fear Letters from Across the Sea"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_41_hugo_64kb.mp3",
               "length_ms": 493000,
+              "section_number": 41,
               "start_ms": 20917000,
               "title": "Book Sixth - The Drunken Helmsman and the Sober Captain - Chapter I - The Douvres Rocks"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_42_hugo_64kb.mp3",
               "length_ms": 522000,
+              "section_number": 42,
               "start_ms": 21410000,
               "title": "Chapter II - Unexpected Brandy"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_43_hugo_64kb.mp3",
               "length_ms": 1040000,
+              "section_number": 43,
               "start_ms": 21932000,
               "title": "Chapter III - Interrupted Conversations"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_44_hugo_64kb.mp3",
               "length_ms": 779000,
+              "section_number": 44,
               "start_ms": 22972000,
               "title": "Chapter IV - In which Captain Clubin displays all his Qualities"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_45_hugo_64kb.mp3",
               "length_ms": 575000,
+              "section_number": 45,
               "start_ms": 23751000,
               "title": "Chapter V - Clubin puts the Finishing Touch to Admiration"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_46_hugo_64kb.mp3",
               "length_ms": 1259000,
+              "section_number": 46,
               "start_ms": 24326000,
               "title": "Chapter VI - The Interior of an Abyss Illuminated"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_47_hugo_64kb.mp3",
               "length_ms": 586000,
+              "section_number": 47,
               "start_ms": 25585000,
               "title": "Chapter VII - The Unexpected intervenes"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_48_hugo_64kb.mp3",
               "length_ms": 1167000,
+              "section_number": 48,
               "start_ms": 26171000,
               "title": "Book Seventh - The Imprudence of asking Questions of a. Book - Chapter I - The Pearl at the Bottom of the Precipice"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_49_hugo_64kb.mp3",
               "length_ms": 679000,
+              "section_number": 49,
               "start_ms": 27338000,
               "title": "Chapter II - Much Astonishment on the Western Coast"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_50_hugo_64kb.mp3",
               "length_ms": 1239000,
+              "section_number": 50,
               "start_ms": 28017000,
               "title": "Chapter III - Tempt not the Bible"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_51_hugo_64kb.mp3",
               "length_ms": 804000,
+              "section_number": 51,
               "start_ms": 29256000,
               "title": "Volume II - Part Two - Gilliatt The Crafty - Book First - The Reef - Chapter I - The Place which it is Hard to Reach and Difficult to Leave"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_52_hugo_64kb.mp3",
               "length_ms": 440000,
+              "section_number": 52,
               "start_ms": 30060000,
               "title": "Chapter II - The Thoroughness of the Disaster"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_53_hugo_64kb.mp3",
               "length_ms": 234000,
+              "section_number": 53,
               "start_ms": 30500000,
               "title": "Chapter III - Sound but not Safe"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_54_hugo_64kb.mp3",
               "length_ms": 439000,
+              "section_number": 54,
               "start_ms": 30734000,
               "title": "Chapter IV - A Preliminary Exmination"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_55_hugo_64kb.mp3",
               "length_ms": 622000,
+              "section_number": 55,
               "start_ms": 31173000,
               "title": "Chapter V - A Word as to the Secret Cooperation of the Elements"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_56_hugo_64kb.mp3",
               "length_ms": 354000,
+              "section_number": 56,
               "start_ms": 31795000,
               "title": "Chapter VI - A Stable for the Horse"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_57_hugo_64kb.mp3",
               "length_ms": 1100000,
+              "section_number": 57,
               "start_ms": 32149000,
               "title": "Chapter VII - A Chamber for the Traveller"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_58_hugo_64kb.mp3",
               "length_ms": 336000,
+              "section_number": 58,
               "start_ms": 33249000,
               "title": "Chapter VIII - Importunaeque Volucres"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_59_hugo_64kb.mp3",
               "length_ms": 481000,
+              "section_number": 59,
               "start_ms": 33585000,
               "title": "Chapter IX - The Reef, and the Manner of Using it"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_60_hugo_64kb.mp3",
               "length_ms": 644000,
+              "section_number": 60,
               "start_ms": 34066000,
               "title": "Chapter X - The Forge"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_61_hugo_64kb.mp3",
               "length_ms": 620000,
+              "section_number": 61,
               "start_ms": 34710000,
               "title": "Chapter XI - A Discovery"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_62_hugo_64kb.mp3",
               "length_ms": 333000,
+              "section_number": 62,
               "start_ms": 35330000,
               "title": "Chapter XII - The Interior of a Submarine Edifice"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_63_hugo_64kb.mp3",
               "length_ms": 893000,
+              "section_number": 63,
               "start_ms": 35663000,
               "title": "Chapter XIII - What one sees there, and what one gets a Glimpse of"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_64_hugo_64kb.mp3",
               "length_ms": 423000,
+              "section_number": 64,
               "start_ms": 36556000,
               "title": "Book Second - Labor - Chapter I - The Resources of one who lacks Everything"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_65_hugo_64kb.mp3",
               "length_ms": 282000,
+              "section_number": 65,
               "start_ms": 36979000,
               "title": "Chapter II - How Shakespeare and Aeschylus can meet"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_66_hugo_64kb.mp3",
               "length_ms": 549000,
+              "section_number": 66,
               "start_ms": 37261000,
               "title": "Chapter III - Gilliatt's Masterpiece comes to the succor of Lethierry's Masterpiece"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_67_hugo_64kb.mp3",
               "length_ms": 942000,
+              "section_number": 67,
               "start_ms": 37810000,
               "title": "Chapter IV - Sub Re"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_68_hugo_64kb.mp3",
               "length_ms": 1010000,
+              "section_number": 68,
               "start_ms": 38752000,
               "title": "Chapter V - Sub Umbra"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_69_hugo_64kb.mp3",
               "length_ms": 391000,
+              "section_number": 69,
               "start_ms": 39762000,
               "title": "Chapter VI - Gilliatt brings the Paunch into Position"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_70_hugo_64kb.mp3",
               "length_ms": 504000,
+              "section_number": 70,
               "start_ms": 40153000,
               "title": "Chapter VII - A Danger at Once"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_71_hugo_64kb.mp3",
               "length_ms": 528000,
+              "section_number": 71,
               "start_ms": 40657000,
               "title": "Chapter VIII - Change rather than Conclusion"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_72_hugo_64kb.mp3",
               "length_ms": 244000,
+              "section_number": 72,
               "start_ms": 41185000,
               "title": "Chapter IX - Success snatched away as soon as granted"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_73_hugo_64kb.mp3",
               "length_ms": 461000,
+              "section_number": 73,
               "start_ms": 41429000,
               "title": "Chapter X - The Warnings of the Sea"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_74_hugo_64kb.mp3",
               "length_ms": 426000,
+              "section_number": 74,
               "start_ms": 41890000,
               "title": "Chapter XI - A Word to the Wise is Sufficient"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_75_hugo_64kb.mp3",
               "length_ms": 253000,
+              "section_number": 75,
               "start_ms": 42316000,
               "title": "Book Third - The Battle - Chapter I - Extremes Meet"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_76_hugo_64kb.mp3",
               "length_ms": 557000,
+              "section_number": 76,
               "start_ms": 42569000,
               "title": "Chapter II - Sea Breezes"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_77_hugo_64kb.mp3",
               "length_ms": 531000,
+              "section_number": 77,
               "start_ms": 43126000,
               "title": "Chapter III - Explanation of the Noise to which Gilliatt Listened"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_78_hugo_64kb.mp3",
               "length_ms": 367000,
+              "section_number": 78,
               "start_ms": 43657000,
               "title": "Chapter IV - Turba, Turma"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_79_hugo_64kb.mp3",
               "length_ms": 152000,
+              "section_number": 79,
               "start_ms": 44024000,
               "title": "Chapter V - Gilliatt has his Choice"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_80_hugo_64kb.mp3",
               "length_ms": 3080000,
+              "section_number": 80,
               "start_ms": 44176000,
               "title": "Chapter VI - The Combat"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_81_hugo_64kb.mp3",
               "length_ms": 697000,
+              "section_number": 81,
               "start_ms": 47256000,
               "title": "Book Four - The Pitfalls of the Obstacle - Chapter I - A Man who is Hungry is not the only Hungry one"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_82_hugo_64kb.mp3",
               "length_ms": 1249000,
+              "section_number": 82,
               "start_ms": 47953000,
               "title": "Chapter II - The Monster"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_83_hugo_64kb.mp3",
               "length_ms": 433000,
+              "section_number": 83,
               "start_ms": 49202000,
               "title": "Chapter III - Another Form of Combat in the Gulf"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_84_hugo_64kb.mp3",
               "length_ms": 588000,
+              "section_number": 84,
               "start_ms": 49635000,
               "title": "Chapter IV - Nothing is Hidden and Nothing is Lost"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_85_hugo_64kb.mp3",
               "length_ms": 521000,
+              "section_number": 85,
               "start_ms": 50223000,
               "title": "Chapter V - In the Interval which Separates Six Inches from Two Feet there is Room to Lodge Death"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_86_hugo_64kb.mp3",
               "length_ms": 1016000,
+              "section_number": 86,
               "start_ms": 50744000,
               "title": "Chapter VI - De Profundis ad Altum"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_87_hugo_64kb.mp3",
               "length_ms": 288000,
+              "section_number": 87,
               "start_ms": 51760000,
               "title": "Chapter VII - There is an Ear in the Unknown"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_88_hugo_64kb.mp3",
               "length_ms": 2265000,
+              "section_number": 88,
               "start_ms": 52048000,
               "title": "Part Third - Déruchette - Book First - Night and Morn - Chapter I - The Bell of the Port"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_89_hugo_64kb.mp3",
               "length_ms": 1275000,
+              "section_number": 89,
               "start_ms": 54313000,
               "title": "Chapter II - Again the Port Bell"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_90_hugo_64kb.mp3",
               "length_ms": 1481000,
+              "section_number": 90,
               "start_ms": 55588000,
               "title": "Book Second - Gratitude in Full Despotism - Chapter I - Joy Surrounded by Anguish"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_91_hugo_64kb.mp3",
               "length_ms": 314000,
+              "section_number": 91,
               "start_ms": 57069000,
               "title": "Chapter II - The Leather Trunk"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_92_hugo_64kb.mp3",
               "length_ms": 451000,
+              "section_number": 92,
               "start_ms": 57383000,
               "title": "Book Third - Departure of the \"Cashmere\" - Chapter I - The Havelet quite close to the Church"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_93_hugo_64kb.mp3",
               "length_ms": 1105000,
+              "section_number": 93,
               "start_ms": 57834000,
               "title": "Chapter II - Despairs in Presence of Each Other"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_94_hugo_64kb.mp3",
               "length_ms": 733000,
+              "section_number": 94,
               "start_ms": 58939000,
               "title": "Chapter III - The Foresight of Abnegation"
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_95_hugo_64kb.mp3",
               "length_ms": 514000,
+              "section_number": 95,
               "start_ms": 59672000,
               "title": "Chapter IV - \"For your Wife when you Marry\""
             },
             {
               "audio_url": "https://www.archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilersofthesea2_96_hugo_64kb.mp3",
               "length_ms": 1307000,
+              "section_number": 96,
               "start_ms": 60186000,
               "title": "Chapter V - The Great Tomb"
             }
           ],
           "copyright_year": 1888,
           "cover_url": "https://archive.org/download/toilers_of_the_sea_ver2_2208_librivox/toilers_sea2_2208.jpg",
+          "credits": [
+            {
+              "person": "isabel-florence-hapgood",
+              "role": "translator"
+            }
+          ],
           "id": "john-greenman",
           "language": "en",
+          "librivox_genres": [
+            "Culture & Heritage Fiction",
+            "Nautical & Marine Fiction",
+            "Romance",
+            "Published 1800 -1900"
+          ],
           "librivox_id": 17882,
+          "librivox_title": "Toilers of the Sea (Version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/toilers-of-the-sea-ver2-by-victor-hugo/",
@@ -9756,90 +10064,105 @@
             {
               "audio_url": "https://www.archive.org/download/token_for_children_2301_librivox/tokenforchildren_00_janeway_64kb.mp3",
               "length_ms": 271000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "To all Parents, School-Masters and School-Mistresses, or any who have any hand in the education of children"
             },
             {
               "audio_url": "https://www.archive.org/download/token_for_children_2301_librivox/tokenforchildren_01_janeway_64kb.mp3",
               "length_ms": 855000,
+              "section_number": 1,
               "start_ms": 271000,
               "title": "EXAMPLE I. Of one eminently converted, between eight and nine years old, with an account of her life and death"
             },
             {
               "audio_url": "https://www.archive.org/download/token_for_children_2301_librivox/tokenforchildren_02_janeway_64kb.mp3",
               "length_ms": 352000,
+              "section_number": 2,
               "start_ms": 1126000,
               "title": "EXAMPLE II. Of a child that was admirably affected with the things of God, when he was between two and three years old; with a brief account of his life and death"
             },
             {
               "audio_url": "https://www.archive.org/download/token_for_children_2301_librivox/tokenforchildren_03_janeway_64kb.mp3",
               "length_ms": 565000,
+              "section_number": 3,
               "start_ms": 1478000,
               "title": "EXAMPLE III. Of a little girl that was wrought upon when she was between four and five years old, with some account of her holy life and triumphant death"
             },
             {
               "audio_url": "https://www.archive.org/download/token_for_children_2301_librivox/tokenforchildren_04_janeway_64kb.mp3",
               "length_ms": 183000,
+              "section_number": 4,
               "start_ms": 2043000,
               "title": "EXAMPLE IV. Of a child that began to look towards heaven when she was about four years old, with some observable passages in her life and at her death"
             },
             {
               "audio_url": "https://www.archive.org/download/token_for_children_2301_librivox/tokenforchildren_05_janeway_64kb.mp3",
               "length_ms": 306000,
+              "section_number": 5,
               "start_ms": 2226000,
               "title": "EXAMPLE V. Of the pious life and joyful death of a child, which died when he was about twelve years old"
             },
             {
               "audio_url": "https://www.archive.org/download/token_for_children_2301_librivox/tokenforchildren_06_janeway_64kb.mp3",
               "length_ms": 263000,
+              "section_number": 6,
               "start_ms": 2532000,
               "title": "EXAMPLE VI. Of a poor child that was awakened when he was about five years old"
             },
             {
               "audio_url": "https://www.archive.org/download/token_for_children_2301_librivox/tokenforchildren_07_janeway_64kb.mp3",
               "length_ms": 777000,
+              "section_number": 7,
               "start_ms": 2795000,
               "title": "EXAMPLE VII. Of a notorious wicked child, that was taken up from begging, and admirably converted; with an account of his holy life and joyful death, when he was nine years old"
             },
             {
               "audio_url": "https://www.archive.org/download/token_for_children_2301_librivox/tokenforchildren_08_janeway_64kb.mp3",
               "length_ms": 627000,
+              "section_number": 8,
               "start_ms": 3572000,
               "title": "EXAMPLE VIII. Of a child that was very serious at four years old, with an account of his comfortable death when he was twelve years and three weeks old"
             },
             {
               "audio_url": "https://www.archive.org/download/token_for_children_2301_librivox/tokenforchildren_09_janeway_64kb.mp3",
               "length_ms": 236000,
+              "section_number": 9,
               "start_ms": 4199000,
               "title": "EXAMPLE IX. Of a child that was very eminent when she was between five and six years old, with some memorable passages of her life"
             },
             {
               "audio_url": "https://www.archive.org/download/token_for_children_2301_librivox/tokenforchildren_10_janeway_64kb.mp3",
               "length_ms": 215000,
+              "section_number": 10,
               "start_ms": 4435000,
               "title": "EXAMPLE X. Of a child that was awakened when she was between seven and eight years old, with some account of her last hours, and triumphant death"
             },
             {
               "audio_url": "https://www.archive.org/download/token_for_children_2301_librivox/tokenforchildren_11_janeway_64kb.mp3",
               "length_ms": 1939000,
+              "section_number": 11,
               "start_ms": 4650000,
               "title": "EXAMPLE XI. Of a child that was greatly affected with the things of God, when she was very young; with an exact account of her admirable carriage upon her death-bed."
             },
             {
               "audio_url": "https://www.archive.org/download/token_for_children_2301_librivox/tokenforchildren_12_janeway_64kb.mp3",
               "length_ms": 197000,
+              "section_number": 12,
               "start_ms": 6589000,
               "title": "EXAMPLE XII. Of the excellent carriage of a child upon his death-bed, when but seven years old"
             },
             {
               "audio_url": "https://www.archive.org/download/token_for_children_2301_librivox/tokenforchildren_13_janeway_64kb.mp3",
               "length_ms": 1008000,
+              "section_number": 13,
               "start_ms": 6786000,
               "title": "EXAMPLE XIII. Of one that began to look towards heaven, when he was very young; with many eminent passages of his life, and joyful death, when he was eleven years and three quarters old."
             },
             {
               "audio_url": "https://www.archive.org/download/token_for_children_2301_librivox/tokenforchildren_14_janeway_64kb.mp3",
               "length_ms": 258000,
+              "section_number": 14,
               "start_ms": 7794000,
               "title": "A Narrative of sundry remarkable  passages concerning Mr. John Langham, son of Sir James Langham, Knight and Baronet"
             }
@@ -9848,7 +10171,11 @@
           "cover_url": "https://archive.org/download/token_for_children_2301_librivox/tokenforchildren_2301.jpg",
           "id": "inthedesert",
           "language": "en",
+          "librivox_genres": [
+            "Christianity - Biographies"
+          ],
           "librivox_id": 18728,
+          "librivox_title": "Token for Children",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-token-for-children-by-james-janeway/",

@@ -3129,72 +3129,108 @@
             {
               "audio_url": "https://www.archive.org/download/toto_thebustlingbeaver_2008_librivox/totothebustlingbeaver_01_barnum_64kb.mp3",
               "length_ms": 1030000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
               "start_ms": 0,
               "title": "Toto Helps Millie"
             },
             {
               "audio_url": "https://www.archive.org/download/toto_thebustlingbeaver_2008_librivox/totothebustlingbeaver_02_barnum_64kb.mp3",
               "length_ms": 599000,
+              "readers": [
+                "nan-dodge"
+              ],
               "start_ms": 1030000,
               "title": "Toto Learns to Gnaw"
             },
             {
               "audio_url": "https://www.archive.org/download/toto_thebustlingbeaver_2008_librivox/totothebustlingbeaver_03_barnum_64kb.mp3",
               "length_ms": 889000,
+              "readers": [
+                "tommy-hersant"
+              ],
               "start_ms": 1629000,
               "title": "Toto Meets Don"
             },
             {
               "audio_url": "https://www.archive.org/download/toto_thebustlingbeaver_2008_librivox/totothebustlingbeaver_04_barnum_64kb.mp3",
               "length_ms": 856000,
+              "readers": [
+                "tommy-hersant"
+              ],
               "start_ms": 2518000,
               "title": "Toto and the Tramps"
             },
             {
               "audio_url": "https://www.archive.org/download/toto_thebustlingbeaver_2008_librivox/totothebustlingbeaver_05_barnum_64kb.mp3",
               "length_ms": 715000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 3374000,
               "title": "Toto Sees Something Queer"
             },
             {
               "audio_url": "https://www.archive.org/download/toto_thebustlingbeaver_2008_librivox/totothebustlingbeaver_06_barnum_64kb.mp3",
               "length_ms": 703000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 4089000,
               "title": "Toto and the Burglars"
             },
             {
               "audio_url": "https://www.archive.org/download/toto_thebustlingbeaver_2008_librivox/totothebustlingbeaver_07_barnum_64kb.mp3",
               "length_ms": 550000,
+              "readers": [
+                "lily"
+              ],
               "start_ms": 4792000,
               "title": "Toto and the Boy"
             },
             {
               "audio_url": "https://www.archive.org/download/toto_thebustlingbeaver_2008_librivox/totothebustlingbeaver_08_barnum_64kb.mp3",
               "length_ms": 724000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 5342000,
               "title": "Toto Meets Blackie"
             },
             {
               "audio_url": "https://www.archive.org/download/toto_thebustlingbeaver_2008_librivox/totothebustlingbeaver_09_barnum_64kb.mp3",
               "length_ms": 578000,
+              "readers": [
+                "mleigh"
+              ],
               "start_ms": 6066000,
               "title": "Toto in a Trap"
             },
             {
               "audio_url": "https://www.archive.org/download/toto_thebustlingbeaver_2008_librivox/totothebustlingbeaver_10_barnum_64kb.mp3",
               "length_ms": 537000,
+              "readers": [
+                "mleigh"
+              ],
               "start_ms": 6644000,
               "title": "Toto on a Boat"
             },
             {
               "audio_url": "https://www.archive.org/download/toto_thebustlingbeaver_2008_librivox/totothebustlingbeaver_11_barnum_64kb.mp3",
               "length_ms": 1022000,
+              "readers": [
+                "tommy-hersant"
+              ],
               "start_ms": 7181000,
               "title": "Toto Gets Home Again"
             },
             {
               "audio_url": "https://www.archive.org/download/toto_thebustlingbeaver_2008_librivox/totothebustlingbeaver_12_barnum_64kb.mp3",
               "length_ms": 1107000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
               "start_ms": 8203000,
               "title": "Toto in a Storm"
             }
@@ -3202,7 +3238,11 @@
           "cover_url": "https://archive.org/download/toto_thebustlingbeaver_2008_librivox/Toto_2008.jpg",
           "id": "lynda-marie-neilson",
           "language": "en",
+          "librivox_genres": [
+            "Animals & Nature"
+          ],
           "librivox_id": 15507,
+          "librivox_title": "Toto, the Bustling Beaver",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/toto-the-bustling-beaver-by-richard-barnum/",
@@ -3362,7 +3402,11 @@
           "cover_url": "https://archive.org/download/totos_merry_winter_js_1508_librivox/totosmerrywinter_1508.jpg",
           "id": "jude-somers",
           "language": "en",
+          "librivox_genres": [
+            "Animals & Nature"
+          ],
           "librivox_id": 9536,
+          "librivox_title": "Toto's Merry Winter",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/totos-merry-winter-by-laura-e-richards/",
@@ -3757,7 +3801,13 @@
           "cover_url": "https://archive.org/download/totum_revolutum_2006_librivox/totum_revolutum_poesias_t_guerrero_2006.jpg",
           "id": "kendalrigans",
           "language": "es",
+          "librivox_genres": [
+            "Poetry",
+            "Anthologies",
+            "Single author"
+          ],
           "librivox_id": 15154,
+          "librivox_title": "Totum revolutum: Poesías de Teodoro Guerrero",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/totum-revolutum-poesias-de-teodoro-guerrero/",
@@ -4381,24 +4431,69 @@
             {
               "audio_url": "https://www.archive.org/download/touchandgo_2109_librivox/touchandgo_00_lawrence_64kb.mp3",
               "length_ms": 996000,
+              "readers": [
+                "michele-eaton"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/touchandgo_2109_librivox/touchandgo_01_lawrence_64kb.mp3",
               "length_ms": 2651000,
+              "readers": [
+                "michele-eaton",
+                "alan-mapstone",
+                "khand",
+                "wayne-cooke",
+                "jenn-broda",
+                "scarbo",
+                "shreya-sethi",
+                "andrew-james",
+                "diane-castillo",
+                "andrew-gaunce",
+                "kathi-m-walsheck"
+              ],
+              "section_number": 1,
               "start_ms": 996000,
               "title": "Act 1 final"
             },
             {
               "audio_url": "https://www.archive.org/download/touchandgo_2109_librivox/touchandgo_02_lawrence_64kb.mp3",
               "length_ms": 2994000,
+              "readers": [
+                "alan-mapstone",
+                "khand",
+                "david-purdy",
+                "jenn-broda",
+                "scarbo",
+                "shreya-sethi",
+                "andrew-james",
+                "diane-castillo",
+                "lily",
+                "andrew-gaunce"
+              ],
+              "section_number": 2,
               "start_ms": 3647000,
               "title": "Act 2 final"
             },
             {
               "audio_url": "https://www.archive.org/download/touchandgo_2109_librivox/touchandgo_03_lawrence_64kb.mp3",
               "length_ms": 3122000,
+              "readers": [
+                "michele-eaton",
+                "chuck-williamson",
+                "alan-mapstone",
+                "khand",
+                "david-purdy",
+                "wayne-cooke",
+                "jenn-broda",
+                "scarbo",
+                "andrew-gaunce",
+                "kathi-m-walsheck",
+                "zach-hoyt"
+              ],
+              "section_number": 3,
               "start_ms": 6641000,
               "title": "Act 3 final"
             }
@@ -4407,7 +4502,11 @@
           "cover_url": "https://archive.org/download/touchandgo_2109_librivox/touch_go_2109.jpg",
           "id": "michele-eaton",
           "language": "en",
+          "librivox_genres": [
+            "Drama"
+          ],
           "librivox_id": 15453,
+          "librivox_title": "Touch and Go",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/touch-and-go-by-d-h-lawrence/",

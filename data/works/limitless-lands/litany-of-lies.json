@@ -1391,7 +1391,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt19/Literary_Lapses_1209.jpg",
           "id": "triciag",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction",
+            "Humorous Fiction",
+            "Short Stories"
+          ],
           "librivox_id": 4917,
+          "librivox_title": "Literary Lapses",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/literary-lapses-by-stephen-leacock/",
@@ -1553,84 +1559,126 @@
             {
               "audio_url": "https://www.archive.org/download/literarypilgrimages_2303_librivox/literarypilgrimages_01_packard_64kb.mp3",
               "length_ms": 1091000,
+              "readers": [
+                "owlivia"
+              ],
               "start_ms": 0,
               "title": "In Old Marshfield"
             },
             {
               "audio_url": "https://www.archive.org/download/literarypilgrimages_2303_librivox/literarypilgrimages_02_packard_64kb.mp3",
               "length_ms": 1154000,
+              "readers": [
+                "keren-smithies"
+              ],
               "start_ms": 1091000,
               "title": "At Whittier’s Birthplace"
             },
             {
               "audio_url": "https://www.archive.org/download/literarypilgrimages_2303_librivox/literarypilgrimages_03_packard_64kb.mp3",
               "length_ms": 1174000,
+              "readers": [
+                "jessica-kinsora"
+              ],
               "start_ms": 2245000,
               "title": "In Old Ponkapoag"
             },
             {
               "audio_url": "https://www.archive.org/download/literarypilgrimages_2303_librivox/literarypilgrimages_04_packard_64kb.mp3",
               "length_ms": 1225000,
+              "readers": [
+                "fred"
+              ],
               "start_ms": 3419000,
               "title": "At the Isles of Shoals"
             },
             {
               "audio_url": "https://www.archive.org/download/literarypilgrimages_2303_librivox/literarypilgrimages_05_packard_64kb.mp3",
               "length_ms": 1062000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 4644000,
               "title": "Thoreau’s Walden"
             },
             {
               "audio_url": "https://www.archive.org/download/literarypilgrimages_2303_librivox/literarypilgrimages_06_packard_64kb.mp3",
               "length_ms": 1026000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 5706000,
               "title": "On the First Trail of the Pilgrims"
             },
             {
               "audio_url": "https://www.archive.org/download/literarypilgrimages_2303_librivox/literarypilgrimages_07_packard_64kb.mp3",
               "length_ms": 1154000,
+              "readers": [
+                "alayna-kennedy"
+              ],
               "start_ms": 6732000,
               "title": "In Old Concord"
             },
             {
               "audio_url": "https://www.archive.org/download/literarypilgrimages_2303_librivox/literarypilgrimages_08_packard_64kb.mp3",
               "length_ms": 1145000,
+              "readers": [
+                "alayna-kennedy"
+              ],
               "start_ms": 7886000,
               "title": "The Old Oaken Bucket"
             },
             {
               "audio_url": "https://www.archive.org/download/literarypilgrimages_2303_librivox/literarypilgrimages_09_packard_64kb.mp3",
               "length_ms": 1242000,
+              "readers": [
+                "melissamarie"
+              ],
               "start_ms": 9031000,
               "title": "In Old Newburyport"
             },
             {
               "audio_url": "https://www.archive.org/download/literarypilgrimages_2303_librivox/literarypilgrimages_10_packard_64kb.mp3",
               "length_ms": 969000,
+              "readers": [
+                "amy-gramour"
+              ],
               "start_ms": 10273000,
               "title": "Plymouth Mayflowers"
             },
             {
               "audio_url": "https://www.archive.org/download/literarypilgrimages_2303_librivox/literarypilgrimages_11_packard_64kb.mp3",
               "length_ms": 1149000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 11242000,
               "title": "Old Salem Town"
             },
             {
               "audio_url": "https://www.archive.org/download/literarypilgrimages_2303_librivox/literarypilgrimages_12_packard_64kb.mp3",
               "length_ms": 1332000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 12391000,
               "title": "Vermont Maple Sugar"
             },
             {
               "audio_url": "https://www.archive.org/download/literarypilgrimages_2303_librivox/literarypilgrimages_13_packard_64kb.mp3",
               "length_ms": 1280000,
+              "readers": [
+                "jade-fellows"
+              ],
               "start_ms": 13723000,
               "title": "Nature’s Memorial Day"
             },
             {
               "audio_url": "https://www.archive.org/download/literarypilgrimages_2303_librivox/literarypilgrimages_14_packard_64kb.mp3",
               "length_ms": 1336000,
+              "readers": [
+                "courtney-chambard"
+              ],
               "start_ms": 15003000,
               "title": "Birds of Chocorua"
             }
@@ -1639,7 +1687,11 @@
           "cover_url": "https://archive.org/download/literarypilgrimages_2303_librivox/literarypilgrimages_2303.jpg",
           "id": "owlivia",
           "language": "en",
+          "librivox_genres": [
+            "Nature"
+          ],
           "librivox_id": 18729,
+          "librivox_title": "Literary Pilgrimages of a Naturalist",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/literary-pilgrimages-of-a-naturalist-by-winthrop-packard/",
@@ -1696,108 +1748,162 @@
             {
               "audio_url": "https://www.archive.org/download/literary_sense_1209_librivox/literarysense_01_nesbit_64kb.mp3",
               "length_ms": 692000,
+              "readers": [
+                "jean-bascom"
+              ],
               "start_ms": 0,
               "title": "01 The Unfaithful Lover"
             },
             {
               "audio_url": "https://www.archive.org/download/literary_sense_1209_librivox/literarysense_02_nesbit_64kb.mp3",
               "length_ms": 987000,
+              "readers": [
+                "jean-bascom"
+              ],
               "start_ms": 692000,
               "title": "02 Rounding Off A Scene"
             },
             {
               "audio_url": "https://www.archive.org/download/literary_sense_1209_librivox/literarysense_03_nesbit_64kb.mp3",
               "length_ms": 1187000,
+              "readers": [
+                "jean-bascom"
+              ],
               "start_ms": 1679000,
               "title": "03 The Obvious"
             },
             {
               "audio_url": "https://www.archive.org/download/literary_sense_1209_librivox/literarysense_04_nesbit_64kb.mp3",
               "length_ms": 989000,
+              "readers": [
+                "jean-bascom"
+              ],
               "start_ms": 2866000,
               "title": "04 The Lie Absolute"
             },
             {
               "audio_url": "https://www.archive.org/download/literary_sense_1209_librivox/literarysense_05_nesbit_64kb.mp3",
               "length_ms": 738000,
+              "readers": [
+                "jean-bascom"
+              ],
               "start_ms": 3855000,
               "title": "05 The Girl With The Guitar"
             },
             {
               "audio_url": "https://www.archive.org/download/literary_sense_1209_librivox/literarysense_06_nesbit_64kb.mp3",
               "length_ms": 768000,
+              "readers": [
+                "petra"
+              ],
               "start_ms": 4593000,
               "title": "06 The Man With The Boots"
             },
             {
               "audio_url": "https://www.archive.org/download/literary_sense_1209_librivox/literarysense_07_nesbit_64kb.mp3",
               "length_ms": 1047000,
+              "readers": [
+                "alex-lau"
+              ],
               "start_ms": 5361000,
               "title": "07 The Second Best"
             },
             {
               "audio_url": "https://www.archive.org/download/literary_sense_1209_librivox/literarysense_08_nesbit_64kb.mp3",
               "length_ms": 1259000,
+              "readers": [
+                "alex-lau"
+              ],
               "start_ms": 6408000,
               "title": "08 The Holiday"
             },
             {
               "audio_url": "https://www.archive.org/download/literary_sense_1209_librivox/literarysense_09_nesbit_64kb.mp3",
               "length_ms": 1822000,
+              "readers": [
+                "sonali-punja"
+              ],
               "start_ms": 7667000,
               "title": "09 The Force Of Habit"
             },
             {
               "audio_url": "https://www.archive.org/download/literary_sense_1209_librivox/literarysense_10_nesbit_64kb.mp3",
               "length_ms": 1303000,
+              "readers": [
+                "sonali-punja"
+              ],
               "start_ms": 9489000,
               "title": "10 The Brute"
             },
             {
               "audio_url": "https://www.archive.org/download/literary_sense_1209_librivox/literarysense_11_nesbit_64kb.mp3",
               "length_ms": 1589000,
+              "readers": [
+                "alex-lau"
+              ],
               "start_ms": 10792000,
               "title": "11 Dick, Tom and Harry"
             },
             {
               "audio_url": "https://www.archive.org/download/literary_sense_1209_librivox/literarysense_12_nesbit_64kb.mp3",
               "length_ms": 1471000,
+              "readers": [
+                "petra"
+              ],
               "start_ms": 12381000,
               "title": "12 Miss Eden's Baby"
             },
             {
               "audio_url": "https://www.archive.org/download/literary_sense_1209_librivox/literarysense_13_nesbit_64kb.mp3",
               "length_ms": 1307000,
+              "readers": [
+                "tamara-r-schwartz"
+              ],
               "start_ms": 13852000,
               "title": "13 The Lover, The Girl and The Onlooker"
             },
             {
               "audio_url": "https://www.archive.org/download/literary_sense_1209_librivox/literarysense_14_nesbit_64kb.mp3",
               "length_ms": 1799000,
+              "readers": [
+                "caprishapage"
+              ],
               "start_ms": 15159000,
               "title": "14 The Duel"
             },
             {
               "audio_url": "https://www.archive.org/download/literary_sense_1209_librivox/literarysense_15_nesbit_64kb.mp3",
               "length_ms": 1791000,
+              "readers": [
+                "caprishapage"
+              ],
               "start_ms": 16958000,
               "title": "15 Cinderella"
             },
             {
               "audio_url": "https://www.archive.org/download/literary_sense_1209_librivox/literarysense_16_nesbit_64kb.mp3",
               "length_ms": 1946000,
+              "readers": [
+                "caprishapage"
+              ],
               "start_ms": 18749000,
               "title": "16 With An E"
             },
             {
               "audio_url": "https://www.archive.org/download/literary_sense_1209_librivox/literarysense_17_nesbit_64kb.mp3",
               "length_ms": 817000,
+              "readers": [
+                "caprishapage"
+              ],
               "start_ms": 20695000,
               "title": "17 Under The New Moon"
             },
             {
               "audio_url": "https://www.archive.org/download/literary_sense_1209_librivox/literarysense_18_nesbit_64kb.mp3",
               "length_ms": 1322000,
+              "readers": [
+                "caprishapage"
+              ],
               "start_ms": 21512000,
               "title": "18 The Love of Romance"
             }
@@ -1806,7 +1912,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt30/literary_sense_1303.jpg",
           "id": "jean-bascom",
           "language": "en",
+          "librivox_genres": [
+            "Single Author Collections"
+          ],
           "librivox_id": 6530,
+          "librivox_title": "Literary Sense",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-literary-sense-by-edith-nesbit/",
@@ -1949,7 +2059,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt8/literary_taste_1104.jpg",
           "id": "timothy-ferguson",
           "language": "en",
+          "librivox_genres": [
+            "Literary Criticism",
+            "Self-Help"
+          ],
           "librivox_id": 2926,
+          "librivox_title": "Literary Taste: How to Form It",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/literary-taste-how-to-form-it-by-arnold-bennett/",
@@ -2002,246 +2117,410 @@
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_00_batres_64kb.mp3",
               "length_ms": 203000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Prólogo"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_01_batres_64kb.mp3",
               "length_ms": 947000,
+              "readers": [
+                "epachuko"
+              ],
+              "section_number": 1,
               "start_ms": 203000,
               "title": "Primitiva civilización de América"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_02_batres_64kb.mp3",
               "length_ms": 686000,
+              "readers": [
+                "epachuko"
+              ],
+              "section_number": 2,
               "start_ms": 1150000,
               "title": "La poesía, la oratoria y el teatro en América, antes de la conquista"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_03_batres_64kb.mp3",
               "length_ms": 611000,
+              "readers": [
+                "juanina"
+              ],
+              "section_number": 3,
               "start_ms": 1836000,
               "title": "El descubrimiento de América en sus relaciones con el progreso y la literatura"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_04_batres_64kb.mp3",
               "length_ms": 610000,
+              "readers": [
+                "juanina"
+              ],
+              "section_number": 4,
               "start_ms": 2447000,
               "title": "Literatura hispano-americana"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_05_batres_64kb.mp3",
               "length_ms": 1135000,
+              "readers": [
+                "juanina"
+              ],
+              "section_number": 5,
               "start_ms": 3057000,
               "title": "República de Chile, parte 1"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_06_batres_64kb.mp3",
               "length_ms": 1051000,
+              "readers": [
+                "juanina"
+              ],
+              "section_number": 6,
               "start_ms": 4192000,
               "title": "República de Chile, parte 2"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_07_batres_64kb.mp3",
               "length_ms": 885000,
+              "readers": [
+                "enriquerendon"
+              ],
+              "section_number": 7,
               "start_ms": 5243000,
               "title": "República Argentina, parte 1"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_08_batres_64kb.mp3",
               "length_ms": 747000,
+              "readers": [
+                "enriquerendon"
+              ],
+              "section_number": 8,
               "start_ms": 6128000,
               "title": "República Argentina, parte 2"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_09_batres_64kb.mp3",
               "length_ms": 1135000,
+              "readers": [
+                "lu"
+              ],
+              "section_number": 9,
               "start_ms": 6875000,
               "title": "República del Uruguay, parte 1"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_10_batres_64kb.mp3",
               "length_ms": 1262000,
+              "readers": [
+                "lu"
+              ],
+              "section_number": 10,
               "start_ms": 8010000,
               "title": "República del Uruguay, parte 2"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_11_batres_64kb.mp3",
               "length_ms": 227000,
+              "readers": [
+                "epachuko"
+              ],
+              "section_number": 11,
               "start_ms": 9272000,
               "title": "República del Paraguay"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_12_batres_64kb.mp3",
               "length_ms": 1151000,
+              "readers": [
+                "lu"
+              ],
+              "section_number": 12,
               "start_ms": 9499000,
               "title": "República de Bolivia, parte 1"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_13_batres_64kb.mp3",
               "length_ms": 993000,
+              "readers": [
+                "lu"
+              ],
+              "section_number": 13,
               "start_ms": 10650000,
               "title": "República de Bolivia, parte 2"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_14_batres_64kb.mp3",
               "length_ms": 960000,
+              "readers": [
+                "cativas"
+              ],
+              "section_number": 14,
               "start_ms": 11643000,
               "title": "República del Perú, parte 1"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_15_batres_64kb.mp3",
               "length_ms": 866000,
+              "readers": [
+                "cativas"
+              ],
+              "section_number": 15,
               "start_ms": 12603000,
               "title": "República del Perú, parte 2"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_16_batres_64kb.mp3",
               "length_ms": 1037000,
+              "readers": [
+                "jose-manuel"
+              ],
+              "section_number": 16,
               "start_ms": 13469000,
               "title": "República de Venezuela, parte 1"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_17_batres_64kb.mp3",
               "length_ms": 922000,
+              "readers": [
+                "jose-manuel"
+              ],
+              "section_number": 17,
               "start_ms": 14506000,
               "title": "República de Venezuela, parte 2"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_18_batres_64kb.mp3",
               "length_ms": 1896000,
+              "readers": [
+                "miltonfmh"
+              ],
+              "section_number": 18,
               "start_ms": 15428000,
               "title": "Estados-Unidos de Colombia, parte 1"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_19_batres_64kb.mp3",
               "length_ms": 1714000,
+              "readers": [
+                "miltonfmh"
+              ],
+              "section_number": 19,
               "start_ms": 17324000,
               "title": "Estados-Unidos de Colombia, parte 2"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_20_batres_64kb.mp3",
               "length_ms": 1048000,
+              "readers": [
+                "miltonfmh"
+              ],
+              "section_number": 20,
               "start_ms": 19038000,
               "title": "Estados-Unidos de Colombia, parte 3"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_21_batres_64kb.mp3",
               "length_ms": 1065000,
+              "readers": [
+                "cativas"
+              ],
+              "section_number": 21,
               "start_ms": 20086000,
               "title": "República del Ecuador, parte 1"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_22_batres_64kb.mp3",
               "length_ms": 838000,
+              "readers": [
+                "cativas"
+              ],
+              "section_number": 22,
               "start_ms": 21151000,
               "title": "República del Ecuador, parte 2"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_23_batres_64kb.mp3",
               "length_ms": 1086000,
+              "readers": [
+                "epachuko"
+              ],
+              "section_number": 23,
               "start_ms": 21989000,
               "title": "Repúblicas de Centro-América, parte 1"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_24_batres_64kb.mp3",
               "length_ms": 1137000,
+              "readers": [
+                "epachuko"
+              ],
+              "section_number": 24,
               "start_ms": 23075000,
               "title": "Repúblicas de Centro-América, parte 2"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_25_batres_64kb.mp3",
               "length_ms": 1530000,
+              "readers": [
+                "cativas"
+              ],
+              "section_number": 25,
               "start_ms": 24212000,
               "title": "Repúblicas de Centro-América, parte 3"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_26_batres_64kb.mp3",
               "length_ms": 1521000,
+              "readers": [
+                "cativas"
+              ],
+              "section_number": 26,
               "start_ms": 25742000,
               "title": "Repúblicas de Centro-América, parte 4"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_27_batres_64kb.mp3",
               "length_ms": 1466000,
+              "readers": [
+                "fernando-falcoff"
+              ],
+              "section_number": 27,
               "start_ms": 27263000,
               "title": "Repúblicas de Centro-América, parte 5"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_28_batres_64kb.mp3",
               "length_ms": 1407000,
+              "readers": [
+                "fernando-falcoff"
+              ],
+              "section_number": 28,
               "start_ms": 28729000,
               "title": "Repúblicas de Centro-América, parte 6"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_29_batres_64kb.mp3",
               "length_ms": 1202000,
+              "readers": [
+                "fernando-falcoff"
+              ],
+              "section_number": 29,
               "start_ms": 30136000,
               "title": "Repúblicas de Centro-América, parte 7"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_30_batres_64kb.mp3",
               "length_ms": 1106000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 30,
               "start_ms": 31338000,
               "title": "Repúblicas de Centro-América, parte 8"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_31_batres_64kb.mp3",
               "length_ms": 1185000,
+              "readers": [
+                "fernando-falcoff"
+              ],
+              "section_number": 31,
               "start_ms": 32444000,
               "title": "Repúblicas de Centro-América, parte 9"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_32_batres_64kb.mp3",
               "length_ms": 999000,
+              "readers": [
+                "fernando-falcoff"
+              ],
+              "section_number": 32,
               "start_ms": 33629000,
               "title": "Repúblicas de Centro-América, parte 10"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_33_batres_64kb.mp3",
               "length_ms": 1421000,
+              "readers": [
+                "cativas"
+              ],
+              "section_number": 33,
               "start_ms": 34628000,
               "title": "Repúblicas de Centro-América, parte 11"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_34_batres_64kb.mp3",
               "length_ms": 1143000,
+              "readers": [
+                "cativas"
+              ],
+              "section_number": 34,
               "start_ms": 36049000,
               "title": "Repúblicas de Centro-América, parte 12"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_35_batres_64kb.mp3",
               "length_ms": 1064000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 35,
               "start_ms": 37192000,
               "title": "República de México, parte 1"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_36_batres_64kb.mp3",
               "length_ms": 1293000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 36,
               "start_ms": 38256000,
               "title": "República de México, parte 2"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_37_batres_64kb.mp3",
               "length_ms": 1172000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 37,
               "start_ms": 39549000,
               "title": "República de México, parte 3"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_38_batres_64kb.mp3",
               "length_ms": 1255000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 38,
               "start_ms": 40721000,
               "title": "Cuba, parte 1"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_39_batres_64kb.mp3",
               "length_ms": 1073000,
+              "readers": [
+                "fernando-falcoff"
+              ],
+              "section_number": 39,
               "start_ms": 41976000,
               "title": "Cuba, parte 2"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_40_batres_64kb.mp3",
               "length_ms": 1252000,
+              "readers": [
+                "fernando-falcoff"
+              ],
+              "section_number": 40,
               "start_ms": 43049000,
               "title": "Cuba, parte 3"
             }
@@ -2250,7 +2529,13 @@
           "cover_url": "https://archive.org/download/literaturaamericana_2609_librivox/literaturaamericana_2609.jpg",
           "id": "mpinedag",
           "language": "es",
+          "librivox_genres": [
+            "Free Verse",
+            "Literary Criticism",
+            "Essays"
+          ],
           "librivox_id": 22624,
+          "librivox_title": "Literatura Americana",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/literatura-americana-by-antonio-batres-jauregui/",
@@ -2466,318 +2751,530 @@
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_00_machen_64kb.mp3",
               "length_ms": 307000,
+              "readers": [
+                "inthedesert"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_01_machen_64kb.mp3",
               "length_ms": 1180000,
+              "readers": [
+                "djrickyv"
+              ],
+              "section_number": 1,
               "start_ms": 307000,
               "title": "The New Testament"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_02_machen_64kb.mp3",
               "length_ms": 1047000,
+              "readers": [
+                "michellekinge"
+              ],
+              "section_number": 2,
               "start_ms": 1487000,
               "title": "The Roman Background of Christianity"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_03_machen_64kb.mp3",
               "length_ms": 1207000,
+              "readers": [
+                "michellekinge"
+              ],
+              "section_number": 3,
               "start_ms": 2534000,
               "title": "The Greek Background of Christianity"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_04_machen_64kb.mp3",
               "length_ms": 986000,
+              "readers": [
+                "kerry-adams"
+              ],
+              "section_number": 4,
               "start_ms": 3741000,
               "title": "The Jewish Background of Christianity: I. Palestinian Judaism"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_05_machen_64kb.mp3",
               "length_ms": 1000000,
+              "readers": [
+                "kerry-adams"
+              ],
+              "section_number": 5,
               "start_ms": 4727000,
               "title": "The Jewish Background of Christianity: II. The Judaism of the Dispersion"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_06_machen_64kb.mp3",
               "length_ms": 1129000,
+              "readers": [
+                "kerry-adams"
+              ],
+              "section_number": 6,
               "start_ms": 5727000,
               "title": "The Messiah"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_07_machen_64kb.mp3",
               "length_ms": 1154000,
+              "readers": [
+                "djrickyv"
+              ],
+              "section_number": 7,
               "start_ms": 6856000,
               "title": "The Book of The Acts"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_08_machen_64kb.mp3",
               "length_ms": 983000,
+              "readers": [
+                "jacqueline-burrell-walton"
+              ],
+              "section_number": 8,
               "start_ms": 8010000,
               "title": "The Cross and the Resurrection the Foundation of Apostolic Preaching"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_09_machen_64kb.mp3",
               "length_ms": 1064000,
+              "readers": [
+                "jacqueline-burrell-walton"
+              ],
+              "section_number": 9,
               "start_ms": 8993000,
               "title": "The Beginnings of the Christian Church"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_10_machen_64kb.mp3",
               "length_ms": 1076000,
+              "readers": [
+                "mleigh"
+              ],
+              "section_number": 10,
               "start_ms": 10057000,
               "title": "The First Persecution"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_11_machen_64kb.mp3",
               "length_ms": 542000,
+              "readers": [
+                "mason-lewis"
+              ],
+              "section_number": 11,
               "start_ms": 11133000,
               "title": "The First Gentile Converts"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_12_machen_64kb.mp3",
               "length_ms": 1322000,
+              "readers": [
+                "mahi"
+              ],
+              "section_number": 12,
               "start_ms": 11675000,
               "title": "The Conversion of Paul"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_13_machen_64kb.mp3",
               "length_ms": 922000,
+              "readers": [
+                "bill-mosley"
+              ],
+              "section_number": 13,
               "start_ms": 12997000,
               "title": "The Church at Antioch"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_14_machen_64kb.mp3",
               "length_ms": 1152000,
+              "readers": [
+                "bill-mosley"
+              ],
+              "section_number": 14,
               "start_ms": 13919000,
               "title": "The Gospel to the Gentiles"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_15_machen_64kb.mp3",
               "length_ms": 987000,
+              "readers": [
+                "bill-mosley"
+              ],
+              "section_number": 15,
               "start_ms": 15071000,
               "title": "The Council at Jerusalem"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_16_machen_64kb.mp3",
               "length_ms": 1046000,
+              "readers": [
+                "jman45"
+              ],
+              "section_number": 16,
               "start_ms": 16058000,
               "title": "The Gospel Carried Into Europe"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_17_machen_64kb.mp3",
               "length_ms": 820000,
+              "readers": [
+                "gillian-hendrie"
+              ],
+              "section_number": 17,
               "start_ms": 17104000,
               "title": "Encouragement for Recent Converts"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_18_machen_64kb.mp3",
               "length_ms": 957000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 18,
               "start_ms": 17924000,
               "title": "The Conflict with the Judaizers"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_19_machen_64kb.mp3",
               "length_ms": 963000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 19,
               "start_ms": 18881000,
               "title": "Problems of a Gentile Church"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_20_machen_64kb.mp3",
               "length_ms": 1199000,
+              "readers": [
+                "bill-mosley"
+              ],
+              "section_number": 20,
               "start_ms": 19844000,
               "title": "The Apostle and His Ministry"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_21_machen_64kb.mp3",
               "length_ms": 885000,
+              "readers": [
+                "gillian-hendrie"
+              ],
+              "section_number": 21,
               "start_ms": 21043000,
               "title": "The Gospel of Salvation"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_22_machen_64kb.mp3",
               "length_ms": 719000,
+              "readers": [
+                "bill-mosley"
+              ],
+              "section_number": 22,
               "start_ms": 21928000,
               "title": "Paul's Journey to Rome"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_23_machen_64kb.mp3",
               "length_ms": 996000,
+              "readers": [
+                "brandonb"
+              ],
+              "section_number": 23,
               "start_ms": 22647000,
               "title": "The Supremacy of Christ"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_24_machen_64kb.mp3",
               "length_ms": 775000,
+              "readers": [
+                "brandonb"
+              ],
+              "section_number": 24,
               "start_ms": 23643000,
               "title": "The Church of Christ"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_25_machen_64kb.mp3",
               "length_ms": 945000,
+              "readers": [
+                "brandonb"
+              ],
+              "section_number": 25,
               "start_ms": 24418000,
               "title": "Christ and His Followers"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_26_machen_64kb.mp3",
               "length_ms": 1254000,
+              "readers": [
+                "brandonb"
+              ],
+              "section_number": 26,
               "start_ms": 25363000,
               "title": "Training New Leaders"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_27_machen_64kb.mp3",
               "length_ms": 1478000,
+              "readers": [
+                "brandonb"
+              ],
+              "section_number": 27,
               "start_ms": 26617000,
               "title": "A Presentation of Jesus to Jewish Christians"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_28_machen_64kb.mp3",
               "length_ms": 778000,
+              "readers": [
+                "brandonb"
+              ],
+              "section_number": 28,
               "start_ms": 28095000,
               "title": "A Graphic Sketch of the Life of Jesus"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_29_machen_64kb.mp3",
               "length_ms": 1742000,
+              "readers": [
+                "djrickyv"
+              ],
+              "section_number": 29,
               "start_ms": 28873000,
               "title": "A Greek Historian's Account of Jesus"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_30_machen_64kb.mp3",
               "length_ms": 2345000,
+              "readers": [
+                "djrickyv"
+              ],
+              "section_number": 30,
               "start_ms": 30615000,
               "title": "The Testimony of the Beloved Disciple"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_31_machen_64kb.mp3",
               "length_ms": 938000,
+              "readers": [
+                "mleigh"
+              ],
+              "section_number": 31,
               "start_ms": 32960000,
               "title": "The Jesus of the Gospels"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_32_machen_64kb.mp3",
               "length_ms": 1357000,
+              "readers": [
+                "michellekinge"
+              ],
+              "section_number": 32,
               "start_ms": 33898000,
               "title": "A Document of the Jerusalem Church"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_33_machen_64kb.mp3",
               "length_ms": 1055000,
+              "readers": [
+                "michellekinge"
+              ],
+              "section_number": 33,
               "start_ms": 35255000,
               "title": "Jesus the Fulfillment of the Old Testament"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_34_machen_64kb.mp3",
               "length_ms": 1059000,
+              "readers": [
+                "irene-h-suber"
+              ],
+              "section_number": 34,
               "start_ms": 36310000,
               "title": "Christian Fortitude"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_35_machen_64kb.mp3",
               "length_ms": 823000,
+              "readers": [
+                "irene-h-suber"
+              ],
+              "section_number": 35,
               "start_ms": 37369000,
               "title": "The Christian's Attitude Toward Error and Immorality"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_36_machen_64kb.mp3",
               "length_ms": 1241000,
+              "readers": [
+                "djrickyv"
+              ],
+              "section_number": 36,
               "start_ms": 38192000,
               "title": "The Life of the Children of God"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_37_machen_64kb.mp3",
               "length_ms": 1483000,
+              "readers": [
+                "djrickyv"
+              ],
+              "section_number": 37,
               "start_ms": 39433000,
               "title": "The Messages of the Living Christ"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_38_machen_64kb.mp3",
               "length_ms": 703000,
+              "readers": [
+                "andy-glover"
+              ],
+              "section_number": 38,
               "start_ms": 40916000,
               "title": "A Vision of the Final Triumph"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_39_machen_64kb.mp3",
               "length_ms": 422000,
+              "readers": [
+                "inthedesert"
+              ],
+              "section_number": 39,
               "start_ms": 41619000,
               "title": "Review"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_40_machen_64kb.mp3",
               "length_ms": 984000,
+              "readers": [
+                "owlivia"
+              ],
+              "section_number": 40,
               "start_ms": 42041000,
               "title": "The Church and the World"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_41_machen_64kb.mp3",
               "length_ms": 1021000,
+              "readers": [
+                "jacqueline-tyler"
+              ],
+              "section_number": 41,
               "start_ms": 43025000,
               "title": "The Christian Message"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_42_machen_64kb.mp3",
               "length_ms": 1149000,
+              "readers": [
+                "owlivia"
+              ],
+              "section_number": 42,
               "start_ms": 44046000,
               "title": "The Word and the Sacraments"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_43_machen_64kb.mp3",
               "length_ms": 1214000,
+              "readers": [
+                "ruth-p"
+              ],
+              "section_number": 43,
               "start_ms": 45195000,
               "title": "Prayer"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_44_machen_64kb.mp3",
               "length_ms": 760000,
+              "readers": [
+                "inthedesert"
+              ],
+              "section_number": 44,
               "start_ms": 46409000,
               "title": "The Congregation"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_45_machen_64kb.mp3",
               "length_ms": 1131000,
+              "readers": [
+                "ruth-p"
+              ],
+              "section_number": 45,
               "start_ms": 47169000,
               "title": "The Relief of the Needy"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_46_machen_64kb.mp3",
               "length_ms": 1062000,
+              "readers": [
+                "margaret-herbers"
+              ],
+              "section_number": 46,
               "start_ms": 48300000,
               "title": "Organizing for Service"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_47_machen_64kb.mp3",
               "length_ms": 984000,
+              "readers": [
+                "margaret-herbers"
+              ],
+              "section_number": 47,
               "start_ms": 49362000,
               "title": "A Mission for the World"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_48_machen_64kb.mp3",
               "length_ms": 981000,
+              "readers": [
+                "margaret-herbers"
+              ],
+              "section_number": 48,
               "start_ms": 50346000,
               "title": "The Christian Ideal of Personal Morality"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_49_machen_64kb.mp3",
               "length_ms": 975000,
+              "readers": [
+                "owlivia"
+              ],
+              "section_number": 49,
               "start_ms": 51327000,
               "title": "Christianity and Human Relationships"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_50_machen_64kb.mp3",
               "length_ms": 937000,
+              "readers": [
+                "margaret-herbers"
+              ],
+              "section_number": 50,
               "start_ms": 52302000,
               "title": "The Christian Use of the Intellect"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_51_machen_64kb.mp3",
               "length_ms": 965000,
+              "readers": [
+                "margaret-herbers"
+              ],
+              "section_number": 51,
               "start_ms": 53239000,
               "title": "The Christian Hope and the Present Possession"
             },
             {
               "audio_url": "https://www.archive.org/download/literaturehistorynewtestament_2204_librivox/literatureandhistory_52_machen_64kb.mp3",
               "length_ms": 317000,
+              "readers": [
+                "inthedesert"
+              ],
+              "section_number": 52,
               "start_ms": 54204000,
               "title": "Retrospect: the First Christian Century"
             }
@@ -2786,7 +3283,11 @@
           "cover_url": "https://archive.org/download/literaturehistorynewtestament_2204_librivox/literaturehistory_2204.jpg",
           "id": "inthedesert",
           "language": "en",
+          "librivox_genres": [
+            "Christianity - Other"
+          ],
           "librivox_id": 17253,
+          "librivox_title": "Literature and History of New Testament Times",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-literature-and-history-of-new-testament-times-by-john-gresham-machen/",
@@ -2853,144 +3354,216 @@
             {
               "audio_url": "https://www.archive.org/download/literature_in_the_making_1605_librivox/literature_01_various_64kb.mp3",
               "length_ms": 259000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/literature_in_the_making_1605_librivox/literature_02_various_64kb.mp3",
               "length_ms": 892000,
+              "readers": [
+                "denise-nordell"
+              ],
               "start_ms": 259000,
               "title": "William Dean Howells: War Stops Literature"
             },
             {
               "audio_url": "https://www.archive.org/download/literature_in_the_making_1605_librivox/literature_03_various_64kb.mp3",
               "length_ms": 834000,
+              "readers": [
+                "maryann"
+              ],
               "start_ms": 1151000,
               "title": "Kathleen Norris: The Joys of the Poor"
             },
             {
               "audio_url": "https://www.archive.org/download/literature_in_the_making_1605_librivox/literature_04_various_64kb.mp3",
               "length_ms": 631000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 1985000,
               "title": "Booth Tarkington: National Prosperity and Art"
             },
             {
               "audio_url": "https://www.archive.org/download/literature_in_the_making_1605_librivox/literature_05_various_64kb.mp3",
               "length_ms": 1198000,
+              "readers": [
+                "realisticspeakers"
+              ],
               "start_ms": 2616000,
               "title": "Montague Glass: Romanticism and American Humor"
             },
             {
               "audio_url": "https://www.archive.org/download/literature_in_the_making_1605_librivox/literature_06_various_64kb.mp3",
               "length_ms": 730000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 3814000,
               "title": "Rex Beach: The 'Movies' Benefit Literature"
             },
             {
               "audio_url": "https://www.archive.org/download/literature_in_the_making_1605_librivox/literature_07_various_64kb.mp3",
               "length_ms": 789000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 4544000,
               "title": "Robert W. Chambers: What is Genius?"
             },
             {
               "audio_url": "https://www.archive.org/download/literature_in_the_making_1605_librivox/literature_08_various_64kb.mp3",
               "length_ms": 766000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 5333000,
               "title": "James Lane Allen: Deterioration of the Short Story"
             },
             {
               "audio_url": "https://www.archive.org/download/literature_in_the_making_1605_librivox/literature_09_various_64kb.mp3",
               "length_ms": 1101000,
+              "readers": [
+                "maryann"
+              ],
               "start_ms": 6099000,
               "title": "Harry Leon Wilson: Some Harmful Influences"
             },
             {
               "audio_url": "https://www.archive.org/download/literature_in_the_making_1605_librivox/literature_10_various_64kb.mp3",
               "length_ms": 783000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 7200000,
               "title": "Edward Sandford Martin: The Passing of the Snob"
             },
             {
               "audio_url": "https://www.archive.org/download/literature_in_the_making_1605_librivox/literature_11_various_64kb.mp3",
               "length_ms": 875000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 7983000,
               "title": "Robert Herrick: Commericalizing the Sex Instinct"
             },
             {
               "audio_url": "https://www.archive.org/download/literature_in_the_making_1605_librivox/literature_12_various_64kb.mp3",
               "length_ms": 686000,
+              "readers": [
+                "timothy-ferguson"
+              ],
               "start_ms": 8858000,
               "title": "Arthur Guiterman: Sixteen Don'ts for Poets"
             },
             {
               "audio_url": "https://www.archive.org/download/literature_in_the_making_1605_librivox/literature_13_various_64kb.mp3",
               "length_ms": 821000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 9544000,
               "title": "George Barr Mccutcheon: Magazines Cheapen Fiction"
             },
             {
               "audio_url": "https://www.archive.org/download/literature_in_the_making_1605_librivox/literature_14_various_64kb.mp3",
               "length_ms": 1198000,
+              "readers": [
+                "jesse-zuba"
+              ],
               "start_ms": 10365000,
               "title": "Frank H. Spearman: Business Incompatible with Art"
             },
             {
               "audio_url": "https://www.archive.org/download/literature_in_the_making_1605_librivox/literature_15_various_64kb.mp3",
               "length_ms": 805000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 11563000,
               "title": "Will N. Harben: The Novel Must Go"
             },
             {
               "audio_url": "https://www.archive.org/download/literature_in_the_making_1605_librivox/literature_16_various_64kb.mp3",
               "length_ms": 799000,
+              "readers": [
+                "pamela-nagami"
+              ],
               "start_ms": 12368000,
               "title": "John Erskine: Literature in the Colleges"
             },
             {
               "audio_url": "https://www.archive.org/download/literature_in_the_making_1605_librivox/literature_17_various_64kb.mp3",
               "length_ms": 1101000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 13167000,
               "title": "John Burroughs: City Life versus Literature"
             },
             {
               "audio_url": "https://www.archive.org/download/literature_in_the_making_1605_librivox/literature_18_various_64kb.mp3",
               "length_ms": 830000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 14268000,
               "title": "Ellen Glasgow: 'Evasive Idealism' in Literature"
             },
             {
               "audio_url": "https://www.archive.org/download/literature_in_the_making_1605_librivox/literature_19_various_64kb.mp3",
               "length_ms": 796000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 15098000,
               "title": "Fannie Hurst: 'Chocolate Fudge' in the Magazines"
             },
             {
               "audio_url": "https://www.archive.org/download/literature_in_the_making_1605_librivox/literature_20_various_64kb.mp3",
               "length_ms": 689000,
+              "readers": [
+                "denise-nordell"
+              ],
               "start_ms": 15894000,
               "title": "Amy Lowell: The New Spirit in Poetry"
             },
             {
               "audio_url": "https://www.archive.org/download/literature_in_the_making_1605_librivox/literature_21_various_64kb.mp3",
               "length_ms": 738000,
+              "readers": [
+                "john-burlinson-1950-2024"
+              ],
               "start_ms": 16583000,
               "title": "Edwin Arlington Robinson: A New Definition of Poetry"
             },
             {
               "audio_url": "https://www.archive.org/download/literature_in_the_making_1605_librivox/literature_22_various_64kb.mp3",
               "length_ms": 792000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 17321000,
               "title": "Josephine Preston Peabody: Let Poetry be Free"
             },
             {
               "audio_url": "https://www.archive.org/download/literature_in_the_making_1605_librivox/literature_23_various_64kb.mp3",
               "length_ms": 919000,
+              "readers": [
+                "amal-arrumaih"
+              ],
               "start_ms": 18113000,
               "title": "Charles Rann Kennedy: The Heresy of Supermanism"
             },
             {
               "audio_url": "https://www.archive.org/download/literature_in_the_making_1605_librivox/literature_24_various_64kb.mp3",
               "length_ms": 1063000,
+              "readers": [
+                "amal-arrumaih"
+              ],
               "start_ms": 19032000,
               "title": "Percy MacKaye: The Masque and Democracy"
             }
@@ -2999,7 +3572,11 @@
           "cover_url": "https://archive.org/download/literature_in_the_making_1605_librivox/literaturemaking_1605.jpg",
           "id": "bettyb",
           "language": "en",
+          "librivox_genres": [
+            "Writing & Linguistics"
+          ],
           "librivox_id": 10430,
+          "librivox_title": "Literature in the Making, by Some of its Makers",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/literature-in-the-making-by-some-of-its-makers-by-various/",
@@ -3137,7 +3714,15 @@
           "cover_url": "https://archive.org/download/literature_of_arabia_2308_librivox/literature_arabia_2308.jpg",
           "id": "paulw",
           "language": "en",
+          "librivox_genres": [
+            "Culture & Heritage Fiction",
+            "Poetry",
+            "Romance",
+            "Short Stories",
+            "War & Military"
+          ],
           "librivox_id": 19117,
+          "librivox_title": "Literature of Arabia",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-literature-of-arabia-by-epiphanius-wilson/",
@@ -3476,27 +4061,66 @@
             {
               "audio_url": "https://www.archive.org/download/litigants_2011_librivox/litigants_1_racine_64kb.mp3",
               "length_ms": 1465000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "greg-giordano",
+                "son-of-the-exiles",
+                "sonia",
+                "mike-manolakes",
+                "adrian-stephens"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/litigants_2011_librivox/litigants_2_racine_64kb.mp3",
               "length_ms": 1597000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "greg-giordano",
+                "son-of-the-exiles",
+                "sonia",
+                "mike-manolakes",
+                "adrian-stephens",
+                "hanna-ponomarenko"
+              ],
               "start_ms": 1465000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/litigants_2011_librivox/litigants_3_racine_64kb.mp3",
               "length_ms": 1185000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "greg-giordano",
+                "son-of-the-exiles",
+                "david-purdy",
+                "mike-manolakes",
+                "adrian-stephens",
+                "hanna-ponomarenko"
+              ],
               "start_ms": 3062000,
               "title": "Act 3"
             }
           ],
           "copyright_year": 1890,
           "cover_url": "https://archive.org/download/litigants_2011_librivox/litigants_2011.jpg",
+          "credits": [
+            {
+              "person": "robert-bruce-boswell",
+              "role": "translator"
+            }
+          ],
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Satire"
+          ],
           "librivox_id": 15564,
+          "librivox_title": "Litigants",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-litigants-by-jean-racine/",
@@ -4962,135 +5586,208 @@
             {
               "audio_url": "https://www.archive.org/download/little_angel_1607_librivox/littleangel_01_andreyev_64kb.mp3",
               "length_ms": 284000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/little_angel_1607_librivox/littleangel_02_andreyev_64kb.mp3",
               "length_ms": 851000,
+              "readers": [
+                "mark-chulsky"
+              ],
               "start_ms": 284000,
               "title": "The Little Angel, I"
             },
             {
               "audio_url": "https://www.archive.org/download/little_angel_1607_librivox/littleangel_03_andreyev_64kb.mp3",
               "length_ms": 1288000,
+              "readers": [
+                "mark-chulsky"
+              ],
               "start_ms": 1135000,
               "title": "The Little Angel, II"
             },
             {
               "audio_url": "https://www.archive.org/download/little_angel_1607_librivox/littleangel_04_andreyev_64kb.mp3",
               "length_ms": 776000,
+              "readers": [
+                "mark-chulsky"
+              ],
               "start_ms": 2423000,
               "title": "The Little Angel, III"
             },
             {
               "audio_url": "https://www.archive.org/download/little_angel_1607_librivox/littleangel_05_andreyev_64kb.mp3",
               "length_ms": 753000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 3199000,
               "title": "At the Roadside Station"
             },
             {
               "audio_url": "https://www.archive.org/download/little_angel_1607_librivox/littleangel_06_andreyev_64kb.mp3",
               "length_ms": 1809000,
+              "readers": [
+                "john-burlinson-1950-2024"
+              ],
               "start_ms": 3952000,
               "title": "An Original"
             },
             {
               "audio_url": "https://www.archive.org/download/little_angel_1607_librivox/littleangel_07_andreyev_64kb.mp3",
               "length_ms": 1206000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 5761000,
               "title": "Snapper"
             },
             {
               "audio_url": "https://www.archive.org/download/little_angel_1607_librivox/littleangel_08_andreyev_64kb.mp3",
               "length_ms": 1907000,
+              "readers": [
+                "mark-chulsky"
+              ],
               "start_ms": 6967000,
               "title": "The Lie"
             },
             {
               "audio_url": "https://www.archive.org/download/little_angel_1607_librivox/littleangel_09_andreyev_64kb.mp3",
               "length_ms": 1389000,
+              "readers": [
+                "mike-walker"
+              ],
               "start_ms": 8874000,
               "title": "Petka at the Bungalow"
             },
             {
               "audio_url": "https://www.archive.org/download/little_angel_1607_librivox/littleangel_10_andreyev_64kb.mp3",
               "length_ms": 1003000,
+              "readers": [
+                "mary-schneider"
+              ],
               "start_ms": 10263000,
               "title": "Silence, I and II"
             },
             {
               "audio_url": "https://www.archive.org/download/little_angel_1607_librivox/littleangel_11_andreyev_64kb.mp3",
               "length_ms": 1043000,
+              "readers": [
+                "mary-schneider"
+              ],
               "start_ms": 11266000,
               "title": "Silence, III and IV"
             },
             {
               "audio_url": "https://www.archive.org/download/little_angel_1607_librivox/littleangel_12_andreyev_64kb.mp3",
               "length_ms": 813000,
+              "readers": [
+                "vfkabt"
+              ],
               "start_ms": 12309000,
               "title": "Laughter"
             },
             {
               "audio_url": "https://www.archive.org/download/little_angel_1607_librivox/littleangel_13_andreyev_64kb.mp3",
               "length_ms": 1141000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 13122000,
               "title": "The Friend"
             },
             {
               "audio_url": "https://www.archive.org/download/little_angel_1607_librivox/littleangel_14_andreyev_64kb.mp3",
               "length_ms": 742000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 14263000,
               "title": "In the Basement, I"
             },
             {
               "audio_url": "https://www.archive.org/download/little_angel_1607_librivox/littleangel_15_andreyev_64kb.mp3",
               "length_ms": 1014000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 15005000,
               "title": "In the Basement, II"
             },
             {
               "audio_url": "https://www.archive.org/download/little_angel_1607_librivox/littleangel_16_andreyev_64kb.mp3",
               "length_ms": 1126000,
+              "readers": [
+                "mary-schneider"
+              ],
               "start_ms": 16019000,
               "title": "The City"
             },
             {
               "audio_url": "https://www.archive.org/download/little_angel_1607_librivox/littleangel_17_andreyev_64kb.mp3",
               "length_ms": 444000,
+              "readers": [
+                "gaby"
+              ],
               "start_ms": 17145000,
               "title": "The Marseillaise"
             },
             {
               "audio_url": "https://www.archive.org/download/little_angel_1607_librivox/littleangel_18_andreyev_64kb.mp3",
               "length_ms": 919000,
+              "readers": [
+                "shelf-worn"
+              ],
               "start_ms": 17589000,
               "title": "The Tocsin"
             },
             {
               "audio_url": "https://www.archive.org/download/little_angel_1607_librivox/littleangel_19_andreyev_64kb.mp3",
               "length_ms": 1853000,
+              "readers": [
+                "mark-chulsky"
+              ],
               "start_ms": 18508000,
               "title": "Bargamot and Garaska"
             },
             {
               "audio_url": "https://www.archive.org/download/little_angel_1607_librivox/littleangel_20_andreyev_64kb.mp3",
               "length_ms": 544000,
+              "readers": [
+                "dbmcinnis"
+              ],
               "start_ms": 20361000,
               "title": "Men May Rise on Stepping-Stones of their Dead Selves to Higher Things"
             },
             {
               "audio_url": "https://www.archive.org/download/little_angel_1607_librivox/littleangel_21_andreyev_64kb.mp3",
               "length_ms": 2194000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 20905000,
               "title": "The Spy"
             }
           ],
           "copyright_year": 1916,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt25/little_angel_1607.jpg",
+          "credits": [
+            {
+              "person": "w-h-lowe",
+              "role": "translator"
+            }
+          ],
           "id": "larry-wilson",
           "language": "en",
+          "librivox_genres": [
+            "Short Stories"
+          ],
           "librivox_id": 10164,
+          "librivox_title": "Little Angel and Other Stories",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-little-angel-and-other-stories-by-leonid-nikolayevich-andreyev/",
@@ -5152,252 +5849,378 @@
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_01_taylor_64kb.mp3",
               "length_ms": 287000,
+              "readers": [
+                "mleigh"
+              ],
               "start_ms": 0,
               "title": "A True Story"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_02_taylor_64kb.mp3",
               "length_ms": 151000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 287000,
               "title": "The Boys and the Apple-Tree"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_03_taylor_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "de-anna-lee"
+              ],
               "start_ms": 438000,
               "title": "Sophia's Fool's-Cap"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_04_taylor_64kb.mp3",
               "length_ms": 163000,
+              "readers": [
+                "stunning"
+              ],
               "start_ms": 529000,
               "title": "Frances Keeps Her Promise"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_05_taylor_64kb.mp3",
               "length_ms": 285000,
+              "readers": [
+                "marie-christian"
+              ],
               "start_ms": 692000,
               "title": "Careless Matilda"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_06_taylor_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "stunning"
+              ],
               "start_ms": 977000,
               "title": "The Violet"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_07_taylor_64kb.mp3",
               "length_ms": 83000,
+              "readers": [
+                "de-anna-lee"
+              ],
               "start_ms": 1049000,
               "title": "The Orphan"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_08_taylor_64kb.mp3",
               "length_ms": 108000,
+              "readers": [
+                "marie-christian"
+              ],
               "start_ms": 1132000,
               "title": "The Disappointment"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_09_taylor_64kb.mp3",
               "length_ms": 138000,
+              "readers": [
+                "stunning"
+              ],
               "start_ms": 1240000,
               "title": "James and the Shoulder of Mutton"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_10_taylor_64kb.mp3",
               "length_ms": 90000,
+              "readers": [
+                "stunning"
+              ],
               "start_ms": 1378000,
               "title": "The Good-Natured Girls"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_11_taylor_64kb.mp3",
               "length_ms": 125000,
+              "readers": [
+                "de-anna-lee"
+              ],
               "start_ms": 1468000,
               "title": "To a Little Girl that has Told a Lie"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_12_taylor_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 1593000,
               "title": "Dirty Jim"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_13_taylor_64kb.mp3",
               "length_ms": 152000,
+              "readers": [
+                "de-anna-lee"
+              ],
               "start_ms": 1658000,
               "title": "Meddlesome Matty"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_14_taylor_64kb.mp3",
               "length_ms": 47000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 1810000,
               "title": "The Butterfly"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_15_taylor_64kb.mp3",
               "length_ms": 89000,
+              "readers": [
+                "stunning"
+              ],
               "start_ms": 1857000,
               "title": "The Gaudy Flower"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_16_taylor_64kb.mp3",
               "length_ms": 126000,
+              "readers": [
+                "mleigh"
+              ],
               "start_ms": 1946000,
               "title": "George and the Chimney-Sweep"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_17_taylor_64kb.mp3",
               "length_ms": 101000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 2072000,
               "title": "Deaf Martha"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_18_taylor_64kb.mp3",
               "length_ms": 134000,
+              "readers": [
+                "marie-christian"
+              ],
               "start_ms": 2173000,
               "title": "The Little Cripple's Complaint"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_19_taylor_64kb.mp3",
               "length_ms": 102000,
+              "readers": [
+                "stunning"
+              ],
               "start_ms": 2307000,
               "title": "Negligent Mary"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_20_taylor_64kb.mp3",
               "length_ms": 106000,
+              "readers": [
+                "de-anna-lee"
+              ],
               "start_ms": 2409000,
               "title": "The Spider"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_21_taylor_64kb.mp3",
               "length_ms": 92000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 2515000,
               "title": "For a Naughty Little Girl"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_22_taylor_64kb.mp3",
               "length_ms": 104000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 2607000,
               "title": "The Child's Monitor"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_23_taylor_64kb.mp3",
               "length_ms": 84000,
+              "readers": [
+                "victoria-alice-bell"
+              ],
               "start_ms": 2711000,
               "title": "The Chatterbox"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_24_taylor_64kb.mp3",
               "length_ms": 116000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 2795000,
               "title": "Jane and Eliza"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_25_taylor_64kb.mp3",
               "length_ms": 61000,
+              "readers": [
+                "victoria-alice-bell"
+              ],
               "start_ms": 2911000,
               "title": "Sleepy Harry"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_26_taylor_64kb.mp3",
               "length_ms": 89000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 2972000,
               "title": "Washing and Dressing"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_27_taylor_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "stunning"
+              ],
               "start_ms": 3061000,
               "title": "The Vulgar Little Lady"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_28_taylor_64kb.mp3",
               "length_ms": 182000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 3152000,
               "title": "The Wooden Doll and the Wax Doll"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_29_taylor_64kb.mp3",
               "length_ms": 49000,
+              "readers": [
+                "stunning"
+              ],
               "start_ms": 3334000,
               "title": "The Baby's Dance"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_30_taylor_64kb.mp3",
               "length_ms": 113000,
+              "readers": [
+                "stunning"
+              ],
               "start_ms": 3383000,
               "title": "The Pin"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_31_taylor_64kb.mp3",
               "length_ms": 46000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 3496000,
               "title": "The Cow"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_32_taylor_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "stunning"
+              ],
               "start_ms": 3542000,
               "title": "Come and Play in the Garden"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_33_taylor_64kb.mp3",
               "length_ms": 64000,
+              "readers": [
+                "stunning"
+              ],
               "start_ms": 3607000,
               "title": "Little Girls Must Not Fret"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_34_taylor_64kb.mp3",
               "length_ms": 49000,
+              "readers": [
+                "stunning"
+              ],
               "start_ms": 3671000,
               "title": "The Field Daisy"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_35_taylor_64kb.mp3",
               "length_ms": 46000,
+              "readers": [
+                "nicole-wright"
+              ],
               "start_ms": 3720000,
               "title": "Learning to Go Alone"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_36_taylor_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "stunning"
+              ],
               "start_ms": 3766000,
               "title": "Finery"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_37_taylor_64kb.mp3",
               "length_ms": 141000,
+              "readers": [
+                "dc"
+              ],
               "start_ms": 3857000,
               "title": "Greedy Richard"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_38_taylor_64kb.mp3",
               "length_ms": 103000,
+              "readers": [
+                "victoria-alice-bell"
+              ],
               "start_ms": 3998000,
               "title": "The Holidays"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_39_taylor_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 4101000,
               "title": "The Village Green"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_40_taylor_64kb.mp3",
               "length_ms": 100000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 4170000,
               "title": "Mischief"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_41_taylor_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 4270000,
               "title": "About the Little Girl that Beat Her Sister"
             },
             {
               "audio_url": "https://www.archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_42_taylor_64kb.mp3",
               "length_ms": 138000,
+              "readers": [
+                "alan-mapstone"
+              ],
               "start_ms": 4338000,
               "title": "The Apple-Tree"
             }
@@ -5406,7 +6229,11 @@
           "cover_url": "https://archive.org/download/little_ann_other_poems_2310_librivox/littleannandotherpoems_2310.jpg",
           "id": "mleigh",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 19516,
+          "librivox_title": "Little Ann and Other Poems",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/little-ann-and-other-poems-by-ann-taylor/",
@@ -6530,7 +7357,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt13/Little_Bear_1112.jpg",
           "id": "carolyn-frances",
           "language": "en",
+          "librivox_genres": [
+            "Animals & Nature"
+          ],
           "librivox_id": 2107,
+          "librivox_title": "Little Bear",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/little-bear-by-laura-rountree-smith/",
@@ -8371,18 +9202,46 @@
             {
               "audio_url": "https://www.archive.org/download/bitoffluff_1905_librivox/littlebitoffluff_1_ellis_64kb.mp3",
               "length_ms": 4312000,
+              "readers": [
+                "toddhw",
+                "chuck-williamson",
+                "tomas-peter",
+                "eva-davis-d-2025",
+                "tj-burns",
+                "emmahatton",
+                "campbell-schelp",
+                "elisabeth-holland"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/bitoffluff_1905_librivox/littlebitoffluff_2_ellis_64kb.mp3",
               "length_ms": 3464000,
+              "readers": [
+                "toddhw",
+                "tomas-peter",
+                "tj-burns",
+                "emmahatton",
+                "campbell-schelp",
+                "elisabeth-holland"
+              ],
               "start_ms": 4312000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/bitoffluff_1905_librivox/littlebitoffluff_3_ellis_64kb.mp3",
               "length_ms": 2862000,
+              "readers": [
+                "availle",
+                "toddhw",
+                "tomas-peter",
+                "tj-burns",
+                "aleacia-messiah",
+                "emmahatton",
+                "campbell-schelp",
+                "elisabeth-holland"
+              ],
               "start_ms": 7776000,
               "title": "Act 3"
             }
@@ -8391,7 +9250,11 @@
           "cover_url": "https://archive.org/download/bitoffluff_1905_librivox/littlebitoffluff_1905.jpg",
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Plays"
+          ],
           "librivox_id": 13625,
+          "librivox_title": "Little Bit of Fluff",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-little-bit-of-fluff-by-walter-w-ellis/",
@@ -9724,7 +10587,11 @@
           "cover_url": "https://archive.org/download/librivoxcdcoverart36/littlebluebook646_2002.jpg",
           "id": "kevins",
           "language": "en",
+          "librivox_genres": [
+            "Literary Criticism"
+          ],
           "librivox_id": 14752,
+          "librivox_title": "Little Blue Book 646: The Spirit of Brazilian Literature",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/little-blue-book-646-the-spirit-of-brazilian-literature-by-isaac-goldberg/",

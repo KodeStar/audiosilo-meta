@@ -6347,42 +6347,49 @@
             {
               "audio_url": "https://www.archive.org/download/ricordi_di_londra_2210_librivox/ricordidilondra_00_deamicis_64kb.mp3",
               "length_ms": 151000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduzione"
             },
             {
               "audio_url": "https://www.archive.org/download/ricordi_di_londra_2210_librivox/ricordidilondra_01_deamicis_64kb.mp3",
               "length_ms": 1008000,
+              "section_number": 1,
               "start_ms": 151000,
               "title": "Ricordi di Londra. Capitolo I."
             },
             {
               "audio_url": "https://www.archive.org/download/ricordi_di_londra_2210_librivox/ricordidilondra_02_deamicis_64kb.mp3",
               "length_ms": 1376000,
+              "section_number": 2,
               "start_ms": 1159000,
               "title": "Ricordi di Londra. Capitolo II."
             },
             {
               "audio_url": "https://www.archive.org/download/ricordi_di_londra_2210_librivox/ricordidilondra_03_deamicis_64kb.mp3",
               "length_ms": 1314000,
+              "section_number": 3,
               "start_ms": 2535000,
               "title": "Ricordi di Londra. Capitolo III."
             },
             {
               "audio_url": "https://www.archive.org/download/ricordi_di_londra_2210_librivox/ricordidilondra_04_deamicis_64kb.mp3",
               "length_ms": 1320000,
+              "section_number": 4,
               "start_ms": 3849000,
               "title": "Ricordi di Londra. Capitolo IV."
             },
             {
               "audio_url": "https://www.archive.org/download/ricordi_di_londra_2210_librivox/ricordidilondra_05_deamicis_64kb.mp3",
               "length_ms": 777000,
+              "section_number": 5,
               "start_ms": 5169000,
               "title": "Un' escursione nei quartieri poveri di Londra. Capitolo I."
             },
             {
               "audio_url": "https://www.archive.org/download/ricordi_di_londra_2210_librivox/ricordidilondra_06_deamicis_64kb.mp3",
               "length_ms": 2821000,
+              "section_number": 6,
               "start_ms": 5946000,
               "title": "Un' escursione nei quartieri poveri di Londra. Capitolo II."
             }
@@ -6391,7 +6398,12 @@
           "cover_url": "https://archive.org/download/ricordi_di_londra_2210_librivox/ricordilondra_2210.jpg",
           "id": "claudia-caldi",
           "language": "it",
+          "librivox_genres": [
+            "Travel & Geography",
+            "Memoirs"
+          ],
           "librivox_id": 18220,
+          "librivox_title": "Ricordi di Londra, seguiti da Un' escursione nei quartieri poveri di Londra",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/ricordi-di-londra-by-edmondo-de-amicis/",
@@ -6539,7 +6551,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt11/Ricordi_Parigi_1111.jpg",
           "id": "davide-lequile",
           "language": "it",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Travel & Geography"
+          ],
           "librivox_id": 1577,
+          "librivox_title": "Ricordi di Parigi",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/ricordi-di-parigi-by-edmondo-de-amicis/",
@@ -7635,96 +7652,144 @@
             {
               "audio_url": "https://www.archive.org/download/riddle_2406_librivox/riddleandother_01_delamare_64kb.mp3",
               "length_ms": 2160000,
+              "readers": [
+                "rita-boutros"
+              ],
               "start_ms": 0,
               "title": "The Almond Tree Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_2406_librivox/riddleandother_02_delamare_64kb.mp3",
               "length_ms": 2092000,
+              "readers": [
+                "rita-boutros"
+              ],
               "start_ms": 2160000,
               "title": "The Almond Tree Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_2406_librivox/riddleandother_03_delamare_64kb.mp3",
               "length_ms": 1357000,
+              "readers": [
+                "cbteddy"
+              ],
               "start_ms": 4252000,
               "title": "The Count's Courtship"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_2406_librivox/riddleandother_04_delamare_64kb.mp3",
               "length_ms": 1434000,
+              "readers": [
+                "april6090"
+              ],
               "start_ms": 5609000,
               "title": "The Looking Glass"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_2406_librivox/riddleandother_05_delamare_64kb.mp3",
               "length_ms": 2084000,
+              "readers": [
+                "natalie-fortier"
+              ],
               "start_ms": 7043000,
               "title": "Miss Duveen"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_2406_librivox/riddleandother_06_delamare_64kb.mp3",
               "length_ms": 908000,
+              "readers": [
+                "alysia"
+              ],
               "start_ms": 9127000,
               "title": "Selina's Parable"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_2406_librivox/riddleandother_07_delamare_64kb.mp3",
               "length_ms": 4317000,
+              "readers": [
+                "ben-tucker"
+              ],
               "start_ms": 10035000,
               "title": "Seaton's Aunt"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_2406_librivox/riddleandother_08_delamare_64kb.mp3",
               "length_ms": 1870000,
+              "readers": [
+                "rita-boutros"
+              ],
               "start_ms": 14352000,
               "title": "The Bird of Travel"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_2406_librivox/riddleandother_09_delamare_64kb.mp3",
               "length_ms": 1324000,
+              "readers": [
+                "alysia"
+              ],
               "start_ms": 16222000,
               "title": "The Bowl"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_2406_librivox/riddleandother_10_delamare_64kb.mp3",
               "length_ms": 1113000,
+              "readers": [
+                "nevetha-ramesh"
+              ],
               "start_ms": 17546000,
               "title": "The Three Friends"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_2406_librivox/riddleandother_11_delamare_64kb.mp3",
               "length_ms": 3277000,
+              "readers": [
+                "bonita"
+              ],
               "start_ms": 18659000,
               "title": "Lispet, Lispett & Vaine"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_2406_librivox/riddleandother_12_delamare_64kb.mp3",
               "length_ms": 2706000,
+              "readers": [
+                "ben-tucker"
+              ],
               "start_ms": 21936000,
               "title": "The Tree"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_2406_librivox/riddleandother_13_delamare_64kb.mp3",
               "length_ms": 3979000,
+              "readers": [
+                "ben-tucker"
+              ],
               "start_ms": 24642000,
               "title": "Out of the Deep"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_2406_librivox/riddleandother_14_delamare_64kb.mp3",
               "length_ms": 1518000,
+              "readers": [
+                "sabrina-warren"
+              ],
               "start_ms": 28621000,
               "title": "The Creatures"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_2406_librivox/riddleandother_15_delamare_64kb.mp3",
               "length_ms": 573000,
+              "readers": [
+                "ben-tucker"
+              ],
               "start_ms": 30139000,
               "title": "The Riddle"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_2406_librivox/riddleandother_16_delamare_64kb.mp3",
               "length_ms": 1041000,
+              "readers": [
+                "timbray-shafer"
+              ],
               "start_ms": 30712000,
               "title": "The Vats"
             }
@@ -7733,7 +7798,12 @@
           "cover_url": "https://archive.org/download/riddle_2406_librivox/riddleandotherstories_2406.jpg",
           "id": "rita-boutros",
           "language": "en",
+          "librivox_genres": [
+            "Horror & Supernatural Fiction",
+            "Fantasy Fiction"
+          ],
           "librivox_id": 20037,
+          "librivox_title": "Riddle and Other Stories",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-riddle-and-other-stories-by-walter-de-la-mare-2/",
@@ -8757,7 +8827,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt6/Riddle_of_the_Frozen_Flame_1110.jpg",
           "id": "ruth-golding",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction",
+            "Detective Fiction"
+          ],
           "librivox_id": 4380,
+          "librivox_title": "Riddle of the Frozen Flame",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-riddle-of-the-frozen-flame-by-mary-e-hanshew-and-thomas-w-hanshew/",
@@ -8961,7 +9036,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt20/riddle_purple_emperor_1207.jpg",
           "id": "ruth-golding",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction",
+            "Detective Fiction"
+          ],
           "librivox_id": 3911,
+          "librivox_title": "Riddle of the Purple Emperor",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-riddle-of-the-purple-emperor-by-m-e-and-t-w-hanshew/",
@@ -9019,183 +9099,310 @@
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_00_haeckel_64kb.mp3",
               "length_ms": 453000,
+              "readers": [
+                "april-gonzales"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_01_haeckel_64kb.mp3",
               "length_ms": 2943000,
+              "readers": [
+                "cynthia-moyer"
+              ],
+              "section_number": 1,
               "start_ms": 453000,
               "title": "Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_02_haeckel_64kb.mp3",
               "length_ms": 1917000,
+              "readers": [
+                "bala"
+              ],
+              "section_number": 2,
               "start_ms": 3396000,
               "title": "Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_03_haeckel_64kb.mp3",
               "length_ms": 1651000,
+              "readers": [
+                "nathan-dickey"
+              ],
+              "section_number": 3,
               "start_ms": 5313000,
               "title": "Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_04_haeckel_64kb.mp3",
               "length_ms": 2894000,
+              "readers": [
+                "cynthia-moyer"
+              ],
+              "section_number": 4,
               "start_ms": 6964000,
               "title": "Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_05_haeckel_64kb.mp3",
               "length_ms": 2364000,
+              "readers": [
+                "384403"
+              ],
+              "section_number": 5,
               "start_ms": 9858000,
               "title": "Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_06_haeckel_64kb.mp3",
               "length_ms": 1063000,
+              "readers": [
+                "chiquito-crasto"
+              ],
+              "section_number": 6,
               "start_ms": 12222000,
               "title": "Chapter 6 Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_07_haeckel_64kb.mp3",
               "length_ms": 1350000,
+              "readers": [
+                "chiquito-crasto"
+              ],
+              "section_number": 7,
               "start_ms": 13285000,
               "title": "Chapter 6 Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_08_haeckel_64kb.mp3",
               "length_ms": 1391000,
+              "readers": [
+                "chiquito-crasto"
+              ],
+              "section_number": 8,
               "start_ms": 14635000,
               "title": "Chapter 7 Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_09_haeckel_64kb.mp3",
               "length_ms": 1467000,
+              "readers": [
+                "chiquito-crasto"
+              ],
+              "section_number": 9,
               "start_ms": 16026000,
               "title": "Chapter 7 Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_10_haeckel_64kb.mp3",
               "length_ms": 1733000,
+              "readers": [
+                "chiquito-crasto"
+              ],
+              "section_number": 10,
               "start_ms": 17493000,
               "title": "Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_11_haeckel_64kb.mp3",
               "length_ms": 1017000,
+              "readers": [
+                "chiquito-crasto"
+              ],
+              "section_number": 11,
               "start_ms": 19226000,
               "title": "Chapter 9 Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_12_haeckel_64kb.mp3",
               "length_ms": 1499000,
+              "readers": [
+                "chiquito-crasto"
+              ],
+              "section_number": 12,
               "start_ms": 20243000,
               "title": "Chapter 9 Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_13_haeckel_64kb.mp3",
               "length_ms": 2289000,
+              "readers": [
+                "mike-pelton"
+              ],
+              "section_number": 13,
               "start_ms": 21742000,
               "title": "Chapter 10"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_14_haeckel_64kb.mp3",
               "length_ms": 1252000,
+              "readers": [
+                "nathan-dickey"
+              ],
+              "section_number": 14,
               "start_ms": 24031000,
               "title": "Chapter 11 Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_15_haeckel_64kb.mp3",
               "length_ms": 1557000,
+              "readers": [
+                "nathan-dickey"
+              ],
+              "section_number": 15,
               "start_ms": 25283000,
               "title": "Chapter 11 Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_16_haeckel_64kb.mp3",
               "length_ms": 1671000,
+              "readers": [
+                "cynthia-moyer"
+              ],
+              "section_number": 16,
               "start_ms": 26840000,
               "title": "Chapter 12 Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_17_haeckel_64kb.mp3",
               "length_ms": 1962000,
+              "readers": [
+                "cynthia-moyer"
+              ],
+              "section_number": 17,
               "start_ms": 28511000,
               "title": "Chapter 12 Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_18_haeckel_64kb.mp3",
               "length_ms": 987000,
+              "readers": [
+                "rdmagpie"
+              ],
+              "section_number": 18,
               "start_ms": 30473000,
               "title": "Chapter 13 Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_19_haeckel_64kb.mp3",
               "length_ms": 1137000,
+              "readers": [
+                "rdmagpie"
+              ],
+              "section_number": 19,
               "start_ms": 31460000,
               "title": "Chapter 13 Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_20_haeckel_64kb.mp3",
               "length_ms": 1403000,
+              "readers": [
+                "nathan-dickey"
+              ],
+              "section_number": 20,
               "start_ms": 32597000,
               "title": "Chapter 14 Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_21_haeckel_64kb.mp3",
               "length_ms": 1497000,
+              "readers": [
+                "demosthenes-librivox-7687"
+              ],
+              "section_number": 21,
               "start_ms": 34000000,
               "title": "Chapter 14 Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_22_haeckel_64kb.mp3",
               "length_ms": 1780000,
+              "readers": [
+                "h-hubbard"
+              ],
+              "section_number": 22,
               "start_ms": 35497000,
               "title": "Chapter 15"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_23_haeckel_64kb.mp3",
               "length_ms": 1957000,
+              "readers": [
+                "mike-pelton"
+              ],
+              "section_number": 23,
               "start_ms": 37277000,
               "title": "Chapter 16"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_24_haeckel_64kb.mp3",
               "length_ms": 1420000,
+              "readers": [
+                "j-rimby"
+              ],
+              "section_number": 24,
               "start_ms": 39234000,
               "title": "Chapter 17 Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_25_haeckel_64kb.mp3",
               "length_ms": 1356000,
+              "readers": [
+                "nathan-dickey"
+              ],
+              "section_number": 25,
               "start_ms": 40654000,
               "title": "Chapter 17 Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_26_haeckel_64kb.mp3",
               "length_ms": 1888000,
+              "readers": [
+                "nathan-dickey"
+              ],
+              "section_number": 26,
               "start_ms": 42010000,
               "title": "Chapter 18"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_27_haeckel_64kb.mp3",
               "length_ms": 2879000,
+              "readers": [
+                "cynthia-moyer"
+              ],
+              "section_number": 27,
               "start_ms": 43898000,
               "title": "Chapter 19"
             },
             {
               "audio_url": "https://www.archive.org/download/riddle_universe_1301_librivox/riddleoftheuniverse_28_haeckel_64kb.mp3",
               "length_ms": 2662000,
+              "readers": [
+                "cynthia-moyer"
+              ],
+              "section_number": 28,
               "start_ms": 46777000,
               "title": "Chapter 20"
             }
           ],
           "copyright_year": 1901,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt31/riddleuniverse_1306.jpg",
+          "credits": [
+            {
+              "person": "joseph-martin-mccabe",
+              "role": "translator"
+            }
+          ],
           "id": "april-gonzales",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Philosophy"
+          ],
           "librivox_id": 6806,
+          "librivox_title": "Riddle of the Universe",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-riddle-of-the-universe-by-ernst-haeckel/",
@@ -9421,7 +9628,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt29/riddle_ring_1302.jpg",
           "id": "ruth-golding",
           "language": "en",
+          "librivox_genres": [
+            "Crime & Mystery Fiction",
+            "Romance",
+            "Published 1800 -1900"
+          ],
           "librivox_id": 5316,
+          "librivox_title": "Riddle Ring",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-riddle-ring-by-justin-mccarthy/",
@@ -10223,7 +10436,11 @@
           "cover_url": "https://archive.org/download/ride_across_the_peloponnese_1905_librivox/peloponnese_1905.jpg",
           "id": "rob-marland",
           "language": "en",
+          "librivox_genres": [
+            "Travel & Geography"
+          ],
           "librivox_id": 14083,
+          "librivox_title": "Ride Across the Peloponnese",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-ride-across-the-peloponnese-by-george-macmillan/",
@@ -13572,114 +13789,133 @@
             {
               "audio_url": "https://www.archive.org/download/ride_proud_rebel_1312_librivox/rideproudrebel_00_norton_64kb.mp3",
               "length_ms": 159000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/ride_proud_rebel_1312_librivox/rideproudrebel_01_norton_64kb.mp3",
               "length_ms": 1602000,
+              "section_number": 1,
               "start_ms": 159000,
               "title": "Ride with Morgan"
             },
             {
               "audio_url": "https://www.archive.org/download/ride_proud_rebel_1312_librivox/rideproudrebel_02_norton_64kb.mp3",
               "length_ms": 1584000,
+              "section_number": 2,
               "start_ms": 1761000,
               "title": "Guns in the Night"
             },
             {
               "audio_url": "https://www.archive.org/download/ride_proud_rebel_1312_librivox/rideproudrebel_03_norton_64kb.mp3",
               "length_ms": 1577000,
+              "section_number": 3,
               "start_ms": 3345000,
               "title": "On the Run--"
             },
             {
               "audio_url": "https://www.archive.org/download/ride_proud_rebel_1312_librivox/rideproudrebel_04_norton_64kb.mp3",
               "length_ms": 1504000,
+              "section_number": 4,
               "start_ms": 4922000,
               "title": "The Eleventh Ohio Cavalry"
             },
             {
               "audio_url": "https://www.archive.org/download/ride_proud_rebel_1312_librivox/rideproudrebel_05_norton_64kb.mp3",
               "length_ms": 1477000,
+              "section_number": 5,
               "start_ms": 6426000,
               "title": "Bardstown Surrenders"
             },
             {
               "audio_url": "https://www.archive.org/download/ride_proud_rebel_1312_librivox/rideproudrebel_06_norton_64kb.mp3",
               "length_ms": 1386000,
+              "section_number": 6,
               "start_ms": 7903000,
               "title": "Horse Trade"
             },
             {
               "audio_url": "https://www.archive.org/download/ride_proud_rebel_1312_librivox/rideproudrebel_07_norton_64kb.mp3",
               "length_ms": 1473000,
+              "section_number": 7,
               "start_ms": 9289000,
               "title": "A Mule for the River"
             },
             {
               "audio_url": "https://www.archive.org/download/ride_proud_rebel_1312_librivox/rideproudrebel_08_norton_64kb.mp3",
               "length_ms": 1551000,
+              "section_number": 8,
               "start_ms": 10762000,
               "title": "Happy Birthday, Soldier!"
             },
             {
               "audio_url": "https://www.archive.org/download/ride_proud_rebel_1312_librivox/rideproudrebel_09_norton_64kb.mp3",
               "length_ms": 1440000,
+              "section_number": 9,
               "start_ms": 12313000,
               "title": "One More River to Cross"
             },
             {
               "audio_url": "https://www.archive.org/download/ride_proud_rebel_1312_librivox/rideproudrebel_10_norton_64kb.mp3",
               "length_ms": 1547000,
+              "section_number": 10,
               "start_ms": 13753000,
               "title": "\"Dismount! Prepare to Fight Gunboats!\""
             },
             {
               "audio_url": "https://www.archive.org/download/ride_proud_rebel_1312_librivox/rideproudrebel_11_norton_64kb.mp3",
               "length_ms": 1452000,
+              "section_number": 11,
               "start_ms": 15300000,
               "title": "The Road to Nashville"
             },
             {
               "audio_url": "https://www.archive.org/download/ride_proud_rebel_1312_librivox/rideproudrebel_12_norton_64kb.mp3",
               "length_ms": 1514000,
+              "section_number": 12,
               "start_ms": 16752000,
               "title": "Guerillas"
             },
             {
               "audio_url": "https://www.archive.org/download/ride_proud_rebel_1312_librivox/rideproudrebel_13_norton_64kb.mp3",
               "length_ms": 1543000,
+              "section_number": 13,
               "start_ms": 18266000,
               "title": "Disaster"
             },
             {
               "audio_url": "https://www.archive.org/download/ride_proud_rebel_1312_librivox/rideproudrebel_14_norton_64kb.mp3",
               "length_ms": 1598000,
+              "section_number": 14,
               "start_ms": 19809000,
               "title": "Hell in Tennessee"
             },
             {
               "audio_url": "https://www.archive.org/download/ride_proud_rebel_1312_librivox/rideproudrebel_15_norton_64kb.mp3",
               "length_ms": 1372000,
+              "section_number": 15,
               "start_ms": 21407000,
               "title": "Independent Scout"
             },
             {
               "audio_url": "https://www.archive.org/download/ride_proud_rebel_1312_librivox/rideproudrebel_16_norton_64kb.mp3",
               "length_ms": 1373000,
+              "section_number": 16,
               "start_ms": 22779000,
               "title": "Missing in Action"
             },
             {
               "audio_url": "https://www.archive.org/download/ride_proud_rebel_1312_librivox/rideproudrebel_17_norton_64kb.mp3",
               "length_ms": 1510000,
+              "section_number": 17,
               "start_ms": 24152000,
               "title": "Poor Rebel Soldier"
             },
             {
               "audio_url": "https://www.archive.org/download/ride_proud_rebel_1312_librivox/rideproudrebel_18_norton_64kb.mp3",
               "length_ms": 1649000,
+              "section_number": 18,
               "start_ms": 25662000,
               "title": "Texas Spurs"
             }
@@ -13688,7 +13924,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/Ride_Proud_Rebel_1312.jpg",
           "id": "richard-kilmer-1942-2022",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Historical Fiction",
+            "Action & Adventure"
+          ],
           "librivox_id": 8304,
+          "librivox_title": "Ride Proud, Rebel!",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/ride-proud-rebel-by-andre-norton/",

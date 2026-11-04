@@ -1413,7 +1413,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt18/wind_1205.jpg",
           "id": "roger-melin",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 5178,
+          "librivox_title": "Way of the Wind",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-way-of-the-wind-by-zoe-anderson-norris/",
@@ -2682,36 +2686,64 @@
             {
               "audio_url": "https://www.archive.org/download/way_of_world_1201_librivox/wayoftheworld_0_congreve_64kb.mp3",
               "length_ms": 939000,
+              "readers": [
+                "martin-geeson"
+              ],
               "start_ms": 0,
               "title": "Introductory Section and Dramatis Personae"
             },
             {
               "audio_url": "https://www.archive.org/download/way_of_world_1201_librivox/wayoftheworld_1_congreve_64kb.mp3",
               "length_ms": 1626000,
+              "readers": [
+                "mil-nicholson",
+                "bish",
+                "dublingothic"
+              ],
               "start_ms": 939000,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/way_of_world_1201_librivox/wayoftheworld_2_congreve_64kb.mp3",
               "length_ms": 1607000,
+              "readers": [
+                "lucy-perry",
+                "algy-pug",
+                "malane"
+              ],
               "start_ms": 2565000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/way_of_world_1201_librivox/wayoftheworld_3_congreve_64kb.mp3",
               "length_ms": 2559000,
+              "readers": [
+                "phil-chenevert",
+                "carol-box",
+                "bob-gonzalez"
+              ],
               "start_ms": 4172000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/way_of_world_1201_librivox/wayoftheworld_4_congreve_64kb.mp3",
               "length_ms": 2154000,
+              "readers": [
+                "liberty-stump",
+                "thebicyclethief",
+                "helen-falconer"
+              ],
               "start_ms": 6731000,
               "title": "Act 4"
             },
             {
               "audio_url": "https://www.archive.org/download/way_of_world_1201_librivox/wayoftheworld_5_congreve_64kb.mp3",
               "length_ms": 2165000,
+              "readers": [
+                "bev-j-stevens",
+                "nigel-boydell",
+                "maria-calderazzo"
+              ],
               "start_ms": 8885000,
               "title": "Act 5 and Epilogue"
             }
@@ -2720,7 +2752,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt19/Way_of_the_World_1209.jpg",
           "id": "martin-geeson",
           "language": "en",
+          "librivox_genres": [
+            "Plays"
+          ],
           "librivox_id": 5693,
+          "librivox_title": "Way of the World",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-way-of-the-world-by-william-congreve/",
@@ -7314,7 +7350,11 @@
           "cover_url": "https://archive.org/download/waytowillpower_1702_librivox/thewaytowillpower_1702.jpg",
           "id": "loren-eaton",
           "language": "en",
+          "librivox_genres": [
+            "Self-Help"
+          ],
           "librivox_id": 11522,
+          "librivox_title": "Way to Will-Power",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-way-to-will-power-by-henry-hazlitt/",

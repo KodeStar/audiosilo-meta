@@ -5561,84 +5561,98 @@
             {
               "audio_url": "https://www.archive.org/download/kingalfred_1702_librivox/kingalfred_00_abbott_64kb.mp3",
               "length_ms": 96000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/kingalfred_1702_librivox/kingalfred_01_abbott_64kb.mp3",
               "length_ms": 1416000,
+              "section_number": 1,
               "start_ms": 96000,
               "title": "I. The Britons"
             },
             {
               "audio_url": "https://www.archive.org/download/kingalfred_1702_librivox/kingalfred_02_abbott_64kb.mp3",
               "length_ms": 1620000,
+              "section_number": 2,
               "start_ms": 1512000,
               "title": "II. The Anglo-Saxons"
             },
             {
               "audio_url": "https://www.archive.org/download/kingalfred_1702_librivox/kingalfred_03_abbott_64kb.mp3",
               "length_ms": 1256000,
+              "section_number": 3,
               "start_ms": 3132000,
               "title": "III. The Danes"
             },
             {
               "audio_url": "https://www.archive.org/download/kingalfred_1702_librivox/kingalfred_04_abbott_64kb.mp3",
               "length_ms": 1340000,
+              "section_number": 4,
               "start_ms": 4388000,
               "title": "IV. Alfred's Early Years"
             },
             {
               "audio_url": "https://www.archive.org/download/kingalfred_1702_librivox/kingalfred_05_abbott_64kb.mp3",
               "length_ms": 1386000,
+              "section_number": 5,
               "start_ms": 5728000,
               "title": "V. The State of England"
             },
             {
               "audio_url": "https://www.archive.org/download/kingalfred_1702_librivox/kingalfred_06_abbott_64kb.mp3",
               "length_ms": 1283000,
+              "section_number": 6,
               "start_ms": 7114000,
               "title": "VI. Alfred's Accession to the Throne"
             },
             {
               "audio_url": "https://www.archive.org/download/kingalfred_1702_librivox/kingalfred_07_abbott_64kb.mp3",
               "length_ms": 1488000,
+              "section_number": 7,
               "start_ms": 8397000,
               "title": "VII. Reverses"
             },
             {
               "audio_url": "https://www.archive.org/download/kingalfred_1702_librivox/kingalfred_08_abbott_64kb.mp3",
               "length_ms": 1049000,
+              "section_number": 8,
               "start_ms": 9885000,
               "title": "VIII. The Seclusion"
             },
             {
               "audio_url": "https://www.archive.org/download/kingalfred_1702_librivox/kingalfred_09_abbott_64kb.mp3",
               "length_ms": 1279000,
+              "section_number": 9,
               "start_ms": 10934000,
               "title": "IX. Reassembling of the Army"
             },
             {
               "audio_url": "https://www.archive.org/download/kingalfred_1702_librivox/kingalfred_10_abbott_64kb.mp3",
               "length_ms": 1317000,
+              "section_number": 10,
               "start_ms": 12213000,
               "title": "X. The Victory over the Danes"
             },
             {
               "audio_url": "https://www.archive.org/download/kingalfred_1702_librivox/kingalfred_11_abbott_64kb.mp3",
               "length_ms": 1379000,
+              "section_number": 11,
               "start_ms": 13530000,
               "title": "XI. The Reign"
             },
             {
               "audio_url": "https://www.archive.org/download/kingalfred_1702_librivox/kingalfred_12_abbott_64kb.mp3",
               "length_ms": 1143000,
+              "section_number": 12,
               "start_ms": 14909000,
               "title": "XII. The Close of Life"
             },
             {
               "audio_url": "https://www.archive.org/download/kingalfred_1702_librivox/kingalfred_13_abbott_64kb.mp3",
               "length_ms": 2039000,
+              "section_number": 13,
               "start_ms": 16052000,
               "title": "XIII. The Sequel"
             }
@@ -5646,7 +5660,12 @@
           "cover_url": "https://archive.org/download/kingalfred_1702_librivox/king_alfred_1702.jpg",
           "id": "ryan-cherrick",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "Middle Ages/Middle History"
+          ],
           "librivox_id": 11596,
+          "librivox_title": "King Alfred of England",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/king-alfred-of-england-by-jacob-abbott/",
@@ -5807,7 +5826,11 @@
           "cover_url": "https://archive.org/download/king_baronage_1712_librivox/king_baronage_1712.jpg",
           "id": "pamela-nagami",
           "language": "en",
+          "librivox_genres": [
+            "Middle Ages/Middle History"
+          ],
           "librivox_id": 12424,
+          "librivox_title": "King and Baronage (A.D. 1135-1327)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/king-and-baronage-by-william-holden-hutton/",
@@ -6757,7 +6780,11 @@
           "cover_url": "https://archive.org/download/kingandparliament_1708_librivox/king_parliament_1708.jpg",
           "id": "pamela-nagami",
           "language": "en",
+          "librivox_genres": [
+            "Early Modern"
+          ],
           "librivox_id": 12089,
+          "librivox_title": "King and Parliament (A.D. 1603-1714)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/king-and-parliament-by-george-henry-wakeling/",
@@ -7974,7 +8001,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt/King_Arthur_and_his_Knights_1002.jpg",
           "id": "robin-cotter",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 1684,
+          "librivox_title": "King Arthur and His Knights",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/king-arthur-and-his-knights-by-maude-l-radford/",
@@ -8529,156 +8561,260 @@
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_00_malory_64kb.mp3",
               "length_ms": 1250000,
+              "readers": [
+                "ryan-williams"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_01_malory_64kb.mp3",
               "length_ms": 1344000,
+              "readers": [
+                "ryan-williams"
+              ],
+              "section_number": 1,
               "start_ms": 1250000,
               "title": "Merlin Foretells the Birth of Arthur"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_02_malory_64kb.mp3",
               "length_ms": 2028000,
+              "readers": [
+                "ryan-williams"
+              ],
+              "section_number": 2,
               "start_ms": 2594000,
               "title": "The Crowning of Arthur and the Sword Excalibur"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_03_malory_64kb.mp3",
               "length_ms": 1798000,
+              "readers": [
+                "ryan-williams"
+              ],
+              "section_number": 3,
               "start_ms": 4622000,
               "title": "Arthur Drives the Saxons from His Realm"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_04_malory_64kb.mp3",
               "length_ms": 1439000,
+              "readers": [
+                "ryan-williams"
+              ],
+              "section_number": 4,
               "start_ms": 6420000,
               "title": "The King's Many and Great Adventures"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_05_malory_64kb.mp3",
               "length_ms": 1727000,
+              "readers": [
+                "ryan-williams"
+              ],
+              "section_number": 5,
               "start_ms": 7859000,
               "title": "Sir Balin Fights with His Brother, Sir Balan"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_06_malory_64kb.mp3",
               "length_ms": 2068000,
+              "readers": [
+                "ryan-williams"
+              ],
+              "section_number": 6,
               "start_ms": 9586000,
               "title": "The Marriage of Arthur and Guinevere and the Founding of the Round Table"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_07_malory_64kb.mp3",
               "length_ms": 1515000,
+              "readers": [
+                "ryan-williams"
+              ],
+              "section_number": 7,
               "start_ms": 11654000,
               "title": "The Adventure of Arthur and Sir Accolon of Gaul"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_08_malory_64kb.mp3",
               "length_ms": 1558000,
+              "readers": [
+                "ryan-williams"
+              ],
+              "section_number": 8,
               "start_ms": 13169000,
               "title": "Arthur is Crowned Emperor at Rome"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_09_malory_64kb.mp3",
               "length_ms": 1560000,
+              "readers": [
+                "ryan-williams"
+              ],
+              "section_number": 9,
               "start_ms": 14727000,
               "title": "Sir Gawain and the Maid with the Narrow Sleeves"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_10_malory_64kb.mp3",
               "length_ms": 1279000,
+              "readers": [
+                "barry-eads"
+              ],
+              "section_number": 10,
               "start_ms": 16287000,
               "title": "The Adventures of Sir Lancelot, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_11_malory_64kb.mp3",
               "length_ms": 1450000,
+              "readers": [
+                "barry-eads"
+              ],
+              "section_number": 11,
               "start_ms": 17566000,
               "title": "The Adventures of Sir Lancelot, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_12_malory_64kb.mp3",
               "length_ms": 1319000,
+              "readers": [
+                "barry-eads"
+              ],
+              "section_number": 12,
               "start_ms": 19016000,
               "title": "The Adventures of Sir Beaumains or Sir Gareth, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_13_malory_64kb.mp3",
               "length_ms": 1154000,
+              "readers": [
+                "barry-eads"
+              ],
+              "section_number": 13,
               "start_ms": 20335000,
               "title": "The Adventures of Sir Beaumains or Sir Gareth, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_14_malory_64kb.mp3",
               "length_ms": 1251000,
+              "readers": [
+                "barry-eads"
+              ],
+              "section_number": 14,
               "start_ms": 21489000,
               "title": "The Adventures of Sir Beaumains or Sir Gareth, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_15_malory_64kb.mp3",
               "length_ms": 1337000,
+              "readers": [
+                "barry-eads"
+              ],
+              "section_number": 15,
               "start_ms": 22740000,
               "title": "The Adventures of Sir Tristram, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_16_malory_64kb.mp3",
               "length_ms": 1366000,
+              "readers": [
+                "barry-eads"
+              ],
+              "section_number": 16,
               "start_ms": 24077000,
               "title": "The Adventures of Sir Tristram, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_17_malory_64kb.mp3",
               "length_ms": 1469000,
+              "readers": [
+                "barry-eads"
+              ],
+              "section_number": 17,
               "start_ms": 25443000,
               "title": "The Adventures of Sir Tristram, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_18_malory_64kb.mp3",
               "length_ms": 1107000,
+              "readers": [
+                "barry-eads"
+              ],
+              "section_number": 18,
               "start_ms": 26912000,
               "title": "The Knights Go to Seek the Grail, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_19_malory_64kb.mp3",
               "length_ms": 1480000,
+              "readers": [
+                "barry-eads"
+              ],
+              "section_number": 19,
               "start_ms": 28019000,
               "title": "The Knights Go to Seek the Grail, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_20_malory_64kb.mp3",
               "length_ms": 1258000,
+              "readers": [
+                "barry-eads"
+              ],
+              "section_number": 20,
               "start_ms": 29499000,
               "title": "The Knights Go to Seek the Grail, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_21_malory_64kb.mp3",
               "length_ms": 1244000,
+              "readers": [
+                "barry-eads"
+              ],
+              "section_number": 21,
               "start_ms": 30757000,
               "title": "The Knights Go to Seek the Grail, Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_22_malory_64kb.mp3",
               "length_ms": 1081000,
+              "readers": [
+                "barry-eads"
+              ],
+              "section_number": 22,
               "start_ms": 32001000,
               "title": "Sir Lancelot and the Fair Elaine, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_23_malory_64kb.mp3",
               "length_ms": 1179000,
+              "readers": [
+                "barry-eads"
+              ],
+              "section_number": 23,
               "start_ms": 33082000,
               "title": "Sir Lancelot and the Fair Elaine, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_24_malory_64kb.mp3",
               "length_ms": 1031000,
+              "readers": [
+                "barry-eads"
+              ],
+              "section_number": 24,
               "start_ms": 34261000,
               "title": "The War Between Arthur and Lancelot and the Passing of Arthur, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_25_malory_64kb.mp3",
               "length_ms": 659000,
+              "readers": [
+                "barry-eads"
+              ],
+              "section_number": 25,
               "start_ms": 35292000,
               "title": "The War Between Arthur and Lancelot and the Passing of Arthur, Part 2"
             }
@@ -8687,7 +8823,12 @@
           "cover_url": "https://archive.org/download/kingarthurknightsofroundtable_2507_librivox/kingarthur_2507.jpg",
           "id": "ryan-williams",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 18945,
+          "librivox_title": "King Arthur and the Knights of the Round Table",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/king-arthur-and-the-knights-of-the-round-table-by-sir-thomas-malory/",
@@ -9278,36 +9419,110 @@
             {
               "audio_url": "https://www.archive.org/download/kingarthur_2402_librivox/kingarthur_0_dryden_64kb.mp3",
               "length_ms": 401000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Prologue and Dramatis Personae"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthur_2402_librivox/kingarthur_1_dryden_64kb.mp3",
               "length_ms": 1071000,
+              "readers": [
+                "algy-pug",
+                "alan-mapstone",
+                "greg-giordano",
+                "christine-rottger",
+                "hellocentral",
+                "beeswaxcandle",
+                "agnes-robert-behr",
+                "priamedes",
+                "iamshawn"
+              ],
+              "section_number": 1,
               "start_ms": 401000,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthur_2402_librivox/kingarthur_2_dryden_64kb.mp3",
               "length_ms": 1294000,
+              "readers": [
+                "algy-pug",
+                "toddhw",
+                "alan-mapstone",
+                "greg-giordano",
+                "larry-wilson",
+                "wayne-cooke",
+                "oogiesragdoll",
+                "christine-rottger",
+                "hellocentral",
+                "agnes-robert-behr",
+                "priamedes",
+                "iamshawn"
+              ],
+              "section_number": 2,
               "start_ms": 1472000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthur_2402_librivox/kingarthur_3_dryden_64kb.mp3",
               "length_ms": 1672000,
+              "readers": [
+                "algy-pug",
+                "toddhw",
+                "alan-mapstone",
+                "greg-giordano",
+                "larry-wilson",
+                "oogiesragdoll",
+                "christine-rottger",
+                "beeswaxcandle",
+                "inkell",
+                "agnes-robert-behr",
+                "priamedes"
+              ],
+              "section_number": 3,
               "start_ms": 2766000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthur_2402_librivox/kingarthur_4_dryden_64kb.mp3",
               "length_ms": 846000,
+              "readers": [
+                "algy-pug",
+                "toddhw",
+                "alan-mapstone",
+                "larry-wilson",
+                "christine-rottger",
+                "dc",
+                "beeswaxcandle",
+                "agnes-robert-behr"
+              ],
+              "section_number": 4,
               "start_ms": 4438000,
               "title": "Act 4"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthur_2402_librivox/kingarthur_5_dryden_64kb.mp3",
               "length_ms": 1197000,
+              "readers": [
+                "algy-pug",
+                "toddhw",
+                "rapunzelina",
+                "alan-mapstone",
+                "greg-giordano",
+                "larry-wilson",
+                "elijah-fisher",
+                "david-purdy",
+                "michelle-purdy",
+                "christine-rottger",
+                "hellocentral",
+                "beeswaxcandle",
+                "agnes-robert-behr",
+                "priamedes",
+                "iamshawn"
+              ],
+              "section_number": 5,
               "start_ms": 5284000,
               "title": "Act 5"
             }
@@ -9316,7 +9531,11 @@
           "cover_url": "https://archive.org/download/kingarthur_2402_librivox/king_arthur_2402.jpg",
           "id": "alan-mapstone",
           "language": "en",
+          "librivox_genres": [
+            "Comedy"
+          ],
           "librivox_id": 19754,
+          "librivox_title": "King Arthur",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/king-arthur-by-john-dryden/",
@@ -9386,30 +9605,77 @@
             {
               "audio_url": "https://www.archive.org/download/KingArthurADrama/kingarthurdrama_0_carr_64kb.mp3",
               "length_ms": 758000,
+              "readers": [
+                "elizabeth-klett",
+                "jason-mills",
+                "bethany-baldwin",
+                "brett-w-downey",
+                "algy-pug",
+                "amanda-friday",
+                "toddhw",
+                "peter-makus",
+                "grace",
+                "eden-rea-hedrick",
+                "charlotte-duckett",
+                "dwarner30uk",
+                "amaskill"
+              ],
               "start_ms": 0,
               "title": "Prologue - Excalibur"
             },
             {
               "audio_url": "https://www.archive.org/download/KingArthurADrama/kingarthurdrama_1_carr_64kb.mp3",
               "length_ms": 2219000,
+              "readers": [
+                "elizabeth-klett",
+                "jason-mills",
+                "bethany-baldwin",
+                "brett-w-downey",
+                "max-korlinge",
+                "amanda-friday",
+                "toddhw",
+                "eden-rea-hedrick",
+                "charlotte-duckett"
+              ],
               "start_ms": 758000,
               "title": "Act I - The Holy Grail"
             },
             {
               "audio_url": "https://www.archive.org/download/KingArthurADrama/kingarthurdrama_2_carr_64kb.mp3",
               "length_ms": 974000,
+              "readers": [
+                "elizabeth-klett",
+                "ric-f",
+                "amanda-friday",
+                "toddhw",
+                "eden-rea-hedrick",
+                "libby-gohn"
+              ],
               "start_ms": 2977000,
               "title": "Act II - The Queen's Maying"
             },
             {
               "audio_url": "https://www.archive.org/download/KingArthurADrama/kingarthurdrama_3_carr_64kb.mp3",
               "length_ms": 1584000,
+              "readers": [
+                "elizabeth-klett",
+                "amanda-friday",
+                "eden-rea-hedrick",
+                "libby-gohn",
+                "drakaunus"
+              ],
               "start_ms": 3951000,
               "title": "Act III - The Black Barge"
             },
             {
               "audio_url": "https://www.archive.org/download/KingArthurADrama/kingarthurdrama_4_carr_64kb.mp3",
               "length_ms": 1106000,
+              "readers": [
+                "elizabeth-klett",
+                "amanda-friday",
+                "eden-rea-hedrick",
+                "alan-mapstone"
+              ],
               "start_ms": 5535000,
               "title": "Act IV - The Passing of Arthur"
             }
@@ -9418,7 +9684,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt30/King_Arthur_1304.jpg",
           "id": "elizabeth-klett",
           "language": "en",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales",
+            "Tragedy"
+          ],
           "librivox_id": 7502,
+          "librivox_title": "King Arthur",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/king-arthur-a-drama-by-joseph-comyns-carr/",
@@ -9487,84 +9758,140 @@
             {
               "audio_url": "https://www.archive.org/download/kingarthursknights_1208_librivox/kingarthursknights_00_gilbert_64kb.mp3",
               "length_ms": 360000,
+              "readers": [
+                "april-gonzales"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 - Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthursknights_1208_librivox/kingarthursknights_01_gilbert_64kb.mp3",
               "length_ms": 2953000,
+              "readers": [
+                "shiromi"
+              ],
+              "section_number": 1,
               "start_ms": 360000,
               "title": "01 - Preface and How Arthur Was Made King and Won His Kingdom"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthursknights_1208_librivox/kingarthursknights_02_gilbert_64kb.mp3",
               "length_ms": 2152000,
+              "readers": [
+                "william-tomcho"
+              ],
+              "section_number": 2,
               "start_ms": 3313000,
               "title": "02 - Sir Balin and the Stroke Dolorous"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthursknights_1208_librivox/kingarthursknights_03_gilbert_64kb.mp3",
               "length_ms": 1990000,
+              "readers": [
+                "steve-mattingly"
+              ],
+              "section_number": 3,
               "start_ms": 5465000,
               "title": "03 - How Lancelot Was Made a Knight. The Four Witch Queens and the Adventures at the Chapel Perilous"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthursknights_1208_librivox/kingarthursknights_04_gilbert_64kb.mp3",
               "length_ms": 2539000,
+              "readers": [
+                "eden-rea-hedrick"
+              ],
+              "section_number": 4,
               "start_ms": 7455000,
               "title": "04 - The Knight of the Kitchen"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthursknights_1208_librivox/kingarthursknights_05_gilbert_64kb.mp3",
               "length_ms": 3148000,
+              "readers": [
+                "william-tomcho"
+              ],
+              "section_number": 5,
               "start_ms": 9994000,
               "title": "05 - How Sir Tristram Kept His Word"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthursknights_1208_librivox/kingarthursknights_06_gilbert_64kb.mp3",
               "length_ms": 3635000,
+              "readers": [
+                "peter-john-keeble"
+              ],
+              "section_number": 6,
               "start_ms": 13142000,
               "title": "06 - The Deeds of Sir Geraint"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthursknights_1208_librivox/kingarthursknights_07_gilbert_64kb.mp3",
               "length_ms": 2606000,
+              "readers": [
+                "cary-simz"
+              ],
+              "section_number": 7,
               "start_ms": 16777000,
               "title": "07 - How Sir Perceval Was Taught Chivalry, and Ended the Evil Wrought by Sir Balin's Dolorous Stroke"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthursknights_1208_librivox/kingarthursknights_08_gilbert_64kb.mp3",
               "length_ms": 2831000,
+              "readers": [
+                "cary-simz"
+              ],
+              "section_number": 8,
               "start_ms": 19383000,
               "title": "08 - How Sir Owen Won the Earldom of the Fountain"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthursknights_1208_librivox/kingarthursknights_09_gilbert_64kb.mp3",
               "length_ms": 1761000,
+              "readers": [
+                "eden-rea-hedrick"
+              ],
+              "section_number": 9,
               "start_ms": 22214000,
               "title": "09 - Of Sir Lancelot and the Fair Maid of Astolat"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthursknights_1208_librivox/kingarthursknights_10_gilbert_64kb.mp3",
               "length_ms": 2982000,
+              "readers": [
+                "john-trevithick"
+              ],
+              "section_number": 10,
               "start_ms": 23975000,
               "title": "10 - How the Three Good Knights Achieved the Holy Graal"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthursknights_1208_librivox/kingarthursknights_11_gilbert_64kb.mp3",
               "length_ms": 2926000,
+              "readers": [
+                "tamara-r-schwartz"
+              ],
+              "section_number": 11,
               "start_ms": 26957000,
               "title": "11 - Of the Plots of Sir Mordred; and How Sir Lancelot Saved the Queen"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthursknights_1208_librivox/kingarthursknights_12_gilbert_64kb.mp3",
               "length_ms": 2912000,
+              "readers": [
+                "tamara-r-schwartz"
+              ],
+              "section_number": 12,
               "start_ms": 29883000,
               "title": "12 - Of Sir Gawaine's Hatred, and the War with Sir Lancelot"
             },
             {
               "audio_url": "https://www.archive.org/download/kingarthursknights_1208_librivox/kingarthursknights_13_gilbert_64kb.mp3",
               "length_ms": 3728000,
+              "readers": [
+                "peter-john-keeble"
+              ],
+              "section_number": 13,
               "start_ms": 32795000,
               "title": "13 - Of the Rebellion of Mordred and the Death of King Arthur"
             }
@@ -9573,7 +9900,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt23/kingarthursknights_1210.jpg",
           "id": "april-gonzales",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction",
+            "Action & Adventure"
+          ],
           "librivox_id": 5287,
+          "librivox_title": "King Arthur's Knights: The Tales Retold for Boys & Girls",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/king-arthurs-knights-by-henry-gilbert/",
@@ -10799,264 +11131,308 @@
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_00_sinclair_64kb.mp3",
               "length_ms": 430000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Dedication and Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_01_sinclair_64kb.mp3",
               "length_ms": 1035000,
+              "section_number": 1,
               "start_ms": 430000,
               "title": "Book 1 - The Domain of King Coal; Sections 1-2"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_02_sinclair_64kb.mp3",
               "length_ms": 1116000,
+              "section_number": 2,
               "start_ms": 1465000,
               "title": "Book 1 - The Domain of King Coal; Sections 3-5"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_03_sinclair_64kb.mp3",
               "length_ms": 1122000,
+              "section_number": 3,
               "start_ms": 2581000,
               "title": "Book 1 - The Domain of King Coal; Sections 6-8"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_04_sinclair_64kb.mp3",
               "length_ms": 1129000,
+              "section_number": 4,
               "start_ms": 3703000,
               "title": "Book 1 - The Domain of King Coal; Sections 9-11"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_05_sinclair_64kb.mp3",
               "length_ms": 1214000,
+              "section_number": 5,
               "start_ms": 4832000,
               "title": "Book 1 - The Domain of King Coal; Sections 12-14"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_06_sinclair_64kb.mp3",
               "length_ms": 1164000,
+              "section_number": 6,
               "start_ms": 6046000,
               "title": "Book 1 - The Domain of King Coal; Sections 15-17"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_07_sinclair_64kb.mp3",
               "length_ms": 1049000,
+              "section_number": 7,
               "start_ms": 7210000,
               "title": "Book 1 - The Domain of King Coal; Sections 18-20"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_08_sinclair_64kb.mp3",
               "length_ms": 1156000,
+              "section_number": 8,
               "start_ms": 8259000,
               "title": "Book 1 - The Domain of King Coal; Sections 21-23"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_09_sinclair_64kb.mp3",
               "length_ms": 1078000,
+              "section_number": 9,
               "start_ms": 9415000,
               "title": "Book 1 - The Domain of King Coal; Sections 24-26"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_10_sinclair_64kb.mp3",
               "length_ms": 1026000,
+              "section_number": 10,
               "start_ms": 10493000,
               "title": "Book 1 - The Domain of King Coal; Sections 27-29"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_11_sinclair_64kb.mp3",
               "length_ms": 1326000,
+              "section_number": 11,
               "start_ms": 11519000,
               "title": "Book 2 - The Serfs of King Coal; Sections 1-3"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_12_sinclair_64kb.mp3",
               "length_ms": 1286000,
+              "section_number": 12,
               "start_ms": 12845000,
               "title": "Book 2 - The Serfs of King Coal; Sections 4-6"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_13_sinclair_64kb.mp3",
               "length_ms": 1089000,
+              "section_number": 13,
               "start_ms": 14131000,
               "title": "Book 2 - The Serfs of King Coal; Sections 7-8"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_14_sinclair_64kb.mp3",
               "length_ms": 1190000,
+              "section_number": 14,
               "start_ms": 15220000,
               "title": "Book 2 - The Serfs of King Coal; Sections 9-11"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_15_sinclair_64kb.mp3",
               "length_ms": 812000,
+              "section_number": 15,
               "start_ms": 16410000,
               "title": "Book 2 - The Serfs of King Coal; Sections 12-14"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_16_sinclair_64kb.mp3",
               "length_ms": 1203000,
+              "section_number": 16,
               "start_ms": 17222000,
               "title": "Book 2 - The Serfs of King Coal; Sections 15-17"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_17_sinclair_64kb.mp3",
               "length_ms": 1214000,
+              "section_number": 17,
               "start_ms": 18425000,
               "title": "Book 2 - The Serfs of King Coal; Sections 18-20"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_18_sinclair_64kb.mp3",
               "length_ms": 1117000,
+              "section_number": 18,
               "start_ms": 19639000,
               "title": "Book 2 - The Serfs of King Coal; Sections 21-23"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_19_sinclair_64kb.mp3",
               "length_ms": 1016000,
+              "section_number": 19,
               "start_ms": 20756000,
               "title": "Book 2 - The Serfs of King Coal; Sections 24-25"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_20_sinclair_64kb.mp3",
               "length_ms": 1112000,
+              "section_number": 20,
               "start_ms": 21772000,
               "title": "Book 2 - The Serfs of King Coal; Sections 26-28"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_21_sinclair_64kb.mp3",
               "length_ms": 1229000,
+              "section_number": 21,
               "start_ms": 22884000,
               "title": "Book 2 - The Serfs of King Coal; Sections 29-31"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_22_sinclair_64kb.mp3",
               "length_ms": 1408000,
+              "section_number": 22,
               "start_ms": 24113000,
               "title": "Book 2 - The Serfs of King Coal; Sections 32-34"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_23_sinclair_64kb.mp3",
               "length_ms": 1424000,
+              "section_number": 23,
               "start_ms": 25521000,
               "title": "Book 3 - The Henchmen of King Coal; Sections 1-3"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_24_sinclair_64kb.mp3",
               "length_ms": 1371000,
+              "section_number": 24,
               "start_ms": 26945000,
               "title": "Book 3 - The Henchmen of King Coal; Sections 4-6"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_25_sinclair_64kb.mp3",
               "length_ms": 1122000,
+              "section_number": 25,
               "start_ms": 28316000,
               "title": "Book 3 - The Henchmen of King Coal; Sections 7-9"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_26_sinclair_64kb.mp3",
               "length_ms": 1317000,
+              "section_number": 26,
               "start_ms": 29438000,
               "title": "Book 3 - The Henchmen of King Coal; Sections 10-12"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_27_sinclair_64kb.mp3",
               "length_ms": 899000,
+              "section_number": 27,
               "start_ms": 30755000,
               "title": "Book 3 - The Henchmen of King Coal; Sections 13-14"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_28_sinclair_64kb.mp3",
               "length_ms": 1042000,
+              "section_number": 28,
               "start_ms": 31654000,
               "title": "Book 3 - The Henchmen of King Coal; Sections 15-16"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_29_sinclair_64kb.mp3",
               "length_ms": 949000,
+              "section_number": 29,
               "start_ms": 32696000,
               "title": "Book 3 - The Henchmen of King Coal; Sections 17-19"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_30_sinclair_64kb.mp3",
               "length_ms": 1266000,
+              "section_number": 30,
               "start_ms": 33645000,
               "title": "Book 3 - The Henchmen of King Coal; Sections 20-22"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_31_sinclair_64kb.mp3",
               "length_ms": 1304000,
+              "section_number": 31,
               "start_ms": 34911000,
               "title": "Book 3 - The Henchmen of King Coal; Sections 23-25"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_32_sinclair_64kb.mp3",
               "length_ms": 1024000,
+              "section_number": 32,
               "start_ms": 36215000,
               "title": "Book 4 - The Will of King Coal; Sections 1-2"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_33_sinclair_64kb.mp3",
               "length_ms": 1438000,
+              "section_number": 33,
               "start_ms": 37239000,
               "title": "Book 4 - The Will of King Coal; Sections 3-5"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_34_sinclair_64kb.mp3",
               "length_ms": 1057000,
+              "section_number": 34,
               "start_ms": 38677000,
               "title": "Book 4 - The Will of King Coal; Sections 6-8"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_35_sinclair_64kb.mp3",
               "length_ms": 1474000,
+              "section_number": 35,
               "start_ms": 39734000,
               "title": "Book 4 - The Will of King Coal; Sections 9-11"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_36_sinclair_64kb.mp3",
               "length_ms": 1171000,
+              "section_number": 36,
               "start_ms": 41208000,
               "title": "Book 4 - The Will of King Coal; Sections 12-14"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_37_sinclair_64kb.mp3",
               "length_ms": 914000,
+              "section_number": 37,
               "start_ms": 42379000,
               "title": "Book 4 - The Will of King Coal; Sections 15-16"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_38_sinclair_64kb.mp3",
               "length_ms": 1370000,
+              "section_number": 38,
               "start_ms": 43293000,
               "title": "Book 4 - The Will of King Coal; Sections 17-20"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_39_sinclair_64kb.mp3",
               "length_ms": 1140000,
+              "section_number": 39,
               "start_ms": 44663000,
               "title": "Book 4 - The Will of King Coal; Sections 21-23"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_40_sinclair_64kb.mp3",
               "length_ms": 1408000,
+              "section_number": 40,
               "start_ms": 45803000,
               "title": "Book 4 - The Will of King Coal; Sections 24-26"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_41_sinclair_64kb.mp3",
               "length_ms": 1403000,
+              "section_number": 41,
               "start_ms": 47211000,
               "title": "Book 4 - The Will of King Coal; Sections 27-29"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_42_sinclair_64kb.mp3",
               "length_ms": 1387000,
+              "section_number": 42,
               "start_ms": 48614000,
               "title": "Book 4 - The Will of King Coal; Sections 30-32"
             },
             {
               "audio_url": "https://www.archive.org/download/king_coal_0908_librivox/kingcoal_43_sinclair_64kb.mp3",
               "length_ms": 1908000,
+              "section_number": 43,
               "start_ms": 50001000,
               "title": "Postscript"
             }
@@ -11065,7 +11441,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt5/King_Coal_1006.jpg",
           "id": "michelleharris",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 3116,
+          "librivox_title": "King Coal",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/king-coal-by-upton-sinclair/",
@@ -13039,7 +13419,13 @@
           "cover_url": "https://archive.org/download/king_edward_1_of_england_three_essays_2312_librivox/kingedwardI_2312.jpg",
           "id": "david-wales",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "Essays & Short Works",
+            "Middle Ages/Middle History"
+          ],
           "librivox_id": 19970,
+          "librivox_title": "King Edward I of England: Three Essays",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/king-edward-1-of-england-three-essays-by-tf-tout/",

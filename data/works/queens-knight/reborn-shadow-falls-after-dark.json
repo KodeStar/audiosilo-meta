@@ -9273,7 +9273,11 @@
           "cover_url": "https://archive.org/download/recalledtolife_1608_librivox/recalled_life_1608.jpg",
           "id": "jacquerie",
           "language": "en",
+          "librivox_genres": [
+            "Crime & Mystery Fiction"
+          ],
           "librivox_id": 10716,
+          "librivox_title": "Recalled to Life",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/recalled-to-life-by-grant-allen/",
@@ -9446,7 +9450,11 @@
           "cover_url": "https://archive.org/download/recalledtolife_2403_librivox/recalled_2403.jpg",
           "id": "mark-nelson",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 20329,
+          "librivox_title": "Recalled to Life",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/recalled-to-life-by-robert-silverberg/",
@@ -13847,24 +13855,36 @@
             {
               "audio_url": "https://www.archive.org/download/hersheys_baking_chocolate_2305_librivox/recipes_01_hersheychocolatecorporation_64kb.mp3",
               "length_ms": 195000,
+              "readers": [
+                "the-countess"
+              ],
               "start_ms": 0,
               "title": "Sauces and Fudge"
             },
             {
               "audio_url": "https://www.archive.org/download/hersheys_baking_chocolate_2305_librivox/recipes_02_hersheychocolatecorporation_64kb.mp3",
               "length_ms": 378000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 195000,
               "title": "Cakes and Frostings"
             },
             {
               "audio_url": "https://www.archive.org/download/hersheys_baking_chocolate_2305_librivox/recipes_03_hersheychocolatecorporation_64kb.mp3",
               "length_ms": 243000,
+              "readers": [
+                "inkell"
+              ],
               "start_ms": 573000,
               "title": "Desserts"
             },
             {
               "audio_url": "https://www.archive.org/download/hersheys_baking_chocolate_2305_librivox/recipes_04_hersheychocolatecorporation_64kb.mp3",
               "length_ms": 313000,
+              "readers": [
+                "c-b-seyfarth"
+              ],
               "start_ms": 816000,
               "title": "Cookies & Bevrages"
             }
@@ -13873,7 +13893,11 @@
           "cover_url": "https://archive.org/download/hersheys_baking_chocolate_2305_librivox/hersheydbakingchocolate_2306.jpg",
           "id": "the-countess",
           "language": "en",
+          "librivox_genres": [
+            "Cooking"
+          ],
           "librivox_id": 19342,
+          "librivox_title": "Recipes: Hershey's Baking Chocolate",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/recipes-hersheys-baking-chocolate-by-hershey-chocolate-corporation/",

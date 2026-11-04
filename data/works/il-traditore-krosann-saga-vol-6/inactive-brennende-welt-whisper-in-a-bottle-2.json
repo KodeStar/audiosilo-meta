@@ -2010,7 +2010,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/inakakyoshi_1311.jpg",
           "id": "ekzemplaro",
           "language": "ja",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 8046,
+          "librivox_title": "田舎教師 (Inaka Kyoshi)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/inakakyoshi-by-katai-tayama/",
@@ -3760,30 +3764,35 @@
             {
               "audio_url": "https://www.archive.org/download/aninauguraldissertationonpulmonaryconsumption_2210_librivox/inauguraldissertationonpulmonaryconsumption_00_delafield_64kb.mp3",
               "length_ms": 406000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/aninauguraldissertationonpulmonaryconsumption_2210_librivox/inauguraldissertationonpulmonaryconsumption_01_delafield_64kb.mp3",
               "length_ms": 1398000,
+              "section_number": 1,
               "start_ms": 406000,
               "title": "Consumption Characteristics and Causation."
             },
             {
               "audio_url": "https://www.archive.org/download/aninauguraldissertationonpulmonaryconsumption_2210_librivox/inauguraldissertationonpulmonaryconsumption_02_delafield_64kb.mp3",
               "length_ms": 605000,
+              "section_number": 2,
               "start_ms": 1804000,
               "title": "The Symptoms of Consumption"
             },
             {
               "audio_url": "https://www.archive.org/download/aninauguraldissertationonpulmonaryconsumption_2210_librivox/inauguraldissertationonpulmonaryconsumption_03_delafield_64kb.mp3",
               "length_ms": 1899000,
+              "section_number": 3,
               "start_ms": 2409000,
               "title": "The Proximate Cause of The Disease"
             },
             {
               "audio_url": "https://www.archive.org/download/aninauguraldissertationonpulmonaryconsumption_2210_librivox/inauguraldissertationonpulmonaryconsumption_04_delafield_64kb.mp3",
               "length_ms": 793000,
+              "section_number": 4,
               "start_ms": 4308000,
               "title": "Diet and Regimen of Consumption Patients."
             }
@@ -3792,7 +3801,12 @@
           "cover_url": "https://archive.org/download/aninauguraldissertationonpulmonaryconsumption_2210_librivox/pulmonaryconsumption_2210.jpg",
           "id": "inkell",
           "language": "en",
+          "librivox_genres": [
+            "Medical",
+            "Modern (19th C)"
+          ],
           "librivox_id": 18272,
+          "librivox_title": "Inaugural Dissertation on Pulmonary Consumption",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/an-inaugural-dissertation-on-pulmonary-consumption-by-edward-delafield/",
@@ -4647,168 +4661,252 @@
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_01_bingham_64kb.mp3",
               "length_ms": 1294000,
+              "readers": [
+                "elmay"
+              ],
               "start_ms": 0,
               "title": "01 - Crossing the Desert, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_02_bingham_64kb.mp3",
               "length_ms": 1239000,
+              "readers": [
+                "elmay"
+              ],
               "start_ms": 1294000,
               "title": "02 - Crossing the Desert, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_03_bingham_64kb.mp3",
               "length_ms": 1751000,
+              "readers": [
+                "d-a-frank"
+              ],
               "start_ms": 2533000,
               "title": "03 - Climbing Coropuna, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_04_bingham_64kb.mp3",
               "length_ms": 1409000,
+              "readers": [
+                "d-a-frank"
+              ],
               "start_ms": 4284000,
               "title": "04 - Climbing Coropuna, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_05_bingham_64kb.mp3",
               "length_ms": 1248000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 5693000,
               "title": "05 - To Parinacochas, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_06_bingham_64kb.mp3",
               "length_ms": 1349000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 6941000,
               "title": "06 - To Parinacochas, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_07_bingham_64kb.mp3",
               "length_ms": 1007000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 8290000,
               "title": "07 - Flamingo Lake, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_08_bingham_64kb.mp3",
               "length_ms": 1318000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 9297000,
               "title": "08 - Flamingo Lake, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_09_bingham_64kb.mp3",
               "length_ms": 1733000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 10615000,
               "title": "09 - Titicaca"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_10_bingham_64kb.mp3",
               "length_ms": 1052000,
+              "readers": [
+                "elmay"
+              ],
               "start_ms": 12348000,
               "title": "10 - The Vilcanota Country and the Peruvian Highlanders, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_11_bingham_64kb.mp3",
               "length_ms": 1271000,
+              "readers": [
+                "elmay"
+              ],
               "start_ms": 13400000,
               "title": "11 - The Vilcanota Country and the Peruvian Highlanders, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_12_bingham_64kb.mp3",
               "length_ms": 1260000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 14671000,
               "title": "12 - The Valley of the Huatanay, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_13_bingham_64kb.mp3",
               "length_ms": 1327000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 15931000,
               "title": "13 - The Valley of the Huatanay, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_14_bingham_64kb.mp3",
               "length_ms": 1367000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 17258000,
               "title": "14 - The Oldest City in South America"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_15_bingham_64kb.mp3",
               "length_ms": 1340000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 18625000,
               "title": "15 - The Last Four Incas, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_16_bingham_64kb.mp3",
               "length_ms": 1591000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 19965000,
               "title": "16 - The Last Four Incas, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_17_bingham_64kb.mp3",
               "length_ms": 958000,
+              "readers": [
+                "mich-elle"
+              ],
               "start_ms": 21556000,
               "title": "17 - Searching for the Last Inca Capital, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_18_bingham_64kb.mp3",
               "length_ms": 917000,
+              "readers": [
+                "mich-elle"
+              ],
               "start_ms": 22514000,
               "title": "18 - Searching for the Last Inca Capital, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_19_bingham_64kb.mp3",
               "length_ms": 1245000,
+              "readers": [
+                "mich-elle"
+              ],
               "start_ms": 23431000,
               "title": "19 - The Search Continued, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_20_bingham_64kb.mp3",
               "length_ms": 937000,
+              "readers": [
+                "mich-elle"
+              ],
               "start_ms": 24676000,
               "title": "20 - The Search Continued, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_21_bingham_64kb.mp3",
               "length_ms": 1457000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 25613000,
               "title": "21 - The Fortress of Uiticos and the House of the Sun"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_22_bingham_64kb.mp3",
               "length_ms": 1182000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 27070000,
               "title": "22 - Vilcabamba"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_23_bingham_64kb.mp3",
               "length_ms": 1411000,
+              "readers": [
+                "elmay"
+              ],
               "start_ms": 28252000,
               "title": "23 - Conservidayoc, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_24_bingham_64kb.mp3",
               "length_ms": 1086000,
+              "readers": [
+                "elmay"
+              ],
               "start_ms": 29663000,
               "title": "24 - Conservidayoc, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_25_bingham_64kb.mp3",
               "length_ms": 1278000,
+              "readers": [
+                "elmay"
+              ],
               "start_ms": 30749000,
               "title": "25 - The Pampa of Ghosts"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_26_bingham_64kb.mp3",
               "length_ms": 796000,
+              "readers": [
+                "elmay"
+              ],
               "start_ms": 32027000,
               "title": "26 - The Story of Tampu-tocco, a Lost City of the First Incas"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_27_bingham_64kb.mp3",
               "length_ms": 1306000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 32823000,
               "title": "27 - Machu Picchu"
             },
             {
               "audio_url": "https://www.archive.org/download/inca_lands_1206_librivox/incalands_28_bingham_64kb.mp3",
               "length_ms": 1564000,
+              "readers": [
+                "william-tomcho"
+              ],
               "start_ms": 34129000,
               "title": "28 - The Origin of Machu Picchu"
             }
@@ -4817,7 +4915,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt18/inca_lands_1206.jpg",
           "id": "elmay",
           "language": "en",
+          "librivox_genres": [
+            "Memoirs",
+            "Exploration"
+          ],
           "librivox_id": 6138,
+          "librivox_title": "Inca Lands",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/inca-lands-by-hiram-bingham/",

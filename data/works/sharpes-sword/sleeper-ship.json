@@ -4296,24 +4296,36 @@
             {
               "audio_url": "https://www.archive.org/download/sleepingbeautyandotherfairytales_1604_librivox/sleepingbeautyandotherfairytales_01_perrault_64kb.mp3",
               "length_ms": 1910000,
+              "readers": [
+                "kathleen-flanary"
+              ],
               "start_ms": 0,
               "title": "The Sleeping Beauty"
             },
             {
               "audio_url": "https://www.archive.org/download/sleepingbeautyandotherfairytales_1604_librivox/sleepingbeautyandotherfairytales_02_perrault_64kb.mp3",
               "length_ms": 1567000,
+              "readers": [
+                "margaret-espaillat"
+              ],
               "start_ms": 1910000,
               "title": "Blue Beard"
             },
             {
               "audio_url": "https://www.archive.org/download/sleepingbeautyandotherfairytales_1604_librivox/sleepingbeautyandotherfairytales_03_perrault_64kb.mp3",
               "length_ms": 1955000,
+              "readers": [
+                "christine-lehman"
+              ],
               "start_ms": 3477000,
               "title": "Cinderella"
             },
             {
               "audio_url": "https://www.archive.org/download/sleepingbeautyandotherfairytales_1604_librivox/sleepingbeautyandotherfairytales_04_perrault_64kb.mp3",
               "length_ms": 4011000,
+              "readers": [
+                "maryann"
+              ],
               "start_ms": 5432000,
               "title": "Beauty and the Beast"
             }
@@ -4321,7 +4333,11 @@
           "cover_url": "https://archive.org/download/sleepingbeautyandotherfairytales_1604_librivox/sleeping_beauty_1604.jpg",
           "id": "kathleen-flanary",
           "language": "en",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 10690,
+          "librivox_title": "Sleeping Beauty and other fairy tales (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-sleeping-beauty-and-other-fairy-tales-by-charles-perrault/",
@@ -4508,7 +4524,11 @@
           "cover_url": "https://archive.org/download/sleepingbeauty_2205_librivox/thesleepingbeauty_2205.jpg",
           "id": "mlcui",
           "language": "en",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 17926,
+          "librivox_title": "Sleeping Beauty",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-sleeping-beauty-by-c-s-evans/",
@@ -8955,7 +8975,12 @@
           "cover_url": "https://archive.org/download/sleeping_fires_1403_librivox/sleeping_fires_1403.jpg",
           "id": "sharon-kilmer",
           "language": "en",
+          "librivox_genres": [
+            "Romance",
+            "Published 1900 onward"
+          ],
           "librivox_id": 8532,
+          "librivox_title": "Sleeping Fires",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/sleeping-fires-by-gertrude-atherton/",
@@ -12213,7 +12238,13 @@
           "cover_url": "https://archive.org/download/sleeping_sickness_1606_librivox/sleepingsickness_1606.jpg",
           "id": "pamela-nagami",
           "language": "en",
+          "librivox_genres": [
+            "History",
+            "Medical",
+            "Life Sciences"
+          ],
           "librivox_id": 10888,
+          "librivox_title": "Sleeping Sickness",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/sleeping-sickness-by-fleming-mant-sandwith/",

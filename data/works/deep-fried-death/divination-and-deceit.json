@@ -6778,36 +6778,55 @@
             {
               "audio_url": "https://www.archive.org/download/divine_companion_0705_librivox/divinecompanion_1_allen_64kb.mp3",
               "length_ms": 2647000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 0,
               "title": "Part 1: The Divine Companion"
             },
             {
               "audio_url": "https://www.archive.org/download/divine_companion_0705_librivox/divinecompanion_2_allen_64kb.mp3",
               "length_ms": 2392000,
+              "readers": [
+                "algy-pug",
+                "bob-gonzalez"
+              ],
               "start_ms": 2647000,
               "title": "Part 2: The Divine Dialogue"
             },
             {
               "audio_url": "https://www.archive.org/download/divine_companion_0705_librivox/divinecompanion_3_allen_64kb.mp3",
               "length_ms": 1495000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 5039000,
               "title": "Part 3: The Divine Message - Section 1 - Prophecies"
             },
             {
               "audio_url": "https://www.archive.org/download/divine_companion_0705_librivox/divinecompanion_4_allen_64kb.mp3",
               "length_ms": 771000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 6534000,
               "title": "Part 3: The Divine Message - Section 2 - Exhortations"
             },
             {
               "audio_url": "https://www.archive.org/download/divine_companion_0705_librivox/divinecompanion_5_allen_64kb.mp3",
               "length_ms": 903000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 7305000,
               "title": "Part 3: The Divine Message - Section 3 - Instructions"
             },
             {
               "audio_url": "https://www.archive.org/download/divine_companion_0705_librivox/divinecompanion_6_allen_64kb.mp3",
               "length_ms": 743000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 8208000,
               "title": "Part 3: The Divine Message - Section 4 - Discourse"
             }
@@ -6816,7 +6835,13 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt19/Divine_Companion_1209.jpg",
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Philosophy",
+            "Psychology",
+            "Religion"
+          ],
           "librivox_id": 6764,
+          "librivox_title": "Divine Companion",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-divine-companion-by-james-allen/",
@@ -6846,42 +6871,49 @@
             {
               "audio_url": "https://www.archive.org/download/divinecompanion_1403_librivox/divinecompanion_00_allen_64kb.mp3",
               "length_ms": 125000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Forward"
             },
             {
               "audio_url": "https://www.archive.org/download/divinecompanion_1403_librivox/divinecompanion_01_allen_64kb.mp3",
               "length_ms": 2404000,
+              "section_number": 1,
               "start_ms": 125000,
               "title": "Part I: The Divine Companion"
             },
             {
               "audio_url": "https://www.archive.org/download/divinecompanion_1403_librivox/divinecompanion_02_allen_64kb.mp3",
               "length_ms": 2284000,
+              "section_number": 2,
               "start_ms": 2529000,
               "title": "Part II: The Divine Dialogue"
             },
             {
               "audio_url": "https://www.archive.org/download/divinecompanion_1403_librivox/divinecompanion_03_allen_64kb.mp3",
               "length_ms": 1541000,
+              "section_number": 3,
               "start_ms": 4813000,
               "title": "Part III: The Divine Message - Section I - Prophecies"
             },
             {
               "audio_url": "https://www.archive.org/download/divinecompanion_1403_librivox/divinecompanion_04_allen_64kb.mp3",
               "length_ms": 835000,
+              "section_number": 4,
               "start_ms": 6354000,
               "title": "Part III: The Divine Message - Section II - Exhortations"
             },
             {
               "audio_url": "https://www.archive.org/download/divinecompanion_1403_librivox/divinecompanion_05_allen_64kb.mp3",
               "length_ms": 976000,
+              "section_number": 5,
               "start_ms": 7189000,
               "title": "Part III: The Divine Message - Section III - Instructions"
             },
             {
               "audio_url": "https://www.archive.org/download/divinecompanion_1403_librivox/divinecompanion_06_allen_64kb.mp3",
               "length_ms": 823000,
+              "section_number": 6,
               "start_ms": 8165000,
               "title": "Part III: The Divine Message - Section IV - Discourse"
             }
@@ -6890,7 +6922,12 @@
           "cover_url": "https://archive.org/download/divinecompanion_1403_librivox/divine_companion_1404.jpg",
           "id": "audio-andrea",
           "language": "en",
+          "librivox_genres": [
+            "Single author",
+            "Self-Help"
+          ],
           "librivox_id": 8769,
+          "librivox_title": "Divine Companion (Version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-divine-companion-by-james-allen-2/",
@@ -7051,7 +7088,12 @@
           "cover_url": "https://archive.org/download/divineconduct_2101_librivox/divineconduct_2101.jpg",
           "id": "ruth-p",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Christianity - Other"
+          ],
           "librivox_id": 15789,
+          "librivox_title": "Divine Conduct, or the Mystery of Providence",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/divine-conduct-or-the-mystery-of-providence-by-john-flavel/",
@@ -7102,66 +7144,110 @@
             {
               "audio_url": "https://www.archive.org/download/divinecordial_1306_librivox/divinecordial_00_watson_64kb.mp3",
               "length_ms": 440000,
+              "readers": [
+                "rosea"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 - Extract from the Preface and Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/divinecordial_1306_librivox/divinecordial_01_watson_64kb.mp3",
               "length_ms": 1614000,
+              "readers": [
+                "rosea"
+              ],
+              "section_number": 1,
               "start_ms": 440000,
               "title": "01 - The Best Things Work for Good to the Godly"
             },
             {
               "audio_url": "https://www.archive.org/download/divinecordial_1306_librivox/divinecordial_02_watson_64kb.mp3",
               "length_ms": 2111000,
+              "readers": [
+                "jeff-chesnut"
+              ],
+              "section_number": 2,
               "start_ms": 2054000,
               "title": "02 - The Worst Things Work for Good to the Godly, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/divinecordial_1306_librivox/divinecordial_03_watson_64kb.mp3",
               "length_ms": 2000000,
+              "readers": [
+                "jeff-chesnut"
+              ],
+              "section_number": 3,
               "start_ms": 4165000,
               "title": "03 - The Worst Things Work for Good to the Godly, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/divinecordial_1306_librivox/divinecordial_04_watson_64kb.mp3",
               "length_ms": 2011000,
+              "readers": [
+                "dave-harrell"
+              ],
+              "section_number": 4,
               "start_ms": 6165000,
               "title": "04 - Why All Things Work for Good"
             },
             {
               "audio_url": "https://www.archive.org/download/divinecordial_1306_librivox/divinecordial_05_watson_64kb.mp3",
               "length_ms": 1115000,
+              "readers": [
+                "kimberly-krause"
+              ],
+              "section_number": 5,
               "start_ms": 8176000,
               "title": "05 - Of Love to God"
             },
             {
               "audio_url": "https://www.archive.org/download/divinecordial_1306_librivox/divinecordial_06_watson_64kb.mp3",
               "length_ms": 2021000,
+              "readers": [
+                "dave-harrell"
+              ],
+              "section_number": 6,
               "start_ms": 9291000,
               "title": "06 - The Tests of Love to God"
             },
             {
               "audio_url": "https://www.archive.org/download/divinecordial_1306_librivox/divinecordial_07_watson_64kb.mp3",
               "length_ms": 2286000,
+              "readers": [
+                "dave-harrell"
+              ],
+              "section_number": 7,
               "start_ms": 11312000,
               "title": "07 - An Exhortation to Love God"
             },
             {
               "audio_url": "https://www.archive.org/download/divinecordial_1306_librivox/divinecordial_08_watson_64kb.mp3",
               "length_ms": 2153000,
+              "readers": [
+                "kimberly-krause"
+              ],
+              "section_number": 8,
               "start_ms": 13598000,
               "title": "08 - Effectual Calling"
             },
             {
               "audio_url": "https://www.archive.org/download/divinecordial_1306_librivox/divinecordial_09_watson_64kb.mp3",
               "length_ms": 714000,
+              "readers": [
+                "kimberly-krause"
+              ],
+              "section_number": 9,
               "start_ms": 15751000,
               "title": "09 - Exhortations to Those Who Are Called"
             },
             {
               "audio_url": "https://www.archive.org/download/divinecordial_1306_librivox/divinecordial_10_watson_64kb.mp3",
               "length_ms": 485000,
+              "readers": [
+                "kimberly-krause"
+              ],
+              "section_number": 10,
               "start_ms": 16465000,
               "title": "10 - Concerning God's Purpose"
             }
@@ -7170,7 +7256,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt32/divine_cordial_1306.jpg",
           "id": "rosea",
           "language": "en",
+          "librivox_genres": [
+            "Christianity - Other"
+          ],
           "librivox_id": 5879,
+          "librivox_title": "Divine Cordial (All Things for Good)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-divine-cordial-by-thomas-watson/",
@@ -10901,66 +10991,77 @@
             {
               "audio_url": "https://www.archive.org/download/divine_enchantment_1010_librivox/thedivineenchantment_00_neihardt_64kb.mp3",
               "length_ms": 256000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 Prefatory"
             },
             {
               "audio_url": "https://www.archive.org/download/divine_enchantment_1010_librivox/thedivineenchantment_01_neihardt_64kb.mp3",
               "length_ms": 101000,
+              "section_number": 1,
               "start_ms": 256000,
               "title": "01 Prelude"
             },
             {
               "audio_url": "https://www.archive.org/download/divine_enchantment_1010_librivox/thedivineenchantment_02_neihardt_64kb.mp3",
               "length_ms": 1166000,
+              "section_number": 2,
               "start_ms": 357000,
               "title": "02 Enchantment"
             },
             {
               "audio_url": "https://www.archive.org/download/divine_enchantment_1010_librivox/thedivineenchantment_03_neihardt_64kb.mp3",
               "length_ms": 207000,
+              "section_number": 3,
               "start_ms": 1523000,
               "title": "03 Interlude"
             },
             {
               "audio_url": "https://www.archive.org/download/divine_enchantment_1010_librivox/thedivineenchantment_04_neihardt_64kb.mp3",
               "length_ms": 416000,
+              "section_number": 4,
               "start_ms": 1730000,
               "title": "04 Birth of Brahm"
             },
             {
               "audio_url": "https://www.archive.org/download/divine_enchantment_1010_librivox/thedivineenchantment_05_neihardt_64kb.mp3",
               "length_ms": 1167000,
+              "section_number": 5,
               "start_ms": 2146000,
               "title": "05 Procreation"
             },
             {
               "audio_url": "https://www.archive.org/download/divine_enchantment_1010_librivox/thedivineenchantment_06_neihardt_64kb.mp3",
               "length_ms": 672000,
+              "section_number": 6,
               "start_ms": 3313000,
               "title": "06 Preservation"
             },
             {
               "audio_url": "https://www.archive.org/download/divine_enchantment_1010_librivox/thedivineenchantment_07_neihardt_64kb.mp3",
               "length_ms": 700000,
+              "section_number": 7,
               "start_ms": 3985000,
               "title": "07 Dissolution"
             },
             {
               "audio_url": "https://www.archive.org/download/divine_enchantment_1010_librivox/thedivineenchantment_08_neihardt_64kb.mp3",
               "length_ms": 296000,
+              "section_number": 8,
               "start_ms": 4685000,
               "title": "08 Nirvana"
             },
             {
               "audio_url": "https://www.archive.org/download/divine_enchantment_1010_librivox/thedivineenchantment_09_neihardt_64kb.mp3",
               "length_ms": 294000,
+              "section_number": 9,
               "start_ms": 4981000,
               "title": "09 Dissenchantment"
             },
             {
               "audio_url": "https://www.archive.org/download/divine_enchantment_1010_librivox/thedivineenchantment_10_neihardt_64kb.mp3",
               "length_ms": 245000,
+              "section_number": 10,
               "start_ms": 5275000,
               "title": "10 Postlude"
             }
@@ -10969,7 +11070,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCovers3/divineenchantment_1010.jpg",
           "id": "nathan-librivox-3793",
           "language": "en",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 4804,
+          "librivox_title": "Divine Enchantment",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-divine-enchantment-by-john-neihardt/",
