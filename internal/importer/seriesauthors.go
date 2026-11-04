@@ -693,9 +693,10 @@ type personForm struct {
 	slug, marked, fold string
 	words              []string
 	tokens             []nameToken
-	// apart is the review the form was built under (PeopleApart.form); nil
-	// keeps nothing apart.
+	// apart is the review the form was built under (PeopleApart.form), and live
+	// the slug it asks that review by (slug's survivor); nil keeps nothing apart.
 	apart *PeopleApart
+	live  string
 }
 
 // formOf computes a name's comparison forms. The words drop a " - role" tail, a
@@ -740,13 +741,20 @@ const MinPersonEditLen = 8
 // carried by either form) is never one person, whatever the rungs say: the
 // review is how "Dr. Alex George" the TV doctor and Alex George the novelist,
 // who strip to one name, are told apart.
+//
+// The review is asked only of a pair the rungs already call one person, so the
+// veto costs nothing on the overwhelming majority of comparisons, which match no
+// rung at all.
 func (a personForm) same(b personForm) bool {
 	if a.slug != "" && a.slug == b.slug {
 		return true
 	}
-	if cmp.Or(a.apart, b.apart).Has(a.slug, b.slug) {
-		return false
-	}
+	return a.rungs(b) && !cmp.Or(a.apart, b.apart).vetoes(a, b)
+}
+
+// rungs reports whether any identity rung below the slug calls the two forms one
+// person (see same).
+func (a personForm) rungs(b personForm) bool {
 	if a.fold == "" || b.fold == "" {
 		return false
 	}
@@ -762,15 +770,11 @@ func (a personForm) same(b personForm) bool {
 	return MiddleNameVariant(a.words, b.words) || initialExpansion(a.tokens, b.tokens) || initialExpansion(b.tokens, a.tokens)
 }
 
-// NearPerson reports whether two names that are NOT one person by
-// PeopleApart.SamePerson are
-// still close enough that a reader cannot tell a misspelling from a different
-// author: the same surname (the last word of the cleaned name), or a single edit
-// apart over the whole folded name or over the surname alone (titlerule.
-// OneEditApart - SamePerson's typo rung, without its length floor). It never
-// merges anything; internal/issueform's work-slug gate asks it to decide when a
-// taken title slug is safe to step past rather than a question for a maintainer.
-func NearPerson(nameA, nameB string) bool {
+// nearPerson is PeopleApart.NearPerson's name rule: the same surname (the last
+// word of the cleaned name), or a single edit apart over the whole folded name
+// or over the surname alone (titlerule.OneEditApart - the same-person typo
+// rung, without its length floor). It never merges anything.
+func nearPerson(nameA, nameB string) bool {
 	a, b := formOf("", nameA), formOf("", nameB)
 	if len(a.words) == 0 || len(b.words) == 0 {
 		return false

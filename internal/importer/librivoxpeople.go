@@ -598,7 +598,7 @@ func (p *planner) librivoxFoldVerdict(bare string, cl *lvAuthorClaim, bySlug map
 	if fellBack {
 		return "", lvSame
 	}
-	if p.personSlugsKeptApart(cl.slug, bareSlug) {
+	if p.apart.Has(cl.slug, bareSlug) {
 		return "", lvApart // a review recorded two people (Options.Distinct)
 	}
 	if others := bySlug[bareSlug]; len(others) > 0 {
@@ -819,7 +819,7 @@ func (p *planner) librivoxTitledTwin(slug string, life lifeYears) string {
 		return ""
 	}
 	twin := twins[0]
-	if p.personSlugsKeptApart(slug, twin) {
+	if p.apart.Has(slug, twin) {
 		return "" // a review recorded two people (Options.Distinct)
 	}
 	if p.narratorPeople[twin] && len(p.librivoxPersonWorks()[twin]) == 0 {

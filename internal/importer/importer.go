@@ -1838,7 +1838,6 @@ func (p *planner) creditCensusesOf(books []sourceBook) (author, narrator creditC
 			foldSyntheticVoice: foldSynthetic,
 			onHonorific:        p.noteHonorific,
 			onCredential:       p.noteCredential,
-			keptApart:          p.peopleKeptApart, // creditContextOf judges the landings
 		}
 	}
 	// The AI-narration fold is the NARRATOR side of a USER-LIBRARY run and
@@ -1869,7 +1868,7 @@ func (p *planner) creditCensusesOf(books []sourceBook) (author, narrator creditC
 func (p *planner) peopleKeptApart(a, b string) bool {
 	sa, fa := personSlug(a)
 	sb, fb := personSlug(b)
-	return !fa && !fb && p.personSlugsKeptApart(sa, sb)
+	return !fa && !fb && p.apart.Has(sa, sb)
 }
 
 // landingsKeptApart is the reviewed-pair check the credit folds ask
@@ -1904,9 +1903,6 @@ func (p *planner) creditLanding(decided initialsSurvivors, census *initialsCensu
 	}
 	return r.slug, true
 }
-
-// personSlugsKeptApart is peopleKeptApart for two person slugs.
-func (p *planner) personSlugsKeptApart(a, b string) bool { return p.apart.Has(a, b) }
 
 // noteHonorific records one honorific merge for the run's report. It is a SET
 // of (credited spelling -> bare twin) pairs rather than a count: the same
@@ -3008,7 +3004,7 @@ func (p *planner) batchClaimsIn(ctx creditContext, books []sourceBook) ([]nameCl
 		lang, _ := b.language()
 		row := SeriesRowFor(creditNamesOf(b.authorCredits), []string{b.str("title"), b.str("title_short")}, b.str("publisher"), lang,
 			func(name string) string { return p.resolvePersonIn(ctx, name).slug })
-		row.apart = p.apart
+		row.keepApart(p.apart)
 		places, work := p.claimPlacesIn(ctx, *b, asin)
 		// A claim with no usable position is placed only if a lookup later fills
 		// one, so claimsOf does not count it on as evidence.

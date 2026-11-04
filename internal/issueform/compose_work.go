@@ -266,7 +266,7 @@ func (c *composer) sameAuthorAs(w *model.Work, names []string) bool {
 	}
 	for _, id := range w.Authors {
 		for _, n := range names {
-			if slug, _ := c.personSlugOf(n); c.peopleApart().SamePerson(id, c.nameOf(id), slug, n) {
+			if slug, _ := c.personSlugOf(n); c.apart.SamePerson(id, c.nameOf(id), slug, n) {
 				return true
 			}
 		}
@@ -275,17 +275,13 @@ func (c *composer) sameAuthorAs(w *model.Work, names []string) bool {
 }
 
 // nearAuthorOf reports whether any submitted author is NEAR one of w's authors
-// without being the same person (importer.NearPerson: the same surname, or one
-// edit apart) - a name the gate cannot tell a misspelling from another author by.
-// A pair a reviewed merge-people rejection kept apart is not near: a maintainer
-// has already told the two apart ("Dr. Alex George" is not Alex George).
+// without being the same person (importer.PeopleApart's NearPerson: the same
+// surname, or one edit apart, never a pair a review kept apart) - a name the gate
+// cannot tell a misspelling from another author by.
 func (c *composer) nearAuthorOf(w *model.Work, names []string) bool {
 	for _, id := range w.Authors {
 		for _, n := range names {
-			if slug, _ := c.personSlugOf(n); c.peopleApart().Has(id, slug) {
-				continue
-			}
-			if importer.NearPerson(c.nameOf(id), n) {
+			if slug, _ := c.personSlugOf(n); c.apart.NearPerson(id, c.nameOf(id), slug, n) {
 				return true
 			}
 		}

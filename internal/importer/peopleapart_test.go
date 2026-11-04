@@ -108,3 +108,23 @@ func TestReviewedPairIsNotTheSeriesAuthor(t *testing.T) {
 		})
 	}
 }
+
+// NearPerson is SamePerson's other door under the same review: a reviewed pair
+// is not near (a maintainer told them apart), while an unreviewed surname match
+// still is.
+func TestPeopleApartNearPerson(t *testing.T) {
+	apart := NewPeopleApart(peopleApart("alex-george", "dr-alex-george"), nil)
+	for _, tc := range []struct {
+		ap           *PeopleApart
+		slugA, nameA string
+		want         bool
+	}{
+		{nil, "dr-alex-george", "Dr. Alex George", true},
+		{apart, "dr-alex-george", "Dr. Alex George", false},
+		{apart, "ann-george", "Ann George", true},
+	} {
+		if got := tc.ap.NearPerson(tc.slugA, tc.nameA, "alex-george", "Alex George"); got != tc.want {
+			t.Errorf("NearPerson(%s) under %v = %v, want %v", tc.slugA, tc.ap != nil, got, tc.want)
+		}
+	}
+}

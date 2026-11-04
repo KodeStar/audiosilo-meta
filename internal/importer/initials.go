@@ -385,10 +385,22 @@ func (c *initialsCensus) catalogueSurvivor(name string) (string, bool) {
 		return "", false
 	}
 	g := c.groups[markedKeyOf(tokens)]
-	if g == nil || len(g.catalogue) == 0 {
+	if g == nil {
 		return "", false
 	}
-	return slices.Min(slices.Collect(maps.Keys(g.catalogue))), true
+	s, ok := g.committedSurvivor()
+	return s.slug, ok
+}
+
+// committedSurvivor is the record a group holding a committed spelling resolves
+// to: its lowest committed slug (decide's "catalogue first"), ok false when the
+// group holds none.
+func (g *initialsGroup) committedSurvivor() (initialsSurvivor, bool) {
+	if len(g.catalogue) == 0 {
+		return initialsSurvivor{}, false
+	}
+	slug := slices.Min(slices.Collect(maps.Keys(g.catalogue)))
+	return initialsSurvivor{slug: slug, name: g.catalogue[slug]}, true
 }
 
 // addBatch records one credit name the run is about to import, in the form
@@ -434,15 +446,8 @@ func (c *initialsCensus) decide() initialsSurvivors {
 		}
 		slices.Sort(members)
 
-		survivor := initialsSurvivor{}
-		if len(g.catalogue) > 0 {
-			for _, slug := range members {
-				if name, committed := g.catalogue[slug]; committed {
-					survivor = initialsSurvivor{slug: slug, name: name}
-					break
-				}
-			}
-		} else {
+		survivor, committed := g.committedSurvivor()
+		if !committed {
 			best := 0
 			for _, slug := range members {
 				if n := g.counts[slug]; n > best {

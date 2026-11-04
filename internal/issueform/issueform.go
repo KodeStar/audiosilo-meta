@@ -223,13 +223,12 @@ type composer struct {
 	// catalog, since most templates never make one; nil admits every series.
 	seriesAuthors *importer.SeriesAuthorIndex
 	// apart is the reviewed merge-people rejections (audit.ReviewedDistinct)
-	// resolved through redirects, built on first use (peopleApart): the
+	// resolved through redirects, off the same load (loadExisting): the
 	// same-person rule the work-slug, takeover and series gates decide by never
 	// reads two people a review separated as one author, as the importer's
-	// does not.
-	apart      *importer.PeopleApart
-	apartBuilt bool
-	catalog    *model.Catalog
+	// does not. nil keeps nothing apart.
+	apart   *importer.PeopleApart
+	catalog *model.Catalog
 	// personName indexes the catalogue's person names by id, built on first use
 	// (nameOf).
 	personName map[string]string
@@ -417,6 +416,9 @@ func process(opts Options) Result {
 // It loads THROUGH the store, so the catalogue read and the submission's own
 // entry reads share one walk and one parse of each pack.
 func (c *composer) loadExisting() {
+	// The reviewed pairs resolve through the tombstone table this load reads,
+	// on every way out of it, as the importer's planner does.
+	defer func() { c.apart = importer.NewPeopleApart(audit.ReviewedDistinct(), c.redirects) }()
 	res := check.LoadStore(c.store)
 	// The normalized-identity index comes OFF the load (its own duplicate census
 	// builds it), so the add-work gates probe the index this load already has instead
@@ -460,18 +462,9 @@ func (c *composer) loadExisting() {
 // seriesIndex is the catalogue's series author evidence, built on first use.
 func (c *composer) seriesIndex() *importer.SeriesAuthorIndex {
 	if c.seriesAuthors == nil && c.catalog != nil {
-		c.seriesAuthors = importer.NewSeriesAuthorIndex(c.catalog, c.peopleApart())
+		c.seriesAuthors = importer.NewSeriesAuthorIndex(c.catalog, c.apart)
 	}
 	return c.seriesAuthors
-}
-
-// peopleApart is the reviewed merge-people rejections, resolved through the
-// tree's tombstone table on first use (nil when none names a pair).
-func (c *composer) peopleApart() *importer.PeopleApart {
-	if !c.apartBuilt {
-		c.apart, c.apartBuilt = importer.NewPeopleApart(audit.ReviewedDistinct(), c.redirects), true
-	}
-	return c.apart
 }
 
 // coreFamilies are the CC0 families every template may touch: a work, its

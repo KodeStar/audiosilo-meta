@@ -10,6 +10,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/audit"
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
@@ -73,7 +74,8 @@ func TestAddWorkReviewedPairDoesNotExtendTheSeries(t *testing.T) {
 // crediting "Dr. David Clarke" does not describe a recording David Clarke
 // narrates, while the bare spelling and an unreviewed courtesy title still do.
 func TestSamePeopleHonoursAReviewedRejection(t *testing.T) {
-	c := &composer{personName: map[string]string{"david-clarke": "David Clarke", "samuel-li": "Samuel Li"}}
+	c := &composer{personName: map[string]string{"david-clarke": "David Clarke", "samuel-li": "Samuel Li"},
+		apart: importer.NewPeopleApart(audit.ReviewedDistinct(), nil)}
 	for _, tc := range []struct {
 		names []string
 		ids   []string

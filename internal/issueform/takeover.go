@@ -233,7 +233,7 @@ func (c *composer) identityMismatch(s sections, t *takeover) []string {
 func (c *composer) samePeople(names, ids []string) bool {
 	matches := func(name, id string) bool {
 		slug, _ := c.personSlugOf(name)
-		return c.peopleApart().SamePerson(id, c.nameOf(id), slug, name)
+		return c.apart.SamePerson(id, c.nameOf(id), slug, name)
 	}
 	for _, n := range names {
 		if !slices.ContainsFunc(ids, func(id string) bool { return matches(n, id) }) {

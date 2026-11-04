@@ -24,19 +24,23 @@ import (
 // A nil *PeopleApart keeps nothing apart, so a caller with no decisions (a
 // test, a probe) is unchanged.
 type PeopleApart struct {
-	pairs map[[2]string]bool
+	pairs check.DistinctPairs
 	reds  model.Redirects
 }
 
 // NewPeopleApart resolves ds's people decisions through reds, or returns nil
 // when none names a pair.
 func NewPeopleApart(ds []check.ReviewedDistinct, reds model.Redirects) *PeopleApart {
-	pairs := check.ResolveDistinct(ds, reds)[model.RedirectPeople]
-	if len(pairs) == 0 {
+	pairs := check.ResolveDistinct(ds, reds)
+	if len(pairs[model.RedirectPeople]) == 0 {
 		return nil
 	}
 	return &PeopleApart{pairs: pairs, reds: reds}
 }
+
+// live is the slug a decision names for person slug s: its survivor when the
+// tombstone table retires it, as the decisions were resolved.
+func (pa *PeopleApart) live(s string) string { return pa.reds.Live(model.RedirectPeople, s) }
 
 // Has reports whether a review recorded the person slugs a and b as two
 // people. A retired slug is asked as its survivor, as the decisions were.
@@ -44,11 +48,24 @@ func (pa *PeopleApart) Has(a, b string) bool {
 	if pa == nil || a == "" || b == "" {
 		return false
 	}
-	a, b = pa.reds.Live(model.RedirectPeople, a), pa.reds.Live(model.RedirectPeople, b)
-	if b < a {
-		a, b = b, a
+	return pa.pairs.Has(model.RedirectPeople, pa.live(a), pa.live(b))
+}
+
+// vetoes reports whether the review keeps the two forms' people apart, each
+// asked by the live slug its form stored (form) - or, for a form built without
+// this review, resolved here.
+func (pa *PeopleApart) vetoes(a, b personForm) bool {
+	if pa == nil || a.slug == "" || b.slug == "" {
+		return false
 	}
-	return pa.pairs[[2]string{a, b}]
+	return pa.pairs.Has(model.RedirectPeople, pa.liveOf(a), pa.liveOf(b))
+}
+
+func (pa *PeopleApart) liveOf(f personForm) string {
+	if f.apart == pa {
+		return f.live
+	}
+	return pa.live(f.slug)
 }
 
 // SamePerson is the series same-person rule (personForm.same) over two credited
@@ -62,9 +79,22 @@ func (pa *PeopleApart) SamePerson(slugA, nameA, slugB, nameB string) bool {
 	return pa.form(slugA, nameA).same(pa.form(slugB, nameB))
 }
 
-// form is formOf carrying this review.
+// NearPerson reports whether two names that are NOT one person by SamePerson
+// are still close enough that a reader cannot tell a misspelling from a
+// different author (nearPerson) - never a pair a review kept apart, which a
+// maintainer has already told apart ("Dr. Alex George" is not Alex George). It
+// is SamePerson's other door: internal/issueform's work-slug gate asks it to
+// decide when a taken title slug is safe to step past rather than a question
+// for a maintainer. A nil receiver applies no review.
+func (pa *PeopleApart) NearPerson(slugA, nameA, slugB, nameB string) bool {
+	return !pa.Has(slugA, slugB) && nearPerson(nameA, nameB)
+}
+
+// form is formOf carrying this review, with the live slug it is asked by.
 func (pa *PeopleApart) form(slug, name string) personForm {
 	f := formOf(slug, name)
-	f.apart = pa
+	if pa != nil {
+		f.apart, f.live = pa, pa.live(slug)
+	}
 	return f
 }
