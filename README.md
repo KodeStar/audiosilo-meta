@@ -424,7 +424,9 @@ abridged recording as "(abridged)" always is):
    differs only by a leading article or punctuation, case and accents ("The
    Metamorphosis" and "Metamorphosis" by Franz Kafka), or by how a volume is
    spelled ("Vol. 1 of 3" and "Volume 1"; two titles stating different totals,
-   "Vol. 1 of 3" and "Vol. 1 of 5", are two volume sets and never match). The articles set aside
+   "Vol. 1 of 3" and "Vol. 1 of 5", are two volume sets and never match, and a
+   work titled "Volume 1" that already holds a "Vol. 1 of 3" recording is the
+   three-volume set: "Vol. 1 of 5" goes to the worklist as `volume-total`). The articles set aside
    are the English the/a/an, French le/la/les/l', German der/die/das, Spanish
    el/los/las, Italian il/lo and Dutch de/het/een. Failing that, the ONE such
    work by an author the project spells with more or fewer words (the same
@@ -469,7 +471,8 @@ whose name only loosely agrees with the project's, or beside other
 candidates), `author-unsluggable` (every individual author's name slugs to
 nothing and carries no LibriVox author id), `differently-spelled-title` (the duplicate-identity guard holds
 the book under a title rule 2 does not read as the same, such as a subtitle
-apart, or rule 3's trailing qualifier), `same-name-author` (below) and `fallback-slug-taken` (below). Once a person has settled the work,
+apart, or rule 3's trailing qualifier), `volume-total` (rule 2's work holds a
+recording stating another volume total), `same-name-author` (below) and `fallback-slug-taken` (below). Once a person has settled the work,
 re-importing the project's id lands it. `--worklist <path>` appends the
 worklist to a file as well, one NDJSON row per project (`librivox_id`, `title`,
 `authors`, `reason`, `candidates`). `--conflicts` rows for these projects

@@ -755,3 +755,40 @@ func TestLibrivoxVolumeTotalKeepsTwoVolumeSetsApart(t *testing.T) {
 		t.Errorf("a title stating no total: recordings %v, new works %d; want it attached", got, sum.NewWorks)
 	}
 }
+
+func TestLibrivoxVolumeTotalOnARecordingKeepsTheSetApart(t *testing.T) {
+	// A work titled "Volume 1" states no total, so it takes "Vol. 1 of 3" -
+	// and that recording's own project title (librivox_title) then says which
+	// set the work is: "Vol. 1 of 5" is held as volume-total, never attached,
+	// whether the "of 3" project landed in this run or a catalogued one.
+	seed := func() string {
+		dataDir := t.TempDir()
+		seedAuthoredWorks(t, dataDir, map[string][]string{
+			"the-world-as-will-and-idea-volume-1": {"The World as Will and Idea, Volume 1", "arthur-schopenhauer", "Arthur Schopenhauer"},
+		})
+		return dataDir
+	}
+	schopenhauer := lvAuthor(6200, "Arthur", "Schopenhauer")
+	ofThree := byAuthor(t, 9711, "World as Will and Idea, Vol. 1 of 3", "English", schopenhauer)
+	ofFive := byAuthor(t, 9799, "World as Will and Idea, Vol. 1 of 5", "English", schopenhauer)
+	another := byAuthor(t, 9800, "World as Will and Idea, Vol. 1 of 3 (version 2)", "English", schopenhauer)
+	held := func(t *testing.T, sum Summary) {
+		t.Helper()
+		want := []LibrivoxWorklistEntry{{Project: 9799, Title: "World as Will and Idea, Vol. 1 of 5", Authors: []string{"Arthur Schopenhauer"},
+			Reason: LibrivoxVolumeTotal, Candidates: []LibrivoxCandidate{{Work: "the-world-as-will-and-idea-volume-1", Title: "The World as Will and Idea, Volume 1"}}}}
+		if !reflect.DeepEqual(sum.LibrivoxWorklist, want) {
+			t.Errorf("worklist = %+v, want %+v", sum.LibrivoxWorklist, want)
+		}
+	}
+	oneRun := seed()
+	sum := runLibrivox(t, writeSnapshot(t, ofThree, ofFive, another), oneRun, allLibrivox)
+	held(t, sum)
+	if got := recSlugsOf(t, oneRun, "the-world-as-will-and-idea-volume-1"); len(got) != 3 || sum.NewWorks != 0 {
+		t.Errorf("recordings %v, new works %d; want of-3 twice beside the catalogued one", got, sum.NewWorks)
+	}
+	mustValidate(t, oneRun)
+
+	twoRuns := seed()
+	runLibrivox(t, writeSnapshot(t, ofThree), twoRuns, allLibrivox)
+	held(t, runLibrivox(t, writeSnapshot(t, ofFive), twoRuns, allLibrivox))
+}

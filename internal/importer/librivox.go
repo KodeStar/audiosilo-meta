@@ -1356,6 +1356,9 @@ func (p *planner) applyLibrivoxRecording(rec *outRecording, b sourceBook) {
 		}
 	}
 	p.lv.ids[b.lv.id] = true
+	if ws := p.works[rec.Work]; ws != nil {
+		ws.noteVolumeTotals(b.lv.title)
+	}
 	p.lv.landed = append(p.lv.landed, librivoxLanding{facts: b.lv, work: rec.Work, rec: rec.ID, narrators: ToSet(rec.Narrators)})
 }
 

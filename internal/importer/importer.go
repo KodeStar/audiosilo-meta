@@ -224,6 +224,22 @@ type workState struct {
 	// provenance too even when it changes nothing - otherwise which rows a
 	// work's sources name would depend on which row came first.
 	runAttested bool
+	// volumeTotals is the volume totals (librivoxVolumeTotals) each LibriVox
+	// recording on the work states in its own project title - a catalogued
+	// recording's librivox_title, or the title of a row of this run that
+	// landed here - kept only when one states a total: a work titled
+	// "Volume 1" that holds "Vol. 1 of 3" is volume 1 of a three-volume set,
+	// and the spelling-variant lookup reads it so (librivoxTitleWorks).
+	volumeTotals [][]int
+}
+
+// noteVolumeTotals records the volume totals a LibriVox recording's own
+// project title states on the work it sits on (workState.volumeTotals); a
+// title stating none records nothing.
+func (ws *workState) noteVolumeTotals(projectTitle string) {
+	if t := librivoxVolumeTotals(projectTitle); librivoxStatesTotal(t) {
+		ws.volumeTotals = append(ws.volumeTotals, t)
+	}
 }
 
 // seriesState tracks a series' membership so works dedupe and positions never
@@ -1270,6 +1286,7 @@ func (p *planner) loadExisting() {
 			if r.LibrivoxID != 0 {
 				p.lv.ids[r.LibrivoxID] = true
 				p.lv.held[r.LibrivoxID] = RecRef{Work: w.ID, Rec: r.ID}
+				ws.noteVolumeTotals(r.LibrivoxTitle)
 			}
 			ri := &recInfo{
 				narrators: ToSet(r.Narrators),

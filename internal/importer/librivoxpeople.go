@@ -198,6 +198,14 @@ type lvPersonWork struct {
 // poets may each publish "Poems". The test is per form, so a generic base
 // with a qualifier that names a work ("Poems (Ballads of a Cheechako)") keeps
 // its full title's key while its bare "Poems" keys nothing.
+//
+// The keys fold a volume total away ("Vol. 1 of 3" and "Vol. 1 of 5" share
+// one) and, unlike the work lookup (librivoxTitleWorks), nothing puts it
+// back, on purpose: the question here is WHO wrote the text, not WHICH
+// division of it a work is. Two volume sets of one text are one author's,
+// so a shared title says the same about the author whatever the totals; the
+// work lookup refuses them because merging two divisions would be a wrong
+// work, which this rule never makes.
 func librivoxTitleKeys(title string) map[string]bool {
 	keys := map[string]bool{}
 	for t := title; t != ""; {
@@ -858,7 +866,7 @@ func (p *planner) librivoxReleasesAreEditions(cl *lvAuthorClaim, bound int) bool
 		}
 		// A generic title ("Poems") is no title in common here either: the
 		// same-name person's own "Poems" says nothing about whose text it is.
-		slugs, nonLatin := p.librivoxTitleWorks(pr.title)
+		slugs, _, nonLatin := p.librivoxTitleWorks(pr.title)
 		if nonLatin || librivoxGenericWordsOnly(pr.title) {
 			continue
 		}

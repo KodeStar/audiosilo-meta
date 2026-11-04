@@ -92,6 +92,11 @@ const (
 	// and its `librivox-<id>` work slug is already taken (or retired) by another
 	// record.
 	LibrivoxFallbackTaken = "fallback-slug-taken"
+	// LibrivoxVolumeTotal: a work carries the row's title (rule 2), by its
+	// authors, but a LibriVox recording already on it states another volume
+	// total than the row's title ("Vol. 1 of 3" on a work titled "Volume 1",
+	// the row "Vol. 1 of 5"): the work may be either volume set.
+	LibrivoxVolumeTotal = "volume-total"
 	// LibrivoxSameNameAuthor: an author id no person carries meets, by name, a
 	// catalogued person who may be someone else, and only recording release
 	// dates say so (librivoxpeople.go rule 2), or no record of its own can be
@@ -239,29 +244,46 @@ func librivoxTotalsAgree(ta, tb []int) bool {
 	return true
 }
 
+// librivoxStatesTotal reports whether any volume marker states a total.
+func librivoxStatesTotal(totals []int) bool {
+	return slices.ContainsFunc(totals, func(n int) bool { return n != 0 })
+}
+
 // librivoxTitleWorks is the spelling-variant lookup every rule asks: the works
 // under title's key (librivoxTitleIndex) whose volume totals agree with the
-// title's (librivoxVolumeTotalsAgree), in slug order, with whether the title
-// is non-Latin.
-func (p *planner) librivoxTitleWorks(title string) (slugs []string, nonLatin bool) {
+// title's, in slug order, with whether the title is non-Latin. A work's totals
+// are its own title's AND those of the LibriVox recordings already on it
+// (workState.volumeTotals: a catalogued recording's librivox_title, or a row of
+// this run that landed there), so a work titled "Volume 1" that holds "Vol. 1
+// of 3" refuses "Vol. 1 of 5" in one run as in two. held is the works of the
+// key refused ONLY by a recording's total, not by their own title: the row
+// may be either volume set, and routeLibrivox lists it (volume-total) rather
+// than minting a work beside them.
+func (p *planner) librivoxTitleWorks(title string) (slugs, held []string, nonLatin bool) {
 	key, nonLatin := librivoxTitleKeyOf(title)
 	slugs = p.librivoxTitleIndex()[key]
 	if nonLatin {
-		return slugs, nonLatin
+		return slugs, nil, nonLatin
 	}
 	// A title stating no total agrees with every work, so only one stating
 	// one filters (and its totals are read once, not per candidate).
 	totals := librivoxVolumeTotals(title)
-	if !slices.ContainsFunc(totals, func(n int) bool { return n != 0 }) {
-		return slugs, nonLatin
+	if !librivoxStatesTotal(totals) {
+		return slugs, nil, nonLatin
 	}
 	var out []string
 	for _, slug := range slugs {
-		if ws := p.works[slug]; ws != nil && librivoxTotalsAgree(totals, librivoxVolumeTotals(ws.title)) {
+		ws := p.works[slug]
+		if ws == nil || !librivoxTotalsAgree(totals, librivoxVolumeTotals(ws.title)) {
+			continue
+		}
+		if !slices.ContainsFunc(ws.volumeTotals, func(t []int) bool { return !librivoxTotalsAgree(totals, t) }) {
 			out = append(out, slug)
+		} else {
+			held = append(held, slug)
 		}
 	}
-	return out, nonLatin
+	return out, held, nonLatin
 }
 
 // librivoxNonLatinTitle reports whether a title is read in its own script
@@ -422,8 +444,8 @@ func (p *planner) routeLibrivox(b sourceBook, workTitle, fullTitle, posSuffix, l
 	if b.lv == nil {
 		return librivoxRoute{}
 	}
-	slugs, nonLatin := p.librivoxTitleWorks(workTitle)
-	if len(slugs) == 0 {
+	slugs, held, nonLatin := p.librivoxTitleWorks(workTitle)
+	if len(slugs)+len(held) == 0 {
 		return p.librivoxUndecided(b, workTitle, fullTitle, posSuffix, lang, credits, claim, nonLatin)
 	}
 	authors := p.rowWorkAuthorsRO(credits)
@@ -431,6 +453,10 @@ func (p *planner) routeLibrivox(b sourceBook, workTitle, fullTitle, posSuffix, l
 		return librivoxRoute{}
 	}
 	matched, partial := p.librivoxCandidates(slugs, lang, authors)
+	if heldMatched, _ := p.librivoxCandidates(held, lang, authors); len(matched) == 0 && len(heldMatched) > 0 {
+		p.noteLibrivoxWorklist(b, workTitle, LibrivoxVolumeTotal, candidatesOf(heldMatched))
+		return librivoxRoute{skip: true}
+	}
 	switch {
 	case len(matched) == 1:
 		return librivoxRoute{walk: &workWalk{title: workTitle, ws: matched[0]},
@@ -478,7 +504,7 @@ func (p *planner) librivoxQualifiedTwin(b sourceBook, workTitle, fullTitle, posS
 			return false
 		}
 		t = stripped
-		slugs, nonLatin := p.librivoxTitleWorks(t)
+		slugs, _, nonLatin := p.librivoxTitleWorks(t)
 		if nonLatin || len(slugs) == 0 {
 			continue
 		}
