@@ -10,11 +10,15 @@
 //	metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--refusals <path>] [--attachments <path>] [--date YYYY-MM-DD]
 //	metaimport librivox fetch  --out <snapshot> [--max-pages N]
 //	metaimport librivox import --from <snapshot> --ids <range> [--data data] [--dry-run] [--date YYYY-MM-DD] [--conflicts <path>] [--skipped <path>]
+//	metaimport librivox import --from <snapshot> --ids <range> --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>] [--data data] [--dry-run]
 //
 // librivox (LICENSING.md's public-domain exception) is two steps: fetch pages
 // LibriVox's audiobooks feed into a local snapshot - the one command here that
 // calls LibriVox, politely and resumably (see librivox.go) - and import lands the
 // snapshot projects --ids selects, offline, deduplicating on the project id.
+// import --regenerate-genres is the LibriVox twin of libex's genre regeneration
+// below, matched by project id: how a LibriVox genre table change reaches the
+// works already imported.
 //
 // libex-select writes no records: it reduces a full libex export to the
 // bounded, series-completing subset LICENSING.md's import posture allows, and
@@ -117,7 +121,7 @@
 // that position), and would mint a duplicate work on the
 // create path. Mutually exclusive with --enrich.
 //
-// --regenerate-genres (libex only) re-derives the GENRES of catalogued works from
+// --regenerate-genres (libex; and `librivox import`, librivox.go) re-derives the GENRES of catalogued works from
 // the libex rows of their own recordings, under today's mapping table and the
 // recording vote: a work no user-library source contributed to, whose every
 // ASIN-carrying recording met a row, takes the vote as its set; every other work
@@ -249,36 +253,16 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	// inert is a refusal instead: --regenerate-genres writes nothing but genres
 	// and stamps no source, so a date, a conflict worklist, a series rule or the
 	// series lookup would all be ignored there.
-	explicit := map[string]bool{}
-	fs.Visit(func(f *flag.Flag) { explicit["--"+f.Name] = true })
-	notRegen := func(m importer.Mode) bool { return m != importer.ModeRegenerateGenres }
-	const inertInRegen = "does nothing under --regenerate-genres, which writes genres only and stamps no source"
-	for _, f := range []struct {
-		name      string
-		libexOnly bool
-		valid     func(importer.Mode) bool // nil: every mode
-		what      string
-	}{
+	rules := append([]flagRule{
 		{"--skipped", true, notRegen, "cannot report a --regenerate-genres run's refusals: a refused row whose ASIN the catalogue holds is not listed, and every other row matched nothing"},
 		{"--attach-editions", true, func(m importer.Mode) bool { return m == importer.ModeCreate }, "attaches rows the CREATE path would plan; it is valid in that mode only"},
-		{"--genre-changes", true, func(m importer.Mode) bool { return m == importer.ModeRegenerateGenres }, "is the --regenerate-genres worklist; it is valid in that mode only"},
-		{"--rows-as-of", true, func(m importer.Mode) bool { return m == importer.ModeRegenerateGenres }, "is the --regenerate-genres rows' snapshot date; it is valid in that mode only"},
-		{"--date", false, notRegen, inertInRegen},
-		{"--conflicts", false, notRegen, inertInRegen},
 		{"--existing-series-only", false, notRegen, inertInRegen},
 		{"--series-lookup", false, notRegen, inertInRegen},
 		{"--series-lookup-limit", false, notRegen, inertInRegen},
 		{"--libex", false, notRegen, inertInRegen},
-	} {
-		switch {
-		case !explicit[f.name]:
-		case f.valid != nil && !f.valid(mode):
-			fmt.Fprintf(os.Stderr, "metaimport: %s %s\n", f.name, f.what)
-			return 2
-		case f.libexOnly && name != boundedSource:
-			fmt.Fprintf(os.Stderr, "metaimport: %s is only supported for the %s source, not %q\n", f.name, boundedSource, name)
-			return 2
-		}
+	}, regenFlagRules...)
+	if refuseFlags("metaimport", fs, mode, name, rules) {
+		return 2
 	}
 
 	// The regeneration never judges a record with evidence older than the
@@ -358,14 +342,71 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 			skippedLog.Encode(s)
 		}
 	}
-	for _, c := range sum.GenreChanges {
-		changesLog.Encode(c)
-	}
+	encodeGenreChanges(changesLog, sum)
 	if err := atomicfile.CommitInOrder(skippedLog, changesLog); err != nil {
 		fmt.Fprintln(os.Stderr, "metaimport: worklists:", err)
 		return 1
 	}
 	return 0
+}
+
+// flagRule is one flag that belongs to one source or one mode (refuseFlags):
+// libexOnly says it is for the catalogue-bounded source alone, valid (nil: every
+// mode) which modes it does something in, and what is the refusal's wording.
+type flagRule struct {
+	name      string
+	libexOnly bool
+	valid     func(importer.Mode) bool
+	what      string
+}
+
+// notRegen is the mode test of a flag the genre regeneration would ignore.
+func notRegen(m importer.Mode) bool { return m != importer.ModeRegenerateGenres }
+
+// regenOnly is the mode test of the genre regeneration's own flags.
+func regenOnly(m importer.Mode) bool { return m == importer.ModeRegenerateGenres }
+
+const inertInRegen = "does nothing under --regenerate-genres, which writes genres only and stamps no source"
+
+// regenFlagRules are the genre regeneration's flag rules, shared by the libex
+// command and `librivox import` (both run the regeneration): its own two flags,
+// valid in that mode only, and the two create flags it would silently ignore.
+// None is libexOnly: the mode test alone scopes them, since only those two
+// commands can select the mode (selectMode refuses it for every other source).
+var regenFlagRules = []flagRule{
+	{"--genre-changes", false, regenOnly, "is the --regenerate-genres worklist; it is valid in that mode only"},
+	{"--rows-as-of", false, regenOnly, "is the --regenerate-genres rows' snapshot date; it is valid in that mode only"},
+	{"--date", false, notRegen, inertInRegen},
+	{"--conflicts", false, notRegen, inertInRegen},
+}
+
+// refuseFlags validates the flags fs was given explicitly against rules, for a
+// run of source in mode, printing the first refusal under the command's prefix:
+// a flag that would be silently inert is a refusal instead. A libexOnly flag is
+// refused for every source but the catalogue-bounded one (boundedSource).
+func refuseFlags(prefix string, fs *flag.FlagSet, mode importer.Mode, source string, rules []flagRule) bool {
+	explicit := map[string]bool{}
+	fs.Visit(func(f *flag.Flag) { explicit["--"+f.Name] = true })
+	for _, f := range rules {
+		switch {
+		case !explicit[f.name]:
+		case f.valid != nil && !f.valid(mode):
+			fmt.Fprintf(os.Stderr, "%s: %s %s\n", prefix, f.name, f.what)
+			return true
+		case f.libexOnly && source != boundedSource:
+			fmt.Fprintf(os.Stderr, "%s: %s is only supported for the %s source, not %q\n", prefix, f.name, boundedSource, source)
+			return true
+		}
+	}
+	return false
+}
+
+// encodeGenreChanges writes a genre regeneration's worklist (one line per changed
+// work) to its staged file; a no-op for a run that changed none or a nil file.
+func encodeGenreChanges(log *atomicfile.File, sum importer.Summary) {
+	for _, c := range sum.GenreChanges {
+		log.Encode(c)
+	}
 }
 
 // openConflictLog opens the --conflicts worklist for APPEND, returning the sink
@@ -684,6 +725,7 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  metaimport libex-fill  [--data data] [--works a,b] [--limit N] [--all-tiers | --released-preorders] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport librivox fetch  --out <snapshot> [--max-pages N]")
 	fmt.Fprintln(os.Stderr, "  metaimport librivox import --from <snapshot> --ids <range> [--data data] [--dry-run] [--date YYYY-MM-DD] [--conflicts <path>] [--skipped <path>]")
+	fmt.Fprintln(os.Stderr, "  metaimport librivox import --from <snapshot> --ids <range> --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>] [--data data] [--dry-run]")
 	fmt.Fprintln(os.Stderr, "")
 	fmt.Fprintln(os.Stderr, "  --conflicts <path> appends one NDJSON row per refused contradiction (a durable worklist).")
 	fmt.Fprintln(os.Stderr, "  --series-lookup (user-library sources) fills a series position the export did not state by")
@@ -700,12 +742,13 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "    it never creates a work and never touches a series.")
 	fmt.Fprintln(os.Stderr, "  --relocate (libex only) moves cross-language recordings using all their source rows;")
 	fmt.Fprintln(os.Stderr, "    it may create a work, never a series; --skipped records relocation refusals.")
-	fmt.Fprintln(os.Stderr, "  --regenerate-genres (libex only) re-derives catalogued works' genres from their recordings'")
+	fmt.Fprintln(os.Stderr, "  --regenerate-genres (libex; librivox import) re-derives catalogued works' genres from their recordings'")
 	fmt.Fprintln(os.Stderr, "    rows (the recording vote); --rows-as-of <the rows' snapshot date> is required, and a work")
 	fmt.Fprintln(os.Stderr, "    with newer provenance is not judged; --genre-changes <path> writes one NDJSON line per changed work.")
 	fmt.Fprintln(os.Stderr, "  librivox fetch pages LibriVox's audiobooks feed into a local snapshot, politely (100 a page,")
 	fmt.Fprintln(os.Stderr, "    5 s apart, Retry-After honoured, resumable); the snapshot is never committed. librivox import")
-	fmt.Fprintln(os.Stderr, "    lands the --ids it selects (527, 1-2000, 5000-), deduplicating on the LibriVox project id.")
+	fmt.Fprintln(os.Stderr, "    lands the --ids it selects (527, 1-2000, 5000-), deduplicating on the LibriVox project id;")
+	fmt.Fprintln(os.Stderr, "    with --regenerate-genres it re-derives the genres of the works holding them instead.")
 	fmt.Fprintln(os.Stderr, "  libex-fill looks up the recordings that carry an ASIN but no cover (or no chapters) and")
 	fmt.Fprintln(os.Stderr, "    enriches them from the live libex service. It covers USER-LIBRARY imports only unless")
 	fmt.Fprintln(os.Stderr, "    --all-tiers is given; --works limits it further to those work ids. --released-preorders instead")

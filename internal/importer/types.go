@@ -180,9 +180,11 @@ func (m Mode) locatesASINs() bool {
 }
 
 // plansRows reports whether the mode plans rows as BOOKS - credits, people,
-// series - and so needs the batch's credit decisions and series resolution.
-// The genre regeneration reads a row's ASIN and genres alone, and both
-// whole-batch passes over a row set the size of the catalogue would be waste.
+// series - and so needs the batch's credit decisions (a LibriVox batch's id
+// keying among them) and series resolution. The genre regeneration reads a
+// row's identifier (an ASIN, or a LibriVox project id), runtime and genres
+// alone, and the whole-batch passes over a row set the size of the catalogue
+// would be waste.
 func (m Mode) plansRows() bool {
 	return m != ModeRegenerateGenres
 }

@@ -23,7 +23,8 @@ import "slices"
 // It is applied where a set is the MIRROR's own account: the create path of a
 // bulk-mirror run (mergeCreatedWorkFacts), `metaimport libex --enrich` filling a
 // set (applyWorkGenres) - both through the one accretion rule, accrueRunGenres -
-// and `metaimport libex --regenerate-genres` (regenerate.go). A set a user-library source contributed to is never trimmed
+// and the genre regeneration (`metaimport libex --regenerate-genres` and
+// `metaimport librivox import --regenerate-genres`, regenerate.go). A set a user-library source contributed to is never trimmed
 // (LICENSING.md, the trust tiers' rule 5).
 
 // genreVoteQuorum is the number of genre-bearing recordings from which the vote

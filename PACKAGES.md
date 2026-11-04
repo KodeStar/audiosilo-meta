@@ -10,7 +10,7 @@ cmd/metacheck|metafmt|metabuild   thin CLIs; logic lives in internal/ (metafmt d
 cmd/metaserve       thin CLI: the read-only HTTP API server (flag wiring only)
 cmd/metaextract     thin CLI: epub -> chapter text + manifest (split), n-gram no-verbatim check (ngram). The TOOL stays here; the PROCESS docs (EXTRACTION.md, EXTRACTION-AUDIO.md, AUTHORING.md) moved to the community repo with the layer they produce, and the three paths here are pointer stubs
 cmd/metascan        thin CLI: scan a local audiobook folder -> import JSON (flag wiring only)
-cmd/metaimport      thin CLI: ingest an external library export into data/ (openaudible, libation, libex) and the LibriVox mirror's two steps (`librivox fetch --out <snapshot>`, the one command that calls LibriVox - politely, resumably; `librivox import --from <snapshot> --ids <range>`, offline; cmd/metaimport/librivox.go)
+cmd/metaimport      thin CLI: ingest an external library export into data/ (openaudible, libation, libex) and the LibriVox mirror's two steps (`librivox fetch --out <snapshot>`, the one command that calls LibriVox - politely, resumably; `librivox import --from <snapshot> --ids <range>`, offline, and its `--regenerate-genres` mode; cmd/metaimport/librivox.go)
 cmd/metaissue       thin CLI: an issue-form body -> canonical records + a machine-readable verdict (flag wiring only). `--profile` is the tree profile of `--data` (default `all`, this repository) and `--works-db <meta.sqlite>` is the release artifact a root WITHOUT the works family verifies a sidecar's work slug against - required under `--profile community`, and a usage error under a profile that holds works, since the tree is the better answer
 cmd/metamigrate     thin CLI: the ONE-OFF conversion of a pre-pack file-per-record tree into the pack layout, with the added_at git-history backfill (--out rehearses out of place; logic in internal/migrate)
 cmd/metaremediate   thin CLI: the ONE-OFF GraphicAudio part-product repair (dry-run by default; --write applies; logic in internal/remediate)
@@ -1749,7 +1749,19 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   genres are a derivation of rows the work already cites - so a second identical
   run is a byte-level no-op; it skips the credit censuses and series resolution a
   row set the size of the catalogue does not need (`Mode.plansRows`), and
-  refuses non-mirror rows.
+  refuses non-mirror rows. `metaimport librivox import --regenerate-genres` is
+  the same pass over a LibriVox snapshot (`RunLibrivox` admits this mode beside
+  create): `forEachMatchedRow` matches a LibriVox row by its PROJECT ID
+  (`librivoxState.held`) instead of an ASIN, the table is
+  `model.LibrivoxGenres`, and the completeness test counts a recording carrying
+  a LibriVox id (`recInfo.librivox`) as owing a row just as an ASIN-carrying one
+  does - in BOTH runs, so a LibriVox run over a work that also holds a libex
+  recording, and a libex run over one holding a LibriVox project, may only add;
+  a recording carrying BOTH identifiers is never covered by either run alone
+  (`recInfo.regenCovered`). The LibriVox run keys no credits and runs none of
+  the author rules (`keyLibrivoxCredits` is a `plansRows` pass), and its
+  `--rows-as-of` is the LAST day a tranche was imported from the snapshot,
+  since a LibriVox record is stamped with its import day.
   `--genre-changes <path>` is the review worklist (one `{"work","removed",
   "added","mode"}` line per changed work, `trim` or `add-only`, through
   internal/atomicfile); the summary line counts works set / added to / unchanged /

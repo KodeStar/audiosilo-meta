@@ -9,10 +9,12 @@ import (
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
-// regenerate.go is `metaimport libex --regenerate-genres` (ModeRegenerateGenres):
-// the pass that re-derives catalogued works' genre sets from the libex rows of
-// their own recordings, under today's mapping table and the recording vote
-// (genrevote.go).
+// regenerate.go is `metaimport libex --regenerate-genres` and `metaimport
+// librivox import --regenerate-genres` (ModeRegenerateGenres): the pass that
+// re-derives catalogued works' genre sets from the bulk-mirror rows of their own
+// recordings - libex rows matched by ASIN, LibriVox snapshot projects matched by
+// project id (forEachMatchedRow) - under today's mapping table and the recording
+// vote (genrevote.go).
 //
 // It exists because nothing else repairs a stored set. Every writer only ever
 // UNIONS genres, the create path stores the set the creating run's rows mapped
@@ -25,9 +27,13 @@ import (
 //   - TRIM-ELIGIBLE: no source on the work or on any of its recordings is
 //     user-library tier (a user-library ASIN merge stamps only the recording,
 //     hasUserLibrarySource), AND every
-//     recording of the work that carries an ASIN met at least one input row
-//     (the evidence is complete - a recording whose rows are missing could hold
-//     the very genre the vote would drop). Its set BECOMES the vote, sorted. A
+//     recording of the work that carries an ASIN or a LibriVox project id met at
+//     least one input row (the evidence is complete - a recording whose rows are
+//     missing could hold the very genre the vote would drop). Either identifier
+//     counts in either run: a LibriVox run over a work that also holds a libex
+//     recording, or a libex run over one holding a LibriVox project (one
+//     recording carrying both included), has seen only part of the work's
+//     evidence, so it may only add (recInfo.regenCovered). Its set BECOMES the vote, sorted. A
 //     vote that states nothing (no recording maps a genre, or n >= 3 recordings
 //     agree on none) leaves the work unchanged: silence is not an assertion.
 //   - otherwise ADD-ONLY: the set becomes existing UNION vote. A set a
@@ -77,10 +83,12 @@ const (
 )
 
 // planRegenerateGenres is the pass itself: every row is matched to the
-// recording its ASIN sits on (forEachMatchedRow, the enrichment pass's ASIN
-// index, so a catalogue ASIN on two recordings matches the first and the
-// second's evidence is simply incomplete), then every catalogued work a row
-// reached is decided from what the load put on its workState.
+// recording its identifier sits on (forEachMatchedRow: a libex row's ASIN
+// through the enrichment pass's ASIN index, so a catalogue ASIN on two
+// recordings matches the first and the second's evidence is simply incomplete;
+// a LibriVox row's project id through librivoxState.held), then every
+// catalogued work a row reached is decided from what the load put on its
+// workState.
 func (p *planner) planRegenerateGenres(books []sourceBook) {
 	// The run reads every row of the catalogue, whose umbrella nodes ("Literature
 	// & Fiction") are unmapped by design and were reported by the runs that
@@ -122,6 +130,7 @@ func (p *planner) planRegenerateGenres(books []sourceBook) {
 
 	var userSourced, incomplete, silent int
 	var newer []string
+	lvRun := p.sourceType == sourceLibrivox
 	for _, slug := range slices.Sorted(maps.Keys(p.works)) {
 		if !reached[slug] {
 			p.summary.GenreWorksNoRow++
@@ -142,7 +151,8 @@ func (p *planner) planRegenerateGenres(books []sourceBook) {
 			set, seen := p.regenRecs[RecRef{Work: slug, Rec: rec}]
 			if seen {
 				sets = append(sets, set)
-			} else if len(ri.asins) > 0 {
+			}
+			if !ri.regenCovered(seen, lvRun) {
 				complete = false
 			}
 		}
@@ -186,7 +196,7 @@ func (p *planner) planRegenerateGenres(books []sourceBook) {
 	}
 	if n := userSourced + incomplete; n > 0 {
 		p.summary.Notes = append(p.summary.Notes, fmt.Sprintf(
-			"genres of %d %s could only be added to, never trimmed: %d carry a user-library source, %d have a recording carrying an ASIN that no uncontradicted input row covered",
+			"genres of %d %s could only be added to, never trimmed: %d carry a user-library source, %d have a recording carrying an ASIN or a LibriVox id that no uncontradicted input row covered",
 			n, plural(n, "work"), userSourced, incomplete))
 	}
 	if silent > 0 {

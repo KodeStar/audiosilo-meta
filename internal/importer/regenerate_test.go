@@ -173,7 +173,7 @@ func TestRegenerateGenresAddsOnlyWithoutTrimRights(t *testing.T) {
 	if set, addedTo, added, removed := sum.GenreTally(); addedTo != 2 || set != 1 || removed != 1 || added != 3 {
 		t.Errorf("summary = %+v", sum)
 	}
-	if !hasNote(sum.Notes, "1 carry a user-library source, 1 have a recording carrying an ASIN that no uncontradicted input row covered") {
+	if !hasNote(sum.Notes, "1 carry a user-library source, 1 have a recording carrying an ASIN or a LibriVox id that no uncontradicted input row covered") {
 		t.Errorf("notes = %v", sum.Notes)
 	}
 }
@@ -291,7 +291,7 @@ func TestRegenerateGenresIgnoresContradictedRows(t *testing.T) {
 		t.Errorf("GenreRowsContradicted = %d, want 2", sum.GenreRowsContradicted)
 	}
 	if !hasNote(sum.Notes, "2 rows contradicted the recorded runtime") ||
-		!hasNote(sum.Notes, "1 have a recording carrying an ASIN that no uncontradicted input row covered") {
+		!hasNote(sum.Notes, "1 have a recording carrying an ASIN or a LibriVox id that no uncontradicted input row covered") {
 		t.Errorf("notes = %v", sum.Notes)
 	}
 }

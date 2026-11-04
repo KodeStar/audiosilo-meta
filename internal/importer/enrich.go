@@ -61,15 +61,20 @@ func (p *planner) planEnrich(books []sourceBook) {
 
 // forEachMatchedRow is the row loop of the two passes matched by identifier
 // (enrichment and the genre regeneration): each row's ASIN located through the
-// catalogue's ASIN index, a row whose ASIN the catalogue does not hold
-// (including one with no well-formed ASIN, which can never match) counted and
-// ignored, and fn called with the recording a matched row sits on, under the
-// row's provenance stamp. It stops at the first fatal error.
+// catalogue's ASIN index - a LibriVox row's PROJECT ID through the recordings
+// carrying it (librivoxState.held), since it has no ASIN - a row whose
+// identifier the catalogue does not hold (including one with no well-formed
+// ASIN, which can never match) counted and ignored, and fn called with the
+// recording a matched row sits on, under the row's provenance stamp. It stops
+// at the first fatal error.
 func (p *planner) forEachMatchedRow(books []sourceBook, fn func(b sourceBook, ref RecRef)) {
 	for _, b := range books {
 		asin := NormalizeASIN(b.str("asin"))
-		p.setSource(asin, b)
+		p.setSource(asin, b) // a LibriVox row's ref is its project id (setSource)
 		ref, matched := p.asinLoc[asin]
+		if b.lv != nil {
+			ref, matched = p.lv.held[b.lv.id]
+		}
 		if !matched {
 			p.summary.NotInCatalog++
 			continue
