@@ -57,12 +57,8 @@ import (
 // title is REFUSED naming it - the record moved, and a stale review must not overwrite a
 // title nobody reviewed.
 //
-// One op is RECORD-ONLY: link-librivox-repackage (R-REPACKAGE), whose decision is the
-// record of a link between two recordings of one work and is never applied. Its accept
-// means "link recorded" and its reject "not this project's audio"; both withdraw the
-// pair's proposal and stay in force while the work holds both recordings, whether or
-// not the detector still proposes the pair, and neither may be asserted (an accept
-// already records a pair no detector proposes). See applyRepackageReviews.
+// Some ops are RECORD-ONLY (recordOnlyOps): the decision is the record and is never
+// applied.
 //
 //go:embed reviewed.json
 var reviewedFile []byte
@@ -229,16 +225,27 @@ func knownReviewOp(op string) bool {
 }
 
 // unappliableOps are the ops the audit emits that no repair carries out (a review, a
-// rename candidate, a sidecar re-point: each names a decision a rule may not make). An
-// acceptance of one would be counted as made mechanical while nothing applies it, so
-// it is refused at parse - except link-librivox-repackage's, which records a link and
-// makes nothing mechanical (applyRepackageReviews). internal/repair's TestAcceptableOpsAreAppliable pins this set
-// against the ops the repair can apply.
+// rename candidate, a sidecar re-point: each names a decision a rule may not make; a
+// people merge; a record-only link). An acceptance promoting one would be counted as
+// made mechanical while nothing applies it, so it is refused at parse unless the op is
+// record-only. internal/repair's TestAcceptableOpsAreAppliable pins this set against
+// the ops the repair can apply.
 var unappliableOps = map[string]bool{OpReview: true, OpRenameCandidate: true, OpRepointSidecar: true, OpMergePeople: true,
 	OpLinkLibrivoxRepackage: true}
 
-// AcceptableOp reports whether a reviewed decision may ACCEPT a proposal of op.
-// Ops lists every op the audit emits, so a test can hold this to the repair's appliers.
+// recordOnlyOps are the ops whose reviewed decision IS the record of a fact and is
+// never applied: link-librivox-repackage (R-REPACKAGE), a link between two recordings
+// of one work. Its accept means "link recorded" and its reject "not this project's
+// audio"; both withdraw the pair's proposal and stay in force while the work holds both
+// recordings, whether or not the detector still proposes the pair; neither may be
+// asserted. Such a decision never enters the generic proposal index, never promotes
+// anything to mechanical and never reaches metarepair (applyRepackageReviews).
+var recordOnlyOps = map[string]bool{OpLinkLibrivoxRepackage: true}
+
+// AcceptableOp reports whether a reviewed acceptance of op PROMOTES its proposal to
+// mechanical: the ops a repair applies. Ops lists every op the audit emits, so a test
+// can hold this to the repair's appliers. A record-only op (recordOnlyOps) may still be
+// accepted, promoting nothing.
 func AcceptableOp(op string) bool { return knownReviewOp(op) && !unappliableOps[op] }
 
 // Ops returns every op opPhrase renders, review included, sorted: every op the
@@ -284,8 +291,8 @@ func parseReviewed(raw []byte) ([]reviewedDecision, error) {
 		}
 		// A review (or any op no repair carries out) has no mechanical action, so
 		// promoting one would be counted as made mechanical while nothing applies it.
-		// The one exception is a record-only op, whose acceptance IS what it records.
-		if r.Decision == "accept" && !AcceptableOp(r.Op) && r.Op != OpLinkLibrivoxRepackage {
+		// A record-only op's acceptance promotes nothing: it IS what it records.
+		if r.Decision == "accept" && !AcceptableOp(r.Op) && !recordOnlyOps[r.Op] {
 			return nil, fmt.Errorf("entry %d: no repair applies a %q proposal, so it cannot be accepted", i, r.Op)
 		}
 		if !oneLineTrimmed(r.Reason) || strings.ContainsAny(r.Reason, "\u2013\u2014") {
@@ -663,6 +670,9 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 	for j, r := range rs {
 		if r.Op != OpReview {
 			resolved[j] = resolvedProposal(r.proposal(), "", reds)
+			if recordOnlyOps[r.Op] {
+				continue // settled on its own terms by applyRepackageReviews, never promoted
+			}
 			if why := retiredSubject(r, resolved[j], ix); why != "" {
 				// It matches nothing and sources nothing: see retiredSubject.
 				statuses[j], whys[j] = statusStale, why
@@ -680,9 +690,6 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 				// assertion's proposal is the rest of its cluster, which is what a detector,
 				// a converging assertion and the sourced finding all spell.
 				resolved[j].Others = slices.DeleteFunc(resolved[j].Others, func(o string) bool { return o == resolved[j].Target })
-			}
-			if r.Op == OpLinkLibrivoxRepackage {
-				continue // settled on its own terms below, never promoted
 			}
 			key := keyOf(resolved[j])
 			byKey[key] = append(byKey[key], j)

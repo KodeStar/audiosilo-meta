@@ -30,6 +30,11 @@ func MapRegion(word string) (region string, ok bool) { return mapRegion(word) }
 // a partial one ("2018-10"), is returned unchanged for the caller to validate.
 func ISODatePart(ts string) string { return isoDatePart(ts) }
 
+// PublisherKey is the comparison form of a publisher name: its slug words minus the
+// generic ones ("Tantor Audio" and "Tantor Media" are one house), or "" when nothing
+// distinctive is left. internal/audit's R-REPACKAGE counts a repackager by it.
+func PublisherKey(name string) string { return publisherKey(name) }
+
 // SortCredits puts a work's credits in the canonical (person, role) order, the
 // one byte-form a given set of credits ever has on disk.
 func SortCredits(credits []model.Credit) { sortCredits(credits) }

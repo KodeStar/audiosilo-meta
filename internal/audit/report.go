@@ -107,7 +107,7 @@ func renderAction(p Proposal) string {
 	s := phrase(p)
 	// A review and a record-only link are applied by nothing, so the warning would
 	// only be noise.
-	if p.Advisory && p.Op != OpReview && p.Op != OpLinkLibrivoxRepackage {
+	if p.Advisory && p.Op != OpReview && !recordOnlyOps[p.Op] {
 		s = "do NOT apply mechanically - " + s
 	}
 	if p.Reason != "" {

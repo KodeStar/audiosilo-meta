@@ -5,6 +5,7 @@ import (
 	"slices"
 	"strings"
 
+	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -61,11 +62,15 @@ type repackStats struct {
 
 // repackPair is one same-reader pair with the evidence a proposal cites.
 type repackPair struct {
-	work      *model.Work
-	cand, lv  *model.Recording
-	runtimeOK bool // both runtimes stated and inside the window
-	window    string
-	alsoLV    []string // the candidate's other same-reader LibriVox recordings
+	work     *model.Work
+	cand, lv *model.Recording
+	readers  string // the shared reader set, rendered
+	// window is the runtime judgement in words, "" when a runtime is unstated (the
+	// pair then stands on its publisher).
+	window string
+	// matched are every LibriVox recording of the work the candidate's readers read,
+	// this pair's own included: one slice shared by the candidate's pairs.
+	matched *[]string
 }
 
 // detectRepackage proposes, for a recording that is not a LibriVox project on a work
@@ -83,7 +88,7 @@ type repackPair struct {
 //   - REQUIRED: the candidate's narrators are exactly the LibriVox recording's readers,
 //     as person slugs in any order. Overlap is not enough: a LibriVox group project
 //     shares a reader with every retail recording one of its volunteers ever made.
-//   - REQUIRED: the two recordings state one language (primary subtag).
+//   - REQUIRED: the two recordings state one language (model.SameLanguage).
 //   - SUPPORTING, one of: both runtimes stated and inside the window (subclass
 //     same-readers-runtime); or, when either runtime is unstated, a publisher carrying
 //     at least repackPublisherMin runtime-confirmed proposals (same-readers-publisher).
@@ -96,71 +101,71 @@ func detectRepackage(ix *index) (*findings, repackStats) {
 	f := &findings{class: ClassRepackage}
 	var st repackStats
 	var pairs []repackPair
-	confirmed := map[string]int{} // publisher key -> runtime-confirmed pairs
+	confirmed := map[string]int{} // importer.PublisherKey -> runtime-confirmed pairs
+	type lvReading struct {
+		rec     *model.Recording
+		readers []string
+	}
 	for _, w := range ix.cat.Works {
-		var lvs, cands []*model.Recording
+		if !slices.ContainsFunc(w.Recordings, func(r *model.Recording) bool { return r.LibrivoxID != 0 }) {
+			continue
+		}
+		var lvs []lvReading
+		var cands []*model.Recording
 		for _, r := range w.Recordings {
 			if r.LibrivoxID != 0 {
-				lvs = append(lvs, r)
+				lvs = append(lvs, lvReading{r, sortedUnique(r.Narrators)})
 			} else {
 				cands = append(cands, r)
 			}
-		}
-		if len(lvs) == 0 || len(cands) == 0 {
-			continue
 		}
 		for _, c := range cands {
 			readers := sortedUnique(c.Narrators)
 			if len(readers) == 0 {
 				continue
 			}
-			var matched []repackPair
+			matched := new([]string)
+			rendered := strings.Join(readers, ", ")
 			for _, lv := range lvs {
-				lvReaders := sortedUnique(lv.Narrators)
-				if !slices.Equal(readers, lvReaders) {
-					if slices.ContainsFunc(readers, func(n string) bool { return slices.Contains(lvReaders, n) }) {
+				if !slices.Equal(readers, lv.readers) {
+					if slices.ContainsFunc(readers, func(n string) bool { return slices.Contains(lv.readers, n) }) {
 						st.SharedReader++
 					}
 					continue
 				}
 				st.Pairs++
-				if model.PrimarySubtag(c.Language) != model.PrimarySubtag(lv.Language) {
+				if !model.SameLanguage(c.Language, lv.rec.Language) {
 					st.LanguageDiffers++
 					continue
 				}
-				p := repackPair{work: w, cand: c, lv: lv}
-				if c.RuntimeMin > 0 && lv.RuntimeMin > 0 {
-					ok, window := repackWindow(c.RuntimeMin, lv.RuntimeMin, len(lv.Chapters))
+				p := repackPair{work: w, cand: c, lv: lv.rec, readers: rendered, matched: matched}
+				if c.RuntimeMin > 0 && lv.rec.RuntimeMin > 0 {
+					ok, window := repackWindow(c.RuntimeMin, lv.rec.RuntimeMin, len(lv.rec.Chapters))
 					if !ok {
 						st.OutsideWindow++
 						continue
 					}
-					p.runtimeOK, p.window = true, window
-					confirmed[publisherKey(c.Publisher)]++
-				}
-				matched = append(matched, p)
-			}
-			for i := range matched {
-				for j, o := range matched {
-					if i != j {
-						matched[i].alsoLV = append(matched[i].alsoLV, o.lv.ID)
+					p.window = window
+					if key := importer.PublisherKey(c.Publisher); key != "" {
+						confirmed[key]++
 					}
 				}
+				*matched = append(*matched, lv.rec.ID)
+				pairs = append(pairs, p)
 			}
-			pairs = append(pairs, matched...)
 		}
 	}
 	for _, p := range pairs {
-		pubCount := confirmed[publisherKey(p.cand.Publisher)]
+		key := importer.PublisherKey(p.cand.Publisher)
 		subclass := repackRuntime
-		if !p.runtimeOK {
-			if p.cand.Publisher == "" || pubCount < repackPublisherMin {
+		if p.window == "" {
+			if key == "" || confirmed[key] < repackPublisherMin {
 				st.NoRuntimeNoPublisher++
 				continue
 			}
 			subclass = repackPublisher
 		}
-		f.add(repackFinding(ix, p, subclass, pubCount))
+		f.add(repackFinding(ix, p, subclass, confirmed[key]))
 	}
 	return f, st
 }
@@ -183,29 +188,20 @@ func repackWindow(cand, lv, sections int) (bool, string) {
 		cand, lv, gap, longer, shorter)
 }
 
-// publisherKey folds a publisher's spelling for the repackager count ("Saga Egmont"
-// and "SAGA Egmont" are one imprint). An unstated publisher is its own key, which
-// never reaches repackPublisherMin's use because an empty publisher is refused first.
-func publisherKey(p string) string { return strings.ToLower(strings.Join(strings.Fields(p), " ")) }
-
 // repackFinding renders one pair: the work, both recordings, the LibriVox project and
 // every piece of evidence, in the proposal's reason (what SUMMARY.md and the action
-// prose show) and in the notes (one fact a line).
+// prose show) and in the notes (one fact a line). pubCount is the runtime-confirmed
+// proposals of the candidate's publisher (importer.PublisherKey), 0 for none.
 func repackFinding(ix *index, p repackPair, subclass string, pubCount int) Finding {
 	c, lv := p.cand, p.lv
-	readers := strings.Join(sortedUnique(c.Narrators), ", ")
-	pub := c.Publisher
-	if pub == "" {
-		pub = "(unstated)"
-	}
 	notes := []string{
-		fmt.Sprintf("LibriVox project %d is recording %s: read by %s, %s, %s", lv.LibrivoxID, lv.ID, readers,
+		fmt.Sprintf("LibriVox project %d is recording %s: read by %s, %s, %s", lv.LibrivoxID, lv.ID, p.readers,
 			runtimeWords(lv.RuntimeMin), joinCount(len(lv.Chapters), "section")),
-		fmt.Sprintf("candidate %s: read by %s, %s, publisher %s, released %s", c.ID, readers,
-			runtimeWords(c.RuntimeMin), pub, valueOrUnset(c.ReleaseDate)),
+		fmt.Sprintf("candidate %s: read by %s, %s, publisher %s, released %s", c.ID, p.readers,
+			runtimeWords(c.RuntimeMin), orPlaceholder(c.Publisher, "(unstated)"), orPlaceholder(c.ReleaseDate, "(unstated)")),
 	}
-	evidence := "same readers " + readers
-	if p.runtimeOK {
+	evidence := "same readers " + p.readers
+	if p.window != "" {
 		notes = append(notes, p.window)
 		evidence += "; " + p.window
 	} else {
@@ -217,8 +213,8 @@ func repackFinding(ix *index, p repackPair, subclass string, pubCount int) Findi
 		notes = append(notes, pn)
 		evidence += "; " + pn
 	}
-	if len(p.alsoLV) > 0 {
-		notes = append(notes, "the candidate's readers also read LibriVox recording "+strings.Join(p.alsoLV, ", ")+
+	if others := slices.DeleteFunc(slices.Clone(*p.matched), func(id string) bool { return id == lv.ID }); len(others) > 0 {
+		notes = append(notes, "the candidate's readers also read LibriVox recording "+strings.Join(others, ", ")+
 			" of this work: accept the one it repackages")
 	}
 	return Finding{
@@ -237,13 +233,6 @@ func runtimeWords(min int) string {
 		return "runtime unstated"
 	}
 	return fmt.Sprintf("%d min", min)
-}
-
-func valueOrUnset(s string) string {
-	if s == "" {
-		return "(unstated)"
-	}
-	return s
 }
 
 // repackLinkStatus is the outcome of a reviewed link-librivox-repackage decision over
@@ -292,18 +281,19 @@ func repackLinkStatus(r reviewedDecision, p Proposal, ix *index) (outcomeStatus,
 	return in, ""
 }
 
-// applyRepackageReviews settles every link-librivox-repackage decision: its status
-// (repackLinkStatus) and, for one in force, the withdrawal of the pair's proposal from
-// the queue - an accepted pair is a recorded link, a rejected one a reviewed "not this
-// project's audio", and neither is re-asked. Nothing is promoted to mechanical and
-// nothing reaches metarepair: no repair applies the op. It runs before the generic
-// review pass, which never sees these decisions (applyReviewed keeps them out of its
-// proposal index).
+// applyRepackageReviews settles every record-only (recordOnlyOps) decision. It is a
+// sibling of unmetRejection and distinctKind: decisions in force WITHOUT a fresh
+// proposal meeting them. Each gets its status (repackLinkStatus) and, while in force,
+// withdraws the pair's proposal from the queue - an accepted pair is a recorded link, a
+// rejected one a reviewed "not this project's audio", and neither is re-asked. Nothing
+// is promoted to mechanical and nothing reaches metarepair: no repair applies the op.
+// applyReviewed calls it before matching, and keeps these decisions out of its
+// proposal index.
 func applyRepackageReviews(rep *Report, rs []reviewedDecision, resolved []Proposal, statuses []outcomeStatus,
 	whys []string, ix *index) {
 	withdraw := map[proposalKey]outcomeStatus{}
 	for j, r := range rs {
-		if r.Op != OpLinkLibrivoxRepackage {
+		if !recordOnlyOps[r.Op] {
 			continue
 		}
 		statuses[j], whys[j] = repackLinkStatus(r, resolved[j], ix)

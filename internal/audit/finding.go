@@ -359,6 +359,15 @@ func sortedInts(ns []int) []int {
 	return out
 }
 
+// orPlaceholder is s, or placeholder when s is empty: the one spelling of "this value
+// is unset" in note text, each caller naming its own placeholder.
+func orPlaceholder(s, placeholder string) string {
+	if s == "" {
+		return placeholder
+	}
+	return s
+}
+
 // pairKey is the stable key of an unordered pair of slugs.
 func pairKey(a, b string) string {
 	if b < a {

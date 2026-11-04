@@ -30,14 +30,6 @@ func lvProject(id, sections int) testpack.RecOpt {
 	}
 }
 
-func withPublisher(p string) testpack.RecOpt {
-	return func(m map[string]any) { m["publisher"] = p }
-}
-
-func withoutRuntime() testpack.RecOpt {
-	return func(m map[string]any) { delete(m, "runtime_min") }
-}
-
 // repackPeople are the people every fixture below credits.
 func repackPeople(t testing.TB) map[string]string {
 	return map[string]string{
@@ -56,7 +48,7 @@ func repackWork(t testing.TB, files map[string]string, id string, lvID, lvRuntim
 	files["works/xx/"+id+"/recordings/david-barnes.json"] = recJSON(t, "david-barnes", id,
 		withNarrators("david-barnes"), withRuntime(lvRuntime), lvProject(lvID, sections))
 	files["works/xx/"+id+"/recordings/david-barnes-2016.json"] = recJSON(t, "david-barnes-2016", id,
-		append([]testpack.RecOpt{withNarrators("david-barnes"), withPublisher("Paperless")}, retail...)...)
+		append([]testpack.RecOpt{withNarrators("david-barnes"), testpack.WithPublisher("Paperless")}, retail...)...)
 }
 
 // metamorphosis is the worked example: David Barnes's LibriVox project 527 (154 min,
@@ -173,7 +165,7 @@ func TestRepackagePublisherSignal(t *testing.T) {
 		for i := range confirmed {
 			repackWork(t, files, fmt.Sprintf("confirmed-%d", i), 600+i, 154, 3, withRuntime(152))
 		}
-		repackWork(t, files, "unstated", 527, 154, 3, withoutRuntime())
+		repackWork(t, files, "unstated", 527, 154, 3, testpack.WithoutRuntime())
 		return files
 	}
 	t.Run("a repeat repackager is admitted", func(t *testing.T) {
@@ -332,30 +324,32 @@ func TestParseReviewedRepackageDecisions(t *testing.T) {
 		_, err = parseReviewed(raw)
 		return err
 	}
-	entry := func(decision, extra string) string {
-		return `{"decision":"` + decision + `","from":"david-barnes-2016","op":"link-librivox-repackage","reason":"why",` +
+	// entry spells a decision of from -> david-barnes, an empty from omitting the key.
+	entry := func(decision, from, extra string) string {
+		if from != "" {
+			extra += `,"from":"` + from + `"`
+		}
+		return `{"decision":"` + decision + `","op":"link-librivox-repackage","reason":"why",` +
 			`"target":"metamorphosis","to":"david-barnes"` + extra + `}`
 	}
-	if err := parse(entry("accept", "")); err != nil {
+	const retail = "david-barnes-2016"
+	if err := parse(entry("accept", retail, "")); err != nil {
 		t.Errorf("refused an accept: %v", err)
 	}
-	if err := parse(entry("reject", "")); err != nil {
+	if err := parse(entry("reject", retail, "")); err != nil {
 		t.Errorf("refused a reject: %v", err)
 	}
 	if AcceptableOp(OpLinkLibrivoxRepackage) {
 		t.Errorf("AcceptableOp(%s) = true: no repair applies it", OpLinkLibrivoxRepackage)
 	}
 	for name, raw := range map[string]string{
-		"an assertion": entry("assert", ""),
-		"a series":     entry("accept", `,"series":"s"`),
-		"a field":      entry("accept", `,"field":"recording"`),
-		"others":       entry("accept", `,"others":["x"]`),
-		"no from": `{"decision":"accept","op":"link-librivox-repackage","reason":"why",` +
-			`"target":"metamorphosis","to":"david-barnes"}`,
-		"one recording twice": `{"decision":"accept","from":"david-barnes","op":"link-librivox-repackage","reason":"why",` +
-			`"target":"metamorphosis","to":"david-barnes"}`,
-		"a recording id that is no slug": `{"decision":"accept","from":"David Barnes","op":"link-librivox-repackage",` +
-			`"reason":"why","target":"metamorphosis","to":"david-barnes"}`,
+		"an assertion":                   entry("assert", retail, ""),
+		"a series":                       entry("accept", retail, `,"series":"s"`),
+		"a field":                        entry("accept", retail, `,"field":"recording"`),
+		"others":                         entry("accept", retail, `,"others":["x"]`),
+		"no from":                        entry("accept", "", ""),
+		"one recording twice":            entry("accept", "david-barnes", ""),
+		"a recording id that is no slug": entry("accept", "David Barnes", ""),
 	} {
 		t.Run(name, func(t *testing.T) {
 			if err := parse(raw); err == nil {
