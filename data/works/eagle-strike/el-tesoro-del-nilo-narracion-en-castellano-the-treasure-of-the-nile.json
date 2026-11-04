@@ -11823,48 +11823,56 @@
             {
               "audio_url": "https://www.archive.org/download/elvampiro_2009_librivox/vampiro_00_polidori_64kb.mp3",
               "length_ms": 356000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Prólogo"
             },
             {
               "audio_url": "https://www.archive.org/download/elvampiro_2009_librivox/vampiro_01_polidori_64kb.mp3",
               "length_ms": 585000,
+              "section_number": 1,
               "start_ms": 356000,
               "title": "Capítulo Primero"
             },
             {
               "audio_url": "https://www.archive.org/download/elvampiro_2009_librivox/vampiro_02_polidori_64kb.mp3",
               "length_ms": 326000,
+              "section_number": 2,
               "start_ms": 941000,
               "title": "Capítulo Segundo"
             },
             {
               "audio_url": "https://www.archive.org/download/elvampiro_2009_librivox/vampiro_03_polidori_64kb.mp3",
               "length_ms": 320000,
+              "section_number": 3,
               "start_ms": 1267000,
               "title": "Capítulo Tercero"
             },
             {
               "audio_url": "https://www.archive.org/download/elvampiro_2009_librivox/vampiro_04_polidori_64kb.mp3",
               "length_ms": 1457000,
+              "section_number": 4,
               "start_ms": 1587000,
               "title": "Capítulo Cuarto"
             },
             {
               "audio_url": "https://www.archive.org/download/elvampiro_2009_librivox/vampiro_05_polidori_64kb.mp3",
               "length_ms": 365000,
+              "section_number": 5,
               "start_ms": 3044000,
               "title": "Capítulo Quinto"
             },
             {
               "audio_url": "https://www.archive.org/download/elvampiro_2009_librivox/vampiro_06_polidori_64kb.mp3",
               "length_ms": 818000,
+              "section_number": 6,
               "start_ms": 3409000,
               "title": "Capítulo Sexto"
             },
             {
               "audio_url": "https://www.archive.org/download/elvampiro_2009_librivox/vampiro_07_polidori_64kb.mp3",
               "length_ms": 556000,
+              "section_number": 7,
               "start_ms": 4227000,
               "title": "Capítulo Séptimo"
             }
@@ -11873,7 +11881,12 @@
           "cover_url": "https://archive.org/download/elvampiro_2009_librivox/elvampiro_2010.jpg",
           "id": "victor-villarraza",
           "language": "es",
+          "librivox_genres": [
+            "Horror & Supernatural Fiction",
+            "Gothic Fiction"
+          ],
           "librivox_id": 15693,
+          "librivox_title": "Vampiro",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/el-vampiro-by-john-william-polidori/",

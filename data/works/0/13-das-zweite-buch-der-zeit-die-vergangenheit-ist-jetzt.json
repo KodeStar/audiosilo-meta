@@ -7071,60 +7071,90 @@
             {
               "audio_url": "https://www.archive.org/download/133_quicker_ways_bisquick_2302_librivox/133quickerwayswithbisquick_01_crocker_64kb.mp3",
               "length_ms": 351000,
+              "readers": [
+                "vo-gal"
+              ],
               "start_ms": 0,
               "title": "BISCUITS"
             },
             {
               "audio_url": "https://www.archive.org/download/133_quicker_ways_bisquick_2302_librivox/133quickerwayswithbisquick_02_crocker_64kb.mp3",
               "length_ms": 624000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 351000,
               "title": "MAIN DISHES"
             },
             {
               "audio_url": "https://www.archive.org/download/133_quicker_ways_bisquick_2302_librivox/133quickerwayswithbisquick_03_crocker_64kb.mp3",
               "length_ms": 241000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 975000,
               "title": "MUFFINS, COFFEE CAKE"
             },
             {
               "audio_url": "https://www.archive.org/download/133_quicker_ways_bisquick_2302_librivox/133quickerwayswithbisquick_04_crocker_64kb.mp3",
               "length_ms": 284000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 1216000,
               "title": "DUMPLINGS"
             },
             {
               "audio_url": "https://www.archive.org/download/133_quicker_ways_bisquick_2302_librivox/133quickerwayswithbisquick_05_crocker_64kb.mp3",
               "length_ms": 203000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 1500000,
               "title": "NUT BREADS"
             },
             {
               "audio_url": "https://www.archive.org/download/133_quicker_ways_bisquick_2302_librivox/133quickerwayswithbisquick_06_crocker_64kb.mp3",
               "length_ms": 727000,
+              "readers": [
+                "vo-gal"
+              ],
               "start_ms": 1703000,
               "title": "PANCAKES, WAFFLES"
             },
             {
               "audio_url": "https://www.archive.org/download/133_quicker_ways_bisquick_2302_librivox/133quickerwayswithbisquick_07_crocker_64kb.mp3",
               "length_ms": 279000,
+              "readers": [
+                "hope"
+              ],
               "start_ms": 2430000,
               "title": "SHORTCAKE"
             },
             {
               "audio_url": "https://www.archive.org/download/133_quicker_ways_bisquick_2302_librivox/133quickerwayswithbisquick_08_crocker_64kb.mp3",
               "length_ms": 256000,
+              "readers": [
+                "hope"
+              ],
               "start_ms": 2709000,
               "title": "VELVET-CRUMB CAKE"
             },
             {
               "audio_url": "https://www.archive.org/download/133_quicker_ways_bisquick_2302_librivox/133quickerwayswithbisquick_09_crocker_64kb.mp3",
               "length_ms": 528000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 2965000,
               "title": "YEAST BAKING"
             },
             {
               "audio_url": "https://www.archive.org/download/133_quicker_ways_bisquick_2302_librivox/133quickerwayswithbisquick_10_crocker_64kb.mp3",
               "length_ms": 419000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 3493000,
               "title": "ALL-TIME FAVORITES"
             }
@@ -7133,7 +7163,11 @@
           "cover_url": "https://archive.org/download/133_quicker_ways_bisquick_2302_librivox/133quicker_2302.jpg",
           "id": "vo-gal",
           "language": "en",
+          "librivox_genres": [
+            "Cooking"
+          ],
           "librivox_id": 18789,
+          "librivox_title": "133 Quicker Ways to Homemade with Bisquick",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/133-quicker-ways-to-homemade-with-bisquick-by-betty-crocker/",

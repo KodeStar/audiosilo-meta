@@ -1913,7 +1913,13 @@
           "cover_url": "https://archive.org/download/orionclemens_2502_librivox/orionclemens_2502.jpg",
           "id": "john-greenman",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "Essays & Short Works",
+            "Modern (19th C)"
+          ],
           "librivox_id": 21329,
+          "librivox_title": "Orion Clemens",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/orion-clemens-by-fred-w-lorch/",
@@ -5734,7 +5740,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt15/Orjien_vapauttaminen_Pohjois-Amerikassa_1203.jpg",
           "id": "andy-bay",
           "language": "fi",
+          "librivox_genres": [
+            "*Non-fiction",
+            "History"
+          ],
           "librivox_id": 2838,
+          "librivox_title": "Orjien vapauttaminen Pohjois-Amerikassa",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/orjien-vapauttaminen-pohjois-amerikassa-by-alexandra-gripenberg/",
@@ -6844,7 +6855,11 @@
           "cover_url": "https://archive.org/download/orlando_biography_2401_librivox/orlando_2401.jpg",
           "id": "cori-samuel",
           "language": "en",
+          "librivox_genres": [
+            "Published 1900 onward"
+          ],
           "librivox_id": 20087,
+          "librivox_title": "Orlando, A Biography",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/orlando-by-virginia-woolf/",
@@ -6873,72 +6888,84 @@
             {
               "audio_url": "https://www.archive.org/download/orlandoabiographyversion2_2404_librivox/orlando_00_woolf_64kb.mp3",
               "length_ms": 348000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Dedication and Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/orlandoabiographyversion2_2404_librivox/orlando_01_woolf_64kb.mp3",
               "length_ms": 2939000,
+              "section_number": 1,
               "start_ms": 348000,
               "title": "Chapter 1, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/orlandoabiographyversion2_2404_librivox/orlando_02_woolf_64kb.mp3",
               "length_ms": 2882000,
+              "section_number": 2,
               "start_ms": 3287000,
               "title": "Chapter 1, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/orlandoabiographyversion2_2404_librivox/orlando_03_woolf_64kb.mp3",
               "length_ms": 2907000,
+              "section_number": 3,
               "start_ms": 6169000,
               "title": "Chapter 2, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/orlandoabiographyversion2_2404_librivox/orlando_04_woolf_64kb.mp3",
               "length_ms": 3041000,
+              "section_number": 4,
               "start_ms": 9076000,
               "title": "Chapter 2, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/orlandoabiographyversion2_2404_librivox/orlando_05_woolf_64kb.mp3",
               "length_ms": 3591000,
+              "section_number": 5,
               "start_ms": 12117000,
               "title": "Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/orlandoabiographyversion2_2404_librivox/orlando_06_woolf_64kb.mp3",
               "length_ms": 2644000,
+              "section_number": 6,
               "start_ms": 15708000,
               "title": "Chapter 4, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/orlandoabiographyversion2_2404_librivox/orlando_07_woolf_64kb.mp3",
               "length_ms": 2884000,
+              "section_number": 7,
               "start_ms": 18352000,
               "title": "Chapter 4, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/orlandoabiographyversion2_2404_librivox/orlando_08_woolf_64kb.mp3",
               "length_ms": 2535000,
+              "section_number": 8,
               "start_ms": 21236000,
               "title": "Chapter 4, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/orlandoabiographyversion2_2404_librivox/orlando_09_woolf_64kb.mp3",
               "length_ms": 3816000,
+              "section_number": 9,
               "start_ms": 23771000,
               "title": "Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/orlandoabiographyversion2_2404_librivox/orlando_10_woolf_64kb.mp3",
               "length_ms": 3569000,
+              "section_number": 10,
               "start_ms": 27587000,
               "title": "Chapter 6, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/orlandoabiographyversion2_2404_librivox/orlando_11_woolf_64kb.mp3",
               "length_ms": 3727000,
+              "section_number": 11,
               "start_ms": 31156000,
               "title": "Chapter 6, Part 2"
             }
@@ -6947,7 +6974,12 @@
           "cover_url": "https://archive.org/download/orlandoabiographyversion2_2404_librivox/orlando2_2404.jpg",
           "id": "nicole-j-leboeuf",
           "language": "en",
+          "librivox_genres": [
+            "Fictional Biographies & Memoirs",
+            "Satire"
+          ],
           "librivox_id": 20098,
+          "librivox_title": "Orlando, A Biography (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/orlando-a-biography-version-2-by-virginia-woolf/",
@@ -7224,7 +7256,11 @@
           "cover_url": "https://archive.org/download/orlandoabiography2_2412_librivox/orlando2_2412.jpg",
           "id": "phil-benson",
           "language": "en",
+          "librivox_genres": [
+            "Fictional Biographies & Memoirs"
+          ],
           "librivox_id": 20913,
+          "librivox_title": "Orlando, A Biography (version 3)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/orlando-a-biography-by-virginia-woolf/",
@@ -7570,9 +7606,21 @@
           ],
           "copyright_year": 1516,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt23/Orlando_Furioso_1210.jpg",
+          "credits": [
+            {
+              "person": "john-harington",
+              "role": "translator"
+            }
+          ],
           "id": "thomas-a-copeland",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Fantastic Fiction",
+            "Epics"
+          ],
           "librivox_id": 5925,
+          "librivox_title": "Orlando Furioso",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/orlando-furioso-by-ludovico-ariosto/",
@@ -7620,24 +7668,63 @@
             {
               "audio_url": "https://www.archive.org/download/orlandofurioso1_2203_librivox/orlandofurioso_01_ariosto_64kb.mp3",
               "length_ms": 2350000,
+              "readers": [
+                "algy-pug",
+                "marzia-marianera",
+                "renzo-clerico",
+                "sonia",
+                "francesco-carzedda",
+                "pier",
+                "rachel-moraes",
+                "emanuela",
+                "kazbek",
+                "handmadepsk",
+                "ruti-pape",
+                "sasukez",
+                "giulia-pulzetti"
+              ],
               "start_ms": 0,
               "title": "Canto I"
             },
             {
               "audio_url": "https://www.archive.org/download/orlandofurioso1_2203_librivox/orlandofurioso_02_ariosto_64kb.mp3",
               "length_ms": 2249000,
+              "readers": [
+                "algy-pug",
+                "marzia-marianera",
+                "sonia",
+                "francesco-carzedda",
+                "pier",
+                "rachel-moraes",
+                "kazbek"
+              ],
               "start_ms": 2350000,
               "title": "Canto II"
             },
             {
               "audio_url": "https://www.archive.org/download/orlandofurioso1_2203_librivox/orlandofurioso_03_ariosto_64kb.mp3",
               "length_ms": 2063000,
+              "readers": [
+                "pier",
+                "emanuela",
+                "handmadepsk",
+                "ruti-pape"
+              ],
               "start_ms": 4599000,
               "title": "Canto III"
             },
             {
               "audio_url": "https://www.archive.org/download/orlandofurioso1_2203_librivox/orlandofurioso_04_ariosto_64kb.mp3",
               "length_ms": 2038000,
+              "readers": [
+                "renzo-clerico",
+                "sonia",
+                "francesco-carzedda",
+                "pier",
+                "emanuela",
+                "sasukez",
+                "giulia-pulzetti"
+              ],
               "start_ms": 6662000,
               "title": "Canto IV"
             }
@@ -7646,7 +7733,11 @@
           "cover_url": "https://archive.org/download/orlandofurioso1_2203_librivox/orlfuri_2203.jpg",
           "id": "algy-pug",
           "language": "it",
+          "librivox_genres": [
+            "Dramatic Readings"
+          ],
           "librivox_id": 17087,
+          "librivox_title": "Orlando Furioso (Canti 01-04)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/orlando-furioso-canti-01-04-by-ludovico-ariosto/",
@@ -7730,9 +7821,23 @@
           ],
           "copyright_year": 1593,
           "cover_url": "https://archive.org/download/orlandoinamorato_2610_librivox/orlandoinamorato_2110.jpg",
+          "credits": [
+            {
+              "person": "robert-tofte",
+              "role": "translator"
+            }
+          ],
           "id": "thomas-a-copeland",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Romance",
+            "Published before 1800",
+            "Fantasy Fiction",
+            "Narratives"
+          ],
           "librivox_id": 22957,
+          "librivox_title": "Orlando Inamorato",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/orlando-inamorato-by-matteo-maria-boiardo/",
@@ -9825,7 +9930,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt15/orleyfarm_1202.jpg",
           "id": "leonard-wilson-1930-2024",
           "language": "en",
+          "librivox_genres": [
+            "Satire",
+            "Published 1800 -1900"
+          ],
           "librivox_id": 4554,
+          "librivox_title": "Orley Farm",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/orley-farm-by-anthony-trollope/",

@@ -9265,7 +9265,11 @@
           "cover_url": "https://archive.org/download/med_service_2304_librivox/med_service_2304.jpg",
           "id": "phil-chenevert",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 19080,
+          "librivox_title": "Med Service",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/med-service-by-murray-leinster/",
@@ -9422,7 +9426,11 @@
           "cover_url": "https://archive.org/download/medshipman_1602_librivox/medshipman_1602.jpg",
           "id": "mark-nelson",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 10628,
+          "librivox_title": "Med Ship Man",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/med-ship-man-by-murray-leinster/",
@@ -9482,7 +9490,11 @@
           "cover_url": "https://archive.org/download/medshipmanversion2_1807_librivox/med_ship_man_1807.jpg",
           "id": "phil-chenevert",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 13041,
+          "librivox_title": "Med Ship Man (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/med-ship-man-version-2-by-murray-leinster/",
@@ -11908,21 +11920,60 @@
             {
               "audio_url": "https://www.archive.org/download/medea_1204_librivox/medea_1_euripides_64kb.mp3",
               "length_ms": 2820000,
+              "readers": [
+                "elizabeth-klett",
+                "mb",
+                "rhonda-federman",
+                "margaret-espaillat",
+                "availle",
+                "algy-pug",
+                "bob-gonzalez",
+                "amanda-friday",
+                "kristin-g",
+                "t-k-kirven",
+                "robert-hoffman",
+                "valerie-tan"
+              ],
               "start_ms": 0,
               "title": "Section 1"
             },
             {
               "audio_url": "https://www.archive.org/download/medea_1204_librivox/medea_2_euripides_64kb.mp3",
               "length_ms": 3494000,
+              "readers": [
+                "elizabeth-klett",
+                "mb",
+                "rhonda-federman",
+                "margaret-espaillat",
+                "availle",
+                "algy-pug",
+                "bob-gonzalez",
+                "amanda-friday",
+                "kristin-g",
+                "t-k-kirven",
+                "robert-hoffman",
+                "valerie-tan"
+              ],
               "start_ms": 2820000,
               "title": "Section 2"
             }
           ],
           "copyright_year": 1912,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt25/Medea_1211.jpg",
+          "credits": [
+            {
+              "person": "gilbert-murray",
+              "role": "translator"
+            }
+          ],
           "id": "elizabeth-klett",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Tragedy"
+          ],
           "librivox_id": 6404,
+          "librivox_title": "Medea",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/medea-by-euripides/",
@@ -12059,39 +12110,80 @@
             {
               "audio_url": "https://www.archive.org/download/medea_2303_librivox/medea_1_seneca_64kb.mp3",
               "length_ms": 546000,
+              "readers": [
+                "alan-mapstone",
+                "sonia",
+                "wendykatzhiller"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/medea_2303_librivox/medea_2_seneca_64kb.mp3",
               "length_ms": 1047000,
+              "readers": [
+                "alan-mapstone",
+                "sonia",
+                "elsie-selwyn",
+                "wendykatzhiller",
+                "mathias-thorndal"
+              ],
               "start_ms": 546000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/medea_2303_librivox/medea_3_seneca_64kb.mp3",
               "length_ms": 1237000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "sonia",
+                "elsie-selwyn",
+                "wendykatzhiller"
+              ],
               "start_ms": 1593000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/medea_2303_librivox/medea_4_seneca_64kb.mp3",
               "length_ms": 790000,
+              "readers": [
+                "alan-mapstone",
+                "sonia",
+                "elsie-selwyn",
+                "wendykatzhiller"
+              ],
               "start_ms": 2830000,
               "title": "Act 4"
             },
             {
               "audio_url": "https://www.archive.org/download/medea_2303_librivox/medea_5_seneca_64kb.mp3",
               "length_ms": 819000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "elsie-selwyn",
+                "wendykatzhiller"
+              ],
               "start_ms": 3620000,
               "title": "Act 5"
             }
           ],
           "copyright_year": 1899,
           "cover_url": "https://archive.org/download/medea_2303_librivox/Medea_2303.jpg",
+          "credits": [
+            {
+              "person": "ella-isabel-harris",
+              "role": "translator"
+            }
+          ],
           "id": "alan-mapstone",
           "language": "en",
+          "librivox_genres": [
+            "Plays"
+          ],
           "librivox_id": 18992,
+          "librivox_title": "Medea (Version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/medea-by-lucius-annaeus-seneca/",
@@ -12229,33 +12321,48 @@
             {
               "audio_url": "https://www.archive.org/download/medea_2602_librivox/medea_00_euripides_64kb.mp3",
               "length_ms": 445000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Argumento y personajes"
             },
             {
               "audio_url": "https://www.archive.org/download/medea_2602_librivox/medea_01_euripides_64kb.mp3",
               "length_ms": 2138000,
+              "section_number": 1,
               "start_ms": 445000,
               "title": "Parte 1"
             },
             {
               "audio_url": "https://www.archive.org/download/medea_2602_librivox/medea_02_euripides_64kb.mp3",
               "length_ms": 1178000,
+              "section_number": 2,
               "start_ms": 2583000,
               "title": "Parte 2"
             },
             {
               "audio_url": "https://www.archive.org/download/medea_2602_librivox/medea_03_euripides_64kb.mp3",
               "length_ms": 1534000,
+              "section_number": 3,
               "start_ms": 3761000,
               "title": "Parte 3"
             }
           ],
           "copyright_year": 1909,
           "cover_url": "https://archive.org/download/medea_2602_librivox/medea_2602.jpg",
+          "credits": [
+            {
+              "person": "eduardo-mier-y-barbery",
+              "role": "translator"
+            }
+          ],
           "id": "epachuko",
           "language": "es",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Tragedy"
+          ],
           "librivox_id": 22196,
+          "librivox_title": "Medea (Spanish Version)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/medea-by-euripides-spanish/",
@@ -13270,7 +13377,14 @@
           "cover_url": "https://archive.org/download/media_docena_2008_librivox/media_docena_cuentos_jg_lopez_valdemoro_2008.jpg",
           "id": "kendalrigans",
           "language": "es",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales",
+            "Family",
+            "General",
+            "Short works"
+          ],
           "librivox_id": 15446,
+          "librivox_title": "media docena. Cuentos y fábulas para niños.",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/la-media-docena-by-juan-gualberto-lopez/",
@@ -13676,54 +13790,90 @@
             {
               "audio_url": "https://www.archive.org/download/medianoche_2011_librivox/medianoche_00_valle-inclan_64kb.mp3",
               "length_ms": 321000,
+              "readers": [
+                "epachuko"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Prólogo - Breve Noticia"
             },
             {
               "audio_url": "https://www.archive.org/download/medianoche_2011_librivox/medianoche_01_valle-inclan_64kb.mp3",
               "length_ms": 508000,
+              "readers": [
+                "mongope"
+              ],
+              "section_number": 1,
               "start_ms": 321000,
               "title": "Capítulos I-V"
             },
             {
               "audio_url": "https://www.archive.org/download/medianoche_2011_librivox/medianoche_02_valle-inclan_64kb.mp3",
               "length_ms": 903000,
+              "readers": [
+                "epachuko"
+              ],
+              "section_number": 2,
               "start_ms": 829000,
               "title": "Capítulos VI-X"
             },
             {
               "audio_url": "https://www.archive.org/download/medianoche_2011_librivox/medianoche_03_valle-inclan_64kb.mp3",
               "length_ms": 525000,
+              "readers": [
+                "mongope"
+              ],
+              "section_number": 3,
               "start_ms": 1732000,
               "title": "Capítulos XI-XV"
             },
             {
               "audio_url": "https://www.archive.org/download/medianoche_2011_librivox/medianoche_04_valle-inclan_64kb.mp3",
               "length_ms": 915000,
+              "readers": [
+                "epachuko"
+              ],
+              "section_number": 4,
               "start_ms": 2257000,
               "title": "Capítulos XVI-XX"
             },
             {
               "audio_url": "https://www.archive.org/download/medianoche_2011_librivox/medianoche_05_valle-inclan_64kb.mp3",
               "length_ms": 623000,
+              "readers": [
+                "mongope"
+              ],
+              "section_number": 5,
               "start_ms": 3172000,
               "title": "Capítulos XXI-XXV"
             },
             {
               "audio_url": "https://www.archive.org/download/medianoche_2011_librivox/medianoche_06_valle-inclan_64kb.mp3",
               "length_ms": 664000,
+              "readers": [
+                "epachuko"
+              ],
+              "section_number": 6,
               "start_ms": 3795000,
               "title": "Capítulos XXVI-XXX"
             },
             {
               "audio_url": "https://www.archive.org/download/medianoche_2011_librivox/medianoche_07_valle-inclan_64kb.mp3",
               "length_ms": 697000,
+              "readers": [
+                "mongope"
+              ],
+              "section_number": 7,
               "start_ms": 4459000,
               "title": "Capítulos XXXI-XXXV"
             },
             {
               "audio_url": "https://www.archive.org/download/medianoche_2011_librivox/medianoche_08_valle-inclan_64kb.mp3",
               "length_ms": 840000,
+              "readers": [
+                "epachuko"
+              ],
+              "section_number": 8,
               "start_ms": 5156000,
               "title": "Capítulos XXXVI-XL"
             }
@@ -13732,7 +13882,11 @@
           "cover_url": "https://archive.org/download/medianoche_2011_librivox/media_noche_r_valle_inclan_2011.jpg",
           "id": "epachuko",
           "language": "es",
+          "librivox_genres": [
+            "War & Military"
+          ],
           "librivox_id": 15700,
+          "librivox_title": "media noche: visión estelar de un momento de guerra",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/la-media-noche-by-ramon-del-valle-inclan/",
@@ -13877,276 +14031,460 @@
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_00_neale_64kb.mp3",
               "length_ms": 241000,
+              "readers": [
+                "devorah-allen"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_01_neale_64kb.mp3",
               "length_ms": 306000,
+              "readers": [
+                "leni"
+              ],
+              "section_number": 1,
               "start_ms": 241000,
               "title": "Pange lingua gloriosi. Venantius Fortunatus. About 580."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_02_neale_64kb.mp3",
               "length_ms": 286000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
+              "section_number": 2,
               "start_ms": 547000,
               "title": "Vexilla Regis prodeunt. Venantius Fortunatus. About 580."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_03_neale_64kb.mp3",
               "length_ms": 416000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
+              "section_number": 3,
               "start_ms": 833000,
               "title": "*Apparebit repentina magna Dies Domini. Seventh century."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_04_neale_64kb.mp3",
               "length_ms": 128000,
+              "readers": [
+                "kevins"
+              ],
+              "section_number": 4,
               "start_ms": 1249000,
               "title": "*Sancti, venite, Corpus Christi sumite. Seventh century."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_05_neale_64kb.mp3",
               "length_ms": 266000,
+              "readers": [
+                "e-sharp"
+              ],
+              "section_number": 5,
               "start_ms": 1377000,
               "title": "*Hymnum canentes Martyrum. Venerable Bede. Died 735."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_06_neale_64kb.mp3",
               "length_ms": 325000,
+              "readers": [
+                "e-sharp"
+              ],
+              "section_number": 6,
               "start_ms": 1643000,
               "title": "Urbs beata Jerusalem. Eighth century."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_07_neale_64kb.mp3",
               "length_ms": 268000,
+              "readers": [
+                "e-sharp"
+              ],
+              "section_number": 7,
               "start_ms": 1968000,
               "title": "Gloria, laus, et honor. St. Theodulph of Orleans. Died 821."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_08_neale_64kb.mp3",
               "length_ms": 122000,
+              "readers": [
+                "leni"
+              ],
+              "section_number": 8,
               "start_ms": 2236000,
               "title": "Tibi, Christe, Splendor Patris. B. Hrabanus Maurus. Died 856."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_09_neale_64kb.mp3",
               "length_ms": 170000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
+              "section_number": 9,
               "start_ms": 2358000,
               "title": "*Lauda, Mater Ecclesia. St. Odo of Cluny."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_10_neale_64kb.mp3",
               "length_ms": 181000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
+              "section_number": 10,
               "start_ms": 2528000,
               "title": "*Chorus Novæ Jerusalem. B. Fulbert of Chartres. Died about 1029."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_11_neale_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "leni"
+              ],
+              "section_number": 11,
               "start_ms": 2709000,
               "title": "*Audi nos, Rex Christe. Eleventh century."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_12_neale_64kb.mp3",
               "length_ms": 311000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
+              "section_number": 12,
               "start_ms": 2800000,
               "title": "*Gravi me terrore pulsas, vitæ dies ultima. St. Peter Damian. Died 1072."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_13_neale_64kb.mp3",
               "length_ms": 188000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
+              "section_number": 13,
               "start_ms": 3111000,
               "title": "*Crux mundi benedictio. St. Peter Damian. Died 1072."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_14_neale_64kb.mp3",
               "length_ms": 1392000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
+              "section_number": 14,
               "start_ms": 3299000,
               "title": "*Cives Cœlestis Patriæ. Marbodus of Rennes. Died 1125."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_15_neale_64kb.mp3",
               "length_ms": 205000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
+              "section_number": 15,
               "start_ms": 4691000,
               "title": "Lætabundus. St. Bernard of Clairvaux. Died 1153."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_16_neale_64kb.mp3",
               "length_ms": 1015000,
+              "readers": [
+                "kevins"
+              ],
+              "section_number": 16,
               "start_ms": 4896000,
               "title": "*Hic breve vivitur. Bernard of Cluny. Twelfth century."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_17_neale_64kb.mp3",
               "length_ms": 424000,
+              "readers": [
+                "adrian-stephens"
+              ],
+              "section_number": 17,
               "start_ms": 5911000,
               "title": "*Patris Sapientia, Bonitas Divina. Twelfth century."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_18_neale_64kb.mp3",
               "length_ms": 407000,
+              "readers": [
+                "adrian-stephens"
+              ],
+              "section_number": 18,
               "start_ms": 6335000,
               "title": "*Cœnam cum discipulis. Twelfth century."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_19_neale_64kb.mp3",
               "length_ms": 477000,
+              "readers": [
+                "adrian-stephens"
+              ],
+              "section_number": 19,
               "start_ms": 6742000,
               "title": "*Jucundare, plebs fidelis. Adam of St. Victor. Died about 1180."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_20_neale_64kb.mp3",
               "length_ms": 340000,
+              "readers": [
+                "adrian-stephens"
+              ],
+              "section_number": 20,
               "start_ms": 7219000,
               "title": "*Ecce dies celebris. Adam of St. Victor."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_21_neale_64kb.mp3",
               "length_ms": 534000,
+              "readers": [
+                "adrian-stephens"
+              ],
+              "section_number": 21,
               "start_ms": 7559000,
               "title": "*Zyma vetus expurgetur. Adam of St. Victor."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_22_neale_64kb.mp3",
               "length_ms": 520000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
+              "section_number": 22,
               "start_ms": 8093000,
               "title": "*Laudes Crucis attollamus. Adam of St. Victor."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_23_neale_64kb.mp3",
               "length_ms": 687000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
+              "section_number": 23,
               "start_ms": 8613000,
               "title": "*Quam dilecta tabernacula. Adam of St. Victor."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_24_neale_64kb.mp3",
               "length_ms": 480000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
+              "section_number": 24,
               "start_ms": 9300000,
               "title": "*In hoc anni circulo. Apparently of the twelfth century."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_25_neale_64kb.mp3",
               "length_ms": 273000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
+              "section_number": 25,
               "start_ms": 9780000,
               "title": "O Filii et Fillæ. Apparently of the twelfth century."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_26_neale_64kb.mp3",
               "length_ms": 116000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 26,
               "start_ms": 10053000,
               "title": "*Surrexit Christus hodie. Apparently of the twelfth century."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_27_neale_64kb.mp3",
               "length_ms": 103000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 27,
               "start_ms": 10169000,
               "title": "*Finita jam sunt prœlia. Apparently of the twelfth century."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_28_neale_64kb.mp3",
               "length_ms": 100000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 28,
               "start_ms": 10272000,
               "title": "*Jam pulsa cedunt nubilia. Apparently of the twelfth century."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_29_neale_64kb.mp3",
               "length_ms": 157000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 29,
               "start_ms": 10372000,
               "title": "*Veni, Veni, Emmanuel. Apparently of the twelfth century."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_30_neale_64kb.mp3",
               "length_ms": 98000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 30,
               "start_ms": 10529000,
               "title": "*Cœlos ascendit hodie. Apparently of the twelfth century."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_31_neale_64kb.mp3",
               "length_ms": 221000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
+              "section_number": 31,
               "start_ms": 10627000,
               "title": "*Ecce tempus est vernale. Thirteenth century."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_32_neale_64kb.mp3",
               "length_ms": 227000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
+              "section_number": 32,
               "start_ms": 10848000,
               "title": "Adoro Te devote, latens Deitas. St. Thomas Aquinas. Died 1274."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_33_neale_64kb.mp3",
               "length_ms": 354000,
+              "readers": [
+                "leni"
+              ],
+              "section_number": 33,
               "start_ms": 11075000,
               "title": "Pange lingua gloriosi. St. Thomas Aquinas."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_34_neale_64kb.mp3",
               "length_ms": 174000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
+              "section_number": 34,
               "start_ms": 11429000,
               "title": "Alleluia, dulce carmen. Thirteenth century."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_35_neale_64kb.mp3",
               "length_ms": 161000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
+              "section_number": 35,
               "start_ms": 11603000,
               "title": "*Dies est lætitiæ. Thirteenth century."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_36_neale_64kb.mp3",
               "length_ms": 234000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
+              "section_number": 36,
               "start_ms": 11764000,
               "title": "*Cedant justi signa luctus. Fourteenth century."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_37_neale_64kb.mp3",
               "length_ms": 249000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
+              "section_number": 37,
               "start_ms": 11998000,
               "title": "*Novi partus gaudium."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_38_neale_64kb.mp3",
               "length_ms": 117000,
+              "readers": [
+                "kevins"
+              ],
+              "section_number": 38,
               "start_ms": 12247000,
               "title": "*Omnis fidelis gaudeat."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_39_neale_64kb.mp3",
               "length_ms": 126000,
+              "readers": [
+                "kevins"
+              ],
+              "section_number": 39,
               "start_ms": 12364000,
               "title": "*Gloriosi Salvatoris. Fifteenth century."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_40_neale_64kb.mp3",
               "length_ms": 117000,
+              "readers": [
+                "kevins"
+              ],
+              "section_number": 40,
               "start_ms": 12490000,
               "title": "*O beata beatorum."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_41_neale_64kb.mp3",
               "length_ms": 92000,
+              "readers": [
+                "kevins"
+              ],
+              "section_number": 41,
               "start_ms": 12607000,
               "title": "*Tandem fluctus, tandem luctus."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_42_neale_64kb.mp3",
               "length_ms": 180000,
+              "readers": [
+                "kevins"
+              ],
+              "section_number": 42,
               "start_ms": 12699000,
               "title": "*Attolle paullum lumina. Fifteenth or sixteenth century."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_43_neale_64kb.mp3",
               "length_ms": 250000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
+              "section_number": 43,
               "start_ms": 12879000,
               "title": "*Exite, Sion Filliæ. Fifteenth or sixteenth century."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_44_neale_64kb.mp3",
               "length_ms": 265000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
+              "section_number": 44,
               "start_ms": 13129000,
               "title": "*Huc ad jugum Calvariæ. Fifteenth or sixteenth century."
             },
             {
               "audio_url": "https://www.archive.org/download/mediaevalhymnsandsequences_2103_librivox/mediaevalhymns_45_neale_64kb.mp3",
               "length_ms": 190000,
+              "readers": [
+                "lynda-marie-neilson"
+              ],
+              "section_number": 45,
               "start_ms": 13394000,
               "title": "*Triumphe! plaudant maria. Fifteenth or sixteenth century."
             }
@@ -14155,7 +14493,12 @@
           "cover_url": "https://archive.org/download/mediaevalhymnsandsequences_2103_librivox/me_hymns_2104.jpg",
           "id": "devorah-allen",
           "language": "en",
+          "librivox_genres": [
+            "Lyric",
+            "Christianity - Other"
+          ],
           "librivox_id": 15982,
+          "librivox_title": "Mediaeval Hymns and Sequences",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/mediaeval-hymns-and-sequences-by-john-mason-neale/",

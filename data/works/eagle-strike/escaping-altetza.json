@@ -595,7 +595,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt18/escapingclub_1205.jpg",
           "id": "tom-weiss",
           "language": "en",
+          "librivox_genres": [
+            "War & Military",
+            "Memoirs",
+            "Modern (20th C)"
+          ],
           "librivox_id": 5747,
+          "librivox_title": "Escaping Club",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-escaping-club-by-a-j-evans/",
@@ -9210,7 +9216,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt15/book_osescravos_1202.jpg",
           "id": "leni",
           "language": "pt",
+          "librivox_genres": [
+            "Poetry"
+          ],
           "librivox_id": 3765,
+          "librivox_title": "Escravos",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/os-escravos-by-antonio-frederico-de-castro-alves/",
@@ -12115,312 +12125,520 @@
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_00_baroja_64kb.mp3",
               "length_ms": 900000,
+              "readers": [
+                "antonio-redondo"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Prólogo"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_01_baroja_64kb.mp3",
               "length_ms": 826000,
+              "readers": [
+                "antonio-redondo"
+              ],
+              "section_number": 1,
               "start_ms": 900000,
               "title": "Libro Primero - Capítulo I"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_02_baroja_64kb.mp3",
               "length_ms": 823000,
+              "readers": [
+                "antonio-redondo"
+              ],
+              "section_number": 2,
               "start_ms": 1726000,
               "title": "Libro Primero - Capítulo II"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_03_baroja_64kb.mp3",
               "length_ms": 624000,
+              "readers": [
+                "antonio-redondo"
+              ],
+              "section_number": 3,
               "start_ms": 2549000,
               "title": "Libro Primero - Capítulo III"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_04_baroja_64kb.mp3",
               "length_ms": 803000,
+              "readers": [
+                "antonio-redondo"
+              ],
+              "section_number": 4,
               "start_ms": 3173000,
               "title": "Libro Primero - Capítulo IV"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_05_baroja_64kb.mp3",
               "length_ms": 946000,
+              "readers": [
+                "antonio-redondo"
+              ],
+              "section_number": 5,
               "start_ms": 3976000,
               "title": "Libro Primero - Capítulo V"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_06_baroja_64kb.mp3",
               "length_ms": 551000,
+              "readers": [
+                "antonio-redondo"
+              ],
+              "section_number": 6,
               "start_ms": 4922000,
               "title": "Libro Primero - Capítulo VI"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_07_baroja_64kb.mp3",
               "length_ms": 263000,
+              "readers": [
+                "antonio-redondo"
+              ],
+              "section_number": 7,
               "start_ms": 5473000,
               "title": "Libro Primero - Capítulo VII"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_08_baroja_64kb.mp3",
               "length_ms": 507000,
+              "readers": [
+                "antonio-redondo"
+              ],
+              "section_number": 8,
               "start_ms": 5736000,
               "title": "Libro Primero - Capítulo VIII"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_09_baroja_64kb.mp3",
               "length_ms": 806000,
+              "readers": [
+                "antonio-redondo"
+              ],
+              "section_number": 9,
               "start_ms": 6243000,
               "title": "Libro Primero - Capítulo IX"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_10_baroja_64kb.mp3",
               "length_ms": 1203000,
+              "readers": [
+                "antonio-redondo"
+              ],
+              "section_number": 10,
               "start_ms": 7049000,
               "title": "Libro Segundo - Capítulo I"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_11_baroja_64kb.mp3",
               "length_ms": 901000,
+              "readers": [
+                "antonio-redondo"
+              ],
+              "section_number": 11,
               "start_ms": 8252000,
               "title": "Libro Segundo - Capítulo II"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_12_baroja_64kb.mp3",
               "length_ms": 838000,
+              "readers": [
+                "antonio-redondo"
+              ],
+              "section_number": 12,
               "start_ms": 9153000,
               "title": "Libro Segundo - Capítulo III"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_13_baroja_64kb.mp3",
               "length_ms": 629000,
+              "readers": [
+                "antonio-redondo"
+              ],
+              "section_number": 13,
               "start_ms": 9991000,
               "title": "Libro Segundo - Capítulo IV"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_14_baroja_64kb.mp3",
               "length_ms": 841000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 14,
               "start_ms": 10620000,
               "title": "Libro Segundo - Capítulo V"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_15_baroja_64kb.mp3",
               "length_ms": 547000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 15,
               "start_ms": 11461000,
               "title": "Libro Segundo - Capítulo VI"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_16_baroja_64kb.mp3",
               "length_ms": 445000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 16,
               "start_ms": 12008000,
               "title": "Libro Segundo - Capítulo VII"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_17_baroja_64kb.mp3",
               "length_ms": 391000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 17,
               "start_ms": 12453000,
               "title": "Libro Tercero - Capítulo I"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_18_baroja_64kb.mp3",
               "length_ms": 979000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 18,
               "start_ms": 12844000,
               "title": "Libro Tercero - Capítulo II"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_19_baroja_64kb.mp3",
               "length_ms": 700000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 19,
               "start_ms": 13823000,
               "title": "Libro Tercero - Capítulo III"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_20_baroja_64kb.mp3",
               "length_ms": 294000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 20,
               "start_ms": 14523000,
               "title": "Libro Tercero - Capítulo IV"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_21_baroja_64kb.mp3",
               "length_ms": 299000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 21,
               "start_ms": 14817000,
               "title": "Libro Tercero - Capítulo V"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_22_baroja_64kb.mp3",
               "length_ms": 413000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 22,
               "start_ms": 15116000,
               "title": "Libro Tercero - Capítulo VI"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_23_baroja_64kb.mp3",
               "length_ms": 427000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 23,
               "start_ms": 15529000,
               "title": "Libro Tercero - Capítulo VII"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_24_baroja_64kb.mp3",
               "length_ms": 813000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 24,
               "start_ms": 15956000,
               "title": "Libro Cuarto - Capítulo I"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_25_baroja_64kb.mp3",
               "length_ms": 532000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 25,
               "start_ms": 16769000,
               "title": "Libro Cuarto - Capítulo II"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_26_baroja_64kb.mp3",
               "length_ms": 485000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 26,
               "start_ms": 17301000,
               "title": "Libro Cuarto - Capítulo III"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_27_baroja_64kb.mp3",
               "length_ms": 630000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 27,
               "start_ms": 17786000,
               "title": "Libro Cuarto - Capítulo IV"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_28_baroja_64kb.mp3",
               "length_ms": 446000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 28,
               "start_ms": 18416000,
               "title": "Libro Cuarto - Capítulo V"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_29_baroja_64kb.mp3",
               "length_ms": 1185000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 29,
               "start_ms": 18862000,
               "title": "Libro Cuarto - Capítulo VI"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_30_baroja_64kb.mp3",
               "length_ms": 816000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 30,
               "start_ms": 20047000,
               "title": "Libro Cuarto - Capítulo VII"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_31_baroja_64kb.mp3",
               "length_ms": 633000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 31,
               "start_ms": 20863000,
               "title": "Libro Cuarto - Capítulo VIII"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_32_baroja_64kb.mp3",
               "length_ms": 380000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 32,
               "start_ms": 21496000,
               "title": "Libro Cuarto - Capítulo IX"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_33_baroja_64kb.mp3",
               "length_ms": 338000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 33,
               "start_ms": 21876000,
               "title": "Libro Quinto - Capítulo I"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_34_baroja_64kb.mp3",
               "length_ms": 161000,
+              "readers": [
+                "verla-viera"
+              ],
+              "section_number": 34,
               "start_ms": 22214000,
               "title": "Libro Quinto - Capítulo II"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_35_baroja_64kb.mp3",
               "length_ms": 639000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 35,
               "start_ms": 22375000,
               "title": "Libro Quinto - Capítulo III"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_36_baroja_64kb.mp3",
               "length_ms": 519000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 36,
               "start_ms": 23014000,
               "title": "Libro Quinto - Capítulo IV"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_37_baroja_64kb.mp3",
               "length_ms": 340000,
+              "readers": [
+                "verla-viera"
+              ],
+              "section_number": 37,
               "start_ms": 23533000,
               "title": "Libro Quinto - Capítulo V"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_38_baroja_64kb.mp3",
               "length_ms": 342000,
+              "readers": [
+                "verla-viera"
+              ],
+              "section_number": 38,
               "start_ms": 23873000,
               "title": "Libro Quinto - Capítulo VI"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_39_baroja_64kb.mp3",
               "length_ms": 428000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 39,
               "start_ms": 24215000,
               "title": "Libro Quinto - Capítulo VII"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_40_baroja_64kb.mp3",
               "length_ms": 703000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 40,
               "start_ms": 24643000,
               "title": "Libro Sexto - Capítulo I"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_41_baroja_64kb.mp3",
               "length_ms": 437000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 41,
               "start_ms": 25346000,
               "title": "Libro Sexto - Capítulo II"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_42_baroja_64kb.mp3",
               "length_ms": 718000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 42,
               "start_ms": 25783000,
               "title": "Libro Sexto - Capítulo III"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_43_baroja_64kb.mp3",
               "length_ms": 516000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 43,
               "start_ms": 26501000,
               "title": "Libro Sexto - Capítulo IV"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_44_baroja_64kb.mp3",
               "length_ms": 472000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 44,
               "start_ms": 27017000,
               "title": "Libro Sexto - Capítulo V"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_45_baroja_64kb.mp3",
               "length_ms": 495000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 45,
               "start_ms": 27489000,
               "title": "Libro Séptimo - Capítulo I"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_46_baroja_64kb.mp3",
               "length_ms": 233000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 46,
               "start_ms": 27984000,
               "title": "Libro Séptimo - Capítulo II"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_47_baroja_64kb.mp3",
               "length_ms": 337000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 47,
               "start_ms": 28217000,
               "title": "Libro Séptimo - Capítulo III"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_48_baroja_64kb.mp3",
               "length_ms": 270000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 48,
               "start_ms": 28554000,
               "title": "Libro Séptimo - Capítulo IV"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_49_baroja_64kb.mp3",
               "length_ms": 1048000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 49,
               "start_ms": 28824000,
               "title": "Libro Séptimo - Capítulo V, parte 1"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_50_baroja_64kb.mp3",
               "length_ms": 1311000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 50,
               "start_ms": 29872000,
               "title": "Libro Séptimo - Capítulo V, parte 2"
             },
             {
               "audio_url": "https://www.archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_51_baroja_64kb.mp3",
               "length_ms": 268000,
+              "readers": [
+                "mpinedag"
+              ],
+              "section_number": 51,
               "start_ms": 31183000,
               "title": "Epílogo"
             }
@@ -12429,7 +12647,11 @@
           "cover_url": "https://archive.org/download/escuadrondelbrigante_2602_librivox/escuadrondelbrigante_2602.jpg",
           "id": "antonio-redondo",
           "language": "es",
+          "librivox_genres": [
+            "Historical Fiction"
+          ],
           "librivox_id": 9442,
+          "librivox_title": "Escuadrón del Brigante",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/el-escuadron-del-brigante-by-pio-baroja/",
@@ -13761,9 +13983,19 @@
           ],
           "copyright_year": 1884,
           "cover_url": "https://archive.org/download/escueladerobinsones_2607_librivox/escuela_robinsones_2607.jpg",
+          "credits": [
+            {
+              "person": "m-h-de-a",
+              "role": "translator"
+            }
+          ],
           "id": "enriquerendon",
           "language": "es",
+          "librivox_genres": [
+            "Action & Adventure Fiction"
+          ],
           "librivox_id": 21789,
+          "librivox_title": "Escuela de Robinsones",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/escuela-de-robinsones-by-jules-verne/",
@@ -14860,7 +15092,11 @@
           "cover_url": "https://archive.org/download/eshcol_2509_librivox/eshcol_2509.jpg",
           "id": "inthedesert",
           "language": "en",
+          "librivox_genres": [
+            "Christianity - Other"
+          ],
           "librivox_id": 20862,
+          "librivox_title": "Eshcol",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/eshcol-by-john-owen/",

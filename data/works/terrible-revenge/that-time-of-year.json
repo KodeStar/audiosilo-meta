@@ -615,7 +615,12 @@
           "cover_url": "https://archive.org/download/thatunfortunatemarriage_1904_librivox/thatunfortunatemarriage_1905.jpg",
           "id": "angel5",
           "language": "en",
+          "librivox_genres": [
+            "Romance",
+            "Satire"
+          ],
           "librivox_id": 11402,
+          "librivox_title": "That Unfortunate Marriage",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/that-unfortunate-marriage-by-frances-eleanor-trollope/",
@@ -4162,7 +4167,11 @@
           "cover_url": "https://archive.org/download/worldsmaylive_2605_librivox/worlds_may_live_2605.jpg",
           "id": "cyndajm",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 22562,
+          "librivox_title": "That Worlds May Live",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/that-worlds-may-live-by-nelson-s-bond/",
@@ -8148,66 +8157,99 @@
             {
               "audio_url": "https://www.archive.org/download/thaw_0903_librivox/thaw_thomas_af_64kb.mp3",
               "length_ms": 30000,
+              "readers": [
+                "audio-andrea"
+              ],
               "start_ms": 0,
               "title": "Version 1"
             },
             {
               "audio_url": "https://www.archive.org/download/thaw_0903_librivox/thaw_thomas_bt_64kb.mp3",
               "length_ms": 42000,
+              "readers": [
+                "bellona-times"
+              ],
               "start_ms": 30000,
               "title": "Version 2"
             },
             {
               "audio_url": "https://www.archive.org/download/thaw_0903_librivox/thaw_thomas_dl_64kb.mp3",
               "length_ms": 33000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 72000,
               "title": "Version 3"
             },
             {
               "audio_url": "https://www.archive.org/download/thaw_0903_librivox/thaw_thomas_lah_64kb.mp3",
               "length_ms": 34000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 105000,
               "title": "Version 4"
             },
             {
               "audio_url": "https://www.archive.org/download/thaw_0903_librivox/thaw_thomas_lb_64kb.mp3",
               "length_ms": 37000,
+              "readers": [
+                "lucy-burgoyne-1950-2014"
+              ],
               "start_ms": 139000,
               "title": "Version 5"
             },
             {
               "audio_url": "https://www.archive.org/download/thaw_0903_librivox/thaw_thomas_lkp_64kb.mp3",
               "length_ms": 29000,
+              "readers": [
+                "lucy-perry"
+              ],
               "start_ms": 176000,
               "title": "Version 6"
             },
             {
               "audio_url": "https://www.archive.org/download/thaw_0903_librivox/thaw_thomas_pdw_64kb.mp3",
               "length_ms": 44000,
+              "readers": [
+                "p-d-wright"
+              ],
               "start_ms": 205000,
               "title": "Version 7"
             },
             {
               "audio_url": "https://www.archive.org/download/thaw_0903_librivox/thaw_thomas_pl_64kb.mp3",
               "length_ms": 41000,
+              "readers": [
+                "pattymarie"
+              ],
               "start_ms": 249000,
               "title": "Version 8"
             },
             {
               "audio_url": "https://www.archive.org/download/thaw_0903_librivox/thaw_thomas_rd_64kb.mp3",
               "length_ms": 29000,
+              "readers": [
+                "philippa"
+              ],
               "start_ms": 290000,
               "title": "Version 9"
             },
             {
               "audio_url": "https://www.archive.org/download/thaw_0903_librivox/thaw_thomas_rn_64kb.mp3",
               "length_ms": 34000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 319000,
               "title": "Version 10"
             },
             {
               "audio_url": "https://www.archive.org/download/thaw_0903_librivox/thaw_thomas_tg_64kb.mp3",
               "length_ms": 29000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 353000,
               "title": "Version 11"
             }
@@ -8216,7 +8258,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt15/Thaw_1203.jpg",
           "id": "audio-andrea",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 2947,
+          "librivox_title": "Thaw",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/thaw-by-edward-thomas/",

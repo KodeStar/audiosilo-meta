@@ -1377,7 +1377,11 @@
           "cover_url": "https://archive.org/download/oncealfonsos_2506_librivox/romancerooncealfonsos_2506.jpg",
           "id": "mpinedag",
           "language": "es",
+          "librivox_genres": [
+            "Anthologies"
+          ],
           "librivox_id": 21633,
+          "librivox_title": "El Romancero de los Once Alfonsos",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/el-romancero-de-los-once-alfonsos-by-ricardo-velasco-ayllon/",
@@ -2259,105 +2263,131 @@
             {
               "audio_url": "https://www.archive.org/download/sabuesodelosbaskerville_1512_librivox/sabuesodelosbaskerville_00_doyle_64kb.mp3",
               "length_ms": 392000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Prólogo de Arturo Costa Alvarez"
             },
             {
               "audio_url": "https://www.archive.org/download/sabuesodelosbaskerville_1512_librivox/sabuesodelosbaskerville_01_doyle_64kb.mp3",
               "length_ms": 1197000,
+              "section_number": 1,
               "start_ms": 392000,
               "title": "01-El señor Sherlock Holmes"
             },
             {
               "audio_url": "https://www.archive.org/download/sabuesodelosbaskerville_1512_librivox/sabuesodelosbaskerville_02_doyle_64kb.mp3",
               "length_ms": 1875000,
+              "section_number": 2,
               "start_ms": 1589000,
               "title": "02- La maldición de los Baskerville"
             },
             {
               "audio_url": "https://www.archive.org/download/sabuesodelosbaskerville_1512_librivox/sabuesodelosbaskerville_03_doyle_64kb.mp3",
               "length_ms": 1491000,
+              "section_number": 3,
               "start_ms": 3464000,
               "title": "03- El problema"
             },
             {
               "audio_url": "https://www.archive.org/download/sabuesodelosbaskerville_1512_librivox/sabuesodelosbaskerville_04_doyle_64kb.mp3",
               "length_ms": 1940000,
+              "section_number": 4,
               "start_ms": 4955000,
               "title": "04- Sir Enrique Baskerville"
             },
             {
               "audio_url": "https://www.archive.org/download/sabuesodelosbaskerville_1512_librivox/sabuesodelosbaskerville_05_doyle_64kb.mp3",
               "length_ms": 1646000,
+              "section_number": 5,
               "start_ms": 6895000,
               "title": "05- Tres hilos rotos"
             },
             {
               "audio_url": "https://www.archive.org/download/sabuesodelosbaskerville_1512_librivox/sabuesodelosbaskerville_06_doyle_64kb.mp3",
               "length_ms": 1735000,
+              "section_number": 6,
               "start_ms": 8541000,
               "title": "06- Baskerville Hall"
             },
             {
               "audio_url": "https://www.archive.org/download/sabuesodelosbaskerville_1512_librivox/sabuesodelosbaskerville_07_doyle_64kb.mp3",
               "length_ms": 2291000,
+              "section_number": 7,
               "start_ms": 10276000,
               "title": "07- Los Stapleton de Merripit House"
             },
             {
               "audio_url": "https://www.archive.org/download/sabuesodelosbaskerville_1512_librivox/sabuesodelosbaskerville_08_doyle_64kb.mp3",
               "length_ms": 1268000,
+              "section_number": 8,
               "start_ms": 12567000,
               "title": "08- Primer informe del Dr. Watson"
             },
             {
               "audio_url": "https://www.archive.org/download/sabuesodelosbaskerville_1512_librivox/sabuesodelosbaskerville_09_doyle_64kb.mp3",
               "length_ms": 2856000,
+              "section_number": 9,
               "start_ms": 13835000,
               "title": "09- Segundo informe del Dr. Watson"
             },
             {
               "audio_url": "https://www.archive.org/download/sabuesodelosbaskerville_1512_librivox/sabuesodelosbaskerville_10_doyle_64kb.mp3",
               "length_ms": 1618000,
+              "section_number": 10,
               "start_ms": 16691000,
               "title": "10- Extracto del Diario del Dr. Watson"
             },
             {
               "audio_url": "https://www.archive.org/download/sabuesodelosbaskerville_1512_librivox/sabuesodelosbaskerville_11_doyle_64kb.mp3",
               "length_ms": 2170000,
+              "section_number": 11,
               "start_ms": 18309000,
               "title": "11- El hombre del picacho"
             },
             {
               "audio_url": "https://www.archive.org/download/sabuesodelosbaskerville_1512_librivox/sabuesodelosbaskerville_12_doyle_64kb.mp3",
               "length_ms": 2468000,
+              "section_number": 12,
               "start_ms": 20479000,
               "title": "12- La muerte en el páramo"
             },
             {
               "audio_url": "https://www.archive.org/download/sabuesodelosbaskerville_1512_librivox/sabuesodelosbaskerville_13_doyle_64kb.mp3",
               "length_ms": 1751000,
+              "section_number": 13,
               "start_ms": 22947000,
               "title": "13- Tendiendo las redes"
             },
             {
               "audio_url": "https://www.archive.org/download/sabuesodelosbaskerville_1512_librivox/sabuesodelosbaskerville_14_doyle_64kb.mp3",
               "length_ms": 2140000,
+              "section_number": 14,
               "start_ms": 24698000,
               "title": "14- El sabueso de los Baskerville"
             },
             {
               "audio_url": "https://www.archive.org/download/sabuesodelosbaskerville_1512_librivox/sabuesodelosbaskerville_15_doyle_64kb.mp3",
               "length_ms": 2063000,
+              "section_number": 15,
               "start_ms": 26838000,
               "title": "15- Una ojeada retrospectiva"
             }
           ],
           "copyright_year": 1909,
           "cover_url": "https://archive.org/download/sabuesodelosbaskerville_1512_librivox/Sabueso_1512.jpg",
+          "credits": [
+            {
+              "person": "arturo-costa-alvarez",
+              "role": "translator"
+            }
+          ],
           "id": "victor-villarraza",
           "language": "es",
+          "librivox_genres": [
+            "Detective Fiction"
+          ],
           "librivox_id": 10372,
+          "librivox_title": "Sabueso de los Baskerville",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/el-sabueso-de-los-baskerville-by-sir-arthur-conan-doyle/",

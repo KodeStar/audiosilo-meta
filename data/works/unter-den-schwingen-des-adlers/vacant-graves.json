@@ -4346,7 +4346,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt18/vademecum_1205.jpg",
           "id": "marilianus",
           "language": "de",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Literary Criticism",
+            "Philosophy"
+          ],
           "librivox_id": 4613,
+          "librivox_title": "Vade mecum für den Hrn. Sam. Gotth. Lange Pastor in Laublingen",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/ein-vade-mecum-fur-den-hrn-sam-gotth-lange-pastor-in-laublingen-by-gotthold-ephraim-lessing/",
@@ -4471,7 +4477,11 @@
           "cover_url": "https://archive.org/download/librivoxcCDCoverArt35/vadertjelangbeen_1608.jpg",
           "id": "anna-simon",
           "language": "nl",
+          "librivox_genres": [
+            "General"
+          ],
           "librivox_id": 11136,
+          "librivox_title": "Vadertje Langbeen",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/vadertje-langbeen-by-jean-webster/",
@@ -5943,7 +5953,13 @@
           "cover_url": "https://archive.org/download/librivoxcCDCoverArt35/vagabondadventures_1909.jpg",
           "id": "john-greenman",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "History",
+            "Humor"
+          ],
           "librivox_id": 14089,
+          "librivox_title": "Vagabond Adventures",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/vagabond-adventures-by-ralph-keeler/",
@@ -8876,132 +8892,198 @@
             {
               "audio_url": "https://www.archive.org/download/vagabond_1201_librivox/vagabond_stevenson_bg_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "bob-gonzalez"
+              ],
               "start_ms": 0,
               "title": "The Vagabond - Read by BG"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_1201_librivox/vagabond_stevenson_cc_64kb.mp3",
               "length_ms": 103000,
+              "readers": [
+                "chris-caron"
+              ],
               "start_ms": 94000,
               "title": "The Vagabond - Read by CC"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_1201_librivox/vagabond_stevenson_ch_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "carmen-h"
+              ],
               "start_ms": 197000,
               "title": "The Vagabond - Read by CH"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_1201_librivox/vagabond_stevenson_dl_64kb.mp3",
               "length_ms": 95000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 277000,
               "title": "The Vagabond - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_1201_librivox/vagabond_stevenson_fs_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "fshort"
+              ],
               "start_ms": 372000,
               "title": "The Vagabond - Read by FS"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_1201_librivox/vagabond_stevenson_ghs_64kb.mp3",
               "length_ms": 96000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 466000,
               "title": "The Vagabond - Read by GHS"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_1201_librivox/vagabond_stevenson_jcm_64kb.mp3",
               "length_ms": 92000,
+              "readers": [
+                "jason-mills"
+              ],
               "start_ms": 562000,
               "title": "The Vagabond - Read by JCM"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_1201_librivox/vagabond_stevenson_jfs_64kb.mp3",
               "length_ms": 105000,
+              "readers": [
+                "john-schuurman"
+              ],
               "start_ms": 654000,
               "title": "The Vagabond - Read by JFS"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_1201_librivox/vagabond_stevenson_jm_64kb.mp3",
               "length_ms": 93000,
+              "readers": [
+                "jmarkowitz"
+              ],
               "start_ms": 759000,
               "title": "The Vagabond - Read by JM"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_1201_librivox/vagabond_stevenson_joc_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "jimocr"
+              ],
               "start_ms": 852000,
               "title": "The Vagabond - Read by JOC"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_1201_librivox/vagabond_stevenson_kg_64kb.mp3",
               "length_ms": 101000,
+              "readers": [
+                "kristin-g"
+              ],
               "start_ms": 961000,
               "title": "The Vagabond - Read by KG"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_1201_librivox/vagabond_stevenson_lah_64kb.mp3",
               "length_ms": 96000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 1062000,
               "title": "The Vagabond - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_1201_librivox/vagabond_stevenson_lkp_64kb.mp3",
               "length_ms": 89000,
+              "readers": [
+                "lucy-perry"
+              ],
               "start_ms": 1158000,
               "title": "The Vagabond - Read by LKP"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_1201_librivox/vagabond_stevenson_llw_64kb.mp3",
               "length_ms": 130000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 1247000,
               "title": "The Vagabond - Read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_1201_librivox/vagabond_stevenson_lrs_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "liberty-stump"
+              ],
               "start_ms": 1377000,
               "title": "The Vagabond - Read by LRS"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_1201_librivox/vagabond_stevenson_mtd_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "michael-dalling"
+              ],
               "start_ms": 1486000,
               "title": "The Vagabond - Read by MTD"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_1201_librivox/vagabond_stevenson_nlb_64kb.mp3",
               "length_ms": 106000,
+              "readers": [
+                "noelbadrian"
+              ],
               "start_ms": 1560000,
               "title": "The Vagabond - Read by NLB"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_1201_librivox/vagabond_stevenson_ref_64kb.mp3",
               "length_ms": 110000,
+              "readers": [
+                "rhonda-federman"
+              ],
               "start_ms": 1666000,
               "title": "The Vagabond - Read by REF"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_1201_librivox/vagabond_stevenson_rn_64kb.mp3",
               "length_ms": 113000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 1776000,
               "title": "The Vagabond - Read by RN"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_1201_librivox/vagabond_stevenson_trm_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "thom"
+              ],
               "start_ms": 1889000,
               "title": "The Vagabond - Read by TRM"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_1201_librivox/vagabond_stevenson_um_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "ekzemplaro"
+              ],
               "start_ms": 1983000,
               "title": "The Vagabond - Read by UM"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_1201_librivox/vagabond_stevenson_xyb_64kb.mp3",
               "length_ms": 111000,
+              "readers": [
+                "pascal-ramseier"
+              ],
               "start_ms": 2074000,
               "title": "The Vagabond - Read by XYB"
             }
@@ -9009,7 +9091,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt30/Vagabond_1303.jpg",
           "id": "bob-gonzalez",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 6282,
+          "librivox_title": "Vagabond",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-vagabond-by-robert-louis-stevenson/",
@@ -9247,90 +9334,135 @@
             {
               "audio_url": "https://www.archive.org/download/vagabond_song_librivox/vagabond_song_carman_alnl_64kb.mp3",
               "length_ms": 53000,
+              "readers": [
+                "andrea-l"
+              ],
               "start_ms": 0,
               "title": "Version 1"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_song_librivox/vagabond_song_carman_blb_64kb.mp3",
               "length_ms": 59000,
+              "readers": [
+                "betsie-bush"
+              ],
               "start_ms": 53000,
               "title": "Version 2"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_song_librivox/vagabond_song_carman_cz_64kb.mp3",
               "length_ms": 63000,
+              "readers": [
+                "christina-zhu"
+              ],
               "start_ms": 112000,
               "title": "Version 3"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_song_librivox/vagabond_song_carman_ehl_64kb.mp3",
               "length_ms": 48000,
+              "readers": [
+                "esther"
+              ],
               "start_ms": 175000,
               "title": "Version 4"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_song_librivox/vagabond_song_carman_ezwa_64kb.mp3",
               "length_ms": 53000,
+              "readers": [
+                "ezwa"
+              ],
               "start_ms": 223000,
               "title": "Version 5"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_song_librivox/vagabond_song_carman_ht_64kb.mp3",
               "length_ms": 59000,
+              "readers": [
+                "howard-tomlinson"
+              ],
               "start_ms": 276000,
               "title": "Version 6"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_song_librivox/vagabond_song_carman_jb_64kb.mp3",
               "length_ms": 44000,
+              "readers": [
+                "jemmablythe"
+              ],
               "start_ms": 335000,
               "title": "Version 7"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_song_librivox/vagabond_song_carman_klh_64kb.mp3",
               "length_ms": 61000,
+              "readers": [
+                "kristin-hughes-1974-2021"
+              ],
               "start_ms": 379000,
               "title": "Version 8"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_song_librivox/vagabond_song_carman_kmt_64kb.mp3",
               "length_ms": 63000,
+              "readers": [
+                "kirsten-tomlinson"
+              ],
               "start_ms": 440000,
               "title": "Version 9"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_song_librivox/vagabond_song_carman_mac_64kb.mp3",
               "length_ms": 47000,
+              "readers": [
+                "martin-clifton"
+              ],
               "start_ms": 503000,
               "title": "Version 10"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_song_librivox/vagabond_song_carman_mks_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "michael-sirois"
+              ],
               "start_ms": 550000,
               "title": "Version 11"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_song_librivox/vagabond_song_carman_npn_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "nick-nebelsky"
+              ],
               "start_ms": 607000,
               "title": "Version 12"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_song_librivox/vagabond_song_carman_sdm_64kb.mp3",
               "length_ms": 61000,
+              "readers": [
+                "sean-mckinley"
+              ],
               "start_ms": 681000,
               "title": "Version 13"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_song_librivox/vagabond_song_carman_sjd_64kb.mp3",
               "length_ms": 58000,
+              "readers": [
+                "susan-denney"
+              ],
               "start_ms": 742000,
               "title": "Version 14"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabond_song_librivox/vagabond_song_carman_sm_64kb.mp3",
               "length_ms": 51000,
+              "readers": [
+                "sean-mcgaughey"
+              ],
               "start_ms": 800000,
               "title": "Version 15"
             }
@@ -9339,7 +9471,11 @@
           "cover_url": "https://archive.org/download/vagabond_song_librivox/Vagabond_Song_1109.jpg",
           "id": "andrea-l",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 161,
+          "librivox_title": "Vagabond Song",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-vagabond-song-by-bliss-carman/",
@@ -9713,72 +9849,108 @@
             {
               "audio_url": "https://www.archive.org/download/vagabondaggio_0909_librivox/vagabondaggio_01_verga_64kb.mp3",
               "length_ms": 3040000,
+              "readers": [
+                "daniele"
+              ],
               "start_ms": 0,
               "title": "<a href=\"http://it.wikisource.org/wiki/Vagabondaggio/Vagabondaggio\">Vagabondaggio</a>"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabondaggio_0909_librivox/vagabondaggio_02_verga_64kb.mp3",
               "length_ms": 2556000,
+              "readers": [
+                "riccardo-fasol"
+              ],
               "start_ms": 3040000,
               "title": "<a href=\"http://it.wikisource.org/wiki/Vagabondaggio/Il_maestro_dei_ragazzi\">Il maestro dei ragazzi</a>"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabondaggio_0909_librivox/vagabondaggio_03_verga_64kb.mp3",
               "length_ms": 853000,
+              "readers": [
+                "daniele"
+              ],
               "start_ms": 5596000,
               "title": "<a href=\"http://it.wikisource.org/wiki/Vagabondaggio/Un_processo\">Un processo</a>"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabondaggio_0909_librivox/vagabondaggio_04_verga_64kb.mp3",
               "length_ms": 695000,
+              "readers": [
+                "riccardo-fasol"
+              ],
               "start_ms": 6449000,
               "title": "<a href=\"http://it.wikisource.org/wiki/Vagabondaggio/La_festa_dei_morti\">La festa dei morti</a>"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabondaggio_0909_librivox/vagabondaggio_05_verga_64kb.mp3",
               "length_ms": 2956000,
+              "readers": [
+                "riccardo-fasol"
+              ],
               "start_ms": 7144000,
               "title": "<a href=\"http://it.wikisource.org/wiki/Vagabondaggio/Artisti_da_strapazzo\">Artisti da strapazzo</a>"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabondaggio_0909_librivox/vagabondaggio_06_verga_64kb.mp3",
               "length_ms": 801000,
+              "readers": [
+                "manuvox"
+              ],
               "start_ms": 10100000,
               "title": "<a href=\"http://it.wikisource.org/wiki/Vagabondaggio/Il_segno_d'amore\">Il segno d'amore</a>"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabondaggio_0909_librivox/vagabondaggio_07_verga_64kb.mp3",
               "length_ms": 326000,
+              "readers": [
+                "marco-catanossi"
+              ],
               "start_ms": 10901000,
               "title": "<a href=\"http://it.wikisource.org/wiki/Vagabondaggio/L'agonia_di_un_villaggio\">L'agonia di un villaggio</a>"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabondaggio_0909_librivox/vagabondaggio_08_verga_64kb.mp3",
               "length_ms": 1075000,
+              "readers": [
+                "piccolamimi"
+              ],
               "start_ms": 11227000,
               "title": "<a href=\"http://it.wikisource.org/wiki/Vagabondaggio/...E_chi_vive_si_dà_pace\">...E chi vive si dà pace</a>"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabondaggio_0909_librivox/vagabondaggio_09_verga_64kb.mp3",
               "length_ms": 833000,
+              "readers": [
+                "daniele"
+              ],
               "start_ms": 12302000,
               "title": "<a href=\"http://it.wikisource.org/wiki/Vagabondaggio/Il_bell'Armando\">Il bell'Armando</a>"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabondaggio_0909_librivox/vagabondaggio_10_verga_64kb.mp3",
               "length_ms": 1036000,
+              "readers": [
+                "daniele"
+              ],
               "start_ms": 13135000,
               "title": "<a href=\"http://it.wikisource.org/wiki/Vagabondaggio/Nanni_Volpe\">Nanni Volpe</a>"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabondaggio_0909_librivox/vagabondaggio_11_verga_64kb.mp3",
               "length_ms": 1428000,
+              "readers": [
+                "luigina"
+              ],
               "start_ms": 14171000,
               "title": "<a href=\"http://it.wikisource.org/wiki/Vagabondaggio/Quelli_del_colèra\">Quelli del colèra</a>"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabondaggio_0909_librivox/vagabondaggio_12_verga_64kb.mp3",
               "length_ms": 572000,
+              "readers": [
+                "simosito"
+              ],
               "start_ms": 15599000,
               "title": "<a href=\"http://it.wikisource.org/wiki/Vagabondaggio/Lacrymae_Rerum\">Lacrymae Rerum</a>"
             }
@@ -9787,7 +9959,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt20/Vagabondaggio_1206.jpg",
           "id": "daniele",
           "language": "it",
+          "librivox_genres": [
+            "Single Author Collections"
+          ],
           "librivox_id": 2532,
+          "librivox_title": "Vagabondaggio",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/vagabondaggio-by-giovanni-verga/",
@@ -10151,246 +10327,410 @@
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_00_franck_64kb.mp3",
               "length_ms": 1250000,
+              "readers": [
+                "elliott-swanson"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "A Foreword of Warning"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_01_franck_64kb.mp3",
               "length_ms": 3080000,
+              "readers": [
+                "elliott-swanson"
+              ],
+              "section_number": 1,
               "start_ms": 1250000,
               "title": "Chapter 01 - Up to Bogota"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_02_franck_64kb.mp3",
               "length_ms": 3011000,
+              "readers": [
+                "elliott-swanson"
+              ],
+              "section_number": 2,
               "start_ms": 4330000,
               "title": "Chapter 02 - The Cloistered City"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_03_franck_64kb.mp3",
               "length_ms": 4369000,
+              "readers": [
+                "elliott-swanson"
+              ],
+              "section_number": 3,
               "start_ms": 7341000,
               "title": "Chapter 03 - From Bogota Over the Quindio"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_04_franck_64kb.mp3",
               "length_ms": 4184000,
+              "readers": [
+                "elliott-swanson"
+              ],
+              "section_number": 4,
               "start_ms": 11710000,
               "title": "Chapter 04 - Along the Cauca Valley"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_05_franck_64kb.mp3",
               "length_ms": 4331000,
+              "readers": [
+                "elliott-swanson"
+              ],
+              "section_number": 5,
               "start_ms": 15894000,
               "title": "Chapter 05 - Down the Andes to Quito part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_06_franck_64kb.mp3",
               "length_ms": 4261000,
+              "readers": [
+                "elliott-swanson"
+              ],
+              "section_number": 6,
               "start_ms": 20225000,
               "title": "Chapter 05 - Down the Andes to Quito part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_07_franck_64kb.mp3",
               "length_ms": 4428000,
+              "readers": [
+                "elliott-swanson"
+              ],
+              "section_number": 7,
               "start_ms": 24486000,
               "title": "Chapter 06 - The City of the Equator part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_08_franck_64kb.mp3",
               "length_ms": 3345000,
+              "readers": [
+                "elliott-swanson"
+              ],
+              "section_number": 8,
               "start_ms": 28914000,
               "title": "Chapter 06 - The City of the Equator part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_09_franck_64kb.mp3",
               "length_ms": 4394000,
+              "readers": [
+                "elliott-swanson"
+              ],
+              "section_number": 9,
               "start_ms": 32259000,
               "title": "Chapter 07 - Down Volcano Avenue"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_10_franck_64kb.mp3",
               "length_ms": 3885000,
+              "readers": [
+                "elliott-swanson"
+              ],
+              "section_number": 10,
               "start_ms": 36653000,
               "title": "Chapter 08 - Through Southern Equador"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_11_franck_64kb.mp3",
               "length_ms": 3743000,
+              "readers": [
+                "elliott-swanson"
+              ],
+              "section_number": 11,
               "start_ms": 40538000,
               "title": "Chapter 09 - The Wilds of Northern Peru Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_12_franck_64kb.mp3",
               "length_ms": 3527000,
+              "readers": [
+                "elliott-swanson"
+              ],
+              "section_number": 12,
               "start_ms": 44281000,
               "title": "Chapter 09 - The Wilds of Northern Peru Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_13_franck_64kb.mp3",
               "length_ms": 2710000,
+              "readers": [
+                "elliott-swanson"
+              ],
+              "section_number": 13,
               "start_ms": 47808000,
               "title": "Chapter 10 - Approaching Inca Land Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_14_franck_64kb.mp3",
               "length_ms": 2508000,
+              "readers": [
+                "elliott-swanson"
+              ],
+              "section_number": 14,
               "start_ms": 50518000,
               "title": "Chapter 10 - Approaching Inca Land Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_15_franck_64kb.mp3",
               "length_ms": 2930000,
+              "readers": [
+                "linda-johnson"
+              ],
+              "section_number": 15,
               "start_ms": 53026000,
               "title": "Chapter 11 - Drawbacks of the Trail Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_16_franck_64kb.mp3",
               "length_ms": 2853000,
+              "readers": [
+                "linda-johnson"
+              ],
+              "section_number": 16,
               "start_ms": 55956000,
               "title": "Chapter 11 - Drawbacks of the Trail Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_17_franck_64kb.mp3",
               "length_ms": 2351000,
+              "readers": [
+                "linda-johnson"
+              ],
+              "section_number": 17,
               "start_ms": 58809000,
               "title": "Chapter 12 - The Roof of Peru Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_18_franck_64kb.mp3",
               "length_ms": 2343000,
+              "readers": [
+                "linda-johnson"
+              ],
+              "section_number": 18,
               "start_ms": 61160000,
               "title": "Chapter 12 - The Roof of Peru Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_19_franck_64kb.mp3",
               "length_ms": 1605000,
+              "readers": [
+                "linda-johnson"
+              ],
+              "section_number": 19,
               "start_ms": 63503000,
               "title": "Chapter 13 - Round About the Peruvian Capital Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_20_franck_64kb.mp3",
               "length_ms": 1962000,
+              "readers": [
+                "linda-johnson"
+              ],
+              "section_number": 20,
               "start_ms": 65108000,
               "title": "Chapter 13 - Round About the Peruvian Capital Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_21_franck_64kb.mp3",
               "length_ms": 3286000,
+              "readers": [
+                "linda-johnson"
+              ],
+              "section_number": 21,
               "start_ms": 67070000,
               "title": "Chapter 14 - Overland to Cuzco Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_22_franck_64kb.mp3",
               "length_ms": 3352000,
+              "readers": [
+                "linda-johnson"
+              ],
+              "section_number": 22,
               "start_ms": 70356000,
               "title": "Chapter 14 - Overland to Cuzco Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_23_franck_64kb.mp3",
               "length_ms": 3078000,
+              "readers": [
+                "linda-johnson"
+              ],
+              "section_number": 23,
               "start_ms": 73708000,
               "title": "Chapter 15 - The Route of the Conquistadores Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_24_franck_64kb.mp3",
               "length_ms": 3153000,
+              "readers": [
+                "linda-johnson"
+              ],
+              "section_number": 24,
               "start_ms": 76786000,
               "title": "Chapter 15 - The Route of the Conquistadores Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_25_franck_64kb.mp3",
               "length_ms": 2271000,
+              "readers": [
+                "linda-johnson"
+              ],
+              "section_number": 25,
               "start_ms": 79939000,
               "title": "Chapter 16 - The City of the Sun Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_26_franck_64kb.mp3",
               "length_ms": 2315000,
+              "readers": [
+                "linda-johnson"
+              ],
+              "section_number": 26,
               "start_ms": 82210000,
               "title": "Chapter 16 - The City of the Sun Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_27_franck_64kb.mp3",
               "length_ms": 2649000,
+              "readers": [
+                "linda-johnson"
+              ],
+              "section_number": 27,
               "start_ms": 84525000,
               "title": "Chapter 16 - The City of the Sun Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_28_franck_64kb.mp3",
               "length_ms": 2620000,
+              "readers": [
+                "linda-johnson"
+              ],
+              "section_number": 28,
               "start_ms": 87174000,
               "title": "Chapter 16 - The City of the Sun Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_29_franck_64kb.mp3",
               "length_ms": 2491000,
+              "readers": [
+                "linda-johnson"
+              ],
+              "section_number": 29,
               "start_ms": 89794000,
               "title": "Chapter 17 - A Forgotten City of the Andes Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_30_franck_64kb.mp3",
               "length_ms": 2666000,
+              "readers": [
+                "linda-johnson"
+              ],
+              "section_number": 30,
               "start_ms": 92285000,
               "title": "Chapter 17 - A Forgotten City of the Andes Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_31_franck_64kb.mp3",
               "length_ms": 2260000,
+              "readers": [
+                "blainej"
+              ],
+              "section_number": 31,
               "start_ms": 94951000,
               "title": "Chapter 18 - The Collasuyu, or 'Upper' Peru Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_32_franck_64kb.mp3",
               "length_ms": 2174000,
+              "readers": [
+                "blainej"
+              ],
+              "section_number": 32,
               "start_ms": 97211000,
               "title": "Chapter 18 - The Collasuyu, or 'Upper' Peru Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_33_franck_64kb.mp3",
               "length_ms": 2175000,
+              "readers": [
+                "blainej"
+              ],
+              "section_number": 33,
               "start_ms": 99385000,
               "title": "Chapter 18 - The Collasuyu, or 'Upper' Peru Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_34_franck_64kb.mp3",
               "length_ms": 1901000,
+              "readers": [
+                "blainej"
+              ],
+              "section_number": 34,
               "start_ms": 101560000,
               "title": "Chapter 19 - On Foot Across Tropical Bolivia Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_35_franck_64kb.mp3",
               "length_ms": 2278000,
+              "readers": [
+                "blainej"
+              ],
+              "section_number": 35,
               "start_ms": 103461000,
               "title": "Chapter 19 - On Foot Across Tropical Bolivia Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_36_franck_64kb.mp3",
               "length_ms": 2367000,
+              "readers": [
+                "blainej"
+              ],
+              "section_number": 36,
               "start_ms": 105739000,
               "title": "Chapter 20 - Life in the Bolivian Wilderness Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_37_franck_64kb.mp3",
               "length_ms": 2682000,
+              "readers": [
+                "blainej"
+              ],
+              "section_number": 37,
               "start_ms": 108106000,
               "title": "Chapter 20 - Life in the Bolivian Wilderness Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_38_franck_64kb.mp3",
               "length_ms": 2428000,
+              "readers": [
+                "blainej"
+              ],
+              "section_number": 38,
               "start_ms": 110788000,
               "title": "Chapter 21 - Skirting the Gran Chaco Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_39_franck_64kb.mp3",
               "length_ms": 2210000,
+              "readers": [
+                "blainej"
+              ],
+              "section_number": 39,
               "start_ms": 113216000,
               "title": "Chapter 21 - Skirting the Gran Chaco Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/vagabonding_down_andes_1711_librivox/vagabondingandes_40_franck_64kb.mp3",
               "length_ms": 2401000,
+              "readers": [
+                "blainej"
+              ],
+              "section_number": 40,
               "start_ms": 115426000,
               "title": "Chapter 22 - Southward Through Guarina Land"
             }
@@ -10399,7 +10739,12 @@
           "cover_url": "https://archive.org/download/vagabonding_down_andes_1711_librivox/vagabonding_down_andes_1711.jpg",
           "id": "elliott-swanson",
           "language": "en",
+          "librivox_genres": [
+            "Travel & Geography",
+            "Memoirs"
+          ],
           "librivox_id": 8433,
+          "librivox_title": "Vagabonding Down The Andes",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/vagabonding-down-the-andes-by-harry-a-franck/",
@@ -12684,114 +13029,171 @@
             {
               "audio_url": "https://www.archive.org/download/vagrants_2208.poem_librivox/vagrants_dunbar_ag_64kb.mp3",
               "length_ms": 95000,
+              "readers": [
+                "andrew-gaunce"
+              ],
               "start_ms": 0,
               "title": "Vagrants - Read by AG"
             },
             {
               "audio_url": "https://www.archive.org/download/vagrants_2208.poem_librivox/vagrants_dunbar_ah_64kb.mp3",
               "length_ms": 86000,
+              "readers": [
+                "anita-hibbard"
+              ],
               "start_ms": 95000,
               "title": "Vagrants - Read by AH"
             },
             {
               "audio_url": "https://www.archive.org/download/vagrants_2208.poem_librivox/vagrants_dunbar_bc_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "brize-c"
+              ],
               "start_ms": 181000,
               "title": "Vagrants - Read by BC"
             },
             {
               "audio_url": "https://www.archive.org/download/vagrants_2208.poem_librivox/vagrants_dunbar_bk_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 254000,
               "title": "Vagrants - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/vagrants_2208.poem_librivox/vagrants_dunbar_cz_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 348000,
               "title": "Vagrants - Read by CZ"
             },
             {
               "audio_url": "https://www.archive.org/download/vagrants_2208.poem_librivox/vagrants_dunbar_el0_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "newgatenovelist"
+              ],
               "start_ms": 421000,
               "title": "Vagrants - Read by EL0"
             },
             {
               "audio_url": "https://www.archive.org/download/vagrants_2208.poem_librivox/vagrants_dunbar_kla_64kb.mp3",
               "length_ms": 111000,
+              "readers": [
+                "kerry-adams"
+              ],
               "start_ms": 503000,
               "title": "Vagrants - Read by KLA"
             },
             {
               "audio_url": "https://www.archive.org/download/vagrants_2208.poem_librivox/vagrants_dunbar_ks_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 614000,
               "title": "Vagrants - Read by KS"
             },
             {
               "audio_url": "https://www.archive.org/download/vagrants_2208.poem_librivox/vagrants_dunbar_lah_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 686000,
               "title": "Vagrants - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/vagrants_2208.poem_librivox/vagrants_dunbar_lb_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "laurie-banza"
+              ],
               "start_ms": 766000,
               "title": "Vagrants - Read by LB"
             },
             {
               "audio_url": "https://www.archive.org/download/vagrants_2208.poem_librivox/vagrants_dunbar_lbd_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "lisa-b"
+              ],
               "start_ms": 839000,
               "title": "Vagrants - Read by LBD"
             },
             {
               "audio_url": "https://www.archive.org/download/vagrants_2208.poem_librivox/vagrants_dunbar_lcw_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 915000,
               "title": "Vagrants - Read by LCW"
             },
             {
               "audio_url": "https://www.archive.org/download/vagrants_2208.poem_librivox/vagrants_dunbar_lhm_64kb.mp3",
               "length_ms": 101000,
+              "readers": [
+                "l-h-merry"
+              ],
               "start_ms": 997000,
               "title": "Vagrants - Read by LHM"
             },
             {
               "audio_url": "https://www.archive.org/download/vagrants_2208.poem_librivox/vagrants_dunbar_meb_64kb.mp3",
               "length_ms": 88000,
+              "readers": [
+                "michael-broomhill"
+              ],
               "start_ms": 1098000,
               "title": "Vagrants - Read by MAB"
             },
             {
               "audio_url": "https://www.archive.org/download/vagrants_2208.poem_librivox/vagrants_dunbar_nd_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "nan-dodge"
+              ],
               "start_ms": 1186000,
               "title": "Vagrants - Read by ND"
             },
             {
               "audio_url": "https://www.archive.org/download/vagrants_2208.poem_librivox/vagrants_dunbar_njl_64kb.mp3",
               "length_ms": 87000,
+              "readers": [
+                "nicole-j-leboeuf"
+              ],
               "start_ms": 1264000,
               "title": "Vagrants - Read by NJL"
             },
             {
               "audio_url": "https://www.archive.org/download/vagrants_2208.poem_librivox/vagrants_dunbar_reb_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "rob-e-brown"
+              ],
               "start_ms": 1351000,
               "title": "Vagrants - Read by REB"
             },
             {
               "audio_url": "https://www.archive.org/download/vagrants_2208.poem_librivox/vagrants_dunbar_tfgvo_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "tfgvoiceover"
+              ],
               "start_ms": 1432000,
               "title": "Vagrants - Read by TFG"
             },
             {
               "audio_url": "https://www.archive.org/download/vagrants_2208.poem_librivox/vagrants_dunbar_trl_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "tr-love"
+              ],
               "start_ms": 1497000,
               "title": "Vagrants - Read by TRL"
             }
@@ -12800,7 +13202,11 @@
           "cover_url": "https://archive.org/download/vagrants_2208.poem_librivox/vagrants_2208.jpg",
           "id": "andrew-gaunce",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 18275,
+          "librivox_title": "Vagrants",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/vagrants-by-paul-laurence-dunbar/",
@@ -13794,7 +14200,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt13/Vaihdokas_1112.jpg",
           "id": "maire-rhode",
           "language": "fi",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 1947,
+          "librivox_title": "Vaihdokas",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/vaihdokas-by-juho-reijonen/",
@@ -16987,75 +17397,98 @@
             {
               "audio_url": "https://www.archive.org/download/vairagya_shatakam_1303_librivox/vairagyashatakam_00_bhartrhari_64kb.mp3",
               "length_ms": 375000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/vairagya_shatakam_1303_librivox/vairagyashatakam_01_bhartrhari_64kb.mp3",
               "length_ms": 656000,
+              "section_number": 1,
               "start_ms": 375000,
               "title": "Condemnation of desire"
             },
             {
               "audio_url": "https://www.archive.org/download/vairagya_shatakam_1303_librivox/vairagyashatakam_02_bhartrhari_64kb.mp3",
               "length_ms": 618000,
+              "section_number": 2,
               "start_ms": 1031000,
               "title": "Futile efforts to give up sense-objects"
             },
             {
               "audio_url": "https://www.archive.org/download/vairagya_shatakam_1303_librivox/vairagyashatakam_03_bhartrhari_64kb.mp3",
               "length_ms": 640000,
+              "section_number": 3,
               "start_ms": 1649000,
               "title": "Condemnation of the poverty of a supplicant attitude"
             },
             {
               "audio_url": "https://www.archive.org/download/vairagya_shatakam_1303_librivox/vairagyashatakam_04_bhartrhari_64kb.mp3",
               "length_ms": 622000,
+              "section_number": 4,
               "start_ms": 2289000,
               "title": "Delineation of the evanescence of enjoyments"
             },
             {
               "audio_url": "https://www.archive.org/download/vairagya_shatakam_1303_librivox/vairagyashatakam_05_bhartrhari_64kb.mp3",
               "length_ms": 693000,
+              "section_number": 5,
               "start_ms": 2911000,
               "title": "Description of the working of Time, or the principle of change"
             },
             {
               "audio_url": "https://www.archive.org/download/vairagya_shatakam_1303_librivox/vairagyashatakam_06_bhartrhari_64kb.mp3",
               "length_ms": 557000,
+              "section_number": 6,
               "start_ms": 3604000,
               "title": "A comparison as to how a monk stands to a king"
             },
             {
               "audio_url": "https://www.archive.org/download/vairagya_shatakam_1303_librivox/vairagyashatakam_07_bhartrhari_64kb.mp3",
               "length_ms": 606000,
+              "section_number": 7,
               "start_ms": 4161000,
               "title": "Control of mind by stimulating wisdom in it"
             },
             {
               "audio_url": "https://www.archive.org/download/vairagya_shatakam_1303_librivox/vairagyashatakam_08_bhartrhari_64kb.mp3",
               "length_ms": 625000,
+              "section_number": 8,
               "start_ms": 4767000,
               "title": "Discrimination of the immutable reality from the mutable"
             },
             {
               "audio_url": "https://www.archive.org/download/vairagya_shatakam_1303_librivox/vairagyashatakam_09_bhartrhari_64kb.mp3",
               "length_ms": 672000,
+              "section_number": 9,
               "start_ms": 5392000,
               "title": "Worship of Siva"
             },
             {
               "audio_url": "https://www.archive.org/download/vairagya_shatakam_1303_librivox/vairagyashatakam_10_bhartrhari_64kb.mp3",
               "length_ms": 696000,
+              "section_number": 10,
               "start_ms": 6064000,
               "title": "The way of life of a realized ascetic"
             }
           ],
           "copyright_year": 1916,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt32/Vairagya_Shatakam_1306.jpg",
+          "credits": [
+            {
+              "person": "swami-madhavananda",
+              "role": "translator"
+            }
+          ],
           "id": "uday-sagar",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Philosophy",
+            "Ancient"
+          ],
           "librivox_id": 6980,
+          "librivox_title": "Vairagya Shatakam",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/vairagya-shatakam-by-bhartrhari/",

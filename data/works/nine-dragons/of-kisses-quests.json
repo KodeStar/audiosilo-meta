@@ -9499,24 +9499,36 @@
             {
               "audio_url": "https://www.archive.org/download/ofpeaceofmind_1105_librivox/peaceofmind_1_seneca_64kb.mp3",
               "length_ms": 1138000,
+              "readers": [
+                "jonathan-hockey"
+              ],
               "start_ms": 0,
               "title": "Chapters 1 and 2"
             },
             {
               "audio_url": "https://www.archive.org/download/ofpeaceofmind_1105_librivox/peaceofmind_2_seneca_64kb.mp3",
               "length_ms": 1104000,
+              "readers": [
+                "phil-chenevert"
+              ],
               "start_ms": 1138000,
               "title": "Chapters 3 to 7"
             },
             {
               "audio_url": "https://www.archive.org/download/ofpeaceofmind_1105_librivox/peaceofmind_3_seneca_64kb.mp3",
               "length_ms": 1506000,
+              "readers": [
+                "ann-boulais"
+              ],
               "start_ms": 2242000,
               "title": "Chapters 8 to 12"
             },
             {
               "audio_url": "https://www.archive.org/download/ofpeaceofmind_1105_librivox/peaceofmind_4_seneca_64kb.mp3",
               "length_ms": 1212000,
+              "readers": [
+                "ann-boulais"
+              ],
               "start_ms": 3748000,
               "title": "Chapters 13 to 17"
             }
@@ -9525,7 +9537,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt8/ofpeaceofmind_0511.jpg",
           "id": "jonathan-hockey",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Self-Help"
+          ],
           "librivox_id": 5146,
+          "librivox_title": "Of Peace of Mind",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/of-peace-of-mind-by-lucius-annaeus-seneca/",

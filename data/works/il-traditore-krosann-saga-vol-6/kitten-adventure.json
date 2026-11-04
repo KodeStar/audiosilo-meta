@@ -465,7 +465,12 @@
           "cover_url": "https://archive.org/download/kittensandcats_1507_librivox/Kittens_and_Cats_1507.jpg",
           "id": "rosslyn-carlyle",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction",
+            "Animals & Nature"
+          ],
           "librivox_id": 10031,
+          "librivox_title": "Kittens and Cats: A Book of Tales",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/kittens-and-cats-a-book-of-tales-by-eulalie-osgood-grover/",
@@ -765,7 +770,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/kittens_garden_1412.jpg",
           "id": "rachel",
           "language": "en",
+          "librivox_genres": [
+            "Animals & Nature",
+            "Poetry"
+          ],
           "librivox_id": 9426,
+          "librivox_title": "Kitten's Garden of Verses",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-kittens-garden-of-verses-by-oliver-herford/",
@@ -1282,7 +1292,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/kitty_alone_1309.jpg",
           "id": "maryann",
           "language": "en",
+          "librivox_genres": [
+            "Published 1800 -1900"
+          ],
           "librivox_id": 7349,
+          "librivox_title": "Kitty Alone",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/kitty-alone-by-sabine-baring-gould/",
@@ -2197,7 +2211,12 @@
           "cover_url": "https://archive.org/download/kittycarter_2610_librivox/kittycartercanteen_2610.jpg",
           "id": "luka",
           "language": "en",
+          "librivox_genres": [
+            "General",
+            "Published 1900 onward"
+          ],
           "librivox_id": 18498,
+          "librivox_title": "Kitty Carter, Canteen Girl",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/kitty-carter-canteen-girl-by-ruby-lorraine-radford/",
@@ -2487,54 +2506,81 @@
             {
               "audio_url": "https://www.archive.org/download/kittycattales_2507_librivox/kittycattales_01_carrick_64kb.mp3",
               "length_ms": 815000,
+              "readers": [
+                "grass"
+              ],
               "start_ms": 0,
               "title": "The First Night: The White Cat"
             },
             {
               "audio_url": "https://www.archive.org/download/kittycattales_2507_librivox/kittycattales_02_carrick_64kb.mp3",
               "length_ms": 588000,
+              "readers": [
+                "jenstarcat"
+              ],
               "start_ms": 815000,
               "title": "The Second Night: The King of the Field-Mice"
             },
             {
               "audio_url": "https://www.archive.org/download/kittycattales_2507_librivox/kittycattales_03_carrick_64kb.mp3",
               "length_ms": 2460000,
+              "readers": [
+                "jenstarcat"
+              ],
               "start_ms": 1403000,
               "title": "The Third Night: The Discontented Cat"
             },
             {
               "audio_url": "https://www.archive.org/download/kittycattales_2507_librivox/kittycattales_04_carrick_64kb.mp3",
               "length_ms": 565000,
+              "readers": [
+                "nancy-gorgen"
+              ],
               "start_ms": 3863000,
               "title": "The Fourth Night: The Cat who Married a Mouse"
             },
             {
               "audio_url": "https://www.archive.org/download/kittycattales_2507_librivox/kittycattales_05_carrick_64kb.mp3",
               "length_ms": 1211000,
+              "readers": [
+                "nancy-gorgen"
+              ],
               "start_ms": 4428000,
               "title": "The Fifth Night: Mother Michel and her Cat"
             },
             {
               "audio_url": "https://www.archive.org/download/kittycattales_2507_librivox/kittycattales_06_carrick_64kb.mp3",
               "length_ms": 267000,
+              "readers": [
+                "arnav-darnal"
+              ],
               "start_ms": 5639000,
               "title": "The Sixth Night: Venus and the Cat, and The Cat and the Fox"
             },
             {
               "audio_url": "https://www.archive.org/download/kittycattales_2507_librivox/kittycattales_07_carrick_64kb.mp3",
               "length_ms": 911000,
+              "readers": [
+                "ellen-marie"
+              ],
               "start_ms": 5906000,
               "title": "The Seventh Night: Dick Whittington and his Wonderful Cat"
             },
             {
               "audio_url": "https://www.archive.org/download/kittycattales_2507_librivox/kittycattales_08_carrick_64kb.mp3",
               "length_ms": 359000,
+              "readers": [
+                "arnav-darnal"
+              ],
               "start_ms": 6817000,
               "title": "The Eighth Night: The Funeral of Tom Grimalkin, and The King of the Cats"
             },
             {
               "audio_url": "https://www.archive.org/download/kittycattales_2507_librivox/kittycattales_09_carrick_64kb.mp3",
               "length_ms": 563000,
+              "readers": [
+                "carrie-mae-streb"
+              ],
               "start_ms": 7176000,
               "title": "The Ninth Night: Puss-in-Boots"
             }
@@ -2542,7 +2588,13 @@
           "cover_url": "https://archive.org/download/kittycattales_2507_librivox/kitty_cat_tales_2507.jpg",
           "id": "grass",
           "language": "en",
+          "librivox_genres": [
+            "Animals & Nature",
+            "Myths, Legends & Fairy Tales",
+            "Family"
+          ],
           "librivox_id": 21668,
+          "librivox_title": "Kitty-Cat Tales",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/kitty-cat-tales-by-alice-van-leer-carrick/",
@@ -4066,36 +4118,54 @@
             {
               "audio_url": "https://www.archive.org/download/kitty_mccrae_0905_librivox/kittymccrae_boake_af_64kb.mp3",
               "length_ms": 428000,
+              "readers": [
+                "audio-andrea"
+              ],
               "start_ms": 0,
               "title": "Kitty McCrae – A Galloping Rhyme – Read by AF"
             },
             {
               "audio_url": "https://www.archive.org/download/kitty_mccrae_0905_librivox/kittymccrae_boake_anc_64kb.mp3",
               "length_ms": 371000,
+              "readers": [
+                "ancilla"
+              ],
               "start_ms": 428000,
               "title": "Kitty McCrae – A Galloping Rhyme – Read by ANC"
             },
             {
               "audio_url": "https://www.archive.org/download/kitty_mccrae_0905_librivox/kittymccrae_boake_dl_64kb.mp3",
               "length_ms": 361000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 799000,
               "title": "Kitty McCrae – A Galloping Rhyme – Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/kitty_mccrae_0905_librivox/kittymccrae_boake_lkp_64kb.mp3",
               "length_ms": 312000,
+              "readers": [
+                "lucy-perry"
+              ],
               "start_ms": 1160000,
               "title": "Kitty McCrae – A Galloping Rhyme – Read by LKP"
             },
             {
               "audio_url": "https://www.archive.org/download/kitty_mccrae_0905_librivox/kittymccrae_boake_mfs_64kb.mp3",
               "length_ms": 395000,
+              "readers": [
+                "mark-f-smith"
+              ],
               "start_ms": 1472000,
               "title": "Kitty McCrae – A Galloping Rhyme, read by MFS"
             },
             {
               "audio_url": "https://www.archive.org/download/kitty_mccrae_0905_librivox/kittymccrae_boake_mm_64kb.mp3",
               "length_ms": 304000,
+              "readers": [
+                "morgan"
+              ],
               "start_ms": 1867000,
               "title": "Kitty McCrae – A Galloping Rhyme – Read by MM"
             }
@@ -4104,7 +4174,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt16/Kitty_McCrae_1204.jpg",
           "id": "audio-andrea",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 3097,
+          "librivox_title": "Kitty McCrae - A Galloping Rhyme",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/kitty-mccrae-a-galloping-rhyme-by-barcroft-henry-boake/",
@@ -5363,7 +5438,11 @@
           "cover_url": "https://archive.org/download/kittyboys_christmas_1701_librivox/kittyboy_1702.jpg",
           "id": "lynne-t",
           "language": "en",
+          "librivox_genres": [
+            "Animals & Nature"
+          ],
           "librivox_id": 11601,
+          "librivox_title": "Kittyboy's Christmas",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/kittyboys-christmas-by-amy-ella-blanchard/",
@@ -5659,7 +5738,11 @@
           "cover_url": "https://archive.org/download/kittys_enemy_2309_librivox/kitty_2309.jpg",
           "id": "rachel-tevis",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure"
+          ],
           "librivox_id": 19712,
+          "librivox_title": "Kitty's Enemy: Or, The Boy Next Door",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/kittys-enemy-by-eleanora-h-stooke/",
@@ -6197,42 +6280,63 @@
             {
               "audio_url": "https://www.archive.org/download/kittyspicnic_1505_librivox/kittyspicnic_01_anonymous_64kb.mp3",
               "length_ms": 234000,
+              "readers": [
+                "tihirih-lopez"
+              ],
               "start_ms": 0,
               "title": "Kitty's Picnic"
             },
             {
               "audio_url": "https://www.archive.org/download/kittyspicnic_1505_librivox/kittyspicnic_02_anonymous_64kb.mp3",
               "length_ms": 248000,
+              "readers": [
+                "tihirih-lopez"
+              ],
               "start_ms": 234000,
               "title": "Ellen's Letter"
             },
             {
               "audio_url": "https://www.archive.org/download/kittyspicnic_1505_librivox/kittyspicnic_03_anonymous_64kb.mp3",
               "length_ms": 600000,
+              "readers": [
+                "jesse-liwag"
+              ],
               "start_ms": 482000,
               "title": "That Dear Duck"
             },
             {
               "audio_url": "https://www.archive.org/download/kittyspicnic_1505_librivox/kittyspicnic_04_anonymous_64kb.mp3",
               "length_ms": 158000,
+              "readers": [
+                "rachel"
+              ],
               "start_ms": 1082000,
               "title": "Little Miss Muffle"
             },
             {
               "audio_url": "https://www.archive.org/download/kittyspicnic_1505_librivox/kittyspicnic_05_anonymous_64kb.mp3",
               "length_ms": 608000,
+              "readers": [
+                "maryann"
+              ],
               "start_ms": 1240000,
               "title": "A New Red Riding-Hood"
             },
             {
               "audio_url": "https://www.archive.org/download/kittyspicnic_1505_librivox/kittyspicnic_06_anonymous_64kb.mp3",
               "length_ms": 132000,
+              "readers": [
+                "rachel"
+              ],
               "start_ms": 1848000,
               "title": "Lilla's Doll Show"
             },
             {
               "audio_url": "https://www.archive.org/download/kittyspicnic_1505_librivox/kittyspicnic_07_anonymous_64kb.mp3",
               "length_ms": 219000,
+              "readers": [
+                "april-walters"
+              ],
               "start_ms": 1980000,
               "title": "Selina and her Doll"
             }
@@ -6241,7 +6345,11 @@
           "cover_url": "https://archive.org/download/kittyspicnic_1505_librivox/kittys_picnic_1505.jpg",
           "id": "tihirih-lopez",
           "language": "en",
+          "librivox_genres": [
+            "Short works"
+          ],
           "librivox_id": 8574,
+          "librivox_title": "Kitty's Picnic and other Stories",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/kittys-picnic-and-other-stories-by-anonymous/",
@@ -8709,7 +8817,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt22/klaasjezevenster1_1508.jpg",
           "id": "anna-simon",
           "language": "nl",
+          "librivox_genres": [
+            "Published 1800 -1900"
+          ],
           "librivox_id": 10176,
+          "librivox_title": "Klaasje Zevenster, deel 1",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/klaasje-zevenster-deel-1-by-jacob-van-lennep/",
@@ -8867,7 +8979,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt12/klaasjezevenster2_1508.jpg",
           "id": "anna-simon",
           "language": "nl",
+          "librivox_genres": [
+            "Published 1800 -1900"
+          ],
           "librivox_id": 10268,
+          "librivox_title": "Klaasje Zevenster, deel 2",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/klaasje-zevenster-deel-2-by-jacob-van-lennep/",
@@ -9049,7 +9165,11 @@
           "cover_url": "https://archive.org/download/klaasje_zevenster_deel_3_1903_librivox/klaasjezevenster3_1508.jpg",
           "id": "anna-simon",
           "language": "nl",
+          "librivox_genres": [
+            "Published 1800 -1900"
+          ],
           "librivox_id": 11280,
+          "librivox_title": "Klaasje Zevenster, deel 3",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/klaasje-zevenster-deel-3-by-jacob-van-lennep/",
@@ -13309,7 +13429,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt10/Klassiske_eventyr_1108.jpg",
           "id": "kristoffer-hunsdahl",
           "language": "da",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 1062,
+          "librivox_title": "Klassiske eventyr",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/klassiske-eventyr/",

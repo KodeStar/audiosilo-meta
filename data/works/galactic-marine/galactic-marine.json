@@ -1311,7 +1311,12 @@
           "cover_url": "https://archive.org/download/galacticpatrol_2303_librivox/galactic_patrol_2304.jpg",
           "id": "harley-james",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Science Fiction"
+          ],
           "librivox_id": 18382,
+          "librivox_title": "Galactic Patrol",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/galactic-patrol-by-e-e-smith/",
@@ -1486,7 +1491,11 @@
           "cover_url": "https://archive.org/download/galacticpatrolversion2_2409_librivox/galactic_patrol2_2409.jpg",
           "id": "kevin-coffin",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 20540,
+          "librivox_title": "Galactic Patrol (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/galactic-patrol-version-2-by-e-e-smith/",
@@ -5247,24 +5256,65 @@
             {
               "audio_url": "https://www.archive.org/download/galahadjones_2001_librivox/galahadjones_1_adams_64kb.mp3",
               "length_ms": 2276000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "toddhw",
+                "alan-mapstone",
+                "son-of-the-exiles",
+                "leanne-yau",
+                "tomas-peter",
+                "devorah-allen",
+                "tj-burns",
+                "michaelmaggs",
+                "adrian-stephens"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/galahadjones_2001_librivox/galahadjones_2_adams_64kb.mp3",
               "length_ms": 1813000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "toddhw",
+                "son-of-the-exiles",
+                "sonia",
+                "tomas-peter",
+                "devorah-allen",
+                "michaelmaggs",
+                "adrian-stephens"
+              ],
               "start_ms": 2276000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/galahadjones_2001_librivox/galahadjones_3_adams_64kb.mp3",
               "length_ms": 2419000,
+              "readers": [
+                "toddhw",
+                "son-of-the-exiles",
+                "sonia",
+                "tj-burns",
+                "michaelmaggs",
+                "adrian-stephens"
+              ],
               "start_ms": 4089000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/galahadjones_2001_librivox/galahadjones_4_adams_64kb.mp3",
               "length_ms": 1391000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "toddhw",
+                "alan-mapstone",
+                "son-of-the-exiles",
+                "sonia",
+                "tomas-peter",
+                "tj-burns",
+                "michaelmaggs",
+                "adrian-stephens"
+              ],
               "start_ms": 6508000,
               "title": "Act 4"
             }
@@ -5273,7 +5323,11 @@
           "cover_url": "https://archive.org/download/librivoxcdcoverart36/galahad_jones_2001.jpg",
           "id": "beth-thomas-1974-2020",
           "language": "en",
+          "librivox_genres": [
+            "Plays"
+          ],
           "librivox_id": 14541,
+          "librivox_title": "Galahad Jones",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/galahad-jones-by-arthur-adams/",
@@ -9115,7 +9169,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt18/Galatea_1205.jpg",
           "id": "riccardo-fasol",
           "language": "it",
+          "librivox_genres": [
+            "Epistolary Fiction"
+          ],
           "librivox_id": 3311,
+          "librivox_title": "Galatea",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/galatea-by-anton-giulio-barrili/",
@@ -9245,60 +9303,100 @@
             {
               "audio_url": "https://www.archive.org/download/galateo_2307_librivox/galateo_00_dellacasa_64kb.mp3",
               "length_ms": 654000,
+              "readers": [
+                "timothy-ferguson"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/galateo_2307_librivox/galateo_01_dellacasa_64kb.mp3",
               "length_ms": 443000,
+              "readers": [
+                "timothy-ferguson"
+              ],
+              "section_number": 1,
               "start_ms": 654000,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/galateo_2307_librivox/galateo_02_dellacasa_64kb.mp3",
               "length_ms": 1458000,
+              "readers": [
+                "lucretia-b"
+              ],
+              "section_number": 2,
               "start_ms": 1097000,
               "title": "Section 1"
             },
             {
               "audio_url": "https://www.archive.org/download/galateo_2307_librivox/galateo_03_dellacasa_64kb.mp3",
               "length_ms": 1383000,
+              "readers": [
+                "owlivia"
+              ],
+              "section_number": 3,
               "start_ms": 2555000,
               "title": "Section 2, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/galateo_2307_librivox/galateo_04_dellacasa_64kb.mp3",
               "length_ms": 1603000,
+              "readers": [
+                "owlivia"
+              ],
+              "section_number": 4,
               "start_ms": 3938000,
               "title": "Section 2, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/galateo_2307_librivox/galateo_05_dellacasa_64kb.mp3",
               "length_ms": 1148000,
+              "readers": [
+                "isabella-garcia"
+              ],
+              "section_number": 5,
               "start_ms": 5541000,
               "title": "Section 2, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/galateo_2307_librivox/galateo_06_dellacasa_64kb.mp3",
               "length_ms": 1162000,
+              "readers": [
+                "redvers"
+              ],
+              "section_number": 6,
               "start_ms": 6689000,
               "title": "Section 2, Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/galateo_2307_librivox/galateo_07_dellacasa_64kb.mp3",
               "length_ms": 1769000,
+              "readers": [
+                "redvers"
+              ],
+              "section_number": 7,
               "start_ms": 7851000,
               "title": "Section 2, Part 5"
             },
             {
               "audio_url": "https://www.archive.org/download/galateo_2307_librivox/galateo_08_dellacasa_64kb.mp3",
               "length_ms": 1701000,
+              "readers": [
+                "redvers"
+              ],
+              "section_number": 8,
               "start_ms": 9620000,
               "title": "Section 3, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/galateo_2307_librivox/galateo_09_dellacasa_64kb.mp3",
               "length_ms": 1033000,
+              "readers": [
+                "berlin-gunning"
+              ],
+              "section_number": 9,
               "start_ms": 11321000,
               "title": "Section 3, Part 2"
             }
@@ -9307,7 +9405,12 @@
           "cover_url": "https://archive.org/download/galateo_2307_librivox/galateo_2308.jpg",
           "id": "timothy-ferguson",
           "language": "en",
+          "librivox_genres": [
+            "Social Science (Culture & Anthropology)",
+            "Early Modern"
+          ],
           "librivox_id": 18335,
+          "librivox_title": "Galateo",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/galateo-by-giovanni-della-casa/",

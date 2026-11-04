@@ -5222,72 +5222,84 @@
             {
               "audio_url": "https://www.archive.org/download/sweet_dryanddry_dw_librivox/insweetdryanddry_00_morley_64kb.mp3",
               "length_ms": 77000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 - Dedication & Foreward"
             },
             {
               "audio_url": "https://www.archive.org/download/sweet_dryanddry_dw_librivox/insweetdryanddry_01_morley_64kb.mp3",
               "length_ms": 579000,
+              "section_number": 1,
               "start_ms": 77000,
               "title": "01 - The Mystery of the Unexpected Julep"
             },
             {
               "audio_url": "https://www.archive.org/download/sweet_dryanddry_dw_librivox/insweetdryanddry_02_morley_64kb.mp3",
               "length_ms": 1332000,
+              "section_number": 2,
               "start_ms": 656000,
               "title": "02 - The House on Caraway Street"
             },
             {
               "audio_url": "https://www.archive.org/download/sweet_dryanddry_dw_librivox/insweetdryanddry_03_morley_64kb.mp3",
               "length_ms": 914000,
+              "section_number": 3,
               "start_ms": 1988000,
               "title": "03 -  Incident of the Gooseberry Bombs"
             },
             {
               "audio_url": "https://www.archive.org/download/sweet_dryanddry_dw_librivox/insweetdryanddry_04_morley_64kb.mp3",
               "length_ms": 1089000,
+              "section_number": 4,
               "start_ms": 2902000,
               "title": "04 - The Great War Begins"
             },
             {
               "audio_url": "https://www.archive.org/download/sweet_dryanddry_dw_librivox/insweetdryanddry_05_morley_64kb.mp3",
               "length_ms": 1199000,
+              "section_number": 5,
               "start_ms": 3991000,
               "title": "05 -  The Treachery of Miss Chuff"
             },
             {
               "audio_url": "https://www.archive.org/download/sweet_dryanddry_dw_librivox/insweetdryanddry_06_morley_64kb.mp3",
               "length_ms": 1125000,
+              "section_number": 6,
               "start_ms": 5190000,
               "title": "06 - Departed Spirits"
             },
             {
               "audio_url": "https://www.archive.org/download/sweet_dryanddry_dw_librivox/insweetdryanddry_07_morley_64kb.mp3",
               "length_ms": 1009000,
+              "section_number": 7,
               "start_ms": 6315000,
               "title": "07 - The Decanterbury Pilgrims"
             },
             {
               "audio_url": "https://www.archive.org/download/sweet_dryanddry_dw_librivox/insweetdryanddry_08_morley_64kb.mp3",
               "length_ms": 777000,
+              "section_number": 8,
               "start_ms": 7324000,
               "title": "08 - With Benefit of Clergy"
             },
             {
               "audio_url": "https://www.archive.org/download/sweet_dryanddry_dw_librivox/insweetdryanddry_09_morley_64kb.mp3",
               "length_ms": 988000,
+              "section_number": 9,
               "start_ms": 8101000,
               "title": "09 - The Election"
             },
             {
               "audio_url": "https://www.archive.org/download/sweet_dryanddry_dw_librivox/insweetdryanddry_10_morley_64kb.mp3",
               "length_ms": 1085000,
+              "section_number": 10,
               "start_ms": 9089000,
               "title": "10 - E Pluribus Unum!"
             },
             {
               "audio_url": "https://www.archive.org/download/sweet_dryanddry_dw_librivox/insweetdryanddry_11_morley_64kb.mp3",
               "length_ms": 310000,
+              "section_number": 11,
               "start_ms": 10174000,
               "title": "11 - It's a Long Worm That Has No Turning"
             }
@@ -5296,7 +5308,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt30/sweet_dry_1303.jpg",
           "id": "daryl-wor",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction",
+            "Humorous Fiction",
+            "Satire"
+          ],
           "librivox_id": 7045,
+          "librivox_title": "In the Sweet Dry and Dry",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/in-the-sweet-dry-and-dry-by-christopher-morley-bart-haley/",
@@ -7351,66 +7369,99 @@
             {
               "audio_url": "https://www.archive.org/download/in_the_trenches_1611.poem_librivox/inthetrenches_ohagan_ajc_64kb.mp3",
               "length_ms": 110000,
+              "readers": [
+                "andrew-coleman"
+              ],
               "start_ms": 0,
               "title": "In The Trenches - Read by AJC"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_trenches_1611.poem_librivox/inthetrenches_ohagan_bk_64kb.mp3",
               "length_ms": 105000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 110000,
               "title": "In The Trenches - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_trenches_1611.poem_librivox/inthetrenches_ohagan_blm_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "brent-m"
+              ],
               "start_ms": 215000,
               "title": "In The Trenches - Read by BLM"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_trenches_1611.poem_librivox/inthetrenches_ohagan_dl_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 289000,
               "title": "In The Trenches - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_trenches_1611.poem_librivox/inthetrenches_ohagan_gb_64kb.mp3",
               "length_ms": 90000,
+              "readers": [
+                "garth-burton"
+              ],
               "start_ms": 370000,
               "title": "In The Trenches - Read by GB"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_trenches_1611.poem_librivox/inthetrenches_ohagan_kgr_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "kangaroo"
+              ],
               "start_ms": 460000,
               "title": "In The Trenches - Read by KGR"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_trenches_1611.poem_librivox/inthetrenches_ohagan_lah_64kb.mp3",
               "length_ms": 85000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 531000,
               "title": "In The Trenches - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_trenches_1611.poem_librivox/inthetrenches_ohagan_ln_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "lee-ann-niazi"
+              ],
               "start_ms": 616000,
               "title": "In The Trenches - Read by LN"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_trenches_1611.poem_librivox/inthetrenches_ohagan_mk_64kb.mp3",
               "length_ms": 87000,
+              "readers": [
+                "maria-kasper"
+              ],
               "start_ms": 707000,
               "title": "In The Trenches - Read by MK"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_trenches_1611.poem_librivox/inthetrenches_ohagan_msd_64kb.mp3",
               "length_ms": 79000,
+              "readers": [
+                "matthew-datcher"
+              ],
               "start_ms": 794000,
               "title": "In The Trenches - Read by MSD"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_trenches_1611.poem_librivox/inthetrenches_ohagan_tp_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "tomas-peter"
+              ],
               "start_ms": 873000,
               "title": "In The Trenches - Read by TP"
             }
@@ -7419,7 +7470,11 @@
           "cover_url": "https://archive.org/download/in_the_trenches_1611.poem_librivox/in_trenches_1611.jpg",
           "id": "andrew-coleman",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 11417,
+          "librivox_title": "In The Trenches",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/in-the-trenches-by-thomas-ohagan/",
@@ -8577,7 +8632,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt28/In_Village_Viger_1507.jpg",
           "id": "lee-smalley",
           "language": "en",
+          "librivox_genres": [
+            "Published 1800 -1900"
+          ],
           "librivox_id": 9952,
+          "librivox_title": "In the Village of Viger",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/in-the-village-of-viger-by-duncan-campbell-scott/",
@@ -9224,126 +9283,147 @@
             {
               "audio_url": "https://www.archive.org/download/in_the_wake_of_the_buccaneers_2305_librivox/wakeofthebuccaneers_00_hyatt_64kb.mp3",
               "length_ms": 463000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_wake_of_the_buccaneers_2305_librivox/wakeofthebuccaneers_01_hyatt_64kb.mp3",
               "length_ms": 1546000,
+              "section_number": 1,
               "start_ms": 463000,
               "title": "Ch.1 Among the Caribbees"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_wake_of_the_buccaneers_2305_librivox/wakeofthebuccaneers_02_hyatt_64kb.mp3",
               "length_ms": 1377000,
+              "section_number": 2,
               "start_ms": 2009000,
               "title": "Ch.2 St. Thomas and Its Past"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_wake_of_the_buccaneers_2305_librivox/wakeofthebuccaneers_03_hyatt_64kb.mp3",
               "length_ms": 1661000,
+              "section_number": 3,
               "start_ms": 3386000,
               "title": "Ch.3 The Buccaneers in the Virgin Isles"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_wake_of_the_buccaneers_2305_librivox/wakeofthebuccaneers_04_hyatt_64kb.mp3",
               "length_ms": 1606000,
+              "section_number": 4,
               "start_ms": 5047000,
               "title": "Ch.4 On the Way to St. John"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_wake_of_the_buccaneers_2305_librivox/wakeofthebuccaneers_05_hyatt_64kb.mp3",
               "length_ms": 1379000,
+              "section_number": 5,
               "start_ms": 6653000,
               "title": "Ch.5 St. John and Some Discoveries"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_wake_of_the_buccaneers_2305_librivox/wakeofthebuccaneers_06_hyatt_64kb.mp3",
               "length_ms": 1741000,
+              "section_number": 6,
               "start_ms": 8032000,
               "title": "Ch.6 Anegada and a Bit of Treasure-Trove"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_wake_of_the_buccaneers_2305_librivox/wakeofthebuccaneers_07_hyatt_64kb.mp3",
               "length_ms": 1862000,
+              "section_number": 7,
               "start_ms": 9773000,
               "title": "Ch.7 Lonely Isles"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_wake_of_the_buccaneers_2305_librivox/wakeofthebuccaneers_08_hyatt_64kb.mp3",
               "length_ms": 1369000,
+              "section_number": 8,
               "start_ms": 11635000,
               "title": "Ch.8 St. Kitts and the Gorgeous Isle"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_wake_of_the_buccaneers_2305_librivox/wakeofthebuccaneers_09_hyatt_64kb.mp3",
               "length_ms": 1559000,
+              "section_number": 9,
               "start_ms": 13004000,
               "title": "Ch.9 The \"Dangerous Voyage\" and the Effect of a Nagging Tongue"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_wake_of_the_buccaneers_2305_librivox/wakeofthebuccaneers_10_hyatt_64kb.mp3",
               "length_ms": 2061000,
+              "section_number": 10,
               "start_ms": 14563000,
               "title": "Ch.10 The Isle of the Holy Cross"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_wake_of_the_buccaneers_2305_librivox/wakeofthebuccaneers_11_hyatt_64kb.mp3",
               "length_ms": 1240000,
+              "section_number": 11,
               "start_ms": 16624000,
               "title": "Ch.11 The Gibralter of the Buccaneers"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_wake_of_the_buccaneers_2305_librivox/wakeofthebuccaneers_12_hyatt_64kb.mp3",
               "length_ms": 1295000,
+              "section_number": 12,
               "start_ms": 17864000,
               "title": "Ch.12 The Birthplace of the Buccaneers"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_wake_of_the_buccaneers_2305_librivox/wakeofthebuccaneers_13_hyatt_64kb.mp3",
               "length_ms": 1394000,
+              "section_number": 13,
               "start_ms": 19159000,
               "title": "Ch.13 The Bretheren of the Main"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_wake_of_the_buccaneers_2305_librivox/wakeofthebuccaneers_14_hyatt_64kb.mp3",
               "length_ms": 1194000,
+              "section_number": 14,
               "start_ms": 20553000,
               "title": "Ch.14 The Granddaddy of the Dollar"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_wake_of_the_buccaneers_2305_librivox/wakeofthebuccaneers_15_hyatt_64kb.mp3",
               "length_ms": 1488000,
+              "section_number": 15,
               "start_ms": 21747000,
               "title": "Ch.15 Where a Pirate Ruled"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_wake_of_the_buccaneers_2305_librivox/wakeofthebuccaneers_16_hyatt_64kb.mp3",
               "length_ms": 1623000,
+              "section_number": 16,
               "start_ms": 23235000,
               "title": "Ch.16 Jamaica and Its Pirate Governor"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_wake_of_the_buccaneers_2305_librivox/wakeofthebuccaneers_17_hyatt_64kb.mp3",
               "length_ms": 1591000,
+              "section_number": 17,
               "start_ms": 24858000,
               "title": "Ch.17 The Bridge of the World"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_wake_of_the_buccaneers_2305_librivox/wakeofthebuccaneers_18_hyatt_64kb.mp3",
               "length_ms": 1527000,
+              "section_number": 18,
               "start_ms": 26449000,
               "title": "Ch.18 The Castle of Gold"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_wake_of_the_buccaneers_2305_librivox/wakeofthebuccaneers_19_hyatt_64kb.mp3",
               "length_ms": 1411000,
+              "section_number": 19,
               "start_ms": 27976000,
               "title": "Ch.19 Panama New and Old"
             },
             {
               "audio_url": "https://www.archive.org/download/in_the_wake_of_the_buccaneers_2305_librivox/wakeofthebuccaneers_20_hyatt_64kb.mp3",
               "length_ms": 2114000,
+              "section_number": 20,
               "start_ms": 29387000,
               "title": "Ch.20 How Morgan Kept His Promise"
             }
@@ -9352,7 +9432,12 @@
           "cover_url": "https://archive.org/download/in_the_wake_of_the_buccaneers_2305_librivox/wakeofbuccaneers_2305.jpg",
           "id": "steven-seitel",
           "language": "en",
+          "librivox_genres": [
+            "History",
+            "Travel & Geography"
+          ],
           "librivox_id": 18943,
+          "librivox_title": "In the Wake of the Buccaneers",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/in-the-wake-of-the-buccaneers-a-hyatt-verrill/",
@@ -12061,7 +12146,11 @@
           "cover_url": "https://archive.org/download/inthewilderness_2306_librivox/in_the_wilderness_2306.jpg",
           "id": "jessica-zdanowicz",
           "language": "en",
+          "librivox_genres": [
+            "Essays & Short Works"
+          ],
           "librivox_id": 19210,
+          "librivox_title": "In the Wilderness (Version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/in-the-wilderness-by-charles-dudley-warner-2/",
@@ -12139,7 +12228,12 @@
           "cover_url": "https://archive.org/download/inthewilderness_2105_librivox/inthewilderness_2105.jpg",
           "id": "zach-hoyt",
           "language": "en",
+          "librivox_genres": [
+            "Humor",
+            "Nature"
+          ],
           "librivox_id": 16475,
+          "librivox_title": "In the Wilderness",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/in-the-wilderness-by-charles-dudley-warner/",

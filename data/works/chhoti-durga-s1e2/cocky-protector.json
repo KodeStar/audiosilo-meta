@@ -2439,66 +2439,99 @@
             {
               "audio_url": "https://www.archive.org/download/coco_bolo_2105_librivox/cocobolo_01_hamp_64kb.mp3",
               "length_ms": 674000,
+              "readers": [
+                "tr-love"
+              ],
               "start_ms": 0,
               "title": "The Shadow-Chasers"
             },
             {
               "audio_url": "https://www.archive.org/download/coco_bolo_2105_librivox/cocobolo_02_hamp_64kb.mp3",
               "length_ms": 767000,
+              "readers": [
+                "tr-love"
+              ],
               "start_ms": 674000,
               "title": "Admiral Boxwood"
             },
             {
               "audio_url": "https://www.archive.org/download/coco_bolo_2105_librivox/cocobolo_03_hamp_64kb.mp3",
               "length_ms": 777000,
+              "readers": [
+                "tr-love"
+              ],
               "start_ms": 1441000,
               "title": "The Royal Yacht"
             },
             {
               "audio_url": "https://www.archive.org/download/coco_bolo_2105_librivox/cocobolo_04_hamp_64kb.mp3",
               "length_ms": 935000,
+              "readers": [
+                "tr-love"
+              ],
               "start_ms": 2218000,
               "title": "The King's Hounds"
             },
             {
               "audio_url": "https://www.archive.org/download/coco_bolo_2105_librivox/cocobolo_05_hamp_64kb.mp3",
               "length_ms": 1126000,
+              "readers": [
+                "tr-love"
+              ],
               "start_ms": 3153000,
               "title": "The Court Crier"
             },
             {
               "audio_url": "https://www.archive.org/download/coco_bolo_2105_librivox/cocobolo_06_hamp_64kb.mp3",
               "length_ms": 912000,
+              "readers": [
+                "tr-love"
+              ],
               "start_ms": 4279000,
               "title": "Refreshments"
             },
             {
               "audio_url": "https://www.archive.org/download/coco_bolo_2105_librivox/cocobolo_07_hamp_64kb.mp3",
               "length_ms": 759000,
+              "readers": [
+                "deanna"
+              ],
               "start_ms": 5191000,
               "title": "Coco Bolo Rex"
             },
             {
               "audio_url": "https://www.archive.org/download/coco_bolo_2105_librivox/cocobolo_08_hamp_64kb.mp3",
               "length_ms": 668000,
+              "readers": [
+                "deanna"
+              ],
               "start_ms": 5950000,
               "title": "Lobsterneck"
             },
             {
               "audio_url": "https://www.archive.org/download/coco_bolo_2105_librivox/cocobolo_09_hamp_64kb.mp3",
               "length_ms": 621000,
+              "readers": [
+                "joannah"
+              ],
               "start_ms": 6618000,
               "title": "The Snap-Dragon Sings"
             },
             {
               "audio_url": "https://www.archive.org/download/coco_bolo_2105_librivox/cocobolo_10_hamp_64kb.mp3",
               "length_ms": 881000,
+              "readers": [
+                "joannah"
+              ],
               "start_ms": 7239000,
               "title": "The Archbishop"
             },
             {
               "audio_url": "https://www.archive.org/download/coco_bolo_2105_librivox/cocobolo_11_hamp_64kb.mp3",
               "length_ms": 972000,
+              "readers": [
+                "liz-h"
+              ],
               "start_ms": 8120000,
               "title": "The Blue-Gum Policeman"
             }
@@ -2507,7 +2540,13 @@
           "cover_url": "https://archive.org/download/coco_bolo_2105_librivox/cocobolo_2105.jpg",
           "id": "tr-love",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure",
+            "Myths, Legends & Fairy Tales",
+            "Family"
+          ],
           "librivox_id": 16488,
+          "librivox_title": "Coco Bolo: King of the Floating Island",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/coco-bolo-king-of-the-floating-island-by-sidford-frederick-hamp/",
@@ -2888,7 +2927,13 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt13/Cocoa_Chocolate_1201.jpg",
           "id": "allyson-hester",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "History",
+            "Cooking"
+          ],
           "librivox_id": 2316,
+          "librivox_title": "Cocoa and Chocolate",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/cocoa-and-chocolate-by-arthur-william-knapp/",
@@ -3908,7 +3953,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt21/Cocoa_Break_001_1208.jpg",
           "id": "bellona-times",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction",
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 3833,
+          "librivox_title": "Cocoa Break Collection, Vol. 01",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/librivox-cocoa-break-collection-by-various/",
@@ -3959,90 +4009,135 @@
             {
               "audio_url": "https://www.archive.org/download/cocoabreak02_librivox/cbc02_belprincess_stokes_mc_64kb.mp3",
               "length_ms": 1901000,
+              "readers": [
+                "mlcui"
+              ],
               "start_ms": 0,
               "title": "The Bel-Princess, by Maive Stokes"
             },
             {
               "audio_url": "https://www.archive.org/download/cocoabreak02_librivox/cbc02_childerowland_steel_rm_64kb.mp3",
               "length_ms": 1065000,
+              "readers": [
+                "iridescat"
+              ],
               "start_ms": 1901000,
               "title": "Childe Rowland, by Flora A Steel"
             },
             {
               "audio_url": "https://www.archive.org/download/cocoabreak02_librivox/cbc02_espousalratsdaughter_james_dh_64kb.mp3",
               "length_ms": 886000,
+              "readers": [
+                "samantha-miles"
+              ],
               "start_ms": 2966000,
               "title": "The Espousal of the Rat's Daughter, by Grace James"
             },
             {
               "audio_url": "https://www.archive.org/download/cocoabreak02_librivox/cbc02_fairyofthedell_emerson_hc_64kb.mp3",
               "length_ms": 931000,
+              "readers": [
+                "heather-casavant"
+              ],
               "start_ms": 3852000,
               "title": "The Fairy of the Dell by P.H. Emerson"
             },
             {
               "audio_url": "https://www.archive.org/download/cocoabreak02_librivox/cbc02_herdboyweavingmaiden_martens_rm_64kb.mp3",
               "length_ms": 422000,
+              "readers": [
+                "iridescat"
+              ],
               "start_ms": 4783000,
               "title": "The Herd Boy and the Weaving Maiden, by Martens"
             },
             {
               "audio_url": "https://www.archive.org/download/cocoabreak02_librivox/cbc02_jellyfishtakesjourney_james_rds_64kb.mp3",
               "length_ms": 451000,
+              "readers": [
+                "ratandeep-singh"
+              ],
               "start_ms": 5205000,
               "title": "The Jellyfish Takes A Journey, by Grace James"
             },
             {
               "audio_url": "https://www.archive.org/download/cocoabreak02_librivox/cbc02_ladwhowenttothenorthwind_asbjornsen_moe_64kb.mp3",
               "length_ms": 464000,
+              "readers": [
+                "mike-nelson"
+              ],
               "start_ms": 5656000,
               "title": "The Lad Who Went To The North Wind"
             },
             {
               "audio_url": "https://www.archive.org/download/cocoabreak02_librivox/cbc02_lindabranca_eells_bt_64kb.mp3",
               "length_ms": 833000,
+              "readers": [
+                "bellona-times"
+              ],
               "start_ms": 6120000,
               "title": "Linda Branca and Her Mask, by Elsie S Eells"
             },
             {
               "audio_url": "https://www.archive.org/download/cocoabreak02_librivox/cbc02_littlepursewithtwohalfpennies_creanga_kc_64kb.mp3",
               "length_ms": 581000,
+              "readers": [
+                "raybrite"
+              ],
               "start_ms": 6953000,
               "title": "The Little Purse with two Half Pennies, by Mite Kremnitz and Mary J. Safford"
             },
             {
               "audio_url": "https://www.archive.org/download/cocoabreak02_librivox/cbc02_oldwomanandherpig_steel_vk_64kb.mp3",
               "length_ms": 275000,
+              "readers": [
+                "verity-kendall"
+              ],
               "start_ms": 7534000,
               "title": "The Old Woman And Her Pig, by Flora Annie Steel"
             },
             {
               "audio_url": "https://www.archive.org/download/cocoabreak02_librivox/cbc02_spiritsoftheyellowriver__frederickhmartens_jp_64kb.mp3",
               "length_ms": 653000,
+              "readers": [
+                "jacob-paine"
+              ],
               "start_ms": 7809000,
               "title": "Spirits of the Yellow River,by Richard Wilhelm"
             },
             {
               "audio_url": "https://www.archive.org/download/cocoabreak02_librivox/cbc02_storyjasonsquiff_sandburg_pk_64kb.mp3",
               "length_ms": 562000,
+              "readers": [
+                "pamela-krantz"
+              ],
               "start_ms": 8462000,
               "title": "The Story of Jason Squiff, by Carl Sandburg"
             },
             {
               "audio_url": "https://www.archive.org/download/cocoabreak02_librivox/cbc02_threelittlepigs_steel_vk_64kb.mp3",
               "length_ms": 485000,
+              "readers": [
+                "verity-kendall"
+              ],
               "start_ms": 9024000,
               "title": "The Three Little Pigs, by Flora Annie Steel"
             },
             {
               "audio_url": "https://www.archive.org/download/cocoabreak02_librivox/cbc02_twoskyscrapers_sandburg_dh.mp3_64kb.mp3",
               "length_ms": 412000,
+              "readers": [
+                "samantha-miles"
+              ],
               "start_ms": 9509000,
               "title": "The Two Skyscrapers Who Decided to Have a Child, by Carl Sandburg"
             },
             {
               "audio_url": "https://www.archive.org/download/cocoabreak02_librivox/cbc02_whythebananasbelongtothemonkeys_eells_lt_64kb.mp3",
               "length_ms": 443000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 9921000,
               "title": "Why The Bananas Belong To The Monkey, by Elsie S Eells"
             }
@@ -4050,7 +4145,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt28/cocoabreak2_1212.jpg",
           "id": "mlcui",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction",
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 7038,
+          "librivox_title": "Cocoa Break Collection, Vol. 02 - Fairy Tales",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/cocoa-break-collection-vol-02-by-various/",
@@ -4138,7 +4238,14 @@
           "cover_url": "https://archive.org/download/cocodrilo_2412_librivox/cocodrilo_2412.jpg",
           "id": "victor-villarraza",
           "language": "es",
+          "librivox_genres": [
+            "Humorous Fiction",
+            "Literary Fiction",
+            "Published 1800 -1900",
+            "Single Author Collections"
+          ],
           "librivox_id": 21167,
+          "librivox_title": "cocodrilo",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/el-cocodrilo-by-fyodor-dostoyevsky/",

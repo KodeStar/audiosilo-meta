@@ -3057,7 +3057,7 @@
     "perolas-e-diamantes-contos-infantis": {
       "added_at": "2026-10-29",
       "authors": [
-        "jacob-wilhelm-grimm",
+        "brothers-grimm",
         "henrique-marques-jr"
       ],
       "credits": [
@@ -3080,57 +3080,91 @@
             {
               "audio_url": "https://www.archive.org/download/perolas_e_diamantes_2007_librivox/contosinfantis_01_grimm_64kb.mp3",
               "length_ms": 905000,
+              "readers": [
+                "mayah"
+              ],
               "start_ms": 0,
               "title": "O Violino Maravilhoso"
             },
             {
               "audio_url": "https://www.archive.org/download/perolas_e_diamantes_2007_librivox/contosinfantis_02_grimm_64kb.mp3",
               "length_ms": 928000,
+              "readers": [
+                "mayah"
+              ],
               "start_ms": 905000,
               "title": "João no Auge da Alegria"
             },
             {
               "audio_url": "https://www.archive.org/download/perolas_e_diamantes_2007_librivox/contosinfantis_03_grimm_64kb.mp3",
               "length_ms": 752000,
+              "readers": [
+                "l-s-b-seabra"
+              ],
               "start_ms": 1833000,
               "title": "Pelle d'Urso"
             },
             {
               "audio_url": "https://www.archive.org/download/perolas_e_diamantes_2007_librivox/contosinfantis_04_grimm_64kb.mp3",
               "length_ms": 762000,
+              "readers": [
+                "l-s-b-seabra"
+              ],
               "start_ms": 2585000,
               "title": "Aventuras de João-Pequenino"
             },
             {
               "audio_url": "https://www.archive.org/download/perolas_e_diamantes_2007_librivox/contosinfantis_05_grimm_64kb.mp3",
               "length_ms": 1013000,
+              "readers": [
+                "mickyme"
+              ],
               "start_ms": 3347000,
               "title": "Os Três Cabellos d'oiro do Diabo"
             },
             {
               "audio_url": "https://www.archive.org/download/perolas_e_diamantes_2007_librivox/contosinfantis_06_grimm_64kb.mp3",
               "length_ms": 231000,
+              "readers": [
+                "l-s-b-seabra"
+              ],
               "start_ms": 4360000,
               "title": "O Sapateiro e os Gnomos"
             },
             {
               "audio_url": "https://www.archive.org/download/perolas_e_diamantes_2007_librivox/contosinfantis_07_grimm_64kb.mp3",
               "length_ms": 474000,
+              "readers": [
+                "mickyme"
+              ],
               "start_ms": 4591000,
               "title": "As Três Pennas"
             },
             {
               "audio_url": "https://www.archive.org/download/perolas_e_diamantes_2007_librivox/contosinfantis_08_grimm_64kb.mp3",
               "length_ms": 252000,
+              "readers": [
+                "rachel-moraes"
+              ],
               "start_ms": 5065000,
               "title": "O Violinista"
             }
           ],
           "copyright_year": 1908,
           "cover_url": "https://archive.org/download/librivoxcdcoverart36/perolasediamantes_2007.jpg",
+          "credits": [
+            {
+              "person": "henrique-marques-jr",
+              "role": "translator"
+            }
+          ],
           "id": "mayah",
           "language": "pt",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 13576,
+          "librivox_title": "Pérolas E Diamantes - Contos Infantis",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/perolas-e-diamantes-contos-infantis-by-jacob-wilhelm-grimm/",
@@ -3295,9 +3329,20 @@
           ],
           "copyright_year": 1891,
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt9/Perpetual_Peace_Philosophic_Essay_1107.jpg",
+          "credits": [
+            {
+              "person": "w-hastie",
+              "role": "translator"
+            }
+          ],
           "id": "d-e-wittkower",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Philosophy"
+          ],
           "librivox_id": 936,
+          "librivox_title": "Perpetual Peace: A Philosophic Essay (Hastie Translation)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/perpetual-peace-by-immanuel-kant/",
@@ -3527,9 +3572,19 @@
           ],
           "copyright_year": 1893,
           "cover_url": "https://archive.org/download/perpetual_virginity_blessed_mary_2104_librivox/perpetual_virginity_2104.jpg",
+          "credits": [
+            {
+              "person": "william-henry-fremantle",
+              "role": "translator"
+            }
+          ],
           "id": "ancientchristian",
           "language": "en",
+          "librivox_genres": [
+            "Christianity - Other"
+          ],
           "librivox_id": 16495,
+          "librivox_title": "Perpetual Virginity of Blessed Mary",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-perpetual-virginity-of-blessed-mary-by-saint-jerome/",
@@ -4259,7 +4314,11 @@
           "cover_url": "https://archive.org/download/perrodelhortelano_2408_librivox/perrohortelano_2408.jpg",
           "id": "epachuko",
           "language": "es",
+          "librivox_genres": [
+            "Satire"
+          ],
           "librivox_id": 20701,
+          "librivox_title": "perro del hortelano",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/el-perro-del-hortelano-by-felix-lope-de-vega/",

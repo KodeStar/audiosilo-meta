@@ -7472,7 +7472,12 @@
           "cover_url": "https://archive.org/download/glimpse_india_1610_librivox/glimpseindia_1610.jpg",
           "id": "sienna",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "Modern (19th C)"
+          ],
           "librivox_id": 9642,
+          "librivox_title": "Glimpse of India",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-glimpse-of-india-by-clara-swain/",
@@ -7798,7 +7803,13 @@
           "cover_url": "https://archive.org/download/glimpses_of_bengal_1903_librivox/glimpses_bengal_1903.jpg",
           "id": "bhavya",
           "language": "en",
+          "librivox_genres": [
+            "Travel & Geography",
+            "Memoirs",
+            "Letters"
+          ],
           "librivox_id": 13721,
+          "librivox_title": "Glimpses of Bengal",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/glimpses-of-bengal-by-rabindranath-tagore/",
@@ -8086,7 +8097,12 @@
           "cover_url": "https://archive.org/download/italiansociety_1908_librivox/glimpses_italian_society_1909.jpg",
           "id": "barbara-baker",
           "language": "en",
+          "librivox_genres": [
+            "Social Science (Culture & Anthropology)",
+            "Travel & Geography"
+          ],
           "librivox_id": 13352,
+          "librivox_title": "Glimpses of Italian society in the eighteenth century",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/glimpses-of-italian-society-in-the-eighteenth-century-by-hester-lynch-piozzi/",
@@ -8134,54 +8150,90 @@
             {
               "audio_url": "https://www.archive.org/download/glimpsesofthedarkages_2602_librivox/glimpsesofthedarkages_00_anonymous_64kb.mp3",
               "length_ms": 132000,
+              "readers": [
+                "stacey-malcolm"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/glimpsesofthedarkages_2602_librivox/glimpsesofthedarkages_01_anonymous_64kb.mp3",
               "length_ms": 2570000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 1,
               "start_ms": 132000,
               "title": "The Fall of Rome"
             },
             {
               "audio_url": "https://www.archive.org/download/glimpsesofthedarkages_2602_librivox/glimpsesofthedarkages_02_anonymous_64kb.mp3",
               "length_ms": 3414000,
+              "readers": [
+                "louise-j-belle"
+              ],
+              "section_number": 2,
               "start_ms": 2702000,
               "title": "The Church parts I and II"
             },
             {
               "audio_url": "https://www.archive.org/download/glimpsesofthedarkages_2602_librivox/glimpsesofthedarkages_03_anonymous_64kb.mp3",
               "length_ms": 1788000,
+              "readers": [
+                "catrina"
+              ],
+              "section_number": 3,
               "start_ms": 6116000,
               "title": "The Church  parts III and IV"
             },
             {
               "audio_url": "https://www.archive.org/download/glimpsesofthedarkages_2602_librivox/glimpsesofthedarkages_04_anonymous_64kb.mp3",
               "length_ms": 1765000,
+              "readers": [
+                "rowanwhitethorn"
+              ],
+              "section_number": 4,
               "start_ms": 7904000,
               "title": "The Monastery  parts I and II"
             },
             {
               "audio_url": "https://www.archive.org/download/glimpsesofthedarkages_2602_librivox/glimpsesofthedarkages_05_anonymous_64kb.mp3",
               "length_ms": 1674000,
+              "readers": [
+                "catrina"
+              ],
+              "section_number": 5,
               "start_ms": 9669000,
               "title": "The Monastery parts III and IV"
             },
             {
               "audio_url": "https://www.archive.org/download/glimpsesofthedarkages_2602_librivox/glimpsesofthedarkages_06_anonymous_64kb.mp3",
               "length_ms": 3138000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 6,
               "start_ms": 11343000,
               "title": "The Feudal Castle"
             },
             {
               "audio_url": "https://www.archive.org/download/glimpsesofthedarkages_2602_librivox/glimpsesofthedarkages_07_anonymous_64kb.mp3",
               "length_ms": 1229000,
+              "readers": [
+                "arnav-darnal"
+              ],
+              "section_number": 7,
               "start_ms": 14481000,
               "title": "The Town  parts I and II"
             },
             {
               "audio_url": "https://www.archive.org/download/glimpsesofthedarkages_2602_librivox/glimpsesofthedarkages_08_anonymous_64kb.mp3",
               "length_ms": 2269000,
+              "readers": [
+                "arnav-darnal"
+              ],
+              "section_number": 8,
               "start_ms": 15710000,
               "title": "The Town  parts III and IV"
             }
@@ -8190,7 +8242,11 @@
           "cover_url": "https://archive.org/download/glimpsesofthedarkages_2602_librivox/glimpsesofthedarkages_2602.jpg",
           "id": "stacey-malcolm",
           "language": "en",
+          "librivox_genres": [
+            "Middle Ages/Middle History"
+          ],
           "librivox_id": 21781,
+          "librivox_title": "Glimpses of the Dark Ages",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/glimpses-of-the-dark-ages-by-anonymous/",
@@ -8567,156 +8623,182 @@
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_00_hearn_64kb.mp3",
               "length_ms": 671000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_01_hearn_64kb.mp3",
               "length_ms": 1523000,
+              "section_number": 1,
               "start_ms": 671000,
               "title": "Ch 1: My First Day in the Orient, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_02_hearn_64kb.mp3",
               "length_ms": 1780000,
+              "section_number": 2,
               "start_ms": 2194000,
               "title": "Ch 1: My First Day in the Orient, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_03_hearn_64kb.mp3",
               "length_ms": 546000,
+              "section_number": 3,
               "start_ms": 3974000,
               "title": "Ch 2: The Writing of Kobodaishi"
             },
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_04_hearn_64kb.mp3",
               "length_ms": 1791000,
+              "section_number": 4,
               "start_ms": 4520000,
               "title": "Ch 3: Jizo, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_05_hearn_64kb.mp3",
               "length_ms": 1564000,
+              "section_number": 5,
               "start_ms": 6311000,
               "title": "Ch 3: Jizo, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_06_hearn_64kb.mp3",
               "length_ms": 1745000,
+              "section_number": 6,
               "start_ms": 7875000,
               "title": "Ch 4: A Pilgrimage to Enoshima, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_07_hearn_64kb.mp3",
               "length_ms": 1474000,
+              "section_number": 7,
               "start_ms": 9620000,
               "title": "Ch 4: A Pilgrimage to Enoshima, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_08_hearn_64kb.mp3",
               "length_ms": 1938000,
+              "section_number": 8,
               "start_ms": 11094000,
               "title": "Ch 4: A Pilgrimage to Enoshima, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_09_hearn_64kb.mp3",
               "length_ms": 1675000,
+              "section_number": 9,
               "start_ms": 13032000,
               "title": "Ch 5: At the Market of the Dead"
             },
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_10_hearn_64kb.mp3",
               "length_ms": 2433000,
+              "section_number": 10,
               "start_ms": 14707000,
               "title": "Ch 6: Bon Odori"
             },
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_11_hearn_64kb.mp3",
               "length_ms": 1591000,
+              "section_number": 11,
               "start_ms": 17140000,
               "title": "Ch 7: The Chief City of the Province of the Gods, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_12_hearn_64kb.mp3",
               "length_ms": 1292000,
+              "section_number": 12,
               "start_ms": 18731000,
               "title": "Ch 7: The Chief City of the Province of the Gods, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_13_hearn_64kb.mp3",
               "length_ms": 1372000,
+              "section_number": 13,
               "start_ms": 20023000,
               "title": "Ch 7: The Chief City of the Province of the Gods, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_14_hearn_64kb.mp3",
               "length_ms": 1327000,
+              "section_number": 14,
               "start_ms": 21395000,
               "title": "Ch 8: Kitzuki: The Most Ancient Shrine of Japan, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_15_hearn_64kb.mp3",
               "length_ms": 1828000,
+              "section_number": 15,
               "start_ms": 22722000,
               "title": "Ch 8: Kitzuki: The Most Ancient Shrine of Japan, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_16_hearn_64kb.mp3",
               "length_ms": 1874000,
+              "section_number": 16,
               "start_ms": 24550000,
               "title": "Ch 8: Kitzuki: The Most Ancient Shrine of Japan, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_17_hearn_64kb.mp3",
               "length_ms": 2220000,
+              "section_number": 17,
               "start_ms": 26424000,
               "title": "Ch 9: In the Cave of the Children's Ghosts"
             },
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_18_hearn_64kb.mp3",
               "length_ms": 1609000,
+              "section_number": 18,
               "start_ms": 28644000,
               "title": "Ch 10: At Mionoseki"
             },
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_19_hearn_64kb.mp3",
               "length_ms": 1478000,
+              "section_number": 19,
               "start_ms": 30253000,
               "title": "Ch 11: Notes on Kitzuki, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_20_hearn_64kb.mp3",
               "length_ms": 1961000,
+              "section_number": 20,
               "start_ms": 31731000,
               "title": "Ch 11: Notes on Kitzuki, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_21_hearn_64kb.mp3",
               "length_ms": 1352000,
+              "section_number": 21,
               "start_ms": 33692000,
               "title": "Ch 12: At Hinomisaki"
             },
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_22_hearn_64kb.mp3",
               "length_ms": 928000,
+              "section_number": 22,
               "start_ms": 35044000,
               "title": "Ch 13: Shinju"
             },
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_23_hearn_64kb.mp3",
               "length_ms": 1958000,
+              "section_number": 23,
               "start_ms": 35972000,
               "title": "Ch 14: Yaegaki-jinja"
             },
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_24_hearn_64kb.mp3",
               "length_ms": 1968000,
+              "section_number": 24,
               "start_ms": 37930000,
               "title": "Ch 15: Kitsune, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/unfamiliar_japan_2009_librivox/glimpsesjapanfirst_25_hearn_64kb.mp3",
               "length_ms": 2040000,
+              "section_number": 25,
               "start_ms": 39898000,
               "title": "Ch 15: Kitsune, Part 2"
             }
@@ -8725,7 +8807,12 @@
           "cover_url": "https://archive.org/download/unfamiliar_japan_2009_librivox/unfamiliarjapan1_2009.jpg",
           "id": "mlcui",
           "language": "en",
+          "librivox_genres": [
+            "Essays & Short Works",
+            "Travel & Geography"
+          ],
           "librivox_id": 14489,
+          "librivox_title": "Glimpses of Unfamiliar Japan: First Series",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/glimpses-of-unfamiliar-japan-first-series-by-lafcadio-hearn/",
@@ -9980,144 +10067,216 @@
             {
               "audio_url": "https://www.archive.org/download/glinda_oz_0908_librivox/glindaofoz_01_baum_64kb.mp3",
               "length_ms": 1320000,
+              "readers": [
+                "luke-nelson"
+              ],
               "start_ms": 0,
               "title": "The Call to Duty"
             },
             {
               "audio_url": "https://www.archive.org/download/glinda_oz_0908_librivox/glindaofoz_02_baum_64kb.mp3",
               "length_ms": 893000,
+              "readers": [
+                "luke-nelson"
+              ],
               "start_ms": 1320000,
               "title": "Ozma and Dorothy"
             },
             {
               "audio_url": "https://www.archive.org/download/glinda_oz_0908_librivox/glindaofoz_03_baum_64kb.mp3",
               "length_ms": 285000,
+              "readers": [
+                "luke-nelson"
+              ],
               "start_ms": 2213000,
               "title": "The Mist Maidens"
             },
             {
               "audio_url": "https://www.archive.org/download/glinda_oz_0908_librivox/glindaofoz_04_baum_64kb.mp3",
               "length_ms": 478000,
+              "readers": [
+                "luke-nelson"
+              ],
               "start_ms": 2498000,
               "title": "The Magic Tent"
             },
             {
               "audio_url": "https://www.archive.org/download/glinda_oz_0908_librivox/glindaofoz_05_baum_64kb.mp3",
               "length_ms": 678000,
+              "readers": [
+                "luke-nelson"
+              ],
               "start_ms": 2976000,
               "title": "The Magic Stairway"
             },
             {
               "audio_url": "https://www.archive.org/download/glinda_oz_0908_librivox/glindaofoz_06_baum_64kb.mp3",
               "length_ms": 939000,
+              "readers": [
+                "luke-nelson"
+              ],
               "start_ms": 3654000,
               "title": "Flathead Mountain"
             },
             {
               "audio_url": "https://www.archive.org/download/glinda_oz_0908_librivox/glindaofoz_07_baum_64kb.mp3",
               "length_ms": 394000,
+              "readers": [
+                "luke-nelson"
+              ],
               "start_ms": 4593000,
               "title": "The Magic Isle"
             },
             {
               "audio_url": "https://www.archive.org/download/glinda_oz_0908_librivox/glindaofoz_08_baum_64kb.mp3",
               "length_ms": 737000,
+              "readers": [
+                "kara-shallenberg-1969-2023"
+              ],
               "start_ms": 4987000,
               "title": "Queen Coo-ee-oh"
             },
             {
               "audio_url": "https://www.archive.org/download/glinda_oz_0908_librivox/glindaofoz_09_baum_64kb.mp3",
               "length_ms": 688000,
+              "readers": [
+                "elli"
+              ],
               "start_ms": 5724000,
               "title": "Lady Aurex"
             },
             {
               "audio_url": "https://www.archive.org/download/glinda_oz_0908_librivox/glindaofoz_10_baum_64kb.mp3",
               "length_ms": 473000,
+              "readers": [
+                "j-rebecca-franklin"
+              ],
               "start_ms": 6412000,
               "title": "Under Water"
             },
             {
               "audio_url": "https://www.archive.org/download/glinda_oz_0908_librivox/glindaofoz_11_baum_64kb.mp3",
               "length_ms": 284000,
+              "readers": [
+                "lucy-perry"
+              ],
               "start_ms": 6885000,
               "title": "The Conquest of the Skeezers"
             },
             {
               "audio_url": "https://www.archive.org/download/glinda_oz_0908_librivox/glindaofoz_12_baum_64kb.mp3",
               "length_ms": 1351000,
+              "readers": [
+                "evelyn-clarke"
+              ],
               "start_ms": 7169000,
               "title": "The Diamond Swan"
             },
             {
               "audio_url": "https://www.archive.org/download/glinda_oz_0908_librivox/glindaofoz_13_baum_64kb.mp3",
               "length_ms": 542000,
+              "readers": [
+                "evelyn-clarke"
+              ],
               "start_ms": 8520000,
               "title": "The Alarm Bell"
             },
             {
               "audio_url": "https://www.archive.org/download/glinda_oz_0908_librivox/glindaofoz_14_baum_64kb.mp3",
               "length_ms": 656000,
+              "readers": [
+                "linda-lee-paquet"
+              ],
               "start_ms": 9062000,
               "title": "Ozma's Counsellors"
             },
             {
               "audio_url": "https://www.archive.org/download/glinda_oz_0908_librivox/glindaofoz_15_baum_64kb.mp3",
               "length_ms": 809000,
+              "readers": [
+                "linda-lee-paquet"
+              ],
               "start_ms": 9718000,
               "title": "The Great Sorceress"
             },
             {
               "audio_url": "https://www.archive.org/download/glinda_oz_0908_librivox/glindaofoz_16_baum_64kb.mp3",
               "length_ms": 571000,
+              "readers": [
+                "linda-lee-paquet"
+              ],
               "start_ms": 10527000,
               "title": "The Enchanted Fishes"
             },
             {
               "audio_url": "https://www.archive.org/download/glinda_oz_0908_librivox/glindaofoz_17_baum_64kb.mp3",
               "length_ms": 837000,
+              "readers": [
+                "miriam-esther-goldman-1991-2017"
+              ],
               "start_ms": 11098000,
               "title": "Under the Great Dome"
             },
             {
               "audio_url": "https://www.archive.org/download/glinda_oz_0908_librivox/glindaofoz_18_baum_64kb.mp3",
               "length_ms": 1345000,
+              "readers": [
+                "evelyn-clarke"
+              ],
               "start_ms": 11935000,
               "title": "The Cleverness of Ervic"
             },
             {
               "audio_url": "https://www.archive.org/download/glinda_oz_0908_librivox/glindaofoz_19_baum_64kb.mp3",
               "length_ms": 649000,
+              "readers": [
+                "linda-ferguson"
+              ],
               "start_ms": 13280000,
               "title": "Red Reera, the Yookoohoo"
             },
             {
               "audio_url": "https://www.archive.org/download/glinda_oz_0908_librivox/glindaofoz_20_baum_64kb.mp3",
               "length_ms": 658000,
+              "readers": [
+                "linda-ferguson"
+              ],
               "start_ms": 13929000,
               "title": "A Puzzling Problem"
             },
             {
               "audio_url": "https://www.archive.org/download/glinda_oz_0908_librivox/glindaofoz_21_baum_64kb.mp3",
               "length_ms": 572000,
+              "readers": [
+                "mark-f-smith"
+              ],
               "start_ms": 14587000,
               "title": "The Three Adepts"
             },
             {
               "audio_url": "https://www.archive.org/download/glinda_oz_0908_librivox/glindaofoz_22_baum_64kb.mp3",
               "length_ms": 520000,
+              "readers": [
+                "mark-f-smith"
+              ],
               "start_ms": 15159000,
               "title": "The Sunken Island"
             },
             {
               "audio_url": "https://www.archive.org/download/glinda_oz_0908_librivox/glindaofoz_23_baum_64kb.mp3",
               "length_ms": 573000,
+              "readers": [
+                "mark-f-smith"
+              ],
               "start_ms": 15679000,
               "title": "The Magic Words"
             },
             {
               "audio_url": "https://www.archive.org/download/glinda_oz_0908_librivox/glindaofoz_24_baum_64kb.mp3",
               "length_ms": 463000,
+              "readers": [
+                "mark-f-smith"
+              ],
               "start_ms": 16252000,
               "title": "Glinda's Triumph"
             }
@@ -10126,7 +10285,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt/glinda_of_oz_1002.jpg",
           "id": "luke-nelson",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction",
+            "Action & Adventure"
+          ],
           "librivox_id": 1672,
+          "librivox_title": "Glinda of Oz",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/glinda-of-oz-by-l-frank-baum/",
@@ -10478,7 +10642,11 @@
           "cover_url": "https://archive.org/download/glindaofoz_1603_librivox/glinda_1603.jpg",
           "id": "phil-chenevert",
           "language": "en",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 10617,
+          "librivox_title": "Glinda of Oz (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/glinda-of-oz-by-l-frank-baum-2/",

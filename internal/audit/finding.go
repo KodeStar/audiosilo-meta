@@ -19,6 +19,7 @@ const (
 	ClassSeriesDup    = "SER-DUP"     // near-duplicate series
 	ClassSeriesParen  = "SER-PAREN"   // parenthetical-decorated series names
 	ClassTransLink    = "T-LINK"      // translation links a record's own edition decoration states
+	ClassRepackage    = "R-REPACKAGE" // retail recordings that are a LibriVox project's own audio (advisory)
 	ClassLangMix      = "L-MIX"       // series whose members state two or more languages
 	ClassPersonDup    = "P-DUP"       // near-duplicate people (advisory)
 	ClassRefSidecar   = "REF-SIDECAR" // sidecar hazards
@@ -29,7 +30,7 @@ const (
 // classOrder is every class, in report order.
 var classOrder = []string{
 	ClassWorkDup, ClassWorkTitle, ClassWorkNoSeries, ClassSeriesInteg,
-	ClassSeriesDup, ClassSeriesParen, ClassTransLink, ClassLangMix, ClassPersonDup, ClassRefSidecar,
+	ClassSeriesDup, ClassSeriesParen, ClassTransLink, ClassRepackage, ClassLangMix, ClassPersonDup, ClassRefSidecar,
 	ClassHygiene, ClassLoader,
 }
 
@@ -75,7 +76,14 @@ const (
 	// name forever and the importer's honorific fold would otherwise re-merge
 	// (ReviewedDistinct). People have no merge pass yet.
 	OpMergePeople = "merge-people"
-	OpNone        = "" // a pass-through record (LOADER)
+	// OpLinkLibrivoxRepackage records that recording From of work Target is a
+	// retailer's repackage of LibriVox recording To of the same work: a LINK between
+	// two recordings that stay two, never a merge. R-REPACKAGE proposes it, always
+	// advisory, and no repair applies it: the reviewed decision IS the record, so an
+	// accept means "link recorded" and a reject "not this project's audio", and both
+	// withdraw the proposal from the queue (applyRepackageReviews).
+	OpLinkLibrivoxRepackage = "link-librivox-repackage"
+	OpNone                  = "" // a pass-through record (LOADER)
 )
 
 // Proposal is the typed repair a finding proposes.
@@ -349,6 +357,15 @@ func sortedInts(ns []int) []int {
 	out := slices.Clone(ns)
 	sort.Ints(out)
 	return out
+}
+
+// orPlaceholder is s, or placeholder when s is empty: the one spelling of "this value
+// is unset" in note text, each caller naming its own placeholder.
+func orPlaceholder(s, placeholder string) string {
+	if s == "" {
+		return placeholder
+	}
+	return s
 }
 
 // pairKey is the stable key of an unordered pair of slugs.

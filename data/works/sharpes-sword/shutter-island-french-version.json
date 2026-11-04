@@ -1663,7 +1663,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt18/shuttle_1205.jpg",
           "id": "tabithat",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 3892,
+          "librivox_title": "Shuttle",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-shuttle-by-frances-hodgson-burnett/",
@@ -4936,7 +4940,11 @@
           "cover_url": "https://archive.org/download/elsidelasninas_2409_librivox/sidelasninas_2409.jpg",
           "id": "epachuko",
           "language": "es",
+          "librivox_genres": [
+            "Comedy"
+          ],
           "librivox_id": 20704,
+          "librivox_title": "sí de las niñas",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/el-si-de-las-ninas-by-leandro-fernandez-de-moratin/",
@@ -9650,120 +9658,180 @@
             {
               "audio_url": "https://www.archive.org/download/siberia_1209_librivox/siberia_mangan_ag_64kb.mp3",
               "length_ms": 125000,
+              "readers": [
+                "april-gonzales"
+              ],
               "start_ms": 0,
               "title": "Version 1"
             },
             {
               "audio_url": "https://www.archive.org/download/siberia_1209_librivox/siberia_mangan_cam_64kb.mp3",
               "length_ms": 139000,
+              "readers": [
+                "cynthia-moyer"
+              ],
               "start_ms": 125000,
               "title": "Version 2"
             },
             {
               "audio_url": "https://www.archive.org/download/siberia_1209_librivox/siberia_mangan_cc_64kb.mp3",
               "length_ms": 161000,
+              "readers": [
+                "chiquito-crasto"
+              ],
               "start_ms": 264000,
               "title": "Version 3"
             },
             {
               "audio_url": "https://www.archive.org/download/siberia_1209_librivox/siberia_mangan_cmp_64kb.mp3",
               "length_ms": 138000,
+              "readers": [
+                "caprishapage"
+              ],
               "start_ms": 425000,
               "title": "Version 4"
             },
             {
               "audio_url": "https://www.archive.org/download/siberia_1209_librivox/siberia_mangan_dl_64kb.mp3",
               "length_ms": 105000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 563000,
               "title": "Version 5"
             },
             {
               "audio_url": "https://www.archive.org/download/siberia_1209_librivox/siberia_mangan_fl_64kb.mp3",
               "length_ms": 134000,
+              "readers": [
+                "frank-larue"
+              ],
               "start_ms": 668000,
               "title": "Version 6"
             },
             {
               "audio_url": "https://www.archive.org/download/siberia_1209_librivox/siberia_mangan_fs_64kb.mp3",
               "length_ms": 119000,
+              "readers": [
+                "fshort"
+              ],
               "start_ms": 802000,
               "title": "Version 7"
             },
             {
               "audio_url": "https://www.archive.org/download/siberia_1209_librivox/siberia_mangan_gc_64kb.mp3",
               "length_ms": 108000,
+              "readers": [
+                "snapdragon"
+              ],
               "start_ms": 921000,
               "title": "Version 8"
             },
             {
               "audio_url": "https://www.archive.org/download/siberia_1209_librivox/siberia_mangan_jcm_64kb.mp3",
               "length_ms": 107000,
+              "readers": [
+                "jason-mills"
+              ],
               "start_ms": 1029000,
               "title": "Version 9"
             },
             {
               "audio_url": "https://www.archive.org/download/siberia_1209_librivox/siberia_mangan_jm2_64kb.mp3",
               "length_ms": 131000,
+              "readers": [
+                "jannie-meisberger"
+              ],
               "start_ms": 1136000,
               "title": "Version 10"
             },
             {
               "audio_url": "https://www.archive.org/download/siberia_1209_librivox/siberia_mangan_jn_64kb.mp3",
               "length_ms": 113000,
+              "readers": [
+                "julia-niedermaier"
+              ],
               "start_ms": 1267000,
               "title": "Version 11"
             },
             {
               "audio_url": "https://www.archive.org/download/siberia_1209_librivox/siberia_mangan_lab_64kb.mp3",
               "length_ms": 128000,
+              "readers": [
+                "lucretia-b"
+              ],
               "start_ms": 1380000,
               "title": "Version 12"
             },
             {
               "audio_url": "https://www.archive.org/download/siberia_1209_librivox/siberia_mangan_lah_64kb.mp3",
               "length_ms": 113000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 1508000,
               "title": "Version 13"
             },
             {
               "audio_url": "https://www.archive.org/download/siberia_1209_librivox/siberia_mangan_llw_64kb.mp3",
               "length_ms": 129000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 1621000,
               "title": "Version 14"
             },
             {
               "audio_url": "https://www.archive.org/download/siberia_1209_librivox/siberia_mangan_mc_64kb.mp3",
               "length_ms": 126000,
+              "readers": [
+                "mona-curtis"
+              ],
               "start_ms": 1750000,
               "title": "Version 15"
             },
             {
               "audio_url": "https://www.archive.org/download/siberia_1209_librivox/siberia_mangan_mg_64kb.mp3",
               "length_ms": 157000,
+              "readers": [
+                "martin-geeson"
+              ],
               "start_ms": 1876000,
               "title": "Version 16"
             },
             {
               "audio_url": "https://www.archive.org/download/siberia_1209_librivox/siberia_mangan_rds_64kb.mp3",
               "length_ms": 125000,
+              "readers": [
+                "ratandeep-singh"
+              ],
               "start_ms": 2033000,
               "title": "Version 17"
             },
             {
               "audio_url": "https://www.archive.org/download/siberia_1209_librivox/siberia_mangan_rn_64kb.mp3",
               "length_ms": 140000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 2158000,
               "title": "Version 18"
             },
             {
               "audio_url": "https://www.archive.org/download/siberia_1209_librivox/siberia_mangan_ts_64kb.mp3",
               "length_ms": 105000,
+              "readers": [
+                "rookieblue"
+              ],
               "start_ms": 2298000,
               "title": "Version 19"
             },
             {
               "audio_url": "https://www.archive.org/download/siberia_1209_librivox/siberia_mangan_vk_64kb.mp3",
               "length_ms": 102000,
+              "readers": [
+                "verity-kendall"
+              ],
               "start_ms": 2403000,
               "title": "Version 20"
             }
@@ -9771,7 +9839,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt22/Siberia_1209.jpg",
           "id": "april-gonzales",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 7024,
+          "librivox_title": "Siberia",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/siberia-by-james-clarence-mangan/",

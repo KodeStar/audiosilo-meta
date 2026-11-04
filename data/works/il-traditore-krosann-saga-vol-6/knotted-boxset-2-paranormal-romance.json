@@ -9823,90 +9823,135 @@
             {
               "audio_url": "https://www.archive.org/download/knowledge_2409.poem_librivox/knowledge_wilcox_ah_64kb.mp3",
               "length_ms": 113000,
+              "readers": [
+                "anita-hibbard"
+              ],
               "start_ms": 0,
               "title": "Knowledge - Read by AH"
             },
             {
               "audio_url": "https://www.archive.org/download/knowledge_2409.poem_librivox/knowledge_wilcox_bk_64kb.mp3",
               "length_ms": 93000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 113000,
               "title": "Knowledge - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/knowledge_2409.poem_librivox/knowledge_wilcox_bwc_64kb.mp3",
               "length_ms": 93000,
+              "readers": [
+                "beeswaxcandle"
+              ],
               "start_ms": 206000,
               "title": "Knowledge - Read by BWC"
             },
             {
               "audio_url": "https://www.archive.org/download/knowledge_2409.poem_librivox/knowledge_wilcox_clp_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "chris-pyle"
+              ],
               "start_ms": 299000,
               "title": "Knowledge - Read by CLP"
             },
             {
               "audio_url": "https://www.archive.org/download/knowledge_2409.poem_librivox/knowledge_wilcox_dc_64kb.mp3",
               "length_ms": 85000,
+              "readers": [
+                "dc"
+              ],
               "start_ms": 370000,
               "title": "Knowledge - Read by DC"
             },
             {
               "audio_url": "https://www.archive.org/download/knowledge_2409.poem_librivox/knowledge_wilcox_dl_64kb.mp3",
               "length_ms": 104000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 455000,
               "title": "Knowledge - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/knowledge_2409.poem_librivox/knowledge_wilcox_gln_64kb.mp3",
               "length_ms": 102000,
+              "readers": [
+                "garth-burton"
+              ],
               "start_ms": 559000,
               "title": "Knowledge - Read by GLN"
             },
             {
               "audio_url": "https://www.archive.org/download/knowledge_2409.poem_librivox/knowledge_wilcox_kh_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "kevinholm"
+              ],
               "start_ms": 661000,
               "title": "Knowledge - Read by KH"
             },
             {
               "audio_url": "https://www.archive.org/download/knowledge_2409.poem_librivox/knowledge_wilcox_ks_64kb.mp3",
               "length_ms": 84000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 743000,
               "title": "Knowledge - Read by KS"
             },
             {
               "audio_url": "https://www.archive.org/download/knowledge_2409.poem_librivox/knowledge_wilcox_lah_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 827000,
               "title": "Knowledge - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/knowledge_2409.poem_librivox/knowledge_wilcox_lcw_64kb.mp3",
               "length_ms": 93000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 921000,
               "title": "Knowledge - Read by LCW"
             },
             {
               "audio_url": "https://www.archive.org/download/knowledge_2409.poem_librivox/knowledge_wilcox_pr_64kb.mp3",
               "length_ms": 112000,
+              "readers": [
+                "patrick-randall"
+              ],
               "start_ms": 1014000,
               "title": "Knowledge - Read by PR"
             },
             {
               "audio_url": "https://www.archive.org/download/knowledge_2409.poem_librivox/knowledge_wilcox_rr_64kb.mp3",
               "length_ms": 108000,
+              "readers": [
+                "redrun"
+              ],
               "start_ms": 1126000,
               "title": "Knowledge - Read by RR"
             },
             {
               "audio_url": "https://www.archive.org/download/knowledge_2409.poem_librivox/knowledge_wilcox_sds_64kb.mp3",
               "length_ms": 79000,
+              "readers": [
+                "stepheather"
+              ],
               "start_ms": 1234000,
               "title": "Knowledge - Read by SDS"
             },
             {
               "audio_url": "https://www.archive.org/download/knowledge_2409.poem_librivox/knowledge_wilcox_sp_64kb.mp3",
               "length_ms": 83000,
+              "readers": [
+                "shrimpphish"
+              ],
               "start_ms": 1313000,
               "title": "Knowledge - Read by SP"
             }
@@ -9915,7 +9960,11 @@
           "cover_url": "https://archive.org/download/knowledge_2409.poem_librivox/knowledge_2409.jpg",
           "id": "anita-hibbard",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 20954,
+          "librivox_title": "Knowledge",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/knowledge-by-ella-wheeler-wilcox/",

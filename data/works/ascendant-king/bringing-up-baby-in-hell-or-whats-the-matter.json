@@ -1282,54 +1282,63 @@
             {
               "audio_url": "https://www.archive.org/download/bringing_up_the_boy_1806_librivox/bringinguptheboy_00_werner_64kb.mp3",
               "length_ms": 280000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Foreword"
             },
             {
               "audio_url": "https://www.archive.org/download/bringing_up_the_boy_1806_librivox/bringinguptheboy_01_werner_64kb.mp3",
               "length_ms": 758000,
+              "section_number": 1,
               "start_ms": 280000,
               "title": "From Baby to Boy"
             },
             {
               "audio_url": "https://www.archive.org/download/bringing_up_the_boy_1806_librivox/bringinguptheboy_02_werner_64kb.mp3",
               "length_ms": 824000,
+              "section_number": 2,
               "start_ms": 1038000,
               "title": "The Simplicity of Discipline"
             },
             {
               "audio_url": "https://www.archive.org/download/bringing_up_the_boy_1806_librivox/bringinguptheboy_03_werner_64kb.mp3",
               "length_ms": 766000,
+              "section_number": 3,
               "start_ms": 1862000,
               "title": "As the Twig Is Bent"
             },
             {
               "audio_url": "https://www.archive.org/download/bringing_up_the_boy_1806_librivox/bringinguptheboy_04_werner_64kb.mp3",
               "length_ms": 793000,
+              "section_number": 4,
               "start_ms": 2628000,
               "title": "A Talk at Christmas Time"
             },
             {
               "audio_url": "https://www.archive.org/download/bringing_up_the_boy_1806_librivox/bringinguptheboy_05_werner_64kb.mp3",
               "length_ms": 709000,
+              "section_number": 5,
               "start_ms": 3421000,
               "title": "The Dynasty of the Dime Novel"
             },
             {
               "audio_url": "https://www.archive.org/download/bringing_up_the_boy_1806_librivox/bringinguptheboy_06_werner_64kb.mp3",
               "length_ms": 762000,
+              "section_number": 6,
               "start_ms": 4130000,
               "title": "The Sin of Sex Secrecy"
             },
             {
               "audio_url": "https://www.archive.org/download/bringing_up_the_boy_1806_librivox/bringinguptheboy_07_werner_64kb.mp3",
               "length_ms": 693000,
+              "section_number": 7,
               "start_ms": 4892000,
               "title": "The Weed and the Winecup"
             },
             {
               "audio_url": "https://www.archive.org/download/bringing_up_the_boy_1806_librivox/bringinguptheboy_08_werner_64kb.mp3",
               "length_ms": 570000,
+              "section_number": 8,
               "start_ms": 5585000,
               "title": "Out into the World"
             }
@@ -1338,7 +1347,12 @@
           "cover_url": "https://archive.org/download/bringing_up_the_boy_1806_librivox/bringing_boy_1806.jpg",
           "id": "donald-cummings",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Family & Relationships"
+          ],
           "librivox_id": 12565,
+          "librivox_title": "Bringing up the Boy",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/bringing-up-the-boy-by-carl-werner/",
@@ -4892,7 +4906,11 @@
           "cover_url": "https://archive.org/download/brinkofmadness_2412_librivox/brink_madness_2412.jpg",
           "id": "ben-tucker",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 21160,
+          "librivox_title": "Brink of Madness",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/brink-of-madness-by-walt-sheldon/",
@@ -8160,39 +8178,91 @@
             {
               "audio_url": "https://www.archive.org/download/britannicus_2101_librivox/britannicus_1_racine_64kb.mp3",
               "length_ms": 1383000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "larry-wilson",
+                "sonia",
+                "david-purdy",
+                "matea-bracic"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/britannicus_2101_librivox/britannicus_2_racine_64kb.mp3",
               "length_ms": 1503000,
+              "readers": [
+                "dale-burgess",
+                "thestorygirl",
+                "alan-mapstone",
+                "larry-wilson",
+                "david-purdy"
+              ],
               "start_ms": 1383000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/britannicus_2101_librivox/britannicus_3_racine_64kb.mp3",
               "length_ms": 1254000,
+              "readers": [
+                "dale-burgess",
+                "thestorygirl",
+                "toddhw",
+                "alan-mapstone",
+                "larry-wilson",
+                "sonia",
+                "david-purdy",
+                "matea-bracic"
+              ],
               "start_ms": 2886000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/britannicus_2101_librivox/britannicus_4_racine_64kb.mp3",
               "length_ms": 1340000,
+              "readers": [
+                "dale-burgess",
+                "toddhw",
+                "alan-mapstone",
+                "larry-wilson",
+                "matea-bracic"
+              ],
               "start_ms": 4140000,
               "title": "Act 4"
             },
             {
               "audio_url": "https://www.archive.org/download/britannicus_2101_librivox/britannicus_5_racine_64kb.mp3",
               "length_ms": 1115000,
+              "readers": [
+                "dale-burgess",
+                "thestorygirl",
+                "toddhw",
+                "alan-mapstone",
+                "larry-wilson",
+                "sonia",
+                "david-purdy",
+                "matea-bracic"
+              ],
               "start_ms": 5480000,
               "title": "Act 5"
             }
           ],
           "copyright_year": 1890,
           "cover_url": "https://archive.org/download/britannicus_2101_librivox/britannicus_2101.jpg",
+          "credits": [
+            {
+              "person": "robert-bruce-boswell",
+              "role": "translator"
+            }
+          ],
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Tragedy"
+          ],
           "librivox_id": 15817,
+          "librivox_title": "Britannicus",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/britannicus-by-jean-racine/",
@@ -8572,7 +8642,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt/britishamericanarticles_1003.jpg",
           "id": "bellona-times",
           "language": "en",
+          "librivox_genres": [
+            "Literary Collections"
+          ],
           "librivox_id": 3948,
+          "librivox_title": "British & American Periodical Articles 1852-1905",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/british-and-american-periodical-articles/",
@@ -8756,7 +8830,12 @@
           "cover_url": "https://archive.org/download/britisharmywithin_1704_librivox/britisharmy_1704.jpg",
           "id": "david-wales",
           "language": "en",
+          "librivox_genres": [
+            "War & Military",
+            "History"
+          ],
           "librivox_id": 11873,
+          "librivox_title": "British Army From Within",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-british-army-from-within-by-e-charles-vivian/",
@@ -9117,84 +9196,98 @@
             {
               "audio_url": "https://www.archive.org/download/british_barbarians_rg_librivox/britishbarbarians_00_allen_64kb.mp3",
               "length_ms": 1397000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 - Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/british_barbarians_rg_librivox/britishbarbarians_01_allen_64kb.mp3",
               "length_ms": 1646000,
+              "section_number": 1,
               "start_ms": 1397000,
               "title": "01 - Chapter I"
             },
             {
               "audio_url": "https://www.archive.org/download/british_barbarians_rg_librivox/britishbarbarians_02_allen_64kb.mp3",
               "length_ms": 1712000,
+              "section_number": 2,
               "start_ms": 3043000,
               "title": "02 - Chapter II"
             },
             {
               "audio_url": "https://www.archive.org/download/british_barbarians_rg_librivox/britishbarbarians_03_allen_64kb.mp3",
               "length_ms": 533000,
+              "section_number": 3,
               "start_ms": 4755000,
               "title": "03 - Chapter III"
             },
             {
               "audio_url": "https://www.archive.org/download/british_barbarians_rg_librivox/britishbarbarians_04_allen_64kb.mp3",
               "length_ms": 2326000,
+              "section_number": 4,
               "start_ms": 5288000,
               "title": "04 - Chapter IV"
             },
             {
               "audio_url": "https://www.archive.org/download/british_barbarians_rg_librivox/britishbarbarians_05_allen_64kb.mp3",
               "length_ms": 1659000,
+              "section_number": 5,
               "start_ms": 7614000,
               "title": "05 - Chapter V"
             },
             {
               "audio_url": "https://www.archive.org/download/british_barbarians_rg_librivox/britishbarbarians_06_allen_64kb.mp3",
               "length_ms": 1171000,
+              "section_number": 6,
               "start_ms": 9273000,
               "title": "06 - Chapter VI"
             },
             {
               "audio_url": "https://www.archive.org/download/british_barbarians_rg_librivox/britishbarbarians_07_allen_64kb.mp3",
               "length_ms": 1023000,
+              "section_number": 7,
               "start_ms": 10444000,
               "title": "07 - Chapter VII"
             },
             {
               "audio_url": "https://www.archive.org/download/british_barbarians_rg_librivox/britishbarbarians_08_allen_64kb.mp3",
               "length_ms": 1985000,
+              "section_number": 8,
               "start_ms": 11467000,
               "title": "08 - Chapter VIII"
             },
             {
               "audio_url": "https://www.archive.org/download/british_barbarians_rg_librivox/britishbarbarians_09_allen_64kb.mp3",
               "length_ms": 1237000,
+              "section_number": 9,
               "start_ms": 13452000,
               "title": "09 - Chapter IX"
             },
             {
               "audio_url": "https://www.archive.org/download/british_barbarians_rg_librivox/britishbarbarians_10_allen_64kb.mp3",
               "length_ms": 1504000,
+              "section_number": 10,
               "start_ms": 14689000,
               "title": "10 - Chapter X"
             },
             {
               "audio_url": "https://www.archive.org/download/british_barbarians_rg_librivox/britishbarbarians_11_allen_64kb.mp3",
               "length_ms": 940000,
+              "section_number": 11,
               "start_ms": 16193000,
               "title": "11 - Chapter XI"
             },
             {
               "audio_url": "https://www.archive.org/download/british_barbarians_rg_librivox/britishbarbarians_12_allen_64kb.mp3",
               "length_ms": 446000,
+              "section_number": 12,
               "start_ms": 17133000,
               "title": "12 - Chapter XII"
             },
             {
               "audio_url": "https://www.archive.org/download/british_barbarians_rg_librivox/britishbarbarians_13_allen_64kb.mp3",
               "length_ms": 571000,
+              "section_number": 13,
               "start_ms": 17579000,
               "title": "13 - Chapter XIII"
             }
@@ -9203,7 +9296,12 @@
           "cover_url": "https://archive.org/download/british_barbarians_rg_librivox/barbarians_1205.jpg",
           "id": "ruth-golding",
           "language": "en",
+          "librivox_genres": [
+            "Romance",
+            "Science Fiction"
+          ],
           "librivox_id": 3814,
+          "librivox_title": "British Barbarians",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-british-barbarians-by-grant-allen/",
@@ -9923,204 +10021,340 @@
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_00_sikes_64kb.mp3",
               "length_ms": 189000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_01_sikes_64kb.mp3",
               "length_ms": 1176000,
+              "readers": [
+                "jeff-dumas"
+              ],
+              "section_number": 1,
               "start_ms": 189000,
               "title": "Book 1 Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_02_sikes_64kb.mp3",
               "length_ms": 1991000,
+              "readers": [
+                "amelia-chesley"
+              ],
+              "section_number": 2,
               "start_ms": 1365000,
               "title": "Book 1 Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_03_sikes_64kb.mp3",
               "length_ms": 1441000,
+              "readers": [
+                "mbeidl"
+              ],
+              "section_number": 3,
               "start_ms": 3356000,
               "title": "Book 1 Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_04_sikes_64kb.mp3",
               "length_ms": 722000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 4,
               "start_ms": 4797000,
               "title": "Book 1 Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_05_sikes_64kb.mp3",
               "length_ms": 824000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 5,
               "start_ms": 5519000,
               "title": "Book 1 Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_06_sikes_64kb.mp3",
               "length_ms": 1329000,
+              "readers": [
+                "maryann"
+              ],
+              "section_number": 6,
               "start_ms": 6343000,
               "title": "Book 1 Chapter 6 Parts 1-7"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_07_sikes_64kb.mp3",
               "length_ms": 1120000,
+              "readers": [
+                "maryann"
+              ],
+              "section_number": 7,
               "start_ms": 7672000,
               "title": "Book 1 Chapter 6 Parts 8-13"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_08_sikes_64kb.mp3",
               "length_ms": 1182000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 8,
               "start_ms": 8792000,
               "title": "Book 1 Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_09_sikes_64kb.mp3",
               "length_ms": 973000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 9,
               "start_ms": 9974000,
               "title": "Book 1 Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_10_sikes_64kb.mp3",
               "length_ms": 786000,
+              "readers": [
+                "david-lawrence"
+              ],
+              "section_number": 10,
               "start_ms": 10947000,
               "title": "Book 1 Chapter 9"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_11_sikes_64kb.mp3",
               "length_ms": 887000,
+              "readers": [
+                "gary-davis"
+              ],
+              "section_number": 11,
               "start_ms": 11733000,
               "title": "Book 1 Chapter 10"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_12_sikes_64kb.mp3",
               "length_ms": 1173000,
+              "readers": [
+                "gary-davis"
+              ],
+              "section_number": 12,
               "start_ms": 12620000,
               "title": "Book 1 Chapter 11"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_13_sikes_64kb.mp3",
               "length_ms": 1408000,
+              "readers": [
+                "matt-butcher"
+              ],
+              "section_number": 13,
               "start_ms": 13793000,
               "title": "Book 2 Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_14_sikes_64kb.mp3",
               "length_ms": 1680000,
+              "readers": [
+                "matt-butcher"
+              ],
+              "section_number": 14,
               "start_ms": 15201000,
               "title": "Book 2 Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_15_sikes_64kb.mp3",
               "length_ms": 724000,
+              "readers": [
+                "matt-butcher"
+              ],
+              "section_number": 15,
               "start_ms": 16881000,
               "title": "Book 2 Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_16_sikes_64kb.mp3",
               "length_ms": 1276000,
+              "readers": [
+                "matt-butcher"
+              ],
+              "section_number": 16,
               "start_ms": 17605000,
               "title": "Book 2 Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_17_sikes_64kb.mp3",
               "length_ms": 1666000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 17,
               "start_ms": 18881000,
               "title": "Book 2 Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_18_sikes_64kb.mp3",
               "length_ms": 977000,
+              "readers": [
+                "amelia-chesley"
+              ],
+              "section_number": 18,
               "start_ms": 20547000,
               "title": "Book 2 Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_19_sikes_64kb.mp3",
               "length_ms": 1382000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 19,
               "start_ms": 21524000,
               "title": "Book 2 Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_20_sikes_64kb.mp3",
               "length_ms": 1403000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 20,
               "start_ms": 22906000,
               "title": "Book 2 Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_21_sikes_64kb.mp3",
               "length_ms": 1299000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 21,
               "start_ms": 24309000,
               "title": "Book 2 Chapter 9"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_22_sikes_64kb.mp3",
               "length_ms": 1662000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 22,
               "start_ms": 25608000,
               "title": "Book 3 Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_23_sikes_64kb.mp3",
               "length_ms": 1006000,
+              "readers": [
+                "amelia-chesley"
+              ],
+              "section_number": 23,
               "start_ms": 27270000,
               "title": "Book 3 Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_24_sikes_64kb.mp3",
               "length_ms": 960000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 24,
               "start_ms": 28276000,
               "title": "Book 3 Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_25_sikes_64kb.mp3",
               "length_ms": 1343000,
+              "readers": [
+                "maryann"
+              ],
+              "section_number": 25,
               "start_ms": 29236000,
               "title": "Book 3 Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_26_sikes_64kb.mp3",
               "length_ms": 830000,
+              "readers": [
+                "maryann"
+              ],
+              "section_number": 26,
               "start_ms": 30579000,
               "title": "Book 3 Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_27_sikes_64kb.mp3",
               "length_ms": 1586000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 27,
               "start_ms": 31409000,
               "title": "Book 3 Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_28_sikes_64kb.mp3",
               "length_ms": 1709000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 28,
               "start_ms": 32995000,
               "title": "Book 3 Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_29_sikes_64kb.mp3",
               "length_ms": 737000,
+              "readers": [
+                "ken-dolinger"
+              ],
+              "section_number": 29,
               "start_ms": 34704000,
               "title": "Book 4 Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_30_sikes_64kb.mp3",
               "length_ms": 2208000,
+              "readers": [
+                "tony-oliva"
+              ],
+              "section_number": 30,
               "start_ms": 35441000,
               "title": "Book 4 Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_31_sikes_64kb.mp3",
               "length_ms": 1316000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 31,
               "start_ms": 37649000,
               "title": "Book 4 Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_32_sikes_64kb.mp3",
               "length_ms": 1178000,
+              "readers": [
+                "triciag"
+              ],
+              "section_number": 32,
               "start_ms": 38965000,
               "title": "Book 4 Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/britishgoblinswelsh_1607_librivox/britishgoblins_33_sikes_64kb.mp3",
               "length_ms": 1144000,
+              "readers": [
+                "timothy-ferguson"
+              ],
+              "section_number": 33,
               "start_ms": 40143000,
               "title": "Book 4 Chapter 5"
             }
@@ -10129,7 +10363,12 @@
           "cover_url": "https://archive.org/download/britishgoblinswelsh_1607_librivox/british_goblins_1607.jpg",
           "id": "lynne-t",
           "language": "en",
+          "librivox_genres": [
+            "Culture & Heritage Fiction",
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 9694,
+          "librivox_title": "British Goblins: Welsh Folk-lore, Fairy Mythology, Legends and Traditions",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/british-goblins-welsh-folk-lore-fairy-mythology-legends-and-traditions-by-wirt-sikes/",
@@ -10374,7 +10613,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt6/british_highways_and_byways_1101.jpg",
           "id": "christine-blachford",
           "language": "en",
+          "librivox_genres": [
+            "Travel & Geography"
+          ],
           "librivox_id": 4269,
+          "librivox_title": "British Highways And Byways From A Motor Car",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/british-highways-and-byways-from-a-motor-car-by-thomas-dowler-murphy/",
@@ -10595,7 +10838,11 @@
           "cover_url": "https://archive.org/download/britishisles_2302_librivox/britishisles_2302.jpg",
           "id": "bettyb",
           "language": "en",
+          "librivox_genres": [
+            "Travel & Geography"
+          ],
           "librivox_id": 18341,
+          "librivox_title": "British Isles and the Baltic States",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-british-isles-and-the-baltic-states-by-frank-g-carpenter/",
@@ -10985,7 +11232,11 @@
           "cover_url": "https://archive.org/download/british_sea_birds_1802_librivox/britishseabirds_1802.jpg",
           "id": "clarinetcarrot",
           "language": "en",
+          "librivox_genres": [
+            "Animals"
+          ],
           "librivox_id": 12442,
+          "librivox_title": "British Sea Birds",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/british-sea-birds-by-charles-dixon/",
@@ -11037,174 +11288,203 @@
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_00_hardy_64kb.mp3",
               "length_ms": 209000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_01_hardy_64kb.mp3",
               "length_ms": 479000,
+              "section_number": 1,
               "start_ms": 209000,
               "title": "Up To Sample"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_02_hardy_64kb.mp3",
               "length_ms": 773000,
+              "section_number": 2,
               "start_ms": 688000,
               "title": "Courage"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_03_hardy_64kb.mp3",
               "length_ms": 1008000,
+              "section_number": 3,
               "start_ms": 1461000,
               "title": "Courage And Discipline"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_04_hardy_64kb.mp3",
               "length_ms": 713000,
+              "section_number": 4,
               "start_ms": 2469000,
               "title": "Boys Of The Bulldog Breed"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_05_hardy_64kb.mp3",
               "length_ms": 698000,
+              "section_number": 5,
               "start_ms": 3182000,
               "title": "Facing Fearful Odds"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_06_hardy_64kb.mp3",
               "length_ms": 640000,
+              "section_number": 6,
               "start_ms": 3880000,
               "title": "Fights To A Finish"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_07_hardy_64kb.mp3",
               "length_ms": 432000,
+              "section_number": 7,
               "start_ms": 4520000,
               "title": "Cavalry Charges"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_08_hardy_64kb.mp3",
               "length_ms": 972000,
+              "section_number": 8,
               "start_ms": 4952000,
               "title": "Grit and Guns"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_09_hardy_64kb.mp3",
               "length_ms": 869000,
+              "section_number": 9,
               "start_ms": 5924000,
               "title": "Gallantry Of Individuals"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_10_hardy_64kb.mp3",
               "length_ms": 1064000,
+              "section_number": 10,
               "start_ms": 6793000,
               "title": "Self Put Aside"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_11_hardy_64kb.mp3",
               "length_ms": 819000,
+              "section_number": 11,
               "start_ms": 7857000,
               "title": "Brothers-In-Arms"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_12_hardy_64kb.mp3",
               "length_ms": 783000,
+              "section_number": 12,
               "start_ms": 8676000,
               "title": "Under Fire"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_13_hardy_64kb.mp3",
               "length_ms": 589000,
+              "section_number": 13,
               "start_ms": 9459000,
               "title": "'I've Got It'"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_14_hardy_64kb.mp3",
               "length_ms": 478000,
+              "section_number": 14,
               "start_ms": 10048000,
               "title": "From Fear To Heroism"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_15_hardy_64kb.mp3",
               "length_ms": 710000,
+              "section_number": 15,
               "start_ms": 10526000,
               "title": "Uncommon Combats"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_16_hardy_64kb.mp3",
               "length_ms": 899000,
+              "section_number": 16,
               "start_ms": 11236000,
               "title": "In The Trenches"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_17_hardy_64kb.mp3",
               "length_ms": 421000,
+              "section_number": 17,
               "start_ms": 12135000,
               "title": "Not Downhearted"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_18_hardy_64kb.mp3",
               "length_ms": 821000,
+              "section_number": 18,
               "start_ms": 12556000,
               "title": "Play And Work"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_19_hardy_64kb.mp3",
               "length_ms": 521000,
+              "section_number": 19,
               "start_ms": 13377000,
               "title": "War As A Game"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_20_hardy_64kb.mp3",
               "length_ms": 482000,
+              "section_number": 20,
               "start_ms": 13898000,
               "title": "The Courage That Bears"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_21_hardy_64kb.mp3",
               "length_ms": 478000,
+              "section_number": 21,
               "start_ms": 14380000,
               "title": "In A Military Hospital"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_22_hardy_64kb.mp3",
               "length_ms": 497000,
+              "section_number": 22,
               "start_ms": 14858000,
               "title": "Ready To Return"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_23_hardy_64kb.mp3",
               "length_ms": 559000,
+              "section_number": 23,
               "start_ms": 15355000,
               "title": "Fashions At The Front"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_24_hardy_64kb.mp3",
               "length_ms": 849000,
+              "section_number": 24,
               "start_ms": 15914000,
               "title": "Graphic Descriptions"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_25_hardy_64kb.mp3",
               "length_ms": 858000,
+              "section_number": 25,
               "start_ms": 16763000,
               "title": "Unconscious Humorists"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_26_hardy_64kb.mp3",
               "length_ms": 293000,
+              "section_number": 26,
               "start_ms": 17621000,
               "title": "Nicknames"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_27_hardy_64kb.mp3",
               "length_ms": 1267000,
+              "section_number": 27,
               "start_ms": 17914000,
               "title": "Tender-Hearted Because Brave"
             },
             {
               "audio_url": "https://www.archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_28_hardy_64kb.mp3",
               "length_ms": 748000,
+              "section_number": 28,
               "start_ms": 19181000,
               "title": "What The French And Belgians Think"
             }
@@ -11213,7 +11493,12 @@
           "cover_url": "https://archive.org/download/british_soldier_his_courage_and_humour_2308_librivox/britishsoldier_2308.jpg",
           "id": "david-wales",
           "language": "en",
+          "librivox_genres": [
+            "War & Military",
+            "History"
+          ],
           "librivox_id": 19460,
+          "librivox_title": "British Soldier: His Courage And Humour",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/british-soldier-by-edward-john-hardy/",
@@ -14177,7 +14462,15 @@
           "cover_url": "https://archive.org/download/brittains_ida_1412_librivox/venus_anchises_1412.jpg",
           "id": "thomas-a-copeland",
           "language": "en",
+          "librivox_genres": [
+            "Culture & Heritage Fiction",
+            "Erotica",
+            "Humorous Fiction",
+            "Literary Fiction",
+            "Narratives"
+          ],
           "librivox_id": 9428,
+          "librivox_title": "Brittains Ida or Venus and Anchises",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/brittains-ida-or-venus-and-anchises-by-edmund-spenser/",

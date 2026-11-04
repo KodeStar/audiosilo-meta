@@ -202,48 +202,72 @@
             {
               "audio_url": "https://www.archive.org/download/a_fish_answers_0811_librivox/afishanswers_hunt_anc_64kb.mp3",
               "length_ms": 83000,
+              "readers": [
+                "ancilla"
+              ],
               "start_ms": 0,
               "title": "Version 1"
             },
             {
               "audio_url": "https://www.archive.org/download/a_fish_answers_0811_librivox/afishanswers_hunt_ciw_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "christopher-woods"
+              ],
               "start_ms": 83000,
               "title": "Version 2"
             },
             {
               "audio_url": "https://www.archive.org/download/a_fish_answers_0811_librivox/afishanswers_hunt_dl_64kb.mp3",
               "length_ms": 89000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 148000,
               "title": "Version 3"
             },
             {
               "audio_url": "https://www.archive.org/download/a_fish_answers_0811_librivox/afishanswers_hunt_jf_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "joseph-finkberg"
+              ],
               "start_ms": 237000,
               "title": "Version 4"
             },
             {
               "audio_url": "https://www.archive.org/download/a_fish_answers_0811_librivox/afishanswers_hunt_lah_64kb.mp3",
               "length_ms": 72000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 317000,
               "title": "Version 5"
             },
             {
               "audio_url": "https://www.archive.org/download/a_fish_answers_0811_librivox/afishanswers_hunt_rb_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "rissa-byrne"
+              ],
               "start_ms": 389000,
               "title": "Version 6"
             },
             {
               "audio_url": "https://www.archive.org/download/a_fish_answers_0811_librivox/afishanswers_hunt_ref_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "rhonda-federman"
+              ],
               "start_ms": 456000,
               "title": "Version 7"
             },
             {
               "audio_url": "https://www.archive.org/download/a_fish_answers_0811_librivox/afishanswers_hunt_vu_64kb.mp3",
               "length_ms": 60000,
+              "readers": [
+                "varra-unreal"
+              ],
               "start_ms": 547000,
               "title": "Version 8"
             }
@@ -251,7 +275,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt14/Fish_Answers_1202.jpg",
           "id": "ancilla",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 2631,
+          "librivox_title": "Fish Answers",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-fish-answers-by-james-leigh-hunt/",
@@ -2213,7 +2241,11 @@
           "cover_url": "https://archive.org/download/fishpreferred_2509_librivox/fishpreferred_2509.jpg",
           "id": "zach-hoyt",
           "language": "en",
+          "librivox_genres": [
+            "Humorous Fiction"
+          ],
           "librivox_id": 21399,
+          "librivox_title": "Fish Preferred",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/fish-preferred-by-p-g-wodehouse/",
@@ -2898,72 +2930,108 @@
             {
               "audio_url": "https://www.archive.org/download/fish_story_2205.poem_librivox/fishstory_bates_aal_64kb.mp3",
               "length_ms": 103000,
+              "readers": [
+                "allegra-littlecole"
+              ],
               "start_ms": 0,
               "title": "A Fish Story - read by AAL"
             },
             {
               "audio_url": "https://www.archive.org/download/fish_story_2205.poem_librivox/fishstory_bates_bk_64kb.mp3",
               "length_ms": 147000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 103000,
               "title": "A Fish Story - read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/fish_story_2205.poem_librivox/fishstory_bates_cz_64kb.mp3",
               "length_ms": 118000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 250000,
               "title": "A Fish Story - read by CZ"
             },
             {
               "audio_url": "https://www.archive.org/download/fish_story_2205.poem_librivox/fishstory_bates_dc_64kb.mp3",
               "length_ms": 121000,
+              "readers": [
+                "dc"
+              ],
               "start_ms": 368000,
               "title": "A Fish Story - read by DC"
             },
             {
               "audio_url": "https://www.archive.org/download/fish_story_2205.poem_librivox/fishstory_bates_gln_64kb.mp3",
               "length_ms": 145000,
+              "readers": [
+                "garth-burton"
+              ],
               "start_ms": 489000,
               "title": "A Fish Story - read by GLN"
             },
             {
               "audio_url": "https://www.archive.org/download/fish_story_2205.poem_librivox/fishstory_bates_kla_64kb.mp3",
               "length_ms": 167000,
+              "readers": [
+                "kerry-adams"
+              ],
               "start_ms": 634000,
               "title": "A Fish Story - read by KLA"
             },
             {
               "audio_url": "https://www.archive.org/download/fish_story_2205.poem_librivox/fishstory_bates_lb_64kb.mp3",
               "length_ms": 138000,
+              "readers": [
+                "leanne747"
+              ],
               "start_ms": 801000,
               "title": "A Fish Story - read by LB"
             },
             {
               "audio_url": "https://www.archive.org/download/fish_story_2205.poem_librivox/fishstory_bates_lbv_64kb.mp3",
               "length_ms": 143000,
+              "readers": [
+                "laurie-banza"
+              ],
               "start_ms": 939000,
               "title": "A Fish Story - read by LBV"
             },
             {
               "audio_url": "https://www.archive.org/download/fish_story_2205.poem_librivox/fishstory_bates_ls_64kb.mp3",
               "length_ms": 124000,
+              "readers": [
+                "leesalter"
+              ],
               "start_ms": 1082000,
               "title": "A Fish Story - read by LS"
             },
             {
               "audio_url": "https://www.archive.org/download/fish_story_2205.poem_librivox/fishstory_bates_odj_64kb.mp3",
               "length_ms": 127000,
+              "readers": [
+                "j-damain"
+              ],
               "start_ms": 1206000,
               "title": "A Fish Story - read by ODJ"
             },
             {
               "audio_url": "https://www.archive.org/download/fish_story_2205.poem_librivox/fishstory_bates_pc_64kb.mp3",
               "length_ms": 125000,
+              "readers": [
+                "phil-chenevert"
+              ],
               "start_ms": 1333000,
               "title": "A Fish Story - read by PS"
             },
             {
               "audio_url": "https://www.archive.org/download/fish_story_2205.poem_librivox/fishstory_bates_raj_64kb.mp3",
               "length_ms": 142000,
+              "readers": [
+                "rajvo"
+              ],
               "start_ms": 1458000,
               "title": "A Fish Story - read by RAJ"
             }
@@ -2972,7 +3040,11 @@
           "cover_url": "https://archive.org/download/fish_story_2205.poem_librivox/fishstory_2205.jpg",
           "id": "allegra-littlecole",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 17929,
+          "librivox_title": "Fish Story",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-fish-story-by-clara-doty-bates/",
@@ -3713,198 +3785,330 @@
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_00_banks_64kb.mp3",
               "length_ms": 111000,
+              "readers": [
+                "devorah-allen"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Author's Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_01_banks_64kb.mp3",
               "length_ms": 1081000,
+              "readers": [
+                "elijah-fisher"
+              ],
+              "section_number": 1,
               "start_ms": 111000,
               "title": "Christ's Prayer for the Church"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_02_banks_64kb.mp3",
               "length_ms": 1223000,
+              "readers": [
+                "cedar-elkheart"
+              ],
+              "section_number": 2,
               "start_ms": 1192000,
               "title": "Peter's Blundering Sword"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_03_banks_64kb.mp3",
               "length_ms": 995000,
+              "readers": [
+                "jovoice"
+              ],
+              "section_number": 3,
               "start_ms": 2415000,
               "title": "The Crisis in Peter's Life"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_04_banks_64kb.mp3",
               "length_ms": 1527000,
+              "readers": [
+                "bill-mosley"
+              ],
+              "section_number": 4,
               "start_ms": 3410000,
               "title": "The Fate of Judas Iscariot"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_05_banks_64kb.mp3",
               "length_ms": 1349000,
+              "readers": [
+                "bill-mosley"
+              ],
+              "section_number": 5,
               "start_ms": 4937000,
               "title": "Christ Before Pilate"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_06_banks_64kb.mp3",
               "length_ms": 1175000,
+              "readers": [
+                "jonathan-jones"
+              ],
+              "section_number": 6,
               "start_ms": 6286000,
               "title": "Voices from the Cross"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_07_banks_64kb.mp3",
               "length_ms": 1011000,
+              "readers": [
+                "sloanvoice"
+              ],
+              "section_number": 7,
               "start_ms": 7461000,
               "title": "The Three Marys Beside the Cross"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_08_banks_64kb.mp3",
               "length_ms": 923000,
+              "readers": [
+                "sloanvoice"
+              ],
+              "section_number": 8,
               "start_ms": 8472000,
               "title": "Joseph and Nicodemus at the Burial of Jesus"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_09_banks_64kb.mp3",
               "length_ms": 1199000,
+              "readers": [
+                "lilyanne"
+              ],
+              "section_number": 9,
               "start_ms": 9395000,
               "title": "The Power of the Risen Christ"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_10_banks_64kb.mp3",
               "length_ms": 1239000,
+              "readers": [
+                "mleigh"
+              ],
+              "section_number": 10,
               "start_ms": 10594000,
               "title": "Thomas, the Doubter, Reclaimed"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_11_banks_64kb.mp3",
               "length_ms": 1051000,
+              "readers": [
+                "jeremiahtrunks"
+              ],
+              "section_number": 11,
               "start_ms": 11833000,
               "title": "Simon Peter, the Fisherman"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_12_banks_64kb.mp3",
               "length_ms": 890000,
+              "readers": [
+                "mrpikes"
+              ],
+              "section_number": 12,
               "start_ms": 12884000,
               "title": "Swimming for Christ"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_13_banks_64kb.mp3",
               "length_ms": 1187000,
+              "readers": [
+                "mrpikes"
+              ],
+              "section_number": 13,
               "start_ms": 13774000,
               "title": "A Breakfast with Jesus"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_14_banks_64kb.mp3",
               "length_ms": 981000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 14,
               "start_ms": 14961000,
               "title": "The Gift of Power"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_15_banks_64kb.mp3",
               "length_ms": 761000,
+              "readers": [
+                "elijah-fisher"
+              ],
+              "section_number": 15,
               "start_ms": 15942000,
               "title": "Witnesses for Christ"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_16_banks_64kb.mp3",
               "length_ms": 1296000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 16,
               "start_ms": 16703000,
               "title": "The Ascension of Jesus"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_17_banks_64kb.mp3",
               "length_ms": 975000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 17,
               "start_ms": 17999000,
               "title": "The Symbols of the Spirit"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_18_banks_64kb.mp3",
               "length_ms": 1003000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 18,
               "start_ms": 18974000,
               "title": "Pricked Hearts and their Cure"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_19_banks_64kb.mp3",
               "length_ms": 750000,
+              "readers": [
+                "elijah-fisher"
+              ],
+              "section_number": 19,
               "start_ms": 19977000,
               "title": "Peter, John, and a Cripple"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_20_banks_64kb.mp3",
               "length_ms": 963000,
+              "readers": [
+                "elijah-fisher"
+              ],
+              "section_number": 20,
               "start_ms": 20727000,
               "title": "Turning Over a New Leaf"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_21_banks_64kb.mp3",
               "length_ms": 909000,
+              "readers": [
+                "elijah-fisher"
+              ],
+              "section_number": 21,
               "start_ms": 21690000,
               "title": "The One Saving Name"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_22_banks_64kb.mp3",
               "length_ms": 1063000,
+              "readers": [
+                "margaret-sales"
+              ],
+              "section_number": 22,
               "start_ms": 22599000,
               "title": "Christianity, A Religion of Joy"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_23_banks_64kb.mp3",
               "length_ms": 852000,
+              "readers": [
+                "margaret-sales"
+              ],
+              "section_number": 23,
               "start_ms": 23662000,
               "title": "Philip and the First Gospel Wagon"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_24_banks_64kb.mp3",
               "length_ms": 820000,
+              "readers": [
+                "cynthia-rodericks"
+              ],
+              "section_number": 24,
               "start_ms": 24514000,
               "title": "Æneas, a Man who was Healed"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_25_banks_64kb.mp3",
               "length_ms": 976000,
+              "readers": [
+                "cynthia-rodericks"
+              ],
+              "section_number": 25,
               "start_ms": 25334000,
               "title": "Cornelius, the Truth Seeker"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_26_banks_64kb.mp3",
               "length_ms": 1557000,
+              "readers": [
+                "mleigh"
+              ],
+              "section_number": 26,
               "start_ms": 26310000,
               "title": "The Gold Mine of Humanity"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_27_banks_64kb.mp3",
               "length_ms": 823000,
+              "readers": [
+                "jacqueline-tyler"
+              ],
+              "section_number": 27,
               "start_ms": 27867000,
               "title": "The Conversion of a Family"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_28_banks_64kb.mp3",
               "length_ms": 1350000,
+              "readers": [
+                "mleigh"
+              ],
+              "section_number": 28,
               "start_ms": 28690000,
               "title": "Herod, the King who was Worm-Eaten"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_29_banks_64kb.mp3",
               "length_ms": 1223000,
+              "readers": [
+                "mleigh"
+              ],
+              "section_number": 29,
               "start_ms": 30040000,
               "title": "A Light in the Prison-Cell"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_30_banks_64kb.mp3",
               "length_ms": 927000,
+              "readers": [
+                "owlivia"
+              ],
+              "section_number": 30,
               "start_ms": 31263000,
               "title": "The Living Hope"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_31_banks_64kb.mp3",
               "length_ms": 705000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 31,
               "start_ms": 32190000,
               "title": "The Dried-Up Springs of Life"
             },
             {
               "audio_url": "https://www.archive.org/download/fishermanandfriends_2309_librivox/fishermanandfriends_32_banks_64kb.mp3",
               "length_ms": 1020000,
+              "readers": [
+                "devorah-allen"
+              ],
+              "section_number": 32,
               "start_ms": 32895000,
               "title": "Peter's Confidence in Old Age"
             }
@@ -3913,7 +4117,11 @@
           "cover_url": "https://archive.org/download/fishermanandfriends_2309_librivox/fisherman_2309.jpg",
           "id": "devorah-allen",
           "language": "en",
+          "librivox_genres": [
+            "Christianity - Other"
+          ],
           "librivox_id": 13703,
+          "librivox_title": "Fisherman and his Friends: A Series of Revival Sermons",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-fisherman-and-his-friends-by-louis-albert-banks/",
@@ -4549,66 +4757,99 @@
             {
               "audio_url": "https://www.archive.org/download/fishers_boy_librivox/fishersboy_thoreau_blb_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "betsie-bush"
+              ],
               "start_ms": 0,
               "title": "The Fisher’s Boy read by Betsie Bush"
             },
             {
               "audio_url": "https://www.archive.org/download/fishers_boy_librivox/fishersboy_thoreau_cf_64kb.mp3",
               "length_ms": 79000,
+              "readers": [
+                "catherine-fitz"
+              ],
               "start_ms": 78000,
               "title": "The Fisher’s Boy read by Catherine Fitz"
             },
             {
               "audio_url": "https://www.archive.org/download/fishers_boy_librivox/fishersboy_thoreau_je_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "jenilee"
+              ],
               "start_ms": 157000,
               "title": "The Fisher’s Boy read by Jenilee"
             },
             {
               "audio_url": "https://www.archive.org/download/fishers_boy_librivox/fishersboy_thoreau_jlf_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "jeanette-ferguson"
+              ],
               "start_ms": 232000,
               "title": "The Fisher’s Boy read by Jeanette Ferguson"
             },
             {
               "audio_url": "https://www.archive.org/download/fishers_boy_librivox/fishersboy_thoreau_krs_64kb.mp3",
               "length_ms": 59000,
+              "readers": [
+                "karen-savage"
+              ],
               "start_ms": 307000,
               "title": "The Fisher’s Boy read by Karen Savage"
             },
             {
               "audio_url": "https://www.archive.org/download/fishers_boy_librivox/fishersboy_thoreau_lah_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 366000,
               "title": "The Fisher’s Boy read by Lee Ann Howlett"
             },
             {
               "audio_url": "https://www.archive.org/download/fishers_boy_librivox/fishersboy_thoreau_lb_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "lucy-burgoyne-1950-2014"
+              ],
               "start_ms": 433000,
               "title": "The Fisher’s Boy read by Lucy Burgoyne"
             },
             {
               "audio_url": "https://www.archive.org/download/fishers_boy_librivox/fishersboy_thoreau_lkm_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "leon-mire"
+              ],
               "start_ms": 515000,
               "title": "The Fisher’s Boy read by Leon Mire"
             },
             {
               "audio_url": "https://www.archive.org/download/fishers_boy_librivox/fishersboy_thoreau_rr_64kb.mp3",
               "length_ms": 79000,
+              "readers": [
+                "r-robertson"
+              ],
               "start_ms": 585000,
               "title": "The Fisher’s Boy read by R. Robertson"
             },
             {
               "audio_url": "https://www.archive.org/download/fishers_boy_librivox/fishersboy_thoreau_tep_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "travis-e-phillips"
+              ],
               "start_ms": 664000,
               "title": "The Fisher’s Boy read by Travis E. Phillips"
             },
             {
               "audio_url": "https://www.archive.org/download/fishers_boy_librivox/fishersboy_thoreau_tjm_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "tim-makarios"
+              ],
               "start_ms": 739000,
               "title": "The Fisher’s Boy read by Tim McKenzie"
             }
@@ -4617,7 +4858,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt10/Fishers_Boy_1108.jpg",
           "id": "betsie-bush",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 1118,
+          "librivox_title": "Fisher's Boy",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-fishers-boy-by-henry-david-thoreau/",
@@ -6230,7 +6476,11 @@
           "cover_url": "https://archive.org/download/fishing_worm_librivox/Fishing_Worm_1104.jpg",
           "id": "betsie-bush",
           "language": "en",
+          "librivox_genres": [
+            "Contemporary"
+          ],
           "librivox_id": 379,
+          "librivox_title": "Fishing with a Worm",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/fishing-with-a-worm-by-bliss-perry/",
@@ -6448,7 +6698,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt4/fishke_1004.jpg",
           "id": "omri-lernau",
           "language": "he",
+          "librivox_genres": [
+            "Published 1800 -1900"
+          ],
           "librivox_id": 1858,
+          "librivox_title": "ספר הקבצנים Fishke the Lame (The Book of Beggars)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/fishke-the-lame-by-mendele-mocher-sforim/",
@@ -14732,7 +14986,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt28/Five_Beloved_Stories_by_O_Henry_1301.jpg",
           "id": "phil-chenevert",
           "language": "en",
+          "librivox_genres": [
+            "Short Stories"
+          ],
           "librivox_id": 7268,
+          "librivox_title": "Five Beloved Stories by O. Henry",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/five-beloved-stories-by-o-henry-by-o-henry/",

@@ -2171,36 +2171,54 @@
             {
               "audio_url": "https://www.archive.org/download/oneday_0712_librivox/oneday_dickinson_cjrg_64kb.mp3",
               "length_ms": 52000,
+              "readers": [
+                "clarica"
+              ],
               "start_ms": 0,
               "title": "One day is there of the series - Read by CJRG"
             },
             {
               "audio_url": "https://www.archive.org/download/oneday_0712_librivox/oneday_dickinson_jcg_64kb.mp3",
               "length_ms": 61000,
+              "readers": [
+                "jc-guan"
+              ],
               "start_ms": 52000,
               "title": "One day is there of the series - Read by JCG"
             },
             {
               "audio_url": "https://www.archive.org/download/oneday_0712_librivox/oneday_dickinson_jfg_64kb.mp3",
               "length_ms": 59000,
+              "readers": [
+                "james-gladwin"
+              ],
               "start_ms": 113000,
               "title": "One day is there of the series - Read by JFG"
             },
             {
               "audio_url": "https://www.archive.org/download/oneday_0712_librivox/oneday_dickinson_lah_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 172000,
               "title": "One day is there of the series - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/oneday_0712_librivox/oneday_dickinson_mm_64kb.mp3",
               "length_ms": 58000,
+              "readers": [
+                "mary-mac"
+              ],
               "start_ms": 227000,
               "title": "One day is there of the series - Read by MM"
             },
             {
               "audio_url": "https://www.archive.org/download/oneday_0712_librivox/oneday_dickinson_mol_64kb.mp3",
               "length_ms": 54000,
+              "readers": [
+                "mike-love"
+              ],
               "start_ms": 285000,
               "title": "One day is there of the series - Read by MOL"
             }
@@ -2209,7 +2227,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt12/One_day_series_1110.jpg",
           "id": "clarica",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 1651,
+          "librivox_title": "One day is there of the series",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/one-day-is-there-of-the-series-by-emily-dickinson/",
@@ -2265,18 +2288,39 @@
             {
               "audio_url": "https://www.archive.org/download/onedaymore_1112_librivox/onedaymore_0_conrad_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "esther",
+                "david-lawrence",
+                "triciag",
+                "rat-king"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "0 - Dramatis Personae"
             },
             {
               "audio_url": "https://www.archive.org/download/onedaymore_1112_librivox/onedaymore_1_conrad_64kb.mp3",
               "length_ms": 1142000,
+              "readers": [
+                "esther",
+                "david-lawrence",
+                "triciag",
+                "rat-king"
+              ],
+              "section_number": 1,
               "start_ms": 55000,
               "title": "1 - Scenes 1-3"
             },
             {
               "audio_url": "https://www.archive.org/download/onedaymore_1112_librivox/onedaymore_2_conrad_64kb.mp3",
               "length_ms": 1653000,
+              "readers": [
+                "esther",
+                "david-lawrence",
+                "triciag",
+                "rat-king"
+              ],
+              "section_number": 2,
               "start_ms": 1197000,
               "title": "2 - Scene 4"
             }
@@ -2285,7 +2329,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt15/onedaymore_1202.jpg",
           "id": "esther",
           "language": "en",
+          "librivox_genres": [
+            "Family Life",
+            "Drama"
+          ],
           "librivox_id": 4582,
+          "librivox_title": "One Day More",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/one-day-more-by-joseph-conrad/",
@@ -2663,90 +2712,135 @@
             {
               "audio_url": "https://www.archive.org/download/oneday_2504.poem_librivox/oneday_brooke_alp_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 0,
               "title": "One Day - Read by ALP"
             },
             {
               "audio_url": "https://www.archive.org/download/oneday_2504.poem_librivox/oneday_brooke_bk_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 78000,
               "title": "One Day - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/oneday_2504.poem_librivox/oneday_brooke_bwc_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "beeswaxcandle"
+              ],
               "start_ms": 160000,
               "title": "One Day - Read by BWC"
             },
             {
               "audio_url": "https://www.archive.org/download/oneday_2504.poem_librivox/oneday_brooke_dl_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 229000,
               "title": "One Day - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/oneday_2504.poem_librivox/oneday_brooke_el0_64kb.mp3",
               "length_ms": 90000,
+              "readers": [
+                "newgatenovelist"
+              ],
               "start_ms": 310000,
               "title": "One Day - Read by EL0"
             },
             {
               "audio_url": "https://www.archive.org/download/oneday_2504.poem_librivox/oneday_brooke_er_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "earlyryeser"
+              ],
               "start_ms": 400000,
               "title": "One Day - Read by ER"
             },
             {
               "audio_url": "https://www.archive.org/download/oneday_2504.poem_librivox/oneday_brooke_fs_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "fshort"
+              ],
               "start_ms": 468000,
               "title": "One Day - Read by FS"
             },
             {
               "audio_url": "https://www.archive.org/download/oneday_2504.poem_librivox/oneday_brooke_lah_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 538000,
               "title": "One Day - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/oneday_2504.poem_librivox/oneday_brooke_lcw_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 616000,
               "title": "One Day - Read by LCW"
             },
             {
               "audio_url": "https://www.archive.org/download/oneday_2504.poem_librivox/oneday_brooke_pfs_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 685000,
               "title": "One Day - Read by PFS"
             },
             {
               "audio_url": "https://www.archive.org/download/oneday_2504.poem_librivox/oneday_brooke_rr_64kb.mp3",
               "length_ms": 84000,
+              "readers": [
+                "redrun"
+              ],
               "start_ms": 761000,
               "title": "One Day - Read by RR"
             },
             {
               "audio_url": "https://www.archive.org/download/oneday_2504.poem_librivox/oneday_brooke_slm_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "stacey-malcolm"
+              ],
               "start_ms": 845000,
               "title": "One Day - Read by SLM"
             },
             {
               "audio_url": "https://www.archive.org/download/oneday_2504.poem_librivox/oneday_brooke_sp_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "shrimpphish"
+              ],
               "start_ms": 914000,
               "title": "One Day - Read by SP"
             },
             {
               "audio_url": "https://www.archive.org/download/oneday_2504.poem_librivox/oneday_brooke_tm_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "tom-merritt"
+              ],
               "start_ms": 982000,
               "title": "One Day - Read by TM"
             },
             {
               "audio_url": "https://www.archive.org/download/oneday_2504.poem_librivox/oneday_brooke_vod_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "dave-campbell"
+              ],
               "start_ms": 1062000,
               "title": "One Day - Read by VOD"
             }
@@ -2755,7 +2849,11 @@
           "cover_url": "https://archive.org/download/oneday_2504.poem_librivox/oneday_2504.jpg",
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 21544,
+          "librivox_title": "One Day",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/one-day-by-rupert-brooke/",
@@ -2901,7 +2999,12 @@
           "cover_url": "https://archive.org/download/onedayscourtship_heraldsoffame_2106_librivox/one_day_courtship_2106.jpg",
           "id": "nat-spratt",
           "language": "en",
+          "librivox_genres": [
+            "Humorous Fiction",
+            "Romance"
+          ],
           "librivox_id": 16712,
+          "librivox_title": "One Day's Courtship and The Heralds of Fame",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/one-days-courtship-and-the-heralds-of-fame-by-robert-barr/",
@@ -8324,144 +8427,216 @@
             {
               "audio_url": "https://www.archive.org/download/one-eyed_fairies_2108_librivox/oneeyedfairies_01_hanley_64kb.mp3",
               "length_ms": 357000,
+              "readers": [
+                "smilingjade"
+              ],
               "start_ms": 0,
               "title": "The King of the One-Eyed Fairies"
             },
             {
               "audio_url": "https://www.archive.org/download/one-eyed_fairies_2108_librivox/oneeyedfairies_02_hanley_64kb.mp3",
               "length_ms": 377000,
+              "readers": [
+                "smilingjade"
+              ],
               "start_ms": 357000,
               "title": "Sir Bodkin Steps In and Out"
             },
             {
               "audio_url": "https://www.archive.org/download/one-eyed_fairies_2108_librivox/oneeyedfairies_03_hanley_64kb.mp3",
               "length_ms": 466000,
+              "readers": [
+                "smilingjade"
+              ],
               "start_ms": 734000,
               "title": "The Stitchers, Baster and Runner"
             },
             {
               "audio_url": "https://www.archive.org/download/one-eyed_fairies_2108_librivox/oneeyedfairies_04_hanley_64kb.mp3",
               "length_ms": 407000,
+              "readers": [
+                "smilingjade"
+              ],
               "start_ms": 1200000,
               "title": "Dainty Hemmer"
             },
             {
               "audio_url": "https://www.archive.org/download/one-eyed_fairies_2108_librivox/oneeyedfairies_05_hanley_64kb.mp3",
               "length_ms": 310000,
+              "readers": [
+                "victoria-neely"
+              ],
               "start_ms": 1607000,
               "title": "The Crewel One"
             },
             {
               "audio_url": "https://www.archive.org/download/one-eyed_fairies_2108_librivox/oneeyedfairies_06_hanley_64kb.mp3",
               "length_ms": 232000,
+              "readers": [
+                "kayty-harrelson"
+              ],
               "start_ms": 1917000,
               "title": "Old Doctor Darner"
             },
             {
               "audio_url": "https://www.archive.org/download/one-eyed_fairies_2108_librivox/oneeyedfairies_07_hanley_64kb.mp3",
               "length_ms": 196000,
+              "readers": [
+                "kayty-harrelson"
+              ],
               "start_ms": 2149000,
               "title": "The Doll’s Blanket"
             },
             {
               "audio_url": "https://www.archive.org/download/one-eyed_fairies_2108_librivox/oneeyedfairies_08_hanley_64kb.mp3",
               "length_ms": 496000,
+              "readers": [
+                "smilingjade"
+              ],
               "start_ms": 2345000,
               "title": "Brother Jim’s Marble-Bag"
             },
             {
               "audio_url": "https://www.archive.org/download/one-eyed_fairies_2108_librivox/oneeyedfairies_09_hanley_64kb.mp3",
               "length_ms": 504000,
+              "readers": [
+                "smilingjade"
+              ],
               "start_ms": 2841000,
               "title": "Margaret’s New Middy Blouse"
             },
             {
               "audio_url": "https://www.archive.org/download/one-eyed_fairies_2108_librivox/oneeyedfairies_10_hanley_64kb.mp3",
               "length_ms": 248000,
+              "readers": [
+                "romasingh"
+              ],
               "start_ms": 3345000,
               "title": "Auntie’s Birthday Present"
             },
             {
               "audio_url": "https://www.archive.org/download/one-eyed_fairies_2108_librivox/oneeyedfairies_11_hanley_64kb.mp3",
               "length_ms": 310000,
+              "readers": [
+                "taliarose8"
+              ],
               "start_ms": 3593000,
               "title": "A Three-Cornered Tear"
             },
             {
               "audio_url": "https://www.archive.org/download/one-eyed_fairies_2108_librivox/oneeyedfairies_12_hanley_64kb.mp3",
               "length_ms": 418000,
+              "readers": [
+                "smilingjade"
+              ],
               "start_ms": 3903000,
               "title": "Lacy Frills"
             },
             {
               "audio_url": "https://www.archive.org/download/one-eyed_fairies_2108_librivox/oneeyedfairies_13_hanley_64kb.mp3",
               "length_ms": 397000,
+              "readers": [
+                "smilingjade"
+              ],
               "start_ms": 4321000,
               "title": "Jim’s Overalls"
             },
             {
               "audio_url": "https://www.archive.org/download/one-eyed_fairies_2108_librivox/oneeyedfairies_14_hanley_64kb.mp3",
               "length_ms": 469000,
+              "readers": [
+                "tr-love"
+              ],
               "start_ms": 4718000,
               "title": "Sewing On Buttons"
             },
             {
               "audio_url": "https://www.archive.org/download/one-eyed_fairies_2108_librivox/oneeyedfairies_15_hanley_64kb.mp3",
               "length_ms": 340000,
+              "readers": [
+                "tr-love"
+              ],
               "start_ms": 5187000,
               "title": "A Crewel Frolic"
             },
             {
               "audio_url": "https://www.archive.org/download/one-eyed_fairies_2108_librivox/oneeyedfairies_16_hanley_64kb.mp3",
               "length_ms": 421000,
+              "readers": [
+                "tr-love"
+              ],
               "start_ms": 5527000,
               "title": "Margaret Makes Buttonholes"
             },
             {
               "audio_url": "https://www.archive.org/download/one-eyed_fairies_2108_librivox/oneeyedfairies_17_hanley_64kb.mp3",
               "length_ms": 443000,
+              "readers": [
+                "tr-love"
+              ],
               "start_ms": 5948000,
               "title": "Tucking Grandma’s Apron"
             },
             {
               "audio_url": "https://www.archive.org/download/one-eyed_fairies_2108_librivox/oneeyedfairies_18_hanley_64kb.mp3",
               "length_ms": 407000,
+              "readers": [
+                "jude-somers"
+              ],
               "start_ms": 6391000,
               "title": "Finishing the Gift"
             },
             {
               "audio_url": "https://www.archive.org/download/one-eyed_fairies_2108_librivox/oneeyedfairies_19_hanley_64kb.mp3",
               "length_ms": 487000,
+              "readers": [
+                "jude-somers"
+              ],
               "start_ms": 6798000,
               "title": "Rickrack Trimming"
             },
             {
               "audio_url": "https://www.archive.org/download/one-eyed_fairies_2108_librivox/oneeyedfairies_20_hanley_64kb.mp3",
               "length_ms": 338000,
+              "readers": [
+                "jenn-broda"
+              ],
               "start_ms": 7285000,
               "title": "The Doll’s Christmas Present"
             },
             {
               "audio_url": "https://www.archive.org/download/one-eyed_fairies_2108_librivox/oneeyedfairies_21_hanley_64kb.mp3",
               "length_ms": 364000,
+              "readers": [
+                "jenn-broda"
+              ],
               "start_ms": 7623000,
               "title": "Some More Christmas Presents"
             },
             {
               "audio_url": "https://www.archive.org/download/one-eyed_fairies_2108_librivox/oneeyedfairies_22_hanley_64kb.mp3",
               "length_ms": 366000,
+              "readers": [
+                "james-r-hedrick"
+              ],
               "start_ms": 7987000,
               "title": "Finishing the Handkerchiefs"
             },
             {
               "audio_url": "https://www.archive.org/download/one-eyed_fairies_2108_librivox/oneeyedfairies_23_hanley_64kb.mp3",
               "length_ms": 375000,
+              "readers": [
+                "jenn-broda"
+              ],
               "start_ms": 8353000,
               "title": "Lazy-Daisies and French Knots"
             },
             {
               "audio_url": "https://www.archive.org/download/one-eyed_fairies_2108_librivox/oneeyedfairies_24_hanley_64kb.mp3",
               "length_ms": 315000,
+              "readers": [
+                "james-r-hedrick"
+              ],
               "start_ms": 8728000,
               "title": "A Surprise"
             }
@@ -8470,7 +8645,11 @@
           "cover_url": "https://archive.org/download/one-eyed_fairies_2108_librivox/oneeyedfairies_2108.jpg",
           "id": "smilingjade",
           "language": "en",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 16437,
+          "librivox_title": "One-Eyed Fairies",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-one-eyed-fairies-by-georgia-eldridge-hanley/",
@@ -8831,7 +9010,11 @@
           "cover_url": "https://archive.org/download/the_one-eyed_griffin_1411_librivox/one_eyed_griffin_1411.jpg",
           "id": "sorbet87",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction"
+          ],
           "librivox_id": 8494,
+          "librivox_title": "One-Eyed Griffin and Other Tales",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-one-eyed-griffin-and-other-tales-by-herbert-escott-inman/",
@@ -11657,27 +11840,73 @@
             {
               "audio_url": "https://www.archive.org/download/onefoolmakesmany_2104_librivox/onefoolmakesmany_1_desolis_64kb.mp3",
               "length_ms": 3058000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "greg-giordano",
+                "larry-wilson",
+                "sonia",
+                "jenn-broda",
+                "adrian-stephens",
+                "andrew-gaunce",
+                "wendykatzhiller",
+                "annie-mars"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/onefoolmakesmany_2104_librivox/onefoolmakesmany_2_desolis_64kb.mp3",
               "length_ms": 2575000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "greg-giordano",
+                "larry-wilson",
+                "sonia",
+                "jenn-broda",
+                "adrian-stephens",
+                "andrew-gaunce",
+                "wendykatzhiller",
+                "annie-mars"
+              ],
               "start_ms": 3058000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/onefoolmakesmany_2104_librivox/onefoolmakesmany_3_desolis_64kb.mp3",
               "length_ms": 3302000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "greg-giordano",
+                "larry-wilson",
+                "sonia",
+                "jenn-broda",
+                "adrian-stephens",
+                "andrew-gaunce",
+                "wendykatzhiller",
+                "annie-mars"
+              ],
               "start_ms": 5633000,
               "title": "Act 3"
             }
           ],
           "copyright_year": 1807,
           "cover_url": "https://archive.org/download/onefoolmakesmany_2104_librivox/one_fool_makes_many_2104.jpg",
+          "credits": [
+            {
+              "person": "henry-richard-vassall-holland",
+              "role": "translator"
+            }
+          ],
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Comedy"
+          ],
           "librivox_id": 16337,
+          "librivox_title": "One Fool Makes Many",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/one-fool-makes-many-by-antonio-de-solis/",

@@ -207,96 +207,112 @@
             {
               "audio_url": "https://www.archive.org/download/drydockthousandwrecks_1608_librivox/drydockthousandwrecks_00_roberts_64kb.mp3",
               "length_ms": 212000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/drydockthousandwrecks_1608_librivox/drydockthousandwrecks_01_roberts_64kb.mp3",
               "length_ms": 1026000,
+              "section_number": 1,
               "start_ms": 212000,
               "title": "Ch. 1 - The Greatest of These"
             },
             {
               "audio_url": "https://www.archive.org/download/drydockthousandwrecks_1608_librivox/drydockthousandwrecks_02_roberts_64kb.mp3",
               "length_ms": 658000,
+              "section_number": 2,
               "start_ms": 1238000,
               "title": "Ch 2. - God's Good Man"
             },
             {
               "audio_url": "https://www.archive.org/download/drydockthousandwrecks_1608_librivox/drydockthousandwrecks_03_roberts_64kb.mp3",
               "length_ms": 636000,
+              "section_number": 3,
               "start_ms": 1896000,
               "title": "Ch. 3 - De Profundis"
             },
             {
               "audio_url": "https://www.archive.org/download/drydockthousandwrecks_1608_librivox/drydockthousandwrecks_04_roberts_64kb.mp3",
               "length_ms": 874000,
+              "section_number": 4,
               "start_ms": 2532000,
               "title": "Ch 4. - The Breaking of the Bread"
             },
             {
               "audio_url": "https://www.archive.org/download/drydockthousandwrecks_1608_librivox/drydockthousandwrecks_05_roberts_64kb.mp3",
               "length_ms": 1128000,
+              "section_number": 5,
               "start_ms": 3406000,
               "title": "Ch 5. - Into a Far Country"
             },
             {
               "audio_url": "https://www.archive.org/download/drydockthousandwrecks_1608_librivox/drydockthousandwrecks_06_roberts_64kb.mp3",
               "length_ms": 630000,
+              "section_number": 6,
               "start_ms": 4534000,
               "title": "Ch 6. - Saved to Serve"
             },
             {
               "audio_url": "https://www.archive.org/download/drydockthousandwrecks_1608_librivox/drydockthousandwrecks_07_roberts_64kb.mp3",
               "length_ms": 756000,
+              "section_number": 7,
               "start_ms": 5164000,
               "title": "Ch 7. - Sons of Ishmael"
             },
             {
               "audio_url": "https://www.archive.org/download/drydockthousandwrecks_1608_librivox/drydockthousandwrecks_08_roberts_64kb.mp3",
               "length_ms": 615000,
+              "section_number": 8,
               "start_ms": 5920000,
               "title": "Ch 8. - The Portion of Manasseh"
             },
             {
               "audio_url": "https://www.archive.org/download/drydockthousandwrecks_1608_librivox/drydockthousandwrecks_09_roberts_64kb.mp3",
               "length_ms": 1070000,
+              "section_number": 9,
               "start_ms": 6535000,
               "title": "Ch 9. - \"Out of Nazareth\""
             },
             {
               "audio_url": "https://www.archive.org/download/drydockthousandwrecks_1608_librivox/drydockthousandwrecks_10_roberts_64kb.mp3",
               "length_ms": 864000,
+              "section_number": 10,
               "start_ms": 7605000,
               "title": "Ch 10. - The Blossoming Desert"
             },
             {
               "audio_url": "https://www.archive.org/download/drydockthousandwrecks_1608_librivox/drydockthousandwrecks_11_roberts_64kb.mp3",
               "length_ms": 861000,
+              "section_number": 11,
               "start_ms": 8469000,
               "title": "Ch 11. - By a Great Deliverance"
             },
             {
               "audio_url": "https://www.archive.org/download/drydockthousandwrecks_1608_librivox/drydockthousandwrecks_12_roberts_64kb.mp3",
               "length_ms": 408000,
+              "section_number": 12,
               "start_ms": 9330000,
               "title": "Ch 12. - The Lifted Bondage"
             },
             {
               "audio_url": "https://www.archive.org/download/drydockthousandwrecks_1608_librivox/drydockthousandwrecks_13_roberts_64kb.mp3",
               "length_ms": 857000,
+              "section_number": 13,
               "start_ms": 9738000,
               "title": "Ch 13. - The Second Spring"
             },
             {
               "audio_url": "https://www.archive.org/download/drydockthousandwrecks_1608_librivox/drydockthousandwrecks_14_roberts_64kb.mp3",
               "length_ms": 554000,
+              "section_number": 14,
               "start_ms": 10595000,
               "title": "Ch 14. - Saved to the Uttermost"
             },
             {
               "audio_url": "https://www.archive.org/download/drydockthousandwrecks_1608_librivox/drydockthousandwrecks_15_roberts_64kb.mp3",
               "length_ms": 1160000,
+              "section_number": 15,
               "start_ms": 11149000,
               "title": "Ch 15. - Pilgrims of the Night"
             }
@@ -305,7 +321,11 @@
           "cover_url": "https://archive.org/download/drydockthousandwrecks_1608_librivox/drydockthousandwrecks_1608.jpg",
           "id": "curt-walton",
           "language": "en",
+          "librivox_genres": [
+            "Psychology"
+          ],
           "librivox_id": 11202,
+          "librivox_title": "Dry Dock of a Thousand Wrecks",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-dry-dock-of-a-thousand-wrecks-by-philip-ilott-roberts/",
@@ -2603,30 +2623,45 @@
             {
               "audio_url": "https://www.archive.org/download/dryden_vs_shadwell_1111_librivox/drydenvsshadwellapoeticduel_01_drydenandshadwell_64kb.mp3",
               "length_ms": 704000,
+              "readers": [
+                "bob-gonzalez"
+              ],
               "start_ms": 0,
               "title": "Epistle to the Whigs"
             },
             {
               "audio_url": "https://www.archive.org/download/dryden_vs_shadwell_1111_librivox/drydenvsshadwellapoeticduel_02_drydenandshadwell_64kb.mp3",
               "length_ms": 1193000,
+              "readers": [
+                "bob-gonzalez"
+              ],
               "start_ms": 704000,
               "title": "Medal, The"
             },
             {
               "audio_url": "https://www.archive.org/download/dryden_vs_shadwell_1111_librivox/drydenvsshadwellapoeticduel_03_drydenandshadwell_64kb.mp3",
               "length_ms": 1062000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 1897000,
               "title": "Epistle to the Tories"
             },
             {
               "audio_url": "https://www.archive.org/download/dryden_vs_shadwell_1111_librivox/drydenvsshadwellapoeticduel_04_drydenandshadwell_64kb.mp3",
               "length_ms": 1322000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 2959000,
               "title": "Medal of John Bayes, The"
             },
             {
               "audio_url": "https://www.archive.org/download/dryden_vs_shadwell_1111_librivox/drydenvsshadwellapoeticduel_05_drydenandshadwell_64kb.mp3",
               "length_ms": 1187000,
+              "readers": [
+                "martin-geeson"
+              ],
               "start_ms": 4281000,
               "title": "Mac Flecknoe"
             }
@@ -2635,7 +2670,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt26/Dryden_Shadwell_Poetic_Duel_1212.jpg",
           "id": "bob-gonzalez",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Satire"
+          ],
           "librivox_id": 5805,
+          "librivox_title": "Dryden vs Shadwell - a Poetic Duel",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/dryden-vs-shadwell-a-poetic-duel/",
@@ -3514,228 +3554,342 @@
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_01_wieland_64kb.mp3",
               "length_ms": 1465000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 0,
               "title": "Nadir und Nadine I"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_02_wieland_64kb.mp3",
               "length_ms": 1473000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 1465000,
               "title": "Nadir und Nadine II"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_03_wieland_64kb.mp3",
               "length_ms": 1743000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 2938000,
               "title": "Nadir und Nadine III"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_04_wieland_64kb.mp3",
               "length_ms": 1198000,
+              "readers": [
+                "gaby"
+              ],
               "start_ms": 4681000,
               "title": "Adis und Dahy I"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_05_wieland_64kb.mp3",
               "length_ms": 1506000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 5879000,
               "title": "Adis und Dahy II"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_06_wieland_64kb.mp3",
               "length_ms": 1282000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 7385000,
               "title": "Adis und Dahy III"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_07_wieland_64kb.mp3",
               "length_ms": 1577000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 8667000,
               "title": "Adis und Dahy IV"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_08_wieland_64kb.mp3",
               "length_ms": 1808000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 10244000,
               "title": "Neangir und seine Brüder, Argentine und ihre Schwestern I"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_09_wieland_64kb.mp3",
               "length_ms": 1577000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 12052000,
               "title": "Neangir und seine Brüder, Argentine und ihre Schwestern II"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_10_wieland_64kb.mp3",
               "length_ms": 1437000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 13629000,
               "title": "Neangir und seine Brüder, Argentine und ihre Schwestern III"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_11_wieland_64kb.mp3",
               "length_ms": 1612000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 15066000,
               "title": "Neangir und seine Brüder, Argentine und ihre Schwestern IV"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_12_wieland_64kb.mp3",
               "length_ms": 1483000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 16678000,
               "title": "Neangir und seine Brüder, Argentine und ihre Schwestern V"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_13_wieland_64kb.mp3",
               "length_ms": 1325000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 18161000,
               "title": "Neangir und seine Brüder, Argentine und ihre Schwestern VI"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_14_wieland_64kb.mp3",
               "length_ms": 1559000,
+              "readers": [
+                "eva-k"
+              ],
               "start_ms": 19486000,
               "title": "Der Stein der Weisen I"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_15_wieland_64kb.mp3",
               "length_ms": 1263000,
+              "readers": [
+                "eva-k"
+              ],
               "start_ms": 21045000,
               "title": "Der Stein der Weisen II"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_16_wieland_64kb.mp3",
               "length_ms": 1280000,
+              "readers": [
+                "eva-k"
+              ],
               "start_ms": 22308000,
               "title": "Der Stein der Weisen III"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_17_wieland_64kb.mp3",
               "length_ms": 1239000,
+              "readers": [
+                "eva-k"
+              ],
               "start_ms": 23588000,
               "title": "Der Stein der Weisen IV"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_18_wieland_64kb.mp3",
               "length_ms": 1142000,
+              "readers": [
+                "silmaryllis"
+              ],
               "start_ms": 24827000,
               "title": "Timander und Melissa I"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_19_wieland_64kb.mp3",
               "length_ms": 970000,
+              "readers": [
+                "silmaryllis"
+              ],
               "start_ms": 25969000,
               "title": "Timander und Melissa II"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_20_wieland_64kb.mp3",
               "length_ms": 1230000,
+              "readers": [
+                "silmaryllis"
+              ],
               "start_ms": 26939000,
               "title": "Timander und Melissa III"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_21_wieland_64kb.mp3",
               "length_ms": 1391000,
+              "readers": [
+                "silmaryllis"
+              ],
               "start_ms": 28169000,
               "title": "Himmelblau und Lupine"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_22_wieland_64kb.mp3",
               "length_ms": 1098000,
+              "readers": [
+                "hokuspokus"
+              ],
               "start_ms": 29560000,
               "title": "Der goldene Zweig I"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_23_wieland_64kb.mp3",
               "length_ms": 1093000,
+              "readers": [
+                "hokuspokus"
+              ],
               "start_ms": 30658000,
               "title": "Der goldene Zweig II"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_24_wieland_64kb.mp3",
               "length_ms": 1526000,
+              "readers": [
+                "hokuspokus"
+              ],
               "start_ms": 31751000,
               "title": "Der goldene Zweig III"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_25_wieland_64kb.mp3",
               "length_ms": 1453000,
+              "readers": [
+                "hokuspokus"
+              ],
               "start_ms": 33277000,
               "title": "Die Salamandrin und die Bildsäule I"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_26_wieland_64kb.mp3",
               "length_ms": 1496000,
+              "readers": [
+                "hokuspokus"
+              ],
               "start_ms": 34730000,
               "title": "Die Salamandrin und die Bildsäule II"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_27_wieland_64kb.mp3",
               "length_ms": 1693000,
+              "readers": [
+                "hokuspokus"
+              ],
               "start_ms": 36226000,
               "title": "Die Salamandrin und die Bildsäule III"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_28_wieland_64kb.mp3",
               "length_ms": 1444000,
+              "readers": [
+                "hokuspokus"
+              ],
               "start_ms": 37919000,
               "title": "Die Salamandrin und die Bildsäule IV"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_29_wieland_64kb.mp3",
               "length_ms": 1600000,
+              "readers": [
+                "hokuspokus"
+              ],
               "start_ms": 39363000,
               "title": "Die Salamandrin und die Bildsäule V"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_30_wieland_64kb.mp3",
               "length_ms": 1186000,
+              "readers": [
+                "silmaryllis"
+              ],
               "start_ms": 40963000,
               "title": "Alboflede I"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_31_wieland_64kb.mp3",
               "length_ms": 1266000,
+              "readers": [
+                "silmaryllis"
+              ],
               "start_ms": 42149000,
               "title": "Alboflede II"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_32_wieland_64kb.mp3",
               "length_ms": 1221000,
+              "readers": [
+                "klaus-neubauer"
+              ],
               "start_ms": 43415000,
               "title": "Pertharit und Ferrandine I"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_33_wieland_64kb.mp3",
               "length_ms": 1258000,
+              "readers": [
+                "klaus-neubauer"
+              ],
               "start_ms": 44636000,
               "title": "Pertharit und Ferrandine II"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_34_wieland_64kb.mp3",
               "length_ms": 1617000,
+              "readers": [
+                "klaus-neubauer"
+              ],
               "start_ms": 45894000,
               "title": "Pertharit und Ferrandine III"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_35_wieland_64kb.mp3",
               "length_ms": 1109000,
+              "readers": [
+                "klaus-neubauer"
+              ],
               "start_ms": 47511000,
               "title": "Pertharit und Ferrandine IV"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_36_wieland_64kb.mp3",
               "length_ms": 1701000,
+              "readers": [
+                "klaus-neubauer"
+              ],
               "start_ms": 48620000,
               "title": "Pertharit und Ferrandine V"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_37_wieland_64kb.mp3",
               "length_ms": 1889000,
+              "readers": [
+                "klaus-neubauer"
+              ],
               "start_ms": 50321000,
               "title": "Der eiserne Armleuchter"
             },
             {
               "audio_url": "https://www.archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_38_wieland_64kb.mp3",
               "length_ms": 1120000,
+              "readers": [
+                "eva-k"
+              ],
               "start_ms": 52210000,
               "title": "Der Greif vom Gebürge Kaf"
             }
@@ -3744,7 +3898,11 @@
           "cover_url": "https://archive.org/download/dschinnistan_oder_auserlesene_feen_und_geistermarchen__librivox/dschinnistan_1801.jpg",
           "id": "karlsson",
           "language": "de",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 11205,
+          "librivox_title": "Dschinnistan oder Auserlesene Feen- und Geistermärchen",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/dschinnistan-oder-auserlesene-feen-und-geistermaerchen-by-christoph-martin-wieland/",

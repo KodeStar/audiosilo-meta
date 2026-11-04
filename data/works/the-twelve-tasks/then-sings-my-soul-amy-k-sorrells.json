@@ -3725,78 +3725,117 @@
             {
               "audio_url": "https://www.archive.org/download/theo_0912_librivox/theo_01_burnett_64kb.mp3",
               "length_ms": 861000,
+              "readers": [
+                "neeru-iyer"
+              ],
               "start_ms": 0,
               "title": "Chapter 1 Part 1: Preparing for a journey"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_0912_librivox/theo_02_burnett_64kb.mp3",
               "length_ms": 876000,
+              "readers": [
+                "neeru-iyer"
+              ],
               "start_ms": 861000,
               "title": "Chapter 1 Part 2: Preparing for a journey"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_0912_librivox/theo_03_burnett_64kb.mp3",
               "length_ms": 1081000,
+              "readers": [
+                "rachell-lovett"
+              ],
               "start_ms": 1737000,
               "title": "Chapter 2: The arrival"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_0912_librivox/theo_04_burnett_64kb.mp3",
               "length_ms": 901000,
+              "readers": [
+                "rachell-lovett"
+              ],
               "start_ms": 2818000,
               "title": "Chapter 3 Part 1: The meeting"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_0912_librivox/theo_05_burnett_64kb.mp3",
               "length_ms": 904000,
+              "readers": [
+                "rachell-lovett"
+              ],
               "start_ms": 3719000,
               "title": "Chapter 3 Part 2: The meeting"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_0912_librivox/theo_06_burnett_64kb.mp3",
               "length_ms": 686000,
+              "readers": [
+                "rosie"
+              ],
               "start_ms": 4623000,
               "title": "Chapter 4 Part 1: Theo's diary"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_0912_librivox/theo_07_burnett_64kb.mp3",
               "length_ms": 708000,
+              "readers": [
+                "rosie"
+              ],
               "start_ms": 5309000,
               "title": "Chapter 4 Part 2: Theo's diary"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_0912_librivox/theo_08_burnett_64kb.mp3",
               "length_ms": 720000,
+              "readers": [
+                "rosie"
+              ],
               "start_ms": 6017000,
               "title": "Chapter 5: The separation"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_0912_librivox/theo_09_burnett_64kb.mp3",
               "length_ms": 983000,
+              "readers": [
+                "rosie"
+              ],
               "start_ms": 6737000,
               "title": "Chapter 6: Theo goes to Paris"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_0912_librivox/theo_10_burnett_64kb.mp3",
               "length_ms": 906000,
+              "readers": [
+                "kara-shallenberg-1969-2023"
+              ],
               "start_ms": 7720000,
               "title": "Chapter 7: \"Parting is sweet sorrow\""
             },
             {
               "audio_url": "https://www.archive.org/download/theo_0912_librivox/theo_11_burnett_64kb.mp3",
               "length_ms": 917000,
+              "readers": [
+                "kara-shallenberg-1969-2023"
+              ],
               "start_ms": 8626000,
               "title": "Chapter 8 Part 1: Theo's first trouble"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_0912_librivox/theo_12_burnett_64kb.mp3",
               "length_ms": 985000,
+              "readers": [
+                "kara-shallenberg-1969-2023"
+              ],
               "start_ms": 9543000,
               "title": "Chapter 8 Part 2: Theo's first trouble"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_0912_librivox/theo_13_burnett_64kb.mp3",
               "length_ms": 1088000,
+              "readers": [
+                "kara-shallenberg-1969-2023"
+              ],
               "start_ms": 10528000,
               "title": "Chapter 9: What comes of it all"
             }
@@ -3805,7 +3844,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt5/Theo_1005.jpg",
           "id": "neeru-iyer",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction",
+            "Romance"
+          ],
           "librivox_id": 3315,
+          "librivox_title": "Theo",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/theo-by-fanny-burnett/",
@@ -7136,7 +7180,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/theodore_roosevelt_an_address_delivered_before_the_congress_of_the_united_states_1404.jpg",
           "id": "david-wales",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "Essays & Short Works",
+            "Political Science"
+          ],
           "librivox_id": 8831,
+          "librivox_title": "Theodore Roosevelt; An Address Delivered Before The Congress Of The United States",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/theodore-roosevelt-an-address-delivered-before-the-congress-of-the-united-states-by-henry-cabot-lodge/",
@@ -7414,300 +7464,500 @@
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_00_troosevelt_64kb.mp3",
               "length_ms": 212000,
+              "readers": [
+                "marfschen"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Foreword"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_01_troosevelt_64kb.mp3",
               "length_ms": 3577000,
+              "readers": [
+                "roger-melin"
+              ],
+              "section_number": 1,
               "start_ms": 212000,
               "title": "Ch 01-Boyhood and Youth"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_02_troosevelt_64kb.mp3",
               "length_ms": 1383000,
+              "readers": [
+                "kara-shallenberg-1969-2023"
+              ],
+              "section_number": 2,
               "start_ms": 3789000,
               "title": "Ch 02-The Vigor of Life, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_03_troosevelt_64kb.mp3",
               "length_ms": 998000,
+              "readers": [
+                "chris-amos"
+              ],
+              "section_number": 3,
               "start_ms": 5172000,
               "title": "Ch 02-The Vigor of Life, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_04_troosevelt_64kb.mp3",
               "length_ms": 1173000,
+              "readers": [
+                "chris-amos"
+              ],
+              "section_number": 4,
               "start_ms": 6170000,
               "title": "Ch 02-The Vigor of Life, pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_05_troosevelt_64kb.mp3",
               "length_ms": 1382000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 5,
               "start_ms": 7343000,
               "title": "Ch 03-Practical Politics, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_06_troosevelt_64kb.mp3",
               "length_ms": 1608000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 6,
               "start_ms": 8725000,
               "title": "Ch 03-Practical Politics, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_07_troosevelt_64kb.mp3",
               "length_ms": 1684000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 7,
               "start_ms": 10333000,
               "title": "Ch 03-Practical Politics, pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_08_troosevelt_64kb.mp3",
               "length_ms": 1423000,
+              "readers": [
+                "ontheroad"
+              ],
+              "section_number": 8,
               "start_ms": 12017000,
               "title": "Ch 04-In Cowboy Land, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_09_troosevelt_64kb.mp3",
               "length_ms": 1415000,
+              "readers": [
+                "ontheroad"
+              ],
+              "section_number": 9,
               "start_ms": 13440000,
               "title": "Ch 04-In Cowboy Land, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_10_troosevelt_64kb.mp3",
               "length_ms": 1770000,
+              "readers": [
+                "ontheroad"
+              ],
+              "section_number": 10,
               "start_ms": 14855000,
               "title": "Ch 04-In Cowboy Land, pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_11_troosevelt_64kb.mp3",
               "length_ms": 2278000,
+              "readers": [
+                "ian-hatley"
+              ],
+              "section_number": 11,
               "start_ms": 16625000,
               "title": "Ch 05-Applied Idealism, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_12_troosevelt_64kb.mp3",
               "length_ms": 1559000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 12,
               "start_ms": 18903000,
               "title": "Ch 05-Applied Idealism, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_13_troosevelt_64kb.mp3",
               "length_ms": 1537000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 13,
               "start_ms": 20462000,
               "title": "Ch 05-Applied Idealism, pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_14_troosevelt_64kb.mp3",
               "length_ms": 1336000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 14,
               "start_ms": 21999000,
               "title": "Ch 06-The New York Police, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_15_troosevelt_64kb.mp3",
               "length_ms": 1320000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 15,
               "start_ms": 23335000,
               "title": "Ch 06-The New York Police, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_16_troosevelt_64kb.mp3",
               "length_ms": 1771000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 16,
               "start_ms": 24655000,
               "title": "Ch 06-The New York Police, pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_17_troosevelt_64kb.mp3",
               "length_ms": 1648000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 17,
               "start_ms": 26426000,
               "title": "Ch 07-The War of America the Unready, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_18_troosevelt_64kb.mp3",
               "length_ms": 2579000,
+              "readers": [
+                "daisy55"
+              ],
+              "section_number": 18,
               "start_ms": 28074000,
               "title": "Ch 07-The War of America the Unready, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_19_troosevelt_64kb.mp3",
               "length_ms": 2276000,
+              "readers": [
+                "daisy55"
+              ],
+              "section_number": 19,
               "start_ms": 30653000,
               "title": "Ch 07-The War of America the Unready, pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_20_troosevelt_64kb.mp3",
               "length_ms": 2093000,
+              "readers": [
+                "daisy55"
+              ],
+              "section_number": 20,
               "start_ms": 32929000,
               "title": "Ch 07-The War of America the Unready, pt 4"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_21_troosevelt_64kb.mp3",
               "length_ms": 2079000,
+              "readers": [
+                "daisy55"
+              ],
+              "section_number": 21,
               "start_ms": 35022000,
               "title": "Ch 07-The War of America the Unready, pt 5"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_22_troosevelt_64kb.mp3",
               "length_ms": 1985000,
+              "readers": [
+                "daisy55"
+              ],
+              "section_number": 22,
               "start_ms": 37101000,
               "title": "Ch 08-The New York Governorship, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_23_troosevelt_64kb.mp3",
               "length_ms": 1615000,
+              "readers": [
+                "jason-procopio"
+              ],
+              "section_number": 23,
               "start_ms": 39086000,
               "title": "Ch 08-The New York Governorship, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_24_troosevelt_64kb.mp3",
               "length_ms": 1338000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 24,
               "start_ms": 40701000,
               "title": "Ch 08-The New York Governorship, pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_25_troosevelt_64kb.mp3",
               "length_ms": 2044000,
+              "readers": [
+                "texttalker"
+              ],
+              "section_number": 25,
               "start_ms": 42039000,
               "title": "Ch 08-The New York Governorship, pt 4"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_26_troosevelt_64kb.mp3",
               "length_ms": 1130000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 26,
               "start_ms": 44083000,
               "title": "Ch 09-Outdoors and Indoors, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_27_troosevelt_64kb.mp3",
               "length_ms": 1440000,
+              "readers": [
+                "dolce"
+              ],
+              "section_number": 27,
               "start_ms": 45213000,
               "title": "Ch 09-Outdoors and Indoors, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_28_troosevelt_64kb.mp3",
               "length_ms": 1557000,
+              "readers": [
+                "dolce"
+              ],
+              "section_number": 28,
               "start_ms": 46653000,
               "title": "Ch 09-Outdoors and Indoors, pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_29_troosevelt_64kb.mp3",
               "length_ms": 1338000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 29,
               "start_ms": 48210000,
               "title": "Ch 10-The Presidency; Making an Old Party Progressive, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_30_troosevelt_64kb.mp3",
               "length_ms": 1123000,
+              "readers": [
+                "amanda-hindman"
+              ],
+              "section_number": 30,
               "start_ms": 49548000,
               "title": "Ch 10-The Presidency; Making an Old Party Progressive, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_31_troosevelt_64kb.mp3",
               "length_ms": 1460000,
+              "readers": [
+                "amanda-hindman"
+              ],
+              "section_number": 31,
               "start_ms": 50671000,
               "title": "Ch 10-The Presidency; Making an Old Party Progressive, pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_32_troosevelt_64kb.mp3",
               "length_ms": 1462000,
+              "readers": [
+                "amanda-hindman"
+              ],
+              "section_number": 32,
               "start_ms": 52131000,
               "title": "Ch 10-The Presidency; Making an Old Party Progressive, pt 4"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_33_troosevelt_64kb.mp3",
               "length_ms": 1306000,
+              "readers": [
+                "great-plains"
+              ],
+              "section_number": 33,
               "start_ms": 53593000,
               "title": "Ch 11-The Natural Resources of the Nation, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_34_troosevelt_64kb.mp3",
               "length_ms": 1064000,
+              "readers": [
+                "great-plains"
+              ],
+              "section_number": 34,
               "start_ms": 54899000,
               "title": "Ch 11-The Natural Resources of the Nation, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_35_troosevelt_64kb.mp3",
               "length_ms": 1541000,
+              "readers": [
+                "great-plains"
+              ],
+              "section_number": 35,
               "start_ms": 55963000,
               "title": "Ch 11-The Natural Resources of the Nation, pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_36_troosevelt_64kb.mp3",
               "length_ms": 1612000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 36,
               "start_ms": 57504000,
               "title": "Ch 12-The Big Stick and the Square Deal, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_37_troosevelt_64kb.mp3",
               "length_ms": 1412000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 37,
               "start_ms": 59116000,
               "title": "Ch 12-The Big Stick and the Square Deal, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_38_troosevelt_64kb.mp3",
               "length_ms": 1555000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 38,
               "start_ms": 60528000,
               "title": "Ch 12-The Big Stick and the Square Deal, pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_39_troosevelt_64kb.mp3",
               "length_ms": 1634000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 39,
               "start_ms": 62083000,
               "title": "Ch 13-Social and Industrial Justice, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_40_troosevelt_64kb.mp3",
               "length_ms": 1673000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 40,
               "start_ms": 63717000,
               "title": "Ch 13-Social and Industrial Justice, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_41_troosevelt_64kb.mp3",
               "length_ms": 1446000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 41,
               "start_ms": 65390000,
               "title": "Ch 13-Social and Industrial Justice, pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_42_troosevelt_64kb.mp3",
               "length_ms": 1229000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 42,
               "start_ms": 66836000,
               "title": "Ch 14-The Monroe Doctrine and the Panama Canal, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_43_troosevelt_64kb.mp3",
               "length_ms": 911000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 43,
               "start_ms": 68065000,
               "title": "Ch 14-The Monroe Doctrine and the Panama Canal, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_44_troosevelt_64kb.mp3",
               "length_ms": 1530000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 44,
               "start_ms": 68976000,
               "title": "2Ch 14-The Monroe Doctrine and the Panama Canal, pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_45_troosevelt_64kb.mp3",
               "length_ms": 2442000,
+              "readers": [
+                "steve-karafit"
+              ],
+              "section_number": 45,
               "start_ms": 70506000,
               "title": "Ch 15-The Peace of Righteousness, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_46_troosevelt_64kb.mp3",
               "length_ms": 1416000,
+              "readers": [
+                "cameron-conaway"
+              ],
+              "section_number": 46,
               "start_ms": 72948000,
               "title": "Ch 15-The Peace of Righteousness, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_47_troosevelt_64kb.mp3",
               "length_ms": 1017000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 47,
               "start_ms": 74364000,
               "title": "Appendix A-The Trusts, the People, and the Square Deal, pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_48_troosevelt_64kb.mp3",
               "length_ms": 1240000,
+              "readers": [
+                "sibella-denton"
+              ],
+              "section_number": 48,
               "start_ms": 75381000,
               "title": "Appendix A-The Trusts, the People, and the Square Deal, pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/theo_roosevelt_autobiography_0810_librivox1/autobiography_49_troosevelt_64kb.mp3",
               "length_ms": 2039000,
+              "readers": [
+                "aaron-elliott"
+              ],
+              "section_number": 49,
               "start_ms": 76621000,
               "title": "Appendix B-The Control of Corporations and the New Freedom & C-The Blaine Campaign"
             }
@@ -7716,7 +7966,13 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt14/Theodore_Roosevelt_Autobiography_1201.jpg",
           "id": "marfschen",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "Political Science",
+            "Modern (19th C)"
+          ],
           "librivox_id": 1965,
+          "librivox_title": "Theodore Roosevelt: an Autobiography",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/t-roosevelt-autobiography/",
@@ -8147,7 +8403,13 @@
           "cover_url": "https://archive.org/download/theodore_savage_2105_librivox/theodoresavage_2105.jpg",
           "id": "jmazzocchi",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction",
+            "War & Military Fiction",
+            "Fantasy Fiction"
+          ],
           "librivox_id": 16183,
+          "librivox_title": "Theodore Savage: A Story of the Past or the Future",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/theodore-savage-a-story-of-the-past-or-the-future-by-cicely-hamilton/",
@@ -8640,7 +8902,11 @@
           "cover_url": "https://archive.org/download/theodore_winthrop_civil_war_narrative_dw_1610_librivox/theodorewinthrop_winthrop_1610.jpg",
           "id": "david-wales",
           "language": "en",
+          "librivox_genres": [
+            "War & Military"
+          ],
           "librivox_id": 11349,
+          "librivox_title": "Theodore Winthrop: A Civil War Narrative Aborted by Death",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/theodore-winthrop-a-civil-war-narrative-aborted-by-death-by-theodore-winthrop/",
@@ -8690,132 +8956,154 @@
             {
               "audio_url": "https://www.archive.org/download/theodoric_the_goth_1509_librivox/theodoricthegoth_00_hodgkin_64kb.mp3",
               "length_ms": 271000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/theodoric_the_goth_1509_librivox/theodoricthegoth_01_hodgkin_64kb.mp3",
               "length_ms": 459000,
+              "section_number": 1,
               "start_ms": 271000,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/theodoric_the_goth_1509_librivox/theodoricthegoth_02_hodgkin_64kb.mp3",
               "length_ms": 984000,
+              "section_number": 2,
               "start_ms": 730000,
               "title": "Chapter 1: Theodoric's Ancestors"
             },
             {
               "audio_url": "https://www.archive.org/download/theodoric_the_goth_1509_librivox/theodoricthegoth_03_hodgkin_64kb.mp3",
               "length_ms": 1219000,
+              "section_number": 3,
               "start_ms": 1714000,
               "title": "Chapter 2: The Might of Attila"
             },
             {
               "audio_url": "https://www.archive.org/download/theodoric_the_goth_1509_librivox/theodoricthegoth_04_hodgkin_64kb.mp3",
               "length_ms": 1498000,
+              "section_number": 4,
               "start_ms": 2933000,
               "title": "Chapter 3: Theodoric's Boyhood"
             },
             {
               "audio_url": "https://www.archive.org/download/theodoric_the_goth_1509_librivox/theodoricthegoth_05_hodgkin_64kb.mp3",
               "length_ms": 1090000,
+              "section_number": 5,
               "start_ms": 4431000,
               "title": "Chapter 4: The Southward Migration"
             },
             {
               "audio_url": "https://www.archive.org/download/theodoric_the_goth_1509_librivox/theodoricthegoth_06_hodgkin_64kb.mp3",
               "length_ms": 2978000,
+              "section_number": 6,
               "start_ms": 5521000,
               "title": "Chapter 5: Storm and Stress"
             },
             {
               "audio_url": "https://www.archive.org/download/theodoric_the_goth_1509_librivox/theodoricthegoth_07_hodgkin_64kb.mp3",
               "length_ms": 1427000,
+              "section_number": 7,
               "start_ms": 8499000,
               "title": "Chapter 6: Italy under Odovacar"
             },
             {
               "audio_url": "https://www.archive.org/download/theodoric_the_goth_1509_librivox/theodoricthegoth_08_hodgkin_64kb.mp3",
               "length_ms": 1647000,
+              "section_number": 8,
               "start_ms": 9926000,
               "title": "Chapter 7: The Conquest of Italy"
             },
             {
               "audio_url": "https://www.archive.org/download/theodoric_the_goth_1509_librivox/theodoricthegoth_09_hodgkin_64kb.mp3",
               "length_ms": 1974000,
+              "section_number": 9,
               "start_ms": 11573000,
               "title": "Chapter 8: Civilitas"
             },
             {
               "audio_url": "https://www.archive.org/download/theodoric_the_goth_1509_librivox/theodoricthegoth_10_hodgkin_64kb.mp3",
               "length_ms": 2494000,
+              "section_number": 10,
               "start_ms": 13547000,
               "title": "Chapter 9: Roman Officials - Cassiodorus"
             },
             {
               "audio_url": "https://www.archive.org/download/theodoric_the_goth_1509_librivox/theodoricthegoth_11_hodgkin_64kb.mp3",
               "length_ms": 3074000,
+              "section_number": 11,
               "start_ms": 16041000,
               "title": "Chapter 10: The Arian League"
             },
             {
               "audio_url": "https://www.archive.org/download/theodoric_the_goth_1509_librivox/theodoricthegoth_12_hodgkin_64kb.mp3",
               "length_ms": 2180000,
+              "section_number": 12,
               "start_ms": 19115000,
               "title": "Chapter 11: Anastasius"
             },
             {
               "audio_url": "https://www.archive.org/download/theodoric_the_goth_1509_librivox/theodoricthegoth_13_hodgkin_64kb.mp3",
               "length_ms": 2633000,
+              "section_number": 13,
               "start_ms": 21295000,
               "title": "Chapter 12: Rome and Ravenna"
             },
             {
               "audio_url": "https://www.archive.org/download/theodoric_the_goth_1509_librivox/theodoricthegoth_14_hodgkin_64kb.mp3",
               "length_ms": 2550000,
+              "section_number": 14,
               "start_ms": 23928000,
               "title": "Chapter 13: Boethius"
             },
             {
               "audio_url": "https://www.archive.org/download/theodoric_the_goth_1509_librivox/theodoricthegoth_15_hodgkin_64kb.mp3",
               "length_ms": 1043000,
+              "section_number": 15,
               "start_ms": 26478000,
               "title": "Chapter 14: Theodoric's Tomb"
             },
             {
               "audio_url": "https://www.archive.org/download/theodoric_the_goth_1509_librivox/theodoricthegoth_16_hodgkin_64kb.mp3",
               "length_ms": 2532000,
+              "section_number": 16,
               "start_ms": 27521000,
               "title": "Chapter 15: Amalasuentha"
             },
             {
               "audio_url": "https://www.archive.org/download/theodoric_the_goth_1509_librivox/theodoricthegoth_17_hodgkin_64kb.mp3",
               "length_ms": 2535000,
+              "section_number": 17,
               "start_ms": 30053000,
               "title": "Chapter 16: Belisarius"
             },
             {
               "audio_url": "https://www.archive.org/download/theodoric_the_goth_1509_librivox/theodoricthegoth_18_hodgkin_64kb.mp3",
               "length_ms": 1929000,
+              "section_number": 18,
               "start_ms": 32588000,
               "title": "Chapter 17: Totila"
             },
             {
               "audio_url": "https://www.archive.org/download/theodoric_the_goth_1509_librivox/theodoricthegoth_19_hodgkin_64kb.mp3",
               "length_ms": 1009000,
+              "section_number": 19,
               "start_ms": 34517000,
               "title": "Chapter 18: Narses"
             },
             {
               "audio_url": "https://www.archive.org/download/theodoric_the_goth_1509_librivox/theodoricthegoth_20_hodgkin_64kb.mp3",
               "length_ms": 3240000,
+              "section_number": 20,
               "start_ms": 35526000,
               "title": "Chapter 19: The Theodoric of Saga Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/theodoric_the_goth_1509_librivox/theodoricthegoth_21_hodgkin_64kb.mp3",
               "length_ms": 3027000,
+              "section_number": 21,
               "start_ms": 38766000,
               "title": "Chapter 19: The Theodoric of Saga Part 2"
             }
@@ -8824,7 +9112,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt22/Theodoric_1509.jpg",
           "id": "patrick-eaton",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "Antiquity"
+          ],
           "librivox_id": 9005,
+          "librivox_title": "Theodoric the Goth",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/theodoric-the-goth-by-thomas-hodgkin/",

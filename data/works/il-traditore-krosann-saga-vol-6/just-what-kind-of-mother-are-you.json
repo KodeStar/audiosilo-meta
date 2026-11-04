@@ -962,7 +962,13 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt13/Just_William_1211.jpg",
           "id": "david-wales",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction",
+            "General Fiction",
+            "Humorous Fiction"
+          ],
           "librivox_id": 6093,
+          "librivox_title": "Just William",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/just-william-by-richmal-crompton/",
@@ -1065,7 +1071,13 @@
           "cover_url": "https://archive.org/download/justwilliam_v2_1311_librivox/just_william2_1311.jpg",
           "id": "kara-shallenberg-1969-2023",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction",
+            "General Fiction",
+            "Humorous Fiction"
+          ],
           "librivox_id": 6983,
+          "librivox_title": "Just William (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/just-william-version-2-by-richmal-crompton/",
@@ -11890,24 +11902,72 @@
             {
               "audio_url": "https://www.archive.org/download/justice_2102_librivox/justice_01_galsworthy_64kb.mp3",
               "length_ms": 2137000,
+              "readers": [
+                "algy-pug",
+                "matthew-reece",
+                "michele-eaton",
+                "alan-mapstone",
+                "larry-wilson",
+                "april6090",
+                "michaelmaggs",
+                "rhelfmann",
+                "ambsweet13",
+                "shawn-clayton"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/justice_2102_librivox/justice_02_galsworthy_64kb.mp3",
               "length_ms": 3268000,
+              "readers": [
+                "algy-pug",
+                "michele-eaton",
+                "alan-mapstone",
+                "phil-schempf",
+                "david-purdy",
+                "tomas-peter",
+                "michaelmaggs",
+                "rhelfmann",
+                "ambsweet13",
+                "andrew-gaunce"
+              ],
               "start_ms": 2137000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/justice_2102_librivox/justice_03_galsworthy_64kb.mp3",
               "length_ms": 2437000,
+              "readers": [
+                "algy-pug",
+                "toddhw",
+                "michele-eaton",
+                "alan-mapstone",
+                "son-of-the-exiles",
+                "chris-pyle",
+                "david-purdy",
+                "michaelmaggs",
+                "adrian-stephens",
+                "rhelfmann",
+                "karsus"
+              ],
               "start_ms": 5405000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/justice_2102_librivox/justice_04_galsworthy_64kb.mp3",
               "length_ms": 2193000,
+              "readers": [
+                "algy-pug",
+                "matthew-reece",
+                "michele-eaton",
+                "alan-mapstone",
+                "larry-wilson",
+                "april6090",
+                "michaelmaggs",
+                "rhelfmann",
+                "ambsweet13"
+              ],
               "start_ms": 7842000,
               "title": "Act 4"
             }
@@ -11916,7 +11976,11 @@
           "cover_url": "https://archive.org/download/justice_2102_librivox/justice_2102.jpg",
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Plays"
+          ],
           "librivox_id": 15170,
+          "librivox_title": "Justice",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/justice-by-john-galsworthy/",

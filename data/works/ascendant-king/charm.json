@@ -4534,60 +4534,90 @@
             {
               "audio_url": "https://www.archive.org/download/the_charm_1511.poem_librivox/charm_brooke_alp_64kb.mp3",
               "length_ms": 108000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 0,
               "title": "The Charm - Read by ALP"
             },
             {
               "audio_url": "https://www.archive.org/download/the_charm_1511.poem_librivox/charm_brooke_bk_64kb.mp3",
               "length_ms": 130000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 108000,
               "title": "The Charm - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/the_charm_1511.poem_librivox/charm_brooke_bsd_64kb.mp3",
               "length_ms": 104000,
+              "readers": [
+                "brian-darby"
+              ],
               "start_ms": 238000,
               "title": "The Charm - Read by BSD"
             },
             {
               "audio_url": "https://www.archive.org/download/the_charm_1511.poem_librivox/charm_brooke_cam_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "millianna"
+              ],
               "start_ms": 342000,
               "title": "The Charm - Read by CAM"
             },
             {
               "audio_url": "https://www.archive.org/download/the_charm_1511.poem_librivox/charm_brooke_dl_64kb.mp3",
               "length_ms": 101000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 451000,
               "title": "The Charm - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/the_charm_1511.poem_librivox/charm_brooke_el_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "newgatenovelist"
+              ],
               "start_ms": 552000,
               "title": "The Charm - Read by EL"
             },
             {
               "audio_url": "https://www.archive.org/download/the_charm_1511.poem_librivox/charm_brooke_gg_64kb.mp3",
               "length_ms": 130000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 661000,
               "title": "The Charm - Read by GG"
             },
             {
               "audio_url": "https://www.archive.org/download/the_charm_1511.poem_librivox/charm_brooke_jm_64kb.mp3",
               "length_ms": 97000,
+              "readers": [
+                "j-mcdougall"
+              ],
               "start_ms": 791000,
               "title": "The Charm - Read by JM"
             },
             {
               "audio_url": "https://www.archive.org/download/the_charm_1511.poem_librivox/charm_brooke_llw_64kb.mp3",
               "length_ms": 121000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 888000,
               "title": "The Charm - Read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/the_charm_1511.poem_librivox/charm_brooke_vg_64kb.mp3",
               "length_ms": 111000,
+              "readers": [
+                "vanessa-garcia"
+              ],
               "start_ms": 1009000,
               "title": "The Charm - Read by VG"
             }
@@ -4596,7 +4626,11 @@
           "cover_url": "https://archive.org/download/the_charm_1511.poem_librivox/charm_1512.jpg",
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 10424,
+          "librivox_title": "Charm",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-charm-by-rupert-brooke/",

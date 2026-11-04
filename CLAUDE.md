@@ -121,7 +121,8 @@ sidecar-member-collision refusals** - identical to the same wave over the
 pre-cutover whole tree, and 25 CC BY-SA sidecars a blind run would have destroyed.
 
 `metaaudit` is NOT part of the gate - it reports data defects (duplicate works,
-decorated titles, unmodeled series memberships), which are a review queue rather
+decorated titles, unmodeled series memberships, retail repackages of a LibriVox
+recording), which are a review queue rather
 than a pass/fail. It never writes to `data/`.
 
 `metarepair` is the pass that ACTS on that queue, and it is not part of the gate

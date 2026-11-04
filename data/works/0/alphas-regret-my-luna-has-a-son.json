@@ -2590,60 +2590,90 @@
             {
               "audio_url": "https://www.archive.org/download/thealpinepath_1808_librivox/alpinepath_01_montgomery_64kb.mp3",
               "length_ms": 1073000,
+              "readers": [
+                "carolyn-agee"
+              ],
               "start_ms": 0,
               "title": "Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/thealpinepath_1808_librivox/alpinepath_02_montgomery_64kb.mp3",
               "length_ms": 759000,
+              "readers": [
+                "ciufi-galeazzi"
+              ],
               "start_ms": 1073000,
               "title": "Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/thealpinepath_1808_librivox/alpinepath_03_montgomery_64kb.mp3",
               "length_ms": 1192000,
+              "readers": [
+                "ciufi-galeazzi"
+              ],
               "start_ms": 1832000,
               "title": "Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/thealpinepath_1808_librivox/alpinepath_04_montgomery_64kb.mp3",
               "length_ms": 1078000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 3024000,
               "title": "Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/thealpinepath_1808_librivox/alpinepath_05_montgomery_64kb.mp3",
               "length_ms": 751000,
+              "readers": [
+                "kathleen-moore"
+              ],
               "start_ms": 4102000,
               "title": "Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/thealpinepath_1808_librivox/alpinepath_06_montgomery_64kb.mp3",
               "length_ms": 1169000,
+              "readers": [
+                "ciufi-galeazzi"
+              ],
               "start_ms": 4853000,
               "title": "Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/thealpinepath_1808_librivox/alpinepath_07_montgomery_64kb.mp3",
               "length_ms": 837000,
+              "readers": [
+                "ciufi-galeazzi"
+              ],
               "start_ms": 6022000,
               "title": "Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/thealpinepath_1808_librivox/alpinepath_08_montgomery_64kb.mp3",
               "length_ms": 1017000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 6859000,
               "title": "Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/thealpinepath_1808_librivox/alpinepath_09_montgomery_64kb.mp3",
               "length_ms": 890000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 7876000,
               "title": "Chapter 9"
             },
             {
               "audio_url": "https://www.archive.org/download/thealpinepath_1808_librivox/alpinepath_10_montgomery_64kb.mp3",
               "length_ms": 926000,
+              "readers": [
+                "bettyb"
+              ],
               "start_ms": 8766000,
               "title": "Chapter 10"
             }
@@ -2652,7 +2682,11 @@
           "cover_url": "https://archive.org/download/thealpinepath_1808_librivox/alpinepath_1808.jpg",
           "id": "carolyn-agee",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography"
+          ],
           "librivox_id": 11299,
+          "librivox_title": "Alpine Path: The Story of My Career",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-alpine-path-the-story-of-my-career-by-lucy-maud-montgomery/",
@@ -3600,7 +3634,13 @@
           "cover_url": "https://archive.org/download/alps_2202_librivox/alps_2202.jpg",
           "id": "bettyb",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Social Science (Culture & Anthropology)",
+            "Travel & Geography"
+          ],
           "librivox_id": 16942,
+          "librivox_title": "Alps, the Danube and the Near East",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-alps-the-danube-and-the-near-east-by-frank-g-carpenter/",
@@ -4525,7 +4565,11 @@
           "cover_url": "https://archive.org/download/alraune_2010_librivox/alraune_ewers_2010.jpg",
           "id": "alkahest",
           "language": "de",
+          "librivox_genres": [
+            "Horror & Supernatural Fiction"
+          ],
           "librivox_id": 15402,
+          "librivox_title": "Alraune",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/alraune-by-hanns-heinz-ewers/",
@@ -7838,7 +7882,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt11/natuur_roept_1105.jpg",
           "id": "edith-van-der-have-raats",
           "language": "nl",
+          "librivox_genres": [
+            "Nature & Animal Fiction"
+          ],
           "librivox_id": 5539,
+          "librivox_title": "Als de natuur roept",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/als-de-natuur-roept-by-jack-london/",

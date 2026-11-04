@@ -8518,54 +8518,81 @@
             {
               "audio_url": "https://www.archive.org/download/you_never_can_tell_1712.poem_librivox/nevertell_wilcox_alp_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 0,
               "title": "You Never Can Tell - Read by ALP"
             },
             {
               "audio_url": "https://www.archive.org/download/you_never_can_tell_1712.poem_librivox/nevertell_wilcox_bk_64kb.mp3",
               "length_ms": 111000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 82000,
               "title": "You Never Can Tell - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/you_never_can_tell_1712.poem_librivox/nevertell_wilcox_dl_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 193000,
               "title": "You Never Can Tell - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/you_never_can_tell_1712.poem_librivox/nevertell_wilcox_el_64kb.mp3",
               "length_ms": 98000,
+              "readers": [
+                "newgatenovelist"
+              ],
               "start_ms": 284000,
               "title": "You Never Can Tell - Read by EL"
             },
             {
               "audio_url": "https://www.archive.org/download/you_never_can_tell_1712.poem_librivox/nevertell_wilcox_gb_64kb.mp3",
               "length_ms": 100000,
+              "readers": [
+                "garth-burton"
+              ],
               "start_ms": 382000,
               "title": "You Never Can Tell - Read by GB"
             },
             {
               "audio_url": "https://www.archive.org/download/you_never_can_tell_1712.poem_librivox/nevertell_wilcox_lah_64kb.mp3",
               "length_ms": 90000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 482000,
               "title": "You Never Can Tell - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/you_never_can_tell_1712.poem_librivox/nevertell_wilcox_ps_64kb.mp3",
               "length_ms": 79000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 572000,
               "title": "You Never Can Tell - Read by PS"
             },
             {
               "audio_url": "https://www.archive.org/download/you_never_can_tell_1712.poem_librivox/nevertell_wilcox_tp_64kb.mp3",
               "length_ms": 92000,
+              "readers": [
+                "tomas-peter"
+              ],
               "start_ms": 651000,
               "title": "You Never Can Tell - Read by TP"
             },
             {
               "audio_url": "https://www.archive.org/download/you_never_can_tell_1712.poem_librivox/nevertell_wilcox_vb_64kb.mp3",
               "length_ms": 101000,
+              "readers": [
+                "tovarisch"
+              ],
               "start_ms": 743000,
               "title": "You Never Can Tell - Read by VB"
             }
@@ -8574,7 +8601,11 @@
           "cover_url": "https://archive.org/download/you_never_can_tell_1712.poem_librivox/you_never_can_tell_1712.jpg",
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 12551,
+          "librivox_title": "You Never Can Tell",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/you-never-can-tell-by-ella-wheeler-wilcox/",
@@ -8633,24 +8664,67 @@
             {
               "audio_url": "https://www.archive.org/download/younevercantell_2105_librivox/younevercantell_1_shaw_64kb.mp3",
               "length_ms": 3280000,
+              "readers": [
+                "algy-pug",
+                "toddhw",
+                "jenn-broda",
+                "kelly-s-taylor",
+                "hannah-dormor",
+                "cavaet",
+                "elisedee",
+                "a-d-latheron"
+              ],
               "start_ms": 0,
               "title": "ACT I"
             },
             {
               "audio_url": "https://www.archive.org/download/younevercantell_2105_librivox/younevercantell_2_shaw_64kb.mp3",
               "length_ms": 4407000,
+              "readers": [
+                "algy-pug",
+                "toddhw",
+                "greg-giordano",
+                "jenn-broda",
+                "adrian-stephens",
+                "kelly-s-taylor",
+                "cavaet",
+                "elisedee",
+                "a-d-latheron"
+              ],
               "start_ms": 3280000,
               "title": "ACT II"
             },
             {
               "audio_url": "https://www.archive.org/download/younevercantell_2105_librivox/younevercantell_3_shaw_64kb.mp3",
               "length_ms": 2457000,
+              "readers": [
+                "toddhw",
+                "greg-giordano",
+                "jenn-broda",
+                "adrian-stephens",
+                "kelly-s-taylor",
+                "cavaet",
+                "elisedee",
+                "a-d-latheron"
+              ],
               "start_ms": 7687000,
               "title": "ACT III"
             },
             {
               "audio_url": "https://www.archive.org/download/younevercantell_2105_librivox/younevercantell_4_shaw_64kb.mp3",
               "length_ms": 3022000,
+              "readers": [
+                "algy-pug",
+                "toddhw",
+                "greg-giordano",
+                "jenn-broda",
+                "adrian-stephens",
+                "kelly-s-taylor",
+                "cavaet",
+                "elisedee",
+                "andrew-gaunce",
+                "a-d-latheron"
+              ],
               "start_ms": 10144000,
               "title": "ACT IV"
             }
@@ -8659,7 +8733,11 @@
           "cover_url": "https://archive.org/download/younevercantell_2105_librivox/younevercantell_2105.jpg",
           "id": "algy-pug",
           "language": "en",
+          "librivox_genres": [
+            "Satire"
+          ],
           "librivox_id": 16546,
+          "librivox_title": "You Never Can Tell",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/you-never-can-tell-by-george-bernard-shaw/",
@@ -14488,7 +14566,11 @@
           "cover_url": "https://archive.org/download/you_should_worry_john_henry_2208_librivox/you_should_worry_2208.jpg",
           "id": "laurie-banza",
           "language": "en",
+          "librivox_genres": [
+            "Humorous Fiction"
+          ],
           "librivox_id": 18199,
+          "librivox_title": "You Should Worry Says John Henry",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/you-should-worry-says-john-henry-by-george-v-hobart/",

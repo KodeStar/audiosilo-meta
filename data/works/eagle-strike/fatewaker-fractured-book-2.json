@@ -2336,78 +2336,117 @@
             {
               "audio_url": "https://www.archive.org/download/father_and_son_0901_librivox/fatherandson_01_gosse_64kb.mp3",
               "length_ms": 1580000,
+              "readers": [
+                "ed-meade"
+              ],
               "start_ms": 0,
               "title": "Preface & Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/father_and_son_0901_librivox/fatherandson_02_gosse_64kb.mp3",
               "length_ms": 3365000,
+              "readers": [
+                "alana-jordan"
+              ],
               "start_ms": 1580000,
               "title": "Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/father_and_son_0901_librivox/fatherandson_03_gosse_64kb.mp3",
               "length_ms": 2107000,
+              "readers": [
+                "alana-jordan"
+              ],
               "start_ms": 4945000,
               "title": "Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/father_and_son_0901_librivox/fatherandson_04_gosse_64kb.mp3",
               "length_ms": 2522000,
+              "readers": [
+                "alana-jordan"
+              ],
               "start_ms": 7052000,
               "title": "Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/father_and_son_0901_librivox/fatherandson_05_gosse_64kb.mp3",
               "length_ms": 2307000,
+              "readers": [
+                "musil"
+              ],
               "start_ms": 9574000,
               "title": "Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/father_and_son_0901_librivox/fatherandson_06_gosse_64kb.mp3",
               "length_ms": 2307000,
+              "readers": [
+                "musil"
+              ],
               "start_ms": 11881000,
               "title": "Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/father_and_son_0901_librivox/fatherandson_07_gosse_64kb.mp3",
               "length_ms": 2283000,
+              "readers": [
+                "musil"
+              ],
               "start_ms": 14188000,
               "title": "Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/father_and_son_0901_librivox/fatherandson_08_gosse_64kb.mp3",
               "length_ms": 2493000,
+              "readers": [
+                "musil"
+              ],
               "start_ms": 16471000,
               "title": "Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/father_and_son_0901_librivox/fatherandson_09_gosse_64kb.mp3",
               "length_ms": 2571000,
+              "readers": [
+                "musil"
+              ],
               "start_ms": 18964000,
               "title": "Chapter 9"
             },
             {
               "audio_url": "https://www.archive.org/download/father_and_son_0901_librivox/fatherandson_10_gosse_64kb.mp3",
               "length_ms": 2358000,
+              "readers": [
+                "musil"
+              ],
               "start_ms": 21535000,
               "title": "Chapter 10"
             },
             {
               "audio_url": "https://www.archive.org/download/father_and_son_0901_librivox/fatherandson_11_gosse_64kb.mp3",
               "length_ms": 2289000,
+              "readers": [
+                "musil"
+              ],
               "start_ms": 23893000,
               "title": "Chapter 11"
             },
             {
               "audio_url": "https://www.archive.org/download/father_and_son_0901_librivox/fatherandson_12_gosse_64kb.mp3",
               "length_ms": 3515000,
+              "readers": [
+                "musil"
+              ],
               "start_ms": 26182000,
               "title": "Chapter 12"
             },
             {
               "audio_url": "https://www.archive.org/download/father_and_son_0901_librivox/fatherandson_13_gosse_64kb.mp3",
               "length_ms": 2613000,
+              "readers": [
+                "musil"
+              ],
               "start_ms": 29697000,
               "title": "Epilogue"
             }
@@ -2416,7 +2455,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt15/Father_Son_1202.jpg",
           "id": "ed-meade",
           "language": "en",
+          "librivox_genres": [
+            "Memoirs"
+          ],
           "librivox_id": 1959,
+          "librivox_title": "Father and Son",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/father-and-son-by-edmund-gosse/",
@@ -2544,27 +2587,59 @@
             {
               "audio_url": "https://www.archive.org/download/father_1303_librivox/father_1_strindberg_64kb.mp3",
               "length_ms": 2452000,
+              "readers": [
+                "bob-neufeld",
+                "algy-pug",
+                "chuck-williamson",
+                "alan-mapstone",
+                "dwarner30uk",
+                "woolly-bee"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/father_1303_librivox/father_2_strindberg_64kb.mp3",
               "length_ms": 1941000,
+              "readers": [
+                "elizabeth-klett",
+                "bruce-pirie"
+              ],
               "start_ms": 2452000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/father_1303_librivox/father_3_strindberg_64kb.mp3",
               "length_ms": 1892000,
+              "readers": [
+                "arielle-lipshaw",
+                "charlotte-duckett"
+              ],
               "start_ms": 4393000,
               "title": "Act 3"
             }
           ],
           "copyright_year": 1887,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt31/father_1305.jpg",
+          "credits": [
+            {
+              "person": "edith-oland",
+              "role": "translator"
+            },
+            {
+              "person": "warner-oland",
+              "role": "translator"
+            }
+          ],
           "id": "bob-neufeld",
           "language": "en",
+          "librivox_genres": [
+            "Romance",
+            "Published 1800 -1900",
+            "Drama"
+          ],
           "librivox_id": 7525,
+          "librivox_title": "Father",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-father-by-august-strindberg/",
@@ -4044,9 +4119,19 @@
           ],
           "copyright_year": 1896,
           "cover_url": "https://archive.org/download/father_goriot_v2_1602_librivox/Father_Goriot_1602.jpg",
+          "credits": [
+            {
+              "person": "ellen-marriage",
+              "role": "translator"
+            }
+          ],
           "id": "bruce-pirie",
           "language": "en",
+          "librivox_genres": [
+            "Literary Fiction"
+          ],
           "librivox_id": 10517,
+          "librivox_title": "Father Goriot (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/father-goriot-version-2-by-honore-de-balzac/",
@@ -4149,7 +4234,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt31/father_goriot_1305.jpg",
           "id": "james-e-carson",
           "language": "en",
+          "librivox_genres": [
+            "Historical Fiction",
+            "Literary Fiction"
+          ],
           "librivox_id": 7822,
+          "librivox_title": "Father Goriot",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/father-goriot-by-honore-balzac/",
@@ -4247,132 +4337,154 @@
             {
               "audio_url": "https://www.archive.org/download/fathermarquette_2507_librivox/fathermarquette_00_thwaites_64kb.mp3",
               "length_ms": 436000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/fathermarquette_2507_librivox/fathermarquette_01_thwaites_64kb.mp3",
               "length_ms": 530000,
+              "section_number": 1,
               "start_ms": 436000,
               "title": "Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/fathermarquette_2507_librivox/fathermarquette_02_thwaites_64kb.mp3",
               "length_ms": 630000,
+              "section_number": 2,
               "start_ms": 966000,
               "title": "Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/fathermarquette_2507_librivox/fathermarquette_03_thwaites_64kb.mp3",
               "length_ms": 674000,
+              "section_number": 3,
               "start_ms": 1596000,
               "title": "Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/fathermarquette_2507_librivox/fathermarquette_04_thwaites_64kb.mp3",
               "length_ms": 798000,
+              "section_number": 4,
               "start_ms": 2270000,
               "title": "Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/fathermarquette_2507_librivox/fathermarquette_05_thwaites_64kb.mp3",
               "length_ms": 685000,
+              "section_number": 5,
               "start_ms": 3068000,
               "title": "Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/fathermarquette_2507_librivox/fathermarquette_06_thwaites_64kb.mp3",
               "length_ms": 706000,
+              "section_number": 6,
               "start_ms": 3753000,
               "title": "Chapter 6"
             },
             {
               "audio_url": "https://www.archive.org/download/fathermarquette_2507_librivox/fathermarquette_07_thwaites_64kb.mp3",
               "length_ms": 632000,
+              "section_number": 7,
               "start_ms": 4459000,
               "title": "Chapter 7"
             },
             {
               "audio_url": "https://www.archive.org/download/fathermarquette_2507_librivox/fathermarquette_08_thwaites_64kb.mp3",
               "length_ms": 1197000,
+              "section_number": 8,
               "start_ms": 5091000,
               "title": "Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/fathermarquette_2507_librivox/fathermarquette_09_thwaites_64kb.mp3",
               "length_ms": 1087000,
+              "section_number": 9,
               "start_ms": 6288000,
               "title": "Chapter 9"
             },
             {
               "audio_url": "https://www.archive.org/download/fathermarquette_2507_librivox/fathermarquette_10_thwaites_64kb.mp3",
               "length_ms": 676000,
+              "section_number": 10,
               "start_ms": 7375000,
               "title": "Chapter 10"
             },
             {
               "audio_url": "https://www.archive.org/download/fathermarquette_2507_librivox/fathermarquette_11_thwaites_64kb.mp3",
               "length_ms": 792000,
+              "section_number": 11,
               "start_ms": 8051000,
               "title": "Chapter 11"
             },
             {
               "audio_url": "https://www.archive.org/download/fathermarquette_2507_librivox/fathermarquette_12_thwaites_64kb.mp3",
               "length_ms": 1071000,
+              "section_number": 12,
               "start_ms": 8843000,
               "title": "Chapter 12"
             },
             {
               "audio_url": "https://www.archive.org/download/fathermarquette_2507_librivox/fathermarquette_13_thwaites_64kb.mp3",
               "length_ms": 532000,
+              "section_number": 13,
               "start_ms": 9914000,
               "title": "Chapter 13"
             },
             {
               "audio_url": "https://www.archive.org/download/fathermarquette_2507_librivox/fathermarquette_14_thwaites_64kb.mp3",
               "length_ms": 720000,
+              "section_number": 14,
               "start_ms": 10446000,
               "title": "Chapter 14"
             },
             {
               "audio_url": "https://www.archive.org/download/fathermarquette_2507_librivox/fathermarquette_15_thwaites_64kb.mp3",
               "length_ms": 916000,
+              "section_number": 15,
               "start_ms": 11166000,
               "title": "Chapter 15"
             },
             {
               "audio_url": "https://www.archive.org/download/fathermarquette_2507_librivox/fathermarquette_16_thwaites_64kb.mp3",
               "length_ms": 809000,
+              "section_number": 16,
               "start_ms": 12082000,
               "title": "Chapter 16"
             },
             {
               "audio_url": "https://www.archive.org/download/fathermarquette_2507_librivox/fathermarquette_17_thwaites_64kb.mp3",
               "length_ms": 543000,
+              "section_number": 17,
               "start_ms": 12891000,
               "title": "Chapter 17"
             },
             {
               "audio_url": "https://www.archive.org/download/fathermarquette_2507_librivox/fathermarquette_18_thwaites_64kb.mp3",
               "length_ms": 982000,
+              "section_number": 18,
               "start_ms": 13434000,
               "title": "Chapter 18"
             },
             {
               "audio_url": "https://www.archive.org/download/fathermarquette_2507_librivox/fathermarquette_19_thwaites_64kb.mp3",
               "length_ms": 784000,
+              "section_number": 19,
               "start_ms": 14416000,
               "title": "Chapter 19"
             },
             {
               "audio_url": "https://www.archive.org/download/fathermarquette_2507_librivox/fathermarquette_20_thwaites_64kb.mp3",
               "length_ms": 753000,
+              "section_number": 20,
               "start_ms": 15200000,
               "title": "Chapter 20"
             },
             {
               "audio_url": "https://www.archive.org/download/fathermarquette_2507_librivox/fathermarquette_21_thwaites_64kb.mp3",
               "length_ms": 430000,
+              "section_number": 21,
               "start_ms": 15953000,
               "title": "Chapter 21"
             }
@@ -4381,7 +4493,12 @@
           "cover_url": "https://archive.org/download/fathermarquette_2507_librivox/fathermarquette_2507.jpg",
           "id": "carol-pelster",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "History"
+          ],
           "librivox_id": 21714,
+          "librivox_title": "Father Marquette",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/father-marquette-by-rg-thwaites/",
@@ -6658,96 +6775,144 @@
             {
               "audio_url": "https://www.archive.org/download/father_of_women_1703_librivox/fatherofwomen_01_meynell_64kb.mp3",
               "length_ms": 125000,
+              "readers": [
+                "eva-davis-d-2025"
+              ],
               "start_ms": 0,
               "title": "A Father of Women"
             },
             {
               "audio_url": "https://www.archive.org/download/father_of_women_1703_librivox/fatherofwomen_02_meynell_64kb.mp3",
               "length_ms": 110000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 125000,
               "title": "Length of Days: To the Early Dead in Battle"
             },
             {
               "audio_url": "https://www.archive.org/download/father_of_women_1703_librivox/fatherofwomen_03_meynell_64kb.mp3",
               "length_ms": 64000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 235000,
               "title": "Nurse Edith Cavell"
             },
             {
               "audio_url": "https://www.archive.org/download/father_of_women_1703_librivox/fatherofwomen_04_meynell_64kb.mp3",
               "length_ms": 113000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 299000,
               "title": "Summer in England, 1914"
             },
             {
               "audio_url": "https://www.archive.org/download/father_of_women_1703_librivox/fatherofwomen_05_meynell_64kb.mp3",
               "length_ms": 151000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 412000,
               "title": "To Tintoretto in Venice"
             },
             {
               "audio_url": "https://www.archive.org/download/father_of_women_1703_librivox/fatherofwomen_06_meynell_64kb.mp3",
               "length_ms": 110000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 563000,
               "title": "A Thrush Before Dawn"
             },
             {
               "audio_url": "https://www.archive.org/download/father_of_women_1703_librivox/fatherofwomen_07_meynell_64kb.mp3",
               "length_ms": 99000,
+              "readers": [
+                "jason-in-panama"
+              ],
               "start_ms": 673000,
               "title": "The Two Shakespeare Tercentenaries"
             },
             {
               "audio_url": "https://www.archive.org/download/father_of_women_1703_librivox/fatherofwomen_08_meynell_64kb.mp3",
               "length_ms": 96000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 772000,
               "title": "To O, of her Dark Eyes"
             },
             {
               "audio_url": "https://www.archive.org/download/father_of_women_1703_librivox/fatherofwomen_09_meynell_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 868000,
               "title": "The Treasure"
             },
             {
               "audio_url": "https://www.archive.org/download/father_of_women_1703_librivox/fatherofwomen_10_meynell_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 962000,
               "title": "A Wind of Clear Weather in England"
             },
             {
               "audio_url": "https://www.archive.org/download/father_of_women_1703_librivox/fatherofwomen_11_meynell_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "nemo"
+              ],
               "start_ms": 1042000,
               "title": "In Sleep"
             },
             {
               "audio_url": "https://www.archive.org/download/father_of_women_1703_librivox/fatherofwomen_12_meynell_64kb.mp3",
               "length_ms": 93000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 1124000,
               "title": "The Divine Privilege"
             },
             {
               "audio_url": "https://www.archive.org/download/father_of_women_1703_librivox/fatherofwomen_13_meynell_64kb.mp3",
               "length_ms": 86000,
+              "readers": [
+                "eva-davis-d-2025"
+              ],
               "start_ms": 1217000,
               "title": "Free Will"
             },
             {
               "audio_url": "https://www.archive.org/download/father_of_women_1703_librivox/fatherofwomen_14_meynell_64kb.mp3",
               "length_ms": 108000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 1303000,
               "title": "The Two Questions"
             },
             {
               "audio_url": "https://www.archive.org/download/father_of_women_1703_librivox/fatherofwomen_15_meynell_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 1411000,
               "title": "The Lords Prayer"
             },
             {
               "audio_url": "https://www.archive.org/download/father_of_women_1703_librivox/fatherofwomen_16_meynell_64kb.mp3",
               "length_ms": 61000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 1488000,
               "title": "Easter Night"
             }
@@ -6756,7 +6921,11 @@
           "cover_url": "https://archive.org/download/father_of_women_1703_librivox/father_women_1704.jpg",
           "id": "eva-davis-d-2025",
           "language": "en",
+          "librivox_genres": [
+            "Single author"
+          ],
           "librivox_id": 11751,
+          "librivox_title": "Father of Women and Other Poems",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-father-of-women-and-other-poems-by-alice-meynell/",
@@ -6811,84 +6980,126 @@
             {
               "audio_url": "https://www.archive.org/download/father_1707.poem_librivox/father_kiser_av_64kb.mp3",
               "length_ms": 63000,
+              "readers": [
+                "antti-vahakainu"
+              ],
               "start_ms": 0,
               "title": "Father - Read by AV"
             },
             {
               "audio_url": "https://www.archive.org/download/father_1707.poem_librivox/father_kiser_bk_64kb.mp3",
               "length_ms": 93000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 63000,
               "title": "Father - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/father_1707.poem_librivox/father_kiser_blw_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "emtbev"
+              ],
               "start_ms": 156000,
               "title": "Father - Read by BLW"
             },
             {
               "audio_url": "https://www.archive.org/download/father_1707.poem_librivox/father_kiser_dl_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 231000,
               "title": "Father - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/father_1707.poem_librivox/father_kiser_emp_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "elizabeth-p"
+              ],
               "start_ms": 307000,
               "title": "Father - Read by EMP"
             },
             {
               "audio_url": "https://www.archive.org/download/father_1707.poem_librivox/father_kiser_gb_64kb.mp3",
               "length_ms": 83000,
+              "readers": [
+                "garth-burton"
+              ],
               "start_ms": 385000,
               "title": "Father - Read by GB"
             },
             {
               "audio_url": "https://www.archive.org/download/father_1707.poem_librivox/father_kiser_gg_64kb.mp3",
               "length_ms": 90000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 468000,
               "title": "Father - Read by GG"
             },
             {
               "audio_url": "https://www.archive.org/download/father_1707.poem_librivox/father_kiser_jcb_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "jason-in-panama"
+              ],
               "start_ms": 558000,
               "title": "Father - Read by JCB"
             },
             {
               "audio_url": "https://www.archive.org/download/father_1707.poem_librivox/father_kiser_jp_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "jessie-percival"
+              ],
               "start_ms": 631000,
               "title": "Father - Read by JP"
             },
             {
               "audio_url": "https://www.archive.org/download/father_1707.poem_librivox/father_kiser_lah_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 698000,
               "title": "Father - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/father_1707.poem_librivox/father_kiser_mg_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "gadish"
+              ],
               "start_ms": 775000,
               "title": "Father - Read by MG"
             },
             {
               "audio_url": "https://www.archive.org/download/father_1707.poem_librivox/father_kiser_msd_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "matthew-datcher"
+              ],
               "start_ms": 856000,
               "title": "Father - Read by MSD"
             },
             {
               "audio_url": "https://www.archive.org/download/father_1707.poem_librivox/father_kiser_rc_64kb.mp3",
               "length_ms": 93000,
+              "readers": [
+                "rick-chamberlin"
+              ],
               "start_ms": 921000,
               "title": "Father - Read by RC"
             },
             {
               "audio_url": "https://www.archive.org/download/father_1707.poem_librivox/father_kiser_vb_64kb.mp3",
               "length_ms": 83000,
+              "readers": [
+                "tovarisch"
+              ],
               "start_ms": 1014000,
               "title": "Father - Read by VB"
             }
@@ -6897,7 +7108,12 @@
           "cover_url": "https://archive.org/download/father_1707.poem_librivox/father_1707.jpg",
           "id": "antti-vahakainu",
           "language": "en",
+          "librivox_genres": [
+            "Family Life",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 12139,
+          "librivox_title": "Father",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/father-by-se-kiser/",
@@ -6985,9 +7201,24 @@
           ],
           "copyright_year": 1898,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt23/father_sergius_1210.jpg",
+          "credits": [
+            {
+              "person": "aylmer-maude",
+              "role": "translator"
+            },
+            {
+              "person": "louise-maude",
+              "role": "translator"
+            }
+          ],
           "id": "james-e-carson",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction",
+            "Short Stories"
+          ],
           "librivox_id": 5782,
+          "librivox_title": "Father Sergius",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/father-sergius-by-leo-tolstoy/",
@@ -7578,192 +7809,320 @@
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_00_higgins_64kb.mp3",
               "length_ms": 970000,
+              "readers": [
+                "james-r-hedrick"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_01_higgins_64kb.mp3",
               "length_ms": 924000,
+              "readers": [
+                "nhcooper"
+              ],
+              "section_number": 1,
               "start_ms": 970000,
               "title": "London River"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_02_higgins_64kb.mp3",
               "length_ms": 544000,
+              "readers": [
+                "skvm20"
+              ],
+              "section_number": 2,
               "start_ms": 1894000,
               "title": "The Estuary And Its Towns"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_03_higgins_64kb.mp3",
               "length_ms": 758000,
+              "readers": [
+                "nhcooper"
+              ],
+              "section_number": 3,
               "start_ms": 2438000,
               "title": "The Medway And Its Towns"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_04_higgins_64kb.mp3",
               "length_ms": 671000,
+              "readers": [
+                "paul-lawley-jones"
+              ],
+              "section_number": 4,
               "start_ms": 3196000,
               "title": "Gravesend And Tilbury"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_05_higgins_64kb.mp3",
               "length_ms": 867000,
+              "readers": [
+                "nhcooper"
+              ],
+              "section_number": 5,
               "start_ms": 3867000,
               "title": "The Marshes"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_06_higgins_64kb.mp3",
               "length_ms": 623000,
+              "readers": [
+                "peter-yearsley"
+              ],
+              "section_number": 6,
               "start_ms": 4734000,
               "title": "Woolwich"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_07_higgins_64kb.mp3",
               "length_ms": 884000,
+              "readers": [
+                "peter-yearsley"
+              ],
+              "section_number": 7,
               "start_ms": 5357000,
               "title": "Greenwich"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_08_higgins_64kb.mp3",
               "length_ms": 1109000,
+              "readers": [
+                "patrick-wallace"
+              ],
+              "section_number": 8,
               "start_ms": 6241000,
               "title": "The Port And The Docks"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_09_higgins_64kb.mp3",
               "length_ms": 528000,
+              "readers": [
+                "nhcooper"
+              ],
+              "section_number": 9,
               "start_ms": 7350000,
               "title": "How The River Founded The City"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_10_higgins_64kb.mp3",
               "length_ms": 406000,
+              "readers": [
+                "paul-lawley-jones"
+              ],
+              "section_number": 10,
               "start_ms": 7878000,
               "title": "How The City Grew (Roman Days)"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_11_higgins_64kb.mp3",
               "length_ms": 400000,
+              "readers": [
+                "paul-lawley-jones"
+              ],
+              "section_number": 11,
               "start_ms": 8284000,
               "title": "How The City Grew (Saxon Days)"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_12_higgins_64kb.mp3",
               "length_ms": 328000,
+              "readers": [
+                "kerry-adams"
+              ],
+              "section_number": 12,
               "start_ms": 8684000,
               "title": "How The City Grew (Norman Days)"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_13_higgins_64kb.mp3",
               "length_ms": 612000,
+              "readers": [
+                "jananiram"
+              ],
+              "section_number": 13,
               "start_ms": 9012000,
               "title": "The River’s First Bridge"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_14_higgins_64kb.mp3",
               "length_ms": 549000,
+              "readers": [
+                "paul-lawley-jones"
+              ],
+              "section_number": 14,
               "start_ms": 9624000,
               "title": "How The City Grew (In The Middle Ages)"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_15_higgins_64kb.mp3",
               "length_ms": 947000,
+              "readers": [
+                "brianna-w"
+              ],
+              "section_number": 15,
               "start_ms": 10173000,
               "title": "The Tower Of London"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_16_higgins_64kb.mp3",
               "length_ms": 741000,
+              "readers": [
+                "wayne-cooke"
+              ],
+              "section_number": 16,
               "start_ms": 11120000,
               "title": "How Fire Destroyed What The River Had Made"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_17_higgins_64kb.mp3",
               "length_ms": 681000,
+              "readers": [
+                "cadenb"
+              ],
+              "section_number": 17,
               "start_ms": 11861000,
               "title": "The Riverside And Its Palaces"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_18_higgins_64kb.mp3",
               "length_ms": 672000,
+              "readers": [
+                "nhcooper"
+              ],
+              "section_number": 18,
               "start_ms": 12542000,
               "title": "Royal Westminster—The Abbey"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_19_higgins_64kb.mp3",
               "length_ms": 416000,
+              "readers": [
+                "richa-jain"
+              ],
+              "section_number": 19,
               "start_ms": 13214000,
               "title": "Royal Westminster—The Houses Of Parliament"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_20_higgins_64kb.mp3",
               "length_ms": 500000,
+              "readers": [
+                "richa-jain"
+              ],
+              "section_number": 20,
               "start_ms": 13630000,
               "title": "The Riverside Of To-Day"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_21_higgins_64kb.mp3",
               "length_ms": 541000,
+              "readers": [
+                "nhcooper"
+              ],
+              "section_number": 21,
               "start_ms": 14130000,
               "title": "Stripling Thames"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_22_higgins_64kb.mp3",
               "length_ms": 1175000,
+              "readers": [
+                "nhcooper"
+              ],
+              "section_number": 22,
               "start_ms": 14671000,
               "title": "Oxford"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_23_higgins_64kb.mp3",
               "length_ms": 550000,
+              "readers": [
+                "nhcooper"
+              ],
+              "section_number": 23,
               "start_ms": 15846000,
               "title": "Abingdon, Wallingford, And The Goring Gap"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_24_higgins_64kb.mp3",
               "length_ms": 459000,
+              "readers": [
+                "paul-lawley-jones"
+              ],
+              "section_number": 24,
               "start_ms": 16396000,
               "title": "Reading"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_25_higgins_64kb.mp3",
               "length_ms": 321000,
+              "readers": [
+                "adrian-stephens"
+              ],
+              "section_number": 25,
               "start_ms": 16855000,
               "title": "Holiday Thames—Henley To Maidenhead"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_26_higgins_64kb.mp3",
               "length_ms": 1035000,
+              "readers": [
+                "adrian-stephens"
+              ],
+              "section_number": 26,
               "start_ms": 17176000,
               "title": "Windsor"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_27_higgins_64kb.mp3",
               "length_ms": 423000,
+              "readers": [
+                "kevins"
+              ],
+              "section_number": 27,
               "start_ms": 18211000,
               "title": "Eton College"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_28_higgins_64kb.mp3",
               "length_ms": 947000,
+              "readers": [
+                "adrian-stephens"
+              ],
+              "section_number": 28,
               "start_ms": 18634000,
               "title": "Hampton Court"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_29_higgins_64kb.mp3",
               "length_ms": 617000,
+              "readers": [
+                "adrian-stephens"
+              ],
+              "section_number": 29,
               "start_ms": 19581000,
               "title": "Kingston"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_30_higgins_64kb.mp3",
               "length_ms": 349000,
+              "readers": [
+                "kevins"
+              ],
+              "section_number": 30,
               "start_ms": 20198000,
               "title": "Richmond"
             },
             {
               "audio_url": "https://www.archive.org/download/father_thames_2203_librivox/fatherthames_31_higgins_64kb.mp3",
               "length_ms": 996000,
+              "readers": [
+                "adrian-stephens"
+              ],
+              "section_number": 31,
               "start_ms": 20547000,
               "title": "Richmond To Westminster"
             }
@@ -7772,7 +8131,11 @@
           "cover_url": "https://archive.org/download/father_thames_2203_librivox/fatherthames_2203.jpg",
           "id": "james-r-hedrick",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction"
+          ],
           "librivox_id": 17493,
+          "librivox_title": "Father Thames",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/father-thames-by-walter-higgins/",
@@ -7836,36 +8199,54 @@
             {
               "audio_url": "https://www.archive.org/download/fatherthriftandhisanimalfriends_2503_librivox/fatherthrift_01_sindelar_64kb.mp3",
               "length_ms": 802000,
+              "readers": [
+                "christine-rottger"
+              ],
               "start_ms": 0,
               "title": "Introduction, The Queer Little Old Man, The Little Old Man Decides, His First Day in the Forest"
             },
             {
               "audio_url": "https://www.archive.org/download/fatherthriftandhisanimalfriends_2503_librivox/fatherthrift_02_sindelar_64kb.mp3",
               "length_ms": 880000,
+              "readers": [
+                "mrsgtea"
+              ],
               "start_ms": 802000,
               "title": "Great Gray Owl, The Animals of the Forest, What Made the Bear Sick"
             },
             {
               "audio_url": "https://www.archive.org/download/fatherthriftandhisanimalfriends_2503_librivox/fatherthrift_03_sindelar_64kb.mp3",
               "length_ms": 1895000,
+              "readers": [
+                "sage-blackburn"
+              ],
               "start_ms": 1682000,
               "title": "How the Woodpeckers Helped, The Busy Beavers, The Gray Foxes and the Red Foxes, Red Squirrel and Bunny Cottontail, Shaggy Bear's Mistake"
             },
             {
               "audio_url": "https://www.archive.org/download/fatherthriftandhisanimalfriends_2503_librivox/fatherthrift_04_sindelar_64kb.mp3",
               "length_ms": 1062000,
+              "readers": [
+                "katiet"
+              ],
               "start_ms": 3577000,
               "title": "The Sweetest Thing in the Forest, Robins, Crows and Blackbirds, The Little Raindrops"
             },
             {
               "audio_url": "https://www.archive.org/download/fatherthriftandhisanimalfriends_2503_librivox/fatherthrift_05_sindelar_64kb.mp3",
               "length_ms": 989000,
+              "readers": [
+                "mrsgtea"
+              ],
               "start_ms": 4639000,
               "title": "Trouble in the Forest, Two Bad Boys, The Boys and the Birds"
             },
             {
               "audio_url": "https://www.archive.org/download/fatherthriftandhisanimalfriends_2503_librivox/fatherthrift_06_sindelar_64kb.mp3",
               "length_ms": 758000,
+              "readers": [
+                "christine-rottger"
+              ],
               "start_ms": 5628000,
               "title": "Insects and Worms, After Many Days"
             }
@@ -7874,7 +8255,11 @@
           "cover_url": "https://archive.org/download/fatherthriftandhisanimalfriends_2503_librivox/father_thrift_2503.jpg",
           "id": "christine-rottger",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction"
+          ],
           "librivox_id": 21282,
+          "librivox_title": "Father Thrift and His Animal Friends",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/father-thrift-and-his-animal-friends-by-joseph-c-sindelar/",
@@ -8605,24 +8990,36 @@
             {
               "audio_url": "https://www.archive.org/download/fatherland_1101_librivox/fatherland_parkes_cc_64kb.mp3",
               "length_ms": 96000,
+              "readers": [
+                "chris-caron"
+              ],
               "start_ms": 0,
               "title": "Fatherland - Read by CC"
             },
             {
               "audio_url": "https://www.archive.org/download/fatherland_1101_librivox/fatherland_parkes_dl_64kb.mp3",
               "length_ms": 102000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 96000,
               "title": "Fatherland - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/fatherland_1101_librivox/fatherland_parkes_ghs_64kb.mp3",
               "length_ms": 104000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 198000,
               "title": "Fatherland - Read by GHS"
             },
             {
               "audio_url": "https://www.archive.org/download/fatherland_1101_librivox/fatherland_parkes_llw_64kb.mp3",
               "length_ms": 115000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 302000,
               "title": "Fatherland - Read by LLW"
             }
@@ -8631,7 +9028,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt28/Fatherland_1301.jpg",
           "id": "chris-caron",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 5145,
+          "librivox_title": "Fatherland",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/fatherland-by-sir-henry-parkes/",

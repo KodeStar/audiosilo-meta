@@ -769,102 +769,119 @@
             {
               "audio_url": "https://www.archive.org/download/through_russian_snows_go_1103_librivox/throughrussiansnows_00_henty_64kb.mp3",
               "length_ms": 147000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 - Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/through_russian_snows_go_1103_librivox/throughrussiansnows_01_henty_64kb.mp3",
               "length_ms": 2512000,
+              "section_number": 1,
               "start_ms": 147000,
               "title": "01 - Two Brothers"
             },
             {
               "audio_url": "https://www.archive.org/download/through_russian_snows_go_1103_librivox/throughrussiansnows_02_henty_64kb.mp3",
               "length_ms": 2168000,
+              "section_number": 2,
               "start_ms": 2659000,
               "title": "02 - Before the Justices"
             },
             {
               "audio_url": "https://www.archive.org/download/through_russian_snows_go_1103_librivox/throughrussiansnows_03_henty_64kb.mp3",
               "length_ms": 2323000,
+              "section_number": 3,
               "start_ms": 4827000,
               "title": "03 - In a fresh Scrape"
             },
             {
               "audio_url": "https://www.archive.org/download/through_russian_snows_go_1103_librivox/throughrussiansnows_04_henty_64kb.mp3",
               "length_ms": 2180000,
+              "section_number": 4,
               "start_ms": 7150000,
               "title": "04 - The Smuggler's Cave"
             },
             {
               "audio_url": "https://www.archive.org/download/through_russian_snows_go_1103_librivox/throughrussiansnows_05_henty_64kb.mp3",
               "length_ms": 2268000,
+              "section_number": 5,
               "start_ms": 9330000,
               "title": "05 - Following a Trail"
             },
             {
               "audio_url": "https://www.archive.org/download/through_russian_snows_go_1103_librivox/throughrussiansnows_06_henty_64kb.mp3",
               "length_ms": 2411000,
+              "section_number": 6,
               "start_ms": 11598000,
               "title": "06 - A Commission"
             },
             {
               "audio_url": "https://www.archive.org/download/through_russian_snows_go_1103_librivox/throughrussiansnows_07_henty_64kb.mp3",
               "length_ms": 2169000,
+              "section_number": 7,
               "start_ms": 14009000,
               "title": "07 - A French Prision"
             },
             {
               "audio_url": "https://www.archive.org/download/through_russian_snows_go_1103_librivox/throughrussiansnows_08_henty_64kb.mp3",
               "length_ms": 2273000,
+              "section_number": 8,
               "start_ms": 16178000,
               "title": "08 - Pistol Practice"
             },
             {
               "audio_url": "https://www.archive.org/download/through_russian_snows_go_1103_librivox/throughrussiansnows_09_henty_64kb.mp3",
               "length_ms": 2320000,
+              "section_number": 9,
               "start_ms": 18451000,
               "title": "09 - A Duel"
             },
             {
               "audio_url": "https://www.archive.org/download/through_russian_snows_go_1103_librivox/throughrussiansnows_10_henty_64kb.mp3",
               "length_ms": 2378000,
+              "section_number": 10,
               "start_ms": 20771000,
               "title": "10 - Smolensk"
             },
             {
               "audio_url": "https://www.archive.org/download/through_russian_snows_go_1103_librivox/throughrussiansnows_11_henty_64kb.mp3",
               "length_ms": 2319000,
+              "section_number": 11,
               "start_ms": 23149000,
               "title": "11 - With the Russian Army"
             },
             {
               "audio_url": "https://www.archive.org/download/through_russian_snows_go_1103_librivox/throughrussiansnows_12_henty_64kb.mp3",
               "length_ms": 3905000,
+              "section_number": 12,
               "start_ms": 25468000,
               "title": "12 - Borodino"
             },
             {
               "audio_url": "https://www.archive.org/download/through_russian_snows_go_1103_librivox/throughrussiansnows_13_henty_64kb.mp3",
               "length_ms": 2723000,
+              "section_number": 13,
               "start_ms": 29373000,
               "title": "13 - With the Rear Guard"
             },
             {
               "audio_url": "https://www.archive.org/download/through_russian_snows_go_1103_librivox/throughrussiansnows_14_henty_64kb.mp3",
               "length_ms": 3775000,
+              "section_number": 14,
               "start_ms": 32096000,
               "title": "14 - Ney's Retreat"
             },
             {
               "audio_url": "https://www.archive.org/download/through_russian_snows_go_1103_librivox/throughrussiansnows_15_henty_64kb.mp3",
               "length_ms": 2342000,
+              "section_number": 15,
               "start_ms": 35871000,
               "title": "15 - In Comfortable Quarters"
             },
             {
               "audio_url": "https://www.archive.org/download/through_russian_snows_go_1103_librivox/throughrussiansnows_16_henty_64kb.mp3",
               "length_ms": 3918000,
+              "section_number": 16,
               "start_ms": 38213000,
               "title": "16 - An Unexpected Meeting"
             }
@@ -873,7 +890,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt21/through_russian_snows_1208.jpg",
           "id": "gary-olman",
           "language": "en",
+          "librivox_genres": [
+            "Historical Fiction",
+            "War & Military Fiction"
+          ],
           "librivox_id": 5183,
+          "librivox_title": "Through Russian Snows",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/through-russian-snows-by-g-a-henty/",
@@ -1553,240 +1575,360 @@
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_01_munroe_64kb.mp3",
               "length_ms": 737000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 0,
               "title": "CHAPTER I A bit of the Florida wilderness"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_02_munroe_64kb.mp3",
               "length_ms": 754000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 737000,
               "title": "CHAPTER II Mr. Troup Jeffers plots mischief"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_03_munroe_64kb.mp3",
               "length_ms": 794000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 1491000,
               "title": "CHAPTER III The slave-catchers at work"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_04_munroe_64kb.mp3",
               "length_ms": 829000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 2285000,
               "title": "CHAPTER IV Capture and escape of Nita Pacheco"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_05_munroe_64kb.mp3",
               "length_ms": 881000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 3114000,
               "title": "CHAPTER V  A forest bethrothal"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_06_munroe_64kb.mp3",
               "length_ms": 807000,
+              "readers": [
+                "rapunzelina"
+              ],
               "start_ms": 3995000,
               "title": "CHAPTER VI  CRUEL DEATH OF UL-WE THE STAGHOUND"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_07_munroe_64kb.mp3",
               "length_ms": 693000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 4802000,
               "title": "CHAPTER VII  COACOOCHEE IN THE CLUTCHES OF WHITE RUFFIANS"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_08_munroe_64kb.mp3",
               "length_ms": 633000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 5495000,
               "title": "CHAPTER VIII  RALPH BOYD THE ENGLISHMAN"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_09_munroe_64kb.mp3",
               "length_ms": 716000,
+              "readers": [
+                "elijah-fisher"
+              ],
               "start_ms": 6128000,
               "title": "CHAPTER IX  MYSTERIOUS DISAPPEARANCE OF A SENTINEL"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_10_munroe_64kb.mp3",
               "length_ms": 718000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 6844000,
               "title": "CHAPTER X  FONTAINE SALANO'S TREACHERY AND ITS REWARD"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_11_munroe_64kb.mp3",
               "length_ms": 601000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 7562000,
               "title": "CHAPTER XI  THE SEMINOLE MUST GO"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_12_munroe_64kb.mp3",
               "length_ms": 757000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 8163000,
               "title": "CHAPTER XII  CHEN-O-WAH IS STOLEN BY THE SLAVE-CATCHERS"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_13_munroe_64kb.mp3",
               "length_ms": 622000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 8920000,
               "title": "CHAPTER XIII  \"WILEY THOMPSON, WHERE IS MY WIFE?\""
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_14_munroe_64kb.mp3",
               "length_ms": 706000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 9542000,
               "title": "CHAPTER XIV  OSCEOLA SIGNS THE TREATY"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_15_munroe_64kb.mp3",
               "length_ms": 724000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 10248000,
               "title": "CHAPTER XV  LOUIS PACHECO BIDES HIS TIME"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_16_munroe_64kb.mp3",
               "length_ms": 658000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 10972000,
               "title": "CHAPTER XVI  OSCEOLA'S REVENGE"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_17_munroe_64kb.mp3",
               "length_ms": 654000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 11630000,
               "title": "CHAPTER XVII  ON THE VERGE OF THE WAHOO SWAMP"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_18_munroe_64kb.mp3",
               "length_ms": 700000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 12284000,
               "title": "CHAPTER XVIII  COACOOCHEE'S FIRST BATTLE"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_19_munroe_64kb.mp3",
               "length_ms": 665000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 12984000,
               "title": "CHAPTER XIX  RALPH BOYD AND THE SLAVE-CATCHER"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_20_munroe_64kb.mp3",
               "length_ms": 621000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 13649000,
               "title": "CHAPTER XX  AN ALLIGATOR AND HIS MYSTERIOUS ASSAILANT"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_21_munroe_64kb.mp3",
               "length_ms": 701000,
+              "readers": [
+                "cyndajm"
+              ],
               "start_ms": 14270000,
               "title": "CHAPTER XXI  BATTLE OF THE WITHLACOOCHEE"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_22_munroe_64kb.mp3",
               "length_ms": 585000,
+              "readers": [
+                "john"
+              ],
               "start_ms": 14971000,
               "title": "CHAPTER XXII  THE YOUNG CHIEF MAKES A TIMELY DISCOVERY"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_23_munroe_64kb.mp3",
               "length_ms": 970000,
+              "readers": [
+                "april6090"
+              ],
               "start_ms": 15556000,
               "title": "CHAPTER XXIII  SHAKESPEARE IN THE FOREST"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_24_munroe_64kb.mp3",
               "length_ms": 783000,
+              "readers": [
+                "cyndajm"
+              ],
               "start_ms": 16526000,
               "title": "CHAPTER XXIV  BOGUS INDIANS AND THE REAL ARTICLE"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_25_munroe_64kb.mp3",
               "length_ms": 921000,
+              "readers": [
+                "cyndajm"
+              ],
               "start_ms": 17309000,
               "title": "CHAPTER XXV  A SWAMP STRONGHOLD OF THE SEMINOLES"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_26_munroe_64kb.mp3",
               "length_ms": 1013000,
+              "readers": [
+                "cyndajm"
+              ],
               "start_ms": 18230000,
               "title": "CHAPTER XXVI  TWO SPIES AND THEIR FATE"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_27_munroe_64kb.mp3",
               "length_ms": 937000,
+              "readers": [
+                "cyndajm"
+              ],
               "start_ms": 19243000,
               "title": "CHAPTER XXVII  ANSTICE BOYD SAVES THE LIFE OF A CAPTIVE"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_28_munroe_64kb.mp3",
               "length_ms": 920000,
+              "readers": [
+                "cyndajm"
+              ],
               "start_ms": 20180000,
               "title": "CHAPTER XXVIII  THE MARK OF THE WILDCAT"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_29_munroe_64kb.mp3",
               "length_ms": 973000,
+              "readers": [
+                "cyndajm"
+              ],
               "start_ms": 21100000,
               "title": "CHAPTER XXIX  TREACHEROUS CAPTURE OF COACOOCHEE AND OSCEOLA"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_30_munroe_64kb.mp3",
               "length_ms": 863000,
+              "readers": [
+                "cyndajm"
+              ],
               "start_ms": 22073000,
               "title": "CHAPTER XXX  IN THE DUNGEONS OF THE ANCIENT FORTRESS"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_31_munroe_64kb.mp3",
               "length_ms": 773000,
+              "readers": [
+                "cyndajm"
+              ],
               "start_ms": 22936000,
               "title": "CHAPTER XXXI  A DARING ESCAPE"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_32_munroe_64kb.mp3",
               "length_ms": 846000,
+              "readers": [
+                "cyndajm"
+              ],
               "start_ms": 23709000,
               "title": "CHAPTER XXXII  NITA HEARS THAT COACOOCHEE IS DEAD"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_33_munroe_64kb.mp3",
               "length_ms": 911000,
+              "readers": [
+                "cyndajm"
+              ],
               "start_ms": 24555000,
               "title": "CHAPTER XXXIII  TOLD BY THE MAGNOLIA SPRING"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_34_munroe_64kb.mp3",
               "length_ms": 861000,
+              "readers": [
+                "cyndajm"
+              ],
               "start_ms": 25466000,
               "title": "CHAPTER XXXIV  FOLLOWING A MYSTERIOUS TRAIL"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_35_munroe_64kb.mp3",
               "length_ms": 853000,
+              "readers": [
+                "cyndajm"
+              ],
               "start_ms": 26327000,
               "title": "CHAPTER XXXV  FATE OF THE SLAVE-CATCHERS"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_36_munroe_64kb.mp3",
               "length_ms": 809000,
+              "readers": [
+                "czandra"
+              ],
               "start_ms": 27180000,
               "title": "CHAPTER XXXVI  PEACE IS AGAIN PROPOSED"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_37_munroe_64kb.mp3",
               "length_ms": 968000,
+              "readers": [
+                "alexandra-offiong"
+              ],
               "start_ms": 27989000,
               "title": "CHAPTER XXXVII  COACOOCHEE IS AGAIN MADE PRISONER"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_38_munroe_64kb.mp3",
               "length_ms": 941000,
+              "readers": [
+                "alexandra-offiong"
+              ],
               "start_ms": 28957000,
               "title": "CHAPTER XXXVIII  DOUGLASS FULFILS HIS MISSION"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_39_munroe_64kb.mp3",
               "length_ms": 1001000,
+              "readers": [
+                "elijah-fisher"
+              ],
               "start_ms": 29898000,
               "title": "CHAPTER XXXIX  THE BRAVEST GIRL IN FLORIDA"
             },
             {
               "audio_url": "https://www.archive.org/download/throughswampandglade_2512_librivox/swampandglade_40_munroe_64kb.mp3",
               "length_ms": 870000,
+              "readers": [
+                "elijah-fisher"
+              ],
               "start_ms": 30899000,
               "title": "CHAPTER XL  A DOUBLE WEDDING AND THE SETTING SUN"
             }
@@ -1795,7 +1937,12 @@
           "cover_url": "https://archive.org/download/throughswampandglade_2512_librivox/throughswamp_2512.jpg",
           "id": "john",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Historical Fiction"
+          ],
           "librivox_id": 21052,
+          "librivox_title": "Through Swamp and Glade: A Tale of the Seminole War",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/through-swamp-and-glade-by-kirk-munroe/",
@@ -3746,216 +3893,324 @@
             {
               "audio_url": "https://www.archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_01_roosevelt_64kb.mp3",
               "length_ms": 1057000,
+              "readers": [
+                "cm-slosson"
+              ],
               "start_ms": 0,
               "title": "Ch 1: The Start pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_02_roosevelt_64kb.mp3",
               "length_ms": 1043000,
+              "readers": [
+                "robert-beach"
+              ],
               "start_ms": 1057000,
               "title": "Ch 1: The Start pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_03_roosevelt_64kb.mp3",
               "length_ms": 1124000,
+              "readers": [
+                "matthew-westra"
+              ],
               "start_ms": 2100000,
               "title": "Ch 1: The Start pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_04_roosevelt_64kb.mp3",
               "length_ms": 1039000,
+              "readers": [
+                "matthew-westra"
+              ],
               "start_ms": 3224000,
               "title": "Ch 1: The Start pt 4"
             },
             {
               "audio_url": "https://www.archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_05_roosevelt_64kb.mp3",
               "length_ms": 1278000,
+              "readers": [
+                "gail-mattern"
+              ],
               "start_ms": 4263000,
               "title": "Ch 2: Up the Paraguay pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_06_roosevelt_64kb.mp3",
               "length_ms": 1389000,
+              "readers": [
+                "gail-mattern"
+              ],
               "start_ms": 5541000,
               "title": "Ch 2: Up the Paraguay pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_07_roosevelt_64kb.mp3",
               "length_ms": 1412000,
+              "readers": [
+                "livelyhive"
+              ],
               "start_ms": 6930000,
               "title": "Ch 3: A Jaguar Hunt on the Taquery pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_08_roosevelt_64kb.mp3",
               "length_ms": 1556000,
+              "readers": [
+                "livelyhive"
+              ],
               "start_ms": 8342000,
               "title": "Ch 3: A Jaguar Hunt on the Taquery pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_09_roosevelt_64kb.mp3",
               "length_ms": 1311000,
+              "readers": [
+                "livelyhive"
+              ],
               "start_ms": 9898000,
               "title": "Ch 3: A Jaguar Hunt on the Taquery pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_10_roosevelt_64kb.mp3",
               "length_ms": 1314000,
+              "readers": [
+                "joelle-peebles"
+              ],
               "start_ms": 11209000,
               "title": "Ch 4: The Headwaters of the Paraguay pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_11_roosevelt_64kb.mp3",
               "length_ms": 1461000,
+              "readers": [
+                "joelle-peebles"
+              ],
               "start_ms": 12523000,
               "title": "Ch 4: The Headwaters of the Paraguay pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_12_roosevelt_64kb.mp3",
               "length_ms": 1328000,
+              "readers": [
+                "joelle-peebles"
+              ],
               "start_ms": 13984000,
               "title": "Ch 4: The Headwaters of the Paraguay pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_13_roosevelt_64kb.mp3",
               "length_ms": 1235000,
+              "readers": [
+                "tom-clifton"
+              ],
               "start_ms": 15312000,
               "title": "Ch 5: Up the River of Tapirs pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_14_roosevelt_64kb.mp3",
               "length_ms": 1213000,
+              "readers": [
+                "tom-clifton"
+              ],
               "start_ms": 16547000,
               "title": "Ch 5: Up the River of Tapirs pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_15_roosevelt_64kb.mp3",
               "length_ms": 1174000,
+              "readers": [
+                "tom-clifton"
+              ],
               "start_ms": 17760000,
               "title": "Ch 5: Up the River of Tapirs pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_16_roosevelt_64kb.mp3",
               "length_ms": 1317000,
+              "readers": [
+                "benw"
+              ],
               "start_ms": 18934000,
               "title": "Ch 6: Through the Highland Wilderness of Western Brazil pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_17_roosevelt_64kb.mp3",
               "length_ms": 1279000,
+              "readers": [
+                "benw"
+              ],
               "start_ms": 20251000,
               "title": "Ch 6: Through the Highland Wilderness of Western Brazil pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_18_roosevelt_64kb.mp3",
               "length_ms": 1319000,
+              "readers": [
+                "benw"
+              ],
               "start_ms": 21530000,
               "title": "Ch 6: Through the Highland Wilderness of Western Brazil pt 3"
             },
             {
               "audio_url": "https://www.archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_19_roosevelt_64kb.mp3",
               "length_ms": 1233000,
+              "readers": [
+                "matthew-westra"
+              ],
               "start_ms": 22849000,
               "title": "Ch 7: With a Mule Train Across Nhambiquara Land pt 1"
             },
             {
               "audio_url": "https://www.archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_20_roosevelt_64kb.mp3",
               "length_ms": 1055000,
+              "readers": [
+                "barry-eads"
+              ],
               "start_ms": 24082000,
               "title": "Ch 7: With a Mule Train Across Nhambiquara Land pt 2"
             },
             {
               "audio_url": "https://www.archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_21_roosevelt_64kb.mp3",
               "length_ms": 1098000,
+              "readers": [
+                "tom-clifton"
+              ],
               "start_ms": 25137000,
               "title": "Ch 7: With a Mule Train Across Nhambiquara Land pt 3"
             },
             {
               "audio_url": "https://archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_21alt_roosevelt_64kb.mp3",
               "length_ms": 1362000,
+              "readers": [
+                "gogoblue"
+              ],
               "start_ms": 26235000,
               "title": "Ch 7: With a Mule Train Across Nhambiquara Land pt 3 (ver. 2)"
             },
             {
               "audio_url": "https://archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_22_roosevelt_64kb.mp3",
               "length_ms": 1167000,
+              "readers": [
+                "tom-clifton"
+              ],
               "start_ms": 27597000,
               "title": "Ch 7: With a Mule Train Across Nhambiquara Land pt 4"
             },
             {
               "audio_url": "https://archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_23_roosevelt_64kb.mp3",
               "length_ms": 977000,
+              "readers": [
+                "kristine-bekere"
+              ],
               "start_ms": 28764000,
               "title": "Ch 8: The River of Doubt pt 1"
             },
             {
               "audio_url": "https://archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_24_roosevelt_64kb.mp3",
               "length_ms": 1340000,
+              "readers": [
+                "kristine-bekere"
+              ],
               "start_ms": 29741000,
               "title": "Ch 8: The River of Doubt pt 2"
             },
             {
               "audio_url": "https://archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_25_roosevelt_64kb.mp3",
               "length_ms": 1358000,
+              "readers": [
+                "kristine-bekere"
+              ],
               "start_ms": 31081000,
               "title": "Ch 8: The River of Doubt pt 3"
             },
             {
               "audio_url": "https://archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_26_roosevelt_64kb.mp3",
               "length_ms": 1256000,
+              "readers": [
+                "kristine-bekere"
+              ],
               "start_ms": 32439000,
               "title": "Ch 8: The River of Doubt pt 4"
             },
             {
               "audio_url": "https://archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_27_roosevelt_64kb.mp3",
               "length_ms": 1120000,
+              "readers": [
+                "steve-foreman"
+              ],
               "start_ms": 33695000,
               "title": "Ch 9: Down an Unknown River into the Equatorial Forest pt 1"
             },
             {
               "audio_url": "https://archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_28_roosevelt_64kb.mp3",
               "length_ms": 1031000,
+              "readers": [
+                "bev-j-stevens"
+              ],
               "start_ms": 34815000,
               "title": "Ch 9: Down an Unknown River into the Equatorial Forest pt 2"
             },
             {
               "audio_url": "https://archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_29_roosevelt_64kb.mp3",
               "length_ms": 1109000,
+              "readers": [
+                "bev-j-stevens"
+              ],
               "start_ms": 35846000,
               "title": "Ch 9: Down an Unknown River into the Equatorial Forest pt 3"
             },
             {
               "audio_url": "https://archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_30_roosevelt_64kb.mp3",
               "length_ms": 1380000,
+              "readers": [
+                "bev-j-stevens"
+              ],
               "start_ms": 36955000,
               "title": "Ch 9: Down an Unknown River into the Equatorial Forest pt 4"
             },
             {
               "audio_url": "https://archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_31_roosevelt_64kb.mp3",
               "length_ms": 1282000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 38335000,
               "title": "Ch 10: To the Amazon and Home; Zoological and Grographical Results of the Expedition pt 1"
             },
             {
               "audio_url": "https://archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_32_roosevelt_64kb.mp3",
               "length_ms": 830000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 39617000,
               "title": "Ch 10: To the Amazon and Home; Zoological and Grographical Results of the Expedition pt 2"
             },
             {
               "audio_url": "https://archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_33_roosevelt_64kb.mp3",
               "length_ms": 1476000,
+              "readers": [
+                "bev-j-stevens"
+              ],
               "start_ms": 40447000,
               "title": "Appendix A: The Work of the Field Zoologist and Field Geographer in South America"
             },
             {
               "audio_url": "https://archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_34_roosevelt_64kb.mp3",
               "length_ms": 1910000,
+              "readers": [
+                "selniff"
+              ],
               "start_ms": 41923000,
               "title": "Appendix B: The Outfit for Travelling in the South American Wilderness pt 1"
             },
             {
               "audio_url": "https://archive.org/download/through_brazilian_wilderness_0907_librivox1/brazilianwilderness_35_roosevelt_64kb.mp3",
               "length_ms": 1344000,
+              "readers": [
+                "tom-clifton"
+              ],
               "start_ms": 43833000,
               "title": "Appendix B: The Outfit for Travelling in the South American Wilderness pt 2"
             }
@@ -3964,7 +4219,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt18/Through_Brazilian_Wilderness_1205.jpg",
           "id": "cm-slosson",
           "language": "en",
+          "librivox_genres": [
+            "Memoirs",
+            "Exploration"
+          ],
           "librivox_id": 2897,
+          "librivox_title": "Through the Brazilian Wilderness",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/through-the-brazilian-wilderness-by-theodore-roosevelt/",
@@ -6209,9 +6469,19 @@
           ],
           "copyright_year": 1912,
           "cover_url": "https://archive.org/download/throughthedesert_2512_librivox/throughthedesert_2601.jpg",
+          "credits": [
+            {
+              "person": "mary-w-artois",
+              "role": "translator"
+            }
+          ],
           "id": "david-granville-young",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure"
+          ],
           "librivox_id": 20599,
+          "librivox_title": "Through the Desert",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/through-the-desert-by-henryk-sienkiewicz/",

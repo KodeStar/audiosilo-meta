@@ -2799,7 +2799,13 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt6/white_linen_nurse_2_1101.jpg",
           "id": "maryann",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction",
+            "Humorous Fiction",
+            "Romance"
+          ],
           "librivox_id": 4976,
+          "librivox_title": "White Linen Nurse (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-white-linen-nurse-by-eleanor-hallowell-abbott-2/",
@@ -2890,7 +2896,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt7/white_linen_nurse_1101.jpg",
           "id": "nathalie-j",
           "language": "en",
+          "librivox_genres": [
+            "Humorous Fiction"
+          ],
           "librivox_id": 1828,
+          "librivox_title": "White Linen Nurse",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-white-linen-nurse-by-eleanor-hallowell-abbott/",
@@ -4402,66 +4412,99 @@
             {
               "audio_url": "https://www.archive.org/download/white_mans_burden_1607.poem_librivox/burden_kipling_3d_64kb.mp3",
               "length_ms": 135000,
+              "readers": [
+                "3dad"
+              ],
               "start_ms": 0,
               "title": "The White Man's Burden - Read by 3D"
             },
             {
               "audio_url": "https://www.archive.org/download/white_mans_burden_1607.poem_librivox/burden_kipling_ak_64kb.mp3",
               "length_ms": 169000,
+              "readers": [
+                "allen-kelly"
+              ],
               "start_ms": 135000,
               "title": "The White Man's Burden - Read by AK"
             },
             {
               "audio_url": "https://www.archive.org/download/white_mans_burden_1607.poem_librivox/burden_kipling_alp_64kb.mp3",
               "length_ms": 159000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 304000,
               "title": "The White Man's Burden - Read by ALP"
             },
             {
               "audio_url": "https://www.archive.org/download/white_mans_burden_1607.poem_librivox/burden_kipling_bk_64kb.mp3",
               "length_ms": 195000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 463000,
               "title": "The White Man's Burden - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/white_mans_burden_1607.poem_librivox/burden_kipling_dii_64kb.mp3",
               "length_ms": 151000,
+              "readers": [
+                "diana-majlinger"
+              ],
               "start_ms": 658000,
               "title": "The White Man's Burden - Read by DII"
             },
             {
               "audio_url": "https://www.archive.org/download/white_mans_burden_1607.poem_librivox/burden_kipling_el_64kb.mp3",
               "length_ms": 142000,
+              "readers": [
+                "newgatenovelist"
+              ],
               "start_ms": 809000,
               "title": "The White Man's Burden - Read by EL"
             },
             {
               "audio_url": "https://www.archive.org/download/white_mans_burden_1607.poem_librivox/burden_kipling_ezwa_64kb.mp3",
               "length_ms": 235000,
+              "readers": [
+                "ezwa"
+              ],
               "start_ms": 951000,
               "title": "The White Man's Burden - Sung by EZWA"
             },
             {
               "audio_url": "https://www.archive.org/download/white_mans_burden_1607.poem_librivox/burden_kipling_llw_64kb.mp3",
               "length_ms": 178000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 1186000,
               "title": "The White Man's Burden - Read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/white_mans_burden_1607.poem_librivox/burden_kipling_msd_64kb.mp3",
               "length_ms": 161000,
+              "readers": [
+                "matthew-datcher"
+              ],
               "start_ms": 1364000,
               "title": "The White Man's Burden - Read by MSD"
             },
             {
               "audio_url": "https://www.archive.org/download/white_mans_burden_1607.poem_librivox/burden_kipling_ta_64kb.mp3",
               "length_ms": 200000,
+              "readers": [
+                "tony-addison"
+              ],
               "start_ms": 1525000,
               "title": "The White Man's Burden - Read by TA"
             },
             {
               "audio_url": "https://www.archive.org/download/white_mans_burden_1607.poem_librivox/burden_kipling_tp_64kb.mp3",
               "length_ms": 159000,
+              "readers": [
+                "tomas-peter"
+              ],
               "start_ms": 1725000,
               "title": "The White Man's Burden - Read by TP"
             }
@@ -4470,7 +4513,11 @@
           "cover_url": "https://archive.org/download/white_mans_burden_1607.poem_librivox/white_mans_burden_1607.jpg",
           "id": "3dad",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 10999,
+          "librivox_title": "White Man's Burden",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-white-mans-burden-by-rudyard-kipling/",
@@ -5317,7 +5364,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt14/White_Moll_1202.jpg",
           "id": "rowdy-delaney",
           "language": "en",
+          "librivox_genres": [
+            "Crime & Mystery Fiction"
+          ],
           "librivox_id": 2069,
+          "librivox_title": "White Moll",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-white-moll-by-frank-l-packard/",
@@ -6513,7 +6564,12 @@
           "cover_url": "https://archive.org/download/whitemtntrails_2306_librivox/whitemtntrails_2306.jpg",
           "id": "j-m-smallheer",
           "language": "en",
+          "librivox_genres": [
+            "Nature",
+            "Travel & Geography"
+          ],
           "librivox_id": 18381,
+          "librivox_title": "White Mountain Trails",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/white-mountain-trails-by-winthrop-packard/",
@@ -8617,7 +8673,11 @@
           "cover_url": "https://archive.org/download/white_nights_librivox/White_Nights_1104.jpg",
           "id": "yakovlev-valery",
           "language": "ru",
+          "librivox_genres": [
+            "Published 1800 -1900"
+          ],
           "librivox_id": 557,
+          "librivox_title": "Белые ночи (White Nights)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/white-nights-by-fyodor-dostoevsky/",
@@ -8675,183 +8735,280 @@
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_01_dostoyevsky_64kb.mp3",
               "length_ms": 1765000,
+              "readers": [
+                "jennifer-anne-shivel"
+              ],
               "start_ms": 0,
               "title": "White Nights, A Sentimental Story from the Diary of a Dreamer, First Night"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_02_dostoyevsky_64kb.mp3",
               "length_ms": 2142000,
+              "readers": [
+                "bill-boerst"
+              ],
               "start_ms": 1765000,
               "title": "White Nights, A Sentimental Story from the Diary of a Dreamer, Second Night"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_03_dostoyevsky_64kb.mp3",
               "length_ms": 1363000,
+              "readers": [
+                "bill-boerst"
+              ],
               "start_ms": 3907000,
               "title": "White Nights, A Sentimental Story from the Diary of a Dreamer, Nastenka's History"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_04_dostoyevsky_64kb.mp3",
               "length_ms": 972000,
+              "readers": [
+                "cam-ha"
+              ],
               "start_ms": 5270000,
               "title": "White Nights, A Sentimental Story from the Diary of a Dreamer, Third Night"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_05_dostoyevsky_64kb.mp3",
               "length_ms": 1668000,
+              "readers": [
+                "ulf-bjorklund"
+              ],
               "start_ms": 6242000,
               "title": "White Nights, A Sentimental Story from the Diary of a Dreamer, Fourth Night & Morning"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_06_dostoyevsky_64kb.mp3",
               "length_ms": 1646000,
+              "readers": [
+                "michael-reuss"
+              ],
               "start_ms": 7910000,
               "title": "Notes from Underground, Part I. Underground, Chapters 01 - 03"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_07_dostoyevsky_64kb.mp3",
               "length_ms": 859000,
+              "readers": [
+                "michael-reuss"
+              ],
               "start_ms": 9556000,
               "title": "Notes from Underground, Part I. Underground, Chapters 04 - 06"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_08_dostoyevsky_64kb.mp3",
               "length_ms": 1599000,
+              "readers": [
+                "michael-reuss"
+              ],
               "start_ms": 10415000,
               "title": "Notes from Underground, Part I. Underground, Chapters 07 - 08"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_09_dostoyevsky_64kb.mp3",
               "length_ms": 1229000,
+              "readers": [
+                "michael-reuss"
+              ],
               "start_ms": 12014000,
               "title": "Notes from Underground, Part I. Underground, Chapters 09 - 11"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_10_dostoyevsky_64kb.mp3",
               "length_ms": 1783000,
+              "readers": [
+                "bill-boerst"
+              ],
               "start_ms": 13243000,
               "title": "Notes from Underground, Part II. A Propos of the Wet Snow, Chapter 01"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_11_dostoyevsky_64kb.mp3",
               "length_ms": 1888000,
+              "readers": [
+                "bill-boerst"
+              ],
               "start_ms": 15026000,
               "title": "Notes from Underground, Part II. A Propos of the Wet Snow, Chapters 02 - 03"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_12_dostoyevsky_64kb.mp3",
               "length_ms": 1903000,
+              "readers": [
+                "bill-boerst"
+              ],
               "start_ms": 16914000,
               "title": "Notes from Underground, Part II. A Propos of the Wet Snow, Chapters 04 - 05"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_13_dostoyevsky_64kb.mp3",
               "length_ms": 1429000,
+              "readers": [
+                "bill-boerst"
+              ],
               "start_ms": 18817000,
               "title": "Notes from Underground, Part II. A Propos of the Wet Snow, Chapter 06"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_14_dostoyevsky_64kb.mp3",
               "length_ms": 1073000,
+              "readers": [
+                "andrew-david-king"
+              ],
               "start_ms": 20246000,
               "title": "Notes from Underground, Part II. A Propos of the Wet Snow, Chapter 07"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_15_dostoyevsky_64kb.mp3",
               "length_ms": 1509000,
+              "readers": [
+                "michael-reuss"
+              ],
               "start_ms": 21319000,
               "title": "Notes from Underground, Part II. A Propos of the Wet Snow, Chapter 08"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_16_dostoyevsky_64kb.mp3",
               "length_ms": 1712000,
+              "readers": [
+                "bill-boerst"
+              ],
               "start_ms": 22828000,
               "title": "Notes from Underground, Part II. A Propos of the Wet Snow, Chapters 09 - 10"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_17_dostoyevsky_64kb.mp3",
               "length_ms": 1286000,
+              "readers": [
+                "corinna-schultz"
+              ],
               "start_ms": 24540000,
               "title": "A Faint Heart, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_18_dostoyevsky_64kb.mp3",
               "length_ms": 1954000,
+              "readers": [
+                "corinna-schultz"
+              ],
               "start_ms": 25826000,
               "title": "A Faint Heart, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_19_dostoyevsky_64kb.mp3",
               "length_ms": 1621000,
+              "readers": [
+                "corinna-schultz"
+              ],
               "start_ms": 27780000,
               "title": "A Faint Heart, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_20_dostoyevsky_64kb.mp3",
               "length_ms": 1725000,
+              "readers": [
+                "corinna-schultz"
+              ],
               "start_ms": 29401000,
               "title": "A Faint Heart, Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_21_dostoyevsky_64kb.mp3",
               "length_ms": 1201000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 31126000,
               "title": "A Christmas Tree and a Wedding"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_22_dostoyevsky_64kb.mp3",
               "length_ms": 1073000,
+              "readers": [
+                "adelaide"
+              ],
               "start_ms": 32327000,
               "title": "Polzunkov, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_23_dostoyevsky_64kb.mp3",
               "length_ms": 1668000,
+              "readers": [
+                "iskra-nikolova"
+              ],
               "start_ms": 33400000,
               "title": "Polzunkov, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_24_dostoyevsky_64kb.mp3",
               "length_ms": 1938000,
+              "readers": [
+                "michael-reuss"
+              ],
               "start_ms": 35068000,
               "title": "A Little Hero, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_25_dostoyevsky_64kb.mp3",
               "length_ms": 1831000,
+              "readers": [
+                "michael-reuss"
+              ],
               "start_ms": 37006000,
               "title": "A Little Hero, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_26_dostoyevsky_64kb.mp3",
               "length_ms": 1969000,
+              "readers": [
+                "michael-reuss"
+              ],
               "start_ms": 38837000,
               "title": "A Little Hero, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_27_dostoyevsky_64kb.mp3",
               "length_ms": 1898000,
+              "readers": [
+                "rom-maczka"
+              ],
               "start_ms": 40806000,
               "title": "Mr. Prohartchin, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_28_dostoyevsky_64kb.mp3",
               "length_ms": 1746000,
+              "readers": [
+                "rom-maczka"
+              ],
               "start_ms": 42704000,
               "title": "Mr. Prohartchin, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/white_nights_1012_librivox/whitenights_29_dostoyevsky_64kb.mp3",
               "length_ms": 1652000,
+              "readers": [
+                "rom-maczka"
+              ],
               "start_ms": 44450000,
               "title": "Mr. Prohartchin, Part 3"
             }
           ],
           "copyright_year": 1918,
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt20/white_nights_1206.jpg",
+          "credits": [
+            {
+              "person": "constance-garnett",
+              "role": "translator"
+            }
+          ],
           "id": "jennifer-anne-shivel",
           "language": "en",
+          "librivox_genres": [
+            "Short Stories"
+          ],
           "librivox_id": 4419,
+          "librivox_title": "White Nights & Other Stories",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/white-nights-other-stories-by-fyodor-dostoyevsky/",

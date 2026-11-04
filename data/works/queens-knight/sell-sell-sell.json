@@ -5751,9 +5751,20 @@
             }
           ],
           "cover_url": "https://archive.org/download/seltsame_geschichten_1511_librivox/seltsamegeschichten_1511.jpg",
+          "credits": [
+            {
+              "person": "various",
+              "role": "translator"
+            }
+          ],
           "id": "hokuspokus",
           "language": "de",
+          "librivox_genres": [
+            "Fantastic Fiction",
+            "Anthologies"
+          ],
           "librivox_id": 9974,
+          "librivox_title": "Seltsame Geschichten",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/seltsame-geschichten-by-various/",
@@ -6785,7 +6796,12 @@
           "cover_url": "https://archive.org/download/semana_arte_moderna_coletanea_2202_librivox/semana_arte_moderna_2202.jpg",
           "id": "rachel-moraes",
           "language": "pt",
+          "librivox_genres": [
+            "Free Verse",
+            "Art, Design & Architecture"
+          ],
           "librivox_id": 17490,
+          "librivox_title": "Semana de Arte Moderna de 1922 - Coletânea Centenário",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/semana-de-arte-moderna-de-1922-coletanea-centenario/",
@@ -6975,24 +6991,61 @@
             {
               "audio_url": "https://www.archive.org/download/semele_2604_librivox/semele_0_congreve_64kb.mp3",
               "length_ms": 182000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction and Dramatis Personae"
             },
             {
               "audio_url": "https://www.archive.org/download/semele_2604_librivox/semele_1_congreve_64kb.mp3",
               "length_ms": 661000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "david-purdy",
+                "beeswaxcandle",
+                "brian-fullen",
+                "shrimpphish",
+                "glys",
+                "melanie-k"
+              ],
+              "section_number": 1,
               "start_ms": 182000,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/semele_2604_librivox/semele_2_congreve_64kb.mp3",
               "length_ms": 710000,
+              "readers": [
+                "alan-mapstone",
+                "greg-giordano",
+                "jenn-broda",
+                "wendykatzhiller",
+                "dc",
+                "shrimpphish"
+              ],
+              "section_number": 2,
               "start_ms": 843000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/semele_2604_librivox/semele_3_congreve_64kb.mp3",
               "length_ms": 987000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "greg-giordano",
+                "phil-schempf",
+                "david-purdy",
+                "jenn-broda",
+                "wendykatzhiller",
+                "beeswaxcandle",
+                "shrimpphish",
+                "melanie-k"
+              ],
+              "section_number": 3,
               "start_ms": 1553000,
               "title": "Act 3"
             }
@@ -7001,7 +7054,11 @@
           "cover_url": "https://archive.org/download/semele_2604_librivox/semele_2604.jpg",
           "id": "alan-mapstone",
           "language": "en",
+          "librivox_genres": [
+            "Tragedy"
+          ],
           "librivox_id": 22197,
+          "librivox_title": "Semele",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/semele-by-william-congreve/",
@@ -7639,7 +7696,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt26/Semi-Attached_Couple_1212.jpg",
           "id": "elizabeth-klett",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction",
+            "Humorous Fiction"
+          ],
           "librivox_id": 7004,
+          "librivox_title": "Semi-Attached Couple",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-semi-attached-couple-by-emily-eden/",
@@ -7977,7 +8039,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt19/Semi_Detached_House_1209.jpg",
           "id": "elizabeth-klett",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction",
+            "Humorous Fiction"
+          ],
           "librivox_id": 5757,
+          "librivox_title": "Semi-Detached House",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-semi-detached-house-by-emily-eden/",

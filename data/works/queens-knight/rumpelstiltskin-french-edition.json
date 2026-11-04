@@ -187,7 +187,7 @@
     "rumpelstiltskin-the-brothers-grimm": {
       "added_at": "2026-07-29",
       "authors": [
-        "the-brothers-grimm"
+        "brothers-grimm"
       ],
       "credits": [
         {
@@ -3351,60 +3351,100 @@
             {
               "audio_url": "https://www.archive.org/download/rumpty-dudgets_2008_librivox/rumptydudget_00_hawthorne_64kb.mp3",
               "length_ms": 314000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/rumpty-dudgets_2008_librivox/rumptydudget_01_hawthorne_64kb.mp3",
               "length_ms": 234000,
+              "readers": [
+                "john-anderson"
+              ],
+              "section_number": 1,
               "start_ms": 314000,
               "title": "The Princess and the two Princes"
             },
             {
               "audio_url": "https://www.archive.org/download/rumpty-dudgets_2008_librivox/rumptydudget_02_hawthorne_64kb.mp3",
               "length_ms": 343000,
+              "readers": [
+                "john-anderson"
+              ],
+              "section_number": 2,
               "start_ms": 548000,
               "title": "Tom, the Faithful Guardian"
             },
             {
               "audio_url": "https://www.archive.org/download/rumpty-dudgets_2008_librivox/rumptydudget_03_hawthorne_64kb.mp3",
               "length_ms": 231000,
+              "readers": [
+                "john-anderson"
+              ],
+              "section_number": 3,
               "start_ms": 891000,
               "title": "The Ways of the Wind"
             },
             {
               "audio_url": "https://www.archive.org/download/rumpty-dudgets_2008_librivox/rumptydudget_04_hawthorne_64kb.mp3",
               "length_ms": 249000,
+              "readers": [
+                "john-anderson"
+              ],
+              "section_number": 4,
               "start_ms": 1122000,
               "title": "Rumpty-Dudget’s Triumph"
             },
             {
               "audio_url": "https://www.archive.org/download/rumpty-dudgets_2008_librivox/rumptydudget_05_hawthorne_64kb.mp3",
               "length_ms": 268000,
+              "readers": [
+                "john-anderson"
+              ],
+              "section_number": 5,
               "start_ms": 1371000,
               "title": "Tom’s Plan"
             },
             {
               "audio_url": "https://www.archive.org/download/rumpty-dudgets_2008_librivox/rumptydudget_06_hawthorne_64kb.mp3",
               "length_ms": 280000,
+              "readers": [
+                "john-anderson"
+              ],
+              "section_number": 6,
               "start_ms": 1639000,
               "title": "The Diamond Water-Drop"
             },
             {
               "audio_url": "https://www.archive.org/download/rumpty-dudgets_2008_librivox/rumptydudget_07_hawthorne_64kb.mp3",
               "length_ms": 480000,
+              "readers": [
+                "mooninya"
+              ],
+              "section_number": 7,
               "start_ms": 1919000,
               "title": "The Golden Ivy-Seed"
             },
             {
               "audio_url": "https://www.archive.org/download/rumpty-dudgets_2008_librivox/rumptydudget_08_hawthorne_64kb.mp3",
               "length_ms": 304000,
+              "readers": [
+                "mooninya"
+              ],
+              "section_number": 8,
               "start_ms": 2399000,
               "title": "The Magic Fire"
             },
             {
               "audio_url": "https://www.archive.org/download/rumpty-dudgets_2008_librivox/rumptydudget_09_hawthorne_64kb.mp3",
               "length_ms": 403000,
+              "readers": [
+                "mooninya"
+              ],
+              "section_number": 9,
               "start_ms": 2703000,
               "title": "The Rescue of Prince Henry"
             }
@@ -3413,7 +3453,11 @@
           "cover_url": "https://archive.org/download/rumpty-dudgets_2008_librivox/rumpty_2008.jpg",
           "id": "larry-wilson",
           "language": "en",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 15465,
+          "librivox_title": "Rumpty-Dudget's Tower: A Fairy Tale",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/rumpty-dudgets-tower-a-fairy-tale-by-julian-hawthorne/",

@@ -7702,39 +7702,102 @@
             {
               "audio_url": "https://www.archive.org/download/mademoiselledebelleisle_1709_librivox/debelleisle_1_dumas_64kb.mp3",
               "length_ms": 2201000,
+              "readers": [
+                "toddhw",
+                "cathar-maiden",
+                "sonia",
+                "leanne-yau",
+                "tomas-peter",
+                "owen-cook",
+                "jason-in-panama",
+                "devorah-allen",
+                "craig-franklin",
+                "kurt"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/mademoiselledebelleisle_1709_librivox/debelleisle_2_dumas_64kb.mp3",
               "length_ms": 2506000,
+              "readers": [
+                "roger-melin",
+                "toddhw",
+                "cathar-maiden",
+                "sonia",
+                "leanne-yau",
+                "tomas-peter",
+                "owen-cook",
+                "jason-in-panama",
+                "devorah-allen"
+              ],
               "start_ms": 2201000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/mademoiselledebelleisle_1709_librivox/debelleisle_3_dumas_64kb.mp3",
               "length_ms": 1447000,
+              "readers": [
+                "roger-melin",
+                "toddhw",
+                "cathar-maiden",
+                "leanne-yau",
+                "tomas-peter",
+                "owen-cook",
+                "jason-in-panama",
+                "devorah-allen"
+              ],
               "start_ms": 4707000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/mademoiselledebelleisle_1709_librivox/debelleisle_4_dumas_64kb.mp3",
               "length_ms": 1565000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "cathar-maiden",
+                "sonia",
+                "tomas-peter",
+                "owen-cook",
+                "jason-in-panama",
+                "craig-franklin",
+                "kurt"
+              ],
               "start_ms": 6154000,
               "title": "Act 4"
             },
             {
               "audio_url": "https://www.archive.org/download/mademoiselledebelleisle_1709_librivox/debelleisle_5_dumas_64kb.mp3",
               "length_ms": 1313000,
+              "readers": [
+                "roger-melin",
+                "toddhw",
+                "cathar-maiden",
+                "sonia",
+                "tomas-peter",
+                "jason-in-panama",
+                "devorah-allen"
+              ],
               "start_ms": 7719000,
               "title": "Act 5"
             }
           ],
           "copyright_year": 1863,
           "cover_url": "https://archive.org/download/mademoiselledebelleisle_1709_librivox/mademoiselle_belle_isle_1709.jpg",
+          "credits": [
+            {
+              "person": "frances-anne-kemble",
+              "role": "translator"
+            }
+          ],
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Plays"
+          ],
           "librivox_id": 12120,
+          "librivox_title": "Mademoiselle De Belle Isle",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/mademoiselle-de-belle-isle-by-alexandre-dumas/",
@@ -8029,7 +8092,11 @@
           "cover_url": "https://archive.org/download/mademoiselle_ixe_1412_librivox/Mlle_Ixe_1501.jpg",
           "id": "david-wales",
           "language": "en",
+          "librivox_genres": [
+            "Literary Fiction"
+          ],
           "librivox_id": 9471,
+          "librivox_title": "Mademoiselle Ixe",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/mademoiselle-ixe-by-mary-elizabeth-hawker/",
@@ -8136,7 +8203,12 @@
           "cover_url": "https://archive.org/download/mademoisellenorma_2411_librivox/mademoiselle_norma_2412.jpg",
           "id": "carlos-lombardi",
           "language": "es",
+          "librivox_genres": [
+            "Romance",
+            "Published 1800 -1900"
+          ],
           "librivox_id": 21037,
+          "librivox_title": "Mademoiselle Norma",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/mademoiselle-norma-by-vicente-blasco-ibanez/",

@@ -1305,12 +1305,52 @@
             {
               "audio_url": "https://www.archive.org/download/mrh_1107_librivox/mrh_1_lamb_64kb.mp3",
               "length_ms": 1749000,
+              "readers": [
+                "elizabeth-klett",
+                "mil-nicholson",
+                "lars-rolander-1942-2016",
+                "martin-geeson",
+                "ric-f",
+                "algy-pug",
+                "amy-gramour",
+                "phil-chenevert",
+                "marty-kris",
+                "bish",
+                "brian-morgan",
+                "malane",
+                "carol-box",
+                "beth-thomas-1974-2020",
+                "sarah-crampton",
+                "truebrit",
+                "max-korlinge",
+                "helen-falconer"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/mrh_1107_librivox/mrh_2_lamb_64kb.mp3",
               "length_ms": 1482000,
+              "readers": [
+                "elizabeth-klett",
+                "mil-nicholson",
+                "lars-rolander-1942-2016",
+                "martin-geeson",
+                "ric-f",
+                "algy-pug",
+                "amy-gramour",
+                "phil-chenevert",
+                "marty-kris",
+                "bish",
+                "brian-morgan",
+                "malane",
+                "carol-box",
+                "beth-thomas-1974-2020",
+                "sarah-crampton",
+                "truebrit",
+                "max-korlinge",
+                "helen-falconer"
+              ],
               "start_ms": 1749000,
               "title": "Act 2"
             }
@@ -1319,7 +1359,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt29/MrH_1302.jpg",
           "id": "elizabeth-klett",
           "language": "en",
+          "librivox_genres": [
+            "Comedy"
+          ],
           "librivox_id": 5437,
+          "librivox_title": "Mr H",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/mr-h-by-charles-lamb/",
@@ -1387,60 +1431,70 @@
             {
               "audio_url": "https://www.archive.org/download/mrharrisonsconfessions_1605_librivox/mrharrisonsconfessions__00_gaskell_64kb.mp3",
               "length_ms": 1334000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 - The Last Generation in England"
             },
             {
               "audio_url": "https://www.archive.org/download/mrharrisonsconfessions_1605_librivox/mrharrisonsconfessions__01_gaskell_64kb.mp3",
               "length_ms": 1880000,
+              "section_number": 1,
               "start_ms": 1334000,
               "title": "01 - Chapters 1 and 2"
             },
             {
               "audio_url": "https://www.archive.org/download/mrharrisonsconfessions_1605_librivox/mrharrisonsconfessions__02_gaskell_64kb.mp3",
               "length_ms": 1063000,
+              "section_number": 2,
               "start_ms": 3214000,
               "title": "02 - Chapters 3 and 4"
             },
             {
               "audio_url": "https://www.archive.org/download/mrharrisonsconfessions_1605_librivox/mrharrisonsconfessions__03_gaskell_64kb.mp3",
               "length_ms": 1495000,
+              "section_number": 3,
               "start_ms": 4277000,
               "title": "03 - Chapters 5 and 6"
             },
             {
               "audio_url": "https://www.archive.org/download/mrharrisonsconfessions_1605_librivox/mrharrisonsconfessions__04_gaskell_64kb.mp3",
               "length_ms": 1285000,
+              "section_number": 4,
               "start_ms": 5772000,
               "title": "04 - Chapters 7 and 8"
             },
             {
               "audio_url": "https://www.archive.org/download/mrharrisonsconfessions_1605_librivox/mrharrisonsconfessions__05_gaskell_64kb.mp3",
               "length_ms": 1177000,
+              "section_number": 5,
               "start_ms": 7057000,
               "title": "05 - Chapters 9 to 13"
             },
             {
               "audio_url": "https://www.archive.org/download/mrharrisonsconfessions_1605_librivox/mrharrisonsconfessions__06_gaskell_64kb.mp3",
               "length_ms": 1462000,
+              "section_number": 6,
               "start_ms": 8234000,
               "title": "06 - Chapter 14"
             },
             {
               "audio_url": "https://www.archive.org/download/mrharrisonsconfessions_1605_librivox/mrharrisonsconfessions__07_gaskell_64kb.mp3",
               "length_ms": 1292000,
+              "section_number": 7,
               "start_ms": 9696000,
               "title": "07 - Chapters  15 to 19"
             },
             {
               "audio_url": "https://www.archive.org/download/mrharrisonsconfessions_1605_librivox/mrharrisonsconfessions__08_gaskell_64kb.mp3",
               "length_ms": 1316000,
+              "section_number": 8,
               "start_ms": 10988000,
               "title": "08 - Chapters  20 to 24"
             },
             {
               "audio_url": "https://www.archive.org/download/mrharrisonsconfessions_1605_librivox/mrharrisonsconfessions__09_gaskell_64kb.mp3",
               "length_ms": 1451000,
+              "section_number": 9,
               "start_ms": 12304000,
               "title": "09 - Chapters  25 to 31"
             }
@@ -1449,7 +1503,12 @@
           "cover_url": "https://archive.org/download/mrharrisonsconfessions_1605_librivox/harrisons_confessions_gaskell_1605.jpg",
           "id": "noelbadrian",
           "language": "en",
+          "librivox_genres": [
+            "Fictional Biographies & Memoirs",
+            "Memoirs"
+          ],
           "librivox_id": 10785,
+          "librivox_title": "Mr. Harrison's Confessions",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/mr-harrisons-confessions-by-elizabeth-cleghorn-gaskell/",
@@ -1799,294 +1858,441 @@
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_01_spence_64kb.mp3",
               "length_ms": 697000,
+              "readers": [
+                "karen-savage"
+              ],
               "start_ms": 0,
               "title": "The Will, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_02_spence_64kb.mp3",
               "length_ms": 747000,
+              "readers": [
+                "karen-savage"
+              ],
               "start_ms": 697000,
               "title": "The Will, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_03_spence_64kb.mp3",
               "length_ms": 941000,
+              "readers": [
+                "karen-savage"
+              ],
               "start_ms": 1444000,
               "title": "Disappointment and Hope; Prose and Poetry, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_04_spence_64kb.mp3",
               "length_ms": 719000,
+              "readers": [
+                "karen-savage"
+              ],
               "start_ms": 2385000,
               "title": "Disappointment and Hope; Prose and Poetry, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_05_spence_64kb.mp3",
               "length_ms": 896000,
+              "readers": [
+                "karen-savage"
+              ],
               "start_ms": 3104000,
               "title": "Closed Doors, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_06_spence_64kb.mp3",
               "length_ms": 703000,
+              "readers": [
+                "karen-savage"
+              ],
               "start_ms": 4000000,
               "title": "Closed Doors, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_07_spence_64kb.mp3",
               "length_ms": 674000,
+              "readers": [
+                "karen-savage"
+              ],
               "start_ms": 4703000,
               "title": "An Evening at Mr Rennie's, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_08_spence_64kb.mp3",
               "length_ms": 739000,
+              "readers": [
+                "karen-savage"
+              ],
               "start_ms": 5377000,
               "title": "An Evening at Mr Rennie's, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_09_spence_64kb.mp3",
               "length_ms": 640000,
+              "readers": [
+                "amanda-hindman"
+              ],
               "start_ms": 6116000,
               "title": "A Humble Friend"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_10_spence_64kb.mp3",
               "length_ms": 1359000,
+              "readers": [
+                "amanda-hindman"
+              ],
               "start_ms": 6756000,
               "title": "A Bundle Of Old Letters"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_11_spence_64kb.mp3",
               "length_ms": 1179000,
+              "readers": [
+                "amanda-hindman"
+              ],
               "start_ms": 8115000,
               "title": "Up And Down"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_12_spence_64kb.mp3",
               "length_ms": 694000,
+              "readers": [
+                "amanda-hindman"
+              ],
               "start_ms": 9294000,
               "title": "Peggy Walker's Adventures, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_13_spence_64kb.mp3",
               "length_ms": 2071000,
+              "readers": [
+                "amanda-hindman"
+              ],
               "start_ms": 9988000,
               "title": "Peggy Walker's Adventures, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_14_spence_64kb.mp3",
               "length_ms": 772000,
+              "readers": [
+                "amanda-hindman"
+              ],
               "start_ms": 12059000,
               "title": "Elsie's Literary Venture, and Its Success"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_15_spence_64kb.mp3",
               "length_ms": 1249000,
+              "readers": [
+                "rechelle"
+              ],
               "start_ms": 12831000,
               "title": "Some Grave Talk In Gay Company"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_16_spence_64kb.mp3",
               "length_ms": 1518000,
+              "readers": [
+                "redabrus"
+              ],
               "start_ms": 14080000,
               "title": "Mr. Brandon In Edinburgh"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_17_spence_64kb.mp3",
               "length_ms": 778000,
+              "readers": [
+                "redabrus"
+              ],
               "start_ms": 15598000,
               "title": "Peggy's Visitors, And Francis' Resolution"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_18_spence_64kb.mp3",
               "length_ms": 946000,
+              "readers": [
+                "redabrus"
+              ],
               "start_ms": 16376000,
               "title": "Good News For Francis"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_19_spence_64kb.mp3",
               "length_ms": 1256000,
+              "readers": [
+                "redabrus"
+              ],
               "start_ms": 17322000,
               "title": "How Francis Received The Good News"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_20_spence_64kb.mp3",
               "length_ms": 2328000,
+              "readers": [
+                "redabrus"
+              ],
               "start_ms": 18578000,
               "title": "Jane's Situation"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_21_spence_64kb.mp3",
               "length_ms": 767000,
+              "readers": [
+                "rechelle"
+              ],
               "start_ms": 20906000,
               "title": "Elsie's Situation"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_22_spence_64kb.mp3",
               "length_ms": 1072000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 21673000,
               "title": "Elsie Refuses An Excellent Offer"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_23_spence_64kb.mp3",
               "length_ms": 534000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 22745000,
               "title": "Elsie Accepts Of A New Situation"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_24_spence_64kb.mp3",
               "length_ms": 1138000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 23279000,
               "title": "A Letter From Australia For Francis, Which Causes Surprise In An Unexpected Quarter"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_25_spence_64kb.mp3",
               "length_ms": 807000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 24417000,
               "title": "Harriett Phillips Does A Little Bit Of Shopping, Which Is Somewhat Fatal To Her Projects"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_26_spence_64kb.mp3",
               "length_ms": 1009000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 25224000,
               "title": "Francis Makes A Favourable Impression On Harriett Phillips"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_27_spence_64kb.mp3",
               "length_ms": 606000,
+              "readers": [
+                "jilliane-brandt"
+              ],
               "start_ms": 26233000,
               "title": "A Bonnet Gained And A Lover Lost"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_28_spence_64kb.mp3",
               "length_ms": 865000,
+              "readers": [
+                "jilliane-brandt"
+              ],
               "start_ms": 26839000,
               "title": "A Seance"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_29_spence_64kb.mp3",
               "length_ms": 557000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 27704000,
               "title": "Spiritualism, Love, And Politics"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_30_spence_64kb.mp3",
               "length_ms": 751000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 28261000,
               "title": "Chiefly Political"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_31_spence_64kb.mp3",
               "length_ms": 1012000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 29012000,
               "title": "Good-Bye"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_32_spence_64kb.mp3",
               "length_ms": 2066000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 30024000,
               "title": "Francis Hogarth's Canvass And Election"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_33_spence_64kb.mp3",
               "length_ms": 1011000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 32090000,
               "title": "Mrs. Phillips's First Grief"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_34_spence_64kb.mp3",
               "length_ms": 996000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 33101000,
               "title": "Another Good-Bye"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_35_spence_64kb.mp3",
               "length_ms": 731000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 34097000,
               "title": "Mr. Brandon's Second Proposal To Elsie, And Its Fate"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_36_spence_64kb.mp3",
               "length_ms": 1208000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 34828000,
               "title": "Mrs. Peck"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_37_spence_64kb.mp3",
               "length_ms": 1183000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 36036000,
               "title": "Raising The Wind"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_38_spence_64kb.mp3",
               "length_ms": 692000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 37219000,
               "title": "Miss Phillips Meets With A Congenial Spirit In Victoria"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_39_spence_64kb.mp3",
               "length_ms": 1320000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 37911000,
               "title": "Dr. Grant Prosecutes His Suit With Caution And Success, And Brandon Finds His Love-Making All To Do Over Again"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_40_spence_64kb.mp3",
               "length_ms": 631000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 39231000,
               "title": "Mrs. Peck's Progress"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_41_spence_64kb.mp3",
               "length_ms": 1863000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 39862000,
               "title": "Business Interrupted By Love"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_42_spence_64kb.mp3",
               "length_ms": 651000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 41725000,
               "title": "Mrs. Phillips Is Relieved"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_43_spence_64kb.mp3",
               "length_ms": 1345000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 42376000,
               "title": "Mrs. Peck's Communication"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_44_spence_64kb.mp3",
               "length_ms": 1209000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 43721000,
               "title": "Mrs. Peck's Disappointment"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_45_spence_64kb.mp3",
               "length_ms": 736000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 44930000,
               "title": "Elsie Melville's Letter"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_46_spence_64kb.mp3",
               "length_ms": 1361000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 45666000,
               "title": "What Can Be Made Of It?"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_47_spence_64kb.mp3",
               "length_ms": 760000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 47027000,
               "title": "Not So Bad, After All"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_48_spence_64kb.mp3",
               "length_ms": 812000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 47787000,
               "title": "Meeting"
             },
             {
               "audio_url": "https://www.archive.org/download/mr_hogarths_will_0902_librivox/hogarths_will_49_spence_64kb.mp3",
               "length_ms": 1350000,
+              "readers": [
+                "sibella-denton"
+              ],
               "start_ms": 48599000,
               "title": "Epilogue"
             }
@@ -2095,7 +2301,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt15/Mr_Hogarths_Will_1203.jpg",
           "id": "karen-savage",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 1980,
+          "librivox_title": "Mr Hogarth's Will",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/mr-hogarths-will-by-catherine-helen-spence/",
@@ -3070,108 +3280,162 @@
             {
               "audio_url": "https://archive.org/download/mrincoulsmisadventure_1506_librivox/mrincoulsmisadventure_01_saltus_64kb.mp3",
               "length_ms": 602000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 0,
               "title": "Mr. Incoul"
             },
             {
               "audio_url": "https://archive.org/download/mrincoulsmisadventure_1506_librivox/mrincoulsmisadventure_02_saltus_64kb.mp3",
               "length_ms": 900000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 602000,
               "title": "Miss Barhyte Agrees To Change Her Name"
             },
             {
               "audio_url": "https://archive.org/download/mrincoulsmisadventure_1506_librivox/mrincoulsmisadventure_03_saltus_64kb.mp3",
               "length_ms": 740000,
+              "readers": [
+                "jennifer-russell"
+              ],
               "start_ms": 1502000,
               "title": "After Darkness"
             },
             {
               "audio_url": "https://archive.org/download/mrincoulsmisadventure_1506_librivox/mrincoulsmisadventure_04_saltus_64kb.mp3",
               "length_ms": 901000,
+              "readers": [
+                "jairus-amar"
+              ],
               "start_ms": 2242000,
               "title": "An Evening Call"
             },
             {
               "audio_url": "https://archive.org/download/mrincoulsmisadventure_1506_librivox/mrincoulsmisadventure_05_saltus_64kb.mp3",
               "length_ms": 1683000,
+              "readers": [
+                "jairus-amar"
+              ],
               "start_ms": 3143000,
               "title": "A Yellow Envelope"
             },
             {
               "audio_url": "https://archive.org/download/mrincoulsmisadventure_1506_librivox/mrincoulsmisadventure_06_saltus_64kb.mp3",
               "length_ms": 1225000,
+              "readers": [
+                "jeremiah-sutherland"
+              ],
               "start_ms": 4826000,
               "title": "Biarritz"
             },
             {
               "audio_url": "https://archive.org/download/mrincoulsmisadventure_1506_librivox/mrincoulsmisadventure_07_saltus_64kb.mp3",
               "length_ms": 1446000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 6051000,
               "title": "What May Be Seen From A Palco"
             },
             {
               "audio_url": "https://archive.org/download/mrincoulsmisadventure_1506_librivox/mrincoulsmisadventure_08_saltus_64kb.mp3",
               "length_ms": 940000,
+              "readers": [
+                "jeremiah-sutherland"
+              ],
               "start_ms": 7497000,
               "title": "An Unexpected Guest"
             },
             {
               "audio_url": "https://archive.org/download/mrincoulsmisadventure_1506_librivox/mrincoulsmisadventure_09_saltus_64kb.mp3",
               "length_ms": 943000,
+              "readers": [
+                "jeremiah-sutherland"
+              ],
               "start_ms": 8437000,
               "title": "Mr. Incoul Dines In Spain"
             },
             {
               "audio_url": "https://archive.org/download/mrincoulsmisadventure_1506_librivox/mrincoulsmisadventure_10_saltus_64kb.mp3",
               "length_ms": 864000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 9380000,
               "title": "The Point Of View"
             },
             {
               "audio_url": "https://archive.org/download/mrincoulsmisadventure_1506_librivox/mrincoulsmisadventure_11_saltus_64kb.mp3",
               "length_ms": 629000,
+              "readers": [
+                "lynne-t"
+              ],
               "start_ms": 10244000,
               "title": "The House In The Parc Monceau"
             },
             {
               "audio_url": "https://archive.org/download/mrincoulsmisadventure_1506_librivox/mrincoulsmisadventure_12_saltus_64kb.mp3",
               "length_ms": 615000,
+              "readers": [
+                "matt-butcher"
+              ],
               "start_ms": 10873000,
               "title": "Mr. Incoul Is Preoccupied"
             },
             {
               "audio_url": "https://archive.org/download/mrincoulsmisadventure_1506_librivox/mrincoulsmisadventure_13_saltus_64kb.mp3",
               "length_ms": 570000,
+              "readers": [
+                "matt-butcher"
+              ],
               "start_ms": 11488000,
               "title": "What May Be Heard In A Greenroom"
             },
             {
               "audio_url": "https://archive.org/download/mrincoulsmisadventure_1506_librivox/mrincoulsmisadventure_15_saltus_64kb.mp3",
               "length_ms": 731000,
+              "readers": [
+                "matt-butcher"
+              ],
               "start_ms": 12058000,
               "title": "Karl Grows A Moustache"
             },
             {
               "audio_url": "https://archive.org/download/mrincoulsmisadventure_1506_librivox/mrincoulsmisadventure_14_saltus_64kb.mp3",
               "length_ms": 1100000,
+              "readers": [
+                "matt-butcher"
+              ],
               "start_ms": 12789000,
               "title": "May Expostulates"
             },
             {
               "audio_url": "https://archive.org/download/mrincoulsmisadventure_1506_librivox/mrincoulsmisadventure_16_saltus_64kb.mp3",
               "length_ms": 1064000,
+              "readers": [
+                "matt-butcher"
+              ],
               "start_ms": 13889000,
               "title": "The Bare Bodkin"
             },
             {
               "audio_url": "https://archive.org/download/mrincoulsmisadventure_1506_librivox/mrincoulsmisadventure_17_saltus_64kb.mp3",
               "length_ms": 704000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 14953000,
               "title": "Maida's Nuptials"
             },
             {
               "audio_url": "https://archive.org/download/mrincoulsmisadventure_1506_librivox/mrincoulsmisadventure_18_saltus_64kb.mp3",
               "length_ms": 531000,
+              "readers": [
+                "david-olson"
+              ],
               "start_ms": 15657000,
               "title": "Mr. Incoul Goes Over The Accounts"
             }
@@ -3180,7 +3444,12 @@
           "cover_url": "https://archive.org/download/mrincoulsmisadventure_1506_librivox/mr_incouls_misadventures_1506.jpg",
           "id": "lynne-t",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction",
+            "Humorous Fiction"
+          ],
           "librivox_id": 9259,
+          "librivox_title": "Mr. Incoul's Misadventure",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/mr-incouls-misadventure-by-edgar-saltus/",
@@ -3688,7 +3957,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt28/mr_justice_raffles_1301.jpg",
           "id": "cate-barratt",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction"
+          ],
           "librivox_id": 6199,
+          "librivox_title": "Mr. Justice Raffles",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/mr-justice-raffles-by-e-w-hornung-2/",

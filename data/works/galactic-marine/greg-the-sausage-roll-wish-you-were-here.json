@@ -4386,7 +4386,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt4/Grell_Mystery_1004.jpg",
           "id": "christine-blachford",
           "language": "en",
+          "librivox_genres": [
+            "Detective Fiction"
+          ],
           "librivox_id": 2253,
+          "librivox_title": "Grell Mystery",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-grell-mystery-by-frank-froest/",
@@ -10355,7 +10359,11 @@
           "cover_url": "https://archive.org/download/gretchen_1908_librivox/gretchen_1908.jpg",
           "id": "celine-major",
           "language": "en",
+          "librivox_genres": [
+            "Romance"
+          ],
           "librivox_id": 14173,
+          "librivox_title": "Gretchen",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/gretchen-by-mary-jane-holmes/",
@@ -10465,24 +10473,65 @@
             {
               "audio_url": "https://www.archive.org/download/gretchen_2012_librivox/gretchan_1_gilbert_64kb.mp3",
               "length_ms": 1802000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "david-purdy",
+                "mike-manolakes",
+                "kurt",
+                "adrian-stephens"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/gretchen_2012_librivox/gretchan_2_gilbert_64kb.mp3",
               "length_ms": 2372000,
+              "readers": [
+                "toddhw",
+                "sonia",
+                "mike-manolakes",
+                "kurt",
+                "tj-burns",
+                "jenn-broda",
+                "adrian-stephens",
+                "kelly-s-taylor",
+                "diane-castillo",
+                "kathi-m-walsheck"
+              ],
               "start_ms": 1802000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/gretchen_2012_librivox/gretchan_3_gilbert_64kb.mp3",
               "length_ms": 1658000,
+              "readers": [
+                "toddhw",
+                "sonia",
+                "david-purdy",
+                "mike-manolakes",
+                "kurt",
+                "tj-burns",
+                "jenn-broda",
+                "adrian-stephens",
+                "kelly-s-taylor",
+                "diane-castillo",
+                "kathi-m-walsheck"
+              ],
               "start_ms": 4174000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/gretchen_2012_librivox/gretchan_4_gilbert_64kb.mp3",
               "length_ms": 1085000,
+              "readers": [
+                "alan-mapstone",
+                "mike-manolakes",
+                "kurt",
+                "jenn-broda",
+                "adrian-stephens",
+                "kelly-s-taylor"
+              ],
               "start_ms": 5832000,
               "title": "Act 4"
             }
@@ -10491,7 +10540,11 @@
           "cover_url": "https://archive.org/download/gretchen_2012_librivox/gretchen_2101.jpg",
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Tragedy"
+          ],
           "librivox_id": 15655,
+          "librivox_title": "Gretchen",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/gretchen-by-w-s-gilbert/",

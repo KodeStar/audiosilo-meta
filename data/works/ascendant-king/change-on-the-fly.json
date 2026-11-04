@@ -7565,7 +7565,12 @@
           "cover_url": "https://archive.org/download/changed_man_dw_1401_librivox/changed_man_1401.jpg",
           "id": "david-wales",
           "language": "en",
+          "librivox_genres": [
+            "Short Stories",
+            "Published 1900 onward"
+          ],
           "librivox_id": 8458,
+          "librivox_title": "Changed Man And Other Tales",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-changed-man-and-other-tales-by-thomas-hardy/",
@@ -10131,30 +10136,56 @@
             {
               "audio_url": "https://www.archive.org/download/changeling_1212_librivox/changeling_1_middletonrowley_64kb.mp3",
               "length_ms": 1586000,
+              "readers": [
+                "elizabeth-klett",
+                "mb",
+                "arielle-lipshaw",
+                "toddhw",
+                "chuck-williamson",
+                "caprishapage",
+                "alan-mapstone",
+                "kevin-johnson"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/changeling_1212_librivox/changeling_2_middletonrowley_64kb.mp3",
               "length_ms": 1226000,
+              "readers": [
+                "elizabeth-klett",
+                "charlotte-duckett"
+              ],
               "start_ms": 1586000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/changeling_1212_librivox/changeling_3_middletonrowley_64kb.mp3",
               "length_ms": 1706000,
+              "readers": [
+                "david-nicol",
+                "availle"
+              ],
               "start_ms": 2812000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/changeling_1212_librivox/changeling_4_middletonrowley_64kb.mp3",
               "length_ms": 1823000,
+              "readers": [
+                "elizabeth-klett",
+                "meredith-clement"
+              ],
               "start_ms": 4518000,
               "title": "Act 4"
             },
             {
               "audio_url": "https://www.archive.org/download/changeling_1212_librivox/changeling_5_middletonrowley_64kb.mp3",
               "length_ms": 1602000,
+              "readers": [
+                "algy-pug",
+                "alan-mapstone"
+              ],
               "start_ms": 6341000,
               "title": "Act 5"
             }
@@ -10163,7 +10194,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt29/Changeling_1302.jpg",
           "id": "elizabeth-klett",
           "language": "en",
+          "librivox_genres": [
+            "Comedy",
+            "Tragedy"
+          ],
           "librivox_id": 7108,
+          "librivox_title": "Changeling",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-changeling-by-thomas-middleton-and-william-rowley/",

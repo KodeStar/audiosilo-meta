@@ -3299,114 +3299,133 @@
             {
               "audio_url": "https://www.archive.org/download/sab_2508_librivox/sab_00_gavellaneda_64kb.mp3",
               "length_ms": 118000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Dos palabras al lector"
             },
             {
               "audio_url": "https://www.archive.org/download/sab_2508_librivox/sab_01_gavellaneda_64kb.mp3",
               "length_ms": 1362000,
+              "section_number": 1,
               "start_ms": 118000,
               "title": "Primera parte Cap.1"
             },
             {
               "audio_url": "https://www.archive.org/download/sab_2508_librivox/sab_02_gavellaneda_64kb.mp3",
               "length_ms": 880000,
+              "section_number": 2,
               "start_ms": 1480000,
               "title": "Primera parte Cap.2"
             },
             {
               "audio_url": "https://www.archive.org/download/sab_2508_librivox/sab_03_gavellaneda_64kb.mp3",
               "length_ms": 1165000,
+              "section_number": 3,
               "start_ms": 2360000,
               "title": "Primera parte Cap.3"
             },
             {
               "audio_url": "https://www.archive.org/download/sab_2508_librivox/sab_04_gavellaneda_64kb.mp3",
               "length_ms": 948000,
+              "section_number": 4,
               "start_ms": 3525000,
               "title": "Primera parte Cap.4"
             },
             {
               "audio_url": "https://www.archive.org/download/sab_2508_librivox/sab_05_gavellaneda_64kb.mp3",
               "length_ms": 1197000,
+              "section_number": 5,
               "start_ms": 4473000,
               "title": "Primera parte Cap.5"
             },
             {
               "audio_url": "https://www.archive.org/download/sab_2508_librivox/sab_06_gavellaneda_64kb.mp3",
               "length_ms": 1008000,
+              "section_number": 6,
               "start_ms": 5670000,
               "title": "Primera parte Cap.6"
             },
             {
               "audio_url": "https://www.archive.org/download/sab_2508_librivox/sab_07_gavellaneda_64kb.mp3",
               "length_ms": 844000,
+              "section_number": 7,
               "start_ms": 6678000,
               "title": "Primera parte Cap.7"
             },
             {
               "audio_url": "https://www.archive.org/download/sab_2508_librivox/sab_08_gavellaneda_64kb.mp3",
               "length_ms": 932000,
+              "section_number": 8,
               "start_ms": 7522000,
               "title": "Primera parte Cap.8"
             },
             {
               "audio_url": "https://www.archive.org/download/sab_2508_librivox/sab_09_gavellaneda_64kb.mp3",
               "length_ms": 1189000,
+              "section_number": 9,
               "start_ms": 8454000,
               "title": "Primera parte Cap.9"
             },
             {
               "audio_url": "https://www.archive.org/download/sab_2508_librivox/sab_10_gavellaneda_64kb.mp3",
               "length_ms": 2225000,
+              "section_number": 10,
               "start_ms": 9643000,
               "title": "Primera parte Cap.10"
             },
             {
               "audio_url": "https://www.archive.org/download/sab_2508_librivox/sab_11_gavellaneda_64kb.mp3",
               "length_ms": 1549000,
+              "section_number": 11,
               "start_ms": 11868000,
               "title": "Primera parte Cap.11"
             },
             {
               "audio_url": "https://www.archive.org/download/sab_2508_librivox/sab_12_gavellaneda_64kb.mp3",
               "length_ms": 1621000,
+              "section_number": 12,
               "start_ms": 13417000,
               "title": "Segunda parte Cap.1"
             },
             {
               "audio_url": "https://www.archive.org/download/sab_2508_librivox/sab_13_gavellaneda_64kb.mp3",
               "length_ms": 2102000,
+              "section_number": 13,
               "start_ms": 15038000,
               "title": "Segunda parte Cap.2"
             },
             {
               "audio_url": "https://www.archive.org/download/sab_2508_librivox/sab_14_gavellaneda_64kb.mp3",
               "length_ms": 1458000,
+              "section_number": 14,
               "start_ms": 17140000,
               "title": "Segunda parte Cap.3"
             },
             {
               "audio_url": "https://www.archive.org/download/sab_2508_librivox/sab_15_gavellaneda_64kb.mp3",
               "length_ms": 1341000,
+              "section_number": 15,
               "start_ms": 18598000,
               "title": "Segunda parte Cap.4"
             },
             {
               "audio_url": "https://www.archive.org/download/sab_2508_librivox/sab_16_gavellaneda_64kb.mp3",
               "length_ms": 1250000,
+              "section_number": 16,
               "start_ms": 19939000,
               "title": "Segunda parte Cap.5"
             },
             {
               "audio_url": "https://www.archive.org/download/sab_2508_librivox/sab_17_gavellaneda_64kb.mp3",
               "length_ms": 1088000,
+              "section_number": 17,
               "start_ms": 21189000,
               "title": "Conclusión parte 1"
             },
             {
               "audio_url": "https://www.archive.org/download/sab_2508_librivox/sab_18_gavellaneda_64kb.mp3",
               "length_ms": 1838000,
+              "section_number": 18,
               "start_ms": 22277000,
               "title": "Conclusión parte 2"
             }
@@ -3415,7 +3434,13 @@
           "cover_url": "https://archive.org/download/sab_2508_librivox/sab_2508.jpg",
           "id": "epachuko",
           "language": "es",
+          "librivox_genres": [
+            "Historical Fiction",
+            "Romance",
+            "Published 1800 -1900"
+          ],
           "librivox_id": 21773,
+          "librivox_title": "Sab",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/sab-by-gertrudiz-gomez-de-avellaneda/",
@@ -7629,96 +7654,112 @@
             {
               "audio_url": "https://www.archive.org/download/sabotage_0903_librivox1/sabotage_00_flynn_64kb.mp3",
               "length_ms": 65000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/sabotage_0903_librivox1/sabotage_01_flynn_64kb.mp3",
               "length_ms": 246000,
+              "section_number": 1,
               "start_ms": 65000,
               "title": "Its necessity in the class war"
             },
             {
               "audio_url": "https://www.archive.org/download/sabotage_0903_librivox1/sabotage_02_flynn_64kb.mp3",
               "length_ms": 137000,
+              "section_number": 2,
               "start_ms": 311000,
               "title": "General forms of sabotage"
             },
             {
               "audio_url": "https://www.archive.org/download/sabotage_0903_librivox1/sabotage_03_flynn_64kb.mp3",
               "length_ms": 266000,
+              "section_number": 3,
               "start_ms": 448000,
               "title": "Short pay, less work, 'ca canny'"
             },
             {
               "audio_url": "https://www.archive.org/download/sabotage_0903_librivox1/sabotage_04_flynn_64kb.mp3",
               "length_ms": 97000,
+              "section_number": 4,
               "start_ms": 714000,
               "title": "Interfering with quality of goods"
             },
             {
               "audio_url": "https://www.archive.org/download/sabotage_0903_librivox1/sabotage_05_flynn_64kb.mp3",
               "length_ms": 107000,
+              "section_number": 5,
               "start_ms": 811000,
               "title": "Boyd's advice to silk mill slaves"
             },
             {
               "audio_url": "https://www.archive.org/download/sabotage_0903_librivox1/sabotage_06_flynn_64kb.mp3",
               "length_ms": 189000,
+              "section_number": 6,
               "start_ms": 918000,
               "title": "'Dynamiting' silk"
             },
             {
               "audio_url": "https://www.archive.org/download/sabotage_0903_librivox1/sabotage_07_flynn_64kb.mp3",
               "length_ms": 213000,
+              "section_number": 7,
               "start_ms": 1107000,
               "title": "Non-adulteration and over-adulteration"
             },
             {
               "audio_url": "https://www.archive.org/download/sabotage_0903_librivox1/sabotage_08_flynn_64kb.mp3",
               "length_ms": 281000,
+              "section_number": 8,
               "start_ms": 1320000,
               "title": "'Open mouth' sabotage"
             },
             {
               "audio_url": "https://www.archive.org/download/sabotage_0903_librivox1/sabotage_09_flynn_64kb.mp3",
               "length_ms": 344000,
+              "section_number": 9,
               "start_ms": 1601000,
               "title": "Following the \"book of rules\""
             },
             {
               "audio_url": "https://www.archive.org/download/sabotage_0903_librivox1/sabotage_10_flynn_64kb.mp3",
               "length_ms": 176000,
+              "section_number": 10,
               "start_ms": 1945000,
               "title": "Putting the machine on strike"
             },
             {
               "audio_url": "https://www.archive.org/download/sabotage_0903_librivox1/sabotage_11_flynn_64kb.mp3",
               "length_ms": 193000,
+              "section_number": 11,
               "start_ms": 2121000,
               "title": "Print the truth or you don't print at all"
             },
             {
               "audio_url": "https://www.archive.org/download/sabotage_0903_librivox1/sabotage_12_flynn_64kb.mp3",
               "length_ms": 243000,
+              "section_number": 12,
               "start_ms": 2314000,
               "title": "Used sabotage, but didn't know what you called it"
             },
             {
               "audio_url": "https://www.archive.org/download/sabotage_0903_librivox1/sabotage_13_flynn_64kb.mp3",
               "length_ms": 298000,
+              "section_number": 13,
               "start_ms": 2557000,
               "title": "Sabotage and \"moral fiber\""
             },
             {
               "audio_url": "https://www.archive.org/download/sabotage_0903_librivox1/sabotage_14_flynn_64kb.mp3",
               "length_ms": 124000,
+              "section_number": 14,
               "start_ms": 2855000,
               "title": "Limiting the over-supply of slaves"
             },
             {
               "audio_url": "https://www.archive.org/download/sabotage_0903_librivox1/sabotage_15_flynn_64kb.mp3",
               "length_ms": 235000,
+              "section_number": 15,
               "start_ms": 2979000,
               "title": "Sabotage a War Measure"
             }
@@ -7727,7 +7768,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt15/Sabotage_1203.jpg",
           "id": "enko",
           "language": "en",
+          "librivox_genres": [
+            "Education",
+            "Political Science"
+          ],
           "librivox_id": 2960,
+          "librivox_title": "Sabotage",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/sabatoge-by-elizabeth-gurley-flynn/",
@@ -9880,7 +9926,12 @@
           "cover_url": "https://archive.org/download/sabotage_in_space_1512_librivox/sabotage_space_1512.jpg",
           "id": "kirksvoice",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Science Fiction"
+          ],
           "librivox_id": 10247,
+          "librivox_title": "Sabotage in Space",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/sabotage-in-space-by-carey-rockwell/",
@@ -12455,7 +12506,11 @@
           "cover_url": "https://archive.org/download/saboteursontheriver_2406_librivox/saboteurs_river_2406.jpg",
           "id": "amanda-leung",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure"
+          ],
           "librivox_id": 20425,
+          "librivox_title": "Saboteurs on the River",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/saboteurs-on-the-river-by-mildred-a-wirt-benson/",

@@ -663,6 +663,12 @@
             {
               "audio_url": "https://www.archive.org/download/predlozhenie_1404_librivox/predlozhenie_01_chekhov_64kb.mp3",
               "length_ms": 1861000,
+              "readers": [
+                "mark-chulsky",
+                "tovarisch",
+                "anastasiia-solokha",
+                "luiza-karimova"
+              ],
               "start_ms": 0,
               "title": "Предложение"
             }
@@ -671,7 +677,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/predlozhenie_1405.jpg",
           "id": "mark-chulsky",
           "language": "ru",
+          "librivox_genres": [
+            "Comedy"
+          ],
           "librivox_id": 8692,
+          "librivox_title": "Предложение (Predlozhenie)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/predlozhenie-by-anton-chekhov/",
@@ -795,78 +805,91 @@
             {
               "audio_url": "https://www.archive.org/download/prefacetopolitics_1404_librivox/prefacetopolitics_00_lippmann_64kb.mp3",
               "length_ms": 595000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/prefacetopolitics_1404_librivox/prefacetopolitics_01_lippmann_64kb.mp3",
               "length_ms": 3275000,
+              "section_number": 1,
               "start_ms": 595000,
               "title": "Chapter 1"
             },
             {
               "audio_url": "https://www.archive.org/download/prefacetopolitics_1404_librivox/prefacetopolitics_02_lippmann_64kb.mp3",
               "length_ms": 1879000,
+              "section_number": 2,
               "start_ms": 3870000,
               "title": "Chapter 2"
             },
             {
               "audio_url": "https://www.archive.org/download/prefacetopolitics_1404_librivox/prefacetopolitics_03_lippmann_64kb.mp3",
               "length_ms": 3262000,
+              "section_number": 3,
               "start_ms": 5749000,
               "title": "Chapter 3"
             },
             {
               "audio_url": "https://www.archive.org/download/prefacetopolitics_1404_librivox/prefacetopolitics_04_lippmann_64kb.mp3",
               "length_ms": 3488000,
+              "section_number": 4,
               "start_ms": 9011000,
               "title": "Chapter 4"
             },
             {
               "audio_url": "https://www.archive.org/download/prefacetopolitics_1404_librivox/prefacetopolitics_05_lippmann_64kb.mp3",
               "length_ms": 3584000,
+              "section_number": 5,
               "start_ms": 12499000,
               "title": "Chapter 5"
             },
             {
               "audio_url": "https://www.archive.org/download/prefacetopolitics_1404_librivox/prefacetopolitics_06_lippmann_64kb.mp3",
               "length_ms": 2060000,
+              "section_number": 6,
               "start_ms": 16083000,
               "title": "Chapter 6, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/prefacetopolitics_1404_librivox/prefacetopolitics_07_lippmann_64kb.mp3",
               "length_ms": 2354000,
+              "section_number": 7,
               "start_ms": 18143000,
               "title": "Chapter 6, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/prefacetopolitics_1404_librivox/prefacetopolitics_08_lippmann_64kb.mp3",
               "length_ms": 2014000,
+              "section_number": 8,
               "start_ms": 20497000,
               "title": "Chapter 7, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/prefacetopolitics_1404_librivox/prefacetopolitics_09_lippmann_64kb.mp3",
               "length_ms": 2336000,
+              "section_number": 9,
               "start_ms": 22511000,
               "title": "Chapter 7, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/prefacetopolitics_1404_librivox/prefacetopolitics_10_lippmann_64kb.mp3",
               "length_ms": 2470000,
+              "section_number": 10,
               "start_ms": 24847000,
               "title": "Chapter 8"
             },
             {
               "audio_url": "https://www.archive.org/download/prefacetopolitics_1404_librivox/prefacetopolitics_11_lippmann_64kb.mp3",
               "length_ms": 2542000,
+              "section_number": 11,
               "start_ms": 27317000,
               "title": "Chapter 9, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/prefacetopolitics_1404_librivox/prefacetopolitics_12_lippmann_64kb.mp3",
               "length_ms": 2056000,
+              "section_number": 12,
               "start_ms": 29859000,
               "title": "Chapter 9, Part 2"
             }
@@ -875,7 +898,11 @@
           "cover_url": "https://archive.org/download/prefacetopolitics_1404_librivox/a_preface_to_politics_1405.jpg",
           "id": "dpranitis",
           "language": "en",
+          "librivox_genres": [
+            "Political Science"
+          ],
           "librivox_id": 8501,
+          "librivox_title": "Preface to Politics",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-preface-to-politics-by-walter-lippmann/",
@@ -924,234 +951,390 @@
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_00_eliot_64kb.mp3",
               "length_ms": 468000,
+              "readers": [
+                "martin-geeson"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introductory Notes"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_01_eliot_64kb.mp3",
               "length_ms": 2422000,
+              "readers": [
+                "martin-geeson"
+              ],
+              "section_number": 1,
               "start_ms": 468000,
               "title": "Prologues & Epilogues to the History of Troy and other writings by William Caxton, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_02_eliot_64kb.mp3",
               "length_ms": 2119000,
+              "readers": [
+                "martin-geeson"
+              ],
+              "section_number": 2,
               "start_ms": 2890000,
               "title": "Prologues & Epilogues to the History of Troy and other writings, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_03_eliot_64kb.mp3",
               "length_ms": 3102000,
+              "readers": [
+                "maryann"
+              ],
+              "section_number": 3,
               "start_ms": 5009000,
               "title": "Dedication of The Institutes of the Christian Religion by John Calvin"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_04_eliot_64kb.mp3",
               "length_ms": 620000,
+              "readers": [
+                "maryann"
+              ],
+              "section_number": 4,
               "start_ms": 8111000,
               "title": "General Syllabus by John Calvin"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_05_eliot_64kb.mp3",
               "length_ms": 950000,
+              "readers": [
+                "availle"
+              ],
+              "section_number": 5,
               "start_ms": 8731000,
               "title": "Dedication of The Revolutions of the Heavenly Bodies by Nicolaus Copernicus"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_06_eliot_64kb.mp3",
               "length_ms": 364000,
+              "readers": [
+                "doublemirrors"
+              ],
+              "section_number": 6,
               "start_ms": 9681000,
               "title": "Preface to the History of the Reformation in Scotland by John Knox"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_07_eliot_64kb.mp3",
               "length_ms": 924000,
+              "readers": [
+                "martin-geeson"
+              ],
+              "section_number": 7,
               "start_ms": 10045000,
               "title": "Prefatory Letter to Sir Walter Raleigh on The Faerie Queene by Edmund Spenser"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_08_eliot_64kb.mp3",
               "length_ms": 2572000,
+              "readers": [
+                "bob-neufeld"
+              ],
+              "section_number": 8,
               "start_ms": 10969000,
               "title": "Preface to The History of the World by Sir Walter Raleigh, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_09_eliot_64kb.mp3",
               "length_ms": 2755000,
+              "readers": [
+                "bob-neufeld"
+              ],
+              "section_number": 9,
               "start_ms": 13541000,
               "title": "Preface to The History of the World, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_10_eliot_64kb.mp3",
               "length_ms": 1763000,
+              "readers": [
+                "bob-neufeld"
+              ],
+              "section_number": 10,
               "start_ms": 16296000,
               "title": "Preface to The History of the World, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_11_eliot_64kb.mp3",
               "length_ms": 1493000,
+              "readers": [
+                "bob-neufeld"
+              ],
+              "section_number": 11,
               "start_ms": 18059000,
               "title": "Preface to The History of the World, Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_12_eliot_64kb.mp3",
               "length_ms": 2176000,
+              "readers": [
+                "bob-neufeld"
+              ],
+              "section_number": 12,
               "start_ms": 19552000,
               "title": "Preface and Plan of The Instauratio Magna by Sir Francis Bacon, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_13_eliot_64kb.mp3",
               "length_ms": 2008000,
+              "readers": [
+                "bob-neufeld"
+              ],
+              "section_number": 13,
               "start_ms": 21728000,
               "title": "Preface and Plan of The Instauratio Magna, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_14_eliot_64kb.mp3",
               "length_ms": 866000,
+              "readers": [
+                "martin-gradwell"
+              ],
+              "section_number": 14,
               "start_ms": 23736000,
               "title": "Preface and Plan of The Instauratio Magna, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_15_eliot_64kb.mp3",
               "length_ms": 363000,
+              "readers": [
+                "martin-geeson"
+              ],
+              "section_number": 15,
               "start_ms": 24602000,
               "title": "Preface to the First Folio Edition of Shakespeare's Plays by John Heminge"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_16_eliot_64kb.mp3",
               "length_ms": 518000,
+              "readers": [
+                "availle"
+              ],
+              "section_number": 16,
               "start_ms": 24965000,
               "title": "Preface to The Philosophiae Naturalis Principia Mathematica by Sir Isaac Newton"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_17_eliot_64kb.mp3",
               "length_ms": 2598000,
+              "readers": [
+                "martin-geeson"
+              ],
+              "section_number": 17,
               "start_ms": 25483000,
               "title": "Preface to Fables, Ancient and Modern by John Dryden, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_18_eliot_64kb.mp3",
               "length_ms": 2536000,
+              "readers": [
+                "martin-geeson"
+              ],
+              "section_number": 18,
               "start_ms": 28081000,
               "title": "Preface to Fables, Ancient and Modern, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_19_eliot_64kb.mp3",
               "length_ms": 1219000,
+              "readers": [
+                "denny-sayers-d-2015"
+              ],
+              "section_number": 19,
               "start_ms": 30617000,
               "title": "Preface to Joseph Andrews by Henry Fielding"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_20_eliot_64kb.mp3",
               "length_ms": 2170000,
+              "readers": [
+                "denny-sayers-d-2015"
+              ],
+              "section_number": 20,
               "start_ms": 31836000,
               "title": "Preface to the English Dictionary by Samuel Johnson"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_21_eliot_64kb.mp3",
               "length_ms": 2992000,
+              "readers": [
+                "denny-sayers-d-2015"
+              ],
+              "section_number": 21,
               "start_ms": 34006000,
               "title": "To the Earl of Chesterfield by Samuel Johnson"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_22_eliot_64kb.mp3",
               "length_ms": 3030000,
+              "readers": [
+                "denny-sayers-d-2015"
+              ],
+              "section_number": 22,
               "start_ms": 36998000,
               "title": "Preface to Shakespeare by Samuel Johnson, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_23_eliot_64kb.mp3",
               "length_ms": 3116000,
+              "readers": [
+                "denny-sayers-d-2015"
+              ],
+              "section_number": 23,
               "start_ms": 40028000,
               "title": "Preface to Shakespeare, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_24_eliot_64kb.mp3",
               "length_ms": 1858000,
+              "readers": [
+                "denny-sayers-d-2015"
+              ],
+              "section_number": 24,
               "start_ms": 43144000,
               "title": "Preface to Shakespeare, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_25_eliot_64kb.mp3",
               "length_ms": 2814000,
+              "readers": [
+                "ernst-pattynama"
+              ],
+              "section_number": 25,
               "start_ms": 45002000,
               "title": "Introduction to The Propylaen by Johann Wolfgang von Goethe"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_26_eliot_64kb.mp3",
               "length_ms": 2283000,
+              "readers": [
+                "triciag"
+              ],
+              "section_number": 26,
               "start_ms": 47816000,
               "title": "Prefaces to Poems by William Wordsworth, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_27_eliot_64kb.mp3",
               "length_ms": 2443000,
+              "readers": [
+                "triciag"
+              ],
+              "section_number": 27,
               "start_ms": 50099000,
               "title": "Prefaces to Poems, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_28_eliot_64kb.mp3",
               "length_ms": 2104000,
+              "readers": [
+                "triciag"
+              ],
+              "section_number": 28,
               "start_ms": 52542000,
               "title": "Prefaces to Poems, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_29_eliot_64kb.mp3",
               "length_ms": 2142000,
+              "readers": [
+                "triciag"
+              ],
+              "section_number": 29,
               "start_ms": 54646000,
               "title": "Prefaces to Poems, Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_30_eliot_64kb.mp3",
               "length_ms": 1981000,
+              "readers": [
+                "triciag"
+              ],
+              "section_number": 30,
               "start_ms": 56788000,
               "title": "Prefaces to Poems, Part 5"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_31_eliot_64kb.mp3",
               "length_ms": 2817000,
+              "readers": [
+                "leni"
+              ],
+              "section_number": 31,
               "start_ms": 58769000,
               "title": "Preface to Cromwell by Victor Hugo, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_32_eliot_64kb.mp3",
               "length_ms": 2720000,
+              "readers": [
+                "leni"
+              ],
+              "section_number": 32,
               "start_ms": 61586000,
               "title": "Preface to Cromwell, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_33_eliot_64kb.mp3",
               "length_ms": 2280000,
+              "readers": [
+                "leni"
+              ],
+              "section_number": 33,
               "start_ms": 64306000,
               "title": "Preface to Cromwell, Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_34_eliot_64kb.mp3",
               "length_ms": 2215000,
+              "readers": [
+                "leni"
+              ],
+              "section_number": 34,
               "start_ms": 66586000,
               "title": "Preface to Cromwell, Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_35_eliot_64kb.mp3",
               "length_ms": 2524000,
+              "readers": [
+                "denny-sayers-d-2015"
+              ],
+              "section_number": 35,
               "start_ms": 68801000,
               "title": "Preface to Leaves of Grass by Walt Whitman, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_36_eliot_64kb.mp3",
               "length_ms": 2093000,
+              "readers": [
+                "denny-sayers-d-2015"
+              ],
+              "section_number": 36,
               "start_ms": 71325000,
               "title": "Preface to Leaves of Grass, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_37_eliot_64kb.mp3",
               "length_ms": 1752000,
+              "readers": [
+                "kalynda"
+              ],
+              "section_number": 37,
               "start_ms": 73418000,
               "title": "Introduction to The History of English Literature by H. A. Taine, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/prefaces_prologues_1201_librivox/prefaces_38_eliot_64kb.mp3",
               "length_ms": 2160000,
+              "readers": [
+                "kalynda"
+              ],
+              "section_number": 38,
               "start_ms": 75170000,
               "title": "Introduction to The History of English Literature, Part 2"
             }
@@ -1160,7 +1343,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt15/prefaces_prologues_1203.jpg",
           "id": "martin-geeson",
           "language": "en",
+          "librivox_genres": [
+            "Literary Collections"
+          ],
           "librivox_id": 4541,
+          "librivox_title": "Prefaces and Prologues to Famous Books",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/prefaces-and-prologues-to-famous-books-by-various/",
@@ -1221,72 +1408,108 @@
             {
               "audio_url": "https://www.archive.org/download/prefatorysonnets_2506.poem_librivox/prefatorysonnets_kendall_bk_64kb.mp3",
               "length_ms": 133000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 0,
               "title": "Prefatory Sonnets - read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/prefatorysonnets_2506.poem_librivox/prefatorysonnets_kendall_blc_64kb.mp3",
               "length_ms": 120000,
+              "readers": [
+                "brize-c"
+              ],
               "start_ms": 133000,
               "title": "Prefatory Sonnets - read by BLC"
             },
             {
               "audio_url": "https://www.archive.org/download/prefatorysonnets_2506.poem_librivox/prefatorysonnets_kendall_bwc_64kb.mp3",
               "length_ms": 120000,
+              "readers": [
+                "beeswaxcandle"
+              ],
               "start_ms": 253000,
               "title": "Prefatory Sonnets - read by BWC"
             },
             {
               "audio_url": "https://www.archive.org/download/prefatorysonnets_2506.poem_librivox/prefatorysonnets_kendall_dl_64kb.mp3",
               "length_ms": 128000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 373000,
               "title": "Prefatory Sonnets - read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/prefatorysonnets_2506.poem_librivox/prefatorysonnets_kendall_dls_64kb.mp3",
               "length_ms": 133000,
+              "readers": [
+                "leesalter"
+              ],
               "start_ms": 501000,
               "title": "Prefatory Sonnets - read by DLS"
             },
             {
               "audio_url": "https://www.archive.org/download/prefatorysonnets_2506.poem_librivox/prefatorysonnets_kendall_gln_64kb.mp3",
               "length_ms": 130000,
+              "readers": [
+                "garth-burton"
+              ],
               "start_ms": 634000,
               "title": "Prefatory Sonnets - read by GLN"
             },
             {
               "audio_url": "https://www.archive.org/download/prefatorysonnets_2506.poem_librivox/prefatorysonnets_kendall_lah_64kb.mp3",
               "length_ms": 122000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 764000,
               "title": "Prefatory Sonnets - read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/prefatorysonnets_2506.poem_librivox/prefatorysonnets_kendall_lcw_64kb.mp3",
               "length_ms": 115000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 886000,
               "title": "Prefatory Sonnets - read by LCW"
             },
             {
               "audio_url": "https://www.archive.org/download/prefatorysonnets_2506.poem_librivox/prefatorysonnets_kendall_pac_64kb.mp3",
               "length_ms": 122000,
+              "readers": [
+                "paulclayton"
+              ],
               "start_ms": 1001000,
               "title": "Prefatory Sonnets - read by PAC"
             },
             {
               "audio_url": "https://www.archive.org/download/prefatorysonnets_2506.poem_librivox/prefatorysonnets_kendall_pfs_64kb.mp3",
               "length_ms": 121000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 1123000,
               "title": "Prefatory Sonnets - read by PFS"
             },
             {
               "audio_url": "https://www.archive.org/download/prefatorysonnets_2506.poem_librivox/prefatorysonnets_kendall_slm_64kb.mp3",
               "length_ms": 113000,
+              "readers": [
+                "stacey-malcolm"
+              ],
               "start_ms": 1244000,
               "title": "Prefatory Sonnets - read by SLM"
             },
             {
               "audio_url": "https://www.archive.org/download/prefatorysonnets_2506.poem_librivox/prefatorysonnets_kendall_vod_64kb.mp3",
               "length_ms": 112000,
+              "readers": [
+                "dave-campbell"
+              ],
               "start_ms": 1357000,
               "title": "Prefatory Sonnets - read by VOD"
             }
@@ -1294,7 +1517,11 @@
           "cover_url": "https://archive.org/download/prefatorysonnets_2506.poem_librivox/prefatorysonnets_2507.jpg",
           "id": "bruce-kachuk",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 21726,
+          "librivox_title": "Prefatory Sonnets",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/prefatory-sonnets-by-henry-kendall/",
@@ -1356,108 +1583,162 @@
             {
               "audio_url": "https://www.archive.org/download/prefects_uncle_1908_librivox/prefectsuncle_01_wodehouse_64kb.mp3",
               "length_ms": 973000,
+              "readers": [
+                "madame-tusk"
+              ],
               "start_ms": 0,
               "title": "Term Begins"
             },
             {
               "audio_url": "https://www.archive.org/download/prefects_uncle_1908_librivox/prefectsuncle_02_wodehouse_64kb.mp3",
               "length_ms": 748000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 973000,
               "title": "Introduces an Unusual Uncle"
             },
             {
               "audio_url": "https://www.archive.org/download/prefects_uncle_1908_librivox/prefectsuncle_03_wodehouse_64kb.mp3",
               "length_ms": 1065000,
+              "readers": [
+                "rita-boutros"
+              ],
               "start_ms": 1721000,
               "title": "The Uncle Makes Himself at Home"
             },
             {
               "audio_url": "https://www.archive.org/download/prefects_uncle_1908_librivox/prefectsuncle_04_wodehouse_64kb.mp3",
               "length_ms": 1031000,
+              "readers": [
+                "rita-boutros"
+              ],
               "start_ms": 2786000,
               "title": "Pringle Makes a Sporting Offer"
             },
             {
               "audio_url": "https://www.archive.org/download/prefects_uncle_1908_librivox/prefectsuncle_05_wodehouse_64kb.mp3",
               "length_ms": 1037000,
+              "readers": [
+                "rita-boutros"
+              ],
               "start_ms": 3817000,
               "title": "Farnie Gets Into Trouble"
             },
             {
               "audio_url": "https://www.archive.org/download/prefects_uncle_1908_librivox/prefectsuncle_06_wodehouse_64kb.mp3",
               "length_ms": 1016000,
+              "readers": [
+                "rita-boutros"
+              ],
               "start_ms": 4854000,
               "title": "and Stays There"
             },
             {
               "audio_url": "https://www.archive.org/download/prefects_uncle_1908_librivox/prefectsuncle_07_wodehouse_64kb.mp3",
               "length_ms": 814000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 5870000,
               "title": "The Bishop Goes For a Ride"
             },
             {
               "audio_url": "https://www.archive.org/download/prefects_uncle_1908_librivox/prefectsuncle_08_wodehouse_64kb.mp3",
               "length_ms": 1068000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 6684000,
               "title": "The M.C.C. Match"
             },
             {
               "audio_url": "https://www.archive.org/download/prefects_uncle_1908_librivox/prefectsuncle_09_wodehouse_64kb.mp3",
               "length_ms": 743000,
+              "readers": [
+                "chadh94"
+              ],
               "start_ms": 7752000,
               "title": "The Bishop Finishes His Ride"
             },
             {
               "audio_url": "https://www.archive.org/download/prefects_uncle_1908_librivox/prefectsuncle_10_wodehouse_64kb.mp3",
               "length_ms": 806000,
+              "readers": [
+                "buchernarr"
+              ],
               "start_ms": 8495000,
               "title": "In Which a Case is Fully Discussed"
             },
             {
               "audio_url": "https://www.archive.org/download/prefects_uncle_1908_librivox/prefectsuncle_11_wodehouse_64kb.mp3",
               "length_ms": 868000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 9301000,
               "title": "Poetry and Stump-cricket"
             },
             {
               "audio_url": "https://www.archive.org/download/prefects_uncle_1908_librivox/prefectsuncle_12_wodehouse_64kb.mp3",
               "length_ms": 910000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 10169000,
               "title": "'We, the Undersigned'"
             },
             {
               "audio_url": "https://www.archive.org/download/prefects_uncle_1908_librivox/prefectsuncle_13_wodehouse_64kb.mp3",
               "length_ms": 692000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 11079000,
               "title": "Leicester's House Team Goes Into a Second Edition"
             },
             {
               "audio_url": "https://www.archive.org/download/prefects_uncle_1908_librivox/prefectsuncle_14_wodehouse_64kb.mp3",
               "length_ms": 961000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 11771000,
               "title": "Norris Takes a Short Holiday"
             },
             {
               "audio_url": "https://www.archive.org/download/prefects_uncle_1908_librivox/prefectsuncle_15_wodehouse_64kb.mp3",
               "length_ms": 886000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 12732000,
               "title": "Versus Charchester (at Charchester)"
             },
             {
               "audio_url": "https://www.archive.org/download/prefects_uncle_1908_librivox/prefectsuncle_16_wodehouse_64kb.mp3",
               "length_ms": 925000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 13618000,
               "title": "A Disputed Authorship"
             },
             {
               "audio_url": "https://www.archive.org/download/prefects_uncle_1908_librivox/prefectsuncle_17_wodehouse_64kb.mp3",
               "length_ms": 775000,
+              "readers": [
+                "sophia-gannaoui"
+              ],
               "start_ms": 14543000,
               "title": "The Winter Term"
             },
             {
               "audio_url": "https://www.archive.org/download/prefects_uncle_1908_librivox/prefectsuncle_18_wodehouse_64kb.mp3",
               "length_ms": 828000,
+              "readers": [
+                "kevins"
+              ],
               "start_ms": 15318000,
               "title": "The Bishop Scores"
             }
@@ -1466,7 +1747,11 @@
           "cover_url": "https://archive.org/download/prefects_uncle_1908_librivox/prefects_uncle_1908.jpg",
           "id": "madame-tusk",
           "language": "en",
+          "librivox_genres": [
+            "Humorous Fiction"
+          ],
           "librivox_id": 10300,
+          "librivox_title": "Prefect's Uncle",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-prefects-uncle-by-p-g-wodehouse/",
@@ -1639,7 +1924,11 @@
           "cover_url": "https://archive.org/download/preferred_risk_1612_librivox/preferred_risk_1701.jpg",
           "id": "nick-bulka",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 11389,
+          "librivox_title": "Preferred Risk",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/preferred-risk-by-frederik-pohl/",
@@ -3546,66 +3835,99 @@
             {
               "audio_url": "https://www.archive.org/download/prehistoric_men_1608_librivox/prehistoricmen_01_braidwood_64kb.mp3",
               "length_ms": 1144000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 0,
               "title": "How We Learn about Prehistoric Men"
             },
             {
               "audio_url": "https://www.archive.org/download/prehistoric_men_1608_librivox/prehistoricmen_02_braidwood_64kb.mp3",
               "length_ms": 595000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 1144000,
               "title": "The Changing World in Which Prehistoric Men Lived"
             },
             {
               "audio_url": "https://www.archive.org/download/prehistoric_men_1608_librivox/prehistoricmen_03_braidwood_64kb.mp3",
               "length_ms": 2022000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 1739000,
               "title": "Prehistoric Men Themselves"
             },
             {
               "audio_url": "https://www.archive.org/download/prehistoric_men_1608_librivox/prehistoricmen_04_braidwood_64kb.mp3",
               "length_ms": 2202000,
+              "readers": [
+                "deon-gines"
+              ],
               "start_ms": 3761000,
               "title": "Cultural Beginnings"
             },
             {
               "audio_url": "https://www.archive.org/download/prehistoric_men_1608_librivox/prehistoricmen_05_braidwood_64kb.mp3",
               "length_ms": 1512000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 5963000,
               "title": "More Evidence of Culture"
             },
             {
               "audio_url": "https://www.archive.org/download/prehistoric_men_1608_librivox/prehistoricmen_06_braidwood_64kb.mp3",
               "length_ms": 1885000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 7475000,
               "title": "Early Moderns"
             },
             {
               "audio_url": "https://www.archive.org/download/prehistoric_men_1608_librivox/prehistoricmen_07_braidwood_64kb.mp3",
               "length_ms": 3438000,
+              "readers": [
+                "deon-gines"
+              ],
               "start_ms": 9360000,
               "title": "End and Prelude"
             },
             {
               "audio_url": "https://www.archive.org/download/prehistoric_men_1608_librivox/prehistoricmen_08_braidwood_64kb.mp3",
               "length_ms": 2691000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 12798000,
               "title": "The First Revolution"
             },
             {
               "audio_url": "https://www.archive.org/download/prehistoric_men_1608_librivox/prehistoricmen_09_braidwood_64kb.mp3",
               "length_ms": 2147000,
+              "readers": [
+                "deon-gines"
+              ],
               "start_ms": 15489000,
               "title": "The Conquest of Civilization"
             },
             {
               "audio_url": "https://www.archive.org/download/prehistoric_men_1608_librivox/prehistoricmen_10_braidwood_64kb.mp3",
               "length_ms": 1740000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 17636000,
               "title": "End of Prehistory"
             },
             {
               "audio_url": "https://www.archive.org/download/prehistoric_men_1608_librivox/prehistoricmen_11_braidwood_64kb.mp3",
               "length_ms": 545000,
+              "readers": [
+                "sk"
+              ],
               "start_ms": 19376000,
               "title": "Summary"
             }
@@ -3614,7 +3936,12 @@
           "cover_url": "https://archive.org/download/librivoxcCDCoverArt35/prehistoricmen_1608.jpg",
           "id": "sk",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Earth Sciences"
+          ],
           "librivox_id": 11141,
+          "librivox_title": "Prehistoric Men",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/prehistoric-men-by-robert-j-braidwood/",
@@ -6306,126 +6633,189 @@
             {
               "audio_url": "https://www.archive.org/download/prejudicesfirstseries_1803_librivox/prejudices_first_series_01_mencken_64kb.mp3",
               "length_ms": 1135000,
+              "readers": [
+                "drpgould"
+              ],
               "start_ms": 0,
               "title": "Criticism of Criticism of Criticism"
             },
             {
               "audio_url": "https://www.archive.org/download/prejudicesfirstseries_1803_librivox/prejudices_first_series_02_mencken_64kb.mp3",
               "length_ms": 1531000,
+              "readers": [
+                "linda-johnson"
+              ],
               "start_ms": 1135000,
               "title": "The Late Mr. Wells"
             },
             {
               "audio_url": "https://www.archive.org/download/prejudicesfirstseries_1803_librivox/prejudices_first_series_03_mencken_64kb.mp3",
               "length_ms": 1839000,
+              "readers": [
+                "linda-johnson"
+              ],
               "start_ms": 2666000,
               "title": "Arnold Bennett"
             },
             {
               "audio_url": "https://www.archive.org/download/prejudicesfirstseries_1803_librivox/prejudices_first_series_04_mencken_64kb.mp3",
               "length_ms": 648000,
+              "readers": [
+                "drpgould"
+              ],
               "start_ms": 4505000,
               "title": "The Dean"
             },
             {
               "audio_url": "https://www.archive.org/download/prejudicesfirstseries_1803_librivox/prejudices_first_series_05_mencken_64kb.mp3",
               "length_ms": 2150000,
+              "readers": [
+                "drpgould"
+              ],
               "start_ms": 5153000,
               "title": "Professor Veblen"
             },
             {
               "audio_url": "https://www.archive.org/download/prejudicesfirstseries_1803_librivox/prejudices_first_series_06_mencken_64kb.mp3",
               "length_ms": 1402000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 7303000,
               "title": "The New Poetry Movement"
             },
             {
               "audio_url": "https://www.archive.org/download/prejudicesfirstseries_1803_librivox/prejudices_first_series_07_mencken_64kb.mp3",
               "length_ms": 591000,
+              "readers": [
+                "karen-mallozzi"
+              ],
               "start_ms": 8705000,
               "title": "The Heir of Mark Twain"
             },
             {
               "audio_url": "https://www.archive.org/download/prejudicesfirstseries_1803_librivox/prejudices_first_series_08_mencken_64kb.mp3",
               "length_ms": 1087000,
+              "readers": [
+                "shasta"
+              ],
               "start_ms": 9296000,
               "title": "Hermann Sudermann"
             },
             {
               "audio_url": "https://www.archive.org/download/prejudicesfirstseries_1803_librivox/prejudices_first_series_09_mencken_64kb.mp3",
               "length_ms": 1235000,
+              "readers": [
+                "shasta"
+              ],
               "start_ms": 10383000,
               "title": "George Ade"
             },
             {
               "audio_url": "https://www.archive.org/download/prejudicesfirstseries_1803_librivox/prejudices_first_series_10_mencken_64kb.mp3",
               "length_ms": 733000,
+              "readers": [
+                "shasta"
+              ],
               "start_ms": 11618000,
               "title": "The Butte Bashkirtseff"
             },
             {
               "audio_url": "https://www.archive.org/download/prejudicesfirstseries_1803_librivox/prejudices_first_series_11_mencken_64kb.mp3",
               "length_ms": 1741000,
+              "readers": [
+                "drpgould"
+              ],
               "start_ms": 12351000,
               "title": "Six Members of the Institute"
             },
             {
               "audio_url": "https://www.archive.org/download/prejudicesfirstseries_1803_librivox/prejudices_first_series_12_mencken_64kb.mp3",
               "length_ms": 2307000,
+              "readers": [
+                "linda-johnson"
+              ],
               "start_ms": 14092000,
               "title": "The Genealogy of Etiquette"
             },
             {
               "audio_url": "https://www.archive.org/download/prejudicesfirstseries_1803_librivox/prejudices_first_series_13_mencken_64kb.mp3",
               "length_ms": 1123000,
+              "readers": [
+                "linda-johnson"
+              ],
               "start_ms": 16399000,
               "title": "The American Magazine"
             },
             {
               "audio_url": "https://www.archive.org/download/prejudicesfirstseries_1803_librivox/prejudices_first_series_14_mencken_64kb.mp3",
               "length_ms": 1050000,
+              "readers": [
+                "linda-johnson"
+              ],
               "start_ms": 17522000,
               "title": "The Ulster Polonius"
             },
             {
               "audio_url": "https://www.archive.org/download/prejudicesfirstseries_1803_librivox/prejudices_first_series_15_mencken_64kb.mp3",
               "length_ms": 532000,
+              "readers": [
+                "shasta"
+              ],
               "start_ms": 18572000,
               "title": "An Unheeded Law-Giver"
             },
             {
               "audio_url": "https://www.archive.org/download/prejudicesfirstseries_1803_librivox/prejudices_first_series_16_mencken_64kb.mp3",
               "length_ms": 1612000,
+              "readers": [
+                "shasta"
+              ],
               "start_ms": 19104000,
               "title": "The Blushful Mystery"
             },
             {
               "audio_url": "https://www.archive.org/download/prejudicesfirstseries_1803_librivox/prejudices_first_series_17_mencken_64kb.mp3",
               "length_ms": 1724000,
+              "readers": [
+                "linda-johnson"
+              ],
               "start_ms": 20716000,
               "title": "George Jean Nathan"
             },
             {
               "audio_url": "https://www.archive.org/download/prejudicesfirstseries_1803_librivox/prejudices_first_series_18_mencken_64kb.mp3",
               "length_ms": 1280000,
+              "readers": [
+                "linda-johnson"
+              ],
               "start_ms": 22440000,
               "title": "Portrait of an Immortal Soul"
             },
             {
               "audio_url": "https://www.archive.org/download/prejudicesfirstseries_1803_librivox/prejudices_first_series_19_mencken_64kb.mp3",
               "length_ms": 428000,
+              "readers": [
+                "linda-johnson"
+              ],
               "start_ms": 23720000,
               "title": "Jack London"
             },
             {
               "audio_url": "https://www.archive.org/download/prejudicesfirstseries_1803_librivox/prejudices_first_series_20_mencken_64kb.mp3",
               "length_ms": 686000,
+              "readers": [
+                "linda-johnson"
+              ],
               "start_ms": 24148000,
               "title": "Among the Avatars"
             },
             {
               "audio_url": "https://www.archive.org/download/prejudicesfirstseries_1803_librivox/prejudices_first_series_21_mencken_64kb.mp3",
               "length_ms": 420000,
+              "readers": [
+                "larry-wilson"
+              ],
               "start_ms": 24834000,
               "title": "Three American Immortals"
             }
@@ -6434,7 +6824,13 @@
           "cover_url": "https://archive.org/download/prejudicesfirstseries_1803_librivox/prejudices_1804.jpg",
           "id": "drpgould",
           "language": "en",
+          "librivox_genres": [
+            "Essays & Short Works",
+            "Literary Criticism",
+            "Social Science (Culture & Anthropology)"
+          ],
           "librivox_id": 12724,
+          "librivox_title": "Prejudices, First Series",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/prejudices-first-series-by-h-l-mencken/",
@@ -6713,7 +7109,11 @@
           "cover_url": "https://archive.org/download/prejudices_second_series_2305_librivox/predjudices2_2305.jpg",
           "id": "jim-locke",
           "language": "en",
+          "librivox_genres": [
+            "Satire"
+          ],
           "librivox_id": 19200,
+          "librivox_title": "Prejudices, Second Series",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/prejudices-second-series-by-h-l-mencken/",
@@ -6796,7 +7196,12 @@
           "cover_url": "https://archive.org/download/librivoxcdcoverart36/preliminaryreporthategroups_2003.jpg",
           "id": "kevins",
           "language": "en",
+          "librivox_genres": [
+            "Social Science (Culture & Anthropology)",
+            "Modern (20th C)"
+          ],
           "librivox_id": 14868,
+          "librivox_title": "Preliminary Report on Neo-Fascist and Hate Groups",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/preliminary-report-on-neo-fascist-and-hate-groups-by-house-unamerican-activities-committee/",
@@ -6870,7 +7275,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt18/prelude_1205.jpg",
           "id": "iremonger",
           "language": "en",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 4876,
+          "librivox_title": "Prelude",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/prelude-by-katherine-mansfield/",
@@ -9145,102 +9554,119 @@
             {
               "audio_url": "https://www.archive.org/download/prelude_to_adventure_2011_librivox/preludeadventure_00_walpole_64kb.mp3",
               "length_ms": 75000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Dedication And Epigraph"
             },
             {
               "audio_url": "https://www.archive.org/download/prelude_to_adventure_2011_librivox/preludeadventure_01_walpole_64kb.mp3",
               "length_ms": 1346000,
+              "section_number": 1,
               "start_ms": 75000,
               "title": "Last Chapter"
             },
             {
               "audio_url": "https://www.archive.org/download/prelude_to_adventure_2011_librivox/preludeadventure_02_walpole_64kb.mp3",
               "length_ms": 1415000,
+              "section_number": 2,
               "start_ms": 1421000,
               "title": "Bunning"
             },
             {
               "audio_url": "https://www.archive.org/download/prelude_to_adventure_2011_librivox/preludeadventure_03_walpole_64kb.mp3",
               "length_ms": 1341000,
+              "section_number": 3,
               "start_ms": 2836000,
               "title": "The Body Comes To Town"
             },
             {
               "audio_url": "https://www.archive.org/download/prelude_to_adventure_2011_librivox/preludeadventure_04_walpole_64kb.mp3",
               "length_ms": 1525000,
+              "section_number": 4,
               "start_ms": 4177000,
               "title": "Margaret Craven"
             },
             {
               "audio_url": "https://www.archive.org/download/prelude_to_adventure_2011_librivox/preludeadventure_05_walpole_64kb.mp3",
               "length_ms": 1411000,
+              "section_number": 5,
               "start_ms": 5702000,
               "title": "Stone Altars"
             },
             {
               "audio_url": "https://www.archive.org/download/prelude_to_adventure_2011_librivox/preludeadventure_06_walpole_64kb.mp3",
               "length_ms": 1444000,
+              "section_number": 6,
               "start_ms": 7113000,
               "title": "The Watchers"
             },
             {
               "audio_url": "https://www.archive.org/download/prelude_to_adventure_2011_librivox/preludeadventure_07_walpole_64kb.mp3",
               "length_ms": 940000,
+              "section_number": 7,
               "start_ms": 8557000,
               "title": "Terror"
             },
             {
               "audio_url": "https://www.archive.org/download/prelude_to_adventure_2011_librivox/preludeadventure_08_walpole_64kb.mp3",
               "length_ms": 1377000,
+              "section_number": 8,
               "start_ms": 9497000,
               "title": "Revelation Of Bunning (1)"
             },
             {
               "audio_url": "https://www.archive.org/download/prelude_to_adventure_2011_librivox/preludeadventure_09_walpole_64kb.mp3",
               "length_ms": 1539000,
+              "section_number": 9,
               "start_ms": 10874000,
               "title": "Revelation Of Bunning (II)"
             },
             {
               "audio_url": "https://www.archive.org/download/prelude_to_adventure_2011_librivox/preludeadventure_10_walpole_64kb.mp3",
               "length_ms": 1074000,
+              "section_number": 10,
               "start_ms": 12413000,
               "title": "Craven"
             },
             {
               "audio_url": "https://www.archive.org/download/prelude_to_adventure_2011_librivox/preludeadventure_11_walpole_64kb.mp3",
               "length_ms": 1724000,
+              "section_number": 11,
               "start_ms": 13487000,
               "title": "Fifth Of November"
             },
             {
               "audio_url": "https://www.archive.org/download/prelude_to_adventure_2011_librivox/preludeadventure_12_walpole_64kb.mp3",
               "length_ms": 1132000,
+              "section_number": 12,
               "start_ms": 15211000,
               "title": "Love To The 'Valse Triste'"
             },
             {
               "audio_url": "https://www.archive.org/download/prelude_to_adventure_2011_librivox/preludeadventure_13_walpole_64kb.mp3",
               "length_ms": 1157000,
+              "section_number": 13,
               "start_ms": 16343000,
               "title": "Mrs. Craven"
             },
             {
               "audio_url": "https://www.archive.org/download/prelude_to_adventure_2011_librivox/preludeadventure_14_walpole_64kb.mp3",
               "length_ms": 1932000,
+              "section_number": 14,
               "start_ms": 17500000,
               "title": "God"
             },
             {
               "audio_url": "https://www.archive.org/download/prelude_to_adventure_2011_librivox/preludeadventure_15_walpole_64kb.mp3",
               "length_ms": 1327000,
+              "section_number": 15,
               "start_ms": 19432000,
               "title": "Prelude To A Journey"
             },
             {
               "audio_url": "https://www.archive.org/download/prelude_to_adventure_2011_librivox/preludeadventure_16_walpole_64kb.mp3",
               "length_ms": 1452000,
+              "section_number": 16,
               "start_ms": 20759000,
               "title": "Olva And Margaret; First Chapter"
             }
@@ -9249,7 +9675,13 @@
           "cover_url": "https://archive.org/download/prelude_to_adventure_2011_librivox/preludeadventure_2011.jpg",
           "id": "david-wales",
           "language": "en",
+          "librivox_genres": [
+            "Crime & Mystery Fiction",
+            "Literary Fiction",
+            "Published 1900 onward"
+          ],
           "librivox_id": 15810,
+          "librivox_title": "Prelude To Adventure",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/prelude-to-adventure-by-hugh-walpole/",

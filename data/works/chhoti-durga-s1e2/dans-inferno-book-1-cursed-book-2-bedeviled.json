@@ -5457,96 +5457,144 @@
             {
               "audio_url": "https://www.archive.org/download/danse_russe_librivox/danse_russe_williams_apc_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "annie-coleman-rothenberg"
+              ],
               "start_ms": 0,
               "title": "Version 1"
             },
             {
               "audio_url": "https://www.archive.org/download/danse_russe_librivox/danse_russe_williams_cmg_64kb.mp3",
               "length_ms": 56000,
+              "readers": [
+                "chris-goringe"
+              ],
               "start_ms": 66000,
               "title": "Version 2"
             },
             {
               "audio_url": "https://www.archive.org/download/danse_russe_librivox/danse_russe_williams_cs_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "cori-samuel"
+              ],
               "start_ms": 122000,
               "title": "Version 3"
             },
             {
               "audio_url": "https://www.archive.org/download/danse_russe_librivox/danse_russe_williams_ezwa_64kb.mp3",
               "length_ms": 59000,
+              "readers": [
+                "ezwa"
+              ],
               "start_ms": 177000,
               "title": "Version 4"
             },
             {
               "audio_url": "https://www.archive.org/download/danse_russe_librivox/danse_russe_williams_id_64kb.mp3",
               "length_ms": 60000,
+              "readers": [
+                "ianna-drake-rosenthal"
+              ],
               "start_ms": 236000,
               "title": "Version 5"
             },
             {
               "audio_url": "https://www.archive.org/download/danse_russe_librivox/danse_russe_williams_jag_64kb.mp3",
               "length_ms": 106000,
+              "readers": [
+                "john-gonzalez"
+              ],
               "start_ms": 296000,
               "title": "Version 6"
             },
             {
               "audio_url": "https://www.archive.org/download/danse_russe_librivox/danse_russe_williams_jb_64kb.mp3",
               "length_ms": 61000,
+              "readers": [
+                "jemmablythe"
+              ],
               "start_ms": 402000,
               "title": "Version 7"
             },
             {
               "audio_url": "https://www.archive.org/download/danse_russe_librivox/danse_russe_williams_kjb_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "featherheadfop"
+              ],
               "start_ms": 463000,
               "title": "Version 8"
             },
             {
               "audio_url": "https://www.archive.org/download/danse_russe_librivox/danse_russe_williams_klh_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "kristin-hughes-1974-2021"
+              ],
               "start_ms": 530000,
               "title": "Version 9"
             },
             {
               "audio_url": "https://www.archive.org/download/danse_russe_librivox/danse_russe_williams_lgjr_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "lenny-glionna-jr"
+              ],
               "start_ms": 595000,
               "title": "Version 10"
             },
             {
               "audio_url": "https://www.archive.org/download/danse_russe_librivox/danse_russe_williams_lmd_64kb.mp3",
               "length_ms": 50000,
+              "readers": [
+                "laura-m-d"
+              ],
               "start_ms": 660000,
               "title": "Version 11"
             },
             {
               "audio_url": "https://www.archive.org/download/danse_russe_librivox/danse_russe_williams_mks_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "michael-sirois"
+              ],
               "start_ms": 710000,
               "title": "Version 12"
             },
             {
               "audio_url": "https://www.archive.org/download/danse_russe_librivox/danse_russe_williams_mm_64kb.mp3",
               "length_ms": 58000,
+              "readers": [
+                "maria-morabe"
+              ],
               "start_ms": 787000,
               "title": "Version 13"
             },
             {
               "audio_url": "https://www.archive.org/download/danse_russe_librivox/danse_russe_williams_mmm_64kb.mp3",
               "length_ms": 56000,
+              "readers": [
+                "maddie"
+              ],
               "start_ms": 845000,
               "title": "Version 14"
             },
             {
               "audio_url": "https://www.archive.org/download/danse_russe_librivox/danse_russe_williams_sdm_64kb.mp3",
               "length_ms": 62000,
+              "readers": [
+                "sean-mckinley"
+              ],
               "start_ms": 901000,
               "title": "Version 15"
             },
             {
               "audio_url": "https://www.archive.org/download/danse_russe_librivox/danse_russe_williams_smg_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "sean-mcgaughey"
+              ],
               "start_ms": 963000,
               "title": "Version 16"
             }
@@ -5555,7 +5603,12 @@
           "cover_url": "https://archive.org/download/danse_russe_librivox/Danse_Russe_1109.jpg",
           "id": "annie-coleman-rothenberg",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 203,
+          "librivox_title": "Danse Russe",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/danse-russe-by-william-carlos-williams/",
@@ -10470,7 +10523,11 @@
           "cover_url": "https://archive.org/download/danversjewels_2510_librivox/danvers_jewels_2510.jpg",
           "id": "simon-evers",
           "language": "en",
+          "librivox_genres": [
+            "Crime & Mystery Fiction"
+          ],
           "librivox_id": 21950,
+          "librivox_title": "Danvers Jewels",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/danvers-jewels-by-mary-cholmondeley/",
@@ -14800,39 +14857,54 @@
             {
               "audio_url": "https://www.archive.org/download/daodejing_deutsch_0906_librivox/daodejing_00_laozi_64kb.mp3",
               "length_ms": 596000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Vorwort"
             },
             {
               "audio_url": "https://www.archive.org/download/daodejing_deutsch_0906_librivox/daodejing_01_laozi_64kb.mp3",
               "length_ms": 1590000,
+              "section_number": 1,
               "start_ms": 596000,
               "title": "Abschnitt 1 - 21"
             },
             {
               "audio_url": "https://www.archive.org/download/daodejing_deutsch_0906_librivox/daodejing_02_laozi_64kb.mp3",
               "length_ms": 1663000,
+              "section_number": 2,
               "start_ms": 2186000,
               "title": "Abschnitt 22 - 39"
             },
             {
               "audio_url": "https://www.archive.org/download/daodejing_deutsch_0906_librivox/daodejing_03_laozi_64kb.mp3",
               "length_ms": 1713000,
+              "section_number": 3,
               "start_ms": 3849000,
               "title": "Abschnitt 40 - 61"
             },
             {
               "audio_url": "https://www.archive.org/download/daodejing_deutsch_0906_librivox/daodejing_04_laozi_64kb.mp3",
               "length_ms": 1599000,
+              "section_number": 4,
               "start_ms": 5562000,
               "title": "Abschnitt 62 - 81"
             }
           ],
           "copyright_year": 1910,
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt5/daodejing_1006.jpg",
+          "credits": [
+            {
+              "person": "richard-wilhelm",
+              "role": "translator"
+            }
+          ],
           "id": "redaer",
           "language": "de",
+          "librivox_genres": [
+            "Philosophy"
+          ],
           "librivox_id": 3260,
+          "librivox_title": "Daodejing (Tao Te Ching)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/daodejing-by-laozi/",
@@ -16224,7 +16296,11 @@
           "cover_url": "https://archive.org/download/the_darblay_mystery_2308_librivox/darblaymystery_2308.jpg",
           "id": "howard-skyman",
           "language": "en",
+          "librivox_genres": [
+            "Detective Fiction"
+          ],
           "librivox_id": 19485,
+          "librivox_title": "D'Arblay Mystery",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-darblay-mystery-by-r-austin-freeman/",

@@ -1738,60 +1738,70 @@
             {
               "audio_url": "https://www.archive.org/download/cartasaelpidio1_2609_librivox/cartasaelpidio1_00_varela_64kb.mp3",
               "length_ms": 126000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Indice"
             },
             {
               "audio_url": "https://www.archive.org/download/cartasaelpidio1_2609_librivox/cartasaelpidio1_01_varela_64kb.mp3",
               "length_ms": 2070000,
+              "section_number": 1,
               "start_ms": 126000,
               "title": "Carta Primera"
             },
             {
               "audio_url": "https://www.archive.org/download/cartasaelpidio1_2609_librivox/cartasaelpidio1_02_varela_64kb.mp3",
               "length_ms": 1830000,
+              "section_number": 2,
               "start_ms": 2196000,
               "title": "Carta Segunda - 1ra Parte"
             },
             {
               "audio_url": "https://www.archive.org/download/cartasaelpidio1_2609_librivox/cartasaelpidio1_03_varela_64kb.mp3",
               "length_ms": 2733000,
+              "section_number": 3,
               "start_ms": 4026000,
               "title": "Carta Segunda - 2da Parte"
             },
             {
               "audio_url": "https://www.archive.org/download/cartasaelpidio1_2609_librivox/cartasaelpidio1_04_varela_64kb.mp3",
               "length_ms": 2315000,
+              "section_number": 4,
               "start_ms": 6759000,
               "title": "Carta Tercera"
             },
             {
               "audio_url": "https://www.archive.org/download/cartasaelpidio1_2609_librivox/cartasaelpidio1_05_varela_64kb.mp3",
               "length_ms": 2105000,
+              "section_number": 5,
               "start_ms": 9074000,
               "title": "Carta Cuarto - 1ra Parte"
             },
             {
               "audio_url": "https://www.archive.org/download/cartasaelpidio1_2609_librivox/cartasaelpidio1_06_varela_64kb.mp3",
               "length_ms": 1528000,
+              "section_number": 6,
               "start_ms": 11179000,
               "title": "Carta Cuarto - 2da Parte"
             },
             {
               "audio_url": "https://www.archive.org/download/cartasaelpidio1_2609_librivox/cartasaelpidio1_07_varela_64kb.mp3",
               "length_ms": 2017000,
+              "section_number": 7,
               "start_ms": 12707000,
               "title": "Carta Cuarto - 3ra Parte"
             },
             {
               "audio_url": "https://www.archive.org/download/cartasaelpidio1_2609_librivox/cartasaelpidio1_08_varela_64kb.mp3",
               "length_ms": 1970000,
+              "section_number": 8,
               "start_ms": 14724000,
               "title": "Carta Quinta"
             },
             {
               "audio_url": "https://www.archive.org/download/cartasaelpidio1_2609_librivox/cartasaelpidio1_09_varela_64kb.mp3",
               "length_ms": 2431000,
+              "section_number": 9,
               "start_ms": 16694000,
               "title": "Carta Sexta"
             }
@@ -1799,7 +1809,14 @@
           "cover_url": "https://archive.org/download/cartasaelpidio1_2609_librivox/cartas_elpidio_2609.jpg",
           "id": "rroderick",
           "language": "es",
+          "librivox_genres": [
+            "*Non-fiction",
+            "History",
+            "Philosophy",
+            "Religion"
+          ],
           "librivox_id": 21800,
+          "librivox_title": "Cartas a Elpidio sobre la impiedad, la superstición y el fanatismo en sus relaciones con la sociedad Tomo Primero",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/cartas-a-elpidio-tomo-primero-by-felix-varela/",
@@ -2124,9 +2141,19 @@
           ],
           "copyright_year": 1915,
           "cover_url": "https://archive.org/download/cartasalucilio_2408_librivox/cartaslucilio_2407.jpg",
+          "credits": [
+            {
+              "person": "nicolas-estevanez",
+              "role": "translator"
+            }
+          ],
           "id": "epachuko",
           "language": "es",
+          "librivox_genres": [
+            "Ancient"
+          ],
           "librivox_id": 20667,
+          "librivox_title": "Cartas a Lucilio (seleccionadas)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/cartas-a-lucilio-seleccionadas-by-lucius-annaeus-seneca/",
@@ -2245,108 +2272,162 @@
             {
               "audio_url": "https://www.archive.org/download/cartas_de_inglaterra_1805_librivox/cartasdeinglaterra_01_queiros_64kb.mp3",
               "length_ms": 1622000,
+              "readers": [
+                "mayah"
+              ],
               "start_ms": 0,
               "title": "Afghanistan e Irlanda"
             },
             {
               "audio_url": "https://www.archive.org/download/cartas_de_inglaterra_1805_librivox/cartasdeinglaterra_02_queiros_64kb.mp3",
               "length_ms": 1607000,
+              "readers": [
+                "adriana-sacciotto"
+              ],
               "start_ms": 1622000,
               "title": "Ácerca de livros"
             },
             {
               "audio_url": "https://www.archive.org/download/cartas_de_inglaterra_1805_librivox/cartasdeinglaterra_03_queiros_64kb.mp3",
               "length_ms": 995000,
+              "readers": [
+                "adriana-sacciotto"
+              ],
               "start_ms": 3229000,
               "title": "O Inverno em Londres"
             },
             {
               "audio_url": "https://www.archive.org/download/cartas_de_inglaterra_1805_librivox/cartasdeinglaterra_04_queiros_64kb.mp3",
               "length_ms": 884000,
+              "readers": [
+                "adriana-sacciotto"
+              ],
               "start_ms": 4224000,
               "title": "O Natal"
             },
             {
               "audio_url": "https://www.archive.org/download/cartas_de_inglaterra_1805_librivox/cartasdeinglaterra_05_queiros_64kb.mp3",
               "length_ms": 707000,
+              "readers": [
+                "brianna"
+              ],
               "start_ms": 5108000,
               "title": "Litteratura de Natal"
             },
             {
               "audio_url": "https://www.archive.org/download/cartas_de_inglaterra_1805_librivox/cartasdeinglaterra_06_queiros_64kb.mp3",
               "length_ms": 1579000,
+              "readers": [
+                "mayah"
+              ],
               "start_ms": 5815000,
               "title": "Israelismo"
             },
             {
               "audio_url": "https://www.archive.org/download/cartas_de_inglaterra_1805_librivox/cartasdeinglaterra_07_queiros_64kb.mp3",
               "length_ms": 1527000,
+              "readers": [
+                "adriana-sacciotto"
+              ],
               "start_ms": 7394000,
               "title": "A Irlanda e a Liga Agraria"
             },
             {
               "audio_url": "https://www.archive.org/download/cartas_de_inglaterra_1805_librivox/cartasdeinglaterra_08_queiros_64kb.mp3",
               "length_ms": 1278000,
+              "readers": [
+                "giovani-tassi"
+              ],
               "start_ms": 8921000,
               "title": "Lord Beaconsfield: Parte I"
             },
             {
               "audio_url": "https://www.archive.org/download/cartas_de_inglaterra_1805_librivox/cartasdeinglaterra_09_queiros_64kb.mp3",
               "length_ms": 1276000,
+              "readers": [
+                "giovani-tassi"
+              ],
               "start_ms": 10199000,
               "title": "Lord Beaconsfield: Parte II"
             },
             {
               "audio_url": "https://www.archive.org/download/cartas_de_inglaterra_1805_librivox/cartasdeinglaterra_10_queiros_64kb.mp3",
               "length_ms": 734000,
+              "readers": [
+                "liana-leite"
+              ],
               "start_ms": 11475000,
               "title": "Os inglezes no Egypto: Parte I"
             },
             {
               "audio_url": "https://www.archive.org/download/cartas_de_inglaterra_1805_librivox/cartasdeinglaterra_11_queiros_64kb.mp3",
               "length_ms": 1212000,
+              "readers": [
+                "liana-leite"
+              ],
               "start_ms": 12209000,
               "title": "Os inglezes no Egypto: Parte II"
             },
             {
               "audio_url": "https://www.archive.org/download/cartas_de_inglaterra_1805_librivox/cartasdeinglaterra_12_queiros_64kb.mp3",
               "length_ms": 1534000,
+              "readers": [
+                "brianna"
+              ],
               "start_ms": 13421000,
               "title": "Os inglezes no Egypto: Parte III"
             },
             {
               "audio_url": "https://www.archive.org/download/cartas_de_inglaterra_1805_librivox/cartasdeinglaterra_13_queiros_64kb.mp3",
               "length_ms": 1317000,
+              "readers": [
+                "brianna"
+              ],
               "start_ms": 14955000,
               "title": "Os inglezes no Egypto: Parte IV"
             },
             {
               "audio_url": "https://www.archive.org/download/cartas_de_inglaterra_1805_librivox/cartasdeinglaterra_14_queiros_64kb.mp3",
               "length_ms": 978000,
+              "readers": [
+                "liana-leite"
+              ],
               "start_ms": 16272000,
               "title": "Os inglezes no Egypto: Parte V"
             },
             {
               "audio_url": "https://www.archive.org/download/cartas_de_inglaterra_1805_librivox/cartasdeinglaterra_15_queiros_64kb.mp3",
               "length_ms": 1537000,
+              "readers": [
+                "liana-leite"
+              ],
               "start_ms": 17250000,
               "title": "Os inglezes no Egypto: Parte VI"
             },
             {
               "audio_url": "https://www.archive.org/download/cartas_de_inglaterra_1805_librivox/cartasdeinglaterra_16_queiros_64kb.mp3",
               "length_ms": 1634000,
+              "readers": [
+                "brianna"
+              ],
               "start_ms": 18787000,
               "title": "O Brasil e Portugal"
             },
             {
               "audio_url": "https://www.archive.org/download/cartas_de_inglaterra_1805_librivox/cartasdeinglaterra_17_queiros_64kb.mp3",
               "length_ms": 720000,
+              "readers": [
+                "brianna"
+              ],
               "start_ms": 20421000,
               "title": "A festa das creanças"
             },
             {
               "audio_url": "https://www.archive.org/download/cartas_de_inglaterra_1805_librivox/cartasdeinglaterra_18_queiros_64kb.mp3",
               "length_ms": 1321000,
+              "readers": [
+                "brianna"
+              ],
               "start_ms": 21141000,
               "title": "Uma partida feita ao ''Times''"
             }
@@ -2355,7 +2436,11 @@
           "cover_url": "https://archive.org/download/cartas_de_inglaterra_1805_librivox/cartas_inglaterra_1805.jpg",
           "id": "mayah",
           "language": "pt",
+          "librivox_genres": [
+            "Essays & Short Works"
+          ],
           "librivox_id": 12742,
+          "librivox_title": "Cartas de Inglaterra",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/cartas-de-inglaterra-by-jose-maria-de-eca-de-queiros/",
@@ -3397,7 +3482,11 @@
           "cover_url": "https://archive.org/download/carteadeaur_2110_librivox/carteadeaur_2110.jpg",
           "id": "gabriela-oprea",
           "language": "ro",
+          "librivox_genres": [
+            "Single Author Collections"
+          ],
           "librivox_id": 16535,
+          "librivox_title": "Cartea de Aur",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/cartea-de-aur-by-alexandru-macedonski/",
@@ -4122,7 +4211,11 @@
           "cover_url": "https://archive.org/download/the_cartels_jungle_1905_librivox/thecartelsjungle_1905.jpg",
           "id": "scotty-smith",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 14008,
+          "librivox_title": "Cartels Jungle",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-cartels-jungle-by-irving-e-cox-jr/",
@@ -8006,279 +8099,336 @@
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_00_stendhal_64kb.mp3",
               "length_ms": 291000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Advertencia"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_01_stendhal_64kb.mp3",
               "length_ms": 2177000,
+              "section_number": 1,
               "start_ms": 291000,
               "title": "Capitulo 1"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_02_stendhal_64kb.mp3",
               "length_ms": 1590000,
+              "section_number": 2,
               "start_ms": 2468000,
               "title": "Capitulo 2 (primera parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_03_stendhal_64kb.mp3",
               "length_ms": 1454000,
+              "section_number": 3,
               "start_ms": 4058000,
               "title": "Capitulo 2 (segunda parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_04_stendhal_64kb.mp3",
               "length_ms": 2401000,
+              "section_number": 4,
               "start_ms": 5512000,
               "title": "Capitulo 3"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_05_stendhal_64kb.mp3",
               "length_ms": 1446000,
+              "section_number": 5,
               "start_ms": 7913000,
               "title": "Capitulo 4 (primera parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_06_stendhal_64kb.mp3",
               "length_ms": 1388000,
+              "section_number": 6,
               "start_ms": 9359000,
               "title": "Capitulo 4 (segunda parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_07_stendhal_64kb.mp3",
               "length_ms": 1572000,
+              "section_number": 7,
               "start_ms": 10747000,
               "title": "Capitulo 5 (primera parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_08_stendhal_64kb.mp3",
               "length_ms": 1639000,
+              "section_number": 8,
               "start_ms": 12319000,
               "title": "Capitulo 5 (segunda parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_09_stendhal_64kb.mp3",
               "length_ms": 1597000,
+              "section_number": 9,
               "start_ms": 13958000,
               "title": "Capitulo 6 (primera parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_10_stendhal_64kb.mp3",
               "length_ms": 1550000,
+              "section_number": 10,
               "start_ms": 15555000,
               "title": "Capitulo 6 (segunda parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_11_stendhal_64kb.mp3",
               "length_ms": 1446000,
+              "section_number": 11,
               "start_ms": 17105000,
               "title": "Capitulo 6 (tercera parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_12_stendhal_64kb.mp3",
               "length_ms": 1137000,
+              "section_number": 12,
               "start_ms": 18551000,
               "title": "Capitulo 6 (cuarta parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_13_stendhal_64kb.mp3",
               "length_ms": 1426000,
+              "section_number": 13,
               "start_ms": 19688000,
               "title": "Capitulo 7 (primera parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_14_stendhal_64kb.mp3",
               "length_ms": 1408000,
+              "section_number": 14,
               "start_ms": 21114000,
               "title": "Capitulo 7 (segunda parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_15_stendhal_64kb.mp3",
               "length_ms": 2414000,
+              "section_number": 15,
               "start_ms": 22522000,
               "title": "Capitulo 8"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_16_stendhal_64kb.mp3",
               "length_ms": 1362000,
+              "section_number": 16,
               "start_ms": 24936000,
               "title": "Capitulo 9"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_17_stendhal_64kb.mp3",
               "length_ms": 1029000,
+              "section_number": 17,
               "start_ms": 26298000,
               "title": "Capitulo 10"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_18_stendhal_64kb.mp3",
               "length_ms": 1805000,
+              "section_number": 18,
               "start_ms": 27327000,
               "title": "Capitulo 11 (primera parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_19_stendhal_64kb.mp3",
               "length_ms": 1568000,
+              "section_number": 19,
               "start_ms": 29132000,
               "title": "Capitulo 11 (segunda parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_20_stendhal_64kb.mp3",
               "length_ms": 2053000,
+              "section_number": 20,
               "start_ms": 30700000,
               "title": "Capitulo 12"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_21_stendhal_64kb.mp3",
               "length_ms": 1877000,
+              "section_number": 21,
               "start_ms": 32753000,
               "title": "Capitulo 13 (primera parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_22_stendhal_64kb.mp3",
               "length_ms": 1790000,
+              "section_number": 22,
               "start_ms": 34630000,
               "title": "Capitulo 13 (segunda parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_23_stendhal_64kb.mp3",
               "length_ms": 1541000,
+              "section_number": 23,
               "start_ms": 36420000,
               "title": "Capitulo 14 (primera parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_24_stendhal_64kb.mp3",
               "length_ms": 1430000,
+              "section_number": 24,
               "start_ms": 37961000,
               "title": "Capitulo 14 (segunda parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_25_stendhal_64kb.mp3",
               "length_ms": 2486000,
+              "section_number": 25,
               "start_ms": 39391000,
               "title": "Capitulo 15"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_26_stendhal_64kb.mp3",
               "length_ms": 2496000,
+              "section_number": 26,
               "start_ms": 41877000,
               "title": "Capitulo 16"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_27_stendhal_64kb.mp3",
               "length_ms": 2151000,
+              "section_number": 27,
               "start_ms": 44373000,
               "title": "Capitulo 17"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_28_stendhal_64kb.mp3",
               "length_ms": 1544000,
+              "section_number": 28,
               "start_ms": 46524000,
               "title": "Capitulo 18 (primera parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_29_stendhal_64kb.mp3",
               "length_ms": 1552000,
+              "section_number": 29,
               "start_ms": 48068000,
               "title": "Capitulo 18 (segunda parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_30_stendhal_64kb.mp3",
               "length_ms": 2637000,
+              "section_number": 30,
               "start_ms": 49620000,
               "title": "Capitulo 19"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_31_stendhal_64kb.mp3",
               "length_ms": 1796000,
+              "section_number": 31,
               "start_ms": 52257000,
               "title": "Capitulo 20 (primera parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_32_stendhal_64kb.mp3",
               "length_ms": 1597000,
+              "section_number": 32,
               "start_ms": 54053000,
               "title": "Capitulo 20 (segunda parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_33_stendhal_64kb.mp3",
               "length_ms": 1539000,
+              "section_number": 33,
               "start_ms": 55650000,
               "title": "Capitulo 21 (primera parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_34_stendhal_64kb.mp3",
               "length_ms": 1256000,
+              "section_number": 34,
               "start_ms": 57189000,
               "title": "Capitulo 21 (segunda parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_35_stendhal_64kb.mp3",
               "length_ms": 2669000,
+              "section_number": 35,
               "start_ms": 58445000,
               "title": "Capitulo 22"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_36_stendhal_64kb.mp3",
               "length_ms": 1582000,
+              "section_number": 36,
               "start_ms": 61114000,
               "title": "Capitulo 23 (primera parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_37_stendhal_64kb.mp3",
               "length_ms": 1432000,
+              "section_number": 37,
               "start_ms": 62696000,
               "title": "Capitulo 23 (segunda parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_38_stendhal_64kb.mp3",
               "length_ms": 1471000,
+              "section_number": 38,
               "start_ms": 64128000,
               "title": "Capitulo 24 (primera parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_39_stendhal_64kb.mp3",
               "length_ms": 1172000,
+              "section_number": 39,
               "start_ms": 65599000,
               "title": "Capitulo 24 (segunda parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_40_stendhal_64kb.mp3",
               "length_ms": 1506000,
+              "section_number": 40,
               "start_ms": 66771000,
               "title": "Capitulo 25 (primera parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_41_stendhal_64kb.mp3",
               "length_ms": 1341000,
+              "section_number": 41,
               "start_ms": 68277000,
               "title": "Capitulo 25 (segunda parte)"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_42_stendhal_64kb.mp3",
               "length_ms": 2365000,
+              "section_number": 42,
               "start_ms": 69618000,
               "title": "Capitulo 26"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_43_stendhal_64kb.mp3",
               "length_ms": 2054000,
+              "section_number": 43,
               "start_ms": 71983000,
               "title": "Capitulo 27"
             },
             {
               "audio_url": "https://www.archive.org/download/cartujadeparma_2602_librivox/cartujadeparma_44_stendhal_64kb.mp3",
               "length_ms": 2385000,
+              "section_number": 44,
               "start_ms": 74037000,
               "title": "Capitulo 28"
             }
           ],
           "copyright_year": 1917,
           "cover_url": "https://archive.org/download/cartujadeparma_2602_librivox/cartujaparma_2603.jpg",
+          "credits": [
+            {
+              "person": "manuel-garcia-morente",
+              "role": "translator"
+            }
+          ],
           "id": "epachuko",
           "language": "es",
+          "librivox_genres": [
+            "Historical Fiction",
+            "War & Military Fiction",
+            "Published 1800 -1900"
+          ],
           "librivox_id": 21994,
+          "librivox_title": "cartuja de Parma",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/la-cartuja-de-parma-by-stendhal/",
@@ -10134,126 +10284,329 @@
             {
               "audio_url": "https://www.archive.org/download/carvedcupboard_1508_librivox/carvedcupboard_00_lefeuvre_64kb.mp3",
               "length_ms": 109000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Dramatis Personae"
             },
             {
               "audio_url": "https://www.archive.org/download/carvedcupboard_1508_librivox/carvedcupboard_01_lefeuvre_64kb.mp3",
               "length_ms": 761000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "rachel",
+                "larry-wilson",
+                "esther-ben-simonides",
+                "adele-de-pignerolles",
+                "zames-curran"
+              ],
+              "section_number": 1,
               "start_ms": 109000,
               "title": "A Supplanter"
             },
             {
               "audio_url": "https://www.archive.org/download/carvedcupboard_1508_librivox/carvedcupboard_02_lefeuvre_64kb.mp3",
               "length_ms": 919000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "rachel",
+                "tovarisch",
+                "larry-wilson",
+                "khand",
+                "esther-ben-simonides",
+                "adele-de-pignerolles"
+              ],
+              "section_number": 2,
               "start_ms": 870000,
               "title": "Four Verses"
             },
             {
               "audio_url": "https://www.archive.org/download/carvedcupboard_1508_librivox/carvedcupboard_03_lefeuvre_64kb.mp3",
               "length_ms": 961000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "kristin-g",
+                "rachel",
+                "larry-wilson",
+                "esther-ben-simonides",
+                "vanessa-cooley",
+                "adele-de-pignerolles"
+              ],
+              "section_number": 3,
               "start_ms": 1789000,
               "title": "A Country Home"
             },
             {
               "audio_url": "https://www.archive.org/download/carvedcupboard_1508_librivox/carvedcupboard_04_lefeuvre_64kb.mp3",
               "length_ms": 931000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "rachel",
+                "tovarisch",
+                "larry-wilson",
+                "esther-ben-simonides",
+                "adele-de-pignerolles"
+              ],
+              "section_number": 4,
               "start_ms": 2750000,
               "title": "Bluebeard's Cupboard"
             },
             {
               "audio_url": "https://www.archive.org/download/carvedcupboard_1508_librivox/carvedcupboard_05_lefeuvre_64kb.mp3",
               "length_ms": 896000,
+              "readers": [
+                "maryann",
+                "beth-thomas-1974-2020",
+                "kristin-g",
+                "rachel",
+                "tovarisch",
+                "larry-wilson",
+                "adele-de-pignerolles",
+                "april-walters"
+              ],
+              "section_number": 5,
               "start_ms": 3681000,
               "title": "A Quiet Sunday"
             },
             {
               "audio_url": "https://www.archive.org/download/carvedcupboard_1508_librivox/carvedcupboard_06_lefeuvre_64kb.mp3",
               "length_ms": 810000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "kristin-g",
+                "rachel",
+                "tovarisch",
+                "larry-wilson",
+                "esther-ben-simonides",
+                "adele-de-pignerolles",
+                "april-walters",
+                "rupert-holliday"
+              ],
+              "section_number": 6,
               "start_ms": 4577000,
               "title": "A Departure"
             },
             {
               "audio_url": "https://www.archive.org/download/carvedcupboard_1508_librivox/carvedcupboard_07_lefeuvre_64kb.mp3",
               "length_ms": 945000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "kristin-g",
+                "rachel",
+                "larry-wilson",
+                "allie-christy",
+                "lydia",
+                "esther-ben-simonides",
+                "adele-de-pignerolles"
+              ],
+              "section_number": 7,
               "start_ms": 5387000,
               "title": "Unrest"
             },
             {
               "audio_url": "https://www.archive.org/download/carvedcupboard_1508_librivox/carvedcupboard_08_lefeuvre_64kb.mp3",
               "length_ms": 1014000,
+              "readers": [
+                "maryann",
+                "beth-thomas-1974-2020",
+                "rachel",
+                "oxenhandler",
+                "larry-wilson",
+                "esther-ben-simonides",
+                "adele-de-pignerolles"
+              ],
+              "section_number": 8,
               "start_ms": 6332000,
               "title": "Entertaining a Stranger"
             },
             {
               "audio_url": "https://www.archive.org/download/carvedcupboard_1508_librivox/carvedcupboard_09_lefeuvre_64kb.mp3",
               "length_ms": 806000,
+              "readers": [
+                "maryann",
+                "beth-thomas-1974-2020",
+                "kristin-g",
+                "rachel",
+                "larry-wilson",
+                "esther-ben-simonides",
+                "adele-de-pignerolles",
+                "april-walters"
+              ],
+              "section_number": 9,
               "start_ms": 7346000,
               "title": "Gwen's Resolve"
             },
             {
               "audio_url": "https://www.archive.org/download/carvedcupboard_1508_librivox/carvedcupboard_10_lefeuvre_64kb.mp3",
               "length_ms": 807000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "rachel",
+                "tovarisch",
+                "larry-wilson",
+                "allie-christy",
+                "lydia",
+                "esther-ben-simonides",
+                "adele-de-pignerolles"
+              ],
+              "section_number": 10,
               "start_ms": 8152000,
               "title": "Clare's Discovery"
             },
             {
               "audio_url": "https://www.archive.org/download/carvedcupboard_1508_librivox/carvedcupboard_11_lefeuvre_64kb.mp3",
               "length_ms": 1006000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "kristin-g",
+                "rachel",
+                "larry-wilson",
+                "esther-ben-simonides",
+                "bill"
+              ],
+              "section_number": 11,
               "start_ms": 8959000,
               "title": "Agatha's Legacy"
             },
             {
               "audio_url": "https://www.archive.org/download/carvedcupboard_1508_librivox/carvedcupboard_12_lefeuvre_64kb.mp3",
               "length_ms": 714000,
+              "readers": [
+                "maryann",
+                "larry-wilson",
+                "adele-de-pignerolles",
+                "rupert-holliday"
+              ],
+              "section_number": 12,
               "start_ms": 9965000,
               "title": "Out in California"
             },
             {
               "audio_url": "https://www.archive.org/download/carvedcupboard_1508_librivox/carvedcupboard_13_lefeuvre_64kb.mp3",
               "length_ms": 926000,
+              "readers": [
+                "maryann",
+                "beth-thomas-1974-2020",
+                "kristin-g",
+                "rachel",
+                "tovarisch",
+                "larry-wilson",
+                "esther-ben-simonides",
+                "adele-de-pignerolles",
+                "april-walters"
+              ],
+              "section_number": 13,
               "start_ms": 10679000,
               "title": "His Last Message"
             },
             {
               "audio_url": "https://www.archive.org/download/carvedcupboard_1508_librivox/carvedcupboard_14_lefeuvre_64kb.mp3",
               "length_ms": 917000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "kristin-g",
+                "rachel",
+                "larry-wilson",
+                "esther-ben-simonides",
+                "vanessa-cooley",
+                "rupert-holliday"
+              ],
+              "section_number": 14,
               "start_ms": 11605000,
               "title": "The Cousins' Return"
             },
             {
               "audio_url": "https://www.archive.org/download/carvedcupboard_1508_librivox/carvedcupboard_15_lefeuvre_64kb.mp3",
               "length_ms": 854000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "rachel",
+                "larry-wilson",
+                "esther-ben-simonides",
+                "rupert-holliday",
+                "bob-scott"
+              ],
+              "section_number": 15,
               "start_ms": 12522000,
               "title": "Alick Lester"
             },
             {
               "audio_url": "https://www.archive.org/download/carvedcupboard_1508_librivox/carvedcupboard_16_lefeuvre_64kb.mp3",
               "length_ms": 908000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "rachel",
+                "larry-wilson",
+                "khand",
+                "esther-ben-simonides",
+                "adele-de-pignerolles",
+                "rupert-holliday"
+              ],
+              "section_number": 16,
               "start_ms": 13376000,
               "title": "Bringing Bad Tidings"
             },
             {
               "audio_url": "https://www.archive.org/download/carvedcupboard_1508_librivox/carvedcupboard_17_lefeuvre_64kb.mp3",
               "length_ms": 957000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "rachel",
+                "larry-wilson",
+                "allie-christy",
+                "esther-ben-simonides",
+                "adele-de-pignerolles",
+                "zames-curran",
+                "bob-scott"
+              ],
+              "section_number": 17,
               "start_ms": 14284000,
               "title": "Elfie's Choice"
             },
             {
               "audio_url": "https://www.archive.org/download/carvedcupboard_1508_librivox/carvedcupboard_18_lefeuvre_64kb.mp3",
               "length_ms": 793000,
+              "readers": [
+                "maryann",
+                "beth-thomas-1974-2020",
+                "larry-wilson",
+                "adele-de-pignerolles",
+                "april-walters"
+              ],
+              "section_number": 18,
               "start_ms": 15241000,
               "title": "Patty's Grave"
             },
             {
               "audio_url": "https://www.archive.org/download/carvedcupboard_1508_librivox/carvedcupboard_19_lefeuvre_64kb.mp3",
               "length_ms": 818000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "kristin-g",
+                "rachel",
+                "larry-wilson",
+                "adele-de-pignerolles",
+                "zames-curran",
+                "rupert-holliday",
+                "bob-scott"
+              ],
+              "section_number": 19,
               "start_ms": 16034000,
               "title": "The Rightful Heir"
             },
             {
               "audio_url": "https://www.archive.org/download/carvedcupboard_1508_librivox/carvedcupboard_20_lefeuvre_64kb.mp3",
               "length_ms": 763000,
+              "readers": [
+                "beth-thomas-1974-2020",
+                "rachel",
+                "tovarisch",
+                "larry-wilson",
+                "khand",
+                "esther-ben-simonides",
+                "adele-de-pignerolles",
+                "bob-scott"
+              ],
+              "section_number": 20,
               "start_ms": 16852000,
               "title": "Brought Back"
             }
@@ -10262,7 +10615,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt22/carved_cupboard_1508.jpg",
           "id": "beth-thomas-1974-2020",
           "language": "en",
+          "librivox_genres": [
+            "Dramatic Readings",
+            "Romance",
+            "Christian Fiction"
+          ],
           "librivox_id": 9637,
+          "librivox_title": "Carved Cupboard (Dramatic Reading)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-carved-cupboard-by-amy-le-feuvre/",
@@ -11849,72 +12208,108 @@
             {
               "audio_url": "https://www.archive.org/download/carved_lions_1405_librivox/carvedlions_01_molesworth_64kb.mp3",
               "length_ms": 1225000,
+              "readers": [
+                "ilianthe"
+              ],
               "start_ms": 0,
               "title": "Old Days"
             },
             {
               "audio_url": "https://www.archive.org/download/carved_lions_1405_librivox/carvedlions_02_molesworth_64kb.mp3",
               "length_ms": 1180000,
+              "readers": [
+                "ilianthe"
+              ],
               "start_ms": 1225000,
               "title": "A Happy Evening"
             },
             {
               "audio_url": "https://www.archive.org/download/carved_lions_1405_librivox/carvedlions_03_molesworth_64kb.mp3",
               "length_ms": 1074000,
+              "readers": [
+                "ilianthe"
+              ],
               "start_ms": 2405000,
               "title": "Coming Events"
             },
             {
               "audio_url": "https://www.archive.org/download/carved_lions_1405_librivox/carvedlions_04_molesworth_64kb.mp3",
               "length_ms": 1185000,
+              "readers": [
+                "ilianthe"
+              ],
               "start_ms": 3479000,
               "title": "All Settled"
             },
             {
               "audio_url": "https://www.archive.org/download/carved_lions_1405_librivox/carvedlions_05_molesworth_64kb.mp3",
               "length_ms": 1404000,
+              "readers": [
+                "ilianthe"
+              ],
               "start_ms": 4664000,
               "title": "An Unpromising Beginning"
             },
             {
               "audio_url": "https://www.archive.org/download/carved_lions_1405_librivox/carvedlions_06_molesworth_64kb.mp3",
               "length_ms": 1035000,
+              "readers": [
+                "taylavoce"
+              ],
               "start_ms": 6068000,
               "title": "A New World"
             },
             {
               "audio_url": "https://www.archive.org/download/carved_lions_1405_librivox/carvedlions_07_molesworth_64kb.mp3",
               "length_ms": 939000,
+              "readers": [
+                "taylavoce"
+              ],
               "start_ms": 7103000,
               "title": "Gathering Clouds"
             },
             {
               "audio_url": "https://www.archive.org/download/carved_lions_1405_librivox/carvedlions_08_molesworth_64kb.mp3",
               "length_ms": 1145000,
+              "readers": [
+                "taylavoce"
+              ],
               "start_ms": 8042000,
               "title": "'Nobody-Nobody'"
             },
             {
               "audio_url": "https://www.archive.org/download/carved_lions_1405_librivox/carvedlions_09_molesworth_64kb.mp3",
               "length_ms": 1101000,
+              "readers": [
+                "taylavoce"
+              ],
               "start_ms": 9187000,
               "title": "Out in the Rain"
             },
             {
               "audio_url": "https://www.archive.org/download/carved_lions_1405_librivox/carvedlions_10_molesworth_64kb.mp3",
               "length_ms": 1089000,
+              "readers": [
+                "maryanne"
+              ],
               "start_ms": 10288000,
               "title": "Taking Refuge"
             },
             {
               "audio_url": "https://www.archive.org/download/carved_lions_1405_librivox/carvedlions_11_molesworth_64kb.mp3",
               "length_ms": 1258000,
+              "readers": [
+                "maryanne"
+              ],
               "start_ms": 11377000,
               "title": "Kind Friends"
             },
             {
               "audio_url": "https://www.archive.org/download/carved_lions_1405_librivox/carvedlions_12_molesworth_64kb.mp3",
               "length_ms": 954000,
+              "readers": [
+                "maryanne"
+              ],
               "start_ms": 12635000,
               "title": "Good News"
             }
@@ -11923,7 +12318,12 @@
           "cover_url": "https://archive.org/download/carved_lions_1405_librivox/carved_lions_1405.jpg",
           "id": "ilianthe",
           "language": "en",
+          "librivox_genres": [
+            "Children's Fiction",
+            "Action & Adventure"
+          ],
           "librivox_id": 6673,
+          "librivox_title": "Carved Lions",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-carved-lions-by-mary-louisa-molesworth/",

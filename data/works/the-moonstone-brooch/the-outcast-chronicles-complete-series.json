@@ -4680,66 +4680,77 @@
             {
               "audio_url": "https://www.archive.org/download/outermosthouse_2405_librivox/outermosthouse_00_beston_64kb.mp3",
               "length_ms": 302000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Foreword"
             },
             {
               "audio_url": "https://www.archive.org/download/outermosthouse_2405_librivox/outermosthouse_01_beston_64kb.mp3",
               "length_ms": 1693000,
+              "section_number": 1,
               "start_ms": 302000,
               "title": "Chapter 1, The Beach"
             },
             {
               "audio_url": "https://www.archive.org/download/outermosthouse_2405_librivox/outermosthouse_02_beston_64kb.mp3",
               "length_ms": 2012000,
+              "section_number": 2,
               "start_ms": 1995000,
               "title": "Chapter 2, Autumn, Ocean, and Birds"
             },
             {
               "audio_url": "https://www.archive.org/download/outermosthouse_2405_librivox/outermosthouse_03_beston_64kb.mp3",
               "length_ms": 1675000,
+              "section_number": 3,
               "start_ms": 4007000,
               "title": "Chapter 3, The Headlong Wave"
             },
             {
               "audio_url": "https://www.archive.org/download/outermosthouse_2405_librivox/outermosthouse_04_beston_64kb.mp3",
               "length_ms": 2853000,
+              "section_number": 4,
               "start_ms": 5682000,
               "title": "Chapter 4, Midwinter"
             },
             {
               "audio_url": "https://www.archive.org/download/outermosthouse_2405_librivox/outermosthouse_05_beston_64kb.mp3",
               "length_ms": 2550000,
+              "section_number": 5,
               "start_ms": 8535000,
               "title": "Chapter 5, Winter Visitors"
             },
             {
               "audio_url": "https://www.archive.org/download/outermosthouse_2405_librivox/outermosthouse_06_beston_64kb.mp3",
               "length_ms": 2249000,
+              "section_number": 6,
               "start_ms": 11085000,
               "title": "Chapter 6, Lanterns on the Beach"
             },
             {
               "audio_url": "https://www.archive.org/download/outermosthouse_2405_librivox/outermosthouse_07_beston_64kb.mp3",
               "length_ms": 2321000,
+              "section_number": 7,
               "start_ms": 13334000,
               "title": "Chapter 7, An Inland Stroll in Spring"
             },
             {
               "audio_url": "https://www.archive.org/download/outermosthouse_2405_librivox/outermosthouse_08_beston_64kb.mp3",
               "length_ms": 1968000,
+              "section_number": 8,
               "start_ms": 15655000,
               "title": "Chapter 8, Night on the Great Beach"
             },
             {
               "audio_url": "https://www.archive.org/download/outermosthouse_2405_librivox/outermosthouse_09_beston_64kb.mp3",
               "length_ms": 2597000,
+              "section_number": 9,
               "start_ms": 17623000,
               "title": "Chapter 9, The Year at High Tide"
             },
             {
               "audio_url": "https://www.archive.org/download/outermosthouse_2405_librivox/outermosthouse_10_beston_64kb.mp3",
               "length_ms": 481000,
+              "section_number": 10,
               "start_ms": 20220000,
               "title": "Chapter 10, Orion Rises on the Dunes"
             }
@@ -4748,7 +4759,12 @@
           "cover_url": "https://archive.org/download/outermosthouse_2405_librivox/outermosthouse_2403.jpg",
           "id": "shelly-weingart",
           "language": "en",
+          "librivox_genres": [
+            "Nature",
+            "Memoirs"
+          ],
           "librivox_id": 20423,
+          "librivox_title": "Outermost House",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-outermost-house-by-henry-beston/",

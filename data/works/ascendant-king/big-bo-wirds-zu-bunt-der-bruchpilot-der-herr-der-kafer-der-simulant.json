@@ -6562,36 +6562,93 @@
             {
               "audio_url": "https://www.archive.org/download/thebigdrum_2001_librivox/bigdrum_1_pinero_64kb.mp3",
               "length_ms": 3315000,
+              "readers": [
+                "larry-wilson",
+                "leanne-yau",
+                "eva-davis-d-2025",
+                "nemo",
+                "tj-burns",
+                "michaelmaggs",
+                "steven-fellows",
+                "adrian-stephens"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/thebigdrum_2001_librivox/bigdrum_2_pinero_64kb.mp3",
               "length_ms": 2281000,
+              "readers": [
+                "availle",
+                "toddhw",
+                "alan-mapstone",
+                "sonia",
+                "tomas-peter",
+                "eva-davis-d-2025",
+                "michaelmaggs",
+                "shashank-jakhmola"
+              ],
               "start_ms": 3315000,
               "title": "Act 2, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/thebigdrum_2001_librivox/bigdrum_3_pinero_64kb.mp3",
               "length_ms": 2487000,
+              "readers": [
+                "toddhw",
+                "sonia",
+                "tomas-peter",
+                "eva-davis-d-2025",
+                "nemo",
+                "michaelmaggs",
+                "kevins"
+              ],
               "start_ms": 5596000,
               "title": "Act 2, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/thebigdrum_2001_librivox/bigdrum_4_pinero_64kb.mp3",
               "length_ms": 2578000,
+              "readers": [
+                "toddhw",
+                "sonia",
+                "tomas-peter",
+                "devorah-allen",
+                "eva-davis-d-2025",
+                "nemo",
+                "michaelmaggs",
+                "adrian-stephens"
+              ],
               "start_ms": 8083000,
               "title": "Act 3, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/thebigdrum_2001_librivox/bigdrum_5_pinero_64kb.mp3",
               "length_ms": 2588000,
+              "readers": [
+                "toddhw",
+                "son-of-the-exiles",
+                "sonia",
+                "tomas-peter",
+                "devorah-allen",
+                "eva-davis-d-2025",
+                "nemo",
+                "michaelmaggs",
+                "adrian-stephens"
+              ],
               "start_ms": 10661000,
               "title": "Act 3, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/thebigdrum_2001_librivox/bigdrum_6_pinero_64kb.mp3",
               "length_ms": 2854000,
+              "readers": [
+                "alan-mapstone",
+                "eva-davis-d-2025",
+                "nemo",
+                "michaelmaggs",
+                "adrian-stephens"
+              ],
               "start_ms": 13249000,
               "title": "Act 4"
             }
@@ -6600,7 +6657,11 @@
           "cover_url": "https://archive.org/download/thebigdrum_2001_librivox/big_drum_2001.jpg",
           "id": "larry-wilson",
           "language": "en",
+          "librivox_genres": [
+            "Plays"
+          ],
           "librivox_id": 14540,
+          "librivox_title": "Big Drum",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-big-drum-by-arthur-wing-pinero/",

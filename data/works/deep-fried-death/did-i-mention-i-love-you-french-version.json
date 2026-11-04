@@ -3123,9 +3123,23 @@
           ],
           "copyright_year": 1886,
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt13/Didache_RDT_1112.jpg",
+          "credits": [
+            {
+              "person": "james-donaldson",
+              "role": "translator"
+            },
+            {
+              "person": "alexander-roberts",
+              "role": "translator"
+            }
+          ],
           "id": "sam-stinson",
           "language": "en",
+          "librivox_genres": [
+            "Religion"
+          ],
           "librivox_id": 2189,
+          "librivox_title": "Didache",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-didache-from-the-roberts-donaldson-translation/",
@@ -3201,9 +3215,19 @@
           ],
           "copyright_year": 1912,
           "cover_url": "https://archive.org/download/librivoxcdcoverart36/didachetwelveapostles_2004.jpg",
+          "credits": [
+            {
+              "person": "kirsopp-lake",
+              "role": "translator"
+            }
+          ],
           "id": "ancientchristian",
           "language": "en",
+          "librivox_genres": [
+            "Christianity - Other"
+          ],
           "librivox_id": 15016,
+          "librivox_title": "Didache: The Teaching of the Twelve Apostles",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/didache-the-teaching-of-the-twelve-apostles/",
@@ -5776,24 +5800,57 @@
             {
               "audio_url": "https://www.archive.org/download/dido_aeneas_dr_2304_librivox/didoandaeneas_00_tate_64kb.mp3",
               "length_ms": 392000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Prologue"
             },
             {
               "audio_url": "https://www.archive.org/download/dido_aeneas_dr_2304_librivox/didoandaeneas_01_tate_64kb.mp3",
               "length_ms": 255000,
+              "readers": [
+                "triciag",
+                "rapunzelina",
+                "alan-mapstone",
+                "beeswaxcandle",
+                "inkell",
+                "mathias-thorndal"
+              ],
+              "section_number": 1,
               "start_ms": 392000,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/dido_aeneas_dr_2304_librivox/didoandaeneas_02_tate_64kb.mp3",
               "length_ms": 314000,
+              "readers": [
+                "triciag",
+                "rapunzelina",
+                "alan-mapstone",
+                "sonia",
+                "estefania-vidal",
+                "beeswaxcandle",
+                "inkell",
+                "mathias-thorndal"
+              ],
+              "section_number": 2,
               "start_ms": 647000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/dido_aeneas_dr_2304_librivox/didoandaeneas_03_tate_64kb.mp3",
               "length_ms": 262000,
+              "readers": [
+                "triciag",
+                "alan-mapstone",
+                "estefania-vidal",
+                "beeswaxcandle",
+                "inkell",
+                "mathias-thorndal"
+              ],
+              "section_number": 3,
               "start_ms": 961000,
               "title": "Act 3"
             }
@@ -5802,7 +5859,11 @@
           "cover_url": "https://archive.org/download/dido_aeneas_dr_2304_librivox/dido_aeneas_2304.jpg",
           "id": "alan-mapstone",
           "language": "en",
+          "librivox_genres": [
+            "Drama"
+          ],
           "librivox_id": 19030,
+          "librivox_title": "Dido and Aeneas",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/dido-and-aeneas-by-nahum-tate/",
@@ -5861,36 +5922,115 @@
             {
               "audio_url": "https://www.archive.org/download/didoqueencarthage_2510_librivox/dido_0_marlowe_64kb.mp3",
               "length_ms": 132000,
+              "readers": [
+                "alan-mapstone"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction and Dramatis Personae"
             },
             {
               "audio_url": "https://www.archive.org/download/didoqueencarthage_2510_librivox/dido_1_marlowe_64kb.mp3",
               "length_ms": 1129000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "greg-giordano",
+                "larry-wilson",
+                "cavaet",
+                "dc",
+                "beeswaxcandle",
+                "inkell",
+                "priamedes",
+                "shrimpphish",
+                "hallow-orbiter"
+              ],
+              "section_number": 1,
               "start_ms": 132000,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/didoqueencarthage_2510_librivox/dido_2_marlowe_64kb.mp3",
               "length_ms": 1313000,
+              "readers": [
+                "toddhw",
+                "michele-eaton",
+                "alan-mapstone",
+                "greg-giordano",
+                "larry-wilson",
+                "cavaet",
+                "dc",
+                "inkell",
+                "priamedes",
+                "hannah-lake",
+                "shrimpphish",
+                "hallow-orbiter"
+              ],
+              "section_number": 2,
               "start_ms": 1261000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/didoqueencarthage_2510_librivox/dido_3_marlowe_64kb.mp3",
               "length_ms": 1602000,
+              "readers": [
+                "toddhw",
+                "michele-eaton",
+                "alan-mapstone",
+                "greg-giordano",
+                "larry-wilson",
+                "jessie-percival",
+                "cavaet",
+                "dc",
+                "inkell",
+                "priamedes",
+                "hannah-lake",
+                "shrimpphish",
+                "hallow-orbiter"
+              ],
+              "section_number": 3,
               "start_ms": 2574000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/didoqueencarthage_2510_librivox/dido_4_marlowe_64kb.mp3",
               "length_ms": 1331000,
+              "readers": [
+                "toddhw",
+                "michele-eaton",
+                "alan-mapstone",
+                "greg-giordano",
+                "larry-wilson",
+                "wayne-cooke",
+                "cavaet",
+                "winnifred-assmann",
+                "inkell",
+                "hannah-lake",
+                "shrimpphish",
+                "hallow-orbiter"
+              ],
+              "section_number": 4,
               "start_ms": 4176000,
               "title": "Act 4"
             },
             {
               "audio_url": "https://www.archive.org/download/didoqueencarthage_2510_librivox/dido_5_marlowe_64kb.mp3",
               "length_ms": 1293000,
+              "readers": [
+                "toddhw",
+                "michele-eaton",
+                "alan-mapstone",
+                "greg-giordano",
+                "larry-wilson",
+                "cavaet",
+                "winnifred-assmann",
+                "beeswaxcandle",
+                "inkell",
+                "priamedes",
+                "hannah-lake",
+                "hallow-orbiter"
+              ],
+              "section_number": 5,
               "start_ms": 5507000,
               "title": "Act 5"
             }
@@ -5899,7 +6039,11 @@
           "cover_url": "https://archive.org/download/didoqueencarthage_2510_librivox/dido_2510.jpg",
           "id": "alan-mapstone",
           "language": "en",
+          "librivox_genres": [
+            "Tragedy"
+          ],
           "librivox_id": 21650,
+          "librivox_title": "Dido, Queen of Carthage",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/dido-queen-of-carthage-by-christopher-marlowe/",
@@ -5965,72 +6109,108 @@
             {
               "audio_url": "https://www.archive.org/download/dido_2109_librivox/didodancingbear_01_barnum_64kb.mp3",
               "length_ms": 610000,
+              "readers": [
+                "natalia"
+              ],
               "start_ms": 0,
               "title": "Dido Cuts Up"
             },
             {
               "audio_url": "https://www.archive.org/download/dido_2109_librivox/didodancingbear_02_barnum_64kb.mp3",
               "length_ms": 1017000,
+              "readers": [
+                "alan-lord"
+              ],
               "start_ms": 610000,
               "title": "Dido Is Caught"
             },
             {
               "audio_url": "https://www.archive.org/download/dido_2109_librivox/didodancingbear_03_barnum_64kb.mp3",
               "length_ms": 867000,
+              "readers": [
+                "alan-lord"
+              ],
               "start_ms": 1627000,
               "title": "Dido Is Trained"
             },
             {
               "audio_url": "https://www.archive.org/download/dido_2109_librivox/didodancingbear_04_barnum_64kb.mp3",
               "length_ms": 620000,
+              "readers": [
+                "danna535"
+              ],
               "start_ms": 2494000,
               "title": "Dido Learns to Dance"
             },
             {
               "audio_url": "https://www.archive.org/download/dido_2109_librivox/didodancingbear_05_barnum_64kb.mp3",
               "length_ms": 1247000,
+              "readers": [
+                "shasta"
+              ],
               "start_ms": 3114000,
               "title": "Dido Crosses the Ocean"
             },
             {
               "audio_url": "https://www.archive.org/download/dido_2109_librivox/didodancingbear_06_barnum_64kb.mp3",
               "length_ms": 903000,
+              "readers": [
+                "shasta"
+              ],
               "start_ms": 4361000,
               "title": "Dido in the Country"
             },
             {
               "audio_url": "https://www.archive.org/download/dido_2109_librivox/didodancingbear_07_barnum_64kb.mp3",
               "length_ms": 1062000,
+              "readers": [
+                "shasta"
+              ],
               "start_ms": 5264000,
               "title": "Dido Meets Don"
             },
             {
               "audio_url": "https://www.archive.org/download/dido_2109_librivox/didodancingbear_08_barnum_64kb.mp3",
               "length_ms": 1058000,
+              "readers": [
+                "shasta"
+              ],
               "start_ms": 6326000,
               "title": "Dido Helps a Girl"
             },
             {
               "audio_url": "https://www.archive.org/download/dido_2109_librivox/didodancingbear_09_barnum_64kb.mp3",
               "length_ms": 664000,
+              "readers": [
+                "nightshade"
+              ],
               "start_ms": 7384000,
               "title": "Dido in the Bakery"
             },
             {
               "audio_url": "https://www.archive.org/download/dido_2109_librivox/didodancingbear_10_barnum_64kb.mp3",
               "length_ms": 843000,
+              "readers": [
+                "mleigh"
+              ],
               "start_ms": 8048000,
               "title": "Dido Scares a Man"
             },
             {
               "audio_url": "https://www.archive.org/download/dido_2109_librivox/didodancingbear_11_barnum_64kb.mp3",
               "length_ms": 712000,
+              "readers": [
+                "james-r-hedrick"
+              ],
               "start_ms": 8891000,
               "title": "Dido in the Circus"
             },
             {
               "audio_url": "https://www.archive.org/download/dido_2109_librivox/didodancingbear_12_barnum_64kb.mp3",
               "length_ms": 869000,
+              "readers": [
+                "james-r-hedrick"
+              ],
               "start_ms": 9603000,
               "title": "Dido in a Fire"
             }
@@ -6039,7 +6219,11 @@
           "cover_url": "https://archive.org/download/dido_2109_librivox/dido_2109.jpg",
           "id": "natalia",
           "language": "en",
+          "librivox_genres": [
+            "Animals & Nature"
+          ],
           "librivox_id": 16888,
+          "librivox_title": "Dido, the Dancing Bear: His Many Adventures",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/dido-the-dancing-bear-his-many-adventures-by-richard-barnum/",

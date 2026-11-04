@@ -3181,18 +3181,28 @@
             {
               "audio_url": "https://www.archive.org/download/eves_diary_librivox/eves_diary_1_twain_64kb.mp3",
               "length_ms": 731000,
+              "readers": [
+                "esther"
+              ],
               "start_ms": 0,
               "title": "Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/eves_diary_librivox/eves_diary_2_twain_64kb.mp3",
               "length_ms": 637000,
+              "readers": [
+                "esther"
+              ],
               "start_ms": 731000,
               "title": "Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/eves_diary_librivox/eves_diary_3_twain_64kb.mp3",
               "length_ms": 915000,
+              "readers": [
+                "esther",
+                "mike-lockwood"
+              ],
               "start_ms": 1368000,
               "title": "Part 3"
             }
@@ -3201,7 +3211,12 @@
           "cover_url": "https://archive.org/download/eves_diary_librivox/Eves_Diary_1105.jpg",
           "id": "esther",
           "language": "en",
+          "librivox_genres": [
+            "Humorous Fiction",
+            "Short Stories"
+          ],
           "librivox_id": 276,
+          "librivox_title": "Eve’s Diary",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/eves-diary-by-mark-twain/",
@@ -3239,7 +3254,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt23/eves_diary_1210.jpg",
           "id": "john-greenman",
           "language": "en",
+          "librivox_genres": [
+            "Fictional Biographies & Memoirs",
+            "Humorous Fiction",
+            "Short Stories"
+          ],
           "librivox_id": 4089,
+          "librivox_title": "Eve’s Diary (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/eves-diary-by-mark-twain-2/",

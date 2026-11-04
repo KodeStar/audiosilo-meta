@@ -4835,90 +4835,135 @@
             {
               "audio_url": "https://www.archive.org/download/presence_1406.poem_librivox/presence_coleridge_ajc_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "andrew-coleman"
+              ],
               "start_ms": 0,
               "title": "The Presence of Love - Read by AJC"
             },
             {
               "audio_url": "https://www.archive.org/download/presence_1406.poem_librivox/presence_coleridge_dl_64kb.mp3",
               "length_ms": 60000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 68000,
               "title": "The Presence of Love - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/presence_1406.poem_librivox/presence_coleridge_eep_64kb.mp3",
               "length_ms": 64000,
+              "readers": [
+                "ernst-pattynama"
+              ],
               "start_ms": 128000,
               "title": "The Presence of Love - Read by EEP"
             },
             {
               "audio_url": "https://www.archive.org/download/presence_1406.poem_librivox/presence_coleridge_gb_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "garth-burton"
+              ],
               "start_ms": 192000,
               "title": "The Presence of Love - Read by GB"
             },
             {
               "audio_url": "https://www.archive.org/download/presence_1406.poem_librivox/presence_coleridge_gl_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "guy-lederfein"
+              ],
               "start_ms": 257000,
               "title": "The Presence of Love - Read by GL"
             },
             {
               "audio_url": "https://www.archive.org/download/presence_1406.poem_librivox/presence_coleridge_jcm_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "jason-mills"
+              ],
               "start_ms": 326000,
               "title": "The Presence of Love - Read by JCM"
             },
             {
               "audio_url": "https://www.archive.org/download/presence_1406.poem_librivox/presence_coleridge_lah_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 383000,
               "title": "The Presence of Love - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/presence_1406.poem_librivox/presence_coleridge_llw_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 440000,
               "title": "The Presence of Love - Read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/presence_1406.poem_librivox/presence_coleridge_jbs_64kb.mp3",
               "length_ms": 56000,
+              "readers": [
+                "jemmablythe"
+              ],
               "start_ms": 508000,
               "title": "The Presence of Love - Read by JBS"
             },
             {
               "audio_url": "https://www.archive.org/download/presence_1406.poem_librivox/presence_coleridge_jn_64kb.mp3",
               "length_ms": 56000,
+              "readers": [
+                "julia-niedermaier"
+              ],
               "start_ms": 564000,
               "title": "The Presence of Love - Read by JN"
             },
             {
               "audio_url": "https://www.archive.org/download/presence_1406.poem_librivox/presence_coleridge_mf_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "malcolm-fisher"
+              ],
               "start_ms": 620000,
               "title": "The Presence of Love - Read by MF"
             },
             {
               "audio_url": "https://www.archive.org/download/presence_1406.poem_librivox/presence_coleridge_nj_64kb.mp3",
               "length_ms": 49000,
+              "readers": [
+                "njohansen"
+              ],
               "start_ms": 689000,
               "title": "The Presence of Love - Read by NJ"
             },
             {
               "audio_url": "https://www.archive.org/download/presence_1406.poem_librivox/presence_coleridge_rn_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 738000,
               "title": "The Presence of Love - Read by RN"
             },
             {
               "audio_url": "https://www.archive.org/download/presence_1406.poem_librivox/presence_coleridge_sabt_64kb.mp3",
               "length_ms": 63000,
+              "readers": [
+                "skyalbatross"
+              ],
               "start_ms": 807000,
               "title": "The Presence of Love - Read by SABT"
             },
             {
               "audio_url": "https://www.archive.org/download/presence_1406.poem_librivox/presence_coleridge_zk_64kb.mp3",
               "length_ms": 51000,
+              "readers": [
+                "zach-k"
+              ],
               "start_ms": 870000,
               "title": "The Presence of Love - Read by ZK"
             }
@@ -4927,7 +4972,11 @@
           "cover_url": "https://archive.org/download/presence_1406.poem_librivox/presence_love_1406.jpg",
           "id": "andrew-coleman",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 8966,
+          "librivox_title": "Presence of Love",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-presence-of-love-by-samuel-taylor-coleridge/",
@@ -5291,7 +5340,12 @@
           "cover_url": "https://archive.org/download/hanging_librivox/Present_Hanging_Other_Ghost_Stories_1104.jpg",
           "id": "peter-yearsley",
           "language": "en",
+          "librivox_genres": [
+            "Horror & Supernatural Fiction",
+            "Single Author Collections"
+          ],
           "librivox_id": 252,
+          "librivox_title": "Present at a Hanging and Other Ghost Stories",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/present-at-a-hanging-by-ambrose-bierce/",
@@ -5667,42 +5721,63 @@
             {
               "audio_url": "https://www.archive.org/download/the_present_crisis_1512.poem_librivox/presentcrisis_lowell_bk_64kb.mp3",
               "length_ms": 537000,
+              "readers": [
+                "bruce-kachuk"
+              ],
               "start_ms": 0,
               "title": "The Present Crisis - Read by BK"
             },
             {
               "audio_url": "https://www.archive.org/download/the_present_crisis_1512.poem_librivox/presentcrisis_lowell_bsd_64kb.mp3",
               "length_ms": 435000,
+              "readers": [
+                "brian-darby"
+              ],
               "start_ms": 537000,
               "title": "The Present Crisis - Read by BSD"
             },
             {
               "audio_url": "https://www.archive.org/download/the_present_crisis_1512.poem_librivox/presentcrisis_lowell_el_64kb.mp3",
               "length_ms": 436000,
+              "readers": [
+                "newgatenovelist"
+              ],
               "start_ms": 972000,
               "title": "The Present Crisis - Read by EL"
             },
             {
               "audio_url": "https://www.archive.org/download/the_present_crisis_1512.poem_librivox/presentcrisis_lowell_gg_64kb.mp3",
               "length_ms": 557000,
+              "readers": [
+                "greg-giordano"
+              ],
               "start_ms": 1408000,
               "title": "The Present Crisis - Read by GG"
             },
             {
               "audio_url": "https://www.archive.org/download/the_present_crisis_1512.poem_librivox/presentcrisis_lowell_llw_64kb.mp3",
               "length_ms": 588000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 1965000,
               "title": "The Present Crisis - Read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/the_present_crisis_1512.poem_librivox/presentcrisis_lowell_mk_64kb.mp3",
               "length_ms": 479000,
+              "readers": [
+                "maria-kasper"
+              ],
               "start_ms": 2553000,
               "title": "The Present Crisis - Read by MK"
             },
             {
               "audio_url": "https://www.archive.org/download/the_present_crisis_1512.poem_librivox/presentcrisis_lowell_sote_64kb.mp3",
               "length_ms": 576000,
+              "readers": [
+                "son-of-the-exiles"
+              ],
               "start_ms": 3032000,
               "title": "The Present Crisis - Read by SOTE"
             }
@@ -5710,7 +5785,11 @@
           "cover_url": "https://archive.org/download/the_present_crisis_1512.poem_librivox/presentcrisis_1512.jpg",
           "id": "bruce-kachuk",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 10401,
+          "librivox_title": "Present Crisis",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-present-crisis-by-james-russell-lowell/",
@@ -6391,132 +6470,220 @@
             {
               "audio_url": "https://www.archive.org/download/presentdaygardeningorchids_2511_librivox/orchids_00_obrien_64kb.mp3",
               "length_ms": 460000,
+              "readers": [
+                "christine-rottger"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface and Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/presentdaygardeningorchids_2511_librivox/orchids_01_obrien_64kb.mp3",
               "length_ms": 356000,
+              "readers": [
+                "sarah-rothwell"
+              ],
+              "section_number": 1,
               "start_ms": 460000,
               "title": "Chapter I. The Rise and Progress of Orchid Culture"
             },
             {
               "audio_url": "https://www.archive.org/download/presentdaygardeningorchids_2511_librivox/orchids_02_obrien_64kb.mp3",
               "length_ms": 190000,
+              "readers": [
+                "sarah-rothwell"
+              ],
+              "section_number": 2,
               "start_ms": 816000,
               "title": "Chapter II. Structure of Orchid Flowers"
             },
             {
               "audio_url": "https://www.archive.org/download/presentdaygardeningorchids_2511_librivox/orchids_03_obrien_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 3,
               "start_ms": 1006000,
               "title": "Chapter III. Difficulties to Overcome"
             },
             {
               "audio_url": "https://www.archive.org/download/presentdaygardeningorchids_2511_librivox/orchids_04_obrien_64kb.mp3",
               "length_ms": 1186000,
+              "readers": [
+                "rusty-pistols"
+              ],
+              "section_number": 4,
               "start_ms": 1100000,
               "title": "Chapter IV. Structure of the Orchid House"
             },
             {
               "audio_url": "https://www.archive.org/download/presentdaygardeningorchids_2511_librivox/orchids_05_obrien_64kb.mp3",
               "length_ms": 850000,
+              "readers": [
+                "madsparrow"
+              ],
+              "section_number": 5,
               "start_ms": 2286000,
               "title": "Chapter V. The Potting and Basketing Process"
             },
             {
               "audio_url": "https://www.archive.org/download/presentdaygardeningorchids_2511_librivox/orchids_06_obrien_64kb.mp3",
               "length_ms": 318000,
+              "readers": [
+                "christine-rottger"
+              ],
+              "section_number": 6,
               "start_ms": 3136000,
               "title": "Chapter VI. Removing Useless Leaves and Bulbs"
             },
             {
               "audio_url": "https://www.archive.org/download/presentdaygardeningorchids_2511_librivox/orchids_07_obrien_64kb.mp3",
               "length_ms": 200000,
+              "readers": [
+                "mamaphish"
+              ],
+              "section_number": 7,
               "start_ms": 3454000,
               "title": "Chapter VII. Propagation by Division"
             },
             {
               "audio_url": "https://www.archive.org/download/presentdaygardeningorchids_2511_librivox/orchids_08_obrien_64kb.mp3",
               "length_ms": 347000,
+              "readers": [
+                "tim-rowe"
+              ],
+              "section_number": 8,
               "start_ms": 3654000,
               "title": "Chapter VIII. Watering Epiphytal Orchids"
             },
             {
               "audio_url": "https://www.archive.org/download/presentdaygardeningorchids_2511_librivox/orchids_09_obrien_64kb.mp3",
               "length_ms": 370000,
+              "readers": [
+                "tim-rowe"
+              ],
+              "section_number": 9,
               "start_ms": 4001000,
               "title": "Chapter IX. Manures for Orchids"
             },
             {
               "audio_url": "https://www.archive.org/download/presentdaygardeningorchids_2511_librivox/orchids_10_obrien_64kb.mp3",
               "length_ms": 152000,
+              "readers": [
+                "tim-rowe"
+              ],
+              "section_number": 10,
               "start_ms": 4371000,
               "title": "Chapter X. Resting Orchids"
             },
             {
               "audio_url": "https://www.archive.org/download/presentdaygardeningorchids_2511_librivox/orchids_11_obrien_64kb.mp3",
               "length_ms": 136000,
+              "readers": [
+                "stacey-malcolm"
+              ],
+              "section_number": 11,
               "start_ms": 4523000,
               "title": "Chapter XI. Specially Rare and Valuable Plants"
             },
             {
               "audio_url": "https://www.archive.org/download/presentdaygardeningorchids_2511_librivox/orchids_12_obrien_64kb.mp3",
               "length_ms": 384000,
+              "readers": [
+                "dc"
+              ],
+              "section_number": 12,
               "start_ms": 4659000,
               "title": "Chapter XII. Diseases and Insect Pests"
             },
             {
               "audio_url": "https://www.archive.org/download/presentdaygardeningorchids_2511_librivox/orchids_13_obrien_64kb.mp3",
               "length_ms": 168000,
+              "readers": [
+                "ian-cawthon"
+              ],
+              "section_number": 13,
               "start_ms": 5043000,
               "title": "Chapter XIII. Periodical Inspection"
             },
             {
               "audio_url": "https://www.archive.org/download/presentdaygardeningorchids_2511_librivox/orchids_14_obrien_64kb.mp3",
               "length_ms": 377000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 14,
               "start_ms": 5211000,
               "title": "Chapter XIV. Orchids for the Conservatory"
             },
             {
               "audio_url": "https://www.archive.org/download/presentdaygardeningorchids_2511_librivox/orchids_15_obrien_64kb.mp3",
               "length_ms": 262000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 15,
               "start_ms": 5588000,
               "title": "Chapter XV. Orchids as Cut Flowers"
             },
             {
               "audio_url": "https://www.archive.org/download/presentdaygardeningorchids_2511_librivox/orchids_16_obrien_64kb.mp3",
               "length_ms": 446000,
+              "readers": [
+                "jenno"
+              ],
+              "section_number": 16,
               "start_ms": 5850000,
               "title": "Chapter XVI. Importing Orchids"
             },
             {
               "audio_url": "https://www.archive.org/download/presentdaygardeningorchids_2511_librivox/orchids_17_obrien_64kb.mp3",
               "length_ms": 170000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 17,
               "start_ms": 6296000,
               "title": "Chapter XVII. Treatment of Imported Orchids"
             },
             {
               "audio_url": "https://www.archive.org/download/presentdaygardeningorchids_2511_librivox/orchids_18_obrien_64kb.mp3",
               "length_ms": 222000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 18,
               "start_ms": 6466000,
               "title": "Chapter XVIII, Odours of Orchids"
             },
             {
               "audio_url": "https://www.archive.org/download/presentdaygardeningorchids_2511_librivox/orchids_19_obrien_64kb.mp3",
               "length_ms": 1457000,
+              "readers": [
+                "laura-luchsinger"
+              ],
+              "section_number": 19,
               "start_ms": 6688000,
               "title": "Chapter XIX. Hybridising and Raising Seedling Orchids"
             },
             {
               "audio_url": "https://www.archive.org/download/presentdaygardeningorchids_2511_librivox/orchids_20_obrien_64kb.mp3",
               "length_ms": 2912000,
+              "readers": [
+                "rapunzelina"
+              ],
+              "section_number": 20,
               "start_ms": 8145000,
               "title": "Chapter XX. Enumeration of the Principal Genera and Species in Cultivation"
             },
             {
               "audio_url": "https://www.archive.org/download/presentdaygardeningorchids_2511_librivox/orchids_21_obrien_64kb.mp3",
               "length_ms": 217000,
+              "readers": [
+                "dc"
+              ],
+              "section_number": 21,
               "start_ms": 11057000,
               "title": "Chapter XXI. Orchid Hybrids"
             }
@@ -6525,7 +6692,13 @@
           "cover_url": "https://archive.org/download/presentdaygardeningorchids_2511_librivox/orchids_2511.jpg",
           "id": "christine-rottger",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Nature",
+            "Science"
+          ],
           "librivox_id": 21986,
+          "librivox_title": "Present Day Gardening: Orchids",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/present-day-gardening-orchids-by-james-obrien/",
@@ -7169,7 +7342,11 @@
           "cover_url": "https://archive.org/download/presentpicture_newsouthwales_1408_librivox/present_picture_nsw_1409.jpg",
           "id": "phil-benson",
           "language": "en",
+          "librivox_genres": [
+            "History"
+          ],
           "librivox_id": 8992,
+          "librivox_title": "Present Picture of New South Wales",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-present-picture-of-new-south-wales-by-david-dickinson-mann/",
@@ -10153,36 +10330,105 @@
             {
               "audio_url": "https://www.archive.org/download/preservingmrpanmure_2602_librivox/preservingmrpanmure_1_pinero_64kb.mp3",
               "length_ms": 4028000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "greg-giordano",
+                "sonia",
+                "tomas-peter",
+                "james-r-hedrick",
+                "shickey",
+                "winnifred-assmann",
+                "beeswaxcandle",
+                "cbteddy",
+                "shrimpphish",
+                "jon-hunter",
+                "sonali-ekka"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/preservingmrpanmure_2602_librivox/preservingmrpanmure_2_pinero_64kb.mp3",
               "length_ms": 3677000,
+              "readers": [
+                "toddhw",
+                "alan-mapstone",
+                "greg-giordano",
+                "sonia",
+                "tomas-peter",
+                "james-r-hedrick",
+                "shickey",
+                "winnifred-assmann",
+                "beeswaxcandle",
+                "cbteddy",
+                "shrimpphish",
+                "jon-hunter",
+                "sonali-ekka"
+              ],
               "start_ms": 4028000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/preservingmrpanmure_2602_librivox/preservingmrpanmure_3_pinero_64kb.mp3",
               "length_ms": 3225000,
+              "readers": [
+                "greg-giordano",
+                "tomas-peter",
+                "winnifred-assmann",
+                "sonali-ekka"
+              ],
               "start_ms": 7705000,
               "title": "Act 3, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/preservingmrpanmure_2602_librivox/preservingmrpanmure_4_pinero_64kb.mp3",
               "length_ms": 1921000,
+              "readers": [
+                "toddhw",
+                "greg-giordano",
+                "sonia",
+                "tomas-peter",
+                "shickey",
+                "winnifred-assmann",
+                "beeswaxcandle",
+                "cbteddy",
+                "jon-hunter",
+                "sonali-ekka"
+              ],
               "start_ms": 10930000,
               "title": "Act 3, Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/preservingmrpanmure_2602_librivox/preservingmrpanmure_5_pinero_64kb.mp3",
               "length_ms": 2529000,
+              "readers": [
+                "alan-mapstone",
+                "greg-giordano",
+                "tomas-peter",
+                "devorah-allen",
+                "winnifred-assmann",
+                "sonali-ekka"
+              ],
               "start_ms": 12851000,
               "title": "Act 4, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/preservingmrpanmure_2602_librivox/preservingmrpanmure_6_pinero_64kb.mp3",
               "length_ms": 2045000,
+              "readers": [
+                "toddhw",
+                "greg-giordano",
+                "sonia",
+                "tomas-peter",
+                "devorah-allen",
+                "shickey",
+                "winnifred-assmann",
+                "beeswaxcandle",
+                "cbteddy",
+                "jon-hunter",
+                "sonali-ekka"
+              ],
               "start_ms": 15380000,
               "title": "Act 4, Part 2"
             }
@@ -10191,7 +10437,11 @@
           "cover_url": "https://archive.org/download/preservingmrpanmure_2602_librivox/preserving_panmure_2602.jpg",
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Comedy"
+          ],
           "librivox_id": 21867,
+          "librivox_title": "Preserving Mr Panmure",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/preserving-mr-panmure-by-arthur-wing-pinero/",
@@ -11292,7 +11542,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt23/president_lincoln_1210.jpg",
           "id": "guero",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "Modern (19th C)"
+          ],
           "librivox_id": 5087,
+          "librivox_title": "President Lincoln's Attitude Towards Slavery and Emancipation",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/president-lincolns-attitude-towards-slavery-by-henry-watson-wilbur/",
@@ -13300,7 +13555,12 @@
           "cover_url": "https://archive.org/download/presidential_farewell_last_addresses_jg_1504_librivox/presidential_farewell_addresses_1504.jpg",
           "id": "john-greenman",
           "language": "en",
+          "librivox_genres": [
+            "Literary Collections",
+            "Political Science"
+          ],
           "librivox_id": 8770,
+          "librivox_title": "Presidential Farewell and Last Addresses",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/presidential-farewell-and-last-addresses-by-various/",
@@ -14394,96 +14654,160 @@
             {
               "audio_url": "https://www.archive.org/download/presidingladiesofthewhitehouse_2606_librivox/presidingladies_00_woolfall_64kb.mp3",
               "length_ms": 409000,
+              "readers": [
+                "larry-wilson"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction by Margaret E. Sangster"
             },
             {
               "audio_url": "https://www.archive.org/download/presidingladiesofthewhitehouse_2606_librivox/presidingladies_01_woolfall_64kb.mp3",
               "length_ms": 185000,
+              "readers": [
+                "cathy-howell"
+              ],
+              "section_number": 1,
               "start_ms": 409000,
               "title": "Martha Washington / Abigail Adams"
             },
             {
               "audio_url": "https://www.archive.org/download/presidingladiesofthewhitehouse_2606_librivox/presidingladies_02_woolfall_64kb.mp3",
               "length_ms": 182000,
+              "readers": [
+                "cathy-howell"
+              ],
+              "section_number": 2,
               "start_ms": 594000,
               "title": "Martha Jefferson Randolph / Dorothy Paine Madison"
             },
             {
               "audio_url": "https://www.archive.org/download/presidingladiesofthewhitehouse_2606_librivox/presidingladies_03_woolfall_64kb.mp3",
               "length_ms": 184000,
+              "readers": [
+                "cathy-howell"
+              ],
+              "section_number": 3,
               "start_ms": 776000,
               "title": "Elizabeth Kortright Monroe / Louisa Catherine Adams"
             },
             {
               "audio_url": "https://www.archive.org/download/presidingladiesofthewhitehouse_2606_librivox/presidingladies_04_woolfall_64kb.mp3",
               "length_ms": 188000,
+              "readers": [
+                "cathy-howell"
+              ],
+              "section_number": 4,
               "start_ms": 960000,
               "title": "Rachel Donelson Jackson / Angelica Van Buren"
             },
             {
               "audio_url": "https://www.archive.org/download/presidingladiesofthewhitehouse_2606_librivox/presidingladies_05_woolfall_64kb.mp3",
               "length_ms": 184000,
+              "readers": [
+                "cathy-howell"
+              ],
+              "section_number": 5,
               "start_ms": 1148000,
               "title": "Anna Symmes Harrison / Letitia Christian Tyler"
             },
             {
               "audio_url": "https://www.archive.org/download/presidingladiesofthewhitehouse_2606_librivox/presidingladies_06_woolfall_64kb.mp3",
               "length_ms": 172000,
+              "readers": [
+                "doreen-marcotte"
+              ],
+              "section_number": 6,
               "start_ms": 1332000,
               "title": "Sarah Childress Polk Margaret Smith Taylor"
             },
             {
               "audio_url": "https://www.archive.org/download/presidingladiesofthewhitehouse_2606_librivox/presidingladies_07_woolfall_64kb.mp3",
               "length_ms": 175000,
+              "readers": [
+                "doreen-marcotte"
+              ],
+              "section_number": 7,
               "start_ms": 1504000,
               "title": "Abigail Fillmore / Jane Appleton Pierce"
             },
             {
               "audio_url": "https://www.archive.org/download/presidingladiesofthewhitehouse_2606_librivox/presidingladies_08_woolfall_64kb.mp3",
               "length_ms": 165000,
+              "readers": [
+                "sophiab07"
+              ],
+              "section_number": 8,
               "start_ms": 1679000,
               "title": "Harriet Lane / Mary Todd Lincoln"
             },
             {
               "audio_url": "https://www.archive.org/download/presidingladiesofthewhitehouse_2606_librivox/presidingladies_09_woolfall_64kb.mp3",
               "length_ms": 163000,
+              "readers": [
+                "sophiab07"
+              ],
+              "section_number": 9,
               "start_ms": 1844000,
               "title": "Eliza McCardle Johnson / Julia Dent Grant"
             },
             {
               "audio_url": "https://www.archive.org/download/presidingladiesofthewhitehouse_2606_librivox/presidingladies_10_woolfall_64kb.mp3",
               "length_ms": 172000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 10,
               "start_ms": 2007000,
               "title": "Lucy Ware Webb Hayes / Lucretia Randolph Garfield"
             },
             {
               "audio_url": "https://www.archive.org/download/presidingladiesofthewhitehouse_2606_librivox/presidingladies_11_woolfall_64kb.mp3",
               "length_ms": 173000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 11,
               "start_ms": 2179000,
               "title": "Mary Arthur McElroy / Frances Folsom Cleveland"
             },
             {
               "audio_url": "https://www.archive.org/download/presidingladiesofthewhitehouse_2606_librivox/presidingladies_12_woolfall_64kb.mp3",
               "length_ms": 210000,
+              "readers": [
+                "louise-jaeschke"
+              ],
+              "section_number": 12,
               "start_ms": 2352000,
               "title": "Caroline Scott Harrison / Ida Saxton McKinley"
             },
             {
               "audio_url": "https://www.archive.org/download/presidingladiesofthewhitehouse_2606_librivox/presidingladies_13_woolfall_64kb.mp3",
               "length_ms": 123000,
+              "readers": [
+                "louise-jaeschke"
+              ],
+              "section_number": 13,
               "start_ms": 2562000,
               "title": "Edith Kermit Carow Roosevelt"
             },
             {
               "audio_url": "https://www.archive.org/download/presidingladiesofthewhitehouse_2606_librivox/presidingladies_14_woolfall_64kb.mp3",
               "length_ms": 718000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 14,
               "start_ms": 2685000,
               "title": "The White House"
             },
             {
               "audio_url": "https://www.archive.org/download/presidingladiesofthewhitehouse_2606_librivox/presidingladies_15_woolfall_64kb.mp3",
               "length_ms": 473000,
+              "readers": [
+                "bettyb"
+              ],
+              "section_number": 15,
               "start_ms": 3403000,
               "title": "Official Etiquette"
             }
@@ -14492,7 +14816,12 @@
           "cover_url": "https://archive.org/download/presidingladiesofthewhitehouse_2606_librivox/presidingladiesofthewhitehouse_2606.jpg",
           "id": "larry-wilson",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography",
+            "Modern (19th C)"
+          ],
           "librivox_id": 22589,
+          "librivox_title": "Presiding Ladies of the White House",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/presiding-ladies-of-the-white-house-by-lila-g-a-woolfall/",
@@ -17918,7 +18247,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt/Prester_John_1003.jpg",
           "id": "grant-hurlock",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction"
+          ],
           "librivox_id": 3682,
+          "librivox_title": "Prester John",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/prester-john-by-john-buchan/",

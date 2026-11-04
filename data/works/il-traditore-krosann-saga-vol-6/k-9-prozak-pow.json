@@ -2704,7 +2704,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt25/k_factor_1211.jpg",
           "id": "phil-chenevert",
           "language": "en",
+          "librivox_genres": [
+            "Science Fiction"
+          ],
           "librivox_id": 6577,
+          "librivox_title": "K-Factor",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-k-factor-by-harry-harrison/",
@@ -5602,7 +5606,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCovers3/kabale_1009.jpg",
           "id": "redaer",
           "language": "de",
+          "librivox_genres": [
+            "General Fiction",
+            "Plays"
+          ],
           "librivox_id": 4669,
+          "librivox_title": "Kabale und Liebe - Ein bürgerliches Trauerspiel",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/kabale-und-liebe-ein-burgerliches-trauerspiel-by-friedrich-schiller/",
@@ -7413,7 +7422,11 @@
           "cover_url": "https://archive.org/download/kaboutersinhetbosch_2608_librivox/kabouters_2608.jpg",
           "id": "wiggert-loonstra",
           "language": "nl",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 22889,
+          "librivox_title": "Kabouters in het Bosch",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/kabouters-in-het-bosch-by-kees-valkenstein/",
@@ -7736,138 +7749,230 @@
             {
               "audio_url": "https://www.archive.org/download/kabumpoinoz_1312_librivox/kabumpoinoz_00_thompson_64kb.mp3",
               "length_ms": 103000,
+              "readers": [
+                "elleykat"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "00 - Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/kabumpoinoz_1312_librivox/kabumpoinoz_01_thompson_64kb.mp3",
               "length_ms": 864000,
+              "readers": [
+                "elleykat"
+              ],
+              "section_number": 1,
               "start_ms": 103000,
               "title": "01 - The Exploding Birthday Cake"
             },
             {
               "audio_url": "https://www.archive.org/download/kabumpoinoz_1312_librivox/kabumpoinoz_02_thompson_64kb.mp3",
               "length_ms": 905000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 2,
               "start_ms": 967000,
               "title": "02 - Picking a Proper Princess"
             },
             {
               "audio_url": "https://www.archive.org/download/kabumpoinoz_1312_librivox/kabumpoinoz_03_thompson_64kb.mp3",
               "length_ms": 365000,
+              "readers": [
+                "woolly-bee"
+              ],
+              "section_number": 3,
               "start_ms": 1872000,
               "title": "03 - Kabumpo and Pompa Disappear"
             },
             {
               "audio_url": "https://www.archive.org/download/kabumpoinoz_1312_librivox/kabumpoinoz_04_thompson_64kb.mp3",
               "length_ms": 881000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 4,
               "start_ms": 2237000,
               "title": "04 - The Curious Cottabus Appears"
             },
             {
               "audio_url": "https://www.archive.org/download/kabumpoinoz_1312_librivox/kabumpoinoz_05_thompson_64kb.mp3",
               "length_ms": 949000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 5,
               "start_ms": 3118000,
               "title": "05 - In the City of The Figure Heads"
             },
             {
               "audio_url": "https://www.archive.org/download/kabumpoinoz_1312_librivox/kabumpoinoz_06_thompson_64kb.mp3",
               "length_ms": 1205000,
+              "readers": [
+                "pam-castille"
+              ],
+              "section_number": 6,
               "start_ms": 4067000,
               "title": "06 - Ruggedo's History in Six Rocks"
             },
             {
               "audio_url": "https://www.archive.org/download/kabumpoinoz_1312_librivox/kabumpoinoz_07_thompson_64kb.mp3",
               "length_ms": 577000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 7,
               "start_ms": 5272000,
               "title": "07 - Sir Hokus and the Giants"
             },
             {
               "audio_url": "https://www.archive.org/download/kabumpoinoz_1312_librivox/kabumpoinoz_08_thompson_64kb.mp3",
               "length_ms": 616000,
+              "readers": [
+                "pam-castille"
+              ],
+              "section_number": 8,
               "start_ms": 5849000,
               "title": "08 - Woe in the Emerald City"
             },
             {
               "audio_url": "https://www.archive.org/download/kabumpoinoz_1312_librivox/kabumpoinoz_09_thompson_64kb.mp3",
               "length_ms": 1302000,
+              "readers": [
+                "pam-castille"
+              ],
+              "section_number": 9,
               "start_ms": 6465000,
               "title": "09 - Mixed Magic Makes Mischief"
             },
             {
               "audio_url": "https://www.archive.org/download/kabumpoinoz_1312_librivox/kabumpoinoz_10_thompson_64kb.mp3",
               "length_ms": 809000,
+              "readers": [
+                "pam-castille"
+              ],
+              "section_number": 10,
               "start_ms": 7767000,
               "title": "10 - Peg and Wag to the Rescue"
             },
             {
               "audio_url": "https://www.archive.org/download/kabumpoinoz_1312_librivox/kabumpoinoz_11_thompson_64kb.mp3",
               "length_ms": 1043000,
+              "readers": [
+                "pam-castille"
+              ],
+              "section_number": 11,
               "start_ms": 8576000,
               "title": "11 - The King of the Illumi Nation"
             },
             {
               "audio_url": "https://www.archive.org/download/kabumpoinoz_1312_librivox/kabumpoinoz_12_thompson_64kb.mp3",
               "length_ms": 1047000,
+              "readers": [
+                "pam-castille"
+              ],
+              "section_number": 12,
               "start_ms": 9619000,
               "title": "12 - The Delicious Sea of Soup"
             },
             {
               "audio_url": "https://www.archive.org/download/kabumpoinoz_1312_librivox/kabumpoinoz_13_thompson_64kb.mp3",
               "length_ms": 985000,
+              "readers": [
+                "pam-castille"
+              ],
+              "section_number": 13,
               "start_ms": 10666000,
               "title": "13 - On the Road to Ev"
             },
             {
               "audio_url": "https://www.archive.org/download/kabumpoinoz_1312_librivox/kabumpoinoz_14_thompson_64kb.mp3",
               "length_ms": 988000,
+              "readers": [
+                "pam-castille"
+              ],
+              "section_number": 14,
               "start_ms": 11651000,
               "title": "14 - Terror in Ozma's Palace"
             },
             {
               "audio_url": "https://www.archive.org/download/kabumpoinoz_1312_librivox/kabumpoinoz_15_thompson_64kb.mp3",
               "length_ms": 391000,
+              "readers": [
+                "woolly-bee"
+              ],
+              "section_number": 15,
               "start_ms": 12639000,
               "title": "15 - The Sand Man Takes a Hand"
             },
             {
               "audio_url": "https://www.archive.org/download/kabumpoinoz_1312_librivox/kabumpoinoz_16_thompson_64kb.mp3",
               "length_ms": 992000,
+              "readers": [
+                "pam-castille"
+              ],
+              "section_number": 16,
               "start_ms": 13030000,
               "title": "16 - Kabumpo Vanquishes the Twigs"
             },
             {
               "audio_url": "https://www.archive.org/download/kabumpoinoz_1312_librivox/kabumpoinoz_17_thompson_64kb.mp3",
               "length_ms": 872000,
+              "readers": [
+                "pam-castille"
+              ],
+              "section_number": 17,
               "start_ms": 14022000,
               "title": "17 - Meeting the Runaway Country"
             },
             {
               "audio_url": "https://www.archive.org/download/kabumpoinoz_1312_librivox/kabumpoinoz_18_thompson_64kb.mp3",
               "length_ms": 1023000,
+              "readers": [
+                "pam-castille"
+              ],
+              "section_number": 18,
               "start_ms": 14894000,
               "title": "18 - Prince Pompadore Proposes"
             },
             {
               "audio_url": "https://www.archive.org/download/kabumpoinoz_1312_librivox/kabumpoinoz_19_thompson_64kb.mp3",
               "length_ms": 877000,
+              "readers": [
+                "pam-castille"
+              ],
+              "section_number": 19,
               "start_ms": 15917000,
               "title": "19 - Ozma Takes Things in Hand"
             },
             {
               "audio_url": "https://www.archive.org/download/kabumpoinoz_1312_librivox/kabumpoinoz_20_thompson_64kb.mp3",
               "length_ms": 901000,
+              "readers": [
+                "drew-johnson"
+              ],
+              "section_number": 20,
               "start_ms": 16794000,
               "title": "20 - The Proper Princess is Found!"
             },
             {
               "audio_url": "https://www.archive.org/download/kabumpoinoz_1312_librivox/kabumpoinoz_21_thompson_64kb.mp3",
               "length_ms": 688000,
+              "readers": [
+                "drew-johnson"
+              ],
+              "section_number": 21,
               "start_ms": 17695000,
               "title": "21 - How It All Came About"
             },
             {
               "audio_url": "https://www.archive.org/download/kabumpoinoz_1312_librivox/kabumpoinoz_22_thompson_64kb.mp3",
               "length_ms": 266000,
+              "readers": [
+                "drew-johnson"
+              ],
+              "section_number": 22,
               "start_ms": 18383000,
               "title": "22 - Ruggedo 's Last Rock"
             }
@@ -7876,7 +7981,11 @@
           "cover_url": "https://archive.org/download/kabumpoinoz_1312_librivox/kabumpo_1312.jpg",
           "id": "elleykat",
           "language": "en",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 7731,
+          "librivox_title": "Kabumpo in Oz",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/kabumpo-in-oz-by-ruth-plumly-thompson/",
@@ -8042,7 +8151,11 @@
           "cover_url": "https://archive.org/download/kabumpoinozversion2_1808_librivox/kabumpo2_1808.jpg",
           "id": "phil-chenevert",
           "language": "en",
+          "librivox_genres": [
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 13147,
+          "librivox_title": "Kabumpo in Oz (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/kabumpo-in-oz-version-2-by-ruth-plumly-thompson/",

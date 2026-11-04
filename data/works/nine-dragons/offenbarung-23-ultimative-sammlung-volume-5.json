@@ -9677,36 +9677,54 @@
             {
               "audio_url": "https://www.archive.org/download/paederasty_librivox/paederasty_1_bentham_64kb.mp3",
               "length_ms": 1212000,
+              "readers": [
+                "carl-manchester"
+              ],
               "start_ms": 0,
               "title": "Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/paederasty_librivox/paederasty_2_bentham_64kb.mp3",
               "length_ms": 1121000,
+              "readers": [
+                "carl-manchester"
+              ],
               "start_ms": 1212000,
               "title": "Part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/paederasty_librivox/paederasty_3_bentham_64kb.mp3",
               "length_ms": 848000,
+              "readers": [
+                "leon-mire"
+              ],
               "start_ms": 2333000,
               "title": "Part 3"
             },
             {
               "audio_url": "https://www.archive.org/download/paederasty_librivox/paederasty_4_bentham_64kb.mp3",
               "length_ms": 933000,
+              "readers": [
+                "ml-cohen"
+              ],
               "start_ms": 3181000,
               "title": "Part 4"
             },
             {
               "audio_url": "https://www.archive.org/download/paederasty_librivox/paederasty_5_bentham_64kb.mp3",
               "length_ms": 1259000,
+              "readers": [
+                "boltoftash"
+              ],
               "start_ms": 4114000,
               "title": "Part 5"
             },
             {
               "audio_url": "https://www.archive.org/download/paederasty_librivox/paederasty_6_bentham_64kb.mp3",
               "length_ms": 1116000,
+              "readers": [
+                "cori-samuel"
+              ],
               "start_ms": 5373000,
               "title": "Part 6: Notes"
             }
@@ -9715,7 +9733,13 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt/paederasty.jpg",
           "id": "carl-manchester",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Philosophy",
+            "Political Science"
+          ],
           "librivox_id": 1285,
+          "librivox_title": "Offences Against One's Self: Paederasty",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/offences-against-ones-self-paederasty-by-jeremy-bentham/",

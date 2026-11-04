@@ -9309,60 +9309,90 @@
             {
               "audio_url": "https://www.archive.org/download/draculas_guest_1003_librivox/stokershortstory_01_dracularsguest_64kb.mp3",
               "length_ms": 1789000,
+              "readers": [
+                "robert-white"
+              ],
               "start_ms": 0,
               "title": "Dracula's Guest"
             },
             {
               "audio_url": "https://www.archive.org/download/draculas_guest_1003_librivox/stokershortstory_02_thejudgeshouse_64kb.mp3",
               "length_ms": 2409000,
+              "readers": [
+                "cate-mackenzie"
+              ],
               "start_ms": 1789000,
               "title": "The Judge's House"
             },
             {
               "audio_url": "https://www.archive.org/download/draculas_guest_1003_librivox/stokershortstory_03_thesquaw_64kb.mp3",
               "length_ms": 1501000,
+              "readers": [
+                "david-huston"
+              ],
               "start_ms": 4198000,
               "title": "The Squaw"
             },
             {
               "audio_url": "https://www.archive.org/download/draculas_guest_1003_librivox/stokershortstory_04_secretofgrowinggold_64kb.mp3",
               "length_ms": 1635000,
+              "readers": [
+                "haylayer-flaga"
+              ],
               "start_ms": 5699000,
               "title": "The Secret of The Growing Gold"
             },
             {
               "audio_url": "https://www.archive.org/download/draculas_guest_1003_librivox/stokershortstory_05_thegipsyprophecy_64kb.mp3",
               "length_ms": 1247000,
+              "readers": [
+                "cate-mackenzie"
+              ],
               "start_ms": 7334000,
               "title": "Gipsy Prophecy"
             },
             {
               "audio_url": "https://www.archive.org/download/draculas_guest_1003_librivox/stokershortstory_06_comingofabelbehenna_64kb.mp3",
               "length_ms": 2621000,
+              "readers": [
+                "cate-mackenzie"
+              ],
               "start_ms": 8581000,
               "title": "The Coming of Abel Behenna"
             },
             {
               "audio_url": "https://www.archive.org/download/draculas_guest_1003_librivox/stokershortstory_07_burialrats1_64kb.mp3",
               "length_ms": 1636000,
+              "readers": [
+                "haylayer-flaga"
+              ],
               "start_ms": 11202000,
               "title": "The Burial of the Rats"
             },
             {
               "audio_url": "https://www.archive.org/download/draculas_guest_1003_librivox/stokershortstory_08_burialrats2_64kb.mp3",
               "length_ms": 1630000,
+              "readers": [
+                "haylayer-flaga"
+              ],
               "start_ms": 12838000,
               "title": "The Burial of the Rats, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/draculas_guest_1003_librivox/stokershortstory_09_dreamredhands_64kb.mp3",
               "length_ms": 1647000,
+              "readers": [
+                "bellona-times"
+              ],
               "start_ms": 14468000,
               "title": "A Dream of Red Hands"
             },
             {
               "audio_url": "https://www.archive.org/download/draculas_guest_1003_librivox/stokershortstory_10_crookensands_64kb.mp3",
               "length_ms": 2623000,
+              "readers": [
+                "cate-mackenzie"
+              ],
               "start_ms": 16115000,
               "title": "Crooken Sands"
             }
@@ -9371,7 +9401,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt21/draculas_guest_1207.jpg",
           "id": "robert-white",
           "language": "en",
+          "librivox_genres": [
+            "Horror & Supernatural Fiction",
+            "Short Stories"
+          ],
           "librivox_id": 3669,
+          "librivox_title": "Dracula's Guest & Other Weird Tales",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/draculas-guest-and-other-weird-tales-by-bram-stoker/",

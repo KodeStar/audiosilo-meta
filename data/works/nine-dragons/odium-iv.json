@@ -3785,9 +3785,20 @@
           ],
           "copyright_year": 1781,
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt5/odyssee_1006.jpg",
+          "credits": [
+            {
+              "person": "johann-heinrich-voss",
+              "role": "translator"
+            }
+          ],
           "id": "redaer",
           "language": "de",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 2540,
+          "librivox_title": "Odyssee",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/odyssee-by-homer/",
@@ -12783,7 +12794,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/odysseus_1404.jpg",
           "id": "karlsson",
           "language": "de",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 8428,
+          "librivox_title": "Odysseus",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/odysseus-by-karl-friedrich-becker/",
@@ -13681,36 +13697,54 @@
             {
               "audio_url": "https://www.archive.org/download/odyssey_bk6_1012_librivox/odyssey6_01_homer_64kb.mp3",
               "length_ms": 304000,
+              "readers": [
+                "zoe-dickinson"
+              ],
               "start_ms": 0,
               "title": "01 - lines 1-55"
             },
             {
               "audio_url": "https://www.archive.org/download/odyssey_bk6_1012_librivox/odyssey6_02_homer_64kb.mp3",
               "length_ms": 314000,
+              "readers": [
+                "hefyd"
+              ],
               "start_ms": 304000,
               "title": "02 - lines 56-109"
             },
             {
               "audio_url": "https://www.archive.org/download/odyssey_bk6_1012_librivox/odyssey6_03_homer_64kb.mp3",
               "length_ms": 358000,
+              "readers": [
+                "hefyd"
+              ],
               "start_ms": 618000,
               "title": "03 - lines 110-165"
             },
             {
               "audio_url": "https://www.archive.org/download/odyssey_bk6_1012_librivox/odyssey6_04_homer_64kb.mp3",
               "length_ms": 301000,
+              "readers": [
+                "hefyd"
+              ],
               "start_ms": 976000,
               "title": "04 - lines 166-210"
             },
             {
               "audio_url": "https://www.archive.org/download/odyssey_bk6_1012_librivox/odyssey6_05_homer_64kb.mp3",
               "length_ms": 340000,
+              "readers": [
+                "hefyd"
+              ],
               "start_ms": 1277000,
               "title": "05 - lines 211-265"
             },
             {
               "audio_url": "https://www.archive.org/download/odyssey_bk6_1012_librivox/odyssey6_06_homer_64kb.mp3",
               "length_ms": 415000,
+              "readers": [
+                "morganscorpion"
+              ],
               "start_ms": 1617000,
               "title": "06 - lines 266-331"
             }
@@ -13719,7 +13753,13 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt19/Odyssey_Bk6_1209.jpg",
           "id": "zoe-dickinson",
           "language": "grc",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Myths, Legends & Fairy Tales",
+            "Epics"
+          ],
           "librivox_id": 3938,
+          "librivox_title": "Odyssey (Book 6)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-odyssey-book-6-by-homer/",
@@ -14061,7 +14101,12 @@
           "cover_url": "https://archive.org/download/odyssey_1709_librivox/odyssey_for_boys_and_girls_church_1709.jpg",
           "id": "ginny-blankenship",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure",
+            "Myths, Legends & Fairy Tales"
+          ],
           "librivox_id": 11944,
+          "librivox_title": "Odyssey for Boys and Girls",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-odyssey-for-boys-and-girls-by-alfred-john-church/",

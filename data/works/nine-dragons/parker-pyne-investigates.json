@@ -2065,12 +2065,36 @@
             {
               "audio_url": "https://www.archive.org/download/parlormatches_2312_librivox/parlormatches_1_hare_64kb.mp3",
               "length_ms": 2749000,
+              "readers": [
+                "toddhw",
+                "sonia",
+                "tomas-peter",
+                "jenn-broda",
+                "tr-love",
+                "james-r-hedrick",
+                "marie-christian",
+                "claudia-caldi",
+                "inkell",
+                "redrun"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/parlormatches_2312_librivox/parlormatches_2_hare_64kb.mp3",
               "length_ms": 1730000,
+              "readers": [
+                "toddhw",
+                "sonia",
+                "tomas-peter",
+                "jenn-broda",
+                "tr-love",
+                "james-r-hedrick",
+                "marie-christian",
+                "claudia-caldi",
+                "inkell",
+                "redrun"
+              ],
               "start_ms": 2749000,
               "title": "Act 2"
             }
@@ -2079,7 +2103,11 @@
           "cover_url": "https://archive.org/download/parlormatches_2312_librivox/parlormatches_2312.jpg",
           "id": "toddhw",
           "language": "en",
+          "librivox_genres": [
+            "Comedy"
+          ],
           "librivox_id": 19456,
+          "librivox_title": "Parlor Matches",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/parlor-matches-by-walter-ben-hare/",
@@ -2164,9 +2192,20 @@
           ],
           "copyright_year": 1892,
           "cover_url": "https://archive.org/download/parmenides_1310_librivox/parmenides_1311.jpg",
+          "credits": [
+            {
+              "person": "benjamin-jowett",
+              "role": "translator"
+            }
+          ],
           "id": "geoffrey-edwards",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Ancient"
+          ],
           "librivox_id": 8151,
+          "librivox_title": "Parmenides",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/parmenides-by-plato/",
@@ -2461,7 +2500,11 @@
           "cover_url": "https://archive.org/download/parnassus_on_wheels_0905_librivox/Parnassus_on_Wheels_1002.jpg",
           "id": "dawn-larsen",
           "language": "en",
+          "librivox_genres": [
+            "Published 1900 onward"
+          ],
           "librivox_id": 3083,
+          "librivox_title": "Parnassus on Wheels",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/parnassus-on-wheels-by-christopher-morley/",
@@ -3628,162 +3671,189 @@
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_00_newman_64kb.mp3",
               "length_ms": 371000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_01_newman_64kb.mp3",
               "length_ms": 1781000,
+              "section_number": 1,
               "start_ms": 371000,
               "title": "Sermon 1: Holiness Necessary for Future Blessedness"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_02_newman_64kb.mp3",
               "length_ms": 1533000,
+              "section_number": 2,
               "start_ms": 2152000,
               "title": "Sermon 2: The Immortality of the Soul"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_03_newman_64kb.mp3",
               "length_ms": 1751000,
+              "section_number": 3,
               "start_ms": 3685000,
               "title": "Sermon 3: Knowledge of God's Will without Obedience"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_04_newman_64kb.mp3",
               "length_ms": 1973000,
+              "section_number": 4,
               "start_ms": 5436000,
               "title": "Sermon 4: Secret Faults"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_05_newman_64kb.mp3",
               "length_ms": 1918000,
+              "section_number": 5,
               "start_ms": 7409000,
               "title": "Sermon 5: Self-Denial the Test of Religious Earnestness"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_06_newman_64kb.mp3",
               "length_ms": 1403000,
+              "section_number": 6,
               "start_ms": 9327000,
               "title": "Sermon 6: The Spiritual Mind"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_07_newman_64kb.mp3",
               "length_ms": 1731000,
+              "section_number": 7,
               "start_ms": 10730000,
               "title": "Sermon 7: Sins of Ignorance and Weakness"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_08_newman_64kb.mp3",
               "length_ms": 1874000,
+              "section_number": 8,
               "start_ms": 12461000,
               "title": "Sermon 8: God's Commandments not Grievous"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_09_newman_64kb.mp3",
               "length_ms": 1432000,
+              "section_number": 9,
               "start_ms": 14335000,
               "title": "Sermon 9: The Religious Use of Excited Feelings"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_10_newman_64kb.mp3",
               "length_ms": 1836000,
+              "section_number": 10,
               "start_ms": 15767000,
               "title": "Sermon 10: Profession without Practice"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_11_newman_64kb.mp3",
               "length_ms": 1630000,
+              "section_number": 11,
               "start_ms": 17603000,
               "title": "Sermon 11: Profession without Hypocrisy"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_12_newman_64kb.mp3",
               "length_ms": 1656000,
+              "section_number": 12,
               "start_ms": 19233000,
               "title": "Sermon 12: Profession without Ostentation"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_13_newman_64kb.mp3",
               "length_ms": 1492000,
+              "section_number": 13,
               "start_ms": 20889000,
               "title": "Sermon 13: Promising without Doing"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_14_newman_64kb.mp3",
               "length_ms": 1571000,
+              "section_number": 14,
               "start_ms": 22381000,
               "title": "Sermon 14: Religious Emotion"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_15_newman_64kb.mp3",
               "length_ms": 1705000,
+              "section_number": 15,
               "start_ms": 23952000,
               "title": "Sermon 15: Religious Faith Rational"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_16_newman_64kb.mp3",
               "length_ms": 1628000,
+              "section_number": 16,
               "start_ms": 25657000,
               "title": "Sermon 16: The Christian Mysteries"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_17_newman_64kb.mp3",
               "length_ms": 1764000,
+              "section_number": 17,
               "start_ms": 27285000,
               "title": "Sermon 17: The Self-wise Inquirer"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_18_newman_64kb.mp3",
               "length_ms": 1998000,
+              "section_number": 18,
               "start_ms": 29049000,
               "title": "Sermon 18: Obedience the Remedy for Religious Perplexity"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_19_newman_64kb.mp3",
               "length_ms": 1747000,
+              "section_number": 19,
               "start_ms": 31047000,
               "title": "Sermon 19: Times of Private Prayer"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_20_newman_64kb.mp3",
               "length_ms": 1869000,
+              "section_number": 20,
               "start_ms": 32794000,
               "title": "Sermon 20: Forms of Private Prayer"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_21_newman_64kb.mp3",
               "length_ms": 1354000,
+              "section_number": 21,
               "start_ms": 34663000,
               "title": "Sermon 21: The Resurrection of the Body"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_22_newman_64kb.mp3",
               "length_ms": 1625000,
+              "section_number": 22,
               "start_ms": 36017000,
               "title": "Sermon 22: Witnesses of the Resurrection"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_23_newman_64kb.mp3",
               "length_ms": 1783000,
+              "section_number": 23,
               "start_ms": 37642000,
               "title": "Sermon 23: Christian Reverence"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_24_newman_64kb.mp3",
               "length_ms": 2134000,
+              "section_number": 24,
               "start_ms": 39425000,
               "title": "Sermon 24: The Religion of the Day"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_25_newman_64kb.mp3",
               "length_ms": 1526000,
+              "section_number": 25,
               "start_ms": 41559000,
               "title": "Sermon 25: Scripture a Record of Human Sorrow"
             },
             {
               "audio_url": "https://www.archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/parochialandplainsermons1_26_newman_64kb.mp3",
               "length_ms": 1864000,
+              "section_number": 26,
               "start_ms": 43085000,
               "title": "Sermon 26: Christian Manhood"
             }
@@ -3792,7 +3862,11 @@
           "cover_url": "https://archive.org/download/parochial_and_plain_sermons_v1_2105_librivox/newman_sermons_2105.jpg",
           "id": "russ-hobbs",
           "language": "en",
+          "librivox_genres": [
+            "Christianity - Other"
+          ],
           "librivox_id": 15422,
+          "librivox_title": "Parochial and Plain Sermons, Volume 1",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/parochial-and-plain-sermons-v1-jh-newman/",
@@ -3844,156 +3918,234 @@
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_01_hamilton_64kb.mp3",
               "length_ms": 176000,
+              "readers": [
+                "emma-charlotte"
+              ],
               "start_ms": 0,
               "title": "Introduction and Charge of the Light Brigade"
             },
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_02_hamilton_64kb.mp3",
               "length_ms": 249000,
+              "readers": [
+                "lucy-perry"
+              ],
               "start_ms": 176000,
               "title": "Charge of the Light (Irish) Brigade"
             },
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_03_hamilton_64kb.mp3",
               "length_ms": 270000,
+              "readers": [
+                "lucy-perry"
+              ],
               "start_ms": 425000,
               "title": "\"The Two Hundred\" Mechanical Engineers in Dublin, 1865"
             },
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_04_hamilton_64kb.mp3",
               "length_ms": 159000,
+              "readers": [
+                "lucy-perry"
+              ],
               "start_ms": 695000,
               "title": "The Half Hundred (of Coals)"
             },
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_05_hamilton_64kb.mp3",
               "length_ms": 176000,
+              "readers": [
+                "lucy-perry"
+              ],
               "start_ms": 854000,
               "title": "The Doctor's Heavy Brigade"
             },
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_06_hamilton_64kb.mp3",
               "length_ms": 174000,
+              "readers": [
+                "lucy-perry"
+              ],
               "start_ms": 1030000,
               "title": "The Charge of the Black Brigade, 1868"
             },
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_07_hamilton_64kb.mp3",
               "length_ms": 143000,
+              "readers": [
+                "eva-davis-d-2025"
+              ],
               "start_ms": 1204000,
               "title": "At the Magdalen Ground"
             },
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_08_hamilton_64kb.mp3",
               "length_ms": 149000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 1347000,
               "title": "Charge of the Fair Brigade"
             },
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_09_hamilton_64kb.mp3",
               "length_ms": 94000,
+              "readers": [
+                "eva-davis-d-2025"
+              ],
               "start_ms": 1496000,
               "title": "The Charge of the \"Bustle\""
             },
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_10_hamilton_64kb.mp3",
               "length_ms": 202000,
+              "readers": [
+                "eva-davis-d-2025"
+              ],
               "start_ms": 1590000,
               "title": "On the Six Hundredth Representation of \" Our Boys \" at the Vaudeville Theatre"
             },
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_11_hamilton_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 1792000,
               "title": "The Vote of Six Millions"
             },
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_12_hamilton_64kb.mp3",
               "length_ms": 126000,
+              "readers": [
+                "heather-james"
+              ],
               "start_ms": 1869000,
               "title": "The Charge of the \"Rad.\" Brigade"
             },
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_13_hamilton_64kb.mp3",
               "length_ms": 88000,
+              "readers": [
+                "heather-james"
+              ],
               "start_ms": 1995000,
               "title": "A Lay of the New Law Courts"
             },
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_14_hamilton_64kb.mp3",
               "length_ms": 100000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 2083000,
               "title": "The Latest Charge (against Mr. Biggar, M. P. , for Breach of Promise of Marriage)"
             },
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_15_hamilton_64kb.mp3",
               "length_ms": 121000,
+              "readers": [
+                "heather-james"
+              ],
               "start_ms": 2183000,
               "title": "The Charge of the Gownsmen at the Anti- Tobacco Lecture"
             },
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_16_hamilton_64kb.mp3",
               "length_ms": 156000,
+              "readers": [
+                "kalynda"
+              ],
               "start_ms": 2304000,
               "title": "The Charge of the Light Ballet"
             },
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_17_hamilton_64kb.mp3",
               "length_ms": 169000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 2460000,
               "title": "Tragic Episode in an Omnibus"
             },
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_18_hamilton_64kb.mp3",
               "length_ms": 84000,
+              "readers": [
+                "eva-davis-d-2025"
+              ],
               "start_ms": 2629000,
               "title": "Michael Drayton on the Battle of Agincourt"
             },
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_19_hamilton_64kb.mp3",
               "length_ms": 126000,
+              "readers": [
+                "eva-davis-d-2025"
+              ],
               "start_ms": 2713000,
               "title": "The \"Light\" Cavalier's Charge"
             },
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_20_hamilton_64kb.mp3",
               "length_ms": 190000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 2839000,
               "title": "The Charge of the Court Brigade, 1874"
             },
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_21_hamilton_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "eva-davis-d-2025"
+              ],
               "start_ms": 3029000,
               "title": "The Battle of Bartlemy's, 1875"
             },
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_22_hamilton_64kb.mp3",
               "length_ms": 147000,
+              "readers": [
+                "eva-davis-d-2025"
+              ],
               "start_ms": 3109000,
               "title": "Charge of the Light Brigade at the Alexandra  Palace Banquet, 1875"
             },
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_23_hamilton_64kb.mp3",
               "length_ms": 155000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 3256000,
               "title": "On the Rink, 1876"
             },
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_24_hamilton_64kb.mp3",
               "length_ms": 96000,
+              "readers": [
+                "sonia"
+              ],
               "start_ms": 3411000,
               "title": "How a Hundred Guests Met their Death"
             },
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_25_hamilton_64kb.mp3",
               "length_ms": 57000,
+              "readers": [
+                "heather-james"
+              ],
               "start_ms": 3507000,
               "title": "\"Half a League!\" (Tea Advertisement)"
             },
             {
               "audio_url": "https://www.archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_26_hamilton_64kb.mp3",
               "length_ms": 231000,
+              "readers": [
+                "emma-charlotte"
+              ],
               "start_ms": 3564000,
               "title": "The Last of the Light Brigade by Rudyard Kipling"
             }
@@ -4002,7 +4154,12 @@
           "cover_url": "https://archive.org/download/parodiesontennysonslightbrigade_1711_librivox/parodies_light_brigade_1711.jpg",
           "id": "emma-charlotte",
           "language": "en",
+          "librivox_genres": [
+            "Humorous Fiction",
+            "Literary Fiction"
+          ],
           "librivox_id": 10943,
+          "librivox_title": "Parodies on Tennyson's Charge of the Light Brigade",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/parodies-on-tennysons-charge-of-the-light-brigade-by-walter-hamilton/",
@@ -4058,54 +4215,86 @@
             {
               "audio_url": "https://www.archive.org/download/parodyoutlineofhistory_2211_librivox/parodyoutlineofhistory_01_stewart_64kb.mp3",
               "length_ms": 446000,
+              "readers": [
+                "lisa-greene"
+              ],
               "start_ms": 0,
               "title": "INTRODUCTION: A CRITICAL SURVEY OF AMERICAN HISTORY (In the Manner of William Lyon Phelps)"
             },
             {
               "audio_url": "https://www.archive.org/download/parodyoutlineofhistory_2211_librivox/parodyoutlineofhistory_02_stewart_64kb.mp3",
               "length_ms": 1474000,
+              "readers": [
+                "nzk13"
+              ],
               "start_ms": 446000,
               "title": "CRISTOFER COLOMBO, A Comedy of Discovery (In the Manner of James Branch Cabell)"
             },
             {
               "audio_url": "https://www.archive.org/download/parodyoutlineofhistory_2211_librivox/parodyoutlineofhistory_03_stewart_64kb.mp3",
               "length_ms": 1335000,
+              "readers": [
+                "rosemary-mcdonald-1938-2025"
+              ],
               "start_ms": 1920000,
               "title": "MAIN STREET: Plymouth, Mass. (In the Manner of Sinclair Lewis)"
             },
             {
               "audio_url": "https://www.archive.org/download/parodyoutlineofhistory_2211_librivox/parodyoutlineofhistory_04_stewart_64kb.mp3",
               "length_ms": 889000,
+              "readers": [
+                "brian-fullen",
+                "toddster",
+                "marcy-ewing",
+                "monica",
+                "tony-flores",
+                "laurie-rehman"
+              ],
               "start_ms": 3255000,
               "title": "THE COURTSHIP OF MILES STANDISH (In the Manner of F. Scott Fitzgerald)"
             },
             {
               "audio_url": "https://www.archive.org/download/parodyoutlineofhistory_2211_librivox/parodyoutlineofhistory_05_stewart_64kb.mp3",
               "length_ms": 1039000,
+              "readers": [
+                "brian-fullen"
+              ],
               "start_ms": 4144000,
               "title": "THE SPIRIT OF '75, LETTERS OF A MINUTE MAN (In the Manner of Ring Lardner)"
             },
             {
               "audio_url": "https://www.archive.org/download/parodyoutlineofhistory_2211_librivox/parodyoutlineofhistory_06_stewart_64kb.mp3",
               "length_ms": 630000,
+              "readers": [
+                "srikar-g"
+              ],
               "start_ms": 5183000,
               "title": "THE WHISKY REBELLION (In the Bedtime Story Manner of Thornton W. Burgess)"
             },
             {
               "audio_url": "https://www.archive.org/download/parodyoutlineofhistory_2211_librivox/parodyoutlineofhistory_07_stewart_64kb.mp3",
               "length_ms": 1419000,
+              "readers": [
+                "rosemary-mcdonald-1938-2025"
+              ],
               "start_ms": 5813000,
               "title": "HOW LOVE CAME TO GENERAL GRANT (In the Manner of Harold Bell Wright)"
             },
             {
               "audio_url": "https://www.archive.org/download/parodyoutlineofhistory_2211_librivox/parodyoutlineofhistory_08_stewart_64kb.mp3",
               "length_ms": 559000,
+              "readers": [
+                "rosemary-mcdonald-1938-2025"
+              ],
               "start_ms": 7232000,
               "title": "CUSTER'S LAST STAND (In the Manner of Edith Wharton)"
             },
             {
               "audio_url": "https://www.archive.org/download/parodyoutlineofhistory_2211_librivox/parodyoutlineofhistory_09_stewart_64kb.mp3",
               "length_ms": 1630000,
+              "readers": [
+                "rosemary-mcdonald-1938-2025"
+              ],
               "start_ms": 7791000,
               "title": "\"FOR THE FREEDOM OF THE WORLD\", A DRAMA OF THE GREAT WAR"
             }
@@ -4114,7 +4303,11 @@
           "cover_url": "https://archive.org/download/parodyoutlineofhistory_2211_librivox/parody_history_2211.jpg",
           "id": "lisa-greene",
           "language": "en",
+          "librivox_genres": [
+            "Humorous Fiction"
+          ],
           "librivox_id": 18384,
+          "librivox_title": "Parody Outline of History",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/a-parody-outline-of-history-by-donald-ogden-stewart/",
@@ -5975,30 +6168,120 @@
             {
               "audio_url": "https://www.archive.org/download/parsonswedding_1806_librivox/parsonswedding_01_killigrew_64kb.mp3",
               "length_ms": 3091000,
+              "readers": [
+                "maryann",
+                "availle",
+                "linette-geisel",
+                "beth-thomas-1974-2020",
+                "kristin-g",
+                "michele-eaton",
+                "diana-schmidt",
+                "roohi",
+                "sonia",
+                "beatka10",
+                "avocado",
+                "linda-olsen-fitak",
+                "tj-burns"
+              ],
               "start_ms": 0,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/parsonswedding_1806_librivox/parsonswedding_02_killigrew_64kb.mp3",
               "length_ms": 3836000,
+              "readers": [
+                "maryann",
+                "availle",
+                "linette-geisel",
+                "beth-thomas-1974-2020",
+                "kristin-g",
+                "michele-eaton",
+                "khand",
+                "diana-schmidt",
+                "newgatenovelist",
+                "roohi",
+                "sonia",
+                "beatka10",
+                "leanne-yau",
+                "avocado",
+                "linda-olsen-fitak",
+                "tj-burns",
+                "foon"
+              ],
               "start_ms": 3091000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/parsonswedding_1806_librivox/parsonswedding_03_killigrew_64kb.mp3",
               "length_ms": 2271000,
+              "readers": [
+                "kalynda",
+                "maryann",
+                "availle",
+                "linette-geisel",
+                "beth-thomas-1974-2020",
+                "kristin-g",
+                "michele-eaton",
+                "kathrine-engan",
+                "diana-schmidt",
+                "newgatenovelist",
+                "roohi",
+                "sonia",
+                "jennifer-fournier",
+                "beatka10",
+                "leanne-yau",
+                "amy-deuchler",
+                "avocado",
+                "linda-olsen-fitak",
+                "tj-burns"
+              ],
               "start_ms": 6927000,
               "title": "Act 3"
             },
             {
               "audio_url": "https://www.archive.org/download/parsonswedding_1806_librivox/parsonswedding_04_killigrew_64kb.mp3",
               "length_ms": 2812000,
+              "readers": [
+                "maryann",
+                "availle",
+                "linette-geisel",
+                "beth-thomas-1974-2020",
+                "kristin-g",
+                "michele-eaton",
+                "khand",
+                "diana-schmidt",
+                "newgatenovelist",
+                "roohi",
+                "sonia",
+                "avocado",
+                "linda-olsen-fitak",
+                "tj-burns",
+                "foon"
+              ],
               "start_ms": 9198000,
               "title": "Act 4"
             },
             {
               "audio_url": "https://www.archive.org/download/parsonswedding_1806_librivox/parsonswedding_05_killigrew_64kb.mp3",
               "length_ms": 3313000,
+              "readers": [
+                "maryann",
+                "availle",
+                "linette-geisel",
+                "beth-thomas-1974-2020",
+                "kristin-g",
+                "michele-eaton",
+                "khand",
+                "diana-schmidt",
+                "roohi",
+                "cathar-maiden",
+                "sonia",
+                "leanne-yau",
+                "avocado",
+                "linda-olsen-fitak",
+                "tj-burns",
+                "foon"
+              ],
               "start_ms": 12010000,
               "title": "Act 5"
             }
@@ -6006,7 +6289,11 @@
           "cover_url": "https://archive.org/download/parsonswedding_1806_librivox/parsons_wedding_1806.jpg",
           "id": "maryann",
           "language": "en",
+          "librivox_genres": [
+            "Comedy"
+          ],
           "librivox_id": 10301,
+          "librivox_title": "Parson's Wedding",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-parsons-wedding-by-thomas-killigrew/",
@@ -8072,7 +8359,11 @@
           "cover_url": "https://archive.org/download/partialportraits_2103_librivox/partialportraits_2103.jpg",
           "id": "rita-boutros",
           "language": "en",
+          "librivox_genres": [
+            "Biography & Autobiography"
+          ],
           "librivox_id": 15886,
+          "librivox_title": "Partial Portraits",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/partial-portraits-by-henry-james/",

@@ -459,48 +459,80 @@
             {
               "audio_url": "https://www.archive.org/download/whyisthenegrolynched_2103_librivox/whyisthenegrolynched_00_douglass_64kb.mp3",
               "length_ms": 102000,
+              "readers": [
+                "josh-kibbey"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Introduction"
             },
             {
               "audio_url": "https://www.archive.org/download/whyisthenegrolynched_2103_librivox/whyisthenegrolynched_01_douglass_64kb.mp3",
               "length_ms": 812000,
+              "readers": [
+                "josh-kibbey"
+              ],
+              "section_number": 1,
               "start_ms": 102000,
               "title": "Chapter I"
             },
             {
               "audio_url": "https://www.archive.org/download/whyisthenegrolynched_2103_librivox/whyisthenegrolynched_02_douglass_64kb.mp3",
               "length_ms": 913000,
+              "readers": [
+                "ciufi-galeazzi"
+              ],
+              "section_number": 2,
               "start_ms": 914000,
               "title": "Chapter II"
             },
             {
               "audio_url": "https://www.archive.org/download/whyisthenegrolynched_2103_librivox/whyisthenegrolynched_03_douglass_64kb.mp3",
               "length_ms": 775000,
+              "readers": [
+                "ciufi-galeazzi"
+              ],
+              "section_number": 3,
               "start_ms": 1827000,
               "title": "Chapter III"
             },
             {
               "audio_url": "https://www.archive.org/download/whyisthenegrolynched_2103_librivox/whyisthenegrolynched_04_douglass_64kb.mp3",
               "length_ms": 752000,
+              "readers": [
+                "gene-pease"
+              ],
+              "section_number": 4,
               "start_ms": 2602000,
               "title": "Chapter IV"
             },
             {
               "audio_url": "https://www.archive.org/download/whyisthenegrolynched_2103_librivox/whyisthenegrolynched_05_douglass_64kb.mp3",
               "length_ms": 718000,
+              "readers": [
+                "wayne-cooke"
+              ],
+              "section_number": 5,
               "start_ms": 3354000,
               "title": "Chapter V"
             },
             {
               "audio_url": "https://www.archive.org/download/whyisthenegrolynched_2103_librivox/whyisthenegrolynched_06_douglass_64kb.mp3",
               "length_ms": 1428000,
+              "readers": [
+                "gene-pease"
+              ],
+              "section_number": 6,
               "start_ms": 4072000,
               "title": "Chapter VI"
             },
             {
               "audio_url": "https://www.archive.org/download/whyisthenegrolynched_2103_librivox/whyisthenegrolynched_07_douglass_64kb.mp3",
               "length_ms": 701000,
+              "readers": [
+                "wayne-cooke"
+              ],
+              "section_number": 7,
               "start_ms": 5500000,
               "title": "Chapter VII"
             }
@@ -509,7 +541,11 @@
           "cover_url": "https://archive.org/download/whyisthenegrolynched_2103_librivox/why_negro_lynched_2103.jpg",
           "id": "josh-kibbey",
           "language": "en",
+          "librivox_genres": [
+            "Essays & Short Works"
+          ],
           "librivox_id": 13913,
+          "librivox_title": "Why is the Negro Lynched?",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/why-is-the-negro-lynched-by-frederick-douglass/",
@@ -3789,24 +3825,45 @@
             {
               "audio_url": "https://www.archive.org/download/whymarry_1112_librivox/whymarry_williams_0_64kb.mp3",
               "length_ms": 582000,
+              "readers": [
+                "elizabeth-klett"
+              ],
               "start_ms": 0,
               "title": "DP and Advance notice"
             },
             {
               "audio_url": "https://www.archive.org/download/whymarry_1112_librivox/whymarry_williams_1_64kb.mp3",
               "length_ms": 4608000,
+              "readers": [
+                "elizabeth-klett",
+                "david-lawrence",
+                "katine",
+                "marty-kris"
+              ],
               "start_ms": 582000,
               "title": "Act 1"
             },
             {
               "audio_url": "https://www.archive.org/download/whymarry_1112_librivox/whymarry_williams_2_64kb.mp3",
               "length_ms": 2797000,
+              "readers": [
+                "ezwa",
+                "samanem",
+                "matthew-reece",
+                "john-fricker"
+              ],
               "start_ms": 5190000,
               "title": "Act 2"
             },
             {
               "audio_url": "https://www.archive.org/download/whymarry_1112_librivox/whymarry_williams_3_64kb.mp3",
               "length_ms": 3247000,
+              "readers": [
+                "arielle-lipshaw",
+                "diana-majlinger",
+                "availle",
+                "algy-pug"
+              ],
               "start_ms": 7987000,
               "title": "Act 3"
             }
@@ -3815,7 +3872,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt11/WhyMarry_1112.jpg",
           "id": "elizabeth-klett",
           "language": "en",
+          "librivox_genres": [
+            "Comedy"
+          ],
           "librivox_id": 5306,
+          "librivox_title": "Why Marry?",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/why-marry-by-jesse-lynch-williams/",

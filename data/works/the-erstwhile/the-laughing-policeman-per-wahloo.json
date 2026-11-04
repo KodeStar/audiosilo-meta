@@ -3101,60 +3101,100 @@
             {
               "audio_url": "https://www.archive.org/download/thelaw_bastiat_2007_librivox/law_00_bastiat_64kb.mp3",
               "length_ms": 508000,
+              "readers": [
+                "likemanywaters"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Foreword"
             },
             {
               "audio_url": "https://www.archive.org/download/thelaw_bastiat_2007_librivox/law_01_bastiat_64kb.mp3",
               "length_ms": 968000,
+              "readers": [
+                "michele-fry"
+              ],
+              "section_number": 1,
               "start_ms": 508000,
               "title": "Section 1"
             },
             {
               "audio_url": "https://www.archive.org/download/thelaw_bastiat_2007_librivox/law_02_bastiat_64kb.mp3",
               "length_ms": 676000,
+              "readers": [
+                "michele-fry"
+              ],
+              "section_number": 2,
               "start_ms": 1476000,
               "title": "Section 2"
             },
             {
               "audio_url": "https://www.archive.org/download/thelaw_bastiat_2007_librivox/law_03_bastiat_64kb.mp3",
               "length_ms": 734000,
+              "readers": [
+                "william-allan-jones"
+              ],
+              "section_number": 3,
               "start_ms": 2152000,
               "title": "Section 3"
             },
             {
               "audio_url": "https://www.archive.org/download/thelaw_bastiat_2007_librivox/law_04_bastiat_64kb.mp3",
               "length_ms": 845000,
+              "readers": [
+                "william-allan-jones"
+              ],
+              "section_number": 4,
               "start_ms": 2886000,
               "title": "Section 4"
             },
             {
               "audio_url": "https://www.archive.org/download/thelaw_bastiat_2007_librivox/law_05_bastiat_64kb.mp3",
               "length_ms": 731000,
+              "readers": [
+                "brooke-favorat"
+              ],
+              "section_number": 5,
               "start_ms": 3731000,
               "title": "Section 5"
             },
             {
               "audio_url": "https://www.archive.org/download/thelaw_bastiat_2007_librivox/law_06_bastiat_64kb.mp3",
               "length_ms": 983000,
+              "readers": [
+                "william-allan-jones"
+              ],
+              "section_number": 6,
               "start_ms": 4462000,
               "title": "Section 6"
             },
             {
               "audio_url": "https://www.archive.org/download/thelaw_bastiat_2007_librivox/law_07_bastiat_64kb.mp3",
               "length_ms": 704000,
+              "readers": [
+                "cfavorat"
+              ],
+              "section_number": 7,
               "start_ms": 5445000,
               "title": "Section 7"
             },
             {
               "audio_url": "https://www.archive.org/download/thelaw_bastiat_2007_librivox/law_08_bastiat_64kb.mp3",
               "length_ms": 738000,
+              "readers": [
+                "michele-fry"
+              ],
+              "section_number": 8,
               "start_ms": 6149000,
               "title": "Section 8"
             },
             {
               "audio_url": "https://www.archive.org/download/thelaw_bastiat_2007_librivox/law_09_bastiat_64kb.mp3",
               "length_ms": 820000,
+              "readers": [
+                "michele-fry"
+              ],
+              "section_number": 9,
               "start_ms": 6887000,
               "title": "Section 9"
             }
@@ -3163,7 +3203,12 @@
           "cover_url": "https://archive.org/download/thelaw_bastiat_2007_librivox/thelaw_2007.jpg",
           "id": "likemanywaters",
           "language": "en",
+          "librivox_genres": [
+            "Law",
+            "Political Science"
+          ],
           "librivox_id": 15134,
+          "librivox_title": "Law",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-law-by-frederic-bastiat/",

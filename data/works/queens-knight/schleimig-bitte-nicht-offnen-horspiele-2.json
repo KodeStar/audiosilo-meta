@@ -386,7 +386,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/schlossdurande_1410.jpg",
           "id": "hokuspokus",
           "language": "de",
+          "librivox_genres": [
+            "Romance",
+            "Published 1800 -1900"
+          ],
           "librivox_id": 9225,
+          "librivox_title": "Schloß Dürande",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/das-schloss-duerande-by-joseph-von-eichendorff/",
@@ -729,7 +734,11 @@
           "cover_url": "https://archive.org/download/schlossundfabikband1_2605_librivox/schlossundfabrik1_2605.jpg",
           "id": "alicestein",
           "language": "de",
+          "librivox_genres": [
+            "Published 1800 -1900"
+          ],
           "librivox_id": 22098,
+          "librivox_title": "Schloss und Fabik Band 1",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/schloss-und-fabik-band-1-by-louise-otto-peters/",
@@ -845,7 +854,11 @@
           "cover_url": "https://archive.org/download/schlossundfabrikband2_2610_librivox/schlossundfabrik2_2610.jpg",
           "id": "alicestein",
           "language": "de",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 22865,
+          "librivox_title": "Schloss und Fabrik Band 2",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/schloss-und-fabrik-band-2-by-louise-otto-peters/",
@@ -896,222 +909,333 @@
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_01_stratz_64kb.mp3",
               "length_ms": 211000,
+              "readers": [
+                "nadine-eckert-boulet"
+              ],
               "start_ms": 0,
               "title": "Vorwort des Herausgebers Dr. von Lechner"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_02_stratz_64kb.mp3",
               "length_ms": 236000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 211000,
               "title": "Einleitende Bemerkungen von Leopold Salvator von Vogelschrey"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_03_stratz_64kb.mp3",
               "length_ms": 1392000,
+              "readers": [
+                "dirk-weber"
+              ],
               "start_ms": 447000,
               "title": "Bericht des Kunstmalers Franz Salvermoser 1"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_04_stratz_64kb.mp3",
               "length_ms": 1174000,
+              "readers": [
+                "dirk-weber"
+              ],
               "start_ms": 1839000,
               "title": "Bericht des Kunstmalers Franz Salvermoser 2"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_05_stratz_64kb.mp3",
               "length_ms": 974000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 3013000,
               "title": "Ergänzung des Berichts durch Leopold Salvator von Vogelschrey"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_06_stratz_64kb.mp3",
               "length_ms": 764000,
+              "readers": [
+                "christian-al-kadi"
+              ],
               "start_ms": 3987000,
               "title": "Kurze Bemerkungen des Grafen Franz Assisi von Meerwarth"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_07_stratz_64kb.mp3",
               "length_ms": 749000,
+              "readers": [
+                "dirk-weber"
+              ],
               "start_ms": 4751000,
               "title": "Zweite Niederschrift des Franz Salvermoser"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_08_stratz_64kb.mp3",
               "length_ms": 1211000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 5500000,
               "title": "Erinnerungen der Frau Centa von Vogelschrey"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_09_stratz_64kb.mp3",
               "length_ms": 856000,
+              "readers": [
+                "hokuspokus"
+              ],
               "start_ms": 6711000,
               "title": "Promemoria des Priesters Nepomuk Thurmbichler"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_10_stratz_64kb.mp3",
               "length_ms": 1108000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 7567000,
               "title": "Neuerlicher Bericht von Herrn von Vogelschrey"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_11_stratz_64kb.mp3",
               "length_ms": 842000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 8675000,
               "title": "Denkwürdiges der Frau Centa von Vogelschrey"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_12_stratz_64kb.mp3",
               "length_ms": 395000,
+              "readers": [
+                "dirk-weber"
+              ],
               "start_ms": 9517000,
               "title": "Bericht des Franz Salvermoser"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_13_stratz_64kb.mp3",
               "length_ms": 1295000,
+              "readers": [
+                "hokuspokus"
+              ],
               "start_ms": 9912000,
               "title": "Schreiben des Lieutenants Vinzenz Ignatius Prinz von Tettikon"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_14_stratz_64kb.mp3",
               "length_ms": 366000,
+              "readers": [
+                "sonja"
+              ],
               "start_ms": 11207000,
               "title": "Rapport des Vinzenz Rubesoier"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_15_stratz_64kb.mp3",
               "length_ms": 755000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 11573000,
               "title": "Aufzeichnung von Centa von Vogelschrey"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_16_stratz_64kb.mp3",
               "length_ms": 735000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 12328000,
               "title": "Aufzeichnungen des Rittmeisters von Vogelschrey 1"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_17_stratz_64kb.mp3",
               "length_ms": 1143000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 13063000,
               "title": "Aufzeichnungen des Rittmeisters von Vogelschrey 2"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_18_stratz_64kb.mp3",
               "length_ms": 1229000,
+              "readers": [
+                "dirk-weber"
+              ],
               "start_ms": 14206000,
               "title": "Aide-Memoire des Franz Salvermoser"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_19_stratz_64kb.mp3",
               "length_ms": 942000,
+              "readers": [
+                "marilianus"
+              ],
               "start_ms": 15435000,
               "title": "Aufzeichnung des Baptist Geißböck 1"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_20_stratz_64kb.mp3",
               "length_ms": 1052000,
+              "readers": [
+                "marilianus"
+              ],
               "start_ms": 16377000,
               "title": "Aufzeichnung des Baptist Geißböck 2"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_21_stratz_64kb.mp3",
               "length_ms": 1088000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 17429000,
               "title": "Bericht des Rittmeisters von Vogelschrey"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_22_stratz_64kb.mp3",
               "length_ms": 863000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 18517000,
               "title": "Neuerliche Aufzeichnung von Centa von Vogelschrey"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_23_stratz_64kb.mp3",
               "length_ms": 911000,
+              "readers": [
+                "martin-langer"
+              ],
               "start_ms": 19380000,
               "title": "Rapport des Herrn Josef Wappolt"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_24_stratz_64kb.mp3",
               "length_ms": 1492000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 20291000,
               "title": "Vom Rittmeister von Vogelschrey niedergeschrieben 1"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_25_stratz_64kb.mp3",
               "length_ms": 1160000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 21783000,
               "title": "Vom Rittmeister von Vogelschrey niedergeschrieben 2"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_26_stratz_64kb.mp3",
               "length_ms": 1138000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 22943000,
               "title": "Vom Rittmeister von Vogelschrey niedergeschrieben 3"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_27_stratz_64kb.mp3",
               "length_ms": 622000,
+              "readers": [
+                "elli"
+              ],
               "start_ms": 24081000,
               "title": "Diktat der Pauline Engelbrecht"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_28_stratz_64kb.mp3",
               "length_ms": 1008000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 24703000,
               "title": "Bericht der Frau Centa von Vogelschrey 1"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_29_stratz_64kb.mp3",
               "length_ms": 783000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 25711000,
               "title": "Bericht der Frau Centa von Vogelschrey 2"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_30_stratz_64kb.mp3",
               "length_ms": 892000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 26494000,
               "title": "Bericht der Frau Centa von Vogelschrey 3"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_31_stratz_64kb.mp3",
               "length_ms": 1017000,
+              "readers": [
+                "dirk-weber"
+              ],
               "start_ms": 27386000,
               "title": "Niederschrift des Franz Salvermoser  1"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_32_stratz_64kb.mp3",
               "length_ms": 1130000,
+              "readers": [
+                "dirk-weber"
+              ],
               "start_ms": 28403000,
               "title": "Niederschrift des Franz Salvermoser  2"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_33_stratz_64kb.mp3",
               "length_ms": 826000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 29533000,
               "title": "Bericht des Rittmeisters von Vogelschrey 1"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_34_stratz_64kb.mp3",
               "length_ms": 944000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 30359000,
               "title": "Bericht des Rittmeisters von Vogelschrey 2"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_35_stratz_64kb.mp3",
               "length_ms": 873000,
+              "readers": [
+                "karlsson"
+              ],
               "start_ms": 31303000,
               "title": "Bericht des Rittmeisters von Vogelschrey 3"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_36_stratz_64kb.mp3",
               "length_ms": 956000,
+              "readers": [
+                "availle"
+              ],
               "start_ms": 32176000,
               "title": "Von Frau Centa von Vogelschrey"
             },
             {
               "audio_url": "https://www.archive.org/download/schlossvogeloed_1101_librivox/schlossvogeloed_37_stratz_64kb.mp3",
               "length_ms": 136000,
+              "readers": [
+                "helmfer"
+              ],
               "start_ms": 33132000,
               "title": "Bericht des Peter Wöhr"
             }
@@ -1120,7 +1244,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt7/schlossvogeloed_1101.jpg",
           "id": "nadine-eckert-boulet",
           "language": "de",
+          "librivox_genres": [
+            "Epistolary Fiction",
+            "Detective Fiction"
+          ],
           "librivox_id": 4852,
+          "librivox_title": "Schloß Vogelöd",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/schlos-vogelod-by-rudolf-stratz/",
@@ -4105,7 +4234,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt15/schmiedseinesglueckes_1203.jpg",
           "id": "karlsson",
           "language": "de",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 6233,
+          "librivox_title": "Schmied seines Glückes",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/der-schmied-seines-gluckes-by-gottfried-keller/",
@@ -5508,9 +5641,19 @@
           ],
           "copyright_year": 1889,
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt16/schnee_1204.jpg",
+          "credits": [
+            {
+              "person": "m-ottesen",
+              "role": "translator"
+            }
+          ],
           "id": "jessi",
           "language": "de",
+          "librivox_genres": [
+            "General Fiction"
+          ],
           "librivox_id": 3943,
+          "librivox_title": "Schnee",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/schnee-by-alexander-lange-kielland/",

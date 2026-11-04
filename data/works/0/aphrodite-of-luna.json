@@ -1612,78 +1612,91 @@
             {
               "audio_url": "https://www.archive.org/download/apis_mellifica_md_librivox/apismellifica_00_wolf_64kb.mp3",
               "length_ms": 122000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Preface"
             },
             {
               "audio_url": "https://www.archive.org/download/apis_mellifica_md_librivox/apismellifica_01_wolf_64kb.mp3",
               "length_ms": 832000,
+              "section_number": 1,
               "start_ms": 122000,
               "title": "Section One"
             },
             {
               "audio_url": "https://www.archive.org/download/apis_mellifica_md_librivox/apismellifica_02_wolf_64kb.mp3",
               "length_ms": 881000,
+              "section_number": 2,
               "start_ms": 954000,
               "title": "Section Two"
             },
             {
               "audio_url": "https://www.archive.org/download/apis_mellifica_md_librivox/apismellifica_03_wolf_64kb.mp3",
               "length_ms": 544000,
+              "section_number": 3,
               "start_ms": 1835000,
               "title": "Section Three"
             },
             {
               "audio_url": "https://www.archive.org/download/apis_mellifica_md_librivox/apismellifica_04_wolf_64kb.mp3",
               "length_ms": 589000,
+              "section_number": 4,
               "start_ms": 2379000,
               "title": "Section Four"
             },
             {
               "audio_url": "https://www.archive.org/download/apis_mellifica_md_librivox/apismellifica_05_wolf_64kb.mp3",
               "length_ms": 637000,
+              "section_number": 5,
               "start_ms": 2968000,
               "title": "Section Five"
             },
             {
               "audio_url": "https://www.archive.org/download/apis_mellifica_md_librivox/apismellifica_06_wolf_64kb.mp3",
               "length_ms": 682000,
+              "section_number": 6,
               "start_ms": 3605000,
               "title": "Section Six"
             },
             {
               "audio_url": "https://www.archive.org/download/apis_mellifica_md_librivox/apismellifica_07_wolf_64kb.mp3",
               "length_ms": 692000,
+              "section_number": 7,
               "start_ms": 4287000,
               "title": "Section Seven"
             },
             {
               "audio_url": "https://www.archive.org/download/apis_mellifica_md_librivox/apismellifica_08_wolf_64kb.mp3",
               "length_ms": 662000,
+              "section_number": 8,
               "start_ms": 4979000,
               "title": "Section Eight"
             },
             {
               "audio_url": "https://www.archive.org/download/apis_mellifica_md_librivox/apismellifica_09_wolf_64kb.mp3",
               "length_ms": 567000,
+              "section_number": 9,
               "start_ms": 5641000,
               "title": "Section Nine"
             },
             {
               "audio_url": "https://www.archive.org/download/apis_mellifica_md_librivox/apismellifica_10_wolf_64kb.mp3",
               "length_ms": 640000,
+              "section_number": 10,
               "start_ms": 6208000,
               "title": "Section Ten"
             },
             {
               "audio_url": "https://www.archive.org/download/apis_mellifica_md_librivox/apismellifica_11_wolf_64kb.mp3",
               "length_ms": 447000,
+              "section_number": 11,
               "start_ms": 6848000,
               "title": "Section Eleven"
             },
             {
               "audio_url": "https://www.archive.org/download/apis_mellifica_md_librivox/apismellifica_12_wolf_64kb.mp3",
               "length_ms": 607000,
+              "section_number": 12,
               "start_ms": 7295000,
               "title": "Section Twelve"
             }
@@ -1692,7 +1705,14 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt30/apis_mellifica_1303.jpg",
           "id": "marie-daum",
           "language": "en",
+          "librivox_genres": [
+            "*Non-fiction",
+            "Animals",
+            "Medical",
+            "Science"
+          ],
           "librivox_id": 6749,
+          "librivox_title": "Apis Mellifica",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/apis-mellifica-by-c-w-wolf/",

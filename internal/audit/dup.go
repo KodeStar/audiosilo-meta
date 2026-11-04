@@ -315,12 +315,7 @@ func identityClusters(ix *index, members []dupMember) []dupCluster {
 	return out
 }
 
-func renderLang(l string) string {
-	if l == "" {
-		return "(unset)"
-	}
-	return l
-}
+func renderLang(l string) string { return orPlaceholder(l, "(unset)") }
 
 func statedLangs(l string) map[string]bool {
 	if l == "" {

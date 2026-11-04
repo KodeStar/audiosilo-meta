@@ -5148,72 +5148,108 @@
             {
               "audio_url": "https://www.archive.org/download/demonofgibbet_1302_librivox/demonofthegibbet_obrien_cmp_64kb.mp3",
               "length_ms": 127000,
+              "readers": [
+                "caprishapage"
+              ],
               "start_ms": 0,
               "title": "The Demon of the Gibbet - Read by CMP"
             },
             {
               "audio_url": "https://www.archive.org/download/demonofgibbet_1302_librivox/demonofthegibbet_obrien_da_64kb.mp3",
               "length_ms": 132000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 127000,
               "title": "The Demon of the Gibbet - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/demonofgibbet_1302_librivox/demonofthegibbet_obrien_dl_64kb.mp3",
               "length_ms": 120000,
+              "readers": [
+                "debolee"
+              ],
               "start_ms": 259000,
               "title": "The Demon of the Gibbet - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/demonofgibbet_1302_librivox/demonofthegibbet_obrien_elli_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "elli"
+              ],
               "start_ms": 379000,
               "title": "The Demon of the Gibbet - Read by Elli"
             },
             {
               "audio_url": "https://www.archive.org/download/demonofgibbet_1302_librivox/demonofthegibbet_obrien_jab_64kb.mp3",
               "length_ms": 122000,
+              "readers": [
+                "jason-bolestridge"
+              ],
               "start_ms": 488000,
               "title": "The Demon of the Gibbet - Read by JAB"
             },
             {
               "audio_url": "https://www.archive.org/download/demonofgibbet_1302_librivox/demonofthegibbet_obrien_jcm_64kb.mp3",
               "length_ms": 120000,
+              "readers": [
+                "jason-mills"
+              ],
               "start_ms": 610000,
               "title": "The Demon of the Gibbet - Read by JCM"
             },
             {
               "audio_url": "https://www.archive.org/download/demonofgibbet_1302_librivox/demonofthegibbet_obrien_jm2_64kb.mp3",
               "length_ms": 137000,
+              "readers": [
+                "jannie-meisberger"
+              ],
               "start_ms": 730000,
               "title": "The Demon of the Gibbet - Read by JM"
             },
             {
               "audio_url": "https://www.archive.org/download/demonofgibbet_1302_librivox/demonofthegibbet_obrien_llb_64kb.mp3",
               "length_ms": 134000,
+              "readers": [
+                "lewis"
+              ],
               "start_ms": 867000,
               "title": "The Demon of the Gibbet - Read by LLB"
             },
             {
               "audio_url": "https://www.archive.org/download/demonofgibbet_1302_librivox/demonofthegibbet_obrien_llw_64kb.mp3",
               "length_ms": 168000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 1001000,
               "title": "The Demon of the Gibbet - Read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/demonofgibbet_1302_librivox/demonofthegibbet_obrien_rn_64kb.mp3",
               "length_ms": 158000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 1169000,
               "title": "The Demon of the Gibbet - Read by RN"
             },
             {
               "audio_url": "https://www.archive.org/download/demonofgibbet_1302_librivox/demonofthegibbet_obrien_trl_64kb.mp3",
               "length_ms": 108000,
+              "readers": [
+                "timothy-lucas"
+              ],
               "start_ms": 1327000,
               "title": "The Demon of the Gibbet - Read by TRL"
             },
             {
               "audio_url": "https://www.archive.org/download/demonofgibbet_1302_librivox/demonofthegibbet_obrien_ts_64kb.mp3",
               "length_ms": 134000,
+              "readers": [
+                "rookieblue"
+              ],
               "start_ms": 1435000,
               "title": "The Demon of the Gibbet - Read by TS"
             }
@@ -5221,7 +5257,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt32/Demon_Gibbet_1306.jpg",
           "id": "caprishapage",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 7517,
+          "librivox_title": "Demon of the Gibbet",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-demon-of-the-gibbet-by-fitz-james-obrien/",

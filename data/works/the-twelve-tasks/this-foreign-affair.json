@@ -839,60 +839,97 @@
             {
               "audio_url": "https://www.archive.org/download/giddy_globe_1001_librivox/thisgiddyglobe_01_herford_64kb.mp3",
               "length_ms": 606000,
+              "readers": [
+                "graeme-dunlop"
+              ],
               "start_ms": 0,
               "title": "01 - Part 1, Preface and Chapters 1-3"
             },
             {
               "audio_url": "https://www.archive.org/download/giddy_globe_1001_librivox/thisgiddyglobe_02_herford_64kb.mp3",
               "length_ms": 276000,
+              "readers": [
+                "david-lawrence",
+                "kevin-vinck"
+              ],
               "start_ms": 606000,
               "title": "02 - Part 1, Chapters 4-6"
             },
             {
               "audio_url": "https://www.archive.org/download/giddy_globe_1001_librivox/thisgiddyglobe_03_herford_64kb.mp3",
               "length_ms": 367000,
+              "readers": [
+                "david-lawrence",
+                "elli"
+              ],
               "start_ms": 882000,
               "title": "03 - Part 1, Chapters 7-9"
             },
             {
               "audio_url": "https://www.archive.org/download/giddy_globe_1001_librivox/thisgiddyglobe_04_herford_64kb.mp3",
               "length_ms": 325000,
+              "readers": [
+                "diana-majlinger"
+              ],
               "start_ms": 1249000,
               "title": "04 - Part 1, Chapters 10-12"
             },
             {
               "audio_url": "https://www.archive.org/download/giddy_globe_1001_librivox/thisgiddyglobe_05_herford_64kb.mp3",
               "length_ms": 370000,
+              "readers": [
+                "david-lawrence",
+                "elishebaisis"
+              ],
               "start_ms": 1574000,
               "title": "05 - Part 1, Chapters 13-17"
             },
             {
               "audio_url": "https://www.archive.org/download/giddy_globe_1001_librivox/thisgiddyglobe_06_herford_64kb.mp3",
               "length_ms": 453000,
+              "readers": [
+                "david-lawrence",
+                "kevin-vinck"
+              ],
               "start_ms": 1944000,
               "title": "06 - Part 2, Chapters 18-21"
             },
             {
               "audio_url": "https://www.archive.org/download/giddy_globe_1001_librivox/thisgiddyglobe_07_herford_64kb.mp3",
               "length_ms": 427000,
+              "readers": [
+                "kevin-vinck"
+              ],
               "start_ms": 2397000,
               "title": "07 - Part 2, Chapters 22-26"
             },
             {
               "audio_url": "https://www.archive.org/download/giddy_globe_1001_librivox/thisgiddyglobe_08_herford_64kb.mp3",
               "length_ms": 521000,
+              "readers": [
+                "david-lawrence",
+                "graeme-dunlop"
+              ],
               "start_ms": 2824000,
               "title": "08 - Part 3, Chapters 27-32"
             },
             {
               "audio_url": "https://www.archive.org/download/giddy_globe_1001_librivox/thisgiddyglobe_09_herford_64kb.mp3",
               "length_ms": 503000,
+              "readers": [
+                "david-lawrence",
+                "graeme-dunlop"
+              ],
               "start_ms": 3345000,
               "title": "09 - Part 3, Chapters 33-37"
             },
             {
               "audio_url": "https://www.archive.org/download/giddy_globe_1001_librivox/thisgiddyglobe_10_herford_64kb.mp3",
               "length_ms": 520000,
+              "readers": [
+                "david-lawrence",
+                "graeme-dunlop"
+              ],
               "start_ms": 3848000,
               "title": "10 - Part 3, Chapters 38-42, Epilogue and Appendix"
             }
@@ -901,7 +938,12 @@
           "cover_url": "https://www.archive.org/download/librivox_cd_covers/giddy_globe.jpg",
           "id": "graeme-dunlop",
           "language": "en",
+          "librivox_genres": [
+            "Humor",
+            "Travel & Geography"
+          ],
           "librivox_id": 3893,
+          "librivox_title": "This Giddy Globe",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/this-giddy-globe-by-oliver-herford/",
@@ -955,7 +997,12 @@
           "cover_url": "https://archive.org/download/thisgiddyglobe_2212_librivox/giddy_globe_2301.jpg",
           "id": "skveld",
           "language": "en",
+          "librivox_genres": [
+            "Humor",
+            "Modern (20th C)"
+          ],
           "librivox_id": 18625,
+          "librivox_title": "This Giddy Globe (Version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/this-giddy-globe-by-oliver-herford-2/",

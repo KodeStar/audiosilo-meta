@@ -2815,7 +2815,12 @@
           "cover_url": "https://archive.org/download/wreckofthecorsaire_2203_librivox/wreckofcorsaire_2203.jpg",
           "id": "steven-seitel",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Nautical & Marine Fiction"
+          ],
           "librivox_id": 17709,
+          "librivox_title": "Wreck of the Corsaire",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-wreck-of-the-corsaire-by-william-clark-russell/",
@@ -2880,7 +2885,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt20/wreck_golden_mary_1206.jpg",
           "id": "james-e-carson",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction",
+            "Nautical & Marine Fiction"
+          ],
           "librivox_id": 5772,
+          "librivox_title": "Wreck of the Golden Mary",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-wreck-of-the-golden-mary-by-charles-dickens/",
@@ -2931,60 +2941,90 @@
             {
               "audio_url": "https://www.archive.org/download/hesperus_1409.poem_librivox/hesperus_longfellow_bt_64kb.mp3",
               "length_ms": 215000,
+              "readers": [
+                "beth-thomas-1974-2020"
+              ],
               "start_ms": 0,
               "title": "The Wreck of the Hesperus - read by BT"
             },
             {
               "audio_url": "https://www.archive.org/download/hesperus_1409.poem_librivox/hesperus_longfellow_ccs_64kb.mp3",
               "length_ms": 326000,
+              "readers": [
+                "claudia-salto"
+              ],
               "start_ms": 215000,
               "title": "The Wreck of the Hesperus - read by CCS"
             },
             {
               "audio_url": "https://www.archive.org/download/hesperus_1409.poem_librivox/hesperus_longfellow_ik_64kb.mp3",
               "length_ms": 296000,
+              "readers": [
+                "ian-king"
+              ],
               "start_ms": 541000,
               "title": "The Wreck of the Hesperus - read by IK"
             },
             {
               "audio_url": "https://www.archive.org/download/hesperus_1409.poem_librivox/hesperus_longfellow_jcm_64kb.mp3",
               "length_ms": 236000,
+              "readers": [
+                "jason-mills"
+              ],
               "start_ms": 837000,
               "title": "The Wreck of the Hesperus - read by JCM"
             },
             {
               "audio_url": "https://www.archive.org/download/hesperus_1409.poem_librivox/hesperus_longfellow_jn_64kb.mp3",
               "length_ms": 293000,
+              "readers": [
+                "julia-niedermaier"
+              ],
               "start_ms": 1073000,
               "title": "The Wreck of the Hesperus - read by JN"
             },
             {
               "audio_url": "https://www.archive.org/download/hesperus_1409.poem_librivox/hesperus_longfellow_llw_64kb.mp3",
               "length_ms": 297000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 1366000,
               "title": "The Wreck of the Hesperus - read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/hesperus_1409.poem_librivox/hesperus_longfellow_mas_64kb.mp3",
               "length_ms": 261000,
+              "readers": [
+                "maryann"
+              ],
               "start_ms": 1663000,
               "title": "The Wreck of the Hesperus - read by MAS"
             },
             {
               "audio_url": "https://www.archive.org/download/hesperus_1409.poem_librivox/hesperus_longfellow_ns_64kb.mp3",
               "length_ms": 252000,
+              "readers": [
+                "nassali"
+              ],
               "start_ms": 1924000,
               "title": "The Wreck of the Hesperus - read by NS"
             },
             {
               "audio_url": "https://www.archive.org/download/hesperus_1409.poem_librivox/hesperus_longfellow_rc_64kb.mp3",
               "length_ms": 280000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
               "start_ms": 2176000,
               "title": "The Wreck of the Hesperus - read by RC"
             },
             {
               "audio_url": "https://www.archive.org/download/hesperus_1409.poem_librivox/hesperus_longfellow_rg_64kb.mp3",
               "length_ms": 316000,
+              "readers": [
+                "ruth-golding"
+              ],
               "start_ms": 2456000,
               "title": "The Wreck of the Hesperus - read by RG"
             }
@@ -2993,7 +3033,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/wreckhesperus_1409.jpg",
           "id": "beth-thomas-1974-2020",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 9161,
+          "librivox_title": "Wreck of the Hesperus",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-wreck-of-the-hesperus-by-henry-wadsworth-longfellow/",
@@ -3053,78 +3097,117 @@
             {
               "audio_url": "https://www.archive.org/download/wreckofthelondon_2505_librivox/wreckofthelondon_01_unknown_64kb.mp3",
               "length_ms": 383000,
+              "readers": [
+                "phil-schempf"
+              ],
               "start_ms": 0,
               "title": "Introductory"
             },
             {
               "audio_url": "https://www.archive.org/download/wreckofthelondon_2505_librivox/wreckofthelondon_02_unknown_64kb.mp3",
               "length_ms": 834000,
+              "readers": [
+                "james-oligney"
+              ],
               "start_ms": 383000,
               "title": "The Iron Beauty"
             },
             {
               "audio_url": "https://www.archive.org/download/wreckofthelondon_2505_librivox/wreckofthelondon_03_unknown_64kb.mp3",
               "length_ms": 771000,
+              "readers": [
+                "james-oligney"
+              ],
               "start_ms": 1217000,
               "title": "Captain Martin."
             },
             {
               "audio_url": "https://www.archive.org/download/wreckofthelondon_2505_librivox/wreckofthelondon_04_unknown_64kb.mp3",
               "length_ms": 1481000,
+              "readers": [
+                "james-oligney"
+              ],
               "start_ms": 1988000,
               "title": "Rev. Daniel James Draper"
             },
             {
               "audio_url": "https://www.archive.org/download/wreckofthelondon_2505_librivox/wreckofthelondon_05_unknown_64kb.mp3",
               "length_ms": 1329000,
+              "readers": [
+                "james-r-hedrick"
+              ],
               "start_ms": 3469000,
               "title": "The List of Passengers"
             },
             {
               "audio_url": "https://www.archive.org/download/wreckofthelondon_2505_librivox/wreckofthelondon_06_unknown_64kb.mp3",
               "length_ms": 1055000,
+              "readers": [
+                "james-r-hedrick"
+              ],
               "start_ms": 4798000,
               "title": "Three Days and Nights of Danger on the Deep"
             },
             {
               "audio_url": "https://www.archive.org/download/wreckofthelondon_2505_librivox/wreckofthelondon_07_unknown_64kb.mp3",
               "length_ms": 755000,
+              "readers": [
+                "acousticwave"
+              ],
               "start_ms": 5853000,
               "title": "Last Struggles"
             },
             {
               "audio_url": "https://www.archive.org/download/wreckofthelondon_2505_librivox/wreckofthelondon_08_unknown_64kb.mp3",
               "length_ms": 612000,
+              "readers": [
+                "lcollin"
+              ],
               "start_ms": 6608000,
               "title": "The Anchor within the Veil"
             },
             {
               "audio_url": "https://www.archive.org/download/wreckofthelondon_2505_librivox/wreckofthelondon_09_unknown_64kb.mp3",
               "length_ms": 1427000,
+              "readers": [
+                "lcollin"
+              ],
               "start_ms": 7220000,
               "title": "Last Words"
             },
             {
               "audio_url": "https://www.archive.org/download/wreckofthelondon_2505_librivox/wreckofthelondon_10_unknown_64kb.mp3",
               "length_ms": 770000,
+              "readers": [
+                "jenno"
+              ],
               "start_ms": 8647000,
               "title": "The Light behind the Cloud"
             },
             {
               "audio_url": "https://www.archive.org/download/wreckofthelondon_2505_librivox/wreckofthelondon_11_unknown_64kb.mp3",
               "length_ms": 617000,
+              "readers": [
+                "tracyann"
+              ],
               "start_ms": 9417000,
               "title": "The Escape"
             },
             {
               "audio_url": "https://www.archive.org/download/wreckofthelondon_2505_librivox/wreckofthelondon_12_unknown_64kb.mp3",
               "length_ms": 433000,
+              "readers": [
+                "mamaphish"
+              ],
               "start_ms": 10034000,
               "title": "Things remembered in the Storm"
             },
             {
               "audio_url": "https://www.archive.org/download/wreckofthelondon_2505_librivox/wreckofthelondon_13_unknown_64kb.mp3",
               "length_ms": 798000,
+              "readers": [
+                "shrimpphish"
+              ],
               "start_ms": 10467000,
               "title": "Appendix"
             }
@@ -3133,7 +3216,11 @@
           "cover_url": "https://archive.org/download/wreckofthelondon_2505_librivox/wreck_london_2505.jpg",
           "id": "phil-schempf",
           "language": "en",
+          "librivox_genres": [
+            "Travel & Geography"
+          ],
           "librivox_id": 21414,
+          "librivox_title": "Wreck of the \"London.\"",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/wreck-of-the-london-by-unknown/",
@@ -3399,7 +3486,11 @@
           "cover_url": "https://archive.org/download/wreckoftitan_2204_librivox/wreck_titan_2204.jpg",
           "id": "joseph-denoia",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction"
+          ],
           "librivox_id": 17885,
+          "librivox_title": "Wreck of the Titan, or Futility",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-wreck-of-the-titan-or-futility-by-morgan-robertson/",
@@ -8114,198 +8205,330 @@
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_00_stevenson_64kb.mp3",
               "length_ms": 1312000,
+              "readers": [
+                "antony-brown"
+              ],
+              "section_number": 0,
               "start_ms": 0,
               "title": "Prologue - In the Marquesas"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_01_stevenson_64kb.mp3",
               "length_ms": 1624000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 1,
               "start_ms": 1312000,
               "title": "Chapter 1 - A Sound Commercial Education"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_02_stevenson_64kb.mp3",
               "length_ms": 1426000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 2,
               "start_ms": 2936000,
               "title": "Chapter 2 - Roussillon Wine"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_03_stevenson_64kb.mp3",
               "length_ms": 1699000,
+              "readers": [
+                "antony-brown"
+              ],
+              "section_number": 3,
               "start_ms": 4362000,
               "title": "Chapter 3 - To Introduce Mr. Pinkerton"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_04_stevenson_64kb.mp3",
               "length_ms": 1956000,
+              "readers": [
+                "jules-hawryluk"
+              ],
+              "section_number": 4,
               "start_ms": 6061000,
               "title": "Chapter 4 - In Which I Experience Extremes of Fortune"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_05_stevenson_64kb.mp3",
               "length_ms": 2214000,
+              "readers": [
+                "jules-hawryluk"
+              ],
+              "section_number": 5,
               "start_ms": 8017000,
               "title": "Chapter 5 - In Which I am Down on My Luck in Paris"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_06_stevenson_64kb.mp3",
               "length_ms": 1824000,
+              "readers": [
+                "bill-boerst"
+              ],
+              "section_number": 6,
               "start_ms": 10231000,
               "title": "Chapter 6 - In Which I Go West"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_07_stevenson_64kb.mp3",
               "length_ms": 1584000,
+              "readers": [
+                "muggle1013"
+              ],
+              "section_number": 7,
               "start_ms": 12055000,
               "title": "Chapter 7 - Irons in the Fire, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_08_stevenson_64kb.mp3",
               "length_ms": 1231000,
+              "readers": [
+                "khand"
+              ],
+              "section_number": 8,
               "start_ms": 13639000,
               "title": "Chapter 7 - Irons in the Fire, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_09_stevenson_64kb.mp3",
               "length_ms": 1620000,
+              "readers": [
+                "whdemick"
+              ],
+              "section_number": 9,
               "start_ms": 14870000,
               "title": "Chapter 8 - Faces on the City Front"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_10_stevenson_64kb.mp3",
               "length_ms": 1798000,
+              "readers": [
+                "bill-boerst"
+              ],
+              "section_number": 10,
               "start_ms": 16490000,
               "title": "Chapter 9 - The Wreck of the 'Flying Scud'"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_11_stevenson_64kb.mp3",
               "length_ms": 1844000,
+              "readers": [
+                "deon-gines"
+              ],
+              "section_number": 11,
               "start_ms": 18288000,
               "title": "Chapter 10 - In Which the Crew Vanish, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_12_stevenson_64kb.mp3",
               "length_ms": 1209000,
+              "readers": [
+                "deon-gines"
+              ],
+              "section_number": 12,
               "start_ms": 20132000,
               "title": "Chapter 10 - In Which the Crew Vanish, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_13_stevenson_64kb.mp3",
               "length_ms": 1785000,
+              "readers": [
+                "bill-boerst"
+              ],
+              "section_number": 13,
               "start_ms": 21341000,
               "title": "Chapter 11 - In Which Jim and I Take Different Ways"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_14_stevenson_64kb.mp3",
               "length_ms": 1931000,
+              "readers": [
+                "bill-boerst"
+              ],
+              "section_number": 14,
               "start_ms": 23126000,
               "title": "Chapter 12 - The 'Nora Creina'"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_15_stevenson_64kb.mp3",
               "length_ms": 1407000,
+              "readers": [
+                "reeses118"
+              ],
+              "section_number": 15,
               "start_ms": 25057000,
               "title": "Chapter 13 - The Island and the Wreck"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_16_stevenson_64kb.mp3",
               "length_ms": 1771000,
+              "readers": [
+                "deon-gines"
+              ],
+              "section_number": 16,
               "start_ms": 26464000,
               "title": "Chapter 14 - The Cabin of the 'Flying Scud'"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_17_stevenson_64kb.mp3",
               "length_ms": 1616000,
+              "readers": [
+                "deon-gines"
+              ],
+              "section_number": 17,
               "start_ms": 28235000,
               "title": "Chapter 15 - The Cargo of the 'Flying Scud'"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_18_stevenson_64kb.mp3",
               "length_ms": 1561000,
+              "readers": [
+                "antony-brown"
+              ],
+              "section_number": 18,
               "start_ms": 29851000,
               "title": "Chapter 16 - In Which I Turn Smuggler, and the Captain Casuist"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_19_stevenson_64kb.mp3",
               "length_ms": 1602000,
+              "readers": [
+                "antony-brown"
+              ],
+              "section_number": 19,
               "start_ms": 31412000,
               "title": "Chapter 17 - Light From the Man of War"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_20_stevenson_64kb.mp3",
               "length_ms": 1876000,
+              "readers": [
+                "deon-gines"
+              ],
+              "section_number": 20,
               "start_ms": 33014000,
               "title": "Chapter 18 - Cross Questions and Crooked Answers"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_21_stevenson_64kb.mp3",
               "length_ms": 1247000,
+              "readers": [
+                "bill-boerst"
+              ],
+              "section_number": 21,
               "start_ms": 34890000,
               "title": "Chapter 19 - Travels with a Shyster, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_22_stevenson_64kb.mp3",
               "length_ms": 1491000,
+              "readers": [
+                "bill-boerst"
+              ],
+              "section_number": 22,
               "start_ms": 36137000,
               "title": "Chapter 19 - Travels with a Shyster, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_23_stevenson_64kb.mp3",
               "length_ms": 1862000,
+              "readers": [
+                "jules-hawryluk"
+              ],
+              "section_number": 23,
               "start_ms": 37628000,
               "title": "Chapter 20 - Stallbridge-Le-Carthew"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_24_stevenson_64kb.mp3",
               "length_ms": 882000,
+              "readers": [
+                "reeses118"
+              ],
+              "section_number": 24,
               "start_ms": 39490000,
               "title": "Chapter 21 - Face to Face"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_25_stevenson_64kb.mp3",
               "length_ms": 1586000,
+              "readers": [
+                "deon-gines"
+              ],
+              "section_number": 25,
               "start_ms": 40372000,
               "title": "Chapter 22 - The Remittance Man, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_26_stevenson_64kb.mp3",
               "length_ms": 1429000,
+              "readers": [
+                "deon-gines"
+              ],
+              "section_number": 26,
               "start_ms": 41958000,
               "title": "Chapter 22 - The Remittance Man, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_27_stevenson_64kb.mp3",
               "length_ms": 1925000,
+              "readers": [
+                "jules-hawryluk"
+              ],
+              "section_number": 27,
               "start_ms": 43387000,
               "title": "Chapter 23 - The Budget of the 'Currency Lass', part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_28_stevenson_64kb.mp3",
               "length_ms": 1806000,
+              "readers": [
+                "jules-hawryluk"
+              ],
+              "section_number": 28,
               "start_ms": 45312000,
               "title": "Chapter 23 - The Budget of the 'Currency Lass', part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_29_stevenson_64kb.mp3",
               "length_ms": 1333000,
+              "readers": [
+                "denise-nordell"
+              ],
+              "section_number": 29,
               "start_ms": 47118000,
               "title": "Chapter 24 - A Hard Bargain"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_30_stevenson_64kb.mp3",
               "length_ms": 1415000,
+              "readers": [
+                "deon-gines"
+              ],
+              "section_number": 30,
               "start_ms": 48451000,
               "title": "Chapter 25 - A Bad Bargain, part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_31_stevenson_64kb.mp3",
               "length_ms": 1261000,
+              "readers": [
+                "deon-gines"
+              ],
+              "section_number": 31,
               "start_ms": 49866000,
               "title": "Chapter 25 - A Bad Bargain, part 2"
             },
             {
               "audio_url": "https://www.archive.org/download/wrecker_1404_librivox/wrecker_32_stevenson_64kb.mp3",
               "length_ms": 763000,
+              "readers": [
+                "lynne-t"
+              ],
+              "section_number": 32,
               "start_ms": 51127000,
               "title": "Epilogue"
             }
@@ -8314,7 +8537,11 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt33/the_wrecker_1404.jpg",
           "id": "antony-brown",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction"
+          ],
           "librivox_id": 8608,
+          "librivox_title": "Wrecker",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-wrecker-by-robert-louis-stevenson/",
@@ -15954,126 +16181,147 @@
             {
               "audio_url": "https://www.archive.org/download/wrightbrothers_2209_librivox/wrightbrothers_00_kelly_64kb.mp3",
               "length_ms": 128000,
+              "section_number": 0,
               "start_ms": 0,
               "title": "Prologue"
             },
             {
               "audio_url": "https://www.archive.org/download/wrightbrothers_2209_librivox/wrightbrothers_01_kelly_64kb.mp3",
               "length_ms": 1367000,
+              "section_number": 1,
               "start_ms": 128000,
               "title": "Ch. 1  Boyhood"
             },
             {
               "audio_url": "https://www.archive.org/download/wrightbrothers_2209_librivox/wrightbrothers_02_kelly_64kb.mp3",
               "length_ms": 923000,
+              "section_number": 2,
               "start_ms": 1495000,
               "title": "Ch. 2 Background"
             },
             {
               "audio_url": "https://www.archive.org/download/wrightbrothers_2209_librivox/wrightbrothers_03_kelly_64kb.mp3",
               "length_ms": 1551000,
+              "section_number": 3,
               "start_ms": 2418000,
               "title": "Ch. 3 Printing - And Bicycles"
             },
             {
               "audio_url": "https://www.archive.org/download/wrightbrothers_2209_librivox/wrightbrothers_04_kelly_64kb.mp3",
               "length_ms": 1276000,
+              "section_number": 4,
               "start_ms": 3969000,
               "title": "Ch. 4 First Thoughts of Flight"
             },
             {
               "audio_url": "https://www.archive.org/download/wrightbrothers_2209_librivox/wrightbrothers_05_kelly_64kb.mp3",
               "length_ms": 2553000,
+              "section_number": 5,
               "start_ms": 5245000,
               "title": "Ch. 5 Gliding at Kitty Hawk"
             },
             {
               "audio_url": "https://www.archive.org/download/wrightbrothers_2209_librivox/wrightbrothers_06_kelly_64kb.mp3",
               "length_ms": 2771000,
+              "section_number": 6,
               "start_ms": 7798000,
               "title": "Ch. 6 First Power Flight"
             },
             {
               "audio_url": "https://www.archive.org/download/wrightbrothers_2209_librivox/wrightbrothers_07_kelly_64kb.mp3",
               "length_ms": 739000,
+              "section_number": 7,
               "start_ms": 10569000,
               "title": "Ch. 7 After the Event"
             },
             {
               "audio_url": "https://www.archive.org/download/wrightbrothers_2209_librivox/wrightbrothers_08_kelly_64kb.mp3",
               "length_ms": 1839000,
+              "section_number": 8,
               "start_ms": 11308000,
               "title": "Ch. 8 Experiments of 1904-05"
             },
             {
               "audio_url": "https://www.archive.org/download/wrightbrothers_2209_librivox/wrightbrothers_09_kelly_64kb.mp3",
               "length_ms": 824000,
+              "section_number": 9,
               "start_ms": 13147000,
               "title": "Ch. 9 It Still Wasn't \"News\""
             },
             {
               "audio_url": "https://www.archive.org/download/wrightbrothers_2209_librivox/wrightbrothers_10_kelly_64kb.mp3",
               "length_ms": 1830000,
+              "section_number": 10,
               "start_ms": 13971000,
               "title": "Ch. 10 U.S. Army Not Interested"
             },
             {
               "audio_url": "https://www.archive.org/download/wrightbrothers_2209_librivox/wrightbrothers_11_kelly_64kb.mp3",
               "length_ms": 2754000,
+              "section_number": 11,
               "start_ms": 15801000,
               "title": "Ch. 11 Europe Discovers the Wrights"
             },
             {
               "audio_url": "https://www.archive.org/download/wrightbrothers_2209_librivox/wrightbrothers_12_kelly_64kb.mp3",
               "length_ms": 1221000,
+              "section_number": 12,
               "start_ms": 18555000,
               "title": "Ch. 12 The Wrights in Europe"
             },
             {
               "audio_url": "https://www.archive.org/download/wrightbrothers_2209_librivox/wrightbrothers_13_kelly_64kb.mp3",
               "length_ms": 1874000,
+              "section_number": 13,
               "start_ms": 19776000,
               "title": "Ch. 13 A Deal With the U.S."
             },
             {
               "audio_url": "https://www.archive.org/download/wrightbrothers_2209_librivox/wrightbrothers_14_kelly_64kb.mp3",
               "length_ms": 647000,
+              "section_number": 14,
               "start_ms": 21650000,
               "title": "Ch. 14 End of Disbelief"
             },
             {
               "audio_url": "https://www.archive.org/download/wrightbrothers_2209_librivox/wrightbrothers_15_kelly_64kb.mp3",
               "length_ms": 2121000,
+              "section_number": 15,
               "start_ms": 22297000,
               "title": "Ch. 15 When Wilbur Wright Won France"
             },
             {
               "audio_url": "https://www.archive.org/download/wrightbrothers_2209_librivox/wrightbrothers_16_kelly_64kb.mp3",
               "length_ms": 1295000,
+              "section_number": 16,
               "start_ms": 24418000,
               "title": "Ch. 16 Further Adventures in 1909"
             },
             {
               "audio_url": "https://www.archive.org/download/wrightbrothers_2209_librivox/wrightbrothers_17_kelly_64kb.mp3",
               "length_ms": 1810000,
+              "section_number": 17,
               "start_ms": 25713000,
               "title": "Ch. 17 In Aviation Business"
             },
             {
               "audio_url": "https://www.archive.org/download/wrightbrothers_2209_librivox/wrightbrothers_18_kelly_64kb.mp3",
               "length_ms": 1246000,
+              "section_number": 18,
               "start_ms": 27523000,
               "title": "Ch.18 Patent Suits"
             },
             {
               "audio_url": "https://www.archive.org/download/wrightbrothers_2209_librivox/wrightbrothers_19_kelly_64kb.mp3",
               "length_ms": 2427000,
+              "section_number": 19,
               "start_ms": 28769000,
               "title": "Ch. 19 Why the Wright Plane was Exiled, Part 1"
             },
             {
               "audio_url": "https://www.archive.org/download/wrightbrothers_2209_librivox/wrightbrothers_20_kelly_64kb.mp3",
               "length_ms": 1364000,
+              "section_number": 20,
               "start_ms": 31196000,
               "title": "Ch. 19 Why the Wright Plane was Exiled, Part 2"
             }
@@ -16082,7 +16330,12 @@
           "cover_url": "https://archive.org/download/wrightbrothers_2209_librivox/wrightbrothers_2209.jpg",
           "id": "ciufi-galeazzi",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Biography & Autobiography"
+          ],
           "librivox_id": 17828,
+          "librivox_title": "Wright Brothers",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-wright-brothers-by-fred-kelly/",

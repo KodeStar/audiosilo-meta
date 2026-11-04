@@ -3026,96 +3026,144 @@
             {
               "audio_url": "https://www.archive.org/download/theflight_1106_librivox/theflight_mifflin_atg_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "antoinette-griffin"
+              ],
               "start_ms": 0,
               "title": "The Flight - Read by ATG"
             },
             {
               "audio_url": "https://www.archive.org/download/theflight_1106_librivox/theflight_mifflin_bg_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "bob-gonzalez"
+              ],
               "start_ms": 77000,
               "title": "The Flight - Read by BG"
             },
             {
               "audio_url": "https://www.archive.org/download/theflight_1106_librivox/theflight_mifflin_cs_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "cori-samuel"
+              ],
               "start_ms": 147000,
               "title": "The Flight - Read by CS"
             },
             {
               "audio_url": "https://www.archive.org/download/theflight_1106_librivox/theflight_mifflin_dl_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 216000,
               "title": "The Flight - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/theflight_1106_librivox/theflight_mifflin_ezwa_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "ezwa"
+              ],
               "start_ms": 291000,
               "title": "The Flight - Read by EZWA"
             },
             {
               "audio_url": "https://www.archive.org/download/theflight_1106_librivox/theflight_mifflin_fd_64kb.mp3",
               "length_ms": 62000,
+              "readers": [
+                "fred-deberardinis"
+              ],
               "start_ms": 368000,
               "title": "The Flight - Read by FD"
             },
             {
               "audio_url": "https://www.archive.org/download/theflight_1106_librivox/theflight_mifflin_gf_64kb.mp3",
               "length_ms": 61000,
+              "readers": [
+                "helen-falconer"
+              ],
               "start_ms": 430000,
               "title": "The Flight - Read by GF"
             },
             {
               "audio_url": "https://www.archive.org/download/theflight_1106_librivox/theflight_mifflin_ghs_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "algy-pug"
+              ],
               "start_ms": 491000,
               "title": "The Flight - Read by GHS"
             },
             {
               "audio_url": "https://www.archive.org/download/theflight_1106_librivox/theflight_mifflin_lah_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 565000,
               "title": "The Flight - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/theflight_1106_librivox/theflight_mifflin_llw_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 635000,
               "title": "The Flight - Read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/theflight_1106_librivox/theflight_mifflin_mgt_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "maria-grazia-tundo"
+              ],
               "start_ms": 716000,
               "title": "The Flight - Read by MGT"
             },
             {
               "audio_url": "https://www.archive.org/download/theflight_1106_librivox/theflight_mifflin_rg_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "ruth-golding"
+              ],
               "start_ms": 792000,
               "title": "The Flight - Read by RG"
             },
             {
               "audio_url": "https://www.archive.org/download/theflight_1106_librivox/theflight_mifflin_rn_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 870000,
               "title": "The Flight - Read by RN"
             },
             {
               "audio_url": "https://www.archive.org/download/theflight_1106_librivox/theflight_mifflin_sms_64kb.mp3",
               "length_ms": 84000,
+              "readers": [
+                "steve-smith-librivox-6522"
+              ],
               "start_ms": 941000,
               "title": "The Flight - Read by SMS"
             },
             {
               "audio_url": "https://www.archive.org/download/theflight_1106_librivox/theflight_mifflin_tg_64kb.mp3",
               "length_ms": 62000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 1025000,
               "title": "The Flight - Read by TG"
             },
             {
               "audio_url": "https://www.archive.org/download/theflight_1106_librivox/theflight_mifflin_twm_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "tmckenny"
+              ],
               "start_ms": 1087000,
               "title": "The Flight - Read by TWM"
             }
@@ -3123,7 +3171,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt29/Flight_1302.jpg",
           "id": "antoinette-griffin",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 5591,
+          "librivox_title": "Flight",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-flight-by-lloyd-mifflin/",
@@ -8638,7 +8691,11 @@
           "cover_url": "https://archive.org/download/flightoftheheron_2104_librivox/flight_heron_2104.jpg",
           "id": "elin",
           "language": "en",
+          "librivox_genres": [
+            "Action & Adventure Fiction"
+          ],
           "librivox_id": 16108,
+          "librivox_title": "Flight of the Heron",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-flight-of-the-heron-by-d-k-broster/",
@@ -11946,216 +12003,324 @@
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_01_macdonald_64kb.mp3",
               "length_ms": 303000,
+              "readers": [
+                "beth-thomas-1974-2020"
+              ],
               "start_ms": 0,
               "title": "MRS. DAY BEGINS THE STORY"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_02_macdonald_64kb.mp3",
               "length_ms": 452000,
+              "readers": [
+                "beth-thomas-1974-2020"
+              ],
               "start_ms": 303000,
               "title": "MISS MARTHA MOON"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_03_macdonald_64kb.mp3",
               "length_ms": 447000,
+              "readers": [
+                "shay-davenport"
+              ],
               "start_ms": 755000,
               "title": "MY UNCLE"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_04_macdonald_64kb.mp3",
               "length_ms": 800000,
+              "readers": [
+                "shay-davenport"
+              ],
               "start_ms": 1202000,
               "title": "MY UNCLE'S ROOM, AND MY UNCLE IN IT"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_05_macdonald_64kb.mp3",
               "length_ms": 1020000,
+              "readers": [
+                "shay-davenport"
+              ],
               "start_ms": 2002000,
               "title": "MY FIRST SECRET"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_06_macdonald_64kb.mp3",
               "length_ms": 640000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 3022000,
               "title": "I LOSE MYSELF"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_07_macdonald_64kb.mp3",
               "length_ms": 521000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 3662000,
               "title": "THE MIRROR"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_08_macdonald_64kb.mp3",
               "length_ms": 977000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 4183000,
               "title": "THANATOS AND ZOE"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_09_macdonald_64kb.mp3",
               "length_ms": 678000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 5160000,
               "title": "THE GARDEN"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_10_macdonald_64kb.mp3",
               "length_ms": 564000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 5838000,
               "title": "ONCE MORE A SECRET"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_11_macdonald_64kb.mp3",
               "length_ms": 425000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 6402000,
               "title": "THE MOLE BURROWS"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_12_macdonald_64kb.mp3",
               "length_ms": 709000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 6827000,
               "title": "A LETTER"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_13_macdonald_64kb.mp3",
               "length_ms": 653000,
+              "readers": [
+                "alicesparkle"
+              ],
               "start_ms": 7536000,
               "title": "OLD LOVE AND NEW"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_14_macdonald_64kb.mp3",
               "length_ms": 854000,
+              "readers": [
+                "alicesparkle"
+              ],
               "start_ms": 8189000,
               "title": "MOTHER AND UNCLE"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_15_macdonald_64kb.mp3",
               "length_ms": 222000,
+              "readers": [
+                "denise-nordell"
+              ],
               "start_ms": 9043000,
               "title": "THE TIME BETWEEN"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_16_macdonald_64kb.mp3",
               "length_ms": 413000,
+              "readers": [
+                "denise-nordell"
+              ],
               "start_ms": 9265000,
               "title": "FAULT AND NO FAULT"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_17_macdonald_64kb.mp3",
               "length_ms": 878000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 9678000,
               "title": "THE SUMMONS"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_18_macdonald_64kb.mp3",
               "length_ms": 315000,
+              "readers": [
+                "rosslyn-carlyle"
+              ],
               "start_ms": 10556000,
               "title": "JOHN SEES SOMETHING"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_19_macdonald_64kb.mp3",
               "length_ms": 230000,
+              "readers": [
+                "katie-mcgraw"
+              ],
               "start_ms": 10871000,
               "title": "JOHN IS TAKEN ILL"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_20_macdonald_64kb.mp3",
               "length_ms": 538000,
+              "readers": [
+                "jenny-wallace"
+              ],
               "start_ms": 11101000,
               "title": "A STRANGE VISIT"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_21_macdonald_64kb.mp3",
               "length_ms": 431000,
+              "readers": [
+                "tibbi-scott"
+              ],
               "start_ms": 11639000,
               "title": "A FOILED ATTEMPT"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_22_macdonald_64kb.mp3",
               "length_ms": 799000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 12070000,
               "title": "JOHN RECALLS AND REMEMBERS"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_23_macdonald_64kb.mp3",
               "length_ms": 424000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 12869000,
               "title": "LETTER AND ANSWER"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_24_macdonald_64kb.mp3",
               "length_ms": 787000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 13293000,
               "title": "HAND TO HAND"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_25_macdonald_64kb.mp3",
               "length_ms": 742000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 14080000,
               "title": "A VERY STRANGE THING"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_26_macdonald_64kb.mp3",
               "length_ms": 946000,
+              "readers": [
+                "tibbi-scott"
+              ],
               "start_ms": 14822000,
               "title": "THE EVIL DRAWS NIGHER"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_27_macdonald_64kb.mp3",
               "length_ms": 814000,
+              "readers": [
+                "tibbi-scott"
+              ],
               "start_ms": 15768000,
               "title": "AN ENCOUNTER"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_28_macdonald_64kb.mp3",
               "length_ms": 446000,
+              "readers": [
+                "tibbi-scott"
+              ],
               "start_ms": 16582000,
               "title": "ANOTHER VISION"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_29_macdonald_64kb.mp3",
               "length_ms": 370000,
+              "readers": [
+                "tibbi-scott"
+              ],
               "start_ms": 17028000,
               "title": "MOTHER AND SON"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_30_macdonald_64kb.mp3",
               "length_ms": 781000,
+              "readers": [
+                "tibbi-scott"
+              ],
               "start_ms": 17398000,
               "title": "ONCE MORE, AND YET AGAIN"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_31_macdonald_64kb.mp3",
               "length_ms": 563000,
+              "readers": [
+                "tibbi-scott"
+              ],
               "start_ms": 18179000,
               "title": "MY UNCLE COMES HOME"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_32_macdonald_64kb.mp3",
               "length_ms": 376000,
+              "readers": [
+                "tibbi-scott"
+              ],
               "start_ms": 18742000,
               "title": "TWICE TWO IS ONE"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_33_macdonald_64kb.mp3",
               "length_ms": 502000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 19118000,
               "title": "HALF ONE IS ONE"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_34_macdonald_64kb.mp3",
               "length_ms": 2858000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 19620000,
               "title": "THE STORY OF MY TWIN UNCLES"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_35_macdonald_64kb.mp3",
               "length_ms": 591000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 22478000,
               "title": "UNCLE EDMUND'S APPENDIX"
             },
             {
               "audio_url": "https://www.archive.org/download/flight_of_the_shadow_1501_librivox/flightoftheshadow_36_macdonald_64kb.mp3",
               "length_ms": 458000,
+              "readers": [
+                "mike-pelton"
+              ],
               "start_ms": 23069000,
               "title": "THE END OF THE FIRST VOLUME"
             }
@@ -12164,7 +12329,11 @@
           "cover_url": "https://archive.org/download/flight_of_the_shadow_1501_librivox/flight_shadow_1501.jpg",
           "id": "beth-thomas-1974-2020",
           "language": "en",
+          "librivox_genres": [
+            "Gothic Fiction"
+          ],
           "librivox_id": 9022,
+          "librivox_title": "Flight of the Shadow",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-flight-of-the-shadow-by-george-macdonald/",
@@ -12286,7 +12455,12 @@
           "cover_url": "https://archive.org/download/flight_of_the_shadow_bt_2305_librivox/theflightoftheshadow_2306.jpg",
           "id": "ben-tucker",
           "language": "en",
+          "librivox_genres": [
+            "Horror & Supernatural Fiction",
+            "Historical Fiction"
+          ],
           "librivox_id": 19279,
+          "librivox_title": "Flight of the Shadow",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-flight-of-the-shadow-by-laura-m-dake/",
