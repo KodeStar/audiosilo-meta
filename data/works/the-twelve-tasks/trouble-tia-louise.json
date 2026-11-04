@@ -1020,9 +1020,11 @@
     "trouble-with-tattle-tails": {
       "added_at": "2026-08-02",
       "authors": [
-        "jonathan-auxier"
+        "jonathan-auxier",
+        "olga-demidova"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
         "coming-of-age",
         "fantasy",
@@ -1079,12 +1081,75 @@
             }
           ],
           "work": "trouble-with-tattle-tails"
+        },
+        "gary-furlong-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09NWHD964",
+              "region": "us"
+            },
+            {
+              "asin": "B09NWJMCWN",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 38568,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1919384,
+              "start_ms": 38568,
+              "title": "Trouble with Tattle-Tails"
+            },
+            {
+              "length_ms": 49805,
+              "start_ms": 1957952,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71ZzF4MyZmL.jpg",
+          "id": "gary-furlong-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gary-furlong",
+            "gildart-jackson",
+            "katherine-littrell",
+            "matthew-brenher",
+            "nano-nagle"
+          ],
+          "publisher": "Puffin Canada",
+          "release_date": "2022-01-25",
+          "runtime_min": 33,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09NWHD964",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B09NWJMCWN",
+              "type": "libex-import"
+            }
+          ],
+          "work": "trouble-with-tattle-tails"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "1662073712",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09NWHD964",
           "type": "libex-import"
         }
       ],

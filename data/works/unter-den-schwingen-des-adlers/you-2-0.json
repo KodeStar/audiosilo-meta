@@ -1857,6 +1857,7 @@
         "action-adventure",
         "childrens",
         "comedy-humor",
+        "fantasy",
         "science",
         "science-fiction"
       ],
@@ -1875,6 +1876,10 @@
             {
               "asin": "B0D1CWCNYF",
               "region": "uk"
+            },
+            {
+              "asin": "B0CXJRT7PM",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -2014,6 +2019,165 @@
               "imported_at": "2026-10-09",
               "ref": "B0D1CWCNYF",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CXJRT7PM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "you-and-me-and-the-land-of-lost-things"
+        },
+        "andy-griffiths-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DY81TC13",
+              "region": "us"
+            },
+            {
+              "asin": "B0DY83P4CW",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 27008,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 151274,
+              "start_ms": 27008,
+              "title": "1 How It All Began"
+            },
+            {
+              "length_ms": 336712,
+              "start_ms": 178282,
+              "title": "2 I Spy"
+            },
+            {
+              "length_ms": 234613,
+              "start_ms": 514994,
+              "title": "3 The Land of Lost Things"
+            },
+            {
+              "length_ms": 272254,
+              "start_ms": 749607,
+              "title": "4 Bull vs Knucklehead"
+            },
+            {
+              "length_ms": 140063,
+              "start_ms": 1021861,
+              "title": "5 The River of Lost Things"
+            },
+            {
+              "length_ms": 400590,
+              "start_ms": 1161924,
+              "title": "6 The Lost Campsite"
+            },
+            {
+              "length_ms": 386425,
+              "start_ms": 1562514,
+              "title": "7 The Cave of Lost Treasure"
+            },
+            {
+              "length_ms": 261248,
+              "start_ms": 1948939,
+              "title": "8 Losing the Plot"
+            },
+            {
+              "length_ms": 219497,
+              "start_ms": 2210187,
+              "title": "9 Plotty to the Rescue"
+            },
+            {
+              "length_ms": 186805,
+              "start_ms": 2429684,
+              "title": "10 The Duck Thief"
+            },
+            {
+              "length_ms": 333763,
+              "start_ms": 2616489,
+              "title": "11 Pockets"
+            },
+            {
+              "length_ms": 361394,
+              "start_ms": 2950252,
+              "title": "12 Lost Foot Empawrium"
+            },
+            {
+              "length_ms": 300582,
+              "start_ms": 3311646,
+              "title": "13 Sea of Napping Turtles"
+            },
+            {
+              "length_ms": 285652,
+              "start_ms": 3612228,
+              "title": "14 Knucklehead to the Rescue"
+            },
+            {
+              "length_ms": 525775,
+              "start_ms": 3897880,
+              "title": "15 The Rabbit Pirate"
+            },
+            {
+              "length_ms": 57974,
+              "start_ms": 4423655,
+              "title": "16 How I Lost Me Foot"
+            },
+            {
+              "length_ms": 278755,
+              "start_ms": 4481629,
+              "title": "17 Double Trouble"
+            },
+            {
+              "length_ms": 299629,
+              "start_ms": 4760384,
+              "title": "18 Psst! Psst! Psst!"
+            },
+            {
+              "length_ms": 381713,
+              "start_ms": 5060013,
+              "title": "19 The Great Treasure Hunt"
+            },
+            {
+              "length_ms": 243507,
+              "start_ms": 5441726,
+              "title": "20 Walking the Plank"
+            },
+            {
+              "length_ms": 248792,
+              "start_ms": 5685233,
+              "title": "21 Coming Home"
+            },
+            {
+              "length_ms": 61054,
+              "start_ms": 5934025,
+              "title": "END CREDITS"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81qbuW1CBvL.jpg",
+          "id": "andy-griffiths-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andy-griffiths"
+          ],
+          "publisher": "Bolinda audio",
+          "release_date": "2025-04-08",
+          "runtime_min": 99,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DY81TC13",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0DY83P4CW",
+              "type": "libex-import"
             }
           ],
           "work": "you-and-me-and-the-land-of-lost-things"
@@ -2023,6 +2187,16 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0D1CYHGKY",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DY81TC13",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CXJRT7PM",
           "type": "libex-import"
         }
       ],

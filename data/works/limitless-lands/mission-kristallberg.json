@@ -2080,66 +2080,23 @@
         "david-weber"
       ],
       "first_published": "2010",
-      "id": "mission-of-honor",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "allyson-johnson-2010": {
-          "added_at": "2026-07-12T19:06:31+01:00",
-          "asin": [
-            {
-              "asin": "B004FT70QY",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81MIyHCIjDL.jpg",
-          "id": "allyson-johnson-2010",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "allyson-johnson"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2010-06-22",
-          "runtime_min": 1453,
-          "sources": [
-            {
-              "ref": "B004FT70QY",
-              "type": "audible-lookup"
-            }
-          ],
-          "work": "mission-of-honor"
-        }
-      },
-      "sources": [
-        {
-          "ref": "Q3053590",
-          "type": "wikidata"
-        }
-      ],
-      "title": "Mission of Honor",
-      "xref": {
-        "wikidata": "Q3053590"
-      }
-    },
-    "mission-of-honor-honor-harrington-book-12": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "david-weber"
-      ],
       "genres": [
         "action-adventure",
         "science-fiction",
         "space-opera"
       ],
-      "id": "mission-of-honor-honor-harrington-book-12",
+      "id": "mission-of-honor",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
         "allyson-johnson-2010": {
           "abridged": false,
-          "added_at": "2026-08-02",
+          "added_at": "2026-07-12T19:06:31+01:00",
           "asin": [
+            {
+              "asin": "B004FT70QY",
+              "region": "uk"
+            },
             {
               "asin": "B003R3107Y",
               "region": "us"
@@ -2409,22 +2366,33 @@
           "runtime_min": 1453,
           "sources": [
             {
+              "ref": "B004FT70QY",
+              "type": "audible-lookup"
+            },
+            {
               "imported_at": "2026-08-02",
               "ref": "B003R3107Y",
               "type": "libex-import"
             }
           ],
-          "work": "mission-of-honor-honor-harrington-book-12"
+          "work": "mission-of-honor"
         }
       },
       "sources": [
+        {
+          "ref": "Q3053590",
+          "type": "wikidata"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B003R3107Y",
           "type": "libex-import"
         }
       ],
-      "title": "Mission of Honor: Honor Harrington, Book 12"
+      "title": "Mission of Honor",
+      "xref": {
+        "wikidata": "Q3053590"
+      }
     },
     "mission-of-honor-jim-crigler": {
       "added_at": "2026-07-29",

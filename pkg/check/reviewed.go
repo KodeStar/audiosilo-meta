@@ -36,7 +36,7 @@ type ReviewedDistinct struct {
 type LoadOptions struct {
 	// Distinct are the reviewed "not one record" decisions the duplicate advisories
 	// honour: a pair one of them covers is neither reported nor counted by
-	// identity-equal-works, normalized-duplicate-works (works), duplicate-series
+	// identity-equal-works, normalized-duplicate-works, series-designation-duplicate-works (works), duplicate-series
 	// (series) or honorific-person-pair (people), and Result.Suppressed counts every pair
 	// so withheld. Problems are never touched - a review is about a census, not about
 	// what is valid.

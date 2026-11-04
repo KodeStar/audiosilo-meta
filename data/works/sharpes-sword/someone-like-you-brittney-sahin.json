@@ -4002,9 +4002,11 @@
         "mary-balogh"
       ],
       "genres": [
+        "contemporary-romance",
         "historical-fiction",
         "historical-romance",
-        "romance"
+        "romance",
+        "womens-fiction"
       ],
       "id": "someone-to-love",
       "language": "en",
@@ -4178,12 +4180,54 @@
             }
           ],
           "work": "someone-to-love"
+        },
+        "rosalyn-landor-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B073SBXPCK",
+              "region": "us"
+            },
+            {
+              "asin": "B073SC31W5",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/919O9DvA7lL.jpg",
+          "id": "rosalyn-landor-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rosalyn-landor"
+          ],
+          "publisher": "W. F. Howes Ltd",
+          "release_date": "2017-07-20",
+          "runtime_min": 691,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B073SBXPCK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B073SC31W5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "someone-to-love"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B01M8PLLPD",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B073SBXPCK",
           "type": "libex-import"
         }
       ],
@@ -4756,69 +4800,6 @@
         }
       ],
       "title": "Someone to Love: Someone to Love, Book 1"
-    },
-    "someone-to-love-westcott-book-1": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "mary-balogh"
-      ],
-      "genres": [
-        "contemporary-romance",
-        "historical-fiction",
-        "historical-romance",
-        "romance",
-        "womens-fiction"
-      ],
-      "id": "someone-to-love-westcott-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "rosalyn-landor-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B073SBXPCK",
-              "region": "us"
-            },
-            {
-              "asin": "B073SC31W5",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/919O9DvA7lL.jpg",
-          "id": "rosalyn-landor-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "rosalyn-landor"
-          ],
-          "publisher": "W. F. Howes Ltd",
-          "release_date": "2017-07-20",
-          "runtime_min": 691,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B073SBXPCK",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B073SC31W5",
-              "type": "libex-import"
-            }
-          ],
-          "work": "someone-to-love-westcott-book-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B073SBXPCK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Someone to Love: Westcott, Book 1"
     },
     "someone-to-love-wild-widows-series-book-3": {
       "added_at": "2026-07-29",

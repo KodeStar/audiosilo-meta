@@ -7842,10 +7842,14 @@
     "the-ghost-brigades": {
       "added_at": "2026-08-02",
       "authors": [
-        "john-scalzi"
+        "john-scalzi",
+        "gary-blythe"
       ],
       "genres": [
         "action-adventure",
+        "comedy-humor",
+        "fantasy",
+        "hard-science-fiction",
         "military-science-fiction",
         "science-fiction",
         "space-opera"
@@ -8013,35 +8017,7 @@
             }
           ],
           "work": "the-ghost-brigades"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V9ZFSK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Ghost Brigades"
-    },
-    "the-ghost-brigades-old-mans-war-book-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "john-scalzi",
-        "gary-blythe"
-      ],
-      "genres": [
-        "comedy-humor",
-        "fantasy",
-        "hard-science-fiction",
-        "military-science-fiction",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "the-ghost-brigades-old-mans-war-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "william-dufris-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8174,17 +8150,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-ghost-brigades-old-mans-war-book-2"
+          "work": "the-ghost-brigades"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V9ZFSK",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0G4BQ2B4D",
           "type": "libex-import"
         }
       ],
-      "title": "The Ghost Brigades: Old Man's War Book 2"
+      "title": "The Ghost Brigades"
     },
     "the-ghost-by-the-billabong-the-matilda-saga-5": {
       "added_at": "2026-08-02",

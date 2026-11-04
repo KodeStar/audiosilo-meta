@@ -637,7 +637,12 @@ const (
 	// AdvisoryDuplicateSeries is a series every member of which another series
 	// already lists at the same position (seriesadvisories.go).
 	AdvisoryDuplicateSeries = "duplicate-series"
-	AdvisoryUnclassified    = "unclassified"
+	// AdvisorySeriesDesignationDup is two works whose titles are one book's title,
+	// one wrapped in a designation naming its series, volume, author or genre
+	// (seriesdesignation.go) - the twin the normalized-identity key cannot join
+	// because the decorated work is not listed in the series it names.
+	AdvisorySeriesDesignationDup = "series-designation-duplicate-works"
+	AdvisoryUnclassified         = "unclassified"
 )
 
 // advisoryMarkers maps each class to the marker its rule's message carries. It is
@@ -682,6 +687,9 @@ var advisoryMarkers = []struct {
 	// class since the first: the census line is read by column position.
 	{AdvisorySeriesRecordingQualifier, recordingQualifierMarker, "recording-qualified series names"},
 	{AdvisoryDuplicateSeries, duplicateSeriesMarker, "duplicate series"},
+	// The series-designation twins (seriesdesignation.go). Appended, like every
+	// class since the first: the census line is read by column position.
+	{AdvisorySeriesDesignationDup, seriesDesignationMarker, "series-designation duplicate work pairs"},
 }
 
 // AdvisoryClass names the advisory class a warning belongs to, or

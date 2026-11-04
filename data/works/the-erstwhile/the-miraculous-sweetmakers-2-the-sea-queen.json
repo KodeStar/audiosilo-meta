@@ -811,6 +811,7 @@
       ],
       "genres": [
         "historical-fiction",
+        "history",
         "literary-fiction"
       ],
       "id": "the-mirror-and-the-light",
@@ -827,6 +828,14 @@
             },
             {
               "asin": "1528880005",
+              "region": "uk"
+            },
+            {
+              "asin": "1427289522",
+              "region": "us"
+            },
+            {
+              "asin": "1427289522",
               "region": "uk"
             }
           ],
@@ -992,6 +1001,16 @@
               "imported_at": "2026-10-09",
               "ref": "1528880005",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1427289522",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "1427289522",
+              "type": "libex-import"
             }
           ],
           "work": "the-mirror-and-the-light"
@@ -1001,6 +1020,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "1528880005",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1427289522",
           "type": "libex-import"
         }
       ],
@@ -1031,6 +1055,14 @@
             },
             {
               "asin": "0008366721",
+              "region": "uk"
+            },
+            {
+              "asin": "1443461369",
+              "region": "us"
+            },
+            {
+              "asin": "1443461369",
               "region": "uk"
             }
           ],
@@ -1191,6 +1223,16 @@
               "imported_at": "2026-10-09",
               "ref": "0008366721",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1443461369",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "1443461369",
+              "type": "libex-import"
             }
           ],
           "work": "the-mirror-and-the-light-an-adaptation-in-30-minute-episodes"
@@ -1200,6 +1242,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "0008366721",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1443461369",
           "type": "libex-import"
         }
       ],
@@ -10224,402 +10271,6 @@
         }
       ],
       "title": "The Mirror Test"
-    },
-    "the-mirror-the-light": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "hilary-mantel"
-      ],
-      "genres": [
-        "historical-fiction",
-        "history",
-        "literary-fiction"
-      ],
-      "id": "the-mirror-the-light",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ben-miles-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1427289522",
-              "region": "us"
-            },
-            {
-              "asin": "1427289522",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 37291,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 11018,
-              "start_ms": 37291,
-              "title": "Part One"
-            },
-            {
-              "length_ms": 3261277,
-              "start_ms": 48309,
-              "title": "I: Wreckage (I): London, May 1536"
-            },
-            {
-              "length_ms": 22302068,
-              "start_ms": 3309586,
-              "title": "II: Salvage: London, Summer 1536"
-            },
-            {
-              "length_ms": 13816707,
-              "start_ms": 25611654,
-              "title": "III: Wreckage (II): London, Summer 1536"
-            },
-            {
-              "length_ms": 10492,
-              "start_ms": 39428361,
-              "title": "Part Two"
-            },
-            {
-              "length_ms": 3803803,
-              "start_ms": 39438853,
-              "title": "I: Augmentation: London, Autumn 1536"
-            },
-            {
-              "length_ms": 6772006,
-              "start_ms": 43242656,
-              "title": "II: The Five Wounds: London, Autumn 1536"
-            },
-            {
-              "length_ms": 12211789,
-              "start_ms": 50014662,
-              "title": "III: Vile Blood: London, Autumn–Winter 1536"
-            },
-            {
-              "length_ms": 10224,
-              "start_ms": 62226451,
-              "title": "Part Three"
-            },
-            {
-              "length_ms": 6123790,
-              "start_ms": 62236675,
-              "title": "I: The Bleach Fields: Spring 1537"
-            },
-            {
-              "length_ms": 11088549,
-              "start_ms": 68360465,
-              "title": "II: The Image of the King: Spring-Summer 1537"
-            },
-            {
-              "length_ms": 2238217,
-              "start_ms": 79449014,
-              "title": "III: Broken on the Body: London, Autumn 1537"
-            },
-            {
-              "length_ms": 10413,
-              "start_ms": 81687231,
-              "title": "Part Four"
-            },
-            {
-              "length_ms": 6336853,
-              "start_ms": 81697644,
-              "title": "I: Nonsuch: Winter 1537 - Spring 1538"
-            },
-            {
-              "length_ms": 8772776,
-              "start_ms": 88034497,
-              "title": "II: Corpus Christi. June - December 1538"
-            },
-            {
-              "length_ms": 931305,
-              "start_ms": 96807273,
-              "title": "III: Inheritance: December 1538"
-            },
-            {
-              "length_ms": 10881,
-              "start_ms": 97738578,
-              "title": "Part Five"
-            },
-            {
-              "length_ms": 8327311,
-              "start_ms": 97749459,
-              "title": "I: Ascension Day: Spring - Summer 1539"
-            },
-            {
-              "length_ms": 5548036,
-              "start_ms": 106076770,
-              "title": "II: Twelfth Night: Autumn 1539"
-            },
-            {
-              "length_ms": 13810392,
-              "start_ms": 111624806,
-              "title": "III: Magnificence: January - June 1540"
-            },
-            {
-              "length_ms": 10268,
-              "start_ms": 125435198,
-              "title": "Part Six"
-            },
-            {
-              "length_ms": 9277573,
-              "start_ms": 125445466,
-              "title": "I: Mirror. June - July 1540"
-            },
-            {
-              "length_ms": 1172561,
-              "start_ms": 134723039,
-              "title": "II: Light: 28 July 1540"
-            },
-            {
-              "length_ms": 495699,
-              "start_ms": 135895600,
-              "title": "Author's Note"
-            },
-            {
-              "length_ms": 1089897,
-              "start_ms": 136391299,
-              "title": "Bonus Interview"
-            },
-            {
-              "length_ms": 52105,
-              "start_ms": 137481196,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/810e9swuekL.jpg",
-          "id": "ben-miles-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ben-miles"
-          ],
-          "publisher": "Macmillan Audio",
-          "release_date": "2020-03-10",
-          "runtime_min": 2292,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1427289522",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "1427289522",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-mirror-the-light"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1427289522",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Mirror & the Light"
-    },
-    "the-mirror-the-light-an-adaptation-in-30-minute-episodes": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "hilary-mantel"
-      ],
-      "genres": [
-        "historical-fiction",
-        "history",
-        "literary-fiction"
-      ],
-      "id": "the-mirror-the-light-an-adaptation-in-30-minute-episodes",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "joseph-kloska-2020": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1443461369",
-              "region": "us"
-            },
-            {
-              "asin": "1443461369",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 19806,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1762115,
-              "start_ms": 19806,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1827619,
-              "start_ms": 1781921,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1673090,
-              "start_ms": 3609540,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1656372,
-              "start_ms": 5282630,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1719019,
-              "start_ms": 6939002,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1714584,
-              "start_ms": 8658021,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1783756,
-              "start_ms": 10372605,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1715652,
-              "start_ms": 12156361,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1736759,
-              "start_ms": 13872013,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1666542,
-              "start_ms": 15608772,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1723501,
-              "start_ms": 17275314,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1740591,
-              "start_ms": 18998815,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1728261,
-              "start_ms": 20739406,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1778671,
-              "start_ms": 22467667,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1696171,
-              "start_ms": 24246338,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1759956,
-              "start_ms": 25942509,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1753129,
-              "start_ms": 27702465,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1791674,
-              "start_ms": 29455594,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1726148,
-              "start_ms": 31247268,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1788493,
-              "start_ms": 32973416,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1696078,
-              "start_ms": 34761909,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1794600,
-              "start_ms": 36457987,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 1764530,
-              "start_ms": 38252587,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 1364938,
-              "start_ms": 40017117,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 478702,
-              "start_ms": 41382055,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 35432,
-              "start_ms": 41860757,
-              "title": "Chapter 27"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91HCoqDGnzL.jpg",
-          "id": "joseph-kloska-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "joseph-kloska"
-          ],
-          "publisher": "HarperCollins Publishers",
-          "release_date": "2020-03-10",
-          "runtime_min": 698,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1443461369",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "1443461369",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-mirror-the-light-an-adaptation-in-30-minute-episodes"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1443461369",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Mirror & the Light: An Adaptation in 30 Minute Episodes"
     },
     "the-mirror-visitor-quartet": {
       "added_at": "2026-08-02",

@@ -1490,13 +1490,15 @@
     "blood-of-the-mantis": {
       "added_at": "2026-08-02",
       "authors": [
-        "adrian-tchaikovsky"
+        "adrian-tchaikovsky",
+        "axel-scheffler"
       ],
       "genres": [
         "action-adventure",
         "epic-fantasy",
         "fantasy",
         "nature",
+        "science-fiction",
         "urban-fantasy"
       ],
       "id": "blood-of-the-mantis",
@@ -1677,34 +1679,7 @@
             }
           ],
           "work": "blood-of-the-mantis"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1529050316",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Blood of the Mantis"
-    },
-    "blood-of-the-mantis-shadows-of-the-apt-3": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "adrian-tchaikovsky",
-        "axel-scheffler"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "science-fiction",
-        "urban-fantasy"
-      ],
-      "id": "blood-of-the-mantis-shadows-of-the-apt-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "ben-allen-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1878,17 +1853,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "blood-of-the-mantis-shadows-of-the-apt-3"
+          "work": "blood-of-the-mantis"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1529050316",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DMNZD2FD",
           "type": "libex-import"
         }
       ],
-      "title": "Blood of the Mantis: Shadows of the Apt 3"
+      "title": "Blood of the Mantis"
     },
     "blood-of-the-maple": {
       "added_at": "2026-08-02",

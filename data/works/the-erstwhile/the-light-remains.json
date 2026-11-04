@@ -12612,6 +12612,7 @@
         "fairy-tales-folklore",
         "fantasy",
         "history",
+        "horror",
         "mythology"
       ],
       "id": "the-lightning-thief",
@@ -12785,6 +12786,174 @@
             }
           ],
           "work": "the-lightning-thief"
+        },
+        "jesse-bernstein-2010": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036LPO2O",
+              "region": "us"
+            },
+            {
+              "asin": "B004RB3XRA",
+              "region": "de"
+            },
+            {
+              "asin": "B004FU2P86",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 21059,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1361966,
+              "start_ms": 21059,
+              "title": "Chapter 1: I Accidentally Vaporize My Pre-algebra Teacher"
+            },
+            {
+              "length_ms": 1123265,
+              "start_ms": 1383025,
+              "title": "Chapter 2: Three Old Ladies Knit the Socks of Death"
+            },
+            {
+              "length_ms": 1425171,
+              "start_ms": 2506290,
+              "title": "Chapter 3: Grover Unexpectedly Loses His Pants"
+            },
+            {
+              "length_ms": 1170146,
+              "start_ms": 3931461,
+              "title": "Chapter 4: My Mother Teaches Me Bullfighting"
+            },
+            {
+              "length_ms": 1719367,
+              "start_ms": 5101607,
+              "title": "Chapter 5: I Play Pinochle with a Horse"
+            },
+            {
+              "length_ms": 1622355,
+              "start_ms": 6820974,
+              "title": "Chapter 6: I Become Supreme Lord of the Bathroom"
+            },
+            {
+              "length_ms": 1241756,
+              "start_ms": 8443329,
+              "title": "Chapter 7: My Dinner Goes Up in Smoke"
+            },
+            {
+              "length_ms": 1864423,
+              "start_ms": 9685085,
+              "title": "Chapter 8: We Capture a Flag"
+            },
+            {
+              "length_ms": 2072102,
+              "start_ms": 11549508,
+              "title": "Chapter 9: I Am Offered a Quest"
+            },
+            {
+              "length_ms": 1909725,
+              "start_ms": 13621610,
+              "title": "Chapter 10: I Ruin a Perfectly Good Bus"
+            },
+            {
+              "length_ms": 2050948,
+              "start_ms": 15531335,
+              "title": "Chapter 11: We Visit the Garden Gnome Emporium"
+            },
+            {
+              "length_ms": 835059,
+              "start_ms": 17582283,
+              "title": "Chapter 12: We Get Advice from a Poodle"
+            },
+            {
+              "length_ms": 1439358,
+              "start_ms": 18417342,
+              "title": "Chapter 13: I Plunge to My Death"
+            },
+            {
+              "length_ms": 646211,
+              "start_ms": 19856700,
+              "title": "Chapter 14: I Become a Known Fugitive"
+            },
+            {
+              "length_ms": 2143387,
+              "start_ms": 20502911,
+              "title": "Chapter 15: A God Buys Us Cheeseburgers"
+            },
+            {
+              "length_ms": 2341918,
+              "start_ms": 22646298,
+              "title": "Chapter 16: We Take a Zebra to Vegas"
+            },
+            {
+              "length_ms": 1720296,
+              "start_ms": 24988216,
+              "title": "Chapter 17: We Shop for Waterbeds"
+            },
+            {
+              "length_ms": 1558709,
+              "start_ms": 26708512,
+              "title": "Chapter 18: Annabeth Does Obedience School"
+            },
+            {
+              "length_ms": 2117381,
+              "start_ms": 28267221,
+              "title": "Chapter 19: We Find Out the Truth, Sort Of"
+            },
+            {
+              "length_ms": 1365356,
+              "start_ms": 30384602,
+              "title": "Chapter 20: I Battle My Jerk Relative"
+            },
+            {
+              "length_ms": 2114850,
+              "start_ms": 31749958,
+              "title": "Chapter 21: I Settle My Tab"
+            },
+            {
+              "length_ms": 2167141,
+              "start_ms": 33864808,
+              "title": "Chapter 22: The Prophecy Comes True"
+            },
+            {
+              "length_ms": 771807,
+              "start_ms": 36031949,
+              "title": "Closing Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81UTAsaHEvL.jpg",
+          "id": "jesse-bernstein-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jesse-bernstein"
+          ],
+          "publisher": "Puffin",
+          "release_date": "2010-01-13",
+          "runtime_min": 613,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036LPO2O",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004RB3XRA",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004FU2P86",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-lightning-thief"
         }
       },
       "sources": [
@@ -12796,6 +12965,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B002V0JZOO",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0036LPO2O",
           "type": "libex-import"
         }
       ],

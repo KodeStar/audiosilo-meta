@@ -770,7 +770,12 @@
       ],
       "genres": [
         "action-adventure",
+        "childrens",
+        "dystopian",
         "mystery",
+        "science-fiction",
+        "thriller-suspense",
+        "time-travel",
         "young-adult"
       ],
       "id": "the-hangmans-revolution",
@@ -788,92 +793,105 @@
             {
               "asin": "B00LA94LFU",
               "region": "uk"
+            },
+            {
+              "asin": "B00KKOL10O",
+              "region": "us"
+            },
+            {
+              "asin": "B079WY7L53",
+              "region": "uk"
             }
           ],
           "chapters": [
             {
-              "length_ms": 258530,
+              "length_ms": 18086,
               "start_ms": 0,
               "title": "Opening Credits"
             },
             {
-              "length_ms": 2298079,
-              "start_ms": 258530,
-              "title": "1. Moley and GooGoo"
+              "length_ms": 242070,
+              "start_ms": 18086,
+              "title": "What Might Have Been..."
+            },
+            {
+              "length_ms": 2296825,
+              "start_ms": 260156,
+              "title": "Chapter 1"
             },
             {
               "length_ms": 3527111,
-              "start_ms": 2556609,
-              "title": "2. Powdered Wigs and Parasols"
+              "start_ms": 2556981,
+              "title": "Chapter 2"
             },
             {
-              "length_ms": 2406051,
-              "start_ms": 6083720,
-              "title": "3. Click, Not Boom"
+              "length_ms": 2406052,
+              "start_ms": 6084092,
+              "title": "Chapter 3"
             },
             {
-              "length_ms": 2696579,
-              "start_ms": 8489771,
-              "title": "4. Fizz, and It’s All Over"
+              "length_ms": 2696580,
+              "start_ms": 8490144,
+              "title": "Chapter 4"
             },
             {
               "length_ms": 1612858,
-              "start_ms": 11186350,
-              "title": "5. Greatcoat and Splashback"
+              "start_ms": 11186724,
+              "title": "Chapter 5"
             },
             {
               "length_ms": 2628127,
-              "start_ms": 12799208,
-              "title": "6. Hands Up, Princess"
+              "start_ms": 12799582,
+              "title": "Chapter 6"
             },
             {
               "length_ms": 3447095,
-              "start_ms": 15427335,
-              "title": "7. Muck-snipes and Gutterflies"
+              "start_ms": 15427709,
+              "title": "Chapter 7"
             },
             {
               "length_ms": 1038071,
-              "start_ms": 18874430,
-              "title": "8. A Cluster of Three"
+              "start_ms": 18874804,
+              "title": "Chapter 8"
             },
             {
               "length_ms": 3101071,
-              "start_ms": 19912501,
-              "title": "9. So I Am"
+              "start_ms": 19912875,
+              "title": "Chapter 9"
             },
             {
-              "length_ms": 840608,
-              "start_ms": 23013572,
-              "title": "10. Tell-tale Future Slugs"
+              "length_ms": 840609,
+              "start_ms": 23013946,
+              "title": "Chapter 10"
             },
             {
-              "length_ms": 2211561,
-              "start_ms": 23854180,
-              "title": "11. The Blooming Stinkpipes"
+              "length_ms": 2211515,
+              "start_ms": 23854555,
+              "title": "Chapter 11"
             },
             {
               "length_ms": 2036854,
-              "start_ms": 26065741,
-              "title": "12. Thunderbolt"
+              "start_ms": 26066070,
+              "title": "Chapter 12"
             },
             {
               "length_ms": 3217589,
-              "start_ms": 28102595,
-              "title": "13. Emergence Day"
+              "start_ms": 28102924,
+              "title": "Chapter 13"
             },
             {
-              "length_ms": 6008627,
-              "start_ms": 31320184,
-              "title": "14. Thank You, Tecumseh"
+              "length_ms": 6008628,
+              "start_ms": 31320513,
+              "title": "Chapter 14"
             },
             {
-              "length_ms": 1818493,
-              "start_ms": 37328811,
-              "title": "15. Beautiful and Dangerous"
+              "length_ms": 1818494,
+              "start_ms": 37329141,
+              "title": "Chapter 15"
             },
             {
-              "length_ms": 35897,
-              "start_ms": 39147304,
+              "length_ms": 37663,
+              "start_ms": 39147635,
               "title": "End Credits"
             }
           ],
@@ -902,6 +920,16 @@
               "imported_at": "2026-10-09",
               "ref": "B00LA94LFU",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00KKOL10O",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B079WY7L53",
+              "type": "libex-import"
             }
           ],
           "work": "the-hangmans-revolution"
@@ -916,6 +944,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B00LA8S2QK",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00KKOL10O",
           "type": "libex-import"
         }
       ],

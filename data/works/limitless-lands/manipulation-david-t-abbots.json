@@ -6271,6 +6271,8 @@
       "genres": [
         "childrens",
         "fantasy",
+        "paranormal",
+        "romance",
         "science-fiction",
         "steampunk",
         "young-adult"
@@ -6294,98 +6296,121 @@
             {
               "asin": "B0192D29YU",
               "region": "uk"
+            },
+            {
+              "asin": "B016JBMSYY",
+              "region": "us"
+            },
+            {
+              "asin": "B07BZ1TWT2",
+              "region": "uk"
             }
           ],
           "chapters": [
             {
-              "length_ms": 2159038,
+              "length_ms": 20934,
               "start_ms": 0,
-              "title": "Chapter 1"
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 35743,
+              "start_ms": 20934,
+              "title": "Dedication"
+            },
+            {
+              "length_ms": 2102732,
+              "start_ms": 56677,
+              "title": "Crisis 1:  Incognito in Character"
             },
             {
               "length_ms": 1736899,
-              "start_ms": 2159038,
-              "title": "Chapter 2"
+              "start_ms": 2159409,
+              "title": "Crisis 2:  Invasions at a Ball"
             },
             {
               "length_ms": 1571387,
-              "start_ms": 3895937,
-              "title": "Chapter 3"
+              "start_ms": 3896308,
+              "title": "Crisis 3:  Enemies in the Roses"
             },
             {
               "length_ms": 2279410,
-              "start_ms": 5467324,
-              "title": "Chapter 4"
+              "start_ms": 5467695,
+              "title": "Crisis 4:  Charting an Unsteady Course"
             },
             {
               "length_ms": 1561449,
-              "start_ms": 7746734,
-              "title": "Chapter 5"
+              "start_ms": 7747105,
+              "title": "Crisis 5:  Sisters and Their Consequences"
             },
             {
               "length_ms": 3048223,
-              "start_ms": 9308183,
-              "title": "Chapter 6"
+              "start_ms": 9308554,
+              "title": "Crisis 6:  An Invitation to Dine In or On?"
             },
             {
               "length_ms": 1720227,
-              "start_ms": 12356406,
-              "title": "Chapter 7"
+              "start_ms": 12356777,
+              "title": "Crisis 7:  A Problem of Motivation"
             },
             {
               "length_ms": 2201066,
-              "start_ms": 14076633,
-              "title": "Chapter 8"
+              "start_ms": 14077004,
+              "title": "Crisis 8:  Records and Regrets"
             },
             {
               "length_ms": 2346748,
-              "start_ms": 16277699,
-              "title": "Chapter 9"
+              "start_ms": 16278070,
+              "title": "Crisis 9:  Tea Embargo"
             },
             {
-              "length_ms": 1784732,
-              "start_ms": 18624447,
-              "title": "Chapter 10"
+              "length_ms": 1784779,
+              "start_ms": 18624818,
+              "title": "Crisis 10:  In a Pickle at a Tea Party"
             },
             {
               "length_ms": 1569530,
-              "start_ms": 20409179,
-              "title": "Chapter 11"
+              "start_ms": 20409597,
+              "title": "Crisis 11:  Evacuation Situation"
             },
             {
               "length_ms": 1819469,
-              "start_ms": 21978709,
-              "title": "Chapter 12"
+              "start_ms": 21979127,
+              "title": "Crisis 12:  Abandoned Ship"
             },
             {
               "length_ms": 2365556,
-              "start_ms": 23798178,
-              "title": "Chapter 13"
+              "start_ms": 23798596,
+              "title": "Crisis 13:  A Classical Education"
             },
             {
               "length_ms": 1527641,
-              "start_ms": 26163734,
-              "title": "Chapter 14"
+              "start_ms": 26164152,
+              "title": "Crisis 14:  Not with a Bang but a Wicker"
             },
             {
               "length_ms": 2298404,
-              "start_ms": 27691375,
-              "title": "Chapter 15"
+              "start_ms": 27691793,
+              "title": "Crisis 15:  Falling Down on the Job"
             },
             {
               "length_ms": 2434844,
-              "start_ms": 29989779,
-              "title": "Chapter 16"
+              "start_ms": 29990197,
+              "title": "Crisis 16:  Out of the Flywaymen into the Fire"
             },
             {
               "length_ms": 2401640,
-              "start_ms": 32424623,
-              "title": "Chapter 17"
+              "start_ms": 32425041,
+              "title": "Crisis (No More) 17:  In Which We Are All Finally Finished"
             },
             {
-              "length_ms": 763100,
-              "start_ms": 34826263,
-              "title": "Chapter 18"
+              "length_ms": 639886,
+              "start_ms": 34826681,
+              "title": "Afterword"
+            },
+            {
+              "length_ms": 124979,
+              "start_ms": 35466567,
+              "title": "End Credits"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/519gzdquwGL.jpg",
@@ -6413,6 +6438,16 @@
               "imported_at": "2026-10-09",
               "ref": "B0192D29YU",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B016JBMSYY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07BZ1TWT2",
+              "type": "libex-import"
             }
           ],
           "work": "manners-and-mutiny"
@@ -6422,6 +6457,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0192D0XW0",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B016JBMSYY",
           "type": "libex-import"
         }
       ],
@@ -7683,177 +7723,6 @@
         }
       ],
       "title": "Manners for Men"
-    },
-    "manners-mutiny": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "gail-carriger"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "romance",
-        "science-fiction",
-        "steampunk",
-        "young-adult"
-      ],
-      "id": "manners-mutiny",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "moira-quirk-2015": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B016JBMSYY",
-              "region": "us"
-            },
-            {
-              "asin": "B07BZ1TWT2",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 20934,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 35743,
-              "start_ms": 20934,
-              "title": "Dedication"
-            },
-            {
-              "length_ms": 2102732,
-              "start_ms": 56677,
-              "title": "Crisis 1:  Incognito in Character"
-            },
-            {
-              "length_ms": 1736899,
-              "start_ms": 2159409,
-              "title": "Crisis 2:  Invasions at a Ball"
-            },
-            {
-              "length_ms": 1571387,
-              "start_ms": 3896308,
-              "title": "Crisis 3:  Enemies in the Roses"
-            },
-            {
-              "length_ms": 2279410,
-              "start_ms": 5467695,
-              "title": "Crisis 4:  Charting an Unsteady Course"
-            },
-            {
-              "length_ms": 1561449,
-              "start_ms": 7747105,
-              "title": "Crisis 5:  Sisters and Their Consequences"
-            },
-            {
-              "length_ms": 3048223,
-              "start_ms": 9308554,
-              "title": "Crisis 6:  An Invitation to Dine In or On?"
-            },
-            {
-              "length_ms": 1720227,
-              "start_ms": 12356777,
-              "title": "Crisis 7:  A Problem of Motivation"
-            },
-            {
-              "length_ms": 2201066,
-              "start_ms": 14077004,
-              "title": "Crisis 8:  Records and Regrets"
-            },
-            {
-              "length_ms": 2346748,
-              "start_ms": 16278070,
-              "title": "Crisis 9:  Tea Embargo"
-            },
-            {
-              "length_ms": 1784779,
-              "start_ms": 18624818,
-              "title": "Crisis 10:  In a Pickle at a Tea Party"
-            },
-            {
-              "length_ms": 1569530,
-              "start_ms": 20409597,
-              "title": "Crisis 11:  Evacuation Situation"
-            },
-            {
-              "length_ms": 1819469,
-              "start_ms": 21979127,
-              "title": "Crisis 12:  Abandoned Ship"
-            },
-            {
-              "length_ms": 2365556,
-              "start_ms": 23798596,
-              "title": "Crisis 13:  A Classical Education"
-            },
-            {
-              "length_ms": 1527641,
-              "start_ms": 26164152,
-              "title": "Crisis 14:  Not with a Bang but a Wicker"
-            },
-            {
-              "length_ms": 2298404,
-              "start_ms": 27691793,
-              "title": "Crisis 15:  Falling Down on the Job"
-            },
-            {
-              "length_ms": 2434844,
-              "start_ms": 29990197,
-              "title": "Crisis 16:  Out of the Flywaymen into the Fire"
-            },
-            {
-              "length_ms": 2401640,
-              "start_ms": 32425041,
-              "title": "Crisis (No More) 17:  In Which We Are All Finally Finished"
-            },
-            {
-              "length_ms": 639886,
-              "start_ms": 34826681,
-              "title": "Afterword"
-            },
-            {
-              "length_ms": 124979,
-              "start_ms": 35466567,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81KmbDRFSnL.jpg",
-          "id": "moira-quirk-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "moira-quirk"
-          ],
-          "publisher": "Little, Brown Young Readers",
-          "release_date": "2015-11-03",
-          "runtime_min": 593,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B016JBMSYY",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B07BZ1TWT2",
-              "type": "libex-import"
-            }
-          ],
-          "work": "manners-mutiny"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B016JBMSYY",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Manners & Mutiny"
     },
     "mannheim-rex": {
       "added_at": "2026-07-29",

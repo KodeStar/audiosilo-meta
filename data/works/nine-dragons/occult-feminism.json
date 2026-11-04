@@ -8420,7 +8420,9 @@
         "john-sandford"
       ],
       "genres": [
+        "espionage",
         "mystery",
+        "politics",
         "thriller-suspense"
       ],
       "id": "ocean-prey",
@@ -8437,6 +8439,14 @@
             },
             {
               "asin": "0593348206",
+              "region": "uk"
+            },
+            {
+              "asin": "1004040660",
+              "region": "us"
+            },
+            {
+              "asin": "1004040660",
               "region": "uk"
             }
           ],
@@ -8657,255 +8667,7 @@
               "imported_at": "2026-10-09",
               "ref": "0593348206",
               "type": "libex-import"
-            }
-          ],
-          "work": "ocean-prey"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "0593348206",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Ocean Prey"
-    },
-    "ocean-prey-a-lucas-davenport-virgil-flowers-novel": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "john-sandford"
-      ],
-      "genres": [
-        "espionage",
-        "politics",
-        "thriller-suspense"
-      ],
-      "id": "ocean-prey-a-lucas-davenport-virgil-flowers-novel",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "richard-ferrone-2021": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1004040660",
-              "region": "us"
             },
-            {
-              "asin": "1004040660",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 18389,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 304436,
-              "start_ms": 18389,
-              "title": "The Muggers"
-            },
-            {
-              "length_ms": 3000,
-              "start_ms": 322825,
-              "title": "July"
-            },
-            {
-              "length_ms": 1024274,
-              "start_ms": 325825,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3000,
-              "start_ms": 1350099,
-              "title": "November"
-            },
-            {
-              "length_ms": 1112556,
-              "start_ms": 1353099,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1757611,
-              "start_ms": 2465655,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1552555,
-              "start_ms": 4223266,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2462963,
-              "start_ms": 5775821,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 901746,
-              "start_ms": 8238784,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1265580,
-              "start_ms": 9140530,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1682192,
-              "start_ms": 10406110,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 932722,
-              "start_ms": 12088302,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1331408,
-              "start_ms": 13021024,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1357879,
-              "start_ms": 14352432,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 543184,
-              "start_ms": 15710311,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1183613,
-              "start_ms": 16253495,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1382353,
-              "start_ms": 17437108,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1881350,
-              "start_ms": 18819461,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 3000,
-              "start_ms": 20700811,
-              "title": "January"
-            },
-            {
-              "length_ms": 1153121,
-              "start_ms": 20703811,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 2883221,
-              "start_ms": 21856932,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1556572,
-              "start_ms": 24740153,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1136686,
-              "start_ms": 26296725,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1833795,
-              "start_ms": 27433411,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1526015,
-              "start_ms": 29267206,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 434607,
-              "start_ms": 30793221,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1729631,
-              "start_ms": 31227828,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 1044665,
-              "start_ms": 32957459,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 1959137,
-              "start_ms": 34002124,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 896243,
-              "start_ms": 35961261,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 1375921,
-              "start_ms": 36857504,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 1159441,
-              "start_ms": 38233425,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 2001281,
-              "start_ms": 39392866,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 1589638,
-              "start_ms": 41394147,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 1099836,
-              "start_ms": 42983785,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 888813,
-              "start_ms": 44083621,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 325381,
-              "start_ms": 44972434,
-              "title": "Author's Note"
-            },
-            {
-              "length_ms": 31253,
-              "start_ms": 45297815,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91MmPOSzooL.jpg",
-          "id": "richard-ferrone-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "richard-ferrone"
-          ],
-          "publisher": "W. F. Howes Ltd",
-          "release_date": "2021-04-15",
-          "runtime_min": 755,
-          "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "1004040660",
@@ -8917,17 +8679,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "ocean-prey-a-lucas-davenport-virgil-flowers-novel"
+          "work": "ocean-prey"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "0593348206",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1004040660",
           "type": "libex-import"
         }
       ],
-      "title": "Ocean Prey: A Lucas Davenport & Virgil Flowers novel"
+      "title": "Ocean Prey"
     },
     "ocean-realm": {
       "added_at": "2026-08-02",

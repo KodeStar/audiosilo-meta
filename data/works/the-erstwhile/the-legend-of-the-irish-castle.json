@@ -9694,12 +9694,124 @@
         "emma-carlson-berne"
       ],
       "genres": [
-        "childrens"
+        "action-adventure",
+        "childrens",
+        "coming-of-age",
+        "science-fiction"
       ],
       "id": "the-leia-chronicles-the-rey-chronicles",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "january-lavoy-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FK12XLG1",
+              "region": "us"
+            },
+            {
+              "asin": "B0FK1RDBNP",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 20665,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1000,
+              "start_ms": 20665,
+              "title": "The Leia Chronicles"
+            },
+            {
+              "length_ms": 85331,
+              "start_ms": 21665,
+              "title": "A Message from Maz"
+            },
+            {
+              "length_ms": 1308235,
+              "start_ms": 106996,
+              "title": "Ewok Escape"
+            },
+            {
+              "length_ms": 985129,
+              "start_ms": 1415231,
+              "title": "Imperial Feast"
+            },
+            {
+              "length_ms": 698641,
+              "start_ms": 2400360,
+              "title": "Bounty of Trouble"
+            },
+            {
+              "length_ms": 105000,
+              "start_ms": 3099001,
+              "title": "A Message from Maz"
+            },
+            {
+              "length_ms": 1000,
+              "start_ms": 3204001,
+              "title": "The Rey Chronicles"
+            },
+            {
+              "length_ms": 90045,
+              "start_ms": 3205001,
+              "title": "A Message from Maz"
+            },
+            {
+              "length_ms": 953666,
+              "start_ms": 3295046,
+              "title": "Tracker Trouble"
+            },
+            {
+              "length_ms": 1231911,
+              "start_ms": 4248712,
+              "title": "Rey and the Happabore"
+            },
+            {
+              "length_ms": 920531,
+              "start_ms": 5480623,
+              "title": "Rey and Teedo"
+            },
+            {
+              "length_ms": 90372,
+              "start_ms": 6401154,
+              "title": "A Message from Maz"
+            },
+            {
+              "length_ms": 40912,
+              "start_ms": 6491526,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/812nSErSwWL.jpg",
+          "id": "january-lavoy-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "january-lavoy"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2025-08-05",
+          "runtime_min": 108,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FK12XLG1",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0FK1RDBNP",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-leia-chronicles-the-rey-chronicles"
+        },
         "january-lavoy-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9794,6 +9906,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0GNSY42CD",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FK12XLG1",
           "type": "libex-import"
         }
       ],

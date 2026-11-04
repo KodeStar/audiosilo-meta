@@ -9582,12 +9582,148 @@
       "genres": [
         "fantasy",
         "paranormal",
-        "romance"
+        "romance",
+        "science-fiction",
+        "urban-fantasy"
       ],
       "id": "mikhail",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "lucy-rivers-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07CVL8443",
+              "region": "us"
+            },
+            {
+              "asin": "B07CVJLK3W",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1724964,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1208459,
+              "start_ms": 1724964,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 944727,
+              "start_ms": 2933423,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1773587,
+              "start_ms": 3878150,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1802147,
+              "start_ms": 5651737,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2165864,
+              "start_ms": 7453884,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1328042,
+              "start_ms": 9619748,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1220209,
+              "start_ms": 10947790,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2525077,
+              "start_ms": 12167999,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1712890,
+              "start_ms": 14693076,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1453801,
+              "start_ms": 16405966,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1075270,
+              "start_ms": 17859767,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 972637,
+              "start_ms": 18935037,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1670026,
+              "start_ms": 19907674,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 972963,
+              "start_ms": 21577700,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1078753,
+              "start_ms": 22550663,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1836048,
+              "start_ms": 23629416,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1050796,
+              "start_ms": 25465464,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 526443,
+              "start_ms": 26516260,
+              "title": "Chapter 19"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Cv1MKF9SL.jpg",
+          "id": "lucy-rivers-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "lucy-rivers"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2018-05-22",
+          "runtime_min": 450,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07CVL8443",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07CVJLK3W",
+              "type": "libex-import"
+            }
+          ],
+          "work": "mikhail"
+        },
         "lucy-rivers-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9738,169 +9874,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0DKG293BL",
           "type": "libex-import"
-        }
-      ],
-      "title": "Mikhail"
-    },
-    "mikhail-a-royal-dragon-romance": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lauren-smith"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "romance",
-        "science-fiction",
-        "urban-fantasy"
-      ],
-      "id": "mikhail-a-royal-dragon-romance",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "lucy-rivers-2018": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B07CVL8443",
-              "region": "us"
-            },
-            {
-              "asin": "B07CVJLK3W",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1724964,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1208459,
-              "start_ms": 1724964,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 944727,
-              "start_ms": 2933423,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1773587,
-              "start_ms": 3878150,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1802147,
-              "start_ms": 5651737,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 2165864,
-              "start_ms": 7453884,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1328042,
-              "start_ms": 9619748,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1220209,
-              "start_ms": 10947790,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 2525077,
-              "start_ms": 12167999,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1712890,
-              "start_ms": 14693076,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1453801,
-              "start_ms": 16405966,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1075270,
-              "start_ms": 17859767,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 972637,
-              "start_ms": 18935037,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1670026,
-              "start_ms": 19907674,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 972963,
-              "start_ms": 21577700,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1078753,
-              "start_ms": 22550663,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1836048,
-              "start_ms": 23629416,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1050796,
-              "start_ms": 25465464,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 526443,
-              "start_ms": 26516260,
-              "title": "Chapter 19"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Cv1MKF9SL.jpg",
-          "id": "lucy-rivers-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "lucy-rivers"
-          ],
-          "publisher": "Tantor Audio",
-          "release_date": "2018-05-22",
-          "runtime_min": 450,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B07CVL8443",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B07CVJLK3W",
-              "type": "libex-import"
-            }
-          ],
-          "work": "mikhail-a-royal-dragon-romance"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B07CVL8443",
           "type": "libex-import"
         }
       ],
-      "title": "Mikhail: A Royal Dragon Romance"
+      "title": "Mikhail"
     },
     "mikko": {
       "added_at": "2026-08-02",

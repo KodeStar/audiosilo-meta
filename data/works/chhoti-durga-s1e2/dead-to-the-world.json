@@ -4350,12 +4350,54 @@
             }
           ],
           "work": "dead-water"
+        },
+        "kenny-blyth-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0DLBGQGTJ",
+              "region": "us"
+            },
+            {
+              "asin": "B0DLBFN89N",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Hdo6rchdL.jpg",
+          "id": "kenny-blyth-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kenny-blyth"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2024-10-29",
+          "runtime_min": 605,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DLBGQGTJ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0DLBFN89N",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dead-water"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B00G3IWA74",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0DLBGQGTJ",
           "type": "libex-import"
         }
       ],
@@ -4524,67 +4566,6 @@
         }
       ],
       "title": "Dead Water"
-    },
-    "dead-water-the-shetland-series-5": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "ann-cleeves"
-      ],
-      "genres": [
-        "mystery",
-        "police-procedural",
-        "thriller-suspense"
-      ],
-      "id": "dead-water-the-shetland-series-5",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "kenny-blyth-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0DLBGQGTJ",
-              "region": "us"
-            },
-            {
-              "asin": "B0DLBFN89N",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Hdo6rchdL.jpg",
-          "id": "kenny-blyth-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "kenny-blyth"
-          ],
-          "publisher": "Macmillan Digital Audio",
-          "release_date": "2024-10-29",
-          "runtime_min": 605,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0DLBGQGTJ",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0DLBFN89N",
-              "type": "libex-import"
-            }
-          ],
-          "work": "dead-water-the-shetland-series-5"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0DLBGQGTJ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Dead Water: The Shetland Series 5"
     },
     "dead-waters": {
       "added_at": "2026-08-01",
@@ -4838,30 +4819,7 @@
             }
           ],
           "work": "dead-waters"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B0B325MG74",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Dead Waters"
-    },
-    "dead-waters-a-post-apocalyptic-plague-thriller-afterworld-apocalypse-book-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "camille-picott"
-      ],
-      "genres": [
-        "post-apocalyptic",
-        "science-fiction"
-      ],
-      "id": "dead-waters-a-post-apocalyptic-plague-thriller-afterworld-apocalypse-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "molly-secours-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5099,17 +5057,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "dead-waters-a-post-apocalyptic-plague-thriller-afterworld-apocalypse-book-2"
+          "work": "dead-waters"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0B325MG74",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DH5V9HPH",
           "type": "libex-import"
         }
       ],
-      "title": "Dead Waters: A Post-Apocalyptic Plague Thriller (Afterworld Apocalypse, Book 2)"
+      "title": "Dead Waters"
     },
     "dead-waters-simon-canderous-book-4": {
       "added_at": "2026-08-02",

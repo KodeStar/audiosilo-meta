@@ -6881,6 +6881,7 @@
       ],
       "genres": [
         "classics",
+        "historical-fiction",
         "literary-fiction",
         "mystery",
         "short-stories"
@@ -7689,6 +7690,10 @@
             {
               "asin": "B079TKVJWQ",
               "region": "de"
+            },
+            {
+              "asin": "B0092QTXH4",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -7827,6 +7832,11 @@
             {
               "imported_at": "2026-10-20",
               "ref": "B079TKVJWQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0092QTXH4",
               "type": "libex-import"
             }
           ],
@@ -8807,177 +8817,14 @@
           "imported_at": "2026-07-29",
           "ref": "B0DQ9QJ5ML",
           "type": "libex-import"
-        }
-      ],
-      "title": "Unnatural Death"
-    },
-    "unnatural-death-a-lord-peter-wimsey-mystery-book-3": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "dorothy-l-sayers"
-      ],
-      "genres": [
-        "historical-fiction",
-        "mystery"
-      ],
-      "id": "unnatural-death-a-lord-peter-wimsey-mystery-book-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ian-carmichael-2012": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0092QTXH4",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 973334,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 733425,
-              "start_ms": 973334,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1217515,
-              "start_ms": 1706759,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1056647,
-              "start_ms": 2924274,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 983690,
-              "start_ms": 3980921,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1757983,
-              "start_ms": 4964611,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1127468,
-              "start_ms": 6722594,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1055068,
-              "start_ms": 7850062,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 611381,
-              "start_ms": 8905130,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1577053,
-              "start_ms": 9516511,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1732301,
-              "start_ms": 11093564,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1154868,
-              "start_ms": 12825865,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 938969,
-              "start_ms": 13980733,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1296324,
-              "start_ms": 14919702,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1007282,
-              "start_ms": 16216026,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 693209,
-              "start_ms": 17223308,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1143583,
-              "start_ms": 17916517,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1310999,
-              "start_ms": 19060100,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1686094,
-              "start_ms": 20371099,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1046663,
-              "start_ms": 22057193,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1450040,
-              "start_ms": 23103856,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1884439,
-              "start_ms": 24553896,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1667053,
-              "start_ms": 26438335,
-              "title": "Chapter 23"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81WmtL-L7+L.jpg",
-          "id": "ian-carmichael-2012",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ian-carmichael"
-          ],
-          "publisher": "Blackstone Audio, Inc.",
-          "release_date": "2012-09-01",
-          "runtime_min": 468,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0092QTXH4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "unnatural-death-a-lord-peter-wimsey-mystery-book-3"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0092QTXH4",
           "type": "libex-import"
         }
       ],
-      "title": "Unnatural Death: A Lord Peter Wimsey Mystery, Book 3"
+      "title": "Unnatural Death"
     },
     "unnatural-death-a-scarpetta-novel": {
       "added_at": "2026-07-29",

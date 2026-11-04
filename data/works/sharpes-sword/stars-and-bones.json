@@ -10387,6 +10387,7 @@
       ],
       "genres": [
         "action-adventure",
+        "cyberpunk",
         "science-fiction",
         "space-opera"
       ],
@@ -10812,32 +10813,7 @@
             }
           ],
           "work": "starshine"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B00L4DQU06",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Starshine"
-    },
-    "starshine-amaranthe-1": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "g-s-jennsen"
-      ],
-      "genres": [
-        "action-adventure",
-        "cyberpunk",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "starshine-amaranthe-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "pyper-down-2021": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -11255,17 +11231,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "starshine-amaranthe-1"
+          "work": "starshine"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B00L4DQU06",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B08YMZ2ZDJ",
           "type": "libex-import"
         }
       ],
-      "title": "Starshine: Amaranthe 1"
+      "title": "Starshine"
     },
     "starship": {
       "added_at": "2026-08-02",

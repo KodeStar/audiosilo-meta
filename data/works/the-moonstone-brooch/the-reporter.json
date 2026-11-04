@@ -988,6 +988,60 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "tim-curry-2005": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036GTMAO",
+              "region": "us"
+            },
+            {
+              "asin": "B004EKAMXW",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3873460,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3676926,
+              "start_ms": 3873460,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3937036,
+              "start_ms": 7550386,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81o5ePre2pL.jpg",
+          "id": "tim-curry-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tim-curry"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2005-06-07",
+          "runtime_min": 191,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036GTMAO",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EKAMXW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-reptile-room"
+        },
         "tim-curry-2014": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -1226,6 +1280,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0GJWRHL49",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0036GTMAO",
           "type": "libex-import"
         }
       ],

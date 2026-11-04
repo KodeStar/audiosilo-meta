@@ -3176,7 +3176,9 @@
         "ann-cleeves"
       ],
       "genres": [
-        "mystery"
+        "mystery",
+        "police-procedural",
+        "thriller-suspense"
       ],
       "id": "the-raging-storm",
       "language": "en",
@@ -3523,31 +3525,7 @@
             }
           ],
           "work": "the-raging-storm"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0BVKY6DBL",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Raging Storm"
-    },
-    "the-raging-storm-two-rivers-book-3": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "ann-cleeves"
-      ],
-      "genres": [
-        "mystery",
-        "police-procedural",
-        "thriller-suspense"
-      ],
-      "id": "the-raging-storm-two-rivers-book-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "jack-holden-2024": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -3583,17 +3561,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-raging-storm-two-rivers-book-3"
+          "work": "the-raging-storm"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BVKY6DBL",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0DMVXZTMM",
           "type": "libex-import"
         }
       ],
-      "title": "The Raging Storm: Two Rivers Book 3"
+      "title": "The Raging Storm"
     },
     "the-ragmans-memory": {
       "added_at": "2026-07-29",

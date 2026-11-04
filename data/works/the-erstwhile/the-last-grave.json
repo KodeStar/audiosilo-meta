@@ -1455,7 +1455,9 @@
         "eoin-colfer"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
+        "coming-of-age",
         "fantasy"
       ],
       "id": "the-last-guardian",
@@ -1477,103 +1479,126 @@
             {
               "asin": "B008G39XYC",
               "region": "uk"
+            },
+            {
+              "asin": "B008G39HSY",
+              "region": "us"
+            },
+            {
+              "asin": "B079CDJ174",
+              "region": "uk"
             }
           ],
           "chapters": [
             {
-              "length_ms": 3013997,
+              "length_ms": 11904,
               "start_ms": 0,
-              "title": "Chapter 1"
+              "title": "Opening Credits"
             },
             {
-              "length_ms": 1156261,
-              "start_ms": 3013997,
-              "title": "Chapter 2"
+              "length_ms": 144197,
+              "start_ms": 11904,
+              "title": "Prologue"
             },
             {
-              "length_ms": 1491789,
-              "start_ms": 4170258,
-              "title": "Chapter 3"
+              "length_ms": 2858128,
+              "start_ms": 156101,
+              "title": "Chapter 1: A Complex Situation"
             },
             {
-              "length_ms": 481814,
-              "start_ms": 5662047,
-              "title": "Chapter 4"
+              "length_ms": 1156214,
+              "start_ms": 3014229,
+              "title": "Chapter 2: Killing the Past"
             },
             {
-              "length_ms": 715639,
-              "start_ms": 6143861,
-              "title": "Chapter 5"
+              "length_ms": 1491696,
+              "start_ms": 4170443,
+              "title": "Chapter 3: Fire & Brimstone"
             },
             {
-              "length_ms": 2987294,
+              "length_ms": 481768,
+              "start_ms": 5662139,
+              "title": "Chapter 4: Engineer Ozkopy Has the Last Word"
+            },
+            {
+              "length_ms": 715593,
+              "start_ms": 6143907,
+              "title": "Chapter 5: Harma-Geddon"
+            },
+            {
+              "length_ms": 2987247,
               "start_ms": 6859500,
-              "title": "Chapter 6"
+              "title": "Chapter 6: Rise, My Beauties"
             },
             {
-              "length_ms": 1644298,
-              "start_ms": 9846794,
-              "title": "Chapter 7"
+              "length_ms": 1644251,
+              "start_ms": 9846747,
+              "title": "Chapter 7: Lickety-Spit"
             },
             {
-              "length_ms": 267029,
-              "start_ms": 11491092,
-              "title": "Chapter 8"
+              "length_ms": 266983,
+              "start_ms": 11490998,
+              "title": "Chapter 8: Motley Crew"
             },
             {
-              "length_ms": 1378337,
-              "start_ms": 11758121,
-              "title": "Chapter 9"
+              "length_ms": 1378244,
+              "start_ms": 11757981,
+              "title": "Chapter 9: Spewing the Bitter Poison"
             },
             {
-              "length_ms": 1276587,
-              "start_ms": 13136458,
-              "title": "Chapter 10"
+              "length_ms": 1276494,
+              "start_ms": 13136225,
+              "title": "Chapter 10: Sibling Rivalry"
             },
             {
-              "length_ms": 801321,
-              "start_ms": 14413045,
-              "title": "Chapter 11"
+              "length_ms": 801274,
+              "start_ms": 14412719,
+              "title": "Chapter 11: Death by Bunny"
             },
             {
-              "length_ms": 1663803,
-              "start_ms": 15214366,
-              "title": "Chapter 12"
+              "length_ms": 1663756,
+              "start_ms": 15213993,
+              "title": "Chapter 12: The Dork Posse"
             },
             {
-              "length_ms": 1058969,
-              "start_ms": 16878169,
-              "title": "Chapter 13"
+              "length_ms": 1058876,
+              "start_ms": 16877749,
+              "title": "Chapter 13: Lucky Dip"
             },
             {
               "length_ms": 1177623,
-              "start_ms": 17937138,
-              "title": "Chapter 14"
+              "start_ms": 17936625,
+              "title": "Chapter 14: Nine Sticks"
             },
             {
-              "length_ms": 1174001,
-              "start_ms": 19114761,
-              "title": "Chapter 15"
+              "length_ms": 1173954,
+              "start_ms": 19114248,
+              "title": "Chapter 15: Cricket Alert"
             },
             {
-              "length_ms": 2685481,
-              "start_ms": 20288762,
-              "title": "Chapter 16"
+              "length_ms": 2685434,
+              "start_ms": 20288202,
+              "title": "Chapter 16: A Warning Shot"
             },
             {
-              "length_ms": 643889,
-              "start_ms": 22974243,
-              "title": "Chapter 17"
+              "length_ms": 643843,
+              "start_ms": 22973636,
+              "title": "Chapter 17: Last Light"
             },
             {
-              "length_ms": 2756023,
-              "start_ms": 23618132,
-              "title": "Chapter 18"
+              "length_ms": 2755884,
+              "start_ms": 23617479,
+              "title": "Chapter 18: Soul Survivor"
             },
             {
-              "length_ms": 1201400,
-              "start_ms": 26374155,
-              "title": "Chapter 19"
+              "length_ms": 1184000,
+              "start_ms": 26373363,
+              "title": "Chapter 19: The Roses"
+            },
+            {
+              "length_ms": 32818,
+              "start_ms": 27557363,
+              "title": "End Credits"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81vkXk-+VxL.jpg",
@@ -1606,6 +1631,16 @@
               "imported_at": "2026-10-09",
               "ref": "B008G39XYC",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B008G39HSY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B079CDJ174",
+              "type": "libex-import"
             }
           ],
           "work": "the-last-guardian"
@@ -1620,6 +1655,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B008G39J9G",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B008G39HSY",
           "type": "libex-import"
         }
       ],
@@ -5912,7 +5952,8 @@
         "fantasy",
         "lgbtq",
         "science-fiction",
-        "space-opera"
+        "space-opera",
+        "womens-fiction"
       ],
       "id": "the-last-hero-linden-a-lewis",
       "language": "en",
@@ -5928,6 +5969,14 @@
             },
             {
               "asin": "B09V3JN23B",
+              "region": "uk"
+            },
+            {
+              "asin": "B0B8T74DGB",
+              "region": "us"
+            },
+            {
+              "asin": "B0B8T3N5QB",
               "region": "uk"
             }
           ],
@@ -6299,6 +6348,16 @@
               "imported_at": "2026-10-09",
               "ref": "B09V3JN23B",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0B8T74DGB",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0B8T3N5QB",
+              "type": "libex-import"
             }
           ],
           "work": "the-last-hero-linden-a-lewis"
@@ -6308,6 +6367,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B09V3J4FN6",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0B8T74DGB",
           "type": "libex-import"
         }
       ],
@@ -6786,416 +6850,6 @@
         }
       ],
       "title": "The Last Hero"
-    },
-    "the-last-hero-the-first-sister-book-3": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "linden-a-lewis"
-      ],
-      "genres": [
-        "action-adventure",
-        "science-fiction",
-        "space-opera",
-        "womens-fiction"
-      ],
-      "id": "the-last-hero-the-first-sister-book-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ali-andre-ali-2022": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0B8T74DGB",
-              "region": "us"
-            },
-            {
-              "asin": "B0B8T3N5QB",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 41440,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 12823,
-              "start_ms": 41440,
-              "title": "Dedication"
-            },
-            {
-              "length_ms": 653827,
-              "start_ms": 54263,
-              "title": "Prologue"
-            },
-            {
-              "length_ms": 3046,
-              "start_ms": 708090,
-              "title": "Part I"
-            },
-            {
-              "length_ms": 2081641,
-              "start_ms": 711136,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2561486,
-              "start_ms": 2792777,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1334380,
-              "start_ms": 5354263,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2969020,
-              "start_ms": 6688643,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 820383,
-              "start_ms": 9657663,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 991933,
-              "start_ms": 10478046,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 651877,
-              "start_ms": 11469979,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 266651,
-              "start_ms": 12121856,
-              "title": "Part II"
-            },
-            {
-              "length_ms": 257143,
-              "start_ms": 12388507,
-              "title": "Interlude"
-            },
-            {
-              "length_ms": 1809995,
-              "start_ms": 12645650,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 2677307,
-              "start_ms": 14455645,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1574150,
-              "start_ms": 17132952,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1108473,
-              "start_ms": 18707102,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1840297,
-              "start_ms": 19815575,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 2295663,
-              "start_ms": 21655872,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1058598,
-              "start_ms": 23951535,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 919091,
-              "start_ms": 25010133,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1439358,
-              "start_ms": 25929224,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 2787277,
-              "start_ms": 27368582,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 584422,
-              "start_ms": 30155859,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1182453,
-              "start_ms": 30740281,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1069464,
-              "start_ms": 31922734,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1542872,
-              "start_ms": 32992198,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1796132,
-              "start_ms": 34535070,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1355001,
-              "start_ms": 36331202,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 736443,
-              "start_ms": 37686203,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 2338783,
-              "start_ms": 38422646,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 1958718,
-              "start_ms": 40761429,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 1012506,
-              "start_ms": 42720147,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 1034147,
-              "start_ms": 43732653,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 4926,
-              "start_ms": 44766800,
-              "title": "Part III"
-            },
-            {
-              "length_ms": 419860,
-              "start_ms": 44771726,
-              "title": "Interlude"
-            },
-            {
-              "length_ms": 1152870,
-              "start_ms": 45191586,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 675978,
-              "start_ms": 46344456,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 1374320,
-              "start_ms": 47020434,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 939571,
-              "start_ms": 48394754,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 2036529,
-              "start_ms": 49334325,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 2550155,
-              "start_ms": 51370854,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 512463,
-              "start_ms": 53921009,
-              "title": "Chapter 35"
-            },
-            {
-              "length_ms": 941012,
-              "start_ms": 54433472,
-              "title": "Chapter 36"
-            },
-            {
-              "length_ms": 3128749,
-              "start_ms": 55374484,
-              "title": "Chapter 37"
-            },
-            {
-              "length_ms": 1773609,
-              "start_ms": 58503233,
-              "title": "Chapter 38"
-            },
-            {
-              "length_ms": 860717,
-              "start_ms": 60276842,
-              "title": "Chapter 39"
-            },
-            {
-              "length_ms": 1833958,
-              "start_ms": 61137559,
-              "title": "Chapter 40"
-            },
-            {
-              "length_ms": 4903,
-              "start_ms": 62971517,
-              "title": "Part IV"
-            },
-            {
-              "length_ms": 288806,
-              "start_ms": 62976420,
-              "title": "Interlude"
-            },
-            {
-              "length_ms": 1384490,
-              "start_ms": 63265226,
-              "title": "Chapter 41"
-            },
-            {
-              "length_ms": 2416315,
-              "start_ms": 64649716,
-              "title": "Chapter 42"
-            },
-            {
-              "length_ms": 1341044,
-              "start_ms": 67066031,
-              "title": "Chapter 43"
-            },
-            {
-              "length_ms": 1513848,
-              "start_ms": 68407075,
-              "title": "Chapter 44"
-            },
-            {
-              "length_ms": 1753153,
-              "start_ms": 69920923,
-              "title": "Chapter 45"
-            },
-            {
-              "length_ms": 833643,
-              "start_ms": 71674076,
-              "title": "Chapter 46"
-            },
-            {
-              "length_ms": 814811,
-              "start_ms": 72507719,
-              "title": "Chapter 47"
-            },
-            {
-              "length_ms": 1749205,
-              "start_ms": 73322530,
-              "title": "Chapter 48"
-            },
-            {
-              "length_ms": 1688090,
-              "start_ms": 75071735,
-              "title": "Chapter 49"
-            },
-            {
-              "length_ms": 1125958,
-              "start_ms": 76759825,
-              "title": "Chapter 50"
-            },
-            {
-              "length_ms": 3130746,
-              "start_ms": 77885783,
-              "title": "Chapter 51"
-            },
-            {
-              "length_ms": 361837,
-              "start_ms": 81016529,
-              "title": "Chapter 52"
-            },
-            {
-              "length_ms": 3038,
-              "start_ms": 81378366,
-              "title": "Part V"
-            },
-            {
-              "length_ms": 406306,
-              "start_ms": 81381404,
-              "title": "Interlude"
-            },
-            {
-              "length_ms": 857094,
-              "start_ms": 81787710,
-              "title": "Chapter 53"
-            },
-            {
-              "length_ms": 995369,
-              "start_ms": 82644804,
-              "title": "Chapter 54"
-            },
-            {
-              "length_ms": 1233378,
-              "start_ms": 83640173,
-              "title": "Chapter 55"
-            },
-            {
-              "length_ms": 71187,
-              "start_ms": 84873551,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81lyh-tY80L.jpg",
-          "id": "ali-andre-ali-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ali-andre-ali",
-            "andrew-kishino",
-            "emily-woo-zeller",
-            "farah-naz-rishi",
-            "gary-tiedemann",
-            "jennifer-aquino",
-            "neo-cihi"
-          ],
-          "publisher": "Hodderscape",
-          "release_date": "2022-11-08",
-          "runtime_min": 1415,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0B8T74DGB",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0B8T3N5QB",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-last-hero-the-first-sister-book-3"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0B8T74DGB",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Last Hero: The First Sister, Book 3"
     },
     "the-last-heroes": {
       "added_at": "2026-07-29",

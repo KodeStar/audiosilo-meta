@@ -883,11 +883,13 @@
         "t-l-huchu"
       ],
       "genres": [
+        "alternate-history",
         "fantasy",
         "ghost-stories",
         "horror",
         "mystery",
         "paranormal",
+        "science-fiction",
         "short-stories",
         "urban-fantasy"
       ],
@@ -1168,34 +1170,7 @@
             }
           ],
           "work": "the-library-of-the-dead"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1250790174",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Library of the Dead"
-    },
-    "the-library-of-the-dead-edinburgh-nights-book-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "t-l-huchu"
-      ],
-      "genres": [
-        "alternate-history",
-        "fantasy",
-        "mystery",
-        "paranormal",
-        "science-fiction",
-        "urban-fantasy"
-      ],
-      "id": "the-library-of-the-dead-edinburgh-nights-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "tinashe-warikandwa-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1459,17 +1434,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-library-of-the-dead-edinburgh-nights-book-1"
+          "work": "the-library-of-the-dead"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1250790174",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DMP2LGRF",
           "type": "libex-import"
         }
       ],
-      "title": "The Library of the Dead: Edinburgh Nights Book 1"
+      "title": "The Library of the Dead"
     },
     "the-library-of-the-unwritten": {
       "added_at": "2026-08-02",

@@ -7201,6 +7201,11 @@
       "authors": [
         "nathan-van-coops"
       ],
+      "genres": [
+        "action-adventure",
+        "science-fiction",
+        "time-travel"
+      ],
       "id": "in-times-like-these",
       "language": "en",
       "license": "CC0-1.0",
@@ -7378,31 +7383,7 @@
             }
           ],
           "work": "in-times-like-these"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B01LT4K9VA",
-          "type": "libex-import"
-        }
-      ],
-      "title": "In Times Like These"
-    },
-    "in-times-like-these-a-time-travel-adventure": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "nathan-van-coops"
-      ],
-      "genres": [
-        "action-adventure",
-        "science-fiction",
-        "time-travel"
-      ],
-      "id": "in-times-like-these-a-time-travel-adventure",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "neil-hellegers-2022": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -7575,17 +7556,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "in-times-like-these-a-time-travel-adventure"
+          "work": "in-times-like-these"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B01LT4K9VA",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B09WZL8LTB",
           "type": "libex-import"
         }
       ],
-      "title": "In Times Like These: A Time Travel Adventure"
+      "title": "In Times Like These"
     },
     "in-times-like-these-mega-boxed-set": {
       "added_at": "2026-08-01",

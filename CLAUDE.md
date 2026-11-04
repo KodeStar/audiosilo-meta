@@ -147,7 +147,14 @@ of that campaign and is in the gate (three layers over one rule -
   (`normalized-duplicate-works`, 2,881 groups when it landed, 3,160 once the key's
   series strip was boundary-anchored), so a repair wave's
   progress is a number in the CI log and a regrowth is visible the wave after it
-  happens. It never fails the check.
+  happens. It never fails the check. Its sibling `series-designation-duplicate-works`
+  (pkg/check's `seriesdesignation.go`, 2026-11) counts the twins that key cannot
+  join because the decorated one is not listed in the series its title names ("The
+  Ghost Brigades" beside "The Ghost Brigades: Old Man's War Book 2"); a reviewed
+  pair is merged through an `assert` in `internal/audit/reviewed.json` plus
+  metarepair, never by the census. Its recording-level counterpart is `metaimport
+  narrations`, a read-only libex check for a recording whose ASINs are two
+  productions (PACKAGES.md, `internal/importer`).
 
 **The census is a READING LIST, so it honours the reading and reports what a pull
 request ADDS.** It is deliberately broad (`checkIdentityEqualWorks`,
@@ -164,7 +171,8 @@ never noticed (ai-verify read only the metadiff summary). Two halves:
   resolved through `data/redirects.json`) records every PAIR of its ids as distinct,
   and metacheck neither prints nor counts that pair under identity-equal-works,
   normalized-duplicate-works (a group drops the pair, a member left pairing with
-  nobody drops out), duplicate-series or honorific-person-pair. The census line ends "(N reviewed and
+  nobody drops out), series-designation-duplicate-works, duplicate-series or
+  honorific-person-pair. The census line ends "(N reviewed and
   suppressed)", so the suppression is visible rather than silent. pkg/check cannot
   import the audit (the audit imports check), so the decisions arrive as data:
   `audit.ReviewedDistinct()` -> `check.LoadOptions.Distinct` -> `LoadProfileWith`,

@@ -7794,8 +7794,11 @@
       ],
       "genres": [
         "action-adventure",
+        "fantasy",
+        "mystery",
         "paranormal",
-        "thriller-suspense"
+        "thriller-suspense",
+        "urban-fantasy"
       ],
       "id": "gates-of-hell",
       "language": "en",
@@ -8004,31 +8007,7 @@
             }
           ],
           "work": "gates-of-hell"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B00ZQ40V86",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Gates of Hell"
-    },
-    "gates-of-hell-arkane-book-6": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "j-f-penn"
-      ],
-      "genres": [
-        "fantasy",
-        "mystery",
-        "urban-fantasy"
-      ],
-      "id": "gates-of-hell-arkane-book-6",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "veronica-giguere-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8226,17 +8205,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "gates-of-hell-arkane-book-6"
+          "work": "gates-of-hell"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B00ZQ40V86",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0CX6HQM1W",
           "type": "libex-import"
         }
       ],
-      "title": "Gates of Hell: ARKANE, Book 6"
+      "title": "Gates of Hell"
     },
     "gates-of-hell-david-archer": {
       "added_at": "2026-07-29",

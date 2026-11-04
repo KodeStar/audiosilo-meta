@@ -136,6 +136,7 @@
 package main
 
 import (
+	"bytes"
 	"context"
 	"flag"
 	"fmt"
@@ -184,6 +185,8 @@ func main() {
 		os.Exit(runLibexSelect(os.Args[2:]))
 	case "libex-fill":
 		os.Exit(runLibexFill(os.Args[2:]))
+	case "narrations":
+		os.Exit(runNarrations(os.Args[2:]))
 	case "librivox":
 		os.Exit(runLibrivox(os.Args[2:]))
 	case "-h", "--help", "help":
@@ -727,6 +730,7 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only | --relocate | --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>]] [--existing-series-only] [--attach-editions] [--skipped <path>]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--refusals <path>] [--attachments <path>] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-fill  [--data data] [--works a,b] [--limit N] [--all-tiers | --released-preorders] [--dry-run] [--date YYYY-MM-DD]")
+	fmt.Fprintln(os.Stderr, "  metaimport narrations  -o <worklist.ndjson> [--data data] [--works a,b] [--user-library] [--limit N] [--rows <rows.ndjson>]")
 	fmt.Fprintln(os.Stderr, "  metaimport librivox fetch  --out <snapshot> [--max-pages N]")
 	fmt.Fprintln(os.Stderr, "  metaimport librivox import --from <snapshot> --ids <range> [--data data] [--dry-run] [--date YYYY-MM-DD] [--conflicts <path>] [--skipped <path>] [--worklist <path>]")
 	fmt.Fprintln(os.Stderr, "  metaimport librivox import --from <snapshot> --ids <range> --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>] [--data data] [--dry-run]")
@@ -758,6 +762,10 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "    --all-tiers is given; --works limits it further to those work ids. --released-preorders instead")
 	fmt.Fprintln(os.Stderr, "    selects the preorder-era recordings whose release date has passed (by --date, default today)")
 	fmt.Fprintln(os.Stderr, "    and refreshes their runtime, cover, chapters and release date from the released listing.")
+	fmt.Fprintln(os.Stderr, "  narrations is READ-ONLY: it looks up on libex every ASIN of each recording holding two or more")
+	fmt.Fprintln(os.Stderr, "    ASINs in one marketplace (or every recording of --works) and writes one NDJSON line per")
+	fmt.Fprintln(os.Stderr, "    recording whose ASINs name disjoint narrators, or whose narrators none of its ASINs credit;")
+	fmt.Fprintln(os.Stderr, "    --rows writes those ASINs' libex rows (the input libex --recordings-only reads).")
 }
 
 // runLibexFill parses the flags for the libex-fill subcommand and runs it.
@@ -806,13 +814,7 @@ func runLibexFill(args []string) int {
 		targets = importer.SelectFillTargets(cat)
 	}
 	if strings.TrimSpace(*works) != "" {
-		set := map[string]bool{}
-		for _, w := range strings.Split(*works, ",") {
-			if w = strings.TrimSpace(w); w != "" {
-				set[w] = true
-			}
-		}
-		targets = importer.RestrictToWorks(targets, set)
+		targets = importer.RestrictToWorks(targets, parseIDSet(*works))
 	}
 	if *released {
 		fmt.Printf("libex-fill: %d released preorder-era %s to refresh\n", len(targets), plural(len(targets), "recording", "recordings"))
@@ -882,4 +884,93 @@ func plural(n int, one, many string) string {
 		return one
 	}
 	return many
+}
+
+// runNarrations parses the flags for the narrations subcommand and runs it: the
+// merged-narration check (internal/importer/narrationcheck.go). It reads the tree
+// and the libex service and writes only its worklist (and, with --rows, the libex
+// rows of the ASINs it reports); nothing under --data is touched.
+func runNarrations(args []string) int {
+	fs := flag.NewFlagSet("narrations", flag.ContinueOnError)
+	dataDir := fs.String("data", "data", "data root")
+	works := fs.String("works", "", "comma-separated work ids: check every ASIN-bearing recording of these instead of the stored-facts suspects")
+	limit := fs.Int("limit", 0, "check at most this many recordings (0 = no limit)")
+	out := fs.String("o", "", "the NDJSON worklist to write (required)")
+	rowsPath := fs.String("rows", "", "also write the libex rows of every ASIN in a finding to this NDJSON file")
+	base := fs.String("libex", importer.LibexBase, "libex base URL")
+	userLibrary := fs.Bool("user-library", false, "check only recordings carrying a user-library source (where library imports merge a second production)")
+	if err := fs.Parse(args); err != nil {
+		usage()
+		return 2
+	}
+	if *out == "" {
+		fmt.Fprintln(os.Stderr, "metaimport: narrations needs -o <worklist.ndjson>")
+		return 2
+	}
+	worklist, err := atomicfile.Stage(*out)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "metaimport: -o:", err)
+		return 2
+	}
+	defer worklist.Discard()
+	rowsLog, err := atomicfile.StageIf(*rowsPath)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "metaimport: --rows:", err)
+		return 2
+	}
+	defer rowsLog.Discard()
+
+	cat, err := importer.LoadCatalogForFill(*dataDir)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "metaimport: %v\n", err)
+		return 1
+	}
+	suspects := importer.SelectNarrationSuspects(cat, parseIDSet(*works))
+	if *userLibrary {
+		suspects = importer.UserLibraryNarrations(suspects, cat)
+	}
+	if *limit > 0 && len(suspects) > *limit {
+		fmt.Fprintf(os.Stderr, "metaimport: %d recordings selected; --limit stops after %d\n", len(suspects), *limit)
+		suspects = suspects[:*limit]
+	}
+	client := importer.NewLibexClient()
+	client.BaseURL = *base
+	// The rows are buffered only when --rows asked for them.
+	var rows bytes.Buffer
+	var rowsOut io.Writer
+	if rowsLog != nil {
+		rowsOut = &rows
+	}
+	findings, rep, err := client.CheckNarrations(context.Background(), suspects, rowsOut)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "metaimport: libex: %v\n", err)
+		return 1
+	}
+	for _, f := range findings {
+		worklist.Encode(f)
+	}
+	rowsLog.Write(rows.Bytes())
+	if err := atomicfile.CommitInOrder(rowsLog, worklist); err != nil {
+		fmt.Fprintln(os.Stderr, "metaimport: worklists:", err)
+		return 1
+	}
+	fmt.Printf("narrations: %d %s checked, %d ASIN lookups = %d answered + %d not in libex + %d failed; %d %s\n",
+		rep.Recordings, plural(rep.Recordings, "recording", "recordings"), rep.Lookups,
+		rep.Lookups-rep.NotFound-rep.Failed, rep.NotFound, rep.Failed,
+		rep.Findings, plural(rep.Findings, "finding", "findings"))
+	for _, e := range rep.Errors {
+		fmt.Fprintf(os.Stderr, "  warning: %s\n", e)
+	}
+	return 0
+}
+
+// parseIDSet reads a comma-separated id list flag into a set, blanks dropped.
+func parseIDSet(list string) map[string]bool {
+	set := map[string]bool{}
+	for _, id := range strings.Split(list, ",") {
+		if id = strings.TrimSpace(id); id != "" {
+			set[id] = true
+		}
+	}
+	return set
 }

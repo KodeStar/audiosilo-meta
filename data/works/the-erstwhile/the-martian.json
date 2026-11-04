@@ -16,14 +16,43 @@
       "recordings": {
         "r-c-bray-2020": {
           "abridged": false,
+          "added_at": "2026-09-24",
+          "asin": [
+            {
+              "asin": "B00B5HZGUG",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91UTHpZNztL.jpg",
+          "id": "r-c-bray-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "r-c-bray"
+          ],
+          "publisher": "Podium Publishing",
+          "release_date": "2013-03-22",
+          "runtime_min": 653,
+          "sources": [
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B00B5HZGUG",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-11-04",
+              "ref": "B00B5HZGUG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-martian"
+        },
+        "wil-wheaton-2020": {
+          "abridged": false,
           "added_at": "2026-07-17T09:08:56+00:00",
           "asin": [
             {
               "asin": "B082BHJMFF",
-              "region": "us"
-            },
-            {
-              "asin": "B00B5HZGUG",
               "region": "us"
             },
             {
@@ -838,15 +867,15 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/414J3xG+7+L._SL500_.jpg",
-          "id": "r-c-bray-2020",
+          "id": "wil-wheaton-2020",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
-            "r-c-bray"
+            "wil-wheaton"
           ],
           "publisher": "Audible Studios",
           "release_date": "2020",
-          "runtime_min": 652,
+          "runtime_min": 659,
           "sources": [
             {
               "imported_at": "2026-07-17",
@@ -865,11 +894,6 @@
             },
             {
               "imported_at": "2026-07-17",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-09-24",
-              "ref": "B00B5HZGUG",
               "type": "audiosilo-books-import"
             },
             {

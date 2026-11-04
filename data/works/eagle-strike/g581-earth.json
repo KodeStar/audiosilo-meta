@@ -2709,6 +2709,14 @@
             {
               "asin": "1094197335",
               "region": "uk"
+            },
+            {
+              "asin": "1094197343",
+              "region": "us"
+            },
+            {
+              "asin": "1094194530",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -2828,6 +2836,16 @@
               "imported_at": "2026-10-09",
               "ref": "1094197335",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1094197343",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1094194530",
+              "type": "libex-import"
             }
           ],
           "work": "gabby-duran-and-the-unsittables-alien-babysitting-adventures"
@@ -2837,6 +2855,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "1094197335",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1094197343",
           "type": "libex-import"
         }
       ],
@@ -3009,171 +3032,6 @@
         }
       ],
       "title": "Gabby Duran & the Unsittables"
-    },
-    "gabby-duran-the-unsittables-alien-babysitting-adventures": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "disney-book-group",
-        "carin-davis"
-      ],
-      "credits": [
-        {
-          "person": "carin-davis",
-          "role": "adaptation"
-        }
-      ],
-      "genres": [
-        "childrens",
-        "fantasy",
-        "science-fiction"
-      ],
-      "id": "gabby-duran-the-unsittables-alien-babysitting-adventures",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "katie-schorr-2021": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1094197343",
-              "region": "us"
-            },
-            {
-              "asin": "1094194530",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 533037,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 205450,
-              "start_ms": 533037,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 489244,
-              "start_ms": 738487,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 222586,
-              "start_ms": 1227731,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 373051,
-              "start_ms": 1450317,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 474476,
-              "start_ms": 1823368,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 803549,
-              "start_ms": 2297844,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 759664,
-              "start_ms": 3101393,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 437417,
-              "start_ms": 3861057,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 420002,
-              "start_ms": 4298474,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 303113,
-              "start_ms": 4718476,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 528625,
-              "start_ms": 5021589,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 345768,
-              "start_ms": 5550214,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 478122,
-              "start_ms": 5895982,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 430103,
-              "start_ms": 6374104,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 265845,
-              "start_ms": 6804207,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 197416,
-              "start_ms": 7070052,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 378299,
-              "start_ms": 7267468,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 324939,
-              "start_ms": 7645767,
-              "title": "Chapter 19"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51qoHrxmeBL.jpg",
-          "id": "katie-schorr-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "katie-schorr"
-          ],
-          "publisher": "Disney",
-          "release_date": "2021-02-27",
-          "runtime_min": 132,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1094197343",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1094194530",
-              "type": "libex-import"
-            }
-          ],
-          "work": "gabby-duran-the-unsittables-alien-babysitting-adventures"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1094197343",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Gabby Duran & the Unsittables: Alien Babysitting Adventures"
     },
     "gabby-gabrielle-giffords": {
       "added_at": "2026-07-29",
