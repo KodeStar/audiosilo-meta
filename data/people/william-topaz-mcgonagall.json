@@ -2853,7 +2853,10 @@
       ]
     },
     "winston-churchill": {
+      "birth_year": 1874,
+      "death_year": 1965,
       "id": "winston-churchill",
+      "librivox_author_id": 678,
       "license": "CC0-1.0",
       "name": "Winston Churchill",
       "sources": [
@@ -2861,6 +2864,11 @@
           "imported_at": "2026-07-29",
           "ref": "B00LNE0XOK",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-27",
+          "ref": "2247",
+          "type": "librivox"
         }
       ]
     },
@@ -2973,21 +2981,6 @@
           "imported_at": "2026-07-29",
           "ref": "B0036JVA2O",
           "type": "libex-import"
-        }
-      ]
-    },
-    "winston-s-churchill": {
-      "birth_year": 1874,
-      "death_year": 1965,
-      "id": "winston-s-churchill",
-      "librivox_author_id": 678,
-      "license": "CC0-1.0",
-      "name": "Winston S. Churchill",
-      "sources": [
-        {
-          "imported_at": "2026-10-27",
-          "ref": "2247",
-          "type": "librivox"
         }
       ]
     },
