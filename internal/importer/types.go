@@ -529,9 +529,13 @@ type Summary struct {
 	LibrivoxProjects   int
 	LibrivoxIDsStamped int
 	// LibrivoxInProgress is the ids, ascending, of the selected projects
-	// librivoxInProgress set aside; nothing was written for them. Empty for
-	// every other source.
+	// librivoxInProgress set aside that the catalogue does not hold (one it
+	// holds counts as Skipped); nothing was written for them. LibrivoxRetired
+	// is the ids of the selected project numbers LibriVox retired or holds
+	// for reuse (librivoxRetiredNumber), set aside before either. Both empty
+	// for every other source.
 	LibrivoxInProgress []int
+	LibrivoxRetired    []int
 	// LibrivoxReadersSplit counts the readers minted at model.LibrivoxReaderSlug
 	// because another reader id already held their name, and
 	// LibrivoxReadersMoved the narrator credits a rerun moved off that holder

@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 	"net/http/httptest"
+	"os"
 	"path/filepath"
 	"strings"
 	"testing"
@@ -126,5 +127,36 @@ func TestLibrivoxImportPrintsTheWorklist(t *testing.T) {
 		if !strings.Contains(out, want) {
 			t.Errorf("no %q in:\n%s", want, out)
 		}
+	}
+}
+
+func TestLibrivoxImportWritesTheWorklistFile(t *testing.T) {
+	// meta#2751: the worklist is a file as well as printed lines, one NDJSON
+	// row per project, appended run after run as --conflicts is.
+	entry := importer.LibrivoxWorklistEntry{
+		Project: 527, Title: "The Metamorphosis", Authors: []string{"Franz Kafka"}, Reason: importer.LibrivoxSeveralWorks,
+		Candidates: []importer.LibrivoxCandidate{{Work: "metamorphosis", Title: "Metamorphosis"}},
+	}
+	run := func(string, importer.LibrivoxIDs, importer.Options) (importer.Summary, error) {
+		return importer.Summary{LibrivoxWorklist: []importer.LibrivoxWorklistEntry{entry}}, nil
+	}
+	path := filepath.Join(t.TempDir(), "worklist.ndjson")
+	for range 2 {
+		captureStdout(t, func() {
+			if code := runLibrivoxImport([]string{"--from", librivoxFixture, "--ids", "527", "--dry-run", "--worklist", path}, run); code != 0 {
+				t.Errorf("exit = %d", code)
+			}
+		})
+	}
+	body, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	line := `{"librivox_id":527,"title":"The Metamorphosis","authors":["Franz Kafka"],"reason":"several-works","candidates":[{"work":"metamorphosis","title":"Metamorphosis"}]}` + "\n"
+	if string(body) != line+line {
+		t.Errorf("worklist file =\n%s", body)
+	}
+	if code := runLibrivoxImport([]string{"--from", librivoxFixture, "--ids", "527", "--worklist", filepath.Join(path, "x")}, run); code != 2 {
+		t.Errorf("an unwritable --worklist exit = %d, want 2", code)
 	}
 }

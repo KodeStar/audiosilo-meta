@@ -847,6 +847,7 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 		p.setEvidenceRuntime(&books[i])
 	}
 	p.loadExisting()
+	p.settleLibrivoxInProgress()
 	// A LibriVox row's credit names are decoded before any census reads them,
 	// and its author credits are resolved by LibriVox id once the batch's
 	// credit decisions are taken (librivox.go, librivoxpeople.go); no-ops for

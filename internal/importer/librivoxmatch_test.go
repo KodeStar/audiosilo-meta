@@ -667,3 +667,30 @@ func TestLibrivoxVolumeOfTotalAttachesToTheVolume(t *testing.T) {
 	}
 	mustValidate(t, dataDir)
 }
+
+func TestLibrivoxAbridgedVersionLandsAsTheAbridgedRecording(t *testing.T) {
+	// meta#2778: 6898 "Alice's Adventures in Wonderland (abridged, version 2)"
+	// went to the worklist, since stripping the parenthetical would drop the
+	// abridgement. The version marker alone goes, so it lands as 1122's
+	// "(abridged)" does: a recording of the plain work, abridged.
+	dataDir := t.TempDir()
+	seedAuthoredWorks(t, dataDir, map[string][]string{
+		"alices-adventures-in-wonderland": {"Alice's Adventures in Wonderland", "lewis-carroll", "Lewis Carroll"},
+	})
+	carroll := lvAuthor(6300, "Lewis", "Carroll")
+	sum := runLibrivox(t, writeSnapshot(t,
+		byAuthor(t, 1122, "Alice's Adventures in Wonderland (abridged)", "English", carroll),
+		byAuthor(t, 6898, "Alice's Adventures in Wonderland (abridged, version 2)", "English", carroll),
+	), dataDir, allLibrivox)
+	if sum.NewWorks != 0 || sum.NewRecordings != 2 || len(sum.LibrivoxWorklist) != 0 {
+		t.Fatalf("works/recordings = %d/%d\nworklist: %v", sum.NewWorks, sum.NewRecordings, sum.LibrivoxWorklist)
+	}
+	for _, rec := range recSlugsOf(t, dataDir, "alices-adventures-in-wonderland") {
+		var r lvRecording
+		readEntity(t, dataDir, recAddr("alices-adventures-in-wonderland", rec), &r)
+		if r.LibrivoxID != 0 && (r.Abridged == nil || !*r.Abridged) {
+			t.Errorf("%s (%d) abridged = %v, want true", rec, r.LibrivoxID, r.Abridged)
+		}
+	}
+	mustValidate(t, dataDir)
+}

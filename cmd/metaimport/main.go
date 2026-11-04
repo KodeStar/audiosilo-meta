@@ -9,7 +9,7 @@
 //	metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only | --relocate | --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>]] [--existing-series-only] [--attach-editions] [--skipped <path>]
 //	metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--refusals <path>] [--attachments <path>] [--date YYYY-MM-DD]
 //	metaimport librivox fetch  --out <snapshot> [--max-pages N]
-//	metaimport librivox import --from <snapshot> --ids <range> [--data data] [--dry-run] [--date YYYY-MM-DD] [--conflicts <path>]
+//	metaimport librivox import --from <snapshot> --ids <range> [--data data] [--dry-run] [--date YYYY-MM-DD] [--conflicts <path>] [--worklist <path>]
 //
 // librivox (LICENSING.md's public-domain exception) is two steps: fetch pages
 // LibriVox's audiobooks feed into a local snapshot - the one command here that
@@ -683,7 +683,7 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--refusals <path>] [--attachments <path>] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-fill  [--data data] [--works a,b] [--limit N] [--all-tiers | --released-preorders] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport librivox fetch  --out <snapshot> [--max-pages N]")
-	fmt.Fprintln(os.Stderr, "  metaimport librivox import --from <snapshot> --ids <range> [--data data] [--dry-run] [--date YYYY-MM-DD] [--conflicts <path>]")
+	fmt.Fprintln(os.Stderr, "  metaimport librivox import --from <snapshot> --ids <range> [--data data] [--dry-run] [--date YYYY-MM-DD] [--conflicts <path>] [--worklist <path>]")
 	fmt.Fprintln(os.Stderr, "")
 	fmt.Fprintln(os.Stderr, "  --conflicts <path> appends one NDJSON row per refused contradiction (a durable worklist).")
 	fmt.Fprintln(os.Stderr, "  --series-lookup (user-library sources) fills a series position the export did not state by")

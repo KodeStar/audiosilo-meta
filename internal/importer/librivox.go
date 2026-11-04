@@ -293,20 +293,54 @@ func RunLibrivox(snapshotDir string, ids LibrivoxIDs, opts Options) (Summary, er
 		return Summary{}, err
 	}
 	books := make([]sourceBook, 0, len(projects))
-	var inProgress []int
+	var inProgress, retired []int
 	for _, pr := range projects {
-		if librivoxInProgress(pr) {
+		switch {
+		case librivoxRetiredNumber(pr):
+			retired = append(retired, int(pr.ID))
+		case librivoxInProgress(pr):
 			inProgress = append(inProgress, int(pr.ID))
-			continue
+		default:
+			books = append(books, librivoxBook(pr))
 		}
-		books = append(books, librivoxBook(pr))
 	}
 	sum, err := runBooks(books, sourceLibrivox, opts, nil, func(p *planner) {
 		p.genres = librivoxGenreTable()
+		p.lv.inProgress = inProgress
 	})
 	sum.LibrivoxProjects = len(projects)
-	sum.LibrivoxInProgress = inProgress
+	sum.LibrivoxRetired = retired
 	return sum, err
+}
+
+// settleLibrivoxInProgress sorts the in-progress projects RunLibrivox set
+// aside once the catalogue is loaded: one the catalogue already holds is
+// skipped as already present, as its project id would be (a project landed
+// before it read as in progress - its sections since withdrawn - is not
+// news), and the rest are Summary.LibrivoxInProgress.
+func (p *planner) settleLibrivoxInProgress() {
+	for _, id := range p.lv.inProgress {
+		if p.lv.ids[id] {
+			p.summary.Skipped++
+			continue
+		}
+		p.summary.LibrivoxInProgress = append(p.summary.LibrivoxInProgress, id)
+	}
+	p.lv.inProgress = nil
+}
+
+// librivoxRetiredTitleRE is the title LibriVox gives a project number it
+// retired or holds for reuse: "DO NOT RE-USE PROJECT NUMBER" (8030, 18134),
+// "REUSE project number - 03 sections" (22249).
+var librivoxRetiredTitleRE = regexp.MustCompile(`(?i)^\s*(?:do\s+not\s+)?re-?use\s+project\s+number\b`)
+
+// librivoxRetiredNumber reports whether pr is a retired or reusable project
+// number rather than a project: such a title and no author. It is no book,
+// never will be one under that title, and is neither landed nor listed as in
+// progress (meta#2778: the in-progress rule listed every one of them on every
+// run); only their count is reported (Summary.LibrivoxRetired).
+func librivoxRetiredNumber(pr LibrivoxProject) bool {
+	return len(pr.Authors) == 0 && librivoxRetiredTitleRE.MatchString(pr.Title)
 }
 
 // librivoxInProgress reports whether pr is a project LibriVox has not finished
@@ -337,8 +371,22 @@ func librivoxInProgress(pr LibrivoxProject) bool {
 var librivoxVersionRE = regexp.MustCompile(`(?i)(?:\s*` + librivoxSep + `)?\s*\(\s*` + librivoxMarker +
 	`(?:\s*` + librivoxSep + `?\s*` + librivoxMarker + `)*\s*\)\s*$`)
 
-// librivoxMarker is one of librivoxVersionRE's markers.
-const librivoxMarker = `(?:(?:` + librivoxVersionWord + `|ver\.?)\s*\d+|dramatic\s+reading)`
+// librivoxMarker is one of librivoxVersionRE's markers. A version number has
+// one or two digits, as in the bare form (librivoxBareVersionRE), so a year in
+// a parenthetical ("(Version 1611)") is never read as one.
+const librivoxMarker = `(?:(?:` + librivoxVersionWord + `|ver\.?)\s*\d{1,2}|dramatic\s+reading)`
+
+// librivoxSharedVersionRE is a version marker that ENDS a parenthetical
+// holding something else: "Spring (Barber version 2)", "Sir Gawain and the
+// Green Knight (Weston Translation Version 2)", "Alice's Adventures in
+// Wonderland (abridged, version 2)" (meta#2778). Only the marker goes - the
+// full word with a one- or two-digit number after whitespace or a separator -
+// so the parenthetical keeps what names the edition ("(Barber)", "(Weston
+// Translation)") and an abridgement stays stated ("(abridged)", which the
+// shared title rules then read as they read project 1122's). Group 1 is the
+// parenthetical's own content.
+var librivoxSharedVersionRE = regexp.MustCompile(`(?i)\(\s*([^()]*?[^()\s,;:\x{2013}\x{2014}-])\s*(?:` + librivoxSep + `\s*|\s+)` +
+	librivoxVersionWord + `\s*\d{1,2}\s*\)\s*$`)
 
 // librivoxVersionWord is the word "version" as LibriVox's projects spell it:
 // English and French "version", Italian "versione", Spanish "versión",
@@ -360,7 +408,8 @@ const librivoxSep = `[,;:\x{2013}\x{2014}-]`
 var librivoxBareVersionRE = regexp.MustCompile(`(?i)(?:\s*` + librivoxSep + `\s*|\s+)` + librivoxVersionWord + `\s*\d{1,2}\s*$`)
 
 // librivoxTitle is a project's work title: LibriVox's own, its trailing
-// markers stripped. The strip is end-anchored and repeated, so stacked markers
+// markers stripped, and a version marker ending a parenthetical that holds
+// something else removed from it (librivoxSharedVersionRE). The strip is end-anchored and repeated, so stacked markers
 // go in any order ("(version 3) (Dramatic Reading)", "Emma (Dramatic Reading),
 // Version 2"), while a marker followed by anything else stays ("Metamorphosis
 // (Dramatic Reading) (1915)" keeps its title and meets the qualified-twin rule).
@@ -372,6 +421,12 @@ func librivoxTitle(t string) string {
 		loc := librivoxVersionRE.FindStringIndex(t)
 		if loc == nil {
 			loc = librivoxBareVersionRE.FindStringIndex(t)
+		}
+		if loc == nil {
+			if m := librivoxSharedVersionRE.FindStringSubmatchIndex(t); m != nil && m[0] > 0 {
+				t = strings.TrimSpace(t[:m[0]]) + " (" + t[m[2]:m[3]] + ")"
+				continue
+			}
 		}
 		if loc == nil || loc[0] == 0 {
 			return t
@@ -650,6 +705,9 @@ type librivoxState struct {
 	// use; variantExamples names a few rows it attached, for the run's note.
 	titles          map[string][]string
 	variantExamples []string
+	// inProgress is the project ids RunLibrivox set aside as in progress,
+	// sorted once the catalogue is loaded (settleLibrivoxInProgress).
+	inProgress []int
 	// scriptWorks is rule 4's catalogued `librivox-<id>` works by their
 	// own-script title key, for a non-LibriVox row (librivoxScriptWork),
 	// built on first use.

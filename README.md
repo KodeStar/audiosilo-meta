@@ -379,11 +379,15 @@ query, limit, next offset, page and project counts, complete or not) and
 reads every `pages/*.json` and needs nothing else, so a hand-assembled snapshot
 (the test fixtures are one) works too.
 
-What an import does: a project LibriVox is still recording (no `totaltimesecs`
+What an import does: a project number LibriVox retired or holds for reuse (no
+author, titled "DO NOT RE-USE PROJECT NUMBER" or "REUSE project number - ...")
+is no book and is only counted (`librivox: set aside N retired or reusable
+project numbers`). A project LibriVox is still recording (no `totaltimesecs`
 and no archive.org item in `url_iarchive`; the feed has no status field) is set
 aside before anything else and writes nothing, listed on one line of the report
 (`librivox: skipped N in-progress projects ...: <ids>`), so re-importing its id
-once LibriVox completes it lands it like any other. A project whose
+once LibriVox completes it lands it like any other; one the catalogue already
+holds is counted as already present instead. A project whose
 `librivox_id` is already catalogued is skipped (identity is the project id,
 never the title), so a rerun changes nothing. Otherwise it becomes a new
 recording - never merged into another recording - under the work these rules find, in order (LibriVox's repeat markers are
@@ -391,7 +395,12 @@ stripped from the title first: a trailing "(version 2)", "(ver 2)", "(ver. 2)"
 or "(Dramatic Reading)", stacked or combined in one parenthetical, or a bare
 "Version 2" ("Walden, Version 2", "Sea Wolf - Version 2"), "version" also as
 Italian "versione", Spanish "versión" or Portuguese "versão", so a dramatic
-reading or a numbered version is another recording of the plain-titled work):
+reading or a numbered version is another recording of the plain-titled work; a
+version number has one or two digits, so "(Version 1611)" is a year and stays;
+and a version marker ending a parenthetical that names something else loses
+only the marker: "Spring (Barber version 2)" is "Spring (Barber)", "Alice's
+Adventures in Wonderland (abridged, version 2)" is "... (abridged)", an
+abridged recording as "(abridged)" always is):
 
 1. the importer's ordinary identity walk: same title, same identity authors,
    same language. An author or translator whose name slugs to nothing (a
@@ -451,7 +460,9 @@ candidates), `author-unsluggable` (every individual author's name slugs to
 nothing and carries no LibriVox author id), `differently-spelled-title` (the duplicate-identity guard holds
 the book under a title rule 2 does not read as the same, such as a subtitle
 apart, or rule 3's trailing qualifier), `same-name-author` (below) and `fallback-slug-taken` (below). Once a person has settled the work,
-re-importing the project's id lands it. `--conflicts` rows for these projects
+re-importing the project's id lands it. `--worklist <path>` appends the
+worklist to a file as well, one NDJSON row per project (`librivox_id`, `title`,
+`authors`, `reason`, `candidates`). `--conflicts` rows for these projects
 carry `librivox_id`, since they have no ASIN.
 
 Readers are the narrators, translators are `translator` credits, sections are
