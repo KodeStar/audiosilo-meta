@@ -495,6 +495,7 @@ func load(lst *pack.Listing, rdr *pack.Reader, opts LoadOptions) (Result, *pathI
 	// is (identity.go).
 	identity := NewWorkIdentity(cat)
 	checkNormalizedDuplicateWorks(identity, idx, reviewed, warn)
+	checkSeriesDesignationDuplicateWorks(cat, identity, idx, reviewed, warn)
 	checkOrphanPeople(cat, recs, idx, warn)
 	checkSidecarPositionScale(cat, idx, warn)
 	checkSeriesRecordingQualifier(cat, idx, warn)

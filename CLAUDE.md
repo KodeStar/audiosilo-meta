@@ -146,7 +146,14 @@ of that campaign and is in the gate (three layers over one rule -
   (`normalized-duplicate-works`, 2,881 groups when it landed, 3,160 once the key's
   series strip was boundary-anchored), so a repair wave's
   progress is a number in the CI log and a regrowth is visible the wave after it
-  happens. It never fails the check.
+  happens. It never fails the check. Its sibling `series-designation-duplicate-works`
+  (pkg/check's `seriesdesignation.go`, 2026-11) counts the twins that key cannot
+  join because the decorated one is not listed in the series its title names ("The
+  Ghost Brigades" beside "The Ghost Brigades: Old Man's War Book 2"); a reviewed
+  pair is merged through an `assert` in `internal/audit/reviewed.json` plus
+  metarepair, never by the census. Its recording-level counterpart is `metaimport
+  narrations`, a read-only libex check for a recording whose ASINs are two
+  productions (PACKAGES.md, `internal/importer`).
 
 **The census is a READING LIST, so it honours the reading and reports what a pull
 request ADDS.** It is deliberately broad (`checkIdentityEqualWorks`,
