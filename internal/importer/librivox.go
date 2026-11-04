@@ -677,9 +677,6 @@ type librivoxState struct {
 	// author records for rule 3 whatever order the run meets their rows and a
 	// same-name reader's in (librivoxAuthorRecord).
 	runAuthors map[string]bool
-	// heldLife is the stated years of each held row's translator id the run
-	// decided (resolveHeldLibrivoxTranslators), for runAuthors.
-	heldLife map[int]lifeYears
 	// sameName is the author ids whose rows go to the worklist as
 	// same-name-author (librivoxpeople.go rule 2), and pendingHolds the
 	// worklist rows among them whose candidates are named once the run has
@@ -733,7 +730,6 @@ func newLibrivoxState() librivoxState {
 		life:          map[string]lifeYears{},
 		authorPins:    map[int]*creditPerson{},
 		runAuthors:    map[string]bool{},
-		heldLife:      map[int]lifeYears{},
 		sameName:      map[int]lvHold{},
 		readerMints:   map[int]*lvReaderMint{},
 		readerNames:   map[int]string{},
@@ -907,14 +903,7 @@ type lvReaderMint struct {
 // credit of a project to be planned, is decideLibrivoxReader's. A project with
 // no language the import knows never lands, so it decides nothing.
 func (p *planner) decideLibrivoxReaders(books []sourceBook) {
-	var rows []int
-	for i := range books {
-		if books[i].lv != nil {
-			rows = append(rows, i)
-		}
-	}
-	slices.SortStableFunc(rows, func(a, b int) int { return books[a].lv.id - books[b].lv.id })
-	for _, i := range rows {
+	for _, i := range p.librivoxRows(books, lvAllRows) {
 		b := &books[i]
 		names := rowNarratorNamesIn(p.credits, *b)
 		if len(names) != len(b.narrators) {

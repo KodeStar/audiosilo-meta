@@ -228,7 +228,7 @@ func (p *planner) librivoxRecordingCredits(f *librivoxFacts, stored any) (any, b
 //   - a credit with an id but no decided person (the person rules held it, or
 //     its name slugs to nothing) is credited to nobody; one with NO id only to
 //     a record its name already is, never created and never stamped. A held
-//     row's translator ids are decided too (resolveHeldLibrivoxTranslators).
+//     row's translator ids are decided too (heldTranslatorsOnly).
 //
 // A record carrying ANOTHER LibriVox author id is never credited: the id, not
 // the name, is the person.
@@ -240,7 +240,7 @@ func (p *planner) librivoxTranslatorSlug(c librivoxCredit, project int) (string,
 	}
 	if c.id > 0 && c.person == nil {
 		// Every author id the run meets is decided before planning, a held
-		// row's translators included (resolveHeldLibrivoxTranslators): no person
+		// row's translators included (heldTranslatorsOnly): no person
 		// is the rules' hold, or a name that slugs to nothing. Neither is
 		// credited - a hold is not a guess.
 		return "", false

@@ -645,4 +645,35 @@ func TestLibrivoxHeldTranslatorTheRulesHoldStaysUncredited(t *testing.T) {
 	if p := personOf(t, dataDir, "ian-johnston"); p.AuthorID != 5555 {
 		t.Errorf("ian-johnston carries author id %d, want 5555 kept", p.AuthorID)
 	}
+	// The held id puts its project on the same-name-author worklist the
+	// planned rows use, naming the works of the person its name meets.
+	if w := sum.LibrivoxWorklist; len(w) != 1 || w[0].Project != 527 || w[0].Reason != LibrivoxSameNameAuthor ||
+		len(w[0].Candidates) != 1 || w[0].Candidates[0].Work != "a-modern-book" {
+		t.Errorf("worklist = %+v, want 527 as same-name-author against a-modern-book", w)
+	}
+}
+
+func TestLibrivoxHeldTranslatorOnAnotherIDsRecordGoesToTheWorklist(t *testing.T) {
+	// The held project's translator, author id 1019 (1850-1920), meets a
+	// catalogued Ian Johnston with the SAME years who carries another author
+	// id (5555) - H. P. Paull 6787 beside 7024 on the real tree: the rules find
+	// them one person, but two author ids never fold automatically, so the
+	// recording credits nobody and the project goes on the same-name-author
+	// worklist against that record.
+	files := map[string]string{
+		personAddr("ian-johnston"): personFiles(t, "ian-johnston", "Ian Johnston",
+			map[string]any{"birth_year": 1850, "death_year": 1920, "librivox_author_id": 5555}),
+	}
+	retailWork(t, files, "a-translated-book", "A Translated Book", "ian-johnston", "")
+	dataDir := heldKafkaTree(t, files)
+	pr := fixtureProject(t, 527)
+	pr.Translators = []LibrivoxPerson{{ID: 1019, FirstName: "Ian", LastName: "Johnston", DOB: "1850", DOD: "1920"}}
+	sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
+	if f := lvFidelityOf(t, dataDir, "metamorphosis", "se"); f.Credits != nil {
+		t.Errorf("credits = %v, want none", f.Credits)
+	}
+	if w := sum.LibrivoxWorklist; len(w) != 1 || w[0].Project != 527 || w[0].Reason != LibrivoxSameNameAuthor ||
+		len(w[0].Candidates) != 1 || w[0].Candidates[0].Work != "a-translated-book" {
+		t.Errorf("worklist = %+v, want 527 as same-name-author against a-translated-book", w)
+	}
 }

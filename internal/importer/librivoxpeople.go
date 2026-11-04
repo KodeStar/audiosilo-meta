@@ -302,14 +302,27 @@ type lvHold struct {
 	deferred   bool
 }
 
-// librivoxRowsByProject is the indexes of the LibriVox rows to be planned (a
-// project the catalogue holds is skipped and decides nothing), ordered by
-// project id: the order every per-id decision is taken in, whatever order the
-// rows arrive in.
-func (p *planner) librivoxRowsByProject(books []sourceBook) []int {
+// The LibriVox rows a per-id decision walks (librivoxRows): those to be planned,
+// those whose project the catalogue already holds, or both.
+type lvRowSet int
+
+const (
+	lvPlannedRows lvRowSet = iota
+	lvHeldRows
+	lvAllRows
+)
+
+// librivoxRows is the indexes of the LibriVox rows of set, ordered by project
+// id: the order every per-id decision is taken in, whatever order the rows
+// arrive in.
+func (p *planner) librivoxRows(books []sourceBook, set lvRowSet) []int {
 	var rows []int
 	for i := range books {
-		if b := &books[i]; b.lv != nil && !p.lv.ids[b.lv.id] {
+		b := &books[i]
+		if b.lv == nil {
+			continue
+		}
+		if held := p.lv.ids[b.lv.id]; set == lvAllRows || held == (set == lvHeldRows) {
 			rows = append(rows, i)
 		}
 	}
@@ -329,18 +342,57 @@ func (p *planner) librivoxRowsByProject(books []sourceBook) []int {
 // judges the very person the import would credit. A credit with no id, or one
 // whose name slugs to nothing, keeps its name's resolution.
 func (p *planner) resolveLibrivoxAuthors(books []sourceBook) {
-	rows := p.librivoxRowsByProject(books)
 	// The indexes below are read only here.
 	defer func() { p.lv.works, p.lv.workDates, p.lv.workKeys, p.lv.titledTwins = nil, nil, nil, nil }()
 	quiet, unfolded := p.credits.author.quiet(), p.credits.author.unfolded()
 	claims := map[int]*lvAuthorClaim{}
-	var order []*lvAuthorClaim
 	bySlug := map[string][]*lvAuthorClaim{}
-	for _, i := range rows {
+	holder := map[string]lifeYears{}
+	var decided []string
+	decide := func(order []*lvAuthorClaim) {
+		for _, cl := range order {
+			decided = append(decided, p.decideLibrivoxAuthor(cl, bySlug, holder)...)
+		}
+	}
+	decide(p.collectLibrivoxClaims(books, lvPlannedRows, claims, bySlug, quiet, unfolded, nil))
+	// Then the translators of the HELD rows, under the same rules but only
+	// once every planned row's ids are decided, so they cannot move a planned
+	// row's decision: see heldTranslatorsOnly.
+	held := p.collectLibrivoxClaims(books, lvHeldRows, claims, bySlug, quiet, unfolded, heldTranslatorsOnly)
+	decide(held)
+	p.worklistHeldLibrivoxTranslators(books, held)
+	for i := range books {
+		if b := &books[i]; b.lv != nil {
+			for j, c := range b.lv.credits {
+				if c.kind == librivoxAuthor && c.id > 0 {
+					p.setLibrivoxPerson(b, j, p.lv.authorPins[c.id])
+				}
+			}
+		}
+	}
+	if len(decided) > 0 {
+		p.summary.Notes = append(p.summary.Notes, fmt.Sprintf(
+			"%d LibriVox author id(s) kept off a same-name or courtesy-title twin, or credited by another name (the rest the person rules held are on the worklist as same-name-author): %s",
+			len(decided), strings.Join(decided, "; ")))
+	}
+}
+
+// collectLibrivoxClaims gathers, over the rows of set in project order, one
+// claim per author id no person carries - its name, folded and unfolded
+// spellings, years, titles and per-project evidence - returning the claims it
+// opened in the order their lowest project met them. A catalogued id pins its
+// holder instead. A credit skip refuses (nil: none) is passed over, and so is
+// one whose id an EARLIER call opened a claim for: that claim is already
+// decided, by its own rows' evidence, so a later set cannot move it.
+func (p *planner) collectLibrivoxClaims(books []sourceBook, set lvRowSet, claims map[int]*lvAuthorClaim,
+	bySlug map[string][]*lvAuthorClaim, quiet, unfolded creditCensus, skip func(librivoxCredit) bool) []*lvAuthorClaim {
+	var order []*lvAuthorClaim
+	mine := map[int]bool{}
+	for _, i := range p.librivoxRows(books, set) {
 		b := &books[i]
 		var people []string // librivoxCreditPeople, resolved once per row
 		for _, c := range b.lv.credits {
-			if c.kind != librivoxAuthor || c.id <= 0 || c.index >= len(b.authors) {
+			if c.kind != librivoxAuthor || c.id <= 0 || c.index >= len(b.authors) || (skip != nil && skip(c)) {
 				continue
 			}
 			if owner, held := p.lv.people[librivoxKey{librivoxAuthor, c.id}]; held {
@@ -359,88 +411,11 @@ func (p *planner) resolveLibrivoxAuthors(books []sourceBook) {
 					bySlug[slug] = append(bySlug[slug], cl)
 				}
 				claims[c.id] = cl
+				mine[c.id] = true
 				order = append(order, cl)
-			}
-			cl.titles = append(cl.titles, b.str("title"))
-			if people == nil {
-				people = p.librivoxCreditPeople(b, quiet)
-			}
-			cl.projects = append(cl.projects, librivoxClaimProject(b, c, people))
-		}
-	}
-	holder := map[string]lifeYears{}
-	var decided []string
-	for _, cl := range order {
-		decided = append(decided, p.decideLibrivoxAuthor(cl, bySlug, holder)...)
-	}
-	// Then the translators of the HELD rows, under the same rules but only
-	// once every planned row's ids are decided, so they cannot move a planned
-	// row's decision (resolveHeldLibrivoxTranslators).
-	decided = append(decided, p.resolveHeldLibrivoxTranslators(books, claims, bySlug, holder, quiet, unfolded)...)
-	for i := range books {
-		if b := &books[i]; b.lv != nil {
-			for j, c := range b.lv.credits {
-				if c.kind == librivoxAuthor && c.id > 0 {
-					p.setLibrivoxPerson(b, j, p.lv.authorPins[c.id])
-				}
-			}
-		}
-	}
-	if len(decided) > 0 {
-		p.summary.Notes = append(p.summary.Notes, fmt.Sprintf(
-			"%d LibriVox author id(s) kept off a same-name or courtesy-title twin, or credited by another name (the rest the person rules held are on the worklist as same-name-author): %s",
-			len(decided), strings.Join(decided, "; ")))
-	}
-}
-
-// resolveHeldLibrivoxTranslators decides the translator author ids of the rows
-// whose project the catalogue already holds: rows the run never plans, but
-// whose recording the recording pass restates (librivoxrecording.go), crediting
-// the project's translators on it. A translator of a project that attached to a
-// catalogued work recorded no work credit, so no person carries the id; without
-// a decision the pass would credit nobody. Each such id that no planned row
-// claimed is judged by decideLibrivoxAuthor, the planned ids' own rules 1 and 2
-// - the same years and id checks, the same-name hold, the author-id forms -
-// over evidence from the held rows alone, in the order of the lowest project
-// crediting it, after every planned id is decided (bySlug and holder carry
-// those, so a held id meeting a planned id's name is judged against it, never
-// the other way). An id the rules hold stays without a person: the pass then
-// credits nobody (a hold is not a guess). Its years reach settleLibrivoxPeople
-// (heldLife), so a pre-LibriVox translator's person is an author record a
-// same-name reader is kept off.
-func (p *planner) resolveHeldLibrivoxTranslators(books []sourceBook, planned map[int]*lvAuthorClaim,
-	bySlug map[string][]*lvAuthorClaim, holder map[string]lifeYears, quiet, unfolded creditCensus) []string {
-	var rows []int
-	for i := range books {
-		if b := &books[i]; b.lv != nil && p.lv.ids[b.lv.id] {
-			rows = append(rows, i)
-		}
-	}
-	slices.SortStableFunc(rows, func(a, b int) int { return books[a].lv.id - books[b].lv.id })
-	claims := map[int]*lvAuthorClaim{}
-	var order []*lvAuthorClaim
-	for _, i := range rows {
-		b := &books[i]
-		var people []string
-		for _, c := range b.lv.credits {
-			if c.kind != librivoxAuthor || c.suffix != librivoxTranslatorSuffix || c.id <= 0 || c.index >= len(b.authors) {
+			} else if !mine[c.id] {
 				continue
 			}
-			if _, catalogued := p.lv.people[librivoxKey{librivoxAuthor, c.id}]; catalogued || planned[c.id] != nil {
-				continue // its holder, or a planned row's decision, already speaks for it
-			}
-			cl := claims[c.id]
-			if cl == nil {
-				cl = &lvAuthorClaim{id: c.id, project: b.lv.id, name: CleanCreditName(c.name), life: c.life}
-				cl.folded, _ = creditWithRolesSided(b.authors[c.index], quiet)
-				cl.unfolded, _ = creditWithRolesSided(b.authors[c.index], unfolded)
-				if slug, fellBack := personSlug(cl.name); !fellBack {
-					cl.slug = slug
-					bySlug[slug] = append(bySlug[slug], cl)
-				}
-				claims[c.id] = cl
-				order = append(order, cl)
-			}
 			cl.titles = append(cl.titles, b.str("title"))
 			if people == nil {
 				people = p.librivoxCreditPeople(b, quiet)
@@ -448,12 +423,62 @@ func (p *planner) resolveHeldLibrivoxTranslators(books []sourceBook, planned map
 			cl.projects = append(cl.projects, librivoxClaimProject(b, c, people))
 		}
 	}
-	var decided []string
-	for _, cl := range order {
-		decided = append(decided, p.decideLibrivoxAuthor(cl, bySlug, holder)...)
-		p.lv.heldLife[cl.id] = cl.life
+	return order
+}
+
+// heldTranslatorsOnly is the held rows' share of the per-id decisions: their
+// TRANSLATORS. A held row is never planned, but the recording pass
+// (librivoxrecording.go) restates its project's translators on its recording.
+// A translator of a project that attached to a catalogued work recorded no work
+// credit, so no person carries the id, and without a decision the pass would
+// credit nobody. Such an id is judged by the planned ids' own rules 1 and 2
+// (decideLibrivoxAuthor: the same years and id checks, the same-name hold, the
+// author-id forms) over the held rows' evidence, after every planned id is
+// decided - bySlug and holder carry those, so a held id meeting a planned id's
+// name is judged against it, never the other way. An id the rules hold stays
+// without a person, so the pass credits nobody (a hold is not a guess), and the
+// project goes on the same-name-author worklist
+// (worklistHeldLibrivoxTranslators). Its years reach settleLibrivoxPeople, so a
+// pre-LibriVox translator's person is an author record a same-name reader is
+// kept off. A held row's authors decide nothing: the work already credits them.
+func heldTranslatorsOnly(c librivoxCredit) bool { return c.suffix != librivoxTranslatorSuffix }
+
+// worklistHeldLibrivoxTranslators puts each held project one of whose
+// translator ids (opened is the held rows' claims) is left without a person on
+// the same-name-author worklist the planned rows use, naming the works of the
+// person the name meets: its recording stays without that translator until a
+// person settles who they are, and a rerun then credits them. Once per
+// project. An id is left without a person when the rules held it, or when
+// they found it the same person as a record that already carries ANOTHER
+// LibriVox author id (H. P. Paull 6787 beside 7024, the same years): two
+// author ids never fold automatically, so the recording pass refuses that
+// record (librivoxTranslatorSlug), and the row is for a person to settle.
+func (p *planner) worklistHeldLibrivoxTranslators(books []sourceBook, opened []*lvAuthorClaim) {
+	left := map[int]lvHold{}
+	for _, cl := range opened {
+		if h, held := p.lv.sameName[cl.id]; held {
+			left[cl.id] = h
+		} else if pin := p.lv.authorPins[cl.id]; pin != nil {
+			if live, ok := p.livePerson(pin.slug); ok && p.lv.authorOf[live] != 0 && p.lv.authorOf[live] != cl.id {
+				left[cl.id] = lvHold{against: live, candidates: p.librivoxPersonCandidates(live)}
+			}
+		}
 	}
-	return decided
+	if len(left) == 0 {
+		return
+	}
+	for _, i := range p.librivoxRows(books, lvHeldRows) {
+		b := books[i]
+		for _, c := range b.lv.credits {
+			if h, ok := left[c.id]; ok && c.kind == librivoxAuthor && c.suffix == librivoxTranslatorSuffix {
+				if h.deferred {
+					p.lv.pendingHolds = append(p.lv.pendingHolds, lvPending{entry: len(p.summary.LibrivoxWorklist), against: h.against})
+				}
+				p.noteLibrivoxWorklist(b, b.str("title"), LibrivoxSameNameAuthor, h.candidates)
+				break
+			}
+		}
+	}
 }
 
 // settleLibrivoxPeople takes the run's person decisions that read where the
@@ -469,11 +494,18 @@ func (p *planner) resolveHeldLibrivoxTranslators(books []sourceBook, planned map
 // 2's reader exception), so a reader of that name is that person in either
 // order.
 func (p *planner) settleLibrivoxPeople(books []sourceBook) {
-	life := maps.Clone(p.lv.heldLife) // the held rows' translator ids decided this run
-	for _, i := range p.librivoxRowsByProject(books) {
-		for _, c := range books[i].lv.credits {
-			if _, seen := life[c.id]; c.kind == librivoxAuthor && c.id > 0 && !seen {
-				life[c.id] = c.life
+	// Each author id's stated years, first seen: the planned rows' credits, then
+	// the held rows' translators (the ids resolveLibrivoxAuthors decides).
+	life := map[int]lifeYears{}
+	for _, set := range []lvRowSet{lvPlannedRows, lvHeldRows} {
+		for _, i := range p.librivoxRows(books, set) {
+			for _, c := range books[i].lv.credits {
+				if set == lvHeldRows && heldTranslatorsOnly(c) {
+					continue
+				}
+				if _, seen := life[c.id]; c.kind == librivoxAuthor && c.id > 0 && !seen {
+					life[c.id] = c.life
+				}
 			}
 		}
 	}
@@ -951,12 +983,19 @@ func (p *planner) librivoxDatedName(id int, name string, life lifeYears) string 
 func (p *planner) holdLibrivoxAuthor(id int, against string, deferred bool) {
 	h := lvHold{against: against, candidates: []LibrivoxCandidate{}, deferred: deferred}
 	if against != "" && !deferred {
-		for _, w := range p.librivoxPersonWorks()[against] {
-			h.candidates = append(h.candidates, LibrivoxCandidate{Work: w.slug, Title: w.title})
-		}
-		h.candidates = firstCandidates(h.candidates)
+		h.candidates = p.librivoxPersonCandidates(against)
 	}
 	p.lv.sameName[id] = h
+}
+
+// librivoxPersonCandidates is the works of a catalogued person as a
+// same-name-author worklist row names them (firstCandidates).
+func (p *planner) librivoxPersonCandidates(slug string) []LibrivoxCandidate {
+	out := []LibrivoxCandidate{}
+	for _, w := range p.librivoxPersonWorks()[slug] {
+		out = append(out, LibrivoxCandidate{Work: w.slug, Title: w.title})
+	}
+	return firstCandidates(out)
 }
 
 // firstCandidates is a same-name-author row's candidates as the worklist
