@@ -529,7 +529,7 @@ it, `pkg/check` and every writer now refuse it loudly.
   credits stay as its sources stated them), and per
   chapter LibriVox's `section_number` (only where it differs from the 1-based
   position) and `readers` (person slugs among the narrators; none on a
-  one-narrator recording) (LICENSING.md's public-domain exception;
+  recording one narrator reads throughout) (LICENSING.md's public-domain exception;
   `metaimport librivox`, whose rerun over a snapshot restates them on held
   recordings). One work,
   many recordings (Harry Potter: Stephen Fry AND Jim Dale, each with its own

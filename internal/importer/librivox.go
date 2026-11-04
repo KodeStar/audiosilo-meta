@@ -82,6 +82,29 @@ func (n *lvInt) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
+// lvNumber is an lvInt where 0 is a real value - LibriVox numbers some
+// projects' sections from 0 - so it also says whether the feed stated a number:
+// a missing, null or non-numeric one is not stated, never 0.
+type lvNumber struct {
+	n      int
+	stated bool
+}
+
+func (v *lvNumber) UnmarshalJSON(b []byte) error {
+	n, err := strconv.Atoi(strings.TrimSpace(strings.Trim(strings.TrimSpace(string(b)), `"`)))
+	*v = lvNumber{n: n, stated: err == nil}
+	return nil
+}
+
+// MarshalJSON writes the number as LibriVox states one (a string of digits),
+// null when none was stated, so a snapshot round-trips.
+func (v lvNumber) MarshalJSON() ([]byte, error) {
+	if !v.stated {
+		return []byte("null"), nil
+	}
+	return []byte(strconv.Quote(strconv.Itoa(v.n))), nil
+}
+
 // lvText is a free-text field LibriVox may state as a JSON string or, as it
 // does with the integers lvInt reads, as a bare number ("copyright_year": 1915):
 // either reads as its text, and null or any other value as "" (not stated), so
@@ -128,7 +151,7 @@ type LibrivoxReader struct {
 
 // LibrivoxSection is one audio file of a project.
 type LibrivoxSection struct {
-	SectionNumber lvInt            `json:"section_number"`
+	SectionNumber lvNumber         `json:"section_number"`
 	Title         string           `json:"title"`
 	ListenURL     string           `json:"listen_url"`
 	Playtime      lvInt            `json:"playtime"`
@@ -384,7 +407,10 @@ func librivoxTitle(t string) string {
 // language - is the planner's own, so it is worded and counted like every other
 // source's.
 func librivoxBook(pr LibrivoxProject) sourceBook {
-	facts := &librivoxFacts{id: int(pr.ID), archiveID: archiveIDOf(pr.URLIArchive), title: strings.TrimSpace(pr.Title)}
+	// The project's own title and genre names are free text like the work's
+	// title, so they are read decoded (entities.go) - the work's title is
+	// decoded from the same string by runBooks' pass, which never sees these.
+	facts := &librivoxFacts{id: int(pr.ID), archiveID: archiveIDOf(pr.URLIArchive), title: decodeField(strings.TrimSpace(pr.Title))}
 	facts.copyrightYear, _ = librivoxYear(string(pr.CopyrightYear))
 	links := model.RecordingLinks{
 		Librivox: httpsOrEmpty(pr.URLLibrivox),
@@ -430,12 +456,15 @@ func librivoxBook(pr LibrivoxProject) sourceBook {
 	}
 
 	sections := append([]LibrivoxSection(nil), pr.Sections...)
-	sort.SliceStable(sections, func(i, j int) bool { return sections[i].SectionNumber < sections[j].SectionNumber })
+	sort.SliceStable(sections, func(i, j int) bool { return sections[i].SectionNumber.n < sections[j].SectionNumber.n })
 	readerCredit := map[string]int{} // a reader's key -> their credit's index in facts.credits
 	var start int64
 	chapters := make([]sourceChapter, 0, len(sections))
 	for _, s := range sections {
-		sec := librivoxSection{number: int(s.SectionNumber)}
+		sec := librivoxSection{number: -1}
+		if s.SectionNumber.stated {
+			sec.number = s.SectionNumber.n
+		}
 		for _, r := range s.Readers {
 			name := strings.TrimSpace(r.DisplayName)
 			if name == "" {
@@ -464,7 +493,7 @@ func librivoxBook(pr LibrivoxProject) sourceBook {
 		b.chapters = chapters
 	}
 	for _, g := range pr.Genres {
-		if name := strings.TrimSpace(g.Name); name != "" {
+		if name := decodeField(strings.TrimSpace(g.Name)); name != "" {
 			b.genres = append(b.genres, genreClaim{name: name})
 			if !slices.Contains(facts.genres, name) {
 				facts.genres = append(facts.genres, name)

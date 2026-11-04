@@ -109,6 +109,11 @@ func newIndex(cat *model.Catalog) *index {
 			for _, n := range r.Narrators {
 				ix.narratorOf[n]++
 			}
+			// A recording's own credits (a LibriVox project's translator) are
+			// credit appearances too.
+			for _, c := range r.Credits {
+				ix.creditedOn[c.Person]++
+			}
 		}
 	}
 	for _, p := range cat.People {

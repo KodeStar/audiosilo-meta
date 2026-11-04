@@ -373,3 +373,70 @@ func TestYearsTextSpellsBCAsTheRunDoes(t *testing.T) {
 		t.Error("rawYear(nil) states a year")
 	}
 }
+
+func TestLibrivoxUnstatedSectionNumberIsNotZero(t *testing.T) {
+	// 801 numbers its sections from 0. With the numbers missing, null or not
+	// a number, the feed states none: no chapter may claim section 0.
+	pr := fixtureProject(t, 801)
+	pr.Sections = append([]LibrivoxSection(nil), pr.Sections...)
+	for i := range pr.Sections {
+		pr.Sections[i].SectionNumber = lvNumber{}
+	}
+	dataDir := t.TempDir()
+	runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("tree failed validation:\n%v", res.Problems)
+	}
+	_, _, f := lvRecordingOf(t, dataDir, 801)
+	if len(f.Chapters) == 0 {
+		t.Fatal("801 landed without chapters")
+	}
+	for i, ch := range f.Chapters {
+		if ch.SectionNumber != nil {
+			t.Errorf("chapter %d section_number = %d, want none (LibriVox stated no number)", i, *ch.SectionNumber)
+		}
+	}
+}
+
+func TestLvNumberTellsUnstatedFromZero(t *testing.T) {
+	for _, tc := range []struct {
+		in   string
+		want lvNumber
+		wire string
+	}{
+		{`"0"`, lvNumber{n: 0, stated: true}, `"0"`},
+		{`7`, lvNumber{n: 7, stated: true}, `"7"`},
+		{`""`, lvNumber{}, `null`},
+		{`null`, lvNumber{}, `null`},
+		{`"1a"`, lvNumber{}, `null`},
+	} {
+		var got lvNumber
+		if err := json.Unmarshal([]byte(tc.in), &got); err != nil || got != tc.want {
+			t.Errorf("unmarshal %s = %+v (%v), want %+v", tc.in, got, err, tc.want)
+		}
+		if b, err := json.Marshal(got); err != nil || string(b) != tc.wire {
+			t.Errorf("marshal %+v = %s (%v), want %s", got, b, err, tc.wire)
+		}
+	}
+	var s LibrivoxSection
+	if err := json.Unmarshal([]byte(`{"title":"I"}`), &s); err != nil || s.SectionNumber.stated {
+		t.Errorf("a section with no section_number states one: %+v (%v)", s.SectionNumber, err)
+	}
+}
+
+func TestLibrivoxProjectTitleAndGenresAreDecoded(t *testing.T) {
+	// The project's own title and genre names are read as the work's title is:
+	// an HTML reference in them is text written wrong (entities.go).
+	pr := fixtureProject(t, 527)
+	pr.Title = "Metamorphosis &amp; Other Tales"
+	pr.Genres = []LibrivoxGenre{{Name: "Classics (Greek &amp; Latin Antiquity)"}}
+	dataDir := t.TempDir()
+	runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
+	_, _, f := lvRecordingOf(t, dataDir, 527)
+	if f.LibrivoxTitle != "Metamorphosis & Other Tales" {
+		t.Errorf("librivox_title = %q, want it decoded", f.LibrivoxTitle)
+	}
+	if want := []string{"Classics (Greek & Latin Antiquity)"}; !reflect.DeepEqual(f.LibrivoxGenres, want) {
+		t.Errorf("librivox_genres = %v, want %v", f.LibrivoxGenres, want)
+	}
+}

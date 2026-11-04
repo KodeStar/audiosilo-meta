@@ -277,9 +277,10 @@ type Chapter struct {
 	AudioURL string `json:"audio_url,omitempty"`
 	// Readers is who reads THIS chapter (person slugs, each one of the
 	// recording's narrators), for a recording whose chapters are read by
-	// different people. When no chapter of a recording carries readers, every
-	// chapter is read by its narrators; once one does, a chapter without them
-	// states none (ChapterReaders).
+	// different people. When no chapter of a recording carries readers, who
+	// reads which chapter is unstated - except that a recording with ONE
+	// narrator is read by them throughout; once one chapter does, a chapter
+	// without them states none.
 	Readers []string `json:"readers,omitempty"`
 	// SectionNumber is the source's own number for the chapter (LibriVox's
 	// section_number), set only where it differs from the 1-based position:

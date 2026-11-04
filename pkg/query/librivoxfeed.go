@@ -507,7 +507,6 @@ func lvGenresSQL(recordingLayer bool) func(string) string {
 }
 
 // lvSectionReadersSQL is each section's readers (the recording layer only).
-
 func lvSectionReadersSQL(ph string) string {
 	return `SELECT r.work_id, r.id, cr.chapter_idx, p.name, p.librivox_reader_id FROM recordings r ` +
 		`CROSS JOIN chapter_readers cr ON cr.work_id = r.work_id AND cr.recording_id = r.id ` +

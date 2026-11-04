@@ -45,8 +45,9 @@ import (
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
-// librivoxSection is one LibriVox section, in chapter order: its own number and
-// its readers, as indices into the row's librivoxFacts.credits.
+// librivoxSection is one LibriVox section, in chapter order: its own number (-1
+// when the feed states none) and its readers, as indices into the row's
+// librivoxFacts.credits.
 type librivoxSection struct {
 	number  int
 	readers []int
@@ -274,7 +275,7 @@ func (p *planner) restateLibrivoxChapters(rec map[string]any, f *librivoxFacts, 
 		if !ok {
 			continue
 		}
-		var number any
+		var number any // an unstated number (-1) says nothing, as the position does
 		if n := f.sections[i].number; n != i+1 && n >= 0 {
 			number = n
 		}
