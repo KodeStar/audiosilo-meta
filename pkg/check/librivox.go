@@ -1,6 +1,10 @@
 package check
 
-import "github.com/kodestar/audiosilo-meta/pkg/model"
+import (
+	"slices"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
+)
 
 // checkLibrivox enforces the LibriVox identity rules the schema cannot see
 // (LICENSING.md's public-domain exception; internal/importer/librivox.go is the
@@ -33,36 +37,46 @@ func checkLibrivox(cat *model.Catalog, recs []recordWithPath, idx *pathIndex, ad
 	recSeen := map[int]string{}
 	for _, pr := range recs {
 		r := pr.rec
-		checkChapterReaders(pr, add)
-		if r.LibrivoxID != 0 {
+		lv := r.LibrivoxID != 0
+		if lv {
 			if prev, ok := recSeen[r.LibrivoxID]; ok {
 				add(pr.path, "duplicate librivox_id %d also in %s", r.LibrivoxID, prev)
 			} else {
 				recSeen[r.LibrivoxID] = pr.path
 			}
-			for i, ch := range r.Chapters {
-				if ch.SectionNumber != nil && *ch.SectionNumber == i+1 {
-					add(pr.path, "chapter %d states section_number %d, its own position; omit it (absence means the position is the number)", i, i+1)
-				}
+		} else {
+			if r.LibrivoxTitle != "" {
+				add(pr.path, "librivox_title without a librivox_id; it is a LibriVox project's own title")
 			}
-			continue
-		}
-		if r.LibrivoxTitle != "" {
-			add(pr.path, "librivox_title without a librivox_id; it is a LibriVox project's own title")
-		}
-		if len(r.LibrivoxGenres) > 0 {
-			add(pr.path, "librivox_genres without a librivox_id; they are a LibriVox project's own genres")
-		}
-		for i, ch := range r.Chapters {
-			if ch.AudioURL != "" {
-				add(pr.path, "chapter %d has an audio_url but the recording has no librivox_id; audio_url is a LibriVox section's file", i)
-				break
+			if len(r.LibrivoxGenres) > 0 {
+				add(pr.path, "librivox_genres without a librivox_id; they are a LibriVox project's own genres")
 			}
 		}
-		for i, ch := range r.Chapters {
-			if ch.SectionNumber != nil {
+		// One walk of the chapters; a non-LibriVox recording's audio_url and
+		// section_number are each reported once, a stray reader once per reader.
+		var audioReported, numberReported bool
+		var readerReported map[string]bool
+		for i := range r.Chapters {
+			ch := &r.Chapters[i]
+			switch {
+			case lv && ch.SectionNumber != nil && *ch.SectionNumber == i+1:
+				add(pr.path, "chapter %d states section_number %d, its own position; omit it (absence means the position is the number)", i, i+1)
+			case !lv && ch.SectionNumber != nil && !numberReported:
+				numberReported = true
 				add(pr.path, "chapter %d has a section_number but the recording has no librivox_id; section_number is a LibriVox section's number", i)
-				break
+			}
+			if !lv && ch.AudioURL != "" && !audioReported {
+				audioReported = true
+				add(pr.path, "chapter %d has an audio_url but the recording has no librivox_id; audio_url is a LibriVox section's file", i)
+			}
+			for _, rd := range ch.Readers {
+				if !slices.Contains(r.Narrators, rd) && !readerReported[rd] {
+					if readerReported == nil {
+						readerReported = map[string]bool{}
+					}
+					readerReported[rd] = true
+					add(pr.path, "chapter %d reader %q is not one of the recording's narrators", i, rd)
+				}
 			}
 		}
 	}
@@ -86,27 +100,6 @@ func checkLibrivox(cat *model.Catalog, recs []recordWithPath, idx *pathIndex, ad
 				add(rel, "duplicate librivox_author_id %d also in %s", id, prev)
 			} else {
 				authorSeen[id] = rel
-			}
-		}
-	}
-}
-
-// checkChapterReaders holds every chapter's readers to the recording's
-// narrators, reporting each stray reader once per recording.
-func checkChapterReaders(pr recordWithPath, add addFunc) {
-	var narrators map[string]bool
-	reported := map[string]bool{}
-	for i, ch := range pr.rec.Chapters {
-		for _, rd := range ch.Readers {
-			if narrators == nil {
-				narrators = make(map[string]bool, len(pr.rec.Narrators))
-				for _, n := range pr.rec.Narrators {
-					narrators[n] = true
-				}
-			}
-			if !narrators[rd] && !reported[rd] {
-				reported[rd] = true
-				add(pr.path, "chapter %d reader %q is not one of the recording's narrators", i, rd)
 			}
 		}
 	}

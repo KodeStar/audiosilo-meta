@@ -241,7 +241,8 @@ committed, and lands in reviewed tranches by project-id range.
 
 **Facts only.** A LibriVox record carries the title, the authors, the readers
 (as narrators, and per section as each chapter's `readers`), the translators (as
-`translator` credits on the recording), the language, the runtime, the sections
+`translator` credits on the recording, the project's own, and on a work the
+import creates also as the work's credits), the language, the runtime, the sections
 (as chapters, each with its `audio_url` and, where it differs from the position,
 LibriVox's `section_number`), the genres mapped onto our vocabulary, the
 LibriVox ids and the archive.org identifier and links. The project's own title

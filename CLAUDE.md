@@ -505,7 +505,12 @@ it, `pkg/check` and every writer now refuse it loudly.
   (person, role) so one set of credits has exactly one byte-form)) PLUS its
   recordings, nested as `"recordings": {"<rec-slug>": {...}}`.
   One book is one entry, so a recording edit is a read-modify-write of its work.
-  Contributor roles are a WORK-level fact: a qualifier on a narrator credit is
+  Contributor roles are a WORK-level fact, with ONE recording-level addition: a
+  LibriVox recording also states its own translators in the recording's
+  `credits` (translator only, by schema), because a translation is the
+  project's fact - the work keeps the translator credits its sources stated
+  beside them (credits are additive; authors stays the identity list). A
+  qualifier on a narrator credit is
   edition-level evidence and is stripped without stating anything (measured at
   0.027% of narrator credits, nearly all of it scraping junk). Optional
   `translation_of` (`$defs/slug_set`, sorted ascending) links a TRANSLATION to
@@ -520,7 +525,8 @@ it, `pkg/check` and every writer now refuse it loudly.
   LibriVox project `librivox_id` (its identity, unique), `archive_id`, `links`,
   a per-chapter `audio_url`, the project's own `librivox_title` and
   `librivox_genres` (verbatim), its translators as the recording's own
-  `credits` (a translation is the project's fact, not the work's), and per
+  `credits` (a translation is the project's fact; the work's own translator
+  credits stay as its sources stated them), and per
   chapter LibriVox's `section_number` (only where it differs from the 1-based
   position) and `readers` (person slugs among the narrators; none on a
   one-narrator recording) (LICENSING.md's public-domain exception;

@@ -166,7 +166,9 @@ CREATE TABLE chapters (
 -- recording whose chapters are read by different people; no row for a
 -- recording whose chapters are all read by its narrators (model.Chapter.Readers).
 CREATE TABLE chapter_readers (work_id TEXT NOT NULL, recording_id TEXT NOT NULL, chapter_idx INTEGER NOT NULL, person_id TEXT NOT NULL, ord INTEGER NOT NULL);
-CREATE INDEX idx_chapter_readers_recording ON chapter_readers(work_id, recording_id);
+-- (chapter_idx, ord) after the recording, so the feed reads a recording's
+-- readers in section order straight off the index.
+CREATE INDEX idx_chapter_readers_recording ON chapter_readers(work_id, recording_id, chapter_idx, ord);
 
 CREATE TABLE people (
   id          TEXT PRIMARY KEY,

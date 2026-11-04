@@ -249,15 +249,15 @@ func TestBatchLookupsAreIndexed(t *testing.T) {
 		// batches, each over up to a page (500) of works.
 		{"works with a source", ids, func(ph string) string { return worksAdmittedSQL(ph, workHasSourceArm("works.id")) }, []any{model.SourceLibrivox}},
 		{"librivox feed: authors", ids, lvAuthorsSQL, nil},
-		{"librivox feed: translators", ids, lvTranslatorsSQL, nil},
-		{"librivox feed: genres", ids, lvGenresSQL, nil},
+		{"librivox feed: translators", ids, lvTranslatorsSQL(true), nil},
+		{"librivox feed: translators, v8", ids, lvTranslatorsSQL(false), nil},
+		{"librivox feed: genres", ids, lvGenresSQL(true), nil},
+		{"librivox feed: genres, v8", ids, lvGenresSQL(false), nil},
 		{"librivox feed: chapters", ids, lvChaptersSQL(true), nil},
 		{"librivox feed: chapters, v8", ids, lvChaptersSQL(false), nil},
 		{"librivox feed: readers", ids, lvReadersSQL, nil},
 		// The LibriVox recording layer (schema_version 9): the recording's own
 		// translators, genre names and section readers.
-		{"librivox feed: recording translators", ids, lvRecTranslatorsSQL, nil},
-		{"librivox feed: recording genres", ids, lvRecGenresSQL, nil},
 		{"librivox feed: section readers", ids, lvSectionReadersSQL, nil},
 	}
 	for _, tc := range cases {

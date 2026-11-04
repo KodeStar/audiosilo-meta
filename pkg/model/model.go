@@ -283,18 +283,9 @@ type Chapter struct {
 	Readers []string `json:"readers,omitempty"`
 	// SectionNumber is the source's own number for the chapter (LibriVox's
 	// section_number), set only where it differs from the 1-based position:
-	// nil means the position is the number (SectionNumberAt). A pointer because
+	// nil means the position is the number. A pointer because
 	// LibriVox numbers some projects from 0.
 	SectionNumber *int `json:"section_number,omitempty"`
-}
-
-// SectionNumberAt is the number of the chapter at 0-based index i: its stated
-// SectionNumber, else its 1-based position.
-func (c Chapter) SectionNumberAt(i int) int {
-	if c.SectionNumber != nil {
-		return *c.SectionNumber
-	}
-	return i + 1
 }
 
 // RecordingLinks is where a recording is published, each URL as its source

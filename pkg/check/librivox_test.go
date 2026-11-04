@@ -95,8 +95,8 @@ func TestLibrivoxFidelityFieldsValid(t *testing.T) {
 	if rec.LibrivoxTitle != "Metamorphosis (version 2)" || len(rec.LibrivoxGenres) != 2 || len(rec.Credits) != 1 || rec.Credits[0].Person != "author-one" {
 		t.Errorf("recording fidelity fields did not load: %+v", rec)
 	}
-	if len(rec.Chapters) != 2 || rec.Chapters[0].SectionNumberAt(0) != 0 || rec.Chapters[1].SectionNumberAt(1) != 1 ||
-		len(rec.Chapters[1].Readers) != 2 {
+	if len(rec.Chapters) != 2 || rec.Chapters[0].SectionNumber == nil || *rec.Chapters[0].SectionNumber != 0 ||
+		rec.Chapters[1].SectionNumber == nil || *rec.Chapters[1].SectionNumber != 1 || len(rec.Chapters[1].Readers) != 2 {
 		t.Errorf("chapter readers / section numbers did not load: %+v", rec.Chapters)
 	}
 }
@@ -297,6 +297,14 @@ func TestLibrivoxRuleViolations(t *testing.T) {
 			name: "a recording credit role outside the vocabulary",
 			mutate: func(f map[string]string) {
 				f[lvRecRel] = strings.Replace(withFidelity(librivoxRecording(801, lvFidelityChapters)), `"role":"translator"`, `"role":"narrator"`, 1)
+			},
+			want: "credits",
+		},
+		{
+			// editor is a WORK credit role; a recording states only its translator.
+			name: "a recording credit in a work-only role",
+			mutate: func(f map[string]string) {
+				f[lvRecRel] = strings.Replace(withFidelity(librivoxRecording(801, lvFidelityChapters)), `"role":"translator"`, `"role":"editor"`, 1)
 			},
 			want: "credits",
 		},

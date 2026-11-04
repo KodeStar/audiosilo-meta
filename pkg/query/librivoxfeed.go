@@ -258,22 +258,15 @@ func librivoxFeedQuery(p librivoxFeedParams, recordingLayer bool) (string, []any
 		args = append(args, sinceDay(p.since))
 	}
 	if p.title.value != "" {
-		if p.title.prefix {
-			query += ` AND ` + lvTitleExpr(recordingLayer) + ` LIKE ? ESCAPE '\'`
-			args = append(args, likeEscape(p.title.value)+"%")
-		} else {
-			query += ` AND ` + lvTitleExpr(recordingLayer) + ` = ? COLLATE NOCASE`
-			args = append(args, p.title.value)
-		}
+		match, arg := textMatchSQL(lvTitleExpr(recordingLayer), p.title)
+		query += ` AND ` + match
+		args = append(args, arg)
 	}
 	if p.author.value != "" {
 		// An author, never a translator: the work's authors list carries its
 		// translators too (they are credited AND identity authors), and LibriVox's
 		// author parameter reads its authors alone.
-		match, arg := lastNameSQL+` = ? COLLATE NOCASE`, any(p.author.value)
-		if p.author.prefix {
-			match, arg = lastNameSQL+` LIKE ? ESCAPE '\'`, likeEscape(p.author.value)+"%"
-		}
+		match, arg := textMatchSQL(lastNameSQL, p.author)
 		query += ` AND EXISTS (SELECT 1 FROM work_authors wa JOIN people p ON p.id = wa.person_id WHERE wa.work_id = r.work_id AND ` + match +
 			` AND ` + notTranslatorArm + `)`
 		args = append(args, arg)
@@ -281,10 +274,7 @@ func librivoxFeedQuery(p librivoxFeedParams, recordingLayer bool) (string, []any
 	if p.genre.value != "" && recordingLayer {
 		// The project's own genre names, exactly as LibriVox filters them: a
 		// LibriVox name is never widened through the vocabulary mapping (meta#2761).
-		match, arg := `g.genre = ? COLLATE NOCASE`, any(p.genre.value)
-		if p.genre.prefix {
-			match, arg = `g.genre LIKE ? ESCAPE '\'`, likeEscape(p.genre.value)+"%"
-		}
+		match, arg := textMatchSQL(`g.genre`, p.genre)
 		query += ` AND EXISTS (SELECT 1 FROM recording_librivox_genres g WHERE g.work_id = r.work_id AND g.recording_id = r.id AND ` + match + `)`
 		args = append(args, arg)
 	} else if p.genre.value != "" {
@@ -307,6 +297,16 @@ func librivoxFeedQuery(p librivoxFeedParams, recordingLayer bool) (string, []any
 		order = ` ORDER BY r.librivox_id DESC`
 	}
 	return query + order + ` LIMIT ? OFFSET ?`, append(args, p.limit, p.offset)
+}
+
+// textMatchSQL is the predicate and argument a title/author/genre parameter m
+// adds over expr: an exact, case-insensitive match, or with m.prefix a LIKE
+// prefix (its wildcards escaped).
+func textMatchSQL(expr string, m textMatch) (string, any) {
+	if m.prefix {
+		return expr + ` LIKE ? ESCAPE '\'`, likeEscape(m.value) + "%"
+	}
+	return expr + ` = ? COLLATE NOCASE`, m.value
 }
 
 // librivoxGenres is model.LibrivoxGenres, copied once.
@@ -430,18 +430,14 @@ type recKey struct{ work, rec string }
 
 // lvFacts is what a feed page reads per work and per recording, batched. On an
 // artifact carrying the LIBRIVOX RECORDING layer the translators, genres and
-// section readers are the recording's own (byRecording); on an older one the
-// work's translators and vocabulary genres, and no section readers.
+// section readers are the recording's own; on an older one the translators and
+// genres are its work's (the vocabulary's), and there are no section readers.
 type lvFacts struct {
-	authors     map[string][]lvPerson // by work: authors that are not translators
-	translators map[string][]lvPerson // by work (an older artifact)
-	genres      map[string][]string   // by work (an older artifact)
-	chapters    map[recKey][]lvChapter
-	readers     map[recKey][]lvReader // the recording's narrators
-
-	byRecording    bool
-	recTranslators map[recKey][]lvPerson
-	recGenres      map[recKey][]string
+	authors        map[string][]lvPerson // by work: authors that are not translators
+	translators    map[recKey][]lvPerson
+	genres         map[recKey][]string
+	chapters       map[recKey][]lvChapter
+	readers        map[recKey][]lvReader         // the recording's narrators
 	sectionReaders map[recKey]map[int][]lvReader // by chapter idx
 }
 
@@ -455,15 +451,6 @@ const notTranslatorArm = `NOT EXISTS (SELECT 1 FROM work_credits wc WHERE wc.wor
 func lvAuthorsSQL(ph string) string {
 	return `SELECT wa.work_id, p.name, p.librivox_author_id, p.birth_year, p.death_year FROM work_authors wa ` +
 		`JOIN people p ON p.id = wa.person_id WHERE wa.work_id IN (` + ph + `) AND ` + notTranslatorArm + ` ORDER BY wa.work_id, wa.ord`
-}
-
-func lvTranslatorsSQL(ph string) string {
-	return `SELECT wc.work_id, p.name, p.librivox_author_id, p.birth_year, p.death_year FROM work_credits wc ` +
-		`JOIN people p ON p.id = wc.person_id WHERE wc.role = '` + model.RoleTranslator + `' AND wc.work_id IN (` + ph + `) ORDER BY wc.work_id, wc.ord`
-}
-
-func lvGenresSQL(ph string) string {
-	return `SELECT work_id, genre FROM work_genres WHERE work_id IN (` + ph + `) ORDER BY work_id, genre`
 }
 
 // The chapters and readers are read for the page's LIBRIVOX recordings only,
@@ -491,22 +478,35 @@ func lvReadersSQL(ph string) string {
 		`JOIN people p ON p.id = rn.person_id WHERE r.work_id IN (` + ph + `) AND r.librivox_id IS NOT NULL ORDER BY r.work_id, r.id, rn.ord`
 }
 
-// The LIBRIVOX RECORDING layer's per-recording reads (librivoxRecordingSchemaVersion),
-// driven from the page's LibriVox recordings as lvChaptersSQL is: the
-// recording's own translators, its LibriVox genre names and each section's
-// readers, each in the record's order.
-func lvRecTranslatorsSQL(ph string) string {
-	return `SELECT r.work_id, r.id, p.name, p.librivox_author_id, p.birth_year, p.death_year FROM recordings r ` +
-		`CROSS JOIN recording_credits rc ON rc.work_id = r.work_id AND rc.recording_id = r.id ` +
-		`JOIN people p ON p.id = rc.person_id WHERE r.work_id IN (` + ph + `) AND r.librivox_id IS NOT NULL ` +
-		`AND rc.role = '` + model.RoleTranslator + `' ORDER BY r.work_id, r.id, rc.ord`
+// The translators and genres, per LibriVox recording of the page, driven from
+// the recordings as lvChaptersSQL is. With the LIBRIVOX RECORDING layer
+// (librivoxRecordingSchemaVersion) they are the recording's own credits and
+// LibriVox genre names, in the record's order; on an older artifact its work's
+// translator credits and vocabulary genres.
+func lvTranslatorsSQL(recordingLayer bool) func(string) string {
+	join := `CROSS JOIN work_credits rc ON rc.work_id = r.work_id `
+	if recordingLayer {
+		join = `CROSS JOIN recording_credits rc ON rc.work_id = r.work_id AND rc.recording_id = r.id `
+	}
+	return func(ph string) string {
+		return `SELECT r.work_id, r.id, p.name, p.librivox_author_id, p.birth_year, p.death_year FROM recordings r ` + join +
+			`JOIN people p ON p.id = rc.person_id WHERE r.work_id IN (` + ph + `) AND r.librivox_id IS NOT NULL ` +
+			`AND rc.role = '` + model.RoleTranslator + `' ORDER BY r.work_id, r.id, rc.ord`
+	}
 }
 
-func lvRecGenresSQL(ph string) string {
-	return `SELECT r.work_id, r.id, g.genre FROM recordings r ` +
-		`CROSS JOIN recording_librivox_genres g ON g.work_id = r.work_id AND g.recording_id = r.id ` +
-		`WHERE r.work_id IN (` + ph + `) AND r.librivox_id IS NOT NULL ORDER BY r.work_id, r.id, g.ord`
+func lvGenresSQL(recordingLayer bool) func(string) string {
+	join, order := `CROSS JOIN work_genres g ON g.work_id = r.work_id `, `g.genre`
+	if recordingLayer {
+		join, order = `CROSS JOIN recording_librivox_genres g ON g.work_id = r.work_id AND g.recording_id = r.id `, `g.ord`
+	}
+	return func(ph string) string {
+		return `SELECT r.work_id, r.id, g.genre FROM recordings r ` + join +
+			`WHERE r.work_id IN (` + ph + `) AND r.librivox_id IS NOT NULL ORDER BY r.work_id, r.id, ` + order
+	}
 }
+
+// lvSectionReadersSQL is each section's readers (the recording layer only).
 
 func lvSectionReadersSQL(ph string) string {
 	return `SELECT r.work_id, r.id, cr.chapter_idx, p.name, p.librivox_reader_id FROM recordings r ` +
@@ -520,9 +520,8 @@ func lvSectionReadersSQL(ph string) string {
 // one does not read them. recordingLayer reads the recording's own (lvFacts).
 func (s *DB) librivoxFeedFacts(ctx context.Context, workIDs []string, extended, recordingLayer bool) (*lvFacts, error) {
 	f := &lvFacts{
-		authors: map[string][]lvPerson{}, translators: map[string][]lvPerson{}, genres: map[string][]string{},
+		authors: map[string][]lvPerson{}, translators: map[recKey][]lvPerson{}, genres: map[recKey][]string{},
 		chapters: map[recKey][]lvChapter{}, readers: map[recKey][]lvReader{},
-		byRecording: recordingLayer, recTranslators: map[recKey][]lvPerson{}, recGenres: map[recKey][]string{},
 		sectionReaders: map[recKey]map[int][]lvReader{},
 	}
 	// each runs one batched read over the page's works, handing every row to scan.
@@ -541,31 +540,14 @@ func (s *DB) librivoxFeedFacts(ctx context.Context, workIDs []string, extended, 
 			return rows.Err()
 		})
 	}
-	people := func(into map[string][]lvPerson) func(*sql.Rows) error {
-		return func(rows *sql.Rows) error {
-			var work string
-			var p lvPerson
-			var lvID, birth, death sql.NullInt64
-			if err := rows.Scan(&work, &p.name, &lvID, &birth, &death); err != nil {
-				return err
-			}
-			p.librivoxID, p.birthYear, p.deathYear = int(lvID.Int64), int(birth.Int64), int(death.Int64)
-			into[work] = append(into[work], p)
-			return nil
+	if err := each(lvAuthorsSQL, func(rows *sql.Rows) error {
+		var work string
+		p, err := scanLvPerson(rows, &work)
+		if err == nil {
+			f.authors[work] = append(f.authors[work], p)
 		}
-	}
-	recPeople := func(rows *sql.Rows) error {
-		var k recKey
-		var p lvPerson
-		var lvID, birth, death sql.NullInt64
-		if err := rows.Scan(&k.work, &k.rec, &p.name, &lvID, &birth, &death); err != nil {
-			return err
-		}
-		p.librivoxID, p.birthYear, p.deathYear = int(lvID.Int64), int(birth.Int64), int(death.Int64)
-		f.recTranslators[k] = append(f.recTranslators[k], p)
-		return nil
-	}
-	if err := each(lvAuthorsSQL, people(f.authors)); err != nil {
+		return err
+	}); err != nil {
 		return nil, err
 	}
 	if err := each(lvChaptersSQL(recordingLayer), func(rows *sql.Rows) error {
@@ -584,67 +566,76 @@ func (s *DB) librivoxFeedFacts(ctx context.Context, workIDs []string, extended, 
 	if !extended {
 		return f, nil
 	}
-	if recordingLayer {
-		if err := each(lvRecTranslatorsSQL, recPeople); err != nil {
-			return nil, err
+	if err := each(lvTranslatorsSQL(recordingLayer), func(rows *sql.Rows) error {
+		var k recKey
+		p, err := scanLvPerson(rows, &k.work, &k.rec)
+		if err == nil {
+			f.translators[k] = append(f.translators[k], p)
 		}
-		if err := each(lvRecGenresSQL, func(rows *sql.Rows) error {
-			var k recKey
-			var genre string
-			if err := rows.Scan(&k.work, &k.rec, &genre); err != nil {
-				return err
-			}
-			f.recGenres[k] = append(f.recGenres[k], genre)
-			return nil
-		}); err != nil {
-			return nil, err
+		return err
+	}); err != nil {
+		return nil, err
+	}
+	if err := each(lvGenresSQL(recordingLayer), func(rows *sql.Rows) error {
+		var k recKey
+		var genre string
+		if err := rows.Scan(&k.work, &k.rec, &genre); err != nil {
+			return err
 		}
-		if err := each(lvSectionReadersSQL, func(rows *sql.Rows) error {
-			var k recKey
-			var idx int
-			var rd lvReader
-			var id sql.NullInt64
-			if err := rows.Scan(&k.work, &k.rec, &idx, &rd.name, &id); err != nil {
-				return err
-			}
-			rd.readerID = int(id.Int64)
-			if f.sectionReaders[k] == nil {
-				f.sectionReaders[k] = map[int][]lvReader{}
-			}
-			f.sectionReaders[k][idx] = append(f.sectionReaders[k][idx], rd)
-			return nil
-		}); err != nil {
-			return nil, err
-		}
-	} else {
-		if err := each(lvTranslatorsSQL, people(f.translators)); err != nil {
-			return nil, err
-		}
-		if err := each(lvGenresSQL, func(rows *sql.Rows) error {
-			var work, genre string
-			if err := rows.Scan(&work, &genre); err != nil {
-				return err
-			}
-			f.genres[work] = append(f.genres[work], genre)
-			return nil
-		}); err != nil {
-			return nil, err
-		}
+		f.genres[k] = append(f.genres[k], genre)
+		return nil
+	}); err != nil {
+		return nil, err
 	}
 	if err := each(lvReadersSQL, func(rows *sql.Rows) error {
 		var k recKey
-		var rd lvReader
-		var id sql.NullInt64
-		if err := rows.Scan(&k.work, &k.rec, &rd.name, &id); err != nil {
+		rd, err := scanLvReader(rows, &k.work, &k.rec)
+		if err == nil {
+			f.readers[k] = append(f.readers[k], rd)
+		}
+		return err
+	}); err != nil {
+		return nil, err
+	}
+	if !recordingLayer {
+		return f, nil
+	}
+	if err := each(lvSectionReadersSQL, func(rows *sql.Rows) error {
+		var k recKey
+		var idx int
+		rd, err := scanLvReader(rows, &k.work, &k.rec, &idx)
+		if err != nil {
 			return err
 		}
-		rd.readerID = int(id.Int64)
-		f.readers[k] = append(f.readers[k], rd)
+		if f.sectionReaders[k] == nil {
+			f.sectionReaders[k] = map[int][]lvReader{}
+		}
+		f.sectionReaders[k][idx] = append(f.sectionReaders[k][idx], rd)
 		return nil
 	}); err != nil {
 		return nil, err
 	}
 	return f, nil
+}
+
+// scanLvPerson scans one people row: the key columns into key, then the name,
+// LibriVox author id and life years.
+func scanLvPerson(rows *sql.Rows, key ...any) (lvPerson, error) {
+	var p lvPerson
+	var lvID, birth, death sql.NullInt64
+	err := rows.Scan(append(key, &p.name, &lvID, &birth, &death)...)
+	p.librivoxID, p.birthYear, p.deathYear = int(lvID.Int64), int(birth.Int64), int(death.Int64)
+	return p, err
+}
+
+// scanLvReader scans one reader row: the key columns into key, then the name
+// and LibriVox reader id.
+func scanLvReader(rows *sql.Rows, key ...any) (lvReader, error) {
+	var rd lvReader
+	var id sql.NullInt64
+	err := rows.Scan(append(key, &rd.name, &id)...)
+	rd.readerID = int(id.Int64)
+	return rd, err
 }
 
 // librivoxBook composes one row into LibriVox's book shape, then keeps only the
@@ -692,16 +683,12 @@ func librivoxBook(r lvRow, f *lvFacts, p librivoxFeedParams) map[string]any {
 		}
 		book["url_iarchive"] = iarchive
 		book["sections"] = librivoxSections(chapters, f.readers[key], f.sectionReaders[key], language)
-		names, translators := f.genres[r.workID], f.translators[r.workID]
-		if f.byRecording {
-			names, translators = f.recGenres[key], f.recTranslators[key]
-		}
-		genres := make([]map[string]string, 0, len(names))
-		for _, g := range names {
+		genres := make([]map[string]string, 0, len(f.genres[key]))
+		for _, g := range f.genres[key] {
 			genres = append(genres, map[string]string{"id": "", "name": g})
 		}
 		book["genres"] = genres
-		book["translators"] = librivoxPeople(translators)
+		book["translators"] = librivoxPeople(f.translators[key])
 	}
 	if p.fields != nil {
 		for k := range book {

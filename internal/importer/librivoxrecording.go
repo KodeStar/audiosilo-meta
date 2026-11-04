@@ -134,7 +134,7 @@ func (p *planner) restateLibrivoxRecording(ref RecRef, f *librivoxFacts, lifeSee
 	if f.title != "" {
 		set(rec, "librivox_title", f.title)
 	}
-	set(rec, "librivox_genres", stringsOrNil(f.genres))
+	set(rec, "librivox_genres", listOrNil(f.genres))
 	set(rec, "credits", p.librivoxRecordingCredits(f))
 	p.restateLibrivoxChapters(rec, f, set)
 	if changed {
@@ -147,7 +147,7 @@ func (p *planner) restateLibrivoxRecording(ref RecRef, f *librivoxFacts, lifeSee
 // credits, in LibriVox's order, each person once; nil when it states none or
 // none resolves.
 func (p *planner) librivoxRecordingCredits(f *librivoxFacts) any {
-	var out []any
+	var out []model.Credit
 	seen := map[string]bool{}
 	for _, c := range f.credits {
 		if c.kind != librivoxAuthor || c.suffix != librivoxTranslatorSuffix {
@@ -164,12 +164,9 @@ func (p *planner) librivoxRecordingCredits(f *librivoxFacts) any {
 			continue
 		}
 		seen[slug] = true
-		out = append(out, map[string]any{"person": slug, "role": model.RoleTranslator})
+		out = append(out, model.Credit{Person: slug, Role: model.RoleTranslator})
 	}
-	if len(out) == 0 {
-		return nil
-	}
-	return out
+	return listOrNil(out)
 }
 
 // librivoxTranslatorSlug is the person a translator credit of project names:
@@ -204,21 +201,19 @@ func (p *planner) librivoxTranslatorSlug(c librivoxCredit, project int) (string,
 }
 
 // librivoxReaderOn is the narrator of a recording (narrators its slugs) that a
-// reader credit names: this run's resolution of the reader id, the person
-// carrying it, or the name's person when that holds no other reader id - the
-// first of those that is one of the narrators.
+// reader credit names: the credit's person (librivoxCreditSlug: this run's
+// resolution of the reader id, else the name's person) when that holds no other
+// reader id, else the person carrying the id - the first of those that is one
+// of the narrators.
 func (p *planner) librivoxReaderOn(c librivoxCredit, narrators map[string]bool) (string, bool) {
 	var cands []string
-	if slug, ok := p.lv.readers[c.id]; ok && c.id > 0 {
-		cands = append(cands, slug)
-	}
-	if owner, ok := p.lv.people[librivoxKey{librivoxReader, c.id}]; ok && c.id > 0 {
-		cands = append(cands, owner)
-	}
 	if slug, ok := p.librivoxCreditSlug(c); ok {
 		if held := p.lv.readerOf[slug]; held == 0 || held == c.id || c.id <= 0 {
 			cands = append(cands, slug)
 		}
+	}
+	if owner, ok := p.lv.people[librivoxKey{librivoxReader, c.id}]; ok && c.id > 0 {
+		cands = append(cands, owner)
 	}
 	for _, s := range cands {
 		if live, ok := p.livePerson(s); ok && narrators[live] {
@@ -285,8 +280,8 @@ func (p *planner) restateLibrivoxChapters(rec map[string]any, f *librivoxFacts, 
 		}
 		set(ch, "section_number", number)
 		var rd any
-		if resolved && !solo && len(readers[i]) > 0 {
-			rd = stringsOrNil(readers[i])
+		if resolved && !solo {
+			rd = listOrNil(readers[i])
 		}
 		set(ch, "readers", rd)
 	}
@@ -363,43 +358,35 @@ func (p *planner) refreshLifeYears(slug string, c librivoxCredit, project int) {
 	p.summary.LibrivoxRestated.LifeYearsFilled++
 }
 
-// rawYear reads a stored year (a decoded json.Number, or an int this run
-// wrote), ok=false when the record states none.
+// rawYear reads a stored year (a decoded number, or an int this run wrote),
+// ok=false when the record states none.
 func rawYear(v any) (int, bool) {
-	switch y := v.(type) {
-	case json.Number:
-		n, err := strconv.Atoi(y.String())
-		return n, err == nil && n != 0
-	case int:
+	if y, ok := v.(int); ok {
 		return y, y != 0
-	case float64:
-		return int(y), y != 0
 	}
-	return 0, false
+	n, ok := coerceInt(v)
+	return int(n), ok && n != 0
 }
 
 // yearsText is a birth-death pair as the warnings print it ("1883-1924",
-// "1938-?", "?-?").
+// "43 BC-?", "?-?"), each year as yearText spells it.
 func yearsText(birth, death int) string {
 	part := func(y int) string {
 		if y == 0 {
 			return "?"
 		}
-		return strconv.Itoa(y)
+		return yearText(y)
 	}
 	return part(birth) + "-" + part(death)
 }
 
-// stringsOrNil is a string list as a decoded JSON array, nil when empty.
-func stringsOrNil(list []string) any {
+// listOrNil is list as a field value: the list itself, or an untyped nil when
+// it is empty, which the pass's setter reads as "drop the field".
+func listOrNil[T any](list []T) any {
 	if len(list) == 0 {
 		return nil
 	}
-	out := make([]any, len(list))
-	for i, s := range list {
-		out[i] = s
-	}
-	return out
+	return list
 }
 
 // sameJSON reports whether two decoded JSON values encode alike (a stored

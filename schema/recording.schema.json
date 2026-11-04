@@ -197,8 +197,24 @@
       }
     },
     "credits": {
-      "description": "Contributors credited on THIS recording in a role that is not narration: the translator of the translation a LibriVox project reads, which is a fact about the project and not about the work (two LibriVox translations of one work credit two different translators). The same (person, role) shape and rules as a work's credits, the people resolving into the people family. Optional; written only when the source STATED the role. A LibriVox import writes them in LibriVox's order.",
-      "$ref": "common.schema.json#/$defs/credit_list"
+      "description": "Contributors credited on THIS recording in a role that is not narration. Today one role: the translator of the translation a LibriVox project reads, a fact about the project (two LibriVox translations of one work credit two different translators). It is ADDITIONAL to the work's own credits, never instead of them: a work keeps the translator credits its sources stated, and authors stays the identity list. The (person, role) shape and rules of a work's credits, the people resolving into the people family, but only the roles a recording can state (`translator`); a role is added here by schema change when a source states one per production. Optional; written only when the source STATED the role. A LibriVox import writes them in LibriVox's order.",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["person", "role"],
+        "properties": {
+          "person": {
+            "$ref": "common.schema.json#/$defs/slug"
+          },
+          "role": {
+            "type": "string",
+            "enum": ["translator"]
+          }
+        }
+      }
     },
     "copyright_year": {
       "description": "The copyright year of the text this recording reads, as the source stated it (LibriVox: copyright_year; its 0, meaning unstated, is never written). Negative for a year BC. A fact about the recorded text, deliberately not the work's first_published, which another source may own.",

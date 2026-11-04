@@ -349,3 +349,27 @@ func TestLibrivoxLifeYearsNeverOverwriteAStatedYear(t *testing.T) {
 		t.Errorf("no conflict warning in %v", sum.Warnings)
 	}
 }
+
+// TestYearsTextSpellsBCAsTheRunDoes: a conflict warning prints a year BC as
+// datedName does ("43 BC"), never as the signed number.
+func TestYearsTextSpellsBCAsTheRunDoes(t *testing.T) {
+	for _, tc := range []struct {
+		birth, death int
+		want         string
+	}{
+		{1883, 1924, "1883-1924"},
+		{-106, -43, "106 BC-43 BC"},
+		{1938, 0, "1938-?"},
+		{0, 0, "?-?"},
+	} {
+		if got := yearsText(tc.birth, tc.death); got != tc.want {
+			t.Errorf("yearsText(%d, %d) = %q, want %q", tc.birth, tc.death, got, tc.want)
+		}
+	}
+	if y, ok := rawYear(json.Number("-43")); y != -43 || !ok {
+		t.Errorf("rawYear(-43) = %d %v", y, ok)
+	}
+	if _, ok := rawYear(nil); ok {
+		t.Error("rawYear(nil) states a year")
+	}
+}
