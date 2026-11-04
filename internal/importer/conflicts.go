@@ -65,7 +65,8 @@ type Conflict struct {
 	Work      string `json:"work"`
 	Recording string `json:"recording"`
 	// Field is the schema field the two disagree on: "runtime_min" or
-	// "release_date".
+	// "release_date", or "work" when the row's ASIN names another book altogether
+	// (rowNamesAnotherBook), with the two titles as the values.
 	Field string `json:"field"`
 	// Recorded is the value the catalogue holds (and kept - first writer wins);
 	// Stated is what the refused row said.

@@ -1624,6 +1624,13 @@ run's, but a wrong RECORDED value (a recording stored at 81 minutes that the
 dump and its own chapters both put at 492) hides in the mirror's disagreements.
 Purely additive: an absent flag is the long-standing behaviour byte for byte,
 and the file is appended to so a chunked wave accumulates one worklist.
+`rowNamesAnotherBook` (`enrich.go`) is the third guard, asked before the two facts and
+outside the merge scope: a row sharing no author surname AND no title word with the work
+its ASIN sits on is another book (field `work`, the two titles as the values), the shape a
+library tool's fuzzy retail match leaves. Either half alone is ordinary (an author's
+spelling, a series-titled listing), so neither refuses. It does not catch a chimera whose
+title happens to share a word; those are found by comparing the libex rows, the method of
+the meta#256 repair.
 `applyScope` in `enrich.go` is what keeps the three call paths honest - only
 enrichment fills a record it may not overwrite, an exact-ASIN attestation still
 flags contradictions, and the inferred ASIN-merge match is silent. The merge

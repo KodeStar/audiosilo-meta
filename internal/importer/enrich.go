@@ -189,6 +189,9 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 		redate = p.redates(raw, b)
 		refresh, withheld, against = p.judgeRefresh(raw, b, redate)
 	}
+	if !refresh && p.rowNamesAnotherBook(b, ref, entry, scope) {
+		return false
+	}
 	if !refresh && p.recordingContradicts(b, ref, raw, redate, scope) {
 		return false
 	}
@@ -360,6 +363,96 @@ func (p *planner) recordingContradicts(b sourceBook, ref RecRef, raw map[string]
 		p.summary.Conflicts++
 	}
 	return true
+}
+
+// rowNamesAnotherBook refuses a row whose ASIN sits on a work the row itself says is
+// a different book: no author's surname in common and no title word in common. Such
+// an ASIN was put there by a library export whose tool matched a retail listing by a
+// fuzzy title (meta#256 filed Carson McCullers' Reflections in a Golden Eye on John
+// Gardner's GoldenEye), and filling anything from the row writes the other book's
+// runtime, chapters and series onto the record, which is what hid those for months.
+//
+// Both halves must hold because each alone is ordinary: an author's second spelling or
+// an editor credit shares the title, and a series-titled retail listing ("Mistborn" for
+// The Final Empire) shares the author. Measured over the 2026-07-29 libex dump: on the
+// tree before the repair, 14 ASINs of 10 works refused, all wrong; after it, none in
+// 52,263 rows. It does not find a chimera whose title shares a word, and the author half
+// alone is not usable (49 of the 14,789 user-library ASINs, mostly spellings).
+//
+// A side with nothing to compare is no evidence: a hand attestation states neither, and
+// the ASIN merge is matched by work and narrators, so its row is never asked.
+func (p *planner) rowNamesAnotherBook(b sourceBook, ref RecRef, entry map[string]any, scope applyScope) bool {
+	if scope == scopeAttestMerged {
+		return false
+	}
+	credits, _ := rowAuthorCreditSplitIn(p.credits, b)
+	rowSurnames, workSurnames := map[string]bool{}, map[string]bool{}
+	for _, c := range credits {
+		if slug, fellBack := personSlug(c.name); !fellBack {
+			rowSurnames[personSurname(slug)] = true
+		}
+	}
+	authors, _ := entry["authors"].([]any)
+	for _, a := range authors {
+		workSurnames[personSurname(coerceStr(a))] = true
+	}
+	workCredits, _ := entry["credits"].([]any)
+	for _, c := range workCredits {
+		if m, ok := c.(map[string]any); ok {
+			workSurnames[personSurname(coerceStr(m["person"]))] = true
+		}
+	}
+	workTitle := coerceStr(entry["title"])
+	// The row's short title, without its subtitle: a retail subtitle restates the
+	// words the fuzzy match hit ("Indy Cars: Full Throttle" filed on Throttle).
+	rowTitle := titleWords(firstNonEmpty(b.str("title_short"), b.str("title")))
+	recorded := titleWords(workTitle, coerceStr(entry["subtitle"]))
+	if len(rowSurnames) == 0 || len(workSurnames) == 0 || len(rowTitle) == 0 || len(recorded) == 0 ||
+		intersects(rowSurnames, workSurnames) || intersects(rowTitle, recorded) {
+		return false
+	}
+	stated := firstNonEmpty(b.str("title_short"), b.str("title"))
+	p.warnInto(b, &p.conflictWarnings)("this row's ASIN names %q by %s, but it sits on %q; the row was not used",
+		stated, strings.Join(creditNamesOf(credits), ", "), workTitle)
+	p.recordConflict(b, ref, "work", workTitle, stated)
+	if p.userTier {
+		p.summary.Conflicts++
+	}
+	return true
+}
+
+// personSurname is the last word of a person slug, which is what two spellings of one
+// name most often share.
+func personSurname(slug string) string {
+	return slug[strings.LastIndexByte(slug, '-')+1:]
+}
+
+// titleWords is the set of words a title and its subtitle state, without the ones a
+// series or format wording supplies to any title.
+func titleWords(titles ...string) map[string]bool {
+	out := map[string]bool{}
+	for _, t := range titles {
+		for _, w := range strings.Split(Slugify(t), "-") {
+			if w != "" && !titleNoiseWords[w] {
+				out[w] = true
+			}
+		}
+	}
+	return out
+}
+
+var titleNoiseWords = map[string]bool{
+	"a": true, "an": true, "and": true, "book": true, "books": true, "in": true, "novel": true, "of": true,
+	"saga": true, "series": true, "stories": true, "story": true, "the": true, "to": true, "vol": true, "volume": true,
+}
+
+func intersects(a, b map[string]bool) bool {
+	for k := range a {
+		if b[k] {
+			return true
+		}
+	}
+	return false
 }
 
 // contradiction is the first fact a row contradicts its recording on.
