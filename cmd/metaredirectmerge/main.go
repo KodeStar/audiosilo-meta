@@ -64,16 +64,18 @@ func main() {
 }
 
 func run(args []string, stdout, stderr io.Writer) int {
-	switch len(args) {
-	case 1:
+	switch {
+	case len(args) == 1 && (args[0] == "-h" || args[0] == "-help" || args[0] == "--help"):
+		// Asked for, not mistyped: a caller probing that the binary runs (the
+		// sync service's preflight) must not reach git with "--help" as a path.
+	case len(args) == 1:
 		return byHand(args[0], stdout, stderr)
-	case 4:
+	case len(args) == 4:
 		return driver(args[0], args[1], args[2], args[3], stdout, stderr)
-	default:
-		say(stderr, "usage: metaredirectmerge <conflicted data/redirects.json>\n")
-		say(stderr, "       metaredirectmerge <base> <ours> <theirs> <path>   (git merge driver: %%O %%A %%B %%P)\n")
-		return exitUsage
 	}
+	say(stderr, "usage: metaredirectmerge <conflicted data/redirects.json>\n")
+	say(stderr, "       metaredirectmerge <base> <ours> <theirs> <path>   (git merge driver: %%O %%A %%B %%P)\n")
+	return exitUsage
 }
 
 // driver merges the three versions git hands a merge driver and leaves the result
@@ -112,18 +114,44 @@ func driver(baseFile, oursFile, theirsFile, path string, stdout, stderr io.Write
 
 // byHand merges the three versions a stopped rebase or merge staged for path.
 func byHand(path string, stdout, stderr io.Writer) int {
-	// A file both sides created has no base stage, which is an empty table.
-	base, _ := staged(1, path)
-	ours, err := staged(2, path)
+	stages, err := listStages(path)
 	if err != nil {
-		say(stderr, "%s: no common-side version staged; resolve this one by hand\n", path)
+		say(stderr, "%s: listing the staged versions: %v\n", path, err)
 		return exitCannot
 	}
-	theirs, err := staged(3, path)
-	if err != nil {
-		say(stderr, "%s: no incoming version staged; resolve this one by hand\n", path)
+	if len(stages) == 0 {
+		say(stderr, "%s: not conflicted; nothing to merge\n", path)
 		return exitCannot
 	}
+	// A missing side is a modify/delete conflict, which is a person's decision:
+	// one side removed the whole table.
+	for _, side := range []struct {
+		stage int
+		name  string
+	}{{2, "our"}, {3, "their"}} {
+		if !stages[side.stage] {
+			say(stderr, "%s: %s version (stage %d) is not staged - that side deleted the file; resolve this one by hand\n",
+				path, side.name, side.stage)
+			return exitCannot
+		}
+	}
+	var versions [4][]byte
+	for stage := 1; stage <= 3; stage++ {
+		// No base stage is a file both sides created: an empty table. A base
+		// stage that IS listed but cannot be read is a failure, never an empty
+		// base - read as one, every tombstone the base held would look added by
+		// both sides, and one side's deletion would be handed back.
+		if stage == 1 && !stages[1] {
+			continue
+		}
+		raw, err := showStage(stage, path)
+		if err != nil {
+			say(stderr, "%s: reading stage %d: %v\n", path, stage, err)
+			return exitCannot
+		}
+		versions[stage] = raw
+	}
+	base, ours, theirs := versions[1], versions[2], versions[3]
 	out, code := merge(path, base, ours, theirs, stderr)
 	if code != exitMerged {
 		return code
@@ -147,12 +175,42 @@ func byHand(path string, stdout, stderr io.Writer) int {
 // on redirects.json found no stages at all, and one on data/redirects.json read
 // the real stages and then wrote (and, where that directory existed, staged)
 // data/data/redirects.json, leaving the conflict where it was.
-func staged(stage int, path string) ([]byte, error) {
+// showStage reads one staged version; a variable so a test can make a listed
+// stage unreadable, which a real repository does not produce on demand.
+var showStage = func(stage int, path string) ([]byte, error) {
 	p := filepath.ToSlash(path)
 	if !filepath.IsAbs(path) && !strings.HasPrefix(p, "./") && !strings.HasPrefix(p, "../") {
 		p = "./" + p
 	}
 	return exec.Command("git", "show", fmt.Sprintf(":%d:%s", stage, p)).Output()
+}
+
+// listStages reports which of the stages 1-3 the index holds for path (resolved
+// against the working directory, as showStage's ./ form is).
+func listStages(path string) (map[int]bool, error) {
+	out, err := exec.Command("git", "--literal-pathspecs", "ls-files", "--unmerged", "-z", "--", path).Output()
+	if err != nil {
+		return nil, err
+	}
+	stages := map[int]bool{}
+	for _, rec := range strings.Split(string(out), "\x00") {
+		// "<mode> <object> <stage>\t<path>"
+		meta, _, ok := strings.Cut(rec, "\t")
+		if !ok {
+			continue
+		}
+		fields := strings.Fields(meta)
+		if len(fields) != 3 {
+			return nil, fmt.Errorf("unexpected ls-files record %q", rec)
+		}
+		switch fields[2] {
+		case "1", "2", "3":
+			stages[int(fields[2][0]-'0')] = true
+		default:
+			return nil, fmt.Errorf("unexpected stage in ls-files record %q", rec)
+		}
+	}
+	return stages, nil
 }
 
 // merge parses the three versions and merges them, returning the canonical bytes

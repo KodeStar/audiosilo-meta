@@ -196,10 +196,94 @@ func TestByHandFromASubdirectory(t *testing.T) {
 	}
 }
 
+// TestByHandAddAdd: both sides created the table, so there is no base stage -
+// which, and only which, reads as an empty base.
+func TestByHandAddAdd(t *testing.T) {
+	requireGit(t)
+	repo, out, err := rebaseFixture(t, "",
+		table(t, "aaa-old=aaa", "bbb-old=bbb"),
+		table(t, "aaa-old=aaa", "ccc-old=ccc"),
+		false)
+	if err == nil {
+		t.Fatalf("an add/add of the table did not conflict:\n%s", out)
+	}
+	if out, code := runMain(t, repo, redirectsPath); code != exitMerged {
+		t.Fatalf("exit %d, want 0: %s", code, out)
+	}
+	want := table(t, "aaa-old=aaa", "bbb-old=bbb", "ccc-old=ccc")
+	if got := readFile(t, filepath.Join(repo, redirectsPath)); got != want {
+		t.Errorf("merged file:\n%s\nwant:\n%s", got, want)
+	}
+}
+
+// TestByHandModifyDelete: main deleted the table while the branch edited it, so
+// OUR version (stage 2, main's in a rebase) is the one missing, and the refusal
+// says so.
+func TestByHandModifyDelete(t *testing.T) {
+	requireGit(t)
+	repo, out, err := rebaseFixture(t,
+		table(t, "aaa-old=aaa"),
+		"",
+		table(t, "aaa-old=aaa", "ccc-old=ccc"),
+		false)
+	if err == nil {
+		t.Fatalf("a modify/delete of the table did not conflict:\n%s", out)
+	}
+	out, code := runMain(t, repo, redirectsPath)
+	if code != exitCannot {
+		t.Errorf("exit %d, want %d: %s", code, exitCannot, out)
+	}
+	if !strings.Contains(out, "our version (stage 2) is not staged") {
+		t.Errorf("the refusal does not name the missing side: %s", out)
+	}
+}
+
+// TestByHandUnreadableBase: a base stage the index LISTS but that cannot be read
+// is a failure (exit 1), never an empty base - that would make every base
+// tombstone look added by both sides and hand back one side's deletions.
+func TestByHandUnreadableBase(t *testing.T) {
+	requireGit(t)
+	repo, out, err := rebaseFixture(t,
+		table(t, "aaa-old=aaa", "ddd-old=ddd"),
+		table(t, "aaa-old=aaa", "bbb-old=bbb", "ddd-old=ddd"),
+		table(t, "aaa-old=aaa", "ccc-old=ccc"),
+		false)
+	if err == nil {
+		t.Skipf("git merged the edits itself, so there is no conflict to resolve:\n%s", out)
+	}
+	before := readFile(t, filepath.Join(repo, redirectsPath))
+	real := showStage
+	t.Cleanup(func() { showStage = real })
+	showStage = func(stage int, path string) ([]byte, error) {
+		if stage == 1 {
+			return nil, errors.New("simulated read failure")
+		}
+		return real(stage, path)
+	}
+	t.Chdir(repo)
+	var stdout, stderr strings.Builder
+	if code := byHand(redirectsPath, &stdout, &stderr); code != exitCannot {
+		t.Errorf("exit %d, want %d: %s", code, exitCannot, stderr.String())
+	}
+	if !strings.Contains(stderr.String(), "reading stage 1") {
+		t.Errorf("the refusal does not name the stage: %s", stderr.String())
+	}
+	if got := readFile(t, filepath.Join(repo, redirectsPath)); got != before {
+		t.Errorf("the conflicted file was rewritten:\n%s", got)
+	}
+}
+
 func TestUsage(t *testing.T) {
 	var stdout, stderr strings.Builder
 	if code := run(nil, &stdout, &stderr); code != exitUsage {
 		t.Errorf("no arguments: exit %d, want %d", code, exitUsage)
+	}
+	// --help is usage, never a path handed to git: run outside any repository it
+	// would otherwise be a git failure rather than the usage text.
+	t.Chdir(t.TempDir())
+	stderr.Reset()
+	if code := run([]string{"--help"}, &stdout, &stderr); code != exitUsage || !strings.Contains(stderr.String(), "usage:") {
+		t.Errorf("--help: exit %d, want %d with the usage: %s", code, exitUsage, stderr.String())
 	}
 }
 
@@ -296,16 +380,26 @@ func rebaseFixture(t *testing.T, base, main, branch string, driver bool) (string
 		git("config", "merge.redirectsjson.name", "three-way merge of the slug tombstone table")
 		git("config", "merge.redirectsjson.driver", "'"+self+"' %O %A %B %P")
 	}
+	// An empty version is the file ABSENT on that side: not yet created in the
+	// base (an add/add), or deleted on main or the branch (a modify/delete).
+	commit := func(body, msg string) {
+		t.Helper()
+		if body == "" {
+			if err := os.Remove(filepath.Join(repo, filepath.FromSlash(redirectsPath))); err != nil && !os.IsNotExist(err) {
+				t.Fatal(err)
+			}
+		} else {
+			write(redirectsPath, body)
+		}
+		git("add", "-A")
+		git("commit", "-qm", msg)
+	}
 	write(".gitattributes", readFile(t, filepath.Join("..", "..", ".gitattributes")))
-	write(redirectsPath, base)
-	git("add", "-A")
-	git("commit", "-qm", "base")
+	commit(base, "base")
 	git("checkout", "-qb", "branch")
-	write(redirectsPath, branch)
-	git("commit", "-qam", "branch")
+	commit(branch, "branch")
 	git("checkout", "-q", "main")
-	write(redirectsPath, main)
-	git("commit", "-qam", "main")
+	commit(main, "main")
 	git("checkout", "-q", "branch")
 
 	out, err := gitIn(repo, []string{runMainEnv + "=1"}, "rebase", "main")
