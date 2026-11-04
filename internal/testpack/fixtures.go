@@ -136,6 +136,16 @@ func WithoutPublisher() RecOpt {
 	return func(m map[string]any) { delete(m, "publisher") }
 }
 
+// WithPublisher sets the publisher of record (the fixture default is "Fixture Audio").
+func WithPublisher(p string) RecOpt {
+	return func(m map[string]any) { m["publisher"] = p }
+}
+
+// WithoutRuntime removes runtime_min, which is what makes a recording's length unstated.
+func WithoutRuntime() RecOpt {
+	return func(m map[string]any) { delete(m, "runtime_min") }
+}
+
 // WithRecLanguage sets the recording's language (the fixture default is en).
 func WithRecLanguage(l string) RecOpt {
 	return func(m map[string]any) { m["language"] = l }

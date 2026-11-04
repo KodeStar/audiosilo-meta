@@ -57,6 +57,9 @@ import (
 // title is REFUSED naming it - the record moved, and a stale review must not overwrite a
 // title nobody reviewed.
 //
+// Some ops are RECORD-ONLY (recordOnlyOps): the decision is the record and is never
+// applied.
+//
 //go:embed reviewed.json
 var reviewedFile []byte
 
@@ -222,14 +225,27 @@ func knownReviewOp(op string) bool {
 }
 
 // unappliableOps are the ops the audit emits that no repair carries out (a review, a
-// rename candidate, a sidecar re-point: each names a decision a rule may not make). An
-// acceptance of one would be counted as made mechanical while nothing applies it, so
-// it is refused at parse. internal/repair's TestAcceptableOpsAreAppliable pins this set
-// against the ops the repair can apply.
-var unappliableOps = map[string]bool{OpReview: true, OpRenameCandidate: true, OpRepointSidecar: true, OpMergePeople: true}
+// rename candidate, a sidecar re-point: each names a decision a rule may not make; a
+// people merge; a record-only link). An acceptance promoting one would be counted as
+// made mechanical while nothing applies it, so it is refused at parse unless the op is
+// record-only. internal/repair's TestAcceptableOpsAreAppliable pins this set against
+// the ops the repair can apply.
+var unappliableOps = map[string]bool{OpReview: true, OpRenameCandidate: true, OpRepointSidecar: true, OpMergePeople: true,
+	OpLinkLibrivoxRepackage: true}
 
-// AcceptableOp reports whether a reviewed decision may ACCEPT a proposal of op.
-// Ops lists every op the audit emits, so a test can hold this to the repair's appliers.
+// recordOnlyOps are the ops whose reviewed decision IS the record of a fact and is
+// never applied: link-librivox-repackage (R-REPACKAGE), a link between two recordings
+// of one work. Its accept means "link recorded" and its reject "not this project's
+// audio"; both withdraw the pair's proposal and stay in force while the work holds both
+// recordings, whether or not the detector still proposes the pair; neither may be
+// asserted. Such a decision never enters the generic proposal index, never promotes
+// anything to mechanical and never reaches metarepair (applyRepackageReviews).
+var recordOnlyOps = map[string]bool{OpLinkLibrivoxRepackage: true}
+
+// AcceptableOp reports whether a reviewed acceptance of op PROMOTES its proposal to
+// mechanical: the ops a repair applies. Ops lists every op the audit emits, so a test
+// can hold this to the repair's appliers. A record-only op (recordOnlyOps) may still be
+// accepted, promoting nothing.
 func AcceptableOp(op string) bool { return knownReviewOp(op) && !unappliableOps[op] }
 
 // Ops returns every op opPhrase renders, review included, sorted: every op the
@@ -269,13 +285,17 @@ func parseReviewed(raw []byte) ([]reviewedDecision, error) {
 			return nil, fmt.Errorf("entry %d: bad decision %q", i, r.Decision)
 		}
 		if r.Decision == "assert" {
+			// This is where an assertion of a record-only op (link-librivox-repackage) is
+			// refused: it is not in assertClass, and an accept already records a pair no
+			// detector proposes.
 			if err := validAssertion(r); err != nil {
 				return nil, fmt.Errorf("entry %d: %w", i, err)
 			}
 		}
 		// A review (or any op no repair carries out) has no mechanical action, so
 		// promoting one would be counted as made mechanical while nothing applies it.
-		if r.Decision == "accept" && !AcceptableOp(r.Op) {
+		// A record-only op's acceptance promotes nothing: it IS what it records.
+		if r.Decision == "accept" && !AcceptableOp(r.Op) && !recordOnlyOps[r.Op] {
 			return nil, fmt.Errorf("entry %d: no repair applies a %q proposal, so it cannot be accepted", i, r.Op)
 		}
 		if !oneLineTrimmed(r.Reason) || strings.ContainsAny(r.Reason, "\u2013\u2014") {
@@ -292,6 +312,12 @@ func parseReviewed(raw []byte) ([]reviewedDecision, error) {
 		if r.Op == OpMergePeople && (r.Decision != "reject" || r.Target == "" || len(r.Others) == 0 ||
 			r.Series != "" || r.Field != "" || r.From != "" || r.To != "" || slices.Contains(r.Others, r.Target)) {
 			return nil, fmt.Errorf("entry %d: a %s decision is a reject naming a target and the distinct others, nothing else", i, OpMergePeople)
+		}
+		if r.Op == OpLinkLibrivoxRepackage && (r.Target == "" || !model.ValidSlug(r.From) ||
+			!model.ValidSlug(r.To) || r.From == r.To || r.Series != "" || r.Field != "" || len(r.Others) > 0) {
+			return nil, fmt.Errorf("entry %d: a %s decision is an accept (the link recorded) or a reject naming the work "+
+				"(target), the retail recording (from) and the LibriVox recording (to), two different recording ids, nothing else", i,
+				OpLinkLibrivoxRepackage)
 		}
 		if r.Op == OpAddWorkLink || r.Op == OpAddSeriesLink {
 			if !model.ValidSlug(r.Target) || !model.ValidSlug(r.To) {
@@ -584,6 +610,12 @@ const (
 	// mistyped). The importer still honours it, so it is never stale; it is listed
 	// so a typo surfaces.
 	statusUnresolved outcomeStatus = "unresolved"
+	// statusLinked and statusSuppressed are a link-librivox-repackage acceptance and
+	// rejection in force: the work still holds both recordings it names. Neither
+	// depends on a fresh proposal meeting it (the decision is the record of the link),
+	// and either withdraws the pair's proposal. See repackLinkStatus.
+	statusLinked     outcomeStatus = "linked"
+	statusSuppressed outcomeStatus = "suppressed"
 	// statusWithholds is a rejection whose only match is an assertion of the same
 	// proposal: it is what keeps the assertion out, so it is never stale.
 	statusWithholds outcomeStatus = "rejected-an-assertion"
@@ -607,8 +639,8 @@ type decisionOutcome struct {
 type reviewedTally struct{ All []decisionOutcome }
 
 // Outcomes are every decision that is not STALE - those that met a fresh proposal,
-// plus the census-only and unresolved merge rejections, which met none but are
-// still in force; Stale the rest.
+// plus the census-only and unresolved merge rejections and the linked or suppressed
+// record-only decisions, which met none but are still in force; Stale the rest.
 func (t reviewedTally) Outcomes() []decisionOutcome { return t.filter(false) }
 func (t reviewedTally) Stale() []decisionOutcome    { return t.filter(true) }
 func (t reviewedTally) Entries() int                { return len(t.All) }
@@ -641,6 +673,9 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 	for j, r := range rs {
 		if r.Op != OpReview {
 			resolved[j] = resolvedProposal(r.proposal(), "", reds)
+			if recordOnlyOps[r.Op] {
+				continue // settled on its own terms by applyRepackageReviews, never promoted
+			}
 			if why := retiredSubject(r, resolved[j], ix); why != "" {
 				// It matches nothing and sources nothing: see retiredSubject.
 				statuses[j], whys[j] = statusStale, why
@@ -663,6 +698,7 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 			byKey[key] = append(byKey[key], j)
 		}
 	}
+	applyRepackageReviews(rep, rs, resolved, statuses, whys, ix)
 	// Matches are row positions, not pointers, until sourcing has appended its rows.
 	type row struct {
 		c *findings
