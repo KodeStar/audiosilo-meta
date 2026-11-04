@@ -440,6 +440,16 @@ later (meta#2752). A row of any other source (OpenAudible, Libation, AudioSilo
 books, libex) that attaches to a catalogued work, or is relocated onto one,
 follows the same rule, its credits listed there by ASIN.
 
+No import ever credits the shared catch-all person. libex refuses a row naming
+anyone whose name slugs to nothing; a user-library import (OpenAudible,
+Libation, AudioSilo books) keeps the book and leaves that author, contributor
+or narrator off it, listing each under `credits not recorded` by ASIN with the
+reason `unsluggable` (also in a library-import issue's intake notes). A book
+left with no individual author is skipped as `missing-author`, and one left
+with no narrator as `missing-narrator`, each with a warning naming the names;
+the library-import intake verdict says how many books were skipped this way
+(they need a maintainer) rather than suggesting the file is the wrong format.
+
 A match the rules cannot settle is never guessed: the project is skipped and
 listed in the import report's **worklist**, one line per project with its id,
 title, authors, a reason code and the catalogued works involved:
@@ -486,8 +496,8 @@ whose name slugs to nothing (Greek, Cyrillic, CJK) is a person of their own at
 `librivox-reader-<reader id>` (`librivox-reader-11294`), the name kept as
 written, so two such readers are never one record and a rerun finds them by
 id; an author or translator whose name slugs to nothing stays a credit not
-recorded (above). metacheck refuses the shared catch-all `person` when LibriVox
-states it (a librivox source or id).
+recorded (above). metacheck refuses the shared catch-all `person`, and any
+work or recording crediting it, whatever the source.
 A reader id is a person of its own even when the name is not: when the slug of
 a reader's name is already held by a person carrying a different reader id
 (LibriVox has several accounts called "Martina"), the reader is created at

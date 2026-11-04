@@ -635,7 +635,7 @@ func TestLineMergeDoesNotConvergeOnAnAddAddPackConflict(t *testing.T) {
 // the line stops reaching the rebase output - a reworded echo, a git that stops
 // surfacing a driver's stdout - that step silently disarms and the branch is
 // pushed un-normalized. The driver subtests assert it, so it fails here instead.
-const driverMergedMarker = "merged both sides"
+const driverMergedMarker = "merged both sides' records"
 
 // TestPackMergeDriver runs the script the way the intake sweep runs it: as the
 // merge driver .gitattributes names, so the entry maps are merged before any line
@@ -842,8 +842,8 @@ func TestPackMergeRefusesANonPackFile(t *testing.T) {
 	branch := redirects(`"old-one":"live-one","old-three":"live-three"`)
 
 	// The driver is configured for this path deliberately, overriding
-	// .gitattributes' own exclusion: the point is that the script refuses even when
-	// something hands it the file.
+	// .gitattributes' routing of it to its own driver (cmd/metaredirectmerge): the
+	// point is that the script refuses even when something hands it the file.
 	repo := t.TempDir()
 	git := func(args ...string) string {
 		t.Helper()

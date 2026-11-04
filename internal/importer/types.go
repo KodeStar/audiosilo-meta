@@ -453,6 +453,15 @@ type Summary struct {
 	// examples and writes a conflict-worklist row per refusal, because it is a
 	// review queue rather than a no-op.
 	SkippedDuplicateIdentity int
+	// SkippedUnsluggable counts rows skipped because names that slug to nothing
+	// left them no identity: every individual author's name (missing-author) or
+	// every narrator's (missing-narrator) is in a script the slug rule folds
+	// away, and such a credit is left off rather than credited to the shared
+	// catch-all (unrecorded.go). A LibriVox row is a worklist row instead
+	// (author-unsluggable) and is not counted. Counted apart from the other
+	// skips so a caller can say why an export of such books imported nothing
+	// (internal/issueform's import composer), rather than blaming the file.
+	SkippedUnsluggable int
 	// SeriesClaimsDropped counts the series claims an ExistingSeriesOnly run
 	// discarded because they would have FOUNDED a series. The row itself is
 	// unaffected - it imports, and every other claim it makes is placed - so
@@ -582,8 +591,9 @@ type Summary struct {
 	// person such a credit would have created is not created (an orphan
 	// record, meta#2760), so these are kept for recording-level credits
 	// (meta#2752) to pick up. A credit whose name slugs to nothing carries
-	// Reason "unsluggable": any source's on an attach, and a LibriVox one
-	// whether the row attached or created its work (librivoxauthors.go rule 2).
+	// Reason "unsluggable", whether the row attached or created its work, and
+	// so does a narrator whose name slugs to nothing (Roles ["narrator"]): no
+	// importer credits the shared catch-all person (unrecorded.go, meta#2778).
 	// A row the --attach-editions rule attaches reports its credits here too.
 	UnrecordedCredits []UnrecordedCredit
 	// Notes are aggregated lines about what a run DID, where the doing is a
@@ -605,7 +615,8 @@ type Summary struct {
 // (internal/issueform's import composer, which branches its duplicate verdict on
 // it) so that adding a counter here is visibly a decision about this verdict too.
 //
-// Deliberately excluded: Skipped and SkippedDuplicateIdentity, which are both the
+// Deliberately excluded: Skipped, SkippedDuplicateIdentity and SkippedUnsluggable,
+// which are all the
 // opposite of a change (the second is a REFUSAL that its caller reports on its own
 // terms - see internal/issueform's import composer), and the
 // Enriched*/Matched/NotInCatalog family, which only a libex mode ever sets.

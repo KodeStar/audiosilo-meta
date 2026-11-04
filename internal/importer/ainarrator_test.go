@@ -2,6 +2,7 @@ package importer
 
 import (
 	"os"
+	"reflect"
 	"strings"
 	"testing"
 
@@ -692,9 +693,11 @@ func TestSyntheticNarratorNameFoldsEveryShape(t *testing.T) {
 
 // TestAudiosiloBooksKeepsTheNonAIRefusalsLibexOnly pins the deliberate scope of
 // the gate: an audiosilo-books entry is a USER's own library, so a credit that
-// slugs away to nothing keeps today's behaviour (the catch-all conflation, which
-// is visible to the user whose book it is) rather than losing them their book.
-// Only the AI vocabulary crosses over - see the note above refuseAIBooks.
+// slugs away to nothing is not a parse-layer refusal (credit-not-a-person) as it
+// is for libex. Only the AI vocabulary crosses over - see the note above
+// refuseAIBooks. The planner then leaves such a credit off (meta#2778,
+// unsluggable_test.go), and this book, whose only author it is, has no author
+// left: a missing-author skip, never a work credited to the shared catch-all.
 func TestAudiosiloBooksKeepsTheNonAIRefusalsLibexOnly(t *testing.T) {
 	const export = `{
   "format": "audiosilo-books",
@@ -710,10 +713,10 @@ func TestAudiosiloBooksKeepsTheNonAIRefusalsLibexOnly(t *testing.T) {
   ]
 }`
 	sum, _ := runAudiosiloBooks(t, export, false)
-	if sum.NewWorks != 1 {
-		t.Errorf("NewWorks = %d, want 1: a user's own library is not refused for an unslugabble name", sum.NewWorks)
-	}
 	if sum.SkippedRows != 0 {
-		t.Errorf("SkippedRows = %d, want 0", sum.SkippedRows)
+		t.Errorf("SkippedRows = %d, want 0: a user's own library is not refused at parse for an unsluggable name", sum.SkippedRows)
+	}
+	if want := []RowSkip{{ASIN: "B0ABSKO001", Reason: RefusalMissingAuthor}}; sum.NewWorks != 0 || !reflect.DeepEqual(sum.Skips, want) {
+		t.Errorf("NewWorks = %d, skips = %+v; want 0 and %+v", sum.NewWorks, sum.Skips, want)
 	}
 }
