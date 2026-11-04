@@ -1769,6 +1769,10 @@ type creditContext struct {
 func (p *planner) creditContextOf(books []sourceBook) creditContext {
 	author, narrator := p.creditCensusesOf(books)
 	census := p.catalogueInitials()
+	// decided is captured BY VARIABLE: it is nil while the pre-pass below runs
+	// (landingsKeptApart then falls back to the committed initials) and the
+	// batch decision once assigned, so the census's veto judges where a name
+	// finally lands. Do not copy it into the closure.
 	var decided initialsSurvivors
 	if p.apart != nil {
 		committed := census.committed()
