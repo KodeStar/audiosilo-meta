@@ -1043,7 +1043,8 @@ type PersonDetail struct {
 	// the recording's own credits (a LibriVox project's translator, the
 	// LIBRIVOX RECORDING layer), paged like Narrated. Omitted, with its total,
 	// when there are none - and on an artifact older than
-	// librivoxRecordingSchemaVersion. A translator a work credits is in Authored
+	// librivoxRecordingSchemaVersion; a page past the list's end omits
+	// Translated alone (its total still says how many there are). A translator a work credits is in Authored
 	// already (the work's authors carry its translators).
 	Translated      []NarratedEntry `json:"translated,omitempty"`
 	TranslatedTotal int             `json:"translated_total,omitempty"`
@@ -1051,7 +1052,7 @@ type PersonDetail struct {
 	Offset          int             `json:"offset"`
 }
 
-// The person page's four queries. Each total counts over exactly the join its
+// The person page's queries, a total and a page per list. Each total counts over exactly the join its
 // page query pages, so the total and the list can never disagree; they are named
 // constants so the index guard EXPLAINs what actually runs.
 const (
@@ -1071,9 +1072,10 @@ const (
 		`WHERE rc.person_id=? AND rc.role = '` + model.RoleTranslator + `' ORDER BY w.title, rc.work_id, rc.recording_id LIMIT ? OFFSET ?`
 )
 
-// Person returns one page of a Person's authored and narrated credits. limit
-// and offset are applied to each list independently (both are ordered by work
-// title, then id, so the window is stable across requests on one artifact).
+// Person returns one page of a Person's authored, narrated and (version 9)
+// recording-translated credits. limit and offset are applied to each list
+// independently (each is ordered by work title, then id, so the window is
+// stable across requests on one artifact).
 func (s *DB) Person(id string, limit, offset int) (*PersonDetail, error) {
 	var d PersonDetail
 	var sortName sql.NullString
