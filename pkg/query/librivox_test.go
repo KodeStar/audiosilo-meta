@@ -301,7 +301,34 @@ func TestLibrivoxRecordingLayerOnAnOlderArtifact(t *testing.T) {
 		"DROP TABLE recording_credits", "DROP TABLE chapter_readers", "DROP TABLE recording_librivox_genres",
 		"ALTER TABLE recordings DROP COLUMN librivox_title", "ALTER TABLE chapters DROP COLUMN section_number",
 	)
+	assertPreRecordingLayerFeed(t, downgradedServer(t, path))
+}
+
+// TestLibrivoxRecordingLayerUnfilled: a version 9 artifact whose layer is EMPTY
+// (a release cut from the code before the backfill data landed) answers the
+// feed as version 8 does, rather than naming no translator or genre and 404ing
+// every ?genre=.
+func TestLibrivoxRecordingLayerUnfilled(t *testing.T) {
+	path := artifacttest.Altered(t, librivoxCatalog(t), 9,
+		"DELETE FROM recording_credits", "DELETE FROM chapter_readers", "DELETE FROM recording_librivox_genres",
+		"UPDATE recordings SET librivox_title = NULL", "UPDATE chapters SET section_number = NULL",
+	)
+	assertPreRecordingLayerFeed(t, downgradedServer(t, path))
+}
+
+// TestLibrivoxRecordingLayerFilledByTitlesAlone: one LibriVox recording carrying
+// its project's title is a filled layer, with no genre row anywhere.
+func TestLibrivoxRecordingLayerFilledByTitlesAlone(t *testing.T) {
+	path := artifacttest.Altered(t, librivoxCatalog(t), 9, "DELETE FROM recording_librivox_genres")
 	ts := downgradedServer(t, path)
+	if b := feedBooks(t, ts.URL, LibrivoxFeedPath+"?id=801"); len(b) != 1 || b[0]["title"] != "Candide (version 2)" {
+		t.Errorf("801 = %v, want the project's own title", b)
+	}
+}
+
+// assertPreRecordingLayerFeed checks the feed's version 8 answer over the fixture.
+func assertPreRecordingLayerFeed(t *testing.T, ts *httptest.Server) {
+	t.Helper()
 	byID := map[string]map[string]any{}
 	for _, b := range feedBooks(t, ts.URL, LibrivoxFeedPath+"?extended=1") {
 		byID[b["id"].(string)] = b
@@ -773,5 +800,39 @@ func TestExactTitleProbeFiltersSourceInsideItsWindow(t *testing.T) {
 		if got := workIDsOf(t, body, "results"); code != http.StatusOK || !slices.Equal(got, []string{"zz-poems-librivox"}) {
 			t.Errorf("GET %s = %d %v, want [zz-poems-librivox]", path, code, got)
 		}
+	}
+}
+
+// TestPersonPageListsARecordingOnlyTranslator: a translator credited only in a
+// recording's own credits (an attach to a catalogued work records no work
+// credit) is listed on their person page under translated, with its total; a
+// version 8 artifact names no such list.
+func TestPersonPageListsARecordingOnlyTranslator(t *testing.T) {
+	cat := librivoxCatalog(t)
+	for _, w := range cat.Works {
+		if w.ID != lvKafkaWork {
+			continue
+		}
+		w.Authors = slices.DeleteFunc(w.Authors, func(a string) bool { return a == "ian-johnston" })
+		w.Credits = nil
+	}
+	_, ts := serveDB(t, artifacttest.Build(t, cat), HandlerOptions{})
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/people/ian-johnston")
+	if code != http.StatusOK {
+		t.Fatalf("person page = %d %v", code, body)
+	}
+	tr, _ := body["translated"].([]any)
+	if body["translated_total"] != float64(1) || len(tr) != 1 || len(body["authored"].([]any)) != 0 {
+		t.Fatalf("person page = %v, want one translated recording and nothing authored", body)
+	}
+	if e := tr[0].(map[string]any); e["recording_id"] != lvKafkaRec || e["work"].(map[string]any)["id"] != lvKafkaWork {
+		t.Errorf("translated entry = %v", e)
+	}
+
+	old := artifacttest.Altered(t, cat, 8,
+		"DROP TABLE recording_credits", "DROP TABLE chapter_readers", "DROP TABLE recording_librivox_genres",
+		"ALTER TABLE recordings DROP COLUMN librivox_title", "ALTER TABLE chapters DROP COLUMN section_number")
+	if _, body := artifacttest.GetJSON(t, downgradedServer(t, old).URL, "/api/v1/people/ian-johnston"); body["translated"] != nil || body["translated_total"] != nil {
+		t.Errorf("v8 person page = %v, want no translated list", body)
 	}
 }

@@ -230,11 +230,22 @@ func (p *planner) librivoxReaderOn(c librivoxCredit, narrators map[string]bool) 
 // written on every chapter, absent where a section names none, unless the
 // recording has ONE narrator who reads every section - then on none, which
 // already says so (model.Chapter.Readers).
+//
+// Stored chapters that are NOT the sections one to one (another source's list,
+// or an edit since) carry no section's number or readers: any this pass wrote
+// earlier is cleared, so a reader who has since stopped being a narrator can
+// never be left on a chapter (which pkg/check would refuse, failing the run).
 func (p *planner) restateLibrivoxChapters(rec map[string]any, f *librivoxFacts, set func(map[string]any, string, any)) {
 	chs, _ := rec["chapters"].([]any)
 	if len(chs) == 0 || len(chs) != len(f.sections) {
 		if len(f.sections) > 0 {
 			p.summary.LibrivoxRestated.Chapterless++
+		}
+		for _, v := range chs {
+			if ch, ok := v.(map[string]any); ok {
+				set(ch, "readers", nil)
+				set(ch, "section_number", nil)
+			}
 		}
 		return
 	}

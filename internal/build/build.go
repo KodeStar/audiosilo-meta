@@ -119,6 +119,8 @@ CREATE INDEX idx_recording_sources_type ON recording_sources(type, work_id, reco
 -- verbatim, in LibriVox's order. The LibriVox feed reads both per recording.
 CREATE TABLE recording_credits (work_id TEXT NOT NULL, recording_id TEXT NOT NULL, person_id TEXT NOT NULL, role TEXT NOT NULL, ord INTEGER NOT NULL);
 CREATE INDEX idx_recording_credits_recording ON recording_credits(work_id, recording_id);
+-- A person page's translated list (pkg/query translatedPageSQL).
+CREATE INDEX idx_recording_credits_person ON recording_credits(person_id);
 CREATE TABLE recording_librivox_genres (work_id TEXT NOT NULL, recording_id TEXT NOT NULL, genre TEXT NOT NULL, ord INTEGER NOT NULL);
 CREATE INDEX idx_recording_librivox_genres_recording ON recording_librivox_genres(work_id, recording_id);
 CREATE TABLE recording_narrators (work_id TEXT NOT NULL, recording_id TEXT NOT NULL, person_id TEXT NOT NULL, ord INTEGER NOT NULL);

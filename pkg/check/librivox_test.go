@@ -272,6 +272,13 @@ func TestLibrivoxRuleViolations(t *testing.T) {
 			want: `chapter 1 reader "author-one" is not one of the recording's narrators`,
 		},
 		{
+			name: "readers on every chapter of a one-narrator recording",
+			mutate: func(f map[string]string) {
+				f[lvRecRel] = librivoxRecording(801, strings.Replace(lvFidelityChapters, `["author-one","narrator-one"]`, `["narrator-one"]`, 1))
+			},
+			want: "every chapter lists readers on a recording with one narrator",
+		},
+		{
 			name: "a chapter reader who does not exist",
 			mutate: func(f map[string]string) {
 				f[lvRecRel] = withFidelity(librivoxRecording(801, strings.Replace(lvFidelityChapters, `["narrator-one"]`, `["nobody-here"]`, 1)))
@@ -362,5 +369,18 @@ func TestLifeYearsBC(t *testing.T) {
 	writeEntities(t, dir, files)
 	if res := Load(dir); !res.OK() {
 		t.Fatalf("BC life years should validate, got:\n%s", joinProblems(res.Problems))
+	}
+}
+
+// TestLibrivoxOneNarratorWithAnUnreadSection: a one-narrator recording may list
+// its narrator on some chapters when another chapter states no reader - that
+// is not the omitted spelling, it says the unread section states none.
+func TestLibrivoxOneNarratorWithAnUnreadSection(t *testing.T) {
+	dir := t.TempDir()
+	files := baseValid()
+	files[lvRecRel] = librivoxRecording(801, `[{"length_ms":2992000,"readers":["narrator-one"],"section_number":0,"start_ms":0,"title":"I"},{"length_ms":3231000,"section_number":1,"start_ms":2992000,"title":"II"}]`)
+	writeEntities(t, dir, files)
+	if res := Load(dir); !res.OK() {
+		t.Fatalf("should validate, got:\n%s", joinProblems(res.Problems))
 	}
 }

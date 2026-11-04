@@ -440,3 +440,34 @@ func TestLibrivoxProjectTitleAndGenresAreDecoded(t *testing.T) {
 		t.Errorf("librivox_genres = %v, want %v", f.LibrivoxGenres, want)
 	}
 }
+
+func TestLibrivoxStaleChapterReadersAreCleared(t *testing.T) {
+	// The held recording's chapters are no longer the project's sections (two
+	// stored, three stated) but still carry readers and a section number an
+	// earlier run wrote - one reader no longer a narrator. The pass clears both
+	// rather than leave a reader the run's validation would refuse.
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, map[string]string{
+		personAddr("someone-else"): testpack.PersonJSON(t, "someone-else", "Someone Else"),
+		personAddr("gone-reader"):  testpack.PersonJSON(t, "gone-reader", "Gone Reader"),
+		personAddr("franz-kafka"):  testpack.PersonJSON(t, "franz-kafka", "Franz Kafka"),
+		workAddr("metamorphosis"):  testpack.WorkJSON(t, "metamorphosis", "Metamorphosis", testpack.WithAuthors("franz-kafka")),
+		recAddr("metamorphosis", "se"): testpack.WithFields(t, testpack.RecJSON(t, "se", "metamorphosis",
+			testpack.WithNarrators("someone-else")), map[string]any{"librivox_id": 527, "chapters": []map[string]any{
+			{"title": "I", "start_ms": 0, "length_ms": 1000, "readers": []string{"gone-reader"}, "section_number": 0},
+			{"title": "II", "start_ms": 1000, "length_ms": 1000, "readers": []string{"someone-else"}},
+		}}),
+	})
+	sum := runLibrivox(t, librivoxFixture, dataDir, mustLibrivoxIDs("527"))
+	if sum.LibrivoxRestated.Chapterless != 1 {
+		t.Errorf("chapterless = %d, want 1", sum.LibrivoxRestated.Chapterless)
+	}
+	for i, ch := range lvFidelityOf(t, dataDir, "metamorphosis", "se").Chapters {
+		if ch.Readers != nil || ch.SectionNumber != nil {
+			t.Errorf("chapter %d keeps readers %v / number %v, want both cleared", i, ch.Readers, deref(ch.SectionNumber))
+		}
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("tree failed validation:\n%v", res.Problems)
+	}
+}

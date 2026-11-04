@@ -525,6 +525,9 @@ func personDescription(d *query.PersonDetail) string {
 	if d.NarratedTotal > 0 {
 		parts = append(parts, "narrator of "+plural(d.NarratedTotal, "recording", "recordings"))
 	}
+	if d.TranslatedTotal > 0 {
+		parts = append(parts, "translator of "+plural(d.TranslatedTotal, "recording", "recordings"))
+	}
 	if len(parts) == 0 {
 		return truncateDescription(d.Name + " in the open " + siteName + " audiobook database.")
 	}
@@ -737,6 +740,15 @@ const factSheetTemplates = `
 {{- end}}
 </ul>
 {{- end}}
+{{- if .Translated}}
+<h2>Recordings translated</h2>
+<p class="text-dim">{{.TranslatedCaption}}</p>
+<ul>
+{{- range .Translated}}
+<li><a href="/works/{{.ID}}">{{.Title}}</a>{{if .Byline}} <span class="text-dim">{{.Byline}}</span>{{end}}</li>
+{{- end}}
+</ul>
+{{- end}}
 </section>{{end}}
 
 {{define "series"}}<section class="container">
@@ -896,8 +908,12 @@ type personView struct {
 	Name            string
 	Authored        []workLink
 	Narrated        []workLink
+	Translated      []workLink
 	AuthoredCaption string
 	NarratedCaption string
+	// TranslatedCaption names the window over the recordings the person is
+	// the recording-level translator of (query.PersonDetail.Translated).
+	TranslatedCaption string
 }
 
 func newPersonView(d *query.PersonDetail) personView {
@@ -905,6 +921,12 @@ func newPersonView(d *query.PersonDetail) personView {
 		Name:            d.Name,
 		AuthoredCaption: windowCaption(len(d.Authored), d.AuthoredTotal),
 		NarratedCaption: windowCaption(len(d.Narrated), d.NarratedTotal),
+	}
+	if d.TranslatedTotal > 0 {
+		v.TranslatedCaption = windowCaption(len(d.Translated), d.TranslatedTotal)
+	}
+	for _, entry := range d.Translated {
+		v.Translated = append(v.Translated, cardLink(entry.Work))
 	}
 	for _, card := range d.Authored {
 		v.Authored = append(v.Authored, cardLink(card))

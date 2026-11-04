@@ -434,11 +434,16 @@ func (p *planner) reportEstimates() {
 func msToMinutes(ms int64) int { return int((ms + 30000) / 60000) }
 
 // chapterMinutes is a chapter list's total length in whole minutes, over the
-// importer's own chapters or a loaded recording's (the two have one shape).
+// importer's own chapters or a loaded recording's.
 func chapterMinutes[C outChapter | model.Chapter](chs []C) int {
 	var ms int64
 	for _, c := range chs {
-		ms += model.Chapter(c).LengthMS
+		switch c := any(c).(type) {
+		case outChapter:
+			ms += c.LengthMS
+		case model.Chapter:
+			ms += c.LengthMS
+		}
 	}
 	return msToMinutes(ms)
 }

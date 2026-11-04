@@ -39,9 +39,8 @@ import (
 //     own LibriVox genre names (recording.librivox_genres), exactly as LibriVox
 //     filters, never widened through the vocabulary mapping. LibriVox's own "^"
 //     on author matches the END of the name (an inverted LIKE); here it is the
-//     prefix it documents. On an artifact older than
-//     librivoxRecordingSchemaVersion (no project title or genre names stored)
-//     title is the work's title and genre a LibriVox name the importer maps or a
+//     prefix it documents. Without a filled recording layer (librivoxFeedLayer:
+//     no project title or genre names stored) title is the work's title and genre a LibriVox name the importer maps or a
 //     vocabulary value, as before.
 //   - extended=1 adds url_iarchive, sections, genres and translators;
 //     coverart=1 adds coverart_jpg, coverart_pdf and coverart_thumbnail (null when
@@ -72,10 +71,12 @@ import (
 // in the importer's fixture. A person's LibriVox id and years come from the
 // person record, so a translator the importer resolved by name alone names none.
 //
-// On an artifact older than librivoxRecordingSchemaVersion the answer is what
-// the mirror stored before: the work's title without its repeat markers, the
-// 1-based position as section_number, the work's translators, the vocabulary
-// genres, and readers only for a one-narrator recording.
+// On an artifact older than librivoxRecordingSchemaVersion, or one that carries
+// the layer EMPTY (a release cut before the backfill data landed:
+// librivoxFeedLayer), the answer is what the mirror stored before: the work's
+// title without its repeat markers, the 1-based position as section_number, the
+// work's translators, the vocabulary genres, and readers only for a
+// one-narrator recording.
 //
 // No results is LibriVox's 404 {"error": "Audiobooks could not be found"}, which
 // is also every answer of an artifact older than librivoxSchemaVersion (it holds
@@ -381,7 +382,7 @@ func (s *DB) librivoxFeed(ctx context.Context, p librivoxFeedParams) ([]map[stri
 	if !s.hasLibrivoxLayer() {
 		return nil, nil
 	}
-	recordingLayer := s.hasLibrivoxRecordingLayer()
+	recordingLayer := s.librivoxFeedLayer()
 	query, args := librivoxFeedQuery(p, recordingLayer)
 	rows, err := s.db.QueryContext(ctx, query, args...)
 	if err != nil {

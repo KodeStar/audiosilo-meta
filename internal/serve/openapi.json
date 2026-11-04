@@ -1917,6 +1917,8 @@
           },
           "authored_total": { "type": "integer", "description": "UNPAGED count of authored works." },
           "narrated_total": { "type": "integer", "description": "UNPAGED count of narration credits." },
+          "translated": { "type": "array", "items": { "$ref": "#/components/schemas/NarratedEntry" }, "description": "The recordings this person is credited on as translator in the recording's own credits (a LibriVox project's translator), paged like `narrated`. Omitted when there are none, and on an artifact older than version 9. A translator a work credits is in `authored` already." },
+          "translated_total": { "type": "integer", "description": "UNPAGED count of recording translator credits. Omitted with `translated`." },
           "limit": { "type": "integer", "description": "The window that was applied to each list." },
           "offset": { "type": "integer" }
         }

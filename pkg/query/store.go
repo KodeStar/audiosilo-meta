@@ -77,6 +77,15 @@ type DB struct {
 	// pays no query there.
 	seriesTranslators map[string]bool
 
+	// librivoxRecordingFilled is whether a version 9 artifact's LIBRIVOX
+	// RECORDING layer holds anything (librivoxRecordingFilledSQL), asked once at
+	// load. A release cut from the code before the backfill data lands claims
+	// version 9 with every LibriVox recording still unrestated; answering the
+	// feed from it would name no translator, no genre and no section reader and
+	// 404 every ?genre=, so until the layer is filled the feed keeps its version
+	// 8 answer (librivoxFeedLayer).
+	librivoxRecordingFilled bool
+
 	// log is the injected logger (SetLogger), for the query layer's degradation
 	// notices (a request that serves a lesser answer rather than failing).
 	// metaserve sets it when it adopts the artifact; a DB opened without one - a
@@ -363,6 +372,9 @@ func (s *DB) loadStats() error {
 				return fmt.Errorf("%s: artifact schema_version %d requires the LibriVox recording layer: %w",
 					s.path, s.schemaVersion, err)
 			}
+		}
+		if err := s.db.QueryRow(librivoxRecordingFilledSQL).Scan(&s.librivoxRecordingFilled); err != nil {
+			return fmt.Errorf("%s: LibriVox recording layer: %w", s.path, err)
 		}
 	}
 	s.stats = st

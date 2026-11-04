@@ -84,6 +84,21 @@ func (s *DB) hasLibrivoxRecordingLayer() bool {
 	return s.schemaVersion >= librivoxRecordingSchemaVersion
 }
 
+// librivoxRecordingFilledSQL asks whether the LIBRIVOX RECORDING layer holds
+// anything: a LibriVox genre name, or a LibriVox recording carrying its
+// project's title (walked through idx_recordings_librivox, stopping at the
+// first). Every restated LibriVox recording carries the title, so an artifact
+// whose LibriVox recordings were never restated answers false.
+const librivoxRecordingFilledSQL = `SELECT EXISTS (SELECT 1 FROM recording_librivox_genres) ` +
+	`OR EXISTS (SELECT 1 FROM recordings WHERE librivox_id IS NOT NULL AND librivox_title IS NOT NULL)`
+
+// librivoxFeedLayer reports whether the LibriVox-shaped feed answers from the
+// LIBRIVOX RECORDING layer: the artifact carries it AND it is filled
+// (DB.librivoxRecordingFilled). Otherwise the feed gives its version 8 answer.
+func (s *DB) librivoxFeedLayer() bool {
+	return s.hasLibrivoxRecordingLayer() && s.librivoxRecordingFilled
+}
+
 // ---- lookup?librivox_id= ------------------------------------------------------
 
 // librivoxLookupSQL resolves a LibriVox project id to its recording through

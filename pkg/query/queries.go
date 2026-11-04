@@ -1039,8 +1039,16 @@ type PersonDetail struct {
 	Narrated      []NarratedEntry `json:"narrated"`
 	AuthoredTotal int             `json:"authored_total"`
 	NarratedTotal int             `json:"narrated_total"`
-	Limit         int             `json:"limit"`
-	Offset        int             `json:"offset"`
+	// Translated is the recordings this person is credited on as translator in
+	// the recording's own credits (a LibriVox project's translator, the
+	// LIBRIVOX RECORDING layer), paged like Narrated. Omitted, with its total,
+	// when there are none - and on an artifact older than
+	// librivoxRecordingSchemaVersion. A translator a work credits is in Authored
+	// already (the work's authors carry its translators).
+	Translated      []NarratedEntry `json:"translated,omitempty"`
+	TranslatedTotal int             `json:"translated_total,omitempty"`
+	Limit           int             `json:"limit"`
+	Offset          int             `json:"offset"`
 }
 
 // The person page's four queries. Each total counts over exactly the join its
@@ -1054,6 +1062,13 @@ const (
 		`ORDER BY w.title, wa.work_id LIMIT ? OFFSET ?`
 	narratedPageSQL = `SELECT rn.work_id, rn.recording_id FROM recording_narrators rn JOIN works w ON w.id = rn.work_id ` +
 		`WHERE rn.person_id=? ORDER BY w.title, rn.work_id, rn.recording_id LIMIT ? OFFSET ?`
+
+	// The translated list (librivoxRecordingSchemaVersion): a recording's own
+	// translator credits, through idx_recording_credits_person.
+	translatedTotalSQL = `SELECT COUNT(*) FROM recording_credits rc JOIN works w ON w.id = rc.work_id ` +
+		`WHERE rc.person_id=? AND rc.role = '` + model.RoleTranslator + `'`
+	translatedPageSQL = `SELECT rc.work_id, rc.recording_id FROM recording_credits rc JOIN works w ON w.id = rc.work_id ` +
+		`WHERE rc.person_id=? AND rc.role = '` + model.RoleTranslator + `' ORDER BY w.title, rc.work_id, rc.recording_id LIMIT ? OFFSET ?`
 )
 
 // Person returns one page of a Person's authored and narrated credits. limit
@@ -1098,31 +1113,51 @@ func (s *DB) Person(id string, limit, offset int) (*PersonDetail, error) {
 		d.Authored = []*WorkCard{}
 	}
 
-	nrows, err := s.db.Query(narratedPageSQL, id, limit, offset)
+	if d.Narrated, err = s.recordingEntries(narratedPageSQL, id, limit, offset); err != nil {
+		return nil, err
+	}
+	if s.hasLibrivoxRecordingLayer() {
+		if d.TranslatedTotal, err = s.scalarInt(translatedTotalSQL, id); err != nil {
+			return nil, err
+		}
+		if d.TranslatedTotal > 0 {
+			if d.Translated, err = s.recordingEntries(translatedPageSQL, id, limit, offset); err != nil {
+				return nil, err
+			}
+		}
+	}
+	return &d, nil
+}
+
+// recordingEntries runs one of the person page's (work, recording) page queries
+// and resolves each row's work card, dropping a row whose work the artifact does
+// not carry; never nil.
+func (s *DB) recordingEntries(query, id string, limit, offset int) ([]NarratedEntry, error) {
+	rows, err := s.db.Query(query, id, limit, offset)
 	if err != nil {
 		return nil, err
 	}
-	credits, err := scanPairs(nrows, func(workID, rid string) narratedCredit {
+	credits, err := scanPairs(rows, func(workID, rid string) narratedCredit {
 		return narratedCredit{workID: workID, recordingID: rid}
 	})
 	if err != nil {
 		return nil, err
 	}
-	narratedIDs := make([]string, len(credits))
+	workIDs := make([]string, len(credits))
 	for i, c := range credits {
-		narratedIDs[i] = c.workID
+		workIDs[i] = c.workID
 	}
-	byID, err := s.cardsByID(context.Background(), narratedIDs)
+	byID, err := s.cardsByID(context.Background(), workIDs)
 	if err != nil {
 		return nil, err
 	}
-	d.Narrated = []NarratedEntry{}
+	out := []NarratedEntry{}
 	for _, c := range credits {
 		if card := byID[c.workID]; card != nil {
-			d.Narrated = append(d.Narrated, NarratedEntry{Work: card, RecordingID: c.recordingID})
+			out = append(out, NarratedEntry{Work: card, RecordingID: c.recordingID})
 		}
 	}
-	return &d, nil
+	return out, nil
 }
 
 // narratedCredit is one row of a narrator's credit list: which recording of

@@ -29,6 +29,10 @@ import (
 //     own statement, which no other recording has;
 //   - a chapter's section_number differs from its 1-based position: absence
 //     already says the position is the number, so one fact has one spelling;
+//   - a recording with ONE narrator does not list readers on every chapter:
+//     absence already says that narrator reads them all, so one fact has one
+//     spelling (a chapter without readers beside others with them still says
+//     that section states none);
 //   - a chapter's readers are among the recording's narrators: a chapter is read
 //     by the people who read the recording, so a reader the narrators omit is a
 //     credit lost from every reader of the recording list (or a stale slug left
@@ -56,8 +60,10 @@ func checkLibrivox(cat *model.Catalog, recs []recordWithPath, idx *pathIndex, ad
 		// section_number are each reported once, a stray reader once per reader.
 		var audioReported, numberReported bool
 		var readerReported map[string]bool
+		everyChapterRead := len(r.Chapters) > 0
 		for i := range r.Chapters {
 			ch := &r.Chapters[i]
+			everyChapterRead = everyChapterRead && len(ch.Readers) > 0
 			switch {
 			case lv && ch.SectionNumber != nil && *ch.SectionNumber == i+1:
 				add(pr.path, "chapter %d states section_number %d, its own position; omit it (absence means the position is the number)", i, i+1)
@@ -78,6 +84,9 @@ func checkLibrivox(cat *model.Catalog, recs []recordWithPath, idx *pathIndex, ad
 					add(pr.path, "chapter %d reader %q is not one of the recording's narrators", i, rd)
 				}
 			}
+		}
+		if everyChapterRead && len(r.Narrators) == 1 {
+			add(pr.path, "every chapter lists readers on a recording with one narrator; omit them (no readers on a one-narrator recording already says they read every chapter)")
 		}
 	}
 

@@ -88,13 +88,9 @@ type outChapter struct {
 	// AudioURL is the section's own audio file (a LibriVox archive.org MP3);
 	// only a LibriVox recording states one (pkg/check requires librivox_id).
 	AudioURL string `json:"audio_url,omitempty"`
-	// Readers and SectionNumber are a LibriVox section's readers and its own
-	// number (model.Chapter's); the LibriVox pass writes them onto the stored
-	// recording after planning (librivoxrecording.go), so a planned chapter
-	// carries neither. The fields exist so this struct keeps model.Chapter's
-	// shape (chapterMinutes converts between the two).
-	Readers       []string `json:"readers,omitempty"`
-	SectionNumber *int     `json:"section_number,omitempty"`
+	// A LibriVox section's readers and number (model.Chapter's) are never on a
+	// planned chapter: the LibriVox recording pass writes them onto the stored
+	// recording after planning (librivoxrecording.go).
 }
 
 type outRecording struct {
