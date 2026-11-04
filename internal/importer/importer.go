@@ -1737,13 +1737,18 @@ type creditContext struct {
 // initials decisions once they exist and, before then (the pre-pass cleans the
 // names it decides over), the committed record of a spelling's initials group,
 // which is what the decision names whenever one is committed - so the pre-pass and
-// the import refuse the same folds.
+// the import refuse the same folds. A run with no reviewed people pair asks no
+// check at all, and one with them keeps only the committed survivors
+// (committedInitials) for it, never the census itself.
 func (p *planner) creditContextOf(books []sourceBook) creditContext {
 	author, narrator := p.creditCensusesOf(books)
 	census := p.catalogueInitials()
 	var decided initialsSurvivors
-	apart := func(a, b string) bool { return p.landingsKeptApart(decided, census, a, b) }
-	author.keptApart, narrator.keptApart = apart, apart
+	if p.apart != nil {
+		committed := census.committed()
+		apart := func(a, b string) bool { return p.landingsKeptApart(decided, committed, a, b) }
+		author.keptApart, narrator.keptApart = apart, apart
+	}
 	decided = p.decideInitialsOf(census, books, author, narrator)
 	return creditContext{author: author, narrator: narrator, initials: decided}
 }
@@ -1874,30 +1879,27 @@ func (p *planner) peopleKeptApart(a, b string) bool {
 // landingsKeptApart is the reviewed-pair check the credit folds ask
 // (creditCensus.keptApart): a and b are kept apart when the slugs they spell are
 // (peopleKeptApart) or the records they land on are (creditLanding).
-func (p *planner) landingsKeptApart(decided initialsSurvivors, census *initialsCensus, a, b string) bool {
-	if p.apart == nil {
-		return false
-	}
+func (p *planner) landingsKeptApart(decided initialsSurvivors, committed committedInitials, a, b string) bool {
 	if p.peopleKeptApart(a, b) {
 		return true
 	}
-	la, oka := p.creditLanding(decided, census, a)
-	lb, okb := p.creditLanding(decided, census, b)
+	la, oka := p.creditLanding(decided, committed, a)
+	lb, okb := p.creditLanding(decided, committed, b)
 	return oka && okb && p.apart.Has(la, lb)
 }
 
 // creditLanding is the person record a credit name lands on: the live record its
 // slug (or that slug's survivor) names, else the initials merge's decision
 // (resolvePersonIn), else - before the batch is decided - the committed record
-// of its initials group (initialsCensus.catalogueSurvivor), else its own slug,
-// to be created. ok is false for a name that slugs away to nothing.
-func (p *planner) creditLanding(decided initialsSurvivors, census *initialsCensus, name string) (string, bool) {
+// of its initials group (committedInitials.survivor), else its own slug, to be
+// created. ok is false for a name that slugs away to nothing.
+func (p *planner) creditLanding(decided initialsSurvivors, committed committedInitials, name string) (string, bool) {
 	r := p.resolvePersonIn(creditContext{initials: decided}, name)
 	if r.fellBack {
 		return "", false
 	}
-	if r.create && census != nil {
-		if s, ok := census.catalogueSurvivor(name); ok {
+	if r.create {
+		if s, ok := committed.survivor(name); ok {
 			return s, true
 		}
 	}

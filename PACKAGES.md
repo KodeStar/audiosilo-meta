@@ -1347,7 +1347,7 @@ the novelist: `creditCensus.keptApart`, judged by the records the two spellings
 LAND on as well as the slugs they spell - `planner.landingsKeptApart`: the live
 record, else the initials merge's decision, else, before the batch is decided,
 the committed record of the spelling's initials group
-(`initialsCensus.catalogueSurvivor`), so "Dr. AB Kovacs" cannot fold onto
+(`committedInitials.survivor`, re-checked as the merge re-checks a decision), so "Dr. AB Kovacs" cannot fold onto
 `a-b-kovacs` past a review of `a-b-kovacs` / `dr-a-b-kovacs`), the
 SEPARATOR-LESS spelling
 of a role qualifier ("Andrew Lang Editor", `barerole.go`, its own narrow

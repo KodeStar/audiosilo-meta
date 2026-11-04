@@ -373,23 +373,47 @@ func (c *initialsCensus) addCatalogue(slug, name string) {
 	g.catalogue[slug] = name
 }
 
-// catalogueSurvivor is the committed record name's initials group resolves to
-// when any is committed: the lowest committed slug, which is exactly what decide
-// names for a group holding one (catalogue first), so it can be asked before the
-// batch is decided - by the reviewed-pair check (planner.creditLanding), which
-// must judge the record a spelling lands on while the pre-pass is still
-// cleaning the names decide will read. It never adds to the census.
-func (c *initialsCensus) catalogueSurvivor(name string) (string, bool) {
+// committedInitials is each initials group's committed survivor
+// (committedSurvivor), keyed by marked key: all the reviewed-pair check
+// (planner.creditLanding) reads of the census. It is taken off the census
+// before the batch is added, so the run holds one slug per committed group for
+// the check rather than keeping the whole census alive.
+type committedInitials map[string]string
+
+// committed is the census's committedInitials.
+func (c *initialsCensus) committed() committedInitials {
+	out := committedInitials{}
+	for key, g := range c.groups {
+		if s, ok := g.committedSurvivor(); ok {
+			out[key] = s.slug
+		}
+	}
+	return out
+}
+
+// survivor is the committed record name's initials group resolves it to: the
+// lowest committed slug, which is exactly what decide names for a group holding
+// one (catalogue first), accepted only as initialsMerge accepts a decision
+// (respells) - so it can be asked before the batch is decided, while the
+// pre-pass is still cleaning the names decide will read, and answers what the
+// decision will.
+func (ci committedInitials) survivor(name string) (string, bool) {
+	if len(ci) == 0 {
+		return "", false
+	}
+	slug, fellBack := personSlug(name)
+	if fellBack {
+		return "", false
+	}
 	tokens := parseNameTokens(name)
 	if _, ok := probeableGroups(tokens); !ok {
 		return "", false
 	}
-	g := c.groups[markedKeyOf(tokens)]
-	if g == nil {
+	s, ok := ci[markedKeyOf(tokens)]
+	if !ok || !respells(name, slug, tokens, s) {
 		return "", false
 	}
-	s, ok := g.committedSurvivor()
-	return s.slug, ok
+	return s, true
 }
 
 // committedSurvivor is the record a group holding a committed spelling resolves
@@ -502,11 +526,16 @@ func initialsMerge(survivors initialsSurvivors, name, slug string, fellBack bool
 	if _, ok := probeableGroups(tokens); !ok {
 		return initialsSurvivor{}, false
 	}
-	if survivor.slug == slug {
-		return survivor, true
-	}
-	if slices.Contains(initialsVariantSlugsOf(name, tokens), survivor.slug) {
+	if respells(name, slug, tokens, survivor.slug) {
 		return survivor, true
 	}
 	return initialsSurvivor{}, false
+}
+
+// respells reports whether to is a slug the name (slug its own personSlug,
+// tokens its parse) reaches by its own initials, respelled: its own slug, or
+// one of initialsVariantSlugsOf. It is the re-check every survivor a group's
+// marked key proposes must pass (initialsMerge).
+func respells(name, slug string, tokens []nameToken, to string) bool {
+	return to == slug || slices.Contains(initialsVariantSlugsOf(name, tokens), to)
 }
