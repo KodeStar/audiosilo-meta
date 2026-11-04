@@ -1,0 +1,266 @@
+name: route (reusable)
+
+# Routes an issue an AudioSilo Bridge filed through the AudioSilo GitHub App
+# (BRIDGE-PLAN.md Phase 2b) into the intake bot. This is the ONE copy of the
+# routing logic: route.yml here calls it by local path, and
+# KodeStar/audiosilo-meta-community's route.yml calls it cross-repository at a
+# pinned commit. Each caller passes its own title-prefix allowlist (`routes`)
+# and cap, and calls its OWN intake.yml after this, in the same run, on the
+# `decision` and `label` outputs. The intake call stays in the caller because a
+# `./` path inside a reusable workflow names THIS repository's file, so the
+# community repository could not reach its own intake.yml from here.
+#
+# Why this exists: the GitHub API silently drops the labels a non-collaborator
+# sets on a new issue, and an issue form's labels never apply to an API-filed
+# issue, so a Bridge's issue arrives label-less and intake.yml (which routes on
+# a `data:` label) would never see it. This workflow labels it with
+# GITHUB_TOKEN - which starts no workflow, GitHub's recursion guard - and so the
+# caller calls intake.yml as a reusable workflow in the same run.
+#
+# The event, the token and the repository are the CALLER's: a called workflow
+# sees the caller's `github.event` (the `issues`/`opened` payload), its
+# GITHUB_REPOSITORY and its run token, limited to what the calling job grants.
+# So the labels, comments, denylist and open-issue count are all the calling
+# repository's, and no secret is needed or passed.
+#
+# Who gets routed: an issue whose `performed_via_github_app.id` is APP_ID below
+# and that carries no `data:` label yet (a collaborator's labels survive, and
+# their `labeled` event already runs intake). That id proves only that the issue
+# was filed with a token of this App, which anyone can obtain (the App is public
+# and device-flow sign-in needs no secret), so it is a ROUTING HINT, never trust:
+# intake.yml composes the body exactly as it would a hand-filed form, validating
+# everything, and a maintainer still reviews every pull request (GOVERNANCE.md).
+#
+# A RE-RUN is a no-op once the issue is decided. The payload is the issue as
+# opened, so the job-level `if` cannot tell; the first step therefore reads the
+# issue as it is NOW and skips when it is closed (a maintainer's decision, or
+# the submitter's withdrawal), carries a `data:` label (the routing label this
+# workflow applied, a maintainer's, or an outcome intake applied) or
+# `intake:held`, or has a comment the workflow token posted carrying "_Posted
+# by the intake bot._" (a hold or an intake verdict). An intake pull request
+# needs no check of its own: one exists only once the routing label was applied.
+# Without the guard, re-running a route run labelled and called intake again for
+# the same issue. The trade-off: re-running a run that HELD an issue on a
+# transient failure (an API read, a label that could not be applied) is now a
+# no-op too, not a retry - the hold comment is there, so a maintainer routes it
+# by applying the routing label by hand. Re-running only a FAILED intake job is
+# not covered (it reuses this job's outputs): that is a deliberate retry.
+#
+# Abuse bounds (held, not refused - a maintainer decides): a submitter is held
+# with the `intake:held` label and a comment when their GitHub account is younger
+# than MIN_ACCOUNT_DAYS, when they already have more than `cap` open App-filed
+# issues in the calling repository (this one included), or when their numeric
+# user id is listed in its .github/intake-denylist. A routing label the workflow
+# cannot apply (an API failure, or the label missing from the repository), or a
+# current issue state it cannot read, holds the issue too, since nothing re-runs
+# this workflow. A held issue is routed by a maintainer applying its routing
+# label by hand, which intake.yml's `labeled` trigger admits as usual.
+#
+# The template comes from the TITLE PREFIX, an allowlist the caller passes as
+# `routes`: one `<tag> <label>` pair per line, routing a title starting
+# "[<tag>] " to <label>. Any other prefix is left alone for a maintainer.
+#
+# SECURITY: the title, body and login are untrusted. They reach `run:` only
+# through environment variables, never through `${{ }}` interpolation, and are
+# only compared, never executed. Nothing is checked out: the denylist is read
+# through the contents API. The workflow token is the only credential, with the
+# least each step needs. The inputs are the callers' own (maintainer-reviewed
+# workflow files) and are validated before use.
+on:
+  workflow_call:
+    inputs:
+      routes:
+        description: >-
+          The title-prefix allowlist, one `<tag> <label>` pair per line (blank
+          lines and whole-line # comments ignored; anything after the label is
+          an error): a title starting "[<tag>] " is routed
+          with the routing label <label>, a `data:` label intake.yml routes on.
+        type: string
+        required: true
+      cap:
+        description: Open App-filed issues one GitHub user may have in the calling repository before the next is held.
+        type: number
+        required: true
+    outputs:
+      decision:
+        description: "route (labelled; the caller calls intake.yml), held (commented and labelled intake:held) or skip; empty when the job did not run."
+        value: ${{ jobs.route.outputs.decision }}
+      label:
+        description: The routing label applied when decision is route.
+        value: ${{ jobs.route.outputs.label }}
+
+permissions: {}
+
+env:
+  # The AudioSilo GitHub App (slug audiosilo-contributions). Matched against
+  # github.event.issue.performed_via_github_app.id; 0 would route nothing.
+  APP_ID: "5387686"
+  # The youngest GitHub account whose App-filed issues are routed.
+  MIN_ACCOUNT_DAYS: "30"
+
+jobs:
+  route:
+    # Only App-filed issues (any App: the id is compared in the step, where the
+    # env constant is readable) that no `data:` label routes already.
+    if: >-
+      github.event.issue.performed_via_github_app.id > 0 &&
+      !contains(join(github.event.issue.labels.*.name), 'data:')
+    runs-on: ubuntu-latest
+    # A handful of API calls; observed well under a minute.
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      issues: write
+    outputs:
+      # The apply step has the last word: a label it could not apply holds.
+      decision: ${{ steps.apply.outputs.decision || steps.classify.outputs.decision }}
+      label: ${{ steps.classify.outputs.label }}
+    steps:
+      - name: Classify the issue
+        id: classify
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ROUTES: ${{ inputs.routes }}
+          CAP: ${{ inputs.cap }}
+          ISSUE: ${{ github.event.issue.number }}
+          FILED_BY_APP: ${{ github.event.issue.performed_via_github_app.id }}
+          # Untrusted: compared only.
+          TITLE: ${{ github.event.issue.title }}
+          LOGIN: ${{ github.event.issue.user.login }}
+          USER_ID: ${{ github.event.issue.user.id }}
+        run: |
+          set -euo pipefail
+          out() { echo "$1=$2" >> "$GITHUB_OUTPUT"; }
+          held() {
+            out decision held
+            printf '%s\n' "$1" > "$RUNNER_TEMP/held-reason"
+            echo "held: $1"
+            exit 0
+          }
+
+          # The caller's configuration first, so a malformed one is a red run
+          # on the first App-filed issue rather than a silent "never routes".
+          # The whole list is validated even after the title matched. A label
+          # is any data:<template>: intake routes the template through
+          # issueform.TemplateFromLabels's allowlist, so a non-template (an
+          # outcome label, say) composes as an invalid verdict, never as data -
+          # no third copy of intake.yml's outcome-label list is kept here.
+          if ! [[ "$CAP" =~ ^[0-9]+$ ]] || [ "$CAP" -lt 1 ]; then
+            echo "::error::the cap input must be a positive integer, got '${CAP}'"
+            exit 1
+          fi
+          routes=0
+          label=""
+          while read -r tag lbl rest; do
+            case "$tag" in ""|"#"*) continue ;; esac
+            if ! [[ "$tag" =~ ^[a-z][a-z-]*$ ]] || ! [[ "$lbl" =~ ^data:[a-z][a-z-]*$ ]] || [ -n "$rest" ]; then
+              echo "::error::malformed routes line: '${tag} ${lbl} ${rest}' (want '<tag> data:<template>')"
+              exit 1
+            fi
+            routes=$((routes + 1))
+            if [ -z "$label" ]; then
+              case "$TITLE" in "[${tag}] "*) label="$lbl" ;; esac
+            fi
+          done <<< "$ROUTES"
+          if [ "$routes" -eq 0 ]; then
+            echo "::error::the routes input lists no route"
+            exit 1
+          fi
+
+          if [ "$APP_ID" = "0" ] || [ "$FILED_BY_APP" != "$APP_ID" ]; then
+            echo "not filed through the AudioSilo App; nothing to route"
+            out decision skip
+            exit 0
+          fi
+          if [ -z "$label" ]; then
+            echo "no routing prefix on the title; left for a maintainer"
+            out decision skip
+            exit 0
+          fi
+
+          # The re-run guard (see the header): the issue as it is NOW, state,
+          # labels and comments in one read. On the GraphQL path gh reads, the
+          # workflow token's author is `github-actions` (no [bot] suffix). A read
+          # failure holds, as the other reads below do - it must not be taken as
+          # "nothing decided yet".
+          if ! decided="$(gh issue view "$ISSUE" --repo "$GITHUB_REPOSITORY" --json state,labels,comments --jq '
+              ([if .state == "OPEN" then empty else "closed" end]
+               + [.labels[].name | select(startswith("data:") or . == "intake:held")]
+               + [.comments[] | select(.author.login == "github-actions" and ((.body // "") | contains("_Posted by the intake bot._"))) | "an intake-bot comment"])
+              | unique | join(", ")')"; then
+            held "the issue's current state could not be read"
+          fi
+          if [ -n "$decided" ]; then
+            echo "already routed or decided (${decided}); nothing to do"
+            out decision skip
+            exit 0
+          fi
+          out label "$label"
+
+          # The denylist: numeric GitHub user ids, one per line, # comments.
+          # Missing file = nobody listed; any other read failure holds. grep
+          # reads the whole list (no -q): stopping at a match would leave sed to
+          # die of SIGPIPE on a long one, which pipefail turns into "not listed".
+          if deny="$(gh api -H "Accept: application/vnd.github.raw" \
+              "repos/${GITHUB_REPOSITORY}/contents/.github/intake-denylist?ref=${GITHUB_REF_NAME:-main}" 2> "$RUNNER_TEMP/deny.err")"; then
+            if printf '%s\n' "$deny" | sed 's/#.*//; s/[[:space:]]//g' | grep -xF -- "$USER_ID" > /dev/null; then
+              held "this account is on the intake denylist"
+            fi
+          elif ! grep -qF "(HTTP 404)" "$RUNNER_TEMP/deny.err"; then
+            held "the intake denylist could not be read"
+          fi
+
+          if ! created="$(gh api "users/${LOGIN}" --jq .created_at)" \
+              || ! created_s="$(date -d "$created" +%s)"; then
+            held "the account's age could not be checked"
+          fi
+          age_days=$(( ( $(date +%s) - created_s ) / 86400 ))
+          if [ "$age_days" -lt "$MIN_ACCOUNT_DAYS" ]; then
+            held "the GitHub account is ${age_days} days old; issues filed through the AudioSilo App are routed automatically from ${MIN_ACCOUNT_DAYS} days"
+          fi
+
+          # Open issues (not pull requests) this user filed through the App,
+          # this one included.
+          if ! open="$(gh api --paginate "repos/${GITHUB_REPOSITORY}/issues?state=open&creator=${LOGIN}&per_page=100" \
+              | jq -s --argjson app "$APP_ID" '[.[][] | select(.pull_request == null and .performed_via_github_app.id == $app)] | length')"; then
+            held "the open-issue count could not be read"
+          fi
+          if [ "$open" -gt "$CAP" ]; then
+            held "this account has ${open} open issues filed through the AudioSilo App; more than ${CAP} wait for a maintainer"
+          fi
+
+          out decision route
+          echo "routing as ${label} (${open} open, account ${age_days} days old)"
+
+      - name: Apply the routing label
+        id: apply
+        if: steps.classify.outputs.decision == 'route'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ github.event.issue.number }}
+          LABEL: ${{ steps.classify.outputs.label }}
+        run: |
+          if gh issue edit "$ISSUE" --repo "$GITHUB_REPOSITORY" --add-label "data,${LABEL}"; then
+            echo "decision=route" >> "$GITHUB_OUTPUT"
+          else
+            printf '%s\n' "the routing label ${LABEL} could not be applied" > "$RUNNER_TEMP/held-reason"
+            echo "decision=held" >> "$GITHUB_OUTPUT"
+          fi
+
+      # The comment goes first: it is what tells the submitter, so a label that
+      # cannot be applied must not take it down too (and still fails the run).
+      - name: Hold the issue for a maintainer
+        if: steps.classify.outputs.decision == 'held' || steps.apply.outputs.decision == 'held'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ github.event.issue.number }}
+        run: |
+          {
+            echo "Thanks! This issue is **held for a maintainer** before the intake bot looks at it: $(cat "$RUNNER_TEMP/held-reason")."
+            echo
+            echo "Nothing is wrong with the submission itself, and nothing needs doing on your side; a maintainer will route it or explain."
+            echo
+            echo "_Posted by the intake bot._"
+          } > comment.md
+          gh issue comment "$ISSUE" --repo "$GITHUB_REPOSITORY" --body-file comment.md
+          gh issue edit "$ISSUE" --repo "$GITHUB_REPOSITORY" --add-label "intake:held"

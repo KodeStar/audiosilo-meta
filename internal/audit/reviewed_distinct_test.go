@@ -162,3 +162,46 @@ func TestReviewedMergeRejectionCollapsedOntoOneRecordIsStale(t *testing.T) {
 		t.Error("the census reader must still hand the decision over; pkg/check compacts it to nothing")
 	}
 }
+
+// A merge-PEOPLE rejection naming one live record beside one that is not - the
+// titled record deleted, not yet minted, or the slug mistyped - is not STALE: the
+// importer keeps a credit landing on the missing slug apart from the live one
+// whatever is live (importer.PeopleApart), so pruning it would let the next import
+// re-fold the pair. It is UNRESOLVED instead, listed in SUMMARY.md so a typo still
+// surfaces. A people rejection whose records merged onto one survivor, and one
+// naming no live record at all, are STALE as before; a works rejection naming a
+// deleted record is STALE as before (TestReviewedMergeRejectionNamingADeletedRecordIsStale).
+func TestReviewedMergePeopleRejectionNamingOneLiveRecord(t *testing.T) {
+	files := map[string]string{
+		"people/ja/jane-doe.json":         testpack.PersonJSON(t, "jane-doe", "Jane Doe"),
+		"people/al/alex-george.json":      testpack.PersonJSON(t, "alex-george", "Alex George"),
+		"works/ho/hollow-crown/work.json": testpack.WorkJSON(t, "hollow-crown", "Hollow Crown"),
+	}
+	for name, tc := range map[string]struct {
+		target, other string
+		redirects     string
+		want          outcomeStatus
+		why           string
+	}{
+		"one live":  {target: "alex-george", other: "dr-alex-george", want: statusUnresolved, why: "no live person record at dr-alex-george"},
+		"none live": {target: "alex-gorge", other: "dr-alex-gorge", want: statusStale, why: "deleted"},
+		"merged onto one": {target: "alex-george", other: "dr-alex-george", want: statusStale, why: "alex-george",
+			redirects: `{"people":{"dr-alex-george":"alex-george"},"series":{},"works":{}}`},
+		"two live": {target: "alex-george", other: "jane-doe", want: statusCensus},
+	} {
+		t.Run(name, func(t *testing.T) {
+			rejection := reviewedDecision{Op: OpMergePeople, Target: tc.target, Others: []string{tc.other}, Decision: "reject", Reason: "two people"}
+			rep := runFixtureRejectingWith(t, files, tc.redirects, rejection)
+			all := rep.Reviewed.All
+			if len(all) != 1 || all[0].Status != tc.want || !strings.Contains(all[0].Why, tc.why) {
+				t.Fatalf("tally = %+v, want %s naming %q", all, tc.want, tc.why)
+			}
+			if stale := len(rep.Reviewed.Stale()) == 1; stale != (tc.want == statusStale) {
+				t.Errorf("Stale() = %+v, want it stale only when STALE", rep.Reviewed.Stale())
+			}
+		})
+	}
+	if !statusUnresolved.listed() {
+		t.Error("an unresolved rejection must be listed in SUMMARY.md")
+	}
+}
