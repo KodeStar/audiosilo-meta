@@ -656,13 +656,15 @@ type librivoxState struct {
 	// life is the birth and death years each catalogued person states.
 	life map[string]lifeYears
 	// authorPins is the person each author id of the rows to be planned was
-	// resolved to before planning (resolveLibrivoxAuthors): the catalogued
-	// holder of a known id, else the person rules' decision. Every credit of
-	// the id carries it (librivoxCredit.person, credit.person).
+	// resolved to before planning (resolveLibrivoxAuthors, then
+	// keyLibrivoxAuthorVariants): the catalogued holder of a known id, else
+	// the person rules' decision. Every credit of the id carries it
+	// (librivoxCredit.person, credit.person).
 	authorPins map[int]*creditPerson
-	// runAuthors is the person slugs a new author id of the run lands on
-	// (authorPins): author records for rule 3 whatever order the run meets
-	// their rows and a same-name reader's in (librivoxAuthorRecord).
+	// runAuthors is the person slugs an author id of the run whose years end
+	// before LibriVox began lands on (authorPins, settleLibrivoxPeople):
+	// author records for rule 3 whatever order the run meets their rows and a
+	// same-name reader's in (librivoxAuthorRecord).
 	runAuthors map[string]bool
 	// sameName is the author ids whose rows go to the worklist as
 	// same-name-author (librivoxpeople.go rule 2), and pendingHolds the
@@ -671,8 +673,12 @@ type librivoxState struct {
 	sameName     map[int]lvHold
 	pendingHolds []lvPending
 	// readerMints is the reader ids decideLibrivoxReaders made people of
-	// their own, created when a row of theirs lands (librivoxReaderSlug).
+	// their own, created when a row of theirs lands (librivoxReaderSlug), and
+	// readerNames the spelling a reader id that claimed a person not yet a
+	// record was decided under (its lowest project's), which a row spelling
+	// the reader otherwise creates them by.
 	readerMints map[int]*lvReaderMint
+	readerNames map[int]string
 	// pairs is the titled and bare author ids of the batch rule 1b kept
 	// apart (Summary.LibrivoxAuthorPairs).
 	pairs [][2]*lvAuthorClaim
@@ -715,6 +721,7 @@ func newLibrivoxState() librivoxState {
 		runAuthors:    map[string]bool{},
 		sameName:      map[int]lvHold{},
 		readerMints:   map[int]*lvReaderMint{},
+		readerNames:   map[int]string{},
 	}
 }
 
@@ -818,8 +825,10 @@ func librivoxAuthorCredits(ctx creditContext, b sourceBook) []credit {
 // cleaned name), as decideLibrivoxReader decided it for the reader id before
 // any row was planned, or "" to let getOrCreatePerson resolve the name exactly
 // as it always has: the reader's own name's person (its claim), an id with no
-// decision, or a split record whose slot was taken. A split reader's record
-// (lvReaderMint) is created here, carrying the id, the first time a row of
+// decision, or a split record whose slot was taken. A reader id decided by
+// another project's spelling (readerNames) is created under that spelling by
+// the first row of theirs that lands, whatever this row calls them. A split
+// reader's record (lvReaderMint) is created here, carrying the id, the first time a row of
 // theirs lands - never written over an occupant or a tombstone at the
 // composed id: the run warns and falls back to the name. The unsluggable form
 // shares that tail, and its name falls back to the catch-all, which the run's
@@ -837,7 +846,7 @@ func (p *planner) librivoxReaderSlug(c librivoxCredit, name string, project int,
 		}
 		if !m.made {
 			m.made = true
-			p.createPerson(m.slug, name)
+			p.createPerson(m.slug, m.name)
 			p.stampLibrivoxID(m.slug, c, project)
 			if m.unslug {
 				p.summary.LibrivoxReadersUnslugged++
@@ -848,17 +857,27 @@ func (p *planner) librivoxReaderSlug(c librivoxCredit, name string, project int,
 		return m.slug
 	}
 	if slug, ok := p.lv.readers[c.id]; ok {
-		return p.librivoxReaderResolved(slug, p.resolvePerson(name))
+		r := p.resolvePerson(name)
+		if first, ok := p.lv.readerNames[c.id]; ok && r.slug != slug {
+			// The id was decided by another project's spelling of the reader,
+			// whose row has not created them - not yet, or not at all (a
+			// worklist row): this row creates the person, under that spelling.
+			p.getOrCreatePerson(first, warn)
+		}
+		return p.librivoxReaderResolved(slug, r)
 	}
 	return ""
 }
 
 // lvReaderMint is a reader decideLibrivoxReader made a person of their own: the
 // composed slot (model.LibrivoxReaderSlug, or model.LibrivoxUnslugReaderSlug
-// for a name that slugs to nothing: unslug), blocked when another person or a
-// tombstone already holds it, and made once a row of theirs has created it.
+// for a name that slugs to nothing: unslug) and the spelling it was composed
+// from, which the record is created under whichever of the reader's rows
+// lands first (its id names the slot, so the two always agree), blocked when
+// another person or a tombstone already holds it, and made once a row of
+// theirs has created it.
 type lvReaderMint struct {
-	slug                  string
+	slug, name            string
 	unslug, blocked, made bool
 }
 
@@ -959,13 +978,16 @@ func (p *planner) decideLibrivoxReader(c librivoxCredit, name string) {
 	case holder == c.id, holder == 0 && !p.librivoxAuthorRecord(r.slug):
 		p.lv.readers[c.id] = r.slug
 		p.lv.readerOf[r.slug] = c.id
+		if r.create {
+			p.lv.readerNames[c.id] = name
+		}
 		return
 	}
 	slug, ok := mint(name, c.id)
 	if !ok {
 		return
 	}
-	m := &lvReaderMint{slug: slug, unslug: unslug}
+	m := &lvReaderMint{slug: slug, name: name, unslug: unslug}
 	_, taken := p.people[slug]
 	if _, retired := p.redirects.Survivor(model.RedirectPeople, slug); taken || retired {
 		m.blocked = true

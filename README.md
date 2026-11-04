@@ -484,8 +484,9 @@ plain slug. Re-importing a project the catalogue already holds
 moves a reader folded onto another reader's person (by an import before this
 rule) onto their own; authors are not split. Nor is a reader stamped onto an
 AUTHOR record (one carrying a `librivox_author_id`, or whose life ended before
-2005, when LibriVox began - a birth year alone counts: no one born in 1840 read
-for LibriVox - in whichever order the run meets the two): a reader called Adam
+2005, when LibriVox began - a birth or flourished year alone counts: no one
+born in 1840, or who flourished in 1807, read for LibriVox - in whichever order
+the run meets the two): a reader called Adam
 Smith is `adam-smith-librivox-19341`, never Adam Smith (1723-1790). A living or
 undated author of the same import and a reader of the same name are one person,
 whichever project comes first.
@@ -530,7 +531,8 @@ the order the projects are read in.
   its text: its first publication, or the copyright year a LibriVox recording of
   it states. And release dates stop counting against the author when a
   project they wrote (not one they translated) shows they are editions: the
-  catalogue holds that text, under its full title, by someone the project also
+  catalogue holds that text, under its full title (never a generic one such as
+  "Poems"), by someone the project also
   credits (the same surname), dated only by a release long after the author
   died ("Narrative of Sojourner Truth", 1850, beside Olive Gilbert's edition of
   2009). Two new author ids

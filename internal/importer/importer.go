@@ -1099,6 +1099,9 @@ func (p *planner) planCreate(books []sourceBook) {
 	// A LibriVox author id that is a catalogued author spelled with more or
 	// fewer words is that person for the whole batch (librivoxauthors.go).
 	p.keyLibrivoxAuthorVariants(books, titles, suffixes)
+	// Only now does every author id land where it will: the readers, and the
+	// rest that reads the authors' people, are decided against that.
+	p.settleLibrivoxPeople(books)
 	for i, b := range books {
 		asin := NormalizeASIN(b.str("asin"))
 		p.setSource(asin, b)

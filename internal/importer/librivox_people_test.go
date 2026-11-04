@@ -1123,3 +1123,95 @@ func TestLibrivoxReaderFoldSplitOffIsNoMerge(t *testing.T) {
 	}
 	mustValidate(t, dataDir)
 }
+
+func TestLibrivoxGenericTitleShowsNoEditions(t *testing.T) {
+	// "Poems" (text 1850) by John Smith (1800-1870) beside a catalogued,
+	// undated John Smith whose own "Poems" and thriller are dated only by
+	// modern releases: a generic title is no title in common, so it shows no
+	// edition either, and the id is held rather than stamped on the modern
+	// poet.
+	dataDir := t.TempDir()
+	files := map[string]string{}
+	files[personAddr("john-smith")] = personFiles(t, "john-smith", "John Smith", nil)
+	retailWork(t, files, "poems", "Poems", "john-smith", "")
+	retailWork(t, files, "a-modern-thriller", "A Modern Thriller", "john-smith", "")
+	seedTree(t, dataDir, files)
+	pr := byAuthors(t, 99200, "Poems", lvDated(5501, "John", "Smith", "1800", "1870"))
+	pr.CopyrightYear = lvText("1850")
+	sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
+	if len(sum.LibrivoxWorklist) != 1 || sum.LibrivoxWorklist[0].Reason != LibrivoxSameNameAuthor {
+		t.Errorf("worklist %v, want 99200 held as same-name-author", sum.LibrivoxWorklist)
+	}
+	if p := personOf(t, dataDir, "john-smith"); p.AuthorID != 0 || p.BirthYear != 0 {
+		t.Errorf("john-smith = %+v, want the modern poet untouched", p)
+	}
+}
+
+func TestLibrivoxVariantMovedDeadAuthorKeepsReadersOff(t *testing.T) {
+	// 5601 "Henrietta Elizabeth Marshall" (1867-1941) is moved onto the
+	// catalogued "Henrietta Marshall" by rule 1 of librivoxauthors.go, after
+	// the person rules first pinned it to a new record: the person it finally
+	// lands on is the author record rule 3 keeps a same-name reader off.
+	dataDir := t.TempDir()
+	files := map[string]string{}
+	files[personAddr("henrietta-marshall")] = personFiles(t, "henrietta-marshall", "Henrietta Marshall", nil)
+	retailWork(t, files, "our-island-story", "Our Island Story", "henrietta-marshall", "")
+	seedTree(t, dataDir, files)
+	runLibrivox(t, writeSnapshot(t,
+		byAuthors(t, 99300, "Our Island Story", lvDated(5601, "Henrietta Elizabeth", "Marshall", "1867", "1941")),
+		withReader(byAuthors(t, 99301, "Something Else", lvAuthor(5602, "Pat", "Other")), 9500, "Henrietta Marshall"),
+	), dataDir, allLibrivox)
+	if p := personOf(t, dataDir, "henrietta-marshall"); p.AuthorID != 5601 || p.ReaderID != 0 {
+		t.Errorf("henrietta-marshall = %+v, want the author alone", p)
+	}
+	if p := personOf(t, dataDir, "henrietta-marshall-librivox-9500"); p.ReaderID != 9500 {
+		t.Errorf("henrietta-marshall-librivox-9500 = %+v", p)
+	}
+	mustValidate(t, dataDir)
+}
+
+func TestLibrivoxFlourishedAuthorKeepsReadersOff(t *testing.T) {
+	// An author LibriVox dates by a flourished year alone (fl. 1807) read
+	// nothing for LibriVox either: a same-name reader is split off them.
+	dataDir := t.TempDir()
+	runLibrivox(t, writeSnapshot(t,
+		byAuthors(t, 99500, "Old Tracts", lvDated(5701, "Richard", "Wilsonne", "", "fl. 1807")),
+		withReader(byAuthors(t, 99501, "Another", lvAuthor(5702, "Pat", "Other")), 9700, "Richard Wilsonne"),
+	), dataDir, allLibrivox)
+	if p := personOf(t, dataDir, "richard-wilsonne"); p.AuthorID != 5701 || p.ReaderID != 0 {
+		t.Errorf("richard-wilsonne = %+v, want the author alone", p)
+	}
+	if p := personOf(t, dataDir, "richard-wilsonne-librivox-9700"); p.ReaderID != 9700 {
+		t.Errorf("richard-wilsonne-librivox-9700 = %+v", p)
+	}
+	mustValidate(t, dataDir)
+}
+
+func TestLibrivoxReaderSpelledTwoWaysIsOnePerson(t *testing.T) {
+	// A reader id is decided by its lowest project's spelling. When that
+	// project never lands (here an unsluggable author's worklist row), the
+	// reader's other project creates them under that spelling - their own
+	// name's record (9600), or their split one (9601, whose plain name 9599
+	// holds) - never a narrator no record backs.
+	cyrillic := func(id int) LibrivoxPerson {
+		return LibrivoxPerson{ID: lvInt(id), FirstName: "Йордан", LastName: "Йовков"}
+	}
+	dataDir := t.TempDir()
+	sum := runLibrivox(t, writeSnapshot(t,
+		withReader(byAuthors(t, 99398, "First Words", lvAuthor(5800, "Ann", "One")), 9599, "Petra"),
+		withReader(byAuthors(t, 99399, "Legends", cyrillic(6100)), 9601, "Petra"),
+		withReader(byAuthors(t, 99400, "More Legends", cyrillic(6101)), 9600, "Martina"),
+		withReader(byAuthors(t, 99401, "Other Book", lvAuthor(5801, "Pat", "Other")), 9600, "Martina S."),
+		withReader(byAuthors(t, 99402, "Third Book", lvAuthor(5802, "Kim", "Third")), 9601, "Petra K."),
+	), dataDir, allLibrivox)
+	if len(sum.LibrivoxWorklist) != 2 {
+		t.Fatalf("worklist %v, want the two unsluggable rows", sum.LibrivoxWorklist)
+	}
+	if p := personOf(t, dataDir, "martina"); p.Name != "Martina" || p.ReaderID != 9600 {
+		t.Errorf("martina = %+v, want reader 9600", p)
+	}
+	if p := personOf(t, dataDir, "petra-librivox-9601"); p.Name != "Petra" || p.ReaderID != 9601 {
+		t.Errorf("petra-librivox-9601 = %+v, want reader 9601 under their first spelling", p)
+	}
+	mustValidate(t, dataDir)
+}
