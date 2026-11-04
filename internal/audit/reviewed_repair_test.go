@@ -12,8 +12,24 @@ import (
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/canonical"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
+	"github.com/kodestar/audiosilo-meta/pkg/redirects"
 )
+
+// commitFixture commits the tree seeded under root as a fresh git repository, so a
+// writing metarepair run meets a clean checkout, as it does on the real tree.
+func commitFixture(t *testing.T, root string) {
+	t.Helper()
+	for _, args := range [][]string{{"init", "-q"}, {"config", "user.email", "fixture@example.com"}, {"config", "user.name", "Fixture"},
+		{"config", "commit.gpgsign", "false"}, {"add", "-A"}, {"commit", "-qm", "seed"}} {
+		cmd := exec.Command("git", args...)
+		cmd.Dir = root
+		if out, err := cmd.CombinedOutput(); err != nil {
+			t.Fatalf("git %v: %v: %s", args, err, out)
+		}
+	}
+}
 
 // Exercise the real fresh-audit gate and writer, not a direct call to the planner.
 // No repair code, options or worklist can bypass the embedded policy.
@@ -84,13 +100,7 @@ func TestReviewedDecisionsReachMetarepair(t *testing.T) {
 	}
 	audit.SetReviewedForTest(t, raw)
 	// Only the disposable fixture needs commits to exercise repair's clean-tree gate.
-	for _, args := range [][]string{{"init", "-q"}, {"config", "user.email", "fixture@example.com"}, {"config", "user.name", "Fixture"}, {"config", "commit.gpgsign", "false"}, {"add", "-A"}, {"commit", "-qm", "seed"}} {
-		cmd := exec.Command("git", args...)
-		cmd.Dir = root
-		if out, err := cmd.CombinedOutput(); err != nil {
-			t.Fatalf("git %v: %v: %s", args, err, out)
-		}
-	}
+	commitFixture(t, root)
 	opts := repair.Options{DataDir: data, Profile: pack.ProfileCore, Ops: []string{audit.OpSetWorkLanguage, audit.OpSplitSeries}, Write: true}
 	rep, err := repair.Run(opts)
 	if err != nil {
@@ -184,13 +194,7 @@ func TestReviewedOtherOrientationReachesMetarepair(t *testing.T) {
 		t.Fatal(err)
 	}
 	audit.SetReviewedForTest(t, raw)
-	for _, args := range [][]string{{"init", "-q"}, {"config", "user.email", "fixture@example.com"}, {"config", "user.name", "Fixture"}, {"config", "commit.gpgsign", "false"}, {"add", "-A"}, {"commit", "-qm", "seed"}} {
-		cmd := exec.Command("git", args...)
-		cmd.Dir = root
-		if out, err := cmd.CombinedOutput(); err != nil {
-			t.Fatalf("git %v: %v: %s", args, err, out)
-		}
-	}
+	commitFixture(t, root)
 	opts := repair.Options{DataDir: data, Profile: pack.ProfileCore, Ops: []string{audit.OpSplitSeries}, Write: true}
 	rep, err := repair.Run(opts)
 	if err != nil {
@@ -270,13 +274,7 @@ func TestReviewedAssertReachesMetarepair(t *testing.T) {
   }
 ]
 `))
-	for _, args := range [][]string{{"init", "-q"}, {"config", "user.email", "fixture@example.com"}, {"config", "user.name", "Fixture"}, {"config", "commit.gpgsign", "false"}, {"add", "-A"}, {"commit", "-qm", "seed"}} {
-		cmd := exec.Command("git", args...)
-		cmd.Dir = root
-		if out, err := cmd.CombinedOutput(); err != nil {
-			t.Fatalf("git %v: %v: %s", args, err, out)
-		}
-	}
+	commitFixture(t, root)
 	opts := repair.Options{DataDir: data, Ops: []string{audit.OpMergeWorks, audit.OpAddSeriesMember}, Write: true}
 	rep, err := repair.Run(opts)
 	if err != nil {
@@ -348,13 +346,7 @@ func TestReviewedAssertedDropReachesMetarepair(t *testing.T) {
   }
 ]
 `))
-	for _, args := range [][]string{{"init", "-q"}, {"config", "user.email", "fixture@example.com"}, {"config", "user.name", "Fixture"}, {"config", "commit.gpgsign", "false"}, {"add", "-A"}, {"commit", "-qm", "seed"}} {
-		cmd := exec.Command("git", args...)
-		cmd.Dir = root
-		if out, err := cmd.CombinedOutput(); err != nil {
-			t.Fatalf("git %v: %v: %s", args, err, out)
-		}
-	}
+	commitFixture(t, root)
 	before := check.Load(data)
 	opts := repair.Options{DataDir: data, Ops: []string{audit.OpDropMembership}, Subclasses: []string{audit.SubclassAsserted}, Write: true}
 	rep, err := repair.Run(opts)
@@ -397,6 +389,86 @@ func TestReviewedAssertedDropReachesMetarepair(t *testing.T) {
 	}
 }
 
+// A reviewed drop or retitle naming a work since retired onto a survivor at the very
+// slot, stating the very title, never reaches metarepair: the fresh-audit gate reads it
+// STALE, so nothing is considered and the survivor keeps its membership and its title.
+func TestReviewedDropOrRetitleOfARetiredWorkNeverReachesMetarepair(t *testing.T) {
+	files := map[string]string{
+		"people/xx/jane-doe.json":      testpack.PersonJSON(t, "jane-doe", "Jane Doe"),
+		"people/xx/nate-narrator.json": testpack.PersonJSON(t, "nate-narrator", "Nate Narrator"),
+		"series/xx/narnia.json": testpack.SeriesJSON(t, "narnia", "The Chronicles of Narnia",
+			"the-magicians-nephew@1", "prince-caspian@4"),
+	}
+	for id, title := range map[string]string{"the-magicians-nephew": "The Magician's Nephew", "prince-caspian": "Prince Caspian"} {
+		files["works/xx/"+id+"/work.json"] = testpack.WorkJSON(t, id, title)
+		files["works/xx/"+id+"/recordings/r.json"] = testpack.RecJSON(t, "r", id)
+	}
+	root := t.TempDir()
+	data := filepath.Join(root, "data")
+	testpack.Seed(t, data, files)
+	reds := model.NewRedirects()
+	reds[model.RedirectWorks]["prince-caspian-old"] = "prince-caspian"
+	if err := redirects.Write(data, reds); err != nil {
+		t.Fatal(err)
+	}
+	audit.SetReviewedForTest(t, []byte(`[
+  {
+    "decision": "assert",
+    "from": "4",
+    "op": "drop-membership",
+    "reason": "a duplicate of Prince Caspian is not a volume of the series",
+    "series": "narnia",
+    "target": "prince-caspian-old"
+  },
+  {
+    "decision": "assert",
+    "from": "Prince Caspian",
+    "op": "retitle-work",
+    "reason": "the duplicate's title was a retailer listing",
+    "target": "prince-caspian-old",
+    "to": "Prince Caspian (Duplicate)"
+  }
+]
+`))
+	commitFixture(t, root)
+	before := check.Load(data)
+	if len(before.Problems) > 0 {
+		t.Fatalf("fixture: %v", before.Problems)
+	}
+	if fresh := audit.Analyze(before); len(fresh.Reviewed.Stale()) != 2 || len(fresh.Reviewed.Outcomes()) != 0 {
+		t.Fatalf("reviewed = %+v, want both decisions stale", fresh.Reviewed)
+	}
+	rep, err := repair.Run(repair.Options{DataDir: data, Ops: []string{audit.OpDropMembership, audit.OpRetitle}, Write: true})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(rep.Applied) != 0 || len(rep.Refused) != 0 || rep.Considered != 0 {
+		t.Fatalf("repair applied %+v, refused %+v, considered %d", rep.Applied, rep.Refused, rep.Considered)
+	}
+	after := check.Load(data)
+	if len(after.Problems) > 0 {
+		t.Fatalf("after: %v", after.Problems)
+	}
+	var narnia *model.Series
+	for _, s := range after.Catalog.Series {
+		if s.ID == "narnia" {
+			narnia = s
+		}
+	}
+	if narnia == nil || len(narnia.Works) != 2 || narnia.Works[1].Work != "prince-caspian" || narnia.Works[1].Position != "4" {
+		t.Fatalf("narnia = %+v: the survivor lost its membership", narnia)
+	}
+	var survivor *model.Work
+	for _, w := range after.Catalog.Works {
+		if w.ID == "prince-caspian" {
+			survivor = w
+		}
+	}
+	if survivor == nil || survivor.Title != "Prince Caspian" {
+		t.Fatalf("survivor = %+v, want prince-caspian still titled Prince Caspian", survivor)
+	}
+}
+
 // One work listed at two positions of one series: metarepair applies an asserted drop
 // of ONE of them, through the fresh-audit gate, and the other membership stays.
 func TestReviewedAssertedDropOfOneOfTwoMembershipsReachesMetarepair(t *testing.T) {
@@ -424,13 +496,7 @@ func TestReviewedAssertedDropOfOneOfTwoMembershipsReachesMetarepair(t *testing.T
   }
 ]
 `))
-	for _, args := range [][]string{{"init", "-q"}, {"config", "user.email", "fixture@example.com"}, {"config", "user.name", "Fixture"}, {"config", "commit.gpgsign", "false"}, {"add", "-A"}, {"commit", "-qm", "seed"}} {
-		cmd := exec.Command("git", args...)
-		cmd.Dir = root
-		if out, err := cmd.CombinedOutput(); err != nil {
-			t.Fatalf("git %v: %v: %s", args, err, out)
-		}
-	}
+	commitFixture(t, root)
 	rep, err := repair.Run(repair.Options{DataDir: data, Ops: []string{audit.OpDropMembership}, Write: true})
 	if err != nil {
 		t.Fatal(err)
@@ -481,13 +547,7 @@ func TestReviewedAssertedRetitleReachesMetarepair(t *testing.T) {
   }
 ]
 `))
-	for _, args := range [][]string{{"init", "-q"}, {"config", "user.email", "fixture@example.com"}, {"config", "user.name", "Fixture"}, {"config", "commit.gpgsign", "false"}, {"add", "-A"}, {"commit", "-qm", "seed"}} {
-		cmd := exec.Command("git", args...)
-		cmd.Dir = root
-		if out, err := cmd.CombinedOutput(); err != nil {
-			t.Fatalf("git %v: %v: %s", args, err, out)
-		}
-	}
+	commitFixture(t, root)
 	opts := repair.Options{DataDir: data, Ops: []string{audit.OpRetitle}, Subclasses: []string{audit.SubclassAsserted}, Write: true}
 	rep, err := repair.Run(opts)
 	if err != nil {

@@ -177,7 +177,7 @@ func TestSurveyAfterAPartialFlushSeesEveryPackOnDisk(t *testing.T) {
 		t.Fatalf("people did not split, the case proves nothing: %v", onDisk)
 	}
 
-	fs, err := s.survey(defs[FamilyPeople])
+	fs, err := s.survey(defs[FamilyPeople], nil)
 	if err != nil {
 		t.Fatal(err)
 	}

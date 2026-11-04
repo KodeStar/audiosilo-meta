@@ -485,7 +485,7 @@ func TestComposeRunsThePositionScaleAdvisory(t *testing.T) {
 				`,"chapters":` + chapterList(80) + `}`,
 		}),
 	})
-	chars, recaps := sidecarSpread(3, 7, 11)
+	chars, recaps := sidecarSpread(3, 7, 11, 15, 19)
 	coreDir, comDir := composeDirs(t, core, composeCommunity(map[string]string{
 		"book-one": `{"characters":` + chars + `,"recaps":` + recaps + `}`,
 	}))
@@ -495,7 +495,7 @@ func TestComposeRunsThePositionScaleAdvisory(t *testing.T) {
 		t.Fatalf("the scale fixture reported problems: %v", res.Problems)
 	}
 	if got := advisoryMatching(problemLines(res.Warnings), scaleMarker); len(got) != 2 {
-		t.Errorf("a sidecar stopping at chapter 11 of 80 reported %d advisories, want 2: %v", len(got), got)
+		t.Errorf("a sidecar stopping at chapter 19 of 80 reported %d advisories, want 2: %v", len(got), got)
 	}
 
 	// The same community root alone says nothing: it cannot see the chapters.

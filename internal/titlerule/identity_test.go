@@ -1,6 +1,9 @@
 package titlerule
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 // IdentityTitleKey is the rule three defences share, so what it calls one book is
 // pinned here rather than at any of them: the intake gate, the bulk importer's
@@ -481,6 +484,54 @@ func TestContradictionFollowsThePolicy(t *testing.T) {
 	}
 }
 
+func TestDivisionSequenceSkipsAnUnreadableChapter(t *testing.T) {
+	if got := divisionSequence("Foo, Book 2, Chapter One Hundred and One", ""); !reflect.DeepEqual(got, []float64{2}) {
+		t.Errorf("sequence = %v, want [2]", got)
+	}
+	// Any other unreadable marker still voids the sequence, as before.
+	if got := divisionSequence("Foo, Book One Hundred, Part 2", ""); got != nil {
+		t.Errorf("sequence = %v, want none", got)
+	}
+}
+
+// A chapter nested under a volume makes a LONGER sequence, and sequences of
+// different length disagree: "Foo, Book 2, Chapter 1" ([2 1]) is a chapter of
+// book 2, not book 2 ([2]). The answer is the same under both policies, because the
+// division sequence reads digits whatever the policy - so the census
+// (pkg/check, WriterPolicy), the importer's create guard and the intake gates (both
+// WriterPolicy) and the audit (ReaderPolicy) all keep the two apart.
+func TestAChapterUnderAVolumeIsNotTheVolume(t *testing.T) {
+	a, b := "Foo, Book 2", "Foo, Book 2, Chapter 1"
+	for name, p := range map[string]VolumePolicy{"WriterPolicy": WriterPolicy, "ReaderPolicy": ReaderPolicy} {
+		sa, sb := StatementOf(a, "", p), StatementOf(b, "", p)
+		if !reflect.DeepEqual(sa.Divisions, []float64{2}) || !reflect.DeepEqual(sb.Divisions, []float64{2, 1}) {
+			t.Fatalf("%s: divisions = %v / %v, want [2] / [2 1]", name, sa.Divisions, sb.Divisions)
+		}
+		if sa.Agrees(sb) || sb.Agrees(sa) {
+			t.Errorf("%s: %q and %q agree; a chapter of a volume is not the volume", name, a, b)
+		}
+		if SameStatedVolume(a, "", b, "", p) {
+			t.Errorf("%s: SameStatedVolume must answer as Agrees does", name)
+		}
+	}
+}
+
+// Silent is a statement of nothing: no volume and no division.
+func TestVolumeStatementSilent(t *testing.T) {
+	for title, want := range map[string]bool{
+		"Anna Karenina":                               true,
+		"Anna Karenina, Book 1":                       false,
+		"Level 1 Lessons 1-5":                         false,
+		"History of England - (Volume 1, Chapter 01)": false,
+		// Only an unreadable chapter: nothing stated.
+		"Foo, Chapter One Hundred and One": true,
+	} {
+		if got := StatementOf(title, "", WriterPolicy).Silent(); got != want {
+			t.Errorf("StatementOf(%q).Silent() = %v, want %v", title, got, want)
+		}
+	}
+}
+
 // Label is injective over what Agrees compares: statements that disagree never share a
 // label.
 func TestLabelSeparatesWhatAgreesSeparates(t *testing.T) {
@@ -540,6 +591,14 @@ func TestSameStatedVolumeComparesNestedDivisions(t *testing.T) {
 		{"Ranger's Apprentice: Part One, Episode 2", "Ranger's Apprentice: Part One, Episode 3", false},
 		{"Wildwood, Part One", "Wildwood, Part 1", true},
 		{"Ranger's Apprentice: Part Two, Episode 2", "Ranger's Apprentice: Part One, Episode 2", false},
+		// A chapter nests under its volume: LibriVox's one-project-per-chapter
+		// histories agree on the volume and differ in the chapter.
+		{"History of England - (Volume 1, Chapter 01)", "History of England - (Volume 1, Chapter 02)", false},
+		{"History of England - (Volume 1, Chapter 01)", "History of England - (Volume 1, Chapter 01)", true},
+		{"History of England - (Volume 1, Chapter 01)", "History of England", true},
+		// An unreadable chapter number is skipped, never the rest of the sequence:
+		// both state episode 3, and only the seasons tell the two apart.
+		{"Foo: Season 2, Episode 3, Chapter One Hundred", "Foo: Season 1, Episode 3, Chapter One Hundred", false},
 	} {
 		if got := SameStatedVolume(c.a, "", c.b, "", ReaderPolicy); got != c.same {
 			t.Errorf("SameStatedVolume(%q, %q, ReaderPolicy) = %v, want %v", c.a, c.b, got, c.same)
@@ -616,6 +675,14 @@ func TestStripDecorationRefusals(t *testing.T) {
 		{
 			name:  "a shared article is not the head surviving",
 			title: "The History of Rome: The Complete Works", series: "The History of Rome",
+			refusal: RefuseUnnamedPart,
+		},
+		{
+			// A chapter is a part: what is left is "Chapter One - The Vanity Mirror",
+			// which names a chapter of the series, not a book (W-TITLE stopped
+			// proposing it when "chapter" joined the division sequence).
+			name:  "a chapter left after the series came off the front is refused",
+			title: "Lord Primcock: Chapter One - The Vanity Mirror", series: "Lord Primcock",
 			refusal: RefuseUnnamedPart,
 		},
 		{

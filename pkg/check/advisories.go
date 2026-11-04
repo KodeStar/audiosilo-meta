@@ -7,6 +7,7 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -145,7 +146,10 @@ func deHonorifiedSlug(id string) (bare string, ok bool) {
 //
 // Works are compared within a TITLE group, which is both cheap and exactly
 // right: a fork's slug is derived from the same title as its base, so a pair
-// that is not in one group is not this class. Pairs in different languages are
+// that is not in one group is not this class. The group is the WHOLE title's slug
+// (model.SlugifyWhole), never the id-capped one: grouped by the cut slug, the
+// three volumes of the Watergate Report or "History of Our Own Times" Vol II and
+// III - titles that differ only past the cap - read as one title. Pairs in different languages are
 // skipped - those are a translation and its original, which SHOULD be two works.
 // The subset shape is STRICT on purpose: two works with the very same author
 // list are the identity rule's own business, and the one case where that rule
@@ -157,7 +161,10 @@ func deHonorifiedSlug(id string) (bare string, ok bool) {
 func checkIdentityEqualWorks(cat *model.Catalog, idx *pathIndex, reviewed *reviewedPairs, warn addFunc) {
 	groups := map[string][]*model.Work{}
 	for _, w := range cat.Works {
-		key := model.Slugify(w.Title)
+		// The WHOLE title's slug: model.Slugify cuts at the id cap, and a long
+		// volume title ("Final Report of the Senate Select Committee ... Watergate
+		// Report Vol. 3") says which volume it is only past the cut.
+		key := model.SlugifyWhole(w.Title)
 		if key == "" {
 			continue
 		}
@@ -432,12 +439,17 @@ type dupCandidate struct {
 // sets, so a key group can hold two unrelated books by different authors - and for the
 // same reason a REVIEWED pair (reviewed) drops only that pair: a member left pairing
 // with nobody drops out, and a group left with fewer than two is no finding at all.
+//
+// The disjointness test compares WHOLE title slugs (model.SlugifyWhole), as
+// checkIdentityEqualWorks groups by them: two long titles that differ only past the
+// id cap are not the same title, so neither class may skip them as the other's.
 func normalizedDuplicateGroup(ix *WorkIdentity, works []*model.Work, reviewed *reviewedPairs) []*model.Work {
 	cands := make([]dupCandidate, 0, len(works))
 	for _, w := range works {
 		all, identity := identitySets(w)
-		cands = append(cands, dupCandidate{work: w, slug: model.Slugify(w.Title), all: all, identity: identity})
+		cands = append(cands, dupCandidate{work: w, slug: model.SlugifyWhole(w.Title), all: all, identity: identity})
 	}
+	parts := ix.partsOfAWhole(cands)
 	keep := map[string]*model.Work{}
 	for i := 0; i < len(cands); i++ {
 		for j := i + 1; j < len(cands); j++ {
@@ -445,7 +457,7 @@ func normalizedDuplicateGroup(ix *WorkIdentity, works []*model.Work, reviewed *r
 			if a.slug == b.slug {
 				continue // checkIdentityEqualWorks' finding, not this one
 			}
-			if differentVolumes(a.work, b.work) {
+			if differentVolumes(a.work, b.work) || ix.partAndWhole(parts, a.work, b.work) {
 				continue
 			}
 			if !ix.matches(b.work, &b.coll, a.work.Title, ix.SeriesNameOf(a.work.ID), ix.statementOf[a.work.ID], a.work.Language, a.all, a.identity, &a.coll) ||
@@ -461,6 +473,101 @@ func normalizedDuplicateGroup(ix *WorkIdentity, works []*model.Work, reviewed *r
 	}
 	sort.Slice(out, func(i, j int) bool { return out[i].ID < out[j].ID })
 	return out
+}
+
+// partsOfAWhole returns the members of one key group that are PARTS of a multi-part
+// work: each stating a volume (its WriterPolicy statement), listed by no series, and
+// with a SIBLING - another such member of the same book (a compatible language,
+// languagesCompatible, so an unknown one matches; nested identity authors,
+// IdentityEqualWorks' rule) stating a DIFFERENT volume. nil when the group holds
+// none, which partAndWhole reads as "no parts".
+//
+// LibriVox records a long book as one project per part - "Anna Karenina, Book 1"
+// through "Book 8", "Wealth of Nations, Book 1", "Portrait of a Lady, Volume 1",
+// twelve volumes of Aesop - and each project is a work of its own by design: a part
+// is not the book. The key strips the part marker, so every part keys with the whole
+// ("Anna Karenina"), and a statement of nothing never disagrees with one, so the
+// census paired the whole with each part and listed the set as one book.
+//
+// What tells a part from a series position is the evidence on BOTH halves of the
+// rule, and each is deliberately narrow:
+//
+//   - NO series lists it. A retail serial volume ("Ashlani's Reincarnation, Volume
+//     1", "The Hunter's Code: Book 22") sits in its series at that position, and
+//     the bare title beside it ("Hammered" beside "Hammered, Book 3") is exactly the
+//     duplicate the census exists for, so a placed work never counts as a part.
+//   - A SIBLING part of the same book states another volume. One unplaced "Foo,
+//     Book 3" beside "Foo" is the Hammered shape with its series claim lost, and
+//     stays a finding (a maintainer records "not one book" as a reviewed rejection);
+//     two of them stating different volumes of one title by one author are a set of
+//     parts, which no retail decoration of one book produces. The sibling must be
+//     the same book because a key group is a TITLE: Helen Keller's "Story of My
+//     Life, Part 1" is no part of a set because Casanova's "Story of My Life" is
+//     recorded in volumes.
+//
+// Two parts stating the SAME volume are not touched here (they agree, and stay a
+// finding: "War and Peace, Volume 1" in two translations), and two stating different
+// volumes already disagree (VolumeStatement.Agrees). What it withholds is only the
+// whole-and-part pair - see partAndWhole.
+//
+// Each part maps to its HEAD - its title before the volume marker
+// (titlerule.VolumeHeadOf), as titlerule.CompareKeyWhole folds it - which is what a
+// member must spell to be the part's whole; a part whose marker has no head ("" -
+// a bare number, a division) has no whole.
+//
+// cands are the group's members with their author sets already derived
+// (normalizedDuplicateGroup's), so the nesting test reads them rather than
+// rebuilding them per pair.
+func (ix *WorkIdentity) partsOfAWhole(cands []dupCandidate) map[string]string {
+	var stating []*dupCandidate
+	for i := range cands {
+		if id := cands[i].work.ID; ix.statementOf[id].States && !ix.placed[id] {
+			stating = append(stating, &cands[i])
+		}
+	}
+	var set map[string]string
+	for i, a := range stating {
+		for _, b := range stating[i+1:] {
+			if ix.statementOf[a.work.ID].Volume == ix.statementOf[b.work.ID].Volume ||
+				!languagesCompatible(a.work.Language, b.work.Language) ||
+				!authorSetsNest(a.all, a.identity, b.all, b.identity) {
+				continue
+			}
+			if set == nil {
+				set = map[string]string{}
+			}
+			set[a.work.ID], set[b.work.ID] = partHead(a.work.Title), partHead(b.work.Title)
+		}
+	}
+	return set
+}
+
+// partHead is a part's title before its volume marker, folded for comparison
+// (titlerule.CompareKeyWhole), or "" when the marker it states has no head.
+func partHead(title string) string {
+	if h, ok := titlerule.VolumeHeadOf(title); ok {
+		return titlerule.CompareKeyWhole(h.Head)
+	}
+	return ""
+}
+
+// partAndWhole reports whether one of two works is a part of a multi-part set
+// (parts, partsOfAWhole's answer for their key group) and the other is its WHOLE:
+// a title that states nothing (no volume, no division) AND is the part's head with
+// nothing left over - "Anna Karenina" beside "Anna Karenina, Book 1", which is not
+// one book. A title that only states nothing is not enough: a part whose marker
+// cannot be read ("The Odyssey (Βook 06)", a Greek Beta) states nothing too, and
+// its leftover text is exactly what makes it a possible duplicate of the part it
+// sits beside ("The Odyssey (Book 06)"), so it still pairs. Nor is a decorated
+// whole ("Aesop's Fables: A New Revised Edition") read as one: a reading list may
+// over-report, it may not hide. A nil parts (a group with no set) withholds
+// nothing.
+func (ix *WorkIdentity) partAndWhole(parts map[string]string, a, b *model.Work) bool {
+	isWhole := func(part, w *model.Work) bool {
+		head, ok := parts[part.ID]
+		return ok && head != "" && ix.statementOf[w.ID].Silent() && titlerule.CompareKeyWhole(w.Title) == head
+	}
+	return isWhole(a, b) || isWhole(b, a)
 }
 
 // checkOrphanPeople reports a person record that nothing in the tree credits.
@@ -670,6 +777,26 @@ func AdvisoryCensus(warns []Problem) string {
 // it with room on both sides.
 const sidecarScaleFloor = 0.4
 
+// sidecarScaleVouchFloor is how far a work's recaps member must reach before it
+// vouches for the scale of the same entry's characters member, which is then not
+// judged at all.
+//
+// A characters member CANNOT be judged by its last position the way a recaps
+// member is: a reveal is a first appearance, so a cast is front-loaded by nature
+// and its last card may sit early in a book whose positions are perfectly sound.
+// Over the composed tree of 2026-11-03 that shape was 225 of the 362 advisories
+// this rule raised - characters members whose own recaps, on the same scale,
+// reach 0.64 or more of the recording's chapters (counted as shapeOf counts
+// them). The partial and mis-scaled sidecars' recaps sat at 0.07-0.55 (the titan
+// of baleros 0.41, the luzhin defense 0.48), and the few between 0.6 and 0.7 were
+// sound (Red Seas Under Red Skies and Silas Marner reach the book's own last
+// chapter, 16 and 21, on recordings that split finer), so 0.6 sits in that gap.
+// It is deliberately higher than sidecarScaleFloor: a recaps member at 0.41 is
+// not reported itself, but it has not shown that the entry spans the book (the
+// titan of baleros: recaps through chapter 11 of 27, the cast to 8 - one partial
+// sidecar, kept on the reading list by its cast).
+const sidecarScaleVouchFloor = 0.6
+
 // sidecarScaleMinPositions is the number of DISTINCT positions a sidecar must
 // use before the rule will judge its scale.
 //
@@ -684,6 +811,22 @@ const sidecarScaleFloor = 0.4
 // separate question from this one.
 const sidecarScaleMinPositions = 3
 
+// sidecarScaleCastMinPositions is sidecarScaleMinPositions for a characters
+// member judged ALONE - one with no recaps member reaching
+// sidecarScaleVouchFloor beside it.
+//
+// A cast with three or four distinct reveals is a handful of main characters
+// introduced in the opening chapters, which is what a sequel's returning cast
+// looks like (AUTHORING.md: a returning character introduced on page one is
+// chapter 1, or 0). Measured over the composed tree of 2026-11-03, the
+// characters members judged alone that fell short of sidecarScaleFloor were 43
+// at three or four distinct reveals - cast median 9-10, last reveal median
+// chapter 3-5, the twenty with no recaps of their own every one a sequel cast
+// (the Dune, Chaos Walking and Camp Half-Blood sequels) - against 32 at five or
+// more, whose casts (median 12) are staged across a gradient a wrong ruler shows
+// in. Five is where the gradient starts.
+const sidecarScaleCastMinPositions = 5
+
 // sidecarScaleMinChapters is the shortest chapter list the rule will judge.
 //
 // A work with few chapters gives the ratio too little resolution - a sidecar
@@ -691,6 +834,15 @@ const sidecarScaleMinPositions = 3
 // mis-scaled one - and short recording chapter lists are also where credit and
 // part-divider tracks distort the count most.
 const sidecarScaleMinChapters = 20
+
+// sidecarScaleMeasure is what a work's recordings say about its length: the
+// SMALLEST chapter count among them (shapeOf's, matter and part dividers
+// excluded) and every part count a recording shows, each with the first
+// recording showing it.
+type sidecarScaleMeasure struct {
+	chapters int
+	parts    map[int]string
+}
 
 // checkSidecarPositionScale reports a characters or recaps sidecar whose
 // positions stop far short of the chapters its work's recordings actually have.
@@ -708,11 +860,23 @@ const sidecarScaleMinChapters = 20
 // Nothing in the tree states a work's chapter count, so the rule reads the one
 // independent measure the data does carry: the chapter list on the work's own
 // recordings. That is an audiobook's track list rather than the work's chapter
-// numbering, and the two differ - credits tracks, combined chapters, part
-// dividers - so the comparison is deliberately coarse. It fires only on an
-// order-of-magnitude mismatch, and it compares against the SMALLEST chapter list
-// among the recordings, so the recording that splits the book most finely cannot
-// be what condemns the sidecar.
+// numbering, so it is read through shapeOf - credits, dedication and the other
+// matter tracks and the part dividers are not chapters - and the comparison
+// stays deliberately coarse. It fires only on an order-of-magnitude mismatch, and
+// it compares against the SMALLEST chapter list among the recordings, so the
+// recording that splits the book most finely cannot be what condemns the
+// sidecar.
+//
+// The PARTS are the scale such a sidecar is most often written on: a book in
+// fourteen parts of three to six chapters each, numbered per part, reads as a
+// sidecar stopping at chapter 14 of 60. When a reported sidecar stops exactly at
+// a recording's part count, the message says so - the exact signature of the
+// eight sidecars meta-community #450 re-authored.
+//
+// A characters member is judged only when the same entry's recaps member does
+// not vouch for the scale (sidecarScaleVouchFloor), and then at a higher
+// gradient floor (sidecarScaleCastMinPositions), because a cast is front-loaded
+// by nature.
 //
 // WARN-only, like its neighbours here, and for the same reason: a sidecar that
 // genuinely covers only the opening of a long book is a legitimate partial
@@ -722,11 +886,11 @@ const sidecarScaleMinChapters = 20
 //
 // It is CROSS-FAMILY - the measure it reads is the works family's recordings -
 // but unlike checkIntegrity's sidecar arm it needs no profile gate: under a tree
-// holding no works the floor map is empty and every sidecar takes the !ok
-// continue, so the rule is vacuous by construction rather than switched off
+// holding no works the measure map is empty and every member takes judge's !ok
+// return, so the rule is vacuous by construction rather than switched off
 // (see check.LoadProfile for the cross-family skip rule it satisfies for free).
 func checkSidecarPositionScale(cat *model.Catalog, idx *pathIndex, warn addFunc) {
-	// No POSITIONED sidecars, nothing to judge - and the floor map below is a
+	// No POSITIONED sidecars, nothing to judge - and the measure map below is a
 	// full works-times-recordings walk, which a core-profile load (every core load
 	// of a composed build) would otherwise pay for nothing. The description member
 	// is deliberately absent from this test and from the walk below: it is gated by
@@ -734,57 +898,92 @@ func checkSidecarPositionScale(cat *model.Catalog, idx *pathIndex, warn addFunc)
 	if len(cat.Characters) == 0 && len(cat.Recaps) == 0 {
 		return
 	}
-	// Smallest non-empty chapter list per work id.
-	floor := map[string]int{}
+	// Only a work carrying a positioned member is measured: shapeOf reads every
+	// track title through several patterns, and the works with a sidecar are about
+	// one in a hundred of the catalogue.
+	positioned := map[string]bool{}
+	for _, c := range cat.Characters {
+		positioned[c.Work] = true
+	}
+	for _, rc := range cat.Recaps {
+		positioned[rc.Work] = true
+	}
+	measures := map[string]*sidecarScaleMeasure{}
 	for _, w := range cat.Works {
+		if !positioned[w.ID] {
+			continue
+		}
 		for _, r := range w.Recordings {
-			n := len(r.Chapters)
-			if n == 0 {
+			s := shapeOf(r.Chapters)
+			if s.chapters == 0 {
 				continue
 			}
-			if cur, ok := floor[w.ID]; !ok || n < cur {
-				floor[w.ID] = n
+			m, ok := measures[w.ID]
+			if !ok {
+				m = &sidecarScaleMeasure{chapters: s.chapters}
+				measures[w.ID] = m
+			}
+			m.chapters = min(m.chapters, s.chapters)
+			if s.parts > 0 {
+				if m.parts == nil {
+					m.parts = map[int]string{}
+				}
+				if _, seen := m.parts[s.parts]; !seen {
+					m.parts[s.parts] = r.ID
+				}
 			}
 		}
 	}
 
-	report := func(rel, kind, workID string, top, chapters int) {
+	// judge reports a member whose positions stage a gradient of at least
+	// minPositions that stops short of the floor, and returns its last position.
+	judge := func(rel, kind, workID string, positions []int, minPositions int) (top int) {
+		for _, p := range positions {
+			top = max(top, p)
+		}
+		m, ok := measures[workID]
+		if !ok || m.chapters < sidecarScaleMinChapters || float64(top) >= float64(m.chapters)*sidecarScaleFloor {
+			return top
+		}
+		distinct := map[int]bool{}
+		for _, p := range positions {
+			distinct[p] = true
+		}
+		if len(distinct) < minPositions {
+			return top
+		}
+		if rec, ok := m.parts[top]; ok {
+			warn(rel, "%s sidecar for %q stops at chapter %d but the work's recordings carry %d chapters, "+
+				"and its positions match the recording's %d parts (%s): "+
+				"the positions may be scaled to something other than the work's chapters",
+				kind, workID, top, m.chapters, top, rec)
+			return top
+		}
 		warn(rel, "%s sidecar for %q stops at chapter %d but the work's recordings carry %d chapters: "+
 			"the positions may be scaled to something other than the work's chapters",
-			kind, workID, top, chapters)
+			kind, workID, top, m.chapters)
+		return top
+	}
+
+	// The last position of each work's recaps member, which is what vouches for
+	// the characters member beside it.
+	recapsTop := map[string]int{}
+	for _, rc := range cat.Recaps {
+		var through []int
+		for _, r := range rc.Recaps {
+			through = append(through, r.Through.Chapter)
+		}
+		recapsTop[rc.Work] = max(recapsTop[rc.Work], judge(idx.recaps[rc], "recaps", rc.Work, through, sidecarScaleMinPositions))
 	}
 
 	for _, c := range cat.Characters {
-		chapters, ok := floor[c.Work]
-		if !ok || chapters < sidecarScaleMinChapters {
+		if m, ok := measures[c.Work]; ok && float64(recapsTop[c.Work]) >= float64(m.chapters)*sidecarScaleVouchFloor {
 			continue
 		}
-		top, distinct := 0, map[int]bool{}
+		var reveals []int
 		for _, ch := range c.Characters {
-			distinct[ch.Reveal.Chapter] = true
-			if ch.Reveal.Chapter > top {
-				top = ch.Reveal.Chapter
-			}
+			reveals = append(reveals, ch.Reveal.Chapter)
 		}
-		if len(distinct) >= sidecarScaleMinPositions && float64(top) < float64(chapters)*sidecarScaleFloor {
-			report(idx.characters[c], "characters", c.Work, top, chapters)
-		}
-	}
-
-	for _, rc := range cat.Recaps {
-		chapters, ok := floor[rc.Work]
-		if !ok || chapters < sidecarScaleMinChapters {
-			continue
-		}
-		top, distinct := 0, map[int]bool{}
-		for _, r := range rc.Recaps {
-			distinct[r.Through.Chapter] = true
-			if r.Through.Chapter > top {
-				top = r.Through.Chapter
-			}
-		}
-		if len(distinct) >= sidecarScaleMinPositions && float64(top) < float64(chapters)*sidecarScaleFloor {
-			report(idx.recaps[rc], "recaps", rc.Work, top, chapters)
-		}
+		judge(idx.characters[c], "characters", c.Work, reveals, sidecarScaleCastMinPositions)
 	}
 }

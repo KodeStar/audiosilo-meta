@@ -12250,6 +12250,9 @@
       "authors": [
         "jane-d-abbott"
       ],
+      "genres": [
+        "childrens"
+      ],
       "id": "highacres",
       "language": "en",
       "license": "CC0-1.0",
@@ -12982,6 +12985,10 @@
             {
               "asin": "B07DHFXCBL",
               "region": "de"
+            },
+            {
+              "asin": "B071S47483",
+              "region": "ca"
             }
           ],
           "chapters": [
@@ -13330,6 +13337,11 @@
             {
               "imported_at": "2026-10-13",
               "ref": "B07DHFXCBL",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-04",
+              "ref": "B071S47483",
               "type": "libex-import"
             }
           ],

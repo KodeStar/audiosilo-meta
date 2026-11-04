@@ -1,6 +1,9 @@
 package extract
 
-import "testing"
+import (
+	"sort"
+	"testing"
+)
 
 func TestChapterFromLabelStrict(t *testing.T) {
 	cases := []struct {
@@ -170,6 +173,20 @@ func TestLeadingNumberWords(t *testing.T) {
 		if ok != c.ok || (ok && (n != c.num || rest != c.rest)) {
 			t.Errorf("leadingNumberWords(%q) = (%d, %q, %v), want (%d, %q, %v)",
 				c.in, n, rest, ok, c.num, c.rest, c.ok)
+		}
+	}
+}
+
+// TestNumberWordsIsTheVocabulary pins the exported list to the map the label
+// reader parses with: sorted, complete, and each word read back as its value.
+func TestNumberWordsIsTheVocabulary(t *testing.T) {
+	words := NumberWords()
+	if len(words) != len(numberWords) || !sort.StringsAreSorted(words) {
+		t.Fatalf("NumberWords() = %v, want the %d words sorted", words, len(numberWords))
+	}
+	for _, w := range words {
+		if _, ok := numberWords[w]; !ok {
+			t.Errorf("NumberWords() lists %q, which the reader does not parse", w)
 		}
 	}
 }

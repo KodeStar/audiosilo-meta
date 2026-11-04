@@ -19,7 +19,7 @@ func TestLibrivoxGenreMappings(t *testing.T) {
 		{Name: "War & Military"},
 		{Name: "Published 1800 -1900"},
 		{Name: "Single author"},
-		{Name: "Short works"},
+		{Name: "Nautical & Marine Fiction"},
 	}
 	dataDir := t.TempDir()
 	sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
@@ -35,7 +35,7 @@ func TestLibrivoxGenreMappings(t *testing.T) {
 			unmapped = line
 		}
 	}
-	for _, dropped := range []string{"Published 1800 -1900", "Single author", "Short works"} {
+	for _, dropped := range []string{"Published 1800 -1900", "Single author", "Nautical & Marine Fiction"} {
 		if !strings.Contains(unmapped, dropped) {
 			t.Errorf("%q is not reported unmapped: %q", dropped, unmapped)
 		}
@@ -47,14 +47,51 @@ func TestLibrivoxGenreMappings(t *testing.T) {
 	}
 }
 
+// TestLibrivoxGenreTableDecisions pins issue #2761's decisions, one row per
+// LibriVox name: the clear fits onto EXISTING vocabulary terms, the remaps of
+// the mappings the review called guesses, and the mappings kept.
+func TestLibrivoxGenreTableDecisions(t *testing.T) {
+	for name, want := range map[string]string{
+		// Added: non-fiction sub-genres with an Audible-table precedent, and
+		// Exploration with its parent Travel & Geography.
+		"Literary Criticism":    "writing-publishing",
+		"Atheism & Agnosticism": "religion-spirituality",
+		"Crafts & Hobbies":      "home-garden",
+		"Exploration":           "travel",
+		"Animals":               "nature",
+		// Added: the names only LibriVox's children's branches carry.
+		"Family":      "childrens",
+		"School":      "childrens",
+		"General":     "childrens",
+		"Historical":  "childrens",
+		"Short works": "childrens",
+		// Remapped: a LibriVox Comedy is a play, and Animals & Nature is
+		// children's fiction (nature is a non-fiction entry).
+		"Comedy":           "drama-plays",
+		"Animals & Nature": "childrens",
+		// Kept.
+		"Drama":       "drama-plays",
+		"Tragedy":     "drama-plays",
+		"Mathematics": "science",
+	} {
+		if got := librivoxGenres[strings.ToLower(name)]; got != want {
+			t.Errorf("%q maps to %q, want %q", name, got, want)
+		}
+	}
+}
+
 func TestLibrivoxGenreDroppedTagsStayUnmapped(t *testing.T) {
-	// The period and form tags the table leaves out on purpose.
+	// The period and form tags the table leaves out on purpose, and the genres
+	// whose nearest vocabulary entry would be a guess (issue #2761).
 	for _, name := range []string{
 		"Published before 1800", "Published 1800 -1900", "Published 1900 onward",
-		"Single author", "Short works", "General Fiction", "Anthologies", "Modern (19th C)",
+		"Single author", "General Fiction", "Anthologies", "Modern (19th C)",
+		"Culture & Heritage Fiction", "Family Life", "Fictional Biographies & Memoirs",
+		"Nautical & Marine Fiction", "Nature & Animal Fiction", "Travel Fiction",
+		"Sagas", "Writing & Linguistics", "Transportation", "Games",
 	} {
 		if g, ok := librivoxGenres[strings.ToLower(name)]; ok {
-			t.Errorf("%q maps to %q; a period or form tag is not a genre", name, g)
+			t.Errorf("%q maps to %q; it names no single vocabulary entry", name, g)
 		}
 	}
 }

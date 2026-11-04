@@ -1,11 +1,14 @@
 package issueform
 
 import (
+	"encoding/json"
+	"os"
 	"strings"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // libexOnlyRecording is the seed catalogue's recording with libex-import as its
@@ -383,7 +386,7 @@ func TestImportOfLibexOnlyRecordAttestsRatherThanDuplicating(t *testing.T) {
 	if res.Status != StatusOK {
 		t.Fatalf("status = %q, want ok; messages = %v", res.Status, res.Messages)
 	}
-	if !anyContains(res.Messages, "previously seeded from the libex mirror") {
+	if !anyContains(res.Messages, "previously seeded from a bulk mirror") {
 		t.Errorf("the attestation must be reported: %v", res.Messages)
 	}
 	rec := readFile(t, dir, "works/ex/existing-work/recordings/john-smith-2020.json")
@@ -576,5 +579,90 @@ func TestAddWorkSlugDuplicateOfAttestedWorkStaysDuplicate(t *testing.T) {
 	}
 	if anyContains(res.Messages, "libex mirror") {
 		t.Errorf("an attested work must not be reported as a mirror seed: %v", res.Messages)
+	}
+}
+
+// TestMirrorSeedVerdictNamesTheRecordsMirror: a work only LibriVox has stated
+// is a mirror seed too, and the verdict says LibriVox seeded it - never libex.
+func TestMirrorSeedVerdictNamesTheRecordsMirror(t *testing.T) {
+	dir := t.TempDir()
+	files := seedFiles()
+	files["works/ex/existing-work/work.json"] = `{
+  "authors": ["jane-doe"],
+  "id": "existing-work",
+  "language": "en",
+  "license": "CC0-1.0",
+  "sources": [{"type": "librivox", "ref": "527", "imported_at": "2026-10-27"}],
+  "title": "Existing Work"
+}`
+	testpack.Seed(t, dir, files)
+
+	body := addWorkBody("Existing Work", "Jane Doe", "en", "Different Narrator", "US: B0FRESH001", "web", true)
+	res := Process(Options{DataDir: dir, Template: "add-work", Body: body})
+	if res.Status != StatusNeedsHuman {
+		t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
+	}
+	if !anyContains(res.Messages, "was seeded from the LibriVox mirror and no user has attested it yet") {
+		t.Errorf("the verdict must name LibriVox: %v", res.Messages)
+	}
+	if anyContains(res.Messages, "libex") {
+		t.Errorf("a LibriVox seed must not be said to come from libex: %v", res.Messages)
+	}
+}
+
+func TestSeededFrom(t *testing.T) {
+	src := func(types ...string) []model.Source {
+		var out []model.Source
+		for _, ty := range types {
+			out = append(out, model.Source{Type: ty})
+		}
+		return out
+	}
+	for _, tc := range []struct {
+		sources []model.Source
+		want    string
+	}{
+		{src(model.SourceLibexImport), "the libex mirror"},
+		{src(model.SourceLibrivox, model.SourceLibrivox), "the LibriVox mirror"},
+		{src(model.SourceLibrivox, model.SourceLibexImport), "the libex and LibriVox mirrors"},
+		{src(model.SourceUser, model.SourceLibrivox), "the LibriVox mirror"},
+		{nil, "a bulk mirror"},
+	} {
+		if got := seededFrom(tc.sources); got != tc.want {
+			t.Errorf("seededFrom(%v) = %q, want %q", tc.sources, got, tc.want)
+		}
+	}
+}
+
+// Every bulk-mirror source type has a name a verdict can say: a new mirror tier
+// type must be named in mirrorNames, never read as no mirror at all.
+func TestMirrorNamesCoverTheBulkMirrorTier(t *testing.T) {
+	raw, err := os.ReadFile("../../schema/common.schema.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var doc struct {
+		Defs struct {
+			Source struct {
+				Properties struct {
+					Type struct {
+						Enum []string `json:"enum"`
+					} `json:"type"`
+				} `json:"properties"`
+			} `json:"source"`
+		} `json:"$defs"`
+	}
+	if err := json.Unmarshal(raw, &doc); err != nil {
+		t.Fatal(err)
+	}
+	enum := doc.Defs.Source.Properties.Type.Enum
+	if len(enum) == 0 {
+		t.Fatal("no source-type enum found in the schema")
+	}
+	for _, tp := range enum {
+		_, named := mirrorNames[tp]
+		if bulk := model.TierOfSource(tp) == model.TierBulkMirror; bulk != named {
+			t.Errorf("source type %q: bulk-mirror tier %v, named in mirrorNames %v", tp, bulk, named)
+		}
 	}
 }

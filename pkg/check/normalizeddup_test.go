@@ -29,12 +29,18 @@ func dupBase(title string) map[string]string {
 	return files
 }
 
+// dupWork adds an English work record id titled title, by author, with one source
+// of the given type - the one writer of the fixtures below.
+func dupWork(files map[string]string, id, title, author, source string) {
+	files["works/"+id[:2]+"/"+id+"/work.json"] = `{"authors":["` + author + `"],"id":"` + id + `",` +
+		`"language":"en","license":"CC0-1.0","sources":[{"type":"` + source + `"}],"title":"` + title + `"}`
+}
+
 // dupTwin adds a second record of the base work under another spelling of its title,
 // and returns the advisories the class reported.
 func dupTwin(t *testing.T, files map[string]string, id, title string) []string {
 	t.Helper()
-	files["works/"+id[:2]+"/"+id+"/work.json"] = `{"authors":["author-one"],"id":"` + id + `",` +
-		`"language":"en","license":"CC0-1.0","sources":[{"type":"libex-import"}],"title":"` + title + `"}`
+	dupWork(files, id, title, "author-one", "libex-import")
 	return advisoryMatching(advisoryWarnings(t, files), normalizedDupMarker)
 }
 
@@ -62,9 +68,7 @@ func TestAdvisoryNormalizedDuplicateWorks(t *testing.T) {
 // census line useless for tracking a repair wave.
 func TestAdvisoryNormalizedDuplicateLeavesSameTitlePairsToItsNeighbour(t *testing.T) {
 	files := dupBase("Hollow Crown")
-	files["works/ho/hollow-crown-author-one/work.json"] = `{"authors":["author-one"],` +
-		`"id":"hollow-crown-author-one","language":"en","license":"CC0-1.0",` +
-		`"sources":[{"type":"user"}],"title":"Hollow Crown"}`
+	dupWork(files, "hollow-crown-author-one", "Hollow Crown", "author-one", "user")
 	lines := advisoryWarnings(t, files)
 	if got := advisoryMatching(lines, normalizedDupMarker); len(got) != 0 {
 		t.Errorf("a same-title pair was reported by both classes: %v", got)
@@ -141,9 +145,7 @@ func TestAdvisoryNormalizedDuplicateSkipsDifferentAuthors(t *testing.T) {
 	files := dupBase("Hollow Crown")
 	files["people/au/author-two.json"] = `{"id":"author-two","license":"CC0-1.0",` +
 		`"name":"Author Two","sources":[{"type":"user"}]}`
-	files["works/ho/hollow-crown-author-two/work.json"] = `{"authors":["author-two"],` +
-		`"id":"hollow-crown-author-two","language":"en","license":"CC0-1.0",` +
-		`"sources":[{"type":"user"}],"title":"Hollow Crown (Unabridged)"}`
+	dupWork(files, "hollow-crown-author-two", "Hollow Crown (Unabridged)", "author-two", "user")
 	if got := advisoryMatching(advisoryWarnings(t, files), normalizedDupMarker); len(got) != 0 {
 		t.Errorf("two authors' books sharing a title were reported as one: %v", got)
 	}
@@ -196,9 +198,7 @@ func TestAdvisoryNormalizedDuplicateSeesTheRoleCreditFork(t *testing.T) {
 // than reordering the columns a maintainer compares two waves by.
 func TestAdvisoryCensusCountsNormalizedDuplicates(t *testing.T) {
 	files := dupBase("Hollow Crown")
-	files["works/ho/hollow-crown-a-litrpg-adventure/work.json"] = `{"authors":["author-one"],` +
-		`"id":"hollow-crown-a-litrpg-adventure","language":"en","license":"CC0-1.0",` +
-		`"sources":[{"type":"libex-import"}],"title":"Hollow Crown: A LitRPG Adventure"}`
+	dupWork(files, "hollow-crown-a-litrpg-adventure", "Hollow Crown: A LitRPG Adventure", "author-one", "libex-import")
 	dir := t.TempDir()
 	writeEntities(t, dir, files)
 	res := Load(dir)
@@ -212,5 +212,88 @@ func TestAdvisoryCensusCountsNormalizedDuplicates(t *testing.T) {
 	// The pre-existing classes keep their place ahead of it.
 	if i, j := strings.Index(census, "orphan people"), strings.Index(census, "normalized-identity"); i < 0 || j < i {
 		t.Errorf("the new class must be appended, not reordered in: %q", census)
+	}
+}
+
+// A long book LibriVox records one project per part is a whole plus a SET of parts,
+// each a work of its own: the key strips the part marker, so every part keys with the
+// whole, and a whole stating no volume disagreed with none of them. Two parts in no
+// series stating different volumes are a set, and neither pairs with the whole.
+func TestAdvisoryNormalizedDuplicateSkipsPartsOfAWhole(t *testing.T) {
+	files := dupBase("Anna Karenina")
+	dupWork(files, "anna-karenina-book-1", "Anna Karenina, Book 1", "author-one", "librivox")
+	if got := dupTwin(t, files, "anna-karenina-book-2", "Anna Karenina, Book 2"); len(got) != 0 {
+		t.Errorf("a whole and its parts were reported as one book: %v", got)
+	}
+
+	// A whole of its own beside the parts (its leading article is no leftover)
+	// still pairs with the first whole: the part rule withholds only the
+	// whole-and-part pairs.
+	files = dupBase("Wealth of Nations")
+	dupWork(files, "wealth-of-nations-book-1", "Wealth of Nations, Book 1", "author-one", "librivox")
+	dupWork(files, "wealth-of-nations-book-4", "Wealth of Nations, Book 4", "author-one", "librivox")
+	got := dupTwin(t, files, "the-wealth-of-nations", "The Wealth of Nations")
+	if len(got) != 1 || strings.Contains(got[0], "wealth-of-nations-book-") {
+		t.Errorf("advisories = %v, want the two wholes alone", got)
+	}
+}
+
+// The WHOLE is a title with nothing left over beyond the parts' head. A part whose
+// marker cannot be read ("Βook 06", a Greek Beta) states nothing as well, and is a
+// possible duplicate of the part beside it - it must still pair, and so must a
+// decorated whole.
+func TestAdvisoryNormalizedDuplicateKeepsAnUnreadablePart(t *testing.T) {
+	files := dupBase("The Odyssey")
+	dupWork(files, "odyssey-book-01", "The Odyssey (Book 01)", "author-one", "librivox")
+	dupWork(files, "odyssey-book-06", "The Odyssey (Book 06)", "author-one", "librivox")
+	dupWork(files, "odyssey-beta-book-06", "The Odyssey (Βook 06)", "author-one", "librivox")
+	got := advisoryMatching(advisoryWarnings(t, files), normalizedDupMarker)
+	if len(got) != 1 || !strings.Contains(got[0], "odyssey-beta-book-06") || !strings.Contains(got[0], "odyssey-book-06") {
+		t.Fatalf("advisories = %v, want the unreadable part beside the parts", got)
+	}
+
+	files = dupBase("Aesop's Fables: A New Revised Edition")
+	dupWork(files, "aesops-fables-volume-01", "Aesop's Fables, Volume 01", "author-one", "librivox")
+	if got := dupTwin(t, files, "aesops-fables-volume-02", "Aesop's Fables, Volume 02"); len(got) != 1 {
+		t.Errorf("a decorated whole beside the parts = %v, want one finding", got)
+	}
+}
+
+// ONE unplaced part beside the bare title is the Hammered shape with its series
+// claim lost - "Hammered, Book 3" IS "Hammered" - so it stays a finding; so do two
+// parts that sit in a series, which is a retail serial's volumes, not parts.
+func TestAdvisoryNormalizedDuplicateKeepsAPartWithoutASet(t *testing.T) {
+	if got := dupTwin(t, dupBase("Hammered"), "hammered-book-3", "Hammered, Book 3"); len(got) != 1 {
+		t.Errorf("a lone stated volume beside the bare title = %v, want one finding", got)
+	}
+
+	files := dupBase("Ashlani's Reincarnation")
+	dupWork(files, "ashlanis-reincarnation-volume-1", "Ashlani's Reincarnation, Volume 1", "author-one", "librivox")
+	dupWork(files, "ashlanis-reincarnation-volume-2", "Ashlani's Reincarnation: Volume 2", "author-one", "libex-import")
+	files["series/se/series-one.json"] = `{"id":"series-one","license":"CC0-1.0","name":"Series One",` +
+		`"sources":[{"type":"user"}],"works":[{"position":"1","work":"ashlanis-reincarnation-volume-1"},` +
+		`{"position":"2","work":"ashlanis-reincarnation-volume-2"},{"position":"4","work":"book-one"}]}`
+	if got := advisoryMatching(advisoryWarnings(t, files), normalizedDupMarker); len(got) != 1 {
+		t.Errorf("a serial's placed volumes beside its bare title = %v, want one finding", got)
+	}
+
+	// A key group is a TITLE: another author's volumes of the same title are no
+	// sibling of this part, so it stays a lone part beside the bare title.
+	files = dupBase("The Story of My Life")
+	files["people/ot/other-author.json"] = `{"id":"other-author","license":"CC0-1.0","name":"Other Author","sources":[{"type":"user"}]}`
+	dupWork(files, "story-of-my-life-part-1", "Story of My Life, Part 1", "author-one", "librivox")
+	dupWork(files, "story-of-my-life-volume-2", "Story of My Life, Volume 2", "other-author", "librivox")
+	got := advisoryMatching(advisoryWarnings(t, files), normalizedDupMarker)
+	if len(got) != 1 || !strings.Contains(got[0], "story-of-my-life-part-1") || strings.Contains(got[0], "volume-2") {
+		t.Errorf("a lone part beside another author's volume = %v, want the part and the whole", got)
+	}
+}
+
+// A history LibriVox records one project per CHAPTER states the same volume on every
+// chapter of it; the chapter nested under the volume is what tells them apart.
+func TestAdvisoryNormalizedDuplicateSkipsChaptersOfOneVolume(t *testing.T) {
+	if got := dupTwin(t, dupBase("History of England (Volume 1, Chapter 01)"),
+		"history-of-england-volume-1-chapter-02", "History of England (Volume 1, Chapter 02)"); len(got) != 0 {
+		t.Errorf("two chapters of one volume were reported as one book: %v", got)
 	}
 }

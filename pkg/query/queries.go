@@ -48,8 +48,9 @@ const latestCandidatesSQL = `SELECT id FROM works` + latestOrderSQL
 // the measurement).
 //
 // src is a source filter (librivox.go; "" for none): the works with a recording
-// of that source type, reached through idx_recording_sources_type, then by
-// primary key.
+// of that source type, reached through idx_recording_sources_type, then each
+// recording and work by primary key - and ORDERED BY THAT SOURCE'S RECORDINGS
+// (latestSourceHeadSQL), not by the work.
 func (s *DB) latestCandidatesQuery(lang langFilter, src string, fetch int) (string, []any) {
 	if src == "" {
 		if len(lang) == 0 {
@@ -58,14 +59,55 @@ func (s *DB) latestCandidatesQuery(lang langFilter, src string, fetch int) (stri
 		pred, args := s.worksPredicate(lang, "language")
 		return `SELECT id FROM works WHERE ` + pred + latestOrderSQL, append(args, fetch)
 	}
-	query, args := `SELECT id FROM works WHERE `+worksWithSourceArm, []any{src}
+	head, tail := latestSourceHeadSQL, latestSourceTailSQL
+	if s.hasLibrivoxRecordingLayer() {
+		head, tail = latestSourceHeadV9SQL, latestSourceTailV9SQL
+	}
+	query, args := head, []any{src}
 	if len(lang) > 0 {
-		pred, predArgs := lang.predicate("language", false)
+		pred, predArgs := lang.predicate("w.language", false)
 		query += ` AND ` + pred
 		args = append(args, predArgs...)
 	}
-	return query + latestOrderSQL, append(args, fetch)
+	return query + tail, append(args, fetch)
 }
+
+// latestSourceHeadSQL and latestSourceTailSQL are works/latest's phase one
+// under a source filter: the works with a recording of the source type, newest
+// SOURCE RECORDING first. A filtered list answers "what is new from LibriVox",
+// and the work's own added_at cannot say: a LibriVox reading attached to a
+// classic the catalogue held for months (Pride and Prejudice, Candide) is new
+// while its work is not, and ordered by the work it would never surface - which
+// is what the LibriVox lane (meta-sync, L4) and a player's "new on LibriVox"
+// shelf (L5) are planned to read it for. So the date is the newest added_at among the work's recordings OF
+// THAT SOURCE (a recording's added_at is addedAt's rule: its own, else its
+// newest imported_at), falling back to the work's added_at when none of them
+// carries one, with the unfiltered order's NULLS LAST and title, id tie-break.
+// The unfiltered list, and a language filter alone, keep ordering by the work
+// (latestOrderSQL).
+//
+// Two halves so a language predicate (over w.language - the recordings table
+// has a language column too) sits between them. The GROUP BY is on rs.work_id,
+// which idx_recording_sources_type already yields in order under type = ?, so
+// the grouping needs no temp b-tree; only the ORDER BY sorts.
+const (
+	latestSourceHeadSQL = `SELECT w.id FROM recording_sources rs` +
+		` JOIN recordings r ON r.work_id = rs.work_id AND r.id = rs.recording_id` +
+		` JOIN works w ON w.id = rs.work_id WHERE rs.type = ?`
+	latestSourceTailSQL = ` GROUP BY rs.work_id` +
+		` ORDER BY (COALESCE(MAX(r.added_at), w.added_at) IS NULL) ASC, COALESCE(MAX(r.added_at), w.added_at) DESC, w.title ASC, w.id ASC LIMIT ?`
+
+	// The same order from artifact schema_version 9 on, where recording_sources
+	// carries each recording's added_at and idx_recording_sources_type covers
+	// it: the newest recording of the source is MAX(rs.added_at) off the index,
+	// so no recording is read at all. The version 8 spelling above, one
+	// recordings lookup per recording of the source, stays for an older
+	// artifact.
+	latestSourceHeadV9SQL = `SELECT w.id FROM recording_sources rs` +
+		` JOIN works w ON w.id = rs.work_id WHERE rs.type = ?`
+	latestSourceTailV9SQL = ` GROUP BY rs.work_id` +
+		` ORDER BY (COALESCE(MAX(rs.added_at), w.added_at) IS NULL) ASC, COALESCE(MAX(rs.added_at), w.added_at) DESC, w.title ASC, w.id ASC LIMIT ?`
+)
 
 // latestSeriesCap is the per-series diversity cap for the latest-works list: a
 // bulk import shares one added_at date, so without a cap the title tie-break
@@ -73,7 +115,8 @@ func (s *DB) latestCandidatesQuery(lang langFilter, src string, fetch int) (stri
 const latestSeriesCap = 2
 
 // latestWorks returns up to limit work cards ordered by added_at DESC (NULLS
-// LAST), then title, with at most latestSeriesCap works from any one series
+// LAST; under a source filter, the source's recordings' added_at), then title,
+// with at most latestSeriesCap works from any one series
 // (keyed by the work's first series membership, the one the card carries).
 // The key is that membership's ordering FAMILY - its ordering_of where it is a
 // variant, else its own id (model.Series.OrderingPrimary) - so two reading
@@ -94,7 +137,8 @@ const latestSeriesCap = 2
 // lang (already live) narrows phase one to the works in the languages it names,
 // so the cap and the page are taken over those alone (latestCandidatesQuery).
 //
-// src narrows it to the works a source filter admits ("" for none); an artifact
+// src narrows it to the works a source filter admits ("" for none), ordered by
+// their newest recording from that source (latestSourceHeadSQL); an artifact
 // with no recording_sources table answers a filtered request with no works.
 func (s *DB) latestWorks(limit int, lang langFilter, src string) ([]*WorkCard, error) {
 	if src != "" && !s.hasLibrivoxLayer() {
@@ -425,6 +469,17 @@ const languagesSchemaVersion = 7
 // nothing, an empty LibriVox feed - and an artifact CLAIMING it without them
 // fails to open (loadStats, the redirects precedent).
 const librivoxSchemaVersion = 8
+
+// librivoxRecordingSchemaVersion is the artifact schema_version that first
+// carried the LIBRIVOX RECORDING layer: recordings.librivox_title,
+// chapters.section_number and the recording_credits, chapter_readers and
+// recording_librivox_genres tables - a LibriVox project's own title, section
+// numbers, translators, section readers and genre names, which the
+// LibriVox-shaped feed answers with. A newer binary serving an older release
+// degrades to the feed's earlier answer (the work's title and translators, the
+// vocabulary genres, positions as section numbers), and an artifact CLAIMING it
+// without them fails to open (loadStats, the redirects precedent).
+const librivoxRecordingSchemaVersion = 9
 
 const (
 	// anyRedirectSQL asks whether the tombstone table holds anything, once per
@@ -999,11 +1054,20 @@ type PersonDetail struct {
 	Narrated      []NarratedEntry `json:"narrated"`
 	AuthoredTotal int             `json:"authored_total"`
 	NarratedTotal int             `json:"narrated_total"`
-	Limit         int             `json:"limit"`
-	Offset        int             `json:"offset"`
+	// Translated is the recordings this person is credited on as translator in
+	// the recording's own credits (a LibriVox project's translator, the
+	// LIBRIVOX RECORDING layer), paged like Narrated. Omitted, with its total,
+	// when there are none - and on an artifact older than
+	// librivoxRecordingSchemaVersion; a page past the list's end omits
+	// Translated alone (its total still says how many there are). A translator a work credits is in Authored
+	// already (the work's authors carry its translators).
+	Translated      []NarratedEntry `json:"translated,omitempty"`
+	TranslatedTotal int             `json:"translated_total,omitempty"`
+	Limit           int             `json:"limit"`
+	Offset          int             `json:"offset"`
 }
 
-// The person page's four queries. Each total counts over exactly the join its
+// The person page's queries, a total and a page per list. Each total counts over exactly the join its
 // page query pages, so the total and the list can never disagree; they are named
 // constants so the index guard EXPLAINs what actually runs.
 const (
@@ -1014,11 +1078,19 @@ const (
 		`ORDER BY w.title, wa.work_id LIMIT ? OFFSET ?`
 	narratedPageSQL = `SELECT rn.work_id, rn.recording_id FROM recording_narrators rn JOIN works w ON w.id = rn.work_id ` +
 		`WHERE rn.person_id=? ORDER BY w.title, rn.work_id, rn.recording_id LIMIT ? OFFSET ?`
+
+	// The translated list (librivoxRecordingSchemaVersion): a recording's own
+	// translator credits, through idx_recording_credits_person.
+	translatedTotalSQL = `SELECT COUNT(*) FROM recording_credits rc JOIN works w ON w.id = rc.work_id ` +
+		`WHERE rc.person_id=? AND rc.role = '` + model.RoleTranslator + `'`
+	translatedPageSQL = `SELECT rc.work_id, rc.recording_id FROM recording_credits rc JOIN works w ON w.id = rc.work_id ` +
+		`WHERE rc.person_id=? AND rc.role = '` + model.RoleTranslator + `' ORDER BY w.title, rc.work_id, rc.recording_id LIMIT ? OFFSET ?`
 )
 
-// Person returns one page of a Person's authored and narrated credits. limit
-// and offset are applied to each list independently (both are ordered by work
-// title, then id, so the window is stable across requests on one artifact).
+// Person returns one page of a Person's authored, narrated and (version 9)
+// recording-translated credits. limit and offset are applied to each list
+// independently (each is ordered by work title, then id, so the window is
+// stable across requests on one artifact).
 func (s *DB) Person(id string, limit, offset int) (*PersonDetail, error) {
 	var d PersonDetail
 	var sortName sql.NullString
@@ -1058,31 +1130,51 @@ func (s *DB) Person(id string, limit, offset int) (*PersonDetail, error) {
 		d.Authored = []*WorkCard{}
 	}
 
-	nrows, err := s.db.Query(narratedPageSQL, id, limit, offset)
+	if d.Narrated, err = s.recordingEntries(narratedPageSQL, id, limit, offset); err != nil {
+		return nil, err
+	}
+	if s.hasLibrivoxRecordingLayer() {
+		if d.TranslatedTotal, err = s.scalarInt(translatedTotalSQL, id); err != nil {
+			return nil, err
+		}
+		if d.TranslatedTotal > 0 {
+			if d.Translated, err = s.recordingEntries(translatedPageSQL, id, limit, offset); err != nil {
+				return nil, err
+			}
+		}
+	}
+	return &d, nil
+}
+
+// recordingEntries runs one of the person page's (work, recording) page queries
+// and resolves each row's work card, dropping a row whose work the artifact does
+// not carry; never nil.
+func (s *DB) recordingEntries(query, id string, limit, offset int) ([]NarratedEntry, error) {
+	rows, err := s.db.Query(query, id, limit, offset)
 	if err != nil {
 		return nil, err
 	}
-	credits, err := scanPairs(nrows, func(workID, rid string) narratedCredit {
+	credits, err := scanPairs(rows, func(workID, rid string) narratedCredit {
 		return narratedCredit{workID: workID, recordingID: rid}
 	})
 	if err != nil {
 		return nil, err
 	}
-	narratedIDs := make([]string, len(credits))
+	workIDs := make([]string, len(credits))
 	for i, c := range credits {
-		narratedIDs[i] = c.workID
+		workIDs[i] = c.workID
 	}
-	byID, err := s.cardsByID(context.Background(), narratedIDs)
+	byID, err := s.cardsByID(context.Background(), workIDs)
 	if err != nil {
 		return nil, err
 	}
-	d.Narrated = []NarratedEntry{}
+	out := []NarratedEntry{}
 	for _, c := range credits {
 		if card := byID[c.workID]; card != nil {
-			d.Narrated = append(d.Narrated, NarratedEntry{Work: card, RecordingID: c.recordingID})
+			out = append(out, NarratedEntry{Work: card, RecordingID: c.recordingID})
 		}
 	}
-	return &d, nil
+	return out, nil
 }
 
 // narratedCredit is one row of a narrator's credit list: which recording of

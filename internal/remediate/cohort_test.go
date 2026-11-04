@@ -59,6 +59,11 @@ func TestTitleKeyIsArticleTolerant(t *testing.T) {
 	if titleKey("The Blinding Knife") == titleKey("The Broken Eye") {
 		t.Error("different books must not share a title key")
 	}
+	// Two long titles that differ only past the id cap are two keys.
+	long := "Lives of the Most Remarkable Criminals Who Have Been Condemned and Executed for Murder, the Highway, Housebreaking"
+	if titleKey(long+", Vol 2") == titleKey(long+", Vol 3") {
+		t.Error("two volumes differing only past the slug cap must not share a title key")
+	}
 }
 
 func TestEarlierDatePrefersTheMoreSpecificSpelling(t *testing.T) {

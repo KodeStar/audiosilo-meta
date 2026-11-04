@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"strings"
 	"testing"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // Each advisory ships with a quiet fixture and a firing one, and every case
@@ -100,6 +102,28 @@ func TestAdvisoryIdentityEqualWorkPair(t *testing.T) {
 	got := advisoryMatching(advisoryWarnings(t, files), marker)
 	if len(got) != 1 || !strings.Contains(got[0], "book-one-author-one") {
 		t.Errorf("identity-equal advisories = %v", got)
+	}
+}
+
+// Two long titles that differ only past the id cap - three volumes of one report -
+// are two titles, though their ids were cut to one shared stem: the class groups by
+// the WHOLE title's slug. Two records of one long title are still its finding.
+func TestAdvisoryIdentityEqualComparesWholeTitles(t *testing.T) {
+	const marker = "one book under two ids"
+	long := "Final Report of the Senate Select Committee on Presidential Campaign Activities, a Report Long Enough to Be Cut"
+	if len(model.Slugify(long)) < model.MaxSlugLen {
+		t.Fatalf("fixture title is not past the cap: %q", model.Slugify(long))
+	}
+	files := baseValid()
+	for i, vol := range []string{"Vol. 1", "Vol. 2"} {
+		dupWork(files, fmt.Sprintf("final-report-%d", i+1), long+" "+vol, "author-one", "librivox")
+	}
+	if got := advisoryMatching(advisoryWarnings(t, files), marker); len(got) != 0 {
+		t.Errorf("two volumes cut to one slug stem were reported as one book: %v", got)
+	}
+	dupWork(files, "final-report-3", long+" Vol. 2", "author-one", "user")
+	if got := advisoryMatching(advisoryWarnings(t, files), marker); len(got) != 1 {
+		t.Errorf("two records of one long title = %v, want one finding", got)
 	}
 }
 
@@ -332,12 +356,18 @@ func chapterList(n int) string {
 
 // sidecarSpread builds a characters sidecar and a recaps sidecar staged across
 // the given positions - a real gradient, which is what the rule judges.
-func sidecarSpread(at ...int) (string, string) {
+func sidecarSpread(at ...int) (string, string) { return sidecarPair(at, at) }
+
+// sidecarPair is sidecarSpread with the two members staged apart: a cast
+// revealed across reveals, and recaps through each of through.
+func sidecarPair(reveals, through []int) (string, string) {
 	var cs, rs []string
 	seen := map[int]bool{}
-	for i, p := range at {
+	for i, p := range reveals {
 		cs = append(cs, fmt.Sprintf(`{"description":"A person in the book, described in the contributor's own words.",`+
 			`"id":"someone-%d","name":"Someone %d","reveal":{"chapter":%d}}`, i, i, p))
+	}
+	for _, p := range through {
 		// checkRecaps forbids two recaps at one position, so a repeated position
 		// yields a single recap - which is exactly the unstaged shape the
 		// gradient guard exists for.
@@ -373,10 +403,12 @@ func TestAdvisorySidecarPositionScale(t *testing.T) {
 	}
 
 	// A sidecar stopping far short of them is reported - once per member, so a
-	// characters and a recaps sidecar each name themselves.
-	got := advisoryMatching(advisoryWarnings(t, scaleFixture(80, 3, 7, 11)), scaleMarker)
+	// characters and a recaps sidecar each name themselves. Five distinct
+	// positions, since a characters member its recaps do not vouch for is judged
+	// only from sidecarScaleCastMinPositions.
+	got := advisoryMatching(advisoryWarnings(t, scaleFixture(80, 3, 7, 11, 15, 19)), scaleMarker)
 	if len(got) != 2 {
-		t.Fatalf("a sidecar stopping at chapter 11 of 80 reported %d advisories, want 2 (characters + recaps): %v",
+		t.Fatalf("a sidecar stopping at chapter 19 of 80 reported %d advisories, want 2 (characters + recaps): %v",
 			len(got), got)
 	}
 	var sawChars, sawRecaps bool
@@ -430,7 +462,7 @@ func TestAdvisorySidecarPositionScaleUsesSmallestChapterList(t *testing.T) {
 // census metacheck prints, so a wave can be compared against the last one.
 func TestAdvisoryCensusCountsMisScaledSidecars(t *testing.T) {
 	dir := t.TempDir()
-	writeEntities(t, dir, scaleFixture(80, 3, 7, 11))
+	writeEntities(t, dir, scaleFixture(80, 3, 7, 11, 15, 19))
 	line := AdvisoryCensus(Load(dir).Warnings)
 	if !strings.Contains(line, "2 mis-scaled sidecars") {
 		t.Errorf("census = %q, want it to count 2 mis-scaled sidecars", line)
@@ -448,5 +480,153 @@ func TestAdvisorySidecarPositionScaleNeedsAGradient(t *testing.T) {
 	// Two positions is still short of a gradient the rule will judge.
 	if got := advisoryMatching(advisoryWarnings(t, scaleFixture(80, 1, 2)), scaleMarker); len(got) != 0 {
 		t.Errorf("a two-position sidecar reported %v", got)
+	}
+}
+
+// titledChapters renders a recording chapter list with the given track titles.
+func titledChapters(titles ...string) string {
+	var b strings.Builder
+	b.WriteString(`[`)
+	for i, title := range titles {
+		if i > 0 {
+			b.WriteString(`,`)
+		}
+		fmt.Fprintf(&b, `{"length_ms":1000,"start_ms":%d,"title":%q}`, i*1000, title)
+	}
+	b.WriteString(`]`)
+	return b.String()
+}
+
+// pairFixture is baseValid plus a recording of the given track titles and a
+// sidecar pair staged apart; a nil through leaves the recaps member out.
+func pairFixture(tracks []string, reveals, through []int) map[string]string {
+	files := baseValid()
+	files["works/bo/book-one/recordings/rec-one.json"] = withChapters(titledChapters(tracks...))
+	chars, recaps := sidecarPair(reveals, through)
+	files["works/bo/book-one/characters.json"] = chars
+	if through != nil {
+		files["works/bo/book-one/recaps.json"] = recaps
+	}
+	return files
+}
+
+// numberedTracks is n "Chapter i" titles.
+func numberedTracks(n int) []string {
+	var out []string
+	for i := 1; i <= n; i++ {
+		out = append(out, fmt.Sprintf("Chapter %d", i))
+	}
+	return out
+}
+
+// TestAdvisorySidecarScaleRecapsVouchForTheCast pins that a characters member is
+// judged against the same entry's recaps: a cast is front-loaded by nature (a
+// reveal is a FIRST appearance), so a cast whose recaps reach well into the book
+// is on the book's scale however early its last card sits. A recaps member that
+// only clears the floor does not vouch, and the cast is judged after all.
+func TestAdvisorySidecarScaleRecapsVouchForTheCast(t *testing.T) {
+	cast := []int{1, 2, 3, 5, 8, 12} // six distinct reveals, the last at 12 of 80
+	// Recaps through chapter 60 of 80 vouch: nothing is reported.
+	if got := advisoryMatching(advisoryWarnings(t, pairFixture(numberedTracks(80), cast,
+		[]int{10, 20, 30, 40, 50, 60})), scaleMarker); len(got) != 0 {
+		t.Errorf("a front-loaded cast beside recaps reaching 60 of 80 reported %v", got)
+	}
+	// Recaps through chapter 40 clear the floor (not reported themselves) but
+	// stop short of the vouch floor, so the cast is judged and reported.
+	got := advisoryMatching(advisoryWarnings(t, pairFixture(numberedTracks(80), cast,
+		[]int{10, 20, 30, 40})), scaleMarker)
+	if len(got) != 1 || !strings.Contains(got[0], "characters sidecar") {
+		t.Errorf("a cast beside recaps reaching only 40 of 80 should be reported alone, got %v", got)
+	}
+}
+
+// TestAdvisorySidecarScaleCastAloneNeedsFiveReveals pins the higher gradient a
+// characters member judged ALONE must stage: four distinct reveals in the
+// opening chapters is a sequel's returning cast, five is a gradient.
+func TestAdvisorySidecarScaleCastAloneNeedsFiveReveals(t *testing.T) {
+	if got := advisoryMatching(advisoryWarnings(t, pairFixture(numberedTracks(80),
+		[]int{0, 1, 1, 2, 4}, nil)), scaleMarker); len(got) != 0 {
+		t.Errorf("a four-reveal cast with no recaps reported %v", got)
+	}
+	// The recaps member keeps its own floor of three: recaps through 3, 7 and
+	// 11 of 80 are reported, the three-reveal cast beside them (unvouched) is not.
+	got := advisoryMatching(advisoryWarnings(t, scaleFixture(80, 3, 7, 11)), scaleMarker)
+	if len(got) != 1 || !strings.Contains(got[0], "recaps sidecar") {
+		t.Errorf("a three-position pair stopping at 11 of 80 reported %v, want the recaps member alone", got)
+	}
+	// Recaps holding only the chapter-0 "previously" entry vouch for nothing.
+	if got := advisoryMatching(advisoryWarnings(t, pairFixture(numberedTracks(80),
+		[]int{0, 1, 2, 4, 6}, []int{0})), scaleMarker); len(got) != 1 {
+		t.Errorf("a five-reveal cast stopping at 6 of 80 reported %v, want one advisory", got)
+	}
+}
+
+// TestAdvisorySidecarScaleCountsOnlyChapterTracks pins that the measure is the
+// recording's CHAPTERS: credits, dedication, epigraph and part-divider tracks
+// are not chapters of the work, and counting them made a sound sidecar look
+// mis-scaled.
+func TestAdvisorySidecarScaleCountsOnlyChapterTracks(t *testing.T) {
+	tracks := []string{"Opening Credits", "Dedication", "Epigraph"}
+	for p, part := range []string{"One", "Two", "Three", "Four", "Five", "Six"} {
+		tracks = append(tracks, "Part "+part)
+		for c := 1; c <= 4; c++ {
+			tracks = append(tracks, fmt.Sprintf("Chapter %d", p*4+c))
+		}
+	}
+	tracks = append(tracks, "End Credits", "Acknowledgments") // 35 tracks, 24 chapters
+
+	// Recaps through 11: 11 of 35 tracks, but 11 of 24 chapters clears the floor.
+	if got := advisoryMatching(advisoryWarnings(t, pairFixture(tracks, []int{1, 2, 3, 5, 7, 11},
+		[]int{3, 5, 7, 9, 11})), scaleMarker); len(got) != 0 {
+		t.Errorf("a sidecar reaching chapter 11 of 24 reported %v", got)
+	}
+	// Through 9 of 24 is short of it, and the message counts the chapters.
+	got := advisoryMatching(advisoryWarnings(t, pairFixture(tracks, []int{1, 2, 3, 5, 7, 9},
+		[]int{3, 5, 7, 9})), scaleMarker)
+	if len(got) != 2 || !strings.Contains(got[0], "carry 24 chapters") {
+		t.Errorf("a sidecar stopping at chapter 9 of 24 reported %v, want two advisories counting 24 chapters", got)
+	}
+}
+
+// TestAdvisorySidecarScaleNamesTheParts pins the signature of a sidecar written
+// per PART while the recording carries chapters: it stops exactly at the
+// recording's part count, and the message says so. A part count is read from
+// divider tracks ("Part One: ...", "Seven: ...") or, with none, from the part
+// each chapter title states ("Part 2 - Chapter 7").
+func TestAdvisorySidecarScaleNamesTheParts(t *testing.T) {
+	words := []string{"One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
+		"Eleven", "Twelve", "Thirteen", "Fourteen"}
+	var named, bare, prefixed []string
+	for p, w := range words {
+		named = append(named, "Part "+w+": A Title")
+		bare = append(bare, w+": A Title")
+		for c := 1; c <= 4; c++ {
+			named = append(named, fmt.Sprintf("Chapter %d", c))
+			bare = append(bare, fmt.Sprintf("Chapter %d", c))
+			prefixed = append(prefixed, fmt.Sprintf("Part %d - Chapter %d", p+1, p*4+c))
+		}
+	}
+	const sig = "positions match the recording's 14 parts (rec-one)"
+	recaps := []int{2, 4, 6, 8, 10, 12, 14}
+	for name, tracks := range map[string][]string{"named": named, "bare": bare, "prefixed": prefixed} {
+		got := advisoryMatching(advisoryWarnings(t, pairFixture(tracks, []int{1, 2, 3, 4, 5}, recaps)), sig)
+		if len(got) != 1 || !strings.Contains(got[0], "recaps sidecar") || !strings.Contains(got[0], "carry 56 chapters") {
+			t.Errorf("%s: a recaps member stopping at part 14 of 14 reported %v", name, got)
+		}
+	}
+	// One short of the part count is the plain message: a coincidence of scale
+	// is not the signature.
+	lines := advisoryWarnings(t, pairFixture(named, []int{1, 2, 3, 4, 5}, []int{2, 4, 6, 8, 10, 13}))
+	if got := advisoryMatching(lines, "parts ("); len(got) != 0 {
+		t.Errorf("a sidecar stopping at 13 of 14 parts named the parts: %v", got)
+	}
+	if got := advisoryMatching(lines, scaleMarker); len(got) != 2 {
+		t.Errorf("a sidecar stopping at 13 of 56 chapters reported %v, want two advisories", got)
+	}
+	// Both messages are one class in the census.
+	dir := t.TempDir()
+	writeEntities(t, dir, pairFixture(named, []int{1, 2, 3, 4, 5}, recaps))
+	if line := AdvisoryCensus(Load(dir).Warnings); !strings.Contains(line, "2 mis-scaled sidecars") {
+		t.Errorf("census = %q, want it to count 2 mis-scaled sidecars", line)
 	}
 }

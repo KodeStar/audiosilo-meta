@@ -1061,3 +1061,53 @@ func noteMentions(notes []string, want string) bool {
 	}
 	return false
 }
+
+// A LibriVox recording is a production of its own: two recordings of different
+// LibriVox projects, or a LibriVox recording beside one that is not, colliding on a
+// key with the same narrators and runtime are never fused - the mover is re-keyed
+// and each keeps its project id (librivox_id is identity, unique across the dataset).
+func TestMergeWorksNeverFusesTwoLibrivoxProjects(t *testing.T) {
+	for _, tc := range []struct {
+		name          string
+		keeper, mover int // librivox_id, 0 = none
+		why           string
+	}{
+		{"two projects", 527, 801, "LibriVox projects 527 and 801 differ"},
+		{"a project beside a retail recording", 0, 801, "only one is a LibriVox project (librivox_id 801)"},
+		{"a retail recording beside a project", 527, 0, "only one is a LibriVox project (librivox_id 527)"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			files := hammeredCluster(t)
+			withID := func(rec string, id int) string {
+				if id == 0 {
+					return rec
+				}
+				return testpack.WithField(t, rec, "librivox_id", id)
+			}
+			files["works/ha/hammered/recordings/luke-daniels-2011.json"] = withID(recJSON(t, "luke-daniels-2011", "hammered",
+				withNarrators("luke-daniels"), withRuntime(600), withASIN("B0KEEPER01")), tc.keeper)
+			files["works/ha/hammered-book-3/recordings/luke-daniels-2011.json"] = withID(recJSON(t, "luke-daniels-2011", "hammered-book-3",
+				withNarrators("luke-daniels"), withRuntime(600), withASIN("B0LOSER001")), tc.mover)
+			data := seedTree(t, files)
+			rep := run(t, Options{DataDir: data, Ops: []string{"merge-works"}, Write: true})
+			if len(rep.Applied) != 1 {
+				t.Fatalf("applied %+v, refused %+v", rep.Applied, rep.Refused)
+			}
+			recs, err := workEntry(t, data, "hammered").Recordings()
+			if err != nil {
+				t.Fatal(err)
+			}
+			if want := []string{"luke-daniels-2011", "luke-daniels-2011-2"}; !reflect.DeepEqual(rawentry.SortedKeys(recs), want) {
+				t.Fatalf("recordings = %v, want both kept", rawentry.SortedKeys(recs))
+			}
+			for key, want := range map[string]int{"luke-daniels-2011": tc.keeper, "luke-daniels-2011-2": tc.mover} {
+				if got, _ := recs[key].IntAt("librivox_id"); got != want {
+					t.Errorf("%s librivox_id = %d, want %d", key, got, want)
+				}
+			}
+			if !noteMentions(rep.Applied[0].Notes, tc.why) {
+				t.Errorf("notes do not name the LibriVox project as the reason: %v", rep.Applied[0].Notes)
+			}
+		})
+	}
+}

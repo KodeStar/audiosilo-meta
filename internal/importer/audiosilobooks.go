@@ -168,6 +168,9 @@ func audiosiloBookToBook(e rawBook) sourceBook {
 		sb.runtimeMin = int(mins)
 	}
 	sb.abridged = coerceBoolPtr(e["abridged"])
+	// Dropped quietly when malformed, like a non-https cover: the site already
+	// normalized it (import-parse.ts normalizeIsbn).
+	sb.isbns = sourceISBNs(e["isbn"], nil)
 
 	if name := e.str("series"); name != "" {
 		sb.series = []seriesRef{makeSeriesRef(name, e.str("series_position"))}

@@ -77,6 +77,15 @@ type DB struct {
 	// pays no query there.
 	seriesTranslators map[string]bool
 
+	// librivoxRecordingFilled is whether a version 9 artifact's LIBRIVOX
+	// RECORDING layer holds anything (librivoxRecordingFilledSQL), asked once at
+	// load. The feed falls back PER RECORDING anyway (lvRestatedExpr: a
+	// recording the backfill has not reached answers as version 8 did), so this
+	// is a saving, not the correctness: a release cut before any backfill data
+	// lands answers from the plain version 8 queries, without the layer's
+	// per-page reads and the per-row restated arm of ?genre= (librivoxFeedLayer).
+	librivoxRecordingFilled bool
+
 	// log is the injected logger (SetLogger), for the query layer's degradation
 	// notices (a request that serves a lesser answer rather than failing).
 	// metaserve sets it when it adopts the artifact; a DB opened without one - a
@@ -187,13 +196,13 @@ type LanguageCount struct {
 
 // MaxSchemaVersion is the newest artifact schema_version this code understands:
 // internal/build.SchemaVersion, which TestMaxSchemaVersionIsTheBuilders pins it
-// to, and the newest of the version gates below (librivoxSchemaVersion). An
+// to, and the newest of the version gates below (librivoxRecordingSchemaVersion). An
 // artifact NEWER than it still opens and serves (every optional read is gated
 // with >=); the consumer that embeds this package (a mirror-mode AudioSilo
 // server) shows that its copy is newer than it understands. Artifact schema
 // changes must therefore stay ADDITIVE - new tables and columns - because such
 // consumers lag.
-const MaxSchemaVersion = 8
+const MaxSchemaVersion = 9
 
 // Open opens the artifact at path read-only and runs the load-time integrity
 // checks (loadStats: a schema_version claim without the tables it implies is a
@@ -353,6 +362,19 @@ func (s *DB) loadStats() error {
 				return fmt.Errorf("%s: artifact schema_version %d requires the LibriVox layer: %w",
 					s.path, s.schemaVersion, err)
 			}
+		}
+	}
+	// The LIBRIVOX RECORDING layer (version 9), the same way: the feed's every
+	// extended page reads its tables.
+	if s.hasLibrivoxRecordingLayer() {
+		for _, shape := range librivoxRecordingShapeSQL {
+			if _, err := s.db.Exec(shape); err != nil {
+				return fmt.Errorf("%s: artifact schema_version %d requires the LibriVox recording layer: %w",
+					s.path, s.schemaVersion, err)
+			}
+		}
+		if err := s.db.QueryRow(librivoxRecordingFilledSQL).Scan(&s.librivoxRecordingFilled); err != nil {
+			return fmt.Errorf("%s: LibriVox recording layer: %w", s.path, err)
 		}
 	}
 	s.stats = st
