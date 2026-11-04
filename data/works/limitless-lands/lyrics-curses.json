@@ -964,7 +964,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt21/lysistrata_1207.jpg",
           "id": "a-volunteer",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Comedy"
+          ],
           "librivox_id": 5001,
+          "librivox_title": "Lysistrata",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/lysistrata-by-aristophanes/",
@@ -1052,18 +1057,59 @@
             {
               "audio_url": "https://www.archive.org/download/lysistrata_1709_librivox/lysistrata_1_aristophanes_64kb.mp3",
               "length_ms": 1100000,
+              "readers": [
+                "availle",
+                "khand",
+                "clarinetcarrot",
+                "leanne-yau",
+                "lian-pang"
+              ],
               "start_ms": 0,
               "title": "Scene 1 - in a public square at Athens"
             },
             {
               "audio_url": "https://www.archive.org/download/lysistrata_1709_librivox/lysistrata_2_aristophanes_64kb.mp3",
               "length_ms": 1897000,
+              "readers": [
+                "availle",
+                "rob-marland",
+                "khand",
+                "peter-tucker",
+                "lydia",
+                "cathar-maiden",
+                "sonia",
+                "leanne-yau",
+                "dafni-ma",
+                "eva-davis-d-2025"
+              ],
               "start_ms": 1100000,
               "title": "Scene 2 - before the gates of the Acropolis"
             },
             {
               "audio_url": "https://www.archive.org/download/lysistrata_1709_librivox/lysistrata_3_aristophanes_64kb.mp3",
               "length_ms": 2422000,
+              "readers": [
+                "availle",
+                "alan-mapstone",
+                "rob-marland",
+                "khand",
+                "peter-tucker",
+                "lydia",
+                "zames-curran",
+                "cathar-maiden",
+                "sonia",
+                "vfkabt",
+                "sawasawaya",
+                "leanne-yau",
+                "lian-pang",
+                "tomas-peter",
+                "mratthew",
+                "dafni-ma",
+                "eva-davis-d-2025",
+                "nemo",
+                "esther-kamas",
+                "sean-lally"
+              ],
               "start_ms": 2997000,
               "title": "Scene 3 - within the precincts of the citadel"
             }
@@ -1072,7 +1118,12 @@
           "cover_url": "https://archive.org/download/librivoxcCDCoverArt35/lysistrata_1709.jpg",
           "id": "availle",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Comedy"
+          ],
           "librivox_id": 10933,
+          "librivox_title": "Lysistrata (version 2)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/lysistrata-version-2-by-aristophanes/",
@@ -1202,9 +1253,20 @@
             }
           ],
           "cover_url": "https://archive.org/download/lysistrata_version_3_1809_librivox/lysistrata_1809.jpg",
+          "credits": [
+            {
+              "person": "jack-lindsay",
+              "role": "translator"
+            }
+          ],
           "id": "phil-chenevert",
           "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Comedy"
+          ],
           "librivox_id": 13311,
+          "librivox_title": "Lysistrata (version 3)",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/lysistrata-version-3-by-aristophanes/",
