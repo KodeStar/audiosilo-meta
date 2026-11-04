@@ -14,7 +14,9 @@ package importer
 //     "Metamorphosis" by Franz Kafka are one book - when that work is by the
 //     same authors (matchWork) in a compatible language; a volume number is
 //     one key however it is spelled ("Vol. 1 of 3", "Volume 1":
-//     librivoxVolumeSpelling). LibriVox's catalogue is
+//     librivoxVolumeSpelling), but two titles stating different totals ("Vol.
+//     1 of 3", "Vol. 1 of 5") are two volume sets, never one work
+//     (librivoxTitleWorks). LibriVox's catalogue is
 //     public-domain texts whose titles differ from a retailer's mostly by exactly
 //     that, so the duplicate-identity guard's "skip, never merge" would keep a
 //     large share of the mirror out for want of an article.
@@ -223,7 +225,12 @@ func librivoxVolumeTotals(title string) []int {
 // match would merge). The key folds the totals away, so the markers line up
 // by position.
 func librivoxVolumeTotalsAgree(a, b string) bool {
-	ta, tb := librivoxVolumeTotals(a), librivoxVolumeTotals(b)
+	return librivoxTotalsAgree(librivoxVolumeTotals(a), librivoxVolumeTotals(b))
+}
+
+// librivoxTotalsAgree is librivoxVolumeTotalsAgree over two titles' totals
+// (librivoxVolumeTotals), so a lookup reads its own title's once.
+func librivoxTotalsAgree(ta, tb []int) bool {
 	for i := range min(len(ta), len(tb)) {
 		if ta[i] != 0 && tb[i] != 0 && ta[i] != tb[i] {
 			return false
@@ -239,12 +246,18 @@ func librivoxVolumeTotalsAgree(a, b string) bool {
 func (p *planner) librivoxTitleWorks(title string) (slugs []string, nonLatin bool) {
 	key, nonLatin := librivoxTitleKeyOf(title)
 	slugs = p.librivoxTitleIndex()[key]
-	if nonLatin || librivoxVolumeTotals(title) == nil {
+	if nonLatin {
+		return slugs, nonLatin
+	}
+	// A title stating no total agrees with every work, so only one stating
+	// one filters (and its totals are read once, not per candidate).
+	totals := librivoxVolumeTotals(title)
+	if !slices.ContainsFunc(totals, func(n int) bool { return n != 0 }) {
 		return slugs, nonLatin
 	}
 	var out []string
 	for _, slug := range slugs {
-		if ws := p.works[slug]; ws != nil && librivoxVolumeTotalsAgree(title, ws.title) {
+		if ws := p.works[slug]; ws != nil && librivoxTotalsAgree(totals, librivoxVolumeTotals(ws.title)) {
 			out = append(out, slug)
 		}
 	}
