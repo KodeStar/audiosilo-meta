@@ -57,6 +57,13 @@ import (
 // title is REFUSED naming it - the record moved, and a stale review must not overwrite a
 // title nobody reviewed.
 //
+// One op is RECORD-ONLY: link-librivox-repackage (R-REPACKAGE), whose decision is the
+// record of a link between two recordings of one work and is never applied. Its accept
+// means "link recorded" and its reject "not this project's audio"; both withdraw the
+// pair's proposal and stay in force while the work holds both recordings, whether or
+// not the detector still proposes the pair, and neither may be asserted (an accept
+// already records a pair no detector proposes). See applyRepackageReviews.
+//
 //go:embed reviewed.json
 var reviewedFile []byte
 
@@ -224,9 +231,11 @@ func knownReviewOp(op string) bool {
 // unappliableOps are the ops the audit emits that no repair carries out (a review, a
 // rename candidate, a sidecar re-point: each names a decision a rule may not make). An
 // acceptance of one would be counted as made mechanical while nothing applies it, so
-// it is refused at parse. internal/repair's TestAcceptableOpsAreAppliable pins this set
+// it is refused at parse - except link-librivox-repackage's, which records a link and
+// makes nothing mechanical (applyRepackageReviews). internal/repair's TestAcceptableOpsAreAppliable pins this set
 // against the ops the repair can apply.
-var unappliableOps = map[string]bool{OpReview: true, OpRenameCandidate: true, OpRepointSidecar: true, OpMergePeople: true}
+var unappliableOps = map[string]bool{OpReview: true, OpRenameCandidate: true, OpRepointSidecar: true, OpMergePeople: true,
+	OpLinkLibrivoxRepackage: true}
 
 // AcceptableOp reports whether a reviewed decision may ACCEPT a proposal of op.
 // Ops lists every op the audit emits, so a test can hold this to the repair's appliers.
@@ -275,7 +284,8 @@ func parseReviewed(raw []byte) ([]reviewedDecision, error) {
 		}
 		// A review (or any op no repair carries out) has no mechanical action, so
 		// promoting one would be counted as made mechanical while nothing applies it.
-		if r.Decision == "accept" && !AcceptableOp(r.Op) {
+		// The one exception is a record-only op, whose acceptance IS what it records.
+		if r.Decision == "accept" && !AcceptableOp(r.Op) && r.Op != OpLinkLibrivoxRepackage {
 			return nil, fmt.Errorf("entry %d: no repair applies a %q proposal, so it cannot be accepted", i, r.Op)
 		}
 		if !oneLineTrimmed(r.Reason) || strings.ContainsAny(r.Reason, "\u2013\u2014") {
@@ -292,6 +302,12 @@ func parseReviewed(raw []byte) ([]reviewedDecision, error) {
 		if r.Op == OpMergePeople && (r.Decision != "reject" || r.Target == "" || len(r.Others) == 0 ||
 			r.Series != "" || r.Field != "" || r.From != "" || r.To != "" || slices.Contains(r.Others, r.Target)) {
 			return nil, fmt.Errorf("entry %d: a %s decision is a reject naming a target and the distinct others, nothing else", i, OpMergePeople)
+		}
+		if r.Op == OpLinkLibrivoxRepackage && (r.Decision == "assert" || r.Target == "" || !model.ValidSlug(r.From) ||
+			!model.ValidSlug(r.To) || r.From == r.To || r.Series != "" || r.Field != "" || len(r.Others) > 0) {
+			return nil, fmt.Errorf("entry %d: a %s decision is an accept (the link recorded) or a reject naming the work "+
+				"(target), the retail recording (from) and the LibriVox recording (to), two different recording ids, nothing else", i,
+				OpLinkLibrivoxRepackage)
 		}
 		if r.Op == OpAddWorkLink || r.Op == OpAddSeriesLink {
 			if !model.ValidSlug(r.Target) || !model.ValidSlug(r.To) {
@@ -584,6 +600,12 @@ const (
 	// mistyped). The importer still honours it, so it is never stale; it is listed
 	// so a typo surfaces.
 	statusUnresolved outcomeStatus = "unresolved"
+	// statusLinked and statusSuppressed are a link-librivox-repackage acceptance and
+	// rejection in force: the work still holds both recordings it names. Neither
+	// depends on a fresh proposal meeting it (the decision is the record of the link),
+	// and either withdraws the pair's proposal. See repackLinkStatus.
+	statusLinked     outcomeStatus = "linked"
+	statusSuppressed outcomeStatus = "suppressed"
 	// statusWithholds is a rejection whose only match is an assertion of the same
 	// proposal: it is what keeps the assertion out, so it is never stale.
 	statusWithholds outcomeStatus = "rejected-an-assertion"
@@ -659,10 +681,14 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 				// a converging assertion and the sourced finding all spell.
 				resolved[j].Others = slices.DeleteFunc(resolved[j].Others, func(o string) bool { return o == resolved[j].Target })
 			}
+			if r.Op == OpLinkLibrivoxRepackage {
+				continue // settled on its own terms below, never promoted
+			}
 			key := keyOf(resolved[j])
 			byKey[key] = append(byKey[key], j)
 		}
 	}
+	applyRepackageReviews(rep, rs, resolved, statuses, whys, ix)
 	// Matches are row positions, not pointers, until sourcing has appended its rows.
 	type row struct {
 		c *findings

@@ -85,6 +85,9 @@ var opPhrase = map[string]func(Proposal) string{
 	OpAddSeriesLink: func(p Proposal) string {
 		return fmt.Sprintf("state series %s %s as including %s", p.Target, p.Field, p.To)
 	},
+	OpLinkLibrivoxRepackage: func(p Proposal) string {
+		return fmt.Sprintf("review as a link, never a merge: recording %s of %s is a repackage of LibriVox recording %s", p.From, p.Target, p.To)
+	},
 	OpReview: func(Proposal) string { return "review by hand" },
 }
 
@@ -102,7 +105,9 @@ func renderAction(p Proposal) string {
 		phrase = func(q Proposal) string { return q.Op }
 	}
 	s := phrase(p)
-	if p.Advisory && p.Op != OpReview {
+	// A review and a record-only link are applied by nothing, so the warning would
+	// only be noise.
+	if p.Advisory && p.Op != OpReview && p.Op != OpLinkLibrivoxRepackage {
 		s = "do NOT apply mechanically - " + s
 	}
 	if p.Reason != "" {
@@ -126,6 +131,12 @@ var classDoc = map[string]string{
 	ClassTransLink: "translation links a record's own-language edition decoration states: a series named \"<name> [<Language> Edition]\" " +
 		"linked to the one same-author series of that name in another language, and a work titled \"(<Language> Edition)\" in that " +
 		"language linked to the one same book in another language. Stated evidence only: exactly one original, or no proposal.",
+	ClassRepackage: "retail recordings that are a LibriVox project's own audio, repackaged under an imprint: a recording with no " +
+		"librivox_id read by exactly the readers of a LibriVox recording of the SAME work, in the same language, and either inside " +
+		"the runtime window (never longer than the project beyond rounding, at most a minute a section shorter: the LibriVox " +
+		"preamble a repackage trims) or, with a runtime unstated, sold by a publisher carrying several runtime-confirmed proposals. " +
+		"ADVISORY throughout: a link for a person to review, never a merge, and nothing applies it - an accept or a reject in " +
+		"reviewed.json is the record, and withdraws the pair from this queue.",
 	ClassLangMix: "series whose members state two or more languages, read against ONE keeper language (the derived one, or for a tie the " +
 		"name's edition decoration, else the incumbent half): a member of another language that already sits in a series of its own " +
 		"language is dropped, one with exactly one same-name or translation-linked series of its language is moved there, and the " +
@@ -229,6 +240,9 @@ func sampleLine(r Finding) string {
 	parts := []string{"`" + r.Key + "`"}
 	p := r.Propose
 	switch {
+	case p.Op == OpLinkLibrivoxRepackage:
+		// The whole reason, uncut: it IS the evidence a reviewer decides on, and one line.
+		parts = append(parts, "`"+p.From+"` -> LibriVox `"+p.To+"` ("+strings.ReplaceAll(p.Reason, "|", "\\|")+")")
 	case p.Op == OpMergeSeries && p.Field == FieldPosition:
 		parts = append(parts, truncateList(seriesNames(r.Series), 4)+" (keeping the target's numbering)")
 	case p.Field != "" && p.From == "" && p.To == "":
@@ -369,6 +383,19 @@ func writeCountOnly(b *strings.Builder, rep *Report) {
 	})
 	b.WriteString("\n")
 
+	rp := rep.Repackage
+	b.WriteString("R-REPACKAGE in proportion: the same-reader pairs judged and the near-misses left out, and why.\n\n")
+	reportdir.Table(b, "measure", []reportdir.Row{
+		{Label: "retail and LibriVox recordings of one work read by the same readers (pairs)", N: rp.Pairs},
+		{Label: "... the two recordings state different languages", N: rp.LanguageDiffers},
+		{Label: "... both runtimes stated, outside the window (a re-recording)", N: rp.OutsideWindow},
+		{Label: "... a runtime unstated, the publisher no repeat repackager", N: rp.NoRuntimeNoPublisher},
+		{Label: "... withdrawn: an accepted link in reviewed.json (linked)", N: rp.Linked},
+		{Label: "... withdrawn: a reviewed rejection (suppressed)", N: rp.Suppressed},
+		{Label: "pairs whose reader sets overlap without being equal (never proposed)", N: rp.SharedReader},
+	})
+	b.WriteString("\n")
+
 	writeReviewedSummary(b, rep.Reviewed)
 }
 
@@ -377,7 +404,9 @@ func writeReviewedSummary(b *strings.Builder, t reviewedTally) {
 	b.WriteString("Accept promotes to mechanical; reject makes advisory. No-op decisions leave the status unchanged.\n")
 	b.WriteString("Assert sources a mechanical proposal no detector makes (subclass `asserted`); one a detector already\n")
 	b.WriteString("makes is taken as an acceptance and reported redundant, to be rewritten as one.\n")
-	b.WriteString("A refused decision leaves the proposal as the detectors made it; STALE decisions match no fresh proposal and are never applied.\n\n")
+	b.WriteString("A refused decision leaves the proposal as the detectors made it; STALE decisions match no fresh proposal and are never applied.\n")
+	b.WriteString("A `" + OpLinkLibrivoxRepackage + "` decision is record-only: accept records the link (linked), reject suppresses it;\n")
+	b.WriteString("both withdraw the pair from R-REPACKAGE and stay in force while the work holds both recordings, else STALE.\n\n")
 	counts := map[outcomeStatus]int{}
 	for _, o := range t.All {
 		counts[o.Status]++
@@ -393,6 +422,8 @@ func writeReviewedSummary(b *strings.Builder, t reviewedTally) {
 		{Label: "... rejections withholding an assertion", N: counts[statusWithholds]},
 		{Label: "... merge rejections matching no proposal, honoured by metacheck's census", N: counts[statusCensus]},
 		{Label: "... people rejections naming one live record, honoured by the importer (unresolved)", N: counts[statusUnresolved]},
+		{Label: "... LibriVox repackage links recorded (linked)", N: counts[statusLinked]},
+		{Label: "... LibriVox repackage pairs rejected (suppressed)", N: counts[statusSuppressed]},
 		{Label: "... matching no proposal (STALE)", N: counts[statusStale]},
 	})
 	b.WriteString("\n")

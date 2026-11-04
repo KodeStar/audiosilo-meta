@@ -71,6 +71,9 @@ type Report struct {
 	Links linkStats
 	// Reviewed reports how the embedded decisions met this fresh audit.
 	Reviewed reviewedTally
+	// Repackage is R-REPACKAGE's count-only tallies: the same-reader pairs judged,
+	// the near-misses left out and why, and the proposals reviews withdrew.
+	Repackage repackStats
 	// LangMix is L-MIX's count-only tallies: the mixed-language series and the
 	// memberships and works behind the class's proposals, and why some are advisory.
 	LangMix langMixStats
@@ -194,11 +197,13 @@ func analyzeWith(res check.Result, decisions []reviewedDecision) *Report {
 	serDup := detectSeriesDup(ix, skeys, clustersOf)
 	detectOrderingTwins(ix, skeys, serDup)
 	mix, mixTally := detectLanguageMix(ix, newMixLocks(dup, noSeries, integrity, serDup))
+	repack, repackTally := detectRepackage(ix)
 
 	rep := &Report{
 		Stats:          stats,
 		Links:          linkTally,
 		LangMix:        mixTally,
+		Repackage:      repackTally,
 		LoaderProblems: len(res.Problems),
 		LoaderWarnings: len(res.Warnings),
 		Totals: Totals{
@@ -219,6 +224,7 @@ func analyzeWith(res check.Result, decisions []reviewedDecision) *Report {
 		serDup,
 		detectSeriesParen(ix, skeys),
 		links,
+		repack,
 		mix,
 		detectPersonDup(ix),
 		detectRefSidecar(ix, clusterWorks, clustersOf),

@@ -565,7 +565,9 @@ func TestReviewedDecisionJudgingARetiredWork(t *testing.T) {
 func TestJudgesOneWorkClassifiesEveryOp(t *testing.T) {
 	resolves := map[string]bool{OpMergeWorks: true, OpMergeSeries: true, OpMergePeople: true, OpSplitSeries: true,
 		OpAddSeriesMember: true, OpAddWorkLink: true, OpAddSeriesLink: true,
-		OpReview: true, OpRenameCandidate: true, OpRepointSidecar: true}
+		OpReview: true, OpRenameCandidate: true, OpRepointSidecar: true,
+		// A merge carries both recordings onto the survivor, so the link is as true there.
+		OpLinkLibrivoxRepackage: true}
 	for _, op := range Ops() {
 		if judgesOneWork[op] == resolves[op] {
 			t.Errorf("op %q: judgesOneWork %v, resolves %v - classify it exactly once", op, judgesOneWork[op], resolves[op])
