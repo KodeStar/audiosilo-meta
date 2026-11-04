@@ -113,10 +113,15 @@ const languageMismatchFactor = 0.8
 // abridgement, far beyond the 10% a client treats as plausible, and its score
 // is scaled by runtimeMismatchFactor (on top of the runtime weight's zero). A
 // French tome at 48% of the file's length still scored 87 on its title and
-// series alone. Start values, tuned on the benchmark harness.
+// series alone. Start values, tuned on the benchmark harness. runtimeStoredSlack
+// (seconds) is how far a stored runtime_min may sit from its recording's real
+// length - whole minutes, rounded by some sources and cut by others - which is
+// allowed for before a difference counts as far (runtimeFarOff): without it a
+// one-minute recording stored as 1 read 29% off an 84-second file.
 const (
 	runtimeFar            = 0.25
 	runtimeMismatchFactor = 0.85
+	runtimeStoredSlack    = 60.0
 )
 
 // weightNarrator is the weight narrator agreement carries when the request
@@ -905,16 +910,16 @@ var matchLanguageWords = func() map[string]string {
 	return m
 }()
 
-// matchLanguageCodes are the three-letter tags the catalogue stores as they
-// are (Ancient Greek's "grc", Old English's "ang": languages with no 639-1
-// code), the values of matchLanguageWords. Any other three-letter code is a
-// 639-2 spelling the table does not map, read as unknown: passed through it
-// would never equal the work's two-letter tag and so judge a language the
-// same as its own "other".
+// matchLanguageCodes are the tags matchLanguageWords maps onto: every tag the
+// importers write, so every one the catalogue stores (Ancient Greek's "grc"
+// among them, a language with no 639-1 code). A well-formed tag outside it
+// ("xx", "na", a 639-2 code such as "kor" the table does not map) reads as
+// unknown: passed through it would never equal a work's tag and so judge every
+// work "other".
 var matchLanguageCodes = func() map[string]bool {
 	out := map[string]bool{}
 	for _, lang := range matchLanguageWords {
-		if len(lang) == 3 {
+		if lang != "" {
 			out[lang] = true
 		}
 	}
@@ -939,7 +944,7 @@ func matchLanguage(raw string) string {
 	if lang, ok := matchLanguageWords[p]; ok {
 		return lang
 	}
-	if len(p) == 3 && !matchLanguageCodes[p] {
+	if !matchLanguageCodes[p] {
 		return ""
 	}
 	return p

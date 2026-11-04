@@ -387,7 +387,7 @@
             "name": "runtime",
             "in": "query",
             "required": false,
-            "description": "The book's length in seconds. A recording within 3% agrees fully, within 10% partly. A work whose closest recording is more than 25% off is another edition, and its score is scaled down. A non-numeric or non-positive value, or one above 1,000,000, is ignored.",
+            "description": "The book's length in seconds. A recording within 3% agrees fully, within 10% partly. A work whose closest recording is more than 25% off (allowing the minute a stored runtime is rounded to) is another edition, and its score is scaled down. A non-numeric or non-positive value, or one above 1,000,000, is ignored.",
             "schema": { "type": "integer", "minimum": 1, "maximum": 1000000 }
           },
           {
@@ -401,7 +401,7 @@
             "name": "narrator",
             "in": "query",
             "required": false,
-            "description": "A narrator guess. Repeat for several; the first 4 are read, each split and matched like `author`. When a recording of a work credits narrators, the best-agreeing recording's agreement counts as a fact weighted 10, and that recording is the `recording_id` (the closest runtime choosing between agreeing recordings). A work whose recordings credit no narrator is not judged on it. It finds no candidates on its own.",
+            "description": "A narrator guess. Repeat for several; the first 4 are read, each split and matched like `author`. When a recording of a work credits narrators, the best-agreeing recording's agreement counts as a fact weighted 10, and that recording is the `recording_id` (the closest runtime choosing between agreeing recordings) unless it is more than 25% off `runtime`, another edition, when the runtime's pick stands. A work whose recordings credit no narrator is not judged on it. It finds no candidates on its own.",
             "schema": { "type": "array", "items": { "type": "string" }, "maxItems": 4 }
           },
           {
@@ -1484,7 +1484,7 @@
               },
               "recording_id": {
                 "type": "string",
-                "description": "The recording the identifier named, else (when `narrator` is given and a recording agrees) the best-agreeing recording, the closest runtime breaking a tie, else the one whose runtime is closest to `runtime`. Omitted when none applies."
+                "description": "The recording the identifier named, else (when `narrator` is given and a recording agrees, not more than 25% off `runtime`) the best-agreeing recording, the closest runtime breaking a tie, else the one whose runtime is closest to `runtime`. Omitted when none applies."
               },
               "reasons": { "$ref": "#/components/schemas/MatchReasons" }
             }

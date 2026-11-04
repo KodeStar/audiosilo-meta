@@ -177,8 +177,9 @@ type matchResult struct {
 	Score int `json:"score"`
 	// RecordingID is the recording the identifier named, else the one whose
 	// narrators agree best with the request's (when it names any and one
-	// agrees), the closer runtime breaking a tie, else the one whose runtime
-	// fits the requested one best; omitted when none applies.
+	// agrees, not more than runtimeFar off the runtime), the closer runtime
+	// breaking a tie, else the one whose runtime fits the requested one best;
+	// omitted when none applies.
 	RecordingID string       `json:"recording_id,omitempty"`
 	Reasons     matchReasons `json:"reasons"`
 }
@@ -840,9 +841,12 @@ func matchNarratorsSQL(ph string) string {
 
 // factMemo folds each person and series name once per request: the author and
 // series probes pool many works crediting one person or sitting in one series.
+// A work's language tag is read once per distinct tag too: the pool holds up to
+// matchCandidatesMax works in a handful of languages.
 type factMemo struct {
-	people map[string]memoPerson // by person id
-	series map[string]*termForm  // by series name
+	people    map[string]memoPerson // by person id
+	series    map[string]*termForm  // by series name
+	languages map[string]string     // matchLanguage, by stored tag
 }
 
 type memoPerson struct {
@@ -875,10 +879,19 @@ func (m *factMemo) seriesName(name string) *termForm {
 	return &f
 }
 
+func (m *factMemo) language(tag string) string {
+	if l, ok := m.languages[tag]; ok {
+		return l
+	}
+	l := matchLanguage(tag)
+	m.languages[tag] = l
+	return l
+}
+
 // candidateFacts loads the facts of every pooled id, in pool order. An id the
 // works table does not hold is dropped.
 func (s *DB) candidateFacts(ctx context.Context, pool *candidatePool, narrators bool) ([]*candidate, error) {
-	memo := &factMemo{people: map[string]memoPerson{}, series: map[string]*termForm{}}
+	memo := &factMemo{people: map[string]memoPerson{}, series: map[string]*termForm{}, languages: map[string]string{}}
 	byID := make(map[string]*candidate, pool.len())
 	err := eachChunk(pool.ids, func(ph string, args []any) error {
 		return queryEach(ctx, s.db, matchWorksSQL(ph), args, func(rows *sql.Rows) error {
@@ -890,7 +903,7 @@ func (s *DB) candidateFacts(ctx context.Context, pool *candidatePool, narrators 
 			byID[id] = &candidate{
 				id: id, title: terms, titles: candidateTitleForms(title, terms, subtitle),
 				authorWord: map[string]bool{}, identified: pool.identified[id],
-				language: matchLanguage(language),
+				language: memo.language(language),
 			}
 			return nil
 		})
@@ -1052,7 +1065,7 @@ func (f *matchFacts) judge(c *candidate) scored {
 			v.score *= languageMismatchFactor
 		}
 	}
-	if !math.IsInf(v.runtimeDiff, 1) && v.runtimeDiff > runtimeFar {
+	if f.runtimeFarOff(v.runtimeDiff) {
 		v.score *= runtimeMismatchFactor
 	}
 	if c.identified.by != "" {
@@ -1068,7 +1081,10 @@ func (f *matchFacts) judge(c *candidate) scored {
 // recordings (agreeAuthors, the authors' rule), returning the best agreement
 // and the recording that reached it - the closest runtime among the recordings
 // that tie, the first in id order when no runtime decides. It names no
-// recording when none agrees at all, and the runtime's pick stands.
+// recording when none agrees at all, or when the one it reached is more than
+// runtimeFar off the stated runtime (another edition, runtimeFarOff: the
+// narrator still speaks for the work, not for that recording), and the
+// runtime's pick stands.
 func (f *matchFacts) narratorVerdict(c *candidate) (authorAgreement, string) {
 	best, rid, ridDiff := authorNone, "", math.Inf(1)
 	for _, r := range c.narrated {
@@ -1084,7 +1100,19 @@ func (f *matchFacts) narratorVerdict(c *candidate) (authorAgreement, string) {
 			best, rid, ridDiff = a, r.id, diff
 		}
 	}
+	if f.runtimeFarOff(ridDiff) {
+		rid = ""
+	}
 	return best, rid
+}
+
+// runtimeFarOff reports whether a recording's runtime difference (runtimeFit's)
+// is more than runtimeFar off the requested runtime once the minute a stored
+// runtime_min may be off its recording is allowed for (runtimeStoredSlack), so
+// a short book is not another edition by rounding alone. An unjudged difference
+// (+Inf: no runtime stated, or none stored) is never far off.
+func (f *matchFacts) runtimeFarOff(diff float64) bool {
+	return f.runtime > 0 && !math.IsInf(diff, 1) && diff > runtimeFar+runtimeStoredSlack/float64(f.runtime)
 }
 
 // structuredScore is the weighted agreement of the structured facts, added to

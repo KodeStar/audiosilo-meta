@@ -204,9 +204,9 @@ func TestMatchLanguage(t *testing.T) {
 		"pt-br": "pt", "sv": "sv",
 		// LibriVox's name table, and its 639-2-only tags kept as stored.
 		"Catalan": "ca", "Ancient Greek": "grc", "grc": "grc", "ang": "ang", "Multilingual": "",
-		// A 639-2 code no table maps is unknown, never a language of its own
-		// beside the work's two-letter tag ("kor" is not judged against "ko").
-		"kor": "", "ko": "ko",
+		// A tag no table maps onto is unknown, never a language of its own
+		// ("kor" is not judged against "ko", nor "xx" against anything).
+		"kor": "", "ko": "ko", "xx": "", "NA": "", "zz-ZZ": "",
 		"": "", "und": "", "mul": "", "zxx": "", "Klingon": "", "en,de": "", "12": "", "English; German": "",
 	} {
 		if got := matchLanguage(in); got != want {
@@ -241,6 +241,48 @@ func TestMatchRuntimeFarOffScalesTheScore(t *testing.T) {
 	}
 	res := matchJSON(t, ts.URL, url.Values{"title": {"Dune"}, "author": {"Frank Herbert"}})
 	wantScore(t, res, "dune", 100)
+}
+
+// TestMatchRuntimeFarOffAllowsTheStoredMinute: runtime_min is whole minutes, so
+// a short book whose recording is stored a rounded minute off is not another
+// edition by rounding alone (84 s against a stored 1 minute reads 29% off).
+func TestMatchRuntimeFarOffAllowsTheStoredMinute(t *testing.T) {
+	short := &matchFacts{runtime: 84}
+	_, diff := runtimeFit(1, 84)
+	if diff <= runtimeFar || short.runtimeFarOff(diff) {
+		t.Errorf("84 s against a stored minute: diff %v, far off %v; want past runtimeFar but not far off", diff, short.runtimeFarOff(diff))
+	}
+	long := &matchFacts{runtime: 84000}
+	if _, diff := runtimeFit(1000, 84000); !long.runtimeFarOff(diff) {
+		t.Errorf("84,000 s against 1,000 minutes (diff %v): not far off, want far off", diff)
+	}
+	if long.runtimeFarOff(math.Inf(1)) || (&matchFacts{}).runtimeFarOff(1) {
+		t.Error("an unjudged difference, or no runtime stated, reads as far off")
+	}
+}
+
+// TestMatchNarratorFarOffKeepsTheRuntimesRecording: the only recording crediting
+// the named narrator is more than runtimeFar off the book, so it is another
+// edition: the narrator still agrees for the work, but the recording is the
+// runtime's.
+func TestMatchNarratorFarOffKeepsTheRuntimesRecording(t *testing.T) {
+	facts := readFacts(matchRequest{titles: []string{"Dune"}, runtime: 75600, narrators: []string{"Simon Vance"}})
+	brick, _ := parseName("Scott Brick")
+	vance, _ := parseName("Simon Vance")
+	c := &candidate{
+		id: "dune", title: matchTerms("Dune"), titles: candidateTitleForms("Dune", matchTerms("Dune"), ""),
+		runtimes: []recordingRuntime{{id: "a-brick", minute: 1260}, {id: "b-vance-abridged", minute: 600}},
+		narrated: []recordingNarrators{{id: "a-brick", names: []personName{brick}}, {id: "b-vance-abridged", names: []personName{vance}}},
+	}
+	v := facts.judge(c)
+	if v.recordingID != "a-brick" || v.reasons.Narrator != authorFull {
+		t.Errorf("recording %q, narrator %q; want a-brick and full", v.recordingID, v.reasons.Narrator)
+	}
+	// Within runtimeFar the narrator's recording wins, as before.
+	c.runtimes[1].minute = 1300
+	if v := facts.judge(c); v.recordingID != "b-vance-abridged" {
+		t.Errorf("recording %q within runtimeFar; want the narrator's b-vance-abridged", v.recordingID)
+	}
 }
 
 // narratorCatalog is one work in three recordings: Scott Brick's at the book's
