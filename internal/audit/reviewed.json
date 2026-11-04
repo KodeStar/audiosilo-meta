@@ -11139,6 +11139,24 @@
     "decision": "reject",
     "op": "merge-works",
     "others": [
+      "grimms-fairy-tales-jacob-wilhelm-grimm"
+    ],
+    "reason": "grimms-fairy-tales-jacob-wilhelm-grimm is the Edgar Taylor and Marian Edwardes translation and credits them as translators at work level, so it merges with neither other Grimm's Fairy Tales record (a merge would credit them on another selection of the tales); grimms-fairy-tales-the-brothers-grimm was merged onto grimms-fairy-tales-brothers-grimm by its assertion",
+    "target": "grimms-fairy-tales-brothers-grimm"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "grimms-fairy-tales-the-brothers-grimm"
+    ],
+    "reason": "one retail title by the same authors with no translator credited on either record; the two were apart only by the Brothers Grimm author spellings folded in #2864",
+    "target": "grimms-fairy-tales-brothers-grimm"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
       "grimoires-and-gunsmoke-2-a-portal-fantasy-epic"
     ],
     "reason": "different volumes: positions 1 and 2 of grimoires-and-gunsmoke, with 1 and 2 in the titles",
@@ -15854,6 +15872,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "rapunzel-story-time-episode-16"
+    ],
+    "reason": "the same tale: the decorated record is episode 16 of the Story Time series, and the survivor keeps the plain title Rapunzel",
+    "target": "rapunzel-the-brothers-grimm"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "rattlesnake-wells-wyoming-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -16456,6 +16483,15 @@
     ],
     "reason": "a collection vs one story: the 655-minute record is Rufus Rides a Catfish (And Other Fables from the Farmstead), the 47-minute record the single title fable",
     "target": "rufus-rides-a-catfish"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "rumpelstiltskin-the-brothers-grimm"
+    ],
+    "reason": "rumpelstiltskin-the-brothers-grimm credits Christopher Noel's adaptation, another text than the plain tale",
+    "target": "rumpelstiltskin"
   },
   {
     "decision": "reject",
@@ -19577,6 +19613,15 @@
     ],
     "reason": "the same Terry Brooks novel: the two titles only add different retailer series decorations, and both records sit at slot 2 of The Sword of Shannara and its abridged spelling",
     "target": "the-elfstones-of-shannara-the-shannara-series-book-2"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "the-elves-and-the-shoemaker-the-brothers-grimm"
+    ],
+    "reason": "the same short tale by the same authors; 8 minutes against 4 or 5 is the pace of one reading of a few-minute story, not another book",
+    "target": "the-elves-and-the-shoemaker"
   },
   {
     "decision": "assert",
