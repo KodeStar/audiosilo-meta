@@ -1023,7 +1023,7 @@ func TestLibrivoxGenericTitleWithAQualifierIsATitleInCommon(t *testing.T) {
 func TestLibrivoxEditionsOfTheIDsOwnTextAreNoEvidence(t *testing.T) {
 	// 5142 "Narrative of Sojourner Truth" (text 1850) by Olive Gilbert and
 	// Sojourner Truth (1797-1883): the catalogue holds that book under the same
-	// title, credited to Olive Gilbert (a surname the project names) and dated
+	// title, credited to Olive Gilbert (a co-author the project credits, by slug) and dated
 	// only by a 2009 release. So its release dates date editions, and the
 	// undated sojourner-truth, dated only by a 2018 release of "Ain't I a
 	// Woman?", is the same person, not a worklist row.
@@ -1237,5 +1237,45 @@ func TestLibrivoxEditionByAnotherWriterOfTheSurnameIsNoEvidence(t *testing.T) {
 	}
 	if p := personOf(t, dataDir, "mary-webb"); p.AuthorID != 0 {
 		t.Errorf("mary-webb = %+v, want the modern writer untouched", p)
+	}
+}
+
+func TestLibrivoxEditionCoAuthorIsThePersonNotANamesake(t *testing.T) {
+	// The edition of 5142's text counts only when it is credited to the very
+	// person the project credits beside Sojourner Truth: Olive Gilbert's own
+	// catalogued id (2900) counts; a namesake carrying another author id, or
+	// stating other years, is someone else's "Narrative", so Truth is held.
+	cases := []struct {
+		name    string
+		gilbert map[string]any
+		held    bool
+	}{
+		{"catalogued id", map[string]any{"librivox_author_id": 2900}, false},
+		{"another author id", map[string]any{"librivox_author_id": 7777}, true},
+		{"other years", map[string]any{"birth_year": 1950, "death_year": 2020}, true},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			dataDir := t.TempDir()
+			files := map[string]string{}
+			files[personAddr("olive-gilbert")] = personFiles(t, "olive-gilbert", "Olive Gilbert", tc.gilbert)
+			files[personAddr("sojourner-truth")] = personFiles(t, "sojourner-truth", "Sojourner Truth", nil)
+			retailWork(t, files, "the-narrative-of-sojourner-truth", "The Narrative of Sojourner Truth", "olive-gilbert", "")
+			retailWork(t, files, "aint-i-a-woman", "Ain't I a Woman?", "sojourner-truth", "")
+			seedTree(t, dataDir, files)
+			truth := byAuthors(t, 5142, "Narrative of Sojourner Truth",
+				lvDated(2900, "Olive", "Gilbert", "1801", "1884"), lvDated(5706, "Sojourner", "Truth", "1797", "1883"))
+			truth.CopyrightYear = lvText("1850")
+			sum := runLibrivox(t, writeSnapshot(t, truth), dataDir, allLibrivox)
+			held := false
+			for _, e := range sum.LibrivoxWorklist {
+				if e.Project == 5142 && e.Reason == LibrivoxSameNameAuthor {
+					held = true
+				}
+			}
+			if held != tc.held {
+				t.Errorf("5142 held = %v, want %v: %v", held, tc.held, sum.LibrivoxWorklist)
+			}
+		})
 	}
 }

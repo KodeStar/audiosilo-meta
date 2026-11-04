@@ -337,6 +337,7 @@ func (p *planner) resolveLibrivoxAuthors(books []sourceBook) {
 	bySlug := map[string][]*lvAuthorClaim{}
 	for _, i := range rows {
 		b := &books[i]
+		var people []string // librivoxCreditPeople, resolved once per row
 		for _, c := range b.lv.credits {
 			if c.kind != librivoxAuthor || c.id <= 0 || c.index >= len(b.authors) {
 				continue
@@ -360,7 +361,10 @@ func (p *planner) resolveLibrivoxAuthors(books []sourceBook) {
 				order = append(order, cl)
 			}
 			cl.titles = append(cl.titles, b.str("title"))
-			cl.projects = append(cl.projects, p.librivoxClaimProject(b, c, quiet))
+			if people == nil {
+				people = p.librivoxCreditPeople(b, quiet)
+			}
+			cl.projects = append(cl.projects, librivoxClaimProject(b, c, people))
 		}
 	}
 	holder := map[string]lifeYears{}
@@ -646,20 +650,31 @@ func (p *planner) librivoxAuthorName(name string, cl *lvAuthorClaim) (to, agains
 // state the same birth and death years; stated years must not disagree; and a
 // person with neither is judged by their credits (librivoxCreditEvidence).
 func (p *planner) librivoxVerdict(slug string, cl *lvAuthorClaim) lvVerdict {
-	life, dated := p.lv.life[slug]
-	switch {
-	case p.lv.authorOf[slug] != 0:
-		if sameLife(life, cl.life) {
-			return lvSame
-		}
-		return lvApart
-	case dated:
-		if lifeCompatible(life, cl.life) {
-			return lvSame
-		}
-		return lvApart
+	if v, decided := p.librivoxYearsVerdict(slug, cl.life); decided {
+		return v
 	}
 	return p.librivoxCreditEvidence(slug, cl)
+}
+
+// librivoxYearsVerdict is rule 2's test by what the catalogued person states:
+// another author id is someone else unless both state the same birth and
+// death years, and stated years must not disagree. decided is false for a
+// person stating neither, whom only their credits can judge.
+func (p *planner) librivoxYearsVerdict(slug string, life lifeYears) (v lvVerdict, decided bool) {
+	have, dated := p.lv.life[slug]
+	switch {
+	case p.lv.authorOf[slug] != 0:
+		if sameLife(have, life) {
+			return lvSame, true
+		}
+		return lvApart, true
+	case dated:
+		if lifeCompatible(have, life) {
+			return lvSame, true
+		}
+		return lvApart, true
+	}
+	return lvSame, false
 }
 
 // librivoxCreditEvidence is rule 2's test for a catalogued person with no
@@ -935,28 +950,45 @@ func (p *planner) librivoxAuthorRecord(slug string) bool {
 }
 
 // librivoxClaimProject is a planned row as a claim's project (claim the
-// claim's credit on it): its other author credits' catalogued people
-// - a catalogued id's holder, else the live person the census-cleaned name
-// resolves to - read without any of the run's decisions, so a claim is judged
-// alike whichever co-author the run decides first.
-func (p *planner) librivoxClaimProject(b *sourceBook, claim librivoxCredit, quiet creditCensus) lvClaimProject {
+// claim's credit on it, people the row's librivoxCreditPeople): its other
+// author credits' catalogued people.
+func librivoxClaimProject(b *sourceBook, claim librivoxCredit, people []string) lvClaimProject {
 	pr := lvClaimProject{title: b.str("title"), textYear: b.lv.copyrightYear, coAuthors: map[string]bool{}, own: claim.suffix == ""}
-	for _, c := range b.lv.credits {
-		if c.kind != librivoxAuthor || c.index == claim.index || c.index >= len(b.authors) {
+	for j, c := range b.lv.credits {
+		if c.kind == librivoxAuthor && c.index != claim.index && c.id != claim.id && people[j] != "" {
+			pr.coAuthors[people[j]] = true
+		}
+	}
+	return pr
+}
+
+// librivoxCreditPeople is the catalogued person of each of a row's author and
+// translator credits, by credit ("" for none): a catalogued id's holder, else
+// the live person the census-cleaned name resolves to, unless the years that
+// person states (or another author id they carry) say they are not this
+// credit (librivoxYearsVerdict). It is read without any of the run's
+// decisions, so a claim is judged alike whichever co-author the run decides
+// first.
+func (p *planner) librivoxCreditPeople(b *sourceBook, quiet creditCensus) []string {
+	people := make([]string, len(b.lv.credits))
+	for j, c := range b.lv.credits {
+		if c.kind != librivoxAuthor || c.index >= len(b.authors) {
 			continue
 		}
 		if owner, held := p.lv.people[librivoxKey{librivoxAuthor, c.id}]; held && c.id > 0 {
 			if live, ok := p.livePerson(owner); ok {
-				pr.coAuthors[live] = true
+				people[j] = live
 			}
 			continue
 		}
 		name, _ := creditWithRolesSided(b.authors[c.index], quiet)
 		if r := p.resolvePerson(name); !r.create && !r.fellBack {
-			pr.coAuthors[r.slug] = true
+			if v, decided := p.librivoxYearsVerdict(r.slug, c.life); !decided || v == lvSame {
+				people[j] = r.slug
+			}
 		}
 	}
-	return pr
+	return people
 }
 
 // librivoxSameNameSkip puts a row crediting an author id rule 2 could not
