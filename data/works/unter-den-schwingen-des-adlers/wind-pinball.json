@@ -2585,78 +2585,117 @@
             {
               "audio_url": "https://www.archive.org/download/wind_0803_librivox/wind_stevenson_cf_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "crystal-f"
+              ],
               "start_ms": 0,
               "title": "The Wind - Read by CF"
             },
             {
               "audio_url": "https://www.archive.org/download/wind_0803_librivox/wind_stevenson_dca_64kb.mp3",
               "length_ms": 77000,
+              "readers": [
+                "gaidheal"
+              ],
               "start_ms": 81000,
               "title": "The Wind - Read by DCA"
             },
             {
               "audio_url": "https://www.archive.org/download/wind_0803_librivox/wind_stevenson_dgf_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "david-federman"
+              ],
               "start_ms": 158000,
               "title": "The Wind - Read by DGF"
             },
             {
               "audio_url": "https://www.archive.org/download/wind_0803_librivox/wind_stevenson_ezwa_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "ezwa"
+              ],
               "start_ms": 227000,
               "title": "The Wind - Read by EZWA"
             },
             {
               "audio_url": "https://www.archive.org/download/wind_0803_librivox/wind_stevenson_gm_64kb.mp3",
               "length_ms": 60000,
+              "readers": [
+                "glenn-mcknight"
+              ],
               "start_ms": 298000,
               "title": "The Wind - Read by GM"
             },
             {
               "audio_url": "https://www.archive.org/download/wind_0803_librivox/wind_stevenson_gp_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "great-plains"
+              ],
               "start_ms": 358000,
               "title": "The Wind - Read by GP"
             },
             {
               "audio_url": "https://www.archive.org/download/wind_0803_librivox/wind_stevenson_jcg_64kb.mp3",
               "length_ms": 84000,
+              "readers": [
+                "jc-guan"
+              ],
               "start_ms": 438000,
               "title": "The Wind - Read by JCG"
             },
             {
               "audio_url": "https://www.archive.org/download/wind_0803_librivox/wind_stevenson_k81_64kb.mp3",
               "length_ms": 55000,
+              "readers": [
+                "krull1981"
+              ],
               "start_ms": 522000,
               "title": "The Wind - Read by K81"
             },
             {
               "audio_url": "https://www.archive.org/download/wind_0803_librivox/wind_stevenson_lah_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 577000,
               "title": "The Wind - Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/wind_0803_librivox/wind_stevenson_lb_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "lucy-burgoyne-1950-2014"
+              ],
               "start_ms": 645000,
               "title": "The Wind - Read by LB"
             },
             {
               "audio_url": "https://www.archive.org/download/wind_0803_librivox/wind_stevenson_ref_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "rhonda-federman"
+              ],
               "start_ms": 726000,
               "title": "The Wind - Read by REF"
             },
             {
               "audio_url": "https://www.archive.org/download/wind_0803_librivox/wind_stevenson_sb_64kb.mp3",
               "length_ms": 109000,
+              "readers": [
+                "sergio-baldelli"
+              ],
               "start_ms": 806000,
               "title": "The Wind - Read by SB"
             },
             {
               "audio_url": "https://www.archive.org/download/wind_0803_librivox/wind_stevenson_sdk_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "stephen-kinford"
+              ],
               "start_ms": 915000,
               "title": "The Wind - Read by SDK"
             }
@@ -2665,7 +2704,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt11/Wind_1111.jpg",
           "id": "crystal-f",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 1899,
+          "librivox_title": "Wind",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-wind-by-robert-louis-stevenson/",

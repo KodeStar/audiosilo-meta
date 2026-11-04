@@ -10002,96 +10002,144 @@
             {
               "audio_url": "https://www.archive.org/download/summer_sun_0806_librivox/summersun_stevenson_ac_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "anne-cheng"
+              ],
               "start_ms": 0,
               "title": "Version 1"
             },
             {
               "audio_url": "https://www.archive.org/download/summer_sun_0806_librivox/summersun_stevenson_add_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "alan-davis-drake-1945-2010"
+              ],
               "start_ms": 76000,
               "title": "Version 2"
             },
             {
               "audio_url": "https://www.archive.org/download/summer_sun_0806_librivox/summersun_stevenson_aem_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "alan-e-mayers"
+              ],
               "start_ms": 158000,
               "title": "Version 3"
             },
             {
               "audio_url": "https://www.archive.org/download/summer_sun_0806_librivox/summersun_stevenson_cb_64kb.mp3",
               "length_ms": 60000,
+              "readers": [
+                "christine-blachford"
+              ],
               "start_ms": 236000,
               "title": "Version 4"
             },
             {
               "audio_url": "https://www.archive.org/download/summer_sun_0806_librivox/summersun_stevenson_cdp_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "calmdragon"
+              ],
               "start_ms": 296000,
               "title": "Version 5"
             },
             {
               "audio_url": "https://www.archive.org/download/summer_sun_0806_librivox/summersun_stevenson_eep_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "ernst-pattynama"
+              ],
               "start_ms": 371000,
               "title": "Version 6"
             },
             {
               "audio_url": "https://www.archive.org/download/summer_sun_0806_librivox/summersun_stevenson_ezwa_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "ezwa"
+              ],
               "start_ms": 453000,
               "title": "Version 7"
             },
             {
               "audio_url": "https://www.archive.org/download/summer_sun_0806_librivox/summersun_stevenson_jcg_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "jc-guan"
+              ],
               "start_ms": 522000,
               "title": "Version 8"
             },
             {
               "audio_url": "https://www.archive.org/download/summer_sun_0806_librivox/summersun_stevenson_jms_64kb.mp3",
               "length_ms": 61000,
+              "readers": [
+                "j-m-smallheer"
+              ],
               "start_ms": 604000,
               "title": "Version 9"
             },
             {
               "audio_url": "https://www.archive.org/download/summer_sun_0806_librivox/summersun_stevenson_jp_64kb.mp3",
               "length_ms": 71000,
+              "readers": [
+                "joe-pilsbury"
+              ],
               "start_ms": 665000,
               "title": "Version 10"
             },
             {
               "audio_url": "https://www.archive.org/download/summer_sun_0806_librivox/summersun_stevenson_lah_64kb.mp3",
               "length_ms": 70000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 736000,
               "title": "Version 11"
             },
             {
               "audio_url": "https://www.archive.org/download/summer_sun_0806_librivox/summersun_stevenson_law_64kb.mp3",
               "length_ms": 63000,
+              "readers": [
+                "laurie-anne-walden"
+              ],
               "start_ms": 806000,
               "title": "Version 12"
             },
             {
               "audio_url": "https://www.archive.org/download/summer_sun_0806_librivox/summersun_stevenson_lm_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "linda-mcdaniel"
+              ],
               "start_ms": 869000,
               "title": "Version 13"
             },
             {
               "audio_url": "https://www.archive.org/download/summer_sun_0806_librivox/summersun_stevenson_mp_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "mark-penfold"
+              ],
               "start_ms": 950000,
               "title": "Version 14"
             },
             {
               "audio_url": "https://www.archive.org/download/summer_sun_0806_librivox/summersun_stevenson_rrl_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "rhys-lawson"
+              ],
               "start_ms": 1031000,
               "title": "Version 15"
             },
             {
               "audio_url": "https://www.archive.org/download/summer_sun_0806_librivox/summersun_stevenson_secrets_64kb.mp3",
               "length_ms": 81000,
+              "readers": [
+                "sally-ann-cook"
+              ],
               "start_ms": 1107000,
               "title": "Version 16"
             }
@@ -10100,7 +10148,11 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt13/Summer_Sun_1112.jpg",
           "id": "anne-cheng",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 2276,
+          "librivox_title": "Summer Sun",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/summer-sun-by-robert-louis-stevenson/",

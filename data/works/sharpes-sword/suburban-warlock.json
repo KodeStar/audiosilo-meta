@@ -8353,90 +8353,135 @@
             {
               "audio_url": "https://www.archive.org/download/success_0904_librivox/success_brooke_af_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "audio-andrea"
+              ],
               "start_ms": 0,
               "title": "Success – Read by AF"
             },
             {
               "audio_url": "https://www.archive.org/download/success_0904_librivox/success_brooke_bt_64kb.mp3",
               "length_ms": 65000,
+              "readers": [
+                "bellona-times"
+              ],
               "start_ms": 75000,
               "title": "Success – Read by BT"
             },
             {
               "audio_url": "https://www.archive.org/download/success_0904_librivox/success_brooke_cjmb_64kb.mp3",
               "length_ms": 82000,
+              "readers": [
+                "icyjumbo-1964-2010"
+              ],
               "start_ms": 140000,
               "title": "Success – Read by CJMB"
             },
             {
               "audio_url": "https://www.archive.org/download/success_0904_librivox/success_brooke_dd_64kb.mp3",
               "length_ms": 96000,
+              "readers": [
+                "melissa-g"
+              ],
               "start_ms": 222000,
               "title": "Success – Read by DD"
             },
             {
               "audio_url": "https://www.archive.org/download/success_0904_librivox/success_brooke_dl_64kb.mp3",
               "length_ms": 74000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 318000,
               "title": "Success – Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/success_0904_librivox/success_brooke_jbs_64kb.mp3",
               "length_ms": 89000,
+              "readers": [
+                "jemmablythe"
+              ],
               "start_ms": 392000,
               "title": "Success – Read by JBS"
             },
             {
               "audio_url": "https://www.archive.org/download/success_0904_librivox/success_brooke_jc_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "joy-chan"
+              ],
               "start_ms": 481000,
               "title": "Success – Read by JC"
             },
             {
               "audio_url": "https://www.archive.org/download/success_0904_librivox/success_brooke_lah_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "lee-ann-howlett"
+              ],
               "start_ms": 557000,
               "title": "Success – Read by LAH"
             },
             {
               "audio_url": "https://www.archive.org/download/success_0904_librivox/success_brooke_lkp_64kb.mp3",
               "length_ms": 58000,
+              "readers": [
+                "lucy-perry"
+              ],
               "start_ms": 633000,
               "title": "Success – Read by LKP"
             },
             {
               "audio_url": "https://www.archive.org/download/success_0904_librivox/success_brooke_mm_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "morgan"
+              ],
               "start_ms": 691000,
               "title": "Success – Read by MM"
             },
             {
               "audio_url": "https://www.archive.org/download/success_0904_librivox/success_brooke_mrk_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "maya"
+              ],
               "start_ms": 757000,
               "title": "Success – Read by MRK"
             },
             {
               "audio_url": "https://www.archive.org/download/success_0904_librivox/success_brooke_rg_64kb.mp3",
               "length_ms": 90000,
+              "readers": [
+                "ruth-golding"
+              ],
               "start_ms": 833000,
               "title": "Success – Read by RG"
             },
             {
               "audio_url": "https://www.archive.org/download/success_0904_librivox/success_brooke_rn_64kb.mp3",
               "length_ms": 80000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 923000,
               "title": "Success – Read by RN"
             },
             {
               "audio_url": "https://www.archive.org/download/success_0904_librivox/success_brooke_sac_64kb.mp3",
               "length_ms": 93000,
+              "readers": [
+                "sally-ann-cook"
+              ],
               "start_ms": 1003000,
               "title": "Success – Read by SAC"
             },
             {
               "audio_url": "https://www.archive.org/download/success_0904_librivox/success_brooke_sva_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "intemporaliter"
+              ],
               "start_ms": 1096000,
               "title": "Success – Read by SVA"
             }
@@ -8445,7 +8490,12 @@
           "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt15/Success_1203.jpg",
           "id": "audio-andrea",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 3095,
+          "librivox_title": "Success",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/success-by-rupert-brooke/",

@@ -9220,90 +9220,135 @@
             {
               "audio_url": "https://www.archive.org/download/thehill_1105_librivox/thehill_brooke_cd_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "calmdragon"
+              ],
               "start_ms": 0,
               "title": "The Hill - Read by CD"
             },
             {
               "audio_url": "https://www.archive.org/download/thehill_1105_librivox/thehill_brooke_cs_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "cori-samuel"
+              ],
               "start_ms": 75000,
               "title": "The Hill - Read by CS"
             },
             {
               "audio_url": "https://www.archive.org/download/thehill_1105_librivox/thehill_brooke_dl_64kb.mp3",
               "length_ms": 73000,
+              "readers": [
+                "david-lawrence"
+              ],
               "start_ms": 151000,
               "title": "The Hill - Read by DL"
             },
             {
               "audio_url": "https://www.archive.org/download/thehill_1105_librivox/thehill_brooke_ecb_64kb.mp3",
               "length_ms": 84000,
+              "readers": [
+                "elise-c-boucher"
+              ],
               "start_ms": 224000,
               "title": "The Hill - Read by ECB"
             },
             {
               "audio_url": "https://www.archive.org/download/thehill_1105_librivox/thehill_brooke_ep_64kb.mp3",
               "length_ms": 84000,
+              "readers": [
+                "loubet"
+              ],
               "start_ms": 308000,
               "title": "The Hill - Read by EP"
             },
             {
               "audio_url": "https://www.archive.org/download/thehill_1105_librivox/thehill_brooke_hj_64kb.mp3",
               "length_ms": 78000,
+              "readers": [
+                "viglione"
+              ],
               "start_ms": 392000,
               "title": "The Hill - Read by HJ"
             },
             {
               "audio_url": "https://www.archive.org/download/thehill_1105_librivox/thehill_brooke_jah_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "john-hoerr"
+              ],
               "start_ms": 470000,
               "title": "The Hill - Read by JAH"
             },
             {
               "audio_url": "https://www.archive.org/download/thehill_1105_librivox/thehill_brooke_jv_64kb.mp3",
               "length_ms": 75000,
+              "readers": [
+                "jvareckova"
+              ],
               "start_ms": 538000,
               "title": "The Hill - Read by JV"
             },
             {
               "audio_url": "https://www.archive.org/download/thehill_1105_librivox/thehill_brooke_llw_64kb.mp3",
               "length_ms": 85000,
+              "readers": [
+                "leonard-wilson-1930-2024"
+              ],
               "start_ms": 613000,
               "title": "The Hill - Read by LLW"
             },
             {
               "audio_url": "https://www.archive.org/download/thehill_1105_librivox/thehill_brooke_mp_64kb.mp3",
               "length_ms": 91000,
+              "readers": [
+                "michael-packard"
+              ],
               "start_ms": 698000,
               "title": "The Hill - Read by MP"
             },
             {
               "audio_url": "https://www.archive.org/download/thehill_1105_librivox/thehill_brooke_rmg_64kb.mp3",
               "length_ms": 87000,
+              "readers": [
+                "bob-gonzalez"
+              ],
               "start_ms": 789000,
               "title": "The Hill - Read by MG"
             },
             {
               "audio_url": "https://www.archive.org/download/thehill_1105_librivox/thehill_brooke_rn_64kb.mp3",
               "length_ms": 87000,
+              "readers": [
+                "ravenotation"
+              ],
               "start_ms": 876000,
               "title": "The Hill - Read by RN"
             },
             {
               "audio_url": "https://www.archive.org/download/thehill_1105_librivox/thehill_brooke_stk_64kb.mp3",
               "length_ms": 69000,
+              "readers": [
+                "sean-keating"
+              ],
               "start_ms": 963000,
               "title": "The Hill - Read by STK"
             },
             {
               "audio_url": "https://www.archive.org/download/thehill_1105_librivox/thehill_brooke_tg_64kb.mp3",
               "length_ms": 68000,
+              "readers": [
+                "triciag"
+              ],
               "start_ms": 1032000,
               "title": "The Hill - Read by TG"
             },
             {
               "audio_url": "https://www.archive.org/download/thehill_1105_librivox/thehill_brooke_wt_64kb.mp3",
               "length_ms": 76000,
+              "readers": [
+                "winston-tharp"
+              ],
               "start_ms": 1100000,
               "title": "The Hill - Read by WT"
             }
@@ -9312,7 +9357,12 @@
           "cover_url": "https://archive.org/download/LibrivoxCdCoverArt19/Hill_1209.jpg",
           "id": "calmdragon",
           "language": "en",
+          "librivox_genres": [
+            "Poetry",
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 5525,
+          "librivox_title": "Hill",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-hill-by-rupert-brooke/",

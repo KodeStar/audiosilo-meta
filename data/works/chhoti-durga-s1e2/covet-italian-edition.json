@@ -3060,84 +3060,126 @@
             {
               "audio_url": "https://www.archive.org/download/cow_stevenson/cow_stevenson_jbb_64kb.mp3",
               "length_ms": 35000,
+              "readers": [
+                "brad-bush"
+              ],
               "start_ms": 0,
               "title": "Version 01"
             },
             {
               "audio_url": "https://www.archive.org/download/cow_stevenson/cow_stevenson_chv_64kb.mp3",
               "length_ms": 66000,
+              "readers": [
+                "chris-vee"
+              ],
               "start_ms": 35000,
               "title": "Version 02"
             },
             {
               "audio_url": "https://www.archive.org/download/cow_stevenson/cow_stevenson_cs_64kb.mp3",
               "length_ms": 41000,
+              "readers": [
+                "cori-samuel"
+              ],
               "start_ms": 101000,
               "title": "Version 03"
             },
             {
               "audio_url": "https://www.archive.org/download/cow_stevenson/cow_stevenson_fp_64kb.mp3",
               "length_ms": 41000,
+              "readers": [
+                "fargo-penneau"
+              ],
               "start_ms": 142000,
               "title": "Version 04"
             },
             {
               "audio_url": "https://www.archive.org/download/cow_stevenson2/cow_stevenson_geb_64kb.mp3",
               "length_ms": 51000,
+              "readers": [
+                "grace-bush"
+              ],
               "start_ms": 183000,
               "title": "Version 05"
             },
             {
               "audio_url": "https://www.archive.org/download/cow_stevenson/cow_stevenson_hf_64kb.mp3",
               "length_ms": 40000,
+              "readers": [
+                "henry-frigon"
+              ],
               "start_ms": 234000,
               "title": "Version 06"
             },
             {
               "audio_url": "https://www.archive.org/download/cow_stevenson/cow_stevenson_hm_64kb.mp3",
               "length_ms": 67000,
+              "readers": [
+                "hugh-mcguire"
+              ],
               "start_ms": 274000,
               "title": "Version 07"
             },
             {
               "audio_url": "https://www.archive.org/download/cow_stevenson/cow_stevenson_jos_64kb.mp3",
               "length_ms": 48000,
+              "readers": [
+                "jean-osullivan"
+              ],
               "start_ms": 341000,
               "title": "Version 08"
             },
             {
               "audio_url": "https://www.archive.org/download/cow_stevenson/cow_stevenson_kmcq_64kb.mp3",
               "length_ms": 29000,
+              "readers": [
+                "kristen-mcquillin"
+              ],
               "start_ms": 389000,
               "title": "Version 09"
             },
             {
               "audio_url": "https://www.archive.org/download/cow_stevenson/cow_stevenson_ks_64kb.mp3",
               "length_ms": 47000,
+              "readers": [
+                "kara-shallenberg-1969-2023"
+              ],
               "start_ms": 418000,
               "title": "Version 10"
             },
             {
               "audio_url": "https://www.archive.org/download/cow_stevenson3/cow_stevenson_ol_64kb.mp3",
               "length_ms": 51000,
+              "readers": [
+                "osmia"
+              ],
               "start_ms": 465000,
               "title": "Version 11"
             },
             {
               "audio_url": "https://www.archive.org/download/cow_stevenson/cow_stevenson_py_64kb.mp3",
               "length_ms": 64000,
+              "readers": [
+                "peter-yearsley"
+              ],
               "start_ms": 516000,
               "title": "Version 12"
             },
             {
               "audio_url": "https://www.archive.org/download/cow_stevenson/cow_stevenson_sr_64kb.mp3",
               "length_ms": 43000,
+              "readers": [
+                "sean-randall"
+              ],
               "start_ms": 580000,
               "title": "Version 13"
             },
             {
               "audio_url": "https://www.archive.org/download/cow_stevenson/cow_stevenson_s_64kb.mp3",
               "length_ms": 45000,
+              "readers": [
+                "mark-bradford"
+              ],
               "start_ms": 623000,
               "title": "Version 14"
             }
@@ -3146,7 +3188,11 @@
           "cover_url": "https://archive.org/download/cow_stevenson/Cow_1108.jpg",
           "id": "brad-bush",
           "language": "en",
+          "librivox_genres": [
+            "Multi-version (Weekly and Fortnightly poetry)"
+          ],
           "librivox_id": 334,
+          "librivox_title": "Cow",
           "license": "CC0-1.0",
           "links": {
             "librivox": "https://librivox.org/the-cow-by-robert-louis-stevenson/",
