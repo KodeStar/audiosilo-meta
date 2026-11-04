@@ -1737,19 +1737,6 @@
         }
       ]
     },
-    "vietnamesepod101": {
-      "id": "vietnamesepod101",
-      "kind": "publisher",
-      "license": "CC0-1.0",
-      "name": "VietnamesePod101",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07FKTL7VH",
-          "type": "libex-import"
-        }
-      ]
-    },
     "vietnamesepod101-com": {
       "id": "vietnamesepod101-com",
       "kind": "publisher",
@@ -1759,6 +1746,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B007MPHUU4",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07FKTL7VH",
           "type": "libex-import"
         }
       ]
@@ -6553,15 +6545,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0D1CWVCLJ",
           "type": "libex-import"
-        }
-      ]
-    },
-    "vitruvian-sound-nyc": {
-      "id": "vitruvian-sound-nyc",
-      "kind": "publisher",
-      "license": "CC0-1.0",
-      "name": "Vitruvian Sound NYC",
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0F1DWLTRX",

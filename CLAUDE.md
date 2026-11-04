@@ -624,7 +624,8 @@ it, `pkg/check` and every writer now refuse it loudly.
   canonical every AI-narration credit folds onto
   (`internal/importer/synthetic.go`) - its kind is not somebody's
   classification, it is what the credit said. The only other synthetic record is
-  `eleven-labs`, a TTS vendor credited by name, set by that same 2026-11 pass.
+  `eleven-labs`, a TTS vendor credited by name, set by that same 2026-11 pass; a
+  NEW "Eleven Labs" narrator credit folds onto `virtual-voice` (`aiNarratorNames`).
   The kind does NOT reach the artifact: `metabuild` writes no column for it, so
   metaserve, the site and audiosilo-server cannot show it; its readers are
   evidence filters only (pkg/check's narration profile, internal/audit's language

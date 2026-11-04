@@ -6528,19 +6528,6 @@
         }
       ]
     },
-    "japanesepod101": {
-      "id": "japanesepod101",
-      "kind": "publisher",
-      "license": "CC0-1.0",
-      "name": "JapanesePod101",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07LBYNX7N",
-          "type": "libex-import"
-        }
-      ]
-    },
     "japanesepod101-com": {
       "id": "japanesepod101-com",
       "kind": "publisher",
@@ -6550,6 +6537,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B004BBE18G",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07LBYNX7N",
           "type": "libex-import"
         }
       ]
