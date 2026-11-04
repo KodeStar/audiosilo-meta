@@ -404,7 +404,8 @@ reading or a numbered version is another recording of the plain-titled work):
    Anonymous) goes to the worklist as `author-unsluggable`;
 2. otherwise the ONE work by the same authors, in the same language, whose title
    differs only by a leading article or punctuation, case and accents ("The
-   Metamorphosis" and "Metamorphosis" by Franz Kafka). The articles set aside
+   Metamorphosis" and "Metamorphosis" by Franz Kafka), or by how a volume is
+   spelled ("Vol. 1 of 3" and "Volume 1"). The articles set aside
    are the English the/a/an, French le/la/les/l', German der/die/das, Spanish
    el/los/las, Italian il/lo and Dutch de/het/een. Failing that, the ONE such
    work by an author the project spells with more or fewer words (the same
@@ -465,7 +466,10 @@ number fragment ("Сборник стихов 001" as "001"). It is matched by r
 (its key keeps its own letters, so a second project of the same title by the
 same author attaches, and "The Война и мир" meets "Война и мир"), and otherwise
 its new work is created at `librivox-<project id>`, titled as LibriVox writes
-it (`fallback-slug-taken` when that slug is already used). A title exactly half
+it (`fallback-slug-taken` when that slug is already used). A book from any
+other source (libex, a user library) with the same non-Latin title by the same
+authors in a compatible language finds that work by the same key, rather than
+minting a duplicate under its Latin fragment or "untitled". A title exactly half
 Latin ("Anna Karenina (Анна Каренина)") stays on the slug rule.
 
 People are keyed by `librivox_reader_id` / `librivox_author_id`: a known id

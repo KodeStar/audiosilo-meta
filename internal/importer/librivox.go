@@ -650,6 +650,10 @@ type librivoxState struct {
 	// use; variantExamples names a few rows it attached, for the run's note.
 	titles          map[string][]string
 	variantExamples []string
+	// scriptWorks is rule 4's catalogued `librivox-<id>` works by their
+	// own-script title key, for a non-LibriVox row (librivoxScriptWork),
+	// built on first use.
+	scriptWorks map[string][]string
 	// authorVariantExamples names a few rows librivoxauthors.go's rule 1
 	// attached, for the run's note.
 	authorVariantExamples []string

@@ -12,7 +12,9 @@ package importer
 //     Spanish, Italian, Dutch: librivoxArticles) and punctuation, case and
 //     diacritics are set aside (librivoxTitleKey) - "The Metamorphosis" and
 //     "Metamorphosis" by Franz Kafka are one book - when that work is by the
-//     same authors (matchWork) in a compatible language. LibriVox's catalogue is
+//     same authors (matchWork) in a compatible language; a volume number is
+//     one key however it is spelled ("Vol. 1 of 3", "Volume 1":
+//     librivoxVolumeSpelling). LibriVox's catalogue is
 //     public-domain texts whose titles differ from a retailer's mostly by exactly
 //     that, so the duplicate-identity guard's "skip, never merge" would keep a
 //     large share of the mirror out for want of an article.
@@ -34,7 +36,9 @@ package importer
 //     title by one author as one work, and a Latin or number fragment's chain
 //     would file it beside an unrelated book. It is matched by rule 2 alone
 //     (its key keeps the letters of its own script), and otherwise creates a
-//     new work at `librivox-<project id>`, titled as LibriVox writes it.
+//     new work at `librivox-<project id>`, titled as LibriVox writes it. A row
+//     of any other source with that title reaches the work by the same key
+//     (librivoxScriptWork), since no slug chain does.
 //  5. A TRAILING QUALIFIER IS A WORKLIST SKIP. A Latin title about to create a
 //     work, which rule 2 would match once its trailing parenthetical or
 //     bracketed qualifiers are removed ("Frankenstein (1818)", "Black Beauty
@@ -48,6 +52,7 @@ package importer
 
 import (
 	"fmt"
+	"regexp"
 	"slices"
 	"strconv"
 	"strings"
@@ -167,9 +172,25 @@ func librivoxTitleKeyOf(title string) (key string, nonLatin bool) {
 		return librivoxScriptKey(t), true
 	}
 	if s := model.SlugifyWhole(t); s != "" {
-		return joinSlugWords(s), false
+		return joinSlugWords(librivoxVolumeSpelling(s)), false
 	}
 	return librivoxScriptKey(t), true
+}
+
+// librivoxVolumeRE is a volume number in a whole-title slug, "vol" or
+// "volume" with an optional "of <total>" after it.
+var librivoxVolumeRE = regexp.MustCompile(`(^|-)vol(?:ume)?-(\d+)(?:-of-\d+)?(-|$)`)
+
+// librivoxVolumeSpelling is a whole-title slug with every volume number
+// spelled one way, "volume-<n>": "Vol. 1 of 3" and "Volume 1" are the same
+// volume (meta#2778: 9711 "World as Will and Idea, Vol. 1 of 3" minted a work
+// beside the catalogued "The World as Will and Idea, Volume 1"). Only the
+// spelling folds - the number never does, so "Vol. 1" and "Vol. 2" stay apart.
+func librivoxVolumeSpelling(slug string) string {
+	if !strings.Contains(slug, "vol") {
+		return slug
+	}
+	return librivoxVolumeRE.ReplaceAllString(slug, "${1}volume-${2}${3}")
 }
 
 // librivoxNonLatinTitle reports whether a title is read in its own script
@@ -283,6 +304,34 @@ type librivoxRoute struct {
 	// the catalogued people it credits, person slug to person slug
 	// (librivoxauthors.go rule 1).
 	moves map[string]string
+	// variant is a rule 2 attach's example for the run's note and fallback a
+	// rule 4 `librivox-<id>` create: both counted only once the row's
+	// recording has landed (noteLibrivoxLanded), so a row the planner still
+	// refuses after routing is not reported as attached or created.
+	variant  string
+	fallback bool
+	// authorVariant is a librivoxauthors.go rule 1 attach's example, counted
+	// the same way (Summary.LibrivoxAuthorVariants).
+	authorVariant string
+}
+
+// noteLibrivoxLanded counts a routed row that landed: a rule 2 attach
+// (Summary.LibrivoxVariantsAttached, with its example), a rule 4 create
+// (Summary.LibrivoxFallbackSlugs) or an author-variant attach
+// (Summary.LibrivoxAuthorVariants).
+func (p *planner) noteLibrivoxLanded(route librivoxRoute) {
+	if route.variant != "" {
+		p.summary.LibrivoxVariantsAttached++
+		if len(p.lv.variantExamples) < maxWarnExamples {
+			p.lv.variantExamples = append(p.lv.variantExamples, route.variant)
+		}
+	}
+	if route.fallback {
+		p.summary.LibrivoxFallbackSlugs++
+	}
+	if route.authorVariant != "" {
+		p.noteLibrivoxAuthorVariant(route.authorVariant)
+	}
 }
 
 // routeLibrivox applies the rules in this file's header to one LibriVox row. It
@@ -309,12 +358,8 @@ func (p *planner) routeLibrivox(b sourceBook, workTitle, fullTitle, posSuffix, l
 	matched, partial := p.librivoxCandidates(slugs, lang, authors)
 	switch {
 	case len(matched) == 1:
-		p.summary.LibrivoxVariantsAttached++
-		if len(p.lv.variantExamples) < maxWarnExamples {
-			p.lv.variantExamples = append(p.lv.variantExamples,
-				fmt.Sprintf("%d %q -> %q (%q)", b.lv.id, workTitle, matched[0].slug, matched[0].title))
-		}
-		return librivoxRoute{walk: &workWalk{title: workTitle, ws: matched[0]}}
+		return librivoxRoute{walk: &workWalk{title: workTitle, ws: matched[0]},
+			variant: fmt.Sprintf("%d %q -> %q (%q)", b.lv.id, workTitle, matched[0].slug, matched[0].title)}
 	case len(matched) > 1:
 		p.noteLibrivoxWorklist(b, workTitle, LibrivoxSeveralWorks, candidatesOf(matched))
 		return librivoxRoute{skip: true}
@@ -419,8 +464,7 @@ func (p *planner) librivoxFallback(b sourceBook, workTitle string, nonLatin bool
 		p.noteLibrivoxWorklist(b, workTitle, LibrivoxFallbackTaken, held)
 		return librivoxRoute{skip: true}
 	}
-	p.summary.LibrivoxFallbackSlugs++
-	return librivoxRoute{walk: &workWalk{title: workTitle, chain: workChain{base: slug}, free: slug}}
+	return librivoxRoute{walk: &workWalk{title: workTitle, chain: workChain{base: slug}, free: slug}, fallback: true}
 }
 
 // librivoxCandidates sorts the works under one spelling-variant key (slugs, in
@@ -485,6 +529,76 @@ func (p *planner) indexLibrivoxWork(ws *workState) {
 	if !found {
 		p.lv.titles[key] = slices.Insert(slugs, i, ws.slug)
 	}
+}
+
+// librivoxScriptWork is rule 4 seen from every OTHER source (meta#2778): a
+// row whose title is non-Latin (librivoxNonLatinTitle) and that the ordinary
+// walk would create a work for may be a book LibriVox already filed at
+// `librivox-<id>`, which no slug chain reaches - "Ο γάμος της Λίτσας (Litsa's
+// Marriage)" slugs to `litsas-marriage`, a pure Cyrillic title to the shared
+// "untitled" - so an Audible, libex or user-library row of that title would
+// mint a duplicate beside it. Such a row is that work when exactly ONE
+// `librivox-<id>` work carries its own-script key (librivoxTitleKey) by the
+// same authors (matchWork) in a compatible language; nil otherwise, leaving
+// the ordinary path (two such works are not guessed between). A LibriVox row
+// is routeLibrivox's.
+func (p *planner) librivoxScriptWork(b sourceBook, workTitle, lang string, authors workAuthors) *workState {
+	if b.lv != nil {
+		return nil
+	}
+	key, nonLatin := librivoxTitleKeyOf(workTitle)
+	if !nonLatin || key == "" {
+		return nil
+	}
+	var found *workState
+	for _, slug := range p.librivoxScriptIndex()[key] {
+		ws := p.works[slug]
+		if ws == nil || !langCompatible(ws.lang, lang) || matchWork(ws, authors) == matchNone {
+			continue
+		}
+		if found != nil {
+			return nil
+		}
+		found = ws
+	}
+	return found
+}
+
+// librivoxScriptIndex is the own-script key of every catalogued work rule 4
+// created (a `librivox-<id>` slug whose title is non-Latin), key -> slugs,
+// built on first use: the few works librivoxScriptWork can reach, so an
+// ordinary run never builds the whole spelling-variant index for it.
+func (p *planner) librivoxScriptIndex() map[string][]string {
+	if p.lv.scriptWorks == nil {
+		p.lv.scriptWorks = map[string][]string{}
+		for slug, ws := range p.works {
+			if !librivoxFallbackSlug(slug) {
+				continue
+			}
+			if key, nonLatin := librivoxTitleKeyOf(ws.title); nonLatin && key != "" {
+				p.lv.scriptWorks[key] = append(p.lv.scriptWorks[key], slug)
+			}
+		}
+		for _, slugs := range p.lv.scriptWorks {
+			slices.Sort(slugs)
+		}
+	}
+	return p.lv.scriptWorks
+}
+
+// librivoxFallbackSlug reports whether slug is rule 4's `librivox-<id>` form
+// (librivoxWorkSlug).
+func librivoxFallbackSlug(slug string) bool {
+	id, ok := strings.CutPrefix(slug, "librivox-")
+	if !ok || id == "" {
+		return false
+	}
+	for i := 0; i < len(id); i++ {
+		if !isASCIIDigit(id[i]) {
+			return false
+		}
+	}
+	return true
 }
 
 // candidatesOf names works for a worklist entry.

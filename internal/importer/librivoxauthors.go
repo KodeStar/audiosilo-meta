@@ -285,8 +285,8 @@ func (p *planner) routeLibrivoxAuthorVariant(b sourceBook, workTitle string, slu
 	switch {
 	case ws != nil:
 		moves, kept := p.splitLibrivoxMoves(move)
-		p.noteLibrivoxAuthorVariant(fmt.Sprintf("%d %q: %s -> %q", b.lv.id, workTitle, p.moveText(byPerson, moves, kept), ws.slug))
-		return librivoxRoute{walk: &workWalk{title: workTitle, ws: ws}, moves: moves}, true
+		return librivoxRoute{walk: &workWalk{title: workTitle, ws: ws}, moves: moves,
+			authorVariant: fmt.Sprintf("%d %q: %s -> %q", b.lv.id, workTitle, p.moveText(byPerson, moves, kept), ws.slug)}, true
 	case len(related) == 0:
 		return librivoxRoute{}, false
 	}

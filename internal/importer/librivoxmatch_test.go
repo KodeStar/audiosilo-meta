@@ -274,6 +274,10 @@ func TestLibrivoxTitleKey(t *testing.T) {
 		{"Ὀδύσσεια", "Οδυσσεια"},
 		{"Re-Creation", "Recreation"},
 		{"Vol. 1-2", "Vol 1 2"},
+		// meta#2778: one volume, spelled "Vol. N of M" and "Volume N".
+		{"World as Will and Idea, Vol. 1 of 3", "The World as Will and Idea, Volume 1"},
+		{"History, Vol. 2", "History, Volume 2"},
+		{"Essays Volume 3 of 4", "Essays, Vol. 3"},
 	}
 	for _, p := range same {
 		if a, b := librivoxTitleKey(p[0]), librivoxTitleKey(p[1]); a == "" || a != b {
@@ -288,9 +292,11 @@ func TestLibrivoxTitleKey(t *testing.T) {
 		{"Une Vie", "Vie"}, // only the listed articles
 		{"Война и мир", "Анна Каренина"},
 		{"Poems Vol. 1, 2", "Poems Vol. 12"}, // two numbers are not one
-		{"Том 1, 2", "Том 12"},               // in a non-Latin title too
-		{"कमल", "कमला"},                      // a vowel sign spells another word
-		{"こころ", "ごころ"},                       // and so does the kana voicing mark
+		{"History, Vol. 1 of 3", "History, Volume 2"},
+		{"Volcanoes 1", "Volume 1"}, // a word that starts "vol" is not one
+		{"Том 1, 2", "Том 12"},      // in a non-Latin title too
+		{"कमल", "कमला"},             // a vowel sign spells another word
+		{"こころ", "ごころ"},              // and so does the kana voicing mark
 	}
 	for _, p := range apart {
 		if a, b := librivoxTitleKey(p[0]), librivoxTitleKey(p[1]); a == b {
@@ -604,4 +610,60 @@ func TestLibrivoxRepeatMarkerAttachesToThePlainWork(t *testing.T) {
 			mustValidate(t, dataDir)
 		})
 	}
+}
+
+func TestNonLibrivoxRowFindsALibrivoxScriptWork(t *testing.T) {
+	// meta#2778: a work LibriVox rule 4 created at librivox-<id> is reachable
+	// only by its own-script title key. A libex row of the same title and
+	// author (a pure Cyrillic title slugs to "untitled", a mostly Greek one to
+	// its Latin fragment) attaches to it instead of minting a duplicate; a
+	// row by another author, or in another language, still creates its own.
+	dataDir := t.TempDir()
+	runLibrivox(t, writeSnapshot(t,
+		byAuthor(t, 99600, "Война и мир", "Russian", LibrivoxPerson{ID: 6000, FirstName: "Leo", LastName: "Tolstoy"}),
+		byAuthor(t, 99604, "Ο γάμος της Λίτσας (Litsa's Marriage)", "Greek", LibrivoxPerson{ID: 6004, FirstName: "Grigorios", LastName: "Xenopoulos"}),
+	), dataDir, allLibrivox)
+	row := func(asin, title, lang, author string) string {
+		return `{"asin":"` + asin + `","title":"` + title + `","region":"us","language":"` + lang + `",` +
+			`"bookFormat":"unabridged","lengthMinutes":300,"authors":[{"name":"` + author + `"}],"narrators":[{"name":"Bea Reader"}]}`
+	}
+	sum := runLibexOver(t, dataDir,
+		row("B0SCRIPT01", "Война и мир", "russian", "Leo Tolstoy"),
+		row("B0SCRIPT02", "Ο γάμος της Λίτσας (Litsa's Marriage)", "greek", "Grigorios Xenopoulos"),
+		row("B0SCRIPT03", "Война и мир", "russian", "Ivan Other"),
+	)
+	if sum.NewWorks != 1 || sum.NewRecordings != 3 {
+		t.Fatalf("works/recordings = %d/%d, want 1/3\nwarnings: %v", sum.NewWorks, sum.NewRecordings, sum.Warnings)
+	}
+	for work, n := range map[string]int{"librivox-99600": 2, "librivox-99604": 2} {
+		if got := recSlugsOf(t, dataDir, work); len(got) != n {
+			t.Errorf("%s recordings = %v, want %d", work, got, n)
+		}
+	}
+	if entryExists(t, dataDir, workAddr("litsas-marriage")) {
+		t.Error("the Greek title minted a duplicate at its Latin fragment")
+	}
+	mustValidate(t, dataDir)
+}
+
+func TestLibrivoxVolumeOfTotalAttachesToTheVolume(t *testing.T) {
+	// meta#2778, tranche 5: 9711 "World as Will and Idea, Vol. 1 of 3" minted
+	// a work beside the catalogued "... Volume 1". It is the same volume by
+	// the same author; volume 2 of the same text stays its own work.
+	dataDir := t.TempDir()
+	seedAuthoredWorks(t, dataDir, map[string][]string{
+		"the-world-as-will-and-idea-volume-1": {"The World as Will and Idea, Volume 1", "arthur-schopenhauer", "Arthur Schopenhauer"},
+	})
+	schopenhauer := lvAuthor(6200, "Arthur", "Schopenhauer")
+	sum := runLibrivox(t, writeSnapshot(t,
+		byAuthor(t, 9711, "World as Will and Idea, Vol. 1 of 3", "English", schopenhauer),
+		byAuthor(t, 9712, "World as Will and Idea, Vol. 2 of 3", "English", schopenhauer),
+	), dataDir, allLibrivox)
+	if sum.NewWorks != 1 || sum.NewRecordings != 2 || sum.LibrivoxVariantsAttached != 1 || len(sum.LibrivoxWorklist) != 0 {
+		t.Fatalf("works/recordings/variants = %d/%d/%d\nworklist: %v", sum.NewWorks, sum.NewRecordings, sum.LibrivoxVariantsAttached, sum.LibrivoxWorklist)
+	}
+	if got := recSlugsOf(t, dataDir, "the-world-as-will-and-idea-volume-1"); len(got) != 2 {
+		t.Errorf("volume 1 recordings = %v", got)
+	}
+	mustValidate(t, dataDir)
 }

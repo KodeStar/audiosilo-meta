@@ -1535,7 +1535,16 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	if route.walk != nil {
 		walk = *route.walk
 	} else {
-		walk = p.resolveWork(workTitle, b.str("title"), b.qualifiedTitle, posSuffix, p.rowWorkAuthorsRO(authorCredits), lang, claim)
+		authors := p.rowWorkAuthorsRO(authorCredits)
+		walk = p.resolveWork(workTitle, b.str("title"), b.qualifiedTitle, posSuffix, authors, lang, claim)
+		// A non-Latin title the walk would create a work for may be a
+		// LibriVox work at `librivox-<id>`, which no slug chain reaches
+		// (librivoxScriptWork, librivoxmatch.go rule 4).
+		if walk.ws == nil {
+			if ws := p.librivoxScriptWork(b, workTitle, lang, authors); ws != nil {
+				walk = workWalk{title: workTitle, ws: ws}
+			}
+		}
 	}
 
 	// The book's genre claims are mapped from the source's own strings onto this
@@ -1567,6 +1576,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	}
 	p.addRecording(ws, b, resolvedTitle, asin, lang, narratorSlugs, warn)
 	if p.landedRec != "" {
+		p.noteLibrivoxLanded(route)
 		// unsluggable is only ever set for a LibriVox row.
 		p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, unrecorded...)
 		p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, p.unsluggableLibrivoxCredits(b, ws.slug, unsluggable)...)
