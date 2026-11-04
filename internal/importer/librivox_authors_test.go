@@ -556,11 +556,12 @@ func TestLibrivoxAuthorVariantPairingIgnoresAuthorOrder(t *testing.T) {
 }
 
 func TestLibrivoxUnsluggableCoAuthorBesideASelfTranslator(t *testing.T) {
-	// The author left once an unsluggable co-author is dropped also translated
-	// the book: an author credit without a role still names them, so the row
-	// lands on them rather than going to the worklist.
+	// The author left once an unsluggable co-author (with no LibriVox id, so
+	// dropped) is dropped also translated the book: an author credit without a
+	// role still names them, so the row lands on them rather than going to the
+	// worklist.
 	pr := byAuthor(t, 99880, "Gitanjali", "English", lvAuthor(7080, "Rabindranath", "Tagore"), lvAuthor(7080, "Rabindranath", "Tagore"))
-	pr.Authors = append(pr.Authors, lvAuthor(6100, "Йордан", "Йовков"))
+	pr.Authors = append(pr.Authors, lvAuthor(0, "Йордан", "Йовков"))
 	dataDir := t.TempDir()
 	sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
 	if sum.NewWorks != 1 || len(sum.LibrivoxWorklist) != 0 {
@@ -570,6 +571,80 @@ func TestLibrivoxUnsluggableCoAuthorBesideASelfTranslator(t *testing.T) {
 	readEntity(t, dataDir, workAddr("gitanjali"), &w)
 	if !reflect.DeepEqual(w.Authors, []string{"rabindranath-tagore"}) {
 		t.Errorf("authors = %v", w.Authors)
+	}
+	mustValidate(t, dataDir)
+}
+
+func TestLibrivoxAuthorVariantSeesTheRunsOwnIDs(t *testing.T) {
+	// meta#2778: a catalogued id-less "Henry Adams" and, in one batch, "Henry
+	// Adams" (42, resolved onto that person by name) and "Henry Brooks Adams"
+	// (7030, a spelling of him on a same-titled work). The pre-pass used to
+	// see only catalogued ids, so one run attached 7030 there too (two ids on
+	// one person, one dropped with a warning) while two runs listed it. Now
+	// 42's decision holds the person for the run: one run and two runs leave
+	// the same tree and the same author-spelling worklist row.
+	seed := func() string {
+		dataDir := t.TempDir()
+		seedAuthoredWorks(t, dataDir, map[string][]string{"the-education-of-henry-adams": {"The Education of Henry Adams", "henry-adams", "Henry Adams"}})
+		return dataDir
+	}
+	plain := byAuthor(t, 99840, "Democracy", "English", lvAuthor(42, "Henry", "Adams"))
+	brooks := byAuthor(t, 99841, "Education of Henry Adams", "English", lvAuthor(7030, "Henry Brooks", "Adams"))
+	reasons := func(sum Summary) map[int]string {
+		out := map[int]string{}
+		for _, e := range sum.LibrivoxWorklist {
+			out[e.Project] = e.Reason
+		}
+		return out
+	}
+	together := seed()
+	one := runLibrivox(t, writeSnapshot(t, plain, brooks), together, allLibrivox)
+	if got := reasons(one); !reflect.DeepEqual(got, map[int]string{99841: LibrivoxAuthorSpelling}) {
+		t.Fatalf("one run worklist = %+v\nnotes: %v", one.LibrivoxWorklist, one.Notes)
+	}
+	if strings.Contains(strings.Join(one.Warnings, "\n"), "not recorded") {
+		t.Errorf("an id was dropped: %v", one.Warnings)
+	}
+	if p := personOf(t, together, "henry-adams"); p.AuthorID != 42 {
+		t.Errorf("henry-adams = %+v", p)
+	}
+	apart := seed()
+	runLibrivox(t, writeSnapshot(t, plain), apart, allLibrivox)
+	if got := reasons(runLibrivox(t, writeSnapshot(t, brooks), apart, allLibrivox)); !reflect.DeepEqual(got, reasons(one)) {
+		t.Errorf("two runs worklist = %v", got)
+	}
+	if !reflect.DeepEqual(testpack.Snapshot(t, together), testpack.Snapshot(t, apart)) {
+		t.Error("one run and two runs left different trees")
+	}
+	mustValidate(t, together)
+}
+
+func TestLibrivoxAuthorVariantKeysPastAnUnkeyableFirstID(t *testing.T) {
+	// The first id (in project order) proposing a person only holds it when it
+	// is keyed itself. "Henry B. Adams" (7040) is a catalogued record of his
+	// own, so moving him onto `henry-adams` would be a person merge and he is
+	// never keyed; a later run would not see him on `henry-adams` either, so
+	// "Henry Brooks Adams" (7030) is keyed for the batch and his new title
+	// credits `henry-adams` too, not a second record of the same person.
+	dataDir := t.TempDir()
+	seedAuthoredWorks(t, dataDir, map[string][]string{
+		"the-education-of-henry-adams": {"The Education of Henry Adams", "henry-adams", "Henry Adams"},
+		"letters-from-the-coast":       {"Letters from the Coast", "henry-b-adams", "Henry B. Adams"},
+	})
+	brooks := lvAuthor(7030, "Henry Brooks", "Adams")
+	sum := runLibrivox(t, writeSnapshot(t,
+		byAuthor(t, 99860, "Education of Henry Adams", "English", lvAuthor(7040, "Henry B.", "Adams")),
+		byAuthor(t, 99861, "Education of Henry Adams", "English", brooks),
+		byAuthor(t, 99862, "Mont-Saint-Michel and Chartres", "English", brooks),
+	), dataDir, allLibrivox)
+	if got := workAuthorsOf(t, dataDir, "mont-saint-michel-and-chartres"); !reflect.DeepEqual(got, []string{"henry-adams"}) {
+		t.Errorf("new work authors = %v\nworklist: %+v\nnotes: %v", got, sum.LibrivoxWorklist, sum.Notes)
+	}
+	if entryExists(t, dataDir, personAddr("henry-brooks-adams")) {
+		t.Error("a second record of henry-adams was created")
+	}
+	if p := personOf(t, dataDir, "henry-adams"); p.AuthorID != 7030 {
+		t.Errorf("henry-adams = %+v", p)
 	}
 	mustValidate(t, dataDir)
 }

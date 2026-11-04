@@ -9,7 +9,7 @@
 //	metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only | --relocate | --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>]] [--existing-series-only] [--attach-editions] [--skipped <path>]
 //	metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--refusals <path>] [--attachments <path>] [--date YYYY-MM-DD]
 //	metaimport librivox fetch  --out <snapshot> [--max-pages N]
-//	metaimport librivox import --from <snapshot> --ids <range> [--data data] [--dry-run] [--date YYYY-MM-DD] [--conflicts <path>] [--skipped <path>]
+//	metaimport librivox import --from <snapshot> --ids <range> [--data data] [--dry-run] [--date YYYY-MM-DD] [--conflicts <path>] [--skipped <path>] [--worklist <path>]
 //	metaimport librivox import --from <snapshot> --ids <range> --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>] [--data data] [--dry-run]
 //
 // librivox (LICENSING.md's public-domain exception) is two steps: fetch pages
@@ -277,7 +277,7 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		return 2
 	}
 
-	conflictLog, closeLog, err := openConflictLog(*conflicts)
+	conflictLog, closeLog, err := openAppendLog("--conflicts", *conflicts)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "metaimport:", err)
 		return 2
@@ -409,7 +409,8 @@ func encodeGenreChanges(log *atomicfile.File, sum importer.Summary) {
 	}
 }
 
-// openConflictLog opens the --conflicts worklist for APPEND, returning the sink
+// openAppendLog opens a worklist flag's file (--conflicts, librivox import's
+// --worklist) for APPEND, returning the sink
 // to hand the importer and the close to defer. An empty path is the no-flag
 // case: a nil io.Writer, which is what makes the run byte-for-byte what it was.
 //
@@ -421,13 +422,13 @@ func encodeGenreChanges(log *atomicfile.File, sum importer.Summary) {
 // The nil is returned as an untyped io.Writer rather than a nil *os.File, which
 // would be a non-nil interface holding a nil pointer - the importer's "was I
 // given a worklist" check reads the interface.
-func openConflictLog(path string) (io.Writer, func(), error) {
+func openAppendLog(flag, path string) (io.Writer, func(), error) {
 	if path == "" {
 		return nil, func() {}, nil
 	}
 	f, err := os.OpenFile(path, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0o644)
 	if err != nil {
-		return nil, func() {}, fmt.Errorf("--conflicts: %w", err)
+		return nil, func() {}, fmt.Errorf("%s: %w", flag, err)
 	}
 	return f, func() { _ = f.Close() }, nil
 }
@@ -727,7 +728,7 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--refusals <path>] [--attachments <path>] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-fill  [--data data] [--works a,b] [--limit N] [--all-tiers | --released-preorders] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport librivox fetch  --out <snapshot> [--max-pages N]")
-	fmt.Fprintln(os.Stderr, "  metaimport librivox import --from <snapshot> --ids <range> [--data data] [--dry-run] [--date YYYY-MM-DD] [--conflicts <path>] [--skipped <path>]")
+	fmt.Fprintln(os.Stderr, "  metaimport librivox import --from <snapshot> --ids <range> [--data data] [--dry-run] [--date YYYY-MM-DD] [--conflicts <path>] [--skipped <path>] [--worklist <path>]")
 	fmt.Fprintln(os.Stderr, "  metaimport librivox import --from <snapshot> --ids <range> --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>] [--data data] [--dry-run]")
 	fmt.Fprintln(os.Stderr, "")
 	fmt.Fprintln(os.Stderr, "  --conflicts <path> appends one NDJSON row per refused contradiction (a durable worklist).")

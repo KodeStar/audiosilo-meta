@@ -283,6 +283,7 @@ func TestLibrivoxSameNameAuthorIsMintedDated(t *testing.T) {
 		slug, wantName     string
 		plain              string
 		plainKeepsAuthorID int
+		split              bool
 	}{
 		// 16764: John Tyndall (1820-1893) onto a retail narrator.
 		"narrator only": {
@@ -320,6 +321,25 @@ func TestLibrivoxSameNameAuthorIsMintedDated(t *testing.T) {
 			author: lvDated(15534, "John", "Brown", "1715", "1766"),
 			slug:   "john-brown-1715-1766", wantName: "John Brown (1715-1766)", plain: "john-brown", plainKeepsAuthorID: 12220,
 		},
+		// No year to date the name by (meta#2778): the author-id form.
+		// 17170: Ralph Scott (16428) onto a retail narrator.
+		"no years, narrator only": {
+			seed: func(t *testing.T, files map[string]string) {
+				files[personAddr("ralph-scott")] = personFiles(t, "ralph-scott", "Ralph Scott", nil)
+				narratedWork(t, files, "the-hidden-road", "The Hidden Road", "ralph-scott")
+			},
+			author: lvDated(16428, "Ralph", "Scott", "", ""),
+			slug:   "ralph-scott-librivox-author-16428", wantName: "Ralph Scott", plain: "ralph-scott", split: true,
+		},
+		// 12675: Andy Adams beside andy-adams (940).
+		"another author id, no years": {
+			seed: func(t *testing.T, files map[string]string) {
+				files[personAddr("andy-adams")] = personFiles(t, "andy-adams", "Andy Adams", map[string]any{"librivox_author_id": 940})
+				retailWork(t, files, "trail-drive", "Trail Drive", "andy-adams", "")
+			},
+			author: lvDated(12675, "Andy", "Adams", "", ""),
+			slug:   "andy-adams-librivox-author-12675", wantName: "Andy Adams", plain: "andy-adams", plainKeepsAuthorID: 940, split: true,
+		},
 	} {
 		t.Run(name, func(t *testing.T) {
 			dataDir := t.TempDir()
@@ -339,8 +359,15 @@ func TestLibrivoxSameNameAuthorIsMintedDated(t *testing.T) {
 			if got := personOf(t, dataDir, tc.plain); got != before || got.AuthorID != tc.plainKeepsAuthorID {
 				t.Errorf("%s changed: %+v -> %+v", tc.plain, before, got)
 			}
-			if !model.PersonIDMatches(tc.slug, p.Name, 0) {
+			if !model.PersonIDMatches(tc.slug, p.Name, 0, p.AuthorID) {
 				t.Errorf("%s does not match its name %q", tc.slug, p.Name)
+			}
+			var splits []LibrivoxAuthorSplit
+			if tc.split {
+				splits = []LibrivoxAuthorSplit{{Author: LibrivoxPairAuthor{AuthorID: int(tc.author.ID), Name: tc.wantName, Person: tc.slug, Project: 99010}, Against: tc.plain}}
+			}
+			if !reflect.DeepEqual(sum.LibrivoxAuthorSplits, splits) {
+				t.Errorf("splits = %+v, want %+v", sum.LibrivoxAuthorSplits, splits)
 			}
 			mustValidate(t, dataDir)
 			rerunIsANoOp(t, snap, dataDir)
@@ -356,23 +383,16 @@ func TestLibrivoxSameNameAuthorIsMintedDated(t *testing.T) {
 }
 
 func TestLibrivoxSameNameAuthorGoesToTheWorklist(t *testing.T) {
-	// Not stamped, not minted: LibriVox states no year to mint by (Ralph Scott,
-	// 17170, onto a retail narrator), or the catalogued author's works are
-	// dated only by their recordings' release dates, which date a modern book
-	// and a modern edition of an old one alike (James Grant, Bagehot).
+	// Not stamped, not minted: the catalogued author's works are dated only by
+	// their recordings' release dates, which date a modern book and a modern
+	// edition of an old one alike (James Grant, Bagehot), or the name is a
+	// collective statement's, which no author id splits.
 	for name, tc := range map[string]struct {
 		seed       func(t *testing.T, files map[string]string)
 		author     LibrivoxPerson
 		plain      string
 		candidates []LibrivoxCandidate
 	}{
-		"no years": {
-			seed: func(t *testing.T, files map[string]string) {
-				files[personAddr("ralph-scott")] = personFiles(t, "ralph-scott", "Ralph Scott", nil)
-				narratedWork(t, files, "the-hidden-road", "The Hidden Road", "ralph-scott")
-			},
-			author: lvDated(16428, "Ralph", "Scott", "", ""), plain: "ralph-scott", candidates: []LibrivoxCandidate{},
-		},
 		"dated only by recordings": {
 			seed: func(t *testing.T, files map[string]string) {
 				files[personAddr("james-grant")] = personFiles(t, "james-grant", "James Grant", nil)
@@ -381,13 +401,15 @@ func TestLibrivoxSameNameAuthorGoesToTheWorklist(t *testing.T) {
 			author: lvDated(16128, "James", "Grant", "1822", "1887"), plain: "james-grant",
 			candidates: []LibrivoxCandidate{{Work: "bagehot", Title: "Bagehot"}},
 		},
-		"another id, no years": {
+		// A collective statement is never split by an id: two LibriVox
+		// "Anonymous" records stay the one collective's question.
+		"a collective, another id": {
 			seed: func(t *testing.T, files map[string]string) {
-				files[personAddr("andy-adams")] = personFiles(t, "andy-adams", "Andy Adams", map[string]any{"librivox_author_id": 940})
-				retailWork(t, files, "trail-drive", "Trail Drive", "andy-adams", "")
+				files[personAddr("anonymous")] = personFiles(t, "anonymous", "Anonymous", map[string]any{"librivox_author_id": 19})
+				retailWork(t, files, "beowulf", "Beowulf", "anonymous", "")
 			},
-			author: lvDated(12675, "Andy", "Adams", "", ""), plain: "andy-adams",
-			candidates: []LibrivoxCandidate{{Work: "trail-drive", Title: "Trail Drive"}},
+			author: lvDated(23001, "", "Anonymous", "", ""), plain: "anonymous",
+			candidates: []LibrivoxCandidate{{Work: "beowulf", Title: "Beowulf"}},
 		},
 	} {
 		t.Run(name, func(t *testing.T) {
@@ -744,46 +766,42 @@ func TestLibrivoxGenericTitle(t *testing.T) {
 	}
 }
 
-func TestLibrivoxSecondUndatedIDInARunIsHeld(t *testing.T) {
-	// Two undated author ids of one free name: in one run the second is held
-	// as a later run holds it against the first's person, not credited there.
+func TestLibrivoxSecondUndatedIDInARunIsAPersonOfItsOwn(t *testing.T) {
+	// Two undated author ids of one free name: the first keeps the plain
+	// name, the second is filed at its author-id form (rule 4, meta#2778) and
+	// listed beside the first for a person to merge or confirm - in one run
+	// exactly as in two, never credited onto the first's record.
 	first := byAuthors(t, 99030, "A Soldier's Diary", LibrivoxPerson{ID: lvInt(17170), FirstName: "Ralph", LastName: "Scott"})
 	second := byAuthors(t, 99031, "Letters Home", LibrivoxPerson{ID: lvInt(17999), FirstName: "Ralph", LastName: "Scott"})
-	heldOf := func(sum Summary) []int {
-		var held []int
-		for _, e := range sum.LibrivoxWorklist {
-			if e.Reason == LibrivoxSameNameAuthor {
-				held = append(held, e.Project)
-			}
-		}
-		return held
-	}
+	const minted = "ralph-scott-librivox-author-17999"
+	wantSplits := []LibrivoxAuthorSplit{{Author: LibrivoxPairAuthor{AuthorID: 17999, Name: "Ralph Scott", Person: minted, Project: 99031}, Against: "ralph-scott"}}
 
 	oneRun := t.TempDir()
 	sum := runLibrivox(t, writeSnapshot(t, first, second), oneRun, allLibrivox)
-	if got := heldOf(sum); !reflect.DeepEqual(got, []int{99031}) {
-		t.Fatalf("one run held %v, want [99031]\nnotes: %v", got, sum.Notes)
+	if len(sum.LibrivoxWorklist) != 0 || !reflect.DeepEqual(sum.LibrivoxAuthorSplits, wantSplits) {
+		t.Fatalf("worklist %v, splits %+v\nnotes: %v", sum.LibrivoxWorklist, sum.LibrivoxAuthorSplits, sum.Notes)
 	}
 	if p := personOf(t, oneRun, "ralph-scott"); p.AuthorID != 17170 {
 		t.Errorf("ralph-scott = %+v", p)
 	}
-	// The hold names the first id's works, as a later run names them.
-	wantCandidates := []LibrivoxCandidate{{Work: "a-soldiers-diary", Title: "A Soldier's Diary"}}
-	if got := sum.LibrivoxWorklist[0].Candidates; !reflect.DeepEqual(got, wantCandidates) {
-		t.Errorf("one run's candidates = %+v, want %+v", got, wantCandidates)
+	if got := workAuthorsOf(t, oneRun, "letters-home"); !reflect.DeepEqual(got, []string{minted}) {
+		t.Errorf("letters-home authors = %v", got)
 	}
+	if p := personOf(t, oneRun, minted); p.AuthorID != 17999 || p.Name != "Ralph Scott" {
+		t.Errorf("%s = %+v", minted, p)
+	}
+	mustValidate(t, oneRun)
 
 	twoRuns := t.TempDir()
 	runLibrivox(t, writeSnapshot(t, first), twoRuns, allLibrivox)
 	later := runLibrivox(t, writeSnapshot(t, second), twoRuns, allLibrivox)
-	if got := heldOf(later); !reflect.DeepEqual(got, []int{99031}) {
-		t.Errorf("two runs held %v, want [99031]", got)
-	} else if got := later.LibrivoxWorklist[0].Candidates; !reflect.DeepEqual(got, wantCandidates) {
-		t.Errorf("the later run's candidates = %+v, want %+v", got, wantCandidates)
+	if !reflect.DeepEqual(later.LibrivoxAuthorSplits, wantSplits) {
+		t.Errorf("the later run's splits = %+v, want %+v", later.LibrivoxAuthorSplits, wantSplits)
 	}
 	if !reflect.DeepEqual(testpack.Snapshot(t, oneRun), testpack.Snapshot(t, twoRuns)) {
 		t.Error("one run and two runs left different trees")
 	}
+	rerunIsANoOp(t, writeSnapshot(t, first, second), oneRun)
 
 	// The same birth and death years under two ids are one person in a run.
 	same := t.TempDir()
@@ -1189,7 +1207,7 @@ func TestLibrivoxFlourishedAuthorKeepsReadersOff(t *testing.T) {
 
 func TestLibrivoxReaderSpelledTwoWaysIsOnePerson(t *testing.T) {
 	// A reader id is decided by its lowest project's spelling. When that
-	// project never lands (here an unsluggable author's worklist row), the
+	// project never lands (here an unsluggable author with no LibriVox id, a worklist row), the
 	// reader's other project creates them under that spelling - their own
 	// name's record (9600), or their split one (9601, whose plain name 9599
 	// holds) - never a narrator no record backs.
@@ -1199,8 +1217,8 @@ func TestLibrivoxReaderSpelledTwoWaysIsOnePerson(t *testing.T) {
 	dataDir := t.TempDir()
 	sum := runLibrivox(t, writeSnapshot(t,
 		withReader(byAuthors(t, 99398, "First Words", lvAuthor(5800, "Ann", "One")), 9599, "Petra"),
-		withReader(byAuthors(t, 99399, "Legends", cyrillic(6100)), 9601, "Petra"),
-		withReader(byAuthors(t, 99400, "More Legends", cyrillic(6101)), 9600, "Martina"),
+		withReader(byAuthors(t, 99399, "Legends", cyrillic(0)), 9601, "Petra"),
+		withReader(byAuthors(t, 99400, "More Legends", cyrillic(0)), 9600, "Martina"),
 		withReader(byAuthors(t, 99401, "Other Book", lvAuthor(5801, "Pat", "Other")), 9600, "Martina S."),
 		withReader(byAuthors(t, 99402, "Third Book", lvAuthor(5802, "Kim", "Third")), 9601, "Petra K."),
 	), dataDir, allLibrivox)

@@ -30,12 +30,17 @@ package importer
 //     and an author id an earlier row of the run claimed counts as carried
 //     (claimLibrivoxAuthors), so a second spelling with another id is the same
 //     worklist row in one run as in two.
-//  2. A NAME THAT SLUGS TO NOTHING IS CREDITED NOWHERE. An author or translator
-//     credit in a script the slug rule folds away entirely ("Йордан Йовков")
-//     would land on the one catch-all person record (model.UnslugPersonID),
-//     which every such name shares. It is dropped from the row before the work
-//     is decided and reported as a credit not recorded (reason unsluggable) -
-//     the rule every source but libex follows (unrecorded.go).
+//  2. A NAME THAT SLUGS TO NOTHING IS NEVER THE CATCH-ALL. An author or
+//     translator credit in a script the slug rule folds away entirely
+//     ("Йордан Йовков") would land on the one catch-all person record
+//     (model.UnslugPersonID), which every such name shares. One carrying a
+//     LibriVox author id is filed by it, at `librivox-author-<id>`
+//     (librivoxpeople.go rule 4: its decided person keeps it in the row's
+//     credits, splitUnsluggableCredits); one with no id (or whose slot is
+//     taken) is dropped from the row before the work is decided and reported
+//     as a credit not recorded (reason unsluggable, or
+//     librivox-author-slot-taken) - the rule every source but libex follows
+//     (unrecorded.go).
 //     A row left with no individual identity author (only a translator, or only
 //     a collective such as Anonymous) is a worklist row (author-unsluggable):
 //     a work credited to nobody, or to "Anonymous" alone, would merge two
@@ -203,10 +208,12 @@ func (p *planner) creditsByPerson(credits []credit) map[string]credit {
 // movesOntoOwnNames reports whether every catalogued person a variant moves a
 // credit onto (pairs: row slug -> work person) is recorded at its own name's
 // slug: a person whose id is not (a LibriVox reader's `-librivox-<id>` or
-// `librivox-reader-<id>` record, model.PersonIDMatches' other two forms) is a
-// reader of their own, never an author spelling, so such a pairing is never
-// attached. A person id is otherwise always its name's slug (pkg/check's
-// person-slug rule), so no initials spelling stands between the two.
+// `librivox-reader-<id>` record, or an author's `-librivox-author-<id>` or
+// `librivox-author-<id>` one: model.PersonIDMatches' LibriVox forms) was kept
+// apart from a same-name person by their LibriVox id, never an author
+// spelling, so such a pairing is never attached. A person id is otherwise
+// always its name's slug (pkg/check's person-slug rule), so no initials
+// spelling stands between the two.
 func (p *planner) movesOntoOwnNames(pairs map[string]string) bool {
 	for _, w := range pairs {
 		if own, fellBack := personSlug(p.people[w]); fellBack || own != w {
@@ -224,10 +231,26 @@ func (p *planner) movesOntoOwnNames(pairs map[string]string) bool {
 func (p *planner) pairsCarryOtherIDs(b sourceBook, pairs map[string]string, byPerson map[string]credit) bool {
 	for r, w := range pairs {
 		c := byPerson[r]
-		if id := p.librivoxAuthorIDOf(b, c, p.resolveCredit(c)); id > 0 {
-			if have := p.lv.authorOf[w]; have != 0 && have != id {
-				return true
-			}
+		if id := p.librivoxAuthorIDOf(b, c, p.resolveCredit(c)); id > 0 && p.heldByOtherAuthorID(w, id) {
+			return true
+		}
+	}
+	return false
+}
+
+// heldByOtherAuthorID reports whether person slug is held by a LibriVox author
+// id other than id: the one its record carries or a planned row claimed
+// (authorOf), or one the run decided onto it before planning (authorPins:
+// resolveLibrivoxAuthors and keyLibrivoxAuthorVariants). The pins are what a
+// later run would read as catalogued, so a second id meeting the person is
+// refused alike in one run and in two, whichever row arrives first.
+func (p *planner) heldByOtherAuthorID(slug string, id int) bool {
+	if have := p.lv.authorOf[slug]; have != 0 {
+		return have != id
+	}
+	for other, pin := range p.lv.authorPins {
+		if other != id && pin != nil && pin.slug == slug {
+			return true
 		}
 	}
 	return false
@@ -267,8 +290,8 @@ func (p *planner) routeLibrivoxAuthorVariant(b sourceBook, workTitle string, slu
 	switch {
 	case ws != nil:
 		moves, kept := p.splitLibrivoxMoves(move)
-		p.noteLibrivoxAuthorVariant(fmt.Sprintf("%d %q: %s -> %q", b.lv.id, workTitle, p.moveText(byPerson, moves, kept), ws.slug))
-		return librivoxRoute{walk: &workWalk{title: workTitle, ws: ws}, moves: moves}, true
+		return librivoxRoute{walk: &workWalk{title: workTitle, ws: ws}, moves: moves,
+			authorVariant: fmt.Sprintf("%d %q: %s -> %q", b.lv.id, workTitle, p.moveText(byPerson, moves, kept), ws.slug)}, true
 	case len(related) == 0:
 		return librivoxRoute{}, false
 	}
@@ -323,9 +346,13 @@ func (p *planner) noteLibrivoxAuthorVariant(example string) {
 //
 // Only an id no person carries yet, whose decided person is no record yet
 // either (splitLibrivoxMoves: moving every project of the id off an
-// existing record is a person merge), onto a person carrying no LibriVox
-// author id (so the stamp can key the person by it), and only when every row
-// proposing the id names the same person: anything else is left to the
+// existing record is a person merge), onto a person no other LibriVox
+// author id holds - catalogued, or decided onto it for this run
+// (heldByOtherAuthorID: "Henry Adams" 42 resolved onto a catalogued id-less
+// `henry-adams` keeps "Henry Brooks Adams" 7030 off it, in one run as in two)
+// - so the stamp can key the person by it, only when every row proposing the
+// id names the same person, and only for the first id (in project order)
+// proposing that person: anything else is left to the
 // per-row rule (routeLibrivoxAuthorVariant), which still attaches the row it
 // decides. A row proposes only what routeLibrivox would decide for it: one the
 // planner admits (a language and a reader), and one the ordinary walk does not
@@ -335,11 +362,10 @@ func (p *planner) noteLibrivoxAuthorVariant(example string) {
 func (p *planner) keyLibrivoxAuthorVariants(books []sourceBook, titles, suffixes []string) {
 	proposed := map[int]string{}
 	conflicting := map[int]bool{}
-	for i := range books {
+	// order is the proposing ids in project order of their first proposal.
+	var order []int
+	for _, i := range p.librivoxRows(books, lvPlannedRows) {
 		b := &books[i]
-		if b.lv == nil || p.lv.ids[b.lv.id] {
-			continue
-		}
 		if _, held := p.librivoxSameNameOf(*b); held {
 			continue // a same-name-author worklist skip (librivoxpeople.go rule 2)
 		}
@@ -349,8 +375,7 @@ func (p *planner) keyLibrivoxAuthorVariants(books []sourceBook, titles, suffixes
 		}
 		credits, dropped := rowAuthorCreditSplitIn(p.credits, *b)
 		noAuthor := p.unsluggableLeftNoAuthor(credits, dropped)
-		key, nonLatin := librivoxTitleKeyOf(titles[i])
-		slugs := p.librivoxTitleIndex()[key]
+		slugs, _, nonLatin := p.librivoxTitleWorks(titles[i])
 		if noAuthor || len(credits) == 0 || len(slugs) == 0 {
 			continue
 		}
@@ -371,17 +396,30 @@ func (p *planner) keyLibrivoxAuthorVariants(books []sourceBook, titles, suffixes
 				if !ok {
 					continue
 				}
-				if prev, seen := proposed[c.id]; (seen && prev != to) || p.librivoxCreditIsRecord(c) {
+				prev, seen := proposed[c.id]
+				if (seen && prev != to) || p.librivoxCreditIsRecord(c) {
 					conflicting[c.id] = true
+				}
+				if !seen {
+					order = append(order, c.id)
 				}
 				proposed[c.id] = to
 			}
 		}
 	}
-	for id, to := range proposed {
-		if _, held := p.lv.people[librivoxKey{librivoxAuthor, id}]; held || conflicting[id] || p.lv.authorOf[to] != 0 {
+	// Only the first id (in project order) still proposing a person keeps it: a
+	// later one proposing the same person is left to the per-row rule, which
+	// refuses it as a later run would once the first is stamped. An id refused
+	// for any other reason keys nothing, so it never keeps a later id off a
+	// person a later run would key it onto.
+	keyed := map[string]bool{}
+	for _, id := range order {
+		to := proposed[id]
+		if _, held := p.lv.people[librivoxKey{librivoxAuthor, id}]; held || conflicting[id] || keyed[to] || p.heldByOtherAuthorID(to, id) {
 			delete(proposed, id)
+			continue
 		}
+		keyed[to] = true
 	}
 	if len(proposed) == 0 {
 		return
@@ -418,7 +456,12 @@ func (p *planner) keyLibrivoxAuthorVariants(books []sourceBook, titles, suffixes
 		if len(moved) > 0 {
 			slices.Sort(moved)
 			moved = slices.Compact(moved)
-			p.noteLibrivoxAuthorVariant(fmt.Sprintf("%d %q: %s", b.lv.id, titles[i], strings.Join(moved, ", ")))
+			// Counted once the row lands (noteLibrivoxLanded), as a routed
+			// attach is.
+			if p.lv.keyedVariants == nil {
+				p.lv.keyedVariants = map[int]string{}
+			}
+			p.lv.keyedVariants[b.lv.id] = fmt.Sprintf("%d %q: %s", b.lv.id, titles[i], strings.Join(moved, ", "))
 		}
 	}
 }
@@ -515,4 +558,24 @@ func (p *planner) reportLibrivoxAuthorVariants() {
 			fmt.Sprintf("%d LibriVox project(s) credit an author LibriVox spells with more or fewer words than the author of a same-titled work (same surname), or share that author's LibriVox id; credited to that person instead, unless LibriVox's spelling is a person record of its own (kept)", n),
 			p.lv.authorVariantExamples))
 	}
+}
+
+// librivoxSlotTaken is the reason a credit not recorded carries when its name
+// slugs to nothing and its LibriVox author id's librivox-author-<id> slot
+// another person or a tombstone holds (librivoxpeople.go rule 4), so the id
+// could not file it (reportUnsluggable).
+const librivoxSlotTaken = "librivox-author-slot-taken"
+
+// librivoxSlotTakenCredit reports whether a dropped credit of row b carries an
+// author id whose librivox-author-<id> slot was taken (librivoxSlotTaken).
+func (p *planner) librivoxSlotTakenCredit(b sourceBook, dropped []credit) bool {
+	if b.lv == nil {
+		return false
+	}
+	for _, c := range dropped {
+		if _, taken := p.lv.slotTaken[p.librivoxAuthorIDOf(b, c, p.resolveCredit(c))]; taken {
+			return true
+		}
+	}
+	return false
 }

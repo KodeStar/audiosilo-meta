@@ -2,8 +2,10 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"flag"
 	"fmt"
+	"io"
 	"os"
 	"os/signal"
 	"strconv"
@@ -19,7 +21,7 @@ import (
 // public-domain exception; internal/importer/librivox.go and librivoxfetch.go).
 //
 //	metaimport librivox fetch  --out <snapshot> [--max-pages N]
-//	metaimport librivox import --from <snapshot> --ids <range> [--data data] [--dry-run] [--date YYYY-MM-DD] [--conflicts <path>] [--skipped <path>]
+//	metaimport librivox import --from <snapshot> --ids <range> [--data data] [--dry-run] [--date YYYY-MM-DD] [--conflicts <path>] [--skipped <path>] [--worklist <path>]
 //	metaimport librivox import --from <snapshot> --ids <range> --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>] [--data data] [--dry-run]
 //
 // fetch is the ONLY command in this repository that calls LibriVox, and it does
@@ -97,11 +99,12 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 	data := fs.String("data", "data", "path to the data directory")
 	dryRun := fs.Bool("dry-run", false, "print the plan without writing any files")
 	date := fs.String("date", "", "imported_at stamp (YYYY-MM-DD); defaults to today (UTC)")
-	conflicts := fs.String("conflicts", "", "append one NDJSON row per refused contradiction to this file")
+	conflicts := fs.String("conflicts", "", "append one NDJSON row per refused contradiction to this file (written on a --dry-run too)")
 	regenerate := fs.Bool("regenerate-genres", false, "re-derive the genres of the works holding the selected projects under today's LibriVox genre table (the recording vote; a trim only where every recording met a row); touches nothing else")
 	rowsAsOf := fs.String("rows-as-of", "", "with --regenerate-genres (REQUIRED there): the YYYY-MM-DD LAST day a tranche was imported from this snapshot (a LibriVox record is stamped with its import day, not the fetch day); a work whose newest provenance is later is not judged")
 	genreChanges := fs.String("genre-changes", "", "with --regenerate-genres: write one NDJSON line per changed work ({\"work\",\"removed\",\"added\",\"mode\"}) to this file")
 	skipped := fs.String("skipped", "", "write one NDJSON line per project the run refused for a reason with a refusal code ({\"librivox_id\",\"reason\"}) to this file")
+	worklist := fs.String("worklist", "", "append one NDJSON row per worklist project (the printed worklist's entries) to this file; written on a --dry-run too, as --conflicts is")
 	if err := fs.Parse(args); err != nil {
 		return 2
 	}
@@ -118,9 +121,9 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 	if *regenerate {
 		mode = importer.ModeRegenerateGenres
 	}
-	// --skipped lists a create run's refused projects; the regeneration refuses
-	// none, so the flag would write an empty worklist there.
-	rules := append([]flagRule{{"--skipped", false, notRegen, inertInRegen}}, regenFlagRules...)
+	// --skipped and --worklist list a create run's refused and held projects;
+	// the regeneration has neither, so either flag would write an empty file.
+	rules := append([]flagRule{{"--skipped", false, notRegen, inertInRegen}, {"--worklist", false, notRegen, inertInRegen}}, regenFlagRules...)
 	if refuseFlags("metaimport librivox import", fs, mode, "librivox", rules) {
 		return 2
 	}
@@ -132,7 +135,7 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 	if !ok {
 		return 2
 	}
-	conflictLog, closeLog, err := openConflictLog(*conflicts)
+	conflictLog, closeLog, err := openAppendLog("--conflicts", *conflicts)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "metaimport librivox import:", err)
 		return 2
@@ -155,6 +158,14 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 		return 2
 	}
 	defer skippedLog.Discard() // a no-op once committed
+	// Opened before the run, so a path that cannot be written is refused before
+	// anything is planned, as --conflicts is.
+	worklistLog, closeWorklist, err := openAppendLog("--worklist", *worklist)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "metaimport librivox import:", err)
+		return 2
+	}
+	defer closeWorklist()
 	sum, err := run(*from, ids, importer.Options{
 		DataDir: *data, ImportDate: stamp, DryRun: *dryRun, Mode: mode, RowsAsOf: *rowsAsOf,
 		Conflicts: conflictLog, Distinct: audit.ReviewedDistinct(),
@@ -208,6 +219,10 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 			r.LifeYearConflicts, plural(r.LifeYearConflicts, "person states", "people state"))
 	}
 	printLibrivoxInProgress(sum.LibrivoxInProgress)
+	if n := len(sum.LibrivoxRetired); n > 0 {
+		fmt.Printf("librivox: set aside %d retired or reusable project %s (no author, titled \"DO NOT RE-USE PROJECT NUMBER\" or \"REUSE project number\")\n",
+			n, plural(n, "number", "numbers"))
+	}
 	// The spelling-variant attachments are a run note (printSummary prints it).
 	if n := sum.LibrivoxFallbackSlugs; n > 0 {
 		fmt.Printf("librivox: %d new %s at librivox-<id> (non-Latin or unsluggable title)\n", n, plural(n, "work", "works"))
@@ -218,7 +233,18 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 	}
 	printLibrivoxWorklist(sum.LibrivoxWorklist)
 	printLibrivoxAuthorPairs(sum.LibrivoxAuthorPairs)
+	printLibrivoxAuthorSplits(sum.LibrivoxAuthorSplits)
 	printUnrecordedCredits(sum.UnrecordedCredits)
+	code := 0
+	// The run has already written the tree, so a worklist that cannot be
+	// appended fails the command without costing the rest of the report or the
+	// --skipped file.
+	if worklistLog != nil {
+		if err := writeLibrivoxWorklist(worklistLog, sum.LibrivoxWorklist); err != nil {
+			fmt.Fprintln(os.Stderr, "metaimport librivox import: --worklist:", err)
+			code = 1
+		}
+	}
 	for _, s := range sum.Skips {
 		skippedLog.Encode(s)
 	}
@@ -226,7 +252,27 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 		fmt.Fprintln(os.Stderr, "metaimport librivox import: --skipped:", err)
 		return 1
 	}
-	return 0
+	return code
+}
+
+// writeLibrivoxWorklist appends the run's worklist to w as NDJSON, one
+// importer.LibrivoxWorklistEntry per line in the printed order (librivox_id,
+// title, authors, reason, candidates): the durable twin of the printed
+// worklist, as --conflicts is of the contradiction warnings, so a tranche's
+// worklist is a file a person (or a script) works through rather than
+// scrollback. Appended, so a chunked backfill accumulates one list.
+func writeLibrivoxWorklist(w io.Writer, entries []importer.LibrivoxWorklistEntry) error {
+	enc := json.NewEncoder(w)
+	enc.SetEscapeHTML(false)
+	for _, e := range entries {
+		if e.Candidates == nil {
+			e.Candidates = []importer.LibrivoxCandidate{} // never "candidates":null
+		}
+		if err := enc.Encode(e); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 // printLibrivoxAuthorPairs prints the author id pairs the run kept as two
@@ -240,6 +286,21 @@ func printLibrivoxAuthorPairs(pairs []importer.LibrivoxAuthorPair) {
 		len(pairs), plural(len(pairs), "pair", "pairs"))
 	for _, pr := range pairs {
 		fmt.Println("  " + pr.String())
+	}
+}
+
+// printLibrivoxAuthorSplits prints the author ids the run filed at their
+// author-id form beside a same-name person, for a person to merge or confirm,
+// one line each (importer.LibrivoxAuthorSplit.String). Nothing when there are
+// none.
+func printLibrivoxAuthorSplits(splits []importer.LibrivoxAuthorSplit) {
+	if len(splits) == 0 {
+		return
+	}
+	fmt.Printf("librivox worklist: %d author %s filed at <name>-librivox-author-<id> beside a same-name person, kept as two people for a person to merge or confirm:\n",
+		len(splits), plural(len(splits), "id", "ids"))
+	for _, sp := range splits {
+		fmt.Println("  " + sp.String())
 	}
 }
 

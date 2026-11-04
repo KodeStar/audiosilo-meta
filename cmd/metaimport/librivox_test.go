@@ -71,6 +71,7 @@ func TestLibrivoxImportRegenerateGenresFlags(t *testing.T) {
 		{"--regenerate-genres", "--rows-as-of", "yesterday"},
 		{"--regenerate-genres", "--rows-as-of", "2026-10-27", "--date", "2026-10-27"},
 		{"--regenerate-genres", "--rows-as-of", "2026-10-27", "--skipped", filepath.Join(t.TempDir(), "s.ndjson")},
+		{"--regenerate-genres", "--rows-as-of", "2026-10-27", "--worklist", filepath.Join(t.TempDir(), "w.ndjson")},
 		{"--regenerate-genres", "--rows-as-of", "2026-10-27", "--conflicts", filepath.Join(t.TempDir(), "c.ndjson")},
 		{"--rows-as-of", "2026-10-27"},
 		{"--genre-changes", filepath.Join(t.TempDir(), "g.ndjson")},
@@ -142,6 +143,9 @@ func TestLibrivoxImportPrintsTheWorklist(t *testing.T) {
 	}}, LibrivoxInProgress: []int{2073, 4333}, LibrivoxAuthorPairs: []importer.LibrivoxAuthorPair{{
 		Titled: importer.LibrivoxPairAuthor{AuthorID: 1456, Name: "Mrs. C. M. Livingston", Person: "mrs-c-m-livingston", Project: 4714},
 		Bare:   importer.LibrivoxPairAuthor{AuthorID: 15071, Name: "C. M. Livingston", Person: "c-m-livingston", Project: 9999},
+	}}, LibrivoxAuthorSplits: []importer.LibrivoxAuthorSplit{{
+		Author:  importer.LibrivoxPairAuthor{AuthorID: 16428, Name: "Ralph Scott", Person: "ralph-scott-librivox-author-16428", Project: 17170},
+		Against: "ralph-scott",
 	}}}
 	run := func(string, importer.LibrivoxIDs, importer.Options) (importer.Summary, error) { return sum, nil }
 	out := captureStdout(t, func() {
@@ -159,10 +163,58 @@ func TestLibrivoxImportPrintsTheWorklist(t *testing.T) {
 		`  2607 "Йордан Йовков" (author, librivox_author_id 6294) -> staroplaninski-legendi, unsluggable`,
 		"librivox worklist: 1 author id pair one courtesy title apart, kept as two people for a person to merge or confirm:",
 		`  1456 "Mrs. C. M. Livingston" -> mrs-c-m-livingston (project 4714); 15071 "C. M. Livingston" -> c-m-livingston (project 9999)`,
+		"librivox worklist: 1 author id filed at <name>-librivox-author-<id> beside a same-name person, kept as two people for a person to merge or confirm:",
+		`  16428 "Ralph Scott" -> ralph-scott-librivox-author-16428 (project 17170); apart from ralph-scott`,
 	} {
 		if !strings.Contains(out, want) {
 			t.Errorf("no %q in:\n%s", want, out)
 		}
+	}
+}
+
+func TestLibrivoxImportWritesTheWorklistFile(t *testing.T) {
+	// meta#2751: the worklist is a file as well as printed lines, one NDJSON
+	// row per project, appended run after run as --conflicts is - a --dry-run
+	// included, as --conflicts writes its rows on a dry run (both runs here
+	// are dry, and both rows are in the file).
+	entry := importer.LibrivoxWorklistEntry{
+		Project: 527, Title: "The Metamorphosis", Authors: []string{"Franz Kafka"}, Reason: importer.LibrivoxSeveralWorks,
+		Candidates: []importer.LibrivoxCandidate{{Work: "metamorphosis", Title: "Metamorphosis"}},
+	}
+	run := func(string, importer.LibrivoxIDs, importer.Options) (importer.Summary, error) {
+		return importer.Summary{LibrivoxWorklist: []importer.LibrivoxWorklistEntry{entry}}, nil
+	}
+	path := filepath.Join(t.TempDir(), "worklist.ndjson")
+	for range 2 {
+		captureStdout(t, func() {
+			if code := runLibrivoxImport([]string{"--from", librivoxFixture, "--ids", "527", "--dry-run", "--worklist", path}, run); code != 0 {
+				t.Errorf("exit = %d", code)
+			}
+		})
+	}
+	body, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	line := `{"librivox_id":527,"title":"The Metamorphosis","authors":["Franz Kafka"],"reason":"several-works","candidates":[{"work":"metamorphosis","title":"Metamorphosis"}]}` + "\n"
+	if string(body) != line+line {
+		t.Errorf("worklist file =\n%s", body)
+	}
+	if code := runLibrivoxImport([]string{"--from", librivoxFixture, "--ids", "527", "--worklist", filepath.Join(path, "x")}, run); code != 2 {
+		t.Errorf("an unwritable --worklist exit = %d, want 2", code)
+	}
+}
+
+func TestLibrivoxWorklistFileNeverWritesNullCandidates(t *testing.T) {
+	// A worklist row naming no catalogued work (a fallback slot a tombstone
+	// holds) is written with an empty list, never "candidates":null.
+	var b strings.Builder
+	entry := importer.LibrivoxWorklistEntry{Project: 99001, Title: "Война и мир", Authors: []string{"Leo Tolstoy"}, Reason: importer.LibrivoxFallbackTaken}
+	if err := writeLibrivoxWorklist(&b, []importer.LibrivoxWorklistEntry{entry}); err != nil {
+		t.Fatal(err)
+	}
+	if want := `{"librivox_id":99001,"title":"Война и мир","authors":["Leo Tolstoy"],"reason":"fallback-slug-taken","candidates":[]}` + "\n"; b.String() != want {
+		t.Errorf("worklist line = %q, want %q", b.String(), want)
 	}
 }
 
