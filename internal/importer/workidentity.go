@@ -237,7 +237,8 @@ func diskIdentityAuthorList(authors []string, credits []model.Credit) []string {
 // did for the same list before identity and storage parted company.
 func (p *planner) rowWorkAuthors(credits []credit, warn func(string, ...any)) workAuthors {
 	return splitWorkAuthors(credits, func(c credit) string {
-		return p.applyPerson(c.name, p.resolveCredit(c), warn)
+		r, _ := p.getOrCreateCreditIf(c, warn, func(personResolution) bool { return true })
+		return r.slug
 	})
 }
 

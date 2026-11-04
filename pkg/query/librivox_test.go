@@ -2,10 +2,12 @@ package query
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"os"
 	"path/filepath"
+	"slices"
 	"sort"
 	"strings"
 	"testing"
@@ -123,7 +125,7 @@ func TestSourceFilter(t *testing.T) {
 				return
 			}
 			_, plain := artifacttest.GetJSON(t, ts.URL, tc.unfilterd)
-			if ids := workIDsOf(t, plain, tc.key); !containsString(ids, lvControlWork) {
+			if ids := workIDsOf(t, plain, tc.key); !slices.Contains(ids, lvControlWork) {
 				t.Errorf("control: %s does not hold %s (%v), so the filter proved nothing", tc.unfilterd, lvControlWork, ids)
 			}
 		})
@@ -132,7 +134,7 @@ func TestSourceFilter(t *testing.T) {
 	// The combined search, filtered, is works only: Franz Kafka the person
 	// matches "kafka" unfiltered.
 	_, plain := artifacttest.GetJSON(t, ts.URL, "/api/v1/search?q=kafka")
-	if !containsString(workIDsOf(t, plain, "results"), "person:franz-kafka") {
+	if !slices.Contains(workIDsOf(t, plain, "results"), "person:franz-kafka") {
 		t.Errorf("control: the unfiltered search holds no person: %v", workIDsOf(t, plain, "results"))
 	}
 
@@ -149,15 +151,6 @@ func TestSourceFilter(t *testing.T) {
 	if code, _ := artifacttest.GetJSON(t, ts.URL, "/api/v1/people/search?q=kafka&source=nonsense"); code != http.StatusOK {
 		t.Errorf("people/search with a source = %d, want 200 (unread)", code)
 	}
-}
-
-func containsString(list []string, s string) bool {
-	for _, v := range list {
-		if v == s {
-			return true
-		}
-	}
-	return false
 }
 
 func TestLookupLibrivoxID(t *testing.T) {
@@ -626,6 +619,106 @@ func TestSinceDay(t *testing.T) {
 	} {
 		if got := sinceDay(tc.since); got != tc.want {
 			t.Errorf("sinceDay(%d) = %q, want %q", tc.since, got, tc.want)
+		}
+	}
+}
+
+// TestLatestBySourceOrdersBySourceRecordings pins that works/latest under
+// ?source= orders by the newest recording FROM THAT SOURCE, not by the work: a
+// LibriVox reading attached to a classic the catalogue held long before is the
+// newest thing LibriVox has, and ordered by the work it would never surface.
+// The unfiltered list must keep ordering by the work, so the same catalogue
+// answers the two requests in opposite orders.
+func TestLatestBySourceOrdersBySourceRecordings(t *testing.T) {
+	lv := []model.Source{{Type: model.SourceLibrivox, Ref: "https://librivox.org/api", ImportedAt: "2026-01-01"}}
+	user := []model.Source{{Type: model.SourceUser}}
+	rec := func(id, work, added string, sources []model.Source) *model.Recording {
+		return &model.Recording{ID: id, Work: work, Narrators: []string{"reader"}, Language: "en", License: "CC0-1.0", AddedAt: added, Sources: sources}
+	}
+	work := func(id, title, added string, recs ...*model.Recording) *model.Work {
+		return &model.Work{ID: id, Title: title, Authors: []string{"author"}, Language: "en", License: "CC0-1.0", AddedAt: added, Recordings: recs, Sources: user}
+	}
+	cat := &model.Catalog{
+		People: []*model.Person{
+			{ID: "author", Name: "Author", License: "CC0-1.0"},
+			{ID: "reader", Name: "Reader", License: "CC0-1.0"},
+		},
+		Works: []*model.Work{
+			// A classic catalogued in 2020 whose LibriVox reading landed today,
+			// beside an older retail recording of its own.
+			work("classic", "Classic", "2020-01-01",
+				rec("retail", "classic", "2020-01-01", user),
+				rec("lv-new", "classic", "2026-11-01", lv)),
+			// A LibriVox-only work added a month earlier.
+			work("lv-only", "LibriVox Only", "2026-10-01", rec("lv-old", "lv-only", "2026-10-01", lv)),
+			// A LibriVox recording with no date of its own falls back to its work's.
+			// Its source is LibriVox with no imported_at either, so the column is
+			// NULL and the work's added_at decides.
+			work("undated", "Undated", "2026-09-01", rec("lv-undated", "undated", "", []model.Source{{Type: model.SourceLibrivox}})),
+			// A newer retail-only work: in the unfiltered list, never the filtered.
+			work("retail-only", "Retail Only", "2026-10-15", rec("retail-new", "retail-only", "2026-10-15", user)),
+			// An older LibriVox reading beside the newest recording in the
+			// catalogue, a retail one: the filtered list dates it by the LibriVox
+			// reading alone, so it sorts last there rather than first.
+			work("lv-then-retail", "LibriVox Then Retail", "2026-06-01",
+				rec("lv-aug", "lv-then-retail", "2026-08-01", lv),
+				rec("retail-latest", "lv-then-retail", "2026-11-02", user)),
+		},
+	}
+	_, ts := serveDB(t, artifacttest.Build(t, cat), HandlerOptions{})
+
+	for _, tc := range []struct {
+		path string
+		want []string
+	}{
+		{"/api/v1/works/latest?source=librivox", []string{"classic", "lv-only", "undated", "lv-then-retail"}},
+		{"/api/v1/works/latest?source=librivox&lang=en", []string{"classic", "lv-only", "undated", "lv-then-retail"}},
+		{"/api/v1/works/latest", []string{"retail-only", "lv-only", "undated", "lv-then-retail", "classic"}},
+	} {
+		code, body := artifacttest.GetJSON(t, ts.URL, tc.path)
+		if code != http.StatusOK {
+			t.Fatalf("GET %s = %d %v", tc.path, code, body)
+		}
+		if got := workIDsOf(t, body, "works"); !slices.Equal(got, tc.want) {
+			t.Errorf("GET %s = %v, want %v", tc.path, got, tc.want)
+		}
+	}
+}
+
+// TestExactTitleProbeFiltersSourceInsideItsWindow pins that the exact-title
+// boost applies ?source= INSIDE its bounded window: more same-titled works from
+// other sources than the window holds must not crowd the LibriVox one out, which
+// the old after-the-window filter did (q=poems&source=librivox, issue #2752).
+func TestExactTitleProbeFiltersSourceInsideItsWindow(t *testing.T) {
+	cat := &model.Catalog{People: []*model.Person{
+		{ID: "author", Name: "Author", License: "CC0-1.0"},
+		{ID: "reader", Name: "Reader", License: "CC0-1.0"},
+	}}
+	work := func(id, src string) *model.Work {
+		return &model.Work{ID: id, Title: "Poems", Authors: []string{"author"}, Language: "en", License: "CC0-1.0",
+			Recordings: []*model.Recording{{ID: "reading", Work: id, Narrators: []string{"reader"}, Language: "en",
+				License: "CC0-1.0", Sources: []model.Source{{Type: src}}}}}
+	}
+	// exactTitleProbeLimit retail "Poems" sort ahead of the LibriVox one by id.
+	for i := 0; i < exactTitleProbeLimit; i++ {
+		cat.Works = append(cat.Works, work(fmt.Sprintf("poems-%02d", i), model.SourceUser))
+	}
+	cat.Works = append(cat.Works, work("zz-poems-librivox", model.SourceLibrivox))
+	snap, ts := serveDB(t, artifacttest.Build(t, cat), HandlerOptions{})
+
+	if got, err := snap.exactTitleHits(t.Context(), "poems", nil, ""); err != nil || slices.Contains(got, "zz-poems-librivox") {
+		t.Fatalf("fixture: unfiltered exact-title window = %v (%v), want it full without the LibriVox Poems", got, err)
+	}
+	if got, err := snap.exactTitleHits(t.Context(), "poems", nil, model.SourceLibrivox); err != nil || !slices.Equal(got, []string{"zz-poems-librivox"}) {
+		t.Errorf("exact-title probe under source=librivox = %v (%v), want [zz-poems-librivox]", got, err)
+	}
+	if got, err := snap.exactTitleHits(t.Context(), "poems", langFilter{"en"}, model.SourceLibrivox); err != nil || !slices.Equal(got, []string{"zz-poems-librivox"}) {
+		t.Errorf("exact-title probe under lang=en&source=librivox = %v (%v), want [zz-poems-librivox]", got, err)
+	}
+	for _, path := range []string{"/api/v1/search?q=poems&source=librivox&limit=1", "/api/v1/works/search?q=poems&source=librivox&limit=1"} {
+		code, body := artifacttest.GetJSON(t, ts.URL, path)
+		if got := workIDsOf(t, body, "results"); code != http.StatusOK || !slices.Equal(got, []string{"zz-poems-librivox"}) {
+			t.Errorf("GET %s = %d %v, want [zz-poems-librivox]", path, code, got)
 		}
 	}
 }

@@ -619,13 +619,13 @@ func TestBoostProbesFilterInsideTheirWindows(t *testing.T) {
 	snap := openTestDB(t, artifacttest.Build(t, cat))
 	de := langFilter{"de"}
 
-	if q, args := exactTitleQuery("dune", nil); q != exactTitleSQL || len(args) != 2 {
+	if q, args := exactTitleQuery("dune", nil, ""); q != exactTitleSQL || len(args) != 2 {
 		t.Errorf("unfiltered exact-title probe = %q %v, want exactTitleSQL unchanged", q, args)
 	}
-	if got, err := snap.exactTitleHits(t.Context(), "dune", nil); err != nil || slices.Contains(got, "zz-dune-de") {
+	if got, err := snap.exactTitleHits(t.Context(), "dune", nil, ""); err != nil || slices.Contains(got, "zz-dune-de") {
 		t.Fatalf("fixture: unfiltered exact-title window = %v (%v), want it full without the German Dune", got, err)
 	}
-	if got, err := snap.exactTitleHits(t.Context(), "dune", de); err != nil || !slices.Equal(got, []string{"zz-dune-de"}) {
+	if got, err := snap.exactTitleHits(t.Context(), "dune", de, ""); err != nil || !slices.Equal(got, []string{"zz-dune-de"}) {
 		t.Errorf("exact-title probe under lang=de = %v (%v), want [zz-dune-de]", got, err)
 	}
 	if got, err := snap.seriesPositionHits(t.Context(), "saga chronicles 4", de); err != nil || !slices.Equal(got, []string{"saga-chronicles-de-vol"}) {

@@ -93,6 +93,19 @@ func TestWorkTitleAlias(t *testing.T) {
 	if got := WorkTitleAlias(&model.Work{ID: "bravelands-book-3", Title: "Bravelands", Authors: w.Authors}, live, reds); got != "" {
 		t.Errorf("serial volume: alias = %q, want none", got)
 	}
+	// ... and so is every collision candidate of a volume, and a decimal or range
+	// position: each is a slug the pre-pass and the chain after it compose.
+	for _, id := range []string{
+		"bravelands-book-3-peter-v-brett",
+		"bravelands-book-3-peter-v-brett-2",
+		"bravelands-book-2-5",
+		"bravelands-book-1-to-3-5",
+		"bravelands-book-1-to-3-5-peter-v-brett-7",
+	} {
+		if got := WorkTitleAlias(&model.Work{ID: id, Title: "Bravelands", Authors: w.Authors}, live, reds); got != "" {
+			t.Errorf("serial volume %s: alias = %q, want none", id, got)
+		}
+	}
 	// ... and so is one whose title the pre-pass had to SHORTEN to fit the tail: the
 	// volume does not begin with the whole base, and aliasing the bare title onto it
 	// would pull every claim-free row of the title into that one volume.
@@ -118,6 +131,10 @@ func TestWorkTitleAlias(t *testing.T) {
 			Title: "Read People like a Book", Authors: w.Authors},
 		{ID: "the-book-of-five-rings-by-miyamoto-musashi-complete-edition-the-new-modern-english-translation-trans",
 			Title: "The Book of Five Rings", Authors: w.Authors},
+		// The whole base followed by the word "book" opens no position either.
+		{ID: "the-saga-book-of-shadows", Title: "The Saga", Authors: w.Authors},
+		// Nor does a position followed by a subtitle: no chain composes one.
+		{ID: "the-saga-book-2-the-reckoning", Title: "The Saga", Authors: w.Authors},
 	} {
 		want := Slugify(decorated.Title)
 		if got := WorkTitleAlias(decorated, live, reds); got != want {
