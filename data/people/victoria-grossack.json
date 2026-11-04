@@ -5159,7 +5159,6 @@
       "death_year": -19,
       "id": "virgil",
       "librivox_author_id": 6359,
-      "librivox_reader_id": 3014,
       "license": "CC0-1.0",
       "name": "Virgil",
       "sources": [
@@ -5171,11 +5170,6 @@
         {
           "imported_at": "2026-10-27",
           "ref": "134",
-          "type": "librivox"
-        },
-        {
-          "imported_at": "2026-10-27",
-          "ref": "2221",
           "type": "librivox"
         }
       ]
@@ -5201,6 +5195,19 @@
         {
           "imported_at": "2026-10-29",
           "ref": "15826",
+          "type": "librivox"
+        }
+      ]
+    },
+    "virgil-librivox-3014": {
+      "id": "virgil-librivox-3014",
+      "librivox_reader_id": 3014,
+      "license": "CC0-1.0",
+      "name": "Virgil",
+      "sources": [
+        {
+          "imported_at": "2026-10-27",
+          "ref": "2221",
           "type": "librivox"
         }
       ]

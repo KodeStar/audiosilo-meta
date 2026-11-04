@@ -2263,9 +2263,7 @@
       ]
     },
     "bruce-campbell": {
-      "death_year": 2000,
       "id": "bruce-campbell",
-      "librivox_author_id": 11915,
       "license": "CC0-1.0",
       "name": "Bruce Campbell",
       "sources": [
@@ -2273,7 +2271,16 @@
           "imported_at": "2026-07-29",
           "ref": "B00J0DMCEA",
           "type": "libex-import"
-        },
+        }
+      ]
+    },
+    "bruce-campbell-d-2000": {
+      "death_year": 2000,
+      "id": "bruce-campbell-d-2000",
+      "librivox_author_id": 11915,
+      "license": "CC0-1.0",
+      "name": "Bruce Campbell (d. 2000)",
+      "sources": [
         {
           "imported_at": "2026-10-29",
           "ref": "10786",

@@ -760,10 +760,6 @@ type creditCensus struct {
 	// a maintainer auditing one is not auditing the other.
 	onHonorific  func(from, to string)
 	onCredential func(from, to string)
-	// keepHonorific is the slugs of the credits the honorific fold must leave
-	// as they are: a LibriVox run's id holders and titled authors whose bare
-	// twin is someone else (librivoxpeople.go rule 1). nil keeps every fold.
-	keepHonorific map[string]bool
 	// keptApart, when set, reports whether a reviewed merge-people rejection
 	// recorded the two credit names as two people - judged by the records they
 	// land on (planner.landingsKeptApart): the honorific and credential folds
@@ -771,23 +767,26 @@ type creditCensus struct {
 	keptApart func(titled, bare string) bool
 }
 
-// keepsHonorific reports whether the honorific fold must leave name as it is
-// (keepHonorific); only a titled name is slugged to ask.
-func (c creditCensus) keepsHonorific(name string) bool {
-	if len(c.keepHonorific) == 0 {
-		return false
-	}
-	_, titled := deHonorified(name)
-	return titled && c.keepHonorific[Slugify(name)]
+// quiet is the census with no merge reported: for a reading of a name that is
+// not the import crediting it (a LibriVox credit whose person its author id
+// decides, librivoxpeople.go).
+func (c creditCensus) quiet() creditCensus {
+	c.onHonorific, c.onCredential = nil, nil
+	return c
 }
 
-// foldHonorific is the honorific fold (honorific.go) under the census's two
-// vetoes: a credit keepHonorific names, and a pair a review kept apart
-// (keptApart), stay titled. A merge it does make is reported (onHonorific).
+// unfolded is the quiet census with the honorific fold off: the name as the
+// cleaning spells it when no courtesy title is folded away.
+func (c creditCensus) unfolded() creditCensus {
+	c = c.quiet()
+	c.keptApart = func(string, string) bool { return true }
+	return c
+}
+
+// foldHonorific is the honorific fold (honorific.go) under the census's veto:
+// a pair a review kept apart (keptApart) stays titled. A merge it does make is
+// reported (onHonorific).
 func (c creditCensus) foldHonorific(name string) string {
-	if c.keepsHonorific(name) {
-		return name
-	}
 	bare := stripHonorific(name, c.sameSide)
 	if bare == name || (c.keptApart != nil && c.keptApart(name, bare)) {
 		return name
@@ -1120,6 +1119,38 @@ func doubledCreditHalf(name string) (string, bool) {
 type credit struct {
 	name  string
 	roles []string
+	// person is the person the credit names when that was decided before
+	// planning (a LibriVox author credit, keyed by its author id:
+	// librivoxpeople.go), nil for every other credit, which names whoever its
+	// name resolves to. Every reader of a credit's person asks resolveCredit,
+	// so the two cannot disagree.
+	person *creditPerson
+}
+
+// creditPerson is the person a credit was resolved to before planning: the
+// slug it lands on, the name the record is created under when the run has to
+// create it, the slug the resolution reached it from (a retired one, when it
+// rode a tombstone; else slug), and the spelling a credit carrying it is
+// spelled by (the import's report, the spelling rules' comparisons).
+// respelled says that spelling is not the credit's own: a catalogued holder's
+// name, or one a person rule gave it (a dated name, a titled twin's).
+type creditPerson struct {
+	slug, name, from, spelled string
+	respelled                 bool
+}
+
+// pinOf is the creditPerson the resolution r of spelling names.
+func pinOf(r personResolution, spelling string) *creditPerson {
+	from := r.from
+	if r.create || from == "" {
+		from = r.slug
+	}
+	return &creditPerson{slug: r.slug, name: r.name, from: from, spelled: spelling}
+}
+
+// pinAt is the creditPerson of a live record, spelled by its name.
+func pinAt(slug, name string) *creditPerson {
+	return &creditPerson{slug: slug, name: name, from: slug, spelled: name, respelled: true}
 }
 
 // SplitRawNames splits a comma-joined list of names into the source's OWN

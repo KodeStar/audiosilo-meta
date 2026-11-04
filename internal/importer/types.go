@@ -468,14 +468,16 @@ type Summary struct {
 	// --skipped worklist cannot disagree. Always 0 without the option.
 	SkippedOccupied int
 	// Skips names the rows the run refused for a reason that has a refusal
-	// code (refusalcodes.go), one entry per refused COPY with an ASIN: the parse
+	// code (refusalcodes.go), one entry per refused COPY with an ASIN or a
+	// LibriVox project id (RowSkip carries whichever the row has): the parse
 	// layer's malformed-ASIN, unmapped-region and credit refusals, an unmapped
 	// language, SkippedOccupied's position-claimed, and the import-only codes -
-	// identity-duplicate (the create path's duplicate-identity guard),
-	// missing-author, missing-title and missing-narrator. An entry whose ASIN
-	// the run recorded after all (a sibling copy imported) is dropped. It is
-	// what `metaimport libex --skipped` writes; an ASIN may appear more than
-	// once, and a row stating no ASIN is not listed.
+	// identity-duplicate (the create path's duplicate-identity guard and the
+	// LibriVox trailing-qualifier rule), missing-author, missing-title and
+	// missing-narrator. An entry whose ASIN the run recorded after all (a
+	// sibling copy imported) is dropped. It is what `metaimport libex
+	// --skipped` and `metaimport librivox import --skipped` write; an ASIN may
+	// appear more than once, and a row stating neither key is not listed.
 	Skips []RowSkip
 
 	// RelocationSkips records relocation refusals independently of ASIN admission.
@@ -556,6 +558,11 @@ type Summary struct {
 	// (librivoxauthors.go rule 1). 0 for other sources.
 	LibrivoxAuthorVariants int
 	LibrivoxWorklist       []LibrivoxWorklistEntry
+	// LibrivoxAuthorPairs is the worklist's people half: two author ids of
+	// the run one courtesy title apart, kept as people of their own (or held
+	// by rule 2, LibrivoxPairAuthor.Person ""), for a person to merge or
+	// confirm (librivoxpeople.go rule 1b).
+	LibrivoxAuthorPairs []LibrivoxAuthorPair
 	// UnrecordedCredits is every author, translator or other role credit a
 	// landed row of ANY source states that the run did not record, in row
 	// order: the row attached to a work that does not name the person, and a

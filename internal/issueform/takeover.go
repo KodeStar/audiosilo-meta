@@ -49,7 +49,7 @@ func (c *composer) planTakeover(ref recRef, asin string, asins []outASIN, isbns 
 		c.fail(StatusNeedsHuman, "%s, so your submission would replace what is recorded there - but it also "+
 			"states ASIN(s) %s, which that recording does not carry. Taking a record over never adds an identifier "+
 			"to it, so a maintainer decides where those belong; or edit the issue to state only %s and the bot will "+
-			"apply your data over the seed", mirrorSeedLead(c.recLocation(ref)), strings.Join(extra, ", "), asin)
+			"apply your data over the seed", c.recordingSeedLead(ref), strings.Join(extra, ", "), asin)
 		return nil
 	}
 	return &takeover{ref: ref, asin: asin, isbns: isbns}
@@ -62,6 +62,10 @@ func (c *composer) planTakeover(ref recRef, asin string, asins []outASIN, isbns 
 // the work an add-recording form names ("" on add-work).
 func (c *composer) applyTakeover(s sections, t *takeover, genres []string, namedWork string) {
 	loc := c.recLocation(t.ref)
+	// Read before releaseCatalogue below: the verdicts name the mirror that
+	// seeded the record.
+	seeds := c.recordingSources(t.ref)
+	seed, lead := seededFrom(seeds), mirrorSeedLead(loc, seeds)
 	// An add-recording form names its work; an ASIN recorded under a DIFFERENT
 	// work means the submission and the catalogue disagree about what the book
 	// is, which no attestation can settle.
@@ -115,13 +119,13 @@ func (c *composer) applyTakeover(s sections, t *takeover, genres []string, named
 	case err != nil:
 		// The submission is fine; the tree it produced is not, which is the bot's
 		// problem rather than the submitter's.
-		c.fail(StatusNeedsHuman, "applying your submission over %s (seeded from the libex mirror) failed: %v", loc, err)
+		c.fail(StatusNeedsHuman, "applying your submission over %s (seeded from %s) failed: %v", loc, seed, err)
 		return
 	case sum.Conflicts > 0:
 		c.fail(StatusNeedsHuman, "%s, so your submission would replace what is recorded there - but it disagrees "+
 			"with the recorded runtime or release date (a runtime more than 10%% apart, or a date that is not the "+
 			"same date at another precision, can mean a different production), and that is never overwritten "+
-			"mechanically: a maintainer adjudicates. Nothing was applied", mirrorSeedLead(loc))
+			"mechanically: a maintainer adjudicates. Nothing was applied", lead)
 		c.noteAttestWarnings(sum)
 		return
 	case sum.AttestedRecordings == 0:
@@ -132,7 +136,7 @@ func (c *composer) applyTakeover(s sections, t *takeover, genres []string, named
 	}
 	c.note("%s: the facts your submission states replaced the mirror's, facts it leaves blank keep the mirror's "+
 		"values, and the record is now attested by this submission (LICENSING.md, \"Trust tiers and the "+
-		"user-overwrite rule\")", mirrorSeedLead(loc))
+		"user-overwrite rule\")", lead)
 	if sum.AttestedWorks > 0 {
 		c.note("its work %q was a mirror seed too, and is attested by this submission as well", t.ref.Work)
 	}

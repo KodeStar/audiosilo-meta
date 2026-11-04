@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 	"net/http/httptest"
+	"os"
 	"path/filepath"
 	"strings"
 	"testing"
@@ -97,7 +98,10 @@ func TestLibrivoxImportPrintsTheWorklist(t *testing.T) {
 		Project: 2027, AuthorID: 9876, Name: "Amy Coulter", Roles: []string{"translator"}, Work: "siddhartha",
 	}, {
 		Project: 2607, AuthorID: 6294, Name: "Йордан Йовков", Work: "staroplaninski-legendi", Reason: "unsluggable",
-	}}, LibrivoxInProgress: []int{2073, 4333}}
+	}}, LibrivoxInProgress: []int{2073, 4333}, LibrivoxAuthorPairs: []importer.LibrivoxAuthorPair{{
+		Titled: importer.LibrivoxPairAuthor{AuthorID: 1456, Name: "Mrs. C. M. Livingston", Person: "mrs-c-m-livingston", Project: 4714},
+		Bare:   importer.LibrivoxPairAuthor{AuthorID: 15071, Name: "C. M. Livingston", Person: "c-m-livingston", Project: 9999},
+	}}}
 	run := func(string, importer.LibrivoxIDs, importer.Options) (importer.Summary, error) { return sum, nil }
 	out := captureStdout(t, func() {
 		if code := runLibrivoxImport([]string{"--from", librivoxFixture, "--ids", "527", "--dry-run"}, run); code != 0 {
@@ -112,9 +116,46 @@ func TestLibrivoxImportPrintsTheWorklist(t *testing.T) {
 		"credits not recorded: 2 (",
 		`  2027 "Amy Coulter" (translator, librivox_author_id 9876) -> siddhartha, person not created`,
 		`  2607 "Йордан Йовков" (author, librivox_author_id 6294) -> staroplaninski-legendi, unsluggable`,
+		"librivox worklist: 1 author id pair one courtesy title apart, kept as two people for a person to merge or confirm:",
+		`  1456 "Mrs. C. M. Livingston" -> mrs-c-m-livingston (project 4714); 15071 "C. M. Livingston" -> c-m-livingston (project 9999)`,
 	} {
 		if !strings.Contains(out, want) {
 			t.Errorf("no %q in:\n%s", want, out)
 		}
+	}
+}
+
+// --skipped writes the run's refusals keyed by project id, atomically, once the
+// run completed.
+func TestLibrivoxImportWritesTheSkipped(t *testing.T) {
+	sum := importer.Summary{Skips: []importer.RowSkip{
+		{LibrivoxID: 99002, Reason: importer.RefusalUnmappedLanguage},
+		{LibrivoxID: 99503, Reason: importer.RefusalIdentityDuplicate},
+	}}
+	run := func(string, importer.LibrivoxIDs, importer.Options) (importer.Summary, error) { return sum, nil }
+	path := filepath.Join(t.TempDir(), "skipped.ndjson")
+	captureStdout(t, func() {
+		if code := runLibrivoxImport([]string{"--from", librivoxFixture, "--ids", "1-", "--dry-run", "--skipped", path}, run); code != 0 {
+			t.Errorf("exit = %d", code)
+		}
+	})
+	got, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	const want = `{"librivox_id":99002,"reason":"unmapped-language"}` + "\n" + `{"librivox_id":99503,"reason":"identity-duplicate"}` + "\n"
+	if string(got) != want {
+		t.Errorf("skipped = %q, want %q", got, want)
+	}
+	// A failed run writes no worklist.
+	failed := filepath.Join(t.TempDir(), "skipped.ndjson")
+	failing := func(string, importer.LibrivoxIDs, importer.Options) (importer.Summary, error) {
+		return importer.Summary{}, os.ErrInvalid
+	}
+	captureStdout(t, func() {
+		_ = runLibrivoxImport([]string{"--from", librivoxFixture, "--ids", "1-", "--skipped", failed}, failing)
+	})
+	if _, err := os.Stat(failed); !os.IsNotExist(err) {
+		t.Errorf("a failed run left %s: %v", failed, err)
 	}
 }

@@ -51,9 +51,12 @@ import (
 // merging them is a maintainer's call on a name-by-name basis, not a mechanical
 // rule.
 //
-// On a LibriVox row the ids speak first: a catalogued id holder's spelling, and
-// a titled author whose bare twin is another LibriVox author or another person,
-// are never folded (creditCensus.keepHonorific, librivoxpeople.go rule 1).
+// On a LibriVox row the ids speak first: an author credit's person is decided
+// by its LibriVox author id before planning (librivoxpeople.go rule 1), so a
+// catalogued id holder, and a titled author whose bare twin is another
+// LibriVox author or another person, stay who they are whatever the fold does
+// to their spelling, and only a fold the import really makes is reported
+// (noteLibrivoxFolds).
 //
 // And a REVIEW speaks above the census: a merge-people rejection in
 // internal/audit/reviewed.json is how a maintainer records "two people, not one"

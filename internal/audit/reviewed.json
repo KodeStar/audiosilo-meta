@@ -1304,6 +1304,15 @@
     "decision": "reject",
     "op": "merge-people",
     "others": [
+      "dr-edward-anderson"
+    ],
+    "reason": "two people: Edward Anderson is LibriVox author 18022 (1905-1969), the novelist of Thieves Like Us (19945); Dr. Edward Anderson is a co-author of Operations Management For Dummies (2019)",
+    "target": "edward-anderson"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
       "dr-lisa-klein"
     ],
     "reason": "two people: Dr. Lisa Klein is the pediatrician co-writing Celebrate Your Body 2 with Dr. Carrie Leff; Lisa Klein is the novelist of Ophelia",
@@ -1358,6 +1367,15 @@
     "decision": "reject",
     "op": "merge-people",
     "others": [
+      "dr-randy-carlson"
+    ],
+    "reason": "two people: Randy Carlson is LibriVox reader 12539, a volunteer reading a section of Luther's Treatise on Good Works (1994); Dr. Randy Carlson is the Christian radio host who wrote and reads The Power of One Thing (Oasis Audio, 2009); nothing ties the reader account to him",
+    "target": "randy-carlson"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
       "dr-rebecca-sharp"
     ],
     "reason": "two people: Dr. Rebecca Sharp is a romance novelist who does not narrate; Rebecca Sharp narrates Kabir Hussain's pharmaceutical title",
@@ -1371,6 +1389,15 @@
     ],
     "reason": "two people: Sir Richard Burton is the Victorian translator of the Kama Sutra and the Arabian Nights; Richard Burton is the actor who reads Under Milk Wood",
     "target": "richard-burton"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "mrs-robert-lee"
+    ],
+    "reason": "two people: Mrs. Robert Lee is LibriVox author 8832 (Sarah Bowdich Lee, 1791-1856) of Anecdotes of the Habits and Instinct of Animals (17246); Robert Lee is the narrator of Death Interrupted (Bolinda, 2022)",
+    "target": "robert-lee"
   },
   {
     "decision": "reject",
@@ -1407,6 +1434,15 @@
     ],
     "reason": "two people: Dr. William Davies wrote Overcoming Anger and Irritability (listing B007NX6B8C); William Davies is the political economist of Nervous States",
     "target": "william-davies"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "mrs-william-platt"
+    ],
+    "reason": "two people: LibriVox credits Stories of the Scottish Border (13419) to both William Platt (author 13717, 1867-1943) and Mrs. William Platt (author 14096, died 1942), husband and wife under two author ids",
+    "target": "william-platt"
   },
   {
     "decision": "assert",
@@ -10412,6 +10448,16 @@
     "target": "fifteen-dogs"
   },
   {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "final-report-of-the-senate-select-committee-senate-select-committee-on-presidential-campaign-activi",
+      "final-report-of-the-senate-select-senate-select-committee-on-presidential-campaign-activi-2"
+    ],
+    "reason": "different volumes: LibriVox projects 12115, 12191 and 12106 are Volumes 1, 2 and 3 of the Watergate Report; the slugs only read alike because Slugify cuts the long title at 100 characters",
+    "target": "final-report-of-the-senate-select-committee-on-presidential-campaign-activities-watergate-report-vol"
+  },
+  {
     "decision": "assert",
     "op": "merge-works",
     "others": [
@@ -11622,6 +11668,17 @@
     ],
     "reason": "the same book catalogued twice: identical narrators, publisher, release date and 319-minute runtime, and the second title only adds a retailer series decoration",
     "target": "his-true-mate"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "history-of-our-own-times-from-the-accession-of-queen-victoria-to-the-general-justin-mccarthy",
+      "history-of-our-own-times-from-the-accession-of-queen-victoria-to-the-general-justin-mccarthy-2",
+      "history-of-our-own-times-from-the-accession-of-queen-victoria-to-the-general-justin-mccarthy-3"
+    ],
+    "reason": "different volumes: LibriVox projects 13366, 13884, 14232 and 14829 are Volumes I to IV of Justin McCarthy's History of Our Own Times; the slugs only read alike because Slugify cuts the long title at 100 characters",
+    "target": "history-of-our-own-times-from-the-accession-of-queen-victoria-to-the-general-election-of-1880-volume"
   },
   {
     "decision": "reject",
@@ -13375,6 +13432,16 @@
     ],
     "reason": "the same book by the same author: AmazonClassics Edition names the publisher's edition, and Dramatized names the Monterey SoundWorks full-cast production, a property of the recording, not of the work",
     "target": "little-women"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "lives-of-the-most-remarkable-criminals-who-have-been-condemned-and-executed-for-arthur-l-hayward-2",
+      "lives-of-the-most-remarkable-criminals-who-have-been-condemned-and-executed-for-murder-the-highway-h"
+    ],
+    "reason": "different volumes: LibriVox projects 13429 (no volume number), 13789 (Vol 2) and 13921 (Vol 3) are three separate recordings of the volumes of Lives of the Most Remarkable Criminals; the slugs only read alike because Slugify cuts the long title at 100 characters",
+    "target": "lives-of-the-most-remarkable-criminals-who-have-been-condemned-and-executed-for-arthur-l-hayward"
   },
   {
     "decision": "reject",
@@ -17142,6 +17209,30 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "slaughter-of-the-mountain-man"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "slave-narratives-a-folk-history-of-slavery-in-the-united-states-from-interviews-with-former-various",
+      "slave-narratives-a-folk-history-of-slavery-in-the-united-states-from-interviews-with-various-2",
+      "slave-narratives-a-folk-history-of-slavery-in-the-united-states-from-interviews-with-various-3",
+      "slave-narratives-a-folk-history-of-slavery-in-the-united-states-from-interviews-with-various-4",
+      "slave-narratives-a-folk-history-of-slavery-in-the-united-states-from-interviews-with-various-5",
+      "slave-narratives-a-folk-history-of-slavery-in-the-united-states-from-interviews-with-various-6",
+      "slave-narratives-a-folk-history-of-slavery-in-the-united-states-from-interviews-with-various-7"
+    ],
+    "reason": "different volumes: each is its own LibriVox project and its own WPA state volume of Slave Narratives (the full titles name the volume and the state); the slugs only read alike because Slugify cuts the long title at 100 characters",
+    "target": "slave-narratives-a-folk-history-of-slavery-in-the-united-states-from-interviews-with-former-slaves-v"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "slave-narratives-a-folk-history-of-slavery-in-the-united-united-states-work-projects-administration"
+    ],
+    "reason": "different volumes: each is its own LibriVox project and its own WPA state volume of Slave Narratives (the full titles name the volume and the state); the slugs only read alike because Slugify cuts the long title at 100 characters",
+    "target": "slave-narratives-a-folk-history-of-slavery-in-the-united-states-work-projects-administration-2"
   },
   {
     "decision": "assert",
