@@ -224,8 +224,7 @@ func TestDataPeopleSlugsAreTransliterated(t *testing.T) {
 		reader, _ := e["librivox_reader_id"].(float64)
 		author, _ := e["librivox_author_id"].(float64)
 		if !model.PersonIDMatches(key, name, int(reader), int(author)) {
-			want, _ := model.PersonSlug(name)
-			t.Errorf("%s: person %q has name %q, which slugs to %q", path, key, name, want)
+			t.Errorf("%s: person %q has name %q, which files at %q", path, key, name, model.WantPersonID(name, int(reader), int(author)))
 		}
 		if id := str(e, "id"); id != key {
 			t.Errorf("%s: person entry key %q disagrees with its id %q", path, key, id)

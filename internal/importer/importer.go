@@ -1505,7 +1505,11 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		var noAuthor bool
 		authorCredits, unsluggable, noAuthor = p.dropUnsluggableLibrivoxCredits(authorCredits)
 		if noAuthor && workTitle != "" {
-			p.noteLibrivoxWorklist(b, workTitle, LibrivoxAuthorUnsluggable, candidatesOf(nil))
+			reason := LibrivoxAuthorUnsluggable
+			if p.librivoxSlotTakenCredit(b, unsluggable) {
+				reason = LibrivoxAuthorSlotTaken
+			}
+			p.noteLibrivoxWorklist(b, workTitle, reason, candidatesOf(nil))
 			p.noteLostSeriesClaims(b, -1, nil)
 			return
 		}

@@ -84,6 +84,10 @@ const (
 	// name that slugs to nothing and no LibriVox author id to be filed by
 	// (librivoxauthors.go rule 2); no candidates.
 	LibrivoxAuthorUnsluggable = "author-unsluggable"
+	// LibrivoxAuthorSlotTaken: as author-unsluggable, but an author's
+	// LibriVox id could have filed them at librivox-author-<id> and another
+	// person or a tombstone holds that slot (librivoxpeople.go rule 4).
+	LibrivoxAuthorSlotTaken = "author-slot-taken"
 	// LibrivoxDifferentlySpelled: the duplicate-identity guard (dupidentity.go)
 	// found the row's book under a title this rule does not read as the same
 	// (a subtitle or a decoration apart).

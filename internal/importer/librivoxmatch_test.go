@@ -836,3 +836,54 @@ func TestLibrivoxVolumeTotalHoldsARowSharingAnAuthor(t *testing.T) {
 		t.Errorf("worklist = %+v, new works %d; want 9799 as volume-total", sum.LibrivoxWorklist, sum.NewWorks)
 	}
 }
+
+func TestLibrivoxUnsluggableAuthorWhoseSlotIsTaken(t *testing.T) {
+	// The id would file the author at librivox-author-<id>, but another person
+	// holds that slot (or a tombstone does): never written over, and never a
+	// silent drop - a run warning names the slot, a sole author is the
+	// worklist's author-slot-taken and a co-author a credit not recorded with
+	// that reason.
+	occupied := func(t *testing.T) string {
+		dataDir := t.TempDir()
+		seedTree(t, dataDir, map[string]string{
+			personAddr("librivox-author-6110"): testpack.PersonJSON(t, "librivox-author-6110", "Librivox Author 6110"),
+		})
+		return dataDir
+	}
+	tolstoy := LibrivoxPerson{ID: 6110, FirstName: "Лев", LastName: "Толстой"}
+	maude := LibrivoxPerson{ID: 6103, FirstName: "Aylmer", LastName: "Maude"}
+	slotWarned := func(t *testing.T, sum Summary) {
+		t.Helper()
+		if !strings.Contains(strings.Join(sum.Warnings, "\n"), `"librivox-author-6110" is another person's id or a retired one`) {
+			t.Errorf("no slot warning: %v", sum.Warnings)
+		}
+	}
+
+	t.Run("sole author", func(t *testing.T) {
+		dataDir := occupied(t)
+		before := testpack.Snapshot(t, dataDir)
+		sum := runLibrivox(t, writeSnapshot(t, byAuthor(t, 99930, "Детство", "Russian", tolstoy)), dataDir, allLibrivox)
+		slotWarned(t, sum)
+		if len(sum.LibrivoxWorklist) != 1 || sum.LibrivoxWorklist[0].Reason != LibrivoxAuthorSlotTaken {
+			t.Errorf("worklist = %+v, want author-slot-taken", sum.LibrivoxWorklist)
+		}
+		if after := testpack.Snapshot(t, dataDir); !reflect.DeepEqual(before, after) {
+			t.Error("a held row changed the tree")
+		}
+	})
+	t.Run("co-author", func(t *testing.T) {
+		dataDir := occupied(t)
+		pr := byAuthor(t, 99931, "Letters", "English", tolstoy)
+		pr.Authors = append(pr.Authors, maude)
+		sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
+		slotWarned(t, sum)
+		want := []UnrecordedCredit{{Project: 99931, AuthorID: 6110, Name: "Лев Толстой", Work: "letters", Reason: librivoxSlotTaken}}
+		if !reflect.DeepEqual(sum.UnrecordedCredits, want) {
+			t.Errorf("unrecorded = %+v, want %+v", sum.UnrecordedCredits, want)
+		}
+		if p := personOf(t, dataDir, "librivox-author-6110"); p.AuthorID != 0 || p.Name != "Librivox Author 6110" {
+			t.Errorf("the occupant was written over: %+v", p)
+		}
+		mustValidate(t, dataDir)
+	})
+}

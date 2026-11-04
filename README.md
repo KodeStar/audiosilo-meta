@@ -409,7 +409,9 @@ version number has one or two digits, so "(Version 1611)" is a year and stays;
 and a version marker ending a parenthetical that names something else loses
 only the marker: "Spring (Barber version 2)" is "Spring (Barber)", "Alice's
 Adventures in Wonderland (abridged, version 2)" is "... (abridged)", an
-abridged recording as "(abridged)" always is):
+abridged recording as "(abridged)" always is; a translation named "...
+Version" keeps the word, so "(King James Version 2)" is "(King James
+Version)"):
 
 1. the importer's ordinary identity walk: same title, same identity authors,
    same language. An author or translator whose name slugs to nothing (a
@@ -469,7 +471,10 @@ The reasons: `several-works` (two or more works qualify under rule 2),
 `author-spelling` (a work carries the title by an author of the same surname
 whose name only loosely agrees with the project's, or beside other
 candidates), `author-unsluggable` (every individual author's name slugs to
-nothing and carries no LibriVox author id), `differently-spelled-title` (the duplicate-identity guard holds
+nothing and carries no LibriVox author id), `author-slot-taken` (as
+`author-unsluggable`, but the author's `librivox-author-<id>` slot is another
+person's or a retired one; the run warns, and a co-author's credit is listed
+not recorded as `librivox-author-slot-taken`), `differently-spelled-title` (the duplicate-identity guard holds
 the book under a title rule 2 does not read as the same, such as a subtitle
 apart, or rule 3's trailing qualifier), `volume-total` (rule 2's work holds a
 recording stating another volume total), `same-name-author` (below) and `fallback-slug-taken` (below). Once a person has settled the work,

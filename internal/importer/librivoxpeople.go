@@ -502,8 +502,14 @@ func (p *planner) decideLibrivoxAuthor(cl *lvAuthorClaim, bySlug map[string][]*l
 		// A name that slugs to nothing is filed by its author id (rule 4),
 		// never on the shared catch-all; when that slot is not free the
 		// credit is dropped as unsluggable, as before.
-		if slug, ok := model.LibrivoxUnslugAuthorSlug(name, id); ok {
-			p.mintLibrivoxAuthor(cl, slug, "")
+		if slug, ok := model.LibrivoxUnslugAuthorSlug(name, id); ok && !p.mintLibrivoxAuthor(cl, slug, "") {
+			// The slot is another person's or a tombstone's: the credit is
+			// not recorded, and says why (librivoxSlotTaken).
+			p.lv.slotTaken[id] = slug
+			p.summary.Warnings = append(p.summary.Warnings, fmt.Sprintf(
+				"librivox author %d (%q) slugs to nothing and %q is another person's id or a retired one; its credits are not recorded (%s)",
+				id, name, slug, librivoxSlotTaken))
+			p.summary.RunLevelWarnings++
 		}
 		return nil
 	}

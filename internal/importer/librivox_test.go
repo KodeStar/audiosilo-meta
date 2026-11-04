@@ -679,15 +679,22 @@ func TestLibrivoxTitleStripsTheVersionMarker(t *testing.T) {
 		"Bible (King James Version 1611)": "Bible (King James Version 1611)",
 		// A marker ending a parenthetical that holds something else: only
 		// the marker goes, the edition and the abridgement stay stated.
-		"Spring (Barber version 2)":                                              "Spring (Barber)",
+		"Spring (Barber version 2)": "Spring (Barber)",
+		// A translation named "... Version" keeps its name: only the number is
+		// the repeat marker.
+		"Bible (King James Version 2)":                                           "Bible (King James Version)",
+		"Psalms (Revised Standard Version 3)":                                    "Psalms (Revised Standard Version)",
+		"Bible (Douay-Rheims Version 2)":                                         "Bible (Douay-Rheims Version)",
+		"Bible (King James Version)":                                             "Bible (King James Version)",
+		"Psalms (Jamesian version 2)":                                            "Psalms (Jamesian)",
 		"Sir Gawain and the Green Knight (Weston Translation Version 2)":         "Sir Gawain and the Green Knight (Weston Translation)",
 		"Gawayne and the Green Knight (Lewis Translation Version 2)":             "Gawayne and the Green Knight (Lewis Translation)",
 		"Alice's Adventures in Wonderland (abridged, version 2)":                 "Alice's Adventures in Wonderland (abridged)",
 		"Coming of Bill (or: Their Mutual Child; or: The White Hope, Version 2)": "Coming of Bill (or: Their Mutual Child; or: The White Hope)",
 		"Emma (Barber version 2) (Dramatic Reading)":                             "Emma (Barber)",
-		"(Barber version 2)":                            "(Barber version 2)",
-		"Ulysses (Circe version 2): reader assignments": "Ulysses (Circe version 2): reader assignments",
-		"Spring (Barberversion 2)":                      "Spring (Barberversion 2)",
+		"(Barber version 2)":                                                     "(Barber version 2)",
+		"Ulysses (Circe version 2): reader assignments":                          "Ulysses (Circe version 2): reader assignments",
+		"Spring (Barberversion 2)":                                               "Spring (Barberversion 2)",
 	} {
 		if got := librivoxTitle(in); got != want {
 			t.Errorf("librivoxTitle(%q) = %q, want %q", in, got, want)

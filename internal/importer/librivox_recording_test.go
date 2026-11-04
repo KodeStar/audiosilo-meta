@@ -222,22 +222,33 @@ func TestLibrivoxUnsluggableTranslatorIsLeftOff(t *testing.T) {
 	// A translator whose name slugs to nothing is never the shared catch-all
 	// person: with no LibriVox author id it is credited nowhere, left off the
 	// recording and counted; with one it is a person of their own at
-	// librivox-author-<id> (meta#2778), the recording's translator.
+	// librivox-author-<id> (meta#2778), the recording's translator. Where the
+	// recording pass creates that person - the project attached to a
+	// catalogued work, which records no work credit - it counts as a
+	// translator created, as any other; on a new work the work's own credit
+	// created it already (NewPeople), so the pass creates nothing.
 	for name, tc := range map[string]struct {
 		id         int
+		attach     bool
 		unresolved int
+		created    int
 		want       []string
 	}{
-		"no author id":   {id: 0, unresolved: 1},
-		"with author id": {id: 7777, want: []string{"librivox-author-7777"}},
+		"no author id":             {id: 0, unresolved: 1},
+		"with author id, new work": {id: 7777, want: []string{"librivox-author-7777"}},
+		"with author id, attached": {id: 7777, attach: true, created: 1, want: []string{"librivox-author-7777"}},
+		"no author id, attached":   {id: 0, attach: true, unresolved: 1},
 	} {
 		t.Run(name, func(t *testing.T) {
 			pr := fixtureProject(t, 527)
 			pr.Translators = []LibrivoxPerson{{ID: lvInt(tc.id), FirstName: "", LastName: "Ἰωάννης"}}
 			dataDir := t.TempDir()
+			if tc.attach {
+				seedKafka(t, dataDir, "franz-kafka", "Franz Kafka")
+			}
 			sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
-			if sum.LibrivoxRestated.TranslatorsUnresolved != tc.unresolved || sum.LibrivoxRestated.TranslatorsCreated != 0 {
-				t.Errorf("restated = %+v, want %d unresolved translator(s)", sum.LibrivoxRestated, tc.unresolved)
+			if r := sum.LibrivoxRestated; r.TranslatorsUnresolved != tc.unresolved || r.TranslatorsCreated != tc.created {
+				t.Errorf("restated = %+v, want %d unresolved and %d created translator(s)", r, tc.unresolved, tc.created)
 			}
 			_, _, f := lvRecordingOf(t, dataDir, 527)
 			var got []string
@@ -246,6 +257,11 @@ func TestLibrivoxUnsluggableTranslatorIsLeftOff(t *testing.T) {
 			}
 			if !reflect.DeepEqual(got, tc.want) {
 				t.Errorf("credits = %v, want %v", f.Credits, tc.want)
+			}
+			if tc.created > 0 {
+				if p := personOf(t, dataDir, "librivox-author-7777"); p.AuthorID != 7777 {
+					t.Errorf("librivox-author-7777 = %+v, want it carrying its id", p)
+				}
 			}
 			if res := check.Load(dataDir); !res.OK() {
 				t.Fatalf("tree failed validation:\n%v", res.Problems)

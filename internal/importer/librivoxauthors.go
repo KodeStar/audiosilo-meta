@@ -557,8 +557,13 @@ func (p *planner) reportLibrivoxAuthorVariants() {
 }
 
 // librivoxUnsluggable is the reason a credit not recorded carries when its
-// name slugs to nothing (rule 2).
-const librivoxUnsluggable = "unsluggable"
+// name slugs to nothing (rule 2), and librivoxSlotTaken when it also carries a
+// LibriVox author id whose librivox-author-<id> slot another person or a
+// tombstone holds (librivoxpeople.go rule 4), so the id could not be filed.
+const (
+	librivoxUnsluggable = "unsluggable"
+	librivoxSlotTaken   = "librivox-author-slot-taken"
+)
 
 // dropUnsluggableLibrivoxCredits is rule 2: the row's author credits without
 // those whose name slugs to nothing, and those dropped. noAuthor reports that a
@@ -600,7 +605,21 @@ func (p *planner) unsluggableLibrivoxCredits(b sourceBook, work string, dropped 
 	for _, c := range dropped {
 		u := p.unrecordedOf(b, "", c, p.resolveCredit(c), work)
 		u.Reason = librivoxUnsluggable
+		if _, taken := p.lv.slotTaken[u.AuthorID]; taken {
+			u.Reason = librivoxSlotTaken
+		}
 		out = append(out, u)
 	}
 	return out
+}
+
+// librivoxSlotTakenCredit reports whether a dropped credit of row b carries an
+// author id whose librivox-author-<id> slot was taken (librivoxSlotTaken).
+func (p *planner) librivoxSlotTakenCredit(b sourceBook, dropped []credit) bool {
+	for _, c := range dropped {
+		if _, taken := p.lv.slotTaken[p.librivoxAuthorIDOf(b, c, p.resolveCredit(c))]; taken {
+			return true
+		}
+	}
+	return false
 }

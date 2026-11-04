@@ -371,9 +371,29 @@ const librivoxVersionNumber = `\d{1,2}`
 // so the parenthetical keeps what names the edition ("(Barber)", "(Weston
 // Translation)") and an abridgement stays stated ("(abridged)", which the
 // shared title rules then read as they read project 1122's). Group 1 is the
-// parenthetical's own content.
+// parenthetical's own content and group 2 the version word. A translation
+// whose NAME ends in "Version" ("King James Version", "Revised Standard
+// Version", librivoxVersionNamedTranslation) keeps the word: in "(King James
+// Version 2)" only the number is LibriVox's repeat marker, so the title is
+// "(King James Version)", never "(King James)".
 var librivoxSharedVersionRE = regexp.MustCompile(`(?i)\(\s*([^()]*?[^()\s,;:\x{2013}\x{2014}-])\s*(?:` + librivoxSep + `\s*|\s+)` +
-	librivoxVersionWord + `\s*` + librivoxVersionNumber + `\s*\)\s*$`)
+	`(` + librivoxVersionWord + `)\s*` + librivoxVersionNumber + `\s*\)\s*$`)
+
+// librivoxVersionTranslationWords are the last words of the Bible translation
+// names that end in "Version" (King James, Authorized, Revised, Revised
+// Standard, American Standard, Douay-Rheims): before them "Version" is part
+// of the name, not a repeat marker.
+var librivoxVersionTranslationWords = map[string]bool{
+	"james": true, "authorized": true, "authorised": true, "revised": true,
+	"standard": true, "rheims": true, "douay": true,
+}
+
+// librivoxVersionNamedTranslation reports whether content (a parenthetical's
+// words before "Version N") ends in a translation name that takes "Version".
+func librivoxVersionNamedTranslation(content string) bool {
+	words := strings.FieldsFunc(strings.ToLower(content), func(r rune) bool { return r == ' ' || r == '-' })
+	return len(words) > 0 && librivoxVersionTranslationWords[words[len(words)-1]]
+}
 
 // librivoxVersionWord is the word "version" as LibriVox's projects spell it:
 // English and French "version", Italian "versione", Spanish "versión",
@@ -411,7 +431,11 @@ func librivoxTitle(t string) string {
 		}
 		if loc == nil {
 			if m := librivoxSharedVersionRE.FindStringSubmatchIndex(t); m != nil && m[0] > 0 {
-				t = strings.TrimSpace(t[:m[0]]) + " (" + t[m[2]:m[3]] + ")"
+				content := t[m[2]:m[3]]
+				if librivoxVersionNamedTranslation(content) {
+					content += " " + t[m[4]:m[5]]
+				}
+				t = strings.TrimSpace(t[:m[0]]) + " (" + content + ")"
 				continue
 			}
 		}
@@ -766,6 +790,10 @@ type librivoxState struct {
 	// (Summary.LibrivoxAuthorSplits).
 	pairs  [][2]*lvAuthorClaim
 	splits []lvAuthorSplit
+	// slotTaken is the author ids whose name slugs to nothing and whose
+	// librivox-author-<id> slot another person or a tombstone holds, by that
+	// slot: their credits are not recorded (librivoxSlotTaken).
+	slotTaken map[int]string
 	// works is each catalogued person's works (librivoxpeople.go), built on
 	// first use (workDates the same works by slug); workKeys each catalogued
 	// work's title keys, memoized;
@@ -806,6 +834,7 @@ func newLibrivoxState() librivoxState {
 		sameName:      map[int]lvHold{},
 		readerMints:   map[int]*lvReaderMint{},
 		readerNames:   map[int]string{},
+		slotTaken:     map[int]string{},
 	}
 }
 
