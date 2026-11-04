@@ -1286,10 +1286,46 @@
     "decision": "reject",
     "op": "merge-people",
     "others": [
+      "a-frank-pinkerton"
+    ],
+    "reason": "two people: A. Frank Pinkerton (fl. 1887) wrote Dyke Darrel and Won by Crime and is catalogued as a son of Allan Pinkerton (1819-1884), the detective",
+    "target": "allan-pinkerton"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
       "andy-adams-librivox-author-12675"
     ],
     "reason": "two people: andy-adams is the Western writer (1859-1935; LibriVox author 940); andy-adams-librivox-author-12675 is the Grosset & Dunlap house name of the Biff Brewster series, 1960-65 (LibriVox author 12675, projects copyright 1960-62), written decades after his death",
     "target": "andy-adams"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "a-e-henderson"
+    ],
+    "reason": "two people: A. E. Henderson translated Maupassant (Gutenberg 3090); Archibald Henderson (1877-1963) is the Mark Twain biographer, whose name holds no E",
+    "target": "archibald-henderson"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "charles-bertram-johnson"
+    ],
+    "reason": "two people: Captain Charles Johnson (fl. 1730) wrote the General History of the Pyrates; Charles Bertram Johnson, born 1880, is in the Book of American Negro Poetry",
+    "target": "captain-charles-johnson"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "c-e-smith"
+    ],
+    "reason": "two people: C. E. Smith's Trees, Shown to the Children is copyright 1910 on LibriVox; Cordwainer Smith was born in 1913",
+    "target": "cordwainer-smith"
   },
   {
     "decision": "reject",
@@ -1313,6 +1349,15 @@
     "decision": "reject",
     "op": "merge-people",
     "others": [
+      "edwin-benson"
+    ],
+    "reason": "two people: E. F. Benson is Edward Frederic Benson, the novelist; Edwin Benson wrote Life in a Mediaeval City, on York (Gutenberg 17848)",
+    "target": "e-f-benson"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
       "dr-edward-anderson"
     ],
     "reason": "two people: Edward Anderson is LibriVox author 18022 (1905-1969), the novelist of Thieves Like Us (19945); Dr. Edward Anderson is a co-author of Operations Management For Dummies (2019)",
@@ -1322,10 +1367,55 @@
     "decision": "reject",
     "op": "merge-people",
     "others": [
+      "george-logan-moore"
+    ],
+    "reason": "two people: George Moore (1852-1933) is the Irish novelist George Augustus Moore; George Logan Moore is the poet of Longing for Spring-time",
+    "target": "george-moore"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "henry-b-james"
+    ],
+    "reason": "two people: Henry B. James, born 1841, wrote Memories of the Civil War; Henry James (1843-1916) is the novelist",
+    "target": "henry-james"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "mrs-h-llewellyn-williams"
+    ],
+    "reason": "two people: the Library of Congress catalogues The Book of Ices (1891) under Williams, H. Llewellyn, Mrs; Henry L. Williams, born 1842, is the translator and dime novelist",
+    "target": "henry-l-williams"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
       "j-j-howard-fl-1807"
     ],
     "reason": "two people: j-j-howard is the modern writer of Pugs and Kisses; j-j-howard-fl-1807 translated Ovid's Metamorphoses into blank verse, London 1807 (LibriVox author 17467, Gutenberg 28621)",
     "target": "j-j-howard"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "josephine-looney"
+    ],
+    "reason": "two people: J. Thomas Looney (1870-1944) wrote Shakespeare Identified; Josephine Looney wrote Stories From God's Holy Book",
+    "target": "j-thomas-looney"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "j-j-howard-fl-1807"
+    ],
+    "reason": "two people: J. J. Howard translated Ovid in 1807; John Howard, born 1893, translated Against the Grain",
+    "target": "john-howard-b-1893"
   },
   {
     "decision": "reject",
@@ -1385,6 +1475,24 @@
     "decision": "reject",
     "op": "merge-people",
     "others": [
+      "r-p-jones-librivox-author-18564"
+    ],
+    "reason": "two people: r-p-jones writes LitRPG, on sale from 2020; LibriVox author 18564 wrote Jazz, copyright 1963 on LibriVox",
+    "target": "r-p-jones"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "ralph-scott-librivox-author-16428"
+    ],
+    "reason": "two people: ralph-scott narrates retail audiobooks released from 2020; LibriVox author 16428 wrote A Soldier's Diary, copyright 1923 (Gutenberg 66363)",
+    "target": "ralph-scott"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
       "dr-randy-carlson"
     ],
     "reason": "two people: Randy Carlson is LibriVox reader 12539, a volunteer reading a section of Luther's Treatise on Good Works (1994); Dr. Randy Carlson is the Christian radio host who wrote and reads The Power of One Thing (Oasis Audio, 2009); nothing ties the reader account to him",
@@ -1416,6 +1524,15 @@
     ],
     "reason": "two people: Mrs. Robert Lee is LibriVox author 8832 (Sarah Bowdich Lee, 1791-1856) of Anecdotes of the Habits and Instinct of Animals (17246); Robert Lee is the narrator of Death Interrupted (Bolinda, 2022)",
     "target": "robert-lee"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "r-p-jones-librivox-author-18564"
+    ],
+    "reason": "two people: Rufus Matthew Jones died in 1948; R. P. Jones's Jazz is copyright 1963 on LibriVox",
+    "target": "rufus-jones-1863-1948"
   },
   {
     "decision": "reject",
@@ -1457,10 +1574,37 @@
     "decision": "reject",
     "op": "merge-people",
     "others": [
+      "william-h-a-moore"
+    ],
+    "reason": "two people: William Moore translated Gregory of Nyssa for the Nicene and Post-Nicene Fathers; William H. A. Moore is in the Book of American Negro Poetry",
+    "target": "william-moore"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "william-pitt-palmer"
+    ],
+    "reason": "two people: William Palmer (1803-1885) is the Oxford theologian of Tracts for the Times; William Pitt Palmer (1805-1884) is the American poet of The Smack in School",
+    "target": "william-palmer"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
       "mrs-william-platt"
     ],
     "reason": "two people: LibriVox credits Stories of the Scottish Border (13419) to both William Platt (author 13717, 1867-1943) and Mrs. William Platt (author 14096, died 1942), husband and wife under two author ids",
     "target": "william-platt"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "george-smith-1833-1919"
+    ],
+    "reason": "two people: Worthington George Smith (1835-1917) wrote Mushrooms and Toadstools; George Smith (1833-1919) wrote A Short History of Christian Missions",
+    "target": "worthington-george-smith"
   },
   {
     "decision": "assert",
