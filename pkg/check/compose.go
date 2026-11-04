@@ -56,8 +56,10 @@ import (
 //   - COLLISION, a hard error, compose-only: two sidecars of one KIND resolving
 //     onto one work is refused, never folded (internal/repair's
 //     sidecar-member-collision principle); disjoint members simply meet.
-//   - THE POSITION-SCALE ADVISORY, run here for real (vacuous over either root
-//     alone), still only ever a warning.
+//   - THE POSITION-SCALE ADVISORY, run here for real, replacing the community
+//     load's own pass (which reads only a stated scale), still only ever a warning.
+//   - THE POSITION-SCALE BOUND, asked again after the re-key on a green pass: a scale
+//     riding a retired key rules on what the survivor holds.
 //
 // EVERY RULE RUNS, RED OR NOT. A problem in either root does not suppress the
 // cross-tree pass, exactly as a malformed people pack in a single tree has never
@@ -108,9 +110,15 @@ func LoadComposed(coreDir, communityDir string) Result {
 	core, _ := load(coreLst, nil, LoadOptions{})
 	com, comIdx := load(comLst, nil, LoadOptions{})
 
+	// The community load's own position-scale pass is superseded by the compose's
+	// below, which has the recordings to measure against: both reading a stated
+	// scale would report every member twice.
+	comWarnings := slices.DeleteFunc(com.Warnings, func(w Problem) bool {
+		return AdvisoryClass(w) == AdvisorySidecarScale
+	})
 	res := Result{
 		Problems: slices.Concat(core.Problems, fromCommunity(com.Problems)),
-		Warnings: slices.Concat(core.Warnings, fromCommunity(com.Warnings)),
+		Warnings: slices.Concat(core.Warnings, fromCommunity(comWarnings)),
 		Catalog:  core.Catalog,
 		Identity: core.Identity,
 	}
@@ -146,6 +154,7 @@ func LoadComposed(coreDir, communityDir string) Result {
 	res.Catalog.Characters = com.Catalog.Characters
 	res.Catalog.Recaps = com.Catalog.Recaps
 	res.Catalog.Descriptions = com.Catalog.Descriptions
+	res.Catalog.PositionScales = com.Catalog.PositionScales
 
 	// AN EMPTY COMMUNITY SIDE IS A HARD ERROR, and it is checked before the
 	// cross-tree rules because a tree with nothing in it satisfies every one of
@@ -181,6 +190,9 @@ func LoadComposed(coreDir, communityDir string) Result {
 		for _, rw := range rewrites {
 			*rw.work = rw.to
 		}
+		// Only now can a scale and a member keyed apart meet: a scale riding a retired
+		// key rules on whatever the survivor holds.
+		checkPositionScales(res.Catalog, comIdx, add)
 	}
 	// After the rewrites, so a resolved sidecar is measured against the work it
 	// actually describes. On a red pass the keys stand as written and a redirected

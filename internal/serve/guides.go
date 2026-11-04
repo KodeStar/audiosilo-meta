@@ -212,7 +212,7 @@ func recapDescription(d *query.WorkDetail, authors string) string {
 		// The recaps arrive ordered by through_chapter (snapshot.recapsOf), so the
 		// last one names the furthest chapter the sidecar covers.
 		if through := d.Recaps[n-1].Through.Chapter; through > 0 {
-			p += " through chapter " + strconv.Itoa(through)
+			p += " through " + positionUnit(d) + " " + strconv.Itoa(through)
 		}
 		parts = append(parts, p)
 	}
@@ -239,7 +239,7 @@ func charactersDescription(d *query.WorkDetail, authors string) string {
 		parts = append(parts, "by "+authors)
 	}
 	parts = append(parts, plural(len(d.Characters), "character", "characters"))
-	parts = append(parts, "each hidden behind the chapter they first appear in")
+	parts = append(parts, "each hidden behind the "+positionUnit(d)+" they first appear in")
 	return truncateDescription(strings.Join(parts, ", ") + ".")
 }
 
@@ -290,7 +290,7 @@ func newRecapView(d *query.WorkDetail) guideView {
 		Heading: d.Title + " recap",
 		Authors: d.Authors,
 		Notice: "Every recap below is hidden until you open it. Each one is safe to read " +
-			"once you have finished the chapter it names.",
+			"once you have finished the " + positionUnit(d) + " it names.",
 		LicenseURL:     ccBySAURL,
 		LicenseLabel:   ccBySALabel,
 		ContributeURL:  contributeURL(d.ID, "recaps"),
@@ -304,7 +304,7 @@ func newRecapView(d *query.WorkDetail) guideView {
 		v.Rows = append(v.Rows, guideRow{Label: "In short", Badge: "whole book", Text: s.InShort})
 	}
 	for _, r := range d.Recaps {
-		v.Rows = append(v.Rows, guideRow{Label: recapRowLabel(r), Badge: recapScopeLabel(r.Scope), Text: r.Text})
+		v.Rows = append(v.Rows, guideRow{Label: recapRowLabel(r, positionUnit(d)), Badge: recapScopeLabel(r.Scope), Text: r.Text})
 	}
 	if s := d.RecapSummary; s != nil && s.Ending != "" {
 		v.Rows = append(v.Rows, guideRow{Label: "How does it end?", Badge: "ending", Text: s.Ending})
@@ -317,7 +317,7 @@ func newCharactersView(d *query.WorkDetail) guideView {
 	v := guideView{
 		Heading: d.Title + " characters",
 		Authors: d.Authors,
-		Notice: "Every entry below is hidden until you open it, and each names the chapter " +
+		Notice: "Every entry below is hidden until you open it, and each names the " + positionUnit(d) + " " +
 			"the character first appears in.",
 		LicenseURL:     ccBySAURL,
 		LicenseLabel:   ccBySALabel,
@@ -331,7 +331,7 @@ func newCharactersView(d *query.WorkDetail) guideView {
 		if len(c.Aliases) > 0 {
 			row.Facts = append(row.Facts, "Also known as "+joinNames(c.Aliases))
 		}
-		row.Facts = append(row.Facts, revealLabel(c.Reveal.Chapter))
+		row.Facts = append(row.Facts, revealLabel(c.Reveal.Chapter, positionUnit(d)))
 		v.Rows = append(v.Rows, row)
 	}
 	v.Links = guideLinks(d, charactersSuffix)
@@ -394,6 +394,15 @@ func contributeURL(workID, kind string) string {
 	return "/build?work=" + url.QueryEscape(workID) + "&kind=" + kind
 }
 
+// positionUnit is what a position counts on this work's pages: the unit its
+// position_scale states, else the chapter a position is by default.
+func positionUnit(d *query.WorkDetail) string {
+	if d.PositionScale != nil {
+		return d.PositionScale.Unit
+	}
+	return "chapter"
+}
+
 // recapRowLabel is a recap's spoiler-SAFE summary line: it names the position
 // the recap is safe at and nothing about what happens there.
 //
@@ -403,14 +412,14 @@ func contributeURL(workID, kind string) string {
 // types. The chapter-0 forms match the site's semantics exactly, because those
 // two rows mean something specific (see the position model in CLAUDE.md - 0 is
 // front matter or prior-book knowledge).
-func recapRowLabel(r query.RecapOut) string {
+func recapRowLabel(r query.RecapOut, unit string) string {
 	switch ch := r.Through.Chapter; {
 	case ch == 0 && r.Scope == "series":
 		return "Previously, in earlier books"
 	case ch == 0:
 		return "Before this book"
 	default:
-		return "Story so far - through chapter " + strconv.Itoa(ch)
+		return "Story so far - through " + unit + " " + strconv.Itoa(ch)
 	}
 }
 
@@ -449,11 +458,11 @@ func characterRoleLabel(role string) string {
 // revealLabel: chapter 0 and chapter 1 are both "from the start" (0 is front
 // matter, 1 is the first chapter - neither is a reveal to gate), and anything
 // later names its chapter.
-func revealLabel(chapter int) string {
+func revealLabel(chapter int, unit string) string {
 	if chapter <= 1 {
 		return "Appears from the start"
 	}
-	return "First appears in chapter " + strconv.Itoa(chapter)
+	return "First appears in " + unit + " " + strconv.Itoa(chapter)
 }
 
 // guideTemplates is the guide pages' fact sheet, parsed into the same set as the

@@ -49,6 +49,13 @@ describe('recapLabel', () => {
   })
 })
 
+describe('a stated position_scale unit', () => {
+  it('names the unit in both labels', () => {
+    expect(revealLabel({ chapter: 2 }, 'act')).toBe('From act 2')
+    expect(recapLabel({ through: { chapter: 3 }, scope: 'book', text: 'x' }, 'act')).toBe('Up to act 3')
+  })
+})
+
 describe('scopeLabel', () => {
   it('maps known scopes and null otherwise', () => {
     expect(scopeLabel('series')).toBe('earlier books')

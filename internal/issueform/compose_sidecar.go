@@ -95,6 +95,13 @@ func (c *composer) addSidecar(s sections, kind model.Kind) {
 			c.failMemberTaken(names, alias)
 			return
 		}
+		// A scale at a retired key rides onto this work at compose, so it would rule
+		// on a member its author never saw. Same maintainer's call.
+		if _, scaled := old[string(model.KindPositionScale)]; scaled {
+			c.fail(StatusNeedsHuman, "a position_scale stated at %s rides onto this work, and whether its ruler applies "+
+				"to this %s needs a maintainer", c.entryLocation(pack.FamilyWorksCommunity, alias, ""), names.fileName)
+			return
+		}
 	}
 
 	raw, ok := c.attachmentBytes(s.raw(attachLabel), maxAttachmentBytes)

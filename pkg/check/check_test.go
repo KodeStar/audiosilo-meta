@@ -30,6 +30,14 @@ func baseValid() map[string]string {
 	}
 }
 
+// loadTree writes files to a fresh tree and loads it, whatever it finds.
+func loadTree(t *testing.T, files map[string]string) Result {
+	t.Helper()
+	dir := t.TempDir()
+	writeEntities(t, dir, files)
+	return Load(dir)
+}
+
 // writeEntities materializes a per-entity fixture map as a pack tree: one works
 // pack holding each work with its recordings nested, one works-community pack
 // pairing each work's sidecars, and a flat pack for people and for series. An
@@ -56,6 +64,8 @@ func writeEntities(t *testing.T, dir string, files map[string]string) {
 			member(community, parts[2])["recaps"] = body
 		case len(parts) == 4 && parts[0] == "works" && parts[3] == "description.json":
 			member(community, parts[2])["description"] = body
+		case len(parts) == 4 && parts[0] == "works" && parts[3] == "position_scale.json":
+			member(community, parts[2])["position_scale"] = body
 		case len(parts) == 5 && parts[0] == "works" && parts[3] == "recordings":
 			member(recs, parts[2])[strings.TrimSuffix(parts[4], ".json")] = body
 		case len(parts) == 3 && parts[0] == "people":

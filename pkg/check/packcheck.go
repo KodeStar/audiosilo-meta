@@ -172,6 +172,7 @@ func (l *loader) merge(r *packResult) {
 	l.cat.Characters = append(l.cat.Characters, w.cat.Characters...)
 	l.cat.Recaps = append(l.cat.Recaps, w.cat.Recaps...)
 	l.cat.Descriptions = append(l.cat.Descriptions, w.cat.Descriptions...)
+	l.cat.PositionScales = append(l.cat.PositionScales, w.cat.PositionScales...)
 
 	l.idx.merge(w.idx)
 }
@@ -525,9 +526,10 @@ func unescapePointerToken(tok string) string {
 // wrapper schema is what REJECTS anything else (and an entry holding neither);
 // this map only says how to fold an accepted member into the catalog.
 var communityMembers = map[string]model.Kind{
-	string(model.KindCharacters):  model.KindCharacters,
-	string(model.KindRecaps):      model.KindRecaps,
-	string(model.KindDescription): model.KindDescription,
+	string(model.KindCharacters):    model.KindCharacters,
+	string(model.KindRecaps):        model.KindRecaps,
+	string(model.KindDescription):   model.KindDescription,
+	string(model.KindPositionScale): model.KindPositionScale,
 }
 
 // readCommunityEntry reads a works-community entry: the CC BY-SA sidecars for
@@ -597,6 +599,17 @@ func (l *loader) readCommunityEntry(family pack.Family, packPath, slug string, r
 			}
 			l.cat.Descriptions = append(l.cat.Descriptions, &d)
 			l.idx.descriptions[&d] = mp
+
+		case model.KindPositionScale:
+			var ps model.PositionScale
+			if err := json.Unmarshal(members[name], &ps); err != nil {
+				l.reportUndecodable(mp, clean, err)
+				continue
+			}
+			// The member holds no work of its own: the entry key is its work.
+			ps.Work = slug
+			l.cat.PositionScales = append(l.cat.PositionScales, &ps)
+			l.idx.scales[&ps] = mp
 		}
 	}
 }

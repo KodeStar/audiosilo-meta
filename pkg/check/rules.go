@@ -188,6 +188,43 @@ func checkRecaps(cat *model.Catalog, idx *pathIndex, add addFunc) {
 	}
 }
 
+// checkPositionScales enforces that no reveal or through passes the ruler its own
+// entry states. A scale a position runs past is wrong one way or the other, and a
+// consumer translating positions onto a recording's tracks would run off the end.
+func checkPositionScales(cat *model.Catalog, idx *pathIndex, add addFunc) {
+	if len(cat.PositionScales) == 0 {
+		return
+	}
+	lengths := make(map[string]int, len(cat.PositionScales))
+	for _, ps := range cat.PositionScales {
+		lengths[ps.Work] = ps.Length
+	}
+	for _, c := range cat.Characters {
+		length, ok := lengths[c.Work]
+		if !ok {
+			continue
+		}
+		for _, ch := range c.Characters {
+			if ch.Reveal.Chapter > length {
+				add(idx.characters[c], "character %q reveals at chapter %d, past the position_scale's length of %d",
+					ch.ID, ch.Reveal.Chapter, length)
+			}
+		}
+	}
+	for _, rc := range cat.Recaps {
+		length, ok := lengths[rc.Work]
+		if !ok {
+			continue
+		}
+		for _, r := range rc.Recaps {
+			if r.Through.Chapter > length {
+				add(idx.recaps[rc], "recap through chapter %d is past the position_scale's length of %d",
+					r.Through.Chapter, length)
+			}
+		}
+	}
+}
+
 // checkUniqueness enforces globally unique (region, asin) pairs and ISBNs across
 // all recordings, and unique xref.wikidata within each entity type.
 func checkUniqueness(cat *model.Catalog, recs []recordWithPath, idx *pathIndex, add addFunc) {

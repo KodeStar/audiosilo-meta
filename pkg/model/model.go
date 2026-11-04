@@ -27,6 +27,9 @@ const (
 	// member. Singular, because one work has ONE description - the member name is
 	// the kind, and pkg/check's communityMembers is where the two meet.
 	KindDescription Kind = "description"
+	// KindPositionScale is the works-community entry's position_scale member:
+	// the ruler its characters and recaps are numbered on (PositionScale).
+	KindPositionScale Kind = "position_scale"
 )
 
 // Source records the provenance of a record. Every entity carries at least one.
@@ -469,6 +472,24 @@ type Recaps struct {
 	Sources []Source `json:"sources"`
 }
 
+// PositionScale is the ruler a work's characters and recaps sidecars are numbered
+// on: the book's length in the units AUTHORING.md's position model counts it by.
+// A position is the book's own (five acts, 44 chapters, nine sections), a recording
+// tracks whatever it tracks, and a consumer gating on the listener's track needs
+// both ends of that translation to place one on the other.
+//
+// It is the works-community entry's `position_scale` member and holds exactly the
+// wire shape: GET /works/{id} serves these three fields, and audiosilo-server
+// mirrors them by hand. Work is the entry key, set by the loader, so the member
+// rides a slug tombstone with its neighbours and is never read from the file.
+type PositionScale struct {
+	Work   string `json:"-"`
+	Length int    `json:"length"`
+	Unit   string `json:"unit"`
+	// Partial says the sidecar stops short of Length on purpose.
+	Partial bool `json:"partial,omitempty"`
+}
+
 // Description is the per-work sidecar holding a work's spoiler-free
 // description - the paragraph a stranger reads before deciding to listen. It
 // lives in the CC BY-SA layer, decoupled from the CC0 core work record.
@@ -494,6 +515,9 @@ type Catalog struct {
 	// that carries one. Named for the SLICE it is; the member (and the kind) is
 	// singular - see KindDescription.
 	Descriptions []*Description
+	// PositionScales is the works-community `position_scale` member, one per work
+	// that states one.
+	PositionScales []*PositionScale
 	// Redirects is the slug tombstone table (data/redirects.json): which
 	// retired slug now stands for which record above. It is nil for a tree
 	// that carries no table, which reads as "no redirects" everywhere.

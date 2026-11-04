@@ -36,13 +36,14 @@ import (
 // recording_credits, chapter_readers and recording_librivox_genres tables (a
 // LibriVox project's own title, section numbers, translators, section readers
 // and genre names) and recording_sources.added_at (the source-filtered
-// works/latest's order).
+// works/latest's order); bumped to 10 when the community position_scales table
+// (the ruler a work's sidecars are numbered on) arrived.
 //
 // It versions what a reader may SELECT, so it is bumped only when a table or
 // column appears. Adding an index is invisible to every reader (the same rows
 // come back, faster), so the index additions below did not bump it - an older
 // artifact without them still serves correctly, just more slowly.
-const SchemaVersion = 9
+const SchemaVersion = 10
 
 const ddl = `
 CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
@@ -277,6 +278,16 @@ CREATE TABLE work_descriptions (
   license TEXT NOT NULL
 );
 
+-- The community POSITION SCALE: one row per work whose works-community entry
+-- states the ruler its sidecars are numbered on (model.PositionScale). work_id is
+-- the primary key and IS the lookup index, the point query the work page makes.
+CREATE TABLE position_scales (
+  work_id TEXT PRIMARY KEY,
+  length  INTEGER NOT NULL,
+  unit    TEXT NOT NULL,
+  partial INTEGER NOT NULL
+);
+
 -- The slug tombstone table (data/redirects.json, see model.Redirects): which
 -- retired slug now stands for which live record. kind is the id NAMESPACE,
 -- spelled as the family and route segment it addresses (model.RedirectKind).
@@ -398,6 +409,8 @@ func Build(cat *model.Catalog, outPath string, builtAt time.Time) (err error) {
 	sort.Slice(recaps, func(i, j int) bool { return recaps[i].Work < recaps[j].Work })
 	descriptions := append([]*model.Description(nil), cat.Descriptions...)
 	sort.Slice(descriptions, func(i, j int) bool { return descriptions[i].Work < descriptions[j].Work })
+	scales := append([]*model.PositionScale(nil), cat.PositionScales...)
+	sort.Slice(scales, func(i, j int) bool { return scales[i].Work < scales[j].Work })
 	nChar := 0
 	for _, c := range characters {
 		nChar += len(c.Characters)
@@ -416,6 +429,9 @@ func Build(cat *model.Catalog, outPath string, builtAt time.Time) (err error) {
 		return err
 	}
 	if err = insertWorkDescriptions(st, descriptions); err != nil {
+		return err
+	}
+	if err = insertPositionScales(st, scales); err != nil {
 		return err
 	}
 	if err = insertRedirects(st, cat.Redirects); err != nil {
@@ -437,6 +453,7 @@ func Build(cat *model.Catalog, outPath string, builtAt time.Time) (err error) {
 		{"count_characters", strconv.Itoa(nChar)},
 		{"count_recaps", strconv.Itoa(nRecap)},
 		{"count_descriptions", strconv.Itoa(len(descriptions))},
+		{"count_position_scales", strconv.Itoa(len(scales))},
 	}
 	for _, kv := range metaRows {
 		if _, err = tx.Exec(`INSERT INTO meta(key, value) VALUES(?, ?)`, kv[0], kv[1]); err != nil {
@@ -486,6 +503,7 @@ type stmts struct {
 	recapSummary *sql.Stmt
 
 	workDescription *sql.Stmt
+	positionScale   *sql.Stmt
 
 	redirect *sql.Stmt
 
@@ -542,6 +560,7 @@ func prepareStmts(tx *sql.Tx) (*stmts, func(), error) {
 		{&s.recapSummary, `INSERT INTO recap_summaries(work_id, in_short, ending, license) VALUES(?,?,?,?)`},
 
 		{&s.workDescription, `INSERT INTO work_descriptions(work_id, text, license) VALUES(?,?,?)`},
+		{&s.positionScale, `INSERT INTO position_scales(work_id, length, unit, partial) VALUES(?,?,?,?)`},
 
 		{&s.redirect, `INSERT INTO redirects(kind, old_slug, new_slug) VALUES(?,?,?)`},
 
@@ -823,6 +842,17 @@ func insertRecapSummaries(st *stmts, recaps []*model.Recaps) error {
 func insertWorkDescriptions(st *stmts, descriptions []*model.Description) error {
 	for _, d := range descriptions {
 		if _, err := st.workDescription.Exec(d.Work, d.Text, d.License); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+// insertPositionScales writes one position_scales row per work stating one. scales
+// is pre-sorted by work id, so rows land in a deterministic order.
+func insertPositionScales(st *stmts, scales []*model.PositionScale) error {
+	for _, ps := range scales {
+		if _, err := st.positionScale.Exec(ps.Work, ps.Length, ps.Unit, boolInt(ps.Partial)); err != nil {
 			return err
 		}
 	}

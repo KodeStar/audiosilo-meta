@@ -44,8 +44,8 @@ func TestRecapPageCarriesTheRankingSubstance(t *testing.T) {
 		`<meta property="og:image" content="https://example.test/phm.jpg">`,
 		`<h1 class="text-hi">Project Hail Mary recap</h1>`,
 		"<summary>In short",
-		"<summary>Story so far - through chapter 2",
-		"<summary>Story so far - through chapter 9",
+		"<summary>Story so far - through section 2",
+		"<summary>Story so far - through section 9",
 		"<summary>How does it end?",
 		`<div data-nosnippet>`,
 		`<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>`,
@@ -103,7 +103,7 @@ func TestCharactersPageCarriesTheRankingSubstance(t *testing.T) {
 		"<summary>Rocky <span class=\"text-dim\">(Supporting)</span></summary>",
 		"Also known as Dr. Grace",
 		"Appears from the start",
-		"First appears in chapter 8",
+		"First appears in section 8",
 		`<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>`,
 		`href="/build?work=project-hail-mary&amp;kind=characters"`,
 		`<a href="/works/project-hail-mary/recap">Project Hail Mary recap</a>`,
@@ -603,8 +603,11 @@ func TestRecapRowLabel(t *testing.T) {
 		{query.RecapOut{Through: query.PositionOut{Chapter: 1}, Scope: "book"}, "Story so far - through chapter 1"},
 		{query.RecapOut{Through: query.PositionOut{Chapter: 12}}, "Story so far - through chapter 12"},
 	}
+	if got, want := recapRowLabel(query.RecapOut{Through: query.PositionOut{Chapter: 3}}, "act"), "Story so far - through act 3"; got != want {
+		t.Errorf("recapRowLabel with a stated act = %q, want %q", got, want)
+	}
 	for _, tc := range cases {
-		if got := recapRowLabel(tc.in); got != tc.want {
+		if got := recapRowLabel(tc.in, "chapter"); got != tc.want {
 			t.Errorf("recapRowLabel(%+v) = %q, want %q", tc.in, got, tc.want)
 		}
 	}
@@ -618,7 +621,7 @@ func TestRevealLabelAndRoleLabel(t *testing.T) {
 		2: "First appears in chapter 2", 40: "First appears in chapter 40",
 	}
 	for in, want := range reveals {
-		if got := revealLabel(in); got != want {
+		if got := revealLabel(in, "chapter"); got != want {
 			t.Errorf("revealLabel(%d) = %q, want %q", in, got, want)
 		}
 	}

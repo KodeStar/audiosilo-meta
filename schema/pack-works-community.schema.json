@@ -18,6 +18,12 @@
         "type": "object",
         "additionalProperties": false,
         "minProperties": 1,
+        "dependentSchemas": {
+          "position_scale": {
+            "description": "A scale is a statement about the sidecars beside it, so it needs one: it never makes an entry on its own.",
+            "anyOf": [{ "required": ["characters"] }, { "required": ["recaps"] }]
+          }
+        },
         "properties": {
           "characters": {
             "$ref": "characters.schema.json"
@@ -27,6 +33,9 @@
           },
           "description": {
             "$ref": "description.schema.json"
+          },
+          "position_scale": {
+            "$ref": "position-scale.schema.json"
           }
         }
       }

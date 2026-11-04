@@ -17,13 +17,13 @@ import { Badge, Chevron } from '../ui'
     but still story detail, so it stays hidden behind a per-card accordion the
     reader opens via the reveal-position row. The name stays a real heading in
     both branches; a card with no description has no disclosure control. */
-function CharacterCard({ character }: { character: Character }) {
+function CharacterCard({ character, unit }: { character: Character; unit?: string }) {
   const [open, setOpen] = useState(false)
   const role = roleLabel(character.role)
   const hasDescription = Boolean(character.description)
   const descId = `char-desc-${character.id}`
   const reveal = (
-    <span className="text-xs font-medium text-pink-400/90">{revealLabel(character.reveal)}</span>
+    <span className="text-xs font-medium text-pink-400/90">{revealLabel(character.reveal, unit)}</span>
   )
 
   return (
@@ -62,7 +62,7 @@ function CharacterCard({ character }: { character: Character }) {
 
 /** The cast of a work: community-authored, spoiler-aware character cards, each a
     per-card accordion so descriptions stay hidden until opened. */
-export function CharactersPanel({ characters }: { characters: Character[] }) {
+export function CharactersPanel({ characters, unit }: { characters: Character[]; unit?: string }) {
   return (
     <>
       <p className="mt-6 max-w-2xl text-sm text-dim">
@@ -71,7 +71,7 @@ export function CharactersPanel({ characters }: { characters: Character[] }) {
       </p>
       <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {characters.map((c) => (
-          <CharacterCard key={c.id} character={c} />
+          <CharacterCard key={c.id} character={c} unit={unit} />
         ))}
       </div>
     </>

@@ -531,3 +531,23 @@ func TestCoreProfileIgnoresTheArtifact(t *testing.T) {
 		t.Fatalf("status = %q, want ok; messages = %v", res.Status, res.Messages)
 	}
 }
+
+// A scale at a retired key rides onto the survivor at compose, so a member composed
+// under the survivor would be ruled by a scale its author never saw.
+func TestWorksHoldingRootRefusesAScaleStillAtTheRetiredKey(t *testing.T) {
+	dir := seedTree(t)
+	writeRedirects(t, dir, map[string]string{"retired-work": "existing-work"})
+	testpack.Seed(t, dir, map[string]string{
+		"works/re/retired-work/recaps.json":         testpack.RecapsJSON(t, "retired-work", 1),
+		"works/re/retired-work/position_scale.json": `{"length":5,"unit":"act"}`,
+	})
+
+	res := Process(Options{DataDir: dir, Template: "characters",
+		Body: charactersBody("retired-work", validCharactersJSON, true)})
+	if res.Status != StatusNeedsHuman {
+		t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
+	}
+	if !anyContains(res.Messages, "position_scale") {
+		t.Errorf("the verdict does not name the scale: %v", res.Messages)
+	}
+}
