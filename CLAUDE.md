@@ -596,7 +596,9 @@ it, `pkg/check` and every writer now refuse it loudly.
   (`internal/importer` `marketplaces`, `internal/issueform` `regionAliases`).
   NOTE the WORK's print ISBNs (`xref.isbn`) are deliberately untouched: they stay
   a flat string list (`$defs/isbn_list`); the recording's `isbn[]` is defined
-  inline in `recording.schema.json`, beside its `asin[]` neighbour.
+  inline in `recording.schema.json`, beside its `asin[]` neighbour. A recording may
+  not carry a work's print ISBN, in either spelling (`model.Work.PrintISBNKeys`):
+  metacheck fails the tree, and the importer and the issue forms refuse the value.
   Retailer availability is deliberately NOT a catalogue field. Work-detail API
   responses derive `purchase_links[]` from the durable identifiers already in
   the artifact: a region-scoped ASIN becomes an Audible marketplace URL and a

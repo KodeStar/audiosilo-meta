@@ -189,10 +189,18 @@ func checkRecaps(cat *model.Catalog, idx *pathIndex, add addFunc) {
 }
 
 // checkUniqueness enforces globally unique (region, asin) pairs and ISBNs across
-// all recordings, and unique xref.wikidata within each entity type.
+// all recordings, that no recording carries a work's print ISBN under either
+// spelling (model.Work.PrintISBNKeys says why), and unique xref.wikidata within
+// each entity type.
 func checkUniqueness(cat *model.Catalog, recs []recordWithPath, idx *pathIndex, add addFunc) {
-	asinSeen := map[string]string{} // "region/asin" -> path
-	isbnSeen := map[string]string{} // isbn -> path
+	asinSeen := map[string]string{}  // "region/asin" -> path
+	isbnSeen := map[string]string{}  // isbn -> path
+	printISBN := map[string]string{} // either spelling of a print isbn -> work path
+	for _, w := range cat.Works {
+		for _, key := range w.PrintISBNKeys() {
+			printISBN[key] = idx.work[w]
+		}
+	}
 	for _, pr := range recs {
 		rel := pr.path
 		for _, a := range pr.rec.ASIN {
@@ -212,6 +220,9 @@ func checkUniqueness(cat *model.Catalog, recs []recordWithPath, idx *pathIndex, 
 				add(rel, "duplicate ISBN %s also in %s", isbn.ISBN, prev)
 			} else {
 				isbnSeen[norm] = rel
+			}
+			if at, held := printISBN[norm]; held {
+				add(rel, "ISBN %s is a work's print ISBN (xref.isbn of %s); a recording may not carry it", isbn.ISBN, at)
 			}
 		}
 	}
