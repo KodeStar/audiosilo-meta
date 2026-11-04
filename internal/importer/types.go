@@ -559,7 +559,10 @@ type Summary struct {
 	// LibrivoxFallbackSlugs the works created at `librivox-<id>` for a non-Latin
 	// title (librivoxmatch.go). LibrivoxWorklist is every LibriVox row
 	// the run skipped for a person to resolve, in row order: re-importing the
-	// project id once its work is settled lands it. All zero for other sources.
+	// project id once its work is settled lands it. A project the catalogue
+	// already holds is on it (first, in project order) when a translator id
+	// of its is left uncredited (same-name-author): re-importing it once the
+	// person is settled credits them. All zero for other sources.
 	LibrivoxVariantsAttached int
 	LibrivoxFallbackSlugs    int
 	// LibrivoxAuthorVariants counts the LibriVox rows attached to a work of

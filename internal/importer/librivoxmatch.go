@@ -86,13 +86,17 @@ const (
 	// LibrivoxSameNameAuthor: an author id no person carries meets, by name, a
 	// catalogued person who is someone else, and LibriVox states no year to
 	// mint a record of their own by (librivoxpeople.go rule 2); the candidates
-	// are that person's works.
+	// are that person's works. On a project the catalogue already holds it is
+	// a translator id left uncredited on the recording: held so, or found the
+	// same person as a record carrying ANOTHER author id
+	// (worklistHeldLibrivoxTranslators).
 	LibrivoxSameNameAuthor = "same-name-author"
 )
 
 // LibrivoxWorklistEntry is one LibriVox project a run skipped for a person to
 // resolve: re-importing its id once the catalogue says which work it is (or
-// that it is a new one) lands it.
+// that it is a new one) lands it - or, for a project the catalogue already
+// holds, credits the translator its recording was left without.
 type LibrivoxWorklistEntry struct {
 	Project    int                 `json:"librivox_id"`
 	Title      string              `json:"title"`

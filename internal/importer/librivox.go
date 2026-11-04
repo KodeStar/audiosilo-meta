@@ -666,8 +666,9 @@ type librivoxState struct {
 	authorVariantExamples []string
 	// life is the birth and death years each catalogued person states.
 	life map[string]lifeYears
-	// authorPins is the person each author id of the rows to be planned was
-	// resolved to before planning (resolveLibrivoxAuthors, then
+	// authorPins is the person each author id of the rows to be planned (and
+	// each translator id of the held rows, heldRowSkips) was resolved to
+	// before planning (resolveLibrivoxAuthors, then
 	// keyLibrivoxAuthorVariants): the catalogued holder of a known id, else
 	// the person rules' decision. Every credit of the id carries it
 	// (librivoxCredit.person, credit.person).

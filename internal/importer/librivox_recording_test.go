@@ -3,6 +3,7 @@ package importer
 import (
 	"encoding/json"
 	"reflect"
+	"slices"
 	"strings"
 	"testing"
 
@@ -675,5 +676,62 @@ func TestLibrivoxHeldTranslatorOnAnotherIDsRecordGoesToTheWorklist(t *testing.T)
 	if w := sum.LibrivoxWorklist; len(w) != 1 || w[0].Project != 527 || w[0].Reason != LibrivoxSameNameAuthor ||
 		len(w[0].Candidates) != 1 || w[0].Candidates[0].Work != "a-translated-book" {
 		t.Errorf("worklist = %+v, want 527 as same-name-author against a-translated-book", w)
+	}
+}
+
+func TestLibrivoxHeldTranslatorAPlannedRowHoldsGoesToTheWorklist(t *testing.T) {
+	// Author id 1019 translates the held 527 and authors the planned 9100. The
+	// planned row decides the id (rule 2 holds it: no years, against a
+	// catalogued Ian Johnston carrying author id 5555), so the held row's
+	// translator is credited to nobody - and its project goes on the
+	// worklist beside the planned one, since re-importing it is what credits
+	// the translator once the person is settled.
+	files := map[string]string{
+		personAddr("ian-johnston"): personFiles(t, "ian-johnston", "Ian Johnston",
+			map[string]any{"birth_year": 1850, "death_year": 1920, "librivox_author_id": 5555}),
+	}
+	retailWork(t, files, "a-modern-book", "A Modern Book", "ian-johnston", "2015")
+	dataDir := heldKafkaTree(t, files)
+	held := fixtureProject(t, 527)
+	held.Translators = []LibrivoxPerson{{ID: 1019, FirstName: "Ian", LastName: "Johnston"}}
+	planned := byAuthor(t, 9100, "A Brand New Essay", "English", LibrivoxPerson{ID: 1019, FirstName: "Ian", LastName: "Johnston"})
+	sum := runLibrivox(t, writeSnapshot(t, held, planned), dataDir, allLibrivox)
+	if f := lvFidelityOf(t, dataDir, "metamorphosis", "se"); f.Credits != nil {
+		t.Errorf("credits = %v, want none", f.Credits)
+	}
+	projects := map[int]string{}
+	for _, w := range sum.LibrivoxWorklist {
+		projects[w.Project] = w.Reason
+	}
+	if want := map[int]string{527: LibrivoxSameNameAuthor, 9100: LibrivoxSameNameAuthor}; !reflect.DeepEqual(projects, want) {
+		t.Errorf("worklist = %+v, want 527 and 9100 as same-name-author", sum.LibrivoxWorklist)
+	}
+}
+
+func TestLibrivoxHeldWorklistSpellsDecidedTranslators(t *testing.T) {
+	// The held 527 names two translators: 1019 held (as in
+	// TestLibrivoxHeldTranslatorTheRulesHoldStaysUncredited) and 1020, whose
+	// plain name is a catalogued Jane Roe of other years, so it is credited at
+	// its dated name. The worklist row spells 1020 as decided, as a planned
+	// row's does.
+	files := map[string]string{
+		personAddr("ian-johnston"): personFiles(t, "ian-johnston", "Ian Johnston",
+			map[string]any{"birth_year": 1850, "death_year": 1920, "librivox_author_id": 5555}),
+		personAddr("jane-roe"): personFiles(t, "jane-roe", "Jane Roe",
+			map[string]any{"birth_year": 1960, "death_year": 2020}),
+	}
+	retailWork(t, files, "a-modern-book", "A Modern Book", "ian-johnston", "2015")
+	dataDir := heldKafkaTree(t, files)
+	pr := fixtureProject(t, 527)
+	pr.Translators = []LibrivoxPerson{
+		{ID: 1019, FirstName: "Ian", LastName: "Johnston"},
+		{ID: 1020, FirstName: "Jane", LastName: "Roe", DOB: "1800", DOD: "1870"},
+	}
+	sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
+	if f := lvFidelityOf(t, dataDir, "metamorphosis", "se"); !reflect.DeepEqual(f.Credits, []model.Credit{{Person: "jane-roe-1800-1870", Role: model.RoleTranslator}}) {
+		t.Errorf("credits = %v, want jane-roe-1800-1870", f.Credits)
+	}
+	if w := sum.LibrivoxWorklist; len(w) != 1 || !slices.Contains(w[0].Authors, "Jane Roe (1800-1870) (Translator)") {
+		t.Errorf("worklist = %+v, want 527 naming Jane Roe (1800-1870) (Translator)", w)
 	}
 }
