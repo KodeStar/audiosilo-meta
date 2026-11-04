@@ -244,6 +244,20 @@ func TestLibrivoxRuleViolations(t *testing.T) {
 			want: "librivox_genres",
 		},
 		{
+			name: "recording credits without librivox_id",
+			mutate: func(f map[string]string) {
+				f[lvRecRel] = `{"abridged":false,"credits":[{"person":"author-one","role":"translator"}],"id":"rec-one","language":"en","license":"CC0-1.0","narrators":["narrator-one"],"sources":[{"type":"user"}],"work":"book-one"}`
+			},
+			want: "credits without a librivox_id",
+		},
+		{
+			name: "chapter readers without librivox_id",
+			mutate: func(f map[string]string) {
+				f[lvRecRel] = withChapters(`[{"length_ms":1000,"readers":["narrator-one"],"start_ms":0,"title":"I"},{"length_ms":1000,"start_ms":1000,"title":"II"}]`)
+			},
+			want: "chapter 0 has readers but the recording has no librivox_id",
+		},
+		{
 			name: "section_number without librivox_id",
 			mutate: func(f map[string]string) {
 				f[lvRecRel] = withChapters(`[{"length_ms":1000,"section_number":0,"start_ms":0,"title":"I"}]`)

@@ -219,12 +219,28 @@ func likeEscape(s string) string {
 const lastNameSQL = `substr(p.name, length(rtrim(p.name, replace(p.name, ' ', ''))) + 1)`
 
 // librivoxFeedSelect is the feed page's row: the recording, its title (the
-// project's own, else its work's: lvTitleExpr), its LibriVox columns. Every page
-// reads idx_recordings_librivox in id order.
+// project's own, else its work's: lvTitleExpr), its LibriVox columns, and
+// whether the recording pass has restated it (lvRestatedExpr). Every page reads
+// idx_recordings_librivox in id order.
 func librivoxFeedSelect(recordingLayer bool) string {
 	return `SELECT r.work_id, r.id, r.librivox_id, ` + lvTitleExpr(recordingLayer) + `, r.language, r.copyright_year, ` +
-		`r.link_librivox, r.link_zip, r.link_rss, r.link_text, r.archive_id, r.cover_url, r.runtime_min ` +
+		`r.link_librivox, r.link_zip, r.link_rss, r.link_text, r.archive_id, r.cover_url, r.runtime_min, ` +
+		lvRestatedExpr(recordingLayer) + ` ` +
 		`FROM recordings r JOIN works w ON w.id = r.work_id WHERE r.librivox_id IS NOT NULL`
+}
+
+// lvRestatedExpr is whether a feed row's recording was restated by the import's
+// recording pass: every restated LibriVox recording carries its project's
+// librivox_title, so a NULL one is a recording the pass has not reached yet
+// (an artifact cut while the backfill is only part-landed). Such a recording
+// answers genres and translators as version 8 did - its work's - instead of
+// the empty lists its absent rows would otherwise read as. Never on an older
+// artifact.
+func lvRestatedExpr(recordingLayer bool) string {
+	if recordingLayer {
+		return `(r.librivox_title IS NOT NULL)`
+	}
+	return `0`
 }
 
 // lvTitleExpr is a feed row's title: the project's own (librivox_title, from
@@ -272,32 +288,46 @@ func librivoxFeedQuery(p librivoxFeedParams, recordingLayer bool) (string, []any
 			` AND ` + notTranslatorArm + `)`
 		args = append(args, arg)
 	}
-	if p.genre.value != "" && recordingLayer {
-		// The project's own genre names, exactly as LibriVox filters them: a
-		// LibriVox name is never widened through the vocabulary mapping (meta#2761).
-		match, arg := textMatchSQL(`g.genre`, p.genre)
-		query += ` AND EXISTS (SELECT 1 FROM recording_librivox_genres g WHERE g.work_id = r.work_id AND g.recording_id = r.id AND ` + match + `)`
-		args = append(args, arg)
-	} else if p.genre.value != "" {
-		slugs, like := librivoxGenreSlugs(p.genre)
-		arms := []string{}
-		if len(slugs) > 0 {
-			arms = append(arms, `genre IN (`+strings.TrimSuffix(strings.Repeat("?,", len(slugs)), ",")+`)`)
-			for _, g := range slugs {
-				args = append(args, g)
-			}
+	if p.genre.value != "" {
+		vocab, vocabArgs := vocabularyGenreArm(p.genre)
+		if recordingLayer {
+			// A restated recording matches the project's own genre names, exactly
+			// as LibriVox filters them, never widened through the vocabulary
+			// mapping (meta#2761); one the pass has not reached matches its work's
+			// genres as version 8 did (lvRestatedExpr).
+			match, arg := textMatchSQL(`g.genre`, p.genre)
+			query += ` AND ((r.librivox_title IS NOT NULL AND EXISTS (SELECT 1 FROM recording_librivox_genres g WHERE g.work_id = r.work_id AND g.recording_id = r.id AND ` + match + `))` +
+				` OR (r.librivox_title IS NULL AND ` + vocab + `))`
+			args = append(append(args, arg), vocabArgs...)
+		} else {
+			query += ` AND ` + vocab
+			args = append(args, vocabArgs...)
 		}
-		if like != "" {
-			arms = append(arms, `genre LIKE ? ESCAPE '\'`)
-			args = append(args, like)
-		}
-		query += ` AND EXISTS (SELECT 1 FROM work_genres g WHERE g.work_id = r.work_id AND (` + strings.Join(arms, " OR ") + `))`
 	}
 	order := ` ORDER BY r.librivox_id ASC`
 	if p.desc {
 		order = ` ORDER BY r.librivox_id DESC`
 	}
 	return query + order + ` LIMIT ? OFFSET ?`, append(args, p.limit, p.offset)
+}
+
+// vocabularyGenreArm is the version 8 genre filter over a recording's work:
+// the vocabulary values a genre parameter names (librivoxGenreSlugs).
+func vocabularyGenreArm(m textMatch) (string, []any) {
+	slugs, like := librivoxGenreSlugs(m)
+	var arms []string
+	var args []any
+	if len(slugs) > 0 {
+		arms = append(arms, `genre IN (`+strings.TrimSuffix(strings.Repeat("?,", len(slugs)), ",")+`)`)
+		for _, g := range slugs {
+			args = append(args, g)
+		}
+	}
+	if like != "" {
+		arms = append(arms, `genre LIKE ? ESCAPE '\'`)
+		args = append(args, like)
+	}
+	return `EXISTS (SELECT 1 FROM work_genres g WHERE g.work_id = r.work_id AND (` + strings.Join(arms, " OR ") + `))`, args
 }
 
 // textMatchSQL is the predicate and argument a title/author/genre parameter m
@@ -350,6 +380,9 @@ type lvRow struct {
 	linkLibrivox, linkZip, linkRSS string
 	linkText, archiveID, coverURL  string
 	runtimeMin                     int
+	// restated is whether the recording pass reached this recording
+	// (lvRestatedExpr): its genres and translators are then its own.
+	restated bool
 }
 
 // lvPerson is an author or translator as the feed names one.
@@ -393,10 +426,14 @@ func (s *DB) librivoxFeed(ctx context.Context, p librivoxFeedParams) ([]map[stri
 		return nil, err
 	}
 	workIDs := make([]string, 0, len(page))
+	var fallback []string // the works of the rows the recording pass has not reached
 	for _, r := range page {
 		workIDs = append(workIDs, r.workID)
+		if !r.restated {
+			fallback = append(fallback, r.workID)
+		}
 	}
-	facts, err := s.librivoxFeedFacts(ctx, workIDs, p.extended, recordingLayer)
+	facts, err := s.librivoxFeedFacts(ctx, workIDs, fallback, p.extended, recordingLayer)
 	if err != nil {
 		return nil, err
 	}
@@ -415,7 +452,7 @@ func scanLibrivoxRows(rows *sql.Rows) ([]lvRow, error) {
 		var cy, runtime sql.NullInt64
 		var lvLink, zip, rss, text, archive, cover sql.NullString
 		if err := rows.Scan(&r.workID, &r.recID, &r.librivoxID, &r.title, &r.language, &cy,
-			&lvLink, &zip, &rss, &text, &archive, &cover, &runtime); err != nil {
+			&lvLink, &zip, &rss, &text, &archive, &cover, &runtime, &r.restated); err != nil {
 			return nil, err
 		}
 		r.copyrightYear, r.runtimeMin = int(cy.Int64), int(runtime.Int64)
@@ -434,12 +471,17 @@ type recKey struct{ work, rec string }
 // section readers are the recording's own; on an older one the translators and
 // genres are its work's (the vocabulary's), and there are no section readers.
 type lvFacts struct {
-	authors        map[string][]lvPerson // by work: authors that are not translators
-	translators    map[recKey][]lvPerson
-	genres         map[recKey][]string
-	chapters       map[recKey][]lvChapter
-	readers        map[recKey][]lvReader         // the recording's narrators
-	sectionReaders map[recKey]map[int][]lvReader // by chapter idx
+	authors     map[string][]lvPerson // by work: authors that are not translators
+	translators map[recKey][]lvPerson // the recording's own (the recording layer)
+	genres      map[recKey][]string
+	// workTranslators and workGenres are the version 8 answer - the work's
+	// translator credits and vocabulary genres - for a row the recording pass
+	// has not reached (lvRow.restated false).
+	workTranslators map[recKey][]lvPerson
+	workGenres      map[recKey][]string
+	chapters        map[recKey][]lvChapter
+	readers         map[recKey][]lvReader         // the recording's narrators
+	sectionReaders  map[recKey]map[int][]lvReader // by chapter idx
 }
 
 // notTranslatorArm keeps a work_authors row (wa) whose person the work does not
@@ -518,15 +560,22 @@ func lvSectionReadersSQL(ph string) string {
 // librivoxFeedFacts reads the page's per-work and per-recording facts. The
 // translators, genres and readers appear only on an extended page, so a plain
 // one does not read them. recordingLayer reads the recording's own (lvFacts).
-func (s *DB) librivoxFeedFacts(ctx context.Context, workIDs []string, extended, recordingLayer bool) (*lvFacts, error) {
+//
+// fallback is the works of the page's rows the recording pass has not reached
+// (lvRow.restated false; every row on an older artifact): their genres and
+// translators are read as version 8 did, the work's, into workGenres and
+// workTranslators.
+func (s *DB) librivoxFeedFacts(ctx context.Context, workIDs, fallback []string, extended, recordingLayer bool) (*lvFacts, error) {
 	f := &lvFacts{
 		authors: map[string][]lvPerson{}, translators: map[recKey][]lvPerson{}, genres: map[recKey][]string{},
+		workTranslators: map[recKey][]lvPerson{}, workGenres: map[recKey][]string{},
 		chapters: map[recKey][]lvChapter{}, readers: map[recKey][]lvReader{},
 		sectionReaders: map[recKey]map[int][]lvReader{},
 	}
-	// each runs one batched read over the page's works, handing every row to scan.
-	each := func(sqlOf func(string) string, scan func(*sql.Rows) error) error {
-		return eachChunk(workIDs, func(ph string, args []any) error {
+	// over runs one batched read over ids, handing every row to scan; each is
+	// over the page's works.
+	over := func(ids []string, sqlOf func(string) string, scan func(*sql.Rows) error) error {
+		return eachChunk(ids, func(ph string, args []any) error {
 			rows, err := s.db.QueryContext(ctx, sqlOf(ph), args...)
 			if err != nil {
 				return err
@@ -539,6 +588,9 @@ func (s *DB) librivoxFeedFacts(ctx context.Context, workIDs []string, extended, 
 			}
 			return rows.Err()
 		})
+	}
+	each := func(sqlOf func(string) string, scan func(*sql.Rows) error) error {
+		return over(workIDs, sqlOf, scan)
 	}
 	if err := each(lvAuthorsSQL, func(rows *sql.Rows) error {
 		var work string
@@ -566,26 +618,38 @@ func (s *DB) librivoxFeedFacts(ctx context.Context, workIDs []string, extended, 
 	if !extended {
 		return f, nil
 	}
-	if err := each(lvTranslatorsSQL(recordingLayer), func(rows *sql.Rows) error {
-		var k recKey
-		p, err := scanLvPerson(rows, &k.work, &k.rec)
-		if err == nil {
-			f.translators[k] = append(f.translators[k], p)
-		}
-		return err
-	}); err != nil {
-		return nil, err
-	}
-	if err := each(lvGenresSQL(recordingLayer), func(rows *sql.Rows) error {
-		var k recKey
-		var genre string
-		if err := rows.Scan(&k.work, &k.rec, &genre); err != nil {
+	// The translators and genres: the recordings' own (the recording layer),
+	// and the works' for the rows the pass has not reached.
+	credits := func(ids []string, recordingLevel bool, translators map[recKey][]lvPerson, genres map[recKey][]string) error {
+		if err := over(ids, lvTranslatorsSQL(recordingLevel), func(rows *sql.Rows) error {
+			var k recKey
+			p, err := scanLvPerson(rows, &k.work, &k.rec)
+			if err == nil {
+				translators[k] = append(translators[k], p)
+			}
+			return err
+		}); err != nil {
 			return err
 		}
-		f.genres[k] = append(f.genres[k], genre)
-		return nil
-	}); err != nil {
-		return nil, err
+		return over(ids, lvGenresSQL(recordingLevel), func(rows *sql.Rows) error {
+			var k recKey
+			var genre string
+			if err := rows.Scan(&k.work, &k.rec, &genre); err != nil {
+				return err
+			}
+			genres[k] = append(genres[k], genre)
+			return nil
+		})
+	}
+	if recordingLayer {
+		if err := credits(workIDs, true, f.translators, f.genres); err != nil {
+			return nil, err
+		}
+	}
+	if len(fallback) > 0 {
+		if err := credits(fallback, false, f.workTranslators, f.workGenres); err != nil {
+			return nil, err
+		}
 	}
 	if err := each(lvReadersSQL, func(rows *sql.Rows) error {
 		var k recKey
@@ -683,12 +747,16 @@ func librivoxBook(r lvRow, f *lvFacts, p librivoxFeedParams) map[string]any {
 		}
 		book["url_iarchive"] = iarchive
 		book["sections"] = librivoxSections(chapters, f.readers[key], f.sectionReaders[key], language)
-		genres := make([]map[string]string, 0, len(f.genres[key]))
-		for _, g := range f.genres[key] {
+		names, translators := f.genres[key], f.translators[key]
+		if !r.restated {
+			names, translators = f.workGenres[key], f.workTranslators[key]
+		}
+		genres := make([]map[string]string, 0, len(names))
+		for _, g := range names {
 			genres = append(genres, map[string]string{"id": "", "name": g})
 		}
 		book["genres"] = genres
-		book["translators"] = librivoxPeople(f.translators[key])
+		book["translators"] = librivoxPeople(translators)
 	}
 	if p.fields != nil {
 		for k := range book {

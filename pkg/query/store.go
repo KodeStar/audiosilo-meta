@@ -79,11 +79,11 @@ type DB struct {
 
 	// librivoxRecordingFilled is whether a version 9 artifact's LIBRIVOX
 	// RECORDING layer holds anything (librivoxRecordingFilledSQL), asked once at
-	// load. A release cut from the code before the backfill data lands claims
-	// version 9 with every LibriVox recording still unrestated; answering the
-	// feed from it would name no translator, no genre and no section reader and
-	// 404 every ?genre=, so until the layer is filled the feed keeps its version
-	// 8 answer (librivoxFeedLayer).
+	// load. The feed falls back PER RECORDING anyway (lvRestatedExpr: a
+	// recording the backfill has not reached answers as version 8 did), so this
+	// is a saving, not the correctness: a release cut before any backfill data
+	// lands answers from the plain version 8 queries, without the layer's
+	// per-page reads and the per-row restated arm of ?genre= (librivoxFeedLayer).
 	librivoxRecordingFilled bool
 
 	// log is the injected logger (SetLogger), for the query layer's degradation

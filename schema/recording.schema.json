@@ -135,7 +135,7 @@
             "$ref": "common.schema.json#/$defs/https_url"
           },
           "readers": {
-            "description": "Who reads THIS chapter, as person slugs, each one of the recording's narrators (pkg/check). Written for a recording whose chapters are read by different people (a LibriVox collaborative project): when no chapter of the recording carries readers, who reads which chapter is unstated, except that a recording with one narrator is read by them throughout; once any chapter carries them, a chapter without them states no reader.",
+            "description": "Who reads THIS chapter, as person slugs, each one of the recording's narrators (pkg/check). A LibriVox section's: pkg/check requires librivox_id beside it. Written for a recording whose chapters are read by different people (a LibriVox collaborative project): when no chapter of the recording carries readers, who reads which chapter is unstated, except that a recording with one narrator is read by them throughout; once any chapter carries them, a chapter without them states no reader.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
@@ -197,7 +197,7 @@
       }
     },
     "credits": {
-      "description": "Contributors credited on THIS recording in a role that is not narration. Today one role: the translator of the translation a LibriVox project reads, a fact about the project (two LibriVox translations of one work credit two different translators). It is ADDITIONAL to the work's own credits, never instead of them: a work keeps the translator credits its sources stated, and authors stays the identity list. The (person, role) shape and rules of a work's credits, the people resolving into the people family, but only the roles a recording can state (`translator`); a role is added here by schema change when a source states one per production. Optional; written only when the source STATED the role. A LibriVox import writes them in LibriVox's order.",
+      "description": "Contributors credited on THIS recording in a role that is not narration. Today one role: the translator of the translation a LibriVox project reads, a fact about the project (two LibriVox translations of one work credit two different translators). It is ADDITIONAL to the work's own credits, never instead of them: a work keeps the translator credits its sources stated, and authors stays the identity list. The (person, role) shape and rules of a work's credits, the people resolving into the people family, but only the roles a recording can state (`translator`); a role is added here by schema change when a source states one per production. Optional; written only when the source STATED the role. A LibriVox import writes them in LibriVox's order; pkg/check requires librivox_id beside them.",
       "type": "array",
       "minItems": 1,
       "uniqueItems": true,

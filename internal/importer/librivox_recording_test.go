@@ -505,3 +505,76 @@ func TestLibrivoxSectionlessRowKeepsTheChapterFacts(t *testing.T) {
 		t.Fatalf("tree failed validation:\n%v", res.Problems)
 	}
 }
+
+// heldMetamorphosis imports fixture 527 into a fresh tree, so a rerun meets it
+// held: its recording credits Ian Johnston and lists "General Fiction".
+func heldMetamorphosis(t *testing.T) string {
+	t.Helper()
+	dataDir := t.TempDir()
+	runLibrivox(t, librivoxFixture, dataDir, mustLibrivoxIDs("527"))
+	if _, _, f := lvRecordingOf(t, dataDir, 527); len(f.Credits) != 1 || len(f.LibrivoxGenres) != 1 {
+		t.Fatalf("seeded 527 = %+v", f)
+	}
+	return dataDir
+}
+
+func TestLibrivoxRerunWithoutGenresOrTranslatorsKeepsThem(t *testing.T) {
+	// A thinner row (no genres, no translators) states nothing about either:
+	// the stored ones stay, nothing is dropped.
+	dataDir := heldMetamorphosis(t)
+	pr := fixtureProject(t, 527)
+	pr.Genres, pr.Translators = nil, nil
+	sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
+	_, _, f := lvRecordingOf(t, dataDir, 527)
+	if !reflect.DeepEqual(f.LibrivoxGenres, []string{"General Fiction"}) ||
+		!reflect.DeepEqual(f.Credits, []model.Credit{{Person: "ian-johnston", Role: model.RoleTranslator}}) {
+		t.Errorf("after a thinner row: genres %v credits %v, want both kept", f.LibrivoxGenres, f.Credits)
+	}
+	if sum.LibrivoxRestated.TranslatorCreditsDropped != 0 {
+		t.Errorf("dropped %d translator credits", sum.LibrivoxRestated.TranslatorCreditsDropped)
+	}
+}
+
+func TestLibrivoxRerunWithAnUnresolvedTranslatorKeepsTheStoredOne(t *testing.T) {
+	// The row's only translator now slugs to nothing: it adds nobody, but it
+	// may be the person stored, so the stored credit is not deleted.
+	dataDir := heldMetamorphosis(t)
+	pr := fixtureProject(t, 527)
+	pr.Translators = []LibrivoxPerson{{ID: 7777, LastName: "Ἰωάννης"}}
+	sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
+	if _, _, f := lvRecordingOf(t, dataDir, 527); !reflect.DeepEqual(f.Credits, []model.Credit{{Person: "ian-johnston", Role: model.RoleTranslator}}) {
+		t.Errorf("credits = %v, want the stored translator kept", f.Credits)
+	}
+	if sum.LibrivoxRestated.TranslatorsUnresolved != 1 || sum.LibrivoxRestated.TranslatorCreditsDropped != 0 {
+		t.Errorf("restated = %+v, want 1 unresolved and nothing dropped", sum.LibrivoxRestated)
+	}
+}
+
+func TestLibrivoxRerunNamingAnotherTranslatorDropsTheStoredOne(t *testing.T) {
+	// The row now names another translator, who resolves - Willa Muir, whom
+	// another project of the catalogue keyed by her author id 2222: the row has
+	// said who translated it, so the stored credit for someone else goes
+	// (counted). (A held row's NEW author id gets no person decision, so it
+	// would stay unresolved and drop nothing.)
+	other := fixtureProject(t, 1870)
+	other.ID, other.Title, other.Translators = 91005, "Another Book", nil
+	other.Authors = []LibrivoxPerson{{ID: 2222, FirstName: "Willa", LastName: "Muir", DOB: "1890", DOD: "1970"}}
+	dataDir := t.TempDir()
+	runLibrivox(t, writeSnapshot(t, fixtureProject(t, 527), other), dataDir, allLibrivox)
+	if p := personOf(t, dataDir, "willa-muir"); p.AuthorID != 2222 {
+		t.Fatalf("willa-muir = %+v, want author id 2222", p)
+	}
+	pr := fixtureProject(t, 527)
+	pr.Translators = []LibrivoxPerson{{ID: 2222, FirstName: "Willa", LastName: "Muir", DOB: "1890", DOD: "1970"}}
+	sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
+	_, _, f := lvRecordingOf(t, dataDir, 527)
+	if len(f.Credits) != 1 || f.Credits[0].Person == "ian-johnston" {
+		t.Errorf("credits = %v, want the new translator alone", f.Credits)
+	}
+	if sum.LibrivoxRestated.TranslatorCreditsDropped != 1 {
+		t.Errorf("dropped = %d, want 1 (restated %+v, warnings %v)", sum.LibrivoxRestated.TranslatorCreditsDropped, sum.LibrivoxRestated, sum.Warnings)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("tree failed validation:\n%v", res.Problems)
+	}
+}

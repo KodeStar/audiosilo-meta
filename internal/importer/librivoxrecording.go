@@ -71,6 +71,10 @@ type LibrivoxRestated struct {
 	// whose row lists no sections because they are no longer narrators (the
 	// rest of its chapter facts are kept).
 	StaleReadersDropped int
+	// TranslatorCreditsDropped counts the stored recording credits a rerun
+	// dropped: the row named its translators, every one resolved, and that
+	// person was not among them.
+	TranslatorCreditsDropped int
 	// ReadersUnresolved counts the recordings left without chapter readers
 	// because a section's reader resolved to none of its narrators.
 	ReadersUnresolved int
@@ -139,8 +143,14 @@ func (p *planner) restateLibrivoxRecording(ref RecRef, f *librivoxFacts, lifeSee
 	if f.title != "" {
 		set(rec, "librivox_title", f.title)
 	}
-	set(rec, "librivox_genres", listOrNil(f.genres))
-	set(rec, "credits", p.librivoxRecordingCredits(f))
+	// A row stating no genres (a thinner fetch) says nothing about them: the
+	// stored ones stay, as a section-less row's chapter facts do.
+	if len(f.genres) > 0 {
+		set(rec, "librivox_genres", f.genres)
+	}
+	if credits, write := p.librivoxRecordingCredits(f, rec["credits"]); write {
+		set(rec, "credits", credits)
+	}
 	p.restateLibrivoxChapters(rec, f, set)
 	if changed {
 		p.putWorkEntry(ref.Work, entry)
@@ -148,18 +158,31 @@ func (p *planner) restateLibrivoxRecording(ref RecRef, f *librivoxFacts, lifeSee
 	}
 }
 
-// librivoxRecordingCredits is the project's translators as the recording's
-// credits, in LibriVox's order, each person once; nil when it states none or
-// none resolves.
-func (p *planner) librivoxRecordingCredits(f *librivoxFacts) any {
+// librivoxRecordingCredits is the recording's credits as the row restates them
+// over stored (the recording's current credits member), and whether to write
+// them at all:
+//
+//   - a row stating no translator says nothing about them: the stored credits
+//     stay (write false), as a section-less row's chapter facts do;
+//   - otherwise its translators resolve (librivoxTranslatorSlug), in LibriVox's
+//     order, each person once. A stored credit whose person is not among them
+//     is dropped only when EVERY stated translator resolved - then the row has
+//     said who translated it - and is counted
+//     (LibrivoxRestated.TranslatorCreditsDropped). One that does not resolve
+//     adds nothing, but it may be the very person stored, so then the stored
+//     credits are kept after the resolved ones.
+func (p *planner) librivoxRecordingCredits(f *librivoxFacts, stored any) (any, bool) {
 	var out []model.Credit
 	seen := map[string]bool{}
+	stated, unresolved := 0, 0
 	for _, c := range f.credits {
 		if c.kind != librivoxAuthor || c.suffix != librivoxTranslatorSuffix {
 			continue
 		}
+		stated++
 		slug, ok := p.librivoxTranslatorSlug(c, f.id)
 		if !ok {
+			unresolved++
 			p.summary.LibrivoxRestated.TranslatorsUnresolved++
 			p.rowWarnings = append(p.rowWarnings, fmt.Sprintf(
 				"librivox %d: translator %q (author id %d) resolves to no person; not credited on the recording", f.id, c.name, c.id))
@@ -171,7 +194,25 @@ func (p *planner) librivoxRecordingCredits(f *librivoxFacts) any {
 		seen[slug] = true
 		out = append(out, model.Credit{Person: slug, Role: model.RoleTranslator})
 	}
-	return listOrNil(out)
+	if stated == 0 {
+		return nil, false
+	}
+	list, _ := stored.([]any)
+	for _, v := range list {
+		m, _ := v.(map[string]any)
+		person, _ := m["person"].(string)
+		role, _ := m["role"].(string)
+		if person == "" || seen[person] {
+			continue
+		}
+		if unresolved == 0 {
+			p.summary.LibrivoxRestated.TranslatorCreditsDropped++
+			continue
+		}
+		seen[person] = true
+		out = append(out, model.Credit{Person: person, Role: role})
+	}
+	return listOrNil(out), true
 }
 
 // librivoxTranslatorSlug is the person a translator credit of project names,
@@ -213,8 +254,13 @@ func (p *planner) librivoxTranslatorSlug(c librivoxCredit, project int) (string,
 	if _, retired := p.redirects.Survivor(model.RedirectPeople, r.slug); retired {
 		return "", false
 	}
+	// createPerson takes its provenance from the row being planned; the pass
+	// runs after planning, so it names this project for the record and puts
+	// the planner's own back.
+	prev := p.curSource
 	p.curSource = OutSource{Type: p.sourceType, Ref: strconv.Itoa(project), ImportedAt: p.importDate}
 	slug := p.createPerson(r.slug, r.name)
+	p.curSource = prev
 	p.stampLibrivoxID(slug, c, project)
 	p.summary.LibrivoxRestated.TranslatorsCreated++
 	return slug, p.fatal == nil

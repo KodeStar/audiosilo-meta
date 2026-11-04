@@ -93,9 +93,11 @@ func (s *DB) hasLibrivoxRecordingLayer() bool {
 const librivoxRecordingFilledSQL = `SELECT EXISTS (SELECT 1 FROM recording_librivox_genres) ` +
 	`OR EXISTS (SELECT 1 FROM recordings WHERE librivox_id IS NOT NULL AND librivox_title IS NOT NULL)`
 
-// librivoxFeedLayer reports whether the LibriVox-shaped feed answers from the
-// LIBRIVOX RECORDING layer: the artifact carries it AND it is filled
-// (DB.librivoxRecordingFilled). Otherwise the feed gives its version 8 answer.
+// librivoxFeedLayer reports whether the LibriVox-shaped feed reads the LIBRIVOX
+// RECORDING layer at all: the artifact carries it AND it is filled
+// (DB.librivoxRecordingFilled). Otherwise every row gets the version 8 answer
+// from the version 8 queries; with it, each row still falls back on its own
+// when the pass has not reached it (lvRestatedExpr).
 func (s *DB) librivoxFeedLayer() bool {
 	return s.hasLibrivoxRecordingLayer() && s.librivoxRecordingFilled
 }

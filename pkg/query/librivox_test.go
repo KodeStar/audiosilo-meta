@@ -327,6 +327,56 @@ func TestLibrivoxRecordingLayerUnfilled(t *testing.T) {
 	assertPreRecordingLayerFeed(t, downgradedServer(t, path))
 }
 
+// TestLibrivoxRecordingLayerHalfRestated: an artifact cut while the backfill is
+// only part-landed (527 and 296 not yet restated: no project title, credits,
+// genre names or section facts) answers PER RECORDING - a restated one from
+// the layer, the others as version 8 did - so the first restated recording does
+// not empty every other one's genres and translators.
+func TestLibrivoxRecordingLayerHalfRestated(t *testing.T) {
+	unrestated := `work_id || '/' || recording_id IN (SELECT work_id || '/' || id FROM recordings WHERE librivox_id IN (527, 296))`
+	path := artifacttest.Altered(t, librivoxCatalog(t), 9,
+		"DELETE FROM recording_credits WHERE "+unrestated, "DELETE FROM chapter_readers WHERE "+unrestated,
+		"DELETE FROM recording_librivox_genres WHERE "+unrestated,
+		"UPDATE chapters SET section_number = NULL WHERE "+unrestated,
+		"UPDATE recordings SET librivox_title = NULL WHERE librivox_id IN (527, 296)",
+	)
+	ts := downgradedServer(t, path)
+	byID := map[string]map[string]any{}
+	for _, b := range feedBooks(t, ts.URL, LibrivoxFeedPath+"?extended=1") {
+		byID[b["id"].(string)] = b
+	}
+	genreNames := func(id string) []string {
+		var out []string
+		for _, g := range byID[id]["genres"].([]any) {
+			out = append(out, g.(map[string]any)["name"].(string))
+		}
+		return out
+	}
+	// Restated: the project's own answer.
+	if byID["801"]["title"] != "Candide (version 2)" || !slices.Equal(genreNames("801"), []string{"General Fiction"}) {
+		t.Errorf("restated 801 = title %v genres %v", byID["801"]["title"], genreNames("801"))
+	}
+	// Not restated: the work's genres and translators, as version 8 answered.
+	if g := genreNames("296"); !slices.Equal(g, []string{"short-stories"}) {
+		t.Errorf("unrestated 296 genres = %v, want the work's vocabulary", g)
+	}
+	if tr := byID["527"]["translators"].([]any); len(tr) != 1 || tr[0].(map[string]any)["last_name"] != "Johnston" {
+		t.Errorf("unrestated 527 translators = %v, want the work's", tr)
+	}
+	for _, tc := range []struct {
+		query string
+		want  []string
+	}{
+		{"?genre=General%20Fiction", []string{"801"}}, // 527 is not restated: its work's genres do not name it
+		{"?genre=short-stories", []string{"296"}},     // the version 8 vocabulary arm, for 296 alone
+		{"?genre=Published%20before%201800", []string{"1870"}},
+	} {
+		if got := idsOfBooks(feedBooks(t, ts.URL, LibrivoxFeedPath+tc.query)); !slices.Equal(got, tc.want) {
+			t.Errorf("GET %s = %v, want %v", tc.query, got, tc.want)
+		}
+	}
+}
+
 // TestLibrivoxRecordingLayerFilledByTitlesAlone: one LibriVox recording carrying
 // its project's title is a filled layer, with no genre row anywhere.
 func TestLibrivoxRecordingLayerFilledByTitlesAlone(t *testing.T) {

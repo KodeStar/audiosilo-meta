@@ -24,9 +24,11 @@ import (
 //   - a person's death_year is not before their birth_year (both signed years,
 //     negative BC; the schema refuses 0). LibriVox is the first source to state
 //     either, and an inverted pair is a transcription slip the schema cannot see;
-//   - librivox_title, librivox_genres and a chapter's section_number require the
-//     recording's librivox_id, as audio_url does: each is a LibriVox project's
-//     own statement, which no other recording has;
+//   - librivox_title, librivox_genres, the recording's own credits, and a
+//     chapter's section_number and readers require the recording's
+//     librivox_id, as audio_url does: each is a LibriVox project's own
+//     statement, which no other recording has (so the readers rules below only
+//     ever judge a LibriVox recording);
 //   - a chapter's section_number differs from its 1-based position: absence
 //     already says the position is the number, so one fact has one spelling;
 //   - a recording with ONE narrator does not list readers on every chapter:
@@ -55,10 +57,13 @@ func checkLibrivox(cat *model.Catalog, recs []recordWithPath, idx *pathIndex, ad
 			if len(r.LibrivoxGenres) > 0 {
 				add(pr.path, "librivox_genres without a librivox_id; they are a LibriVox project's own genres")
 			}
+			if len(r.Credits) > 0 {
+				add(pr.path, "credits without a librivox_id; a recording's own credits are a LibriVox project's translators")
+			}
 		}
 		// One walk of the chapters; a non-LibriVox recording's audio_url and
 		// section_number are each reported once, a stray reader once per reader.
-		var audioReported, numberReported bool
+		var audioReported, numberReported, readersReported bool
 		var readerReported map[string]bool
 		everyChapterRead := len(r.Chapters) > 0
 		for i := range r.Chapters {
@@ -74,6 +79,10 @@ func checkLibrivox(cat *model.Catalog, recs []recordWithPath, idx *pathIndex, ad
 			if !lv && ch.AudioURL != "" && !audioReported {
 				audioReported = true
 				add(pr.path, "chapter %d has an audio_url but the recording has no librivox_id; audio_url is a LibriVox section's file", i)
+			}
+			if !lv && len(ch.Readers) > 0 && !readersReported {
+				readersReported = true
+				add(pr.path, "chapter %d has readers but the recording has no librivox_id; readers are a LibriVox section's", i)
 			}
 			for _, rd := range ch.Readers {
 				if !slices.Contains(r.Narrators, rd) && !readerReported[rd] {
