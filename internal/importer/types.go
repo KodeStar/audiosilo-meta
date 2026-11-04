@@ -556,6 +556,11 @@ type Summary struct {
 	// (librivoxauthors.go rule 1). 0 for other sources.
 	LibrivoxAuthorVariants int
 	LibrivoxWorklist       []LibrivoxWorklistEntry
+	// LibrivoxAuthorPairs is the worklist's people half: two author ids of
+	// the run one courtesy title apart, kept as people of their own (or held
+	// by rule 2, LibrivoxPairAuthor.Person ""), for a person to merge or
+	// confirm (librivoxpeople.go rule 1b).
+	LibrivoxAuthorPairs []LibrivoxAuthorPair
 	// UnrecordedCredits is every author, translator or other role credit a
 	// landed row of ANY source states that the run did not record, in row
 	// order: the row attached to a work that does not name the person, and a

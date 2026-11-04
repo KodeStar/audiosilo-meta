@@ -2,6 +2,7 @@ package extract
 
 import (
 	"regexp"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -52,6 +53,18 @@ var numberWords = map[string]int{
 	"fourteen": 14, "fifteen": 15, "sixteen": 16, "seventeen": 17, "eighteen": 18,
 	"nineteen": 19, "twenty": 20, "thirty": 30, "forty": 40, "fifty": 50,
 	"sixty": 60, "seventy": 70, "eighty": 80, "ninety": 90, "hundred": 100,
+}
+
+// NumberWords returns the spelled-out number words this package reads, sorted -
+// the one vocabulary pkg/check's track classifier builds its divider pattern from,
+// so the two cannot drift.
+func NumberWords() []string {
+	words := make([]string, 0, len(numberWords))
+	for w := range numberWords {
+		words = append(words, w)
+	}
+	sort.Strings(words)
+	return words
 }
 
 var (

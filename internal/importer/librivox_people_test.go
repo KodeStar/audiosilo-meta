@@ -5,7 +5,9 @@ package importer
 // rule must keep.
 
 import (
+	"encoding/json"
 	"reflect"
+	"slices"
 	"strings"
 	"testing"
 
@@ -111,6 +113,40 @@ func TestLibrivoxFoldKeepsTwoAuthorIDsApart(t *testing.T) {
 	}
 	if len(sum.HonorificMerges) != 0 {
 		t.Errorf("HonorificMerges = %v, want none", sum.HonorificMerges)
+	}
+	want := []LibrivoxAuthorPair{{
+		Titled: LibrivoxPairAuthor{AuthorID: 14096, Name: "Mrs. William Platt", Person: "mrs-william-platt", Project: 13419},
+		Bare:   LibrivoxPairAuthor{AuthorID: 13717, Name: "William Platt", Person: "william-platt", Project: 13419},
+	}}
+	if !reflect.DeepEqual(sum.LibrivoxAuthorPairs, want) {
+		t.Errorf("pairs = %+v, want %+v", sum.LibrivoxAuthorPairs, want)
+	}
+	mustValidate(t, dataDir)
+	rerunIsANoOp(t, snap, dataDir)
+}
+
+func TestLibrivoxBatchAuthorIDsOneTitleApartNeverFold(t *testing.T) {
+	// Two author ids of one batch a courtesy title apart are two people even
+	// with the same years (meta#2799, the owner's rule): LibriVox's own
+	// duplicate (Livingston 1456 / 15071) and two people (the Platts) look
+	// alike, so the run keeps both records and lists the pair for a person.
+	snap := writeSnapshot(t,
+		byAuthors(t, 4714, "Florence Stanley", lvDated(1456, "Mrs. C. M.", "Livingston", "1832", "1924")),
+		byAuthors(t, 15071, "The Old Homestead", lvDated(15090, "C. M.", "Livingston", "1832", "1924")))
+	dataDir := t.TempDir()
+	sum := runLibrivox(t, snap, dataDir, allLibrivox)
+	if got := workAuthorsOf(t, dataDir, "florence-stanley"); !reflect.DeepEqual(got, []string{"mrs-c-m-livingston"}) {
+		t.Fatalf("florence-stanley authors = %v", got)
+	}
+	if got := workAuthorsOf(t, dataDir, "the-old-homestead"); !reflect.DeepEqual(got, []string{"c-m-livingston"}) {
+		t.Fatalf("the-old-homestead authors = %v", got)
+	}
+	if len(sum.LibrivoxAuthorPairs) != 1 || sum.LibrivoxAuthorPairs[0].String() !=
+		`1456 "Mrs. C. M. Livingston" -> mrs-c-m-livingston (project 4714); 15090 "C. M. Livingston" -> c-m-livingston (project 15071)` {
+		t.Errorf("pairs = %v", sum.LibrivoxAuthorPairs)
+	}
+	if len(sum.HonorificMerges) != 0 || len(sum.LibrivoxWorklist) != 0 {
+		t.Errorf("honorific merges %v, worklist %v, want none", sum.HonorificMerges, sum.LibrivoxWorklist)
 	}
 	mustValidate(t, dataDir)
 	rerunIsANoOp(t, snap, dataDir)
@@ -731,11 +767,19 @@ func TestLibrivoxSecondUndatedIDInARunIsHeld(t *testing.T) {
 	if p := personOf(t, oneRun, "ralph-scott"); p.AuthorID != 17170 {
 		t.Errorf("ralph-scott = %+v", p)
 	}
+	// The hold names the first id's works, as a later run names them.
+	wantCandidates := []LibrivoxCandidate{{Work: "a-soldiers-diary", Title: "A Soldier's Diary"}}
+	if got := sum.LibrivoxWorklist[0].Candidates; !reflect.DeepEqual(got, wantCandidates) {
+		t.Errorf("one run's candidates = %+v, want %+v", got, wantCandidates)
+	}
 
 	twoRuns := t.TempDir()
 	runLibrivox(t, writeSnapshot(t, first), twoRuns, allLibrivox)
-	if got := heldOf(runLibrivox(t, writeSnapshot(t, second), twoRuns, allLibrivox)); !reflect.DeepEqual(got, []int{99031}) {
+	later := runLibrivox(t, writeSnapshot(t, second), twoRuns, allLibrivox)
+	if got := heldOf(later); !reflect.DeepEqual(got, []int{99031}) {
 		t.Errorf("two runs held %v, want [99031]", got)
+	} else if got := later.LibrivoxWorklist[0].Candidates; !reflect.DeepEqual(got, wantCandidates) {
+		t.Errorf("the later run's candidates = %+v, want %+v", got, wantCandidates)
 	}
 	if !reflect.DeepEqual(testpack.Snapshot(t, oneRun), testpack.Snapshot(t, twoRuns)) {
 		t.Error("one run and two runs left different trees")
@@ -783,5 +827,497 @@ func TestLibrivoxSecondIDInARunMeetsTheCataloguedYears(t *testing.T) {
 	runLibrivox(t, writeSnapshot(t, second), twoRuns, allLibrivox)
 	if !reflect.DeepEqual(testpack.Snapshot(t, oneRun), testpack.Snapshot(t, twoRuns)) {
 		t.Error("one run and two runs left different trees")
+	}
+}
+
+// The person a credit names is decided once, by LibriVox id, after the
+// batch's initials step (meta#2799).
+
+// withReader is pr read by one reader throughout.
+func withReader(pr LibrivoxProject, id int, name string) LibrivoxProject {
+	pr.Sections = append([]LibrivoxSection(nil), pr.Sections...)
+	for i := range pr.Sections {
+		pr.Sections[i].Readers = []LibrivoxReader{{ReaderID: lvInt(id), DisplayName: name}}
+	}
+	return pr
+}
+
+// treeWithoutSources is the data tree at dir with every record's sources
+// removed: a record's provenance lists the projects that wrote it in the order
+// the run met them, which is the one thing a row order may change.
+func treeWithoutSources(t *testing.T, dir string) map[string]any {
+	t.Helper()
+	var strip func(v any) any
+	strip = func(v any) any {
+		switch v := v.(type) {
+		case map[string]any:
+			delete(v, "sources")
+			for k, e := range v {
+				v[k] = strip(e)
+			}
+		case []any:
+			for i, e := range v {
+				v[i] = strip(e)
+			}
+		}
+		return v
+	}
+	out := map[string]any{}
+	for path, body := range testpack.Snapshot(t, dir) {
+		var v any
+		if err := json.Unmarshal([]byte(body), &v); err != nil {
+			t.Fatalf("%s: %v", path, err)
+		}
+		out[path] = strip(v)
+	}
+	return out
+}
+
+func TestLibrivoxPersonDecisionsIgnoreRowOrder(t *testing.T) {
+	projects := []LibrivoxProject{
+		// An undated author and a reader of one name are one person.
+		withReader(byAuthor(t, 99101, "Roe's Verses", "English", lvAuthor(5001, "Jane", "Roe")), 9001, "Volunteer One"),
+		withReader(byAuthor(t, 99102, "Another Book", "English", lvAuthor(5002, "Pat", "Other")), 9002, "Jane Roe"),
+		// An author who died before LibriVox and a reader of one name are two.
+		withReader(byAuthor(t, 99103, "Old Sermons", "English", lvDated(5003, "John", "Doe", "1700", "1770")), 9001, "Volunteer One"),
+		withReader(byAuthor(t, 99104, "Third Book", "English", lvAuthor(5004, "Kim", "Third")), 9004, "John Doe"),
+		// Two new ids of one name with other years: the lower project's keeps
+		// the plain name, the other is minted dated.
+		withReader(byAuthor(t, 99105, "Grant's Tales", "English", lvDated(5005, "James", "Grant", "1822", "1887")), 9001, "Volunteer One"),
+		withReader(byAuthor(t, 99106, "Grant's Letters", "English", lvDated(5006, "James", "Grant", "1802", "1879")), 9001, "Volunteer One"),
+		// One id spelled two ways is one person, named as its lower project
+		// spells it.
+		withReader(byAuthor(t, 99107, "Mountain Notes", "English", lvAuthor(5007, "Ann", "Hill-Smith")), 9001, "Volunteer One"),
+		withReader(byAuthor(t, 99108, "Valley Notes", "English", lvAuthor(5007, "Anne", "Hill-Smith")), 9001, "Volunteer One"),
+	}
+	// RunLibrivox reads a snapshot in project-id order, so the rows are
+	// handed to the planner directly, in each order.
+	run := func(order []LibrivoxProject) (string, Summary) {
+		dataDir := t.TempDir()
+		books := make([]sourceBook, 0, len(order))
+		for _, pr := range order {
+			books = append(books, librivoxBook(pr))
+		}
+		sum, err := runBooks(books, sourceLibrivox, Options{DataDir: dataDir, ImportDate: testImportDate}, nil,
+			func(p *planner) { p.genres = librivoxGenreTable() })
+		if err != nil {
+			t.Fatalf("import: %v\nwarnings: %v", err, sum.Warnings)
+		}
+		return dataDir, sum
+	}
+	forward, fsum := run(projects)
+	reversed := slices.Clone(projects)
+	slices.Reverse(reversed)
+	backward, bsum := run(reversed)
+	if !reflect.DeepEqual(treeWithoutSources(t, forward), treeWithoutSources(t, backward)) {
+		t.Error("the two row orders left different trees")
+	}
+	if fsum.NewPeople != bsum.NewPeople || fsum.LibrivoxReadersSplit != bsum.LibrivoxReadersSplit {
+		t.Errorf("summaries differ: %+v / %+v", fsum, bsum)
+	}
+	for _, dir := range []string{forward, backward} {
+		if p := personOf(t, dir, "jane-roe"); p.AuthorID != 5001 || p.ReaderID != 9002 {
+			t.Errorf("jane-roe = %+v, want author 5001 and reader 9002", p)
+		}
+		if p := personOf(t, dir, "john-doe"); p.AuthorID != 5003 || p.ReaderID != 0 {
+			t.Errorf("john-doe = %+v, want the author alone", p)
+		}
+		if p := personOf(t, dir, "john-doe-librivox-9004"); p.ReaderID != 9004 {
+			t.Errorf("john-doe-librivox-9004 = %+v", p)
+		}
+		if got := workAuthorsOf(t, dir, "grants-letters"); !reflect.DeepEqual(got, []string{"james-grant-1802-1879"}) {
+			t.Errorf("grants-letters authors = %v", got)
+		}
+		if got := workAuthorsOf(t, dir, "valley-notes"); !reflect.DeepEqual(got, []string{"ann-hill-smith"}) {
+			t.Errorf("valley-notes authors = %v", got)
+		}
+		mustValidate(t, dir)
+	}
+}
+
+func TestLibrivoxPersonRulesJudgeTheInitialsSurvivor(t *testing.T) {
+	// "A.B. Kovacs" (1850-1900) resolves through the batch's initials step
+	// onto the catalogued "AB Kovacs", a modern author: rule 2 must judge that
+	// person - the one the import would credit - not the free a-b-kovacs the
+	// bare slug names, which would have let the id be stamped on a stranger.
+	dataDir := t.TempDir()
+	files := map[string]string{}
+	files[personAddr("ab-kovacs")] = testpack.PersonJSON(t, "ab-kovacs", "AB Kovacs")
+	retailWork(t, files, "a-modern-thriller", "A Modern Thriller", "ab-kovacs", "2020")
+	seedTree(t, dataDir, files)
+	sum := runLibrivox(t, writeSnapshot(t, byAuthor(t, 99120, "Old Verses", "English", lvDated(5101, "A.B.", "Kovacs", "1850", "1900"))), dataDir, allLibrivox)
+	if got := workAuthorsOf(t, dataDir, "old-verses"); !reflect.DeepEqual(got, []string{"a-b-kovacs-1850-1900"}) {
+		t.Fatalf("old-verses authors = %v\nnotes: %v", got, sum.Notes)
+	}
+	if p := personOf(t, dataDir, "ab-kovacs"); p.AuthorID != 0 {
+		t.Errorf("ab-kovacs = %+v, want no LibriVox id", p)
+	}
+	mustValidate(t, dataDir)
+	rerunIsANoOp(t, writeSnapshot(t, byAuthor(t, 99120, "Old Verses", "English", lvDated(5101, "A.B.", "Kovacs", "1850", "1900"))), dataDir)
+}
+
+func TestLibrivoxBirthYearAloneBoundsTheLife(t *testing.T) {
+	// LibriVox states only a birth year (b. 1840): no 2020 first edition is
+	// theirs, so the catalogued same-name author is someone else and the id is
+	// minted dated; and no reader of 2015 is them either.
+	dataDir := t.TempDir()
+	files := map[string]string{}
+	files[personAddr("anna-kerr")] = personFiles(t, "anna-kerr", "Anna Kerr", nil)
+	retailWork(t, files, "a-new-thriller", "A New Thriller", "anna-kerr", "2020")
+	seedTree(t, dataDir, files)
+	snap := writeSnapshot(t,
+		byAuthors(t, 99130, "Hymns of the Hills", lvDated(5201, "Anna", "Kerr", "1840", "")),
+		withReader(byAuthors(t, 99131, "Field Notes", lvDated(5202, "Tom", "Birch", "1840", "")), 9201, "Tom Birch"))
+	sum := runLibrivox(t, snap, dataDir, allLibrivox)
+	if got := workAuthorsOf(t, dataDir, "hymns-of-the-hills"); !reflect.DeepEqual(got, []string{"anna-kerr-b-1840"}) {
+		t.Fatalf("hymns-of-the-hills authors = %v\nworklist: %v", got, sum.LibrivoxWorklist)
+	}
+	if p := personOf(t, dataDir, "tom-birch"); p.AuthorID != 5202 || p.ReaderID != 0 {
+		t.Errorf("tom-birch = %+v, want the author alone", p)
+	}
+	if p := personOf(t, dataDir, "tom-birch-librivox-9201"); p.ReaderID != 9201 {
+		t.Errorf("tom-birch-librivox-9201 = %+v", p)
+	}
+	mustValidate(t, dataDir)
+
+	// A birth year that leaves the life open still attaches.
+	open := t.TempDir()
+	seedTree(t, open, files)
+	runLibrivox(t, writeSnapshot(t, byAuthors(t, 99132, "Hymns Again", lvDated(5203, "Anna", "Kerr", "1960", ""))), open, allLibrivox)
+	if got := workAuthorsOf(t, open, "hymns-again"); !reflect.DeepEqual(got, []string{"anna-kerr"}) {
+		t.Errorf("hymns-again authors = %v", got)
+	}
+}
+
+func TestLibrivoxTitleKeysOfAQualifiedGenericTitle(t *testing.T) {
+	// "Poems (Ballads of a Cheechako)": the bare "Poems" names nothing, but
+	// the qualifier names the book, so the full title still keys it.
+	keys := librivoxTitleKeys("Poems (Ballads of a Cheechako)")
+	if !keys[librivoxTitleKey("Poems (Ballads of a Cheechako)")] || keys[librivoxTitleKey("Poems")] {
+		t.Errorf("keys = %v, want the full title's and not the bare base's", keys)
+	}
+	for _, generic := range []string{"Poems", "Poems (1915)", "Selected Poems"} {
+		if keys := librivoxTitleKeys(generic); len(keys) != 0 {
+			t.Errorf("%q keys = %v, want none", generic, keys)
+		}
+	}
+	if keys := librivoxTitleKeys("Metamorphosis (1915)"); !keys[librivoxTitleKey("Metamorphosis")] || !keys[librivoxTitleKey("Metamorphosis (1915)")] {
+		t.Errorf("Metamorphosis (1915) keys = %v", keys)
+	}
+}
+
+func TestLibrivoxGenericTitleWithAQualifierIsATitleInCommon(t *testing.T) {
+	// A catalogued author whose works are dated only past the id's death
+	// shares "Poems (Ballads of a Cheechako)" with the project: the same poet.
+	dataDir := t.TempDir()
+	files := map[string]string{}
+	files[personAddr("robert-w-service")] = personFiles(t, "robert-w-service", "Robert W. Service", nil)
+	retailWork(t, files, "poems-ballads-of-a-cheechako", "Poems (Ballads of a Cheechako)", "robert-w-service", "1990")
+	seedTree(t, dataDir, files)
+	sum := runLibrivox(t, writeSnapshot(t, byAuthors(t, 99140, "Poems (Ballads of a Cheechako)", lvDated(5301, "Robert W.", "Service", "1874", "1958"))), dataDir, allLibrivox)
+	if p := personOf(t, dataDir, "robert-w-service"); p.AuthorID != 5301 {
+		t.Errorf("robert-w-service = %+v\nworklist: %v", p, sum.LibrivoxWorklist)
+	}
+}
+
+func TestLibrivoxEditionsOfTheIDsOwnTextAreNoEvidence(t *testing.T) {
+	// 5142 "Narrative of Sojourner Truth" (text 1850) by Olive Gilbert and
+	// Sojourner Truth (1797-1883): the catalogue holds that book under the same
+	// title, credited to Olive Gilbert (a co-author the project credits, by slug) and dated
+	// only by a 2009 release. So its release dates date editions, and the
+	// undated sojourner-truth, dated only by a 2018 release of "Ain't I a
+	// Woman?", is the same person, not a worklist row.
+	seed := func(t *testing.T) string {
+		dataDir := t.TempDir()
+		files := map[string]string{}
+		files[personAddr("olive-gilbert")] = personFiles(t, "olive-gilbert", "Olive Gilbert", nil)
+		files[personAddr("sojourner-truth")] = personFiles(t, "sojourner-truth", "Sojourner Truth", nil)
+		retailWork(t, files, "the-narrative-of-sojourner-truth", "The Narrative of Sojourner Truth", "olive-gilbert", "")
+		retailWork(t, files, "aint-i-a-woman", "Ain't I a Woman?", "sojourner-truth", "")
+		// The translators' shapes, which an edition proves nothing for.
+		files[personAddr("the-brothers-grimm")] = personFiles(t, "the-brothers-grimm", "The Brothers Grimm", nil)
+		files[personAddr("margaret-hunt")] = personFiles(t, "margaret-hunt", "Margaret Hunt", nil)
+		retailWork(t, files, "household-tales", "Household Tales", "the-brothers-grimm", "")
+		retailWork(t, files, "grimms-fairy-stories", "Grimm's Fairy Stories", "margaret-hunt", "")
+		files[personAddr("proclus")] = personFiles(t, "proclus", "Proclus", nil)
+		files[personAddr("thomas-taylor")] = personFiles(t, "thomas-taylor", "Thomas Taylor", nil)
+		retailWork(t, files, "the-elements-of-theology", "The Elements of Theology", "proclus", "")
+		retailWork(t, files, "malamander", "Malamander", "thomas-taylor", "")
+		files[personAddr("j-j-howard")] = personFiles(t, "j-j-howard", "J.J. Howard", nil)
+		retailWork(t, files, "pugs-and-kisses", "Pugs and Kisses", "j-j-howard", "")
+		files[personAddr("ovid")] = personFiles(t, "ovid", "Ovid", nil)
+		retailWork(t, files, "metamorphoses", "Metamorphoses", "ovid", "")
+		seedTree(t, dataDir, files)
+		return dataDir
+	}
+	reasons := func(sum Summary) map[int]string {
+		out := map[int]string{}
+		for _, e := range sum.LibrivoxWorklist {
+			out[e.Project] = e.Reason
+		}
+		return out
+	}
+	dated := func(pr LibrivoxProject, year string) LibrivoxProject {
+		pr.CopyrightYear = lvText(year)
+		return pr
+	}
+	truth := dated(byAuthors(t, 5142, "Narrative of Sojourner Truth",
+		lvDated(2900, "Olive", "Gilbert", "1801", "1884"), lvDated(5706, "Sojourner", "Truth", "1797", "1883")), "1850")
+	// A translator's project is another author's book: its editions say
+	// nothing of the translator (Margaret Hunt 11939; Thomas Taylor 1758-1835,
+	// against a modern novelist). And "Metamorphoses (Howard Version)" names one
+	// translation, so 18450 (J. J. Howard, fl. 1807) holds as well.
+	hunt := dated(byAuthor(t, 11939, "Household Tales", "English",
+		lvDated(4098, "Jacob & Wilhelm", "Grimm", "1785", "1863"), lvDated(12708, "Margaret", "Hunt", "1831", "1912")), "1884")
+	taylor := dated(byAuthor(t, 15500, "The Elements of Theology", "English",
+		lvDated(6730, "", "Proclus", "412", "485"), lvDated(14134, "Thomas", "Taylor", "1758", "1835")), "1816")
+	howard := dated(byAuthor(t, 18450, "Metamorphoses (Howard Version)", "English",
+		lvDated(4959, "Publius (Ovid)", "Ovidius Naso", "c. 43 BC", "18 AD"), lvDated(17467, "J. J.", "Howard", "", "fl. 1807")), "1807")
+
+	dataDir := seed(t)
+	sum := runLibrivox(t, writeSnapshot(t, truth, hunt, taylor, howard), dataDir, allLibrivox)
+	got := reasons(sum)
+	if got[5142] == LibrivoxSameNameAuthor {
+		t.Errorf("5142 held as same-name-author: %v", sum.LibrivoxWorklist)
+	}
+	for _, id := range []int{11939, 15500, 18450} {
+		if got[id] != LibrivoxSameNameAuthor {
+			t.Errorf("%d = %q, want held as same-name-author: %v", id, got[id], sum.LibrivoxWorklist)
+		}
+	}
+	if p := personOf(t, dataDir, "thomas-taylor"); p.AuthorID != 0 {
+		t.Errorf("thomas-taylor = %+v, want the novelist untouched", p)
+	}
+
+	// Without the edition, the release-dated person still holds the id.
+	truth.Title = "The Life of Isabella Van Wagenen"
+	dataDir = seed(t)
+	if got := reasons(runLibrivox(t, writeSnapshot(t, truth), dataDir, allLibrivox)); got[5142] != LibrivoxSameNameAuthor {
+		t.Errorf("without the edition 5142 = %q, want same-name-author", got[5142])
+	}
+}
+
+func TestLibrivoxReaderFoldSplitOffIsNoMerge(t *testing.T) {
+	// "Dr. Jane Roe" (9301) folds to "Jane Roe", a name reader 9300 holds, so
+	// she is split onto a record of her own: no honorific merge happened, and
+	// none is reported. A fold that does land is: "Dr. Kim Lee" (9302) claims
+	// the catalogued narrator Kim Lee, who carries no reader id.
+	dataDir := t.TempDir()
+	files := map[string]string{}
+	files[personAddr("kim-lee")] = personFiles(t, "kim-lee", "Kim Lee", nil)
+	narratedWork(t, files, "a-retail-reading", "A Retail Reading", "kim-lee")
+	seedTree(t, dataDir, files)
+	sum := runLibrivox(t, writeSnapshot(t,
+		withReader(byAuthor(t, 99150, "First Readings", "English", lvAuthor(5401, "Ann", "One")), 9300, "Jane Roe"),
+		withReader(byAuthor(t, 99151, "Second Readings", "English", lvAuthor(5402, "Bea", "Two")), 9301, "Dr. Jane Roe"),
+		withReader(byAuthor(t, 99152, "Third Readings", "English", lvAuthor(5403, "Cy", "Three")), 9302, "Dr. Kim Lee"),
+	), dataDir, allLibrivox)
+	if p := personOf(t, dataDir, "jane-roe-librivox-9301"); p.ReaderID != 9301 {
+		t.Fatalf("jane-roe-librivox-9301 = %+v", p)
+	}
+	if p := personOf(t, dataDir, "kim-lee"); p.ReaderID != 9302 {
+		t.Errorf("kim-lee = %+v, want reader 9302", p)
+	}
+	if want := []string{"Dr. Kim Lee -> Kim Lee"}; !reflect.DeepEqual(sum.HonorificMerges, want) {
+		t.Errorf("HonorificMerges = %v, want %v", sum.HonorificMerges, want)
+	}
+	mustValidate(t, dataDir)
+}
+
+func TestLibrivoxGenericTitleShowsNoEditions(t *testing.T) {
+	// "Poems" (text 1850) by John Smith (1800-1870) beside a catalogued,
+	// undated John Smith whose own "Poems" and thriller are dated only by
+	// modern releases: a generic title is no title in common, so it shows no
+	// edition either, and the id is held rather than stamped on the modern
+	// poet.
+	dataDir := t.TempDir()
+	files := map[string]string{}
+	files[personAddr("john-smith")] = personFiles(t, "john-smith", "John Smith", nil)
+	retailWork(t, files, "poems", "Poems", "john-smith", "")
+	retailWork(t, files, "a-modern-thriller", "A Modern Thriller", "john-smith", "")
+	seedTree(t, dataDir, files)
+	pr := byAuthors(t, 99200, "Poems", lvDated(5501, "John", "Smith", "1800", "1870"))
+	pr.CopyrightYear = lvText("1850")
+	sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
+	if len(sum.LibrivoxWorklist) != 1 || sum.LibrivoxWorklist[0].Reason != LibrivoxSameNameAuthor {
+		t.Errorf("worklist %v, want 99200 held as same-name-author", sum.LibrivoxWorklist)
+	}
+	if p := personOf(t, dataDir, "john-smith"); p.AuthorID != 0 || p.BirthYear != 0 {
+		t.Errorf("john-smith = %+v, want the modern poet untouched", p)
+	}
+}
+
+func TestLibrivoxVariantMovedDeadAuthorKeepsReadersOff(t *testing.T) {
+	// 5601 "Henrietta Elizabeth Marshall" (1867-1941) is moved onto the
+	// catalogued "Henrietta Marshall" by rule 1 of librivoxauthors.go, after
+	// the person rules first pinned it to a new record: the person it finally
+	// lands on is the author record rule 3 keeps a same-name reader off.
+	dataDir := t.TempDir()
+	files := map[string]string{}
+	files[personAddr("henrietta-marshall")] = personFiles(t, "henrietta-marshall", "Henrietta Marshall", nil)
+	retailWork(t, files, "our-island-story", "Our Island Story", "henrietta-marshall", "")
+	seedTree(t, dataDir, files)
+	runLibrivox(t, writeSnapshot(t,
+		byAuthors(t, 99300, "Our Island Story", lvDated(5601, "Henrietta Elizabeth", "Marshall", "1867", "1941")),
+		withReader(byAuthors(t, 99301, "Something Else", lvAuthor(5602, "Pat", "Other")), 9500, "Henrietta Marshall"),
+	), dataDir, allLibrivox)
+	if p := personOf(t, dataDir, "henrietta-marshall"); p.AuthorID != 5601 || p.ReaderID != 0 {
+		t.Errorf("henrietta-marshall = %+v, want the author alone", p)
+	}
+	if p := personOf(t, dataDir, "henrietta-marshall-librivox-9500"); p.ReaderID != 9500 {
+		t.Errorf("henrietta-marshall-librivox-9500 = %+v", p)
+	}
+	mustValidate(t, dataDir)
+}
+
+func TestLibrivoxFlourishedAuthorKeepsReadersOff(t *testing.T) {
+	// An author LibriVox dates by a flourished year alone (fl. 1807) read
+	// nothing for LibriVox either: a same-name reader is split off them.
+	dataDir := t.TempDir()
+	runLibrivox(t, writeSnapshot(t,
+		byAuthors(t, 99500, "Old Tracts", lvDated(5701, "Richard", "Wilsonne", "", "fl. 1807")),
+		withReader(byAuthors(t, 99501, "Another", lvAuthor(5702, "Pat", "Other")), 9700, "Richard Wilsonne"),
+	), dataDir, allLibrivox)
+	if p := personOf(t, dataDir, "richard-wilsonne"); p.AuthorID != 5701 || p.ReaderID != 0 {
+		t.Errorf("richard-wilsonne = %+v, want the author alone", p)
+	}
+	if p := personOf(t, dataDir, "richard-wilsonne-librivox-9700"); p.ReaderID != 9700 {
+		t.Errorf("richard-wilsonne-librivox-9700 = %+v", p)
+	}
+	mustValidate(t, dataDir)
+}
+
+func TestLibrivoxReaderSpelledTwoWaysIsOnePerson(t *testing.T) {
+	// A reader id is decided by its lowest project's spelling. When that
+	// project never lands (here an unsluggable author's worklist row), the
+	// reader's other project creates them under that spelling - their own
+	// name's record (9600), or their split one (9601, whose plain name 9599
+	// holds) - never a narrator no record backs.
+	cyrillic := func(id int) LibrivoxPerson {
+		return LibrivoxPerson{ID: lvInt(id), FirstName: "Йордан", LastName: "Йовков"}
+	}
+	dataDir := t.TempDir()
+	sum := runLibrivox(t, writeSnapshot(t,
+		withReader(byAuthors(t, 99398, "First Words", lvAuthor(5800, "Ann", "One")), 9599, "Petra"),
+		withReader(byAuthors(t, 99399, "Legends", cyrillic(6100)), 9601, "Petra"),
+		withReader(byAuthors(t, 99400, "More Legends", cyrillic(6101)), 9600, "Martina"),
+		withReader(byAuthors(t, 99401, "Other Book", lvAuthor(5801, "Pat", "Other")), 9600, "Martina S."),
+		withReader(byAuthors(t, 99402, "Third Book", lvAuthor(5802, "Kim", "Third")), 9601, "Petra K."),
+	), dataDir, allLibrivox)
+	if len(sum.LibrivoxWorklist) != 2 {
+		t.Fatalf("worklist %v, want the two unsluggable rows", sum.LibrivoxWorklist)
+	}
+	if p := personOf(t, dataDir, "martina"); p.Name != "Martina" || p.ReaderID != 9600 {
+		t.Errorf("martina = %+v, want reader 9600", p)
+	}
+	if p := personOf(t, dataDir, "petra-librivox-9601"); p.Name != "Petra" || p.ReaderID != 9601 {
+		t.Errorf("petra-librivox-9601 = %+v, want reader 9601 under their first spelling", p)
+	}
+	mustValidate(t, dataDir)
+}
+
+func TestLibrivoxEditionByAnotherWriterOfTheSurnameIsNoEvidence(t *testing.T) {
+	// Mary Webb (1881-1927) wrote "Garden Verses" alone. The catalogue holds a
+	// release-only "Garden Verses" by Precious Webb, a modern writer the project
+	// does not credit, and an undated modern mary-webb with a 2020 release: a
+	// shared surname is no edition of Mary Webb's text, so the id is held, never
+	// stamped on the modern writer.
+	dataDir := t.TempDir()
+	files := map[string]string{}
+	files[personAddr("precious-webb")] = personFiles(t, "precious-webb", "Precious Webb", nil)
+	files[personAddr("mary-webb")] = personFiles(t, "mary-webb", "Mary Webb", nil)
+	retailWork(t, files, "garden-verses", "Garden Verses", "precious-webb", "")
+	retailWork(t, files, "a-modern-romance", "A Modern Romance", "mary-webb", "")
+	seedTree(t, dataDir, files)
+	pr := byAuthors(t, 99160, "Garden Verses", lvDated(5501, "Mary", "Webb", "1881", "1927"))
+	pr.CopyrightYear = "1910"
+	sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
+	if len(sum.LibrivoxWorklist) != 1 || sum.LibrivoxWorklist[0].Reason != LibrivoxSameNameAuthor {
+		t.Fatalf("worklist = %v, want 99160 held as same-name-author", sum.LibrivoxWorklist)
+	}
+	if p := personOf(t, dataDir, "mary-webb"); p.AuthorID != 0 {
+		t.Errorf("mary-webb = %+v, want the modern writer untouched", p)
+	}
+}
+
+func TestLibrivoxEditionCoAuthorIsThePersonNotANamesake(t *testing.T) {
+	// The edition of 5142's text counts only when it is credited to the very
+	// person the project credits beside Sojourner Truth: Olive Gilbert's own
+	// catalogued id (2900) counts; a namesake carrying another author id, or
+	// stating other years, is someone else's "Narrative", so Truth is held.
+	cases := []struct {
+		name    string
+		gilbert map[string]any
+		held    bool
+	}{
+		{"catalogued id", map[string]any{"librivox_author_id": 2900}, false},
+		{"another author id", map[string]any{"librivox_author_id": 7777}, true},
+		{"other years", map[string]any{"birth_year": 1950, "death_year": 2020}, true},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			dataDir := t.TempDir()
+			files := map[string]string{}
+			files[personAddr("olive-gilbert")] = personFiles(t, "olive-gilbert", "Olive Gilbert", tc.gilbert)
+			files[personAddr("sojourner-truth")] = personFiles(t, "sojourner-truth", "Sojourner Truth", nil)
+			retailWork(t, files, "the-narrative-of-sojourner-truth", "The Narrative of Sojourner Truth", "olive-gilbert", "")
+			retailWork(t, files, "aint-i-a-woman", "Ain't I a Woman?", "sojourner-truth", "")
+			seedTree(t, dataDir, files)
+			truth := byAuthors(t, 5142, "Narrative of Sojourner Truth",
+				lvDated(2900, "Olive", "Gilbert", "1801", "1884"), lvDated(5706, "Sojourner", "Truth", "1797", "1883"))
+			truth.CopyrightYear = lvText("1850")
+			sum := runLibrivox(t, writeSnapshot(t, truth), dataDir, allLibrivox)
+			held := false
+			for _, e := range sum.LibrivoxWorklist {
+				if e.Project == 5142 && e.Reason == LibrivoxSameNameAuthor {
+					held = true
+				}
+			}
+			if held != tc.held {
+				t.Errorf("5142 held = %v, want %v: %v", held, tc.held, sum.LibrivoxWorklist)
+			}
+		})
+	}
+}
+
+func TestLibrivoxAnthologyEditionReleasesNoOtherContributor(t *testing.T) {
+	// "The Book of Humorous Verse" (text 1920) credits Carolyn Wells and two
+	// poets. Its catalogued release-only edition credits Carolyn Wells, but an
+	// anthology's edition speaks for no other contributor: the undated
+	// catalogued oliver-herford, dated only by a 2020 release, still holds
+	// Oliver Herford (1860-1935). The same edition of a two-author book
+	// releases the hold (Sojourner Truth's shape).
+	seed := func(t *testing.T) string {
+		dataDir := t.TempDir()
+		files := map[string]string{}
+		files[personAddr("carolyn-wells")] = personFiles(t, "carolyn-wells", "Carolyn Wells", nil)
+		files[personAddr("oliver-herford")] = personFiles(t, "oliver-herford", "Oliver Herford", nil)
+		retailWork(t, files, "the-book-of-humorous-verse", "The Book of Humorous Verse", "carolyn-wells", "")
+		retailWork(t, files, "a-modern-cat-book", "A Modern Cat Book", "oliver-herford", "")
+		seedTree(t, dataDir, files)
+		return dataDir
+	}
+	held := func(sum Summary, id int) bool {
+		for _, e := range sum.LibrivoxWorklist {
+			if e.Project == id && e.Reason == LibrivoxSameNameAuthor {
+				return true
+			}
+		}
+		return false
+	}
+	anthology := byAuthors(t, 99170, "The Book of Humorous Verse",
+		lvDated(5601, "Carolyn", "Wells", "1862", "1942"), lvDated(5602, "Oliver", "Herford", "1860", "1935"),
+		lvDated(5603, "Edward", "Lear", "1812", "1888"))
+	anthology.CopyrightYear = "1920"
+	sum := runLibrivox(t, writeSnapshot(t, anthology), seed(t), allLibrivox)
+	if !held(sum, 99170) {
+		t.Errorf("worklist = %v, want 99170 held as same-name-author", sum.LibrivoxWorklist)
+	}
+
+	pair := byAuthors(t, 99171, "The Book of Humorous Verse",
+		lvDated(5601, "Carolyn", "Wells", "1862", "1942"), lvDated(5602, "Oliver", "Herford", "1860", "1935"))
+	pair.CopyrightYear = "1920"
+	if sum := runLibrivox(t, writeSnapshot(t, pair), seed(t), allLibrivox); held(sum, 99171) {
+		t.Errorf("worklist = %v, want the two-author book released", sum.LibrivoxWorklist)
 	}
 }

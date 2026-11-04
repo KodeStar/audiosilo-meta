@@ -277,9 +277,10 @@ type librivoxRoute struct {
 	walk *workWalk
 	// skip says the row is on the worklist and must be dropped.
 	skip bool
-	// renames is an author-variant attach's respelling of the row's credit
-	// names onto the catalogued people it credits (librivoxauthors.go rule 1).
-	renames map[string]string
+	// moves is an author-variant attach's move of the row's credits onto
+	// the catalogued people it credits, person slug to person slug
+	// (librivoxauthors.go rule 1).
+	moves map[string]string
 }
 
 // routeLibrivox applies the rules in this file's header to one LibriVox row. It
@@ -498,10 +499,24 @@ func (p *planner) noteLibrivoxWorklist(b sourceBook, title, reason string, candi
 	p.summary.LibrivoxWorklist = append(p.summary.LibrivoxWorklist, LibrivoxWorklistEntry{
 		Project:    b.lv.id,
 		Title:      title,
-		Authors:    slices.Clone(b.authors),
+		Authors:    librivoxAuthorList(b),
 		Reason:     reason,
 		Candidates: candidates,
 	})
+}
+
+// librivoxAuthorList is the row's author list as the worklist prints it: each
+// credit whose author id names it by another spelling (a catalogued holder's
+// name, a person rule's: creditPerson.respelled) spelled so, its role suffix
+// kept, and the rest as LibriVox spells them.
+func librivoxAuthorList(b sourceBook) []string {
+	out := slices.Clone(b.authors)
+	for _, c := range b.lv.credits {
+		if c.kind == librivoxAuthor && c.person != nil && c.person.respelled && c.index < len(out) {
+			out[c.index] = c.person.spelled + c.suffix
+		}
+	}
+	return out
 }
 
 // reportLibrivoxVariants is the run's one note about the rows rule 2 attached,
