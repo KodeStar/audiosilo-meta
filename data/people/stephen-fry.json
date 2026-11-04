@@ -3623,10 +3623,7 @@
       ]
     },
     "stephen-smith": {
-      "birth_year": 1823,
-      "death_year": 1922,
       "id": "stephen-smith",
-      "librivox_author_id": 13353,
       "license": "CC0-1.0",
       "name": "Stephen Smith",
       "sources": [
@@ -3634,7 +3631,17 @@
           "imported_at": "2026-07-29",
           "ref": "1789462614",
           "type": "libex-import"
-        },
+        }
+      ]
+    },
+    "stephen-smith-1823-1922": {
+      "birth_year": 1823,
+      "death_year": 1922,
+      "id": "stephen-smith-1823-1922",
+      "librivox_author_id": 13353,
+      "license": "CC0-1.0",
+      "name": "Stephen Smith (1823-1922)",
+      "sources": [
         {
           "imported_at": "2026-10-29",
           "ref": "12896",

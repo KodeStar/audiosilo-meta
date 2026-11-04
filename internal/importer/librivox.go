@@ -52,8 +52,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/url"
-	"os"
-	"path/filepath"
 	"regexp"
 	"slices"
 	"sort"
@@ -205,62 +203,6 @@ func parseLibrivoxPage(body []byte) ([]LibrivoxProject, error) {
 	return *page.Books, nil
 }
 
-// The snapshot layout (written by LibrivoxFetcher.Fetch, read here):
-//
-//	<snapshot>/manifest.json            the fetch's resume state (librivoxManifest)
-//	<snapshot>/pages/<name>.json        one feed response body each, verbatim
-//
-// The reader needs only pages/: every *.json file under it is a {"books": [...]}
-// body, read in name order. A project id seen twice keeps its LAST copy (a
-// later page is a later reading), which never happens in a fetch that ran to
-// completion but makes a hand-assembled snapshot unambiguous.
-const (
-	librivoxPagesDir     = "pages"
-	librivoxManifestFile = "manifest.json"
-)
-
-// ReadLibrivoxSnapshot reads every project a snapshot holds, sorted by id.
-func ReadLibrivoxSnapshot(dir string) ([]LibrivoxProject, error) {
-	return readLibrivoxSnapshot(dir, nil)
-}
-
-// readLibrivoxSnapshot is ReadLibrivoxSnapshot keeping only the projects keep
-// selects (every project when keep is nil), so a tranche import holds only its
-// own projects rather than the whole catalogue.
-func readLibrivoxSnapshot(dir string, keep func(id int) bool) ([]LibrivoxProject, error) {
-	pagesDir := filepath.Join(dir, librivoxPagesDir)
-	entries, err := os.ReadDir(pagesDir)
-	if err != nil {
-		return nil, fmt.Errorf("read LibriVox snapshot %s: %w", dir, err)
-	}
-	byID := map[int]LibrivoxProject{}
-	for _, e := range entries {
-		if e.IsDir() || !strings.HasSuffix(e.Name(), ".json") {
-			continue
-		}
-		path := filepath.Join(pagesDir, e.Name())
-		body, err := os.ReadFile(path)
-		if err != nil {
-			return nil, err
-		}
-		books, err := parseLibrivoxPage(body)
-		if err != nil {
-			return nil, fmt.Errorf("%s: %w", path, err)
-		}
-		for _, b := range books {
-			if keep == nil || keep(int(b.ID)) {
-				byID[int(b.ID)] = b
-			}
-		}
-	}
-	out := make([]LibrivoxProject, 0, len(byID))
-	for _, b := range byID {
-		out = append(out, b)
-	}
-	sort.Slice(out, func(i, j int) bool { return out[i].ID < out[j].ID })
-	return out, nil
-}
-
 // LibrivoxIDs is a set of project-id ranges, the `--ids` selection an import
 // takes: "527", "1-2000", "5000-" (open-ended), or a comma-separated union.
 type LibrivoxIDs struct {
@@ -303,6 +245,17 @@ func (s LibrivoxIDs) Has(id int) bool {
 	return false
 }
 
+// overlaps reports whether any selected id lies in [lo, hi]; hi 0 is
+// open-ended.
+func (s LibrivoxIDs) overlaps(lo, hi int) bool {
+	for _, sp := range s.spans {
+		if (hi == 0 || sp[0] <= hi) && (sp[1] == 0 || lo <= sp[1]) {
+			return true
+		}
+	}
+	return false
+}
+
 // RunLibrivox imports the projects of the snapshot at snapshotDir whose ids are
 // selected into opts.DataDir, through the shared planner. Only the create mode
 // exists for this source.
@@ -311,7 +264,7 @@ func RunLibrivox(snapshotDir string, ids LibrivoxIDs, opts Options) (Summary, er
 		return Summary{}, fmt.Errorf("a LibriVox import creates only; it has no %s mode", opts.Mode.runName())
 	}
 	// ParseLibrivoxIDs admits no id below 1, so every selected project has one.
-	projects, err := readLibrivoxSnapshot(snapshotDir, ids.Has)
+	projects, snapshotWarnings, err := readLibrivoxSnapshot(snapshotDir, &ids)
 	if err != nil {
 		return Summary{}, err
 	}
@@ -329,6 +282,9 @@ func RunLibrivox(snapshotDir string, ids LibrivoxIDs, opts Options) (Summary, er
 	})
 	sum.LibrivoxProjects = len(projects)
 	sum.LibrivoxInProgress = inProgress
+	// A snapshot row no --ids can select is a run-level line, ahead of the rows'.
+	sum.Warnings = slices.Concat(snapshotWarnings, sum.Warnings)
+	sum.RunLevelWarnings += len(snapshotWarnings)
 	return sum, err
 }
 

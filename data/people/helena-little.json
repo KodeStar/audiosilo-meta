@@ -3012,10 +3012,7 @@
       ]
     },
     "henry-adams": {
-      "birth_year": 1838,
-      "death_year": 1918,
       "id": "henry-adams",
-      "librivox_author_id": 1106,
       "license": "CC0-1.0",
       "name": "Henry Adams",
       "sources": [
@@ -3023,7 +3020,17 @@
           "imported_at": "2026-07-30",
           "ref": "1982720190",
           "type": "libex-import"
-        },
+        }
+      ]
+    },
+    "henry-adams-1838-1918": {
+      "birth_year": 1838,
+      "death_year": 1918,
+      "id": "henry-adams-1838-1918",
+      "librivox_author_id": 1106,
+      "license": "CC0-1.0",
+      "name": "Henry Adams (1838-1918)",
+      "sources": [
         {
           "imported_at": "2026-10-28",
           "ref": "4244",

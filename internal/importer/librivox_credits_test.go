@@ -203,6 +203,9 @@ func TestLibrivoxTrailingQualifierGoesToTheWorklist(t *testing.T) {
 			if sum.SkippedDuplicateIdentity != 1 {
 				t.Errorf("SkippedDuplicateIdentity = %d, want the run's warning to count it", sum.SkippedDuplicateIdentity)
 			}
+			if want := []RowSkip{{LibrivoxID: 99600, Reason: RefusalIdentityDuplicate}}; !reflect.DeepEqual(sum.Skips, want) {
+				t.Errorf("Skips = %+v, want the refusal keyed by project id", sum.Skips)
+			}
 		})
 	}
 }

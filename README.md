@@ -366,7 +366,8 @@ the project descriptions. It is two steps:
 # 1) Fetch a local snapshot of LibriVox's audiobooks feed. Polite by design:
 #    100 projects a page, 5 s between requests, a User-Agent naming
 #    meta.audiosilo.app, Retry-After honoured on 429/5xx. Resumable: rerun the
-#    same command after an interrupt. The snapshot is never committed.
+#    same command after an interrupt. A response body over 64 MiB is no feed
+#    page: it stops the run, never cut off. The snapshot is never committed.
 go run ./cmd/metaimport librivox fetch --out ~/librivox-snapshot [--max-pages N]
 
 # 2) Import a tranche of it by project-id range (offline; --dry-run first).
@@ -376,8 +377,16 @@ go run ./cmd/metaimport librivox import --from ~/librivox-snapshot --ids 1-2000 
 A snapshot is a directory: `manifest.json` (the fetch's resume state: feed,
 query, limit, next offset, page and project counts, complete or not) and
 `pages/offset-NNNNNNN.json`, each one feed response body verbatim. The importer
-reads every `pages/*.json` and needs nothing else, so a hand-assembled snapshot
-(the test fixtures are one) works too.
+reads `pages/*.json` and needs nothing else, so a hand-assembled snapshot (the
+test fixtures are one) works too. The fetcher records each page's range of
+project ids and its size in the manifest (`page_ids`), and a tranche skips
+every page whose range misses its `--ids` (0.19 s instead of 2.0 s for a
+2,000-project tranche of the 22,449-project snapshot). A page the manifest does
+not range (fetched before the ranges were recorded, a hand-assembled one) or
+whose size has changed since is always decoded, and a decoded page holding an
+id outside its range reads the snapshot whole. A project whose id is missing or
+unreadable is skipped with a warning naming its page and title (no `--ids`
+could select it).
 
 What an import does: a project LibriVox is still recording (no `totaltimesecs`
 and no archive.org item in `url_iarchive`; the feed has no status field) is set
@@ -450,7 +459,11 @@ nothing), `differently-spelled-title` (the duplicate-identity guard holds
 the book under a title rule 2 does not read as the same, such as a subtitle
 apart, or rule 3's trailing qualifier), `same-name-author` (below) and `fallback-slug-taken` (below). Once a person has settled the work,
 re-importing the project's id lands it. `--conflicts` rows for these projects
-carry `librivox_id`, since they have no ASIN.
+carry `librivox_id`, since they have no ASIN, and so do the `--skipped` lines
+(one `{"librivox_id","reason"}` NDJSON line per project refused under a
+refusal code: an unknown language, no narrator, author or title, or the
+duplicate-identity guard's `identity-duplicate`; the libex `--skipped` shape
+with the project id in place of the ASIN).
 
 Readers are the narrators, translators are `translator` credits, sections are
 chapters (`start_ms` cumulative from each playtime, the section's file as

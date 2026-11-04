@@ -148,8 +148,10 @@ func (c *composer) importLibrary(s sections) {
 			"see the warnings below; a maintainer resolves those pairs", sum.SkippedDuplicateIdentity)
 	}
 	if sum.AttestedWorks+sum.AttestedRecordings > 0 {
-		c.note("attested %d work(s) and %d recording(s) that were previously seeded from the libex mirror - your library's values replaced the mirror's",
-			sum.AttestedWorks, sum.AttestedRecordings)
+		// The summary counts the attested records without their sources, so the
+		// note names the tier rather than a mirror it cannot see.
+		c.note("attested %d work(s) and %d recording(s) that were previously seeded from %s - your library's values replaced the mirror's",
+			sum.AttestedWorks, sum.AttestedRecordings, seededFrom(nil))
 	}
 	if sum.GenreWorks > 0 {
 		c.note("added your library's genres to %d work(s) another library had already described", sum.GenreWorks)
