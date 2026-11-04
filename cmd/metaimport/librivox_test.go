@@ -137,7 +137,10 @@ func TestLibrivoxImportPrintsTheWorklist(t *testing.T) {
 		Project: 2027, AuthorID: 9876, Name: "Amy Coulter", Roles: []string{"translator"}, Work: "siddhartha",
 	}, {
 		Project: 2607, AuthorID: 6294, Name: "Йордан Йовков", Work: "staroplaninski-legendi", Reason: "unsluggable",
-	}}, LibrivoxInProgress: []int{2073, 4333}}
+	}}, LibrivoxInProgress: []int{2073, 4333}, LibrivoxAuthorPairs: []importer.LibrivoxAuthorPair{{
+		Titled: importer.LibrivoxPairAuthor{AuthorID: 1456, Name: "Mrs. C. M. Livingston", Person: "mrs-c-m-livingston", Project: 4714},
+		Bare:   importer.LibrivoxPairAuthor{AuthorID: 15071, Name: "C. M. Livingston", Person: "c-m-livingston", Project: 9999},
+	}}}
 	run := func(string, importer.LibrivoxIDs, importer.Options) (importer.Summary, error) { return sum, nil }
 	out := captureStdout(t, func() {
 		if code := runLibrivoxImport([]string{"--from", librivoxFixture, "--ids", "527", "--dry-run"}, run); code != 0 {
@@ -152,6 +155,8 @@ func TestLibrivoxImportPrintsTheWorklist(t *testing.T) {
 		"credits not recorded: 2 (",
 		`  2027 "Amy Coulter" (translator, librivox_author_id 9876) -> siddhartha, person not created`,
 		`  2607 "Йордан Йовков" (author, librivox_author_id 6294) -> staroplaninski-legendi, unsluggable`,
+		"librivox worklist: 1 author id pair one courtesy title apart, kept as two people for a person to merge or confirm:",
+		`  1456 "Mrs. C. M. Livingston" -> mrs-c-m-livingston (project 4714); 15071 "C. M. Livingston" -> c-m-livingston (project 9999)`,
 	} {
 		if !strings.Contains(out, want) {
 			t.Errorf("no %q in:\n%s", want, out)
