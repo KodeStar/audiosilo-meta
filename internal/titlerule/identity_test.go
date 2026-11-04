@@ -494,6 +494,28 @@ func TestDivisionSequenceSkipsAnUnreadableChapter(t *testing.T) {
 	}
 }
 
+// A chapter nested under a volume makes a LONGER sequence, and sequences of
+// different length disagree: "Foo, Book 2, Chapter 1" ([2 1]) is a chapter of
+// book 2, not book 2 ([2]). The answer is the same under both policies, because the
+// division sequence reads digits whatever the policy - so the census
+// (pkg/check, WriterPolicy), the importer's create guard and the intake gates (both
+// WriterPolicy) and the audit (ReaderPolicy) all keep the two apart.
+func TestAChapterUnderAVolumeIsNotTheVolume(t *testing.T) {
+	a, b := "Foo, Book 2", "Foo, Book 2, Chapter 1"
+	for name, p := range map[string]VolumePolicy{"WriterPolicy": WriterPolicy, "ReaderPolicy": ReaderPolicy} {
+		sa, sb := StatementOf(a, "", p), StatementOf(b, "", p)
+		if !reflect.DeepEqual(sa.Divisions, []float64{2}) || !reflect.DeepEqual(sb.Divisions, []float64{2, 1}) {
+			t.Fatalf("%s: divisions = %v / %v, want [2] / [2 1]", name, sa.Divisions, sb.Divisions)
+		}
+		if sa.Agrees(sb) || sb.Agrees(sa) {
+			t.Errorf("%s: %q and %q agree; a chapter of a volume is not the volume", name, a, b)
+		}
+		if SameStatedVolume(a, "", b, "", p) {
+			t.Errorf("%s: SameStatedVolume must answer as Agrees does", name)
+		}
+	}
+}
+
 // Silent is a statement of nothing: no volume and no division.
 func TestVolumeStatementSilent(t *testing.T) {
 	for title, want := range map[string]bool{
