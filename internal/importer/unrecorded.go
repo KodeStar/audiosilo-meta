@@ -94,19 +94,15 @@ func (p *planner) attachRowAuthors(b sourceBook, asin string, ws *workState, cre
 	_, runCreated := p.runCredits[ws.slug]
 	var out []UnrecordedCredit
 	for _, c := range credits {
+		// No credit here slugs to nothing: the row's credits were split before
+		// any walk read them (rowAuthorCreditSplitIn).
 		r, kept := p.getOrCreateCreditIf(c, warn, func(r personResolution) bool {
-			return ws.names(r.slug) || (runCreated && len(c.roles) > 0 && !r.fellBack)
+			return ws.names(r.slug) || (runCreated && len(c.roles) > 0)
 		})
 		if kept {
 			continue
 		}
-		u := p.unrecordedOf(b, asin, c, r, ws.slug)
-		if r.fellBack {
-			// Only the shared catch-all could hold it, and it is not them: no
-			// record was withheld, there is none to make.
-			u.Reason = unsluggableReason
-		}
-		out = append(out, u)
+		out = append(out, p.unrecordedOf(b, asin, c, r, ws.slug))
 	}
 	return out
 }
@@ -158,12 +154,13 @@ const narratorRole = "narrator"
 //     credit-not-a-person);
 //   - every other source (LibriVox and the user-library importers: OpenAudible,
 //     Libation, audiosilo-books) imports the book and leaves the credit off:
-//     an author-side credit is dropped before the work is decided
-//     (dropUnsluggableCredits), a narrator before the recording is
-//     (dropUnsluggableNarrators, every source but LibriVox, whose unsluggable
-//     reader takes model.LibrivoxUnslugReaderSlug off their reader id), and
-//     each is reported as a credit not recorded, reason unsluggable
-//     (reportUnsluggable);
+//     the row's credits are split ONCE, where they are read and cached
+//     (rowAuthorCreditSplitIn, rowNarratorSplitIn), so every reader of them -
+//     the batch pre-passes, the work walk, the recordings-only match - sees the
+//     set the row lands with; a narrator is kept by every source but LibriVox,
+//     whose unsluggable reader takes model.LibrivoxUnslugReaderSlug off their
+//     reader id; and each credit left off is reported as a credit not
+//     recorded, reason unsluggable (reportUnsluggable);
 //   - a row the drop leaves with no individual identity author, or with no
 //     narrator, has no identity left and does not land: a LibriVox row is a
 //     worklist row (author-unsluggable), any other a skip (missing-author,
@@ -171,21 +168,54 @@ const narratorRole = "narrator"
 //
 // pkg/check's checkUnslugFallback refuses the catch-all wherever it appears.
 
-// dropUnsluggableCredits is the row's author-side credits without those whose
-// name slugs to nothing, and those dropped. noAuthor reports that a credit was
-// dropped and no individual identity author is left, so the row must not land:
-// a work credited to nobody, to a translator alone or to "Anonymous" alone
-// would merge two authors' same-titled books.
-func (p *planner) dropUnsluggableCredits(credits []credit) (kept, dropped []credit, noAuthor bool) {
+// unslugs reports whether a name slugs to nothing: personSlug falls back to the
+// catch-all for it. It is exactly resolveCredit's fellBack for a credit with no
+// decided person, asked without resolving anything.
+func unslugs(name string) bool {
+	_, fellBack := personSlug(name)
+	return fellBack
+}
+
+// splitUnsluggableCredits is credits without those whose name slugs to nothing,
+// and those left off. A credit carrying a decided person (credit.person: a
+// LibriVox author id's) is that person, whatever its name slugs to.
+func splitUnsluggableCredits(credits []credit) (kept, dropped []credit) {
 	for _, c := range credits {
-		if p.resolveCredit(c).fellBack {
+		if c.person == nil && unslugs(c.name) {
 			dropped = append(dropped, c)
 		} else {
 			kept = append(kept, c)
 		}
 	}
 	if len(dropped) == 0 {
-		return credits, nil, false
+		return credits, nil
+	}
+	return kept, dropped
+}
+
+// splitUnsluggableNames is splitUnsluggableCredits for a list of names.
+func splitUnsluggableNames(names []string) (kept, dropped []string) {
+	for _, name := range names {
+		if unslugs(name) {
+			dropped = append(dropped, name)
+		} else {
+			kept = append(kept, name)
+		}
+	}
+	if len(dropped) == 0 {
+		return names, nil
+	}
+	return kept, dropped
+}
+
+// unsluggableLeftNoAuthor reports that credits were left off a row (dropped)
+// and no individual identity author is left among the kept ones, so the row
+// must not land: a work credited to nobody, to a translator alone or to
+// "Anonymous" alone would merge two authors' same-titled books. A row nothing
+// was dropped from is never judged here.
+func (p *planner) unsluggableLeftNoAuthor(kept, dropped []credit) bool {
+	if len(dropped) == 0 {
+		return false
 	}
 	// identityAuthors falls back to the whole list when every credit is
 	// role-qualified, so a translator alone would read as the identity: only a
@@ -199,48 +229,25 @@ func (p *planner) dropUnsluggableCredits(credits []credit) (kept, dropped []cred
 	}
 	for _, a := range p.rowWorkAuthorsRO(kept).identity {
 		if bare[a] && individualAuthor(a) {
-			return kept, dropped, false
+			return false
 		}
 	}
-	return kept, dropped, true
+	return true
 }
 
-// dropUnsluggableNarrators is a row's cleaned narrator names without those
-// that slug to nothing, and those dropped. A LibriVox row keeps its list as it
-// is: its readers line up with the row's reader credits by index
-// (rowNarratorSlugs), and an unsluggable reader is a record of their own,
-// addressed by reader id.
-func (p *planner) dropUnsluggableNarrators(b sourceBook, names []string) (kept, dropped []string) {
-	if b.lv != nil {
-		return names, nil
-	}
-	for _, name := range names {
-		if p.resolvePerson(name).fellBack {
-			dropped = append(dropped, name)
-		} else {
-			kept = append(kept, name)
-		}
-	}
-	if len(dropped) == 0 {
-		return names, nil
-	}
-	return kept, dropped
-}
-
-// reportUnsluggable reports the credits of row b dropped because their names
+// reportUnsluggable reports the credits of row b left off because their names
 // slug to nothing (authors, its author-side credits; narrators, its narrator
 // names) as credits not recorded, once the row landed a recording on work.
 func (p *planner) reportUnsluggable(b sourceBook, asin, work string, authors []credit, narrators []string) {
 	if p.landedRec == "" {
 		return
 	}
-	for _, c := range authors {
-		u := p.unrecordedOf(b, asin, c, p.resolveCredit(c), work)
-		u.Reason = unsluggableReason
-		p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, u)
-	}
+	all := slices.Clone(authors)
 	for _, name := range narrators {
-		u := p.unrecordedOf(b, asin, credit{name: name, roles: []string{narratorRole}}, p.resolvePerson(name), work)
+		all = append(all, credit{name: name, roles: []string{narratorRole}})
+	}
+	for _, c := range all {
+		u := p.unrecordedOf(b, asin, c, p.resolveCredit(c), work)
 		u.Reason = unsluggableReason
 		p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, u)
 	}

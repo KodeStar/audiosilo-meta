@@ -647,9 +647,11 @@ type sourceBook struct {
 	authors   []string
 	narrators []string
 	// authorCredits caches rowAuthorCredits once the series pre-pass has
-	// computed it (the censuses it reads are fixed by then); creditsCached says
-	// it is set.
+	// computed it (the censuses it reads are fixed by then), and unslugAuthors
+	// the credits it left off because their names slug to nothing
+	// (rowAuthorCreditSplitIn); creditsCached says both are set.
 	authorCredits []credit
+	unslugAuthors []credit
 	creditsCached bool
 	// chapters is the source's chapter rows, typed at parse time (sourceChapter),
 	// read when non-nil instead of raw's chapters array.
@@ -1461,31 +1463,29 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		p.noteLostSeriesClaims(b, -1, nil)
 		return
 	}
-	authorCredits := p.rowAuthorCredits(b)
-	if len(authorCredits) == 0 {
+	// A credit whose name slugs to nothing is credited nowhere, never on the
+	// shared catch-all person: rowAuthorCredits has left it off (unrecorded.go).
+	// A row it leaves with no individual author is a LibriVox worklist row
+	// (librivoxauthors.go rule 2) or, from any other source, a skip; a LibriVox
+	// row with no title either is the no-title skip below.
+	authorCredits, unslugAuthors := p.rowAuthorCredits(b), p.rowUnsluggableAuthors(b)
+	noAuthor := p.unsluggableLeftNoAuthor(authorCredits, unslugAuthors)
+	switch {
+	case noAuthor && b.lv == nil:
+		warn("no individual author is left once the credits whose names slug to nothing (%s) are left off; a work requires an author; skipped",
+			quotedNames(creditNamesOf(unslugAuthors)))
+		p.noteSkip(b, reasonMissingAuthor)
+		p.noteLostSeriesClaims(b, -1, nil)
+		return
+	case noAuthor && workTitle != "":
+		p.noteLibrivoxWorklist(b, workTitle, LibrivoxAuthorUnsluggable, candidatesOf(nil))
+		p.noteLostSeriesClaims(b, -1, nil)
+		return
+	case !noAuthor && len(authorCredits) == 0:
 		warn("no author; a work requires an author; skipped")
 		p.noteSkip(b, reasonMissingAuthor)
 		p.noteLostSeriesClaims(b, -1, nil)
 		return
-	}
-	// A credit whose name slugs to nothing is credited nowhere, never on the
-	// shared catch-all person (unrecorded.go); a row it leaves with no
-	// individual author is a LibriVox worklist row (librivoxauthors.go rule 2)
-	// or, from any other source, a skip.
-	authorCredits, unslugAuthors, noAuthor := p.dropUnsluggableCredits(authorCredits)
-	if noAuthor {
-		if b.lv == nil {
-			warn("no individual author is left once the credits whose names slug to nothing (%s) are left off; a work requires an author; skipped",
-				quotedNames(creditNamesOf(unslugAuthors)))
-			p.noteSkip(b, reasonMissingAuthor)
-			p.noteLostSeriesClaims(b, -1, nil)
-			return
-		}
-		if workTitle != "" {
-			p.noteLibrivoxWorklist(b, workTitle, LibrivoxAuthorUnsluggable, candidatesOf(nil))
-			p.noteLostSeriesClaims(b, -1, nil)
-			return
-		}
 	}
 
 	if workTitle == "" {
@@ -1697,18 +1697,17 @@ func (p *planner) admitRecordingFacts(b sourceBook, warn func(string, ...any)) (
 		p.noteSkip(b, reasonLanguage)
 		return "", nil, nil, false
 	}
-	narratorNames = p.rowNarratorNames(b)
-	if len(narratorNames) == 0 {
-		warn("no narrator; a recording requires narrators; skipped")
-		p.noteSkip(b, reasonMissingNarrator)
-		return "", nil, nil, false
-	}
 	// A narrator whose name slugs to nothing is left off the recording, never
 	// credited to the shared catch-all person (unrecorded.go).
-	narratorNames, unsluggable = p.dropUnsluggableNarrators(b, narratorNames)
-	if len(narratorNames) == 0 {
+	narratorNames, unsluggable = rowNarratorSplitIn(p.credits, b)
+	switch {
+	case len(narratorNames) == 0 && len(unsluggable) > 0:
 		warn("no narrator is left once those whose names slug to nothing (%s) are left off; a recording requires narrators; skipped",
 			quotedNames(unsluggable))
+		p.noteSkip(b, reasonMissingNarrator)
+		return "", nil, nil, false
+	case len(narratorNames) == 0:
+		warn("no narrator; a recording requires narrators; skipped")
 		p.noteSkip(b, reasonMissingNarrator)
 		return "", nil, nil, false
 	}
@@ -1732,13 +1731,45 @@ func (p *planner) rowAuthorCredits(b sourceBook) []credit { return rowAuthorCred
 
 // rowAuthorCreditsIn is rowAuthorCredits under an explicit batch context.
 func rowAuthorCreditsIn(ctx creditContext, b sourceBook) []credit {
+	kept, _ := rowAuthorCreditSplitIn(ctx, b)
+	return kept
+}
+
+// rowUnsluggableAuthors is the author-side credits rowAuthorCredits leaves off
+// row b because their names slug to nothing (unrecorded.go).
+func (p *planner) rowUnsluggableAuthors(b sourceBook) []credit {
+	_, dropped := rowAuthorCreditSplitIn(p.credits, b)
+	return dropped
+}
+
+// rowAuthorCreditSplitIn is the row's cleaned author-side credits split once
+// into those it keeps and those left off because their names slug to nothing:
+// the one place that drop is made, so every reader of a row's credits - the
+// batch pre-passes, the work walk, the recordings-only match - sees the same
+// author set the row lands with, never the catch-all person.
+func rowAuthorCreditSplitIn(ctx creditContext, b sourceBook) (kept, dropped []credit) {
 	if b.creditsCached {
-		return b.authorCredits
+		return b.authorCredits, b.unslugAuthors
 	}
+	return splitUnsluggableCredits(rawAuthorCreditsIn(ctx, b))
+}
+
+// rawAuthorCreditsIn is the row's cleaned author-side credits with nothing left
+// off: for a reader that has to see the name as the source states it
+// (librivoxCreditNames), never for one deciding who the row credits.
+func rawAuthorCreditsIn(ctx creditContext, b sourceBook) []credit {
 	if b.lv != nil {
 		return librivoxAuthorCredits(ctx, b)
 	}
 	return sourceCredits(b.authors, b.str("author"), ctx.author)
+}
+
+// cacheAuthorCredits caches b's author-credit split (batchClaimsIn), recomputing
+// it when it was cached already.
+func cacheAuthorCredits(ctx creditContext, b *sourceBook) {
+	b.creditsCached = false
+	b.authorCredits, b.unslugAuthors = rowAuthorCreditSplitIn(ctx, *b)
+	b.creditsCached = true
 }
 
 // rowNarratorNames is a row's cleaned narrator list, read from the source's
@@ -1749,6 +1780,26 @@ func (p *planner) rowNarratorNames(b sourceBook) []string { return rowNarratorNa
 
 // rowNarratorNamesIn is rowNarratorNames under an explicit batch context.
 func rowNarratorNamesIn(ctx creditContext, b sourceBook) []string {
+	kept, _ := rowNarratorSplitIn(ctx, b)
+	return kept
+}
+
+// rowNarratorSplitIn is the row's cleaned narrator names split into those it
+// keeps and those left off because they slug to nothing (unrecorded.go). A
+// LibriVox row keeps every name: its readers line up with its reader credits by
+// index (rowNarratorSlugs), and an unsluggable reader is a record of their own,
+// addressed by reader id.
+func rowNarratorSplitIn(ctx creditContext, b sourceBook) (kept, dropped []string) {
+	names := rawNarratorNamesIn(ctx, b)
+	if b.lv != nil {
+		return names, nil
+	}
+	return splitUnsluggableNames(names)
+}
+
+// rawNarratorNamesIn is the row's cleaned narrator names with nothing left off
+// (rawAuthorCreditsIn's narrator twin).
+func rawNarratorNamesIn(ctx creditContext, b sourceBook) []string {
 	return creditNamesOf(sourceCredits(b.narrators, b.str("narrated_by"), ctx.narrator))
 }
 
@@ -2090,11 +2141,11 @@ func sourceNames(typed []string, joined string) []string {
 // catch-all "person" record for a name written entirely in a script Slugify
 // folds (Korean, Cyrillic, CJK), and writing {person: "person", role:
 // "translator"} would assert that one shared record translated every such book.
-// An unidentifiable person cannot be credited. The create path never hands
-// workCredits such a credit (addBook drops it first and reports it as a credit
-// not recorded, unrecorded.go), so this is the guard for every other caller:
-// the drop is reported in aggregate (reportUnnamedCredits) rather than
-// silently, because the fix is upstream in Slugify, not in the row.
+// An unidentifiable person cannot be credited. No caller hands workCredits such
+// a credit any more - a row's credits are split before anything reads them
+// (rowAuthorCreditSplitIn), and the credit is reported as not recorded
+// (unrecorded.go) - so this is a guard: should one arrive, the drop is reported
+// in aggregate (reportUnnamedCredits) rather than silently.
 //
 // The person keeps their ordinary membership in authors: a credit ADDS the role
 // the source stated, it never replaces the credit list the identity model is
@@ -2202,6 +2253,12 @@ func (p *planner) getOrCreateCreditIf(c credit, warn func(string, ...any), keep 
 		return r, false
 	}
 	if r.fellBack {
+		// A guard, not a path: a row's credits reach here with every name that
+		// slugs to nothing already left off (rowAuthorCreditSplitIn,
+		// rowNarratorSplitIn). The one caller that can still land here is a
+		// LibriVox reader whose own id slot is taken or retired
+		// (librivoxReaderSlug), whose catch-all the run's post-write
+		// validation then refuses (pkg/check's checkUnslugFallback).
 		warn("name %q produced an empty slug; using %q", c.name, r.slug)
 	}
 	if r.create {
@@ -2993,7 +3050,7 @@ func (p *planner) batchClaimsIn(ctx creditContext, books []sourceBook) ([]nameCl
 	var where []claimAt
 	for i := range books {
 		b := &books[i]
-		b.authorCredits, b.creditsCached = rowAuthorCreditsIn(ctx, *b), true
+		cacheAuthorCredits(ctx, b)
 		if len(b.series) == 0 {
 			continue
 		}

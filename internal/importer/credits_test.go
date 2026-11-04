@@ -675,7 +675,7 @@ func enrichSeed(extra string) map[string]string {
 // The row runs through a USER-LIBRARY importer (OpenAudible): libex refuses such
 // a row outright at its parse layer (firstUnnamedCredit). Since meta#2778 the
 // library importers leave every such credit off before the work is decided
-// (dropUnsluggableCredits) - the authors list included, which used to carry the
+// (rowAuthorCreditSplitIn) - the authors list included, which used to carry the
 // catch-all - and report each as a credit not recorded, so workCredits' own
 // fellBack guard is belt and braces behind that drop.
 func TestCreditsNeverNameTheCatchAllPerson(t *testing.T) {

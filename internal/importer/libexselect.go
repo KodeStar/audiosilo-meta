@@ -382,7 +382,7 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditi
 	books := make([]sourceBook, len(kept))
 	for i, r := range kept {
 		books[i] = r.book
-		books[i].authorCredits, books[i].creditsCached = nil, false
+		books[i].authorCredits, books[i].unslugAuthors, books[i].creditsCached = nil, nil, false
 	}
 	ctx := idx.p.creditContextOf(books)
 	claims, where := idx.p.batchClaimsIn(ctx, books)

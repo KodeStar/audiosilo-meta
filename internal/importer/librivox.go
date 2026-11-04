@@ -791,8 +791,7 @@ func (p *planner) rowNarratorSlugs(b sourceBook, names []string, warn func(strin
 func (p *planner) setLibrivoxPerson(b *sourceBook, j int, pin *creditPerson) {
 	b.lv.credits[j].person = pin
 	if b.creditsCached {
-		b.creditsCached = false
-		b.authorCredits, b.creditsCached = rowAuthorCreditsIn(p.credits, *b), true
+		cacheAuthorCredits(p.credits, b)
 	}
 }
 
@@ -1332,9 +1331,9 @@ func (p *planner) librivoxCreditSlug(c librivoxCredit) (string, bool) {
 // author credit.
 func (p *planner) librivoxCreditNames(c librivoxCredit) []string {
 	if c.kind == librivoxReader {
-		return rowNarratorNamesIn(p.credits, sourceBook{narrators: []string{c.name}})
+		return rawNarratorNamesIn(p.credits, sourceBook{narrators: []string{c.name}})
 	}
-	return creditNamesOf(rowAuthorCreditsIn(p.credits, sourceBook{authors: []string{c.name + c.suffix}}))
+	return creditNamesOf(rawAuthorCreditsIn(p.credits, sourceBook{authors: []string{c.name + c.suffix}}))
 }
 
 // names reports whether the work's own record names person: in its authors or

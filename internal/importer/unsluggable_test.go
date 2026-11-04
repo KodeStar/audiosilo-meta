@@ -1,6 +1,7 @@
 package importer
 
 import (
+	"encoding/json"
 	"reflect"
 	"slices"
 	"strings"
@@ -19,28 +20,28 @@ type librarySource struct {
 	export func(asin string, authors, narrators []string) string
 }
 
-func quotedJSON(names []string) string {
-	out := make([]string, len(names))
-	for i, n := range names {
-		out[i] = `"` + n + `"`
+// mustJSON is v as JSON.
+func mustJSON(v any) string {
+	out, err := json.Marshal(v)
+	if err != nil {
+		panic(err)
 	}
-	return strings.Join(out, ",")
+	return string(out)
 }
 
 var librarySources = []librarySource{
 	{"openaudible", Run, func(asin string, authors, narrators []string) string {
-		return `[{"asin":"` + asin + `","title_short":"A Cyrillic Book","region":"US","language":"english","seconds":18000,` +
-			`"author":"` + strings.Join(authors, ", ") + `","narrated_by":"` + strings.Join(narrators, ", ") + `"}]`
+		return mustJSON([]map[string]any{{"asin": asin, "title_short": "A Cyrillic Book", "region": "US", "language": "english",
+			"seconds": 18000, "author": strings.Join(authors, ", "), "narrated_by": strings.Join(narrators, ", ")}})
 	}},
 	{"libation", RunLibation, func(asin string, authors, narrators []string) string {
-		return `[{"AudibleProductId":"` + asin + `","Locale":"us","Title":"A Cyrillic Book",` +
-			`"AuthorNames":"` + strings.Join(authors, ", ") + `","NarratorNames":"` + strings.Join(narrators, ", ") + `",` +
-			`"LengthInMinutes":300,"ContentType":"Product","Language":"English"}]`
+		return mustJSON([]map[string]any{{"AudibleProductId": asin, "Locale": "us", "Title": "A Cyrillic Book",
+			"AuthorNames": strings.Join(authors, ", "), "NarratorNames": strings.Join(narrators, ", "),
+			"LengthInMinutes": 300, "ContentType": "Product", "Language": "English"}})
 	}},
 	{"audiosilo-books", RunAudiosiloBooks, func(asin string, authors, narrators []string) string {
-		return `{"format":"audiosilo-books","version":1,"books":[{"title":"A Cyrillic Book",` +
-			`"authors":[` + quotedJSON(authors) + `],"narrators":[` + quotedJSON(narrators) + `],` +
-			`"asin":"` + asin + `","language":"en"}]}`
+		return mustJSON(map[string]any{"format": "audiosilo-books", "version": 1, "books": []map[string]any{{
+			"title": "A Cyrillic Book", "authors": authors, "narrators": narrators, "asin": asin, "language": "en"}}})
 	}},
 }
 
@@ -194,4 +195,55 @@ func TestLibraryAttachReportsAnUnsluggableNarrator(t *testing.T) {
 			requireNoCatchAll(t, dataDir)
 		})
 	}
+}
+
+// A co-author whose name slugs to nothing is left off before ANY reader of the
+// row's credits sees them (rowAuthorCreditSplitIn), so the row is keyed and
+// matched exactly as the clean row it lands as: the same-title serial pre-pass
+// groups it with its sibling volume (serialPositionSuffixes), giving the two
+// volumes the works the clean pair gets.
+func TestUnsluggableCoAuthorKeysLikeTheCleanRow(t *testing.T) {
+	serial := func(asin, pos, author string) map[string]any {
+		return map[string]any{"asin": asin, "title_short": "Serial Book", "region": "US", "language": "english",
+			"seconds": 18000, "author": author, "narrated_by": "Bea Reader", "series_name": "Serial Saga", "series_sequence": pos}
+	}
+	works := func(author2 string) []string {
+		sum, dataDir := runImport(t, mustJSON([]map[string]any{
+			serial("B0SERIAL01", "1", "Ada Author"), serial("B0SERIAL02", "2", author2),
+		}), false)
+		if sum.NewWorks != 2 {
+			t.Fatalf("author %q: NewWorks = %d, want 2\nwarnings: %v", author2, sum.NewWorks, sum.Warnings)
+		}
+		requireNoCatchAll(t, dataDir)
+		return listWorks(t, dataDir)
+	}
+	clean, coAuthor := works("Ada Author"), works("Ada Author, Йордан Йовков")
+	if !reflect.DeepEqual(clean, coAuthor) {
+		t.Errorf("works with an unsluggable co-author = %v, want the clean pair's %v", coAuthor, clean)
+	}
+}
+
+// The recordings-only work match reads the same split: a row crediting the
+// catalogued author and an unsluggable co-author is an alternate narration of
+// that author's work, not a book the catalogue lacks.
+func TestRecordingsOnlyMatchesPastAnUnsluggableCoAuthor(t *testing.T) {
+	dataDir := t.TempDir()
+	seedKafka(t, dataDir, "franz-kafka", "Franz Kafka")
+	row := mustJSON([]map[string]any{{"asin": "B0UNSLUG05", "title_short": "Metamorphosis", "author": "Franz Kafka, Йордан Йовков",
+		"narrated_by": "Bea Reader, 김영하", "language": "english", "region": "US", "seconds": 6000}})
+	sum, err := Run(writeBooks(t, row), Options{DataDir: dataDir, ImportDate: testImportDate, Mode: ModeRecordingsOnly})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if sum.SkippedNoWork != 0 || sum.NewRecordings != 1 {
+		t.Fatalf("no-work/new recordings = %d/%d, want 0/1\nwarnings: %v", sum.SkippedNoWork, sum.NewRecordings, sum.Warnings)
+	}
+	if got := recSlugsOf(t, dataDir, "metamorphosis"); !reflect.DeepEqual(got, []string{"bea-reader", "se"}) {
+		t.Errorf("recordings = %v, want bea-reader beside se", got)
+	}
+	want := []UnrecordedCredit{{ASIN: "B0UNSLUG05", Name: "김영하", Roles: []string{narratorRole}, Work: "metamorphosis", Reason: unsluggableReason}}
+	if !reflect.DeepEqual(sum.UnrecordedCredits, want) {
+		t.Errorf("unrecorded = %+v, want %+v", sum.UnrecordedCredits, want)
+	}
+	requireNoCatchAll(t, dataDir)
 }
