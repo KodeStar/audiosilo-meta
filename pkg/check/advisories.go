@@ -779,8 +779,8 @@ type sidecarScaleMeasure struct {
 //
 // It is CROSS-FAMILY - the measure it reads is the works family's recordings -
 // but unlike checkIntegrity's sidecar arm it needs no profile gate: under a tree
-// holding no works the measure map is empty and every sidecar takes the !ok
-// continue, so the rule is vacuous by construction rather than switched off
+// holding no works the measure map is empty and every member takes judge's !ok
+// return, so the rule is vacuous by construction rather than switched off
 // (see check.LoadProfile for the cross-family skip rule it satisfies for free).
 func checkSidecarPositionScale(cat *model.Catalog, idx *pathIndex, warn addFunc) {
 	// No POSITIONED sidecars, nothing to judge - and the measure map below is a
@@ -831,14 +831,18 @@ func checkSidecarPositionScale(cat *model.Catalog, idx *pathIndex, warn addFunc)
 	// judge reports a member whose positions stage a gradient of at least
 	// minPositions that stops short of the floor, and returns its last position.
 	judge := func(rel, kind, workID string, positions []int, minPositions int) (top int) {
-		distinct := map[int]bool{}
 		for _, p := range positions {
-			distinct[p] = true
 			top = max(top, p)
 		}
 		m, ok := measures[workID]
-		if !ok || m.chapters < sidecarScaleMinChapters ||
-			len(distinct) < minPositions || float64(top) >= float64(m.chapters)*sidecarScaleFloor {
+		if !ok || m.chapters < sidecarScaleMinChapters || float64(top) >= float64(m.chapters)*sidecarScaleFloor {
+			return top
+		}
+		distinct := map[int]bool{}
+		for _, p := range positions {
+			distinct[p] = true
+		}
+		if len(distinct) < minPositions {
 			return top
 		}
 		if rec, ok := m.parts[top]; ok {

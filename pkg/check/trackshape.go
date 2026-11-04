@@ -3,6 +3,7 @@ package check
 import (
 	"regexp"
 	"slices"
+	"strconv"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/extract"
@@ -26,18 +27,34 @@ import (
 // the recording, not a divider, and a run of "Scene N" or "Section N" tracks is
 // the chapter list itself.
 
-// numberWordRe is a number word up to the ninety-nines ("Seven", "Twenty-One"),
-// the form a part divider takes when a recording titles it "One: Thief at Sea",
-// over pkg/extract's vocabulary.
-var numberWordRe = func() string {
+// numberWordPattern is a number word up to the ninety-nines ("Seven",
+// "Twenty-One"), the form a part divider takes when a recording titles it "One:
+// Thief at Sea", over pkg/extract's vocabulary.
+var numberWordPattern = func() string {
 	alt := strings.Join(extract.NumberWords(), "|")
 	return `(?:` + alt + `)(?:[- ](?:` + alt + `))?`
 }()
 
+// partUnitPattern is a part-level unit as a title opens with it, spelled out or
+// abbreviated ("Part", "Bk.", "Vol", "Part:"), with the separator before its
+// number. partNumberPattern is that number, captured: digits, a Roman numeral,
+// a number word (and "Zero", which pkg/extract's chapter vocabulary has no use
+// for but All the Light We Cannot See opens its parts with), or an ordinal
+// ("Book First", "Part the Second" - the older recordings' form). A unit
+// followed by anything else is a chapter's own title ("Book Club Questions",
+// "Act of War", "Part of the Truth" - each in the tree), never a divider. The
+// divider and the part-prefix rules share both halves, so the two cannot
+// disagree about what a part is ("Act 1, Scene 2" states act 1).
+const partUnitPattern = `(?:part|book|volume|act|pt|bk|vol)[.:]?\s*`
+
+var partNumberPattern = `(\d+|[ivxlcdm]+|(?:the\s+)?(?:first|second|third|fourth|fifth|sixth|seventh|eighth|` +
+	`ninth|tenth|eleventh|twelfth)|zero|` + numberWordPattern + `)\b`
+
 var (
 	// reTrackNumber is a leading track number an encoder prefixed to the title
-	// ("03 - Part Two", "12. Chapter 9"); the title proper follows it.
-	reTrackNumber = regexp.MustCompile(`^\d+\s*[-.:)]\s+`)
+	// ("03 - Part Two", "12. Chapter 9", "01-Opening Credits"); the title proper
+	// follows it.
+	reTrackNumber = regexp.MustCompile(`^\d+\s*[-.:)]\s*`)
 
 	// reMatterTrack is a front- or back-matter track: no chapter of the work, at
 	// either end of it. The vocabulary is the non-chapter titles that recur across
@@ -51,21 +68,24 @@ var (
 		`^(?:dedication|epigraph|acknowledge?ments|foreword|preface|afterword|` +
 		`(?:author|translator)['’]?s\s+note|about\s+the\s+author|copyright|bloopers)\b`)
 
-	// reLowerUnit is a chapter-level unit named inside a title. A title naming
-	// one is a chapter track whatever it opens with: "Part 1 - Chapter 3" and
-	// "Book Two, Chapter 1" are chapters that state their part, never dividers.
-	reLowerUnit = regexp.MustCompile(`(?i)\b(?:chapter|chap|ch|kapitel|chapitre|cap[ií]tulo|capitolo|` +
-		`hoofdstuk|scene|section|canto)\b`)
+	// reLowerUnit is a chapter-level unit named inside a title, singular or
+	// plural, and with or without a space before its number. A title naming one
+	// is a chapter track whatever it opens with: "Part 1 - Chapter 3", "Book Two,
+	// Chapter 1", "Book 1 Chapter1" and "Part 1, Chapters 11 and 12" are chapters
+	// that state their part, never dividers.
+	reLowerUnit = regexp.MustCompile(`(?i)\b(?:chapters?|chaps?|chpts?|chs?|kapitel|chapitres?|cap[ií]tulos?|` +
+		`capitol[oi]|hoofdstuk(?:ken)?|scenes?|sections?|cantos?)(?:\b|\d)`)
 
 	// reDividerTrack is a part divider: a title opening with a part-level unit
-	// ("Part One: The Traveler", "Book II", "Act 3"), or a bare number word,
-	// alone or before a colon ("Seven", "Seven: Intersections").
-	reDividerTrack = regexp.MustCompile(`(?i)^(?:part|book|volume|act)\b|^` + numberWordRe + `\s*(?::|$)`)
+	// and its number ("Part One: The Traveler", "Book II", "Act 3", "Book
+	// First"), or a bare number word, alone or before a colon ("Seven", "Seven:
+	// Intersections").
+	reDividerTrack = regexp.MustCompile(`(?i)^` + partUnitPattern + partNumberPattern + `|^` + numberWordPattern + `\s*(?::|$)`)
 
 	// rePartPrefix is the part a chapter track states ahead of its chapter
 	// ("Part 2 - Chapter 7", "Bk 3: Ch 1-2"), the shape a recording with no
 	// divider tracks carries its parts in.
-	rePartPrefix = regexp.MustCompile(`(?i)^(?:part|book|volume|pt|bk|vol)\.?\s*(\d+|[ivxlcdm]+|` + numberWordRe + `)\b`)
+	rePartPrefix = regexp.MustCompile(`(?i)^` + partUnitPattern + partNumberPattern)
 )
 
 // recordingShape is a recording's chapter list read as the book's structure:
@@ -100,7 +120,11 @@ func shapeOf(chapters []model.Chapter) recordingShape {
 			continue
 		}
 		if m := rePartPrefix.FindStringSubmatch(t); m != nil {
+			// "Part 01" and "Part 1" are one part.
 			label := strings.ToLower(m[1])
+			if n, err := strconv.Atoi(label); err == nil {
+				label = strconv.Itoa(n)
+			}
 			if !slices.Contains(stated, label) {
 				stated = append(stated, label)
 			}

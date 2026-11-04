@@ -524,6 +524,12 @@ func TestAdvisorySidecarScaleCastAloneNeedsFiveReveals(t *testing.T) {
 		[]int{0, 1, 1, 2, 4}, nil)), scaleMarker); len(got) != 0 {
 		t.Errorf("a four-reveal cast with no recaps reported %v", got)
 	}
+	// The recaps member keeps its own floor of three: recaps through 3, 7 and
+	// 11 of 80 are reported, the three-reveal cast beside them (unvouched) is not.
+	got := advisoryMatching(advisoryWarnings(t, scaleFixture(80, 3, 7, 11)), scaleMarker)
+	if len(got) != 1 || !strings.Contains(got[0], "recaps sidecar") {
+		t.Errorf("a three-position pair stopping at 11 of 80 reported %v, want the recaps member alone", got)
+	}
 	// Recaps holding only the chapter-0 "previously" entry vouch for nothing.
 	if got := advisoryMatching(advisoryWarnings(t, pairFixture(numberedTracks(80),
 		[]int{0, 1, 2, 4, 6}, []int{0})), scaleMarker); len(got) != 1 {
