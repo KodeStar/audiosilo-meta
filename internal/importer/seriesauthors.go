@@ -693,10 +693,9 @@ type personForm struct {
 	slug, marked, fold string
 	words              []string
 	tokens             []nameToken
-	// apart is the review the form was built under (PeopleApart.form), and live
-	// the slug it asks that review by (slug's survivor); nil keeps nothing apart.
+	// apart is the review the form was built under (PeopleApart.form); nil keeps
+	// nothing apart.
 	apart *PeopleApart
-	live  string
 }
 
 // formOf computes a name's comparison forms. The words drop a " - role" tail, a
@@ -749,7 +748,7 @@ func (a personForm) same(b personForm) bool {
 	if a.slug != "" && a.slug == b.slug {
 		return true
 	}
-	return a.rungs(b) && !cmp.Or(a.apart, b.apart).vetoes(a, b)
+	return a.rungs(b) && !cmp.Or(a.apart, b.apart).Has(a.slug, b.slug)
 }
 
 // rungs reports whether any identity rung below the slug calls the two forms one

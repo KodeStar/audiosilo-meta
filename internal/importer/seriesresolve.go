@@ -937,8 +937,8 @@ func (ix *SeriesAuthorIndex) Resolve(name string, reds model.Redirects, stored f
 	if row == nil {
 		row = &SeriesRow{}
 	}
-	if ix != nil {
-		row.keepApart(ix.apart)
+	if ix != nil && row.apart == nil {
+		row.keepApart(ix.apart) // a row built without a review takes the index's
 	}
 	clean, raw := CleanSeriesName(name)
 	t := resolveSeriesClaims(ix.catalogue(stored, reds), []nameClaim{{name: clean, raw: raw, row: row, order: claimOrder(row, "")}})[0]

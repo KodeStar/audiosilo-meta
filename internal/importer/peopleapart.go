@@ -51,23 +51,6 @@ func (pa *PeopleApart) Has(a, b string) bool {
 	return pa.pairs.Has(model.RedirectPeople, pa.live(a), pa.live(b))
 }
 
-// vetoes reports whether the review keeps the two forms' people apart, each
-// asked by the live slug its form stored (form) - or, for a form built without
-// this review, resolved here.
-func (pa *PeopleApart) vetoes(a, b personForm) bool {
-	if pa == nil || a.slug == "" || b.slug == "" {
-		return false
-	}
-	return pa.pairs.Has(model.RedirectPeople, pa.liveOf(a), pa.liveOf(b))
-}
-
-func (pa *PeopleApart) liveOf(f personForm) string {
-	if f.apart == pa {
-		return f.live
-	}
-	return pa.live(f.slug)
-}
-
 // SamePerson is the series same-person rule (personForm.same) over two credited
 // names, each with the slug it is recorded or would be minted under: whether
 // the two may be one person. A pair a review kept apart never is. It is
@@ -90,11 +73,9 @@ func (pa *PeopleApart) NearPerson(slugA, nameA, slugB, nameB string) bool {
 	return !pa.Has(slugA, slugB) && nearPerson(nameA, nameB)
 }
 
-// form is formOf carrying this review, with the live slug it is asked by.
+// form is formOf carrying this review.
 func (pa *PeopleApart) form(slug, name string) personForm {
 	f := formOf(slug, name)
-	if pa != nil {
-		f.apart, f.live = pa, pa.live(slug)
-	}
+	f.apart = pa
 	return f
 }
