@@ -961,7 +961,8 @@ func (c *composer) getOrCreatePerson(name, sourceRef string) (string, bool) {
 	// synthetic-voice person a folded narration credit names (the same
 	// importer.PersonKindFor call the bulk importer mints with, so a record
 	// created by a form and one created by an import are the same record). Every
-	// other kind stays a human classification made through the correct-data form.
+	// other kind stays a classification, made by a maintainer batch or the
+	// correct-data form.
 	if !c.putNewEntry(pack.FamilyPeople, slug, outPerson{
 		ID: slug, Name: strings.TrimSpace(name), Kind: importer.PersonKindFor(name),
 		License: licenseCC0, Sources: c.sources(sourceRef),

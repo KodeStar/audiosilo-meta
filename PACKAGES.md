@@ -2026,8 +2026,9 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   Remaining
   follow-ups tracked in the plan:
   surfacing genres in the player (three-repo seam), surfacing **credits** in the
-  artifact/API/site (a later, separate change), and classifying the existing
-  corporate person records with `kind` (a human pass, deliberately not inferred).
+  artifact/API/site (a later, separate change). The existing non-individual
+  person records are classified with `kind` (CLAUDE.md, "person"); no importer
+  infers it for a newly minted record.
   The libex parse layer STREAMS (`parseLibexStream`, over `streamLibexRows`,
   the one reader of the format, which libex-select calls with `keepRaw` for
   the row bytes it writes and the importer without, so its rows are decoded
