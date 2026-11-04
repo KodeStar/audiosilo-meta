@@ -13042,6 +13042,61 @@
           ],
           "work": "prometheus-bound"
         },
+        "expatriate": {
+          "added_at": "2026-11-04",
+          "archive_id": "prometheus_bound_1506_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/prometheus_bound_1506_librivox/prometheusbound_01_aeschylus_64kb.mp3",
+              "length_ms": 2068000,
+              "start_ms": 0,
+              "title": "Part One"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/prometheus_bound_1506_librivox/prometheusbound_02_aeschylus_64kb.mp3",
+              "length_ms": 2089000,
+              "start_ms": 2068000,
+              "title": "Part Two"
+            }
+          ],
+          "copyright_year": 1851,
+          "cover_url": "https://archive.org/download/LibrivoxCdCoverArt17/prometheusbound_1506.jpg",
+          "credits": [
+            {
+              "person": "elizabeth-barrett-browning",
+              "role": "translator"
+            }
+          ],
+          "id": "expatriate",
+          "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Poetry",
+            "Tragedy"
+          ],
+          "librivox_id": 10016,
+          "librivox_title": "Prometheus Bound (Browning Translation)",
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/prometheus-bound-browning-translation-by-aeschylus/",
+            "rss": "https://librivox.org/rss/10016",
+            "text": "https://www.gutenberg.org/ebooks/37452",
+            "zip": "https://archive.org/compress/prometheus_bound_1506_librivox/formats=64KBPS MP3&file=/prometheus_bound_1506_librivox.zip"
+          },
+          "narrators": [
+            "expatriate"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 69,
+          "sources": [
+            {
+              "imported_at": "2026-11-04",
+              "ref": "10016",
+              "type": "librivox"
+            }
+          ],
+          "work": "prometheus-bound"
+        },
         "keira-grace-2019": {
           "abridged": false,
           "added_at": "2026-08-07",
@@ -13145,6 +13200,199 @@
         }
       ],
       "title": "Prometheus Bound"
+    },
+    "prometheus-bound-buckley-translation": {
+      "added_at": "2026-11-04",
+      "authors": [
+        "aeschylus",
+        "theodore-alois-buckley"
+      ],
+      "credits": [
+        {
+          "person": "theodore-alois-buckley",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "classics",
+        "drama-plays"
+      ],
+      "id": "prometheus-bound-buckley-translation",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "elizabeth-klett": {
+          "added_at": "2026-11-04",
+          "archive_id": "prometheus_bound_1302_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/prometheus_bound_1302_librivox/prometheusbound_1_aeschylus_64kb.mp3",
+              "length_ms": 1910000,
+              "readers": [
+                "elizabeth-klett",
+                "jason-mills",
+                "bob-neufeld",
+                "availle"
+              ],
+              "start_ms": 0,
+              "title": "Part 1"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/prometheus_bound_1302_librivox/prometheusbound_2_aeschylus_64kb.mp3",
+              "length_ms": 1866000,
+              "readers": [
+                "amanda-friday",
+                "alan-mapstone",
+                "charlotte-duckett",
+                "bala"
+              ],
+              "start_ms": 1910000,
+              "title": "Part 2"
+            }
+          ],
+          "copyright_year": 1897,
+          "cover_url": "https://archive.org/download/LibrivoxCdCoverArt29/Prometheus_Bound_1302.jpg",
+          "credits": [
+            {
+              "person": "theodore-alois-buckley",
+              "role": "translator"
+            }
+          ],
+          "id": "elizabeth-klett",
+          "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Plays"
+          ],
+          "librivox_id": 7444,
+          "librivox_title": "Prometheus Bound (Buckley Translation)",
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/prometheus-bound-by-aeschylus/",
+            "rss": "https://librivox.org/rss/7444",
+            "text": "https://www.gutenberg.org/ebooks/27458",
+            "zip": "https://archive.org/compress/prometheus_bound_1302_librivox/formats=64KBPS MP3&file=/prometheus_bound_1302_librivox.zip"
+          },
+          "narrators": [
+            "elizabeth-klett",
+            "jason-mills",
+            "bob-neufeld",
+            "availle",
+            "amanda-friday",
+            "alan-mapstone",
+            "charlotte-duckett",
+            "bala"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 63,
+          "sources": [
+            {
+              "imported_at": "2026-11-04",
+              "ref": "7444",
+              "type": "librivox"
+            }
+          ],
+          "work": "prometheus-bound-buckley-translation"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-11-04",
+          "ref": "7444",
+          "type": "librivox"
+        }
+      ],
+      "title": "Prometheus Bound (Buckley Translation)"
+    },
+    "prometheus-bound-thoreau-translation": {
+      "added_at": "2026-11-04",
+      "authors": [
+        "aeschylus",
+        "henry-david-thoreau"
+      ],
+      "credits": [
+        {
+          "person": "henry-david-thoreau",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "classics",
+        "drama-plays"
+      ],
+      "id": "prometheus-bound-thoreau-translation",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "expatriate": {
+          "added_at": "2026-11-04",
+          "archive_id": "prometheusbound_1507_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/prometheusbound_1507_librivox/prometheusbound_01_aeschylus_64kb.mp3",
+              "length_ms": 1160000,
+              "start_ms": 0,
+              "title": "Part I"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/prometheusbound_1507_librivox/prometheusbound_02_aeschylus_64kb.mp3",
+              "length_ms": 1265000,
+              "start_ms": 1160000,
+              "title": "Part II"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/prometheusbound_1507_librivox/prometheusbound_03_aeschylus_64kb.mp3",
+              "length_ms": 1123000,
+              "start_ms": 2425000,
+              "title": "Part III"
+            }
+          ],
+          "copyright_year": 1906,
+          "cover_url": "https://archive.org/download/prometheusbound_1507_librivox/prometheus_bound3_1507.jpg",
+          "credits": [
+            {
+              "person": "henry-david-thoreau",
+              "role": "translator"
+            }
+          ],
+          "id": "expatriate",
+          "language": "en",
+          "librivox_genres": [
+            "Classics (Greek & Latin Antiquity)",
+            "Tragedy"
+          ],
+          "librivox_id": 10080,
+          "librivox_title": "Prometheus Bound (Thoreau Translation)",
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/prometheus-bound-by-aeschylus-2/",
+            "rss": "https://librivox.org/rss/10080",
+            "text": "https://www.gutenberg.org/files/42553/42553-0.txt",
+            "zip": "https://archive.org/compress/prometheusbound_1507_librivox/formats=64KBPS MP3&file=/prometheusbound_1507_librivox.zip"
+          },
+          "narrators": [
+            "expatriate"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 59,
+          "sources": [
+            {
+              "imported_at": "2026-11-04",
+              "ref": "10080",
+              "type": "librivox"
+            }
+          ],
+          "work": "prometheus-bound-thoreau-translation"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-11-04",
+          "ref": "10080",
+          "type": "librivox"
+        }
+      ],
+      "title": "Prometheus Bound (Thoreau Translation)"
     },
     "prometheus-illbound": {
       "added_at": "2026-10-29",
