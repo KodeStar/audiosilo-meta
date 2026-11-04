@@ -82,8 +82,18 @@ func sameStringSet(a, b []string) bool {
 	return true
 }
 
-// SameProduction compares narrator sets, runtime and abridgement, and says why
-// in either direction. Callers select eligible siblings (including language).
+// SameProduction compares LibriVox projects, narrator sets, runtime and
+// abridgement, and says why in either direction. Callers select eligible
+// siblings (including language).
+//
+// A recording carrying a librivox_id is a production of its own, as the
+// importer has it (a LibriVox row never merges into a sibling): it is the same
+// production only as a recording of the SAME project. Two different projects are
+// two productions (librivox_id is identity, unique across the dataset), and so
+// is a LibriVox recording beside one that is not - a reader who also narrates
+// commercially is the shape that would otherwise fold a retail recording and a
+// volunteer one into one record. Either way the mover is re-keyed, which loses
+// nothing.
 //
 // The importer calls these same runtime and abridgement primitives:
 // this pass asks the very question the ASIN-merge guard asks, and the first draft
@@ -94,6 +104,12 @@ func sameStringSet(a, b []string) bool {
 // agree the mover is re-keyed, which loses nothing, so the conservative branch is also
 // the cheap one.
 func SameProduction(a, b Obj) (string, bool) {
+	if la, lb := librivoxIDOf(a), librivoxIDOf(b); la != lb {
+		if la != 0 && lb != 0 {
+			return fmt.Sprintf("LibriVox projects %d and %d differ (a project is a production of its own)", la, lb), false
+		}
+		return fmt.Sprintf("only one is a LibriVox project (librivox_id %d), which is a production of its own", max(la, lb)), false
+	}
 	na, nb := a.Strs("narrators"), b.Strs("narrators")
 	if !sameStringSet(na, nb) {
 		return fmt.Sprintf("narrators differ: [%s] vs [%s]", strings.Join(na, ", "), strings.Join(nb, ", ")), false
@@ -123,6 +139,12 @@ func runtimeEvidence(ra, rb int) string {
 	}
 }
 
+// librivoxIDOf is a recording's librivox_id, 0 when it states none.
+func librivoxIDOf(rec Obj) int {
+	id, _ := rec.IntAt("librivox_id")
+	return id
+}
+
 // RecordingLoss describes one choice a merge made. Kept and Dropped are
 // human-readable values (chapter counts for timelines); DroppedRaw preserves the
 // discarded bytes for relocation's notes. Either side may lose a chapter list.
@@ -143,6 +165,12 @@ type RecordingLoss struct {
 // 42 used to keep the 3. Measured over a 386-merge wave, 4 of 40 dropped lists were richer
 // than the one kept, and a full wave discarded about 7,198 chapter entries.
 //
+// The LibriVox facts ride the same rules: archive_id fills like any string, and
+// librivox_id, links and copyright_year like the byte-exact members, so a merged
+// recording keeps every one either side states (SameProduction admits a LibriVox
+// recording only beside one of the same project, so the id itself never
+// conflicts). A chapter's audio_url travels with its list.
+//
 // added_at is deliberately not filled, on either record kind. It records when THIS record
 // entered the database; the mover's own date belongs to a record that no longer exists, and
 // the provenance that dates it survives in the unioned sources[], which is what metabuild
@@ -154,11 +182,11 @@ func MergeRecordings(keep, mover Obj) (Obj, []RecordingLoss) {
 	out.Set("sources", UnionSources(out.Sources(), mover.Sources()))
 	SetListOrDrop(out, "narrators", AppendUnique(out.Strs("narrators"), mover.Strs("narrators")))
 
-	lost := fillRecordingStrings(out, mover, "release_date", "publisher", "cover_url", "language")
+	lost := fillRecordingStrings(out, mover, "release_date", "publisher", "cover_url", "language", "archive_id")
 	// The tri-state and byte-exact members: an absent abridged is "unknown" and a false one
 	// is a statement, and a chapter list is a timeline whose numbers must survive exactly as
 	// they were written, so it is moved as BYTES either way.
-	for _, field := range []string{"abridged", "runtime_min", "publishers"} {
+	for _, field := range []string{"abridged", "runtime_min", "publishers", "librivox_id", "links", "copyright_year"} {
 		if FillAbsentRaw(out, mover, field) {
 			continue
 		}
