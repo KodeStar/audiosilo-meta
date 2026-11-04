@@ -1545,20 +1545,20 @@
         }
       ]
     },
-    "book-nooknuts": {
-      "id": "book-nooknuts",
+    "book-nook-nuts": {
+      "id": "book-nook-nuts",
       "kind": "publisher",
       "license": "CC0-1.0",
-      "name": "Book NookNuts",
+      "name": "Book Nook Nuts",
       "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0GMY4W94X",
-          "type": "libex-import"
-        },
         {
           "imported_at": "2026-08-01",
           "ref": "B0CRF5WWQN",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GMY4W94X",
           "type": "libex-import"
         }
       ]
