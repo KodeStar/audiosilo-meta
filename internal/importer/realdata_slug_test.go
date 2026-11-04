@@ -214,15 +214,16 @@ func dataSeriesClaims(t *testing.T) map[string]positionClaim {
 
 // TestDataPeopleSlugsAreTransliterated is the migration's completeness proof for
 // the people family: every committed person's id is the slug of their name under
-// today's Slugify (or the LibriVox reader form of it, for the record carrying
-// that reader id - model.PersonIDMatches, the call checkPersonSlug asks). A
+// today's Slugify (or a LibriVox form of it, for the record carrying that
+// reader or author id - model.PersonIDMatches, the call checkPersonSlug asks). A
 // record the migration missed fails here with the name that no longer slugs to
 // its address.
 func TestDataPeopleSlugsAreTransliterated(t *testing.T) {
 	walkEntries(t, "people", func(path, key string, e map[string]any) {
 		name := str(e, "name")
 		reader, _ := e["librivox_reader_id"].(float64)
-		if !model.PersonIDMatches(key, name, int(reader)) {
+		author, _ := e["librivox_author_id"].(float64)
+		if !model.PersonIDMatches(key, name, int(reader), int(author)) {
 			want, _ := model.PersonSlug(name)
 			t.Errorf("%s: person %q has name %q, which slugs to %q", path, key, name, want)
 		}

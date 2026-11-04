@@ -421,6 +421,24 @@ func TestLibrivoxReaderSlugIsAPersonSlug(t *testing.T) {
 	}
 }
 
+// TestLibrivoxAuthorSlugIsAPersonSlug is checkPersonSlug's passing fixture for
+// the author forms (meta#2778): an undated LibriVox author whose name a retail
+// record holds, at model.LibrivoxAuthorSlug for exactly the author id they
+// carry, and an author whose name slugs to nothing at
+// model.LibrivoxUnslugAuthorSlug, credited on a work.
+func TestLibrivoxAuthorSlugIsAPersonSlug(t *testing.T) {
+	dir := t.TempDir()
+	files := baseValid()
+	files["people/ra/ralph-scott.json"] = `{"id":"ralph-scott","license":"CC0-1.0","name":"Ralph Scott","sources":[{"type":"user"}]}`
+	files["people/ra/ralph-scott-librivox-author-16428.json"] = `{"id":"ralph-scott-librivox-author-16428","librivox_author_id":16428,"license":"CC0-1.0","name":"Ralph Scott","sources":[{"type":"librivox","ref":"17170"}]}`
+	files["people/li/librivox-author-17538.json"] = `{"id":"librivox-author-17538","librivox_author_id":17538,"license":"CC0-1.0","name":"Зинаида Гиппиус","sources":[{"type":"librivox","ref":"17538"}]}`
+	files["works/ch/chortova-kukla/work.json"] = `{"authors":["librivox-author-17538"],"id":"chortova-kukla","language":"ru","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Чортова кукла"}`
+	writeEntities(t, dir, files)
+	if res := Load(dir); !res.OK() {
+		t.Fatalf("a LibriVox author at their author-id form reported problems: %v", res.Problems)
+	}
+}
+
 // TestReservedSlugsAbsentIsValid is checkReservedSlug's passing fixture, and it
 // carries the case the rule had to be designed around: a person actually NAMED
 // "Search" sits at the one variant model.PersonSlug mints for a reserved word,
@@ -693,6 +711,29 @@ func TestLoadRuleViolations(t *testing.T) {
 				f["people/li/librivox-reader-11294.json"] = `{"id":"librivox-reader-11294","license":"CC0-1.0","name":"Ἑλένη Κεμικτσή","sources":[{"type":"user"}]}`
 			},
 			want: `person id "librivox-reader-11294" does not match its name "Ἑλένη Κεμικτσή" (want "person")`,
+		},
+		{
+			// LibriVox states the record and it lost its reader id: the hint
+			// names the id it is missing, never the catch-all.
+			name: "LibriVox unsluggable person without a LibriVox id",
+			mutate: func(f map[string]string) {
+				f["people/li/librivox-reader-11294.json"] = `{"id":"librivox-reader-11294","license":"CC0-1.0","name":"Ἑλένη Κεμικτσή","sources":[{"type":"librivox","ref":"10662"}]}`
+			},
+			want: `person id "librivox-reader-11294" does not match its name "Ἑλένη Κεμικτσή", which slugs to nothing; a LibriVox person is filed at librivox-reader-<reader id> or librivox-author-<author id>`,
+		},
+		{
+			name: "author slug without an author id",
+			mutate: func(f map[string]string) {
+				f["people/ra/ralph-scott-librivox-author-16428.json"] = `{"id":"ralph-scott-librivox-author-16428","librivox_reader_id":16428,"license":"CC0-1.0","name":"Ralph Scott","sources":[{"type":"user"}]}`
+			},
+			want: `person id "ralph-scott-librivox-author-16428" does not match its name "Ralph Scott" (want "ralph-scott")`,
+		},
+		{
+			name: "unsluggable author slug for another author id",
+			mutate: func(f map[string]string) {
+				f["people/li/librivox-author-17538.json"] = `{"id":"librivox-author-17538","librivox_author_id":17539,"license":"CC0-1.0","name":"Зинаида Гиппиус","sources":[{"type":"user"}]}`
+			},
+			want: `person id "librivox-author-17538" does not match its name "Зинаида Гиппиус" (want "librivox-author-17539")`,
 		},
 		{
 			// A name with a slug of its own takes that slug, reader id or not.

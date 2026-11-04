@@ -395,12 +395,13 @@ reading or a numbered version is another recording of the plain-titled work):
 
 1. the importer's ordinary identity walk: same title, same identity authors,
    same language. An author or translator whose name slugs to nothing (a
-   Cyrillic "Йордан Йовков") is credited nowhere rather than on the one
-   catch-all person record every such name would share: the credit is dropped
-   before the work is decided and listed under `credits not recorded`
-   (`unsluggable`), and a project left with no individual author (only a
-   translator, or only a collective such as Anonymous) goes to the worklist as
-   `author-unsluggable`;
+   Cyrillic "Йордан Йовков") is never the one catch-all person record every
+   such name would share: with a LibriVox author id it is a person of their own
+   at `librivox-author-<author id>` (`librivox-author-17538`, the name kept as
+   written); with none, the credit is dropped before the work is decided and
+   listed under `credits not recorded` (`unsluggable`), and a project left with
+   no individual author (only a translator, or only a collective such as
+   Anonymous) goes to the worklist as `author-unsluggable`;
 2. otherwise the ONE work by the same authors, in the same language, whose title
    differs only by a leading article or punctuation, case and accents ("The
    Metamorphosis" and "Metamorphosis" by Franz Kafka). The articles set aside
@@ -446,7 +447,7 @@ The reasons: `several-works` (two or more works qualify under rule 2),
 `author-spelling` (a work carries the title by an author of the same surname
 whose name only loosely agrees with the project's, or beside other
 candidates), `author-unsluggable` (every individual author's name slugs to
-nothing), `differently-spelled-title` (the duplicate-identity guard holds
+nothing and carries no LibriVox author id), `differently-spelled-title` (the duplicate-identity guard holds
 the book under a title rule 2 does not read as the same, such as a subtitle
 apart, or rule 3's trailing qualifier), `same-name-author` (below) and `fallback-slug-taken` (below). Once a person has settled the work,
 re-importing the project's id lands it. `--conflicts` rows for these projects
@@ -472,9 +473,11 @@ resolves to its catalogued person whatever the feed now calls them. A reader
 whose name slugs to nothing (Greek, Cyrillic, CJK) is a person of their own at
 `librivox-reader-<reader id>` (`librivox-reader-11294`), the name kept as
 written, so two such readers are never one record and a rerun finds them by
-id; an author or translator whose name slugs to nothing stays a credit not
-recorded (above). metacheck refuses the shared catch-all `person` when LibriVox
-states it (a librivox source or id).
+id; so is an author or translator, at `librivox-author-<author id>` (above).
+A project whose reader slugs to nothing and cannot be filed there (no reader
+id, or the slot is another person's or a retired one) is skipped with a
+warning, never credited to the catch-all. metacheck refuses the shared
+catch-all `person` when LibriVox states it (a librivox source or id).
 A reader id is a person of its own even when the name is not: when the slug of
 a reader's name is already held by a person carrying a different reader id
 (LibriVox has several accounts called "Martina"), the reader is created at
@@ -522,7 +525,13 @@ the order the projects are read in.
   Cheechako)" is), the
   author is a person of their own at the name with their years:
   `james-grant-1822-1887` ("James Grant (1822-1887)"), `richard-wilson-fl-1916` ("Richard Wilson (fl. 1916)"). With no
-  year to tell them apart, or when the catalogued person's works are dated only
+  year to tell them apart, the author is a person of their own at
+  `<name>-librivox-author-<author id>` (`ralph-scott-librivox-author-16428`,
+  beside a retail narrator called Ralph Scott), and the import report lists the
+  pair (`librivox worklist: N author ids filed at <name>-librivox-author-<id>`)
+  for a person to merge or confirm, since LibriVox may list one person under two
+  ids; a collective such as "Anonymous" is never split this way. When the
+  catalogued person's works are dated only
   by their recordings' release dates (a modern book and a modern edition of an
   old one look alike there), the project goes to the worklist as
   `same-name-author`, naming that person's works. Settling it means putting the
@@ -538,9 +547,8 @@ the order the projects are read in.
   died ("Narrative of Sojourner Truth", 1850, beside Olive Gilbert's edition of
   2009). Two new author ids
   of one name in a single import are told apart the same way: the second is
-  the first's person only when both state the same birth and death years, and
-  one held as `same-name-author` names the first's works, as a later import
-  would.
+  the first's person only when both state the same birth and death years, else
+  dated or at its author-id form, as a later import would decide it.
 
 ## Audiobookshelf
 

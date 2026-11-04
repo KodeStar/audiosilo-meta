@@ -893,6 +893,7 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	p.reportRefreshes()
 	p.reportDuplicateIdentities()
 	p.finishLibrivoxHolds()
+	p.finishLibrivoxSplits()
 	p.reportLibrivoxVariants()
 	p.reportLibrivoxAuthorVariants()
 	p.settleUnrecordedCredits()
@@ -1660,6 +1661,11 @@ func (p *planner) admitRecordingFacts(b sourceBook, warn func(string, ...any)) (
 	if len(narratorNames) == 0 {
 		warn("no narrator; a recording requires narrators; skipped")
 		p.summary.Skips = appendSkip(p.summary.Skips, NormalizeASIN(b.str("asin")), reasonMissingNarrator)
+		return "", nil, false
+	}
+	if name, unfiled := p.librivoxUnfiledReader(b, narratorNames); unfiled {
+		warn("reader %q slugs to nothing and has no librivox-reader-<reader id> record to be filed at (no reader id, or the id is another person's or a retired one); skipped, never credited to the catch-all person", name)
+		p.summary.Skips = appendSkip(p.summary.Skips, NormalizeASIN(b.str("asin")), reasonUnnamedCredit)
 		return "", nil, false
 	}
 	return lang, narratorNames, true

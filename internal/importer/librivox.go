@@ -680,8 +680,11 @@ type librivoxState struct {
 	readerMints map[int]*lvReaderMint
 	readerNames map[int]string
 	// pairs is the titled and bare author ids of the batch rule 1b kept
-	// apart (Summary.LibrivoxAuthorPairs).
-	pairs [][2]*lvAuthorClaim
+	// apart (Summary.LibrivoxAuthorPairs), and splits the ids rule 4 filed
+	// at their author-id form beside a same-name person
+	// (Summary.LibrivoxAuthorSplits).
+	pairs  [][2]*lvAuthorClaim
+	splits []lvAuthorSplit
 	// works is each catalogued person's works (librivoxpeople.go), built on
 	// first use (workDates the same works by slug); workKeys each catalogued
 	// work's title keys, memoized;
@@ -831,9 +834,9 @@ func librivoxAuthorCredits(ctx creditContext, b sourceBook) []credit {
 // reader's record (lvReaderMint) is created here, carrying the id, the first time a row of
 // theirs lands - never written over an occupant or a tombstone at the
 // composed id: the run warns and falls back to the name. The unsluggable form
-// shares that tail, and its name falls back to the catch-all, which the run's
-// post-write validation then refuses (pkg/check's checkUnslugFallback) rather
-// than committing.
+// never reaches that fallback: a row with such a reader is refused before
+// planning (librivoxUnfiledReader), since its name would fall back to the
+// catch-all.
 func (p *planner) librivoxReaderSlug(c librivoxCredit, name string, project int, warn func(string, ...any)) string {
 	if c.id <= 0 {
 		return ""
@@ -865,6 +868,63 @@ func (p *planner) librivoxReaderSlug(c librivoxCredit, name string, project int,
 			p.getOrCreatePerson(first, warn)
 		}
 		return p.librivoxReaderResolved(slug, r)
+	}
+	return ""
+}
+
+// librivoxUnfiledReader reports the first of a LibriVox row's narrator names
+// (names, its cleaned list) that slugs to nothing and that no reader decision
+// files anywhere (lv.readers: a catalogued holder, or a free
+// librivox-reader-<id> slot): a credit with no reader id, or one whose slot
+// another person or a tombstone holds. Such a name would fall back to the
+// shared catch-all, which pkg/check refuses for a LibriVox recording
+// (checkUnslugFallback) only after every pack is written, so the row is
+// refused at planning instead and stays re-importable. false for every other
+// row.
+func (p *planner) librivoxUnfiledReader(b sourceBook, names []string) (string, bool) {
+	if b.lv == nil {
+		return "", false
+	}
+	filed := map[int]bool{}
+	if len(names) == len(b.narrators) {
+		for _, c := range b.lv.credits {
+			if _, ok := p.lv.readers[c.id]; ok && c.kind == librivoxReader && c.id > 0 {
+				filed[c.index] = true
+			}
+		}
+	}
+	for i, name := range names {
+		if _, fellBack := personSlug(name); fellBack && !filed[i] {
+			return name, true
+		}
+	}
+	return "", false
+}
+
+// librivoxReaderSlugRO is librivoxReaderSlug's answer with none of its effects,
+// for a read-only resolver (rowProductionOf): the person the i-th of a
+// LibriVox row's narrator names (names, its cleaned list) is filed at by the
+// decision taken for its reader id, or "" when the name decides - every other
+// row, a credit with no id, a blocked split, or a reader the name resolves to
+// anyway.
+func (p *planner) librivoxReaderSlugRO(b sourceBook, names []string, i int) string {
+	if b.lv == nil || len(names) != len(b.narrators) {
+		return ""
+	}
+	for _, c := range b.lv.credits {
+		if c.kind != librivoxReader || c.index != i || c.id <= 0 {
+			continue
+		}
+		if m, ok := p.lv.readerMints[c.id]; ok {
+			if _, taken := p.people[m.slug]; m.blocked || (taken && !m.made) {
+				return ""
+			}
+			return m.slug
+		}
+		if slug, ok := p.lv.readers[c.id]; ok {
+			return p.librivoxReaderResolved(slug, p.resolvePerson(names[i]))
+		}
+		return ""
 	}
 	return ""
 }

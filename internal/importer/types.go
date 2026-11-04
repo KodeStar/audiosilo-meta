@@ -561,6 +561,11 @@ type Summary struct {
 	// by rule 2, LibrivoxPairAuthor.Person ""), for a person to merge or
 	// confirm (librivoxpeople.go rule 1b).
 	LibrivoxAuthorPairs []LibrivoxAuthorPair
+	// LibrivoxAuthorSplits is the worklist's other people half: author ids
+	// the run filed at their author-id form (model.LibrivoxAuthorSlug) beside
+	// a same-name person they are kept apart from, for a person to merge or
+	// confirm (librivoxpeople.go rule 4).
+	LibrivoxAuthorSplits []LibrivoxAuthorSplit
 	// UnrecordedCredits is every author, translator or other role credit a
 	// landed row of ANY source states that the run did not record, in row
 	// order: the row attached to a work that does not name the person, and a

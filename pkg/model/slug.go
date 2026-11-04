@@ -210,8 +210,8 @@ func SlugifyWhole(s string) string {
 // name that slugs away to nothing. It is one record standing in for every such
 // credit, which is a known, visible conflation rather than a defect for the
 // user-library imports - see PersonSlug. LibriVox never lands there: a reader
-// takes LibrivoxUnslugReaderSlug, and pkg/check refuses a catch-all LibriVox
-// states.
+// takes LibrivoxUnslugReaderSlug, an author LibrivoxUnslugAuthorSlug, and
+// pkg/check refuses a catch-all LibriVox states.
 const UnslugPersonID = "person"
 
 // PersonSlug derives a credit name's person identity, substituting the shared
@@ -306,29 +306,110 @@ func LibrivoxUnslugReaderSlug(name string, readerID int) (slug string, ok bool) 
 	return librivoxUnslugReaderPrefix + strconv.Itoa(readerID), true
 }
 
+// librivoxAuthorTail is the fixed segment a disambiguated LibriVox author's id
+// carries between their name's slug and their author id. It differs from the
+// reader tail, so a person's id says which of their two LibriVox ids it is
+// built from.
+const librivoxAuthorTail = "-librivox-author-"
+
+// LibrivoxAuthorSlug is the author twin of LibrivoxReaderSlug: the id a
+// LibriVox author (or translator) takes when their name's slug is another
+// person's and LibriVox states no year to mint a dated name by -
+// PersonSlug(name) plus "-librivox-author-<author id>" ("Ralph Scott", author
+// 16428, beside a retail narrator of that name -> `ralph-scott-librivox-author-16428`),
+// the name's part shortened to fit MaxSlugLen and the id kept whole.
+//
+// A LibriVox author id is an account of LibriVox's catalogue as a reader id is,
+// so where the name alone cannot tell two people apart the id does. ok is false
+// for an author id below 1 and for a name PersonSlug falls back on; a reserved
+// name keeps its canonical variant as the base. It is the one composition the
+// importer mints the id with and PersonIDMatches accepts it through.
+func LibrivoxAuthorSlug(name string, authorID int) (slug string, ok bool) {
+	if authorID < 1 {
+		return "", false
+	}
+	base, fellBack := PersonSlug(name)
+	if fellBack {
+		return "", false
+	}
+	return BoundedSlugTail(base, librivoxAuthorTail+strconv.Itoa(authorID)), true
+}
+
+// librivoxUnslugAuthorPrefix is the fixed head of the id a LibriVox author whose
+// name slugs to nothing takes, ahead of their author id.
+const librivoxUnslugAuthorPrefix = "librivox-author-"
+
+// LibrivoxUnslugAuthorSlug is the author twin of LibrivoxUnslugReaderSlug: the
+// id a LibriVox author or translator whose name slugs away to nothing takes,
+// "librivox-author-<author id>" (author 17538 "Зинаида Гиппиус" ->
+// `librivox-author-17538`), the record keeping the name as written. Without it
+// such a credit would be the shared catch-all (UnslugPersonID) or no credit at
+// all. ok is false for an author id below 1 and for a name that slugs to
+// something.
+func LibrivoxUnslugAuthorSlug(name string, authorID int) (slug string, ok bool) {
+	if authorID < 1 {
+		return "", false
+	}
+	if _, fellBack := PersonSlug(name); !fellBack {
+		return "", false
+	}
+	return librivoxUnslugAuthorPrefix + strconv.Itoa(authorID), true
+}
+
 // PersonIDMatches reports whether id is a legal id for a person named name who
-// carries librivoxReaderID (0 = none): PersonSlug(name), or - only for a person
-// carrying a reader id - LibrivoxReaderSlug(name, librivoxReaderID) or, for a
-// name that slugs to nothing, LibrivoxUnslugReaderSlug(name, librivoxReaderID),
-// each for exactly that id.
+// carries librivoxReaderID and librivoxAuthorID (0 = none): PersonSlug(name),
+// or - only for a person carrying that LibriVox id - LibrivoxReaderSlug or
+// LibrivoxAuthorSlug over it or, for a name that slugs to nothing,
+// LibrivoxUnslugReaderSlug or LibrivoxUnslugAuthorSlug, each for exactly that
+// id.
 //
 // Every form is reachable from what the record itself states, which is the
 // whole point of the person-slug rule (pkg/check's checkPersonSlug, the
 // Madeleine L'Engle fork): the plain form from the name, which every importer
-// slugs; the LibriVox forms from the reader id, which the LibriVox import
-// resolves a reader by before it ever slugs a name. A record whose id is a
-// LibriVox form for some OTHER reader id, or that carries no reader id at all,
-// or a `librivox-reader-<id>` record whose name has a slug of its own, is
-// reachable from none and is refused.
-func PersonIDMatches(id, name string, librivoxReaderID int) bool {
+// slugs; the LibriVox forms from a LibriVox id, which the LibriVox import
+// resolves a credit by before it ever slugs a name. A record whose id is a
+// LibriVox form for some OTHER id, or that carries no such id at all, or a
+// `librivox-reader-<id>` / `librivox-author-<id>` record whose name has a slug
+// of its own, is reachable from none and is refused.
+func PersonIDMatches(id, name string, librivoxReaderID, librivoxAuthorID int) bool {
 	if want, _ := PersonSlug(name); id == want {
 		return true
 	}
-	if lv, ok := LibrivoxReaderSlug(name, librivoxReaderID); ok && id == lv {
-		return true
+	for _, form := range []struct {
+		mint func(string, int) (string, bool)
+		lv   int
+	}{
+		{LibrivoxReaderSlug, librivoxReaderID},
+		{LibrivoxUnslugReaderSlug, librivoxReaderID},
+		{LibrivoxAuthorSlug, librivoxAuthorID},
+		{LibrivoxUnslugAuthorSlug, librivoxAuthorID},
+	} {
+		if lv, ok := form.mint(name, form.lv); ok && id == lv {
+			return true
+		}
 	}
-	lv, ok := LibrivoxUnslugReaderSlug(name, librivoxReaderID)
-	return ok && id == lv
+	return false
+}
+
+// WantPersonID is the id a person named name carrying librivoxReaderID and
+// librivoxAuthorID should be filed at when nothing else decides it: the slug
+// of the name, or for a name that slugs to nothing the reader's, else the
+// author's, LibriVox-id form (the catch-all only when the record carries
+// neither id). It is the suggestion a refusal names (pkg/check's
+// checkPersonSlug, the correct-data form's rename refusal), never a minting
+// rule: a held name's disambiguated forms are a run's decision, not the name's.
+func WantPersonID(name string, librivoxReaderID, librivoxAuthorID int) string {
+	want, fellBack := PersonSlug(name)
+	if !fellBack {
+		return want
+	}
+	if lv, ok := LibrivoxUnslugReaderSlug(name, librivoxReaderID); ok {
+		return lv
+	}
+	if lv, ok := LibrivoxUnslugAuthorSlug(name, librivoxAuthorID); ok {
+		return lv
+	}
+	return want
 }
 
 // IsCombiningMark reports whether r is a Unicode combining diacritical mark

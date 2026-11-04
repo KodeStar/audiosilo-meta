@@ -269,20 +269,36 @@ func TestLibrivoxAttachToAWorkCreditingTheTranslator(t *testing.T) {
 }
 
 func TestLibrivoxUnrecordedUnsluggableTranslatorsKeepTheirOwnIDs(t *testing.T) {
-	// Two translators whose names slug away to nothing: each is reported
-	// unsluggable with its own LibriVox id, matched by name, and neither is said
-	// to exist (the catch-all record is never theirs).
-	dataDir := t.TempDir()
-	seedKafka(t, dataDir, "franz-kafka", "Franz Kafka")
-	pr := fixtureProject(t, 527)
-	pr.Translators = []LibrivoxPerson{{ID: 5001, FirstName: "Иван", LastName: "Петров"}, {ID: 5002, FirstName: "Пётр", LastName: "Иванов"}}
-	sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
-	want := []UnrecordedCredit{
-		{Project: 527, AuthorID: 5001, Name: "Иван Петров", Roles: []string{model.RoleTranslator}, Work: "metamorphosis", Reason: librivoxUnsluggable},
-		{Project: 527, AuthorID: 5002, Name: "Пётр Иванов", Roles: []string{model.RoleTranslator}, Work: "metamorphosis", Reason: librivoxUnsluggable},
-	}
-	if !reflect.DeepEqual(sum.UnrecordedCredits, want) {
-		t.Errorf("unrecorded = %+v, want %+v", sum.UnrecordedCredits, want)
+	// Two translators whose names slug away to nothing, on a project that
+	// attaches to a catalogued work (which records no new credits). With no
+	// LibriVox id each is reported unsluggable, matched by name, and neither is
+	// said to exist (the catch-all record is never theirs); with an id each is
+	// a person of their own at librivox-author-<id> (meta#2778), reported like
+	// any withheld credit, its person not created.
+	for name, tc := range map[string]struct {
+		ids    [2]int
+		reason string
+	}{
+		"no ids":   {reason: librivoxUnsluggable},
+		"with ids": {ids: [2]int{5001, 5002}},
+	} {
+		t.Run(name, func(t *testing.T) {
+			dataDir := t.TempDir()
+			seedKafka(t, dataDir, "franz-kafka", "Franz Kafka")
+			pr := fixtureProject(t, 527)
+			pr.Translators = []LibrivoxPerson{{ID: lvInt(tc.ids[0]), FirstName: "Иван", LastName: "Петров"}, {ID: lvInt(tc.ids[1]), FirstName: "Пётр", LastName: "Иванов"}}
+			sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
+			want := []UnrecordedCredit{
+				{Project: 527, AuthorID: tc.ids[0], Name: "Иван Петров", Roles: []string{model.RoleTranslator}, Work: "metamorphosis", Reason: tc.reason},
+				{Project: 527, AuthorID: tc.ids[1], Name: "Пётр Иванов", Roles: []string{model.RoleTranslator}, Work: "metamorphosis", Reason: tc.reason},
+			}
+			if !reflect.DeepEqual(sum.UnrecordedCredits, want) {
+				t.Errorf("unrecorded = %+v, want %+v", sum.UnrecordedCredits, want)
+			}
+			if entryExists(t, dataDir, personAddr(model.UnslugPersonID)) {
+				t.Error("the catch-all person was created")
+			}
+		})
 	}
 }
 

@@ -423,21 +423,72 @@ func TestLibrivoxUnsluggableReadersArePeopleOfTheirOwn(t *testing.T) {
 }
 
 func TestLibrivoxUnsluggableReaderNeverWritesOverAnotherPerson(t *testing.T) {
-	// librivox-reader-11294 is held by a person who is not this reader: the run
-	// warns and never writes over that record.
-	dataDir := t.TempDir()
-	seedTree(t, dataDir, map[string]string{
-		personAddr("librivox-reader-11294"): testpack.PersonJSON(t, "librivox-reader-11294", "LibriVox Reader 11294"),
-	})
-	sum, err := RunLibrivox(writeSnapshot(t, greekRow(t, 91001, 11294, "Ἑλένη Κεμικτσή")), allLibrivox,
-		Options{DataDir: dataDir, ImportDate: testImportDate, DryRun: true})
+	// A reader whose name slugs to nothing and who cannot be filed at
+	// librivox-reader-<id> - the slot is another person's or a retired one,
+	// or the credit carries no reader id - is refused at planning (meta#2778),
+	// never credited to the catch-all and never written over the occupant:
+	// the run used to write every pack and then fail post-write validation.
+	for name, tc := range map[string]struct {
+		dataDir func(t *testing.T) string
+		reader  int
+	}{
+		"slot held by another person": {reader: 11294, dataDir: func(t *testing.T) string {
+			dataDir := t.TempDir()
+			seedTree(t, dataDir, map[string]string{
+				personAddr("librivox-reader-11294"): testpack.PersonJSON(t, "librivox-reader-11294", "LibriVox Reader 11294"),
+			})
+			return dataDir
+		}},
+		"slot retired": {reader: 11294, dataDir: func(t *testing.T) string {
+			return seedTombstoneTree(t, nil, model.Redirects{model.RedirectPeople: {"librivox-reader-11294": "ada-mapmaker"}})
+		}},
+		"no reader id": {reader: 0, dataDir: func(t *testing.T) string { return t.TempDir() }},
+	} {
+		t.Run(name, func(t *testing.T) {
+			dataDir := tc.dataDir(t)
+			before := testpack.Snapshot(t, dataDir)
+			sum := runLibrivox(t, writeSnapshot(t, greekRow(t, 91001, tc.reader, "Ἑλένη Κεμικτσή")), dataDir, allLibrivox)
+			if !strings.Contains(strings.Join(sum.Warnings, "\n"), `reader "Ἑλένη Κεμικτσή" slugs to nothing`) {
+				t.Errorf("no refusal warning: %v", sum.Warnings)
+			}
+			if sum.NewWorks+sum.NewRecordings+sum.NewPeople+sum.LibrivoxReadersUnslugged != 0 || len(sum.Files) != 0 {
+				t.Errorf("summary = %+v, want nothing written", sum)
+			}
+			if after := testpack.Snapshot(t, dataDir); !reflect.DeepEqual(before, after) {
+				t.Error("a refused row changed the tree")
+			}
+		})
+	}
+}
+
+func TestLibrivoxRowProductionResolvesReadersByID(t *testing.T) {
+	// meta#2778: the serial guard's read-only production resolves a LibriVox
+	// reader by the decision taken for their reader id, as rowNarratorSlugs
+	// does - a split "Martina" (634, whose name 844 holds) is her own record,
+	// not the plain holder - and every other name by itself. Unreached by an
+	// import today (a LibriVox row states no series), so asked directly.
+	dir := t.TempDir()
+	p, err := openPlanner(sourceLibrivox, Options{DataDir: dir, ImportDate: testImportDate})
 	if err != nil {
 		t.Fatal(err)
 	}
-	if !strings.Contains(strings.Join(sum.Warnings, "\n"), `"librivox-reader-11294" is another person's id`) {
-		t.Errorf("no occupant warning: %v", sum.Warnings)
+	p.lv.readerMints[634] = &lvReaderMint{slug: "martina-librivox-634", name: "Martina"}
+	p.lv.readers[634] = "martina-librivox-634"
+	b := sourceBook{
+		narrators: []string{"Martina", "Jane Doe"},
+		lv: &librivoxFacts{id: 91002, credits: []librivoxCredit{
+			{kind: librivoxReader, id: 634, name: "Martina", index: 0},
+			{kind: librivoxReader, id: 9001, name: "Jane Doe", index: 1},
+		}},
 	}
-	if sum.LibrivoxReadersUnslugged != 0 {
-		t.Errorf("unslugged = %d, want 0", sum.LibrivoxReadersUnslugged)
+	got := p.rowProductionOf(b, []string{"Martina", "Jane Doe"}).narratorSet()
+	if want := map[string]bool{"martina-librivox-634": true, "jane-doe": true}; !reflect.DeepEqual(got, want) {
+		t.Errorf("narrators = %v, want %v", got, want)
+	}
+	// A blocked split falls back to the name, as librivoxReaderSlug does.
+	p.lv.readerMints[634].blocked = true
+	got = p.rowProductionOf(b, []string{"Martina", "Jane Doe"}).narratorSet()
+	if want := map[string]bool{"martina": true, "jane-doe": true}; !reflect.DeepEqual(got, want) {
+		t.Errorf("blocked: narrators = %v, want %v", got, want)
 	}
 }

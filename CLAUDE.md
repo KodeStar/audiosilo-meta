@@ -576,12 +576,16 @@ it, `pkg/check` and every writer now refuse it loudly.
   (`internal/importer/synthetic.go`) - its kind is not somebody's
   classification, it is what the credit said.
   A person's id is the slug of their name (`model.PersonSlug`, pkg/check's
-  person-slug rule) with TWO exceptions: a LibriVox reader whose name another
+  person-slug rule) with the LibriVox exceptions: a reader whose name another
   reader id already holds is `<name slug>-librivox-<reader id>`
   (`model.LibrivoxReaderSlug`), and one whose name slugs to nothing is
-  `librivox-reader-<reader id>` (`model.LibrivoxUnslugReaderSlug`), each legal
-  only on a record carrying that `librivox_reader_id` - every form is asked
-  through `model.PersonIDMatches`.
+  `librivox-reader-<reader id>` (`model.LibrivoxUnslugReaderSlug`); their
+  author twins, an undated author kept off a same-name person at
+  `<name slug>-librivox-author-<author id>` (`model.LibrivoxAuthorSlug`) and an
+  author whose name slugs to nothing at `librivox-author-<author id>`
+  (`model.LibrivoxUnslugAuthorSlug`). Each is legal only on a record carrying
+  that id - every form is asked through `model.PersonIDMatches`, and a
+  refusal's hint is `model.WantPersonID`.
 - **series** - an entry in the series family: name + ordered works with **string**
   positions ("1", "2.5") including omnibus ranges ("1-3.5"); no two works may
   share a position. Optional `translation_of` (the work's slug set and rules one

@@ -100,6 +100,9 @@ func TestLibrivoxImportPrintsTheWorklist(t *testing.T) {
 	}}, LibrivoxInProgress: []int{2073, 4333}, LibrivoxAuthorPairs: []importer.LibrivoxAuthorPair{{
 		Titled: importer.LibrivoxPairAuthor{AuthorID: 1456, Name: "Mrs. C. M. Livingston", Person: "mrs-c-m-livingston", Project: 4714},
 		Bare:   importer.LibrivoxPairAuthor{AuthorID: 15071, Name: "C. M. Livingston", Person: "c-m-livingston", Project: 9999},
+	}}, LibrivoxAuthorSplits: []importer.LibrivoxAuthorSplit{{
+		Author:  importer.LibrivoxPairAuthor{AuthorID: 16428, Name: "Ralph Scott", Person: "ralph-scott-librivox-author-16428", Project: 17170},
+		Against: "ralph-scott",
 	}}}
 	run := func(string, importer.LibrivoxIDs, importer.Options) (importer.Summary, error) { return sum, nil }
 	out := captureStdout(t, func() {
@@ -117,6 +120,8 @@ func TestLibrivoxImportPrintsTheWorklist(t *testing.T) {
 		`  2607 "Йордан Йовков" (author, librivox_author_id 6294) -> staroplaninski-legendi, unsluggable`,
 		"librivox worklist: 1 author id pair one courtesy title apart, kept as two people for a person to merge or confirm:",
 		`  1456 "Mrs. C. M. Livingston" -> mrs-c-m-livingston (project 4714); 15071 "C. M. Livingston" -> c-m-livingston (project 9999)`,
+		"librivox worklist: 1 author id filed at <name>-librivox-author-<id> beside a same-name person, kept as two people for a person to merge or confirm:",
+		`  16428 "Ralph Scott" -> ralph-scott-librivox-author-16428 (project 17170); apart from ralph-scott`,
 	} {
 		if !strings.Contains(out, want) {
 			t.Errorf("no %q in:\n%s", want, out)

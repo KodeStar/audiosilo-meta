@@ -742,6 +742,37 @@ func TestCorrectDataLibrivoxReaderNameKeepingTheSlug(t *testing.T) {
 	}
 }
 
+// TestCorrectDataLibrivoxRenameNamesTheLibrivoxForm: renaming a LibriVox
+// reader or author to a name that slugs to nothing is a rename for a
+// maintainer, and the refusal names the LibriVox-id form the record moves to
+// (model.WantPersonID), never the shared catch-all `person`.
+func TestCorrectDataLibrivoxRenameNamesTheLibrivoxForm(t *testing.T) {
+	for _, tc := range []struct {
+		name, file, record, want string
+	}{
+		{"reader", "people/ma/martina-librivox-634.json",
+			`{"id":"martina-librivox-634","librivox_reader_id":634,"license":"CC0-1.0","name":"Martina","sources":[{"type":"librivox","ref":"91002","imported_at":"2026-10-28"}]}`,
+			`"librivox-reader-634"`},
+		{"author", "people/zi/zinaida-gippius.json",
+			`{"id":"zinaida-gippius","librivox_author_id":17538,"license":"CC0-1.0","name":"Zinaida Gippius","sources":[{"type":"librivox","ref":"17538","imported_at":"2026-10-28"}]}`,
+			`"librivox-author-17538"`},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			dir := seedTree(t)
+			testpack.Seed(t, dir, map[string]string{tc.file: tc.record})
+			body := correctBody("data/"+tc.file, "name", "Зинаида Гиппиус", "the LibriVox page", true)
+			res := Process(Options{DataDir: dir, Template: "correct-data", Body: body})
+			if res.Status != StatusNeedsHuman {
+				t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
+			}
+			joined := strings.Join(res.Messages, "\n")
+			if !strings.Contains(joined, "changes its id to "+tc.want) || strings.Contains(joined, `"person"`) {
+				t.Errorf("messages = %v, want the id %s", res.Messages, tc.want)
+			}
+		})
+	}
+}
+
 func TestCorrectDataRecordNotFound(t *testing.T) {
 	dir := seedTree(t)
 	body := correctBody("data/works/zz/ghost/work.json", "title", "New Title", "web", true)

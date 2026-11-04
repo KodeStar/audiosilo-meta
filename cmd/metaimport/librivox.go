@@ -139,6 +139,7 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 	}
 	printLibrivoxWorklist(sum.LibrivoxWorklist)
 	printLibrivoxAuthorPairs(sum.LibrivoxAuthorPairs)
+	printLibrivoxAuthorSplits(sum.LibrivoxAuthorSplits)
 	printUnrecordedCredits(sum.UnrecordedCredits)
 	return 0
 }
@@ -154,6 +155,21 @@ func printLibrivoxAuthorPairs(pairs []importer.LibrivoxAuthorPair) {
 		len(pairs), plural(len(pairs), "pair", "pairs"))
 	for _, pr := range pairs {
 		fmt.Println("  " + pr.String())
+	}
+}
+
+// printLibrivoxAuthorSplits prints the author ids the run filed at their
+// author-id form beside a same-name person, for a person to merge or confirm,
+// one line each (importer.LibrivoxAuthorSplit.String). Nothing when there are
+// none.
+func printLibrivoxAuthorSplits(splits []importer.LibrivoxAuthorSplit) {
+	if len(splits) == 0 {
+		return
+	}
+	fmt.Printf("librivox worklist: %d author %s filed at <name>-librivox-author-<id> beside a same-name person, kept as two people for a person to merge or confirm:\n",
+		len(splits), plural(len(splits), "id", "ids"))
+	for _, sp := range splits {
+		fmt.Println("  " + sp.String())
 	}
 }
 

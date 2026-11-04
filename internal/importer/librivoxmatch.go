@@ -25,9 +25,9 @@ package importer
 //     read as the same title). Before author-unmatched, a work by an author the
 //     row spells with more or fewer words is attached, and one by an author it
 //     only loosely resembles is listed author-spelling (librivoxauthors.go rule
-//     1). A credit whose name slugs to nothing never reaches this file
-//     (librivoxauthors.go rule 2), so no agreement can rest on the catch-all
-//     person such a name would fall back to.
+//     1). A credit whose name slugs to nothing reaches this file only filed
+//     by its LibriVox id (librivoxauthors.go rule 2), so no agreement can rest
+//     on the catch-all person such a name would fall back to.
 //  4. NON-LATIN TITLES. A title that slugs to nothing (Cyrillic, Greek, CJK...),
 //     or whose letters are mostly in such a script (librivoxNonLatinTitle),
 //     never walks a slug chain: the shared "untitled" one would file every such
@@ -73,7 +73,8 @@ const (
 	// (librivoxauthors.go rule 1).
 	LibrivoxAuthorSpelling = "author-spelling"
 	// LibrivoxAuthorUnsluggable: every individual author the row credits has a
-	// name that slugs to nothing (librivoxauthors.go rule 2); no candidates.
+	// name that slugs to nothing and no LibriVox author id to be filed by
+	// (librivoxauthors.go rule 2); no candidates.
 	LibrivoxAuthorUnsluggable = "author-unsluggable"
 	// LibrivoxDifferentlySpelled: the duplicate-identity guard (dupidentity.go)
 	// found the row's book under a title this rule does not read as the same
@@ -84,9 +85,10 @@ const (
 	// record.
 	LibrivoxFallbackTaken = "fallback-slug-taken"
 	// LibrivoxSameNameAuthor: an author id no person carries meets, by name, a
-	// catalogued person who is someone else, and LibriVox states no year to
-	// mint a record of their own by (librivoxpeople.go rule 2); the candidates
-	// are that person's works.
+	// catalogued person who may be someone else, and only recording release
+	// dates say so (librivoxpeople.go rule 2), or no record of its own can be
+	// minted (a collective's name, a taken slot: rule 4); the candidates are
+	// that person's works.
 	LibrivoxSameNameAuthor = "same-name-author"
 )
 
