@@ -303,7 +303,7 @@ func TestLibrivoxUnrecordedUnsluggableTranslatorsKeepTheirOwnIDs(t *testing.T) {
 		ids    [2]int
 		reason string
 	}{
-		"no ids":   {reason: librivoxUnsluggable},
+		"no ids":   {reason: unsluggableReason},
 		"with ids": {ids: [2]int{5001, 5002}},
 	} {
 		t.Run(name, func(t *testing.T) {

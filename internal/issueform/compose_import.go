@@ -1,6 +1,7 @@
 package issueform
 
 import (
+	"fmt"
 	"os"
 	"strings"
 
@@ -114,6 +115,16 @@ func (c *composer) importLibrary(s sections) {
 			c.noteImportWarnings(sum)
 			return
 		}
+		// Books skipped because their names cannot become ids are the same kind
+		// of answer: the file is fine (claiming a type mismatch would be false),
+		// the books are not duplicates, and only a maintainer can place them.
+		// Checked before the Skipped branch, which would otherwise call a run that
+		// deduped some books and skipped the rest "already in the catalog".
+		if sum.SkippedUnsluggable > 0 {
+			c.fail(StatusNeedsHuman, "nothing new to import: %s", unsluggableSkips(sum.SkippedUnsluggable))
+			c.noteImportWarnings(sum)
+			return
+		}
 		if sum.Skipped > 0 {
 			// Genuinely nothing new: every book deduped against the catalog.
 			c.fail(StatusDuplicate, "nothing new to import: every book in the export is already in the catalog (%d skipped)", sum.Skipped)
@@ -147,6 +158,9 @@ func (c *composer) importLibrary(s sections) {
 		c.note("%d book(s) were not imported because the catalog already holds them under differently-spelled titles - "+
 			"see the warnings below; a maintainer resolves those pairs", sum.SkippedDuplicateIdentity)
 	}
+	if sum.SkippedUnsluggable > 0 {
+		c.note("%s - see the warnings below", unsluggableSkips(sum.SkippedUnsluggable))
+	}
 	if sum.AttestedWorks+sum.AttestedRecordings > 0 {
 		// The summary counts the attested records without their sources, so the
 		// note names the tier rather than a mirror it cannot see.
@@ -161,6 +175,13 @@ func (c *composer) importLibrary(s sections) {
 	// The importer wrote and validated the tree itself, so the file list is the
 	// one ITS flush reports, in the field the compose path's own flush fills.
 	c.wrote = sum.Files
+}
+
+// unsluggableSkips is the verdict's plain account of the books skipped because
+// every author or narrator name slugs to nothing (Summary.SkippedUnsluggable).
+func unsluggableSkips(n int) string {
+	return fmt.Sprintf("%d book(s) were skipped: their author or narrator names could not be turned into ids "+
+		"(written in a non-Latin script, which the catalogue cannot address yet); those books need a maintainer", n)
 }
 
 // falloutExamples is the evidence behind "the file may not match the selected
@@ -213,21 +234,24 @@ func (c *composer) noteImportWarnings(sum importer.Summary) {
 const maxUnrecordedNotes = 20
 
 // noteUnrecordedCredits reports the credits the import withheld
-// (importer.Summary.UnrecordedCredits): a book of the export attached to a work
-// that does not name an author, translator or other contributor it states, and
-// a library import never edits a catalogued work's credits, so the credit was
-// not recorded and a person not already catalogued was not created (the
-// per-credit line says which: "person not created", or "unsluggable" for a name
-// no record can hold). They are notes, not warnings - nothing fell out of the
-// export - but a maintainer should see them in the pull request, since adding
-// the credit to the work is a correction only a person makes.
+// (importer.Summary.UnrecordedCredits), for one of two reasons the per-credit
+// line states. A book of the export attached to a work that does not name an
+// author, translator or other contributor it states, and a library import never
+// edits a catalogued work's credits, so the credit was not recorded and a person
+// not already catalogued was not created ("person not created"). Or the name -
+// an author's, a contributor's or a narrator's - slugs to nothing ("unsluggable",
+// meta#2778): no record can hold it, the shared catch-all person is not them, so
+// the book was imported with that credit left off. They are notes, not warnings
+// - the book landed - but a maintainer should see them in the pull request,
+// since adding the credit is a correction only a person makes.
 func (c *composer) noteUnrecordedCredits(credits []importer.UnrecordedCredit) {
 	if len(credits) == 0 {
 		return
 	}
 	c.note("import note: %d credit(s) were not recorded - the book attached to a work that does not name them, "+
-		"whose credits a library import never edits; a person not already catalogued was not created "+
-		"(kept for recording-level credits, meta#2752)", len(credits))
+		"whose credits a library import never edits, so a person not already catalogued was not created "+
+		"(kept for recording-level credits, meta#2752); or the name slugs to nothing (unsluggable), "+
+		"so the book was imported with that credit left off rather than credited to a shared catch-all", len(credits))
 	for _, u := range credits[:min(maxUnrecordedNotes, len(credits))] {
 		c.note("credit not recorded: %s", u)
 	}

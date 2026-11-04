@@ -372,7 +372,7 @@ func TestLibrivoxUnsluggableCoAuthorIsNotRecorded(t *testing.T) {
 		}
 	}
 	unsluggable := func(project, id int, name, work string) UnrecordedCredit {
-		return UnrecordedCredit{Project: project, AuthorID: id, Name: name, Work: work, Reason: librivoxUnsluggable}
+		return UnrecordedCredit{Project: project, AuthorID: id, Name: name, Work: work, Reason: unsluggableReason}
 	}
 	want := []UnrecordedCredit{
 		unsluggable(99900, 0, "Йордан Йовков", "short-stories"),

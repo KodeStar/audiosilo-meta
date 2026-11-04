@@ -3,6 +3,7 @@ package importer
 import (
 	"encoding/json"
 	"reflect"
+	"slices"
 	"strings"
 	"testing"
 
@@ -570,11 +571,13 @@ func TestLibrivoxRerunWithoutGenresOrTranslatorsKeepsThem(t *testing.T) {
 }
 
 func TestLibrivoxRerunWithAnUnresolvedTranslatorKeepsTheStoredOne(t *testing.T) {
-	// The row's only translator now slugs to nothing: it adds nobody, but it
-	// may be the person stored, so the stored credit is not deleted.
+	// The row's only translator now slugs to nothing and carries no author id
+	// (with one it is librivox-author-<id>, a translator who resolves): it
+	// adds nobody, but it may be the person stored, so the stored credit is
+	// not deleted.
 	dataDir := heldMetamorphosis(t)
 	pr := fixtureProject(t, 527)
-	pr.Translators = []LibrivoxPerson{{ID: 7777, LastName: "Ἰωάννης"}}
+	pr.Translators = []LibrivoxPerson{{LastName: "Ἰωάννης"}}
 	sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
 	if _, _, f := lvRecordingOf(t, dataDir, 527); !reflect.DeepEqual(f.Credits, []model.Credit{{Person: "ian-johnston", Role: model.RoleTranslator}}) {
 		t.Errorf("credits = %v, want the stored translator kept", f.Credits)
@@ -610,5 +613,337 @@ func TestLibrivoxRerunNamingAnotherTranslatorDropsTheStoredOne(t *testing.T) {
 	}
 	if res := check.Load(dataDir); !res.OK() {
 		t.Fatalf("tree failed validation:\n%v", res.Problems)
+	}
+}
+
+// heldKafkaTree is the catalogue holding project 527 as a recording of a
+// Metamorphosis that names no translator (an attach recorded no work credit),
+// plus files.
+func heldKafkaTree(t *testing.T, files map[string]string) string {
+	t.Helper()
+	files[personAddr("franz-kafka")] = testpack.PersonJSON(t, "franz-kafka", "Franz Kafka")
+	files[personAddr("someone-else")] = testpack.PersonJSON(t, "someone-else", "Someone Else")
+	files[workAddr("metamorphosis")] = testpack.WorkJSON(t, "metamorphosis", "Metamorphosis", testpack.WithAuthors("franz-kafka"))
+	files[recAddr("metamorphosis", "se")] = testpack.WithField(t,
+		testpack.RecJSON(t, "se", "metamorphosis", testpack.WithNarrators("someone-else")), "librivox_id", 527)
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, files)
+	return dataDir
+}
+
+func TestLibrivoxHeldTranslatorIDIsDecided(t *testing.T) {
+	// The held project's translator, author id 1019, is carried by no person:
+	// the run decides the id as it would for a planned row, and the pass
+	// credits that person, created carrying the id and its years.
+	dataDir := heldKafkaTree(t, map[string]string{})
+	sum := runLibrivox(t, librivoxFixture, dataDir, mustLibrivoxIDs("527"))
+	if sum.NewRecordings != 0 || sum.LibrivoxRestated.TranslatorsCreated != 1 || sum.LibrivoxRestated.TranslatorsUnresolved != 0 {
+		t.Errorf("summary = %d new recordings, restated %+v; want a held row and one translator created", sum.NewRecordings, sum.LibrivoxRestated)
+	}
+	if f := lvFidelityOf(t, dataDir, "metamorphosis", "se"); !reflect.DeepEqual(f.Credits, []model.Credit{{Person: "ian-johnston", Role: model.RoleTranslator}}) {
+		t.Errorf("credits = %v, want ian-johnston", f.Credits)
+	}
+	if p := personOf(t, dataDir, "ian-johnston"); p.AuthorID != 1019 || p.BirthYear != 1938 {
+		t.Errorf("ian-johnston = %+v, want author id 1019, born 1938", p)
+	}
+	if got := orphanPeople(t, dataDir); len(got) != 0 {
+		t.Errorf("orphans: %v", got)
+	}
+	before := testpack.Snapshot(t, dataDir)
+	if again := runLibrivox(t, librivoxFixture, dataDir, mustLibrivoxIDs("527")); again.NewPeople+again.LibrivoxRestated.Recordings != 0 || len(again.Files) != 0 {
+		t.Errorf("rerun = %+v, want a no-op", again.LibrivoxRestated)
+	}
+	if after := testpack.Snapshot(t, dataDir); !reflect.DeepEqual(before, after) {
+		t.Error("rerun changed the tree")
+	}
+}
+
+func TestLibrivoxHeldTranslatorTheRulesKeepApartIsAPersonOfTheirOwn(t *testing.T) {
+	// The held project's translator (author id 1019) states no years and meets
+	// a catalogued Ian Johnston carrying ANOTHER author id (5555) and other
+	// years (1850-1920): rule 2 says someone else, and with no years to date
+	// the LibriVox one by, the id is a person of its own at its author-id form
+	// (librivoxpeople.go rule 4), as a planned row's is. The recording credits
+	// that person, created carrying 1019; the catalogued holder keeps 5555, and
+	// the split is listed for a person to merge or confirm.
+	files := map[string]string{
+		personAddr("ian-johnston"): personFiles(t, "ian-johnston", "Ian Johnston",
+			map[string]any{"birth_year": 1850, "death_year": 1920, "librivox_author_id": 5555}),
+	}
+	retailWork(t, files, "a-modern-book", "A Modern Book", "ian-johnston", "2015")
+	dataDir := heldKafkaTree(t, files)
+	pr := fixtureProject(t, 527)
+	pr.Translators = []LibrivoxPerson{{ID: 1019, FirstName: "Ian", LastName: "Johnston"}}
+	sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
+	const minted = "ian-johnston-librivox-author-1019"
+	if r := sum.LibrivoxRestated; r.TranslatorsCreated != 1 || r.TranslatorsUnresolved != 0 {
+		t.Errorf("restated %+v; want one translator created", r)
+	}
+	if f := lvFidelityOf(t, dataDir, "metamorphosis", "se"); !reflect.DeepEqual(f.Credits, []model.Credit{{Person: minted, Role: model.RoleTranslator}}) {
+		t.Errorf("credits = %v, want %s", f.Credits, minted)
+	}
+	if p := personOf(t, dataDir, minted); p.AuthorID != 1019 {
+		t.Errorf("%s = %+v, want author id 1019", minted, p)
+	}
+	if p := personOf(t, dataDir, "ian-johnston"); p.AuthorID != 5555 {
+		t.Errorf("ian-johnston carries author id %d, want 5555 kept", p.AuthorID)
+	}
+	if len(sum.LibrivoxWorklist) != 0 || len(sum.LibrivoxAuthorSplits) != 1 || sum.LibrivoxAuthorSplits[0].Author.Person != minted ||
+		sum.LibrivoxAuthorSplits[0].Against != "ian-johnston" {
+		t.Errorf("worklist = %+v, splits = %+v; want the split listed", sum.LibrivoxWorklist, sum.LibrivoxAuthorSplits)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("tree failed validation:\n%v", res.Problems)
+	}
+}
+
+func TestLibrivoxHeldTranslatorOnAnotherIDsRecordGoesToTheWorklist(t *testing.T) {
+	// The held project's translator, author id 1019 (1850-1920), meets a
+	// catalogued Ian Johnston with the SAME years who carries another author
+	// id (5555) - H. P. Paull 6787 beside 7024 on the real tree: the rules find
+	// them one person, but two author ids never fold automatically, so the
+	// recording credits nobody and the project goes on the same-name-author
+	// worklist against that record.
+	files := map[string]string{
+		personAddr("ian-johnston"): personFiles(t, "ian-johnston", "Ian Johnston",
+			map[string]any{"birth_year": 1850, "death_year": 1920, "librivox_author_id": 5555}),
+	}
+	retailWork(t, files, "a-translated-book", "A Translated Book", "ian-johnston", "")
+	dataDir := heldKafkaTree(t, files)
+	pr := fixtureProject(t, 527)
+	pr.Translators = []LibrivoxPerson{{ID: 1019, FirstName: "Ian", LastName: "Johnston", DOB: "1850", DOD: "1920"}}
+	sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
+	if f := lvFidelityOf(t, dataDir, "metamorphosis", "se"); f.Credits != nil {
+		t.Errorf("credits = %v, want none", f.Credits)
+	}
+	if w := sum.LibrivoxWorklist; len(w) != 1 || w[0].Project != 527 || w[0].Reason != LibrivoxSameNameAuthor ||
+		len(w[0].Candidates) != 1 || w[0].Candidates[0].Work != "a-translated-book" {
+		t.Errorf("worklist = %+v, want 527 as same-name-author against a-translated-book", w)
+	}
+}
+
+func TestLibrivoxHeldTranslatorAPlannedRowDecides(t *testing.T) {
+	// Author id 1019 translates the held 527 and authors the planned 9100. The
+	// planned row decides the id - no years, against a catalogued Ian Johnston
+	// carrying author id 5555: a person of its own at its author-id form (rule
+	// 4) - and the held row's translator is credited to that same person.
+	files := map[string]string{
+		personAddr("ian-johnston"): personFiles(t, "ian-johnston", "Ian Johnston",
+			map[string]any{"birth_year": 1850, "death_year": 1920, "librivox_author_id": 5555}),
+	}
+	retailWork(t, files, "a-modern-book", "A Modern Book", "ian-johnston", "2015")
+	dataDir := heldKafkaTree(t, files)
+	held := fixtureProject(t, 527)
+	held.Translators = []LibrivoxPerson{{ID: 1019, FirstName: "Ian", LastName: "Johnston"}}
+	planned := byAuthor(t, 9100, "A Brand New Essay", "English", LibrivoxPerson{ID: 1019, FirstName: "Ian", LastName: "Johnston"})
+	sum := runLibrivox(t, writeSnapshot(t, held, planned), dataDir, allLibrivox)
+	const minted = "ian-johnston-librivox-author-1019"
+	if f := lvFidelityOf(t, dataDir, "metamorphosis", "se"); !reflect.DeepEqual(f.Credits, []model.Credit{{Person: minted, Role: model.RoleTranslator}}) {
+		t.Errorf("credits = %v, want %s", f.Credits, minted)
+	}
+	if got := workAuthorsOf(t, dataDir, "a-brand-new-essay"); !reflect.DeepEqual(got, []string{minted}) {
+		t.Errorf("9100's authors = %v, want %s", got, minted)
+	}
+	if len(sum.LibrivoxWorklist) != 0 {
+		t.Errorf("worklist = %+v, want none", sum.LibrivoxWorklist)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("tree failed validation:\n%v", res.Problems)
+	}
+}
+
+func TestLibrivoxHeldWorklistSpellsDecidedTranslators(t *testing.T) {
+	// The held 527 names two translators: 1019, of the same years as a
+	// catalogued Ian Johnston carrying another author id (5555) - one person by
+	// the rules, but two ids never fold, so the project is held (as in
+	// TestLibrivoxHeldTranslatorOnAnotherIDsRecordGoesToTheWorklist) - and
+	// 1020, whose plain name is a catalogued Jane Roe of other years, so it is
+	// credited at its dated name. The worklist row spells 1020 as decided, as
+	// a planned row's does.
+	files := map[string]string{
+		personAddr("ian-johnston"): personFiles(t, "ian-johnston", "Ian Johnston",
+			map[string]any{"birth_year": 1850, "death_year": 1920, "librivox_author_id": 5555}),
+		personAddr("jane-roe"): personFiles(t, "jane-roe", "Jane Roe",
+			map[string]any{"birth_year": 1960, "death_year": 2020}),
+	}
+	retailWork(t, files, "a-modern-book", "A Modern Book", "ian-johnston", "2015")
+	dataDir := heldKafkaTree(t, files)
+	pr := fixtureProject(t, 527)
+	pr.Translators = []LibrivoxPerson{
+		{ID: 1019, FirstName: "Ian", LastName: "Johnston", DOB: "1850", DOD: "1920"},
+		{ID: 1020, FirstName: "Jane", LastName: "Roe", DOB: "1800", DOD: "1870"},
+	}
+	sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
+	if f := lvFidelityOf(t, dataDir, "metamorphosis", "se"); !reflect.DeepEqual(f.Credits, []model.Credit{{Person: "jane-roe-1800-1870", Role: model.RoleTranslator}}) {
+		t.Errorf("credits = %v, want jane-roe-1800-1870", f.Credits)
+	}
+	if w := sum.LibrivoxWorklist; len(w) != 1 || !slices.Contains(w[0].Authors, "Jane Roe (1800-1870) (Translator)") {
+		t.Errorf("worklist = %+v, want 527 naming Jane Roe (1800-1870) (Translator)", w)
+	}
+}
+
+func TestLibrivoxHeldTranslatorCannotTakeAPlannedIDsPerson(t *testing.T) {
+	// The held 527 (the LOWER project) names translator 1019 Ian Johnston
+	// (1850-1920); the planned 9100 is by author 3030 Ian Johnston, undated.
+	// Every planned id is decided first, so 3030 keeps `ian-johnston` whatever
+	// the project order, and 1019 is judged against it: other years, so it is
+	// credited at its dated name.
+	dataDir := heldKafkaTree(t, map[string]string{})
+	held := fixtureProject(t, 527)
+	held.Translators = []LibrivoxPerson{{ID: 1019, FirstName: "Ian", LastName: "Johnston", DOB: "1850", DOD: "1920"}}
+	planned := byAuthor(t, 9100, "A Brand New Essay", "English", LibrivoxPerson{ID: 3030, FirstName: "Ian", LastName: "Johnston"})
+	runLibrivox(t, writeSnapshot(t, held, planned), dataDir, allLibrivox)
+	if p := personOf(t, dataDir, "ian-johnston"); p.AuthorID != 3030 {
+		t.Errorf("ian-johnston = %+v, want the planned author id 3030", p)
+	}
+	if f := lvFidelityOf(t, dataDir, "metamorphosis", "se"); !reflect.DeepEqual(f.Credits, []model.Credit{{Person: "ian-johnston-1850-1920", Role: model.RoleTranslator}}) {
+		t.Errorf("credits = %v, want ian-johnston-1850-1920", f.Credits)
+	}
+	if p := personOf(t, dataDir, "ian-johnston-1850-1920"); p.AuthorID != 1019 || p.BirthYear != 1850 {
+		t.Errorf("ian-johnston-1850-1920 = %+v, want author id 1019, born 1850", p)
+	}
+}
+
+// novelistIanJohnston is a catalogued, undated Ian Johnston whose own book is
+// a 2015 "Metamorphosis" - the title of the book LibriVox's Ian Johnston (1019,
+// 1850-1920) only TRANSLATED. A translation's title is no evidence of who
+// translated it, so the two stay apart.
+func novelistIanJohnston(t *testing.T) map[string]string {
+	t.Helper()
+	files := map[string]string{personAddr("ian-johnston"): testpack.PersonJSON(t, "ian-johnston", "Ian Johnston")}
+	retailWork(t, files, "metamorphosis-ian-johnston", "Metamorphosis", "ian-johnston", "2015")
+	return files
+}
+
+// datedTranslator is fixture 527 with its translator dated 1850-1920.
+func datedTranslator(t *testing.T) LibrivoxProject {
+	t.Helper()
+	pr := fixtureProject(t, 527)
+	pr.Translators = []LibrivoxPerson{{ID: 1019, FirstName: "Ian", LastName: "Johnston", DOB: "1850", DOD: "1920"}}
+	return pr
+}
+
+// requireNotTheNovelist checks the recording's translator is a person of their
+// own, carrying 1019, and the novelist is untouched.
+func requireNotTheNovelist(t *testing.T, dataDir string, f lvFidelity) {
+	t.Helper()
+	if len(f.Credits) != 1 || f.Credits[0].Person == "ian-johnston" {
+		t.Fatalf("credits = %v, want one translator who is not the novelist", f.Credits)
+	}
+	if p := personOf(t, dataDir, f.Credits[0].Person); p.AuthorID != 1019 || p.BirthYear != 1850 || p.DeathYear != 1920 {
+		t.Errorf("%s = %+v, want author id 1019, 1850-1920", f.Credits[0].Person, p)
+	}
+	if p := personOf(t, dataDir, "ian-johnston"); p.AuthorID != 0 || p.BirthYear != 0 {
+		t.Errorf("the novelist was stamped: %+v", p)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("tree failed validation:\n%v", res.Problems)
+	}
+}
+
+func TestLibrivoxHeldTranslationTitleIsNoEvidence(t *testing.T) {
+	dataDir := heldKafkaTree(t, novelistIanJohnston(t))
+	runLibrivox(t, writeSnapshot(t, datedTranslator(t)), dataDir, allLibrivox)
+	requireNotTheNovelist(t, dataDir, lvFidelityOf(t, dataDir, "metamorphosis", "se"))
+}
+
+func TestLibrivoxPlannedTranslationTitleIsNoEvidence(t *testing.T) {
+	// The same, for a row the run plans: it attaches to Kafka's Metamorphosis.
+	files := novelistIanJohnston(t)
+	files[personAddr("franz-kafka")] = testpack.PersonJSON(t, "franz-kafka", "Franz Kafka")
+	files[workAddr("metamorphosis")] = testpack.WorkJSON(t, "metamorphosis", "Metamorphosis", testpack.WithAuthors("franz-kafka"))
+	files[recAddr("metamorphosis", "se")] = testpack.RecJSON(t, "se", "metamorphosis", testpack.WithNarrators("someone-else"))
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, files)
+	sum := runLibrivox(t, writeSnapshot(t, datedTranslator(t)), dataDir, allLibrivox)
+	if sum.NewRecordings != 1 {
+		t.Fatalf("new recordings = %d, want the planned row landed (worklist %+v)", sum.NewRecordings, sum.LibrivoxWorklist)
+	}
+	work, _, f := lvRecordingOf(t, dataDir, 527)
+	if work != "metamorphosis" {
+		t.Errorf("527 landed on %q, want Kafka's Metamorphosis", work)
+	}
+	requireNotTheNovelist(t, dataDir, f)
+}
+
+func TestLibrivoxHeldTranslatorBesideARunMadePerson(t *testing.T) {
+	// A planned row's translator, author id 3001 Ian Johnston (1938), creates
+	// ian-johnston in this run. The held project 527's translator, ANOTHER id
+	// (2001) of that name stating no years, meets that run-made person: the
+	// rules call them apart, and with no years the held id is a person of its
+	// own at its author-id form (rule 4), as a later run, with 3001 catalogued,
+	// would decide it - never credited onto the planned id's person.
+	dataDir := heldKafkaTree(t, map[string]string{})
+	held := fixtureProject(t, 527)
+	held.Translators = []LibrivoxPerson{{ID: 2001, FirstName: "Ian", LastName: "Johnston"}}
+	planned := fixtureProject(t, 1870)
+	planned.ID, planned.Title = 91010, "Zadig"
+	planned.Translators = []LibrivoxPerson{{ID: 3001, FirstName: "Ian", LastName: "Johnston", DOB: "1938"}}
+	sum := runLibrivox(t, writeSnapshot(t, held, planned), dataDir, allLibrivox)
+	if p := personOf(t, dataDir, "ian-johnston"); p.AuthorID != 3001 {
+		t.Fatalf("ian-johnston = %+v, want the planned row's translator, id 3001", p)
+	}
+	const minted = "ian-johnston-librivox-author-2001"
+	if f := lvFidelityOf(t, dataDir, "metamorphosis", "se"); !reflect.DeepEqual(f.Credits, []model.Credit{{Person: minted, Role: model.RoleTranslator}}) {
+		t.Errorf("held 527 credits = %v, want %s", f.Credits, minted)
+	}
+	if p := personOf(t, dataDir, minted); p.AuthorID != 2001 {
+		t.Errorf("%s = %+v", minted, p)
+	}
+	for _, e := range sum.LibrivoxWorklist {
+		if e.Project == 527 {
+			t.Errorf("527 on the worklist: %+v", e)
+		}
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("tree failed validation:\n%v", res.Problems)
+	}
+}
+
+func TestLibrivoxHeldUnsluggableTranslatorIsFiledByItsID(t *testing.T) {
+	// A held project's translator is decided under the planned rows' rules
+	// (#2858), so one whose name slugs to nothing and carries an author id is
+	// a person of their own at librivox-author-<id> (meta#2778) there too:
+	// the rerun credits them on the held recording, creating the record
+	// carrying the id; with no id they are left off and counted.
+	for name, tc := range map[string]struct {
+		id         int
+		created    int
+		unresolved int
+		want       []string
+	}{
+		"with author id": {id: 7777, created: 1, want: []string{"librivox-author-7777"}},
+		"no author id":   {id: 0, unresolved: 1},
+	} {
+		t.Run(name, func(t *testing.T) {
+			dataDir := t.TempDir()
+			pr := fixtureProject(t, 527)
+			pr.Translators = nil
+			runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
+			pr.Translators = []LibrivoxPerson{{ID: lvInt(tc.id), LastName: "Ἰωάννης"}}
+			sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
+			if r := sum.LibrivoxRestated; r.TranslatorsCreated != tc.created || r.TranslatorsUnresolved != tc.unresolved {
+				t.Errorf("restated = %+v, want %d created, %d unresolved", r, tc.created, tc.unresolved)
+			}
+			_, _, f := lvRecordingOf(t, dataDir, 527)
+			var got []string
+			for _, c := range f.Credits {
+				got = append(got, c.Person)
+			}
+			if !reflect.DeepEqual(got, tc.want) {
+				t.Errorf("credits = %v, want %v", f.Credits, tc.want)
+			}
+			if tc.created > 0 {
+				if p := personOf(t, dataDir, "librivox-author-7777"); p.AuthorID != 7777 {
+					t.Errorf("librivox-author-7777 = %+v", p)
+				}
+			}
+			if entryExists(t, dataDir, personAddr(model.UnslugPersonID)) {
+				t.Error("the catch-all person was created")
+			}
+			if res := check.Load(dataDir); !res.OK() {
+				t.Fatalf("tree failed validation:\n%v", res.Problems)
+			}
+		})
 	}
 }

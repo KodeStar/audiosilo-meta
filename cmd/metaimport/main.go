@@ -575,14 +575,16 @@ func parsePositional(fs *flag.FlagSet, args []string, label string) (string, err
 // of landed rows that their work does not record (importer.UnrecordedCredit):
 // the row attached to a work that does not name them, so the work gained no
 // credit (a LibriVox translator who resolves is credited on its recording instead,
-// meta#2752, which may create the person). A LibriVox credit whose name slugs to
-// nothing is listed too (reason unsluggable).
+// meta#2752, which may create the person). A credit whose name slugs to nothing
+// - an author's, a contributor's or a narrator's, any source - is listed too
+// (reason unsluggable): it was left off rather than credited to the shared
+// catch-all.
 // Nothing when there are none, so every other run's report reads as before.
 func printUnrecordedCredits(credits []importer.UnrecordedCredit) {
 	if len(credits) == 0 {
 		return
 	}
-	fmt.Printf("credits not recorded: %d (the row attached to a work that does not name them, or the name slugs to nothing; a LibriVox translator who resolves is credited on its recording instead):\n",
+	fmt.Printf("credits not recorded: %d (the row attached to a work that does not name them, or the name slugs to nothing and was left off; a LibriVox translator who resolves is credited on its recording instead):\n",
 		len(credits))
 	for _, c := range credits {
 		fmt.Println("  " + c.String())

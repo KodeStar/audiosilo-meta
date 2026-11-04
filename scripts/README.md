@@ -74,11 +74,15 @@ rows re-import from the same dump.
 
 This one has **no SQL twin**: the rule is Unicode folding in Go, not a name list,
 and re-spelling it in SQL would be a second implementation free to disagree with
-the first. It is also deliberately **libex-only** - the OpenAudible, Libation and
-`audiosilo-books` importers read a *user's own* library, where the conflation is
-visible to that user and refusing their book to keep a shared database tidy would
-be the wrong trade. Like the AI refusals, these are reported as one aggregated
-warning line per run (naming both the rows and the offending credits).
+the first. The whole-row refusal is also deliberately **libex-only** - the
+OpenAudible, Libation and `audiosilo-books` importers read a *user's own*
+library, where refusing their book to keep a shared database tidy would be the
+wrong trade. Like the AI refusals, the libex refusals are reported as one
+aggregated warning line per run (naming both the rows and the offending
+credits). The library importers never credit the catch-all either: the book is
+imported with that credit left off and listed under `credits not recorded`
+(reason `unsluggable`), and a book left with no individual author or no
+narrator is skipped.
 
 ### Collective and placeholder credits
 

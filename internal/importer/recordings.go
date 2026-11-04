@@ -100,13 +100,14 @@ func (p *planner) addRecordingToExistingWork(b sourceBook, asin string) {
 	}
 
 	warn := p.bookWarn(b)
-	lang, narratorNames, ok := p.admitRecordingFacts(b, warn)
+	lang, narratorNames, unslugNarrators, ok := p.admitRecordingFacts(b, warn)
 	if !ok {
 		return
 	}
 	narratorSlugs := p.rowNarratorSlugs(b, narratorNames, warn)
 	// addRecording registers the ASIN itself, only once it landed on a recording.
 	p.addRecording(ws, b, firstNonEmpty(b.str("title_short"), b.str("title")), asin, lang, narratorSlugs, warn)
+	p.reportUnsluggable(b, asin, ws.slug, nil, unslugNarrators)
 }
 
 // resolveExistingWork returns the catalogued work a row belongs to, or nil. The
@@ -156,15 +157,9 @@ func (p *planner) resolveExistingWork(b sourceBook) (ws *workState, titleHit boo
 			continue
 		}
 		if !resolved {
-			// The identity author set, not the row's whole credit list: a work
-			// the catalogue stores with a translator in authors[] must match a row
-			// that omits one, and the other way round (workidentity.go). This is
-			// the read-only resolver, so no person record is created.
-			authors = p.rowWorkAuthorsRO(p.rowAuthorCredits(b))
-			if len(authors.all) == 0 {
+			if authors, resolved = p.existingWorkAuthors(b); !resolved {
 				return nil, false // no author: nothing to identify a work by
 			}
-			resolved = true
 		}
 		titleHit = true
 		// NO WORK-LEVEL SERIES CLAIM (nil), deliberately and not by omission: the
@@ -191,11 +186,9 @@ func (p *planner) resolveExistingWork(b sourceBook) (ws *workState, titleHit boo
 			continue
 		}
 		if !resolved {
-			authors = p.rowWorkAuthorsRO(p.rowAuthorCredits(b))
-			if len(authors.all) == 0 {
+			if authors, resolved = p.existingWorkAuthors(b); !resolved {
 				return nil, false
 			}
-			resolved = true
 		}
 		// The TITLE is catalogued (a stored title cleans to it), so a miss below is
 		// the slug arm's own category - a catalogued title with no work under it for
@@ -211,6 +204,24 @@ func (p *planner) resolveExistingWork(b sourceBook) (ws *workState, titleHit boo
 		}
 	}
 	return nil, titleHit
+}
+
+// existingWorkAuthors is the author set resolveExistingWork identifies row b's
+// work by, ok=false when there is none to identify it by. It is the identity
+// author set, not the row's whole credit list: a work the catalogue stores with
+// a translator in authors[] must match a row that omits one, and the other way
+// round (workidentity.go). This is the read-only resolver, so no person record
+// is created. A row the create path would skip because leaving off the names
+// that slug to nothing leaves it no individual author (unsluggableLeftNoAuthor)
+// identifies no work either: its "Anonymous" or translator alone would attach
+// it to another author's same-titled book.
+func (p *planner) existingWorkAuthors(b sourceBook) (authors workAuthors, ok bool) {
+	kept, dropped := rowAuthorCreditSplitIn(p.credits, b)
+	if p.unsluggableLeftNoAuthor(kept, dropped) {
+		return workAuthors{}, false
+	}
+	authors = p.rowWorkAuthorsRO(kept)
+	return authors, len(authors.all) > 0
 }
 
 // reportUnmatchedWorks appends one run-level warning naming how many rows

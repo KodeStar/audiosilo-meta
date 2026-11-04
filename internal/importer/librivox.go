@@ -760,8 +760,9 @@ type librivoxState struct {
 	keyedVariants         map[int]string
 	// life is the birth and death years each catalogued person states.
 	life map[string]lifeYears
-	// authorPins is the person each author id of the rows to be planned was
-	// resolved to before planning (resolveLibrivoxAuthors, then
+	// authorPins is the person each author id of the rows to be planned (and
+	// each translator id of the held rows, heldRowSkips) was resolved to
+	// before planning (resolveLibrivoxAuthors, then
 	// keyLibrivoxAuthorVariants): the catalogued holder of a known id, else
 	// the person rules' decision. Every credit of the id carries it
 	// (librivoxCredit.person, credit.person).
@@ -904,8 +905,7 @@ func librivoxReaderCreditsByIndex(b sourceBook, names []string) map[int]librivox
 func (p *planner) setLibrivoxPerson(b *sourceBook, j int, pin *creditPerson) {
 	b.lv.credits[j].person = pin
 	if b.creditsCached {
-		b.creditsCached = false
-		b.authorCredits, b.creditsCached = rowAuthorCreditsIn(p.credits, *b), true
+		cacheAuthorCredits(p.credits, b)
 	}
 }
 
@@ -1068,14 +1068,7 @@ type lvReaderMint struct {
 // credit of a project to be planned, is decideLibrivoxReader's. A project with
 // no language the import knows never lands, so it decides nothing.
 func (p *planner) decideLibrivoxReaders(books []sourceBook) {
-	var rows []int
-	for i := range books {
-		if books[i].lv != nil {
-			rows = append(rows, i)
-		}
-	}
-	slices.SortStableFunc(rows, func(a, b int) int { return books[a].lv.id - books[b].lv.id })
-	for _, i := range rows {
+	for _, i := range p.librivoxRows(books, lvAllRows) {
 		b := &books[i]
 		names := rowNarratorNamesIn(p.credits, *b)
 		if len(names) != len(b.narrators) {
@@ -1521,9 +1514,9 @@ func (p *planner) librivoxCreditSlug(c librivoxCredit) (string, bool) {
 // author credit.
 func (p *planner) librivoxCreditNames(c librivoxCredit) []string {
 	if c.kind == librivoxReader {
-		return rowNarratorNamesIn(p.credits, sourceBook{narrators: []string{c.name}})
+		return rawNarratorNamesIn(p.credits, sourceBook{narrators: []string{c.name}})
 	}
-	return creditNamesOf(rowAuthorCreditsIn(p.credits, sourceBook{authors: []string{c.name + c.suffix}}))
+	return creditNamesOf(rawAuthorCreditsIn(p.credits, sourceBook{authors: []string{c.name + c.suffix}}))
 }
 
 // names reports whether the work's own record names person: in its authors or
