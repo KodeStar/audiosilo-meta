@@ -11,6 +11,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/kodestar/audiosilo-meta/internal/atomicfile"
 	"github.com/kodestar/audiosilo-meta/internal/audit"
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 )
@@ -19,7 +20,7 @@ import (
 // public-domain exception; internal/importer/librivox.go and librivoxfetch.go).
 //
 //	metaimport librivox fetch  --out <snapshot> [--max-pages N]
-//	metaimport librivox import --from <snapshot> --ids <range> [--data data] [--dry-run] [--date YYYY-MM-DD] [--conflicts <path>] [--worklist <path>]
+//	metaimport librivox import --from <snapshot> --ids <range> [--data data] [--dry-run] [--date YYYY-MM-DD] [--conflicts <path>] [--skipped <path>] [--worklist <path>]
 //
 // fetch is the ONLY command in this repository that calls LibriVox, and it does
 // so politely: 100 projects a page, five seconds between requests, a User-Agent
@@ -92,6 +93,7 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 	dryRun := fs.Bool("dry-run", false, "print the plan without writing any files")
 	date := fs.String("date", "", "imported_at stamp (YYYY-MM-DD); defaults to today (UTC)")
 	conflicts := fs.String("conflicts", "", "append one NDJSON row per refused contradiction to this file")
+	skipped := fs.String("skipped", "", "write one NDJSON line per project the run refused for a reason with a refusal code ({\"librivox_id\",\"reason\"}) to this file")
 	worklist := fs.String("worklist", "", "append one NDJSON row per worklist project (the printed worklist's entries) to this file")
 	if err := fs.Parse(args); err != nil {
 		return 2
@@ -115,6 +117,15 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 		return 2
 	}
 	defer closeLog()
+	// Staged before the run, so a path that cannot be written fails before the
+	// import touches the tree, and renamed into place only once it completed
+	// (the libex --skipped writer, one RowSkip per line).
+	skippedLog, err := atomicfile.StageIf(*skipped)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "metaimport librivox import: --skipped:", err)
+		return 2
+	}
+	defer skippedLog.Discard() // a no-op once committed
 	if *worklist != "" {
 		// Opened before the run, so a path that cannot be written is refused
 		// before anything is planned, as --conflicts is.
@@ -166,6 +177,13 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 	printLibrivoxAuthorPairs(sum.LibrivoxAuthorPairs)
 	printLibrivoxAuthorSplits(sum.LibrivoxAuthorSplits)
 	printUnrecordedCredits(sum.UnrecordedCredits)
+	for _, s := range sum.Skips {
+		skippedLog.Encode(s)
+	}
+	if err := atomicfile.CommitInOrder(skippedLog); err != nil {
+		fmt.Fprintln(os.Stderr, "metaimport librivox import: --skipped:", err)
+		return 1
+	}
 	return 0
 }
 

@@ -451,6 +451,9 @@ func TestLibrivoxUnsluggableReaderNeverWritesOverAnotherPerson(t *testing.T) {
 			if !strings.Contains(strings.Join(sum.Warnings, "\n"), `reader "Ἑλένη Κεμικτσή" slugs to nothing`) {
 				t.Errorf("no refusal warning: %v", sum.Warnings)
 			}
+			if want := []RowSkip{{LibrivoxID: 91001, Reason: RefusalCreditNotAPerson}}; !reflect.DeepEqual(sum.Skips, want) {
+				t.Errorf("skips = %+v, want %+v", sum.Skips, want)
+			}
 			if sum.NewWorks+sum.NewRecordings+sum.NewPeople+sum.LibrivoxReadersUnslugged != 0 || len(sum.Files) != 0 {
 				t.Errorf("summary = %+v, want nothing written", sum)
 			}

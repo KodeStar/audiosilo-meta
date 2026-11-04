@@ -1622,10 +1622,7 @@
       ]
     },
     "andrew-johnson": {
-      "birth_year": 1808,
-      "death_year": 1875,
       "id": "andrew-johnson",
-      "librivox_author_id": 11289,
       "license": "CC0-1.0",
       "name": "Andrew Johnson",
       "sources": [
@@ -1633,7 +1630,17 @@
           "imported_at": "2026-07-29",
           "ref": "B0765BLNKB",
           "type": "libex-import"
-        },
+        }
+      ]
+    },
+    "andrew-johnson-1808-1875": {
+      "birth_year": 1808,
+      "death_year": 1875,
+      "id": "andrew-johnson-1808-1875",
+      "librivox_author_id": 11289,
+      "license": "CC0-1.0",
+      "name": "Andrew Johnson (1808-1875)",
+      "sources": [
         {
           "imported_at": "2026-10-29",
           "ref": "13411",
@@ -5301,11 +5308,7 @@
       ]
     },
     "andrew-wilson": {
-      "birth_year": 1852,
-      "death_year": 1912,
       "id": "andrew-wilson",
-      "librivox_author_id": 13116,
-      "librivox_reader_id": 3397,
       "license": "CC0-1.0",
       "name": "Andrew Wilson",
       "sources": [
@@ -5313,15 +5316,33 @@
           "imported_at": "2026-07-29",
           "ref": "B0CFSF6KM1",
           "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-10-28",
-          "ref": "2745",
-          "type": "librivox"
-        },
+        }
+      ]
+    },
+    "andrew-wilson-1852-1912": {
+      "birth_year": 1852,
+      "death_year": 1912,
+      "id": "andrew-wilson-1852-1912",
+      "librivox_author_id": 13116,
+      "license": "CC0-1.0",
+      "name": "Andrew Wilson (1852-1912)",
+      "sources": [
         {
           "imported_at": "2026-10-29",
           "ref": "15421",
+          "type": "librivox"
+        }
+      ]
+    },
+    "andrew-wilson-librivox-3397": {
+      "id": "andrew-wilson-librivox-3397",
+      "librivox_reader_id": 3397,
+      "license": "CC0-1.0",
+      "name": "Andrew Wilson",
+      "sources": [
+        {
+          "imported_at": "2026-10-28",
+          "ref": "2745",
           "type": "librivox"
         }
       ]

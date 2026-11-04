@@ -8604,10 +8604,7 @@
       ]
     },
     "bill-nye": {
-      "birth_year": 1850,
-      "death_year": 1896,
       "id": "bill-nye",
-      "librivox_author_id": 1731,
       "license": "CC0-1.0",
       "name": "Bill Nye",
       "sources": [
@@ -8615,7 +8612,17 @@
           "imported_at": "2026-08-02",
           "ref": "B06XPG6BXL",
           "type": "libex-import"
-        },
+        }
+      ]
+    },
+    "bill-nye-1850-1896": {
+      "birth_year": 1850,
+      "death_year": 1896,
+      "id": "bill-nye-1850-1896",
+      "librivox_author_id": 1731,
+      "license": "CC0-1.0",
+      "name": "Bill Nye (1850-1896)",
+      "sources": [
         {
           "imported_at": "2026-10-27",
           "ref": "1170",

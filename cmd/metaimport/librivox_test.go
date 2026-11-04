@@ -160,3 +160,38 @@ func TestLibrivoxImportWritesTheWorklistFile(t *testing.T) {
 		t.Errorf("an unwritable --worklist exit = %d, want 2", code)
 	}
 }
+
+// --skipped writes the run's refusals keyed by project id, atomically, once the
+// run completed.
+func TestLibrivoxImportWritesTheSkipped(t *testing.T) {
+	sum := importer.Summary{Skips: []importer.RowSkip{
+		{LibrivoxID: 99002, Reason: importer.RefusalUnmappedLanguage},
+		{LibrivoxID: 99503, Reason: importer.RefusalIdentityDuplicate},
+	}}
+	run := func(string, importer.LibrivoxIDs, importer.Options) (importer.Summary, error) { return sum, nil }
+	path := filepath.Join(t.TempDir(), "skipped.ndjson")
+	captureStdout(t, func() {
+		if code := runLibrivoxImport([]string{"--from", librivoxFixture, "--ids", "1-", "--dry-run", "--skipped", path}, run); code != 0 {
+			t.Errorf("exit = %d", code)
+		}
+	})
+	got, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	const want = `{"librivox_id":99002,"reason":"unmapped-language"}` + "\n" + `{"librivox_id":99503,"reason":"identity-duplicate"}` + "\n"
+	if string(got) != want {
+		t.Errorf("skipped = %q, want %q", got, want)
+	}
+	// A failed run writes no worklist.
+	failed := filepath.Join(t.TempDir(), "skipped.ndjson")
+	failing := func(string, importer.LibrivoxIDs, importer.Options) (importer.Summary, error) {
+		return importer.Summary{}, os.ErrInvalid
+	}
+	captureStdout(t, func() {
+		_ = runLibrivoxImport([]string{"--from", librivoxFixture, "--ids", "1-", "--skipped", failed}, failing)
+	})
+	if _, err := os.Stat(failed); !os.IsNotExist(err) {
+		t.Errorf("a failed run left %s: %v", failed, err)
+	}
+}

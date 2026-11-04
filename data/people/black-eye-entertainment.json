@@ -3096,10 +3096,7 @@
       ]
     },
     "bob-brown": {
-      "birth_year": 1886,
-      "death_year": 1959,
       "id": "bob-brown",
-      "librivox_author_id": 391,
       "license": "CC0-1.0",
       "name": "Bob Brown",
       "sources": [
@@ -3107,7 +3104,17 @@
           "imported_at": "2026-08-07",
           "ref": "B06XBQS9HG",
           "type": "libex-import"
-        },
+        }
+      ]
+    },
+    "bob-brown-1886-1959": {
+      "birth_year": 1886,
+      "death_year": 1959,
+      "id": "bob-brown-1886-1959",
+      "librivox_author_id": 391,
+      "license": "CC0-1.0",
+      "name": "Bob Brown (1886-1959)",
+      "sources": [
         {
           "imported_at": "2026-10-28",
           "ref": "3406",

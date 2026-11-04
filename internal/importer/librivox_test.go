@@ -2,8 +2,6 @@ package importer
 
 import (
 	"encoding/json"
-	"os"
-	"path/filepath"
 	"reflect"
 	"slices"
 	"strings"
@@ -76,18 +74,11 @@ func fixtureProject(t *testing.T, id int) LibrivoxProject {
 // writeSnapshot writes projects as a one-page snapshot and returns its dir.
 func writeSnapshot(t *testing.T, projects ...LibrivoxProject) string {
 	t.Helper()
-	dir := t.TempDir()
 	body, err := json.Marshal(librivoxPage{Books: &projects})
 	if err != nil {
 		t.Fatal(err)
 	}
-	if err := os.MkdirAll(filepath.Join(dir, librivoxPagesDir), 0o755); err != nil {
-		t.Fatal(err)
-	}
-	if err := os.WriteFile(filepath.Join(dir, librivoxPagesDir, "offset-0000000.json"), body, 0o644); err != nil {
-		t.Fatal(err)
-	}
-	return dir
+	return writeRawSnapshot(t, nil, map[string]string{librivoxPageName(0): string(body)})
 }
 
 type lvRecording struct {
@@ -556,6 +547,15 @@ func TestLibrivoxRowRefusals(t *testing.T) {
 	if sum.NewRecordings != 1 {
 		t.Fatalf("NewRecordings = %d, want only the gappy book", sum.NewRecordings)
 	}
+	// The refusals reach Summary.Skips (the --skipped worklist) keyed by the
+	// project id, since a LibriVox row has no ASIN to name it by.
+	wantSkips := []RowSkip{
+		{LibrivoxID: 99002, Reason: RefusalUnmappedLanguage},
+		{LibrivoxID: 99004, Reason: RefusalMissingNarrator},
+	}
+	if !reflect.DeepEqual(sum.Skips, wantSkips) {
+		t.Errorf("Skips = %+v, want %+v", sum.Skips, wantSkips)
+	}
 	var r lvRecording
 	readEntity(t, dataDir, recAddr("gappy-book", "david-barnes"), &r)
 	if r.LibrivoxID != 99003 || r.Chapters != nil {
@@ -771,5 +771,46 @@ func TestArchiveIDPatternIsTheSchemas(t *testing.T) {
 	}
 	if got := archiveIDRE.String(); got != want {
 		t.Errorf("archiveIDRE = %q, the schema's = %q", got, want)
+	}
+}
+
+// A LibriVox row's worklist line names the project in place of the ASIN, and an
+// ASIN line keeps its old two-field shape (the sync bot's contract).
+func TestRowSkipLineIsKeyedByASINOrProject(t *testing.T) {
+	for _, tc := range []struct {
+		skip RowSkip
+		want string
+	}{
+		{RowSkip{ASIN: "B0X", Reason: RefusalMissingNarrator}, `{"asin":"B0X","reason":"missing-narrator"}`},
+		{RowSkip{LibrivoxID: 527, Reason: RefusalMissingNarrator}, `{"librivox_id":527,"reason":"missing-narrator"}`},
+	} {
+		raw, err := json.Marshal(tc.skip)
+		if err != nil || string(raw) != tc.want {
+			t.Errorf("marshal %+v = %s, %v; want %s", tc.skip, raw, err, tc.want)
+		}
+	}
+	// dropRecorded asks only about an ASIN: a project-keyed entry stays.
+	kept := dropRecorded([]RowSkip{{LibrivoxID: 527, Reason: RefusalMissingNarrator}}, func(string) bool { return true })
+	if len(kept) != 1 {
+		t.Errorf("dropRecorded dropped a project-keyed skip: %+v", kept)
+	}
+}
+
+// A retail row read by the LibriVox reader at the project's runtime is still
+// another production: its ASIN never merges into the LibriVox recording (which
+// would attest the volunteer project over with retail facts), so it lands as a
+// recording of its own and the project's recording is untouched.
+func TestARetailRowNeverMergesIntoALibrivoxRecording(t *testing.T) {
+	dataDir := t.TempDir()
+	runLibrivox(t, librivoxFixture, dataDir, mustLibrivoxIDs("527"))
+	before := string(rawEntity(t, dataDir, recAddr("metamorphosis", "david-barnes")))
+	row := `{"asin":"B0RETAIL01","title":"Metamorphosis","region":"us","language":"english","bookFormat":"unabridged",` +
+		`"lengthMinutes":154,"publisherName":"Retail House","authors":[{"name":"Franz Kafka"}],"narrators":[{"name":"David Barnes"}]}`
+	sum := runLibexWith(t, dataDir, Options{}, row)
+	if sum.MergedASINs != 0 || sum.NewRecordings != 1 {
+		t.Fatalf("merged/new recordings = %d/%d, want the row as a recording of its own\nwarnings: %v", sum.MergedASINs, sum.NewRecordings, sum.Warnings)
+	}
+	if after := string(rawEntity(t, dataDir, recAddr("metamorphosis", "david-barnes"))); after != before {
+		t.Errorf("the LibriVox recording changed:\n%s\nwant:\n%s", after, before)
 	}
 }
