@@ -4504,15 +4504,6 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
-      "nineteen-eighty-four"
-    ],
-    "reason": "the same novel by George Orwell, both English: Nineteen Eighty-Four is the title as published (Peter Capaldi's 742-minute Penguin Modern Classics reading, 0141989963) and 1984 its common spelling; held back until the community layer keeps one of the two works' sidecars",
-    "target": "1984"
-  },
-  {
-    "decision": "assert",
-    "op": "merge-works",
-    "others": [
       "20-000-leagues-under-the-sea-classic-tales-edition",
       "20-000-leagues-under-the-sea-dramatized"
     ],
@@ -14532,6 +14523,15 @@
     ],
     "reason": "different volumes: Band 1 to 9 of die-schule-fur-hexen-vampire-und-werwolfe, each at its own position and release date",
     "target": "nightworld-academy-die-schule-fur-hexen-vampire-und-werwolfe-1"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "1984"
+    ],
+    "reason": "the same novel by George Orwell, both English: Nineteen Eighty-Four is the title as published (Peter Capaldi's 742-minute Penguin Modern Classics reading, 0141989963) and 1984 its common spelling; the published title survives, keeping the community layer's nineteen-eighty-four sidecars (#2735)",
+    "target": "nineteen-eighty-four"
   },
   {
     "decision": "assert",
