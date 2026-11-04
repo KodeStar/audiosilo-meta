@@ -247,3 +247,43 @@ func TestRecordingsOnlyMatchesPastAnUnsluggableCoAuthor(t *testing.T) {
 	}
 	requireNoCatchAll(t, dataDir)
 }
+
+// The recordings-only match asks the create path's no-individual-author rule
+// too: a row whose credits leave only "Anonymous" once the names that slug to
+// nothing are left off identifies no work, so it does not attach a recording to
+// a catalogued "Anonymous" book that merely shares its title.
+func TestRecordingsOnlyRefusesARowLeftWithNoIndividualAuthor(t *testing.T) {
+	dataDir := t.TempDir()
+	seedKafka(t, dataDir, "anonymous", "Anonymous")
+	row := mustJSON([]map[string]any{{"asin": "B0UNSLUG06", "title_short": "Metamorphosis", "author": "Anonymous, Йордан Йовков",
+		"narrated_by": "Bea Reader", "language": "english", "region": "US", "seconds": 6000}})
+	sum, err := Run(writeBooks(t, row), Options{DataDir: dataDir, ImportDate: testImportDate, Mode: ModeRecordingsOnly})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if sum.SkippedNoWork != 1 || sum.NewRecordings != 0 {
+		t.Fatalf("no-work/new recordings = %d/%d, want 1/0\nwarnings: %v", sum.SkippedNoWork, sum.NewRecordings, sum.Warnings)
+	}
+	if got := recSlugsOf(t, dataDir, "metamorphosis"); !reflect.DeepEqual(got, []string{"se"}) {
+		t.Errorf("recordings = %v, want the seeded one alone", got)
+	}
+}
+
+// An enrichment row lands nothing, so a role credit whose name slugs to nothing
+// cannot be a credit not recorded: it is counted into the run's aggregate
+// warning instead of being dropped silently.
+func TestEnrichReportsAnUnsluggableRoleCredit(t *testing.T) {
+	dataDir := seedEnrichTree(t, nil)
+	books := `[{"asin":"B0LIBEX001","title_short":"The Lost Cartographer","author":"Ada Mapmaker, Иван Петров - translator",` +
+		`"narrated_by":"Bea Reader","language":"english","region":"uk","publisher":"Lost Press"}]`
+	sum, err := Run(writeBooks(t, books), Options{DataDir: dataDir, ImportDate: testImportDate, Mode: ModeEnrich})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !slices.ContainsFunc(sum.Warnings, func(w string) bool {
+		return strings.Contains(w, "1 role-qualified credits dropped") && strings.Contains(w, "Иван Петров")
+	}) {
+		t.Errorf("no aggregate warning names the dropped translator: %v", sum.Warnings)
+	}
+	requireNoCatchAll(t, dataDir)
+}

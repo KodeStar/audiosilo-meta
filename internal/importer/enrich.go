@@ -468,8 +468,18 @@ func (p *planner) applyToWork(b sourceBook, ref RecRef, scope applyScope) {
 	// The credits the row STATES, restricted to people the catalogue already
 	// holds - enrichment creates nothing, so a role qualifier naming a person we
 	// do not have states a credit we cannot reference (metacheck's credit
-	// integrity rule) and is dropped rather than written dangling.
-	credits := p.workCredits(p.rowAuthorCredits(b))
+	// integrity rule) and is dropped rather than written dangling. A role
+	// credit whose name slugs to nothing was left off the row's credits
+	// (rowAuthorCreditSplitIn) and no row lands here to report it as a credit
+	// not recorded, so it is counted into the run's aggregate warning instead
+	// (reportUnnamedCredits) rather than dropped silently.
+	kept, dropped := rowAuthorCreditSplitIn(p.credits, b)
+	for _, c := range dropped {
+		if len(c.roles) > 0 {
+			p.noteUnnamedCredit(c.name)
+		}
+	}
+	credits := p.workCredits(kept)
 	if len(b.genres) == 0 && len(credits) == 0 && !p.userTier {
 		return
 	}

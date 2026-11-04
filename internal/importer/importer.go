@@ -367,7 +367,7 @@ type planner struct {
 	// two buckets are read for different reasons and mixing the examples would
 	// bury the handful that are worth looking at.
 	titleNoMatchExamples []string
-	// unnamedCredits counts the role-qualified credits workCredits refused
+	// unnamedCredits counts the role-qualified credits refused (noteUnnamedCredit)
 	// because the person's name does not resolve to an identity of their own,
 	// and unnamedCreditNames keeps a few distinct spellings for the aggregate
 	// warning (capped at maxWarnExamples as it fills). Aggregated because the
@@ -1468,7 +1468,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// A row it leaves with no individual author is a LibriVox worklist row
 	// (librivoxauthors.go rule 2) or, from any other source, a skip; a LibriVox
 	// row with no title either is the no-title skip below.
-	authorCredits, unslugAuthors := p.rowAuthorCredits(b), p.rowUnsluggableAuthors(b)
+	authorCredits, unslugAuthors := rowAuthorCreditSplitIn(p.credits, b)
 	noAuthor := p.unsluggableLeftNoAuthor(authorCredits, unslugAuthors)
 	switch {
 	case noAuthor && b.lv == nil:
@@ -1733,13 +1733,6 @@ func (p *planner) rowAuthorCredits(b sourceBook) []credit { return rowAuthorCred
 func rowAuthorCreditsIn(ctx creditContext, b sourceBook) []credit {
 	kept, _ := rowAuthorCreditSplitIn(ctx, b)
 	return kept
-}
-
-// rowUnsluggableAuthors is the author-side credits rowAuthorCredits leaves off
-// row b because their names slug to nothing (unrecorded.go).
-func (p *planner) rowUnsluggableAuthors(b sourceBook) []credit {
-	_, dropped := rowAuthorCreditSplitIn(p.credits, b)
-	return dropped
 }
 
 // rowAuthorCreditSplitIn is the row's cleaned author-side credits split once
@@ -2144,8 +2137,10 @@ func sourceNames(typed []string, joined string) []string {
 // An unidentifiable person cannot be credited. No caller hands workCredits such
 // a credit any more - a row's credits are split before anything reads them
 // (rowAuthorCreditSplitIn), and the credit is reported as not recorded
-// (unrecorded.go) - so this is a guard: should one arrive, the drop is reported
-// in aggregate (reportUnnamedCredits) rather than silently.
+// (unrecorded.go), or on the enrichment path, where no row lands, counted into
+// the aggregate warning below (applyToWork) - so this is a guard: should one
+// arrive, the drop is reported in aggregate (reportUnnamedCredits) rather than
+// silently.
 //
 // The person keeps their ordinary membership in authors: a credit ADDS the role
 // the source stated, it never replaces the credit list the identity model is
@@ -2255,10 +2250,12 @@ func (p *planner) getOrCreateCreditIf(c credit, warn func(string, ...any), keep 
 	if r.fellBack {
 		// A guard, not a path: a row's credits reach here with every name that
 		// slugs to nothing already left off (rowAuthorCreditSplitIn,
-		// rowNarratorSplitIn). The one caller that can still land here is a
-		// LibriVox reader whose own id slot is taken or retired
-		// (librivoxReaderSlug), whose catch-all the run's post-write
-		// validation then refuses (pkg/check's checkUnslugFallback).
+		// rowNarratorSplitIn). The one credit that can still land here is a
+		// LibriVox reader (whose names that split keeps) resolved by name
+		// rather than by reader id: one whose own id slot is taken or retired,
+		// or who carries no reader id (librivoxReaderSlug, rowNarratorSlugs),
+		// whose catch-all the run's post-write validation then refuses
+		// (pkg/check's checkUnslugFallback).
 		warn("name %q produced an empty slug; using %q", c.name, r.slug)
 	}
 	if r.create {
@@ -3097,11 +3094,13 @@ func (p *planner) seriesCatalogue() seriesCatalogue {
 // the catalogue already holds it ("" lets claimsOf read it off the row). A create
 // row is written only if it survives addBook's admission tests - an ASIN the
 // catalogue already holds, a language the schema does not know, no narrator, no
-// author, no title - and those are asked here, before anything is planned; an
-// enrichment row places only the work its ASIN matched, and the recordings-only
-// pass places nothing. The one drop this cannot foresee (the duplicate-identity
-// guard, which reads the resolved claim) can leave a founded series unwritten,
-// and settleNewSeriesSlugs closes the gap that would leave in the chain.
+// author (or no individual one once the names that slug to nothing are left
+// off, unsluggableLeftNoAuthor), no title - and those are asked here, before
+// anything is planned; an enrichment row places only the work its ASIN matched,
+// and the recordings-only pass places nothing. The one drop this cannot foresee
+// (the duplicate-identity guard, which reads the resolved claim) can leave a
+// founded series unwritten, and settleNewSeriesSlugs closes the gap that would
+// leave in the chain.
 func (p *planner) claimPlacesIn(ctx creditContext, b sourceBook, asin string) (places bool, work string) {
 	switch p.mode {
 	case ModeCreate:
@@ -3109,7 +3108,8 @@ func (p *planner) claimPlacesIn(ctx creditContext, b sourceBook, asin string) (p
 			return false, ""
 		}
 		lang, ok := b.language()
-		if !ok || len(rowNarratorNamesIn(ctx, b)) == 0 || len(b.authorCredits) == 0 {
+		if !ok || len(rowNarratorNamesIn(ctx, b)) == 0 || len(b.authorCredits) == 0 ||
+			p.unsluggableLeftNoAuthor(b.authorCredits, b.unslugAuthors) {
 			return false, ""
 		}
 		title := firstNonEmpty(b.str("title_short"), b.str("title"))
@@ -3409,10 +3409,11 @@ func (p *planner) reportUnmappedGenres() {
 		fmt.Sprintf("unmapped genre strings: %s", strings.Join(names, ", ")))
 }
 
-// noteUnnamedCredit records one credit workCredits refused because the name has
-// no identity of its own (see the fell-back branch there). Distinct spellings
-// only, capped, so the aggregate line names examples without listing a run's
-// worth of them; the COUNT is what says how much was dropped.
+// noteUnnamedCredit records one role credit refused because the name has no
+// identity of its own (applyToWork's left-off credits, and workCredits'
+// fell-back guard). Distinct spellings only, capped, so the aggregate line names
+// examples without listing a run's worth of them; the COUNT is what says how
+// much was dropped.
 func (p *planner) noteUnnamedCredit(name string) {
 	p.unnamedCredits++
 	if len(p.unnamedCreditNames) >= maxWarnExamples || slices.Contains(p.unnamedCreditNames, name) {
@@ -3425,8 +3426,8 @@ func (p *planner) noteUnnamedCredit(name string) {
 // because their person could not be identified. It is deliberately a warning
 // and not a silent drop: the names are real contributors the catalogue is
 // failing to represent, and the line is the standing evidence for fixing
-// Slugify's handling of non-Latin scripts (which would also un-conflate the
-// authors those same names already produce).
+// Slugify's handling of non-Latin scripts (which would let those names be
+// credited at all: today they are left off every work and recording).
 func (p *planner) reportUnnamedCredits() {
 	if p.unnamedCredits == 0 {
 		return

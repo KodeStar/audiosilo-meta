@@ -347,8 +347,8 @@ func (p *planner) keyLibrivoxAuthorVariants(books []sourceBook, titles, suffixes
 		if !ok || len(p.rowNarratorNames(*b)) == 0 {
 			continue
 		}
-		credits := p.rowAuthorCredits(*b)
-		noAuthor := p.unsluggableLeftNoAuthor(credits, p.rowUnsluggableAuthors(*b))
+		credits, dropped := rowAuthorCreditSplitIn(p.credits, *b)
+		noAuthor := p.unsluggableLeftNoAuthor(credits, dropped)
 		key, nonLatin := librivoxTitleKeyOf(titles[i])
 		slugs := p.librivoxTitleIndex()[key]
 		if noAuthor || len(credits) == 0 || len(slugs) == 0 {
