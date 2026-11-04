@@ -683,6 +683,11 @@ func SameStatedVolume(titleA, seriesA, titleB, seriesB string, p VolumePolicy) b
 var divisionMarker = regexp.MustCompile(`(?i)\b(?:books?|bks?|vols?|volumes?|parts?|pts?|episodes?|eps?|chapters?|#|` + divisionWords + `)` +
 	divisionNumberArms)
 
+// chapterMarker reports whether a divisionMarker match is a CHAPTER marker.
+func chapterMarker(match string) bool {
+	return len(match) >= 7 && strings.EqualFold(match[:7], "chapter")
+}
+
 // divisionSequence is every division number a title states, in the order it states
 // them, with the series name removed first (so a digit in the series' own name is not
 // read as a division).
@@ -692,7 +697,10 @@ func divisionSequence(title, series string) []float64 {
 
 // divisionSequenceOf is divisionSequence over an already-stripped residual. A marker
 // it cannot read (a composite word number) makes it state nothing rather than half a
-// sequence.
+// sequence - except a CHAPTER marker, which is skipped: chapter joined the
+// vocabulary after the rest, and an unreadable "Chapter One Hundred and One" must not
+// erase the divisions it used to read ("Foo, Book 2, Chapter One Hundred and One" is
+// still [2]), or two distinct products would agree.
 func divisionSequenceOf(residual string) []float64 {
 	ms := divisionMarker.FindAllStringSubmatchIndex(residual, -1)
 	if len(ms) == 0 {
@@ -701,10 +709,15 @@ func divisionSequenceOf(residual string) []float64 {
 	out := make([]float64, 0, len(ms))
 	for _, m := range ms {
 		v, ok := readDivisionNumber(residual, m)
-		if !ok {
+		switch {
+		case ok:
+			out = append(out, v)
+		case !chapterMarker(residual[m[0]:m[1]]):
 			return nil
 		}
-		out = append(out, v)
+	}
+	if len(out) == 0 {
+		return nil
 	}
 	return out
 }

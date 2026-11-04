@@ -7,6 +7,7 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -509,17 +510,22 @@ func normalizedDuplicateGroup(ix *WorkIdentity, works []*model.Work, reviewed *r
 // volumes already disagree (VolumeStatement.Agrees). What it withholds is only the
 // whole-and-part pair - see partAndWhole.
 //
+// Each part maps to its HEAD - its title before the volume marker
+// (titlerule.VolumeHeadOf), as titlerule.CompareKeyWhole folds it - which is what a
+// member must spell to be the part's whole; a part whose marker has no head ("" -
+// a bare number, a division) has no whole.
+//
 // cands are the group's members with their author sets already derived
 // (normalizedDuplicateGroup's), so the nesting test reads them rather than
 // rebuilding them per pair.
-func (ix *WorkIdentity) partsOfAWhole(cands []dupCandidate) map[string]bool {
+func (ix *WorkIdentity) partsOfAWhole(cands []dupCandidate) map[string]string {
 	var stating []*dupCandidate
 	for i := range cands {
 		if id := cands[i].work.ID; ix.statementOf[id].States && !ix.placed[id] {
 			stating = append(stating, &cands[i])
 		}
 	}
-	var set map[string]bool
+	var set map[string]string
 	for i, a := range stating {
 		for _, b := range stating[i+1:] {
 			if ix.statementOf[a.work.ID].Volume == ix.statementOf[b.work.ID].Volume ||
@@ -528,20 +534,40 @@ func (ix *WorkIdentity) partsOfAWhole(cands []dupCandidate) map[string]bool {
 				continue
 			}
 			if set == nil {
-				set = map[string]bool{}
+				set = map[string]string{}
 			}
-			set[a.work.ID], set[b.work.ID] = true, true
+			set[a.work.ID], set[b.work.ID] = partHead(a.work.Title), partHead(b.work.Title)
 		}
 	}
 	return set
 }
 
+// partHead is a part's title before its volume marker, folded for comparison
+// (titlerule.CompareKeyWhole), or "" when the marker it states has no head.
+func partHead(title string) string {
+	if h, ok := titlerule.VolumeHeadOf(title); ok {
+		return titlerule.CompareKeyWhole(h.Head)
+	}
+	return ""
+}
+
 // partAndWhole reports whether one of two works is a part of a multi-part set
-// (parts, partsOfAWhole's answer for their key group) and the other states no part
-// at all - no volume and no division: the whole beside one of its parts, which is
-// not one book. A nil parts (a group with no set) withholds nothing.
-func (ix *WorkIdentity) partAndWhole(parts map[string]bool, a, b *model.Work) bool {
-	return (parts[a.ID] && ix.statementOf[b.ID].Silent()) || (parts[b.ID] && ix.statementOf[a.ID].Silent())
+// (parts, partsOfAWhole's answer for their key group) and the other is its WHOLE:
+// a title that states nothing (no volume, no division) AND is the part's head with
+// nothing left over - "Anna Karenina" beside "Anna Karenina, Book 1", which is not
+// one book. A title that only states nothing is not enough: a part whose marker
+// cannot be read ("The Odyssey (Βook 06)", a Greek Beta) states nothing too, and
+// its leftover text is exactly what makes it a possible duplicate of the part it
+// sits beside ("The Odyssey (Book 06)"), so it still pairs. Nor is a decorated
+// whole ("Aesop's Fables: A New Revised Edition") read as one: a reading list may
+// over-report, it may not hide. A nil parts (a group with no set) withholds
+// nothing.
+func (ix *WorkIdentity) partAndWhole(parts map[string]string, a, b *model.Work) bool {
+	isWhole := func(part, w *model.Work) bool {
+		head, ok := parts[part.ID]
+		return ok && head != "" && ix.statementOf[w.ID].Silent() && titlerule.CompareKeyWhole(w.Title) == head
+	}
+	return isWhole(a, b) || isWhole(b, a)
 }
 
 // checkOrphanPeople reports a person record that nothing in the tree credits.

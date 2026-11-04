@@ -226,14 +226,36 @@ func TestAdvisoryNormalizedDuplicateSkipsPartsOfAWhole(t *testing.T) {
 		t.Errorf("a whole and its parts were reported as one book: %v", got)
 	}
 
-	// A whole of its own beside the parts still pairs with the first whole: the
-	// part rule withholds only the whole-and-part pairs.
+	// A whole of its own beside the parts (its leading article is no leftover)
+	// still pairs with the first whole: the part rule withholds only the
+	// whole-and-part pairs.
 	files = dupBase("Wealth of Nations")
 	dupWork(files, "wealth-of-nations-book-1", "Wealth of Nations, Book 1", "author-one", "librivox")
 	dupWork(files, "wealth-of-nations-book-4", "Wealth of Nations, Book 4", "author-one", "librivox")
-	got := dupTwin(t, files, "the-wealth-of-nations-unabridged", "The Wealth of Nations (Unabridged)")
+	got := dupTwin(t, files, "the-wealth-of-nations", "The Wealth of Nations")
 	if len(got) != 1 || strings.Contains(got[0], "wealth-of-nations-book-") {
 		t.Errorf("advisories = %v, want the two wholes alone", got)
+	}
+}
+
+// The WHOLE is a title with nothing left over beyond the parts' head. A part whose
+// marker cannot be read ("Βook 06", a Greek Beta) states nothing as well, and is a
+// possible duplicate of the part beside it - it must still pair, and so must a
+// decorated whole.
+func TestAdvisoryNormalizedDuplicateKeepsAnUnreadablePart(t *testing.T) {
+	files := dupBase("The Odyssey")
+	dupWork(files, "odyssey-book-01", "The Odyssey (Book 01)", "author-one", "librivox")
+	dupWork(files, "odyssey-book-06", "The Odyssey (Book 06)", "author-one", "librivox")
+	dupWork(files, "odyssey-beta-book-06", "The Odyssey (Βook 06)", "author-one", "librivox")
+	got := advisoryMatching(advisoryWarnings(t, files), normalizedDupMarker)
+	if len(got) != 1 || !strings.Contains(got[0], "odyssey-beta-book-06") || !strings.Contains(got[0], "odyssey-book-06") {
+		t.Fatalf("advisories = %v, want the unreadable part beside the parts", got)
+	}
+
+	files = dupBase("Aesop's Fables: A New Revised Edition")
+	dupWork(files, "aesops-fables-volume-01", "Aesop's Fables, Volume 01", "author-one", "librivox")
+	if got := dupTwin(t, files, "aesops-fables-volume-02", "Aesop's Fables, Volume 02"); len(got) != 1 {
+		t.Errorf("a decorated whole beside the parts = %v, want one finding", got)
 	}
 }
 
