@@ -124,11 +124,14 @@ func TestMatchExamples(t *testing.T) {
 			want: "sharpes-eagle", minScore: 90, below: "sharpes-battle",
 		},
 		{
+			// Siege is listed at 19, so positionConflictFactor scales it (89
+			// before the factor, 71 now); it still leads Revenge (62), listed
+			// at 20 under a title that disagrees.
 			name: "a named title beats the numbering",
 			params: url.Values{
 				"title": {"Sharpe's Siege"}, "author": {"Bernard Cornwell"}, "series": {"Richard Sharpe"}, "position": {"20"},
 			},
-			want: "sharpes-siege", minScore: 80, below: "sharpes-revenge",
+			want: "sharpes-siege", minScore: 70, below: "sharpes-revenge",
 		},
 		{
 			name: "a typo in the folder name",
@@ -261,7 +264,8 @@ func matchScores(res []map[string]any) map[string]float64 {
 // every generic volume title and kept them all at title 0.93 - while volume 4's
 // generic title counts genericTitleValue. Read as what it is (seriesVerdict's
 // named), it no longer outvotes the stated volume: here volume 4 scores 90 and
-// volumes 1, 3, 5 and 13 score 22 (before: 90 against 84 and 81). The tag's own
+// volumes 1, 3, 5 and 13 score 18 (before: 90 against 84 and 81; 22 before
+// positionConflictFactor scaled the volumes placed elsewhere). The tag's own
 // title states the volume too ("He Who Fights with Monsters 4: ...",
 // titleVolume), so the tag alone, with no position and no folder, ranks the
 // same way (before: 92 against 67, on the tag's number alone).
@@ -298,8 +302,8 @@ func TestMatchStatedVolumeBeatsItsNeighbours(t *testing.T) {
 				t.Errorf("volume 4 scores %v, want 90 (reasons %v)", got, res[0]["reasons"])
 			}
 			for _, other := range []string{"he-who-fights-with-monsters-a-litrpg-adventure", "he-who-fights-with-monsters-3", "he-who-fights-with-monsters-5", "he-who-fights-with-monsters-13-a-litrpg-adventure"} {
-				if got, ok := scores[other]; ok && got != 22 {
-					t.Errorf("%s scores %v, want 22 (or absent)", other, got)
+				if got, ok := scores[other]; ok && got != 18 {
+					t.Errorf("%s scores %v, want 18 (or absent)", other, got)
 				}
 			}
 		})
@@ -310,12 +314,14 @@ func TestMatchStatedVolumeBeatsItsNeighbours(t *testing.T) {
 // name still counts for a work titled exactly that, unless a guess tied a
 // volume to the name. "02 - Throne of Glass" may be the first volume filed
 // second, and the strings cannot tell it from a folder numbering volume 2, so
-// the exact title keeps the lead it had before the stated-volume rule (89,
-// Crown of Midnight 44; the rule alone had them at 22 and 44). Beside "He Who
+// the exact title keeps the lead it had before the stated-volume rule (71,
+// Crown of Midnight 44: 89 before positionConflictFactor scaled a work listed
+// at another volume; the rule alone had them at 22 and 44). Beside "He Who
 // Fights with Monsters 4: ..." the name is that numbering's leftover, so a
 // first volume titled exactly "He Who Fights with Monsters" gets nothing from it
-// and volume 4 leads 90 to 22. Folder alone, nothing ties the volume and the two
-// readings cannot be told apart: volume 4 still leads, but only 90 to 89.
+// and volume 4 leads 90 to 18. Folder alone, nothing ties the volume and the two
+// readings cannot be told apart: volume 4 still leads, 90 to 71 (90 to 89
+// before the factor).
 func TestMatchSeriesNamedVolumeKeepsItsTitle(t *testing.T) {
 	work := func(id, title, author string) *model.Work {
 		return &model.Work{ID: id, Title: title, Language: "en", Authors: []string{author}, License: "CC0-1.0"}
@@ -350,22 +356,22 @@ func TestMatchSeriesNamedVolumeKeepsItsTitle(t *testing.T) {
 	}{
 		{"a numbering prefix", url.Values{
 			"title": {"02 - Throne of Glass"}, "author": {"Sarah J. Maas"}, "series": {"Throne of Glass"},
-		}, "throne-of-glass", "crown-of-midnight", 89, 44},
+		}, "throne-of-glass", "crown-of-midnight", 71, 44},
 		{"a stated position", url.Values{
 			"title": {"Throne of Glass"}, "author": {"Sarah J. Maas"}, "series": {"Throne of Glass"}, "position": {"2"},
-		}, "throne-of-glass", "crown-of-midnight", 89, 44},
+		}, "throne-of-glass", "crown-of-midnight", 71, 44},
 		// A tied number naming ANOTHER volume than the one read does not
 		// make the name a numbering leftover.
 		{"a tied number for another volume", url.Values{
 			"title": {"02 - Throne of Glass", "Throne of Glass 1"}, "author": {"Sarah J. Maas"}, "series": {"Throne of Glass"},
-		}, "throne-of-glass", "crown-of-midnight", 89, 44},
+		}, "throne-of-glass", "crown-of-midnight", 71, 44},
 		{"a tied volume", url.Values{
 			"title":  {"FWM04 - He Who Fights With Monsters - Book 4", "He Who Fights with Monsters 4: A LitRPG Adventure"},
 			"author": {"Shirtaloon"}, "series": {"He Who Fights With Monsters"},
-		}, "hwfwm-4", "hwfwm-1", 90, 22},
+		}, "hwfwm-4", "hwfwm-1", 90, 18},
 		{"the folder alone", url.Values{
 			"title": {"FWM04 - He Who Fights With Monsters - Book 4"}, "author": {"Shirtaloon"}, "series": {"He Who Fights With Monsters"},
-		}, "hwfwm-4", "hwfwm-1", 90, 89},
+		}, "hwfwm-4", "hwfwm-1", 90, 71},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			res := matchJSON(t, ts.URL, tc.params)
@@ -615,7 +621,7 @@ func TestMatchResponseShape(t *testing.T) {
 	// A request that states no series and no runtime omits those reasons.
 	res = matchJSON(t, ts.URL, url.Values{"title": {"Dune"}})
 	reasons = res[0]["reasons"].(map[string]any)
-	for _, k := range []string{"series", "runtime", "author", "text", "identifier"} {
+	for _, k := range []string{"series", "runtime", "author", "text", "identifier", "narrator", "language"} {
 		if _, ok := reasons[k]; ok {
 			t.Errorf("reason %q present although the request did not state it: %v", k, reasons)
 		}
@@ -623,10 +629,10 @@ func TestMatchResponseShape(t *testing.T) {
 }
 
 // TestMatchRequiresAFact: with nothing to match on the request is a 400 - a
-// position or runtime alone identifies nothing.
+// position, runtime, language or narrator alone identifies nothing.
 func TestMatchRequiresAFact(t *testing.T) {
 	_, ts := newTestServerForCatalog(t, matchCatalog())
-	for _, q := range []string{"", "q=+", "title=&author=", "position=8", "runtime=3600", "limit=5"} {
+	for _, q := range []string{"", "q=+", "title=&author=", "position=8", "runtime=3600", "limit=5", "language=en", "narrator=Rupert+Farley"} {
 		if code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/match?"+q); code != http.StatusBadRequest || body["error"] == "" {
 			t.Errorf("?%s: status %d %v, want a 400", q, code, body)
 		}
@@ -745,7 +751,7 @@ func TestMatchReadsHonourTheContext(t *testing.T) {
 			return err
 		},
 		"candidateFacts": func(ctx context.Context) error {
-			_, err := snap.candidateFacts(ctx, pool)
+			_, err := snap.candidateFacts(ctx, pool, true)
 			return err
 		},
 		"workResults": func(ctx context.Context) error {
