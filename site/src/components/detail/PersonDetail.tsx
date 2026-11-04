@@ -1,8 +1,9 @@
 import { getPerson, type Person, type WorkCard as WorkCardData } from '../../lib/api'
 import {
   authoredNote,
-  narratedWorks,
+  creditedWorks,
   narrationNote,
+  translationNote,
   workCount,
 } from '../../lib/person-credits'
 import WorkCard from '../cards/WorkCard'
@@ -62,11 +63,13 @@ function Section({
 function Loaded({ person, hydrated }: { person: Person; hydrated: boolean }) {
   usePageTitle(person.name, hydrated)
 
-  const narrated: WorkCardData[] = narratedWorks(person.narrated)
+  const narrated: WorkCardData[] = creditedWorks(person.narrated)
+  const translated: WorkCardData[] = creditedWorks(person.translated)
 
   const roles: string[] = []
   if ((person.authored?.length ?? 0) > 0) roles.push('Author')
   if (narrated.length > 0) roles.push('Narrator')
+  if (translated.length > 0) roles.push('Translator')
 
   return (
     <div className="container py-10">
@@ -120,7 +123,21 @@ function Loaded({ person, hydrated }: { person: Person; hydrated: boolean }) {
         </Section>
       ) : null}
 
-      {(person.authored?.length ?? 0) === 0 && narrated.length === 0 ? (
+      {translated.length > 0 ? (
+        <Section
+          title="Recordings translated"
+          count={workCount(translated.length)}
+          note={translationNote(
+            person.translated?.length ?? 0,
+            person.translated_total,
+            translated.length
+          )}
+        >
+          <WorkGrid works={translated} />
+        </Section>
+      ) : null}
+
+      {(person.authored?.length ?? 0) === 0 && narrated.length === 0 && translated.length === 0 ? (
         <p className="rounded-xl border border-edge bg-surface px-6 py-12 text-center text-sm text-dim">
           No works are linked to this person yet.
         </p>

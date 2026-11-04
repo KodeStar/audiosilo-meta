@@ -930,6 +930,7 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	p.reportTombstoneRides()
 	p.reportSeriesNameJoins()
 	p.stampLibrivoxPeople()
+	p.restateLibrivoxRecordings()
 	if p.fatal != nil {
 		return p.fatal
 	}

@@ -133,6 +133,20 @@
           "audio_url": {
             "description": "The audio file this chapter IS, for a recording published as one file per section (LibriVox: the archive.org MP3). Only a LibriVox recording carries it today, so pkg/check requires librivox_id beside it.",
             "$ref": "common.schema.json#/$defs/https_url"
+          },
+          "readers": {
+            "description": "Who reads THIS chapter, as person slugs, each one of the recording's narrators (pkg/check). A LibriVox section's: pkg/check requires librivox_id beside it. Written for a recording whose chapters are read by different people (a LibriVox collaborative project): when no chapter of the recording carries readers, who reads which chapter is unstated, except that a recording with one narrator is read by them throughout; once any chapter carries them, a chapter without them states no reader.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "$ref": "common.schema.json#/$defs/slug"
+            }
+          },
+          "section_number": {
+            "description": "The source's own number for this chapter (LibriVox: section_number), written only where it differs from the chapter's 1-based position - LibriVox numbers some projects from 0, and a few from a later volume's first section. Absent means the position IS the number. Only a LibriVox recording carries it today, so pkg/check requires librivox_id beside it and refuses a value equal to the position (one fact, one spelling).",
+            "type": "integer",
+            "minimum": 0
           }
         }
       }
@@ -164,6 +178,41 @@
         "text": {
           "description": "The text the recording reads from, as the source states it (LibriVox: url_text_source).",
           "$ref": "common.schema.json#/$defs/https_url"
+        }
+      }
+    },
+    "librivox_title": {
+      "description": "The LibriVox project's own title, exactly as LibriVox states it - its repeat markers (\"(version 2)\", \"(Dramatic Reading)\") and its spelling kept. The work's title is the work's (a project attached to a catalogued work reads in the catalogue's spelling, its markers stripped); this is the project's, which the LibriVox-shaped feed answers with. Requires librivox_id (pkg/check).",
+      "type": "string",
+      "minLength": 1
+    },
+    "librivox_genres": {
+      "description": "The LibriVox project's own genre names, verbatim and in LibriVox's order, each once (LICENSING.md's public-domain exception). They are a fact about the LibriVox project, never the work's genres: the work's genres stay this project's vocabulary, mapped in code. The LibriVox-shaped feed answers and filters ?genre= with them. Requires librivox_id (pkg/check).",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "credits": {
+      "description": "Contributors credited on THIS recording in a role that is not narration. Today one role: the translator of the translation a LibriVox project reads, a fact about the project (two LibriVox translations of one work credit two different translators). It is ADDITIONAL to the work's own credits, never instead of them: a work keeps the translator credits its sources stated, and authors stays the identity list. The (person, role) shape and rules of a work's credits, the people resolving into the people family, but only the roles a recording can state (`translator`); a role is added here by schema change when a source states one per production. Optional; written only when the source STATED the role. A LibriVox import writes them in LibriVox's order; pkg/check requires librivox_id beside them.",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["person", "role"],
+        "properties": {
+          "person": {
+            "$ref": "common.schema.json#/$defs/slug"
+          },
+          "role": {
+            "type": "string",
+            "enum": ["translator"]
+          }
         }
       }
     },

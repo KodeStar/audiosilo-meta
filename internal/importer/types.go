@@ -88,6 +88,9 @@ type outChapter struct {
 	// AudioURL is the section's own audio file (a LibriVox archive.org MP3);
 	// only a LibriVox recording states one (pkg/check requires librivox_id).
 	AudioURL string `json:"audio_url,omitempty"`
+	// A LibriVox section's readers and number (model.Chapter's) are never on a
+	// planned chapter: the LibriVox recording pass writes them onto the stored
+	// recording after planning (librivoxrecording.go).
 }
 
 type outRecording struct {
@@ -543,6 +546,10 @@ type Summary struct {
 	// imported before readers were keyed apart). Both 0 for every other source.
 	LibrivoxReadersSplit int
 	LibrivoxReadersMoved int
+	// LibrivoxRestated is what the recording pass restated on the run's
+	// LibriVox recordings, landed and held (librivoxrecording.go). Zero for
+	// every other source.
+	LibrivoxRestated LibrivoxRestated
 	// LibrivoxReadersUnslugged counts the readers minted at
 	// model.LibrivoxUnslugReaderSlug (`librivox-reader-<reader id>`) because
 	// their name slugs to nothing. 0 for every other source.

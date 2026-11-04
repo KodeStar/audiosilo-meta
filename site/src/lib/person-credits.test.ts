@@ -1,12 +1,18 @@
 import { describe, it, expect } from 'vitest'
-import { authoredNote, narratedWorks, narrationNote, workCount } from './person-credits'
-import type { Person, WorkCard } from './api'
+import {
+  authoredNote,
+  creditedWorks,
+  narrationNote,
+  translationNote,
+  workCount,
+} from './person-credits'
+import type { RecordingCredit, WorkCard } from './api'
 
 function work(id: string): WorkCard {
   return { id, title: `Work ${id}`, authors: [] }
 }
 
-function credit(id: string, recordingId: string): Person['narrated'][number] {
+function credit(id: string, recordingId: string): RecordingCredit {
   return { work: work(id), recording_id: recordingId }
 }
 
@@ -22,14 +28,27 @@ describe('workCount', () => {
   })
 })
 
-describe('narratedWorks', () => {
+describe('creditedWorks', () => {
   it('collapses several recordings of one work to one card, in credit order', () => {
-    const works = narratedWorks([credit('a', 'r1'), credit('a', 'r2'), credit('b', 'r3')])
+    const works = creditedWorks([credit('a', 'r1'), credit('a', 'r2'), credit('b', 'r3')])
     expect(works.map((w) => w.id)).toEqual(['a', 'b'])
   })
 
-  it('handles an absent list', () => {
-    expect(narratedWorks(undefined)).toEqual([])
+  it('handles an absent list (a person with no translated recordings omits it)', () => {
+    expect(creditedWorks(undefined)).toEqual([])
+  })
+})
+
+describe('translationNote', () => {
+  it('is absent when every credit arrived', () => {
+    expect(translationNote(3, 3, 2)).toBeUndefined()
+    expect(translationNote(3, undefined, 2)).toBeUndefined()
+  })
+
+  it('names translation credits and the works they cover', () => {
+    expect(translationNote(500, 612, 480)).toBe(
+      'Showing the first 500 of 612 translation credits, which cover the 480 works below.'
+    )
   })
 })
 

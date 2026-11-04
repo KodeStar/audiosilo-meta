@@ -899,23 +899,25 @@ func firstCandidates(c []LibrivoxCandidate) []LibrivoxCandidate {
 	return c[:min(len(c), maxWarnExamples)]
 }
 
+// yearText is a signed year as the run prints one: "1883", "43 BC".
+func yearText(y int) string {
+	if y < 0 {
+		return strconv.Itoa(-y) + " BC"
+	}
+	return strconv.Itoa(y)
+}
+
 // datedName is name with life's years in the form the tranches minted by hand:
 // "(1822-1887)", "(d. 1942)", "(b. 1850)", "(fl. 1916)"; a year BC reads "43 BC".
 // "" when no year is stated.
 func datedName(name string, life lifeYears) string {
-	year := func(y int) string {
-		if y < 0 {
-			return strconv.Itoa(-y) + " BC"
-		}
-		return strconv.Itoa(y)
-	}
 	switch {
 	case life.birth != 0 && life.death != 0:
-		return fmt.Sprintf("%s (%s-%s)", name, year(life.birth), year(life.death))
+		return fmt.Sprintf("%s (%s-%s)", name, yearText(life.birth), yearText(life.death))
 	case life.death != 0:
-		return fmt.Sprintf("%s (d. %s)", name, year(life.death))
+		return fmt.Sprintf("%s (d. %s)", name, yearText(life.death))
 	case life.birth != 0:
-		return fmt.Sprintf("%s (b. %s)", name, year(life.birth))
+		return fmt.Sprintf("%s (b. %s)", name, yearText(life.birth))
 	case life.fl != 0:
 		return fmt.Sprintf("%s (fl. %d)", name, life.fl)
 	}

@@ -740,13 +740,13 @@
         "tags": ["LibriVox"],
         "operationId": "librivoxAudiobooks",
         "summary": "LibriVox-shaped audiobooks feed",
-        "description": "LibriVox's audiobooks feed (`librivox.org/api/feed/audiobooks`) answered from the mirror, with LibriVox's parameters and JSON shape, so an app that reads LibriVox can switch by changing its base URL.\n\nThe answer differs from LibriVox's in the facts the mirror does not keep: `description`, `url_project` and `url_other` are empty strings, `coverart_pdf` and `coverart_thumbnail` are null, a section's `id` is empty, its `file_name` null, its `section_number` its 1-based position (LibriVox numbers some projects from 0) and its `language` the project's language, `genres` are this project's vocabulary with an empty `id`, an author's `first_name` and `last_name` are the stored name split at its last word, and `dob`/`dod` are years or empty. The `title` is the catalogue work's title, so a project attached to an existing work reads in that work's spelling and case, without \"(version N)\". `translators` are the work's translator credits: on a project attached to a catalogued work they may differ from LibriVox's and carry no LibriVox id or years. A section names its reader only when the recording has one narrator. Ids, the language name, `copyright_year`, URLs, runtimes, section titles, listen URLs and playtimes are LibriVox's values as the mirror stored them.\n\nAt most 500 projects a request. A reader that wants the whole catalogue should download the `meta.sqlite.gz` release asset instead.",
+        "description": "LibriVox's audiobooks feed (`librivox.org/api/feed/audiobooks`) answered from the mirror, with LibriVox's parameters and JSON shape, so an app that reads LibriVox can switch by changing its base URL.\n\nThe answer differs from LibriVox's in the facts the mirror does not keep: `description`, `url_project` and `url_other` are empty strings, `coverart_pdf` and `coverart_thumbnail` are null, a section's `id` is empty, its `file_name` null and its `language` the project's language, a genre's `id` is empty (and a genre LibriVox lists twice is listed once), an author's `first_name` and `last_name` are the stored name split at its last word, and `dob`/`dod` are years or empty. Everything else is LibriVox's value as the mirror stored it: the project's own `title` (its \"(version N)\" marker and spelling kept), each section's own `section_number` (LibriVox numbers some projects from 0) and `readers`, the project's own `translators` and its LibriVox `genres` names, and ids, the language name, `copyright_year`, URLs, runtimes, section titles, listen URLs and playtimes. A translator the mirror credits by name without a LibriVox id carries no `id` or years.\n\nOn an artifact older than version 9 the feed answers as it did before: the catalogue work's title without \"(version N)\", 1-based positions as section numbers, the work's translator credits, this project's vocabulary as `genres` (and as the `genre` filter), and a section reader only for a recording with one narrator.\n\nAt most 500 projects a request. A reader that wants the whole catalogue should download the `meta.sqlite.gz` release asset instead.",
         "parameters": [
           { "name": "id", "in": "query", "required": false, "description": "One LibriVox project id. Not a positive integer is a 400.", "schema": { "type": "integer", "minimum": 1 } },
           { "name": "since", "in": "query", "required": false, "description": "A UNIX time: only the projects that reached the mirror on or after that day (compared at day granularity, from midnight UTC, as LibriVox compares its catalogue date). The date is when the mirror imported the recording, not when LibriVox catalogued it. Not a non-negative integer is a 400.", "schema": { "type": "integer", "minimum": 0 } },
-          { "name": "title", "in": "query", "required": false, "description": "The work's title, matched exactly and case-insensitively; a leading `^` makes it a prefix match. LibriVox's `(version N)` marker is not part of a stored title.", "schema": { "type": "string" } },
+          { "name": "title", "in": "query", "required": false, "description": "The project's own title (LibriVox's, its `(version N)` marker kept), matched exactly and case-insensitively; a leading `^` makes it a prefix match. On an artifact older than version 9, the work's title.", "schema": { "type": "string" } },
           { "name": "author", "in": "query", "required": false, "description": "An author's last name (the last word of the stored name), matched exactly and case-insensitively, or with a leading `^` as a prefix. A translator never matches.", "schema": { "type": "string" } },
-          { "name": "genre", "in": "query", "required": false, "description": "A LibriVox genre name the importer maps (for example `Science Fiction`) or a genre of this project's vocabulary (`science-fiction`), matched case-insensitively, or with a leading `^` as a prefix.", "schema": { "type": "string" } },
+          { "name": "genre", "in": "query", "required": false, "description": "One of the project's own LibriVox genre names (for example `Science Fiction`), matched exactly and case-insensitively, or with a leading `^` as a prefix - never widened through this project's vocabulary. On an artifact older than version 9, a LibriVox genre name the importer maps or a vocabulary value (`science-fiction`).", "schema": { "type": "string" } },
           { "name": "extended", "in": "query", "required": false, "description": "`1` adds `url_iarchive`, `sections`, `genres` and `translators`. Empty or `0` is off.", "schema": { "type": "string", "examples": ["1"] } },
           { "name": "coverart", "in": "query", "required": false, "description": "`1` adds `coverart_jpg`, `coverart_pdf` and `coverart_thumbnail`. Empty or `0` is off.", "schema": { "type": "string", "examples": ["1"] } },
           { "name": "fields", "in": "query", "required": false, "description": "Keep only these top-level fields: `{id,title}`, a comma list, or repeated as `fields[]`.", "schema": { "type": "string", "examples": ["{id,title,authors}"] } },
@@ -800,9 +800,9 @@
         "parameters": [
           { "name": "id", "in": "query", "required": false, "description": "One LibriVox project id. Not a positive integer is a 400.", "schema": { "type": "integer", "minimum": 1 } },
           { "name": "since", "in": "query", "required": false, "description": "A UNIX time: only the projects that reached the mirror on or after that day (compared at day granularity, from midnight UTC, as LibriVox compares its catalogue date). The date is when the mirror imported the recording, not when LibriVox catalogued it. Not a non-negative integer is a 400.", "schema": { "type": "integer", "minimum": 0 } },
-          { "name": "title", "in": "query", "required": false, "description": "The work's title, matched exactly and case-insensitively; a leading `^` makes it a prefix match. LibriVox's `(version N)` marker is not part of a stored title.", "schema": { "type": "string" } },
+          { "name": "title", "in": "query", "required": false, "description": "The project's own title (LibriVox's, its `(version N)` marker kept), matched exactly and case-insensitively; a leading `^` makes it a prefix match. On an artifact older than version 9, the work's title.", "schema": { "type": "string" } },
           { "name": "author", "in": "query", "required": false, "description": "An author's last name (the last word of the stored name), matched exactly and case-insensitively, or with a leading `^` as a prefix. A translator never matches.", "schema": { "type": "string" } },
-          { "name": "genre", "in": "query", "required": false, "description": "A LibriVox genre name the importer maps (for example `Science Fiction`) or a genre of this project's vocabulary (`science-fiction`), matched case-insensitively, or with a leading `^` as a prefix.", "schema": { "type": "string" } },
+          { "name": "genre", "in": "query", "required": false, "description": "One of the project's own LibriVox genre names (for example `Science Fiction`), matched exactly and case-insensitively, or with a leading `^` as a prefix - never widened through this project's vocabulary. On an artifact older than version 9, a LibriVox genre name the importer maps or a vocabulary value (`science-fiction`).", "schema": { "type": "string" } },
           { "name": "extended", "in": "query", "required": false, "description": "`1` adds `url_iarchive`, `sections`, `genres` and `translators`. Empty or `0` is off.", "schema": { "type": "string", "examples": ["1"] } },
           { "name": "coverart", "in": "query", "required": false, "description": "`1` adds `coverart_jpg`, `coverart_pdf` and `coverart_thumbnail`. Empty or `0` is off.", "schema": { "type": "string", "examples": ["1"] } },
           { "name": "fields", "in": "query", "required": false, "description": "Keep only these top-level fields: `{id,title}`, a comma list, or repeated as `fields[]`.", "schema": { "type": "string", "examples": ["{id,title,authors}"] } },
@@ -1707,7 +1707,7 @@
               "type": "object",
               "properties": {
                 "id": { "type": "string", "description": "Always empty." },
-                "section_number": { "type": "string", "description": "The section's 1-based position (LibriVox numbers some projects from 0)." },
+                "section_number": { "type": "string", "description": "LibriVox's own section number (some projects count from 0); on an artifact older than version 9, the 1-based position." },
                 "title": { "type": "string" },
                 "listen_url": { "type": "string" },
                 "language": { "type": "string" },
@@ -1715,7 +1715,7 @@
                 "file_name": { "type": "null", "description": "Always null: `listen_url` names the file." },
                 "readers": {
                   "type": "array",
-                  "description": "The recording's one narrator, or empty for a recording read by several.",
+                  "description": "The section's own readers; for a recording read by one narrator throughout, that narrator. On an artifact older than version 9, the recording's one narrator, or empty for a recording read by several.",
                   "items": {
                     "type": "object",
                     "properties": {
@@ -1733,7 +1733,7 @@
               "type": "object",
               "properties": {
                 "id": { "type": "string", "description": "Always empty." },
-                "name": { "type": "string", "description": "A genre of this project's vocabulary." }
+                "name": { "type": "string", "description": "LibriVox's genre name; on an artifact older than version 9, a genre of this project's vocabulary." }
               }
             }
           },
@@ -1917,6 +1917,8 @@
           },
           "authored_total": { "type": "integer", "description": "UNPAGED count of authored works." },
           "narrated_total": { "type": "integer", "description": "UNPAGED count of narration credits." },
+          "translated": { "type": "array", "items": { "$ref": "#/components/schemas/NarratedEntry" }, "description": "The recordings this person is credited on as translator in the recording's own credits (a LibriVox project's translator), paged like `narrated`. Omitted when there are none, on an artifact older than version 9, and on a page past the list's end (`translated_total` is still present there). A translator a work credits is in `authored` already." },
+          "translated_total": { "type": "integer", "description": "UNPAGED count of recording translator credits. Omitted when there are none and on an artifact older than version 9." },
           "limit": { "type": "integer", "description": "The window that was applied to each list." },
           "offset": { "type": "integer" }
         }

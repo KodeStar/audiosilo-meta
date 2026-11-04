@@ -155,7 +155,9 @@ tags) are their editorial arrangement, and copying one wholesale is exactly the
 "selection and arrangement" that compilation copyright and database rights
 protect. Importers therefore never store a retailer's genre strings verbatim -
 they map them onto our vocabulary in code, and anything that does not map is
-dropped.
+dropped. (A LibriVox recording's own genre names are the one exception, kept on
+the recording under the public-domain exception below; the work's genres are
+still mapped.)
 
 A retailer category that names a **format** rather than a subject - Audible's
 "Audio Performances & Dramatizations" (with its Dramatizations and Storytelling
@@ -238,10 +240,18 @@ contact address, backing off on `429`/`5xx`), from a local snapshot that is neve
 committed, and lands in reviewed tranches by project-id range.
 
 **Facts only.** A LibriVox record carries the title, the authors, the readers
-(as narrators), the translators (as `translator` credits), the language, the
-runtime, the sections (as chapters, each with its `audio_url`), the genres
-mapped onto our vocabulary, the LibriVox ids and the archive.org identifier and
-links. It never carries the project `description`: it is often quoted from
+(as narrators, and per section as each chapter's `readers`), the translators (as
+`translator` credits on the recording, the project's own, and on a work the
+import creates also as the work's credits), the language, the runtime, the sections
+(as chapters, each with its `audio_url` and, where it differs from the position,
+LibriVox's `section_number`), the genres mapped onto our vocabulary, the
+LibriVox ids and the archive.org identifier and links. The project's own title
+(`librivox_title`) and genre names (`librivox_genres`) are kept verbatim on the
+recording as well, the one place a source's genre strings are stored: they are
+LibriVox's statement about a public-domain recording under this exception, so
+that the LibriVox-shaped feed can answer and filter exactly as LibriVox does.
+They never become the work's `genres`, which stay this project's vocabulary
+mapped in code, as for every other source (see "Genres"). It never carries the project `description`: it is often quoted from
 Wikipedia ("Summary from Wikipedia"), so it is neither ours to relicense nor
 CC0. The audio and the cover art stay on archive.org; we hold URLs.
 
