@@ -33,11 +33,12 @@ name: route (reusable)
 #
 # A RE-RUN is a no-op once the issue is decided. The payload is the issue as
 # opened, so the job-level `if` cannot tell; the first step therefore reads the
-# issue as it is NOW and skips when it carries a `data:` label (the routing
-# label this workflow applied, a maintainer's, or an outcome intake applied),
-# `intake:held`, or a comment the workflow token posted ending "_Posted by the
-# intake bot._" (a hold or an intake verdict). An intake pull request needs no
-# check of its own: one exists only once the routing label was applied.
+# issue as it is NOW and skips when it is closed (a maintainer's decision, or
+# the submitter's withdrawal), carries a `data:` label (the routing label this
+# workflow applied, a maintainer's, or an outcome intake applied) or
+# `intake:held`, or has a comment the workflow token posted carrying "_Posted
+# by the intake bot._" (a hold or an intake verdict). An intake pull request
+# needs no check of its own: one exists only once the routing label was applied.
 # Without the guard, re-running a route run labelled and called intake again for
 # the same issue. The trade-off: re-running a run that HELD an issue on a
 # transient failure (an API read, a label that could not be applied) is now a
@@ -71,7 +72,8 @@ on:
       routes:
         description: >-
           The title-prefix allowlist, one `<tag> <label>` pair per line (blank
-          lines and # comments ignored): a title starting "[<tag>] " is routed
+          lines and whole-line # comments ignored; anything after the label is
+          an error): a title starting "[<tag>] " is routed
           with the routing label <label>, a `data:` label intake.yml routes on.
         type: string
         required: true
@@ -176,13 +178,14 @@ jobs:
             exit 0
           fi
 
-          # The re-run guard (see the header): the issue as it is NOW, labels
-          # and comments in one read. On the GraphQL path gh reads, the workflow
-          # token's author is `github-actions` (no [bot] suffix). A read failure
-          # holds, as the other reads below do - it must not be taken as
+          # The re-run guard (see the header): the issue as it is NOW, state,
+          # labels and comments in one read. On the GraphQL path gh reads, the
+          # workflow token's author is `github-actions` (no [bot] suffix). A read
+          # failure holds, as the other reads below do - it must not be taken as
           # "nothing decided yet".
-          if ! decided="$(gh issue view "$ISSUE" --repo "$GITHUB_REPOSITORY" --json labels,comments --jq '
-              ([.labels[].name | select(startswith("data:") or . == "intake:held")]
+          if ! decided="$(gh issue view "$ISSUE" --repo "$GITHUB_REPOSITORY" --json state,labels,comments --jq '
+              ([if .state == "OPEN" then empty else "closed" end]
+               + [.labels[].name | select(startswith("data:") or . == "intake:held")]
                + [.comments[] | select(.author.login == "github-actions" and ((.body // "") | contains("_Posted by the intake bot._"))) | "an intake-bot comment"])
               | unique | join(", ")')"; then
             held "the issue's current state could not be read"

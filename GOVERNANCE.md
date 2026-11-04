@@ -127,7 +127,8 @@ Two automations sit in front of the human review step. Neither bypasses it.
   the workflow token and composed by `intake.yml`, called as a reusable
   workflow in the same run. The routing rules below are one reusable workflow,
   `route-reusable.yml`, shared with the community repository (which calls it at
-  a pinned commit with its own two prefixes and cap), so the two cannot drift.
+  a pinned commit with its own two prefixes and cap), so there is one copy to
+  change; the community repository picks a change up when it bumps that pin.
   Re-running a route run does nothing once the issue is decided (the conditions
   are in that workflow's header). The App id only says which tool filed the issue -
   anyone can sign in to a public App - so it is a routing hint, never trust: the
