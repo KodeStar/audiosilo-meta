@@ -96,6 +96,7 @@ package importer
 // landed tranche changes nothing.
 
 import (
+	"cmp"
 	"fmt"
 	"maps"
 	"slices"
@@ -117,13 +118,10 @@ const librivoxLifespan = 100
 // lifeEnd is the last year a life can have reached: its death year, else its
 // birth year plus librivoxLifespan; 0 when it states neither.
 func lifeEnd(l lifeYears) int {
-	switch {
-	case l.death != 0:
-		return l.death
-	case l.birth != 0:
+	if l.death == 0 && l.birth != 0 {
 		return l.birth + librivoxLifespan
 	}
-	return 0
+	return l.death
 }
 
 // librivoxLateMargin is how many years after an author's death a work may
@@ -362,9 +360,9 @@ func (p *planner) resolveLibrivoxAuthors(books []sourceBook) {
 	}
 	for i := range books {
 		if b := &books[i]; b.lv != nil {
-			for j := range b.lv.credits {
-				if c := &b.lv.credits[j]; c.kind == librivoxAuthor && c.id > 0 {
-					c.person = p.lv.authorPins[c.id]
+			for j, c := range b.lv.credits {
+				if c.kind == librivoxAuthor && c.id > 0 {
+					p.setLibrivoxPerson(b, j, p.lv.authorPins[c.id])
 				}
 			}
 		}
@@ -485,8 +483,8 @@ func (p *planner) decideLibrivoxAuthor(cl *lvAuthorClaim, bySlug map[string][]*l
 		credited = to
 		notes = append(notes, fmt.Sprintf("%d %q credited as %q", id, name, to))
 	}
-	if p.pinLibrivoxAuthor(cl, credited); to != "" && p.lv.authorPins[id] != nil {
-		p.lv.authorPins[id].respelled = true
+	if pin := p.pinLibrivoxAuthor(cl, credited); pin != nil && to != "" {
+		pin.respelled = true
 	}
 	return notes
 }
@@ -501,15 +499,17 @@ func (p *planner) decideLibrivoxAuthor(cl *lvAuthorClaim, bySlug map[string][]*l
 // exception), so a reader of that name is that person in either order. A
 // spelling that slugs to nothing pins nothing: the credit is dropped as
 // unsluggable.
-func (p *planner) pinLibrivoxAuthor(cl *lvAuthorClaim, spelling string) {
+func (p *planner) pinLibrivoxAuthor(cl *lvAuthorClaim, spelling string) *creditPerson {
 	r := p.resolvePerson(spelling)
 	if r.fellBack {
-		return
+		return nil
 	}
-	p.lv.authorPins[cl.id] = pinOf(r, spelling)
+	pin := pinOf(r, spelling)
+	p.lv.authorPins[cl.id] = pin
 	if end := lifeEnd(cl.life); end != 0 && end < librivoxFounded {
 		p.lv.runAuthors[r.slug] = true
 	}
+	return pin
 }
 
 // noteLibrivoxFolds reports the honorific merges the import makes on LibriVox
@@ -693,13 +693,7 @@ func (p *planner) librivoxCreditEvidence(slug string, cl *lvAuthorClaim) lvVerdi
 // bounds it too) or their flourished year, plus librivoxLateMargin; 0 when
 // life states no year.
 func librivoxBound(life lifeYears) int {
-	end := life.death
-	if end == 0 {
-		end = life.fl
-	}
-	if end == 0 {
-		end = lifeEnd(life)
-	}
+	end := cmp.Or(life.death, life.fl, lifeEnd(life))
 	if end == 0 {
 		return 0
 	}
@@ -839,12 +833,17 @@ func (p *planner) holdLibrivoxAuthor(id int, against string, deferred bool) {
 	if against != "" && !deferred {
 		for _, w := range p.librivoxPersonWorks()[against] {
 			h.candidates = append(h.candidates, LibrivoxCandidate{Work: w.slug, Title: w.title})
-			if len(h.candidates) == maxWarnExamples {
-				break
-			}
 		}
+		h.candidates = firstCandidates(h.candidates)
 	}
 	p.lv.sameName[id] = h
+}
+
+// firstCandidates is a same-name-author row's candidates as the worklist
+// names them: the first maxWarnExamples. (The work-matching reasons name every
+// work they weigh, candidatesOf, so a person can see the whole tie.)
+func firstCandidates(c []LibrivoxCandidate) []LibrivoxCandidate {
+	return c[:min(len(c), maxWarnExamples)]
 }
 
 // datedName is name with life's years in the form the tranches minted by hand:
@@ -961,19 +960,27 @@ type lvPending struct {
 // the works the person its name meets is credited on once the run has planned
 // every row - what a later run, with that person catalogued, would name.
 func (p *planner) finishLibrivoxHolds() {
+	if len(p.lv.pendingHolds) == 0 {
+		return
+	}
+	works := map[string][]LibrivoxCandidate{}
 	for _, h := range p.lv.pendingHolds {
-		var works []LibrivoxCandidate
-		for slug, ws := range p.works {
-			if p.workCreditsPerson(slug, h.against) {
-				works = append(works, LibrivoxCandidate{Work: slug, Title: ws.title})
+		works[h.against] = nil
+	}
+	for slug, ws := range p.works {
+		for against := range works {
+			if p.workCreditsPerson(slug, against) {
+				works[against] = append(works[against], LibrivoxCandidate{Work: slug, Title: ws.title})
 			}
 		}
-		slices.SortFunc(works, func(a, b LibrivoxCandidate) int { return strings.Compare(a.Work, b.Work) })
-		if len(works) > maxWarnExamples {
-			works = works[:maxWarnExamples]
-		}
-		if works != nil {
-			p.summary.LibrivoxWorklist[h.entry].Candidates = works
+	}
+	for against, c := range works {
+		slices.SortFunc(c, func(a, b LibrivoxCandidate) int { return strings.Compare(a.Work, b.Work) })
+		works[against] = firstCandidates(c)
+	}
+	for _, h := range p.lv.pendingHolds {
+		if c := works[h.against]; c != nil {
+			p.summary.LibrivoxWorklist[h.entry].Candidates = c
 		}
 	}
 }

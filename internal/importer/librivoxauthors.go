@@ -15,7 +15,7 @@ package importer
 //     keyed by the row's LibriVox author id when the stamp's rules allow
 //     (stampLibrivoxID) - unless LibriVox's spelling is already a person
 //     record (catalogued, keyed by that id, or created earlier in the run),
-//     which keeps the credit and its id (splitLibrivoxRespelling). The person
+//     which keeps the credit and its id (splitLibrivoxMoves). The person
 //     schema has no alias field, so LibriVox's own spelling is kept in the
 //     run's note only. Anything
 //     looser - an initial ("E. Nesbit" / "Edith Nesbit"), another given name
@@ -162,8 +162,7 @@ func (p *planner) librivoxAuthorPairing(ws *workState, row []string, names map[s
 // and those they only loosely resemble. A spelling whose work author already
 // carries a LibriVox author id other than the one row b states for that
 // credit is loose: LibriVox's two ids may well be two people.
-func (p *planner) librivoxAuthorVariants(b sourceBook, slugs []string, lang string, authors workAuthors, credits []credit) (variants []*workState, renames []map[string]string, loose []*workState) {
-	byPerson := creditsByPerson(p, credits)
+func (p *planner) librivoxAuthorVariants(b sourceBook, slugs []string, lang string, authors workAuthors, byPerson map[string]credit) (variants []*workState, moves []map[string]string, loose []*workState) {
 	names := make(map[string]string, len(byPerson))
 	for slug, c := range byPerson {
 		names[slug] = c.name
@@ -175,22 +174,22 @@ func (p *planner) librivoxAuthorVariants(b sourceBook, slugs []string, lang stri
 		}
 		switch grade, pairs := p.librivoxAuthorPairing(ws, authors.identity, names); grade {
 		case spellingVariant:
-			if !p.respellingResolves(pairs) || p.pairsCarryOtherIDs(b, pairs, byPerson) {
+			if !p.movesOntoOwnNames(pairs) || p.pairsCarryOtherIDs(b, pairs, byPerson) {
 				loose = append(loose, ws)
 				continue
 			}
 			variants = append(variants, ws)
-			renames = append(renames, pairs)
+			moves = append(moves, pairs)
 		case spellingLoose:
 			loose = append(loose, ws)
 		}
 	}
-	return variants, renames, loose
+	return variants, moves, loose
 }
 
 // creditsByPerson is the row's credits by the person each resolves to
 // (resolveCredit), the first credit of a person kept.
-func creditsByPerson(p *planner, credits []credit) map[string]credit {
+func (p *planner) creditsByPerson(credits []credit) map[string]credit {
 	out := make(map[string]credit, len(credits))
 	for _, c := range credits {
 		if slug := p.resolveCredit(c).slug; out[slug].name == "" {
@@ -200,14 +199,16 @@ func creditsByPerson(p *planner, credits []credit) map[string]credit {
 	return out
 }
 
-// respellingResolves reports whether every catalogued person a variant moves a
-// credit onto (pairs: row slug -> work person) is a person of the name they
-// are recorded under: a person whose id is not its name's slug (a LibriVox
-// reader's `-librivox-<id>` record) is a reader of their own, never an author
-// spelling, so such a pairing is never attached.
-func (p *planner) respellingResolves(pairs map[string]string) bool {
+// movesOntoOwnNames reports whether every catalogued person a variant moves a
+// credit onto (pairs: row slug -> work person) is recorded at its own name's
+// slug: a person whose id is not (a LibriVox reader's `-librivox-<id>` or
+// `librivox-reader-<id>` record, model.PersonIDMatches' other two forms) is a
+// reader of their own, never an author spelling, so such a pairing is never
+// attached. A person id is otherwise always its name's slug (pkg/check's
+// person-slug rule), so no initials spelling stands between the two.
+func (p *planner) movesOntoOwnNames(pairs map[string]string) bool {
 	for _, w := range pairs {
-		if got := p.resolvePerson(p.people[w]); got.create || got.fellBack || got.slug != w {
+		if own, fellBack := personSlug(p.people[w]); fellBack || own != w {
 			return false
 		}
 	}
@@ -235,36 +236,38 @@ func (p *planner) pairsCarryOtherIDs(b sourceBook, pairs map[string]string, byPe
 // key that no agreeing work was found among (partial: those sharing a person
 // with the row): the one work the row's authors are spellings of, when
 // nothing else under the key resembles them, and the move of the row's
-// credits attaching to it takes (row person -> work person). Otherwise related
+// credits attaching to it takes (row person -> work person), with the row's
+// credits by person it was read through (creditsByPerson). Otherwise related
 // lists every work rule 1 found, for a worklist row, and several says two or
 // more of them are variants.
-func (p *planner) soleAuthorVariant(b sourceBook, slugs []string, lang string, authors workAuthors, credits []credit, partial []*workState) (ws *workState, rename map[string]string, related []*workState, several bool) {
-	variants, renames, loose := p.librivoxAuthorVariants(b, slugs, lang, authors, credits)
+func (p *planner) soleAuthorVariant(b sourceBook, slugs []string, lang string, authors workAuthors, credits []credit, partial []*workState) (ws *workState, move map[string]string, byPerson map[string]credit, related []*workState, several bool) {
+	byPerson = p.creditsByPerson(credits)
+	variants, moves, loose := p.librivoxAuthorVariants(b, slugs, lang, authors, byPerson)
 	if len(variants)+len(loose) == 0 {
-		return nil, nil, nil, false
+		return nil, nil, byPerson, nil, false
 	}
 	others := slices.DeleteFunc(slices.Clone(partial), func(ws *workState) bool { return slices.Contains(variants, ws) })
 	if len(variants) == 1 && len(loose) == 0 && len(others) == 0 {
-		return variants[0], renames[0], nil, false
+		return variants[0], moves[0], byPerson, nil, false
 	}
 	related = slices.Concat(variants, loose, others)
 	slices.SortFunc(related, func(a, b *workState) int { return strings.Compare(a.slug, b.slug) })
-	return nil, nil, slices.Compact(related), len(variants) > 1
+	return nil, nil, byPerson, slices.Compact(related), len(variants) > 1
 }
 
 // routeLibrivoxAuthorVariant decides a row librivoxCandidates found no agreeing
 // work for: one variant (and nothing else the row resembles) is an attach,
-// with the credits moved onto the work's people (splitLibrivoxRespelling);
+// with the credits moved onto the work's people (splitLibrivoxMoves);
 // anything else rule 1 found is a worklist skip (several-works for two
 // variants, else author-spelling). ok=false leaves the row to the rules after
 // it.
 func (p *planner) routeLibrivoxAuthorVariant(b sourceBook, workTitle string, slugs []string, lang string, authors workAuthors, credits []credit, partial []*workState) (librivoxRoute, bool) {
-	ws, rename, related, several := p.soleAuthorVariant(b, slugs, lang, authors, credits, partial)
+	ws, move, byPerson, related, several := p.soleAuthorVariant(b, slugs, lang, authors, credits, partial)
 	switch {
 	case ws != nil:
-		respell, kept := p.splitLibrivoxRespelling(rename)
-		p.noteLibrivoxAuthorVariant(fmt.Sprintf("%d %q: %s -> %q", b.lv.id, workTitle, p.renameText(creditsByPerson(p, credits), respell, kept), ws.slug))
-		return librivoxRoute{walk: &workWalk{title: workTitle, ws: ws}, renames: respell}, true
+		moves, kept := p.splitLibrivoxMoves(move)
+		p.noteLibrivoxAuthorVariant(fmt.Sprintf("%d %q: %s -> %q", b.lv.id, workTitle, p.moveText(byPerson, moves, kept), ws.slug))
+		return librivoxRoute{walk: &workWalk{title: workTitle, ws: ws}, moves: moves}, true
 	case len(related) == 0:
 		return librivoxRoute{}, false
 	}
@@ -276,30 +279,30 @@ func (p *planner) routeLibrivoxAuthorVariant(b sourceBook, workTitle string, slu
 	return librivoxRoute{skip: true}, true
 }
 
-// splitLibrivoxRespelling splits an attach's move (row person -> catalogued
+// splitLibrivoxMoves splits an attach's move (row person -> catalogued
 // person): a credit whose own person is already a record is kept - a
 // catalogued person, the person a known LibriVox author id carries, or one
 // this run created - since moving it would move the credit, and with it its
 // LibriVox id, between two records of one surname, which is a person merge
 // for a maintainer to make; it stays an unrecorded credit of the work the row
 // attaches to (attachRowAuthors), and its id stays on its own person. The rest
-// are moved; respell is nil when none is.
-func (p *planner) splitLibrivoxRespelling(rename map[string]string) (respell map[string]string, kept []string) {
-	for from, to := range rename {
+// are moved; moves is nil when none is.
+func (p *planner) splitLibrivoxMoves(move map[string]string) (moves map[string]string, kept []string) {
+	for from, to := range move {
 		if _, live := p.livePerson(from); live {
 			kept = append(kept, from)
 			continue
 		}
-		if respell == nil {
-			respell = map[string]string{}
+		if moves == nil {
+			moves = map[string]string{}
 		}
-		respell[from] = to
+		moves[from] = to
 	}
 	slices.Sort(kept)
-	return respell, kept
+	return moves, kept
 }
 
-// noteLibrivoxAuthorVariant counts one row rule 1 attached or respelled, with
+// noteLibrivoxAuthorVariant counts one row rule 1 attached or moved, with
 // its example.
 func (p *planner) noteLibrivoxAuthorVariant(example string) {
 	p.summary.LibrivoxAuthorVariants++
@@ -318,7 +321,7 @@ func (p *planner) noteLibrivoxAuthorVariant(example string) {
 // then planned like any other.
 //
 // Only an id no person carries yet, whose decided person is no record yet
-// either (splitLibrivoxRespelling: moving every project of the id off an
+// either (splitLibrivoxMoves: moving every project of the id off an
 // existing record is a person merge), onto a person carrying no LibriVox
 // author id (so the stamp can key the person by it), and only when every row
 // proposing the id names the same person: anything else is left to the
@@ -357,12 +360,12 @@ func (p *planner) keyLibrivoxAuthorVariants(books []sourceBook, titles, suffixes
 		if len(matched) > 0 {
 			continue
 		}
-		if ws, rename, _, _ := p.soleAuthorVariant(*b, slugs, lang, authors, credits, partial); ws != nil {
+		if ws, move, _, _, _ := p.soleAuthorVariant(*b, slugs, lang, authors, credits, partial); ws != nil {
 			for _, c := range b.lv.credits {
 				if c.id <= 0 || c.kind != librivoxAuthor {
 					continue
 				}
-				to, ok := rename[p.librivoxCreditPerson(c)]
+				to, ok := move[p.librivoxCreditPerson(c)]
 				if !ok {
 					continue
 				}
@@ -393,10 +396,12 @@ func (p *planner) keyLibrivoxAuthorVariants(books []sourceBook, titles, suffixes
 			continue
 		}
 		var moved []string
-		for j := range b.lv.credits {
-			c := &b.lv.credits[j]
-			pin, ok := p.lv.authorPins[c.id]
-			if !ok || c.kind != librivoxAuthor || proposed[c.id] == "" || c.person == pin {
+		for j, c := range b.lv.credits {
+			if c.kind != librivoxAuthor || proposed[c.id] == "" {
+				continue
+			}
+			pin := p.lv.authorPins[c.id]
+			if c.person == pin {
 				continue
 			}
 			from := c.name
@@ -406,11 +411,7 @@ func (p *planner) keyLibrivoxAuthorVariants(books []sourceBook, titles, suffixes
 			if from != pin.spelled {
 				moved = append(moved, fmt.Sprintf("%q credited as %q", from, pin.spelled))
 			}
-			c.person = pin
-		}
-		if b.creditsCached {
-			b.creditsCached = false
-			b.authorCredits, b.creditsCached = rowAuthorCreditsIn(p.credits, *b), true
+			p.setLibrivoxPerson(b, j, pin)
 		}
 		if len(moved) > 0 {
 			slices.Sort(moved)
@@ -455,13 +456,13 @@ func (p *planner) soleCreditName(c librivoxCredit) string {
 	return ""
 }
 
-// renameText is an attach's move as the run's note prints it (byPerson the
+// moveText is an attach's move as the run's note prints it (byPerson the
 // row's credits by person), sorted, then the credits it kept
-// (splitLibrivoxRespelling): "Henrietta Elizabeth Marshall" credited as
+// (splitLibrivoxMoves): "Henrietta Elizabeth Marshall" credited as
 // "Henrietta Marshall", "Sheridan Le Fanu" kept (a person record).
-func (p *planner) renameText(byPerson map[string]credit, rename map[string]string, kept []string) string {
-	moved := make(map[string]string, len(rename))
-	for from, to := range rename {
+func (p *planner) moveText(byPerson map[string]credit, moves map[string]string, kept []string) string {
+	moved := make(map[string]string, len(moves))
+	for from, to := range moves {
 		moved[byPerson[from].name] = p.people[to]
 	}
 	keptNames := make([]string, 0, len(kept))
@@ -479,13 +480,13 @@ func (p *planner) renameText(byPerson map[string]credit, rename map[string]strin
 	return strings.Join(parts, ", ")
 }
 
-// respellLibrivoxAuthors applies an attach's move (row person -> work person)
+// moveLibrivoxAuthors applies an attach's move (row person -> work person)
 // to the row: its author credits (a copy, returned) and its LibriVox credits,
 // so the people stamp reads the catalogued person the row now credits.
-func (p *planner) respellLibrivoxAuthors(b sourceBook, credits []credit, rename map[string]string) []credit {
+func (p *planner) moveLibrivoxAuthors(b sourceBook, credits []credit, moves map[string]string) []credit {
 	out := slices.Clone(credits)
 	for i := range out {
-		if to, ok := rename[p.resolveCredit(out[i]).slug]; ok {
+		if to, ok := moves[p.resolveCredit(out[i]).slug]; ok {
 			out[i].name, out[i].person = p.people[to], pinAt(to, p.people[to])
 		}
 	}
@@ -494,7 +495,9 @@ func (p *planner) respellLibrivoxAuthors(b sourceBook, credits []credit, rename 
 		if c.kind != librivoxAuthor {
 			continue
 		}
-		if to, ok := rename[p.librivoxCreditPerson(*c)]; ok {
+		if to, ok := moves[p.librivoxCreditPerson(*c)]; ok {
+			// Not setLibrivoxPerson: the row is being planned, and every
+			// later reader of its credits reads out, not the row's cache.
 			c.person = pinAt(to, p.people[to])
 		}
 	}

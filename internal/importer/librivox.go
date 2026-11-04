@@ -765,6 +765,19 @@ func (p *planner) rowNarratorSlugs(b sourceBook, names []string, warn func(strin
 	})
 }
 
+// setLibrivoxPerson puts pin on the row's j-th LibriVox credit. The row's
+// cached author credits (batchClaimsIn) are built from these pins, so a cache
+// built before is rebuilt here, at the one place a pin is set ahead of
+// planning: a credit's pin and the row's cached credit can never disagree,
+// whichever pass filled the cache first.
+func (p *planner) setLibrivoxPerson(b *sourceBook, j int, pin *creditPerson) {
+	b.lv.credits[j].person = pin
+	if b.creditsCached {
+		b.creditsCached = false
+		b.authorCredits, b.creditsCached = rowAuthorCreditsIn(p.credits, *b), true
+	}
+}
+
 // librivoxAuthorCredits is rowAuthorCreditsIn for a LibriVox row: its author
 // list cleaned as sourceCredits cleans it, except that a credit whose person
 // was decided for its author id (librivoxCredit.person, resolveLibrivoxAuthors)
@@ -775,13 +788,17 @@ func (p *planner) rowNarratorSlugs(b sourceBook, names []string, warn func(strin
 // one non-empty name per credit); the length test guards that.
 func librivoxAuthorCredits(ctx creditContext, b sourceBook) []credit {
 	names := sourceNames(b.authors, "")
-	pins := map[int]*creditPerson{}
+	if len(names) != len(b.authors) {
+		return sourceCredits(b.authors, b.str("author"), ctx.author)
+	}
+	pins := make([]*creditPerson, len(names))
+	pinned := false
 	for _, c := range b.lv.credits {
-		if c.kind == librivoxAuthor && c.person != nil {
-			pins[c.index] = c.person
+		if c.kind == librivoxAuthor && c.person != nil && c.index < len(pins) {
+			pins[c.index], pinned = c.person, true
 		}
 	}
-	if len(pins) == 0 || len(names) != len(b.authors) {
+	if !pinned {
 		return sourceCredits(b.authors, b.str("author"), ctx.author)
 	}
 	out := make([]credit, 0, len(names))

@@ -277,10 +277,10 @@ type librivoxRoute struct {
 	walk *workWalk
 	// skip says the row is on the worklist and must be dropped.
 	skip bool
-	// renames is an author-variant attach's move of the row's credits onto
+	// moves is an author-variant attach's move of the row's credits onto
 	// the catalogued people it credits, person slug to person slug
 	// (librivoxauthors.go rule 1).
-	renames map[string]string
+	moves map[string]string
 }
 
 // routeLibrivox applies the rules in this file's header to one LibriVox row. It

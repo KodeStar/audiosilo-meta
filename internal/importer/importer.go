@@ -1513,8 +1513,8 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		p.noteLostSeriesClaims(b, -1, nil)
 		return
 	}
-	if route.renames != nil {
-		authorCredits = p.respellLibrivoxAuthors(b, authorCredits, route.renames)
+	if route.moves != nil {
+		authorCredits = p.moveLibrivoxAuthors(b, authorCredits, route.moves)
 	}
 	ident := p.rowIdentityOf(b, workTitle)
 	if route.walk == nil &&
