@@ -116,15 +116,12 @@ func TestAdvisoryIdentityEqualComparesWholeTitles(t *testing.T) {
 	}
 	files := baseValid()
 	for i, vol := range []string{"Vol. 1", "Vol. 2"} {
-		id := fmt.Sprintf("final-report-%d", i+1)
-		files["works/fi/"+id+"/work.json"] = `{"authors":["author-one"],"id":"` + id + `","language":"en",` +
-			`"license":"CC0-1.0","sources":[{"type":"librivox"}],"title":"` + long + ` ` + vol + `"}`
+		dupWork(files, fmt.Sprintf("final-report-%d", i+1), long+" "+vol, "author-one", "librivox")
 	}
 	if got := advisoryMatching(advisoryWarnings(t, files), marker); len(got) != 0 {
 		t.Errorf("two volumes cut to one slug stem were reported as one book: %v", got)
 	}
-	files["works/fi/final-report-3/work.json"] = `{"authors":["author-one"],"id":"final-report-3","language":"en",` +
-		`"license":"CC0-1.0","sources":[{"type":"user"}],"title":"` + long + ` Vol. 2"}`
+	dupWork(files, "final-report-3", long+" Vol. 2", "author-one", "user")
 	if got := advisoryMatching(advisoryWarnings(t, files), marker); len(got) != 1 {
 		t.Errorf("two records of one long title = %v, want one finding", got)
 	}

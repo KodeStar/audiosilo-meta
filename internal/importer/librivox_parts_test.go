@@ -4,8 +4,9 @@ import "testing"
 
 // TestLibrivoxPartRowIsNotTheWhole pins the writer half of pkg/check's part rule
 // (partsOfAWhole): a LibriVox part project - "Kafka's Book, Book 5" - keys with the
-// catalogued whole, and the census no longer pairs the two, so the create guard
-// must not refuse it as the whole's duplicate either. It does not, through its own
+// catalogued whole, and once a sibling part is catalogued the census no longer
+// pairs the two, so the create guard must not refuse it as the whole's duplicate
+// either. It does not, through its own
 // rules rather than the census's: the row's title STATES a volume, and the
 // positive position veto (dupidentity.go) refuses a stating row only when the
 // catalogue places the matched work at that volume - which nothing does for a

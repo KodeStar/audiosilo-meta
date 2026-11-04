@@ -151,7 +151,9 @@ of that campaign and is in the gate (three layers over one rule -
 **The census is a READING LIST, so it honours the reading and reports what a pull
 request ADDS.** It is deliberately broad (`checkIdentityEqualWorks`,
 `differentVolumes`, which with `partsOfAWhole` withholds a whole beside the PARTS
-of a multi-part LibriVox work): most of its groups are not one book, and a census that keeps
+of a multi-part work - LibriVox's one project per part, and any unplaced set of
+parts stating different volumes, such as a retailer's "(Part 1)"/"(Part 2)"): most
+of its groups are not one book, and a census that keeps
 naming pairs somebody has already ruled on - ~1,900 advisory lines scrolling past in
 the `check` log - is one nobody reads, so a pull request that ADDED a duplicate was
 never noticed (ai-verify read only the metadiff summary). Two halves:

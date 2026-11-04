@@ -456,7 +456,7 @@ func normalizedDuplicateGroup(ix *WorkIdentity, works []*model.Work, reviewed *r
 			if a.slug == b.slug {
 				continue // checkIdentityEqualWorks' finding, not this one
 			}
-			if differentVolumes(a.work, b.work) || (parts != nil && ix.partAndWhole(parts, a.work, b.work)) {
+			if differentVolumes(a.work, b.work) || ix.partAndWhole(parts, a.work, b.work) {
 				continue
 			}
 			if !ix.matches(b.work, &b.coll, a.work.Title, ix.SeriesNameOf(a.work.ID), ix.statementOf[a.work.ID], a.work.Language, a.all, a.identity, &a.coll) ||
@@ -476,9 +476,10 @@ func normalizedDuplicateGroup(ix *WorkIdentity, works []*model.Work, reviewed *r
 
 // partsOfAWhole returns the members of one key group that are PARTS of a multi-part
 // work: each stating a volume (its WriterPolicy statement), listed by no series, and
-// with a SIBLING - another such member of the same book (the same language, nested
-// identity authors: IdentityEqualWorks) stating a DIFFERENT volume. nil when the
-// group holds none.
+// with a SIBLING - another such member of the same book (a compatible language,
+// languagesCompatible, so an unknown one matches; nested identity authors,
+// IdentityEqualWorks' rule) stating a DIFFERENT volume. nil when the group holds
+// none, which partAndWhole reads as "no parts".
 //
 // LibriVox records a long book as one project per part - "Anna Karenina, Book 1"
 // through "Book 8", "Wealth of Nations, Book 1", "Portrait of a Lady, Volume 1",
@@ -538,7 +539,7 @@ func (ix *WorkIdentity) partsOfAWhole(cands []dupCandidate) map[string]bool {
 // partAndWhole reports whether one of two works is a part of a multi-part set
 // (parts, partsOfAWhole's answer for their key group) and the other states no part
 // at all - no volume and no division: the whole beside one of its parts, which is
-// not one book.
+// not one book. A nil parts (a group with no set) withholds nothing.
 func (ix *WorkIdentity) partAndWhole(parts map[string]bool, a, b *model.Work) bool {
 	return (parts[a.ID] && ix.statementOf[b.ID].Silent()) || (parts[b.ID] && ix.statementOf[a.ID].Silent())
 }
