@@ -69,6 +69,38 @@ func TestLibrivoxFieldsValid(t *testing.T) {
 	}
 }
 
+// lvFidelityChapters numbers its sections from 0 (LibriVox's own numbering,
+// project 801) and names a reader per section.
+const lvFidelityChapters = `[{"length_ms":2992000,"readers":["narrator-one"],"section_number":0,"start_ms":0,"title":"I"},{"length_ms":3231000,"readers":["author-one","narrator-one"],"section_number":1,"start_ms":2992000,"title":"II"}]`
+
+// withFidelity adds the project's own title, genres and translator credit to a
+// librivoxRecording, and a second narrator (author-one reads too).
+func withFidelity(rec string) string {
+	rec = strings.Replace(rec, `,"id":"rec-one"`, `,"credits":[{"person":"author-one","role":"translator"}],"id":"rec-one"`, 1)
+	rec = strings.Replace(rec, `"librivox_id":`, `"librivox_genres":["General Fiction","Humorous Fiction"],"librivox_id":`, 1)
+	rec = strings.Replace(rec, `,"license":"CC0-1.0","links"`, `,"librivox_title":"Metamorphosis (version 2)","license":"CC0-1.0","links"`, 1)
+	return strings.Replace(rec, `"narrators":["narrator-one"]`, `"narrators":["narrator-one","author-one"]`, 1)
+}
+
+func TestLibrivoxFidelityFieldsValid(t *testing.T) {
+	dir := t.TempDir()
+	files := baseValid()
+	files[lvRecRel] = withFidelity(librivoxRecording(801, lvFidelityChapters))
+	writeEntities(t, dir, files)
+	res := Load(dir)
+	if !res.OK() {
+		t.Fatalf("LibriVox fidelity fields should validate, got:\n%s", joinProblems(res.Problems))
+	}
+	rec := res.Catalog.Works[0].Recordings[0]
+	if rec.LibrivoxTitle != "Metamorphosis (version 2)" || len(rec.LibrivoxGenres) != 2 || len(rec.Credits) != 1 || rec.Credits[0].Person != "author-one" {
+		t.Errorf("recording fidelity fields did not load: %+v", rec)
+	}
+	if len(rec.Chapters) != 2 || rec.Chapters[0].SectionNumber == nil || *rec.Chapters[0].SectionNumber != 0 ||
+		rec.Chapters[1].SectionNumber == nil || *rec.Chapters[1].SectionNumber != 1 || len(rec.Chapters[1].Readers) != 2 {
+		t.Errorf("chapter readers / section numbers did not load: %+v", rec.Chapters)
+	}
+}
+
 func TestLibrivoxRuleViolations(t *testing.T) {
 	cases := []struct {
 		name   string
@@ -191,6 +223,113 @@ func TestLibrivoxRuleViolations(t *testing.T) {
 			want: "has an audio_url but the recording has no librivox_id",
 		},
 		{
+			name: "librivox_title without librivox_id",
+			mutate: func(f map[string]string) {
+				f[lvRecRel] = `{"abridged":false,"id":"rec-one","language":"en","librivox_title":"Book One (version 2)","license":"CC0-1.0","narrators":["narrator-one"],"sources":[{"type":"user"}],"work":"book-one"}`
+			},
+			want: "librivox_title without a librivox_id",
+		},
+		{
+			name: "librivox_genres without librivox_id",
+			mutate: func(f map[string]string) {
+				f[lvRecRel] = `{"abridged":false,"id":"rec-one","language":"en","librivox_genres":["Poetry"],"license":"CC0-1.0","narrators":["narrator-one"],"sources":[{"type":"user"}],"work":"book-one"}`
+			},
+			want: "librivox_genres without a librivox_id",
+		},
+		{
+			name: "librivox_genres repeats a genre",
+			mutate: func(f map[string]string) {
+				f[lvRecRel] = strings.Replace(withFidelity(librivoxRecording(801, lvFidelityChapters)), `["General Fiction","Humorous Fiction"]`, `["Poetry","Poetry"]`, 1)
+			},
+			want: "librivox_genres",
+		},
+		{
+			name: "recording credits without librivox_id",
+			mutate: func(f map[string]string) {
+				f[lvRecRel] = `{"abridged":false,"credits":[{"person":"author-one","role":"translator"}],"id":"rec-one","language":"en","license":"CC0-1.0","narrators":["narrator-one"],"sources":[{"type":"user"}],"work":"book-one"}`
+			},
+			want: "credits without a librivox_id",
+		},
+		{
+			name: "chapter readers without librivox_id",
+			mutate: func(f map[string]string) {
+				f[lvRecRel] = withChapters(`[{"length_ms":1000,"readers":["narrator-one"],"start_ms":0,"title":"I"},{"length_ms":1000,"start_ms":1000,"title":"II"}]`)
+			},
+			want: "chapter 0 has readers but the recording has no librivox_id",
+		},
+		{
+			name: "section_number without librivox_id",
+			mutate: func(f map[string]string) {
+				f[lvRecRel] = withChapters(`[{"length_ms":1000,"section_number":0,"start_ms":0,"title":"I"}]`)
+			},
+			want: "has a section_number but the recording has no librivox_id",
+		},
+		{
+			name: "section_number equal to its position",
+			mutate: func(f map[string]string) {
+				f[lvRecRel] = withFidelity(librivoxRecording(801, strings.Replace(lvFidelityChapters, `"section_number":1,`, `"section_number":2,`, 1)))
+			},
+			want: "chapter 1 states section_number 2, its own position",
+		},
+		{
+			name: "section_number is never negative",
+			mutate: func(f map[string]string) {
+				f[lvRecRel] = withFidelity(librivoxRecording(801, strings.Replace(lvFidelityChapters, `"section_number":0,`, `"section_number":-1,`, 1)))
+			},
+			want: "section_number",
+		},
+		{
+			name: "a chapter reader who is not a narrator",
+			mutate: func(f map[string]string) {
+				f[lvRecRel] = librivoxRecording(801, lvFidelityChapters)
+			},
+			want: `chapter 1 reader "author-one" is not one of the recording's narrators`,
+		},
+		{
+			name: "readers on every chapter of a one-narrator recording",
+			mutate: func(f map[string]string) {
+				f[lvRecRel] = librivoxRecording(801, strings.Replace(lvFidelityChapters, `["author-one","narrator-one"]`, `["narrator-one"]`, 1))
+			},
+			want: "every chapter lists readers on a recording with one narrator",
+		},
+		{
+			name: "a chapter reader who does not exist",
+			mutate: func(f map[string]string) {
+				f[lvRecRel] = withFidelity(librivoxRecording(801, strings.Replace(lvFidelityChapters, `["narrator-one"]`, `["nobody-here"]`, 1)))
+			},
+			want: `chapter reader "nobody-here" does not exist as a person`,
+		},
+		{
+			name: "a recording credit who does not exist",
+			mutate: func(f map[string]string) {
+				f[lvRecRel] = strings.Replace(withFidelity(librivoxRecording(801, lvFidelityChapters)), `"person":"author-one"`, `"person":"nobody-here"`, 1)
+			},
+			want: `credit "nobody-here" (translator) does not exist as a person`,
+		},
+		{
+			name: "a recording credit listed twice",
+			mutate: func(f map[string]string) {
+				f[lvRecRel] = strings.Replace(withFidelity(librivoxRecording(801, lvFidelityChapters)), `"credits":[{"person":"author-one","role":"translator"}]`,
+					`"credits":[{"person":"author-one","role":"translator"},{"person":"author-one","role":"translator"}]`, 1)
+			},
+			want: `credit "author-one" is listed twice as "translator"`,
+		},
+		{
+			name: "a recording credit role outside the vocabulary",
+			mutate: func(f map[string]string) {
+				f[lvRecRel] = strings.Replace(withFidelity(librivoxRecording(801, lvFidelityChapters)), `"role":"translator"`, `"role":"narrator"`, 1)
+			},
+			want: "credits",
+		},
+		{
+			// editor is a WORK credit role; a recording states only its translator.
+			name: "a recording credit in a work-only role",
+			mutate: func(f map[string]string) {
+				f[lvRecRel] = strings.Replace(withFidelity(librivoxRecording(801, lvFidelityChapters)), `"role":"translator"`, `"role":"editor"`, 1)
+			},
+			want: "credits",
+		},
+		{
 			name: "two recordings claim one librivox_id",
 			mutate: func(f map[string]string) {
 				f[lvRecRel] = librivoxRecording(527, lvChapters)
@@ -244,5 +383,18 @@ func TestLifeYearsBC(t *testing.T) {
 	writeEntities(t, dir, files)
 	if res := Load(dir); !res.OK() {
 		t.Fatalf("BC life years should validate, got:\n%s", joinProblems(res.Problems))
+	}
+}
+
+// TestLibrivoxOneNarratorWithAnUnreadSection: a one-narrator recording may list
+// its narrator on some chapters when another chapter states no reader - that
+// is not the omitted spelling, it says the unread section states none.
+func TestLibrivoxOneNarratorWithAnUnreadSection(t *testing.T) {
+	dir := t.TempDir()
+	files := baseValid()
+	files[lvRecRel] = librivoxRecording(801, `[{"length_ms":2992000,"readers":["narrator-one"],"section_number":0,"start_ms":0,"title":"I"},{"length_ms":3231000,"section_number":1,"start_ms":2992000,"title":"II"}]`)
+	writeEntities(t, dir, files)
+	if res := Load(dir); !res.OK() {
+		t.Fatalf("should validate, got:\n%s", joinProblems(res.Problems))
 	}
 }

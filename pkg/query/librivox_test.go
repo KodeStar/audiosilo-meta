@@ -291,6 +291,159 @@ func TestOpenRefusesAFalseLibrivoxClaim(t *testing.T) {
 	}
 }
 
+// lvDropSourcesAddedAt takes recording_sources back to its version 8 shape
+// (SQLite drops no indexed column, so the index goes and comes back without it),
+// and lvDropRecordingLayer the whole LIBRIVOX RECORDING layer with it.
+var (
+	lvDropSourcesAddedAt = []string{
+		"DROP INDEX idx_recording_sources_type", "ALTER TABLE recording_sources DROP COLUMN added_at",
+		"CREATE INDEX idx_recording_sources_type ON recording_sources(type, work_id, recording_id)",
+	}
+	lvDropRecordingLayer = append([]string{
+		"DROP TABLE recording_credits", "DROP TABLE chapter_readers", "DROP TABLE recording_librivox_genres",
+		"ALTER TABLE recordings DROP COLUMN librivox_title", "ALTER TABLE chapters DROP COLUMN section_number",
+	}, lvDropSourcesAddedAt...)
+)
+
+// TestLibrivoxRecordingLayerOnAnOlderArtifact: a newer binary serving a version 8
+// release (no project titles, section numbers, recording credits, section
+// readers or LibriVox genre names) answers the feed as it did before - the
+// work's title, positions as section numbers, the work's translators, the
+// vocabulary genres and filter, and readers only for a one-narrator recording.
+func TestLibrivoxRecordingLayerOnAnOlderArtifact(t *testing.T) {
+	path := artifacttest.Altered(t, librivoxCatalog(t), 8, lvDropRecordingLayer...)
+	assertPreRecordingLayerFeed(t, downgradedServer(t, path))
+}
+
+// TestLibrivoxRecordingLayerUnfilled: a version 9 artifact whose layer is EMPTY
+// (a release cut from the code before the backfill data landed) answers the
+// feed as version 8 does, rather than naming no translator or genre and 404ing
+// every ?genre=.
+func TestLibrivoxRecordingLayerUnfilled(t *testing.T) {
+	path := artifacttest.Altered(t, librivoxCatalog(t), 9,
+		"DELETE FROM recording_credits", "DELETE FROM chapter_readers", "DELETE FROM recording_librivox_genres",
+		"UPDATE recordings SET librivox_title = NULL", "UPDATE chapters SET section_number = NULL",
+	)
+	assertPreRecordingLayerFeed(t, downgradedServer(t, path))
+}
+
+// TestLibrivoxRecordingLayerHalfRestated: an artifact cut while the backfill is
+// only part-landed (527 and 296 not yet restated: no project title, credits,
+// genre names or section facts) answers PER RECORDING - a restated one from
+// the layer, the others as version 8 did - so the first restated recording does
+// not empty every other one's genres and translators.
+func TestLibrivoxRecordingLayerHalfRestated(t *testing.T) {
+	unrestated := `work_id || '/' || recording_id IN (SELECT work_id || '/' || id FROM recordings WHERE librivox_id IN (527, 296))`
+	path := artifacttest.Altered(t, librivoxCatalog(t), 9,
+		"DELETE FROM recording_credits WHERE "+unrestated, "DELETE FROM chapter_readers WHERE "+unrestated,
+		"DELETE FROM recording_librivox_genres WHERE "+unrestated,
+		"UPDATE chapters SET section_number = NULL WHERE "+unrestated,
+		"UPDATE recordings SET librivox_title = NULL WHERE librivox_id IN (527, 296)",
+	)
+	ts := downgradedServer(t, path)
+	byID := map[string]map[string]any{}
+	for _, b := range feedBooks(t, ts.URL, LibrivoxFeedPath+"?extended=1") {
+		byID[b["id"].(string)] = b
+	}
+	genreNames := func(id string) []string {
+		var out []string
+		for _, g := range byID[id]["genres"].([]any) {
+			out = append(out, g.(map[string]any)["name"].(string))
+		}
+		return out
+	}
+	// Restated: the project's own answer.
+	if byID["801"]["title"] != "Candide (version 2)" || !slices.Equal(genreNames("801"), []string{"General Fiction"}) {
+		t.Errorf("restated 801 = title %v genres %v", byID["801"]["title"], genreNames("801"))
+	}
+	// Not restated: the work's genres and translators, as version 8 answered.
+	if g := genreNames("296"); !slices.Equal(g, []string{"short-stories"}) {
+		t.Errorf("unrestated 296 genres = %v, want the work's vocabulary", g)
+	}
+	if tr := byID["527"]["translators"].([]any); len(tr) != 1 || tr[0].(map[string]any)["last_name"] != "Johnston" {
+		t.Errorf("unrestated 527 translators = %v, want the work's", tr)
+	}
+	for _, tc := range []struct {
+		query string
+		want  []string
+	}{
+		{"?genre=General%20Fiction", []string{"801"}}, // 527 is not restated: its work's genres do not name it
+		{"?genre=short-stories", []string{"296"}},     // the version 8 vocabulary arm, for 296 alone
+		{"?genre=Published%20before%201800", []string{"1870"}},
+	} {
+		if got := idsOfBooks(feedBooks(t, ts.URL, LibrivoxFeedPath+tc.query)); !slices.Equal(got, tc.want) {
+			t.Errorf("GET %s = %v, want %v", tc.query, got, tc.want)
+		}
+	}
+}
+
+// TestLibrivoxRecordingLayerFilledByTitlesAlone: one LibriVox recording carrying
+// its project's title is a filled layer, with no genre row anywhere.
+func TestLibrivoxRecordingLayerFilledByTitlesAlone(t *testing.T) {
+	path := artifacttest.Altered(t, librivoxCatalog(t), 9, "DELETE FROM recording_librivox_genres")
+	ts := downgradedServer(t, path)
+	if b := feedBooks(t, ts.URL, LibrivoxFeedPath+"?id=801"); len(b) != 1 || b[0]["title"] != "Candide (version 2)" {
+		t.Errorf("801 = %v, want the project's own title", b)
+	}
+}
+
+// assertPreRecordingLayerFeed checks the feed's version 8 answer over the fixture.
+func assertPreRecordingLayerFeed(t *testing.T, ts *httptest.Server) {
+	t.Helper()
+	byID := map[string]map[string]any{}
+	for _, b := range feedBooks(t, ts.URL, LibrivoxFeedPath+"?extended=1") {
+		byID[b["id"].(string)] = b
+	}
+	if len(byID) != 4 {
+		t.Fatalf("v8 feed = %d books, want 4", len(byID))
+	}
+	candide := byID["801"]
+	if candide["title"] != "Candide" {
+		t.Errorf("v8 801 title = %v, want the work's", candide["title"])
+	}
+	if s0 := candide["sections"].([]any)[0].(map[string]any); s0["section_number"] != "1" {
+		t.Errorf("v8 801 first section_number = %v, want its position", s0["section_number"])
+	}
+	for _, s := range byID["296"]["sections"].([]any) {
+		if rs := s.(map[string]any)["readers"].([]any); len(rs) != 0 {
+			t.Errorf("v8 296 section names readers %v", rs)
+		}
+	}
+	if g := byID["296"]["genres"].([]any); len(g) != 1 || g[0].(map[string]any)["name"] != "short-stories" {
+		t.Errorf("v8 296 genres = %v, want the vocabulary's", g)
+	}
+	if tr := byID["527"]["translators"].([]any); len(tr) != 1 || tr[0].(map[string]any)["last_name"] != "Johnston" {
+		t.Errorf("v8 527 translators = %v, want the work's", tr)
+	}
+	if books := feedBooks(t, ts.URL, LibrivoxFeedPath+"?genre=short-stories"); len(books) != 1 || books[0]["id"] != "296" {
+		t.Errorf("v8 genre=short-stories = %v, want the vocabulary filter", idsOfBooks(books))
+	}
+	if books := feedBooks(t, ts.URL, LibrivoxFeedPath+"?title=Candide"); len(books) != 1 || books[0]["id"] != "801" {
+		t.Errorf("v8 title=Candide = %v, want the work's title", idsOfBooks(books))
+	}
+}
+
+// TestOpenRefusesAFalseLibrivoxRecordingClaim: a version 9 claim without each
+// part of the recording layer is a corrupt file, refused at open naming it.
+func TestOpenRefusesAFalseLibrivoxRecordingClaim(t *testing.T) {
+	for _, drop := range [][]string{
+		{"DROP TABLE recording_credits"}, {"DROP TABLE chapter_readers"}, {"DROP TABLE recording_librivox_genres"},
+		{"ALTER TABLE recordings DROP COLUMN librivox_title"}, {"ALTER TABLE chapters DROP COLUMN section_number"},
+		lvDropSourcesAddedAt,
+	} {
+		path := artifacttest.Altered(t, librivoxCatalog(t), 9, drop...)
+		db, err := Open(path, "")
+		if err == nil {
+			_ = db.Close()
+			t.Errorf("Open accepted a version 9 artifact after %q", drop)
+			continue
+		}
+		if !strings.Contains(err.Error(), "LibriVox recording layer") {
+			t.Errorf("%s: error = %v, want it to name the LibriVox recording claim", drop, err)
+		}
+	}
+}
+
 // ---- the LibriVox-shaped feed ------------------------------------------------
 
 // lvFixtureBooks reads the fixture's real LibriVox answers, keyed by project id.
@@ -362,14 +515,10 @@ func TestLibrivoxFeedGolden(t *testing.T) {
 					t.Errorf("%s = %#v, LibriVox says %#v", field, got[field], lv[field])
 				}
 			}
-			for _, f := range []string{"id", "url_text_source", "language", "copyright_year", "num_sections",
+			// The title is the project's own, its "(version N)" marker kept (801).
+			for _, f := range []string{"id", "title", "url_text_source", "language", "copyright_year", "num_sections",
 				"url_rss", "url_zip_file", "url_librivox", "url_other", "url_iarchive", "coverart_jpg"} {
 				same(f)
-			}
-			// The title: LibriVox's own, except the "(version N)" project marker,
-			// which the mirror does not store.
-			if wantTitle := strings.TrimSuffix(lv["title"].(string), " (version 2)"); got["title"] != wantTitle {
-				t.Errorf("title = %v, want %q", got["title"], wantTitle)
 			}
 			// Runtime: the sum of the section playtimes. LibriVox's own total is
 			// its stored clock string, which can sit a second off that sum (296).
@@ -390,30 +539,17 @@ func TestLibrivoxFeedGolden(t *testing.T) {
 			if len(gs) != len(ls) {
 				t.Fatalf("sections = %d, LibriVox has %d", len(gs), len(ls))
 			}
-			soloReader := map[string]bool{}
-			for _, s := range ls {
-				for _, r := range s.(map[string]any)["readers"].([]any) {
-					soloReader[r.(map[string]any)["reader_id"].(string)] = true
-				}
-			}
+			// Every section's number (801 counts from 0) and its own readers
+			// (296: eight readers over ten sections) are LibriVox's.
 			for i := range gs {
 				g, l := gs[i].(map[string]any), ls[i].(map[string]any)
-				for _, f := range []string{"title", "listen_url", "playtime", "file_name"} {
+				for _, f := range []string{"section_number", "title", "listen_url", "playtime", "file_name", "readers"} {
 					if !jsonEqual(g[f], l[f]) {
 						t.Errorf("section %d %s = %#v, LibriVox says %#v", i, f, g[f], l[f])
 					}
 				}
-				// One reader for the whole project: named on every section, as
-				// LibriVox names them. Several: none (not stored per section).
-				if len(soloReader) == 1 {
-					if !jsonEqual(g["readers"], l["readers"]) {
-						t.Errorf("section %d readers = %v, LibriVox says %v", i, g["readers"], l["readers"])
-					}
-				} else if len(g["readers"].([]any)) != 0 {
-					t.Errorf("section %d of a multi-reader project names readers: %v", i, g["readers"])
-				}
-				if g["section_number"] != itoa(i+1) || g["id"] != "" || g["language"] != got["language"] {
-					t.Errorf("section %d placeholders = number %v id %v language %v", i, g["section_number"], g["id"], g["language"])
+				if g["id"] != "" || g["language"] != got["language"] {
+					t.Errorf("section %d placeholders = id %v language %v", i, g["id"], g["language"])
 				}
 			}
 
@@ -422,18 +558,18 @@ func TestLibrivoxFeedGolden(t *testing.T) {
 				t.Errorf("unmirrored fields = description %q url_project %q pdf %v thumb %v",
 					got["description"], got["url_project"], got["coverart_pdf"], got["coverart_thumbnail"])
 			}
-			for _, g := range got["genres"].([]any) {
-				if gm := g.(map[string]any); gm["id"] != "" || gm["name"] != strings.ToLower(gm["name"].(string)) {
-					t.Errorf("genre = %v, want a vocabulary value with an empty id", gm)
+			// The genres are LibriVox's names, each with an empty id.
+			gg, lg := got["genres"].([]any), lv["genres"].([]any)
+			if len(gg) != len(lg) {
+				t.Fatalf("genres = %v, LibriVox says %v", gg, lg)
+			}
+			for i := range gg {
+				if gm, lm := gg[i].(map[string]any), lg[i].(map[string]any); gm["id"] != "" || gm["name"] != lm["name"] {
+					t.Errorf("genre %d = %v, LibriVox says %v (an empty id)", i, gm, lm)
 				}
 			}
 		})
 	}
-}
-
-func itoa(n int) string {
-	b, _ := json.Marshal(n)
-	return string(b)
 }
 
 // comparePeople compares authors or translators: the id, the name split, and the
@@ -490,17 +626,23 @@ func TestLibrivoxFeedParameters(t *testing.T) {
 		{"?title=Metamorphosis", []string{"527"}},
 		{"?title=metamorphosis", []string{"527"}},
 		{"?title=^cand", []string{"801", "1870"}},
-		{"?title=Candide", []string{"801"}},
+		{"?title=Candide", nil}, // 801 is "Candide (version 2)", as LibriVox titles it
+		{"?title=candide%20(version%202)", []string{"801"}},
 		{"?title=^100%25", nil},
 		{"?author=Kafka", []string{"527"}},
 		{"?author=^vol", []string{"801", "1870"}},
 		{"?author=Franz", nil},    // a first name is not a last name
 		{"?author=Johnston", nil}, // a translator is not an author
 		{"?author=various", []string{"296"}},
+		// The project's own LibriVox genre names, exactly (meta#2761): a
+		// vocabulary value is not one, and an unmapped name still matches.
 		{"?genre=Short%20Stories", []string{"296"}},
-		{"?genre=short-stories", []string{"296"}},
+		{"?genre=short%20stories", []string{"296"}},
+		{"?genre=short-stories", nil},
 		{"?genre=^short", []string{"296"}},
-		{"?genre=General%20Fiction", nil}, // not mapped: no genre stored
+		{"?genre=General%20Fiction", []string{"527", "801"}},
+		{"?genre=Published%20before%201800", []string{"1870"}},
+		{"?genre=Fiction", nil},
 		{"?since=" + lvSinceImport, all},
 		{"?since=" + lvSinceSameDay, nil}, // the day starts at midnight UTC, as LibriVox compares
 		{"?since=" + lvSince2026, nil},
@@ -581,8 +723,8 @@ func TestLibrivoxFeedFieldsAndFlags(t *testing.T) {
 // TestLibrivoxFeedQueries pins the unfiltered page query's shape and the two
 // renderings the golden test leans on: the clock string and the name split.
 func TestLibrivoxFeedQueries(t *testing.T) {
-	q, args := librivoxFeedQuery(librivoxFeedParams{limit: 50})
-	if !strings.HasPrefix(q, librivoxFeedSelect) || !strings.HasSuffix(q, "ORDER BY r.librivox_id ASC LIMIT ? OFFSET ?") || len(args) != 2 {
+	q, args := librivoxFeedQuery(librivoxFeedParams{limit: 50}, true)
+	if !strings.HasPrefix(q, librivoxFeedSelect(true)) || !strings.HasSuffix(q, "ORDER BY r.librivox_id ASC LIMIT ? OFFSET ?") || len(args) != 2 {
 		t.Errorf("unfiltered page = %s %v", q, args)
 	}
 	if got := clockTime(9265); got != "2:34:25" {
@@ -683,6 +825,16 @@ func TestLatestBySourceOrdersBySourceRecordings(t *testing.T) {
 			t.Errorf("GET %s = %v, want %v", tc.path, got, tc.want)
 		}
 	}
+
+	// The version 8 spelling (recording_sources without added_at, joined to
+	// recordings) answers in the same order as the version 9 one.
+	_, old := serveDB(t, artifacttest.Altered(t, cat, 8, lvDropRecordingLayer...), HandlerOptions{})
+	for _, path := range []string{"/api/v1/works/latest?source=librivox", "/api/v1/works/latest?source=librivox&lang=en"} {
+		_, body := artifacttest.GetJSON(t, old.URL, path)
+		if got, want := workIDsOf(t, body, "works"), []string{"classic", "lv-only", "undated", "lv-then-retail"}; !slices.Equal(got, want) {
+			t.Errorf("v8 GET %s = %v, want %v", path, got, want)
+		}
+	}
 }
 
 // TestExactTitleProbeFiltersSourceInsideItsWindow pins that the exact-title
@@ -720,5 +872,37 @@ func TestExactTitleProbeFiltersSourceInsideItsWindow(t *testing.T) {
 		if got := workIDsOf(t, body, "results"); code != http.StatusOK || !slices.Equal(got, []string{"zz-poems-librivox"}) {
 			t.Errorf("GET %s = %d %v, want [zz-poems-librivox]", path, code, got)
 		}
+	}
+}
+
+// TestPersonPageListsARecordingOnlyTranslator: a translator credited only in a
+// recording's own credits (an attach to a catalogued work records no work
+// credit) is listed on their person page under translated, with its total; a
+// version 8 artifact names no such list.
+func TestPersonPageListsARecordingOnlyTranslator(t *testing.T) {
+	cat := librivoxCatalog(t)
+	for _, w := range cat.Works {
+		if w.ID != lvKafkaWork {
+			continue
+		}
+		w.Authors = slices.DeleteFunc(w.Authors, func(a string) bool { return a == "ian-johnston" })
+		w.Credits = nil
+	}
+	_, ts := serveDB(t, artifacttest.Build(t, cat), HandlerOptions{})
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/people/ian-johnston")
+	if code != http.StatusOK {
+		t.Fatalf("person page = %d %v", code, body)
+	}
+	tr, _ := body["translated"].([]any)
+	if body["translated_total"] != float64(1) || len(tr) != 1 || len(body["authored"].([]any)) != 0 {
+		t.Fatalf("person page = %v, want one translated recording and nothing authored", body)
+	}
+	if e := tr[0].(map[string]any); e["recording_id"] != lvKafkaRec || e["work"].(map[string]any)["id"] != lvKafkaWork {
+		t.Errorf("translated entry = %v", e)
+	}
+
+	old := artifacttest.Altered(t, cat, 8, lvDropRecordingLayer...)
+	if _, body := artifacttest.GetJSON(t, downgradedServer(t, old).URL, "/api/v1/people/ian-johnston"); body["translated"] != nil || body["translated_total"] != nil {
+		t.Errorf("v8 person page = %v, want no translated list", body)
 	}
 }

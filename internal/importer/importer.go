@@ -126,6 +126,8 @@ type recInfo struct {
 	// merged into it however alike the readers and runtime look - the rule
 	// rawentry.SameProduction states for metarepair, here on the importer's
 	// side. A LibriVox row never merges into a sibling either (addRecording).
+	// Beside its ASINs it is the other identifier a genre regeneration's row can
+	// reach the recording by (regenCovered).
 	librivox bool
 	// abridged is the recording's tri-state abridged flag as far as this run
 	// knows it. For a recording created THIS run it carries the entry's tri-state
@@ -135,6 +137,23 @@ type recInfo struct {
 	// them apart is not worth it, so a disk incumbent never blocks a merge on
 	// abridged grounds. See abridgedConflict.
 	abridged *bool
+}
+
+// regenCovered is the genre regeneration's completeness test for one
+// recording (regenerate.go): whether a run whose rows address recordings by
+// LibriVox project id (lvRun) or else by ASIN holds the recording's whole
+// account. A row can reach a recording by either identifier
+// (forEachMatchedRow), so one carrying the identifier this run's rows address
+// is covered only when a row met it (seen), and one carrying the OTHER kind -
+// an ASIN in a LibriVox run, a project id in a libex one - never is, even when
+// a row of this run's kind met it: the other source's rows, which this run did
+// not read, are an account of it too. A recording carrying neither is evidence
+// no row can give, so it never blocks a trim.
+func (ri *recInfo) regenCovered(seen, lvRun bool) bool {
+	if lvRun && len(ri.asins) > 0 || !lvRun && ri.librivox {
+		return false
+	}
+	return seen || (len(ri.asins) == 0 && !ri.librivox)
 }
 
 // workState tracks a work's identity (slug + author set) and its recordings.
@@ -723,7 +742,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options, parseSkips []
 	// The regeneration trims a mirror-derived set to what the mirror's own rows
 	// vote for, so its rows must be the mirror's (regenerate.go).
 	if opts.Mode == ModeRegenerateGenres && model.TierOfSource(sourceType) != model.TierBulkMirror {
-		return Summary{}, fmt.Errorf("genre regeneration requires bulk-mirror (libex) rows; use RunLibex")
+		return Summary{}, fmt.Errorf("genre regeneration requires bulk-mirror (libex or LibriVox) rows; use RunLibex or RunLibrivox")
 	}
 	if err := ValidateRowsAsOf(opts.Mode, opts.RowsAsOf, time.Now().UTC()); err != nil {
 		return Summary{}, err
@@ -791,10 +810,13 @@ func openPlanner(sourceType string, opts Options) (*planner, error) {
 
 // plannerOn is openPlanner over a store the caller already holds (AttestAt): the
 // planner, plus the ASIN LOCATION index a run that can attest or enrich needs
-// (the other runs never ask where an ASIN sits, so they never pay for it).
+// (the other runs never ask where an ASIN sits, so they never pay for it). A
+// LibriVox run never does either: its rows carry no ASIN, and its regeneration
+// locates them by project id (librivoxState.held), so building the index would
+// only add the catalogue's ASIN-collision warnings to its summary.
 func plannerOn(store *pack.Store, sourceType string, opts Options) *planner {
 	p := newPlanner(store, sourceType, opts)
-	if opts.Mode.locatesASINs() || p.userTier {
+	if (opts.Mode.locatesASINs() || p.userTier) && sourceType != sourceLibrivox {
 		p.asinLoc = map[string]RecRef{}
 	}
 	return p
@@ -860,6 +882,9 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	// every other source.
 	p.decodeLibrivoxCredits(books)
 	if p.mode.plansRows() {
+		// The genre regeneration reads no credit, so it takes no credit
+		// decisions and runs no author rules over the unheld projects of its
+		// selection, whose notes would describe a create run it is not.
 		p.credits = p.creditContextOf(books)
 		p.resolveLibrivoxAuthors(books)
 	}
@@ -906,6 +931,7 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	p.reportTombstoneRides()
 	p.reportSeriesNameJoins()
 	p.stampLibrivoxPeople()
+	p.restateLibrivoxRecordings()
 	if p.fatal != nil {
 		return p.fatal
 	}

@@ -469,7 +469,7 @@ func load(lst *pack.Listing, rdr *pack.Reader, opts LoadOptions) (Result, *pathI
 	checkLibrivox(cat, recs, idx, add)
 	checkSeriesPositions(cat, idx, add)
 	checkGenresSorted(cat, idx, add)
-	checkCreditPairs(cat, idx, add)
+	checkCreditPairs(cat, recs, idx, add)
 	checkPersonSlug(cat, idx, add)
 	checkUnslugFallback(cat, recs, idx, add)
 	checkReservedSlug(cat, idx, add)

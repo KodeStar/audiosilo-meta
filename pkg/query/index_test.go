@@ -77,11 +77,17 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 	latestSrc, latestSrcArgs := snap.latestCandidatesQuery(nil, model.SourceLibrivox, 200)
 	latestSrcLang, latestSrcLangArgs := snap.latestCandidatesQuery(langFilter{"de"}, model.SourceLibrivox, 200)
 	searchSrc, searchSrcArgs := ftsSearchQuery(kindAny, `"kafka"*`, 20, nil, model.SourceLibrivox)
-	feedAll, feedAllArgs := librivoxFeedQuery(librivoxFeedParams{limit: 50})
-	feedFiltered, feedFilteredArgs := librivoxFeedQuery(librivoxFeedParams{limit: 50, id: 527, since: 1, hasSince: true,
-		title: textMatch{value: "Metamorphosis"}, author: textMatch{value: "Kafka"}, genre: textMatch{value: "Short Stories"}, desc: true})
-	feedPrefix, feedPrefixArgs := librivoxFeedQuery(librivoxFeedParams{limit: 500, offset: 10,
-		title: textMatch{value: "meta", prefix: true}, author: textMatch{value: "kaf", prefix: true}, genre: textMatch{value: "short", prefix: true}})
+	feedAll, feedAllArgs := librivoxFeedQuery(librivoxFeedParams{limit: 50}, true)
+	filtered := librivoxFeedParams{limit: 50, id: 527, since: 1, hasSince: true,
+		title: textMatch{value: "Metamorphosis"}, author: textMatch{value: "Kafka"}, genre: textMatch{value: "Short Stories"}, desc: true}
+	prefixes := librivoxFeedParams{limit: 500, offset: 10,
+		title: textMatch{value: "meta", prefix: true}, author: textMatch{value: "kaf", prefix: true}, genre: textMatch{value: "short", prefix: true}}
+	feedFiltered, feedFilteredArgs := librivoxFeedQuery(filtered, true)
+	feedPrefix, feedPrefixArgs := librivoxFeedQuery(prefixes, true)
+	// The schema_version 8 spellings (the work's title, the vocabulary genres),
+	// which a newer binary still issues against an older release.
+	feedFilteredV8, feedFilteredV8Args := librivoxFeedQuery(filtered, false)
+	feedPrefixV8, feedPrefixV8Args := librivoxFeedQuery(prefixes, false)
 
 	const (
 		work      = "project-hail-mary"
@@ -120,6 +126,8 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 		{"narrated total", narratedTotalSQL, []any{person}},
 		{"authored page", authoredPageSQL, []any{person, 100, 0}},
 		{"narrated page", narratedPageSQL, []any{person, 100, 0}},
+		{"translated total", translatedTotalSQL, []any{person}},
+		{"translated page", translatedPageSQL, []any{person, 100, 0}},
 		// The sitemap shards. Each pages a whole family, so an ORDER BY that did
 		// not walk the primary key would sort the entire catalogue in a temp
 		// b-tree once per shard - six times over for works, on a route a crawler
@@ -191,6 +199,8 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 		{"librivox feed page", feedAll, feedAllArgs},
 		{"librivox feed page, filtered", feedFiltered, feedFilteredArgs},
 		{"librivox feed page, prefixes", feedPrefix, feedPrefixArgs},
+		{"librivox feed page, filtered, v8", feedFilteredV8, feedFilteredV8Args},
+		{"librivox feed page, prefixes, v8", feedPrefixV8, feedPrefixV8Args},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
@@ -241,10 +251,16 @@ func TestBatchLookupsAreIndexed(t *testing.T) {
 		// batches, each over up to a page (500) of works.
 		{"works with a source", ids, func(ph string) string { return worksAdmittedSQL(ph, workHasSourceArm("works.id")) }, []any{model.SourceLibrivox}},
 		{"librivox feed: authors", ids, lvAuthorsSQL, nil},
-		{"librivox feed: translators", ids, lvTranslatorsSQL, nil},
-		{"librivox feed: genres", ids, lvGenresSQL, nil},
-		{"librivox feed: chapters", ids, lvChaptersSQL, nil},
+		{"librivox feed: translators", ids, lvTranslatorsSQL(true), nil},
+		{"librivox feed: translators, v8", ids, lvTranslatorsSQL(false), nil},
+		{"librivox feed: genres", ids, lvGenresSQL(true), nil},
+		{"librivox feed: genres, v8", ids, lvGenresSQL(false), nil},
+		{"librivox feed: chapters", ids, lvChaptersSQL(true), nil},
+		{"librivox feed: chapters, v8", ids, lvChaptersSQL(false), nil},
 		{"librivox feed: readers", ids, lvReadersSQL, nil},
+		// The LibriVox recording layer (schema_version 9): the recording's own
+		// translators, genre names and section readers.
+		{"librivox feed: section readers", ids, lvSectionReadersSQL, nil},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
@@ -445,8 +461,25 @@ func TestLatestBySourceGroupsInIndexOrder(t *testing.T) {
 	snap := openTestDB(t, artifacttest.Build(t, artifacttest.Fixture()))
 	for _, lang := range []langFilter{nil, {"de"}} {
 		query, args := snap.latestCandidatesQuery(lang, model.SourceLibrivox, 200)
-		if joined := strings.Join(queryPlan(t, snap, query, args...), " | "); strings.Contains(joined, "FOR GROUP BY") {
+		joined := strings.Join(queryPlan(t, snap, query, args...), " | ")
+		if strings.Contains(joined, "FOR GROUP BY") {
 			t.Errorf("lang=%v: the grouping sorts: %s", lang, joined)
+		}
+		// From schema_version 9 the source's recordings' added_at is read off
+		// the covering index: no recordings lookup at all.
+		if !strings.Contains(joined, "USING COVERING INDEX idx_recording_sources_type") || strings.Contains(joined, "recordings") {
+			t.Errorf("lang=%v: the v9 phase one reads past idx_recording_sources_type: %s", lang, joined)
+		}
+	}
+}
+
+// TestLatestBySourceKeepsTheV8SpellingOnAnOlderArtifact: an artifact older than
+// librivoxRecordingSchemaVersion has no recording_sources.added_at, so the
+// source-filtered phase one still joins recordings there.
+func TestLatestBySourceKeepsTheV8SpellingOnAnOlderArtifact(t *testing.T) {
+	for v, want := range map[int]string{8: latestSourceHeadSQL, 9: latestSourceHeadV9SQL} {
+		if q, _ := (&DB{schemaVersion: v}).latestCandidatesQuery(nil, model.SourceLibrivox, 200); !strings.HasPrefix(q, want) {
+			t.Errorf("schema_version %d: phase one = %s", v, q)
 		}
 	}
 }
