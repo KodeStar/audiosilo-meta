@@ -469,7 +469,7 @@ func load(lst *pack.Listing, rdr *pack.Reader, opts LoadOptions) (Result, *pathI
 	checkLibrivox(cat, recs, idx, add)
 	checkSeriesPositions(cat, idx, add)
 	checkGenresSorted(cat, idx, add)
-	checkCreditPairs(cat, idx, add)
+	checkCreditPairs(cat, recs, idx, add)
 	checkPersonSlug(cat, idx, add)
 	checkUnslugFallback(cat, recs, idx, add)
 	checkReservedSlug(cat, idx, add)
@@ -484,7 +484,7 @@ func load(lst *pack.Listing, rdr *pack.Reader, opts LoadOptions) (Result, *pathI
 	checkCrossLanguageRecordings(cat, idx, warn)
 	// The reviewed "not one record" decisions (reviewed.go), resolved through the
 	// tombstone table just read; empty for a plain load.
-	reviewed := newReviewedPairs(opts.Distinct, cat.Redirects)
+	reviewed := &reviewedPairs{pairs: ResolveDistinct(opts.Distinct, cat.Redirects)}
 	checkHonorificPersonPairs(cat, idx, reviewed, warn)
 	checkIdentityEqualWorks(cat, idx, reviewed, warn)
 	// The normalized-identity index is built here rather than inside the rule

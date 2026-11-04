@@ -702,6 +702,9 @@
           "role": "translator"
         }
       ],
+      "genres": [
+        "travel"
+      ],
       "id": "first-four-voyages-of-amerigo-vespucci",
       "language": "en",
       "license": "CC0-1.0",
@@ -1337,6 +1340,22 @@
             {
               "asin": "B0D4WWSF45",
               "region": "uk"
+            },
+            {
+              "asin": "B0D4XKS2CN",
+              "region": "ca"
+            },
+            {
+              "asin": "B0D4XCBJF9",
+              "region": "de"
+            },
+            {
+              "asin": "B0CQTNHX87",
+              "region": "ca"
+            },
+            {
+              "asin": "B0CQTGG3JZ",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -1475,6 +1494,26 @@
             {
               "imported_at": "2026-10-03",
               "ref": "B0D4WWSF45",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-03",
+              "ref": "B0D4XKS2CN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-03",
+              "ref": "B0D4XCBJF9",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-03",
+              "ref": "B0CQTNHX87",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-03",
+              "ref": "B0CQTGG3JZ",
               "type": "libex-import"
             }
           ],
@@ -12103,6 +12142,7 @@
         "armando-palacio-valdes"
       ],
       "genres": [
+        "romance",
         "short-stories"
       ],
       "id": "first-love-and-other-fascinating-stories-of-spanish-life",

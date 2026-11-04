@@ -12,6 +12,7 @@ import (
 	"encoding/binary"
 	"encoding/json"
 	"encoding/xml"
+	"errors"
 	"hash/fnv"
 	"io"
 	"log"
@@ -78,15 +79,35 @@ const InternalErrMsg = "internal error"
 // forging whatever an operator or a log pipeline then believes. %q keeps it on
 // one line, with the control characters visible as escapes.
 //
-// A request whose client has gone is not logged: the search and lookup reads
-// run under the request's context, so a client that abandons a query (the
-// site's search box does, on every keystroke) fails it with the context's
-// error, which is no fault of the server's and nobody reads the 500.
+// A failure that is the request's own cancellation is not logged (see
+// cancelledByClient).
 func Fail(w http.ResponseWriter, r *http.Request, logger *log.Logger, component string, err error) {
-	if r.Context().Err() == nil {
+	if !cancelledByClient(r, err) {
 		logger.Printf("%s: 500 %q %q: %v", component, r.Method, r.URL.Path, err)
 	}
 	WriteErr(w, http.StatusInternalServerError, InternalErrMsg)
+}
+
+// cancelledByClient reports whether err is the request context's own error:
+// the context is done and err is (or wraps) exactly what it ended with. The
+// search and lookup reads run under the request's context, so a client that
+// abandons a query (the site's search box does, on every keystroke) fails it
+// with that error, which is no fault of the server's and nobody reads the 500.
+// The test is the ERROR, not merely a gone client: a read on a context of its
+// own - the card batches run on context.Background() - can fail for a real
+// reason while the client happens to be gone, and that database error must
+// still reach the log. (works/match never gets here with a done context: its
+// budget derives from the request's, and handleMatch answers any failure under
+// a spent context as its 503.) A
+// context derived from the request's ends with the same error, so a read under
+// one counts; a deadline of the handler's own (DeadlineExceeded beside a
+// request that was Canceled) does not, and neither does any error at all on a
+// request whose context is still live. modernc's driver reports an interrupted
+// statement as ctx.Err() rather than as SQLITE_INTERRUPT, and database/sql's
+// Rows.Err does the same, which is what makes the error test sufficient.
+func cancelledByClient(r *http.Request, err error) bool {
+	done := r.Context().Err()
+	return done != nil && errors.Is(err, done)
 }
 
 // MatchesETag reports whether an If-None-Match header NAMES etag. It handles the

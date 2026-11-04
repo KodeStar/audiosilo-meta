@@ -21,7 +21,8 @@ type personRef struct {
 }
 
 // forEachPersonRef enumerates every place a person id can be referenced -
-// work authors, work credits, recording narrators, series authors. It is the
+// work authors, work credits, recording narrators, recording credits, chapter
+// readers, series authors. It is the
 // ONE enumeration of person-reference sites: checkIntegrity verifies each
 // reference resolves and checkOrphanPeople reports the complement, so a new
 // reference site added here reaches both rules by construction - one cannot
@@ -43,6 +44,14 @@ func forEachPersonRef(cat *model.Catalog, recs []recordWithPath, idx *pathIndex,
 	for _, pr := range recs {
 		for _, n := range pr.rec.Narrators {
 			fn(personRef{rel: pr.path, id: n, site: "narrator"})
+		}
+		for _, c := range pr.rec.Credits {
+			fn(personRef{rel: pr.path, id: c.Person, site: "credit", role: c.Role})
+		}
+		for _, ch := range pr.rec.Chapters {
+			for _, rd := range ch.Readers {
+				fn(personRef{rel: pr.path, id: rd, site: "chapter reader"})
+			}
 		}
 	}
 	for _, s := range cat.Series {
@@ -350,24 +359,33 @@ func checkGenresSorted(cat *model.Catalog, idx *pathIndex, add addFunc) {
 // times it repeats: the fix for five copies is the same single edit as for two,
 // so repeating an identical line per extra occurrence only buries the other
 // problems in the report.
-func checkCreditPairs(cat *model.Catalog, idx *pathIndex, add addFunc) {
+//
+// A recording's own credits (recording.credits) are held to the same rule.
+func checkCreditPairs(cat *model.Catalog, recs []recordWithPath, idx *pathIndex, add addFunc) {
 	for _, w := range cat.Works {
-		if len(w.Credits) < 2 {
+		checkCreditList(idx.work[w], w.Credits, add)
+	}
+	for _, pr := range recs {
+		checkCreditList(pr.path, pr.rec.Credits, add)
+	}
+}
+
+// checkCreditList is checkCreditPairs over one record's credit list.
+func checkCreditList(rel string, credits []model.Credit, add addFunc) {
+	if len(credits) < 2 {
+		return
+	}
+	seen := make(map[model.Credit]bool, len(credits))
+	reported := make(map[model.Credit]bool)
+	for _, c := range credits {
+		if seen[c] {
+			if !reported[c] {
+				reported[c] = true
+				add(rel, "credit %q is listed twice as %q; one person holds a role once", c.Person, c.Role)
+			}
 			continue
 		}
-		rel := idx.work[w]
-		seen := make(map[model.Credit]bool, len(w.Credits))
-		reported := make(map[model.Credit]bool)
-		for _, c := range w.Credits {
-			if seen[c] {
-				if !reported[c] {
-					reported[c] = true
-					add(rel, "credit %q is listed twice as %q; one person holds a role once", c.Person, c.Role)
-				}
-				continue
-			}
-			seen[c] = true
-		}
+		seen[c] = true
 	}
 }
 

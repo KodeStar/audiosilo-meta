@@ -31,9 +31,11 @@ import (
 
 // Defaults for metaserve's flags (cmd/metaserve), sized so that a shipped
 // AudioSilo server never trips them. Its community client (audiosilo-server
-// internal/meta) is the heaviest legitimate caller, does not pace itself and
-// treats a 429 as a hard error (five in a row stop a bulk match), so the limit
-// must sit above what it does at full speed:
+// internal/meta) is the heaviest legitimate caller and does not pace itself; it
+// waits out a 429 a few times (client.go's rateLimitRetries) and then fails the
+// book, and five failed books in a row stop a bulk match, so the limit must sit
+// above what it does at full speed. The figures below are that repository's
+// constants (TestDefaultsHoldAnAudioSiloBulkMatch names each one):
 //
 //   - In flight at once, at most about a dozen: a bulk match's 2 workers each
 //     with one works/match, work and series reads sharing a bound of 4

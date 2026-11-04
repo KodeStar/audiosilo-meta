@@ -723,7 +723,7 @@ func TestMatchReadsHonourTheContext(t *testing.T) {
 			return err
 		},
 		"exactTitleHits": func(ctx context.Context) error {
-			_, err := snap.exactTitleHits(ctx, "Dune", nil)
+			_, err := snap.exactTitleHits(ctx, "Dune", nil, "")
 			return err
 		},
 		"seriesPositionHits": func(ctx context.Context) error {
@@ -736,6 +736,12 @@ func TestMatchReadsHonourTheContext(t *testing.T) {
 		},
 		"peopleNamed": func(ctx context.Context) error {
 			_, err := snap.peopleNamed(ctx, splitAuthors("Bernard Cornwell")[0])
+			return err
+		},
+		// peopleNamed above stops at the full-name probe, so the ordered surname
+		// window (personInitialSQL) is asked on its own.
+		"surnameBearers": func(ctx context.Context) error {
+			_, err := snap.surnameBearers(ctx, splitAuthors("B Cornwell")[0])
 			return err
 		},
 		"candidateFacts": func(ctx context.Context) error {
@@ -758,7 +764,7 @@ func TestMatchReadsHonourTheContext(t *testing.T) {
 		}
 	}
 	// The boosts degrade to none rather than failing; the next read then fails.
-	if got := snap.boostedWorks(cancelled, "dork diaries 6", nil); got != nil {
+	if got := snap.boostedWorks(cancelled, "dork diaries 6", nil, ""); got != nil {
 		t.Errorf("boostedWorks with a cancelled context = %v, want none", got)
 	}
 }
@@ -901,5 +907,86 @@ func TestPeopleNamed(t *testing.T) {
 		if err != nil || strings.Join(ids, ",") != want {
 			t.Errorf("peopleNamed(%q) = %v, %v; want %s", in, ids, err, want)
 		}
+	}
+}
+
+// TestPeopleNamedOrdersTheSurnameWindowByTheInitial: more people bear the
+// surname than the window holds, every decoy sorts (and so is indexed) ahead of
+// the one bearer whose first name agrees, and the surname fallback still finds
+// him - an unordered window cut him off. A name in the inverted form is found
+// the same way, and so is a mononym "Smith" (no given name, which
+// givenCompatible accepts) and a Cyrillic bearer whose initial is the
+// surname's own (every Иванов row holds one И word, the agreeing bearer two)
+// and upper-case in the row. A bare surname is still the unordered window: its
+// bearers all agree alike, and what keeps the right one's book is the title
+// probe (TestMatchABareSurnameBeyondTheWindowKeepsTheTitledBook).
+func TestPeopleNamedOrdersTheSurnameWindowByTheInitial(t *testing.T) {
+	cat := &model.Catalog{}
+	add := func(id, name string) {
+		cat.People = append(cat.People, &model.Person{ID: id, Name: name, License: "CC0-1.0"})
+	}
+	for i := range matchPeopleWindow + 50 {
+		n := strconv.Itoa(1000 + i)
+		add("a-smith-"+n, "Al"+n+" Smith")
+		add("a-ivanov-"+n, "Ал"+n+" Иванов")
+	}
+	add("smith-john", "Smith, John")
+	add("zz-smith", "Smith")
+	add("zz-ivan-ivanov", "Иван Иванов")
+	snap := openTestDB(t, artifacttest.Build(t, cat))
+	for _, c := range []struct{ surname, id string }{{"smith", "smith-john"}, {"smith", "zz-smith"}, {"иванов", "zz-ivan-ivanov"}} {
+		rows, err := snap.peopleMatching(context.Background(), c.surname)
+		if err != nil || slices.ContainsFunc(rows, func(p personRow) bool { return p.id == c.id }) {
+			t.Fatalf("%s is inside the unordered %s window (%v): the case is vacuous", c.id, c.surname, err)
+		}
+	}
+	for in, want := range map[string]string{
+		"J Smith":      "smith-john,zz-smith",
+		"J. Smith":     "smith-john,zz-smith",
+		"John Smith":   "smith-john",
+		"И. Иванов":    "zz-ivan-ivanov",
+		"Al1001 Smith": "a-smith-1001",
+	} {
+		ids, err := snap.peopleNamed(context.Background(), splitAuthors(in)[0])
+		slices.Sort(ids)
+		if err != nil || strings.Join(ids, ",") != want {
+			t.Errorf("peopleNamed(%q) = %v, %v; want %s", in, ids, err, want)
+		}
+	}
+	// A bare surname is guaranteed the window's worth of bearers, no more.
+	ids, err := snap.peopleNamed(context.Background(), splitAuthors("Smith")[0])
+	if err != nil || len(ids) != matchPeopleWindow {
+		t.Errorf("peopleNamed(Smith) = %d people, %v; want the %d-person window", len(ids), err, matchPeopleWindow)
+	}
+}
+
+// TestMatchABareSurnameBeyondTheWindowKeepsTheTitledBook pins why the person
+// window is not ranked by work evidence: the author probe only ADDS works, and
+// every candidate is judged on its own credited authors (candidateFacts), so a
+// book the title probe already holds cannot be lost by the window. Here the
+// book's author is outside a bare "Smith"'s window (asserted), and it still
+// ranks first with its author agreeing.
+func TestMatchABareSurnameBeyondTheWindowKeepsTheTitledBook(t *testing.T) {
+	cat := &model.Catalog{}
+	addBook := func(person, name, work, title string) {
+		cat.People = append(cat.People, &model.Person{ID: person, Name: name, License: "CC0-1.0"})
+		cat.Works = append(cat.Works, &model.Work{ID: work, Title: title, Language: "en", Authors: []string{person}, License: "CC0-1.0"})
+	}
+	for i := range matchPeopleWindow + 50 {
+		n := strconv.Itoa(1000 + i)
+		addBook("a-smith-"+n, "Al"+n+" Smith", "decoy-"+n, "Decoy Tale "+n)
+	}
+	addBook("zz-zed-smith", "Zed Smith", "the-quiet-orchard", "The Quiet Orchard")
+	snap, ts := newTestServerForCatalog(t, cat)
+	window, err := snap.peopleNamed(context.Background(), splitAuthors("Smith")[0])
+	if err != nil || slices.Contains(window, "zz-zed-smith") {
+		t.Fatalf("the fixture's author is inside a bare Smith's window (%v): the case is vacuous", err)
+	}
+	res := matchJSON(t, ts.URL, url.Values{"title": {"The Quiet Orchard"}, "author": {"Smith"}})
+	if len(res) == 0 || res[0]["id"] != "the-quiet-orchard" {
+		t.Fatalf("results = %v, want the-quiet-orchard first", matchIDs(res))
+	}
+	if reasons, _ := res[0]["reasons"].(map[string]any); reasons["author"] != "full" {
+		t.Errorf("reasons = %v, want the author agreeing (a bare surname agrees in full)", res[0]["reasons"])
 	}
 }

@@ -72,7 +72,8 @@ const (
 	// OpMergePeople folds person Others onto Target. No detector proposes it and no
 	// repair applies it: it exists so reviewed.json can REJECT it, recording "two
 	// people, not one" for a pair metacheck's honorific-person census would otherwise
-	// name forever (ReviewedDistinct). People have no merge pass yet.
+	// name forever and the importer's honorific fold would otherwise re-merge
+	// (ReviewedDistinct). People have no merge pass yet.
 	OpMergePeople = "merge-people"
 	OpNone        = "" // a pass-through record (LOADER)
 )

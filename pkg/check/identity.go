@@ -84,6 +84,11 @@ type WorkIdentity struct {
 	// more series spell them - so Admits can tell "the catalogue does not hold this
 	// name" from "it holds it twice", which are opposite answers.
 	droppedFolds map[string]bool
+	// placed holds every keyed work that states a volume AND some series lists, by
+	// work id - the only works the census's part rule (partsOfAWhole,
+	// advisories.go) asks about: a volume a work in NO series states is read as a
+	// part of a whole rather than as a series position.
+	placed map[string]bool
 }
 
 type seriesNamed struct {
@@ -103,6 +108,7 @@ func NewWorkIdentity(cat *model.Catalog) *WorkIdentity {
 		seriesOf:     map[string]string{},
 		statementOf:  map[string]titlerule.VolumeStatement{},
 		droppedFolds: map[string]bool{},
+		placed:       map[string]bool{},
 	}
 	if cat == nil {
 		return ix
@@ -125,7 +131,11 @@ func NewWorkIdentity(cat *model.Catalog) *WorkIdentity {
 			// A title that normalizes to nothing is no identity: it is keyed by
 			// nobody and collides with nobody.
 			ix.byKey[key] = append(ix.byKey[key], w)
-			ix.statementOf[w.ID] = titlerule.StatementOf(w.Title, series, titlerule.WriterPolicy)
+			st := titlerule.StatementOf(w.Title, series, titlerule.WriterPolicy)
+			ix.statementOf[w.ID] = st
+			if st.States && len(members[w.ID]) > 0 {
+				ix.placed[w.ID] = true
+			}
 		}
 	}
 	return ix
@@ -457,6 +467,14 @@ func (m *collectionMemo) get(title, series string) bool {
 // nesting is what keeps a mutual-translation pair apart (see IdentityEqualWorks).
 func IdentityAuthorsMatch(w *model.Work, all, identity map[string]bool) bool {
 	wAll, wID := identitySets(w)
-	return (subset(identity, wID) && subset(wID, all)) ||
-		(subset(wID, identity) && subset(identity, wAll))
+	return authorSetsNest(wAll, wID, all, identity)
+}
+
+// authorSetsNest is the nesting rule over two sides' already-derived sets (each
+// side's whole author set and its identity subset, identitySets): one identity
+// set contains the other, and the containing one is itself credited by the other
+// side. IdentityAuthorsMatch is it with one side read off a work.
+func authorSetsNest(aAll, aID, bAll, bID map[string]bool) bool {
+	return (subset(bID, aID) && subset(aID, bAll)) ||
+		(subset(aID, bID) && subset(bID, aAll))
 }

@@ -6054,6 +6054,10 @@
             {
               "asin": "B079MCRBQW",
               "region": "de"
+            },
+            {
+              "asin": "B071485DC5",
+              "region": "ca"
             }
           ],
           "chapters": [
@@ -6402,6 +6406,11 @@
             {
               "imported_at": "2026-10-18",
               "ref": "B079MCRBQW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-03",
+              "ref": "B071485DC5",
               "type": "libex-import"
             }
           ],
@@ -8679,32 +8688,7 @@
             }
           ],
           "work": "seven-days-to-die"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B009EVFB32",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Seven Days to Die"
-    },
-    "seven-days-to-die-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "j-a-johnstone"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "thriller-suspense",
-        "westerns"
-      ],
-      "id": "seven-days-to-die-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2020": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -8763,10 +8747,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "seven-days-to-die-dramatized-adaptation"
+          "work": "seven-days-to-die"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B009EVFB32",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648801838",
@@ -8778,7 +8767,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Seven Days to Die [Dramatized Adaptation]"
+      "title": "Seven Days to Die"
     },
     "seven-days-to-hell-dramatized-adaptation": {
       "added_at": "2026-07-25T17:12:12+01:00",

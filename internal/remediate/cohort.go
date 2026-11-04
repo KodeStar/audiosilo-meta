@@ -117,9 +117,11 @@ var leadingArticles = []string{"the-", "an-", "a-"}
 // titleKey is the article-tolerant identity a title is matched by: its slug
 // with a leading article removed. It is deliberately NOT an identity anything
 // is STORED under - only a matching key - so shortening it cannot mint an
-// address.
+// address. It is the WHOLE title's slug (model.SlugifyWhole): the id cap would
+// make two long titles that differ only past it ("... Vol. 2" and "... Vol. 3")
+// one key, and a key here groups records for a merge.
 func titleKey(title string) string {
-	slug := model.Slugify(title)
+	slug := model.SlugifyWhole(title)
 	for _, art := range leadingArticles {
 		if strings.HasPrefix(slug, art) {
 			return slug[len(art):]

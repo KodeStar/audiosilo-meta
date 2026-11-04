@@ -1704,18 +1704,12 @@
       "death_year": 1938,
       "id": "rita",
       "librivox_author_id": 89,
-      "librivox_reader_id": 9714,
       "license": "CC0-1.0",
       "name": "Rita",
       "sources": [
         {
           "imported_at": "2026-10-28",
           "ref": "3410",
-          "type": "librivox"
-        },
-        {
-          "imported_at": "2026-10-29",
-          "ref": "9385",
           "type": "librivox"
         }
       ]
@@ -1982,6 +1976,19 @@
           "imported_at": "2026-07-29",
           "ref": "B00CICA260",
           "type": "libex-import"
+        }
+      ]
+    },
+    "rita-librivox-9714": {
+      "id": "rita-librivox-9714",
+      "librivox_reader_id": 9714,
+      "license": "CC0-1.0",
+      "name": "Rita",
+      "sources": [
+        {
+          "imported_at": "2026-10-29",
+          "ref": "9385",
+          "type": "librivox"
         }
       ]
     },
@@ -7473,10 +7480,7 @@
       ]
     },
     "robert-black": {
-      "birth_year": 1829,
-      "death_year": 1915,
       "id": "robert-black",
-      "librivox_author_id": 6647,
       "license": "CC0-1.0",
       "name": "Robert Black",
       "sources": [
@@ -7484,7 +7488,17 @@
           "imported_at": "2026-07-29",
           "ref": "B00GCQ7VZI",
           "type": "libex-import"
-        },
+        }
+      ]
+    },
+    "robert-black-1829-1915": {
+      "birth_year": 1829,
+      "death_year": 1915,
+      "id": "robert-black-1829-1915",
+      "librivox_author_id": 6647,
+      "license": "CC0-1.0",
+      "name": "Robert Black (1829-1915)",
+      "sources": [
         {
           "imported_at": "2026-10-28",
           "ref": "2438",

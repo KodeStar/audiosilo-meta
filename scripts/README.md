@@ -269,9 +269,8 @@ was stored at 81 minutes while the dump and the recording's own chapter table
 both said 492. Sort by the gap, check a handful against the source, and fix the
 records through the ordinary correction path.
 
-The file is APPENDED to, so a dump split into chunks with `split -l`
-accumulates one worklist across every chunk's run, and a run killed part-way
-keeps every conflict it had already found.
+The file is APPENDED to, so several runs accumulate one worklist, and a run
+killed part-way keeps every conflict it had already found.
 
 ### 7. Pick up the alternate narrations
 
@@ -322,15 +321,17 @@ its diff as its own reviewable PR: the recordings it adds are mostly high-profil
 alternate narrations, which is exactly the diff a reviewer can sanity-check by
 eye.
 
-**Memory.** This pass shares the libex parse layer, which slurps the whole file
-into memory before planning discards the rows that do not apply - roughly 6GB of
-live heap for the full 1.06M-row dump, the same caveat step 6 carries. Unlike
-step 6 there is no pre-filter that helps: an alternate narration is by
-definition a row `libex-select` excluded, so the natural input here IS the
-unfiltered dump. On a machine that cannot hold it, split `full.ndjson` into
-chunks with `split -l` and run the pass over each. A **streaming row iterator**
-for the parse layer (the shape `libex-select` already uses) is the known
-follow-up that would remove the caveat for all three libex passes.
+**Memory.** The libex parse layer streams the file: each row is decoded,
+parsed and dropped, so what the parse holds is the compact record of each
+accepted row (about 1.4GB for the 915k-row dump, against 7.4GB when it held the
+file and every decoded row). The rest of the peak is planning's - the loaded
+catalogue plus the batch censuses, which read EVERY accepted row by design so no
+row's credits or series depend on which rows came with it - and measured over
+the full dump against the current catalogue a `--recordings-only` dry run peaks
+at about 10GB RSS (a create dry run about 15.5GB). Run the full dump on a machine
+with that headroom. Do not split the input to save memory: the catalogue's share
+does not shrink with the chunk, and each chunk would be judged against a smaller
+batch census than the whole dump gives it.
 
 ### 8. Clean up
 
@@ -581,6 +582,30 @@ judges the August waves too, but earlier live lookups exist (the 2026-08-09
 live-libex gap fill, the chapter live-lookup batches), which is why the snapshot
 date is the default: a day after any import of newer rows lets those works be
 trimmed of genres the newer rows stated.
+
+### Regenerate LibriVox works' genres
+
+`metaimport librivox import --regenerate-genres` is the same regeneration over a
+LibriVox snapshot, matched by project id: how a change to the LibriVox genre
+table (`pkg/model/librivox.go`, `model.LibrivoxGenres`) reaches the works the
+tranches already wrote. Run it over the whole snapshot (`--ids 1-`) so every
+recording of a work casts its vote:
+
+```sh
+go run ./cmd/metaimport librivox import --from ~/dev/librivox-snapshot --ids 1- \
+  --regenerate-genres --rows-as-of 2026-10-30 --dry-run --genre-changes /tmp/lv-genre-changes.ndjson
+```
+
+A work that also holds a libex (ASIN-carrying) recording is only added to, as
+is one a user-library source contributed to. `--rows-as-of` is the LAST day a
+LibriVox tranche was imported from that snapshot (the 2026-10-27 snapshot was
+imported through 2026-10-30), not the fetch day: every provenance stamp up to it
+came from the same rows. Run it over the snapshot with the OLD table first
+(a binary built from the base commit): the works it changes there are not the
+table's doing - a work whose projects landed in different tranches stores the
+first tranche's vote, and a libex work a project attached to never took
+LibriVox's genres - so a table change's data commit reviews the two worklists
+side by side.
 
 ### Relocate cross-language recordings
 

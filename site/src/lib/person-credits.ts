@@ -8,7 +8,7 @@
 // contradiction - "Narrated 412" over "500 of 1,982" - so every number here
 // carries its own unit in the text.
 
-import type { Person, WorkCard } from './api'
+import type { RecordingCredit, WorkCard } from './api'
 
 /** "1 work" / "412 works" - so a heading count never states a bare number whose
     unit the reader has to infer. */
@@ -16,13 +16,14 @@ export function workCount(n: number): string {
   return `${n.toLocaleString()} ${n === 1 ? 'work' : 'works'}`
 }
 
-/** The distinct works behind a person's narration credits, in credit order. A
-    narrator can appear on several recordings of the same work, so the credit
-    list is deduplicated by work id before it becomes cards. */
-export function narratedWorks(narrated: Person['narrated'] | undefined): WorkCard[] {
+/** The distinct works behind a person's recording credits (narrated or
+    translated), in credit order. A person can be credited on several recordings
+    of the same work, so the credit list is deduplicated by work id before it
+    becomes cards. */
+export function creditedWorks(credits: RecordingCredit[] | undefined): WorkCard[] {
   const works: WorkCard[] = []
   const seen = new Set<string>()
-  for (const n of narrated ?? []) {
+  for (const n of credits ?? []) {
     if (n.work && !seen.has(n.work.id)) {
       seen.add(n.work.id)
       works.push(n.work)
@@ -49,6 +50,24 @@ export function narrationNote(
   total: number | undefined,
   works: number
 ): string | undefined {
+  return creditNote('narration', shownCredits, total, works)
+}
+
+/** The same line for the translated list (recording translator credits). */
+export function translationNote(
+  shownCredits: number,
+  total: number | undefined,
+  works: number
+): string | undefined {
+  return creditNote('translation', shownCredits, total, works)
+}
+
+function creditNote(
+  kind: string,
+  shownCredits: number,
+  total: number | undefined,
+  works: number
+): string | undefined {
   if (typeof total !== 'number' || shownCredits >= total) return undefined
-  return `Showing the first ${shownCredits.toLocaleString()} of ${total.toLocaleString()} narration credits, which cover the ${workCount(works)} below.`
+  return `Showing the first ${shownCredits.toLocaleString()} of ${total.toLocaleString()} ${kind} credits, which cover the ${workCount(works)} below.`
 }
