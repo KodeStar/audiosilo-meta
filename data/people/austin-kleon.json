@@ -7245,19 +7245,6 @@
         }
       ]
     },
-    "baldwin-book-publishing": {
-      "id": "baldwin-book-publishing",
-      "kind": "publisher",
-      "license": "CC0-1.0",
-      "name": "Baldwin Book Publishing",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0FS32SGRM",
-          "type": "libex-import"
-        }
-      ]
-    },
     "baldwin-publishing": {
       "id": "baldwin-publishing",
       "kind": "publisher",
@@ -7267,6 +7254,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0FW741W37",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FS32SGRM",
           "type": "libex-import"
         }
       ]

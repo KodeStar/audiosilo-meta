@@ -7518,19 +7518,6 @@
         }
       ]
     },
-    "jupiter-production": {
-      "id": "jupiter-production",
-      "kind": "publisher",
-      "license": "CC0-1.0",
-      "name": "Jupiter Production",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B01E9CY9N8",
-          "type": "libex-import"
-        }
-      ]
-    },
     "jupiter-productions": {
       "id": "jupiter-productions",
       "kind": "publisher",
@@ -7540,6 +7527,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B01N3RRJKC",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01E9CY9N8",
           "type": "libex-import"
         }
       ]
