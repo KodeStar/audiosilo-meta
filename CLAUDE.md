@@ -173,7 +173,11 @@ never noticed (ai-verify read only the metadiff summary). Two halves:
   rejection matching no fresh proposal is reported `census-only` in SUMMARY.md, not
   STALE, because the census honours it whatever the detectors propose and pruning
   it would bring the pair back - unless fewer than two of its records are still
-  live (merged onto one survivor, or deleted), which withholds nothing and is STALE. The importer's
+  live (merged onto one survivor, or deleted), which withholds nothing and is STALE - except
+  a `merge-people` rejection naming ONE live record beside one that is not (deleted, not
+  yet created, or mistyped): the importer below honours it whatever is live, so pruning
+  it would let the next import re-fold the pair, and it reads `unresolved` instead, a
+  status SUMMARY.md lists so a typo still surfaces. The importer's
   honorific fold honours the same rejections: a pair a merge-people rejection names
   is never folded, titled onto bare or (LibriVox rule 1c) bare onto titled, so an
   import cannot re-merge a pair a maintainer separated (`importer.Options.Distinct`,
