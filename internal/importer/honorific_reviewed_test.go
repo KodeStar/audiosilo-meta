@@ -210,3 +210,26 @@ func TestCredentialFoldHonoursAReviewedRejection(t *testing.T) {
 		})
 	}
 }
+
+// The unfolded census turns off the honorific fold ALONE: a LibriVox credit
+// "Jane Doe PhD" folds onto the catalogued jane-doe by the credential fold in
+// both readings, so noteLibrivoxFolds sees no courtesy title and reports the
+// merge in the credential stream only - not again as an honorific one.
+func TestLibrivoxCredentialFoldIsNoHonorificMerge(t *testing.T) {
+	dataDir := t.TempDir()
+	files := map[string]string{personAddr("jane-doe"): personFiles(t, "jane-doe", "Jane Doe", nil)}
+	retailWork(t, files, "a-retail-book", "A Retail Book", "jane-doe", "1900")
+	seedTree(t, dataDir, files)
+	snap := writeSnapshot(t, byAuthors(t, 99011, "The Credential Book", lvDated(5151, "Jane", "Doe PhD", "1850", "1920")))
+	sum := runLibrivoxWith(t, snap, dataDir, allLibrivox, Options{})
+	if got := workAuthorsOf(t, dataDir, "the-credential-book"); !reflect.DeepEqual(got, []string{"jane-doe"}) {
+		t.Fatalf("authors = %v, want [jane-doe]", got)
+	}
+	if len(sum.HonorificMerges) != 0 {
+		t.Errorf("HonorificMerges = %v, want none: the fold is a credential's", sum.HonorificMerges)
+	}
+	if !reflect.DeepEqual(sum.CredentialMerges, []string{"Jane Doe PhD -> Jane Doe"}) {
+		t.Errorf("CredentialMerges = %v, want the credential fold reported", sum.CredentialMerges)
+	}
+	mustValidate(t, dataDir)
+}

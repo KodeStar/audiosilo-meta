@@ -765,6 +765,10 @@ type creditCensus struct {
 	// land on (planner.landingsKeptApart): the honorific and credential folds
 	// then leave the name as it is. nil keeps every fold.
 	keptApart func(titled, bare string) bool
+	// noHonorific turns the honorific fold off (unfolded) and nothing else: the
+	// credential fold still runs, so a LibriVox credit's folded and unfolded
+	// spellings differ by the courtesy title alone (noteLibrivoxFolds).
+	noHonorific bool
 }
 
 // quiet is the census with no merge reported: for a reading of a name that is
@@ -779,7 +783,7 @@ func (c creditCensus) quiet() creditCensus {
 // cleaning spells it when no courtesy title is folded away.
 func (c creditCensus) unfolded() creditCensus {
 	c = c.quiet()
-	c.keptApart = func(string, string) bool { return true }
+	c.noHonorific = true
 	return c
 }
 
@@ -787,6 +791,9 @@ func (c creditCensus) unfolded() creditCensus {
 // a pair a review kept apart (keptApart) stays titled. A merge it does make is
 // reported (onHonorific).
 func (c creditCensus) foldHonorific(name string) string {
+	if c.noHonorific {
+		return name
+	}
 	bare := stripHonorific(name, c.sameSide)
 	if bare == name || (c.keptApart != nil && c.keptApart(name, bare)) {
 		return name
