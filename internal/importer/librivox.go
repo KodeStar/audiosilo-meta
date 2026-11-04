@@ -674,8 +674,11 @@ type librivoxState struct {
 	// (librivoxScriptWalk), built on first use and kept current.
 	scriptWorks map[string][]string
 	// authorVariantExamples names a few rows librivoxauthors.go's rule 1
-	// attached, for the run's note.
+	// attached, for the run's note; keyedVariants is the example of each
+	// project keyLibrivoxAuthorVariants moved credits on, counted once that
+	// project lands (noteLibrivoxLanded).
 	authorVariantExamples []string
+	keyedVariants         map[int]string
 	// life is the birth and death years each catalogued person states.
 	life map[string]lifeYears
 	// authorPins is the person each author id of the rows to be planned was

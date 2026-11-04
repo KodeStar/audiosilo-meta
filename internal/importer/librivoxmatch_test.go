@@ -281,6 +281,7 @@ func TestLibrivoxTitleKey(t *testing.T) {
 		{"World as Will and Idea, Vol. 1 of 3", "The World as Will and Idea, Volume 1"},
 		{"History, Vol. 2", "History, Volume 2"},
 		{"Essays Volume 3 of 4", "Essays, Vol. 3"},
+		{"Letters, Vol. 1, Vol. 2", "Letters, Volume 1, Volume 2"}, // two markers in a row
 	}
 	for _, p := range same {
 		if a, b := librivoxTitleKey(p[0]), librivoxTitleKey(p[1]); a == "" || a != b {

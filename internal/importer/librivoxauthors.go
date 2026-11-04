@@ -205,10 +205,12 @@ func (p *planner) creditsByPerson(credits []credit) map[string]credit {
 // movesOntoOwnNames reports whether every catalogued person a variant moves a
 // credit onto (pairs: row slug -> work person) is recorded at its own name's
 // slug: a person whose id is not (a LibriVox reader's `-librivox-<id>` or
-// `librivox-reader-<id>` record, model.PersonIDMatches' other two forms) is a
-// reader of their own, never an author spelling, so such a pairing is never
-// attached. A person id is otherwise always its name's slug (pkg/check's
-// person-slug rule), so no initials spelling stands between the two.
+// `librivox-reader-<id>` record, or an author's `-librivox-author-<id>` or
+// `librivox-author-<id>` one: model.PersonIDMatches' LibriVox forms) was kept
+// apart from a same-name person by their LibriVox id, never an author
+// spelling, so such a pairing is never attached. A person id is otherwise
+// always its name's slug (pkg/check's person-slug rule), so no initials
+// spelling stands between the two.
 func (p *planner) movesOntoOwnNames(pairs map[string]string) bool {
 	for _, w := range pairs {
 		if own, fellBack := personSlug(p.people[w]); fellBack || own != w {
@@ -357,10 +359,8 @@ func (p *planner) noteLibrivoxAuthorVariant(example string) {
 func (p *planner) keyLibrivoxAuthorVariants(books []sourceBook, titles, suffixes []string) {
 	proposed := map[int]string{}
 	conflicting := map[int]bool{}
-	// firstFor is the id that first proposed each person, in project order: a
-	// second id proposing the same person is left to the per-row rule, which
-	// refuses it as a later run would once the first is stamped.
-	firstFor := map[string]int{}
+	// order is the proposing ids in project order of their first proposal.
+	var order []int
 	for _, i := range p.librivoxRowsByProject(books) {
 		b := &books[i]
 		if _, held := p.librivoxSameNameOf(*b); held {
@@ -393,22 +393,30 @@ func (p *planner) keyLibrivoxAuthorVariants(books []sourceBook, titles, suffixes
 				if !ok {
 					continue
 				}
-				if prev, seen := proposed[c.id]; (seen && prev != to) || p.librivoxCreditIsRecord(c) {
+				prev, seen := proposed[c.id]
+				if (seen && prev != to) || p.librivoxCreditIsRecord(c) {
 					conflicting[c.id] = true
 				}
-				if first, seen := firstFor[to]; seen && first != c.id {
-					conflicting[c.id] = true
-				} else {
-					firstFor[to] = c.id
+				if !seen {
+					order = append(order, c.id)
 				}
 				proposed[c.id] = to
 			}
 		}
 	}
-	for id, to := range proposed {
-		if _, held := p.lv.people[librivoxKey{librivoxAuthor, id}]; held || conflicting[id] || p.heldByOtherAuthorID(to, id) {
+	// Only the first id (in project order) still proposing a person keeps it: a
+	// later one proposing the same person is left to the per-row rule, which
+	// refuses it as a later run would once the first is stamped. An id refused
+	// for any other reason keys nothing, so it never keeps a later id off a
+	// person a later run would key it onto.
+	keyed := map[string]bool{}
+	for _, id := range order {
+		to := proposed[id]
+		if _, held := p.lv.people[librivoxKey{librivoxAuthor, id}]; held || conflicting[id] || keyed[to] || p.heldByOtherAuthorID(to, id) {
 			delete(proposed, id)
+			continue
 		}
+		keyed[to] = true
 	}
 	if len(proposed) == 0 {
 		return
@@ -445,7 +453,12 @@ func (p *planner) keyLibrivoxAuthorVariants(books []sourceBook, titles, suffixes
 		if len(moved) > 0 {
 			slices.Sort(moved)
 			moved = slices.Compact(moved)
-			p.noteLibrivoxAuthorVariant(fmt.Sprintf("%d %q: %s", b.lv.id, titles[i], strings.Join(moved, ", ")))
+			// Counted once the row lands (noteLibrivoxLanded), as a routed
+			// attach is.
+			if p.lv.keyedVariants == nil {
+				p.lv.keyedVariants = map[int]string{}
+			}
+			p.lv.keyedVariants[b.lv.id] = fmt.Sprintf("%d %q: %s", b.lv.id, titles[i], strings.Join(moved, ", "))
 		}
 	}
 }

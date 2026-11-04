@@ -161,6 +161,19 @@ func TestLibrivoxImportWritesTheWorklistFile(t *testing.T) {
 	}
 }
 
+func TestLibrivoxWorklistFileNeverWritesNullCandidates(t *testing.T) {
+	// A worklist row naming no catalogued work (a fallback slot a tombstone
+	// holds) is written with an empty list, never "candidates":null.
+	var b strings.Builder
+	entry := importer.LibrivoxWorklistEntry{Project: 99001, Title: "Война и мир", Authors: []string{"Leo Tolstoy"}, Reason: importer.LibrivoxFallbackTaken}
+	if err := writeLibrivoxWorklist(&b, []importer.LibrivoxWorklistEntry{entry}); err != nil {
+		t.Fatal(err)
+	}
+	if want := `{"librivox_id":99001,"title":"Война и мир","authors":["Leo Tolstoy"],"reason":"fallback-slug-taken","candidates":[]}` + "\n"; b.String() != want {
+		t.Errorf("worklist line = %q, want %q", b.String(), want)
+	}
+}
+
 // --skipped writes the run's refusals keyed by project id, atomically, once the
 // run completed.
 func TestLibrivoxImportWritesTheSkipped(t *testing.T) {

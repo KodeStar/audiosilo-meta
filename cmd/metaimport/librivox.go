@@ -164,15 +164,19 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 		fmt.Printf("  %d pack files written\n", len(sum.Files))
 	}
 	printLibrivoxWorklist(sum.LibrivoxWorklist)
-	if worklistLog != nil {
-		if err := writeLibrivoxWorklist(worklistLog, sum.LibrivoxWorklist); err != nil {
-			fmt.Fprintln(os.Stderr, "metaimport librivox import: --worklist:", err)
-			return 1
-		}
-	}
 	printLibrivoxAuthorPairs(sum.LibrivoxAuthorPairs)
 	printLibrivoxAuthorSplits(sum.LibrivoxAuthorSplits)
 	printUnrecordedCredits(sum.UnrecordedCredits)
+	code := 0
+	// The run has already written the tree, so a worklist that cannot be
+	// appended fails the command without costing the rest of the report or the
+	// --skipped file.
+	if worklistLog != nil {
+		if err := writeLibrivoxWorklist(worklistLog, sum.LibrivoxWorklist); err != nil {
+			fmt.Fprintln(os.Stderr, "metaimport librivox import: --worklist:", err)
+			code = 1
+		}
+	}
 	for _, s := range sum.Skips {
 		skippedLog.Encode(s)
 	}
@@ -180,7 +184,7 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 		fmt.Fprintln(os.Stderr, "metaimport librivox import: --skipped:", err)
 		return 1
 	}
-	return 0
+	return code
 }
 
 // writeLibrivoxWorklist appends the run's worklist to w as NDJSON, one
@@ -193,6 +197,9 @@ func writeLibrivoxWorklist(w io.Writer, entries []importer.LibrivoxWorklistEntry
 	enc := json.NewEncoder(w)
 	enc.SetEscapeHTML(false)
 	for _, e := range entries {
+		if e.Candidates == nil {
+			e.Candidates = []importer.LibrivoxCandidate{} // never "candidates":null
+		}
 		if err := enc.Encode(e); err != nil {
 			return err
 		}

@@ -592,16 +592,16 @@ func (p *planner) mintLibrivoxAuthor(cl *lvAuthorClaim, slug, against string) bo
 	}
 	p.lv.authorPins[cl.id] = &creditPerson{slug: slug, name: cl.name, from: slug, spelled: cl.name}
 	if against != "" {
-		p.lv.splits = append(p.lv.splits, lvAuthorSplit{claim: cl, against: against})
+		p.lv.splits = append(p.lv.splits, lvAuthorSplit{claim: cl, slug: slug, against: against})
 	}
 	return true
 }
 
-// lvAuthorSplit is an author id rule 4 minted a person of its own beside the
-// same-name person against.
+// lvAuthorSplit is an author id rule 4 minted a person of its own at slug
+// beside the same-name person against.
 type lvAuthorSplit struct {
-	claim   *lvAuthorClaim
-	against string
+	claim         *lvAuthorClaim
+	slug, against string
 }
 
 // LibrivoxAuthorSplit is an author id of the run filed at its author-id form
@@ -623,11 +623,13 @@ func (s LibrivoxAuthorSplit) String() string {
 }
 
 // finishLibrivoxSplits lists, once every row is planned, the rule 4 splits
-// whose person a landed row created (Summary.LibrivoxAuthorSplits).
+// whose person a landed row created (Summary.LibrivoxAuthorSplits). One whose
+// id keyLibrivoxAuthorVariants moved onto a catalogued spelling since is no
+// split, and is not listed.
 func (p *planner) finishLibrivoxSplits() {
 	for _, sp := range p.lv.splits {
 		a := p.librivoxPairAuthor(sp.claim)
-		if _, made := p.people[a.Person]; made {
+		if _, made := p.people[a.Person]; made && a.Person == sp.slug {
 			p.summary.LibrivoxAuthorSplits = append(p.summary.LibrivoxAuthorSplits, LibrivoxAuthorSplit{Author: a, Against: sp.against})
 		}
 	}

@@ -179,8 +179,10 @@ func librivoxTitleKeyOf(title string) (key string, nonLatin bool) {
 }
 
 // librivoxVolumeRE is a volume number in a whole-title slug, "vol" or
-// "volume" with an optional "of <total>" after it.
-var librivoxVolumeRE = regexp.MustCompile(`(^|-)vol(?:ume)?-(\d+)(?:-of-\d+)?(-|$)`)
+// "volume" with an optional "of <total>" after it. Bounded by \b rather than
+// by consuming the hyphens around it, so two markers in a row ("vol-1-vol-2")
+// are both found.
+var librivoxVolumeRE = regexp.MustCompile(`\bvol(?:ume)?-(\d+)(?:-of-\d+)?\b`)
 
 // librivoxVolumeSpelling is a whole-title slug with every volume number
 // spelled one way, "volume-<n>": "Vol. 1 of 3" and "Volume 1" are the same
@@ -191,7 +193,7 @@ func librivoxVolumeSpelling(slug string) string {
 	if !strings.Contains(slug, "vol") {
 		return slug
 	}
-	return librivoxVolumeRE.ReplaceAllString(slug, "${1}volume-${2}${3}")
+	return librivoxVolumeRE.ReplaceAllString(slug, "volume-${1}")
 }
 
 // librivoxNonLatinTitle reports whether a title is read in its own script
@@ -318,9 +320,14 @@ type librivoxRoute struct {
 
 // noteLibrivoxLanded counts a routed row that landed: a rule 2 attach
 // (Summary.LibrivoxVariantsAttached, with its example), a rule 4 create
-// (Summary.LibrivoxFallbackSlugs) or an author-variant attach
-// (Summary.LibrivoxAuthorVariants).
-func (p *planner) noteLibrivoxLanded(route librivoxRoute) {
+// (Summary.LibrivoxFallbackSlugs) or an author-variant attach, per row or
+// keyed for the batch (Summary.LibrivoxAuthorVariants).
+func (p *planner) noteLibrivoxLanded(b sourceBook, route librivoxRoute) {
+	if b.lv != nil {
+		if ex, keyed := p.lv.keyedVariants[b.lv.id]; keyed {
+			p.noteLibrivoxAuthorVariant(ex)
+		}
+	}
 	if route.variant != "" {
 		p.summary.LibrivoxVariantsAttached++
 		if len(p.lv.variantExamples) < maxWarnExamples {

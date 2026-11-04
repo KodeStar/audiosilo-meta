@@ -1574,7 +1574,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	}
 	p.addRecording(ws, b, resolvedTitle, asin, lang, narratorSlugs, warn)
 	if p.landedRec != "" {
-		p.noteLibrivoxLanded(route)
+		p.noteLibrivoxLanded(b, route)
 		// unsluggable is only ever set for a LibriVox row.
 		p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, unrecorded...)
 		p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, p.unsluggableLibrivoxCredits(b, ws.slug, unsluggable)...)

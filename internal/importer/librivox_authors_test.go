@@ -618,3 +618,33 @@ func TestLibrivoxAuthorVariantSeesTheRunsOwnIDs(t *testing.T) {
 	}
 	mustValidate(t, together)
 }
+
+func TestLibrivoxAuthorVariantKeysPastAnUnkeyableFirstID(t *testing.T) {
+	// The first id (in project order) proposing a person only holds it when it
+	// is keyed itself. "Henry B. Adams" (7040) is a catalogued record of his
+	// own, so moving him onto `henry-adams` would be a person merge and he is
+	// never keyed; a later run would not see him on `henry-adams` either, so
+	// "Henry Brooks Adams" (7030) is keyed for the batch and his new title
+	// credits `henry-adams` too, not a second record of the same person.
+	dataDir := t.TempDir()
+	seedAuthoredWorks(t, dataDir, map[string][]string{
+		"the-education-of-henry-adams": {"The Education of Henry Adams", "henry-adams", "Henry Adams"},
+		"letters-from-the-coast":       {"Letters from the Coast", "henry-b-adams", "Henry B. Adams"},
+	})
+	brooks := lvAuthor(7030, "Henry Brooks", "Adams")
+	sum := runLibrivox(t, writeSnapshot(t,
+		byAuthor(t, 99860, "Education of Henry Adams", "English", lvAuthor(7040, "Henry B.", "Adams")),
+		byAuthor(t, 99861, "Education of Henry Adams", "English", brooks),
+		byAuthor(t, 99862, "Mont-Saint-Michel and Chartres", "English", brooks),
+	), dataDir, allLibrivox)
+	if got := workAuthorsOf(t, dataDir, "mont-saint-michel-and-chartres"); !reflect.DeepEqual(got, []string{"henry-adams"}) {
+		t.Errorf("new work authors = %v\nworklist: %+v\nnotes: %v", got, sum.LibrivoxWorklist, sum.Notes)
+	}
+	if entryExists(t, dataDir, personAddr("henry-brooks-adams")) {
+		t.Error("a second record of henry-adams was created")
+	}
+	if p := personOf(t, dataDir, "henry-adams"); p.AuthorID != 7030 {
+		t.Errorf("henry-adams = %+v", p)
+	}
+	mustValidate(t, dataDir)
+}
