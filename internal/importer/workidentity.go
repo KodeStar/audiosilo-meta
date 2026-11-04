@@ -175,12 +175,12 @@ func subsetOf(a, b map[string]bool) bool {
 // decided per PERSON: a name spelled bare on one entry and role-qualified on
 // another is one person with a role credit, and the disk side - which sees only
 // the finished credits[] array - can read them no other way.
-func splitWorkAuthors(credits []credit, resolve func(string) string) workAuthors {
+func splitWorkAuthors(credits []credit, resolve func(credit) string) workAuthors {
 	var wa workAuthors
 	seen := make(map[string]bool, len(credits))
 	roleCredited := make(map[string]bool, len(credits))
 	for _, c := range credits {
-		slug := resolve(c.name)
+		slug := resolve(c)
 		if len(c.roles) > 0 {
 			roleCredited[slug] = true
 		}
@@ -236,8 +236,9 @@ func diskIdentityAuthorList(authors []string, credits []model.Credit) []string {
 // person records as it goes (getOrCreatePerson), which is what p.creditSlugs
 // did for the same list before identity and storage parted company.
 func (p *planner) rowWorkAuthors(credits []credit, warn func(string, ...any)) workAuthors {
-	return splitWorkAuthors(credits, func(name string) string {
-		return p.getOrCreatePerson(name, warn)
+	return splitWorkAuthors(credits, func(c credit) string {
+		r, _ := p.getOrCreateCreditIf(c, warn, func(personResolution) bool { return true })
+		return r.slug
 	})
 }
 
@@ -253,8 +254,8 @@ func (p *planner) rowWorkAuthorsRO(credits []credit) workAuthors {
 
 // rowWorkAuthorsROIn is rowWorkAuthorsRO under an explicit batch context.
 func (p *planner) rowWorkAuthorsROIn(ctx creditContext, credits []credit) workAuthors {
-	return splitWorkAuthors(credits, func(name string) string {
-		return p.resolvePersonIn(ctx, name).slug
+	return splitWorkAuthors(credits, func(c credit) string {
+		return p.resolveCreditIn(ctx, c).slug
 	})
 }
 
