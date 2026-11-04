@@ -1286,6 +1286,15 @@
     "decision": "reject",
     "op": "merge-people",
     "others": [
+      "andy-adams-librivox-author-12675"
+    ],
+    "reason": "two people: andy-adams is the Western writer (1859-1935; LibriVox author 940); andy-adams-librivox-author-12675 is the Grosset & Dunlap house name of the Biff Brewster series, 1960-65 (LibriVox author 12675, projects copyright 1960-62), written decades after his death",
+    "target": "andy-adams"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
       "dr-david-booth"
     ],
     "reason": "two people: Dr. David Booth is the scientist of Great Unanswered Questions (listing 1529142369 credits Dr David Booth); David Booth is a US narrator of self-help titles",
@@ -1308,6 +1317,15 @@
     ],
     "reason": "two people: Edward Anderson is LibriVox author 18022 (1905-1969), the novelist of Thieves Like Us (19945); Dr. Edward Anderson is a co-author of Operations Management For Dummies (2019)",
     "target": "edward-anderson"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "j-j-howard-fl-1807"
+    ],
+    "reason": "two people: j-j-howard is the modern writer of Pugs and Kisses; j-j-howard-fl-1807 translated Ovid's Metamorphoses into blank verse, London 1807 (LibriVox author 17467, Gutenberg 28621)",
+    "target": "j-j-howard"
   },
   {
     "decision": "reject",
@@ -14928,6 +14946,15 @@
     ],
     "reason": "the same poem by Ovid in English; the leading article is not a different title",
     "target": "metamorphoses"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "metamorphoses-howard-version"
+    ],
+    "reason": "two translations of Ovid: this work is Brookes More's (LibriVox 3778), metamorphoses-howard-version is J. J. Howard's blank verse of 1807 (LibriVox 18450, Gutenberg 28621); a separate translation is a separate work",
+    "target": "metamorphoses-publius-ovid-ovidius-naso"
   },
   {
     "decision": "assert",

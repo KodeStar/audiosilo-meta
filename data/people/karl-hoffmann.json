@@ -3525,6 +3525,9 @@
     },
     "katalina-watt": {
       "id": "katalina-watt",
+      "librivox_reader_aliases": [
+        6914
+      ],
       "librivox_reader_id": 4462,
       "license": "CC0-1.0",
       "name": "Katalina Watt",
@@ -3533,15 +3536,7 @@
           "imported_at": "2026-10-28",
           "ref": "3353",
           "type": "librivox"
-        }
-      ]
-    },
-    "katalina-watt-librivox-6914": {
-      "id": "katalina-watt-librivox-6914",
-      "librivox_reader_id": 6914,
-      "license": "CC0-1.0",
-      "name": "Katalina Watt",
-      "sources": [
+        },
         {
           "imported_at": "2026-10-28",
           "ref": "5897",
