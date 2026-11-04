@@ -174,7 +174,9 @@ func TestLibrivoxImportPrintsTheWorklist(t *testing.T) {
 
 func TestLibrivoxImportWritesTheWorklistFile(t *testing.T) {
 	// meta#2751: the worklist is a file as well as printed lines, one NDJSON
-	// row per project, appended run after run as --conflicts is.
+	// row per project, appended run after run as --conflicts is - a --dry-run
+	// included, as --conflicts writes its rows on a dry run (both runs here
+	// are dry, and both rows are in the file).
 	entry := importer.LibrivoxWorklistEntry{
 		Project: 527, Title: "The Metamorphosis", Authors: []string{"Franz Kafka"}, Reason: importer.LibrivoxSeveralWorks,
 		Candidates: []importer.LibrivoxCandidate{{Work: "metamorphosis", Title: "Metamorphosis"}},

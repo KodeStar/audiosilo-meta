@@ -490,7 +490,8 @@ apart, or rule 3's trailing qualifier), `volume-total` (rule 2's work holds a
 recording stating another volume total), `same-name-author` (below) and `fallback-slug-taken` (below). Once a person has settled the work,
 re-importing the project's id lands it. `--worklist <path>` appends the
 worklist to a file as well, one NDJSON row per project (`librivox_id`, `title`,
-`authors`, `reason`, `candidates`). `--conflicts` rows for these projects
+`authors`, `reason`, `candidates`), on a `--dry-run` too, as `--conflicts`
+does. `--conflicts` rows for these projects
 carry `librivox_id`, since they have no ASIN, and so do the `--skipped` lines
 (one `{"librivox_id","reason"}` NDJSON line per project refused under a
 refusal code: an unknown language, no narrator, author or title, or the

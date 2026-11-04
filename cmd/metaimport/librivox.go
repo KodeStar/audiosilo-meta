@@ -99,12 +99,12 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 	data := fs.String("data", "data", "path to the data directory")
 	dryRun := fs.Bool("dry-run", false, "print the plan without writing any files")
 	date := fs.String("date", "", "imported_at stamp (YYYY-MM-DD); defaults to today (UTC)")
-	conflicts := fs.String("conflicts", "", "append one NDJSON row per refused contradiction to this file")
+	conflicts := fs.String("conflicts", "", "append one NDJSON row per refused contradiction to this file (written on a --dry-run too)")
 	regenerate := fs.Bool("regenerate-genres", false, "re-derive the genres of the works holding the selected projects under today's LibriVox genre table (the recording vote; a trim only where every recording met a row); touches nothing else")
 	rowsAsOf := fs.String("rows-as-of", "", "with --regenerate-genres (REQUIRED there): the YYYY-MM-DD LAST day a tranche was imported from this snapshot (a LibriVox record is stamped with its import day, not the fetch day); a work whose newest provenance is later is not judged")
 	genreChanges := fs.String("genre-changes", "", "with --regenerate-genres: write one NDJSON line per changed work ({\"work\",\"removed\",\"added\",\"mode\"}) to this file")
 	skipped := fs.String("skipped", "", "write one NDJSON line per project the run refused for a reason with a refusal code ({\"librivox_id\",\"reason\"}) to this file")
-	worklist := fs.String("worklist", "", "append one NDJSON row per worklist project (the printed worklist's entries) to this file")
+	worklist := fs.String("worklist", "", "append one NDJSON row per worklist project (the printed worklist's entries) to this file; written on a --dry-run too, as --conflicts is")
 	if err := fs.Parse(args); err != nil {
 		return 2
 	}

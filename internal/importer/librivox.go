@@ -1018,10 +1018,11 @@ func (p *planner) librivoxReaderDecision(c librivoxCredit, name string) lvReader
 }
 
 // librivoxUnfiledReader reports the first of a LibriVox row's narrator names
-// (names, its cleaned list) that slugs to nothing and that no reader decision
-// files anywhere (lv.readers: a catalogued holder, or a free
-// librivox-reader-<id> slot): a credit with no reader id, or one whose slot
-// another person or a tombstone holds. Such a name would fall back to the
+// (names, its cleaned list) that slugs to nothing and that its reader id's
+// decision files nowhere (librivoxReaderDecision, the rule librivoxReaderSlug
+// acts on): a credit with no reader id, or one whose slot another person or a
+// tombstone holds - since before the run, or since a row of this run created a
+// person there. Such a name would fall back to the
 // shared catch-all, which pkg/check refuses for a LibriVox recording
 // (checkUnslugFallback) only after every pack is written, so the row is
 // refused at planning instead and stays re-importable. false for every other
@@ -1035,10 +1036,11 @@ func (p *planner) librivoxUnfiledReader(b sourceBook, names []string) (string, b
 		if _, fellBack := personSlug(name); !fellBack {
 			continue
 		}
-		if c, ok := byIndex[i]; ok && c.id > 0 {
-			if _, filed := p.lv.readers[c.id]; filed {
-				continue
-			}
+		// The one rule librivoxReaderSlug files the reader by: a decided
+		// person, never a split whose slot is blocked - by the catalogue, or
+		// by a person this run created there since the decision.
+		if c, ok := byIndex[i]; ok && p.librivoxReaderDecision(c, name).slug != "" {
+			continue
 		}
 		return name, true
 	}

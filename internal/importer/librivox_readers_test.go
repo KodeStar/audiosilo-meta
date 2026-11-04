@@ -513,3 +513,35 @@ func TestLibrivoxRowProductionResolvesReadersByID(t *testing.T) {
 		t.Errorf("blocked: narrators = %v, want %v", got, want)
 	}
 }
+
+func TestLibrivoxUnsluggableReaderSlotTakenDuringTheRun(t *testing.T) {
+	// The slot is free when the reader ids are decided, but a lower project's
+	// reader whose own name slugs to it ("Librivox Reader 11294", reader 500)
+	// creates a person there during the run. The Greek reader 11294's split is
+	// then blocked (librivoxReaderDecision), and the plan-time check asks that
+	// same decision: the row is refused before planning, never credited to
+	// the catch-all, so the run's post-write validation does not fail.
+	snap := writeSnapshot(t,
+		readProject(t, 91001, LibrivoxReader{ReaderID: 500, DisplayName: "Librivox Reader 11294"}),
+		greekRow(t, 91002, 11294, "Ἑλένη Κεμικτσή"))
+	dataDir := t.TempDir()
+	sum, err := RunLibrivox(snap, allLibrivox, Options{DataDir: dataDir, ImportDate: testImportDate})
+	if err != nil {
+		t.Fatalf("the run failed: %v", err)
+	}
+	if want := []RowSkip{{LibrivoxID: 91002, Reason: RefusalCreditNotAPerson}}; !reflect.DeepEqual(sum.Skips, want) {
+		t.Errorf("skips = %+v, want %+v", sum.Skips, want)
+	}
+	if !strings.Contains(strings.Join(sum.Warnings, "\n"), `reader "Ἑλένη Κεμικτσή" slugs to nothing`) {
+		t.Errorf("no refusal warning: %v", sum.Warnings)
+	}
+	if entryExists(t, dataDir, personAddr(model.UnslugPersonID)) {
+		t.Error("the catch-all person was created")
+	}
+	if got := readerIDOf(t, dataDir, "librivox-reader-11294"); got != 500 {
+		t.Errorf("librivox-reader-11294 carries reader %d, want 500", got)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("tree failed validation:\n%v", res.Problems)
+	}
+}
