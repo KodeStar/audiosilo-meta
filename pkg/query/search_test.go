@@ -777,7 +777,7 @@ func TestExactTitleIgnoresAFreeStandingS(t *testing.T) {
 	})
 	snap := openTestDB(t, artifacttest.Build(t, cat))
 	for q, want := range map[string]string{"models": "", "Model S": "model-s", "enders game": "enders-game"} {
-		ids, err := snap.exactTitleHits(t.Context(), q, nil)
+		ids, err := snap.exactTitleHits(t.Context(), q, nil, "")
 		if err != nil {
 			t.Fatalf("exactTitleHits(%q): %v", q, err)
 		}

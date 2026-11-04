@@ -15,7 +15,7 @@ import (
 //
 // The real-data tree is the other half of this coverage and is deliberately not
 // it: it proves the parallel loader against 133k works, but only in the non-race
-// build (see race_off_test.go). These fixtures are what run under -race.
+// build (internal/raceflag). These fixtures are what run under -race.
 //
 // The record builders the fixture is made of (pkPerson, pkRec, pkTitled) live in
 // packcheck_test.go, beside the named records every other pack test uses.
