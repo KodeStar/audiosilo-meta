@@ -170,6 +170,13 @@ func (c *composer) importLibrary(s sections) {
 	if sum.GenreWorks > 0 {
 		c.note("added your library's genres to %d work(s) another library had already described", sum.GenreWorks)
 	}
+	if sum.ISBNRecordings > 0 {
+		c.note("added your library's ISBNs to %d recording(s) the catalog already holds", sum.ISBNRecordings)
+	}
+	if sum.ISBNsMirrorOnly > 0 {
+		c.note("isbn-not-attached: mirror-only: %d book(s) with no ASIN matched a recording only %s has described, so their ISBNs were not added; "+
+			"a row with the ASIN carries the ISBN", sum.ISBNsMirrorOnly, seededFrom(nil))
+	}
 	c.noteConflicts(sum)
 	c.noteImportWarnings(sum)
 	// The importer wrote and validated the tree itself, so the file list is the

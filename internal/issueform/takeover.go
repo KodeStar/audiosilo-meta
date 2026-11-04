@@ -88,6 +88,10 @@ func (c *composer) applyTakeover(s sections, t *takeover, genres []string, named
 				return
 			}
 			taken = append(taken, ref.ISBN)
+		} else if work, held := c.printISBN[isbnKey(ref.ISBN)]; held {
+			c.fail(StatusNeedsHuman, "your ASIN %s names %s, but %s - a maintainer checks which edition this submission is before anything is applied",
+				t.asin, loc, printISBNRefusal(ref.ISBN, work))
+			return
 		}
 	}
 	// A mistyped ASIN would otherwise overwrite - and permanently attest - somebody
@@ -262,7 +266,7 @@ func titleKey(title, series string) string {
 // and the loaded catalogue - once nothing more will be asked of it. The store
 // stays: the takeover writes through it.
 func (c *composer) releaseCatalogue() {
-	c.works, c.series, c.asinRec, c.isbnRec = nil, nil, nil, nil
+	c.works, c.series, c.asinRec, c.isbnRec, c.printISBN = nil, nil, nil, nil, nil
 	c.catalog, c.identity, c.seriesAuthors, c.personName = nil, nil, nil, nil
 }
 

@@ -316,6 +316,11 @@ type planner struct {
 	// emitted tree can never violate checkUniqueness's global ISBN rule. Keys are
 	// uppercased to match the rule's normISBN comparison.
 	isbns map[string]bool
+	// printISBNs is the set of ISBNs the catalogue holds as a work's print ISBN
+	// (Work.PrintISBNKeys, both spellings). No recording may claim one: claimISBNs
+	// refuses it, as checkUniqueness would fail the tree. It is apart from isbns
+	// because it is a different refusal with a different message.
+	printISBNs map[string]bool
 	// store is the run's write layer: every record lands as a pack entry through
 	// it, and its queued-write-first reads are what let several rows compose one
 	// record within a run (see write.go).
@@ -563,6 +568,13 @@ func (p *planner) stampSource(raw map[string]any) {
 		return
 	}
 	raw["sources"] = appendSourceUnique(srcArr, p.curSource)
+}
+
+// commitRecording queues a recording's edit: the run's provenance stamp, then the
+// composite entry it sits in.
+func (p *planner) commitRecording(ref RecRef, entry, raw map[string]any) {
+	p.stampSource(raw)
+	p.putWorkEntry(ref.Work, entry)
 }
 
 // bookWarn returns the warning sink for one book: every line it records is
@@ -861,6 +873,7 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 		series:             map[string]*seriesState{},
 		asins:              map[string]bool{},
 		isbns:              map[string]bool{},
+		printISBNs:         map[string]bool{},
 		store:              store,
 		genres:             audibleGenreTable().withRunMemo(),
 		unmappedGenres:     map[string]bool{},
@@ -1289,6 +1302,9 @@ func (p *planner) loadExisting() {
 			storedCredits: w.Credits,
 		}
 		ws.userSourced = hasUserLibrarySource(w)
+		for _, key := range w.PrintISBNKeys() {
+			p.printISBNs[key] = true
+		}
 		for _, c := range w.Credits {
 			p.authorPeople[c.Person] = true
 		}
@@ -3292,12 +3308,15 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 	// same-narrator sibling's.
 	if len(matches) > 0 && b.lv == nil {
 		if asin == "" {
-			// Nothing new to add (same production, no new ASIN). The row's genres
-			// are still that production's tagging, so the vote counts them there
-			// rather than as a vote of their own - when the production is one.
+			// No new ASIN to add. The row's genres are still that production's
+			// tagging, so the vote counts them there rather than as a vote of
+			// their own - when the production is one. Its ISBN is the one thing it
+			// can add, under a stricter test than the ASIN merge below
+			// (attachRowISBNs), and nothing else about the record changes.
 			if len(matches) == 1 {
 				p.landedRec = matches[0].slug
 			}
+			p.attachRowISBNs(ws, matches, b, claims, narrSet, warn)
 			return recNone
 		}
 		for _, m := range matches {
@@ -3421,7 +3440,7 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 type recOutcome int
 
 const (
-	recNone    recOutcome = iota // wrote nothing (no new ASIN, a refused region, a merge that could not be read)
+	recNone    recOutcome = iota // no recording or ASIN written (no new ASIN, a refused region, a merge that could not be read); an ASIN-less row may still have added an ISBN
 	recAlready                   // the ASIN was already on a same-narrator recording
 	recMerged                    // the ASIN was merged onto a same-narrator recording
 	recNew                       // a new recording was written
@@ -3446,10 +3465,17 @@ func (p *planner) resolveASINRegion(b sourceBook, warn func(string, ...any)) (st
 // would fail the post-import validation of the whole tree. Values are already
 // well-formed (the parsers validate against the schema pattern); the set key is
 // uppercased to match the rule's case-insensitive comparison.
+//
+// An ISBN the catalogue holds as a work's print ISBN is refused the same way:
+// it identifies a printed book, so no recording may carry it (planner.printISBNs).
 func (p *planner) claimISBNs(isbns []string, warn func(string, ...any)) []string {
 	var out []string
 	for _, isbn := range isbns {
 		key := strings.ToUpper(isbn)
+		if p.printISBNs[key] {
+			warn("ISBN %s is a work's print ISBN (xref.isbn); not added to a recording", isbn)
+			continue
+		}
 		if p.isbns[key] {
 			warn("ISBN %s is already recorded on another recording; not added", isbn)
 			continue
@@ -3850,8 +3876,7 @@ func (p *planner) mergeRecordingASIN(ri *recInfo, b sourceBook, ref RecRef, regi
 	p.correctEstimate(raw, ref, b)
 	// Stamp provenance for the merged fact: the source ref is the incoming ASIN,
 	// so the merge stays auditable and retractable per the sources[] contract.
-	p.stampSource(raw)
-	p.putWorkEntry(ref.Work, entry)
+	p.commitRecording(ref, entry, raw)
 	ri.asins[asin] = true
 	syncRecInfo(ri, raw)
 	// p.asins is registered by addRecording, the one owner, once this returns.

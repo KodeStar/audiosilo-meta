@@ -176,6 +176,9 @@ func (c *composer) addWork(s sections) {
 		}
 	}
 	work.Xref = c.buildWorkXref(s)
+	if c.printISBNClaimed(work.Xref, recISBNs) {
+		return
+	}
 	// putNewEntry, not putEntry: c.works comes from a best-effort catalogue load,
 	// so a work the loader could not decode passes the duplicate check above, and
 	// a plain upsert would replace its whole composite entry - recordings and all.
@@ -363,6 +366,31 @@ func (c *composer) refuseAIAuthors(names []string) bool {
 			c.fail(StatusInvalid, "author %q is %s, and the catalogue credits works to people - "+
 				"name the human author, or a maintainer will decide how to record this book", name, why)
 			return true
+		}
+	}
+	return false
+}
+
+// printISBNClaimed refuses a new work's print ISBN that a recording claims, under
+// either spelling: one the catalogue already records, or one this submission also
+// states as the recording's own, which contradicts itself. Either would fail
+// checkUniqueness once written.
+func (c *composer) printISBNClaimed(xref *outWorkXref, recISBNs []model.ISBNRef) bool {
+	if xref == nil {
+		return false
+	}
+	for _, held := range xref.ISBN {
+		for _, spelling := range model.ISBNSpellings(held) {
+			if ref, recorded := c.isbnRec[spelling]; recorded {
+				c.failDuplicateUnhinted(ref, "ISBN "+held, "ISBN %s is already recorded on %s, so it cannot be this work's print ISBN", held, c.recLocation(ref))
+				return true
+			}
+			for _, stated := range recISBNs {
+				if isbnKey(stated.ISBN) == spelling {
+					c.fail(StatusInvalid, "ISBN %s is stated as both the work's print ISBN and the recording's: a recording carries the audiobook's own ISBN", stated.ISBN)
+					return true
+				}
+			}
 		}
 	}
 	return false
