@@ -152,8 +152,23 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 		fmt.Printf("  %d pack files written\n", len(sum.Files))
 	}
 	printLibrivoxWorklist(sum.LibrivoxWorklist)
+	printLibrivoxAuthorPairs(sum.LibrivoxAuthorPairs)
 	printUnrecordedCredits(sum.UnrecordedCredits)
 	return 0
+}
+
+// printLibrivoxAuthorPairs prints the author id pairs the run kept as two
+// people for a person to merge or confirm, one line each
+// (importer.LibrivoxAuthorPair.String). Nothing when there are none.
+func printLibrivoxAuthorPairs(pairs []importer.LibrivoxAuthorPair) {
+	if len(pairs) == 0 {
+		return
+	}
+	fmt.Printf("librivox worklist: %d author id %s one courtesy title apart, kept as two people for a person to merge or confirm:\n",
+		len(pairs), plural(len(pairs), "pair", "pairs"))
+	for _, pr := range pairs {
+		fmt.Println("  " + pr.String())
+	}
 }
 
 // printLibrivoxInProgress prints the projects the run set aside as still in
