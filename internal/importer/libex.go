@@ -797,6 +797,7 @@ var aiNarratorNames = map[string]bool{
 	"virtuelle stimme": true, // 1 - German
 	"voz virual":       true, // 1 - a Spanish typo the dump really carries
 	"digital voices":   true, // 1 - Loudly, an AI audio publisher
+	"eleven labs":      true, // ElevenLabs, a TTS vendor: 2 credits in the catalogue, not the dump
 }
 
 // aiNarratorPrefix is the one prefix family: Audible's "AI Voice <persona>"
