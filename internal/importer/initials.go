@@ -373,49 +373,6 @@ func (c *initialsCensus) addCatalogue(slug, name string) {
 	g.catalogue[slug] = name
 }
 
-// committedInitials is each initials group's committed survivor
-// (committedSurvivor), keyed by marked key: all the reviewed-pair check
-// (planner.creditLanding) reads of the census. It is taken off the census
-// before the batch is added, so the run holds one slug per committed group for
-// the check rather than keeping the whole census alive.
-type committedInitials map[string]string
-
-// committed is the census's committedInitials.
-func (c *initialsCensus) committed() committedInitials {
-	out := committedInitials{}
-	for key, g := range c.groups {
-		if s, ok := g.committedSurvivor(); ok {
-			out[key] = s.slug
-		}
-	}
-	return out
-}
-
-// survivor is the committed record name's initials group resolves it to: the
-// lowest committed slug, which is exactly what decide names for a group holding
-// one (catalogue first), accepted only as initialsMerge accepts a decision
-// (respells) - so it can be asked before the batch is decided, while the
-// pre-pass is still cleaning the names decide will read, and answers what the
-// decision will.
-func (ci committedInitials) survivor(name string) (string, bool) {
-	if len(ci) == 0 {
-		return "", false
-	}
-	slug, fellBack := personSlug(name)
-	if fellBack {
-		return "", false
-	}
-	tokens := parseNameTokens(name)
-	if _, ok := probeableGroups(tokens); !ok {
-		return "", false
-	}
-	s, ok := ci[markedKeyOf(tokens)]
-	if !ok || !respells(name, slug, tokens, s) {
-		return "", false
-	}
-	return s, true
-}
-
 // committedSurvivor is the record a group holding a committed spelling resolves
 // to: its lowest committed slug (decide's "catalogue first"), ok false when the
 // group holds none.

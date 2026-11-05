@@ -1886,30 +1886,20 @@ type creditContext struct {
 
 // creditContextOf takes a batch's credit decisions.
 //
-// A fold is refused for a reviewed pair judged by the records the two spellings
-// LAND on (creditLanding), not only the slugs they spell: "Dr. AB Kovacs" spells
-// `dr-ab-kovacs` but lands, by the initials merge, on the committed
-// `dr-a-b-kovacs`, and the bare "AB Kovacs" on `a-b-kovacs`. The check reads the
-// initials decisions once they exist and, before then (the pre-pass cleans the
-// names it decides over), the committed record of a spelling's initials group,
-// which is what the decision names whenever one is committed - so the pre-pass and
-// the import refuse the same folds. A run with no reviewed people pair asks no
-// check at all, and one with them keeps only the committed survivors
-// (committedInitials) for it, never the census itself.
+// A fold is refused for a reviewed pair (peopleKeptApart), judged by every slug
+// the two spellings can land on rather than by the one this batch's initials
+// decision puts them on. The veto is asked twice over, by the pre-pass while it
+// cleans the names the decision is taken over and by the import after it, so an
+// answer that read the decision would differ between the two: a titled spelling
+// the decision moves onto a slug only the batch holds would fold at import after
+// the pre-pass refused it, and a fold the pre-pass counted and reported would not
+// happen. A run with no reviewed people pair asks no check at all.
 func (p *planner) creditContextOf(books []sourceBook) creditContext {
 	author, narrator := p.creditCensusesOf(books)
-	census := p.catalogueInitials()
-	// decided is captured BY VARIABLE: it is nil while the pre-pass below runs
-	// (landingsKeptApart then falls back to the committed initials) and the
-	// batch decision once assigned, so the census's veto judges where a name
-	// finally lands. Do not copy it into the closure.
-	var decided initialsSurvivors
 	if p.apart != nil {
-		committed := census.committed()
-		apart := func(a, b string) bool { return p.landingsKeptApart(decided, committed, a, b) }
-		author.keptApart, narrator.keptApart = apart, apart
+		author.keptApart, narrator.keptApart = p.peopleKeptApart, p.peopleKeptApart
 	}
-	decided = p.decideInitialsOf(census, books, author, narrator)
+	decided := p.decideInitialsOf(p.catalogueInitials(), books, author, narrator)
 	return creditContext{author: author, narrator: narrator, initials: decided}
 }
 
@@ -2026,44 +2016,28 @@ func (p *planner) creditCensusesOf(books []sourceBook) (author, narrator creditC
 // peopleKeptApart reports whether a reviewed merge-people rejection
 // (Options.Distinct) recorded the persons credit names a and b spell as two
 // people, so that no fold may resolve one onto the other: "Dr. Alex George" is
-// not `alex-george`, the novelist. Each name is asked as its person slug, a
-// retired one as its survivor (the decisions were resolved the same way); the
-// records the two land on through the initials merge are landingsKeptApart's
-// half. A name that slugs away to nothing is no record a review named.
+// not `alex-george`, the novelist. Each name is asked as every slug it can land on
+// (creditSlugs), a retired one as its survivor (the decisions were resolved the
+// same way): "Dr. AB Kovacs" spells `dr-ab-kovacs` and is `dr-a-b-kovacs` by the
+// initials merge, so a review of `a-b-kovacs` / `dr-a-b-kovacs` keeps it off the
+// bare "AB Kovacs" whether or not either record is committed yet.
 func (p *planner) peopleKeptApart(a, b string) bool {
-	sa, fa := personSlug(a)
-	sb, fb := personSlug(b)
-	return !fa && !fb && p.apart.Has(sa, sb)
+	slugsB := creditSlugs(b)
+	return slices.ContainsFunc(creditSlugs(a), func(x string) bool {
+		return slices.ContainsFunc(slugsB, func(y string) bool { return p.apart.Has(x, y) })
+	})
 }
 
-// landingsKeptApart is the reviewed-pair check the credit folds ask
-// (creditCensus.keptApart): a and b are kept apart when the slugs they spell are
-// (peopleKeptApart) or the records they land on are (creditLanding).
-func (p *planner) landingsKeptApart(decided initialsSurvivors, committed committedInitials, a, b string) bool {
-	if p.peopleKeptApart(a, b) {
-		return true
+// creditSlugs is every person slug a credit name can land on: its own, and the
+// ones its initials respell to, which are the only others the initials merge
+// accepts (respells). None for a name that slugs away to nothing, which is no
+// record a review named.
+func creditSlugs(name string) []string {
+	slug, fellBack := personSlug(name)
+	if fellBack {
+		return nil
 	}
-	la, oka := p.creditLanding(decided, committed, a)
-	lb, okb := p.creditLanding(decided, committed, b)
-	return oka && okb && p.apart.Has(la, lb)
-}
-
-// creditLanding is the person record a credit name lands on: the live record its
-// slug (or that slug's survivor) names, else the initials merge's decision
-// (resolvePersonIn), else - before the batch is decided - the committed record
-// of its initials group (committedInitials.survivor), else its own slug, to be
-// created. ok is false for a name that slugs away to nothing.
-func (p *planner) creditLanding(decided initialsSurvivors, committed committedInitials, name string) (string, bool) {
-	r := p.resolvePersonIn(creditContext{initials: decided}, name)
-	if r.fellBack {
-		return "", false
-	}
-	if r.create {
-		if s, ok := committed.survivor(name); ok {
-			return s, true
-		}
-	}
-	return r.slug, true
+	return append([]string{slug}, initialsVariantSlugs(name)...)
 }
 
 // noteHonorific records one honorific merge for the run's report. It is a SET
@@ -2439,7 +2413,9 @@ func (p *planner) resolvePersonIn(ctx creditContext, name string) personResoluti
 	live, ok := p.livePerson(from)
 	if !ok {
 		survivor, merges := initialsMerge(ctx.initials, name, slug, fellBack)
-		if !merges {
+		// A review speaks above the initials rule: two people it told apart stay
+		// two, however alike their initials are spelled.
+		if !merges || p.apart.Has(slug, survivor.slug) {
 			return personResolution{slug: slug, create: true, name: name, fellBack: fellBack}
 		}
 		from = survivor.slug

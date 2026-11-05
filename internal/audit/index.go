@@ -7,6 +7,7 @@ import (
 
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
+	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -23,6 +24,10 @@ type index struct {
 	workByID   map[string]*model.Work
 	personByID map[string]*model.Person
 	seriesByID map[string]*model.Series
+
+	// distinct is the reviewed "not one record" decisions (ReviewedDistinct) resolved
+	// through the catalogue's redirects, for samePersonSpelling.
+	distinct check.DistinctPairs
 
 	// memberships maps a work id to its series memberships, sorted by series id.
 	memberships map[string][]membership
@@ -84,6 +89,7 @@ type membership struct {
 func newIndex(cat *model.Catalog) *index {
 	ix := &index{
 		cat:                   cat,
+		distinct:              check.ResolveDistinct(ReviewedDistinct(), cat.Redirects),
 		workByID:              make(map[string]*model.Work, len(cat.Works)),
 		personByID:            make(map[string]*model.Person, len(cat.People)),
 		seriesByID:            make(map[string]*model.Series, len(cat.Series)),

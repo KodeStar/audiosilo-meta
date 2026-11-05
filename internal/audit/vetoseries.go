@@ -228,6 +228,9 @@ func samePersonSpelling(ix *index, a, b string) bool {
 	if distinctLibrivoxReader(pa, pb) {
 		return false // two LibriVox accounts, kept apart on purpose
 	}
+	if ix.distinct.Has(model.RedirectPeople, a, b) {
+		return false // a maintainer recorded two people
+	}
 	if importer.MarkedNameKey(pa.Name) == importer.MarkedNameKey(pb.Name) {
 		return true
 	}

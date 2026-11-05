@@ -192,14 +192,16 @@ never noticed (ai-verify read only the metadiff summary). Two halves:
   status SUMMARY.md lists so a typo still surfaces. The importer's
   honorific fold honours the same rejections: a pair a merge-people rejection names
   is never folded, titled onto bare or (LibriVox rule 1c) bare onto titled, nor by the
-  credential fold ("X PhD"), each judged by the records the two spellings LAND on
-  through the initials merge as well as the slugs they spell, so an
+  credential fold ("X PhD"), each judged by every slug the two spellings can LAND on
+  through the initials merge, nor by the initials merge itself, so an
   import cannot re-merge a pair a maintainer separated (`importer.Options.Distinct`,
   filled from `audit.ReviewedDistinct()` by cmd/metaimport and internal/issueform,
   resolved through redirects.json by `check.ResolveDistinct`), and so does the series
   same-person rule (`importer.PeopleApart`, read by the series-author fit and the
   intake form's work-slug, takeover and series gates): a reviewed pair is never one
-  author, so the doctor's book cannot join the novelist's series. metabuild's census and metaaudit's LOADER carry-through load
+  author, so the doctor's book cannot join the novelist's series, not even through a
+  third spelling of both ("A. George": the review is a never-join constraint inside
+  the grouping, `importer.personGroups`) or a title spelling his name. metabuild's census and metaaudit's LOADER carry-through load
   without the decisions (neither is the census anyone reads).
 - **New advisories reach the automation.** On a pull request touching data/,
   `.github/scripts/advisory-delta.sh` runs the same metacheck binary over the base and

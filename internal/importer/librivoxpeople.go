@@ -40,8 +40,8 @@ package importer
 //     life years disagree, nor when the twin carries another author id and
 //     the credit states years of its own.
 //     d. a pair a reviewed merge-people rejection names (Options.Distinct) is
-//     two people in both directions: 1b reads it as kept apart, 1c does not
-//     resolve onto that twin.
+//     two people in both directions: 1b reads it as kept apart, judged by every
+//     slug the two spellings can land on, and 1c does not resolve onto that twin.
 //  2. SAME-NAME AUTHORS. An author id no person carries, whose name resolves to
 //     a catalogued person who is someone else, is not credited (and stamped)
 //     there. Someone else means: the person carries ANOTHER librivox_author_id
@@ -839,7 +839,10 @@ func (p *planner) librivoxFoldVerdict(bare string, cl *lvAuthorClaim, bySlug map
 	if fellBack {
 		return "", lvSame
 	}
-	if p.apart.Has(cl.slug, bareSlug) {
+	// The census's own veto, so the rule judges every slug the two spellings can
+	// land on (planner.peopleKeptApart), as the fold it stands in for does. The slugs
+	// themselves are asked too: a name that slugs to nothing has no slugs to judge.
+	if p.apart.Has(cl.slug, bareSlug) || p.credits.author.reviewedApart(cl.name, bare) {
 		return "", lvApart // a review recorded two people (Options.Distinct)
 	}
 	if others := bySlug[bareSlug]; len(others) > 0 {
@@ -881,7 +884,7 @@ func (p *planner) librivoxAuthorName(name string, cl *lvAuthorClaim) (to, agains
 	if !r.create {
 		return "", r.slug, p.librivoxVerdict(r.slug, cl)
 	}
-	if twin := p.librivoxTitledTwin(r.slug, cl.life); twin != "" {
+	if twin := p.librivoxTitledTwin(name, r.slug, cl.life); twin != "" {
 		return twin, "", lvSame
 	}
 	return "", "", lvSame
@@ -1050,18 +1053,21 @@ type lvClaimProject struct {
 	own       bool
 }
 
-// librivoxTitledTwin is rule 1c: the catalogued name of the ONE person whose
-// name is the bare slug behind a courtesy title or a rank, when the twin is
+// librivoxTitledTwin is rule 1c for the bare credit name at slug: the catalogued
+// name of the ONE person whose name is that slug behind a courtesy title or a
+// rank, unless a review keeps the two apart (peopleKeptApart), when the twin is
 // not credited only as a narrator (rule 2's narrator test), the life years do
 // not disagree and, if the twin carries an author id, the credit states no
 // years of its own or the same birth and death; "" otherwise.
-func (p *planner) librivoxTitledTwin(slug string, life lifeYears) string {
+func (p *planner) librivoxTitledTwin(name, slug string, life lifeYears) string {
 	twins := p.librivoxTitledTwins()[slug]
 	if len(twins) != 1 {
 		return ""
 	}
 	twin := twins[0]
-	if p.apart.Has(slug, twin) {
+	// The slugs themselves are asked as well as the names: a missing name has no
+	// slugs to judge (creditSlugs), and that must not skip the review.
+	if p.apart.Has(slug, twin) || p.peopleKeptApart(name, p.people[twin]) {
 		return "" // a review recorded two people (Options.Distinct)
 	}
 	if p.narratorPeople[twin] && len(p.librivoxPersonWorks()[twin]) == 0 {
