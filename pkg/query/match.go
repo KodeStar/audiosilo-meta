@@ -17,6 +17,8 @@ import (
 	"unicode/utf8"
 
 	"github.com/kodestar/audiosilo-meta/internal/httpx"
+	"github.com/kodestar/audiosilo-meta/internal/titlerule"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // Structured match: GET /api/v1/works/match.
@@ -181,7 +183,9 @@ type matchResult struct {
 	// RecordingID is the recording the identifier named, else the one whose
 	// narrators agree best with the request's (when it names any and one
 	// agrees, not more than runtimeFar off the runtime), the closer runtime
-	// breaking a tie, else the one whose runtime fits the requested one best;
+	// breaking a tie, else the one whose runtime fits the requested one best,
+	// never a dramatization unless the request states one (the work still matches:
+	// a dramatization is that book, but a plain book is not its recording);
 	// omitted when none applies.
 	RecordingID string       `json:"recording_id,omitempty"`
 	Reasons     matchReasons `json:"reasons"`
@@ -292,6 +296,9 @@ type matchFacts struct {
 	// are its narrator guesses read as names (splitAuthors).
 	language  string
 	narrators []personName
+	// statesDramatization is whether the request's own text says the book is a
+	// dramatized production, the one case a runtime may name a dramatization.
+	statesDramatization bool
 	// text is the free text's terms, nil when it says nothing identifying;
 	// textTitle is the whole of it as a title guess, the first one textFacts
 	// reads for every candidate, so it is built once here.
@@ -328,6 +335,7 @@ func newTitleGuess(terms []string) titleGuess {
 // readFacts folds a request into matchFacts.
 func readFacts(req matchRequest) *matchFacts {
 	f := &matchFacts{position: req.position, runtime: req.runtime, language: req.language, edit: &editBuf{}}
+	f.statesDramatization = slices.ContainsFunc(slices.Concat([]string{req.text}, req.titles, req.series, req.narrators), titlerule.StatesDramatization)
 	f.authors = readNames(req.authors)
 	f.narrators = readNames(req.narrators)
 	for _, series := range req.series {
@@ -431,9 +439,12 @@ func readNames(guesses []string) []personName {
 
 // candidate is one work being judged: its facts, read in batches.
 type candidate struct {
-	id     string
-	title  []string    // the title's own terms
-	titles []titleForm // every form the title is compared in (candidateTitleForms)
+	// labelled: the work's title still carries an adaptation label, read only for a
+	// recording that states no publisher.
+	labelled bool
+	id       string
+	title    []string    // the title's own terms
+	titles   []titleForm // every form the title is compared in (candidateTitleForms)
 	// authors are the credited names, authorKeys their sorted-name keys
 	// (isAuthorName) and authorWord every word of them.
 	authors    []personName
@@ -467,8 +478,11 @@ type candidateSeries struct {
 }
 
 type recordingRuntime struct {
-	id     string
-	minute int
+	// dramatized: the recording states it is a dramatized production
+	// (model.Recording.IsDramatization), or states no publisher on a labelled work.
+	dramatized bool
+	id         string
+	minute     int
 }
 
 // identification is the recording an identifier lookup named, with the
@@ -847,7 +861,9 @@ func matchWorksSQL(ph string) string {
 }
 
 func matchRuntimesSQL(ph string) string {
-	return `SELECT work_id, id, runtime_min FROM recordings WHERE work_id IN (` + ph + `) AND runtime_min > 0`
+	return `SELECT r.work_id, r.id, r.runtime_min, COALESCE(r.publisher, ''), EXISTS(SELECT 1 FROM recording_narrators n ` +
+		`WHERE n.work_id = r.work_id AND n.recording_id = r.id AND n.person_id = '` + model.FullCastPerson + `') ` +
+		`FROM recordings r WHERE r.work_id IN (` + ph + `) AND r.runtime_min > 0`
 }
 
 // matchNarratorsSQL reads every recording's narrators, through
@@ -923,6 +939,7 @@ func (s *DB) candidateFacts(ctx context.Context, pool *candidatePool, narrators 
 				id: id, title: terms, titles: candidateTitleForms(title, terms, subtitle),
 				authorWord: map[string]bool{}, identified: pool.identified[id],
 				language: memo.language(language),
+				labelled: titlerule.IsDramatization(title),
 			}
 			return nil
 		})
@@ -969,13 +986,15 @@ func (s *DB) candidateFacts(ctx context.Context, pool *candidatePool, narrators 
 			return err
 		}
 		if err := queryEach(ctx, s.db, matchRuntimesSQL(ph), args, func(rows *sql.Rows) error {
-			var workID, rid string
+			var workID, rid, publisher string
 			var minutes int
-			if err := rows.Scan(&workID, &rid, &minutes); err != nil {
+			var fullCast bool
+			if err := rows.Scan(&workID, &rid, &minutes, &publisher, &fullCast); err != nil {
 				return err
 			}
 			c := byID[workID]
-			c.runtimes = append(c.runtimes, recordingRuntime{id: rid, minute: minutes})
+			c.runtimes = append(c.runtimes, recordingRuntime{id: rid, minute: minutes,
+				dramatized: fullCast || model.IsDramatizationPublisher(publisher) || (publisher == "" && c.labelled)})
 			return nil
 		}); err != nil {
 			return err
@@ -1034,10 +1053,16 @@ func (f *matchFacts) judge(c *candidate) scored {
 	// Runtime and narrators are shared by both sets: each starts from them.
 	var base wavg
 	if f.runtime > 0 {
-		best := 0.0
+		best, pickDiff := 0.0, math.Inf(1)
 		for _, r := range c.runtimes {
-			if fit, diff := runtimeFit(r.minute, f.runtime); diff < v.runtimeDiff {
-				v.runtimeDiff, best, v.recordingID = diff, fit, r.id
+			fit, diff := runtimeFit(r.minute, f.runtime)
+			// Every recording speaks for the WORK: a dramatization is that book.
+			if diff < v.runtimeDiff {
+				v.runtimeDiff, best = diff, fit
+			}
+			// Only an edition the book may be is named as its recording.
+			if diff < pickDiff && (!r.dramatized || f.statesDramatization) {
+				pickDiff, v.recordingID = diff, r.id
 			}
 		}
 		if !math.IsInf(v.runtimeDiff, 1) {

@@ -4,6 +4,7 @@ import (
 	"maps"
 	"math"
 	"net/url"
+	"slices"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -377,5 +378,102 @@ func TestParseMatchRequestLanguageAndNarrators(t *testing.T) {
 	}
 	if r, _ := parseMatchRequest(url.Values{"title": {"Dune"}}); r.language != "" || r.narrators != nil {
 		t.Errorf("absent language/narrator read as %q / %q", r.language, r.narrators)
+	}
+}
+
+// A plain book matches a work that holds a dramatization, because that is the same
+// book, but the dramatization is never named as the book's recording by length.
+func TestMatchRuntimeNeverNamesADramatizationForAPlainBook(t *testing.T) {
+	plain := recordingRuntime{id: "a-plain", minute: 700}
+	drama := recordingRuntime{id: "b-drama", minute: 400, dramatized: true}
+	newCand := func(rs ...recordingRuntime) *candidate {
+		return &candidate{id: "dune", title: matchTerms("Dune"), titles: candidateTitleForms("Dune", matchTerms("Dune"), ""), runtimes: rs}
+	}
+	cases := []struct {
+		name string
+		req  matchRequest
+		recs []recordingRuntime
+		want string
+	}{
+		{"denied: nearer by length, but a plain book", matchRequest{titles: []string{"Dune"}, runtime: 24000}, []recordingRuntime{plain, drama}, "a-plain"},
+		{"denied: the only recording", matchRequest{titles: []string{"Dune"}, runtime: 24000}, []recordingRuntime{drama}, ""},
+		{"allowed: the title says so", matchRequest{titles: []string{"Dune [Dramatized Adaptation]"}, runtime: 24000}, []recordingRuntime{plain, drama}, "b-drama"},
+		{"allowed: a folder's series says so", matchRequest{titles: []string{"Dune"}, series: []string{"Dune (Full Cast)"}, runtime: 24000}, []recordingRuntime{plain, drama}, "b-drama"},
+		{"allowed: the narrator credit says so", matchRequest{titles: []string{"Dune"}, narrators: []string{"Full Cast"}, runtime: 24000}, []recordingRuntime{plain, drama}, "b-drama"},
+		{"a plain recording is picked as ever", matchRequest{titles: []string{"Dune"}, runtime: 42000}, []recordingRuntime{plain, drama}, "a-plain"},
+	}
+	for _, c := range cases {
+		v := readFacts(c.req).judge(newCand(c.recs...))
+		if v.recordingID != c.want {
+			t.Errorf("%s: recording %q, want %q", c.name, v.recordingID, c.want)
+		}
+		if v.score == 0 {
+			t.Errorf("%s: the work no longer matches", c.name)
+		}
+	}
+	// The dramatization still speaks for the work: the fit is the closest recording's.
+	v := readFacts(matchRequest{titles: []string{"Dune"}, runtime: 24000}).judge(newCand(plain, drama))
+	if v.reasons.Runtime == nil || *v.reasons.Runtime != 0 {
+		t.Errorf("runtime reason %v, want the dramatization's exact fit", v.reasons.Runtime)
+	}
+}
+
+// A narrator credit naming the production's own cast still names its recording: the
+// request has said which edition it is. An identifier does as well.
+func TestMatchNarratorOrIdentifierStillNamesADramatization(t *testing.T) {
+	hill, _ := parseName("Alex Hill Knight")
+	c := &candidate{
+		id: "dune", title: matchTerms("Dune"), titles: candidateTitleForms("Dune", matchTerms("Dune"), ""),
+		runtimes: []recordingRuntime{{id: "a-plain", minute: 700}, {id: "b-drama", minute: 400, dramatized: true}},
+		narrated: []recordingNarrators{{id: "b-drama", names: []personName{hill}}},
+	}
+	v := readFacts(matchRequest{titles: []string{"Dune"}, runtime: 24000, narrators: []string{"Alex Hill Knight"}}).judge(c)
+	if v.recordingID != "b-drama" {
+		t.Errorf("narrator: recording %q, want b-drama", v.recordingID)
+	}
+	c.narrated = nil
+	c.identified = identification{recording: "b-drama", by: "asin"}
+	v = readFacts(matchRequest{asin: "B0DUNE0001", runtime: 42000}).judge(c)
+	if v.recordingID != "b-drama" {
+		t.Errorf("identifier: recording %q, want b-drama", v.recordingID)
+	}
+}
+
+// Through the database: the recording's publisher or full-cast credit says it, and the
+// work's label is the fallback for a recording stating no publisher.
+func TestMatchReadsADramatizationFromTheRecording(t *testing.T) {
+	rec := func(id string, minutes int, publisher string, narrators ...string) *model.Recording {
+		r := factorRec(id, minutes, narrators...)
+		r.Publisher = publisher
+		return r
+	}
+	_, ts := newTestServerForCatalog(t, &model.Catalog{
+		People: []*model.Person{factorPerson("ada-one", "Ada One"), factorPerson(model.FullCastPerson, "Full Cast"), factorPerson("bea-reader", "Bea Reader")},
+		Works: []*model.Work{
+			factorWork("both", "Both", "en", "ada-one", rec("a-reader", 700, "Tantor Audio", "bea-reader"), rec("b-ga", 400, "Graphic Audio LLC", "bea-reader")),
+			factorWork("cast", "Cast", "en", "ada-one", rec("a-reader", 700, "Tantor Audio", "bea-reader"), rec("b-cast", 400, "Corey Press", model.FullCastPerson)),
+			factorWork("only-drama", "Only Drama", "en", "ada-one", rec("b-ga", 400, "GraphicAudio", "bea-reader")),
+			factorWork("label-unknown", "Label Unknown [Dramatized Adaptation]", "en", "ada-one", rec("d-none", 400, "", "bea-reader")),
+			factorWork("label-plain", "Label Plain [Dramatized Adaptation]", "en", "ada-one", rec("e-plain", 400, "Tantor Audio", "bea-reader")),
+		},
+	})
+	for _, x := range []struct{ title, id, want string }{
+		{"Both", "both", "a-reader"},
+		{"Cast", "cast", "a-reader"},
+		{"Only Drama", "only-drama", ""},
+		{"Label Unknown", "label-unknown", ""},
+		{"Label Plain", "label-plain", "e-plain"},
+	} {
+		res := matchJSON(t, ts.URL, url.Values{"title": {x.title}, "author": {"Ada One"}, "runtime": {"24000"}})
+		for _, r := range res {
+			if r["id"] == x.id {
+				if got, _ := r["recording_id"].(string); got != x.want {
+					t.Errorf("%s: recording_id %q, want %q", x.title, got, x.want)
+				}
+			}
+		}
+		if !slices.Contains(matchIDs(res), any(x.id)) {
+			t.Errorf("%s: the work no longer matches: %v", x.title, matchIDs(res))
+		}
 	}
 }

@@ -621,7 +621,9 @@ request without `language` and `narrator` scores as before, except for the
 position and runtime factors, which apply to every request. Each title form, guess and series name is folded once
 (`termForm`), person and series names and work language tags once per request (`factMemo`). Each result is
 the `WorkResult` search returns plus `score` (0-100), `recording_id` (the
-identifier's, else the narrator-agreeing one's, else the closest runtime's) and `reasons`
+identifier's, else the narrator-agreeing one's, else the closest runtime's, never a
+dramatization unless the request's own text states one: `model.Recording.IsDramatization`, a
+work's label read only for a recording stating no publisher) and `reasons`
 (`title`/`text`/`author`/`series`/`runtime`/`identifier`/`narrator`/`language`, each
 omitted unless the request let it be judged). Bounds: every text value through `boundQuery`, at most
 8 matches at once (`HandlerOptions.MatchConcurrency`) and 2s each (`query.PublicMatchBudget`,

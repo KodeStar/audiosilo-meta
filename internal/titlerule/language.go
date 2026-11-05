@@ -202,12 +202,22 @@ func SplitEditionName(name string) (base, lang string, ok bool) {
 }
 
 // dramatization matches a title announcing a DRAMATIZED production ("[Dramatized
-// Adaptation]", "(Dramatised)", "A Full-Cast Dramatization"): a production written
-// for voices, which a translation link must not treat as the plain text it may have
-// been translated from. The duplicate decisions deliberately do not read it (a
-// dramatization of one work is still that work - see internal/audit's
-// vetoAdaptedEditionOneSide); only the translation-link direction does.
+// Adaptation]", "(Dramatised)", "A Full-Cast Dramatization"). The duplicate decisions
+// deliberately do not read it (a dramatization of one work is still that work - see
+// internal/audit's vetoAdaptedEditionOneSide). What says a recording is dramatized is
+// the recording itself (model.Recording.IsDramatization); a stored title is read only
+// as the fallback for a record whose recordings state nothing, since the label comes
+// off a title as a qualifier.
 var dramatization = regexp.MustCompile(`(?i)\bdramati[sz](?:ed|ations?)\b`)
 
 // IsDramatization reports whether a title announces a dramatized production.
 func IsDramatization(title string) bool { return dramatization.MatchString(title) }
+
+// fullCast matches the other way a book's own tags name a production for voices.
+var fullCast = regexp.MustCompile(`(?i)\bfull[- ]?cast\b`)
+
+// StatesDramatization reports whether a library book's own text - a tagged title, a
+// folder, a narrator credit - says the book is a dramatized production.
+func StatesDramatization(text string) bool {
+	return IsDramatization(text) || fullCast.MatchString(text)
+}
