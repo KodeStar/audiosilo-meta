@@ -29492,6 +29492,14 @@
   },
   {
     "decision": "assert",
+    "from": "Alcatraz Versus The Evil Librarians [Dramatized Adaptation]",
+    "op": "retitle-work",
+    "reason": "the adaptation label is decoration; the book title equals its series name, which the mechanical rule leaves to a reviewer",
+    "target": "alcatraz-versus-the-evil-librarians-dramatized-adaptation",
+    "to": "Alcatraz Versus The Evil Librarians"
+  },
+  {
+    "decision": "assert",
     "from": "Alex Cross's TRIAL",
     "op": "retitle-work",
     "reason": "the Cornerstone listings (B0032N8MO8, 147359295X) and the book spell Trial in title case; TRIAL is the US cover's typography",
@@ -30770,6 +30778,14 @@
     "reason": "the prequel's Kindle edition (Goodreads 36242416, book 0, the Kate Holloway story the audio describes) is titled Surviving the Collapse: A Tale of Survival in a Powerless World; the listing's title ends in a bare colon",
     "target": "surviving-the-collapse",
     "to": "Surviving the Collapse: A Tale of Survival in a Powerless World"
+  },
+  {
+    "decision": "assert",
+    "from": "Tamora Carter: Goblin Queen [Dramatized Adaptation]",
+    "op": "retitle-work",
+    "reason": "only the adaptation label is decoration: both rows title the book Tamora Carter: Goblin Queen, so the series name stays in the title",
+    "target": "tamora-carter-goblin-queen-dramatized-adaptation",
+    "to": "Tamora Carter: Goblin Queen"
   },
   {
     "decision": "assert",
