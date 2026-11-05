@@ -20,10 +20,10 @@ package serve
 //     sweep drops it about a day after the client's last request whether or not
 //     anybody else ever calls. Nothing on this path logs an address, a user agent,
 //     an ASIN or a batch, and nothing of the kind goes in the file.
-//   - Every snapshot this server starts serving filters the queue (kickIntakePurge):
-//     a row leaves when the artifact knows it, or when it expires. There is no ack
-//     route. The purge runs on the housekeeping goroutine, outside s.mu, so a slow
-//     or failing queue never holds up a swap.
+//   - Every snapshot this server serves filters the queue: a row leaves when the
+//     artifact knows it, or when it expires. There is no ack route. The housekeeping
+//     goroutine notices a new snapshot on its tick, however it was installed, and
+//     purges outside s.mu, so a slow or failing queue never holds up a swap.
 
 import (
 	"cmp"
@@ -43,6 +43,7 @@ import (
 	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/httpx"
+	"github.com/kodestar/audiosilo-meta/pkg/query"
 )
 
 const (
@@ -85,9 +86,6 @@ type intakeState struct {
 	limiter *rateLimiter
 	// token is the read route's bearer token; empty leaves that route unregistered.
 	token string
-	// purge wakes intakeLoop for a purge. Capacity one is the coalescing: however
-	// many snapshots land during a purge, one more follows it, reading the newest.
-	purge chan struct{}
 	// stop ends intakeLoop, which closes done on its way out.
 	stop func()
 	done chan struct{}
@@ -119,9 +117,9 @@ func (s *Server) openIntake() {
 	ctx, cancel := context.WithCancel(context.Background())
 	s.intake = &intakeState{
 		queue: q, limiter: limiter, token: token,
-		purge: make(chan struct{}, 1), stop: cancel, done: make(chan struct{}),
+		stop: cancel, done: make(chan struct{}),
 	}
-	go s.intakeLoop(ctx, s.intake)
+	go s.intakeLoop(ctx)
 	s.log.Printf("serve: intake queue on at %s", path)
 }
 
@@ -147,65 +145,55 @@ func (s *Server) closeIntake() {
 // quiet spell would stay in memory until the next one, and the promise is about a
 // day. The tick is sweepEvery, so the address is gone within a minute or two of
 // its full bucket's 24 hours.
-func (s *Server) intakeLoop(ctx context.Context, in *intakeState) {
-	defer close(in.done)
+func (s *Server) intakeLoop(ctx context.Context) {
+	defer close(s.intake.done)
 	tick := time.NewTicker(cmp.Or(s.cfg.intakeTick, sweepEvery))
 	defer tick.Stop()
-	expiredOn := s.expireIntakeRows(ctx, in, "")
+	expiredOn := s.expireIntakeRows(ctx, "")
+	purged := s.purgeKnownIntakeRows(ctx, nil)
 	for {
 		select {
 		case <-ctx.Done():
 			return
-		case <-in.purge:
-			s.purgeKnownIntakeRows(ctx, in)
 		case <-tick.C:
-			in.limiter.sweepIdle()
-			expiredOn = s.expireIntakeRows(ctx, in, expiredOn)
+			s.intake.limiter.sweepIdle()
+			expiredOn = s.expireIntakeRows(ctx, expiredOn)
+			purged = s.purgeKnownIntakeRows(ctx, purged)
 		}
 	}
 }
 
 // expireIntakeRows deletes the rows past their expiry, once a UTC day, and returns
 // the day it last ran. A failure is logged and waits for the next day.
-func (s *Server) expireIntakeRows(ctx context.Context, in *intakeState, expiredOn string) string {
+func (s *Server) expireIntakeRows(ctx context.Context, expiredOn string) string {
 	now := s.cfg.now().UTC()
 	today := now.Format(time.DateOnly)
 	if today == expiredOn {
 		return expiredOn
 	}
 	cutoff := now.AddDate(0, 0, -intakeExpiryDays).Format(time.DateOnly)
-	if err := in.queue.expire(ctx, cutoff); err != nil && ctx.Err() == nil {
+	if err := s.intake.queue.expire(ctx, cutoff); err != nil && ctx.Err() == nil {
 		s.log.Printf("serve: intake queue: %v", err)
 	}
 	return today
 }
 
-// kickIntakePurge asks for the queue to be filtered against the snapshot now live.
-// Every place that installs a snapshot calls it. It never blocks, so it is safe
-// under s.mu, and it is a no-op with the queue off.
-func (s *Server) kickIntakePurge() {
-	if s.intake == nil {
-		return
-	}
-	select {
-	case s.intake.purge <- struct{}{}:
-	default:
-	}
-}
-
-// purgeKnownIntakeRows deletes the rows the live snapshot knows. The snapshot is
-// loaded once and used throughout, as a request does: a swap meanwhile leaves this
-// one open for its grace, and has already asked for a purge against its successor.
-// A failure is only logged. The rows stay, and the next adopt tries again.
-func (s *Server) purgeKnownIntakeRows(ctx context.Context, in *intakeState) {
+// purgeKnownIntakeRows deletes the rows the live snapshot knows, once per snapshot,
+// and returns the snapshot it last read. Comparing the pointer is what reaches every
+// way of installing one, and several swaps between two ticks are one purge against
+// the newest. The snapshot is loaded once and used throughout, as a request does: a
+// swap meanwhile leaves this one open for its grace, and the next tick takes its
+// successor. A failure is only logged. The rows stay, and the next adopt tries again.
+func (s *Server) purgeKnownIntakeRows(ctx context.Context, purged *query.DB) *query.DB {
 	snap := s.current()
-	if snap == nil {
-		return
+	if snap == nil || snap == purged {
+		return purged
 	}
 	ctx, cancel := context.WithTimeout(ctx, intakePurgeTimeout)
 	defer cancel()
+	queue := s.intake.queue
 	err := func() error {
-		asins, err := in.queue.asins(ctx)
+		asins, err := queue.asins(ctx)
 		if err != nil {
 			return err
 		}
@@ -213,7 +201,7 @@ func (s *Server) purgeKnownIntakeRows(ctx context.Context, in *intakeState) {
 		if err != nil {
 			return err
 		}
-		if err := in.queue.remove(ctx, slices.Collect(maps.Keys(known))); err != nil {
+		if err := queue.remove(ctx, slices.Collect(maps.Keys(known))); err != nil {
 			return err
 		}
 		if len(known) > 0 {
@@ -226,6 +214,7 @@ func (s *Server) purgeKnownIntakeRows(ctx context.Context, in *intakeState) {
 	if err != nil && !errors.Is(context.Cause(ctx), context.Canceled) {
 		s.log.Printf("serve: intake queue purge failed: %v", err)
 	}
+	return snap
 }
 
 // intakeRoutes is the intake surface, empty when the deployment does not offer it.

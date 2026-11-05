@@ -119,6 +119,11 @@ func intakeServer(t *testing.T, cfg Config) *Server {
 	if cfg.swapGrace == 0 {
 		cfg.swapGrace = time.Minute
 	}
+	// A purge waits for a tick, so a test not waiting a minute takes a short one. A
+	// test's own clock stays on the default: the loop reads the clock on every tick.
+	if cfg.intakeTick == 0 && cfg.now == nil {
+		cfg.intakeTick = 5 * time.Millisecond
+	}
 	srv, err := New(cfg)
 	if err != nil {
 		t.Fatal(err)
@@ -311,7 +316,6 @@ func TestIntakeOffIsNoChange(t *testing.T) {
 			if srv.intake != nil {
 				t.Fatal("intake state exists with the env unset, and only it starts a goroutine")
 			}
-			srv.kickIntakePurge() // no queue to reach: must not panic
 			srv.closeIntake()
 
 			for _, r := range srv.routes() {
@@ -885,8 +889,7 @@ func TestIntakePurgeOnEveryAdoptPath(t *testing.T) {
 }
 
 // TestIntakePurgeNeverHoldsUpASwap: the queue's one connection is held for the
-// whole refresh, so a purge on the request path or under s.mu would hang here. The
-// kicks that pile up meanwhile coalesce, and the purge then runs against the newest.
+// whole refresh, so a purge on the request path or under s.mu would hang here.
 func TestIntakePurgeNeverHoldsUpASwap(t *testing.T) {
 	v1Path := artifacttest.Build(t, artifacttest.Fixture())
 	late := readDB(t, artifacttest.Build(t, intakeLateCatalog()))
@@ -916,12 +919,6 @@ func TestIntakePurgeNeverHoldsUpASwap(t *testing.T) {
 		t.Fatal("s.mu is held with the refresh finished")
 	}
 	srv.mu.Unlock()
-	for range 50 {
-		srv.kickIntakePurge()
-	}
-	if n := len(srv.intake.purge); n > 1 {
-		t.Errorf("%d purges pending, want them coalesced to at most one", n)
-	}
 	if err := tx.Rollback(); err != nil {
 		t.Fatal(err)
 	}
@@ -1382,8 +1379,8 @@ func TestIntakeSchemaHoldsNoClientData(t *testing.T) {
 			t.Fatal(err)
 		}
 		objects = append(objects, typ+" "+name)
-		if name == "intake_asins" && stmt != intakeSchema {
-			t.Errorf("the table is %q, want %q", stmt, intakeSchema)
+		if want := "CREATE TABLE intake_asins(asin TEXT PRIMARY KEY, count INTEGER NOT NULL, first_day TEXT NOT NULL, last_day TEXT NOT NULL) WITHOUT ROWID"; name == "intake_asins" && stmt != want {
+			t.Errorf("the table is %q, want %q", stmt, want)
 		}
 	}
 	if err := rows.Err(); err != nil {
@@ -1392,10 +1389,6 @@ func TestIntakeSchemaHoldsNoClientData(t *testing.T) {
 	_ = rows.Close()
 	if !slices.Equal(objects, []string{"table intake_asins"}) {
 		t.Errorf("schema objects = %v, want the one table", objects)
-	}
-	want := "CREATE TABLE intake_asins(asin TEXT PRIMARY KEY, count INTEGER NOT NULL, first_day TEXT NOT NULL, last_day TEXT NOT NULL) WITHOUT ROWID"
-	if intakeSchema != want {
-		t.Errorf("schema = %q", intakeSchema)
 	}
 	if _, err := db.Exec(`SELECT rowid FROM intake_asins`); err == nil {
 		t.Error("the table has a rowid")
@@ -1439,7 +1432,7 @@ func TestIntakeLogsNoClientData(t *testing.T) {
 	send(http.MethodGet, "", "Bearer wrong")
 	// A row the purge will take, and it logging what it did.
 	seedQueue(t, srv.intake.queue, intakeRow{ASIN: knownASIN, Count: 1, FirstDay: "2026-11-01", LastDay: "2026-11-01"})
-	srv.kickIntakePurge()
+	srv.purgeKnownIntakeRows(context.Background(), nil)
 	eventually(t, "the purge", func() bool { return strings.Contains(logged.String(), "now known") })
 	// A burst past the limit.
 	for range intakeReportsPerDay {

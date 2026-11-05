@@ -33,12 +33,7 @@ import (
 // renders a relative one as `file://meta.sqlite`, where the parser reads
 // `meta.sqlite` as the HOST and finds no file at all.
 func ReadOnly(path string) (string, error) {
-	abs, err := filepath.Abs(path)
-	if err != nil {
-		return "", err
-	}
-	u := url.URL{Scheme: "file", Path: abs, RawQuery: "mode=ro"}
-	return u.String(), nil
+	return fileURI(path, "mode=ro")
 }
 
 // ReadWrite builds the `file:` URI for a database the caller writes, created when
@@ -46,13 +41,18 @@ func ReadOnly(path string) (string, error) {
 // is escaped and made absolute for the reasons on ReadOnly. A pragma is the
 // driver's `_pragma` value, for example "journal_mode(DELETE)".
 func ReadWrite(path string, pragmas ...string) (string, error) {
-	abs, err := filepath.Abs(path)
-	if err != nil {
-		return "", err
-	}
 	query := "mode=rwc"
 	for _, p := range pragmas {
 		query += "&_pragma=" + url.QueryEscape(p)
+	}
+	return fileURI(path, query)
+}
+
+// fileURI is the one spelling of the rule on ReadOnly: absolute, then escaped.
+func fileURI(path, query string) (string, error) {
+	abs, err := filepath.Abs(path)
+	if err != nil {
+		return "", err
 	}
 	u := url.URL{Scheme: "file", Path: abs, RawQuery: query}
 	return u.String(), nil

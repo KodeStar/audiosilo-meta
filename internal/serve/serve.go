@@ -231,18 +231,13 @@ func New(cfg Config) (*Server, error) {
 	if cfg.Poll {
 		s.gh = s.newGHClient(cfg.Repo, cfg.apiBase)
 	}
-	// Before any snapshot loads: every load below has to reach the queue, the first
-	// adopt of a boot with no snapshot included (kickIntakePurge).
-	s.openIntake()
 
 	if cfg.DBPath != "" {
 		snap, err := s.open(cfg.DBPath, "")
 		if err != nil {
-			s.closeIntake()
 			return nil, err
 		}
 		s.cur.Store(snap)
-		s.kickIntakePurge()
 	} else if cfg.Poll {
 		if err := s.refresh(context.Background()); err != nil {
 			s.log.Printf("serve: no artifact at boot: %v", err)
@@ -255,7 +250,6 @@ func New(cfg Config) (*Server, error) {
 			}
 		}
 	} else {
-		s.closeIntake()
 		return nil, errors.New("serve: no --db and --poll not set: nothing to serve")
 	}
 
@@ -263,6 +257,9 @@ func New(cfg Config) (*Server, error) {
 		s.site = newSiteHandler(cfg.Site)
 		s.shells = loadShells(cfg.Site, cfg.SiteURL, s.log)
 	}
+	// Last, so no failure above has a goroutine and a file to clean up, and before
+	// buildMux, which registers the routes it decides on.
+	s.openIntake()
 	s.mux = s.buildMux()
 	return s, nil
 }
@@ -397,9 +394,6 @@ const defaultBootRetry = 30 * time.Second
 // The caller must hold s.mu (adopt does): s.retired is refresh-owned state.
 func (s *Server) swap(next *query.DB) {
 	old := s.cur.Swap(next)
-	// Before the return below: the first adopt of a boot with no snapshot has no
-	// old one to retire, and is the one that most needs the queue filtered.
-	s.kickIntakePurge()
 	if old == nil || old == next {
 		return
 	}

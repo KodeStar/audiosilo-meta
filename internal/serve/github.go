@@ -384,7 +384,6 @@ func (s *Server) adoptStaleCache() bool {
 		return false
 	}
 	s.cur.Store(snap)
-	s.kickIntakePurge()
 	st := snap.Stats()
 	s.log.Printf("serve: serving the STALE cached artifact %s (%s, %d works, built %s) until a release loads",
 		path, tag, st.Works, st.BuiltAt)

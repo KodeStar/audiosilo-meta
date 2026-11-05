@@ -19,7 +19,7 @@ import (
 // There is no column for a client or anything that identifies one, a day rather
 // than a timestamp, and no rowid, so neither the rows nor their order can rebuild
 // who sent what or which ASINs arrived together.
-const intakeSchema = `CREATE TABLE intake_asins(asin TEXT PRIMARY KEY, count INTEGER NOT NULL, first_day TEXT NOT NULL, last_day TEXT NOT NULL) WITHOUT ROWID`
+const intakeSchema = `CREATE TABLE IF NOT EXISTS intake_asins(asin TEXT PRIMARY KEY, count INTEGER NOT NULL, first_day TEXT NOT NULL, last_day TEXT NOT NULL) WITHOUT ROWID`
 
 // intakePragmas keep the arrival order off the disk too, which the schema alone
 // cannot promise. journal_mode=DELETE leaves no sidecar behind a commit, where a
@@ -42,7 +42,7 @@ type intakeQueue struct {
 // table as needed, and proves it writable: a queue that can only be read would
 // answer every report 503 for as long as the server runs, and reporting that once
 // at boot leaves the routes honestly off instead.
-func openIntakeQueue(path string) (q *intakeQueue, err error) {
+func openIntakeQueue(path string) (*intakeQueue, error) {
 	if err := os.MkdirAll(filepath.Dir(path), 0o700); err != nil {
 		return nil, err
 	}
@@ -63,17 +63,12 @@ func openIntakeQueue(path string) (q *intakeQueue, err error) {
 	if err != nil {
 		return nil, err
 	}
-	defer func() {
-		if err != nil {
-			_ = db.Close()
-		}
-	}()
 	// One connection: every use is short and none spans client I/O (handlers read
 	// the body before and write the answer after), and it means a writer never
 	// meets SQLITE_BUSY from this process's own other connection.
 	db.SetMaxOpenConns(1)
 	for _, stmt := range []string{
-		strings.Replace(intakeSchema, "CREATE TABLE", "CREATE TABLE IF NOT EXISTS", 1),
+		intakeSchema,
 		// A file that already held some other intake_asins fails here.
 		`SELECT asin, count, first_day, last_day FROM intake_asins LIMIT 0`,
 		// The write proof: a real write to the header page, which needs the
@@ -81,6 +76,7 @@ func openIntakeQueue(path string) (q *intakeQueue, err error) {
 		`PRAGMA user_version = 1`,
 	} {
 		if _, err := db.Exec(stmt); err != nil {
+			_ = db.Close()
 			return nil, err
 		}
 	}
@@ -118,14 +114,11 @@ func (q *intakeQueue) record(ctx context.Context, asins []string, today string) 
 	defer func() { _ = tx.Rollback() }()
 
 	list, args := sqlArgs(asins)
-	var total, held int
-	if err := tx.QueryRowContext(ctx, `SELECT COUNT(*) FROM intake_asins`).Scan(&total); err != nil {
+	var others int
+	if err := tx.QueryRowContext(ctx, `SELECT COUNT(*) FROM intake_asins WHERE asin NOT IN (`+list+`)`, args...).Scan(&others); err != nil {
 		return err
 	}
-	if err := tx.QueryRowContext(ctx, `SELECT COUNT(*) FROM intake_asins WHERE asin IN (`+list+`)`, args...).Scan(&held); err != nil {
-		return err
-	}
-	if over := total + len(asins) - held - q.maxRows; over > 0 {
+	if over := others + len(asins) - q.maxRows; over > 0 {
 		_, err := tx.ExecContext(ctx, `DELETE FROM intake_asins WHERE asin IN (
 			SELECT asin FROM intake_asins WHERE asin NOT IN (`+list+`) ORDER BY count, last_day, asin LIMIT ?)`,
 			append(args, over)...)
@@ -133,11 +126,15 @@ func (q *intakeQueue) record(ctx context.Context, asins []string, today string) 
 			return err
 		}
 	}
+	upsert, err := tx.PrepareContext(ctx, `INSERT INTO intake_asins(asin, count, first_day, last_day) VALUES(?, 1, ?, ?)
+		ON CONFLICT(asin) DO UPDATE SET count = count + 1, last_day = excluded.last_day`)
+	if err != nil {
+		return err
+	}
+	defer func() { _ = upsert.Close() }()
 	// Sorted, so the statements' order says nothing about the body's either.
-	sorted := slices.Sorted(slices.Values(asins))
-	for _, asin := range sorted {
-		if _, err := tx.ExecContext(ctx, `INSERT INTO intake_asins(asin, count, first_day, last_day) VALUES(?, 1, ?, ?)
-			ON CONFLICT(asin) DO UPDATE SET count = count + 1, last_day = excluded.last_day`, asin, today, today); err != nil {
+	for _, asin := range slices.Sorted(slices.Values(asins)) {
+		if _, err := upsert.ExecContext(ctx, asin, today, today); err != nil {
 			return err
 		}
 	}
