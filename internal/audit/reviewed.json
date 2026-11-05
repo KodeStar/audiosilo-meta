@@ -30063,14 +30063,6 @@
     "to": "Hinter den Kulissen"
   },
   {
-    "decision": "assert",
-    "from": "Horrible Histories: Villainous Victorians",
-    "op": "retitle-work",
-    "reason": "both ASINs (B00J9KF8U4, B00J9KH6HW), the runtime and the chapters are Frightful First World War; no listing was found for a Villainous Victorians, the Victorian title being Vile Victorians",
-    "target": "horrible-histories-villainous-victorians",
-    "to": "Horrible Histories: Frightful First World War"
-  },
-  {
     "decision": "reject",
     "field": "title",
     "from": "Idiot (Part 01 and 02)",
@@ -30955,6 +30947,14 @@
     "reason": "GPR's 78 min album (B00AJMJ3R0) holds The Runaway Bunny, The Story of Babar and the Goodnight Moon lullaby, and library listings (Hoopla 11353057) title it so",
     "target": "the-runaway-bunny",
     "to": "The Runaway Bunny, Including The Story of Babar & Goodnight Moon"
+  },
+  {
+    "decision": "assert",
+    "from": "The Sins of the Father: Clifton Chronicles, Book 2",
+    "op": "retitle-work",
+    "reason": "the series name is decoration: the rows title it The Sins of the Father, and the audit proposed this strip itself",
+    "target": "the-sins-of-the-father-clifton-chronicles-book-2",
+    "to": "The Sins of the Father"
   },
   {
     "decision": "assert",
