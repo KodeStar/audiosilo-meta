@@ -268,8 +268,8 @@ func TestAddWorkIdentityGateSetsAnOwnWorkApart(t *testing.T) {
 	if res.Status != StatusDuplicate || !anyContains(res.Messages, "the-blood-of-elves") {
 		t.Fatalf("with the decision: status = %q; messages = %v", res.Status, res.Messages)
 	}
-	if res := process(map[int]importer.LibrivoxReview{}); res.Status == StatusDuplicate {
-		t.Errorf("without it the key is ambiguous, yet the gate named one: %v", res.Messages)
+	if res := process(map[int]importer.LibrivoxReview{}); res.Status != StatusOK {
+		t.Errorf("without it the key is ambiguous and no verdict can name one: status = %q; messages = %v", res.Status, res.Messages)
 	}
 }
 

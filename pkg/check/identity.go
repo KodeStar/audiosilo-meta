@@ -361,10 +361,11 @@ func (ix *WorkIdentity) MatchKey(key, title, series, lang string, all, identity 
 // It never writes to candidates, so a caller may hand it a slice it keeps: an answer that
 // drops something is a new slice, and one that drops nothing is candidates itself.
 func SetApart[M any](candidates []M, id func(M) string, apart map[string]bool) []M {
-	if !slices.ContainsFunc(candidates, func(m M) bool { return !apart[id(m)] }) {
+	isApart := func(m M) bool { return apart[id(m)] }
+	if !slices.ContainsFunc(candidates, isApart) || !slices.ContainsFunc(candidates, func(m M) bool { return !isApart(m) }) {
 		return candidates
 	}
-	return slices.DeleteFunc(slices.Clone(candidates), func(m M) bool { return apart[id(m)] })
+	return slices.DeleteFunc(slices.Clone(candidates), isApart)
 }
 
 // matches is THE pairwise predicate: given a candidate work already keyed the same,
