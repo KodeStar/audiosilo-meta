@@ -351,7 +351,8 @@ func (c *composer) checkNormalizedIdentity(ctx titleContext, lang string, author
 		return false
 	}
 	authors := importer.ToSet(authorSlugs)
-	matches := c.identityIndex().Match(ctx.title, ctx.series, lang, authors, authors)
+	matches := check.SetApart(c.identityIndex().Match(ctx.title, ctx.series, lang, authors, authors),
+		func(m check.IdentityMatch) string { return m.Work.ID }, c.ownWorks)
 	// The AMBIGUITY veto, the same one the bulk guard applies: a key naming several
 	// catalogued works cannot say which of them a submission duplicates, so no verdict
 	// may name one. The measured shape is a serial published under its bare series

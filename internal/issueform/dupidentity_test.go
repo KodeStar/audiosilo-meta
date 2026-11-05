@@ -239,6 +239,28 @@ func TestAddWorkRefusesANormalizedIdentityDuplicate(t *testing.T) {
 	}
 }
 
+// A reviewed LibriVox own-work beside the catalogued work does not make the key ambiguous
+// (importer.LibrivoxOwnWorkHomes): the gate still names the work it is a duplicate of.
+// 5513 is an own-work in the embedded decisions.
+func TestAddWorkIdentityGateSetsAnOwnWorkApart(t *testing.T) {
+	dir := t.TempDir()
+	files := dupSeedFiles()
+	const own = "the-blood-of-elves-some-translation"
+	files["works/th/"+own+"/work.json"] = testpack.WorkJSON(t, own, "The Blood of Elves (Some Translation)",
+		testpack.WithAuthors("andrzej-sapkowski"))
+	files["works/th/"+own+"/recordings/peter-kenny.json"] = testpack.RecJSON(t, "peter-kenny", own,
+		testpack.WithNarrators("peter-kenny"), func(m map[string]any) {
+			m["librivox_id"] = 5513
+			m["librivox_title"] = "Iliad (Pope Translation)" // the decision holds only for its title
+			delete(m, "asin")
+		})
+	testpack.Seed(t, dir, files)
+	res := processAddWork(t, dir, dupWorkBody("Blood of Elves", "Andrzej Sapkowski", "Peter Kenny", "", ""))
+	if res.Status != StatusDuplicate || !anyContains(res.Messages, "the-blood-of-elves") {
+		t.Fatalf("status = %q; messages = %v", res.Status, res.Messages)
+	}
+}
+
 // The identity gate must not fire on a DIFFERENT book: the same normalized title by
 // another author is another work, which is the whole reason the gate asks the
 // author-nesting rule rather than the title alone.

@@ -1,6 +1,7 @@
 package check
 
 import (
+	"slices"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
@@ -187,5 +188,39 @@ func TestSeriesNameInPicksTheLongestMatchedSpelling(t *testing.T) {
 	// than "Night: Watch" itself.
 	if got, want := titlerule.FormWeight("Night – Watch"), len("Night: Watch"); got != want {
 		t.Errorf("FormWeight = %d, want %d", got, want)
+	}
+}
+
+// A work a review set apart leaves a refusal's candidates that name something else, so it
+// cannot turn a writer's one-candidate rule into "ambiguous", and still answers a key
+// naming only it. MatchKey, which the paths placing a recording read, is left alone.
+func TestSetApart(t *testing.T) {
+	work := func(id, title string) *model.Work {
+		return &model.Work{ID: id, Title: title, Language: "en", Authors: []string{"jane-doe"}}
+	}
+	ix := NewWorkIdentity(&model.Catalog{Works: []*model.Work{
+		work("iliad", "The Iliad"),
+		work("iliad-pope", "The Iliad (Pope Translation)"),
+		work("odyssey-pope", "The Odyssey (Pope Translation)"),
+	}})
+	authors := map[string]bool{"jane-doe": true}
+	apart := map[string]bool{"iliad-pope": true, "odyssey-pope": true}
+	ids := func(ms []IdentityMatch) []string {
+		var out []string
+		for _, m := range ms {
+			out = append(out, m.Work.ID)
+		}
+		return out
+	}
+	id := func(m IdentityMatch) string { return m.Work.ID }
+	const later = "The Iliad [Classic Edition]"
+	if got := ids(ix.Match(later, "", "en", authors, authors)); !slices.Equal(got, []string{"iliad", "iliad-pope"}) {
+		t.Fatalf("the probe's answer: %v", got)
+	}
+	if got := ids(SetApart(ix.Match(later, "", "en", authors, authors), id, apart)); !slices.Equal(got, []string{"iliad"}) {
+		t.Errorf("set apart beside another work: %v", got)
+	}
+	if got := ids(SetApart(ix.Match("The Odyssey [Classic Edition]", "", "en", authors, authors), id, apart)); !slices.Equal(got, []string{"odyssey-pope"}) {
+		t.Errorf("set apart and alone under its key: %v", got)
 	}
 }

@@ -2393,6 +2393,7 @@
     },
     "jane-smith": {
       "id": "jane-smith",
+      "librivox_reader_id": 4811,
       "license": "CC0-1.0",
       "name": "Jane Smith",
       "sources": [
@@ -2400,6 +2401,11 @@
           "imported_at": "2026-07-29",
           "ref": "B08FLT3TGH",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-11-04",
+          "ref": "348",
+          "type": "librivox"
         }
       ]
     },

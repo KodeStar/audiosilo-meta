@@ -364,6 +364,25 @@ func (p *planner) keyLibrivoxAuthorVariants(books []sourceBook, titles, suffixes
 	conflicting := map[int]bool{}
 	// order is the proposing ids in project order of their first proposal.
 	var order []int
+	propose := func(b *sourceBook, move map[string]string) {
+		for _, c := range b.lv.credits {
+			if c.id <= 0 || c.kind != librivoxAuthor {
+				continue
+			}
+			to, ok := move[p.librivoxCreditPerson(c)]
+			if !ok {
+				continue
+			}
+			prev, seen := proposed[c.id]
+			if (seen && prev != to) || p.librivoxCreditIsRecord(c) {
+				conflicting[c.id] = true
+			}
+			if !seen {
+				order = append(order, c.id)
+			}
+			proposed[c.id] = to
+		}
+	}
 	for _, i := range p.librivoxRows(books, lvPlannedRows) {
 		b := &books[i]
 		if _, held := p.librivoxSameNameOf(*b); held {
@@ -375,6 +394,15 @@ func (p *planner) keyLibrivoxAuthorVariants(books []sourceBook, titles, suffixes
 		}
 		credits, dropped := rowAuthorCreditSplitIn(p.credits, *b)
 		noAuthor := p.unsluggableLeftNoAuthor(credits, dropped)
+		// A decision places its row, not rule 1 (librivoxreviewed.go), but an attach's
+		// moves are rule 1's answer about the id, so they key it for the batch as well.
+		if r, decided := p.lv.reviewed[b.lv.id]; decided {
+			if !noAuthor && reviewedTitleHolds(r, b.lv.title) {
+				live, _ := p.liveReviewedMoves(r)
+				propose(b, live)
+			}
+			continue
+		}
 		slugs, _, nonLatin := p.librivoxTitleWorks(titles[i])
 		if noAuthor || len(credits) == 0 || len(slugs) == 0 {
 			continue
@@ -388,23 +416,7 @@ func (p *planner) keyLibrivoxAuthorVariants(books []sourceBook, titles, suffixes
 			continue
 		}
 		if ws, move, _, _, _ := p.soleAuthorVariant(*b, slugs, lang, authors, credits, partial); ws != nil {
-			for _, c := range b.lv.credits {
-				if c.id <= 0 || c.kind != librivoxAuthor {
-					continue
-				}
-				to, ok := move[p.librivoxCreditPerson(c)]
-				if !ok {
-					continue
-				}
-				prev, seen := proposed[c.id]
-				if (seen && prev != to) || p.librivoxCreditIsRecord(c) {
-					conflicting[c.id] = true
-				}
-				if !seen {
-					order = append(order, c.id)
-				}
-				proposed[c.id] = to
-			}
+			propose(b, move)
 		}
 	}
 	// Only the first id (in project order) still proposing a person keeps it: a

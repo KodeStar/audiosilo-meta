@@ -11387,7 +11387,7 @@
     "early-history-of-the-airplane": {
       "added_at": "2026-07-29",
       "authors": [
-        "oriville-wright",
+        "orville-wright",
         "wilbur-wright"
       ],
       "genres": [
@@ -11399,6 +11399,61 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "availle": {
+          "added_at": "2026-11-04",
+          "archive_id": "early_history_airplane_1003_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/early_history_airplane_1003_librivox/earlyhistoryairplane_1_wright_64kb.mp3",
+              "length_ms": 1981000,
+              "start_ms": 0,
+              "title": "The Wright Brother's Aeroplane"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/early_history_airplane_1003_librivox/earlyhistoryairplane_2_wright_64kb.mp3",
+              "length_ms": 1567000,
+              "start_ms": 1981000,
+              "title": "How We Made the First Flight"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/early_history_airplane_1003_librivox/earlyhistoryairplane_3_wright_64kb.mp3",
+              "length_ms": 2044000,
+              "start_ms": 3548000,
+              "title": "Some Aeronautical Experiments"
+            }
+          ],
+          "copyright_year": 1922,
+          "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt/early_history_airplane_1003.jpg",
+          "id": "availle",
+          "language": "en",
+          "librivox_genres": [
+            "Essays & Short Works",
+            "Technology & Engineering",
+            "Memoirs"
+          ],
+          "librivox_id": 4071,
+          "librivox_title": "Early History of the Airplane",
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/the-early-history-of-the-airplane-by-wright-orville-and-wilbur/",
+            "rss": "https://librivox.org/rss/4071",
+            "text": "https://www.gutenberg.org/etext/25420",
+            "zip": "https://archive.org/compress/early_history_airplane_1003_librivox/formats=64KBPS MP3&file=/early_history_airplane_1003_librivox.zip"
+          },
+          "narrators": [
+            "availle"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 93,
+          "sources": [
+            {
+              "imported_at": "2026-11-04",
+              "ref": "4071",
+              "type": "librivox"
+            }
+          ],
+          "work": "early-history-of-the-airplane"
+        },
         "mark-f-smith-2011": {
           "abridged": false,
           "added_at": "2026-07-29",

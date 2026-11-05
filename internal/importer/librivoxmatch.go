@@ -111,7 +111,23 @@ const (
 	// same person as a record carrying ANOTHER author id
 	// (worklistHeldLibrivoxTranslators).
 	LibrivoxSameNameAuthor = "same-name-author"
+	// LibrivoxReviewedWorkGone: a reviewed attach names a work that is no longer
+	// live, nor retired onto one (librivoxreviewed.go).
+	LibrivoxReviewedWorkGone = "reviewed-work-gone"
+	// LibrivoxReviewedTitleChanged: a reviewed decision states another title than the
+	// project now has: LibriVox reuses project numbers (librivoxreviewed.go).
+	LibrivoxReviewedTitleChanged = "reviewed-title-changed"
+	// LibrivoxReviewedOtherLanguage: a reviewed attach names a work in another
+	// language than the project's: a work is language-scoped (librivoxreviewed.go).
+	LibrivoxReviewedOtherLanguage = "reviewed-other-language"
+	// LibrivoxReviewedOwnWorkTaken: a reviewed own-work's walk reaches a work it did
+	// not found, which may be the one it was ruled apart from (librivoxreviewed.go).
+	LibrivoxReviewedOwnWorkTaken = "reviewed-own-work-taken"
 )
+
+// librivoxReviewedReasonPrefix starts the reasons a reviewed decision itself refuses
+// under, as opposed to a refusal that shadows the decision (noteLibrivoxWorklist).
+const librivoxReviewedReasonPrefix = "reviewed-"
 
 // LibrivoxWorklistEntry is one LibriVox project a run skipped for a person to
 // resolve: re-importing its id once the catalogue says which work it is (or
@@ -464,6 +480,10 @@ type librivoxRoute struct {
 	// authorVariant is a librivoxauthors.go rule 1 attach's example, counted
 	// the same way (Summary.LibrivoxAuthorVariants).
 	authorVariant string
+	// reviewed says a reviewed decision placed the row (Summary.LibrivoxReviewedPlaced;
+	// librivoxreviewed.go). With no walk it is an own-work: the ordinary walk places the
+	// row, the duplicate-identity guard standing down.
+	reviewed bool
 }
 
 // noteLibrivoxLanded counts a routed row that landed: a rule 2 attach
@@ -488,19 +508,26 @@ func (p *planner) noteLibrivoxLanded(b sourceBook, route librivoxRoute) {
 	if route.authorVariant != "" {
 		p.noteLibrivoxAuthorVariant(route.authorVariant)
 	}
+	if route.reviewed {
+		p.summary.LibrivoxReviewedPlaced++
+	}
 }
 
 // routeLibrivox applies the rules in this file's header to one LibriVox row. It
 // only reads (the authors are resolved read-only), so a skipped row leaves no
 // person behind. The zero route for every other row.
 //
-// The spelling-variant index is probed FIRST: a title whose key names no work
+// A reviewed decision answers first (librivoxreviewed.go). The spelling-variant
+// index is probed next: a title whose key names no work
 // leaves rules 1-3 nothing to decide (the ordinary path, or rule 4), so the row's
 // credits are resolved and its chain walked only when the key holds a work - the
 // duplicate-identity guard's own gate, for the same reason.
 func (p *planner) routeLibrivox(b sourceBook, workTitle, fullTitle, posSuffix, lang string, credits []credit, claim *seriesClaim) librivoxRoute {
 	if b.lv == nil {
 		return librivoxRoute{}
+	}
+	if route, ok := p.routeLibrivoxReviewed(b, workTitle, lang, credits); ok {
+		return route
 	}
 	slugs, held, nonLatin := p.librivoxTitleWorks(workTitle)
 	if len(slugs)+len(held) == 0 {
@@ -785,6 +812,9 @@ func candidatesOf(works []*workState) []LibrivoxCandidate {
 
 // noteLibrivoxWorklist puts a skipped LibriVox row on the run's worklist.
 func (p *planner) noteLibrivoxWorklist(b sourceBook, title, reason string, candidates []LibrivoxCandidate) {
+	if _, decided := p.lv.reviewed[b.lv.id]; decided && !p.lv.ids[b.lv.id] && !strings.HasPrefix(reason, librivoxReviewedReasonPrefix) {
+		p.bookWarn(b)("a reviewed decision names it, but it is refused before routing as %s; the decision does not apply", reason)
+	}
 	p.summary.LibrivoxWorklist = append(p.summary.LibrivoxWorklist, LibrivoxWorklistEntry{
 		Project:    b.lv.id,
 		Title:      title,

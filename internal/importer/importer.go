@@ -902,7 +902,7 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 		regenRecs:          regenRecsFor(opts.Mode),
 		rowsAsOf:           opts.RowsAsOf,
 		distinct:           opts.Distinct,
-		lv:                 newLibrivoxState(),
+		lv:                 reviewedLibrivoxState(opts),
 	}
 }
 
@@ -976,6 +976,7 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	p.reportDuplicateIdentities()
 	p.finishLibrivoxHolds()
 	p.reportLibrivoxVariants()
+	p.reportLibrivoxReviewed()
 	p.reportLibrivoxAuthorVariants()
 	p.settleUnrecordedCredits()
 	p.reportTombstoneRides()
@@ -1191,7 +1192,8 @@ func (p *planner) planCreate(books []sourceBook) {
 	// Only now does every author id land where it will: the readers, and the
 	// rest that reads the authors' people, are decided against that.
 	p.settleLibrivoxPeople(books)
-	for i, b := range books {
+	for _, i := range p.librivoxPlanOrder(books) {
+		b := books[i]
 		asin := NormalizeASIN(b.str("asin"))
 		p.setSource(asin, b)
 		p.addBook(b, asin, titles[i], suffixes[i])
@@ -1298,6 +1300,7 @@ func (p *planner) loadExisting() {
 		p.people[person.ID] = person.Name
 		p.loadLibrivoxPerson(person)
 	}
+	p.lv.ownWorks = librivoxOwnWorkHomes(cat.Works, p.lv.reviewed)
 	for _, w := range cat.Works {
 		ws := &workState{
 			slug:     w.ID,
@@ -1624,7 +1627,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		authorCredits = p.moveLibrivoxAuthors(b, authorCredits, route.moves)
 	}
 	ident := p.rowIdentityOf(b, workTitle)
-	if route.walk == nil &&
+	if route.walk == nil && !route.reviewed &&
 		p.refuseDuplicateIdentity(b, ident, workTitle, b.str("title"), posSuffix, lang, authorCredits, claim) {
 		p.noteLostSeriesClaims(b, -1, nil)
 		return
@@ -1651,7 +1654,21 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// raw for the same reason too - resolving them is wasted work on every row
 	// that merges.
 	facts := &workFacts{genres: b.genres, credits: authorCredits}
+	// An own-work ruled apart from what the catalogue holds mints, or meets the home an
+	// earlier project of its text founded. Any other work the walk reaches may be the very
+	// one the decision rejected, and a recording landed there stays, held by its project
+	// id: so the worklist's, as a decision that cannot apply always is.
+	if route.reviewed && route.walk == nil && walk.ws != nil && !p.ownWorkHomeOf(walk.ws, authorCredits) {
+		warn("the reviewed own-work decision walks onto the existing work %q; not placed", walk.ws.slug)
+		p.noteLibrivoxWorklist(b, workTitle, LibrivoxReviewedOwnWorkTaken, candidatesOf([]*workState{walk.ws}))
+		p.noteLostSeriesClaims(b, -1, nil)
+		return
+	}
+	ownWork := route.reviewed && walk.ws == nil
 	ws, unrecorded := p.getOrCreateWork(walk, b, asin, lang, facts, warn)
+	if ownWork && ws != nil {
+		p.lv.ownWorks[ws.slug] = true
+	}
 	narratorSlugs := p.rowNarratorSlugs(b, narratorNames, warn)
 	// The title the row was RESOLVED by - its own, or its full title when the
 	// work was found or created on the full title's chain - is the one the
