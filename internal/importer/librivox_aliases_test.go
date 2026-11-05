@@ -182,7 +182,7 @@ func TestLibrivoxVariantAttachUnderAnAlias(t *testing.T) {
 func TestHeldByOtherAuthorIDReadsAnAliasAsHeld(t *testing.T) {
 	// No row reaches this with an alias today (the alias pins the credit first, the
 	// test above), so the rule is asked directly: an alias is not ANOTHER id.
-	p := &planner{lv: newLibrivoxState()}
+	p := &planner{lv: newLibrivoxState(nil)}
 	person := &model.Person{ID: "f-p-walter", LibrivoxAuthorID: 6492, LibrivoxAuthorAliases: []int{6858}}
 	p.loadLibrivoxPerson(person)
 	for id, want := range map[int]bool{6492: false, 6858: false, 7000: true} {
