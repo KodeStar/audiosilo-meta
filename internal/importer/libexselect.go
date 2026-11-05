@@ -56,6 +56,15 @@ import (
 // accounts for every row read. Nothing is truncated silently: the per-series cap
 // prints exactly what it cut.
 //
+// One flag widens what a row may be, and only for a caller holding a bound of its
+// own: with --reported (SelectOptions.Reported) a row stating no series at all is
+// kept as a STANDALONE, after every refusal but the series ones. It is for the sync
+// bot's reported-ASIN lane (GOVERNANCE.md), whose input is a handful of ASINs read
+// one at a time and which caps its own works; over a dump it would select nearly
+// everything series-less, which is the mirror this tool exists to prevent. A row
+// claiming a series is judged exactly as it is without the flag, so the lane can
+// no more found a series than the feeds can.
+//
 // Deliberately NOT implemented: a --top popularity flag. The dump carries no
 // ratings-count column, so any "top N" would be a guess dressed as a fact.
 
@@ -72,6 +81,11 @@ type SelectOptions struct {
 	// (attach.go), for the import's own --attach-editions to attach; without it
 	// every such row is refused as position-claimed, as it always was.
 	AttachEditions bool
+	// Reported (`--reported`) keeps a row stating no series as a standalone, under
+	// every refusal that does not read a series (selectStandalone); without it such
+	// a row is refused as no-catalogue-series, as it always was. Nothing else about
+	// a selection changes, and a row claiming a series never benefits.
+	Reported bool
 	// RefusalsPath, when set, is where the per-row refusal worklist is written:
 	// one {"asin","reason"} line (RowSkip) per refused row, the reason one of
 	// RefusalCodes - a contract with the sync bot.
@@ -128,10 +142,17 @@ type SelectResult struct {
 	// ProjectedWorks is the number of NEW works the selection would create,
 	// counted by distinct (work title slug, catalogue series) - NOT by row, so
 	// the per-region sibling rows of one title (which the importer folds into
-	// one recording) count once.
+	// one recording) count once. A standalone is counted by (title slug, first
+	// author) instead (standaloneWorkKey), and it is a projection: the import may
+	// still land one on a work already held, or refuse it.
 	ProjectedWorks int
+	// StandaloneWorks and StandaloneRows are the share of ProjectedWorks, and of
+	// RowsSelected, that belongs to no series (SelectOptions.Reported); always 0
+	// without the flag.
+	StandaloneWorks int
+	StandaloneRows  int
 	// PerSeries is the per-series breakdown, ordered by works desc, then rows
-	// desc, then series slug.
+	// desc, then series slug. A standalone is in no entry.
 	PerSeries []SeriesCount
 	// Excluded counts rows per rule, keyed by the rule's report wording.
 	Excluded map[string]int
@@ -246,7 +267,7 @@ func (x exclusions) hold(asin string) {
 //
 // Every kept completion carries a parseable series position (the completion
 // rules refuse the rest), so pos is always meaningful and the cap needs no
-// "unpositioned" tiebreak.
+// "unpositioned" tiebreak. A standalone has neither a series nor a position.
 type selectedRow struct {
 	raw        []byte
 	seriesSlug string
@@ -263,6 +284,10 @@ type selectedRow struct {
 	// completion: an attachment claims no slot, is never cut by the cap and
 	// counts in no per-series tally.
 	attach *Attachment
+	// standalone is set for a row kept under SelectOptions.Reported that states no
+	// series: seriesSlug is empty, and it is outside the batch re-check's verdict,
+	// the per-series cap and every per-series tally.
+	standalone bool
 }
 
 // selectState is the within-export memory the per-row rules keep: the ASINs
@@ -313,7 +338,7 @@ func selectLibexRows(r io.Reader, opts SelectOptions, refusals *refusalLog) (Sel
 
 	err := streamLibexRows(r, true, func(raw []byte, e rawBook) {
 		res.RowsRead++
-		row, asin, reason := selectLibexRow(e, idx, st, opts.AttachEditions)
+		row, asin, reason := selectLibexRow(e, idx, st, opts.AttachEditions, opts.Reported)
 		switch {
 		case reason == reasonDuplicateASIN && st.keptASIN[asin]:
 			x.hold(asin)
@@ -374,6 +399,10 @@ func selectLibexRows(r io.Reader, opts SelectOptions, refusals *refusalLog) (Sel
 // dropped claim can be all that joined two groups into one unit. A slot a
 // dropped row held at STREAM time is not handed back: a sibling that lost the
 // slot to it was excluded then, which only ever narrows a tranche.
+//
+// A standalone is part of the batch, since the import reads its credits with the
+// others', but it has no claim to resolve and no verdict to read, so it is never
+// dropped here.
 func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditions bool) []selectedRow {
 	if len(kept) == 0 {
 		return kept
@@ -472,7 +501,7 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditi
 		}
 		claimed := map[string]string{}
 		for i, r := range kept {
-			if !alive[i] {
+			if !alive[i] || r.standalone {
 				continue
 			}
 			v := verdictOf(books[i])
@@ -561,7 +590,11 @@ func liveReaches(cat seriesCatalogue, claims []nameClaim, reaches []*groupReach,
 // counts rows we actually wanted, not the 99 percent of the dump that was never
 // in scope. The position claim comes last because it MUTATES state: only a row
 // that would otherwise be kept may reserve a slot.
-func selectLibexRow(e rawBook, idx seriesIndex, st *selectState, attachEditions bool) (selectedRow, string, refusal) {
+//
+// reported is SelectOptions.Reported: a row stating no series is then judged by
+// selectStandalone instead of the completion test. A claim whose name has no
+// addressable slug is still a claim, so that row takes the ordinary path.
+func selectLibexRow(e rawBook, idx seriesIndex, st *selectState, attachEditions, reported bool) (selectedRow, string, refusal) {
 	asin := NormalizeASIN(e.str("asin"))
 	if asin == "" {
 		return selectedRow{}, refusedRowASIN(e.str("asin")), reasonNoASIN
@@ -580,6 +613,9 @@ func selectLibexRow(e rawBook, idx seriesIndex, st *selectState, attachEditions 
 	// A row naming no series the catalogue's chains could hold is out before its
 	// book is composed - the whole dump streams through here.
 	refs := libexSeries(e["series"])
+	if reported && len(refs) == 0 {
+		return selectStandalone(e, idx, asin)
+	}
 	if !idx.namesACatalogueChain(refs) {
 		return selectedRow{}, asin, reasonNoSeries
 	}
@@ -612,19 +648,8 @@ func selectLibexRow(e rawBook, idx seriesIndex, st *selectState, attachEditions 
 	if !posOK {
 		return selectedRow{}, asin, reasonNoPosition
 	}
-	if _, langOK := mapLanguage(e.str("language")); !langOK {
-		return selectedRow{}, asin, reasonLanguage
-	}
-	if _, _, regionOK := libexRegion(e); !regionOK {
-		return selectedRow{}, asin, reasonRegion
-	}
-	// The credit-side refusals the parse layer applies (refuseLibexCredits). A
-	// row the importer will refuse must not be selected: it would be counted as a
-	// completion the tranche does not actually deliver, and - because the position
-	// claim below is first-seen-wins - it would take the slot away from a sibling
-	// row that IS importable.
-	if r, refused := refuseLibexCredits(libexNames(e["authors"]), libexNames(e["narrators"])); refused {
-		return selectedRow{}, asin, r.reason
+	if r := refuseRowFacts(e); r != (refusal{}) {
+		return selectedRow{}, asin, r
 	}
 
 	// The work key is the importer's own work identity as far as a selection
@@ -659,6 +684,53 @@ func selectLibexRow(e rawBook, idx seriesIndex, st *selectState, attachEditions 
 	return selectedRow{seriesSlug: slug, workKey: workKey, pos: pos, book: book, title: title, asin: asin}, asin, refusal{}
 }
 
+// refuseRowFacts applies the rules that read no series, in order: the language,
+// the marketplace and the credit-side refusals the parse layer applies
+// (refuseLibexCredits). A row the importer will refuse must not be selected: it
+// would be counted as a work the tranche does not actually deliver, and - because
+// a completion's position claim is first-seen-wins - it would take the slot away
+// from a sibling row that IS importable. The zero refusal means none applies.
+func refuseRowFacts(e rawBook) refusal {
+	if _, langOK := mapLanguage(e.str("language")); !langOK {
+		return reasonLanguage
+	}
+	if _, _, regionOK := libexRegion(e); !regionOK {
+		return reasonRegion
+	}
+	if r, refused := refuseLibexCredits(libexNames(e["authors"]), libexNames(e["narrators"])); refused {
+		return r.reason
+	}
+	return refusal{}
+}
+
+// selectStandalone is selectLibexRow's end for a row stating no series under
+// SelectOptions.Reported: the rules that read a series have nothing to read, the
+// ones that do not (refuseRowFacts) stand, and it claims no slot. It goes through
+// match as a completion does, so the book it keeps was read the same way; with no
+// claims there is nothing for that to resolve, and nothing the import could found.
+func selectStandalone(e rawBook, idx seriesIndex, asin string) (selectedRow, string, refusal) {
+	if r := refuseRowFacts(e); r != (refusal{}) {
+		return selectedRow{}, asin, r
+	}
+	_, book := idx.match(idx.libexBook(e, asin))
+	title := Slugify(book.str("title_short"))
+	return selectedRow{workKey: standaloneWorkKey(title, book), book: book, title: title, asin: asin, standalone: true}, asin, refusal{}
+}
+
+// standaloneWorkKey is a standalone's work identity as far as a selection pass can
+// know it: the title slug and first author. With no series to keep them apart, two
+// books of one title by two authors would otherwise count as one work, while the
+// per-region sibling rows of one book still count once. The leading NUL keeps it
+// off every completion's "<series slug>\x00<title>", since a series slug is never
+// empty.
+func standaloneWorkKey(title string, book sourceBook) string {
+	var first string
+	if len(book.authors) > 0 {
+		first = Slugify(book.authors[0])
+	}
+	return "\x00" + title + "\x00" + first
+}
+
 // seriesPositionValue reduces a matched series claim to the numeric value the
 // cap orders by. An omnibus range ("1-3.5") sorts by its first volume. A claim
 // the shared position rules rejected, or one whose leading token is not a
@@ -681,7 +753,8 @@ func seriesPositionValue(ref seriesRef) (float64, bool) {
 // an exclusion in res), so the cap is never a silent truncation.
 //
 // A row kept for ATTACHMENT is outside the cap: it adds no work, so it is
-// neither counted against a series nor cut.
+// neither counted against a series nor cut. A standalone is too, having no series
+// to be capped in; its caller holds the bound on those (SelectOptions.Reported).
 func applySeriesCap(rows []selectedRow, maxPerSeries int, x exclusions) ([]selectedRow, map[string]SeriesCount) {
 	if maxPerSeries <= 0 {
 		return rows, nil
@@ -695,7 +768,7 @@ func applySeriesCap(rows []selectedRow, maxPerSeries int, x exclusions) ([]selec
 	bySeries := map[string][]*workEntry{}
 	byKey := map[string]*workEntry{}
 	for i, row := range rows {
-		if row.attach != nil {
+		if row.attach != nil || row.standalone {
 			continue
 		}
 		w, ok := byKey[row.workKey]
@@ -752,6 +825,14 @@ func summarize(rows []selectedRow, cuts map[string]SeriesCount, idx seriesIndex,
 	for _, row := range rows {
 		if row.attach != nil {
 			res.Attachments = append(res.Attachments, *row.attach)
+			continue
+		}
+		if row.standalone {
+			res.StandaloneRows++
+			if !works[row.workKey] {
+				works[row.workKey] = true
+				res.StandaloneWorks++
+			}
 			continue
 		}
 		t := tallies[row.seriesSlug]
@@ -1280,6 +1361,12 @@ func (r SelectResult) Report() string {
 	fmt.Fprintf(&b, "  total: %d series, %d %s, %d %s\n",
 		len(r.PerSeries), r.ProjectedWorks, plural(r.ProjectedWorks, "work"),
 		completions, plural(completions, "row"))
+	// Printed only when a --reported run kept one, for the same reason. They are
+	// within the total above; the series figures count none of them.
+	if r.StandaloneRows > 0 {
+		fmt.Fprintf(&b, "  of which standalone: %d %s in no series, %d %s (--reported)\n",
+			r.StandaloneWorks, plural(r.StandaloneWorks, "work"), r.StandaloneRows, plural(r.StandaloneRows, "row"))
+	}
 	if n := len(r.Attachments); n > 0 {
 		works := map[string]bool{}
 		for _, a := range r.Attachments {

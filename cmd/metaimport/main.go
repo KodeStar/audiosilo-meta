@@ -7,7 +7,7 @@
 //	metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]
 //	metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]
 //	metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only | --relocate | --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>]] [--existing-series-only] [--attach-editions] [--skipped <path>]
-//	metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--refusals <path>] [--attachments <path>] [--date YYYY-MM-DD]
+//	metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--reported] [--refusals <path>] [--attachments <path>] [--date YYYY-MM-DD]
 //	metaimport librivox fetch  --out <snapshot> [--max-pages N]
 //	metaimport librivox import --from <snapshot> --ids <range> [--data data] [--dry-run] [--date YYYY-MM-DD] [--conflicts <path>] [--skipped <path>] [--worklist <path>]
 //	metaimport librivox import --from <snapshot> --ids <range> --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>] [--data data] [--dry-run]
@@ -24,6 +24,15 @@
 // bounded, series-completing subset LICENSING.md's import posture allows, and
 // prints a report for review; the subset is then imported with the normal
 // `metaimport libex` create path.
+//
+// --reported (libex-select) also keeps a row stating NO series, under every
+// refusal that does not read one: language, marketplace, credits (an AI narrator
+// included). It is for the sync bot's reported-ASIN lane (GOVERNANCE.md, "The
+// reported-ASIN lane"), whose input is a few ASINs read one at a time and which
+// holds its own bound on works: over a full export it would select nearly every
+// series-less row, which is the mirror LICENSING.md rules out, so an operator
+// reducing a dump does not pass it. A row claiming a series is judged exactly as
+// it is without the flag, so it can no more found a series than before.
 //
 // --attach-editions (libex-select, and libex's create mode) turns on the attach
 // rule (internal/importer/attach.go): a row claiming a series position the
@@ -483,6 +492,7 @@ func runLibexSelect(args []string) int {
 	out := fs.String("o", "", "path to write the selected rows to (NDJSON)")
 	maxPerSeries := fs.Int("max-per-series", 0, "cap the new works selected per catalogue series (0 = unlimited)")
 	attachEditions := fs.Bool("attach-editions", false, "keep a row at a series position the catalogue already fills when it is another edition of the work there, for `metaimport libex --attach-editions` to attach")
+	reported := fs.Bool("reported", false, "also keep a row stating no series, under every refusal that does not read one (the sync bot's reported-ASIN lane; never over a full export, GOVERNANCE.md)")
 	refusals := fs.String("refusals", "", "write one NDJSON line per refused row ({\"asin\",\"reason\"}, stable reason codes) to this file")
 	attachments := fs.String("attachments", "", "write one NDJSON line per row selected for ATTACHMENT ({\"asin\",\"work\",\"series\",\"position\"}) to this file")
 	date := fs.String("date", "", "the run day (YYYY-MM-DD) the preorder-estimate rule reads for a row carrying no updatedAt, as the import's --date does; defaults to today (UTC)")
@@ -521,6 +531,7 @@ func runLibexSelect(args []string) int {
 		DataDir:         *data,
 		MaxPerSeries:    *maxPerSeries,
 		AttachEditions:  *attachEditions,
+		Reported:        *reported,
 		RefusalsPath:    *refusals,
 		AttachmentsPath: *attachments,
 		ImportDate:      day,
@@ -735,7 +746,7 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport audiosilo-books <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only | --relocate | --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>]] [--existing-series-only] [--attach-editions] [--skipped <path>]")
-	fmt.Fprintln(os.Stderr, "  metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--refusals <path>] [--attachments <path>] [--date YYYY-MM-DD]")
+	fmt.Fprintln(os.Stderr, "  metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--reported] [--refusals <path>] [--attachments <path>] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-fill  [--data data] [--works a,b] [--limit N] [--all-tiers | --released-preorders] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport narrations  -o <worklist.ndjson> [--data data] [--works a,b] [--user-library] [--limit N] [--rows <rows.ndjson>]")
 	fmt.Fprintln(os.Stderr, "  metaimport librivox fetch  --out <snapshot> [--max-pages N]")
@@ -750,6 +761,8 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "    dropped and reported, and the row still imports into every catalogued series it claims.")
 	fmt.Fprintln(os.Stderr, "  --attach-editions (libex-select; libex create) attaches a row at a filled series position to the")
 	fmt.Fprintln(os.Stderr, "    work there when it is another edition of it, and refuses it otherwise; never a second work.")
+	fmt.Fprintln(os.Stderr, "  --reported (libex-select) also keeps a row stating no series, under every refusal that does not read")
+	fmt.Fprintln(os.Stderr, "    one. For the sync bot's reported-ASIN lane, which caps its own works; never over a full export.")
 	fmt.Fprintln(os.Stderr, "  --refusals / --attachments (libex-select) and --skipped (libex, librivox import) write NDJSON worklists with")
 	fmt.Fprintln(os.Stderr, "    stable reason codes, atomically.")
 	fmt.Fprintln(os.Stderr, "  --enrich (libex only) fills absent facts on ASIN-matched existing records; it never creates.")

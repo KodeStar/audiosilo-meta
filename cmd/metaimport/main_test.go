@@ -661,6 +661,49 @@ func TestLibexSelectRefusalsFlag(t *testing.T) {
 	}
 }
 
+// --reported reaches the selector: the series-less row is kept with the flag and
+// refused without it, and the report's standalone line appears only with it.
+func TestLibexSelectReportedFlag(t *testing.T) {
+	dataDir, _, _ := seedSelectFixture(t)
+	dir := t.TempDir()
+	export := filepath.Join(dir, "reported.ndjson")
+	row := `{"asin":"B0ALONE001","title":"A Lone Book","region":"us","language":"english",` +
+		`"authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}],"series":[]}`
+	if err := os.WriteFile(export, []byte(row+"\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	for _, tc := range []struct {
+		name  string
+		flags []string
+		want  string
+		line  bool
+	}{
+		{"without the flag", nil, "", false},
+		{"with the flag", []string{"--reported"}, row + "\n", true},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			out := filepath.Join(t.TempDir(), "subset.ndjson")
+			var code int
+			stdout := captureStdout(t, func() {
+				code = runLibexSelect(append([]string{export, "--data", dataDir, "-o", out}, tc.flags...))
+			})
+			if code != 0 {
+				t.Fatalf("exit code = %d (%s)", code, stdout)
+			}
+			got, err := os.ReadFile(out)
+			if err != nil {
+				t.Fatal(err)
+			}
+			if string(got) != tc.want {
+				t.Errorf("subset = %q, want %q", got, tc.want)
+			}
+			if strings.Contains(stdout, "of which standalone: 1 work in no series, 1 row (--reported)") != tc.line {
+				t.Errorf("report:\n%s", stdout)
+			}
+		})
+	}
+}
+
 // The attach line is printed only when a run attached something, so every other
 // create summary - and the line the sync bot parses - reads exactly as before.
 func TestPrintSummaryAttachLine(t *testing.T) {
