@@ -90,6 +90,20 @@ func TestSeriesGroupsNeverJoinAReviewedPair(t *testing.T) {
 			t.Errorf("the chain's spellings are in %s and %s", sa.root("alex-j-george"), sa.root("a-j-george"))
 		}
 	})
+	t.Run("two bridges stay apart", func(t *testing.T) {
+		// Each reaches both of the pair and is a spelling of the other. Nothing says
+		// either is the other's person, so neither joins anyone.
+		j := georgeReview.form("alex-j-george", "Alex J. George")
+		james := georgeReview.form("alex-james-george", "Alex James George")
+		if !j.same(james) || !j.same(novelist) || !j.same(doctor) || !james.same(novelist) || !james.same(doctor) {
+			t.Fatal("fixture: the two spellings must reach the pair and each other")
+		}
+		sa := seriesOf(novelist, doctor, j, james)
+		if len(sa.credits) != 4 || sa.root("alex-j-george") == sa.root("alex-james-george") {
+			t.Errorf("%d people, the bridges in %s and %s: want 4, apart",
+				len(sa.credits), sa.root("alex-j-george"), sa.root("alex-james-george"))
+		}
+	})
 	t.Run("no review of the pair", func(t *testing.T) {
 		// The grouping is unchanged for everyone else: all three are one person.
 		for _, ap := range []*PeopleApart{nil, otherReview} {
@@ -99,6 +113,35 @@ func TestSeriesGroupsNeverJoinAReviewedPair(t *testing.T) {
 			}
 		}
 	})
+}
+
+// root answers "" for a slug the series does not credit, on an empty series too,
+// rather than naming another person's group.
+func TestSeriesRootOfAnUnknownSlug(t *testing.T) {
+	novelist, _, _ := georgeForms(georgeReview)
+	for name, sa := range map[string]*seriesAuthors{
+		"no spelling at all": {},
+		"another spelling":   seriesOf(novelist),
+	} {
+		if got := sa.root("nobody-at-all"); got != "" {
+			t.Errorf("%s: root = %q, want none", name, got)
+		}
+	}
+}
+
+// refresh and root call each other. Asking root first on stale evidence must end,
+// and count each member once however the recursion is entered.
+func TestSeriesRootOnStaleEvidenceCountsOnce(t *testing.T) {
+	novelist, _, initial := georgeForms(georgeReview)
+	sa := &seriesAuthors{}
+	sa.add("one", []personForm{novelist}, nil)
+	sa.add("two", []personForm{initial}, nil)
+	if got := sa.root("a-george"); got != "alex-george" {
+		t.Errorf("root = %q, want alex-george", got)
+	}
+	if sa.credits["alex-george"] != 2 || sa.top != 2 {
+		t.Errorf("credits = %v, top %d: want 2 for the one person", sa.credits, sa.top)
+	}
 }
 
 func TestSeriesFitAsksTheWholeGroup(t *testing.T) {
@@ -469,4 +512,56 @@ func TestLibrivoxFoldVerdictJudgesTheLandedRecords(t *testing.T) {
 			mustValidate(t, dataDir)
 		})
 	}
+}
+
+// Rules 1b and 1c ask the review by the slugs as well as the names: a credit with no
+// usable name has no slugs to judge (creditSlugs), which must not skip the review.
+func TestLibrivoxRulesAskTheSlugsWithoutAName(t *testing.T) {
+	const twin, bare = "sir-frederick-treves", "frederick-treves"
+	review := NewPeopleApart(peopleApart(bare, twin), nil)
+	plannerOf := func(ap *PeopleApart, people map[string]string) *planner {
+		p := &planner{apart: ap, people: people, lv: newLibrivoxState()}
+		p.lv.titledTwins = map[string][]string{bare: {twin}}
+		if ap != nil {
+			p.credits.author.keptApart = p.peopleKeptApart
+		}
+		return p
+	}
+	named := map[string]string{twin: "Sir Frederick Treves"}
+	t.Run("rule 1c", func(t *testing.T) {
+		for name, tc := range map[string]struct {
+			ap     *PeopleApart
+			people map[string]string
+			credit string
+			want   string
+		}{
+			"reviewed, the credit named":     {review, named, "Frederick Treves", ""},
+			"reviewed, the credit nameless":  {review, named, "", ""},
+			"reviewed, the twin nameless":    {review, map[string]string{}, "Frederick Treves", ""},
+			"no review, the credit named":    {nil, named, "Frederick Treves", "Sir Frederick Treves"},
+			"no review, the credit nameless": {nil, named, "", "Sir Frederick Treves"},
+		} {
+			t.Run(name, func(t *testing.T) {
+				if got := plannerOf(tc.ap, tc.people).librivoxTitledTwin(tc.credit, bare, lifeYears{}); got != tc.want {
+					t.Errorf("twin = %q, want %q", got, tc.want)
+				}
+			})
+		}
+	})
+	t.Run("rule 1b", func(t *testing.T) {
+		for name, tc := range map[string]struct {
+			ap   *PeopleApart
+			want lvVerdict
+		}{
+			"reviewed":  {review, lvApart},
+			"no review": {nil, lvSame},
+		} {
+			t.Run(name, func(t *testing.T) {
+				cl := &lvAuthorClaim{id: 1, slug: twin} // no name
+				if _, got := plannerOf(tc.ap, map[string]string{}).librivoxFoldVerdict("Frederick Treves", cl, nil); got != tc.want {
+					t.Errorf("verdict = %v, want %v", got, tc.want)
+				}
+			})
+		}
+	})
 }

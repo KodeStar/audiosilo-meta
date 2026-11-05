@@ -825,8 +825,9 @@ func (p *planner) librivoxFoldVerdict(bare string, cl *lvAuthorClaim, bySlug map
 		return "", lvSame
 	}
 	// The census's own veto, so the rule judges every slug the two spellings can
-	// land on (planner.peopleKeptApart), as the fold it stands in for does.
-	if p.credits.author.reviewedApart(cl.name, bare) {
+	// land on (planner.peopleKeptApart), as the fold it stands in for does. The slugs
+	// themselves are asked too: a name that slugs to nothing has no slugs to judge.
+	if p.apart.Has(cl.slug, bareSlug) || p.credits.author.reviewedApart(cl.name, bare) {
 		return "", lvApart // a review recorded two people (Options.Distinct)
 	}
 	if others := bySlug[bareSlug]; len(others) > 0 {
@@ -1049,7 +1050,9 @@ func (p *planner) librivoxTitledTwin(name, slug string, life lifeYears) string {
 		return ""
 	}
 	twin := twins[0]
-	if p.peopleKeptApart(name, p.people[twin]) {
+	// The slugs themselves are asked as well as the names: a missing name has no
+	// slugs to judge (creditSlugs), and that must not skip the review.
+	if p.apart.Has(slug, twin) || p.peopleKeptApart(name, p.people[twin]) {
 		return "" // a review recorded two people (Options.Distinct)
 	}
 	if p.narratorPeople[twin] && len(p.librivoxPersonWorks()[twin]) == 0 {

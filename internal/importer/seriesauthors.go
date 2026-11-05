@@ -293,10 +293,15 @@ func (sa *seriesAuthors) addMember(key string, slugs []string) {
 	sa.stale = true
 }
 
-// root is the slug naming s's group: its earliest-seen spelling.
+// root is the slug naming s's group, its earliest-seen spelling, or "" for a slug
+// the series does not credit.
 func (sa *seriesAuthors) root(s string) string {
 	sa.refresh()
-	return sa.order[sa.people.find(sa.index[s])]
+	i, ok := sa.index[s]
+	if !ok {
+		return ""
+	}
+	return sa.order[sa.people.find(i)]
 }
 
 // sharedWith reports whether spelling s makes its person one of the row's
@@ -320,6 +325,11 @@ func (sa *seriesAuthors) keptFromRow(s string, row []personForm) bool {
 }
 
 // refresh recomputes the people and their credit counts.
+//
+// refresh and root call each other (refresh -> rootsOf -> root -> refresh). The
+// recursion is one level deep and harmless because of one invariant: refresh clears
+// stale and sets credits non-nil BEFORE it reads a root, so the nested call returns
+// at its first line, with the groups already built.
 func (sa *seriesAuthors) refresh() {
 	if !sa.stale && sa.credits != nil {
 		return
@@ -331,7 +341,7 @@ func (sa *seriesAuthors) refresh() {
 		}
 		sa.people, sa.grouped = groupPeople(forms), true
 	}
-	sa.stale = false // before rootsOf, which asks root
+	sa.stale = false // before rootsOf, which asks root: see above
 	sa.credits = map[string]int{}
 	sa.top = 0
 	for _, m := range sa.memberSlugs {

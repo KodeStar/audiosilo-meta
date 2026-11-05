@@ -191,8 +191,20 @@ func TestSamePersonSpellingToleratesOneNameSpelledTwoWays(t *testing.T) {
 	if !samePersonSpelling(ix, "cheree-alsop", "cheree-lynn-alsop") {
 		t.Error("a review of another pair changed this one")
 	}
-	if !newIndex(&model.Catalog{}).distinct.Has(model.RedirectPeople, "alex-george", "dr-alex-george") {
-		t.Error("newIndex does not read the reviewed list")
+}
+
+// newIndex reads the reviewed list and resolves it through the catalogue's redirects,
+// over a fixture list so a change to the real one cannot move this test.
+func TestNewIndexResolvesTheReviewedPeoplePairs(t *testing.T) {
+	saved := reviewedDecisions
+	reviewedDecisions = []reviewedDecision{{Op: "merge-people", Decision: "reject", Target: "retired-person", Others: []string{"other-person"}, Reason: "fixture"}}
+	t.Cleanup(func() { reviewedDecisions = saved })
+	ix := newIndex(&model.Catalog{Redirects: model.Redirects{model.RedirectPeople: {"retired-person": "live-person"}}})
+	if !ix.distinct.Has(model.RedirectPeople, "live-person", "other-person") {
+		t.Error("the decision was not resolved onto the survivor")
+	}
+	if ix.distinct.Has(model.RedirectPeople, "live-person", "someone-else") {
+		t.Error("a pair the list does not name is distinct")
 	}
 }
 
