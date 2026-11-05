@@ -3037,6 +3037,7 @@
     },
     "pacho-and-ana": {
       "id": "pacho-and-ana",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Pacho and Ana",
       "sources": [
@@ -3345,6 +3346,7 @@
     },
     "padmakara-translation-group": {
       "id": "padmakara-translation-group",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Padmakara Translation Group",
       "sources": [
@@ -4512,6 +4514,7 @@
     },
     "pam-ben-turlow-dooley": {
       "id": "pam-ben-turlow-dooley",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Pam/Ben Turlow/Dooley",
       "sources": [
@@ -6573,6 +6576,7 @@
     },
     "pantheon-space-academy": {
       "id": "pantheon-space-academy",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Pantheon Space Academy",
       "sources": [
@@ -7322,6 +7326,7 @@
     },
     "papercuts-publishing": {
       "id": "papercuts-publishing",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Papercuts Publishing",
       "sources": [
@@ -7574,6 +7579,7 @@
     },
     "paramount-pictures": {
       "id": "paramount-pictures",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Paramount Pictures",
       "sources": [
@@ -8161,6 +8167,7 @@
     },
     "parliament-of-the-united-kingdom-of-great-britain": {
       "id": "parliament-of-the-united-kingdom-of-great-britain",
+      "kind": "group",
       "librivox_author_id": 4202,
       "license": "CC0-1.0",
       "name": "Parliament of the United Kingdom of Great Britain",
@@ -8345,6 +8352,7 @@
     },
     "party-for-socialism-and-liberation": {
       "id": "party-for-socialism-and-liberation",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Party for Socialism and Liberation",
       "sources": [
@@ -8870,6 +8878,7 @@
     },
     "passive-income-secrets": {
       "id": "passive-income-secrets",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Passive Income Secrets",
       "sources": [
@@ -8880,26 +8889,20 @@
         }
       ]
     },
-    "passport-to-european-travel-guide": {
-      "id": "passport-to-european-travel-guide",
-      "license": "CC0-1.0",
-      "name": "Passport to European Travel Guide",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B01CRF9E2A",
-          "type": "libex-import"
-        }
-      ]
-    },
     "passport-to-european-travel-guides": {
       "id": "passport-to-european-travel-guides",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Passport to European Travel Guides",
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B012EHR1HQ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01CRF9E2A",
           "type": "libex-import"
         }
       ]
@@ -9923,6 +9926,7 @@
     },
     "pathways-press": {
       "id": "pathways-press",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Pathways Press",
       "sources": [

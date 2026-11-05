@@ -748,6 +748,7 @@
     },
     "alma-studio": {
       "id": "alma-studio",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Alma Studio",
       "sources": [
@@ -1182,6 +1183,7 @@
     },
     "alpha-dvd": {
       "id": "alpha-dvd",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Alpha DVD",
       "sources": [
@@ -1194,6 +1196,7 @@
     },
     "alpha-male-strategies": {
       "id": "alpha-male-strategies",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Alpha Male Strategies",
       "sources": [
@@ -1201,11 +1204,17 @@
           "imported_at": "2026-07-29",
           "ref": "B07VDGJV8N",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07KBF6W7R",
+          "type": "libex-import"
         }
       ]
     },
     "alpha-male-studio": {
       "id": "alpha-male-studio",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Alpha Male Studio",
       "sources": [
@@ -1391,6 +1400,7 @@
     },
     "alric-jennifer-twice": {
       "id": "alric-jennifer-twice",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Alric & Jennifer Twice",
       "sources": [
@@ -1511,6 +1521,7 @@
     },
     "althea-press": {
       "id": "althea-press",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Althea Press",
       "sources": [
@@ -7959,6 +7970,7 @@
     },
     "amazon-web-services-aws": {
       "id": "amazon-web-services-aws",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Amazon Web Services (AWS)",
       "sources": [
@@ -8019,6 +8031,7 @@
     },
     "amber-and-danielle-brown": {
       "id": "amber-and-danielle-brown",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Amber and Danielle Brown",
       "sources": [

@@ -11153,26 +11153,20 @@
         }
       ]
     },
-    "germanpod101": {
-      "id": "germanpod101",
-      "license": "CC0-1.0",
-      "name": "GermanPod101",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07KKN1FDN",
-          "type": "libex-import"
-        }
-      ]
-    },
     "germanpod101-com": {
       "id": "germanpod101-com",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "GermanPod101.com",
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B007MHJ0RI",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07KKN1FDN",
           "type": "libex-import"
         }
       ]
@@ -12542,6 +12536,7 @@
     },
     "getaway-guides": {
       "id": "getaway-guides",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Getaway Guides",
       "sources": [
@@ -12829,6 +12824,7 @@
     },
     "ghostsitter": {
       "id": "ghostsitter",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Ghostsitter",
       "sources": [

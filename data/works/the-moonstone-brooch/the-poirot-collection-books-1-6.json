@@ -12518,9 +12518,6 @@
           "added_at": "2026-07-25T17:12:12+01:00",
           "cover_url": "https://books.google.com/books/content?vid=ISBN9781783449262&printsec=frontcover&img=1&zoom=1&source=gbs_api",
           "id": "liam-neeson-2000",
-          "isbn": [
-            "9781783449262"
-          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -12534,6 +12531,11 @@
               "imported_at": "2026-07-25",
               "ref": "isbn:9781783449262",
               "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-11-04",
+              "ref": "https://www.thenile.co.nz/books/chris-van-allsburg/the-polar-express/9781783449262",
+              "type": "user"
             }
           ],
           "work": "the-polar-express"
@@ -12594,9 +12596,19 @@
           "imported_at": "2026-08-02",
           "ref": "B0FXHJNG9S",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-11-04",
+          "ref": "https://www.thenile.co.nz/books/chris-van-allsburg/the-polar-express/9781783449262",
+          "type": "user"
         }
       ],
-      "title": "The Polar Express"
+      "title": "The Polar Express",
+      "xref": {
+        "isbn": [
+          "9781783449262"
+        ]
+      }
     },
     "the-polar-winds-of-mars": {
       "added_at": "2026-08-01",

@@ -2096,6 +2096,9 @@
     },
     "jilliane-brandt": {
       "id": "jilliane-brandt",
+      "librivox_reader_aliases": [
+        4132
+      ],
       "librivox_reader_id": 2979,
       "license": "CC0-1.0",
       "name": "Jilliane Brandt",
@@ -2104,15 +2107,7 @@
           "imported_at": "2026-10-27",
           "ref": "1980",
           "type": "librivox"
-        }
-      ]
-    },
-    "jilliane-brandt-librivox-4132": {
-      "id": "jilliane-brandt-librivox-4132",
-      "librivox_reader_id": 4132,
-      "license": "CC0-1.0",
-      "name": "Jilliane Brandt",
-      "sources": [
+        },
         {
           "imported_at": "2026-10-28",
           "ref": "3318",
@@ -6615,6 +6610,7 @@
     },
     "jimcin-recordings": {
       "id": "jimcin-recordings",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Jimcin Recordings",
       "sources": [

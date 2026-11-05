@@ -218,33 +218,10 @@ func isbnFrom(value, scheme string) (string, bool) {
 		}
 		return r
 	}, strings.TrimSpace(v))
-	if model.ValidISBN13(digits) || validISBN10(digits) {
+	if model.ValidISBN13(digits) || model.ValidISBN10(digits) {
 		return digits, true
 	}
 	return "", false
-}
-
-// validISBN10 checks the mod-11 checksum of a 10-character ISBN, whose final
-// character may be 'X' for the value 10.
-func validISBN10(s string) bool {
-	if len(s) != 10 {
-		return false
-	}
-	sum := 0
-	for i := 0; i < 10; i++ {
-		c := s[i]
-		var d int
-		switch {
-		case c >= '0' && c <= '9':
-			d = int(c - '0')
-		case (c == 'X' || c == 'x') && i == 9:
-			d = 10
-		default:
-			return false
-		}
-		sum += d * (10 - i)
-	}
-	return sum%11 == 0
 }
 
 func firstNonEmpty(vals []string) string {

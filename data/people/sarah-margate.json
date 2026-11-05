@@ -4163,6 +4163,7 @@
     },
     "sarmento-publications": {
       "id": "sarmento-publications",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Sarmento Publications",
       "sources": [
@@ -6958,6 +6959,7 @@
     },
     "sbh-productions": {
       "id": "sbh-productions",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "SBH Productions",
       "sources": [
@@ -7083,6 +7085,7 @@
     },
     "scare-street": {
       "id": "scare-street",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Scare Street",
       "sources": [
@@ -7963,6 +7966,7 @@
     },
     "scholarly-mind-creations-llc": {
       "id": "scholarly-mind-creations-llc",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Scholarly Mind Creations LLC",
       "sources": [
@@ -7975,6 +7979,7 @@
     },
     "scholastic": {
       "id": "scholastic",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Scholastic",
       "sources": [
@@ -8035,19 +8040,6 @@
         }
       ]
     },
-    "sci-fi-publishing": {
-      "id": "sci-fi-publishing",
-      "kind": "publisher",
-      "license": "CC0-1.0",
-      "name": "Sci-Fi Publishing",
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B00EYIP6BC",
-          "type": "libex-import"
-        }
-      ]
-    },
     "scie": {
       "id": "scie",
       "librivox_reader_id": 10200,
@@ -8075,6 +8067,7 @@
     },
     "scientific-american": {
       "id": "scientific-american",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Scientific American",
       "sources": [
@@ -8120,6 +8113,11 @@
         {
           "imported_at": "2026-08-01",
           "ref": "B00G5HGA8I",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B00EYIP6BC",
           "type": "libex-import"
         }
       ]

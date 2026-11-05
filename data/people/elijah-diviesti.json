@@ -3129,6 +3129,7 @@
     },
     "elite-minds-publishing": {
       "id": "elite-minds-publishing",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Elite Minds Publishing",
       "sources": [
@@ -6168,20 +6169,6 @@
         }
       ]
     },
-    "elizabeth-g-martin": {
-      "birth_year": 1837,
-      "id": "elizabeth-g-martin",
-      "librivox_author_id": 7101,
-      "license": "CC0-1.0",
-      "name": "Elizabeth G. Martin",
-      "sources": [
-        {
-          "imported_at": "2026-10-28",
-          "ref": "6975",
-          "type": "librivox"
-        }
-      ]
-    },
     "elizabeth-garrett": {
       "id": "elizabeth-garrett",
       "license": "CC0-1.0",
@@ -6288,6 +6275,9 @@
     "elizabeth-gilbert-martin": {
       "birth_year": 1837,
       "id": "elizabeth-gilbert-martin",
+      "librivox_author_aliases": [
+        7101
+      ],
       "librivox_author_id": 17696,
       "license": "CC0-1.0",
       "name": "Elizabeth Gilbert Martin",
@@ -6295,6 +6285,11 @@
         {
           "imported_at": "2026-10-29",
           "ref": "19407",
+          "type": "librivox"
+        },
+        {
+          "imported_at": "2026-10-28",
+          "ref": "6975",
           "type": "librivox"
         }
       ]

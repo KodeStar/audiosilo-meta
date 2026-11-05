@@ -1007,6 +1007,7 @@
     },
     "hosts-of-nprs-planet-money": {
       "id": "hosts-of-nprs-planet-money",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Hosts of NPR's Planet Money",
       "sources": [
@@ -1019,6 +1020,7 @@
     },
     "hot-tree-editing": {
       "id": "hot-tree-editing",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Hot Tree Editing",
       "sources": [
@@ -1100,6 +1102,7 @@
     },
     "hourly-affirmations": {
       "id": "hourly-affirmations",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Hourly Affirmations",
       "sources": [
@@ -1112,6 +1115,7 @@
     },
     "hourly-history": {
       "id": "hourly-history",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Hourly History",
       "sources": [
@@ -1137,6 +1141,7 @@
     },
     "house-of-abundance-publications": {
       "id": "house-of-abundance-publications",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "House of Abundance Publications",
       "sources": [
@@ -1149,6 +1154,7 @@
     },
     "house-permanent-select-committee-on-intelligence": {
       "id": "house-permanent-select-committee-on-intelligence",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "House Permanent Select Committee on Intelligence",
       "sources": [
@@ -1161,6 +1167,7 @@
     },
     "house-un-american-activities-committee": {
       "id": "house-un-american-activities-committee",
+      "kind": "group",
       "librivox_author_id": 14789,
       "license": "CC0-1.0",
       "name": "House Un-American Activities Committee",
@@ -1210,6 +1217,7 @@
     },
     "how-to-analyze-people-studio": {
       "id": "how-to-analyze-people-studio",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "How to Analyze People Studio",
       "sources": [
@@ -1222,6 +1230,7 @@
     },
     "how-to-ebooks": {
       "id": "how-to-ebooks",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "How To eBooks",
       "sources": [
@@ -2582,26 +2591,20 @@
         }
       ]
     },
-    "howexpert": {
-      "id": "howexpert",
-      "license": "CC0-1.0",
-      "name": "HowExpert",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07DXBHZSJ",
-          "type": "libex-import"
-        }
-      ]
-    },
     "howexpert-press": {
       "id": "howexpert-press",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "HowExpert Press",
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B01LT9GF5Y",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07DXBHZSJ",
           "type": "libex-import"
         }
       ]
@@ -2894,6 +2897,7 @@
     },
     "htebooks": {
       "id": "htebooks",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "HTeBooks",
       "sources": [
@@ -3379,6 +3383,7 @@
     },
     "huggins-point-editors": {
       "id": "huggins-point-editors",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Huggins Point Editors",
       "sources": [
@@ -4855,6 +4860,7 @@
     },
     "humanity-publications": {
       "id": "humanity-publications",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Humanity Publications",
       "sources": [
@@ -5027,6 +5033,7 @@
     },
     "humor-heals-us": {
       "id": "humor-heals-us",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Humor Heals Us",
       "sources": [
@@ -5123,6 +5130,7 @@
     },
     "hungarianpod101-com": {
       "id": "hungarianpod101-com",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "HungarianPod101.com",
       "sources": [
@@ -5970,6 +5978,7 @@
     },
     "hypnotherapy-solutions": {
       "id": "hypnotherapy-solutions",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Hypnotherapy Solutions",
       "sources": [
@@ -6261,6 +6270,7 @@
     },
     "i-h-t-publishing": {
       "id": "i-h-t-publishing",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "I.H.T. Publishing",
       "sources": [

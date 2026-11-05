@@ -997,6 +997,18 @@
         }
       ]
     },
+    "jack-london-narrator": {
+      "id": "jack-london-narrator",
+      "license": "CC0-1.0",
+      "name": "Jack London (narrator)",
+      "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B00DZW0AS2",
+          "type": "libex-import"
+        }
+      ]
+    },
     "jack-lowden": {
       "id": "jack-lowden",
       "license": "CC0-1.0",
@@ -6039,6 +6051,7 @@
     },
     "jacoba-publishing": {
       "id": "jacoba-publishing",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Jacoba Publishing",
       "sources": [

@@ -1816,6 +1816,7 @@
     },
     "voice-of-hope": {
       "id": "voice-of-hope",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Voice of Hope",
       "sources": [
@@ -1958,6 +1959,7 @@
     },
     "voices-in-the-wind-audio-theatre": {
       "id": "voices-in-the-wind-audio-theatre",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Voices in the Wind Audio Theatre",
       "sources": [
@@ -2458,26 +2460,20 @@
         }
       ]
     },
-    "voplanet": {
-      "id": "voplanet",
-      "license": "CC0-1.0",
-      "name": "VOplanet",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B073QZMPJZ",
-          "type": "libex-import"
-        }
-      ]
-    },
     "voplanet-studios": {
       "id": "voplanet-studios",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "VOplanet Studios",
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B00KDJCQZ0",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B073QZMPJZ",
           "type": "libex-import"
         }
       ]
@@ -2610,6 +2606,7 @@
     },
     "vox-tinnean-media": {
       "id": "vox-tinnean-media",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Vox Tinnean Media",
       "sources": [
@@ -4101,19 +4098,6 @@
         }
       ]
     },
-    "w-k-marriott": {
-      "id": "w-k-marriott",
-      "librivox_author_id": 6467,
-      "license": "CC0-1.0",
-      "name": "W. K. Marriott",
-      "sources": [
-        {
-          "imported_at": "2026-11-04",
-          "ref": "6561",
-          "type": "librivox"
-        }
-      ]
-    },
     "w-k-sonnemann": {
       "id": "w-k-sonnemann",
       "license": "CC0-1.0",
@@ -5590,6 +5574,7 @@
     },
     "wall-street-journal": {
       "id": "wall-street-journal",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Wall Street Journal",
       "sources": [
@@ -6109,6 +6094,7 @@
     },
     "walrusensemble": {
       "id": "walrusensemble",
+      "kind": "group",
       "librivox_reader_id": 13464,
       "license": "CC0-1.0",
       "name": "WalrusEnsemble",
@@ -6219,6 +6205,7 @@
     },
     "walt-disney-company-ltd": {
       "id": "walt-disney-company-ltd",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Walt Disney Company Ltd.",
       "sources": [

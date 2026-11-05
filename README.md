@@ -596,7 +596,7 @@ the order the projects are read in.
   `<name>-librivox-author-<author id>` (`ralph-scott-librivox-author-16428`,
   beside a retail narrator called Ralph Scott), and the import report lists the
   pair (`librivox worklist: N author ids filed at <name>-librivox-author-<id>`)
-  for a person to merge or confirm, since LibriVox may list one person under two
+  to merge or confirm, since LibriVox may list one person under two
   ids; a collective such as "Anonymous" is never split this way. When the
   catalogued person's works are dated only
   by their recordings' release dates (a modern book and a modern edition of an
@@ -616,6 +616,20 @@ the order the projects are read in.
   of one name in a single import are told apart the same way: the second is
   the first's person only when both state the same birth and death years, else
   dated or at its author-id form, as a later import would decide it.
+- **One person under two LibriVox ids.** LibriVox lists some people twice: two
+  author records (F. P. Walter 6492 and 6858), or two reader accounts (Branko
+  Collin 778 and 1775). An import never records the second id: a reader's is
+  filed beside the first, an author's is told apart by the rules above (the same
+  years land the credit on the first's record, the id stays unrecorded; no year
+  files it beside them, on the report's "beside a same-name person" list). Once
+  the evidence says one person (the same text, the same years, the same site on
+  both reader pages), the fold moves the credits, retires the twin's slug in
+  `data/redirects.json` and records the second id in `librivox_author_aliases`
+  or `librivox_reader_aliases` on the surviving person. An import resolves an
+  alias as it does the record's own id, so the twin is not minted again, and
+  metacheck refuses a retired slug of a LibriVox id form whose target does not
+  answer to that id. Evidence of two people is a reviewed `merge-people` rejection
+  in `internal/audit/reviewed.json` instead. No run writes either.
 
 ## Audiobookshelf
 

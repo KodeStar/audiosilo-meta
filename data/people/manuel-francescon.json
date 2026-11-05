@@ -721,6 +721,7 @@
     },
     "map-men": {
       "id": "map-men",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Map Men",
       "sources": [
@@ -733,6 +734,7 @@
     },
     "maple-grove-press": {
       "id": "maple-grove-press",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Maple Grove Press",
       "sources": [
@@ -10302,6 +10304,9 @@
       "birth_year": 1867,
       "death_year": 1921,
       "id": "margaret-steele-anderson",
+      "librivox_author_aliases": [
+        17348
+      ],
       "librivox_author_id": 12383,
       "license": "CC0-1.0",
       "name": "Margaret Steele Anderson",
@@ -10309,6 +10314,11 @@
         {
           "imported_at": "2026-10-29",
           "ref": "11398",
+          "type": "librivox"
+        },
+        {
+          "imported_at": "2026-11-04",
+          "ref": "18799",
           "type": "librivox"
         }
       ]

@@ -3382,6 +3382,9 @@
     },
     "ryoko": {
       "id": "ryoko",
+      "librivox_reader_aliases": [
+        8397
+      ],
       "librivox_reader_id": 8441,
       "license": "CC0-1.0",
       "name": "ryoko",
@@ -3390,15 +3393,7 @@
           "imported_at": "2026-10-28",
           "ref": "7742",
           "type": "librivox"
-        }
-      ]
-    },
-    "ryoko-librivox-8397": {
-      "id": "ryoko-librivox-8397",
-      "librivox_reader_id": 8397,
-      "license": "CC0-1.0",
-      "name": "ryoko",
-      "sources": [
+        },
         {
           "imported_at": "2026-10-28",
           "ref": "7850",
@@ -3679,18 +3674,6 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0F3L6KH8Y",
-          "type": "libex-import"
-        }
-      ]
-    },
-    "s-a-editorial-planeta": {
-      "id": "s-a-editorial-planeta",
-      "license": "CC0-1.0",
-      "name": "S. A. Editorial Planeta",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0BX9RZNCZ",
           "type": "libex-import"
         }
       ]

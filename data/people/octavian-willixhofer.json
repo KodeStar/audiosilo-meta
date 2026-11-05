@@ -356,26 +356,20 @@
         }
       ]
     },
-    "official-prep-content-team": {
-      "id": "official-prep-content-team",
-      "license": "CC0-1.0",
-      "name": "Official Prep Content Team",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B01KIAUH36",
-          "type": "libex-import"
-        }
-      ]
-    },
     "official-test-prep-content-team": {
       "id": "official-test-prep-content-team",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Official Test Prep Content Team",
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B014HIBPP4",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01KIAUH36",
           "type": "libex-import"
         }
       ]
@@ -1141,6 +1135,7 @@
     },
     "old-time-radio": {
       "id": "old-time-radio",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Old Time Radio",
       "sources": [
@@ -6110,6 +6105,7 @@
     },
     "oma-international-publications": {
       "id": "oma-international-publications",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Oma International Publications",
       "sources": [
@@ -6791,6 +6787,7 @@
     },
     "on-air-productions": {
       "id": "on-air-productions",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "On Air Productions",
       "sources": [
@@ -6803,6 +6800,7 @@
     },
     "once-upon-a-dance": {
       "id": "once-upon-a-dance",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Once Upon a Dance",
       "sources": [
@@ -6827,6 +6825,7 @@
     },
     "one-direction": {
       "id": "one-direction",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "One Direction",
       "sources": [
@@ -7029,6 +7028,7 @@
     },
     "online-studio-productions": {
       "id": "online-studio-productions",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Online Studio Productions",
       "sources": [
@@ -7301,6 +7301,7 @@
     },
     "opening-the-dharma-treasury-editors-group": {
       "id": "opening-the-dharma-treasury-editors-group",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Opening the Dharma Treasury Editors Group",
       "sources": [
@@ -7325,6 +7326,7 @@
     },
     "operation-alpha": {
       "id": "operation-alpha",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Operation Alpha",
       "sources": [
@@ -7632,6 +7634,7 @@
     },
     "orbis-language-center": {
       "id": "orbis-language-center",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Orbis Language Center",
       "sources": [
@@ -7639,11 +7642,17 @@
           "imported_at": "2026-07-29",
           "ref": "B07P5N6T11",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07DVTK26K",
+          "type": "libex-import"
         }
       ]
     },
     "orcus-auditory": {
       "id": "orcus-auditory",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Orcus Auditory",
       "sources": [
@@ -7887,18 +7896,6 @@
         }
       ]
     },
-    "oribis-language-center": {
-      "id": "oribis-language-center",
-      "license": "CC0-1.0",
-      "name": "Oribis Language Center",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07DVTK26K",
-          "type": "libex-import"
-        }
-      ]
-    },
     "oriel-bathurst": {
       "id": "oriel-bathurst",
       "license": "CC0-1.0",
@@ -7928,6 +7925,7 @@
     },
     "original-radio-broadcast": {
       "id": "original-radio-broadcast",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Original Radio Broadcast",
       "sources": [
@@ -7935,14 +7933,7 @@
           "imported_at": "2026-07-29",
           "ref": "B07FW6VVNG",
           "type": "libex-import"
-        }
-      ]
-    },
-    "original-radio-broadcast-rt-radi-001971": {
-      "id": "original-radio-broadcast-rt-radi-001971",
-      "license": "CC0-1.0",
-      "name": "Original Radio Broadcast RT_RADI_001971",
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "1617095184",
@@ -9576,6 +9567,7 @@
     },
     "oshea-jephson-and-ana-auther": {
       "id": "oshea-jephson-and-ana-auther",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Oshea Jephson and Ana Auther",
       "sources": [
@@ -9971,6 +9963,7 @@
     },
     "osys-studios": {
       "id": "osys-studios",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Osys Studios",
       "sources": [
@@ -10034,6 +10027,7 @@
     },
     "other-leading-experts": {
       "id": "other-leading-experts",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "other leading experts",
       "sources": [
@@ -10046,6 +10040,7 @@
     },
     "others": {
       "id": "others",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "others",
       "sources": [

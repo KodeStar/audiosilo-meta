@@ -1783,6 +1783,7 @@
     },
     "mens-health-magazine": {
       "id": "mens-health-magazine",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Men's Health Magazine",
       "sources": [
@@ -2339,6 +2340,7 @@
     },
     "mercury-studios": {
       "id": "mercury-studios",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Mercury Studios",
       "sources": [
@@ -2363,6 +2365,7 @@
     },
     "mercury-theatre-on-the-air": {
       "id": "mercury-theatre-on-the-air",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Mercury Theatre on the Air",
       "sources": [
@@ -4506,6 +4509,9 @@
     },
     "mevans": {
       "id": "mevans",
+      "librivox_reader_aliases": [
+        4687
+      ],
       "librivox_reader_id": 4695,
       "license": "CC0-1.0",
       "name": "mevans",
@@ -4514,15 +4520,7 @@
           "imported_at": "2026-10-27",
           "ref": "842",
           "type": "librivox"
-        }
-      ]
-    },
-    "mevans-librivox-4687": {
-      "id": "mevans-librivox-4687",
-      "librivox_reader_id": 4687,
-      "license": "CC0-1.0",
-      "name": "mevans",
-      "sources": [
+        },
         {
           "imported_at": "2026-10-28",
           "ref": "3399",
@@ -7202,6 +7200,7 @@
     },
     "michael-and-gina-spehn": {
       "id": "michael-and-gina-spehn",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Michael and Gina Spehn",
       "sources": [
@@ -7214,6 +7213,7 @@
     },
     "michael-and-kelly-ables": {
       "id": "michael-and-kelly-ables",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Michael and Kelly Ables",
       "sources": [
@@ -8294,6 +8294,7 @@
     },
     "michael-blain-rozgay-allison-moffett": {
       "id": "michael-blain-rozgay-allison-moffett",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Michael Blain-Rozgay/Allison Moffett",
       "sources": [

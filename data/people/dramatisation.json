@@ -1,19 +1,8 @@
 {
   "entries": {
-    "dramatisation": {
-      "id": "dramatisation",
-      "license": "CC0-1.0",
-      "name": "Dramatisation",
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B002V1M36U",
-          "type": "audiosilo-books-import"
-        }
-      ]
-    },
     "dramatization": {
       "id": "dramatization",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Dramatization",
       "sources": [
@@ -21,6 +10,11 @@
           "imported_at": "2026-07-29",
           "ref": "B002V5CR6C",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B002V1M36U",
+          "type": "audiosilo-books-import"
         }
       ]
     },
@@ -162,6 +156,7 @@
     },
     "dreamdrift-publishing": {
       "id": "dreamdrift-publishing",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "DreamDrift Publishing",
       "sources": [
@@ -198,6 +193,7 @@
     },
     "dreamstorm-publications": {
       "id": "dreamstorm-publications",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Dreamstorm Publications",
       "sources": [
@@ -1294,6 +1290,7 @@
     },
     "drive-safely-publishing": {
       "id": "drive-safely-publishing",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Drive Safely Publishing",
       "sources": [
@@ -1648,6 +1645,7 @@
     },
     "dsm-publishing": {
       "id": "dsm-publishing",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "DSM Publishing",
       "sources": [
@@ -2008,6 +2006,7 @@
     },
     "dubl-b-enterprises": {
       "id": "dubl-b-enterprises",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Dubl B Enterprises",
       "sources": [
@@ -2497,6 +2496,7 @@
     },
     "dulaney-high-key-club": {
       "id": "dulaney-high-key-club",
+      "kind": "group",
       "librivox_reader_id": 15426,
       "license": "CC0-1.0",
       "name": "Dulaney High Key Club",
@@ -4050,6 +4050,7 @@
     },
     "dutchpod101-com": {
       "id": "dutchpod101-com",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "DutchPod101.com",
       "sources": [
@@ -6134,6 +6135,7 @@
     },
     "e-audioproductions-com": {
       "id": "e-audioproductions-com",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "e-AudioProductions.com",
       "sources": [
@@ -6601,6 +6603,7 @@
     },
     "e-commerce-lab": {
       "id": "e-commerce-lab",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "E-Commerce Lab",
       "sources": [
@@ -7311,6 +7314,7 @@
     },
     "e-h-heron": {
       "id": "e-h-heron",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "E. & H. Heron",
       "sources": [

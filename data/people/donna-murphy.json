@@ -3041,6 +3041,7 @@
     },
     "doubleblind": {
       "id": "doubleblind",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "DoubleBlind",
       "sources": [
@@ -3152,6 +3153,7 @@
     },
     "doug-andy-shafer-demsky": {
       "id": "doug-andy-shafer-demsky",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Doug/Andy Shafer/Demsky",
       "sources": [
@@ -8289,12 +8291,18 @@
     },
     "dr-henry-cloud-and-dr-john-townsend": {
       "id": "dr-henry-cloud-and-dr-john-townsend",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Dr. Henry Cloud and Dr. John Townsend",
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B002UZKQHA",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V0QF60",
           "type": "libex-import"
         }
       ]
@@ -10802,6 +10810,7 @@
     },
     "dr-tony-evans-chrystal-evans-hurst-priscilla-shirer-anthony-evans-and-jonathan-evans": {
       "id": "dr-tony-evans-chrystal-evans-hurst-priscilla-shirer-anthony-evans-and-jonathan-evans",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Dr. Tony Evans Chrystal Evans Hurst Priscilla Shirer Anthony Evans and Jonathan Evans",
       "sources": [
@@ -11092,6 +11101,7 @@
     },
     "dragonblade-publishing": {
       "id": "dragonblade-publishing",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Dragonblade Publishing",
       "sources": [

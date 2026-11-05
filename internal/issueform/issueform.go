@@ -189,6 +189,9 @@ type composer struct {
 	// isbnKey: an ISBN-10's check digit is X or x in the schema, and the two
 	// are one identifier.
 	isbnRec map[string]recRef
+	// printISBN maps each of a work's print ISBN keys (model.Work.PrintISBNKeys) to
+	// that work's slug. No recording may claim one, the rule pkg/check enforces.
+	printISBN map[string]string
 
 	// redirects is the tree's own slug TOMBSTONE table, off the same load: read by
 	// resolveWorkKey and by every minting path (internal/importer/tombstone.go).
@@ -322,15 +325,16 @@ func process(opts Options) Result {
 	}
 
 	c := &composer{
-		dataDir: opts.DataDir,
-		profile: profile,
-		date:    date,
-		fetch:   fetch,
-		people:  map[string]bool{},
-		works:   map[string]*model.Work{},
-		series:  map[string]*model.Series{},
-		asinRec: map[string]recRef{},
-		isbnRec: map[string]recRef{},
+		dataDir:   opts.DataDir,
+		profile:   profile,
+		date:      date,
+		fetch:     fetch,
+		people:    map[string]bool{},
+		works:     map[string]*model.Work{},
+		series:    map[string]*model.Series{},
+		asinRec:   map[string]recRef{},
+		isbnRec:   map[string]recRef{},
+		printISBN: map[string]string{},
 
 		seriesLookup:      opts.SeriesLookup,
 		seriesLookupLimit: opts.SeriesLookupLimit,
@@ -438,6 +442,9 @@ func (c *composer) loadExisting() {
 	}
 	for _, w := range cat.Works {
 		c.works[w.ID] = w
+		for _, key := range w.PrintISBNKeys() {
+			c.printISBN[key] = w.ID
+		}
 		for _, r := range w.Recordings {
 			ref := recRef{Work: w.ID, Rec: r.ID}
 			for _, a := range r.ASIN {
@@ -682,8 +689,18 @@ func (c *composer) dedupIdentifiers(asins []outASIN, isbns []model.ISBNRef, asin
 			c.failDuplicate(ref, "ISBN "+isbn.ISBN, "ISBN %s already exists (duplicate of %s)", isbn.ISBN, c.recLocation(ref))
 			return nil, true
 		}
+		if work, held := c.printISBN[isbnKey(isbn.ISBN)]; held {
+			c.fail(StatusDuplicate, "%s", printISBNRefusal(isbn.ISBN, work))
+			return nil, true
+		}
 	}
 	return nil, false
+}
+
+// printISBNRefusal is the words of every form's refusal of a recording ISBN a work
+// holds as its print ISBN. Each door keeps the status it gives any claimed ISBN.
+func printISBNRefusal(isbn, work string) string {
+	return fmt.Sprintf("ISBN %s already exists as the print ISBN of work %q, so a recording cannot carry it; state the audiobook's own ISBN", isbn, work)
 }
 
 // isbnKey folds an ISBN to the form the dedup index compares on. NormalizeISBN
@@ -964,7 +981,8 @@ func (c *composer) getOrCreatePerson(name, sourceRef string) (string, bool) {
 	// synthetic-voice person a folded narration credit names (the same
 	// importer.PersonKindFor call the bulk importer mints with, so a record
 	// created by a form and one created by an import are the same record). Every
-	// other kind stays a human classification made through the correct-data form.
+	// other kind stays a classification, made by a maintainer batch or the
+	// correct-data form.
 	if !c.putNewEntry(pack.FamilyPeople, slug, outPerson{
 		ID: slug, Name: strings.TrimSpace(name), Kind: importer.PersonKindFor(name),
 		License: licenseCC0, Sources: c.sources(sourceRef),

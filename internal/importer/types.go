@@ -613,6 +613,18 @@ type Summary struct {
 	// importer credits the shared catch-all person (unrecorded.go, meta#2778).
 	// A row the --attach-editions rule attaches reports its credits here too.
 	UnrecordedCredits []UnrecordedCredit
+	// ISBNRecordings counts the recordings, each once, that gained an ISBN from a
+	// row with nothing else to write there: an exact-ASIN row meeting an
+	// already-attested recording or one this run landed that ASIN on, or an
+	// ASIN-less row passing attachRowISBNs. An ISBN that rides a merge, a fill or an
+	// attestation is counted by that outcome instead.
+	ISBNRecordings int
+	// ISBNsMirrorOnly counts the ASIN-less rows that passed every other test of
+	// attachRowISBNs, state a value the claim would take, and were refused because
+	// the recording is bulk-mirror-only (isbn-not-attached: mirror-only). The match
+	// identifies nothing, so it may not end that status. Not in Produced: nothing
+	// was written.
+	ISBNsMirrorOnly int
 	// Notes are aggregated lines about what a run DID, where the doing is a
 	// decision a reader should see rather than something that went wrong -
 	// today, the AI-narration fold (synthetic.go). They are kept apart from
@@ -623,10 +635,11 @@ type Summary struct {
 }
 
 // Produced counts the outcomes that mean a run actually CHANGED the tree: it
-// created records, merged a re-release ASIN into one, or attested a
+// created records, merged a re-release ASIN into one, attested a
 // bulk-mirror-only record on the submitter's behalf (LICENSING.md's trust tiers
 // - an export whose every book is already catalogued still takes those records
-// over, and reporting that as "nothing new" would silently discard it).
+// over, and reporting that as "nothing new" would silently discard it), or added
+// an ISBN to a recording it did not otherwise touch.
 //
 // It lives beside the counters rather than at the caller that asks the question
 // (internal/issueform's import composer, which branches its duplicate verdict on
@@ -639,7 +652,7 @@ type Summary struct {
 // Enriched*/Matched/NotInCatalog family, which only a libex mode ever sets.
 func (s Summary) Produced() int {
 	return s.NewWorks + s.NewRecordings + s.NewPeople + s.NewSeries + s.MergedASINs +
-		s.AttestedWorks + s.AttestedRecordings + s.GenreWorks
+		s.AttestedWorks + s.AttestedRecordings + s.GenreWorks + s.ISBNRecordings
 }
 
 // RowWarnings is the per-row tail of Warnings: the lines that each name one

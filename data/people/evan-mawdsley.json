@@ -390,6 +390,7 @@
     },
     "evangelical-lutheran-church-in-america": {
       "id": "evangelical-lutheran-church-in-america",
+      "kind": "group",
       "librivox_author_id": 15478,
       "license": "CC0-1.0",
       "name": "Evangelical Lutheran Church in America",
@@ -3290,6 +3291,7 @@
     },
     "executive-reads": {
       "id": "executive-reads",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Executive Reads",
       "sources": [
@@ -3409,6 +3411,7 @@
     },
     "extinction-rebellion": {
       "id": "extinction-rebellion",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Extinction Rebellion",
       "sources": [
@@ -4389,6 +4392,9 @@
       "birth_year": 1943,
       "death_year": 2024,
       "id": "f-p-walter",
+      "librivox_author_aliases": [
+        6858
+      ],
       "librivox_author_id": 6492,
       "license": "CC0-1.0",
       "name": "F. P. Walter",
@@ -4397,15 +4403,7 @@
           "imported_at": "2026-11-04",
           "ref": "665",
           "type": "librivox"
-        }
-      ]
-    },
-    "f-p-walter-librivox-author-6858": {
-      "id": "f-p-walter-librivox-author-6858",
-      "librivox_author_id": 6858,
-      "license": "CC0-1.0",
-      "name": "F. P. Walter",
-      "sources": [
+        },
         {
           "imported_at": "2026-11-04",
           "ref": "4385",
@@ -5764,6 +5762,7 @@
     },
     "fabulous-family-books": {
       "id": "fabulous-family-books",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Fabulous Family Books",
       "sources": [
@@ -5789,6 +5788,7 @@
     },
     "faculty-of-the-cummings-school-of-veterinary-medicine-at-tufts-university": {
       "id": "faculty-of-the-cummings-school-of-veterinary-medicine-at-tufts-university",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Faculty of the Cummings School of Veterinary Medicine at Tufts University",
       "sources": [
@@ -5999,6 +5999,7 @@
     },
     "fairy-tales-for-family": {
       "id": "fairy-tales-for-family",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Fairy Tales for Family",
       "sources": [
@@ -6642,6 +6643,7 @@
     },
     "falcon-picture-group": {
       "id": "falcon-picture-group",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Falcon Picture Group",
       "sources": [
@@ -6813,6 +6815,7 @@
     },
     "familie-vogel": {
       "id": "familie-vogel",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Familie Vogel",
       "sources": [
@@ -7997,6 +8000,7 @@
     },
     "fastreads": {
       "id": "fastreads",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "FastReads",
       "sources": [
@@ -8744,6 +8748,7 @@
     },
     "fbb-publications": {
       "id": "fbb-publications",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "FBB Publications",
       "sources": [
@@ -8842,6 +8847,7 @@
     },
     "fearless-christians": {
       "id": "fearless-christians",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Fearless Christians",
       "sources": [
@@ -8928,6 +8934,7 @@
     "federal-aviation-administration": {
       "birth_year": 1958,
       "id": "federal-aviation-administration",
+      "kind": "group",
       "librivox_author_id": 9721,
       "license": "CC0-1.0",
       "name": "Federal Aviation Administration",
@@ -8946,6 +8953,7 @@
     },
     "federal-securities-corporation": {
       "id": "federal-securities-corporation",
+      "kind": "publisher",
       "librivox_author_id": 17493,
       "license": "CC0-1.0",
       "name": "Federal Securities Corporation",
@@ -11124,14 +11132,21 @@
       "name": "Fenton Johnson",
       "sources": [
         {
-          "imported_at": "2026-07-29",
-          "ref": "168457708X",
-          "type": "libex-import"
-        },
-        {
           "imported_at": "2026-10-29",
           "ref": "13135",
           "type": "librivox"
+        }
+      ]
+    },
+    "fenton-johnson-b-1953": {
+      "id": "fenton-johnson-b-1953",
+      "license": "CC0-1.0",
+      "name": "Fenton Johnson (b. 1953)",
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "168457708X",
+          "type": "libex-import"
         }
       ]
     },

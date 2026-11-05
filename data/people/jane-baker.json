@@ -6523,6 +6523,7 @@
     },
     "japanese-language-park": {
       "id": "japanese-language-park",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Japanese Language Park",
       "sources": [
@@ -6533,26 +6534,20 @@
         }
       ]
     },
-    "japanesepod101": {
-      "id": "japanesepod101",
-      "license": "CC0-1.0",
-      "name": "JapanesePod101",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07LBYNX7N",
-          "type": "libex-import"
-        }
-      ]
-    },
     "japanesepod101-com": {
       "id": "japanesepod101-com",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "JapanesePod101.com",
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B004BBE18G",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07LBYNX7N",
           "type": "libex-import"
         }
       ]
@@ -7404,6 +7399,7 @@
     },
     "jared-reinfeldt-full-cast": {
       "id": "jared-reinfeldt-full-cast",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Jared Reinfeldt full cast",
       "sources": [

@@ -246,7 +246,7 @@ func (p *planner) pairsCarryOtherIDs(b sourceBook, pairs map[string]string, byPe
 // refused alike in one run and in two, whichever row arrives first.
 func (p *planner) heldByOtherAuthorID(slug string, id int) bool {
 	if have := p.lv.authorOf[slug]; have != 0 {
-		return have != id
+		return !p.answersTo(librivoxAuthor, slug, id)
 	}
 	for other, pin := range p.lv.authorPins {
 		if other != id && pin != nil && pin.slug == slug {

@@ -888,6 +888,7 @@
     },
     "grizzly-publishing": {
       "id": "grizzly-publishing",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Grizzly Publishing",
       "sources": [
@@ -1080,6 +1081,7 @@
     },
     "growth-mindset-publishing": {
       "id": "growth-mindset-publishing",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Growth Mindset Publishing",
       "sources": [
@@ -1600,6 +1602,7 @@
     },
     "guided-meditation": {
       "id": "guided-meditation",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Guided Meditation",
       "sources": [
@@ -1612,6 +1615,7 @@
     },
     "guided-miracle-manifestation": {
       "id": "guided-miracle-manifestation",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Guided Miracle Manifestation",
       "sources": [
@@ -2478,6 +2482,7 @@
     },
     "guitar-nation": {
       "id": "guitar-nation",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Guitar Nation",
       "sources": [
@@ -5994,6 +5999,7 @@
     },
     "gypsy-heart-editing": {
       "id": "gypsy-heart-editing",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Gypsy Heart Editing",
       "sources": [
@@ -7630,6 +7636,7 @@
     },
     "h-p-lovecraft-historical-society": {
       "id": "h-p-lovecraft-historical-society",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "H.P. Lovecraft Historical Society",
       "sources": [
@@ -7669,6 +7676,9 @@
       "birth_year": 1812,
       "death_year": 1888,
       "id": "h-p-paull",
+      "librivox_author_aliases": [
+        6787
+      ],
       "librivox_author_id": 7024,
       "license": "CC0-1.0",
       "name": "H. P. Paull",
@@ -7676,6 +7686,11 @@
         {
           "imported_at": "2026-10-28",
           "ref": "6179",
+          "type": "librivox"
+        },
+        {
+          "imported_at": "2026-11-04",
+          "ref": "6931",
           "type": "librivox"
         }
       ]
@@ -8293,6 +8308,7 @@
     },
     "habits-of-wisdom": {
       "id": "habits-of-wisdom",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Habits of Wisdom",
       "sources": [
@@ -8305,6 +8321,7 @@
     },
     "hachette-assorted-authors": {
       "id": "hachette-assorted-authors",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Hachette Assorted Authors",
       "sources": [
@@ -10017,6 +10034,7 @@
     },
     "hallmark-publishing": {
       "id": "hallmark-publishing",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Hallmark Publishing",
       "sources": [
@@ -10042,6 +10060,7 @@
     },
     "hallyu-press": {
       "id": "hallyu-press",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Hallyu Press",
       "sources": [
@@ -10078,6 +10097,7 @@
     },
     "ham-radio-prep": {
       "id": "ham-radio-prep",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Ham Radio Prep",
       "sources": [
@@ -10090,6 +10110,7 @@
     },
     "ham-radio-team": {
       "id": "ham-radio-team",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Ham Radio Team",
       "sources": [
@@ -10224,6 +10245,7 @@
     },
     "hamish-hamilton": {
       "id": "hamish-hamilton",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Hamish Hamilton",
       "sources": [
@@ -10757,6 +10779,7 @@
     },
     "handmade-publishing": {
       "id": "handmade-publishing",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Handmade Publishing",
       "sources": [

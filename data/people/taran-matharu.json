@@ -3658,6 +3658,7 @@
     },
     "team-content-developers": {
       "id": "team-content-developers",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Team Content Developers",
       "sources": [
@@ -3709,6 +3710,7 @@
     },
     "teched-guides": {
       "id": "teched-guides",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "TechEd Guides",
       "sources": [
@@ -5460,6 +5462,7 @@
     },
     "teen-empower": {
       "id": "teen-empower",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Teen Empower",
       "sources": [
@@ -5472,6 +5475,7 @@
     },
     "teen-thrive": {
       "id": "teen-thrive",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Teen Thrive",
       "sources": [
@@ -5508,6 +5512,7 @@
     },
     "teens-that-thrive": {
       "id": "teens-that-thrive",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Teens That Thrive",
       "sources": [
@@ -6707,6 +6712,9 @@
     },
     "terence-nunn": {
       "id": "terence-nunn",
+      "librivox_reader_aliases": [
+        7630
+      ],
       "librivox_reader_id": 2739,
       "license": "CC0-1.0",
       "name": "Terence Nunn",
@@ -6714,6 +6722,11 @@
         {
           "imported_at": "2026-10-27",
           "ref": "2182",
+          "type": "librivox"
+        },
+        {
+          "imported_at": "2026-10-28",
+          "ref": "6919",
           "type": "librivox"
         }
       ]
@@ -6849,19 +6862,6 @@
           "imported_at": "2026-07-29",
           "ref": "B003PPU4C6",
           "type": "libex-import"
-        }
-      ]
-    },
-    "terencenunn": {
-      "id": "terencenunn",
-      "librivox_reader_id": 7630,
-      "license": "CC0-1.0",
-      "name": "terencenunn",
-      "sources": [
-        {
-          "imported_at": "2026-10-28",
-          "ref": "6919",
-          "type": "librivox"
         }
       ]
     },
@@ -8193,6 +8193,7 @@
     },
     "terrapetti-publishing": {
       "id": "terrapetti-publishing",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Terrapetti Publishing",
       "sources": [
@@ -9010,6 +9011,7 @@
     },
     "terris-family": {
       "id": "terris-family",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Terri's Family:",
       "sources": [

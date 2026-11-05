@@ -1764,6 +1764,7 @@
     },
     "headspace": {
       "id": "headspace",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Headspace",
       "sources": [
@@ -1776,6 +1777,7 @@
     },
     "healing-academy": {
       "id": "healing-academy",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Healing Academy",
       "sources": [
@@ -1800,6 +1802,7 @@
     },
     "healthfit-publishing": {
       "id": "healthfit-publishing",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "HealthFit Publishing",
       "sources": [
@@ -1838,6 +1841,7 @@
     },
     "heart-eyes-press": {
       "id": "heart-eyes-press",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Heart Eyes Press",
       "sources": [
@@ -1850,6 +1854,7 @@
     },
     "heart-eyes-press-lgbtq": {
       "id": "heart-eyes-press-lgbtq",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Heart Eyes Press LGBTQ",
       "sources": [
@@ -3186,6 +3191,9 @@
     },
     "heather-hogan": {
       "id": "heather-hogan",
+      "librivox_reader_aliases": [
+        3729
+      ],
       "librivox_reader_id": 3773,
       "license": "CC0-1.0",
       "name": "Heather Hogan",
@@ -3194,15 +3202,7 @@
           "imported_at": "2026-10-28",
           "ref": "2646",
           "type": "librivox"
-        }
-      ]
-    },
-    "heather-hogan-librivox-3729": {
-      "id": "heather-hogan-librivox-3729",
-      "librivox_reader_id": 3729,
-      "license": "CC0-1.0",
-      "name": "Heather Hogan",
-      "sources": [
+        },
         {
           "imported_at": "2026-10-28",
           "ref": "2659",
@@ -4670,6 +4670,7 @@
     },
     "hebrewpod101-com": {
       "id": "hebrewpod101-com",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "HebrewPod101.com",
       "sources": [

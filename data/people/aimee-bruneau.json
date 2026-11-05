@@ -691,6 +691,7 @@
     },
     "airman-audio": {
       "id": "airman-audio",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Airman Audio",
       "sources": [
@@ -2608,6 +2609,7 @@
     },
     "al-anon-family-groups": {
       "id": "al-anon-family-groups",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Al-Anon Family Groups",
       "sources": [
@@ -8570,6 +8572,7 @@
     },
     "alberich-ediciones-mexico": {
       "id": "alberich-ediciones-mexico",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Alberich Ediciones Mexico",
       "sources": [
@@ -10417,6 +10420,7 @@
     },
     "alcazar-audio": {
       "id": "alcazar-audio",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Alcazar Audio",
       "sources": [
@@ -10454,6 +10458,7 @@
     },
     "alcoholics-anonymous": {
       "id": "alcoholics-anonymous",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Alcoholics Anonymous",
       "sources": [
@@ -10466,12 +10471,18 @@
     },
     "alcoholics-anonymous-world-services-inc": {
       "id": "alcoholics-anonymous-world-services-inc",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Alcoholics Anonymous World Services Inc.",
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "164427891X",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0816YZQ9K",
           "type": "libex-import"
         }
       ]

@@ -715,6 +715,9 @@
     },
     "juliana": {
       "id": "juliana",
+      "librivox_reader_aliases": [
+        14164
+      ],
       "librivox_reader_id": 11303,
       "license": "CC0-1.0",
       "name": "Juliana",
@@ -722,6 +725,11 @@
         {
           "imported_at": "2026-10-29",
           "ref": "10855",
+          "type": "librivox"
+        },
+        {
+          "imported_at": "2026-10-29",
+          "ref": "15027",
           "type": "librivox"
         }
       ]
@@ -833,19 +841,6 @@
         {
           "imported_at": "2026-10-29",
           "ref": "11126",
-          "type": "librivox"
-        }
-      ]
-    },
-    "juliana-librivox-14164": {
-      "id": "juliana-librivox-14164",
-      "librivox_reader_id": 14164,
-      "license": "CC0-1.0",
-      "name": "Juliana",
-      "sources": [
-        {
-          "imported_at": "2026-10-29",
-          "ref": "15027",
           "type": "librivox"
         }
       ]
@@ -7518,26 +7513,20 @@
         }
       ]
     },
-    "jupiter-production": {
-      "id": "jupiter-production",
-      "license": "CC0-1.0",
-      "name": "Jupiter Production",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B01E9CY9N8",
-          "type": "libex-import"
-        }
-      ]
-    },
     "jupiter-productions": {
       "id": "jupiter-productions",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Jupiter Productions",
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B01N3RRJKC",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01E9CY9N8",
           "type": "libex-import"
         }
       ]

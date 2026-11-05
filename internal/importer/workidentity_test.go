@@ -491,7 +491,7 @@ func TestARowThatImportsReportsNoLostPlacement(t *testing.T) {
 // booking placeholders, which name nobody at all. The flipped forms are pinned
 // on the other side of the line in collective_test.go.
 func TestPlaceholderCreditRefusesTheRow(t *testing.T) {
-	for _, name := range []string{"To Be Announced", "To Be Confirmed", "TBA", "TBD", "TBC", "N/A"} {
+	for _, name := range []string{"To Be Announced", "To Be Confirmed", "TBA", "TBD", "TBC", "N/A", "(Null) Cast"} {
 		sum, _ := runLibex(t, rows(
 			libexRow{asin: "B0PLACEHL1", title: "A Book",
 				authors: `{"name":"Ada One"}`, narrators: `{"name":"` + name + `"}`},

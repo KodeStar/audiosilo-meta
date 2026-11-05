@@ -3790,6 +3790,7 @@
     },
     "marusya-wellness-publishing": {
       "id": "marusya-wellness-publishing",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Marusya Wellness Publishing",
       "sources": [
@@ -3862,6 +3863,7 @@
     },
     "marvel": {
       "id": "marvel",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Marvel",
       "sources": [
@@ -3882,14 +3884,7 @@
           "imported_at": "2026-07-25",
           "ref": "B07DPWVD8G",
           "type": "audiosilo-books-import"
-        }
-      ]
-    },
-    "marvel-press-book-group": {
-      "id": "marvel-press-book-group",
-      "license": "CC0-1.0",
-      "name": "Marvel Press Book Group",
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0FDMSNZBX",
@@ -4502,6 +4497,7 @@
     },
     "mary-and-robert-schindler": {
       "id": "mary-and-robert-schindler",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Mary and Robert Schindler",
       "sources": [
@@ -7474,7 +7470,6 @@
     },
     "mary-healy": {
       "id": "mary-healy",
-      "librivox_author_id": 6357,
       "license": "CC0-1.0",
       "name": "Mary Healy",
       "sources": [
@@ -7482,7 +7477,15 @@
           "imported_at": "2026-07-29",
           "ref": "1545918198",
           "type": "libex-import"
-        },
+        }
+      ]
+    },
+    "mary-healy-librivox-author-6357": {
+      "id": "mary-healy-librivox-author-6357",
+      "librivox_author_id": 6357,
+      "license": "CC0-1.0",
+      "name": "Mary Healy",
+      "sources": [
         {
           "imported_at": "2026-10-28",
           "ref": "4476",
@@ -7519,6 +7522,7 @@
     },
     "mary-helen-gallucci-tanner-debruyne": {
       "id": "mary-helen-gallucci-tanner-debruyne",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Mary Helen Gallucci & Tanner DeBruyne",
       "sources": [

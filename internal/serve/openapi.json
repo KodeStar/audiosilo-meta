@@ -346,7 +346,7 @@
         "tags": ["Search"],
         "operationId": "matchWorks",
         "summary": "Match a file against the catalogue",
-        "description": "Identify the work an audiobook FILE is, from the facts its tags and its folder path state, each of which may be wrong. Unlike `works/search`, which needs every word of one query, this takes the facts separately - several title guesses, several author guesses, a series name or two and a position, a runtime, an identifier, and optionally the text a person typed - gathers candidates along each of them (the identifier, the typed text exactly as `works/search` reads it, every title guess, every work by the named authors, the members of the named series), and ranks every candidate by how well its own facts agree. Each result is a `WorkResult` plus a 0-100 `score` and the `reasons` behind it.\n\nScoring: within the structured facts the score is a weighted average of title (60), author (20), series (10) and runtime (10) agreement over the facts the request states, a fact left out counting neither for nor against - except that titles which identify nothing (absent, or only `CD1`/`12`-shaped) keep their weight unless the series and its position agree. Every field is judged by its best guess, so a garbage tag beside a good path costs nothing. The typed text is scored separately, read per work as the facts it states about that work (the work's author words as its author, its series words and a volume number as that volume, the rest as a title) and judged by the same rules, and the better of the two scores counts; an identifier hit scores 100. A named title that clearly disagrees outranks a numbering match, a title guess that is only a `series` guess's name never lets another volume outrank a stated one (except a work titled that name, stopwords aside, unless a title guess ties the volume being read to that name), and named authors none of whom wrote a work scale its score down.\n\nBounds: each text value is cut to 256 bytes, at most 4 values of `title` and of `author` and 2 of `series` are read, an author resolves through a bounded window of people and the author and series probes add at most 2,500 works. At most 8 matches run at once, each within 2 seconds; past that the answer is a 503 with `Retry-After`. Nothing is cached server-side, and a successful response carries the searches' short `Cache-Control: public, max-age=60`.",
+        "description": "Identify the work an audiobook FILE is, from the facts its tags and its folder path state, each of which may be wrong. Unlike `works/search`, which needs every word of one query, this takes the facts separately - several title guesses, several author guesses, a series name or two and a position, a runtime, an identifier, and optionally the text a person typed - gathers candidates along each of them (the identifier, the typed text exactly as `works/search` reads it, every title guess, every work by the named authors, the members of the named series), and ranks every candidate by how well its own facts agree. Each result is a `WorkResult` plus a 0-100 `score` and the `reasons` behind it.\n\nScoring: within the structured facts the score is a weighted average of title (60), author (20), series (10) and runtime (10) agreement over the facts the request states, a fact left out counting neither for nor against - except that titles which identify nothing (absent, or only `CD1`/`12`-shaped) keep their weight unless the series and its position agree. Every field is judged by its best guess, so a garbage tag beside a good path costs nothing. The typed text is scored separately, read per work as the facts it states about that work (the work's author words as its author, its series words and a volume number as that volume, the rest as a title) and judged by the same rules, and the better of the two scores counts; an identifier hit scores 100. A named title that clearly disagrees outranks a numbering match, a title guess that is only a `series` guess's name never lets another volume outrank a stated one (except a work titled that name, stopwords aside, unless a title guess ties the volume being read to that name), named authors none of whom wrote a work scale its score down, and so does a work placed in the named series at another position than the stated one (unless one of its memberships is a range covering it, an omnibus). With `narrator` stated, narrator agreement is a further fact weighted 10, judged only when a recording of the work credits narrators. A known `language` other than the stated one, and a closest recording more than 25% off `runtime`, scale the score down too (neither touches an identifier hit).\n\nBounds: each text value is cut to 256 bytes, at most 4 values of `title` and of `author` and 2 of `series` are read, an author resolves through a bounded window of people and the author and series probes add at most 2,500 works. At most 8 matches run at once, each within 2 seconds; past that the answer is a 503 with `Retry-After`. Nothing is cached server-side, and a successful response carries the searches' short `Cache-Control: public, max-age=60`.",
         "parameters": [
           {
             "name": "q",
@@ -387,8 +387,22 @@
             "name": "runtime",
             "in": "query",
             "required": false,
-            "description": "The book's length in seconds. A recording within 3% agrees fully, within 10% partly. A non-numeric or non-positive value, or one above 1,000,000, is ignored.",
+            "description": "The book's length in seconds. A recording within 3% agrees fully, within 10% partly. A work whose closest recording is more than 25% off (allowing the minute a stored runtime is rounded to) is another edition, and its score is scaled down. A non-numeric or non-positive value, or one above 1,000,000, is ignored.",
             "schema": { "type": "integer", "minimum": 1, "maximum": 1000000 }
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "required": false,
+            "description": "The book's language: a BCP-47 tag (`en`, `en-US`; only the primary subtag is compared), an ISO 639-2 code (`eng`, `ger`) or a language's name (`English`, `Deutsch`). A work in another KNOWN language (a translation stored as its own work) has its score scaled down. A value that names no language this API reads, or a work whose language is unknown, is not judged. It finds no candidates on its own.",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "narrator",
+            "in": "query",
+            "required": false,
+            "description": "A narrator guess. Repeat for several; the first 4 are read, each split and matched like `author`. When a recording of a work credits narrators, the best-agreeing recording's agreement counts as a fact weighted 10, and that recording is the `recording_id` (the closest runtime choosing between agreeing recordings) unless it is more than 25% off `runtime`, another edition, when the runtime's pick stands. A work whose recordings credit no narrator is not judged on it. It finds no candidates on its own.",
+            "schema": { "type": "array", "items": { "type": "string" }, "maxItems": 4 }
           },
           {
             "name": "asin",
@@ -1470,7 +1484,7 @@
               },
               "recording_id": {
                 "type": "string",
-                "description": "The recording the identifier named, else the one whose runtime is closest to `runtime`. Omitted when neither applies."
+                "description": "The recording the identifier named, else (when `narrator` is given and a recording agrees, not more than 25% off `runtime`) the best-agreeing recording, the closest runtime breaking a tie, else the one whose runtime is closest to `runtime`. Omitted when none applies."
               },
               "reasons": { "$ref": "#/components/schemas/MatchReasons" }
             }
@@ -1512,6 +1526,16 @@
             "type": "string",
             "enum": ["asin", "isbn"],
             "description": "Present when the work was found by that identifier."
+          },
+          "narrator": {
+            "type": "string",
+            "enum": ["full", "surname", "none"],
+            "description": "Whether a `narrator` guess names a narrator of the work's best-agreeing recording: by surname and first name, by surname only, or not at all. Omitted unless `narrator` was given and a recording of the work credits narrators."
+          },
+          "language": {
+            "type": "string",
+            "enum": ["same", "other"],
+            "description": "Whether the work's language is the stated `language`. Omitted unless both are known."
           }
         }
       },

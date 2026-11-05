@@ -1412,6 +1412,9 @@
       "birth_year": 1883,
       "death_year": 1917,
       "id": "thomas-ernest-hulme",
+      "librivox_author_aliases": [
+        6599
+      ],
       "librivox_author_id": 17876,
       "license": "CC0-1.0",
       "name": "Thomas Ernest Hulme",
@@ -1419,6 +1422,16 @@
         {
           "imported_at": "2026-11-04",
           "ref": "19732",
+          "type": "librivox"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B092RHF211",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-11-04",
+          "ref": "1983",
           "type": "librivox"
         }
       ]
@@ -3339,6 +3352,7 @@
     },
     "thomas-jefferson-et-al": {
       "id": "thomas-jefferson-et-al",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Thomas Jefferson et al.",
       "sources": [
@@ -4518,6 +4532,18 @@
         }
       ]
     },
+    "thomas-mann-actor": {
+      "id": "thomas-mann-actor",
+      "license": "CC0-1.0",
+      "name": "Thomas Mann (actor)",
+      "sources": [
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B00XDGNJKG",
+          "type": "libex-import"
+        }
+      ]
+    },
     "thomas-manton": {
       "birth_year": 1620,
       "death_year": 1677,
@@ -4976,6 +5002,7 @@
     },
     "thomas-nelson": {
       "id": "thomas-nelson",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Thomas Nelson",
       "sources": [
@@ -8464,12 +8491,29 @@
     },
     "three-initiates": {
       "id": "three-initiates",
+      "kind": "group",
+      "librivox_author_id": 5668,
       "license": "CC0-1.0",
       "name": "Three Initiates",
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "1250754194",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08H4ZFTYP",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-28",
+          "ref": "4975",
+          "type": "librivox"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00FWXSG7E",
           "type": "libex-import"
         }
       ]
@@ -8514,6 +8558,7 @@
     },
     "thrivemind-publications": {
       "id": "thrivemind-publications",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "ThriveMind Publications",
       "sources": [

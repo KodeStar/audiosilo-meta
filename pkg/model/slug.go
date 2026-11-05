@@ -1,6 +1,7 @@
 package model
 
 import (
+	"regexp"
 	"strconv"
 	"strings"
 
@@ -358,6 +359,26 @@ const librivoxUnslugAuthorPrefix = "librivox-author-"
 // something.
 func LibrivoxUnslugAuthorSlug(name string, authorID int) (slug string, ok bool) {
 	return librivoxPrefixSlug(name, librivoxUnslugAuthorPrefix, authorID)
+}
+
+// librivoxIDSlug matches the id forms a person slug composes from a LibriVox id:
+// the reader's and the author's, tail and prefix alike. Groups: the reader id,
+// else the author id.
+var librivoxIDSlug = regexp.MustCompile(`(?:^` + librivoxUnslugReaderPrefix + `|.` + librivoxReaderTail + `)(\d+)$` +
+	`|(?:^` + librivoxUnslugAuthorPrefix + `|.` + librivoxAuthorTail + `)(\d+)$`)
+
+// LibrivoxIDOfSlug is the LibriVox id a person slug composes, 0 and 0 for a slug
+// of no LibriVox form: the reader id of LibrivoxReaderSlug and
+// LibrivoxUnslugReaderSlug, the author id of LibrivoxAuthorSlug and
+// LibrivoxUnslugAuthorSlug.
+func LibrivoxIDOfSlug(slug string) (readerID, authorID int) {
+	m := librivoxIDSlug.FindStringSubmatch(slug)
+	if m == nil {
+		return 0, 0
+	}
+	readerID, _ = strconv.Atoi(m[1])
+	authorID, _ = strconv.Atoi(m[2])
+	return readerID, authorID
 }
 
 // PersonIDMatches reports whether id is a legal id for a person named name who

@@ -648,6 +648,7 @@
     },
     "eagle-31-productions": {
       "id": "eagle-31-productions",
+      "kind": "publisher",
       "librivox_reader_id": 6867,
       "license": "CC0-1.0",
       "name": "Eagle 31 Productions",
@@ -1168,6 +1169,7 @@
     },
     "earworms-learning": {
       "id": "earworms-learning",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Earworms Learning",
       "sources": [
@@ -1180,6 +1182,7 @@
     },
     "earworms-mmm": {
       "id": "earworms-mmm",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "earworms MMM",
       "sources": [
@@ -1254,6 +1257,7 @@
     },
     "easy-route-test-prep": {
       "id": "easy-route-test-prep",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Easy Route Test Prep",
       "sources": [
@@ -6566,6 +6570,7 @@
     },
     "editorial-agualena": {
       "id": "editorial-agualena",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Editorial Agualena",
       "sources": [
@@ -6578,6 +6583,7 @@
     },
     "editorial-anagrama": {
       "id": "editorial-anagrama",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Editorial Anagrama",
       "sources": [
@@ -6590,6 +6596,7 @@
     },
     "editorial-libervox": {
       "id": "editorial-libervox",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Editorial Libervox",
       "sources": [
@@ -6602,6 +6609,7 @@
     },
     "editorial-planeta": {
       "id": "editorial-planeta",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Editorial Planeta",
       "sources": [
@@ -6609,11 +6617,17 @@
           "imported_at": "2026-07-29",
           "ref": "B0BX9PL4PP",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BX9RZNCZ",
+          "type": "libex-import"
         }
       ]
     },
     "editors-of-fortune": {
       "id": "editors-of-fortune",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Editors of Fortune",
       "sources": [
@@ -6621,14 +6635,7 @@
           "imported_at": "2026-07-29",
           "ref": "B00E5HZ92I",
           "type": "libex-import"
-        }
-      ]
-    },
-    "editors-of-fortune-magazine": {
-      "id": "editors-of-fortune-magazine",
-      "license": "CC0-1.0",
-      "name": "Editors of Fortune Magazine",
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00I5WSFA2",
@@ -6638,6 +6645,7 @@
     },
     "editors-of-garden-and-gun": {
       "id": "editors-of-garden-and-gun",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Editors of Garden and Gun",
       "sources": [

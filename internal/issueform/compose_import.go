@@ -128,6 +128,17 @@ func (c *composer) importLibrary(s sections) {
 		if sum.Skipped > 0 {
 			// Genuinely nothing new: every book deduped against the catalog.
 			c.fail(StatusDuplicate, "nothing new to import: every book in the export is already in the catalog (%d skipped)", sum.Skipped)
+			if sum.ISBNsMirrorOnly > 0 {
+				c.note("%s", isbnsMirrorOnly(sum.ISBNsMirrorOnly))
+			}
+			return
+		}
+		// Books the catalogue holds under a mirror seed, whose only news was an ISBN
+		// nothing identifies them by: the file is fine, so this is not the
+		// export-type question below, and the answer is the submitter's to act on.
+		if sum.ISBNsMirrorOnly > 0 {
+			c.fail(StatusDuplicate, "nothing new to import: %s", isbnsMirrorOnly(sum.ISBNsMirrorOnly))
+			c.noteImportWarnings(sum)
 			return
 		}
 		// Nothing was produced AND nothing deduped. Distinguish two honest cases:
@@ -170,11 +181,24 @@ func (c *composer) importLibrary(s sections) {
 	if sum.GenreWorks > 0 {
 		c.note("added your library's genres to %d work(s) another library had already described", sum.GenreWorks)
 	}
+	if sum.ISBNRecordings > 0 {
+		c.note("added your library's ISBNs to %d recording(s) your export had nothing else to add to", sum.ISBNRecordings)
+	}
+	if sum.ISBNsMirrorOnly > 0 {
+		c.note("%s", isbnsMirrorOnly(sum.ISBNsMirrorOnly))
+	}
 	c.noteConflicts(sum)
 	c.noteImportWarnings(sum)
 	// The importer wrote and validated the tree itself, so the file list is the
 	// one ITS flush reports, in the field the compose path's own flush fills.
 	c.wrote = sum.Files
+}
+
+// isbnsMirrorOnly is the verdict's account of Summary.ISBNsMirrorOnly, on either
+// outcome: an export with other news and one with none.
+func isbnsMirrorOnly(n int) string {
+	return fmt.Sprintf("isbn-not-attached: mirror-only: %d book(s) with no ASIN matched a recording only %s has described, so their ISBNs were not added; "+
+		"a row with the ASIN carries the ISBN", n, seededFrom(nil))
 }
 
 // unsluggableSkips is the verdict's plain account of the books skipped because

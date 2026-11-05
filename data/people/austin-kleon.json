@@ -484,6 +484,7 @@
     },
     "author-various": {
       "id": "author-various",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Author Various",
       "sources": [
@@ -508,6 +509,7 @@
     },
     "authors-and-dragons": {
       "id": "authors-and-dragons",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Authors and Dragons",
       "sources": [
@@ -520,6 +522,7 @@
     },
     "authors-playhouse": {
       "id": "authors-playhouse",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Author's Playhouse",
       "sources": [
@@ -1308,6 +1311,7 @@
     },
     "ava-lucas-and-tor-thom": {
       "id": "ava-lucas-and-tor-thom",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Ava Lucas and Tor Thom",
       "sources": [
@@ -6488,6 +6492,7 @@
     },
     "babel-bridge-press": {
       "id": "babel-bridge-press",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Babel Bridge Press",
       "sources": [
@@ -6500,6 +6505,7 @@
     },
     "babel-publishing": {
       "id": "babel-publishing",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Babel Publishing",
       "sources": [
@@ -7239,19 +7245,6 @@
         }
       ]
     },
-    "baldwin-book-publishing": {
-      "id": "baldwin-book-publishing",
-      "kind": "publisher",
-      "license": "CC0-1.0",
-      "name": "Baldwin Book Publishing",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0FS32SGRM",
-          "type": "libex-import"
-        }
-      ]
-    },
     "baldwin-publishing": {
       "id": "baldwin-publishing",
       "kind": "publisher",
@@ -7261,6 +7254,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0FW741W37",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FS32SGRM",
           "type": "libex-import"
         }
       ]

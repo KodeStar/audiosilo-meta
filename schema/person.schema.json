@@ -6,6 +6,10 @@
   "type": "object",
   "additionalProperties": false,
   "required": ["id", "name", "license", "sources"],
+  "dependentRequired": {
+    "librivox_reader_aliases": ["librivox_reader_id"],
+    "librivox_author_aliases": ["librivox_author_id"]
+  },
   "properties": {
     "id": {
       "$ref": "common.schema.json#/$defs/slug"
@@ -19,7 +23,7 @@
       "minLength": 1
     },
     "kind": {
-      "description": "What sort of entity this record names. ABSENCE MEANS \"person\" - the field exists to mark the records that are not one: a group credited as a unit (a full cast, a band), a corporate credit of record (a publisher's in-house imprint), or a synthetic voice - a text-to-speech production rather than an individual. Nothing infers the first three; a record only carries one when a human classified it, so an absent value is 'unclassified or an individual', never a guess. \"synthetic\" is the one exception: the importer writes it on the single canonical record every AI-narration credit folds onto.",
+      "description": "What sort of entity this record names. ABSENCE MEANS \"person\" - the field exists to mark the records that are not one: a group credited as a unit (a full cast, a band), a corporate credit of record (a publisher's in-house imprint), or a synthetic voice - a text-to-speech production rather than an individual. No importer infers the first three; a record carries one when a maintainer batch or a correction classified it, so an absent value is 'unclassified or an individual', never a guess. \"synthetic\" is the one exception: the importer writes it on the single canonical record every AI-narration credit folds onto.",
       "type": "string",
       "enum": ["person", "group", "publisher", "synthetic"]
     },
@@ -47,9 +51,17 @@
       "description": "This person's LibriVox reader id. A LibriVox import keys readers on it, so a rerun (or a reader renamed on LibriVox) never mints a second record. Unique across the dataset (pkg/check). A reader whose name another reader id already holds has the id <name slug>-librivox-<this id>, which pkg/check accepts only on the record carrying this id.",
       "$ref": "common.schema.json#/$defs/librivox_id"
     },
+    "librivox_reader_aliases": {
+      "description": "Further LibriVox reader ids this person answers to, for the person LibriVox lists under more than one reader record. The rules are librivox_author_aliases', in the reader namespace; librivox_reader_id stays the record's own.",
+      "$ref": "common.schema.json#/$defs/librivox_id_set"
+    },
     "librivox_author_id": {
       "description": "This person's LibriVox author id (a separate namespace from reader ids). Unique across the dataset (pkg/check).",
       "$ref": "common.schema.json#/$defs/librivox_id"
+    },
+    "librivox_author_aliases": {
+      "description": "Further LibriVox author ids this person answers to, for the person LibriVox lists under more than one author record. A LibriVox import resolves each to this record, so the second id never mints a twin. Written only by a decision with evidence, never by an importer (no import records a second id on a person). Sorted ascending; each is unique against every librivox_author_id and every other alias across the dataset (pkg/check). It REQUIRES librivox_author_id (see dependentRequired): an alias is a further id, and librivox_author_id stays the record's own, the one its slug and the LibriVox-shaped feed state.",
+      "$ref": "common.schema.json#/$defs/librivox_id_set"
     },
     "birth_year": {
       "description": "The year this person was born, as a source stated it (LibriVox: an author's dob). Negative for a year BC; a value the source states but that is not a year (\"alive\", \"c. 1500\") is never written.",

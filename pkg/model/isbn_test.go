@@ -2,6 +2,7 @@ package model
 
 import (
 	"encoding/json"
+	"slices"
 	"testing"
 )
 
@@ -190,5 +191,48 @@ func TestValidISBN13(t *testing.T) {
 		if ValidISBN13(s) {
 			t.Errorf("ValidISBN13(%q) = true, want false", s)
 		}
+	}
+}
+
+func TestValidISBN10(t *testing.T) {
+	for _, s := range []string{"0870111175", "080442957X", "080442957x"} {
+		if !ValidISBN10(s) {
+			t.Errorf("ValidISBN10(%q) = false, want true", s)
+		}
+	}
+	for _, s := range []string{"0870111176", "08704X1175", "087011117", "08701111755", ""} {
+		if ValidISBN10(s) {
+			t.Errorf("ValidISBN10(%q) = true, want false", s)
+		}
+	}
+}
+
+func TestISBNSpellings(t *testing.T) {
+	for _, tc := range []struct {
+		in   string
+		want []string
+	}{
+		{"0870111175", []string{"0870111175", "9780870111174"}},
+		{"9780870111174", []string{"9780870111174", "0870111175"}},
+		{"080442957x", []string{"080442957X", "9780804429573"}},
+		{"9780804429573", []string{"9780804429573", "080442957X"}},
+		// A 979 ISBN-13 has no ISBN-10.
+		{"9798212436571", []string{"9798212436571"}},
+		// Not an ISBN's shape: one spelling, itself.
+		{"97800000000AB", []string{"97800000000AB"}},
+	} {
+		if got := ISBNSpellings(tc.in); !slices.Equal(got, tc.want) {
+			t.Errorf("ISBNSpellings(%q) = %v, want %v", tc.in, got, tc.want)
+		}
+	}
+}
+
+func TestPrintISBNKeys(t *testing.T) {
+	if got := (&Work{}).PrintISBNKeys(); got != nil {
+		t.Errorf("a work with no xref: keys = %v, want none", got)
+	}
+	w := &Work{Xref: &WorkXref{ISBN: []string{"0870111175", "9798212436571"}}}
+	if got, want := w.PrintISBNKeys(), []string{"0870111175", "9780870111174", "9798212436571"}; !slices.Equal(got, want) {
+		t.Errorf("keys = %v, want %v", got, want)
 	}
 }

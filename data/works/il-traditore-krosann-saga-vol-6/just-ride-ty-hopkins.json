@@ -3550,9 +3550,6 @@
           "added_at": "2026-07-25T17:12:12+01:00",
           "cover_url": "https://books.google.com/books/content?vid=ISBN9798746054654&printsec=frontcover&img=1&zoom=1&source=gbs_api",
           "id": "jim-weiss-2009",
-          "isbn": [
-            "9798746054654"
-          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -3566,6 +3563,11 @@
               "imported_at": "2026-07-25",
               "ref": "isbn:9798746054654",
               "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-11-04",
+              "ref": "https://books.google.com/books?vid=ISBN9798746054654",
+              "type": "user"
             }
           ],
           "work": "just-so-stories"
@@ -4729,9 +4731,19 @@
           "imported_at": "2026-07-25",
           "ref": "isbn:9798746054654",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-11-04",
+          "ref": "https://books.google.com/books?vid=ISBN9798746054654",
+          "type": "user"
         }
       ],
-      "title": "Just So Stories"
+      "title": "Just So Stories",
+      "xref": {
+        "isbn": [
+          "9798746054654"
+        ]
+      }
     },
     "just-so-stories-and-traditional-fairy-stories": {
       "added_at": "2026-08-07",

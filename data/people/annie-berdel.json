@@ -2066,6 +2066,7 @@
     },
     "anonymous-members-of-al-anon-family-groups": {
       "id": "anonymous-members-of-al-anon-family-groups",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Anonymous members of Al-Anon Family Groups",
       "sources": [
@@ -2575,6 +2576,7 @@
     },
     "anthony-and-florence-opoka": {
       "id": "anthony-and-florence-opoka",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Anthony and Florence Opoka",
       "sources": [
@@ -8158,7 +8160,6 @@
     },
     "antonio-munoz": {
       "id": "antonio-munoz",
-      "librivox_author_id": 19224,
       "license": "CC0-1.0",
       "name": "Antonio Muñoz",
       "sources": [
@@ -8166,7 +8167,15 @@
           "imported_at": "2026-07-29",
           "ref": "B09QCVDKN3",
           "type": "libex-import"
-        },
+        }
+      ]
+    },
+    "antonio-munoz-librivox-author-19224": {
+      "id": "antonio-munoz-librivox-author-19224",
+      "librivox_author_id": 19224,
+      "license": "CC0-1.0",
+      "name": "Antonio Muñoz",
+      "sources": [
         {
           "imported_at": "2026-10-30",
           "ref": "21848",

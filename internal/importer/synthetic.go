@@ -112,8 +112,8 @@ func syntheticVoiceCredit(raw, cleaned string) bool {
 }
 
 // PersonKindFor is the kind a NEWLY minted person record carries. It is the one
-// place a writer sets the field at all: every other kind is a human
-// classification made through the correct-data form, and an absent kind means
+// place an importer sets the field at all: every other kind is a classification
+// made by a maintainer batch or the correct-data form, and an absent kind means
 // "an individual, or unclassified" (schema/person.schema.json). The canonical
 // synthetic record is the exception, because its kind is not a judgment about
 // the record - it is what the credit said.

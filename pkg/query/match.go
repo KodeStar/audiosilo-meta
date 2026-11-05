@@ -113,6 +113,10 @@ type matchRequest struct {
 	asin     string
 	isbn     string
 	limit    int
+	// language is the book's language as matchLanguage reads it, "" unknown;
+	// narrators are the narrator guesses, each split like an author credit.
+	language  string
+	narrators []string
 }
 
 // parseMatchRequest reads the query parameters. Every text value is trimmed and
@@ -143,6 +147,10 @@ func parseMatchRequest(q url.Values) (matchRequest, bool) {
 		asin:    strings.ToUpper(strings.TrimSpace(q.Get("asin"))),
 		isbn:    strings.ToUpper(normalizeISBN(q.Get("isbn"))),
 		limit:   clampLimit(q.Get("limit"), matchLimitDefault, matchLimitMax),
+		// Neither is a fact a match can stand on alone, so neither counts
+		// toward ok below: they only weigh the candidates the others found.
+		language:  matchLanguage(text(q.Get("language"))),
+		narrators: list(q["narrator"], matchHypothesesMax),
 	}
 	if len(r.asin) > maxMatchIdentifier {
 		r.asin = ""
@@ -168,7 +176,10 @@ type matchResult struct {
 	// Score is 0-100: how well the work's own facts agree with the request.
 	Score int `json:"score"`
 	// RecordingID is the recording the identifier named, else the one whose
-	// runtime fits the requested one best; omitted when neither applies.
+	// narrators agree best with the request's (when it names any and one
+	// agrees, not more than runtimeFar off the runtime), the closer runtime
+	// breaking a tie, else the one whose runtime fits the requested one best;
+	// omitted when none applies.
 	RecordingID string       `json:"recording_id,omitempty"`
 	Reasons     matchReasons `json:"reasons"`
 }
@@ -192,6 +203,13 @@ type matchReasons struct {
 	Runtime *float64 `json:"runtime,omitempty"`
 	// Identifier is "asin" or "isbn" when the work was found by it.
 	Identifier string `json:"identifier,omitempty"`
+	// Narrator is "full", "surname" or "none": how well a narrator guess names
+	// a narrator of the work's best-agreeing recording. Omitted unless the
+	// request named narrators and some recording credits one.
+	Narrator authorAgreement `json:"narrator,omitempty"`
+	// Language is "same" or "other" when the request stated a language and the
+	// work's is known.
+	Language string `json:"language,omitempty"`
 }
 
 // handleMatch serves GET /api/v1/works/match.
@@ -251,6 +269,10 @@ type matchFacts struct {
 	// 1" beside "02 - Throne of Glass") does not count.
 	tiedVolume bool
 	runtime    int
+	// language is the request's (matchLanguage), "" when unknown; narrators
+	// are its narrator guesses read as names (splitAuthors).
+	language  string
+	narrators []personName
 	// text is the free text's terms, nil when it says nothing identifying;
 	// textTitle is the whole of it as a title guess, the first one textFacts
 	// reads for every candidate, so it is built once here.
@@ -286,16 +308,9 @@ func newTitleGuess(terms []string) titleGuess {
 
 // readFacts folds a request into matchFacts.
 func readFacts(req matchRequest) *matchFacts {
-	f := &matchFacts{position: req.position, runtime: req.runtime, edit: &editBuf{}}
-	names := map[string]bool{}
-	for _, a := range req.authors {
-		for _, n := range splitAuthors(a) {
-			if key := n.key(); len(f.authors) < matchNamesMax && !names[key] {
-				names[key] = true
-				f.authors = append(f.authors, n)
-			}
-		}
-	}
+	f := &matchFacts{position: req.position, runtime: req.runtime, language: req.language, edit: &editBuf{}}
+	f.authors = readNames(req.authors)
+	f.narrators = readNames(req.narrators)
 	for _, series := range req.series {
 		cut, _ := cutNumbering(series)
 		if cut != "" && !slices.Contains(f.seriesNames, cut) {
@@ -379,6 +394,22 @@ func readFacts(req matchRequest) *matchFacts {
 	return f
 }
 
+// readNames reads person-credit guesses (authors, narrators) as the distinct
+// names they credit, at most matchNamesMax of them.
+func readNames(guesses []string) []personName {
+	var out []personName
+	seen := map[string]bool{}
+	for _, a := range guesses {
+		for _, n := range splitAuthors(a) {
+			if key := n.key(); len(out) < matchNamesMax && !seen[key] {
+				seen[key] = true
+				out = append(out, n)
+			}
+		}
+	}
+	return out
+}
+
 // candidate is one work being judged: its facts, read in batches.
 type candidate struct {
 	id     string
@@ -391,8 +422,19 @@ type candidate struct {
 	authorWord map[string]bool
 	series     []candidateSeries
 	runtimes   []recordingRuntime
+	// language is the work's, as matchLanguage reads it ("" unknown).
+	language string
+	// narrated is each recording crediting narrators, in recording id order;
+	// read only when the request names narrators.
+	narrated []recordingNarrators
 	// identified is the identifier lookup that named this work, if one did.
 	identified identification
+}
+
+// recordingNarrators is one recording's credited narrators, names parsed.
+type recordingNarrators struct {
+	id    string
+	names []personName
 }
 
 // isAuthorName reports whether a title guess is exactly the name of one of the
@@ -531,7 +573,7 @@ func (s *DB) match(ctx context.Context, req matchRequest) ([]matchResult, error)
 		return nil, errMatchBusy
 	}
 
-	cands, err := s.candidateFacts(ctx, pool)
+	cands, err := s.candidateFacts(ctx, pool, len(facts.narrators) > 0)
 	if err != nil {
 		if ctx.Err() != nil {
 			return nil, errMatchBusy
@@ -782,18 +824,29 @@ func (s *DB) seriesMembers(ctx context.Context, name string, limit int) ([]strin
 // (TestBatchLookupsAreIndexed). The memberships are the card's own read,
 // firstSeriesByWorkSQL, every row of it.
 func matchWorksSQL(ph string) string {
-	return `SELECT id, title, COALESCE(subtitle, '') FROM works WHERE id IN (` + ph + `)`
+	return `SELECT id, title, COALESCE(subtitle, ''), language FROM works WHERE id IN (` + ph + `)`
 }
 
 func matchRuntimesSQL(ph string) string {
 	return `SELECT work_id, id, runtime_min FROM recordings WHERE work_id IN (` + ph + `) AND runtime_min > 0`
 }
 
+// matchNarratorsSQL reads every recording's narrators, through
+// idx_recording_narrators_recording by its work_id prefix; issued only for a
+// request naming narrators.
+func matchNarratorsSQL(ph string) string {
+	return `SELECT rn.work_id, rn.recording_id, p.id, p.name FROM recording_narrators rn JOIN people p ON p.id = rn.person_id ` +
+		`WHERE rn.work_id IN (` + ph + `) ORDER BY rn.work_id, rn.recording_id`
+}
+
 // factMemo folds each person and series name once per request: the author and
 // series probes pool many works crediting one person or sitting in one series.
+// A work's language tag is read once per distinct tag too: the pool holds up to
+// matchCandidatesMax works in a handful of languages.
 type factMemo struct {
-	people map[string]memoPerson // by person id
-	series map[string]*termForm  // by series name
+	people    map[string]memoPerson // by person id
+	series    map[string]*termForm  // by series name
+	languages map[string]string     // matchLanguage, by stored tag
 }
 
 type memoPerson struct {
@@ -826,21 +879,31 @@ func (m *factMemo) seriesName(name string) *termForm {
 	return &f
 }
 
+func (m *factMemo) language(tag string) string {
+	if l, ok := m.languages[tag]; ok {
+		return l
+	}
+	l := matchLanguage(tag)
+	m.languages[tag] = l
+	return l
+}
+
 // candidateFacts loads the facts of every pooled id, in pool order. An id the
 // works table does not hold is dropped.
-func (s *DB) candidateFacts(ctx context.Context, pool *candidatePool) ([]*candidate, error) {
-	memo := &factMemo{people: map[string]memoPerson{}, series: map[string]*termForm{}}
+func (s *DB) candidateFacts(ctx context.Context, pool *candidatePool, narrators bool) ([]*candidate, error) {
+	memo := &factMemo{people: map[string]memoPerson{}, series: map[string]*termForm{}, languages: map[string]string{}}
 	byID := make(map[string]*candidate, pool.len())
 	err := eachChunk(pool.ids, func(ph string, args []any) error {
 		return queryEach(ctx, s.db, matchWorksSQL(ph), args, func(rows *sql.Rows) error {
-			var id, title, subtitle string
-			if err := rows.Scan(&id, &title, &subtitle); err != nil {
+			var id, title, subtitle, language string
+			if err := rows.Scan(&id, &title, &subtitle, &language); err != nil {
 				return err
 			}
 			terms := matchTerms(title)
 			byID[id] = &candidate{
 				id: id, title: terms, titles: candidateTitleForms(title, terms, subtitle),
 				authorWord: map[string]bool{}, identified: pool.identified[id],
+				language: memo.language(language),
 			}
 			return nil
 		})
@@ -886,7 +949,7 @@ func (s *DB) candidateFacts(ctx context.Context, pool *candidatePool) ([]*candid
 		}); err != nil {
 			return err
 		}
-		return queryEach(ctx, s.db, matchRuntimesSQL(ph), args, func(rows *sql.Rows) error {
+		if err := queryEach(ctx, s.db, matchRuntimesSQL(ph), args, func(rows *sql.Rows) error {
 			var workID, rid string
 			var minutes int
 			if err := rows.Scan(&workID, &rid, &minutes); err != nil {
@@ -894,6 +957,30 @@ func (s *DB) candidateFacts(ctx context.Context, pool *candidatePool) ([]*candid
 			}
 			c := byID[workID]
 			c.runtimes = append(c.runtimes, recordingRuntime{id: rid, minute: minutes})
+			return nil
+		}); err != nil {
+			return err
+		}
+		if !narrators {
+			return nil
+		}
+		return queryEach(ctx, s.db, matchNarratorsSQL(ph), args, func(rows *sql.Rows) error {
+			var workID, rid, personID, name string
+			if err := rows.Scan(&workID, &rid, &personID, &name); err != nil {
+				return err
+			}
+			p := memo.person(personID, name)
+			if !p.ok {
+				return nil
+			}
+			c := byID[workID]
+			// Rows arrive grouped by recording (the ORDER BY), so a recording
+			// is the last entry or a new one.
+			if n := len(c.narrated); n == 0 || c.narrated[n-1].id != rid {
+				c.narrated = append(c.narrated, recordingNarrators{id: rid})
+			}
+			last := &c.narrated[len(c.narrated)-1]
+			last.names = append(last.names, p.name)
 			return nil
 		})
 	})
@@ -925,7 +1012,7 @@ func queryEach(ctx context.Context, db *sql.DB, query string, args []any, fn fun
 func (f *matchFacts) judge(c *candidate) scored {
 	v := scored{id: c.id, runtimeDiff: math.Inf(1)}
 
-	// Runtime is shared by both sets: each starts from it.
+	// Runtime and narrators are shared by both sets: each starts from them.
 	var base wavg
 	if f.runtime > 0 {
 		best := 0.0
@@ -938,6 +1025,14 @@ func (f *matchFacts) judge(c *candidate) scored {
 			d := math.Round(v.runtimeDiff*1000) / 1000
 			v.reasons.Runtime = &d
 			base.add(weightRuntime, best)
+		}
+	}
+	if len(f.narrators) > 0 && len(c.narrated) > 0 {
+		agreement, rid := f.narratorVerdict(c)
+		v.reasons.Narrator = agreement
+		base.add(weightNarrator, agreement.value())
+		if rid != "" {
+			v.recordingID = rid
 		}
 	}
 
@@ -960,6 +1055,19 @@ func (f *matchFacts) judge(c *candidate) scored {
 			v.title = t.title
 		}
 	}
+	// Two facts that scale every reading of the work, since each says it is
+	// another edition of the book rather than another book: a known language
+	// other than the one stated, and a runtime far beyond any one edition's.
+	if f.language != "" && c.language != "" {
+		v.reasons.Language = "same"
+		if f.language != c.language {
+			v.reasons.Language = "other"
+			v.score *= languageMismatchFactor
+		}
+	}
+	if f.runtimeFarOff(v.runtimeDiff) {
+		v.score *= runtimeMismatchFactor
+	}
 	if c.identified.by != "" {
 		v.score = 1
 		v.reasons.Identifier = c.identified.by
@@ -967,6 +1075,44 @@ func (f *matchFacts) judge(c *candidate) scored {
 	}
 	v.score = math.Round(v.score*100) / 100
 	return v
+}
+
+// narratorVerdict judges the request's narrator guesses against each of c's
+// recordings (agreeAuthors, the authors' rule), returning the best agreement
+// and the recording that reached it - the closest runtime among the recordings
+// that tie, the first in id order when no runtime decides. It names no
+// recording when none agrees at all, or when the one it reached is more than
+// runtimeFar off the stated runtime (another edition, runtimeFarOff: the
+// narrator still speaks for the work, not for that recording), and the
+// runtime's pick stands.
+func (f *matchFacts) narratorVerdict(c *candidate) (authorAgreement, string) {
+	best, rid, ridDiff := authorNone, "", math.Inf(1)
+	for _, r := range c.narrated {
+		a := agreeAuthors(f.narrators, r.names)
+		if a == authorNone || a.value() < best.value() {
+			continue
+		}
+		diff := math.Inf(1)
+		if i := slices.IndexFunc(c.runtimes, func(rt recordingRuntime) bool { return rt.id == r.id }); i >= 0 && f.runtime > 0 {
+			_, diff = runtimeFit(c.runtimes[i].minute, f.runtime)
+		}
+		if a.value() > best.value() || diff < ridDiff {
+			best, rid, ridDiff = a, r.id, diff
+		}
+	}
+	if f.runtimeFarOff(ridDiff) {
+		rid = ""
+	}
+	return best, rid
+}
+
+// runtimeFarOff reports whether a recording's runtime difference (runtimeFit's)
+// is more than runtimeFar off the requested runtime once the minute a stored
+// runtime_min may be off its recording is allowed for (runtimeStoredSlack), so
+// a short book is not another edition by rounding alone. An unjudged difference
+// (+Inf: no runtime stated, or none stored) is never far off.
+func (f *matchFacts) runtimeFarOff(diff float64) bool {
+	return f.runtime > 0 && !math.IsInf(diff, 1) && diff > runtimeFar+runtimeStoredSlack/float64(f.runtime)
 }
 
 // structuredScore is the weighted agreement of the structured facts, added to
@@ -1001,9 +1147,9 @@ func (f *matchFacts) structuredScore(c *candidate, v *scored, w wavg) float64 {
 		}
 	}
 	v.title = t
-	series, titleValue := seriesNone, t
+	series, titleValue, positionConflict := seriesNone, t, false
 	if len(f.series) > 0 {
-		series, titleValue = f.seriesVerdict(c, t, named)
+		series, titleValue, positionConflict = f.seriesVerdict(c, t, named)
 		v.reasons.Series = series
 	}
 	switch {
@@ -1034,14 +1180,26 @@ func (f *matchFacts) structuredScore(c *candidate, v *scored, w wavg) float64 {
 	if len(f.authors) > 0 && author == authorNone {
 		score *= authorMismatchFactor
 	}
+	// A sibling at another volume of the named series: its title may agree as
+	// well as the stated volume's does ("Failure Frame, Vol. 4" cut of its
+	// numbering is volume 1's title), so the series weight alone left it a
+	// rival.
+	if positionConflict {
+		score *= positionConflictFactor
+	}
 	return score
 }
 
 // seriesVerdict is the ONE place a candidate's numbering is judged: its
 // memberships, and its title when that is only the named series' numbering, are
 // compared with the series and position the request names, and arbitrated
-// against its best title similarity t. It returns the agreement and the value
-// the title then counts at:
+// against its best title similarity t. It returns the agreement, the value
+// the title then counts at, and whether the candidate is placed at ANOTHER
+// position than the stated one (positionConflictFactor) - in the named series
+// elsewhere, or by a generic title naming another volume, with no membership
+// listing it at the stated position or at a range covering it (an omnibus at
+// 1-3 for a stated 2); a title disagreeing with a volume listed AT the stated
+// position is a conflict of the title, not of the position. The rules:
 //
 //   - a GENERIC title - the series' name and a number, "Dork Diaries 6" (a
 //     record stored under its volume number) - is numbering: the number
@@ -1061,10 +1219,13 @@ func (f *matchFacts) structuredScore(c *candidate, v *scored, w wavg) float64 {
 //     not only the series' name: "He Who Fights with Monsters" is contained in
 //     every "He Who Fights with Monsters N", so it must not let another volume
 //     keep its title beside a stated one.
-func (f *matchFacts) seriesVerdict(c *candidate, t, named float64) (seriesAgreement, float64) {
-	agreement := seriesNone
+func (f *matchFacts) seriesVerdict(c *candidate, t, named float64) (seriesAgreement, float64, bool) {
+	agreement, covered := seriesNone, false
 	for _, m := range c.series {
 		fits := slices.ContainsFunc(f.series, func(h termForm) bool { return seriesNameFits(&h, m.name, f.edit) })
+		if fits && !covered && f.position != "" && positionCovers(m.position, f.position) {
+			covered = true
+		}
 		switch {
 		case !fits:
 		case f.position == "":
@@ -1097,7 +1258,7 @@ func (f *matchFacts) seriesVerdict(c *candidate, t, named float64) (seriesAgreem
 	if elsewhere && named < seriesDistrustHigh {
 		value = 0
 	}
-	return agreement, value
+	return agreement, value, elsewhere && !covered
 }
 
 // spelledAs reports whether a title guess naming more than the series is

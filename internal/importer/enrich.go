@@ -2,7 +2,10 @@ package importer
 
 import (
 	"fmt"
+	"slices"
 	"strings"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // enrich.go implements the ASIN-matched ENRICHMENT mode (ModeEnrich), the
@@ -206,8 +209,12 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 	// This return is also what makes re-running an import a full no-op, and it is
 	// the TIER that gets it there rather than any field comparison: the first run's
 	// attestation ended the record's bulk-mirror-only status, so every later run
-	// finds overwrite false and stops here without inspecting a single fact.
+	// finds overwrite false and stops here without inspecting a single fact. The
+	// ISBNs are the one exception, because they are only ever appended, in every
+	// tier: a second library naming this ASIN may hold an identifier the first did
+	// not state, and a re-run finds its own ISBNs already there and writes nothing.
 	if scope == scopeAttestExact && !overwrite {
+		p.addRowISBNs(ref, entry, raw, b.isbns, warn)
 		return true
 	}
 	var before refreshFields
@@ -268,7 +275,9 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 
 	// ISBNs are only ever APPENDED, in every tier: they are identifiers, and
 	// checkUniqueness makes them globally unique, so an overwrite would be a
-	// retraction of someone else's identifier rather than a better value.
+	// retraction of someone else's identifier rather than a better value. The two
+	// early returns above are not exceptions: an exact-ASIN row appends there, and
+	// a merged-in row's ISBNs ride its ASIN (mergeRecordingASIN).
 	if p.enrichISBNs(raw, b.isbns, warn) {
 		changed = true
 	}
@@ -279,8 +288,7 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 	if !changed && !overwrite {
 		return true
 	}
-	p.stampSource(raw)
-	p.putWorkEntry(ref.Work, entry)
+	p.commitRecording(ref, entry, raw)
 	// A later row of the run compares with what the record now says: a filled or
 	// replaced runtime, a chapter list, the stamp that ends an estimate.
 	if ws := p.works[ref.Work]; ws != nil {
@@ -437,6 +445,139 @@ func (p *planner) enrichISBNs(raw map[string]any, isbns []string, warn func(stri
 	}
 	appendISBNs(raw, fresh)
 	return true
+}
+
+// addRowISBNs writes a row's ISBNs onto a record the row has nothing else to say
+// about, stamping the run's source only when one was actually added, so a row
+// restating what the record holds changes nothing.
+//
+// A row with no ASIN has no ref of its own (setSource), and a stamp without one
+// names nothing to retract and folds onto any earlier ref-less stamp of the run's
+// type (appendSourceUnique), so its stamp names the value it added.
+func (p *planner) addRowISBNs(ref RecRef, entry, raw map[string]any, isbns []string, warn func(string, ...any)) {
+	fresh := p.claimISBNsFor(raw, isbns, warn)
+	if len(fresh) == 0 {
+		return
+	}
+	appendISBNs(raw, fresh)
+	row := p.curSource
+	if row.Ref == "" {
+		p.curSource.Ref = "isbn:" + fresh[0]
+	}
+	p.commitRecording(ref, entry, raw)
+	p.curSource = row
+	if !p.isbnGained[ref] {
+		p.isbnGained[ref] = true
+		p.summary.ISBNRecordings++
+	}
+}
+
+// addSiblingRowISBNs is attestExisting for an ASIN this run landed itself: the
+// record carries the run's own provenance, so there is nothing to attest, but the
+// row's ISBNs are still appended as they are on a record from disk. Otherwise the
+// first run drops one a sibling row of the same ASIN states and the next run, which
+// finds that ASIN on disk, adds it. A row contradicting the record adds nothing, the
+// answer the next run would give, and is not counted: the disagreement is within
+// one export and the record is not yet anyone else's.
+func (p *planner) addSiblingRowISBNs(b sourceBook, asin string) {
+	ref, landed := p.runASINLoc[asin]
+	if !landed || len(b.isbns) == 0 {
+		return
+	}
+	entry, raw := p.recordingRaw(ref.Work, ref.Rec)
+	if raw == nil {
+		return
+	}
+	if _, contradicts := rowContradiction(b, rawKnownRuntime(raw), coerceStr(raw["release_date"]), scopeAttestExact); contradicts {
+		return
+	}
+	p.addRowISBNs(ref, entry, raw, b.isbns, p.bookWarn(b))
+}
+
+// attachRowISBNs is what an ASIN-LESS row may add to the same-narrator recording
+// it met: its ISBNs, and only under the test below. Such a row names the recording
+// by title, author and narrator alone, and an ISBN is claimed globally, so a wrong
+// one also blocks the right recording from ever holding it. The test was set against
+// the 2026-10-30 abs-agg export (meta#2827). Publisher is deliberately not part of
+// it: the rows whose publisher disagreed were regional imprints of one production,
+// each carrying that imprint's audiobook ISBN (The Seven Year Slip: HQ against
+// Penguin Audio), which is what a recording's isbn[] is for.
+//
+// It holds when:
+//
+//   - the row met exactly ONE same-narrator recording, and not a LibriVox project,
+//     which is a production of its own and carries no retail identifier;
+//   - both sides state a runtime, within the same-production window. The runtime is
+//     the only corroboration beyond the names;
+//   - the abridged and series-position guards of the ASIN merge pass;
+//   - the row's year does not predate the recording's by more than a year. A library
+//     row matched to a print edition carries that edition's year (a Conan paperback
+//     of 1982 on a later narration), while a row describing the audio states the
+//     recording's own year or a later relisting;
+//   - the recording is NOT bulk-mirror-only. The source stamp below would end that
+//     status on a match that identifies nothing, leaving the mirror's facts frozen
+//     in place and a later user's unreachable: the defect scopeAttestMerged's comment
+//     names. Asked last among the record's tests, and only of a row stating a value
+//     the claim would take, so Summary.ISBNsMirrorOnly counts the rows this rule
+//     alone held back: a value the record already holds or the claim refuses reaches
+//     the claim, which adds nothing and so stamps nothing. A later row with the ASIN
+//     attests the record and carries the ISBN then;
+//   - and the value survives the claim: no recording holds it and no work holds it
+//     as a print ISBN (claimISBNs).
+//
+// It is NOT an attestation: no other fact of the row is applied, because the match
+// carries no identifier (LICENSING.md, rule 2 takes over a record named by ASIN).
+func (p *planner) attachRowISBNs(ws *workState, matches []recCandidate, b sourceBook, claims []posClaim, narrators map[string]bool, warn func(string, ...any)) {
+	if len(b.isbns) == 0 {
+		return
+	}
+	if len(matches) != 1 {
+		warn("%d same-narrator recordings could be this row's; its ISBN is not attached", len(matches))
+		return
+	}
+	m := matches[0]
+	known, row := m.info.known, b.evidence
+	switch {
+	case m.info.librivox:
+		return
+	case known.min <= 0 || row.min <= 0:
+		warn("recording %q and this row do not both state a runtime; its ISBN is not attached", m.slug)
+		return
+	case !sameRuntime(known, row):
+		warn("recording %q runs %d minutes and this row %d; its ISBN is not attached", m.slug, known.min, row.min)
+		return
+	case abridgedConflict(m.info.abridged, b.abridged):
+		warn("recording %q and this row disagree on abridged; its ISBN is not attached", m.slug)
+		return
+	}
+	if series, incumbent, want, conflict := p.seriesPosConflict(m.info, ws, claims, resolvedRowProduction(b, narrators)); conflict {
+		warn("recording %q is at position %q of series %q; this row claims %q - its ISBN is not attached", m.slug, incumbent, series, want)
+		return
+	}
+	ref := RecRef{Work: ws.slug, Rec: m.slug}
+	entry, raw := p.recordingRaw(ref.Work, ref.Rec)
+	if raw == nil {
+		return
+	}
+	rowDate, recDate := b.str("release_date"), coerceStr(raw["release_date"])
+	if yearPredates(rowDate, recDate) {
+		warn("this row's year %s is well before recording %q's %s, as a print edition's is; its ISBN is not attached",
+			YearOf(rowDate), m.slug, YearOf(recDate))
+		return
+	}
+	if model.BulkMirrorOnly(rawSources(raw)) && slices.ContainsFunc(b.isbns, p.isbnClaimable) {
+		p.summary.ISBNsMirrorOnly++
+		warn("isbn-not-attached: mirror-only: recording %q is bulk-mirror-only and this row names no ASIN; a row with the ASIN carries the ISBN", m.slug)
+		return
+	}
+	p.addRowISBNs(ref, entry, raw, b.isbns, warn)
+}
+
+// yearPredates reports whether date's year is more than a year before other's.
+// An unstated year on either side is no evidence either way.
+func yearPredates(date, other string) bool {
+	a, b := leadingYear(date), leadingYear(other)
+	return a != 0 && b != 0 && a < b-1
 }
 
 // applyToWork applies a row's stated facts to the work the matched recording

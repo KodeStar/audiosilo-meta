@@ -200,6 +200,15 @@ func positionsEqual(a, b string) bool {
 	return aok && bok && alo == blo && ahi == bhi
 }
 
+// positionCovers reports whether a stored RANGE position (an omnibus, "1-3")
+// covers a stated one ("2", or "2-3"): an omnibus holding the stated volume is
+// not a sibling at another position, so positionConflictFactor spares it.
+func positionCovers(stored, stated string) bool {
+	slo, shi, sok := parsePositionRange(stored)
+	alo, ahi, aok := parsePositionRange(stated)
+	return sok && aok && slo < shi && slo <= alo && ahi <= shi
+}
+
 // worthProbing reports whether a residual identifies a series well enough to
 // spend an FTS query on. It needs one token that is not an article, not a bare
 // volume word, and at least two runes long - so "oz 5" and "it 2" are probed

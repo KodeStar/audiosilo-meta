@@ -10758,9 +10758,6 @@
           "added_at": "2026-07-25T17:12:12+01:00",
           "cover_url": "https://covers.openlibrary.org/b/isbn/9780061340741-L.jpg?default=false",
           "id": "william-dufris-2007",
-          "isbn": [
-            "9780061340741"
-          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -10774,6 +10771,11 @@
               "imported_at": "2026-07-25",
               "ref": "isbn:9780061340741",
               "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-11-04",
+              "ref": "https://publishersweekly.com/9780061340741",
+              "type": "user"
             }
           ],
           "work": "the-last-days-of-krypton"
@@ -10784,9 +10786,19 @@
           "imported_at": "2026-07-25",
           "ref": "isbn:9780061340741",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-11-04",
+          "ref": "https://publishersweekly.com/9780061340741",
+          "type": "user"
         }
       ],
-      "title": "The Last Days Of Krypton"
+      "title": "The Last Days Of Krypton",
+      "xref": {
+        "isbn": [
+          "9780061340741"
+        ]
+      }
     },
     "the-last-days-of-lilah-goodluck": {
       "added_at": "2026-07-29",

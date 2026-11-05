@@ -3410,11 +3410,17 @@
           "imported_at": "2026-08-01",
           "ref": "B06Y3Q96HS",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B00DP433Z2",
+          "type": "libex-import"
         }
       ]
     },
     "radio-diaries": {
       "id": "radio-diaries",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Radio Diaries",
       "sources": [
@@ -3425,20 +3431,9 @@
         }
       ]
     },
-    "radio-spirits": {
-      "id": "radio-spirits",
-      "license": "CC0-1.0",
-      "name": "Radio Spirits",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00FK6FMSY",
-          "type": "libex-import"
-        }
-      ]
-    },
     "radio-spirits-inc": {
       "id": "radio-spirits-inc",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Radio Spirits Inc.",
       "sources": [
@@ -3446,17 +3441,10 @@
           "imported_at": "2026-07-29",
           "ref": "B0036NS0LO",
           "type": "libex-import"
-        }
-      ]
-    },
-    "radioarchives-com": {
-      "id": "radioarchives-com",
-      "license": "CC0-1.0",
-      "name": "RadioArchives.com",
-      "sources": [
+        },
         {
-          "imported_at": "2026-08-01",
-          "ref": "B00DP433Z2",
+          "imported_at": "2026-07-29",
+          "ref": "B00FK6FMSY",
           "type": "libex-import"
         }
       ]
@@ -5148,6 +5136,7 @@
     },
     "raging-bull-publishing": {
       "id": "raging-bull-publishing",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Raging Bull Publishing",
       "sources": [

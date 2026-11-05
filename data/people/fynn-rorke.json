@@ -4710,12 +4710,18 @@
     },
     "gabrielle-de-cuir-and-stefan-rudnicki": {
       "id": "gabrielle-de-cuir-and-stefan-rudnicki",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Gabrielle de Cuir and Stefan Rudnicki",
       "sources": [
         {
           "imported_at": "2026-08-01",
           "ref": "B07CGZHTQ5",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00875DLO2",
           "type": "libex-import"
         }
       ]
@@ -4734,6 +4740,7 @@
     },
     "gabrielle-de-cuir-roxanne-hernandez-don-leslie-stefan-rudnicki-jody-young": {
       "id": "gabrielle-de-cuir-roxanne-hernandez-don-leslie-stefan-rudnicki-jody-young",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Gabrielle de Cuir/Roxanne Hernandez/Don Leslie/Stefan Rudnicki/Jody Young",
       "sources": [
@@ -5225,18 +5232,6 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0B5YJDN3Y",
-          "type": "libex-import"
-        }
-      ]
-    },
-    "gabrielle-stefan-de-cuir-rudnicki": {
-      "id": "gabrielle-stefan-de-cuir-rudnicki",
-      "license": "CC0-1.0",
-      "name": "Gabrielle/Stefan De Cuir / Rudnicki",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00875DLO2",
           "type": "libex-import"
         }
       ]
@@ -7202,6 +7197,7 @@
     },
     "gallup-press": {
       "id": "gallup-press",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Gallup Press",
       "sources": [
@@ -7251,6 +7247,7 @@
     },
     "game-guide-hero": {
       "id": "game-guide-hero",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Game Guide Hero",
       "sources": [
@@ -7263,6 +7260,7 @@
     },
     "game-nest": {
       "id": "game-nest",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Game Nest",
       "sources": [

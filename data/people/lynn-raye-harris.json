@@ -5722,14 +5722,26 @@
       "name": "M. R. James",
       "sources": [
         {
-          "imported_at": "2026-08-01",
-          "ref": "B00IASYL9A",
-          "type": "libex-import"
-        },
-        {
           "imported_at": "2026-10-27",
           "ref": "383",
           "type": "librivox"
+        }
+      ]
+    },
+    "m-r-james-gemineo": {
+      "id": "m-r-james-gemineo",
+      "license": "CC0-1.0",
+      "name": "M. R. James (Gemineo)",
+      "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B00IYWGKGY",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B00IASYL9A",
+          "type": "libex-import"
         }
       ]
     },
@@ -6622,6 +6634,7 @@
     },
     "m-y-books-ltd": {
       "id": "m-y-books-ltd",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "M-Y Books Ltd",
       "sources": [
@@ -7541,6 +7554,7 @@
     },
     "macat-com": {
       "id": "macat-com",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Macat.com",
       "sources": [
@@ -8173,6 +8187,7 @@
     },
     "macomb-farms": {
       "id": "macomb-farms",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Macomb Farms",
       "sources": [
@@ -8973,14 +8988,7 @@
           "imported_at": "2026-07-25",
           "ref": "B09JYD9V8X",
           "type": "audiosilo-books-import"
-        }
-      ]
-    },
-    "made-for-success-inc": {
-      "id": "made-for-success-inc",
-      "license": "CC0-1.0",
-      "name": "Made for Success Inc.",
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B005FGR1YW",

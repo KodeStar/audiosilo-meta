@@ -2406,6 +2406,7 @@
     },
     "destiny-image-audio": {
       "id": "destiny-image-audio",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Destiny Image Audio",
       "sources": [
@@ -4771,6 +4772,7 @@
     },
     "diamond-and-silk": {
       "id": "diamond-and-silk",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Diamond and Silk",
       "sources": [
@@ -4795,6 +4797,7 @@
     },
     "diamond-club": {
       "id": "diamond-club",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Diamond Club",
       "sources": [
@@ -4843,6 +4846,7 @@
     },
     "diamond-rio": {
       "id": "diamond-rio",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Diamond Rio",
       "sources": [
@@ -8415,6 +8419,7 @@
     },
     "dibble-and-the-mayham-players": {
       "id": "dibble-and-the-mayham-players",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Dibble and the Mayham Players",
       "sources": [
@@ -8984,6 +8989,9 @@
     },
     "didac": {
       "id": "didac",
+      "librivox_reader_aliases": [
+        17758
+      ],
       "librivox_reader_id": 13757,
       "license": "CC0-1.0",
       "name": "Dídac",
@@ -8992,15 +9000,7 @@
           "imported_at": "2026-10-28",
           "ref": "2890",
           "type": "librivox"
-        }
-      ]
-    },
-    "didac-librivox-17758": {
-      "id": "didac-librivox-17758",
-      "librivox_reader_id": 17758,
-      "license": "CC0-1.0",
-      "name": "Dídac",
-      "sources": [
+        },
         {
           "imported_at": "2026-10-29",
           "ref": "17993",
@@ -9143,6 +9143,7 @@
     },
     "die-haschenschule": {
       "id": "die-haschenschule",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Die Häschenschule",
       "sources": [
@@ -9155,6 +9156,7 @@
     },
     "die-marchenmusikanten": {
       "id": "die-marchenmusikanten",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Die Märchenmusikanten",
       "sources": [
@@ -9167,6 +9169,7 @@
     },
     "die-schule-der-magischen-tiere": {
       "id": "die-schule-der-magischen-tiere",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Die Schule der magischen Tiere",
       "sources": [

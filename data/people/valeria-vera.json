@@ -1398,6 +1398,7 @@
     },
     "valle-young": {
       "id": "valle-young",
+      "kind": "group",
       "librivox_reader_id": 9037,
       "license": "CC0-1.0",
       "name": "Valle & Young",
@@ -3577,24 +3578,13 @@
     },
     "various-ancient-authors": {
       "id": "various-ancient-authors",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Various Ancient Authors",
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B0GFPQ62YT",
-          "type": "libex-import"
-        }
-      ]
-    },
-    "various-full-cast": {
-      "id": "various-full-cast",
-      "license": "CC0-1.0",
-      "name": "Various/Full Cast",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0057YOA5K",
           "type": "libex-import"
         }
       ]
@@ -7691,6 +7681,7 @@
     },
     "vice-media": {
       "id": "vice-media",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Vice Media",
       "sources": [

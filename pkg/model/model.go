@@ -84,6 +84,18 @@ type Person struct {
 	// record; pkg/check holds each unique across the dataset. 0 = none.
 	LibrivoxReaderID int `json:"librivox_reader_id,omitempty"`
 	LibrivoxAuthorID int `json:"librivox_author_id,omitempty"`
+	// LibrivoxReaderAliases / LibrivoxAuthorAliases are further LibriVox ids
+	// this person answers to, each in its namespace: LibriVox lists some people
+	// under two records, and a person is one record. An import resolves an alias
+	// to this record as it does the record's own id, so a second id cannot mint
+	// a twin. THE RULE, stated here and pointed at from everywhere else: only an
+	// evidenced decision writes these lists, never an importer (no run records a
+	// second id on a person). LibrivoxReaderID and LibrivoxAuthorID stay the
+	// record's own ids, the ones its slug (PersonIDMatches) and the LibriVox-shaped
+	// feed state. Sorted ascending, each unique across every id and alias of its
+	// namespace (pkg/check).
+	LibrivoxReaderAliases []int `json:"librivox_reader_aliases,omitempty"`
+	LibrivoxAuthorAliases []int `json:"librivox_author_aliases,omitempty"`
 	// BirthYear / DeathYear are the years the person was born and died, as a
 	// source stated them (today LibriVox's author dob/dod): a signed year, a
 	// negative one BC, 0 = not stated. There is no year 0, so the zero value

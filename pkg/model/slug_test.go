@@ -414,3 +414,48 @@ func TestSlugifyInvalidUTF8(t *testing.T) {
 		}
 	}
 }
+
+func TestLibrivoxIDOfSlug(t *testing.T) {
+	for _, tc := range []struct {
+		slug           string
+		reader, author int
+	}{
+		{"adam-smith-librivox-19341", 19341, 0},
+		{"librivox-reader-11294", 11294, 0},
+		{"ralph-scott-librivox-author-16428", 0, 16428},
+		{"librivox-author-17538", 0, 17538},
+		{"adam-smith", 0, 0},
+		{"librivox-volunteer", 0, 0},
+		{"a-librivox-volunteer", 0, 0},
+		{"james-grant-1822-1887", 0, 0},
+		{"librivox-19341", 0, 0},
+	} {
+		if r, a := LibrivoxIDOfSlug(tc.slug); r != tc.reader || a != tc.author {
+			t.Errorf("LibrivoxIDOfSlug(%q) = %d, %d, want %d, %d", tc.slug, r, a, tc.reader, tc.author)
+		}
+	}
+
+	// It reads back what the composers write, a name bounded to fit included, so
+	// the rule pkg/check builds on it cannot silently stop matching a form.
+	long := strings.Repeat("Adam Smith ", 40)
+	for _, tc := range []struct {
+		compose        func(string, int) (string, bool)
+		name           string
+		reader, author int
+	}{
+		{LibrivoxReaderSlug, "Adam Smith", 19341, 0},
+		{LibrivoxReaderSlug, long, 19341, 0},
+		{LibrivoxUnslugReaderSlug, "Ἑλένη Κεμικτσή", 11294, 0},
+		{LibrivoxAuthorSlug, "Ralph Scott", 0, 16428},
+		{LibrivoxAuthorSlug, long, 0, 16428},
+		{LibrivoxUnslugAuthorSlug, "Зинаида Гиппиус", 0, 17538},
+	} {
+		slug, ok := tc.compose(tc.name, tc.reader+tc.author)
+		if !ok {
+			t.Fatalf("no slug composed for %q", tc.name)
+		}
+		if r, a := LibrivoxIDOfSlug(slug); r != tc.reader || a != tc.author {
+			t.Errorf("LibrivoxIDOfSlug(%q) = %d, %d, want %d, %d", slug, r, a, tc.reader, tc.author)
+		}
+	}
+}

@@ -1991,6 +1991,7 @@
     },
     "second-city": {
       "id": "second-city",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Second City",
       "sources": [
@@ -1998,14 +1999,7 @@
           "imported_at": "2026-07-29",
           "ref": "B002V1K164",
           "type": "libex-import"
-        }
-      ]
-    },
-    "second-city-chicagos-famed-improv-theatre": {
-      "id": "second-city-chicagos-famed-improv-theatre",
-      "license": "CC0-1.0",
-      "name": "Second City: Chicago's Famed Improv Theatre",
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002UZHWQI",
@@ -2394,12 +2388,23 @@
     },
     "select-committee-to-investigate-the-january-6th-attack-on-the-united-states-capitol": {
       "id": "select-committee-to-investigate-the-january-6th-attack-on-the-united-states-capitol",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Select Committee to Investigate the January 6th Attack on the United States Capitol",
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B09Z3CGJ3N",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0B9VK4TWY",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BL1FHJYS",
           "type": "libex-import"
         }
       ]
@@ -2623,6 +2628,7 @@
     },
     "self-expansion-studios": {
       "id": "self-expansion-studios",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Self Expansion Studios",
       "sources": [
@@ -2635,6 +2641,7 @@
     },
     "self-help-guide": {
       "id": "self-help-guide",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Self Help Guide",
       "sources": [
@@ -2647,6 +2654,7 @@
     },
     "self-help-studio": {
       "id": "self-help-studio",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Self Help Studio",
       "sources": [
@@ -3129,6 +3137,7 @@
     },
     "senate-select-committee-on-intelligence": {
       "id": "senate-select-committee-on-intelligence",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Senate Select Committee on Intelligence",
       "sources": [
@@ -3141,6 +3150,7 @@
     },
     "senate-select-committee-on-presidential-campaign-activi": {
       "id": "senate-select-committee-on-presidential-campaign-activi",
+      "kind": "group",
       "librivox_author_id": 12819,
       "license": "CC0-1.0",
       "name": "Senate Select Committee on Presidential Campaign Activi",
@@ -3385,6 +3395,7 @@
     },
     "sentinelone-publication": {
       "id": "sentinelone-publication",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "SentinelOne Publication",
       "sources": [
@@ -4100,6 +4111,7 @@
     },
     "serene-narratives-studio": {
       "id": "serene-narratives-studio",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Serene Narratives Studio",
       "sources": [
@@ -4112,6 +4124,7 @@
     },
     "serenedream-studios": {
       "id": "serenedream-studios",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "SereneDream Studios",
       "sources": [
@@ -5415,6 +5428,7 @@
     },
     "sesame-workshop": {
       "id": "sesame-workshop",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Sesame Workshop",
       "sources": [
@@ -7043,6 +7057,7 @@
     },
     "shadow-city": {
       "id": "shadow-city",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Shadow City",
       "sources": [
@@ -8512,6 +8527,7 @@
     },
     "shane-chris-claiborne-haw": {
       "id": "shane-chris-claiborne-haw",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Shane/Chris Claiborne/Haw",
       "sources": [

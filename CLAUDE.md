@@ -596,7 +596,9 @@ it, `pkg/check` and every writer now refuse it loudly.
   (`internal/importer` `marketplaces`, `internal/issueform` `regionAliases`).
   NOTE the WORK's print ISBNs (`xref.isbn`) are deliberately untouched: they stay
   a flat string list (`$defs/isbn_list`); the recording's `isbn[]` is defined
-  inline in `recording.schema.json`, beside its `asin[]` neighbour.
+  inline in `recording.schema.json`, beside its `asin[]` neighbour. A recording may
+  not carry a work's print ISBN, in either spelling (`model.Work.PrintISBNKeys`):
+  metacheck fails the tree, and the importer and the issue forms refuse the value.
   Retailer availability is deliberately NOT a catalogue field. Work-detail API
   responses derive `purchase_links[]` from the durable identifiers already in
   the artifact: a region-scoped ASIN becomes an Audible marketplace URL and a
@@ -612,12 +614,24 @@ it, `pkg/check` and every writer now refuse it loudly.
   a guess. The contributor path is the correct-data issue form, whose allowlist
   takes `kind` and validates it against the enum (built from
   `model.PersonKinds`, so the form and the schema cannot drift), so classifying
-  a record never needs a raw pack-file PR. Classifying the existing corporate
-  records is deliberately left to a later, human pass. `synthetic` is the ONE
-  kind a writer sets by itself, and only on one record: `virtual-voice`, the
+  a record never needs a raw pack-file PR. The records already in the tree were
+  classified in maintainer batches (#1326, then the 2026-11 pass over the whole
+  family): `publisher` for a company, imprint, production house or brand of
+  record, `group` for a cast, band, pair, institution, government body or a
+  franchise stated as an author. A LibriVox reader handle, a real person whose
+  surname reads as a company noun (Carey Corp, Katherine Press), a self-publisher
+  named as their own publisher and a person-plus-house concatenation all stay
+  unset, so absence still never asserts anything. `synthetic` is the ONE
+  kind an importer sets by itself, and only on one record: `virtual-voice`, the
   canonical every AI-narration credit folds onto
   (`internal/importer/synthetic.go`) - its kind is not somebody's
-  classification, it is what the credit said.
+  classification, it is what the credit said. The only other synthetic record is
+  `eleven-labs`, a TTS vendor credited by name, set by that same 2026-11 pass; a
+  NEW "Eleven Labs" narrator credit folds onto `virtual-voice` (`aiNarratorNames`).
+  The kind does NOT reach the artifact: `metabuild` writes no column for it, so
+  metaserve, the site and audiosilo-server cannot show it; its readers are
+  evidence filters only (pkg/check's narration profile, internal/audit's language
+  mix, `metaimport`'s narration check), which skip any record whose kind is set.
   A person's id is the slug of their name (`model.PersonSlug`, pkg/check's
   person-slug rule) with the LibriVox exceptions: a reader whose name another
   reader id already holds is `<name slug>-librivox-<reader id>`
@@ -628,7 +642,9 @@ it, `pkg/check` and every writer now refuse it loudly.
   author whose name slugs to nothing at `librivox-author-<author id>`
   (`model.LibrivoxUnslugAuthorSlug`). Each is legal only on a record carrying
   that id - every form is asked through `model.PersonIDMatches`, and a
-  refusal's hint is `model.WantPersonID`.
+  refusal's hint is `model.WantPersonID`. One person under two LibriVox ids keeps
+  the second in `librivox_reader_aliases` / `librivox_author_aliases`, which an
+  import resolves to the record; the rule is on `model.Person`.
 - **series** - an entry in the series family: name + ordered works with **string**
   positions ("1", "2.5") including omnibus ranges ("1-3.5"); no two works may
   share a position. Optional `translation_of` (the work's slug set and rules one

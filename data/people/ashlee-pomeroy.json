@@ -1148,6 +1148,7 @@
     },
     "ashley-jaquavis": {
       "id": "ashley-jaquavis",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Ashley & Jaquavis",
       "sources": [
@@ -3175,6 +3176,7 @@
     },
     "associates": {
       "id": "associates",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Associates",
       "sources": [
@@ -3892,6 +3894,7 @@
     },
     "at-will-media": {
       "id": "at-will-media",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "At Will Media",
       "sources": [
@@ -4322,6 +4325,7 @@
     },
     "atkins-health-medical-information-services": {
       "id": "atkins-health-medical-information-services",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Atkins Health & Medical Information Services",
       "sources": [
@@ -4505,6 +4509,7 @@
     },
     "atomic-habits-studio": {
       "id": "atomic-habits-studio",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Atomic Habits Studio",
       "sources": [
@@ -4699,6 +4704,7 @@
     },
     "attraction-studio": {
       "id": "attraction-studio",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Attraction Studio",
       "sources": [
@@ -4841,6 +4847,7 @@
     },
     "aubiblio-editorial": {
       "id": "aubiblio-editorial",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Aubiblio Editorial",
       "sources": [
@@ -5295,6 +5302,7 @@
     },
     "audible": {
       "id": "audible",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Audible",
       "sources": [
@@ -5307,6 +5315,7 @@
     },
     "audible-comedy": {
       "id": "audible-comedy",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Audible Comedy",
       "sources": [
@@ -5319,6 +5328,7 @@
     },
     "audible-narrators": {
       "id": "audible-narrators",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Audible Narrators",
       "sources": [
@@ -5331,6 +5341,7 @@
     },
     "audible-originals": {
       "id": "audible-originals",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Audible Originals",
       "sources": [
@@ -5343,6 +5354,7 @@
     },
     "audible-sleep": {
       "id": "audible-sleep",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Audible Sleep",
       "sources": [
@@ -5355,6 +5367,7 @@
     },
     "audible-staff": {
       "id": "audible-staff",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Audible Staff",
       "sources": [
@@ -5393,6 +5406,7 @@
     },
     "audio-activation": {
       "id": "audio-activation",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Audio Activation",
       "sources": [
@@ -5418,6 +5432,7 @@
     },
     "audio-archive": {
       "id": "audio-archive",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Audio Archive",
       "sources": [
@@ -5430,6 +5445,7 @@
     },
     "audio-book-contractors": {
       "id": "audio-book-contractors",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Audio Book Contractors",
       "sources": [
@@ -5442,6 +5458,7 @@
     },
     "audio-connoisseur": {
       "id": "audio-connoisseur",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Audio Connoisseur",
       "sources": [
@@ -5454,6 +5471,7 @@
     },
     "audio-drama-productions": {
       "id": "audio-drama-productions",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Audio Drama Productions",
       "sources": [
@@ -5466,6 +5484,7 @@
     },
     "audio-education-academy": {
       "id": "audio-education-academy",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Audio Education Academy",
       "sources": [
@@ -5478,6 +5497,7 @@
     },
     "audio-elan": {
       "id": "audio-elan",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Audio Élan",
       "sources": [
@@ -5490,12 +5510,18 @@
     },
     "audio-home-learning-hub": {
       "id": "audio-home-learning-hub",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Audio Home Learning Hub",
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B0GFBZ4B9F",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0FJJ4VPWK",
           "type": "libex-import"
         }
       ]
@@ -5515,6 +5541,7 @@
     },
     "audio-reunion": {
       "id": "audio-reunion",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Audio Reunion",
       "sources": [
@@ -5527,21 +5554,15 @@
     },
     "audio-up": {
       "id": "audio-up",
+      "kind": "publisher",
       "license": "CC0-1.0",
-      "name": "Audio up",
+      "name": "Audio Up",
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B0CS3X3L2K",
           "type": "libex-import"
-        }
-      ]
-    },
-    "audio-up-inc": {
-      "id": "audio-up-inc",
-      "license": "CC0-1.0",
-      "name": "Audio Up INC.",
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0DR9QYN89",
@@ -5551,6 +5572,7 @@
     },
     "audiobooks2go": {
       "id": "audiobooks2go",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "audiobooks2go",
       "sources": [
@@ -5563,6 +5585,7 @@
     },
     "audiogo": {
       "id": "audiogo",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "AudioGO",
       "sources": [
@@ -5570,14 +5593,7 @@
           "imported_at": "2026-07-29",
           "ref": "B008SEGV8U",
           "type": "libex-import"
-        }
-      ]
-    },
-    "audiogo-ltd": {
-      "id": "audiogo-ltd",
-      "license": "CC0-1.0",
-      "name": "AudioGO Ltd",
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B009IX7ICI",
@@ -5585,20 +5601,9 @@
         }
       ]
     },
-    "audiolean-content-team": {
-      "id": "audiolean-content-team",
-      "license": "CC0-1.0",
-      "name": "AudioLean Content Team",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0CFVVKF7L",
-          "type": "libex-import"
-        }
-      ]
-    },
     "audiolearn-authors": {
       "id": "audiolearn-authors",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "AudioLearn Authors",
       "sources": [
@@ -5611,6 +5616,7 @@
     },
     "audiolearn-content-team": {
       "id": "audiolearn-content-team",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "AudioLearn Content Team",
       "sources": [
@@ -5618,11 +5624,17 @@
           "imported_at": "2026-07-29",
           "ref": "B07BYHJ557",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CFVVKF7L",
+          "type": "libex-import"
         }
       ]
     },
     "audiolearn-editors": {
       "id": "audiolearn-editors",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "AudioLearn Editors",
       "sources": [
@@ -5635,6 +5647,7 @@
     },
     "audiolearn-english-team": {
       "id": "audiolearn-english-team",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "AudioLearn English Team",
       "sources": [
@@ -5647,6 +5660,7 @@
     },
     "audiolearn-legal-content-team": {
       "id": "audiolearn-legal-content-team",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "AudioLearn Legal Content Team",
       "sources": [
@@ -5659,6 +5673,7 @@
     },
     "audiolearn-medical-content-team": {
       "id": "audiolearn-medical-content-team",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "AudioLearn Medical Content Team",
       "sources": [
@@ -5671,6 +5686,7 @@
     },
     "audiolearn-team": {
       "id": "audiolearn-team",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "AudioLearn Team",
       "sources": [
@@ -5683,6 +5699,7 @@
     },
     "audiolearn-test-prep-team": {
       "id": "audiolearn-test-prep-team",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "AudioLearn Test Prep Team",
       "sources": [
@@ -5695,6 +5712,7 @@
     },
     "audiolearn-voice-over-team": {
       "id": "audiolearn-voice-over-team",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "AudioLearn Voice Over Team",
       "sources": [
@@ -5720,6 +5738,7 @@
     },
     "audiomagine": {
       "id": "audiomagine",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Audiomagine",
       "sources": [
@@ -5732,6 +5751,7 @@
     },
     "audiomol-com": {
       "id": "audiomol-com",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "audiomol.com",
       "sources": [
@@ -6757,6 +6777,7 @@
     },
     "august-house": {
       "id": "august-house",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "August House",
       "sources": [
@@ -7291,6 +7312,7 @@
     },
     "augustine-institute": {
       "id": "augustine-institute",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Augustine Institute",
       "sources": [

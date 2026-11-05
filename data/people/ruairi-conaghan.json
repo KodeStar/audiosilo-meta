@@ -420,6 +420,9 @@
     },
     "ruben-whitter": {
       "id": "ruben-whitter",
+      "librivox_reader_aliases": [
+        11036
+      ],
       "librivox_reader_id": 12093,
       "license": "CC0-1.0",
       "name": "Ruben Whitter",
@@ -427,6 +430,11 @@
         {
           "imported_at": "2026-10-29",
           "ref": "12482",
+          "type": "librivox"
+        },
+        {
+          "imported_at": "2026-10-29",
+          "ref": "11103",
           "type": "librivox"
         }
       ]
@@ -452,19 +460,6 @@
           "imported_at": "2026-07-29",
           "ref": "1545914508",
           "type": "libex-import"
-        }
-      ]
-    },
-    "rubenwhitter": {
-      "id": "rubenwhitter",
-      "librivox_reader_id": 11036,
-      "license": "CC0-1.0",
-      "name": "Rubenwhitter",
-      "sources": [
-        {
-          "imported_at": "2026-10-29",
-          "ref": "11103",
-          "type": "librivox"
         }
       ]
     },
@@ -4743,6 +4738,7 @@
     },
     "russianpod101-com": {
       "id": "russianpod101-com",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "RussianPod101.com",
       "sources": [

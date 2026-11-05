@@ -1907,14 +1907,33 @@
       "name": "Adam Smith",
       "sources": [
         {
-          "imported_at": "2026-08-02",
-          "ref": "B0FGG3F8QN",
-          "type": "libex-import"
-        },
-        {
           "imported_at": "2026-10-27",
           "ref": "1756",
           "type": "librivox"
+        }
+      ]
+    },
+    "adam-smith-doctor-who-writer": {
+      "id": "adam-smith-doctor-who-writer",
+      "license": "CC0-1.0",
+      "name": "Adam Smith (Doctor Who writer)",
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01BGCZVTK",
+          "type": "libex-import"
+        }
+      ]
+    },
+    "adam-smith-george-goodman": {
+      "id": "adam-smith-george-goodman",
+      "license": "CC0-1.0",
+      "name": "Adam Smith (George Goodman)",
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1663703779",
+          "type": "libex-import"
         }
       ]
     },
@@ -1928,6 +1947,45 @@
           "imported_at": "2026-10-29",
           "ref": "20320",
           "type": "librivox"
+        }
+      ]
+    },
+    "adam-smith-narrator": {
+      "id": "adam-smith-narrator",
+      "license": "CC0-1.0",
+      "name": "Adam Smith (narrator)",
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0929WMS6C",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FGG3F8QN",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07JH62LMW",
+          "type": "libex-import"
+        }
+      ]
+    },
+    "adam-smith-self-help": {
+      "id": "adam-smith-self-help",
+      "license": "CC0-1.0",
+      "name": "Adam Smith (self-help)",
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07SX5T82W",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07RY9YQT3",
+          "type": "libex-import"
         }
       ]
     },
@@ -7482,6 +7540,7 @@
     },
     "adult-children-of-alcoholics-dysfunctional-families": {
       "id": "adult-children-of-alcoholics-dysfunctional-families",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Adult Children of Alcoholics/Dysfunctional Families",
       "sources": [
@@ -7530,6 +7589,7 @@
     },
     "advisory-committee-on-human-radiation-experiments": {
       "id": "advisory-committee-on-human-radiation-experiments",
+      "kind": "group",
       "librivox_author_id": 13957,
       "license": "CC0-1.0",
       "name": "Advisory Committee on Human Radiation Experiments",
@@ -7667,6 +7727,7 @@
     },
     "aeh-book-it": {
       "id": "aeh-book-it",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "AEH Book It",
       "sources": [
@@ -7768,6 +7829,7 @@
     },
     "aeon-history": {
       "id": "aeon-history",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Aeon History",
       "sources": [
@@ -7990,6 +8052,7 @@
     },
     "affirmation-core": {
       "id": "affirmation-core",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Affirmation Core",
       "sources": [
@@ -8002,6 +8065,7 @@
     },
     "affirming-mastery": {
       "id": "affirming-mastery",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Affirming Mastery",
       "sources": [
@@ -8063,6 +8127,7 @@
     },
     "afrikaanspod101-com": {
       "id": "afrikaanspod101-com",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "AfrikaansPod101.com",
       "sources": [
@@ -8350,6 +8415,7 @@
     },
     "ageless-revelations": {
       "id": "ageless-revelations",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Ageless Revelations",
       "sources": [
@@ -9811,6 +9877,7 @@
     },
     "ai-labs-institute": {
       "id": "ai-labs-institute",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "AI Labs Institute",
       "sources": [

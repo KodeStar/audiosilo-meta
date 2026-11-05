@@ -365,6 +365,7 @@
     },
     "chapo-trap-house": {
       "id": "chapo-trap-house",
+      "kind": "group",
       "license": "CC0-1.0",
       "name": "Chapo Trap House",
       "sources": [
@@ -377,6 +378,7 @@
     },
     "chapshaw-publications": {
       "id": "chapshaw-publications",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Chapshaw Publications",
       "sources": [
@@ -5870,8 +5872,35 @@
       "name": "Charles Lamb",
       "sources": [
         {
+          "imported_at": "2026-10-27",
+          "ref": "980",
+          "type": "librivox"
+        }
+      ]
+    },
+    "charles-lamb-science-fiction": {
+      "id": "charles-lamb-science-fiction",
+      "license": "CC0-1.0",
+      "name": "Charles Lamb (science fiction)",
+      "sources": [
+        {
           "imported_at": "2026-08-02",
-          "ref": "B014M2BSJ8",
+          "ref": "B0BQZHJ6CD",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FRL5LPSF",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07DFPVXMW",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-09-27",
+          "ref": "B0HB71M7H6",
           "type": "libex-import"
         },
         {
@@ -5880,9 +5909,104 @@
           "type": "libex-import"
         },
         {
-          "imported_at": "2026-10-27",
-          "ref": "980",
-          "type": "librivox"
+          "imported_at": "2026-08-02",
+          "ref": "B0GV54FRMP",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B072K3LGJK",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GV55THCF",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01IDQVPRO",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GV55D1X4",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B015NMQ76A",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DHHXTN2F",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1705257747",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CWLTD8R7",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GCPB87JF",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GV55X5DX",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B014M2BSJ8",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1705290868",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GV4XBYTD",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1705290922",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0G4SJF9HD",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07DQQ6NR6",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1705290949",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1977366236",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GGVNH7X2",
+          "type": "libex-import"
         }
       ]
     },
@@ -6591,11 +6715,6 @@
       "name": "Charles Morris",
       "sources": [
         {
-          "imported_at": "2026-07-29",
-          "ref": "B002V9Z6YS",
-          "type": "libex-import"
-        },
-        {
           "imported_at": "2026-10-28",
           "ref": "3042",
           "type": "librivox"
@@ -7286,6 +7405,11 @@
           "imported_at": "2026-07-29",
           "ref": "B00QXEDEWS",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V9Z6YS",
+          "type": "libex-import"
         }
       ]
     },
@@ -7480,6 +7604,7 @@
     },
     "charles-river-editors": {
       "id": "charles-river-editors",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Charles River Editors",
       "sources": [

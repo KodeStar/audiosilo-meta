@@ -4869,6 +4869,9 @@
     },
     "barty-begley": {
       "id": "barty-begley",
+      "librivox_reader_aliases": [
+        19597
+      ],
       "librivox_reader_id": 6473,
       "license": "CC0-1.0",
       "name": "Barty Begley",
@@ -4877,15 +4880,7 @@
           "imported_at": "2026-10-28",
           "ref": "3494",
           "type": "librivox"
-        }
-      ]
-    },
-    "barty-begley-librivox-19597": {
-      "id": "barty-begley-librivox-19597",
-      "librivox_reader_id": 19597,
-      "license": "CC0-1.0",
-      "name": "Barty Begley",
-      "sources": [
+        },
         {
           "imported_at": "2026-10-29",
           "ref": "20377",
@@ -5795,6 +5790,7 @@
     },
     "bbc": {
       "id": "bbc",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "BBC",
       "sources": [
@@ -5820,6 +5816,7 @@
     },
     "bbc-audiobooks": {
       "id": "bbc-audiobooks",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "BBC Audiobooks",
       "sources": [
@@ -5827,14 +5824,7 @@
           "imported_at": "2026-07-29",
           "ref": "B002V8MRUK",
           "type": "libex-import"
-        }
-      ]
-    },
-    "bbc-audiobooks-ltd": {
-      "id": "bbc-audiobooks-ltd",
-      "license": "CC0-1.0",
-      "name": "BBC Audiobooks Ltd",
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002V00XKY",
@@ -5844,6 +5834,7 @@
     },
     "bbc-iplayer": {
       "id": "bbc-iplayer",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "BBC iPlayer",
       "sources": [
@@ -5856,6 +5847,7 @@
     },
     "bbc-radio-comedy": {
       "id": "bbc-radio-comedy",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "BBC Radio Comedy",
       "sources": [
@@ -5881,6 +5873,7 @@
     },
     "bbc-studios": {
       "id": "bbc-studios",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "BBC Studios",
       "sources": [
@@ -5893,6 +5886,7 @@
     },
     "bbc-world-service": {
       "id": "bbc-world-service",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "BBC World Service",
       "sources": [
@@ -5905,6 +5899,7 @@
     },
     "bbc-worldwide": {
       "id": "bbc-worldwide",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "BBC Worldwide",
       "sources": [
@@ -9283,6 +9278,7 @@
     },
     "behind-the-wheel": {
       "id": "behind-the-wheel",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Behind the Wheel",
       "sources": [
@@ -10123,6 +10119,7 @@
     },
     "bella-international": {
       "id": "bella-international",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Bella International",
       "sources": [
@@ -10693,6 +10690,7 @@
     },
     "bellever-books": {
       "id": "bellever-books",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Bellever Books",
       "sources": [
@@ -10731,6 +10729,7 @@
     },
     "belmont-and-belcourt-biographies": {
       "id": "belmont-and-belcourt-biographies",
+      "kind": "publisher",
       "license": "CC0-1.0",
       "name": "Belmont and Belcourt Biographies",
       "sources": [
