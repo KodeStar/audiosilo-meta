@@ -471,7 +471,8 @@ func TestMatchReadsADramatizationFromTheRecording(t *testing.T) {
 			factorWork("only-drama", "Only Drama", "en", "ada-one", rec("b-ga", 400, "GraphicAudio", "bea-reader")),
 			factorWork("stays", "Stays (Dramatized)", "en", "ada-one", rec("f-latw", 400, "L.A. Theatre Works", "bea-reader")),
 			factorWork("label-unknown", "Label Unknown [Dramatized Adaptation]", "en", "ada-one", rec("d-none", 400, "", "bea-reader")),
-			factorWork("label-plain", "Label Plain [Dramatized Adaptation]", "en", "ada-one", rec("e-plain", 400, "Tantor Audio", "bea-reader")),
+			factorWork("label-plain", "Label Plain [Dramatized Adaptation]", "en", "ada-one", rec("e-plain", 400, "Tantor Audio", "bea-reader"), rec("f-ga", 700, "GraphicAudio", "bea-reader")),
+			factorWork("label-alone", "Label Alone [Dramatized Adaptation]", "en", "ada-one", rec("g-only", 400, "Simon & Schuster Audio", "bea-reader")),
 		},
 	})
 	for _, x := range []struct{ title, id, want string }{
@@ -482,6 +483,7 @@ func TestMatchReadsADramatizationFromTheRecording(t *testing.T) {
 		{"Stays", "stays", ""},
 		{"Label Unknown", "label-unknown", ""},
 		{"Label Plain", "label-plain", "e-plain"},
+		{"Label Alone", "label-alone", ""},
 	} {
 		res := matchJSON(t, ts.URL, url.Values{"title": {x.title}, "author": {"Ada One"}, "runtime": {"24000"}})
 		for _, r := range res {

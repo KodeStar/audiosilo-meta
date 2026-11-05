@@ -329,6 +329,7 @@ func TestWorkEditionOntoAWorkReadsItsRecordings(t *testing.T) {
 		{"a plain reading beside it", "City of Thorns", []string{"GraphicAudio", "Corey Press"}, false},
 		{"a plain reading under a label", "City of Thorns (Dramatized Adaptation)", []string{"GraphicAudio", "Corey Press"}, false},
 		{"a label and a recording stating nothing", "City of Thorns (Dramatized Adaptation)", []string{""}, true},
+		{"a label and a publisher, no recording saying so", "City of Thorns (Dramatized Adaptation)", []string{"Simon & Schuster Audio"}, true},
 		{"a title that stays dramatized, by another producer", "City of Thorns (Dramatized)", []string{"L.A. Theatre Works"}, true},
 	}
 	for _, c := range cases {

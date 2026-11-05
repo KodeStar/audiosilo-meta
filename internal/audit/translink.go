@@ -387,7 +387,8 @@ func linkVetoes(base check.LinkView, kind model.RedirectKind, id string, have []
 // there is for a work with no recording to ask.
 func heldOnlyAsDramatization(w *model.Work) bool {
 	title := titlerule.DramatizationOf(w.Title, w.Subtitle)
-	if len(w.Recordings) == 0 {
+	// No recording saying it of itself leaves the title's statement the work's only one.
+	if !slices.ContainsFunc(w.Recordings, (*model.Recording).IsDramatization) {
 		return title.Stated
 	}
 	for _, r := range w.Recordings {

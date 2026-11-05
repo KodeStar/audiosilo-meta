@@ -956,3 +956,56 @@ func TestAnEnvelopeRowKeepsItsQualifiedTitles(t *testing.T) {
 			sum.NewWorks, sum.SkippedDuplicateIdentity, recSlugsOf(t, dataDir, held), sum.Warnings)
 	}
 }
+
+// A row whose label is its only statement of a dramatization keeps it: no GraphicAudio
+// imprint and no full-cast credit means nothing else would ever say so.
+func TestALabelIsKeptWhenItIsTheRowsOnlySignal(t *testing.T) {
+	cases := []struct {
+		name, publisher, narrators, slug, title string
+	}{
+		{"named narrators, another publisher", "Simon & Schuster Audio", `{"name":"Bea Reader"},{"name":"Cy Reader"}`,
+			"signal-book-dramatized-adaptation", "Signal Book [Dramatized Adaptation]"},
+		{"GraphicAudio's imprint", "Graphic Audio LLC", `{"name":"Bea Reader"},{"name":"Cy Reader"}`, "signal-book", "Signal Book"},
+		{"a full-cast credit", "Simon & Schuster Audio", `{"name":"Bea Reader"},{"name":"Full Cast"}`, "signal-book", "Signal Book"},
+	}
+	for _, c := range cases {
+		dataDir := seedTombstoneTree(t, nil, nil)
+		row := `{"asin":"B0ADAPT010","title":"Signal Book [Dramatized Adaptation]","publisher":"` + c.publisher + `","region":"us","language":"english",` +
+			`"authors":[{"name":"Ada Mapmaker"}],"narrators":[` + c.narrators + `],"lengthMinutes":400}`
+		sum := runLibexWith(t, dataDir, Options{}, row)
+		if sum.NewWorks != 1 {
+			t.Fatalf("%s: NewWorks = %d; warnings = %v", c.name, sum.NewWorks, sum.Warnings)
+		}
+		if got := workTitleOf(t, dataDir, c.slug); got != c.title {
+			t.Errorf("%s: %s is titled %q, want %q", c.name, c.slug, got, c.title)
+		}
+	}
+}
+
+// A labelled subtitle is never walked as a title of its own: only the row's short and
+// full titles feed the qualified forms, and the full one holds the row's title too. The
+// work catalogued under what the subtitle says is another book, in both modes.
+func TestALabelledSubtitleIsNotWalkedAsATitle(t *testing.T) {
+	const other = "bravo-book-dramatized-adaptation"
+	seed := func() string {
+		return seedTombstoneTree(t, map[string]string{
+			"works/" + shard(other) + "/" + other + "/work.json": testpack.WorkJSON(t, other, "Bravo Book [Dramatized Adaptation]", testpack.WithAuthors("ada-mapmaker")),
+			"works/" + shard(other) + "/" + other + "/recordings/r1.json": testpack.RecJSON(t, "r1", other,
+				testpack.WithNarrators("bea-reader"), testpack.WithRuntime(500)),
+		}, nil)
+	}
+	row := adaptationRow("B0ADAPT011", "Alpha Book")
+	row.subtitle = "Bravo Book [Dramatized Adaptation]"
+	dataDir := seed()
+	sum := runLibexInto(t, dataDir, rows(row))
+	if sum.NewWorks != 1 || len(recSlugsOf(t, dataDir, other)) != 1 {
+		t.Errorf("create: NewWorks = %d, recordings of %s = %d, want a work of its own; warnings = %v",
+			sum.NewWorks, other, len(recSlugsOf(t, dataDir, other)), sum.Warnings)
+	}
+	dataDir = seed()
+	sum = runLibexWith(t, dataDir, Options{Mode: ModeRecordingsOnly}, row.render())
+	if sum.NewRecordings != 0 || len(recSlugsOf(t, dataDir, other)) != 1 {
+		t.Errorf("recordings-only: NewRecordings = %d, recordings of %s = %d, want none added; warnings = %v",
+			sum.NewRecordings, other, len(recSlugsOf(t, dataDir, other)), sum.Warnings)
+	}
+}

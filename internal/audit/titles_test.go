@@ -5,7 +5,9 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // baseline is the minimum a fixture needs so pkg/check finds every credit it
@@ -336,6 +338,62 @@ func TestTitleCarriesIdentity(t *testing.T) {
 	for _, s := range []string{"Omnibus", "Box Set", "The Complete Collection", "Level 2 Lessons 21-25"} {
 		if titlerule.CarriesIdentity(s) {
 			t.Errorf("titlerule.CarriesIdentity(%q) = true, want false", s)
+		}
+	}
+}
+
+// No routine wave may take an adaptation label off a title while the flag holds it: every
+// proposal on such a work is advisory, whichever decoration it is filed under.
+func TestAdaptationLabelRetitlesAreHeld(t *testing.T) {
+	files := map[string]string{
+		"people/ad/ada-author.json":  testpack.PersonJSON(t, "ada-author", "Ada Author"),
+		"people/fu/full-cast.json":   testpack.PersonJSON(t, "full-cast", "Full Cast"),
+		"works/ta/tale-da/work.json": workJSON(t, "tale-da", "Tale [Dramatized Adaptation]"),
+		"works/ta/tale-da/recordings/r.json": testpack.RecJSON(t, "r", "tale-da",
+			testpack.WithPublisher("GraphicAudio"), testpack.WithNarrators("full-cast")),
+	}
+	rep := runFixture(t, files)
+	var saw bool
+	for _, f := range classOf(t, rep, ClassWorkTitle) {
+		if f.Propose.Target != "tale-da" {
+			continue
+		}
+		saw = true
+		if !f.Propose.Advisory || f.Propose.Op != OpReview {
+			t.Errorf("proposal = %+v, want it held as advisory", f.Propose)
+		}
+	}
+	if !saw {
+		t.Fatalf("no proposal on the labelled work: %+v", classOf(t, rep, ClassWorkTitle))
+	}
+	if !adaptationLabelRetitlesHeld {
+		t.Fatal("this test is the hold's: the wave that flips the flag rewrites it")
+	}
+}
+
+func TestAdaptationLabelHold(t *testing.T) {
+	ga := &model.Recording{Publisher: "GraphicAudio"}
+	cast := &model.Recording{Publisher: "Corey Press", Narrators: []string{model.FullCastPerson}}
+	named := &model.Recording{Publisher: "Simon & Schuster Audio", Narrators: []string{"bea-reader"}}
+	cases := []struct {
+		name  string
+		title string
+		recs  []*model.Recording
+		held  bool
+		want  bool
+	}{
+		{"held", "Tale [Dramatized Adaptation]", []*model.Recording{ga}, true, true},
+		{"the wave flips it", "Tale [Dramatized Adaptation]", []*model.Recording{ga}, false, false},
+		{"a credit is a signal too", "Tale (Dramatized Adaptation)", []*model.Recording{named, cast}, false, false},
+		{"no recording says so: kept, flag or no flag", "Tale [Dramatized Adaptation]", []*model.Recording{named}, false, true},
+		{"no recording at all", "Tale [Dramatized Adaptation]", nil, false, true},
+		{"no label", "Tale, Book 1", []*model.Recording{named}, true, false},
+		{"a part keeps its label anyway", "Tale (1 of 2) [Dramatized Adaptation]", []*model.Recording{ga}, true, false},
+	}
+	for _, c := range cases {
+		got := adaptationLabelHold(&model.Work{Title: c.title, Recordings: c.recs}, c.held) != ""
+		if got != c.want {
+			t.Errorf("%s: held = %v, want %v", c.name, got, c.want)
 		}
 	}
 }

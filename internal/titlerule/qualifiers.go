@@ -224,6 +224,12 @@ func dropAdaptationLabel(s, lower string) string {
 	return cutAll(s, adaptationLabelRE, nil)
 }
 
+// CarriesAdaptationLabel reports whether a title holds an adaptation label a strip
+// would take off: a split-release part's stays, and so does a title that is only the label.
+func CarriesAdaptationLabel(title string) bool {
+	return dropsQualifier(title, dropAdaptationLabel)
+}
+
 // cutAll is the qualifiers' bracket and quote removal; its siblings are rules.go's
 // dropSeriesBracketGroup (a series-only group, for a proposal) and match.go's
 // stripParenGroups (every group, for a series name).
@@ -386,11 +392,24 @@ func containsFoldASCII(s, sub string) bool {
 // recording rules (a new narration, an ASIN merge) rather than refused by the
 // duplicate-identity guard the key alone would trip.
 func StripTitleQualifiers(title string) string {
-	lower := strings.ToLower(title)
 	// The label first: a narrator credit must run to the end of the title, and one
 	// holding a bracket is none (narratorCredit), so it would read a credit in front of
 	// the label as prose and leave it for a second pass to find.
-	s := dropNarratorQualifier(dropMarketEdition(dropAdaptationLabel(title, lower), lower), lower)
+	return settleQualifiers(title, dropAdaptationLabel(title, strings.ToLower(title)))
+}
+
+// StripTitleQualifiersKeepingLabel is StripTitleQualifiers for a row whose label is the
+// only thing saying it is a dramatization (no GraphicAudio imprint, no full-cast
+// credit): the label is its one statement of that, so it stays on the title.
+func StripTitleQualifiersKeepingLabel(title string) string {
+	return settleQualifiers(title, title)
+}
+
+// settleQualifiers removes the other two qualifiers from s, what is left of title, and
+// settles the separators they leave.
+func settleQualifiers(title, s string) string {
+	lower := strings.ToLower(s)
+	s = dropNarratorQualifier(dropMarketEdition(s, lower), lower)
 	if s == title {
 		return title
 	}

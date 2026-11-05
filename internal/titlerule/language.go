@@ -252,7 +252,10 @@ func DramatizationOf(title, subtitle string) TitleDramatization {
 
 // Covers reports whether the title speaks for a recording of the given publisher that
 // says nothing of itself: always when the statement stays on the title, and otherwise
-// only for a recording stating no publisher.
+// only for a recording stating no publisher. A work where no recording says it of itself
+// is the label's alone (the importer keeps it for such a row), so readers take every
+// recording of a Stated title as covered then: see model.Recording.IsDramatization's
+// callers.
 func (d TitleDramatization) Covers(publisher string) bool {
 	return d.Kept || (d.Stated && publisher == "")
 }

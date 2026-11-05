@@ -79,15 +79,29 @@ func abridgedFromMarker(title string) *bool {
 // The edition-marker half is titlerule.StripEditionMarkers, the ONE definition of
 // what such a marker is (see titlerule/edition.go for why it lives there).
 func cleanWorkTitle(title string) string {
+	return cleanWorkTitleWith(title, titlerule.StripTitleQualifiers)
+}
+
+// cleanWorkTitleWith is cleanWorkTitle through a given qualifier strip.
+func cleanWorkTitleWith(title string, strip func(string) string) string {
 	cleaned := strings.TrimSpace(title)
 	stripped := titlerule.StripEditionMarkers(cleaned)
 	if stripped == "" {
 		return cleaned
 	}
-	if q := titlerule.StripEditionMarkers(titlerule.StripTitleQualifiers(stripped)); q != "" {
+	if q := titlerule.StripEditionMarkers(strip(stripped)); q != "" {
 		stripped = q
 	}
 	return stripTitleNarratorQualifier(stripped)
+}
+
+// rowStatesDramatization reports whether a row says of itself, outside its title, that
+// it is a dramatized production, as a stored recording would (model.Recording.IsDramatization):
+// GraphicAudio's imprint or a full-cast credit. Without either, an adaptation label is
+// its one statement, so normalizeEditionMarkers keeps it on the title.
+func rowStatesDramatization(b sourceBook) bool {
+	return model.IsDramatizationPublisher(b.str("publisher")) ||
+		slices.ContainsFunc(sourceNames(b.narrators, b.str("narrated_by")), titlerule.StatesDramatization)
 }
 
 // qualifiedWorkTitle is cleanWorkTitle WITHOUT the title qualifiers - the work title
@@ -1241,12 +1255,16 @@ func normalizeEditionMarkers(books []sourceBook) {
 		if books[i].abridged == nil {
 			books[i].abridged = seriesClaimsAbridged(books[i].series)
 		}
+		strip := titlerule.StripTitleQualifiers
+		if !rowStatesDramatization(books[i]) {
+			strip = titlerule.StripTitleQualifiersKeepingLabel
+		}
 		for _, key := range []string{"title", "title_short"} {
 			raw := books[i].str(key)
 			if raw == "" {
 				continue
 			}
-			cleaned := cleanWorkTitle(raw)
+			cleaned := cleanWorkTitleWith(raw, strip)
 			if q := qualifiedWorkTitle(raw); q != cleaned && !slices.Contains(books[i].qualifiedTitles, q) {
 				books[i].qualifiedTitles = append(books[i].qualifiedTitles, q)
 			}

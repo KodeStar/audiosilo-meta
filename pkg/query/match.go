@@ -440,10 +440,13 @@ func readNames(guesses []string) []personName {
 // candidate is one work being judged: its facts, read in batches.
 type candidate struct {
 	// drama is what the work's title says of a recording that says nothing of itself.
-	drama  titlerule.TitleDramatization
-	id     string
-	title  []string    // the title's own terms
-	titles []titleForm // every form the title is compared in (candidateTitleForms)
+	drama titlerule.TitleDramatization
+	// anyDramatization: a recording says it is a dramatization of itself. Without one
+	// the title's statement is the work's only one and covers every recording.
+	anyDramatization bool
+	id               string
+	title            []string    // the title's own terms
+	titles           []titleForm // every form the title is compared in (candidateTitleForms)
 	// authors are the credited names, authorKeys their sorted-name keys
 	// (isAuthorName) and authorWord every word of them.
 	authors    []personName
@@ -996,8 +999,10 @@ func (s *DB) candidateFacts(ctx context.Context, pool *candidatePool, narrators 
 				return err
 			}
 			c := byID[workID]
+			own := fullCast || model.IsDramatizationPublisher(publisher)
 			c.runtimes = append(c.runtimes, recordingRuntime{id: rid, minute: minutes,
-				dramatized: fullCast || model.IsDramatizationPublisher(publisher) || c.drama.Covers(publisher)})
+				dramatized: own || c.drama.Covers(publisher)})
+			c.anyDramatization = c.anyDramatization || own
 			return nil
 		}); err != nil {
 			return err
@@ -1064,7 +1069,7 @@ func (f *matchFacts) judge(c *candidate) scored {
 				v.runtimeDiff, best = diff, fit
 			}
 			// Only an edition the book may be is named as its recording.
-			if diff < pickDiff && (!r.dramatized || f.statesDramatization) {
+			if diff < pickDiff && (!c.isDramatization(r) || f.statesDramatization) {
 				pickDiff, v.recordingID = diff, r.id
 			}
 		}
@@ -1124,6 +1129,13 @@ func (f *matchFacts) judge(c *candidate) scored {
 	return v
 }
 
+// isDramatization reports whether r is a dramatized production as this work's facts
+// read: it says so, or the title speaks for it, or the title is the only statement any
+// recording of the work has.
+func (c *candidate) isDramatization(r recordingRuntime) bool {
+	return r.dramatized || (c.drama.Stated && !c.anyDramatization)
+}
+
 // narratorVerdict judges the request's narrator guesses against each of c's
 // recordings (agreeAuthors, the authors' rule), returning the best agreement
 // and the recording that reached it - the closest runtime among the recordings
@@ -1143,7 +1155,7 @@ func (f *matchFacts) narratorVerdict(c *candidate) (authorAgreement, string) {
 		}
 		diff, drama := math.Inf(1), false
 		if i := slices.IndexFunc(c.runtimes, func(rt recordingRuntime) bool { return rt.id == r.id }); i >= 0 {
-			drama = c.runtimes[i].dramatized && !f.statesDramatization
+			drama = c.isDramatization(c.runtimes[i]) && !f.statesDramatization
 			if f.runtime > 0 {
 				_, diff = runtimeFit(c.runtimes[i].minute, f.runtime)
 			}

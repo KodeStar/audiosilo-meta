@@ -2,6 +2,7 @@ package audit
 
 import (
 	"fmt"
+	"slices"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
@@ -22,6 +23,29 @@ import (
 // fourteen), and in those the number is the only thing a human can tell them apart
 // by. That cannot be judged one work at a time, so every proposal is composed
 // first, then the set is checked against itself.
+// adaptationLabelRetitlesHeld keeps every retitle that would take an adaptation label
+// off a title advisory. Removing the label raises a plain library book's match score
+// against a work holding only the adaptation, so a routine repair wave must not do it
+// before servers tell a dramatization apart by its recording (audiosilo-server's
+// meta.DefaultRecording). The PR retitling the labelled works flips this.
+const adaptationLabelRetitlesHeld = true
+
+// adaptationLabelHold says why a retitle of w may not run by itself, "" when it may.
+// held is adaptationLabelRetitlesHeld. A work no recording of which says it is a
+// dramatization keeps its label whatever the flag says: it is that work's one statement.
+func adaptationLabelHold(w *model.Work, held bool) string {
+	if !titlerule.CarriesAdaptationLabel(w.Title) {
+		return ""
+	}
+	if !slices.ContainsFunc(w.Recordings, (*model.Recording).IsDramatization) {
+		return "the adaptation label is the only thing saying this work is a dramatization: no recording states GraphicAudio or a full cast, so keep it"
+	}
+	if held {
+		return "held with every adaptation-label retitle until servers tell a dramatization apart by its recording (adaptationLabelRetitlesHeld)"
+	}
+	return ""
+}
+
 func detectWorkTitle(ix *index) *findings {
 	f := &findings{class: ClassWorkTitle}
 
@@ -113,6 +137,13 @@ func detectWorkTitle(ix *index) *findings {
 			p.Advisory = true
 			p.Reason = "the series is this book's own edition, named after it, so the head the strip removes is the book's title " +
 				"and what is left is its subtitle or tagline: confirm the title before retitling"
+		}
+		if !p.Advisory {
+			if why := adaptationLabelHold(c.work, adaptationLabelRetitlesHeld); why != "" {
+				p.Op = OpReview
+				p.Advisory = true
+				p.Reason = why
+			}
 		}
 		f.add(Finding{
 			Subclass: sub,
