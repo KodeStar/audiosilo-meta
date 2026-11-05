@@ -1971,7 +1971,7 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   part marker unless both name the same part, a derived edition, a collection -
   and a stated volume against the position; the duplicate decisions and
   internal/remediate keep their own measured rules); every other such row is
-  refused by both, never a second work. The sync bot's contract is three NDJSON worklists with the stable codes of
+  refused by both, never a second work. `--reported` (`SelectOptions.Reported`, the sync bot's reported-ASIN lane, GOVERNANCE.md) keeps a row whose `libexSeries` is EMPTY as a standalone (`selectStandalone`): `refuseRowFacts` (language, region, credits) still refuses it, it claims no slot, it stays in `confirmBatch`'s credit census but outside its verdict, outside `applySeriesCap` and every per-series figure, and counts in `ProjectedWorks`, `StandaloneWorks` and `StandaloneRows` by (title, first author). A row with any claim, one with no addressable name included, takes the ordinary path, no refusal code was added, and without the flag the report is byte-identical. It bounds nothing itself: the caller caps works. The import may still land a standalone on a held work (another recording or ASIN) or refuse it (identity-duplicate), and a subtitle the guard does not read as decoration mints a work (the advisory census names it). The sync bot's contract is three NDJSON worklists with the stable codes of
   `internal/importer/refusalcodes.go` (the import adds identity-duplicate and
   missing-author/title/narrator): `--refusals` and `--attachments`
   (libex-select) and `--skipped` (libex; `librivox import` writes the same shape, a LibriVox row keyed by
@@ -2127,7 +2127,9 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   cannot add one - see the importer section), and opens ONE self-merging pull request per cycle -
   the one automation GOVERNANCE.md's "Series-completion bot" section lets
   auto-merge, under the bound and the ai-verify gate stated there and not
-  restated here. Its code is that repository's, but its TOOLS are ours: it
+  restated here. That section's reported-ASIN lane reads metaserve's intake queue
+  and selects with `libex-select --reported --attach-editions` instead, importing
+  under the same flags with no `--enrich`. Its code is that repository's, but its TOOLS are ours: it
   builds metaimport, metafmt and metacheck from a PINNED commit of this repo, so
   a CLI flag, a report shape or a selector rule changed here breaks it silently
   until the pin is bumped there - bumping it is part of making such a change.

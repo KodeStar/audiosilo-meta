@@ -259,8 +259,8 @@ configured with the queue's address and token. What it adds, and nothing more:
   completion test and nothing else: a language or marketplace we cannot map, an
   AI narrator and every other credit refusal still refuse it. If the importer
   resolves it to a work the catalogue holds, it lands as another recording of
-  that work, or another ASIN on one; if the catalogue holds the book under another
-  spelling of its title, the row is refused rather than minted beside it.
+  that work, or another ASIN on one; a spelling of a held book's title that the
+  duplicate-identity guard recognises is refused rather than minted beside it.
 - **A reported volume of a held series**: a row that claims a series takes
   exactly the rules of "The bound" above. A row claiming a series the catalogue
   does not hold is refused, as it is from the feeds. **The lane never founds a

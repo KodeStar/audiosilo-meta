@@ -214,7 +214,7 @@ copyright status of the individual rows. The import posture is therefore
   the announcement and reality part company.
 - **Reported titles, read one at a time** - the same bot's reported-ASIN lane
   (the same GOVERNANCE.md section). It rests on its own reasoning, set out below,
-  because the reasoning of the two shapes either side of it does not reach it.
+  because the reasoning of the other three shapes does not reach it.
 
 Wholesale mirroring of a third-party catalogue remains out of bounds, with the
 one exception "The public-domain exception" below names. Every
