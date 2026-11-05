@@ -650,10 +650,12 @@ first, or at its score the identifier's, as the client's own sort reads it) gain
 orders aside, at most `matchExpandSeriesMax`, 16, audiosilo-server's `maxSeriesFacts`)
 and never a member list, so one response adds one work whatever the series' length.
 It reads after the match has its answer, inside the same slot and budget, every read
-under that context (`workDetail`; `WorkDetail` is it under `context.Background()`).
-Out of budget or on a read error the match goes out as it would have without expand,
-never a 503 of its own, and all or nothing: the client falls back to fetching, as it
-must anyway for an older metaserve, which ignores the parameter. An unknown value is
+under that context (`workDetail`; `WorkDetail` is it under `context.Background()`),
+and the slot goes back before the answer is written (`matchInSlot`), so a client slow
+to take a long work's document holds none. Out of budget or on a read error the match
+goes out as it would have without expand, never a 503 of its own, and all or nothing:
+the client falls back to fetching, as it must anyway for an older metaserve, which
+ignores the parameter. An unknown value is
 ignored; without expand the answer is byte-identical. Measured on the 2026-11 core
 artifact at load ~520 on the Mac, so only the ratios mean anything: the expansion
 costs the same as the work read beside it (p50 25 ms against 29 ms over 300 series

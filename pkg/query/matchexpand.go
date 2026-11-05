@@ -25,10 +25,10 @@ import (
 // work and at most matchExpandSeriesMax small objects, whatever the limit asked for.
 //
 // THE BUDGET. It runs after the match has its answer, inside the same slot and the
-// same budget, and every read takes that context. It is a saving, never a
-// requirement: out of budget, or on a read error, the match goes out as it would
-// have without expand, because a client that finds nothing inlined fetches as it
-// always did. An older metaserve ignores the parameter, so clients handle that
+// same budget (matchInSlot), and every read takes that context. It is a saving,
+// never a requirement: out of budget, or on a read error, the match goes out as it
+// would have without expand, because a client that finds nothing inlined fetches as
+// it always did. An older metaserve ignores the parameter, so clients handle that
 // anyway. It is all or nothing, so `work` present means series_facts was read too,
 // and a series missing from it is one nothing is known about.
 
@@ -54,11 +54,12 @@ type seriesFacts struct {
 // and a value this server does not know is ignored rather than refused, so a client
 // can ask for a later addition without learning the server's version first.
 func wantsWorkExpansion(values []string) bool {
-	return slices.ContainsFunc(values, func(v string) bool {
-		return slices.ContainsFunc(strings.Split(v, ","), func(part string) bool {
-			return strings.TrimSpace(part) == matchExpandWork
-		})
-	})
+	for part := range strings.SplitSeq(strings.Join(values, ","), ",") {
+		if strings.TrimSpace(part) == matchExpandWork {
+			return true
+		}
+	}
+	return false
 }
 
 // bestResult is the index of the result a client takes as the match: the one the

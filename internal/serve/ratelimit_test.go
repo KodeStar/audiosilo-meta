@@ -286,9 +286,10 @@ func TestNoRateLimitWhenOff(t *testing.T) {
 // workers is a shipped server's internal/matchrun/runner.go `workers` (2); perBook
 // is one works/match, its `bulkCandidates` (2) work reads and their series facts,
 // the reads sharing internal/meta/service.go's `maxConcurrentWorkFetches` (4)
-// bound; the pacer is that repository's run pacer since works/match?expand; the
-// Series page's lookups are bounded by its `maxConcurrentLookups` (4). CROSS-REPO.md
-// records the coupling from the server's side.
+// bound; the pace is internal/matchrun/runner.go's `maxRequestsPerSecond` (60), on a
+// server with the expand path; the Series page's lookups are bounded by its
+// `maxConcurrentLookups` (4). CROSS-REPO.md records the coupling from the server's
+// side.
 func TestDefaultsHoldAnAudioSiloBulkMatch(t *testing.T) {
 	clock := &fakeClock{t: time.Date(2026, 10, 27, 12, 0, 0, 0, time.UTC)}
 	l := newRateLimiter(DefaultRateLimit, DefaultRateBurst, nil, clock.now)

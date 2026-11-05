@@ -35,7 +35,8 @@ type HandlerOptions struct {
 	Now func() time.Time
 
 	// MatchBudget bounds one works/match request, queueing included; past it the
-	// request is a 503 with Retry-After: 1. Zero means defaultMatchBudget, a
+	// request is a 503 with Retry-After: 1, unless only an expand=work is left to
+	// read, which is then left out (matchexpand.go). Zero means defaultMatchBudget, a
 	// runaway guard an in-process consumer (one server's own admin) never meets in
 	// practice. metaserve, whose route is public and CORS-open, passes
 	// PublicMatchBudget so a flood cannot price itself.

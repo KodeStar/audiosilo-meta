@@ -57,9 +57,9 @@ import (
 // So 100 a second holds the shipped server's fast case with headroom and the paced
 // one's with more, and a burst of 400 absorbs a Series page or a match run starting
 // while a page loads. A scraper looping flat out on one address wants far more
-// than that; past it the catalogue's bulk route is the release artifact. A server sharing the
-// host or LAN with a private metaserve (round trips of a millisecond or two)
-// can outrun any sane limit: that deployment turns it off (--rate-limit 0).
+// than that; past it the catalogue's bulk route is the release artifact. A server
+// sharing the host or LAN with a private metaserve (round trips of a millisecond or
+// two) can outrun any sane limit: that deployment turns it off (--rate-limit 0).
 const (
 	DefaultRateLimit = 100
 	DefaultRateBurst = 400

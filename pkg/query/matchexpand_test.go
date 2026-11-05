@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/http/httptest"
 	"net/url"
 	"strconv"
 	"strings"
@@ -276,6 +277,7 @@ func TestMatchExpandFollowsTheClientsBest(t *testing.T) {
 // client fetches as it always did.
 func TestMatchExpandDegradesOutOfBudget(t *testing.T) {
 	db := openTestDB(t, artifacttest.Build(t, matchCatalog()))
+	db.SetLogger(artifacttest.QuietLogger())
 	req, _ := parseMatchRequest(url.Values{"title": {"Dune"}, "author": {"Frank Herbert"}})
 	plain := func() []matchResult {
 		results, err := db.match(t.Context(), req)
@@ -296,6 +298,7 @@ func TestMatchExpandDegradesOutOfBudget(t *testing.T) {
 
 	// A read that fails for its own reasons (the database gone) does the same.
 	gone := openTestDB(t, artifacttest.Build(t, matchCatalog()))
+	gone.SetLogger(artifacttest.QuietLogger())
 	if err := gone.Close(); err != nil {
 		t.Fatal(err)
 	}
@@ -311,6 +314,41 @@ func TestMatchExpandDegradesOutOfBudget(t *testing.T) {
 	db.expandBest(t.Context(), results)
 	if results[0].Work != nil || results[0].SeriesFacts != nil {
 		t.Errorf("an unknown work expanded to %v, %v", results[0].Work, results[0].SeriesFacts)
+	}
+}
+
+// slotProbe is a ResponseWriter that notes how many match slots are held whenever the
+// answer is written.
+type slotProbe struct {
+	http.ResponseWriter
+	slots       chan struct{}
+	wrote, held int
+}
+
+func (p *slotProbe) Write(b []byte) (int, error) {
+	p.wrote += len(b)
+	p.held = max(p.held, len(p.slots))
+	return p.ResponseWriter.Write(b)
+}
+
+// TestMatchAnswerIsWrittenOutsideItsSlot: the slots bound the reads, so a client slow
+// to take an expanded answer holds none of them while it does.
+func TestMatchAnswerIsWrittenOutsideItsSlot(t *testing.T) {
+	db := openTestDB(t, artifacttest.Build(t, matchCatalog()))
+	srv := newHandler(func() *DB { return db }, HandlerOptions{Logger: artifacttest.QuietLogger()})
+	params := url.Values{"title": {"Dune"}, "author": {"Frank Herbert"}, "expand": {"work"}}
+	req := httptest.NewRequestWithContext(t.Context(), http.MethodGet, matchPath(params), nil)
+	rec := httptest.NewRecorder()
+	probe := &slotProbe{ResponseWriter: rec, slots: srv.matchSlots}
+	srv.mux.ServeHTTP(probe, req)
+	if rec.Code != http.StatusOK || probe.wrote == 0 {
+		t.Fatalf("status %d, %d bytes written: %s", rec.Code, probe.wrote, rec.Body)
+	}
+	if !bytes.Contains(rec.Body.Bytes(), []byte(`"work":`)) {
+		t.Errorf("nothing inlined: %s", rec.Body)
+	}
+	if probe.held != 0 {
+		t.Errorf("%d match slots held while the answer was written", probe.held)
 	}
 }
 

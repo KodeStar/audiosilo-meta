@@ -229,25 +229,33 @@ func (s *handler) handleMatch(w http.ResponseWriter, r *http.Request, snap *DB) 
 	}
 	ctx, cancel := context.WithTimeout(r.Context(), s.cfg.MatchBudget)
 	defer cancel()
-	select {
-	case s.matchSlots <- struct{}{}:
-		defer func() { <-s.matchSlots }()
-	case <-ctx.Done():
-		s.matchBusy(w)
-		return
-	}
-	results, err := snap.match(ctx, req)
+	results, err := s.matchInSlot(ctx, snap, req)
 	switch {
 	case errors.Is(err, errMatchBusy) || (err != nil && ctx.Err() != nil):
 		s.matchBusy(w)
 	case err != nil:
 		s.fail(w, r, err)
 	default:
-		if req.expandWork {
-			snap.expandBest(ctx, results)
-		}
 		httpx.WriteJSON(w, http.StatusOK, map[string]any{"results": results})
 	}
+}
+
+// matchInSlot runs a match and its expansion holding one of the match slots, and
+// gives the slot back before the answer is written. The slots bound the reads: an
+// expanded answer can run to a long work's whole document, and a client slow to take
+// it would otherwise hold a slot for as long as the server's write timeout.
+func (s *handler) matchInSlot(ctx context.Context, snap *DB, req matchRequest) ([]matchResult, error) {
+	select {
+	case s.matchSlots <- struct{}{}:
+		defer func() { <-s.matchSlots }()
+	case <-ctx.Done():
+		return nil, errMatchBusy
+	}
+	results, err := snap.match(ctx, req)
+	if err == nil && req.expandWork {
+		snap.expandBest(ctx, results)
+	}
+	return results, err
 }
 
 // matchBusy answers a match that ran out of budget: 503, retry in a second.
