@@ -36,6 +36,8 @@ type lvPersonFull struct {
 	AuthorID  int    `json:"librivox_author_id"`
 	BirthYear int    `json:"birth_year"`
 	DeathYear int    `json:"death_year"`
+	// AuthorAliases is read back to show no run writes it and every run keeps it.
+	AuthorAliases []int `json:"librivox_author_aliases"`
 }
 
 func personOf(t *testing.T, dataDir, slug string) lvPersonFull {
@@ -356,7 +358,7 @@ func TestLibrivoxSameNameAuthorIsMintedDated(t *testing.T) {
 			if p.Name != tc.wantName || p.AuthorID != int(tc.author.ID) {
 				t.Errorf("%s = %+v", tc.slug, p)
 			}
-			if got := personOf(t, dataDir, tc.plain); got != before || got.AuthorID != tc.plainKeepsAuthorID {
+			if got := personOf(t, dataDir, tc.plain); !reflect.DeepEqual(got, before) || got.AuthorID != tc.plainKeepsAuthorID {
 				t.Errorf("%s changed: %+v -> %+v", tc.plain, before, got)
 			}
 			if !model.PersonIDMatches(tc.slug, p.Name, 0, p.AuthorID) {

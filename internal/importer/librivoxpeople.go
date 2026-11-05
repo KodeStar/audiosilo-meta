@@ -110,6 +110,9 @@ package importer
 //     to the worklist (a sluggable name) or to a credit not recorded (one
 //     that slugs to nothing). A later run finds the record by its id.
 //
+// A person's aliases (model.Person.LibrivoxAuthorAliases) are held ids: every
+// rule above reads one as the record's own, so nothing re-decides it.
+//
 // A project the catalogue already holds is never planned (it is skipped before
 // planning; its readers are librivoxReaderSlug's), and decides nothing here but
 // its TRANSLATORS' ids, after every planned id (heldRowSkips): the recording
@@ -520,11 +523,22 @@ func (p *planner) heldTranslatorLeft(id int) (lvHold, bool) {
 		return h, true
 	}
 	if pin := p.lv.authorPins[id]; pin != nil {
-		if live, ok := p.livePerson(pin.slug); ok && p.lv.authorOf[live] != 0 && p.lv.authorOf[live] != id {
+		if live, ok := p.livePerson(pin.slug); ok && p.lv.authorOf[live] != 0 && !p.answersTo(librivoxAuthor, live, id) {
 			return lvHold{against: live, candidates: p.librivoxPersonCandidates(live)}, true
 		}
 	}
 	return lvHold{}, false
+}
+
+// answersTo reports whether the person answers to a LibriVox id of kind: their
+// own (readerOf, authorOf, which hold an id this run claimed too) or an alias
+// (lv.people, which holds no claimed id).
+func (p *planner) answersTo(kind librivoxKind, slug string, id int) bool {
+	own := p.lv.authorOf
+	if kind == librivoxReader {
+		own = p.lv.readerOf
+	}
+	return own[slug] == id || p.lv.people[librivoxKey{kind, id}] == slug
 }
 
 // settleLibrivoxPeople takes the run's person decisions that read where the
@@ -743,8 +757,9 @@ type lvAuthorSplit struct {
 // (model.LibrivoxAuthorSlug) beside a person of the same name it is kept apart
 // from (librivoxpeople.go rule 4): the other person carries another LibriVox
 // author id, or only narrates, and LibriVox states no year to tell the two by.
-// Only a person can tell LibriVox's own duplicate record from a namesake, so
-// the pair is listed for them to merge or confirm.
+// Only evidence can tell LibriVox's own duplicate record from a namesake, so the
+// pair is listed for a decision: an alias (model.Person.LibrivoxAuthorAliases) or
+// a reviewed merge-people rejection.
 type LibrivoxAuthorSplit struct {
 	Author  LibrivoxPairAuthor `json:"author"`
 	Against string             `json:"against"`

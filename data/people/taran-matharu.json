@@ -6699,6 +6699,9 @@
     },
     "terence-nunn": {
       "id": "terence-nunn",
+      "librivox_reader_aliases": [
+        7630
+      ],
       "librivox_reader_id": 2739,
       "license": "CC0-1.0",
       "name": "Terence Nunn",
@@ -6706,6 +6709,11 @@
         {
           "imported_at": "2026-10-27",
           "ref": "2182",
+          "type": "librivox"
+        },
+        {
+          "imported_at": "2026-10-28",
+          "ref": "6919",
           "type": "librivox"
         }
       ]
@@ -6841,19 +6849,6 @@
           "imported_at": "2026-07-29",
           "ref": "B003PPU4C6",
           "type": "libex-import"
-        }
-      ]
-    },
-    "terencenunn": {
-      "id": "terencenunn",
-      "librivox_reader_id": 7630,
-      "license": "CC0-1.0",
-      "name": "terencenunn",
-      "sources": [
-        {
-          "imported_at": "2026-10-28",
-          "ref": "6919",
-          "type": "librivox"
         }
       ]
     },

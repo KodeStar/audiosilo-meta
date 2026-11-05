@@ -3552,7 +3552,6 @@
     },
     "william-jackson": {
       "id": "william-jackson",
-      "librivox_author_id": 5356,
       "license": "CC0-1.0",
       "name": "William Jackson",
       "sources": [
@@ -3560,11 +3559,6 @@
           "imported_at": "2026-07-29",
           "ref": "B091D3GYB8",
           "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-10-28",
-          "ref": "3614",
-          "type": "librivox"
         }
       ]
     },
@@ -3600,6 +3594,19 @@
         }
       ]
     },
+    "william-jackson-librivox-author-5356": {
+      "id": "william-jackson-librivox-author-5356",
+      "librivox_author_id": 5356,
+      "license": "CC0-1.0",
+      "name": "William Jackson",
+      "sources": [
+        {
+          "imported_at": "2026-10-28",
+          "ref": "3614",
+          "type": "librivox"
+        }
+      ]
+    },
     "william-james": {
       "birth_year": 1842,
       "death_year": 1910,
@@ -3608,11 +3615,6 @@
       "license": "CC0-1.0",
       "name": "William James",
       "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00I3TF6C2",
-          "type": "libex-import"
-        },
         {
           "imported_at": "2026-10-27",
           "ref": "534",
@@ -3632,6 +3634,38 @@
           "imported_at": "2026-10-29",
           "ref": "9998",
           "type": "librivox"
+        }
+      ]
+    },
+    "william-james-narrator": {
+      "id": "william-james-narrator",
+      "license": "CC0-1.0",
+      "name": "William James (narrator)",
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00LGW09U2",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00UXXUBB2",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00J2HXVVW",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00JOQZPJW",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00I3TF6C2",
+          "type": "libex-import"
         }
       ]
     },
@@ -3875,6 +3909,9 @@
       "birth_year": 1847,
       "death_year": 1927,
       "id": "william-k-marriott",
+      "librivox_author_aliases": [
+        6467
+      ],
       "librivox_author_id": 6932,
       "license": "CC0-1.0",
       "name": "William K. Marriott",
@@ -3882,6 +3919,11 @@
         {
           "imported_at": "2026-11-04",
           "ref": "368",
+          "type": "librivox"
+        },
+        {
+          "imported_at": "2026-11-04",
+          "ref": "6561",
           "type": "librivox"
         }
       ]

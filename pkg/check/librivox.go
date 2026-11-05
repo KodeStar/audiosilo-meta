@@ -1,6 +1,7 @@
 package check
 
 import (
+	"maps"
 	"slices"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -17,6 +18,11 @@ import (
 //     unique across the dataset for the same reason (the import keys people on
 //     them). The two are different LibriVox namespaces, so reader 94 and author
 //     94 are not a collision;
+//   - a person's librivox_reader_aliases and librivox_author_aliases are sorted,
+//     and each is unique against every id and every other alias of its namespace,
+//     the record's own included: an alias is an id the import resolves to this
+//     record, so it answers one question exactly as the record's own id does (the
+//     schema requires that own id beside it);
 //   - a chapter's audio_url requires the recording's librivox_id: the field
 //     exists for a recording published one file per section, which today only a
 //     LibriVox project is, and a chapter URL on any other recording is a field
@@ -119,6 +125,61 @@ func checkLibrivox(cat *model.Catalog, recs []recordWithPath, idx *pathIndex, ad
 			} else {
 				authorSeen[id] = rel
 			}
+		}
+	}
+	// A second pass, so an alias meets every record's own id whichever record
+	// the load reached first.
+	for _, p := range cat.People {
+		if len(p.LibrivoxReaderAliases)+len(p.LibrivoxAuthorAliases) == 0 {
+			continue
+		}
+		rel := idx.person[p]
+		checkAliases(rel, "librivox_reader_aliases", "reader", p.LibrivoxReaderAliases, readerSeen, add)
+		checkAliases(rel, "librivox_author_aliases", "author", p.LibrivoxAuthorAliases, authorSeen, add)
+	}
+}
+
+// checkAliases is one record's alias list (field) against the ids of its
+// namespace seen so far, which it joins.
+func checkAliases(rel, field, namespace string, aliases []int, seen map[int]string, add addFunc) {
+	if !slices.IsSorted(aliases) {
+		add(rel, "%s is not sorted ascending: %v", field, aliases)
+	}
+	for _, id := range aliases {
+		if prev, ok := seen[id]; ok {
+			add(rel, "%s names %d, already a LibriVox %s id in %s", field, id, namespace, prev)
+		} else {
+			seen[id] = rel
+		}
+	}
+}
+
+// checkLibrivoxTombstones holds a retired person slug of a LibriVox id form
+// (model.LibrivoxIDOfSlug) to the record it points at: that record answers to the
+// id, as its own or an alias, so a fold cannot lose the id and the next import
+// mint the twin again. A target that is no record is checkRedirects' problem.
+func checkLibrivoxTombstones(cat *model.Catalog, add addFunc) {
+	table := cat.Redirects[model.RedirectPeople]
+	if len(table) == 0 {
+		return
+	}
+	byID := make(map[string]*model.Person, len(cat.People))
+	for _, p := range cat.People {
+		byID[p.ID] = p
+	}
+	for _, from := range slices.Sorted(maps.Keys(table)) {
+		reader, author := model.LibrivoxIDOfSlug(from)
+		p := byID[table[from]]
+		if p == nil {
+			continue
+		}
+		if reader != 0 && reader != p.LibrivoxReaderID && !slices.Contains(p.LibrivoxReaderAliases, reader) {
+			add(redirectPath(model.RedirectPeople, from), "retired slug %q is LibriVox reader %d's form, and its target %q does not answer to that id: "+
+				"record it as the target's librivox_reader_id or in its librivox_reader_aliases", from, reader, p.ID)
+		}
+		if author != 0 && author != p.LibrivoxAuthorID && !slices.Contains(p.LibrivoxAuthorAliases, author) {
+			add(redirectPath(model.RedirectPeople, from), "retired slug %q is LibriVox author %d's form, and its target %q does not answer to that id: "+
+				"record it as the target's librivox_author_id or in its librivox_author_aliases", from, author, p.ID)
 		}
 	}
 }
