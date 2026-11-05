@@ -1,9 +1,10 @@
-// Package sqlitedsn builds the `file:` DSN a read-only SQLite handle is opened
-// with. It is a LEAF - no dependency on anything else here - because two
-// unrelated packages open an operator-supplied artifact path read-only
-// (internal/serve's snapshot loader and internal/issueform's works-artifact
-// stand-in) and a second spelling of this rule is a second chance to lose the
-// read-only guarantee silently.
+// Package sqlitedsn builds the `file:` DSN a SQLite handle is opened with. It is
+// a LEAF - no dependency on anything else here - because two unrelated packages
+// open an operator-supplied artifact path read-only (internal/serve's snapshot
+// loader and internal/issueform's works-artifact stand-in) and a second spelling
+// of this rule is a second chance to lose the read-only guarantee silently.
+// metaserve's intake queue, the one database anything here writes while serving,
+// opens its operator-supplied path through the same rule (ReadWrite).
 package sqlitedsn
 
 import (
@@ -37,5 +38,22 @@ func ReadOnly(path string) (string, error) {
 		return "", err
 	}
 	u := url.URL{Scheme: "file", Path: abs, RawQuery: "mode=ro"}
+	return u.String(), nil
+}
+
+// ReadWrite builds the `file:` URI for a database the caller writes, created when
+// absent, with each pragma applied to every connection the handle opens. The path
+// is escaped and made absolute for the reasons on ReadOnly. A pragma is the
+// driver's `_pragma` value, for example "journal_mode(DELETE)".
+func ReadWrite(path string, pragmas ...string) (string, error) {
+	abs, err := filepath.Abs(path)
+	if err != nil {
+		return "", err
+	}
+	query := "mode=rwc"
+	for _, p := range pragmas {
+		query += "&_pragma=" + url.QueryEscape(p)
+	}
+	u := url.URL{Scheme: "file", Path: abs, RawQuery: query}
 	return u.String(), nil
 }

@@ -3,6 +3,7 @@ package query
 import (
 	"context"
 	"database/sql"
+	"slices"
 	"sort"
 	"strconv"
 	"strings"
@@ -1562,6 +1563,46 @@ func (s *DB) lookup(ctx context.Context, asin, isbn string) (*lookupResult, erro
 		return nil, nil
 	}
 	return &lookupResult{Work: card, RecordingID: rid}, nil
+}
+
+// knownASINChunk bounds one KnownASINs statement's bound variables.
+const knownASINChunk = 500
+
+// KnownASINs answers which of asins this artifact holds: the subset some
+// recording carries, in any marketplace region, as a set. It is the read
+// metaserve's intake queue drops known ASINs with, so "known" means what
+// lookup?asin= would answer 200 for, redirects and works/match aside. An ASIN the
+// set does not name is unknown to this artifact, nothing more. The comparison is
+// exact: the catalogue's ASINs are upper case by schema, so a lower-case spelling
+// is simply not held.
+func (s *DB) KnownASINs(ctx context.Context, asins []string) (map[string]bool, error) {
+	known := make(map[string]bool)
+	for chunk := range slices.Chunk(asins, knownASINChunk) {
+		args := make([]any, len(chunk))
+		for i, asin := range chunk {
+			args[i] = asin
+		}
+		rows, err := s.db.QueryContext(ctx,
+			`SELECT DISTINCT asin FROM recording_asins WHERE asin IN (?`+strings.Repeat(",?", len(chunk)-1)+`)`, args...)
+		if err != nil {
+			return nil, err
+		}
+		err = func() error {
+			defer func() { _ = rows.Close() }()
+			for rows.Next() {
+				var asin string
+				if err := rows.Scan(&asin); err != nil {
+					return err
+				}
+				known[asin] = true
+			}
+			return rows.Err()
+		}()
+		if err != nil {
+			return nil, err
+		}
+	}
+	return known, nil
 }
 
 // lookupIDs resolves an identifier to the work and recording it names, without

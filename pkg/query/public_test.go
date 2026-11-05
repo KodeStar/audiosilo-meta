@@ -6,7 +6,9 @@ package query_test
 // package on purpose, so it can only reach what is exported.
 
 import (
+	"context"
 	"encoding/json"
+	"fmt"
 	"io"
 	"net/http"
 	"net/http/httptest"
@@ -317,5 +319,50 @@ func TestRoutesListsTheMirrorRoutes(t *testing.T) {
 	}
 	if ns := got["GET /api/v1/series/{id}"].Namespace; ns != "series" {
 		t.Errorf("series route namespace = %q, want series", ns)
+	}
+}
+
+// TestKnownASINs is the read metaserve's intake queue filters with: an ASIN any
+// recording carries, in any region, and nothing else. The exact match is the
+// contract, since a queued row is keyed by that exact spelling.
+func TestKnownASINs(t *testing.T) {
+	db, err := query.Open(querytest.Build(t, t.TempDir()), "")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() { _ = db.Close() }()
+	ctx := context.Background()
+
+	got, err := db.KnownASINs(ctx, []string{querytest.ASIN, querytest.MissingASIN, querytest.ASIN, strings.ToLower(querytest.ASIN)})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(got) != 1 || !got[querytest.ASIN] {
+		t.Errorf("KnownASINs = %v, want only %s", got, querytest.ASIN)
+	}
+
+	if got, err := db.KnownASINs(ctx, nil); err != nil || len(got) != 0 {
+		t.Errorf("no ASINs = %v %v, want an empty set", got, err)
+	}
+
+	// More than one statement's worth, with the known one in the last chunk.
+	many := make([]string, 0, 1301)
+	for i := range 1300 {
+		many = append(many, fmt.Sprintf("Z%09d", i))
+	}
+	many = append(many, querytest.ASIN)
+	got, err = db.KnownASINs(ctx, many)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(got) != 1 || !got[querytest.ASIN] {
+		t.Errorf("KnownASINs over many = %v, want only %s", got, querytest.ASIN)
+	}
+
+	// A dead context is an error, not an empty answer: "unknown" must be earned.
+	cancelled, cancel := context.WithCancel(ctx)
+	cancel()
+	if _, err := db.KnownASINs(cancelled, []string{querytest.ASIN}); err == nil {
+		t.Error("a cancelled read reported no error")
 	}
 }
