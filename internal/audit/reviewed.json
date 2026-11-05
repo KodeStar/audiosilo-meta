@@ -15066,6 +15066,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "in-the-reign-of-terror-george-alfred-henty"
+    ],
+    "reason": "same novel by G. A. Henty, apart only by two records of him now folded: Jim Hodges's reading beside Blackstone's",
+    "target": "in-the-reign-of-terror"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "guardians-of-the-gods-in-the-shadow-of-the-fall"
     ],
     "reason": "the same book: the same narrator at the same 254-minute runtime (US and UK publishers), and the decorated title only prefixes the series name",
@@ -18349,6 +18358,17 @@
     "target": "othello-william-shakespeare-2"
   },
   {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "our-island-story-part-2",
+      "our-island-story-volume-1",
+      "our-island-story-volume-2"
+    ],
+    "reason": "not one book: LibriVox's two parts and Naxos's two volumes each divide Our Island Story independently",
+    "target": "our-island-story-part-1"
+  },
+  {
     "decision": "assert",
     "op": "merge-works",
     "others": [
@@ -18576,6 +18596,17 @@
     ],
     "reason": "the same novel by Jane Austen; AmazonClassics Edition and Seasons Edition name the imprint of the recording, not a different work",
     "target": "persuasion-jane-austen"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "j-m-barries-peter-pan",
+      "peter-pan-james-barrie",
+      "peter-pan-james-matthew-barrie"
+    ],
+    "reason": "same book by J. M. Barrie, apart only by three records of him now folded: retail readings of Peter Pan at the main work's lengths",
+    "target": "peter-pan"
   },
   {
     "decision": "assert",
@@ -21344,6 +21375,15 @@
     "target": "springfield-1880"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "st-bartholomews-eve-g-a-henty"
+    ],
+    "reason": "same novel by G. A. Henty, apart only by two records of him now folded: PG20092's reading beside Jim Hodges's",
+    "target": "st-bartholomews-eve"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -23173,6 +23213,15 @@
     ],
     "reason": "the same story; Ben Sturgess and the Wireless Theatre Company are production credits of the Adam Cole/Andrew Ward recording already filed on the plain work, not co-authors",
     "target": "the-cask-of-amontillado"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-cat-of-bubastes-george-alfred-henty"
+    ],
+    "reason": "same novel by G. A. Henty, apart only by two records of him now folded: Jim Hodges's reading beside PG29756's and Tantor's",
+    "target": "the-cat-of-bubastes"
   },
   {
     "decision": "assert",
@@ -25809,6 +25858,15 @@
     "target": "the-railway-children"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-railway-children-e-nesbit"
+    ],
+    "reason": "same novel by E. Nesbit, apart only by two records of her now folded: PG1874 readings beside retail ones; the community repository kept this work's sidecar (audiosilo-meta-community#454)",
+    "target": "the-railway-children"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -27978,6 +28036,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "trek-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "trents-last-case-the-woman-in-black"
+    ],
+    "reason": "same novel by E. C. Bentley, apart only by two records of him now folded: The Woman in Black is its US title, PG21854 the novel, projects 1681 and 5662 beside the retail readings",
+    "target": "trents-last-case"
   },
   {
     "decision": "assert",
