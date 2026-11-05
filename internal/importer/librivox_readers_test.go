@@ -442,8 +442,8 @@ func TestLibrivoxUnsluggableReadersArePeopleOfTheirOwn(t *testing.T) {
 
 func TestLibrivoxUnsluggableReaderNeverWritesOverAnotherPerson(t *testing.T) {
 	// A reader whose name slugs to nothing and who cannot be filed at
-	// librivox-reader-<id> - the slot is another person's or a retired one,
-	// or the credit carries no reader id - is refused at planning (meta#2778),
+	// librivox-reader-<id> - the slot is another person's, or the credit carries
+	// no reader id - is refused at planning (meta#2778),
 	// never credited to the catch-all and never written over the occupant:
 	// the run used to write every pack and then fail post-write validation.
 	for name, tc := range map[string]struct {
@@ -456,9 +456,6 @@ func TestLibrivoxUnsluggableReaderNeverWritesOverAnotherPerson(t *testing.T) {
 				personAddr("librivox-reader-11294"): testpack.PersonJSON(t, "librivox-reader-11294", "LibriVox Reader 11294"),
 			})
 			return dataDir
-		}},
-		"slot retired": {reader: 11294, dataDir: func(t *testing.T) string {
-			return seedTombstoneTree(t, nil, model.Redirects{model.RedirectPeople: {"librivox-reader-11294": "ada-mapmaker"}})
 		}},
 		"no reader id": {reader: 0, dataDir: func(t *testing.T) string { return t.TempDir() }},
 	} {

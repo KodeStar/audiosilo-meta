@@ -644,7 +644,9 @@ it, `pkg/check` and every writer now refuse it loudly.
   author whose name slugs to nothing at `librivox-author-<author id>`
   (`model.LibrivoxUnslugAuthorSlug`). Each is legal only on a record carrying
   that id - every form is asked through `model.PersonIDMatches`, and a
-  refusal's hint is `model.WantPersonID`.
+  refusal's hint is `model.WantPersonID`. One person under two LibriVox ids keeps
+  the second in `librivox_reader_aliases` / `librivox_author_aliases`, which an
+  import resolves to the record; the rule is on `model.Person`.
 - **series** - an entry in the series family: name + ordered works with **string**
   positions ("1", "2.5") including omnibus ranges ("1-3.5"); no two works may
   share a position. Optional `translation_of` (the work's slug set and rules one
