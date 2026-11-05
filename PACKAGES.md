@@ -531,7 +531,8 @@ the catalogue. The endpoint takes the facts SEPARATELY - repeatable `title` and
 `author` guesses (4 read of each), `series` guesses (2 read: a client sends the
 path's series folder and the tag's without choosing; their forms are judged
 together, so the best agreement wins) + one `position`, `runtime` (seconds),
-`asin`/`isbn`, and the typed text `q` - gathers candidates along each (the
+`asin`/`isbn`, the typed text `q`, and two facts that only weigh what the others
+found (an optional `language`, repeatable `narrator`) - gathers candidates along each (the
 identifier lookup; `q` exactly as works/search reads it plus the exact-title probe
 of its leading/trailing word runs; every title guess as whole words plus the
 exact-title probe; EVERY WORK BY THE NAMED AUTHORS, people resolved through the
@@ -596,12 +597,33 @@ it always did), and it lapses when a guess ties the volume read to the name
 (`matchFacts.tiedVolume`, `TestMatchSeriesNamedVolumeKeepsItsTitle`). A request
 stating no volume is judged exactly as before
 (`TestMatchWithoutAVolumeAppliesNoVolumeRule`). Named authors none of whom wrote a work
-scale its score by 0.75. Each title form, guess and series name is folded once
-(`termForm`), person and series names once per request (`factMemo`). Each result is
+scale its score by 0.75. Four more factors and weights in matchscore.go, start values
+from the LibraForge benchmark (2026-11) that audiosilo-server's harness tunes, each
+pinned in `match_factors_test.go`: a work in the named series at ANOTHER position
+than the stated one (a membership elsewhere, or a generic title naming another
+volume) is scaled by `positionConflictFactor` (0.8) unless a membership's RANGE
+covers the stated position (`positionCovers`, an omnibus at 1-3 for a stated 2),
+since a sibling whose cut title agrees ("..., Vol. 4" for volume 1) otherwise sat
+only the series weight behind; a stated `language` (a tag, a 639-2 code or a name,
+`matchLanguage`; anything else is unknown) scales a work in another KNOWN language by
+`languageMismatchFactor` (0.8), an unknown side judging nothing; a closest recording
+more than `runtimeFar` (25%) off `runtime`, once the minute a stored runtime_min may be
+off is allowed for (`runtimeStoredSlack`, `runtimeFarOff`), scales the work by
+`runtimeMismatchFactor` (0.85); and repeatable `narrator` guesses (split and matched
+like authors, `agreeAuthors`) add `weightNarrator` (10) to the shared base with the
+runtime, judged only when a recording of the work credits narrators (read in one
+extra batch, `matchNarratorsSQL`, issued only for such a request), and pick
+`recording_id` (the best-agreeing recording, the closer runtime breaking a tie,
+unless it is far off the runtime, another edition, when the runtime's pick stands;
+`narratorVerdict`). The runtime and language factors scale the better of the two
+readings, never an identifier hit; the position factor is structuredScore's. A
+request without `language` and `narrator` scores as before, except for the
+position and runtime factors, which apply to every request. Each title form, guess and series name is folded once
+(`termForm`), person and series names and work language tags once per request (`factMemo`). Each result is
 the `WorkResult` search returns plus `score` (0-100), `recording_id` (the
-identifier's, else the closest runtime's) and `reasons`
-(`title`/`text`/`author`/`series`/`runtime`/`identifier`, each omitted unless the
-request let it be judged). Bounds: every text value through `boundQuery`, at most
+identifier's, else the narrator-agreeing one's, else the closest runtime's) and `reasons`
+(`title`/`text`/`author`/`series`/`runtime`/`identifier`/`narrator`/`language`, each
+omitted unless the request let it be judged). Bounds: every text value through `boundQuery`, at most
 8 matches at once (`HandlerOptions.MatchConcurrency`) and 2s each (`query.PublicMatchBudget`,
 which metaserve passes as `HandlerOptions.MatchBudget` - an in-process consumer's
 zero value is a 30s runaway guard instead; past it a 503
