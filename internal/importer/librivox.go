@@ -711,7 +711,7 @@ type librivoxFacts struct {
 // librivoxState is a LibriVox run's planner state. The zero value is every
 // other run's, and nothing in it is read unless a row carries librivoxFacts.
 type librivoxState struct {
-	// reviewed is the run's reviewed decisions (reviewedTable).
+	// reviewed is the run's reviewed decisions (reviewedLibrivoxState).
 	reviewed map[int]LibrivoxReview
 	// ownWorks are the works holding an own-work project, catalogued or created by
 	// this run: what the duplicate-identity probe sets apart (librivoxreviewed.go).
@@ -826,9 +826,8 @@ type librivoxLanding struct {
 
 // newLibrivoxState is the empty LibriVox planner state every run starts with. The
 // decisions are every source's: its duplicate guard asks where they put a work.
-func newLibrivoxState(reviewed map[int]LibrivoxReview) librivoxState {
+func newLibrivoxState() librivoxState {
 	return librivoxState{
-		reviewed:      reviewed,
 		ownWorks:      map[string]bool{},
 		ids:           map[int]bool{},
 		held:          map[int]RecRef{},

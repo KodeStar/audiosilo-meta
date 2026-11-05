@@ -164,12 +164,15 @@ func (r LibrivoxReview) validate() error {
 	return nil
 }
 
-// reviewedTable is the run's decisions: a test's own, else the embedded file.
-func reviewedTable(opts Options) map[int]LibrivoxReview {
-	if opts.LibrivoxReviewed != nil {
-		return opts.LibrivoxReviewed
+// reviewedLibrivoxState is a run's LibriVox state under its decisions: a test's own, else
+// the embedded file.
+func reviewedLibrivoxState(opts Options) librivoxState {
+	s := newLibrivoxState()
+	s.reviewed = opts.LibrivoxReviewed
+	if s.reviewed == nil {
+		s.reviewed = librivoxReviewed()
 	}
-	return librivoxReviewed()
+	return s
 }
 
 // LibrivoxOwnWorkHomes are the catalogued works holding a project whose reviewed decision

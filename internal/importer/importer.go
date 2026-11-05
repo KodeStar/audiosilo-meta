@@ -901,7 +901,7 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 		regenRecs:          regenRecsFor(opts.Mode),
 		rowsAsOf:           opts.RowsAsOf,
 		distinct:           opts.Distinct,
-		lv:                 newLibrivoxState(reviewedTable(opts)),
+		lv:                 reviewedLibrivoxState(opts),
 	}
 }
 
