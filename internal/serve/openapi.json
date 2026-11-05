@@ -4,7 +4,7 @@
     "title": "AudioSilo Meta API",
     "version": "1.0.0",
     "summary": "The read-only API over the AudioSilo community audiobook metadata database.",
-    "description": "A read-only API over a compiled snapshot of the community metadata database at https://github.com/kodestar/audiosilo-meta.\n\nEverything readable is public: no authentication and no API key, and no endpoint writes anything. (A production deployment may additionally register a release-notification hook at `/hooks/github/release`; that one route is HMAC-authenticated and is not part of the read surface.)\n\nThe API surface - `/api/v1/*` and `/abs/search` - carries permissive CORS headers (`Access-Control-Allow-Origin: *`), so a browser may call it directly. `/healthz` and the hook do not.\n\nThe API surface is rate limited per client address (a token bucket; the public deployment allows 100 requests a second with a burst of 400; an IPv6 client counts as its /64). A client past its allowance gets `429` with a `Retry-After` header in whole seconds and the error envelope; `/healthz` is exempt. A successful answer carries a `Cache-Control` header when its route states none of its own: `public, max-age=600`, or `public, max-age=60` on the searches and `/api/v1/works/match`. A reader that wants the whole catalogue should download the `meta.sqlite.gz` asset of the newest data release instead of paging the API.\n\nThe server holds one compiled artifact at a time and swaps in a newer one without a restart, so a response is always a consistent view of a single release. While no artifact has loaded yet (a cold boot still fetching the newest release) every data route answers `503` with a `Retry-After` header; `/api/v1/openapi.json` and the static site are served regardless.\n\nSome fields on `GET /works/{id}` depend on the loaded artifact's internal schema version - characters and recaps need version 2, the whole-book recap summary version 3, genres version 4, the community description version 6. The languages layer needs version 7: the translation links on works and series, a series' derived `language`, `ordering`, `ordering_of` and `orderings`, the `ordering_of` on a series membership and the `languages` census on `/api/v1/stats`. The LibriVox layer needs version 8: a recording's `librivox_id`, `archive_id`, `links` and `copyright_year`, a chapter's `audio_url`, the free `librivox` purchase link, the `source` filter, `lookup?librivox_id=` and the LibriVox-shaped feed (which answers `404` on an older artifact, as it does for no results). A server briefly serving an older artifact omits them rather than failing, so treat every one of them as optional.\n\nSlugs are stable, and a slug a data-quality repair RETIRES keeps resolving: every route that takes an id answers `301` with a `Location` at the same route under the slug that replaced it, plus a body naming that slug so a stored id can be healed. The redirect is bounded by `Cache-Control` rather than permanent, because reversing a merge withdraws it. Redirects need artifact version 5; below it a retired slug is a `404`.\n\nLicensing: the factual core (works, recordings, people, series) is dedicated to the public domain under CC0-1.0 and the community layer (characters, recaps, descriptions) is CC BY-SA 4.0 - see LICENSING.md in the repository for what attribution the share-alike layer requires.",
+    "description": "An API over a compiled snapshot of the community metadata database at https://github.com/kodestar/audiosilo-meta.\n\nEverything in the catalogue is public: no authentication and no API key, and no endpoint changes it. (A production deployment may additionally register a release-notification hook at `/hooks/github/release`, which is HMAC-authenticated, and an intake queue at `/api/v1/intake/unknown-asins`, which takes anonymous reports of ASINs the catalogue does not hold and gives them back behind a bearer token. Neither is part of the read surface, and the intake routes are in this document only on a deployment that serves them.)\n\nThe API surface - `/api/v1/*` and `/abs/search` - carries permissive CORS headers (`Access-Control-Allow-Origin: *`), so a browser may call it directly. `/healthz`, the hook and the intake routes do not.\n\nThe API surface is rate limited per client address (a token bucket; the public deployment allows 100 requests a second with a burst of 400; an IPv6 client counts as its /64). A client past its allowance gets `429` with a `Retry-After` header in whole seconds and the error envelope; `/healthz` is exempt. A successful answer carries a `Cache-Control` header when its route states none of its own: `public, max-age=600`, or `public, max-age=60` on the searches and `/api/v1/works/match`. A reader that wants the whole catalogue should download the `meta.sqlite.gz` asset of the newest data release instead of paging the API.\n\nThe server holds one compiled artifact at a time and swaps in a newer one without a restart, so a response is always a consistent view of a single release. While no artifact has loaded yet (a cold boot still fetching the newest release) every data route answers `503` with a `Retry-After` header; `/api/v1/openapi.json` and the static site are served regardless.\n\nSome fields on `GET /works/{id}` depend on the loaded artifact's internal schema version - characters and recaps need version 2, the whole-book recap summary version 3, genres version 4, the community description version 6. The languages layer needs version 7: the translation links on works and series, a series' derived `language`, `ordering`, `ordering_of` and `orderings`, the `ordering_of` on a series membership and the `languages` census on `/api/v1/stats`. The LibriVox layer needs version 8: a recording's `librivox_id`, `archive_id`, `links` and `copyright_year`, a chapter's `audio_url`, the free `librivox` purchase link, the `source` filter, `lookup?librivox_id=` and the LibriVox-shaped feed (which answers `404` on an older artifact, as it does for no results). A server briefly serving an older artifact omits them rather than failing, so treat every one of them as optional.\n\nSlugs are stable, and a slug a data-quality repair RETIRES keeps resolving: every route that takes an id answers `301` with a `Location` at the same route under the slug that replaced it, plus a body naming that slug so a stored id can be healed. The redirect is bounded by `Cache-Control` rather than permanent, because reversing a merge withdraws it. Redirects need artifact version 5; below it a retired slug is a `404`.\n\nLicensing: the factual core (works, recordings, people, series) is dedicated to the public domain under CC0-1.0 and the community layer (characters, recaps, descriptions) is CC BY-SA 4.0 - see LICENSING.md in the repository for what attribution the share-alike layer requires.",
     "license": {
       "name": "CC0-1.0 core with a CC BY-SA 4.0 community layer",
       "url": "https://github.com/kodestar/audiosilo-meta/blob/main/LICENSING.md"
@@ -55,7 +55,7 @@
     },
     {
       "name": "Server",
-      "description": "Readiness, catalogue totals, this document, and the release-notification hook."
+      "description": "Readiness, catalogue totals, this document, and the routes only a deployment that configures them serves: the release-notification hook and the intake queue."
     }
   ],
   "paths": {
@@ -1092,6 +1092,112 @@
         }
       }
     },
+    "/api/v1/intake/unknown-asins": {
+      "post": {
+        "tags": ["Server"],
+        "operationId": "reportUnknownASINs",
+        "summary": "Report ASINs the catalogue does not hold (optional)",
+        "description": "Registered only when the deployment sets `METASERVE_INTAKE_DB`; elsewhere this route answers `404`, which a client should read as not offered. It queues ASINs for the sync bot to look up. A report is a suggestion of where to look and never a record: nothing reaches the catalogue from here without a real retailer listing behind it.\n\nThe queue keeps each ASIN with a count of the reports naming it and the first and last UTC day it was reported, and no client address, timestamp, user agent or batch. A report's other JSON members are ignored and never stored. To enforce the limit below, the server holds a client's address (an IPv6 address as its /64) in memory until about a day after its last report.\n\nThis route carries no CORS headers, and `application/json` is required, so a script on another origin cannot call it: the browser's preflight fails. Every answer is `Cache-Control: no-store`.\n\nThe limit is 6 POSTs a day per client with a burst of 6, separate from the API's own limit, and refused reports count toward it. Each ASIN must match `^[A-Z0-9]{10}$` exactly, so a lower-case spelling is invalid rather than normalized: send them upper case. One ASIN named twice in a body counts once, and one report adds 1 to each ASIN's count. A row leaves the queue when a newer data release holds that ASIN, after 90 days with no report, or when the queue is at its cap of 20,000 rows and a new ASIN evicts the lowest by count, then last day.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/IntakeReport" }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Taken. An empty `asins` array is `202` with three zeros.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/IntakeAccepted" }
+              }
+            }
+          },
+          "400": {
+            "description": "The body is not a JSON object with an array member `asins`, or the array holds more than 200 items. A single bad item is not a `400`: it is counted in `invalid`.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          },
+          "413": {
+            "description": "The body is over 8 KiB.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          },
+          "415": {
+            "description": "The `Content-Type` is not `application/json` (a charset parameter is allowed).",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          },
+          "429": {
+            "description": "Past this client's 6 reports a day.",
+            "headers": {
+              "Retry-After": {
+                "description": "Whole seconds until the client's next report is allowed.",
+                "schema": { "type": "integer", "minimum": 1 }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          },
+          "503": {
+            "description": "The queue could not store the report. Nothing was recorded.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Server"],
+        "operationId": "readUnknownASINs",
+        "summary": "Read the intake queue (token only)",
+        "description": "Registered only when the deployment also sets `METASERVE_INTAKE_TOKEN` to a value of at least 32 bytes. The whole queue, bounded by its cap of 20,000 rows, ordered by count descending, then first day, then ASIN. A count is unverified: it orders work and says nothing about how many distinct servers reported an ASIN. There is no acknowledgement: a row leaves when a data release holds its ASIN, or when it expires. Every answer is `Cache-Control: no-store`, with no CORS headers.",
+        "security": [{ "intakeToken": [] }],
+        "responses": {
+          "200": {
+            "description": "The queue.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/IntakeQueue" }
+              }
+            }
+          },
+          "401": {
+            "description": "A missing or wrong bearer token. Carries `WWW-Authenticate: Bearer`.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          },
+          "429": { "$ref": "#/components/responses/TooManyRequests" },
+          "503": {
+            "description": "The queue could not be read.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/hooks/github/release": {
       "post": {
         "tags": ["Server"],
@@ -1132,6 +1238,13 @@
     }
   },
   "components": {
+    "securitySchemes": {
+      "intakeToken": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "The deployment's `METASERVE_INTAKE_TOKEN`, for the intake queue's read route."
+      }
+    },
     "headers": {
       "RetryAfter": {
         "description": "Whole seconds to wait before retrying. It reports the wait the server's refresh loop is actually on, which grows as attempts fail.",
@@ -2239,6 +2352,50 @@
             "description": "Always an array - Audiobookshelf hard-fails if it is missing or not one.",
             "items": { "$ref": "#/components/schemas/ABSBook" }
           }
+        }
+      },
+      "IntakeReport": {
+        "type": "object",
+        "required": ["asins"],
+        "description": "Any other member is ignored and never stored.",
+        "properties": {
+          "asins": {
+            "type": "array",
+            "maxItems": 200,
+            "description": "ASINs the catalogue is believed not to hold. An item that is not a string, or not an ASIN, is counted as invalid rather than refusing the report.",
+            "items": { "type": "string", "pattern": "^[A-Z0-9]{10}$" },
+            "examples": [["B0ABCDEFGH", "B0XXXXXXXX"]]
+          }
+        }
+      },
+      "IntakeAccepted": {
+        "type": "object",
+        "required": ["accepted", "known", "invalid"],
+        "properties": {
+          "accepted": { "type": "integer", "minimum": 0, "description": "Distinct valid ASINs queued or counted." },
+          "known": { "type": "integer", "minimum": 0, "description": "Distinct valid ASINs the loaded artifact holds, which are dropped. While no artifact has loaded this is 0, and the next one to load filters them." },
+          "invalid": { "type": "integer", "minimum": 0, "description": "Items that were not an ASIN, one per occurrence." }
+        }
+      },
+      "IntakeQueue": {
+        "type": "object",
+        "required": ["total", "asins"],
+        "properties": {
+          "total": { "type": "integer", "minimum": 0, "description": "The number of rows in `asins`." },
+          "asins": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/IntakeRow" }
+          }
+        }
+      },
+      "IntakeRow": {
+        "type": "object",
+        "required": ["asin", "count", "first_day", "last_day"],
+        "properties": {
+          "asin": { "type": "string", "pattern": "^[A-Z0-9]{10}$" },
+          "count": { "type": "integer", "minimum": 1, "description": "How many reports named it. Unverified." },
+          "first_day": { "type": "string", "format": "date", "description": "The UTC day of the first report." },
+          "last_day": { "type": "string", "format": "date", "description": "The UTC day of the latest report." }
         }
       },
       "ReleaseWebhook": {

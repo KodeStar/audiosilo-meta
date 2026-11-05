@@ -18,7 +18,9 @@ import (
 // feed invites apps that used to load a volunteer server onto this one, so one
 // client gets Config.RateLimit requests a second with Config.RateBurst of slack
 // and is told to wait (429 + Retry-After) past that. It wears the API stack
-// (Server.public), so /healthz - a probe, not a browser's call - is exempt.
+// (Server.public), so /healthz - a probe, not a browser's call - is exempt. The
+// intake route has a second, far smaller instance of its own (intake.go), keyed
+// the same way.
 //
 // A CLIENT is its IP address: the connection's remote address, or - only when
 // that address is one of Config.TrustedProxies - the rightmost X-Forwarded-For
@@ -94,6 +96,10 @@ type rateLimiter struct {
 	burst   float64
 	trusted []netip.Prefix
 	now     func() time.Time
+	// refusal replaces the 429's generated wording. A rate of requests a second
+	// is the wrong unit for a limit counted in days ("at most 6.94e-05 requests a
+	// second"), so a limiter like that states its own.
+	refusal string
 
 	mu        sync.Mutex
 	buckets   map[netip.Addr]*bucket
@@ -157,6 +163,16 @@ func (l *rateLimiter) sweep(now time.Time) {
 			delete(l.buckets, addr)
 		}
 	}
+}
+
+// sweepIdle is sweep on a clock instead of on a request. allow sweeps as it goes,
+// which is enough for a limiter that sees traffic all day; one that promises how
+// long it holds an address calls this on a timer, so the last client of a quiet
+// spell does not stay in the map until somebody else turns up.
+func (l *rateLimiter) sweepIdle() {
+	l.mu.Lock()
+	defer l.mu.Unlock()
+	l.sweep(l.now())
 }
 
 // isTrusted reports whether addr is one of the configured proxies.
@@ -244,8 +260,11 @@ func (l *rateLimiter) middleware(next http.Handler) http.Handler {
 				h := w.Header()
 				h.Set("Retry-After", httpx.RetryAfter(wait))
 				h.Set("Cache-Control", "no-store")
-				httpx.WriteErr(w, http.StatusTooManyRequests,
-					fmt.Sprintf("rate limit exceeded: at most %g requests a second per client; retry after the Retry-After seconds", l.rate))
+				msg := l.refusal
+				if msg == "" {
+					msg = fmt.Sprintf("rate limit exceeded: at most %g requests a second per client; retry after the Retry-After seconds", l.rate)
+				}
+				httpx.WriteErr(w, http.StatusTooManyRequests, msg)
 				return
 			}
 		}

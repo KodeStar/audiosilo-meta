@@ -1,7 +1,9 @@
-// Command metaserve is the read-only HTTP API over the compiled metadata
-// artifact. It serves the SQLite database built by metabuild and can optionally
-// refresh from GitHub Releases on signed webhooks and fallback polls. All logic
-// lives in internal/serve; this is only flag wiring and signal handling.
+// Command metaserve is the HTTP API over the compiled metadata artifact. It serves
+// the SQLite database built by metabuild, which it only ever reads, and can
+// optionally refresh from GitHub Releases on signed webhooks and fallback polls.
+// A deployment that sets METASERVE_INTAKE_DB also takes unknown-ASIN reports into
+// a queue file of its own. All logic lives in internal/serve; this is only flag
+// wiring and signal handling.
 package main
 
 import (
@@ -59,6 +61,8 @@ func main() {
 		RateLimit:      *rateLimit,
 		RateBurst:      *rateBurst,
 		TrustedProxies: proxies,
+		IntakeDB:       os.Getenv("METASERVE_INTAKE_DB"),
+		IntakeToken:    os.Getenv("METASERVE_INTAKE_TOKEN"),
 	}
 
 	srv, err := serve.New(cfg)
