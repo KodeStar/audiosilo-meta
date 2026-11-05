@@ -70,6 +70,9 @@ func (c *composer) addSidecar(s sections, kind model.Kind) {
 		// exactly what the read-modify-write below preserves.
 		c.failMemberTaken(names, workSlug)
 		return
+	} else if _, scaled := entry[string(model.KindPositionScale)]; scaled {
+		c.failScaleStated(names, workSlug)
+		return
 	}
 	// AND under every RETIRED spelling of this work, which is the state a core
 	// merge actually leaves behind: the merge retires the work slug in one
@@ -93,6 +96,11 @@ func (c *composer) addSidecar(s sections, kind model.Kind) {
 		}
 		if _, taken := old[names.member]; taken {
 			c.failMemberTaken(names, alias)
+			return
+		}
+		// A scale at a retired key rides onto this work at compose: the same ruler.
+		if _, scaled := old[string(model.KindPositionScale)]; scaled {
+			c.failScaleStated(names, alias)
 			return
 		}
 	}
@@ -123,6 +131,16 @@ func (c *composer) addSidecar(s sections, kind model.Kind) {
 func (c *composer) failMemberTaken(names sidecarNames, at string) {
 	c.fail(StatusNeedsHuman, "a %s sidecar already exists at %s; replacing it needs a maintainer",
 		names.fileName, c.entryLocation(pack.FamilyWorksCommunity, at, "")+": "+names.member)
+}
+
+// failScaleStated is the verdict for a member composed beside a position_scale,
+// whichever key the scale sits at. A scale states the ruler of the members its author
+// numbered, and the form neither shows it nor asks for it: a member numbered on
+// another ruler can stay inside the stated length, pass every rule, and be placed
+// wrongly by every consumer translating positions onto a recording's chapters.
+func (c *composer) failScaleStated(names sidecarNames, at string) {
+	c.fail(StatusNeedsHuman, "a position_scale is stated at %s, and whether its ruler applies to this %s needs a maintainer",
+		c.entryLocation(pack.FamilyWorksCommunity, at, ""), names.fileName)
 }
 
 // attachmentBytes resolves a sidecar/import attachment field to bytes: an

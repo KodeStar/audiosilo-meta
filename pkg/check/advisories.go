@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"regexp"
+	"slices"
 	"sort"
 	"strings"
 
@@ -850,7 +851,30 @@ const sidecarScaleMinChapters = 20
 type sidecarScaleMeasure struct {
 	chapters int
 	parts    map[int]string
+	// scale is the entry's own position_scale, which is the ruler where it is stated.
+	scale *model.PositionScale
 }
+
+// length is what a member is judged against.
+func (m *sidecarScaleMeasure) length() int {
+	if m.scale != nil {
+		return m.scale.Length
+	}
+	return m.chapters
+}
+
+// positionSpread is a member's last position and how many distinct positions it uses.
+func positionSpread(positions []int) (top, distinct int) {
+	sorted := slices.Sorted(slices.Values(positions))
+	sorted = slices.Compact(sorted)
+	if len(sorted) == 0 {
+		return 0, 0
+	}
+	return sorted[len(sorted)-1], len(sorted)
+}
+
+// belowFloor is the rule's one test: a member stopping short of the floor of n.
+func belowFloor(top, n int) bool { return float64(top) < float64(n)*sidecarScaleFloor }
 
 // checkSidecarPositionScale reports a characters or recaps sidecar whose
 // positions stop far short of the chapters its work's recordings actually have.
@@ -865,10 +889,11 @@ type sidecarScaleMeasure struct {
 // books in that wave carried a final recap, stating the ending, gated at chapter
 // 11.
 //
-// Nothing in the tree states a work's chapter count, so the rule reads the one
-// independent measure the data does carry: the chapter list on the work's own
-// recordings. That is an audiobook's track list rather than the work's chapter
-// numbering, so it is read through shapeOf - credits, dedication and the other
+// A work's chapter count is stated only where its entry carries a position_scale,
+// which is then the ruler. Everywhere else the rule reads the one independent
+// measure the data does carry: the chapter list on the work's own recordings. That
+// is an audiobook's track list rather than the work's chapter numbering, so it is
+// read through shapeOf - credits, dedication and the other
 // matter tracks and the part dividers are not chapters - and the comparison
 // stays deliberately coarse. It fires only on an order-of-magnitude mismatch, and
 // it compares against the SMALLEST chapter list among the recordings, so the
@@ -892,11 +917,12 @@ type sidecarScaleMeasure struct {
 // own evidence - only the source text can - so it names the sidecar and leaves
 // the judgement to a human.
 //
-// It is CROSS-FAMILY - the measure it reads is the works family's recordings -
-// but unlike checkIntegrity's sidecar arm it needs no profile gate: under a tree
-// holding no works the measure map is empty and every member takes judge's !ok
-// return, so the rule is vacuous by construction rather than switched off
-// (see check.LoadProfile for the cross-family skip rule it satisfies for free).
+// It is CROSS-FAMILY - the recording measure it reads is the works family's - but
+// unlike checkIntegrity's sidecar arm it needs no profile gate: under a tree holding
+// no works only a stated scale can be judged, which needs nothing from the works
+// family, and every other member takes judge's !ok return (see check.LoadProfile
+// for the cross-family skip rule it satisfies for free). A composed load drops that
+// pass's findings and runs its own (LoadComposed).
 func checkSidecarPositionScale(cat *model.Catalog, idx *pathIndex, warn addFunc) {
 	// No POSITIONED sidecars, nothing to judge - and the measure map below is a
 	// full works-times-recordings walk, which a core-profile load (every core load
@@ -942,22 +968,40 @@ func checkSidecarPositionScale(cat *model.Catalog, idx *pathIndex, warn addFunc)
 			}
 		}
 	}
+	// A stated scale is a RULER, not an exemption: the member is judged against it at
+	// the same floor, so a sidecar moved back onto a coarser ruler is reported again.
+	// Only a recording can have its resolution doubted, so no minimum list length
+	// applies - a stated scale is often short (five acts) - and it needs no recording
+	// to be read at all.
+	for _, ps := range cat.PositionScales {
+		if !positioned[ps.Work] {
+			continue
+		}
+		m, ok := measures[ps.Work]
+		if !ok {
+			m = &sidecarScaleMeasure{}
+			measures[ps.Work] = m
+		}
+		m.scale = ps
+	}
 
 	// judge reports a member whose positions stage a gradient of at least
 	// minPositions that stops short of the floor, and returns its last position.
-	judge := func(rel, kind, workID string, positions []int, minPositions int) (top int) {
-		for _, p := range positions {
-			top = max(top, p)
-		}
+	judge := func(rel, kind, workID string, positions []int, minPositions int) int {
+		top, distinct := positionSpread(positions)
 		m, ok := measures[workID]
-		if !ok || m.chapters < sidecarScaleMinChapters || float64(top) >= float64(m.chapters)*sidecarScaleFloor {
+		if !ok || distinct < minPositions {
 			return top
 		}
-		distinct := map[int]bool{}
-		for _, p := range positions {
-			distinct[p] = true
+		if m.scale != nil {
+			if !m.scale.Partial && belowFloor(top, m.scale.Length) {
+				warn(rel, "%s sidecar for %q stops at %s %d of the %d its position_scale states: "+
+					"the positions may be scaled to something other than the work's chapters",
+					kind, workID, m.scale.Unit, top, m.scale.Length)
+			}
+			return top
 		}
-		if len(distinct) < minPositions {
+		if m.chapters < sidecarScaleMinChapters || !belowFloor(top, m.chapters) {
 			return top
 		}
 		if rec, ok := m.parts[top]; ok {
@@ -985,7 +1029,7 @@ func checkSidecarPositionScale(cat *model.Catalog, idx *pathIndex, warn addFunc)
 	}
 
 	for _, c := range cat.Characters {
-		if m, ok := measures[c.Work]; ok && float64(recapsTop[c.Work]) >= float64(m.chapters)*sidecarScaleVouchFloor {
+		if m, ok := measures[c.Work]; ok && float64(recapsTop[c.Work]) >= float64(m.length())*sidecarScaleVouchFloor {
 			continue
 		}
 		var reveals []int

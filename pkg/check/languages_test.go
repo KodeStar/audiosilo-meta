@@ -48,13 +48,6 @@ func langTree(t testing.TB) map[string]string {
 	return files
 }
 
-func loadLangTree(t *testing.T, files map[string]string) Result {
-	t.Helper()
-	dir := t.TempDir()
-	writeEntities(t, dir, files)
-	return Load(dir)
-}
-
 // TestLanguageLinksValid is the passing fixture beyond the catalogue test's: a
 // work translating two originals (sorted, both in another language), a series
 // translation whose derived language is a TIE (the language rule stands down
@@ -71,7 +64,7 @@ func TestLanguageLinksValid(t *testing.T) {
 		map[string]any{"ordering": "chronological", "ordering_of": "series-one"})
 	files["series/se/series-one-rec.json"] = langSeries(t, "series-one-rec", []string{"book-two"},
 		map[string]any{"ordering": "recommended", "ordering_of": "series-one"})
-	res := loadLangTree(t, files)
+	res := loadTree(t, files)
 	if !res.OK() {
 		t.Fatalf("valid language links reported problems:\n%s", joinProblems(res.Problems))
 	}
@@ -266,7 +259,7 @@ func TestLanguageLinkRules(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			files := langTree(t)
 			c.mutate(files)
-			res := loadLangTree(t, files)
+			res := loadTree(t, files)
 			found := false
 			for _, p := range res.Problems {
 				if strings.Contains(p.Msg, c.want) {
@@ -291,7 +284,7 @@ func TestLanguageLinkRules(t *testing.T) {
 func TestSeriesTranslationSameLanguageIsAdvisory(t *testing.T) {
 	files := langTree(t)
 	files["series/se/serie-en.json"] = langSeries(t, "serie-en", []string{"book-two"}, map[string]any{"translation_of": []string{"series-one"}})
-	res := loadLangTree(t, files)
+	res := loadTree(t, files)
 	if !res.OK() {
 		t.Fatalf("a same-language SERIES link failed the load:\n%s", joinProblems(res.Problems))
 	}
@@ -377,7 +370,7 @@ func TestSeriesTranslationLanguageTieStandsDown(t *testing.T) {
 			for k, v := range series {
 				files[k] = v
 			}
-			if res := loadLangTree(t, files); !res.OK() {
+			if res := loadTree(t, files); !res.OK() {
 				t.Errorf("a tied language was judged:\n%s", joinProblems(res.Problems))
 			}
 		})
@@ -390,7 +383,7 @@ func TestSeriesTranslationLanguageTieStandsDown(t *testing.T) {
 func TestOrderingVariantNotSubsetAdvisory(t *testing.T) {
 	files := langTree(t)
 	files["series/se/series-one-chrono.json"] = langSeries(t, "series-one-chrono", []string{"book-two", "book-one", "book-two"}, map[string]any{"ordering": "chronological", "ordering_of": "series-one"})
-	res := loadLangTree(t, files)
+	res := loadTree(t, files)
 	if !res.OK() {
 		t.Fatalf("the advisory fixture must validate:\n%s", joinProblems(res.Problems))
 	}

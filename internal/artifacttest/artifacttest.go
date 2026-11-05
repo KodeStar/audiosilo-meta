@@ -233,12 +233,13 @@ func Fixture() *model.Catalog {
 			"in pieces, and none of it is good news for anybody still on Earth.",
 	}
 	return &model.Catalog{
-		Works:        []*model.Work{phm, wok, wor, edge},
-		People:       []*model.Person{andy, porter, sando, kramer, reading},
-		Series:       []*model.Series{series},
-		Characters:   []*model.Characters{chars},
-		Recaps:       []*model.Recaps{recaps},
-		Descriptions: []*model.Description{desc},
+		Works:          []*model.Work{phm, wok, wor, edge},
+		People:         []*model.Person{andy, porter, sando, kramer, reading},
+		Series:         []*model.Series{series},
+		Characters:     []*model.Characters{chars},
+		Recaps:         []*model.Recaps{recaps},
+		Descriptions:   []*model.Description{desc},
+		PositionScales: []*model.PositionScale{{Work: HailMary, Length: 12, Unit: "section", Partial: true}},
 		// One retired slug per namespace, the shape a duplicate merge leaves
 		// behind: the loser's slug still resolves, at the survivor.
 		Redirects: model.Redirects{

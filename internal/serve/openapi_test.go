@@ -346,6 +346,30 @@ func TestOpenAPIWildcardStillRevalidates(t *testing.T) {
 	wantBodyless(t, resp)
 }
 
+// TestOpenAPIPositionScaleUnitIsTheModelVocabulary is the same guard for the wire
+// contract's closed unit list.
+func TestOpenAPIPositionScaleUnitIsTheModelVocabulary(t *testing.T) {
+	var doc struct {
+		Components struct {
+			Schemas struct {
+				PositionScale struct {
+					Properties struct {
+						Unit struct {
+							Enum []string `json:"enum"`
+						} `json:"unit"`
+					} `json:"properties"`
+				} `json:"PositionScale"`
+			} `json:"schemas"`
+		} `json:"components"`
+	}
+	if err := json.Unmarshal(openAPISpec, &doc); err != nil {
+		t.Fatal(err)
+	}
+	if got, want := doc.Components.Schemas.PositionScale.Properties.Unit.Enum, model.PositionScaleUnits(); !slices.Equal(got, want) {
+		t.Errorf("openapi PositionScale unit enum = %v, want model.PositionScaleUnits() %v", got, want)
+	}
+}
+
 // TestOpenAPIOrderingIsTheModelVocabulary is the drift guard for the one
 // vocabulary the spec restates: the Ordering component's enum must BE
 // model.SeriesOrderings(), same values, same order - which pkg/model's own guard

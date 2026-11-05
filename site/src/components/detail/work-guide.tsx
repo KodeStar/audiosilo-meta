@@ -82,7 +82,7 @@ function GuidePanel({
   guide: WorkGuide
   rows: StoryRow[]
 }): ReactNode {
-  if (guide === 'characters') return <CharactersPanel characters={work.characters ?? []} />
+  if (guide === 'characters') return <CharactersPanel characters={work.characters ?? []} unit={work.position_scale?.unit} />
   return <RecapsPanel rows={rows} />
 }
 

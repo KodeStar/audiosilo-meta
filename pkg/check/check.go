@@ -120,6 +120,7 @@ type pathIndex struct {
 	characters   map[*model.Characters]string
 	recaps       map[*model.Recaps]string
 	descriptions map[*model.Description]string
+	scales       map[*model.PositionScale]string
 }
 
 func newPathIndex() *pathIndex {
@@ -131,6 +132,7 @@ func newPathIndex() *pathIndex {
 		characters:   map[*model.Characters]string{},
 		recaps:       map[*model.Recaps]string{},
 		descriptions: map[*model.Description]string{},
+		scales:       map[*model.PositionScale]string{},
 	}
 }
 
@@ -149,6 +151,7 @@ func (i *pathIndex) merge(o *pathIndex) {
 	maps.Copy(i.characters, o.characters)
 	maps.Copy(i.recaps, o.recaps)
 	maps.Copy(i.descriptions, o.descriptions)
+	maps.Copy(i.scales, o.scales)
 }
 
 // prefix re-points every path in the index, for a load whose paths need to say
@@ -164,6 +167,7 @@ func (i *pathIndex) prefix(p string) {
 	prefixPaths(i.characters, p)
 	prefixPaths(i.recaps, p)
 	prefixPaths(i.descriptions, p)
+	prefixPaths(i.scales, p)
 }
 
 // prefixPaths prepends p to every path in one of the index's maps.
@@ -184,7 +188,7 @@ type sidecarRef struct {
 }
 
 // sidecarRefs enumerates every sidecar member in the catalogue, in catalogue
-// order - characters, then recaps, then descriptions, which is a reporting order
+// order - characters, then recaps, then descriptions, then scales, a reporting order
 // only: every rule over it groups or sorts before it says anything.
 //
 // It lives HERE, beside pathIndex, for the reason pathIndex.merge does: the
@@ -199,15 +203,15 @@ type sidecarRef struct {
 // itself and fails when this list is short.
 //
 // The one rule that deliberately does NOT read it is checkSidecarPositionScale:
-// it judges POSITIONS, and a description carries none, so its shorter list is a
-// statement rather than an omission.
+// it judges POSITIONS, and a description and a scale carry none, so its shorter list
+// is a statement rather than an omission.
 //
 // The kind string is the MEMBER NAME (model.Kind's own spelling), not the
 // catalogue field's - `description` is one member of one work however many of
 // them a Catalog holds - so the messages a rule composes name the member an
 // operator has to go and edit.
 func sidecarRefs(cat *model.Catalog, idx *pathIndex) []sidecarRef {
-	refs := make([]sidecarRef, 0, len(cat.Characters)+len(cat.Recaps)+len(cat.Descriptions))
+	refs := make([]sidecarRef, 0, len(cat.Characters)+len(cat.Recaps)+len(cat.Descriptions)+len(cat.PositionScales))
 	for _, c := range cat.Characters {
 		refs = append(refs, sidecarRef{kind: string(model.KindCharacters), path: idx.characters[c], work: &c.Work})
 	}
@@ -216,6 +220,9 @@ func sidecarRefs(cat *model.Catalog, idx *pathIndex) []sidecarRef {
 	}
 	for _, d := range cat.Descriptions {
 		refs = append(refs, sidecarRef{kind: string(model.KindDescription), path: idx.descriptions[d], work: &d.Work})
+	}
+	for _, ps := range cat.PositionScales {
+		refs = append(refs, sidecarRef{kind: string(model.KindPositionScale), path: idx.scales[ps], work: &ps.Work})
 	}
 	return refs
 }
@@ -479,6 +486,7 @@ func load(lst *pack.Listing, rdr *pack.Reader, opts LoadOptions) (Result, *pathI
 	checkSidecarUniqueness(cat, idx, add)
 	checkCharacters(cat, idx, add)
 	checkRecaps(cat, idx, add)
+	checkPositionScales(cat, idx, add)
 
 	// Advisories (warn, never fail): the shapes a bulk import can produce that
 	// no rule can call wrong on its own evidence. See advisories.go.
