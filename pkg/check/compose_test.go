@@ -618,7 +618,8 @@ func sidecarCatalogFields() []int {
 func TestComposeCarriesEverySidecarKind(t *testing.T) {
 	entry := `{"characters":` + validCharacters("book-one") +
 		`,"recaps":` + validRecaps("book-one") +
-		`,"description":` + validDescription("book-one") + `}`
+		`,"description":` + validDescription("book-one") +
+		`,"position_scale":{"length":9,"unit":"chapter"}}`
 	coreDir, comDir := composeDirs(t, composeCore(), composeCommunity(map[string]string{
 		"book-one": entry,
 	}))

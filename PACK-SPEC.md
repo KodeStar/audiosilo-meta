@@ -44,7 +44,7 @@ pre-backfill composite average was 1,351B.)*
 
 ```
 data/works/<dir-bound>/<pack-bound>.json           CC0      work composites, keyed by work slug
-data/works-community/<dir-bound>/<pack-bound>.json CC BY-SA characters+recaps+description, keyed by work slug
+data/works-community/<dir-bound>/<pack-bound>.json CC BY-SA characters+recaps+description+position_scale, keyed by work slug
 data/people/<pack-bound>.json               CC0     keyed by person slug
 data/series/<pack-bound>.json               CC0     keyed by series slug
 ```
@@ -149,9 +149,13 @@ database is** (both also run in any `ProfileAll` load):
   human decision. Disjoint members (a characters sidecar at the retired slug, a
   recaps or description sidecar at the survivor) simply meet on one work, which
   is what a composed entry is.
-- **the position-scale advisory** (also in a whole-database load) - vacuous over
-  a community root alone (no works to measure against), real here, and still a
-  WARNING.
+- **the position-scale advisory** (also in a whole-database load) - over a community
+  root alone it can judge only a member whose entry states a `position_scale` (no
+  recordings to measure the rest against), real here, where the compose's pass
+  replaces that root's own so nothing reports twice, and still a WARNING. The bound
+  beside it (a position past the stated length is a problem) is a member rule every
+  root asks; the compose asks it again after a green re-key, because a scale and a
+  member keyed apart meet only there.
 
 Every one of them runs whether or not a side is red, exactly as a whole-database
 load has never let one malformed pack silence its dangling-sidecar reports; and
@@ -229,8 +233,10 @@ A pack is a single canonical-JSON file:
   recordings family: one write path per book, and the composite mirrors the
   shape metabuild and `GET /works/{id}` already assemble.
 - **Sidecars family entry** (keyed by work slug) =
-  `{ "characters": {...}, "recaps": {...}, "description": {...} }`, every member
-  optional (an entry carrying none is not an entry). The member set is the
+  `{ "characters": {...}, "recaps": {...}, "description": {...}, "position_scale": {...} }`,
+  every member optional (an entry carrying none is not an entry, and a
+  `position_scale`, the ruler the other members are numbered on, needs a characters
+  or recaps member beside it). The member set is the
   schema's - `pack-works-community.schema.json` names each one and `$ref`s its
   own document - so adding a kind is a schema change plus one row in
   `pkg/check`'s `communityMembers`, never a new family or a new layout.

@@ -44,20 +44,20 @@ export function roleLabel(role: Character['role']): string | null {
 
 /** Where a character first appears, phrased for a reader.
     Chapter 0 (or 1) reads as "from the start"; later chapters name the chapter. */
-export function revealLabel(reveal: Character['reveal']): string {
+export function revealLabel(reveal: Character['reveal'], unit = 'chapter'): string {
   const ch = reveal.chapter
   if (ch <= 1) return 'From the start'
-  return `From chapter ${ch}`
+  return `From ${unit} ${ch}`
 }
 
 /** Heading for a recap, keyed on its position and scope. A chapter-0 "series"
     recap is the "previously, in earlier books" catch-up; everything else is a
     within-book "story so far up to chapter N". */
-export function recapLabel(recap: Recap): string {
+export function recapLabel(recap: Recap, unit = 'chapter'): string {
   const ch = recap.through.chapter
   if (ch === 0 && recap.scope === 'series') return 'Previously, in earlier books'
   if (ch === 0) return 'Before this book'
-  return `Up to chapter ${ch}`
+  return `Up to ${unit} ${ch}`
 }
 
 /** Short scope tag for a recap, or null when scope is absent. */
@@ -96,7 +96,7 @@ export interface StoryRow {
     (an empty string counts as absent). This is the single source for the row set -
     the panel maps it, and the tab's count and presence (empty = no tab, so a work
     carrying only a whole-book summary still gets the tab) derive from its length. */
-export function storyRows(recaps: Recap[], summary?: RecapSummary): StoryRow[] {
+export function storyRows(recaps: Recap[], summary?: RecapSummary, unit = 'chapter'): StoryRow[] {
   const rows: StoryRow[] = []
   if (summary?.in_short) {
     rows.push({
@@ -107,7 +107,7 @@ export function storyRows(recaps: Recap[], summary?: RecapSummary): StoryRow[] {
     })
   }
   for (const r of sortRecaps(recaps)) {
-    rows.push({ title: recapLabel(r), badge: scopeLabel(r.scope) ?? undefined, text: r.text })
+    rows.push({ title: recapLabel(r, unit), badge: scopeLabel(r.scope) ?? undefined, text: r.text })
   }
   if (summary?.ending) {
     rows.push({
@@ -125,7 +125,7 @@ export function storyRows(recaps: Recap[], summary?: RecapSummary): StoryRow[] {
     guide page all ask the same question of the same two fields, and a caller
     that spelled `work.recaps ?? []` differently would be asking a different one. */
 export function storyRowsOf(work: Work): StoryRow[] {
-  return storyRows(work.recaps ?? [], work.recap_summary)
+  return storyRows(work.recaps ?? [], work.recap_summary, work.position_scale?.unit)
 }
 
 /** Does this work carry the member a given guide page is about? The ONE

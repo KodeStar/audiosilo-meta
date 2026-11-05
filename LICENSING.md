@@ -29,7 +29,9 @@ Fandom wikis or LibraryThing Common Knowledge (both CC BY-SA 3.0 at source; see
 Share-alike is desirable there: it keeps derivative works open. This layer lives
 in the `data/works-community/` pack family, where each entry holds one work's
 `characters`, `recaps` and `description` members - so the CC0 core is never contaminated by
-share-alike obligations. The
+share-alike obligations. An entry may also state a `position_scale`, the ruler those
+positions are numbered on: community data about the sidecars with no `license` field
+of its own, in this layer by where it sits, and unable to make an entry alone. The
 boundary is **enforced structurally by the schema**, not by convention: a core
 record (work/recording/person/series) can only carry `CC0-1.0`, and a sidecar can
 only carry `CC-BY-SA-4.0` - the `license` enum differs between them, and
