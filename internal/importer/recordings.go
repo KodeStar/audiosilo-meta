@@ -196,7 +196,7 @@ func (p *planner) resolveExistingWork(b sourceBook) (ws *workState, titleHit boo
 		// two matching works (qualifiedCatalogueWalk's ambiguity rule); the category
 		// still holds, since the title is catalogued and the row needs a human.
 		titleHit = true
-		if w, ok := p.qualifiedCatalogueWalk(title, b.qualifiedTitle, authors, rowLang, nil); ok {
+		if w, ok := p.qualifiedCatalogueWalk(title, b.qualifiedTitles, authors, rowLang, nil); ok {
 			if w.via != "" {
 				p.noteTombstone(model.RedirectWorks, w.via, w.ws.slug)
 			}
@@ -272,11 +272,13 @@ func workTitleCandidates(b sourceBook) []string {
 			out = append(out, cand)
 		}
 	}
-	// The QUALIFIED title last, after every cleaned form, so a plain twin wins: a
-	// work catalogued under its qualified title alone is reachable only through it
-	// (sourceBook.qualifiedTitle).
-	if q := b.qualifiedTitle; q != "" && !seen[q] {
-		out = append(out, q)
+	// The QUALIFIED titles last, after every cleaned form, so a plain twin wins: a
+	// work catalogued under its qualified title alone is reachable only through them
+	// (sourceBook.qualifiedTitles).
+	for _, q := range b.qualifiedTitles {
+		if !seen[q] {
+			out = append(out, q)
+		}
 	}
 	return out
 }

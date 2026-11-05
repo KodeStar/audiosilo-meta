@@ -8,16 +8,18 @@ import (
 	"unicode/utf8"
 )
 
-// qualifiers.go holds the two TITLE QUALIFIERS that state a fact about a product
+// qualifiers.go holds the three TITLE QUALIFIERS that state a fact about a product
 // rather than about the book: a MARKETPLACE edition ("The Search: International
-// Edition") and a NARRATOR credit ("Lock In (Narrated by Amber Benson)", "Harry Potter
-// und der Feuerkelch - Gesprochen von Rufus Beck"). Neither is part of a work's
-// identity - the marketplace rides on a recording's identifiers and the narrator is
-// recording.narrators - so both come off before a title is compared (Clean) and
-// before a retitle is proposed (StripDecoration), and the decoration table files them
-// under their own codes (DecMarketEdition, DecNarrator).
+// Edition"), a NARRATOR credit ("Lock In (Narrated by Amber Benson)", "Harry Potter
+// und der Feuerkelch - Gesprochen von Rufus Beck") and an ADAPTATION label ("Magic
+// Bites (Dramatized Adaptation)"). None is part of a work's identity - the marketplace
+// rides on a recording's identifiers, the narrator is recording.narrators, and a
+// dramatization of a book is a recording of that book, which its own publisher and
+// credits state - so all three come off before a title is compared (Clean) and before
+// a retitle is proposed (StripDecoration), and the decoration table files them under
+// their own codes (DecMarketEdition, DecNarrator, DecAdaptationLabel).
 //
-// Both are CLOSED and BOUNDED, the posture every strip here takes: a phrase from a
+// All three are CLOSED and BOUNDED, the posture every strip here takes: a phrase from a
 // fixed vocabulary, standing as a WHOLE title segment (a bracketed group, a quoted
 // run, or the text after a segment separator), and nothing else. Measured over the
 // 282,052-work tree at c7ef08466 and the libex dump (2026-07-29 snapshot, 1,130,872
@@ -189,7 +191,7 @@ func segmentEndsAt(s string, i int) bool {
 // dropMarketEdition removes every "International Edition" qualifier that stands as a
 // whole segment, a whole quoted run or a whole bracketed group, leaving the separator
 // that introduced a segment for the run collapse to settle. lower is s lowercased,
-// taken once by the caller for both qualifiers' cheap guards.
+// taken once by the caller for every qualifier's cheap guard.
 func dropMarketEdition(s, lower string) string {
 	if !strings.Contains(lower, "international") {
 		return s // the common case, kept off the regexps
@@ -202,6 +204,30 @@ func dropMarketEdition(s, lower string) string {
 		}
 	}
 	return s
+}
+
+// adaptationLabelRE is the adaptation label as a whole bracketed group and nothing
+// else, measured over the 302,110-work tree at 4f8b689a49: all 1,291 titles carrying
+// the words hold it, 955 as "[Dramatized Adaptation]", 335 as "(Dramatized Adaptation)"
+// and one as "(Full-Cast Dramatized Adaptation)". The British spelling reads the same.
+// A bare "(Dramatized)" (95 titles) is deliberately not this label: it was not measured
+// against this rule, so those titles stay as they are.
+var adaptationLabelRE = regexp.MustCompile(`(?i)[(\[]\s*(?:full[- ]cast\s+)?dramati[sz]ed\s+adaptation\s*[)\]]`)
+
+// dropAdaptationLabel cuts the adaptation label. A split-release part keeps it
+// ("Warbreaker (1 of 3) [Dramatized Adaptation]"): a part is not a book, internal/remediate
+// folds those by their publisher, and nothing here should change how they read.
+func dropAdaptationLabel(s, lower string) string {
+	if !strings.Contains(lower, "adaptation") || IsSplitPart(s) {
+		return s // the first test is the common case, kept off the regexp
+	}
+	return cutAll(s, adaptationLabelRE, nil)
+}
+
+// HasAdaptationLabel reports whether a title holds the adaptation label, a split-release
+// part's included.
+func HasAdaptationLabel(title string) bool {
+	return containsFoldASCII(title, "adaptation") && adaptationLabelRE.MatchString(title)
 }
 
 // cutAll is the qualifiers' bracket and quote removal; its siblings are rules.go's
@@ -356,18 +382,34 @@ func containsFoldASCII(s, sub string) bool {
 	return false
 }
 
-// StripTitleQualifiers removes both qualifiers and settles the separators they leave.
-// It never empties a title: a title that is nothing but a qualifier is returned as it
-// was, for the caller's own fallback to judge.
+// StripTitleQualifiers removes the three qualifiers and settles the separators they
+// leave. It never empties a title: a title that is nothing but a qualifier is returned
+// as it was, for the caller's own fallback to judge.
 //
-// It is the ONE door to the two rules: Clean and StripDecoration call it, and so does
+// It is the ONE door to the rules: Clean and StripDecoration call it, and so does
 // internal/importer's cleanWorkTitle, so a bulk row titled "The Search, Read by Dee
 // Reader" resolves to the catalogued "The Search" and is judged by the ordinary
 // recording rules (a new narration, an ASIN merge) rather than refused by the
 // duplicate-identity guard the key alone would trip.
 func StripTitleQualifiers(title string) string {
-	lower := strings.ToLower(title)
-	s := dropNarratorQualifier(dropMarketEdition(title, lower), lower)
+	// The label first: a narrator credit must run to the end of the title, and one
+	// holding a bracket is none (narratorCredit), so it would read a credit in front of
+	// the label as prose and leave it for a second pass to find.
+	return settleQualifiers(title, dropAdaptationLabel(title, strings.ToLower(title)))
+}
+
+// StripTitleQualifiersKeepingLabel is StripTitleQualifiers for a row whose label is the
+// only thing saying it is a dramatization (no GraphicAudio imprint, no full-cast
+// credit): the label is its one statement of that, so it stays on the title.
+func StripTitleQualifiersKeepingLabel(title string) string {
+	return settleQualifiers(title, title)
+}
+
+// settleQualifiers removes the other two qualifiers from s, what is left of title, and
+// settles the separators they leave.
+func settleQualifiers(title, s string) string {
+	lower := strings.ToLower(s)
+	s = dropNarratorQualifier(dropMarketEdition(s, lower), lower)
 	if s == title {
 		return title
 	}

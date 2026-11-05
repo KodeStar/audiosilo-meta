@@ -59,9 +59,10 @@ import (
 //     "Families First" because one-sided silence is no disagreement to the duplicate
 //     rule, and "Mia & Korum (Die komplette Krinar Chroniken Trilogie) [German Edition]"
 //     met "Mia & Korum" because the collection vocabulary is English. Both are advisory
-//     here. So is an original that is a dramatized or adapted production (a translation
-//     is of the text, and the one English record of "City of Thorns" is its dramatized
-//     adaptation). Unlike series-edition, a non-en original is not a veto (a
+//     here. So is an original the catalogue holds only as an adapted edition or a
+//     dramatization (a translation is of the text, and a record of the book with nothing
+//     but its dramatized adaptation says nothing about that text; one with a plain
+//     reading beside it does). Unlike series-edition, a non-en original is not a veto (a
 //     deliberate trade: a translation that states nothing can still pass as an
 //     original; measured, one non-en original was linked, correctly).
 //
@@ -284,8 +285,7 @@ func detectWorkEditionLinks(ix *index, identity *check.WorkIdentity, base check.
 		fd.Notes = []string{fmt.Sprintf("%q states the %s edition on a %s work; %s (%s) is the one same-book work in another language",
 			editionText(t), lang, t.Language, o.ID, o.Language)}
 		var vetoes []string
-		if p := titlerule.ProductOf("", o.Title, o.Subtitle); p.Adapted ||
-			titlerule.IsDramatization(o.Title) || titlerule.IsDramatization(o.Subtitle) {
+		if p := titlerule.ProductOf("", o.Title, o.Subtitle); p.Adapted || heldOnlyAsDramatization(o) {
 			vetoes = append(vetoes, fmt.Sprintf("the original %s is a dramatized or adapted production (%q): a translation "+
 				"is of the text", o.ID, o.Title))
 		}
@@ -379,4 +379,22 @@ func linkVetoes(base check.LinkView, kind model.RedirectKind, id string, have []
 			kind, fault.From, fault.Code, fault.Field, fault.To))
 	}
 	return sortedUnique(out)
+}
+
+// heldOnlyAsDramatization reports whether the catalogue holds this work only as a
+// dramatized production. Each recording answers for itself, and where it says nothing
+// the work's title answers for it (titlerule.TitleDramatization), which is also all
+// there is for a work with no recording to ask.
+func heldOnlyAsDramatization(w *model.Work) bool {
+	title := titlerule.DramatizationOf(w.Title, w.Subtitle)
+	// No recording saying it of itself leaves the title's statement the work's only one.
+	if !slices.ContainsFunc(w.Recordings, (*model.Recording).IsDramatization) {
+		return title.Stated
+	}
+	for _, r := range w.Recordings {
+		if !r.IsDramatization() && !title.Covers(r.Publisher) {
+			return false
+		}
+	}
+	return true
 }

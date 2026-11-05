@@ -4,10 +4,12 @@ import (
 	"encoding/json"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // dupidentity_test.go pins the CREATE path's duplicate-identity guard on the shape
@@ -522,7 +524,7 @@ func lonelyBookTree(t *testing.T, withTwin bool) string {
 
 // A work catalogued under its qualified title ALONE stays reachable: the cleaned
 // title's chain holds nothing, so resolveWork walks the qualified title as a merge
-// target (sourceBook.qualifiedTitle) and the row takes the ordinary ASIN-merge or
+// target (sourceBook.qualifiedTitles) and the row takes the ordinary ASIN-merge or
 // new-recording path - in create mode and in the recordings-only pass alike - rather
 // than being refused by the duplicate-identity guard its key still trips.
 func TestAQualifiedOnlyWorkStaysReachable(t *testing.T) {
@@ -765,5 +767,245 @@ func TestCreateRefusesADecoratedDuplicateOfAChapterTitledWork(t *testing.T) {
 	if sum.SkippedDuplicateIdentity != 0 || sum.NewWorks != 1 {
 		t.Errorf("chapter 4: SkippedDuplicateIdentity = %d, NewWorks = %d, want 0 and 1; warnings = %v",
 			sum.SkippedDuplicateIdentity, sum.NewWorks, sum.Warnings)
+	}
+}
+
+// workTitleOf is a catalogued work's stored title.
+func workTitleOf(t *testing.T, dataDir, id string) string {
+	t.Helper()
+	var w struct {
+		Title string `json:"title"`
+	}
+	testpack.Read(t, dataDir, "works/"+shard(id)+"/"+id+"/work.json", &w)
+	return w.Title
+}
+
+// adaptationRow is a GraphicAudio row of title by Ada Mapmaker.
+func adaptationRow(asin, title string) libexRow {
+	return libexRow{asin: asin, title: title, authors: `{"name":"Ada Mapmaker"}`, narrators: `{"name":"Full Cast"}`, minutes: 400}
+}
+
+// A dramatized row founds a work under the book's title, not under its label: the
+// dramatization is a recording of the book, and a plain reading arriving later is
+// another recording of it.
+func TestADramatizedRowFoundsAWorkWithoutItsLabel(t *testing.T) {
+	dataDir := seedTombstoneTree(t, nil, nil)
+	sum := runLibexInto(t, dataDir, rows(adaptationRow("B0ADAPT001", "Fresh Book [Dramatized Adaptation]")))
+	if sum.NewWorks != 1 {
+		t.Fatalf("NewWorks = %d, want 1; warnings = %v", sum.NewWorks, sum.Warnings)
+	}
+	if got := workTitleOf(t, dataDir, "fresh-book"); got != "Fresh Book" {
+		t.Errorf("the founded work is titled %q, want Fresh Book", got)
+	}
+	sum = runLibexInto(t, dataDir, rows(libexRow{asin: "B0ADAPT002", title: "Fresh Book", authors: `{"name":"Ada Mapmaker"}`,
+		narrators: `{"name":"Bea Reader"}`, minutes: 500}))
+	if sum.NewWorks != 0 || sum.NewRecordings != 1 || len(recSlugsOf(t, dataDir, "fresh-book")) != 2 {
+		t.Errorf("the plain reading: NewWorks = %d, NewRecordings = %d, want a second recording of fresh-book; warnings = %v",
+			sum.NewWorks, sum.NewRecordings, sum.Warnings)
+	}
+}
+
+// A dramatized row reaches the plain work the catalogue holds, and a work catalogued
+// under its label alone stays reachable until it is retitled.
+func TestADramatizedRowJoinsTheBook(t *testing.T) {
+	seed := func(id, title string) string {
+		return seedTombstoneTree(t, map[string]string{
+			"works/" + shard(id) + "/" + id + "/work.json": testpack.WorkJSON(t, id, title, testpack.WithAuthors("ada-mapmaker")),
+			"works/" + shard(id) + "/" + id + "/recordings/r1.json": testpack.RecJSON(t, "r1", id,
+				testpack.WithNarrators("bea-reader"), testpack.WithRuntime(500)),
+		}, nil)
+	}
+	dataDir := seed("lonely-book", "Lonely Book")
+	sum := runLibexInto(t, dataDir, rows(adaptationRow("B0ADAPT003", "Lonely Book (Dramatized Adaptation)")))
+	if sum.NewWorks != 0 || sum.NewRecordings != 1 || len(recSlugsOf(t, dataDir, "lonely-book")) != 2 {
+		t.Errorf("onto the plain work: NewWorks = %d, NewRecordings = %d; warnings = %v", sum.NewWorks, sum.NewRecordings, sum.Warnings)
+	}
+	const labelled = "lonely-book-dramatized-adaptation"
+	dataDir = seed(labelled, "Lonely Book [Dramatized Adaptation]")
+	sum = runLibexInto(t, dataDir, rows(libexRow{asin: "B0ADAPT004", title: "Lonely Book", authors: `{"name":"Ada Mapmaker"}`,
+		narrators: `{"name":"Cy Reader"}`, minutes: 480}))
+	if sum.NewWorks != 0 || sum.NewRecordings != 1 || len(recSlugsOf(t, dataDir, labelled)) != 2 {
+		t.Errorf("onto the labelled work: NewWorks = %d, NewRecordings = %d; warnings = %v", sum.NewWorks, sum.NewRecordings, sum.Warnings)
+	}
+}
+
+// The label never joins two books: another author's work of that title, another
+// language's, and a split-release part all stay apart.
+func TestAnAdaptationLabelJoinsNoOtherBook(t *testing.T) {
+	const id = "lonely-book"
+	files := map[string]string{
+		"people/ze/zed-otherhand.json":                 testpack.PersonJSON(t, "zed-otherhand", "Zed Otherhand"),
+		"works/" + shard(id) + "/" + id + "/work.json": testpack.WorkJSON(t, id, "Lonely Book", testpack.WithAuthors("zed-otherhand")),
+		"works/" + shard(id) + "/" + id + "/recordings/r1.json": testpack.RecJSON(t, "r1", id,
+			testpack.WithNarrators("bea-reader"), testpack.WithRuntime(500)),
+	}
+	dataDir := seedTombstoneTree(t, files, nil)
+	sum := runLibexInto(t, dataDir, rows(adaptationRow("B0ADAPT005", "Lonely Book [Dramatized Adaptation]")))
+	if sum.NewWorks != 1 || len(recSlugsOf(t, dataDir, id)) != 1 {
+		t.Errorf("another author: NewWorks = %d, recordings of %s = %d, want a work of its own; warnings = %v",
+			sum.NewWorks, id, len(recSlugsOf(t, dataDir, id)), sum.Warnings)
+	}
+	files["works/"+shard(id)+"/"+id+"/work.json"] = testpack.WorkJSON(t, id, "Lonely Book", testpack.WithAuthors("ada-mapmaker"))
+	dataDir = seedTombstoneTree(t, files, nil)
+	german := adaptationRow("B0ADAPT007", "Lonely Book [Dramatized Adaptation]")
+	german.language = "german"
+	sum = runLibexInto(t, dataDir, rows(german))
+	if sum.NewWorks != 1 || len(recSlugsOf(t, dataDir, id)) != 1 {
+		t.Errorf("another language: NewWorks = %d, recordings of %s = %d, want a work of its own; warnings = %v",
+			sum.NewWorks, id, len(recSlugsOf(t, dataDir, id)), sum.Warnings)
+	}
+	dataDir = seedTombstoneTree(t, nil, nil)
+	sum = runLibexInto(t, dataDir, rows(adaptationRow("B0ADAPT006", "Lost Coast (1 of 2) [Dramatized Adaptation]")))
+	if sum.NewWorks != 1 || workTitleOf(t, dataDir, "lost-coast-1-of-2-dramatized-adaptation") != "Lost Coast (1 of 2) [Dramatized Adaptation]" {
+		t.Errorf("a split part: NewWorks = %d, want the part titled with its label; warnings = %v", sum.NewWorks, sum.Warnings)
+	}
+}
+
+// A labelled slug a repair already retired still leads to its survivor: the row's
+// pre-qualifier title reaches the tombstone, though its cleaned title ("Good Old Boys"
+// beside "The Good Old Boys") would be refused as a differently-spelled duplicate.
+func TestARetiredLabelledSlugStillReachesItsSurvivor(t *testing.T) {
+	const id = "the-good-old-boys"
+	dataDir := seedTombstoneTree(t, map[string]string{
+		"works/" + shard(id) + "/" + id + "/work.json": testpack.WorkJSON(t, id, "The Good Old Boys", testpack.WithAuthors("ada-mapmaker")),
+		"works/" + shard(id) + "/" + id + "/recordings/r1.json": testpack.RecJSON(t, "r1", id,
+			testpack.WithNarrators("bea-reader"), testpack.WithRuntime(500)),
+	}, model.Redirects{model.RedirectWorks: {"good-old-boys-dramatized-adaptation": id}})
+	// With a subtitle too: the full title then spells it, and no chain holds that.
+	row := adaptationRow("B0ADAPT008", "Good Old Boys [Dramatized Adaptation]")
+	row.subtitle = "Hewey Calloway"
+	sum := runLibexInto(t, dataDir, rows(row))
+	if sum.NewWorks != 0 || sum.SkippedDuplicateIdentity != 0 || sum.NewRecordings != 1 || len(recSlugsOf(t, dataDir, id)) != 2 {
+		t.Errorf("NewWorks = %d, SkippedDuplicateIdentity = %d, NewRecordings = %d; want a second recording of %s; warnings = %v",
+			sum.NewWorks, sum.SkippedDuplicateIdentity, sum.NewRecordings, id, sum.Warnings)
+	}
+}
+
+// A record whose stored title spells the row's subtitle after the label is reached
+// through the row's FULL qualified title, not its short one.
+func TestALabelledTitleWithItsSubtitleStaysReachable(t *testing.T) {
+	const id = "winter-kill-dramatized-adaptation-john-henry-cole-book-3"
+	dataDir := seedTombstoneTree(t, map[string]string{
+		"works/" + shard(id) + "/" + id + "/work.json": testpack.WorkJSON(t, id, "Winter Kill [Dramatized Adaptation]: John Henry Cole, Book 3",
+			testpack.WithAuthors("ada-mapmaker")),
+		"works/" + shard(id) + "/" + id + "/recordings/r1.json": testpack.RecJSON(t, "r1", id,
+			testpack.WithNarrators("bea-reader"), testpack.WithRuntime(500)),
+	}, nil)
+	row := adaptationRow("B0ADAPT009", "Winter Kill [Dramatized Adaptation]")
+	row.subtitle = "John Henry Cole, Book 3"
+	sum := runLibexInto(t, dataDir, rows(row))
+	if sum.NewWorks != 0 || sum.SkippedDuplicateIdentity != 0 || sum.NewRecordings != 1 || len(recSlugsOf(t, dataDir, id)) != 2 {
+		t.Errorf("NewWorks = %d, SkippedDuplicateIdentity = %d, NewRecordings = %d; want a second recording of %s; warnings = %v",
+			sum.NewWorks, sum.SkippedDuplicateIdentity, sum.NewRecordings, id, sum.Warnings)
+	}
+}
+
+// Two volumes of a serial sharing one labelled short title are moved off it, as plain
+// rows are, because it cannot say which volume it is: neither lands on a work catalogued
+// under that short title by way of the label.
+func TestASerialRowLeavesAWorkUnderItsLabelledShortTitleAlone(t *testing.T) {
+	const id = "foo-dramatized-adaptation"
+	dataDir := seedTombstoneTree(t, map[string]string{
+		"works/" + shard(id) + "/" + id + "/work.json": testpack.WorkJSON(t, id, "Foo [Dramatized Adaptation]", testpack.WithAuthors("ada-mapmaker")),
+		"works/" + shard(id) + "/" + id + "/recordings/r1.json": testpack.RecJSON(t, "r1", id,
+			testpack.WithNarrators("bea-reader"), testpack.WithRuntime(500)),
+	}, nil)
+	one := adaptationRow("B0ADAPT010", "Foo [Dramatized Adaptation]")
+	one.subtitle, one.series = "The Saga, Book 1", `{"name":"The Saga","position":"1"}`
+	two := adaptationRow("B0ADAPT011", "Foo [Dramatized Adaptation]")
+	two.subtitle, two.series, two.minutes = "The Saga, Book 2", `{"name":"The Saga","position":"2"}`, 650
+	sum := runLibexInto(t, dataDir, rows(one, two))
+	if sum.NewWorks != 2 || len(recSlugsOf(t, dataDir, id)) != 1 {
+		t.Errorf("NewWorks = %d, recordings of %s = %v, want two works of their own; warnings = %v",
+			sum.NewWorks, id, recSlugsOf(t, dataDir, id), sum.Warnings)
+	}
+}
+
+// The audiosilo-books envelope splits its concatenated title itself before the run reads
+// titles, and that must leave the qualifier for normalizeEditionMarkers to record: its
+// label reaches a retired slug and a record spelling the subtitle after the label just as
+// a libex row's does.
+func TestAnEnvelopeRowKeepsItsQualifiedTitles(t *testing.T) {
+	envelope := func(asin, title, subtitle string) string {
+		return `{"format":"` + audiosiloBooksFormat + `","version":1,"books":[{"asin":"` + asin + `","title":` + strconv.Quote(title) +
+			`,"subtitle":` + strconv.Quote(subtitle) + `,"language":"en","runtime_min":400,` +
+			`"authors":["Ada Mapmaker"],"narrators":["Full Cast"]}]}`
+	}
+	const survivor = "the-good-old-boys"
+	dataDir := seedTombstoneTree(t, map[string]string{
+		"works/" + shard(survivor) + "/" + survivor + "/work.json": testpack.WorkJSON(t, survivor, "The Good Old Boys", testpack.WithAuthors("ada-mapmaker")),
+		"works/" + shard(survivor) + "/" + survivor + "/recordings/r1.json": testpack.RecJSON(t, "r1", survivor,
+			testpack.WithNarrators("bea-reader"), testpack.WithRuntime(500)),
+	}, model.Redirects{model.RedirectWorks: {"good-old-boys-dramatized-adaptation": survivor}})
+	sum := runInto(t, RunAudiosiloBooks, dataDir, envelope("B0ADAPT012", "Good Old Boys [Dramatized Adaptation]", ""))
+	if sum.NewWorks != 0 || sum.SkippedDuplicateIdentity != 0 || len(recSlugsOf(t, dataDir, survivor)) != 2 {
+		t.Errorf("a retired slug: NewWorks = %d, SkippedDuplicateIdentity = %d, recordings = %v; warnings = %v",
+			sum.NewWorks, sum.SkippedDuplicateIdentity, recSlugsOf(t, dataDir, survivor), sum.Warnings)
+	}
+
+	const held = "winter-kill-dramatized-adaptation-john-henry-cole-book-3"
+	dataDir = seedTombstoneTree(t, map[string]string{
+		"works/" + shard(held) + "/" + held + "/work.json": testpack.WorkJSON(t, held, "Winter Kill [Dramatized Adaptation]: John Henry Cole, Book 3",
+			testpack.WithAuthors("ada-mapmaker")),
+		"works/" + shard(held) + "/" + held + "/recordings/r1.json": testpack.RecJSON(t, "r1", held,
+			testpack.WithNarrators("bea-reader"), testpack.WithRuntime(500)),
+	}, nil)
+	sum = runInto(t, RunAudiosiloBooks, dataDir, envelope("B0ADAPT013", "Winter Kill [Dramatized Adaptation]: John Henry Cole, Book 3", "John Henry Cole, Book 3"))
+	if sum.NewWorks != 0 || sum.SkippedDuplicateIdentity != 0 || len(recSlugsOf(t, dataDir, held)) != 2 {
+		t.Errorf("a subtitle after the label: NewWorks = %d, SkippedDuplicateIdentity = %d, recordings = %v; warnings = %v",
+			sum.NewWorks, sum.SkippedDuplicateIdentity, recSlugsOf(t, dataDir, held), sum.Warnings)
+	}
+}
+
+// A row whose label is its only statement of a dramatization keeps it: no GraphicAudio
+// imprint and no full-cast credit means nothing else would ever say so.
+func TestALabelIsKeptWhenItIsTheRowsOnlySignal(t *testing.T) {
+	cases := []struct {
+		name, publisher, narrators, slug, title string
+	}{
+		{"named narrators, another publisher", "Simon & Schuster Audio", `{"name":"Bea Reader"},{"name":"Cy Reader"}`,
+			"signal-book-dramatized-adaptation", "Signal Book [Dramatized Adaptation]"},
+		{"GraphicAudio's imprint", "Graphic Audio LLC", `{"name":"Bea Reader"},{"name":"Cy Reader"}`, "signal-book", "Signal Book"},
+		{"a full-cast credit", "Simon & Schuster Audio", `{"name":"Bea Reader"},{"name":"Full Cast"}`, "signal-book", "Signal Book"},
+	}
+	for _, c := range cases {
+		dataDir := seedTombstoneTree(t, nil, nil)
+		row := `{"asin":"B0ADAPT010","title":"Signal Book [Dramatized Adaptation]","publisher":"` + c.publisher + `","region":"us","language":"english",` +
+			`"authors":[{"name":"Ada Mapmaker"}],"narrators":[` + c.narrators + `],"lengthMinutes":400}`
+		sum := runLibexWith(t, dataDir, Options{}, row)
+		if sum.NewWorks != 1 {
+			t.Fatalf("%s: NewWorks = %d; warnings = %v", c.name, sum.NewWorks, sum.Warnings)
+		}
+		if got := workTitleOf(t, dataDir, c.slug); got != c.title {
+			t.Errorf("%s: %s is titled %q, want %q", c.name, c.slug, got, c.title)
+		}
+	}
+}
+
+// A labelled subtitle is never walked as a title of its own: only the row's short and
+// full titles feed the qualified forms, and the full one holds the row's title too. The
+// work catalogued under what the subtitle says is another book, in both modes.
+func TestALabelledSubtitleIsNotWalkedAsATitle(t *testing.T) {
+	const other = "bravo-book-dramatized-adaptation"
+	seed := func() string {
+		return seedTombstoneTree(t, map[string]string{
+			"works/" + shard(other) + "/" + other + "/work.json": testpack.WorkJSON(t, other, "Bravo Book [Dramatized Adaptation]", testpack.WithAuthors("ada-mapmaker")),
+			"works/" + shard(other) + "/" + other + "/recordings/r1.json": testpack.RecJSON(t, "r1", other,
+				testpack.WithNarrators("bea-reader"), testpack.WithRuntime(500)),
+		}, nil)
+	}
+	row := adaptationRow("B0ADAPT011", "Alpha Book")
+	row.subtitle = "Bravo Book [Dramatized Adaptation]"
+	dataDir := seed()
+	sum := runLibexInto(t, dataDir, rows(row))
+	if sum.NewWorks != 1 || len(recSlugsOf(t, dataDir, other)) != 1 {
+		t.Errorf("create: NewWorks = %d, recordings of %s = %d, want a work of its own; warnings = %v",
+			sum.NewWorks, other, len(recSlugsOf(t, dataDir, other)), sum.Warnings)
+	}
+	dataDir = seed()
+	sum = runLibexWith(t, dataDir, Options{Mode: ModeRecordingsOnly}, row.render())
+	if sum.NewRecordings != 0 || len(recSlugsOf(t, dataDir, other)) != 1 {
+		t.Errorf("recordings-only: NewRecordings = %d, recordings of %s = %d, want none added; warnings = %v",
+			sum.NewRecordings, other, len(recSlugsOf(t, dataDir, other)), sum.Warnings)
 	}
 }

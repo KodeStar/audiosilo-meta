@@ -64,8 +64,10 @@ func abridgedFromMarker(title string) *bool {
 //  1. trailing (Unabridged)/(Abridged)/[Unabridged]/[Abridged] edition markers
 //     (all stacked markers in one pass), so "Mageling" and "Mageling
 //     (Unabridged)" resolve to one work;
-//  2. the two title QUALIFIERS (titlerule.StripTitleQualifiers, the function the
-//     identity key cleans with), so a qualified row attaches to the catalogued work;
+//  2. the title QUALIFIERS (titlerule.StripTitleQualifiers, the function the
+//     identity key cleans with), so a qualified row attaches to the catalogued work
+//     and a row carrying the adaptation label founds no work titled with it: a
+//     dramatization of a book is a recording of that book;
 //  3. a mid-title NARRATOR qualifier in front of a volume marker
 //     (stripTitleNarratorQualifier), so "... - gelesen von Andreas Lange, Band
 //     11" and "... - gelesen von Peter Bocek, Band 11" resolve to the one work
@@ -77,21 +79,35 @@ func abridgedFromMarker(title string) *bool {
 // The edition-marker half is titlerule.StripEditionMarkers, the ONE definition of
 // what such a marker is (see titlerule/edition.go for why it lives there).
 func cleanWorkTitle(title string) string {
+	return cleanWorkTitleWith(title, titlerule.StripTitleQualifiers)
+}
+
+// cleanWorkTitleWith is cleanWorkTitle through a given qualifier strip.
+func cleanWorkTitleWith(title string, strip func(string) string) string {
 	cleaned := strings.TrimSpace(title)
 	stripped := titlerule.StripEditionMarkers(cleaned)
 	if stripped == "" {
 		return cleaned
 	}
-	if q := titlerule.StripEditionMarkers(titlerule.StripTitleQualifiers(stripped)); q != "" {
+	if q := titlerule.StripEditionMarkers(strip(stripped)); q != "" {
 		stripped = q
 	}
 	return stripTitleNarratorQualifier(stripped)
 }
 
+// rowStatesDramatization reports whether a row says of itself, outside its title, that
+// it is a dramatized production, as a stored recording would (model.Recording.IsDramatization):
+// GraphicAudio's imprint or a full-cast credit. Without either, an adaptation label is
+// its one statement, so normalizeEditionMarkers keeps it on the title.
+func rowStatesDramatization(b sourceBook) bool {
+	return model.IsDramatizationPublisher(b.str("publisher")) ||
+		slices.ContainsFunc(sourceNames(b.narrators, b.str("narrated_by")), titlerule.StatesDramatization)
+}
+
 // qualifiedWorkTitle is cleanWorkTitle WITHOUT the title qualifiers - the work title
 // the importer derived before they were stripped, and therefore the title a work it
 // created then still carries ("Lonely Book: International Edition"). resolveWork walks
-// it as a merge target only (sourceBook.qualifiedTitle).
+// it as a merge target only (sourceBook.qualifiedTitles).
 func qualifiedWorkTitle(title string) string {
 	cleaned := strings.TrimSpace(title)
 	stripped := titlerule.StripEditionMarkers(cleaned)
@@ -701,12 +717,15 @@ type sourceBook struct {
 	// chapters is the source's chapter rows, typed at parse time (sourceChapter),
 	// read when non-nil instead of raw's chapters array.
 	chapters []sourceChapter
-	// qualifiedTitle is the full title as the work identity read it before the
-	// title QUALIFIERS were stripped (qualifiedWorkTitle), set by
-	// normalizeEditionMarkers only when the strip changed it. resolveWork walks its
-	// chain as a merge target, so a work catalogued under its qualified title alone
-	// ("Lonely Book: International Edition", no plain twin) stays reachable.
-	qualifiedTitle string
+	// qualifiedTitles are the full title and the short title as the work identity
+	// read them before the title qualifiers came off, kept by normalizeEditionMarkers
+	// only when the strip changed them, full title first. resolveWork walks their
+	// chains as merge targets, so a work catalogued under its qualified title alone
+	// ("Lonely Book: International Edition", no plain twin) stays reachable, and so
+	// does a labelled slug a repair retired: the short title reaches
+	// "good-old-boys-dramatized-adaptation", the full one
+	// "winter-kill-dramatized-adaptation-john-henry-cole-book-3".
+	qualifiedTitles []string
 	// lang is the row's language CODE when its parser resolved one itself (a
 	// LibriVox row maps LibriVox's language names through its own table,
 	// librivoxlang.go), read by language() ahead of raw's language word. ""
@@ -1215,12 +1234,14 @@ func (p *planner) planCreate(books []sourceBook) {
 // undecorated titles without re-cleaning.
 //
 // Step 2 is therefore the one place a title CHANGES on its way into identity,
-// and cleanWorkTitle performs both of its rules there: the trailing
-// (Unabridged)/(Abridged) edition marker, and the mid-title narrator qualifier
-// in front of a volume marker ("... - gelesen von Andreas Lange, Band 11" ->
-// "..., Band 11", stripTitleNarratorQualifier). A reader chasing "why did this
-// title change?" lands here, so both rules are named here rather than only at
-// their definitions.
+// and cleanWorkTitle performs all of its rules there: the trailing
+// (Unabridged)/(Abridged) edition marker, the title qualifiers
+// (titlerule.StripTitleQualifiers: a marketplace edition, a narrator credit, an
+// adaptation label), whose unstripped forms are kept as qualifiedTitles, and the
+// mid-title narrator qualifier in front of a volume marker ("... - gelesen von
+// Andreas Lange, Band 11" -> "..., Band 11", stripTitleNarratorQualifier). A reader
+// chasing "why did this title change?" lands here, so the rules are named here
+// rather than only at their definitions.
 func normalizeEditionMarkers(books []sourceBook) {
 	for i := range books {
 		if books[i].abridged == nil {
@@ -1234,16 +1255,18 @@ func normalizeEditionMarkers(books []sourceBook) {
 		if books[i].abridged == nil {
 			books[i].abridged = seriesClaimsAbridged(books[i].series)
 		}
+		strip := titlerule.StripTitleQualifiers
+		if !rowStatesDramatization(books[i]) {
+			strip = titlerule.StripTitleQualifiersKeepingLabel
+		}
 		for _, key := range []string{"title", "title_short"} {
 			raw := books[i].str(key)
 			if raw == "" {
 				continue
 			}
-			cleaned := cleanWorkTitle(raw)
-			if key == "title" {
-				if q := qualifiedWorkTitle(raw); q != cleaned {
-					books[i].qualifiedTitle = q
-				}
+			cleaned := cleanWorkTitleWith(raw, strip)
+			if q := qualifiedWorkTitle(raw); q != cleaned && !slices.Contains(books[i].qualifiedTitles, q) {
+				books[i].qualifiedTitles = append(books[i].qualifiedTitles, q)
 			}
 			if cleaned != "" && cleaned != raw {
 				books[i].raw[key] = cleaned
@@ -1640,7 +1663,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	if route.walk != nil {
 		walk = *route.walk
 	} else {
-		walk = p.resolveWork(workTitle, b.str("title"), b.qualifiedTitle, posSuffix, p.rowWorkAuthorsRO(authorCredits), lang, claim)
+		walk = p.resolveWork(workTitle, b.str("title"), b.qualifiedTitles, posSuffix, p.rowWorkAuthorsRO(authorCredits), lang, claim)
 	}
 
 	// The book's genre claims are mapped from the source's own strings onto this
@@ -2974,7 +2997,7 @@ func (p *planner) walkWorkChain(title string, chain workChain, authors workAutho
 // full-title fallback could not separate), so the precondition - a full title
 // that differs - can never hold. It is skipped explicitly so that reading the
 // code says so.
-func (p *planner) resolveWork(title, fullTitle, qualifiedTitle, posSuffix string, authors workAuthors, lang string, claim *seriesClaim) workWalk {
+func (p *planner) resolveWork(title, fullTitle string, qualifiedTitles []string, posSuffix string, authors workAuthors, lang string, claim *seriesClaim) workWalk {
 	w := p.resolveWorkTitle(title, fullTitle, posSuffix, authors, lang, claim)
 	if w.ws != nil || posSuffix != "" {
 		return w
@@ -2984,13 +3007,19 @@ func (p *planner) resolveWork(title, fullTitle, qualifiedTitle, posSuffix string
 	// on that title's chain, which the cleaned title no longer walks. Nothing is
 	// created there - a miss leaves the row on the chain resolved above. The row's
 	// own pre-qualifier title first, then every catalogued title that cleans to
-	// exactly the row's (qualifiedCatalogueWalk).
-	if qualifiedTitle != "" && qualifiedTitle != fullTitle {
-		if qw, ok := p.mergeOnlyWalk(qualifiedTitle, slugOfTitle(qualifiedTitle), authors, lang, claim.forTitle(qualifiedTitle)); ok {
+	// exactly the row's (qualifiedCatalogueWalk). A qualified title walked is the
+	// qualified form of one this row is walked under: a row of a same-titled serial was
+	// moved off its short title (resolveWorkTitles) because that title cannot say which
+	// volume it is, and that holds of the short title with a qualifier on it too.
+	for _, q := range qualifiedTitles {
+		if c := cleanWorkTitle(q); q == fullTitle || (c != title && c != fullTitle) {
+			continue
+		}
+		if qw, ok := p.mergeOnlyWalk(q, slugOfTitle(q), authors, lang, claim.forTitle(q)); ok {
 			return qw
 		}
 	}
-	if qw, ok := p.qualifiedCatalogueWalk(title, qualifiedTitle, authors, lang, claim); ok {
+	if qw, ok := p.qualifiedCatalogueWalk(title, qualifiedTitles, authors, lang, claim); ok {
 		return qw
 	}
 	// A non-Latin title's LibriVox work at `librivox-<id>`, which no slug
@@ -3024,15 +3053,15 @@ func (p *planner) qualifiedCatalogueTitles(title string) []string {
 }
 
 // qualifiedCatalogueWalk walks, as merge targets only, the chain of every catalogued
-// title that cleans to title (skipping skip, a title already walked), and reports a
+// title that cleans to title (skipping skip, the titles already walked), and reports a
 // walk only when exactly ONE work clears the full walk (authors, language, series
 // claim): several matching works decide nothing - the duplicate guard's own
 // ambiguity rule, which is likewise asked of the works that MATCH, not of every work
 // a title names - so the row falls through to the guard as before.
-func (p *planner) qualifiedCatalogueWalk(title, skip string, authors workAuthors, lang string, claim *seriesClaim) (workWalk, bool) {
+func (p *planner) qualifiedCatalogueWalk(title string, skip []string, authors workAuthors, lang string, claim *seriesClaim) (workWalk, bool) {
 	var found workWalk
 	for _, q := range p.qualifiedCatalogueTitles(title) {
-		if q == skip {
+		if slices.Contains(skip, q) {
 			continue
 		}
 		qw, ok := p.mergeOnlyWalk(q, slugOfTitle(q), authors, lang, claim.forTitle(q))
@@ -3258,7 +3287,7 @@ func (p *planner) claimPlacesIn(ctx creditContext, b sourceBook, asin string) (p
 func (p *planner) rowWorkKeyIn(ctx creditContext, b sourceBook, title, lang string) string {
 	title = cleanWorkTitle(title)
 	authors := p.rowWorkAuthorsROIn(ctx, b.authorCredits)
-	if walk := p.resolveWork(title, cleanWorkTitle(b.str("title")), b.qualifiedTitle, "", authors, lang, nil); walk.ws != nil {
+	if walk := p.resolveWork(title, cleanWorkTitle(b.str("title")), b.qualifiedTitles, "", authors, lang, nil); walk.ws != nil {
 		return walk.ws.slug
 	}
 	ids := slices.Clone(authors.identity)

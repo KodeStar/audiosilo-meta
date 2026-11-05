@@ -128,8 +128,11 @@ func audiosiloBookToBook(e rawBook) sourceBook {
 	// We only clean here; runBooks is the SINGLE mechanism that derives the
 	// abridged flag from a marker (before it mutates titles), so this path does
 	// not touch sb.abridged (ABS entries carry their own explicit abridged field).
-	title := cleanWorkTitle(e.str("title"))
-	sub := cleanWorkTitle(e.str("subtitle"))
+	// The title qualifiers stay on for normalizeEditionMarkers, the one place that
+	// strips them, which keeps the qualified titles as merge targets (a work
+	// catalogued under its label, a labelled slug a repair retired).
+	title := qualifiedWorkTitle(e.str("title"))
+	sub := qualifiedWorkTitle(e.str("subtitle"))
 	titleShort := title
 	if sub != "" {
 		if prefix, cut := strings.CutSuffix(title, ": "+sub); cut && strings.TrimSpace(prefix) != "" {

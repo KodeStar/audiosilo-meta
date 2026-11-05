@@ -29492,6 +29492,14 @@
   },
   {
     "decision": "assert",
+    "from": "Alcatraz Versus The Evil Librarians [Dramatized Adaptation]",
+    "op": "retitle-work",
+    "reason": "the adaptation label is decoration; the book title equals its series name, which the mechanical rule leaves to a reviewer",
+    "target": "alcatraz-versus-the-evil-librarians-dramatized-adaptation",
+    "to": "Alcatraz Versus The Evil Librarians"
+  },
+  {
+    "decision": "assert",
     "from": "Alex Cross's TRIAL",
     "op": "retitle-work",
     "reason": "the Cornerstone listings (B0032N8MO8, 147359295X) and the book spell Trial in title case; TRIAL is the US cover's typography",
@@ -30377,6 +30385,14 @@
   },
   {
     "decision": "assert",
+    "from": "No Man's Land [Dramatized Adaptation]: The Last Gunfighter, Book 9",
+    "op": "retitle-work",
+    "reason": "the book is titled No Man's Land: the Last Gunfighter series holds this William W. Johnstone work at 9, so the label and the series tail both come off",
+    "target": "no-mans-land-dramatized-adaptation-the-last-gunfighter-book-9",
+    "to": "No Man's Land"
+  },
+  {
+    "decision": "assert",
     "from": "Nova Terra",
     "op": "retitle-work",
     "reason": "the Audible listing (B0H4RWBDQV) subtitles Titan 4 Wächter; books 2 and 3 are titled Nova Terra: Greymane and Nova Terra: Königsbrecher",
@@ -30770,6 +30786,23 @@
     "reason": "the prequel's Kindle edition (Goodreads 36242416, book 0, the Kate Holloway story the audio describes) is titled Surviving the Collapse: A Tale of Survival in a Powerless World; the listing's title ends in a bare colon",
     "target": "surviving-the-collapse",
     "to": "Surviving the Collapse: A Tale of Survival in a Powerless World"
+  },
+  {
+    "decision": "assert",
+    "from": "Tamora Carter: Goblin Queen [Dramatized Adaptation]",
+    "op": "retitle-work",
+    "reason": "only the adaptation label is decoration: the row titles the book Tamora Carter: Goblin Queen, so its series name stays in the title",
+    "target": "tamora-carter-goblin-queen-dramatized-adaptation",
+    "to": "Tamora Carter: Goblin Queen"
+  },
+  {
+    "decision": "reject",
+    "field": "title",
+    "from": "Tamora Carter: Goblin Queen",
+    "op": "retitle-work",
+    "reason": "the strip would take the series name as well as the label: the book is titled Tamora Carter: Goblin Queen",
+    "target": "tamora-carter-goblin-queen-dramatized-adaptation",
+    "to": "Goblin Queen"
   },
   {
     "decision": "assert",

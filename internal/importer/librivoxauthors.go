@@ -408,7 +408,7 @@ func (p *planner) keyLibrivoxAuthorVariants(books []sourceBook, titles, suffixes
 			continue
 		}
 		authors := p.rowWorkAuthorsRO(credits)
-		if !nonLatin && p.resolveWork(titles[i], b.str("title"), b.qualifiedTitle, suffixes[i], authors, lang, nil).ws != nil {
+		if !nonLatin && p.resolveWork(titles[i], b.str("title"), b.qualifiedTitles, suffixes[i], authors, lang, nil).ws != nil {
 			continue
 		}
 		matched, partial := p.librivoxCandidates(slugs, lang, authors)

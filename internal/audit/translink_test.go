@@ -316,6 +316,44 @@ func TestWorkEditionOntoADramatizationIsAdvisory(t *testing.T) {
 	}
 }
 
+// The veto reads the recordings: a work holding a plain reading beside its dramatization
+// is the text whatever its title says, and one holding only the dramatization is not,
+// whatever its title says.
+func TestWorkEditionOntoAWorkReadsItsRecordings(t *testing.T) {
+	cases := []struct {
+		name, title string
+		recs        []string // publishers
+		advisory    bool
+	}{
+		{"only a dramatization, an unlabelled title", "City of Thorns", []string{"GraphicAudio"}, true},
+		{"a plain reading beside it", "City of Thorns", []string{"GraphicAudio", "Corey Press"}, false},
+		{"a plain reading under a label", "City of Thorns (Dramatized Adaptation)", []string{"GraphicAudio", "Corey Press"}, false},
+		{"a label and a recording stating nothing", "City of Thorns (Dramatized Adaptation)", []string{""}, true},
+		{"a label and a publisher, no recording saying so", "City of Thorns (Dramatized Adaptation)", []string{"Simon & Schuster Audio"}, true},
+		{"a title that stays dramatized, by another producer", "City of Thorns (Dramatized)", []string{"L.A. Theatre Works"}, true},
+	}
+	for _, c := range cases {
+		files := linkPeople(t)
+		files["works/ci/city-of-thorns-da/work.json"] = workJSON(t, "city-of-thorns-da", c.title)
+		for i, pub := range c.recs {
+			id := string(rune('a' + i))
+			opt := testpack.WithPublisher(pub)
+			if pub == "" {
+				opt = testpack.WithoutPublisher()
+			}
+			files["works/ci/city-of-thorns-da/recordings/"+id+".json"] = testpack.RecJSON(t, id, "city-of-thorns-da", opt)
+		}
+		files["works/ci/city-of-thorns-de/work.json"] = workJSON(t, "city-of-thorns-de", "City of Thorns (German edition)", withLanguage("de"))
+		fd := linkFinding(t, runFixture(t, files), "city-of-thorns-de")
+		if fd == nil {
+			t.Fatalf("%s: no proposal", c.name)
+		}
+		if got := strings.Contains(fd.Propose.Reason, "dramatized or adapted"); got != c.advisory {
+			t.Errorf("%s: names the dramatization = %v, want %v (%+v)", c.name, got, c.advisory, fd.Propose)
+		}
+	}
+}
+
 func TestWorkEditionAlreadyLinkedIsNotProposedAgain(t *testing.T) {
 	files := fateTree(t)
 	files["works/ag/a-game-of-fate-fr/work.json"] = workJSON(t, "a-game-of-fate-fr", "A Game of Fate (French Edition)",

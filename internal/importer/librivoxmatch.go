@@ -534,7 +534,7 @@ func (p *planner) routeLibrivox(b sourceBook, workTitle, fullTitle, posSuffix, l
 		return p.librivoxUndecided(b, workTitle, fullTitle, posSuffix, lang, credits, claim, nonLatin)
 	}
 	authors := p.rowWorkAuthorsRO(credits)
-	if !nonLatin && p.resolveWork(workTitle, fullTitle, b.qualifiedTitle, posSuffix, authors, lang, claim).ws != nil {
+	if !nonLatin && p.resolveWork(workTitle, fullTitle, b.qualifiedTitles, posSuffix, authors, lang, claim).ws != nil {
 		return librivoxRoute{}
 	}
 	matched, partial := p.librivoxCandidates(slugs, lang, authors)
@@ -599,7 +599,7 @@ func (p *planner) librivoxQualifiedTwin(b sourceBook, workTitle, fullTitle, posS
 			a := p.rowWorkAuthorsRO(credits)
 			// The ordinary walk answers first: a row it resolves to a work is
 			// that work's recording, as rule 1 says.
-			if p.resolveWork(workTitle, fullTitle, b.qualifiedTitle, posSuffix, a, lang, claim).ws != nil {
+			if p.resolveWork(workTitle, fullTitle, b.qualifiedTitles, posSuffix, a, lang, claim).ws != nil {
 				return false
 			}
 			authors = &a

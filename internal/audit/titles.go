@@ -2,11 +2,39 @@ package audit
 
 import (
 	"fmt"
+	"slices"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
+
+// adaptationLabelRetitlesHeld keeps advisory every retitle that would take a statement of
+// a dramatization off a title: the adaptation label, or a bare "(Dramatized)". Removing
+// one raises a plain library book's match score against a work holding only the
+// adaptation, so a routine repair wave must not do it before servers tell a dramatization
+// apart by its recording (audiosilo-server's meta.DefaultRecording). The PR retitling the
+// labelled works decides the bare titles and flips this.
+const adaptationLabelRetitlesHeld = true
+
+// adaptationLabelHold says why retitling w to want may not run by itself, "" when it may.
+// held is adaptationLabelRetitlesHeld. A split-release part's label is held with the rest:
+// main proposes those retitles too, under other decorations, and each takes the label
+// off. A work no recording of which says it is a dramatization keeps its statement
+// whatever the flag says: it is that work's only one.
+func adaptationLabelHold(w *model.Work, want string, held bool) string {
+	if !titlerule.HasAdaptationLabel(w.Title) &&
+		(!titlerule.StatesDramatization(w.Title) || titlerule.StatesDramatization(want)) {
+		return ""
+	}
+	if !slices.ContainsFunc(w.Recordings, (*model.Recording).IsDramatization) {
+		return "the title is the only thing saying this work is a dramatization: no recording states GraphicAudio or a full cast, so keep it"
+	}
+	if held {
+		return "held with every retitle taking a dramatization's statement off a title, until servers tell one apart by its recording (adaptationLabelRetitlesHeld)"
+	}
+	return ""
+}
 
 // detectWorkTitle reports every work whose title carries retailer decoration AND
 // for which the audit can propose a SAFE cleaner one.
@@ -113,6 +141,13 @@ func detectWorkTitle(ix *index) *findings {
 			p.Advisory = true
 			p.Reason = "the series is this book's own edition, named after it, so the head the strip removes is the book's title " +
 				"and what is left is its subtitle or tagline: confirm the title before retitling"
+		}
+		if !p.Advisory {
+			if why := adaptationLabelHold(c.work, c.want, adaptationLabelRetitlesHeld); why != "" {
+				p.Op = OpReview
+				p.Advisory = true
+				p.Reason = why
+			}
 		}
 		f.add(Finding{
 			Subclass: sub,
