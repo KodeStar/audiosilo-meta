@@ -190,6 +190,10 @@ refused. A position the CATALOGUE already fills is refused too - unless
 title veto applies): such a row is kept for attachment and listed by
 `--attachments`, and `metaimport libex --attach-editions` then imports it as
 another recording of that work, or another ASIN on one, never as a second work.
+Do not pass `--reported` here: it also keeps a row stating no series, under
+the language, marketplace and credit refusals alone, which is for the sync bot's
+reported-ASIN lane (a few ASINs read one at a time, under GOVERNANCE.md's bound)
+and over a full export would select nearly every series-less row.
 **Every** series claim the import would act on - every claim stating a
 usable position - must resolve to a catalogued series, not just the first one
 that does: the import places the new work in all of them and creates any series

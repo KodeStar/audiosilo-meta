@@ -44,8 +44,9 @@ const (
 	RefusalPositionClaimed         = "position-claimed"
 	RefusalOverSeriesCap           = "over-series-cap"
 	// The IMPORT-side codes: rows `metaimport libex` (and `librivox import`)
-	// itself skips, which only its --skipped worklist carries (libex-select
-	// never refuses for these).
+	// itself skips, which its --skipped worklist carries. libex-select refuses
+	// for one of them, identity-duplicate, and only for a --reported standalone
+	// (reportedguard.go); never for the others.
 	RefusalIdentityDuplicate         = "identity-duplicate"
 	RefusalMissingAuthor             = "missing-author"
 	RefusalMissingTitle              = "missing-title"
@@ -87,8 +88,9 @@ var (
 	reasonPositionTaken           = refusal{RefusalPositionClaimed, "series position already claimed"}
 	reasonSeriesCap               = refusal{RefusalOverSeriesCap, "over the per-series cap"}
 
-	// Import-only rules: create admission and duplicate identity (Summary.Skips),
-	// plus recording relocation refusals (Summary.RelocationSkips).
+	// Import-side rules: create admission and duplicate identity (Summary.Skips),
+	// plus recording relocation refusals (Summary.RelocationSkips). libex-select
+	// also refuses a --reported standalone as identity-duplicate (reportedguard.go).
 	reasonIdentityDuplicate         = refusal{RefusalIdentityDuplicate, "the catalogue holds the book under another title"}
 	reasonMissingAuthor             = refusal{RefusalMissingAuthor, "no author"}
 	reasonMissingTitle              = refusal{RefusalMissingTitle, "no title"}
@@ -105,7 +107,8 @@ var (
 
 // refusals is every SELECTOR rule in report order (the order libex-select
 // applies them): the libex-select report prints one line per entry, so an
-// import-only rule is never added here.
+// import-side rule is never added here (the report prints identity-duplicate,
+// the one the selector also applies, on its own line only when it fired).
 var refusals = []refusal{
 	reasonNoASIN, reasonAlreadyASIN, reasonDuplicateASIN,
 	reasonNoSeries, reasonSeriesAuthors, reasonSeriesLanguage, reasonOtherSeriesUncatalogued,
@@ -114,7 +117,8 @@ var refusals = []refusal{
 	reasonPositionTaken, reasonSeriesCap,
 }
 
-// importRefusals are the rules only the import applies (--skipped).
+// importRefusals are the import's own rules (--skipped); identity-duplicate also
+// reaches libex-select's --refusals, for a --reported standalone alone.
 var importRefusals = []refusal{
 	reasonIdentityDuplicate, reasonMissingAuthor, reasonMissingTitle, reasonMissingNarrator,
 	reasonRelocateRowsLanguage,

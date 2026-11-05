@@ -73,7 +73,9 @@ The single carve-out is the **series-completion bot** below, whose pull requests
 are batch imports by this definition: its selection rationale is enforced
 mechanically instead of merely stated - only works filling free positions in
 series the catalogue already holds (plus other editions of the volumes already
-at those positions, attached as recordings), `data/` only, capped per cycle - and the
+at those positions, attached as recordings) and, in its reported-ASIN lane and
+under that lane's own lower rate, reported standalones; `data/` only, capped per
+cycle - and the
 automated verifier's `ai-verified` verdict is the review that bound pays for.
 Everything else in this paragraph applies to it unchanged.
 
@@ -222,8 +224,9 @@ The one automation allowed to merge its own work.
 is a private service that runs daily: it reads libex's new-releases and
 coming-soon feeds across every marketplace region, keeps only the rows that
 **complete series this catalogue already holds**, and opens one pull request per
-cycle. This section is the whole of its licence to do that; nothing else in the
-merge policy moves.
+cycle. Its one other way in is the much narrower reported-ASIN lane below. This
+section is the whole of its licence to do either; nothing else in the merge
+policy moves.
 
 **The bound.** Selection is the existing `metaimport libex-select` tranche
 selector, which refuses any row whose series the catalogue does not already
@@ -244,6 +247,86 @@ it writes carries the typed `libex-import` provenance, so the whole source stays
 retractable in one act and the trust tiers rank it exactly as any other
 bulk-mirror record: the first user-library import that matches it takes the
 record over.
+
+**The reported-ASIN lane.** By the maintainer's decision of 2026-11-05 the bot
+may also import what is named on metaserve's intake queue
+(`/api/v1/intake/unknown-asins`, anonymous ASINs reported as missing from this
+catalogue), and not only what the feeds carry. The lane is off unless the bot is
+configured with the queue's address and token. What it adds, and nothing more:
+
+- **A reported standalone**: a row that states no series may be imported as a new
+  work in no series. `metaimport libex-select --reported` lets it past the
+  completion test and nothing else: a language or marketplace we cannot map, an
+  AI narrator and every other credit refusal still refuse it. If the importer
+  resolves it to a work the catalogue holds, it lands as another recording of
+  that work, or another ASIN on one. Otherwise the selection refuses it as
+  `identity-duplicate` when a held work in a compatible language shares at least
+  one author with it and the two titles reduce to the same normalized identity
+  key, comparing the full titles and also each side's main title (before a `: `
+  or ` - ` subtitle separator) against the other's full title. That catches a
+  subtitle on either side ("Ford County" beside "Ford County: Stories"), an
+  author list that is a subset of the held one ("Micro" credited to one of its
+  two authors) and a bare title naming several held volumes of a serial. It is
+  wider than the create path's own guard on purpose: a refused report is
+  memoized and comes back later, a minted duplicate needs a repair. The price
+  is a distinct book sharing a main title with a held book by the same author,
+  which is refused too. What it still cannot see mints a work: a title whose key
+  differs ("Daisy Jones and the Six" beside "Daisy Jones & The Six"), which no
+  advisory names, and two spellings of one new book in the same tranche, which
+  the advisory census names when the two key alike, in the verdict comment
+  alone, since a `bot-sync` pull request is never flagged for its advisories.
+- **A reported volume of a held series**: a row that claims a series takes
+  exactly the rules of "The bound" above. A row claiming a series the catalogue
+  does not hold is refused, as it is from the feeds. **The lane never founds a
+  series.**
+
+Its limits are its own and tighter than the feeds': at most **25 records per pull
+request**, new works and attached editions counted together, and at most **one
+pull request per 48 hours**, spent when the pull request opens, so one that is
+later closed or recycled still used its turn. It shares the bot's one open pull request, so it can never run beside a completion
+tranche, and completion takes every cycle the lane is not due or has nothing to
+add. It spends at most 150 listing lookups a cycle, and it runs no `--enrich` pass.
+
+**One report is enough** (minimum count 1). The queue's `count` is only how often
+an ASIN was reported: reports are anonymous and unverified, and the count says
+nothing about how many servers, libraries or people stand behind it. It orders
+the work. It is never evidence for a record, and nothing may describe it as such.
+
+Why that is still bounded rather than an open door, given that anyone can write
+to the queue:
+
+- **A report is never a record.** Each ASIN has to come back from libex as a real
+  retailer listing, read one at a time, and only what that listing states is
+  imported. An ASIN with no listing writes nothing.
+- **One slot, at a fixed rate.** However long the queue is, the limits above hold
+  the lane to about 4,600 records a year. The worst case is a spammer nominating
+  real retailer listings at that pace, which is true facts about real listings
+  arriving slowly in reviewable pull requests. The lane reads each listing's
+  content type before selection and keeps only a book (`SinglePartBook` or
+  `MultiPartBook`, the bulk export's own rule), so a podcast episode, a periodical
+  issue or a listing stating no type never reaches an import.
+- **The same gate.** A lane pull request is a `bot-sync` pull request: `data/` only,
+  the required checks, and an `ai-verified` verdict on its exact head before it
+  merges, with the ladder below when the verdict does not come.
+- **It can be taken back.** Its records carry the typed `libex-import` provenance,
+  so they retract with that source and rank as bulk-mirror records. That type
+  does not tell the lane from the feeds, so retracting the lane alone goes through
+  its pull requests, each labelled `sync:intake` and listing the ASINs it was
+  given.
+
+A flag on a lane pull request goes through the ladder below like any other, with
+three differences, so a poisoned queue costs the lane its turns and cannot stall
+series completion:
+
+- Its exclusion does not count toward the stop on exclusions in a row. It pauses
+  the lane for 7 days instead.
+- A lane pull request closed for want of a verdict does not count toward the
+  throttle on such closures, and it does not pause the lane.
+- With no resolver configured, a lane pull request is excluded rather than parked,
+  so public input cannot fill the parked slots. A token without the Actions
+  permission still parks it, as it would any pull request.
+
+The cycle after a lane pull request always belongs to completion.
 
 **The merge gate.** The bot merges its own pull request only when the required
 checks (`check`, `compose`) are green **and** the `ai-verify` workflow has
@@ -275,18 +358,21 @@ produces a short queue rather than a backlog.
 
 **Accountability.** Every merge is a pull request, so the record is the ordinary
 reviewable one: labels `data`, `bot-intake` and `bot-sync`, a per-series table
-of what the tranche adds, the required checks and the verifier's verdict on it,
-and a comment on the pull request describing whatever the resolver changed. A
+of what the tranche adds (a lane pull request adds `sync:intake` and states the
+lane's rationale and its ASINs instead), the required checks and the verifier's
+verdict on it, and a comment on the pull request describing whatever the resolver
+changed. A
 bad cycle reverts like any other change (revert-first, below), and because the
 provenance is typed, an entire source retracts in one pass.
 
 **Kill switch.** Revoke the bot's personal access token, or stop its container.
 It has no other way into this repository, and nothing here depends on it
-running.
+running. The reported-ASIN lane alone stops by unsetting its address or token.
 
 **Widening is a maintainer decision made openly**, exactly like the ladder it
-came from. A new source, a new kind of record, authority to create a series, a
-larger cap, or the same automation pointed at
+came from. A new source, a new kind of record, authority to create a series
+(from the lane or anywhere else), a larger cap or a faster lane, or the same
+automation pointed at
 [audiosilo-meta-community](https://github.com/KodeStar/audiosilo-meta-community)
 (whose review bar is prose a human has to judge, which is why the repositories
 split) is a change to this document first and a change to the bot second.

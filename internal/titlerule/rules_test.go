@@ -491,3 +491,21 @@ func TestMayEnumerateIsNecessary(t *testing.T) {
 		}
 	}
 }
+
+func TestMainTitle(t *testing.T) {
+	for _, c := range []struct {
+		in, want string
+		ok       bool
+	}{
+		{"Ford County: Stories", "Ford County", true},
+		{"Dune - House Atreides: Book 1", "Dune", true},
+		{"Empires of EVE, Volume 2", "", false},
+		{"Plain", "", false},
+		{": Only a subtitle", "", false},
+	} {
+		got, ok := MainTitle(c.in)
+		if got != c.want || ok != c.ok {
+			t.Errorf("MainTitle(%q) = %q, %v; want %q, %v", c.in, got, ok, c.want, c.ok)
+		}
+	}
+}

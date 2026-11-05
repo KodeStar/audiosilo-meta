@@ -400,7 +400,9 @@ reduces a full catalogue export to the bounded subset the import posture allows:
 rows that COMPLETE series the catalogue already tracks (valid position, slot not
 already taken, language and region mappable, ASIN not already present), with a
 per-series cap for runaway franchises and a report that accounts for every row
-read. The full dump-to-rows operator flow (restore the Postgres dump, export
+read. (`--reported` also keeps rows stating no series, for the sync bot's
+reported-ASIN lane and its own bound in GOVERNANCE.md; it is never for a full
+export.) The full dump-to-rows operator flow (restore the Postgres dump, export
 NDJSON, select, review, import in tranches, backfill with `--enrich`, then pick
 up the alternate narrations with `--recordings-only`) is documented in
 [scripts/README.md](scripts/README.md).
