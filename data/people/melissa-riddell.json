@@ -4509,6 +4509,9 @@
     },
     "mevans": {
       "id": "mevans",
+      "librivox_reader_aliases": [
+        4687
+      ],
       "librivox_reader_id": 4695,
       "license": "CC0-1.0",
       "name": "mevans",
@@ -4517,15 +4520,7 @@
           "imported_at": "2026-10-27",
           "ref": "842",
           "type": "librivox"
-        }
-      ]
-    },
-    "mevans-librivox-4687": {
-      "id": "mevans-librivox-4687",
-      "librivox_reader_id": 4687,
-      "license": "CC0-1.0",
-      "name": "mevans",
-      "sources": [
+        },
         {
           "imported_at": "2026-10-28",
           "ref": "3399",
@@ -5939,6 +5934,7 @@
     },
     "micaela-harper": {
       "id": "micaela-harper",
+      "librivox_reader_id": 17869,
       "license": "CC0-1.0",
       "name": "Micaela Harper",
       "sources": [
@@ -5946,6 +5942,11 @@
           "imported_at": "2026-08-02",
           "ref": "B0H6XXRS1F",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-11-04",
+          "ref": "18268",
+          "type": "librivox"
         }
       ]
     },

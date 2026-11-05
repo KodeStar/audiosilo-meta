@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
+	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -180,6 +181,30 @@ func TestSamePersonSpellingToleratesOneNameSpelledTwoWays(t *testing.T) {
 		if got := samePersonSpelling(ix, c.a, c.b); got != c.want {
 			t.Errorf("samePersonSpelling(%q, %q) = %v, want %v: %s", c.a, c.b, got, c.want, c.why)
 		}
+	}
+
+	// A reviewed merge-people rejection speaks above the rungs, and only for its pair.
+	ix.distinct = check.ResolveDistinct([]check.ReviewedDistinct{{Kind: model.RedirectPeople, IDs: []string{"a-b-kovacs", "ab-kovacs"}}}, nil)
+	if samePersonSpelling(ix, "a-b-kovacs", "ab-kovacs") {
+		t.Error("a reviewed pair is two people, whatever the initials say")
+	}
+	if !samePersonSpelling(ix, "cheree-alsop", "cheree-lynn-alsop") {
+		t.Error("a review of another pair changed this one")
+	}
+}
+
+// newIndex reads the reviewed list and resolves it through the catalogue's redirects,
+// over a fixture list so a change to the real one cannot move this test.
+func TestNewIndexResolvesTheReviewedPeoplePairs(t *testing.T) {
+	saved := reviewedDecisions
+	reviewedDecisions = []reviewedDecision{{Op: "merge-people", Decision: "reject", Target: "retired-person", Others: []string{"other-person"}, Reason: "fixture"}}
+	t.Cleanup(func() { reviewedDecisions = saved })
+	ix := newIndex(&model.Catalog{Redirects: model.Redirects{model.RedirectPeople: {"retired-person": "live-person"}}})
+	if !ix.distinct.Has(model.RedirectPeople, "live-person", "other-person") {
+		t.Error("the decision was not resolved onto the survivor")
+	}
+	if ix.distinct.Has(model.RedirectPeople, "live-person", "someone-else") {
+		t.Error("a pair the list does not name is distinct")
 	}
 }
 

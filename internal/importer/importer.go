@@ -607,8 +607,9 @@ func (p *planner) warnInto(b sourceBook, tier *[]string) func(string, ...any) {
 //   - the run-level lines (the aggregated refusals, the duplicate-identity
 //     skips, the catalogue's own collisions, the per-class reports);
 //   - the CONFLICT lines, one per row refused for contradicting a recorded
-//     runtime or release date - per-row, but the ones the intake verdict's
-//     "disagreed ... see the warnings below" note sends a maintainer to;
+//     runtime or release date, or for naming another book - per-row, but the
+//     ones the intake verdict's "disagreed ... see the warnings below" note
+//     sends a maintainer to;
 //   - every other per-row line, in row order.
 //
 // A run-level or conflict line is one a maintainer acts on, where a run over a
@@ -901,7 +902,7 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 		regenRecs:          regenRecsFor(opts.Mode),
 		rowsAsOf:           opts.RowsAsOf,
 		distinct:           opts.Distinct,
-		lv:                 newLibrivoxState(),
+		lv:                 reviewedLibrivoxState(opts),
 	}
 }
 
@@ -975,6 +976,7 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	p.reportDuplicateIdentities()
 	p.finishLibrivoxHolds()
 	p.reportLibrivoxVariants()
+	p.reportLibrivoxReviewed()
 	p.reportLibrivoxAuthorVariants()
 	p.settleUnrecordedCredits()
 	p.reportTombstoneRides()
@@ -1190,7 +1192,8 @@ func (p *planner) planCreate(books []sourceBook) {
 	// Only now does every author id land where it will: the readers, and the
 	// rest that reads the authors' people, are decided against that.
 	p.settleLibrivoxPeople(books)
-	for i, b := range books {
+	for _, i := range p.librivoxPlanOrder(books) {
+		b := books[i]
 		asin := NormalizeASIN(b.str("asin"))
 		p.setSource(asin, b)
 		p.addBook(b, asin, titles[i], suffixes[i])
@@ -1297,6 +1300,7 @@ func (p *planner) loadExisting() {
 		p.people[person.ID] = person.Name
 		p.loadLibrivoxPerson(person)
 	}
+	p.lv.ownWorks = librivoxOwnWorkHomes(cat.Works, p.lv.reviewed)
 	for _, w := range cat.Works {
 		ws := &workState{
 			slug:     w.ID,
@@ -1623,7 +1627,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		authorCredits = p.moveLibrivoxAuthors(b, authorCredits, route.moves)
 	}
 	ident := p.rowIdentityOf(b, workTitle)
-	if route.walk == nil &&
+	if route.walk == nil && !route.reviewed &&
 		p.refuseDuplicateIdentity(b, ident, workTitle, b.str("title"), posSuffix, lang, authorCredits, claim) {
 		p.noteLostSeriesClaims(b, -1, nil)
 		return
@@ -1650,7 +1654,21 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// raw for the same reason too - resolving them is wasted work on every row
 	// that merges.
 	facts := &workFacts{genres: b.genres, credits: authorCredits}
+	// An own-work ruled apart from what the catalogue holds mints, or meets the home an
+	// earlier project of its text founded. Any other work the walk reaches may be the very
+	// one the decision rejected, and a recording landed there stays, held by its project
+	// id: so the worklist's, as a decision that cannot apply always is.
+	if route.reviewed && route.walk == nil && walk.ws != nil && !p.ownWorkHomeOf(walk.ws, authorCredits) {
+		warn("the reviewed own-work decision walks onto the existing work %q; not placed", walk.ws.slug)
+		p.noteLibrivoxWorklist(b, workTitle, LibrivoxReviewedOwnWorkTaken, candidatesOf([]*workState{walk.ws}))
+		p.noteLostSeriesClaims(b, -1, nil)
+		return
+	}
+	ownWork := route.reviewed && walk.ws == nil
 	ws, unrecorded := p.getOrCreateWork(walk, b, asin, lang, facts, warn)
+	if ownWork && ws != nil {
+		p.lv.ownWorks[ws.slug] = true
+	}
 	narratorSlugs := p.rowNarratorSlugs(b, narratorNames, warn)
 	// The title the row was RESOLVED by - its own, or its full title when the
 	// work was found or created on the full title's chain - is the one the
@@ -1886,30 +1904,20 @@ type creditContext struct {
 
 // creditContextOf takes a batch's credit decisions.
 //
-// A fold is refused for a reviewed pair judged by the records the two spellings
-// LAND on (creditLanding), not only the slugs they spell: "Dr. AB Kovacs" spells
-// `dr-ab-kovacs` but lands, by the initials merge, on the committed
-// `dr-a-b-kovacs`, and the bare "AB Kovacs" on `a-b-kovacs`. The check reads the
-// initials decisions once they exist and, before then (the pre-pass cleans the
-// names it decides over), the committed record of a spelling's initials group,
-// which is what the decision names whenever one is committed - so the pre-pass and
-// the import refuse the same folds. A run with no reviewed people pair asks no
-// check at all, and one with them keeps only the committed survivors
-// (committedInitials) for it, never the census itself.
+// A fold is refused for a reviewed pair (peopleKeptApart), judged by every slug
+// the two spellings can land on rather than by the one this batch's initials
+// decision puts them on. The veto is asked twice over, by the pre-pass while it
+// cleans the names the decision is taken over and by the import after it, so an
+// answer that read the decision would differ between the two: a titled spelling
+// the decision moves onto a slug only the batch holds would fold at import after
+// the pre-pass refused it, and a fold the pre-pass counted and reported would not
+// happen. A run with no reviewed people pair asks no check at all.
 func (p *planner) creditContextOf(books []sourceBook) creditContext {
 	author, narrator := p.creditCensusesOf(books)
-	census := p.catalogueInitials()
-	// decided is captured BY VARIABLE: it is nil while the pre-pass below runs
-	// (landingsKeptApart then falls back to the committed initials) and the
-	// batch decision once assigned, so the census's veto judges where a name
-	// finally lands. Do not copy it into the closure.
-	var decided initialsSurvivors
 	if p.apart != nil {
-		committed := census.committed()
-		apart := func(a, b string) bool { return p.landingsKeptApart(decided, committed, a, b) }
-		author.keptApart, narrator.keptApart = apart, apart
+		author.keptApart, narrator.keptApart = p.peopleKeptApart, p.peopleKeptApart
 	}
-	decided = p.decideInitialsOf(census, books, author, narrator)
+	decided := p.decideInitialsOf(p.catalogueInitials(), books, author, narrator)
 	return creditContext{author: author, narrator: narrator, initials: decided}
 }
 
@@ -2026,44 +2034,28 @@ func (p *planner) creditCensusesOf(books []sourceBook) (author, narrator creditC
 // peopleKeptApart reports whether a reviewed merge-people rejection
 // (Options.Distinct) recorded the persons credit names a and b spell as two
 // people, so that no fold may resolve one onto the other: "Dr. Alex George" is
-// not `alex-george`, the novelist. Each name is asked as its person slug, a
-// retired one as its survivor (the decisions were resolved the same way); the
-// records the two land on through the initials merge are landingsKeptApart's
-// half. A name that slugs away to nothing is no record a review named.
+// not `alex-george`, the novelist. Each name is asked as every slug it can land on
+// (creditSlugs), a retired one as its survivor (the decisions were resolved the
+// same way): "Dr. AB Kovacs" spells `dr-ab-kovacs` and is `dr-a-b-kovacs` by the
+// initials merge, so a review of `a-b-kovacs` / `dr-a-b-kovacs` keeps it off the
+// bare "AB Kovacs" whether or not either record is committed yet.
 func (p *planner) peopleKeptApart(a, b string) bool {
-	sa, fa := personSlug(a)
-	sb, fb := personSlug(b)
-	return !fa && !fb && p.apart.Has(sa, sb)
+	slugsB := creditSlugs(b)
+	return slices.ContainsFunc(creditSlugs(a), func(x string) bool {
+		return slices.ContainsFunc(slugsB, func(y string) bool { return p.apart.Has(x, y) })
+	})
 }
 
-// landingsKeptApart is the reviewed-pair check the credit folds ask
-// (creditCensus.keptApart): a and b are kept apart when the slugs they spell are
-// (peopleKeptApart) or the records they land on are (creditLanding).
-func (p *planner) landingsKeptApart(decided initialsSurvivors, committed committedInitials, a, b string) bool {
-	if p.peopleKeptApart(a, b) {
-		return true
+// creditSlugs is every person slug a credit name can land on: its own, and the
+// ones its initials respell to, which are the only others the initials merge
+// accepts (respells). None for a name that slugs away to nothing, which is no
+// record a review named.
+func creditSlugs(name string) []string {
+	slug, fellBack := personSlug(name)
+	if fellBack {
+		return nil
 	}
-	la, oka := p.creditLanding(decided, committed, a)
-	lb, okb := p.creditLanding(decided, committed, b)
-	return oka && okb && p.apart.Has(la, lb)
-}
-
-// creditLanding is the person record a credit name lands on: the live record its
-// slug (or that slug's survivor) names, else the initials merge's decision
-// (resolvePersonIn), else - before the batch is decided - the committed record
-// of its initials group (committedInitials.survivor), else its own slug, to be
-// created. ok is false for a name that slugs away to nothing.
-func (p *planner) creditLanding(decided initialsSurvivors, committed committedInitials, name string) (string, bool) {
-	r := p.resolvePersonIn(creditContext{initials: decided}, name)
-	if r.fellBack {
-		return "", false
-	}
-	if r.create {
-		if s, ok := committed.survivor(name); ok {
-			return s, true
-		}
-	}
-	return r.slug, true
+	return append([]string{slug}, initialsVariantSlugs(name)...)
 }
 
 // noteHonorific records one honorific merge for the run's report. It is a SET
@@ -2439,7 +2431,9 @@ func (p *planner) resolvePersonIn(ctx creditContext, name string) personResoluti
 	live, ok := p.livePerson(from)
 	if !ok {
 		survivor, merges := initialsMerge(ctx.initials, name, slug, fellBack)
-		if !merges {
+		// A review speaks above the initials rule: two people it told apart stay
+		// two, however alike their initials are spelled.
+		if !merges || p.apart.Has(slug, survivor.slug) {
 			return personResolution{slug: slug, create: true, name: name, fellBack: fellBack}
 		}
 		from = survivor.slug

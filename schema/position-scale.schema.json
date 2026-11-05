@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://meta.audiosilo.app/schema/position-scale.schema.json",
+  "title": "position scale",
+  "description": "The ruler a work's characters and recaps sidecars are numbered on: how long the book is in the units AUTHORING.md's position model counts it by. A consumer needs it to place a position on a recording whose tracks are finer or coarser than the book's own units (five acts on a 43-track recording), and metacheck measures the sidecar against it in place of the recording's track count. Positions may not pass it. Community data about the sidecar, carried in the CC BY-SA layer; only the entry-level member, keyed by the entry's work slug, so it holds no work, license or sources of its own.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["length", "unit"],
+  "properties": {
+    "length": {
+      "description": "The book's whole length in these units, whether or not the sidecar reaches it.",
+      "type": "integer",
+      "minimum": 1
+    },
+    "unit": {
+      "description": "What one position counts. A closed list.",
+      "type": "string",
+      "enum": ["act", "chapter", "entry", "episode", "letter", "part", "piece", "poem", "scene", "section", "track"]
+    },
+    "partial": {
+      "description": "The sidecar's positions stop short of length on purpose: they are sound, and the rest of the book is simply not staged (in_short and ending may carry it). Absent means the sidecar spans the book.",
+      "type": "boolean"
+    }
+  }
+}

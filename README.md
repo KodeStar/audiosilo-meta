@@ -491,7 +491,29 @@ recording stating another volume total), `same-name-author` (below) and `fallbac
 re-importing the project's id lands it. `--worklist <path>` appends the
 worklist to a file as well, one NDJSON row per project (`librivox_id`, `title`,
 `authors`, `reason`, `candidates`), on a `--dry-run` too, as `--conflicts`
-does. `--conflicts` rows for these projects
+does. The answer to a row is a **reviewed decision** in
+`internal/importer/librivoxreviewed.json`, one entry per project with its reason:
+`attach` lands the recording on the named work whatever the title and author
+rules say (with `moves`, row person to work person, to carry a loose spelling's
+LibriVox id onto the catalogued person), and `own-work` makes it a book of its
+own (a separately named translation, a volume of a set, a stated edition, another
+author's book of the name), minted on its own title chain past the
+duplicate-identity guard. Each states the project's `title`, since LibriVox reuses
+project numbers. It is an input of the importer, not a hand edit, so rebuilding the
+mirror reaches the same work (attach rows are planned after every other row, so an
+attach can name a work a later project creates; its `moves` key the author id for the
+whole batch). A decision that cannot apply never
+falls through to the rules: an attach naming no live work is the worklist's
+`reviewed-work-gone`, one naming a work in another language `reviewed-other-language`,
+an own-work whose walk reaches a work that is not a home of its text
+`reviewed-own-work-taken` (it may be the one it was ruled apart from), and a project whose title's key has changed is
+`reviewed-title-changed`. A row refused before routing (`same-name-author`,
+`author-unsluggable`, `author-slot-taken`) keeps that refusal and the run warns that
+it shadows the decision; a `same-name-author` hold is settled on the person: put the
+`librivox_author_id` on the right record. An own-work beside its twin does not make
+their key ambiguous to a refusal: the duplicate-identity guard of every source, and the
+intake gate, still answer the twin (`check.SetApart`). `--attach-editions` and a
+relocation, which place the recording, still read the two as ambiguous. `--conflicts` rows for these projects
 carry `librivox_id`, since they have no ASIN, and so do the `--skipped` lines
 (one `{"librivox_id","reason"}` NDJSON line per project refused under a
 refusal code: an unknown language, no narrator, author or title, or the
@@ -578,7 +600,7 @@ the order the projects are read in.
   `<name>-librivox-author-<author id>` (`ralph-scott-librivox-author-16428`,
   beside a retail narrator called Ralph Scott), and the import report lists the
   pair (`librivox worklist: N author ids filed at <name>-librivox-author-<id>`)
-  for a person to merge or confirm, since LibriVox may list one person under two
+  to merge or confirm, since LibriVox may list one person under two
   ids; a collective such as "Anonymous" is never split this way. When the
   catalogued person's works are dated only
   by their recordings' release dates (a modern book and a modern edition of an
@@ -598,6 +620,20 @@ the order the projects are read in.
   of one name in a single import are told apart the same way: the second is
   the first's person only when both state the same birth and death years, else
   dated or at its author-id form, as a later import would decide it.
+- **One person under two LibriVox ids.** LibriVox lists some people twice: two
+  author records (F. P. Walter 6492 and 6858), or two reader accounts (Branko
+  Collin 778 and 1775). An import never records the second id: a reader's is
+  filed beside the first, an author's is told apart by the rules above (the same
+  years land the credit on the first's record, the id stays unrecorded; no year
+  files it beside them, on the report's "beside a same-name person" list). Once
+  the evidence says one person (the same text, the same years, the same site on
+  both reader pages), the fold moves the credits, retires the twin's slug in
+  `data/redirects.json` and records the second id in `librivox_author_aliases`
+  or `librivox_reader_aliases` on the surviving person. An import resolves an
+  alias as it does the record's own id, so the twin is not minted again, and
+  metacheck refuses a retired slug of a LibriVox id form whose target does not
+  answer to that id. Evidence of two people is a reviewed `merge-people` rejection
+  in `internal/audit/reviewed.json` instead. No run writes either.
 
 ## Audiobookshelf
 

@@ -3332,18 +3332,10 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "gary-sinise-2011": {
+        "billy-howle-2021": {
           "abridged": false,
-          "added_at": "2026-07-17T09:27:30+00:00",
+          "added_at": "2026-11-05",
           "asin": [
-            {
-              "asin": "0241510058",
-              "region": "us"
-            },
-            {
-              "asin": "B004TNLOV8",
-              "region": "us"
-            },
             {
               "asin": "0241510058",
               "region": "de"
@@ -3391,8 +3383,84 @@
               "title": "End Credits"
             }
           ],
+          "cover_url": "https://m.media-amazon.com/images/I/819NrB-A7NS.jpg",
+          "id": "billy-howle-2021",
+          "isbn": [
+            "9780241510056"
+          ],
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "billy-howle"
+          ],
+          "publisher": "Penguin Classics",
+          "release_date": "2021-07-15",
+          "runtime_min": 189,
+          "sources": [
+            {
+              "imported_at": "2026-11-05",
+              "ref": "0241510058",
+              "type": "libex-import"
+            }
+          ],
+          "work": "of-mice-and-men"
+        },
+        "gary-sinise-2011": {
+          "abridged": false,
+          "added_at": "2026-07-17T09:27:30+00:00",
+          "asin": [
+            {
+              "asin": "B004TNLOV8",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 15461,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1695988,
+              "start_ms": 15461,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2101057,
+              "start_ms": 1711449,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2911012,
+              "start_ms": 3812506,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1980419,
+              "start_ms": 6723518,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1766605,
+              "start_ms": 8703937,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 986800,
+              "start_ms": 10470542,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 38412,
+              "start_ms": 11457342,
+              "title": "End Credits"
+            }
+          ],
           "cover_url": "https://m.media-amazon.com/images/I/51+LJDp5NGS._SL500_.jpg",
           "id": "gary-sinise-2011",
+          "isbn": [
+            "9781101530900"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -3408,23 +3476,8 @@
               "type": "audiosilo-books-import"
             },
             {
-              "imported_at": "2026-07-17",
-              "ref": "0241510058",
-              "type": "audible-lookup"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "0241510058",
-              "type": "libex-import"
-            },
-            {
               "imported_at": "2026-07-30",
               "ref": "B004TNLOV8",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "0241510058",
               "type": "libex-import"
             }
           ],

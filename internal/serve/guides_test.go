@@ -37,15 +37,15 @@ func TestRecapPageCarriesTheRankingSubstance(t *testing.T) {
 	}
 
 	for _, want := range []string{
-		"<title>Project Hail Mary recap - story so far and chapter summaries - AudioSilo Meta</title>",
+		"<title>Project Hail Mary recap - story so far and section summaries - AudioSilo Meta</title>",
 		`<link rel="canonical" href="https://meta.test/works/project-hail-mary/recap">`,
 		`<meta property="og:type" content="article">`,
 		// The cover rides along, so a shared link is not a bare icon.
 		`<meta property="og:image" content="https://example.test/phm.jpg">`,
 		`<h1 class="text-hi">Project Hail Mary recap</h1>`,
 		"<summary>In short",
-		"<summary>Story so far - through chapter 2",
-		"<summary>Story so far - through chapter 9",
+		"<summary>Story so far - through section 2",
+		"<summary>Story so far - through section 9",
 		"<summary>How does it end?",
 		`<div data-nosnippet>`,
 		`<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>`,
@@ -103,7 +103,7 @@ func TestCharactersPageCarriesTheRankingSubstance(t *testing.T) {
 		"<summary>Rocky <span class=\"text-dim\">(Supporting)</span></summary>",
 		"Also known as Dr. Grace",
 		"Appears from the start",
-		"First appears in chapter 8",
+		"First appears in section 8",
 		`<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>`,
 		`href="/build?work=project-hail-mary&amp;kind=characters"`,
 		`<a href="/works/project-hail-mary/recap">Project Hail Mary recap</a>`,
@@ -317,7 +317,7 @@ func TestWorkPageLinksItsGuides(t *testing.T) {
 	_, page := getPage(t, ts.URL, "/works/project-hail-mary")
 	for _, want := range []string{
 		"<h2>Guides</h2>",
-		`<a href="/works/project-hail-mary/recap">Chapter-by-chapter recap of Project Hail Mary</a>`,
+		`<a href="/works/project-hail-mary/recap">Section-by-section recap of Project Hail Mary</a>`,
 		`<a href="/works/project-hail-mary/characters">Project Hail Mary character guide</a>`,
 	} {
 		if !strings.Contains(page, want) {
@@ -592,6 +592,28 @@ func TestGuideProbesTolerateOlderArtifacts(t *testing.T) {
 // chapter-0 forms: 0 is front matter or prior-book knowledge (see the position
 // model), so a series-scoped recap there is the "previously" catch-up and a
 // book-scoped one is what you need before starting.
+// TestRecapClaimsNameTheStatedUnit: the page title and the work page's anchor promise
+// what the recaps actually count, chapters when nothing is stated.
+func TestRecapClaimsNameTheStatedUnit(t *testing.T) {
+	for _, tc := range []struct {
+		scale         *model.PositionScale
+		clause, label string
+	}{
+		{nil, "story so far and chapter summaries", "Chapter-by-chapter recap of Hamlet"},
+		{&model.PositionScale{Length: 5, Unit: "act"}, "story so far and act summaries", "Act-by-act recap of Hamlet"},
+	} {
+		d := &query.WorkDetail{Title: "Hamlet", PositionScale: tc.scale,
+			Recaps: []query.RecapOut{{Through: query.PositionOut{Chapter: 1}, Text: "x"}}}
+		if got := recapTitle(d); !strings.Contains(got, tc.clause) {
+			t.Errorf("recapTitle = %q, want %q", got, tc.clause)
+		}
+		links := workGuideLinks(d)
+		if len(links) != 1 || links[0].Text != tc.label {
+			t.Errorf("workGuideLinks = %+v, want %q", links, tc.label)
+		}
+	}
+}
+
 func TestRecapRowLabel(t *testing.T) {
 	cases := []struct {
 		in   query.RecapOut
@@ -603,8 +625,11 @@ func TestRecapRowLabel(t *testing.T) {
 		{query.RecapOut{Through: query.PositionOut{Chapter: 1}, Scope: "book"}, "Story so far - through chapter 1"},
 		{query.RecapOut{Through: query.PositionOut{Chapter: 12}}, "Story so far - through chapter 12"},
 	}
+	if got, want := recapRowLabel(query.RecapOut{Through: query.PositionOut{Chapter: 3}}, "act"), "Story so far - through act 3"; got != want {
+		t.Errorf("recapRowLabel with a stated act = %q, want %q", got, want)
+	}
 	for _, tc := range cases {
-		if got := recapRowLabel(tc.in); got != tc.want {
+		if got := recapRowLabel(tc.in, "chapter"); got != tc.want {
 			t.Errorf("recapRowLabel(%+v) = %q, want %q", tc.in, got, tc.want)
 		}
 	}
@@ -618,7 +643,7 @@ func TestRevealLabelAndRoleLabel(t *testing.T) {
 		2: "First appears in chapter 2", 40: "First appears in chapter 40",
 	}
 	for in, want := range reveals {
-		if got := revealLabel(in); got != want {
+		if got := revealLabel(in, "chapter"); got != want {
 			t.Errorf("revealLabel(%d) = %q, want %q", in, got, want)
 		}
 	}

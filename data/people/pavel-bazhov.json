@@ -491,6 +491,9 @@
     },
     "peaceuntoyou": {
       "id": "peaceuntoyou",
+      "librivox_reader_aliases": [
+        3485
+      ],
       "librivox_reader_id": 2754,
       "license": "CC0-1.0",
       "name": "peaceuntoyou",
@@ -499,15 +502,7 @@
           "imported_at": "2026-10-27",
           "ref": "2185",
           "type": "librivox"
-        }
-      ]
-    },
-    "peaceuntoyou-librivox-3485": {
-      "id": "peaceuntoyou-librivox-3485",
-      "librivox_reader_id": 3485,
-      "license": "CC0-1.0",
-      "name": "peaceuntoyou",
-      "sources": [
+        },
         {
           "imported_at": "2026-10-28",
           "ref": "2297",
@@ -1929,6 +1924,19 @@
           "imported_at": "2026-08-01",
           "ref": "B00GNDH9XO",
           "type": "libex-import"
+        }
+      ]
+    },
+    "peggy-librivox-11177": {
+      "id": "peggy-librivox-11177",
+      "librivox_reader_id": 11177,
+      "license": "CC0-1.0",
+      "name": "Peggy",
+      "sources": [
+        {
+          "imported_at": "2026-11-04",
+          "ref": "10394",
+          "type": "librivox"
         }
       ]
     },
@@ -4204,6 +4212,21 @@
         {
           "imported_at": "2026-10-29",
           "ref": "10287",
+          "type": "librivox"
+        }
+      ]
+    },
+    "percy-ewing-matheson": {
+      "birth_year": 1859,
+      "death_year": 1946,
+      "id": "percy-ewing-matheson",
+      "librivox_author_id": 15093,
+      "license": "CC0-1.0",
+      "name": "Percy Ewing Matheson",
+      "sources": [
+        {
+          "imported_at": "2026-11-04",
+          "ref": "15279",
           "type": "librivox"
         }
       ]

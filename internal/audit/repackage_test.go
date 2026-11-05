@@ -52,11 +52,13 @@ func repackWork(t testing.TB, files map[string]string, id string, lvID, lvRuntim
 }
 
 // metamorphosis is the worked example: David Barnes's LibriVox project 527 (154 min,
-// 3 sections) beside Paperless's 152-minute edition of it.
+// 3 sections) beside Paperless's 152-minute edition of it. Its work is not at the real
+// slug: the audit reads the embedded reviewed.json, whose accepted link on the real
+// pair would withdraw the fixture's proposal.
 func metamorphosis(t testing.TB, retail ...testpack.RecOpt) map[string]string {
 	t.Helper()
 	files := repackPeople(t)
-	repackWork(t, files, "metamorphosis", 527, 154, 3, append([]testpack.RecOpt{withRuntime(152)}, retail...)...)
+	repackWork(t, files, "repack-metamorphosis", 527, 154, 3, append([]testpack.RecOpt{withRuntime(152)}, retail...)...)
 	return files
 }
 
@@ -69,11 +71,11 @@ func TestRepackageProposesTheWorkedExample(t *testing.T) {
 		t.Fatalf("want one proposal, got %+v", got)
 	}
 	fd := got[0]
-	want := Proposal{Op: OpLinkLibrivoxRepackage, Target: "metamorphosis", From: "david-barnes-2016", To: "david-barnes", Advisory: true}
+	want := Proposal{Op: OpLinkLibrivoxRepackage, Target: "repack-metamorphosis", From: "david-barnes-2016", To: "david-barnes", Advisory: true}
 	if p := fd.Propose; p.Op != want.Op || p.Target != want.Target || p.From != want.From || p.To != want.To || !p.Advisory {
 		t.Fatalf("proposal = %+v, want %+v", p, want)
 	}
-	if fd.Subclass != repackRuntime || fd.Key != "metamorphosis" || fd.Recording != "david-barnes-2016" {
+	if fd.Subclass != repackRuntime || fd.Key != "repack-metamorphosis" || fd.Recording != "david-barnes-2016" {
 		t.Errorf("subclass %q key %q recording %q", fd.Subclass, fd.Key, fd.Recording)
 	}
 	for _, s := range []string{"LibriVox project 527", "same readers david-barnes", "runtime 152 min against the project's 154, 2 shorter", `publisher "Paperless"`} {
@@ -246,7 +248,7 @@ func TestRepackageLanguageSignal(t *testing.T) {
 // pair left out (here, a runtime unstated on a one-off imprint) has nothing to accept.
 func TestRepackageSiblingNoteNamesProposedPairsOnly(t *testing.T) {
 	files := metamorphosis(t)
-	files["works/xx/metamorphosis/recordings/david-barnes-v2.json"] = recJSON(t, "david-barnes-v2", "metamorphosis",
+	files["works/xx/repack-metamorphosis/recordings/david-barnes-v2.json"] = recJSON(t, "david-barnes-v2", "repack-metamorphosis",
 		withNarrators("david-barnes"), lvProject(528, 3), testpack.WithoutRuntime())
 	rep := runFixture(t, files)
 	got := repackFindings(t, rep)
@@ -256,7 +258,7 @@ func TestRepackageSiblingNoteNamesProposedPairsOnly(t *testing.T) {
 	if notes := strings.Join(got[0].Notes, "\n"); strings.Contains(notes, "david-barnes-v2") {
 		t.Errorf("the note names a pair that is not proposed: %q", notes)
 	}
-	files["works/xx/metamorphosis/recordings/david-barnes-v2.json"] = recJSON(t, "david-barnes-v2", "metamorphosis",
+	files["works/xx/repack-metamorphosis/recordings/david-barnes-v2.json"] = recJSON(t, "david-barnes-v2", "repack-metamorphosis",
 		withNarrators("david-barnes"), lvProject(528, 3), withRuntime(153))
 	for _, fd := range repackFindings(t, runFixture(t, files)) {
 		if !strings.Contains(strings.Join(fd.Notes, "\n"), "also read LibriVox recording") {
@@ -290,7 +292,7 @@ func linkDecision(decision, target, from, to string) reviewedDecision {
 // An ACCEPT is the link recorded: the pair stops being proposed and the decision reads
 // linked - whether or not the detector still proposes it, while both recordings stand.
 func TestRepackageReviewedAcceptRecordsTheLink(t *testing.T) {
-	accept := linkDecision("accept", "metamorphosis", "david-barnes-2016", "david-barnes")
+	accept := linkDecision("accept", "repack-metamorphosis", "david-barnes-2016", "david-barnes")
 	rep := runFixtureRejecting(t, metamorphosis(t), accept)
 	if got := repackFindings(t, rep); len(got) != 0 {
 		t.Fatalf("an accepted pair is still proposed: %+v", got)
@@ -321,7 +323,7 @@ func TestRepackageReviewedAcceptRecordsTheLink(t *testing.T) {
 
 // A REJECT suppresses the pair, and reads suppressed while both recordings stand.
 func TestRepackageReviewedRejectSuppresses(t *testing.T) {
-	reject := linkDecision("reject", "metamorphosis", "david-barnes-2016", "david-barnes")
+	reject := linkDecision("reject", "repack-metamorphosis", "david-barnes-2016", "david-barnes")
 	rep := runFixtureRejecting(t, metamorphosis(t), reject)
 	if got := repackFindings(t, rep); len(got) != 0 {
 		t.Fatalf("a rejected pair is still proposed: %+v", got)
@@ -338,9 +340,9 @@ func TestRepackageReviewedRejectSuppresses(t *testing.T) {
 // acceptance is refused, as for every other op.
 func TestRepackageConvergingDecisionsRefuseTheAcceptance(t *testing.T) {
 	accept := linkDecision("accept", "metamorphosis-old", "david-barnes-2016", "david-barnes")
-	reject := linkDecision("reject", "metamorphosis", "david-barnes-2016", "david-barnes")
+	reject := linkDecision("reject", "repack-metamorphosis", "david-barnes-2016", "david-barnes")
 	rep := runFixtureRejectingWith(t, metamorphosis(t),
-		`{"people":{},"series":{},"works":{"metamorphosis-old":"metamorphosis"}}`, reject, accept)
+		`{"people":{},"series":{},"works":{"metamorphosis-old":"repack-metamorphosis"}}`, reject, accept)
 	if got := repackFindings(t, rep); len(got) != 0 {
 		t.Fatalf("a rejected pair is still proposed: %+v", got)
 	}
@@ -360,7 +362,7 @@ func TestRepackageConvergingDecisionsRefuseTheAcceptance(t *testing.T) {
 func TestRepackageReviewedResolvesAndGoesStale(t *testing.T) {
 	retired := linkDecision("accept", "metamorphosis-old", "david-barnes-2016", "david-barnes")
 	rep := runFixtureRejectingWith(t, metamorphosis(t),
-		`{"people":{},"series":{},"works":{"metamorphosis-old":"metamorphosis"}}`, retired)
+		`{"people":{},"series":{},"works":{"metamorphosis-old":"repack-metamorphosis"}}`, retired)
 	if o := rep.Reviewed.All[0]; o.Status != statusLinked || len(repackFindings(t, rep)) != 0 {
 		t.Fatalf("a decision under a retired slug: status %q, findings %+v", o.Status, repackFindings(t, rep))
 	}
@@ -369,8 +371,8 @@ func TestRepackageReviewedResolvesAndGoesStale(t *testing.T) {
 		d    reviewedDecision
 		why  string
 	}{
-		{"a recording gone", linkDecision("reject", "metamorphosis", "gone-2010", "david-barnes"), "no longer holds recording gone-2010"},
-		{"the sides swapped", linkDecision("accept", "metamorphosis", "david-barnes", "david-barnes-2016"), "is itself LibriVox project 527"},
+		{"a recording gone", linkDecision("reject", "repack-metamorphosis", "gone-2010", "david-barnes"), "no longer holds recording gone-2010"},
+		{"the sides swapped", linkDecision("accept", "repack-metamorphosis", "david-barnes", "david-barnes-2016"), "is itself LibriVox project 527"},
 		{"no such work", linkDecision("accept", "nowhere", "david-barnes-2016", "david-barnes"), "no live work nowhere"},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
@@ -403,7 +405,7 @@ func TestParseReviewedRepackageDecisions(t *testing.T) {
 			extra += `,"from":"` + from + `"`
 		}
 		return `{"decision":"` + decision + `","op":"link-librivox-repackage","reason":"why",` +
-			`"target":"metamorphosis","to":"david-barnes"` + extra + `}`
+			`"target":"repack-metamorphosis","to":"david-barnes"` + extra + `}`
 	}
 	const retail = "david-barnes-2016"
 	if err := parse(entry("accept", retail, "")); err != nil {
@@ -437,7 +439,7 @@ func TestParseReviewedRepackageDecisions(t *testing.T) {
 func twoProjects(t testing.TB) map[string]string {
 	t.Helper()
 	files := metamorphosis(t)
-	files["works/xx/metamorphosis/recordings/david-barnes-v2.json"] = recJSON(t, "david-barnes-v2", "metamorphosis",
+	files["works/xx/repack-metamorphosis/recordings/david-barnes-v2.json"] = recJSON(t, "david-barnes-v2", "repack-metamorphosis",
 		withNarrators("david-barnes"), withRuntime(153), lvProject(528, 3))
 	return files
 }
@@ -449,7 +451,7 @@ func TestRepackageAcceptWithdrawsEveryPairOfTheRetailRecording(t *testing.T) {
 	if got := repackFindings(t, runFixture(t, files)); len(got) != 2 {
 		t.Fatalf("want the retail edition paired with both projects, got %+v", got)
 	}
-	rep := runFixtureRejecting(t, files, linkDecision("accept", "metamorphosis", "david-barnes-2016", "david-barnes"))
+	rep := runFixtureRejecting(t, files, linkDecision("accept", "repack-metamorphosis", "david-barnes-2016", "david-barnes"))
 	if got := repackFindings(t, rep); len(got) != 0 {
 		t.Fatalf("a pair of an accepted retail recording is still proposed: %+v", got)
 	}
@@ -465,8 +467,8 @@ func TestRepackageAcceptWithdrawsEveryPairOfTheRetailRecording(t *testing.T) {
 // recording is refused, naming the link already recorded.
 func TestRepackageSecondAcceptOfOneRetailRecordingIsRefused(t *testing.T) {
 	rep := runFixtureRejecting(t, twoProjects(t),
-		linkDecision("accept", "metamorphosis", "david-barnes-2016", "david-barnes"),
-		linkDecision("accept", "metamorphosis", "david-barnes-2016", "david-barnes-v2"))
+		linkDecision("accept", "repack-metamorphosis", "david-barnes-2016", "david-barnes"),
+		linkDecision("accept", "repack-metamorphosis", "david-barnes-2016", "david-barnes-v2"))
 	first, second := rep.Reviewed.All[0], rep.Reviewed.All[1]
 	if first.Status != statusLinked {
 		t.Errorf("first acceptance = %q (%s), want %q", first.Status, first.Why, statusLinked)
@@ -479,8 +481,8 @@ func TestRepackageSecondAcceptOfOneRetailRecordingIsRefused(t *testing.T) {
 		t.Errorf("pairs still proposed beside a recorded link: %+v", got)
 	}
 	// Two acceptances of the very same pair are one record, not a conflict.
-	rep = runFixtureRejectingWith(t, twoProjects(t), `{"people":{},"series":{},"works":{"metamorphosis-old":"metamorphosis"}}`,
-		linkDecision("accept", "metamorphosis", "david-barnes-2016", "david-barnes"),
+	rep = runFixtureRejectingWith(t, twoProjects(t), `{"people":{},"series":{},"works":{"metamorphosis-old":"repack-metamorphosis"}}`,
+		linkDecision("accept", "repack-metamorphosis", "david-barnes-2016", "david-barnes"),
 		linkDecision("accept", "metamorphosis-old", "david-barnes-2016", "david-barnes"))
 	if s := rep.Reviewed.All[1].Status; s != statusLinked {
 		t.Errorf("a converging acceptance of the same pair = %q, want %q", s, statusLinked)

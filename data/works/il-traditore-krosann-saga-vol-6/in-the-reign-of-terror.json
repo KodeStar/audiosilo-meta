@@ -7,12 +7,50 @@
       ],
       "genres": [
         "action-adventure",
-        "historical-fiction"
+        "historical-fiction",
+        "young-adult"
       ],
       "id": "in-the-reign-of-terror",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "jim-hodges-2018": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0777SJ3D5",
+              "region": "us"
+            },
+            {
+              "asin": "B0777SDGQX",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81-7oimeOxL.jpg",
+          "id": "jim-hodges-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jim-hodges"
+          ],
+          "publisher": "Jim Hodges Productions",
+          "release_date": "2018-03-13",
+          "runtime_min": 515,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0777SJ3D5",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0777SDGQX",
+              "type": "libex-import"
+            }
+          ],
+          "work": "in-the-reign-of-terror"
+        },
         "stuart-langton-2006": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -133,63 +171,7 @@
           "imported_at": "2026-07-29",
           "ref": "B002V1OB9M",
           "type": "libex-import"
-        }
-      ],
-      "title": "In the Reign of Terror"
-    },
-    "in-the-reign-of-terror-george-alfred-henty": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "george-alfred-henty"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "young-adult"
-      ],
-      "id": "in-the-reign-of-terror-george-alfred-henty",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jim-hodges-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0777SJ3D5",
-              "region": "us"
-            },
-            {
-              "asin": "B0777SDGQX",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81-7oimeOxL.jpg",
-          "id": "jim-hodges-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jim-hodges"
-          ],
-          "publisher": "Jim Hodges Productions",
-          "release_date": "2018-03-13",
-          "runtime_min": 515,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0777SJ3D5",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0777SDGQX",
-              "type": "libex-import"
-            }
-          ],
-          "work": "in-the-reign-of-terror-george-alfred-henty"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0777SJ3D5",

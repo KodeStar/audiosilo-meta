@@ -4392,6 +4392,9 @@
       "birth_year": 1943,
       "death_year": 2024,
       "id": "f-p-walter",
+      "librivox_author_aliases": [
+        6858
+      ],
       "librivox_author_id": 6492,
       "license": "CC0-1.0",
       "name": "F. P. Walter",
@@ -4400,15 +4403,7 @@
           "imported_at": "2026-11-04",
           "ref": "665",
           "type": "librivox"
-        }
-      ]
-    },
-    "f-p-walter-librivox-author-6858": {
-      "id": "f-p-walter-librivox-author-6858",
-      "librivox_author_id": 6858,
-      "license": "CC0-1.0",
-      "name": "F. P. Walter",
-      "sources": [
+        },
         {
           "imported_at": "2026-11-04",
           "ref": "4385",
@@ -7990,6 +7985,19 @@
         }
       ]
     },
+    "fastfinge": {
+      "id": "fastfinge",
+      "librivox_reader_id": 610,
+      "license": "CC0-1.0",
+      "name": "fastfinge",
+      "sources": [
+        {
+          "imported_at": "2026-11-04",
+          "ref": "155",
+          "type": "librivox"
+        }
+      ]
+    },
     "fastreads": {
       "id": "fastreads",
       "kind": "publisher",
@@ -8000,6 +8008,19 @@
           "imported_at": "2026-07-29",
           "ref": "B0722ZCX39",
           "type": "libex-import"
+        }
+      ]
+    },
+    "fatch": {
+      "id": "fatch",
+      "librivox_reader_id": 15976,
+      "license": "CC0-1.0",
+      "name": "fatch",
+      "sources": [
+        {
+          "imported_at": "2026-11-04",
+          "ref": "15900",
+          "type": "librivox"
         }
       ]
     },
@@ -11111,14 +11132,21 @@
       "name": "Fenton Johnson",
       "sources": [
         {
-          "imported_at": "2026-07-29",
-          "ref": "168457708X",
-          "type": "libex-import"
-        },
-        {
           "imported_at": "2026-10-29",
           "ref": "13135",
           "type": "librivox"
+        }
+      ]
+    },
+    "fenton-johnson-b-1953": {
+      "id": "fenton-johnson-b-1953",
+      "license": "CC0-1.0",
+      "name": "Fenton Johnson (b. 1953)",
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "168457708X",
+          "type": "libex-import"
         }
       ]
     },

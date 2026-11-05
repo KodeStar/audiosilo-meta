@@ -1466,20 +1466,39 @@
           "imported_at": "2026-07-25",
           "ref": "B002V0A66U",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-11-05",
+          "ref": "https://catalog.library.nashville.org/Record/CARL0000106141",
+          "type": "user"
         }
       ],
       "works": [
         {
           "position": "2",
-          "work": "legends-stories-by-the-masters-of-modern-fantasy"
+          "work": "legends-ii-volume-i"
         },
         {
           "position": "1",
-          "work": "when-life-gives-you-legends"
-        },
+          "work": "legends-stories-by-the-masters-of-modern-fantasy"
+        }
+      ]
+    },
+    "legends-2": {
+      "id": "legends-2",
+      "license": "CC0-1.0",
+      "name": "Legends",
+      "sources": [
         {
-          "position": "3",
-          "work": "test-of-the-twins"
+          "imported_at": "2026-11-05",
+          "ref": "B0DNNDTJCZ",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
+        {
+          "position": "1",
+          "work": "when-life-gives-you-legends"
         }
       ]
     },
@@ -1598,6 +1617,10 @@
         {
           "position": "4",
           "work": "legends-ii-volume-iv"
+        },
+        {
+          "position": "1",
+          "work": "legends-ii-volume-i"
         }
       ]
     },

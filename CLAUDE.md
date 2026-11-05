@@ -192,14 +192,16 @@ never noticed (ai-verify read only the metadiff summary). Two halves:
   status SUMMARY.md lists so a typo still surfaces. The importer's
   honorific fold honours the same rejections: a pair a merge-people rejection names
   is never folded, titled onto bare or (LibriVox rule 1c) bare onto titled, nor by the
-  credential fold ("X PhD"), each judged by the records the two spellings LAND on
-  through the initials merge as well as the slugs they spell, so an
+  credential fold ("X PhD"), each judged by every slug the two spellings can LAND on
+  through the initials merge, nor by the initials merge itself, so an
   import cannot re-merge a pair a maintainer separated (`importer.Options.Distinct`,
   filled from `audit.ReviewedDistinct()` by cmd/metaimport and internal/issueform,
   resolved through redirects.json by `check.ResolveDistinct`), and so does the series
   same-person rule (`importer.PeopleApart`, read by the series-author fit and the
   intake form's work-slug, takeover and series gates): a reviewed pair is never one
-  author, so the doctor's book cannot join the novelist's series. metabuild's census and metaaudit's LOADER carry-through load
+  author, so the doctor's book cannot join the novelist's series, not even through a
+  third spelling of both ("A. George": the review is a never-join constraint inside
+  the grouping, `importer.personGroups`) or a title spelling his name. metabuild's census and metaaudit's LOADER carry-through load
   without the decisions (neither is the census anyone reads).
 - **New advisories reach the automation.** On a pull request touching data/,
   `.github/scripts/advisory-delta.sh` runs the same metacheck binary over the base and
@@ -642,7 +644,9 @@ it, `pkg/check` and every writer now refuse it loudly.
   author whose name slugs to nothing at `librivox-author-<author id>`
   (`model.LibrivoxUnslugAuthorSlug`). Each is legal only on a record carrying
   that id - every form is asked through `model.PersonIDMatches`, and a
-  refusal's hint is `model.WantPersonID`.
+  refusal's hint is `model.WantPersonID`. One person under two LibriVox ids keeps
+  the second in `librivox_reader_aliases` / `librivox_author_aliases`, which an
+  import resolves to the record; the rule is on `model.Person`.
 - **series** - an entry in the series family: name + ordered works with **string**
   positions ("1", "2.5") including omnibus ranges ("1-3.5"); no two works may
   share a position. Optional `translation_of` (the work's slug set and rules one
@@ -704,9 +708,18 @@ it, `pkg/check` and every writer now refuse it loudly.
   the queue a generation wave works through, and a member it cannot see is a
   member nobody is asked to write.
 
+- **position_scale** - the same entry's optional `{"length", "unit", "partial"?}`,
+  the ruler its characters and recaps are numbered on; a wire contract served on
+  `GET /works/{id}`. It carries no `license` or `sources` of its own: it is community
+  data about the members beside it, in the CC BY-SA layer by where it sits. No issue
+  form (decided, as for `description`): a coarse sidecar by form gets the census
+  advisory until a PR states its ruler, and the intake refuses a member beside a
+  stated scale. PACKAGES.md `pkg/check`.
+
 **Position model** (`common.schema.json#/$defs/position`): `{ "chapter": <int
 >= 0> }`, the logical **edition-independent** work chapter (1-based; `0` = front
-matter / prior-book knowledge). A consumer maps its recording-chapter timeline
+matter / prior-book knowledge), or the unit a `position_scale` states where the
+entry has one (a play's act, a diary's entry). A consumer maps its recording-chapter timeline
 onto these ordinals; text-to-audio alignment is a consumer concern, out of
 schema scope. The object shape is deliberately extensible (a later `paragraph`/
 `offset_ms` can be added without a breaking change).
@@ -748,29 +761,31 @@ a tie, `ordering`, `ordering_of`), `search_fts.language` as its LAST column and
 `idx_works_language(language)`; the LIBRIVOX layer landed in **schema_version 8**
 (recording LibriVox columns, `chapters.audio_url`, people
 LibriVox ids and life years, `work_credits`, `recording_sources`; PACKAGES.md
-"The LIBRIVOX layer"); the LIBRIVOX RECORDING layer in **schema_version 9** (the
-current version: `recordings.librivox_title`, `chapters.section_number`,
+"The LIBRIVOX layer"); the LIBRIVOX RECORDING layer in **schema_version 9**
+(`recordings.librivox_title`, `chapters.section_number`,
 `recording_credits`, `chapter_readers`, `recording_librivox_genres` and
 `recording_sources.added_at` (the source-filtered works/latest's order) - a LibriVox
 project's own title, section numbers, translators, section readers and genre
 names, which the LibriVox-shaped feed answers with; PACKAGES.md "The LIBRIVOX
-RECORDING layer"); character `ord`/recap
+RECORDING layer"); the `position_scales(work_id, length, unit, partial)` table in
+**schema_version 10** (the current version); character `ord`/recap
 position order preserved, deterministic), and `metaserve` returns
 them inline on `GET /works/{id}`
 (`workDetail.characters`/`.recaps`/`.recap_summary`/`.genres`/
-`.community_description`/`.translation_of`/`.translations`, `omitempty`). The
+`.community_description`/`.position_scale`/`.translation_of`/`.translations`, `omitempty`). The
 serve queries degrade gracefully if the tables are absent (a newer binary
 briefly serving an older release): characters/recaps gate on schema_version >= 2,
 the recap summary on >= 3, genres on >= 4, the slug redirects on >= 5, the
 community description on >= 6, the languages layer on >= 7, the LibriVox
-layer on >= 8 and the LibriVox recording layer on >= 9, so a
+layer on >= 8, the LibriVox recording layer on >= 9 and the position scales on
+>= 10, so a
 table's absence is "no data" (for redirects: a retired slug 404s as it did before
 the mechanism existed), not a 500. The redirect, description and languages gates
 are asked ONCE at load rather than per request - those tables are EMPTY in every
 release until their first record lands, and all sit on ordinary 200 paths (the
 description on every work page, both guide pages and every ABS candidate; the
 translations and the ordering family on every work and series page) - so an
-artifact that CLAIMS version 5, 6, 7, 8 or 9 without its table (for 7: the
+artifact that CLAIMS version 5, 6, 7, 8, 9 or 10 without its table (for 7: the
 translations table or the series ordering columns; for 8: `librivoxShapeSQL`;
 for 9: `librivoxRecordingShapeSQL`) fails to open, with an
 error naming that claim; the builder writes the version and the table together,

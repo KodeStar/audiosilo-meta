@@ -33,8 +33,10 @@ import (
 //     and counting it would let every later volume by the squatter keep squatting,
 //     while a co-author (Patterson beside Karp in NYPD Red, a shared world's
 //     anthology) has written into the series with its author's own hand. An author
-//     is every spelling of one name at once (seriesAuthors.parent), so a person
-//     whose records forked into two slugs is not split into two minorities.
+//     is every spelling of one name at once (seriesAuthors.people), so a person
+//     whose records forked into two slugs is not split into two minorities - and
+//     never two people a review kept apart, whatever spelling could stand for both
+//     (personGroups, sharedWith).
 //   - OPEN: nothing counts as shared, but the series gives no evidence it belongs
 //     to anyone else: fewer than seriesClosedMinMembers members credit an
 //     individual, or no author dominates it (a shared universe, an anthology line, a
@@ -214,10 +216,12 @@ type seriesAuthors struct {
 	forms map[string]personForm
 	order []string
 	index map[string]int
-	// parent groups the slugs into PEOPLE: every spelling of one person
-	// (personForm.same) is one group, a spelling that matches two groups bridging
-	// them. A group's root is its earliest-seen slug.
-	parent map[string]string
+	// people groups the slugs, by their index in order, into PEOPLE (groupPeople,
+	// derived in refresh, and only when a spelling arrived since: grouped). A
+	// group's root is its earliest-seen slug. A clone shares it until then:
+	// nothing rewrites a grouping, a new spelling builds another.
+	people  personGroups
+	grouped bool
 	// memberSlugs is each member's distinct individual slugs and memberKeys its
 	// key, which is what the co-credit test and a merge read.
 	memberSlugs [][]string
@@ -257,27 +261,19 @@ func (sa *seriesAuthors) init() {
 		sa.works = map[string]bool{}
 		sa.forms = map[string]personForm{}
 		sa.index = map[string]int{}
-		sa.parent = map[string]string{}
 		sa.publishers = map[string]bool{}
 	}
 }
 
-// addForm records a credited spelling, joining the group of every person it is
-// a spelling of.
+// addForm records a credited spelling.
 func (sa *seriesAuthors) addForm(f personForm) {
 	if _, known := sa.forms[f.slug]; known {
 		return
 	}
 	sa.forms[f.slug] = f
 	sa.index[f.slug] = len(sa.order)
-	sa.parent[f.slug] = f.slug
-	for _, s := range sa.order {
-		if sa.forms[s].same(f) {
-			sa.union(s, f.slug)
-		}
-	}
 	sa.order = append(sa.order, f.slug)
-	sa.stale = true
+	sa.stale, sa.grouped = true, false
 }
 
 // addMember records a member crediting slugs (already added as forms).
@@ -297,31 +293,55 @@ func (sa *seriesAuthors) addMember(key string, slugs []string) {
 	sa.stale = true
 }
 
+// root is the slug naming s's group, its earliest-seen spelling, or "" for a slug
+// the series does not credit.
 func (sa *seriesAuthors) root(s string) string {
-	for sa.parent[s] != s {
-		sa.parent[s] = sa.parent[sa.parent[s]]
-		s = sa.parent[s]
+	sa.refresh()
+	i, ok := sa.index[s]
+	if !ok {
+		return ""
 	}
-	return s
+	return sa.order[sa.people.find(i)]
 }
 
-func (sa *seriesAuthors) union(a, b string) {
-	ra, rb := sa.root(a), sa.root(b)
-	if ra == rb {
-		return
-	}
-	if sa.index[ra] > sa.index[rb] {
-		ra, rb = rb, ra
-	}
-	sa.parent[rb] = ra
-	sa.stale = true
+// sharedWith reports whether spelling s makes its person one of the row's
+// authors: a row author is a spelling of s, and no row author is someone a review
+// keeps apart from anyone in s's group. Pairwise is not enough: with a review of
+// (alex-george, dr-alex-george), "A. George" in the novelist's group is a spelling
+// of the doctor's name too, and the doctor is still not the novelist. The whole
+// row is asked because a batch cluster reads as one row (clusterEvidence): the
+// novelist's row must not reach the doctor's series through the A. George beside
+// him in the cluster. So a row crediting both people of a pair shares neither
+// through a group holding one: rare, and the cost is a sibling series.
+func (sa *seriesAuthors) sharedWith(s string, row []personForm) bool {
+	return slices.ContainsFunc(row, sa.forms[s].same) && !sa.keptFromRow(s, row)
 }
 
-// refresh recomputes the per-person credit counts.
+// keptFromRow reports whether a review keeps a row author apart from anyone in
+// spelling s's group.
+func (sa *seriesAuthors) keptFromRow(s string, row []personForm) bool {
+	i := sa.index[s]
+	return slices.ContainsFunc(row, func(f personForm) bool { return sa.people.keptFrom(i, f.slug) })
+}
+
+// refresh recomputes the people and their credit counts.
+//
+// refresh and root call each other (refresh -> rootsOf -> root -> refresh). The
+// recursion is one level deep and harmless because of one invariant: refresh clears
+// stale and sets credits non-nil BEFORE it reads a root, so the nested call returns
+// at its first line, with the groups already built.
 func (sa *seriesAuthors) refresh() {
 	if !sa.stale && sa.credits != nil {
 		return
 	}
+	if !sa.grouped {
+		forms := make([]personForm, len(sa.order))
+		for i, s := range sa.order {
+			forms[i] = sa.forms[s]
+		}
+		sa.people, sa.grouped = groupPeople(forms), true
+	}
+	sa.stale = false // before rootsOf, which asks root: see above
 	sa.credits = map[string]int{}
 	sa.top = 0
 	for _, m := range sa.memberSlugs {
@@ -330,7 +350,6 @@ func (sa *seriesAuthors) refresh() {
 			sa.top = max(sa.top, sa.credits[r])
 		}
 	}
-	sa.stale = false
 }
 
 // rootsOf is the distinct people a member's slugs name.
@@ -368,7 +387,7 @@ func (sa *seriesAuthors) clone() *seriesAuthors {
 	out.forms = maps.Clone(sa.forms)
 	out.order = slices.Clone(sa.order)
 	out.index = maps.Clone(sa.index)
-	out.parent = maps.Clone(sa.parent)
+	out.people, out.grouped = sa.people, sa.grouped
 	out.memberSlugs = slices.Clone(sa.memberSlugs)
 	out.memberKeys = slices.Clone(sa.memberKeys)
 	out.publishers = maps.Clone(sa.publishers)
@@ -412,7 +431,7 @@ func (sa *seriesAuthors) fit(row *SeriesRow, large map[string]bool) seriesFit {
 	sa.refresh()
 	dominated := sa.members >= seriesClosedMinMembers && sa.dominant(sa.top)
 	for _, s := range sa.order {
-		if !slices.ContainsFunc(mine, sa.forms[s].same) {
+		if !sa.sharedWith(s, mine) {
 			continue
 		}
 		// In a dominated series a minority author counts as shared only when it
@@ -426,9 +445,11 @@ func (sa *seriesAuthors) fit(row *SeriesRow, large map[string]bool) seriesFit {
 		return seriesOpen
 	}
 	// The title arm reads the series' OWN authors only: a title naming an
-	// earlier squatter says nothing about whose series this is.
+	// earlier squatter says nothing about whose series this is. Nor does one
+	// naming an author the review keeps from the row: the words drop the courtesy
+	// title, so "Dr. Alex George's Mind Manual" spells the novelist's name too.
 	for _, s := range sa.order {
-		if titleNamesPerson(row.titleSlugs, sa.forms[s].words) && sa.owns(sa.root(s)) {
+		if titleNamesPerson(row.titleSlugs, sa.forms[s].words) && sa.owns(sa.root(s)) && !sa.keptFromRow(s, mine) {
 			return seriesOpen
 		}
 	}

@@ -2511,7 +2511,6 @@
     },
     "john-price": {
       "id": "john-price",
-      "librivox_author_id": 10467,
       "license": "CC0-1.0",
       "name": "John Price",
       "sources": [
@@ -2519,7 +2518,15 @@
           "imported_at": "2026-08-02",
           "ref": "B0GLQRJ3QK",
           "type": "libex-import"
-        },
+        }
+      ]
+    },
+    "john-price-librivox-author-10467": {
+      "id": "john-price-librivox-author-10467",
+      "librivox_author_id": 10467,
+      "license": "CC0-1.0",
+      "name": "John Price",
+      "sources": [
         {
           "imported_at": "2026-10-29",
           "ref": "8717",
@@ -3501,7 +3508,6 @@
     },
     "john-richardson": {
       "id": "john-richardson",
-      "librivox_author_id": 6513,
       "license": "CC0-1.0",
       "name": "John Richardson",
       "sources": [
@@ -3509,7 +3515,15 @@
           "imported_at": "2026-07-29",
           "ref": "B00APORHTS",
           "type": "libex-import"
-        },
+        }
+      ]
+    },
+    "john-richardson-librivox-author-6513": {
+      "id": "john-richardson-librivox-author-6513",
+      "librivox_author_id": 6513,
+      "license": "CC0-1.0",
+      "name": "John Richardson",
+      "sources": [
         {
           "imported_at": "2026-10-27",
           "ref": "935",
@@ -7547,7 +7561,10 @@
       ]
     },
     "john-w-campbell": {
+      "birth_year": 1910,
+      "death_year": 1971,
       "id": "john-w-campbell",
+      "librivox_author_id": 816,
       "license": "CC0-1.0",
       "name": "John W. Campbell",
       "sources": [
@@ -7555,6 +7572,11 @@
           "imported_at": "2026-08-02",
           "ref": "B002ZEZQD0",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-28",
+          "ref": "5822",
+          "type": "librivox"
         }
       ]
     },
@@ -8176,11 +8198,6 @@
       "name": "John Wesley",
       "sources": [
         {
-          "imported_at": "2026-08-02",
-          "ref": "B0F1N7Z5XK",
-          "type": "libex-import"
-        },
-        {
           "imported_at": "2026-10-28",
           "ref": "7414",
           "type": "librivox"
@@ -8217,6 +8234,23 @@
           "imported_at": "2026-10-29",
           "ref": "13135",
           "type": "librivox"
+        }
+      ]
+    },
+    "john-wesley-narrator": {
+      "id": "john-wesley-narrator",
+      "license": "CC0-1.0",
+      "name": "John Wesley (narrator)",
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0F1N7Z4YP",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0F1N7Z5XK",
+          "type": "libex-import"
         }
       ]
     },
@@ -8846,21 +8880,6 @@
           "imported_at": "2026-07-30",
           "ref": "B002V5GQOQ",
           "type": "libex-import"
-        }
-      ]
-    },
-    "john-wood-campbell-jr": {
-      "birth_year": 1910,
-      "death_year": 1971,
-      "id": "john-wood-campbell-jr",
-      "librivox_author_id": 816,
-      "license": "CC0-1.0",
-      "name": "John Wood Campbell Jr.",
-      "sources": [
-        {
-          "imported_at": "2026-10-28",
-          "ref": "5822",
-          "type": "librivox"
         }
       ]
     },

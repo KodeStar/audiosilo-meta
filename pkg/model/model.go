@@ -27,6 +27,9 @@ const (
 	// member. Singular, because one work has ONE description - the member name is
 	// the kind, and pkg/check's communityMembers is where the two meet.
 	KindDescription Kind = "description"
+	// KindPositionScale is the works-community entry's position_scale member:
+	// the ruler its characters and recaps are numbered on (PositionScale).
+	KindPositionScale Kind = "position_scale"
 )
 
 // Source records the provenance of a record. Every entity carries at least one.
@@ -84,6 +87,18 @@ type Person struct {
 	// record; pkg/check holds each unique across the dataset. 0 = none.
 	LibrivoxReaderID int `json:"librivox_reader_id,omitempty"`
 	LibrivoxAuthorID int `json:"librivox_author_id,omitempty"`
+	// LibrivoxReaderAliases / LibrivoxAuthorAliases are further LibriVox ids
+	// this person answers to, each in its namespace: LibriVox lists some people
+	// under two records, and a person is one record. An import resolves an alias
+	// to this record as it does the record's own id, so a second id cannot mint
+	// a twin. THE RULE, stated here and pointed at from everywhere else: only an
+	// evidenced decision writes these lists, never an importer (no run records a
+	// second id on a person). LibrivoxReaderID and LibrivoxAuthorID stay the
+	// record's own ids, the ones its slug (PersonIDMatches) and the LibriVox-shaped
+	// feed state. Sorted ascending, each unique across every id and alias of its
+	// namespace (pkg/check).
+	LibrivoxReaderAliases []int `json:"librivox_reader_aliases,omitempty"`
+	LibrivoxAuthorAliases []int `json:"librivox_author_aliases,omitempty"`
 	// BirthYear / DeathYear are the years the person was born and died, as a
 	// source stated them (today LibriVox's author dob/dod): a signed year, a
 	// negative one BC, 0 = not stated. There is no year 0, so the zero value
@@ -469,6 +484,31 @@ type Recaps struct {
 	Sources []Source `json:"sources"`
 }
 
+// PositionScale is the ruler a work's characters and recaps sidecars are numbered
+// on: the book's length in the units AUTHORING.md's position model counts it by.
+// A position is the book's own (five acts, 44 chapters, nine sections), a recording
+// tracks whatever it tracks, and a consumer gating on the listener's track needs
+// both ends of that translation to place one on the other.
+//
+// It is the works-community entry's `position_scale` member and holds exactly the
+// wire shape: GET /works/{id} serves these three fields, and audiosilo-server
+// mirrors them by hand. Work is the entry key, set by the loader, so the member
+// rides a slug tombstone with its neighbours and is never read from the file.
+type PositionScale struct {
+	Work   string `json:"-"`
+	Length int    `json:"length"`
+	Unit   string `json:"unit"`
+	// Partial says the sidecar stops short of Length on purpose.
+	Partial bool `json:"partial,omitempty"`
+}
+
+// PositionScaleUnits is the position_scale.unit vocabulary, in the schema enum's own
+// order: the ONE list a Go reader takes it from. TestPositionScaleUnitsAreTheSchemaEnum
+// pins it to the schema, and the OpenAPI document's restatement is pinned to it.
+func PositionScaleUnits() []string {
+	return []string{"act", "chapter", "entry", "episode", "letter", "part", "piece", "poem", "scene", "section", "track"}
+}
+
 // Description is the per-work sidecar holding a work's spoiler-free
 // description - the paragraph a stranger reads before deciding to listen. It
 // lives in the CC BY-SA layer, decoupled from the CC0 core work record.
@@ -494,6 +534,9 @@ type Catalog struct {
 	// that carries one. Named for the SLICE it is; the member (and the kind) is
 	// singular - see KindDescription.
 	Descriptions []*Description
+	// PositionScales is the works-community `position_scale` member, one per work
+	// that states one.
+	PositionScales []*PositionScale
 	// Redirects is the slug tombstone table (data/redirects.json): which
 	// retired slug now stands for which record above. It is nil for a tree
 	// that carries no table, which reads as "no redirects" everywhere.

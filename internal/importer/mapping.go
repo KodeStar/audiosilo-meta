@@ -761,9 +761,9 @@ type creditCensus struct {
 	onHonorific  func(from, to string)
 	onCredential func(from, to string)
 	// keptApart, when set, reports whether a reviewed merge-people rejection
-	// recorded the two credit names as two people - judged by the records they
-	// land on (planner.landingsKeptApart): the honorific and credential folds
-	// then leave the name as it is. nil keeps every fold.
+	// recorded the two credit names as two people - judged by every slug they can
+	// land on (planner.peopleKeptApart): the honorific and credential folds then
+	// leave the name as it is. nil keeps every fold.
 	keptApart func(titled, bare string) bool
 	// noHonorific turns the honorific fold off (unfolded) and nothing else: the
 	// credential fold still runs, so a LibriVox credit's folded and unfolded
@@ -787,6 +787,11 @@ func (c creditCensus) unfolded() creditCensus {
 	return c
 }
 
+// reviewedApart asks the census's veto (keptApart) about a fold of titled onto bare.
+func (c creditCensus) reviewedApart(titled, bare string) bool {
+	return c.keptApart != nil && c.keptApart(titled, bare)
+}
+
 // foldHonorific is the honorific fold (honorific.go) under the census's veto:
 // a pair a review kept apart (keptApart) stays titled. A merge it does make is
 // reported (onHonorific).
@@ -795,7 +800,7 @@ func (c creditCensus) foldHonorific(name string) string {
 		return name
 	}
 	bare := stripHonorific(name, c.sameSide)
-	if bare == name || (c.keptApart != nil && c.keptApart(name, bare)) {
+	if bare == name || c.reviewedApart(name, bare) {
 		return name
 	}
 	if c.onHonorific != nil {
@@ -811,7 +816,7 @@ func (c creditCensus) foldHonorific(name string) string {
 // separate decisions about a name, separately audited.
 func (c creditCensus) foldCredential(name string) string {
 	bare := stripCredential(name, c.sameSide)
-	if bare == name || (c.keptApart != nil && c.keptApart(name, bare)) {
+	if bare == name || c.reviewedApart(name, bare) {
 		return name
 	}
 	if c.onCredential != nil {

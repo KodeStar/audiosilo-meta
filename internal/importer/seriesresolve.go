@@ -28,10 +28,13 @@ import (
 //
 //  1. ANCHOR: a claim whose authors a candidate SHARES joins it, and its authors
 //     become that candidate's evidence; repeated until nothing more anchors, each
-//     round judged against the evidence as it stood when the round began.
+//     round judged against the evidence as it stood when the round began. Claims a
+//     review keeps apart that would anchor on one series in one round are left to
+//     step 2 (dropReviewedRivals).
 //  2. CLUSTER: the rest are grouped by shared author (personForm.same,
-//     transitively) and the groups taken largest first (ties by their smallest
-//     canonical key). A group joins the first catalogued candidate that ADMITS it
+//     transitively, never joining a pair a review kept apart) and the groups
+//     taken largest first (ties by their smallest canonical key). A group joins
+//     the first catalogued candidate that ADMITS it
 //     (seriesAuthors.admits: open to the group, and not handed to the group's
 //     authors by its arrival), else the first series this batch founded that
 //     admits it, else founds the next one.
@@ -664,14 +667,11 @@ func resolveSeriesUnit(cat seriesCatalogue, claims []nameClaim, reaches []*group
 
 	// 1. Anchor, in rounds judged against the evidence at the round's start.
 	placed := make([]*seriesCandidate, len(all))
+	contested := map[int]bool{}
 	for {
-		type anchor struct {
-			k    int
-			cand *seriesCandidate
-		}
 		var round []anchor
 		for k, ci := range all {
-			if placed[k] != nil {
+			if placed[k] != nil || contested[k] {
 				continue
 			}
 			g := groupAt(k)
@@ -685,6 +685,7 @@ func resolveSeriesUnit(cat seriesCatalogue, claims []nameClaim, reaches []*group
 				}
 			}
 		}
+		round = dropReviewedRivals(claims, all, round, contested)
 		if len(round) == 0 {
 			break
 		}
@@ -762,6 +763,50 @@ func resolveSeriesUnit(cat seriesCatalogue, claims []nameClaim, reaches []*group
 	}
 }
 
+// anchor is a claim (its position in all) joining a candidate it shares an author
+// with.
+type anchor struct {
+	k    int
+	cand *seriesCandidate
+}
+
+// dropReviewedRivals takes out of a round, into contested, the claims a review
+// keeps apart from another anchoring on the same series. A round judges each claim
+// against the evidence at its start, so with a series holding only "A. George",
+// the doctor's and the novelist's rows would each share it and join together,
+// where one after the other the second would be refused. They go to the cluster
+// step instead, which takes the people largest first, so the evidence and not an
+// order decides whose the series becomes.
+func dropReviewedRivals(claims []nameClaim, all []int, round []anchor, contested map[int]bool) []anchor {
+	reviewed := map[*evidencePool][]anchor{}
+	dropped := false
+	for _, a := range round {
+		mine := claims[all[a.k]].row.individuals()
+		if !slices.ContainsFunc(mine, func(f personForm) bool { return f.apart.names(f.slug) }) {
+			continue
+		}
+		for _, b := range reviewed[a.cand.pool] {
+			if rowsKeptApart(mine, claims[all[b.k]].row.individuals()) {
+				contested[a.k], contested[b.k] = true, true
+				dropped = true
+			}
+		}
+		reviewed[a.cand.pool] = append(reviewed[a.cand.pool], a)
+	}
+	if !dropped {
+		return round
+	}
+	return slices.DeleteFunc(round, func(a anchor) bool { return contested[a.k] })
+}
+
+// rowsKeptApart reports whether a review keeps an author of one row from an author
+// of the other.
+func rowsKeptApart(a, b []personForm) bool {
+	return slices.ContainsFunc(a, func(x personForm) bool {
+		return slices.ContainsFunc(b, func(y personForm) bool { return x.apart.Has(x.slug, y.slug) })
+	})
+}
+
 // clusterAdmission is how a cluster (positions in all) is admitted to a candidate,
 // asked with the claim that leads the group's part of it. A cluster in a unit of
 // one group is judged by its whole evidence, read once: every claim of it reaches
@@ -810,24 +855,12 @@ func admitting(cands []*seriesCandidate, lo, hi candidateTier, admits func(*seri
 // authorClusters groups the claims at positions rest (into idx) by shared author,
 // transitively, and orders the groups largest first, ties by their smallest
 // canonical key. A claim with no individual author is a group of its own, and
-// claims of different languages are never grouped.
+// claims of different languages are never grouped. Nor are two people a review kept
+// apart (personGroups), through a co-author of both or a chain of spellings, and a
+// spelling of both is grouped with neither (reviewedBridges): each is judged on its
+// own evidence.
 func authorClusters(claims []nameClaim, idx, rest []int) [][]int {
-	parent := make(map[int]int, len(rest))
-	find := func(x int) int {
-		for parent[x] != x {
-			parent[x] = parent[parent[x]]
-			x = parent[x]
-		}
-		return x
-	}
-	union := func(a, b int) {
-		if ra, rb := find(a), find(b); ra != rb {
-			parent[ra] = rb
-		}
-	}
-	for _, k := range rest {
-		parent[k] = k
-	}
+	groups := newPersonGroups(len(idx))
 	// One representative claim per author slug IN ONE LANGUAGE, then the
 	// spelling rungs across the distinct slugs of that language: a cluster never
 	// spans two languages (languageCloses judges it by its lead claim), so one
@@ -838,10 +871,19 @@ func authorClusters(claims []nameClaim, idx, rest []int) [][]int {
 	forms := map[authorKey]personForm{}
 	for _, k := range rest {
 		lang := claims[idx[k]].row.language
-		for _, f := range claims[idx[k]].row.individuals() {
+		people := claims[idx[k]].row.individuals()
+		for _, f := range people {
+			groups.hold(k, f) // every author first: a co-author's union must see them all
+		}
+		// A row crediting both people of a pair joins neither's rows, so it is left
+		// out of the representatives: the rows of each must still meet each other.
+		if slices.ContainsFunc(people, func(f personForm) bool { return groups.keptFrom(k, f.slug) }) {
+			continue
+		}
+		for _, f := range people {
 			key := authorKey{lang, f.slug}
 			if first, ok := bySlug[key]; ok {
-				union(k, first)
+				groups.union(k, first)
 				continue
 			}
 			bySlug[key] = k
@@ -855,16 +897,27 @@ func authorClusters(claims []nameClaim, idx, rest []int) [][]int {
 		}
 		return keys[a].slug < keys[b].slug
 	})
+	if len(groups.held) > 0 {
+		byLang := map[string][]personForm{}
+		for _, k := range keys {
+			byLang[k.lang] = append(byLang[k.lang], forms[k])
+		}
+		bridges := map[string]map[string]bool{}
+		for lang, fs := range byLang {
+			bridges[lang] = reviewedBridges(fs)
+		}
+		keys = slices.DeleteFunc(keys, func(k authorKey) bool { return bridges[k.lang][k.slug] })
+	}
 	for i := range keys {
 		for j := i + 1; j < len(keys) && keys[j].lang == keys[i].lang; j++ {
 			if forms[keys[i]].same(forms[keys[j]]) {
-				union(bySlug[keys[i]], bySlug[keys[j]])
+				groups.union(bySlug[keys[i]], bySlug[keys[j]])
 			}
 		}
 	}
 	grouped := map[int][]int{}
 	for _, k := range rest {
-		r := find(k)
+		r := groups.find(k)
 		grouped[r] = append(grouped[r], k)
 	}
 	out := make([][]int, 0, len(grouped))

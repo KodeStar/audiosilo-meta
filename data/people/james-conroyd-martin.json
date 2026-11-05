@@ -1448,6 +1448,9 @@
     },
     "james-edward-swallow": {
       "id": "james-edward-swallow",
+      "librivox_author_aliases": [
+        9872
+      ],
       "librivox_author_id": 11657,
       "license": "CC0-1.0",
       "name": "James Edward Swallow",
@@ -1455,6 +1458,11 @@
         {
           "imported_at": "2026-10-29",
           "ref": "10359",
+          "type": "librivox"
+        },
+        {
+          "imported_at": "2026-10-28",
+          "ref": "5251",
           "type": "librivox"
         }
       ]
@@ -4334,6 +4342,35 @@
         }
       ]
     },
+    "james-joyce-actor": {
+      "id": "james-joyce-actor",
+      "license": "CC0-1.0",
+      "name": "James Joyce (actor)",
+      "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "isbn:9781838687175",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "isbn:9781838687151",
+          "type": "audiosilo-books-import"
+        }
+      ]
+    },
+    "james-joyce-army-aviator": {
+      "id": "james-joyce-army-aviator",
+      "license": "CC0-1.0",
+      "name": "James Joyce (army aviator)",
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1094023353",
+          "type": "libex-import"
+        }
+      ]
+    },
     "james-k-a-smith": {
       "id": "james-k-a-smith",
       "license": "CC0-1.0",
@@ -4782,7 +4819,10 @@
       ]
     },
     "james-knowles": {
+      "birth_year": 1831,
+      "death_year": 1908,
       "id": "james-knowles",
+      "librivox_author_id": 13383,
       "license": "CC0-1.0",
       "name": "James Knowles",
       "sources": [
@@ -4790,6 +4830,11 @@
           "imported_at": "2026-07-29",
           "ref": "B0076ANQCG",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-11-04",
+          "ref": "12945",
+          "type": "librivox"
         }
       ]
     },
@@ -5819,23 +5864,6 @@
         }
       ]
     },
-    "james-m-barrie": {
-      "id": "james-m-barrie",
-      "license": "CC0-1.0",
-      "name": "James M. Barrie",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0CP88XZB7",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B07ZJSZ3Y7",
-          "type": "libex-import"
-        }
-      ]
-    },
     "james-m-bradley": {
       "id": "james-m-bradley",
       "license": "CC0-1.0",
@@ -6321,6 +6349,18 @@
         }
       ]
     },
+    "james-madison-narrator": {
+      "id": "james-madison-narrator",
+      "license": "CC0-1.0",
+      "name": "James Madison (narrator)",
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CZSDNP4C",
+          "type": "libex-import"
+        }
+      ]
+    },
     "james-mahaffey": {
       "id": "james-mahaffey",
       "license": "CC0-1.0",
@@ -6603,18 +6643,6 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B01MPWPHBV",
-          "type": "libex-import"
-        }
-      ]
-    },
-    "james-matthew-barrie": {
-      "id": "james-matthew-barrie",
-      "license": "CC0-1.0",
-      "name": "James Matthew Barrie",
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B08NWDW93Q",
           "type": "libex-import"
         }
       ]

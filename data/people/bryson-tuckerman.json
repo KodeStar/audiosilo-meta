@@ -216,6 +216,19 @@
         }
       ]
     },
+    "bubblereader": {
+      "id": "bubblereader",
+      "librivox_reader_id": 7431,
+      "license": "CC0-1.0",
+      "name": "BubbleReader",
+      "sources": [
+        {
+          "imported_at": "2026-11-04",
+          "ref": "5692",
+          "type": "librivox"
+        }
+      ]
+    },
     "buchernarr": {
       "id": "buchernarr",
       "librivox_reader_id": 13452,
@@ -4010,18 +4023,6 @@
           "imported_at": "2026-10-29",
           "ref": "9678",
           "type": "librivox"
-        }
-      ]
-    },
-    "c-h-spurgeon": {
-      "id": "c-h-spurgeon",
-      "license": "CC0-1.0",
-      "name": "C. H. Spurgeon",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002VAEJRW",
-          "type": "libex-import"
         }
       ]
     },

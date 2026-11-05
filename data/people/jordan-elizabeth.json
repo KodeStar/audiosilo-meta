@@ -2366,7 +2366,10 @@
       ]
     },
     "jorge-isaacs": {
+      "birth_year": 1837,
+      "death_year": 1895,
       "id": "jorge-isaacs",
+      "librivox_author_id": 16762,
       "license": "CC0-1.0",
       "name": "Jorge Isaacs",
       "sources": [
@@ -2374,6 +2377,11 @@
           "imported_at": "2026-07-29",
           "ref": "B002V5IYKU",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-11-04",
+          "ref": "17676",
+          "type": "librivox"
         }
       ]
     },
@@ -2730,6 +2738,9 @@
     },
     "jorge-r-rodriguez": {
       "id": "jorge-r-rodriguez",
+      "librivox_author_aliases": [
+        6437
+      ],
       "librivox_author_id": 7138,
       "license": "CC0-1.0",
       "name": "Jorge R. Rodríguez",
@@ -2738,15 +2749,7 @@
           "imported_at": "2026-10-27",
           "ref": "73",
           "type": "librivox"
-        }
-      ]
-    },
-    "jorge-r-rodriguez-librivox-author-6437": {
-      "id": "jorge-r-rodriguez-librivox-author-6437",
-      "librivox_author_id": 6437,
-      "license": "CC0-1.0",
-      "name": "Jorge R. Rodriguez",
-      "sources": [
+        },
         {
           "imported_at": "2026-11-04",
           "ref": "7453",
@@ -4258,6 +4261,21 @@
         {
           "imported_at": "2026-10-29",
           "ref": "20191",
+          "type": "librivox"
+        }
+      ]
+    },
+    "jose-jordan-de-urries-y-azara": {
+      "birth_year": 1868,
+      "death_year": 1932,
+      "id": "jose-jordan-de-urries-y-azara",
+      "librivox_author_id": 14784,
+      "license": "CC0-1.0",
+      "name": "José Jordán de Urríes y Azara",
+      "sources": [
+        {
+          "imported_at": "2026-11-04",
+          "ref": "14861",
           "type": "librivox"
         }
       ]

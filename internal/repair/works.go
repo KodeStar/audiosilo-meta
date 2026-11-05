@@ -407,10 +407,26 @@ func (t *txn) mergeSidecars(target string, losers []string) error {
 				return fmt.Errorf("works-community entry %q member %q: %w", h.slug, name, err)
 			}
 			m := member.Clone()
-			m.Set("work", target)
+			// A position_scale alone has no backref: its entry key is its work.
+			if name != string(model.KindPositionScale) {
+				m.Set("work", target)
+			}
 			merged.SetRaw(name, m.MustRaw())
 			if h.slug != target {
 				moved = append(moved, name+" from "+h.slug)
+			}
+		}
+	}
+	// A scale is a statement about the sidecars beside it, so a merge that would put
+	// it beside a member another work carried applies its ruler to positions nobody
+	// numbered on it: the same human decision as two members of one kind.
+	if scaleOwner, scaled := owner[string(model.KindPositionScale)]; scaled {
+		for _, name := range []string{string(model.KindCharacters), string(model.KindRecaps)} {
+			if other, held := owner[name]; held && other != scaleOwner {
+				return refusef(CatSidecarCollision,
+					"%s states a position_scale and %s carries the %s member: that ruler says nothing about %s's "+
+						"positions, so whether it applies to them is a human decision - merge the two by hand first",
+					scaleOwner, other, name, other)
 			}
 		}
 	}

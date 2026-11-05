@@ -78,8 +78,8 @@
 #                    different narrations of one book collide on exactly that and
 #                    nothing else.
 #   works-community  the entry IS a map of independent members ("characters",
-#                    "recaps", "description"), each its own licensed document, so
-#                    the base rules apply to that map directly. A characters pull
+#                    "recaps", "description", "position_scale"), each its own
+#                    document, so the base rules apply to that map directly. A characters pull
 #                    request and a recaps pull request for the same book each
 #                    create or edit ONE member of the same entry, which is the
 #                    same collision one family over. The rule is over the entry's

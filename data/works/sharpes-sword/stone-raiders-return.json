@@ -9554,21 +9554,13 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "robin-field-1965": {
+        "alfred-molina-2016": {
           "abridged": false,
-          "added_at": "2026-07-17T09:27:30+00:00",
+          "added_at": "2026-11-05",
           "asin": [
             {
               "asin": "B01DCAF02C",
               "region": "us"
-            },
-            {
-              "asin": "B003S7XFBI",
-              "region": "us"
-            },
-            {
-              "asin": "B07YX995S6",
-              "region": "es"
             },
             {
               "asin": "B079Y9YG4G",
@@ -9670,31 +9662,176 @@
               "title": "Chapter 17"
             }
           ],
+          "cover_url": "https://m.media-amazon.com/images/I/81SrP3+OHtL.jpg",
+          "id": "alfred-molina-2016",
+          "isbn": [
+            "9781473524071"
+          ],
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alfred-molina"
+          ],
+          "publisher": "Vintage Digital",
+          "release_date": "2016-04-07",
+          "runtime_min": 535,
+          "sources": [
+            {
+              "imported_at": "2026-11-05",
+              "ref": "B01DCAF02C",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-05",
+              "ref": "B079Y9YG4G",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-05",
+              "ref": "B01DC73Q2Q",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-05",
+              "ref": "B01DC74HEC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "stoner"
+        },
+        "robin-field-1965": {
+          "abridged": false,
+          "added_at": "2026-07-17T09:27:30+00:00",
+          "asin": [
+            {
+              "asin": "B003S7XFBI",
+              "region": "us"
+            },
+            {
+              "asin": "B07YX995S6",
+              "region": "es"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 11988,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 39536,
+              "start_ms": 11988,
+              "title": "Dedication"
+            },
+            {
+              "length_ms": 2937836,
+              "start_ms": 51524,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1969516,
+              "start_ms": 2989360,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2942293,
+              "start_ms": 4958876,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1286641,
+              "start_ms": 7901169,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1821163,
+              "start_ms": 9187810,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1903711,
+              "start_ms": 11008973,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1572083,
+              "start_ms": 12912684,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1579421,
+              "start_ms": 14484767,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2598196,
+              "start_ms": 16064188,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3307822,
+              "start_ms": 18662384,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 731568,
+              "start_ms": 21970206,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1733509,
+              "start_ms": 22701774,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2751796,
+              "start_ms": 24435283,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1580233,
+              "start_ms": 27187079,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 2037202,
+              "start_ms": 28767312,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 2961078,
+              "start_ms": 30804514,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1378865,
+              "start_ms": 33765592,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 50391,
+              "start_ms": 35144457,
+              "title": "End Credits"
+            }
+          ],
           "cover_url": "https://m.media-amazon.com/images/I/41InpggZwlL._SL500_.jpg",
           "id": "robin-field-1965",
+          "isbn": [
+            "9781481586443"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
             "robin-field"
           ],
-          "publisher": "Penguin Audio",
-          "release_date": "1965",
+          "publisher": "Blackstone Audio, Inc.",
+          "release_date": "2010-06-16",
           "runtime_min": 586,
           "sources": [
             {
               "imported_at": "2026-07-17",
               "ref": "B01DCAF02C",
               "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-17",
-              "ref": "B01DCAF02C",
-              "type": "audible-lookup"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B01DCAF02C",
-              "type": "libex-import"
             },
             {
               "imported_at": "2026-07-30",
@@ -9704,21 +9841,6 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B07YX995S6",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B079Y9YG4G",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B01DC73Q2Q",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B01DC74HEC",
               "type": "libex-import"
             }
           ],

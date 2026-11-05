@@ -28,6 +28,14 @@
             {
               "asin": "B07FYBXHSY",
               "region": "uk"
+            },
+            {
+              "asin": "B07F2QJTZZ",
+              "region": "uk"
+            },
+            {
+              "asin": "B07F2RSY9T",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -189,6 +197,9 @@
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81NTc6gpTOL.jpg",
           "id": "andrew-eiden-2019",
+          "isbn": [
+            "9781984832597"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -206,6 +217,16 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B07FYBXHSY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-04",
+              "ref": "B07F2QJTZZ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-04",
+              "ref": "B07F2RSY9T",
               "type": "libex-import"
             }
           ],
@@ -1722,235 +1743,21 @@
     "superman-red-son": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "dc"
-      ],
-      "genres": [
-        "fantasy",
-        "parenting-relationships",
-        "self-help",
-        "social-sciences",
-        "superhero",
-        "young-adult"
+        "mark-millar"
       ],
       "id": "superman-red-son",
       "language": "en",
       "license": "CC0-1.0",
-      "recordings": {
-        "andrew-eiden-2019": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B07F2RSY9T",
-              "region": "us"
-            },
-            {
-              "asin": "B07F2QJTZZ",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 22894,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 868472,
-              "start_ms": 22894,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 713967,
-              "start_ms": 891366,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1108659,
-              "start_ms": 1605333,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 310450,
-              "start_ms": 2713992,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1037606,
-              "start_ms": 3024442,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 577062,
-              "start_ms": 4062048,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1293769,
-              "start_ms": 4639110,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 509120,
-              "start_ms": 5932879,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1393475,
-              "start_ms": 6441999,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 451210,
-              "start_ms": 7835474,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1207970,
-              "start_ms": 8286684,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 663929,
-              "start_ms": 9494654,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 976445,
-              "start_ms": 10158583,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 430915,
-              "start_ms": 11135028,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1142050,
-              "start_ms": 11565943,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 615793,
-              "start_ms": 12707993,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 694787,
-              "start_ms": 13323786,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 679601,
-              "start_ms": 14018573,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1935151,
-              "start_ms": 14698174,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 570142,
-              "start_ms": 16633325,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 747032,
-              "start_ms": 17203467,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 948442,
-              "start_ms": 17950499,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 910733,
-              "start_ms": 18898941,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 1511990,
-              "start_ms": 19809674,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 341565,
-              "start_ms": 21321664,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 1490256,
-              "start_ms": 21663229,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 730314,
-              "start_ms": 23153485,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 155573,
-              "start_ms": 23883799,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 1147901,
-              "start_ms": 24039372,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 995207,
-              "start_ms": 25187273,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 671912,
-              "start_ms": 26182480,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 36668,
-              "start_ms": 26854392,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81r9d3Rqx4L.jpg",
-          "id": "andrew-eiden-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andrew-eiden"
-          ],
-          "publisher": "Listening Library",
-          "release_date": "2019",
-          "runtime_min": 448,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B07F2RSY9T",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B07F2RSY9T",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B07F2QJTZZ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "superman-red-son"
-        }
-      },
       "sources": [
         {
           "imported_at": "2026-07-25",
           "ref": "B07F2RSY9T",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-11-04",
+          "ref": "https://en.wikipedia.org/wiki/Superman:_Red_Son",
+          "type": "user"
         }
       ],
       "title": "Superman - Red Son"
@@ -2403,6 +2210,155 @@
         }
       ],
       "title": "Superman: Welcome to Metropolis"
+    },
+    "supermans-not-coming": {
+      "added_at": "2026-11-04",
+      "authors": [
+        "erin-brockovich"
+      ],
+      "genres": [
+        "biography-memoir",
+        "nature",
+        "politics",
+        "science",
+        "sports"
+      ],
+      "id": "supermans-not-coming",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "erin-brockovich-2020": {
+          "abridged": false,
+          "added_at": "2026-11-04",
+          "asin": [
+            {
+              "asin": "0593292715",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 23730,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1198126,
+              "start_ms": 23730,
+              "title": "Introduction"
+            },
+            {
+              "length_ms": 42306,
+              "start_ms": 1221856,
+              "title": "Part One: The Scary Truth"
+            },
+            {
+              "length_ms": 2336066,
+              "start_ms": 1264162,
+              "title": "Chapter 1: How Did We Get Here?"
+            },
+            {
+              "length_ms": 2878368,
+              "start_ms": 3600228,
+              "title": "Chapter 2: It Began in Hinkley...and It's Everywhere Now"
+            },
+            {
+              "length_ms": 2239680,
+              "start_ms": 6478596,
+              "title": "Chapter 3: Connecting the Dots & Building a Map"
+            },
+            {
+              "length_ms": 1792835,
+              "start_ms": 8718276,
+              "title": "Chapter 4: Floating in a Sea of Chemicals"
+            },
+            {
+              "length_ms": 4938303,
+              "start_ms": 10511111,
+              "title": "Chapter 5: The Top Toxins"
+            },
+            {
+              "length_ms": 30812,
+              "start_ms": 15449414,
+              "title": "Part Two: The Hopeful Future"
+            },
+            {
+              "length_ms": 5114496,
+              "start_ms": 15480226,
+              "title": "Chapter 6: The Communities Rising"
+            },
+            {
+              "length_ms": 4400599,
+              "start_ms": 20594722,
+              "title": "Chapter 7: Saying No to \"Unintended Consequences\""
+            },
+            {
+              "length_ms": 4320374,
+              "start_ms": 24995321,
+              "title": "Chapter 8: Local Politics Run Amok"
+            },
+            {
+              "length_ms": 4700670,
+              "start_ms": 29315695,
+              "title": "Chapter 9: Heroes Fighting Pollution at Military Bases"
+            },
+            {
+              "length_ms": 4231999,
+              "start_ms": 34016365,
+              "title": "Chapter 10: Taking Back the EPA & Florida's Shorelines"
+            },
+            {
+              "length_ms": 25681,
+              "start_ms": 38248364,
+              "title": "Part Three: The Final Call"
+            },
+            {
+              "length_ms": 4236736,
+              "start_ms": 38274045,
+              "title": "Chapter 11: Day Zero"
+            },
+            {
+              "length_ms": 4038739,
+              "start_ms": 42510781,
+              "title": "Chapter 12: Time to Act!"
+            },
+            {
+              "length_ms": 40007,
+              "start_ms": 46549520,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81o1EJF-+lL.jpg",
+          "id": "erin-brockovich-2020",
+          "isbn": [
+            "9780593292716"
+          ],
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "erin-brockovich"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2020-08-25",
+          "runtime_min": 776,
+          "sources": [
+            {
+              "imported_at": "2026-11-04",
+              "ref": "0593292715",
+              "type": "libex-import"
+            }
+          ],
+          "work": "supermans-not-coming"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-11-04",
+          "ref": "0593292715",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Superman's Not Coming"
     },
     "supermega-saves-the-troops": {
       "added_at": "2026-07-29",
@@ -3826,7 +3782,7 @@
     "supermoney": {
       "added_at": "2026-07-29",
       "authors": [
-        "adam-smith"
+        "adam-smith-george-goodman"
       ],
       "genres": [
         "economics",

@@ -25,7 +25,7 @@ type DB struct {
 	tag           string // release tag this artifact came from ("" for a local --db)
 	path          string // on-disk path of the artifact
 	stats         Stats  // precomputed once, at load
-	schemaVersion int    // meta(schema_version); characters/recaps arrived in v2, recap_summaries in v3, work_genres in v4, redirects in v5, work_descriptions in v6, translations + the series ordering columns in v7, the LibriVox layer in v8
+	schemaVersion int    // meta(schema_version); characters/recaps arrived in v2, recap_summaries in v3, work_genres in v4, redirects in v5, work_descriptions in v6, translations + the series ordering columns in v7, the LibriVox layer in v8, the LibriVox recording layer in v9, position_scales in v10
 
 	// The GUIDE PAGE counts, settled at load (see loadStats). They are what the
 	// two guide sitemap families are sharded and windowed by, and they are
@@ -56,6 +56,8 @@ type DB struct {
 	// to ten candidates per /abs/search - so without it those all pay a SQL round
 	// trip to learn there is nothing to find.
 	hasDescriptions bool
+	// hasPositionScales is its twin for the position_scales table.
+	hasPositionScales bool
 
 	// hasTranslations and orderingPrimaries are the LANGUAGES layer's twins of
 	// the two memos above, settled once at load for both of their reasons: the
@@ -202,7 +204,7 @@ type LanguageCount struct {
 // server) shows that its copy is newer than it understands. Artifact schema
 // changes must therefore stay ADDITIVE - new tables and columns - because such
 // consumers lag.
-const MaxSchemaVersion = 9
+const MaxSchemaVersion = 10
 
 // Open opens the artifact at path read-only and runs the load-time integrity
 // checks (loadStats: a schema_version claim without the tables it implies is a
@@ -323,6 +325,13 @@ func (s *DB) loadStats() error {
 	if s.schemaVersion >= descriptionSchemaVersion {
 		if err := s.db.QueryRow(anyDescriptionSQL).Scan(&s.hasDescriptions); err != nil {
 			return fmt.Errorf("%s: artifact schema_version %d requires the work_descriptions table: %w",
+				s.path, s.schemaVersion, err)
+		}
+	}
+	// The position scale gate, on the same precedent and for the same two jobs.
+	if s.schemaVersion >= positionScaleSchemaVersion {
+		if err := s.db.QueryRow(anyPositionScaleSQL).Scan(&s.hasPositionScales); err != nil {
+			return fmt.Errorf("%s: artifact schema_version %d requires the position_scales table: %w",
 				s.path, s.schemaVersion, err)
 		}
 	}

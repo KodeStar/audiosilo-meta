@@ -246,6 +246,9 @@ const conflictFieldWorkIdentity = "work_identity"
 // work) and the resulting cluster is what metacheck's census reports.
 func (p *planner) identityMatch(ident rowIdentity, workTitle, lang string, authors workAuthors) (duplicateIdentityMatch, bool) {
 	found := p.identityMatches(ident, workTitle, lang, authors)
+	// An own-work is set apart from the rest of its key (librivoxreviewed.go), run half
+	// and disk half alike: only a key naming nothing else still names it.
+	found = check.SetApart(found, func(m duplicateIdentityMatch) string { return m.work }, p.lv.ownWorks)
 	if len(found) != 1 {
 		return duplicateIdentityMatch{}, false
 	}

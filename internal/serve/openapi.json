@@ -575,7 +575,7 @@
         "tags": ["Works"],
         "operationId": "work",
         "summary": "One work in full",
-        "description": "The whole work document: the abstract book, every recording of it (narrators, runtime, publisher, identifiers, chapter count), and the community expressive layer where it exists.\n\n`characters`, `recaps`, `recap_summary`, `community_description` and `genres` depend on the loaded artifact's internal schema version and are omitted - never faked - when the artifact predates them.\n\nA slug a merge has retired answers 301 at the work that replaced it, so a stored id keeps resolving.",
+        "description": "The whole work document: the abstract book, every recording of it (narrators, runtime, publisher, identifiers, chapter count), and the community expressive layer where it exists.\n\n`characters`, `recaps`, `recap_summary`, `community_description`, `position_scale` and `genres` depend on the loaded artifact's internal schema version and are omitted - never faked - when the artifact predates them.\n\nA slug a merge has retired answers 301 at the work that replaced it, so a stored id keeps resolving.",
         "parameters": [{ "$ref": "#/components/parameters/WorkID" }],
         "responses": {
           "200": {
@@ -1871,7 +1871,7 @@
       },
       "WorkDetail": {
         "type": "object",
-        "description": "The full work document. `characters`, `recaps`, `recap_summary`, `community_description`, `genres`, `translation_of` and `translations` are additionally gated on the loaded artifact's internal schema version: a server briefly serving an older artifact omits them rather than failing.",
+        "description": "The full work document. `characters`, `recaps`, `recap_summary`, `community_description`, `position_scale`, `genres`, `translation_of` and `translations` are additionally gated on the loaded artifact's internal schema version: a server briefly serving an older artifact omits them rather than failing.",
         "required": ["id", "title", "authors", "language", "series", "recordings"],
         "properties": {
           "id": { "type": "string" },
@@ -1922,7 +1922,18 @@
             "items": { "$ref": "#/components/schemas/Recap" }
           },
           "recap_summary": { "$ref": "#/components/schemas/RecapSummary" },
-          "community_description": { "$ref": "#/components/schemas/CommunityDescription" }
+          "community_description": { "$ref": "#/components/schemas/CommunityDescription" },
+          "position_scale": { "$ref": "#/components/schemas/PositionScale" }
+        }
+      },
+      "PositionScale": {
+        "type": "object",
+        "description": "The ruler a work's `characters` and `recaps` are numbered on: the book's length in these units. Use it to place a `reveal` or `through` position on a recording whose tracks are finer or coarser than the book's units. Omitted when the work states none, in which case positions are the book's own chapters with no stated length.",
+        "required": ["length", "unit"],
+        "properties": {
+          "length": { "type": "integer", "minimum": 1, "description": "The book's whole length in `unit`s, whether or not the sidecars reach it.", "examples": [5] },
+          "unit": { "type": "string", "enum": ["act", "chapter", "entry", "episode", "letter", "part", "piece", "poem", "scene", "section", "track"], "description": "What one position counts." },
+          "partial": { "type": "boolean", "description": "The sidecars stop short of `length` on purpose. Omitted when they span the book." }
         }
       },
       "WorkTranslation": {

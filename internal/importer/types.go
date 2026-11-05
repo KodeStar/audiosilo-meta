@@ -250,6 +250,11 @@ type Options struct {
 	// Each row is one Write, so the caller decides durability by what it passes:
 	// an *os.File opened for append keeps every conflict a killed run had seen.
 	Conflicts io.Writer
+
+	// LibrivoxReviewed replaces the embedded reviewed decisions of a LibriVox
+	// run (librivoxreviewed.go); nil reads the embedded file, which is what every
+	// real run does. A test's own decisions go here.
+	LibrivoxReviewed map[int]LibrivoxReview
 	// SeriesLookup, when non-nil, lets a USER-LIBRARY CREATE run fill a series
 	// position its source did not state, by asking the lookup about the row's
 	// ASIN (seriespos.go). nil is the default and means the rule is off, so every
@@ -426,7 +431,10 @@ type Summary struct {
 	// date). GenreWorksNewer counts the works a row reached that were not judged
 	// because their newest provenance is later than Options.RowsAsOf.
 	GenreRowsContradicted int
-	GenreWorksNewer       int
+	// GenreRowsAnotherBook counts the rows refused as genre evidence because their
+	// ASIN names another book (rowTitleApart and rowAuthorsApart).
+	GenreRowsAnotherBook int
+	GenreWorksNewer      int
 	// SkippedNoWork counts RECORDINGS-ONLY rows whose work is not in the
 	// catalogue. That mode never creates a work, so those rows are dropped -
 	// which makes this the counter that proves an excerpt, a trivia title or a
@@ -578,6 +586,9 @@ type Summary struct {
 	// person is settled credits them. All zero for other sources.
 	LibrivoxVariantsAttached int
 	LibrivoxFallbackSlugs    int
+	// LibrivoxReviewedPlaced counts the LibriVox rows a reviewed decision placed
+	// (librivoxreviewed.go): attached to the work it names, or minted on their own.
+	LibrivoxReviewedPlaced int
 	// LibrivoxAuthorVariants counts the LibriVox rows attached to a work of
 	// their title whose author LibriVox spells with more or fewer words
 	// (librivoxauthors.go rule 1). 0 for other sources.
