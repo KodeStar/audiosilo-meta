@@ -391,7 +391,7 @@ func heldOnlyAsDramatization(w *model.Work) bool {
 		return labelled
 	}
 	for _, r := range w.Recordings {
-		if !r.IsDramatization() && !(labelled && r.Publisher == "") {
+		if !r.IsDramatization() && (!labelled || r.Publisher != "") {
 			return false
 		}
 	}

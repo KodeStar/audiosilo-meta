@@ -293,11 +293,14 @@ func TestDataWorkAndSeriesSlugsAreCurrent(t *testing.T) {
 		if atLibrivoxAddress(key, e) {
 			return
 		}
-		cands, _ := workCandidates(Slugify(cleanWorkTitle(title)),
-			entryWorkAuthors(e), claims[key])
-		for _, cand := range cands {
-			if to, _ := reds.Survivor(model.RedirectWorks, cand.slug); cand.slug == key || to == key {
-				return
+		// A work still catalogued under a title qualifier is reached through that
+		// title's own chain (resolveWork's merge fallback), not the cleaned one.
+		for _, walked := range []string{cleanWorkTitle(title), qualifiedWorkTitle(title)} {
+			cands, _ := workCandidates(Slugify(walked), entryWorkAuthors(e), claims[key])
+			for _, cand := range cands {
+				if to, _ := reds.Survivor(model.RedirectWorks, cand.slug); cand.slug == key || to == key {
+					return
+				}
 			}
 		}
 		t.Errorf("%s: work %q (title %q) is on no candidate of today's slug chain; "+
