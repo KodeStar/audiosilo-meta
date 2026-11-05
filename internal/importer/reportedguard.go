@@ -41,7 +41,10 @@ import (
 // not undo the rule: the COLLECTION status of the two forms that matched
 // (titlerule.SameCollectionStatus: a boxed set is not the volume it collects; read
 // on the compared forms, since "Prequel to the Chaos Walking Trilogy" makes a
-// collection of a held title whose main part is the book itself), and the stated
+// collection of a held title whose main part is the book itself, and the same
+// subtitle on the ROW names a held "The New World" just as well; so a subtitle
+// reading as a collection releases neither side, and a boxed set beside its first
+// volume, either way round, is refused with the accepted cost below), and the stated
 // VOLUME of the two full titles, in the create guard's positive form: a row whose
 // own title states a volume is a duplicate only of a held work whose title states
 // the same one (VolumeStatement.Agrees alone reads one-sided silence as agreement,
@@ -56,7 +59,8 @@ import (
 // purpose. A refused row is memoized by the sync bot and comes back when its memo
 // expires; a merged-in duplicate needs a repair wave. The accepted cost is a
 // distinct book that shares a main title with a held work by the same author
-// ("Empires of EVE" beside a held "Empires of EVE: Volume 2"), and a bare title
+// ("Empires of EVE" beside a held "Empires of EVE: Volume 2", or "Red Rising:
+// The Complete Boxed Set" beside a held "Red Rising"), and a bare title
 // naming several held volumes (the create guard's ambiguity veto lets it mint).
 // Only works the catalogue HOLDS are compared: two rows of one tranche for one new
 // book are regional siblings the import folds into one work, and the lane's batch
@@ -88,13 +92,19 @@ func (p *planner) reportedDuplicate(ctx creditContext, b sourceBook, workTitle s
 		if !langCompatible(ws.lang, lang) {
 			continue
 		}
-		series := p.identity.SeriesNameOf(slug)
-		held := identityForms(ws.title, series, p.identity.Key)
+		held, ok := p.heldForms[slug]
+		if !ok {
+			if p.heldForms == nil {
+				p.heldForms = map[string]titleForms{}
+			}
+			held = identityForms(ws.title, p.identity.SeriesNameOf(slug), p.identity.Key)
+			p.heldForms[slug] = held
+		}
 		if !row.names(held) {
 			continue
 		}
 		if rowVolume.States {
-			heldVolume := titlerule.StatementOf(ws.title, series, titlerule.WriterPolicy)
+			heldVolume := titlerule.StatementOf(ws.title, held.full.series, titlerule.WriterPolicy)
 			if !heldVolume.States || !rowVolume.Agrees(heldVolume) {
 				continue
 			}

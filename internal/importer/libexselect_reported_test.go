@@ -427,6 +427,12 @@ func TestReportedStandaloneGuard(t *testing.T) {
 		{name: "a distinct book sharing a main title (accepted false refusal)", refuse: true,
 			held: []held{{"empires-of-eve-volume-2", "Empires of EVE: Volume 2", "en", []string{"ada-mapmaker"}}},
 			row:  standaloneRow("B0EMPIRE01", "Empires of EVE", "us", "english", ada, "Dee Voice")},
+		{name: "a boxed set beside its first volume (accepted false refusal)", refuse: true,
+			held: []held{{"red-rising", "Red Rising", "en", []string{"ada-mapmaker"}}},
+			row:  standaloneRow("B0REDRIS01", "Red Rising: The Complete Boxed Set", "us", "english", ada, "Dee Voice")},
+		{name: "a row adding a collection-reading subtitle to a held title", refuse: true,
+			held: []held{{"the-new-world", "The New World", "en", []string{"ada-mapmaker"}}},
+			row:  standaloneRow("B0NEWWRL01", "The New World: Prequel to the Chaos Walking Trilogy", "us", "english", ada, "Dee Voice")},
 		{name: "a bare title naming several held volumes", refuse: true,
 			held: []held{
 				{"wayward-book-1", "Wayward", "en", []string{"ada-mapmaker"}},

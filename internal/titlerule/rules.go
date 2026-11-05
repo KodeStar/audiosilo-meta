@@ -61,14 +61,16 @@ func peel(s string, step func(string) string) string {
 
 // subtitleSeps are the separators a title hangs a subtitle or a volume marker off,
 // in ONE list: dropFluffSubtitle reads the first two, and the comma is where a
-// retailer usually puts ", Book 3". firstSepIn and lastSepIn are the only two
-// questions asked of it.
+// retailer usually puts ", Book 3". MainTitle reads the first two as well.
 var subtitleSeps = []string{": ", " - ", ", "}
 
 // firstSepIn is the offset of the earliest subtitle separator in s, or -1.
-func firstSepIn(s string) int {
+func firstSepIn(s string) int { return firstOf(s, subtitleSeps) }
+
+// firstOf is the offset of the earliest of seps in s, or -1.
+func firstOf(s string, seps []string) int {
 	sep := -1
-	for _, alt := range subtitleSeps {
+	for _, alt := range seps {
 		if i := strings.Index(s, alt); i >= 0 && (sep < 0 || i < sep) {
 			sep = i
 		}
@@ -81,12 +83,7 @@ func firstSepIn(s string) int {
 // and whether there is one: a title with no such separator, or nothing before
 // it, has no main title apart from itself.
 func MainTitle(title string) (string, bool) {
-	cut := -1
-	for _, alt := range subtitleSeps[:2] {
-		if i := strings.Index(title, alt); i >= 0 && (cut < 0 || i < cut) {
-			cut = i
-		}
-	}
+	cut := firstOf(title, subtitleSeps[:2])
 	if cut < 0 {
 		return "", false
 	}
