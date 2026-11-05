@@ -22,6 +22,8 @@ package importer
 //     Rules 2-5 and the duplicate-identity guard stand down and the ordinary walk
 //     decides, so it mints on its own title chain ("Iliad (Pope Translation)" at
 //     iliad-pope-translation) and a second reading of the same text meets the first.
+//     A walk reaching any work that is not such a home (ownWorkHomeOf) goes to the
+//     worklist (reviewed-own-work-taken): it may be the work the decision rejected.
 //
 // A decision answers only a row that reaches routing. A row refused before it - a
 // person hold (librivoxSameNameSkip, settled by putting the author id on the right
@@ -32,20 +34,27 @@ package importer
 // Never a guess: every decision states the project's title, because LibriVox reuses
 // project numbers, and a row whose title's key differs goes to the worklist
 // (reviewed-title-changed). An attach naming no live work goes there too
-// (reviewed-work-gone): it never falls through to the rules, which could mint.
+// (reviewed-work-gone): it never falls through to the rules, which could mint. So does
+// one naming a work in another language (reviewed-other-language): it overrides the title
+// and author rules, and a work is language-scoped.
 //
 // ORDER. A rebuild from the snapshot holds nothing yet, and an attach may name a work a
 // later project creates, so attach rows are planned after every other row of the batch
-// (librivoxPlanOrder). Nothing an attach does decides another row's work.
+// (librivoxPlanOrder). Nothing an attach does decides another row's work, and its moves
+// key the author id for the whole batch before any row is planned
+// (keyLibrivoxAuthorVariants), so a project of that id planned first credits the same
+// person.
 //
 // THE GUARD. An own-work sits beside the work it was ruled apart from, under one
 // normalized identity key, and the duplicate-identity guard's ambiguity veto reads two
 // candidates as "cannot say which", so a later row of ANY source would mint a third
-// record. So own-work homes are set apart (librivoxOwnWorkHomes, check.WorkIdentity's
-// SetApart): a key that names other works names those, and one that names only own-work
-// homes still names them. The set is derived from the recordings, so a later run reads
-// it back from the tree (the table says which projects are own-work, the catalogue where
-// they sit); nothing about it is stored on a record.
+// record. So the guard's and the intake gate's answer sets own-work homes apart
+// (librivoxOwnWorkHomes, check.SetApart): a key that names other works names those, and
+// one that names only own-work homes still names them. Only a refusal does, which is
+// recoverable: the paths that place a recording on the one candidate (attachFor,
+// relocationHomes) still read the two as ambiguous. The set is derived from the
+// recordings, so a later run reads it back from the tree (the table says which projects
+// are own-work, the catalogue where they sit); nothing about it is stored on a record.
 
 import (
 	"bytes"
@@ -54,6 +63,8 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"maps"
+	"slices"
 	"strings"
 	"sync"
 
@@ -193,6 +204,15 @@ func librivoxOwnWorkHomes(works []*model.Work, table map[int]LibrivoxReview) map
 	return homes
 }
 
+// ownWorkHomeOf reports whether ws is the home an own-work's row may meet: an own-work home
+// naming all the row's credits. One that does not is another text under the same title (a
+// translator is role-credited, so the walk's identity set never saw the difference).
+func (p *planner) ownWorkHomeOf(ws *workState, credits []credit) bool {
+	return p.lv.ownWorks[ws.slug] && !slices.ContainsFunc(credits, func(c credit) bool {
+		return !ws.names(p.resolveCredit(c).slug)
+	})
+}
+
 // librivoxPlanOrder is the order a batch's rows are planned in: as they arrive, with the
 // attach decisions after every other row (this file's header).
 func (p *planner) librivoxPlanOrder(books []sourceBook) []int {
@@ -208,16 +228,22 @@ func (p *planner) librivoxPlanOrder(books []sourceBook) []int {
 	return append(order, attaches...)
 }
 
+// reviewedTitleHolds reports whether a decision is about the project as it now stands:
+// LibriVox reuses project numbers, and only the key of the title is compared.
+func reviewedTitleHolds(r LibrivoxReview, title string) bool {
+	return librivoxTitleKey(librivoxTitle(r.Title)) == librivoxTitleKey(librivoxTitle(title))
+}
+
 // routeLibrivoxReviewed is the row's reviewed decision as a route; ok=false for a row
 // none names.
-func (p *planner) routeLibrivoxReviewed(b sourceBook, workTitle string) (librivoxRoute, bool) {
+func (p *planner) routeLibrivoxReviewed(b sourceBook, workTitle, lang string, credits []credit) (librivoxRoute, bool) {
 	r, ok := p.lv.reviewed[b.lv.id]
 	if !ok {
 		return librivoxRoute{}, false
 	}
-	if librivoxTitleKey(librivoxTitle(r.Title)) != librivoxTitleKey(librivoxTitle(b.lv.title)) {
-		p.summary.Warnings = append(p.summary.Warnings, fmt.Sprintf(
-			"librivox %d: the reviewed decision is for %q, and the project is now %q; not applied", b.lv.id, r.Title, b.lv.title))
+	warn := p.bookWarn(b)
+	if !reviewedTitleHolds(r, b.lv.title) {
+		warn("the reviewed decision is for %q, and the project is now %q; not applied", r.Title, b.lv.title)
 		p.noteLibrivoxWorklist(b, workTitle, LibrivoxReviewedTitleChanged, nil)
 		return librivoxRoute{skip: true}, true
 	}
@@ -231,34 +257,62 @@ func (p *planner) routeLibrivoxReviewed(b sourceBook, workTitle string) (librivo
 	}
 	ws, via := p.workAt(r.Work)
 	if ws == nil {
-		p.summary.Warnings = append(p.summary.Warnings, fmt.Sprintf(
-			"librivox %d: the reviewed decision attaches it to %q, which is no live work; not placed", b.lv.id, r.Work))
+		warn("the reviewed decision attaches it to %q, which is no live work; not placed", r.Work)
 		p.noteLibrivoxWorklist(b, workTitle, LibrivoxReviewedWorkGone, nil)
 		return librivoxRoute{skip: true}, true
 	}
-	return librivoxRoute{walk: &workWalk{title: workTitle, ws: ws, via: via}, moves: p.reviewedMoves(r), reviewed: true}, true
+	if !langCompatible(ws.lang, lang) {
+		warn("the reviewed decision attaches it to %q, in %s where the project is in %s; not placed", ws.slug, ws.lang, lang)
+		p.noteLibrivoxWorklist(b, workTitle, LibrivoxReviewedOtherLanguage, candidatesOf([]*workState{ws}))
+		return librivoxRoute{skip: true}, true
+	}
+	return librivoxRoute{walk: &workWalk{title: workTitle, ws: ws, via: via}, moves: p.reviewedMoves(r, credits, warn), reviewed: true}, true
 }
 
-// reviewedMoves resolves an attach's moves. A target that is no live person is dropped,
-// and a credit whose own person is a record stays there (splitLibrivoxMoves): moving it
-// would be a person merge. Both warn, since either leaves the decision's id unstamped.
-func (p *planner) reviewedMoves(r LibrivoxReview) map[string]string {
+// liveReviewedMoves is a decision's moves onto the people who hold their targets; dropped
+// names the moves whose target is no live person, in order.
+func (p *planner) liveReviewedMoves(r LibrivoxReview) (live map[string]string, dropped []string) {
+	for _, from := range slices.Sorted(maps.Keys(r.Moves)) {
+		survivor, ok := p.livePerson(r.Moves[from])
+		if !ok {
+			dropped = append(dropped, from)
+			continue
+		}
+		if live == nil {
+			live = map[string]string{}
+		}
+		live[from] = survivor
+	}
+	return live, dropped
+}
+
+// reviewedMoves resolves an attach's moves. A target that is no live person is dropped, a
+// move of nobody the row credits does nothing (LibriVox respelled the name, or the table
+// misspells it), and a credit whose own person is a record stays there
+// (splitLibrivoxMoves): moving it would be a person merge. All warn, since each leaves the
+// decision's id unstamped. A credit keyLibrivoxAuthorVariants already moved is credited
+// as the move's target.
+func (p *planner) reviewedMoves(r LibrivoxReview, credits []credit, warn func(string, ...any)) map[string]string {
 	if len(r.Moves) == 0 {
 		return nil
 	}
-	live := make(map[string]string, len(r.Moves))
-	for from, to := range r.Moves {
-		if survivor, ok := p.livePerson(to); ok {
-			live[from] = survivor
-			continue
+	live, dropped := p.liveReviewedMoves(r)
+	for _, from := range dropped {
+		warn("the reviewed decision moves %q onto %q, which is no live person; dropped", from, r.Moves[from])
+	}
+	credited := make(map[string]bool, len(credits))
+	for _, c := range credits {
+		credited[p.resolveCredit(c).slug] = true
+	}
+	for _, from := range slices.Sorted(maps.Keys(live)) {
+		if !credited[from] && !credited[live[from]] {
+			warn("the reviewed decision moves %q, whom the project does not credit; dropped", from)
+			delete(live, from)
 		}
-		p.summary.Warnings = append(p.summary.Warnings, fmt.Sprintf(
-			"librivox %d: the reviewed decision moves %q onto %q, which is no live person; dropped", r.Project, from, to))
 	}
 	moves, kept := p.splitLibrivoxMoves(live)
 	for _, from := range kept {
-		p.summary.Warnings = append(p.summary.Warnings, fmt.Sprintf(
-			"librivox %d: the reviewed decision moves %q, already a record of its own; kept there", r.Project, from))
+		warn("the reviewed decision moves %q, already a record of its own; kept there", from)
 	}
 	return moves
 }

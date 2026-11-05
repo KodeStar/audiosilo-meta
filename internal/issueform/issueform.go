@@ -218,6 +218,9 @@ type composer struct {
 	// It is the same index the bulk importer's create guard reads, so the two writers
 	// cannot disagree about what one book is (dupidentity.go).
 	identity *check.WorkIdentity
+	// ownWorks are the reviewed LibriVox own-work homes the identity gate sets apart
+	// (importer.LibrivoxOwnWorkHomes), off the same load.
+	ownWorks map[string]bool
 
 	// seriesAuthors is the member-author evidence of every catalogued series: the
 	// importer's rule for which same-named series a book may join
@@ -429,13 +432,11 @@ func (c *composer) loadExisting() {
 	// of cleaning every catalogued title a second time - see identityIndex, which
 	// substitutes an empty index when a load produced none.
 	c.identity = res.Identity
-	if res.Catalog != nil {
-		c.identity.SetApart(importer.LibrivoxOwnWorkHomes(res.Catalog.Works))
-	}
 	cat := res.Catalog
 	if cat == nil {
 		return
 	}
+	c.ownWorks = importer.LibrivoxOwnWorkHomes(cat.Works)
 	c.redirects = cat.Redirects
 	for _, p := range cat.People {
 		c.people[p.ID] = true

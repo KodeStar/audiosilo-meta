@@ -1300,7 +1300,6 @@ func (p *planner) loadExisting() {
 		p.loadLibrivoxPerson(person)
 	}
 	p.lv.ownWorks = librivoxOwnWorkHomes(cat.Works, p.lv.reviewed)
-	p.identity.SetApart(p.lv.ownWorks)
 	for _, w := range cat.Works {
 		ws := &workState{
 			slug:     w.ID,
@@ -1654,13 +1653,17 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// raw for the same reason too - resolving them is wasted work on every row
 	// that merges.
 	facts := &workFacts{genres: b.genres, credits: authorCredits}
-	// An own-work ruled apart from what the catalogue holds should mint, or meet the
-	// home an earlier project of its text founded. Anything else means the walk has
-	// reached a work the decision may have rejected: said, and left to the reviewer.
-	ownWork := route.reviewed && walk.ws == nil
-	if route.reviewed && route.walk == nil && walk.ws != nil && !p.lv.ownWorks[walk.ws.slug] {
-		warn("the reviewed own-work decision walked onto the existing work %q", walk.ws.slug)
+	// An own-work ruled apart from what the catalogue holds mints, or meets the home an
+	// earlier project of its text founded. Any other work the walk reaches may be the very
+	// one the decision rejected, and a recording landed there stays, held by its project
+	// id: so the worklist's, as a decision that cannot apply always is.
+	if route.reviewed && route.walk == nil && walk.ws != nil && !p.ownWorkHomeOf(walk.ws, authorCredits) {
+		warn("the reviewed own-work decision walks onto the existing work %q; not placed", walk.ws.slug)
+		p.noteLibrivoxWorklist(b, workTitle, LibrivoxReviewedOwnWorkTaken, candidatesOf([]*workState{walk.ws}))
+		p.noteLostSeriesClaims(b, -1, nil)
+		return
 	}
+	ownWork := route.reviewed && walk.ws == nil
 	ws, unrecorded := p.getOrCreateWork(walk, b, asin, lang, facts, warn)
 	if ownWork && ws != nil {
 		p.lv.ownWorks[ws.slug] = true

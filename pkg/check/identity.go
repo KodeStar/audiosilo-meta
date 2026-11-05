@@ -68,8 +68,6 @@ import (
 // It is READ-ONLY over the catalogue it was built from and holds pointers into it,
 // so it must not outlive the load that produced it.
 type WorkIdentity struct {
-	// apart is SetApart's works, nil for most uses.
-	apart map[string]bool
 	byKey map[string][]*model.Work
 	// seriesOf is the series name each work's title was read against, by work id,
 	// so a caller that has a work in hand pays nothing to ask.
@@ -324,9 +322,10 @@ func (ix *WorkIdentity) Match(title, series, lang string, all, identity map[stri
 // caller with no role information passes the same set twice.
 //
 // What it applies and what it leaves to the caller is matches' business - see there.
-// The callers of this are REFUSING a new record (recoverable) rather than merging two
-// existing ones (not), which is why the vetoes it cannot express are the caller's to
-// add rather than a reason to widen the key.
+// Its callers refuse a new record (recoverable) or place one recording on the one
+// candidate (attachFor, relocationHomes), rather than merging two existing records
+// (not), which is why the vetoes it cannot express are the caller's to add rather than
+// a reason to widen the key.
 func (ix *WorkIdentity) MatchKey(key, title, series, lang string, all, identity map[string]bool) []IdentityMatch {
 	if key == "" {
 		return nil
@@ -344,24 +343,25 @@ func (ix *WorkIdentity) MatchKey(key, title, series, lang string, all, identity 
 		}
 		out = append(out, IdentityMatch{Work: w, Series: ix.seriesOf[w.ID]})
 	}
-	if slices.ContainsFunc(out, func(m IdentityMatch) bool { return !ix.apart[m.Work.ID] }) {
-		out = slices.DeleteFunc(out, func(m IdentityMatch) bool { return ix.apart[m.Work.ID] })
-	}
 	sort.Slice(out, func(i, j int) bool { return out[i].Work.ID < out[j].Work.ID })
 	return out
 }
 
-// SetApart names works a review ruled to be books of their own though they key with
-// another (a separately named translation beside its title's plain work): MatchKey
-// leaves them out of any answer that names something else, so one of them standing
-// beside its twin does not turn the writers' one-candidate rule into "ambiguous" and let
-// a later row mint a third record. A key naming only such works still names them.
-// The census builds its index without it: it reads the same pairs through
-// LoadOptions.Distinct. nil-safe, for a run the index was not built for.
-func (ix *WorkIdentity) SetApart(ids map[string]bool) {
-	if ix != nil {
-		ix.apart = ids
+// SetApart leaves out of a duplicate REFUSAL's candidates the works a review ruled to be
+// books of their own though they key with another (a separately named translation beside
+// its title's plain work; id reads a candidate's work), so one of them standing beside its
+// twin does not turn the writers' one-candidate rule into "ambiguous" and let a later row
+// mint a third record. Candidates naming only such works still name them.
+//
+// A refusal alone: it is recoverable, and the ambiguity veto of a path that PLACES a
+// recording on the one candidate (attachFor, relocationHomes) must keep counting the
+// work a review ruled apart, since the row may be that very text. The census reads the
+// same pairs through LoadOptions.Distinct.
+func SetApart[M any](candidates []M, id func(M) string, apart map[string]bool) []M {
+	if !slices.ContainsFunc(candidates, func(m M) bool { return !apart[id(m)] }) {
+		return candidates
 	}
+	return slices.DeleteFunc(candidates, func(m M) bool { return apart[id(m)] })
 }
 
 // matches is THE pairwise predicate: given a candidate work already keyed the same,

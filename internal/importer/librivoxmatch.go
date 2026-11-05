@@ -117,7 +117,17 @@ const (
 	// LibrivoxReviewedTitleChanged: a reviewed decision states another title than the
 	// project now has: LibriVox reuses project numbers (librivoxreviewed.go).
 	LibrivoxReviewedTitleChanged = "reviewed-title-changed"
+	// LibrivoxReviewedOtherLanguage: a reviewed attach names a work in another
+	// language than the project's: a work is language-scoped (librivoxreviewed.go).
+	LibrivoxReviewedOtherLanguage = "reviewed-other-language"
+	// LibrivoxReviewedOwnWorkTaken: a reviewed own-work's walk reaches a work it did
+	// not found, which may be the one it was ruled apart from (librivoxreviewed.go).
+	LibrivoxReviewedOwnWorkTaken = "reviewed-own-work-taken"
 )
+
+// librivoxReviewedReasonPrefix starts the reasons a reviewed decision itself refuses
+// under, as opposed to a refusal that shadows the decision (noteLibrivoxWorklist).
+const librivoxReviewedReasonPrefix = "reviewed-"
 
 // LibrivoxWorklistEntry is one LibriVox project a run skipped for a person to
 // resolve: re-importing its id once the catalogue says which work it is (or
@@ -516,7 +526,7 @@ func (p *planner) routeLibrivox(b sourceBook, workTitle, fullTitle, posSuffix, l
 	if b.lv == nil {
 		return librivoxRoute{}
 	}
-	if route, ok := p.routeLibrivoxReviewed(b, workTitle); ok {
+	if route, ok := p.routeLibrivoxReviewed(b, workTitle, lang, credits); ok {
 		return route
 	}
 	slugs, held, nonLatin := p.librivoxTitleWorks(workTitle)
@@ -802,10 +812,8 @@ func candidatesOf(works []*workState) []LibrivoxCandidate {
 
 // noteLibrivoxWorklist puts a skipped LibriVox row on the run's worklist.
 func (p *planner) noteLibrivoxWorklist(b sourceBook, title, reason string, candidates []LibrivoxCandidate) {
-	if _, decided := p.lv.reviewed[b.lv.id]; decided && !p.lv.ids[b.lv.id] &&
-		reason != LibrivoxReviewedTitleChanged && reason != LibrivoxReviewedWorkGone {
-		p.summary.Warnings = append(p.summary.Warnings, fmt.Sprintf(
-			"librivox %d: a reviewed decision names it, but it is refused before routing as %s; the decision does not apply", b.lv.id, reason))
+	if _, decided := p.lv.reviewed[b.lv.id]; decided && !p.lv.ids[b.lv.id] && !strings.HasPrefix(reason, librivoxReviewedReasonPrefix) {
+		p.bookWarn(b)("a reviewed decision names it, but it is refused before routing as %s; the decision does not apply", reason)
 	}
 	p.summary.LibrivoxWorklist = append(p.summary.LibrivoxWorklist, LibrivoxWorklistEntry{
 		Project:    b.lv.id,

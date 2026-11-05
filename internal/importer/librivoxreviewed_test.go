@@ -1,10 +1,12 @@
 package importer
 
 import (
+	"reflect"
 	"slices"
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/redirects"
 )
@@ -154,6 +156,22 @@ func TestLibrivoxReviewedAttachToNothing(t *testing.T) {
 	}
 }
 
+// An attach overrides the title and author rules, not the language: a work is
+// language-scoped, so a decision naming another language's work is never placed.
+func TestLibrivoxReviewedAttachInAnotherLanguage(t *testing.T) {
+	const title = "Metamorphosis"
+	dataDir := seedMetamorphosis(t)
+	row := retitled(t, 99719, title)
+	row.Language = "German"
+	sum := runLibrivoxWith(t, writeSnapshot(t, row), dataDir, allLibrivox, reviewedOpts(reviewAttach(99719, title, "metamorphosis")))
+	if sum.NewWorks != 0 || sum.NewRecordings != 0 {
+		t.Fatalf("works/recordings = %d/%d", sum.NewWorks, sum.NewRecordings)
+	}
+	if got := worklistReasons(sum); !slices.Equal(got, []string{LibrivoxReviewedOtherLanguage}) {
+		t.Errorf("worklist reasons = %v", got)
+	}
+}
+
 // LibriVox reuses project numbers: a decision about another title is not this row's.
 func TestLibrivoxReviewedTitleChanged(t *testing.T) {
 	dataDir := seedMetamorphosis(t)
@@ -185,7 +203,7 @@ func TestLibrivoxReviewedAttachWaitsForTheWorkItNames(t *testing.T) {
 		t.Fatalf("works/recordings/placed/worklist = %d/%d/%d/%v\nwarnings: %v", sum.NewWorks, sum.NewRecordings,
 			sum.LibrivoxReviewedPlaced, sum.LibrivoxWorklist, sum.Warnings)
 	}
-	if !entryExists(t, dataDir, recAddr("later-work", "se")) && !entryExists(t, dataDir, workAddr("later-work")) {
+	if !entryExists(t, dataDir, workAddr("later-work")) {
 		t.Errorf("the work is not at later-work")
 	}
 }
@@ -213,18 +231,46 @@ func TestLibrivoxReviewedOwnWork(t *testing.T) {
 	}
 }
 
-// An own-work whose walk reaches a work it did not found says so: the decision may have
-// rejected that very work.
-func TestLibrivoxReviewedOwnWorkWalkingOntoAWorkWarns(t *testing.T) {
+// An own-work whose walk reaches a work it did not found is never placed there: that may
+// be the very work it was ruled apart from, and the project would stay on it.
+func TestLibrivoxReviewedOwnWorkWalkingOntoAWorkIsRefused(t *testing.T) {
 	const title = "Metamorphosis"
 	dataDir := seedMetamorphosis(t)
+	before := snapshotTree(t, dataDir)
 	sum := runLibrivoxWith(t, writeSnapshot(t, retitled(t, 99714, title)), dataDir, allLibrivox,
 		reviewedOpts(reviewOwn(99714, title)))
-	if sum.NewWorks != 0 || sum.NewRecordings != 1 {
-		t.Fatalf("works/recordings = %d/%d", sum.NewWorks, sum.NewRecordings)
+	if sum.NewWorks != 0 || sum.NewRecordings != 0 || sum.LibrivoxReviewedPlaced != 0 {
+		t.Fatalf("works/recordings/placed = %d/%d/%d", sum.NewWorks, sum.NewRecordings, sum.LibrivoxReviewedPlaced)
 	}
-	if !warnedAbout(sum, `walked onto the existing work "metamorphosis"`) {
-		t.Errorf("no warning: %v", sum.Warnings)
+	if got := worklistReasons(sum); !slices.Equal(got, []string{LibrivoxReviewedOwnWorkTaken}) {
+		t.Fatalf("worklist reasons = %v", got)
+	}
+	if got := sum.LibrivoxWorklist[0].Candidates; len(got) != 1 || got[0].Work != "metamorphosis" {
+		t.Errorf("candidates = %v", got)
+	}
+	if !warnedAbout(sum, `walks onto the existing work "metamorphosis"`) || warnedAbout(sum, "refused before routing") {
+		t.Errorf("warnings: %v", sum.Warnings)
+	}
+	if !reflect.DeepEqual(before, snapshotTree(t, dataDir)) {
+		t.Error("the refused row changed the tree: it left a person behind")
+	}
+}
+
+// A second own-work of one title with another translator is another text: the translator
+// is role-credited, so the walk reaches the first's home, and the row is not placed on it.
+func TestLibrivoxReviewedOwnWorkMeetsOnlyItsOwnText(t *testing.T) {
+	const title = "Metamorphosis (Some Translation)"
+	dataDir := t.TempDir()
+	seedWorks(t, dataDir, map[string][]string{})
+	other := retitled(t, 99724, title)
+	other.Translators = []LibrivoxPerson{lvDated(9924, "Willa", "Muir", "1890", "1970")}
+	sum := runLibrivoxWith(t, writeSnapshot(t, retitled(t, 99723, title), other), dataDir, allLibrivox,
+		reviewedOpts(reviewOwn(99723, title), reviewOwn(99724, title)))
+	if sum.NewWorks != 1 || sum.NewRecordings != 1 || sum.LibrivoxReviewedPlaced != 1 {
+		t.Fatalf("works/recordings/placed = %d/%d/%d\nwarnings: %v", sum.NewWorks, sum.NewRecordings, sum.LibrivoxReviewedPlaced, sum.Warnings)
+	}
+	if got := worklistReasons(sum); !slices.Equal(got, []string{LibrivoxReviewedOwnWorkTaken}) {
+		t.Errorf("worklist reasons = %v", got)
 	}
 }
 
@@ -300,6 +346,49 @@ func TestLibrivoxReviewedOwnWorkLeavesTheGuardArmed(t *testing.T) {
 	})
 }
 
+// Set apart is the refusal's answer alone. The paths that PLACE a recording on the one
+// candidate keep reading an own-work beside its twin as ambiguous, since the row may be
+// that very text: it was refused before the decision, and is after it.
+func TestLibrivoxReviewedOwnWorkKeepsThePlacingPathsAmbiguous(t *testing.T) {
+	opts := reviewedOpts(reviewOwn(99720, "any"))
+	t.Run("attach editions", func(t *testing.T) {
+		dataDir := seedAttachCatalogue(t)
+		const home = "the-lost-coast-pope-translation"
+		seedTree(t, dataDir, map[string]string{
+			workAddr(home): testpack.WorkJSON(t, home, "The Lost Coast (Pope Translation)", testpack.WithAuthors("ada-mapmaker")),
+			recAddr(home, "bea-reader"): testpack.RecJSON(t, "bea-reader", home, testpack.WithNarrators("bea-reader"), func(m map[string]any) {
+				m["librivox_id"] = 99720
+				delete(m, "asin")
+			}),
+		})
+		opts := opts
+		opts.ExistingSeriesOnly, opts.AttachEditions = true, true
+		sum := runLibexWith(t, dataDir, opts,
+			attachExportRow("B0ATTACH77", "The Lost Coast [Classic Edition]", "us", "english", "Ada Mapmaker", "Cal Voice", "1"))
+		if sum.Attached != 0 || sum.NewRecordings != 0 {
+			t.Errorf("attached/recordings = %d/%d: the row merged past the ambiguity veto\nwarnings: %v", sum.Attached, sum.NewRecordings, sum.Warnings)
+		}
+	})
+	t.Run("relocation", func(t *testing.T) {
+		dir := relocationFixture(t, true)
+		seedTree(t, dir, map[string]string{
+			"works/da/das-buch-pope-translation/work.json": `{"authors":["anne-author"],"id":"das-buch-pope-translation","language":"de",` +
+				`"license":"CC0-1.0","sources":[{"type":"user"}],"title":"Das Buch (Pope Translation)"}`,
+			"works/da/das-buch-pope-translation/recordings/other.json": `{"id":"other","language":"de","librivox_id":99720,"license":"CC0-1.0",` +
+				`"narrators":["english-reader"],"sources":[{"type":"user"}],"work":"das-buch-pope-translation"}`,
+		})
+		opts := opts
+		opts.DataDir, opts.ImportDate, opts.Mode = dir, testImportDate, ModeRelocate
+		sum, err := RunLibex(writeBooks(t, relocateRow), opts)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if sum.RelocationRefusals[RefusalRelocateAmbiguousHome] != 1 || len(sum.Relocations) != 0 {
+			t.Errorf("refusals/relocations = %v/%v", sum.RelocationRefusals, sum.Relocations)
+		}
+	})
+}
+
 // A reviewed move carries the credit, and with it the LibriVox id, onto the catalogued
 // person a loose spelling is otherwise refused for.
 func TestLibrivoxReviewedMoves(t *testing.T) {
@@ -319,8 +408,32 @@ func TestLibrivoxReviewedMoves(t *testing.T) {
 	}
 }
 
-// A move onto nobody is dropped, and one off a record is kept: each says so, since each
-// leaves the decision's id unstamped.
+// A move is about the author id, so it keys the id for the whole batch: another project of
+// the id, planned before the attach, credits the same person rather than minting the
+// spelling the move is there to avoid.
+func TestLibrivoxReviewedMoveKeysTheIDForTheBatch(t *testing.T) {
+	const title = "Metamorphosis"
+	dataDir := t.TempDir()
+	seedDatedWorks(t, dataDir, map[string][]string{"metamorphosis": {title, "f-kafka"}}, map[string][2]int{"f-kafka": kafkaLife["franz-kafka"]})
+	rev := reviewAttach(99721, title, "metamorphosis")
+	rev.Moves = map[string]string{"franz-kafka": "f-kafka"}
+	sum := runLibrivoxWith(t, writeSnapshot(t, retitled(t, 99721, title), retitled(t, 99722, "In the Penal Colony")), dataDir, allLibrivox, reviewedOpts(rev))
+	if sum.LibrivoxReviewedPlaced != 1 || warnedAbout(sum, "kept there") {
+		t.Fatalf("placed = %d\nwarnings: %v", sum.LibrivoxReviewedPlaced, sum.Warnings)
+	}
+	if entryExists(t, dataDir, personAddr("franz-kafka")) {
+		t.Errorf("the other project minted the spelling the move avoids")
+	}
+	if p := personOf(t, dataDir, "f-kafka"); p.AuthorID == 0 {
+		t.Errorf("the id is not on f-kafka: %+v", p)
+	}
+	if got := workAuthorsOf(t, dataDir, "in-the-penal-colony"); !slices.Contains(got, "f-kafka") {
+		t.Errorf("the other project's authors = %v", got)
+	}
+}
+
+// A move onto nobody is dropped, one off a record is kept, and one of nobody the row
+// credits does nothing: each says so, since each leaves the decision's id unstamped.
 func TestLibrivoxReviewedMovesThatCannotApplyWarn(t *testing.T) {
 	const title = "Metamorphosis"
 	t.Run("onto no live person", func(t *testing.T) {
@@ -343,6 +456,16 @@ func TestLibrivoxReviewedMovesThatCannotApplyWarn(t *testing.T) {
 		rev.Moves = map[string]string{"franz-kafka": "f-kafka"}
 		sum := runLibrivoxWith(t, writeSnapshot(t, retitled(t, 99707, title)), dataDir, allLibrivox, reviewedOpts(rev))
 		if sum.LibrivoxReviewedPlaced != 1 || !warnedAbout(sum, "already a record of its own") {
+			t.Errorf("placed = %d\nwarnings: %v", sum.LibrivoxReviewedPlaced, sum.Warnings)
+		}
+	})
+	t.Run("of nobody the row credits", func(t *testing.T) {
+		dataDir := t.TempDir()
+		seedWorks(t, dataDir, map[string][]string{"metamorphosis": {title, "f-kafka"}})
+		rev := reviewAttach(99709, title, "metamorphosis")
+		rev.Moves = map[string]string{"frantz-kafka": "f-kafka"}
+		sum := runLibrivoxWith(t, writeSnapshot(t, retitled(t, 99709, title)), dataDir, allLibrivox, reviewedOpts(rev))
+		if sum.LibrivoxReviewedPlaced != 1 || !warnedAbout(sum, `moves "frantz-kafka", whom the project does not credit`) {
 			t.Errorf("placed = %d\nwarnings: %v", sum.LibrivoxReviewedPlaced, sum.Warnings)
 		}
 	})
