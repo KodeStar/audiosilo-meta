@@ -195,31 +195,31 @@ func checkPositionScales(cat *model.Catalog, idx *pathIndex, add addFunc) {
 	if len(cat.PositionScales) == 0 {
 		return
 	}
-	lengths := make(map[string]int, len(cat.PositionScales))
+	scales := make(map[string]*model.PositionScale, len(cat.PositionScales))
 	for _, ps := range cat.PositionScales {
-		lengths[ps.Work] = ps.Length
+		scales[ps.Work] = ps
 	}
 	for _, c := range cat.Characters {
-		length, ok := lengths[c.Work]
+		ps, ok := scales[c.Work]
 		if !ok {
 			continue
 		}
 		for _, ch := range c.Characters {
-			if ch.Reveal.Chapter > length {
-				add(idx.characters[c], "character %q reveals at chapter %d, past the position_scale's length of %d",
-					ch.ID, ch.Reveal.Chapter, length)
+			if ch.Reveal.Chapter > ps.Length {
+				add(idx.characters[c], "character %q reveals at %s %d, past the position_scale's length of %d",
+					ch.ID, ps.Unit, ch.Reveal.Chapter, ps.Length)
 			}
 		}
 	}
 	for _, rc := range cat.Recaps {
-		length, ok := lengths[rc.Work]
+		ps, ok := scales[rc.Work]
 		if !ok {
 			continue
 		}
 		for _, r := range rc.Recaps {
-			if r.Through.Chapter > length {
-				add(idx.recaps[rc], "recap through chapter %d is past the position_scale's length of %d",
-					r.Through.Chapter, length)
+			if r.Through.Chapter > ps.Length {
+				add(idx.recaps[rc], "recap through %s %d is past the position_scale's length of %d",
+					ps.Unit, r.Through.Chapter, ps.Length)
 			}
 		}
 	}

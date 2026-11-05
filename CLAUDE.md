@@ -714,7 +714,8 @@ it, `pkg/check` and every writer now refuse it loudly.
 
 **Position model** (`common.schema.json#/$defs/position`): `{ "chapter": <int
 >= 0> }`, the logical **edition-independent** work chapter (1-based; `0` = front
-matter / prior-book knowledge). A consumer maps its recording-chapter timeline
+matter / prior-book knowledge), or the unit a `position_scale` states where the
+entry has one (a play's act, a diary's entry). A consumer maps its recording-chapter timeline
 onto these ordinals; text-to-audio alignment is a consumer concern, out of
 schema scope. The object shape is deliberately extensible (a later `paragraph`/
 `offset_ms` can be added without a breaking change).

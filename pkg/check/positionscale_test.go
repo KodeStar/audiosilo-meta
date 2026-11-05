@@ -44,7 +44,7 @@ func TestPositionScaleRejected(t *testing.T) {
 		{"zero length", `{"length":0,"unit":"act"}`, "length"},
 		{"no unit", `{"length":20}`, "unit"},
 		{"extra field", `{"length":20,"unit":"act","why":"a reason"}`, "why"},
-		{"past the ruler", `{"length":18,"unit":"chapter"}`, "past the position_scale"},
+		{"past the ruler", `{"length":18,"unit":"chapter"}`, "through chapter 19 is past the position_scale"},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			res := loadTree(t, scaledFixture(80, tc.scale, 3, 7, 11, 15, 19))
@@ -150,7 +150,31 @@ func TestComposeJudgesAScaleAfterTheReKey(t *testing.T) {
 	if res.OK() {
 		t.Fatal("recaps past a scale that rode onto them composed clean")
 	}
-	if !strings.Contains(strings.Join(problemLines(res.Problems), "\n"), "past the position_scale") {
-		t.Errorf("problems %v do not name the scale", res.Problems)
+	// One per recap past the length (10, 20, 30), and each exactly once.
+	got := problemsNaming(res.Problems, "past the position_scale")
+	if len(got) != 3 {
+		t.Fatalf("reported %v, want 3", got)
 	}
+	if !strings.Contains(got[0], "recap through act 10") {
+		t.Errorf("%q does not name the unit", got[0])
+	}
+}
+
+// The community load has already reported a same-key bound error, so the compose's
+// pass stays out: it runs only on a green pass, which that error rules out.
+func TestComposeReportsASameKeyBoundOnce(t *testing.T) {
+	core := composeCore()
+	chars, recaps := sidecarPair([]int{1, 2}, []int{7})
+	coreDir, comDir := composeDirs(t, core, composeCommunity(map[string]string{
+		"book-one": `{"characters":` + chars + `,"recaps":` + recaps + `,"position_scale":{"length":5,"unit":"act"}}`,
+	}))
+	got := problemsNaming(LoadComposed(coreDir, comDir).Problems, "past the position_scale")
+	if len(got) != 1 {
+		t.Errorf("reported %v, want exactly one", got)
+	}
+}
+
+// problemsNaming returns the problem lines containing substr.
+func problemsNaming(ps []Problem, substr string) []string {
+	return advisoryMatching(problemLines(ps), substr)
 }

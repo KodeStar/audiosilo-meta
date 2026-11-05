@@ -407,8 +407,8 @@ func (t *txn) mergeSidecars(target string, losers []string) error {
 				return fmt.Errorf("works-community entry %q member %q: %w", h.slug, name, err)
 			}
 			m := member.Clone()
-			// A position_scale has no backref: its entry key is its work.
-			if m.Has("work") {
+			// A position_scale alone has no backref: its entry key is its work.
+			if name != string(model.KindPositionScale) {
 				m.Set("work", target)
 			}
 			merged.SetRaw(name, m.MustRaw())
