@@ -84,6 +84,13 @@ services:
       # public https://.../hooks/github/release endpoint. Never commit the value
       # here.
       # METASERVE_WEBHOOK_SECRET: ${METASERVE_WEBHOOK_SECRET}
+      #
+      # Optional: offer the unknown-ASIN intake queue (README, "intake queue").
+      # METASERVE_INTAKE_DB registers the POST route and needs the volume above;
+      # METASERVE_INTAKE_TOKEN, 32+ bytes, registers the bearer-token read route.
+      # Unset, neither route exists. Never commit the token here.
+      # METASERVE_INTAKE_DB: /data/intake/queue.sqlite
+      # METASERVE_INTAKE_TOKEN: ${METASERVE_INTAKE_TOKEN}
       # GITHUB_TOKEN: ghp_... # optional higher polling rate limit
 
 # The project's default network, with its subnet pinned so the trusted-proxy

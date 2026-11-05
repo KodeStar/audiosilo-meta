@@ -136,9 +136,9 @@ go run ./cmd/metabuild -o meta.sqlite
 
 ## Running the API server
 
-`metaserve` is a read-only JSON API over the compiled artifact - FTS search,
-work/person/series detail, chapter lists, ASIN/ISBN/LibriVox lookup and a
-LibriVox-shaped feed. All data is public, so there is no auth; the API sends
+`metaserve` is a JSON API over the compiled artifact, which it only ever reads - FTS
+search, work/person/series detail, chapter lists, ASIN/ISBN/LibriVox lookup and a
+LibriVox-shaped feed. All data is public, so reading it needs no auth; the API sends
 permissive CORS, is rate limited per client and states a `Cache-Control`.
 
 The query code and the API handler are the public Go package `pkg/query`
@@ -279,6 +279,21 @@ Configure the deployment and GitHub repository with the same secret:
 The endpoint is not registered when the deployment secret is absent. A missing
 workflow configuration or failed delivery is non-fatal because the fallback
 poller will still discover the release.
+
+A deployment can also offer the unknown-ASIN intake queue, which is off unless
+configured. Set `METASERVE_INTAKE_DB` to a path for its SQLite file (in the shipped
+compose file, `/data/intake/queue.sqlite` sits on the volume, outside the artifact
+cache)
+to register `POST /api/v1/intake/unknown-asins`, and `METASERVE_INTAKE_TOKEN` to a
+random value of at least 32 bytes (`openssl rand -hex 32`) to register the bearer
+token `GET` on the same path as well. The file holds each reported ASIN with a
+count and its first and last UTC day, and nothing about who reported it; the POST's
+limit (6 a day per client) holds a client's address in memory until about a day
+after its last report. It needs `METASERVE_TRUSTED_PROXIES` right behind a proxy
+even more than the API does, or every reporting server shares one 6-a-day bucket.
+A queue file that cannot be opened is logged and leaves the routes off. Losing the
+file is harmless, because servers report again. Unset the variable to turn it off:
+the routes answer 404 and the spec no longer lists them.
 
 ### Docker
 
