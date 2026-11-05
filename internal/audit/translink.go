@@ -382,16 +382,16 @@ func linkVetoes(base check.LinkView, kind model.RedirectKind, id string, have []
 }
 
 // heldOnlyAsDramatization reports whether the catalogue holds this work only as a
-// dramatized production. Each recording answers for itself; a work's title carrying
-// the label is the fallback for a recording that states no publisher, and for a work
-// with no recording to ask.
+// dramatized production. Each recording answers for itself, and where it says nothing
+// the work's title answers for it (titlerule.TitleDramatization), which is also all
+// there is for a work with no recording to ask.
 func heldOnlyAsDramatization(w *model.Work) bool {
-	labelled := titlerule.IsDramatization(w.Title) || titlerule.IsDramatization(w.Subtitle)
+	title := titlerule.DramatizationOf(w.Title, w.Subtitle)
 	if len(w.Recordings) == 0 {
-		return labelled
+		return title.Stated
 	}
 	for _, r := range w.Recordings {
-		if !r.IsDramatization() && (!labelled || r.Publisher != "") {
+		if !r.IsDramatization() && !title.Covers(r.Publisher) {
 			return false
 		}
 	}

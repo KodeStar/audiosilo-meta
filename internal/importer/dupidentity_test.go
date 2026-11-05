@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"testing"
 
@@ -896,5 +897,62 @@ func TestALabelledTitleWithItsSubtitleStaysReachable(t *testing.T) {
 	if sum.NewWorks != 0 || sum.SkippedDuplicateIdentity != 0 || sum.NewRecordings != 1 || len(recSlugsOf(t, dataDir, id)) != 2 {
 		t.Errorf("NewWorks = %d, SkippedDuplicateIdentity = %d, NewRecordings = %d; want a second recording of %s; warnings = %v",
 			sum.NewWorks, sum.SkippedDuplicateIdentity, sum.NewRecordings, id, sum.Warnings)
+	}
+}
+
+// Two volumes of a serial sharing one labelled short title are moved off it, as plain
+// rows are, because it cannot say which volume it is: neither lands on a work catalogued
+// under that short title by way of the label.
+func TestASerialRowLeavesAWorkUnderItsLabelledShortTitleAlone(t *testing.T) {
+	const id = "foo-dramatized-adaptation"
+	dataDir := seedTombstoneTree(t, map[string]string{
+		"works/" + shard(id) + "/" + id + "/work.json": testpack.WorkJSON(t, id, "Foo [Dramatized Adaptation]", testpack.WithAuthors("ada-mapmaker")),
+		"works/" + shard(id) + "/" + id + "/recordings/r1.json": testpack.RecJSON(t, "r1", id,
+			testpack.WithNarrators("bea-reader"), testpack.WithRuntime(500)),
+	}, nil)
+	one := adaptationRow("B0ADAPT010", "Foo [Dramatized Adaptation]")
+	one.subtitle, one.series = "The Saga, Book 1", `{"name":"The Saga","position":"1"}`
+	two := adaptationRow("B0ADAPT011", "Foo [Dramatized Adaptation]")
+	two.subtitle, two.series, two.minutes = "The Saga, Book 2", `{"name":"The Saga","position":"2"}`, 650
+	sum := runLibexInto(t, dataDir, rows(one, two))
+	if sum.NewWorks != 2 || len(recSlugsOf(t, dataDir, id)) != 1 {
+		t.Errorf("NewWorks = %d, recordings of %s = %v, want two works of their own; warnings = %v",
+			sum.NewWorks, id, recSlugsOf(t, dataDir, id), sum.Warnings)
+	}
+}
+
+// The audiosilo-books envelope splits its concatenated title itself before the run reads
+// titles, and that must leave the qualifier for normalizeEditionMarkers to record: its
+// label reaches a retired slug and a record spelling the subtitle after the label just as
+// a libex row's does.
+func TestAnEnvelopeRowKeepsItsQualifiedTitles(t *testing.T) {
+	envelope := func(asin, title, subtitle string) string {
+		return `{"format":"` + audiosiloBooksFormat + `","version":1,"books":[{"asin":"` + asin + `","title":` + strconv.Quote(title) +
+			`,"subtitle":` + strconv.Quote(subtitle) + `,"language":"en","runtime_min":400,` +
+			`"authors":["Ada Mapmaker"],"narrators":["Full Cast"]}]}`
+	}
+	const survivor = "the-good-old-boys"
+	dataDir := seedTombstoneTree(t, map[string]string{
+		"works/" + shard(survivor) + "/" + survivor + "/work.json": testpack.WorkJSON(t, survivor, "The Good Old Boys", testpack.WithAuthors("ada-mapmaker")),
+		"works/" + shard(survivor) + "/" + survivor + "/recordings/r1.json": testpack.RecJSON(t, "r1", survivor,
+			testpack.WithNarrators("bea-reader"), testpack.WithRuntime(500)),
+	}, model.Redirects{model.RedirectWorks: {"good-old-boys-dramatized-adaptation": survivor}})
+	sum := runInto(t, RunAudiosiloBooks, dataDir, envelope("B0ADAPT012", "Good Old Boys [Dramatized Adaptation]", ""))
+	if sum.NewWorks != 0 || sum.SkippedDuplicateIdentity != 0 || len(recSlugsOf(t, dataDir, survivor)) != 2 {
+		t.Errorf("a retired slug: NewWorks = %d, SkippedDuplicateIdentity = %d, recordings = %v; warnings = %v",
+			sum.NewWorks, sum.SkippedDuplicateIdentity, recSlugsOf(t, dataDir, survivor), sum.Warnings)
+	}
+
+	const held = "winter-kill-dramatized-adaptation-john-henry-cole-book-3"
+	dataDir = seedTombstoneTree(t, map[string]string{
+		"works/" + shard(held) + "/" + held + "/work.json": testpack.WorkJSON(t, held, "Winter Kill [Dramatized Adaptation]: John Henry Cole, Book 3",
+			testpack.WithAuthors("ada-mapmaker")),
+		"works/" + shard(held) + "/" + held + "/recordings/r1.json": testpack.RecJSON(t, "r1", held,
+			testpack.WithNarrators("bea-reader"), testpack.WithRuntime(500)),
+	}, nil)
+	sum = runInto(t, RunAudiosiloBooks, dataDir, envelope("B0ADAPT013", "Winter Kill [Dramatized Adaptation]: John Henry Cole, Book 3", "John Henry Cole, Book 3"))
+	if sum.NewWorks != 0 || sum.SkippedDuplicateIdentity != 0 || len(recSlugsOf(t, dataDir, held)) != 2 {
+		t.Errorf("a subtitle after the label: NewWorks = %d, SkippedDuplicateIdentity = %d, recordings = %v; warnings = %v",
+			sum.NewWorks, sum.SkippedDuplicateIdentity, recSlugsOf(t, dataDir, held), sum.Warnings)
 	}
 }

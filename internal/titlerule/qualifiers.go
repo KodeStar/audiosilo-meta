@@ -191,7 +191,7 @@ func segmentEndsAt(s string, i int) bool {
 // dropMarketEdition removes every "International Edition" qualifier that stands as a
 // whole segment, a whole quoted run or a whole bracketed group, leaving the separator
 // that introduced a segment for the run collapse to settle. lower is s lowercased,
-// taken once by the caller for both qualifiers' cheap guards.
+// taken once by the caller for every qualifier's cheap guard.
 func dropMarketEdition(s, lower string) string {
 	if !strings.Contains(lower, "international") {
 		return s // the common case, kept off the regexps
@@ -387,7 +387,10 @@ func containsFoldASCII(s, sub string) bool {
 // duplicate-identity guard the key alone would trip.
 func StripTitleQualifiers(title string) string {
 	lower := strings.ToLower(title)
-	s := dropAdaptationLabel(dropNarratorQualifier(dropMarketEdition(title, lower), lower), lower)
+	// The label first: a narrator credit must run to the end of the title, and one
+	// holding a bracket is none (narratorCredit), so it would read a credit in front of
+	// the label as prose and leave it for a second pass to find.
+	s := dropNarratorQualifier(dropMarketEdition(dropAdaptationLabel(title, lower), lower), lower)
 	if s == title {
 		return title
 	}

@@ -1,9 +1,21 @@
 package model
 
-import "regexp"
+import (
+	"regexp"
+	"slices"
+	"strings"
+)
 
 // FullCastPerson is the canonical person record a "Full Cast" credit folds onto.
 const FullCastPerson = "full-cast"
+
+// IsFullCastCredit reports whether a person id is a full-cast credit: the canonical
+// record, or one a source spelled around it that the credit fold leaves as it was ("the
+// Full Cast Family", "Full Cast featuring Joan Walker", "Jared Reinfeldt full cast").
+// pkg/query's matchRuntimesSQL asks the same of a narrator row.
+func IsFullCastCredit(personID string) bool {
+	return strings.Contains("-"+personID+"-", "-"+FullCastPerson+"-")
+}
 
 // graphicAudioPublisher is every spelling the catalogue and libex record
 // GraphicAudio's imprint under: "GraphicAudio", "Graphic Audio", "GraphicAudio LLC"
@@ -22,13 +34,5 @@ func IsDramatizationPublisher(publisher string) bool {
 // about the RECORDING and no work's title decides it. Several named readers are not
 // enough: a chapter-by-chapter volunteer reading credits them too.
 func (r *Recording) IsDramatization() bool {
-	if IsDramatizationPublisher(r.Publisher) {
-		return true
-	}
-	for _, n := range r.Narrators {
-		if n == FullCastPerson {
-			return true
-		}
-	}
-	return false
+	return IsDramatizationPublisher(r.Publisher) || slices.ContainsFunc(r.Narrators, IsFullCastCredit)
 }

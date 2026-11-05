@@ -206,18 +206,53 @@ func SplitEditionName(name string) (base, lang string, ok bool) {
 // deliberately do not read it (a dramatization of one work is still that work - see
 // internal/audit's vetoAdaptedEditionOneSide). What says a recording is dramatized is
 // the recording itself (model.Recording.IsDramatization); a stored title is read only
-// as the fallback for a record whose recordings state nothing, since the label comes
-// off a title as a qualifier.
+// through TitleDramatization, since the label comes off a title as a qualifier.
 var dramatization = regexp.MustCompile(`(?i)\bdramati[sz](?:ed|ations?)\b`)
 
-// IsDramatization reports whether a title announces a dramatized production.
-func IsDramatization(title string) bool { return dramatization.MatchString(title) }
+// IsDramatization reports whether a title announces a dramatized production. A candidate
+// pool asks it of thousands of titles a request, so the common case stays off the regexp.
+func IsDramatization(title string) bool {
+	return containsFoldASCII(title, "dramati") && dramatization.MatchString(title)
+}
 
-// fullCast matches the other way a book's own tags name a production for voices.
-var fullCast = regexp.MustCompile(`(?i)\bfull[- ]?cast\b`)
+// namedProduction matches the other ways a text names a production for voices: a full
+// cast, and GraphicAudio, whose whole list is dramatized (model.IsDramatizationPublisher).
+var namedProduction = regexp.MustCompile(`(?i)\b(?:full[- ]?cast|graphic\s?audio)\b`)
 
-// StatesDramatization reports whether a library book's own text - a tagged title, a
-// folder, a narrator credit - says the book is a dramatized production.
+// StatesDramatization reports whether a text - a library book's tagged title, folder or
+// narrator credit, or a work's stored title - says it is a dramatized production.
 func StatesDramatization(text string) bool {
-	return IsDramatization(text) || fullCast.MatchString(text)
+	return IsDramatization(text) ||
+		((containsFoldASCII(text, "cast") || containsFoldASCII(text, "graphic")) && namedProduction.MatchString(text))
+}
+
+// TitleDramatization is what a work's own title and subtitle say about its recordings.
+type TitleDramatization struct {
+	// Stated: they say the work is a dramatized production, in any words.
+	Stated bool
+	// Kept: they say it in words no title qualifier takes off ("(Dramatized)", "A Radio
+	// Dramatization", a split-release part's label). Such a title stays as it is, so it
+	// goes on naming the production its recordings are, whoever published them. A title
+	// holding only the adaptation label does not: a plain reading can sit under the label
+	// until the work is retitled.
+	Kept bool
+}
+
+// DramatizationOf reads a work's title and subtitle.
+func DramatizationOf(title, subtitle string) TitleDramatization {
+	var d TitleDramatization
+	for _, t := range []string{title, subtitle} {
+		if StatesDramatization(t) {
+			d.Stated = true
+			d.Kept = d.Kept || StatesDramatization(StripTitleQualifiers(t))
+		}
+	}
+	return d
+}
+
+// Covers reports whether the title speaks for a recording of the given publisher that
+// says nothing of itself: always when the statement stays on the title, and otherwise
+// only for a recording stating no publisher.
+func (d TitleDramatization) Covers(publisher string) bool {
+	return d.Kept || (d.Stated && publisher == "")
 }

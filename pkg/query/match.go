@@ -439,12 +439,11 @@ func readNames(guesses []string) []personName {
 
 // candidate is one work being judged: its facts, read in batches.
 type candidate struct {
-	// labelled: the work's title still carries an adaptation label, read only for a
-	// recording that states no publisher.
-	labelled bool
-	id       string
-	title    []string    // the title's own terms
-	titles   []titleForm // every form the title is compared in (candidateTitleForms)
+	// drama is what the work's title says of a recording that says nothing of itself.
+	drama  titlerule.TitleDramatization
+	id     string
+	title  []string    // the title's own terms
+	titles []titleForm // every form the title is compared in (candidateTitleForms)
 	// authors are the credited names, authorKeys their sorted-name keys
 	// (isAuthorName) and authorWord every word of them.
 	authors    []personName
@@ -479,7 +478,8 @@ type candidateSeries struct {
 
 type recordingRuntime struct {
 	// dramatized: the recording states it is a dramatized production
-	// (model.Recording.IsDramatization), or states no publisher on a labelled work.
+	// (model.Recording.IsDramatization), or the work's title speaks for it
+	// (titlerule.TitleDramatization).
 	dramatized bool
 	id         string
 	minute     int
@@ -860,9 +860,12 @@ func matchWorksSQL(ph string) string {
 	return `SELECT id, title, COALESCE(subtitle, ''), language FROM works WHERE id IN (` + ph + `)`
 }
 
+// matchRuntimesSQL reads each recording's runtime and the two facts
+// model.Recording.IsDramatization reads: its publisher, and whether any narrator is a
+// full-cast credit (model.IsFullCastCredit, here over the slug's hyphen boundaries).
 func matchRuntimesSQL(ph string) string {
 	return `SELECT r.work_id, r.id, r.runtime_min, COALESCE(r.publisher, ''), EXISTS(SELECT 1 FROM recording_narrators n ` +
-		`WHERE n.work_id = r.work_id AND n.recording_id = r.id AND n.person_id = '` + model.FullCastPerson + `') ` +
+		`WHERE n.work_id = r.work_id AND n.recording_id = r.id AND ('-' || n.person_id || '-') LIKE '%-` + model.FullCastPerson + `-%') ` +
 		`FROM recordings r WHERE r.work_id IN (` + ph + `) AND r.runtime_min > 0`
 }
 
@@ -939,7 +942,7 @@ func (s *DB) candidateFacts(ctx context.Context, pool *candidatePool, narrators 
 				id: id, title: terms, titles: candidateTitleForms(title, terms, subtitle),
 				authorWord: map[string]bool{}, identified: pool.identified[id],
 				language: memo.language(language),
-				labelled: titlerule.IsDramatization(title),
+				drama:    titlerule.DramatizationOf(title, subtitle),
 			}
 			return nil
 		})
@@ -994,7 +997,7 @@ func (s *DB) candidateFacts(ctx context.Context, pool *candidatePool, narrators 
 			}
 			c := byID[workID]
 			c.runtimes = append(c.runtimes, recordingRuntime{id: rid, minute: minutes,
-				dramatized: fullCast || model.IsDramatizationPublisher(publisher) || (publisher == "" && c.labelled)})
+				dramatized: fullCast || model.IsDramatizationPublisher(publisher) || c.drama.Covers(publisher)})
 			return nil
 		}); err != nil {
 			return err
@@ -1124,24 +1127,29 @@ func (f *matchFacts) judge(c *candidate) scored {
 // narratorVerdict judges the request's narrator guesses against each of c's
 // recordings (agreeAuthors, the authors' rule), returning the best agreement
 // and the recording that reached it - the closest runtime among the recordings
-// that tie, the first in id order when no runtime decides. It names no
+// that tie, a dramatization only when no other ties or the request states one (a
+// narrator credited on both has not said which it is, and length names none), the
+// first in id order when no runtime decides. It names no
 // recording when none agrees at all, or when the one it reached is more than
 // runtimeFar off the stated runtime (another edition, runtimeFarOff: the
 // narrator still speaks for the work, not for that recording), and the
 // runtime's pick stands.
 func (f *matchFacts) narratorVerdict(c *candidate) (authorAgreement, string) {
-	best, rid, ridDiff := authorNone, "", math.Inf(1)
+	best, rid, ridDiff, ridDrama := authorNone, "", math.Inf(1), false
 	for _, r := range c.narrated {
 		a := agreeAuthors(f.narrators, r.names)
 		if a == authorNone || a.value() < best.value() {
 			continue
 		}
-		diff := math.Inf(1)
-		if i := slices.IndexFunc(c.runtimes, func(rt recordingRuntime) bool { return rt.id == r.id }); i >= 0 && f.runtime > 0 {
-			_, diff = runtimeFit(c.runtimes[i].minute, f.runtime)
+		diff, drama := math.Inf(1), false
+		if i := slices.IndexFunc(c.runtimes, func(rt recordingRuntime) bool { return rt.id == r.id }); i >= 0 {
+			drama = c.runtimes[i].dramatized && !f.statesDramatization
+			if f.runtime > 0 {
+				_, diff = runtimeFit(c.runtimes[i].minute, f.runtime)
+			}
 		}
-		if a.value() > best.value() || diff < ridDiff {
-			best, rid, ridDiff = a, r.id, diff
+		if a.value() > best.value() || (ridDrama && !drama) || (drama == ridDrama && diff < ridDiff) {
+			best, rid, ridDiff, ridDrama = a, r.id, diff, drama
 		}
 	}
 	if f.runtimeFarOff(ridDiff) {

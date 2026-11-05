@@ -400,6 +400,7 @@ func TestMatchRuntimeNeverNamesADramatizationForAPlainBook(t *testing.T) {
 		{"allowed: the title says so", matchRequest{titles: []string{"Dune [Dramatized Adaptation]"}, runtime: 24000}, []recordingRuntime{plain, drama}, "b-drama"},
 		{"allowed: a folder's series says so", matchRequest{titles: []string{"Dune"}, series: []string{"Dune (Full Cast)"}, runtime: 24000}, []recordingRuntime{plain, drama}, "b-drama"},
 		{"allowed: the narrator credit says so", matchRequest{titles: []string{"Dune"}, narrators: []string{"Full Cast"}, runtime: 24000}, []recordingRuntime{plain, drama}, "b-drama"},
+		{"allowed: a folder names the imprint", matchRequest{titles: []string{"Mistborn (GraphicAudio)"}, runtime: 24000}, []recordingRuntime{plain, drama}, "b-drama"},
 		{"a plain recording is picked as ever", matchRequest{titles: []string{"Dune"}, runtime: 42000}, []recordingRuntime{plain, drama}, "a-plain"},
 	}
 	for _, c := range cases {
@@ -431,6 +432,17 @@ func TestMatchNarratorOrIdentifierStillNamesADramatization(t *testing.T) {
 	if v.recordingID != "b-drama" {
 		t.Errorf("narrator: recording %q, want b-drama", v.recordingID)
 	}
+	// A narrator credited on both has not said which it is, and length names no
+	// dramatization, however close.
+	c.narrated = []recordingNarrators{{id: "a-plain", names: []personName{hill}}, {id: "b-drama", names: []personName{hill}}}
+	v = readFacts(matchRequest{titles: []string{"Dune"}, runtime: 24000, narrators: []string{"Alex Hill Knight"}}).judge(c)
+	if v.recordingID != "a-plain" {
+		t.Errorf("narrator on both: recording %q, want a-plain", v.recordingID)
+	}
+	v = readFacts(matchRequest{titles: []string{"Dune [Dramatized Adaptation]"}, runtime: 24000, narrators: []string{"Alex Hill Knight"}}).judge(c)
+	if v.recordingID != "b-drama" {
+		t.Errorf("narrator on both, the request states it: recording %q, want b-drama", v.recordingID)
+	}
 	c.narrated = nil
 	c.identified = identification{recording: "b-drama", by: "asin"}
 	v = readFacts(matchRequest{asin: "B0DUNE0001", runtime: 42000}).judge(c)
@@ -448,11 +460,16 @@ func TestMatchReadsADramatizationFromTheRecording(t *testing.T) {
 		return r
 	}
 	_, ts := newTestServerForCatalog(t, &model.Catalog{
-		People: []*model.Person{factorPerson("ada-one", "Ada One"), factorPerson(model.FullCastPerson, "Full Cast"), factorPerson("bea-reader", "Bea Reader")},
+		People: []*model.Person{
+			factorPerson("ada-one", "Ada One"), factorPerson(model.FullCastPerson, "Full Cast"),
+			factorPerson("the-full-cast-family", "the Full Cast Family"), factorPerson("bea-reader", "Bea Reader"),
+		},
 		Works: []*model.Work{
 			factorWork("both", "Both", "en", "ada-one", rec("a-reader", 700, "Tantor Audio", "bea-reader"), rec("b-ga", 400, "Graphic Audio LLC", "bea-reader")),
 			factorWork("cast", "Cast", "en", "ada-one", rec("a-reader", 700, "Tantor Audio", "bea-reader"), rec("b-cast", 400, "Corey Press", model.FullCastPerson)),
+			factorWork("family", "Family", "en", "ada-one", rec("a-reader", 700, "Tantor Audio", "bea-reader"), rec("b-cast", 400, "Full Cast Audio", "the-full-cast-family")),
 			factorWork("only-drama", "Only Drama", "en", "ada-one", rec("b-ga", 400, "GraphicAudio", "bea-reader")),
+			factorWork("stays", "Stays (Dramatized)", "en", "ada-one", rec("f-latw", 400, "L.A. Theatre Works", "bea-reader")),
 			factorWork("label-unknown", "Label Unknown [Dramatized Adaptation]", "en", "ada-one", rec("d-none", 400, "", "bea-reader")),
 			factorWork("label-plain", "Label Plain [Dramatized Adaptation]", "en", "ada-one", rec("e-plain", 400, "Tantor Audio", "bea-reader")),
 		},
@@ -460,7 +477,9 @@ func TestMatchReadsADramatizationFromTheRecording(t *testing.T) {
 	for _, x := range []struct{ title, id, want string }{
 		{"Both", "both", "a-reader"},
 		{"Cast", "cast", "a-reader"},
+		{"Family", "family", "a-reader"},
 		{"Only Drama", "only-drama", ""},
+		{"Stays", "stays", ""},
 		{"Label Unknown", "label-unknown", ""},
 		{"Label Plain", "label-plain", "e-plain"},
 	} {

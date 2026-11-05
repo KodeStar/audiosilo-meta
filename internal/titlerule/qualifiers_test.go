@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-// The two product qualifiers and the brand possessive are COMPARISON rules first:
+// The product qualifiers and the brand possessive are COMPARISON rules first:
 // what each pins is which pairs of titles meet on the identity key and which do not.
 func TestTitleQualifiersMeetTheirPlainTwin(t *testing.T) {
 	cases := []struct {
@@ -194,6 +194,7 @@ func TestAdaptationLabelIsAQualifier(t *testing.T) {
 		{"Winter Kill [Dramatized Adaptation]: John Henry Cole, Book 3", "Winter Kill: John Henry Cole, Book 3"},
 		{"Trevor Lawson 1-2 Bundle [Dramatized Adaptation]", "Trevor Lawson 1-2 Bundle"},
 		{`Change of Command "International Edition" [Dramatized Adaptation]`, "Change of Command"},
+		{"The Search, Read by Dee Reader [Dramatized Adaptation]", "The Search"},
 		// Denied: a split-release part keeps its label.
 		{"Warbreaker (1 of 3) [Dramatized Adaptation]", "Warbreaker (1 of 3) [Dramatized Adaptation]"},
 		{"Morning Star (Part 1 of 2) (Dramatized Adaptation)", "Morning Star (Part 1 of 2) (Dramatized Adaptation)"},
@@ -218,5 +219,60 @@ func TestAdaptationLabelIsAQualifier(t *testing.T) {
 	}
 	if got, ok := ProposeTitle("Tracker (Dramatized Adaptation)", ""); !ok || got != "Tracker" {
 		t.Errorf("ProposeTitle = %q, %v; want Tracker", got, ok)
+	}
+	for _, c := range cases {
+		once := StripTitleQualifiers(c.title)
+		if twice := StripTitleQualifiers(once); twice != once {
+			t.Errorf("StripTitleQualifiers(%q) = %q, but a second pass gives %q", c.title, once, twice)
+		}
+	}
+}
+
+// A work's title speaks for a recording through what stays on the title: the label comes
+// off, so a plain reading can sit under it, and any other statement does not.
+func TestTitleDramatizationCovers(t *testing.T) {
+	cases := []struct {
+		title, subtitle string
+		noPublisher     bool
+		publisher       bool
+	}{
+		{title: "The Idiot"},
+		{title: "Tracker (Dramatized Adaptation)", noPublisher: true},
+		{title: "The Idiot (Dramatized)", noPublisher: true, publisher: true},
+		{title: "The Wonderful Wizard of Oz: A Radio Dramatization", noPublisher: true, publisher: true},
+		{title: "Dirk Gently: Two BBC Radio Full-Cast Dramas", noPublisher: true, publisher: true},
+		{title: "Warbreaker (1 of 3) [Dramatized Adaptation]", noPublisher: true, publisher: true},
+		{title: "Dune", subtitle: "A Full-Cast Dramatization", noPublisher: true, publisher: true},
+	}
+	for _, c := range cases {
+		d := DramatizationOf(c.title, c.subtitle)
+		if got := d.Covers(""); got != c.noPublisher {
+			t.Errorf("%q / %q: Covers(no publisher) = %v, want %v", c.title, c.subtitle, got, c.noPublisher)
+		}
+		if got := d.Covers("Tantor Audio"); got != c.publisher {
+			t.Errorf("%q / %q: Covers(a publisher) = %v, want %v", c.title, c.subtitle, got, c.publisher)
+		}
+	}
+}
+
+// A library book's own text names a production in each of the ways a catalogue record
+// does, GraphicAudio's imprint among them, and nothing else does.
+func TestStatesDramatization(t *testing.T) {
+	for text, want := range map[string]bool{
+		"Dune [Dramatized Adaptation]":       true,
+		"Dune (Dramatised)":                  true,
+		"Dune (Full Cast)":                   true,
+		"Dune full-cast":                     true,
+		"Mistborn (GraphicAudio)":            true,
+		"Sanderson/Mistborn - Graphic Audio": true,
+		"Dune":                               false,
+		"Radio Free Albemuth":                false,
+		"The Graphic Novel":                  false,
+		"The Forecast":                       false,
+		"Audio Graphics":                     false,
+	} {
+		if got := StatesDramatization(text); got != want {
+			t.Errorf("StatesDramatization(%q) = %v, want %v", text, got, want)
+		}
 	}
 }

@@ -1220,12 +1220,14 @@ func (p *planner) planCreate(books []sourceBook) {
 // undecorated titles without re-cleaning.
 //
 // Step 2 is therefore the one place a title CHANGES on its way into identity,
-// and cleanWorkTitle performs both of its rules there: the trailing
-// (Unabridged)/(Abridged) edition marker, and the mid-title narrator qualifier
-// in front of a volume marker ("... - gelesen von Andreas Lange, Band 11" ->
-// "..., Band 11", stripTitleNarratorQualifier). A reader chasing "why did this
-// title change?" lands here, so both rules are named here rather than only at
-// their definitions.
+// and cleanWorkTitle performs all of its rules there: the trailing
+// (Unabridged)/(Abridged) edition marker, the title qualifiers
+// (titlerule.StripTitleQualifiers: a marketplace edition, a narrator credit, an
+// adaptation label), whose unstripped forms are kept as qualifiedTitles, and the
+// mid-title narrator qualifier in front of a volume marker ("... - gelesen von
+// Andreas Lange, Band 11" -> "..., Band 11", stripTitleNarratorQualifier). A reader
+// chasing "why did this title change?" lands here, so the rules are named here
+// rather than only at their definitions.
 func normalizeEditionMarkers(books []sourceBook) {
 	for i := range books {
 		if books[i].abridged == nil {
@@ -2987,9 +2989,12 @@ func (p *planner) resolveWork(title, fullTitle string, qualifiedTitles []string,
 	// on that title's chain, which the cleaned title no longer walks. Nothing is
 	// created there - a miss leaves the row on the chain resolved above. The row's
 	// own pre-qualifier title first, then every catalogued title that cleans to
-	// exactly the row's (qualifiedCatalogueWalk).
+	// exactly the row's (qualifiedCatalogueWalk). A qualified title walked is the
+	// qualified form of one this row is walked under: a row of a same-titled serial was
+	// moved off its short title (resolveWorkTitles) because that title cannot say which
+	// volume it is, and that holds of the short title with a qualifier on it too.
 	for _, q := range qualifiedTitles {
-		if q == fullTitle {
+		if c := cleanWorkTitle(q); q == fullTitle || (c != title && c != fullTitle) {
 			continue
 		}
 		if qw, ok := p.mergeOnlyWalk(q, slugOfTitle(q), authors, lang, claim.forTitle(q)); ok {
