@@ -20,11 +20,17 @@ import (
 // server instead of a hand-written third copy of the list that could quietly
 // agree with a wrong mux.
 //
-// The server is constructed WITH a webhook secret so the release hook is in the
-// table: it is registered only on a configured deployment, but the spec
-// describes the whole surface, so the guard has to see it.
+// The server is constructed WITH a webhook secret and an intake queue so the
+// release hook and the intake routes are in the table: each is registered only on
+// a configured deployment, but the file describes the whole surface, so the guard
+// has to see them. What an unconfigured deployment SERVES is servedSpec's, pinned
+// by TestIntakeSpecFollowsTheRouteTable.
 func servedPaths() []string {
-	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}, log: artifacttest.QuietLogger()}
+	srv := &Server{
+		cfg:    Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)},
+		log:    artifacttest.QuietLogger(),
+		intake: &intakeState{token: strings.Repeat("t", minIntakeTokenBytes)},
+	}
 	rs := srv.routes()
 	out := make([]string, 0, len(rs))
 	for _, r := range rs {

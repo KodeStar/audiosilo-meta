@@ -1564,6 +1564,40 @@ func (s *DB) lookup(ctx context.Context, asin, isbn string) (*lookupResult, erro
 	return &lookupResult{Work: card, RecordingID: rid}, nil
 }
 
+// knownASINsSQL is KnownASINs' batch, rendered as the index guard EXPLAINs it.
+func knownASINsSQL(ph string) string {
+	return `SELECT asin FROM recording_asins WHERE asin IN (` + ph + `)`
+}
+
+// KnownASINs answers which of asins this artifact holds: the subset some
+// recording carries, in any marketplace region, as a set. It is the read
+// metaserve's intake queue drops known ASINs with, so "known" means what
+// lookup?asin= would answer 200 for, redirects and works/match aside. An ASIN the
+// set does not name is unknown to this artifact, nothing more. The comparison is
+// exact: the catalogue's ASINs are upper case by schema, so a lower-case spelling
+// is simply not held.
+func (s *DB) KnownASINs(ctx context.Context, asins []string) (map[string]bool, error) {
+	known := make(map[string]bool)
+	err := eachChunk(asins, func(ph string, args []any) error {
+		rows, err := s.db.QueryContext(ctx, knownASINsSQL(ph), args...)
+		if err != nil {
+			return err
+		}
+		held, err := scanIDs(rows)
+		if err != nil {
+			return err
+		}
+		for _, asin := range held {
+			known[asin] = true
+		}
+		return nil
+	})
+	if err != nil {
+		return nil, err
+	}
+	return known, nil
+}
+
 // lookupIDs resolves an identifier to the work and recording it names, without
 // building the work's card: the ASIN when both are given, else the ISBN (a
 // recording's, then a work's print ISBN, which points at its first recording).

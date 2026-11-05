@@ -142,3 +142,40 @@ func seedDB(t *testing.T, path string) string {
 	}
 	return path
 }
+
+// TestReadWriteOpensAnAwkwardPath is the writable twin: the file it creates is the
+// one the operator named, at every awkward shape, and its pragmas reach the
+// connection through the driver's own parser.
+func TestReadWriteOpensAnAwkwardPath(t *testing.T) {
+	for _, dirName := range awkwardDirs {
+		t.Run(dirName, func(t *testing.T) {
+			path := filepath.Join(t.TempDir(), dirName, "queue.sqlite")
+			if err := os.MkdirAll(filepath.Dir(path), 0o700); err != nil {
+				t.Fatal(err)
+			}
+			dsn, err := ReadWrite(path, "journal_mode(DELETE)", "secure_delete(ON)")
+			if err != nil {
+				t.Fatal(err)
+			}
+			db, err := sql.Open("sqlite", dsn)
+			if err != nil {
+				t.Fatal(err)
+			}
+			defer func() { _ = db.Close() }()
+			if _, err := db.Exec(`CREATE TABLE t(x)`); err != nil {
+				t.Fatalf("create through %s: %v", dsn, err)
+			}
+			if _, err := os.Stat(path); err != nil {
+				t.Errorf("the named file was not created: %v", err)
+			}
+			var secure int
+			if err := db.QueryRow(`PRAGMA secure_delete`).Scan(&secure); err != nil || secure != 1 {
+				t.Errorf("secure_delete = %d %v, want 1", secure, err)
+			}
+			var journal string
+			if err := db.QueryRow(`PRAGMA journal_mode`).Scan(&journal); err != nil || !strings.EqualFold(journal, "delete") {
+				t.Errorf("journal_mode = %q %v, want delete", journal, err)
+			}
+		})
+	}
+}
