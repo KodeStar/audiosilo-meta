@@ -11303,67 +11303,6 @@
       ],
       "title": "St Augustine's Treatise on the City of God"
     },
-    "st-bartholomews-eve": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "g-a-henty"
-      ],
-      "genres": [
-        "historical-fiction",
-        "politics",
-        "social-sciences"
-      ],
-      "id": "st-bartholomews-eve",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jim-hodges-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B072W6LTN5",
-              "region": "us"
-            },
-            {
-              "asin": "B072W7MHB7",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81PKzeAmV+L.jpg",
-          "id": "jim-hodges-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jim-hodges"
-          ],
-          "publisher": "Jim Hodges Productions",
-          "release_date": "2017-07-11",
-          "runtime_min": 817,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B072W6LTN5",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B072W7MHB7",
-              "type": "libex-import"
-            }
-          ],
-          "work": "st-bartholomews-eve"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B072W6LTN5",
-          "type": "libex-import"
-        }
-      ],
-      "title": "St. Bartholomew’s Eve"
-    },
     "st-bartholomews-eve-g-a-henty": {
       "added_at": "2026-10-27",
       "authors": [
@@ -11371,7 +11310,9 @@
       ],
       "genres": [
         "childrens",
-        "historical-fiction"
+        "historical-fiction",
+        "politics",
+        "social-sciences"
       ],
       "id": "st-bartholomews-eve-g-a-henty",
       "language": "en",
@@ -11573,6 +11514,43 @@
             }
           ],
           "work": "st-bartholomews-eve-g-a-henty"
+        },
+        "jim-hodges-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B072W6LTN5",
+              "region": "us"
+            },
+            {
+              "asin": "B072W7MHB7",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81PKzeAmV+L.jpg",
+          "id": "jim-hodges-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jim-hodges"
+          ],
+          "publisher": "Jim Hodges Productions",
+          "release_date": "2017-07-11",
+          "runtime_min": 817,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B072W6LTN5",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B072W7MHB7",
+              "type": "libex-import"
+            }
+          ],
+          "work": "st-bartholomews-eve-g-a-henty"
         }
       },
       "sources": [
@@ -11580,6 +11558,11 @@
           "imported_at": "2026-10-27",
           "ref": "1825",
           "type": "librivox"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B072W6LTN5",
+          "type": "libex-import"
         }
       ],
       "title": "St. Bartholomew's Eve"

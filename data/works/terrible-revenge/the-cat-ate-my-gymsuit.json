@@ -1410,6 +1410,8 @@
         "g-a-henty"
       ],
       "genres": [
+        "action-adventure",
+        "classics",
         "historical-fiction",
         "thriller-suspense"
       ],
@@ -1572,119 +1574,6 @@
           ],
           "work": "the-cat-of-bubastes"
         },
-        "john-bolen-2003": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002UUFXFK",
-              "region": "us"
-            },
-            {
-              "asin": "B004FUDSQO",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4297549,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4163849,
-              "start_ms": 4297549,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4155490,
-              "start_ms": 8461398,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3989513,
-              "start_ms": 12616888,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4156883,
-              "start_ms": 16606401,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4289329,
-              "start_ms": 20763284,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 4209267,
-              "start_ms": 25052613,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 4190505,
-              "start_ms": 29261880,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 4096418,
-              "start_ms": 33452385,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 3915302,
-              "start_ms": 37548803,
-              "title": "Chapter 10"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51Ib7RagtrL.jpg",
-          "id": "john-bolen-2003",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "john-bolen"
-          ],
-          "publisher": "Tantor Audio",
-          "release_date": "2003-05-16",
-          "runtime_min": 690,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002UUFXFK",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004FUDSQO",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-cat-of-bubastes"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002UUFXFK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Cat of Bubastes"
-    },
-    "the-cat-of-bubastes-george-alfred-henty": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "g-a-henty"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics",
-        "historical-fiction"
-      ],
-      "id": "the-cat-of-bubastes-george-alfred-henty",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "jim-hodges-2017": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -1822,10 +1711,104 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-cat-of-bubastes-george-alfred-henty"
+          "work": "the-cat-of-bubastes"
+        },
+        "john-bolen-2003": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002UUFXFK",
+              "region": "us"
+            },
+            {
+              "asin": "B004FUDSQO",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4297549,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4163849,
+              "start_ms": 4297549,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4155490,
+              "start_ms": 8461398,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3989513,
+              "start_ms": 12616888,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4156883,
+              "start_ms": 16606401,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4289329,
+              "start_ms": 20763284,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4209267,
+              "start_ms": 25052613,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 4190505,
+              "start_ms": 29261880,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 4096418,
+              "start_ms": 33452385,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3915302,
+              "start_ms": 37548803,
+              "title": "Chapter 10"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51Ib7RagtrL.jpg",
+          "id": "john-bolen-2003",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-bolen"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2003-05-16",
+          "runtime_min": 690,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002UUFXFK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004FUDSQO",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-cat-of-bubastes"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002UUFXFK",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B071RVJHRT",
