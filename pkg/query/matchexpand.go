@@ -2,6 +2,7 @@ package query
 
 import (
 	"context"
+	"errors"
 	"slices"
 	"strings"
 )
@@ -60,33 +61,25 @@ func wantsWorkExpansion(values []string) bool {
 	})
 }
 
-// bestResult is the index of the result a client takes as the match: the first of
-// them (they are in rank order), or at its score the one the identifier found, which
-// is the book whatever else scores as well. The ranking itself breaks a tie on the
-// title, so an identifier hit can rank second at 100. There must be a result.
+// bestResult is the index of the result a client takes as the match: the one the
+// identifier found, which is the book whatever else scores as well, else the first
+// (they are in rank order). An identifier hit always scores 100, so it is never below
+// the top score, but the ranking breaks a tie on the title, so it can rank second.
 func bestResult(results []matchResult) int {
-	for i, r := range results {
-		if r.Score != results[0].Score {
-			break
-		}
-		if r.Reasons.Identifier != "" {
-			return i
-		}
-	}
-	return 0
+	return max(slices.IndexFunc(results, func(r matchResult) bool { return r.Reasons.Identifier != "" }), 0)
 }
 
 // expandBest inlines the expansion on the best result, in place. Past the budget or
 // on a read error it leaves every result as it was: see the file header.
-func (s *handler) expandBest(ctx context.Context, snap *DB, results []matchResult) {
+func (s *DB) expandBest(ctx context.Context, results []matchResult) {
 	if len(results) == 0 {
 		return
 	}
 	best := &results[bestResult(results)]
-	work, facts, err := snap.matchExpansion(ctx, best.ID)
+	work, facts, err := s.matchExpansion(ctx, best.ID)
 	if err != nil {
 		if ctx.Err() == nil {
-			s.cfg.Logger.Printf("query: works/match expand of %s: %v", best.ID, err)
+			s.logf("query: works/match expand of %s failed, serving the match alone: %v", best.ID, err)
 		}
 		return
 	}
@@ -103,7 +96,7 @@ func (s *DB) matchExpansion(ctx context.Context, workID string) (*WorkDetail, ma
 		return nil, nil, err
 	}
 	if work == nil {
-		return nil, nil, errExpansionGone
+		return nil, nil, errors.New("not in the artifact")
 	}
 	facts, err := s.seriesFactsOf(ctx, work.Series)
 	if err != nil {

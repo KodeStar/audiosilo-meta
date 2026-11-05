@@ -653,7 +653,7 @@ func seriesSummariesByIDSQL(ph string, languages, orderings bool) string {
 	case languages:
 		cols = "s.language, s.ordering, NULL, NULL"
 	}
-	return `SELECT s.id, s.name, ` + cols + `, COUNT(sw.work_id) FROM series s` + join +
+	return `SELECT s.id, s.name, ` + cols + `, COUNT(sw.series_id) FROM series s` + join +
 		` LEFT JOIN series_works sw ON sw.series_id = s.id WHERE s.id IN (` + ph + `) GROUP BY s.id, s.name`
 }
 

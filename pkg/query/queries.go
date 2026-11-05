@@ -385,6 +385,7 @@ func (s *DB) workDetail(ctx context.Context, id string) (*WorkDetail, error) {
 // unauthenticated public endpoint.
 // Returns (nil, nil) when the work is absent.
 func (s *DB) workForABS(id string, genresByWork map[string][]string, descriptionsByWork map[string]*DescriptionOut) (*WorkDetail, error) {
+	ctx := context.Background()
 	var d WorkDetail
 	var subtitle, firstPub, desc sql.NullString
 	err := s.db.QueryRow(
@@ -400,23 +401,23 @@ func (s *DB) workForABS(id string, genresByWork map[string][]string, description
 	d.FirstPublished = firstPub.String
 	d.Description = desc.String
 
-	if d.Authors, err = s.authorsOf(context.Background(), id); err != nil {
+	if d.Authors, err = s.authorsOf(ctx, id); err != nil {
 		return nil, err
 	}
 	d.Genres = genresByWork[id]
-	if d.Series, err = s.seriesOf(context.Background(), id); err != nil {
+	if d.Series, err = s.seriesOf(ctx, id); err != nil {
 		return nil, err
 	}
 	// absBooksFor only reads the work's print ISBN off Xref; skip the other xref
 	// identifiers entirely.
-	isbns, err := s.workISBNs(context.Background(), id)
+	isbns, err := s.workISBNs(ctx, id)
 	if err != nil {
 		return nil, err
 	}
 	if len(isbns) > 0 {
 		d.Xref = &WorkXref{ISBN: isbns}
 	}
-	if d.Recordings, err = s.recordingsBase(context.Background(), id); err != nil {
+	if d.Recordings, err = s.recordingsBase(ctx, id); err != nil {
 		return nil, err
 	}
 	d.CommunityDescription = descriptionsByWork[id]

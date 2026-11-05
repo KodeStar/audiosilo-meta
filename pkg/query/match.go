@@ -102,9 +102,6 @@ const PublicMatchBudget = 2 * time.Second
 // errMatchBusy is a match that could not start or finish inside its budget.
 var errMatchBusy = errors.New("match: over its time budget")
 
-// errExpansionGone is an expansion of a work the artifact doesn't hold.
-var errExpansionGone = errors.New("match: expanded work not found")
-
 // matchRequest is one works/match request, parsed and bounded.
 type matchRequest struct {
 	text     string
@@ -247,7 +244,7 @@ func (s *handler) handleMatch(w http.ResponseWriter, r *http.Request, snap *DB) 
 		s.fail(w, r, err)
 	default:
 		if req.expandWork {
-			s.expandBest(ctx, snap, results)
+			snap.expandBest(ctx, results)
 		}
 		httpx.WriteJSON(w, http.StatusOK, map[string]any{"results": results})
 	}
