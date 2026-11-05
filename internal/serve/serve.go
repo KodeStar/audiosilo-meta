@@ -1,13 +1,20 @@
-// Package serve is metaserve: the read-only HTTP server over the compiled
-// metadata artifact. The JSON API itself (search, work/person/series detail,
-// ASIN/ISBN lookup, match, stats, coverage, watch feeds, the Audiobookshelf
-// provider) is pkg/query's handler, served here behind CORS and gzip; this
-// package adds what is metaserve's own - the hot swap of a newer GitHub Release
-// artifact on a signed webhook or fallback poll without a restart, the
-// server-rendered entity and guide pages, the sitemaps and the OpenAPI document.
-// All content is public, so there is no auth; CORS is wide open on the API
-// surface. Business logic lives here and in pkg/query; cmd/metaserve is a thin
-// wrapper.
+// Package serve is metaserve: the HTTP server over the compiled metadata artifact.
+// The JSON API itself (search, work/person/series detail, ASIN/ISBN lookup, match,
+// stats, coverage, watch feeds, the Audiobookshelf provider) is pkg/query's
+// handler, served here behind CORS and gzip; this package adds what is metaserve's
+// own - the hot swap of a newer GitHub Release artifact on a signed webhook or
+// fallback poll without a restart, the server-rendered entity and guide pages, the
+// sitemaps and the OpenAPI document.
+//
+// The artifact is read-only and all of its content is public, so the read surface
+// has no auth and CORS is wide open on it. Two optional things stand apart from
+// that surface, each registered only when a deployment configures it, and neither
+// wears the CORS stack: the release webhook (HMAC-signed, webhook.go), and the
+// unknown-ASIN intake queue (intake.go), whose POST takes anonymous reports into a
+// small SQLite file of its own outside the artifact, and whose GET reads them back
+// behind a bearer token.
+//
+// Business logic lives here and in pkg/query; cmd/metaserve is a thin wrapper.
 package serve
 
 import (
@@ -59,6 +66,16 @@ type Config struct {
 	RateBurst      int
 	TrustedProxies []netip.Prefix
 
+	// IntakeDB is the path of the unknown-ASIN intake queue, a SQLite file of its
+	// own (intake.go). Empty leaves the intake routes unregistered; so does a file
+	// that cannot be opened, which is logged and never stops the server.
+	//
+	// IntakeToken is the bearer token of the queue's read route, at least
+	// minIntakeTokenBytes long. Empty or too short leaves that one route
+	// unregistered; the POST route depends only on IntakeDB.
+	IntakeDB    string
+	IntakeToken string
+
 	// swapGrace is how long an old snapshot is kept open after a swap so that
 	// in-flight requests finish on it. Overridable for tests; default 60s.
 	// Superseded cache files are pruned once it elapses.
@@ -90,6 +107,10 @@ type Config struct {
 	// date-boundary tests deterministic without a package-global clock that would
 	// race parallel tests.
 	now func() time.Time
+
+	// intakeTick overrides how often the intake queue's housekeeping runs
+	// (intakeLoop). Test-only; New's zero means sweepEvery.
+	intakeTick time.Duration
 }
 
 // Server holds the current snapshot and serves the API. The snapshot is swapped
@@ -111,6 +132,15 @@ type Server struct {
 	// limiter is the API's per-client token bucket, nil when Config.RateLimit
 	// is off.
 	limiter *rateLimiter
+
+	// intake is the unknown-ASIN queue and everything that belongs to it, nil when
+	// the deployment does not offer it (intake.go). Set once, in New.
+	intake *intakeState
+
+	// spec is the OpenAPI document this server serves: the embedded one, less any
+	// optional route this deployment did not register (servedSpec). Set by
+	// buildMux.
+	spec specDoc
 
 	// shells is the marker split of the built entity shells, done once at
 	// construction (see loadShells). Empty when no site directory is configured,
@@ -227,6 +257,9 @@ func New(cfg Config) (*Server, error) {
 		s.site = newSiteHandler(cfg.Site)
 		s.shells = loadShells(cfg.Site, cfg.SiteURL, s.log)
 	}
+	// Last, so no failure above has a goroutine and a file to clean up, and before
+	// buildMux, which registers the routes it decides on.
+	s.openIntake()
 	s.mux = s.buildMux()
 	return s, nil
 }
@@ -265,13 +298,23 @@ func (s *Server) Run(ctx context.Context) error {
 		go s.pollLoop(ctx)
 	}
 	srv := s.httpServer()
+	drained := make(chan struct{})
 	go func() {
+		defer close(drained)
 		<-ctx.Done()
 		shutCtx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 		defer cancel()
 		_ = srv.Shutdown(shutCtx)
 	}()
 	err := srv.ListenAndServe()
+	if s.intake != nil {
+		// ListenAndServe returns as soon as Shutdown STARTS. The queue is the one
+		// thing here a request writes to, so it closes only once they have drained.
+		if errors.Is(err, http.ErrServerClosed) {
+			<-drained
+		}
+		s.closeIntake()
+	}
 	if errors.Is(err, http.ErrServerClosed) {
 		return nil
 	}
@@ -288,12 +331,13 @@ const (
 	readHeaderTimeout = 10 * time.Second
 	// readTimeout bounds the whole request READ, headers included. Every route is
 	// a GET with no body except the webhook, whose body is capped at 1 MiB
-	// (maxWebhookBodyBytes): 30s is 1 MiB at ~35 KB/s, and GitHub's own delivery
+	// (maxWebhookBodyBytes), and the intake POST, capped far lower
+	// (maxIntakeBodyBytes): 30s is 1 MiB at ~35 KB/s, and GitHub's own delivery
 	// is a single small JSON document. It does NOT bound the handler: once the
 	// request is read, net/http clears the read deadline before its background
 	// read (connReader.startBackgroundRead), so r.Context() is not cancelled when
 	// readTimeout elapses mid-handler - checked on Go 1.25. Only a body read still
-	// in progress at that point (the webhook's) is cut off.
+	// in progress at that point (a POST's) is cut off.
 	readTimeout = 30 * time.Second
 	// writeTimeout runs from the end of the request headers to the end of the
 	// response, so it bounds the handler AND the transfer. Measured over the
@@ -393,8 +437,8 @@ func (r route) specPath() string {
 // The JSON API itself is pkg/query's (query.Routes): every pattern it serves is
 // registered here in front of s.query, wearing the public stack - except the
 // readiness probe, which a health check calls rather than a browser. Only the
-// routes that are metaserve's own (the release webhook and the spec) have
-// handlers here.
+// routes that are metaserve's own (the release webhook, the intake queue and the
+// spec) have handlers here.
 //
 // The static site at "/" is deliberately not here: it is not part of the API and
 // has no spec entry (see buildMux).
@@ -414,10 +458,13 @@ func (s *Server) routes() []route {
 	if s.cfg.WebhookSecret != "" {
 		rs = append(rs, route{"POST " + githubReleaseWebhookPath, http.HandlerFunc(s.handleGitHubReleaseWebhook)})
 	}
+	// Likewise the intake routes, which also wear their own stack rather than
+	// s.public: see intakeRoutes.
+	rs = append(rs, s.intakeRoutes()...)
 	// The machine-readable description of all of it. It is STATIC, so it
 	// deliberately skips the loaded-artifact gate: a client discovering the API
 	// must get the spec even on a boot that has no data yet.
-	return append(rs, route{"GET /api/v1/openapi.json", s.public(http.HandlerFunc(handleOpenAPI))})
+	return append(rs, route{"GET /api/v1/openapi.json", s.public(http.HandlerFunc(s.handleOpenAPI))})
 }
 
 // idWildcard is what the entity page routes spell their record wildcard. Their
@@ -427,6 +474,7 @@ func (s *Server) routes() []route {
 const idWildcard = "id"
 
 func (s *Server) buildMux() http.Handler {
+	s.spec = s.servedSpec()
 	// The JSON API over the live snapshot. It reads the pointer per request, so
 	// it is built once and survives every swap.
 	s.query = query.NewHandler(s.current, query.HandlerOptions{

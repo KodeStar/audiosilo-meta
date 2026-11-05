@@ -229,6 +229,8 @@ func TestBatchLookupsAreIndexed(t *testing.T) {
 		extra []any // arguments after the IN list (a LIMIT)
 	}{
 		{"works by id", ids, worksByIDSQL, nil},
+		// The intake queue's known-drop: on its POST path, and over a whole queue in a purge.
+		{"known ASINs", ids, knownASINsSQL, nil},
 		{"authors by work", ids, authorsByWorkSQL, nil},
 		{"first series by work", ids, func(ph string) string { return firstSeriesByWorkSQL(ph, false) }, nil},
 		{"first series by work, primary first", ids, func(ph string) string { return firstSeriesByWorkSQL(ph, true) }, nil},

@@ -15,12 +15,12 @@ const code =
   <div class="container py-14 sm:py-16">
     <div class="reveal mx-auto max-w-3xl text-body">
       <h1 class="mb-1 text-4xl font-black tracking-tight text-hi">Privacy Policy</h1>
-      <p class="mb-8 text-dim">Last updated: 1 October 2026</p>
+      <p class="mb-8 text-dim">Last updated: 5 November 2026</p>
 
       <p class="mb-6 text-lg leading-relaxed">
         AudioSilo Meta is a <strong class="text-hi">public, open source audiobook metadata
-        database</strong>: this website, a read-only API, and the whole catalogue published as
-        downloadable SQLite releases. There are
+        database</strong>: this website, an API over the catalogue, and the whole catalogue published
+        as downloadable SQLite releases. There are
         <strong class="text-hi">no user accounts</strong> and nothing to sign in to. We set
         <strong class="text-hi">no cookies</strong> and run
         <strong class="text-hi">no analytics, advertising, or tracking scripts</strong> of any
@@ -155,6 +155,16 @@ const code =
         typically pointing at retailer content delivery networks. When a page shows covers, your
         browser fetches those images from the hosts that serve them, and those hosts see your IP
         address as they would for any image on the web.
+      </p>
+
+      <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">Reports of unknown books</h2>
+      <p class="mb-4 leading-relaxed">
+        The API can take reports of Audible ASINs the database does not hold yet, for example from
+        an AudioSilo server whose administrator has turned that on. A report carries ASINs and
+        nothing else we keep: the service stores each ASIN with a count and the first and last date
+        it was reported, and stores no IP address with them. An address is held in memory for up to
+        a day after its last report to enforce a rate limit. The request itself is otherwise treated
+        like any other, so the server logs described above apply to it.
       </p>
 
       <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">Contributing</h2>
