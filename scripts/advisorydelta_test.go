@@ -338,6 +338,16 @@ printf '%s' '{"result":"{\"verdict\":\"pass\",\"findings\":[]}"}'
 	// message are what they are without the list, the verdict stays the model's,
 	// and the list is shown in the comment as information.
 	syncSystem, syncStdin := run("", "PR_ORIGIN=sync-bot")
+	// A reported standalone (GOVERNANCE.md, "The reported-ASIN lane") is in no
+	// series, and the name "series-completion bot" must not read as a rule that it
+	// has to be: only the bot's prompt says so, since only its rows are listings.
+	const standalones = "a new work in no series, or a pull request that changes no series, is within its remit"
+	if !strings.Contains(syncSystem, standalones) {
+		t.Error("a sync-bot prompt does not allow a work in no series")
+	}
+	if strings.Contains(plainSystem, standalones) {
+		t.Error("a contributor's prompt speaks for the bot's reported listings")
+	}
 	if s, in := run(advisories, "PR_ORIGIN=sync-bot"); s != syncSystem || in != syncStdin {
 		t.Error("a sync-bot pull request's advisories changed the prompt or the message")
 	}
