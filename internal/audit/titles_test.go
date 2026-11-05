@@ -388,7 +388,7 @@ func TestAdaptationLabelHold(t *testing.T) {
 		{"no recording says so: kept, flag or no flag", "Tale [Dramatized Adaptation]", []*model.Recording{named}, false, true},
 		{"no recording at all", "Tale [Dramatized Adaptation]", nil, false, true},
 		{"no label", "Tale, Book 1", []*model.Recording{named}, true, false},
-		{"a part keeps its label anyway", "Tale (1 of 2) [Dramatized Adaptation]", []*model.Recording{ga}, true, false},
+		{"a part's retitle is held too", "Tale (1 of 2) [Dramatized Adaptation]", []*model.Recording{ga}, true, true},
 	}
 	for _, c := range cases {
 		got := adaptationLabelHold(&model.Work{Title: c.title, Recordings: c.recs}, c.held) != ""

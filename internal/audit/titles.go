@@ -31,10 +31,12 @@ import (
 const adaptationLabelRetitlesHeld = true
 
 // adaptationLabelHold says why a retitle of w may not run by itself, "" when it may.
-// held is adaptationLabelRetitlesHeld. A work no recording of which says it is a
-// dramatization keeps its label whatever the flag says: it is that work's one statement.
+// held is adaptationLabelRetitlesHeld. A split-release part's label is held with the rest:
+// main proposes those retitles too, under other decorations, and each takes the label
+// off. A work no recording of which says it is a dramatization keeps its label whatever
+// the flag says: it is that work's one statement.
 func adaptationLabelHold(w *model.Work, held bool) string {
-	if !titlerule.CarriesAdaptationLabel(w.Title) {
+	if !titlerule.HasAdaptationLabel(w.Title) {
 		return ""
 	}
 	if !slices.ContainsFunc(w.Recordings, (*model.Recording).IsDramatization) {

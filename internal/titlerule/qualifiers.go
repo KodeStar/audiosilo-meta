@@ -224,10 +224,10 @@ func dropAdaptationLabel(s, lower string) string {
 	return cutAll(s, adaptationLabelRE, nil)
 }
 
-// CarriesAdaptationLabel reports whether a title holds an adaptation label a strip
-// would take off: a split-release part's stays, and so does a title that is only the label.
-func CarriesAdaptationLabel(title string) bool {
-	return dropsQualifier(title, dropAdaptationLabel)
+// HasAdaptationLabel reports whether a title holds the adaptation label, a split-release
+// part's included.
+func HasAdaptationLabel(title string) bool {
+	return containsFoldASCII(title, "adaptation") && adaptationLabelRE.MatchString(title)
 }
 
 // cutAll is the qualifiers' bracket and quote removal; its siblings are rules.go's
