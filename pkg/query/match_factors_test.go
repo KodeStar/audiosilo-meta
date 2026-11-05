@@ -473,6 +473,9 @@ func TestMatchReadsADramatizationFromTheRecording(t *testing.T) {
 			factorWork("label-unknown", "Label Unknown [Dramatized Adaptation]", "en", "ada-one", rec("d-none", 400, "", "bea-reader")),
 			factorWork("label-plain", "Label Plain [Dramatized Adaptation]", "en", "ada-one", rec("e-plain", 400, "Tantor Audio", "bea-reader"), rec("f-ga", 700, "GraphicAudio", "bea-reader")),
 			factorWork("label-alone", "Label Alone [Dramatized Adaptation]", "en", "ada-one", rec("g-only", 400, "Simon & Schuster Audio", "bea-reader")),
+			// A GraphicAudio recording with no runtime still says the work holds one, so
+			// the label doesn't cover the plain reading beside it.
+			factorWork("label-untimed", "Label Untimed [Dramatized Adaptation]", "en", "ada-one", rec("h-plain", 400, "Tantor Audio", "bea-reader"), rec("i-ga", 0, "GraphicAudio", "bea-reader")),
 		},
 	})
 	for _, x := range []struct{ title, id, want string }{
@@ -484,6 +487,7 @@ func TestMatchReadsADramatizationFromTheRecording(t *testing.T) {
 		{"Label Unknown", "label-unknown", ""},
 		{"Label Plain", "label-plain", "e-plain"},
 		{"Label Alone", "label-alone", ""},
+		{"Label Untimed", "label-untimed", "h-plain"},
 	} {
 		res := matchJSON(t, ts.URL, url.Values{"title": {x.title}, "author": {"Ada One"}, "runtime": {"24000"}})
 		for _, r := range res {

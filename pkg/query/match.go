@@ -867,9 +867,9 @@ func matchWorksSQL(ph string) string {
 // model.Recording.IsDramatization reads: its publisher, and whether any narrator is a
 // full-cast credit (model.IsFullCastCredit, here over the slug's hyphen boundaries).
 func matchRuntimesSQL(ph string) string {
-	return `SELECT r.work_id, r.id, r.runtime_min, COALESCE(r.publisher, ''), EXISTS(SELECT 1 FROM recording_narrators n ` +
+	return `SELECT r.work_id, r.id, COALESCE(r.runtime_min, 0), COALESCE(r.publisher, ''), EXISTS(SELECT 1 FROM recording_narrators n ` +
 		`WHERE n.work_id = r.work_id AND n.recording_id = r.id AND ('-' || n.person_id || '-') LIKE '%-` + model.FullCastPerson + `-%') ` +
-		`FROM recordings r WHERE r.work_id IN (` + ph + `) AND r.runtime_min > 0`
+		`FROM recordings r WHERE r.work_id IN (` + ph + `)`
 }
 
 // matchNarratorsSQL reads every recording's narrators, through
@@ -1000,9 +1000,13 @@ func (s *DB) candidateFacts(ctx context.Context, pool *candidatePool, narrators 
 			}
 			c := byID[workID]
 			own := fullCast || model.IsDramatizationPublisher(publisher)
-			c.runtimes = append(c.runtimes, recordingRuntime{id: rid, minute: minutes,
-				dramatized: own || c.drama.Covers(publisher)})
+			// Every recording answers this, as heldOnlyAsDramatization reads them;
+			// only one with a runtime can fit a request's.
 			c.anyDramatization = c.anyDramatization || own
+			if minutes > 0 {
+				c.runtimes = append(c.runtimes, recordingRuntime{id: rid, minute: minutes,
+					dramatized: own || c.drama.Covers(publisher)})
+			}
 			return nil
 		}); err != nil {
 			return err

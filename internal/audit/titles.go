@@ -9,20 +9,6 @@ import (
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
-// detectWorkTitle reports every work whose title carries retailer decoration AND
-// for which the audit can propose a SAFE cleaner one.
-//
-// A title-only class: it never proposes a slug change, because a slug is IDENTITY
-// and moving one is a rename with its own referential consequences (every series
-// membership and every sidecar that names it). The slug side of the same records is
-// F-HYGIENE's, where it is flagged as a rename CANDIDATE and nothing more.
-//
-// It runs in TWO PASSES, and the second one is why. A proposal must not create a
-// same-series title collision: 852 groups of works share a series and would have
-// shared a title once their volume markers were stripped (Spice and Wolf runs to
-// fourteen), and in those the number is the only thing a human can tell them apart
-// by. That cannot be judged one work at a time, so every proposal is composed
-// first, then the set is checked against itself.
 // adaptationLabelRetitlesHeld keeps advisory every retitle that would take a statement of
 // a dramatization off a title: the adaptation label, or a bare "(Dramatized)". Removing
 // one raises a plain library book's match score against a work holding only the
@@ -50,6 +36,20 @@ func adaptationLabelHold(w *model.Work, want string, held bool) string {
 	return ""
 }
 
+// detectWorkTitle reports every work whose title carries retailer decoration AND
+// for which the audit can propose a SAFE cleaner one.
+//
+// A title-only class: it never proposes a slug change, because a slug is IDENTITY
+// and moving one is a rename with its own referential consequences (every series
+// membership and every sidecar that names it). The slug side of the same records is
+// F-HYGIENE's, where it is flagged as a rename CANDIDATE and nothing more.
+//
+// It runs in TWO PASSES, and the second one is why. A proposal must not create a
+// same-series title collision: 852 groups of works share a series and would have
+// shared a title once their volume markers were stripped (Spice and Wolf runs to
+// fourteen), and in those the number is the only thing a human can tell them apart
+// by. That cannot be judged one work at a time, so every proposal is composed
+// first, then the set is checked against itself.
 func detectWorkTitle(ix *index) *findings {
 	f := &findings{class: ClassWorkTitle}
 
