@@ -292,9 +292,10 @@ to the queue:
 - **One slot, at a fixed rate.** However long the queue is, the limits above hold
   the lane to about 4,600 records a year. The worst case is a spammer nominating
   real retailer listings at that pace, which is true facts about real listings
-  arriving slowly in reviewable pull requests. Selection reads no content type, so
-  a listing that is not a book (a podcast episode, a periodical issue) is refused
-  only if its credits or marketplace fail.
+  arriving slowly in reviewable pull requests. The lane reads each listing's
+  content type before selection and keeps only a book (`SinglePartBook` or
+  `MultiPartBook`, the bulk export's own rule), so a podcast episode, a periodical
+  issue or a listing stating no type never reaches an import.
 - **The same gate.** A lane pull request is a `bot-sync` pull request: `data/` only,
   the required checks, and an `ai-verified` verdict on its exact head before it
   merges, with the ladder below when the verdict does not come.
