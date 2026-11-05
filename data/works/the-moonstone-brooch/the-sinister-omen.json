@@ -6355,19 +6355,359 @@
       "license": "CC0-1.0",
       "recordings": {
         "alex-jennings-2012": {
-          "abridged": true,
+          "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
           "asin": [
-            {
-              "asin": "B007I83DQA",
-              "region": "us"
-            },
             {
               "asin": "B007SYM6AI",
               "region": "us"
             },
             {
               "asin": "B007I83BHG",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 76133,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3000,
+              "start_ms": 76133,
+              "title": "Harry Clifton 1939–1941"
+            },
+            {
+              "length_ms": 989496,
+              "start_ms": 79133,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 984851,
+              "start_ms": 1068629,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 968133,
+              "start_ms": 2053480,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 635205,
+              "start_ms": 3021613,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 500529,
+              "start_ms": 3656818,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3000,
+              "start_ms": 4157347,
+              "title": "Emma Barrington 1939–1941"
+            },
+            {
+              "length_ms": 842764,
+              "start_ms": 4160347,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 837915,
+              "start_ms": 5003111,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 849432,
+              "start_ms": 5841026,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 521474,
+              "start_ms": 6690458,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 437232,
+              "start_ms": 7211932,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 3000,
+              "start_ms": 7649164,
+              "title": "Giles Barrington 1939–1941"
+            },
+            {
+              "length_ms": 477374,
+              "start_ms": 7652164,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1173722,
+              "start_ms": 8129538,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 3000,
+              "start_ms": 9303260,
+              "title": "Harry Clifton 1941"
+            },
+            {
+              "length_ms": 502545,
+              "start_ms": 9306260,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 3000,
+              "start_ms": 9808805,
+              "title": "Emma Barrington 1941"
+            },
+            {
+              "length_ms": 294355,
+              "start_ms": 9811805,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1238785,
+              "start_ms": 10106160,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 3000,
+              "start_ms": 11344945,
+              "title": "Giles Barrington 1941"
+            },
+            {
+              "length_ms": 922408,
+              "start_ms": 11347945,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 486179,
+              "start_ms": 12270353,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 3000,
+              "start_ms": 12756532,
+              "title": "Emma Barrington 1941"
+            },
+            {
+              "length_ms": 1118710,
+              "start_ms": 12759532,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 614632,
+              "start_ms": 13878242,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 3000,
+              "start_ms": 14492874,
+              "title": "Giles Barrington 1941–1942"
+            },
+            {
+              "length_ms": 375717,
+              "start_ms": 14495874,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 838147,
+              "start_ms": 14871591,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 599771,
+              "start_ms": 15709738,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1003752,
+              "start_ms": 16309509,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 3000,
+              "start_ms": 17313261,
+              "title": "Hugo Barrington 1939–1942"
+            },
+            {
+              "length_ms": 1150149,
+              "start_ms": 17316261,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 3000,
+              "start_ms": 18466410,
+              "title": "Maisie Clifton 1939–1942"
+            },
+            {
+              "length_ms": 581771,
+              "start_ms": 18469410,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 583378,
+              "start_ms": 19051181,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 570514,
+              "start_ms": 19634559,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 640221,
+              "start_ms": 20205073,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 951182,
+              "start_ms": 20845294,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 900656,
+              "start_ms": 21796476,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 3000,
+              "start_ms": 22697132,
+              "title": "Emma Barrington 1941–1942"
+            },
+            {
+              "length_ms": 873693,
+              "start_ms": 22700132,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 888070,
+              "start_ms": 23573825,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 3000,
+              "start_ms": 24461895,
+              "title": "Hugo Barrington 1942–1943"
+            },
+            {
+              "length_ms": 869931,
+              "start_ms": 24464895,
+              "title": "Chapter 33"
+            },
+            {
+              "length_ms": 721537,
+              "start_ms": 25334826,
+              "title": "Chapter 34"
+            },
+            {
+              "length_ms": 597496,
+              "start_ms": 26056363,
+              "title": "Chapter 35"
+            },
+            {
+              "length_ms": 568703,
+              "start_ms": 26653859,
+              "title": "Chapter 36"
+            },
+            {
+              "length_ms": 1221602,
+              "start_ms": 27222562,
+              "title": "Chapter 37"
+            },
+            {
+              "length_ms": 3000,
+              "start_ms": 28444164,
+              "title": "Emma Barrington 1942"
+            },
+            {
+              "length_ms": 911820,
+              "start_ms": 28447164,
+              "title": "Chapter 38"
+            },
+            {
+              "length_ms": 672125,
+              "start_ms": 29358984,
+              "title": "Chapter 39"
+            },
+            {
+              "length_ms": 744246,
+              "start_ms": 30031109,
+              "title": "Chapter 40"
+            },
+            {
+              "length_ms": 3000,
+              "start_ms": 30775355,
+              "title": "Harry Clifton 1945"
+            },
+            {
+              "length_ms": 852655,
+              "start_ms": 30778355,
+              "title": "Chapter 41"
+            },
+            {
+              "length_ms": 744478,
+              "start_ms": 31631010,
+              "title": "Chapter 42"
+            },
+            {
+              "length_ms": 538424,
+              "start_ms": 32375488,
+              "title": "Chapter 43"
+            },
+            {
+              "length_ms": 1166106,
+              "start_ms": 32913912,
+              "title": "Chapter 44"
+            },
+            {
+              "length_ms": 359398,
+              "start_ms": 34080018,
+              "title": "Chapter 45"
+            },
+            {
+              "length_ms": 1995894,
+              "start_ms": 34439416,
+              "title": "Chapter 46"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81jd4QPLReL.jpg",
+          "id": "alex-jennings-2012",
+          "isbn": [
+            "9781427214959"
+          ],
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alex-jennings",
+            "emilia-fox"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2012",
+          "runtime_min": 607,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B007SYM6AI",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B007I83BHG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-sins-of-the-father-clifton-chronicles-book-2"
+        },
+        "alex-jennings-2012-2": {
+          "abridged": true,
+          "added_at": "2026-11-05",
+          "asin": [
+            {
+              "asin": "B007I83DQA",
               "region": "us"
             }
           ],
@@ -6469,7 +6809,10 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/61nkgFUbnTL.jpg",
-          "id": "alex-jennings-2012",
+          "id": "alex-jennings-2012-2",
+          "isbn": [
+            "9780230754225"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -6477,8 +6820,8 @@
             "emilia-fox"
           ],
           "publisher": "Macmillan Digital Audio",
-          "release_date": "2012",
-          "runtime_min": 613,
+          "release_date": "2012-03-15",
+          "runtime_min": 471,
           "sources": [
             {
               "imported_at": "2026-07-25",
@@ -6486,18 +6829,8 @@
               "type": "audiosilo-books-import"
             },
             {
-              "imported_at": "2026-07-30",
+              "imported_at": "2026-11-05",
               "ref": "B007I83DQA",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B007SYM6AI",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B007I83BHG",
               "type": "libex-import"
             }
           ],

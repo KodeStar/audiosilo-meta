@@ -8290,33 +8290,6 @@
             }
           ],
           "work": "paul"
-        },
-        "simon-vance-2009": {
-          "abridged": false,
-          "added_at": "2026-09-24",
-          "asin": [
-            {
-              "asin": "B002V8N54M",
-              "region": "us"
-            }
-          ],
-          "id": "simon-vance-2009",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "simon-vance"
-          ],
-          "publisher": "christianaudio.com",
-          "release_date": "2009",
-          "runtime_min": 923,
-          "sources": [
-            {
-              "imported_at": "2026-09-24",
-              "ref": "B002V8N54M",
-              "type": "audiosilo-books-import"
-            }
-          ],
-          "work": "paul"
         }
       },
       "sources": [
@@ -11321,6 +11294,101 @@
         }
       ],
       "title": "Paul: From Sinner to Saint"
+    },
+    "paul-in-fresh-perspective": {
+      "added_at": "2026-11-05",
+      "authors": [
+        "n-t-wright"
+      ],
+      "genres": [
+        "religion-spirituality"
+      ],
+      "id": "paul-in-fresh-perspective",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "simon-vance-2009": {
+          "abridged": false,
+          "added_at": "2026-11-05",
+          "asin": [
+            {
+              "asin": "B002V8N54M",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4025458,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3973956,
+              "start_ms": 4025458,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3950875,
+              "start_ms": 7999414,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3943538,
+              "start_ms": 11950289,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3961231,
+              "start_ms": 15893827,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3974095,
+              "start_ms": 19855058,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3880426,
+              "start_ms": 23829153,
+              "title": "Chapter 7"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61ViSoLYCjL.jpg",
+          "id": "simon-vance-2009",
+          "isbn": [
+            "9781596445048"
+          ],
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "simon-vance"
+          ],
+          "publisher": "Christian Audio",
+          "release_date": "2009-02-12",
+          "runtime_min": 461,
+          "sources": [
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B002V8N54M",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-11-05",
+              "ref": "B002V8N54M",
+              "type": "libex-import"
+            }
+          ],
+          "work": "paul-in-fresh-perspective"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-11-05",
+          "ref": "B002V8N54M",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Paul: In Fresh Perspective"
     },
     "paul-is-undead": {
       "added_at": "2026-07-29",
