@@ -1555,9 +1555,11 @@ that forked three works out of one book (13 of the dump's 1,058,981 distinct
 titles, zero false positives) and reading the title lead-in vocabulary
 `titlerule.NarratorLeadIns`, a pinned SUBSET of the series narrator vocabulary
 (titlerule's title-only "read by" is deliberately not in it). It also strips the
-two title QUALIFIERS through `titlerule.StripTitleQualifiers`, so a qualified row
-("The Search: International Edition", "The Search, Read by Dee Reader") attaches
-to the catalogued work; a title that is only a qualifier keeps itself, and a work
+three title QUALIFIERS through `titlerule.StripTitleQualifiers`, so a qualified row
+("The Search: International Edition", "The Search, Read by Dee Reader", "Magic Bites
+(Dramatized Adaptation)") attaches to the catalogued work, and a dramatized row founds
+no work titled with its label (a dramatization of a book is a recording of that book;
+a split-release part keeps the label, for internal/remediate); a title that is only a qualifier keeps itself, and a work
 catalogued under its qualified title alone stays reachable - `resolveWork` and the
 recordings-only matcher walk the pre-qualifier title (`qualifiedWorkTitle`) as a
 merge target only, after the cleaned one, and then (in every mode, through an exact

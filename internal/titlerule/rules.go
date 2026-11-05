@@ -1522,15 +1522,16 @@ func cutsRange(orig, proposed string) bool {
 // The decoration codes. They name what a title carries and are the subclass values
 // of the reports that read them, so they are written once here.
 const (
-	DecArticleSeries = "article-series-prefix"
-	DecBracketSuffix = "bracket-suffix"
-	DecSeriesName    = "series-name"
-	DecVolume        = "volume-marker"
-	DecEdition       = "edition-marker"
-	DecMarketEdition = "marketplace-edition"
-	DecNarrator      = "narrator-qualifier"
-	DecGenreSubtitle = "genre-subtitle"
-	DecTrailingPunct = "trailing-separator"
+	DecArticleSeries   = "article-series-prefix"
+	DecBracketSuffix   = "bracket-suffix"
+	DecSeriesName      = "series-name"
+	DecVolume          = "volume-marker"
+	DecEdition         = "edition-marker"
+	DecMarketEdition   = "marketplace-edition"
+	DecNarrator        = "narrator-qualifier"
+	DecAdaptationLabel = "adaptation-label"
+	DecGenreSubtitle   = "genre-subtitle"
+	DecTrailingPunct   = "trailing-separator"
 )
 
 // SeriesResolver resolves a series name occurring in a piece of text: form is the
@@ -1584,10 +1585,12 @@ var decorations = []struct {
 	// be the same question. A hand-written version here had already drifted (it
 	// made the brackets optional and missed stacked markers).
 	{DecEdition, func(f TitleFacts) bool { return HasEditionMarker(f.Title) }},
-	// The two product qualifiers (qualifiers.go): a marketplace edition and a narrator
-	// credit, each standing as a whole segment, quoted run or bracketed group.
+	// The three product qualifiers (qualifiers.go): a marketplace edition, a narrator
+	// credit and an adaptation label, each standing as a whole segment, quoted run or
+	// bracketed group.
 	{DecMarketEdition, func(f TitleFacts) bool { return dropsQualifier(f.Title, dropMarketEdition) }},
 	{DecNarrator, func(f TitleFacts) bool { return dropsQualifier(f.Title, dropNarratorQualifier) }},
+	{DecAdaptationLabel, func(f TitleFacts) bool { return dropsQualifier(f.Title, dropAdaptationLabel) }},
 	{DecGenreSubtitle, func(f TitleFacts) bool { return dropWideGenreSubtitle(f.Title) != f.Title }},
 	{DecTrailingPunct, func(f TitleFacts) bool { return trailingSeparatorRE.MatchString(f.Title) }},
 }

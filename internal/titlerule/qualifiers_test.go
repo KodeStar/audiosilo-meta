@@ -182,3 +182,41 @@ func TestABareQualifierIsNoDecoration(t *testing.T) {
 		}
 	}
 }
+
+// The adaptation label comes off as a whole bracketed group, and nothing else that
+// spells those words does.
+func TestAdaptationLabelIsAQualifier(t *testing.T) {
+	cases := []struct{ title, want string }{
+		{"Magic Bites [Dramatized Adaptation]", "Magic Bites"},
+		{"Tracker (Dramatized Adaptation)", "Tracker"},
+		{"The Spy (Dramatised Adaptation)", "The Spy"},
+		{"Halo: The Fall of Reach (Full-Cast Dramatized Adaptation)", "Halo: The Fall of Reach"},
+		{"Winter Kill [Dramatized Adaptation]: John Henry Cole, Book 3", "Winter Kill: John Henry Cole, Book 3"},
+		{"Trevor Lawson 1-2 Bundle [Dramatized Adaptation]", "Trevor Lawson 1-2 Bundle"},
+		{`Change of Command "International Edition" [Dramatized Adaptation]`, "Change of Command"},
+		// Denied: a split-release part keeps its label.
+		{"Warbreaker (1 of 3) [Dramatized Adaptation]", "Warbreaker (1 of 3) [Dramatized Adaptation]"},
+		{"Morning Star (Part 1 of 2) (Dramatized Adaptation)", "Morning Star (Part 1 of 2) (Dramatized Adaptation)"},
+		// Denied: the words outside a bracket group of exactly them.
+		{"Treasure Island (Dramatized)", "Treasure Island (Dramatized)"},
+		{"The Dramatized Adaptation Handbook", "The Dramatized Adaptation Handbook"},
+		{"A Study (Dramatized Adaptation Notes)", "A Study (Dramatized Adaptation Notes)"},
+		{"Dune: A Dramatized Adaptation", "Dune: A Dramatized Adaptation"},
+		// Denied: a title that is nothing but the label keeps itself.
+		{"[Dramatized Adaptation]", "[Dramatized Adaptation]"},
+	}
+	for _, c := range cases {
+		if got := StripTitleQualifiers(c.title); got != c.want {
+			t.Errorf("StripTitleQualifiers(%q) = %q, want %q", c.title, got, c.want)
+		}
+	}
+	if !slices.Contains(Decorations(TitleFacts{Title: "Tracker (Dramatized Adaptation)"}), DecAdaptationLabel) {
+		t.Errorf("the label is not filed as a decoration")
+	}
+	if slices.Contains(Decorations(TitleFacts{Title: "Warbreaker (1 of 3) [Dramatized Adaptation]"}), DecAdaptationLabel) {
+		t.Errorf("a part's label, which no strip takes off, is filed as a decoration")
+	}
+	if got, ok := ProposeTitle("Tracker (Dramatized Adaptation)", ""); !ok || got != "Tracker" {
+		t.Errorf("ProposeTitle = %q, %v; want Tracker", got, ok)
+	}
+}
