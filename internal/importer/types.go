@@ -426,7 +426,10 @@ type Summary struct {
 	// date). GenreWorksNewer counts the works a row reached that were not judged
 	// because their newest provenance is later than Options.RowsAsOf.
 	GenreRowsContradicted int
-	GenreWorksNewer       int
+	// GenreRowsAnotherBook counts the rows refused as genre evidence because their
+	// ASIN names another book (rowTitleApart and rowAuthorsApart).
+	GenreRowsAnotherBook int
+	GenreWorksNewer      int
 	// SkippedNoWork counts RECORDINGS-ONLY rows whose work is not in the
 	// catalogue. That mode never creates a work, so those rows are dropped -
 	// which makes this the counter that proves an excerpt, a trivia title or a

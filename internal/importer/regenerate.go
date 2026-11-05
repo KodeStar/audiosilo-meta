@@ -82,6 +82,15 @@ const (
 	GenreChangeAddOnly = "add-only"
 )
 
+// workStatePeople is every person a loaded work credits, authors and credits[] alike.
+func workStatePeople(ws *workState) []string {
+	out := slices.Collect(maps.Keys(ws.all))
+	for _, c := range ws.storedCredits {
+		out = append(out, c.Person)
+	}
+	return out
+}
+
 // planRegenerateGenres is the pass itself: every row is matched to the
 // recording its identifier sits on (forEachMatchedRow: a libex row's ASIN
 // through the enrichment pass's ASIN index, so a catalogue ASIN on two
@@ -109,6 +118,13 @@ func (p *planner) planRegenerateGenres(books []sourceBook) {
 				p.summary.GenreRowsContradicted++
 				return
 			}
+		}
+		// A row whose ASIN names another book (rowNamesAnotherBook) is evidence about
+		// that book's genres, on the same terms. A LibriVox row is matched by its
+		// project id, which no retail match put there, so it is not asked.
+		if ws := p.works[ref.Work]; b.lv == nil && rowTitleApart(b, ws.title, ws.subtitle, ws.lang) && p.rowAuthorsApart(b, workStatePeople(ws)) {
+			p.summary.GenreRowsAnotherBook++
+			return
 		}
 		p.regenRecs[ref] = UnionGenres(p.regenRecs[ref], p.genres.mapGenres(b.genres, unmapped))
 	})
@@ -187,6 +203,11 @@ func (p *planner) planRegenerateGenres(books []sourceBook) {
 	if n := p.summary.GenreRowsContradicted; n > 0 {
 		p.summary.Notes = append(p.summary.Notes, fmt.Sprintf(
 			"%d %s contradicted the recorded runtime of the recording they matched and cast no genre vote",
+			n, plural(n, "row")))
+	}
+	if n := p.summary.GenreRowsAnotherBook; n > 0 {
+		p.summary.Notes = append(p.summary.Notes, fmt.Sprintf(
+			"%d %s named another book than the work their ASIN sits on and cast no genre vote",
 			n, plural(n, "row")))
 	}
 	if len(newer) > 0 {

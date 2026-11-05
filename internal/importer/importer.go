@@ -607,8 +607,9 @@ func (p *planner) warnInto(b sourceBook, tier *[]string) func(string, ...any) {
 //   - the run-level lines (the aggregated refusals, the duplicate-identity
 //     skips, the catalogue's own collisions, the per-class reports);
 //   - the CONFLICT lines, one per row refused for contradicting a recorded
-//     runtime or release date - per-row, but the ones the intake verdict's
-//     "disagreed ... see the warnings below" note sends a maintainer to;
+//     runtime or release date, or for naming another book - per-row, but the
+//     ones the intake verdict's "disagreed ... see the warnings below" note
+//     sends a maintainer to;
 //   - every other per-row line, in row order.
 //
 // A run-level or conflict line is one a maintainer acts on, where a run over a
