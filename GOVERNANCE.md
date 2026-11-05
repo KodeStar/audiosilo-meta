@@ -266,9 +266,9 @@ configured with the queue's address and token. What it adds, and nothing more:
   does not hold is refused, as it is from the feeds. **The lane never founds a
   series.**
 
-Its limits are its own and tighter than the feeds': at most **25 new works per
-pull request** and at most **one pull request per 48 hours**, spent when the pull
-request opens, so one that is later closed or recycled still used its turn. It
+Its limits are its own and tighter than the feeds': at most **25 records per pull
+request**, new works and attached editions counted together, and at most **one
+pull request per 48 hours**, spent when the pull request opens, so one that is later closed or recycled still used its turn. It
 shares the bot's one open pull request, so it can never run beside a completion
 tranche, and completion takes every cycle the lane is not due or has nothing to
 add. It spends at most 150 listing lookups a cycle, and it runs no `--enrich` pass.
@@ -285,7 +285,8 @@ to the queue:
   retailer listing, read one at a time, and only what that listing states is
   imported. An ASIN with no listing writes nothing.
 - **One slot, at a fixed rate.** However long the queue is, the lane adds at most
-  25 works every two days, about 4,600 a year. The worst case is a spammer
+  25 records (works plus attached editions) every two days, about 4,600 a year.
+  The worst case is a spammer
   nominating real audiobooks at that pace, which is true facts about real books
   arriving slowly in reviewable pull requests.
 - **The same gate.** A lane pull request is a `bot-sync` pull request: `data/` only,

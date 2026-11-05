@@ -29,7 +29,7 @@
 // refusal that does not read one: language, marketplace, credits (an AI narrator
 // included). It is for the sync bot's reported-ASIN lane (GOVERNANCE.md, "The
 // reported-ASIN lane"), whose input is a few ASINs read one at a time and which
-// holds its own bound on works: over a full export it would select nearly every
+// holds its own bound on records: over a full export it would select nearly every
 // series-less row, which is the mirror LICENSING.md rules out, so an operator
 // reducing a dump does not pass it. A row claiming a series is judged exactly as
 // it is without the flag, so it can no more found a series than before.
@@ -762,7 +762,7 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  --attach-editions (libex-select; libex create) attaches a row at a filled series position to the")
 	fmt.Fprintln(os.Stderr, "    work there when it is another edition of it, and refuses it otherwise; never a second work.")
 	fmt.Fprintln(os.Stderr, "  --reported (libex-select) also keeps a row stating no series, under every refusal that does not read")
-	fmt.Fprintln(os.Stderr, "    one. For the sync bot's reported-ASIN lane, which caps its own works; never over a full export.")
+	fmt.Fprintln(os.Stderr, "    one. For the sync bot's reported-ASIN lane, which caps its own records; never over a full export.")
 	fmt.Fprintln(os.Stderr, "  --refusals / --attachments (libex-select) and --skipped (libex, librivox import) write NDJSON worklists with")
 	fmt.Fprintln(os.Stderr, "    stable reason codes, atomically.")
 	fmt.Fprintln(os.Stderr, "  --enrich (libex only) fills absent facts on ASIN-matched existing records; it never creates.")

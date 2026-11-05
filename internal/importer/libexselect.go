@@ -60,7 +60,7 @@ import (
 // own: with --reported (SelectOptions.Reported) a row stating no series at all is
 // kept as a STANDALONE, after every refusal but the series ones. It is for the sync
 // bot's reported-ASIN lane (GOVERNANCE.md), whose input is a handful of ASINs read
-// one at a time and which caps its own works; over a dump it would select nearly
+// one at a time and which caps its own records; over a dump it would select nearly
 // everything series-less, which is the mirror this tool exists to prevent. A row
 // claiming a series is judged exactly as it is without the flag, so the lane can
 // no more found a series than the feeds can.

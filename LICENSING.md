@@ -234,16 +234,18 @@ it actually is:
   ASIN names, because somebody reported that ASIN as missing here. It does not
   walk a retailer's catalogue, feed or categories, so what accumulates follows
   no selection or arrangement of the source's.
-- **The amount is capped by rate.** At most 25 new works per pull request and one
-  pull request per 48 hours, about 4,600 works a year however long the queue is.
-  A catalogue of the roughly 900,000 importable rows in the libex dump would take
-  that lane about two centuries.
+- **The amount is capped by rate.** At most 25 records per pull request, new works
+  and attached editions counted together, and one pull request per 48 hours: about
+  4,600 records a year however long the queue is. The libex export held for the
+  seed (August 2026) has about 900,000 rows that pass the language, marketplace and
+  credit refusals, which would take that lane about two centuries.
 - **Facts only, and only real ones.** A record needs a retailer listing behind it,
   the import is the same facts-only path as every other, and AI-narrated listings
   and unusable credits are refused as they are everywhere.
 - **It can be undone.** Records carry the typed `libex-import` provenance and
   retract with the source; rightsholders have the opt-out below; and the first
-  user library to match a record takes it over.
+  user library to match a mirror-only record by ASIN takes it over, unless it
+  contradicts the record's runtime or release date ("Trust tiers" below).
 
 **What this reasoning does not claim.** The queue is anonymous and its counts are
 unverified, so nothing proves that a reported book is in anyone's library, and a
