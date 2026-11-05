@@ -251,6 +251,7 @@ func TestAddWorkIdentityGateSetsAnOwnWorkApart(t *testing.T) {
 	files["works/th/"+own+"/recordings/peter-kenny.json"] = testpack.RecJSON(t, "peter-kenny", own,
 		testpack.WithNarrators("peter-kenny"), func(m map[string]any) {
 			m["librivox_id"] = 5513
+			m["librivox_title"] = "Iliad (Pope Translation)" // the decision holds only for its title
 			delete(m, "asin")
 		})
 	testpack.Seed(t, dir, files)

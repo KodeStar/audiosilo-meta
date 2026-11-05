@@ -58,6 +58,7 @@ package importer
 
 import (
 	"bytes"
+	"cmp"
 	_ "embed"
 	"encoding/json"
 	"errors"
@@ -187,7 +188,9 @@ func reviewedLibrivoxState(opts Options) librivoxState {
 }
 
 // LibrivoxOwnWorkHomes are the catalogued works holding a project whose reviewed decision
-// is own-work: the works the duplicate-identity probe sets apart (this file's header).
+// is own-work, and which is still the project the decision is about: LibriVox reuses
+// project numbers, so the number alone could set the wrong work apart. These are the
+// works the duplicate-identity probe sets apart (this file's header).
 func LibrivoxOwnWorkHomes(works []*model.Work) map[string]bool {
 	return librivoxOwnWorkHomes(works, librivoxReviewed())
 }
@@ -196,7 +199,8 @@ func librivoxOwnWorkHomes(works []*model.Work, table map[int]LibrivoxReview) map
 	homes := map[string]bool{}
 	for _, w := range works {
 		for _, r := range w.Recordings {
-			if r.LibrivoxID != 0 && table[r.LibrivoxID].Decision == LibrivoxReviewOwnWork {
+			if d := table[r.LibrivoxID]; r.LibrivoxID != 0 && d.Decision == LibrivoxReviewOwnWork &&
+				reviewedTitleHolds(d, cmp.Or(r.LibrivoxTitle, w.Title)) {
 				homes[w.ID] = true
 			}
 		}

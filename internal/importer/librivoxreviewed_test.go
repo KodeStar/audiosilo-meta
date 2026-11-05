@@ -1,6 +1,7 @@
 package importer
 
 import (
+	"maps"
 	"reflect"
 	"slices"
 	"strings"
@@ -387,6 +388,33 @@ func TestLibrivoxReviewedOwnWorkKeepsThePlacingPathsAmbiguous(t *testing.T) {
 			t.Errorf("refusals/relocations = %v/%v", sum.RelocationRefusals, sum.Relocations)
 		}
 	})
+}
+
+// LibriVox reuses project numbers: a home is the work holding the project the decision is
+// about, not whatever now sits under that number. A recording that states no project
+// title is read by its work's.
+func TestLibrivoxOwnWorkHomesRequireTheDecisionsTitle(t *testing.T) {
+	table := map[int]LibrivoxReview{
+		1: reviewOwn(1, "Iliad (Pope Translation)"),
+		2: reviewOwn(2, "Iliad (Pope Translation)"),
+		3: reviewOwn(3, "Odyssey (Pope Translation, Version 2)"),
+		4: reviewAttach(4, "Iliad", "the-iliad"),
+	}
+	rec := func(id int, title string) []*model.Recording {
+		return []*model.Recording{{LibrivoxID: id, LibrivoxTitle: title}}
+	}
+	got := librivoxOwnWorkHomes([]*model.Work{
+		{ID: "held", Title: "x", Recordings: rec(1, "Iliad (Pope Translation)")},
+		{ID: "reused-number", Title: "x", Recordings: rec(2, "A Book On The Reused Number")},
+		{ID: "no-project-title", Title: "Odyssey (Pope Translation)", Recordings: rec(3, "")},
+		{ID: "an-attach", Title: "x", Recordings: rec(4, "Iliad")},
+		{ID: "undecided", Title: "x", Recordings: rec(5, "Iliad (Pope Translation)")},
+		{ID: "retail", Title: "Iliad (Pope Translation)", Recordings: rec(0, "")},
+	}, table)
+	want := map[string]bool{"held": true, "no-project-title": true}
+	if !maps.Equal(got, want) {
+		t.Errorf("homes = %v, want %v", got, want)
+	}
 }
 
 // A reviewed move carries the credit, and with it the LibriVox id, onto the catalogued
