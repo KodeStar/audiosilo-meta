@@ -17151,6 +17151,15 @@
   {
     "decision": "assert",
     "op": "merge-works",
+    "target": "middle-school-how-i-survived-bullies-broccoli-and-snake-hill",
+    "others": [
+      "middle-school-middle-school-book-4"
+    ],
+    "reason": "one book and one reading: Bryan Kennedy at 264 and 265 minutes with 72 chapters each, and B079R659S4 on the Book 4 record carries this title"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
     "others": [
       "middlemarch-amazonclassics-edition"
     ],
@@ -26387,6 +26396,15 @@
     "target": "the-silver-mask"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "target": "the-sins-of-the-father-clifton-chronicles-book-2",
+    "others": [
+      "the-sins-of-the-father-the-clifton-chronicles-2"
+    ],
+    "reason": "one Jeffrey Archer novel: Alex Jennings and Emilia Fox at 607 minutes on both records, the second being the 2024 reissue"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -29449,6 +29467,14 @@
   },
   {
     "decision": "assert",
+    "op": "retitle-work",
+    "target": "a-to-z-mysteries-17",
+    "from": "A to Z Mysteries #17",
+    "to": "A to Z Mysteries: The Quicksand Question",
+    "reason": "both ASINs (B004CNY0LQ, B004EWPSRU) title it The Quicksand Question, volume 17 of the series"
+  },
+  {
+    "decision": "assert",
     "from": "Against the Odds \"International Edition\" [Dramatized Adaptation]",
     "op": "retitle-work",
     "reason": "GraphicAudio's listing (B0F9YYKFXB) titles the 379 min product Against the Odds (2 of 2), the half the earlier review keeps apart from the whole; the Part 1 ASIN moves to its own work",
@@ -30006,6 +30032,14 @@
   },
   {
     "decision": "assert",
+    "op": "retitle-work",
+    "target": "free-the-great-courses",
+    "from": "Free",
+    "to": "Sherlock Holmes: The First Great Detective",
+    "reason": "its ASIN (B019ZBDN80) titles it Free: Sherlock Holmes- The First Great Detective; Free is the giveaway label, not the title"
+  },
+  {
+    "decision": "assert",
     "from": "Green Ember",
     "op": "retitle-work",
     "reason": "Story Warren's listing (B0G6G4QDJK) subtitles it Helmer in the Dragon Tomb; the bare title names the whole Green Ember world",
@@ -30027,6 +30061,14 @@
     "reason": "Skyscore's listings (B07S4Q8PY6, B07S1PJ171) title it Hinter den Kulissen; Sherlock Holmes & Co 45 is the series number the membership holds",
     "target": "hinter-den-kulissen-sherlock-holmes-co-45",
     "to": "Hinter den Kulissen"
+  },
+  {
+    "decision": "assert",
+    "op": "retitle-work",
+    "target": "horrible-histories-villainous-victorians",
+    "from": "Horrible Histories: Villainous Victorians",
+    "to": "Horrible Histories: Frightful First World War",
+    "reason": "both ASINs (B00J9KF8U4, B00J9KH6HW), the runtime and the chapters are Frightful First World War; no listing was found for a Villainous Victorians, the Victorian title being Vile Victorians"
   },
   {
     "decision": "reject",
@@ -30134,6 +30176,14 @@
     "reason": "404 Éditions publishes tome 8 as Journal d'un noob, vol. 8: Héros (La Procure 1678608); the earlier tomes are titled Journal d'un noob (Guerrier) and so on",
     "target": "journal-dun-noob",
     "to": "Journal d'un noob (Héros)"
+  },
+  {
+    "decision": "assert",
+    "op": "retitle-work",
+    "target": "junie-b-first-grader",
+    "from": "Junie B., First Grader",
+    "to": "Junie B., First Grader: Aloha-ha-ha!",
+    "reason": "both ASINs (B002V0157Y, B004EWNRXM) title it Junie B. Jones #26: Aloha-ha-ha!; the old title is the sub-series name"
   },
   {
     "decision": "reject",
@@ -30409,6 +30459,14 @@
   },
   {
     "decision": "assert",
+    "op": "retitle-work",
+    "target": "percy-jackson-the-olympians",
+    "from": "Percy Jackson & the Olympians",
+    "to": "Percy Jackson: The Demigod Files",
+    "reason": "its ASIN (B079XF1ZFJ) titles it Percy Jackson: The Demigod Files, which the series holds at 5.1; the old title is the series name"
+  },
+  {
+    "decision": "assert",
     "from": "Perils of Pauline (dramatic reading)",
     "op": "retitle-work",
     "reason": "LibriVox project 2627's \"(dramatic reading)\" names the production, not the work (meta#2778)",
@@ -30630,6 +30688,14 @@
     "reason": "the books 1-5 set (B01K2A9904, 927 min) is published as Shopping for a Billionaire Box Set One (Goodreads 24423835)",
     "target": "shopping-for-a-billionaire",
     "to": "Shopping for a Billionaire Box Set One"
+  },
+  {
+    "decision": "assert",
+    "op": "retitle-work",
+    "target": "sisters-grimm",
+    "from": "Sisters Grimm",
+    "to": "Once Upon a Crime",
+    "reason": "both ASINs (B002V1BKU0, B004EXGI1E) title it Once Upon a Crime, which the Sisters Grimm series holds at 4; the old title is the series name"
   },
   {
     "decision": "assert",
