@@ -223,4 +223,21 @@ func TestSetApart(t *testing.T) {
 	if got := ids(SetApart(ix.Match("The Odyssey [Classic Edition]", "", "en", authors, authors), id, apart)); !slices.Equal(got, []string{"odyssey-pope"}) {
 		t.Errorf("set apart and alone under its key: %v", got)
 	}
+	// The input is the caller's. This answer really drops a work, so a write would show:
+	// the slice it keeps must come through whole.
+	kept := ix.Match(later, "", "en", authors, authors)
+	if dropped := SetApart(kept, id, apart); len(dropped) != len(kept)-1 {
+		t.Fatalf("the fixture drops nothing: %v from %v", ids(dropped), ids(kept))
+	}
+	if got := ids(kept); !slices.Equal(got, []string{"iliad", "iliad-pope"}) {
+		t.Errorf("SetApart wrote to its input: %v", got)
+	}
+	// An answer that drops nothing is the input itself, whichever way nothing is dropped.
+	alone := ix.Match("The Odyssey [Classic Edition]", "", "en", authors, authors)
+	if got := SetApart(alone, id, apart); &got[0] != &alone[0] {
+		t.Errorf("every candidate set apart: a copy came back")
+	}
+	if got := SetApart(kept, id, map[string]bool{}); &got[0] != &kept[0] {
+		t.Errorf("no candidate set apart: a copy came back")
+	}
 }

@@ -4,6 +4,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
@@ -241,23 +242,34 @@ func TestAddWorkRefusesANormalizedIdentityDuplicate(t *testing.T) {
 
 // A reviewed LibriVox own-work beside the catalogued work does not make the key ambiguous
 // (importer.LibrivoxOwnWorkHomes): the gate still names the work it is a duplicate of.
-// 5513 is an own-work in the embedded decisions.
+// Under a table with no such decision the two works are ambiguous and no verdict can name
+// one, which is what shows the decision is doing it.
 func TestAddWorkIdentityGateSetsAnOwnWorkApart(t *testing.T) {
+	const project, own = 99901, "the-blood-of-elves-some-translation"
+	const projectTitle = "Blood of Elves (Some Translation)"
 	dir := t.TempDir()
 	files := dupSeedFiles()
-	const own = "the-blood-of-elves-some-translation"
 	files["works/th/"+own+"/work.json"] = testpack.WorkJSON(t, own, "The Blood of Elves (Some Translation)",
 		testpack.WithAuthors("andrzej-sapkowski"))
 	files["works/th/"+own+"/recordings/peter-kenny.json"] = testpack.RecJSON(t, "peter-kenny", own,
 		testpack.WithNarrators("peter-kenny"), func(m map[string]any) {
-			m["librivox_id"] = 5513
-			m["librivox_title"] = "Iliad (Pope Translation)" // the decision holds only for its title
+			m["librivox_id"] = project
+			m["librivox_title"] = projectTitle
 			delete(m, "asin")
 		})
 	testpack.Seed(t, dir, files)
-	res := processAddWork(t, dir, dupWorkBody("Blood of Elves", "Andrzej Sapkowski", "Peter Kenny", "", ""))
+	process := func(table map[int]importer.LibrivoxReview) Result {
+		return Process(Options{DataDir: dir, Template: "add-work", Date: "2026-08-14", LibrivoxReviewed: table,
+			Body: dupWorkBody("Blood of Elves", "Andrzej Sapkowski", "Peter Kenny", "", "")})
+	}
+	res := process(map[int]importer.LibrivoxReview{
+		project: {Project: project, Title: projectTitle, Decision: importer.LibrivoxReviewOwnWork, Reason: "r"},
+	})
 	if res.Status != StatusDuplicate || !anyContains(res.Messages, "the-blood-of-elves") {
-		t.Fatalf("status = %q; messages = %v", res.Status, res.Messages)
+		t.Fatalf("with the decision: status = %q; messages = %v", res.Status, res.Messages)
+	}
+	if res := process(map[int]importer.LibrivoxReview{}); res.Status != StatusOK {
+		t.Errorf("without it the key is ambiguous and no verdict can name one: status = %q; messages = %v", res.Status, res.Messages)
 	}
 }
 

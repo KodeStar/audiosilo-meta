@@ -1300,7 +1300,7 @@ func (p *planner) loadExisting() {
 		p.people[person.ID] = person.Name
 		p.loadLibrivoxPerson(person)
 	}
-	p.lv.ownWorks = librivoxOwnWorkHomes(cat.Works, p.lv.reviewed)
+	p.lv.ownWorks = LibrivoxOwnWorkHomes(cat.Works, p.lv.reviewed)
 	for _, w := range cat.Works {
 		ws := &workState{
 			slug:     w.ID,

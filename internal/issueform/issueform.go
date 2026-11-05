@@ -129,6 +129,10 @@ type Options struct {
 	// family is in the tree, the catalogue load already answers and the artifact
 	// would be a second, staler opinion.
 	WorksDB string
+	// LibrivoxReviewed replaces the importer's embedded reviewed decisions for the identity
+	// gate (importer.LibrivoxOwnWorkHomes); nil reads the embedded file, which is what every
+	// real run does. A test's own table goes here.
+	LibrivoxReviewed map[int]importer.LibrivoxReview
 	// Template is the issue-form template id (add-work, add-recording,
 	// correct-data, correction-batch, characters, recaps, import). A leading "data:" and legacy
 	// aliases are accepted.
@@ -218,6 +222,8 @@ type composer struct {
 	// It is the same index the bulk importer's create guard reads, so the two writers
 	// cannot disagree about what one book is (dupidentity.go).
 	identity *check.WorkIdentity
+	// reviewed is Options.LibrivoxReviewed.
+	reviewed map[int]importer.LibrivoxReview
 	// ownWorks are the reviewed LibriVox own-work homes the identity gate sets apart
 	// (importer.LibrivoxOwnWorkHomes), off the same load.
 	ownWorks map[string]bool
@@ -328,6 +334,7 @@ func process(opts Options) Result {
 	}
 
 	c := &composer{
+		reviewed:  opts.LibrivoxReviewed,
 		dataDir:   opts.DataDir,
 		profile:   profile,
 		date:      date,
@@ -436,7 +443,7 @@ func (c *composer) loadExisting() {
 	if cat == nil {
 		return
 	}
-	c.ownWorks = importer.LibrivoxOwnWorkHomes(cat.Works)
+	c.ownWorks = importer.LibrivoxOwnWorkHomes(cat.Works, c.reviewed)
 	c.redirects = cat.Redirects
 	for _, p := range cat.People {
 		c.people[p.ID] = true
