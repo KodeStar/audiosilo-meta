@@ -990,8 +990,8 @@ func (s *DB) seriesTranslationOfByID(ctx context.Context, ids []string) (map[str
 // a work's authors on their own, without a card). Shared with the index guard.
 const authorsOfSQL = `SELECT p.id, p.name FROM work_authors wa JOIN people p ON p.id = wa.person_id WHERE wa.work_id=? ORDER BY wa.ord`
 
-func (s *DB) authorsOf(workID string) ([]PersonRef, error) {
-	rows, err := s.db.Query(authorsOfSQL, workID)
+func (s *DB) authorsOf(ctx context.Context, workID string) ([]PersonRef, error) {
+	rows, err := s.db.QueryContext(ctx, authorsOfSQL, workID)
 	if err != nil {
 		return nil, err
 	}

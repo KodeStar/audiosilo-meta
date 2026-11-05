@@ -262,7 +262,7 @@ func TestLanguageMemosSkipTheQueries(t *testing.T) {
 	}
 	// Close the handle: a query would now fail, so a nil error proves none ran.
 	_ = empty.Close()
-	if of, by, err := empty.workTranslations("project-hail-mary"); err != nil || of != nil || by != nil {
+	if of, by, err := empty.workTranslations(t.Context(), "project-hail-mary"); err != nil || of != nil || by != nil {
 		t.Errorf("workTranslations = %v, %v, %v; want no query", of, by, err)
 	}
 	if fam, err := empty.orderingFamily(&SeriesDetail{ID: "the-stormlight-archive"}); err != nil || fam != nil {
