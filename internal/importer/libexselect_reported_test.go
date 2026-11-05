@@ -1,7 +1,9 @@
 package importer
 
 import (
+	"errors"
 	"os"
+	"path/filepath"
 	"slices"
 	"strings"
 	"testing"
@@ -61,10 +63,20 @@ func TestReportedSelectTable(t *testing.T) {
 		{name: "no series key at all is kept",
 			row:        `{"asin":"B0ALONE002","title":"A Lone Book","region":"us","language":"english","authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}]}`,
 			standalone: true},
-		{name: "an entry with no name is no claim",
-			row:        `{"asin":"B0ALONE003","title":"A Lone Book","region":"us","language":"english","authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}],"series":[{"name":"","position":"1"}]}`,
+		{name: "an entry stating nothing is no claim",
+			row:        `{"asin":"B0ALONE003","title":"A Lone Book","region":"us","language":"english","authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}],"series":[{"name":"","position":""}]}`,
+			standalone: true},
+		{name: "a null series is no claim",
+			row:        `{"asin":"B0ALONE012","title":"A Lone Book","region":"us","language":"english","authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}],"series":null}`,
 			standalone: true},
 		{name: "a preorder is still a row", row: `{"asin":"B0ALONE004","title":"A Lone Book","region":"us","language":"english","releaseDate":"2099-01-01","authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}],"series":[]}`, standalone: true},
+
+		// A series the parser cannot read was still stated, so the row is no standalone.
+		{name: "a position with no name", row: `{"asin":"B0SHAPE004","title":"A Lone Book","region":"us","language":"english","authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}],"series":[{"name":"","position":"3"}]}`, want: RefusalNoCatalogueSeries},
+		{name: "a series ASIN with no name", row: `{"asin":"B0SHAPE005","title":"A Lone Book","region":"us","language":"english","authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}],"series":[{"asin":"B0SERIES01"}]}`, want: RefusalNoCatalogueSeries},
+		{name: "a series as a bare string", row: `{"asin":"B0SHAPE001","title":"A Lone Book","region":"us","language":"english","authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}],"series":"Some Saga"}`, want: RefusalNoCatalogueSeries},
+		{name: "a series as one object", row: `{"asin":"B0SHAPE002","title":"A Lone Book","region":"us","language":"english","authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}],"series":{"name":"Some Saga","position":"1"}}`, want: RefusalNoCatalogueSeries},
+		{name: "a series as an array of strings", row: `{"asin":"B0SHAPE003","title":"A Lone Book","region":"us","language":"english","authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}],"series":["Some Saga"]}`, want: RefusalNoCatalogueSeries},
 
 		{name: "AI narrator", row: standaloneRow("B0ALONE005", "A Lone Book", "us", "english", ada, "Virtual Voice"), want: RefusalAINarrator},
 		{name: "AI author", row: standaloneRow("B0ALONE006", "A Lone Book", "us", "english", "Virtual Voice", bea), want: RefusalAINarrator},
@@ -115,6 +127,45 @@ func TestReportedSelectTable(t *testing.T) {
 				}
 			})
 		}
+	}
+}
+
+// A catalogue that loaded nothing stops a --reported run, since every series-less
+// row would read as new against it. A plain selection only warns, as it always has:
+// it keeps nothing there.
+func TestReportedRefusesACatalogueThatLoadedNothing(t *testing.T) {
+	legacy := t.TempDir()
+	workDir := filepath.Join(legacy, "works", "so", "some-book")
+	if err := os.MkdirAll(workDir, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(workDir, "work.json"), []byte("{}\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	dirs := map[string]string{
+		"an unopenable layout": legacy,
+		"a missing directory":  filepath.Join(t.TempDir(), "nope"),
+		"an empty directory":   t.TempDir(),
+	}
+	row := standaloneRow("B0ALONE001", "A Lone Book", "us", "english", "Ada Mapmaker", "Bea Reader")
+	for name, dataDir := range dirs {
+		t.Run(name, func(t *testing.T) {
+			dir := t.TempDir()
+			in, out := filepath.Join(dir, "rows.ndjson"), filepath.Join(dir, "subset.ndjson")
+			if err := os.WriteFile(in, []byte(row+"\n"), 0o644); err != nil {
+				t.Fatal(err)
+			}
+			if _, err := SelectLibex(in, out, SelectOptions{DataDir: dataDir, Reported: true}); err == nil {
+				t.Error("SelectLibex --reported succeeded against a catalogue that loaded nothing")
+			}
+			if _, err := os.Stat(out); !errors.Is(err, os.ErrNotExist) {
+				t.Errorf("a refused run left a subset behind: %v", err)
+			}
+			res, err := SelectLibex(in, out, SelectOptions{DataDir: dataDir})
+			if err != nil || res.RowsSelected != 0 {
+				t.Errorf("plain selection: selected %d, err %v; want nothing kept and no error", res.RowsSelected, err)
+			}
+		})
 	}
 }
 
@@ -229,8 +280,8 @@ func TestOnlyStandalonesSurviveTheBatch(t *testing.T) {
 
 // End to end, as the bot runs it: select --reported --attach-editions, import with
 // --existing-series-only --attach-editions, and validate. A series-less work is a
-// clean tree (Decision 9: no metacheck rule requires a series), no series is created
-// or changed by a standalone, and a volume of the held series still lands in it.
+// clean tree (no metacheck rule requires a series), no series is created or changed
+// by a standalone, and a volume of the held series still lands in it.
 func TestReportedSelectionImportsCleanly(t *testing.T) {
 	dataDir := seedSelectCatalogue(t)
 	before := listSeries(t, dataDir)
@@ -315,8 +366,8 @@ func TestReportedStandaloneMeetsAHeldWork(t *testing.T) {
 
 // What the guard does NOT catch, pinned so GOVERNANCE.md keeps saying only what is
 // true: a subtitle it does not read as decoration mints a work beside the held one,
-// as it does on every create path. The advisory census is what reports it, and a
-// sync-bot pull request shows that in its comment only (ai-verify.sh).
+// as it does on every create path, and no advisory names it, since the census reads
+// the same title key.
 func TestReportedStandaloneWithAnUnreadSubtitleIsANewWork(t *testing.T) {
 	dataDir := seedHeldBook(t)
 	rows := []string{standaloneRow("B0SUBTIT01", "The Held Book: The Cartographer's Tale", "us", "english", "Ada Mapmaker", "Bea Reader")}
@@ -325,4 +376,42 @@ func TestReportedStandaloneWithAnUnreadSubtitleIsANewWork(t *testing.T) {
 		t.Errorf("summary = %+v, want one new work and no series", sum)
 	}
 	assertTreeValid(t, dataDir)
+	if warnings := check.Load(dataDir).Warnings; len(warnings) != 0 {
+		t.Errorf("advisories = %+v; GOVERNANCE.md says none names this work", warnings)
+	}
+}
+
+// The other thing it does not catch, for the same reason: a bare title naming several
+// held volumes of a serial could be any of them or a third (identityMatch's ambiguity
+// veto), so the row mints its own work and the series is left as it was. This one the
+// census does name, which a sync-bot pull request shows in its comment only.
+func TestReportedStandaloneNamingASerialIsANewWork(t *testing.T) {
+	dataDir := seedSelectCatalogue(t)
+	volume := func(n string) map[string]string {
+		work := "wayward-book-" + n
+		return map[string]string{
+			"works/wa/" + work + "/work.json": `{"authors":["ada-mapmaker"],"id":"` + work + `","language":"en","license":"CC0-1.0",` +
+				`"sources":[{"type":"user"}],"title":"Wayward"}`,
+			"works/wa/" + work + "/recordings/bea-reader-2024.json": `{"asin":[{"asin":"B0WAYWARD` + n + `","region":"us"}],"id":"bea-reader-2024",` +
+				`"language":"en","license":"CC0-1.0","narrators":["bea-reader"],"sources":[{"type":"user"}],"work":"` + work + `"}`,
+		}
+	}
+	seedTree(t, dataDir, volume("1"))
+	seedTree(t, dataDir, volume("2"))
+	seedTree(t, dataDir, map[string]string{
+		"series/wa/wayward.json": `{"id":"wayward","license":"CC0-1.0","name":"Wayward","sources":[{"type":"user"}],` +
+			`"works":[{"position":"1","work":"wayward-book-1"},{"position":"2","work":"wayward-book-2"}]}`,
+	})
+	rows := []string{standaloneRow("B0WAYWARD3", "Wayward", "us", "english", "Ada Mapmaker", "Bea Reader")}
+	_, sum := importAsBot(t, dataDir, rows)
+	if sum.NewWorks != 1 || sum.NewSeries != 0 || len(sum.Skips) != 0 {
+		t.Errorf("summary = %+v, want one new work, no series and no refusal", sum)
+	}
+	assertTreeValid(t, dataDir)
+	named := slices.ContainsFunc(check.Load(dataDir).Warnings, func(p check.Problem) bool {
+		return check.AdvisoryClass(p) == "identity-equal-works" && strings.Contains(p.Msg, `"wayward"`)
+	})
+	if !named {
+		t.Error("no identity-equal-works advisory names the new work; GOVERNANCE.md says one does")
+	}
 }

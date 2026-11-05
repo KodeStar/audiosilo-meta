@@ -261,6 +261,11 @@ configured with the queue's address and token. What it adds, and nothing more:
   resolves it to a work the catalogue holds, it lands as another recording of
   that work, or another ASIN on one; a spelling of a held book's title that the
   duplicate-identity guard recognises is refused rather than minted beside it.
+  What the guard cannot place still mints a work beside the held one: a subtitle
+  it does not read as decoration, or a bare title naming several held volumes of a
+  serial. The advisory census names the serial case, in the verdict comment alone,
+  since a `bot-sync` pull request is never flagged for its advisories; nothing names
+  the subtitle case.
 - **A reported volume of a held series**: a row that claims a series takes
   exactly the rules of "The bound" above. A row claiming a series the catalogue
   does not hold is refused, as it is from the feeds. **The lane never founds a
@@ -286,8 +291,10 @@ to the queue:
   imported. An ASIN with no listing writes nothing.
 - **One slot, at a fixed rate.** However long the queue is, the limits above hold
   the lane to about 4,600 records a year. The worst case is a spammer nominating
-  real audiobooks at that pace, which is true facts about real books arriving
-  slowly in reviewable pull requests.
+  real retailer listings at that pace, which is true facts about real listings
+  arriving slowly in reviewable pull requests. Selection reads no content type, so
+  a listing that is not a book (a podcast episode, a periodical issue) is refused
+  only if its credits or marketplace fail.
 - **The same gate.** A lane pull request is a `bot-sync` pull request: `data/` only,
   the required checks, and an `ai-verified` verdict on its exact head before it
   merges, with the ladder below when the verdict does not come.

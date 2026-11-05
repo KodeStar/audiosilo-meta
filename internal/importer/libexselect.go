@@ -62,8 +62,9 @@ import (
 // bot's reported-ASIN lane (GOVERNANCE.md), whose input is a handful of ASINs read
 // one at a time and which caps its own records; over a dump it would select nearly
 // everything series-less, which is the mirror this tool exists to prevent. A row
-// claiming a series is judged exactly as it is without the flag, so the lane can
-// no more found a series than the feeds can.
+// claiming a series takes the same rules as without the flag (a standalone's credits
+// do join the batch census, as they will in the import), so the lane can no more
+// found a series than the feeds can.
 //
 // Deliberately NOT implemented: a --top popularity flag. The dump carries no
 // ratings-count column, so any "top N" would be a guess dressed as a fact.
@@ -83,8 +84,8 @@ type SelectOptions struct {
 	AttachEditions bool
 	// Reported (`--reported`) keeps a row stating no series as a standalone, under
 	// every refusal that does not read a series (selectStandalone); without it such
-	// a row is refused as no-catalogue-series, as it always was. Nothing else about
-	// a selection changes, and a row claiming a series never benefits.
+	// a row is refused as no-catalogue-series, as it always was. A row claiming a
+	// series takes the ordinary rules.
 	Reported bool
 	// RefusalsPath, when set, is where the per-row refusal worklist is written:
 	// one {"asin","reason"} line (RowSkip) per refused row, the reason one of
@@ -333,6 +334,16 @@ func selectLibexRows(r io.Reader, opts SelectOptions, refusals *refusalLog) (Sel
 	x := exclusions{res: &res, log: refusals}
 	idx, warnings := loadSeriesIndex(opts.DataDir, opts.AttachEditions, opts.ImportDate, opts.Distinct)
 	res.Warnings = append(res.Warnings, warnings...)
+	// With nothing loaded a completion has nothing to complete, so a plain selection
+	// keeps no row and a warning is enough. A standalone needs no series, so here it
+	// would keep every row as new: a wrong --data must stop the run instead.
+	if opts.Reported && len(idx.asins) == 0 {
+		why := "it holds no ASIN"
+		if len(warnings) > 0 {
+			why = warnings[0]
+		}
+		return res, nil, fmt.Errorf("--reported needs a catalogue to select against, and %s has none: %s", opts.DataDir, why)
+	}
 
 	st := newSelectState()
 	var kept []selectedRow
@@ -592,9 +603,9 @@ func liveReaches(cat seriesCatalogue, claims []nameClaim, reaches []*groupReach,
 // in scope. The position claim comes last because it MUTATES state: only a row
 // that would otherwise be kept may reserve a slot.
 //
-// Under opts.Reported a row stating no series is judged by selectStandalone instead
-// of the completion test. A claim whose name has no addressable slug is still a
-// claim, so that row takes the ordinary path.
+// Under opts.Reported a row stating no series (statesNoSeries) is judged by
+// selectStandalone instead of the completion test. A claim whose name has no
+// addressable slug is still a claim, so that row takes the ordinary path.
 func selectLibexRow(e rawBook, idx seriesIndex, st *selectState, opts SelectOptions) (selectedRow, string, refusal) {
 	asin := NormalizeASIN(e.str("asin"))
 	if asin == "" {
@@ -613,10 +624,10 @@ func selectLibexRow(e rawBook, idx seriesIndex, st *selectState, opts SelectOpti
 	// would mint a new series for the row - so it is reported as such.
 	// A row naming no series the catalogue's chains could hold is out before its
 	// book is composed - the whole dump streams through here.
-	refs := libexSeries(e["series"])
-	if opts.Reported && len(refs) == 0 {
+	if opts.Reported && statesNoSeries(e["series"]) {
 		return selectStandalone(e, idx, asin)
 	}
+	refs := libexSeries(e["series"])
 	if !idx.namesACatalogueChain(refs) {
 		return selectedRow{}, asin, reasonNoSeries
 	}
@@ -702,6 +713,28 @@ func refuseRowFacts(e rawBook) refusal {
 		return r.reason
 	}
 	return refusal{}
+}
+
+// statesNoSeries reports that a row's series field says nothing about a series: it
+// is absent or null, or an array whose entries state no name, series ASIN or
+// position. libexSeries reads only a named entry of that array, so a "series" spelled
+// any other way (a bare string, a lone object, an array of strings, an entry with a
+// position or ASIN and no name) also comes back with no claims. That row did state a
+// series, and keeping it as a standalone would import the work without it.
+func statesNoSeries(v any) bool {
+	switch s := v.(type) {
+	case nil:
+		return true
+	case []any:
+		return !slices.ContainsFunc(s, func(el any) bool {
+			if el == nil {
+				return false
+			}
+			m, isMap := el.(map[string]any)
+			return !isMap || coerceStr(m["name"]) != "" || coerceStr(m["asin"]) != "" || coerceStr(m["position"]) != ""
+		})
+	}
+	return false
 }
 
 // selectStandalone is selectLibexRow's end for a row stating no series under
@@ -1351,13 +1384,13 @@ func (r SelectResult) Report() string {
 		fmt.Fprintf(&b, "  ... %d more series: %d %s, %d %s\n",
 			len(r.PerSeries)-shown, works, plural(works, "work"), rows, plural(rows, "row"))
 	}
-	// The total counts the COMPLETION rows; a row kept for attachment adds no
-	// work and is reported on its own line, printed only when there is one, so a
+	// The total counts the rows that add a work; a row kept for attachment adds
+	// none and is reported on its own line, printed only when there is one, so a
 	// selection that attached nothing reads exactly as it always has.
-	completions := r.RowsSelected - len(r.Attachments)
+	workRows := r.RowsSelected - len(r.Attachments)
 	fmt.Fprintf(&b, "  total: %d series, %d %s, %d %s\n",
 		len(r.PerSeries), r.ProjectedWorks, plural(r.ProjectedWorks, "work"),
-		completions, plural(completions, "row"))
+		workRows, plural(workRows, "row"))
 	// Printed only when a --reported run kept one, for the same reason. They are
 	// within the total above; the series figures count none of them.
 	if r.StandaloneRows > 0 {
