@@ -10099,6 +10099,64 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 277501,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 872559,
+              "start_ms": 277501,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 651877,
+              "start_ms": 1150060,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 489615,
+              "start_ms": 1801937,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 722047,
+              "start_ms": 2291552,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1077684,
+              "start_ms": 3013599,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1277794,
+              "start_ms": 4091283,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1063915,
+              "start_ms": 5369077,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 919812,
+              "start_ms": 6432992,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 550638,
+              "start_ms": 7352804,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 83753,
+              "start_ms": 7903442,
+              "title": "Chapter 11"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71ysu1OjVaL.jpg",
           "id": "peter-dennis-2015",
           "language": "en",
           "license": "CC0-1.0",
@@ -10107,12 +10165,17 @@
           ],
           "publisher": "Blackstone Audio, Inc.",
           "release_date": "2015",
-          "runtime_min": 166,
+          "runtime_min": 132,
           "sources": [
             {
               "imported_at": "2026-09-24",
               "ref": "B018R6AKZ8",
               "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-11-05",
+              "ref": "B018R6AKZ8",
+              "type": "libex-import"
             }
           ],
           "work": "winnie-the-pooh"
