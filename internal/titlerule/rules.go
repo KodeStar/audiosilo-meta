@@ -76,6 +76,24 @@ func firstSepIn(s string) int {
 	return sep
 }
 
+// MainTitle is the part of a title before its first ": " or " - " (the two
+// subtitleSeps that hang a subtitle; the comma usually hangs a volume marker),
+// and whether there is one: a title with no such separator, or nothing before
+// it, has no main title apart from itself.
+func MainTitle(title string) (string, bool) {
+	cut := -1
+	for _, alt := range subtitleSeps[:2] {
+		if i := strings.Index(title, alt); i >= 0 && (cut < 0 || i < cut) {
+			cut = i
+		}
+	}
+	if cut < 0 {
+		return "", false
+	}
+	head := strings.TrimSpace(title[:cut])
+	return head, head != ""
+}
+
 // lastSepIn is the offset of the latest subtitle separator in s, or -1.
 func lastSepIn(s string) int {
 	sep := -1

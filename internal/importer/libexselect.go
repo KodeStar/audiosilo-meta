@@ -335,7 +335,7 @@ func (st *selectState) claimPosition(slug, seq, workKey string) bool {
 func selectLibexRows(r io.Reader, opts SelectOptions, refusals *refusalLog) (SelectResult, []selectedRow, error) {
 	res := SelectResult{Excluded: map[string]int{}}
 	x := exclusions{res: &res, log: refusals}
-	idx, warnings := loadSeriesIndex(opts.DataDir, opts.AttachEditions, opts.Reported, opts.ImportDate, opts.Distinct)
+	idx, warnings := loadSeriesIndex(opts)
 	res.Warnings = append(res.Warnings, warnings...)
 	// With nothing loaded a completion has nothing to complete, so a plain selection
 	// keeps no row and a warning is enough. A standalone needs no series, so here it
@@ -476,7 +476,7 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, opts Select
 	}
 	for i, r := range kept {
 		if r.standalone() {
-			if _, dup := idx.p.reportedDuplicate(ctx, books[i], titles[i]); dup {
+			if idx.p.reportedDuplicate(ctx, books[i], titles[i]) {
 				alive[i] = false
 				x.add(r.asin, reasonIdentityDuplicate)
 			}
@@ -961,26 +961,27 @@ type seriesIndex struct {
 // (types.go carries the full statement; adding a --profile flag to this CLI
 // means threading it here too).
 //
-// attach says the run applies the attach rule, and reported that it keeps
-// standalones (SelectOptions.Reported), whose duplicate guard reads the
-// normalized-identity index too (reportedguard.go); without either the planner
-// lets go of that index, exactly as a plain selection always has. distinct is
-// SelectOptions.Distinct, for the planner's honorific fold.
-func loadSeriesIndex(dataDir string, attach, reported bool, importDate string, distinct []check.ReviewedDistinct) (seriesIndex, []string) {
+// It reads opts' DataDir, ImportDate and Distinct (the planner's honorific
+// fold), AttachEditions (the attach rule) and Reported (standalones, whose
+// duplicate guard reads the normalized-identity index too, reportedguard.go);
+// without either of the last two the planner lets go of that index, exactly as
+// a plain selection always has.
+func loadSeriesIndex(opts SelectOptions) (seriesIndex, []string) {
 	idx := seriesIndex{
 		bySlug:    map[string]string{},
 		asins:     map[string]bool{},
 		positions: map[string]map[string]string{},
 	}
 	idx.names = idx.bySlug
+	dataDir := opts.DataDir
 	store, err := openStore(dataDir, pack.ProfileAll)
 	if err != nil {
 		return idx, []string{fmt.Sprintf("catalogue at %s: %v; selecting against nothing", dataDir, err)}
 	}
-	p := newPlanner(store, sourceLibex, Options{DataDir: dataDir, ImportDate: importDate, Distinct: distinct})
-	p.loadedPositions = attach
+	p := newPlanner(store, sourceLibex, Options{DataDir: dataDir, ImportDate: opts.ImportDate, Distinct: opts.Distinct})
+	p.loadedPositions = opts.AttachEditions
 	p.loadExisting()
-	if !attach && !reported {
+	if !opts.AttachEditions && !opts.Reported {
 		p.identity = nil // only the attach rule and the standalone guard ask it
 	}
 	p.seriesAuthorIndex()
@@ -992,7 +993,7 @@ func loadSeriesIndex(dataDir string, attach, reported bool, importDate string, d
 	}
 	for slug, ss := range p.series {
 		idx.bySlug[slug] = ss.name
-		if attach {
+		if opts.AttachEditions {
 			// Every position the series lists, as the attach rule reads it
 			// (seriesState.loaded).
 			idx.positions[slug] = ss.loaded

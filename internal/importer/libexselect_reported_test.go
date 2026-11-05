@@ -373,7 +373,7 @@ func assertRefusedAsDuplicate(t *testing.T, run selectRun, asin string) {
 }
 
 // heldWork seeds one held work with a single recording (the ASIN B0HELD plus a
-// suffix), by authors given as person slugs, and an optional series membership.
+// suffix), by authors given as person slugs.
 func heldWork(t *testing.T, dataDir, slug, title, lang string, authors []string, asinSuffix string) {
 	t.Helper()
 	quoted := make([]string, len(authors))

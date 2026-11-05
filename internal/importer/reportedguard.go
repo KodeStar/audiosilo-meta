@@ -2,7 +2,6 @@ package importer
 
 import (
 	"slices"
-	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 )
@@ -34,7 +33,7 @@ import (
 // held side read against the series its own key was derived against) of one of
 // these pairs are equal: the two full titles, the row's main title against the
 // held full title, or the row's full title against the held main title. A main
-// title is what precedes the first subtitle separator (mainTitle). Two MAIN titles
+// title is what precedes the first subtitle separator (titlerule.MainTitle). Two MAIN titles
 // are not compared: "Dune: House Atreides" and "Dune: House Harkonnen" share their
 // authors and their main title and are two books.
 //
@@ -64,25 +63,24 @@ import (
 // gap (a decorated and a plain title of one new book in one tranche) is the create
 // guard's run half's to close.
 
-// reportedDuplicate returns the held work a standalone would be a second record
-// of, and whether there is one. ctx is the batch's credit context and workTitle
-// the title the import resolves the row's work by (confirmBatch derives both as
-// the import does). The first match in work-slug order is named.
-func (p *planner) reportedDuplicate(ctx creditContext, b sourceBook, workTitle string) (duplicateIdentityMatch, bool) {
+// reportedDuplicate reports whether a standalone would be a second record of a
+// held work. ctx is the batch's credit context and workTitle the title the import
+// resolves the row's work by (confirmBatch derives both as the import does).
+func (p *planner) reportedDuplicate(ctx creditContext, b sourceBook, workTitle string) bool {
 	if p.identity == nil || workTitle == "" {
-		return duplicateIdentityMatch{}, false
+		return false
 	}
 	authors := p.rowWorkAuthorsROIn(ctx, rowAuthorCreditsIn(ctx, b))
 	if len(authors.identity) == 0 {
-		return duplicateIdentityMatch{}, false
+		return false
 	}
 	lang, _ := b.language()
 	if p.resolveWork(workTitle, b.str("title"), b.qualifiedTitles, "", authors, lang, nil).ws != nil {
-		return duplicateIdentityMatch{}, false
+		return false
 	}
 	row := identityForms(workTitle, "", p.identity.Key)
 	if row.full.key == "" && row.main.key == "" {
-		return duplicateIdentityMatch{}, false
+		return false
 	}
 	rowVolume := titlerule.StatementOf(workTitle, "", titlerule.WriterPolicy)
 	for _, slug := range p.heldWorksOf(authors.identity) {
@@ -101,9 +99,9 @@ func (p *planner) reportedDuplicate(ctx creditContext, b sourceBook, workTitle s
 				continue
 			}
 		}
-		return duplicateIdentityMatch{work: slug, title: ws.title, series: series}, true
+		return true
 	}
-	return duplicateIdentityMatch{}, false
+	return false
 }
 
 // titleForm is one spelling of a title with the identity key it reduces to.
@@ -119,7 +117,7 @@ type titleForms struct {
 
 func identityForms(title, series string, key func(title, series string) string) titleForms {
 	f := titleForms{full: titleForm{title, series, key(title, series)}}
-	if m, ok := mainTitle(title); ok {
+	if m, ok := titlerule.MainTitle(title); ok {
 		f.main = titleForm{m, series, key(m, series)}
 	}
 	return f
@@ -136,24 +134,6 @@ func (f titleForms) names(h titleForms) bool {
 		}
 	}
 	return false
-}
-
-// mainTitle is the part of a title before its first subtitle separator (": " or
-// " - ", where titlerule's subtitle rules split a title too), and whether there is
-// one: a title with no separator, or nothing before it, has no main title apart
-// from itself.
-func mainTitle(title string) (string, bool) {
-	cut := -1
-	for _, sep := range []string{": ", " - "} {
-		if i := strings.Index(title, sep); i >= 0 && (cut < 0 || i < cut) {
-			cut = i
-		}
-	}
-	if cut < 0 {
-		return "", false
-	}
-	head := strings.TrimSpace(title[:cut])
-	return head, head != ""
 }
 
 // heldWorksOf is every held work crediting any of the given identity authors, in
