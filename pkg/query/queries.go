@@ -313,9 +313,15 @@ type WorkDetail struct {
 
 // WorkDetail returns the full work document, or (nil, nil) when absent.
 func (s *DB) WorkDetail(id string) (*WorkDetail, error) {
+	return s.workDetail(context.Background(), id)
+}
+
+// workDetail is WorkDetail under ctx, which every read takes: works/match?expand
+// (matchexpand.go) reads a work inside what is left of its budget.
+func (s *DB) workDetail(ctx context.Context, id string) (*WorkDetail, error) {
 	var d WorkDetail
 	var subtitle, firstPub, desc, wiki, ol, gr sql.NullString
-	err := s.db.QueryRow(
+	err := s.db.QueryRowContext(ctx,
 		`SELECT id, title, subtitle, language, first_published, description, wikidata, openlibrary, goodreads FROM works WHERE id=?`, id).
 		Scan(&d.ID, &d.Title, &subtitle, &d.Language, &firstPub, &desc, &wiki, &ol, &gr)
 	if err == sql.ErrNoRows {
@@ -328,20 +334,20 @@ func (s *DB) WorkDetail(id string) (*WorkDetail, error) {
 	d.FirstPublished = firstPub.String
 	d.Description = desc.String
 
-	if d.Authors, err = s.authorsOf(id); err != nil {
+	if d.Authors, err = s.authorsOf(ctx, id); err != nil {
 		return nil, err
 	}
-	if d.Genres, err = s.workGenres(id); err != nil {
+	if d.Genres, err = s.workGenres(ctx, id); err != nil {
 		return nil, err
 	}
-	if d.Series, err = s.seriesOf(id); err != nil {
+	if d.Series, err = s.seriesOf(ctx, id); err != nil {
 		return nil, err
 	}
-	if d.TranslationOf, d.Translations, err = s.workTranslations(id); err != nil {
+	if d.TranslationOf, d.Translations, err = s.workTranslations(ctx, id); err != nil {
 		return nil, err
 	}
 
-	isbns, err := s.workISBNs(id)
+	isbns, err := s.workISBNs(ctx, id)
 	if err != nil {
 		return nil, err
 	}
@@ -349,25 +355,25 @@ func (s *DB) WorkDetail(id string) (*WorkDetail, error) {
 		d.Xref = &WorkXref{Wikidata: wiki.String, Openlibrary: ol.String, Goodreads: gr.String, ISBN: isbns}
 	}
 
-	if d.Recordings, err = s.recordingsOf(id); err != nil {
+	if d.Recordings, err = s.recordingsOf(ctx, id); err != nil {
 		return nil, err
 	}
-	if d.Characters, err = s.charactersOf(id); err != nil {
+	if d.Characters, err = s.charactersOf(ctx, id); err != nil {
 		return nil, err
 	}
-	if d.Recaps, err = s.recapsOf(id); err != nil {
+	if d.Recaps, err = s.recapsOf(ctx, id); err != nil {
 		return nil, err
 	}
-	if d.RecapSummary, err = s.recapSummaryOf(id); err != nil {
+	if d.RecapSummary, err = s.recapSummaryOf(ctx, id); err != nil {
 		return nil, err
 	}
 	// A scale is a statement about these members, and the schema refuses one without them.
 	if len(d.Characters)+len(d.Recaps) > 0 {
-		if d.PositionScale, err = s.positionScaleOf(id); err != nil {
+		if d.PositionScale, err = s.positionScaleOf(ctx, id); err != nil {
 			return nil, err
 		}
 	}
-	if d.CommunityDescription, err = s.communityDescriptionOf(id); err != nil {
+	if d.CommunityDescription, err = s.communityDescriptionOf(ctx, id); err != nil {
 		return nil, err
 	}
 	return &d, nil
@@ -388,6 +394,7 @@ func (s *DB) WorkDetail(id string) (*WorkDetail, error) {
 // unauthenticated public endpoint.
 // Returns (nil, nil) when the work is absent.
 func (s *DB) workForABS(id string, genresByWork map[string][]string, descriptionsByWork map[string]*DescriptionOut) (*WorkDetail, error) {
+	ctx := context.Background()
 	var d WorkDetail
 	var subtitle, firstPub, desc sql.NullString
 	err := s.db.QueryRow(
@@ -403,23 +410,23 @@ func (s *DB) workForABS(id string, genresByWork map[string][]string, description
 	d.FirstPublished = firstPub.String
 	d.Description = desc.String
 
-	if d.Authors, err = s.authorsOf(id); err != nil {
+	if d.Authors, err = s.authorsOf(ctx, id); err != nil {
 		return nil, err
 	}
 	d.Genres = genresByWork[id]
-	if d.Series, err = s.seriesOf(id); err != nil {
+	if d.Series, err = s.seriesOf(ctx, id); err != nil {
 		return nil, err
 	}
 	// absBooksFor only reads the work's print ISBN off Xref; skip the other xref
 	// identifiers entirely.
-	isbns, err := s.workISBNs(id)
+	isbns, err := s.workISBNs(ctx, id)
 	if err != nil {
 		return nil, err
 	}
 	if len(isbns) > 0 {
 		d.Xref = &WorkXref{ISBN: isbns}
 	}
-	if d.Recordings, err = s.recordingsBase(id); err != nil {
+	if d.Recordings, err = s.recordingsBase(ctx, id); err != nil {
 		return nil, err
 	}
 	d.CommunityDescription = descriptionsByWork[id]
@@ -589,11 +596,11 @@ type SeriesTranslation struct {
 // mk builds the family's own shape from (id, title or name, language). It answers
 // nil, nil without a query while the artifact holds no translation at all (which
 // includes every artifact older than languagesSchemaVersion).
-func translationLinks[T any](s *DB, query, id string, mk func(id, label, language string) T) (of, by []T, err error) {
+func translationLinks[T any](ctx context.Context, s *DB, query, id string, mk func(id, label, language string) T) (of, by []T, err error) {
 	if !s.hasTranslations {
 		return nil, nil, nil
 	}
-	rows, err := s.db.Query(query, id)
+	rows, err := s.db.QueryContext(ctx, query, id)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -614,15 +621,15 @@ func translationLinks[T any](s *DB, query, id string, mk func(id, label, languag
 }
 
 // workTranslations returns both directions of a work's translation links.
-func (s *DB) workTranslations(workID string) (of, by []WorkTranslation, err error) {
-	return translationLinks(s, workTranslationsSQL, workID, func(id, title, lang string) WorkTranslation {
+func (s *DB) workTranslations(ctx context.Context, workID string) (of, by []WorkTranslation, err error) {
+	return translationLinks(ctx, s, workTranslationsSQL, workID, func(id, title, lang string) WorkTranslation {
 		return WorkTranslation{ID: id, Title: title, Language: lang}
 	})
 }
 
 // seriesTranslations is workTranslations for a series.
 func (s *DB) seriesTranslations(seriesID string) (of, by []SeriesTranslation, err error) {
-	return translationLinks(s, seriesTranslationsSQL, seriesID, func(id, name, lang string) SeriesTranslation {
+	return translationLinks(context.Background(), s, seriesTranslationsSQL, seriesID, func(id, name, lang string) SeriesTranslation {
 		return SeriesTranslation{ID: id, Name: name, Language: lang}
 	})
 }
@@ -653,11 +660,11 @@ func (s *DB) redirectTarget(kind model.RedirectKind, id string) (string, error) 
 
 // charactersOf returns the per-work character sidecar entries in authored order,
 // or nil when the work has none (or the artifact predates the sidecar tables).
-func (s *DB) charactersOf(workID string) ([]CharacterOut, error) {
+func (s *DB) charactersOf(ctx context.Context, workID string) ([]CharacterOut, error) {
 	if s.schemaVersion < sidecarSchemaVersion {
 		return nil, nil
 	}
-	rows, err := s.db.Query(
+	rows, err := s.db.QueryContext(ctx,
 		`SELECT id, name, role, reveal_chapter, description, wikidata, goodreads FROM characters WHERE work_id=? ORDER BY ord`, workID)
 	if err != nil {
 		return nil, err
@@ -680,7 +687,7 @@ func (s *DB) charactersOf(workID string) ([]CharacterOut, error) {
 		return nil, err
 	}
 
-	arows, err := s.db.Query(characterAliasSQL, workID)
+	arows, err := s.db.QueryContext(ctx, characterAliasSQL, workID)
 	if err != nil {
 		return nil, err
 	}
@@ -704,11 +711,11 @@ func (s *DB) charactersOf(workID string) ([]CharacterOut, error) {
 
 // recapsOf returns the per-work recap sidecar entries ordered by position, or
 // nil when the work has none (or the artifact predates the sidecar tables).
-func (s *DB) recapsOf(workID string) ([]RecapOut, error) {
+func (s *DB) recapsOf(ctx context.Context, workID string) ([]RecapOut, error) {
 	if s.schemaVersion < sidecarSchemaVersion {
 		return nil, nil
 	}
-	rows, err := s.db.Query(
+	rows, err := s.db.QueryContext(ctx,
 		`SELECT through_chapter, scope, text FROM recaps WHERE work_id=? ORDER BY through_chapter`, workID)
 	if err != nil {
 		return nil, err
@@ -730,12 +737,12 @@ func (s *DB) recapsOf(workID string) ([]RecapOut, error) {
 // recapSummaryOf returns the per-work whole-book summary (in_short / ending), or
 // nil when the work has none (or the artifact predates the recap_summaries
 // table). A row present with both fields empty is treated as no summary.
-func (s *DB) recapSummaryOf(workID string) (*RecapSummaryOut, error) {
+func (s *DB) recapSummaryOf(ctx context.Context, workID string) (*RecapSummaryOut, error) {
 	if s.schemaVersion < summarySchemaVersion {
 		return nil, nil
 	}
 	var inShort, ending sql.NullString
-	err := s.db.QueryRow(`SELECT in_short, ending FROM recap_summaries WHERE work_id=?`, workID).
+	err := s.db.QueryRowContext(ctx, `SELECT in_short, ending FROM recap_summaries WHERE work_id=?`, workID).
 		Scan(&inShort, &ending)
 	if err == sql.ErrNoRows {
 		return nil, nil
@@ -765,12 +772,12 @@ func (s *DB) recapSummaryOf(workID string) (*RecapSummaryOut, error) {
 // neighbour there is no "states nothing" row to filter out. That is the
 // invariant the license boundary rests on - a CommunityDescription present means
 // CC BY-SA prose is present - so a third state must not be invented here.
-func (s *DB) communityDescriptionOf(workID string) (*DescriptionOut, error) {
+func (s *DB) communityDescriptionOf(ctx context.Context, workID string) (*DescriptionOut, error) {
 	if !s.hasDescriptions {
 		return nil, nil
 	}
 	var text, license string
-	err := s.db.QueryRow(descriptionOfSQL, workID).Scan(&text, &license)
+	err := s.db.QueryRowContext(ctx, descriptionOfSQL, workID).Scan(&text, &license)
 	if err == sql.ErrNoRows {
 		return nil, nil
 	}
@@ -783,13 +790,13 @@ func (s *DB) communityDescriptionOf(workID string) (*DescriptionOut, error) {
 // positionScaleOf returns the work's stated scale, or nil when it has none. Gated
 // by the load-time memo (DB.hasPositionScales), so an older artifact and an empty
 // table cost no query.
-func (s *DB) positionScaleOf(workID string) (*model.PositionScale, error) {
+func (s *DB) positionScaleOf(ctx context.Context, workID string) (*model.PositionScale, error) {
 	if !s.hasPositionScales {
 		return nil, nil
 	}
 	var out model.PositionScale
 	var partial int
-	err := s.db.QueryRow(positionScaleOfSQL, workID).Scan(&out.Length, &out.Unit, &partial)
+	err := s.db.QueryRowContext(ctx, positionScaleOfSQL, workID).Scan(&out.Length, &out.Unit, &partial)
 	if err == sql.ErrNoRows {
 		return nil, nil
 	}
@@ -845,8 +852,8 @@ func seriesOfSQL(orderings bool) string {
 		`WHERE sw.work_id=? ORDER BY ` + order
 }
 
-func (s *DB) seriesOf(workID string) ([]SeriesRef, error) {
-	rows, err := s.db.Query(seriesOfSQL(s.hasOrderings()), workID)
+func (s *DB) seriesOf(ctx context.Context, workID string) ([]SeriesRef, error) {
+	rows, err := s.db.QueryContext(ctx, seriesOfSQL(s.hasOrderings()), workID)
 	if err != nil {
 		return nil, err
 	}
@@ -868,19 +875,19 @@ func (s *DB) seriesOf(workID string) ([]SeriesRef, error) {
 // work has none (or the artifact predates the work_genres table). Genres are a
 // set, so genre is the order (checkGenresSorted pins the authored files to the
 // same ascending order).
-func (s *DB) workGenres(workID string) ([]string, error) {
+func (s *DB) workGenres(ctx context.Context, workID string) ([]string, error) {
 	if s.schemaVersion < genresSchemaVersion {
 		return nil, nil
 	}
-	rows, err := s.db.Query(`SELECT genre FROM work_genres WHERE work_id=? ORDER BY genre`, workID)
+	rows, err := s.db.QueryContext(ctx, `SELECT genre FROM work_genres WHERE work_id=? ORDER BY genre`, workID)
 	if err != nil {
 		return nil, err
 	}
 	return scanIDs(rows)
 }
 
-func (s *DB) workISBNs(workID string) ([]string, error) {
-	rows, err := s.db.Query(`SELECT isbn FROM work_isbns WHERE work_id=? ORDER BY isbn`, workID)
+func (s *DB) workISBNs(ctx context.Context, workID string) ([]string, error) {
+	rows, err := s.db.QueryContext(ctx, `SELECT isbn FROM work_isbns WHERE work_id=? ORDER BY isbn`, workID)
 	if err != nil {
 		return nil, err
 	}
@@ -896,9 +903,9 @@ func (s *DB) workISBNs(workID string) ([]string, error) {
 // nanoseconds beside this function's per-recording queries, and deriving at
 // construction means no future recordingDetail surface can silently omit them
 // (omitempty would hide the gap).
-func (s *DB) recordingsBase(workID string) ([]RecordingDetail, error) {
+func (s *DB) recordingsBase(ctx context.Context, workID string) ([]RecordingDetail, error) {
 	librivox := s.hasLibrivoxLayer()
-	rows, err := s.db.Query(recordingsOfSQL(librivox), workID)
+	rows, err := s.db.QueryContext(ctx, recordingsOfSQL(librivox), workID)
 	if err != nil {
 		return nil, err
 	}
@@ -934,13 +941,13 @@ func (s *DB) recordingsBase(workID string) ([]RecordingDetail, error) {
 	}
 	for i := range recs {
 		rid := recs[i].ID
-		if recs[i].Narrators, err = s.narratorsOf(workID, rid); err != nil {
+		if recs[i].Narrators, err = s.narratorsOf(ctx, workID, rid); err != nil {
 			return nil, err
 		}
-		if recs[i].ASIN, err = s.asinsOf(workID, rid); err != nil {
+		if recs[i].ASIN, err = s.asinsOf(ctx, workID, rid); err != nil {
 			return nil, err
 		}
-		if recs[i].ISBN, err = s.recordingISBNs(workID, rid); err != nil {
+		if recs[i].ISBN, err = s.recordingISBNs(ctx, workID, rid); err != nil {
 			return nil, err
 		}
 		recs[i].PurchaseLinks = append(librivoxPurchaseLinks(recs[i]), derivedPurchaseLinks(recs[i].ASIN, recs[i].ISBN)...)
@@ -948,13 +955,13 @@ func (s *DB) recordingsBase(workID string) ([]RecordingDetail, error) {
 	return recs, nil
 }
 
-func (s *DB) recordingsOf(workID string) ([]RecordingDetail, error) {
-	recs, err := s.recordingsBase(workID)
+func (s *DB) recordingsOf(ctx context.Context, workID string) ([]RecordingDetail, error) {
+	recs, err := s.recordingsBase(ctx, workID)
 	if err != nil {
 		return nil, err
 	}
 	for i := range recs {
-		if err = s.db.QueryRow(recordingCountSQL, workID, recs[i].ID).
+		if err = s.db.QueryRowContext(ctx, recordingCountSQL, workID, recs[i].ID).
 			Scan(&recs[i].ChapterCount); err != nil {
 			return nil, err
 		}
@@ -984,16 +991,16 @@ const (
 	recordingCountSQL = `SELECT COUNT(*) FROM chapters WHERE work_id=? AND recording_id=?`
 )
 
-func (s *DB) narratorsOf(workID, rid string) ([]PersonRef, error) {
-	rows, err := s.db.Query(narratorsOfSQL, workID, rid)
+func (s *DB) narratorsOf(ctx context.Context, workID, rid string) ([]PersonRef, error) {
+	rows, err := s.db.QueryContext(ctx, narratorsOfSQL, workID, rid)
 	if err != nil {
 		return nil, err
 	}
 	return scanPersonRefs(rows)
 }
 
-func (s *DB) asinsOf(workID, rid string) ([]ASINRef, error) {
-	rows, err := s.db.Query(asinsOfSQL, workID, rid)
+func (s *DB) asinsOf(ctx context.Context, workID, rid string) ([]ASINRef, error) {
+	rows, err := s.db.QueryContext(ctx, asinsOfSQL, workID, rid)
 	if err != nil {
 		return nil, err
 	}
@@ -1009,8 +1016,8 @@ func (s *DB) asinsOf(workID, rid string) ([]ASINRef, error) {
 	return out, rows.Err()
 }
 
-func (s *DB) recordingISBNs(workID, rid string) ([]string, error) {
-	rows, err := s.db.Query(recordingISBNsSQL, workID, rid)
+func (s *DB) recordingISBNs(ctx context.Context, workID, rid string) ([]string, error) {
+	rows, err := s.db.QueryContext(ctx, recordingISBNsSQL, workID, rid)
 	if err != nil {
 		return nil, err
 	}
