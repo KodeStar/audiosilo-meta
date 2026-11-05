@@ -159,12 +159,12 @@ const code =
 
       <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">Reports of unknown books</h2>
       <p class="mb-4 leading-relaxed">
-        The API can take reports of Audible ASINs the database does not hold yet, for example from
-        an AudioSilo server whose administrator has turned that on. A report carries ASINs and
-        nothing else we keep: the service stores each ASIN with a count and the first and last date
-        it was reported, and stores no IP address with them. An address is held in memory for up to
-        a day after its last report to enforce a rate limit. The request itself is otherwise treated
-        like any other, so the server logs described above apply to it.
+        Where this optional feature is turned on, the service accepts reports of Audible ASINs the
+        database does not hold yet. A report carries ASINs and nothing else we keep: the service
+        stores each ASIN with a count and the first and last date it was reported, and stores no IP
+        address with them. An address is held in memory for about a day after its last request to
+        enforce a rate limit. The request itself is otherwise treated like any other, so the server
+        logs described above apply to it.
       </p>
 
       <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">Contributing</h2>

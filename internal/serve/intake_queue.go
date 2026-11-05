@@ -18,8 +18,10 @@ import (
 // intakeSchema is the whole of what the queue keeps: an ASIN, how many POSTs named
 // it and the first and last UTC day one did. It is deliberately this narrow.
 // There is no column for a client or anything that identifies one, a day rather
-// than a timestamp, and no rowid, so neither the rows nor their order can rebuild
-// who sent what or which ASINs arrived together.
+// than a timestamp, and no rowid, so the rows cannot say who sent what. They can
+// show which ASINs were reported on the same UTC day, and on a day with one report
+// that is the report's whole list: the day is the finest grain they hold. Order on
+// disk is compact's job, which leaves at most about the last minute of it there.
 const intakeSchema = `CREATE TABLE IF NOT EXISTS intake_asins(asin TEXT PRIMARY KEY, count INTEGER NOT NULL, first_day TEXT NOT NULL, last_day TEXT NOT NULL) WITHOUT ROWID`
 
 // intakePragmas keep the arrival order off the disk too, which the schema alone
