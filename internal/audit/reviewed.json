@@ -17151,11 +17151,11 @@
   {
     "decision": "assert",
     "op": "merge-works",
-    "target": "middle-school-how-i-survived-bullies-broccoli-and-snake-hill",
     "others": [
       "middle-school-middle-school-book-4"
     ],
-    "reason": "one book and one reading: Bryan Kennedy at 264 and 265 minutes with 72 chapters each, and B079R659S4 on the Book 4 record carries this title"
+    "reason": "one book and one reading: Bryan Kennedy at 264 and 265 minutes with 72 chapters each, and B079R659S4 on the Book 4 record carries this title",
+    "target": "middle-school-how-i-survived-bullies-broccoli-and-snake-hill"
   },
   {
     "decision": "assert",
@@ -26398,11 +26398,11 @@
   {
     "decision": "assert",
     "op": "merge-works",
-    "target": "the-sins-of-the-father-clifton-chronicles-book-2",
     "others": [
       "the-sins-of-the-father-the-clifton-chronicles-2"
     ],
-    "reason": "one Jeffrey Archer novel: Alex Jennings and Emilia Fox at 607 minutes on both records, the second being the 2024 reissue"
+    "reason": "one Jeffrey Archer novel: Alex Jennings and Emilia Fox at 607 minutes on both records, the second being the 2024 reissue",
+    "target": "the-sins-of-the-father-clifton-chronicles-book-2"
   },
   {
     "decision": "reject",
@@ -29467,11 +29467,11 @@
   },
   {
     "decision": "assert",
-    "op": "retitle-work",
-    "target": "a-to-z-mysteries-17",
     "from": "A to Z Mysteries #17",
-    "to": "A to Z Mysteries: The Quicksand Question",
-    "reason": "both ASINs (B004CNY0LQ, B004EWPSRU) title it The Quicksand Question, volume 17 of the series"
+    "op": "retitle-work",
+    "reason": "both ASINs (B004CNY0LQ, B004EWPSRU) title it The Quicksand Question, volume 17 of the series",
+    "target": "a-to-z-mysteries-17",
+    "to": "A to Z Mysteries: The Quicksand Question"
   },
   {
     "decision": "assert",
@@ -30032,11 +30032,11 @@
   },
   {
     "decision": "assert",
-    "op": "retitle-work",
-    "target": "free-the-great-courses",
     "from": "Free",
-    "to": "Sherlock Holmes: The First Great Detective",
-    "reason": "its ASIN (B019ZBDN80) titles it Free: Sherlock Holmes- The First Great Detective; Free is the giveaway label, not the title"
+    "op": "retitle-work",
+    "reason": "its ASIN (B019ZBDN80) titles it Free: Sherlock Holmes- The First Great Detective; Free is the giveaway label, not the title",
+    "target": "free-the-great-courses",
+    "to": "Sherlock Holmes: The First Great Detective"
   },
   {
     "decision": "assert",
@@ -30064,11 +30064,11 @@
   },
   {
     "decision": "assert",
-    "op": "retitle-work",
-    "target": "horrible-histories-villainous-victorians",
     "from": "Horrible Histories: Villainous Victorians",
-    "to": "Horrible Histories: Frightful First World War",
-    "reason": "both ASINs (B00J9KF8U4, B00J9KH6HW), the runtime and the chapters are Frightful First World War; no listing was found for a Villainous Victorians, the Victorian title being Vile Victorians"
+    "op": "retitle-work",
+    "reason": "both ASINs (B00J9KF8U4, B00J9KH6HW), the runtime and the chapters are Frightful First World War; no listing was found for a Villainous Victorians, the Victorian title being Vile Victorians",
+    "target": "horrible-histories-villainous-victorians",
+    "to": "Horrible Histories: Frightful First World War"
   },
   {
     "decision": "reject",
@@ -30179,11 +30179,11 @@
   },
   {
     "decision": "assert",
-    "op": "retitle-work",
-    "target": "junie-b-first-grader",
     "from": "Junie B., First Grader",
-    "to": "Junie B., First Grader: Aloha-ha-ha!",
-    "reason": "both ASINs (B002V0157Y, B004EWNRXM) title it Junie B. Jones #26: Aloha-ha-ha!; the old title is the sub-series name"
+    "op": "retitle-work",
+    "reason": "both ASINs (B002V0157Y, B004EWNRXM) title it Junie B. Jones #26: Aloha-ha-ha!; the old title is the sub-series name",
+    "target": "junie-b-first-grader",
+    "to": "Junie B., First Grader: Aloha-ha-ha!"
   },
   {
     "decision": "reject",
@@ -30459,11 +30459,11 @@
   },
   {
     "decision": "assert",
-    "op": "retitle-work",
-    "target": "percy-jackson-the-olympians",
     "from": "Percy Jackson & the Olympians",
-    "to": "Percy Jackson: The Demigod Files",
-    "reason": "its ASIN (B079XF1ZFJ) titles it Percy Jackson: The Demigod Files, which the series holds at 5.1; the old title is the series name"
+    "op": "retitle-work",
+    "reason": "its ASIN (B079XF1ZFJ) titles it Percy Jackson: The Demigod Files, which the series holds at 5.1; the old title is the series name",
+    "target": "percy-jackson-the-olympians",
+    "to": "Percy Jackson: The Demigod Files"
   },
   {
     "decision": "assert",
@@ -30691,11 +30691,11 @@
   },
   {
     "decision": "assert",
-    "op": "retitle-work",
-    "target": "sisters-grimm",
     "from": "Sisters Grimm",
-    "to": "Once Upon a Crime",
-    "reason": "both ASINs (B002V1BKU0, B004EXGI1E) title it Once Upon a Crime, which the Sisters Grimm series holds at 4; the old title is the series name"
+    "op": "retitle-work",
+    "reason": "both ASINs (B002V1BKU0, B004EXGI1E) title it Once Upon a Crime, which the Sisters Grimm series holds at 4; the old title is the series name",
+    "target": "sisters-grimm",
+    "to": "Once Upon a Crime"
   },
   {
     "decision": "assert",
