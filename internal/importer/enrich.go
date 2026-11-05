@@ -192,6 +192,9 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 		redate = p.redates(raw, b)
 		refresh, withheld, against = p.judgeRefresh(raw, b, redate)
 	}
+	if !refresh && p.rowNamesAnotherBook(b, ref, entry, scope) {
+		return false
+	}
 	if !refresh && p.recordingContradicts(b, ref, raw, redate, scope) {
 		return false
 	}
@@ -368,6 +371,155 @@ func (p *planner) recordingContradicts(b sourceBook, ref RecRef, raw map[string]
 		p.summary.Conflicts++
 	}
 	return true
+}
+
+// rowNamesAnotherBook refuses a row whose ASIN sits on a work the row itself says is
+// a different book: no title word in common and no author who could be the same
+// person. Such an ASIN was put there by a library export whose tool matched a retail
+// listing by a fuzzy title (meta#256 filed Carson McCullers' Reflections in a Golden Eye
+// on John Gardner's GoldenEye), and filling anything from the row writes the other
+// book's runtime, chapters and series onto the record, which is what hid those for months.
+//
+// Both halves must hold because each alone is ordinary: an author's second spelling or
+// an editor credit shares the title, and a series-titled retail listing ("Mistborn" for
+// The Final Empire) shares the author. Measured over the 2026-07-29 libex dump: on the
+// tree before the repair, 14 ASINs of 10 works refused, all wrong; after it, none in
+// 52,263 rows. It does not find a chimera whose title shares a word, and the author half
+// alone is not usable (49 of the 14,789 user-library ASINs, mostly spellings).
+//
+// A side with nothing to compare is no evidence (rowTitleApart, rowAuthorsApart): a hand
+// attestation states neither. The ASIN merge is matched by work and narrators, so its row
+// is never asked, and neither is a refresh (applyToRecording): a mirror row of the first
+// ASIN, the listing the record was catalogued from. A pen name is the one known false
+// refusal left: a retitled book under another name states nothing this can read, and no
+// person record holds its other names, so the row is reported rather than lost silently.
+func (p *planner) rowNamesAnotherBook(b sourceBook, ref RecRef, entry map[string]any, scope applyScope) bool {
+	if scope == scopeAttestMerged {
+		return false
+	}
+	workTitle := coerceStr(entry["title"])
+	if !rowTitleApart(b, workTitle, coerceStr(entry["subtitle"]), coerceStr(entry["language"])) ||
+		!p.rowAuthorsApart(b, entryPeople(entry)) {
+		return false
+	}
+	stated := firstNonEmpty(b.str("title_short"), b.str("title"))
+	p.warnInto(b, &p.conflictWarnings)("this row's ASIN names %q by %s, but it sits on %q; the row was not used",
+		stated, strings.Join(rowAuthorNames(b), ", "), workTitle)
+	p.recordConflict(b, ref, "work", workTitle, stated)
+	if p.userTier {
+		p.summary.Conflicts++
+	}
+	return true
+}
+
+// rowTitleApart reports whether the row's short title and a work's title and subtitle
+// share no word, each stating some. The row is read without its subtitle: a retail
+// subtitle restates the words the fuzzy match hit ("Indy Cars: Full Throttle" filed on
+// Throttle). A row in another language than the work says nothing here, since a
+// translated title shares no word with its original by being a translation.
+func rowTitleApart(b sourceBook, title, subtitle, lang string) bool {
+	rowWords, workWords := titleWords(firstNonEmpty(b.str("title_short"), b.str("title"))), titleWords(title, subtitle)
+	if len(rowWords) == 0 || len(workWords) == 0 || intersects(rowWords, workWords) {
+		return false
+	}
+	rowLang, known := b.language()
+	return !known || lang == "" || model.PrimarySubtag(rowLang) == model.PrimarySubtag(lang)
+}
+
+// rowAuthorsApart reports whether no author the row states can be a person among
+// workPeople (person ids), each side naming somebody comparable. nearPerson is the
+// reading: the same surname with any suffix off, or one edit apart, which is what a
+// transliteration usually is (Tolstoy, Tolstoi). It reads the row's names with no census,
+// so it decides nothing about a credit and reports no fold, and the genre regeneration,
+// which takes no credit decisions, can ask it too.
+func (p *planner) rowAuthorsApart(b sourceBook, workPeople []string) bool {
+	work := make([]string, 0, len(workPeople))
+	for _, id := range workPeople {
+		work = append(work, firstNonEmpty(p.people[id], strings.ReplaceAll(id, "-", " ")))
+	}
+	rowNames, workNames := comparableNames(rowAuthorNames(b)), comparableNames(work)
+	if len(rowNames) == 0 || len(workNames) == 0 {
+		return false
+	}
+	for _, r := range rowNames {
+		for _, w := range workNames {
+			if nearPerson(r, w) || reorderedName(r, w) {
+				return false
+			}
+		}
+	}
+	return true
+}
+
+// rowAuthorNames is the row's author names as it states them, cleaned with no census.
+func rowAuthorNames(b sourceBook) []string {
+	return creditNamesOf(sourceCredits(b.authors, b.str("author"), creditCensus{}))
+}
+
+// entryPeople is every person a decoded work entry credits, authors and credits[] alike.
+func entryPeople(entry map[string]any) []string {
+	var out []string
+	authors, _ := entry["authors"].([]any)
+	for _, a := range authors {
+		out = append(out, coerceStr(a))
+	}
+	credits, _ := entry["credits"].([]any)
+	for _, c := range credits {
+		if m, ok := c.(map[string]any); ok {
+			out = append(out, coerceStr(m["person"]))
+		}
+	}
+	return out
+}
+
+// comparableNames drops the names that identify nobody a surname can be read from: one
+// the slug rule keeps only scraps of ("J.K.ローリング" slugs to `j-k`), and a collective
+// statement ("Various", "Anonymous"), which names no author at all.
+func comparableNames(names []string) []string {
+	return slices.DeleteFunc(names, func(n string) bool {
+		_, collective := collectiveCredits[foldCredit(n)]
+		return collective || Slugify(n) == "" || mostlyNonLatinLetters(n)
+	})
+}
+
+// reorderedName reports whether two names are the same words in another order, a family
+// name written first ("Murakami Haruki", "Haruki Murakami").
+func reorderedName(a, b string) bool {
+	wa, wb := formOf("", a).words, formOf("", b).words
+	return len(wa) > 1 && slices.Equal(slices.Sorted(slices.Values(wa)), slices.Sorted(slices.Values(wb)))
+}
+
+// titleWords is the set of words a title and its subtitle state, without the ones a
+// series or format wording supplies to any title. It reads the whole slug (the cap would
+// cut the tail a row may share) and passes over a title mostly in another script, of
+// which the slug rule keeps only Latin and digit scraps ("Сборник стихов 001" is `001`).
+func titleWords(titles ...string) map[string]bool {
+	out := map[string]bool{}
+	for _, t := range titles {
+		if mostlyNonLatinLetters(t) {
+			continue
+		}
+		for _, w := range strings.Split(model.SlugifyWhole(t), "-") {
+			if w != "" && !titleNoiseWords[w] {
+				out[w] = true
+			}
+		}
+	}
+	return out
+}
+
+var titleNoiseWords = map[string]bool{
+	"a": true, "an": true, "and": true, "book": true, "books": true, "in": true, "novel": true, "of": true,
+	"saga": true, "series": true, "stories": true, "story": true, "the": true, "to": true, "vol": true, "volume": true,
+}
+
+func intersects(a, b map[string]bool) bool {
+	for k := range a {
+		if b[k] {
+			return true
+		}
+	}
+	return false
 }
 
 // contradiction is the first fact a row contradicts its recording on.
