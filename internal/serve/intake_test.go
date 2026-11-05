@@ -1472,7 +1472,8 @@ func TestIntakeLogsNoClientData(t *testing.T) {
 func TestIntakeLeavesNoSidecar(t *testing.T) {
 	dir := t.TempDir()
 	path := filepath.Join(dir, "queue.sqlite")
-	srv := intakeServer(t, Config{IntakeDB: path})
+	// No tick: a compact in progress has a journal, which is not one left behind.
+	srv := intakeServer(t, Config{IntakeDB: path, intakeTick: time.Hour})
 	db := srv.intake.queue.db
 
 	var mode string
@@ -1483,9 +1484,17 @@ func TestIntakeLeavesNoSidecar(t *testing.T) {
 	if err := db.QueryRow(`PRAGMA secure_delete`).Scan(&secure); err != nil || secure != 1 {
 		t.Errorf("secure_delete = %d %v, want 1", secure, err)
 	}
+	const tempStoreMemory = 2
+	var tempStore int
+	if err := db.QueryRow(`PRAGMA temp_store`).Scan(&tempStore); err != nil || tempStore != tempStoreMemory {
+		t.Errorf("temp_store = %d %v, want %d", tempStore, err, tempStoreMemory)
+	}
 
 	report(t, srv, unknownA)
 	report(t, srv, unknownB)
+	if err := srv.intake.queue.compact(context.Background()); err != nil {
+		t.Fatal(err)
+	}
 	entries, err := os.ReadDir(dir)
 	if err != nil {
 		t.Fatal(err)
@@ -1515,6 +1524,129 @@ func TestIntakeLeavesNoSidecar(t *testing.T) {
 	}
 	if !bytes.Contains(raw, []byte(unknownB)) {
 		t.Error("the row left behind is not in the file, so this test proves nothing")
+	}
+}
+
+// TestIntakeFileForgetsArrivalOrder is the layout half of that promise. Two queues
+// holding the same rows, reported in opposite orders, have different pages until a
+// compact, because a leaf's cell offsets record the order, and the same pages after.
+func TestIntakeFileForgetsArrivalOrder(t *testing.T) {
+	asins := make([]string, 40)
+	for i := range asins {
+		asins[i] = fmt.Sprintf("B0%08d", i)
+	}
+	clock := newSafeClock()
+	build := func(order []string) (*Server, string) {
+		path := filepath.Join(t.TempDir(), "queue.sqlite")
+		srv := intakeServer(t, Config{IntakeDB: path, now: clock.now, intakeTick: time.Hour})
+		for _, a := range order {
+			report(t, srv, a)
+		}
+		return srv, path
+	}
+	// Past the 100-byte header, whose change counters do differ and say nothing.
+	pages := func(path string) []byte {
+		raw, err := os.ReadFile(path)
+		if err != nil {
+			t.Fatal(err)
+		}
+		return raw[100:]
+	}
+	forward, forwardPath := build(asins)
+	reversed := slices.Clone(asins)
+	slices.Reverse(reversed)
+	backward, backwardPath := build(reversed)
+	if bytes.Equal(pages(forwardPath), pages(backwardPath)) {
+		t.Fatal("the layouts match before a compact, so this test proves nothing")
+	}
+	for _, srv := range []*Server{forward, backward} {
+		if err := srv.intake.queue.compact(context.Background()); err != nil {
+			t.Fatal(err)
+		}
+	}
+	if !bytes.Equal(pages(forwardPath), pages(backwardPath)) {
+		t.Error("the file still tells the two arrival orders apart after a compact")
+	}
+	if got := queueASINs(t, forward); !slices.Equal(got, asins) {
+		t.Errorf("after a compact the queue is %v", got)
+	}
+}
+
+// TestIntakeCompactRuns: the tick compacts after a report, and so does closing, for
+// what the last tick did not reach. A failed one stays due, and a clean queue is left
+// alone, which a queue that cannot run one proves.
+func TestIntakeCompactRuns(t *testing.T) {
+	ticking := intakeServer(t, Config{intakeTick: 5 * time.Millisecond})
+	report(t, ticking, unknownA)
+	eventually(t, "the tick to compact", func() bool { return !ticking.intake.queue.dirty.Load() })
+
+	closing := intakeServer(t, Config{intakeTick: time.Hour})
+	if !closing.intake.queue.dirty.Load() {
+		t.Error("a queue just opened is not due a compact, so a crash's order would stay")
+	}
+	if err := closing.intake.queue.compact(context.Background()); err != nil {
+		t.Fatal(err)
+	}
+	report(t, closing, unknownA)
+	if !closing.intake.queue.dirty.Load() {
+		t.Fatal("a report left the queue clean")
+	}
+	closing.closeIntake()
+	if closing.intake.queue.dirty.Load() {
+		t.Error("closing left the queue uncompacted")
+	}
+
+	q := closing.intake.queue // closed by now
+	if err := q.compact(context.Background()); err != nil {
+		t.Errorf("a clean queue tried to compact: %v", err)
+	}
+	q.dirty.Store(true)
+	if err := q.compact(context.Background()); err == nil {
+		t.Fatal("a compact on a closed queue reported no error")
+	}
+	if !q.dirty.Load() {
+		t.Error("a failed compact is no longer due")
+	}
+}
+
+// TestIntakeLimiterHoldsABoundedMap: a bucket lives a day here, so a sender rotating
+// addresses must not be able to grow the map without limit. The newest client is
+// still served, and the global limiter, whose buckets empty in seconds, has no cap.
+func TestIntakeLimiterHoldsABoundedMap(t *testing.T) {
+	srv := intakeServer(t, Config{RateLimit: 1, RateBurst: 1})
+	if got := srv.intake.limiter.maxBuckets; got != maxIntakeClients {
+		t.Errorf("the POST limiter's cap = %d, want %d", got, maxIntakeClients)
+	}
+	if got := srv.limiter.maxBuckets; got != 0 {
+		t.Errorf("the global limiter's cap = %d, want none", got)
+	}
+
+	l := newRateLimiter(1, 1, nil, nil)
+	l.maxBuckets = 3
+	for i := range 10 {
+		addr := netip.AddrFrom4([4]byte{192, 0, 2, byte(i)})
+		if ok, _ := l.allow(addr); !ok {
+			t.Errorf("new client %s was refused", addr)
+		}
+		if n := len(l.buckets); n > l.maxBuckets {
+			t.Fatalf("the map holds %d buckets, cap %d", n, l.maxBuckets)
+		}
+		if _, held := l.buckets[addr]; !held {
+			t.Errorf("new client %s has no bucket", addr)
+		}
+	}
+}
+
+// TestIntakeTokenIsTrimmed: a request's token is trimmed, so a deployment's must be
+// too, or a stray newline in the value is a route no caller can ever read.
+func TestIntakeTokenIsTrimmed(t *testing.T) {
+	srv := intakeServer(t, Config{IntakeToken: intakeTestToken + "\n"})
+	if rec := (intakeReq{method: http.MethodGet, auth: "Bearer " + intakeTestToken, remote: nextRemote()}).do(srv); rec.Code != http.StatusOK {
+		t.Errorf("read = %d, want 200", rec.Code)
+	}
+	short := intakeServer(t, Config{IntakeToken: strings.Repeat(" ", minIntakeTokenBytes) + "x"})
+	if short.intake.token != "" {
+		t.Error("a value short once trimmed still registered the read route")
 	}
 }
 
@@ -1622,6 +1754,9 @@ func TestIntakeSpecFollowsTheRouteTable(t *testing.T) {
 			}
 			if len(tc.want) == 2 && !bytes.Equal(srv.spec.body, openAPISpec) {
 				t.Error("with everything on the document must be the file, byte for byte")
+			}
+			if len(tc.want) == 0 && bytes.Contains(srv.spec.body, []byte(intakePath)) {
+				t.Error("with the env unset the document still names the path, in its prose if nowhere else")
 			}
 			if srv.spec.etag == "" {
 				t.Error("no ETag")

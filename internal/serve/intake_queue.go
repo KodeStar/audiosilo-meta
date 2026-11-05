@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 	"slices"
 	"strings"
+	"sync/atomic"
 
 	_ "modernc.org/sqlite" // the queue's driver, the artifact's too
 
@@ -23,10 +24,11 @@ const intakeSchema = `CREATE TABLE IF NOT EXISTS intake_asins(asin TEXT PRIMARY 
 
 // intakePragmas keep the arrival order off the disk too, which the schema alone
 // cannot promise. journal_mode=DELETE leaves no sidecar behind a commit, where a
-// WAL file would hold each batch's pages in arrival order until a checkpoint; and
+// WAL file would hold each batch's pages in arrival order until a checkpoint;
 // secure_delete zeroes the content of a freed row rather than leaving it in a free
-// page of the file.
-var intakePragmas = []string{"journal_mode(DELETE)", "secure_delete(ON)"}
+// page of the file; and temp_store=MEMORY keeps compact's working copy out of the
+// temporary directory. The pages themselves are compact's job.
+var intakePragmas = []string{"journal_mode(DELETE)", "secure_delete(ON)", "temp_store(MEMORY)"}
 
 // intakeQueue is the SQLite file behind the intake routes. It is separate from the
 // artifact on purpose: a swap replaces the artifact and prune clears the cache
@@ -36,6 +38,8 @@ type intakeQueue struct {
 	db *sql.DB
 	// maxRows is the row cap, maxIntakeRows outside the tests.
 	maxRows int
+	// dirty says a report has changed the file since its last compact.
+	dirty atomic.Bool
 }
 
 // openIntakeQueue opens the queue at path, creating the file, its parent and the
@@ -80,7 +84,10 @@ func openIntakeQueue(path string) (*intakeQueue, error) {
 			return nil, err
 		}
 	}
-	return &intakeQueue{db: db, maxRows: maxIntakeRows}, nil
+	q := &intakeQueue{db: db, maxRows: maxIntakeRows}
+	// Whatever a crash left uncompacted waits for the first tick.
+	q.dirty.Store(true)
+	return q, nil
 }
 
 func (q *intakeQueue) close() error { return q.db.Close() }
@@ -101,8 +108,10 @@ func sqlArgs(asins []string) (list string, args []any) {
 // At the cap, each ASIN the queue does not hold evicts the lowest row by (count,
 // last_day), with the ASIN breaking a tie so one state has one outcome. The
 // report's own rows are exempt. A batch's new ASIN is what the cap makes room for,
-// and one it already holds is being seen right now. Spam therefore mostly displaces
-// spam: a row seen once sorts below any row seen twice, oldest first.
+// and one it already holds is being seen right now. A row seen once sorts below any
+// row seen twice, oldest first, so spam naming each ASIN once mostly displaces spam.
+// Spam naming them twice outranks an honest row seen once, which is what an
+// unverified count costs: this keeps the file small, not the queue clean.
 func (q *intakeQueue) record(ctx context.Context, asins []string, today string) error {
 	if len(asins) == 0 {
 		return nil
@@ -138,7 +147,28 @@ func (q *intakeQueue) record(ctx context.Context, asins []string, today string) 
 			return err
 		}
 	}
-	return tx.Commit()
+	if err := tx.Commit(); err != nil {
+		return err
+	}
+	q.dirty.Store(true)
+	return nil
+}
+
+// compact rewrites the file in key order if a report has changed it since the last
+// call. The schema keeps no order, but the pages would: SQLite fills a leaf from its
+// end downward, so a page's cell offsets list its rows as they arrived, which is all
+// of them while the queue fits one page, and a page split only blurs that. VACUUM
+// leaves the layout a function of the rows alone, so the file can only ever order
+// the reports since the last call. A failure leaves the queue dirty for the next.
+func (q *intakeQueue) compact(ctx context.Context) error {
+	if !q.dirty.Swap(false) {
+		return nil
+	}
+	if _, err := q.db.ExecContext(ctx, `VACUUM`); err != nil {
+		q.dirty.Store(true)
+		return fmt.Errorf("compact: %w", err)
+	}
+	return nil
 }
 
 // intakeRow is one queue row, the read route's wire shape.

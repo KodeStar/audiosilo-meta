@@ -100,6 +100,9 @@ type rateLimiter struct {
 	// is the wrong unit for a limit counted in days ("at most 6.94e-05 requests a
 	// second"), so a limiter like that states its own.
 	refusal string
+	// maxBuckets caps the map, zero for no cap. A limiter whose buckets take seconds
+	// to refill empties itself; one whose buckets take a day needs this.
+	maxBuckets int
 
 	mu        sync.Mutex
 	buckets   map[netip.Addr]*bucket
@@ -137,6 +140,15 @@ func (l *rateLimiter) allow(addr netip.Addr) (bool, time.Duration) {
 	l.sweep(now)
 	b, ok := l.buckets[addr]
 	if !ok {
+		// At the cap a new client costs some other client its bucket, whichever the
+		// map offers. That hands one client its allowance back early, and refusing
+		// every new client until the sweep would hand a flood the whole route.
+		if l.maxBuckets > 0 && len(l.buckets) >= l.maxBuckets {
+			for victim := range l.buckets {
+				delete(l.buckets, victim)
+				break
+			}
+		}
 		b = &bucket{tokens: l.burst, last: now}
 		l.buckets[addr] = b
 	}

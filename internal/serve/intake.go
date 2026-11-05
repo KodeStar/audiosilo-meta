@@ -19,7 +19,8 @@ package serve
 //     in memory (the bucket's key, an IPv6 address as its /64), and intakeLoop's
 //     sweep drops it about a day after the client's last request whether or not
 //     anybody else ever calls. Nothing on this path logs an address, a user agent,
-//     an ASIN or a batch, and nothing of the kind goes in the file.
+//     an ASIN or a batch, and nothing of the kind goes in the file, whose layout
+//     forgets the arrival order on the same tick (intakeQueue.compact).
 //   - Every snapshot this server serves filters the queue: a row leaves when the
 //     artifact knows it, or when it expires. There is no ack route. The housekeeping
 //     goroutine notices a new snapshot on its tick, however it was installed, and
@@ -63,12 +64,20 @@ const (
 	intakeReportsPerDay = 6
 	// intakeRefusal is its 429 body, saying what the limit is in the limit's units.
 	intakeRefusal = "rate limit exceeded: at most 6 reports a day per client; retry after the Retry-After seconds"
+	// maxIntakeClients bounds the POST limiter's map, about 12 MiB of buckets. They
+	// live a day where the global limiter's live seconds, so a sender rotating
+	// through a routed IPv6 prefix could otherwise grow it until the process, and
+	// the catalogue API with it, runs out of memory.
+	maxIntakeClients = 100_000
 
 	minIntakeTokenBytes = 32
 
 	// intakePurgeTimeout bounds one purge: it reads the snapshot it pinned, and past
 	// the swap grace that snapshot may be closed anyway.
 	intakePurgeTimeout = time.Minute
+	// intakeCloseTimeout bounds the last compact. One that does not finish is the
+	// next boot's to do.
+	intakeCloseTimeout = 2 * time.Second
 )
 
 // intakeASIN is the ASIN's format, the catalogue's own (schema/common.schema.json's
@@ -96,7 +105,9 @@ type intakeState struct {
 // here is logged and leaves it off: the catalogue API must not depend on a
 // disposable side queue.
 func (s *Server) openIntake() {
-	path, token := s.cfg.IntakeDB, s.cfg.IntakeToken
+	// Trimmed as a request's token is, so a stray newline in the deployment's value
+	// is not a route that refuses every caller.
+	path, token := s.cfg.IntakeDB, strings.TrimSpace(s.cfg.IntakeToken)
 	if path == "" {
 		if token != "" {
 			s.log.Printf("serve: METASERVE_INTAKE_TOKEN is set without METASERVE_INTAKE_DB; the intake routes stay off")
@@ -114,6 +125,7 @@ func (s *Server) openIntake() {
 	}
 	limiter := newRateLimiter(intakeReportsPerDay/(24*time.Hour).Seconds(), intakeReportsPerDay, s.cfg.TrustedProxies, s.cfg.now)
 	limiter.refusal = intakeRefusal
+	limiter.maxBuckets = maxIntakeClients
 	ctx, cancel := context.WithCancel(context.Background())
 	s.intake = &intakeState{
 		queue: q, limiter: limiter, token: token,
@@ -123,8 +135,8 @@ func (s *Server) openIntake() {
 	s.log.Printf("serve: intake queue on at %s", path)
 }
 
-// closeIntake stops the housekeeping and closes the queue. It is a no-op with the
-// queue off, and safe to call twice.
+// closeIntake stops the housekeeping, compacts what the last tick did not reach and
+// closes the queue. It is a no-op with the queue off, and safe to call twice.
 func (s *Server) closeIntake() {
 	in := s.intake
 	if in == nil {
@@ -133,6 +145,9 @@ func (s *Server) closeIntake() {
 	in.once.Do(func() {
 		in.stop()
 		<-in.done
+		ctx, cancel := context.WithTimeout(context.Background(), intakeCloseTimeout)
+		defer cancel()
+		s.compactIntake(ctx)
 		if err := in.queue.close(); err != nil {
 			s.log.Printf("serve: closing the intake queue: %v", err)
 		}
@@ -159,7 +174,16 @@ func (s *Server) intakeLoop(ctx context.Context) {
 			s.intake.limiter.sweepIdle()
 			expiredOn = s.expireIntakeRows(ctx, expiredOn)
 			purged = s.purgeKnownIntakeRows(ctx, purged)
+			s.compactIntake(ctx)
 		}
+	}
+}
+
+// compactIntake runs intakeQueue.compact. A failure is logged and the next call
+// tries again.
+func (s *Server) compactIntake(ctx context.Context) {
+	if err := s.intake.queue.compact(ctx); err != nil && ctx.Err() == nil {
+		s.log.Printf("serve: intake queue: %v", err)
 	}
 }
 
@@ -198,15 +222,13 @@ func (s *Server) purgeKnownIntakeRows(ctx context.Context, purged *query.DB) *qu
 			return err
 		}
 		known, err := snap.KnownASINs(ctx, asins)
-		if err != nil {
+		if err != nil || len(known) == 0 {
 			return err
 		}
 		if err := queue.remove(ctx, slices.Collect(maps.Keys(known))); err != nil {
 			return err
 		}
-		if len(known) > 0 {
-			s.log.Printf("serve: intake queue: %d rows are now known to the catalogue and were dropped", len(known))
-		}
+		s.log.Printf("serve: intake queue: %d rows are now known to the catalogue and were dropped", len(known))
 		return nil
 	}()
 	// A cancelled context is shutdown, not a failure. A purge past its time bound is
