@@ -8574,12 +8574,15 @@
     "middle-school-how-i-survived-bullies-broccoli-and-snake-hill": {
       "added_at": "2026-08-02",
       "authors": [
-        "james-patterson"
+        "james-patterson",
+        "chris-tebbetts"
       ],
       "genres": [
         "childrens",
         "comedy-humor",
-        "literary-fiction"
+        "coming-of-age",
+        "literary-fiction",
+        "sports"
       ],
       "id": "middle-school-how-i-survived-bullies-broccoli-and-snake-hill",
       "language": "en",
@@ -8599,6 +8602,14 @@
             },
             {
               "asin": "B00D92KBD2",
+              "region": "uk"
+            },
+            {
+              "asin": "B00D2ZCWIS",
+              "region": "us"
+            },
+            {
+              "asin": "B079R659S4",
               "region": "uk"
             }
           ],
@@ -8989,6 +9000,21 @@
               "imported_at": "2026-10-09",
               "ref": "B00D92KBD2",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B00D2ZCWIS",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B00D2ZCWIS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B079R659S4",
+              "type": "libex-import"
             }
           ],
           "work": "middle-school-how-i-survived-bullies-broccoli-and-snake-hill"
@@ -8998,6 +9024,16 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B00D92M48W",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B00D2ZCWIS",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B00D2ZCWIS",
           "type": "libex-import"
         }
       ],
