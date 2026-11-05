@@ -346,9 +346,9 @@ func TestTitleCarriesIdentity(t *testing.T) {
 // proposal on such a work is advisory, whichever decoration it is filed under.
 func TestAdaptationLabelRetitlesAreHeld(t *testing.T) {
 	files := map[string]string{
-		"people/ad/ada-author.json":  testpack.PersonJSON(t, "ada-author", "Ada Author"),
-		"people/fu/full-cast.json":   testpack.PersonJSON(t, "full-cast", "Full Cast"),
-		"works/ta/tale-da/work.json": workJSON(t, "tale-da", "Tale [Dramatized Adaptation]"),
+		"people/ja/jane-doe.json":    personJSON(t, "jane-doe", "Jane Doe"),
+		"people/fu/full-cast.json":   personJSON(t, "full-cast", "Full Cast"),
+		"works/ta/tale-da/work.json": workJSON(t, "tale-da", "The Lost Coast of Tale [Dramatized Adaptation]"),
 		"works/ta/tale-da/recordings/r.json": testpack.RecJSON(t, "r", "tale-da",
 			testpack.WithPublisher("GraphicAudio"), testpack.WithNarrators("full-cast")),
 	}
