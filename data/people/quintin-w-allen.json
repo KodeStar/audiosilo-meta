@@ -1898,6 +1898,9 @@
     },
     "r-francis-smith": {
       "id": "r-francis-smith",
+      "librivox_reader_aliases": [
+        740
+      ],
       "librivox_reader_id": 38,
       "license": "CC0-1.0",
       "name": "R. Francis Smith",
@@ -1911,15 +1914,7 @@
           "imported_at": "2026-10-27",
           "ref": "47",
           "type": "librivox"
-        }
-      ]
-    },
-    "r-francis-smith-librivox-740": {
-      "id": "r-francis-smith-librivox-740",
-      "librivox_reader_id": 740,
-      "license": "CC0-1.0",
-      "name": "R. Francis Smith",
-      "sources": [
+        },
         {
           "imported_at": "2026-10-28",
           "ref": "189",
@@ -3703,19 +3698,6 @@
         }
       ]
     },
-    "r-nisbet-bain": {
-      "id": "r-nisbet-bain",
-      "librivox_author_id": 6878,
-      "license": "CC0-1.0",
-      "name": "R. Nisbet Bain",
-      "sources": [
-        {
-          "imported_at": "2026-10-28",
-          "ref": "4524",
-          "type": "librivox"
-        }
-      ]
-    },
     "r-o-kwon": {
       "id": "r-o-kwon",
       "license": "CC0-1.0",
@@ -3778,7 +3760,6 @@
     },
     "r-p-jones": {
       "id": "r-p-jones",
-      "librivox_author_id": 18564,
       "license": "CC0-1.0",
       "name": "R.P. Jones",
       "sources": [
@@ -3786,9 +3767,17 @@
           "imported_at": "2026-08-01",
           "ref": "B08KTW51WH",
           "type": "libex-import"
-        },
+        }
+      ]
+    },
+    "r-p-jones-librivox-author-18564": {
+      "id": "r-p-jones-librivox-author-18564",
+      "librivox_author_id": 18564,
+      "license": "CC0-1.0",
+      "name": "R. P. Jones",
+      "sources": [
         {
-          "imported_at": "2026-10-30",
+          "imported_at": "2026-11-04",
           "ref": "20763",
           "type": "librivox"
         }

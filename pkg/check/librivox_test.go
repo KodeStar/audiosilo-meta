@@ -1,6 +1,7 @@
 package check
 
 import (
+	"slices"
 	"strconv"
 	"strings"
 	"testing"
@@ -80,6 +81,71 @@ func withFidelity(rec string) string {
 	rec = strings.Replace(rec, `"librivox_id":`, `"librivox_genres":["General Fiction","Humorous Fiction"],"librivox_id":`, 1)
 	rec = strings.Replace(rec, `,"license":"CC0-1.0","links"`, `,"librivox_title":"Metamorphosis (version 2)","license":"CC0-1.0","links"`, 1)
 	return strings.Replace(rec, `"narrators":["narrator-one"]`, `"narrators":["narrator-one","author-one"]`, 1)
+}
+
+// TestLibrivoxAuthorAliasesValid: a sorted alias list beside the record's own
+// id, on a plain slug and on an author-id form, each unique across the dataset.
+func TestLibrivoxAuthorAliasesValid(t *testing.T) {
+	dir := t.TempDir()
+	files := baseValid()
+	files[lvAuthorRel] = `{"id":"author-one","librivox_author_aliases":[200,300],"librivox_author_id":100,"license":"CC0-1.0","name":"Author One","sources":[{"type":"librivox","ref":"527"}]}`
+	// The same number as an alias, in the other namespace, is no collision.
+	files[lvNarrRel] = `{"id":"narrator-one","librivox_reader_aliases":[100,300],"librivox_reader_id":200,"license":"CC0-1.0","name":"Narrator One","sources":[{"type":"librivox"}]}`
+	files["people/ra/ralph-scott-librivox-author-16428.json"] = `{"id":"ralph-scott-librivox-author-16428","librivox_author_aliases":[16429],"librivox_author_id":16428,"license":"CC0-1.0","name":"Ralph Scott","sources":[{"type":"librivox","ref":"17170"}]}`
+	writeEntities(t, dir, files)
+	res := Load(dir)
+	if !res.OK() {
+		t.Fatalf("author aliases should validate, got:\n%s", joinProblems(res.Problems))
+	}
+	for _, p := range res.Catalog.People {
+		if p.ID == "author-one" && !slices.Equal(p.LibrivoxAuthorAliases, []int{200, 300}) {
+			t.Errorf("aliases did not load: %v", p.LibrivoxAuthorAliases)
+		}
+		if p.ID == "narrator-one" && !slices.Equal(p.LibrivoxReaderAliases, []int{100, 300}) {
+			t.Errorf("reader aliases did not load: %v", p.LibrivoxReaderAliases)
+		}
+	}
+}
+
+// TestLibrivoxTombstoneAnswersToItsID: a retired slug of a LibriVox id form points
+// at a record answering to that id, as its own or an alias, in its own namespace;
+// a retired slug of no LibriVox form asks nothing.
+func TestLibrivoxTombstoneAnswersToItsID(t *testing.T) {
+	const narrator = `{"id":"narrator-one","librivox_author_aliases":[7],"librivox_author_id":5,"librivox_reader_aliases":[200],"librivox_reader_id":100,"license":"CC0-1.0","name":"Narrator One","sources":[{"type":"user"}]}`
+	for _, tc := range []struct {
+		from, want string // want "" is allowed
+	}{
+		{"narrator-one-librivox-200", ""},                    // a reader alias
+		{"narrator-one-librivox-100", ""},                    // the reader's own id
+		{"librivox-reader-200", ""},                          // the prefix form
+		{"narrator-one-librivox-author-7", ""},               // an author alias
+		{"librivox-author-7", ""},                            // the prefix form
+		{"an-old-spelling", ""},                              // no LibriVox form
+		{"narrator-one-librivox-300", "LibriVox reader 300"}, // no such id
+		{"librivox-reader-300", "LibriVox reader 300"},
+		{"narrator-one-librivox-author-300", "LibriVox author 300"},
+		{"librivox-author-300", "LibriVox author 300"},
+		{"narrator-one-librivox-7", "LibriVox reader 7"},            // an author alias, not a reader's
+		{"narrator-one-librivox-author-200", "LibriVox author 200"}, // a reader alias, not an author's
+	} {
+		t.Run(tc.from, func(t *testing.T) {
+			dir := t.TempDir()
+			files := baseValid()
+			files[lvNarrRel] = narrator
+			files["redirects.json"] = `{"people":{"` + tc.from + `":"narrator-one"},"series":{},"works":{}}`
+			writeEntities(t, dir, files)
+			res := Load(dir)
+			if tc.want == "" {
+				if !res.OK() {
+					t.Fatalf("should validate, got:\n%s", joinProblems(res.Problems))
+				}
+				return
+			}
+			if !strings.Contains(joinProblems(res.Problems), tc.want) {
+				t.Errorf("no problem contained %q; problems:\n%s", tc.want, joinProblems(res.Problems))
+			}
+		})
+	}
 }
 
 func TestLibrivoxFidelityFieldsValid(t *testing.T) {
@@ -352,6 +418,86 @@ func TestLibrivoxRuleViolations(t *testing.T) {
 				f[lvNarrRel] = `{"id":"narrator-one","librivox_author_id":100,"license":"CC0-1.0","name":"Narrator One","sources":[{"type":"user"}]}`
 			},
 			want: "duplicate librivox_author_id 100",
+		},
+		{
+			name: "an alias needs a librivox_author_id beside it",
+			mutate: func(f map[string]string) {
+				f[lvAuthorRel] = `{"id":"author-one","librivox_author_aliases":[200],"license":"CC0-1.0","name":"Author One","sources":[{"type":"user"}]}`
+			},
+			want: "librivox_author_id",
+		},
+		{
+			name: "an alias list is not empty",
+			mutate: func(f map[string]string) {
+				f[lvAuthorRel] = `{"id":"author-one","librivox_author_aliases":[],"librivox_author_id":100,"license":"CC0-1.0","name":"Author One","sources":[{"type":"user"}]}`
+			},
+			want: "librivox_author_aliases",
+		},
+		{
+			name: "an alias list repeats no id",
+			mutate: func(f map[string]string) {
+				f[lvAuthorRel] = `{"id":"author-one","librivox_author_aliases":[200,200],"librivox_author_id":100,"license":"CC0-1.0","name":"Author One","sources":[{"type":"user"}]}`
+			},
+			want: "librivox_author_aliases",
+		},
+		{
+			name: "an alias list is sorted",
+			mutate: func(f map[string]string) {
+				f[lvAuthorRel] = `{"id":"author-one","librivox_author_aliases":[300,200],"librivox_author_id":100,"license":"CC0-1.0","name":"Author One","sources":[{"type":"user"}]}`
+			},
+			want: "not sorted",
+		},
+		{
+			name: "an alias is not the record's own id",
+			mutate: func(f map[string]string) {
+				f[lvAuthorRel] = `{"id":"author-one","librivox_author_aliases":[100],"librivox_author_id":100,"license":"CC0-1.0","name":"Author One","sources":[{"type":"user"}]}`
+			},
+			want: "librivox_author_aliases names 100",
+		},
+		{
+			name: "an alias is not another person's id",
+			mutate: func(f map[string]string) {
+				f[lvAuthorRel] = `{"id":"author-one","librivox_author_aliases":[200],"librivox_author_id":100,"license":"CC0-1.0","name":"Author One","sources":[{"type":"user"}]}`
+				f[lvNarrRel] = `{"id":"narrator-one","librivox_author_id":200,"license":"CC0-1.0","name":"Narrator One","sources":[{"type":"user"}]}`
+			},
+			want: "librivox_author_aliases names 200",
+		},
+		{
+			name: "an alias is not another person's alias",
+			mutate: func(f map[string]string) {
+				f[lvAuthorRel] = `{"id":"author-one","librivox_author_aliases":[300],"librivox_author_id":100,"license":"CC0-1.0","name":"Author One","sources":[{"type":"user"}]}`
+				f[lvNarrRel] = `{"id":"narrator-one","librivox_author_aliases":[300],"librivox_author_id":200,"license":"CC0-1.0","name":"Narrator One","sources":[{"type":"user"}]}`
+			},
+			want: "librivox_author_aliases names 300",
+		},
+		{
+			name: "a reader alias needs a librivox_reader_id beside it",
+			mutate: func(f map[string]string) {
+				f[lvNarrRel] = `{"id":"narrator-one","librivox_reader_aliases":[200],"license":"CC0-1.0","name":"Narrator One","sources":[{"type":"user"}]}`
+			},
+			want: "librivox_reader_id",
+		},
+		{
+			name: "a reader alias is not another person's reader id",
+			mutate: func(f map[string]string) {
+				f[lvAuthorRel] = `{"id":"author-one","librivox_reader_id":200,"license":"CC0-1.0","name":"Author One","sources":[{"type":"user"}]}`
+				f[lvNarrRel] = `{"id":"narrator-one","librivox_reader_aliases":[200],"librivox_reader_id":100,"license":"CC0-1.0","name":"Narrator One","sources":[{"type":"user"}]}`
+			},
+			want: "librivox_reader_aliases names 200, already a LibriVox reader id",
+		},
+		{
+			name: "a slug composed from a reader alias is not the record's id",
+			mutate: func(f map[string]string) {
+				f["people/na/narrator-one-librivox-200.json"] = `{"id":"narrator-one-librivox-200","librivox_reader_aliases":[200],"librivox_reader_id":100,"license":"CC0-1.0","name":"Narrator One","sources":[{"type":"user"}]}`
+			},
+			want: `person id "narrator-one-librivox-200" does not match`,
+		},
+		{
+			name: "a slug composed from an alias is not the record's id",
+			mutate: func(f map[string]string) {
+				f["people/au/author-one-librivox-author-200.json"] = `{"id":"author-one-librivox-author-200","librivox_author_aliases":[200],"librivox_author_id":100,"license":"CC0-1.0","name":"Author One","sources":[{"type":"user"}]}`
+			},
+			want: `person id "author-one-librivox-author-200" does not match`,
 		},
 	}
 	for _, c := range cases {

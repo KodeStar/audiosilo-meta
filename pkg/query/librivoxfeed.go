@@ -69,7 +69,12 @@ import (
 // URLs, runtimes, section titles, files and playtimes, author and translator ids
 // and years. The golden test compares each one with the real LibriVox responses
 // in the importer's fixture. A person's LibriVox id and years come from the
-// person record, so a translator the importer resolved by name alone names none.
+// person record, so a translator the importer resolved by name alone names none,
+// and a person LibriVox lists under two ids states their record's own id
+// (librivox_author_id, librivox_reader_id) on every project, also where
+// LibriVox's answer states the second: it is an id LibriVox holds for that
+// person, and the alias (librivox_author_aliases, librivox_reader_aliases) stays
+// in the data, not the artifact.
 //
 // On an artifact older than librivoxRecordingSchemaVersion, or one that carries
 // the layer EMPTY (a release cut before the backfill data landed:

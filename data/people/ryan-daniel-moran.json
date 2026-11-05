@@ -3382,6 +3382,9 @@
     },
     "ryoko": {
       "id": "ryoko",
+      "librivox_reader_aliases": [
+        8397
+      ],
       "librivox_reader_id": 8441,
       "license": "CC0-1.0",
       "name": "ryoko",
@@ -3390,15 +3393,7 @@
           "imported_at": "2026-10-28",
           "ref": "7742",
           "type": "librivox"
-        }
-      ]
-    },
-    "ryoko-librivox-8397": {
-      "id": "ryoko-librivox-8397",
-      "librivox_reader_id": 8397,
-      "license": "CC0-1.0",
-      "name": "ryoko",
-      "sources": [
+        },
         {
           "imported_at": "2026-10-28",
           "ref": "7850",
