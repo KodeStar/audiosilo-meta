@@ -117,6 +117,8 @@ type matchRequest struct {
 	// narrators are the narrator guesses, each split like an author credit.
 	language  string
 	narrators []string
+	// expandWork asks for the best result's work and series facts (matchexpand.go).
+	expandWork bool
 }
 
 // parseMatchRequest reads the query parameters. Every text value is trimmed and
@@ -149,8 +151,9 @@ func parseMatchRequest(q url.Values) (matchRequest, bool) {
 		limit:   clampLimit(q.Get("limit"), matchLimitDefault, matchLimitMax),
 		// Neither is a fact a match can stand on alone, so neither counts
 		// toward ok below: they only weigh the candidates the others found.
-		language:  matchLanguage(text(q.Get("language"))),
-		narrators: list(q["narrator"], matchHypothesesMax),
+		language:   matchLanguage(text(q.Get("language"))),
+		narrators:  list(q["narrator"], matchHypothesesMax),
+		expandWork: wantsWorkExpansion(q["expand"]),
 	}
 	if len(r.asin) > maxMatchIdentifier {
 		r.asin = ""
@@ -182,6 +185,11 @@ type matchResult struct {
 	// omitted when none applies.
 	RecordingID string       `json:"recording_id,omitempty"`
 	Reasons     matchReasons `json:"reasons"`
+	// Work and SeriesFacts are expand=work's, on the best result alone and only
+	// when it could be read in budget (matchexpand.go). SeriesFacts is keyed by
+	// series id.
+	Work        *WorkDetail            `json:"work,omitempty"`
+	SeriesFacts map[string]seriesFacts `json:"series_facts,omitempty"`
 }
 
 // matchReasons says which facts agreed. Every field is omitted when the request
@@ -221,14 +229,7 @@ func (s *handler) handleMatch(w http.ResponseWriter, r *http.Request, snap *DB) 
 	}
 	ctx, cancel := context.WithTimeout(r.Context(), s.cfg.MatchBudget)
 	defer cancel()
-	select {
-	case s.matchSlots <- struct{}{}:
-		defer func() { <-s.matchSlots }()
-	case <-ctx.Done():
-		s.matchBusy(w)
-		return
-	}
-	results, err := snap.match(ctx, req)
+	results, err := s.matchInSlot(ctx, snap, req)
 	switch {
 	case errors.Is(err, errMatchBusy) || (err != nil && ctx.Err() != nil):
 		s.matchBusy(w)
@@ -237,6 +238,24 @@ func (s *handler) handleMatch(w http.ResponseWriter, r *http.Request, snap *DB) 
 	default:
 		httpx.WriteJSON(w, http.StatusOK, map[string]any{"results": results})
 	}
+}
+
+// matchInSlot runs a match and its expansion holding one of the match slots, and
+// gives the slot back before the answer is written. The slots bound the reads: an
+// expanded answer can run to a long work's whole document, and a client slow to take
+// it would otherwise hold a slot for as long as the server's write timeout.
+func (s *handler) matchInSlot(ctx context.Context, snap *DB, req matchRequest) ([]matchResult, error) {
+	select {
+	case s.matchSlots <- struct{}{}:
+		defer func() { <-s.matchSlots }()
+	case <-ctx.Done():
+		return nil, errMatchBusy
+	}
+	results, err := snap.match(ctx, req)
+	if err == nil && req.expandWork {
+		snap.expandBest(ctx, results)
+	}
+	return results, err
 }
 
 // matchBusy answers a match that ran out of budget: 503, retry in a second.

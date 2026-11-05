@@ -482,7 +482,7 @@ func TestDescriptionMemoSkipsTheQueryWhenTheTableIsEmpty(t *testing.T) {
 	if empty.hasDescriptions {
 		t.Error("hasDescriptions is true for a catalogue holding no descriptions")
 	}
-	got, err := empty.communityDescriptionOf("project-hail-mary")
+	got, err := empty.communityDescriptionOf(t.Context(), "project-hail-mary")
 	if err != nil || got != nil {
 		t.Errorf("communityDescriptionOf = %v, %v; want nil, nil", got, err)
 	}

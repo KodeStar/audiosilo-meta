@@ -31,30 +31,35 @@ import (
 
 // Defaults for metaserve's flags (cmd/metaserve), sized so that a shipped
 // AudioSilo server never trips them. Its community client (audiosilo-server
-// internal/meta) is the heaviest legitimate caller and does not pace itself; it
-// waits out a 429 a few times (client.go's rateLimitRetries) and then fails the
-// book, and five failed books in a row stop a bulk match, so the limit must sit
-// above what it does at full speed. The figures below are that repository's
-// constants (TestDefaultsHoldAnAudioSiloBulkMatch names each one):
+// internal/meta) is the heaviest legitimate caller; it waits out a 429 a few
+// times (client.go's rateLimitRetries) and then fails the book, and five failed
+// books in a row stop a bulk match, so the limit must sit above what it does at
+// full speed. Two generations of it are out there at once, as an upgraded server
+// and an old one both talk to this service. The figures below are that
+// repository's constants (TestDefaultsHoldAnAudioSiloBulkMatch names each one):
 //
-//   - In flight at once, at most about a dozen: a bulk match's 2 workers each
-//     with one works/match, work and series reads sharing a bound of 4
-//     (maxConcurrentWorkFetches), the console's identifier lookups another 4
-//     (maxConcurrentLookups), and a player's one /meta per opened book.
-//   - Sustained, a bulk match is the long one: per book one works/match, then
-//     its best 2 works together, then their series facts - about 4 requests in
-//     3 round trips per worker. With a round trip (network plus answer) as
-//     short as 30 ms that is 2 x 4 / 0.09 s, about 90 requests a second, for
-//     as long as the library lasts; at a more usual 60 ms+ it is under 50.
+//   - In flight at once, at most about a dozen for a shipped server: a bulk
+//     match's 2 workers each with one works/match, work and series reads sharing
+//     a bound of 4 (maxConcurrentWorkFetches), the console's identifier lookups
+//     another 4 (maxConcurrentLookups), and a player's one /meta per opened book.
+//     A server asking for works/match?expand holds 6 workers to one request each.
+//   - Sustained, a bulk match is the long one. A shipped server does not pace
+//     itself: per book one works/match, then its best 2 works together, then their
+//     series facts - about 4 requests in 3 round trips per worker. With a round
+//     trip (network plus answer) as short as 30 ms that is 2 x 4 / 0.09 s, about
+//     90 requests a second, for as long as the library lasts; at a more usual
+//     60 ms+ it is under 50. A server with the expand path has more workers and
+//     fewer requests per book, and paces the whole run to about 60 a second
+//     whichever path it falls back to.
 //   - Bursty, a console Series page asks about every matched book of a few
 //     dozen cards at once, a few hundred lookups 4 at a time.
 //
-// So 100 a second holds the bulk match's fast case with headroom, and a burst
-// of 400 absorbs a Series page or a match run starting while a page loads. A
-// scraper looping flat out on one address wants far more than that; past it
-// the catalogue's bulk route is the release artifact. A server sharing the
-// host or LAN with a private metaserve (round trips of a millisecond or two)
-// can outrun any sane limit: that deployment turns it off (--rate-limit 0).
+// So 100 a second holds the shipped server's fast case with headroom and the paced
+// one's with more, and a burst of 400 absorbs a Series page or a match run starting
+// while a page loads. A scraper looping flat out on one address wants far more
+// than that; past it the catalogue's bulk route is the release artifact. A server
+// sharing the host or LAN with a private metaserve (round trips of a millisecond or
+// two) can outrun any sane limit: that deployment turns it off (--rate-limit 0).
 const (
 	DefaultRateLimit = 100
 	DefaultRateBurst = 400

@@ -758,6 +758,10 @@ func TestMatchReadsHonourTheContext(t *testing.T) {
 			_, err := snap.workResults(ctx, []string{"dune"})
 			return err
 		},
+		"matchExpansion": func(ctx context.Context) error {
+			_, _, err := snap.matchExpansion(ctx, "sharpes-eagle")
+			return err
+		},
 	}
 	cancelled, cancel := context.WithCancel(t.Context())
 	cancel()

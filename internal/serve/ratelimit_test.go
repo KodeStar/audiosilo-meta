@@ -273,19 +273,23 @@ func TestNoRateLimitWhenOff(t *testing.T) {
 	}
 }
 
-// TestDefaultsHoldAnAudioSiloBulkMatch pins the defaults to the client they are
-// sized for (see DefaultRateLimit): a shipped AudioSilo server that opens with a
-// console Series page's few hundred lookups, then runs a bulk match at its fast
-// case (2 workers x 4 requests per 90 ms, about 89 a second) for ten minutes,
-// is never refused. A client at twice that rate is, so the limit still binds.
+// TestDefaultsHoldAnAudioSiloBulkMatch pins the defaults to the clients they are
+// sized for (see DefaultRateLimit): an AudioSilo server that opens with a console
+// Series page's few hundred lookups, then runs a bulk match for ten minutes, is
+// never refused at a shipped server's fast case (2 workers x 4 requests per 90 ms,
+// about 89 a second). The pace a server with the expand path holds a run to (about
+// 60 a second, whatever it falls back to) is slower on the same bucket, so this
+// covers it too. A client at twice the fast case is refused, so the limit still binds.
 //
 // The numbers are COPIES of audiosilo-server's, which this repository cannot
 // import, so a change there is not caught here - re-derive them when it moves:
-// workers is internal/matchrun/runner.go's `workers` (2); perBook is one
-// works/match, its `bulkCandidates` (2) work reads and their series facts, the
-// reads sharing internal/meta/service.go's `maxConcurrentWorkFetches` (4)
-// bound; the Series page's lookups are bounded by its `maxConcurrentLookups` (4). CROSS-REPO.md records the
-// coupling from the server's side.
+// workers is a shipped server's internal/matchrun/runner.go `workers` (2); perBook
+// is one works/match, its `bulkCandidates` (2) work reads and their series facts,
+// the reads sharing internal/meta/service.go's `maxConcurrentWorkFetches` (4)
+// bound; the pace is internal/matchrun/runner.go's `maxRequestsPerSecond` (60), on a
+// server with the expand path; the Series page's lookups are bounded by its
+// `maxConcurrentLookups` (4). CROSS-REPO.md records the coupling from the server's
+// side.
 func TestDefaultsHoldAnAudioSiloBulkMatch(t *testing.T) {
 	clock := &fakeClock{t: time.Date(2026, 10, 27, 12, 0, 0, 0, time.UTC)}
 	l := newRateLimiter(DefaultRateLimit, DefaultRateBurst, nil, clock.now)
