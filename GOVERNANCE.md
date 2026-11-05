@@ -259,13 +259,22 @@ configured with the queue's address and token. What it adds, and nothing more:
   completion test and nothing else: a language or marketplace we cannot map, an
   AI narrator and every other credit refusal still refuse it. If the importer
   resolves it to a work the catalogue holds, it lands as another recording of
-  that work, or another ASIN on one; a spelling of a held book's title that the
-  duplicate-identity guard recognises is refused rather than minted beside it.
-  What the guard cannot place still mints a work beside the held one: a subtitle
-  it does not read as decoration, or a bare title naming several held volumes of a
-  serial. The advisory census names the serial case, in the verdict comment alone,
-  since a `bot-sync` pull request is never flagged for its advisories; nothing names
-  the subtitle case.
+  that work, or another ASIN on one. Otherwise the selection refuses it as
+  `identity-duplicate` when a held work in a compatible language shares at least
+  one author with it and the two titles reduce to the same normalized identity
+  key, comparing the full titles and also each side's main title (before a `: `
+  or ` - ` subtitle separator) against the other's full title. That catches a
+  subtitle on either side ("Ford County" beside "Ford County: Stories"), an
+  author list that is a subset of the held one ("Micro" credited to one of its
+  two authors) and a bare title naming several held volumes of a serial. It is
+  wider than the create path's own guard on purpose: a refused report is
+  memoized and comes back later, a minted duplicate needs a repair. The price
+  is a distinct book sharing a main title with a held book by the same author,
+  which is refused too. What it still cannot see mints a work: a title whose key
+  differs ("Daisy Jones and the Six" beside "Daisy Jones & The Six"), which no
+  advisory names, and two spellings of one new book in the same tranche, which
+  the advisory census names when the two key alike, in the verdict comment
+  alone, since a `bot-sync` pull request is never flagged for its advisories.
 - **A reported volume of a held series**: a row that claims a series takes
   exactly the rules of "The bound" above. A row claiming a series the catalogue
   does not hold is refused, as it is from the feeds. **The lane never founds a

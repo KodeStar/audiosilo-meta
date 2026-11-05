@@ -318,6 +318,9 @@ type planner struct {
 	attachEditions  bool
 	attachProducts  map[string]product
 	loadedPositions bool
+	// heldByAuthor is the catalogue's works by identity author, built on first
+	// use by `libex-select --reported`'s standalone guard (reportedguard.go).
+	heldByAuthor map[string][]string
 	// seriesIndex is the catalogue's series evidence (seriesauthors.go) the batch
 	// resolution judges every claim against, built on first use from catalog, the
 	// catalogue load, which resolveSeriesTargets then lets go.

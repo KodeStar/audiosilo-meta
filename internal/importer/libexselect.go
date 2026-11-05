@@ -64,7 +64,9 @@ import (
 // everything series-less, which is the mirror this tool exists to prevent. A row
 // claiming a series takes the same rules as without the flag (a standalone's credits
 // do join the batch census, as they will in the import), so the lane can no more
-// found a series than the feeds can.
+// found a series than the feeds can. A standalone naming a book the catalogue
+// already holds under another spelling is refused as identity-duplicate
+// (reportedguard.go), a wider test than the import's own guard.
 //
 // Deliberately NOT implemented: a --top popularity flag. The dump carries no
 // ratings-count column, so any "top N" would be a guess dressed as a fact.
@@ -83,9 +85,10 @@ type SelectOptions struct {
 	// every such row is refused as position-claimed, as it always was.
 	AttachEditions bool
 	// Reported (`--reported`) keeps a row stating no series as a standalone, under
-	// every refusal that does not read a series (selectStandalone); without it such
-	// a row is refused as no-catalogue-series, as it always was. A row claiming a
-	// series takes the ordinary rules.
+	// every refusal that does not read a series (selectStandalone) and the
+	// standalone duplicate guard (reportedguard.go); without it such a row is
+	// refused as no-catalogue-series, as it always was. A row claiming a series
+	// takes the ordinary rules.
 	Reported bool
 	// RefusalsPath, when set, is where the per-row refusal worklist is written:
 	// one {"asin","reason"} line (RowSkip) per refused row, the reason one of
@@ -332,7 +335,7 @@ func (st *selectState) claimPosition(slug, seq, workKey string) bool {
 func selectLibexRows(r io.Reader, opts SelectOptions, refusals *refusalLog) (SelectResult, []selectedRow, error) {
 	res := SelectResult{Excluded: map[string]int{}}
 	x := exclusions{res: &res, log: refusals}
-	idx, warnings := loadSeriesIndex(opts.DataDir, opts.AttachEditions, opts.ImportDate, opts.Distinct)
+	idx, warnings := loadSeriesIndex(opts.DataDir, opts.AttachEditions, opts.Reported, opts.ImportDate, opts.Distinct)
 	res.Warnings = append(res.Warnings, warnings...)
 	// With nothing loaded a completion has nothing to complete, so a plain selection
 	// keeps no row and a warning is enough. A standalone needs no series, so here it
@@ -374,7 +377,7 @@ func selectLibexRows(r io.Reader, opts SelectOptions, refusals *refusalLog) (Sel
 	cuts := map[string]SeriesCount{}
 	for {
 		before := len(kept)
-		kept = confirmBatch(kept, idx, x, opts.AttachEditions)
+		kept = confirmBatch(kept, idx, x, opts)
 		var cut map[string]SeriesCount
 		kept, cut = applySeriesCap(kept, opts.MaxPerSeries, x)
 		for slug, c := range cut {
@@ -413,9 +416,14 @@ func selectLibexRows(r io.Reader, opts SelectOptions, refusals *refusalLog) (Sel
 // slot to it was excluded then, which only ever narrows a tranche.
 //
 // A standalone is part of the batch, since the import reads its credits with the
-// others', but it has no claim to resolve and no verdict to read, so it is never
-// dropped here.
-func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditions bool) []selectedRow {
+// others', but it has no claim to resolve and no verdict to read. It is dropped
+// here for one reason only, before the claims are judged: the standalone guard
+// (reportedguard.go) finds the catalogue already holds its book, read under the
+// batch's credit context and the work title the import resolves it by, and it is
+// refused as identity-duplicate. A standalone has no claim, so dropping it
+// re-opens no unit.
+func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, opts SelectOptions) []selectedRow {
+	attachEditions := opts.AttachEditions
 	if len(kept) == 0 {
 		return kept
 	}
@@ -431,8 +439,9 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditi
 	// its edition-cleaned titles (on a copy of the decoded row - the next pass
 	// must see the row the import sees) and the batch title pre-pass over them.
 	// A plain selection never asks.
+	// Under --reported the standalone guard reads them too.
 	var titles []string
-	if attachEditions {
+	if attachEditions || opts.Reported {
 		for i := range books {
 			books[i].raw = maps.Clone(books[i].raw)
 		}
@@ -464,6 +473,14 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditi
 	alive := make([]bool, len(kept))
 	for i := range alive {
 		alive[i] = true
+	}
+	for i, r := range kept {
+		if r.standalone() {
+			if _, dup := idx.p.reportedDuplicate(ctx, books[i], titles[i]); dup {
+				alive[i] = false
+				x.add(r.asin, reasonIdentityDuplicate)
+			}
+		}
 	}
 	targets := make([]seriesTarget, len(claims))
 	// Every claim's target is stamped on its row, as the import's
@@ -944,10 +961,12 @@ type seriesIndex struct {
 // (types.go carries the full statement; adding a --profile flag to this CLI
 // means threading it here too).
 //
-// attach says the run applies the attach rule; without it the planner lets go
-// of the normalized-identity index, exactly as a plain selection always has.
-// distinct is SelectOptions.Distinct, for the planner's honorific fold.
-func loadSeriesIndex(dataDir string, attach bool, importDate string, distinct []check.ReviewedDistinct) (seriesIndex, []string) {
+// attach says the run applies the attach rule, and reported that it keeps
+// standalones (SelectOptions.Reported), whose duplicate guard reads the
+// normalized-identity index too (reportedguard.go); without either the planner
+// lets go of that index, exactly as a plain selection always has. distinct is
+// SelectOptions.Distinct, for the planner's honorific fold.
+func loadSeriesIndex(dataDir string, attach, reported bool, importDate string, distinct []check.ReviewedDistinct) (seriesIndex, []string) {
 	idx := seriesIndex{
 		bySlug:    map[string]string{},
 		asins:     map[string]bool{},
@@ -961,8 +980,8 @@ func loadSeriesIndex(dataDir string, attach bool, importDate string, distinct []
 	p := newPlanner(store, sourceLibex, Options{DataDir: dataDir, ImportDate: importDate, Distinct: distinct})
 	p.loadedPositions = attach
 	p.loadExisting()
-	if !attach {
-		p.identity = nil // only the attach rule asks it (attach.go)
+	if !attach && !reported {
+		p.identity = nil // only the attach rule and the standalone guard ask it
 	}
 	p.seriesAuthorIndex()
 	p.catalog = nil
@@ -1409,6 +1428,12 @@ func (r SelectResult) Report() string {
 	fmt.Fprintf(&b, "excluded %d rows:\n", r.RowsRead-r.RowsSelected)
 	for _, rule := range refusals {
 		fmt.Fprintf(&b, "  %-38s %d\n", rule.report, r.Excluded[rule.report])
+	}
+	// The one import-side rule the selector also applies, to a --reported
+	// standalone (reportedguard.go). Printed only when it refused a row, so every
+	// other report reads exactly as it did.
+	if n := r.Excluded[reasonIdentityDuplicate.report]; n > 0 {
+		fmt.Fprintf(&b, "  %-38s %d (--reported)\n", reasonIdentityDuplicate.report, n)
 	}
 	// Printed only when a --refusals worklist was asked for and could not name a
 	// row, so every other report reads exactly as it did.

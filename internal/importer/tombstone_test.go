@@ -156,7 +156,7 @@ func TestNumberedTombstoneMintsBeyondIt(t *testing.T) {
 func TestSeriesWalkersAgreeOverTombstones(t *testing.T) {
 	dataDir := numberedTombstoneTree(t, model.Redirects{model.RedirectSeries: {"saga-2": "saga", "old-saga": "saga-3"}})
 
-	idx, warns := loadSeriesIndex(dataDir, false, "", nil)
+	idx, warns := loadSeriesIndex(dataDir, false, false, "", nil)
 	if len(warns) != 0 {
 		t.Fatalf("loadSeriesIndex warnings: %v", warns)
 	}

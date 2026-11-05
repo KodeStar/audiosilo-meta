@@ -44,8 +44,9 @@ const (
 	RefusalPositionClaimed         = "position-claimed"
 	RefusalOverSeriesCap           = "over-series-cap"
 	// The IMPORT-side codes: rows `metaimport libex` (and `librivox import`)
-	// itself skips, which only its --skipped worklist carries (libex-select
-	// never refuses for these).
+	// itself skips, which its --skipped worklist carries. libex-select refuses
+	// for one of them, identity-duplicate, and only for a --reported standalone
+	// (reportedguard.go); never for the others.
 	RefusalIdentityDuplicate         = "identity-duplicate"
 	RefusalMissingAuthor             = "missing-author"
 	RefusalMissingTitle              = "missing-title"

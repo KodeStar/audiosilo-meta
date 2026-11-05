@@ -1,7 +1,9 @@
 package importer
 
 import (
+	"encoding/json"
 	"errors"
+	"fmt"
 	"os"
 	"path/filepath"
 	"slices"
@@ -330,88 +332,218 @@ func seedHeldBook(t *testing.T) string {
 }
 
 // A standalone naming a book the catalogue holds mints no second work: the same
-// title and author is another recording of that work, and a spelling the duplicate-identity
-// guard recognises is refused, which the bot's --skipped worklist memoizes.
-// GOVERNANCE.md states both.
+// title and author is another recording of that work, untouched by the standalone
+// guard, and a decorated spelling is refused by the selection as identity-duplicate,
+// which the bot's --refusals worklist memoizes. GOVERNANCE.md states both.
 func TestReportedStandaloneMeetsAHeldWork(t *testing.T) {
-	importOne := func(t *testing.T, row string) Summary {
-		t.Helper()
+	t.Run("same title and author is another recording", func(t *testing.T) {
 		dataDir := seedHeldBook(t)
-		run, sum := importAsBot(t, dataDir, []string{row})
-		if len(run.subset) != 1 {
-			t.Fatalf("subset = %v, want the row kept", run.subset)
+		run, sum := importAsBot(t, dataDir, []string{standaloneRow("B0SAMEBK01", "The Held Book", "us", "english", "Ada Mapmaker", "Dee Voice")})
+		if len(run.subset) != 1 || len(run.refusals) != 0 {
+			t.Fatalf("subset %v, refusals %+v; want the row kept", run.subset, run.refusals)
 		}
 		if got := listWorks(t, dataDir); !slices.Equal(got, []string{"the-held-book", "volume-one"}) {
 			t.Errorf("works = %v, want no new work", got)
 		}
-		if sum.NewWorks != 0 || sum.NewSeries != 0 {
-			t.Errorf("NewWorks %d, NewSeries %d, want neither", sum.NewWorks, sum.NewSeries)
+		if sum.NewWorks != 0 || sum.NewSeries != 0 || sum.NewRecordings != 1 || len(sum.Skips) != 0 {
+			t.Errorf("summary = %+v; want the narration as a recording of the-held-book", sum)
 		}
 		assertTreeValid(t, dataDir)
-		return sum
-	}
-	t.Run("same title and author is another recording", func(t *testing.T) {
-		sum := importOne(t, standaloneRow("B0SAMEBK01", "The Held Book", "us", "english", "Ada Mapmaker", "Dee Voice"))
-		if sum.NewRecordings != 1 || len(sum.Skips) != 0 {
-			t.Errorf("NewRecordings %d, Skips %+v; want the narration as a recording of the-held-book", sum.NewRecordings, sum.Skips)
-		}
 	})
-	t.Run("a decorated spelling is refused", func(t *testing.T) {
-		sum := importOne(t, standaloneRow("B0DECOR001", "The Held Book: A LitRPG Adventure", "us", "english", "Ada Mapmaker", "Bea Reader"))
-		if sum.NewRecordings != 0 || len(sum.Skips) != 1 || sum.Skips[0].ASIN != "B0DECOR001" || sum.Skips[0].Reason != RefusalIdentityDuplicate {
-			t.Errorf("NewRecordings %d, Skips %+v; want one identity-duplicate", sum.NewRecordings, sum.Skips)
-		}
+	t.Run("a decorated spelling is refused by the selection", func(t *testing.T) {
+		run := selectWith(t, seedHeldBook(t), []string{standaloneRow("B0DECOR001", "The Held Book: A LitRPG Adventure", "us", "english", "Ada Mapmaker", "Bea Reader")},
+			SelectOptions{Reported: true, AttachEditions: true})
+		assertRefusedAsDuplicate(t, run, "B0DECOR001")
 	})
 }
 
-// What the guard does NOT catch, pinned so GOVERNANCE.md keeps saying only what is
-// true: a subtitle it does not read as decoration mints a work beside the held one,
-// as it does on every create path, and no advisory names it, since the census reads
-// the same title key.
-func TestReportedStandaloneWithAnUnreadSubtitleIsANewWork(t *testing.T) {
-	dataDir := seedHeldBook(t)
-	rows := []string{standaloneRow("B0SUBTIT01", "The Held Book: The Cartographer's Tale", "us", "english", "Ada Mapmaker", "Bea Reader")}
-	_, sum := importAsBot(t, dataDir, rows)
-	if sum.NewWorks != 1 || sum.NewSeries != 0 {
-		t.Errorf("summary = %+v, want one new work and no series", sum)
+// assertRefusedAsDuplicate checks a one-row selection refused its row as
+// identity-duplicate, kept nothing and says so in the report.
+func assertRefusedAsDuplicate(t *testing.T, run selectRun, asin string) {
+	t.Helper()
+	if len(run.subset) != 0 || len(run.refusals) != 1 || run.refusals[0].ASIN != asin || run.refusals[0].Reason != RefusalIdentityDuplicate {
+		t.Errorf("subset %v, refusals %+v; want %s refused as identity-duplicate", run.subset, run.refusals, asin)
 	}
-	assertTreeValid(t, dataDir)
-	if warnings := check.Load(dataDir).Warnings; len(warnings) != 0 {
-		t.Errorf("advisories = %+v; GOVERNANCE.md says none names this work", warnings)
+	if run.res.StandaloneRows != 0 || run.res.ProjectedWorks != 0 {
+		t.Errorf("StandaloneRows %d, ProjectedWorks %d; a refused row projects nothing", run.res.StandaloneRows, run.res.ProjectedWorks)
+	}
+	if want := "  the catalogue holds the book under another title 1 (--reported)\n"; !strings.Contains(run.res.Report(), want) {
+		t.Errorf("report lacks %q:\n%s", want, run.res.Report())
 	}
 }
 
-// The other thing it does not catch, for the same reason: a bare title naming several
-// held volumes of a serial could be any of them or a third (identityMatch's ambiguity
-// veto), so the row mints its own work and the series is left as it was. This one the
-// census does name, which a sync-bot pull request shows in its comment only.
-func TestReportedStandaloneNamingASerialIsANewWork(t *testing.T) {
-	dataDir := seedSelectCatalogue(t)
-	volume := func(n string) map[string]string {
-		work := "wayward-book-" + n
-		return map[string]string{
-			"works/wa/" + work + "/work.json": `{"authors":["ada-mapmaker"],"id":"` + work + `","language":"en","license":"CC0-1.0",` +
-				`"sources":[{"type":"user"}],"title":"Wayward"}`,
-			"works/wa/" + work + "/recordings/bea-reader-2024.json": `{"asin":[{"asin":"B0WAYWARD` + n + `","region":"us"}],"id":"bea-reader-2024",` +
-				`"language":"en","license":"CC0-1.0","narrators":["bea-reader"],"sources":[{"type":"user"}],"work":"` + work + `"}`,
-		}
+// heldWork seeds one held work with a single recording (the ASIN B0HELD plus a
+// suffix), by authors given as person slugs, and an optional series membership.
+func heldWork(t *testing.T, dataDir, slug, title, lang string, authors []string, asinSuffix string) {
+	t.Helper()
+	quoted := make([]string, len(authors))
+	for i, a := range authors {
+		quoted[i] = `"` + a + `"`
 	}
-	seedTree(t, dataDir, volume("1"))
-	seedTree(t, dataDir, volume("2"))
+	dir := "works/" + slug[:2] + "/" + slug
 	seedTree(t, dataDir, map[string]string{
-		"series/wa/wayward.json": `{"id":"wayward","license":"CC0-1.0","name":"Wayward","sources":[{"type":"user"}],` +
-			`"works":[{"position":"1","work":"wayward-book-1"},{"position":"2","work":"wayward-book-2"}]}`,
+		dir + "/work.json": `{"authors":[` + strings.Join(quoted, ",") + `],"id":"` + slug + `","language":"` + lang +
+			`","license":"CC0-1.0","sources":[{"type":"user"}],"title":"` + title + `"}`,
+		dir + "/recordings/bea-reader-2020.json": `{"asin":[{"asin":"B0HELD` + asinSuffix + `","region":"us"}],"id":"bea-reader-2020",` +
+			`"language":"` + lang + `","license":"CC0-1.0","narrators":["bea-reader"],"sources":[{"type":"user"}],"work":"` + slug + `"}`,
 	})
-	rows := []string{standaloneRow("B0WAYWARD3", "Wayward", "us", "english", "Ada Mapmaker", "Bea Reader")}
-	_, sum := importAsBot(t, dataDir, rows)
+}
+
+// TestReportedStandaloneGuard is decision 15's rule, one held work and one row a
+// case, shaped on the 2026-11-05 dry run's duplicates: a series-less row that
+// would CREATE a work is refused as identity-duplicate when a held work shares an
+// author and the identity keys of the full titles, or of one side's main title
+// against the other's full title, are equal.
+func TestReportedStandaloneGuard(t *testing.T) {
+	const ada, cal = "Ada Mapmaker", "Cal Stranger"
+	type held struct {
+		slug, title, lang string
+		authors           []string
+	}
+	cases := []struct {
+		name   string
+		held   []held
+		series string // a series JSON holding the first held work, or ""
+		row    string
+		refuse bool
+	}{
+		{name: "author subset (Micro)", refuse: true,
+			held: []held{{"micro", "Micro", "en", []string{"ada-mapmaker", "cal-stranger"}}},
+			row:  standaloneRow("B0MICRO001", "Micro", "us", "english", ada, "Dee Voice")},
+		{name: "subtitle on the held side, in a series (The New World)", refuse: true,
+			held: []held{{"the-new-world-prequel-to-the-chaos-walking-trilogy", "The New World: Prequel to the Chaos Walking Trilogy", "en", []string{"ada-mapmaker"}}},
+			series: `{"id":"chaos-walking","license":"CC0-1.0","name":"Chaos Walking","sources":[{"type":"user"}],` +
+				`"works":[{"position":"0.5","work":"the-new-world-prequel-to-the-chaos-walking-trilogy"}]}`,
+			row: standaloneRow("B0NEWWLD01", "The New World", "de", "english", ada, "Dee Voice")},
+		{name: "subtitle on the held side (Ford County)", refuse: true,
+			held: []held{{"ford-county-stories", "Ford County: Stories", "en", []string{"ada-mapmaker"}}},
+			row:  standaloneRow("B0FORDCO01", "Ford County", "us", "english", ada, "Dee Voice")},
+		{name: "a foreword writer held as a second author (Infinite Jest)", refuse: true,
+			held: []held{{"infinite-jest", "Infinite Jest", "en", []string{"ada-mapmaker", "cal-stranger"}}},
+			row:  standaloneRow("B0INFJEST1", "Infinite Jest", "us", "english", ada, "Dee Voice")},
+		{name: "subtitle on the row side", refuse: true,
+			held: []held{{"the-held-book", "The Held Book", "en", []string{"ada-mapmaker"}}},
+			row:  standaloneRow("B0SUBTIT01", "The Held Book: The Cartographer's Tale", "us", "english", ada, "Bea Reader")},
+		{name: "a distinct book sharing a main title (accepted false refusal)", refuse: true,
+			held: []held{{"empires-of-eve-volume-2", "Empires of EVE: Volume 2", "en", []string{"ada-mapmaker"}}},
+			row:  standaloneRow("B0EMPIRE01", "Empires of EVE", "us", "english", ada, "Dee Voice")},
+		{name: "a bare title naming several held volumes", refuse: true,
+			held: []held{
+				{"wayward-book-1", "Wayward", "en", []string{"ada-mapmaker"}},
+				{"wayward-book-2", "Wayward", "en", []string{"ada-mapmaker"}},
+			},
+			row: standaloneRow("B0WAYWARD3", "Wayward", "us", "english", ada, "Bea Reader")},
+
+		{name: "same title by a different author is kept",
+			held: []held{{"micro", "Micro", "en", []string{"ada-mapmaker"}}},
+			row:  standaloneRow("B0MICRO002", "Micro", "us", "english", cal, "Dee Voice")},
+		{name: "another language is kept",
+			held: []held{{"micro-french-version", "Micro [French Version]", "fr", []string{"ada-mapmaker"}}},
+			row:  standaloneRow("B0MICRO003", "Micro", "us", "english", ada, "Dee Voice")},
+		{name: "two main titles are not compared",
+			held: []held{{"dune-house-atreides", "Dune: House Atreides", "en", []string{"ada-mapmaker"}}},
+			row:  standaloneRow("B0DUNEHH01", "Dune: House Harkonnen", "us", "english", ada, "Dee Voice")},
+		{name: "a row stating a volume the held title does not is kept",
+			held: []held{{"circus-of-the-dead", "Circus of the Dead", "en", []string{"ada-mapmaker"}}},
+			row:  standaloneRow("B0CIRCUS02", "Circus of the Dead, Book 2", "us", "english", ada, "Dee Voice")},
+		{name: "a row stating another volume is kept",
+			held: []held{{"circus-of-the-dead-book-1", "Circus of the Dead, Book 1", "en", []string{"ada-mapmaker"}}},
+			row:  standaloneRow("B0CIRCUS03", "Circus of the Dead, Book 2", "us", "english", ada, "Dee Voice")},
+		{name: "a title that only starts like a held one is kept",
+			held: []held{{"the-barefoot-investor-for-families", "The Barefoot Investor for Families", "en", []string{"ada-mapmaker"}}},
+			row:  standaloneRow("B0BAREFT01", "The Barefoot Investor", "us", "english", ada, "Dee Voice")},
+	}
+	for _, tc := range cases {
+		for _, attach := range []bool{false, true} {
+			t.Run(fmt.Sprintf("%s (attach=%v)", tc.name, attach), func(t *testing.T) {
+				dataDir := seedSelectCatalogue(t)
+				for i, h := range tc.held {
+					heldWork(t, dataDir, h.slug, h.title, h.lang, h.authors, fmt.Sprintf("%04d", i))
+				}
+				if tc.series != "" {
+					seedTree(t, dataDir, map[string]string{"series/ch/chaos-walking.json": tc.series})
+				}
+				run := selectWith(t, dataDir, []string{tc.row}, SelectOptions{Reported: true, AttachEditions: attach})
+				if tc.refuse {
+					var row struct{ ASIN string }
+					if err := json.Unmarshal([]byte(tc.row), &row); err != nil {
+						t.Fatal(err)
+					}
+					assertRefusedAsDuplicate(t, run, row.ASIN)
+					return
+				}
+				if len(run.subset) != 1 || len(run.refusals) != 0 || run.res.StandaloneRows != 1 {
+					t.Errorf("subset %v, refusals %+v, StandaloneRows %d; want the row kept as a standalone",
+						run.subset, run.refusals, run.res.StandaloneRows)
+				}
+			})
+		}
+	}
+}
+
+// A refused duplicate leaves the rest of the batch alone, and is judged against
+// held works only: two regional rows of one NEW book are siblings of one work, not
+// duplicates of each other, and both are kept beside a refused one.
+func TestReportedGuardReadsHeldWorksOnly(t *testing.T) {
+	dataDir := seedSelectCatalogue(t)
+	heldWork(t, dataDir, "micro", "Micro", "en", []string{"ada-mapmaker", "cal-stranger"}, "0001")
+	rows := []string{
+		standaloneRow("B0MICRO001", "Micro", "us", "english", "Ada Mapmaker", "Dee Voice"),
+		standaloneRow("B0NEWBK01A", "A New Book", "us", "english", "Ada Mapmaker", "Dee Voice"),
+		standaloneRow("B0NEWBK01B", "A New Book", "gb", "english", "Ada Mapmaker", "Dee Voice"),
+		selectRow("B0SELECT02", "Volume Two", "us", "english", seriesName, "2"),
+	}
+	run := selectWith(t, dataDir, rows, SelectOptions{Reported: true, AttachEditions: true})
+	if len(run.subset) != 3 || len(run.refusals) != 1 || run.refusals[0].ASIN != "B0MICRO001" || run.refusals[0].Reason != RefusalIdentityDuplicate {
+		t.Errorf("subset %v, refusals %+v; want Micro alone refused", run.subset, run.refusals)
+	}
+	if run.res.StandaloneRows != 2 || run.res.StandaloneWorks != 1 || run.res.ProjectedWorks != 2 {
+		t.Errorf("standalone rows/works %d/%d, projected %d; want 2/1 and 2", run.res.StandaloneRows, run.res.StandaloneWorks, run.res.ProjectedWorks)
+	}
+}
+
+// Without --reported the guard never runs: a series-less row is refused as
+// no-catalogue-series, as it always was, and the report has no identity line. A row
+// claiming a series is never judged by it either, flag or no flag, even when its
+// subtitle would name a held work.
+func TestReportedGuardNeedsTheFlag(t *testing.T) {
+	dataDir := seedSelectCatalogue(t)
+	heldWork(t, dataDir, "micro", "Micro", "en", []string{"ada-mapmaker", "cal-stranger"}, "0001")
+	rows := []string{
+		standaloneRow("B0MICRO001", "Micro", "us", "english", "Ada Mapmaker", "Dee Voice"),
+		selectRow("B0VOLONE02", "Volume One: The Return", "us", "english", seriesName, "2"),
+	}
+	off := selectWith(t, dataDir, rows, SelectOptions{AttachEditions: true})
+	if len(off.refusals) != 1 || off.refusals[0].ASIN != "B0MICRO001" || off.refusals[0].Reason != RefusalNoCatalogueSeries {
+		t.Errorf("refusals = %+v, want Micro refused as no-catalogue-series", off.refusals)
+	}
+	if strings.Contains(off.res.Report(), reasonIdentityDuplicate.report) {
+		t.Errorf("a run without --reported reports the guard:\n%s", off.res.Report())
+	}
+	on := selectWith(t, dataDir, rows, SelectOptions{Reported: true, AttachEditions: true})
+	if !slices.Contains(on.subset, rows[1]) || !slices.Contains(off.subset, rows[1]) {
+		t.Errorf("the completion row was dropped: off %v, on %v", off.subset, on.subset)
+	}
+}
+
+// End to end, as the bot runs it: the guard's refusals never reach the import, a
+// kept standalone still imports as a work in no series, and the tree is valid.
+func TestReportedGuardEndToEnd(t *testing.T) {
+	dataDir := seedSelectCatalogue(t)
+	heldWork(t, dataDir, "ford-county-stories", "Ford County: Stories", "en", []string{"ada-mapmaker"}, "0001")
+	rows := []string{
+		standaloneRow("B0FORDCO01", "Ford County", "us", "english", "Ada Mapmaker", "Dee Voice"),
+		standaloneRow("B0ALONE001", "A Lone Book", "us", "english", "Ada Mapmaker", "Dee Voice"),
+	}
+	run, sum := importAsBot(t, dataDir, rows)
+	if len(run.subset) != 1 || len(run.refusals) != 1 || run.refusals[0].Reason != RefusalIdentityDuplicate {
+		t.Fatalf("subset %v, refusals %+v", run.subset, run.refusals)
+	}
 	if sum.NewWorks != 1 || sum.NewSeries != 0 || len(sum.Skips) != 0 {
-		t.Errorf("summary = %+v, want one new work, no series and no refusal", sum)
+		t.Errorf("summary = %+v, want one new work", sum)
+	}
+	if got := listWorks(t, dataDir); !slices.Equal(got, []string{"a-lone-book", "ford-county-stories", "volume-one"}) {
+		t.Errorf("works = %v", got)
 	}
 	assertTreeValid(t, dataDir)
-	named := slices.ContainsFunc(check.Load(dataDir).Warnings, func(p check.Problem) bool {
-		return check.AdvisoryClass(p) == "identity-equal-works" && strings.Contains(p.Msg, `"wayward"`)
-	})
-	if !named {
-		t.Error("no identity-equal-works advisory names the new work; GOVERNANCE.md says one does")
-	}
 }

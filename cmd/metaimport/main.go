@@ -26,9 +26,11 @@
 // `metaimport libex` create path.
 //
 // --reported (libex-select) also keeps a row stating NO series, under every
-// refusal that does not read one. It is for the sync bot's reported-ASIN lane
+// refusal that does not read one, unless a held work by one of its authors has
+// the same title, or the same title before or after a subtitle, which refuses it
+// as identity-duplicate. It is for the sync bot's reported-ASIN lane
 // (GOVERNANCE.md) and never for a full export; internal/importer/libexselect.go
-// has the reasoning.
+// and reportedguard.go have the reasoning.
 //
 // --attach-editions (libex-select, and libex's create mode) turns on the attach
 // rule (internal/importer/attach.go): a row claiming a series position the
@@ -488,7 +490,7 @@ func runLibexSelect(args []string) int {
 	out := fs.String("o", "", "path to write the selected rows to (NDJSON)")
 	maxPerSeries := fs.Int("max-per-series", 0, "cap the new works selected per catalogue series (0 = unlimited)")
 	attachEditions := fs.Bool("attach-editions", false, "keep a row at a series position the catalogue already fills when it is another edition of the work there, for `metaimport libex --attach-editions` to attach")
-	reported := fs.Bool("reported", false, "also keep a row stating no series, under every refusal that does not read one (the sync bot's reported-ASIN lane; never over a full export, GOVERNANCE.md)")
+	reported := fs.Bool("reported", false, "also keep a row stating no series, under every refusal that does not read one, refusing it as identity-duplicate when a held work by one of its authors has the same title, with or without a subtitle (the sync bot's reported-ASIN lane; never over a full export, GOVERNANCE.md)")
 	refusals := fs.String("refusals", "", "write one NDJSON line per refused row ({\"asin\",\"reason\"}, stable reason codes) to this file")
 	attachments := fs.String("attachments", "", "write one NDJSON line per row selected for ATTACHMENT ({\"asin\",\"work\",\"series\",\"position\"}) to this file")
 	date := fs.String("date", "", "the run day (YYYY-MM-DD) the preorder-estimate rule reads for a row carrying no updatedAt, as the import's --date does; defaults to today (UTC)")
@@ -758,7 +760,9 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  --attach-editions (libex-select; libex create) attaches a row at a filled series position to the")
 	fmt.Fprintln(os.Stderr, "    work there when it is another edition of it, and refuses it otherwise; never a second work.")
 	fmt.Fprintln(os.Stderr, "  --reported (libex-select) also keeps a row stating no series, under every refusal that does not read")
-	fmt.Fprintln(os.Stderr, "    one. For the sync bot's reported-ASIN lane, which caps its own records; never over a full export.")
+	fmt.Fprintln(os.Stderr, "    one, and refuses it as identity-duplicate when a held work by one of its authors has the same title,")
+	fmt.Fprintln(os.Stderr, "    with or without a subtitle. For the sync bot's reported-ASIN lane, which caps its own records; never")
+	fmt.Fprintln(os.Stderr, "    over a full export.")
 	fmt.Fprintln(os.Stderr, "  --refusals / --attachments (libex-select) and --skipped (libex, librivox import) write NDJSON worklists with")
 	fmt.Fprintln(os.Stderr, "    stable reason codes, atomically.")
 	fmt.Fprintln(os.Stderr, "  --enrich (libex only) fills absent facts on ASIN-matched existing records; it never creates.")
