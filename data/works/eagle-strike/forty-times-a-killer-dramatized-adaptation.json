@@ -3671,11 +3671,40 @@
           "added_at": "2026-07-17T09:27:30+00:00",
           "asin": [
             {
-              "asin": "B0CB6WSNS6",
+              "asin": "B005WWT30E",
               "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51gW5N9yENL._SL500_.jpg",
+          "id": "larry-mckeever-1993",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "larry-mckeever"
+          ],
+          "publisher": "Bantam/Spectra",
+          "release_date": "1993",
+          "runtime_min": 969,
+          "sources": [
+            {
+              "imported_at": "2026-07-17",
+              "ref": "B0CB6WSNS6",
+              "type": "audiosilo-books-import"
             },
             {
-              "asin": "B005WWT30E",
+              "imported_at": "2026-07-30",
+              "ref": "B005WWT30E",
+              "type": "libex-import"
+            }
+          ],
+          "work": "forward-the-foundation"
+        },
+        "william-hope-2023": {
+          "abridged": false,
+          "added_at": "2026-11-05",
+          "asin": [
+            {
+              "asin": "B0CB6WSNS6",
               "region": "us"
             },
             {
@@ -4260,39 +4289,27 @@
               "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/51gW5N9yENL._SL500_.jpg",
-          "id": "larry-mckeever-1993",
+          "cover_url": "https://m.media-amazon.com/images/I/91xqF7dMCiL.jpg",
+          "id": "william-hope-2023",
+          "isbn": [
+            "9780008516222"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
-            "larry-mckeever"
+            "william-hope"
           ],
-          "publisher": "Bantam/Spectra",
-          "release_date": "1993",
-          "runtime_min": 969,
+          "publisher": "HarperVoyager",
+          "release_date": "2023-10-12",
+          "runtime_min": 927,
           "sources": [
             {
-              "imported_at": "2026-07-17",
-              "ref": "B0CB6WSNS6",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-17",
-              "ref": "B0CB6WSNS6",
-              "type": "audible-lookup"
-            },
-            {
-              "imported_at": "2026-07-30",
+              "imported_at": "2026-11-05",
               "ref": "B0CB6WSNS6",
               "type": "libex-import"
             },
             {
-              "imported_at": "2026-07-30",
-              "ref": "B005WWT30E",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
+              "imported_at": "2026-11-05",
               "ref": "B0CB6V32CC",
               "type": "libex-import"
             }

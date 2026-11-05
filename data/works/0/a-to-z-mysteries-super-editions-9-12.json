@@ -2847,17 +2847,17 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "uncredited-2011": {
+        "david-pittu-2011": {
           "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
+          "added_at": "2026-11-05",
           "asin": [
-            {
-              "asin": "B004OFIB8A",
-              "region": "us"
-            },
             {
               "asin": "B004OFIALS",
               "region": "uk"
+            },
+            {
+              "asin": "B004OFIB8A",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -2913,29 +2913,27 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81LVd1Bc6cL.jpg",
-          "id": "uncredited-2011",
+          "id": "david-pittu-2011",
+          "isbn": [
+            "9780307915689"
+          ],
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
-            "uncredited"
+            "david-pittu"
           ],
           "publisher": "Listening Library",
-          "release_date": "2011",
+          "release_date": "2011-03-08",
           "runtime_min": 59,
           "sources": [
             {
-              "imported_at": "2026-07-25",
-              "ref": "B004OFIB8A",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B004OFIB8A",
+              "imported_at": "2026-11-05",
+              "ref": "B004OFIALS",
               "type": "libex-import"
             },
             {
-              "imported_at": "2026-10-09",
-              "ref": "B004OFIALS",
+              "imported_at": "2026-11-05",
+              "ref": "B004OFIB8A",
               "type": "libex-import"
             }
           ],

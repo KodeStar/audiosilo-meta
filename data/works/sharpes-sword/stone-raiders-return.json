@@ -9554,21 +9554,13 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "robin-field-1965": {
+        "alfred-molina-2016": {
           "abridged": false,
-          "added_at": "2026-07-17T09:27:30+00:00",
+          "added_at": "2026-11-05",
           "asin": [
             {
               "asin": "B01DCAF02C",
               "region": "us"
-            },
-            {
-              "asin": "B003S7XFBI",
-              "region": "us"
-            },
-            {
-              "asin": "B07YX995S6",
-              "region": "es"
             },
             {
               "asin": "B079Y9YG4G",
@@ -9670,6 +9662,56 @@
               "title": "Chapter 17"
             }
           ],
+          "cover_url": "https://m.media-amazon.com/images/I/81SrP3+OHtL.jpg",
+          "id": "alfred-molina-2016",
+          "isbn": [
+            "9781473524071"
+          ],
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alfred-molina"
+          ],
+          "publisher": "Vintage Digital",
+          "release_date": "2016-04-07",
+          "runtime_min": 535,
+          "sources": [
+            {
+              "imported_at": "2026-11-05",
+              "ref": "B01DCAF02C",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-05",
+              "ref": "B079Y9YG4G",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-05",
+              "ref": "B01DC73Q2Q",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-05",
+              "ref": "B01DC74HEC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "stoner"
+        },
+        "robin-field-1965": {
+          "abridged": false,
+          "added_at": "2026-07-17T09:27:30+00:00",
+          "asin": [
+            {
+              "asin": "B003S7XFBI",
+              "region": "us"
+            },
+            {
+              "asin": "B07YX995S6",
+              "region": "es"
+            }
+          ],
           "cover_url": "https://m.media-amazon.com/images/I/41InpggZwlL._SL500_.jpg",
           "id": "robin-field-1965",
           "language": "en",
@@ -9687,16 +9729,6 @@
               "type": "audiosilo-books-import"
             },
             {
-              "imported_at": "2026-07-17",
-              "ref": "B01DCAF02C",
-              "type": "audible-lookup"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B01DCAF02C",
-              "type": "libex-import"
-            },
-            {
               "imported_at": "2026-07-30",
               "ref": "B003S7XFBI",
               "type": "libex-import"
@@ -9704,21 +9736,6 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B07YX995S6",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B079Y9YG4G",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B01DC73Q2Q",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B01DC74HEC",
               "type": "libex-import"
             }
           ],
