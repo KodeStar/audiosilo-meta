@@ -30783,9 +30783,18 @@
     "decision": "assert",
     "from": "Tamora Carter: Goblin Queen [Dramatized Adaptation]",
     "op": "retitle-work",
-    "reason": "only the adaptation label is decoration: both rows title the book Tamora Carter: Goblin Queen, so the series name stays in the title",
+    "reason": "only the adaptation label is decoration: the row titles the book Tamora Carter: Goblin Queen, so its series name stays in the title",
     "target": "tamora-carter-goblin-queen-dramatized-adaptation",
     "to": "Tamora Carter: Goblin Queen"
+  },
+  {
+    "decision": "reject",
+    "field": "title",
+    "from": "Tamora Carter: Goblin Queen [Dramatized Adaptation]",
+    "op": "retitle-work",
+    "reason": "the strip would take the series name as well as the label: the book is titled Tamora Carter: Goblin Queen",
+    "target": "tamora-carter-goblin-queen-dramatized-adaptation",
+    "to": "Goblin Queen"
   },
   {
     "decision": "assert",
