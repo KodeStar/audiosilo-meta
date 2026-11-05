@@ -268,8 +268,8 @@ configured with the queue's address and token. What it adds, and nothing more:
 
 Its limits are its own and tighter than the feeds': at most **25 records per pull
 request**, new works and attached editions counted together, and at most **one
-pull request per 48 hours**, spent when the pull request opens, so one that is later closed or recycled still used its turn. It
-shares the bot's one open pull request, so it can never run beside a completion
+pull request per 48 hours**, spent when the pull request opens, so one that is
+later closed or recycled still used its turn. It shares the bot's one open pull request, so it can never run beside a completion
 tranche, and completion takes every cycle the lane is not due or has nothing to
 add. It spends at most 150 listing lookups a cycle, and it runs no `--enrich` pass.
 
@@ -284,11 +284,10 @@ to the queue:
 - **A report is never a record.** Each ASIN has to come back from libex as a real
   retailer listing, read one at a time, and only what that listing states is
   imported. An ASIN with no listing writes nothing.
-- **One slot, at a fixed rate.** However long the queue is, the lane adds at most
-  25 records (works plus attached editions) every two days, about 4,600 a year.
-  The worst case is a spammer
-  nominating real audiobooks at that pace, which is true facts about real books
-  arriving slowly in reviewable pull requests.
+- **One slot, at a fixed rate.** However long the queue is, the limits above hold
+  the lane to about 4,600 records a year. The worst case is a spammer nominating
+  real audiobooks at that pace, which is true facts about real books arriving
+  slowly in reviewable pull requests.
 - **The same gate.** A lane pull request is a `bot-sync` pull request: `data/` only,
   the required checks, and an `ai-verified` verdict on its exact head before it
   merges, with the ladder below when the verdict does not come.
@@ -297,8 +296,6 @@ to the queue:
   does not tell the lane from the feeds, so retracting the lane alone goes through
   its pull requests, each labelled `sync:intake` and listing the ASINs it was
   given.
-- **It stops alone.** Unsetting the queue's address or token turns the lane off and
-  leaves the rest of the bot unchanged.
 
 A flag on a lane pull request goes through the ladder below like any other, with
 one difference: its exclusion does not count toward the stop on exclusions in a

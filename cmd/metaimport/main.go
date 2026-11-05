@@ -26,13 +26,9 @@
 // `metaimport libex` create path.
 //
 // --reported (libex-select) also keeps a row stating NO series, under every
-// refusal that does not read one: language, marketplace, credits (an AI narrator
-// included). It is for the sync bot's reported-ASIN lane (GOVERNANCE.md, "The
-// reported-ASIN lane"), whose input is a few ASINs read one at a time and which
-// holds its own bound on records: over a full export it would select nearly every
-// series-less row, which is the mirror LICENSING.md rules out, so an operator
-// reducing a dump does not pass it. A row claiming a series is judged exactly as
-// it is without the flag, so it can no more found a series than before.
+// refusal that does not read one. It is for the sync bot's reported-ASIN lane
+// (GOVERNANCE.md) and never for a full export; internal/importer/libexselect.go
+// has the reasoning.
 //
 // --attach-editions (libex-select, and libex's create mode) turns on the attach
 // rule (internal/importer/attach.go): a row claiming a series position the

@@ -80,13 +80,20 @@ func attachExportRow(asin, title, region, language, author, narrator, position s
 // the result, the subset path and the worklist's decoded lines.
 func selectInto(t *testing.T, dataDir string, rows []string) (SelectResult, string, []RowSkip) {
 	t.Helper()
+	return selectIntoWith(t, dataDir, rows, SelectOptions{AttachEditions: true})
+}
+
+// selectIntoWith is selectInto under opts (DataDir and RefusalsPath are filled in).
+func selectIntoWith(t *testing.T, dataDir string, rows []string, opts SelectOptions) (SelectResult, string, []RowSkip) {
+	t.Helper()
 	dir := t.TempDir()
 	in := filepath.Join(dir, "export.ndjson")
 	if err := os.WriteFile(in, []byte(strings.Join(rows, "\n")+"\n"), 0o644); err != nil {
 		t.Fatal(err)
 	}
 	out, refusals := filepath.Join(dir, "subset.ndjson"), filepath.Join(dir, "refusals.ndjson")
-	res, err := SelectLibex(in, out, SelectOptions{DataDir: dataDir, RefusalsPath: refusals, AttachEditions: true})
+	opts.DataDir, opts.RefusalsPath = dataDir, refusals
+	res, err := SelectLibex(in, out, opts)
 	if err != nil {
 		t.Fatalf("SelectLibex: %v", err)
 	}

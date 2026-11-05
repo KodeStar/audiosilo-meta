@@ -267,7 +267,7 @@ func (x exclusions) hold(asin string) {
 //
 // Every kept completion carries a parseable series position (the completion
 // rules refuse the rest), so pos is always meaningful and the cap needs no
-// "unpositioned" tiebreak. A standalone has neither a series nor a position.
+// "unpositioned" tiebreak.
 type selectedRow struct {
 	raw        []byte
 	seriesSlug string
@@ -284,11 +284,12 @@ type selectedRow struct {
 	// completion: an attachment claims no slot, is never cut by the cap and
 	// counts in no per-series tally.
 	attach *Attachment
-	// standalone is set for a row kept under SelectOptions.Reported that states no
-	// series: seriesSlug is empty, and it is outside the batch re-check's verdict,
-	// the per-series cap and every per-series tally.
-	standalone bool
 }
+
+// standalone says the row was kept under SelectOptions.Reported stating no series,
+// the one way a kept row has no series slug. It is outside the batch re-check's
+// verdict, the per-series cap and every per-series tally, and has no position.
+func (r selectedRow) standalone() bool { return r.seriesSlug == "" }
 
 // selectState is the within-export memory the per-row rules keep: the ASINs
 // already seen, and the (series,
@@ -338,7 +339,7 @@ func selectLibexRows(r io.Reader, opts SelectOptions, refusals *refusalLog) (Sel
 
 	err := streamLibexRows(r, true, func(raw []byte, e rawBook) {
 		res.RowsRead++
-		row, asin, reason := selectLibexRow(e, idx, st, opts.AttachEditions, opts.Reported)
+		row, asin, reason := selectLibexRow(e, idx, st, opts)
 		switch {
 		case reason == reasonDuplicateASIN && st.keptASIN[asin]:
 			x.hold(asin)
@@ -501,7 +502,7 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditi
 		}
 		claimed := map[string]string{}
 		for i, r := range kept {
-			if !alive[i] || r.standalone {
+			if !alive[i] || r.standalone() {
 				continue
 			}
 			v := verdictOf(books[i])
@@ -591,10 +592,10 @@ func liveReaches(cat seriesCatalogue, claims []nameClaim, reaches []*groupReach,
 // in scope. The position claim comes last because it MUTATES state: only a row
 // that would otherwise be kept may reserve a slot.
 //
-// reported is SelectOptions.Reported: a row stating no series is then judged by
-// selectStandalone instead of the completion test. A claim whose name has no
-// addressable slug is still a claim, so that row takes the ordinary path.
-func selectLibexRow(e rawBook, idx seriesIndex, st *selectState, attachEditions, reported bool) (selectedRow, string, refusal) {
+// Under opts.Reported a row stating no series is judged by selectStandalone instead
+// of the completion test. A claim whose name has no addressable slug is still a
+// claim, so that row takes the ordinary path.
+func selectLibexRow(e rawBook, idx seriesIndex, st *selectState, opts SelectOptions) (selectedRow, string, refusal) {
 	asin := NormalizeASIN(e.str("asin"))
 	if asin == "" {
 		return selectedRow{}, refusedRowASIN(e.str("asin")), reasonNoASIN
@@ -613,7 +614,7 @@ func selectLibexRow(e rawBook, idx seriesIndex, st *selectState, attachEditions,
 	// A row naming no series the catalogue's chains could hold is out before its
 	// book is composed - the whole dump streams through here.
 	refs := libexSeries(e["series"])
-	if reported && len(refs) == 0 {
+	if opts.Reported && len(refs) == 0 {
 		return selectStandalone(e, idx, asin)
 	}
 	if !idx.namesACatalogueChain(refs) {
@@ -665,7 +666,7 @@ func selectLibexRow(e rawBook, idx seriesIndex, st *selectState, attachEditions,
 	// judged in confirmBatch, under the batch's credit decisions - and reserves
 	// no slot, since the slot is the incumbent's.
 	if occupant := idx.positions[slug][ref.seq]; occupant != "" {
-		if !attachEditions {
+		if !opts.AttachEditions {
 			return selectedRow{}, asin, reasonPositionTaken
 		}
 		ws := idx.p.attachCandidate(book, idx.names[slug], occupant, ref)
@@ -705,16 +706,14 @@ func refuseRowFacts(e rawBook) refusal {
 
 // selectStandalone is selectLibexRow's end for a row stating no series under
 // SelectOptions.Reported: the rules that read a series have nothing to read, the
-// ones that do not (refuseRowFacts) stand, and it claims no slot. It goes through
-// match as a completion does, so the book it keeps was read the same way; with no
-// claims there is nothing for that to resolve, and nothing the import could found.
+// ones that do not (refuseRowFacts) stand, and it claims no slot. With no claims
+// there is nothing to resolve, and nothing the import could found.
 func selectStandalone(e rawBook, idx seriesIndex, asin string) (selectedRow, string, refusal) {
 	if r := refuseRowFacts(e); r != (refusal{}) {
 		return selectedRow{}, asin, r
 	}
-	_, book := idx.match(idx.libexBook(e, asin))
-	title := Slugify(book.str("title_short"))
-	return selectedRow{workKey: standaloneWorkKey(title, book), book: book, title: title, asin: asin, standalone: true}, asin, refusal{}
+	book := idx.libexBook(e, asin)
+	return selectedRow{workKey: standaloneWorkKey(book), book: book, asin: asin}, asin, refusal{}
 }
 
 // standaloneWorkKey is a standalone's work identity as far as a selection pass can
@@ -723,12 +722,12 @@ func selectStandalone(e rawBook, idx seriesIndex, asin string) (selectedRow, str
 // per-region sibling rows of one book still count once. The leading NUL keeps it
 // off every completion's "<series slug>\x00<title>", since a series slug is never
 // empty.
-func standaloneWorkKey(title string, book sourceBook) string {
+func standaloneWorkKey(book sourceBook) string {
 	var first string
 	if len(book.authors) > 0 {
 		first = Slugify(book.authors[0])
 	}
-	return "\x00" + title + "\x00" + first
+	return "\x00" + Slugify(book.str("title_short")) + "\x00" + first
 }
 
 // seriesPositionValue reduces a matched series claim to the numeric value the
@@ -768,7 +767,7 @@ func applySeriesCap(rows []selectedRow, maxPerSeries int, x exclusions) ([]selec
 	bySeries := map[string][]*workEntry{}
 	byKey := map[string]*workEntry{}
 	for i, row := range rows {
-		if row.attach != nil || row.standalone {
+		if row.attach != nil || row.standalone() {
 			continue
 		}
 		w, ok := byKey[row.workKey]
@@ -827,14 +826,6 @@ func summarize(rows []selectedRow, cuts map[string]SeriesCount, idx seriesIndex,
 			res.Attachments = append(res.Attachments, *row.attach)
 			continue
 		}
-		if row.standalone {
-			res.StandaloneRows++
-			if !works[row.workKey] {
-				works[row.workKey] = true
-				res.StandaloneWorks++
-			}
-			continue
-		}
 		t := tallies[row.seriesSlug]
 		if t == nil {
 			t = &SeriesCount{Series: row.seriesSlug, Name: idx.names[row.seriesSlug]}
@@ -845,6 +836,12 @@ func summarize(rows []selectedRow, cuts map[string]SeriesCount, idx seriesIndex,
 			works[row.workKey] = true
 			t.Works++
 		}
+	}
+	// Standalones tallied under the empty slug. They are in no series, so their
+	// figures leave the per-series ones here (the cap never cuts one).
+	if s := tallies[""]; s != nil {
+		res.StandaloneWorks, res.StandaloneRows = s.Works, s.Rows
+		delete(tallies, "")
 	}
 	// The cap cuts a series down to maxPerSeries (>= 1) works, but the cap and
 	// the batch re-check run to a fixpoint, and a later re-check can drop the

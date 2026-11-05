@@ -1,9 +1,7 @@
 package importer
 
 import (
-	"encoding/json"
 	"os"
-	"path/filepath"
 	"slices"
 	"strings"
 	"testing"
@@ -29,40 +27,23 @@ type selectRun struct {
 	refusals []RowSkip
 }
 
-// selectWith runs the selector over rows under opts (DataDir and the paths are
-// filled in here) and reads every output back.
+// selectWith runs the selector over rows under opts and reads the subset back.
 func selectWith(t *testing.T, dataDir string, rows []string, opts SelectOptions) selectRun {
 	t.Helper()
-	dir := t.TempDir()
-	in, out := filepath.Join(dir, "export.ndjson"), filepath.Join(dir, "subset.ndjson")
-	if err := os.WriteFile(in, []byte(strings.Join(rows, "\n")+"\n"), 0o644); err != nil {
-		t.Fatal(err)
-	}
-	opts.DataDir, opts.RefusalsPath = dataDir, filepath.Join(dir, "refusals.ndjson")
-	res, err := SelectLibex(in, out, opts)
-	if err != nil {
-		t.Fatalf("SelectLibex: %v", err)
-	}
-	run := selectRun{res: res}
+	res, out, refusals := selectIntoWith(t, dataDir, rows, opts)
 	raw, err := os.ReadFile(out)
 	if err != nil {
 		t.Fatal(err)
 	}
-	if body := strings.TrimSuffix(string(raw), "\n"); body != "" {
-		run.subset = strings.Split(body, "\n")
-	}
-	raw, err = os.ReadFile(opts.RefusalsPath)
-	if err != nil {
-		t.Fatal(err)
-	}
-	for line := range strings.Lines(string(raw)) {
-		var skip RowSkip
-		if err := json.Unmarshal([]byte(line), &skip); err != nil {
-			t.Fatalf("refusal line %q: %v", line, err)
-		}
-		run.refusals = append(run.refusals, skip)
-	}
-	return run
+	return selectRun{res: res, subset: worklistLines(t, string(raw)), refusals: refusals}
+}
+
+// importAsBot is the bot's two steps: select --reported --attach-editions, then
+// import what was kept with --existing-series-only --attach-editions.
+func importAsBot(t *testing.T, dataDir string, rows []string) (selectRun, Summary) {
+	t.Helper()
+	run := selectWith(t, dataDir, rows, SelectOptions{Reported: true, AttachEditions: true, ImportDate: testImportDate})
+	return run, runLibexWith(t, dataDir, Options{ExistingSeriesOnly: true, AttachEditions: true}, run.subset...)
 }
 
 // TestReportedSelectTable is each row's fate alone against the catalogue, under
@@ -104,6 +85,7 @@ func TestReportedSelectTable(t *testing.T) {
 		{name: "held series, no position", row: selectRow("B0NOPOS001", "Volume Two", "us", "english", seriesName, ""), want: RefusalPositionUnparseable},
 		{name: "held series, filled position", row: selectRow("B0FILLED01", "Something Else", "us", "english", seriesName, "1"), want: RefusalPositionClaimed},
 	}
+	dataDir := seedSelectCatalogue(t) // a selection never writes to it
 	for _, tc := range cases {
 		for _, attach := range []bool{false, true} {
 			name := tc.name
@@ -111,8 +93,7 @@ func TestReportedSelectTable(t *testing.T) {
 				name += " (attach-editions)"
 			}
 			t.Run(name, func(t *testing.T) {
-				run := selectWith(t, seedSelectCatalogue(t), []string{tc.row}, SelectOptions{Reported: true, AttachEditions: attach})
-				assertPartition(t, run.res)
+				run := selectWith(t, dataDir, []string{tc.row}, SelectOptions{Reported: true, AttachEditions: attach})
 				if tc.want != "" {
 					if len(run.subset) != 0 {
 						t.Errorf("subset = %v, want the row refused", run.subset)
@@ -169,11 +150,12 @@ func TestReportedLeavesClaimingRowsAlone(t *testing.T) {
 		selectRow("B0ATTACH01", "Volume One", "gb", "english", seriesName, "1"),
 		selectRow("B0NOPOS001", "Volume Nine", "us", "english", seriesName, ""),
 	)
+	dataDir := seedSelectCatalogue(t) // a selection never writes to it
 	for _, opts := range []SelectOptions{{}, {MaxPerSeries: 2}, {AttachEditions: true}, {MaxPerSeries: 2, AttachEditions: true}} {
 		reported := opts
 		reported.Reported = true
-		off := selectWith(t, seedSelectCatalogue(t), rows, opts)
-		on := selectWith(t, seedSelectCatalogue(t), rows, reported)
+		off := selectWith(t, dataDir, rows, opts)
+		on := selectWith(t, dataDir, rows, reported)
 		if !slices.Equal(off.subset, on.subset) {
 			t.Errorf("%+v: subset\n off %v\n on  %v", opts, off.subset, on.subset)
 		}
@@ -204,7 +186,6 @@ func TestStandaloneThroughBatchCapAndSummary(t *testing.T) {
 	}
 	for _, attach := range []bool{false, true} {
 		run := selectWith(t, seedSelectCatalogue(t), rows, SelectOptions{Reported: true, MaxPerSeries: 1, AttachEditions: attach})
-		assertPartition(t, run.res)
 		res := run.res
 		// The cap cuts Volume Three and no standalone.
 		if len(run.subset) != 5 || len(run.refusals) != 1 || run.refusals[0].ASIN != "B0SELECT03" || run.refusals[0].Reason != RefusalOverSeriesCap {
@@ -258,15 +239,9 @@ func TestReportedSelectionImportsCleanly(t *testing.T) {
 		selectRow("B0SELECT02", "Volume Two", "us", "english", seriesName, "2"),
 		selectRow("B0UNHELD01", "Unrelated Book", "us", "english", "Some Other Series", "1"),
 	}
-	run := selectWith(t, dataDir, rows, SelectOptions{Reported: true, AttachEditions: true, ImportDate: testImportDate})
+	run, sum := importAsBot(t, dataDir, rows)
 	if len(run.subset) != 2 {
 		t.Fatalf("subset = %v", run.subset)
-	}
-	sum, err := RunLibex(writeBooks(t, strings.Join(run.subset, "\n")+"\n"), Options{
-		DataDir: dataDir, ImportDate: testImportDate, ExistingSeriesOnly: true, AttachEditions: true,
-	})
-	if err != nil {
-		t.Fatalf("RunLibex: %v", err)
 	}
 	if sum.NewWorks != 2 || sum.NewSeries != 0 || sum.Attached != 0 || len(sum.Skips) != 0 {
 		t.Errorf("summary = %+v, want 2 new works and no series", sum)
@@ -275,12 +250,9 @@ func TestReportedSelectionImportsCleanly(t *testing.T) {
 		t.Errorf("series changed from %v to %v", before, got)
 	}
 	assertTreeValid(t, dataDir)
-	res := check.Load(dataDir)
-	var lone, placed bool
-	for _, w := range res.Catalog.Works {
-		lone = lone || w.ID == "a-lone-book"
-	}
-	for _, s := range res.Catalog.Series {
+	lone := slices.Contains(listWorks(t, dataDir), "a-lone-book")
+	var placed bool
+	for _, s := range check.Load(dataDir).Catalog.Series {
 		for _, m := range s.Works {
 			if m.Work == "a-lone-book" {
 				t.Errorf("the standalone is in series %s", s.ID)
@@ -314,15 +286,9 @@ func TestReportedStandaloneMeetsAHeldWork(t *testing.T) {
 	importOne := func(t *testing.T, row string) Summary {
 		t.Helper()
 		dataDir := seedHeldBook(t)
-		run := selectWith(t, dataDir, []string{row}, SelectOptions{Reported: true, AttachEditions: true, ImportDate: testImportDate})
+		run, sum := importAsBot(t, dataDir, []string{row})
 		if len(run.subset) != 1 {
 			t.Fatalf("subset = %v, want the row kept", run.subset)
-		}
-		sum, err := RunLibex(writeBooks(t, run.subset[0]+"\n"), Options{
-			DataDir: dataDir, ImportDate: testImportDate, ExistingSeriesOnly: true, AttachEditions: true,
-		})
-		if err != nil {
-			t.Fatalf("RunLibex: %v", err)
 		}
 		if got := listWorks(t, dataDir); !slices.Equal(got, []string{"the-held-book", "volume-one"}) {
 			t.Errorf("works = %v, want no new work", got)
@@ -354,13 +320,7 @@ func TestReportedStandaloneMeetsAHeldWork(t *testing.T) {
 func TestReportedStandaloneWithAnUnreadSubtitleIsANewWork(t *testing.T) {
 	dataDir := seedHeldBook(t)
 	rows := []string{standaloneRow("B0SUBTIT01", "The Held Book: The Cartographer's Tale", "us", "english", "Ada Mapmaker", "Bea Reader")}
-	run := selectWith(t, dataDir, rows, SelectOptions{Reported: true, AttachEditions: true, ImportDate: testImportDate})
-	sum, err := RunLibex(writeBooks(t, strings.Join(run.subset, "\n")+"\n"), Options{
-		DataDir: dataDir, ImportDate: testImportDate, ExistingSeriesOnly: true, AttachEditions: true,
-	})
-	if err != nil {
-		t.Fatalf("RunLibex: %v", err)
-	}
+	_, sum := importAsBot(t, dataDir, rows)
 	if sum.NewWorks != 1 || sum.NewSeries != 0 {
 		t.Errorf("summary = %+v, want one new work and no series", sum)
 	}

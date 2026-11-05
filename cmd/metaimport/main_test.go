@@ -676,10 +676,9 @@ func TestLibexSelectReportedFlag(t *testing.T) {
 		name  string
 		flags []string
 		want  string
-		line  bool
 	}{
-		{"without the flag", nil, "", false},
-		{"with the flag", []string{"--reported"}, row + "\n", true},
+		{"without the flag", nil, ""},
+		{"with the flag", []string{"--reported"}, row + "\n"},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			out := filepath.Join(t.TempDir(), "subset.ndjson")
@@ -697,7 +696,7 @@ func TestLibexSelectReportedFlag(t *testing.T) {
 			if string(got) != tc.want {
 				t.Errorf("subset = %q, want %q", got, tc.want)
 			}
-			if strings.Contains(stdout, "of which standalone: 1 work in no series, 1 row (--reported)") != tc.line {
+			if strings.Contains(stdout, "of which standalone: 1 work in no series, 1 row (--reported)") != (tc.want != "") {
 				t.Errorf("report:\n%s", stdout)
 			}
 		})
