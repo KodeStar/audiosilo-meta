@@ -315,9 +315,18 @@ to the queue:
   given.
 
 A flag on a lane pull request goes through the ladder below like any other, with
-one difference: its exclusion does not count toward the stop on exclusions in a
-row. It pauses the lane for 7 days instead, so a poisoned queue costs the lane its
-turns and cannot stall series completion.
+three differences, so a poisoned queue costs the lane its turns and cannot stall
+series completion:
+
+- Its exclusion does not count toward the stop on exclusions in a row. It pauses
+  the lane for 7 days instead.
+- A lane pull request closed for want of a verdict does not count toward the
+  throttle on such closures, and it does not pause the lane.
+- With no resolver configured, a lane pull request is excluded rather than parked,
+  so public input cannot fill the parked slots. A token without the Actions
+  permission still parks it, as it would any pull request.
+
+The cycle after a lane pull request always belongs to completion.
 
 **The merge gate.** The bot merges its own pull request only when the required
 checks (`check`, `compose`) are green **and** the `ai-verify` workflow has
