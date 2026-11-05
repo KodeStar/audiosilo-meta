@@ -62,9 +62,9 @@ import (
 // internal/audit/reviewed.json is how a maintainer records "two people, not one"
 // for an honorific pair (Dr. Alex George the TV doctor, Alex George the
 // novelist), and a pair it names is never folded, whatever the census says
-// (creditCensus.keptApart, planner.landingsKeptApart, fed Options.Distinct) -
-// judged by the records the two spellings land on through the initials merge as
-// well as by the slugs they spell, and asked by the credential fold too. The
+// (creditCensus.keptApart, planner.peopleKeptApart, fed Options.Distinct) -
+// judged by every slug the two spellings can land on through the initials merge
+// as well as the slugs they spell, and asked by the credential fold too. The
 // LibriVox rule 1 paths ask the same list, so a review also stops a bare credit
 // being resolved onto its titled twin (rule 1c), and so does the series
 // same-person rule (PeopleApart), which strips the same titles to compare.

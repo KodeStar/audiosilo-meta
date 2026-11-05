@@ -10546,10 +10546,6 @@
       "authors": [
         "dan-willis"
       ],
-      "genres": [
-        "childrens",
-        "comedy-humor"
-      ],
       "id": "dead-letter",
       "language": "en",
       "license": "CC0-1.0",
@@ -10557,38 +10553,14 @@
         "alex-knox-2022": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B002V1NGRA",
-              "region": "us"
-            },
-            {
-              "asin": "B079R72BP3",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1403878,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1266694,
-              "start_ms": 1403878,
-              "title": "Chapter 2"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Tlpl0S-EL.jpg",
           "id": "alex-knox-2022",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
             "alex-knox"
           ],
-          "publisher": "Recorded Books",
           "release_date": "2022",
-          "runtime_min": 44,
+          "runtime_min": 195,
           "sources": [
             {
               "imported_at": "2026-07-25",
@@ -10596,14 +10568,9 @@
               "type": "audiosilo-books-import"
             },
             {
-              "imported_at": "2026-07-30",
-              "ref": "B002V1NGRA",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B079R72BP3",
-              "type": "libex-import"
+              "imported_at": "2026-11-04",
+              "ref": "https://danwillisauthor.com/product/dead-letter/",
+              "type": "user"
             }
           ],
           "work": "dead-letter"
@@ -10614,6 +10581,11 @@
           "imported_at": "2026-07-25",
           "ref": "B002V1NGRA",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-11-04",
+          "ref": "https://danwillisauthor.com/product/dead-letter/",
+          "type": "user"
         }
       ],
       "title": "Dead Letter"

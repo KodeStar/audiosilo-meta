@@ -167,15 +167,16 @@ func triples(t *testing.T, db *sql.DB, query string) [][3]string {
 func TestBuildMeta(t *testing.T) {
 	db := buildFixture(t)
 	want := map[string]string{
-		"schema_version":     "9",
-		"built_at":           "2026-07-11T00:00:00Z",
-		"count_works":        "2",
-		"count_recordings":   "2",
-		"count_people":       "5",
-		"count_series":       "1",
-		"count_characters":   "2",
-		"count_recaps":       "2",
-		"count_descriptions": "1",
+		"schema_version":        "10",
+		"built_at":              "2026-07-11T00:00:00Z",
+		"count_works":           "2",
+		"count_recordings":      "2",
+		"count_people":          "5",
+		"count_series":          "1",
+		"count_characters":      "2",
+		"count_recaps":          "2",
+		"count_descriptions":    "1",
+		"count_position_scales": "0",
 	}
 	for k, w := range want {
 		var got string
@@ -678,5 +679,29 @@ func TestBuildWithoutRedirects(t *testing.T) {
 	}
 	if n != 0 {
 		t.Errorf("redirect rows = %d, want 0", n)
+	}
+}
+
+// TestBuildPositionScales covers the schema_version 10 table: one row per work
+// stating a scale, in work id order whatever order the catalogue held them, and
+// nothing for a work that states none.
+func TestBuildPositionScales(t *testing.T) {
+	cat := fixtureCatalog()
+	cat.PositionScales = []*model.PositionScale{
+		{Work: "zzz-book", Length: 5, Unit: "act"},
+		{Work: "aaa-book", Length: 37, Unit: "chapter", Partial: true},
+	}
+	db := buildDB(t, cat)
+	got := triples(t, db, `SELECT work_id, length || '/' || unit, partial FROM position_scales`)
+	want := [][3]string{{"aaa-book", "37/chapter", "1"}, {"zzz-book", "5/act", "0"}}
+	if !slices.Equal(got, want) {
+		t.Errorf("position_scales rows = %v, want %v", got, want)
+	}
+	var count string
+	if err := db.QueryRow(`SELECT value FROM meta WHERE key='count_position_scales'`).Scan(&count); err != nil {
+		t.Fatal(err)
+	}
+	if count != "2" {
+		t.Errorf("count_position_scales = %q, want 2", count)
 	}
 }

@@ -7,6 +7,7 @@ import (
 
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
+	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -24,11 +25,15 @@ type index struct {
 	personByID map[string]*model.Person
 	seriesByID map[string]*model.Series
 
+	// distinct is the reviewed "not one record" decisions (ReviewedDistinct) resolved
+	// through the catalogue's redirects, for samePersonSpelling.
+	distinct check.DistinctPairs
+
 	// memberships maps a work id to its series memberships, sorted by series id.
 	memberships map[string][]membership
 	// sidecars maps a work slug to the works-community members its entry holds
-	// ("characters", "recaps", "description"), built in this one pass. Before it
-	// existed, naming a sidecar's members walked every catalogue slice per sidecar -
+	// ("characters", "recaps", "description", "position_scale"), built in this one
+	// pass. Before it existed, naming a sidecar's members walked every catalogue slice per sidecar -
 	// the run's one genuine quadratic.
 	sidecars map[string][]string
 
@@ -84,6 +89,7 @@ type membership struct {
 func newIndex(cat *model.Catalog) *index {
 	ix := &index{
 		cat:                   cat,
+		distinct:              check.ResolveDistinct(ReviewedDistinct(), cat.Redirects),
 		workByID:              make(map[string]*model.Work, len(cat.Works)),
 		personByID:            make(map[string]*model.Person, len(cat.People)),
 		seriesByID:            make(map[string]*model.Series, len(cat.Series)),
@@ -165,6 +171,9 @@ func newIndex(cat *model.Catalog) *index {
 	}
 	for _, d := range cat.Descriptions {
 		ix.sidecars[d.Work] = append(ix.sidecars[d.Work], string(model.KindDescription))
+	}
+	for _, ps := range cat.PositionScales {
+		ix.sidecars[ps.Work] = append(ix.sidecars[ps.Work], string(model.KindPositionScale))
 	}
 	// Which series each author has works in, from the memberships just built.
 	byAuthor := map[string]map[string]bool{}

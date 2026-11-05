@@ -29,7 +29,9 @@ Fandom wikis or LibraryThing Common Knowledge (both CC BY-SA 3.0 at source; see
 Share-alike is desirable there: it keeps derivative works open. This layer lives
 in the `data/works-community/` pack family, where each entry holds one work's
 `characters`, `recaps` and `description` members - so the CC0 core is never contaminated by
-share-alike obligations. The
+share-alike obligations. An entry may also state a `position_scale`, the ruler those
+positions are numbered on: community data about the sidecars with no `license` field
+of its own, in this layer by where it sits, and unable to make an entry alone. The
 boundary is **enforced structurally by the schema**, not by convention: a core
 record (work/recording/person/series) can only carry `CC0-1.0`, and a sidecar can
 only carry `CC-BY-SA-4.0` - the `license` enum differs between them, and
@@ -299,7 +301,9 @@ The rule, applied at **record** granularity (not per field):
    told. Correcting one is what the "Correct data" form is for.
 4. The safety guards hold in every tier: a runtime more than 10% apart, or a
    genuinely different release date, means the row describes a different
-   production and is not applied at all. The release-date guard has one
+   production and is not applied at all. So does a row whose ASIN sits on a work it
+   shares no author surname and no title word with: that ASIN names another book,
+   so nothing of the row is written and it is reported. The release-date guard has one
    deliberate exception - the **ASIN merge**, where a user's regional re-release
    folds its ASIN into an existing recording. That match is inferred (same work,
    same narrators) and a regional edition legitimately carries its own date, so

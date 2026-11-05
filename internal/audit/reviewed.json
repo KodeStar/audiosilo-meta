@@ -2159,6 +2159,15 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "the-iliad-the-odyssey"
+    ],
+    "reason": "the two series list the same two works at the same positions, The Iliad at 1 and The Odyssey at 2; the second spelling came from one library row and libex names the first",
+    "target": "audible-iliad-odyssey"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "adventuras-de-tom-sawyer-y-huckleberry-finn-abridged"
     ],
     "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",

@@ -306,6 +306,9 @@ type WorkDetail struct {
 	// from Description above, which is the CC0 work record's own field - see
 	// descriptionOut.
 	CommunityDescription *DescriptionOut `json:"community_description,omitempty"`
+	// PositionScale is omitted when the work states none, or the artifact predates
+	// positionScaleSchemaVersion.
+	PositionScale *model.PositionScale `json:"position_scale,omitempty"`
 }
 
 // WorkDetail returns the full work document, or (nil, nil) when absent.
@@ -357,6 +360,12 @@ func (s *DB) WorkDetail(id string) (*WorkDetail, error) {
 	}
 	if d.RecapSummary, err = s.recapSummaryOf(id); err != nil {
 		return nil, err
+	}
+	// A scale is a statement about these members, and the schema refuses one without them.
+	if len(d.Characters)+len(d.Recaps) > 0 {
+		if d.PositionScale, err = s.positionScaleOf(id); err != nil {
+			return nil, err
+		}
 	}
 	if d.CommunityDescription, err = s.communityDescriptionOf(id); err != nil {
 		return nil, err
@@ -481,6 +490,12 @@ const librivoxSchemaVersion = 8
 // without them fails to open (loadStats, the redirects precedent).
 const librivoxRecordingSchemaVersion = 9
 
+// positionScaleSchemaVersion is the artifact schema_version that first carried the
+// position_scales table (the ruler a work's sidecars are numbered on). A newer
+// binary serving an older release omits the field, which every consumer must read
+// as "numbered on no stated ruler".
+const positionScaleSchemaVersion = 10
+
 const (
 	// anyRedirectSQL asks whether the tombstone table holds anything, once per
 	// snapshot (see DB.hasRedirects).
@@ -489,6 +504,10 @@ const (
 	// per snapshot for the same two jobs: settle DB.hasDescriptions, and
 	// prove the table a version 6 artifact claims actually exists.
 	anyDescriptionSQL = `SELECT EXISTS(SELECT 1 FROM work_descriptions)`
+	// anyPositionScaleSQL settles DB.hasPositionScales and proves a version 10 claim.
+	anyPositionScaleSQL = `SELECT EXISTS(SELECT 1 FROM position_scales)`
+	// positionScaleOfSQL reads ONE work's scale off the table's primary key.
+	positionScaleOfSQL = `SELECT length, unit, partial FROM position_scales WHERE work_id=?`
 	// descriptionOfSQL reads ONE work's description off the table's primary key.
 	descriptionOfSQL = `SELECT text, license FROM work_descriptions WHERE work_id=?`
 	// redirectTargetSQL resolves one retired slug in one namespace. It reads the
@@ -759,6 +778,26 @@ func (s *DB) communityDescriptionOf(workID string) (*DescriptionOut, error) {
 		return nil, err
 	}
 	return &DescriptionOut{Text: text, License: license}, nil
+}
+
+// positionScaleOf returns the work's stated scale, or nil when it has none. Gated
+// by the load-time memo (DB.hasPositionScales), so an older artifact and an empty
+// table cost no query.
+func (s *DB) positionScaleOf(workID string) (*model.PositionScale, error) {
+	if !s.hasPositionScales {
+		return nil, nil
+	}
+	var out model.PositionScale
+	var partial int
+	err := s.db.QueryRow(positionScaleOfSQL, workID).Scan(&out.Length, &out.Unit, &partial)
+	if err == sql.ErrNoRows {
+		return nil, nil
+	}
+	if err != nil {
+		return nil, err
+	}
+	out.Partial = partial != 0
+	return &out, nil
 }
 
 // descriptionsForWorks fetches the community description of every given work in
