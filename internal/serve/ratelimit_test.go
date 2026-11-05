@@ -273,37 +273,52 @@ func TestNoRateLimitWhenOff(t *testing.T) {
 	}
 }
 
-// TestDefaultsHoldAnAudioSiloBulkMatch pins the defaults to the client they are
-// sized for (see DefaultRateLimit): a shipped AudioSilo server that opens with a
-// console Series page's few hundred lookups, then runs a bulk match at its fast
-// case (2 workers x 4 requests per 90 ms, about 89 a second) for ten minutes,
-// is never refused. A client at twice that rate is, so the limit still binds.
+// TestDefaultsHoldAnAudioSiloBulkMatch pins the defaults to the clients they are
+// sized for (see DefaultRateLimit): an AudioSilo server that opens with a console
+// Series page's few hundred lookups, then runs a bulk match for ten minutes, is
+// never refused, at a shipped server's fast case (2 workers x 4 requests per 90 ms,
+// about 89 a second) or at the pace a server with the expand path holds a run to
+// (about 60 a second, whatever it falls back to). A client at twice the faster of
+// them is, so the limit still binds.
 //
 // The numbers are COPIES of audiosilo-server's, which this repository cannot
 // import, so a change there is not caught here - re-derive them when it moves:
-// workers is internal/matchrun/runner.go's `workers` (2); perBook is one
-// works/match, its `bulkCandidates` (2) work reads and their series facts, the
-// reads sharing internal/meta/service.go's `maxConcurrentWorkFetches` (4)
-// bound; the Series page's lookups are bounded by its `maxConcurrentLookups` (4). CROSS-REPO.md records the
-// coupling from the server's side.
+// workers is a shipped server's internal/matchrun/runner.go `workers` (2); perBook
+// is one works/match, its `bulkCandidates` (2) work reads and their series facts,
+// the reads sharing internal/meta/service.go's `maxConcurrentWorkFetches` (4)
+// bound; the pacer is that repository's run pacer since works/match?expand; the
+// Series page's lookups are bounded by its `maxConcurrentLookups` (4). CROSS-REPO.md
+// records the coupling from the server's side.
 func TestDefaultsHoldAnAudioSiloBulkMatch(t *testing.T) {
-	clock := &fakeClock{t: time.Date(2026, 10, 27, 12, 0, 0, 0, time.UTC)}
-	l := newRateLimiter(DefaultRateLimit, DefaultRateBurst, nil, clock.now)
-	server := netip.MustParseAddr("203.0.113.7")
-	for i := range 300 {
-		if ok, _ := l.allow(server); !ok {
-			t.Fatalf("Series page lookup %d refused", i+1)
-		}
-	}
-	const perBook, roundTrips, workers = 4, 3, 2
+	const perBook, roundTrips, workers, pacedPerSecond = 4, 3, 2, 60
 	step := 30 * time.Millisecond * roundTrips / (perBook * workers) // one request every ~11 ms
-	for i := range int(10 * time.Minute / step) {
-		clock.t = clock.t.Add(step)
-		if ok, _ := l.allow(server); !ok {
-			t.Fatalf("bulk match request %d (at %v) refused", i+1, time.Duration(i)*step)
-		}
+	for _, client := range []struct {
+		name string
+		step time.Duration
+	}{
+		{"a shipped server at its fast case", step},
+		{"a paced server", time.Second / pacedPerSecond},
+	} {
+		t.Run(client.name, func(t *testing.T) {
+			clock := &fakeClock{t: time.Date(2026, 10, 27, 12, 0, 0, 0, time.UTC)}
+			l := newRateLimiter(DefaultRateLimit, DefaultRateBurst, nil, clock.now)
+			server := netip.MustParseAddr("203.0.113.7")
+			for i := range 300 {
+				if ok, _ := l.allow(server); !ok {
+					t.Fatalf("Series page lookup %d refused", i+1)
+				}
+			}
+			for i := range int(10 * time.Minute / client.step) {
+				clock.t = clock.t.Add(client.step)
+				if ok, _ := l.allow(server); !ok {
+					t.Fatalf("bulk match request %d (at %v) refused", i+1, time.Duration(i)*client.step)
+				}
+			}
+		})
 	}
 
+	clock := &fakeClock{t: time.Date(2026, 10, 27, 12, 0, 0, 0, time.UTC)}
+	l := newRateLimiter(DefaultRateLimit, DefaultRateBurst, nil, clock.now)
 	scraper := netip.MustParseAddr("198.51.100.9")
 	refused := false
 	for range int(time.Minute / (step / 2)) {

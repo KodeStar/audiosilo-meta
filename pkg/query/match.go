@@ -102,6 +102,9 @@ const PublicMatchBudget = 2 * time.Second
 // errMatchBusy is a match that could not start or finish inside its budget.
 var errMatchBusy = errors.New("match: over its time budget")
 
+// errExpansionGone is an expansion of a work the artifact doesn't hold.
+var errExpansionGone = errors.New("match: expanded work not found")
+
 // matchRequest is one works/match request, parsed and bounded.
 type matchRequest struct {
 	text     string
@@ -117,6 +120,8 @@ type matchRequest struct {
 	// narrators are the narrator guesses, each split like an author credit.
 	language  string
 	narrators []string
+	// expandWork asks for the best result's work and series facts (matchexpand.go).
+	expandWork bool
 }
 
 // parseMatchRequest reads the query parameters. Every text value is trimmed and
@@ -149,8 +154,9 @@ func parseMatchRequest(q url.Values) (matchRequest, bool) {
 		limit:   clampLimit(q.Get("limit"), matchLimitDefault, matchLimitMax),
 		// Neither is a fact a match can stand on alone, so neither counts
 		// toward ok below: they only weigh the candidates the others found.
-		language:  matchLanguage(text(q.Get("language"))),
-		narrators: list(q["narrator"], matchHypothesesMax),
+		language:   matchLanguage(text(q.Get("language"))),
+		narrators:  list(q["narrator"], matchHypothesesMax),
+		expandWork: wantsWorkExpansion(q["expand"]),
 	}
 	if len(r.asin) > maxMatchIdentifier {
 		r.asin = ""
@@ -182,6 +188,11 @@ type matchResult struct {
 	// omitted when none applies.
 	RecordingID string       `json:"recording_id,omitempty"`
 	Reasons     matchReasons `json:"reasons"`
+	// Work and SeriesFacts are expand=work's, on the best result alone and only
+	// when it could be read in budget (matchexpand.go). SeriesFacts is keyed by
+	// series id.
+	Work        *WorkDetail            `json:"work,omitempty"`
+	SeriesFacts map[string]seriesFacts `json:"series_facts,omitempty"`
 }
 
 // matchReasons says which facts agreed. Every field is omitted when the request
@@ -235,6 +246,9 @@ func (s *handler) handleMatch(w http.ResponseWriter, r *http.Request, snap *DB) 
 	case err != nil:
 		s.fail(w, r, err)
 	default:
+		if req.expandWork {
+			s.expandBest(ctx, snap, results)
+		}
 		httpx.WriteJSON(w, http.StatusOK, map[string]any{"results": results})
 	}
 }
