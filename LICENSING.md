@@ -301,7 +301,9 @@ The rule, applied at **record** granularity (not per field):
    told. Correcting one is what the "Correct data" form is for.
 4. The safety guards hold in every tier: a runtime more than 10% apart, or a
    genuinely different release date, means the row describes a different
-   production and is not applied at all. The release-date guard has one
+   production and is not applied at all. So does a row whose ASIN sits on a work it
+   shares no author surname and no title word with: that ASIN names another book,
+   so nothing of the row is written and it is reported. The release-date guard has one
    deliberate exception - the **ASIN merge**, where a user's regional re-release
    folds its ASIN into an existing recording. That match is inferred (same work,
    same narrators) and a regional edition legitimately carries its own date, so

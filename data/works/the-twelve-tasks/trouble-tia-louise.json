@@ -8078,11 +8078,6 @@
       "authors": [
         "gregg-hurwitz"
       ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "westerns"
-      ],
       "id": "troubleshooter",
       "language": "en",
       "license": "CC0-1.0",
@@ -8090,69 +8085,6 @@
         "erik-steele-2005": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B00AMNDLKQ",
-              "region": "us"
-            },
-            {
-              "asin": "B00AMN9NSU",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2148914,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2142366,
-              "start_ms": 2148914,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2153186,
-              "start_ms": 4291280,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2456160,
-              "start_ms": 6444466,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2637369,
-              "start_ms": 8900626,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 2413854,
-              "start_ms": 11537995,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 2345494,
-              "start_ms": 13951849,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 2629242,
-              "start_ms": 16297343,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 2449287,
-              "start_ms": 18926585,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 3759125,
-              "start_ms": 21375872,
-              "title": "Chapter 10"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71t06oSaNSL.jpg",
           "id": "erik-steele-2005",
           "language": "en",
           "license": "CC0-1.0",
@@ -8161,7 +8093,7 @@
           ],
           "publisher": "Blackstone Publishing",
           "release_date": "2005",
-          "runtime_min": 418,
+          "runtime_min": 635,
           "sources": [
             {
               "imported_at": "2026-07-25",
@@ -8169,14 +8101,9 @@
               "type": "audiosilo-books-import"
             },
             {
-              "imported_at": "2026-07-30",
-              "ref": "B00AMNDLKQ",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B00AMN9NSU",
-              "type": "libex-import"
+              "imported_at": "2026-11-04",
+              "ref": "https://www.audiofilemagazine.com/reviews/read/24766/troubleshooter-by-gregg-hurwitz",
+              "type": "user"
             }
           ],
           "work": "troubleshooter"
@@ -8187,6 +8114,11 @@
           "imported_at": "2026-07-25",
           "ref": "B00AMNDLKQ",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-11-04",
+          "ref": "https://github.com/KodeStar/audiosilo-meta/issues/256",
+          "type": "user"
         }
       ],
       "title": "Troubleshooter"
