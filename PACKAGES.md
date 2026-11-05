@@ -1562,7 +1562,7 @@ three title QUALIFIERS through `titlerule.StripTitleQualifiers`, so a qualified 
 ("The Search: International Edition", "The Search, Read by Dee Reader", "Magic Bites
 (Dramatized Adaptation)") attaches to the catalogued work, and a dramatized row founds
 no work titled with its label (a dramatization of a book is a recording of that book;
-a split-release part keeps the label, for internal/remediate, and so does a row with no GraphicAudio imprint and no full-cast credit, whose label is its only statement: `rowStatesDramatization`). `internal/audit` holds every retitle of a labelled work advisory (`adaptationLabelRetitlesHeld`, which the wave retitling them flips) and keeps a label no recording backs (`adaptationLabelHold`); a title that is only a qualifier keeps itself, and a work
+a split-release part keeps the label, for internal/remediate, and so does a row with no GraphicAudio imprint and no full-cast credit, whose label is its only statement: `rowStatesDramatization`). `internal/audit` holds advisory every retitle taking a statement of a dramatization off a title, the label or a bare "(Dramatized)" (`adaptationLabelRetitlesHeld`, which the wave retitling them flips), and keeps a statement no recording backs (`adaptationLabelHold`); a title that is only a qualifier keeps itself, and a work
 catalogued under its qualified title alone stays reachable - `resolveWork` and the
 recordings-only matcher walk the pre-qualifier title (`qualifiedWorkTitle`) as a
 merge target only, after the cleaned one, and then (in every mode, through an exact

@@ -23,27 +23,29 @@ import (
 // fourteen), and in those the number is the only thing a human can tell them apart
 // by. That cannot be judged one work at a time, so every proposal is composed
 // first, then the set is checked against itself.
-// adaptationLabelRetitlesHeld keeps every retitle that would take an adaptation label
-// off a title advisory. Removing the label raises a plain library book's match score
-// against a work holding only the adaptation, so a routine repair wave must not do it
-// before servers tell a dramatization apart by its recording (audiosilo-server's
-// meta.DefaultRecording). The PR retitling the labelled works flips this.
+// adaptationLabelRetitlesHeld keeps advisory every retitle that would take a statement of
+// a dramatization off a title: the adaptation label, or a bare "(Dramatized)". Removing
+// one raises a plain library book's match score against a work holding only the
+// adaptation, so a routine repair wave must not do it before servers tell a dramatization
+// apart by its recording (audiosilo-server's meta.DefaultRecording). The PR retitling the
+// labelled works decides the bare titles and flips this.
 const adaptationLabelRetitlesHeld = true
 
-// adaptationLabelHold says why a retitle of w may not run by itself, "" when it may.
+// adaptationLabelHold says why retitling w to want may not run by itself, "" when it may.
 // held is adaptationLabelRetitlesHeld. A split-release part's label is held with the rest:
 // main proposes those retitles too, under other decorations, and each takes the label
-// off. A work no recording of which says it is a dramatization keeps its label whatever
-// the flag says: it is that work's one statement.
-func adaptationLabelHold(w *model.Work, held bool) string {
-	if !titlerule.HasAdaptationLabel(w.Title) {
+// off. A work no recording of which says it is a dramatization keeps its statement
+// whatever the flag says: it is that work's only one.
+func adaptationLabelHold(w *model.Work, want string, held bool) string {
+	if !titlerule.HasAdaptationLabel(w.Title) &&
+		(!titlerule.StatesDramatization(w.Title) || titlerule.StatesDramatization(want)) {
 		return ""
 	}
 	if !slices.ContainsFunc(w.Recordings, (*model.Recording).IsDramatization) {
-		return "the adaptation label is the only thing saying this work is a dramatization: no recording states GraphicAudio or a full cast, so keep it"
+		return "the title is the only thing saying this work is a dramatization: no recording states GraphicAudio or a full cast, so keep it"
 	}
 	if held {
-		return "held with every adaptation-label retitle until servers tell a dramatization apart by its recording (adaptationLabelRetitlesHeld)"
+		return "held with every retitle taking a dramatization's statement off a title, until servers tell one apart by its recording (adaptationLabelRetitlesHeld)"
 	}
 	return ""
 }
@@ -141,7 +143,7 @@ func detectWorkTitle(ix *index) *findings {
 				"and what is left is its subtitle or tagline: confirm the title before retitling"
 		}
 		if !p.Advisory {
-			if why := adaptationLabelHold(c.work, adaptationLabelRetitlesHeld); why != "" {
+			if why := adaptationLabelHold(c.work, c.want, adaptationLabelRetitlesHeld); why != "" {
 				p.Op = OpReview
 				p.Advisory = true
 				p.Reason = why

@@ -378,22 +378,28 @@ func TestAdaptationLabelHold(t *testing.T) {
 	cases := []struct {
 		name  string
 		title string
+		want  string
 		recs  []*model.Recording
 		held  bool
-		want  bool
+		hold  bool
 	}{
-		{"held", "Tale [Dramatized Adaptation]", []*model.Recording{ga}, true, true},
-		{"the wave flips it", "Tale [Dramatized Adaptation]", []*model.Recording{ga}, false, false},
-		{"a credit is a signal too", "Tale (Dramatized Adaptation)", []*model.Recording{named, cast}, false, false},
-		{"no recording says so: kept, flag or no flag", "Tale [Dramatized Adaptation]", []*model.Recording{named}, false, true},
-		{"no recording at all", "Tale [Dramatized Adaptation]", nil, false, true},
-		{"no label", "Tale, Book 1", []*model.Recording{named}, true, false},
-		{"a part's retitle is held too", "Tale (1 of 2) [Dramatized Adaptation]", []*model.Recording{ga}, true, true},
+		{"held", "Tale [Dramatized Adaptation]", "Tale", []*model.Recording{ga}, true, true},
+		{"the wave flips it", "Tale [Dramatized Adaptation]", "Tale", []*model.Recording{ga}, false, false},
+		{"a credit is a signal too", "Tale (Dramatized Adaptation)", "Tale", []*model.Recording{named, cast}, false, false},
+		{"no recording says so: kept, flag or no flag", "Tale [Dramatized Adaptation]", "Tale", []*model.Recording{named}, false, true},
+		{"no recording at all", "Tale [Dramatized Adaptation]", "Tale", nil, false, true},
+		{"no statement", "Tale, Book 1", "Tale", []*model.Recording{named}, true, false},
+		{"a part's retitle is held too", "Tale (1 of 2) [Dramatized Adaptation]", "Tale", []*model.Recording{ga}, true, true},
+		{"a bare statement is held", "Great Stories Volume 1 (Dramatized)", "Great Stories", []*model.Recording{ga}, true, true},
+		{"a statement inside a longer group", "A Carol (Radio Version - Dramatized)", "A Carol Radio Version", []*model.Recording{ga}, true, true},
+		{"the wave flips a bare one too", "Great Stories (Dramatized)", "Great Stories", []*model.Recording{ga}, false, false},
+		{"a bare one no recording backs is kept", "Great Stories (Dramatized)", "Great Stories", []*model.Recording{named}, false, true},
+		{"a retitle keeping the statement runs", "Tale, Book 1 (Dramatized)", "Tale (Dramatized)", []*model.Recording{named}, true, false},
 	}
 	for _, c := range cases {
-		got := adaptationLabelHold(&model.Work{Title: c.title, Recordings: c.recs}, c.held) != ""
-		if got != c.want {
-			t.Errorf("%s: held = %v, want %v", c.name, got, c.want)
+		got := adaptationLabelHold(&model.Work{Title: c.title, Recordings: c.recs}, c.want, c.held) != ""
+		if got != c.hold {
+			t.Errorf("%s: held = %v, want %v", c.name, got, c.hold)
 		}
 	}
 }
