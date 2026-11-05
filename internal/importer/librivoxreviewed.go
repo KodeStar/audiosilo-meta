@@ -49,7 +49,7 @@ package importer
 // normalized identity key, and the duplicate-identity guard's ambiguity veto reads two
 // candidates as "cannot say which", so a later row of ANY source would mint a third
 // record. So the guard's and the intake gate's answer sets own-work homes apart
-// (librivoxOwnWorkHomes, check.SetApart): a key that names other works names those, and
+// (LibrivoxOwnWorkHomes, check.SetApart): a key that names other works names those, and
 // one that names only own-work homes still names them. Only a refusal does, which is
 // recoverable: the paths that place a recording on the one candidate (attachFor,
 // relocationHomes) still read the two as ambiguous. The set is derived from the
@@ -190,12 +190,12 @@ func reviewedLibrivoxState(opts Options) librivoxState {
 // LibrivoxOwnWorkHomes are the catalogued works holding a project whose reviewed decision
 // is own-work, and which is still the project the decision is about: LibriVox reuses
 // project numbers, so the number alone could set the wrong work apart. These are the
-// works the duplicate-identity probe sets apart (this file's header).
-func LibrivoxOwnWorkHomes(works []*model.Work) map[string]bool {
-	return librivoxOwnWorkHomes(works, librivoxReviewed())
-}
-
-func librivoxOwnWorkHomes(works []*model.Work, table map[int]LibrivoxReview) map[string]bool {
+// works the duplicate-identity probe sets apart (this file's header). A nil table reads
+// the embedded decisions.
+func LibrivoxOwnWorkHomes(works []*model.Work, table map[int]LibrivoxReview) map[string]bool {
+	if table == nil {
+		table = librivoxReviewed()
+	}
 	homes := map[string]bool{}
 	for _, w := range works {
 		for _, r := range w.Recordings {

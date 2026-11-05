@@ -403,7 +403,7 @@ func TestLibrivoxOwnWorkHomesRequireTheDecisionsTitle(t *testing.T) {
 	rec := func(id int, title string) []*model.Recording {
 		return []*model.Recording{{LibrivoxID: id, LibrivoxTitle: title}}
 	}
-	got := librivoxOwnWorkHomes([]*model.Work{
+	got := LibrivoxOwnWorkHomes([]*model.Work{
 		{ID: "held", Title: "x", Recordings: rec(1, "Iliad (Pope Translation)")},
 		{ID: "reused-number", Title: "x", Recordings: rec(2, "A Book On The Reused Number")},
 		{ID: "no-project-title", Title: "Odyssey (Pope Translation)", Recordings: rec(3, "")},

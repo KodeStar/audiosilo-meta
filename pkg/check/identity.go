@@ -357,11 +357,14 @@ func (ix *WorkIdentity) MatchKey(key, title, series, lang string, all, identity 
 // recording on the one candidate (attachFor, relocationHomes) must keep counting the
 // work a review ruled apart, since the row may be that very text. The census reads the
 // same pairs through LoadOptions.Distinct.
+//
+// It never writes to candidates, so a caller may hand it a slice it keeps: an answer that
+// drops something is a new slice, and one that drops nothing is candidates itself.
 func SetApart[M any](candidates []M, id func(M) string, apart map[string]bool) []M {
 	if !slices.ContainsFunc(candidates, func(m M) bool { return !apart[id(m)] }) {
 		return candidates
 	}
-	return slices.DeleteFunc(candidates, func(m M) bool { return apart[id(m)] })
+	return slices.DeleteFunc(slices.Clone(candidates), func(m M) bool { return apart[id(m)] })
 }
 
 // matches is THE pairwise predicate: given a candidate work already keyed the same,

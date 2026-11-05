@@ -223,4 +223,11 @@ func TestSetApart(t *testing.T) {
 	if got := ids(SetApart(ix.Match("The Odyssey [Classic Edition]", "", "en", authors, authors), id, apart)); !slices.Equal(got, []string{"odyssey-pope"}) {
 		t.Errorf("set apart and alone under its key: %v", got)
 	}
+	// The input is the caller's: a slice it keeps must come through whole.
+	kept := ix.Match(later, "", "en", authors, authors)
+	before := ids(kept)
+	SetApart(kept, id, apart)
+	if got := ids(kept); !slices.Equal(got, before) {
+		t.Errorf("SetApart wrote to its input: %v, was %v", got, before)
+	}
 }
