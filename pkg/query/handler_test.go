@@ -496,7 +496,7 @@ func TestDescriptionMemoSkipsTheQueryWhenTheTableIsEmpty(t *testing.T) {
 // version, so the work still serves, just without them.
 func TestWorkDetailToleratesOlderArtifact(t *testing.T) {
 	ts := downgradedServer(t, artifacttest.Downgraded(t, artifacttest.Fixture(), 1,
-		"work_genres", "characters", "character_aliases", "recaps", "recap_summaries", "work_descriptions"))
+		"work_genres", "characters", "character_aliases", "recaps", "recap_summaries", "position_scales", "work_descriptions"))
 	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
 	if code != 200 {
 		t.Fatalf("status %d, body %v", code, body)
@@ -977,6 +977,67 @@ func TestGateHandsTheHandlerTheDatabaseItChecked(t *testing.T) {
 		}
 		if n := calls.Load(); n != 1 {
 			t.Errorf("GET %s loaded the database %d times, want once", path, n)
+		}
+	}
+}
+
+// TestPositionScaleReachesTheWorkDocument: the artifact's row reaches GET /works/{id}
+// in the wire shape, and a work with no scale omits the key.
+func TestPositionScaleReachesTheWorkDocument(t *testing.T) {
+	_, ts := newTestServerForCatalog(t, artifacttest.Fixture())
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/"+artifacttest.HailMary)
+	if code != 200 {
+		t.Fatalf("status %d, body %v", code, body)
+	}
+	scale, ok := body["position_scale"].(map[string]any)
+	if !ok {
+		t.Fatalf("position_scale = %v", body["position_scale"])
+	}
+	if scale["length"] != float64(12) || scale["unit"] != "section" || scale["partial"] != true || len(scale) != 3 {
+		t.Errorf("position_scale = %v", scale)
+	}
+	cat := artifacttest.Fixture()
+	cat.PositionScales[0].Partial = false
+	_, ts = newTestServerForCatalog(t, cat)
+	_, body = artifacttest.GetJSON(t, ts.URL, "/api/v1/works/"+artifacttest.HailMary)
+	if scale := body["position_scale"].(map[string]any); len(scale) != 2 {
+		t.Errorf("a whole sidecar's scale carries partial: %v", scale)
+	}
+	cat.PositionScales = nil
+	_, ts = newTestServerForCatalog(t, cat)
+	_, body = artifacttest.GetJSON(t, ts.URL, "/api/v1/works/"+artifacttest.HailMary)
+	if _, has := body["position_scale"]; has {
+		t.Errorf("a work stating no scale carries position_scale: %v", body["position_scale"])
+	}
+}
+
+// TestPositionScaleToleratesV9Artifact serves a schema_version 9 release without the
+// table: the query no-ops on the version and the field is omitted.
+func TestPositionScaleToleratesV9Artifact(t *testing.T) {
+	ts := downgradedServer(t, artifacttest.Downgraded(t, artifacttest.Fixture(), 9, "position_scales"))
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/"+artifacttest.HailMary)
+	if code != 200 {
+		t.Fatalf("status %d, body %v", code, body)
+	}
+	if _, has := body["position_scale"]; has {
+		t.Errorf("a v9 artifact served position_scale")
+	}
+	if _, has := body["community_description"]; !has {
+		t.Errorf("a v9 artifact should still serve community_description")
+	}
+}
+
+// TestPositionScaleRefusesAVersion10ArtifactWithoutTheTable: an artifact that CLAIMS
+// version 10 without the table is corrupt, and the load names the claim.
+func TestPositionScaleRefusesAVersion10ArtifactWithoutTheTable(t *testing.T) {
+	dbPath := artifacttest.Downgraded(t, artifacttest.Fixture(), 10, "position_scales")
+	_, err := Open(dbPath, "")
+	if err == nil {
+		t.Fatal("a version 10 artifact with no position_scales table opened cleanly")
+	}
+	for _, want := range []string{"schema_version 10", "position_scales"} {
+		if !strings.Contains(err.Error(), want) {
+			t.Errorf("error %q does not name %q", err, want)
 		}
 	}
 }

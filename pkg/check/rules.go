@@ -188,6 +188,43 @@ func checkRecaps(cat *model.Catalog, idx *pathIndex, add addFunc) {
 	}
 }
 
+// checkPositionScales enforces that no reveal or through passes the ruler its own
+// entry states. A scale a position runs past is wrong one way or the other, and a
+// consumer translating positions onto a recording's tracks would run off the end.
+func checkPositionScales(cat *model.Catalog, idx *pathIndex, add addFunc) {
+	if len(cat.PositionScales) == 0 {
+		return
+	}
+	scales := make(map[string]*model.PositionScale, len(cat.PositionScales))
+	for _, ps := range cat.PositionScales {
+		scales[ps.Work] = ps
+	}
+	for _, c := range cat.Characters {
+		ps, ok := scales[c.Work]
+		if !ok {
+			continue
+		}
+		for _, ch := range c.Characters {
+			if ch.Reveal.Chapter > ps.Length {
+				add(idx.characters[c], "character %q reveals at %s %d, past the position_scale's length of %d",
+					ch.ID, ps.Unit, ch.Reveal.Chapter, ps.Length)
+			}
+		}
+	}
+	for _, rc := range cat.Recaps {
+		ps, ok := scales[rc.Work]
+		if !ok {
+			continue
+		}
+		for _, r := range rc.Recaps {
+			if r.Through.Chapter > ps.Length {
+				add(idx.recaps[rc], "recap through %s %d is past the position_scale's length of %d",
+					ps.Unit, r.Through.Chapter, ps.Length)
+			}
+		}
+	}
+}
+
 // checkUniqueness enforces globally unique (region, asin) pairs and ISBNs across
 // all recordings, that no recording carries a work's print ISBN under either
 // spelling (model.Work.PrintISBNKeys says why), and unique xref.wikidata within

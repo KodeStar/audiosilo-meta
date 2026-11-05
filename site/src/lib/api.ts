@@ -229,6 +229,7 @@ export interface Work {
       Distinct from `description` above, which is the CC0 record's own field -
       the two are separate keys because they carry different licences. */
   community_description?: CommunityDescription
+  position_scale?: { length: number; unit: string; partial?: boolean }
 }
 
 /** The other end of a work's translation link. */

@@ -802,7 +802,7 @@ function Loaded({ work, hydrated }: { work: Work; hydrated: boolean }) {
               ) : null}
               {tab === 'characters' ? (
                 <div role="tabpanel" id="panel-characters" aria-labelledby="tab-characters">
-                  <CharactersPanel characters={characters} />
+                  <CharactersPanel characters={characters} unit={work.position_scale?.unit} />
                   <GuidePageLink work={work} guide="characters" />
                 </div>
               ) : null}

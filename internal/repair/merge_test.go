@@ -10,6 +10,7 @@ import (
 
 	"github.com/kodestar/audiosilo-meta/internal/rawentry"
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
+	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -1110,4 +1111,49 @@ func TestMergeWorksNeverFusesTwoLibrivoxProjects(t *testing.T) {
 			}
 		})
 	}
+}
+
+// A position_scale has no work backref and a closed schema, so a merge moving one
+// must not stamp it; and a scale is a statement about the members beside it, so a
+// merge may not put it beside a member the other half carried.
+func TestMergeWorksHandlesThePositionScale(t *testing.T) {
+	const scale = `{"length":5,"unit":"act"}`
+	t.Run("it moves with its sidecar, unstamped", func(t *testing.T) {
+		files := hammeredCluster(t)
+		files["works/ha/hammered-book-3/characters.json"] = charactersJSON(t, "hammered-book-3", "atticus")
+		files["works/ha/hammered-book-3/position_scale.json"] = scale
+		data := seedTree(t, files)
+
+		rep := run(t, Options{DataDir: data, Ops: []string{"merge-works"}, Write: true})
+		if len(rep.Applied) != 1 || len(rep.Refused) != 0 {
+			t.Fatalf("applied %d, refused %+v", len(rep.Applied), rep.Refused)
+		}
+		side := readEntry(t, data, pack.FamilyWorksCommunity, "hammered")
+		member, err := rawentry.Decode(side["position_scale"])
+		if err != nil {
+			t.Fatalf("the scale did not move: %v", err)
+		}
+		if member.Has("work") {
+			t.Errorf("the move stamped a work backref on the scale: %v", rawentry.SortedKeys(member))
+		}
+		if res := check.Load(data); !res.OK() {
+			t.Errorf("the merged tree does not validate: %v", res.Problems)
+		}
+	})
+
+	t.Run("its ruler does not reach the other half's member", func(t *testing.T) {
+		files := hammeredCluster(t)
+		files["works/ha/hammered-book-3/characters.json"] = charactersJSON(t, "hammered-book-3", "atticus")
+		files["works/ha/hammered-book-3/position_scale.json"] = scale
+		files["works/ha/hammered/recaps.json"] = testpack.RecapsJSON(t, "hammered", 40)
+		data := seedTree(t, files)
+
+		rep := run(t, Options{DataDir: data, Ops: []string{"merge-works"}, Write: true})
+		if len(rep.Applied) != 0 {
+			t.Fatalf("a scale was merged beside the other half's recaps: %+v", rep.Applied)
+		}
+		if len(rep.Refused) != 1 || rep.Refused[0].Category != CatSidecarCollision {
+			t.Fatalf("refusals = %+v, want one %s", rep.Refused, CatSidecarCollision)
+		}
+	})
 }
