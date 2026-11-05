@@ -190,7 +190,7 @@ Facts are free, but *bulk extraction from someone else's database* is not the
 same act as recording a fact: the EU/UK sui generis database right protects a
 catalogue against the extraction of a substantial part of it, whatever the
 copyright status of the individual rows. The import posture is therefore
-**bounded and auditable**, in three accepted shapes:
+**bounded and auditable**, in four accepted shapes:
 
 - **Per-title lookup at contribution time** - a contributor adds one book and a
   lookup fills in its facts.
@@ -204,20 +204,60 @@ copyright status of the individual rows. The import posture is therefore
   described in
   [GOVERNANCE.md](GOVERNANCE.md#series-completion-bot-audiosilo-meta-sync) - has
   its tranches reviewed by the automated verifier under that section's rules
-  rather than by a person, and stays bounded the same way: it fills free
-  positions in series the catalogue already holds, attaches another edition of
-  a volume already held only as a recording of that work, and may never add a
-  series, so it is a completion pass and never a mirror. Its records carry the same typed
+  rather than by a person, and stays bounded the same way: from its feeds it
+  fills free positions in series the catalogue already holds, attaches another
+  edition of a volume already held only as a recording of that work, and may
+  never add a series, so that pass is a completion pass and never a mirror. Its records carry the same typed
   `sources[]` provenance as every other import and retract with the source.
   Coming-soon (preorder) titles are imported with their **announced** release
   date - a fact the source states - and are corrected like any other fact when
   the announcement and reality part company.
+- **Reported titles, read one at a time** - the same bot's reported-ASIN lane
+  (the same GOVERNANCE.md section). It rests on its own reasoning, set out below,
+  because the reasoning of the two shapes either side of it does not reach it.
 
 Wholesale mirroring of a third-party catalogue remains out of bounds, with the
-one exception the next section names. Every
+one exception "The public-domain exception" below names. Every
 imported record is stamped with a typed `sources[]` entry naming its origin, so
 the retraction promise below covers an entire source at once - and so a record's
-origin can be ranked, which is what the section after it is about.
+origin can be ranked, which is what "Trust tiers" below is about.
+
+### Why the reported-ASIN lane is not a mirror
+
+"Completing series we already hold" cannot justify this lane: a reported
+standalone completes nothing. Nor is it a contribution-time lookup, since no
+contributor stands behind the row and no person attests it, and it lands as a
+bulk-mirror record like the rest of the bot's output. So it has to stand on what
+it actually is:
+
+- **The source does not choose what is taken.** The lane reads the one listing an
+  ASIN names, because somebody reported that ASIN as missing here. It does not
+  walk a retailer's catalogue, feed or categories, so what accumulates follows
+  no selection or arrangement of the source's.
+- **The amount is capped by rate.** At most 25 new works per pull request and one
+  pull request per 48 hours, about 4,600 works a year however long the queue is.
+  A catalogue of the roughly 900,000 importable rows in the libex dump would take
+  that lane about two centuries.
+- **Facts only, and only real ones.** A record needs a retailer listing behind it,
+  the import is the same facts-only path as every other, and AI-narrated listings
+  and unusable credits are refused as they are everywhere.
+- **It can be undone.** Records carry the typed `libex-import` provenance and
+  retract with the source; rightsholders have the opt-out below; and the first
+  user library to match a record takes it over.
+
+**What this reasoning does not claim.** The queue is anonymous and its counts are
+unverified, so nothing proves that a reported book is in anyone's library, and a
+determined reporter could steer the lane through any listings they choose. Demand
+is why the lane exists and it decides what is read first; it is not what bounds
+the lane. **The rate is what keeps this from being a mirror**, so raising it is a
+change to this section first. The rate does not end the question either: the
+EU/UK right also reaches repeated and systematic extraction of insubstantial
+parts where that unreasonably harms the database's maker, and a small steady
+rate is repeated. This project's position is that a capped trickle of bare facts
+about individually named books, in public pull requests, with retraction and an
+opt-out, is on the right side of that line. That is a good-faith judgement and
+not legal advice, like the rest of this file; the lane's kill switch
+(GOVERNANCE.md) is there for the day it proves wrong.
 
 ## The public-domain exception: LibriVox
 
