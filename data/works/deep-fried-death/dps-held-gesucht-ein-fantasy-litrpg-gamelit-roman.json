@@ -7841,6 +7841,70 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "sean-runnette-2012": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B008BVA01O",
+              "region": "us"
+            },
+            {
+              "asin": "B008BVA2HG",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2711766,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2494984,
+              "start_ms": 2711766,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2515371,
+              "start_ms": 5206750,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1183057,
+              "start_ms": 7722121,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 851058,
+              "start_ms": 8905178,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81yEqQwpoUL.jpg",
+          "id": "sean-runnette-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sean-runnette"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2012-06-29",
+          "runtime_min": 162,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B008BVA01O",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B008BVA2HG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dr-hugh-mann"
+        },
         "sean-runnette-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7910,6 +7974,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B08171YY32",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B008BVA01O",
           "type": "libex-import"
         }
       ],
