@@ -2522,7 +2522,9 @@
         "stephen-king"
       ],
       "genres": [
+        "action-adventure",
         "dystopian",
+        "epic-fantasy",
         "fantasy",
         "paranormal",
         "science-fiction",
@@ -2651,6 +2653,148 @@
             }
           ],
           "work": "song-of-susannah"
+        },
+        "george-guidall-2012": {
+          "abridged": false,
+          "added_at": "2026-07-17T09:27:30+00:00",
+          "asin": [
+            {
+              "asin": "B0089ZOFUE",
+              "region": "us"
+            },
+            {
+              "asin": "B0089ZQ0AW",
+              "region": "us"
+            },
+            {
+              "asin": "B008AH67D4",
+              "region": "de"
+            },
+            {
+              "asin": "B0089ZQ0AW",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 74072,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2066947,
+              "start_ms": 74072,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3139059,
+              "start_ms": 2141019,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1620753,
+              "start_ms": 5280078,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2020554,
+              "start_ms": 6900831,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2650279,
+              "start_ms": 8921385,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3421971,
+              "start_ms": 11571664,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3409757,
+              "start_ms": 14993635,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2071359,
+              "start_ms": 18403392,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 5107786,
+              "start_ms": 20474751,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 5485993,
+              "start_ms": 25582537,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 5243391,
+              "start_ms": 31068530,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 4774905,
+              "start_ms": 36311921,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 4979148,
+              "start_ms": 41086826,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 3030297,
+              "start_ms": 46065974,
+              "title": "Chapter 15"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61JDpKJ9alL._SL500_.jpg",
+          "id": "george-guidall-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "george-guidall"
+          ],
+          "publisher": "Hodder & Stoughton",
+          "release_date": "2012",
+          "runtime_min": 820,
+          "sources": [
+            {
+              "imported_at": "2026-07-17",
+              "ref": "B0089ZOFUE",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-17",
+              "ref": "B0089ZOFUE",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0089ZOFUE",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-08",
+              "ref": "B0089ZQ0AW",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B008AH67D4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0089ZQ0AW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "song-of-susannah"
         }
       },
       "sources": [
@@ -2662,6 +2806,16 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B002V5CO3I",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-17",
+          "ref": "B0089ZOFUE",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0089ZOFUE",
           "type": "libex-import"
         }
       ],
