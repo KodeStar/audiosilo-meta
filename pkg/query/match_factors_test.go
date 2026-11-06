@@ -753,3 +753,68 @@ func TestResolveSeries(t *testing.T) {
 		}
 	}
 }
+
+// TestMatchListingDoesNotVouchOverANamedSibling: a listing at the stated
+// position does not vouch for a work when the request's title names another
+// volume of that series more clearly - "Sharpe's Siege" filed at 20 is volume
+// 19, so Revenge, listed at 20 and running within 2% of the book, keeps the
+// distrusted series and the 74 it scores without the rule (the misfiled
+// folder the seriesDistrust band exists for), never the vouched 91.
+func TestMatchListingDoesNotVouchOverANamedSibling(t *testing.T) {
+	cat := matchCatalog()
+	cat.Works[3].Recordings[0].RuntimeMin = 620 // sharpes-revenge, 1.6% off Siege's 610
+	_, ts := newTestServerForCatalog(t, cat)
+	res := matchJSON(t, ts.URL, url.Values{
+		"title": {"Sharpe's Siege"}, "author": {"Bernard Cornwell"}, "series": {"Richard Sharpe"},
+		"position": {"20"}, "runtime": {"36600"},
+	})
+	if r := wantScore(t, res, "sharpes-revenge", 74)["reasons"].(map[string]any); r["series"] != string(seriesConflict) {
+		t.Errorf("sharpes-revenge series reason %v, want %s", r["series"], seriesConflict)
+	}
+	wantScore(t, res, "sharpes-siege", 72)
+}
+
+// TestListedHereAllowsTheStoredMinute: the runtime a listing needs is within
+// listedRuntimeAgrees once the stored whole minute is allowed for
+// (runtimeStoredSlack, as runtimeFarOff does), so a short story stored as 20
+// minutes still vouches for its 20:25 file, while a long book 2.5% off does not.
+func TestListedHereAllowsTheStoredMinute(t *testing.T) {
+	name := ptr(newTermForm(matchTerms("Tales")))
+	c := &candidate{series: []candidateSeries{{name: name, position: "1"}}}
+	for _, tc := range []struct {
+		runtime int
+		diff    float64
+		want    bool
+	}{
+		{1225, 25.0 / 1225, true},
+		{36000, 0.025, false},
+		{36000, 0.019, true},
+	} {
+		f := &matchFacts{position: "1", runtime: tc.runtime, resolved: map[string]bool{name.joined: true}}
+		if got := f.listedHere(c, tc.diff, 0); got != tc.want {
+			t.Errorf("runtime %d, diff %.4f: listedHere %v, want %v", tc.runtime, tc.diff, got, tc.want)
+		}
+	}
+}
+
+// TestMatchListingVouchesOverASiblingTheRuntimeRulesOut: the sibling the title
+// names counts against a listing only while its runtime could be the book's.
+// A title tag naming volume 19 on a file whose length is volume 20's, volume
+// 19 running a third longer, is a mislabelled tag (Primer for the Apocalypse
+// 1 tagged "The Realm Dungeon", its volume 3): the listing still vouches.
+func TestMatchListingVouchesOverASiblingTheRuntimeRulesOut(t *testing.T) {
+	cat := matchCatalog()
+	cat.Works[2].Recordings[0].RuntimeMin = 820 // sharpes-siege, a third longer than Revenge's 620
+	cat.Works[3].Recordings[0].RuntimeMin = 620 // sharpes-revenge
+	_, ts := newTestServerForCatalog(t, cat)
+	res := matchJSON(t, ts.URL, url.Values{
+		"title": {"Sharpe's Siege"}, "author": {"Bernard Cornwell"}, "series": {"Richard Sharpe"},
+		"position": {"20"}, "runtime": {"37200"},
+	})
+	if len(res) == 0 || res[0]["id"] != "sharpes-revenge" {
+		t.Fatalf("top = %v, want sharpes-revenge", matchIDs(res))
+	}
+	if r := res[0]["reasons"].(map[string]any); r["series"] != string(seriesPosition) {
+		t.Errorf("sharpes-revenge series reason %v, want %s", r["series"], seriesPosition)
+	}
+}

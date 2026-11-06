@@ -312,6 +312,12 @@ type matchFacts struct {
 	// listing vouch for a work (listedHere); nil until resolved, and then no
 	// listing vouches.
 	resolved map[string]bool
+	// namedElsewhere is the best a named title (titleAgreement's named)
+	// agrees with a work the resolved series list only at another position
+	// and whose runtime the book's does not rule out (runtimeRulesOut;
+	// resolveSeries): a listing vouches for no work whose own title agrees
+	// less, once that reaches seriesDistrustHigh.
+	namedElsewhere float64
 	// edit is the edit distance's scratch, reused by every comparison of the
 	// request (judging runs on one goroutine).
 	edit *editBuf
@@ -357,10 +363,12 @@ func readFacts(req matchRequest) *matchFacts {
 	}
 	// Every guess is read for numbering once, here: the number its prefix
 	// carried ("Sharpe - 08 - ") and a variant that is the series' name and a
-	// number ("The Primal Hunter 1") are POSITION evidence, never a title -
+	// number ("The Primal Hunter 1") are POSITION evidence, not a title -
 	// judged as a title the latter would read the series' first volume as the
-	// answer to every volume. The name ALONE is kept as a title: plenty of
-	// first volumes are titled after their series ("Spacers", "Artemis Fowl").
+	// answer to every volume - unless a stated position disagrees with that
+	// number, when the variant stays a title (below). The name ALONE is kept
+	// as a title: plenty of first volumes are titled after their series
+	// ("Spacers", "Artemis Fowl").
 	// Within one guess a number TIED to the series' name - that variant, or a
 	// title that is the name and then a number ("He Who Fights with Monsters
 	// 4: A LitRPG Adventure", titleVolume) - wins over a bare prefix number,
@@ -628,7 +636,11 @@ func (s *DB) match(ctx context.Context, req matchRequest) ([]matchResult, error)
 		}
 		return nil, err
 	}
-	facts.resolveSeries(cands)
+	// Only a listing at a position, with a runtime to agree, can vouch
+	// (listedHere), so the pool's series are resolved only then.
+	if facts.position != "" && facts.runtime > 0 {
+		facts.resolveSeries(cands)
+	}
 	verdicts := make([]scored, 0, len(cands))
 	for i, c := range cands {
 		// Judging is pure CPU over up to matchCandidatesMax works, so it asks
@@ -1211,22 +1223,7 @@ func (f *matchFacts) structuredScore(c *candidate, v *scored, w wavg) float64 {
 	// work titled exactly that name ("02 - Throne of Glass" may be the first
 	// volume filed second in a reading order) where no guess tied a volume to
 	// the name.
-	t, named, titleJudged := 0.0, 0.0, false
-	for i := range f.titles {
-		h := &f.titles[i]
-		if c.isAuthorName(h) {
-			continue
-		}
-		titleJudged = true
-		s := bestTitle(&h.termForm, c.titles, f.edit)
-		t = max(t, s)
-		// titles[0] is the work's own title: the exception is for the work
-		// TITLED the series' name, not one whose subtitle or colon half is it
-		// ("He Who Fights with Monsters: A LitRPG Adventure").
-		if !h.onlySeries || (!f.tiedVolume && len(c.titles) > 0 && sameWords(&h.termForm, &c.titles[0].termForm)) {
-			named = max(named, s)
-		}
-	}
+	t, named, titleJudged := f.titleAgreement(c)
 	v.title = t
 	series, titleValue, positionConflict := seriesNone, t, false
 	if len(f.series) > 0 {
@@ -1269,6 +1266,29 @@ func (f *matchFacts) structuredScore(c *candidate, v *scored, w wavg) float64 {
 		score *= positionConflictFactor
 	}
 	return score
+}
+
+// titleAgreement is the best agreement of the request's title guesses with
+// c's title (t), the same best over the guesses that are not only the series'
+// name (named, see structuredScore), and whether any guess was judged at all
+// (one naming an author of c is not).
+func (f *matchFacts) titleAgreement(c *candidate) (t, named float64, judged bool) {
+	for i := range f.titles {
+		h := &f.titles[i]
+		if c.isAuthorName(h) {
+			continue
+		}
+		judged = true
+		s := bestTitle(&h.termForm, c.titles, f.edit)
+		t = max(t, s)
+		// titles[0] is the work's own title: the exception is for the work
+		// TITLED the series' name, not one whose subtitle or colon half is it
+		// ("He Who Fights with Monsters: A LitRPG Adventure").
+		if !h.onlySeries || (!f.tiedVolume && len(c.titles) > 0 && sameWords(&h.termForm, &c.titles[0].termForm)) {
+			named = max(named, s)
+		}
+	}
+	return t, named, judged
 }
 
 // seriesVerdict is the ONE place a candidate's numbering is judged: its
@@ -1324,7 +1344,7 @@ func (f *matchFacts) seriesVerdict(c *candidate, t, named, runtimeDiff float64) 
 		}
 	}
 	listed, elsewhere := agreement == seriesPosition, agreement == seriesConflict
-	vouched := listed && f.listedHere(c, runtimeDiff)
+	vouched := listed && f.listedHere(c, runtimeDiff, named)
 	if agreement == seriesPosition && !vouched && t >= seriesDistrustLow && t < seriesDistrustHigh {
 		agreement = seriesConflict
 	}
@@ -1358,9 +1378,14 @@ func (f *matchFacts) seriesVerdict(c *candidate, t, named, runtimeDiff float64) 
 // Polish "Star Force" beside the English one). Such a work is the volume
 // however its title is spelled: the series-named first volume with a subtitle
 // ("Dungeon Crawler Carl" for "Book 1 - The Apocalypse Will be Televised"), a
-// pack against its range, a volume filed as "American Dragons, Book 3".
-func (f *matchFacts) listedHere(c *candidate, runtimeDiff float64) bool {
-	if f.position == "" || runtimeDiff > listedRuntimeAgrees || (f.language != "" && c.language != f.language) {
+// pack against its range, a volume filed as "American Dragons, Book 3" -
+// unless the request's title names another volume the series lists more
+// clearly than this one (named against f.namedElsewhere): "Sharpe's Siege"
+// filed at 20 is volume 19, not Revenge listed at 20 however close its runtime.
+func (f *matchFacts) listedHere(c *candidate, runtimeDiff, named float64) bool {
+	if f.position == "" || runtimeDiff > listedRuntimeAgrees+runtimeStoredSlack/float64(f.runtime) ||
+		(f.language != "" && c.language != f.language) ||
+		(f.namedElsewhere >= seriesDistrustHigh && named < f.namedElsewhere) {
 		return false
 	}
 	return slices.ContainsFunc(c.series, func(m candidateSeries) bool {
@@ -1408,6 +1433,41 @@ func (f *matchFacts) resolveSeries(cands []*candidate) {
 	if len(whole) > 0 {
 		f.resolved = whole
 	}
+	if f.position == "" {
+		return
+	}
+	for _, c := range cands {
+		here, other := false, false
+		for _, m := range c.series {
+			if f.resolved[m.name.joined] {
+				if positionsEqual(f.position, m.position) {
+					here = true
+				} else {
+					other = true
+				}
+			}
+		}
+		if !other || here || f.runtimeRulesOut(c) {
+			continue
+		}
+		_, named, _ := f.titleAgreement(c)
+		f.namedElsewhere = max(f.namedElsewhere, named)
+	}
+}
+
+// runtimeRulesOut reports whether every recording of c with a runtime is
+// beyond runtimeNear of the book's (false when none has one, or the request
+// states none): a sibling the request's title names but whose length is
+// another book's ("The Realm Dungeon" on volume 1's 11 hours, volume 3 running
+// 14.6) does not outvote a listing that agrees with the runtime.
+func (f *matchFacts) runtimeRulesOut(c *candidate) bool {
+	if f.runtime <= 0 || len(c.runtimes) == 0 {
+		return false
+	}
+	return !slices.ContainsFunc(c.runtimes, func(r recordingRuntime) bool {
+		_, diff := runtimeFit(r.minute, f.runtime)
+		return diff <= runtimeNear
+	})
 }
 
 // spelledAs reports whether a title guess naming more than the series is

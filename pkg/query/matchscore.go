@@ -152,7 +152,8 @@ const (
 // title counts at least genericTitleValue. Tighter than runtimeSame: the
 // listing and the length together name the volume, and a sibling listed
 // elsewhere, or at the position in a sub-series, gains nothing. Tuned on the
-// LibraForge benchmark harness (+47 / 0 auto, 2026-11).
+// LibraForge benchmark harness (2026-11: the rule with the title-number one,
+// +31 auto-right / 0 auto-wrong, +52 / 0 with the server's leaf series).
 const listedRuntimeAgrees = 0.02
 
 // maxEditRunes bounds the strings the edit distance compares. Titles are short
