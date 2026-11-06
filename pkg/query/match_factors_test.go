@@ -5,6 +5,7 @@ import (
 	"math"
 	"net/url"
 	"slices"
+	"strconv"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -500,5 +501,320 @@ func TestMatchReadsADramatizationFromTheRecording(t *testing.T) {
 		if !slices.Contains(matchIDs(res), any(x.id)) {
 			t.Errorf("%s: the work no longer matches: %v", x.title, matchIDs(res))
 		}
+	}
+}
+
+// TestMatchTitleNumberIsNotAStatedPosition: a series whose volumes are titled
+// with their own numbers ("Dungeon Diving 101" is volume 1, "Dungeon Diving
+// 102" volume 2). With a position stated, a title that is the series' name and
+// a number DISAGREEING with it is a title, not volume 102: each volume is found
+// by its title, which is judged. A number that agrees, or no position at all,
+// is still numbering ("The Primal Hunter 1", "He Who Fights with Monsters 4").
+func TestMatchTitleNumberIsNotAStatedPosition(t *testing.T) {
+	titles := []string{"101", "102", "103", "201", "202", "203", "301"}
+	catalog := &model.Catalog{People: []*model.Person{factorPerson("mike-dungeon", "Mike Dungeon")}}
+	dd := &model.Series{ID: "dungeon-diving", Name: "Dungeon Diving", License: "CC0-1.0"}
+	for i, n := range titles {
+		id := "dungeon-diving-" + n
+		catalog.Works = append(catalog.Works, factorWork(id, "Dungeon Diving "+n, "en", "mike-dungeon"))
+		dd.Works = append(dd.Works, model.SeriesWork{Work: id, Position: strconv.Itoa(i + 1)})
+	}
+	catalog.Series = []*model.Series{dd}
+	_, ts := newTestServerForCatalog(t, catalog)
+	for i, n := range titles {
+		position := strconv.Itoa(i + 1)
+		facts := readFacts(matchRequest{titles: []string{"Dungeon Diving " + n}, series: []string{"Dungeon Diving"}, position: position})
+		if len(facts.titles) != 1 || facts.position != position || facts.tiedVolume {
+			t.Errorf("Dungeon Diving %s at %s: titles %d, position %q, tied %v; want the title kept at %s", n, position, len(facts.titles), facts.position, facts.tiedVolume, position)
+		}
+		res := matchJSON(t, ts.URL, url.Values{
+			"title": {"Dungeon Diving " + n}, "author": {"Mike Dungeon"},
+			"series": {"Dungeon Diving"}, "position": {position},
+		})
+		if len(res) == 0 || res[0]["id"] != "dungeon-diving-"+n {
+			t.Fatalf("Dungeon Diving %s at %s: top = %v", n, position, matchIDs(res))
+		}
+		top := wantScore(t, res, "dungeon-diving-"+n, 100)
+		if title := top["reasons"].(map[string]any)["title"]; title != 1.0 {
+			t.Errorf("Dungeon Diving %s: title reason %v, want 1 (judged as a title)", n, title)
+		}
+	}
+
+	for _, tc := range []struct {
+		name, title, series, position, wantPosition string
+	}{
+		{"the number agrees", "The Primal Hunter 1", "The Primal Hunter", "1", "1"},
+		{"the number agrees, tied to the name", "He Who Fights with Monsters 4", "He Who Fights with Monsters", "4", "4"},
+		{"no position stated", "He Who Fights with Monsters 4", "He Who Fights with Monsters", "", "4"},
+	} {
+		facts := readFacts(matchRequest{titles: []string{tc.title}, series: []string{tc.series}, position: tc.position})
+		if len(facts.titles) != 0 || facts.position != tc.wantPosition || !facts.tiedVolume {
+			t.Errorf("%s: titles %d, position %q, tied %v; want numbering at %s", tc.name, len(facts.titles), facts.position, facts.tiedVolume, tc.wantPosition)
+		}
+	}
+}
+
+// listedCatalog holds the shapes the listed-at-the-stated-position rule
+// (matchFacts.listedHere) was measured on: series-named first volumes with a
+// subtitle, a volume filed under its series' name and number, and the five
+// rivals that rose in its first prototype - a sub-series fitting the named
+// one fuzzily (Frontlines: Evolution), a shorter series contained in the named
+// one (Summoner beside Summoner School), a translated series of the same name
+// (the Polish Star Force) and a spin-off listed at the same number (System
+// Apocalypse: Kismet). Every recording but the Carl edition at 6.5% off is
+// within 1% of the book its request states.
+func listedCatalog() *model.Catalog {
+	series := func(id, name string, works ...model.SeriesWork) *model.Series {
+		return &model.Series{ID: id, Name: name, License: "CC0-1.0", Works: works}
+	}
+	at := func(work, position string) model.SeriesWork { return model.SeriesWork{Work: work, Position: position} }
+	return &model.Catalog{
+		People: []*model.Person{
+			factorPerson("matt-dinniman", "Matt Dinniman"), factorPerson("aaron-crash", "Aaron Crash"),
+			factorPerson("marko-kloos", "Marko Kloos"), factorPerson("eric-vall", "Eric Vall"),
+			factorPerson("b-v-larson", "B. V. Larson"), factorPerson("tao-wong", "Tao Wong"),
+		},
+		Works: []*model.Work{
+			factorWork("dungeon-crawler-carl", "Dungeon Crawler Carl", "en", "matt-dinniman", factorRec("dcc", 811)),
+			factorWork("dungeon-crawler-carl-de", "Dungeon Crawler Carl (German Edition)", "de", "matt-dinniman", factorRec("dcc-de", 864)),
+			factorWork("denver-fury", "Denver Fury: An Urban Fantasy Harem Adventure", "en", "aaron-crash", factorRec("denver", 478)),
+			factorWork("terms-of-enlistment", "Terms of Enlistment", "en", "marko-kloos", factorRec("terms", 576)),
+			factorWork("lines-of-departure", "Lines of Departure", "en", "marko-kloos", factorRec("lines", 576)),
+			factorWork("scorpio", "Scorpio", "en", "marko-kloos", factorRec("scorpio", 579)),
+			factorWork("summoner-school", "Summoner School", "en", "eric-vall", factorRec("school", 452)),
+			factorWork("summoner", "Summoner", "en", "eric-vall", factorRec("summoner", 455)),
+			factorWork("conquest", "Conquest: Star Force, Book 4", "en", "b-v-larson", factorRec("conquest", 691)),
+			factorWork("podboj", "Podbój", "pl", "b-v-larson", factorRec("podboj", 691)),
+			factorWork("the-cost-of-survival", "The Cost of Survival", "en", "tao-wong", factorRec("cost", 516)),
+			factorWork("fools-last-dance", "Fool's Last Dance", "en", "tao-wong", factorRec("fools", 519)),
+		},
+		Series: []*model.Series{
+			series("dungeon-crawler-carl", "Dungeon Crawler Carl", at("dungeon-crawler-carl", "1")),
+			{ID: "dungeon-crawler-carl-german-edition", Name: "Dungeon Crawler Carl", License: "CC0-1.0", TranslationOf: []string{"dungeon-crawler-carl"}, Works: []model.SeriesWork{at("dungeon-crawler-carl-de", "1")}},
+			series("american-dragons-series", "American Dragons Series", at("denver-fury", "1")),
+			series("frontlines", "Frontlines", at("terms-of-enlistment", "1"), at("lines-of-departure", "2")),
+			series("frontlines-evolution", "Frontlines: Evolution", at("scorpio", "1")),
+			series("summoner-school", "Summoner School", at("summoner-school", "1")),
+			series("summoner", "Summoner", at("summoner", "1")),
+			series("star-force", "Star Force", at("conquest", "4")),
+			{ID: "star-force-polish-edition", Name: "Star Force", License: "CC0-1.0", TranslationOf: []string{"star-force"}, Works: []model.SeriesWork{at("podboj", "4")}},
+			series("the-system-apocalypse", "The System Apocalypse", at("the-cost-of-survival", "3")),
+			series("system-apocalypse-kismet", "System Apocalypse: Kismet", at("fools-last-dance", "3")),
+		},
+	}
+}
+
+// TestMatchListedAtTheStatedPositionVouches: a work its series lists at exactly
+// the stated position, whose recording agrees with the runtime, keeps its
+// series agreement over a title in the distrust band and counts that title at
+// genericTitleValue at least - the series-named first volume whose file names
+// only its subtitle (56 before: title 0.5 distrusted), a volume filed as
+// "American Dragons, Book 1" in "American Dragons Series" (55 before: its title
+// 0.25, below the band, counted as it is).
+// Without the runtime, or off it, nothing changes.
+func TestMatchListedAtTheStatedPositionVouches(t *testing.T) {
+	_, ts := newTestServerForCatalog(t, listedCatalog())
+	carl := url.Values{
+		"title": {"Dungeon Crawler Carl - Book 001 - The Apocalypse Will be Televised"}, "author": {"Matt Dinniman"},
+		"series": {"Dungeon Crawler Carl"}, "position": {"1"},
+	}
+	for _, tc := range []struct {
+		name    string
+		runtime string
+		want    float64
+		series  string
+	}{
+		{"the runtime agrees", "48660", 91, string(seriesPosition)},
+		{"no runtime: as before", "", 56, string(seriesConflict)},
+		{"5% off: as before", "46200", 56, string(seriesConflict)},
+	} {
+		q := maps.Clone(carl)
+		if tc.runtime != "" {
+			q.Set("runtime", tc.runtime)
+		}
+		res := matchJSON(t, ts.URL, q)
+		if len(res) == 0 || res[0]["id"] != "dungeon-crawler-carl" {
+			t.Fatalf("%s: top = %v, want dungeon-crawler-carl", tc.name, matchIDs(res))
+		}
+		top := wantScore(t, res, "dungeon-crawler-carl", tc.want)
+		if s := top["reasons"].(map[string]any)["series"]; s != tc.series {
+			t.Errorf("%s: series reason %v, want %s", tc.name, s, tc.series)
+		}
+	}
+
+	res := matchJSON(t, ts.URL, url.Values{
+		"title": {"American Dragons, Book 1"}, "author": {"Aaron Crash"},
+		"series": {"American Dragons", "Aaron Crash (American Dragons)"}, "position": {"1"}, "runtime": {"28680"},
+	})
+	if len(res) == 0 || res[0]["id"] != "denver-fury" {
+		t.Fatalf("American Dragons 1: top = %v, want denver-fury", matchIDs(res))
+	}
+	wantScore(t, res, "denver-fury", 91)
+}
+
+// TestMatchListedRivalsDoNotRise: the five rivals the rule's first prototype
+// raised to 91 beside the right volume - each listed at the stated position,
+// its recording on the runtime - score as they did without it, because the
+// named series does not resolve to theirs (a fuzzy sub-series, a shorter
+// series, a spin-off: a series spelled as named is in the pool) or theirs
+// translates the one named. A stated language decides the translation instead,
+// and a sibling at another position stays damped by positionConflictFactor.
+func TestMatchListedRivalsDoNotRise(t *testing.T) {
+	_, ts := newTestServerForCatalog(t, listedCatalog())
+	for _, tc := range []struct {
+		name         string
+		q            url.Values
+		right, rival string
+		rivalScore   float64
+		rivalSeries  string
+	}{
+		{"a fuzzy sub-series", url.Values{
+			"title": {"Terms of Enlistment: Frontlines, Book 1"}, "author": {"Marko Kloos"},
+			"series": {"Frontlines"}, "position": {"1"}, "runtime": {"34560"},
+		}, "terms-of-enlistment", "scorpio", 40, string(seriesPosition)},
+		{"a shorter series", url.Values{
+			"title": {"Summoner School"}, "author": {"Eric Vall"},
+			"series": {"Summoner School"}, "position": {"1"}, "runtime": {"27120"},
+		}, "summoner-school", "summoner", 70, string(seriesConflict)},
+		{"a translated series of the same name", url.Values{
+			"title": {"Conquest: Star Force, Book 4 (Unabridged)"}, "author": {"B. V. Larson"},
+			"series": {"Star Force"}, "position": {"4"}, "runtime": {"41460"},
+		}, "conquest", "podboj", 48, string(seriesPosition)},
+		{"a spin-off at the same number", url.Values{
+			"title": {"The Cost of Survival"}, "author": {"Tao Wong"},
+			"series": {"System Apocalypse"}, "position": {"3"}, "runtime": {"30960"},
+		}, "the-cost-of-survival", "fools-last-dance", 49, string(seriesPosition)},
+		{"a sibling at another position", url.Values{
+			"title": {"Terms of Enlistment"}, "author": {"Marko Kloos"},
+			"series": {"Frontlines"}, "position": {"1"}, "runtime": {"34560"},
+		}, "terms-of-enlistment", "lines-of-departure", 24, string(seriesConflict)},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			res := matchJSON(t, ts.URL, tc.q)
+			if len(res) == 0 || res[0]["id"] != tc.right {
+				t.Fatalf("top = %v, want %s", matchIDs(res), tc.right)
+			}
+			wantScore(t, res, tc.right, 100)
+			rival := wantScore(t, res, tc.rival, tc.rivalScore)
+			if s := rival["reasons"].(map[string]any)["series"]; s != tc.rivalSeries {
+				t.Errorf("%s series reason %v, want %s", tc.rival, s, tc.rivalSeries)
+			}
+		})
+	}
+
+	// A stated language: the Polish edition is the volume for a Polish request,
+	// and the English one, in another language, is not lifted.
+	q := url.Values{
+		"title": {"Podbój"}, "author": {"B. V. Larson"},
+		"series": {"Star Force"}, "position": {"4"}, "runtime": {"41460"}, "language": {"pl"},
+	}
+	res := matchJSON(t, ts.URL, q)
+	if len(res) == 0 || res[0]["id"] != "podboj" {
+		t.Fatalf("Polish request: top = %v, want podboj", matchIDs(res))
+	}
+	q.Set("title", "Conquest")
+	res = matchJSON(t, ts.URL, q)
+	wantScore(t, res, "podboj", 91)
+	english := wantScore(t, res, "conquest", 80)
+	if s := english["reasons"].(map[string]any)["language"]; s != "other" {
+		t.Errorf("conquest language reason %v, want other", s)
+	}
+}
+
+// TestResolveSeries: the pool's series a request's series resolves to - those
+// spelled as named (an article or a trailing "Series" aside) when any is, else
+// every one that fits.
+func TestResolveSeries(t *testing.T) {
+	cand := func(names ...string) *candidate {
+		c := &candidate{}
+		for _, n := range names {
+			c.series = append(c.series, candidateSeries{name: ptr(newTermForm(matchTerms(n))), position: "1"})
+		}
+		return c
+	}
+	for _, tc := range []struct {
+		name   string
+		series []string
+		pool   []string
+		want   []string
+	}{
+		{"spelled as named", []string{"Frontlines"}, []string{"Frontlines", "Frontlines: Evolution"}, []string{"frontlines"}},
+		{"an article aside", []string{"System Apocalypse"}, []string{"The System Apocalypse", "System Apocalypse: Kismet"}, []string{"the system apocalypse"}},
+		{"a trailing Series aside", []string{"Dark Road"}, []string{"Dark Road Series", "Dark Road", "Dark Roads"}, []string{"dark road series", "dark road"}},
+		{"none spelled: every fit", []string{"New Era Online; Life Reset"}, []string{"New Era Online", "New Era", "Unrelated"}, []string{"new era online", "new era"}},
+		{"no series named", nil, []string{"Frontlines"}, nil},
+	} {
+		f := readFacts(matchRequest{titles: []string{"x y"}, series: tc.series})
+		f.resolveSeries([]*candidate{cand(tc.pool...)})
+		got := slices.Sorted(maps.Keys(f.resolved))
+		want := slices.Sorted(slices.Values(tc.want))
+		if !slices.Equal(got, want) {
+			t.Errorf("%s: resolved %q, want %q", tc.name, got, want)
+		}
+	}
+}
+
+// TestMatchListingDoesNotVouchOverANamedSibling: a listing at the stated
+// position does not vouch for a work when the request's title names another
+// volume of that series more clearly - "Sharpe's Siege" filed at 20 is volume
+// 19, so Revenge, listed at 20 and running within 2% of the book, keeps the
+// distrusted series and the 74 it scores without the rule (the misfiled
+// folder the seriesDistrust band exists for), never the vouched 91.
+func TestMatchListingDoesNotVouchOverANamedSibling(t *testing.T) {
+	cat := matchCatalog()
+	cat.Works[3].Recordings[0].RuntimeMin = 620 // sharpes-revenge, 1.6% off Siege's 610
+	_, ts := newTestServerForCatalog(t, cat)
+	res := matchJSON(t, ts.URL, url.Values{
+		"title": {"Sharpe's Siege"}, "author": {"Bernard Cornwell"}, "series": {"Richard Sharpe"},
+		"position": {"20"}, "runtime": {"36600"},
+	})
+	if r := wantScore(t, res, "sharpes-revenge", 74)["reasons"].(map[string]any); r["series"] != string(seriesConflict) {
+		t.Errorf("sharpes-revenge series reason %v, want %s", r["series"], seriesConflict)
+	}
+	wantScore(t, res, "sharpes-siege", 72)
+}
+
+// TestListedHereAllowsTheStoredMinute: the runtime a listing needs is within
+// listedRuntimeAgrees once the stored whole minute is allowed for
+// (runtimeStoredSlack, as runtimeFarOff does), so a short story stored as 20
+// minutes still vouches for its 20:25 file, while a long book 2.5% off does not.
+func TestListedHereAllowsTheStoredMinute(t *testing.T) {
+	name := ptr(newTermForm(matchTerms("Tales")))
+	c := &candidate{series: []candidateSeries{{name: name, position: "1"}}}
+	for _, tc := range []struct {
+		runtime int
+		diff    float64
+		want    bool
+	}{
+		{1225, 25.0 / 1225, true},
+		{36000, 0.025, false},
+		{36000, 0.019, true},
+	} {
+		f := &matchFacts{position: "1", runtime: tc.runtime, resolved: map[string]bool{name.joined: true}}
+		if got := f.listedHere(c, tc.diff, 0); got != tc.want {
+			t.Errorf("runtime %d, diff %.4f: listedHere %v, want %v", tc.runtime, tc.diff, got, tc.want)
+		}
+	}
+}
+
+// TestMatchListingVouchesOverASiblingTheRuntimeRulesOut: the sibling the title
+// names counts against a listing only while its runtime could be the book's.
+// A title tag naming volume 19 on a file whose length is volume 20's, volume
+// 19 running a third longer, is a mislabelled tag (Primer for the Apocalypse
+// 1 tagged "The Realm Dungeon", its volume 3): the listing still vouches.
+func TestMatchListingVouchesOverASiblingTheRuntimeRulesOut(t *testing.T) {
+	cat := matchCatalog()
+	cat.Works[2].Recordings[0].RuntimeMin = 820 // sharpes-siege, a third longer than Revenge's 620
+	cat.Works[3].Recordings[0].RuntimeMin = 620 // sharpes-revenge
+	_, ts := newTestServerForCatalog(t, cat)
+	res := matchJSON(t, ts.URL, url.Values{
+		"title": {"Sharpe's Siege"}, "author": {"Bernard Cornwell"}, "series": {"Richard Sharpe"},
+		"position": {"20"}, "runtime": {"37200"},
+	})
+	if len(res) == 0 || res[0]["id"] != "sharpes-revenge" {
+		t.Fatalf("top = %v, want sharpes-revenge", matchIDs(res))
+	}
+	if r := res[0]["reasons"].(map[string]any); r["series"] != string(seriesPosition) {
+		t.Errorf("sharpes-revenge series reason %v, want %s", r["series"], seriesPosition)
 	}
 }

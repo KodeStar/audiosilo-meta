@@ -565,7 +565,10 @@ none, while `titleVariants` adds `titlerule.CleanTitle` against the request's
 series (cut again: "Vorkosigan Saga 03 - Barrayar" is volume 3, "Barrayar"); a
 stored title is also compared by either side of its colon at 0.9; a title guess
 that is the series name plus a number (`volumeOf`) is position evidence, never a
-title, and so is a title that is the series name, a number and then the end or
+title - unless a position is stated and the number disagrees with it, when it
+stays a title (a series whose volumes are titled with their own numbers,
+"Dungeon Diving 102" at volume 2, `TestMatchTitleNumberIsNotAStatedPosition`) -
+and so is a title that is the series name, a number and then the end or
 a separator (`titleVolume`, "He Who Fights with Monsters 4: A LitRPG Adventure" -
 a mirror of audiosilo-server's `metadata.PositionInTitle` that judges the name as
 `volumeOf` does, stopwords aside, and reads a hyphen glued to a word, "Bodyswaps
@@ -586,7 +589,28 @@ Siege" filed at 20 must not become "Sharpe's Revenge"). A candidate sitting in
 the named series at ANOTHER position, or whose generic title names another
 volume, gets no credit for a title that does not agree - unless the series lists
 it at exactly the stated position (an omnibus at 1-3,
-`TestMatchAnOmnibusListedAtTheStatedRange`). A guess that is ONLY the series'
+`TestMatchAnOmnibusListedAtTheStatedRange`). A LISTING VOUCHES for a work
+(`listedHere`): a series the request's names resolve to lists it at exactly the
+stated position (a range included), its closest recording is within
+`listedRuntimeAgrees` (2%, plus the stored minute's `runtimeStoredSlack`) of the
+runtime, and it is in the request's language when one is stated, else not listed
+through a series that translates another (`DB.seriesTranslators`) - and the
+request's title does not name a sibling more clearly (`namedElsewhere`: a work
+the resolved series list only at another position, its runtime not ruled out by
+`runtimeNear`, whose named title agreement reaches `seriesDistrustHigh` and beats
+this one's; "Sharpe's Siege" filed at 20 is not Revenge however close its
+length, `TestMatchListingDoesNotVouchOverANamedSibling`, while a tag naming a
+volume a third longer than the file is a mislabelled tag,
+`TestMatchListingVouchesOverASiblingTheRuntimeRulesOut`); then the band does not distrust its series and its title
+counts at least `genericTitleValue` (the series-named first volume whose file names
+only the subtitle, a pack against its range, "American Dragons, Book 3"). The names
+resolve per request over the pool (`resolveSeries`, preferWholeName's rule): to the
+series spelled as named (`sameWords`, or `titlerule.SeriesKey`, so "Dark Road
+Series" is "Dark Road") when any is, else to every one that fits - so a fuzzy
+sub-series ("Frontlines: Evolution"), a shorter one ("Summoner" beside "Summoner
+School") or a spin-off ("System Apocalypse: Kismet") gains nothing
+(`TestMatchListedRivalsDoNotRise`). Measured on the LibraForge harness with the title-number
+rule: +31 auto-right, 0 auto-wrong alone, +52 / 0 over the scanner's leaf series (E1). A guess that is ONLY the series'
 name (`titleGuess.onlySeries`) never counts as agreeing there, because "He Who
 Fights with Monsters", the folder "FWM04 - He Who Fights With Monsters - Book 4"
 left uncut, is contained in every "He Who Fights with Monsters N" and let a

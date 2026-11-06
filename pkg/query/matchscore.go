@@ -145,6 +145,17 @@ const (
 	seriesDistrustHigh = 0.75
 )
 
+// listedRuntimeAgrees is how close (runtimeFit's relative difference) a work's
+// closest recording must be to the book's runtime for its listing at the
+// stated position to vouch for it (matchFacts.listedHere): then the series
+// agreement is not distrusted over a title in the seriesDistrust band, and the
+// title counts at least genericTitleValue. Tighter than runtimeSame: the
+// listing and the length together name the volume, and a sibling listed
+// elsewhere, or at the position in a sub-series, gains nothing. Tuned on the
+// LibraForge benchmark harness (2026-11: the rule with the title-number one,
+// +31 auto-right / 0 auto-wrong, +52 / 0 with the server's leaf series).
+const listedRuntimeAgrees = 0.02
+
 // maxEditRunes bounds the strings the edit distance compares. Titles are short
 // (the longest real one is 252 bytes) and the distance is quadratic, so the
 // comparison reads a prefix of a longer hypothesis rather than letting a
