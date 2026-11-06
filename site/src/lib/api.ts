@@ -123,9 +123,11 @@ export interface AsinRef {
   asin: string
 }
 
-/** A derived, non-affiliate route to a retailer (pkg/query/purchase_links.go):
-    an Audible marketplace URL from a region-scoped ASIN, a Libro.fm URL from a
-    checksum-valid recording ISBN-13. `availability` is always "unknown" by
+/** A non-affiliate route to a retailer (pkg/query/purchase_links.go): an
+    Audible marketplace URL from a region-scoped ASIN, a Libro.fm URL from a
+    checksum-valid recording ISBN-13, a LibriVox catalogue page, or a store
+    product page the recording states (Audiobook Guild, GraphicAudio:
+    pkg/query/storelinks.go, whose `id` is that URL). `availability` is always "unknown" by
     design - whether a retailer currently sells the recording is volatile, and
     the catalogue only holds the durable identifier - so nothing renders it and
     no surface claims a book is on sale.

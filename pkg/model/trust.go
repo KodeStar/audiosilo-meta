@@ -62,6 +62,11 @@ const (
 	// "never an unbounded mirror"). A user hand edit outranks both.
 	SourceLibexImport = "libex-import"
 	SourceLibrivox    = "librivox"
+	// SourceStoreListing is a maintainer-named import of a store's public
+	// listing (storelinks.go's stores; LICENSING.md "Store listings"): a
+	// third-party catalogue's statement nobody has attested, so it ranks with
+	// the mirror and a user's own library or hand edit outranks it.
+	SourceStoreListing = "store-listing"
 
 	// The reference tier: crosswalks and lookups, which carry no policy.
 	SourceAudibleLookup = "audible-lookup"
@@ -79,8 +84,9 @@ const (
 // The reference entries carry no policy, but naming them anyway is what keeps
 // "deliberately inert" distinguishable from "nobody has classified this yet".
 var sourceTiers = map[string]SourceTier{
-	SourceLibexImport: TierBulkMirror,
-	SourceLibrivox:    TierBulkMirror,
+	SourceLibexImport:  TierBulkMirror,
+	SourceLibrivox:     TierBulkMirror,
+	SourceStoreListing: TierBulkMirror,
 
 	SourceUser:                 TierUserLibrary,
 	SourceOpenAudibleImport:    TierUserLibrary,

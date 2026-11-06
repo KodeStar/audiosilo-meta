@@ -3,6 +3,7 @@ package query
 import (
 	"context"
 	"database/sql"
+	"slices"
 	"sort"
 	"strconv"
 	"strings"
@@ -503,6 +504,13 @@ const librivoxRecordingSchemaVersion = 9
 // as "numbered on no stated ruler".
 const positionScaleSchemaVersion = 10
 
+// storeLinksSchemaVersion is the artifact schema_version that first carried the
+// STORE LINKS: recordings.link_audiobookguild and recordings.link_graphicaudio
+// (storelinks.go). A newer binary serving an older release states no store link
+// on any recording, and an artifact CLAIMING it without the columns fails to
+// open (loadStats, the redirects precedent).
+const storeLinksSchemaVersion = 11
+
 const (
 	// anyRedirectSQL asks whether the tombstone table holds anything, once per
 	// snapshot (see DB.hasRedirects).
@@ -904,8 +912,8 @@ func (s *DB) workISBNs(ctx context.Context, workID string) ([]string, error) {
 // construction means no future recordingDetail surface can silently omit them
 // (omitempty would hide the gap).
 func (s *DB) recordingsBase(ctx context.Context, workID string) ([]RecordingDetail, error) {
-	librivox := s.hasLibrivoxLayer()
-	rows, err := s.db.QueryContext(ctx, recordingsOfSQL(librivox), workID)
+	librivox, store := s.hasLibrivoxLayer(), s.hasStoreLinks()
+	rows, err := s.db.QueryContext(ctx, recordingsOfSQL(librivox, store), workID)
 	if err != nil {
 		return nil, err
 	}
@@ -915,10 +923,13 @@ func (s *DB) recordingsBase(ctx context.Context, workID string) ([]RecordingDeta
 		var rd RecordingDetail
 		var abridged int
 		var runtime, lvID, copyright sql.NullInt64
-		var release, publisher, cover, archive, lvLink, zip, rss, text sql.NullString
+		var release, publisher, cover, archive, lvLink, zip, rss, text, guild, graphic sql.NullString
 		dst := []any{&rd.ID, &abridged, &runtime, &release, &publisher, &cover}
 		if librivox {
 			dst = append(dst, &lvID, &archive, &lvLink, &zip, &rss, &text, &copyright)
+		}
+		if store {
+			dst = append(dst, &guild, &graphic)
 		}
 		if err := rows.Scan(dst...); err != nil {
 			return nil, err
@@ -931,7 +942,10 @@ func (s *DB) recordingsBase(ctx context.Context, workID string) ([]RecordingDeta
 		rd.LibrivoxID = int(lvID.Int64)
 		rd.ArchiveID = archive.String
 		rd.CopyrightYear = int(copyright.Int64)
-		if links := (model.RecordingLinks{Librivox: lvLink.String, Zip: zip.String, RSS: rss.String, Text: text.String}); links != (model.RecordingLinks{}) {
+		if links := (model.RecordingLinks{
+			Librivox: lvLink.String, Zip: zip.String, RSS: rss.String, Text: text.String,
+			AudiobookGuild: guild.String, GraphicAudio: graphic.String,
+		}); links != (model.RecordingLinks{}) {
 			rd.Links = &links
 		}
 		recs = append(recs, rd)
@@ -950,7 +964,8 @@ func (s *DB) recordingsBase(ctx context.Context, workID string) ([]RecordingDeta
 		if recs[i].ISBN, err = s.recordingISBNs(ctx, workID, rid); err != nil {
 			return nil, err
 		}
-		recs[i].PurchaseLinks = append(librivoxPurchaseLinks(recs[i]), derivedPurchaseLinks(recs[i].ASIN, recs[i].ISBN)...)
+		recs[i].PurchaseLinks = slices.Concat(librivoxPurchaseLinks(recs[i]), storePurchaseLinks(recs[i].Links),
+			derivedPurchaseLinks(recs[i].ASIN, recs[i].ISBN))
 	}
 	return recs, nil
 }
@@ -970,11 +985,15 @@ func (s *DB) recordingsOf(ctx context.Context, workID string) ([]RecordingDetail
 }
 
 // recordingsOfSQL reads a work's recordings, with the LibriVox columns from
-// librivoxSchemaVersion on (an older artifact has none of them to name).
-func recordingsOfSQL(librivox bool) string {
+// librivoxSchemaVersion on and the store links from storeLinksSchemaVersion on
+// (an older artifact has none of them to name).
+func recordingsOfSQL(librivox, store bool) string {
 	cols := `id, abridged, runtime_min, release_date, publisher, cover_url`
 	if librivox {
 		cols += `, librivox_id, archive_id, link_librivox, link_zip, link_rss, link_text, copyright_year`
+	}
+	if store {
+		cols += `, ` + storeLinkColumns
 	}
 	return `SELECT ` + cols + ` FROM recordings WHERE work_id=? ORDER BY id`
 }

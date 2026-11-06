@@ -111,6 +111,8 @@ describe('retailerLabel', () => {
   it('names the region-less retailers', () => {
     expect(retailerLabel('libro-fm')).toBe('Libro.fm')
     expect(retailerLabel('librivox')).toBe('LibriVox')
+    expect(retailerLabel('audiobookguild')).toBe('Audiobook Guild')
+    expect(retailerLabel('graphicaudio')).toBe('GraphicAudio')
   })
   it('prints an unknown retailer as stated rather than dropping it', () => {
     expect(retailerLabel('some-shop')).toBe('some-shop')

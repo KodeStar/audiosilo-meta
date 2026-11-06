@@ -278,7 +278,8 @@ func TestCardCarriesLanguageOnEverySurface(t *testing.T) {
 // fails here (TestMaxSchemaVersionIsTheBuilders ties it to the builder).
 func TestMaxSchemaVersionIsTheNewestGate(t *testing.T) {
 	newest := max(sidecarSchemaVersion, summarySchemaVersion, genresSchemaVersion,
-		redirectSchemaVersion, descriptionSchemaVersion, languagesSchemaVersion, librivoxSchemaVersion, librivoxRecordingSchemaVersion, positionScaleSchemaVersion)
+		redirectSchemaVersion, descriptionSchemaVersion, languagesSchemaVersion, librivoxSchemaVersion, librivoxRecordingSchemaVersion, positionScaleSchemaVersion,
+		storeLinksSchemaVersion)
 	if MaxSchemaVersion != newest {
 		t.Errorf("MaxSchemaVersion = %d, the newest version gate is %d", MaxSchemaVersion, newest)
 	}

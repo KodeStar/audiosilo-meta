@@ -198,13 +198,13 @@ type LanguageCount struct {
 
 // MaxSchemaVersion is the newest artifact schema_version this code understands:
 // internal/build.SchemaVersion, which TestMaxSchemaVersionIsTheBuilders pins it
-// to, and the newest of the version gates below (librivoxRecordingSchemaVersion). An
+// to, and the newest of the version gates below (storeLinksSchemaVersion). An
 // artifact NEWER than it still opens and serves (every optional read is gated
 // with >=); the consumer that embeds this package (a mirror-mode AudioSilo
 // server) shows that its copy is newer than it understands. Artifact schema
 // changes must therefore stay ADDITIVE - new tables and columns - because such
 // consumers lag.
-const MaxSchemaVersion = 10
+const MaxSchemaVersion = 11
 
 // Open opens the artifact at path read-only and runs the load-time integrity
 // checks (loadStats: a schema_version claim without the tables it implies is a
@@ -384,6 +384,14 @@ func (s *DB) loadStats() error {
 		}
 		if err := s.db.QueryRow(librivoxRecordingFilledSQL).Scan(&s.librivoxRecordingFilled); err != nil {
 			return fmt.Errorf("%s: LibriVox recording layer: %w", s.path, err)
+		}
+	}
+	// The STORE LINKS (version 11), the same way: every work page's recordings
+	// read the columns.
+	if s.hasStoreLinks() {
+		if _, err := s.db.Exec(storeLinksShapeSQL); err != nil {
+			return fmt.Errorf("%s: artifact schema_version %d requires the store link columns: %w",
+				s.path, s.schemaVersion, err)
 		}
 	}
 	s.stats = st

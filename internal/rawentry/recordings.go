@@ -3,6 +3,8 @@ package rawentry
 import (
 	"encoding/json"
 	"fmt"
+	"maps"
+	"slices"
 	"strings"
 )
 
@@ -165,8 +167,10 @@ type RecordingLoss struct {
 // 42 used to keep the 3. Measured over a 386-merge wave, 4 of 40 dropped lists were richer
 // than the one kept, and a full wave discarded about 7,198 chapter entries.
 //
-// The LibriVox facts ride the same rules: archive_id fills like any string, and
-// librivox_id, links and copyright_year like the byte-exact members, so a merged
+// The LibriVox facts ride the same rules: archive_id fills like any string,
+// librivox_id and copyright_year like the byte-exact members, and links per KEY
+// (mergeLinks: a store page on one side and another store's on the other are
+// both kept), so a merged
 // recording keeps every one either side states (SameProduction admits a LibriVox
 // recording only beside one of the same project, so the id itself never
 // conflicts). A chapter's audio_url travels with its list.
@@ -186,7 +190,8 @@ func MergeRecordings(keep, mover Obj) (Obj, []RecordingLoss) {
 	// The tri-state and byte-exact members: an absent abridged is "unknown" and a false one
 	// is a statement, and a chapter list is a timeline whose numbers must survive exactly as
 	// they were written, so it is moved as BYTES either way.
-	for _, field := range []string{"abridged", "runtime_min", "publishers", "librivox_id", "links", "copyright_year"} {
+	lost = append(lost, mergeLinks(out, mover)...)
+	for _, field := range []string{"abridged", "runtime_min", "publishers", "librivox_id", "copyright_year"} {
 		if FillAbsentRaw(out, mover, field) {
 			continue
 		}
@@ -198,6 +203,35 @@ func MergeRecordings(keep, mover Obj) (Obj, []RecordingLoss) {
 		lost = append(lost, f)
 	}
 	return out, lost
+}
+
+// mergeLinks folds the mover's links into the keeper's one key at a time: a key
+// only the mover states is filled, and a key both state differently keeps the
+// keeper's URL and is reported as "links.<key>". A links member that is not an
+// object of strings (a hand edit the schema will refuse) is filled whole when
+// the keeper has none, and otherwise reported whole, as the byte-exact members
+// are.
+func mergeLinks(out, mover Obj) []RecordingLoss {
+	if FillAbsentRaw(out, mover, "links") || !mover.Has("links") || sameRawMember(out, mover, "links") {
+		return nil
+	}
+	var kept, moved map[string]string
+	if json.Unmarshal(out["links"], &kept) != nil || json.Unmarshal(mover["links"], &moved) != nil {
+		return []RecordingLoss{{Field: "links", Kept: factValue(out["links"]), Dropped: factValue(mover["links"]), DroppedRaw: mover["links"]}}
+	}
+	var lost []RecordingLoss
+	for _, key := range slices.Sorted(maps.Keys(moved)) {
+		have, ok := kept[key]
+		switch {
+		case !ok:
+			kept[key] = moved[key]
+		case have != moved[key]:
+			raw, _ := json.Marshal(moved[key])
+			lost = append(lost, RecordingLoss{Field: "links." + key, Kept: have, Dropped: moved[key], DroppedRaw: raw})
+		}
+	}
+	out.Set("links", kept)
+	return lost
 }
 
 // chooseChapters keeps the longer of the two chapter lists and reports the choice. A list

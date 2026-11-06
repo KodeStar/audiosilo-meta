@@ -306,13 +306,20 @@ type Chapter struct {
 
 // RecordingLinks is where a recording is published, each URL as its source
 // stated it (https only): the catalogue page, a zip of every file, the podcast
-// feed, and the text the recording reads from (LibriVox's url_text_source).
-// Only a LibriVox recording carries them today.
+// feed, and the text the recording reads from (LibriVox's url_text_source) on a
+// LibriVox recording; and the product page in a STORE that sells the recording
+// outside the identifier-derived retailers (storelinks.go: Audiobook Guild,
+// GraphicAudio), on a recording a store listing stated.
 type RecordingLinks struct {
 	Librivox string `json:"librivox,omitempty"`
 	Zip      string `json:"zip,omitempty"`
 	RSS      string `json:"rss,omitempty"`
 	Text     string `json:"text,omitempty"`
+	// AudiobookGuild and GraphicAudio are store product pages, as the store
+	// states them. pkg/check holds each to its store's host (StoreLinkHostOK)
+	// and unique across the dataset.
+	AudiobookGuild string `json:"audiobookguild,omitempty"`
+	GraphicAudio   string `json:"graphicaudio,omitempty"`
 }
 
 // Recording is a specific narration/production of a work.

@@ -811,8 +811,9 @@ func (c *composer) recordingSources(ref recRef) []model.Source {
 
 // mirrorNames is the name a verdict gives each bulk-mirror source type.
 var mirrorNames = map[string]string{
-	model.SourceLibexImport: "libex",
-	model.SourceLibrivox:    "LibriVox",
+	model.SourceLibexImport:  "libex",
+	model.SourceLibrivox:     "LibriVox",
+	model.SourceStoreListing: "store listing",
 }
 
 // seededFrom names the bulk mirror(s) among sources as a verdict states them:
