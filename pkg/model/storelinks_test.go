@@ -41,6 +41,9 @@ func TestStoreLinkOK(t *testing.T) {
 		{StoreAudiobookGuild, "https://audiobookguild.com", false},
 		{StoreAudiobookGuild, "https://audiobookguild.com/", false},
 		{StoreGraphicAudio, "https://www.graphicaudio.net/", false},
+		// StoreLinkKey drops trailing slashes, so a path of slashes alone keys
+		// as the homepage and is refused as one.
+		{StoreGraphicAudio, "https://www.graphicaudio.net//", false},
 	}
 	for _, c := range cases {
 		if got := StoreLinkOK(c.store, c.url); got != c.want {
@@ -133,9 +136,6 @@ func TestStoreLinkKey(t *testing.T) {
 	// The path is the store's: its case and a query are kept.
 	if StoreLinkKey("https://audiobookguild.com/products/Without-Law-17") == StoreLinkKey(same[0]) {
 		t.Error("a path differing in case must key apart")
-	}
-	if got, want := StoreLinkKey("https://www.graphicaudio.net/"), StoreLinkKey("https://graphicaudio.net"); got != want {
-		t.Errorf("a bare host keys %q with its slash, %q without", got, want)
 	}
 	if got := StoreLinkKey("http://audiobookguild.com/x"); got != "http://audiobookguild.com/x" {
 		t.Errorf("a non-https link keys as itself, got %q", got)

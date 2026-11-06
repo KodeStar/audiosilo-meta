@@ -76,15 +76,16 @@ func KnownStore(key string) bool {
 // url.Parse lowercases a scheme, so it alone would pass "HTTPS://...", which
 // the schema refuses. A query or fragment is refused because StoreLinkKey is
 // the URL itself: a tracking or variant parameter would make one page two
-// keys, so the dedupe and pkg/check's uniqueness would miss it. An empty path
-// or "/" is the store's homepage, never a book. An unknown store answers false.
+// keys, so the dedupe and pkg/check's uniqueness would miss it. A path of
+// nothing but "/" (StoreLinkKey's fold) is the store's homepage, never a book.
+// An unknown store answers false.
 func StoreLinkOK(store, raw string) bool {
 	s, ok := storeOf(store)
 	if !ok || !strings.HasPrefix(raw, "https://") || strings.ContainsAny(raw, "?#") {
 		return false
 	}
 	u, err := url.Parse(raw)
-	if err != nil || u.User != nil || u.Port() != "" || u.Path == "" || u.Path == "/" {
+	if err != nil || u.User != nil || u.Port() != "" || strings.Trim(u.Path, "/") == "" {
 		return false
 	}
 	return slices.Contains(s.hosts, strings.ToLower(u.Hostname()))
@@ -128,9 +129,8 @@ func (l *RecordingLinks) SetStore(store, link string) bool {
 // StoreLinkKey is the identity of a store link: the URL past its scheme, with
 // the host lowercased and a leading "www." dropped (each store answers on both
 // spellings, StoreLinkOK), the path as the store states it less any trailing
-// "/" (the stores serve "/products/x" and "/products/x/" as one page; StoreLinkOK
-// refuses a query string or fragment, so the path is the whole page). The
-// stored link keeps the spelling it was given; only the key folds.
+// "/" (one page either way). StoreLinkOK refuses a query string or fragment,
+// so the path is the whole page.
 // pkg/check holds it unique across the dataset and the store-listing import
 // deduplicates on it, so the two agree on what "the same page" is. A link that
 // is not an absolute https URL keys as itself.
