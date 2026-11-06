@@ -566,9 +566,10 @@ it, `pkg/check` and every writer now refuse it loudly.
   `metaimport librivox`, whose rerun over a snapshot restates them on held
   recordings). A recording sold by a store the identifier-derived links do not
   reach carries that store's product page in `links.audiobookguild` /
-  `links.graphicaudio` (https, as the store states it; pkg/check holds each to its
-  store's host and unique across the dataset through `model.StoreLinkKey`; the
-  vocabulary is `pkg/model/storelinks.go`), written by `metaimport store`, a
+  `links.graphicaudio` (https, as the store states it; pkg/check holds each to a
+  page on its store's host with no query string or fragment, `model.StoreLinkOK`,
+  and unique across the dataset through `model.StoreLinkKey`; the vocabulary is
+  `pkg/model/storelinks.go`), written by `metaimport store`, a
   maintainer's reviewed listing file under source type `store-listing`
   (LICENSING.md "Store listings"; PACKAGES.md `internal/importer`). One work,
   many recordings (Harry Potter: Stephen Fry AND Jim Dale, each with its own

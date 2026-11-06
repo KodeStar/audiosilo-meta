@@ -316,7 +316,7 @@ type RecordingLinks struct {
 	RSS      string `json:"rss,omitempty"`
 	Text     string `json:"text,omitempty"`
 	// AudiobookGuild and GraphicAudio are store product pages, as the store
-	// states them. pkg/check holds each to its store's host (StoreLinkHostOK)
+	// states them. pkg/check holds each to its store's host (StoreLinkOK)
 	// and unique across the dataset.
 	AudiobookGuild string `json:"audiobookguild,omitempty"`
 	GraphicAudio   string `json:"graphicaudio,omitempty"`

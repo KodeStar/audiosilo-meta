@@ -69,21 +69,30 @@ func KnownStore(key string) bool {
 	return ok
 }
 
-// StoreLinkHostOK reports whether raw is an https URL on one of store's hosts
-// (the host case-insensitive, no port, no credentials). The scheme is the
+// StoreLinkOK reports whether raw is a product page on one of store's hosts:
+// an https URL (the host case-insensitive, no port, no credentials) with a
+// path past the host and no query string or fragment. The scheme is the
 // literal "https://" the schema's https_url requires and StoreLinkKey cuts:
 // url.Parse lowercases a scheme, so it alone would pass "HTTPS://...", which
-// the schema refuses. An unknown store answers false.
-func StoreLinkHostOK(store, raw string) bool {
+// the schema refuses. A query or fragment is refused because StoreLinkKey is
+// the URL itself: a tracking or variant parameter would make one page two
+// keys, so the dedupe and pkg/check's uniqueness would miss it. An empty path
+// or "/" is the store's homepage, never a book. An unknown store answers false.
+func StoreLinkOK(store, raw string) bool {
 	s, ok := storeOf(store)
-	if !ok || !strings.HasPrefix(raw, "https://") {
+	if !ok || !strings.HasPrefix(raw, "https://") || strings.ContainsAny(raw, "?#") {
 		return false
 	}
 	u, err := url.Parse(raw)
-	if err != nil || u.User != nil || u.Port() != "" {
+	if err != nil || u.User != nil || u.Port() != "" || u.Path == "" || u.Path == "/" {
 		return false
 	}
 	return slices.Contains(s.hosts, strings.ToLower(u.Hostname()))
+}
+
+// StoreLinkRule names what StoreLinkOK requires, for a refusal that quotes it.
+func StoreLinkRule(store string) string {
+	return "an https page on " + strings.Join(StoreHosts(store), " or ") + " (a path past the host, no query string or fragment)"
 }
 
 // StoreHosts returns a copy of store's hosts, for a refusal that names them.
@@ -118,7 +127,8 @@ func (l *RecordingLinks) SetStore(store, link string) bool {
 
 // StoreLinkKey is the identity of a store link: the URL past its scheme, with
 // the host lowercased and a leading "www." dropped (each store answers on both
-// spellings, StoreLinkHostOK), the path and query as the store states them.
+// spellings, StoreLinkOK), the path as the store states it (StoreLinkOK refuses a
+// query string or fragment, so the path is the whole page).
 // pkg/check holds it unique across the dataset and the store-listing import
 // deduplicates on it, so the two agree on what "the same page" is. A link that
 // is not an absolute https URL keys as itself.

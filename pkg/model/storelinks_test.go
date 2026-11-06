@@ -9,7 +9,7 @@ import (
 	"testing"
 )
 
-func TestStoreLinkHostOK(t *testing.T) {
+func TestStoreLinkOK(t *testing.T) {
 	cases := []struct {
 		store, url string
 		want       bool
@@ -32,10 +32,19 @@ func TestStoreLinkHostOK(t *testing.T) {
 		{StoreAudiobookGuild, "https://user@audiobookguild.com/products/x", false},
 		{StoreAudiobookGuild, "/products/x", false},
 		{"audible", "https://www.audible.com/pd/B000000000", false},
+		// StoreLinkKey is the URL itself, so a query string or fragment (even an
+		// empty one) would make one page two keys; a bare homepage is no book.
+		{StoreAudiobookGuild, "https://audiobookguild.com/products/x?variant=1", false},
+		{StoreAudiobookGuild, "https://audiobookguild.com/products/x?", false},
+		{StoreGraphicAudio, "https://www.graphicaudio.net/x.html#reviews", false},
+		{StoreGraphicAudio, "https://www.graphicaudio.net/x.html#", false},
+		{StoreAudiobookGuild, "https://audiobookguild.com", false},
+		{StoreAudiobookGuild, "https://audiobookguild.com/", false},
+		{StoreGraphicAudio, "https://www.graphicaudio.net/", false},
 	}
 	for _, c := range cases {
-		if got := StoreLinkHostOK(c.store, c.url); got != c.want {
-			t.Errorf("StoreLinkHostOK(%q, %q) = %v, want %v", c.store, c.url, got, c.want)
+		if got := StoreLinkOK(c.store, c.url); got != c.want {
+			t.Errorf("StoreLinkOK(%q, %q) = %v, want %v", c.store, c.url, got, c.want)
 		}
 	}
 }

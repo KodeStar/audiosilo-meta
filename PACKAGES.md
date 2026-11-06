@@ -1178,8 +1178,9 @@ recording's product page in a store the identifier-derived purchase links cannot
 reach (`links.audiobookguild`, `links.graphicaudio`; the store vocabulary and
 hosts are `pkg/model/storelinks.go`, with `TestStoreKeysMatchTheSchema` holding
 it, the schema and `RecordingLinks` in step). pkg/check (`storelinks.go`) holds
-each link to its store's host (`model.StoreLinkHostOK`: https, no port or
-credentials, the bare or `www.` host) and unique across the dataset by
+each link to its store's host (`model.StoreLinkOK`: https, no port or
+credentials, the bare or `www.` host, a path past the host, no query string
+or fragment) and unique across the dataset by
 `model.StoreLinkKey` (host case and a leading `www.` folded), the same key the
 importer dedups on. internal/build writes `recordings.link_audiobookguild` /
 `link_graphicaudio`; loadStats proves a version 11 claim (`storeLinksShapeSQL`);
@@ -1197,12 +1198,15 @@ on `store`, so a one-row file is a row), source type `store-listing`
 `--existing-series-only`, `--conflicts`), facts only - title, subtitle,
 authors, narrators, series, `lengthMinutes`, `releaseDate`, `publisher`,
 `imageUrl`, `language`; nothing else in the row is read, and a row carrying an
-`asin` is refused for the libex import. A row whose page is held is a skip; a row
-landing on a held production (same narrators, compatible runtime, no abridged or
-series-position conflict) adds its page to that recording (`StoreLinksAdded`), or
-is refused when that recording states another page for the store; otherwise it is
-a new recording or work through the ordinary identity, duplicate and person
-rules.
+`asin` is refused for the libex import, and so is a `url` `model.StoreLinkOK`
+refuses. A row whose page is held is a skip. A row with a same-narrator retail
+recording of its work adds its page to that recording (`StoreLinksAdded`) only
+when exactly ONE such recording is provably its production (both sides state a
+runtime, the runtimes are compatible, no abridged or series-position conflict:
+the ISBN attach's rule); none or several, or the one stating another page for
+the store, refuses the row with a warning and creates nothing (`landStoreLink`).
+A row with no same-narrator sibling is a new recording or work through the
+ordinary identity, duplicate and person rules.
 
 **The RATE LIMIT and CACHE HEADERS (internal/serve ratelimit.go, cache.go).** Every API
 route wears `Server.public` = gzip(CORS(limit(h))), so the limit is inside CORS
