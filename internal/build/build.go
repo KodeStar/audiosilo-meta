@@ -37,13 +37,16 @@ import (
 // LibriVox project's own title, section numbers, translators, section readers
 // and genre names) and recording_sources.added_at (the source-filtered
 // works/latest's order); bumped to 10 when the community position_scales table
-// (the ruler a work's sidecars are numbered on) arrived.
+// (the ruler a work's sidecars are numbered on) arrived; bumped to 11 when the
+// STORE LINKS arrived - recordings.link_audiobookguild and
+// recordings.link_graphicaudio (a recording's product page in a store the
+// identifier-derived purchase links do not reach).
 //
 // It versions what a reader may SELECT, so it is bumped only when a table or
 // column appears. Adding an index is invisible to every reader (the same rows
 // come back, faster), so the index additions below did not bump it - an older
 // artifact without them still serves correctly, just more slowly.
-const SchemaVersion = 10
+const SchemaVersion = 11
 
 const ddl = `
 CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
@@ -105,6 +108,11 @@ CREATE TABLE recordings (
   -- schema_version 9: the LibriVox project's own title, markers kept (the
   -- LibriVox feed's title). NULL for every other recording.
   librivox_title TEXT,
+  -- schema_version 11: the recording's store product pages (links.audiobookguild,
+  -- links.graphicaudio), as the store states them. NULL for every recording a
+  -- store listing did not state.
+  link_audiobookguild TEXT,
+  link_graphicaudio   TEXT,
   PRIMARY KEY (work_id, id)
 );
 -- lookup?librivox_id= and the LibriVox feed (its id filter, and its pages in
@@ -538,7 +546,7 @@ func prepareStmts(tx *sql.Tx) (*stmts, func(), error) {
 		{&s.workCredit, `INSERT INTO work_credits(work_id, person_id, role, ord) VALUES(?,?,?,?)`},
 		{&s.workFTS, `INSERT INTO search_fts(kind, id, title, names, language) VALUES('work', ?, ?, ?, ?)`},
 
-		{&s.recording, `INSERT INTO recordings(work_id, id, abridged, language, runtime_min, release_date, publisher, cover_url, license, librivox_id, archive_id, link_librivox, link_zip, link_rss, link_text, copyright_year, added_at, librivox_title) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`},
+		{&s.recording, `INSERT INTO recordings(work_id, id, abridged, language, runtime_min, release_date, publisher, cover_url, license, librivox_id, archive_id, link_librivox, link_zip, link_rss, link_text, copyright_year, added_at, librivox_title, link_audiobookguild, link_graphicaudio) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`},
 		{&s.recCredit, `INSERT INTO recording_credits(work_id, recording_id, person_id, role, ord) VALUES(?,?,?,?,?)`},
 		{&s.recGenre, `INSERT INTO recording_librivox_genres(work_id, recording_id, genre, ord) VALUES(?,?,?,?)`},
 		{&s.chapterReader, `INSERT INTO chapter_readers(work_id, recording_id, chapter_idx, person_id, ord) VALUES(?,?,?,?,?)`},
@@ -668,6 +676,7 @@ func insertRecording(st *stmts, workID string, r *model.Recording) error {
 		workID, r.ID, boolInt(r.Abridged), r.Language, nullInt(r.RuntimeMin), nullStr(r.ReleaseDate), nullStr(r.Publisher), nullStr(r.CoverURL), r.License,
 		nullInt(r.LibrivoxID), nullStr(r.ArchiveID), nullStr(links.Librivox), nullStr(links.Zip), nullStr(links.RSS), nullStr(links.Text),
 		nullInt(r.CopyrightYear), addedAtOf(r.AddedAt, r.Sources), nullStr(r.LibrivoxTitle),
+		nullStr(links.AudiobookGuild), nullStr(links.GraphicAudio),
 	); err != nil {
 		return err
 	}

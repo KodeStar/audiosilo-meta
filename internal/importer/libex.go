@@ -371,6 +371,39 @@ func libexToBook(e rawBook, asin, region string, authors, narrators []string, lp
 	raw["asin"] = asin
 	raw["region"] = region
 
+	sb.authors = authors
+	sb.narrators = narrators
+	// The schema requires an https cover URL, so an http one cannot be
+	// recorded - but dropping a stated fact silently hides that the row HAD a
+	// cover.
+	libexSharedFacts(e, &sb, func(img string) {
+		lp.add(warnCoverNotHTTPS, asin, "%s: cover URL %q is not https; dropped", asin, img)
+	})
+	// updatedAt is when libex last wrote the row: the day the row was CAPTURED as
+	// the preorder-estimate rule reads it (planner.rowDay), cut to its UTC day.
+	// A row not written since before its release still holds the preorder
+	// listing, however late it is read.
+	if day := model.TimeKey(e.str("updatedAt")); len(day) >= 10 && datePattern.MatchString(day[:10]) {
+		sb.capturedAt = day[:10]
+	}
+	sb.productState = e.str("productState")
+	// bookFormat states the edition when libex knows it; anything else leaves
+	// abridged unknown for runBooks' title-marker derivation to seed.
+	sb.abridged = libexAbridged(e.str("bookFormat"))
+	sb.genres = libexGenreClaims(e["genres"], lp.intern)
+	sb.isbns = sourceISBNs(e["isbn"], func(raw string) {
+		lp.add(warnMalformedISBN, asin, "%s: ISBN %q is malformed; dropped", asin, raw)
+	})
+	sb.chapters = e.chapters()
+	return sb
+}
+
+// libexSharedFacts translates the factual keys a libex row and a store-listing
+// row (store.go) share: the title pair, language, publisher, release date,
+// cover, runtime and series claims. dropCover hears a cover URL that is not
+// https, which the schema cannot record.
+func libexSharedFacts(e rawBook, sb *sourceBook, dropCover func(img string)) {
+	raw := sb.raw
 	// title_short is the work title; title is the fuller "Title: Subtitle"
 	// (mirrors the OpenAudible/Libation short/full split). The subtitle is never
 	// emitted as work.subtitle: an Audible subtitle is usually marketing or a
@@ -386,11 +419,8 @@ func libexToBook(e rawBook, asin, region string, authors, narrators []string, lp
 	} else {
 		raw["title"] = title
 	}
-
-	sb.authors = authors
-	sb.narrators = narrators
 	if lang := e.str("language"); lang != "" {
-		raw["language"] = lang // a word ("english"); mapLanguage resolves it
+		raw["language"] = lang // a word ("english") or a code; mapLanguage resolves it
 	}
 	if pub := e.str("publisher"); pub != "" {
 		raw["publisher"] = pub
@@ -398,37 +428,17 @@ func libexToBook(e rawBook, asin, region string, authors, narrators []string, lp
 	if rd := isoDatePart(e.str("releaseDate")); rd != "" {
 		raw["release_date"] = rd
 	}
-	// updatedAt is when libex last wrote the row: the day the row was CAPTURED as
-	// the preorder-estimate rule reads it (planner.rowDay), cut to its UTC day.
-	// A row not written since before its release still holds the preorder
-	// listing, however late it is read.
-	if day := model.TimeKey(e.str("updatedAt")); len(day) >= 10 && datePattern.MatchString(day[:10]) {
-		sb.capturedAt = day[:10]
-	}
-	sb.productState = e.str("productState")
 	if img := e.str("imageUrl"); img != "" {
 		if strings.HasPrefix(img, "https://") {
 			raw["image_url"] = img
 		} else {
-			// The schema requires an https cover URL, so an http one cannot be
-			// recorded - but dropping a stated fact silently hides that the row
-			// HAD a cover.
-			lp.add(warnCoverNotHTTPS, asin, "%s: cover URL %q is not https; dropped", asin, img)
+			dropCover(img)
 		}
 	}
 	if mins, ok := coerceInt(e["lengthMinutes"]); ok && mins > 0 {
 		sb.runtimeMin = int(mins)
 	}
-	// bookFormat states the edition when libex knows it; anything else leaves
-	// abridged unknown for runBooks' title-marker derivation to seed.
-	sb.abridged = libexAbridged(e.str("bookFormat"))
 	sb.series = libexSeries(e["series"])
-	sb.genres = libexGenreClaims(e["genres"], lp.intern)
-	sb.isbns = sourceISBNs(e["isbn"], func(raw string) {
-		lp.add(warnMalformedISBN, asin, "%s: ISBN %q is malformed; dropped", asin, raw)
-	})
-	sb.chapters = e.chapters()
-	return sb
 }
 
 // libexNames reads a credits array ([{name: "..."}]) as the list of names

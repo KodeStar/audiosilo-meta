@@ -403,6 +403,25 @@ it lands as human-reviewed tranches (`metaimport librivox import --ids <range>`,
 about 2,000 projects per pull request) under the ordinary merge policy. The
 lane's review, cap and merge rules are written here when L4 is built.
 
+## Store listings (maintainer imports)
+
+A maintainer may import a store's public listing for books they name (Audiobook
+Guild and GraphicAudio today), under [LICENSING.md's store listings
+section](LICENSING.md#store-listings-a-maintainer-named-import), which is the
+whole of its licence:
+
+- the input is a reviewed file of the named listings (`metaimport store`), and
+  the result is an ordinary `data/` pull request under the merge policy above;
+  it never runs on a schedule;
+- the series-completion bot and the LibriVox lane do not use it, and neither may
+  start to without a change to this section first;
+- it brings facts only (no blurbs, ratings, prices or store genres) and goes
+  through the importer's identity, duplicate and person rules, never a
+  hand-written pack edit.
+
+How contributors and the bot handle such stores in the long run is a later
+decision, recorded here when it is made.
+
 ## The steward (the maintainer's reviewer)
 
 The maintainer's review of data pull requests and data issues is carried out by

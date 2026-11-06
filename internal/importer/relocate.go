@@ -491,11 +491,42 @@ func (p *planner) noteRelocationLosses(rec *model.Recording, target, id string, 
 		dropped := mover[field]
 		if value, lost := lostRaw[field]; lost {
 			dropped = value
+		} else if field == "links" {
+			// links merge per KEY (rawentry.mergeLinks), so the landed object may
+			// hold the sibling's keys beside the mover's: only a mover key that
+			// did not land as it was is discarded.
+			if dropped = discardedKeys(mover[field], landed[field]); dropped == nil {
+				continue
+			}
 		}
 		if !reflect.DeepEqual(rawentry.DecodeOr[any](dropped), rawentry.DecodeOr[any](landed[field])) {
 			p.summary.Notes = append(p.summary.Notes, fmt.Sprintf("%s merged into %s/%s: discarded %s=%s", recLabel(rec.Work, rec.ID), target, id, field, dropped))
 		}
 	}
+}
+
+// discardedKeys is the members of the mover's object that did not land as they
+// were, beside a landed object a per-key merge may have added members to: nil
+// when every one landed, the mover's whole value when either is not an object.
+func discardedKeys(mover, landed json.RawMessage) json.RawMessage {
+	var m, l map[string]json.RawMessage
+	if json.Unmarshal(mover, &m) != nil || json.Unmarshal(landed, &l) != nil {
+		return mover
+	}
+	lost := map[string]json.RawMessage{}
+	for k, v := range m {
+		if !reflect.DeepEqual(rawentry.DecodeOr[any](v), rawentry.DecodeOr[any](l[k])) {
+			lost[k] = v
+		}
+	}
+	if len(lost) == 0 {
+		return nil
+	}
+	out, err := json.Marshal(lost)
+	if err != nil {
+		return mover
+	}
+	return out
 }
 
 // SameSlot also sees numeric equivalents such as 1 and 1.0. Leave a held

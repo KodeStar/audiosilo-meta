@@ -2,6 +2,7 @@ package importer
 
 import (
 	"fmt"
+	"maps"
 	"os"
 	"reflect"
 	"strings"
@@ -51,11 +52,17 @@ func recordingsSeedFiles() map[string]string {
 	}
 }
 
-// seedRecordingsTree writes the base catalogue into a fresh temp data dir.
-func seedRecordingsTree(t *testing.T) string {
+// seedRecordingsTree writes the base catalogue, with any extra records added or
+// replaced, into a fresh temp data dir in one write (a work's recordings share
+// its entry).
+func seedRecordingsTree(t *testing.T, extra ...map[string]string) string {
 	t.Helper()
+	files := recordingsSeedFiles()
+	for _, e := range extra {
+		maps.Copy(files, e)
+	}
 	dataDir := t.TempDir()
-	seedTree(t, dataDir, recordingsSeedFiles())
+	seedTree(t, dataDir, files)
 	return dataDir
 }
 

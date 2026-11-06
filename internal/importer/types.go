@@ -340,6 +340,9 @@ type Summary struct {
 	// same-work, same-narrator entry whose only new fact was another ASIN),
 	// rather than minting a sibling work or dropping the ASIN.
 	MergedASINs int
+	// StoreLinksAdded counts store pages a store-listing row added to a
+	// recording the catalogue already held as its production (store.go).
+	StoreLinksAdded int
 	// EnrichedWorks / EnrichedRecordings count the existing records a run
 	// changed by FILLING facts they did not carry (a record whose every fact was
 	// already present is not counted - a run never rewrites a record it did not
@@ -655,7 +658,7 @@ type Summary struct {
 // Enriched*/Matched/NotInCatalog family, which only a libex mode ever sets.
 func (s Summary) Produced() int {
 	return s.NewWorks + s.NewRecordings + s.NewPeople + s.NewSeries + s.MergedASINs +
-		s.AttestedWorks + s.AttestedRecordings + s.GenreWorks + s.ISBNRecordings
+		s.AttestedWorks + s.AttestedRecordings + s.GenreWorks + s.ISBNRecordings + s.StoreLinksAdded
 }
 
 // RowWarnings is the per-row tail of Warnings: the lines that each name one

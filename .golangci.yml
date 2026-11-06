@@ -92,6 +92,7 @@ linters:
             - github.com/kodestar/audiosilo-meta/internal/rawentry.MoveRecording
             - github.com/kodestar/audiosilo-meta/internal/rawentry.chooseChapters
             - github.com/kodestar/audiosilo-meta/internal/rawentry.fillRecordingStrings
+            - github.com/kodestar/audiosilo-meta/internal/rawentry.mergeLinks
             - github.com/kodestar/audiosilo-meta/internal/repair.fillStrings
             - github.com/kodestar/audiosilo-meta/internal/repair.fillXref
             - github.com/kodestar/audiosilo-meta/internal/repair.foldTranslationOf

@@ -1183,6 +1183,13 @@ type libexRowFn func(raw []byte, e rawBook)
 // to write its kept rows unchanged; the importer never reads them, so it
 // passes false and each row is decoded once, straight into its map.
 func streamLibexRows(r io.Reader, keepRaw bool, fn libexRowFn) error {
+	return streamRows(r, keepRaw, "asin", fn)
+}
+
+// streamRows is streamLibexRows with the lone-object decision keyed on rowKey:
+// the store-listing import (store.go) reads the same shapes, and its rows carry
+// a "store" where a libex row carries an "asin".
+func streamRows(r io.Reader, keepRaw bool, rowKey string, fn libexRowFn) error {
 	br := bufio.NewReaderSize(r, 1<<20)
 	if err := skipBOMAndSpace(br); err != nil {
 		if errors.Is(err, io.EOF) {
@@ -1197,7 +1204,7 @@ func streamLibexRows(r io.Reader, keepRaw bool, fn libexRowFn) error {
 
 	dec := json.NewDecoder(br)
 	dec.UseNumber()
-	s := libexStream{dec: dec, keepRaw: keepRaw, fn: fn}
+	s := libexStream{dec: dec, keepRaw: keepRaw, fn: fn, rowKey: rowKey}
 	switch lead[0] {
 	case '[':
 		if _, err := dec.Token(); err != nil { // the opening '['
@@ -1231,6 +1238,8 @@ type libexStream struct {
 	dec     *json.Decoder
 	keepRaw bool
 	fn      libexRowFn
+	// rowKey is the key that makes a lone object a row rather than a wrapper.
+	rowKey string
 }
 
 // decode reads the next stream value into v, numbers preserved as json.Number
@@ -1276,7 +1285,7 @@ func (s libexStream) element() error {
 // objects consumes a stream of top-level values, each of which must be an
 // object (NDJSON, or a single wrapper/row object); anything else is refused
 // with json's own wording. Only the FIRST object can be a wrapper, and only when
-// it is also the last and carries no "asin".
+// it is also the last and carries no rowKey ("asin" for libex).
 func (s libexStream) objects() error {
 	for first := true; ; first = false {
 		var m map[string]any
@@ -1287,7 +1296,7 @@ func (s libexStream) objects() error {
 			}
 			return err
 		}
-		if _, isRow := m["asin"]; first && !isRow && !s.dec.More() {
+		if _, isRow := m[s.rowKey]; first && !isRow && !s.dec.More() {
 			if err := s.end(); err != nil {
 				return err
 			}

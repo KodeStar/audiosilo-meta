@@ -1173,6 +1173,44 @@ recording), and a
 are person references (`forEachPersonRef`) and recording credits obey the
 credit-pair rule.
 
+**The STORE LINKS (artifact schema_version 11, `storeLinksSchemaVersion`).** A
+recording's product page in a store the identifier-derived purchase links cannot
+reach (`links.audiobookguild`, `links.graphicaudio`; the store vocabulary and
+hosts are `pkg/model/storelinks.go`, with `TestStoreKeysMatchTheSchema` holding
+it, the schema and `RecordingLinks` in step). pkg/check (`storelinks.go`) holds
+each link to its store's host (`model.StoreLinkOK`: https, no port or
+credentials, the bare or `www.` host, a path past the host, no query string
+or fragment) and unique across the dataset by
+`model.StoreLinkKey` (host case and a leading `www.` folded), the same key the
+importer dedups on. internal/build writes `recordings.link_audiobookguild` /
+`link_graphicaudio`; loadStats proves a version 11 claim (`storeLinksShapeSQL`);
+pkg/query reads them into the recording's `links` and adds one purchase link per
+page (`storePurchaseLinks`: `retailer` the store key, `id` the URL,
+availability `unknown`), after the free LibriVox link and before the derived
+Audible and Libro.fm ones. The labels are `html.go` `purchaseLabel` and the
+site's `retailerLabel` ("Audiobook Guild", "GraphicAudio"). internal/rawentry's
+`MergeRecordings` merges `links` per key (`mergeLinks`), so a merge keeps both
+stores' pages and reports a key both sides state differently. The writer is
+`metaimport store` (internal/importer `store.go`): a maintainer's reviewed file in
+the libex row shape with `store` + `url` in place of an ASIN (`streamRows` keyed
+on `store`, so a one-row file is a row), source type `store-listing`
+(TierBulkMirror), create mode only (`--attach-editions`,
+`--existing-series-only`, `--conflicts`), facts only - title, subtitle,
+authors, narrators, series, `lengthMinutes`, `releaseDate`, `publisher`,
+`imageUrl`, `language`; nothing else in the row is read, and a row carrying an
+`asin` is refused for the libex import, and so is a `url` `model.StoreLinkOK`
+refuses. A row whose page is held is a skip. A row with a same-narrator retail
+recording of its work adds its page to that recording (`StoreLinksAdded`) only
+when exactly ONE such recording is provably its production (both sides state a
+runtime, the runtimes are compatible, no abridged or series-position conflict:
+`productionDoubt`, the ISBN attach's per-recording test); none or several, or
+the one stating another page for the store, refuses the row with a warning and
+creates nothing - no work, person or series claim, since addBook asks
+`refusedStoreRow` before the work's people are created (`storeProduction`,
+`landStoreLink`). A row with no same-narrator retail sibling (none, or only
+LibriVox projects) is a new recording or work through the ordinary identity,
+duplicate and person rules.
+
 **The RATE LIMIT and CACHE HEADERS (internal/serve ratelimit.go, cache.go).** Every API
 route wears `Server.public` = gzip(CORS(limit(h))), so the limit is inside CORS
 and a browser can read a 429's `Retry-After` (corsMW exposes it); `/healthz` does not. The limiter

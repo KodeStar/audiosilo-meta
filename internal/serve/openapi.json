@@ -1766,13 +1766,13 @@
       "PurchaseLink": {
         "type": "object",
         "additionalProperties": false,
-        "description": "A non-affiliate retailer URL derived from a recording identifier. It is a convenient route to check the retailer, not a claim that the product is currently listed, licensed for the visitor, or in stock. A LibriVox recording's catalogue page leads the list, marked `free`.",
+        "description": "A non-affiliate retailer URL derived from a recording identifier, or a store product page the recording states. It is a convenient route to check the retailer, not a claim that the product is currently listed, licensed for the visitor, or in stock. A LibriVox recording's catalogue page leads the list, marked `free`; the stated store pages (Audiobook Guild, GraphicAudio) follow it, ahead of the derived Audible and Libro.fm routes.",
         "required": ["retailer", "id", "url", "availability"],
         "properties": {
-          "retailer": { "type": "string", "enum": ["librivox", "audible", "libro-fm"] },
-          "id": { "type": "string", "description": "The source identifier: a LibriVox project id, an ASIN for Audible or a 13-digit recording ISBN for Libro.fm." },
+          "retailer": { "type": "string", "enum": ["librivox", "audiobookguild", "graphicaudio", "audible", "libro-fm"], "description": "Treat an unknown value as a retailer name to display: new retailers are added without a version change." },
+          "id": { "type": "string", "description": "The source identifier: a LibriVox project id, an ASIN for Audible or a 13-digit recording ISBN for Libro.fm. A store page has no identifier, so its id is the page URL itself." },
           "region": { "type": "string", "description": "Audible marketplace region. Omitted for an unscoped recording ISBN." },
-          "url": { "type": "string", "format": "uri", "description": "Derived non-affiliate URL containing no tracking parameters." },
+          "url": { "type": "string", "format": "uri", "description": "Derived non-affiliate URL containing no tracking parameters, or the store page as the store states it." },
           "availability": { "type": "string", "enum": ["unknown"], "description": "The catalogue does not persist volatile retailer availability." },
           "free": { "type": "boolean", "description": "Present only when TRUE: the recording is free to listen to and download (LibriVox, public domain)." }
         }
@@ -1816,7 +1816,7 @@
           },
           "purchase_links": {
             "type": "array",
-            "description": "Derived at response time from this recording's ASINs and 13-digit ISBNs. Omitted when there are no usable identifiers; availability is deliberately not asserted.",
+            "description": "Derived at response time from this recording's LibriVox page, store pages (`links`), ASINs and 13-digit ISBNs. Omitted when there are none; availability is deliberately not asserted.",
             "items": { "$ref": "#/components/schemas/PurchaseLink" }
           },
           "cover_url": { "type": "string", "description": "Remote cover URL. Omitted when none." },
@@ -1824,12 +1824,14 @@
           "archive_id": { "type": "string", "description": "The Internet Archive item holding a LibriVox recording's files. Omitted when unstated." },
           "links": {
             "type": "object",
-            "description": "A LibriVox recording's links, each omitted when unstated; the object itself is omitted when all are.",
+            "description": "Where the recording is published: a LibriVox recording's links, and the product page in a store that sells the recording (`audiobookguild`, `graphicaudio`), each omitted when unstated; the object itself is omitted when all are.",
             "properties": {
               "librivox": { "type": "string", "format": "uri", "description": "The LibriVox catalogue page." },
               "zip": { "type": "string", "format": "uri", "description": "The whole recording as one zip download." },
               "rss": { "type": "string", "format": "uri", "description": "The recording's podcast feed." },
-              "text": { "type": "string", "format": "uri", "description": "The public-domain text it was read from." }
+              "text": { "type": "string", "format": "uri", "description": "The public-domain text it was read from." },
+              "audiobookguild": { "type": "string", "format": "uri", "description": "The recording's product page on the Audiobook Guild store (audiobookguild.com), as the store states it. Needs artifact version 11." },
+              "graphicaudio": { "type": "string", "format": "uri", "description": "The recording's product page on the GraphicAudio store (graphicaudio.net), as the store states it. Needs artifact version 11." }
             }
           },
           "copyright_year": { "type": "integer", "description": "The year the source text was first published or copyrighted, as LibriVox states it; negative for a year BC. Omitted when unstated." },

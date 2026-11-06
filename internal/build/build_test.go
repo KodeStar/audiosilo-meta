@@ -167,7 +167,7 @@ func triples(t *testing.T, db *sql.DB, query string) [][3]string {
 func TestBuildMeta(t *testing.T) {
 	db := buildFixture(t)
 	want := map[string]string{
-		"schema_version":        "10",
+		"schema_version":        "11",
 		"built_at":              "2026-07-11T00:00:00Z",
 		"count_works":           "2",
 		"count_recordings":      "2",

@@ -569,6 +569,10 @@ type planner struct {
 	// holds, the people keyed by LibriVox id, the credits of the rows that
 	// landed. The zero value is every other run's.
 	lv librivoxState
+	// storeLinks holds every store page the catalogue and this run's recordings
+	// state, keyed by model.StoreLinkKey: the store-listing import's dedup set
+	// (store.go).
+	storeLinks map[string]bool
 }
 
 // setSource points the planner's provenance stamp at the row being planned. Every
@@ -578,6 +582,10 @@ func (p *planner) setSource(asin string, b sourceBook) {
 	if b.lv != nil {
 		// A LibriVox row has no ASIN; its identity is the project id.
 		ref = strconv.Itoa(b.lv.id)
+	}
+	if b.store != nil {
+		// Nor has a store listing; its identity is the store's page.
+		ref = b.store.url
 	}
 	p.curSource = OutSource{Type: p.sourceType, Ref: ref, ImportedAt: p.statementDay(b)}
 	p.curRefresh = false
@@ -741,6 +749,10 @@ type sourceBook struct {
 	// for every other source. Its presence is what switches on the LibriVox
 	// rules: dedup on the project id, never a merge into a sibling recording.
 	lv *librivoxFacts
+	// store is a store-listing row's identity: the store and its page
+	// (store.go); nil for every other source. Its presence switches on the
+	// store rules: dedup on the page, the page written onto the recording.
+	store *storeFacts
 }
 
 // language is the row's language code: the parser's own resolution when it made
@@ -928,6 +940,7 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 		rowsAsOf:           opts.RowsAsOf,
 		distinct:           opts.Distinct,
 		lv:                 reviewedLibrivoxState(opts),
+		storeLinks:         map[string]bool{},
 	}
 }
 
@@ -1390,6 +1403,7 @@ func (p *planner) loadExisting() {
 				// record states a region for it is beside the point.
 				p.isbns[strings.ToUpper(isbn.ISBN)] = true
 			}
+			p.noteStoreLinks(r.Links)
 			ws.recs[r.ID] = ri
 		}
 		p.works[w.ID] = ws
@@ -1543,6 +1557,10 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	if p.dedupeByLibrivox(b, warn) {
 		return
 	}
+	// A store listing has none either: it dedups on its page (store.go).
+	if p.dedupeByStoreLink(b) {
+		return
+	}
 	if p.dedupeByASIN(asin) {
 		p.attestExisting(b, asin)
 		return
@@ -1694,6 +1712,13 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		return
 	}
 	ownWork := route.reviewed && walk.ws == nil
+	// A store row the held work's recordings refuse (store.go) is refused HERE,
+	// before getOrCreateWork creates its credited people: a refused row creates
+	// nothing, so it neither founds a series nor adds a membership or a person.
+	if b.store != nil && walk.ws != nil && p.refusedStoreRow(walk.ws, b, walk.title, narratorNames, warn) {
+		p.noteLostSeriesClaims(b, -1, nil)
+		return
+	}
 	ws, unrecorded := p.getOrCreateWork(walk, b, asin, lang, facts, warn)
 	if ownWork && ws != nil {
 		p.lv.ownWorks[ws.slug] = true
@@ -1714,6 +1739,15 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		p.rememberIdentity(ident, ws.slug, workTitle)
 	}
 	p.addRecording(ws, b, resolvedTitle, asin, lang, narratorSlugs, warn)
+	// A store row lands somewhere unless it was refused (no held recording is
+	// provably its one production, or that one states another page for its
+	// store: store.go): a refused row places nothing, so it neither founds a
+	// series nor adds a membership. refusedStoreRow above has already turned
+	// away every such row the held work refuses; this is the backstop.
+	if b.store != nil && p.landedRec == "" {
+		p.noteLostSeriesClaims(b, -1, nil)
+		return
+	}
 	if p.landedRec != "" {
 		p.noteLibrivoxLanded(b, route)
 		p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, unrecorded...)
@@ -3246,8 +3280,8 @@ func (p *planner) seriesCatalogue() seriesCatalogue {
 // claimPlaces reports whether a row's series claims will place a member this
 // run, which is what makes them evidence for the batch, and names the book when
 // the catalogue already holds it ("" lets claimsOf read it off the row). A create
-// row is written only if it survives addBook's admission tests - an ASIN the
-// catalogue already holds, a language the schema does not know, no narrator, no
+// row is written only if it survives addBook's admission tests - an ASIN (or a
+// store page) the catalogue already holds, a language the schema does not know, no narrator, no
 // author (or no individual one once the names that slug to nothing are left
 // off, unsluggableLeftNoAuthor), no title - and those are asked here, before
 // anything is planned; an enrichment row places only the work its ASIN matched,
@@ -3258,7 +3292,8 @@ func (p *planner) seriesCatalogue() seriesCatalogue {
 func (p *planner) claimPlacesIn(ctx creditContext, b sourceBook, asin string) (places bool, work string) {
 	switch p.mode {
 	case ModeCreate:
-		if asin != "" && p.asins[asin] {
+		// A held ASIN, or a store row's held page (dedupeByStoreLink), is a skip.
+		if asin != "" && p.asins[asin] || b.store != nil && p.hasStoreLink(b.store.url) {
 			return false, ""
 		}
 		lang, ok := b.language()
@@ -3340,6 +3375,20 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 	matches, freeSlug := sameNarratorRecs(ws, base, narrSet)
 	slug := freeSlug
 	claims := rowSeriesClaims(b, title)
+	// A store listing proven to be the ONE production the work already holds
+	// with its narrators adds its page there, one that cannot be proven either
+	// way is refused, and one with no retail same-narrator sibling is a recording
+	// of its own (store.go) - so the ASIN-less branch below (which writes no
+	// recording) never sees it.
+	if b.store != nil && len(matches) > 0 {
+		switch p.landStoreLink(ws, matches, b, claims, narrSet, warn) {
+		case storeLinked:
+			return recMerged
+		case storeRefused:
+			return recNone
+		}
+		matches = nil
+	}
 	// A LibriVox project is always a recording of its own: two projects are two
 	// productions however alike their readers (a solo reader's version 1 and
 	// version 3), and its identity is the project id it carries, never a
@@ -3454,6 +3503,7 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 		rec.Chapters = chs
 	}
 	p.applyLibrivoxRecording(&rec, b)
+	p.applyStoreLink(&rec, b)
 	// Stamped only on this branch, which is the one that CREATES a recording;
 	// the ASIN merge above returns before reaching it.
 	rec.AddedAt = p.importDate
@@ -4272,16 +4322,7 @@ type recCandidate struct {
 // merging its ASIN. The runtime and abridged guards in addRecording remain the
 // correctness gate for what may merge.
 func sameNarratorRecs(ws *workState, base string, narrators map[string]bool) (matches []recCandidate, freeSlug string) {
-	slugs := make([]string, 0, len(ws.recs))
-	for slug, existing := range ws.recs {
-		if SameSet(existing.narrators, narrators) {
-			slugs = append(slugs, slug)
-		}
-	}
-	sort.Strings(slugs)
-	for _, slug := range slugs {
-		matches = append(matches, recCandidate{slug: slug, info: ws.recs[slug]})
-	}
+	matches = sameNarratorMatches(ws, narrators)
 	// The recording candidate formula: base (narrator plus release year), then
 	// base-2, base-3, ... - NumberedSlugAt keeps every one within MaxSlugLen.
 	for i := 0; ; i++ {
@@ -4290,6 +4331,23 @@ func sameNarratorRecs(ws *workState, base string, narrators map[string]bool) (ma
 			return matches, freeSlug
 		}
 	}
+}
+
+// sameNarratorMatches is sameNarratorRecs' match scan alone: every recording
+// under ws whose narrator set is narrators, in slug order.
+func sameNarratorMatches(ws *workState, narrators map[string]bool) []recCandidate {
+	slugs := make([]string, 0, len(ws.recs))
+	for slug, existing := range ws.recs {
+		if SameSet(existing.narrators, narrators) {
+			slugs = append(slugs, slug)
+		}
+	}
+	sort.Strings(slugs)
+	matches := make([]recCandidate, 0, len(slugs))
+	for _, slug := range slugs {
+		matches = append(matches, recCandidate{slug: slug, info: ws.recs[slug]})
+	}
+	return matches
 }
 
 // runtimesCompatible reports whether two recording runtimes (whole minutes; 0 or
@@ -4535,6 +4593,9 @@ func NormalizeASIN(s string) string {
 func bookLabel(b sourceBook) string {
 	if b.lv != nil {
 		return "librivox " + strconv.Itoa(b.lv.id)
+	}
+	if b.store != nil {
+		return b.store.url
 	}
 	if a := strings.TrimSpace(b.str("asin")); a != "" {
 		return a

@@ -81,3 +81,26 @@ func TestSameProductionReadsTheLibrivoxProject(t *testing.T) {
 		}
 	}
 }
+
+// Links merge per key: a store page on each side keeps both, and a key both
+// state differently keeps the keeper's and reports the mover's.
+func TestMergeRecordingsMergesLinksPerKey(t *testing.T) {
+	keep := mustObj(t, `{"id":"r","work":"w","narrators":["n"],"links":{"audiobookguild":"https://audiobookguild.com/products/a"}}`)
+	mover := mustObj(t, `{"id":"r","work":"w","narrators":["n"],"links":{"graphicaudio":"https://www.graphicaudio.net/a.html"}}`)
+	out, lost := MergeRecordings(keep, mover)
+	if len(lost) != 0 {
+		t.Errorf("lost = %+v, want nothing chosen away", lost)
+	}
+	if got, want := string(out["links"]), `{"audiobookguild":"https://audiobookguild.com/products/a","graphicaudio":"https://www.graphicaudio.net/a.html"}`; got != want {
+		t.Errorf("links = %s, want %s", got, want)
+	}
+
+	mover = mustObj(t, `{"id":"r","work":"w","narrators":["n"],"links":{"audiobookguild":"https://audiobookguild.com/products/b"}}`)
+	out, lost = MergeRecordings(keep, mover)
+	if string(out["links"]) != `{"audiobookguild":"https://audiobookguild.com/products/a"}` {
+		t.Errorf("links = %s, want the keeper's", out["links"])
+	}
+	if len(lost) != 1 || lost[0].Field != "links.audiobookguild" || lost[0].Dropped != "https://audiobookguild.com/products/b" {
+		t.Errorf("lost = %+v, want links.audiobookguild reported", lost)
+	}
+}
