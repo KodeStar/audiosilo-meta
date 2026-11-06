@@ -1712,6 +1712,13 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		return
 	}
 	ownWork := route.reviewed && walk.ws == nil
+	// A store row the held work's recordings refuse (store.go) is refused HERE,
+	// before getOrCreateWork creates its credited people: a refused row creates
+	// nothing, so it neither founds a series nor adds a membership or a person.
+	if b.store != nil && walk.ws != nil && p.refusedStoreRow(walk.ws, b, walk.title, narratorNames, warn) {
+		p.noteLostSeriesClaims(b, -1, nil)
+		return
+	}
 	ws, unrecorded := p.getOrCreateWork(walk, b, asin, lang, facts, warn)
 	if ownWork && ws != nil {
 		p.lv.ownWorks[ws.slug] = true
@@ -1732,9 +1739,11 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		p.rememberIdentity(ident, ws.slug, workTitle)
 	}
 	p.addRecording(ws, b, resolvedTitle, asin, lang, narratorSlugs, warn)
-	// A store row lands somewhere unless it was refused (the production states
-	// another page for its store, store.go): a refused row places nothing,
-	// so it neither founds a series nor adds a membership.
+	// A store row lands somewhere unless it was refused (no held recording is
+	// provably its one production, or that one states another page for its
+	// store: store.go): a refused row places nothing, so it neither founds a
+	// series nor adds a membership. refusedStoreRow above has already turned
+	// away every such row the held work refuses; this is the backstop.
 	if b.store != nil && p.landedRec == "" {
 		p.noteLostSeriesClaims(b, -1, nil)
 		return
@@ -4313,16 +4322,7 @@ type recCandidate struct {
 // merging its ASIN. The runtime and abridged guards in addRecording remain the
 // correctness gate for what may merge.
 func sameNarratorRecs(ws *workState, base string, narrators map[string]bool) (matches []recCandidate, freeSlug string) {
-	slugs := make([]string, 0, len(ws.recs))
-	for slug, existing := range ws.recs {
-		if SameSet(existing.narrators, narrators) {
-			slugs = append(slugs, slug)
-		}
-	}
-	sort.Strings(slugs)
-	for _, slug := range slugs {
-		matches = append(matches, recCandidate{slug: slug, info: ws.recs[slug]})
-	}
+	matches = sameNarratorMatches(ws, narrators)
 	// The recording candidate formula: base (narrator plus release year), then
 	// base-2, base-3, ... - NumberedSlugAt keeps every one within MaxSlugLen.
 	for i := 0; ; i++ {
@@ -4331,6 +4331,23 @@ func sameNarratorRecs(ws *workState, base string, narrators map[string]bool) (ma
 			return matches, freeSlug
 		}
 	}
+}
+
+// sameNarratorMatches is sameNarratorRecs' match scan alone: every recording
+// under ws whose narrator set is narrators, in slug order.
+func sameNarratorMatches(ws *workState, narrators map[string]bool) []recCandidate {
+	slugs := make([]string, 0, len(ws.recs))
+	for slug, existing := range ws.recs {
+		if SameSet(existing.narrators, narrators) {
+			slugs = append(slugs, slug)
+		}
+	}
+	sort.Strings(slugs)
+	matches := make([]recCandidate, 0, len(slugs))
+	for _, slug := range slugs {
+		matches = append(matches, recCandidate{slug: slug, info: ws.recs[slug]})
+	}
+	return matches
 }
 
 // runtimesCompatible reports whether two recording runtimes (whole minutes; 0 or

@@ -265,3 +265,23 @@ func TestStoreConflictLineNamesThePage(t *testing.T) {
 		t.Errorf("conflict line = %s, want it to carry the store page", buf.String())
 	}
 }
+
+// TestStoreImportRefusalCreatesNoPerson: a refused row creates nobody, not even
+// a role-credited person (a translator) the work its earlier row of the run
+// created would otherwise have credited - the refusal is decided before the
+// row's people are.
+func TestStoreImportRefusalCreatesNoPerson(t *testing.T) {
+	dataDir := t.TempDir()
+	first := `{"store":"audiobookguild","url":"https://audiobookguild.com/products/book-alpha","title":"Book Alpha",` +
+		`"authors":[{"name":"Ada Writer"}],"narrators":[{"name":"Cal Voice"}],"language":"english","releaseDate":"2024-01-01"}`
+	second := `{"store":"graphicaudio","url":"https://www.graphicaudio.net/book-alpha.html","title":"Book Alpha",` +
+		`"authors":[{"name":"Ada Writer"},{"name":"Tess Translator - translator"}],"narrators":[{"name":"Cal Voice"}],` +
+		`"lengthMinutes":600,"language":"english","releaseDate":"2024-01-01"}`
+	sum := runStore(t, dataDir, first+"\n"+second, Options{})
+	if sum.NewWorks != 1 || sum.NewRecordings != 1 || sum.NewPeople != 2 || sum.StoreLinksAdded != 0 {
+		t.Fatalf("summary = %+v (%q), want the second row refused with no person of its own", sum, sum.Warnings)
+	}
+	if !slices.ContainsFunc(sum.Warnings, func(w string) bool { return strings.Contains(w, "do not both state a runtime") }) {
+		t.Errorf("warnings = %q, want the refusal named", sum.Warnings)
+	}
+}

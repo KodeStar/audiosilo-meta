@@ -34,12 +34,14 @@ import (
 // retail listing with an identifier, and belongs to the libex import, whose
 // dedup and attestation rules key on that identifier.
 //
-// A row whose book the catalogue already holds as the SAME production (the
-// work the identity walk reaches, a recording with the row's narrators, a
-// compatible runtime and no abridgement or series-position conflict) adds its
-// store page to that recording when it states none for that store, rather than
-// minting a twin; one that states a different page for it is refused with a
-// warning (two pages for one production is a maintainer's question).
+// A row whose work (the one the identity walk reaches) holds a retail
+// recording with the row's narrators adds its store page to the ONE such
+// recording proven to be its production (both state a runtime, the runtimes are
+// compatible, no abridgement or series-position conflict: storeProduction),
+// when it states none for that store, rather than minting a twin. None or
+// several proven, or the one stating a different page for it (two pages for one
+// production is a maintainer's question), is a refusal with a warning that
+// creates nothing.
 
 // storeFacts is a store-listing row's identity: which store and its page.
 type storeFacts struct {
@@ -180,10 +182,11 @@ const (
 	storeRefused                          // a sibling exists but none, or more than one, is provably this production (or it states another page)
 )
 
-// landStoreLink is addRecording's store branch over the work's same-narrator
-// recordings (matches). A store row carries no identifier, so like the ISBN
-// attach (attachRowISBNs) it adds its page to a held recording only on PROOF
-// that the recording is its production, and never to "the first match":
+// storeProduction is the store branch's DECISION over the work's same-narrator
+// recordings (matches), read-only so addBook can ask it before the row creates
+// anything (refusedStoreRow). A store row carries no identifier, so like the
+// ISBN attach (attachRowISBNs) it adds its page to a held recording only on
+// PROOF that the recording is its production, and never to "the first match":
 //
 //   - LibriVox projects are set aside first (never a retail listing's
 //     production); with none left the row is a recording of its own;
@@ -196,47 +199,84 @@ const (
 //   - zero or several qualifying is a refusal with a warning naming why: a
 //     refused row is re-importable, a page on the wrong production or a twin
 //     recording of a held one is not.
-func (p *planner) landStoreLink(ws *workState, matches []recCandidate, b sourceBook, claims []posClaim, narrSet map[string]bool, warn func(string, ...any)) storeLanding {
+//
+// storeLinked answers the recording to write the page onto; storeRefused has
+// warned.
+func (p *planner) storeProduction(ws *workState, matches []recCandidate, b sourceBook, claims []posClaim, narrSet map[string]bool, warn func(string, ...any)) (recCandidate, storeLanding) {
 	prod := resolvedRowProduction(b, narrSet)
 	var qualified []recCandidate
 	var why []string
-	sawRetail := false
 	for _, m := range matches {
 		if m.info.librivox {
 			continue
 		}
-		sawRetail = true
 		if doubt := p.productionDoubt(m, b, ws, claims, prod); doubt != "" {
 			why = append(why, doubt)
 		} else {
 			qualified = append(qualified, m)
 		}
 	}
-	var reason string
 	switch {
-	case !sawRetail:
-		return storeNoProduction
+	case len(qualified)+len(why) == 0:
+		return recCandidate{}, storeNoProduction
 	case len(qualified) > 1:
-		reason = fmt.Sprintf("%d same-narrator recordings could be this row's production", len(qualified))
+		warn("%d same-narrator recordings could be this row's production, so its store page is not added and no recording is created", len(qualified))
+		return recCandidate{}, storeRefused
 	case len(qualified) == 0:
-		reason = strings.Join(why, "; ") + "; it is not proven to be that production"
-	}
-	if reason != "" {
-		warn("%s, so its store page is not added and no recording is created", reason)
-		return storeRefused
+		warn("%s; it is not proven to be that production, so its store page is not added and no recording is created", strings.Join(why, "; "))
+		return recCandidate{}, storeRefused
 	}
 	m := qualified[0]
+	_, raw := p.recordingRaw(ws.slug, m.slug)
+	if raw == nil {
+		return recCandidate{}, storeRefused
+	}
+	links, _ := raw["links"].(map[string]any)
+	if have, _ := links[b.store.key].(string); have != "" {
+		warn("recording %s is this production and already states links.%s %q; not replacing it with %q",
+			recLabel(ws.slug, m.slug), b.store.key, have, b.store.url)
+		return recCandidate{}, storeRefused
+	}
+	return m, storeLinked
+}
+
+// refusedStoreRow reports whether a store row the walk sent to the held work ws
+// is one storeProduction refuses (and has warned about), asked by addBook
+// BEFORE getOrCreateWork, which creates the row's credited people: a refused
+// row creates nothing, not even a translator the work it never landed on would
+// have credited. The narrators are resolved read-only; one that would be
+// created holds no recording yet, so no sibling can be its production and the
+// row is not refused here.
+func (p *planner) refusedStoreRow(ws *workState, b sourceBook, title string, narratorNames []string, warn func(string, ...any)) bool {
+	narrSet := make(map[string]bool, len(narratorNames))
+	for _, name := range narratorNames {
+		r := p.resolvePerson(name)
+		if r.create {
+			return false
+		}
+		narrSet[r.slug] = true
+	}
+	matches := sameNarratorMatches(ws, narrSet)
+	if len(matches) == 0 {
+		return false
+	}
+	_, landing := p.storeProduction(ws, matches, b, rowSeriesClaims(b, title), narrSet, warn)
+	return landing == storeRefused
+}
+
+// landStoreLink is addRecording's store branch: storeProduction's decision,
+// and on storeLinked the page written onto that recording.
+func (p *planner) landStoreLink(ws *workState, matches []recCandidate, b sourceBook, claims []posClaim, narrSet map[string]bool, warn func(string, ...any)) storeLanding {
+	m, landing := p.storeProduction(ws, matches, b, claims, narrSet, warn)
+	if landing != storeLinked {
+		return landing
+	}
 	ref := RecRef{Work: ws.slug, Rec: m.slug}
 	entry, raw := p.recordingRaw(ref.Work, ref.Rec)
 	if raw == nil {
 		return storeRefused
 	}
 	links, _ := raw["links"].(map[string]any)
-	if have, _ := links[b.store.key].(string); have != "" {
-		warn("recording %s is this production and already states links.%s %q; not replacing it with %q",
-			recLabel(ref.Work, ref.Rec), b.store.key, have, b.store.url)
-		return storeRefused
-	}
 	if links == nil {
 		links = map[string]any{}
 	}

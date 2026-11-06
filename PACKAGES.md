@@ -1203,10 +1203,13 @@ refuses. A row whose page is held is a skip. A row with a same-narrator retail
 recording of its work adds its page to that recording (`StoreLinksAdded`) only
 when exactly ONE such recording is provably its production (both sides state a
 runtime, the runtimes are compatible, no abridged or series-position conflict:
-`productionDoubt`, the ISBN attach's per-recording test); none or several, or the one stating another page for
-the store, refuses the row with a warning and creates nothing (`landStoreLink`).
-A row with no same-narrator sibling is a new recording or work through the
-ordinary identity, duplicate and person rules.
+`productionDoubt`, the ISBN attach's per-recording test); none or several, or
+the one stating another page for the store, refuses the row with a warning and
+creates nothing - no work, person or series claim, since addBook asks
+`refusedStoreRow` before the work's people are created (`storeProduction`,
+`landStoreLink`). A row with no same-narrator retail sibling (none, or only
+LibriVox projects) is a new recording or work through the ordinary identity,
+duplicate and person rules.
 
 **The RATE LIMIT and CACHE HEADERS (internal/serve ratelimit.go, cache.go).** Every API
 route wears `Server.public` = gzip(CORS(limit(h))), so the limit is inside CORS
