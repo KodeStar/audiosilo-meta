@@ -726,6 +726,7 @@
       ],
       "genres": [
         "action-adventure",
+        "classics",
         "dark-fantasy",
         "epic-fantasy",
         "fantasy",
@@ -746,53 +747,67 @@
             {
               "asin": "B079CDSG35",
               "region": "uk"
+            },
+            {
+              "asin": "B00IDO44T8",
+              "region": "us"
             }
           ],
           "chapters": [
             {
-              "length_ms": 91809,
+              "length_ms": 11564,
               "start_ms": 0,
               "title": "Opening Credits"
             },
             {
-              "length_ms": 5152742,
-              "start_ms": 91809,
+              "length_ms": 60886,
+              "start_ms": 11564,
+              "title": "Epigraph"
+            },
+            {
+              "length_ms": 5155545,
+              "start_ms": 72450,
               "title": "Chapter One"
             },
             {
-              "length_ms": 4359383,
-              "start_ms": 5244551,
+              "length_ms": 4359430,
+              "start_ms": 5227995,
               "title": "Chapter Two"
             },
             {
-              "length_ms": 4259096,
-              "start_ms": 9603934,
+              "length_ms": 4259143,
+              "start_ms": 9587425,
               "title": "Chapter Three"
             },
             {
-              "length_ms": 6407801,
-              "start_ms": 13863030,
+              "length_ms": 6407848,
+              "start_ms": 13846568,
               "title": "Chapter Four"
             },
             {
-              "length_ms": 5505335,
-              "start_ms": 20270831,
+              "length_ms": 5505381,
+              "start_ms": 20254416,
               "title": "Chapter Five"
             },
             {
-              "length_ms": 6412306,
-              "start_ms": 25776166,
+              "length_ms": 6412353,
+              "start_ms": 25759797,
               "title": "Chapter Six"
             },
             {
-              "length_ms": 7028598,
-              "start_ms": 32188472,
+              "length_ms": 7025687,
+              "start_ms": 32172150,
               "title": "Chapter Seven"
             },
             {
-              "length_ms": 117504,
-              "start_ms": 39217070,
+              "length_ms": 50454,
+              "start_ms": 39197837,
               "title": "End Credits"
+            },
+            {
+              "length_ms": 1020029,
+              "start_ms": 39248291,
+              "title": "Bonus -  The Tower of the Swallows"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/51mde09DauL._SL500_.jpg",
@@ -831,6 +846,11 @@
               "imported_at": "2026-08-02",
               "ref": "B079CDSG35",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00IDO44T8",
+              "type": "libex-import"
             }
           ],
           "work": "blood-of-elves"
@@ -862,38 +882,7 @@
             }
           ],
           "work": "blood-of-elves"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-17",
-          "ref": "B00XV1ALO0",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-08-12",
-          "ref": "B079CDSG35",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Blood of Elves"
-    },
-    "blood-of-elves-booktrack-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "andrzej-sapkowski"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics",
-        "epic-fantasy",
-        "fantasy",
-        "historical-fiction"
-      ],
-      "id": "blood-of-elves-booktrack-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "peter-kenny-2018": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -976,132 +965,32 @@
               "type": "libex-import"
             }
           ],
-          "work": "blood-of-elves-booktrack-edition"
+          "work": "blood-of-elves"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-17",
+          "ref": "B00XV1ALO0",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-12",
+          "ref": "B079CDSG35",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1549146572",
           "type": "libex-import"
-        }
-      ],
-      "title": "Blood of Elves: Booktrack Edition"
-    },
-    "blood-of-elves-the-witcher-book-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "andrzej-sapkowski",
-        "danusia-stok"
-      ],
-      "credits": [
-        {
-          "person": "danusia-stok",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy"
-      ],
-      "id": "blood-of-elves-the-witcher-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "peter-kenny-2014": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00IDO44T8",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 11564,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 60886,
-              "start_ms": 11564,
-              "title": "Epigraph"
-            },
-            {
-              "length_ms": 5155545,
-              "start_ms": 72450,
-              "title": "Chapter One"
-            },
-            {
-              "length_ms": 4359430,
-              "start_ms": 5227995,
-              "title": "Chapter Two"
-            },
-            {
-              "length_ms": 4259143,
-              "start_ms": 9587425,
-              "title": "Chapter Three"
-            },
-            {
-              "length_ms": 6407848,
-              "start_ms": 13846568,
-              "title": "Chapter Four"
-            },
-            {
-              "length_ms": 5505381,
-              "start_ms": 20254416,
-              "title": "Chapter Five"
-            },
-            {
-              "length_ms": 6412353,
-              "start_ms": 25759797,
-              "title": "Chapter Six"
-            },
-            {
-              "length_ms": 7025687,
-              "start_ms": 32172150,
-              "title": "Chapter Seven"
-            },
-            {
-              "length_ms": 50454,
-              "start_ms": 39197837,
-              "title": "End Credits"
-            },
-            {
-              "length_ms": 1020029,
-              "start_ms": 39248291,
-              "title": "Bonus -  The Tower of the Swallows"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81rfXQlvd2L.jpg",
-          "id": "peter-kenny-2014",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "peter-kenny"
-          ],
-          "publisher": "Gollancz",
-          "release_date": "2014-02-27",
-          "runtime_min": 671,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00IDO44T8",
-              "type": "libex-import"
-            }
-          ],
-          "work": "blood-of-elves-the-witcher-book-1"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00IDO44T8",
           "type": "libex-import"
         }
       ],
-      "title": "Blood of Elves: The Witcher, Book 1"
+      "title": "Blood of Elves"
     },
     "blood-of-empire": {
       "added_at": "2026-08-02",

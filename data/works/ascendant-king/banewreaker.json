@@ -13744,6 +13744,10 @@
             {
               "asin": "B079CMBW4H",
               "region": "uk"
+            },
+            {
+              "asin": "B00JF6ETVG",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -13834,6 +13838,11 @@
               "imported_at": "2026-08-02",
               "ref": "B079CMBW4H",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00JF6ETVG",
+              "type": "libex-import"
             }
           ],
           "work": "baptism-of-fire"
@@ -13865,43 +13874,7 @@
             }
           ],
           "work": "baptism-of-fire"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-17",
-          "ref": "B012DWJ4N6",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-08-12",
-          "ref": "B079CMBW4H",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Baptism of Fire"
-    },
-    "baptism-of-fire-booktrack-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "andrzej-sapkowski",
-        "david-french"
-      ],
-      "credits": [
-        {
-          "person": "david-french",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "baptism-of-fire-booktrack-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "peter-kenny-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -14004,127 +13977,32 @@
               "type": "libex-import"
             }
           ],
-          "work": "baptism-of-fire-booktrack-edition"
+          "work": "baptism-of-fire"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-17",
+          "ref": "B012DWJ4N6",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-12",
+          "ref": "B079CMBW4H",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1549108700",
           "type": "libex-import"
-        }
-      ],
-      "title": "Baptism of Fire: Booktrack Edition"
-    },
-    "baptism-of-fire-the-witcher-book-3": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "andrzej-sapkowski",
-        "david-french"
-      ],
-      "credits": [
-        {
-          "person": "david-french",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "baptism-of-fire-the-witcher-book-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "peter-kenny-2014": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00JF6ETVG",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 12876,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 64063,
-              "start_ms": 12876,
-              "title": "Epigraph"
-            },
-            {
-              "length_ms": 5796919,
-              "start_ms": 76939,
-              "title": "Chapter One"
-            },
-            {
-              "length_ms": 6928323,
-              "start_ms": 5873858,
-              "title": "Chapter Two"
-            },
-            {
-              "length_ms": 4710655,
-              "start_ms": 12802181,
-              "title": "Chapter Three"
-            },
-            {
-              "length_ms": 4711909,
-              "start_ms": 17512836,
-              "title": "Chapter Four"
-            },
-            {
-              "length_ms": 6570364,
-              "start_ms": 22224745,
-              "title": "Chapter Five"
-            },
-            {
-              "length_ms": 6412027,
-              "start_ms": 28795109,
-              "title": "Chapter Six"
-            },
-            {
-              "length_ms": 7859165,
-              "start_ms": 35207136,
-              "title": "Chapter Seven"
-            },
-            {
-              "length_ms": 1084023,
-              "start_ms": 43066301,
-              "title": "Bonus Track - The Tower of the Swallow"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81CoqEAc2NL.jpg",
-          "id": "peter-kenny-2014",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "peter-kenny"
-          ],
-          "publisher": "Gollancz",
-          "release_date": "2014-04-03",
-          "runtime_min": 735,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00JF6ETVG",
-              "type": "libex-import"
-            }
-          ],
-          "work": "baptism-of-fire-the-witcher-book-3"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00JF6ETVG",
           "type": "libex-import"
         }
       ],
-      "title": "Baptism of Fire: The Witcher, Book 3"
+      "title": "Baptism of Fire"
     },
     "baptism-of-rage-dramatized-adaptation": {
       "added_at": "2026-07-25T17:12:12+01:00",
