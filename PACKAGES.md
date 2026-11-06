@@ -1203,7 +1203,7 @@ refuses. A row whose page is held is a skip. A row with a same-narrator retail
 recording of its work adds its page to that recording (`StoreLinksAdded`) only
 when exactly ONE such recording is provably its production (both sides state a
 runtime, the runtimes are compatible, no abridged or series-position conflict:
-the ISBN attach's rule); none or several, or the one stating another page for
+`productionDoubt`, the ISBN attach's per-recording test); none or several, or the one stating another page for
 the store, refuses the row with a warning and creates nothing (`landStoreLink`).
 A row with no same-narrator sibling is a new recording or work through the
 ordinary identity, duplicate and person rules.

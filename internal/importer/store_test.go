@@ -1,7 +1,6 @@
 package importer
 
 import (
-	"maps"
 	"slices"
 	"strings"
 	"testing"
@@ -191,17 +190,6 @@ func frySecond(runtime string) string {
 
 const frySecondRel = "works/ha/harry-potter-and-the-chamber-of-secrets/recordings/stephen-fry-2020.json"
 
-// seedStoreTree seeds the recordings catalogue with extra records added or
-// replaced, in one write (a work's recordings share its entry).
-func seedStoreTree(t *testing.T, extra map[string]string) string {
-	t.Helper()
-	files := recordingsSeedFiles()
-	maps.Copy(files, extra)
-	dataDir := t.TempDir()
-	seedTree(t, dataDir, files)
-	return dataDir
-}
-
 // TestStoreImportRefusesAnUnprovenProduction: a store row adds its page to a
 // held same-narrator recording only when both state a runtime, the runtimes
 // agree and exactly one recording qualifies. Every other case is a refusal
@@ -223,7 +211,7 @@ func TestStoreImportRefusesAnUnprovenProduction(t *testing.T) {
 	}
 	for _, c := range cases {
 		t.Run(c.name, func(t *testing.T) {
-			dataDir := seedStoreTree(t, c.seed)
+			dataDir := seedRecordingsTree(t, c.seed)
 			before := recSlugsOf(t, dataDir, "harry-potter-and-the-chamber-of-secrets")
 			sum := runStore(t, dataDir, c.row, Options{})
 			if sum.Produced() != 0 || sum.StoreLinksAdded != 0 {
@@ -252,7 +240,7 @@ func TestStoreImportRefusesAnUnprovenProduction(t *testing.T) {
 // TestStoreImportOneQualifyingAmongSeveral: two same-narrator recordings, one
 // whose runtime agrees with the row - that one alone gains the page.
 func TestStoreImportOneQualifyingAmongSeveral(t *testing.T) {
-	dataDir := seedStoreTree(t, map[string]string{frySecondRel: frySecond("300")})
+	dataDir := seedRecordingsTree(t, map[string]string{frySecondRel: frySecond("300")})
 	row := strings.NewReplacer("A Full Cast", "Stephen Fry", `"lengthMinutes":400`, `"lengthMinutes":305`).Replace(graphicRow)
 	sum := runStore(t, dataDir, row, Options{})
 	if sum.StoreLinksAdded != 1 || sum.NewRecordings != 0 {

@@ -161,7 +161,7 @@
       "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
     },
     "links": {
-      "description": "Where the recording is published, as the source stated each URL: its catalogue page (librivox), a zip of every file (zip), its podcast feed (rss), the text it reads from (text), and its product page in a store that sells it outside the identifier-derived retailers (audiobookguild, graphicaudio). https only; pkg/check holds each store key to that store's own host and each store URL unique across the dataset.",
+      "description": "Where the recording is published, as the source stated each URL: its catalogue page (librivox), a zip of every file (zip), its podcast feed (rss), the text it reads from (text), and its product page in a store that sells it outside the identifier-derived retailers (audiobookguild, graphicaudio). https only; pkg/check holds each store key to a page on that store's own host (a path past the host, no query string or fragment) and each store URL unique across the dataset.",
       "type": "object",
       "additionalProperties": false,
       "minProperties": 1,

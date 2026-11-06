@@ -688,22 +688,11 @@ func (p *planner) attachRowISBNs(ws *workState, matches []recCandidate, b source
 		return
 	}
 	m := matches[0]
-	known, row := m.info.known, b.evidence
-	switch {
-	case m.info.librivox:
-		return
-	case known.min <= 0 || row.min <= 0:
-		warn("recording %q and this row do not both state a runtime; its ISBN is not attached", m.slug)
-		return
-	case !sameRuntime(known, row):
-		warn("recording %q runs %d minutes and this row %d; its ISBN is not attached", m.slug, known.min, row.min)
-		return
-	case abridgedConflict(m.info.abridged, b.abridged):
-		warn("recording %q and this row disagree on abridged; its ISBN is not attached", m.slug)
+	if m.info.librivox {
 		return
 	}
-	if series, incumbent, want, conflict := p.seriesPosConflict(m.info, ws, claims, resolvedRowProduction(b, narrators)); conflict {
-		warn("recording %q is at position %q of series %q; this row claims %q - its ISBN is not attached", m.slug, incumbent, series, want)
+	if doubt := p.productionDoubt(m, b, ws, claims, resolvedRowProduction(b, narrators)); doubt != "" {
+		warn("%s; its ISBN is not attached", doubt)
 		return
 	}
 	ref := RecRef{Work: ws.slug, Rec: m.slug}
@@ -723,6 +712,28 @@ func (p *planner) attachRowISBNs(ws *workState, matches []recCandidate, b source
 		return
 	}
 	p.addRowISBNs(ref, entry, raw, b.isbns, warn)
+}
+
+// productionDoubt is why held recording m (same narrators as row b) is not
+// proven to be b's production, or "" when it is: both sides state a runtime,
+// the runtimes are compatible (sameRuntime), the abridged flags do not conflict
+// and no series position contradicts the row's claims. A row carrying no
+// identifier adds a fact to a held recording only past this test: the ISBN
+// attach (attachRowISBNs) and the store-listing page (landStoreLink).
+func (p *planner) productionDoubt(m recCandidate, b sourceBook, ws *workState, claims []posClaim, prod *rowProduction) string {
+	known, row := m.info.known, b.evidence
+	switch {
+	case known.min <= 0 || row.min <= 0:
+		return fmt.Sprintf("recording %q and this row do not both state a runtime", m.slug)
+	case !sameRuntime(known, row):
+		return fmt.Sprintf("recording %q runs %d minutes and this row %d", m.slug, known.min, row.min)
+	case abridgedConflict(m.info.abridged, b.abridged):
+		return fmt.Sprintf("recording %q and this row disagree on abridged", m.slug)
+	}
+	if series, incumbent, want, conflict := p.seriesPosConflict(m.info, ws, claims, prod); conflict {
+		return fmt.Sprintf("recording %q is at position %q of series %q and this row claims %q", m.slug, incumbent, series, want)
+	}
+	return ""
 }
 
 // yearPredates reports whether date's year is more than a year before other's.

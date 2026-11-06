@@ -95,7 +95,7 @@ func StoreLinkRule(store string) string {
 	return "an https page on " + strings.Join(StoreHosts(store), " or ") + " (a path past the host, no query string or fragment)"
 }
 
-// StoreHosts returns a copy of store's hosts, for a refusal that names them.
+// StoreHosts returns a copy of store's hosts (StoreLinkRule names them).
 func StoreHosts(store string) []string {
 	s, _ := storeOf(store)
 	return slices.Clone(s.hosts)

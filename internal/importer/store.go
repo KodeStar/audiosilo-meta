@@ -187,9 +187,10 @@ const (
 //
 //   - LibriVox projects are set aside first (never a retail listing's
 //     production); with none left the row is a recording of its own;
-//   - a held recording QUALIFIES when both it and the row state a runtime, the
-//     two are compatible (sameRuntime), the abridged flags do not conflict and
-//     no series position contradicts the row's claim (narrators already match);
+//   - a held recording QUALIFIES when productionDoubt finds nothing (both it
+//     and the row state a runtime, the two are compatible, the abridged flags
+//     do not conflict and no series position contradicts the row's claim;
+//     narrators already match);
 //   - exactly ONE qualifying recording gains the page, when it states none for
 //     that store (the existing value wins: one stating another page is refused);
 //   - zero or several qualifying is a refusal with a warning naming why: a
@@ -197,37 +198,31 @@ const (
 //     recording of a held one is not.
 func (p *planner) landStoreLink(ws *workState, matches []recCandidate, b sourceBook, claims []posClaim, narrSet map[string]bool, warn func(string, ...any)) storeLanding {
 	prod := resolvedRowProduction(b, narrSet)
-	var retail, qualified []recCandidate
+	var qualified []recCandidate
 	var why []string
+	sawRetail := false
 	for _, m := range matches {
 		if m.info.librivox {
 			continue
 		}
-		retail = append(retail, m)
-		known, row := m.info.known, b.evidence
-		switch {
-		case known.min <= 0 || row.min <= 0:
-			why = append(why, fmt.Sprintf("recording %q and this row do not both state a runtime", m.slug))
-		case !sameRuntime(known, row):
-			why = append(why, fmt.Sprintf("recording %q runs %d minutes and this row %d", m.slug, known.min, row.min))
-		case abridgedConflict(m.info.abridged, b.abridged):
-			why = append(why, fmt.Sprintf("recording %q and this row disagree on abridged", m.slug))
-		default:
-			if series, incumbent, want, conflict := p.seriesPosConflict(m.info, ws, claims, prod); conflict {
-				why = append(why, fmt.Sprintf("recording %q is at position %q of series %q and this row claims %q", m.slug, incumbent, series, want))
-				continue
-			}
+		sawRetail = true
+		if doubt := p.productionDoubt(m, b, ws, claims, prod); doubt != "" {
+			why = append(why, doubt)
+		} else {
 			qualified = append(qualified, m)
 		}
 	}
+	var reason string
 	switch {
-	case len(retail) == 0:
+	case !sawRetail:
 		return storeNoProduction
 	case len(qualified) > 1:
-		warn("%d same-narrator recordings could be this row's production; its store page is not added and no recording is created", len(qualified))
-		return storeRefused
+		reason = fmt.Sprintf("%d same-narrator recordings could be this row's production", len(qualified))
 	case len(qualified) == 0:
-		warn("%s; it is not proven to be that production, so its store page is not added and no recording is created", strings.Join(why, "; "))
+		reason = strings.Join(why, "; ") + "; it is not proven to be that production"
+	}
+	if reason != "" {
+		warn("%s, so its store page is not added and no recording is created", reason)
 		return storeRefused
 	}
 	m := qualified[0]
