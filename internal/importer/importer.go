@@ -569,6 +569,10 @@ type planner struct {
 	// holds, the people keyed by LibriVox id, the credits of the rows that
 	// landed. The zero value is every other run's.
 	lv librivoxState
+	// storeLinks holds every store page the catalogue and this run's recordings
+	// state, keyed by model.StoreLinkKey: the store-listing import's dedup set
+	// (store.go).
+	storeLinks map[string]bool
 }
 
 // setSource points the planner's provenance stamp at the row being planned. Every
@@ -578,6 +582,10 @@ func (p *planner) setSource(asin string, b sourceBook) {
 	if b.lv != nil {
 		// A LibriVox row has no ASIN; its identity is the project id.
 		ref = strconv.Itoa(b.lv.id)
+	}
+	if b.store != nil {
+		// Nor has a store listing; its identity is the store's page.
+		ref = b.store.url
 	}
 	p.curSource = OutSource{Type: p.sourceType, Ref: ref, ImportedAt: p.statementDay(b)}
 	p.curRefresh = false
@@ -741,6 +749,10 @@ type sourceBook struct {
 	// for every other source. Its presence is what switches on the LibriVox
 	// rules: dedup on the project id, never a merge into a sibling recording.
 	lv *librivoxFacts
+	// store is a store-listing row's identity: the store and its page
+	// (store.go); nil for every other source. Its presence switches on the
+	// store rules: dedup on the page, the page written onto the recording.
+	store *storeFacts
 }
 
 // language is the row's language code: the parser's own resolution when it made
@@ -928,6 +940,7 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 		rowsAsOf:           opts.RowsAsOf,
 		distinct:           opts.Distinct,
 		lv:                 reviewedLibrivoxState(opts),
+		storeLinks:         map[string]bool{},
 	}
 }
 
@@ -1390,6 +1403,7 @@ func (p *planner) loadExisting() {
 				// record states a region for it is beside the point.
 				p.isbns[strings.ToUpper(isbn.ISBN)] = true
 			}
+			p.noteStoreLinks(r.Links)
 			ws.recs[r.ID] = ri
 		}
 		p.works[w.ID] = ws
@@ -1541,6 +1555,10 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// A LibriVox row has no ASIN: it dedups on its project id instead, and
 	// never on its title (librivox.go).
 	if p.dedupeByLibrivox(b, warn) {
+		return
+	}
+	// A store listing has none either: it dedups on its page (store.go).
+	if p.dedupeByStoreLink(b) {
 		return
 	}
 	if p.dedupeByASIN(asin) {
@@ -3340,6 +3358,18 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 	matches, freeSlug := sameNarratorRecs(ws, base, narrSet)
 	slug := freeSlug
 	claims := rowSeriesClaims(b, title)
+	// A store listing that is a production the work already holds adds its page
+	// there (store.go); one no sibling is is a recording of its own, so the
+	// ASIN-less branch below (which writes no recording) never sees it.
+	if b.store != nil && len(matches) > 0 {
+		switch p.landStoreLink(ws, matches, b, claims, narrSet, warn) {
+		case storeLinked:
+			return recMerged
+		case storeRefused:
+			return recNone
+		}
+		matches = nil
+	}
 	// A LibriVox project is always a recording of its own: two projects are two
 	// productions however alike their readers (a solo reader's version 1 and
 	// version 3), and its identity is the project id it carries, never a
@@ -3454,6 +3484,7 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 		rec.Chapters = chs
 	}
 	p.applyLibrivoxRecording(&rec, b)
+	p.applyStoreLink(&rec, b)
 	// Stamped only on this branch, which is the one that CREATES a recording;
 	// the ASIN merge above returns before reaching it.
 	rec.AddedAt = p.importDate
@@ -4535,6 +4566,9 @@ func NormalizeASIN(s string) string {
 func bookLabel(b sourceBook) string {
 	if b.lv != nil {
 		return "librivox " + strconv.Itoa(b.lv.id)
+	}
+	if b.store != nil {
+		return b.store.url
 	}
 	if a := strings.TrimSpace(b.str("asin")); a != "" {
 		return a

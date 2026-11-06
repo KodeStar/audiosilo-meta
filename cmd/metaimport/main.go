@@ -11,6 +11,13 @@
 //	metaimport librivox fetch  --out <snapshot> [--max-pages N]
 //	metaimport librivox import --from <snapshot> --ids <range> [--data data] [--dry-run] [--date YYYY-MM-DD] [--conflicts <path>] [--skipped <path>] [--worklist <path>]
 //	metaimport librivox import --from <snapshot> --ids <range> --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>] [--data data] [--dry-run]
+//	metaimport store       <listings.ndjson> [--data data] [--dry-run] [--date YYYY-MM-DD] [--attach-editions] [--existing-series-only] [--conflicts <path>]
+//
+// store lands a maintainer's reviewed file of store listings (Audiobook Guild,
+// GraphicAudio; LICENSING.md "Store listings"): the libex row shape with a
+// `store` and its page `url` in place of an ASIN, facts only, through the
+// create path's identity, duplicate and person rules (store.go and
+// internal/importer/store.go).
 //
 // librivox (LICENSING.md's public-domain exception) is two steps: fetch pages
 // LibriVox's audiobooks feed into a local snapshot - the one command here that
@@ -196,6 +203,8 @@ func main() {
 		os.Exit(runNarrations(os.Args[2:]))
 	case "librivox":
 		os.Exit(runLibrivox(os.Args[2:]))
+	case "store":
+		os.Exit(runStore(os.Args[2:]))
 	case "-h", "--help", "help":
 		usage()
 		os.Exit(0)
@@ -750,6 +759,7 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  metaimport librivox fetch  --out <snapshot> [--max-pages N]")
 	fmt.Fprintln(os.Stderr, "  metaimport librivox import --from <snapshot> --ids <range> [--data data] [--dry-run] [--date YYYY-MM-DD] [--conflicts <path>] [--skipped <path>] [--worklist <path>]")
 	fmt.Fprintln(os.Stderr, "  metaimport librivox import --from <snapshot> --ids <range> --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>] [--data data] [--dry-run]")
+	fmt.Fprintln(os.Stderr, "  metaimport store       <listings.ndjson> [--data data] [--dry-run] [--date YYYY-MM-DD] [--attach-editions] [--existing-series-only] [--conflicts <path>]")
 	fmt.Fprintln(os.Stderr, "")
 	fmt.Fprintln(os.Stderr, "  --conflicts <path> appends one NDJSON row per refused contradiction (a durable worklist).")
 	fmt.Fprintln(os.Stderr, "  --series-lookup (user-library sources) fills a series position the export did not state by")
