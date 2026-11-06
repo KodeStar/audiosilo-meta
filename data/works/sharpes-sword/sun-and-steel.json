@@ -81,6 +81,38 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 29976,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 2748546,
+              "start_ms": 29976,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2642593,
+              "start_ms": 2778522,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2426624,
+              "start_ms": 5421115,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1501959,
+              "start_ms": 7847739,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 25053,
+              "start_ms": 9349698,
+              "title": "End Credits"
+            }
+          ],
           "cover_url": "https://m.media-amazon.com/images/I/51WXcYZcVWL._SL250_.jpg",
           "id": "matthew-taylor",
           "language": "en",
@@ -89,12 +121,18 @@
             "matthew-taylor"
           ],
           "publisher": "Audible",
+          "release_date": "2021-04-12",
           "runtime_min": 156,
           "sources": [
             {
               "imported_at": "2026-10-27",
               "ref": "https://bivensmacinform.site/book/166218476X",
               "type": "user"
+            },
+            {
+              "imported_at": "2026-11-06",
+              "ref": "166218476X",
+              "type": "libex-import"
             }
           ],
           "work": "sun-and-steel-yukio-mishima"

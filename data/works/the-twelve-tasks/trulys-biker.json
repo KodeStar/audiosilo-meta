@@ -12890,6 +12890,10 @@
             {
               "asin": "0593163087",
               "region": "us"
+            },
+            {
+              "asin": "B00CA7R0HM",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -13024,21 +13028,26 @@
               "title": "Chapter 26"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/81lekTdvw0L.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/611qE5yvHUL._SL500_.jpg",
           "id": "ryan-holiday-2019",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
             "ryan-holiday"
           ],
-          "publisher": "Penguin Audio",
+          "publisher": "Gildan Media, LLC",
           "release_date": "2019-08-06",
-          "runtime_min": 385,
+          "runtime_min": 386,
           "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "0593163087",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-06",
+              "ref": "B00CA7R0HM",
+              "type": "libation-import"
             }
           ],
           "work": "trust-me-im-lying-ryan-holiday"

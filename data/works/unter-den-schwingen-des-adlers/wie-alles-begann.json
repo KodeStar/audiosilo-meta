@@ -7634,6 +7634,10 @@
             {
               "asin": "B018GG913G",
               "region": "uk"
+            },
+            {
+              "asin": "B018GG91F4",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -7703,7 +7707,7 @@
               "title": "Abspann"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/81knVvYTi3L.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/51LJouP2j6L._SL500_.jpg",
           "id": "michael-j-diekmann-2015",
           "language": "de",
           "license": "CC0-1.0",
@@ -7723,6 +7727,11 @@
               "imported_at": "2026-10-09",
               "ref": "B018GG913G",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-06",
+              "ref": "B018GG91F4",
+              "type": "libation-import"
             }
           ],
           "work": "wie-elon-musk-die-welt-verandert-die-biografie"
@@ -9577,6 +9586,54 @@
         }
       ],
       "title": "Wie Gefühle entstehen"
+    },
+    "wie-google-tickt-how-google-works": {
+      "added_at": "2026-11-06",
+      "authors": [
+        "eric-schmidt",
+        "jonathan-rosenberg"
+      ],
+      "id": "wie-google-tickt-how-google-works",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "christian-jungwirth-2016": {
+          "abridged": false,
+          "added_at": "2026-11-06",
+          "asin": [
+            {
+              "asin": "B01N0VK4G9",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/41mj5L7R%2BqL._SL500_.jpg",
+          "id": "christian-jungwirth-2016",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christian-jungwirth"
+          ],
+          "publisher": "ABOD von RBmedia Verlag",
+          "release_date": "2016-12-29",
+          "runtime_min": 544,
+          "sources": [
+            {
+              "imported_at": "2026-11-06",
+              "ref": "B01N0VK4G9",
+              "type": "libation-import"
+            }
+          ],
+          "work": "wie-google-tickt-how-google-works"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-11-06",
+          "ref": "B01N0VK4G9",
+          "type": "libation-import"
+        }
+      ],
+      "title": "Wie Google tickt - How Google Works"
     },
     "wie-graser-im-wind": {
       "added_at": "2026-07-29",

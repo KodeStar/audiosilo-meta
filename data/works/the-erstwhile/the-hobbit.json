@@ -8806,6 +8806,39 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 4323602,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4438727,
+              "start_ms": 4323602,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4229190,
+              "start_ms": 8762329,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4440723,
+              "start_ms": 12991519,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4258493,
+              "start_ms": 17432242,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1771172,
+              "start_ms": 21690735,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51sXYWfHS4L.jpg",
           "id": "grover-gardner-2009",
           "language": "en",
           "license": "CC0-1.0",
@@ -8820,6 +8853,11 @@
               "imported_at": "2026-09-24",
               "ref": "B002V1OBHE",
               "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-11-06",
+              "ref": "B002V1OBHE",
+              "type": "libex-import"
             }
           ],
           "work": "the-holiness-of-god"

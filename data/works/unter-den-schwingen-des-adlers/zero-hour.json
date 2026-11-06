@@ -8952,6 +8952,10 @@
             {
               "asin": "B00OGACRRY",
               "region": "us"
+            },
+            {
+              "asin": "B00OGB88US",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -9036,14 +9040,14 @@
               "title": "Kapitel 16"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/71mhdiAbEYL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/41tTGigH8tL._SL500_.jpg",
           "id": "matthias-luhn-2014",
           "language": "de",
           "license": "CC0-1.0",
           "narrators": [
             "matthias-luhn"
           ],
-          "publisher": "ABOD Verlag",
+          "publisher": "ABOD von RBmedia Verlag",
           "release_date": "2014-10-14",
           "runtime_min": 293,
           "sources": [
@@ -9051,6 +9055,11 @@
               "imported_at": "2026-07-29",
               "ref": "B00OGACRRY",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-06",
+              "ref": "B00OGB88US",
+              "type": "libation-import"
             }
           ],
           "work": "zero-to-one-peter-thiel"
