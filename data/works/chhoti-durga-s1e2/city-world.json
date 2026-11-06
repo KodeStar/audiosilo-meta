@@ -8929,6 +8929,10 @@
       "authors": [
         "thomas-sowell"
       ],
+      "genres": [
+        "politics",
+        "social-sciences"
+      ],
       "id": "civil-rights-thomas-sowell",
       "language": "en",
       "license": "CC0-1.0",
@@ -8942,6 +8946,44 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2982232,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2852618,
+              "start_ms": 2982232,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1309931,
+              "start_ms": 5834850,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2088449,
+              "start_ms": 7144781,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2051158,
+              "start_ms": 9233230,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1352655,
+              "start_ms": 11284388,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1990972,
+              "start_ms": 12637043,
+              "title": "Chapter 7"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/41bt5cIZ+9L.jpg",
           "id": "james-bundy-2007",
           "language": "en",
           "license": "CC0-1.0",
@@ -8956,6 +8998,11 @@
               "imported_at": "2026-09-24",
               "ref": "B002V8H8TA",
               "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-11-06",
+              "ref": "B002V8H8TA",
+              "type": "libex-import"
             }
           ],
           "work": "civil-rights-thomas-sowell"
@@ -8966,6 +9013,11 @@
           "imported_at": "2026-09-24",
           "ref": "B002V8H8TA",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-11-06",
+          "ref": "B002V8H8TA",
+          "type": "libex-import"
         }
       ],
       "title": "Civil Rights"

@@ -5950,6 +5950,12 @@
       "authors": [
         "theodore-sturgeon"
       ],
+      "genres": [
+        "hard-science-fiction",
+        "science",
+        "science-fiction",
+        "thriller-suspense"
+      ],
       "id": "more-than-human",
       "language": "en",
       "license": "CC0-1.0",
@@ -5963,6 +5969,64 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 3244338,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3231707,
+              "start_ms": 3244338,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3655935,
+              "start_ms": 6476045,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2666394,
+              "start_ms": 10131980,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3507931,
+              "start_ms": 12798374,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2322599,
+              "start_ms": 16306305,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2295850,
+              "start_ms": 18628904,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2898640,
+              "start_ms": 20924754,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1674298,
+              "start_ms": 23823394,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1946157,
+              "start_ms": 25497692,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2453235,
+              "start_ms": 27443849,
+              "title": "Chapter 11"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51ml9w-5IqL.jpg",
           "id": "stefan-rudnicki-2009",
           "language": "en",
           "license": "CC0-1.0",
@@ -5977,6 +6041,11 @@
               "imported_at": "2026-09-24",
               "ref": "B002V8LK7Q",
               "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-11-06",
+              "ref": "B002V8LK7Q",
+              "type": "libex-import"
             }
           ],
           "work": "more-than-human"
@@ -5987,6 +6056,11 @@
           "imported_at": "2026-09-24",
           "ref": "B002V8LK7Q",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-11-06",
+          "ref": "B002V8LK7Q",
+          "type": "libex-import"
         }
       ],
       "title": "More Than Human"

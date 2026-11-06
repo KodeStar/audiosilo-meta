@@ -10020,6 +10020,10 @@
       "authors": [
         "stanley-bing"
       ],
+      "genres": [
+        "business",
+        "comedy-humor"
+      ],
       "id": "crazy-bosses-and-sun-tzu",
       "language": "en",
       "license": "CC0-1.0",
@@ -10037,6 +10041,39 @@
               "region": "de"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 4161155,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4292673,
+              "start_ms": 4161155,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2934259,
+              "start_ms": 8453828,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1656419,
+              "start_ms": 11388087,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4368324,
+              "start_ms": 13044506,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4741793,
+              "start_ms": 17412830,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ZXiQXzwcL.jpg",
           "id": "stanley-bing-2007",
           "language": "en",
           "license": "CC0-1.0",
@@ -10056,6 +10093,11 @@
               "imported_at": "2026-10-27",
               "ref": "B079WWD9SC",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-06",
+              "ref": "B002V8LHA6",
+              "type": "libex-import"
             }
           ],
           "work": "crazy-bosses-and-sun-tzu"
@@ -10066,6 +10108,11 @@
           "imported_at": "2026-09-24",
           "ref": "B002V8LHA6",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-11-06",
+          "ref": "B002V8LHA6",
+          "type": "libex-import"
         }
       ],
       "title": "Crazy Bosses and Sun Tzu"
