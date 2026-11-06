@@ -8389,6 +8389,16 @@
     "target": "balada-de-pajaros-cantores-y-serpientes"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "baptism-of-fire-booktrack-edition",
+      "baptism-of-fire-the-witcher-book-3"
+    ],
+    "reason": "the same novel read by Peter Kenny: The Witcher, Book 3 is the retailer's saga numbering of the 2014 Gollancz recording (735 min, the plain work already holds its UK listing), and Booktrack Edition names the 2021 soundtrack edition (719 min), a property of the recording",
+    "target": "baptism-of-fire"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -8877,6 +8887,16 @@
     ],
     "reason": "different volumes: positions 1 and 2 of blood-knight, released six months apart, and one title states Book 2",
     "target": "blood-knight-book-2"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "blood-of-elves-booktrack-edition",
+      "blood-of-elves-the-witcher-book-1"
+    ],
+    "reason": "the same novel read by Peter Kenny: The Witcher, Book 1 is the retailer's saga numbering of the 2014 Gollancz recording (671 min, the plain work already holds its UK listing), and Booktrack Edition names the 2018 soundtrack edition (655 min), a property of the recording",
+    "target": "blood-of-elves"
   },
   {
     "decision": "assert",
@@ -16196,6 +16216,16 @@
     ],
     "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; lady-midnight-a-shadowhunter-novel spells its title with a retailer genre tag (\"a shadowhunter novel\") and is read by morena-baccarin at 1184 minutes against 1184",
     "target": "lady-midnight"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "lady-of-the-lake-the-witcher-book-5",
+      "the-lady-of-the-lake-booktrack-edition"
+    ],
+    "reason": "the same novel read by Peter Kenny: The Witcher, Book 5 is the retailer's saga numbering of the 2017 Gollancz listing (1216 min against 1217, released the same day as the plain work's), and Booktrack Edition names the 2022 soundtrack edition (1218 min), a property of the recording",
+    "target": "lady-of-the-lake"
   },
   {
     "decision": "reject",
@@ -27110,6 +27140,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-tower-of-swallows-booktrack-edition"
+    ],
+    "reason": "the same novel read by Peter Kenny: Booktrack Edition names the 2021 soundtrack edition (983 min against 984), a property of the recording, as for season-of-storms",
+    "target": "the-tower-of-the-swallow"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-tower-of-the-swallow-a-witcher-novel"
     ],
     "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-tower-of-the-swallow-a-witcher-novel spells its title with a retailer genre tag (\"a witcher novel\") and is read by peter-kenny at 1006 minutes against 1006",
@@ -27879,6 +27918,16 @@
     ],
     "reason": "the same book: both are Get Knotted! Book 1 with the same description, and the 2nd Edition is a revised edition re-recorded by another narrator, a property of the recording",
     "target": "tied-in-knots-get-knotted"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-time-of-contempt-booktrack-edition",
+      "time-of-contempt-the-witcher-book-2"
+    ],
+    "reason": "the same novel read by Peter Kenny: The Witcher, Book 2 is the retailer's saga numbering of the 2014 Gollancz recording (733 min, the plain work already holds its UK listing), and Booktrack Edition names the 2019 soundtrack edition (715 min), a property of the recording",
+    "target": "time-of-contempt"
   },
   {
     "decision": "assert",
