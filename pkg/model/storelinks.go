@@ -77,8 +77,8 @@ func KnownStore(key string) bool {
 // the schema refuses. A query or fragment is refused because StoreLinkKey is
 // the URL itself: a tracking or variant parameter would make one page two
 // keys, so the dedupe and pkg/check's uniqueness would miss it. A path of
-// nothing but "/" (StoreLinkKey's fold) is the store's homepage, never a book.
-// An unknown store answers false.
+// nothing but slashes (StoreLinkKey drops trailing ones) is the store's
+// homepage, never a book. An unknown store answers false.
 func StoreLinkOK(store, raw string) bool {
 	s, ok := storeOf(store)
 	if !ok || !strings.HasPrefix(raw, "https://") || strings.ContainsAny(raw, "?#") {

@@ -62,11 +62,11 @@ func TestStoreLinksRefused(t *testing.T) {
 // spelling of the host each states and with or without a trailing "/"
 // (model.StoreLinkKey folds both).
 func TestStoreLinksUnique(t *testing.T) {
-	for _, second := range []string{
-		"https://WWW.audiobookguild.com/products/book-one",
-		"https://audiobookguild.com/products/book-one/",
+	for name, second := range map[string]string{
+		"host spelling":  "https://WWW.audiobookguild.com/products/book-one",
+		"trailing slash": "https://audiobookguild.com/products/book-one/",
 	} {
-		t.Run(second, func(t *testing.T) {
+		t.Run(name, func(t *testing.T) {
 			files := baseValid()
 			files["works/bo/book-one/recordings/rec-one.json"] = storeRecording("rec-one",
 				`{"audiobookguild":"https://audiobookguild.com/products/book-one"}`)
