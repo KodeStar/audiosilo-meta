@@ -3610,6 +3610,15 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "charles-holborne"
+    ],
+    "reason": "one Simon Michael series: the retailer lists all eight volumes as Charles Holborne Legal Thrillers and books 1 and 2 also under the short spelling, at the same positions",
+    "target": "charles-holborne-legal-thrillers"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "chief-inspector-gamache-three-pines"
     ],
     "reason": "the same series under two names: every Gamache novel at the same position in both, once the two A Better Man records are one",
@@ -12639,6 +12648,15 @@
     "target": "empire-of-silence"
   },
   {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "empires-of-eve-volume-2"
+    ],
+    "reason": "two different volumes: Andrew Groen's Empires of EVE volume 1 (2017, 459 minutes) and Volume 2 (2023, 710 minutes), series positions 1 and 2",
+    "target": "empires-of-eve"
+  },
+  {
     "decision": "assert",
     "op": "merge-works",
     "others": [
@@ -13255,6 +13273,15 @@
     ],
     "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; star-wars-forces-of-destiny-daring-adventures-volumes-1-2 spells its title with the name of the series the book is listed in (\"star wars\") and is read by january-lavoy at 122 minutes against 121",
     "target": "forces-of-destiny-daring-adventures-volumes-1-2"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "ford-county"
+    ],
+    "reason": "one story collection: the same John Grisham reading at 522 minutes, the held title carrying the Stories subtitle",
+    "target": "ford-county-stories"
   },
   {
     "decision": "assert",
@@ -15167,6 +15194,15 @@
     ],
     "reason": "different volumes: positions 1, 2 and 3 of infinite-farmer, the titles state 2 and 3, and the runtimes and release dates differ",
     "target": "infinite-farmer-2-a-dungeon-core-cultivation-litrpg"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "infinite-jest-david-foster-wallace"
+    ],
+    "reason": "one novel by David Foster Wallace: two Sean Pratt productions (3371 and 3852 minutes), the held work also crediting the foreword writer Dave Eggers",
+    "target": "infinite-jest"
   },
   {
     "decision": "assert",
@@ -17161,6 +17197,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "micro-michael-crichton"
+    ],
+    "reason": "one novel: the same John Bedford Lloyd narration at 833 and 834 minutes, the new listing crediting Michael Crichton alone where the held work also credits co-author Richard Preston",
+    "target": "micro"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "middle-school-middle-school-book-4"
     ],
     "reason": "one book and one reading: Bryan Kennedy at 264 and 265 minutes with 72 chapters each, and B079R659S4 on the Book 4 record carries this title",
@@ -18876,6 +18921,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "posthumous-education"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "postwar"
+    ],
+    "reason": "one history: the same Ralph Cosham narration at 2581 minutes, the held title carrying the book's subtitle",
+    "target": "postwar-a-history-of-europe-since-1945"
   },
   {
     "decision": "assert",
@@ -25558,6 +25612,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-new-world-patrick-ness"
+    ],
+    "reason": "one Patrick Ness short story: the held title carries its retail subtitle, and the Humphrey Bower listing (53 min) is another narration of it beside Angela Dawe's 47-minute one",
+    "target": "the-new-world-prequel-to-the-chaos-walking-trilogy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-obesity-code-jason-fung"
     ],
     "reason": "the same book by the same author: one record lists Jason Fung under a second person id that the people wave merged, so the two now credit the same author",
@@ -27521,6 +27584,15 @@
     ],
     "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; this-gilded-abyss-the-titans-wrath-book-1 spells its title with the series and volume the plain work is listed at (\"the titans wrath book 1\") and is read by natalie-naudus at 651 minutes against 652",
     "target": "this-gilded-abyss"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "this-is-going-to-hurt-secret-diaries-of-a-junior-doctor"
+    ],
+    "reason": "one memoir: the same Adam Kay reading at 347 minutes, the new listing's title carrying the book's subtitle",
+    "target": "this-is-going-to-hurt"
   },
   {
     "decision": "reject",
