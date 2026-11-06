@@ -3,7 +3,6 @@ package importer
 import (
 	"regexp"
 	"slices"
-	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 )
@@ -145,11 +144,12 @@ type titleForms struct {
 }
 
 func identityForms(title, series string, key func(title, series string) string) titleForms {
+	foldedSeries := foldConjunctions(series)
 	form := func(t string) titleForm {
 		f := titleForm{title: t, series: series, key: key(t, series)}
 		f.folded = f.key
-		if ft, fs := foldConjunctions(t), foldConjunctions(series); ft != t || fs != series {
-			f.folded = key(ft, fs)
+		if ft := foldConjunctions(t); ft != t || foldedSeries != series {
+			f.folded = key(ft, foldedSeries)
 		}
 		return f
 	}
@@ -167,9 +167,6 @@ var conjunctionSpelling = regexp.MustCompile(`\s*&\s*|(?i:\bund\b)`)
 // foldConjunctions spells a title's conjunctions as the word "and" (the file
 // header says why the guard reads them alike, and why only the guard).
 func foldConjunctions(s string) string {
-	if !strings.Contains(s, "&") && !strings.Contains(strings.ToLower(s), "und") {
-		return s
-	}
 	return conjunctionSpelling.ReplaceAllString(s, " and ")
 }
 
