@@ -3987,6 +3987,52 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "emily-norman-2027": {
+          "abridged": false,
+          "added_at": "2026-11-06",
+          "asin": [
+            {
+              "asin": "B0GPH665XN",
+              "region": "ca"
+            },
+            {
+              "asin": "B0GPGNZVK1",
+              "region": "fr"
+            },
+            {
+              "asin": "B0GPJBQVDR",
+              "region": "jp"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91s7fazwvCL.jpg",
+          "id": "emily-norman-2027",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "emily-norman"
+          ],
+          "publisher": "Simon & Schuster Audio",
+          "release_date": "2027-01-12",
+          "runtime_min": 600,
+          "sources": [
+            {
+              "imported_at": "2026-11-01",
+              "ref": "B0GPH665XN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-06",
+              "ref": "B0GPGNZVK1",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-06",
+              "ref": "B0GPJBQVDR",
+              "type": "libex-import"
+            }
+          ],
+          "work": "storm-of-locusts"
+        },
         "tanis-parenteau-2019": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3998,6 +4044,14 @@
             {
               "asin": "B07Q1K5JM8",
               "region": "uk"
+            },
+            {
+              "asin": "B07Q1K3RY8",
+              "region": "ca"
+            },
+            {
+              "asin": "B07PX412QY",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -4266,6 +4320,16 @@
             {
               "imported_at": "2026-10-04",
               "ref": "B07Q1K5JM8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-06",
+              "ref": "B07Q1K3RY8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-06",
+              "ref": "B07PX412QY",
               "type": "libex-import"
             }
           ],
