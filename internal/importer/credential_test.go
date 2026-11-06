@@ -63,6 +63,35 @@ func TestCredentialFoldsOntoTheBareName(t *testing.T) {
 	}
 }
 
+// TestCredentialRepeatFoldsOntoTheSinglyCredentialedName is the fallback for a
+// doubled credential whose bare twin nobody is credited under (libex B0D6828XPN,
+// "Andrew D. Huberman Ph.D. Ph.D." beside the catalogued "Andrew D. Huberman
+// Ph.D."): the repeat collapses onto the seen single spelling, and nothing else
+// does - two different credentials, an unseen collapse, a bare twin that wins.
+func TestCredentialRepeatFoldsOntoTheSinglyCredentialedName(t *testing.T) {
+	seen := seenAs("Andrew D. Huberman Ph.D.", "Jane Roe MD", "Frank Lipman", "Frank Lipman MD")
+	cases := []struct{ in, want string }{
+		{"Andrew D. Huberman Ph.D. Ph.D.", "Andrew D. Huberman Ph.D."},
+		{"Andrew D. Huberman Ph.D. Ph.D. Ph.D.", "Andrew D. Huberman Ph.D."}, // every repeat
+		{"Jane Roe, MD, MD", "Jane Roe MD"},                                  // punctuated
+		{"Jane Roe MD PhD", "Jane Roe MD PhD"},                               // two credentials, no repeat
+		{"Andrew D. Huberman Ph.D. PhD", "Andrew D. Huberman Ph.D. PhD"},     // another spelling is not a repeat
+		{"Richard Doe MD MD", "Richard Doe MD MD"},                           // the collapse is not a seen credit
+		{"Frank Lipman MD MD", "Frank Lipman"},                               // the bare twin still wins
+		{"Andrew D. Huberman Ph.D.", "Andrew D. Huberman Ph.D."},             // nothing repeated
+	}
+	for _, c := range cases {
+		t.Run(c.in, func(t *testing.T) {
+			if got := stripCredential(c.in, seen); got != c.want {
+				t.Errorf("stripCredential(%q) = %q, want %q", c.in, got, c.want)
+			}
+		})
+	}
+	if got, ok := deRepeatedCredential("Rahim MD MD"); ok {
+		t.Errorf("deRepeatedCredential(%q) = %q, want no collapse onto a one-word name", "Rahim MD MD", got)
+	}
+}
+
 // TestCredentialWithoutABareTwinSurvives is the rule's first guard, and the
 // reason it consults the census at all: 2,649 of the dump's 3,703 credentialed
 // names have no bare twin anywhere, and every one of them is somebody's name of
