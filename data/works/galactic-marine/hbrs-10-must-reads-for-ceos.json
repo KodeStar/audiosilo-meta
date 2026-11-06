@@ -9139,6 +9139,10 @@
       "authors": [
         "francis-a-schaeffer"
       ],
+      "genres": [
+        "philosophy",
+        "religion-spirituality"
+      ],
       "id": "he-is-there-and-he-is-not-silent",
       "language": "en",
       "license": "CC0-1.0",
@@ -9152,6 +9156,34 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2543189,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2433962,
+              "start_ms": 2543189,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1844547,
+              "start_ms": 4977151,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2746642,
+              "start_ms": 6821698,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4203276,
+              "start_ms": 9568340,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91MsxfE18xL.jpg",
           "id": "kate-reading-2009",
           "language": "en",
           "license": "CC0-1.0",
@@ -9166,6 +9198,11 @@
               "imported_at": "2026-09-24",
               "ref": "B002V1ACJ0",
               "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-11-06",
+              "ref": "B002V1ACJ0",
+              "type": "libex-import"
             }
           ],
           "work": "he-is-there-and-he-is-not-silent"
@@ -9176,6 +9213,11 @@
           "imported_at": "2026-09-24",
           "ref": "B002V1ACJ0",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-11-06",
+          "ref": "B002V1ACJ0",
+          "type": "libex-import"
         }
       ],
       "title": "He Is There and He Is Not Silent"

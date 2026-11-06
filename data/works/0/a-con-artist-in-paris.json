@@ -2826,6 +2826,10 @@
       "authors": [
         "thomas-sowell"
       ],
+      "genres": [
+        "politics",
+        "social-sciences"
+      ],
       "id": "a-conflict-of-visions",
       "language": "en",
       "license": "CC0-1.0",
@@ -2839,6 +2843,54 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 732472,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2558885,
+              "start_ms": 732472,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3222418,
+              "start_ms": 3291357,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3146396,
+              "start_ms": 6513775,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2743159,
+              "start_ms": 9660171,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2171994,
+              "start_ms": 12403330,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3707112,
+              "start_ms": 14575324,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3762189,
+              "start_ms": 18282436,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3678759,
+              "start_ms": 22044625,
+              "title": "Chapter 9"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51eNPBuJoyL.jpg",
           "id": "michael-edwards-2006",
           "language": "en",
           "license": "CC0-1.0",
@@ -2853,6 +2905,11 @@
               "imported_at": "2026-09-24",
               "ref": "B002V1C73Y",
               "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-11-06",
+              "ref": "B002V1C73Y",
+              "type": "libex-import"
             }
           ],
           "work": "a-conflict-of-visions"
@@ -2863,6 +2920,11 @@
           "imported_at": "2026-09-24",
           "ref": "B002V1C73Y",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-11-06",
+          "ref": "B002V1C73Y",
+          "type": "libex-import"
         }
       ],
       "title": "A Conflict of Visions"
