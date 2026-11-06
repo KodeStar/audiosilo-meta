@@ -7366,6 +7366,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "zombie-fallout-5"
+    ],
+    "reason": "one book: Zombie Fallout 5 is Alive in a Dead World (position 5 of zombie-fallout), Sean Runnette's 2012 and 2020 Audible Studios releases (666 and 641 min); found by the LibraForge benchmark",
+    "target": "alive-in-a-dead-world"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "all-american-murder-james-patterson"
     ],
     "reason": "the same book read by Peter Coleman at the same length; the Cornerstone UK record simply omits co-authors Alex Abramovich and Mike Harvkey",
@@ -8016,6 +8025,15 @@
     ],
     "reason": "the same novel by LaHaye and Jenkins: the subtitle is the cover tagline, and both records sit at slot 11 of Left Behind and its abridged spelling",
     "target": "armageddon-tim-lahaye"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "army-of-one-free-star-force-novella"
+    ],
+    "reason": "one novella: B.V. Larson's Star Force novella read by Mark Boyett (159 and 160 min, 2013); \"FREE Star Force Novella\" is the retailer's listing text; found by the LibraForge benchmark",
+    "target": "army-of-one"
   },
   {
     "decision": "assert",
@@ -13381,6 +13399,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "four-a-divergent-collection"
+    ],
+    "reason": "one book: Veronica Roth's Four: A Divergent Collection, Aaron Stanford's 2014 reading in two marketplaces (393 and 400 min); found by the LibraForge benchmark",
+    "target": "four"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "fourth-wing-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -14743,6 +14770,15 @@
     ],
     "reason": "the Second Edition is a rewritten, much longer text (88 vs 37 minutes), not a second record of the first edition",
     "target": "how-to-sell-indexed-universal-life-insurance"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "how-to-win-friends-influence-people"
+    ],
+    "reason": "one book: Dale Carnegie's How to Win Friends and Influence People under \"&\" for \"and\"; Andrew MacMillan's Simon & Schuster unabridged reading (434 min) sits on its own record beside seven other unabridged readings of the same book; found by the LibraForge benchmark",
+    "target": "how-to-win-friends-and-influence-people"
   },
   {
     "decision": "assert",
@@ -18525,6 +18561,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "pangea-online"
+    ],
+    "reason": "one omnibus: S.L. Rowland's Pangea Online books 1-3 by the same three narrators at 1381 min both, the 2021 author release and the 2022 Aethervale re-release; found by the LibraForge benchmark",
+    "target": "pangea-online-the-complete-trilogy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "paper-blood"
     ],
     "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; paper-blood spells its title with an ampersand for \"and\" and is read by luke-daniels at 606 minutes against 606",
@@ -21255,6 +21300,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-dark-tower-vi-song-of-susannah"
+    ],
+    "reason": "one book: The Dark Tower VI is Song of Susannah, George Guidall's reading at 820 min in both the Simon & Schuster and Hodder releases; found by the LibraForge benchmark",
+    "target": "song-of-susannah"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "songbird-of-the-sorrows-an-epic-romantic-fantasy-myths-of-the-empyrieos-book-1"
     ],
     "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; songbird-of-the-sorrows-an-epic-romantic-fantasy-myths-of-the-empyrieos-book-1 spells its title with the series and volume the plain work is listed at (\"an epic romantic fantasy / myths of the empyrieos book 1\") and is read by imani-jade-powers at 958 minutes against 959",
@@ -23585,6 +23639,15 @@
     "target": "the-dark-messiah"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-dark-tower-vii-the-dark-tower"
+    ],
+    "reason": "one book: The Dark Tower VII is The Dark Tower, George Guidall's reading at 1731 min in both the Simon & Schuster and Hodder releases; found by the LibraForge benchmark",
+    "target": "the-dark-tower"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -23774,6 +23837,16 @@
     ],
     "reason": "the same book: the same narrator and publisher at an identical 516 minutes, the 2026 record a re-release whose title only adds the retailer series decoration",
     "target": "the-dragons-mage"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-dark-tower-ii",
+      "the-dark-tower-ii-the-drawing-of-the-three"
+    ],
+    "reason": "one book: The Dark Tower II is The Drawing of the Three, Frank Muller's reading released by Penguin (796 min), Simon & Schuster (766) and Hodder (766); found by the LibraForge benchmark",
+    "target": "the-drawing-of-the-three"
   },
   {
     "decision": "reject",
@@ -24253,6 +24326,15 @@
     ],
     "reason": "the same novel: the Bob Peck recording is the flagged abridgement, and the title only drops the article",
     "target": "the-guns-of-navarone"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-dark-tower-i"
+    ],
+    "reason": "one book: The Dark Tower I is The Gunslinger, George Guidall's revised-edition reading (441 min, the same length as the Hodder recording the-gunslinger already holds); found by the LibraForge benchmark",
+    "target": "the-gunslinger"
   },
   {
     "decision": "reject",
@@ -25865,6 +25947,15 @@
     "target": "the-practice-of-the-presence-of-god"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "beast-shifter-3-the-primal-talisman"
+    ],
+    "reason": "one book: Dante King's Beast Shifter 3, The Primal Talisman, read by Lewis Alexander and Rozelyn Rader (637 and 619 min); the 2025 record is the Royal Guard Publishing re-release; found by the LibraForge benchmark",
+    "target": "the-primal-talisman-beast-shifter-3"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -27244,6 +27335,15 @@
     ],
     "reason": "series-designation duplicate (LibraForge benchmark follow-up): the same book by the same authors; the-warship-the-rise-of-jain-2 spells its title with the series position the plain work holds (\"the rise of jain 2\") and is read by peter-noble at 1031 minutes against 1031",
     "target": "the-warship"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-dark-tower-iii-the-waste-lands"
+    ],
+    "reason": "one book: The Dark Tower III is The Waste Lands, Frank Muller's reading released by Penguin (1121 min) and Hodder (1091); the third record, dark-tower-iii (Simon & Schuster, 1094), is the same book but waits for its characters and recaps to be reconciled in the community repository; found by the LibraForge benchmark",
+    "target": "the-waste-lands"
   },
   {
     "decision": "assert",
@@ -28633,6 +28733,78 @@
     "target": "violent-sunday"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "viridian-gate-online-cataclysm-james-a-hunter"
+    ],
+    "reason": "one book: Viridian Gate Online book 1 by James A. Hunter, Armen Taylor's reading (524 and 524 min) from Shadow Alley Press and the 2025 Tantor Media re-release; james-hunter and james-a-hunter are one author's two person records; found by the LibraForge benchmark",
+    "target": "viridian-gate-online-cataclysm"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "viridian-gate-online-crimson-alliance-james-a-hunter"
+    ],
+    "reason": "one book: Viridian Gate Online book 2 by James A. Hunter, Armen Taylor's reading (629 and 629 min) from Shadow Alley Press and the 2025 Tantor Media re-release; james-hunter and james-a-hunter are one author's two person records; found by the LibraForge benchmark",
+    "target": "viridian-gate-online-crimson-alliance"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "darkling-siege"
+    ],
+    "reason": "one book: Viridian Gate Online book 7 by James A. Hunter, Armen Taylor's reading (947 and 947 min) from Shadow Alley Press and the 2025 Tantor Media re-release; james-hunter and james-a-hunter are one author's two person records; found by the LibraForge benchmark",
+    "target": "viridian-gate-online-darkling-siege"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "viridian-gate-online-doom-forge-james-a-hunter"
+    ],
+    "reason": "one book: Viridian Gate Online book 6 by James A. Hunter, Armen Taylor's reading (848 and 847 min) from Shadow Alley Press and the 2025 Tantor Media re-release; james-hunter and james-a-hunter are one author's two person records; found by the LibraForge benchmark",
+    "target": "viridian-gate-online-doom-forge"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "empirical-endgame"
+    ],
+    "reason": "one book: Viridian Gate Online book 8 by James A. Hunter, Armen Taylor's reading (970 and 970 min) from Shadow Alley Press and the 2025 Tantor Media re-release; james-hunter and james-a-hunter are one author's two person records; found by the LibraForge benchmark",
+    "target": "viridian-gate-online-empirical-endgame"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "viridian-gate-online-imperial-legion-james-a-hunter"
+    ],
+    "reason": "one book: Viridian Gate Online book 4 by James A. Hunter, Armen Taylor's reading (655 and 655 min) from Shadow Alley Press and the 2025 Tantor Media re-release; james-hunter and james-a-hunter are one author's two person records; found by the LibraForge benchmark",
+    "target": "viridian-gate-online-imperial-legion"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "viridian-gate-online-the-jade-lord-a-litrpg-adventure"
+    ],
+    "reason": "one book: Viridian Gate Online book 3 by James A. Hunter, Armen Taylor's reading (666 and 666 min) from Shadow Alley Press and the 2025 Tantor Media re-release; james-hunter and james-a-hunter are one author's two person records; found by the LibraForge benchmark",
+    "target": "viridian-gate-online-the-jade-lord"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "viridian-gate-online-the-lich-priest-james-a-hunter"
+    ],
+    "reason": "one book: Viridian Gate Online book 5 by James A. Hunter, Armen Taylor's reading (684 and 684 min) from Shadow Alley Press and the 2025 Tantor Media re-release; james-hunter and james-a-hunter are one author's two person records; found by the LibraForge benchmark",
+    "target": "viridian-gate-online-the-lich-priest"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -29241,6 +29413,15 @@
     ],
     "reason": "one book: LibriVox project 105 (Wives and Daughters) created this work before the LibriVox author-spelling rule (meta#2777) because it spells the author Elizabeth Cleghorn Gaskell, the catalogue Elizabeth Gaskell; the same novel by the same writer",
     "target": "wives-and-daughters"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-dark-tower-iv-wizard-and-glass"
+    ],
+    "reason": "one book: The Dark Tower IV is Wizard and Glass, Frank Muller's reading released by Penguin (1687 min) and Hodder (1656); the third record, dark-tower-iv (Simon & Schuster, 1655), is the same book but waits for its characters and recaps to be reconciled in the community repository; found by the LibraForge benchmark",
+    "target": "wizard-and-glass"
   },
   {
     "decision": "reject",

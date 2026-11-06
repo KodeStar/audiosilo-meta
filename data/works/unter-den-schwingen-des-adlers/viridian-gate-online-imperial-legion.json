@@ -3,10 +3,12 @@
     "viridian-gate-online-imperial-legion": {
       "added_at": "2026-08-01",
       "authors": [
-        "james-hunter"
+        "james-hunter",
+        "james-a-hunter"
       ],
       "genres": [
         "cyberpunk",
+        "dark-fantasy",
         "epic-fantasy",
         "fantasy",
         "science-fiction"
@@ -238,32 +240,7 @@
             }
           ],
           "work": "viridian-gate-online-imperial-legion"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B079LW5JL7",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Viridian Gate Online: Imperial Legion"
-    },
-    "viridian-gate-online-imperial-legion-james-a-hunter": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "james-a-hunter"
-      ],
-      "genres": [
-        "dark-fantasy",
-        "epic-fantasy",
-        "fantasy",
-        "science-fiction"
-      ],
-      "id": "viridian-gate-online-imperial-legion-james-a-hunter",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "armen-taylor-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -495,10 +472,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "viridian-gate-online-imperial-legion-james-a-hunter"
+          "work": "viridian-gate-online-imperial-legion"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B079LW5JL7",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DXX4121B",
@@ -3440,17 +3422,239 @@
     "viridian-gate-online-the-jade-lord": {
       "added_at": "2026-08-02",
       "authors": [
-        "james-a-hunter"
+        "james-a-hunter",
+        "james-hunter"
       ],
       "genres": [
         "action-adventure",
         "epic-fantasy",
-        "fantasy"
+        "fantasy",
+        "paranormal",
+        "thriller-suspense"
       ],
       "id": "viridian-gate-online-the-jade-lord",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "armen-taylor-2017": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B076DHSSVD",
+              "region": "us"
+            },
+            {
+              "asin": "B076DKB8Z5",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 20434,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1657673,
+              "start_ms": 20434,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1178924,
+              "start_ms": 1678107,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1477950,
+              "start_ms": 2857031,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 797420,
+              "start_ms": 4334981,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1033474,
+              "start_ms": 5132401,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1609700,
+              "start_ms": 6165875,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1088598,
+              "start_ms": 7775575,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 994836,
+              "start_ms": 8864173,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 588858,
+              "start_ms": 9859009,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 735747,
+              "start_ms": 10447867,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1259079,
+              "start_ms": 11183614,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1091384,
+              "start_ms": 12442693,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 903070,
+              "start_ms": 13534077,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 996786,
+              "start_ms": 14437147,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1085672,
+              "start_ms": 15433933,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1267438,
+              "start_ms": 16519605,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1523043,
+              "start_ms": 17787043,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 831321,
+              "start_ms": 19310086,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1167732,
+              "start_ms": 20141407,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1513337,
+              "start_ms": 21309139,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1180131,
+              "start_ms": 22822476,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1239760,
+              "start_ms": 24002607,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1659159,
+              "start_ms": 25242367,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 1515938,
+              "start_ms": 26901526,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1482501,
+              "start_ms": 28417464,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1065146,
+              "start_ms": 29899965,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 1242964,
+              "start_ms": 30965111,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 1301664,
+              "start_ms": 32208075,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 945702,
+              "start_ms": 33509739,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 1159465,
+              "start_ms": 34455441,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 1035564,
+              "start_ms": 35614906,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 874742,
+              "start_ms": 36650470,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 1163366,
+              "start_ms": 37525212,
+              "title": "Chapter 33"
+            },
+            {
+              "length_ms": 1253460,
+              "start_ms": 38688578,
+              "title": "Chapter 34"
+            },
+            {
+              "length_ms": 38499,
+              "start_ms": 39942038,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91aUqrxDHgL.jpg",
+          "id": "armen-taylor-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "armen-taylor"
+          ],
+          "publisher": "Shadow Alley Press Inc.",
+          "release_date": "2017-10-16",
+          "runtime_min": 666,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B076DHSSVD",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B076DKB8Z5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "viridian-gate-online-the-jade-lord"
+        },
         "armen-taylor-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3685,263 +3889,28 @@
           "imported_at": "2026-08-02",
           "ref": "B0DXWMJ4X3",
           "type": "libex-import"
-        }
-      ],
-      "title": "Viridian Gate Online: The Jade Lord"
-    },
-    "viridian-gate-online-the-jade-lord-a-litrpg-adventure": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "james-hunter"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "paranormal",
-        "thriller-suspense"
-      ],
-      "id": "viridian-gate-online-the-jade-lord-a-litrpg-adventure",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "armen-taylor-2017": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B076DHSSVD",
-              "region": "us"
-            },
-            {
-              "asin": "B076DKB8Z5",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 20434,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 1657673,
-              "start_ms": 20434,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1178924,
-              "start_ms": 1678107,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1477950,
-              "start_ms": 2857031,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 797420,
-              "start_ms": 4334981,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1033474,
-              "start_ms": 5132401,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1609700,
-              "start_ms": 6165875,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1088598,
-              "start_ms": 7775575,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 994836,
-              "start_ms": 8864173,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 588858,
-              "start_ms": 9859009,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 735747,
-              "start_ms": 10447867,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1259079,
-              "start_ms": 11183614,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1091384,
-              "start_ms": 12442693,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 903070,
-              "start_ms": 13534077,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 996786,
-              "start_ms": 14437147,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1085672,
-              "start_ms": 15433933,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1267438,
-              "start_ms": 16519605,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1523043,
-              "start_ms": 17787043,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 831321,
-              "start_ms": 19310086,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1167732,
-              "start_ms": 20141407,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1513337,
-              "start_ms": 21309139,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1180131,
-              "start_ms": 22822476,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1239760,
-              "start_ms": 24002607,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1659159,
-              "start_ms": 25242367,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 1515938,
-              "start_ms": 26901526,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 1482501,
-              "start_ms": 28417464,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 1065146,
-              "start_ms": 29899965,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 1242964,
-              "start_ms": 30965111,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 1301664,
-              "start_ms": 32208075,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 945702,
-              "start_ms": 33509739,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 1159465,
-              "start_ms": 34455441,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 1035564,
-              "start_ms": 35614906,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 874742,
-              "start_ms": 36650470,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 1163366,
-              "start_ms": 37525212,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 1253460,
-              "start_ms": 38688578,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 38499,
-              "start_ms": 39942038,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91aUqrxDHgL.jpg",
-          "id": "armen-taylor-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "armen-taylor"
-          ],
-          "publisher": "Shadow Alley Press Inc.",
-          "release_date": "2017-10-16",
-          "runtime_min": 666,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B076DHSSVD",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B076DKB8Z5",
-              "type": "libex-import"
-            }
-          ],
-          "work": "viridian-gate-online-the-jade-lord-a-litrpg-adventure"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B076DHSSVD",
           "type": "libex-import"
         }
       ],
-      "title": "Viridian Gate Online: The Jade Lord: A litRPG Adventure"
+      "title": "Viridian Gate Online: The Jade Lord"
     },
     "viridian-gate-online-the-lich-priest": {
       "added_at": "2026-08-01",
       "authors": [
-        "james-hunter"
+        "james-hunter",
+        "james-a-hunter"
       ],
       "genres": [
         "cyberpunk",
+        "dark-fantasy",
+        "epic-fantasy",
         "fantasy",
-        "science-fiction"
+        "science-fiction",
+        "young-adult"
       ],
       "id": "viridian-gate-online-the-lich-priest",
       "language": "en",
@@ -4160,32 +4129,7 @@
             }
           ],
           "work": "viridian-gate-online-the-lich-priest"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B07D2JKSBN",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Viridian Gate Online: The Lich Priest"
-    },
-    "viridian-gate-online-the-lich-priest-james-a-hunter": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "james-a-hunter"
-      ],
-      "genres": [
-        "dark-fantasy",
-        "epic-fantasy",
-        "fantasy",
-        "young-adult"
-      ],
-      "id": "viridian-gate-online-the-lich-priest-james-a-hunter",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "armen-taylor-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -4407,10 +4351,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "viridian-gate-online-the-lich-priest-james-a-hunter"
+          "work": "viridian-gate-online-the-lich-priest"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B07D2JKSBN",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DXLSPBCQ",
