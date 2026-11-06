@@ -1,6 +1,7 @@
 package importer
 
 import (
+	"maps"
 	"slices"
 	"strings"
 	"testing"
@@ -92,6 +93,9 @@ func TestStoreImportParseRefusals(t *testing.T) {
 		{"another store's host", strings.Replace(guildRow, `"store":"audiobookguild"`, `"store":"graphicaudio"`, 1), "is not an https page on graphicaudio.net or www.graphicaudio.net"},
 		{"plain http", strings.Replace(guildRow, "https://audiobookguild.com", "http://audiobookguild.com", 1), "is not an https page on audiobookguild.com"},
 		{"no url", strings.Replace(guildRow, `"url":"`+guildURL+`",`, "", 1), `url "" is not an https page`},
+		{"a query string", strings.Replace(guildRow, guildURL, guildURL+"?variant=2", 1), "(a path past the host, no query string or fragment)"},
+		{"a fragment", strings.Replace(guildRow, guildURL, guildURL+"#reviews", 1), "(a path past the host, no query string or fragment)"},
+		{"a bare homepage", strings.Replace(guildRow, guildURL, "https://audiobookguild.com/", 1), `url "https://audiobookguild.com/" is not an https page`},
 		{"an ASIN", strings.Replace(guildRow, `"title"`, `"asin":"B0STORE001","title"`, 1), "a listing with an ASIN is imported through `metaimport libex`"},
 		{"an AI narrator", strings.Replace(guildRow, "Joshua Story", "Virtual Voice", 1), "row skipped"},
 	}
@@ -174,19 +178,91 @@ func TestStoreImportAddsThePageToTheHeldProduction(t *testing.T) {
 	}
 }
 
-// TestStoreImportDistinctRuntimeIsANewRecording: same narrators, a runtime far
-// off the held one - another production, so a recording of its own.
-func TestStoreImportDistinctRuntimeIsANewRecording(t *testing.T) {
-	dataDir := seedRecordingsTree(t)
-	row := strings.NewReplacer("A Full Cast", "Stephen Fry", `"lengthMinutes":400`, `"lengthMinutes":300`).Replace(graphicRow)
-	sum := runStore(t, dataDir, row, Options{})
-	if sum.NewRecordings != 1 || sum.StoreLinksAdded != 0 {
-		t.Fatalf("summary = %+v (%q), want a new recording", sum, sum.Warnings)
+// frySecond is a second Stephen Fry production of Chamber of Secrets, for the
+// "exactly one qualifies" cases; runtime is its runtime_min ("" for none).
+func frySecond(runtime string) string {
+	rt := ""
+	if runtime != "" {
+		rt = `"runtime_min":` + runtime + `,`
 	}
-	var held model.Recording
-	readEntity(t, dataDir, hpChamberFryRel, &held)
-	if held.Links != nil {
-		t.Errorf("the held production gained a page it is not: %+v", held.Links)
+	return `{"id":"stephen-fry-2020","language":"en","license":"CC0-1.0","narrators":["stephen-fry"],` + rt +
+		`"sources":[{"type":"user"}],"work":"harry-potter-and-the-chamber-of-secrets"}`
+}
+
+const frySecondRel = "works/ha/harry-potter-and-the-chamber-of-secrets/recordings/stephen-fry-2020.json"
+
+// seedStoreTree seeds the recordings catalogue with extra records added or
+// replaced, in one write (a work's recordings share its entry).
+func seedStoreTree(t *testing.T, extra map[string]string) string {
+	t.Helper()
+	files := recordingsSeedFiles()
+	maps.Copy(files, extra)
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, files)
+	return dataDir
+}
+
+// TestStoreImportRefusesAnUnprovenProduction: a store row adds its page to a
+// held same-narrator recording only when both state a runtime, the runtimes
+// agree and exactly one recording qualifies. Every other case is a refusal
+// with a warning - never the page on the first match, never a twin recording.
+func TestStoreImportRefusesAnUnprovenProduction(t *testing.T) {
+	fry := func(runtime string) string {
+		return strings.NewReplacer("A Full Cast", "Stephen Fry", `"lengthMinutes":400`, runtime).Replace(graphicRow)
+	}
+	cases := []struct {
+		name, row string
+		seed      map[string]string
+		want      string
+	}{
+		{"the row states no runtime", fry(`"lengthMinutes":0`), nil, "do not both state a runtime"},
+		{"the held recording states no runtime", fry(`"lengthMinutes":580`),
+			map[string]string{hpChamberFryRel: strings.Replace(hpChamberFry, `"runtime_min":583,`, "", 1)}, "do not both state a runtime"},
+		{"the runtimes disagree", fry(`"lengthMinutes":300`), nil, "runs 583 minutes and this row 300"},
+		{"two held recordings qualify", fry(`"lengthMinutes":580`), map[string]string{frySecondRel: frySecond("590")}, "2 same-narrator recordings could be this row's production"},
+	}
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			dataDir := seedStoreTree(t, c.seed)
+			before := recSlugsOf(t, dataDir, "harry-potter-and-the-chamber-of-secrets")
+			sum := runStore(t, dataDir, c.row, Options{})
+			if sum.Produced() != 0 || sum.StoreLinksAdded != 0 {
+				t.Fatalf("summary = %+v (%q), want the row refused", sum, sum.Warnings)
+			}
+			if !slices.ContainsFunc(sum.Warnings, func(w string) bool { return strings.Contains(w, c.want) && strings.Contains(w, "not added") }) {
+				t.Errorf("warnings = %q, want one containing %q", sum.Warnings, c.want)
+			}
+			if after := recSlugsOf(t, dataDir, "harry-potter-and-the-chamber-of-secrets"); !slices.Equal(after, before) {
+				t.Errorf("recordings = %v, want unchanged %v", after, before)
+			}
+			for _, rel := range []string{hpChamberFryRel, frySecondRel} {
+				if !entryExists(t, dataDir, rel) {
+					continue
+				}
+				var rec model.Recording
+				readEntity(t, dataDir, rel, &rec)
+				if rec.Links != nil {
+					t.Errorf("%s gained a page it is not proven to be: %+v", rel, rec.Links)
+				}
+			}
+		})
+	}
+}
+
+// TestStoreImportOneQualifyingAmongSeveral: two same-narrator recordings, one
+// whose runtime agrees with the row - that one alone gains the page.
+func TestStoreImportOneQualifyingAmongSeveral(t *testing.T) {
+	dataDir := seedStoreTree(t, map[string]string{frySecondRel: frySecond("300")})
+	row := strings.NewReplacer("A Full Cast", "Stephen Fry", `"lengthMinutes":400`, `"lengthMinutes":305`).Replace(graphicRow)
+	sum := runStore(t, dataDir, row, Options{})
+	if sum.StoreLinksAdded != 1 || sum.NewRecordings != 0 {
+		t.Fatalf("summary = %+v (%q), want the page on the one qualifying recording", sum, sum.Warnings)
+	}
+	var second, first model.Recording
+	readEntity(t, dataDir, frySecondRel, &second)
+	readEntity(t, dataDir, hpChamberFryRel, &first)
+	if second.Links == nil || second.Links.GraphicAudio != graphicURL || first.Links != nil {
+		t.Errorf("links = %+v / %+v, want the page on stephen-fry-2020 alone", second.Links, first.Links)
 	}
 }
 

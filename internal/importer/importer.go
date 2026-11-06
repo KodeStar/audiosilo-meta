@@ -3366,9 +3366,11 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 	matches, freeSlug := sameNarratorRecs(ws, base, narrSet)
 	slug := freeSlug
 	claims := rowSeriesClaims(b, title)
-	// A store listing that is a production the work already holds adds its page
-	// there (store.go); one no sibling is is a recording of its own, so the
-	// ASIN-less branch below (which writes no recording) never sees it.
+	// A store listing proven to be the ONE production the work already holds
+	// with its narrators adds its page there, one that cannot be proven either
+	// way is refused, and one with no retail same-narrator sibling is a recording
+	// of its own (store.go) - so the ASIN-less branch below (which writes no
+	// recording) never sees it.
 	if b.store != nil && len(matches) > 0 {
 		switch p.landStoreLink(ws, matches, b, claims, narrSet, warn) {
 		case storeLinked:

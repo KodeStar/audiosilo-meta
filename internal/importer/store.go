@@ -108,8 +108,8 @@ func (sp *storeParse) parseRow(e rawBook) {
 	case !model.KnownStore(store):
 		sp.refuse(label, "store %q is not one of %s", store, strings.Join(model.StoreKeys(), ", "))
 		return
-	case !model.StoreLinkHostOK(store, link):
-		sp.refuse(label, "url %q is not an https page on %s", link, strings.Join(model.StoreHosts(store), " or "))
+	case !model.StoreLinkOK(store, link):
+		sp.refuse(label, "url %q is not %s", link, model.StoreLinkRule(store))
 		return
 	case e.str("asin") != "":
 		sp.refuse(label, "it carries an ASIN (%s); a listing with an ASIN is imported through `metaimport libex`", e.str("asin"))
@@ -175,56 +175,85 @@ func (p *planner) applyStoreLink(rec *outRecording, b sourceBook) {
 type storeLanding int
 
 const (
-	storeNoProduction storeLanding = iota // no sibling is this production: the row is a recording of its own
-	storeLinked                           // the page was added to the sibling that is this production
-	storeRefused                          // the production states another page for this store (or its entry could not be read)
+	storeNoProduction storeLanding = iota // no same-narrator retail sibling: the row is a recording of its own
+	storeLinked                           // the page was added to the one sibling that is this production
+	storeRefused                          // a sibling exists but none, or more than one, is provably this production (or it states another page)
 )
 
 // landStoreLink is addRecording's store branch over the work's same-narrator
-// recordings (matches): the first that is the row's production, by the rules an
-// ASIN merge is judged by (not a LibriVox project, no series-position conflict,
-// a compatible runtime, no abridgement conflict), gains the page when it states
-// none for that store. The existing value wins, as everywhere in this importer:
-// a production already stating another page for the store is refused, named,
-// and left as it is.
+// recordings (matches). A store row carries no identifier, so like the ISBN
+// attach (attachRowISBNs) it adds its page to a held recording only on PROOF
+// that the recording is its production, and never to "the first match":
+//
+//   - LibriVox projects are set aside first (never a retail listing's
+//     production); with none left the row is a recording of its own;
+//   - a held recording QUALIFIES when both it and the row state a runtime, the
+//     two are compatible (sameRuntime), the abridged flags do not conflict and
+//     no series position contradicts the row's claim (narrators already match);
+//   - exactly ONE qualifying recording gains the page, when it states none for
+//     that store (the existing value wins: one stating another page is refused);
+//   - zero or several qualifying is a refusal with a warning naming why: a
+//     refused row is re-importable, a page on the wrong production or a twin
+//     recording of a held one is not.
 func (p *planner) landStoreLink(ws *workState, matches []recCandidate, b sourceBook, claims []posClaim, narrSet map[string]bool, warn func(string, ...any)) storeLanding {
 	prod := resolvedRowProduction(b, narrSet)
+	var retail, qualified []recCandidate
+	var why []string
 	for _, m := range matches {
 		if m.info.librivox {
 			continue
 		}
-		if series, incumbent, want, conflict := p.seriesPosConflict(m.info, ws, claims, prod); conflict {
-			warn("recording %q is at position %q of series %q; this row claims %q - not adding its store page there", m.slug, incumbent, series, want)
-			continue
+		retail = append(retail, m)
+		known, row := m.info.known, b.evidence
+		switch {
+		case known.min <= 0 || row.min <= 0:
+			why = append(why, fmt.Sprintf("recording %q and this row do not both state a runtime", m.slug))
+		case !sameRuntime(known, row):
+			why = append(why, fmt.Sprintf("recording %q runs %d minutes and this row %d", m.slug, known.min, row.min))
+		case abridgedConflict(m.info.abridged, b.abridged):
+			why = append(why, fmt.Sprintf("recording %q and this row disagree on abridged", m.slug))
+		default:
+			if series, incumbent, want, conflict := p.seriesPosConflict(m.info, ws, claims, prod); conflict {
+				why = append(why, fmt.Sprintf("recording %q is at position %q of series %q and this row claims %q", m.slug, incumbent, series, want))
+				continue
+			}
+			qualified = append(qualified, m)
 		}
-		if !sameRuntime(m.info.known, b.evidence) || abridgedConflict(m.info.abridged, b.abridged) {
-			continue
-		}
-		ref := RecRef{Work: ws.slug, Rec: m.slug}
-		entry, raw := p.recordingRaw(ref.Work, ref.Rec)
-		if raw == nil {
-			return storeRefused
-		}
-		links, _ := raw["links"].(map[string]any)
-		if have, _ := links[b.store.key].(string); have != "" {
-			warn("recording %s is this production and already states links.%s %q; not replacing it with %q",
-				recLabel(ref.Work, ref.Rec), b.store.key, have, b.store.url)
-			return storeRefused
-		}
-		if links == nil {
-			links = map[string]any{}
-		}
-		links[b.store.key] = b.store.url
-		raw["links"] = links
-		p.commitRecording(ref, entry, raw)
-		// The stamp is a dated bulk-mirror statement, which can end a preorder
-		// estimate's state (runtimeEstimated), so a later row of the run is
-		// compared with what the record now says (as mergeRecordingASIN does).
-		syncRecInfo(m.info, raw)
-		p.noteStoreLink(b.store.url)
-		p.landedRec = m.slug
-		p.summary.StoreLinksAdded++
-		return storeLinked
 	}
-	return storeNoProduction
+	switch {
+	case len(retail) == 0:
+		return storeNoProduction
+	case len(qualified) > 1:
+		warn("%d same-narrator recordings could be this row's production; its store page is not added and no recording is created", len(qualified))
+		return storeRefused
+	case len(qualified) == 0:
+		warn("%s; it is not proven to be that production, so its store page is not added and no recording is created", strings.Join(why, "; "))
+		return storeRefused
+	}
+	m := qualified[0]
+	ref := RecRef{Work: ws.slug, Rec: m.slug}
+	entry, raw := p.recordingRaw(ref.Work, ref.Rec)
+	if raw == nil {
+		return storeRefused
+	}
+	links, _ := raw["links"].(map[string]any)
+	if have, _ := links[b.store.key].(string); have != "" {
+		warn("recording %s is this production and already states links.%s %q; not replacing it with %q",
+			recLabel(ref.Work, ref.Rec), b.store.key, have, b.store.url)
+		return storeRefused
+	}
+	if links == nil {
+		links = map[string]any{}
+	}
+	links[b.store.key] = b.store.url
+	raw["links"] = links
+	p.commitRecording(ref, entry, raw)
+	// The stamp is a dated bulk-mirror statement, which can end a preorder
+	// estimate's state (runtimeEstimated), so a later row of the run is
+	// compared with what the record now says (as mergeRecordingASIN does).
+	syncRecInfo(m.info, raw)
+	p.noteStoreLink(b.store.url)
+	p.landedRec = m.slug
+	p.summary.StoreLinksAdded++
+	return storeLinked
 }
