@@ -51,6 +51,16 @@ func TestRecordingLinksStoreAccessors(t *testing.T) {
 	if l.SetStore("audible", "x") || l.Store("audible") != "" {
 		t.Error("an unknown store key must be refused")
 	}
+	var got []string
+	for key, link := range l.StoreLinks() {
+		got = append(got, key+"="+link)
+	}
+	if want := []string{"audiobookguild=https://example/audiobookguild", "graphicaudio=https://example/graphicaudio"}; !slices.Equal(got, want) {
+		t.Errorf("StoreLinks() = %v, want %v", got, want)
+	}
+	for range nilLinks.StoreLinks() {
+		t.Error("a nil links object yields no store link")
+	}
 }
 
 // TestStoreKeysMatchTheSchema keeps the store vocabulary, the RecordingLinks
@@ -95,9 +105,6 @@ func TestStoreKeysMatchTheSchema(t *testing.T) {
 		if len(StoreHosts(key)) == 0 {
 			t.Errorf("store key %q names no host", key)
 		}
-	}
-	if len(StoreKeys()) != len(storeHosts) {
-		t.Errorf("StoreKeys() lists %d stores, storeHosts holds %d", len(StoreKeys()), len(storeHosts))
 	}
 }
 

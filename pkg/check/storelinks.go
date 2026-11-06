@@ -21,15 +21,7 @@ import (
 func checkStoreLinks(recs []recordWithPath, add addFunc) {
 	seen := map[string]string{}
 	for _, pr := range recs {
-		links := pr.rec.Links
-		if links == nil {
-			continue
-		}
-		for _, store := range model.StoreKeys() {
-			link := links.Store(store)
-			if link == "" {
-				continue
-			}
+		for store, link := range pr.rec.Links.StoreLinks() {
 			if !model.StoreLinkHostOK(store, link) {
 				add(pr.path, "links.%s %q is not an https page on %s", store, link, strings.Join(model.StoreHosts(store), " or "))
 				continue

@@ -120,52 +120,24 @@ func (sp *storeParse) parseRow(e rawBook) {
 		sp.refuse(label, "%s", r.detail)
 		return
 	}
-	sp.books = append(sp.books, storeToBook(e, store, link, authors, narrators, &sp.warnings))
+	sp.books = append(sp.books, sp.storeToBook(e, store, link, authors, narrators))
 }
 
-// storeToBook normalizes one store row into a sourceBook, in libexToBook's key
-// translation: the factual fields only, through the shared keys addBook reads.
-func storeToBook(e rawBook, store, link string, authors, narrators []string, warnings *[]string) sourceBook {
-	raw := rawBook{}
-	sb := sourceBook{raw: raw, store: &storeFacts{key: store, url: link}}
-	// title_short is the work title, title the composed "Title: Subtitle", as
-	// for a libex row (the subtitle takes part in identity, never in
-	// work.subtitle).
-	title := e.str("title")
-	raw["title_short"] = title
-	if sub := e.str("subtitle"); title != "" && sub != "" && !strings.Contains(title, sub) {
-		raw["title"] = title + ": " + sub
-	} else {
-		raw["title"] = title
-	}
+// storeToBook normalizes one store row into a sourceBook: the facts a libex
+// row and a store row share (libexSharedFacts), through the keys addBook reads.
+func (sp *storeParse) storeToBook(e rawBook, store, link string, authors, narrators []string) sourceBook {
+	sb := sourceBook{raw: rawBook{}, store: &storeFacts{key: store, url: link}}
 	sb.authors, sb.narrators = authors, narrators
-	if lang := e.str("language"); lang != "" {
-		raw["language"] = lang // a word ("english") or a code; mapLanguage resolves it
-	}
-	if pub := e.str("publisher"); pub != "" {
-		raw["publisher"] = pub
-	}
-	if rd := isoDatePart(e.str("releaseDate")); rd != "" {
-		raw["release_date"] = rd
-	}
-	if img := e.str("imageUrl"); img != "" {
-		if strings.HasPrefix(img, "https://") {
-			raw["image_url"] = img
-		} else {
-			*warnings = append(*warnings, fmt.Sprintf("store: %s: cover URL %q is not https; dropped", link, img))
-		}
-	}
-	if mins, ok := coerceInt(e["lengthMinutes"]); ok && mins > 0 {
-		sb.runtimeMin = int(mins)
-	}
-	sb.series = libexSeries(e["series"])
+	libexSharedFacts(e, &sb, func(img string) {
+		sp.warnings = append(sp.warnings, fmt.Sprintf("store: %s: cover URL %q is not https; dropped", link, img))
+	})
 	return sb
 }
 
 // dedupeByStoreLink is a store row's dedup gate, the twin of dedupeByASIN: a
 // row whose page the catalogue (or this run) already holds is a skip.
 func (p *planner) dedupeByStoreLink(b sourceBook) bool {
-	if b.store == nil || !p.storeLinks[model.StoreLinkKey(b.store.url)] {
+	if b.store == nil || !p.hasStoreLink(b.store.url) {
 		return false
 	}
 	p.summary.Skipped++
@@ -175,12 +147,15 @@ func (p *planner) dedupeByStoreLink(b sourceBook) bool {
 // noteStoreLinks registers every store page a catalogued recording states, so
 // a rerun of the same file is a set of skips (loadExisting).
 func (p *planner) noteStoreLinks(links *model.RecordingLinks) {
-	for _, store := range model.StoreKeys() {
-		if l := links.Store(store); l != "" {
-			p.storeLinks[model.StoreLinkKey(l)] = true
-		}
+	for _, l := range links.StoreLinks() {
+		p.noteStoreLink(l)
 	}
 }
+
+// noteStoreLink and hasStoreLink are the one place the dedup set is keyed
+// (model.StoreLinkKey, pkg/check's uniqueness key).
+func (p *planner) noteStoreLink(link string)     { p.storeLinks[model.StoreLinkKey(link)] = true }
+func (p *planner) hasStoreLink(link string) bool { return p.storeLinks[model.StoreLinkKey(link)] }
 
 // applyStoreLink writes a store row's page onto the recording it creates and
 // registers it, so a later row of the run naming the same page is a skip.
@@ -192,7 +167,7 @@ func (p *planner) applyStoreLink(rec *outRecording, b sourceBook) {
 		rec.Links = &model.RecordingLinks{}
 	}
 	rec.Links.SetStore(b.store.key, b.store.url)
-	p.storeLinks[model.StoreLinkKey(b.store.url)] = true
+	p.noteStoreLink(b.store.url)
 }
 
 // storeLanding is what landStoreLink did with a store row among the work's
@@ -242,7 +217,7 @@ func (p *planner) landStoreLink(ws *workState, matches []recCandidate, b sourceB
 		links[b.store.key] = b.store.url
 		raw["links"] = links
 		p.commitRecording(ref, entry, raw)
-		p.storeLinks[model.StoreLinkKey(b.store.url)] = true
+		p.noteStoreLink(b.store.url)
 		p.landedRec = m.slug
 		p.summary.StoreLinksAdded++
 		return storeLinked

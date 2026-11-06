@@ -1,6 +1,7 @@
 package model
 
 import (
+	"iter"
 	"net/url"
 	"slices"
 	"strings"
@@ -25,29 +26,53 @@ const (
 	StoreGraphicAudio   = "graphicaudio"
 )
 
-// storeHosts names each store's hosts, as the stores serve their product pages
-// (audiobookguild.com/products/<handle>, a Shopify storefront answering on the
-// bare domain; www.graphicaudio.net/<handle>.html). Both spellings of each are
-// accepted, since a store states either and redirects the other.
-var storeHosts = map[string][]string{
-	StoreAudiobookGuild: {"audiobookguild.com", "www.audiobookguild.com"},
-	StoreGraphicAudio:   {"graphicaudio.net", "www.graphicaudio.net"},
+// storeDef is one store: its key, the hosts it serves its product pages from,
+// and the RecordingLinks field that holds its page.
+type storeDef struct {
+	key   string
+	hosts []string
+	field func(*RecordingLinks) *string
 }
 
-// StoreKeys lists the store keys in their fixed order (the order the API's
-// purchase links and the artifact's columns use).
-func StoreKeys() []string { return []string{StoreAudiobookGuild, StoreGraphicAudio} }
+// stores is the vocabulary, in its fixed order (the order the API's purchase
+// links and the artifact's columns use). The hosts are as the stores serve
+// their product pages (audiobookguild.com/products/<handle>, a Shopify
+// storefront answering on the bare domain; www.graphicaudio.net/<handle>.html).
+// Both spellings of each are accepted, since a store states either and
+// redirects the other.
+var stores = []storeDef{
+	{StoreAudiobookGuild, []string{"audiobookguild.com", "www.audiobookguild.com"}, func(l *RecordingLinks) *string { return &l.AudiobookGuild }},
+	{StoreGraphicAudio, []string{"graphicaudio.net", "www.graphicaudio.net"}, func(l *RecordingLinks) *string { return &l.GraphicAudio }},
+}
+
+func storeOf(key string) (storeDef, bool) {
+	for _, s := range stores {
+		if s.key == key {
+			return s, true
+		}
+	}
+	return storeDef{}, false
+}
+
+// StoreKeys lists the store keys in their fixed order.
+func StoreKeys() []string {
+	keys := make([]string, len(stores))
+	for i, s := range stores {
+		keys[i] = s.key
+	}
+	return keys
+}
 
 // KnownStore reports whether key names a store this vocabulary holds.
 func KnownStore(key string) bool {
-	_, ok := storeHosts[key]
+	_, ok := storeOf(key)
 	return ok
 }
 
 // StoreLinkHostOK reports whether raw is an https URL on one of store's hosts
 // (case-insensitive, no port, no credentials). An unknown store answers false.
 func StoreLinkHostOK(store, raw string) bool {
-	hosts, ok := storeHosts[store]
+	s, ok := storeOf(store)
 	if !ok {
 		return false
 	}
@@ -55,38 +80,47 @@ func StoreLinkHostOK(store, raw string) bool {
 	if err != nil || u.Scheme != "https" || u.User != nil || u.Port() != "" {
 		return false
 	}
-	return slices.Contains(hosts, strings.ToLower(u.Hostname()))
+	return slices.Contains(s.hosts, strings.ToLower(u.Hostname()))
 }
 
 // StoreHosts returns a copy of store's hosts, for a refusal that names them.
-func StoreHosts(store string) []string { return slices.Clone(storeHosts[store]) }
+func StoreHosts(store string) []string {
+	s, _ := storeOf(store)
+	return slices.Clone(s.hosts)
+}
 
 // Store returns the link the recording states for store ("" when none, or for
 // an unknown key).
 func (l *RecordingLinks) Store(store string) string {
-	if l == nil {
+	s, ok := storeOf(store)
+	if l == nil || !ok {
 		return ""
 	}
-	switch store {
-	case StoreAudiobookGuild:
-		return l.AudiobookGuild
-	case StoreGraphicAudio:
-		return l.GraphicAudio
+	return *s.field(l)
+}
+
+// StoreLinks yields each store page the recording states, as (store key,
+// link), in StoreKeys order. A nil links object yields nothing.
+func (l *RecordingLinks) StoreLinks() iter.Seq2[string, string] {
+	return func(yield func(string, string) bool) {
+		if l == nil {
+			return
+		}
+		for _, s := range stores {
+			if v := *s.field(l); v != "" && !yield(s.key, v) {
+				return
+			}
+		}
 	}
-	return ""
 }
 
 // SetStore sets the link for store, reporting false for an unknown key.
 func (l *RecordingLinks) SetStore(store, link string) bool {
-	switch store {
-	case StoreAudiobookGuild:
-		l.AudiobookGuild = link
-	case StoreGraphicAudio:
-		l.GraphicAudio = link
-	default:
-		return false
+	s, ok := storeOf(store)
+	if ok {
+		*s.field(l) = link
 	}
-	return true
+	return ok
 }
 
 // StoreLinkKey is the identity of a store link: the URL past its scheme, with

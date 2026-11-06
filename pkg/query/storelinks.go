@@ -26,10 +26,8 @@ func (s *DB) hasStoreLinks() bool { return s.schemaVersion >= storeLinksSchemaVe
 // constructed route.
 func storePurchaseLinks(links *model.RecordingLinks) []PurchaseLink {
 	var out []PurchaseLink
-	for _, store := range model.StoreKeys() {
-		if u := links.Store(store); u != "" {
-			out = append(out, PurchaseLink{Retailer: store, ID: u, URL: u, Availability: "unknown"})
-		}
+	for store, u := range links.StoreLinks() {
+		out = append(out, PurchaseLink{Retailer: store, ID: u, URL: u, Availability: "unknown"})
 	}
 	return out
 }
