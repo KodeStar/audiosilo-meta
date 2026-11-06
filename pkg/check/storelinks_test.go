@@ -71,3 +71,17 @@ func TestStoreLinksUnique(t *testing.T) {
 		t.Fatalf("want a duplicate store link problem, got:\n%s", joinProblems(res.Problems))
 	}
 }
+
+// A trailing "/" is the same store page, so it is the same link
+// (model.StoreLinkKey folds it).
+func TestStoreLinksUniqueTrailingSlash(t *testing.T) {
+	files := baseValid()
+	files["works/bo/book-one/recordings/rec-one.json"] = storeRecording("rec-one",
+		`{"audiobookguild":"https://audiobookguild.com/products/book-one"}`)
+	files["works/bo/book-one/recordings/rec-two.json"] = storeRecording("rec-two",
+		`{"audiobookguild":"https://audiobookguild.com/products/book-one/"}`)
+	res := loadTree(t, files)
+	if res.OK() || !strings.Contains(joinProblems(res.Problems), `duplicate links.audiobookguild "https://audiobookguild.com/products/book-one/" also in`) {
+		t.Fatalf("want a duplicate store link problem, got:\n%s", joinProblems(res.Problems))
+	}
+}

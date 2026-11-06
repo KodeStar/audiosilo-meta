@@ -127,8 +127,10 @@ func (l *RecordingLinks) SetStore(store, link string) bool {
 
 // StoreLinkKey is the identity of a store link: the URL past its scheme, with
 // the host lowercased and a leading "www." dropped (each store answers on both
-// spellings, StoreLinkOK), the path as the store states it (StoreLinkOK refuses a
-// query string or fragment, so the path is the whole page).
+// spellings, StoreLinkOK), the path as the store states it less any trailing
+// "/" (the stores serve "/products/x" and "/products/x/" as one page; StoreLinkOK
+// refuses a query string or fragment, so the path is the whole page). The
+// stored link keeps the spelling it was given; only the key folds.
 // pkg/check holds it unique across the dataset and the store-listing import
 // deduplicates on it, so the two agree on what "the same page" is. A link that
 // is not an absolute https URL keys as itself.
@@ -138,5 +140,5 @@ func StoreLinkKey(link string) string {
 		return link
 	}
 	host, path, _ := strings.Cut(rest, "/")
-	return strings.TrimPrefix(strings.ToLower(host), "www.") + "/" + path
+	return strings.TrimPrefix(strings.ToLower(host), "www.") + "/" + strings.TrimRight(path, "/")
 }

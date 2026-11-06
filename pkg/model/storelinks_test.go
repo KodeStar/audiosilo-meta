@@ -122,6 +122,8 @@ func TestStoreLinkKey(t *testing.T) {
 		"https://audiobookguild.com/products/without-law-17",
 		"https://www.audiobookguild.com/products/without-law-17",
 		"https://WWW.AudiobookGuild.com/products/without-law-17",
+		"https://audiobookguild.com/products/without-law-17/",
+		"https://www.audiobookguild.com/products/without-law-17//",
 	}
 	for _, l := range same {
 		if got := StoreLinkKey(l); got != "audiobookguild.com/products/without-law-17" {
@@ -131,6 +133,9 @@ func TestStoreLinkKey(t *testing.T) {
 	// The path is the store's: its case and a query are kept.
 	if StoreLinkKey("https://audiobookguild.com/products/Without-Law-17") == StoreLinkKey(same[0]) {
 		t.Error("a path differing in case must key apart")
+	}
+	if got, want := StoreLinkKey("https://www.graphicaudio.net/"), StoreLinkKey("https://graphicaudio.net"); got != want {
+		t.Errorf("a bare host keys %q with its slash, %q without", got, want)
 	}
 	if got := StoreLinkKey("http://audiobookguild.com/x"); got != "http://audiobookguild.com/x" {
 		t.Errorf("a non-https link keys as itself, got %q", got)

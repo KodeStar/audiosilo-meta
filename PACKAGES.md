@@ -1181,7 +1181,7 @@ it, the schema and `RecordingLinks` in step). pkg/check (`storelinks.go`) holds
 each link to its store's host (`model.StoreLinkOK`: https, no port or
 credentials, the bare or `www.` host, a path past the host, no query string
 or fragment) and unique across the dataset by
-`model.StoreLinkKey` (host case and a leading `www.` folded), the same key the
+`model.StoreLinkKey` (host case, a leading `www.` and a trailing `/` folded), the same key the
 importer dedups on. internal/build writes `recordings.link_audiobookguild` /
 `link_graphicaudio`; loadStats proves a version 11 claim (`storeLinksShapeSQL`);
 pkg/query reads them into the recording's `links` and adds one purchase link per
