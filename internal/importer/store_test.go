@@ -160,8 +160,10 @@ func TestStoreImportAddsThePageToTheHeldProduction(t *testing.T) {
 		t.Errorf("sources = %+v, want the store stamp", rec.Sources)
 	}
 
-	// The same production listed under ANOTHER page is refused; the stated page wins.
-	other := strings.Replace(row, graphicURL, "https://www.graphicaudio.net/hp-2-reissue.html", 1)
+	// The same production listed under ANOTHER page is refused; the stated page
+	// wins, and the refused row places nothing (no series founded for its claim).
+	other := strings.Replace(strings.Replace(row, graphicURL, "https://www.graphicaudio.net/hp-2-reissue.html", 1),
+		`"lengthMinutes"`, `"series":[{"name":"Wizarding Reissues","position":"2"}],"lengthMinutes"`, 1)
 	sum = runStore(t, dataDir, other, Options{})
 	if sum.Produced() != 0 || !slices.ContainsFunc(sum.Warnings, func(w string) bool { return strings.Contains(w, "already states links.graphicaudio") }) {
 		t.Errorf("summary = %+v (%q), want a refusal naming the stated page", sum, sum.Warnings)
@@ -185,5 +187,17 @@ func TestStoreImportDistinctRuntimeIsANewRecording(t *testing.T) {
 	readEntity(t, dataDir, hpChamberFryRel, &held)
 	if held.Links != nil {
 		t.Errorf("the held production gained a page it is not: %+v", held.Links)
+	}
+}
+
+// A store row's conflict line names its page, its identifier in place of an
+// ASIN, so a worklist row traces back to the listing that raised it.
+func TestStoreConflictLineNamesThePage(t *testing.T) {
+	var buf strings.Builder
+	p := &planner{conflicts: &buf, sourceType: model.SourceStoreListing, importDate: testImportDate}
+	p.recordConflict(sourceBook{raw: rawBook{}, store: &storeFacts{key: model.StoreAudiobookGuild, url: guildURL}},
+		RecRef{Work: "w"}, conflictFieldWorkIdentity, "Held Title", "Row Title")
+	if !strings.Contains(buf.String(), `"store_url":"`+guildURL+`"`) {
+		t.Errorf("conflict line = %s, want it to carry the store page", buf.String())
 	}
 }

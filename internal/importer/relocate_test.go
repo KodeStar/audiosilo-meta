@@ -619,3 +619,27 @@ func TestRelocateCreatesNoUncreditedTranslator(t *testing.T) {
 		t.Errorf("orphans: %v", got)
 	}
 }
+
+// A relocation merge folds links per KEY (rawentry.mergeLinks), so the note
+// names only a mover key that landed under another value: the sibling's own
+// store page beside the mover's is no loss.
+func TestRelocationLossesReadLinksPerKey(t *testing.T) {
+	const guildA, guildB = `"https://audiobookguild.com/products/a"`, `"https://audiobookguild.com/products/b"`
+	const graphic = `"https://www.graphicaudio.net/a.html"`
+	rec := &model.Recording{ID: "r", Work: "w"}
+	landed := rawentry.Obj{"links": []byte(`{"audiobookguild":` + guildA + `,"graphicaudio":` + graphic + `}`)}
+
+	p := &planner{}
+	p.noteRelocationLosses(rec, "t", "s", rawentry.Obj{"links": []byte(`{"graphicaudio":` + graphic + `}`)}, landed, nil)
+	if len(p.summary.Notes) != 0 {
+		t.Errorf("notes = %q, want none: every mover key landed", p.summary.Notes)
+	}
+
+	mover := rawentry.Obj{"links": []byte(`{"audiobookguild":` + guildB + `,"graphicaudio":` + graphic + `}`)}
+	losses := []rawentry.RecordingLoss{{Field: "links.audiobookguild", DroppedRaw: []byte(guildB)}}
+	p.noteRelocationLosses(rec, "t", "s", mover, landed, losses)
+	want := `discarded links={"audiobookguild":` + guildB + `}`
+	if len(p.summary.Notes) != 1 || !strings.HasSuffix(p.summary.Notes[0], want) {
+		t.Errorf("notes = %q, want one ending %s", p.summary.Notes, want)
+	}
+}

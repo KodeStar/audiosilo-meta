@@ -666,6 +666,10 @@ func printSummary(s importer.Summary, dryRun bool, mode importer.Mode) {
 	if s.ISBNRecordings > 0 {
 		fmt.Printf("  added ISBNs to %d recordings from rows with nothing else to write there\n", s.ISBNRecordings)
 	}
+	// A store-listing run only (`metaimport store`); zero for every other source.
+	if s.StoreLinksAdded > 0 {
+		fmt.Printf("  added a store page to %d recordings the catalogue already held as that production\n", s.StoreLinksAdded)
+	}
 	if s.ISBNsMirrorOnly > 0 {
 		fmt.Printf("  isbn-not-attached: mirror-only: %d %s without an ASIN met a bulk-mirror-only recording\n",
 			s.ISBNsMirrorOnly, plural(s.ISBNsMirrorOnly, "row", "rows"))

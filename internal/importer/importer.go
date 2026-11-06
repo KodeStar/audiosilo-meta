@@ -1732,6 +1732,13 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		p.rememberIdentity(ident, ws.slug, workTitle)
 	}
 	p.addRecording(ws, b, resolvedTitle, asin, lang, narratorSlugs, warn)
+	// A store row lands somewhere unless it was refused (the production states
+	// another page for its store, store.go): a refused row places nothing,
+	// so it neither founds a series nor adds a membership.
+	if b.store != nil && p.landedRec == "" {
+		p.noteLostSeriesClaims(b, -1, nil)
+		return
+	}
 	if p.landedRec != "" {
 		p.noteLibrivoxLanded(b, route)
 		p.summary.UnrecordedCredits = append(p.summary.UnrecordedCredits, unrecorded...)
@@ -3264,8 +3271,8 @@ func (p *planner) seriesCatalogue() seriesCatalogue {
 // claimPlaces reports whether a row's series claims will place a member this
 // run, which is what makes them evidence for the batch, and names the book when
 // the catalogue already holds it ("" lets claimsOf read it off the row). A create
-// row is written only if it survives addBook's admission tests - an ASIN the
-// catalogue already holds, a language the schema does not know, no narrator, no
+// row is written only if it survives addBook's admission tests - an ASIN (or a
+// store page) the catalogue already holds, a language the schema does not know, no narrator, no
 // author (or no individual one once the names that slug to nothing are left
 // off, unsluggableLeftNoAuthor), no title - and those are asked here, before
 // anything is planned; an enrichment row places only the work its ASIN matched,
@@ -3276,7 +3283,8 @@ func (p *planner) seriesCatalogue() seriesCatalogue {
 func (p *planner) claimPlacesIn(ctx creditContext, b sourceBook, asin string) (places bool, work string) {
 	switch p.mode {
 	case ModeCreate:
-		if asin != "" && p.asins[asin] {
+		// A held ASIN, or a store row's held page (dedupeByStoreLink), is a skip.
+		if asin != "" && p.asins[asin] || b.store != nil && p.hasStoreLink(b.store.url) {
 			return false, ""
 		}
 		lang, ok := b.language()

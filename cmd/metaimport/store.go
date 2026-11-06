@@ -56,9 +56,6 @@ func runStore(args []string) int {
 		return 1
 	}
 	printSummary(sum, *dryRun, importer.ModeCreate)
-	if sum.StoreLinksAdded > 0 {
-		fmt.Printf("  added a store page to %d recordings the catalogue already held as that production\n", sum.StoreLinksAdded)
-	}
 	if sum.SkippedRows > 0 {
 		fmt.Printf("  refused %d rows at parse (see the warnings)\n", sum.SkippedRows)
 	}

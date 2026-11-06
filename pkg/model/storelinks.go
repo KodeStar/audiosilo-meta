@@ -70,14 +70,17 @@ func KnownStore(key string) bool {
 }
 
 // StoreLinkHostOK reports whether raw is an https URL on one of store's hosts
-// (case-insensitive, no port, no credentials). An unknown store answers false.
+// (the host case-insensitive, no port, no credentials). The scheme is the
+// literal "https://" the schema's https_url requires and StoreLinkKey cuts:
+// url.Parse lowercases a scheme, so it alone would pass "HTTPS://...", which
+// the schema refuses. An unknown store answers false.
 func StoreLinkHostOK(store, raw string) bool {
 	s, ok := storeOf(store)
-	if !ok {
+	if !ok || !strings.HasPrefix(raw, "https://") {
 		return false
 	}
 	u, err := url.Parse(raw)
-	if err != nil || u.Scheme != "https" || u.User != nil || u.Port() != "" {
+	if err != nil || u.User != nil || u.Port() != "" {
 		return false
 	}
 	return slices.Contains(s.hosts, strings.ToLower(u.Hostname()))
@@ -87,16 +90,6 @@ func StoreLinkHostOK(store, raw string) bool {
 func StoreHosts(store string) []string {
 	s, _ := storeOf(store)
 	return slices.Clone(s.hosts)
-}
-
-// Store returns the link the recording states for store ("" when none, or for
-// an unknown key).
-func (l *RecordingLinks) Store(store string) string {
-	s, ok := storeOf(store)
-	if l == nil || !ok {
-		return ""
-	}
-	return *s.field(l)
 }
 
 // StoreLinks yields each store page the recording states, as (store key,

@@ -5,6 +5,7 @@ import (
 	"os"
 	"reflect"
 	"slices"
+	"strings"
 	"testing"
 )
 
@@ -18,13 +19,15 @@ func TestStoreLinkHostOK(t *testing.T) {
 		{StoreAudiobookGuild, "https://AudiobookGuild.com/products/x", true},
 		{StoreGraphicAudio, "https://www.graphicaudio.net/mistborn-1-the-final-empire-1-of-3.html", true},
 		{StoreGraphicAudio, "https://graphicaudio.net/x.html", true},
-		// The other store's host, a look-alike, a subdomain, http, a port,
+		// The other store's host, a look-alike, a subdomain, http, an upper-case
+		// scheme (the schema's https_url is the literal "https://"), a port,
 		// credentials, a relative URL and an unknown store are all refused.
 		{StoreAudiobookGuild, "https://www.graphicaudio.net/x.html", false},
 		{StoreGraphicAudio, "https://audiobookguild.com/products/x", false},
 		{StoreAudiobookGuild, "https://audiobookguild.com.evil.example/products/x", false},
 		{StoreAudiobookGuild, "https://shop.audiobookguild.com/products/x", false},
 		{StoreAudiobookGuild, "http://audiobookguild.com/products/x", false},
+		{StoreAudiobookGuild, "HTTPS://audiobookguild.com/products/x", false},
 		{StoreAudiobookGuild, "https://audiobookguild.com:8443/products/x", false},
 		{StoreAudiobookGuild, "https://user@audiobookguild.com/products/x", false},
 		{StoreAudiobookGuild, "/products/x", false},
@@ -39,17 +42,14 @@ func TestStoreLinkHostOK(t *testing.T) {
 
 func TestRecordingLinksStoreAccessors(t *testing.T) {
 	var nilLinks *RecordingLinks
-	if nilLinks.Store(StoreAudiobookGuild) != "" {
-		t.Error("a nil links object states no store link")
-	}
 	var l RecordingLinks
 	for _, key := range StoreKeys() {
-		if !l.SetStore(key, "https://example/"+key) || l.Store(key) != "https://example/"+key {
-			t.Errorf("SetStore/Store(%q) did not round-trip: %+v", key, l)
+		if !l.SetStore(key, "https://example/"+key) {
+			t.Errorf("SetStore(%q) refused a store key", key)
 		}
 	}
-	if l.SetStore("audible", "x") || l.Store("audible") != "" {
-		t.Error("an unknown store key must be refused")
+	if before := l; l.SetStore("audible", "x") || l != before {
+		t.Error("an unknown store key must be refused and change nothing")
 	}
 	var got []string
 	for key, link := range l.StoreLinks() {
@@ -92,8 +92,8 @@ func TestStoreKeysMatchTheSchema(t *testing.T) {
 	tags := map[string]bool{}
 	rt := reflect.TypeFor[RecordingLinks]()
 	for i := range rt.NumField() {
-		tag := rt.Field(i).Tag.Get("json")
-		tags[tag[:len(tag)-len(",omitempty")]] = true
+		name, _, _ := strings.Cut(rt.Field(i).Tag.Get("json"), ",")
+		tags[name] = true
 	}
 	for _, key := range StoreKeys() {
 		if _, ok := props[key]; !ok {

@@ -323,8 +323,9 @@ more tightly:
   reviews, prices or the store's genre strings; the importer reads none of
   them, so a file that carries them stores nothing of them.
 - **Through the ordinary rules.** The same identity, duplicate and person rules
-  as every import; a listing of a production already catalogued only adds its
-  page to that recording. Records carry the `store-listing` provenance and
+  as every import; a listing of a production already catalogued adds its page
+  to that recording rather than a second one, and changes none of its other
+  facts (its series claims are placed as any row's). Records carry the `store-listing` provenance and
   retract with it, and they rank with the bulk mirror below: a user's own
   library or hand edit outranks them.
 

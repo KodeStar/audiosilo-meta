@@ -60,6 +60,9 @@ type Conflict struct {
 	// LibrivoxID is a LibriVox row's project id, its identifier in place of an
 	// ASIN; absent from every other source's rows.
 	LibrivoxID int `json:"librivox_id,omitempty"`
+	// StoreURL is a store-listing row's page (store.go), its identifier in place
+	// of an ASIN; absent from every other source's rows.
+	StoreURL string `json:"store_url,omitempty"`
 	// Work / Recording address the record whose value was kept. A recording has
 	// no identity of its own, so it takes both (see RecRef).
 	Work      string `json:"work"`
@@ -94,10 +97,15 @@ func (p *planner) recordConflict(b sourceBook, ref RecRef, field string, recorde
 	if p.conflicts == nil {
 		return
 	}
+	var storeURL string
+	if b.store != nil {
+		storeURL = b.store.url
+	}
 	line, err := json.Marshal(Conflict{
 		Run:        p.mode.runName(),
 		ASIN:       NormalizeASIN(b.str("asin")),
 		LibrivoxID: librivoxIDOf(b),
+		StoreURL:   storeURL,
 		Work:       ref.Work,
 		Recording:  ref.Rec,
 		Field:      field,

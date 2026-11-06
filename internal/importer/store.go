@@ -217,6 +217,10 @@ func (p *planner) landStoreLink(ws *workState, matches []recCandidate, b sourceB
 		links[b.store.key] = b.store.url
 		raw["links"] = links
 		p.commitRecording(ref, entry, raw)
+		// The stamp is a dated bulk-mirror statement, which can end a preorder
+		// estimate's state (runtimeEstimated), so a later row of the run is
+		// compared with what the record now says (as mergeRecordingASIN does).
+		syncRecInfo(m.info, raw)
 		p.noteStoreLink(b.store.url)
 		p.landedRec = m.slug
 		p.summary.StoreLinksAdded++
