@@ -3687,6 +3687,34 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 4293184,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4259608,
+              "start_ms": 4293184,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4276651,
+              "start_ms": 8552792,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4375057,
+              "start_ms": 12829443,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4005210,
+              "start_ms": 17204500,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1s5OLFY2XL.jpg",
           "id": "simon-vance-2009",
           "language": "en",
           "license": "CC0-1.0",
@@ -3701,6 +3729,11 @@
               "imported_at": "2026-09-24",
               "ref": "B002V1O372",
               "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-11-06",
+              "ref": "B002V1O372",
+              "type": "libex-import"
             }
           ],
           "work": "the-man-who-was-thursday"

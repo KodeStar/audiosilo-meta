@@ -1805,6 +1805,12 @@
       "authors": [
         "chaim-potok"
       ],
+      "genres": [
+        "classics",
+        "historical-fiction",
+        "literary-fiction",
+        "psychological-thriller"
+      ],
       "id": "the-chosen-chaim-potok",
       "language": "en",
       "license": "CC0-1.0",
@@ -1818,6 +1824,129 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 15707,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 57051,
+              "start_ms": 15707,
+              "title": "Epigraph"
+            },
+            {
+              "length_ms": 19697,
+              "start_ms": 72758,
+              "title": "Book One"
+            },
+            {
+              "length_ms": 3847370,
+              "start_ms": 92455,
+              "title": "Chapter One"
+            },
+            {
+              "length_ms": 2822312,
+              "start_ms": 3939825,
+              "title": "Chapter Two"
+            },
+            {
+              "length_ms": 2419581,
+              "start_ms": 6762137,
+              "title": "Chapter Three"
+            },
+            {
+              "length_ms": 2679100,
+              "start_ms": 9181718,
+              "title": "Chapter Four"
+            },
+            {
+              "length_ms": 13440,
+              "start_ms": 11860818,
+              "title": "Book Two"
+            },
+            {
+              "length_ms": 580230,
+              "start_ms": 11874258,
+              "title": "Chapter Five"
+            },
+            {
+              "length_ms": 1784537,
+              "start_ms": 12454488,
+              "title": "Chapter Six"
+            },
+            {
+              "length_ms": 5294772,
+              "start_ms": 14239025,
+              "title": "Chapter Seven"
+            },
+            {
+              "length_ms": 3074626,
+              "start_ms": 19533797,
+              "title": "Chapter Eight"
+            },
+            {
+              "length_ms": 455140,
+              "start_ms": 22608423,
+              "title": "Chapter Nine"
+            },
+            {
+              "length_ms": 1047640,
+              "start_ms": 23063563,
+              "title": "Chapter Ten"
+            },
+            {
+              "length_ms": 1357419,
+              "start_ms": 24111203,
+              "title": "Chapter Eleven"
+            },
+            {
+              "length_ms": 1431157,
+              "start_ms": 25468622,
+              "title": "Chapter Twelve"
+            },
+            {
+              "length_ms": 16960,
+              "start_ms": 26899779,
+              "title": "Book Three"
+            },
+            {
+              "length_ms": 3698103,
+              "start_ms": 26916739,
+              "title": "Chapter Thirteen"
+            },
+            {
+              "length_ms": 2891300,
+              "start_ms": 30614842,
+              "title": "Chapter Fourteen"
+            },
+            {
+              "length_ms": 513740,
+              "start_ms": 33506142,
+              "title": "Chapter Fifteen"
+            },
+            {
+              "length_ms": 787505,
+              "start_ms": 34019882,
+              "title": "Chapter Sixteen"
+            },
+            {
+              "length_ms": 1421850,
+              "start_ms": 34807387,
+              "title": "Chapter Seventeen"
+            },
+            {
+              "length_ms": 2027990,
+              "start_ms": 36229237,
+              "title": "Chapter Eighteen"
+            },
+            {
+              "length_ms": 26488,
+              "start_ms": 38257227,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81IdQoY+1yL.jpg",
           "id": "jonathan-davis-2005",
           "language": "en",
           "license": "CC0-1.0",
@@ -1832,6 +1961,11 @@
               "imported_at": "2026-09-24",
               "ref": "B002V59WAG",
               "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-11-06",
+              "ref": "B002V59WAG",
+              "type": "libex-import"
             }
           ],
           "work": "the-chosen-chaim-potok"
@@ -1842,6 +1976,11 @@
           "imported_at": "2026-09-24",
           "ref": "B002V59WAG",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-11-06",
+          "ref": "B002V59WAG",
+          "type": "libex-import"
         }
       ],
       "title": "The Chosen"
