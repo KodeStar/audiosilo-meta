@@ -279,5 +279,50 @@ func deCredentialed(name string) (bare string, stripped bool) {
 // studio-tail rule's third tier both keep, and what makes the public
 // CleanCreditName leave a name alone.
 func stripCredential(name string, seen creditSeenFunc) string {
-	return stripOntoSeenTwin(name, seen, deCredentialed)
+	if bare := stripOntoSeenTwin(name, seen, deCredentialed); bare != name {
+		return bare
+	}
+	return stripOntoSeenTwin(name, seen, deRepeatedCredential)
+}
+
+// deRepeatedCredential collapses a credential the source repeated ("Andrew D.
+// Huberman Ph.D. Ph.D.", "Frank Lipman, MD, MD") to one copy of it, reporting
+// whether there was a repetition to collapse. It is the fallback for a name
+// whose BARE twin nobody is credited under but whose singly-credentialed
+// spelling is: libex B0D6828XPN credits both "Andrew D. Huberman Ph.D. Ph.D."
+// and "Andrew D. Huberman Ph.D.", and the catalogue holds only the second, so
+// the bare fold had nothing to fold onto and the doubled spelling minted a
+// person of its own. Only an IDENTICAL repeat collapses (the same key, so "MD
+// PhD" is two credentials and stays), and stripOntoSeenTwin still requires the
+// collapsed spelling to be a same-side credit, so the three guards above hold.
+func deRepeatedCredential(name string) (collapsed string, ok bool) {
+	s := strings.TrimSpace(name)
+	for {
+		rest, cut := credentialTail.cut(s)
+		if !cut {
+			break
+		}
+		prev, cutPrev := credentialTail.cut(rest)
+		if !cutPrev || len(strings.Fields(prev)) < minDeCredentialedWords ||
+			credentialTailKey(s[len(rest):]) != credentialTailKey(rest[len(prev):]) {
+			break
+		}
+		// The separating comma goes with the repeat, as deCredentialed drops it:
+		// "Jane Roe, MD, MD" is "Jane Roe MD".
+		s, ok = strings.TrimRight(prev, " ,")+" "+strings.TrimRight(strings.TrimSpace(s[len(rest):]), ","), true
+	}
+	if !ok {
+		return "", false
+	}
+	return strings.Join(strings.Fields(s), " "), true
+}
+
+// credentialTailKey is a cut-off credential in vocabulary form, its words
+// folded one by one (credentialKey), so "Ph. D." and "ph. d.," compare equal.
+func credentialTailKey(tail string) string {
+	words := strings.Fields(tail)
+	for i, w := range words {
+		words[i] = credentialKey(w)
+	}
+	return strings.Join(words, " ")
 }

@@ -1458,7 +1458,10 @@ role words too), a trailing CREDENTIAL folded onto the bare twin
 ("Philip Zimbardo Ph.D.", "Deb Dana LCSW", `credential.go` - the honorific
 rule's mirror image, same same-side census and two-word floor, doctorate and
 licensure spellings, never a generational or legal-entity suffix; never a
-reviewed pair either, by the same `keptApart` check - `creditCensus.foldCredential`), and a
+reviewed pair either, by the same `keptApart` check - `creditCensus.foldCredential`; with no bare
+twin, an IDENTICAL repeated credential collapses onto the singly-credentialed spelling
+when that is a same-side credit, `deRepeatedCredential`: "Andrew D. Huberman Ph.D. Ph.D."
+onto "Andrew D. Huberman Ph.D.", libex B0D6828XPN), and a
 DANGLING
 leading conjunction ("and Melanie Mendez", `conjunction.go`), each of which
 otherwise minted a second identity for somebody already in the catalogue) - and
