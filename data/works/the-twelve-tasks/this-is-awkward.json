@@ -2612,7 +2612,6 @@
       "genres": [
         "biography-memoir",
         "comedy-humor",
-        "education",
         "health-wellness",
         "medicine"
       ],
@@ -2734,7 +2733,33 @@
             }
           ],
           "work": "this-is-going-to-hurt"
-        },
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "0063228505",
+          "type": "libex-import"
+        }
+      ],
+      "title": "This Is Going to Hurt"
+    },
+    "this-is-going-to-hurt-secret-diaries-of-a-junior-doctor": {
+      "added_at": "2026-11-06",
+      "authors": [
+        "adam-kay"
+      ],
+      "genres": [
+        "biography-memoir",
+        "comedy-humor",
+        "education",
+        "health-wellness",
+        "medicine"
+      ],
+      "id": "this-is-going-to-hurt-secret-diaries-of-a-junior-doctor",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
         "adam-kay-2024": {
           "abridged": false,
           "added_at": "2026-11-06",
@@ -2838,22 +2863,17 @@
               "type": "libex-import"
             }
           ],
-          "work": "this-is-going-to-hurt"
+          "work": "this-is-going-to-hurt-secret-diaries-of-a-junior-doctor"
         }
       },
       "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "0063228505",
-          "type": "libex-import"
-        },
         {
           "imported_at": "2026-11-06",
           "ref": "B0DJFNSL93",
           "type": "libex-import"
         }
       ],
-      "title": "This Is Going to Hurt"
+      "title": "This is Going to Hurt: Secret Diaries of a Junior Doctor"
     },
     "this-is-gonna-hurt": {
       "added_at": "2026-07-29",

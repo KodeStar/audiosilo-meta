@@ -5036,7 +5036,96 @@
             }
           ],
           "work": "micro"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B007KBKMBE",
+          "type": "audiosilo-books-import"
         },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B007KBKMBE",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Micro"
+    },
+    "micro-habits-for-massive-knowledge": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "paola-vacca"
+      ],
+      "genres": [
+        "parenting-relationships",
+        "self-help"
+      ],
+      "id": "micro-habits-for-massive-knowledge",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "scott-lecote-2026": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0GSC6Y3YX",
+              "region": "us"
+            },
+            {
+              "asin": "B0GSBPX4D5",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81VrC3EKIWL.jpg",
+          "id": "scott-lecote-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "scott-lecote"
+          ],
+          "publisher": "Paola Vacca",
+          "release_date": "2026-03-13",
+          "runtime_min": 78,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0GSC6Y3YX",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0GSBPX4D5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "micro-habits-for-massive-knowledge"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0GSC6Y3YX",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Micro Habits for Massive Knowledge"
+    },
+    "micro-michael-crichton": {
+      "added_at": "2026-11-06",
+      "authors": [
+        "michael-crichton"
+      ],
+      "genres": [
+        "literary-fiction",
+        "medicine",
+        "thriller-suspense"
+      ],
+      "id": "micro-michael-crichton",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
         "john-bedford-lloyd-2019": {
           "abridged": false,
           "added_at": "2026-11-06",
@@ -5330,20 +5419,10 @@
               "type": "libex-import"
             }
           ],
-          "work": "micro"
+          "work": "micro-michael-crichton"
         }
       },
       "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B007KBKMBE",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B007KBKMBE",
-          "type": "libex-import"
-        },
         {
           "imported_at": "2026-11-06",
           "ref": "1460793420",
@@ -5351,66 +5430,6 @@
         }
       ],
       "title": "Micro"
-    },
-    "micro-habits-for-massive-knowledge": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "paola-vacca"
-      ],
-      "genres": [
-        "parenting-relationships",
-        "self-help"
-      ],
-      "id": "micro-habits-for-massive-knowledge",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "scott-lecote-2026": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0GSC6Y3YX",
-              "region": "us"
-            },
-            {
-              "asin": "B0GSBPX4D5",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81VrC3EKIWL.jpg",
-          "id": "scott-lecote-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "scott-lecote"
-          ],
-          "publisher": "Paola Vacca",
-          "release_date": "2026-03-13",
-          "runtime_min": 78,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0GSC6Y3YX",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0GSBPX4D5",
-              "type": "libex-import"
-            }
-          ],
-          "work": "micro-habits-for-massive-knowledge"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0GSC6Y3YX",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Micro Habits for Massive Knowledge"
     },
     "microbe-hunters": {
       "added_at": "2026-07-29",
