@@ -728,8 +728,7 @@ func TestResolveSeries(t *testing.T) {
 	cand := func(names ...string) *candidate {
 		c := &candidate{}
 		for _, n := range names {
-			f := newTermForm(matchTerms(n))
-			c.series = append(c.series, candidateSeries{name: &f, position: "1"})
+			c.series = append(c.series, candidateSeries{name: ptr(newTermForm(matchTerms(n))), position: "1"})
 		}
 		return c
 	}

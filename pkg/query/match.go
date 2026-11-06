@@ -1343,8 +1343,8 @@ func (f *matchFacts) seriesVerdict(c *candidate, t, named, runtimeDiff float64) 
 	if elsewhere && named < seriesDistrustHigh {
 		value = 0
 	}
-	if vouched && value < genericTitleValue {
-		agreement, value = seriesPosition, genericTitleValue
+	if vouched {
+		value = max(value, genericTitleValue)
 	}
 	return agreement, value, elsewhere && !covered
 }
@@ -1387,13 +1387,14 @@ func (f *matchFacts) resolveSeries(cands []*candidate) {
 			keys = append(keys, k)
 		}
 	}
-	whole, fitting := map[string]bool{}, map[string]bool{}
+	whole, fitting, seen := map[string]bool{}, map[string]bool{}, map[string]bool{}
 	for _, c := range cands {
 		for _, m := range c.series {
 			name := m.name.joined
-			if whole[name] || fitting[name] {
+			if seen[name] {
 				continue
 			}
+			seen[name] = true
 			switch {
 			case slices.Contains(keys, titlerule.SeriesKey(name)) ||
 				slices.ContainsFunc(f.series, func(h termForm) bool { return sameWords(&h, m.name) }):
