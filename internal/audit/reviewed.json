@@ -10207,6 +10207,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "daisy-jones-and-the-six"
+    ],
+    "reason": "one book: Taylor Jenkins Reid's novel under \"and\" for \"&\"; Cornerstone Digital's 1473565952 is Penguin Audio's UK release of the Random House Audio full-cast production 1984845306 (same cast, 543 min, 2019-03-05, chapters matching within seconds), minted by the sync bot in meta#2895",
+    "target": "daisy-jones-the-six"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "damnation-valley-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
