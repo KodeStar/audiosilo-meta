@@ -7907,63 +7907,6 @@
       ],
       "title": "The New World on Mars"
     },
-    "the-new-world-patrick-ness": {
-      "added_at": "2026-11-06",
-      "authors": [
-        "patrick-ness"
-      ],
-      "genres": [
-        "young-adult"
-      ],
-      "id": "the-new-world-patrick-ness",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "humphrey-bower-2020": {
-          "abridged": false,
-          "added_at": "2026-11-06",
-          "asin": [
-            {
-              "asin": "0655679820",
-              "region": "de"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3241202,
-              "start_ms": 0,
-              "title": "The New World"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81-vSyjvV0L.jpg",
-          "id": "humphrey-bower-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "humphrey-bower"
-          ],
-          "publisher": "Bolinda Publishing Pty Ltd",
-          "release_date": "2020-07-01",
-          "runtime_min": 53,
-          "sources": [
-            {
-              "imported_at": "2026-11-06",
-              "ref": "0655679820",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-new-world-patrick-ness"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-11-06",
-          "ref": "0655679820",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The New World"
-    },
     "the-new-world-prequel-to-the-chaos-walking-trilogy": {
       "added_at": "2026-07-30T14:42:56+01:00",
       "authors": [
@@ -8124,12 +8067,52 @@
             }
           ],
           "work": "the-new-world-prequel-to-the-chaos-walking-trilogy"
+        },
+        "humphrey-bower-2020": {
+          "abridged": false,
+          "added_at": "2026-11-06",
+          "asin": [
+            {
+              "asin": "0655679820",
+              "region": "de"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3241202,
+              "start_ms": 0,
+              "title": "The New World"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81-vSyjvV0L.jpg",
+          "id": "humphrey-bower-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "humphrey-bower"
+          ],
+          "publisher": "Bolinda Publishing Pty Ltd",
+          "release_date": "2020-07-01",
+          "runtime_min": 53,
+          "sources": [
+            {
+              "imported_at": "2026-11-06",
+              "ref": "0655679820",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-new-world-prequel-to-the-chaos-walking-trilogy"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-30",
           "ref": "B005J4O6KC",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-11-06",
+          "ref": "0655679820",
           "type": "libex-import"
         }
       ],
