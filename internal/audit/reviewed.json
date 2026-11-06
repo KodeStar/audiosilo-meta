@@ -7080,6 +7080,19 @@
     "decision": "reject",
     "op": "merge-works",
     "others": [
+      "adam-and-his-eves-4-creating-an-apocalypse-harem",
+      "adam-and-his-eves-5-creating-an-apocalypse-harem",
+      "adam-and-his-eves-6-creating-an-apocalypse-harem",
+      "adam-and-his-eves-7-creating-an-apocalypse-harem",
+      "adam-and-his-eves-8-creating-an-apocalypse-harem"
+    ],
+    "reason": "different volumes: positions 3 to 8 of adam-and-his-eves, and each title states its number (Audiobook Guild listings)",
+    "target": "adam-and-his-eves-3-creating-an-apocalypse-harem"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
       "empty-bodies"
     ],
     "reason": "different volumes: Adaptation is Empty Bodies book 2, while empty-bodies is book 1",
@@ -7980,6 +7993,24 @@
     ],
     "reason": "different volumes: positions 1 to 5 of arena, each title stating its number",
     "target": "arena"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "arena-book-7"
+    ],
+    "reason": "different volumes: positions 1 and 7 of arena, and the title states Book 7 (Audiobook Guild listing)",
+    "target": "arena"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "arena-road-5-a-reverse-portal-fantasy"
+    ],
+    "reason": "different volumes: positions 2 and 5 of arena-road, and each title states its number (Audiobook Guild listings)",
+    "target": "arena-road-2-a-reverse-portal-fantasy"
   },
   {
     "decision": "assert",
@@ -15806,6 +15837,15 @@
     "target": "king-lear"
   },
   {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "king-of-superheroes-book-2"
+    ],
+    "reason": "different volumes: positions 1 and 2 of king-of-superheroes, and the title states Book 2 (Audiobook Guild listing)",
+    "target": "king-of-superheroes"
+  },
+  {
     "decision": "assert",
     "op": "merge-works",
     "others": [
@@ -19965,6 +20005,19 @@
     "target": "rise"
   },
   {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "rise-my-minions-book-2",
+      "rise-my-minions-book-3",
+      "rise-my-minions-book-6",
+      "rise-my-minions-book-7",
+      "rise-my-minions-book-8"
+    ],
+    "reason": "different volumes: positions 1, 2, 3, 6, 7 and 8 of rise-my-minions, and the titles state Book 2 to Book 8 (Audiobook Guild listings)",
+    "target": "rise-my-minions"
+  },
+  {
     "decision": "assert",
     "op": "merge-works",
     "others": [
@@ -20406,6 +20459,17 @@
       "scholomance-5-the-devils-academy"
     ],
     "reason": "different volumes: positions 2 and 5 of the Scholomance series, numbered in the titles",
+    "target": "scholomance-2-the-devils-academy"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "scholomance-5-the-devils-academy",
+      "scholomance-7-the-devils-academy",
+      "scholomance-8-the-devils-academy"
+    ],
+    "reason": "different volumes: positions 2, 5, 7 and 8 of scholomance-2, and each title states its number (Audiobook Guild listings)",
     "target": "scholomance-2-the-devils-academy"
   },
   {
@@ -22002,6 +22066,17 @@
     ],
     "reason": "different volumes: Superworld 3 and 4",
     "target": "superworld-3-an-alternate-reality-fantasy"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "survive-the-monsters-and-breed-book-2",
+      "survive-the-monsters-and-breed-book-3",
+      "survive-the-monsters-and-breed-book-4"
+    ],
+    "reason": "different volumes: positions 1 to 4 of survive-the-monsters-and-breed, and the titles state Book 2 to Book 4 (Audiobook Guild listings)",
+    "target": "survive-the-monsters-and-breed"
   },
   {
     "decision": "reject",
