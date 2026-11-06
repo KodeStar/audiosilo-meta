@@ -266,13 +266,17 @@ configured with the queue's address and token. What it adds, and nothing more:
   or ` - ` subtitle separator) against the other's full title. That catches a
   subtitle on either side ("Ford County" beside "Ford County: Stories"), an
   author list that is a subset of the held one ("Micro" credited to one of its
-  two authors) and a bare title naming several held volumes of a serial. It is
+  two authors), a bare title naming several held volumes of a serial, and a
+  title spelling its conjunction another way ("Daisy Jones and the Six" beside
+  "Daisy Jones & The Six", or the German "und" beside "&"), which this guard
+  alone reads alike: the normalized key every other path shares still keeps
+  them apart (#2890). It is
   wider than the create path's own guard on purpose: a refused report is
   memoized and comes back later, a minted duplicate needs a repair. The price
   is a distinct book sharing a main title with a held book by the same author,
   which is refused too. What it still cannot see mints a work: a title whose key
-  differs ("Daisy Jones and the Six" beside "Daisy Jones & The Six"), which no
-  advisory names, and two spellings of one new book in the same tranche, which
+  differs in any other way, which no advisory names, and two spellings of one
+  new book in the same tranche, which
   the advisory census names when the two key alike, in the verdict comment
   alone, since a `bot-sync` pull request is never flagged for its advisories.
 - **A reported volume of a held series**: a row that claims a series takes

@@ -1,6 +1,7 @@
 package importer
 
 import (
+	"regexp"
 	"slices"
 
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
@@ -36,6 +37,21 @@ import (
 // title is what precedes the first subtitle separator (titlerule.MainTitle). Two MAIN titles
 // are not compared: "Dune: House Atreides" and "Dune: House Harkonnen" share their
 // authors and their main title and are two books.
+//
+// A pair also keys alike when the two forms agree once their conjunctions are
+// spelled one way (foldConjunctions: "&" and the German "und" read as "and", in the
+// title and the series it is cleaned against). The identity key drops "&" and keeps
+// "and", so the lane's first pull request minted "Daisy Jones and the Six" beside a
+// held "Daisy Jones & The Six" (KodeStar/audiosilo-meta#2890). The fold is this
+// guard's alone: titlerule.IdentityTitleKey and check.WorkIdentity.Key are shared by
+// every import path and the census, and widening them is #2890's open question.
+// It is a second comparison, never a replacement, so a pair the plain keys join
+// stays joined ("Q&A" and "QA"), and "and" is kept as a word rather than dropped,
+// so "War and Peace" does not name a held "War Peace". The spellings are the ones
+// the catalogue holds as twins (30 English "&"/"and" pairs by one author, among
+// them "Crime & Punishment" and "Angels & Demons", and two German "&"/"und": "Dr.
+// Jekyll & Mr. Hyde", "Rumo & Die Wunder im Dunkeln"); "et", "y", "e", "+" and
+// "'n'" had none.
 //
 // Two of the identity machinery's vetoes still release a pair, read so they do
 // not undo the rule: the COLLECTION status of the two forms that matched
@@ -114,9 +130,11 @@ func (p *planner) reportedDuplicate(ctx creditContext, b sourceBook, workTitle s
 	return false
 }
 
-// titleForm is one spelling of a title with the identity key it reduces to.
+// titleForm is one spelling of a title with the identity key it reduces to, and
+// the key of the same spelling with its conjunctions folded (equal to key when
+// the title and series hold none to fold).
 type titleForm struct {
-	title, series, key string
+	title, series, key, folded string
 }
 
 // titleForms are a title's full form and, when it has a subtitle, its main form
@@ -126,11 +144,36 @@ type titleForms struct {
 }
 
 func identityForms(title, series string, key func(title, series string) string) titleForms {
-	f := titleForms{full: titleForm{title, series, key(title, series)}}
+	foldedSeries := foldConjunctions(series)
+	form := func(t string) titleForm {
+		f := titleForm{title: t, series: series, key: key(t, series)}
+		f.folded = f.key
+		if ft := foldConjunctions(t); ft != t || foldedSeries != series {
+			f.folded = key(ft, foldedSeries)
+		}
+		return f
+	}
+	f := titleForms{full: form(title)}
 	if m, ok := titlerule.MainTitle(title); ok {
-		f.main = titleForm{m, series, key(m, series)}
+		f.main = form(m)
 	}
 	return f
+}
+
+// conjunctionSpelling is every spelling foldConjunctions reads as "and": an
+// ampersand with any space around it, and the German "und" as a whole word.
+var conjunctionSpelling = regexp.MustCompile(`\s*&\s*|(?i:\bund\b)`)
+
+// foldConjunctions spells a title's conjunctions as the word "and" (the file
+// header says why the guard reads them alike, and why only the guard).
+func foldConjunctions(s string) string {
+	return conjunctionSpelling.ReplaceAllString(s, " and ")
+}
+
+// keyedAlike reports whether two forms reduce to one identity key, plainly or
+// with their conjunctions folded.
+func keyedAlike(a, b titleForm) bool {
+	return (a.key != "" && a.key == b.key) || (a.folded != "" && a.folded == b.folded)
 }
 
 // names reports whether the row's forms (f) name the held work's (h): one of the
@@ -139,7 +182,7 @@ func identityForms(title, series string, key func(title, series string) string) 
 func (f titleForms) names(h titleForms) bool {
 	for _, pair := range [][2]titleForm{{f.full, h.full}, {f.main, h.full}, {f.full, h.main}} {
 		a, b := pair[0], pair[1]
-		if a.key != "" && a.key == b.key && titlerule.SameCollectionStatus(a.title, a.series, b.title, b.series) {
+		if keyedAlike(a, b) && titlerule.SameCollectionStatus(a.title, a.series, b.title, b.series) {
 			return true
 		}
 	}

@@ -439,6 +439,18 @@ func TestReportedStandaloneGuard(t *testing.T) {
 				{"wayward-book-2", "Wayward", "en", []string{"ada-mapmaker"}},
 			},
 			row: standaloneRow("B0WAYWARD3", "Wayward", "us", "english", ada, "Bea Reader")},
+		{name: `"and" beside a held "&" (Daisy Jones, #2890)`, refuse: true,
+			held: []held{{"daisy-jones-the-six", "Daisy Jones & The Six", "en", []string{"ada-mapmaker"}}},
+			row:  standaloneRow("B0DAISYJ01", "Daisy Jones and the Six", "gb", "english", ada, "Dee Voice")},
+		{name: `"&" beside a held "and"`, refuse: true,
+			held: []held{{"daisy-jones-and-the-six", "Daisy Jones and the Six", "en", []string{"ada-mapmaker"}}},
+			row:  standaloneRow("B0DAISYJ02", "Daisy Jones & The Six", "us", "english", ada, "Dee Voice")},
+		{name: `"and" with a subtitle beside a held "&"`, refuse: true,
+			held: []held{{"daisy-jones-the-six", "Daisy Jones & The Six", "en", []string{"ada-mapmaker"}}},
+			row:  standaloneRow("B0DAISYJ03", "Daisy Jones and the Six: A Novel", "us", "english", ada, "Dee Voice")},
+		{name: `German "und" beside a held "&" (Rumo)`, refuse: true,
+			held: []held{{"rumo-die-wunder-im-dunkeln", "Rumo & Die Wunder im Dunkeln", "de", []string{"ada-mapmaker"}}},
+			row:  standaloneRow("B0RUMOUND1", "Rumo und Die Wunder im Dunkeln", "de", "german", ada, "Dee Voice")},
 
 		{name: "same title by a different author is kept",
 			held: []held{{"micro", "Micro", "en", []string{"ada-mapmaker"}}},
@@ -458,6 +470,15 @@ func TestReportedStandaloneGuard(t *testing.T) {
 		{name: "a title that only starts like a held one is kept",
 			held: []held{{"the-barefoot-investor-for-families", "The Barefoot Investor for Families", "en", []string{"ada-mapmaker"}}},
 			row:  standaloneRow("B0BAREFT01", "The Barefoot Investor", "us", "english", ada, "Dee Voice")},
+		{name: `"and" beside a held "&" by another author is kept`,
+			held: []held{{"daisy-jones-the-six", "Daisy Jones & The Six", "en", []string{"ada-mapmaker"}}},
+			row:  standaloneRow("B0DAISYJ04", "Daisy Jones and the Six", "us", "english", cal, "Dee Voice")},
+		{name: `"and" as content is not dropped (War and Peace beside War Peace)`,
+			held: []held{{"war-peace", "War Peace", "en", []string{"ada-mapmaker"}}},
+			row:  standaloneRow("B0WARPEAC1", "War and Peace", "us", "english", ada, "Dee Voice")},
+		{name: `a held "&" title the row only extends is kept`,
+			held: []held{{"pride-prejudice", "Pride & Prejudice", "en", []string{"ada-mapmaker"}}},
+			row:  standaloneRow("B0PPZOMB01", "Pride and Prejudice and Zombies", "us", "english", ada, "Dee Voice")},
 	}
 	for _, tc := range cases {
 		for _, attach := range []bool{false, true} {
@@ -530,6 +551,45 @@ func TestReportedGuardNeedsTheFlag(t *testing.T) {
 	if !slices.Contains(on.subset, rows[1]) || !slices.Contains(off.subset, rows[1]) {
 		t.Errorf("the completion row was dropped: off %v, on %v", off.subset, on.subset)
 	}
+}
+
+// Without --reported the conjunction fold changes nothing: the Daisy row is refused
+// as no-catalogue-series, as every series-less row always was.
+func TestReportedConjunctionFoldNeedsTheFlag(t *testing.T) {
+	dataDir := seedSelectCatalogue(t)
+	heldWork(t, dataDir, "daisy-jones-the-six", "Daisy Jones & The Six", "en", []string{"ada-mapmaker"}, "0001")
+	off := selectWith(t, dataDir, []string{standaloneRow("B0DAISYJ01", "Daisy Jones and the Six", "gb", "english", "Ada Mapmaker", "Dee Voice")},
+		SelectOptions{AttachEditions: true})
+	if len(off.subset) != 0 || len(off.refusals) != 1 || off.refusals[0].Reason != RefusalNoCatalogueSeries {
+		t.Errorf("subset %v, refusals %+v; want the row refused as no-catalogue-series", off.subset, off.refusals)
+	}
+}
+
+// Once the catalogue holds BOTH spellings (the lane's first duplicate, until its
+// repair lands), the next edition of either mints no third work: each spelling
+// resolves to its own held work and lands there, a decorated one is refused as
+// naming both, and the tree stays valid.
+func TestReportedGuardWithBothSpellingsHeld(t *testing.T) {
+	dataDir := seedSelectCatalogue(t)
+	heldWork(t, dataDir, "daisy-jones-the-six", "Daisy Jones & The Six", "en", []string{"ada-mapmaker"}, "0001")
+	heldWork(t, dataDir, "daisy-jones-and-the-six", "Daisy Jones and the Six", "en", []string{"ada-mapmaker"}, "0002")
+	before := listWorks(t, dataDir)
+	rows := []string{
+		standaloneRow("B0DAISYJ05", "Daisy Jones & The Six", "us", "english", "Ada Mapmaker", "Dee Voice"),
+		standaloneRow("B0DAISYJ06", "Daisy Jones and the Six", "gb", "english", "Ada Mapmaker", "Eve Speaker"),
+		standaloneRow("B0DAISYJ07", "Daisy Jones and the Six: A Novel", "au", "english", "Ada Mapmaker", "Fay Narrator"),
+	}
+	run, sum := importAsBot(t, dataDir, rows)
+	if len(run.subset) != 2 || len(run.refusals) != 1 || run.refusals[0].ASIN != "B0DAISYJ07" || run.refusals[0].Reason != RefusalIdentityDuplicate {
+		t.Fatalf("subset %v, refusals %+v; want the two plain spellings kept and the decorated one refused", run.subset, run.refusals)
+	}
+	if sum.NewWorks != 0 || sum.NewRecordings != 2 || len(sum.Skips) != 0 {
+		t.Errorf("summary = %+v; want two recordings and no new work", sum)
+	}
+	if got := listWorks(t, dataDir); !slices.Equal(got, before) {
+		t.Errorf("works = %v, want %v unchanged", got, before)
+	}
+	assertTreeValid(t, dataDir)
 }
 
 // End to end, as the bot runs it: the guard's refusals never reach the import, a
