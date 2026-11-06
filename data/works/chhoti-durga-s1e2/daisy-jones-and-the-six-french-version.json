@@ -124,7 +124,11 @@
         "taylor-jenkins-reid"
       ],
       "genres": [
+        "contemporary-romance",
+        "historical-fiction",
+        "historical-romance",
         "literary-fiction",
+        "romance",
         "womens-fiction"
       ],
       "id": "daisy-jones-the-six",
@@ -135,6 +139,10 @@
           "abridged": false,
           "added_at": "2026-08-07",
           "asin": [
+            {
+              "asin": "1473565952",
+              "region": "us"
+            },
             {
               "asin": "1984845306",
               "region": "us"
@@ -222,10 +230,22 @@
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
+            "ari-fliakos",
+            "arthur-bishop",
             "benjamin-bratt",
+            "fred-berman",
+            "henry-leyva",
+            "holter-graham",
+            "january-lavoy",
             "jennifer-beals",
+            "jonathan-davis",
             "judy-greer",
-            "pablo-schreiber"
+            "p-j-ochlan",
+            "pablo-schreiber",
+            "peter-larkin",
+            "robert-petkoff",
+            "robinne-lee",
+            "sara-arrington"
           ],
           "publisher": "Random House Audio",
           "release_date": "2019-03-05",
@@ -234,6 +254,11 @@
             {
               "imported_at": "2026-08-07",
               "ref": "1984845306",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-05",
+              "ref": "1473565952",
               "type": "libex-import"
             }
           ],
@@ -244,6 +269,11 @@
         {
           "imported_at": "2026-08-07",
           "ref": "1984845306",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-11-05",
+          "ref": "1473565952",
           "type": "libex-import"
         }
       ],
