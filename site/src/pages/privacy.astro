@@ -163,8 +163,10 @@ const code =
         database does not hold yet. A report carries ASINs and nothing else we keep: the service
         stores each ASIN with a count and the first and last date it was reported, and stores no IP
         address with them. An address is held in memory for about a day after its last request to
-        enforce a rate limit. The request itself is otherwise treated like any other, so the server
-        logs described above apply to it.
+        enforce a rate limit. These reports are not written to the access log when they arrive over
+        HTTPS, which is how AudioSilo servers send them. The web server's error log can still record
+        the address of a request that goes wrong, such as a report that cannot reach the service
+        while it is restarting.
       </p>
 
       <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">Contributing</h2>
