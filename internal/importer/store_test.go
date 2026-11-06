@@ -67,10 +67,16 @@ func TestStoreImportCreates(t *testing.T) {
 		t.Errorf("series = %+v", series.Works)
 	}
 
-	// A rerun is a skip: the page is the row's identity, in either host spelling.
-	again := runStore(t, dataDir, strings.Replace(guildRow, "https://audiobookguild.com", "https://www.audiobookguild.com", 1), Options{})
-	if again.Skipped != 1 || again.Produced() != 0 {
-		t.Errorf("rerun summary = %+v, want one skip and nothing produced", again)
+	// A rerun is a skip: the page is the row's identity, in either host spelling
+	// and with or without a trailing "/" (model.StoreLinkKey).
+	for _, row := range []string{
+		strings.Replace(guildRow, "https://audiobookguild.com", "https://www.audiobookguild.com", 1),
+		strings.Replace(guildRow, guildURL, guildURL+"/", 1),
+	} {
+		again := runStore(t, dataDir, row, Options{})
+		if again.Skipped != 1 || again.Produced() != 0 {
+			t.Errorf("rerun summary = %+v, want one skip and nothing produced", again)
+		}
 	}
 }
 

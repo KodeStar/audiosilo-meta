@@ -41,6 +41,9 @@ func TestStoreLinkOK(t *testing.T) {
 		{StoreAudiobookGuild, "https://audiobookguild.com", false},
 		{StoreAudiobookGuild, "https://audiobookguild.com/", false},
 		{StoreGraphicAudio, "https://www.graphicaudio.net/", false},
+		// StoreLinkKey drops trailing slashes, so a path of slashes alone keys
+		// as the homepage and is refused as one.
+		{StoreGraphicAudio, "https://www.graphicaudio.net//", false},
 	}
 	for _, c := range cases {
 		if got := StoreLinkOK(c.store, c.url); got != c.want {
@@ -122,6 +125,8 @@ func TestStoreLinkKey(t *testing.T) {
 		"https://audiobookguild.com/products/without-law-17",
 		"https://www.audiobookguild.com/products/without-law-17",
 		"https://WWW.AudiobookGuild.com/products/without-law-17",
+		"https://audiobookguild.com/products/without-law-17/",
+		"https://www.audiobookguild.com/products/without-law-17//",
 	}
 	for _, l := range same {
 		if got := StoreLinkKey(l); got != "audiobookguild.com/products/without-law-17" {

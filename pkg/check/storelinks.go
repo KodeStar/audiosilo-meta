@@ -13,8 +13,8 @@ import "github.com/kodestar/audiosilo-meta/pkg/model"
 //   - each is unique across the dataset: a store page is one product, and the
 //     store-listing import deduplicates on it, so two recordings carrying one
 //     would make the next import's answer depend on which it met first. The
-//     comparison is model.StoreLinkKey's (the host's case and a leading www.
-//     folded, since a store answers on both).
+//     comparison is model.StoreLinkKey's (a trailing "/", the host's case and
+//     a leading www. folded, since a store serves one page under each).
 func checkStoreLinks(recs []recordWithPath, add addFunc) {
 	seen := map[string]string{}
 	for _, pr := range recs {

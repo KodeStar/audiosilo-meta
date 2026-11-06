@@ -59,15 +59,24 @@ func TestStoreLinksRefused(t *testing.T) {
 }
 
 // TestStoreLinksUnique: one store page on two recordings is refused, whichever
-// spelling of the host each states.
+// spelling of the host each states and with or without a trailing "/"
+// (model.StoreLinkKey folds both).
 func TestStoreLinksUnique(t *testing.T) {
-	files := baseValid()
-	files["works/bo/book-one/recordings/rec-one.json"] = storeRecording("rec-one",
-		`{"audiobookguild":"https://audiobookguild.com/products/book-one"}`)
-	files["works/bo/book-one/recordings/rec-two.json"] = storeRecording("rec-two",
-		`{"audiobookguild":"https://WWW.audiobookguild.com/products/book-one"}`)
-	res := loadTree(t, files)
-	if res.OK() || !strings.Contains(joinProblems(res.Problems), `duplicate links.audiobookguild "https://WWW.audiobookguild.com/products/book-one" also in`) {
-		t.Fatalf("want a duplicate store link problem, got:\n%s", joinProblems(res.Problems))
+	for name, second := range map[string]string{
+		"host spelling":  "https://WWW.audiobookguild.com/products/book-one",
+		"trailing slash": "https://audiobookguild.com/products/book-one/",
+	} {
+		t.Run(name, func(t *testing.T) {
+			files := baseValid()
+			files["works/bo/book-one/recordings/rec-one.json"] = storeRecording("rec-one",
+				`{"audiobookguild":"https://audiobookguild.com/products/book-one"}`)
+			files["works/bo/book-one/recordings/rec-two.json"] = storeRecording("rec-two",
+				`{"audiobookguild":"`+second+`"}`)
+			res := loadTree(t, files)
+			want := `duplicate links.audiobookguild "` + second + `" also in`
+			if res.OK() || !strings.Contains(joinProblems(res.Problems), want) {
+				t.Fatalf("want a problem containing %q, got:\n%s", want, joinProblems(res.Problems))
+			}
+		})
 	}
 }
