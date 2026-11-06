@@ -564,7 +564,13 @@ it, `pkg/check` and every writer now refuse it loudly.
   recording one narrator reads throughout, and metacheck refuses them on every
   chapter of a one-narrator recording) (LICENSING.md's public-domain exception;
   `metaimport librivox`, whose rerun over a snapshot restates them on held
-  recordings). One work,
+  recordings). A recording sold by a store the identifier-derived links do not
+  reach carries that store's product page in `links.audiobookguild` /
+  `links.graphicaudio` (https, as the store states it; pkg/check holds each to its
+  store's host and unique across the dataset through `model.StoreLinkKey`; the
+  vocabulary is `pkg/model/storelinks.go`), written by `metaimport store`, a
+  maintainer's reviewed listing file under source type `store-listing`
+  (LICENSING.md "Store listings"; PACKAGES.md `internal/importer`). One work,
   many recordings (Harry Potter: Stephen Fry AND Jim Dale, each with its own
   ASINs). It keeps its own `id`, `work` backref, `license` and `sources`, so its
   bytes are the same as when it was a file of its own.
@@ -606,7 +612,12 @@ it, `pkg/check` and every writer now refuse it loudly.
   the artifact: a region-scoped ASIN becomes an Audible marketplace URL and a
   13-digit recording ISBN becomes a speculative Libro.fm URL. Each link says
   availability is `unknown`; work-level print ISBNs are never used. This keeps
-  volatile observations and identifier-duplicating URL data out of Git.
+  volatile observations and identifier-duplicating URL data out of Git. The one
+  stated URL among them is a store page (`links.audiobookguild`,
+  `links.graphicaudio`), for a store with no identifier to derive one from: it
+  becomes a purchase link whose `retailer` is the store key and whose `id` is
+  the URL, after the free LibriVox link and before the derived ones
+  (`pkg/query/storelinks.go`), still `unknown`; a dead one is a data edit.
 - **person** - an entry in the people family, shared by author and narrator roles
   (a person can be both). Optional `kind`
   (`person`/`group`/`publisher`/`synthetic`) marks the records that are not an
@@ -768,7 +779,9 @@ LibriVox ids and life years, `work_credits`, `recording_sources`; PACKAGES.md
 project's own title, section numbers, translators, section readers and genre
 names, which the LibriVox-shaped feed answers with; PACKAGES.md "The LIBRIVOX
 RECORDING layer"); the `position_scales(work_id, length, unit, partial)` table in
-**schema_version 10** (the current version); character `ord`/recap
+**schema_version 10**; the STORE LINKS (`recordings.link_audiobookguild`,
+`recordings.link_graphicaudio`) in **schema_version 11** (the current version);
+character `ord`/recap
 position order preserved, deterministic), and `metaserve` returns
 them inline on `GET /works/{id}`
 (`workDetail.characters`/`.recaps`/`.recap_summary`/`.genres`/
@@ -777,17 +790,17 @@ serve queries degrade gracefully if the tables are absent (a newer binary
 briefly serving an older release): characters/recaps gate on schema_version >= 2,
 the recap summary on >= 3, genres on >= 4, the slug redirects on >= 5, the
 community description on >= 6, the languages layer on >= 7, the LibriVox
-layer on >= 8, the LibriVox recording layer on >= 9 and the position scales on
->= 10, so a
+layer on >= 8, the LibriVox recording layer on >= 9, the position scales on
+>= 10 and the store links on >= 11, so a
 table's absence is "no data" (for redirects: a retired slug 404s as it did before
 the mechanism existed), not a 500. The redirect, description and languages gates
 are asked ONCE at load rather than per request - those tables are EMPTY in every
 release until their first record lands, and all sit on ordinary 200 paths (the
 description on every work page, both guide pages and every ABS candidate; the
 translations and the ordering family on every work and series page) - so an
-artifact that CLAIMS version 5, 6, 7, 8, 9 or 10 without its table (for 7: the
+artifact that CLAIMS version 5, 6, 7, 8, 9, 10 or 11 without its table (for 7: the
 translations table or the series ordering columns; for 8: `librivoxShapeSQL`;
-for 9: `librivoxRecordingShapeSQL`) fails to open, with an
+for 9: `librivoxRecordingShapeSQL`; for 11: `storeLinksShapeSQL`) fails to open, with an
 error naming that claim; the builder writes the version and the table together,
 so the combination is a corrupt file rather than an old one. **Authoring the expressive
 layer is documented in the COMMUNITY repository's `AUTHORING.md`** (the reusable

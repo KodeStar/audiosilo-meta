@@ -303,6 +303,37 @@ CC0. The audio and the cover art stay on archive.org; we hold URLs.
 another catalogue, public-domain or otherwise: a second source would need its
 own section here, argued on its own facts, before any tooling points at it.
 
+## Store listings: a maintainer-named import
+
+Some books are sold only by a store the identifier-derived links do not reach
+(Audible by ASIN, Libro.fm by ISBN): today the Audiobook Guild and GraphicAudio
+stores. A maintainer may import such a store's **public product listing** for a
+book they name, under source type `store-listing` (`metaimport store`, from a
+reviewed input file). It is a curated batch import in the sense above, bounded
+more tightly:
+
+- **Bounded to what a maintainer names.** Each listing is a book a maintainer
+  chose and reviewed (for example, books a real library holds that the
+  catalogue lacks), landed as a reviewable pull request. Nothing walks a store's
+  catalogue, feed or categories, and the series-completion bot does not use this
+  import.
+- **Facts only.** Title, authors, narrators, series and position, runtime,
+  release date, publisher, the store's page URL (kept on the recording's
+  `links`, as the store states it) and a cover URL. Never the blurb, ratings,
+  reviews, prices or the store's genre strings; the importer reads none of
+  them, so a file that carries them stores nothing of them.
+- **Through the ordinary rules.** The same identity, duplicate and person rules
+  as every import; a listing of a production already catalogued only adds its
+  page to that recording. Records carry the `store-listing` provenance and
+  retract with it, and they rank with the bulk mirror below: a user's own
+  library or hand edit outranks them.
+
+The store page is a route, not an availability claim: the API shows it as a
+purchase link whose availability is `unknown`, like every other, and a dead link
+is corrected as a data edit. A store that objects is handled under "Takedown and
+rightsholder opt-out" below. Adding a store is a schema change (the `links` key
+and its host check) and an edit to this section.
+
 ## Trust tiers and the user-overwrite rule
 
 A bulk import is a starting point, not an answer. A record seeded from a
@@ -317,7 +348,7 @@ The ordering, over the `sources[]` entry `type`:
 |---|---|---|
 | **User library** | `user` (issue forms and hand edits), `openaudible-import`, `libation-import`, `audiosilo-books-import` (metascan folder scans, the site's `/import`) | May overwrite a bulk-mirror-only record |
 | Reference | `audible-lookup`, `openlibrary`, `wikidata`, `inventaire`, `community`, anything unclassified | No overwrite authority; its presence also means a record is not mirror-only |
-| **Bulk mirror** | `libex-import`, `librivox` (the public-domain exception above) | Overwritable by the tier above: a user hand edit outranks either |
+| **Bulk mirror** | `libex-import`, `librivox` (the public-domain exception above), `store-listing` (store listings above) | Overwritable by the tier above: a user hand edit outranks any of them |
 
 The rule, applied at **record** granularity (not per field):
 
