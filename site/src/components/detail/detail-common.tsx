@@ -62,7 +62,7 @@ export function useWorkGuideSlug(guide: WorkGuide): string {
 
 /** The two ids metaserve injects in place of the `<!--ssr:entity-->` marker: the
     server-rendered fact sheet, and the JSON payload it rendered that sheet from
-    (byte-for-byte what the matching API route returns). Both are absent under
+    (the matching API entity plus optional bounded page sections). Both are absent under
     `yarn dev`, on the legacy shells and against an older metaserve, which is the
     ordinary path - the island then fetches exactly as it always did. */
 const ssrNodeId = 'ssr-entity'
@@ -125,7 +125,9 @@ export function useEntity<T>(
   fetcher: (id: string, signal: AbortSignal) => Promise<T>,
   initialData?: T | null
 ): LoadState<T> {
-  const [state, setState] = useState<LoadState<T>>({ status: 'loading' })
+  const [state, setState] = useState<LoadState<T>>(() => initialData
+    ? { status: 'ready', data: initialData }
+    : { status: 'loading' })
   useEffect(() => {
     if (id === null) {
       // Location not read yet.

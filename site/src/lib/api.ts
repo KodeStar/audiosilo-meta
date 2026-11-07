@@ -145,20 +145,27 @@ export interface PurchaseLink {
   free?: boolean
 }
 
-export interface Recording {
+/** Facts stated for one production; absent fields remain unknown. */
+export interface RecordingSummary {
   id: string
   narrators: PersonRef[]
-  abridged?: boolean
+  language?: string
+  abridgement?: 'abridged' | 'unabridged'
   runtime_min?: number
   release_date?: string
   publisher?: string
+  chapter_count?: number
+}
+
+export interface Recording extends RecordingSummary {
+  /** Legacy compatibility: only true proves abridgement on older responses. */
+  abridged?: boolean
   asin?: AsinRef[]
   isbn?: string[]
   /** Absent on an older cached response or an embedded payload from a metaserve
       that predates the field, which renders no links rather than an empty block. */
   purchase_links?: PurchaseLink[]
   cover_url?: string | null
-  chapter_count?: number
 }
 
 /** Cross-references to other open databases (the data model's work xrefs).
@@ -277,6 +284,8 @@ export interface Person {
   narrated: RecordingCredit[]
   authored_total: number
   narrated_total: number
+  /** Additional bounded page embedded by metaserve on person HTML routes. */
+  recording_credits?: PersonRecordings
   /** The recordings that credit this person as their own translator (a
       LibriVox project's translator, credited on the recording rather than the
       work). Absent when there are none, and on an artifact older than
@@ -309,6 +318,8 @@ export interface Series {
   works_total: number
   limit: number
   offset: number
+  /** Additional bounded page embedded by metaserve on series HTML routes. */
+  listening_guide?: SeriesListeningGuide
   translation_of?: SeriesTranslation[]
   translations?: SeriesTranslation[]
   /** The whole ordering family - the primary first, then its variants by id -
@@ -316,6 +327,31 @@ export interface Series {
       series has no variant ordering. Every languages field here is absent before
       schema_version 7. */
   orderings?: SeriesOrderingRef[]
+}
+
+/** One bounded work row in the series listening guide. Alternatives are capped,
+    so recordings_total may exceed recordings.length. */
+export interface ListeningGuideEntry extends SeriesEntry {
+  recordings_total: number
+  recordings: RecordingSummary[]
+  recordings_limit: number
+}
+
+export interface SeriesListeningGuide extends Omit<Series, 'works' | 'listening_guide'> {
+  entries: ListeningGuideEntry[]
+}
+
+export interface PersonRecording {
+  work: WorkCard
+  recording: RecordingSummary
+  series: { id: string; name: string; position: string }[]
+}
+
+export interface PersonRecordings {
+  recordings: PersonRecording[]
+  total: number
+  limit: number
+  offset: number
 }
 
 /** The other end of a series' translation link. */
@@ -543,6 +579,37 @@ export function getSeries(id: string, signal?: AbortSignal): Promise<Series> {
   return getJSON<Series>(`/api/v1/series/${encodeURIComponent(id)}`, signal)
 }
 
+export function getSeriesPage(
+  id: string,
+  opts: { limit?: number; offset?: number } = {},
+  signal?: AbortSignal
+): Promise<Series> {
+  const params = new URLSearchParams({ limit: String(opts.limit ?? 50), offset: String(opts.offset ?? 0) })
+  return getJSON<Series>(`/api/v1/series/${encodeURIComponent(id)}?${params}`, signal)
+}
+
+/** Bounded candidate recordings for only one page of series works. */
+export function getSeriesListeningGuide(
+  id: string,
+  opts: { limit?: number; offset?: number } = {},
+  signal?: AbortSignal
+): Promise<SeriesListeningGuide> {
+  const params = new URLSearchParams({ limit: String(opts.limit ?? 50), offset: String(opts.offset ?? 0) })
+  return getJSON<SeriesListeningGuide>(`/api/v1/series/${encodeURIComponent(id)}/listening-guide?${params}`, signal)
+}
+
+/** Narration credits preserve separate productions of the same work. */
+export function getPersonRecordings(
+  id: string,
+  opts: { limit?: number; offset?: number; series?: string; lang?: string } = {},
+  signal?: AbortSignal
+): Promise<PersonRecordings> {
+  const params = new URLSearchParams({ limit: String(opts.limit ?? 50), offset: String(opts.offset ?? 0) })
+  if (opts.series) params.set('series', opts.series)
+  if (opts.lang) params.set('lang', opts.lang)
+  return getJSON<PersonRecordings>(`/api/v1/people/${encodeURIComponent(id)}/recordings?${params}`, signal)
+}
+
 /** The contribution coverage band: catalogue-wide totals + list availability. */
 export function getCoverage(signal?: AbortSignal): Promise<CoverageResponse> {
   return getJSON<CoverageResponse>('/api/v1/coverage', signal)
@@ -664,7 +731,12 @@ export function personNames(people: { name: string }[]): string {
 export const href = {
   work: (id: string) => `/works/${encodeURIComponent(id)}`,
   person: (id: string) => `/people/${encodeURIComponent(id)}`,
-  series: (id: string) => `/series/${encodeURIComponent(id)}`,
+  series: (id: string, page = 1) => `/series/${encodeURIComponent(id)}${page > 1 ? `?page=${page}` : ''}`,
+  personRecordings: (id: string, page = 1) => `/people/${encodeURIComponent(id)}${page > 1 ? `?page=${page}` : ''}#recording-credits`,
+  recording: (workId: string, recordingId: string) =>
+    `/works/${encodeURIComponent(workId)}#recording-${encodeURIComponent(recordingId)}`,
+  chapters: (workId: string, recordingId: string, page = 1) =>
+    `/works/${encodeURIComponent(workId)}/recordings/${encodeURIComponent(recordingId)}/chapters${page > 1 ? `?page=${page}` : ''}`,
   /** A work's community-guide sub-page (the crawlable story-so-far recap or
       character guide). metaserve serves it only for a work that carries that
       sidecar, so link to it from the presence of the member, never blind. */

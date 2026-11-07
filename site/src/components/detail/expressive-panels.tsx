@@ -8,20 +8,15 @@
 // page in the same edit; the pure row/label rules they render stay in
 // lib/expressive.ts.
 
-import { useState } from 'react'
 import type { Character } from '../../lib/api'
 import { roleLabel, revealLabel, type StoryRow as StoryRowData } from '../../lib/expressive'
-import { Badge, Chevron } from '../ui'
+import { Badge } from '../ui'
 
-/** One character card. The description is spoiler-bounded to the reveal position
-    but still story detail, so it stays hidden behind a per-card accordion the
-    reader opens via the reveal-position row. The name stays a real heading in
-    both branches; a card with no description has no disclosure control. */
+/** Character aliases and descriptions stay in a closed native disclosure,
+    scoped to the reveal position. Names remain ordinary headings. */
 function CharacterCard({ character, unit }: { character: Character; unit?: string }) {
-  const [open, setOpen] = useState(false)
   const role = roleLabel(character.role)
-  const hasDescription = Boolean(character.description)
-  const descId = `char-desc-${character.id}`
+  const hasSpoilers = Boolean(character.description || character.aliases?.length)
   const reveal = (
     <span className="text-xs font-medium text-pink-400/90">{revealLabel(character.reveal, unit)}</span>
   )
@@ -31,31 +26,20 @@ function CharacterCard({ character, unit }: { character: Character; unit?: strin
       <div className="flex items-start justify-between gap-2">
         <div className="min-w-0">
           <h3 className="font-semibold text-hi">{character.name}</h3>
-          {character.aliases && character.aliases.length > 0 ? (
-            <p className="mt-0.5 text-xs text-dim">also {character.aliases.join(', ')}</p>
-          ) : null}
         </div>
         {role ? <Badge>{role}</Badge> : null}
       </div>
-      {hasDescription ? (
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          aria-controls={descId}
-          className="mt-2 flex w-full items-center justify-between gap-2 text-left transition-colors hover:opacity-80"
-        >
-          {reveal}
-          <Chevron open={open} className="shrink-0" />
-        </button>
-      ) : (
-        <p className="mt-2">{reveal}</p>
-      )}
-      {hasDescription && open ? (
-        <p id={descId} className="mt-3 text-sm leading-relaxed text-body">
-          {character.description}
-        </p>
-      ) : null}
+      {hasSpoilers ? (
+        <details className="mt-2">
+          <summary className="cursor-pointer text-xs font-medium text-pink-400/90">
+            {reveal}
+          </summary>
+          <div data-nosnippet className="mt-3 space-y-2 text-sm leading-relaxed text-body">
+            {character.aliases?.length ? <p>Also known as {character.aliases.join(', ')}.</p> : null}
+            {character.description ? <p>{character.description}</p> : null}
+          </div>
+        </details>
+      ) : <p className="mt-2">{reveal}</p>}
     </article>
   )
 }
@@ -84,23 +68,13 @@ export function CharactersPanel({ characters, unit }: { characters: Character[];
     one list; the caller supplies the header title, an optional scope/kind badge,
     and the revealed body text. */
 function StoryRow({ title, badge, text }: { title: string; badge?: string; text: string }) {
-  const [open, setOpen] = useState(false)
   return (
-    <div className="bg-surface">
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
-        className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left transition-colors hover:bg-raised/40"
-      >
-        <span className="flex flex-wrap items-center gap-2">
-          <span className="text-sm font-medium text-body">{title}</span>
-          {badge ? <Badge>{badge}</Badge> : null}
-        </span>
-        <Chevron open={open} className="shrink-0" />
-      </button>
-      {open ? <p className="px-4 pb-4 text-sm leading-relaxed text-body">{text}</p> : null}
-    </div>
+    <details className="bg-surface">
+      <summary className="cursor-pointer px-4 py-3 text-sm font-medium text-body transition-colors hover:bg-raised/40">
+        {title}{badge ? <span className="ml-2"><Badge>{badge}</Badge></span> : null}
+      </summary>
+      <p data-nosnippet className="px-4 pb-4 text-sm leading-relaxed text-body">{text}</p>
+    </details>
   )
 }
 
