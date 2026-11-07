@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { ApiError } from '../../lib/api'
+import { scheduleInitialFragmentScroll } from '../../lib/fragment-scroll'
 import {
   entitySlugFromLocation,
   workGuideSlugFromLocation,
@@ -97,6 +98,17 @@ export function useEmbeddedEntity<T extends { id: string }>(id: string | null): 
     if (data) document.getElementById(ssrNodeId)?.remove()
   }, [data])
   return data
+}
+
+/** Reapply a section's incoming fragment once its content is ready. Keeping
+    the effect keyed to readiness avoids scrolling again on planner choices or
+    other interaction within that section. */
+export function useInitialFragmentScroll(id: string, ready = true) {
+  const target = useRef<HTMLElement>(null)
+  useEffect(() => {
+    if (ready && target.current?.id === id) return scheduleInitialFragmentScroll(target.current)
+  }, [id, ready])
+  return target
 }
 
 /** Set document.title while a detail view is mounted, restoring nothing (each

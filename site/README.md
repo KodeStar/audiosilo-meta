@@ -192,7 +192,9 @@ recap bodies stay in the DOM inside closed native `details`/`summary`
 disclosures, with `data-nosnippet` on their bodies. Work tab panels stay mounted
 with `hidden` on inactive panels, so changing tabs retains disclosure state.
 Comparison links preserve valid `#recording-{id}` fragments across hydration
-and open the General tab when needed. Stable UI targets for verification are
+and open the General tab when needed. Series and person pagination fragments
+scroll to their mounted guide or recording-credit section after hydration.
+Stable UI targets for verification are
 `#recording-comparison`, `[data-chapter-link]`, `#listening-guide` and
 `#recording-credits`.
 

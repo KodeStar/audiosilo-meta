@@ -3,7 +3,7 @@ import { formatLanguage, formatRuntime, getPersonRecordings, href, personNames, 
 import { abridgementLabel, cataloguePage, groupRecordings } from '../../lib/catalogue'
 import { TEXT_LINK } from '../ui'
 import CataloguePager from './CataloguePager'
-import { useEntity } from './detail-common'
+import { useEntity, useInitialFragmentScroll } from './detail-common'
 
 /** A recording is the unit of a narration credit. Two versions of one work
     remain two rows, each leading to its own recording card. */
@@ -11,11 +11,12 @@ export default function PersonRecordings({ person, fallback }: { person: Person;
   const [page] = useState(() => cataloguePage(window.location.search))
   const fetchRecordings = useCallback((id: string, signal: AbortSignal) => getPersonRecordings(id, { limit: 50, offset: (page - 1) * 50 }, signal), [page])
   const state = useEntity(person.id, fetchRecordings, person.recording_credits)
+  const section = useInitialFragmentScroll('recording-credits', state.status === 'ready')
   if (state.status !== 'ready') return <>{fallback}<p className="mt-5 text-sm text-dim" role="status">{state.status === 'loading' ? 'Loading recording credits...' : 'Recording details could not be loaded.'}</p></>
   const { recordings, total, limit, offset } = state.data
   const groups = groupRecordings(recordings)
   return (
-    <section id="recording-credits" className="mt-12">
+    <section ref={section} id="recording-credits" className="mt-12">
       <h2 className="text-xl font-semibold text-hi">Narrated recordings <span className="ml-2 text-sm font-normal text-dim">{total.toLocaleString()} credit{total === 1 ? '' : 's'}</span></h2>
       {recordings.length ? <p className="mt-3 text-sm text-dim">Showing {offset + 1}-{offset + recordings.length} of {total.toLocaleString()} recording credits, grouped by series and language on this page. Separate versions of a work retain their own credits.</p> : <p className="mt-3 text-sm text-dim">No narrated recordings have been catalogued.</p>}
       <div className="mt-5 space-y-6">
