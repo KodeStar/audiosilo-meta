@@ -73,7 +73,7 @@ function StoryRow({ title, badge, text }: { title: string; badge?: string; text:
       <summary className="cursor-pointer px-4 py-3 text-sm font-medium text-body transition-colors hover:bg-raised/40">
         {title}{badge ? <span className="ml-2"><Badge>{badge}</Badge></span> : null}
       </summary>
-      <p data-nosnippet className="px-4 pb-4 text-sm leading-relaxed text-body">{text}</p>
+      <div data-nosnippet className="px-4 pb-4 text-sm leading-relaxed text-body"><p>{text}</p></div>
     </details>
   )
 }
