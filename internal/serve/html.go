@@ -286,6 +286,7 @@ func entityETag(snap *query.DB, sh *shell, id string) string {
 // shell. Head composition and body composition each happen ONCE, here, for all
 // three families - only the facts differ.
 type entityPage struct {
+	noindex     bool
 	title       string
 	description string
 	canonical   string
@@ -305,6 +306,9 @@ func (p *entityPage) renderHead() string {
 	var b strings.Builder
 	b.WriteString("\n<title>" + html.EscapeString(p.title) + "</title>\n")
 	b.WriteString(metaTag("name", "description", p.description))
+	if p.noindex {
+		b.WriteString(metaTag("name", "robots", "noindex,follow"))
+	}
 	b.WriteString(`<link rel="canonical" href="` + html.EscapeString(p.canonical) + "\">\n")
 	b.WriteString(metaTag("property", "og:type", p.ogType))
 	b.WriteString(metaTag("property", "og:site_name", siteName))
