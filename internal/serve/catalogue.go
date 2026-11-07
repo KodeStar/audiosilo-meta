@@ -96,6 +96,8 @@ func (s *Server) browseRoutes() []route {
 type directoryLink struct{ URL, Title, Detail string }
 type browseView struct {
 	Title, Description, Caption string
+	CurrentURL                  string
+	Directories                 []directoryLink
 	Entries                     []directoryLink
 	Pagination                  paginationView
 	Index                       bool
@@ -120,16 +122,18 @@ func (s *Server) browseHandler(family *directoryFamily) http.HandlerFunc {
 		}
 		path := "/browse"
 		view := browseView{Title: "Browse the audiobook catalogue", Description: "Find audiobooks, series, authors, narrators and community guides through the catalogue directories.", Index: family == nil}
+		for _, f := range directoryFamilies {
+			view.Directories = append(view.Directories, directoryLink{URL: path + "/" + f.Slug, Title: f.Title, Detail: f.Description})
+		}
 		if family == nil {
 			if page != 1 {
 				s.site.notFound(w, r)
 				return
 			}
-			for _, f := range directoryFamilies {
-				view.Entries = append(view.Entries, directoryLink{URL: path + "/" + f.Slug, Title: f.Title, Detail: f.Description})
-			}
+			view.Entries = view.Directories
 		} else {
 			path += "/" + family.Slug
+			view.CurrentURL = path
 			result, err := snap.Browse(r.Context(), family.Family, cataloguePageSize, (page-1)*cataloguePageSize)
 			if err != nil {
 				s.log.Printf("serve: rendering %q failed: %v", r.URL.Path, err)
@@ -350,7 +354,12 @@ func seriesNarratorContinuity(guide *query.SeriesListeningGuide) []continuityVie
 
 const catalogueTemplates = `
 {{define "pagination"}}{{if gt .Pages 1}}<nav aria-label="Pagination"><p>Page {{.Page}} of {{.Pages}}</p>{{if .Previous}}<a rel="prev" href="{{.Previous}}">Previous page</a>{{end}} {{if .Next}}<a rel="next" href="{{.Next}}">Next page</a>{{end}}</nav>{{end}}{{end}}
-{{define "browse"}}<section class="container"><h1>{{.Title}}</h1><p>{{.Description}}</p>{{if not .Index}}<p><a href="/browse">All catalogue directories</a></p><p>{{.Caption}}</p>{{end}}{{if .Entries}}<ul>{{range .Entries}}<li><a href="{{.URL}}">{{.Title}}</a>{{if .Detail}} - {{.Detail}}{{end}}</li>{{end}}</ul>{{else}}<p>No entries are catalogued in this directory yet.</p>{{end}}{{template "pagination" .Pagination}}</section>{{end}}
+{{define "browse"}}<section class="container catalogue-directory" aria-labelledby="directory-title">
+<header class="directory-header"><p class="directory-eyebrow">Explore the catalogue</p><h1 id="directory-title">{{.Title}}</h1><p class="directory-description">{{.Description}}</p></header>
+<nav class="directory-nav" aria-label="Catalogue directories"><a href="/browse"{{if .Index}} aria-current="page"{{end}}>All directories</a>{{range .Directories}}<a href="{{.URL}}"{{if eq .URL $.CurrentURL}} aria-current="page"{{end}}>{{.Title}}</a>{{end}}</nav>
+<div class="directory-results"><h2>{{if .Index}}Choose a directory{{else}}In this directory{{end}}</h2><p>{{if .Index}}5 directories{{else}}{{.Caption}}{{end}}</p></div>
+{{if .Entries}}<ul class="directory-grid{{if .Index}} directory-grid-index{{end}}">{{range .Entries}}<li><a class="directory-card" href="{{.URL}}"><span><span class="directory-card-title">{{.Title}}</span>{{if .Detail}}<span class="directory-card-detail">{{.Detail}}</span>{{end}}</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></li>{{end}}</ul>{{else}}<p class="directory-empty">No entries are catalogued in this directory yet.</p>{{end}}
+<div class="directory-pagination">{{template "pagination" .Pagination}}</div></section>{{end}}
 {{define "chapters"}}<section class="container"><h1>{{.Title}} chapters</h1><p><a href="{{.WorkURL}}">About this audiobook</a> · <a href="{{.RecordingURL}}">Recording details</a></p><p>Recording {{.RecordingID}}{{if .Narrators}} · Narrated by {{.Narrators}}{{end}}</p><p>{{.Caption}}</p>{{if .Chapters}}<table><caption>Chapter titles and times</caption><thead><tr><th scope="col">Chapter</th><th scope="col">Title</th><th scope="col">Start</th><th scope="col">Duration</th></tr></thead><tbody>{{range .Chapters}}<tr><td>{{.Number}}</td><th scope="row">{{.Title}}</th><td>{{.Start}}</td><td>{{.Duration}}</td></tr>{{end}}</tbody></table>{{else}}<p>No chapter navigation is catalogued for this recording.</p>{{end}}{{template "pagination" .Pagination}}</section>{{end}}
 {{define "summary"}}<a href="{{.URL}}">Recording {{.ID}}</a><dl><dt>Narrators</dt><dd>{{.Narrators}}</dd><dt>Language</dt><dd>{{.Language}}</dd><dt>Abridgement</dt><dd>{{.Abridgement}}</dd><dt>Runtime</dt><dd>{{.Runtime}}</dd><dt>Released</dt><dd>{{.Release}}</dd><dt>Publisher</dt><dd>{{.Publisher}}</dd><dt>Chapters</dt><dd>{{.Chapters}}</dd></dl>{{end}}
 {{define "listening-guide"}}<section id="listening-guide"><h2>Series listening guide</h2><p>Compare the catalogued recordings in series order. Choose a recording for each work to plan your listening time. Unknown runtimes and unselected works leave the plan partial. Retailer links do not state availability.</p><h3>Narrator continuity</h3>{{if .Continuity}}<ul>{{range .Continuity}}<li><a href="/people/{{.Person.ID}}">{{.Person.Name}}</a> is credited on {{.Works}} works among the choices on this page.</li>{{end}}</ul>{{else}}<p>No recurring narrator credit among the choices on this page.</p>{{end}}{{range .ListeningEntries}}<article><h3>{{if .Position}}{{.Position}}. {{end}}<a href="/works/{{.Work.ID}}">{{.Work.Title}}</a></h3>{{if .Recordings}}{{range .Recordings}}<div>{{template "summary" .}}</div>{{end}}{{if gt .Total .Limit}}<p>Showing {{.Limit}} of {{.Total}} recordings. <a href="/works/{{.Work.ID}}">Compare every recording</a>.</p>{{end}}{{else}}<p>No recording catalogued.</p>{{end}}</article>{{else}}<p>No works have been added to this series yet.</p>{{end}}{{template "pagination" .Pagination}}</section>{{end}}
