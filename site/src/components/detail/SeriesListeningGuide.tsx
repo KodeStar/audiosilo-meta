@@ -13,7 +13,7 @@ import { abridgementLabel, listeningPlan, narratorContinuity, recordingChoiceLab
 import PersonLinks from '../cards/PersonLinks'
 import { TEXT_LINK } from '../ui'
 import CataloguePager from './CataloguePager'
-import { useEntity } from './detail-common'
+import { useEntity, useInitialFragmentScroll } from './detail-common'
 
 function recordingLabel(recording: RecordingSummary): string {
   return [personNames(recording.narrators) || 'Narrator unknown',
@@ -23,11 +23,12 @@ function recordingLabel(recording: RecordingSummary): string {
 }
 
 function GuideContent({ guide }: { guide: Guide }) {
+  const section = useInitialFragmentScroll('listening-guide')
   const [choices, setChoices] = useState<Record<string, string>>({})
   const plan = listeningPlan(guide, choices)
   const continuity = narratorContinuity(guide.entries)
   return (
-    <section id="listening-guide" className="mt-12 rounded-2xl border border-edge bg-surface p-5 sm:p-6">
+    <section ref={section} id="listening-guide" className="mt-12 rounded-2xl border border-edge bg-surface p-5 sm:p-6">
       <h2 className="text-xl font-semibold text-hi">Listening guide</h2>
       <p className="mt-3 text-sm leading-relaxed text-dim">
         Follow this series in its stated order and compare narrators before choosing a recording.
