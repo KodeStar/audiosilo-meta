@@ -49,10 +49,11 @@ const (
 	// sitemapNS is the sitemap protocol's namespace, on both document kinds.
 	sitemapNS = "http://www.sitemaps.org/schemas/sitemap/0.9"
 	// sitemapMaxAge bounds how long a sitemap may be reused without revalidating.
-	// The content changes exactly when the artifact does, which the ETag captures;
-	// an hour only bounds how long a crawler can miss a data release, and a
-	// revalidation costs a 304 rather than a re-render.
+	// Validators track data and renderer changes; an hour bounds how long a
+	// crawler can miss a new representation before revalidating.
 	sitemapMaxAge = "public, max-age=3600"
+	// Bump when rendered XML changes, including builds without VCS metadata.
+	sitemapRendererVersion = "1"
 )
 
 // sitemapShardURLs is the protocol's per-file URL cap (50,000). It is a var
@@ -367,9 +368,8 @@ func w3cDate(v string) string {
 // public caching and this document's own ETag, or a shared cache would
 // 304-renew that error for the life of the release.
 //
-// The validator is the ARTIFACT's identity, the configured origin and the
-// document's own name. For a SHARD that is everything it is rendered from: the
-// dist's identity deliberately does not appear (it does for an entity page - see
+// The validator tracks the artifact, origin, document and renderer. The dist's
+// identity deliberately does not appear (it does for an entity page - see
 // pageIdentity), because not one byte of the built shell reaches a shard. The
 // INDEX is the exception, and its name carries the difference - it lists the
 // dist's static sitemap when there is one, so the presence bit rides in the
@@ -398,13 +398,11 @@ func (s *Server) sitemapNotModified(w http.ResponseWriter, r *http.Request, snap
 // when the server is polling; a local --db artifact has no tag, so the build
 // timestamp stands in - entityETag's rule, because it is the same question.
 //
-// The ORIGIN is in it because every loc is built from it: a --site-url change
-// against an unchanged data release would otherwise renew a 304 forever for a
-// document naming the wrong host. Weak, and stripped of quotes and backslashes
-// for the same reason entityETag is - a quote in any component would end the tag
-// early.
+// The origin and renderer identity prevent an unchanged data release from
+// renewing XML produced by a different configuration or rendering policy.
+// httpx.Identity length-prefixes and hashes the components into header-safe text.
 func sitemapETag(snap *query.DB, siteURL, doc string) string {
-	return `W/"` + strings.NewReplacer(`"`, "", `\`, "").Replace(snap.Version()+"/"+siteURL+doc) + `"`
+	return `W/"` + httpx.Identity(sitemapRendererVersion, snap.Version(), siteURL, doc, buildRevision()) + `"`
 }
 
 // writeSitemap renders a document and writes it under the validator the

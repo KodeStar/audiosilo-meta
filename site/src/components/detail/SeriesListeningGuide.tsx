@@ -9,7 +9,7 @@ import {
   type Series,
   type SeriesListeningGuide as Guide,
 } from '../../lib/api'
-import { abridgementLabel, cataloguePage, listeningPlan, narratorContinuity, recordingChoiceLabel } from '../../lib/catalogue'
+import { abridgementLabel, listeningPlan, narratorContinuity, recordingChoiceLabel } from '../../lib/catalogue'
 import PersonLinks from '../cards/PersonLinks'
 import { TEXT_LINK } from '../ui'
 import CataloguePager from './CataloguePager'
@@ -87,8 +87,8 @@ function GuideContent({ guide }: { guide: Guide }) {
 }
 
 export default function SeriesListeningGuide({ series }: { series: Series }) {
-  const [page] = useState(() => cataloguePage(window.location.search))
-  const fetchGuide = useCallback((id: string, signal: AbortSignal) => getSeriesListeningGuide(id, { limit: 50, offset: (page - 1) * 50 }, signal), [page])
+  const { limit, offset } = series
+  const fetchGuide = useCallback((id: string, signal: AbortSignal) => getSeriesListeningGuide(id, { limit, offset }, signal), [limit, offset])
   const state = useEntity(series.id, fetchGuide, series.listening_guide)
   if (state.status === 'loading') return <p className="mt-12 text-sm text-dim" role="status">Loading listening guide...</p>
   if (state.status === 'error') return <p className="mt-12 text-sm text-dim">The listening guide could not be loaded. You can still open each work to compare its recordings.</p>

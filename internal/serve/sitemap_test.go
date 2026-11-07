@@ -469,6 +469,23 @@ func TestSitemapConditionalRequests(t *testing.T) {
 	}
 }
 
+// Validators issued before renderer revisions were tracked must not renew XML
+// that still carries the removed per-page lastmod values.
+func TestSitemapRejectsLegacyValidators(t *testing.T) {
+	srv, ts := newPageServerFrom(t, quietConfig(t, artifacttest.Fixture(), markedShells))
+	for _, path := range []string{sitemapIndexPath, "/sitemaps/works-0.xml"} {
+		legacy := `W/"` + strings.NewReplacer(`"`, "", `\`, "").Replace(srv.current().Version()+"/"+srv.cfg.SiteURL+path) + `"`
+		resp := conditionalGet(t, ts.URL+path, legacy)
+		defer func() { _ = resp.Body.Close() }()
+		if resp.StatusCode != http.StatusOK {
+			t.Errorf("%s with a legacy validator = %d, want 200", path, resp.StatusCode)
+		}
+		if resp.Header.Get("ETag") == legacy {
+			t.Errorf("%s renewed a validator that predates renderer tracking", path)
+		}
+	}
+}
+
 // TestSitemapErrorIsTemporaryAndNotStored pins that public caching belongs to a
 // successfully composed document. A read failure has no validator, has no-store
 // and Retry-After,
