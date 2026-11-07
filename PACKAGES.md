@@ -881,7 +881,8 @@ compound's COUNT form must wrap a subquery, so it is pinned by its own positive
 EXPLAIN test instead). A third route table (`sitemapRoutes()`) registered
 unconditionally - a sitemap needs no shell, so an API-only deployment serves one
 too - with gzip, no CORS, `Cache-Control: public, max-age=3600` and an ETag over
-the artifact's identity plus the origin, both landing on the 304 and the composed
+the artifact, origin, document and renderer identity (an explicit XML version,
+plus the binary's VCS revision when stamped), both landing on the 304 and the composed
 200 ONLY (a query or render failure in between - a hot swap closing the db
 mid-request - would otherwise ship an error body under an hour of public caching
 and the document's own validator, which a shared cache then 304-renews for the

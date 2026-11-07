@@ -2110,7 +2110,7 @@
           },
           "limit": {
             "type": "integer",
-            "description": "The window that was applied. 0 means the whole series was returned - the default."
+            "description": "The page size that was applied, default 50 and at most 100."
           },
           "offset": {
             "type": "integer"

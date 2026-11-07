@@ -169,9 +169,9 @@ func pageIdentity(shellName, shellHTML, siteURL, revision string) string {
 
 // buildRevision is the commit this binary was built from, or "" when the
 // toolchain stamped none - a `go run`, a test binary, a -buildvcs=false build.
-// Empty is honest rather than an error: the validator then rests on the two
-// components that are always there, and an unstamped binary is not what a
-// crawler's cached copy faces (the released image is built from a checkout).
+// Docker builds also omit .git and therefore use the empty fallback. Entity
+// validators then depend on the shell name, bytes and origin; Go-only renderer
+// changes cannot invalidate them unless the shell also changes.
 var buildRevision = sync.OnceValue(func() string {
 	info, ok := debug.ReadBuildInfo()
 	if !ok {

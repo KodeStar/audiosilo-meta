@@ -848,7 +848,6 @@ type recordingView struct {
 	ID          string
 	Narrators   []query.PersonRef
 	Runtime     string
-	Abridged    bool
 	Publisher   string
 	ReleaseYear string
 	Codes       []codeView
@@ -927,8 +926,8 @@ func newWorkView(d *query.WorkDetail) workView {
 	for _, rec := range d.Recordings {
 		rv := recordingView{
 			ID: rec.ID, Narrators: rec.Narrators, Runtime: formatRuntime(rec.RuntimeMin),
-			Abridged: rec.Abridged, Publisher: rec.Publisher,
-			Language: known(rec.Language), Abridgement: abridgementLabel(rec.Abridgement), Release: known(rec.ReleaseDate), ChaptersURL: chaptersPath(d.ID, rec.ID),
+			Publisher: rec.Publisher,
+			Language:  known(rec.Language), Abridgement: abridgementLabel(rec.Abridgement), Release: known(rec.ReleaseDate), ChaptersURL: chaptersPath(d.ID, rec.ID),
 			// query.PublishedYear (pkg/query/abs.go) is the one date-to-year rule,
 			// so the fact sheet and the ABS facade cannot read one date two ways: a
 			// value it does not recognize as a year renders as stated rather than
