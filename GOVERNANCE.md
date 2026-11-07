@@ -489,6 +489,15 @@ contributor's own text, and the steward only closes an issue once the pull
 request that answers it has merged.
 Composing recaps or character cards itself would be writing CC BY-SA prose from
 recollection, which the grounding rule there does not accept.
+When a data release retires a work slug the layer is keyed by, the steward may
+also open a mechanical re-key pull request (the maintainer's decision of
+2026-11-07). It renames each such entry to the surviving work (the entry key
+and its members' `work` fields only, never prose), is built by the service
+rather than the agent, and merges through the same gate. A survivor that
+already has an entry is a collision, left for a person since merging the two is
+prose. No fix of any kind touches a re-key pull request: whatever stops it (a
+flag, a failing check or status, a conflict) it too waits for a person (the
+service still rebuilds it from `main` when `main` moves).
 
 **Kill switch.** The steward is off unless `SYNC_STEWARD=on`, and each
 repository it looks after is named in its configuration (the community layer
