@@ -107,6 +107,44 @@ func TestSeriesListeningGuideBoundsAndFacts(t *testing.T) {
 	}
 }
 
+func TestSeriesListeningGuideMatchesAPITiesWithoutPositionIndex(t *testing.T) {
+	cat := &model.Catalog{Series: []*model.Series{{ID: "ties", Name: "Ties", License: "CC0-1.0"}}}
+	// Work-ID order deliberately places a range before its equal numeric start.
+	for i, position := range []string{"1-3", "1", "1.5-2", "1.5", "1.5", "2"} {
+		id := fmt.Sprintf("work-%d", i)
+		cat.Works = append(cat.Works, &model.Work{ID: id, Title: id, License: "CC0-1.0"})
+		cat.Series[0].Works = append(cat.Series[0].Works, model.SeriesWork{Work: id, Position: position})
+	}
+	for _, indexed := range []bool{false, true} {
+		t.Run(fmt.Sprintf("indexed=%t", indexed), func(t *testing.T) {
+			path := artifacttest.Build(t, cat)
+			if !indexed {
+				path = artifacttest.Altered(t, cat, 11, "ALTER TABLE recordings DROP COLUMN abridgement", "DROP INDEX idx_series_works_position")
+			}
+			snap := openTestDB(t, path)
+			want := []string{"work-1", "work-0", "work-3", "work-4", "work-2", "work-5"}
+			for offset := 0; offset < len(want); offset += 2 {
+				api, err := snap.Series("ties", 2, offset)
+				if err != nil {
+					t.Fatal(err)
+				}
+				guide, err := snap.SeriesListeningGuide(t.Context(), "ties", 2, offset)
+				if err != nil {
+					t.Fatal(err)
+				}
+				if len(api.Works) != 2 || len(guide.Entries) != 2 {
+					t.Fatalf("offset %d: API %d, guide %d entries", offset, len(api.Works), len(guide.Entries))
+				}
+				for i, entry := range guide.Entries {
+					if entry.Work.ID != want[offset+i] || api.Works[i].Work.ID != entry.Work.ID || api.Works[i].Position != entry.Position {
+						t.Errorf("offset %d entry %d: API %+v, guide %+v, want %s", offset, i, api.Works[i], entry, want[offset+i])
+					}
+				}
+			}
+		})
+	}
+}
+
 func TestPersonRecordingsPreservesVersionsAndFilters(t *testing.T) {
 	snap := openTestDB(t, artifacttest.Build(t, catalogueFixture()))
 	page, err := snap.PersonRecordings(t.Context(), "reader", 1000, 0, "", "")

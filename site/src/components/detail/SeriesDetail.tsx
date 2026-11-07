@@ -204,7 +204,7 @@ function Loaded({ series, hydrated }: { series: Series; hydrated: boolean }) {
           {watching ? (
             <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
               <span className="text-dim">
-                {ownedHere} of {series.works.length} marked as yours
+                {ownedHere} of {series.works.length} on this page marked as yours
               </span>
               <button
                 type="button"
@@ -213,14 +213,14 @@ function Loaded({ series, hydrated }: { series: Series; hydrated: boolean }) {
                 }
                 className={`${TEXT_LINK} font-medium`}
               >
-                Mark all as owned
+                Mark this page as owned
               </button>
               <button
                 type="button"
                 onClick={() => save(clearOwned(store, series.id))}
                 className={`${TEXT_LINK} font-medium`}
               >
-                Clear
+                Clear all ownership
               </button>
             </div>
           ) : null}

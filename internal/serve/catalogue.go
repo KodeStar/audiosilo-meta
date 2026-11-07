@@ -354,7 +354,7 @@ func abridgementLabel(value string) string {
 }
 func chapterCountLabel(n int) string {
 	if n == 0 {
-		return "Unknown"
+		return "None catalogued"
 	}
 	return strconv.Itoa(n)
 }

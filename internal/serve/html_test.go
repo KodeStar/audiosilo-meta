@@ -17,6 +17,7 @@ import (
 	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
+	"github.com/kodestar/audiosilo-meta/internal/httpx"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/query"
 )
@@ -662,7 +663,7 @@ func TestEntityETagCoversTheDist(t *testing.T) {
 	}
 }
 
-// TestPageIdentityCoversEveryComponent pins the four inputs one page's identity
+// TestPageIdentityCoversEveryComponent pins the variable inputs one page's identity
 // is mixed from, each for a different way the rendered bytes can change while
 // the artifact does not: WHICH page it is, the dist, the origin every canonical
 // URL is built from, and the composer's own code.
@@ -697,6 +698,36 @@ func TestPageIdentityCoversEveryComponent(t *testing.T) {
 	// An unstamped binary (go run, a test binary) is honest, not an error.
 	if pageIdentity(shellName, shellHTML, siteURL, "") == "" {
 		t.Error("an empty revision produced an empty identity")
+	}
+}
+
+func TestEntityPageRejectsUnversionedValidatorWithoutVCS(t *testing.T) {
+	cfg := quietConfig(t, artifacttest.Fixture(), markedShells)
+	srv, ts := newPageServerFrom(t, cfg)
+	raw, err := os.ReadFile(filepath.Join(cfg.Site, "work", "index.html"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	// Model a Docker build: identical shell, origin, and artifact, with no VCS
+	// stamp. The old identity had no explicit HTML renderer version.
+	sh := srv.shells.get("work/index.html")
+	sh.identity = pageIdentity("work/index.html", string(raw), cfg.SiteURL, "")
+	legacy := *sh
+	legacy.identity = httpx.Identity("work/index.html", string(raw), cfg.SiteURL, "")
+	oldETag := entityETag(srv.current(), &legacy, "project-hail-mary")
+	resp := artifacttest.GetNoFollowWith(t, ts.URL+"/works/project-hail-mary", map[string]string{"If-None-Match": oldETag})
+	if resp.StatusCode != http.StatusOK {
+		t.Fatalf("old unversioned validator got %d, want 200", resp.StatusCode)
+	}
+	if resp.Header.Get("ETag") == oldETag {
+		t.Error("old unversioned validator was reissued")
+	}
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !strings.Contains(string(body), "Project Hail Mary") {
+		t.Error("replacement response has no rendered entity")
 	}
 }
 

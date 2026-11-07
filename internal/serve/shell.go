@@ -144,7 +144,7 @@ func loadShells(dir, siteURL string, logger *log.Logger) shells {
 // same data release) leaves that page asking for hashed assets the server no
 // longer has, forever.
 //
-// Four components, mixed into one short hash at load because none of them
+// Five components, mixed into one short hash at load because none of them
 // changes for the life of the process:
 //
 //   - the PAGE's own name (its shell path): what distinguishes two pages that a
@@ -158,20 +158,25 @@ func loadShells(dir, siteURL string, logger *log.Logger) shells {
 //   - the configured site URL: every canonical link, og:url and JSON-LD url is
 //     built from it, so one artifact renders two different pages at two origins;
 //   - the binary's VCS revision: the COMPOSER's own code, which a fact-sheet or
-//     JSON-LD change moves without touching any of the above.
+//     JSON-LD change moves without touching any of the above;
+//   - the HTML renderer version: also invalidates unstamped builds when the
+//     representation changes, including Docker builds that omit .git.
 //
 // The digest is httpx.Identity's (length-prefixed fnv-64a - see there for why a
 // cache key needs no more; entityHandler is why a fabricated validator buys its
 // fabricator nothing).
 func pageIdentity(shellName, shellHTML, siteURL, revision string) string {
-	return httpx.Identity(shellName, shellHTML, siteURL, revision)
+	return httpx.Identity(shellName, shellHTML, siteURL, revision, htmlRendererVersion)
 }
+
+// Bump when Go-rendered HTML changes, so builds without a VCS revision also
+// invalidate cached entity pages.
+const htmlRendererVersion = "1"
 
 // buildRevision is the commit this binary was built from, or "" when the
 // toolchain stamped none - a `go run`, a test binary, a -buildvcs=false build.
-// Docker builds also omit .git and therefore use the empty fallback. Entity
-// validators then depend on the shell name, bytes and origin; Go-only renderer
-// changes cannot invalidate them unless the shell also changes.
+// Docker builds also omit .git and therefore use the empty fallback; the
+// explicit htmlRendererVersion covers renderer changes in those builds.
 var buildRevision = sync.OnceValue(func() string {
 	info, ok := debug.ReadBuildInfo()
 	if !ok {

@@ -10,6 +10,7 @@ import (
 
 	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/query"
 )
 
 func catalogueFixture() *model.Catalog {
@@ -249,32 +250,47 @@ func TestFactualPageMetadataDoesNotClaimCommunityLicensing(t *testing.T) {
 	if !strings.Contains(work, "None catalogued") {
 		t.Error("known zero chapter count labelled unknown")
 	}
+	for _, path := range []string{"/series/the-stormlight-archive", "/people/michael-kramer"} {
+		code, body := getPage(t, ts.URL, path)
+		if code != http.StatusOK || !strings.Contains(body, "<dt>Chapters</dt><dd>None catalogued</dd>") {
+			t.Errorf("%s: zero chapter summary is not labelled consistently (status %d)", path, code)
+		}
+	}
 }
 
 func TestSeriesHTMLPageTwoKeepsFractionalAndRangePositions(t *testing.T) {
 	cat := artifacttest.Fixture()
 	cat.Series[0].Works = nil
-	for i := 0; i < 52; i++ {
+	for i := 0; i < 54; i++ {
 		id := fmt.Sprintf("ordered-%02d", i)
 		position := fmt.Sprint(i + 1)
+		if i == 49 {
+			position = "50-52.5"
+		}
 		if i == 50 {
+			position = "50"
+		}
+		if i == 51 || i == 52 {
 			position = "50.5"
 		}
-		if i == 51 {
+		if i == 53 {
 			position = "51-52.5"
 		}
 		cat.Works = append(cat.Works, &model.Work{ID: id, Title: fmt.Sprintf("Ordered %02d", i), Language: "en", Authors: []string{"brandon-sanderson"}, License: "CC0-1.0"})
 		cat.Series[0].Works = append(cat.Series[0].Works, model.SeriesWork{Work: id, Position: position})
 	}
-	ts := newPageServer(t, cat, markedShells)
+	cfg := quietConfig(t, cat, markedShells)
+	// A supported older artifact has no numeric-position expression index.
+	cfg.DBPath = artifacttest.Altered(t, cat, 11, "ALTER TABLE recordings DROP COLUMN abridgement", "DROP INDEX idx_series_works_position")
+	_, ts := newPageServerFrom(t, cfg)
 	code, page := getPage(t, ts.URL, "/series/the-stormlight-archive?page=2")
 	if code != 200 {
 		t.Fatal(code)
 	}
 	var payload struct {
-		Works []struct{ Position string } `json:"works"`
+		Works []query.SeriesEntry `json:"works"`
 		Guide struct {
-			Entries       []struct{ Position string }
+			Entries       []query.ListeningGuideEntry
 			WorksTotal    int `json:"works_total"`
 			Limit, Offset int
 		} `json:"listening_guide"`
@@ -282,13 +298,26 @@ func TestSeriesHTMLPageTwoKeepsFractionalAndRangePositions(t *testing.T) {
 	if err := json.Unmarshal([]byte(entityPayload(t, page)), &payload); err != nil {
 		t.Fatal(err)
 	}
-	if len(payload.Works) != 2 || payload.Works[0].Position != "50.5" || payload.Works[1].Position != "51-52.5" {
+	if len(payload.Works) != 4 || payload.Works[0].Position != "50-52.5" || payload.Works[1].Position != "50.5" || payload.Works[2].Position != "50.5" || payload.Works[3].Position != "51-52.5" {
 		t.Fatalf("base membership page %+v", payload.Works)
 	}
-	if len(payload.Guide.Entries) != 2 || payload.Guide.Entries[0].Position != "50.5" || payload.Guide.Entries[1].Position != "51-52.5" || payload.Guide.WorksTotal != 52 || payload.Guide.Limit != 50 || payload.Guide.Offset != 50 {
+	if len(payload.Guide.Entries) != 4 || payload.Guide.WorksTotal != 54 || payload.Guide.Limit != 50 || payload.Guide.Offset != 50 {
 		t.Fatalf("guide page %+v", payload.Guide)
 	}
-	if !strings.Contains(page, "Showing 2 of 52 titles") || !strings.Contains(page, "No recording catalogued") || strings.Contains(page, "Ordered 49") {
+	apiResp := artifacttest.GetNoFollow(t, ts.URL, "/api/v1/series/the-stormlight-archive?limit=50&offset=50")
+	var api query.SeriesDetail
+	if err := json.NewDecoder(apiResp.Body).Decode(&api); err != nil {
+		t.Fatal(err)
+	}
+	if apiResp.StatusCode != http.StatusOK || len(api.Works) != len(payload.Works) {
+		t.Fatalf("API status %d, %d members; HTML has %d", apiResp.StatusCode, len(api.Works), len(payload.Works))
+	}
+	for i, entry := range payload.Guide.Entries {
+		if entry.Work.ID != payload.Works[i].Work.ID || entry.Work.ID != api.Works[i].Work.ID || entry.Position != api.Works[i].Position {
+			t.Errorf("entry %d differs between guide, HTML membership and API: %+v, %+v, %+v", i, entry, payload.Works[i], api.Works[i])
+		}
+	}
+	if !strings.Contains(page, "Showing 4 of 54 titles") || !strings.Contains(page, "No recording catalogued") || strings.Contains(page, "Ordered 50") {
 		t.Error("page does not describe its visible bounded membership")
 	}
 }

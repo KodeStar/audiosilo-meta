@@ -118,6 +118,23 @@ func packValid() map[string]string {
 	}
 }
 
+func TestPackLoadRejectsUnknownRecordingField(t *testing.T) {
+	files := packValid()
+	files["works/0/0.json"] = packOf(map[string]string{
+		"book-one": composite(pkWorkOne, map[string]string{
+			"rec-one": strings.Replace(pkRecOne, `"abridged":false`, `"abridgde":false`, 1),
+		}),
+	})
+	dir := t.TempDir()
+	writeTree(t, dir, files)
+	res := Load(dir)
+	// Raw schema validation precedes Recording.UnmarshalJSON, whose custom
+	// decoder alone would otherwise discard an unknown member.
+	if res.OK() || !hasProblem(res.Problems, "works/0/0.json: entry book-one: recording rec-one: (root): additional properties 'abridgde' not allowed") {
+		t.Fatalf("unknown recording field was not rejected by the schema:\n%s", joinProblems(res.Problems))
+	}
+}
+
 func hasProblem(ps []Problem, want string) bool {
 	for _, p := range ps {
 		if strings.Contains(p.String(), want) {
