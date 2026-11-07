@@ -6,6 +6,7 @@ import (
 	"net/url"
 	"sort"
 	"strconv"
+	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/httpx"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -70,6 +71,92 @@ func newPagination(path string, page, total, size int) paginationView {
 	return v
 }
 
+// Directory query ordering comes from url.Values.Encode: letter, page, q.
+func browseURL(path string, filters query.BrowseFilters, page int) string {
+	values := url.Values{}
+	if filters.Query != "" {
+		values.Set("q", filters.Query)
+	}
+	if filters.Letter != "" {
+		values.Set("letter", filters.Letter)
+	}
+	if page > 1 {
+		values.Set("page", strconv.Itoa(page))
+	}
+	if encoded := values.Encode(); encoded != "" {
+		return path + "?" + encoded
+	}
+	return path
+}
+
+func readBrowseFilters(r *http.Request) (query.BrowseFilters, bool) {
+	if len(r.URL.RawQuery) > 8192 {
+		return query.BrowseFilters{}, false
+	}
+	values, err := url.ParseQuery(r.URL.RawQuery)
+	if err != nil {
+		return query.BrowseFilters{}, false
+	}
+	for _, key := range []string{"q", "letter"} {
+		if len(values[key]) > 1 {
+			return query.BrowseFilters{}, false
+		}
+	}
+	filters, err := query.NormalizeBrowseFilters(query.BrowseFilters{Query: values.Get("q"), Letter: values.Get("letter")})
+	return filters, err == nil
+}
+
+func directoryLetters(path string, filters query.BrowseFilters) []directoryLink {
+	labels := []string{"All", "0-9"}
+	for c := 'A'; c <= 'Z'; c++ {
+		labels = append(labels, string(c))
+	}
+	labels = append(labels, "Other")
+	links := make([]directoryLink, 0, len(labels))
+	for _, label := range labels {
+		letter := label
+		if label == "All" {
+			letter = ""
+		}
+		links = append(links, directoryLink{URL: browseURL(path, query.BrowseFilters{Query: filters.Query, Letter: letter}, 1), Title: label, Detail: letter})
+	}
+	return links
+}
+
+type directoryPageLink struct {
+	URL          string
+	Number       int
+	Current, Gap bool
+}
+type directoryPagination struct {
+	Path, Previous, Next, First, Last string
+	Page, Pages                       int
+	Filters                           query.BrowseFilters
+	Links                             []directoryPageLink
+}
+
+func newDirectoryPagination(path string, filters query.BrowseFilters, page, total int) directoryPagination {
+	v := directoryPagination{Path: path, Page: page, Pages: max(1, (total+cataloguePageSize-1)/cataloguePageSize), Filters: filters}
+	if page > 1 {
+		v.Previous, v.First = browseURL(path, filters, page-1), browseURL(path, filters, 1)
+	}
+	if page < v.Pages {
+		v.Next, v.Last = browseURL(path, filters, page+1), browseURL(path, filters, v.Pages)
+	}
+	previous := 0
+	for n := 1; n <= v.Pages; n++ {
+		if n != 1 && n != v.Pages && (n < page-2 || n > page+2) {
+			continue
+		}
+		if previous > 0 && n > previous+1 {
+			v.Links = append(v.Links, directoryPageLink{Gap: true})
+		}
+		v.Links = append(v.Links, directoryPageLink{URL: browseURL(path, filters, n), Number: n, Current: n == page})
+		previous = n
+	}
+	return v
+}
+
 type directoryFamily struct {
 	Slug, Title, Description string
 	Family                   query.PageFamily
@@ -99,8 +186,11 @@ type browseView struct {
 	CurrentURL                  string
 	Directories                 []directoryLink
 	Entries                     []directoryLink
-	Pagination                  paginationView
 	Index                       bool
+	Filters                     query.BrowseFilters
+	Letters                     []directoryLink
+	Filtered                    bool
+	Navigation                  directoryPagination
 }
 
 func (s *Server) browseHandler(family *directoryFamily) http.HandlerFunc {
@@ -120,10 +210,15 @@ func (s *Server) browseHandler(family *directoryFamily) http.HandlerFunc {
 			s.pageError(w, http.StatusBadRequest, "Invalid page number.")
 			return
 		}
+		filters, valid := readBrowseFilters(r)
+		if !valid {
+			s.pageError(w, http.StatusBadRequest, "Invalid directory filters. Search is limited to 256 bytes; choose All, A-Z, 0-9 or Other.")
+			return
+		}
 		path := "/browse"
-		view := browseView{Title: "Browse the audiobook catalogue", Description: "Find audiobooks, series, authors, narrators and community guides through the catalogue directories.", Index: family == nil}
+		view := browseView{Title: "Browse the audiobook catalogue", Description: "Find audiobooks, series, authors, narrators and community guides through the catalogue directories.", Index: family == nil, Filters: filters, Filtered: filters.Query != "" || filters.Letter != ""}
 		for _, f := range directoryFamilies {
-			view.Directories = append(view.Directories, directoryLink{URL: path + "/" + f.Slug, Title: f.Title, Detail: f.Description})
+			view.Directories = append(view.Directories, directoryLink{URL: browseURL(path+"/"+f.Slug, filters, 1), Title: f.Title, Detail: f.Description})
 		}
 		if family == nil {
 			if page != 1 {
@@ -133,8 +228,9 @@ func (s *Server) browseHandler(family *directoryFamily) http.HandlerFunc {
 			view.Entries = view.Directories
 		} else {
 			path += "/" + family.Slug
-			view.CurrentURL = path
-			result, err := snap.Browse(r.Context(), family.Family, cataloguePageSize, (page-1)*cataloguePageSize)
+			view.CurrentURL = browseURL(path, filters, 1)
+			view.Letters = directoryLetters(path, filters)
+			result, err := snap.BrowseFiltered(r.Context(), family.Family, filters, cataloguePageSize, (page-1)*cataloguePageSize)
 			if err != nil {
 				s.log.Printf("serve: rendering %q failed: %v", r.URL.Path, err)
 				s.pageUnavailable(w)
@@ -146,13 +242,17 @@ func (s *Server) browseHandler(family *directoryFamily) http.HandlerFunc {
 			}
 			view.Title, view.Description = family.Title, family.Description
 			view.Caption = countCaption(len(result.Entries), result.Total, "entry", "entries")
-			view.Pagination = newPagination(path, page, result.Total, cataloguePageSize)
+			view.Navigation = newDirectoryPagination(path, filters, page, result.Total)
 			for _, entry := range result.Entries {
 				view.Entries = append(view.Entries, directoryLink{URL: family.Prefix + url.PathEscape(entry.ID) + family.Suffix, Title: entry.Title, Detail: entry.Language})
 			}
 		}
-		if r.URL.RawQuery != pageQuery(page) {
-			writeRedirectPageLocation(w, path+querySuffix(page))
+		if family == nil {
+			filters = query.BrowseFilters{}
+		}
+		location := browseURL(path, filters, page)
+		if r.URL.RawQuery != strings.TrimPrefix(strings.TrimPrefix(location, path), "?") {
+			writeRedirectPageLocation(w, location)
 			return
 		}
 		sheet, err := renderTemplate("browse", view)
@@ -160,9 +260,9 @@ func (s *Server) browseHandler(family *directoryFamily) http.HandlerFunc {
 			s.pageUnavailable(w)
 			return
 		}
-		canonical := s.cfg.SiteURL + path + querySuffix(page)
-		doc := &entityPage{title: view.Title + " - " + siteName, description: view.Description, canonical: canonical, ogType: "website", image: ogImage(s.cfg.SiteURL, ""), jsonLD: catalogueJSONLD(view.Title, s.cfg.SiteURL, canonical, ""), factSheet: sheet}
-		etag := entityETag(snap, sh, path+querySuffix(page))
+		canonical := s.cfg.SiteURL + location
+		doc := &entityPage{title: view.Title + " - " + siteName, description: view.Description, canonical: canonical, ogType: "website", image: ogImage(s.cfg.SiteURL, ""), jsonLD: catalogueJSONLD(view.Title, s.cfg.SiteURL, canonical, ""), factSheet: sheet, noindex: filters.Query != ""}
+		etag := entityETag(snap, sh, location)
 		if httpx.MatchesETag(r.Header.Get("If-None-Match"), etag) {
 			s.writePage(w, r, sh, nil, etag)
 			return
@@ -354,12 +454,15 @@ func seriesNarratorContinuity(guide *query.SeriesListeningGuide) []continuityVie
 
 const catalogueTemplates = `
 {{define "pagination"}}{{if gt .Pages 1}}<nav aria-label="Pagination"><p>Page {{.Page}} of {{.Pages}}</p>{{if .Previous}}<a rel="prev" href="{{.Previous}}">Previous page</a>{{end}} {{if .Next}}<a rel="next" href="{{.Next}}">Next page</a>{{end}}</nav>{{end}}{{end}}
+{{define "directory-pagination"}}<div class="directory-pagination"><nav aria-label="Directory pagination"><p>Page {{.Page}} of {{.Pages}}</p>{{if gt .Pages 1}}<div class="directory-page-links">{{if .First}}<a href="{{.First}}">First</a><a rel="prev" href="{{.Previous}}">Previous page</a>{{end}}{{range .Links}}{{if .Gap}}<span aria-hidden="true">…</span>{{else}}<a href="{{.URL}}" aria-label="Page {{.Number}}"{{if .Current}} aria-current="page"{{end}}>{{.Number}}</a>{{end}}{{end}}{{if .Last}}<a rel="next" href="{{.Next}}">Next page</a><a href="{{.Last}}">Last</a>{{end}}</div><form method="get" action="{{.Path}}" class="directory-jump">{{if .Filters.Query}}<input type="hidden" name="q" value="{{.Filters.Query}}">{{end}}{{if .Filters.Letter}}<input type="hidden" name="letter" value="{{.Filters.Letter}}">{{end}}<label>Go to page <input name="page" type="number" min="1" max="{{.Pages}}" value="{{.Page}}" required></label><button type="submit">Go</button></form>{{end}}</nav></div>{{end}}
 {{define "browse"}}<section class="container catalogue-directory" aria-labelledby="directory-title">
 <header class="directory-header"><p class="directory-eyebrow">Explore the catalogue</p><h1 id="directory-title">{{.Title}}</h1><p class="directory-description">{{.Description}}</p></header>
 <nav class="directory-nav" aria-label="Catalogue directories"><a href="/browse"{{if .Index}} aria-current="page"{{end}}>All directories</a>{{range .Directories}}<a href="{{.URL}}"{{if eq .URL $.CurrentURL}} aria-current="page"{{end}}>{{.Title}}</a>{{end}}</nav>
-<div class="directory-results"><h2>{{if .Index}}Choose a directory{{else}}In this directory{{end}}</h2><p>{{if .Index}}5 directories{{else}}{{.Caption}}{{end}}</p></div>
-{{if .Entries}}<ul class="directory-grid{{if .Index}} directory-grid-index{{end}}">{{range .Entries}}<li><a class="directory-card" href="{{.URL}}"><span><span class="directory-card-title">{{.Title}}</span>{{if .Detail}}<span class="directory-card-detail">{{.Detail}}</span>{{end}}</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></li>{{end}}</ul>{{else}}<p class="directory-empty">No entries are catalogued in this directory yet.</p>{{end}}
-<div class="directory-pagination">{{template "pagination" .Pagination}}</div></section>{{end}}
+{{if not .Index}}<div class="directory-filters"><form method="get" action="{{.Navigation.Path}}" class="directory-search"><label for="directory-search">Search this directory</label><div><input id="directory-search" name="q" type="search" value="{{.Filters.Query}}" maxlength="256" placeholder="Search {{.Title}}">{{if .Filters.Letter}}<input type="hidden" name="letter" value="{{.Filters.Letter}}">{{end}}<button type="submit">Search</button></div></form><nav class="directory-letters" aria-label="Filter by first letter">{{range .Letters}}<a href="{{.URL}}"{{if eq .Detail $.Filters.Letter}} aria-current="page"{{end}}>{{.Title}}</a>{{end}}</nav><p class="directory-filter-help">Sorted by title or name as written. A-Z groups English letters; 0-9 groups numbers; Other includes punctuation and other scripts.{{if .Filtered}} <a href="{{.Navigation.Path}}">Clear filters</a>{{end}}</p></div>{{end}}
+<div class="directory-results"><h2>{{if .Index}}Choose a directory{{else if .Filtered}}Matching entries{{else}}In this directory{{end}}</h2><p>{{if .Index}}5 directories{{else}}{{.Caption}}{{end}}</p></div>
+{{if not .Index}}{{template "directory-pagination" .Navigation}}{{end}}
+{{if .Entries}}<ul class="directory-grid{{if .Index}} directory-grid-index{{end}}">{{range .Entries}}<li><a class="directory-card" href="{{.URL}}"><span><span class="directory-card-title">{{.Title}}</span>{{if .Detail}}<span class="directory-card-detail">{{.Detail}}</span>{{end}}</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></li>{{end}}</ul>{{else}}<p class="directory-empty">{{if .Filtered}}No entries match these filters. Try another search or <a href="{{.Navigation.Path}}">clear filters</a>.{{else}}No entries are catalogued in this directory yet.{{end}}</p>{{end}}
+{{if not .Index}}{{template "directory-pagination" .Navigation}}{{end}}</section>{{end}}
 {{define "chapters"}}<section class="container"><h1>{{.Title}} chapters</h1><p><a href="{{.WorkURL}}">About this audiobook</a> · <a href="{{.RecordingURL}}">Recording details</a></p><p>Recording {{.RecordingID}}{{if .Narrators}} · Narrated by {{.Narrators}}{{end}}</p><p>{{.Caption}}</p>{{if .Chapters}}<table><caption>Chapter titles and times</caption><thead><tr><th scope="col">Chapter</th><th scope="col">Title</th><th scope="col">Start</th><th scope="col">Duration</th></tr></thead><tbody>{{range .Chapters}}<tr><td>{{.Number}}</td><th scope="row">{{.Title}}</th><td>{{.Start}}</td><td>{{.Duration}}</td></tr>{{end}}</tbody></table>{{else}}<p>No chapter navigation is catalogued for this recording.</p>{{end}}{{template "pagination" .Pagination}}</section>{{end}}
 {{define "summary"}}<a href="{{.URL}}">Recording {{.ID}}</a><dl><dt>Narrators</dt><dd>{{.Narrators}}</dd><dt>Language</dt><dd>{{.Language}}</dd><dt>Abridgement</dt><dd>{{.Abridgement}}</dd><dt>Runtime</dt><dd>{{.Runtime}}</dd><dt>Released</dt><dd>{{.Release}}</dd><dt>Publisher</dt><dd>{{.Publisher}}</dd><dt>Chapters</dt><dd>{{.Chapters}}</dd></dl>{{end}}
 {{define "listening-guide"}}<section id="listening-guide"><h2>Series listening guide</h2><p>Compare the catalogued recordings in series order. Choose a recording for each work to plan your listening time. Unknown runtimes and unselected works leave the plan partial. Retailer links do not state availability.</p><h3>Narrator continuity</h3>{{if .Continuity}}<ul>{{range .Continuity}}<li><a href="/people/{{.Person.ID}}">{{.Person.Name}}</a> is credited on {{.Works}} works among the choices on this page.</li>{{end}}</ul>{{else}}<p>No recurring narrator credit among the choices on this page.</p>{{end}}{{range .ListeningEntries}}<article><h3>{{if .Position}}{{.Position}}. {{end}}<a href="/works/{{.Work.ID}}">{{.Work.Title}}</a></h3>{{if .Recordings}}{{range .Recordings}}<div>{{template "summary" .}}</div>{{end}}{{if gt .Total .Limit}}<p>Showing {{.Limit}} of {{.Total}} recordings. <a href="/works/{{.Work.ID}}">Compare every recording</a>.</p>{{end}}{{else}}<p>No recording catalogued.</p>{{end}}</article>{{else}}<p>No works have been added to this series yet.</p>{{end}}{{template "pagination" .Pagination}}</section>{{end}}

@@ -200,7 +200,11 @@ window is asked for, because the player's series rail is composed from the full
 list.
 
 The website also has a linked `/browse` directory for audiobooks, series, people
-and existing community guides, with 50 entries per page. Work pages compare
+and existing community guides, with 50 entries per page. Each directory has a
+GET search form, composable A-Z/0-9/Other filters, numbered page links and a
+page-number jump. Entries sort by their displayed title or name, with punctuation
+and non-ASCII initials reachable under Other. Search pages are noindex; letter
+pages retain their own canonical URLs. Work pages compare
 recording facts and link to a chapter navigation page for each recording with
 chapter marks (100 rows per page). Series listening guides show up to five
 recording alternatives per work, and the planner counts only explicitly chosen

@@ -829,15 +829,23 @@ split), and `pageIdentity` mixes in the shell's NAME so a work and its guides
 can never share a validator.
 **Ordinary links also reach the catalogue** (`catalogue.go`): `/browse` links
 five directories at `/browse/{works|series|people|recaps|characters}?page=N`.
-Each directory uses 50 stable id-ordered entries, real previous/next anchors,
-and a meaningful empty state. The homepage/header/footer link to `/browse`.
+Each directory uses 50 display-title/name entries (SQLite NOCASE, then id),
+a native GET search form and composable A-Z/0-9/Other filters. All initials
+remain reachable; Other includes punctuation and non-ASCII scripts. First/last,
+nearby numbered links and a page jump appear above and below the results.
+Filters survive paging and directory changes; search or letter changes reset
+the page. Repeated/invalid parameters and oversized searches return 400;
+normalized URLs use deterministic letter/page/q ordering. Filtered content has
+its own canonical and ETag; nonempty searches are noindex,follow. Optional
+NOCASE display indexes in unreleased artifact 12 accelerate new builds without
+being required by published schema 11 artifacts. The homepage/header/footer link to `/browse`.
 `/works/{id}/recordings/{recording}/chapters?page=N` uses 100 bounded chapter
 rows, validates the work/recording pair and page bounds, and displays title,
 start and duration. Empty chapter lists remain useful pages for real recordings;
 unknown recordings are 404. Retired work slugs preserve the recording suffix and
 pagination, canonical redirects omit page 1 and tracking parameters, and ETags
-include both recording identity and page. These HTML reads use `DB.Browse` and
-`DB.RecordingChapters`, with no unnecessary public JSON endpoints.
+include both recording identity and page. These HTML reads use `DB.BrowseFiltered` and
+`DB.RecordingChapters`; the exported `DB.Browse` retains its id-order contract, with no unnecessary public JSON endpoints.
 Work pages compare recordings beside the detailed cards, with stable
 `#recording-{id}` links, chapter navigation and explicit unknowns. Series pages
 show bounded recording alternatives and link to all versions on the work.

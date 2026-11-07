@@ -82,6 +82,8 @@ CREATE INDEX idx_work_credits_work ON work_credits(work_id);
 -- language-scoped latest (internal/serve's lang filter) needed no index of its own:
 -- it narrows through this one for a minority language and scans for a majority one.
 CREATE INDEX idx_works_language ON works(language);
+-- Optional display-order directory indexes within the unreleased schema 12.
+CREATE INDEX idx_works_title_nocase ON works(title COLLATE NOCASE, id);
 
 CREATE TABLE recordings (
   work_id      TEXT NOT NULL,
@@ -207,6 +209,8 @@ CREATE TABLE people (
   death_year         INTEGER
 );
 
+CREATE INDEX idx_people_name_nocase ON people(name COLLATE NOCASE, id);
+
 CREATE TABLE series (
   id       TEXT PRIMARY KEY,
   name     TEXT NOT NULL,
@@ -225,6 +229,7 @@ CREATE TABLE series (
 -- A series page lists its whole ordering family: the primary plus every series
 -- whose ordering_of names it, which is this index.
 CREATE INDEX idx_series_ordering_of ON series(ordering_of);
+CREATE INDEX idx_series_name_nocase ON series(name COLLATE NOCASE, id);
 CREATE TABLE series_works (series_id TEXT NOT NULL, work_id TEXT NOT NULL, position TEXT NOT NULL);
 CREATE INDEX idx_series_works_work ON series_works(work_id);
 -- GET /series/{id} reads both of these by series_id; measurement found the same
