@@ -253,16 +253,10 @@ func TestSitemapShardsCarryEveryEntityURL(t *testing.T) {
 	if strings.Join(locs, "\n") != strings.Join(want, "\n") {
 		t.Errorf("works locs =\n%s\nwant\n%s", strings.Join(locs, "\n"), strings.Join(want, "\n"))
 	}
-	// project-hail-mary is the one fixture work with an added_at; the other three
-	// carry none and must state none rather than a fabricated date.
+	// Creation dates do not establish content revision dates.
 	for _, u := range works.URLs {
-		switch {
-		case strings.HasSuffix(u.Loc, "/project-hail-mary"):
-			if u.LastMod != "2026-07-10T00:00:00Z" {
-				t.Errorf("phm lastmod = %q, want its added_at", u.LastMod)
-			}
-		case u.LastMod != "":
-			t.Errorf("%s states lastmod %q for a record with no added_at", u.Loc, u.LastMod)
+		if u.LastMod != "" {
+			t.Errorf("%s states unsupported lastmod %q", u.Loc, u.LastMod)
 		}
 	}
 
@@ -475,26 +469,28 @@ func TestSitemapConditionalRequests(t *testing.T) {
 	}
 }
 
-// TestSitemapErrorCarriesNoCacheHeaders is the ordering rule: the validator and
-// the hour of public caching belong to a document that was actually composed. A
-// 500 - here a hot swap closing the db out from under the request - must carry
-// neither, or a shared cache would store the error and then 304-renew it under
-// the document's own ETag for the life of the release.
-func TestSitemapErrorCarriesNoCacheHeaders(t *testing.T) {
+// TestSitemapErrorIsTemporaryAndNotStored pins that public caching belongs to a
+// successfully composed document. A read failure has no validator, has no-store
+// and Retry-After,
+// and cannot be renewed into a successful sitemap.
+func TestSitemapErrorIsTemporaryAndNotStored(t *testing.T) {
 	srv, ts := newPageServerFrom(t, quietConfig(t, artifacttest.Fixture(), markedShells))
 	// The stats are already loaded, so the shard still EXISTS - the failure lands
 	// where the document is rendered, which is the path under test.
 	_ = srv.current().Close()
 
 	code, body, hdr := getSitemap(t, ts.URL, "/sitemaps/works-0.xml")
-	if code != http.StatusInternalServerError {
-		t.Fatalf("shard over a closed db = %d, want 500\n%s", code, body)
+	if hdr.Get("Retry-After") == "" {
+		t.Error("temporary failure carries no Retry-After")
+	}
+	if code != http.StatusServiceUnavailable {
+		t.Fatalf("shard over a closed db = %d, want 503\n%s", code, body)
 	}
 	if etag := hdr.Get("ETag"); etag != "" {
-		t.Errorf("the 500 carries validator %q: a cache could revalidate the error into a 304", etag)
+		t.Errorf("the 503 carries validator %q: a cache could revalidate the error into a 304", etag)
 	}
-	if cc := hdr.Get("Cache-Control"); cc != "" {
-		t.Errorf("the 500 carries Cache-Control %q, want none", cc)
+	if cc := hdr.Get("Cache-Control"); cc != "no-store" {
+		t.Errorf("the temporary failure carries Cache-Control %q, want no-store", cc)
 	}
 }
 
@@ -673,15 +669,15 @@ func TestW3CDate(t *testing.T) {
 	}
 }
 
-// TestSitemapNormalizesADateOnlyAddedAt: an added_at stamped by the importer is
+// TestSitemapOmitsCreationDates: an added_at stamped by the importer is
 // a bare date, and it travels into the document as one.
-func TestSitemapNormalizesADateOnlyAddedAt(t *testing.T) {
+func TestSitemapOmitsCreationDates(t *testing.T) {
 	cat := seriesLessCatalog()
 	cat.Works[0].AddedAt = "2026-08-01"
 	ts := sitemapServerWithoutStatic(t, cat)
 	_, body, _ := getSitemap(t, ts.URL, "/sitemaps/works-0.xml")
 	doc := parseURLSet(t, body)
-	if len(doc.URLs) != 1 || doc.URLs[0].LastMod != "2026-08-01" {
+	if len(doc.URLs) != 1 || doc.URLs[0].LastMod != "" {
 		t.Errorf("date-only added_at rendered as %+v", doc.URLs)
 	}
 }

@@ -108,3 +108,14 @@ func TestAnyValidator(t *testing.T) {
 		}
 	}
 }
+
+func TestNoArtifactIsTemporaryAndNeverStored(t *testing.T) {
+	rec := httptest.NewRecorder()
+	WriteNoArtifact(rec, 1500*time.Millisecond)
+	if rec.Code != http.StatusServiceUnavailable || rec.Header().Get("Retry-After") != "2" || rec.Header().Get("Cache-Control") != "no-store" {
+		t.Fatalf("status %d headers %v", rec.Code, rec.Header())
+	}
+	if !strings.Contains(rec.Body.String(), noArtifactMsg) {
+		t.Error("missing shared error message")
+	}
+}
