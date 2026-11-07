@@ -279,7 +279,7 @@ func TestCardCarriesLanguageOnEverySurface(t *testing.T) {
 func TestMaxSchemaVersionIsTheNewestGate(t *testing.T) {
 	newest := max(sidecarSchemaVersion, summarySchemaVersion, genresSchemaVersion,
 		redirectSchemaVersion, descriptionSchemaVersion, languagesSchemaVersion, librivoxSchemaVersion, librivoxRecordingSchemaVersion, positionScaleSchemaVersion,
-		storeLinksSchemaVersion)
+		storeLinksSchemaVersion, abridgementSchemaVersion)
 	if MaxSchemaVersion != newest {
 		t.Errorf("MaxSchemaVersion = %d, the newest version gate is %d", MaxSchemaVersion, newest)
 	}

@@ -324,14 +324,17 @@ type RecordingLinks struct {
 
 // Recording is a specific narration/production of a work.
 type Recording struct {
-	ID          string   `json:"id"`
-	Work        string   `json:"work"`
-	Narrators   []string `json:"narrators"`
-	Abridged    bool     `json:"abridged"`
-	Language    string   `json:"language"`
-	RuntimeMin  int      `json:"runtime_min,omitempty"`
-	ReleaseDate string   `json:"release_date,omitempty"`
-	Publisher   string   `json:"publisher,omitempty"`
+	ID        string   `json:"id"`
+	Work      string   `json:"work"`
+	Narrators []string `json:"narrators"`
+	Abridged  bool     `json:"abridged"`
+	// AbridgedKnown preserves an explicitly stated false. A true Abridged value
+	// always states abridgement, including values built by older Go callers.
+	AbridgedKnown bool   `json:"-"`
+	Language      string `json:"language"`
+	RuntimeMin    int    `json:"runtime_min,omitempty"`
+	ReleaseDate   string `json:"release_date,omitempty"`
+	Publisher     string `json:"publisher,omitempty"`
 	// Publishers holds the other regions' imprints of this same production;
 	// Publisher above stays the publisher of record.
 	Publishers []RegionPublisher `json:"publishers,omitempty"`
