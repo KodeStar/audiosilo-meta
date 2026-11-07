@@ -14,6 +14,8 @@ import {
   type Chapter,
   type Series,
 } from '../../lib/api'
+import { abridgementLabel, isRecordingHash } from '../../lib/catalogue'
+import RecordingComparison from './RecordingComparison'
 import { formatReleaseDate } from '../../lib/dates'
 import {
   guessRegions,
@@ -272,7 +274,7 @@ function RecordingCard({
   const runtime = formatRuntime(recording.runtime_min)
   const released = formatReleaseDate(recording.release_date)
   return (
-    <article className="rounded-2xl border border-edge bg-surface p-5">
+    <article id={`recording-${recording.id}`} className="rounded-2xl border border-edge bg-surface p-5">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
           <h3 className="text-sm font-medium text-hi">
@@ -286,15 +288,16 @@ function RecordingCard({
             )}
           </h3>
         </div>
-        {recording.abridged ? (
+        {abridgementLabel(recording) !== 'Unknown' ? (
           <span className="shrink-0 rounded-full border border-edge bg-raised px-2.5 py-0.5 text-xs text-dim">
-            Abridged
+            {abridgementLabel(recording)}
           </span>
         ) : null}
       </div>
 
       <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
         {runtime ? <MetaItem label="Runtime" value={runtime} /> : null}
+        {recording.language ? <MetaItem label="Language" value={formatLanguage(recording.language) ?? recording.language} /> : null}
         {recording.release_date ? (
           <MetaItem label="Released" value={released ?? recording.release_date} />
         ) : null}
@@ -317,6 +320,9 @@ function RecordingCard({
         <ListenLinks links={recording.purchase_links} market={market} />
       ) : null}
 
+      {(recording.chapter_count ?? 0) > 0 ? (
+        <p className="mt-4 text-sm"><a data-chapter-link className={TEXT_LINK} href={href.chapters(workId, recording.id)}>Browse chapter titles, starts and durations</a></p>
+      ) : null}
       <ChapterList workId={workId} recording={recording} />
     </article>
   )
@@ -634,11 +640,14 @@ function GeneralPanel({
           <span className="ml-2 text-sm font-normal text-dim">{work.recordings?.length ?? 0}</span>
         </h2>
         {work.recordings && work.recordings.length > 0 ? (
+          <>
+          <RecordingComparison work={work} />
           <div className="mt-5 grid gap-5 xl:grid-cols-2">
             {work.recordings.map((r) => (
               <RecordingCard key={r.id} workId={work.id} recording={r} market={market} />
             ))}
           </div>
+          </>
         ) : (
           <p className="mt-5 rounded-xl border border-edge bg-surface px-6 py-10 text-center text-sm text-dim">
             No recordings have been catalogued for this work yet.
@@ -672,7 +681,8 @@ function Loaded({ work, hydrated }: { work: Work; hydrated: boolean }) {
   // when the reader flips to another work in the series.
   const [tab, selectTab] = useHashTab<WorkTab>(
     (hash) => tabFromHash(hash, { hasCharacters, hasRecaps }),
-    hashForTab
+    hashForTab,
+    (hash) => isRecordingHash(hash, work.recordings)
   )
 
   const tabHash = hashForTab(tab)
@@ -795,19 +805,17 @@ function Loaded({ work, hydrated }: { work: Work; hydrated: boolean }) {
                 ) : null}
               </div>
 
-              {tab === 'general' ? (
-                <div role="tabpanel" id="panel-general" aria-labelledby="tab-general">
-                  <GeneralPanel work={work} series={series} market={market} />
-                </div>
-              ) : null}
-              {tab === 'characters' ? (
-                <div role="tabpanel" id="panel-characters" aria-labelledby="tab-characters">
+              <div role="tabpanel" id="panel-general" aria-labelledby="tab-general" hidden={tab !== 'general'}>
+                <GeneralPanel work={work} series={series} market={market} />
+              </div>
+              {hasCharacters ? (
+                <div role="tabpanel" id="panel-characters" aria-labelledby="tab-characters" hidden={tab !== 'characters'}>
                   <CharactersPanel characters={characters} unit={work.position_scale?.unit} />
                   <GuidePageLink work={work} guide="characters" />
                 </div>
               ) : null}
-              {tab === 'recaps' ? (
-                <div role="tabpanel" id="panel-recaps" aria-labelledby="tab-recaps">
+              {hasRecaps ? (
+                <div role="tabpanel" id="panel-recaps" aria-labelledby="tab-recaps" hidden={tab !== 'recaps'}>
                   <RecapsPanel rows={recapRows} />
                   <GuidePageLink work={work} guide="recap" />
                 </div>

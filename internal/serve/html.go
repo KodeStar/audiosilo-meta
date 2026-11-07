@@ -1,6 +1,7 @@
 package serve
 
 import (
+	"context"
 	"encoding/json"
 	"html"
 	"html/template"
@@ -88,6 +89,7 @@ var htmlEntityRoutes = []htmlEntityRoute{
 	// shadow no record and the reserved-slug set does not grow.
 	{pattern: "GET /works/{id}" + recapSuffix, shell: "recap/index.html", prefix: model.WorksPath, namespace: model.RedirectWorks, compose: composeRecapPage},
 	{pattern: "GET /works/{id}" + charactersSuffix, shell: "characters/index.html", prefix: model.WorksPath, namespace: model.RedirectWorks, compose: composeCharactersPage},
+	{pattern: "GET /works/{id}/recordings/{recording}/chapters", shell: "chapters/index.html", prefix: model.WorksPath, namespace: model.RedirectWorks},
 }
 
 // writeRedirectPage is the entity pages' 301 body: the smallest valid HTML
@@ -123,7 +125,7 @@ func (s *Server) htmlRoutes() []route {
 		}
 		rs = append(rs, route{e.legacy, s.html(s.legacyHandler(e))})
 	}
-	return rs
+	return append(rs, s.browseRoutes()...)
 }
 
 // html is the middleware stack a page wears: gzip, the document headers, and
@@ -133,110 +135,105 @@ func (s *Server) htmlRoutes() []route {
 //
 // The document headers go on BEFORE the handler runs, because every response a
 // page route writes is an HTML document or answers for one: the composed page,
-// the untouched shell, the site's 404 page, the HTML 301 of a retired slug or a
+// an error page, the site's 404 page, the HTML 301 of a retired slug or a
 // legacy ?id= link, and a 304 revalidating a page - which carries no
 // Content-Type by design, so a decision read off the response would miss exactly
 // the header update a cached page takes from it (RFC 9111 4.3.4).
 func (s *Server) html(h http.HandlerFunc) http.Handler { return gzipMW(documentMW(h)) }
 
-// entityHandler serves one family's page. Every failure mode DEGRADES rather
-// than erroring - no artifact loaded yet, a dist whose shell carries no markers,
-// or a read that failed all serve the shell exactly as it was built, and a shell
-// that is not in the dist at all falls through to the static site handler as the
-// path did before these routes existed. The page is still a page (the island
-// fetches its own data and reports its own error), and answering 503 or 500 to a
-// crawler for a condition that resolves itself in seconds costs the URL its
-// ranking.
-//
-// A reserved slug (latest/match/search) needs no special case here: they are refused
-// as record ids across the whole project (pkg/model/reserved.go), so no record
-// can hold one and they 404 like any other unknown id.
+// entityHandler serves only complete representations. Temporary data failures
+// answer 503; a missing or broken build shell answers 500. Neither is cached.
 func (s *Server) entityHandler(e htmlEntityRoute) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		sh := s.shells.get(e.shell)
-		if sh == nil {
-			s.site.ServeHTTP(w, r)
+		if sh == nil || !sh.inject {
+			s.pageError(w, http.StatusInternalServerError, "This page is unavailable because its site template could not be loaded.")
 			return
 		}
 		snap := s.current()
-		if !sh.inject || snap == nil {
-			sh.serveRaw(w)
+		if snap == nil {
+			s.pageUnavailable(w)
 			return
 		}
 		id := r.PathValue(idWildcard)
-
-		// The validator depends on the snapshot's identity, the page's identity and
-		// the id only, so it is computed BEFORE the page and a match costs ZERO
-		// snapshot queries - which is the request shape a crawler's traffic settles
-		// into once a page is indexed, against a compose that is a 6+4N-query
-		// cascade plus two JSON marshals and a template execute.
-		//
-		// The match needs no existence check to be honest. The ETag embeds the
-		// snapshot's release tag (or its build timestamp) and a snapshot is
-		// immutable, so the only client that can hold a matching validator is one
-		// we served a 200 from THIS snapshot - which is proof the id resolved under
-		// it. That is also why the 301 below needs no exemption from this ordering:
-		// a retired slug never 200s under the current snapshot, so no honest
-		// matching validator for one can exist and every honest request for a
-		// retired slug reaches the redirect.
-		// A FABRICATED match gets a bodyless 304 for a page we never served, which
-		// deceives only its fabricator; the alternative spends the whole compose on
-		// every honest revalidation, which is the traffic this route exists for.
-		//
-		// "*" is the one validator that cannot take this path. It names no
-		// representation, so it carries no proof of anything, and RFC 9110 13.1.2
-		// makes it match only when a current representation EXISTS - which here is
-		// exactly the question the compose answers. So a wildcard skips the fast
-		// path, runs the whole cascade, and is answered 304 only where a page was
-		// composed; an unknown slug still 404s and a retired one still 301s.
+		pageNumber := 1
+		paginated := e.shell == "person/index.html" || e.shell == "series/index.html" || e.shell == "chapters/index.html"
+		if paginated {
+			var ok bool
+			pageNumber, ok = readPage(r)
+			if !ok {
+				s.pageError(w, http.StatusBadRequest, "Invalid page number.")
+				return
+			}
+		}
+		identity := id
+		if paginated {
+			identity += "/page/" + strconv.Itoa(pageNumber)
+		}
+		if e.shell == "chapters/index.html" {
+			identity += "/recording/" + r.PathValue("recording")
+		}
+		etag := entityETag(snap, sh, identity)
+		// The page identity includes the recording and real pagination, so one
+		// representation cannot validate a different page of the same entity.
 		inm := r.Header.Get("If-None-Match")
-		etag := entityETag(snap, sh, id)
-		wildcard := httpx.AnyValidator(inm)
-		if !wildcard && httpx.MatchesETag(inm, etag) {
-			h := w.Header()
-			h.Set("ETag", etag)
-			h.Set("Cache-Control", entityMaxAge)
-			// The gzip middleware passes a bodyless status through uncompressed and
-			// announces no encoding on it - see gzipResponseWriter.ensureHeader.
-			w.WriteHeader(http.StatusNotModified)
+		if !httpx.AnyValidator(inm) && httpx.MatchesETag(inm, etag) && (!paginated || r.URL.RawQuery == pageQuery(pageNumber)) {
+			s.writePage(w, r, sh, nil, etag)
 			return
 		}
-
-		page, err := e.compose(s.cfg.SiteURL, snap, id)
+		var page *entityPage
+		var err error
+		switch e.shell {
+		case "person/index.html":
+			page, err = composePersonPageAt(r.Context(), s.cfg.SiteURL, snap, id, pageNumber)
+		case "series/index.html":
+			page, err = composeSeriesPageAt(r.Context(), s.cfg.SiteURL, snap, id, pageNumber)
+		case "chapters/index.html":
+			page, err = composeChaptersPage(r.Context(), s.cfg.SiteURL, snap, id, r.PathValue("recording"), pageNumber)
+		default:
+			page, err = e.compose(s.cfg.SiteURL, snap, id)
+		}
 		if err != nil {
-			// The REQUEST's path, not the family prefix plus the id: several pages
-			// now hang off one prefix (see the guide routes), so a notice built from
-			// the prefix would name the work page for a failure on its recap.
-			s.log.Printf("serve: rendering %q failed, serving the shell untouched: %v", r.URL.Path, err) // quoted: the decoded path can carry a newline (see httpx.Fail)
-			sh.serveRaw(w)
+			s.log.Printf("serve: rendering %q failed: %v", r.URL.Path, err)
+			s.pageUnavailable(w)
 			return
 		}
 		if page == nil {
-			// A retired slug answers 301 here as on the API (the same headers -
-			// query's RedirectRetired), with a minimal HTML page for a body: a
-			// browser that ignores the Location would otherwise be shown the API's
-			// JSON envelope.
 			if snap.RedirectRetired(w, r, e.namespace, writeRedirectPage) {
 				return
 			}
 			s.site.notFound(w, r)
 			return
 		}
-
-		h := w.Header()
-		h.Set("ETag", etag)
-		h.Set("Cache-Control", entityMaxAge)
-		if wildcard {
-			// The representation exists, which is all "*" asked. The composed page
-			// is dropped rather than written - the cost of composing it is what the
-			// wildcard buys by naming nothing - and the response carries exactly the
-			// headers the fast path's 304 carries.
-			w.WriteHeader(http.StatusNotModified)
+		if paginated && r.URL.RawQuery != pageQuery(pageNumber) {
+			writeRedirectPageLocation(w, r.URL.EscapedPath()+querySuffix(pageNumber))
 			return
 		}
-		h.Set("Content-Type", "text/html; charset=utf-8")
-		_, _ = io.WriteString(w, sh.render(page.renderHead(), page.renderBody()))
+		s.writePage(w, r, sh, page, etag)
 	}
+}
+
+func (s *Server) pageError(w http.ResponseWriter, status int, message string) {
+	w.Header().Set("Cache-Control", "no-store")
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	w.WriteHeader(status)
+	_, _ = io.WriteString(w, `<!doctype html><meta charset="utf-8"><title>Page unavailable</title><p>`+html.EscapeString(message)+"</p>\n")
+}
+
+func (s *Server) pageUnavailable(w http.ResponseWriter) {
+	w.Header().Set("Retry-After", httpx.RetryAfter(s.retryWait()))
+	s.pageError(w, http.StatusServiceUnavailable, "This page is temporarily unavailable. Please try again shortly.")
+}
+
+func (s *Server) writePage(w http.ResponseWriter, r *http.Request, sh *shell, page *entityPage, etag string) {
+	w.Header().Set("ETag", etag)
+	w.Header().Set("Cache-Control", entityMaxAge)
+	if page == nil || httpx.AnyValidator(r.Header.Get("If-None-Match")) {
+		w.WriteHeader(http.StatusNotModified)
+		return
+	}
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	_, _ = io.WriteString(w, sh.render(page.renderHead(), page.renderBody()))
 }
 
 // legacyHandler answers the old query-param URL: /work?id=X becomes a 301 to
@@ -296,7 +293,7 @@ type entityPage struct {
 	image       string
 	jsonLD      []byte
 	factSheet   string // already-escaped HTML, rendered through html/template
-	payload     []byte // the entity JSON, byte-equivalent to its API route's body
+	payload     []byte // entity JSON plus optional initial data for bounded sections
 }
 
 // renderHead composes the block that replaces the shell's marked head section.
@@ -328,15 +325,20 @@ func (p *entityPage) renderHead() string {
 // renderBody composes the block that replaces the shell's body marker: the fact
 // sheet the island removes on mount, and the entity payload it hydrates from.
 //
-// The payload is the API route's own bytes, so the island needs no second fetch
-// and cannot be handed a shape the API would not have returned. It is written
-// raw for the same reason the JSON-LD is: encoding/json's HTML escaping is on,
+// Work and guide payloads are the corresponding API documents. Person and
+// series payloads add recording_credits and listening_guide respectively, each
+// exactly the matching bounded endpoint response, so hydration needs no fetch.
+// It is written raw because encoding/json's HTML escaping is on,
 // so "<" is < and the script element cannot be closed from inside.
 func (p *entityPage) renderBody() string {
 	var b strings.Builder
 	b.WriteString(`<div id="ssr-entity">`)
 	b.WriteString(p.factSheet)
-	b.WriteString(`</div><script type="application/json" id="entity-data">`)
+	b.WriteString(`</div>`)
+	if len(p.payload) == 0 {
+		return b.String()
+	}
+	b.WriteString(`<script type="application/json" id="entity-data">`)
 	b.Write(p.payload)
 	b.WriteString(`</script>`)
 	return b.String()
@@ -485,6 +487,10 @@ func firstCover(d *query.WorkDetail) string {
 // ---- person -----------------------------------------------------------------
 
 func composePersonPage(siteURL string, snap *query.DB, id string) (*entityPage, error) {
+	return composePersonPageAt(context.Background(), siteURL, snap, id, 1)
+}
+
+func composePersonPageAt(ctx context.Context, siteURL string, snap *query.DB, id string, page int) (*entityPage, error) {
 	// The MAXIMUM window, not the JSON route's default. The embedded payload
 	// replaces the fetch the island would otherwise make, and the site asks for
 	// query.PersonPageMax outright (site/src/lib/api.ts PERSON_PAGE_MAX), so composing a
@@ -496,12 +502,26 @@ func composePersonPage(siteURL string, snap *query.DB, id string) (*entityPage, 
 	if err != nil || d == nil {
 		return nil, err
 	}
-	payload, err := json.Marshal(d)
+	credits, err := snap.PersonRecordings(ctx, id, cataloguePageSize, (page-1)*cataloguePageSize, "", "")
 	if err != nil {
 		return nil, err
 	}
-	canonical := siteURL + model.PeoplePath + d.ID
-	sheet, err := renderTemplate("person", newPersonView(d))
+	if credits == nil || !pageInRange(page, credits.Total, cataloguePageSize) {
+		return nil, nil
+	}
+	payload, err := json.Marshal(struct {
+		*query.PersonDetail
+		RecordingCredits *query.PersonRecordingsPage `json:"recording_credits"`
+	}{d, credits})
+	if err != nil {
+		return nil, err
+	}
+	canonical := siteURL + model.PeoplePath + d.ID + querySuffix(page)
+	view := newPersonView(d)
+	view.RecordingGroups = personRecordingGroups(credits)
+	view.RecordingsCaption = countCaption(len(credits.Recordings), credits.Total, "recording", "recordings")
+	view.Pagination = newPagination(model.PeoplePath+d.ID, page, credits.Total, cataloguePageSize)
+	sheet, err := renderTemplate("person", view)
 	if err != nil {
 		return nil, err
 	}
@@ -537,18 +557,36 @@ func personDescription(d *query.PersonDetail) string {
 // ---- series -----------------------------------------------------------------
 
 func composeSeriesPage(siteURL string, snap *query.DB, id string) (*entityPage, error) {
-	// The SAME call the JSON route makes with no ?limit: the whole series (see
-	// snapshot.series - membership is bounded by what a series is).
-	d, err := snap.Series(id, 0, 0)
-	if err != nil || d == nil {
+	return composeSeriesPageAt(context.Background(), siteURL, snap, id, 1)
+}
+
+func composeSeriesPageAt(ctx context.Context, siteURL string, snap *query.DB, id string, page int) (*entityPage, error) {
+	// The bounded guide already has the identity and visible work cards. Reuse
+	// it rather than asking Series to collect every member before slicing.
+	guide, err := snap.SeriesListeningGuide(ctx, id, cataloguePageSize, (page-1)*cataloguePageSize)
+	if err != nil || guide == nil {
 		return nil, err
 	}
-	payload, err := json.Marshal(d)
+	if !pageInRange(page, guide.WorksTotal, cataloguePageSize) {
+		return nil, nil
+	}
+	d := &query.SeriesDetail{ID: guide.ID, Name: guide.Name, Language: guide.Language, Ordering: guide.Ordering, OrderingOf: guide.OrderingOf, Authors: guide.Authors, WorksTotal: guide.WorksTotal, Limit: guide.Limit, Offset: guide.Offset, TranslationOf: guide.TranslationOf, Translations: guide.Translations, Orderings: guide.Orderings}
+	for _, entry := range guide.Entries {
+		d.Works = append(d.Works, query.SeriesEntry{Position: entry.Position, Work: entry.Work})
+	}
+	payload, err := json.Marshal(struct {
+		*query.SeriesDetail
+		ListeningGuide *query.SeriesListeningGuide `json:"listening_guide"`
+	}{d, guide})
 	if err != nil {
 		return nil, err
 	}
-	canonical := siteURL + model.SeriesPath + d.ID
-	sheet, err := renderTemplate("series", newSeriesView(d))
+	canonical := siteURL + model.SeriesPath + d.ID + querySuffix(page)
+	view := newSeriesView(d)
+	view.ListeningEntries = listeningEntries(guide)
+	view.Continuity = seriesNarratorContinuity(guide)
+	view.Pagination = newPagination(model.SeriesPath+d.ID, page, guide.WorksTotal, cataloguePageSize)
+	sheet, err := renderTemplate("series", view)
 	if err != nil {
 		return nil, err
 	}
@@ -688,17 +726,20 @@ const factSheetTemplates = `
 <p class="text-dim">Genres: {{range $i, $g := .Genres}}{{if $i}}, {{end}}{{$g}}{{end}}</p>
 {{- end}}
 {{- if .Recordings}}
-<h2>Recordings</h2>
+<h2>Compare recordings</h2>
+<table><caption>Catalogued recording facts; unknown values are not inferred.</caption><thead><tr><th scope="col">Recording</th><th scope="col">Narrators</th><th scope="col">Language</th><th scope="col">Abridgement</th><th scope="col">Runtime</th><th scope="col">Released</th><th scope="col">Publisher</th><th scope="col">Chapters</th></tr></thead><tbody>
+{{range .Recordings}}<tr><th scope="row"><a href="#recording-{{.ID}}">{{.ID}}</a></th><td>{{if .Narrators}}{{template "people" .Narrators}}{{else}}Unknown{{end}}</td><td>{{.Language}}</td><td>{{.Abridgement}}</td><td>{{if .Runtime}}{{.Runtime}}{{else}}Unknown{{end}}</td><td>{{.Release}}</td><td>{{if .Publisher}}{{.Publisher}}{{else}}Unknown{{end}}</td><td>{{if .Chapters}}<a href="{{.ChaptersURL}}">{{.Chapters}}</a>{{else}}None catalogued{{end}}</td></tr>{{end}}
+</tbody></table>
+<h2>Recording details</h2>
 {{- range .Recordings}}
-<div class="border-edge">
+<div id="recording-{{.ID}}" class="border-edge">
 <h3>{{if .Narrators}}Narrated by {{template "people" .Narrators}}{{else}}Recording {{.ID}}{{end}}</h3>
 <ul>
 {{- if .Runtime}}
 <li>Runtime: {{.Runtime}}</li>
 {{- end}}
-{{- if .Abridged}}
-<li>Abridged</li>
-{{- end}}
+<li>Abridgement: {{.Abridgement}}</li>
+<li>Language: {{.Language}}</li>
 {{- if .Publisher}}
 <li>Publisher: {{.Publisher}}</li>
 {{- end}}
@@ -709,7 +750,7 @@ const factSheetTemplates = `
 <li>{{.Label}}: {{.Value}}</li>
 {{- end}}
 {{- if .Chapters}}
-<li>{{.Chapters}} chapters</li>
+<li><a href="{{.ChaptersURL}}">{{.Chapters}} chapters</a></li>
 {{- end}}
 </ul>
 {{- if .Purchase}}
@@ -722,6 +763,7 @@ const factSheetTemplates = `
 
 {{define "person"}}<section class="container">
 <h1 class="text-hi">{{.Name}}</h1>
+{{template "recording-credits" .}}
 {{- if .Authored}}
 <h2>Audiobooks written</h2>
 <p class="text-dim">{{.AuthoredCaption}}</p>
@@ -753,6 +795,7 @@ const factSheetTemplates = `
 
 {{define "series"}}<section class="container">
 <h1 class="text-hi">{{.Name}}</h1>
+{{template "listening-guide" .}}
 {{- if .Authors}}
 <p>By {{template "people" .Authors}}</p>
 {{- end}}
@@ -776,7 +819,7 @@ const factSheetTemplates = `
 // of its own, so it can call the shared "people" define and a future shared
 // fragment is available to every page automatically.
 var factSheets = sync.OnceValue(func() *template.Template {
-	return template.Must(template.Must(template.New("factsheets").Parse(factSheetTemplates)).Parse(guideTemplates))
+	return template.Must(template.Must(template.New("factsheets").Parse(factSheetTemplates)).Parse(guideTemplates + catalogueTemplates))
 })
 
 func renderTemplate(name string, data any) (string, error) {
@@ -798,10 +841,13 @@ type codeView struct{ Label, Value string }
 type purchaseLinkView struct{ Label, URL string }
 
 type recordingView struct {
+	Language    string
+	Abridgement string
+	Release     string
+	ChaptersURL string
 	ID          string
 	Narrators   []query.PersonRef
 	Runtime     string
-	Abridged    bool
 	Publisher   string
 	ReleaseYear string
 	Codes       []codeView
@@ -880,7 +926,8 @@ func newWorkView(d *query.WorkDetail) workView {
 	for _, rec := range d.Recordings {
 		rv := recordingView{
 			ID: rec.ID, Narrators: rec.Narrators, Runtime: formatRuntime(rec.RuntimeMin),
-			Abridged: rec.Abridged, Publisher: rec.Publisher,
+			Publisher: rec.Publisher,
+			Language:  known(rec.Language), Abridgement: abridgementLabel(rec.Abridgement), Release: known(rec.ReleaseDate), ChaptersURL: chaptersPath(d.ID, rec.ID),
 			// query.PublishedYear (pkg/query/abs.go) is the one date-to-year rule,
 			// so the fact sheet and the ABS facade cannot read one date two ways: a
 			// value it does not recognize as a year renders as stated rather than
@@ -909,12 +956,15 @@ type workLink struct {
 }
 
 type personView struct {
-	Name            string
-	Authored        []workLink
-	Narrated        []workLink
-	Translated      []workLink
-	AuthoredCaption string
-	NarratedCaption string
+	RecordingGroups   []recordingGroup
+	RecordingsCaption string
+	Pagination        paginationView
+	Name              string
+	Authored          []workLink
+	Narrated          []workLink
+	Translated        []workLink
+	AuthoredCaption   string
+	NarratedCaption   string
 	// TranslatedCaption names the window over the recordings the person is
 	// the recording-level translator of (query.PersonDetail.Translated).
 	TranslatedCaption string
@@ -974,10 +1024,13 @@ type volumeView struct {
 }
 
 type seriesView struct {
-	Name    string
-	Authors []query.PersonRef
-	Volumes []volumeView
-	Caption string
+	Continuity       []continuityView
+	ListeningEntries []listeningEntryView
+	Pagination       paginationView
+	Name             string
+	Authors          []query.PersonRef
+	Volumes          []volumeView
+	Caption          string
 }
 
 func newSeriesView(d *query.SeriesDetail) seriesView {

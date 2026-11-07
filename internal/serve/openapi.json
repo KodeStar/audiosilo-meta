@@ -4,7 +4,7 @@
     "title": "AudioSilo Meta API",
     "version": "1.0.0",
     "summary": "The API over the AudioSilo community audiobook metadata database.",
-    "description": "An API over a compiled snapshot of the community metadata database at https://github.com/kodestar/audiosilo-meta.\n\nEverything in the catalogue is public: no authentication and no API key, and no endpoint changes it. (A production deployment may additionally register a release-notification hook at `/hooks/github/release`, which is HMAC-authenticated, and an intake queue, which takes anonymous reports of ASINs the catalogue does not hold and gives them back behind a bearer token. Neither is part of the read surface. A deployment's own `/api/v1/openapi.json` lists only the intake routes it serves, and the published reference built from this file lists them all.)\n\nThe API surface - `/api/v1/*` and `/abs/search` - carries permissive CORS headers (`Access-Control-Allow-Origin: *`), so a browser may call it directly. `/healthz`, the hook and the intake routes do not.\n\nThe API surface is rate limited per client address (a token bucket; the public deployment allows 100 requests a second with a burst of 400; an IPv6 client counts as its /64). A client past its allowance gets `429` with a `Retry-After` header in whole seconds and the error envelope; `/healthz` is exempt. A successful answer carries a `Cache-Control` header when its route states none of its own: `public, max-age=600`, or `public, max-age=60` on the searches and `/api/v1/works/match`. A reader that wants the whole catalogue should download the `meta.sqlite.gz` asset of the newest data release instead of paging the API.\n\nThe server holds one compiled artifact at a time and swaps in a newer one without a restart, so a response is always a consistent view of a single release. While no artifact has loaded yet (a cold boot still fetching the newest release) every data route answers `503` with a `Retry-After` header; `/api/v1/openapi.json` and the static site are served regardless.\n\nSome fields on `GET /works/{id}` depend on the loaded artifact's internal schema version - characters and recaps need version 2, the whole-book recap summary version 3, genres version 4, the community description version 6. The languages layer needs version 7: the translation links on works and series, a series' derived `language`, `ordering`, `ordering_of` and `orderings`, the `ordering_of` on a series membership and the `languages` census on `/api/v1/stats`. The LibriVox layer needs version 8: a recording's `librivox_id`, `archive_id`, `links` and `copyright_year`, a chapter's `audio_url`, the free `librivox` purchase link, the `source` filter, `lookup?librivox_id=` and the LibriVox-shaped feed (which answers `404` on an older artifact, as it does for no results). A server briefly serving an older artifact omits them rather than failing, so treat every one of them as optional.\n\nSlugs are stable, and a slug a data-quality repair RETIRES keeps resolving: every route that takes an id answers `301` with a `Location` at the same route under the slug that replaced it, plus a body naming that slug so a stored id can be healed. The redirect is bounded by `Cache-Control` rather than permanent, because reversing a merge withdraws it. Redirects need artifact version 5; below it a retired slug is a `404`.\n\nLicensing: the factual core (works, recordings, people, series) is dedicated to the public domain under CC0-1.0 and the community layer (characters, recaps, descriptions) is CC BY-SA 4.0 - see LICENSING.md in the repository for what attribution the share-alike layer requires.",
+    "description": "An API over a compiled snapshot of the community metadata database at https://github.com/kodestar/audiosilo-meta.\n\nEverything in the catalogue is public: no authentication and no API key, and no endpoint changes it. (A production deployment may additionally register a release-notification hook at `/hooks/github/release`, which is HMAC-authenticated, and an intake queue, which takes anonymous reports of ASINs the catalogue does not hold and gives them back behind a bearer token. Neither is part of the read surface. A deployment's own `/api/v1/openapi.json` lists only the intake routes it serves, and the published reference built from this file lists them all.)\n\nThe API surface - `/api/v1/*` and `/abs/search` - carries permissive CORS headers (`Access-Control-Allow-Origin: *`), so a browser may call it directly. `/healthz`, the hook and the intake routes do not.\n\nThe API surface is rate limited per client address (a token bucket; the public deployment allows 100 requests a second with a burst of 400; an IPv6 client counts as its /64). A client past its allowance gets `429` with a `Retry-After` header in whole seconds and the error envelope; `/healthz` is exempt. A successful answer carries a `Cache-Control` header when its route states none of its own: `public, max-age=600`, or `public, max-age=60` on the searches and `/api/v1/works/match`. A reader that wants the whole catalogue should download the `meta.sqlite.gz` asset of the newest data release instead of paging the API.\n\nThe server holds one compiled artifact at a time and swaps in a newer one without a restart, so a response is always a consistent view of a single release. While no artifact has loaded yet (a cold boot still fetching the newest release) every data route answers `503` with a `Retry-After` header; `/api/v1/openapi.json` and the static site are served regardless.\n\nSome fields on `GET /works/{id}` depend on the loaded artifact's internal schema version - characters and recaps need version 2, the whole-book recap summary version 3, genres version 4, the community description version 6. A recording's optional `abridgement` preserves stated unabridgement from artifact version 12; absence means unknown, including legacy false on older artifacts. The languages layer needs version 7: the translation links on works and series, a series' derived `language`, `ordering`, `ordering_of` and `orderings`, the `ordering_of` on a series membership and the `languages` census on `/api/v1/stats`. The LibriVox layer needs version 8: a recording's `librivox_id`, `archive_id`, `links` and `copyright_year`, a chapter's `audio_url`, the free `librivox` purchase link, the `source` filter, `lookup?librivox_id=` and the LibriVox-shaped feed (which answers `404` on an older artifact, as it does for no results). A server briefly serving an older artifact omits them rather than failing, so treat every one of them as optional.\n\nSlugs are stable, and a slug a data-quality repair RETIRES keeps resolving: every route that takes an id answers `301` with a `Location` at the same route under the slug that replaced it, plus a body naming that slug so a stored id can be healed. The redirect is bounded by `Cache-Control` rather than permanent, because reversing a merge withdraws it. Redirects need artifact version 5; below it a retired slug is a `404`.\n\nLicensing: the factual core (works, recordings, people, series) is dedicated to the public domain under CC0-1.0 and the community layer (characters, recaps, descriptions) is CC BY-SA 4.0 - see LICENSING.md in the repository for what attribution the share-alike layer requires.",
     "license": {
       "name": "CC0-1.0 core with a CC BY-SA 4.0 community layer",
       "url": "https://github.com/kodestar/audiosilo-meta/blob/main/LICENSING.md"
@@ -706,6 +706,152 @@
           "429": { "$ref": "#/components/responses/TooManyRequests" },
           "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
+        }
+      }
+    },
+    "/api/v1/series/{id}/listening-guide": {
+      "get": {
+        "tags": [
+          "People & Series"
+        ],
+        "operationId": "seriesListeningGuide",
+        "summary": "One page of a series listening guide",
+        "description": "Works in numeric series order with at most five recording alternatives per work, selected deterministically by recording id. Decimal and range positions remain strings. `recordings_total` includes alternatives beyond the cap; zero means no recording catalogued. Only the visible page is composed. Runtimes describe separate alternatives and must not be summed without an explicit choice per work. Retailer availability is not inferred.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The record slug. Retired slugs redirect at this same route.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Page size, default 50 and at most 100. Invalid or non-positive values use the default.",
+            "schema": {
+              "type": "integer",
+              "default": 50,
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "One page of a series listening guide.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SeriesListeningGuide"
+                }
+              }
+            }
+          },
+          "301": {
+            "$ref": "#/components/responses/Retired"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          },
+          "503": {
+            "$ref": "#/components/responses/NoData"
+          }
+        }
+      }
+    },
+    "/api/v1/people/{id}/recordings": {
+      "get": {
+        "tags": [
+          "People & Series"
+        ],
+        "operationId": "personRecordings",
+        "summary": "One page of narration recording credits",
+        "description": "Recording-level narration credits, retaining separate recordings of one work. `series` memberships are provided for grouping the visible page; filtering is optional. Authorship and translation credits remain on the existing person detail route.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The record slug. Retired slugs redirect at this same route.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Page size, default 50 and at most 100. Invalid or non-positive values use the default.",
+            "schema": {
+              "type": "integer",
+              "default": 50,
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "name": "series",
+            "in": "query",
+            "description": "An optional series slug. Invalid slugs are rejected.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "description": "Optional primary language subtag or comma-separated primary subtags. Invalid tags are rejected.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "One page of narration recording credits.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonRecordingsPage"
+                }
+              }
+            }
+          },
+          "301": {
+            "$ref": "#/components/responses/Retired"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          },
+          "503": {
+            "$ref": "#/components/responses/NoData"
+          }
         }
       }
     },
@@ -1787,6 +1933,217 @@
           "isbn": { "type": "array", "items": { "type": "string" } }
         }
       },
+      "RecordingSummary": {
+        "type": "object",
+        "required": [
+          "id",
+          "narrators"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique within its work.",
+            "examples": [
+              "ray-porter-2021"
+            ]
+          },
+          "narrators": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PersonRef"
+            }
+          },
+          "runtime_min": {
+            "type": "integer",
+            "description": "Runtime in minutes. Omitted when unknown."
+          },
+          "release_date": {
+            "type": "string",
+            "description": "`YYYY-MM-DD`, or a partial date. Omitted when unknown."
+          },
+          "publisher": {
+            "type": "string",
+            "description": "The publisher of record. Omitted when unknown."
+          },
+          "chapter_count": {
+            "type": "integer",
+            "description": "How many chapter marks this recording has; fetch them from /api/v1/works/{id}/recordings/{rid}/chapters."
+          },
+          "language": {
+            "type": "string",
+            "description": "The recording's stated language; omitted when unknown."
+          },
+          "abridgement": {
+            "type": "string",
+            "enum": [
+              "abridged",
+              "unabridged"
+            ],
+            "description": "Omitted when unknown. Explicit unabridgement needs artifact schema 12; on an older artifact only legacy true proves abridged, and false remains unknown."
+          }
+        }
+      },
+      "ListeningGuideEntry": {
+        "type": "object",
+        "required": [
+          "position",
+          "work",
+          "recordings_total",
+          "recordings",
+          "recordings_limit"
+        ],
+        "properties": {
+          "position": {
+            "type": "string"
+          },
+          "work": {
+            "$ref": "#/components/schemas/WorkCard"
+          },
+          "recordings_total": {
+            "type": "integer"
+          },
+          "recordings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecordingSummary"
+            }
+          },
+          "recordings_limit": {
+            "type": "integer",
+            "const": 5
+          }
+        }
+      },
+      "RecordingCredit": {
+        "type": "object",
+        "required": [
+          "work",
+          "recording",
+          "series"
+        ],
+        "properties": {
+          "work": {
+            "$ref": "#/components/schemas/WorkCard"
+          },
+          "recording": {
+            "$ref": "#/components/schemas/RecordingSummary"
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SeriesRef"
+            }
+          }
+        }
+      },
+      "PersonRecordingsPage": {
+        "type": "object",
+        "required": [
+          "recordings",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "properties": {
+          "recordings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecordingCredit"
+            }
+          },
+          "total": {
+            "type": "integer"
+          },
+          "limit": {
+            "type": "integer"
+          },
+          "offset": {
+            "type": "integer"
+          }
+        }
+      },
+      "SeriesListeningGuide": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "authors",
+          "entries",
+          "works_total",
+          "limit",
+          "offset"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string",
+            "description": "DERIVED, not stated: the primary language subtag more of the series' members state than any other - a plurality, so it need not be over half. Omitted when the leading languages tie or no member states one.",
+            "examples": [
+              "en"
+            ]
+          },
+          "ordering": {
+            "$ref": "#/components/schemas/Ordering",
+            "description": "Which reading order this series' positions state. Omitted when unstated."
+          },
+          "ordering_of": {
+            "type": "string",
+            "description": "Set only on a VARIANT ordering: the slug of the franchise's primary series. Omitted for a primary.",
+            "examples": [
+              "the-stormlight-archive"
+            ]
+          },
+          "authors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PersonRef"
+            }
+          },
+          "works_total": {
+            "type": "integer",
+            "description": "UNPAGED membership count."
+          },
+          "limit": {
+            "type": "integer",
+            "description": "The page size that was applied, default 50 and at most 100."
+          },
+          "offset": {
+            "type": "integer"
+          },
+          "translation_of": {
+            "type": "array",
+            "description": "The series this one translates, by id. Omitted when none.",
+            "items": {
+              "$ref": "#/components/schemas/SeriesTranslation"
+            }
+          },
+          "translations": {
+            "type": "array",
+            "description": "The series that translate this one, by id. Omitted when none.",
+            "items": {
+              "$ref": "#/components/schemas/SeriesTranslation"
+            }
+          },
+          "orderings": {
+            "type": "array",
+            "description": "The whole ordering family this series belongs to: the primary first, then every variant ordering of it by id. The same list is served on the primary and on each variant, so a reader can switch between orders from any of them. Omitted when the series has no variant ordering.",
+            "items": {
+              "$ref": "#/components/schemas/SeriesOrdering"
+            }
+          },
+          "entries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListeningGuideEntry"
+            }
+          }
+        }
+      },
       "RecordingDetail": {
         "type": "object",
         "description": "One narration/production of a work. A work can have many (different narrators, or a full-cast dramatization), each with its own identifiers and chapters.",
@@ -1797,6 +2154,8 @@
             "type": "array",
             "items": { "$ref": "#/components/schemas/PersonRef" }
           },
+          "language": {"type": "string", "description": "The recording's stated language; omitted when unknown."},
+          "abridgement": {"type": "string", "enum": ["abridged", "unabridged"], "description": "Omitted when unknown. Explicit unabridgement needs artifact schema 12; on an older artifact only legacy true proves abridged, and false remains unknown."},
           "abridged": {
             "type": "boolean",
             "description": "Present only when TRUE. An absent key means unabridged or unstated - the underlying field is deliberately tri-state, and nothing guesses it."

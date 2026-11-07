@@ -552,9 +552,14 @@ it, `pkg/check` and every writer now refuse it loudly.
   (`model.PrimarySubtag`), and not itself a translation (no chains).
 - **recording** - a member of its work entry's recordings map: a specific
   narration/production, with narrators, abridged (**optional**: absence =
-  unknown, so importers omit it rather than guess), runtime_min, release_date,
-  publisher, region-scoped `asin[]`, `isbn[]`, cover_url, chapters, and for a
-  LibriVox project `librivox_id` (its identity, unique), `archive_id`, `links`,
+  unknown, so importers omit it rather than guess; `model.Recording.AbridgedKnown`
+  preserves explicit false on JSON round trips), runtime_min, release_date,
+  publisher and identifiers.
+  The artifact preserves this presence from schema 12, and API recordings add
+  optional `abridgement: abridged | unabridged`; absence is unknown. Legacy false
+  in an older artifact is unknown, while legacy true proves abridged.
+  Other fields include region-scoped `asin[]`, `isbn[]`, cover_url, chapters,
+  and for a LibriVox project `librivox_id` (its identity, unique), `archive_id`, `links`,
   a per-chapter `audio_url`, the project's own `librivox_title` and
   `librivox_genres` (verbatim), its translators as the recording's own
   `credits` (a translation is the project's fact; the work's own translator
@@ -861,7 +866,7 @@ keep this index in step (one line per topic).
   - `pkg/query/querytest`
   - `pkg/release`
   - `pkg/release/releasetest`
-  - `internal/serve`
+  - `internal/serve` (SSR entity/browse/chapter pages, bounded catalogue summaries and truthful failure caching)
   - `internal/httpx`
   - `internal/artifacttest`
   - initials spellings are one person

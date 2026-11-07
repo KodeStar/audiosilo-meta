@@ -2,9 +2,7 @@ package serve
 
 import (
 	"fmt"
-	"io"
 	"log"
-	"net/http"
 	"os"
 	"path/filepath"
 	"runtime/debug"
@@ -25,10 +23,8 @@ import (
 //     point and is REPLACED by the server-rendered fact sheet plus the embedded
 //     entity payload.
 //
-// They are HTML comments on purpose: a shell that is served untouched (no
-// snapshot, an older dist, the dev server) is still a valid page, and the
-// markers say out loud where the injection happens for anyone reading the built
-// output.
+// Comments make the injection contract visible in the built output. Entity
+// routes require all three markers to serve a complete page.
 const (
 	headOpenMarker  = "<!--ssr:head-->"
 	headCloseMarker = "<!--/ssr:head-->"
@@ -41,19 +37,16 @@ const (
 // markers are KEPT (they are comments, and they make the injection visible in
 // the served page); the body marker is consumed by what replaces it.
 //
-// inject is false for a page that carries no usable markers - an older dist, or
-// a Base.astro refactor that dropped one. The page is then still SERVED, exactly
-// as the file reads, which is the whole point of the degrade: the feature turns
-// off, the site does not.
+// inject is false for a page with invalid markers. The route returns an honest
+// uncached error until a valid site build is deployed.
 type shell struct {
-	raw    string // the built page exactly as it is on disk
 	inject bool
 	head   string // everything up to and including headOpenMarker
 	mid    string // headCloseMarker up to (not including) bodyMarker
 	tail   string // everything after bodyMarker
 	// identity is the non-data half of this page's ETag, mixed at load - see
 	// pageIdentity. Empty on a shell that carries no markers, which issues no
-	// validator at all (serveRaw).
+	// validator at all.
 	identity string
 }
 
@@ -70,18 +63,9 @@ func (sh *shell) render(head, body string) string {
 	return b.String()
 }
 
-// serveRaw writes the built page untouched. It carries no validator: an
-// un-injected shell is the same bytes for every id, so an ETag would tell a
-// client its copy of one record's page is good for another's.
-func (sh *shell) serveRaw(w http.ResponseWriter) {
-	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	_, _ = io.WriteString(w, sh.raw)
-}
-
 // splitShell reads a built page as a shell. Each marker must appear EXACTLY
 // once and in order; anything else is "this dist does not support injection",
-// reported as an error so the caller can log it once and serve the file
-// untouched. Requiring exactly one occurrence rather than taking the first is
+// reported as an error so the caller can log the broken build once. Requiring exactly one occurrence rather than taking the first is
 // what keeps a half-refactored Base.astro from producing a page whose head is
 // replaced in one place and left stale in another.
 func splitShell(page string) (*shell, error) {
@@ -97,7 +81,6 @@ func splitShell(page string) (*shell, error) {
 		return nil, fmt.Errorf("markers are out of order (%s, %s, %s)", headOpenMarker, headCloseMarker, bodyMarker)
 	}
 	return &shell{
-		raw:    page,
 		inject: true,
 		head:   page[:open],
 		mid:    page[closing:body],
@@ -111,10 +94,8 @@ func splitShell(page string) (*shell, error) {
 // would buy nothing, and the reason a shell cannot be injected into is logged
 // there rather than once per request.
 //
-// A shell that is MISSING or unreadable is absent from the map, and its route
-// then falls through to the static site handler exactly as it did before these
-// routes existed. A shell that is present but UNMARKED is in the map with
-// inject=false: the page is served as built.
+// Missing or unreadable shells are absent; invalid shells have inject=false.
+// Both cause an uncached page error rather than a blank successful entity.
 type shells map[string]*shell
 
 // get returns the split shell for name, or nil when this dist carries no
@@ -128,27 +109,30 @@ func (s shells) get(name string) *shell {
 
 // loadShells splits every entity shell under dir and stamps each with its page
 // identity (siteURL is the configured public origin - see pageIdentity). It
-// never fails: the whole point of the marker contract is that its absence
-// degrades to the static page.
+// logs build errors once. A route whose shell is absent or invalid returns 500.
 func loadShells(dir, siteURL string, logger *log.Logger) shells {
 	out := shells{}
+	names := []string{"browse/index.html"}
 	for _, e := range htmlEntityRoutes {
-		raw, err := os.ReadFile(filepath.Join(dir, filepath.FromSlash(e.shell)))
+		names = append(names, e.shell)
+	}
+	for _, name := range names {
+		raw, err := os.ReadFile(filepath.Join(dir, filepath.FromSlash(name)))
 		if err != nil {
 			// Named by the SHELL, which is unique per page: several pages hang off
 			// one family prefix now (the guide pages), so a notice naming the prefix
 			// could not say which of them the dist is missing.
-			logger.Printf("serve: no server-rendered %s page: %v", e.shell, err)
+			logger.Printf("serve: no server-rendered %s page: %v", name, err)
 			continue
 		}
 		sh, err := splitShell(string(raw))
 		if err != nil {
-			logger.Printf("serve: %s carries no injection markers, serving it untouched: %v", e.shell, err)
-			out[e.shell] = &shell{raw: string(raw)}
+			logger.Printf("serve: %s carries invalid injection markers: %v", name, err)
+			out[name] = &shell{}
 			continue
 		}
-		sh.identity = pageIdentity(e.shell, string(raw), siteURL, buildRevision())
-		out[e.shell] = sh
+		sh.identity = pageIdentity(name, string(raw), siteURL, buildRevision())
+		out[name] = sh
 	}
 	return out
 }
@@ -185,9 +169,9 @@ func pageIdentity(shellName, shellHTML, siteURL, revision string) string {
 
 // buildRevision is the commit this binary was built from, or "" when the
 // toolchain stamped none - a `go run`, a test binary, a -buildvcs=false build.
-// Empty is honest rather than an error: the validator then rests on the two
-// components that are always there, and an unstamped binary is not what a
-// crawler's cached copy faces (the released image is built from a checkout).
+// Docker builds also omit .git and therefore use the empty fallback. Entity
+// validators then depend on the shell name, bytes and origin; Go-only renderer
+// changes cannot invalidate them unless the shell also changes.
 var buildRevision = sync.OnceValue(func() string {
 	info, ok := debug.ReadBuildInfo()
 	if !ok {

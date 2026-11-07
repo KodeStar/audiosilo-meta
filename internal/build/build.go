@@ -40,13 +40,14 @@ import (
 // (the ruler a work's sidecars are numbered on) arrived; bumped to 11 when the
 // STORE LINKS arrived - recordings.link_audiobookguild and
 // recordings.link_graphicaudio (a recording's product page in a store the
-// identifier-derived purchase links do not reach).
+// identifier-derived purchase links do not reach); bumped to 12 when
+// recordings.abridgement retained the presence of the source's abridged flag.
 //
 // It versions what a reader may SELECT, so it is bumped only when a table or
 // column appears. Adding an index is invisible to every reader (the same rows
 // come back, faster), so the index additions below did not bump it - an older
 // artifact without them still serves correctly, just more slowly.
-const SchemaVersion = 11
+const SchemaVersion = 12
 
 const ddl = `
 CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
@@ -113,6 +114,8 @@ CREATE TABLE recordings (
   -- store listing did not state.
   link_audiobookguild TEXT,
   link_graphicaudio   TEXT,
+  -- schema_version 12: NULL when the source did not state the abridged flag.
+  abridgement TEXT CHECK (abridgement IN ('abridged', 'unabridged')),
   PRIMARY KEY (work_id, id)
 );
 -- lookup?librivox_id= and the LibriVox feed (its id filter, and its pages in
@@ -139,6 +142,7 @@ CREATE TABLE recording_librivox_genres (work_id TEXT NOT NULL, recording_id TEXT
 CREATE INDEX idx_recording_librivox_genres_recording ON recording_librivox_genres(work_id, recording_id);
 CREATE TABLE recording_narrators (work_id TEXT NOT NULL, recording_id TEXT NOT NULL, person_id TEXT NOT NULL, ord INTEGER NOT NULL);
 CREATE INDEX idx_recording_narrators_person ON recording_narrators(person_id);
+CREATE INDEX idx_recording_narrators_person_recording ON recording_narrators(person_id, work_id, recording_id);
 -- Every GET /works/{id} and every search hit reads these three tables per
 -- recording, by (work_id, recording_id). Without a work_id index that is a full
 -- table scan each time (measured with EXPLAIN QUERY PLAN) - invisible at a few
@@ -227,6 +231,7 @@ CREATE INDEX idx_series_works_work ON series_works(work_id);
 -- full scans the scale report reported for the recording tables, so they get the
 -- same treatment.
 CREATE INDEX idx_series_works_series ON series_works(series_id);
+CREATE INDEX idx_series_works_position ON series_works(series_id, CAST(position AS REAL), position, work_id);
 CREATE TABLE series_authors (series_id TEXT NOT NULL, person_id TEXT NOT NULL, ord INTEGER NOT NULL);
 CREATE INDEX idx_series_authors_series ON series_authors(series_id);
 
@@ -546,7 +551,7 @@ func prepareStmts(tx *sql.Tx) (*stmts, func(), error) {
 		{&s.workCredit, `INSERT INTO work_credits(work_id, person_id, role, ord) VALUES(?,?,?,?)`},
 		{&s.workFTS, `INSERT INTO search_fts(kind, id, title, names, language) VALUES('work', ?, ?, ?, ?)`},
 
-		{&s.recording, `INSERT INTO recordings(work_id, id, abridged, language, runtime_min, release_date, publisher, cover_url, license, librivox_id, archive_id, link_librivox, link_zip, link_rss, link_text, copyright_year, added_at, librivox_title, link_audiobookguild, link_graphicaudio) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`},
+		{&s.recording, `INSERT INTO recordings(work_id, id, abridged, language, runtime_min, release_date, publisher, cover_url, license, librivox_id, archive_id, link_librivox, link_zip, link_rss, link_text, copyright_year, added_at, librivox_title, link_audiobookguild, link_graphicaudio, abridgement) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`},
 		{&s.recCredit, `INSERT INTO recording_credits(work_id, recording_id, person_id, role, ord) VALUES(?,?,?,?,?)`},
 		{&s.recGenre, `INSERT INTO recording_librivox_genres(work_id, recording_id, genre, ord) VALUES(?,?,?,?)`},
 		{&s.chapterReader, `INSERT INTO chapter_readers(work_id, recording_id, chapter_idx, person_id, ord) VALUES(?,?,?,?,?)`},
@@ -677,6 +682,7 @@ func insertRecording(st *stmts, workID string, r *model.Recording) error {
 		nullInt(r.LibrivoxID), nullStr(r.ArchiveID), nullStr(links.Librivox), nullStr(links.Zip), nullStr(links.RSS), nullStr(links.Text),
 		nullInt(r.CopyrightYear), addedAtOf(r.AddedAt, r.Sources), nullStr(r.LibrivoxTitle),
 		nullStr(links.AudiobookGuild), nullStr(links.GraphicAudio),
+		nullStr(r.Abridgement()),
 	); err != nil {
 		return err
 	}

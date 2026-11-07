@@ -6,6 +6,8 @@ import {
   getCoverageWorks,
   getLatestWorks,
   getStatsShared,
+  getSeriesListeningGuide,
+  getPersonRecordings,
   search,
 } from './api'
 import { chosenPrefs } from './languages'
@@ -74,6 +76,38 @@ describe('formatLanguage', () => {
     expect(formatLanguage('not a code')).toBe('not a code')
     expect(formatLanguage(null)).toBeNull()
     expect(formatLanguage('')).toBeNull()
+  })
+})
+
+describe('bounded recording discovery API', () => {
+  afterEach(() => vi.unstubAllGlobals())
+
+  it('uses the additive routes and explicit page and filter parameters', async () => {
+    const urls: string[] = []
+    vi.stubGlobal('fetch', async (url: string) => {
+      urls.push(String(url))
+      return { ok: true, json: async () => ({}) }
+    })
+    await getSeriesListeningGuide('series /?', { limit: 50, offset: 50 })
+    await getPersonRecordings('person /?', { limit: 50, offset: 100, series: 'series /?', lang: 'de-AT' })
+    await getPersonRecordings('person')
+    expect(urls).toEqual([
+      '/api/v1/series/series%20%2F%3F/listening-guide?limit=50&offset=50',
+      '/api/v1/people/person%20%2F%3F/recordings?limit=50&offset=100&series=series+%2F%3F&lang=de-AT',
+      '/api/v1/people/person/recordings?limit=50&offset=0',
+    ])
+  })
+
+  it('preserves separate versions and unknown facts in the received payload', async () => {
+    const payload = { recordings: [
+      { work: { id: 'one', title: 'One', authors: [] }, recording: { id: 'known', narrators: [], abridgement: 'unabridged' }, series: [] },
+      { work: { id: 'one', title: 'One', authors: [] }, recording: { id: 'unknown', narrators: [] }, series: [] },
+    ], total: 2, limit: 50, offset: 0 }
+    vi.stubGlobal('fetch', async () => ({ ok: true, json: async () => payload }))
+    const data = await getPersonRecordings('person')
+    expect(data).toEqual(payload)
+    expect(data.recordings[1].recording).not.toHaveProperty('abridgement')
+    expect(data.recordings[1].recording).not.toHaveProperty('runtime_min')
   })
 })
 

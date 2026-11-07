@@ -46,6 +46,7 @@ const noArtifactMsg = "no data loaded yet: the server is fetching the latest rel
 // API), because two spellings of one condition is a difference a client could
 // read as a difference.
 func WriteNoArtifact(w http.ResponseWriter, wait time.Duration) {
+	w.Header().Set("Cache-Control", "no-store")
 	w.Header().Set("Retry-After", RetryAfter(wait))
 	WriteErr(w, http.StatusServiceUnavailable, noArtifactMsg)
 }
