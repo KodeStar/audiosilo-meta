@@ -148,7 +148,7 @@ func TestHotSwap(t *testing.T) {
 // the detail belongs in the log instead. The 4xx bodies are deliberately NOT
 // covered: those describe the request, which the caller sent.
 //
-// The failure is induced the way TestSitemapErrorCarriesNoCacheHeaders induces
+// The failure is induced the way TestSitemapErrorIsTemporaryAndNotStored induces
 // one - the snapshot's db is closed under the request - so it reaches the real
 // error paths of the four files that write a 500 (serve.go, abs.go, sitemap.go,
 // watchfeed.go).
@@ -184,8 +184,12 @@ func TestInternalErrorsAreNotReflected(t *testing.T) {
 		if err != nil {
 			t.Fatal(err)
 		}
-		if resp.StatusCode != http.StatusInternalServerError {
-			t.Errorf("GET %s = %d, want 500 over a closed db; body %s", path, resp.StatusCode, body)
+		wantStatus, wantError := http.StatusInternalServerError, httpx.InternalErrMsg
+		if path == "/sitemaps/works-0.xml" {
+			wantStatus, wantError = http.StatusServiceUnavailable, "sitemap temporarily unavailable"
+		}
+		if resp.StatusCode != wantStatus {
+			t.Errorf("GET %s = %d, want %d over a closed db; body %s", path, resp.StatusCode, wantStatus, body)
 			continue
 		}
 		var out map[string]string
@@ -193,7 +197,7 @@ func TestInternalErrorsAreNotReflected(t *testing.T) {
 			t.Errorf("GET %s body is not the JSON error envelope: %s", path, body)
 			continue
 		}
-		if out["error"] != httpx.InternalErrMsg {
+		if out["error"] != wantError {
 			t.Errorf("GET %s leaks the internal error: %q", path, out["error"])
 		}
 	}

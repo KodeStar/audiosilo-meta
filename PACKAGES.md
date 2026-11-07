@@ -75,12 +75,14 @@ version against `MaxSchemaVersion`) and a query that breaks on it is a 5xx the
 server answers from the remote service instead. pkg/release is public on the same
 terms (the asset names and the selection rule are the contract). The exported
 reads beyond `Open`/`Info`/`NewHandler` (`WorkDetail`, `Person`, `Series`, the page
-families and guide probes, `RedirectRetired`, `DisplayDescription`) exist for
+families and guide probes, bounded `Browse`, `RecordingChapters`,
+`SeriesListeningGuide`, `PersonRecordings`, `RedirectRetired`, `DisplayDescription`) exist for
 metaserve's pages.
 
 **The API server (`pkg/query`, served by `internal/serve`)** opens the SQLite artifact read-only and
 serves JSON under `/api/v1` (stats, `search?q=`, `works/latest`, `works/match`, `works/{id}`,
-recording `chapters`, `people/{id}`, `series/{id}`, `lookup?asin=|isbn=`) plus
+recording `chapters`, `people/{id}`, `people/{id}/recordings`, `series/{id}`,
+`series/{id}/listening-guide`, `lookup?asin=|isbn=`) plus
 `/healthz`; it can also serve a static site at `/`. Search comes in four
 flavours: the combined `search?q=` plus the **type-scoped** `works/search`,
 `people/search` and `series/search`, which are the same FTS query with an added
@@ -747,15 +749,18 @@ around the replaceable head, `<!--ssr:entity-->` where the fact sheet goes), and
 per request concatenates the literals around a composed head (title, meta
 description, canonical, og/twitter, JSON-LD) and a composed body (`#ssr-entity`,
 a plain html/template fact sheet the island removes on mount, plus
-`#entity-data` holding EXACTLY the bytes the matching API route returns, so
-hydration costs no second fetch). Every absence DEGRADES: no artifact loaded, an
-unmarked shell or a read that failed all serve the shell as built, and a missing
-shell falls through to the static handler - never a 503 or a 500, which a
-crawler would keep. The handlers call the SAME snapshot methods the JSON ones do
-(`workDetail`, `person(id,100,0)`, `series(id,0,0)`) and add ZERO SQL, so
-`TestServeLookupsAreIndexed` covers them by construction; rendering is
-deterministic (golden files in `internal/serve/testdata/golden`), the pages
-carry `ETag` + `Cache-Control: public, max-age=300`, and a retired slug 301s
+`#entity-data` holding the entity in the existing detail shape. Series membership
+is composed from the bounded guide page. Person and series pages add optional
+`recording_credits` / `listening_guide` initial data, each equal to the matching
+bounded endpoint response. Work and guide payloads remain the matching work API
+document, and hydration needs no second fetch. Missing artifacts and temporary
+composition failures return 503 with Retry-After and no-store. Missing or invalid
+shells return 500 with no-store; missing records remain 404. The handlers read
+through pkg/query and add no SQL. Person base credits retain their 500-entry
+window, while new recording credits and series membership/guide windows use 50
+rows and real `?page=N` links. Rendering is deterministic (golden files in
+`internal/serve/testdata/golden`), successful pages carry ETag and
+`Cache-Control: public, max-age=300`, and a retired slug 301s
 here too - each `htmlEntityRoutes` row names its namespace and the entity handler
 answers a retired slug with the HTML writer, and serve's redirect guard reads the
 same table, so a page cannot ship without redirect support. The
@@ -822,21 +827,47 @@ fact sheet links them from a "Guides" section (the one place the work page says
 "recap"/"characters" - the guide pages own the TEXT, so crawl weight is never
 split), and `pageIdentity` mixes in the shell's NAME so a work and its guides
 can never share a validator.
+**Ordinary links also reach the catalogue** (`catalogue.go`): `/browse` links
+five directories at `/browse/{works|series|people|recaps|characters}?page=N`.
+Each directory uses 50 stable id-ordered entries, real previous/next anchors,
+and a meaningful empty state. The homepage/header/footer link to `/browse`.
+`/works/{id}/recordings/{recording}/chapters?page=N` uses 100 bounded chapter
+rows, validates the work/recording pair and page bounds, and displays title,
+start and duration. Empty chapter lists remain useful pages for real recordings;
+unknown recordings are 404. Retired work slugs preserve the recording suffix and
+pagination, canonical redirects omit page 1 and tracking parameters, and ETags
+include both recording identity and page. These HTML reads use `DB.Browse` and
+`DB.RecordingChapters`, with no unnecessary public JSON endpoints.
+Work pages compare recordings beside the detailed cards, with stable
+`#recording-{id}` links, chapter navigation and explicit unknowns. Series pages
+show bounded recording alternatives and link to all versions on the work.
+The interactive planner requires explicit recording choices; missing runtimes,
+unselected entries, other pages and overlapping positions keep its total
+partial. Person pages group a page of narration recordings by the first listed
+series and stated recording language, retaining distinct versions of one work.
+The additive JSON endpoints are `GET /api/v1/series/{id}/listening-guide` and
+`GET /api/v1/people/{id}/recordings`, default 50/max 100 plus offset. The latter
+accepts optional series and lang filters. The guide counts alternatives before
+capping each work at five, uses numeric/decimal/range series order, and batch
+reads only candidates on the visible page. Neither new route calls WorkDetail
+per member. Recording summaries carry only stated language, abridgement,
+runtime, release date, publisher, chapter count and narrator references.
+
 **Those pages are DISCOVERABLE through the SITEMAPS** (`sitemap.go`, Phase B):
 `GET /sitemap-index.xml` - which shadows the Astro build's static file of that
 name, the one robots.txt already points at - plus `GET /sitemaps/{file}` for the
 entity shards. The index lists `/sitemap-0.xml` (the dist's own static-pages
 sitemap, only when the dist carries it), then recaps, characters, series, people
-and works shards in that order: the crawl-budget decision, few high-value files
-first - the two GUIDE families lead (one shard each, the pages "<title> recap"
-queries land on). A shard is
+and works shards in that order. This is document order, not crawler priority;
+a search engine decides which URLs to crawl and index. A shard is
 50,000 URLs (the protocol cap) of `<siteURL>/works/<slug>`-style locs in id
 order (a `sitemapFamily` carries an optional SUFFIX, so the guide families list
-`/works/<slug>/recap`-style pages over the same id space), with `<lastmod>` from
-the record's own `added_at` where the artifact
-carries one (works only; the other families have no such column, and nothing was
-added to the artifact for this - zero SchemaVersion movement) and NO
-changefreq/priority. The shard COUNT is arithmetic over per-load memos
+`/works/<slug>/recap`-style pages over the same id space). Per-URL lastmod is
+omitted: added_at records creation/import, not content revision. The index may
+state an artifact build time for each shard document itself. There is no
+changefreq/priority. A future revision-date layer needs genuine content-change
+tracking across the composed core/community repositories; rebuild, import and
+creation timestamps cannot stand in for it. The shard COUNT is arithmetic over per-load memos
 (`DB.Stats`, plus the guide-page counts settled in `loadStats` behind the
 sidecar version gate - an older artifact honestly advertises no guide shards,
 and the recap family's count and shard SQL come from ONE pure derivation over
