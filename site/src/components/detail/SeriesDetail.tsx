@@ -220,7 +220,7 @@ function Loaded({ series, hydrated }: { series: Series; hydrated: boolean }) {
                 onClick={() => save(clearOwned(store, series.id))}
                 className={`${TEXT_LINK} font-medium`}
               >
-                Clear all ownership
+                Clear ownership for this series
               </button>
             </div>
           ) : null}
