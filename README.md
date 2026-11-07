@@ -214,6 +214,13 @@ summary endpoints default to 50 rows (max 100) and take `offset`; person
 recordings also take optional `series` and `lang` filters. Existing detail API
 pagination is unchanged.
 
+Series membership and listening guides share numeric position order, with raw
+position and work ID breaking ties consistently on older artifacts too. Ownership
+marking applies to the visible series page; clearing ownership applies to the
+whole series. Zero chapter summaries mean none are catalogued. HTML validators
+include an explicit renderer version so unstamped Docker builds can invalidate
+cached pages after renderer changes.
+
 Recordings may carry `abridgement: abridged | unabridged`; absence means unknown.
 Explicit false in source JSON remains distinct from absence in artifact schema
 12. Older artifacts prove abridgement only when the legacy `abridged` is true.

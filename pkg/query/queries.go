@@ -1459,8 +1459,16 @@ func (s *DB) Series(id string, limit, offset int) (*SeriesDetail, error) {
 		return nil, err
 	}
 	d.WorksTotal = len(members)
+	// Match seriesListeningMembersSQL even when an older artifact lacks its index.
 	sort.SliceStable(members, func(i, j int) bool {
-		return positionStart(members[i].position) < positionStart(members[j].position)
+		a, b := members[i], members[j]
+		if x, y := positionStart(a.position), positionStart(b.position); x != y {
+			return x < y
+		}
+		if a.position != b.position {
+			return a.position < b.position
+		}
+		return a.workID < b.workID
 	})
 	if offset > len(members) {
 		offset = len(members)
