@@ -6,6 +6,7 @@ import {
   translationNote,
   workCount,
 } from '../../lib/person-credits'
+import PersonRecordings from './PersonRecordings'
 import WorkCard from '../cards/WorkCard'
 import { useLanguages } from '../languages/use-languages'
 import {
@@ -109,18 +110,19 @@ function Loaded({ person, hydrated }: { person: Person; hydrated: boolean }) {
         </Section>
       ) : null}
 
-      {narrated.length > 0 ? (
-        <Section
-          title="Narrated"
-          count={workCount(narrated.length)}
-          note={narrationNote(
-            person.narrated?.length ?? 0,
-            person.narrated_total,
-            narrated.length
-          )}
-        >
-          <WorkGrid works={narrated} />
-        </Section>
+      {(person.narrated_total ?? narrated.length) > 0 ? (
+        <PersonRecordings
+          person={person}
+          fallback={narrated.length > 0 ? (
+            <Section
+              title="Narrated"
+              count={workCount(narrated.length)}
+              note={narrationNote(person.narrated?.length ?? 0, person.narrated_total, narrated.length)}
+            >
+              <WorkGrid works={narrated} />
+            </Section>
+          ) : null}
+        />
       ) : null}
 
       {translated.length > 0 ? (

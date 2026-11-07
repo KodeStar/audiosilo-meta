@@ -1,4 +1,8 @@
-import { getSeries, href, personNames, today, type Series, type SeriesEntry } from '../../lib/api'
+import SeriesListeningGuide from './SeriesListeningGuide'
+import CataloguePager from './CataloguePager'
+import { useCallback, useState } from 'react'
+import { getSeriesPage, href, personNames, today, type Series, type SeriesEntry } from '../../lib/api'
+import { cataloguePage } from '../../lib/catalogue'
 import {
   clearOwned,
   isWatched,
@@ -240,6 +244,8 @@ function Loaded({ series, hydrated }: { series: Series; hydrated: boolean }) {
         </p>
       )}
 
+      <CataloguePager offset={series.offset} limit={series.limit} total={series.works_total} pageHref={(page) => href.series(series.id, page)} label="Series works pages" />
+      <SeriesListeningGuide series={series} />
       <ImproveRecord kind="series" id={series.id} />
     </div>
   )
@@ -248,7 +254,9 @@ function Loaded({ series, hydrated }: { series: Series; hydrated: boolean }) {
 export default function SeriesDetail() {
   const id = useEntitySlug('series')
   const embedded = useEmbeddedEntity<Series>(id)
-  const state = useEntity<Series>(id, getSeries, embedded)
+  const [page] = useState(() => cataloguePage(window.location.search))
+  const fetchSeries = useCallback((slug: string, signal: AbortSignal) => getSeriesPage(slug, { limit: 50, offset: (page - 1) * 50 }, signal), [page])
+  const state = useEntity<Series>(id, fetchSeries, embedded)
   if (state.status === 'loading') return <DetailSpinner />
   if (state.status === 'error') return <DetailError notFound={state.notFound} kind="series" />
   return <Loaded series={state.data} hydrated={embedded !== null} />
