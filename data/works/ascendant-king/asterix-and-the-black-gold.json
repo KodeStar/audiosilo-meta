@@ -1259,6 +1259,107 @@
         "goodreads": "122438"
       }
     },
+    "asterix-le-gaulois": {
+      "added_at": "2026-11-09",
+      "authors": [
+        "albert-uderzo",
+        "rene-goscinny"
+      ],
+      "genres": [
+        "childrens",
+        "comedy-humor"
+      ],
+      "id": "asterix-le-gaulois",
+      "language": "fr",
+      "license": "CC0-1.0",
+      "recordings": {
+        "benjamin-bollen-2020": {
+          "abridged": false,
+          "added_at": "2026-11-09",
+          "asin": [
+            {
+              "asin": "B085W76ZZG",
+              "region": "ca"
+            },
+            {
+              "asin": "2367628688",
+              "region": "de"
+            },
+            {
+              "asin": "B085W7DBWK",
+              "region": "es"
+            },
+            {
+              "asin": "B0CBYRGDRC",
+              "region": "br"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 972311,
+              "start_ms": 0,
+              "title": "Chapitre 1"
+            },
+            {
+              "length_ms": 642449,
+              "start_ms": 972311,
+              "title": "Chapitre 2"
+            },
+            {
+              "length_ms": 854400,
+              "start_ms": 1614760,
+              "title": "Chapitre 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Oksn7VxtL.jpg",
+          "id": "benjamin-bollen-2020",
+          "language": "fr",
+          "license": "CC0-1.0",
+          "narrators": [
+            "benjamin-bollen",
+            "bernard-alane",
+            "dominique-pinon",
+            "feodor-atkine",
+            "guillaume-briat",
+            "jean-claude-donda"
+          ],
+          "publisher": "Audiolib",
+          "release_date": "2020-04-29",
+          "runtime_min": 40,
+          "sources": [
+            {
+              "imported_at": "2026-11-09",
+              "ref": "B085W76ZZG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-09",
+              "ref": "2367628688",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-09",
+              "ref": "B085W7DBWK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-09",
+              "ref": "B0CBYRGDRC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "asterix-le-gaulois"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-11-09",
+          "ref": "B085W76ZZG",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Astérix le Gaulois"
+    },
     "asterix-le-gaulois-asterix-la-serpe-dor": {
       "added_at": "2026-07-29",
       "authors": [
@@ -1286,6 +1387,34 @@
             {
               "asin": "B07L9CGDQW",
               "region": "uk"
+            },
+            {
+              "asin": "B07L9FF691",
+              "region": "ca"
+            },
+            {
+              "asin": "B07L9FLPT5",
+              "region": "fr"
+            },
+            {
+              "asin": "B07L9GK3G3",
+              "region": "au"
+            },
+            {
+              "asin": "236762867X",
+              "region": "es"
+            },
+            {
+              "asin": "B07L9DMY8F",
+              "region": "it"
+            },
+            {
+              "asin": "B07L9DLYXV",
+              "region": "jp"
+            },
+            {
+              "asin": "B0BN8PLTND",
+              "region": "br"
             }
           ],
           "chapters": [
@@ -1349,6 +1478,41 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B07L9CGDQW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-09",
+              "ref": "B07L9FF691",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-09",
+              "ref": "B07L9FLPT5",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-09",
+              "ref": "B07L9GK3G3",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-09",
+              "ref": "236762867X",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-09",
+              "ref": "B07L9DMY8F",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-09",
+              "ref": "B07L9DLYXV",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-09",
+              "ref": "B0BN8PLTND",
               "type": "libex-import"
             }
           ],
