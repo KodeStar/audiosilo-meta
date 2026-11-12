@@ -8276,6 +8276,18 @@
             {
               "asin": "B0FVGDHKTH",
               "region": "us"
+            },
+            {
+              "asin": "B0FVG4VF1C",
+              "region": "ca"
+            },
+            {
+              "asin": "B0FVG7WXFD",
+              "region": "de"
+            },
+            {
+              "asin": "B0FVG8273Y",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -8674,6 +8686,21 @@
             {
               "imported_at": "2026-11-06",
               "ref": "B0FVGDHKTH",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-12",
+              "ref": "B0FVG4VF1C",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-12",
+              "ref": "B0FVG7WXFD",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-12",
+              "ref": "B0FVG8273Y",
               "type": "libex-import"
             }
           ],
@@ -9293,6 +9320,10 @@
             {
               "asin": "1666120324",
               "region": "us"
+            },
+            {
+              "asin": "1666120324",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -9495,6 +9526,11 @@
           "sources": [
             {
               "imported_at": "2026-11-06",
+              "ref": "1666120324",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-12",
               "ref": "1666120324",
               "type": "libex-import"
             }

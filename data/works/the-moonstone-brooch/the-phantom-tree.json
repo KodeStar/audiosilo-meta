@@ -5583,6 +5583,10 @@
             {
               "asin": "1250264138",
               "region": "us"
+            },
+            {
+              "asin": "1250264138",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -5865,6 +5869,11 @@
           "sources": [
             {
               "imported_at": "2026-11-06",
+              "ref": "1250264138",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-12",
               "ref": "1250264138",
               "type": "libex-import"
             }
@@ -7074,6 +7083,18 @@
             {
               "asin": "B0H4MR58PK",
               "region": "us"
+            },
+            {
+              "asin": "B0H4MR1R5D",
+              "region": "ca"
+            },
+            {
+              "asin": "B0H4MPYW12",
+              "region": "de"
+            },
+            {
+              "asin": "B0H4MLLNZW",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -7137,6 +7158,21 @@
             {
               "imported_at": "2026-11-06",
               "ref": "B0H4MR58PK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-12",
+              "ref": "B0H4MR1R5D",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-12",
+              "ref": "B0H4MPYW12",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-12",
+              "ref": "B0H4MLLNZW",
               "type": "libex-import"
             }
           ],
