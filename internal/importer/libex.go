@@ -90,9 +90,10 @@ func RunLibex(exportPath string, opts Options) (Summary, error) {
 	// All modes share decoding, admission, planner setup and reporting.
 	sum, runErr := runBooks(parsed.books, sourceLibex, opts, parsed.skips, setup...)
 	// += rather than =: runBooks has its own parse-layer refusal (the shared
-	// AI-credit gate), which is a no-op for libex because refuseLibexCredits has
-	// already dropped those rows - but the two counts are of the same thing, and
-	// clobbering would be a bug the day that stops being true.
+	// AI-credit gate), which is a no-op for libex because the parse layer's AI
+	// rule (aiCreditRefusal, listed copies included) has already dropped those
+	// rows - but the two counts are of the same thing, and clobbering would be
+	// a bug the day that stops being true.
 	sum.SkippedRows += parsed.skipped
 	// Aggregated parse lines are run-level and lead; a create run's per-row
 	// parse lines follow the run's own, keeping Summary.Warnings' order.
@@ -315,7 +316,8 @@ func parseLibexRelocation(r io.Reader) (libexParse, []relocationEvidence, error)
 // warning) when it lacks either of the two things the parse layer can decide on
 // its own - a well-formed ASIN (this source's identity and dedup key) or a
 // marketplace the recording schema knows - or when a credit names nobody this
-// catalogue can identify (refuseLibexCredits). Rows missing a title, author,
+// catalogue can identify (refuseLibexCredits; a --copies-of row is asked the AI
+// rule alone, refuseLibexCopyCredits). Rows missing a title, author,
 // narrator or language are left to addBook, which owns those rules for every
 // source.
 func (lp *libexParse) parseRow(e rawBook) {
