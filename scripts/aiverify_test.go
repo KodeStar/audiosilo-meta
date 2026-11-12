@@ -146,6 +146,7 @@ func TestAIVerifyPromptByOrigin(t *testing.T) {
 			"the display name they chose on LibriVox",
 			"centuries before the recording is normal",
 			"so is any language",
+			"which are NEGATIVE for a year BC), and neither the stamp nor an ancient author's years is a finding",
 			"A new work in no series, or a pull request that changes no series, is EXPECTED",
 			"a new series record (a '+ SERIES' line) or any change to a series record is ALWAYS a finding",
 		} {
