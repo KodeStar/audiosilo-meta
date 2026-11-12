@@ -1652,6 +1652,14 @@
             {
               "asin": "B00BNJDYD2",
               "region": "uk"
+            },
+            {
+              "asin": "B00BNILBQA",
+              "region": "de"
+            },
+            {
+              "asin": "B07287G3M9",
+              "region": "ca"
             }
           ],
           "chapters": [
@@ -1796,6 +1804,16 @@
               "imported_at": "2026-10-09",
               "ref": "B00BNJDYD2",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-12",
+              "ref": "B00BNILBQA",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-12",
+              "ref": "B07287G3M9",
+              "type": "libex-import"
             }
           ],
           "work": "sassinak"
@@ -1844,6 +1862,50 @@
           ],
           "work": "sassinak"
         },
+        "constance-towers-1999-2": {
+          "abridged": true,
+          "added_at": "2026-11-12",
+          "asin": [
+            {
+              "asin": "B004V5XWMS",
+              "region": "de"
+            },
+            {
+              "asin": "B071S35SBC",
+              "region": "ca"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 11759373,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/514JATfryFL.jpg",
+          "id": "constance-towers-1999-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "constance-towers"
+          ],
+          "publisher": "Phoenix Audio",
+          "release_date": "1999-12-16",
+          "runtime_min": 195,
+          "sources": [
+            {
+              "imported_at": "2026-11-12",
+              "ref": "B004V5XWMS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-12",
+              "ref": "B071S35SBC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "sassinak"
+        },
         "gabrielle-de-cuir-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1855,6 +1917,22 @@
             {
               "asin": "1094164399",
               "region": "uk"
+            },
+            {
+              "asin": "B0849ZP64P",
+              "region": "ca"
+            },
+            {
+              "asin": "B0C9VC15Y1",
+              "region": "br"
+            },
+            {
+              "asin": "B0849YD9X5",
+              "region": "es"
+            },
+            {
+              "asin": "B084B1S9KB",
+              "region": "in"
             }
           ],
           "chapters": [
@@ -1998,6 +2076,26 @@
             {
               "imported_at": "2026-10-09",
               "ref": "1094164399",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-12",
+              "ref": "B0849ZP64P",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-12",
+              "ref": "B0C9VC15Y1",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-12",
+              "ref": "B0849YD9X5",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-12",
+              "ref": "B084B1S9KB",
               "type": "libex-import"
             }
           ],
