@@ -82,7 +82,7 @@ func RunLibex(exportPath string, opts Options) (Summary, error) {
 			setup = append(setup, relocationSetup(evidence, parsed.skips))
 		}
 	} else {
-		parsed, err = parseLibexStream(f)
+		parsed, err = parseLibexStream(f, opts.CopiesOf)
 	}
 	if err != nil {
 		return Summary{}, err
@@ -168,6 +168,10 @@ type libexParse struct {
 	// skips names each refused row that has an ASIN to name it by, under its
 	// rule (Summary.Skips, the --skipped worklist).
 	skips []RowSkip
+	// copies is Options.CopiesOf: a row it lists is another marketplace's copy
+	// of a catalogued production, attached without its credits being read
+	// (copies.go), so parseRow refuses it for an AI credit alone.
+	copies map[string]string
 	// strs holds one copy of each genre-claim string the parse has kept
 	// (intern). nil leaves strings as they are: a one-row parse, such as
 	// libex-select's libexBook, keeps nothing that could share them.
@@ -260,9 +264,10 @@ func (lp libexParse) warningLines(aggregate bool) []string {
 // pipeline consumes (see parseRow for what refuses a row here). Each row map is
 // dropped as soon as its row is parsed, so the parse layer retains the compact
 // sourceBook of each ACCEPTED row plus the warnings - never the file and never
-// the row maps, which for libex's full dump was most of its memory.
-func parseLibexStream(r io.Reader) (libexParse, error) {
-	lp := libexParse{strs: map[string]string{}}
+// the row maps, which for libex's full dump was most of its memory. copies is
+// Options.CopiesOf (nil outside a --copies-of run).
+func parseLibexStream(r io.Reader, copies map[string]string) (libexParse, error) {
+	lp := libexParse{strs: map[string]string{}, copies: copies}
 	if err := streamLibexRows(r, false, func(_ []byte, e rawBook) { lp.parseRow(e) }); err != nil {
 		return libexParse{}, err
 	}
@@ -341,8 +346,18 @@ func (lp *libexParse) parseRow(e rawBook) {
 	// every libex mode - create, enrich and recordings-only alike - and keeps
 	// them out of the run's ASIN accounting entirely. The credit lists are read
 	// once and handed to libexToBook, which would otherwise re-read them.
+	//
+	// A --copies-of row is the exception: the recordings-only pass attaches it
+	// by its anchor ASIN and never reads its credits (copies.go), so a credit
+	// that names nobody identifiable mints nothing there and refuses nothing.
+	// Only an AI credit still refuses it: an AI-narrated listing is another
+	// production, whatever skuGroup it shares.
 	authors, narrators := libexNames(e["authors"]), libexNames(e["narrators"])
-	if r, refused := refuseLibexCredits(authors, narrators); refused {
+	refuse := refuseLibexCredits
+	if _, listed := lp.copies[asin]; listed {
+		refuse = refuseLibexCopyCredits
+	}
+	if r, refused := refuse(authors, narrators); refused {
 		lp.skipped++
 		lp.skips = appendSkip(lp.skips, asin, r.reason)
 		lp.add(r.class, r.label(asin), "%s: %s; row skipped", asin, r.detail)
@@ -628,13 +643,8 @@ func refuseLibexCredits(authors, narrators []string) (creditRefusal, bool) {
 	// read it, or an escaped spelling of an AI voice or a placeholder would be
 	// selected here and refused by runBooks' own gate after the decode.
 	decAuthors, decNarrators := decodeNames(authors), decodeNames(narrators)
-	if role, name, why, isAI := firstAICredit(decAuthors, decNarrators); isAI {
-		return creditRefusal{
-			class:  warnAINarrator,
-			reason: reasonAINarrator,
-			name:   name,
-			detail: fmt.Sprintf("%s %q is %s", role, name, why),
-		}, true
+	if r, refused := aiCreditRefusal(decAuthors, decNarrators); refused {
+		return r, true
 	}
 	if name, junk := firstJunkCredit(decAuthors, decNarrators); junk {
 		return creditRefusal{
@@ -669,6 +679,27 @@ func refuseLibexCredits(authors, narrators []string) (creditRefusal, bool) {
 		}, true
 	}
 	return creditRefusal{}, false
+}
+
+// refuseLibexCopyCredits is refuseLibexCredits for a --copies-of row (parseRow):
+// the AI rule alone, since the copy's credits are never read and an AI credit
+// is the one that says the listing is another production.
+func refuseLibexCopyCredits(authors, narrators []string) (creditRefusal, bool) {
+	return aiCreditRefusal(decodeNames(authors), decodeNames(narrators))
+}
+
+// aiCreditRefusal is the AI rule of refuseLibexCredits over DECODED names.
+func aiCreditRefusal(authors, narrators []string) (creditRefusal, bool) {
+	role, name, why, isAI := firstAICredit(authors, narrators)
+	if !isAI {
+		return creditRefusal{}, false
+	}
+	return creditRefusal{
+		class:  warnAINarrator,
+		reason: reasonAINarrator,
+		name:   name,
+		detail: fmt.Sprintf("%s %q is %s", role, name, why),
+	}, true
 }
 
 // ---------------------------------------------------------------------------

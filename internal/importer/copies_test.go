@@ -223,3 +223,38 @@ func TestParseCopiesOf(t *testing.T) {
 		}
 	}
 }
+
+// A listed copy skips the parse layer's credit refusals, all but the AI one:
+// a credit in a script that slugs to nothing (kanji) cannot mint a person on a
+// pass that reads no credit, so the copy attaches, while an AI narrator says
+// the listing is another production and refuses it. An unlisted row in the
+// same run with the same kanji credit is refused as before.
+func TestCopiesOfSkipsTheParseCreditRefusalsButTheAIOne(t *testing.T) {
+	const kanji = `[{"name":"山田太郎"}]`
+	dataDir := seedRebornCatalogue(t)
+	kanjiCopy := rebornCopyRow("B0GV5C28QN", "us", "english", "unabridged", 600, kanji)
+	aiCopy := strings.Replace(rebornCopyRow("B0GV5H3V89", "uk", "english", "unabridged", 600, doubledAuthors),
+		`"narrators":[{"name":"Ramon de Ocampo"}]`, `"narrators":[{"name":"Virtual Voice"}]`, 1)
+	unlisted := strings.Replace(kanjiCopy, "B0GV5C28QN", "B0GV5G17H4", 1)
+	sum := runCopies(t, dataDir, map[string]string{"B0GV5C28QN": rebornAnchor, "B0GV5H3V89": rebornAnchor},
+		kanjiCopy, aiCopy, unlisted)
+	if sum.CopiesAttached != 1 || sum.NewPeople != 0 {
+		t.Errorf("CopiesAttached/NewPeople = %d/%d, want 1/0", sum.CopiesAttached, sum.NewPeople)
+	}
+	got := map[string]string{}
+	for _, s := range sum.Skips {
+		got[s.ASIN] = s.Reason
+	}
+	want := map[string]string{"B0GV5H3V89": RefusalAINarrator, "B0GV5G17H4": RefusalCreditNotAPerson}
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("skips = %v, want %v", got, want)
+	}
+	var regions []string
+	for _, a := range readRebornRecording(t, dataDir).ASIN {
+		regions = append(regions, a.Region)
+	}
+	if !reflect.DeepEqual(regions, []string{"ca", "us"}) {
+		t.Errorf("regions = %v, want [ca us]", regions)
+	}
+	assertTreeValid(t, dataDir)
+}

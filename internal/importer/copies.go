@@ -43,12 +43,14 @@ import (
 // A row the file does not list goes through the ordinary recordings-only path
 // in the same run.
 //
-// One door stands ahead of the pass: the libex parse layer's row refusals
-// (parseRow) hold for every row of every mode, so a listed copy with a
-// malformed ASIN or an unmapped region, or one crediting an AI voice, a
-// platform account, a cast placeholder, a semicolon-joined list or a name that
-// slugs to nothing (refuseLibexCredits), is refused there under that rule's
-// own code and never arrives here.
+// One door stands ahead of the pass: the libex parse layer (parseRow). A
+// listed copy with a malformed ASIN or an unmapped region is refused there
+// under that rule's own code, as is one crediting an AI voice (ai-narrator:
+// an AI-narrated listing is another production). Its other credit refusals -
+// a platform account, a cast placeholder, a semicolon-joined list, a name that
+// slugs to nothing (kana, kanji) - are skipped for a listed row
+// (refuseLibexCopyCredits), since this pass reads no credit and so cannot
+// mint the person those rules guard against. Unlisted rows keep them all.
 
 // copyOf is one line of the --copies-of file: the copy row's ASIN and the
 // catalogued ASIN whose recording it is another marketplace's listing of.

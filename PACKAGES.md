@@ -2034,9 +2034,12 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   LibriVox project), `copy-language`, `copy-runtime-mismatch` (`sameRuntime`),
   `copy-abridged` (`abridgedConflict`) and `copy-region-held` (the recording
   already carries another ASIN in that region); an unmapped region or language
-  keeps its own code, and so do the parse layer's credit refusals, which
-  still turn a listed row away before the pass; unlisted rows take the
-  ordinary path); `metaimport libex-select`
+  keeps its own code, and so does an AI credit (`ai-narrator`, refused at
+  parse, since an AI-narrated listing is another production); the parse
+  layer's other credit refusals (platform account, placeholder, list, a name
+  that slugs to nothing) are skipped for a listed row
+  (`refuseLibexCopyCredits`), as the pass reads no credit; unlisted rows take
+  the ordinary path and keep every refusal); `metaimport libex-select`
   (streams the full dump, keeps only series-completing rows with a free
   position slot and mappable language/region, per-series cap, verbatim-row
   output, a report that partitions every row read. A row is series-completing

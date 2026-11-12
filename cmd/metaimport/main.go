@@ -147,9 +147,12 @@
 // with another ASIN refuse the row, under copy-anchor-unknown, copy-language,
 // copy-runtime-mismatch, copy-abridged and copy-region-held, which --skipped
 // writes (internal/importer/copies.go). An unlisted row in the same run takes
-// the ordinary recordings-only path. The parse layer's row refusals (an AI,
-// placeholder, list or unidentifiable credit among them) still apply to a
-// listed row, under their own codes.
+// the ordinary recordings-only path. Of the parse layer's credit refusals
+// only the AI one (ai-narrator) still applies to a listed row: an AI-narrated
+// listing is another production. The others (a placeholder, list, platform
+// account or unidentifiable credit, kana and kanji among them) guard against
+// minting a person, which a listed row never does, so it skips them; an
+// unlisted row keeps them all.
 //
 // --regenerate-genres (libex; and `librivox import`, librivox.go) re-derives the GENRES of catalogued works from
 // the libex rows of their own recordings, under today's mapping table and the
