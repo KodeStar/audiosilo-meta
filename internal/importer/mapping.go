@@ -1140,17 +1140,26 @@ func doubledCreditHalf(name string) (string, bool) {
 // chain ends because a half is strictly shorter than its whole.
 //
 // It reads nothing but the list, so it can neither invent nor merge a name the
-// list does not state twice. A LibriVox row's NARRATOR list never comes here:
-// its readers line up with its reader credits by index
-// (librivoxReaderCreditsByIndex), so its length is kept.
+// list does not state twice. A LibriVox row's lists never come here
+// (cleanedCredits): its readers line up with its reader credits by index
+// (librivoxReaderCreditsByIndex), and an author there is addressed by author
+// id (librivoxAuthorCredits), so two entries are two people whatever they are
+// called.
 func dropListDoubles(credits []credit) []credit {
-	if len(credits) < 2 {
+	// Almost no list states a doubled name, and this runs for every list of
+	// every row: the shape test comes first, so the rest is paid for by the
+	// rare list that has one.
+	if len(credits) < 2 || !slices.ContainsFunc(credits, func(c credit) bool {
+		_, doubled := doubledCreditHalf(c.name)
+		return doubled
+	}) {
 		return credits
 	}
 	first := make(map[string]int, len(credits))
 	for i, c := range credits {
-		if _, seen := first[foldCredit(c.name)]; !seen {
-			first[foldCredit(c.name)] = i
+		key := foldCredit(c.name)
+		if _, seen := first[key]; !seen {
+			first[key] = i
 		}
 	}
 	// survivor follows i's halves to the entry it restates, or returns i.
