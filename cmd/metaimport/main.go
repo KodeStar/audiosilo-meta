@@ -135,7 +135,7 @@
 // that position), and would mint a duplicate work on the
 // create path. Mutually exclusive with --enrich.
 //
-// --copies-of <path> (with --recordings-only, required there) attaches the rows
+// --copies-of <path> (valid with --recordings-only alone) attaches the rows
 // it lists DIRECTLY: one {"asin":"<copy>","anchor":"<catalogued ASIN>"} JSON
 // line per row, the rows themselves read from the run's usual export input. A
 // listed row is another marketplace's copy of the production its anchor ASIN
@@ -147,7 +147,9 @@
 // with another ASIN refuse the row, under copy-anchor-unknown, copy-language,
 // copy-runtime-mismatch, copy-abridged and copy-region-held, which --skipped
 // writes (internal/importer/copies.go). An unlisted row in the same run takes
-// the ordinary recordings-only path.
+// the ordinary recordings-only path. The parse layer's row refusals (an AI,
+// placeholder, list or unidentifiable credit among them) still apply to a
+// listed row, under their own codes.
 //
 // --regenerate-genres (libex; and `librivox import`, librivox.go) re-derives the GENRES of catalogued works from
 // the libex rows of their own recordings, under today's mapping table and the
@@ -787,7 +789,7 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport audiosilo-books <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
-	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only | --relocate | --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>]] [--existing-series-only] [--attach-editions] [--copies-of <path>] [--skipped <path>]")
+	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only [--copies-of <path>] | --relocate | --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>]] [--existing-series-only] [--attach-editions] [--skipped <path>]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--reported] [--refusals <path>] [--attachments <path>] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-fill  [--data data] [--works a,b] [--limit N] [--all-tiers | --released-preorders] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport narrations  -o <worklist.ndjson> [--data data] [--works a,b] [--user-library] [--limit N] [--rows <rows.ndjson>]")

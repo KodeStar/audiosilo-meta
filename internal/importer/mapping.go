@@ -1135,9 +1135,11 @@ func doubledCreditHalf(name string) (string, bool) {
 // alone, "Duran Duran", "Fang Fang" and "Lang Lang" are names, but beside the
 // same list's "XKarnation" the doubled spelling is the source restating one
 // person, not a second person (libex's BK_RECO_021995 credits both and minted
-// a phantom `xkarnation-xkarnation` per region). Comparison is foldCredit's,
-// on the cleaned names. A survivor is always an entry the list states, and the
-// chain ends because a half is strictly shorter than its whole.
+// a phantom `xkarnation-xkarnation` per region). The doubled shape is
+// doubledCreditHalf's (the two halves equal word for word, case aside); the
+// half is then matched to its entry under foldCredit, on the cleaned names. A
+// survivor is always an entry the list states, and the chain ends because a
+// half is strictly shorter than its whole.
 //
 // It reads nothing but the list, so it can neither invent nor merge a name the
 // list does not state twice. A LibriVox row's lists never come here
