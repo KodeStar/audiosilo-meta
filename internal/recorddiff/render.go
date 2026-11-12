@@ -131,17 +131,20 @@ func oneLine(s string) string {
 	}, s)
 }
 
-// headLines are the lines that are never dropped: what this render is, the range
-// it covers, the per-family counts, and anything the comparison could not read.
+// headLines are the lines that are never dropped: what this render is, the
+// per-family counts, and anything the comparison could not read.
+//
+// The text names NO commit (Base and Head stay in JSON): it is what ai-verify
+// judges and hashes into its reuse key, and the intake sweep's every rebase
+// moves both commits while the records stay put - with a `range:` line here no
+// rebased pull request's verdict was ever reused, and #2961 bought six
+// identical flags in one day.
 func (d *Diff) headLines() []string {
 	out := []string{
 		"AudioSilo Meta - ENTRY-LEVEL SUMMARY of a data change (not a text diff).",
+		fmt.Sprintf("changed files under the data root: %d", d.Files),
+		"",
 	}
-	if d.Base != "" || d.Head != "" {
-		out = append(out, fmt.Sprintf("range: %s..%s", d.Base, d.Head))
-	}
-	out = append(out, fmt.Sprintf("changed files under the data root: %d", d.Files))
-	out = append(out, "")
 
 	fams := make([]pack.Family, 0, len(d.Counts))
 	for f := range d.Counts {

@@ -241,15 +241,23 @@ jobs:
           echo "context_format=$CONTEXT_FORMAT" >> "$GITHUB_OUTPUT"
 
           # The slug tombstone table is the one non-pack file in the tree and it
-          # is small, so its raw diff is appended verbatim: a retired slug is a
+          # is small, so its raw diff is appended whole: a retired slug is a
           # judgement call the summary's added/removed pairs should be checked
           # against. (git diff exits 0 whether or not there are differences, so
           # a non-zero status here is a real git failure and should fail the step
-          # rather than being swallowed.)
+          # rather than being swallowed - hence the assignment, which `set -e`
+          # sees, rather than a pipe, which it would not.) The blob ids on the
+          # `index` line and the line numbers on each `@@` header are dropped:
+          # context.txt is the reuse key, and both move whenever main's table
+          # does, so every intake rebase of a title correction (which carries a
+          # retitle alias) judged its unchanged redirects afresh.
+          redirects_diff="$(git diff --unified=3 "${BASE_SHA}...${HEAD_SHA}" -- 'data/redirects.json')"
           {
             echo
             echo "===== RAW DIFF OF data/redirects.json ====="
-            git diff --unified=3 "${BASE_SHA}...${HEAD_SHA}" -- 'data/redirects.json'
+            if [ -n "$redirects_diff" ]; then
+              printf '%s\n' "$redirects_diff" | sed -E '/^index [0-9a-f]+\.\.[0-9a-f]+/d; s/^@@ -[0-9]+(,[0-9]+)? \+[0-9]+(,[0-9]+)? @@/@@/'
+            fi
           } >> context.txt
 
           # THE ADVISORIES THIS PULL REQUEST INTRODUCES (advisory-delta.sh says why):
