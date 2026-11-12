@@ -52,7 +52,7 @@ On top of a green pull request:
 |---|---|
 | `data/` only, opened by a **Trusted Contributor** | Auto-merges via GitHub-native auto-merge once required checks pass. No human step. |
 | `data/` only, opened by **anyone else** | One maintainer approval, then merge. For a pull request from a branch of this repository into `main` (intake, steward and contributor branches alike) that approval is given by the maintainer's **steward** once required checks pass **and** `ai-verify` has applied `ai-verified` to its exact head - see "The steward" below. A fork pull request, or one larger than the steward's review bound, still waits for a person. |
-| `data/` only, opened by the **series-completion bot** (`bot-sync`) | Merges itself once required checks pass **and** `ai-verify` has applied `ai-verified`. The one automated exception, bounded by "Series-completion bot" below; a pull request that cannot reach that gate is closed by the bot (`sync:auto-excluded`), never merged. |
+| `data/` only, opened by the **series-completion bot** (`bot-sync`) | Merges itself once required checks pass **and** `ai-verify` has applied `ai-verified`. The one automated exception, bounded by "Series-completion bot" and "The LibriVox lane" below; a pull request that cannot reach that gate is closed by the bot (`sync:auto-excluded`), never merged. |
 | `schema/`, `cmd/`, `internal/`, or `.github/` | **Always** one maintainer approval - never auto-merge. Enforced by `CODEOWNERS`. |
 
 Auto-merge is GitHub's native feature (green required checks → merge), not a bot
@@ -226,8 +226,8 @@ coming-soon feeds across every marketplace region, keeps only the rows that
 **complete series this catalogue already holds**, and opens one pull request per
 cycle. Its one other way in from a retailer is the much narrower reported-ASIN
 lane below; its LibriVox lane is a separate source with a section of its own.
-This section is the whole of its licence to do either; nothing else in the merge
-policy moves.
+This section is the whole of its licence for the first two; nothing else in the
+merge policy moves.
 
 **The bound.** Selection is the existing `metaimport libex-select` tranche
 selector, which refuses any row whose series the catalogue does not already
@@ -447,8 +447,9 @@ becomes due. At most 50 projects are fetched by id in a run.
 list in the bot's state, never forgotten, and tried again on its own schedule:
 in progress (when the census sees it complete), a worklist row (every 7 days),
 refused by the importer or not landed (every 30 days), past the 200 cap (the
-next run), failed, which is an import, check or invariant failure (after 7
-days), or excluded by the ladder below (once more after 30 days, then held for a
+next run), failed, which is a run discarded before any pull request opened
+because its import, its validation or the invariant failed (after 7 days), or
+excluded by the ladder below (once more after 30 days, then held for a
 person). A project leaves the list when the catalogue holds it, whoever added
 it.
 
@@ -472,9 +473,10 @@ completion pull request does: the required checks green and `ai-verified` on its
 exact head. ai-verify reads such a branch as the LibriVox lane, whose prompt says
 what a LibriVox record is (its `librivox_id` and archive.org item are the
 evidence, no ASIN is expected, readers are volunteers under the names they
-chose, old first-publication years and every language are normal, a work in no
-series is expected) and makes any series change a finding. Its advisories are
-shown in the verdict comment, unflagged, as on a completion pull request.
+chose, old first-publication years and every language are normal, a stamp on a
+held person is expected, a work in no series is expected) and makes any series
+change a finding. Its advisories are shown in the verdict comment, unflagged, as
+on a completion pull request.
 **There is no resolver.** A flag, or a required check that fails again after its
 one re-run, closes the pull request unmerged: the projects behind the works the
 finding names are excluded (all of its projects when it names none), the rest
