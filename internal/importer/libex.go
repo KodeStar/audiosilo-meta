@@ -168,9 +168,8 @@ type libexParse struct {
 	// skips names each refused row that has an ASIN to name it by, under its
 	// rule (Summary.Skips, the --skipped worklist).
 	skips []RowSkip
-	// copies is Options.CopiesOf: a row it lists is another marketplace's copy
-	// of a catalogued production, attached without its credits being read
-	// (copies.go), so parseRow refuses it for an AI credit alone.
+	// copies is Options.CopiesOf: parseRow refuses a row it lists for an AI
+	// credit alone (refuseLibexCopyCredits).
 	copies map[string]string
 	// strs holds one copy of each genre-claim string the parse has kept
 	// (intern). nil leaves strings as they are: a one-row parse, such as
@@ -604,8 +603,11 @@ func libexGenreClaims(v any, intern func(string) string) []genreClaim {
 // exclusion below. All live
 // at the PARSE layer so they hold for every libex mode - create, --enrich,
 // --recordings-only - and all are applied through refuseLibexCredits, which the
-// bounded-subset selector (selectLibexRow) calls too. A row the importer will
-// refuse must never be selected into a tranche as if it were importable: it
+// bounded-subset selector (selectLibexRow) calls too. The one exception is a
+// --copies-of row, which takes the AI rule alone (refuseLibexCopyCredits): a
+// new rule that says a listing is another production belongs there as well.
+// A row the importer will refuse must never be selected into a tranche as if
+// it were importable: it
 // would inflate the selection report and, worse, claim a series position slot a
 // genuinely importable sibling row could have completed.
 
@@ -681,9 +683,8 @@ func refuseLibexCredits(authors, narrators []string) (creditRefusal, bool) {
 	return creditRefusal{}, false
 }
 
-// refuseLibexCopyCredits is refuseLibexCredits for a --copies-of row (parseRow):
-// the AI rule alone, since the copy's credits are never read and an AI credit
-// is the one that says the listing is another production.
+// refuseLibexCopyCredits is refuseLibexCredits for a --copies-of row: the AI
+// rule alone (why: copies.go's header).
 func refuseLibexCopyCredits(authors, narrators []string) (creditRefusal, bool) {
 	return aiCreditRefusal(decodeNames(authors), decodeNames(narrators))
 }
