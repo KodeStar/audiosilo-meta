@@ -399,7 +399,8 @@ policy, and any change a person makes to LibriVox records still goes that way.
 (both sides of each, a whole pack family read together, deleted packs
 included), after the tree is formatted and validated and before anything is
 committed. A run that breaks it is discarded whole: nothing is pushed, no pull
-request opens, and its projects wait a week before they are tried again.
+request opens, and its projects are held as failed (the pending list below says
+how they come back).
 
 - It adds only `librivox`-sourced works, people and recordings. A new record
   whose `sources` name anything but `librivox` is refused, and so is a new
@@ -426,32 +427,40 @@ a lane pull request belongs to completion, and a merge lets that cycle start at
 once. A pull request carries at most **200 projects**, and the rest wait for the
 next run. The lane reads LibriVox's `since` from its own cursor, the midnight UTC
 of the day its last merged window was read, which in practice is one request a
-run. The cursor moves only when a lane pull request merges, or when a run finds
+run; with no cursor yet (a first run) it reads from yesterday. The cursor moves
+only when a lane pull request that read a window merges, or when a run finds
 every project in its window already held or already on the pending list below.
-Opening, closing, recycling or excluding a pull request, a failed import and a
-dry run move nothing, so no window is ever skipped. Requests go out at least 5
+Opening, closing, recycling or excluding a pull request, a failed import, a
+retry of failed projects and a dry run move nothing, so no window is ever
+skipped. Requests go out at least 5
 seconds apart, honour `Retry-After`, and name meta.audiosilo.app and
 kode@audiosilo.app in their User-Agent.
 
-**The census.** `since` only sees what LibriVox catalogues after the cursor, and
-a project catalogued while it is still being recorded (no runtime and no
-archive.org item yet) is not imported, so the cursor alone would never look at
-it again. On its first run, and every 30 days after, the lane therefore lists
-the whole catalogue in about 45 light requests: only each project's id, runtime
-and archive.org item, 500 to a page, 5 seconds apart. A project LibriVox lists
-that the catalogue lacks and the pending list does not hold is fetched by id and
-imported, or held as in progress; an in-progress project that now looks complete
-becomes due. At most 50 projects are fetched by id in a run.
+**The census.** LibriVox's `since` filters on a project's catalogue date, so the
+daily window does reach a project that completes after it was first listed. The
+census is the safety net behind it, for whatever a window missed. On its first
+run, and every 30 days after, the lane lists the whole catalogue in about 45
+light requests: only each project's id and runtime, 500 to a page, 5 seconds
+apart. (The archive.org item is left out because it needs LibriVox's extended
+answer, about twelve times slower.) A project LibriVox lists that the catalogue
+lacks and the pending list does not hold is fetched by id and imported, or held
+as in progress, which the census judges by a missing runtime alone; an
+in-progress project that now has a runtime becomes due. At most 50 projects are
+fetched by id in a run.
 
 **The pending list.** A project the lane could not land is kept on a durable
 list in the bot's state, never forgotten, and tried again on its own schedule:
 in progress (when the census sees it complete), a worklist row (every 7 days),
-refused by the importer or not landed (every 30 days), past the 200 cap (the
-next run), failed, which is a run discarded before any pull request opened
-because its import, its validation or the invariant failed (after 7 days), or
-excluded by the ladder below (once more after 30 days, then held for a
-person). A project leaves the list when the catalogue holds it, whoever added
-it.
+refused by the importer or not landed (every 30 days; a project LibriVox no
+longer lists is held as not landed), past the 200 cap or put back by the ladder
+below (the next run), failed, which is a run discarded before any pull request
+opened because its import, its validation or the invariant failed (after 7
+days), or excluded by the ladder below (once more after 30 days, then held for a
+person). A failed batch is never retried whole: when failed projects are due,
+that day's run imports only the first half of them (or the one alone, when only
+one is due) and leaves the day's window for the next run, and its pull request's
+merge leaves the cursor where it is. A project leaves the list when the
+catalogue holds it, whoever added it.
 
 **The worklist issue.** The rows the importer will not decide alone go to one
 issue on this repository that the bot keeps current. Above all that is
@@ -477,12 +486,14 @@ chose, old first-publication years and every language are normal, a stamp on a
 held person is expected, a work in no series is expected) and makes any series
 change a finding. Its advisories are shown in the verdict comment, unflagged, as
 on a completion pull request.
-**There is no resolver.** A flag, or a required check that fails again after its
-one re-run, closes the pull request unmerged: the projects behind the works the
-finding names are excluded (all of its projects when it names none), the rest
-go back on the list for the next run, and the lane rests a day. A pull request
-closed for want of a verdict moves nothing, and the next run reads the same
-window again.
+**There is no resolver.** Only an ai-verify flag excludes: it closes the pull
+request unmerged, the projects behind the works the finding names are excluded
+(all of its projects when it names none), the rest go back on the list for the
+next run, and the lane rests a day. A required check that fails again after its
+one re-run closes the pull request too, but excludes nothing: every project goes
+back on the list for the next run, with no rest day, since such a failure is
+almost always systemic rather than about one record. A pull request closed for
+want of a verdict moves nothing, and the next run reads the same window again.
 
 **Accountability.** Every record carries the typed `librivox` provenance with
 its project id, so it ranks as a bulk-mirror record and the whole source retracts
