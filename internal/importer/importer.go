@@ -834,6 +834,11 @@ func runBooks(books []sourceBook, sourceType string, opts Options, parseSkips []
 	if err := ValidateRowsAsOf(opts.Mode, opts.RowsAsOf, time.Now().UTC()); err != nil {
 		return Summary{}, err
 	}
+	// A listed copy is attached by the recordings-only pass of a libex run
+	// (copies.go); anywhere else its rows would be set aside and never planned.
+	if len(opts.CopiesOf) > 0 && (opts.Mode != ModeRecordingsOnly || sourceType != sourceLibex) {
+		return Summary{}, fmt.Errorf("copies (--copies-of) attach in the recordings-only pass of a libex run alone")
+	}
 	// The run's trust tier, asked here as well as by newPlanner because the AI
 	// gate below runs before the planner exists and needs the same answer: a person's own library (or a hand submission) may admit a
 	// synthetic narration under the canonical record, the bulk mirror may not.
@@ -962,9 +967,6 @@ func regenRecsFor(m Mode) map[RecRef][]string {
 // Summary through result(), so every way out of a run reports its warnings in
 // the same order.
 func (p *planner) run(books []sourceBook, opts Options) error {
-	if len(opts.CopiesOf) > 0 && opts.Mode != ModeRecordingsOnly {
-		return fmt.Errorf("copies (--copies-of) attach in the recordings-only pass alone")
-	}
 	// The row door of every run: each row's comparable runtime is resolved once,
 	// against the run's date, before anything compares one (estimate.go).
 	for i := range books {
