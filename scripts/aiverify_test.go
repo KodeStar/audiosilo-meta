@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"testing"
 )
@@ -48,15 +49,51 @@ func stubBin(t *testing.T, dir, today string) string {
 	return bin
 }
 
+// aiVerifyRun is what one run of ai-verify.sh left behind: the system prompt and
+// message the stub claude was handed, and the verdict and comment files.
+type aiVerifyRun struct{ system, stdin, verdict, comment string }
+
+// runAIVerify runs ai-verify.sh over context with bin (stubBin) first on PATH
+// and nothing else inherited but PATH, so a PR_ORIGIN, CONTEXT_FORMAT or API key
+// in the caller's environment cannot reach the prompt.
+func runAIVerify(t *testing.T, bin, context string, env ...string) aiVerifyRun {
+	t.Helper()
+	out := t.TempDir()
+	cmd := exec.Command("bash", abs(t, filepath.Join("..", ".github", "scripts", "ai-verify.sh")),
+		context, filepath.Join(out, "verdict.json"), filepath.Join(out, "comment.md"))
+	cmd.Env = append([]string{"PATH=" + bin + string(os.PathListSeparator) + os.Getenv("PATH"), "HOME=" + out,
+		"CLAUDE_CODE_OAUTH_TOKEN=test", "OUTDIR=" + out}, env...)
+	if b, err := cmd.CombinedOutput(); err != nil {
+		t.Fatalf("ai-verify.sh %v: %v\n%s", env, err, b)
+	}
+	return aiVerifyRun{
+		readFile(t, filepath.Join(out, "system.txt")), readFile(t, filepath.Join(out, "stdin.txt")),
+		readFile(t, filepath.Join(out, "verdict.json")), readFile(t, filepath.Join(out, "comment.md")),
+	}
+}
+
+// originCaution splits a system prompt around its origin caution: the sentences
+// opening with lead, up to the one every origin shares.
+func originCaution(t *testing.T, system, lead string) (before, caution, after string) {
+	t.Helper()
+	const shared = " So never flag a record as fabricated"
+	before, rest, okLead := strings.Cut(system, lead)
+	caution, after, okShared := strings.Cut(rest, shared)
+	if !okLead || !okShared {
+		t.Fatalf("no origin caution opening %q before %q:\n%s", lead, shared, system)
+	}
+	return before, lead + caution, shared + after
+}
+
 // The prompts of the origins that predate the LibriVox lane, with the date fixed
 // at 2026-01-01 and no advisories, are pinned BYTE FOR BYTE: the hashes were taken
 // from the script before the lane's origin was added. A deliberate change to the
 // shared prompt changes them; replace them then, in the same commit, and say why.
-var originPromptSHA256 = map[string]string{
-	"contributor/summary":  "f336fe28add4c7a41fcba190a88bb7e25b81b1e1db349d5610ebd4b15a50f6a5",
-	"contributor/raw-diff": "2bda5bccd2e7c6a5eb9645cec94313d6336edbdfab9884dbfe88dfe86162a7ed",
-	"sync-bot/summary":     "4f1ae63d38e9473f30da167c6530ddc1aa035b9fb07a63feecd4a51e4dfc8807",
-	"sync-bot/raw-diff":    "590a421b06d22d1f1cd6a765af6b0e377efd58b5856727185e627ce27bdfd50d",
+var originPromptSHA256 = []struct{ origin, format, sha256 string }{
+	{"contributor", "summary", "f336fe28add4c7a41fcba190a88bb7e25b81b1e1db349d5610ebd4b15a50f6a5"},
+	{"contributor", "raw-diff", "2bda5bccd2e7c6a5eb9645cec94313d6336edbdfab9884dbfe88dfe86162a7ed"},
+	{"sync-bot", "summary", "4f1ae63d38e9473f30da167c6530ddc1aa035b9fb07a63feecd4a51e4dfc8807"},
+	{"sync-bot", "raw-diff", "590a421b06d22d1f1cd6a765af6b0e377efd58b5856727185e627ce27bdfd50d"},
 }
 
 func TestAIVerifyPromptByOrigin(t *testing.T) {
@@ -72,28 +109,15 @@ func TestAIVerifyPromptByOrigin(t *testing.T) {
 	if err := os.WriteFile(advisories, []byte("1 new advisory (orphan-person 1):\n- [orphan-person] people: entry p: an orphan record\n"), 0o644); err != nil {
 		t.Fatal(err)
 	}
-	type result struct{ system, stdin, verdict, comment string }
-	run := func(env ...string) result {
+	run := func(env ...string) aiVerifyRun {
 		t.Helper()
-		out := t.TempDir()
-		cmd := exec.Command("bash", abs(t, filepath.Join("..", ".github", "scripts", "ai-verify.sh")),
-			context, filepath.Join(out, "verdict.json"), filepath.Join(out, "comment.md"))
-		cmd.Env = append([]string{"PATH=" + bin + string(os.PathListSeparator) + os.Getenv("PATH"), "HOME=" + out,
-			"CLAUDE_CODE_OAUTH_TOKEN=test", "OUTDIR=" + out}, env...)
-		if b, err := cmd.CombinedOutput(); err != nil {
-			t.Fatalf("ai-verify.sh %v: %v\n%s", env, err, b)
-		}
-		return result{
-			readFile(t, filepath.Join(out, "system.txt")), readFile(t, filepath.Join(out, "stdin.txt")),
-			readFile(t, filepath.Join(out, "verdict.json")), readFile(t, filepath.Join(out, "comment.md")),
-		}
+		return runAIVerify(t, bin, context, env...)
 	}
 
-	for key, want := range originPromptSHA256 {
-		origin, format, _ := strings.Cut(key, "/")
-		sum := sha256.Sum256([]byte(run("PR_ORIGIN="+origin, "CONTEXT_FORMAT="+format).system))
-		if got := hex.EncodeToString(sum[:]); got != want {
-			t.Errorf("the %s prompt (%s) changed: sha256 %s, want %s", origin, format, got, want)
+	for _, pin := range originPromptSHA256 {
+		sum := sha256.Sum256([]byte(run("PR_ORIGIN="+pin.origin, "CONTEXT_FORMAT="+pin.format).system))
+		if got := hex.EncodeToString(sum[:]); got != pin.sha256 {
+			t.Errorf("the %s prompt (%s) changed: sha256 %s, want %s", pin.origin, pin.format, got, pin.sha256)
 		}
 	}
 
@@ -109,19 +133,13 @@ func TestAIVerifyPromptByOrigin(t *testing.T) {
 				t.Errorf("%s: origin %v does not read as a contributor's", format, env)
 			}
 		}
-		// The lane changes the origin caution and nothing else: put the
-		// contributor's sentence back in its place and the prompts are equal.
-		start := strings.Index(lane.system, laneLead)
-		end := strings.Index(lane.system, " So never flag a record as fabricated")
-		cStart := strings.Index(contributor.system, "THIS PULL REQUEST WAS NOT OPENED BY THE SERIES-COMPLETION BOT")
-		cEnd := strings.Index(contributor.system, " So never flag a record as fabricated")
-		if start < 0 || end < start || cStart < 0 || cEnd < cStart {
-			t.Fatalf("%s: the origin caution is not where it was:\n%s", format, lane.system)
-		}
-		if lane.system[:start]+contributor.system[cStart:cEnd]+lane.system[end:] != contributor.system {
+		// The lane changes the origin caution and nothing else: what stands
+		// before and after it is the contributor's prompt.
+		before, caution, after := originCaution(t, lane.system, laneLead)
+		cBefore, _, cAfter := originCaution(t, contributor.system, "THIS PULL REQUEST WAS NOT OPENED BY THE SERIES-COMPLETION BOT")
+		if before != cBefore || after != cAfter {
 			t.Errorf("%s: the lane's prompt differs from a contributor's outside the origin caution", format)
 		}
-		caution := lane.system[start:end]
 		for _, want := range []string{
 			"librivox_id and its archive.org item (archive_id) are the evidence it exists",
 			"NO ASIN, ISBN or retailer source is expected",
@@ -166,27 +184,17 @@ func TestAIVerifyPromptByOrigin(t *testing.T) {
 	}
 }
 
-// originBlock returns the gather step's origin selection from ai-verify.yml: the
-// lines after the one reading the branch, up to the `fi` closing the selection.
+// originSelection matches the gather step's origin selection in ai-verify.yml:
+// the lines after the one reading the branch, up to the `fi` closing it.
+var originSelection = regexp.MustCompile(`(?s)PR_BRANCH="\$\(gh pr view[^\n]*\n(.*?\n[ \t]*fi)\n`)
+
 func originBlock(t *testing.T) string {
 	t.Helper()
-	raw, err := os.ReadFile(filepath.Join("..", ".github", "workflows", "ai-verify.yml"))
-	if err != nil {
-		t.Fatal(err)
+	m := originSelection.FindStringSubmatch(readFile(t, filepath.Join("..", ".github", "workflows", "ai-verify.yml")))
+	if m == nil {
+		t.Fatal("ai-verify.yml: no origin selection after the PR_BRANCH line")
 	}
-	lines := strings.Split(string(raw), "\n")
-	for i, l := range lines {
-		if !strings.Contains(l, `PR_BRANCH="$(gh pr view`) {
-			continue
-		}
-		for j := i + 1; j < len(lines); j++ {
-			if strings.TrimSpace(lines[j]) == "fi" {
-				return strings.Join(lines[i+1:j+1], "\n")
-			}
-		}
-	}
-	t.Fatal("ai-verify.yml: no origin selection after the PR_BRANCH line")
-	return ""
+	return m[1]
 }
 
 // The gather step reads a `sync/librivox-` branch as the LibriVox lane BEFORE the
