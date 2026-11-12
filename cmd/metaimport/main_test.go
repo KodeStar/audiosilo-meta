@@ -6,6 +6,7 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"reflect"
 	"strings"
 	"testing"
 
@@ -1005,5 +1006,57 @@ func TestCreateRunPrintsUnrecordedCredits(t *testing.T) {
 	sum = importer.Summary{}
 	if out := captureStdout(t, func() { runSource("openaudible", []string{"books.json", "--dry-run"}, run) }); strings.Contains(out, "not recorded") {
 		t.Errorf("an empty list printed:\n%s", out)
+	}
+}
+
+// --copies-of is the recordings-only pass's direct attachment: refused in any
+// other mode and for any other source (the importer never runs), read into
+// Options.CopiesOf when it is valid, refused for an unreadable or malformed
+// file, and summarized on a line of its own.
+func TestCopiesOfRequiresRecordingsOnly(t *testing.T) {
+	dir := t.TempDir()
+	list := filepath.Join(dir, "copies.ndjson")
+	if err := os.WriteFile(list, []byte(`{"asin":"B0GV5C28QN","anchor":"B0GV5B7VF2"}`+"\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	var got importer.Options
+	called := false
+	run := func(_ string, opts importer.Options) (importer.Summary, error) {
+		called, got = true, opts
+		return importer.Summary{MergedASINs: 1, CopiesAttached: 1}, nil
+	}
+	for _, args := range [][]string{
+		{"export.json", "--copies-of", list},
+		{"export.json", "--enrich", "--copies-of", list},
+	} {
+		called = false
+		if code := runSource(boundedSource, args, run); code != 2 || called {
+			t.Errorf("%q: exit %d, ran %v; want 2 and no run", args, code, called)
+		}
+	}
+	if code := runSource("openaudible", []string{"books.json", "--copies-of", list}, run); code != 2 || called {
+		t.Errorf("openaudible --copies-of: exit %d, ran %v; want 2 and no run", code, called)
+	}
+
+	var code int
+	out := captureStdout(t, func() {
+		code = runSource(boundedSource, []string{"export.json", "--recordings-only", "--copies-of", list}, run)
+	})
+	if code != 0 || !reflect.DeepEqual(got.CopiesOf, map[string]string{"B0GV5C28QN": "B0GV5B7VF2"}) {
+		t.Errorf("exit %d, CopiesOf %v", code, got.CopiesOf)
+	}
+	if !strings.Contains(out, "  attached 1 listed copy to its anchor's recording (--copies-of; counted above as merged asins)") {
+		t.Errorf("summary = %q", out)
+	}
+
+	bad := filepath.Join(dir, "bad.ndjson")
+	if err := os.WriteFile(bad, []byte(`{"asin":"B0GV5C28QN"}`+"\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	for _, path := range []string{bad, filepath.Join(dir, "missing.ndjson")} {
+		called = false
+		if code := runSource(boundedSource, []string{"export.json", "--recordings-only", "--copies-of", path}, run); code != 2 || called {
+			t.Errorf("%s: exit %d, ran %v; want 2 and no run", path, code, called)
+		}
 	}
 }

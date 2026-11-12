@@ -361,6 +361,10 @@ type planner struct {
 	// recordings-only run needs the p.asins membership test alone and pays
 	// nothing, so a nil map is still "this run never looks a record up".
 	asinLoc map[string]RecRef
+	// copiesOf is Options.CopiesOf: copy ASIN -> anchor ASIN, the rows a
+	// recordings-only run attaches directly to the anchor's recording
+	// (copies.go); nil otherwise.
+	copiesOf map[string]string
 	// userTier reports whether THIS run's source type carries user-library trust
 	// (model.TierUserLibrary): a person's own library export, as opposed to the
 	// libex bulk mirror. It is the run-wide half of the overwrite decision; the
@@ -899,7 +903,7 @@ func openPlanner(sourceType string, opts Options) (*planner, error) {
 // only add the catalogue's ASIN-collision warnings to its summary.
 func plannerOn(store *pack.Store, sourceType string, opts Options) *planner {
 	p := newPlanner(store, sourceType, opts)
-	if (opts.Mode.locatesASINs() || p.userTier) && sourceType != sourceLibrivox {
+	if (opts.Mode.locatesASINs() || p.userTier || len(opts.CopiesOf) > 0) && sourceType != sourceLibrivox {
 		p.asinLoc = map[string]RecRef{}
 	}
 	return p
@@ -934,6 +938,7 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 		userTier:           model.TierOfSource(sourceType) == model.TierUserLibrary,
 		mirrorTier:         model.TierOfSource(sourceType) == model.TierBulkMirror,
 		existingSeriesOnly: opts.ExistingSeriesOnly,
+		copiesOf:           opts.CopiesOf,
 		attachEditions:     opts.AttachEditions,
 		loadedPositions:    opts.AttachEditions,
 		regenRecs:          regenRecsFor(opts.Mode),
@@ -957,6 +962,9 @@ func regenRecsFor(m Mode) map[RecRef][]string {
 // Summary through result(), so every way out of a run reports its warnings in
 // the same order.
 func (p *planner) run(books []sourceBook, opts Options) error {
+	if len(opts.CopiesOf) > 0 && opts.Mode != ModeRecordingsOnly {
+		return fmt.Errorf("copies (--copies-of) attach in the recordings-only pass alone")
+	}
 	// The row door of every run: each row's comparable runtime is resolved once,
 	// against the run's date, before anything compares one (estimate.go).
 	for i := range books {
@@ -969,6 +977,10 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	// credit decisions are taken (librivox.go, librivoxpeople.go); no-ops for
 	// every other source.
 	p.decodeLibrivoxCredits(books)
+	// A --copies-of row is attached by its anchor ASIN alone (copies.go): it is
+	// kept out of every batch decision below, so its credits and series claims
+	// are never read and cannot sway another row's.
+	books, copies := p.splitCopies(books)
 	if p.mode.plansRows() {
 		// The genre regeneration reads no credit, so it takes no credit
 		// decisions and runs no author rules over the unheld projects of its
@@ -993,6 +1005,9 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 		p.planEnrich(books)
 	case ModeRecordingsOnly:
 		p.planRecordings(books)
+		if p.fatal == nil {
+			p.planCopies(copies)
+		}
 	case ModeCreate:
 		p.planCreate(books)
 	case ModeRelocate:

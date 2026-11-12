@@ -300,6 +300,15 @@ type Options struct {
 	// behaviour exactly. The series-completion bot passes it, with
 	// libex-select's own --attach-editions.
 	AttachEditions bool
+	// CopiesOf (`metaimport libex --recordings-only --copies-of <file>`,
+	// ReadCopiesOf) maps a row's ASIN to the catalogued ANCHOR ASIN whose
+	// recording it is another marketplace's copy of, as the caller proved it
+	// (the sync bot: one libex skuGroup). A listed row is merged onto the
+	// anchor's recording under the physical guards alone, its credits and
+	// series never read (copies.go); every other row of the run is planned as
+	// usual. Valid with ModeRecordingsOnly only; nil is the default and the
+	// long-standing behaviour exactly.
+	CopiesOf map[string]string
 	// RowsAsOf (`--rows-as-of`, REQUIRED by ModeRegenerateGenres) is the
 	// YYYY-MM-DD snapshot date of the rows: a work whose newest provenance -
 	// its added_at, every recording's, every sources[].imported_at on it and its
@@ -492,14 +501,19 @@ type Summary struct {
 	// off Skips (their position-claimed entries), so the printed count and the
 	// --skipped worklist cannot disagree. Always 0 without the option.
 	SkippedOccupied int
+	// CopiesAttached counts the --copies-of rows merged onto their anchor's
+	// recording (copies.go), a subset of MergedASINs. Always 0 without the
+	// option.
+	CopiesAttached int
 	// Skips names the rows the run refused for a reason that has a refusal
 	// code (refusalcodes.go), one entry per refused COPY with an ASIN or a
 	// LibriVox project id (RowSkip carries whichever the row has): the parse
 	// layer's malformed-ASIN, unmapped-region and credit refusals, an unmapped
 	// language, SkippedOccupied's position-claimed, and the import-only codes -
 	// identity-duplicate (the create path's duplicate-identity guard and the
-	// LibriVox trailing-qualifier rule), missing-author, missing-title and
-	// missing-narrator. An entry whose ASIN the run recorded after all (a
+	// LibriVox trailing-qualifier rule), missing-author, missing-title,
+	// missing-narrator and the copy-* refusals of a --copies-of run (copies.go).
+	// An entry whose ASIN the run recorded after all (a
 	// sibling copy imported) is dropped. It is what `metaimport libex
 	// --skipped` and `metaimport librivox import --skipped` write; an ASIN may
 	// appear more than once, and a row stating neither key is not listed.

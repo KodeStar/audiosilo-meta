@@ -6,7 +6,7 @@
 //
 //	metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]
 //	metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]
-//	metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only | --relocate | --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>]] [--existing-series-only] [--attach-editions] [--skipped <path>]
+//	metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only [--copies-of <path>] | --relocate | --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>]] [--existing-series-only] [--attach-editions] [--skipped <path>]
 //	metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--reported] [--refusals <path>] [--attachments <path>] [--date YYYY-MM-DD]
 //	metaimport librivox fetch  --out <snapshot> [--max-pages N]
 //	metaimport librivox import --from <snapshot> --ids <range> [--data data] [--dry-run] [--date YYYY-MM-DD] [--conflicts <path>] [--skipped <path>] [--worklist <path>]
@@ -135,6 +135,20 @@
 // that position), and would mint a duplicate work on the
 // create path. Mutually exclusive with --enrich.
 //
+// --copies-of <path> (with --recordings-only, required there) attaches the rows
+// it lists DIRECTLY: one {"asin":"<copy>","anchor":"<catalogued ASIN>"} JSON
+// line per row, the rows themselves read from the run's usual export input. A
+// listed row is another marketplace's copy of the production its anchor ASIN
+// sits on, as the caller proved it (the sync bot: one libex skuGroup), so its
+// ASIN is merged onto that recording without its credits or series ever being
+// read - no person, work or series can be minted for it. The physical guards
+// stay: an unknown anchor, another language, a runtime mismatch, an abridged
+// edition beside an unabridged one and a region the recording already holds
+// with another ASIN refuse the row, under copy-anchor-unknown, copy-language,
+// copy-runtime-mismatch, copy-abridged and copy-region-held, which --skipped
+// writes (internal/importer/copies.go). An unlisted row in the same run takes
+// the ordinary recordings-only path.
+//
 // --regenerate-genres (libex; and `librivox import`, librivox.go) re-derives the GENRES of catalogued works from
 // the libex rows of their own recordings, under today's mapping table and the
 // recording vote: a work no user-library source contributed to, whose every
@@ -253,6 +267,7 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	// Registered for every source so the wrong one is refused with a reason.
 	skipped := fs.String("skipped", "", "write one NDJSON line per row the run refused for a reason with a libex-select refusal code ({\"asin\",\"reason\"}) to this file (libex only)")
 	attachEditions := fs.Bool("attach-editions", false, "attach a row at a series position the catalogue already fills to the work there when it is another edition of it, and refuse it otherwise (libex only)")
+	copiesOf := fs.String("copies-of", "", "with --recordings-only: attach each row this NDJSON file lists ({\"asin\",\"anchor\"} per line) to the recording its catalogued anchor ASIN sits on, its credits and series never read; refusals go to --skipped (libex only)")
 
 	// Accept the positional export path either before or after the flags.
 	exportPath, err := parsePositional(fs, args, "<export.json>")
@@ -275,6 +290,7 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	rules := append([]flagRule{
 		{"--skipped", true, notRegen, "cannot report a --regenerate-genres run's refusals: a refused row whose ASIN the catalogue holds is not listed, and every other row matched nothing"},
 		{"--attach-editions", true, func(m importer.Mode) bool { return m == importer.ModeCreate }, "attaches rows the CREATE path would plan; it is valid in that mode only"},
+		{"--copies-of", true, func(m importer.Mode) bool { return m == importer.ModeRecordingsOnly }, "attaches copies in the recordings-only pass; it requires --recordings-only"},
 		{"--existing-series-only", false, notRegen, inertInRegen},
 		{"--series-lookup", false, notRegen, inertInRegen},
 		{"--series-lookup-limit", false, notRegen, inertInRegen},
@@ -296,6 +312,14 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		return 2
 	}
 
+	var copies map[string]string
+	if *copiesOf != "" {
+		if copies, err = importer.ReadCopiesOf(*copiesOf); err != nil {
+			fmt.Fprintln(os.Stderr, "metaimport: --copies-of:", err)
+			return 2
+		}
+	}
+
 	conflictLog, closeLog, err := openAppendLog("--conflicts", *conflicts)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "metaimport:", err)
@@ -311,6 +335,7 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		Conflicts:          conflictLog,
 		ExistingSeriesOnly: *existingSeriesOnly,
 		AttachEditions:     *attachEditions,
+		CopiesOf:           copies,
 		RowsAsOf:           *rowsAsOf,
 		Distinct:           audit.ReviewedDistinct(),
 	}
@@ -689,6 +714,12 @@ func printSummary(s importer.Summary, dryRun bool, mode importer.Mode) {
 		fmt.Printf("  attached %d %s to the catalogued work already at %s series position (counted above as new recordings or merged asins)\n",
 			s.Attached, plural(s.Attached, "row", "rows"), plural(s.Attached, "its", "their"))
 	}
+	// Printed only when a --copies-of run attached one; they are already inside
+	// the summary line's "asins merged" count.
+	if s.CopiesAttached > 0 {
+		fmt.Printf("  attached %d listed %s to %s anchor's recording (--copies-of; counted above as merged asins)\n",
+			s.CopiesAttached, plural(s.CopiesAttached, "copy", "copies"), plural(s.CopiesAttached, "its", "their"))
+	}
 	// The name merges are listed in FULL rather than counted. Every line is
 	// the run deciding that two spellings are one human, which is the least
 	// reversible thing an import does and the one an operator should read before
@@ -756,7 +787,7 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport audiosilo-books <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
-	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only | --relocate | --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>]] [--existing-series-only] [--attach-editions] [--skipped <path>]")
+	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only | --relocate | --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>]] [--existing-series-only] [--attach-editions] [--copies-of <path>] [--skipped <path>]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--reported] [--refusals <path>] [--attachments <path>] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-fill  [--data data] [--works a,b] [--limit N] [--all-tiers | --released-preorders] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport narrations  -o <worklist.ndjson> [--data data] [--works a,b] [--user-library] [--limit N] [--rows <rows.ndjson>]")
@@ -781,7 +812,9 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "    stable reason codes, atomically.")
 	fmt.Fprintln(os.Stderr, "  --enrich (libex only) fills absent facts on ASIN-matched existing records; it never creates.")
 	fmt.Fprintln(os.Stderr, "  --recordings-only (libex only) adds alternate narrations to works already in the catalogue;")
-	fmt.Fprintln(os.Stderr, "    it never creates a work and never touches a series.")
+	fmt.Fprintln(os.Stderr, "    it never creates a work and never touches a series. --copies-of <path> (with it) attaches each")
+	fmt.Fprintln(os.Stderr, "    listed {\"asin\",\"anchor\"} row to the recording its catalogued anchor ASIN sits on, reading")
+	fmt.Fprintln(os.Stderr, "    no credit or series; the physical guards refuse it under the copy-* codes --skipped writes.")
 	fmt.Fprintln(os.Stderr, "  --relocate (libex only) moves cross-language recordings using all their source rows;")
 	fmt.Fprintln(os.Stderr, "    it may create a work, never a series; --skipped records relocation refusals.")
 	fmt.Fprintln(os.Stderr, "  --regenerate-genres (libex; librivox import) re-derives catalogued works' genres from their recordings'")
