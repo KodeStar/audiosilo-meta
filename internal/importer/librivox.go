@@ -878,8 +878,9 @@ func (p *planner) loadLibrivoxPerson(person *model.Person) {
 // credit, is creditSlugs unchanged.
 //
 // The cleaned list lines up with the row's reader credits by index: librivoxBook
-// appends exactly one non-empty narrator per credit and sourceCredits maps a
-// typed list one name to one credit, so names[c.index] IS that credit's name.
+// appends exactly one non-empty narrator per credit and rawNarratorNamesIn maps
+// its typed list one name to one credit (cleanedCredits: the list rule, which
+// can drop a name, is skipped there), so names[c.index] IS that credit's name.
 // The length test is the guard on that, not a case that arises.
 func (p *planner) rowNarratorSlugs(b sourceBook, names []string, warn func(string, ...any)) []string {
 	byIndex := librivoxReaderCreditsByIndex(b, names)

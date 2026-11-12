@@ -1943,6 +1943,11 @@ func rowNarratorSplitIn(ctx creditContext, b sourceBook) (kept, dropped []string
 // rawNarratorNamesIn is the row's cleaned narrator names with nothing left off
 // (rawAuthorCreditsIn's narrator twin).
 func rawNarratorNamesIn(ctx creditContext, b sourceBook) []string {
+	if b.lv != nil {
+		// One name per reader credit, by index (librivoxReaderCreditsByIndex):
+		// a reader is addressed by reader id, never by the list rule.
+		return creditNamesOf(cleanedCredits(b.narrators, b.str("narrated_by"), ctx.narrator))
+	}
 	return creditNamesOf(sourceCredits(b.narrators, b.str("narrated_by"), ctx.narrator))
 }
 
@@ -2257,8 +2262,18 @@ func makeSeriesRef(name, rawSeq string) seriesRef {
 // retailer's comma-joined string passes it as joined and it is split.
 //
 // Either way each entry keeps the roles its qualifier stated, so the two shapes
-// a source can hand credits over in produce the same facts.
+// a source can hand credits over in produce the same facts, and a doubled
+// spelling of a name the same list states ("XKarnation XKarnation" beside
+// "XKarnation") is dropped onto it (dropListDoubles), so every import path
+// reads one person there.
 func sourceCredits(typed []string, joined string, c creditCensus) []credit {
+	return dropListDoubles(cleanedCredits(typed, joined, c))
+}
+
+// cleanedCredits is sourceCredits without the list rule: one credit per source
+// name, in the source's order, for the one list whose entries must keep their
+// index (a LibriVox row's readers, rawNarratorNamesIn).
+func cleanedCredits(typed []string, joined string, c creditCensus) []credit {
 	names := sourceNames(typed, joined)
 	if len(names) == 0 {
 		return nil

@@ -675,7 +675,9 @@ const maxCleanPasses = 8
 //     barerole.go.
 //  4. An exactly-doubled name is collapsed to one half ("Full Cast Full Cast" ->
 //     "Full Cast"). Only exact halves of at least two words each, so "Duran
-//     Duran" and "Mitz Mitz Vah" are left alone.
+//     Duran" and "Mitz Mitz Vah" are left alone. Its LIST-scoped twin, which
+//     drops "X X" beside the same list's "X" at any word count, needs the
+//     whole list, so it runs in sourceCredits instead (dropListDoubles).
 //  5. A dangling leading conjunction is dropped when the remainder is already a
 //     credit on this side ("and Melanie Mendez" -> "Melanie Mendez"). Needs the
 //     CENSUS - see conjunction.go.
@@ -1123,6 +1125,82 @@ func doubledCreditHalf(name string) (string, bool) {
 		}
 	}
 	return strings.Join(words[:half], " "), true
+}
+
+// dropListDoubles is the LIST-scoped half of rule 4: in one credit list (a
+// row's authors, or its narrators), an entry whose words split into two
+// identical halves ("XKarnation XKarnation") is dropped when the half is itself
+// credited in the same list ("XKarnation"), and the roles it stated move onto
+// that entry. The half may be ONE word here, which collapseDoubledName refuses:
+// alone, "Duran Duran", "Fang Fang" and "Lang Lang" are names, but beside the
+// same list's "XKarnation" the doubled spelling is the source restating one
+// person, not a second person (libex's BK_RECO_021995 credits both and minted
+// a phantom `xkarnation-xkarnation` per region). Comparison is foldCredit's,
+// on the cleaned names. A survivor is always an entry the list states, and the
+// chain ends because a half is strictly shorter than its whole.
+//
+// It reads nothing but the list, so it can neither invent nor merge a name the
+// list does not state twice. A LibriVox row's NARRATOR list never comes here:
+// its readers line up with its reader credits by index
+// (librivoxReaderCreditsByIndex), so its length is kept.
+func dropListDoubles(credits []credit) []credit {
+	if len(credits) < 2 {
+		return credits
+	}
+	first := make(map[string]int, len(credits))
+	for i, c := range credits {
+		if _, seen := first[foldCredit(c.name)]; !seen {
+			first[foldCredit(c.name)] = i
+		}
+	}
+	// survivor follows i's halves to the entry it restates, or returns i.
+	survivor := func(i int) int {
+		for {
+			half, ok := doubledCreditHalf(credits[i].name)
+			if !ok {
+				return i
+			}
+			j, held := first[foldCredit(half)]
+			if !held || j == i {
+				return i
+			}
+			i = j
+		}
+	}
+	into := make([]int, len(credits))
+	dropped := false
+	for i := range credits {
+		into[i] = survivor(i)
+		dropped = dropped || into[i] != i
+	}
+	if !dropped {
+		return credits
+	}
+	out := make([]credit, len(credits))
+	copy(out, credits)
+	for i, j := range into {
+		if j != i && len(credits[i].roles) > 0 {
+			out[j].roles = sortedUniqueRoles(append(slices.Clone(out[j].roles), credits[i].roles...))
+		}
+	}
+	kept := out[:0]
+	for i, c := range out {
+		if into[i] == i {
+			kept = append(kept, c)
+		}
+	}
+	return kept
+}
+
+// DropListDoubledNames is dropListDoubles over bare cleaned names, for a caller
+// outside the importer that splits a credit list itself (internal/issueform's
+// hand submissions), so the two intake doors agree on one list.
+func DropListDoubledNames(names []string) []string {
+	credits := make([]credit, len(names))
+	for i, n := range names {
+		credits[i] = credit{name: n}
+	}
+	return creditNamesOf(dropListDoubles(credits))
 }
 
 // credit is one source credit: the cleaned name, and the roles the trailing

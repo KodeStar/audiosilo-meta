@@ -24,13 +24,15 @@ func normalizeSequence(raw string) (string, bool) { return importer.NormalizeSeq
 // splitNames splits a "one per line or comma-separated" name list, trimming
 // each, cleaning the credit (role qualifiers, prefix credits, doubled names -
 // via the importer), and dropping empties. The split is the importer's own
-// (importer.SplitRawNames), so a suffix-only piece rejoins its name here too.
+// (importer.SplitRawNames), so a suffix-only piece rejoins its name here too,
+// and so is the list rule (importer.DropListDoubledNames): "X X" beside the
+// same list's "X" is one person.
 func splitNames(joined string) []string {
 	names := importer.SplitRawNames(strings.ReplaceAll(joined, "\n", ","))
 	for i, name := range names {
 		names[i] = importer.CleanCreditName(name)
 	}
-	return names
+	return importer.DropListDoubledNames(names)
 }
 
 // splitNarratorNames is splitNames for the NARRATOR side, with the AI-narration

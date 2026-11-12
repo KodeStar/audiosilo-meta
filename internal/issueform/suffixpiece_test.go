@@ -21,6 +21,10 @@ func TestSplitNamesRejoinsASuffixPieceAcrossLines(t *testing.T) {
 		{"Jane Roe\nJr.", []string{"Jane Roe Jr."}},
 		{"MD\nJane Roe", []string{"Jane Roe"}},
 		{"Jane Roe\nEd", []string{"Jane Roe", "Ed"}},
+		// The importer's list rule: "X X" beside the same list's "X" is one
+		// person, while "Lang Lang" alone is a name.
+		{"XKarnation\nXKarnation XKarnation", []string{"XKarnation"}},
+		{"Lang Lang", []string{"Lang Lang"}},
 	}
 	for _, c := range cases {
 		t.Run(c.in, func(t *testing.T) {
