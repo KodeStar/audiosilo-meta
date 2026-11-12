@@ -190,3 +190,25 @@ func TestRenderIsDeterministic(t *testing.T) {
 		t.Errorf("people counts = %+v", c)
 	}
 }
+
+// The text is ai-verify's context and its reuse key, so a rebase - which moves
+// both commits and no record - must render it byte for byte the same. The
+// commits stay in the JSON, which nothing hashes.
+func TestTextNamesNoCommit(t *testing.T) {
+	d := bigTranche(t, 3)
+	d.Base, d.Head = "a5baf3d34f9aaad50250a9b32b2f7f533e66b32f", "51f4bdc51cb6a852a87b68a384da45c6dd1e159d"
+	first := d.Text(0)
+	d.Base, d.Head = "7dffcb80bbb212bf3493be596e99fcdb8d144de6", "a861baacf8858e0eb6504204d3eac7f5b946a2e9"
+	if again := d.Text(0); again != first {
+		t.Errorf("moving the commits changed the text:\n--- before ---\n%s\n--- after ---\n%s", first, again)
+	}
+	raw, err := d.JSON()
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, rev := range []string{d.Base, d.Head} {
+		if !strings.Contains(string(raw), rev) {
+			t.Errorf("the JSON lost commit %s:\n%s", rev, raw)
+		}
+	}
+}
