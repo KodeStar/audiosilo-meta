@@ -225,21 +225,25 @@ func TestParseCopiesOf(t *testing.T) {
 }
 
 // A listed copy skips the parse layer's credit refusals, all but the AI one:
-// a credit in a script that slugs to nothing (kanji) cannot mint a person on a
-// pass that reads no credit, so the copy attaches, while an AI narrator says
-// the listing is another production and refuses it. An unlisted row in the
-// same run with the same kanji credit is refused as before.
+// a credit in a script that slugs to nothing (kanji), a semicolon-joined list
+// or a cast placeholder cannot mint a person on a pass that reads no credit,
+// so each copy attaches, while an AI narrator says the listing is another
+// production and refuses it. An unlisted row in the same run with the same
+// kanji credit is refused as before.
 func TestCopiesOfSkipsTheParseCreditRefusalsButTheAIOne(t *testing.T) {
 	const kanji = `[{"name":"山田太郎"}]`
 	dataDir := seedRebornCatalogue(t)
 	kanjiCopy := rebornCopyRow("B0GV5C28QN", "us", "english", "unabridged", 600, kanji)
 	aiCopy := strings.Replace(rebornCopyRow("B0GV5H3V89", "uk", "english", "unabridged", 600, doubledAuthors),
 		`"narrators":[{"name":"Ramon de Ocampo"}]`, `"narrators":[{"name":"Virtual Voice"}]`, 1)
+	listCopy := rebornCopyRow("B0GV5M8DBN", "de", "english", "unabridged", 600, `[{"name":"XKarnation; Ramon de Ocampo"}]`)
+	placeholderCopy := rebornCopyRow("B0GV5FD6SL", "fr", "english", "unabridged", 600, `[{"name":"To be announced"}]`)
 	unlisted := strings.Replace(kanjiCopy, "B0GV5C28QN", "B0GV5G17H4", 1)
-	sum := runCopies(t, dataDir, map[string]string{"B0GV5C28QN": rebornAnchor, "B0GV5H3V89": rebornAnchor},
-		kanjiCopy, aiCopy, unlisted)
-	if sum.CopiesAttached != 1 || sum.NewPeople != 0 {
-		t.Errorf("CopiesAttached/NewPeople = %d/%d, want 1/0", sum.CopiesAttached, sum.NewPeople)
+	sum := runCopies(t, dataDir, map[string]string{
+		"B0GV5C28QN": rebornAnchor, "B0GV5H3V89": rebornAnchor, "B0GV5M8DBN": rebornAnchor, "B0GV5FD6SL": rebornAnchor,
+	}, kanjiCopy, aiCopy, listCopy, placeholderCopy, unlisted)
+	if sum.CopiesAttached != 3 || sum.NewPeople != 0 {
+		t.Errorf("CopiesAttached/NewPeople = %d/%d, want 3/0", sum.CopiesAttached, sum.NewPeople)
 	}
 	got := map[string]string{}
 	for _, s := range sum.Skips {
@@ -253,8 +257,8 @@ func TestCopiesOfSkipsTheParseCreditRefusalsButTheAIOne(t *testing.T) {
 	for _, a := range readRebornRecording(t, dataDir).ASIN {
 		regions = append(regions, a.Region)
 	}
-	if !reflect.DeepEqual(regions, []string{"ca", "us"}) {
-		t.Errorf("regions = %v, want [ca us]", regions)
+	if !reflect.DeepEqual(regions, []string{"ca", "us", "de", "fr"}) {
+		t.Errorf("regions = %v, want [ca us de fr]", regions)
 	}
 	assertTreeValid(t, dataDir)
 }
