@@ -1840,6 +1840,18 @@ func (p *planner) dedupeByASIN(asin string) bool {
 	return false
 }
 
+// admitLanguage is the row's mapped language, or the unmapped-language refusal
+// (warned and noted) every path that needs one gives: admitRecordingFacts and
+// the --copies-of attachment (copies.go), which reads no narrator.
+func (p *planner) admitLanguage(b sourceBook, warn func(string, ...any)) (string, bool) {
+	lang, ok := b.language()
+	if !ok {
+		warn("unknown language %q; skipped", b.str("language"))
+		p.noteSkip(b, reasonLanguage)
+	}
+	return lang, ok
+}
+
 // admitRecordingFacts validates the two things a RECORDING cannot be built
 // without - a language the schema knows and at least one narrator - and returns
 // them, with the narrator names left off because they slug to nothing
@@ -1852,10 +1864,8 @@ func (p *planner) dedupeByASIN(asin string) bool {
 // work, while recordings-only resolves the work FIRST, so a row for a book the
 // catalogue does not hold is never warned about at all.
 func (p *planner) admitRecordingFacts(b sourceBook, warn func(string, ...any)) (lang string, narratorNames, unsluggable []string, ok bool) {
-	lang, ok = b.language()
+	lang, ok = p.admitLanguage(b, warn)
 	if !ok {
-		warn("unknown language %q; skipped", b.str("language"))
-		p.noteSkip(b, reasonLanguage)
 		return "", nil, nil, false
 	}
 	// A narrator whose name slugs to nothing is left off the recording, never

@@ -42,10 +42,10 @@ import (
 // A row the file does not list goes through the ordinary recordings-only path
 // in the same run.
 
-// CopyOf is one line of the --copies-of file: the copy row's ASIN and the
+// copyOf is one line of the --copies-of file: the copy row's ASIN and the
 // catalogued ASIN whose recording it is another marketplace's listing of.
 // The rows themselves arrive through the run's usual libex rows input.
-type CopyOf struct {
+type copyOf struct {
 	ASIN   string `json:"asin"`
 	Anchor string `json:"anchor"`
 }
@@ -73,7 +73,7 @@ func parseCopiesOf(r io.Reader) (map[string]string, error) {
 		if len(line) == 0 {
 			continue
 		}
-		var c CopyOf
+		var c copyOf
 		if err := json.Unmarshal(line, &c); err != nil {
 			return nil, fmt.Errorf("line %d: %w", n, err)
 		}
@@ -151,10 +151,8 @@ func (p *planner) attachCopy(b sourceBook, asin, anchor string) {
 		p.noteSkip(b, reasonCopyAnchorUnknown)
 		return
 	}
-	lang, ok := b.language()
+	lang, ok := p.admitLanguage(b, warn)
 	if !ok {
-		warn("unknown language %q; skipped", b.str("language"))
-		p.noteSkip(b, reasonLanguage)
 		return
 	}
 	_, raw := p.recordingRaw(ref.Work, ref.Rec)
@@ -165,7 +163,7 @@ func (p *planner) attachCopy(b sourceBook, asin, anchor string) {
 	if recLang == "" {
 		recLang = p.works[ref.Work].lang
 	}
-	if recLang != "" && recLang != lang {
+	if !langCompatible(recLang, lang) {
 		warn("copy of %s: language %s, but %s is %s; not attached", anchor, lang, recLabel(ref.Work, ref.Rec), recLang)
 		p.noteSkip(b, reasonCopyLanguage)
 		return
