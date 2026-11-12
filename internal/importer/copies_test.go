@@ -51,13 +51,7 @@ var rebornCopies = map[string]string{
 
 func runCopies(t *testing.T, dataDir string, copies map[string]string, rows ...string) Summary {
 	t.Helper()
-	sum, err := RunLibex(writeBooks(t, strings.Join(rows, "\n")+"\n"), Options{
-		DataDir: dataDir, ImportDate: testImportDate, Mode: ModeRecordingsOnly, CopiesOf: copies,
-	})
-	if err != nil {
-		t.Fatalf("copies run: %v", err)
-	}
-	return sum
+	return runLibexWith(t, dataDir, Options{Mode: ModeRecordingsOnly, CopiesOf: copies}, rows...)
 }
 
 type rebornRecording struct {

@@ -118,21 +118,8 @@ func TestALibriVoxReaderListKeepsItsIndex(t *testing.T) {
 // series-other-authors (and an import minted `xkarnation-xkarnation`); read as
 // one, --attach-editions attaches it and the import merges its ASIN.
 func TestSelectAttachesTheRebornShapeWithADoubledCredit(t *testing.T) {
-	dataDir := t.TempDir()
-	seedTree(t, dataDir, map[string]string{
-		"people/xk/xkarnation.json":      `{"id":"xkarnation","license":"CC0-1.0","name":"XKarnation","sources":[{"type":"user"}]}`,
-		"people/ra/ramon-de-ocampo.json": `{"id":"ramon-de-ocampo","license":"CC0-1.0","name":"Ramon de Ocampo","sources":[{"type":"user"}]}`,
-		"works/re/reborn-as-a-demonic-tree-8/work.json": `{"authors":["xkarnation"],"id":"reborn-as-a-demonic-tree-8","language":"en",` +
-			`"license":"CC0-1.0","sources":[{"type":"user"}],"title":"Reborn as a Demonic Tree 8"}`,
-		"works/re/reborn-as-a-demonic-tree-8/recordings/ramon-de-ocampo-2026.json": `{"asin":[{"asin":"B0GV5B7VF2","region":"ca"}],` +
-			`"id":"ramon-de-ocampo-2026","language":"en","license":"CC0-1.0","narrators":["ramon-de-ocampo"],"sources":[{"type":"user"}],` +
-			`"work":"reborn-as-a-demonic-tree-8"}`,
-		"series/re/reborn-as-a-demonic-tree.json": `{"id":"reborn-as-a-demonic-tree","license":"CC0-1.0","name":"Reborn as a Demonic Tree",` +
-			`"sources":[{"type":"user"}],"works":[{"position":"8","work":"reborn-as-a-demonic-tree-8"}]}`,
-	})
-	row := `{"asin":"B0GV5C28QN","title":"Reborn as a Demonic Tree 8","region":"us","language":"english",` +
-		`"authors":[{"name":"XKarnation"},{"name":"XKarnation XKarnation"}],"narrators":[{"name":"Ramon de Ocampo"}],` +
-		`"series":[{"name":"Reborn as a Demonic Tree","position":"8"}]}`
+	dataDir := seedRebornCatalogue(t)
+	row := rebornCopyRow("B0GV5C28QN", "us", "english", "unabridged", 600, doubledAuthors)
 	res, subset, refused := selectInto(t, dataDir, []string{row})
 	if len(refused) != 0 || len(res.Attachments) != 1 {
 		t.Fatalf("refusals = %+v, attachments = %+v; want the row kept for attachment", refused, res.Attachments)
