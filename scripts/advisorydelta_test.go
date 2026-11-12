@@ -241,25 +241,9 @@ func TestAIVerifyAdvisorySection(t *testing.T) {
 	t.Parallel()
 	requireTools(t, "bash", "jq", "iconv", "perl")
 	dir := t.TempDir()
-	bin := filepath.Join(dir, "bin")
-	if err := os.MkdirAll(bin, 0o755); err != nil {
-		t.Fatal(err)
-	}
-	// A stub claude CLI recording the system prompt and stdin, answering a pass -
-	// or, with REPLY_FILE set, that file's contents.
-	if err := os.WriteFile(filepath.Join(bin, "claude"), []byte(`#!/usr/bin/env bash
-while [ $# -gt 0 ]; do
-  case "$1" in
-    --system-prompt) printf '%s' "$2" > "$OUTDIR/system.txt"; shift 2 ;;
-    *) shift ;;
-  esac
-done
-cat > "$OUTDIR/stdin.txt"
-if [ -n "${REPLY_FILE:-}" ]; then cat "$REPLY_FILE"; exit 0; fi
-printf '%s' '{"result":"{\"verdict\":\"pass\",\"findings\":[]}"}'
-`), 0o755); err != nil {
-		t.Fatal(err)
-	}
+	// The stub claude (aiverify_test.go) records the system prompt and stdin and
+	// answers a pass - or, with REPLY_FILE set, that file's contents.
+	bin := stubBin(t, dir, "")
 	context := filepath.Join(dir, "context.txt")
 	if err := os.WriteFile(context, []byte("+ work \"x\"\n"), 0o644); err != nil {
 		t.Fatal(err)
