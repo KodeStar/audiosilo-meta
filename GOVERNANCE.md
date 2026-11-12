@@ -224,8 +224,9 @@ The one automation allowed to merge its own work.
 is a private service that runs daily: it reads libex's new-releases and
 coming-soon feeds across every marketplace region, keeps only the rows that
 **complete series this catalogue already holds**, and opens one pull request per
-cycle. Its one other way in is the much narrower reported-ASIN lane below. This
-section is the whole of its licence to do either; nothing else in the merge
+cycle. Its one other way in from a retailer is the much narrower reported-ASIN
+lane below; its LibriVox lane is a separate source with a section of its own.
+This section is the whole of its licence to do either; nothing else in the merge
 policy moves.
 
 **The bound.** Selection is the existing `metaimport libex-select` tranche
@@ -381,27 +382,123 @@ automation pointed at
 (whose review bar is prose a human has to judge, which is why the repositories
 split) is a change to this document first and a change to the bot second.
 
-## The LibriVox lane (stub)
+## The LibriVox lane
 
-A second automated lane, planned (LIBRIVOX-PLAN.md phase L4, in
-audiosilo-meta-sync) and **not running yet**. It keeps the LibriVox mirror
-current under [LICENSING.md's public-domain
-exception](LICENSING.md#the-public-domain-exception-librivox), which is the
-whole of its licence. Its invariant, written here before any code exists:
+The series-completion bot's second source (LIBRIVOX-PLAN.md phase L4). The same
+private service reads LibriVox's own catalogue once a day and imports the
+projects LibriVox has catalogued since its last run, so the LibriVox mirror stays
+current without a person cutting tranches. It works under [LICENSING.md's
+public-domain exception](LICENSING.md#the-public-domain-exception-librivox),
+which is the whole of its licence for the data, and this section is the whole of
+its licence to merge its own work. The backfill that seeded the mirror is not
+this lane: it landed as human-reviewed tranches (`metaimport librivox import
+--ids <range>`, about 2,000 projects per pull request) under the ordinary merge
+policy, and any change a person makes to LibriVox records still goes that way.
 
-- it adds only `librivox`-sourced works, people and recordings;
-- it never adds a series;
-- it never edits a record another source owns (a work or person it did not
-  create is reached only to attach a new LibriVox recording or stamp a LibriVox
-  id, as the importer does);
-- it reads LibriVox's `since` from its own cursor (the last successful run's
-  midnight UTC), which in practice is one request per run.
+**The invariant.** The bot checks it itself, over every pack the run changed
+(both sides of each, a whole pack family read together, deleted packs
+included), after the tree is formatted and validated and before anything is
+committed. A run that breaks it is discarded whole: nothing is pushed, no pull
+request opens, and its projects wait a week before they are tried again.
 
-The series-completion bot's "never adds a series, never a mirror" invariant above
-is unchanged by this lane. The backfill that seeds the mirror is not this lane:
-it lands as human-reviewed tranches (`metaimport librivox import --ids <range>`,
-about 2,000 projects per pull request) under the ordinary merge policy. The
-lane's review, cap and merge rules are written here when L4 is built.
+- It adds only `librivox`-sourced works, people and recordings. A new record
+  whose `sources` name anything but `librivox` is refused, and so is a new
+  recording whose `librivox_id` is not one of the projects the run was given.
+- It never adds, edits or removes a series, and never touches
+  `data/redirects.json`. Nothing outside the works and people families changes,
+  and no entry is ever removed.
+- It never edits a record another source owns. On a work the catalogue already
+  holds it may only attach a new LibriVox recording and add a `librivox` source
+  entry. An existing recording is never changed. On a person the catalogue
+  already holds it may only **stamp**: write the person's LibriVox author or
+  reader id where the record holds none, add a `librivox` source entry, and
+  write the birth and death years LibriVox states only when the record states
+  NEITHER year. A year another source or a hand edit wrote is never
+  overwritten, and one half is never added beside the other's existing value,
+  which could pair a death with a birth it precedes.
+- It never hands the importer a project the catalogue already holds: for a held
+  project the importer re-reads the recording, which is an edit, and editing is
+  not this lane's to do.
+
+**Cadence and size.** At most one run per UTC day. The lane shares the bot's one
+open pull request, so it never runs beside a completion tranche; the cycle after
+a lane pull request belongs to completion, and a merge lets that cycle start at
+once. A pull request carries at most **200 projects**, and the rest wait for the
+next run. The lane reads LibriVox's `since` from its own cursor, the midnight UTC
+of the day its last merged window was read, which in practice is one request a
+run. The cursor moves only when a lane pull request merges, or when a run finds
+every project in its window already held or already on the pending list below.
+Opening, closing, recycling or excluding a pull request, a failed import and a
+dry run move nothing, so no window is ever skipped. Requests go out at least 5
+seconds apart, honour `Retry-After`, and name meta.audiosilo.app and
+kode@audiosilo.app in their User-Agent.
+
+**The census.** `since` only sees what LibriVox catalogues after the cursor, and
+a project catalogued while it is still being recorded (no runtime and no
+archive.org item yet) is not imported, so the cursor alone would never look at
+it again. On its first run, and every 30 days after, the lane therefore lists
+the whole catalogue in about 45 light requests: only each project's id, runtime
+and archive.org item, 500 to a page, 5 seconds apart. A project LibriVox lists
+that the catalogue lacks and the pending list does not hold is fetched by id and
+imported, or held as in progress; an in-progress project that now looks complete
+becomes due. At most 50 projects are fetched by id in a run.
+
+**The pending list.** A project the lane could not land is kept on a durable
+list in the bot's state, never forgotten, and tried again on its own schedule:
+in progress (when the census sees it complete), a worklist row (every 7 days),
+refused by the importer or not landed (every 30 days), past the 200 cap (the
+next run), failed, which is an import, check or invariant failure (after 7
+days), or excluded by the ladder below (once more after 30 days, then held for a
+person). A project leaves the list when the catalogue holds it, whoever added
+it.
+
+**The worklist issue.** The rows the importer will not decide alone go to one
+issue on this repository that the bot keeps current. Above all that is
+`same-name-author`: a LibriVox author whose name matches a catalogued person the
+importer will not stamp without a judgement. The issue is labelled
+`sync:librivox-worklist` and never `data`, so it stays outside the steward's
+triage of data issues. `same-name-author` rows come first, each with its
+candidates and how to resolve it, then the other reasons, then the excluded
+projects, with the in-progress count folded away at the end. It lists at most
+200 rows and says how many more there are, is rewritten only when its content
+changes, and is closed when nothing is left on it. A person resolves a row with
+an ordinary pull request (a reviewed `metaimport librivox import --ids`, or a
+data fix); the lane then finds the project held and drops it.
+
+**The merge gate and the ladder.** A lane pull request sits on a
+`sync/librivox-<day>` branch, is labelled `data`, `bot-intake`, `bot-sync` and
+`sync:librivox`, and lists every project id it carries. It merges exactly as a
+completion pull request does: the required checks green and `ai-verified` on its
+exact head. ai-verify reads such a branch as the LibriVox lane, whose prompt says
+what a LibriVox record is (its `librivox_id` and archive.org item are the
+evidence, no ASIN is expected, readers are volunteers under the names they
+chose, old first-publication years and every language are normal, a work in no
+series is expected) and makes any series change a finding. Its advisories are
+shown in the verdict comment, unflagged, as on a completion pull request.
+**There is no resolver.** A flag, or a required check that fails again after its
+one re-run, closes the pull request unmerged: the projects behind the works the
+finding names are excluded (all of its projects when it names none), the rest
+go back on the list for the next run, and the lane rests a day. A pull request
+closed for want of a verdict moves nothing, and the next run reads the same
+window again.
+
+**Accountability.** Every record carries the typed `librivox` provenance with
+its project id, so it ranks as a bulk-mirror record and the whole source retracts
+in one pass. Each pull request names its window and its projects, and the
+worklist issue shows what is held and why.
+
+**Kill switch.** `SYNC_LIBRIVOX=off` in the bot's environment stops the lane
+alone. The bot's own kill switch above stops it with everything else.
+
+**Edits are not in `since`.** A correction LibriVox makes to a project already
+here is not picked up. A re-read of the last 90 days of projects is a later
+follow-up: an edit path, which needs its own invariant written here first. Until
+then a correction to a LibriVox record goes through an issue or a pull request
+under the ordinary merge policy.
+
+The series-completion bot's bound above (it never adds a series and never
+mirrors a source) is unchanged by this lane, which is a separate source under
+its own invariant. Widening either is a change to this document first.
 
 ## Store listings (maintainer imports)
 
