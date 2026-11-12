@@ -58,11 +58,13 @@ func TestADoubledCreditAloneStays(t *testing.T) {
 			t.Errorf("sourceCredits(%q) = %q, want it unchanged", in, got)
 		}
 	}
-	if got := DropListDoubledNames([]string{"Lang Lang"}); !reflect.DeepEqual(got, []string{"Lang Lang"}) {
-		t.Errorf("DropListDoubledNames = %q", got)
+	// The name-only door (SplitNames: pkg/scan's tags, internal/issueform's
+	// hand submissions) reads the same list.
+	if got := SplitNames("Lang Lang"); !reflect.DeepEqual(got, []string{"Lang Lang"}) {
+		t.Errorf("SplitNames = %q", got)
 	}
-	if got := DropListDoubledNames([]string{"Lang", "Lang Lang"}); !reflect.DeepEqual(got, []string{"Lang"}) {
-		t.Errorf("DropListDoubledNames = %q", got)
+	if got := SplitNames("Lang, Lang Lang"); !reflect.DeepEqual(got, []string{"Lang"}) {
+		t.Errorf("SplitNames = %q", got)
 	}
 }
 

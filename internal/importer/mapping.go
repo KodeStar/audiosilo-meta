@@ -1201,17 +1201,6 @@ func dropListDoubles(credits []credit) []credit {
 	return kept
 }
 
-// DropListDoubledNames is dropListDoubles over bare cleaned names, for a caller
-// outside the importer that splits a credit list itself (internal/issueform's
-// hand submissions), so the two intake doors agree on one list.
-func DropListDoubledNames(names []string) []string {
-	credits := make([]credit, len(names))
-	for i, n := range names {
-		credits[i] = credit{name: n}
-	}
-	return creditNamesOf(dropListDoubles(credits))
-}
-
 // credit is one source credit: the cleaned name, and the roles the trailing
 // qualifier it was cleaned of stated (nil for the overwhelming majority, which
 // carry no qualifier at all).

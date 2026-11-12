@@ -1498,10 +1498,10 @@ names collapsed to one half, two-plus words per half so "Duran Duran" stays
 (and, LIST-scoped, `dropListDoubles` in `sourceCredits`: within one credit list
 "X X" is dropped onto the same list's "X" at any word count, its roles moved
 onto the survivor, so libex's ["XKarnation","XKarnation XKarnation"] is one
-person while "Lang Lang" credited alone stays a name; a LibriVox row's reader
-list skips it, `cleanedCredits`, since its readers line up with their reader
-credits by index; internal/issueform's `splitNames` applies it through
-`DropListDoubledNames`);
+person while "Lang Lang" credited alone stays a name; a LibriVox row's lists
+skip it, `cleanedCredits`, since its readers line up with their reader credits
+by index and its authors are addressed by author id; internal/issueform's
+`splitNames` reads its list through `SplitNames`, so it applies there too);
 a concatenated studio credit removed, per the tiers above; and four
 CENSUS-BACKED rules that mint no id of their own - a courtesy title folded onto
 the bare twin the census already holds ("Dr. Jane Doe", `honorific.go`; never
