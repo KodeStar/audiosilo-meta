@@ -2286,8 +2286,9 @@ func sourceCredits(typed []string, joined string, c creditCensus) []credit {
 }
 
 // cleanedCredits is sourceCredits without the list rule: one credit per source
-// name, in the source's order, for the one list whose entries must keep their
-// index (a LibriVox row's readers, rawNarratorNamesIn).
+// name, in the source's order, for the lists whose entries are addressed one by
+// one - a LibriVox row's readers, which keep their index (rawNarratorNamesIn),
+// and its authors, each an author id's (librivoxAuthorCredits).
 func cleanedCredits(typed []string, joined string, c creditCensus) []credit {
 	names := sourceNames(typed, joined)
 	if len(names) == 0 {
