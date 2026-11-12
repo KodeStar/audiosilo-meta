@@ -18,13 +18,20 @@ const rebornAnchor = "B0GV5B7VF2"
 // unabridged English) carrying the CA ASIN only, at position 8 of its series.
 func seedRebornCatalogue(t *testing.T) string {
 	t.Helper()
+	return seedRebornCatalogueAbridged(t, false)
+}
+
+// seedRebornCatalogueAbridged is seedRebornCatalogue with the recording's
+// abridged flag as given.
+func seedRebornCatalogueAbridged(t *testing.T, abridged bool) string {
+	t.Helper()
 	dataDir := t.TempDir()
 	seedTree(t, dataDir, map[string]string{
 		"people/xk/xkarnation.json":      `{"id":"xkarnation","license":"CC0-1.0","name":"XKarnation","sources":[{"type":"user"}]}`,
 		"people/ra/ramon-de-ocampo.json": `{"id":"ramon-de-ocampo","license":"CC0-1.0","name":"Ramon de Ocampo","sources":[{"type":"user"}]}`,
 		"works/re/reborn-as-a-demonic-tree-8/work.json": `{"authors":["xkarnation"],"id":"reborn-as-a-demonic-tree-8","language":"en",` +
 			`"license":"CC0-1.0","sources":[{"type":"user"}],"title":"Reborn as a Demonic Tree 8"}`,
-		"works/re/reborn-as-a-demonic-tree-8/recordings/ramon-de-ocampo-2026.json": `{"abridged":false,"asin":[{"asin":"` + rebornAnchor + `","region":"ca"}],` +
+		"works/re/reborn-as-a-demonic-tree-8/recordings/ramon-de-ocampo-2026.json": `{"abridged":` + strconv.FormatBool(abridged) + `,"asin":[{"asin":"` + rebornAnchor + `","region":"ca"}],` +
 			`"id":"ramon-de-ocampo-2026","language":"en","license":"CC0-1.0","narrators":["ramon-de-ocampo"],"runtime_min":600,` +
 			`"sources":[{"type":"user"}],"work":"reborn-as-a-demonic-tree-8"}`,
 		"series/re/reborn-as-a-demonic-tree.json": `{"id":"reborn-as-a-demonic-tree","license":"CC0-1.0","name":"Reborn as a Demonic Tree",` +
@@ -161,6 +168,26 @@ func TestCopiesOfRefusals(t *testing.T) {
 				t.Errorf("asin = %+v, want the anchor alone", rec.ASIN)
 			}
 		})
+	}
+}
+
+// The abridged guard reads the catalogued recording's own flag: an abridged
+// copy joins an abridged recording, and an unabridged one is refused there.
+func TestCopiesOfAbridgedGuardReadsTheRecording(t *testing.T) {
+	copies := map[string]string{"B0GV5C28QN": rebornAnchor}
+
+	dataDir := seedRebornCatalogueAbridged(t, true)
+	sum := runCopies(t, dataDir, copies, rebornCopyRow("B0GV5C28QN", "us", "english", "abridged", 600, doubledAuthors))
+	if sum.CopiesAttached != 1 || len(sum.Skips) != 0 {
+		t.Errorf("abridged copy of an abridged recording: CopiesAttached/Skips = %d/%+v, want 1/none", sum.CopiesAttached, sum.Skips)
+	}
+	assertTreeValid(t, dataDir)
+
+	dataDir = seedRebornCatalogueAbridged(t, true)
+	sum = runCopies(t, dataDir, copies, rebornCopyRow("B0GV5C28QN", "us", "english", "unabridged", 600, doubledAuthors))
+	want := []RowSkip{{ASIN: "B0GV5C28QN", Reason: RefusalCopyAbridged}}
+	if sum.CopiesAttached != 0 || !reflect.DeepEqual(sum.Skips, want) {
+		t.Errorf("unabridged copy of an abridged recording: CopiesAttached/Skips = %d/%+v, want 0/%+v", sum.CopiesAttached, sum.Skips, want)
 	}
 }
 
