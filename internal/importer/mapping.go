@@ -675,7 +675,9 @@ const maxCleanPasses = 8
 //     barerole.go.
 //  4. An exactly-doubled name is collapsed to one half ("Full Cast Full Cast" ->
 //     "Full Cast"). Only exact halves of at least two words each, so "Duran
-//     Duran" and "Mitz Mitz Vah" are left alone.
+//     Duran" and "Mitz Mitz Vah" are left alone. Its LIST-scoped twin, which
+//     drops "X X" beside the same list's "X" at any word count, needs the
+//     whole list, so it runs in sourceCredits instead (dropListDoubles).
 //  5. A dangling leading conjunction is dropped when the remainder is already a
 //     credit on this side ("and Melanie Mendez" -> "Melanie Mendez"). Needs the
 //     CENSUS - see conjunction.go.
@@ -1123,6 +1125,82 @@ func doubledCreditHalf(name string) (string, bool) {
 		}
 	}
 	return strings.Join(words[:half], " "), true
+}
+
+// dropListDoubles is the LIST-scoped half of rule 4: in one credit list (a
+// row's authors, or its narrators), an entry whose words split into two
+// identical halves ("XKarnation XKarnation") is dropped when the half is itself
+// credited in the same list ("XKarnation"), and the roles it stated move onto
+// that entry. The half may be ONE word here, which collapseDoubledName refuses:
+// alone, "Duran Duran", "Fang Fang" and "Lang Lang" are names, but beside the
+// same list's "XKarnation" the doubled spelling is the source restating one
+// person, not a second person (libex's BK_RECO_021995 credits both and minted
+// a phantom `xkarnation-xkarnation` per region). The doubled shape is
+// doubledCreditHalf's (the two halves equal word for word, case aside); the
+// half is then matched to its entry under foldCredit, on the cleaned names. A
+// survivor is always an entry the list states, and the chain ends because a
+// half is strictly shorter than its whole.
+//
+// It reads nothing but the list, so it can neither invent nor merge a name the
+// list does not state twice. A LibriVox row's lists never come here
+// (cleanedCredits): its readers line up with its reader credits by index
+// (librivoxReaderCreditsByIndex), and an author there is addressed by author
+// id (librivoxAuthorCredits), so two entries are two people whatever they are
+// called.
+func dropListDoubles(credits []credit) []credit {
+	// Almost no list states a doubled name, and this runs for every list of
+	// every row: the shape test comes first, so the rest is paid for by the
+	// rare list that has one.
+	if len(credits) < 2 || !slices.ContainsFunc(credits, func(c credit) bool {
+		_, doubled := doubledCreditHalf(c.name)
+		return doubled
+	}) {
+		return credits
+	}
+	first := make(map[string]int, len(credits))
+	for i, c := range credits {
+		key := foldCredit(c.name)
+		if _, seen := first[key]; !seen {
+			first[key] = i
+		}
+	}
+	// survivor follows i's halves to the entry it restates, or returns i.
+	survivor := func(i int) int {
+		for {
+			half, ok := doubledCreditHalf(credits[i].name)
+			if !ok {
+				return i
+			}
+			j, held := first[foldCredit(half)]
+			if !held || j == i {
+				return i
+			}
+			i = j
+		}
+	}
+	into := make([]int, len(credits))
+	dropped := false
+	for i := range credits {
+		into[i] = survivor(i)
+		dropped = dropped || into[i] != i
+	}
+	if !dropped {
+		return credits
+	}
+	out := make([]credit, len(credits))
+	copy(out, credits)
+	for i, j := range into {
+		if j != i && len(credits[i].roles) > 0 {
+			out[j].roles = sortedUniqueRoles(append(slices.Clone(out[j].roles), credits[i].roles...))
+		}
+	}
+	kept := out[:0]
+	for i, c := range out {
+		if into[i] == i {
+			kept = append(kept, c)
+		}
+	}
+	return kept
 }
 
 // credit is one source credit: the cleaned name, and the roles the trailing

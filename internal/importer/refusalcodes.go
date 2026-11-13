@@ -59,6 +59,13 @@ const (
 	RefusalRelocateDestination       = "relocate-destination-conflict"
 	RefusalRelocateRowUnusable       = "relocate-row-unusable"
 	RefusalRelocateAmbiguousHome     = "relocate-ambiguous-home"
+	// The --copies-of codes (copies.go): a row listed as another marketplace's
+	// copy of a catalogued recording that the physical guards turned away.
+	RefusalCopyAnchorUnknown = "copy-anchor-unknown"
+	RefusalCopyRegionHeld    = "copy-region-held"
+	RefusalCopyRuntime       = "copy-runtime-mismatch"
+	RefusalCopyAbridged      = "copy-abridged"
+	RefusalCopyLanguage      = "copy-language"
 )
 
 // The rules, in the order selectLibexRow applies them. A row is counted under
@@ -103,6 +110,11 @@ var (
 	reasonRelocateDestination       = refusal{RefusalRelocateDestination, "source rows do not resolve to one compatible destination"}
 	reasonRelocateAmbiguousHome     = refusal{RefusalRelocateAmbiguousHome, "multiple same-language identity homes"}
 	reasonRelocateRowUnusable       = refusal{RefusalRelocateRowUnusable, "a source row naming the recording was refused at parse time"}
+	reasonCopyAnchorUnknown         = refusal{RefusalCopyAnchorUnknown, "the copy's anchor ASIN is not a catalogued recording"}
+	reasonCopyRegionHeld            = refusal{RefusalCopyRegionHeld, "the anchor's recording already carries another ASIN in the copy's region"}
+	reasonCopyRuntime               = refusal{RefusalCopyRuntime, "the copy's runtime does not match the anchor's recording"}
+	reasonCopyAbridged              = refusal{RefusalCopyAbridged, "the copy and the anchor's recording disagree on abridgement"}
+	reasonCopyLanguage              = refusal{RefusalCopyLanguage, "the copy's language is not the anchor's recording's"}
 )
 
 // refusals is every SELECTOR rule in report order (the order libex-select
@@ -129,6 +141,11 @@ var importRefusals = []refusal{
 	reasonRelocateDestination,
 	reasonRelocateRowUnusable,
 	reasonRelocateAmbiguousHome,
+	reasonCopyAnchorUnknown,
+	reasonCopyRegionHeld,
+	reasonCopyRuntime,
+	reasonCopyAbridged,
+	reasonCopyLanguage,
 }
 
 // RefusalCodes lists every code a worklist line can carry: the selector's rules

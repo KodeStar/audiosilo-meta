@@ -14,7 +14,7 @@ import (
 // parseLibex is parseLibexStream over an export already in memory (the tests'
 // door; RunLibex streams the file).
 func parseLibex(data []byte) (libexParse, error) {
-	return parseLibexStream(bytes.NewReader(data))
+	return parseLibexStream(bytes.NewReader(data), nil)
 }
 
 // libexStreamRow is one well-formed libex row; extra is spliced in verbatim.
@@ -154,7 +154,7 @@ func TestLibexRelocationOrderIsCanonical(t *testing.T) {
 	if len(aEv) != len(rows) || a.skipped != 3 || len(a.warnings) != 4 {
 		t.Errorf("evidence %d rows, skipped %d, %d warnings; want %d, 3, 4", len(aEv), a.skipped, len(a.warnings), len(rows))
 	}
-	plain, err := parseLibexStream(strings.NewReader(join(rows)))
+	plain, err := parseLibexStream(strings.NewReader(join(rows)), nil)
 	if err != nil {
 		t.Fatal(err)
 	}

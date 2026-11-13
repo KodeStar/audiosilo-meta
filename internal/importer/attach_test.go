@@ -50,6 +50,7 @@ func TestRefusalCodesAreStable(t *testing.T) {
 		"position-claimed", "over-series-cap",
 		"identity-duplicate", "missing-author", "missing-title", "missing-narrator",
 		"relocate-rows-language", "relocate-recording-language", "relocate-work-language", "relocate-no-home-recording", "relocate-narration-contradicts", "relocate-destination-conflict", "relocate-row-unusable", "relocate-ambiguous-home",
+		"copy-anchor-unknown", "copy-region-held", "copy-runtime-mismatch", "copy-abridged", "copy-language",
 	}
 	if got := RefusalCodes(); !reflect.DeepEqual(got, want) {
 		t.Errorf("RefusalCodes() = %q\nwant %q", got, want)

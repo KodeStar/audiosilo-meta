@@ -878,8 +878,9 @@ func (p *planner) loadLibrivoxPerson(person *model.Person) {
 // credit, is creditSlugs unchanged.
 //
 // The cleaned list lines up with the row's reader credits by index: librivoxBook
-// appends exactly one non-empty narrator per credit and sourceCredits maps a
-// typed list one name to one credit, so names[c.index] IS that credit's name.
+// appends exactly one non-empty narrator per credit and rawNarratorNamesIn maps
+// its typed list one name to one credit (cleanedCredits: the list rule, which
+// can drop a name, is skipped there), so names[c.index] IS that credit's name.
 // The length test is the guard on that, not a case that arises.
 func (p *planner) rowNarratorSlugs(b sourceBook, names []string, warn func(string, ...any)) []string {
 	byIndex := librivoxReaderCreditsByIndex(b, names)
@@ -925,7 +926,9 @@ func (p *planner) setLibrivoxPerson(b *sourceBook, j int, pin *creditPerson) {
 }
 
 // librivoxAuthorCredits is rowAuthorCreditsIn for a LibriVox row: its author
-// list cleaned as sourceCredits cleans it, except that a credit whose person
+// list cleaned as cleanedCredits cleans it (one credit per author credit,
+// pinned or not: the list rule that drops a doubled name is a retailer's
+// rule), except that a credit whose person
 // was decided for its author id (librivoxCredit.person, resolveLibrivoxAuthors)
 // carries that person and is spelled by the person's name, its roles read
 // through a quiet census: the id, not the cleaning, says who it is, so no fold
@@ -935,7 +938,7 @@ func (p *planner) setLibrivoxPerson(b *sourceBook, j int, pin *creditPerson) {
 func librivoxAuthorCredits(ctx creditContext, b sourceBook) []credit {
 	names := sourceNames(b.authors, "")
 	if len(names) != len(b.authors) {
-		return sourceCredits(b.authors, b.str("author"), ctx.author)
+		return cleanedCredits(b.authors, b.str("author"), ctx.author)
 	}
 	pins := make([]*creditPerson, len(names))
 	pinned := false
@@ -945,7 +948,7 @@ func librivoxAuthorCredits(ctx creditContext, b sourceBook) []credit {
 		}
 	}
 	if !pinned {
-		return sourceCredits(b.authors, b.str("author"), ctx.author)
+		return cleanedCredits(b.authors, b.str("author"), ctx.author)
 	}
 	out := make([]credit, 0, len(names))
 	for i, name := range names {

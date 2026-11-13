@@ -1494,7 +1494,14 @@ two measured in the dump, the third off the user-library side, where a tag spell
 the narrator field as a sentence - the dump attests neither it nor a German
 `gelesen von ` as a credit prefix, and the required `by ` is what keeps the real
 "Read Shepherd"/"Read Mercer Schuchardt" whole); exactly-doubled
-names collapsed to one half, two-plus words per half so "Duran Duran" stays;
+names collapsed to one half, two-plus words per half so "Duran Duran" stays
+(and, LIST-scoped, `dropListDoubles` in `sourceCredits`: within one credit list
+"X X" is dropped onto the same list's "X" at any word count, its roles moved
+onto the survivor, so libex's ["XKarnation","XKarnation XKarnation"] is one
+person while "Lang Lang" credited alone stays a name; a LibriVox row's lists
+skip it, `cleanedCredits`, since its readers line up with their reader credits
+by index and its authors are addressed by author id; internal/issueform's
+`splitNames` reads its list through `SplitNames`, so it applies there too);
 a concatenated studio credit removed, per the tiers above; and four
 CENSUS-BACKED rules that mint no id of their own - a courtesy title folded onto
 the bare twin the census already holds ("Dr. Jane Doe", `honorific.go`; never
@@ -2014,7 +2021,25 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   `--enrich` ignores it, fills no free series position, so `libex-select`
   excludes it (unless it can prove the row IS the work at that position - the
   attach rule below), and would mint a duplicate work on the create path. Mutually
-  exclusive with `--enrich`); `metaimport libex-select`
+  exclusive with `--enrich`. **`--copies-of <path>`** (with `--recordings-only`
+  only, `internal/importer/copies.go`) is its DIRECT-ATTACHMENT door: one
+  `{"asin":"<copy>","anchor":"<catalogued ASIN>"}` line per row the caller
+  proved to be another marketplace's copy of the production its anchor ASIN sits
+  on (the sync bot: one libex skuGroup), the rows read from the run's usual
+  input; a listed row is kept out of the batch's credit decisions and series
+  resolution and merged onto the anchor's recording (`asinLoc`,
+  `mergeRecordingASIN`), so it mints no person, work or series whatever it
+  credits, while the physical guards still refuse it, each under its own
+  `--skipped` code: `copy-anchor-unknown` (anchor not catalogued, or on a
+  LibriVox project), `copy-language`, `copy-runtime-mismatch` (`sameRuntime`),
+  `copy-abridged` (`abridgedConflict`) and `copy-region-held` (the recording
+  already carries another ASIN in that region); an unmapped region or language
+  keeps its own code, and so does an AI credit (`ai-narrator`, refused at
+  parse, since an AI-narrated listing is another production); the parse
+  layer's other credit refusals (platform account, placeholder, list, a name
+  that slugs to nothing) are skipped for a listed row
+  (`refuseLibexCopyCredits`), as the pass reads no credit; unlisted rows take
+  the ordinary path and keep every refusal); `metaimport libex-select`
   (streams the full dump, keeps only series-completing rows with a free
   position slot and mappable language/region, per-series cap, verbatim-row
   output, a report that partitions every row read. A row is series-completing
@@ -2187,6 +2212,8 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   service that reads libex's new-releases and coming-soon feeds, runs
   `libex-select --attach-editions` to keep only rows completing series this catalogue already
   holds, imports them with `metaimport libex --existing-series-only --attach-editions` (plus
+  a `--recordings-only --copies-of` run attaching the other marketplaces' copies
+  of catalogued recordings it proved by skuGroup, probed for before use, plus
   `--enrich` over the touched series' existing members; the flag drops any claim
   that would FOUND a series, so a kept row's second, uncatalogued series claim
   cannot add one - see the importer section), and opens ONE self-merging pull request per cycle -

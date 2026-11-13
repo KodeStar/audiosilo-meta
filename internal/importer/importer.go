@@ -361,6 +361,10 @@ type planner struct {
 	// recordings-only run needs the p.asins membership test alone and pays
 	// nothing, so a nil map is still "this run never looks a record up".
 	asinLoc map[string]RecRef
+	// copiesOf is Options.CopiesOf: copy ASIN -> anchor ASIN, the rows a
+	// recordings-only run attaches directly to the anchor's recording
+	// (copies.go); nil otherwise.
+	copiesOf map[string]string
 	// userTier reports whether THIS run's source type carries user-library trust
 	// (model.TierUserLibrary): a person's own library export, as opposed to the
 	// libex bulk mirror. It is the run-wide half of the overwrite decision; the
@@ -830,6 +834,11 @@ func runBooks(books []sourceBook, sourceType string, opts Options, parseSkips []
 	if err := ValidateRowsAsOf(opts.Mode, opts.RowsAsOf, time.Now().UTC()); err != nil {
 		return Summary{}, err
 	}
+	// A listed copy is attached by the recordings-only pass of a libex run
+	// (copies.go); anywhere else its rows would be set aside and never planned.
+	if len(opts.CopiesOf) > 0 && (opts.Mode != ModeRecordingsOnly || sourceType != sourceLibex) {
+		return Summary{}, fmt.Errorf("copies (--copies-of) attach in the recordings-only pass of a libex run alone")
+	}
 	// The run's trust tier, asked here as well as by newPlanner because the AI
 	// gate below runs before the planner exists and needs the same answer: a person's own library (or a hand submission) may admit a
 	// synthetic narration under the canonical record, the bulk mirror may not.
@@ -899,7 +908,7 @@ func openPlanner(sourceType string, opts Options) (*planner, error) {
 // only add the catalogue's ASIN-collision warnings to its summary.
 func plannerOn(store *pack.Store, sourceType string, opts Options) *planner {
 	p := newPlanner(store, sourceType, opts)
-	if (opts.Mode.locatesASINs() || p.userTier) && sourceType != sourceLibrivox {
+	if (opts.Mode.locatesASINs() || p.userTier || len(opts.CopiesOf) > 0) && sourceType != sourceLibrivox {
 		p.asinLoc = map[string]RecRef{}
 	}
 	return p
@@ -934,6 +943,7 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 		userTier:           model.TierOfSource(sourceType) == model.TierUserLibrary,
 		mirrorTier:         model.TierOfSource(sourceType) == model.TierBulkMirror,
 		existingSeriesOnly: opts.ExistingSeriesOnly,
+		copiesOf:           opts.CopiesOf,
 		attachEditions:     opts.AttachEditions,
 		loadedPositions:    opts.AttachEditions,
 		regenRecs:          regenRecsFor(opts.Mode),
@@ -969,6 +979,10 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	// credit decisions are taken (librivox.go, librivoxpeople.go); no-ops for
 	// every other source.
 	p.decodeLibrivoxCredits(books)
+	// A --copies-of row is attached by its anchor ASIN alone (copies.go): it is
+	// kept out of every batch decision below, so its credits and series claims
+	// are never read and cannot sway another row's.
+	books, copies := p.splitCopies(books)
 	if p.mode.plansRows() {
 		// The genre regeneration reads no credit, so it takes no credit
 		// decisions and runs no author rules over the unheld projects of its
@@ -993,6 +1007,9 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 		p.planEnrich(books)
 	case ModeRecordingsOnly:
 		p.planRecordings(books)
+		if p.fatal == nil {
+			p.planCopies(copies)
+		}
 	case ModeCreate:
 		p.planCreate(books)
 	case ModeRelocate:
@@ -1823,6 +1840,18 @@ func (p *planner) dedupeByASIN(asin string) bool {
 	return false
 }
 
+// admitLanguage is the row's mapped language, or the unmapped-language refusal
+// (warned and noted) every path that needs one gives: admitRecordingFacts and
+// the --copies-of attachment (copies.go), which reads no narrator.
+func (p *planner) admitLanguage(b sourceBook, warn func(string, ...any)) (string, bool) {
+	lang, ok := b.language()
+	if !ok {
+		warn("unknown language %q; skipped", b.str("language"))
+		p.noteSkip(b, reasonLanguage)
+	}
+	return lang, ok
+}
+
 // admitRecordingFacts validates the two things a RECORDING cannot be built
 // without - a language the schema knows and at least one narrator - and returns
 // them, with the narrator names left off because they slug to nothing
@@ -1835,10 +1864,8 @@ func (p *planner) dedupeByASIN(asin string) bool {
 // work, while recordings-only resolves the work FIRST, so a row for a book the
 // catalogue does not hold is never warned about at all.
 func (p *planner) admitRecordingFacts(b sourceBook, warn func(string, ...any)) (lang string, narratorNames, unsluggable []string, ok bool) {
-	lang, ok = b.language()
+	lang, ok = p.admitLanguage(b, warn)
 	if !ok {
-		warn("unknown language %q; skipped", b.str("language"))
-		p.noteSkip(b, reasonLanguage)
 		return "", nil, nil, false
 	}
 	// A narrator whose name slugs to nothing is left off the recording, never
@@ -1943,6 +1970,11 @@ func rowNarratorSplitIn(ctx creditContext, b sourceBook) (kept, dropped []string
 // rawNarratorNamesIn is the row's cleaned narrator names with nothing left off
 // (rawAuthorCreditsIn's narrator twin).
 func rawNarratorNamesIn(ctx creditContext, b sourceBook) []string {
+	if b.lv != nil {
+		// One name per reader credit, by index (librivoxReaderCreditsByIndex):
+		// a reader is addressed by reader id, never by the list rule.
+		return creditNamesOf(cleanedCredits(b.narrators, b.str("narrated_by"), ctx.narrator))
+	}
 	return creditNamesOf(sourceCredits(b.narrators, b.str("narrated_by"), ctx.narrator))
 }
 
@@ -2257,8 +2289,19 @@ func makeSeriesRef(name, rawSeq string) seriesRef {
 // retailer's comma-joined string passes it as joined and it is split.
 //
 // Either way each entry keeps the roles its qualifier stated, so the two shapes
-// a source can hand credits over in produce the same facts.
+// a source can hand credits over in produce the same facts, and a doubled
+// spelling of a name the same list states ("XKarnation XKarnation" beside
+// "XKarnation") is dropped onto it (dropListDoubles), so every import path
+// reads one person there.
 func sourceCredits(typed []string, joined string, c creditCensus) []credit {
+	return dropListDoubles(cleanedCredits(typed, joined, c))
+}
+
+// cleanedCredits is sourceCredits without the list rule: one credit per source
+// name, in the source's order, for the lists whose entries are addressed one by
+// one - a LibriVox row's readers, which keep their index (rawNarratorNamesIn),
+// and its authors, each an author id's (librivoxAuthorCredits).
+func cleanedCredits(typed []string, joined string, c creditCensus) []credit {
 	names := sourceNames(typed, joined)
 	if len(names) == 0 {
 		return nil
