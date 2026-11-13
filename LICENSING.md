@@ -281,7 +281,10 @@ caps and asks clients to slow down, and a full mirror is the only thing that
 lets an application stop calling it. The mirror is fetched politely (`limit=100`,
 five seconds between requests, a User-Agent naming meta.audiosilo.app and a
 contact address, backing off on `429`/`5xx`), from a local snapshot that is never
-committed, and lands in reviewed tranches by project-id range.
+committed. The backfill landed in reviewed tranches by project-id range; what
+LibriVox has catalogued since is added daily by the series-completion bot's
+LibriVox lane, with the same manners and under its own invariant
+([GOVERNANCE.md](GOVERNANCE.md#the-librivox-lane)).
 
 **Facts only.** A LibriVox record carries the title, the authors, the readers
 (as narrators, and per section as each chapter's `readers`), the translators (as

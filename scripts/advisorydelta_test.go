@@ -2,7 +2,6 @@ package scripts_test
 
 import (
 	"os"
-	"os/exec"
 	"path/filepath"
 	"strings"
 	"testing"
@@ -241,25 +240,9 @@ func TestAIVerifyAdvisorySection(t *testing.T) {
 	t.Parallel()
 	requireTools(t, "bash", "jq", "iconv", "perl")
 	dir := t.TempDir()
-	bin := filepath.Join(dir, "bin")
-	if err := os.MkdirAll(bin, 0o755); err != nil {
-		t.Fatal(err)
-	}
-	// A stub claude CLI recording the system prompt and stdin, answering a pass -
-	// or, with REPLY_FILE set, that file's contents.
-	if err := os.WriteFile(filepath.Join(bin, "claude"), []byte(`#!/usr/bin/env bash
-while [ $# -gt 0 ]; do
-  case "$1" in
-    --system-prompt) printf '%s' "$2" > "$OUTDIR/system.txt"; shift 2 ;;
-    *) shift ;;
-  esac
-done
-cat > "$OUTDIR/stdin.txt"
-if [ -n "${REPLY_FILE:-}" ]; then cat "$REPLY_FILE"; exit 0; fi
-printf '%s' '{"result":"{\"verdict\":\"pass\",\"findings\":[]}"}'
-`), 0o755); err != nil {
-		t.Fatal(err)
-	}
+	// The stub claude (aiverify_test.go) records the system prompt and stdin and
+	// answers a pass - or, with REPLY_FILE set, that file's contents.
+	bin := stubBin(t, dir, "")
 	context := filepath.Join(dir, "context.txt")
 	if err := os.WriteFile(context, []byte("+ work \"x\"\n"), 0o644); err != nil {
 		t.Fatal(err)
@@ -272,22 +255,14 @@ printf '%s' '{"result":"{\"verdict\":\"pass\",\"findings\":[]}"}'
 	if err := os.WriteFile(empty, nil, 0o644); err != nil {
 		t.Fatal(err)
 	}
-	var lastOut string
+	var last aiVerifyRun
 	run := func(advisoryFile string, env ...string) (system, stdin string) {
 		t.Helper()
-		out := t.TempDir()
-		lastOut = out
-		cmd := exec.Command("bash", abs(t, filepath.Join("..", ".github", "scripts", "ai-verify.sh")),
-			context, filepath.Join(out, "verdict.json"), filepath.Join(out, "comment.md"))
-		cmd.Env = append([]string{"PATH=" + bin + string(os.PathListSeparator) + os.Getenv("PATH"), "HOME=" + out,
-			"CLAUDE_CODE_OAUTH_TOKEN=test", "OUTDIR=" + out}, env...)
 		if advisoryFile != "" {
-			cmd.Env = append(cmd.Env, "ADVISORIES_FILE="+advisoryFile)
+			env = append(env, "ADVISORIES_FILE="+advisoryFile)
 		}
-		if b, err := cmd.CombinedOutput(); err != nil {
-			t.Fatalf("ai-verify.sh: %v\n%s", err, b)
-		}
-		return readFile(t, filepath.Join(out, "system.txt")), readFile(t, filepath.Join(out, "stdin.txt"))
+		last = runAIVerify(t, bin, context, env...)
+		return last.system, last.stdin
 	}
 	plainSystem, plainStdin := run("")
 	for name, f := range map[string]string{"empty": empty, "absent": filepath.Join(dir, "absent.txt")} {
@@ -303,11 +278,11 @@ printf '%s' '{"result":"{\"verdict\":\"pass\",\"findings\":[]}"}'
 		t.Fatal(err)
 	}
 	run(note)
-	if verdict := readFile(t, filepath.Join(lastOut, "verdict.json")); !strings.Contains(verdict, `"verdict":"pass"`) {
+	if verdict := last.verdict; !strings.Contains(verdict, `"verdict":"pass"`) {
 		t.Errorf("a NOTE must not force a flag: %s", verdict)
 	}
 	system, stdin := run(advisories)
-	if verdict := readFile(t, filepath.Join(lastOut, "verdict.json")); !strings.Contains(verdict, `"verdict":"flag"`) ||
+	if verdict := last.verdict; !strings.Contains(verdict, `"verdict":"flag"`) ||
 		!strings.Contains(verdict, "introduces metacheck advisories: 1 new advisory (orphan-person 1): [orphan-person] people: entry p: an orphan record.") {
 		t.Errorf("a pass beside introduced advisories must become a flag carrying them: %s", verdict)
 	}
@@ -326,8 +301,8 @@ printf '%s' '{"result":"{\"verdict\":\"pass\",\"findings\":[]}"}'
 		t.Fatal(err)
 	}
 	run(advisories, "REPLY_FILE="+reply)
-	verdict := readFile(t, filepath.Join(lastOut, "verdict.json"))
-	comment := readFile(t, filepath.Join(lastOut, "comment.md"))
+	verdict := last.verdict
+	comment := last.comment
 	if !strings.Contains(verdict, `"verdict":"flag"`) || !strings.Contains(verdict, `"findings":["none","This pull request`) ||
 		!strings.Contains(comment, "- This pull request introduces metacheck advisories") {
 		t.Errorf("a pass with string findings beside advisories:\nverdict %s\ncomment %s", verdict, comment)
@@ -351,14 +326,14 @@ printf '%s' '{"result":"{\"verdict\":\"pass\",\"findings\":[]}"}'
 	if s, in := run(advisories, "PR_ORIGIN=sync-bot"); s != syncSystem || in != syncStdin {
 		t.Error("a sync-bot pull request's advisories changed the prompt or the message")
 	}
-	verdict = readFile(t, filepath.Join(lastOut, "verdict.json"))
-	comment = readFile(t, filepath.Join(lastOut, "comment.md"))
+	verdict = last.verdict
+	comment = last.comment
 	if !strings.Contains(verdict, `"verdict":"pass"`) || !strings.Contains(comment, "#### Advisories this pull request introduces") ||
 		!strings.Contains(comment, "```\n1 new advisory (orphan-person 1):\n- [orphan-person] people: entry p: an orphan record\n```") {
 		t.Errorf("a sync-bot pass beside advisories:\nverdict %s\ncomment %s", verdict, comment)
 	}
 	run(note, "PR_ORIGIN=sync-bot")
-	if comment := readFile(t, filepath.Join(lastOut, "comment.md")); strings.Contains(comment, "Advisories") {
+	if comment := last.comment; strings.Contains(comment, "Advisories") {
 		t.Errorf("a sync-bot NOTE must add no advisory section: %s", comment)
 	}
 }

@@ -218,7 +218,9 @@ never noticed (ai-verify read only the metadiff summary). Two halves:
   fix/drop/exclude ladder, whose resolver can neither fold a series nor record a
   reviewed rejection, so a legitimate volume making an existing duplicate visible
   would be dropped - there the list is shown in the verdict comment only, the
-  prompt and verdict untouched. Neither is a failing check, on
+  prompt and verdict untouched. A LIBRIVOX LANE pull request (`sync/librivox-*`,
+  GOVERNANCE.md) is treated the same way: its flag closes it with no resolver at
+  all. Neither the summary nor the flag is a failing check, on
   purpose: the bot auto-merges on green CI and a new red gate would stall it.
   check.yml diffs the base tip against the merge commit and ai-verify the merge
   base against the head, so the two lists can differ on a stale branch; both run
