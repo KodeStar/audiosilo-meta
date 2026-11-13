@@ -456,7 +456,8 @@ longer lists is held as not landed), past the 200 cap or put back by the ladder
 below (the next run), failed, which is a run discarded before any pull request
 opened because its import, its validation or the invariant failed (after 7
 days), or excluded by the ladder below (once more after 30 days, then held for a
-person). A failed batch is never retried whole: when failed projects are due,
+person). A project whose by-id read fails is held as unread and tried again
+after 7 days. A failed batch is never retried whole: when failed projects are due,
 that day's run imports only the first half of them (or the one alone, when only
 one is due) and leaves the day's window for the next run, and its pull request's
 merge leaves the cursor where it is. A project leaves the list when the
@@ -490,9 +491,13 @@ on a completion pull request.
 request unmerged, the projects behind the works the finding names are excluded
 (all of its projects when it names none), the rest go back on the list for the
 next run, and the lane rests a day. A required check that fails again after its
-one re-run closes the pull request too, but excludes nothing: every project goes
-back on the list for the next run, with no rest day, since such a failure is
-almost always systemic rather than about one record. A pull request closed for
+one re-run closes the pull request too, but excludes nothing. The first time,
+every project goes back on the list for the next run, with no rest day, since a
+break on main is the likelier cause. If the next lane pull request is closed the
+same way (a second in a row), or a check closes a retry, its projects are held
+as failed and retried in halves, a week apart, until the project whose data
+breaks the check is alone in a run of its own. Any lane merge resets the count.
+A pull request closed for
 want of a verdict moves nothing, and the next run reads the same window again.
 
 **Accountability.** Every record carries the typed `librivox` provenance with
