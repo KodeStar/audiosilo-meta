@@ -6319,6 +6319,10 @@
             {
               "asin": "B0112MGPI0",
               "region": "us"
+            },
+            {
+              "asin": "B072BH5P13",
+              "region": "ca"
             }
           ],
           "chapters": [
@@ -6402,6 +6406,129 @@
             {
               "imported_at": "2026-10-20",
               "ref": "B0112MGPI0",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-13",
+              "ref": "B072BH5P13",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-madman-of-bergerac"
+        },
+        "james-faulkner-2025": {
+          "abridged": false,
+          "added_at": "2026-11-13",
+          "asin": [
+            {
+              "asin": "B0FKCCGWLP",
+              "region": "ca"
+            },
+            {
+              "asin": "B0FKC76W79",
+              "region": "br"
+            },
+            {
+              "asin": "B0FKC6RRN3",
+              "region": "jp"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 31741,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1296718,
+              "start_ms": 31741,
+              "title": "Chapter 1: The Restless Passenger"
+            },
+            {
+              "length_ms": 1315572,
+              "start_ms": 1328459,
+              "title": "Chapter 2: Five Disappointed Men"
+            },
+            {
+              "length_ms": 1348823,
+              "start_ms": 2644031,
+              "title": "Chapter 3: The Second-Class Ticket"
+            },
+            {
+              "length_ms": 1342600,
+              "start_ms": 3992854,
+              "title": "Chapter 4: A Gathering of Madmen"
+            },
+            {
+              "length_ms": 1388390,
+              "start_ms": 5335454,
+              "title": "Chapter 5: The Patent-Leather Shoes"
+            },
+            {
+              "length_ms": 1327624,
+              "start_ms": 6723844,
+              "title": "Chapter 6: The Seal"
+            },
+            {
+              "length_ms": 1404969,
+              "start_ms": 8051468,
+              "title": "Chapter 7: Samuel"
+            },
+            {
+              "length_ms": 1276354,
+              "start_ms": 9456437,
+              "title": "Chapter 8: A Book Collector"
+            },
+            {
+              "length_ms": 1281811,
+              "start_ms": 10732791,
+              "title": "Chapter 9: The Kidnapping of the Cabaret Singer"
+            },
+            {
+              "length_ms": 1516077,
+              "start_ms": 12014602,
+              "title": "Chapter 10: The Note"
+            },
+            {
+              "length_ms": 748355,
+              "start_ms": 13530679,
+              "title": "Chapter 11: The Father"
+            },
+            {
+              "length_ms": 60046,
+              "start_ms": 14279034,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 19039,
+              "start_ms": 14339080,
+              "title": "Additional Information"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71I5Yvmn0fL.jpg",
+          "id": "james-faulkner-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "james-faulkner"
+          ],
+          "publisher": "Macmillan Audio",
+          "release_date": "2025-12-09",
+          "runtime_min": 239,
+          "sources": [
+            {
+              "imported_at": "2026-11-13",
+              "ref": "B0FKCCGWLP",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-13",
+              "ref": "B0FKC76W79",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-13",
+              "ref": "B0FKC6RRN3",
               "type": "libex-import"
             }
           ],
