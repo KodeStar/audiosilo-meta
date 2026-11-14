@@ -5548,6 +5548,79 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "daniel-ryan-2009": {
+          "abridged": true,
+          "added_at": "2026-11-14",
+          "asin": [
+            {
+              "asin": "B06ZZ8HC5F",
+              "region": "ca"
+            },
+            {
+              "asin": "B004EW7K08",
+              "region": "uk"
+            },
+            {
+              "asin": "B0036GROW2",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4052764,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3995829,
+              "start_ms": 4052764,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4049839,
+              "start_ms": 8048593,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3941773,
+              "start_ms": 12098432,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4153585,
+              "start_ms": 16040205,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51AKmeETJgL.jpg",
+          "id": "daniel-ryan-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "daniel-ryan"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2009-05-28",
+          "runtime_min": 336,
+          "sources": [
+            {
+              "imported_at": "2026-11-14",
+              "ref": "B06ZZ8HC5F",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-14",
+              "ref": "B004EW7K08",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-14",
+              "ref": "B0036GROW2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "midnight-fugue"
+        },
         "jonathan-keeble-2010": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -5559,6 +5632,14 @@
             {
               "asin": "B004FTZRBY",
               "region": "uk"
+            },
+            {
+              "asin": "B06ZY43TYZ",
+              "region": "ca"
+            },
+            {
+              "asin": "B004V01VZI",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -5627,6 +5708,16 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B004FTZRBY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-14",
+              "ref": "B06ZY43TYZ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-11-14",
+              "ref": "B004V01VZI",
               "type": "libex-import"
             }
           ],
